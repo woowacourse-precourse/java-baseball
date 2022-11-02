@@ -14,12 +14,7 @@ public class Application {
         String userNumber = Console.readLine();
 
         isInputAlright(userNumber);
-
         List<Integer> userNumberList = inputProcess(userNumber);
-
-
-
-
 
 
     }
