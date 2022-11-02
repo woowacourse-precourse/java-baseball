@@ -16,4 +16,11 @@ public class Validator {
 			}
 		}
 	}
+
+	private void isCorrectSize(){
+		if (INPUT_VALUE.length() != CORRECT_LENGTH){
+			throw new IllegalArgumentException("The Length is wrong");
+		}
+	}
+
 }
