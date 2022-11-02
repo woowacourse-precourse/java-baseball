@@ -82,18 +82,14 @@ class ApplicationTest extends NsTest {
         for (int num : testInt) {
             computer.setCntBall(0);
             computer.setCntStrike(0);
-
-            System.out.println("num = " + num);
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
-            System.out.println("resultStrike: " + resultStrike + " resultBall: " + resultBall);
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
             resultList.add(list);
         }
 
         boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(2, 0)));
-        System.out.println("result = " + result);
         assertThat(result).isTrue();
     }
 
