@@ -6,11 +6,11 @@ public class Output {
 	}
 	
 	static void progressGame() {
-		System.out.print("숫자를 입력해주세요 :");
+		System.out.print("숫자를 입력해주세요 : ");
 	}
 	
 	static void oneGameResult(int ball, int strike) {
-		System.out.printf("%d볼 %d스트라이크",ball,strike);
+		System.out.println(ball+"볼 "+strike+"스트라이크");
 	}	
 	
 	static void wrongEverything() {

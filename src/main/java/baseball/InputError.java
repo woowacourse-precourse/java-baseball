@@ -28,7 +28,6 @@ public class InputError {
 		}else {
 			throw new IllegalArgumentException();
 		}
-
 	}
 	
 	static boolean checkTextError(String userAnswer)  throws IllegalArgumentException {
