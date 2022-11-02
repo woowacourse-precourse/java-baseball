@@ -16,7 +16,7 @@ public class Application {
 
     public static ArrayList<Integer> InputNum(){
         char[] playerNumString = Console.readLine().toCharArray();
-        ArrayList<Integer> playerNum = new ArrayList<Integer>();
+        ArrayList<Integer> playerNum = new ArrayList<>();
         for(char num : playerNumString){
             playerNum.add(num - '0');
         }
