@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -46,7 +47,21 @@ public class Application {
         return computerNumberList;
     }
 
+    public static List<Integer> splitNumber (String inputNumber) {
+        List<Integer> inputNumberList = new ArrayList<>();
+
+        for (int k = 0; k < 3; k++) {
+            inputNumberList.add(Character.getNumericValue(inputNumber.charAt(k)));
+        }
+
+        return inputNumberList;
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        String inputNumber = Console.readLine();
+        List<Integer> inputNumberList = splitNumber(inputNumber);
+
+        System.out.println(inputNumberList);
     }
 }
