@@ -2,11 +2,20 @@ package baseball.inputs;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameInputOutputTest {
 
     GameInputOutput checkInput = new GameInputOutput();
+
+    @Test
+    void computerMadeNumbers(){
+        List<Integer> computerMadeNumbers = checkInput.computerMadeNumbers();
+        int outputLength = 3;
+        assertThat(computerMadeNumbers.size()).isEqualTo(outputLength);
+    }
 
     @Test
     void haveSameNumbers_case1() {
