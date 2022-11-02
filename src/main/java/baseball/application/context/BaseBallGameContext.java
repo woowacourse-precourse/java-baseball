@@ -2,6 +2,7 @@ package baseball.application.context;
 
 import baseball.application.io.Reader;
 import baseball.application.io.Writer;
+import baseball.domain.number.BaseBallGameNumbers;
 
 public class BaseBallGameContext {
 
@@ -22,6 +23,10 @@ public class BaseBallGameContext {
     }
 
     public void init() {
+
+    }
+
+    public void changePlayerNumbers(BaseBallGameNumbers baseBallGameNumbers) {
 
     }
 }
