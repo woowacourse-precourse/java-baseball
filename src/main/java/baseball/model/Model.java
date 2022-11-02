@@ -19,4 +19,18 @@ public class Model {
         }
         return check;
     }
+    public int findBall(int score,int input){
+        int count = 0;
+        if (score / 100 == input / 10 % 10 || score / 100 == input % 10) count++;
+        if (score / 10 % 10 == input / 100 || score / 10 % 10 == input % 10) count ++;
+        if (score % 10 == input / 100 || score % 10 == input / 10 % 10) count++;
+        return count;
+    }
+    public int findStrike(int score,int input){
+        int count = 0;
+        if (score / 100 == input / 100) count++;
+        if (score / 10 % 10 == input / 10 %10) count++;
+        if (score % 10 == input % 10) count++;
+        return count;
+    }
 }
