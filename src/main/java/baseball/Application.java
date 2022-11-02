@@ -10,17 +10,42 @@ public class Application {
         // TODO: 프로그램 구현
 
         List<Integer> computerNumber = computerRanmdomNumberExtract();
+        System.out.print("숫자를 입력하세요 : ");
+        String inputUserNumber = Console.readLine();
 
-        String userNumber = Console.readLine();
+        isInputAlright(inputUserNumber);
+        List<Integer> userNumberList = inputProcess(inputUserNumber);
 
-        isInputAlright(userNumber);
-        List<Integer> userNumberList = inputProcess(userNumber);
+
+        int strike=0;
+        int ball=0;
+        playBall(computerNumber, userNumberList, strike);
 
 
     }
 
+    private static void playBall(List<Integer> computerNumber, List<Integer> userNumberList,
+        int strike) {
+        int ball;
+        for(int i=0; i<3; i++){
+            if(userNumberList.get(i) == computerNumber.get(i)){
+                strike++;
+                continue;
+            }
+        }
+        ball=4- strike;
 
-
+        if(strike ==3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        else if(strike ==0){
+            System.out.println("낫싱");
+        }
+        else{
+            System.out.println(ball +"볼 " + strike + "스트라이크");
+        }
+    }
 
 
     public static List<Integer> inputProcess(String userNumber) {
