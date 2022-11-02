@@ -2,9 +2,6 @@ package baseball.game.domain.repository;
 
 import baseball.game.domain.Game;
 import baseball.game.domain.RandomNumber;
-
-import java.util.List;
-
 public class GameRepository {
     private static final GameRepository instance=new GameRepository();
     private Game game;

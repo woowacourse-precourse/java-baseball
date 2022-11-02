@@ -2,7 +2,6 @@ package baseball.game.presentation;
 
 import baseball.game.application.GameService;
 
-
 public class GameController {
     private static final GameController instance=new GameController();
     private final GameService gameService;
@@ -13,6 +12,7 @@ public class GameController {
         return instance;
     }
     public void run(){
-        gameService.run();
+        gameService.setGame();
+        gameService.playGame();
     }
 }
