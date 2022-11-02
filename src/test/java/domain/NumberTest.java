@@ -1,5 +1,6 @@
 package domain;
 
+import constant.Messages;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -26,5 +27,17 @@ public class NumberTest {
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
         assertEquals("입력은 3자리 숫자만 가능합니다.", exception.getMessage());
+    }
+
+    @Test
+    void 각_숫자_중복되는_경우_예외_발생() {
+        List<Number> list = new ArrayList<>();
+        list.add(new Number(2));
+        list.add(new Number(2));
+        list.add(new Number(2));
+
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
+        assertEquals(Messages.duplicateNumber, exception.getMessage());
     }
 }
