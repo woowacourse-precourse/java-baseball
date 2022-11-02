@@ -26,8 +26,8 @@ public class Application {
         List<Integer> OneToNine = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         if(userEnterNumber.length() != 3) {
             isExcepted = true;
-        } else if(userEnterNumber.charAt(0) != userEnterNumber.charAt(1) || userEnterNumber.charAt(1) != userEnterNumber.charAt(2)
-            || userEnterNumber.charAt(0) != userEnterNumber.charAt(2)) {
+        } else if(userEnterNumber.charAt(0) == userEnterNumber.charAt(1) || userEnterNumber.charAt(1) == userEnterNumber.charAt(2)
+            || userEnterNumber.charAt(0) == userEnterNumber.charAt(2)) {
             isExcepted = true;
         }
         for(int i = 0; i < 3; i++) {
