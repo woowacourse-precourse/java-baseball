@@ -4,10 +4,8 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static java.lang.Character.getNumericValue;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 
 public class Baseball implements Game {
@@ -40,6 +38,7 @@ public class Baseball implements Game {
   public void play() {
     do {
       input();
+      execute();
     } while (isNotCorrect());
   }
 
@@ -91,5 +90,38 @@ public class Baseball implements Game {
     int[] playerInputArray = playerInput.chars().toArray();
     System.arraycopy(playerInputArray, 0,
         this.playerNumbers, 0, playerInputArray.length);
+  }
+
+  private void execute() {
+    this.strike = getStrike();
+    this.ball = getBall();
+  }
+
+  private int getStrike() {
+    int strike = 0;
+    for (int i = 0; i < computerNumbers.length; i++) {
+      if (playerNumbers[i] == computerNumbers[i]) {
+        strike++;
+      }
+    }
+    return strike;
+  }
+
+  private int getBall() {
+    int ball = 0;
+    int order = 1;
+    int[] numberIndexArray = new int[10];
+    for (int i = 0; i < GOAL_DIGIT; i++) {
+      numberIndexArray[computerNumbers[i]] = order++;
+    }
+    order = 1;
+    for (int i = 0; i < GOAL_DIGIT; i++) {
+      if (numberIndexArray[playerNumbers[i]] != 0 &&
+          numberIndexArray[playerNumbers[i]] != order) {
+        ball++;
+      }
+      order++;
+    }
+    return ball;
   }
 }
