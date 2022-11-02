@@ -39,9 +39,23 @@ public class Application {
         }
         return number;
     }
+    public static List<Integer> countAnswer(List<Integer> answer, List<Integer> input){
+        List<Integer> result = new ArrayList<>(List.of(0, 0));
+        for (int digit = 0; digit < 3; digit++){
+            if (answer.get(digit).equals(input.get(digit))){
+                result.set(1, result.get(1) + 1);
+            }
+            if ((answer.contains(input.get(digit))) && (!answer.get(digit).equals(input.get(digit)))){
+                result.set(0, result.get(0) + 1);
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> test = getInput();
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> input = getInput();
+        List<Integer> test = countAnswer(answer, input);
         System.out.print(test);
     }
 }
