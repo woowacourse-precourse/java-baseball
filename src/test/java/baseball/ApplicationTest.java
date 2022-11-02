@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 
+    // computer Test
     @Test
     void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
         Computer computer = new Computer();
@@ -34,6 +36,22 @@ class ApplicationTest extends NsTest {
         ));
         assertThat(list).isEqualTo(resultList);
     }
+
+    @Test
+        // Computer.splitEachDigitOfNum Test
+    void 두개_Collection_포함() {
+        Computer computer = new Computer();
+        List<Integer> resultList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        List<Integer> list = new ArrayList<>();
+        list.addAll(resultList);
+
+        boolean isEqualsCollection = computer.isEqualsCollection(resultList, list);
+        assertTrue(isEqualsCollection);
+    }
+
+    // computer Test 종료
 
     @Test
     void 게임종료_후_재시작() {

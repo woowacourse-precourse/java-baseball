@@ -44,7 +44,7 @@ public class Computer {
         return true;
     }
 
-    private boolean isEqualsCollection(Collection collection_1,
+    public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
         if (collection_1.containsAll(collection_2)) {
             return true;
