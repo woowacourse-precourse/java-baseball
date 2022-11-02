@@ -8,23 +8,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
 
-    @Test
-    void user_answer_input_length_test() {
-        String input = "1234";
-        Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @ParameterizedTest
-    @ValueSource(strings = {"asd", "12s", "12_"})
+    @ValueSource(strings = {"1234", "1", "asd", "12a", "_12", "112", "122"})
     void user_answer_input_number_test(String input) {
-        Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"112", "322", "556"})
-    void user_answer_input_duplicate_test(String input) {
         Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
