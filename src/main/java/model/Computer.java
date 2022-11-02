@@ -9,7 +9,7 @@ public class Computer {
 
     final private static int NUM_START_RANGE_RAM = 1;
     final private static int NUM_END_RANGE_RAM = 9;
-    final private List<Integer> numThreeRanOfComputerList;
+    public List<Integer> numThreeRanOfComputerList;
 
     public int cntStrike;
     public int cntBall;
@@ -38,15 +38,19 @@ public class Computer {
     public Boolean isRightThreeNumOfComputer(int numOfCompare) {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
         ArrayList<Integer> splitNumOfCompare = new ArrayList<>();
-
+        splitNumOfCompare = (ArrayList<Integer>) this.splitEachDigitOfNum(numOfCompare);
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
         if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
-            // TODO: 2.1.1 스트라이크 볼 체크
+            // TODO: 2.1.1 스트라이크 체크
+            checkStrike(splitNumOfCompare);
+            // TODO: 2.1.2 스트라이크 체크
+            checkBall(splitNumOfCompare);
+            return true;
         } else {
             // TODO: 2.2 else 포함안한다면? => 낫싱
+            return false;
         }
-        return true;
     }
 
     // strike체크 함수
