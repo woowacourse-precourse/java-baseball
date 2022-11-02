@@ -11,20 +11,20 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int regame_input=1;
-        int playing_input=1;
+        int regame_input = 1;
+        int playing_input = 1;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        do{
-            playing_input=startGame();
-            if(playing_input==EXCEPTION) return;
+        do {
+            playing_input = startGame();
+            if (playing_input == EXCEPTION) return;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            regame_input=userInput(READY);
+            regame_input = userInput(READY);
             if (regame_input == EXCEPTION) return;
-        }while(regame_input==1);
+        } while (regame_input == 1);
     }
 
-    private static int startGame(){
+    private static int startGame() {
         return 1;
     }
 
@@ -47,7 +47,7 @@ public class Application {
         char[] input_charArray = input_String.toCharArray();
         int input_int;
 
-        if(play_mode==READY&&(!input_String.equals("1")&&!input_String.equals("2"))){
+        if (play_mode == READY && (!input_String.equals("1") && !input_String.equals("2"))) {
             throw new IllegalArgumentException();
         }
 
@@ -82,7 +82,7 @@ public class Application {
         for (int i = 0; i < input_charArray.length; i++) {
             numSet.add(input_charArray[i]);
         }
-        if(numSet.size()!=play_mode){
+        if (numSet.size() != play_mode) {
             return true;
         }
         return false;
