@@ -3,7 +3,7 @@ package baseball;
 import baseball.cli.ConsoleReader;
 import baseball.cli.ConsoleWriter;
 import baseball.domain.NumberBaseball;
-import baseball.utils.Checker;
+import baseball.utils.Validator;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Application {
         while (true) {
             ConsoleWriter.printInputPhrase();
             String userNumber = ConsoleReader.readString();
-            Checker.validateUserNumber(userNumber);
+            Validator.validateUserNumber(userNumber);
             game.compareComputerNumberWith(userNumber);
             ConsoleWriter.printGameResult(game.getGameResult());
 
@@ -34,7 +34,7 @@ public class Application {
 
     private static boolean isResumed() {
         int input = ConsoleReader.readInt();
-        Checker.validateResumeNumber(input);
+        Validator.validateResumeNumber(input);
         if (input == 1)
             return true;
         return false;

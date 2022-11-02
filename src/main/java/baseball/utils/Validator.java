@@ -1,6 +1,6 @@
 package baseball.utils;
 
-public class Checker {
+public class Validator {
     private static final int GAME_NUMBER = 3;
     public static boolean hasDifferentNumbers(String numbers) {
         return numbers.chars().distinct().count() == numbers.length();

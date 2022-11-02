@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.utils.Checker;
+import baseball.utils.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ class NumberBaseballTest extends NumberBaseball{
 
     @Test
     void testComputerHasDifferent3Numbers() {
-        assertThat(Checker.hasDifferentNumbers(numberBaseball.getComputerNumber()))
+        assertThat(Validator.hasDifferentNumbers(numberBaseball.getComputerNumber()))
                 .isTrue();
     }
 
@@ -24,10 +24,10 @@ class NumberBaseballTest extends NumberBaseball{
     void testCompareNumbersAfterRead() {
         String inputString = "123";
         assertThrows(IllegalArgumentException.class, () -> {
-            Checker.validateUserNumber("1234");
+            Validator.validateUserNumber("1234");
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            Checker.validateUserNumber("133");
+            Validator.validateUserNumber("133");
         });
         numberBaseball.compareComputerNumberWith(inputString);
         assertThat(numberBaseball.getGameResult().length() > 0).isTrue();
