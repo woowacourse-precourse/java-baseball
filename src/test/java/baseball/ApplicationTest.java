@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,8 +61,15 @@ class ApplicationTest extends NsTest {
 
     static class BaseballTest extends Baseball{
 
+        final String TEST_CASE_ANSWER = "634";
+        final int TEST_CASE_LENGTH = 3;
+
         private String getAnswer(){
             return super.answer;
+        }
+
+        private void setAnswer(String newAnswer){
+            super.answer = newAnswer;
         }
 
         @Test
@@ -83,6 +91,56 @@ class ApplicationTest extends NsTest {
             assertThat(answer).isEqualTo(distinctString);
         }
 
+        @Test
+        void 입력값_333_시_예외발생(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThatThrownBy(() -> new Validator("333", TEST_CASE_LENGTH))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
 
+        @Test
+        void 입력값_abc_시_예외발생(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThatThrownBy(() -> new Validator("abc", TEST_CASE_LENGTH))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력값_3$4_시_예외발생(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThatThrownBy(() -> new Validator("3$4", TEST_CASE_LENGTH))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력값_34_시_예외발생(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThatThrownBy(() -> new Validator("34", TEST_CASE_LENGTH))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력값_346_시_결과(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThat(super.answerCheck("346")).isEqual("3볼");
+        }
+
+        @Test
+        void 입력값_152_시_결과(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThat(super.answerCheck("152")).isEqual("낫싱");
+        }
+
+        @Test
+        void 입력값_673_시_결과(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThat(super.answerCheck("673")).isEqual("1볼 1스트라이크");
+        }
+
+        @Test
+        void 입력값_634_시_결과(){
+            setAnswer(TEST_CASE_ANSWER);
+            assertThat(super.answerCheck("634")).isEqual("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }

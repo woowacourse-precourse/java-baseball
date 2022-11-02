@@ -11,14 +11,14 @@
   - [X]  상대방(컴퓨터)의 수가 중복 숫자가 있는지에 대한 처리
 * 결과 처리
   * 상대방(컴퓨터)의 수가 634 일 때
-    - [ ] 333을 제시한 경우 : "IllegalArgumentException" 예외 발생
-    - [ ] abc을 제시한 경우 : "IllegalArgumentException" 예외 발생
-    - [ ] 3$4을 제시한 경우 : "IllegalArgumentException" 예외 발생
-    - [ ] 34을 제시한 경우 : "IllegalArgumentException" 예외 발생
-    - [ ] 346을 제시한 경우 : "3볼" 출력
-    - [ ] 152을 제시한 경우 : "낫싱" 출력
-    - [ ] 673을 제시한 경우 : "1볼 1스트라이크" 출력
-    - [ ] 634을 제시한 경우 : "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
+    - [X] 333을 제시한 경우 : "IllegalArgumentException" 예외 발생
+    - [X] abc을 제시한 경우 : "IllegalArgumentException" 예외 발생
+    - [X] 3$4을 제시한 경우 : "IllegalArgumentException" 예외 발생
+    - [X] 34을 제시한 경우 : "IllegalArgumentException" 예외 발생
+    - [X] 346을 제시한 경우 : "3볼" 출력
+    - [X] 152을 제시한 경우 : "낫싱" 출력
+    - [X] 673을 제시한 경우 : "1볼 1스트라이크" 출력
+    - [X] 634을 제시한 경우 : "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
 
 ### 입력 값 처리 및 초기화
 - [ ] 입력을 받는값 예외 확인 함수 구현
