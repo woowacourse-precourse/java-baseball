@@ -21,4 +21,4 @@
 4. isValidBaseballNumber(): 입력받은 수의 야구 게임 유효성 검증
 5. getNumberOfStrikes(): 스트라이크 개수 계산
 6. getNumberOfBalls(): 볼 개수 계산
-7. disposeOfScore(): 점수 계산 후 출력, 상황에 따른 값 반환
+7. disposeOfGameResult(): 점수 계산 후 출력, 상황에 따른 값 반환
