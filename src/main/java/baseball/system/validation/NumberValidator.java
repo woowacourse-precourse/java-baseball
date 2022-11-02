@@ -5,7 +5,7 @@ import baseball.vo.Answer;
 import java.util.Collections;
 import java.util.List;
 
-public class NumberValidator extends AbstractValidator {
+public class NumberValidator extends AbstractValidator<List<Integer>> {
     public static final String DUPLICATING_NUMBER_MESSAGE = "입력한 숫자는 서로 중복되지 않아야 합니다.";
     public static final String INVALID_NUMBER_LIST_SIZE_MESSAGE_FORMAT = "%d개의 숫자를 입력해야 합니다.";
     public static final String INVALID_NUMBER_RANGE_MESSAGE_FORMAT = "입력값은 &%d 이상 %d 이하의 자연수여야 합니다.";
@@ -18,11 +18,10 @@ public class NumberValidator extends AbstractValidator {
     }
 
     @Override
-    public void doValidate(Object target) {
-        List<Integer> targetList = (List<Integer>) target;
-        targetList.forEach(number -> isNumberBetWeen1And9(number));
-        isListSize3(targetList);
-        isNumbersHavingDuplication(targetList);
+    public void doValidate(List<Integer> target) {
+        target.forEach(number -> isNumberBetWeen1And9(number));
+        isListSize3(target);
+        isNumbersHavingDuplication(target);
     }
 
     private void isNumbersHavingDuplication(List<Integer> target) {

@@ -68,9 +68,9 @@ class ApplicationTest extends NsTest {
     @ParameterizedTest(name = "{displayName} {index} - {0}")
     @MethodSource("sourceOfIntegerListNotBetWeen1And9")
     @DisplayName("Answer 에 저장할 값이 1에서 9 사이의 정수가 아니면 예외가 발생한다.")
-    void givenIntegerListNotBetWeen1And9_whenValidatingGiven_ThenThrowsException(List<?> given) {
+    void givenIntegerListNotBetWeen1And9_whenValidatingGiven_ThenThrowsException(List<Integer> given) {
         // when & then
-        Validator numberValidator = new NumberValidator();
+        Validator<List<Integer>> numberValidator = new NumberValidator();
 
         // then
         assertThatThrownBy(() -> numberValidator.validate(given))
@@ -86,10 +86,10 @@ class ApplicationTest extends NsTest {
     @DisplayName("Answer 에 들어갈 숫자 개수가 3개가 아니면 예외가 발생한다.")
     void givenIntegerListSizeNot3_whenValidatingGiven_ThenThrowsException() {
         // given
-        List<?> list = List.of(4, 2);
+        List<Integer> list = List.of(4, 2);
 
         // when & then
-        Validator numberValidator = new NumberValidator();
+        Validator<List<Integer>> numberValidator = new NumberValidator();
 
         // then
         assertThatThrownBy(() -> numberValidator.validate(list))
@@ -104,10 +104,10 @@ class ApplicationTest extends NsTest {
     @DisplayName("Answer 에 들어갈 숫자가 서로 다르지 않으면 예외가 발생한다.")
     void givenIntegerListHavingDuplication_whenValidatingGiven_ThenThrowsException() {
         // given
-        List<?> list = List.of(4, 2, 4);
+        List<Integer> list = List.of(4, 2, 4);
 
         // when & then
-        Validator numberValidator = new NumberValidator();
+        Validator<List<Integer>> numberValidator = new NumberValidator();
 
         // then
         assertThatThrownBy(() -> numberValidator.validate(list))
@@ -185,7 +185,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("사용자로부터 받은 입력값이 자연수로 이루어지지 않은 경우 예외가 발생한다.")
     void givenIntegerListIncludingNotNaturalNumber_whenValidatingGiven_ThenThrowsException(String given) {
         // when
-        Validator validator = new StringToIntegerListConversionValidator();
+        Validator<String> validator = new StringToIntegerListConversionValidator();
         assertThatThrownBy(() -> validator.validate(given))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(StringToIntegerListConversionValidator.VALUE_NOT_NATURAL_NUMBER_MESSAGE);

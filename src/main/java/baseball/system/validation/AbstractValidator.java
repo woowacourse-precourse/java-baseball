@@ -1,10 +1,10 @@
 package baseball.system.validation;
 
-abstract public class AbstractValidator implements Validator {
+abstract public class AbstractValidator<T> implements Validator<T> {
     public static final String INVALID_INPUT_FOR_VALIDATOR_MESSAGE_FORMAT = "%s의 검증 작업을 실행하기에 유효한 입력이 아닙니다.";
 
     @Override
-    public void validate(Object target) {
+    public void validate(T target) {
         checkSupports(target);
         doValidate(target);
     }
@@ -15,5 +15,5 @@ abstract public class AbstractValidator implements Validator {
 
     abstract protected void checkSupports(Object target);
 
-    abstract protected void doValidate(Object target);
+    abstract protected void doValidate(T target);
 }

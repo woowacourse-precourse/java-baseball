@@ -1,5 +1,5 @@
 package baseball.system.validation;
 
-public interface Validator {
-    void validate(Object target);
+public interface Validator<T> {
+    void validate(T target);
 }
