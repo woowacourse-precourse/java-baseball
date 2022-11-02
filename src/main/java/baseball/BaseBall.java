@@ -10,22 +10,25 @@ public class BaseBall {
     private User user = new User();
     private Numbers numberOfComputer;
     private Numbers numberOfUser;
+    private boolean isCorrect;
 
     public void playGame() {
         System.out.println(Messages.gameStart);
         numberOfComputer = computer.make();
-        do {
+        isCorrect = false;
+        while (!isCorrect) {
             roundOfGame();
-        } while (isResume());
+        }
     }
 
     private void roundOfGame() {
         System.out.println(Messages.inputNumber);
         numberOfUser = user.input();
 
+        Result result = new Result(numberOfComputer, numberOfUser);
+        this.isCorrect = result.isThreeStrike();
+
+        System.out.println(result.getResult());
     }
 
-    private boolean isResume() {
-
-    }
 }
