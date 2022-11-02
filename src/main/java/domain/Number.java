@@ -14,7 +14,7 @@ public class Number {
     }
 
     private void isValidNumber(int number) {
-        if(number < 1 || 9 < number) throw new IllegalArgumentException(Messages.rangeOut);
+        if(number < 1 || 9 < number) throw new IllegalArgumentException(Messages.wrongInput);
     }
 
     @Override
