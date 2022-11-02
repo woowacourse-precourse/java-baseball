@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -49,8 +52,37 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    static class BaseballTest extends Baseball{
+
+        private String getAnswer(){
+            return super.answer;
+        }
+
+        @Test
+        void 정답이_옳은_길이_인지_확인(){
+            assertThat(getAnswer().length()).isEqualTo(super.ANSWER_LENGTH);
+        }
+
+        @Test
+        void 정답이_숫자만_있는지_확인(){
+            String answer = getAnswer();
+            Pattern compile = Pattern.compile("/^[0-9]*$/");
+            assertThat(compile.matcher(answer)).isTrue();
+        }
+
+        @Test
+        void 정답에_중복숫자가_없는지_확인(){
+            String answer = getAnswer();
+            String distinctString = Util.getDistinctString(answer);
+            assertThat(answer).isEqualTo(distinctString);
+        }
+
+
     }
 }
