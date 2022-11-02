@@ -1,5 +1,13 @@
 # 미션 - 숫자 야구
 
+## MVC 패턴, 의식하며 구현할 수 있도록 노력하자!
+
+- Model은 Controller와 View에 의존하지 않아야 한다.
+- View는 Model에만 의존해야 하고, Controller에는 의존하면 안 된다.
+- View가 Model로부터 데이터를 받을 때는, 사용자마다 다르게 보여주어야 하는 데이터에 대해서만 받아야 한다.
+- Controller는 Model과 View에 의존해도 된다.
+- View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.
+
 ## < 기능 구현 목록 >
 
 ### User
