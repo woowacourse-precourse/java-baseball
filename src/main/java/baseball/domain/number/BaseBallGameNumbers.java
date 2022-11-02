@@ -24,6 +24,13 @@ public class BaseBallGameNumbers {
         validateNumberSize();
     }
 
+    public BaseBallGameNumbers(List<Integer> integers) {
+        for (Integer number : integers) {
+            numbers.add(new BaseBallGameNumber(number));
+        }
+        validateNumberSize();
+    }
+
     private void validateInputSize(String input) {
         if (SIZE != input.length()) {
             throw new IllegalArgumentException("입력의 길이는 3이어야 합니다.");
