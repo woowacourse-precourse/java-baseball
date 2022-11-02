@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static baseball.Constant.*;
+
 public class BaseballGame {
     private static Computer computer;
 
@@ -21,17 +23,22 @@ public class BaseballGame {
 
     public void start() {
         Input.startGameMessage();
-        List<Integer> answer = RandomGenerator.makeNotDuplicatedRandomNumbers(3,1,9);
+        List<Integer> answer = RandomGenerator
+                .makeNotDuplicatedRandomNumbers(NUMBER_CNT,MIN_RANGE,MAX_RANGE);
         System.out.println("(임시) answer is "+ answer);
         computer.putAnswer(answer);
         while (true) {
             List<Integer> results = checkResultOfEnteredValue();
-            if(results.get(0) == 3) {
+            if(isThreeStrike(results)) {
                 Output.showGameCompleteMessage();
                 break;
             }
         }
         decideWhatToDoNext();
+    }
+
+    private boolean isThreeStrike(List<Integer> results) {
+        return results.get(0) == 3;
     }
 
     private List<Integer> checkResultOfEnteredValue() {
