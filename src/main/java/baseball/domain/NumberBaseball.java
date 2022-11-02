@@ -85,19 +85,8 @@ public class NumberBaseball {
     public String getGameResult() {
         return gameResult;
     }
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
 
     public boolean isEnd() {
         return isEnd;
-    }
-
-    protected void setComputerNumber(String number) {
-        this.computerNumber = number;
     }
 }
