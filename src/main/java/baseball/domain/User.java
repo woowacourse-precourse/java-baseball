@@ -22,5 +22,4 @@ public class User {
         return inputNumbers;
     }
 
-    public void check
 }
