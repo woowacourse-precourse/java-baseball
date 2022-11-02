@@ -62,12 +62,30 @@ public class Computer {
                     isStrike = true;
                 }
             }
-        }
-        if (isStrike) {
-            this.cntStrike = this.cntStrike + 1;
+            if (isStrike) {
+                this.cntStrike = this.cntStrike + 1;
+            }
         }
     }
 
+    // strike체크 함수
+    private void checkBall(List<Integer> splitNumOfCompare) {
+        // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
+        boolean isBall = true;
+        for (int first = 0; first < splitNumOfCompare.size(); first++) {
+            isBall = false;
+            int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
+            for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
+                int numAtNow = splitNumOfCompare.get(second);
+                if (first != second && numComputerAtNow == numAtNow) {
+                    isBall = true;
+                }
+            }
+            if (isBall) {
+                this.cntBall = this.cntBall + 1;
+            }
+        }
+    }
 
     public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
