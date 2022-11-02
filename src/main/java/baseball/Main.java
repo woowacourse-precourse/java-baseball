@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Main {
     public void GameStart() {
+        Result result = new Result();
+
         int Restart = 1;
         while (Restart == 1) {
             List<Integer> RandomNumber = GetRandomNum();
@@ -16,7 +18,7 @@ public class Main {
             System.out.print("숫자를 입력해 주세요 : ");
             GamerInput = Integer.parseInt(Console.readLine());
 
-            Restart = Result(GamerInput, RandomNumber);
+            Restart = result.ReOrClose(GamerInput, RandomNumber);
         }
     }
 
