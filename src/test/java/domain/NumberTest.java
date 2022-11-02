@@ -16,4 +16,15 @@ public class NumberTest {
         assertEquals("1부터 9까지의 숫자만 가능합니다.", exception.getMessage());
     }
 
+    @Test
+    void 입력이_3개의_숫자가_아니라면_예외_발생() {
+        List<Number> list = new ArrayList<>();
+        list.add(new Number(3));
+        list.add(new Number(2));
+        list.add(new Number(1));
+        list.add(new Number(6));
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
+        assertEquals("입력은 3자리 숫자만 가능합니다.", exception.getMessage());
+    }
 }
