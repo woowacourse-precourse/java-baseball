@@ -20,4 +20,9 @@ public class Application {
         }
         return computer;
     }
+
+    public static boolean checkEnteredNumberIsValid(String str){
+        String number = str.replaceAll("[^0-9]","");
+        return number.length() == 3;
+    }
 }
