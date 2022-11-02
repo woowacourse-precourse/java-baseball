@@ -8,6 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
+    public static void startAnnounce() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
     public static List<Integer> getRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         for(int i = 0; i < 3; i++) {
@@ -17,7 +22,7 @@ public class Application {
     }
 
     public static boolean isEnterNumberExcept(String userEnterNumber) {
-        Boolean isExcepted = false;
+        boolean isExcepted = false;
         List<Integer> OneToNine = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         if(userEnterNumber.length() != 3) {
             isExcepted = true;
@@ -33,9 +38,20 @@ public class Application {
         return isExcepted;
     }
 
+    public static List<Integer> getEnterNumber(String userEnterNumber) {
+        List<Integer> enterNumber = new ArrayList<>();
+        if(!isEnterNumberExcept(userEnterNumber)) {
+            for(int i = 0; i < 3; i++) {
+                enterNumber.add(Character.getNumericValue(userEnterNumber.charAt(i)));
+            }
+        } else {
+            throw new IllegalArgumentException("정확한 세 자리 숫자를 입력해주세요");
+        }
+        return enterNumber;
+    }
+
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
+        startAnnounce();
         String userEnterNumber = Console.readLine();
     }
 }
