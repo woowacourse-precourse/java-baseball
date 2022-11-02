@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GameInputOutput {
+public class GameInput {
     public List<Integer> computerMadeNumbers(){
         List<Integer> numberMadeByComputer = new ArrayList<>();
         while(numberMadeByComputer.size() < 3){

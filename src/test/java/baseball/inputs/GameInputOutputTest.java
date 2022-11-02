@@ -6,9 +6,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GameInputOutputTest {
+class GameInputTest {
 
-    GameInputOutput checkInput = new GameInputOutput();
+    GameInput checkInput = new GameInput();
 
     @Test
     void computerMadeNumbers(){
