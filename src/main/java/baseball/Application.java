@@ -2,49 +2,90 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        final int RESTART = 1;
+        final int GAME_OVER = 2;
 
-        List<Integer> computerNumber = computerRanmdomNumberExtract();
+        while(true) {
+            List<Integer> computerNumber = computerRanmdomNumberExtract();
+            System.out.println("computerNumber = " + computerNumber);
+            playGame(computerNumber);
+            if(getUserDecision()==GAME_OVER){
+                break;
+            }
+        }
+
+    }
+
+    private static void playGame(List<Integer> computerNumber) {
+        while(true){
         System.out.print("숫자를 입력하세요 : ");
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
         List<Integer> userNumberList = inputProcess(inputUserNumber);
 
-
-        int strike=0;
-        int ball=0;
-        playBall(computerNumber, userNumberList, strike);
-
-
+        int strike = 0;
+        int ball = 0;
+        if(playBall(computerNumber, userNumberList, strike, ball)){
+            break;
+        }
+        }
     }
 
-    private static void playBall(List<Integer> computerNumber, List<Integer> userNumberList,
-        int strike) {
-        int ball;
+    private static Integer getUserDecision() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Integer user_decision = Integer.parseInt(Console.readLine());
+        System.out.println("user_decision = " + user_decision);
+        return user_decision;
+    }
+
+    private static boolean playBall(List<Integer> computerNumber, List<Integer> userNumberList,
+        int strike, int ball) {
         for(int i=0; i<3; i++){
             if(userNumberList.get(i) == computerNumber.get(i)){
                 strike++;
-                continue;
+            }
+            else {
+                ball = getBall(computerNumber, userNumberList, ball, i);
             }
         }
-        ball=4- strike;
+        printGameResult(strike,ball);
+        if(strike==3){
+            return true;
+        }
+        return false;
+    }
 
+    private static void printGameResult(int strike, int ball) {
         if(strike ==3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
-        else if(strike ==0){
+        else if(strike ==0 && ball ==0){
             System.out.println("낫싱");
         }
         else{
             System.out.println(ball +"볼 " + strike + "스트라이크");
         }
+    }
+
+    private static int getBall(List<Integer> computerNumber, List<Integer> userNumberList, int ball,
+        int i) {
+        for(int j=0; j<3; j++){
+            if(i ==j){
+                continue;
+            }
+            if(userNumberList.get(i) == computerNumber.get(j))
+            {
+                ball++;
+            }
+        }
+        return ball;
     }
 
 
