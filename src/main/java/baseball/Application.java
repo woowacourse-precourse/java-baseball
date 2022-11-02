@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +15,21 @@ public class Application {
         }
     }
 
-    private static void inputKeepPlaying() {
+    private static List<Integer> createTargetNumber() {
+        List<Integer> targetNumber = new ArrayList<>();
+        while (targetNumber.size() < 3) {
+            int newNumber = Randoms.pickNumberInRange(1, 9);
+            if (!targetNumber.contains(newNumber)) {
+                targetNumber.add(newNumber);
+            }
+        }
+        return targetNumber;
     }
-
 
     private static void guessNumber(List<Integer> targetNumber) {
     }
 
-    private static List<Integer> createTargetNumber() {
-        return new ArrayList<>();
+
+    private static void inputKeepPlaying() {
     }
 }
