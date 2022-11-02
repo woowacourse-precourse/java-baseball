@@ -40,4 +40,10 @@ public class NumberTest {
                 assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
         assertEquals(Messages.duplicateNumber, exception.getMessage());
     }
+
+    @Test
+    void 컴퓨터_랜덤_숫자_생성(){
+        Computer computer = new Computer();
+        computer.make();
+    }
 }
