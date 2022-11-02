@@ -2,16 +2,23 @@ package baseball;
 
 import baseball.controller.ComputerController;
 import baseball.system.AnswerHolder;
+import baseball.system.conversion.Converter;
+import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.validation.NumberValidator;
 import baseball.system.validation.Validator;
+import baseball.view.InputView;
 import baseball.vo.Answer;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -116,5 +123,57 @@ class ApplicationTest extends NsTest {
                 List.of(2, 6.5, 8),
                 List.of(2, "-", 7)
         );
+    }
+
+    @Test
+    @DisplayName("사용자로부터 숫자를 입력하도록 유도하는 메시지를 출력한다.")
+    void whenRunningInputView_thenPrintsInputMessage() {
+        // given
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        Mockito.mockStatic(Console.class);
+        Mockito.when(Console.readLine()).thenReturn("");
+        // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+
+        // when
+        InputView inputView = new InputView();
+        inputView.getUserInput();
+
+        // then
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo(InputView.NUMBER_INPUT_NUDGE_MESSAGE.trim());
+    }
+
+    @Test
+    @DisplayName("사용자로부터 숫자를 입력받는다.")
+    void whenRunningInputView_thenReturnsUserInput() {
+        String EXPECTED = "468";
+
+        //given
+        Mockito.mockStatic(Console.class);
+        Mockito.when(Console.readLine()).thenReturn(EXPECTED);
+        // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+
+        //when
+        InputView inputView = new InputView();
+        String target = inputView.getUserInput();
+
+        //then
+        assertThat(target).isEqualTo(EXPECTED);
+    }
+
+    @Test
+    @DisplayName("사용자로부터 받은 String 값을 List<Integer> 로 변환한다.")
+    void givenStringInput_whenRunningConverter_thenReturnsIntegerList() {
+        //given
+        String input = "467";
+
+        //when
+        Converter converter = new StringToIntegerListConverter();
+        List<Integer> target = (List<Integer>) converter.convert(input);
+
+        //then
+        assertThat(target).containsExactly(4, 6, 7);
     }
 }
