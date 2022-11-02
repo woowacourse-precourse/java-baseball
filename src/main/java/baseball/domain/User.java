@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class User {
     private static String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
     private static String DUPLICATION_EXCEPTION = "중복된 숫자가 존재합니다.";
@@ -22,7 +20,8 @@ public class User {
     public ArrayList<Integer> parseStringToInt(String numbers) {
         ArrayList<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length(); i++) {
-            inputNumbers.add(Integer.parseInt(String.valueOf(numbers.charAt(i))));
+            int number = charToInt(numbers.charAt(i));
+            inputNumbers.add(number);
         }
         return inputNumbers;
     }
@@ -33,15 +32,19 @@ public class User {
         }
     }
 
-    public void checkDuplicationNumber(ArrayList<Integer> numbers,int number){
-        if(numbers.contains(number)){
+    public void checkDuplicationNumber(ArrayList<Integer> numbers, int number) {
+        if (numbers.contains(number)) {
             throw new IllegalArgumentException(DUPLICATION_EXCEPTION);
         }
     }
 
-    public void checkVaildNumber(int number){
-        if(number < MIN_NUM || number > MAX_NUM){
+    public void checkVaildNumber(int number) {
+        if (number < MIN_NUM || number > MAX_NUM) {
             throw new IllegalArgumentException(VALID_NUMBER_EXCEPTION);
         }
+    }
+
+    public int charToInt(char number) {
+        return Integer.parseInt(String.valueOf(number));
     }
 }
