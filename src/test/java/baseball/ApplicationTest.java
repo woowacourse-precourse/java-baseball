@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -18,7 +17,7 @@ class ApplicationTest extends NsTest {
 	@DisplayName("숫자 생성의 범위를 확인한다")
 	@Test
 	void testNumberCreationRange() {
-		int randomNumber = computer.createRandomNumber();
+		int randomNumber = computer.createOneRandomNumber();
 
 		assertThat(randomNumber).isBetween(1, 9);
 	}
@@ -45,7 +44,7 @@ class ApplicationTest extends NsTest {
 		int[] counts = new int[10];
 
 		for (int counter = 0; counter < 70; counter++) {
-			int randomNumber = computer.createRandomNumber();
+			int randomNumber = computer.createOneRandomNumber();
 			counts[randomNumber] = 1;
 		}
 
@@ -61,13 +60,25 @@ class ApplicationTest extends NsTest {
 	@DisplayName("난수 생성 후 저장시 중복을 확인한다")
 	@Test
 	void canVerifyDuplication() {
-        List<Integer> list1 = List.of(3,3);
-        List<Integer> list2 = List.of(1,7);
-        List<Integer> list3 = List.of(2,5);
+		List<Integer> list1 = List.of(3, 3);
+		List<Integer> list2 = List.of(1, 7);
+		List<Integer> list3 = List.of(2, 5);
 
-        assertThat(computer.hasDuplication(list1,3)).isTrue();
-        assertThat(computer.hasDuplication(list2,7)).isTrue();
-        assertThat(computer.hasDuplication(list3,6)).isFalse();
+		assertThat(computer.hasDuplication(list1, 3)).isTrue();
+		assertThat(computer.hasDuplication(list2, 7)).isTrue();
+		assertThat(computer.hasDuplication(list3, 6)).isFalse();
+	}
+
+	@RepeatedTest(30)
+	void testComputerNumberSize() {
+		assertThat(computer.getComputerNumber().size()).isEqualTo(3);
+	}
+
+	@RepeatedTest(100)
+	void testComputerNumberWithoutDuplication() {
+		List<Integer> list = List.of(2, 2, 2);
+
+		assertThat(computer.getComputerNumber()).isNotSameAs(list);
 	}
 
 
