@@ -18,4 +18,12 @@ public class UserInput {
         return sliceInput(userInput);
     }
 
+    public static List<Integer> sliceInput(String userInput) {
+        List<Integer> slice = new ArrayList<>();
+        for (int seq = 0; seq < userInput.length(); seq++) {
+            Integer slicedSequence = Character.getNumericValue(userInput.charAt(seq));
+            slice.add(slicedSequence);
+        }
+        return slice;
+    }
 }
