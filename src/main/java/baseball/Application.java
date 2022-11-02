@@ -36,6 +36,18 @@ public class Application {
 
         return inputNumbers;
     }
+
+    private static int getNumberOfStrikes(List<Integer> numberOfComputer, List<Integer> numberOfUser) {
+        int numberOfStrikes = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (numberOfComputer.get(i) == numberOfUser.get(i)) {
+                numberOfStrikes++;
+            }
+        }
+
+        return numberOfStrikes;
+    }
     private static boolean isValidBaseballNumber(String input) {
         if (input.length() != 3) {
             return false;
