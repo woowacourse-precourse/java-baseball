@@ -22,7 +22,7 @@ public class Game {
         currentStrike = 0;
     }
 
-    public void check_player_input(int playerNum) {
+    public void compare_player_input_and_answer(int playerNum) {
         
     }
 

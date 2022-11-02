@@ -13,7 +13,7 @@ public class Application {
         while(isInGame)
         {
             int playerNum = messageHolder.print_get_game_input();
-            game.check_player_input(playerNum);
+            game.compare_player_input_and_answer(playerNum);
             int currentBall = game.get_ball();
             int currentStrike = game.get_strike();
             messageHolder.print_ball_and_strke(currentBall, currentStrike);
