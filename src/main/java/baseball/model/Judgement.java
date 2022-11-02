@@ -29,6 +29,13 @@ public class Judgement {
         }
     }
 
+    public boolean judgeNothing(User user, Computer computer) {
+        judgeStrike(user, computer);
+        judgeBall(user, computer);
+        if (strikeCnt == 0 && ballCnt == 0) return true;
+        return false;
+    }
+
     private void setStrikeCntZero() {
         strikeCnt = 0;
     }
