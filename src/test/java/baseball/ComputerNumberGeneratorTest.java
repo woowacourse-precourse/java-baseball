@@ -15,18 +15,23 @@ public class ComputerNumberGeneratorTest {
     }
 
     @Test
-    void 랜덤_넘버_1부터9인지(){
+    void 랜덤_넘버_1부터9_리턴(){
         assertThat(100).isLessThanOrEqualTo(9)
                 .isGreaterThanOrEqualTo(1);
     }
 
     @Test
-    void 클래스_변수에_값이_저장되는지(){
+    void 이미_저장_돼있으면_true(){
+        assertThat(false).isTrue();
+    }
+
+    @Test
+    void 클래스_변수에_값이_저장(){
         assertThat(/*ComputerNumberGenerator의 List형 변수 */).contains(100);
     }
 
     @Test
-    void 총_3개가_저장이_되는지(){
+    void 랜덤값_3개가_저장(){
         assertThat(/*ComputerNumberGenerator의 List형 변수의 크기*/).isEqualTo(3);
     }
 }
