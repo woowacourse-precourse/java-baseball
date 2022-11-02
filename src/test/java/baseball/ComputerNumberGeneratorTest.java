@@ -27,11 +27,13 @@ public class ComputerNumberGeneratorTest {
 
     @Test
     void 클래스_변수에_값이_저장(){
-        assertThat(/*ComputerNumberGenerator의 List형 변수 */).contains(100);
+        computerNumberGenerator.insertNumber(100);
+        assertThat(computerNumberGenerator.returnNumbersToArray()).contains(100);
     }
 
     @Test
     void 랜덤값_3개가_저장(){
-        assertThat(/*ComputerNumberGenerator의 List형 변수의 크기*/).isEqualTo(3);
+        computerNumberGenerator.makeThreeDigitNumbers();
+        assertThat(computerNumberGenerator.returnNumbersToArray().length).isEqualTo(3);
     }
 }
