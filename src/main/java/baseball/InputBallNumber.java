@@ -15,6 +15,13 @@ public class InputBallNumber {
 
     public void validation(String ballNumbers) {
         checkLength(ballNumbers);
+        isOnlyNumbers(ballNumbers);
+    }
+
+    private void isOnlyNumbers(String ballNumbers) {
+        if (!ballNumbers.matches("(^[1-9]*$)")) {
+            throw new IllegalArgumentException("1~9까지의 숫자만 입력해주세요.");
+        }
     }
 
     private void checkLength(String ballNumbers) {
