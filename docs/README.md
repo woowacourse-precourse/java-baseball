@@ -9,15 +9,15 @@
 
 ## 🍀1회성 게임 기능 구현 목록
 >### Class field
-> - [ ] `static Map<String, Integer> strikeAndBallCounter;`
-    >   - {"Strike" : StrikeCounts, "Ball" : BallCounts}  의 형태로 저장
+> - [x] `static Map<String, Integer> strikeAndBallCounter;`
+>   - {"strike" : Strike Counts, "ball" : Ball Counts}  의 형태로 저장
 >   - 출력을 하여 확인할 경우, key&value 값을 확인하기에 용이한 Map 자료구조를 선택
 >   - Map의 객체는 저장 순서를 유지하는 `LinkedHashMap` 으로 생성
 >   - 객체의 생성과 초기화를 위한 메서드를 구현
 >   - 구현된 메서드를 `main` 메서드에서 호출
 
 >### 1. Class 변수 초기화 메서드
->  -[ ] `void initializerOfStrikeAndBallCounter()`
+>  -[x] `void initializerOfStrikeAndBallCounter()`
 
 >### 2. 컴퓨터가 1~9로 구성된 서로 다른 임의의 3자리수를 생성
 >  - [ ] `List<Integer> createRandomThreeDigitNum()`
