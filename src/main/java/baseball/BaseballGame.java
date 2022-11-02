@@ -43,7 +43,7 @@ public class BaseballGame {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        throw new IllegalStateException("예상하지 못한 오류");
+        return checkResultOfEnteredValue();
     }
 
     private void decideWhatToDoNext() {

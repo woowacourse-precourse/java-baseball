@@ -24,6 +24,9 @@ public class Output {
             }
             sentence += (strikeCnt + "스트라이크");
         }
+        if (ballCnt == 0 && strikeCnt == 0) {
+            sentence += "낫싱";
+        }
         return sentence;
     }
 
