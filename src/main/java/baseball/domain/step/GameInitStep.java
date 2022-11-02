@@ -8,7 +8,7 @@ public class GameInitStep implements Step{
 
     @Override
     public void execute(BaseBallGameContext context) {
-
+        context.init();
     }
 
     @Override
