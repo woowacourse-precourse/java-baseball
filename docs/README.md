@@ -35,3 +35,20 @@
 - 게임 머신 클래스의 각 멤버 메소드마다 테스트 코드 작성
 
 ## 변경사항 (과제 진행 후)
+
+- 삭제
+  - 맞출 숫자 입력
+  - 재시작 여부 입력
+  - 맞출 숫자 입력시 잘못된 값 확인
+  - 재시작 여부 입력시 잘못된 값 확인
+  - illegalArgumentException 발생
+- 추가
+  - 맞출 숫자 입력과 잘못된 값 확인을 통해 illegalArgumentException 발생
+  - 재시작 여부 입력과 잘못된 값 확인을 통해 illegalArgumentException 발생
+  - 스트라이크와 볼 개수 세기
+    - 컴퓨터와 게이머의 숫자를 비교해 스트라이크와 볼 개수 확인
+    - return : List<Integer>
+  - 게임 진행 여부 판단
+    - 스트라이크와 볼의 개수를 토대로 더 진행할지 여부 판단
+    - parameter : int, int
+    - return : boolean
