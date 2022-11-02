@@ -1,12 +1,15 @@
 package baseball.view;
 
+import baseball.model.Score;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BaseballViewTest {
     private final BaseballView baseBallView;
@@ -30,24 +33,31 @@ class BaseballViewTest {
     @Test
     void 게임_시작_문구_출력() {
         baseBallView.showStart();
-        Assertions.assertEquals("숫자 야구 게임을 시작합니다.\n", output.toString());
+        assertEquals("숫자 야구 게임을 시작합니다.\n", output.toString());
     }
 
     @Test
     void 게임_시작_문구_출력_실패() {
         baseBallView.showStart();
-        Assertions.assertNotEquals("축구 게임\n", output.toString());
+        assertNotEquals("숫자 축구 게임을 시작합니다.\n", output.toString());
     }
 
     @Test
     void 숫자_입력_문구_출력() {
         baseBallView.showInput();
-        Assertions.assertEquals("숫자를 입력해주세요 : ", output.toString());
+        assertEquals("숫자를 입력해주세요 : ", output.toString());
     }
 
     @Test
     void 숫자_입력_문구_출력_실패() {
         baseBallView.showInput();
-        Assertions.assertNotEquals("문자를 입력해주세요 : ", output.toString());
+        assertNotEquals("문자를 입력해주세요 : ", output.toString());
     }
+
+    @Test
+    void 점수_출력_테스트() {
+        baseBallView.showScore(new Score(1, 2));
+        assertEquals("1볼 2스트라이크\n", output.toString());
+    }
+
 }
