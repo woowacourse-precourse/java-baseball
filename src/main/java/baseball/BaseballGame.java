@@ -7,7 +7,7 @@ public class BaseballGame {
 	int strike;
 	int user;
 	int userAnswer;
-	int userdecision = 1;
+	int userDecision = 1;
 	Ball computer = new Ball();
 	
 	void startGame() {
@@ -22,17 +22,25 @@ public class BaseballGame {
 			checkBall(Integer.toString(userAnswer));
 			checkStrike(Integer.toString(userAnswer));
 		}else {
-			userdecision = 2;
+			userDecision = 2;
 		}
 		
 		if(strike == 3) {
 			Output.rightEverything();
 			Output.endGame();
-			userdecision = Integer.parseInt(sc.next());
+			userDecision = Integer.parseInt(sc.next());
 		}else if(strike == 0 && ball == 0) {
 			Output.wrongEverything();
 		}else {
 			Output.oneGameResult(ball,strike);
+		}
+	}
+	
+	boolean endGame() {
+		if(userDecision == 2) {
+			return false;
+		}else {
+			return true;
 		}
 	}
 	
