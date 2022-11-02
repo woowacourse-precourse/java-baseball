@@ -12,9 +12,12 @@ public class User {
 	private static final int numberDigits = 3;
 
 	public List<Integer> getUserNumber(){
-		List<Integer> numberList = new ArrayList<>();
 
 		String userInput = getUserInput();
+
+//		if userInput hasDuplication || !3자리가 아니거나 => again
+
+		List<Integer> numberList = new ArrayList<>();
 
 		return numberList;
 	}
@@ -24,5 +27,11 @@ public class User {
 		return userInput;
 	}
 
+	public boolean hasDuplication(CharSequence checkString) {
+		return checkString.length() != checkString
+				.chars()
+				.distinct()
+				.count();
+	}
 
 }
