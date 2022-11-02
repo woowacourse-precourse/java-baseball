@@ -25,4 +25,16 @@ public class BaseballGame {
 		}
 		ball = result;
 	}
+	
+	void checkStrike(String userAnswer) {
+		int result = 0;
+		char[] usernumber = userAnswer.toCharArray();
+		char[] computernumber = Integer.toString(computer.number).toCharArray();
+		for(int i = 0; i < 3; i++) {
+			if(usernumber[i] == computernumber[i]) {
+				result += 1;
+			}
+		}
+		strike = result;
+	}
 }
