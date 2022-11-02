@@ -1,9 +1,8 @@
 package baseball.game.domain.repository;
 
 import baseball.game.domain.Game;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.game.domain.RandomNumber;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameRepository {
@@ -14,8 +13,8 @@ public class GameRepository {
     public static GameRepository getInstance(){
         return instance;
     }
-    public void setGame(List<Integer> randomNumber){
-        game=new Game(randomNumber);
+    public void setGame(){
+        game=new Game(new RandomNumber());
     }
     public Game getGame(){
         return game;
