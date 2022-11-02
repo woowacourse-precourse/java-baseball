@@ -1,7 +1,28 @@
 package baseball;
 
+import baseball.computerCalculate.ComputerCalculate;
+import baseball.inputs.GameInput;
+import baseball.inputs.GameOutput;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameInput gameInput = new GameInput();
+        GameOutput gameOutput = new GameOutput();
+        ComputerCalculate computerCalculate = new ComputerCalculate();
+
+        gameOutput.printWhenStart();
+
+        boolean doesUserWin,playingAgain;
+
+        do{
+            String userInput = gameInput.userPlayingInput();
+            List<Integer> computerInput = gameInput.computerMadeNumbers();
+
+            doesUserWin = computerCalculate.compareUserAndComputer(userInput,computerInput);
+            playingAgain = !doesUserWin || gameInput.checkingExitInput();
+
+        }while(playingAgain);
     }
 }
