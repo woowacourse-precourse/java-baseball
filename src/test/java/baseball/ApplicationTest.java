@@ -123,7 +123,7 @@ class ApplicationTest extends NsTest {
         // Computer.isRightThreeNumOfComputer
         // 스트라이크 1 , 볼 1
     void 유저숫자_스트라이트_볼_낫싱_체크_case_4() {
-        int[] testInt = new int[]{134, 324, 413};
+        int[] testInt = new int[]{182, 134, 521, 324, 813, 283};
         Computer computer = new Computer();
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
             1, 2, 3
