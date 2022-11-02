@@ -15,12 +15,18 @@ public class Application {
     }
 
     public static ArrayList<Integer> InputNum(){
-        char[] playerNumString = Console.readLine().toCharArray();
+        String playerNumString = Console.readLine();
+        if (InvalidInput(playerNumString)) throw new IllegalArgumentException("Invalid input");
+        char[] playerNumArray = playerNumString.toCharArray();
         ArrayList<Integer> playerNum = new ArrayList<>();
-        for(char num : playerNumString){
+        for(char num : playerNumArray){
             playerNum.add(num - '0');
         }
         return playerNum;
+    }
+
+    public static boolean InvalidInput(String num){
+        return num.length() != 3;
     }
     public static void main(String[] args) {
 //        List<Integer> answer = GenerateNum();
