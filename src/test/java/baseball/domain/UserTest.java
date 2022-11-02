@@ -21,7 +21,7 @@ public class UserTest {
         String input = "123";
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3));
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        user.getUserNumbers();
+        user.inputUserNumbers();
         Assertions.assertEquals(user.userNumbers, numbers);
     }
 
