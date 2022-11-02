@@ -5,24 +5,32 @@ import java.util.Scanner;
 public class BaseballGame {
 	int ball;
 	int strike;
-	int user;
 	int userAnswer;
-	int userDecision = 1;
-	Ball computer = new Ball();
+	int userDecision = 2;
+	Ball computer;
 	
-	void startGame() {
+	void run() {
 		Output.startGame();
+		while(true) {
+			computer = new Ball();
+			progressGame();
+			if(userDecision == 2) {
+				break;
+			}
+		}
 	}
 	
 	void progressGame() {
-		Scanner sc = new Scanner(System.in);
 		Output.progressGame();
+		
+		Scanner sc = new Scanner(System.in);
 		userAnswer = Integer.parseInt(sc.next());
 		if(InputError.checkOverlapError(userAnswer) && InputError.checkOverlapError(userAnswer)){
 			checkBall(Integer.toString(userAnswer));
 			checkStrike(Integer.toString(userAnswer));
 		}else {
 			userDecision = 2;
+			return;
 		}
 		
 		if(strike == 3) {
@@ -33,14 +41,6 @@ public class BaseballGame {
 			Output.wrongEverything();
 		}else {
 			Output.oneGameResult(ball,strike);
-		}
-	}
-	
-	boolean endGame() {
-		if(userDecision == 2) {
-			return false;
-		}else {
-			return true;
 		}
 	}
 	
