@@ -1,10 +1,11 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
 
 public class Application {
-
-    private final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -19,7 +20,14 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
-            String input = scanner.nextLine();
+            String input = Console.readLine();
         }
+    }
+
+    private List<Integer> createNewAnswer() {
+        int startInclusive = 1;
+        int lastInclusive = 9;
+        int count = 3;
+        return Randoms.pickUniqueNumbersInRange(startInclusive, lastInclusive, count);
     }
 }
