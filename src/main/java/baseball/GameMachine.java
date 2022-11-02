@@ -9,8 +9,8 @@ import java.util.List;
 
 public class GameMachine {
     boolean gaming;
-    List<Integer> computer;
-    List<Integer> gamer;
+    public List<Integer> computer;
+    public List<Integer> gamer;
 
     GameMachine() {
         gaming = false;
