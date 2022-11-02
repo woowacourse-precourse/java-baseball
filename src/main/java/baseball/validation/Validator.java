@@ -8,7 +8,30 @@ public class Validator {
 	private static final int VALID_BASEBALL_NUMBER_COUNT = 3;
 	private static final char ZERO = '0';
 
-	private Validator() {}
+	private static final int VALID_GAME_PROCEED_NUMBER_LENGTH = 1;
+	private static final char NEW_GAME = '1';
+	private static final char EXIT_GAME = '2';
+
+	private Validator() {
+	}
+
+	public static void validateGameProceedNumber(String gameProceedNumber) {
+		if (!hasValidGameProceedNumberLength(gameProceedNumber)) {
+			throw new IllegalArgumentException("[Error] 유효하지 않은 입력 길이입니다. " +
+					"1(new game) 또는 2(exit game) 중 하나를 입력해 주세요.");
+		} else if (!isValidGameProceedNumber(gameProceedNumber)) {
+			throw new IllegalArgumentException("[Error] 유효하지 않은 입력입니다. " +
+					"1(new game) 또는 2(exit game) 중 하나를 입력해 주세요.");
+		}
+	}
+
+	private static boolean hasValidGameProceedNumberLength(String gameProceedNumber) {
+		return gameProceedNumber.length() == VALID_GAME_PROCEED_NUMBER_LENGTH;
+	}
+
+	private static boolean isValidGameProceedNumber(String gameProceedNumber) {
+		return gameProceedNumber.charAt(0) == NEW_GAME || gameProceedNumber.charAt(0) == EXIT_GAME;
+	}
 
 	public static void validateBaseballNumber(String baseballNumber) {
 		List<Character> baseballNumberList = Parser.parseStringToCharList(baseballNumber);
