@@ -11,7 +11,7 @@ public class Application {
         int strikeCounting = 0;
 
         for (int i = 0; i <3; i++) {
-            if (inputNumberList.get(i) == computerNumberList.get(i)) {
+            if (inputNumberList.get(i).equals(computerNumberList.get(i))) {
                 strikeCounting += 1;
             }
         }
@@ -19,6 +19,7 @@ public class Application {
         return strikeCounting;
     }
 
+    // 수정 필요 중복된 값을 처리 못 함
     public static int distinguishBall (List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
         int ballCounting = 0;
 
@@ -42,22 +43,47 @@ public class Application {
         return computerNumberList;
     }
 
-    public static List<Integer> splitNumber (String inputNumber) {
-        List<Integer> inputNumberList = new ArrayList<>();
+    public static void splitNumber (List<Integer> inputNumberList, String inputNumber) {
 
         for (int k = 0; k < 3; k++) {
             inputNumberList.add(Character.getNumericValue(inputNumber.charAt(k)));
         }
 
-        return inputNumberList;
+        //return inputNumberList;
+    }
+
+    public static void printResult (int ballCounting, int strikeCounting) {
+        if (strikeCounting == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }else if (strikeCounting > 0 && ballCounting == 0) {
+            System.out.printf("%d스트라이크", strikeCounting);
+        }else if (strikeCounting == 0 && ballCounting > 0) {
+            System.out.printf("%d볼", ballCounting);
+        }else if (strikeCounting > 0 && ballCounting > 0) {
+            System.out.printf("%d볼 %d스트라이크", ballCounting, strikeCounting);
+        }else {
+            System.out.println("낫싱");
+        }
     }
 
 
     public static void main(String[] args) {
 
-        String inputNumber = Console.readLine();
-        List<Integer> inputNumberList = splitNumber(inputNumber);
         List<Integer> computerNumberList = makeComputerNumber();
+        List<Integer> inputNumberList = new ArrayList<>();
+
+        while (true) {
+            splitNumber(inputNumberList, Console.readLine());
+
+            int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
+            int ballCounting = distinguishBall(inputNumberList, computerNumberList, strikeCounting);
+            inputNumberList.clear();
+
+            printResult(ballCounting, strikeCounting);
+
+            if (strikeCounting == 3) break;
+        }
 
     }
 }
