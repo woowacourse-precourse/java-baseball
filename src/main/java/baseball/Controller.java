@@ -7,5 +7,6 @@ public class Controller {
 
     public void run() {
         service.setGame();
+        service.startGame();
     }
 }
