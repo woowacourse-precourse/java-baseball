@@ -5,24 +5,27 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+	Computer computer = new Computer();
 
-    @DisplayName("숫자 생성의 범위를 확인한다")
-    @Test
-    void testNumberCreationRange(){
-        Computer computer = new Computer();
-        int randomNumber = computer.createRandomNumber();
+	@DisplayName("숫자 생성의 범위를 확인한다")
+	@Test
+	void testNumberCreationRange() {
+		int randomNumber = computer.createRandomNumber();
 
-        assertThat(randomNumber).isBetween(1,9);
-    }
+		assertThat(randomNumber).isBetween(1, 9);
+	}
 
-    @DisplayName("난수 생성을 확인한다")
-    @RepeatedTest(50)
-    void testRandomNumberGeneration(){
+	@DisplayName("난수 생성을 확인한다")
+	@RepeatedTest(50)
+	void testRandomNumberGeneration() {
 
         /*
           랜덤으로 숫자가 만들어지는 것을 확인하기 위해서
@@ -39,43 +42,56 @@ class ApplicationTest extends NsTest {
           호출시 1로 초기화   1 1 1 1 1 1 1 1 1 => 합계 9
          */
 
-        Computer computer = new Computer();
-        int[] counts = new int[10];
-        for (int counter=0; counter < 70; counter++){
-            int randomNumber = computer.createRandomNumber();
-            counts[randomNumber] = 1;
-        }
-        int sum = 0;
-        for (int counter =0; counter <10; counter++ ){
-            sum+= counts[counter];
-        }
-        assertEquals(9,sum);
+		int[] counts = new int[10];
 
-    }
+		for (int counter = 0; counter < 70; counter++) {
+			int randomNumber = computer.createRandomNumber();
+			counts[randomNumber] = 1;
+		}
+
+		int sum = 0;
+
+		for (int counter = 0; counter < 10; counter++) {
+			sum += counts[counter];
+		}
+
+		assertEquals(9, sum);
+	}
+
+	@DisplayName("난수 생성 후 저장시 중복을 확인한다")
+	@Test
+	void canVerifyDuplication() {
+        List<Integer> list1 = List.of(3,3);
+        List<Integer> list2 = List.of(1,7);
+        List<Integer> list3 = List.of(2,5);
+
+        assertThat(computer.hasDuplication(list1,3)).isTrue();
+        assertThat(computer.hasDuplication(list2,7)).isTrue();
+        assertThat(computer.hasDuplication(list3,6)).isFalse();
+	}
 
 
+	@Test
+	void 게임종료_후_재시작() {
+		assertRandomNumberInRangeTest(
+				() -> {
+					run("246", "135", "1", "597", "589", "2");
+					assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+				},
+				1, 3, 5, 5, 8, 9
+		);
+	}
 
-    @Test
-    void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
-        );
-    }
+	@Test
+	void 예외_테스트() {
+		assertSimpleTest(() ->
+				assertThatThrownBy(() -> runException("1234"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
 
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
+	@Override
+	public void runMain() {
+		Application.main(new String[]{});
+	}
 }
