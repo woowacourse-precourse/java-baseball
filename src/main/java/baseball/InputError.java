@@ -3,7 +3,7 @@ package baseball;
 public class InputError {
 	static int MAX_LENGHT = 3;
 	
-	boolean checkLengthError(int userAnswer) {
+	static boolean checkLengthError(int userAnswer) {
 		int length = (int)(Math.log10(userAnswer)+1);
 		if(length != MAX_LENGHT) {
 			return false;
@@ -12,7 +12,7 @@ public class InputError {
 		}
 	}
 	
-	boolean checkOverlapError(int userAnswer) {
+	static boolean checkOverlapError(int userAnswer) {
 		if(checkLengthError(userAnswer)) {
 			int firth = userAnswer/100;
 			int second = (userAnswer%100)/10;
@@ -34,7 +34,7 @@ public class InputError {
 		}
 	}
 	
-	boolean checkTextError(String userAnswer){
+	static boolean checkTextError(String userAnswer){
 		try {
 			Integer.parseInt(userAnswer);
 			return true;

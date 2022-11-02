@@ -1,24 +1,28 @@
 package baseball;
 
-import baseball.Ball;
-import baseball.InputError;
-import baseball.Output;
+import java.util.Scanner;
 
 public class BaseballGame {
 	int ball;
 	int strike;
 	int user;
+	int userAnswer;
 	Ball computer = new Ball();
+	int decision = 1;
+	
+	void startGame() {
+		Output.startGame();
+	}
 	
 	void checkBall(String userAnswer) {
 		int result = 0;
-		char[] usernumber = userAnswer.toCharArray();
-		char[] computernumber = Integer.toString(computer.number).toCharArray();
+		char[] userNumber = userAnswer.toCharArray();
+		char[] computerNumber = Integer.toString(computer.number).toCharArray();
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				if(j == i) {
 					continue;
-				}else if(usernumber[i] == computernumber[j]) {
+				}else if(userNumber[i] == computerNumber[j]) {
 					result += 1;
 				}
 			}
@@ -28,10 +32,10 @@ public class BaseballGame {
 	
 	void checkStrike(String userAnswer) {
 		int result = 0;
-		char[] usernumber = userAnswer.toCharArray();
-		char[] computernumber = Integer.toString(computer.number).toCharArray();
+		char[] userNumber = userAnswer.toCharArray();
+		char[] computerNumber = Integer.toString(computer.number).toCharArray();
 		for(int i = 0; i < 3; i++) {
-			if(usernumber[i] == computernumber[i]) {
+			if(userNumber[i] == computerNumber[i]) {
 				result += 1;
 			}
 		}
