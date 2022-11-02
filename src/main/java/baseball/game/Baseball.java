@@ -52,6 +52,7 @@ public class Baseball implements Game {
     if (isInvalid(playerInput)) {
       throw new IllegalArgumentException();
     }
+    setPlayerNumbers(playerInput);
   }
 
   private boolean isInvalid(String playerInput) {
@@ -84,5 +85,11 @@ public class Baseball implements Game {
     Set<Integer> set = playerInput.chars()
         .boxed().collect(Collectors.toSet());
     return set.size() != GOAL_DIGIT;
+  }
+
+  private void setPlayerNumbers(String playerInput) {
+    int[] playerInputArray = playerInput.chars().toArray();
+    System.arraycopy(playerInputArray, 0,
+        this.playerNumbers, 0, playerInputArray.length);
   }
 }
