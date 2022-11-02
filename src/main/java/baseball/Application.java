@@ -8,14 +8,25 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+
         int GameSwitch = 1;
-        List<Integer> computer = getNumberBaseball();
-        while (GameSwitch == 1) {
+        StartGame(GameSwitch);
 
-        }
-        // TODO: 프로그램 구현
+
     }
+    public static void StartGame(int GameSwitch){
+        while(GameSwitch==1){
+            List<Integer> computer = getNumberBaseball();
+            int moreGame=playGame(computer);
+        }
+    }
+    public static void playGame(List<Integer> computer){
+        while(true){
 
+            List<Integer> user = getInput();
+            checkNumber(user, computer);
+        }
+    }
     public static List<Integer> getNumberBaseball() {
 
         List<Integer> computer = new ArrayList<>();
@@ -33,10 +44,11 @@ public class Application {
         }
     }
 
-    public static void playGame(List<Integer> computer) {
+    public static List<Integer> getInput() {
 
         String tryNumber = Console.readLine();
         List<Integer> user = transformInteger(tryNumber);
+        return user;
 
     }
 
@@ -50,12 +62,13 @@ public class Application {
         return Number;
     }
 
-    public static String checkNumber(List<Integer> user, List<Integer> computer) {
-
-        int strikeCount = strikeCount(user, computer);
-        int ballCount = ballCount(user, computer);
-
-
+    public static void checkNumber(List<Integer> user, List<Integer> computer) {
+        while() {
+            int strikeCount = strikeCount(user, computer);
+            int gameswtich=CheckGameover(strikeCount);
+            int ballCount = ballCount(user, computer);
+            resultAnswer(strikeCount, ballCount);
+        }
     }
 
     public static int strikeCount(List<Integer> user, List<Integer> computer) {
@@ -99,10 +112,15 @@ public class Application {
         return 0;
     }
 
-    public static String resultAnswer(int strikeCount, int ballCount) {
+    public static void resultAnswer(int strikeCount, int ballCount) {
 
-        ballAnswer(ballCount);
-        strikeAnswer(strikeCount);
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("나싱");
+
+        } else {
+            ballAnswer(ballCount);
+            strikeAnswer(strikeCount);
+        }
     }
 
     public static void ballAnswer(int ballCount) {
@@ -117,5 +135,30 @@ public class Application {
         if (strikeCount > 0) {
             System.out.print(strikeCount + " 스트라이크 ");
         }
+    }
+    public static int CheckGameover(int strikeCount){
+    if(strikeCount==3){
+        printWin();
+        return gameSwitch();
+    } else return 1;
+    }
+    public static void printWin(){
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public static int gameSwitch() {
+
+        String gameSwitch = Console.readLine();
+        int contiune=reGame(gameSwitch);
+    }
+    public static int reGame(String gameSwitch){
+        if (gameSwitch.equals("1")) {
+            return 1;
+        } else if (gameSwitch.equals("2")) {
+            return 2;
+        } else return 3;
+    }
     }
 }

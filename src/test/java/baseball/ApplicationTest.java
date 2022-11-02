@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.Application.*;
@@ -53,6 +54,22 @@ class ApplicationTest extends NsTest {
         List<Integer> user=transformInteger(trynumber);
         System.out.print(ballCount(user,computer)+" "+computer.toString());
 
+    }
+    @Test
+    void 스트라이크카운트_볼카운트_출력테스트(){
+        resultAnswer(0,0);
+    }
+    @Test
+    void 게임종료스위치_테스트(){
+        List<Integer> computer=new ArrayList<>();
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+        List<Integer> user=new ArrayList<>();
+        user.add(1);
+        user.add(2);
+        user.add(3);
+        checkNumber(user,computer);
     }
     @Test
     void 예외_테스트() {
