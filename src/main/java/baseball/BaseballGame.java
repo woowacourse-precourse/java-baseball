@@ -1,9 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class BaseballGame {
     private static Computer computer;
@@ -19,7 +21,10 @@ public class BaseballGame {
 
     public void start() {
         Input.startGameMessage();
-        computer.putAnswer(List.of(1, 2, 3));
+        // 랜덤값 세 개를 만든다
+        List<Integer> answer = RandomGenerator.makeNotDuplicatedRandomNumbers(3,1,9);
+        System.out.println("(임시) answer is "+ answer);
+        computer.putAnswer(answer);
         while (true) {
             List<Integer> guessNumbers = inputNumbers();
             List<Integer> results = computer.returnResult(guessNumbers);
