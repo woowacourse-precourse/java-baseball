@@ -11,7 +11,7 @@ public class Ball {
     public int getScore() {
         return score;
     }
-    Ball(){
+    public Ball(){
         this.score = generateScore();
     }
 
