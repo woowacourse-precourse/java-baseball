@@ -1,6 +1,6 @@
 package baseball;
 
-public class Input {
+public class InputError {
 	static int MAX_LENGHT = 3;
 	
 	boolean checkLengthError(int userAnswer) {
