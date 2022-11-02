@@ -29,4 +29,13 @@ class InputBallNumberTest {
         String message2 = exception2.getMessage();
         assertEquals("1~9까지의 숫자 3개를 입력해주세요.", message2);
     }
+
+    @Test
+    void 숫자_1에서9가_아닌_입력() {
+        String ballNumber = "a12";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> inputBallNumber.validation(ballNumber));
+        String message = exception.getMessage();
+        assertEquals("1~9까지의 숫자만 입력해주세요.", message);
+    }
 }
