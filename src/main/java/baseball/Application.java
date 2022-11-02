@@ -29,7 +29,7 @@ public class Application {
         String inputNumber = Console.readLine();
 
         // TODO : 사용자가 잘못된 값을 입력할 시 IllegalArgumentException 발생
-        //isInputMatch(inputNumber);
+        isInputMatch(inputNumber);
 
         // TODO : 사용자가 선택한 숫자를 List에 담아 리턴
         List<Integer> numbers = new ArrayList<>();
@@ -37,5 +37,14 @@ public class Application {
             numbers.add(Character.getNumericValue(number));
 
         return numbers;
+    }
+
+    // TODO : 사용자가 잘못된 값을 입력할 시 IllegalArgumentException 발생하는 함수
+    public void isInputMatch(String inputNumber){
+        // 입력 값의 길이가 3이 아닐 시, 0이 포함되어 있을 시, 숫자 이외의 값이 포함되어 있을 시 예외처리
+        if (inputNumber.length() != 3
+                || inputNumber.contains("0")
+                || !inputNumber.replaceAll("[1-9]", "").isEmpty())
+            throw new IllegalArgumentException();
     }
 }
