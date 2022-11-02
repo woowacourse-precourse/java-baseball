@@ -11,9 +11,21 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-//        int user_input = userInput(PLAYING);
-//        if (user_input == EXCEPTION) return;
-//        System.out.println(user_input);
+        int regame_input=1;
+        int playing_input=1;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        do{
+            playing_input=startGame();
+            if(playing_input==EXCEPTION) return;
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            regame_input=userInput(READY);
+            if (regame_input == EXCEPTION) return;
+        }while(regame_input==1);
+    }
+
+    private static int startGame(){
+        return 1;
     }
 
     private static int userInput(int play_mode) {
@@ -26,7 +38,7 @@ public class Application {
             input_int = input_String_to_int(input_String, play_mode);
             return input_int;
         } catch (IllegalArgumentException e) {
-            System.out.println("Input Error");
+            System.out.println("입력 에러\n프로그램을 종료합니다.");
             return -1;
         }
     }
@@ -34,6 +46,10 @@ public class Application {
     private static int input_String_to_int(String input_String, int play_mode) {
         char[] input_charArray = input_String.toCharArray();
         int input_int;
+
+        if(play_mode==READY&&(!input_String.equals("1")&&!input_String.equals("2"))){
+            throw new IllegalArgumentException();
+        }
 
         if (isNumberOfDigits(input_String, play_mode) || isNumberSet(input_charArray) || isNumberOverlap(input_charArray, play_mode)) {
             throw new IllegalArgumentException();
