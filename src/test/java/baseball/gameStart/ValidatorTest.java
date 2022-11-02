@@ -22,4 +22,10 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"112", "322", "556"})
+    void user_answer_input_duplicate_test(String input) {
+        Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
