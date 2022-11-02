@@ -30,6 +30,11 @@ public class Application {
         return strikeCounting - outCounting;
     }
 
+    public static boolean distinguishNothing (int strikeCounting, int outCounting) {
+        if (strikeCounting == 0 && outCounting == 0) return true;
+        else return false;
+    }
+
     public List<Integer> makeComputerNumber () {
         List<Integer> computerNumberList = new ArrayList<>();
         for (int j = 0; j < 3; j++) {
@@ -40,6 +45,7 @@ public class Application {
         }
         return computerNumberList;
     }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
