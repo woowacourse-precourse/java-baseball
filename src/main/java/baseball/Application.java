@@ -3,8 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class Application {
 
@@ -24,8 +24,20 @@ public class Application {
         return  correctAnswer;
     }
 
-    public static void main(String[] args) {
+    private static List<Integer> getUserAnswer() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String[] inputArray = Console.readLine().split("");
 
+        List<Integer> userAnswer = new ArrayList<>();
+        for (String input : inputArray) {
+            userAnswer.add(Integer.parseInt(input));
+        }
+        return userAnswer;
+    }
+
+
+
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
 }
