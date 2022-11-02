@@ -17,7 +17,7 @@ public class Input {
      * @param inputString 문자열로 입력받은 값
      * @return 입력받은 숫자를 넣은 리스트
      */
-    private List<Integer> inputDigit(String inputString){
+    public List<Integer> inputDigit(String inputString){
         List<Integer> inputDigit = new ArrayList<>();
 
         for(int inputStringIdx=0; inputStringIdx<inputString.length(); inputStringIdx++){
