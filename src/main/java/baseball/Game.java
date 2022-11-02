@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -25,8 +23,16 @@ public class Game {
         return scanner.nextInt();
     }
 
-    public checkUserAnswerWhichIsCorrect(int userAnswer) {
+    public void checkUserAnswerWhichIsCorrect(int userAnswer) {
+        HashMap<String, Integer> StrikeAndBallCount = new HashMap<>();
 
+        StrikeAndBallCount.put("Strike", 0);
+        StrikeAndBallCount.put("Ball", 0);
+
+        List<Integer> answer = List.of(userAnswer);
+        for (Integer integer : answer) {
+
+        }
     }
 
 }
