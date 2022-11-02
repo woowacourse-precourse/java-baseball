@@ -26,10 +26,22 @@ public class Application {
                 throw new IllegalArgumentException("숫자를 입력해주세요.");
             }
         }
+        if ((s.charAt(0) == s.charAt(1)) || (s.charAt(0) == s.charAt(2)) || (s.charAt(1) == s.charAt(2))){
+            throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해주세요.");
+        }
+    }
+    public static List<Integer> getInput(){
+        String num = Console.readLine();
+        checkInput(num);
+        List<Integer> number = new ArrayList<>();
+        for (int digit = 0; digit < num.length(); digit++){
+            number.add(Character.getNumericValue(num.charAt(digit)));
+        }
+        return number;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String test = "123";
-        checkInput(test);
+        List<Integer> test = getInput();
+        System.out.print(test);
     }
 }
