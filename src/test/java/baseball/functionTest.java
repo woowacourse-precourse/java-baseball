@@ -83,4 +83,13 @@ public class functionTest {
         assertThat(isValidBaseballNumber("1A2")).isEqualTo(false);
         assertThat(isValidBaseballNumber("035")).isEqualTo(false);
     }
+
+    @Test
+    void 게임_결과_출력_기능_테스트() {
+        assertThat(disposeOfGameResult(3, 0)).isEqualTo("3스트라이크");
+        assertThat(disposeOfGameResult(2, 1)).isEqualTo("1볼 2스트라이크");
+        assertThat(disposeOfGameResult(1, 2)).isEqualTo("2볼 1스트라이크");
+        assertThat(disposeOfGameResult(0, 3)).isEqualTo("3볼");
+        assertThat(disposeOfGameResult(0, 0)).isEqualTo("낫싱");
+    }
 }
