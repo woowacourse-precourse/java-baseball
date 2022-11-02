@@ -37,8 +37,8 @@
 
 ### `BaseBallGameNumbers`
 `BaseBallGameNumber` 3개를 담은 컬렉션이다.
-- [ ] 생성 시 문자열을 입력받아 `BaseBallGameNumber` 를 생성한 후 집합에 추가한다.
-- [ ] 총 생성된 `BaseBallGameNumber`가 3개가 아니라면 `IllegalArgumentException`을 발생시킨다.
+- [X] 생성 시 문자열을 입력받아 `BaseBallGameNumber` 를 생성한 후 집합에 추가한다.
+- [X] 총 생성된 `BaseBallGameNumber`가 3개가 아니라면 `IllegalArgumentException`을 발생시킨다.
 
 <br> 
 
