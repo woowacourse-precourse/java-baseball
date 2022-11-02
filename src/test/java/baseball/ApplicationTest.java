@@ -84,6 +84,7 @@ class ApplicationTest extends NsTest {
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
+            System.out.println("resultStrike: " + resultStrike + " resultBall: " + resultBall);
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
             resultList.add(list);
         }

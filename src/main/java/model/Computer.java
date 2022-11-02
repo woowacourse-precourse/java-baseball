@@ -46,6 +46,7 @@ public class Computer {
             checkStrike(splitNumOfCompare);
             // TODO: 2.1.2 스트라이크 체크
             checkBall(splitNumOfCompare);
+            System.out.println("sdfdfdsafskldfjslkdfj");
             return true;
         } else {
             // TODO: 2.2 else 포함안한다면? => 낫싱
@@ -101,11 +102,15 @@ public class Computer {
 
     public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
-        if (collection_1.containsAll(collection_2)) {
-            return true;
-        } else {
-            return false;
+        System.out.println("collection_1 = " + collection_1);
+        for (Object num : collection_2) {
+            if (collection_1.contains(num)) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        return false;
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
