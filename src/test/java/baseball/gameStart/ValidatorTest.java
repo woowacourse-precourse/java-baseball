@@ -13,4 +13,11 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void user_answer_input_number_test() {
+        String input = "asd";
+        Assertions.assertThatThrownBy(()-> Validator.checkUserAnswerInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
