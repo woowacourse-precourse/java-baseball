@@ -10,33 +10,49 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String moreGame = "1";
+        Boolean moreGame = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (moreGame.equals("1")){
-            playGame();
-
-        }
-
-    }
-    public static Boolean playGame(){
-        String answer = makeAnswer();
-        System.out.println(answer);
-        String userInput = "";
-
-        do{
-            try{
-                userInput = input();
+        while (moreGame){
+            try {
+                playGame();
+                moreGame = playOrExit();
             }
             catch (IllegalArgumentException e){
-                System.err.println("IllegalArgumentException이 발생했습니다.\n"+
+                System.err.println("잘못된 입력입니다.\n"+
                         "종료합니다.");
                 System.exit(0);
             }
-        } while(!checkStrikeBall(answer, userInput));
 
+        }
+    }
+
+    public static Boolean playOrExit() throws IllegalArgumentException{
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userInput = readLine();
+
+        if (userInput.equals("1")){
+            return true;
+        }
+        else if(userInput.equals("2")){
+            System.exit(1);
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+    public static Boolean playGame(){
+        String answer = makeAnswer();
+        String userInput = "";
+
+        do{
+            userInput = input();
+
+        } while(!checkStrikeBall(answer, userInput));
+
         return false;
     }
     public static String makeAnswer(){
@@ -54,14 +70,12 @@ public class Application {
     }
 
     public static Boolean checkSameInput(String str){
-        if (str.charAt(0) == str.charAt(1) || str.charAt(1) == str.charAt(2) || str.charAt(0) == str.charAt(2))
-            return true;
-        return false;
+        return str.charAt(0) == str.charAt(1) || str.charAt(1) == str.charAt(2) || str.charAt(0) == str.charAt(2);
     }
     public static String input() throws IllegalArgumentException{
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String result = readLine();
-
+        System.out.println(result.toCharArray());
         if (!result.matches("[1-9][1-9][1-9]") ||
              result.length() != 3 ||
              checkSameInput(result))
@@ -86,9 +100,9 @@ public class Application {
         String result = "";
 
         if (ball != 0)
-            result+=Integer.toString(ball)+"볼";
+            result+= ball +"볼";
         if (strike != 0)
-            result+= " " + Integer.toString(strike)+"스트라이크";
+            result+= " " + strike +"스트라이크";
         if (result.length() == 0)
             result = "낫싱";
 
@@ -101,7 +115,6 @@ public class Application {
 
         printCheckResult(ball, strike);
 
-        if (strike == 3) return true;
-        return false;
+        return strike == 3;
     }
 }
