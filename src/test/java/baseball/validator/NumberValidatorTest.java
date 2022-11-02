@@ -17,4 +17,10 @@ class NumberValidatorTest {
         String userNumber = "777";
         assertThrows(IllegalArgumentException.class, () -> NumberValidator.validate(userNumber));
     }
+
+    @Test
+    void 세자리가_아닌_숫자_입력시_예외() {
+        String userNumber = "12";
+        assertThrows(IllegalArgumentException.class, () -> NumberValidator.validate(userNumber));
+    }
 }
