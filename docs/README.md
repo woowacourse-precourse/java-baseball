@@ -48,7 +48,8 @@
 <br>
 
 ### `Player`
-- [ ] `사용자` 에 해당되는 클래스로, `사용자`가 입력한 3자리 숫자인 `BaseBallGameNumbers`를 가지고 있다.
+- [X] `사용자` 에 해당되는 클래스로, `사용자`가 입력한 3자리 숫자인 `BaseBallGameNumbers`를 가지고 있다.
+- [X] `BaseBallGameNumbers`를 교체할 수 있다.
 
 <br>
 
