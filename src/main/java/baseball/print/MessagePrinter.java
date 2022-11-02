@@ -7,11 +7,11 @@ import static baseball.print.Message.*;
 public class MessagePrinter {
 
     public void printStartMessage() {
-        System.out.println(START_GAME);
+        System.out.println(START_GAME_MESSAGE);
     }
 
     public void printEnterNumberMessage() {
-        System.out.println(ENTER_A_NUMBER);
+        System.out.println(INPUT_A_NUMBER_MESSAGE);
     }
 
     public void printWordNothing() {
@@ -30,11 +30,15 @@ public class MessagePrinter {
         System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
     }
 
-    public void printCorrectAnswer() {
-        System.out.println(CORRECT_ANSWER);
+    public void printCorrectAnswerMessage() {
+        System.out.println(CORRECT_ANSWER_MESSAGE);
+    }
+
+    public void printGameEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
     }
 
     public void printRestartMessage() {
-        System.out.println(RESTART_GAME);
+        System.out.println(RESTART_GAME_MESSAGE);
     }
 }

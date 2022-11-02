@@ -78,8 +78,15 @@ class MessagePrinterTest {
 
     @Test
     void 정답임을_알리는_메시지가_출력된다() {
-        printer.printCorrectAnswer();
-        String result = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        printer.printCorrectAnswerMessage();
+        String result = "3개의 숫자를 모두 맞히셨습니다!";
+        assertThat(result).isEqualTo(outputStream.toString().trim());
+    }
+
+    @Test
+    void 게임_종료_메시지가_출력된다() {
+        printer.printGameEndMessage();
+        String result = "게임 종료";
         assertThat(result).isEqualTo(outputStream.toString().trim());
     }
 
