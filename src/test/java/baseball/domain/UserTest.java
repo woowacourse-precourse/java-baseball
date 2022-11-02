@@ -39,4 +39,11 @@ public class UserTest {
             user.checkDuplicationNumber(numbers, 1);
         });
     }
+
+    @Test()
+    void 불가능한숫자입력예외처리() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.checkVaildNumber(0);
+        });
+    }
 }
