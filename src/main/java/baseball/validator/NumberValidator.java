@@ -6,5 +6,9 @@ public class NumberValidator {
         if (!userNumber.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
         }
+
+        if (userNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
