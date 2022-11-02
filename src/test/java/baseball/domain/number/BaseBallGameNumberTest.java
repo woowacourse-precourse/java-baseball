@@ -58,4 +58,19 @@ class BaseBallGameNumberTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new BaseBallGameNumber(smallIntInput));
     }
+
+    @Test
+    @DisplayName("같은 값을 가진 경우 equals실행 시 true를 반환한다.")
+    public void equalsIsTrueWhenHasSameValue() {
+        // given
+        int value = 5;
+        BaseBallGameNumber ballGameNumber = new BaseBallGameNumber(value);
+        BaseBallGameNumber ballGameNumber2 = new BaseBallGameNumber(value);
+
+        // when
+        boolean result = ballGameNumber.equals(ballGameNumber2);
+
+        // then
+        assertThat(result).isTrue();
+    }
 }
