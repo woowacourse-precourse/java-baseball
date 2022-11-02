@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,19 @@ class ApplicationTest extends NsTest {
         Assertions.assertThatThrownBy(() ->{
             Application.isInputAlright("12");
         }).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
+    void 사용자와컴퓨터List에들어갔는지(){
+
+        List<Integer> user = Application.inputProcess("123");
+        List<Integer> compute = Application.computerRanmdomNumberExtract();
+
+        Assertions.assertThat(user.size()).isEqualTo(3);
+        Assertions.assertThat(compute.size()).isEqualTo(3);
+
+
     }
 
 
