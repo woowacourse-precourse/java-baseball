@@ -21,22 +21,29 @@ public class BaseballGame {
 
     public void start() {
         Input.startGameMessage();
-        // 랜덤값 세 개를 만든다
         List<Integer> answer = RandomGenerator.makeNotDuplicatedRandomNumbers(3,1,9);
         System.out.println("(임시) answer is "+ answer);
         computer.putAnswer(answer);
         while (true) {
-            List<Integer> guessNumbers = inputNumbers();
-            List<Integer> results = computer.returnResult(guessNumbers);
-            Integer strikeCnt = results.get(0);
-            Integer ballCnt = results.get(1);
-            Output.showGuessResult(strikeCnt, ballCnt);
-            if(strikeCnt == 3) {
+            List<Integer> results = checkResultOfEnteredValue();
+            if(results.get(0) == 3) {
                 Output.showGameCompleteMessage();
                 break;
             }
         }
         decideWhatToDoNext();
+    }
+
+    private List<Integer> checkResultOfEnteredValue() {
+        try {
+            List<Integer> guessNumber = Input.enterGuessNumber();
+            List<Integer> results = computer.returnResult(guessNumber);
+            Output.showGuessResult(results);
+            return results;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        throw new IllegalStateException("예상하지 못한 오류");
     }
 
     private void decideWhatToDoNext() {
@@ -52,15 +59,5 @@ public class BaseballGame {
             System.out.println(e.getMessage());
             decideWhatToDoNext();
         }
-    }
-
-    private List<Integer> inputNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> guessNumbers = new ArrayList<>();
-        String input = Console.readLine();
-        for (int i = 0; i < input.length(); i++) {
-            guessNumbers.add(Character.getNumericValue(input.charAt(i)));
-        }
-        return guessNumbers;
     }
 }
