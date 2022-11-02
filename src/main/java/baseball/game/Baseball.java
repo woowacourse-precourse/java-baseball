@@ -1,9 +1,11 @@
 package baseball.game;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static java.lang.Character.getNumericValue;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.function.IntPredicate;
 
 public class Baseball implements Game {
 
@@ -51,7 +53,8 @@ public class Baseball implements Game {
 
   private boolean isInvalid(String playerInput) {
     return isInvalidLength(playerInput) ||
-        isAllCharacterNotNumeric(playerInput);
+        isAllCharacterNotNumeric(playerInput) ||
+        isAnyDigitInvalidRange(playerInput);
   }
 
   private boolean isInvalidLength(String playerInput) {
@@ -61,5 +64,15 @@ public class Baseball implements Game {
   private boolean isAllCharacterNotNumeric(String playerInput) {
     return playerInput.chars()
         .allMatch(Character::isDigit);
+  }
+
+  private boolean isAnyDigitInvalidRange(String playerInput) {
+    return playerInput.chars()
+        .anyMatch(digit -> isInvalidRange((char) digit));
+  }
+
+  private boolean isInvalidRange(char digit) {
+    return START_POSSIBLE_NUMBER > getNumericValue(digit) ||
+        getNumericValue(digit) > END_POSSIBLE_NUMBER;
   }
 }
