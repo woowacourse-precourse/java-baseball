@@ -59,10 +59,15 @@ public class Application {
     public static List<Integer> getUser() {
         List<Integer> user = new ArrayList<>();
 
-        String[] input = splitInput();
-        System.out.println("input: "+Arrays.toString(input));
+        addUser(user);
 
         return user;
+    }
+
+    private static void addUser(List<Integer> user) {
+        for(String num : splitInput()) {
+            user.add(Integer.parseInt(num));
+        }
     }
 
     private static String inputNumber() {
