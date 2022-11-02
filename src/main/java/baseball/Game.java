@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Game {
 
@@ -30,9 +33,18 @@ public class Game {
         StrikeAndBallCount.put("Ball", 0);
 
         List<Integer> answer = List.of(userAnswer);
-        for (Integer integer : answer) {
+
+
+        for (int i = 0; i < 3; i++) {
 
         }
     }
-
+    public void incorrectUserAnswerRule(int userAnswer) {
+        int[] digits = Stream.of(String.valueOf(userAnswer)
+                .split("")).mapToInt(Integer::parseInt).toArray();
+        System.out.println(digits.length);
+        if (digits.length != 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+        }
+    }
 }
