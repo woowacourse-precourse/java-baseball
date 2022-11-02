@@ -4,6 +4,7 @@ import baseball.cli.ConsoleReader;
 import baseball.domain.Checker;
 import baseball.domain.NumberBaseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -34,27 +35,5 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
-    }
-
-    @Test
-    void testComputerHasDifferent3Numbers() {
-        NumberBaseball numberBaseball = new NumberBaseball();
-        assertThat(Checker.hasDifferentNumbers(numberBaseball.getComputerNumber()))
-                .isTrue();
-    }
-
-    @Test
-    void testCompareNumbersAfterRead() {
-        NumberBaseball numberBaseball = new NumberBaseball();
-        String inputString = ConsoleReader.readString();
-        assertThat(Checker.isValidInputNumbers(inputString)).isTrue();
-        numberBaseball.compareComputerNumberWith(inputString);
-    }
-
-    @Test
-    void testCountStrike() {
-        NumberBaseball numberBaseball = new NumberBaseball();
-        numberBaseball.compareComputerNumberWith(numberBaseball.getComputerNumber());
-        assertThat(numberBaseball.getStrike()).isEqualTo(3);
     }
 }

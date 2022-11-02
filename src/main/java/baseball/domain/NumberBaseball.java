@@ -13,6 +13,7 @@ public class NumberBaseball {
     private String gameResult;
     private int strike;
     private int ball;
+    private boolean isEnd;
 
     public NumberBaseball() {
         createComputerNumber();
@@ -40,16 +41,31 @@ public class NumberBaseball {
         return strike;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isEnd() {
+        return isEnd;
+    }
+
+    protected void setComputerNumber(String number) {
+        this.computerNumber = number;
+    }
+
     public void compareComputerNumberWith(String userNumber) {
         this.userNumber = userNumber;
-        countBall();
         countStrike();
-        checkIsEnd();
+        countBall();
+        checkEnd();
         makeGameResult();
     }
 
     private void countBall() {
-
+        this.ball = (int)IntStream.range(0, userNumber.length())
+                .filter(index -> computerNumber.
+                        contains(Character.toString(userNumber.charAt(index))))
+                .count() - this.strike;
     }
 
     private void countStrike() {
@@ -59,11 +75,23 @@ public class NumberBaseball {
                 .count();
     }
 
-    private void checkIsEnd() {
-
+    private void checkEnd() {
+        if (this.strike == 3)
+            isEnd = true;
+        else
+            isEnd = false;
     }
 
     private void makeGameResult() {
-
+        StringBuilder result = new StringBuilder();
+        if (this.ball > 0)
+            result.append(this.ball + "볼 ");
+        if (this.strike > 0)
+            result.append(this.strike + "스트라이크\n");
+        if (this.strike == 0 && this.ball == 0)
+            result.append("낫싱");
+        if (isEnd)
+            result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        gameResult = result.toString();
     }
 }
