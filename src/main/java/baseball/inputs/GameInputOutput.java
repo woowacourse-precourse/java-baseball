@@ -21,6 +21,7 @@ public class GameInputOutput {
         return numberMadeByComputer;
     }
     public String userPlayingInput(){
+        System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
         boolean isInputLengthThree = (userInput.length() != 3);
