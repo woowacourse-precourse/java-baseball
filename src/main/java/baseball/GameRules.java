@@ -1,10 +1,10 @@
 package baseball;
 
 public enum GameRules {
-	BALL_NUMBER(3){
+	DIGIT_NUMBER(3){
 		@Override
 		public int getValue() {
-			return BALL_NUMBER.getValue();
+			return DIGIT_NUMBER.getValue();
 		}
 	},
 	RESTART(1){
