@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -40,17 +41,24 @@ public class Application {
 
     private static List<Integer> inputUserNumber() {
         String userInput = Console.readLine();
-        List<String> userInputList = Arrays.asList(userInput.split(""));
-        verifyInput(userInputList);
-        List<Integer> userNumber = userInputList.stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+        verifyInput(userInput);
+        List<Integer> userNumber = new ArrayList<>();
+        for (String s : userInput.split("")) {
+            Integer parseInt = Integer.parseInt(s);
+            userNumber.add(parseInt);
+        }
         return userNumber;
     }
 
-    private static void verifyInput(List<String> userInputList) {
+    private static void verifyInput(String userInput) {
+        String pattern = "^[1-9]{3}$";
+        boolean isNonzeroThreeDigits = Pattern.matches(pattern, userInput);
+        if (!isNonzeroThreeDigits) {
+            throw new IllegalArgumentException();
+        } else if (new HashSet<>(Arrays.asList(userInput.split(""))).size() < 3) {
+            throw new IllegalArgumentException();
+        }
     }
-
 
     private static List<Integer> judgeUserNumber(List<Integer> targetNumber, List<Integer> userNumber) {
         return new ArrayList<>();
@@ -59,7 +67,6 @@ public class Application {
 
     private static void printResult(List<Integer> ballStrikeCount) {
     }
-
 
     private static void inputKeepPlaying() {
     }

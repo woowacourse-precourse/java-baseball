@@ -83,9 +83,9 @@
 
 
 - 기능 설명
-    1. 정규표현식을 활용하여 `userInput`의 길이가 3자리의 숫자이고 각 자리가 1 이상인지 검증한다.
-    2. `userInput`의 각 문자가 서로 다른지 검증한다.
-    3. 틀리다면 `IllegalArgumentException`을 일으킨다.
+  1. 정규표현식을 활용하여 `userInput`의 길이가 3자리의 숫자이고 각 자리가 1 이상인지 검증한다.
+  2. `userInput`의 각 문자가 서로 다른지 검증한다. 이는 각 자리 숫자의 집합을 생성하여 확인한다.
+  3. 틀리다면 `IllegalArgumentException`을 일으킨다.
 
 <br> 
 
