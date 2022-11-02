@@ -7,16 +7,28 @@ public enum GameRules {
 			return DIGIT_NUMBER.getValue();
 		}
 	},
-	RESTART(1){
+	MINIMUM_NUMBER(1){
 		@Override
 		public int getValue() {
-			return RESTART.getValue();
+			return MINIMUM_NUMBER.getValue();
 		}
 	},
-	END(2){
+	MAXIMUM_NUMBER(9){
 		@Override
 		public int getValue() {
-			return END.getValue();
+			return MAXIMUM_NUMBER.getValue();
+		}
+	},
+	GAME_RESTART(1){
+		@Override
+		public int getValue() {
+			return GAME_RESTART.getValue();
+		}
+	},
+	GAME_END(2){
+		@Override
+		public int getValue() {
+			return GAME_END.getValue();
 		}
 	};
 
