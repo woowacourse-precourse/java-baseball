@@ -50,4 +50,11 @@ class ApplicationTest extends NsTest {
         assertThat(Checker.isValidInputNumbers(inputString)).isTrue();
         numberBaseball.compareComputerNumberWith(inputString);
     }
+
+    @Test
+    void testCountStrike() {
+        NumberBaseball numberBaseball = new NumberBaseball();
+        numberBaseball.compareComputerNumberWith(numberBaseball.getComputerNumber());
+        assertThat(numberBaseball.getStrike()).isEqualTo(3);
+    }
 }
