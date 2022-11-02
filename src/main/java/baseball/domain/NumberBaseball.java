@@ -78,9 +78,6 @@ public class NumberBaseball {
         gameResult = result.toString();
     }
 
-    public String getComputerNumber() {
-        return computerNumber;
-    }
 
     public String getGameResult() {
         return gameResult;

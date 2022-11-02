@@ -15,12 +15,6 @@ class NumberBaseballTest extends NumberBaseball{
     }
 
     @Test
-    void testComputerHasDifferent3Numbers() {
-        assertThat(Validator.hasDifferentNumbers(numberBaseball.getComputerNumber()))
-                .isTrue();
-    }
-
-    @Test
     void testCompareNumbersAfterRead() {
         String inputString = "123";
         assertThrows(IllegalArgumentException.class, () -> {
