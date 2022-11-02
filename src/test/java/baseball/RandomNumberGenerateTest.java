@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -11,5 +12,12 @@ public class RandomNumberGenerateTest {
         Game game = new Game();
         List<Integer> randomNumbers = game.generateRandomNumber();
         assertThat(randomNumbers).hasSize(3);
+    }
+
+    @RepeatedTest(10)
+    void pickNumberInRange_범위에_포함되는_숫자만_랜덤_생성() {
+        int number = Randoms.pickNumberInRange(1, 9);
+        assertThat(number).isGreaterThanOrEqualTo(1);
+        assertThat(number).isLessThanOrEqualTo(9);
     }
 }
