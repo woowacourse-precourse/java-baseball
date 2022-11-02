@@ -8,9 +8,7 @@ import java.util.*;
 
 public class Application {
 
-//
-//    private static List<Integer> startGame() {
-//
+
 //
 //    private static List<Integer> getUserAnswer() {
 //        System.out.print("숫자를 입력해주세요 : ");
