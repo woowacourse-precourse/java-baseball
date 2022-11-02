@@ -1,32 +1,20 @@
 package baseball.model;
 
-import java.util.List;
+import java.util.*;
 
 public class BaseBallMatchCounter {
-    public int countStrike(String homeRun, String input) {
-        int strike = 0;
+    private final EnumMap countResult = new EnumMap(BaseBallResultType.class);
+    public EnumMap<BaseBallResultType, Integer> getMatchResult(String homeRun, String input) {
+        List<BaseBallResultType> baseBallResultTypes = new ArrayList<>();
 
         for (int i = 0; i < homeRun.length(); i++) {
-            if (homeRun.charAt(i) == input.charAt(0)) {
-                strike++;
-            }
+            baseBallResultTypes.add(BaseBallResultType.findBallResultType(homeRun,input,i));
+        }
+        for (BaseBallResultType baseBallResultType : baseBallResultTypes){
+            countResult.put(baseBallResultType, Collections.frequency(baseBallResultTypes,baseBallResultType));
         }
 
-        return strike;
+        return countResult;
     }
 
-    public int countBall(String homeRun, String input) {
-        int tempBall = 0;
-
-        for (int i = 0; i < homeRun.length(); i++) {
-            if (input.indexOf(homeRun.charAt(i)) >= 0 && input.charAt(i) != homeRun.charAt(i)) {
-                tempBall++;
-            }
-        }
-        return tempBall ;
-    }
-
-    public List<Integer> getBallGameResult(String homeRun, String input) {
-      return List.of(countStrike(homeRun,input),countBall(homeRun, input));
-    }
 }
