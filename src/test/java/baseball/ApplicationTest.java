@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 컴퓨터가_램덤숫자_한개를_가져왔는가() {
+    void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
         Computer computer = new Computer();
         List<Integer> list = new ArrayList<>();
         computer.creatRanNumOfComputerList();
