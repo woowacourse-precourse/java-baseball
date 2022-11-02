@@ -41,11 +41,62 @@ public class Application {
             player_num=int_to_list(playing_input);
             answer=hint(computer_num,player_num);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         return false;
     }
 
     private static boolean hint(List<Integer> computer_num,List<Integer> player_num){
-        return true;
+        List<Integer>[] computer_num_map=init_map_Index_Value(computer_num);
+        List<Integer>[] player_num_map=init_map_Index_Value(player_num);
+        List<Integer> ball_strike_count = Arrays.asList(0,0);
+
+        for(int i=0;i<NUMBEROFDIGITS;i++){
+            for(int j=0;j<NUMBEROFDIGITS;j++){
+                ball_strike_count=compareList(ball_strike_count,computer_num_map[i],player_num_map[j]);
+            }
+        }
+        print_hint(ball_strike_count);
+        if(ball_strike_count.get(1)==NUMBEROFDIGITS){
+            return true;
+        }
+        return false;
+    }
+    
+    private static List<Integer> compareList( List<Integer> ball_strike_count, List<Integer> computer_num,List<Integer> player_num){
+        if(computer_num.get(0)!=player_num.get(0)&&computer_num.get(1)==player_num.get(1)){
+            ball_strike_count.set(0,ball_strike_count.get(0)+1);
+        }
+        else if(computer_num.get(0)==player_num.get(0)&&computer_num.get(1)==player_num.get(1)){
+            ball_strike_count.set(1,ball_strike_count.get(1)+1);
+        }
+        return ball_strike_count;
+    }
+
+    private static void print_hint(List<Integer> ball_strike_count){
+        if(ball_strike_count.get(0)==0&&ball_strike_count.get(1)!=0){
+            System.out.println(+ball_strike_count.get(1)+"스트라이크");
+        }
+        else if(ball_strike_count.get(0)!=0&&ball_strike_count.get(1)==0){
+            System.out.println(ball_strike_count.get(0)+"볼 ");
+        }
+        else if(ball_strike_count.get(0)!=0&&ball_strike_count.get(1)!=0){
+            System.out.println(ball_strike_count.get(0)+"볼 "+ball_strike_count.get(1)+"스트라이크");
+        }
+        else if(ball_strike_count.get(0)==0&&ball_strike_count.get(1)==0){
+            System.out.println("낫싱");
+        }
+
+    }
+
+    private static List<Integer>[] init_map_Index_Value(List<Integer> score_list){
+        List<Integer>[] map=new ArrayList[NUMBEROFDIGITS];
+
+        for(int i=0;i<NUMBEROFDIGITS;i++){
+            map[i]=new ArrayList<>();
+            map[i].add(i);
+            map[i].add(score_list.get(i));
+        }
+        return map;
     }
 
     private static List<Integer> int_to_list(int playing_input){
@@ -54,6 +105,7 @@ public class Application {
             list_num.add(playing_input%10);
             playing_input=playing_input/10;
         }
+        Collections.reverse(list_num);
         return list_num;
     }
 
