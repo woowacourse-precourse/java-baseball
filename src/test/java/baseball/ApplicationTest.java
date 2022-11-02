@@ -1,14 +1,26 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
+import static baseball.BaseballGame.GAME_START_MESSAGE;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 class ApplicationTest extends NsTest {
+
+
+
+    @DisplayName("게임 시작시 게임 시작 문구를 출력한다.")
+    @Test
+    void case1() {
+        assertSimpleTest(() ->
+                assertThat(output().startsWith(GAME_START_MESSAGE)));
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
