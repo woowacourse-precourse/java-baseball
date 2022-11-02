@@ -20,15 +20,14 @@
 >  -[x] `void initializerOfStrikeAndBallCounter()`
 
 >### 2. 컴퓨터가 1~9로 구성된 서로 다른 임의의 3자리수를 생성
->  - [ ] `List<Integer> createRandomThreeDigitNum()`
->  - [ ] Test code 작성 및 검증
+>  - [x] `List<Integer> createRandomThreeDigitNum()`
 
 >### 3. 사용자의 입력을 요청하는 메서드
 >  - [ ] `List<Integer> enterNum()`
 
 >### 4. 사용자의 입력이 올바른지 판단, 아닐 경우 예외를 발생
 > - [ ] `boolean isCorrectedNum(List<Integer> inputNum)`
-> - [ ] 2,3 을 Test 하기 위한 Test code 작성 및 검증
+> - [ ] Test code 작성 및 검증
 
 >### 5.  Strike 개수와 Ball 개수를 세고, 이를 `strikeAndBallCounter`에 저장
 > - [ ] `void countAndSave( List<Integer> computer, List<Integer> user )`
