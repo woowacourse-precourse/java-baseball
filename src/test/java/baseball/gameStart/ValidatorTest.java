@@ -3,20 +3,22 @@ package baseball.gameStart;
 import baseball.utils.Validator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
 
     @Test
     void user_answer_input_length_test() {
         String input = "1234";
-        Assertions.assertThatThrownBy(()-> Validator.checkUserAnswerInput(input))
+        Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void user_answer_input_number_test() {
-        String input = "asd";
-        Assertions.assertThatThrownBy(()-> Validator.checkUserAnswerInput(input))
+    @ParameterizedTest
+    @ValueSource(strings = {"asd", "12s", "12_"})
+    void user_answer_input_number_test(String input) {
+        Assertions.assertThatThrownBy(() -> Validator.checkUserAnswerInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
