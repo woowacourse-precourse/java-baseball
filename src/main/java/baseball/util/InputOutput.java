@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputOutput extends StateCode{
-    public int readState(String msg){
+    public static int readState(String msg){
         System.out.println(msg);
 
         String input;
@@ -24,7 +24,7 @@ public class InputOutput extends StateCode{
         return parseInput;
     }
 
-    public List<Integer> readBall(String msg){
+    public static List<Integer> readBall(String msg){
         System.out.print(msg);
 
         String input = null;
@@ -52,7 +52,7 @@ public class InputOutput extends StateCode{
         return balls;
     }
 
-    public boolean writeStrikes(List<Integer> strikeAndBall){
+    public static boolean writeStrikes(List<Integer> strikeAndBall){
         int nStrike = strikeAndBall.get(0);
         int nBall = strikeAndBall.get(1);
         if(nStrike == DIGIT)

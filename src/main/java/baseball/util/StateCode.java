@@ -27,7 +27,7 @@ public class StateCode {
     }};
 
 
-    public void ThrowError(int ErrorState){
+    public static void ThrowError(int ErrorState){
         throw new IllegalArgumentException(ERRORS.get(ErrorState));
     }
 
