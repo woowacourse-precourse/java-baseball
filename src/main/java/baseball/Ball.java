@@ -24,5 +24,23 @@ public class Ball {
         this.ball=comBall;
     }
 
+    public void makeHumanBalls(){
+        List<Integer> humanBall = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        while (humanBall.size() < 3) {
+            String [] humanInput = Console.readLine().split("");
+            if(validate()){
+                arrayToList(humanBall, humanInput);
+            }
+        }
+        this.ball = humanBall;
+    }
+
+    private void arrayToList(List<Integer> humanBall, String[] humanInput) {
+        for(int i = 0; i< humanInput.length; i++){
+            humanBall.add(Integer.parseInt(humanInput[i]));
+        }
+    }
+
 
 }
