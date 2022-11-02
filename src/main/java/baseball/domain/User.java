@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
+    private static String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
     public ArrayList<Integer> userNumbers;
 
     public void getUserNumbers() {
@@ -20,6 +21,12 @@ public class User {
             inputNumbers.add(Integer.parseInt(String.valueOf(numbers.charAt(i))));
         }
         return inputNumbers;
+    }
+
+    public void checkIsDigit(char number){
+        if(!Character.isDigit(number)){
+            throw new IllegalArgumentException(ISDIGIT_EXCEPTION);
+        }
     }
 
 }
