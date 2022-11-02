@@ -2,6 +2,8 @@ package baseball.service;
 
 import java.util.List;
 
+import baseball.view.OutputView;
+
 public class Judgment {
 	private int ballCount;
 	private int strikeCount;
@@ -23,6 +25,7 @@ public class Judgment {
 		for (int userNumberIndex = 0; userNumberIndex < NUMBER_COUNT; userNumberIndex++) {
 			checkStrikeAndBall(userNumberIndex, computerNumbers.indexOf(userNumbers.get(userNumberIndex)));
 		}
+		printStrikeAndBallMessage();
 	}
 
 	private void checkStrikeAndBall(Integer userNumberIndex, Integer computerNumbersIndex) {
@@ -31,8 +34,7 @@ public class Judgment {
 		}
 		if (computerNumbersIndex.equals(userNumberIndex)) {
 			strikeCount++;
-		}
-		if (computerNumbersIndex < NUMBER_COUNT) {
+		} else if (computerNumbersIndex < NUMBER_COUNT) {
 			ballCount++;
 		}
 	}
@@ -41,4 +43,15 @@ public class Judgment {
 		return strikeCount != NUMBER_COUNT;
 	}
 
+	private void printStrikeAndBallMessage() {
+		if (ballCount == INIT_COUNT && strikeCount == INIT_COUNT) {
+			OutputView.printNothing();
+		} else if (ballCount == INIT_COUNT) {
+
+		} else if (strikeCount == INIT_COUNT) {
+
+		} else {
+			
+		}
+	}
 }
