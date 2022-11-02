@@ -9,4 +9,10 @@ public class Parser {
 				.mapToObj(e -> (char) e)
 				.collect(Collectors.toList());
 	}
+
+	public static List<Integer> parseStringToIntegerList(String str) {
+		return str.chars()
+				.mapToObj(Character::getNumericValue)
+				.collect(Collectors.toList());
+	}
 }
