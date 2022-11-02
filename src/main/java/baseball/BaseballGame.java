@@ -31,17 +31,22 @@ public class BaseballGame {
                 break;
             }
         }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (input.equals("2")) {
-            return;
+        decideWhatToDoNext();
+    }
+
+    private void decideWhatToDoNext() {
+        try {
+            Integer code = Input.askWhatToDo();
+            if (code == 1) {
+                start();
+            }
+            if (code == 2) {
+                return;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            decideWhatToDoNext();
         }
-        if (input.equals("1")) {
-            start();
-        }
-        throw new IllegalArgumentException("잘못된 입력입니다");
-        // 컴퓨터가 랜덤숫자를 만든다
-        // 세자리 숫자 입력받는다
     }
 
     private List<Integer> inputNumbers() {

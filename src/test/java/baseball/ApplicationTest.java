@@ -138,6 +138,20 @@ class ApplicationTest extends NsTest {
                 assertThat(computer.returnResult(List.of(7, 3, 8))).isEqualTo(List.of(0, 0));
             }
         }
+
+        @Nested
+        @DisplayName("재입력 -> ")
+        class ComputerReInput {
+            @Test
+            @DisplayName("다시 입력하면 기존 값이 초기화되고 새롭게 시작한다")
+            void 재입력_정상() {
+                Computer computer = new Computer();
+                computer.putAnswer(List.of(1, 2, 3));
+                computer.putAnswer(List.of(9, 1, 4));
+                assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(3, 0));
+            }
+        }
+
     }
 
     @Test
