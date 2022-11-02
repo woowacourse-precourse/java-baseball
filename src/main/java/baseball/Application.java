@@ -59,8 +59,8 @@ public class Application {
     public static List<Integer> getUser() {
         List<Integer> user = new ArrayList<>();
 
-        String input = inputNumber();
-        System.out.println("input: "+input);
+        String[] input = splitInput();
+        System.out.println("input: "+Arrays.toString(input));
 
         return user;
     }
@@ -77,5 +77,9 @@ public class Application {
     private static void validateInput(String input) {
         if(!Pattern.matches("^[1-9]{3}", input))
             throw new IllegalArgumentException("1부터 9까지 3자리의 숫자를 입력해주세요");
+    }
+
+    private static String[] splitInput() {
+        return inputNumber().split("");
     }
 }
