@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,20 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void numberDuplicateCheckTest() {
+        List<List<Integer>> checkList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            checkList.add(Start.startGame());
+        }
+
+        for (int j = 0; j < checkList.size(); j++) {
+            Integer zeroIndex = checkList.get(j).get(0);
+            assertThat(zeroIndex).isNotEqualTo(checkList.get(j).get(1));
+            assertThat(zeroIndex).isNotEqualTo(checkList.get(j).get(2));
+        }
     }
 
     @Override
