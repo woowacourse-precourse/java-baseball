@@ -1,7 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
-
+import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
 	static int ball;
 	static int strike;
@@ -22,9 +21,8 @@ public class BaseballGame {
 	
 	static void progressGame() {
 		Output.progressGame();
-		
-		Scanner sc = new Scanner(System.in);
-		userAnswer = Integer.parseInt(sc.next());
+
+		userAnswer = Integer.parseInt(Console.readLine().toString());
 		if(InputError.checkOverlapError(userAnswer) && InputError.checkOverlapError(userAnswer)){
 			checkBall(Integer.toString(userAnswer));
 			checkStrike(Integer.toString(userAnswer));
@@ -36,7 +34,7 @@ public class BaseballGame {
 		if(strike == 3) {
 			Output.rightEverything();
 			Output.endGame();
-			userDecision = Integer.parseInt(sc.next());
+			userDecision = Integer.parseInt(Console.readLine());
 		}else if(strike == 0 && ball == 0) {
 			Output.wrongEverything();
 		}else {
@@ -50,7 +48,7 @@ public class BaseballGame {
 		char[] computerNumber = Integer.toString(computer.number).toCharArray();
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				if(j == i) {
+				if(i == j) {
 					continue;
 				}else if(userNumber[i] == computerNumber[j]) {
 					result += 1;
