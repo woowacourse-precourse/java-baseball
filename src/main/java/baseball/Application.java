@@ -5,16 +5,40 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        String moreGame = "1";
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (moreGame.equals("1")){
+            playGame();
+
+        }
+
+    }
+    public static Boolean playGame(){
         String answer = makeAnswer();
         System.out.println(answer);
-        String input = input();
-        System.out.println(input);
-        System.out.println(checkStrikeBall(answer, input));
-    }
+        String userInput = "";
 
+        do{
+            try{
+                userInput = input();
+            }
+            catch (IllegalArgumentException e){
+                System.err.println("IllegalArgumentException이 발생했습니다.\n"+
+                        "종료합니다.");
+                System.exit(0);
+            }
+        } while(!checkStrikeBall(answer, userInput));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return false;
+    }
     public static String makeAnswer(){
         String result = "";
         List<Integer> nums = new ArrayList<Integer>();
@@ -35,7 +59,8 @@ public class Application {
         return false;
     }
     public static String input() throws IllegalArgumentException{
-        String result = camp.nextstep.edu.missionutils.Console.readLine();
+        System.out.println("숫자를 입력해주세요 : ");
+        String result = readLine();
 
         if (!result.matches("[1-9][1-9][1-9]") ||
              result.length() != 3 ||
