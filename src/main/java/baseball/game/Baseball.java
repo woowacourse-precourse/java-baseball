@@ -50,6 +50,10 @@ public class Baseball implements Game {
   }
 
   private boolean isInvalid(String playerInput) {
-    return false;
+    return isInvalidLength(playerInput);
+  }
+
+  private boolean isInvalidLength(String playerInput) {
+    return playerInput.length() != GOAL_DIGIT;
   }
 }
