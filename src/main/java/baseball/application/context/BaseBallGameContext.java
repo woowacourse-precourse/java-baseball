@@ -1,17 +1,23 @@
 package baseball.application.context;
 
+import baseball.application.config.BaseBallGameConfig;
 import baseball.application.io.Reader;
 import baseball.application.io.Writer;
+import baseball.domain.computer.Computer;
 import baseball.domain.number.BaseBallGameNumbers;
+import baseball.domain.player.Player;
 
 public class BaseBallGameContext {
 
     private final Writer writer;
     private final Reader reader;
 
-    public BaseBallGameContext(Writer writer, Reader reader) {
-        this.writer = writer;
-        this.reader = reader;
+    private Player player;
+    private Computer computer;
+
+    public BaseBallGameContext(BaseBallGameConfig config) {
+        this.writer = config.writer();
+        this.reader = config.reader();
     }
 
     public Writer writer() {
