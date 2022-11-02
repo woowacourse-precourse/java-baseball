@@ -76,6 +76,51 @@ class ApplicationTest extends NsTest {
         assertThat(ballCount).isEqualTo(2);
     }
 
+    @Test
+    void countPrintTestBallStrike() {
+        int ballCount = 1;
+        int strikeCount = 1;
+        PrintCount printCount = new PrintCount();
+        int result = printCount.print(ballCount, strikeCount);
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    void countPrintBall() {
+        int ballCount = 2;
+        int strikeCount = 0;
+        PrintCount printCount = new PrintCount();
+        int result = printCount.print(ballCount, strikeCount);
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    void countPrintStrike() {
+        int ballCount = 0;
+        int strikeCount = 2;
+        PrintCount printCount = new PrintCount();
+        int result = printCount.print(ballCount, strikeCount);
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    void countPrintNothing() {
+        int ballCount = 0;
+        int strikeCount = 0;
+        PrintCount printCount = new PrintCount();
+        int result = printCount.print(ballCount, strikeCount);
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    void countPrintGameEnd() {
+        int ballCount = 0;
+        int strikeCount = 3;
+        PrintCount printCount = new PrintCount();
+        int result = printCount.print(ballCount, strikeCount);
+        assertThat(result).isEqualTo(-2);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
