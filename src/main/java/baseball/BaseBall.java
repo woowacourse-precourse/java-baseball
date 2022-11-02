@@ -21,14 +21,14 @@ public class BaseBall {
         }
     }
 
-    private void roundOfGame() {
+    public void roundOfGame() {
         System.out.println(Messages.inputNumber);
         numberOfUser = user.input();
 
-        Result result = new Result(numberOfComputer, numberOfUser);
-        this.isCorrect = result.isThreeStrike();
+        Compare compare = new Compare(numberOfComputer, numberOfUser);
+        this.isCorrect = compare.isThreeStrike();
 
-        System.out.println(result.getResult());
+        System.out.println(compare.getResult());
     }
 
 }
