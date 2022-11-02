@@ -1,7 +1,6 @@
 package baseball.service;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Judgment {
 	private int ballCount;
@@ -38,5 +37,8 @@ public class Judgment {
 		}
 	}
 
+	public boolean threeStrike() {
+		return strikeCount != NUMBER_COUNT;
+	}
 
 }

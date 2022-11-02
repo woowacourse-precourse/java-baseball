@@ -19,8 +19,9 @@ public class BaseballGame {
 	public void run() {
 		computer.generateNumber();
 
-		user.setNumber(InputView.userNumber());
-		judgment.compareNumber(user.getNumber(), computer.getNumber());
-
+		do {
+			user.setNumber(InputView.userNumber());
+			judgment.compareNumber(user.getNumber(), computer.getNumber());
+		} while (judgment.threeStrike());
 	}
 }
