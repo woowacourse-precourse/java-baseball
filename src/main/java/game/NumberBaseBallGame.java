@@ -1,21 +1,53 @@
 package game;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import validator.Validator;
 import view.Input;
 import view.Output;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumberBaseBallGame {
 
     public static void run() {
         while (true) {
-            // todo 게임 관련 메인 메서드 실행
-            String input = Input.scanStartOrEndNumber();
             try {
+                playNumberBaseballGame();
+                String input = Input.scanStartOrEndNumber();
                 Validator.checkStartOrEndInput(input);
             } catch (IllegalArgumentException e) {
-                Output.printStartOrEndInputError(e);
+                Output.printErrorMessage(e);
                 break;
             }
         }
+    }
+
+    private static void playNumberBaseballGame() throws IllegalArgumentException {
+        Output.printStartGuideMessage();
+        List<Integer> answerNumber = getAnswerNumber();
+        while (true) {
+            List<Integer> inputNumber = getInputNumber();
+
+        }
+    }
+
+    private static List<Integer> getInputNumber() throws IllegalArgumentException {
+        List<Integer> inputList = new ArrayList<>();
+        String number = Input.scanInputNumber();
+        Validator.checkInputNumber(number);
+
+        return inputList;
+    }
+
+    private static List<Integer> getAnswerNumber() {
+        List<Integer> answerList = new ArrayList<>();
+        while (answerList.size() <= 3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (!answerList.contains(number)) {
+                answerList.add(number);
+            }
+        }
+        return answerList;
     }
 }
