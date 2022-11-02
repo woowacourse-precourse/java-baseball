@@ -1,14 +1,24 @@
 package baseball;
 
+import baseball.util.InputOutput;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Player extends Result {
+public class Player extends InputOutput {
+
     List<Integer> balls;
     Player(){
         balls = new ArrayList<>();
+        generateComputer(balls);
+    }
+    Player(List<Integer> balls){
+        this.balls = balls;
+    }
+
+    private void generateComputer(List<Integer> balls){
         while (balls.size() < DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!balls.contains(randomNumber))
@@ -16,20 +26,8 @@ public class Player extends Result {
         }
         System.out.println(balls);
     }
-    Player(String input){
-        if(input.length() != DIGIT)
-            throw new IllegalArgumentException("[Input] 입력의 길이는 "+DIGIT+"만 가능");
-        balls = new ArrayList<>();
-        for (int i = 0; i < DIGIT; i++) {
-            int userNumber = input.charAt(i) - '0';
-            if (balls.contains(userNumber))
-                throw new IllegalArgumentException("[Input] 서로 다른 숫자만 입력 가능");
-            else if (!(1<=userNumber&&userNumber<=9))
-                throw new IllegalArgumentException("[Input] 1~9 사이 숫자만 입력 가능");
-            balls.add(userNumber);
-        }
-    }
-    public int printCompareTo(Player pitcher){
+
+    public List<Integer> getStrikes(Player pitcher){
         int nStrike = 0;
         int nBall = 0;
 
@@ -40,6 +38,6 @@ public class Player extends Result {
                 nBall++;
         }
 
-        return printResult(nStrike, nBall);
+        return Arrays.asList(nStrike, nBall);
     }
 }
