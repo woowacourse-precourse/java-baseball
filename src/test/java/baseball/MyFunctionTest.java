@@ -20,4 +20,15 @@ public class MyFunctionTest {
             assertThat(oneToNine).contains(Application.getRandomNumber().get(i));
         }
     }
+
+    @Test
+    void 입력한_숫자_예외처리() {
+        String hasRepeat = "112";
+        String hasNoNumber = "2#4";
+        String overLength_3 = "27834823";
+
+        assertThat(Application.isEnterNumberExcept(hasRepeat)).isEqualTo(true);
+        assertThat(Application.isEnterNumberExcept(hasNoNumber)).isEqualTo(true);
+        assertThat(Application.isEnterNumberExcept(overLength_3)).isEqualTo(true);
+    }
 }
