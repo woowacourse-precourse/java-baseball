@@ -1,7 +1,7 @@
 package baseball;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,10 +15,32 @@ public class Application {
     	 */
     	// 서로 다른 3자리수    	
     	System.out.println("숫자 야구 게임을 시작합니다.");
-    	System.out.println("숫자를 입력해주세요 : ");
-    	final String StringUserAnotherNumbers = camp.nextstep.edu.missionutils.Console.readLine(); // 라이브러리
-    	final int intUserAnotherNumbers = Integer.parseInt(StringUserAnotherNumbers);
-    	System.out.println(intUserAnotherNumbers);
-    	    	
-    }
+    	String StringUserAnotherNumbers;
+    	Pattern patternOnlyOneToNine;
+    	boolean isuserNumberChecking=true;    	
+    	boolean isAnotherNumberCheck;
+    	while(isuserNumberChecking) {
+    		isuserNumberChecking=false;
+			System.out.print("숫자를 입력해주세요 : ");
+	    	StringUserAnotherNumbers = camp.nextstep.edu.missionutils.Console.readLine(); // 라이브러리    	  
+	    	patternOnlyOneToNine = Pattern.compile("^[1-9]*$");
+	    	Matcher matchPattern = patternOnlyOneToNine.matcher(StringUserAnotherNumbers);   
+	    	char[] charFromUserNumbers=new char[StringUserAnotherNumbers.length()];
+	    	for(int userNums=0; userNums<StringUserAnotherNumbers.length(); userNums++) {
+	    		charFromUserNumbers[userNums]=StringUserAnotherNumbers.charAt(userNums);
+	    	}
+	    	for(int charNumbers=0; charNumbers<charFromUserNumbers.length; charNumbers++) {
+	    		if(charNumbers!=StringUserAnotherNumbers.indexOf(StringUserAnotherNumbers.charAt(charNumbers))) isuserNumberChecking=true;	    		
+	    	}
+	    	if(!matchPattern.find()) {
+	    		System.out.println("숫자만 입력해주세요."); 
+	    		isuserNumberChecking=true;
+	    	}else if(StringUserAnotherNumbers.length()>3 || StringUserAnotherNumbers.length()<3) {
+	    		System.out.println("숫자를 3개 입력해야함");
+	    		isuserNumberChecking=true;
+	    	}else if(isuserNumberChecking) {
+	    		System.out.println("서로 다른 숫자로 입력해야함");	    		
+	    	} 
+    	}
+    }    
 }
