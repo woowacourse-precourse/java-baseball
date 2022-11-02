@@ -1,10 +1,6 @@
 package baseball;
 
-import baseball.cli.ConsoleReader;
-import baseball.domain.Checker;
-import baseball.domain.NumberBaseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;

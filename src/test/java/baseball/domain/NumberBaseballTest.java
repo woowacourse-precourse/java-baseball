@@ -1,11 +1,9 @@
 package baseball.domain;
 
-import baseball.cli.ConsoleReader;
-import org.junit.jupiter.api.BeforeAll;
+import baseball.utils.Checker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,14 +23,14 @@ class NumberBaseballTest extends NumberBaseball{
     @Test
     void testCompareNumbersAfterRead() {
         String inputString = "123";
-        assertThat(Checker.isValidInputNumbers(inputString)).isTrue();
         assertThrows(IllegalArgumentException.class, () -> {
-            Checker.isValidInputNumbers("1234");
+            Checker.validateUserNumber("1234");
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            Checker.isValidInputNumbers("133");
+            Checker.validateUserNumber("133");
         });
         numberBaseball.compareComputerNumberWith(inputString);
+        assertThat(numberBaseball.getGameResult().length() > 0).isTrue();
     }
 
     @Test

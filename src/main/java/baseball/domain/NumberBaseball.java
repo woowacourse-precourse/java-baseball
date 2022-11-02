@@ -17,6 +17,12 @@ public class NumberBaseball {
 
     public NumberBaseball() {
         createComputerNumber();
+        isEnd = false;
+    }
+
+    public void resetGame() {
+        createComputerNumber();
+        isEnd = false;
     }
 
     private void createComputerNumber() {
@@ -28,29 +34,6 @@ public class NumberBaseball {
         }
         computerNumber = result.stream().map(String::valueOf)
                 .collect(Collectors.joining());
-    }
-
-    public String getComputerNumber() {
-        return computerNumber;
-    }
-
-    public String getGameResult() {
-        return gameResult;
-    }
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public boolean isEnd() {
-        return isEnd;
-    }
-
-    protected void setComputerNumber(String number) {
-        this.computerNumber = number;
     }
 
     public void compareComputerNumberWith(String userNumber) {
@@ -93,5 +76,28 @@ public class NumberBaseball {
         if (isEnd)
             result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         gameResult = result.toString();
+    }
+
+    public String getComputerNumber() {
+        return computerNumber;
+    }
+
+    public String getGameResult() {
+        return gameResult;
+    }
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isEnd() {
+        return isEnd;
+    }
+
+    protected void setComputerNumber(String number) {
+        this.computerNumber = number;
     }
 }
