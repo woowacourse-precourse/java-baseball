@@ -27,6 +27,8 @@ public class Application {
             addComputer(computer);
         }
 
+        validateComputer(computer);
+
         return computer;
     }
 
@@ -36,5 +38,10 @@ public class Application {
         if(!computer.contains(random)) {
             computer.add(random);
         }
+    }
+
+    private static void validateComputer(List<Integer> computer) {
+        if(computer.size()!=3)
+            throw new IllegalArgumentException("3자리의 수가 아닙니다.");
     }
 }
