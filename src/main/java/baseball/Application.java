@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,13 @@ public class Application {
     public static void main(String[] args) {
         //TODO: 프로그램 구현
         //todo: 랜덤으로 3자리 숫자를 정하는 기능
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
         //todo: 3자리 숫자를 입력받는 기능
             //todo: 3자리 숫자가 입력되었을때 기능 실행
                 //todo: num_verification 기능 실행
