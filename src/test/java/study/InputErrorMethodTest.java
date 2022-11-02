@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputErrorMethodTest {
     @Test
-    void checkLengthError_input의크기_IllegalArgumentException발생_체크() {
+    void checkLengthError_input_크기_IllegalArgumentException발생_체크() {
         String input = "abcd";
         if(input.length() > 3){
             assertThatThrownBy(() -> { throw new IllegalArgumentException("boom"); }).isInstanceOf(Exception.class)
@@ -15,7 +15,7 @@ public class InputErrorMethodTest {
     }
 
     @Test
-    void checkOverlapError_input의중복_IllegalArgumentException발생_체크() {
+    void checkOverlapError_input_중복_IllegalArgumentException발생_체크() {
         int userNumber = 232;
 
         int firth = userNumber/100;
@@ -29,4 +29,18 @@ public class InputErrorMethodTest {
                     .hasMessageContaining("boom");
         }
     }
+
+    @Test
+    void checkTextError_input_문자확인_IllegalArgumentException발생_체크() {
+        String input = "a3#";
+
+        try{
+            Integer.parseInt(input);
+        }catch(Exception e){
+            assertThatThrownBy(() -> { throw new IllegalArgumentException("boom"); }).isInstanceOf(Exception.class)
+                    .hasMessageContaining("boom");
+        }
+    }
+
+
 }
