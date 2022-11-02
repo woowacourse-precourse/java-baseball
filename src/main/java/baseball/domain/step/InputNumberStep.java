@@ -9,7 +9,7 @@ public class InputNumberStep implements Step{
 
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private static final Step next = new GameProgressStep();
+    private static final Step NEXT = new GameProgressStep();
 
     @Override
     public void execute(BaseBallGameContext context) {
@@ -22,7 +22,7 @@ public class InputNumberStep implements Step{
 
     @Override
     public Step next() {
-        return next;
+        return NEXT;
     }
 
     @Override

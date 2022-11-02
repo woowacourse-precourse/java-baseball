@@ -7,7 +7,7 @@ public class GameStartStep implements Step {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private static final Step next = new GameInitStep();
+    private static final Step NEXT = new GameInitStep();
 
     @Override
     public void execute(BaseBallGameContext context) {
@@ -17,7 +17,7 @@ public class GameStartStep implements Step {
 
     @Override
     public Step next() {
-        return next;
+        return NEXT;
     }
 
     @Override

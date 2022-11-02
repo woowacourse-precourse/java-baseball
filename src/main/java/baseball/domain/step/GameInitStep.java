@@ -4,7 +4,7 @@ import baseball.application.context.BaseBallGameContext;
 
 public class GameInitStep implements Step{
 
-    private static final Step next = new InputNumberStep();
+    private static final Step NEXT = new InputNumberStep();
 
     @Override
     public void execute(BaseBallGameContext context) {
@@ -13,7 +13,7 @@ public class GameInitStep implements Step{
 
     @Override
     public Step next() {
-        return next;
+        return NEXT;
     }
 
     @Override
