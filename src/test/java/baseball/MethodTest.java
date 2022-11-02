@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,5 +47,30 @@ public class MethodTest {
         assertThat(true).isEqualTo(gameMachine.restart("1"));
 
         assertThat(false).isEqualTo(gameMachine.restart("2"));
+    }
+
+    @Test
+    void strikeAndBallTest() {
+        gameMachine.computer = Arrays.asList(7, 1, 3);
+
+        gameMachine.gamer = Arrays.asList(1, 2, 3);
+        List<Integer> result = Arrays.asList(1, 1);
+        assertThat(result).isEqualTo(gameMachine.strikeAndBall());
+
+        gameMachine.gamer = Arrays.asList(1, 4, 5);
+        result = Arrays.asList(0, 1);
+        assertThat(result).isEqualTo(gameMachine.strikeAndBall());
+
+        gameMachine.gamer = Arrays.asList(6, 7, 1);
+        result = Arrays.asList(0, 2);
+        assertThat(result).isEqualTo(gameMachine.strikeAndBall());
+
+        gameMachine.gamer = Arrays.asList(2, 1, 6);
+        result = Arrays.asList(1, 0);
+        assertThat(result).isEqualTo(gameMachine.strikeAndBall());
+
+        gameMachine.gamer = Arrays.asList(7, 1, 3);
+        result = Arrays.asList(3, 0);
+        assertThat(result).isEqualTo(gameMachine.strikeAndBall());
     }
 }
