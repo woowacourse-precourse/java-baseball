@@ -4,8 +4,11 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static java.lang.Character.getNumericValue;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
 
 public class Baseball implements Game {
 
@@ -54,7 +57,8 @@ public class Baseball implements Game {
   private boolean isInvalid(String playerInput) {
     return isInvalidLength(playerInput) ||
         isAllCharacterNotNumeric(playerInput) ||
-        isAnyDigitInvalidRange(playerInput);
+        isAnyDigitInvalidRange(playerInput) ||
+        hasDuplicateNumber(playerInput);
   }
 
   private boolean isInvalidLength(String playerInput) {
@@ -74,5 +78,11 @@ public class Baseball implements Game {
   private boolean isInvalidRange(char digit) {
     return START_POSSIBLE_NUMBER > getNumericValue(digit) ||
         getNumericValue(digit) > END_POSSIBLE_NUMBER;
+  }
+
+  private boolean hasDuplicateNumber(String playerInput) {
+    Set<Integer> set = playerInput.chars()
+        .boxed().collect(Collectors.toSet());
+    return set.size() != GOAL_DIGIT;
   }
 }
