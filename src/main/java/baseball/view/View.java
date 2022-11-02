@@ -1,5 +1,7 @@
 package baseball.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class View {
 	public void printResult(int num) {
 		switch (num) {
@@ -13,5 +15,9 @@ public class View {
 				System.out.print("낫싱");
 				break;
 		}
+	}
+
+	public String inputNumber(int userNum) {
+		return Console.readLine();
 	}
 }
