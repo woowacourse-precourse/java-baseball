@@ -31,7 +31,7 @@
 
 ### `BaseBallGameNumber`
 숫자 야구 게임의 숫자를 위한 클래스이다.
-- [ ] 생성 시 1~9 사이 정수값을 가지지 않으면 `IllegalArgumentException`을 발생시킨다.
+- [X] 생성 시 1~9 사이 정수값을 가지지 않으면 `IllegalArgumentException`을 발생시킨다.
 
 <br>
 
