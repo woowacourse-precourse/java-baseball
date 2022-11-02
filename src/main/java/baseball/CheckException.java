@@ -4,25 +4,23 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import camp.nextstep.edu.missionutils.Console;
+
 
 public class CheckException {
 
     protected List<Integer> userAnswer;
 
-    public CheckException() {
-        this.userAnswer = isNumber();
+    public CheckException(String[] inputArray) {
+        this.userAnswer = isNumber(inputArray);
         isAnswerLength();
         isAllUnique();
         isNotContainZero();
     }
 
-    private List<Integer> isNumber() throws IllegalArgumentException{
+    private List<Integer> isNumber(String[] inputArray) throws IllegalArgumentException{
 
         List<Integer> inputNumber = new ArrayList<>();
-        System.out.println("입력");
         try {
-            String[] inputArray = Console.readLine().split("");
             for (String input : inputArray) {
                 inputNumber.add(Integer.parseInt(input));
             }
