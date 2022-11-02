@@ -102,15 +102,14 @@ public class Computer {
 
     public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
+        boolean isTrue = true;
         System.out.println("collection_1 = " + collection_1);
         for (Object num : collection_2) {
             if (collection_1.contains(num)) {
-                return true;
-            } else {
-                return false;
+                isTrue = true;
             }
         }
-        return false;
+        return isTrue;
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
@@ -125,6 +124,14 @@ public class Computer {
             list.add(intParseStr);
         }
         return list;
+    }
+
+    public void setCntStrike(int cntStrike) {
+        this.cntStrike = cntStrike;
+    }
+
+    public void setCntBall(int cntBall) {
+        this.cntBall = cntBall;
     }
 
     public List<Integer> getNumThreeRanOfComputerList() {
