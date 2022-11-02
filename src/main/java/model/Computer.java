@@ -91,6 +91,14 @@ public class Computer {
         }
     }
 
+    public int getCntStrike() {
+        return cntStrike;
+    }
+
+    public int getCntBall() {
+        return cntBall;
+    }
+
     public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
         if (collection_1.containsAll(collection_2)) {

@@ -51,6 +51,21 @@ class ApplicationTest extends NsTest {
         assertTrue(isEqualsCollection);
     }
 
+    @Test
+        // isRightThreeNumOfComputer
+    void 유저숫자_스트라이트_볼_낫싱_체크_case_1() {
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        computer.isRightThreeNumOfComputer(123);
+        int resultStrike = computer.getCntStrike();
+        int resultBall = computer.getCntBall();
+        ArrayList resultList = new ArrayList<>(List.of(resultStrike, resultBall));
+
+        assertThat(resultList).isEqualTo(List.of(3, 0));
+    }
+
     // computer Test 종료
 
     @Test
