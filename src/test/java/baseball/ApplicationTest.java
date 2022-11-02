@@ -83,6 +83,7 @@ class ApplicationTest extends NsTest {
         PrintCount printCount = new PrintCount();
         int result = printCount.print(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -92,6 +93,7 @@ class ApplicationTest extends NsTest {
         PrintCount printCount = new PrintCount();
         int result = printCount.print(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("2볼");
     }
 
     @Test
@@ -101,6 +103,7 @@ class ApplicationTest extends NsTest {
         PrintCount printCount = new PrintCount();
         int result = printCount.print(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("2스트라이크");
     }
 
     @Test
@@ -110,6 +113,7 @@ class ApplicationTest extends NsTest {
         PrintCount printCount = new PrintCount();
         int result = printCount.print(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("낫싱");
     }
 
     @Test
@@ -119,6 +123,7 @@ class ApplicationTest extends NsTest {
         PrintCount printCount = new PrintCount();
         int result = printCount.print(ballCount, strikeCount);
         assertThat(result).isEqualTo(-2);
+        assertThat(output()).contains("3스트라이크", "게임 종료");
     }
 
     @Override
