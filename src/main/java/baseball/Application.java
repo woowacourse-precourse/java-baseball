@@ -32,15 +32,13 @@ public class Application {
         return ballCounting - strikeCounting;
     }
 
-    public static List<Integer> makeComputerNumber () {
-        List<Integer> computerNumberList = new ArrayList<>();
+    public static void makeComputerNumber (List<Integer> computerNumberList) {
         for (int j = 0; j < 3; j++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);
             }
         }
-        return computerNumberList;
     }
 
     public static void splitNumber (List<Integer> inputNumberList, String inputNumber) {
@@ -70,12 +68,12 @@ public class Application {
 
     public static void main(String[] args) {
 
-        List<Integer> computerNumberList = makeComputerNumber();
+        List<Integer> computerNumberList = new ArrayList<>();
         List<Integer> inputNumberList = new ArrayList<>();
+        makeComputerNumber(computerNumberList);
 
         while (true) {
             splitNumber(inputNumberList, Console.readLine());
-
             int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
             int ballCounting = distinguishBall(inputNumberList, computerNumberList, strikeCounting);
             inputNumberList.clear();
