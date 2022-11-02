@@ -11,6 +11,13 @@ public class Validator {
 	public Validator(String INPUT_VALUE, int CORRECT_LENGTH) {
 		this.INPUT_VALUE = INPUT_VALUE;
 		this.CORRECT_LENGTH = CORRECT_LENGTH;
+		isValidate();
+	}
+
+	private void isValidate(){
+		isAllNum();
+		isCorrectSize();
+		isAllDistinctNum();
 	}
 
 	private void isAllNum(){
