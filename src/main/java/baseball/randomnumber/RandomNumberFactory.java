@@ -1,13 +1,26 @@
 package baseball.randomnumber;
 
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomNumberFactory {
 
     public static RandomNumber newRandomNumber() {
-        List<Integer> randomNumber = pickUniqueNumbersInRange(1, 9, 3);
-        return new RandomNumber(randomNumber);
+        return new RandomNumber(generateRandomNumber());
+    }
+
+    private static List<Integer> generateRandomNumber() {
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+
+        return randomNumbers;
     }
 }
