@@ -16,6 +16,16 @@ public class InputBallNumber {
     public void validation(String ballNumbers) {
         checkLength(ballNumbers);
         isOnlyNumbers(ballNumbers);
+        checkDuplication(ballNumbers);
+    }
+
+    private void checkDuplication(String ballNumbers) {
+        String firstNumber = ballNumbers.substring(0, 1);
+        String secondNumber = ballNumbers.substring(1, 2);
+        String thirdNumber = ballNumbers.substring(2, 3);
+        if (firstNumber.equals(secondNumber) || firstNumber.equals(thirdNumber) || secondNumber.equals(thirdNumber)) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+        }
     }
 
     private void isOnlyNumbers(String ballNumbers) {
