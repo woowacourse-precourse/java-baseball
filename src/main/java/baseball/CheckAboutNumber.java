@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class BaseballNumber {
+public class CheckAboutNumber {
 
     public List<Integer> stringToIntegerList(String number) {
         List<Integer> returnList = new ArrayList<>();
