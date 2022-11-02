@@ -1,6 +1,9 @@
 package baseball;
 
+import baseball.controller.ComputerController;
+import baseball.system.AnswerHolder;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -31,5 +34,17 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    @DisplayName("컴퓨터가 정답 숫자를 생성한다.")
+    void whenDoCreatingAnswer_thenSavingAnswerIntoAnswerHolder() {
+        // when
+        ComputerController computerController = new ComputerController();
+        computerController.createAnswer();
+
+        // then
+        System.out.println("AnswerHolder.getAnswer() = " + AnswerHolder.getAnswer());
+        assertThat(AnswerHolder.getAnswer()).isNotNull();
     }
 }
