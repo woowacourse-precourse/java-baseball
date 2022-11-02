@@ -27,4 +27,25 @@ public class GameMachine {
 
         return random;
     }
+
+    List<Integer> convertGamerNumber(String input) throws RuntimeException {
+        if(input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        List<Integer> number = new ArrayList<>();
+
+        for(int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+
+            if(!('1' <= ch && ch <= '9')) {
+                throw new IllegalArgumentException();
+            }
+
+            int n = Character.getNumericValue(ch);
+            number.add(n);
+        }
+
+        return number;
+    }
 }
