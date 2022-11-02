@@ -42,6 +42,18 @@ public class Ball {
     }
 
     private boolean validate(String[] arr) {
+        if (validLength(arr)) {
+            throw new IllegalArgumentException("중복되지 않은 1~9 사이의 숫자로 구성된 '세 자리 숫자'를 입력해야합니다.");
+        }
+        if (validNumberRange(arr)) {
+            throw new IllegalArgumentException("중복되지 않은 '1~9 사이의' 숫자로 구성된 세 자리 숫자를 입력해야합니다.");
+        }
+        if (validDuplicate(arr)) {
+            throw new IllegalArgumentException("'중복되지 않은' 1~9 사이의 숫자로 구성된 세 자리 숫자를 입력해야합니다.");
+        }
+        if(validOnlyNumber(arr)){
+            throw new IllegalArgumentException("중복되지 않은 1~9 사이의 '숫자로 구성된' 세 자리 숫자를 입력해야합니다.");
+        }
         return true;
     }
 
@@ -62,7 +74,7 @@ public class Ball {
         return validateIndex == 1;
     }
 
-    private boolean validNonZeroValue(String[] arr) {
+    private boolean validNumberRange(String[] arr) {
         int validateIndex = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals("0")) {
