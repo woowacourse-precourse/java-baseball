@@ -51,15 +51,15 @@ Arrays.asList() // 위에서 쪼개진 문자열(배열)을 list로 변환
 <br>
 :zap: 이때 strike의 개수만큼 ball 개수에서 빼주어야 함
 <br>
-1. ball 개수를 구한다
+- [ ] ball 개수를 구한다
 ```(java)
 int ballNumber = list.contains(입력수의 인덱스)
 // contain 함수를 통해 겹치는 수의 개수를 찾는다   
 ```
 :collision: 이 때 ballNumber = 0 이면
-<br> -> 바로 <em>'낫싱'<em> 을 출력!
+- [ ] <em>'낫싱'<em> 을 출력!
 
-2. 생성된 함수에 두 리스트(랜덤수, 입력수)를 인자로 받아와 for문(길이 3)을 실행
+- [ ] 생성된 함수에 두 리스트(랜덤수, 입력수)를 인자로 받아와 for문(길이 3)을 실행
 <br> 여기서 인덱스 값끼리 같을 때 strike 값에 1씩 더해줌
 
 5️⃣ 결과 출력 (ex. 1볼, 낫싱, 게임 종료 후 재시작/ 완전히 종료)
@@ -67,20 +67,21 @@ int ballNumber = list.contains(입력수의 인덱스)
 
 :collision: 아직 숫자를 맞추지 못해 힌트를 얻은 경우
 
-(4)번에서 얻은 결과로
+- [ ] (4)번에서 얻은 결과로 출력
 ```(java)
 System.out.println(볼+"볼 "+스트라이크개수+"스트라이크") // 이런식으로 출력
 ```
 
 :collision: 숫자 맞춘 후
 <br>
+- [ ] 아래의 과정 수행
 1. Console의 readline함수를 통해 수를 입력받음
 2. 1은 재시작(6번에서 계속), 2는 바로 종료 시켜줌
 3. 그 이외의 문자/숫자가 들어오면 IllegalArgumentException 발생!!
 
 6️⃣ 재시작에 의한 게임의 반복 구현
 <br>
-(5)번에서 readline을 통해 받은 수를 이용!
+- [ ] (5)번에서 readline을 통해 받은 수를 이용!
 ```(java)
 if (1번 받아오면) {
 다시 게임을 시작} else if (2번 받아오면) {
