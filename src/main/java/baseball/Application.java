@@ -1,23 +1,23 @@
 package baseball;
 
-
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    static int MAX_COUNT = 3;
-    static int STRIKE_CASE = 2;
-    static int BALL_CASE = 1;
+    static final int MAX_COUNT = 3;
+    static final int STRIKE_CASE = 2;
+    static final int BALL_CASE = 1;
 
 
     static int strike = 0;
     static int ball = 0;
+    static boolean keepGoing = true;
 
     static int[] computerNumber;
     static int[] userNumber;
 
     public static void main(String[] args) {
 
-        boolean keepGoing = true;
 
         Number answerNumber = new Number();
         Number userPrediction = new Number();
@@ -34,8 +34,22 @@ public class Application {
             calcScore();
             printResult();
 
+            if(strike == MAX_COUNT) {
+                checkKeepGoing();
+            }
         }
 
+    }
+
+    private static void checkKeepGoing() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(input.equals("1")) {
+            keepGoing = true;
+        }
+        if(input.equals("2")) {
+            keepGoing = false;
+        }
     }
 
     private static void printResult() {
