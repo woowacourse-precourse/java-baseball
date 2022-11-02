@@ -8,7 +8,7 @@ public class DetermineRestartGameStep implements Step {
 
     private static final String RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String RESTART_GAME_FLAG = "1";
-    private static final String APPLICATION_EXIT_FLAG = "0";
+    private static final String APPLICATION_EXIT_FLAG = "2";
 
     private static final Step RESTART_GAME_STEP = new GameInitStep();
     private static final Step APPLICATION_EXIT_STEP = new ApplicationExitStep();
