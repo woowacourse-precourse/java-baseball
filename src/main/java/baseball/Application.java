@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    private static List<Integer> getThreeRandomNumber() {
+    public static List<Integer> getThreeRandomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < 3) {
@@ -22,7 +22,7 @@ public class Application {
         return randomNumbers;
     }
 
-    private static List<Integer> disposeOfInputNumber() {
+    public static List<Integer> disposeOfInputNumber() {
         String input = Console.readLine();
         if (!isValidBaseballNumber(input)) {
             throw new IllegalArgumentException();
@@ -37,7 +37,7 @@ public class Application {
         return inputNumbers;
     }
 
-    private static int getNumberOfStrikes(List<Integer> numberOfComputer, List<Integer> numberOfUser) {
+    public static int getNumberOfStrikes(List<Integer> numberOfComputer, List<Integer> numberOfUser) {
         int numberOfStrikes = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -49,7 +49,7 @@ public class Application {
         return numberOfStrikes;
     }
 
-    private static int getNumberOfBalls(List<Integer> numberOfComputer, List<Integer> numberOfUser) {
+    public static int getNumberOfBalls(List<Integer> numberOfComputer, List<Integer> numberOfUser) {
         int numberOfBalls = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -64,7 +64,7 @@ public class Application {
         return numberOfBalls;
     }
 
-    private static int disposeOfGameResult(int numberOfStrikes, int numberOfBalls) {
+    public static int disposeOfGameResult(int numberOfStrikes, int numberOfBalls) {
         if (numberOfBalls + numberOfStrikes == 0) {
             System.out.println("낫싱");
             return 1;
@@ -85,7 +85,7 @@ public class Application {
         return 1;
     }
 
-    private static boolean isValidBaseballNumber(String input) {
+    public static boolean isValidBaseballNumber(String input) {
         if (input.length() != 3) {
             return false;
         }
