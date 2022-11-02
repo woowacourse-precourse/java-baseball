@@ -4,6 +4,34 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
+class ConsolePrint {
+    static final String BALL_MESSAGE = "볼 ";
+    static final String STRIKE_MESSAGE = "스트라이크";
+    static final String NOTHING_MESSAGE = "낫싱";
+
+    public static void printGameStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public static void printBallMessage() {
+        System.out.println(BALL_MESSAGE);
+    }
+
+    public static void printStrikeMessage() {
+        System.out.println(STRIKE_MESSAGE);
+    }
+
+    public static void printNothingMessage() {
+        System.out.println(NOTHING_MESSAGE);
+    }
+
+    public static void printGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+}
+
 public class Application {
 
     private static int findStrike(int userNumber, int computerNumber) {
@@ -31,11 +59,6 @@ public class Application {
 
     private static boolean isNothing(List<Integer> userNumber, List<Integer> computerNumber) {
         return Collections.disjoint(userNumber, computerNumber);
-    }
-
-    private static void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private static boolean isValidScope(String userNumber) {
