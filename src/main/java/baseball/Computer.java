@@ -19,6 +19,18 @@ public class Computer {
         this.completedDigits = createRandomDigits();
     }
 
+    public int getRANDOM_NUMBER_MIN() {
+        return RANDOM_NUMBER_MIN;
+    }
+
+    public int getRANDOM_NUMBER_MAX() {
+        return RANDOM_NUMBER_MAX;
+    }
+
+    public int getRANDOM_NUMBER_LENGTH() {
+        return RANDOM_NUMBER_LENGTH;
+    }
+
     /**
      * 1~9 사이의 랜덤한 숫자 3개를 만드는 메소드
      * @return 랜덤한 숫자 3개가 들어있는 List
