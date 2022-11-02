@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -77,5 +78,40 @@ public class GameMachine {
         ball -= strike;
 
         return Arrays.asList(strike, ball);
+    }
+
+    public void run() {
+        while(true) {
+            gaming = true;
+            computer = generateRandomNumber();
+            while (gaming) {
+                System.out.println("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                gamer = convertGamerNumber(input);
+
+                List<Integer> sb = strikeAndBall();
+                int strike = sb.get(0), ball = sb.get(0);
+
+                if(ball != 0) {
+                    System.out.print(ball + "볼 ");
+                }
+                if(strike != 0) {
+                    System.out.println(strike + "스트라이크");
+                }
+                if(strike == 0 && ball == 0) {
+                    System.out.println("낫싱");
+                }
+                if(strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    gaming = false;
+                }
+            }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+
+            if(!restart(input))
+                break;
+        }
     }
 }
