@@ -22,9 +22,9 @@ public class Application {
 
         if (input == 2) {
             System.out.println(Messages.finishGame);
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private static boolean checkInput(int input) {
