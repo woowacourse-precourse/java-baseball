@@ -38,8 +38,8 @@ public class Computer {
         return true;
     }
 
-    // 숫자의 각각의 자릿수를 List로 리턴  
-    public List splitEachDigitOfNum(int numTosplit) {
+    // 숫자의 각각의 자릿수를 List로 리턴
+    public List<Integer> splitEachDigitOfNum(int numTosplit) {
         List list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
         String strParseIntArr = "" + numTosplit;

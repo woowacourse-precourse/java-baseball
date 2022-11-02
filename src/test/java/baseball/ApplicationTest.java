@@ -26,6 +26,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void splitEachDigitOfNum_메서드로_주어진_값을_구분() {
+        Computer computer = new Computer();
+        List<Integer> list = computer.splitEachDigitOfNum(123);
+        List<Integer> resultList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        assertThat(list).isEqualTo(resultList);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
             () -> {
