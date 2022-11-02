@@ -52,7 +52,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // isRightThreeNumOfComputer
+        // Computer.isRightThreeNumOfComputer
+        // 스트라이크 3 , 볼 0
     void 유저숫자_스트라이트_볼_낫싱_체크_case_1() {
         Computer computer = new Computer();
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
@@ -64,6 +65,32 @@ class ApplicationTest extends NsTest {
         ArrayList resultList = new ArrayList<>(List.of(resultStrike, resultBall));
 
         assertThat(resultList).isEqualTo(List.of(3, 0));
+    }
+
+    @Test
+        // Computer.isRightThreeNumOfComputer
+        // 스트라이크 2 , 볼 1
+    void 유저숫자_스트라이트_볼_낫싱_체크_case_2() {
+        int[] testInt = new int[]{124, 143, 423};
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+        int resultStrike = 0;
+        int resultBall = 0;
+        for (int num : testInt) {
+            System.out.println("num = " + num);
+            computer.isRightThreeNumOfComputer(num);
+            resultStrike = computer.getCntStrike();
+            resultBall = computer.getCntBall();
+            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
+            resultList.add(list);
+        }
+
+        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(2, 1)));
+        System.out.println("result = " + result);
+        assertThat(result).isTrue();
     }
 
     // computer Test 종료
