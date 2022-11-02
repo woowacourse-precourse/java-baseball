@@ -6,6 +6,21 @@ import java.util.*;
 
 public class Application {
 
+    private static int findStrike(int userNumber, int computerNumber) {
+        if (userNumber == computerNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private static int getStrikeCount(List<Integer> userNumber, List<Integer> computerNumber) {
+        int strikeCount = 0;
+        for (int index = 0; index < userNumber.size(); index++) {
+            strikeCount += findStrike(userNumber.get(index), computerNumber.get(index));
+        }
+        return strikeCount;
+    }
+
     private static int getBallCount(List<Integer> userNumber, List<Integer> computerNumber) {
         int ballCount = 0;
         for (Integer computerElement : computerNumber) {
