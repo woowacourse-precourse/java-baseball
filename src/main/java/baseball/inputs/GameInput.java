@@ -24,9 +24,12 @@ public class GameInput {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
-        boolean isInputLengthThree = (userInput.length() != 3);
+        boolean isInputLengthNotThree = (userInput.length() != 3);
         boolean haveSameNumberInInput = haveSameNumbers(userInput);
-        if(isInputLengthThree || haveSameNumberInInput){
+
+        boolean isViolatedRestrictions = isInputLengthNotThree || haveSameNumberInInput;
+
+        if(isViolatedRestrictions){
             throw new IllegalArgumentException("숫자의 길이가 3이 아니거나, 입력에 두개 이상의 같은 숫자를 포함하고 있습니다.");
         }
 
@@ -53,6 +56,6 @@ public class GameInput {
             numberSet.add(Integer.parseInt(input.substring(stringIndex,stringIndex+1)));
         }
 
-        return numberSet.size() == 3;
+        return numberSet.size() != 3;
     }
 }
