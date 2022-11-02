@@ -12,7 +12,7 @@ public class Random {
 	private static final int END_INCLUSIVE = 9;
 	private static final List<Integer> threeUniqueNumbers = new ArrayList<>(SIZE);
 
-	public static List<Integer> getThreeUniqueNumber() {
+	public static List<Integer> getThreeUniqueNumbers() {
 		int randomNumber;
 
 		while (threeUniqueNumbers.size() <= SIZE) {
