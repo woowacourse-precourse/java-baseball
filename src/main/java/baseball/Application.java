@@ -7,28 +7,28 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    public static int distinguishOut (List<Integer> inputNumberList, List<Integer> computerNumberList) {
-        int outCounting = 0;
+    public static int distinguishStrike (List<Integer> inputNumberList, List<Integer> computerNumberList) {
+        int strikeCounting = 0;
 
         for (int i = 0; i <3; i++) {
             if (inputNumberList.get(i) == computerNumberList.get(i)) {
-                outCounting += 1;
-            }
-        }
-
-        return outCounting;
-    }
-
-    public static int distinguishStrike (List<Integer> inputNumberList, List<Integer> computerNumberList, int outCounting) {
-        int strikeCounting = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (computerNumberList.contains(inputNumberList.get(i))) {
                 strikeCounting += 1;
             }
         }
 
-        return strikeCounting - outCounting;
+        return strikeCounting;
+    }
+
+    public static int distinguishOut (List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
+        int outCounting = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNumberList.contains(inputNumberList.get(i))) {
+                outCounting += 1;
+            }
+        }
+
+        return outCounting - strikeCounting;
     }
 
     public static boolean distinguishNothing (int strikeCounting, int outCounting) {
@@ -36,7 +36,7 @@ public class Application {
         else return false;
     }
 
-    public List<Integer> makeComputerNumber () {
+    public static List<Integer> makeComputerNumber () {
         List<Integer> computerNumberList = new ArrayList<>();
         for (int j = 0; j < 3; j++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -61,7 +61,9 @@ public class Application {
 
         String inputNumber = Console.readLine();
         List<Integer> inputNumberList = splitNumber(inputNumber);
+        List<Integer> computerNumberList = makeComputerNumber();
 
-        System.out.println(inputNumberList);
+
+
     }
 }
