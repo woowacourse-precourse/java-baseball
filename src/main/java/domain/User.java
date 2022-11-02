@@ -8,8 +8,7 @@ import java.util.List;
 
 public class User {
     public Numbers input() {
-//        String userInput = Console.readLine();
-        String userInput = "1234";
+        String userInput = Console.readLine();
         List<Number> list = new ArrayList<>();
 
         for (int i = 0; i < userInput.length(); i++) {
