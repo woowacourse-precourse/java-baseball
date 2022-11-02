@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 public class Reader {
 	public static String getUserBaseBallNumber() {
-		String userBaseballNumber = Console.readLine();
+		String userBaseballNumber = getUserInput();
 
 		Validator.validateBaseballNumber(userBaseballNumber);
 
@@ -15,15 +15,18 @@ public class Reader {
 	}
 
 	public static String getUserGameProceedNumber() {
-		String userGameProceed;
-		try {
-			userGameProceed = Console.readLine();
-		} catch (NoSuchElementException e) {
-			throw new IllegalArgumentException("[Error] 아무것도 아닌 입력은 입력이 될 수 없습니다.");
-		}
+		String userGameProceed = getUserInput();
 
 		Validator.validateGameProceedNumber(userGameProceed);
 
 		return userGameProceed;
+	}
+
+	private static String getUserInput() {
+		try {
+			return Console.readLine();
+		} catch (NoSuchElementException e) {
+			throw new IllegalArgumentException("[Error] 아무것도 아닌 입력은 입력이 될 수 없습니다.");
+		}
 	}
 }
