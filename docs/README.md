@@ -18,7 +18,7 @@
 1. main(): 입출력, 전체적인 프로세스 관리
 2. getThreeRandomNumber(): 컴퓨터의 세 자리 수 생성
 3. disposeOfInputNumber(): 입력받은 수 처리 후 반환
-4. isValidBaseballNumber(): 입력의 유효성 검증
+4. isValidBaseballNumber(): 입력받은 수의 야구 게임 유효성 검증
 5. getNumberOfStrikes(): 스트라이크 개수 계산
 6. getNumberOfBalls(): 볼 개수 계산
 7. disposeOfScore(): 점수 계산 후 출력, 상황에 따른 값 반환

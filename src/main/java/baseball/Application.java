@@ -2,17 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        for (int i = 0; i < 100; i++) {
-            System.out.println(Randoms.pickNumberInRange(1, 10));
-
-        }
     }
 
     private static List<Integer> getThreeRandomNumber() {
@@ -24,7 +19,19 @@ public class Application {
                 result.add(tmpRandomNumber);
             }
         }
-
         return result;
+    }
+
+    private static boolean isValidBaseballNumber(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
+        for (char number : input.toCharArray()) {
+            if (number > '9' || number < '0') {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
