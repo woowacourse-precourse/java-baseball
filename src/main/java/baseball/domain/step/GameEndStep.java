@@ -4,7 +4,7 @@ import baseball.application.context.BaseBallGameContext;
 import baseball.application.io.Writer;
 import baseball.application.random.Range;
 
-public class GameEndStep implements Step{
+public class GameEndStep implements Step {
 
     private static final String RIGHT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 

@@ -5,7 +5,7 @@ import baseball.application.io.Reader;
 import baseball.application.io.Writer;
 import baseball.domain.number.BaseBallGameNumbers;
 
-public class InputNumberStep implements Step{
+public class InputNumberStep implements Step {
 
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 

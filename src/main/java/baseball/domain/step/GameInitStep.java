@@ -2,7 +2,7 @@ package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
 
-public class GameInitStep implements Step{
+public class GameInitStep implements Step {
 
     private static final Step NEXT = new InputNumberStep();
 
