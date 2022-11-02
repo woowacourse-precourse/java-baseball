@@ -1,32 +1,55 @@
-package baseball;
-
-
+package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
-public class IO extends StateCode{
+public class InputOutput extends StateCode{
     public int readState(String msg){
         System.out.println(msg);
+
+        String input;
         int parseInput = -1;
         try{
-            String input = Console.readLine();
+            input = Console.readLine();
+            System.out.println(input);
             parseInput = Integer.parseInt(input);
         }catch (Error e){
-            ThrowError(ERROR_NOT_INTEGER);
+            ThrowError(ERROR_INVALID_INPUT);
         }
+
         if(!GAME_STATES.contains(parseInput))
             ThrowError(ERROR_NONE_EXIST_GAME_STATE);
 
-        System.out.println(parseInput);
         return parseInput;
     }
 
-    public String readStr(String msg){
+    public List<Integer> readBall(String msg){
         System.out.print(msg);
-        String input = Console.readLine();
-        System.out.println(input);
-        return input;
+
+        String input = null;
+        List<Integer> balls = new ArrayList<>();
+
+        try{
+            input = Console.readLine();
+            System.out.println(input);
+        }catch(Error e){
+            ThrowError(ERROR_INVALID_INPUT);
+        }
+
+        if(input!=null && input.length() != DIGIT)
+            ThrowError(ERROR_OUT_OF_DIGIT);
+
+        for(int i=0; i < DIGIT; i++) {
+            int num = input.charAt(i) - '0';
+            if (balls.contains(num))
+                ThrowError(ERROR_DUPLICATE_BALL);
+            else if (!(1<=num && num<=9))
+                ThrowError(ERROR_INVALID_BALL);
+            balls.add(num);
+        }
+
+        return balls;
     }
 
     public boolean writeStrikes(List<Integer> strikeAndBall){
