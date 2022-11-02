@@ -20,4 +20,11 @@ public class RandomNumberGenerateTest {
         assertThat(number).isGreaterThanOrEqualTo(1);
         assertThat(number).isLessThanOrEqualTo(9);
     }
+
+    @RepeatedTest(10)
+    void generateRandomNumber_중복되지_않은_숫자_생성() {
+        Game game = new Game();
+        List<Integer> randomNumbers = game.generateRandomNumber();
+        assertThat(randomNumbers).doesNotHaveDuplicates();
+    }
 }
