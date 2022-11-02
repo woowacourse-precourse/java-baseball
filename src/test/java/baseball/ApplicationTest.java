@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 	Computer computer = new Computer();
+	User user = new User();
 
 	@DisplayName("숫자 생성의 범위를 확인한다")
 	@Test
@@ -69,16 +70,24 @@ class ApplicationTest extends NsTest {
 		assertThat(computer.hasDuplication(list3, 6)).isFalse();
 	}
 
+	@DisplayName("최종 생성된 컴퓨터 난수의 사이즈를 확인한다")
 	@RepeatedTest(30)
 	void testComputerNumberSize() {
 		assertThat(computer.getComputerNumber().size()).isEqualTo(3);
 	}
 
+	@DisplayName("최종 생성된 컴퓨터 난수의 중복 여부를 확인한다")
 	@RepeatedTest(100)
 	void testComputerNumberWithoutDuplication() {
 		List<Integer> list = List.of(2, 2, 2);
 
 		assertThat(computer.getComputerNumber()).isNotSameAs(list);
+	}
+
+	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")
+	@Test
+	void testUserInputDuplication(){
+		assertThat(user.hasDuplication("221")).isTrue();
 	}
 
 
