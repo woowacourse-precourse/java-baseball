@@ -27,4 +27,21 @@ public class BaseballGameMethodTest {
         assertThat(result).isEqualTo("OO");
     }
 
+    @Test
+    void checkStrike_사용자답변_스트라이크의개수_로직() {
+        String result = "";
+        String userAnswer = "123";
+        String computer = "321";
+        char[] userNumber = userAnswer.toCharArray();
+        char[] computerNumber = computer.toCharArray();
+
+        for(int i = 0; i < 3; i++) {
+            if(userNumber[i] == computerNumber[i]) {
+                result += "O";
+            }
+        }
+
+        assertThat(result).isEqualTo("O");
+    }
+
 }
