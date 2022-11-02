@@ -19,10 +19,22 @@ public class Result {
         while (strike != 3) {
             System.out.print("숫자를 입력해 주세요 : ");
             inputNum = Integer.parseInt(Console.readLine());
+            List<Integer> inputNumber = returnList(inputNum);
+            Collections.reverse(inputNumber);
+
         }
         System.out.println("맞췄습니다.");
         System.out.println("다시 하시려면 1번 종료하시려면 2번을 눌러주세요");
         want = Integer.parseInt(readLine());
         return want;
+    }
+
+    List<Integer> returnList(int inputNum) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            list.add(inputNum % 10);
+            inputNum /= 10;
+        }
+        return list;
     }
 }
