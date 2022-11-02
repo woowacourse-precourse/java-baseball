@@ -1,6 +1,7 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
+import baseball.application.io.Writer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,13 +42,18 @@ class GameStartStepTest {
     public void printStartMessageWhenExecuted() throws Exception {
         // given
         final String startMessage = "숫자 야구 게임을 시작합니다.";
-        BaseBallGameContext context = mock(BaseBallGameContext.class);
+
         GameStartStep gameStartStep = new GameStartStep();
+
+        BaseBallGameContext context = mock(BaseBallGameContext.class);
+        Writer writer = mock(Writer.class);
+
+        when(context.writer()).thenReturn(writer);
 
         // when
         gameStartStep.execute(context);
 
         // then
-        verify(context, times(1)).println(startMessage);
+        verify(writer, times(1)).println(startMessage);
     }
 }

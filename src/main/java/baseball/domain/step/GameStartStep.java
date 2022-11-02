@@ -1,6 +1,7 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
+import baseball.application.io.Writer;
 
 public class GameStartStep implements Step {
 
@@ -10,7 +11,8 @@ public class GameStartStep implements Step {
 
     @Override
     public void execute(BaseBallGameContext context) {
-        context.println(START_MESSAGE);
+        Writer writer = context.writer();
+        writer.println(START_MESSAGE);
     }
 
     @Override
