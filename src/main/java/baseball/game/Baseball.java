@@ -58,7 +58,7 @@ public class Baseball implements Game {
 
   private boolean isInvalid(String playerInput) {
     return isInvalidLength(playerInput) ||
-        isAllCharacterNotNumeric(playerInput) ||
+        isAnyCharacterNotNumeric(playerInput) ||
         isAnyDigitInvalidRange(playerInput) ||
         hasDuplicateNumber(playerInput);
   }
@@ -67,8 +67,8 @@ public class Baseball implements Game {
     return playerInput.length() != GOAL_DIGIT;
   }
 
-  private boolean isAllCharacterNotNumeric(String playerInput) {
-    return playerInput.chars()
+  private boolean isAnyCharacterNotNumeric(String playerInput) {
+    return !playerInput.chars()
         .allMatch(Character::isDigit);
   }
 
