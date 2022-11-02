@@ -61,9 +61,20 @@ public class Application {
     }
 
     private static List<Integer> judgeUserNumber(List<Integer> targetNumber, List<Integer> userNumber) {
-        return new ArrayList<>();
+        List<Integer> BallStrikeCount = Arrays.asList(0, 0);
+        for (int position = 0; position < 3; position++) {
+            int judgeResult = judgeEachNumber(targetNumber, position, userNumber.get(position));
+            // Ball인 경우 0, Strike인 경우 1 Nothing인 경우 -1
+            if (judgeResult == 0 || judgeResult == 1) {
+                BallStrikeCount.set(judgeResult, BallStrikeCount.get(judgeResult) + 1);
+            }
+        }
+        return BallStrikeCount;
     }
 
+    private static int judgeEachNumber(List<Integer> targetNumber, int position, int userInt) {
+        return 0;
+    }
 
     private static void printResult(List<Integer> ballStrikeCount) {
     }
