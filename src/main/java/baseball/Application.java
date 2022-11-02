@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -14,6 +15,14 @@ public class Application {
         do {
             List<Integer> computer = getComputer();
             System.out.println("computer: "+Arrays.toString(computer.toArray()));
+
+            boolean win = false;
+
+            while(!win) {
+                List<Integer> user = getUser();
+                System.out.println("user: "+Arrays.toString(user.toArray()));
+            }
+
         } while (retry);
 
         System.out.println("애플리케이션 종료");
@@ -43,5 +52,20 @@ public class Application {
     private static void validateComputer(List<Integer> computer) {
         if(computer.size()!=3)
             throw new IllegalArgumentException("3자리의 수가 아닙니다.");
+    }
+
+    //사용자 숫자 입력
+    public static List<Integer> getUser() {
+        List<Integer> user = new ArrayList<>();
+
+        String input = inputNumber();
+        System.out.println("input: "+input);
+
+        return user;
+    }
+
+    private static String inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
     }
 }
