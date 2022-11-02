@@ -1,6 +1,7 @@
 package baseball.service;
 
-import org.mockito.internal.matchers.Null;
+import java.util.ArrayList;
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -28,6 +29,42 @@ public class GameService {
 		return false;
 	}
 
+	public List<String> convertStringToList(String word) {
+		List<String> list = new ArrayList<>();
+
+		for (int i = 0; i < word.length(); i++)
+			list.add(String.valueOf(word.charAt(i)));
+		return list;
+	}
+	public List<Integer> compareNumber(List<String> computer, List<String> user) {
+		List<Integer> result = new ArrayList<>();
+		int cnt = 0;
+		int strike = 0;
+
+		for (int i = 0; i < computer.size(); i++) {
+			if (checkEqualNumber(String.join("", computer), Integer.parseInt(user.get(i)))) {
+				if (removeSameNumber(computer.get(i), user.get(i))) {
+					strike++;
+					continue;
+				}
+				cnt++;
+			}
+		}
+		result.add(strike);
+		result.add(cnt);
+
+		return result;
+	}
+
+	public boolean removeSameNumber(String computer, String user) {
+		if (computer.equals(user)) {
+			return true;
+		}
+		return false;
+	}
+	/*
+	예외 처리
+	 */
 	public void checkException(String number) {
 		checkNullException(number);
 		isSameWord(number);
@@ -36,7 +73,6 @@ public class GameService {
 			checkUserNumber(Character.getNumericValue(number.charAt(i)));
 		}
 	}
-
 	public void isSameWord(String number) {
 		String tmp = "";
 
