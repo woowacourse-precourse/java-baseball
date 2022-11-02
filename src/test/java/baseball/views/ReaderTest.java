@@ -43,6 +43,20 @@ class ReaderTest {
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@DisplayName("숫자야구에 사용자의 입력이 없을 경우 IllegalArgumentException 발생")
+	@Test
+	void getUserBaseballNumberEmptyInputExceptionTest() {
+		// given : 사용자가 넣은 틀린 입력이 주어질 때 ""
+		final String userInput = "";
+		InputStream inputStream = generateInputStream(userInput);
+		System.setIn(inputStream);
+
+		// when, then : 틀린 입력에 대해 예외처리가 된다. => throw IllegalArgumentException
+		assertThatThrownBy(Reader::getUserBaseBallNumber)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("[Error] 아무것도 아닌 입력은 입력이 될 수 없습니다.");
+	}
+
 	@ParameterizedTest(name = "valid input:''''{0}'''' << 사용자가 정상적인 종료/재시작 값을 입력하는 경우 테스트")
 	@ValueSource(strings = {"1", "2"})
 	void getUserValidGameProceedNumberInputTest(String userInput) {
@@ -69,7 +83,7 @@ class ReaderTest {
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
-	@DisplayName("사용자의 입력이 없을 경우 IllegalArgumentException 발생")
+	@DisplayName("재시작/종료에 사용자의 입력이 없을 경우 IllegalArgumentException 발생")
 	@Test
 	void getUserInvalidGameProceedNumberEmptyInputTest() {
 		// given : 사용자가 넣은 틀린 입력이 주어질 때 ""
