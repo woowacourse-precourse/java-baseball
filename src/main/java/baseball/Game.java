@@ -23,6 +23,6 @@ public class Game {
             return false;
         }
 
-        throw new IllegalArgumentException(WarningMessage.IllegalArgumentExceptionWarningMessage.getMessage());
+        throw new IllegalArgumentException(WarningMessage.IllegalInputWarningMessage.getMessage());
     }
 }
