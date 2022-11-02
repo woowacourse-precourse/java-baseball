@@ -41,18 +41,21 @@
 ### 3. 사용자가 게임을 진행하는 함수 `guessNumber()`
 
 - 요구사항
-    - 사용자로부터 서로 다른 `3`개의 숫자를 입력받아 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이라는 결과를 출력한다.
-    - 위 과정을 반복해 `3`개의 숫자를 모두 맞히면 게임을 종료한다.
-    - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+  - 사용자로부터 서로 다른 `3`개의 숫자를 입력받아 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이라는 결과를 출력한다.
+  - 위 과정을 반복해 `3`개의 숫자를 모두 맞히면 게임을 종료한다.
+  - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+  - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 
 - 기능 설명
-    1. 두 정수 변수 `Ball`, `Strike`를 `0`으로 초기화한다.
-    2. 함수 `inputUserNumber()`를 실행하여 유저의 입력값 `userNumber`를 입력받는다.
-    3. 함수 `judgeUserNumber()`를 실행하여 유저의 입력값에 대한 결과를 `Ball`, `Strike`의 값에 저장한다.
-    4. 함수 `printResult()`를 실행하여 `Ball`, `Strike`의 값에 따라 결과를 출력한다.
-    5. `Strike`가 `3`가 될 때까지 과정 i.~ iv.를 반복한다.
+  1. 두 정수 변수 `Ball`, `Strike`를 담은 `List<Integer>` `BallStrikeCount`를 생성하고 각 값을 `0`으로 초기화한다.
+
+  - 후술되는 `Ball`, `Strike`는 각각 `BallStrikeCount`의 `0`, `1`번째 index의 값을 칭한다.
+
+  2. 함수 `inputUserNumber()`를 실행하여 유저의 입력값 `userNumber`를 입력받는다.
+  3. 함수 `judgeUserNumber()`를 실행하여 유저의 입력값에 대한 결과를 `Ball`, `Strike`의 값에 저장한다.
+  4. 함수 `printResult()`를 실행하여 `Ball`, `Strike`의 값에 따라 결과를 출력한다.
+  5. `Strike`가 `3`가 될 때까지 과정 i.~ iv.를 반복한다.
 
 <br> 
 
