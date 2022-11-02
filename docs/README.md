@@ -28,5 +28,6 @@
 
 ### 추가 요구사항
 
-- [x]  공에 대한 값을 포장(wrap)한다.
-- [x]  3자리의 공 리스트를 관리하는 일급 컬렉션을 생성한다.
+- [x]  숫자 야구에 대한 값을 표현하는 Baseball 클래스 추가
+- [x]  Baseball 리스트를 관리하는 일급 컬렉션인 Baseballs 클래스 추가
+- [x]  List<Baseball>의 생성을 담당하는 BaseballFactory 클래스 추가
