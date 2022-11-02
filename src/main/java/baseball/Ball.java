@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ball {
-	static int MAX_NUM = 987;
-	static int MIN_NUM = 123;
 	int number;
 	
 	void Ball() {
@@ -14,7 +12,6 @@ public class Ball {
 	}
 	
 	int randomNumberBall() {
-		int result;
 		List<Integer> computer = new ArrayList<>();
 
 		while (computer.size() < 3) {

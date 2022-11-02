@@ -10,8 +10,8 @@ public class BaseballGame {
 	
 	static void run() {
 		Output.startGame();
+		computer = new Ball();
 		while(true) {
-			computer = new Ball();
 			progressGame();
 			if(userDecision == 2) {
 				break;
@@ -22,8 +22,8 @@ public class BaseballGame {
 	static void progressGame() {
 		Output.progressGame();
 
-		userAnswer = Integer.parseInt(Console.readLine().toString());
-		if(InputError.checkOverlapError(userAnswer) && InputError.checkOverlapError(userAnswer)){
+		userAnswer = Integer.parseInt(Console.readLine());
+		if(InputError.checkOverlapError(userAnswer) && InputError.checkTextError(Integer.toString(userAnswer))){
 			checkBall(Integer.toString(userAnswer));
 			checkStrike(Integer.toString(userAnswer));
 		}else {
@@ -35,6 +35,9 @@ public class BaseballGame {
 			Output.rightEverything();
 			Output.endGame();
 			userDecision = Integer.parseInt(Console.readLine());
+			if(userDecision == 1){
+				computer = new Ball();
+			}
 		}else if(strike == 0 && ball == 0) {
 			Output.wrongEverything();
 		}else {
