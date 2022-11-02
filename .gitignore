@@ -5,6 +5,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### .class file 버전 관리X ###
+*.class
+
 ### STS ###
 .apt_generated
 .classpath
