@@ -29,17 +29,28 @@
 
 <br>
 
+### `BaseBallGameNumber`
+숫자 야구 게임의 숫자를 위한 클래스이다.
+- [ ] 생성 시 1~9 사이 정수값을 가지지 않으면 `IllegalArgumentException`을 발생시킨다.
+
+<br>
+
+### `BaseBallGameNumbers`
+`BaseBallGameNumber` 3개를 담은 컬렉션이다.
+- [ ] 생성 시 문자열을 입력받아 `BaseBallGameNumber` 를 생성한 후 집합에 추가한다.
+- [ ] 총 생성된 `BaseBallGameNumber`가 3개가 아니라면 `IllegalArgumentException`을 발생시킨다.
+
+<br> 
+
 ### `Computer`
-- [ ] `컴퓨터`에 해당되는 클래스로 생성 시 임의의 3자리 숫자를 생성한다.
+- [ ] `컴퓨터`에 해당되는 클래스로 생성 시 임의의 3자리 숫자인 `BaseBallGameNumbers`를 생성한다.
 
 <br>
 
 ### `Player`
-- [ ] `사용자` 에 해당되는 클래스로, `사용자`가 입력한 3자리 숫자를 가지고 있다.
-- [ ] 생성 시 사용자의 입력을 통해 3자리 숫자를 보관한다.
-- [ ] 입력으로 잘못된 값이 들어왔다면 `IllegalArgumentException` 발생시킨다.
+- [ ] `사용자` 에 해당되는 클래스로, `사용자`가 입력한 3자리 숫자인 `BaseBallGameNumbers`를 가지고 있다.
 
-<br> 
+<br>
 
 ### `Step`
 - [X] 각 단계별로 `BaseBallGameContext`를 사용하여 수행하여야 할 동작을 수행한다.
