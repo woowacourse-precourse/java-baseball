@@ -23,10 +23,6 @@ public class Application {
         print_score(strike,ball);
     }
 
-    /***
-     * 스트라이크 카운트 해주는 메서드
-     * 글자를 뽑아서 받은후 같은지 비교해주는 메서드 isitsame 존재 ( 스트라이크를 인자로 받아줌)
-     * */
     public static int strike(String[] args, List<String> computer){
         int strike = 0;
         for(int i=0; i<3 ; i++){
@@ -44,12 +40,6 @@ public class Application {
         return strike;
     }
 
-    /***
-     * 볼을 카운트 해주는 메서드. 스트라이크와 비슷하지만 isitsame과 다르게 자릿수가 다른 같은 숫자가 존재할 때만
-     * 볼 카운트를 올려준다.
-     * contains 로 포함하고 있으면 isitball을 실행한다.
-     * 뽑은 글자와 idx를 넘겨주고 answer의 idx가 그 글자와 달라야 한다!
-     **/
     public static int ball(String[] args,List<String> computer){
         int ball = 0;
         for(int idx=0 ; idx<3 ; idx++){
