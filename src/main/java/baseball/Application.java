@@ -109,12 +109,17 @@ public class Application {
         return computerNumber;
     }
 
-    public static void main(String[] args) {
+    private static List<Integer> getValidUserNumber() {
         List<Integer> userNumber = new ArrayList<>();
         try {
             userNumber = getUserNumber();
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
+        return userNumber;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
