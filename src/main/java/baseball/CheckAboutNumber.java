@@ -15,14 +15,14 @@ public class CheckAboutNumber {
         return returnList;
     }
 
-    private void checkIsNumberAndNotHaveZero(String number) {
+    public void checkIsNumberAndNotHaveZero(String number) {
         String numberRegex = "^[1-9]*$";
         if(!number.matches(numberRegex)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkOverlap(List<Integer> number, int size) {
+    public void checkOverlap(List<Integer> number, int size) {
         HashSet<Integer> numberSet = new HashSet<>(number);
 
         if (numberSet.size() != size) {
@@ -30,7 +30,7 @@ public class CheckAboutNumber {
         }
     }
 
-    private void checkNumberSize(List<Integer> number, int size) {
+    public void checkNumberSize(List<Integer> number, int size) {
         if(number.size() != size) {
             throw new IllegalArgumentException();
         }
