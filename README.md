@@ -154,19 +154,3 @@ while (computer.size() < 3) {
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
-## 기능 목록
-### Main 클래스
-1. 게임 시작 문구를 출력하도록 한다
-2. 랜덤 값을 생성해 주도록 한다
-3. 값을 입력받을 수 있도록 하며 입력받은 값과 랜덤 값을 Result 클래스에 넘겨준다
-4. 3번 과정에서 예외 처리를 위해 Validation 함수에 입력 값을 넘겨주도록 한다
-5. Result 클래스의 반환이 게임 끝으로 나오게 되면 게임을 계속할지 종료할지 정해준다
-### Rules 클래스
-1. 입력값을 통해 스트라이크가 몇개 있는지 판단
-2. 입력값을 통해 볼이 몇개 있는지 판단
-3. 아무것도 없다면 낫싱
-### Result 클래스
-1. Rules 클래스의 메소드를 실행시켜 스트라이크, 볼의 개수 혹은 낫싱을 판단한다
-2. 1번 과정을 통해 나온 결과를 반환한다
-### Validation 클래스
-1. 입력값이 잘못될 경우의 수를 따져가며 예외 처리를 수행하며 `IllegalArgumentException` 를 발생시킬 수 있도록 한다
