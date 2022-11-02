@@ -55,7 +55,7 @@
 
 ### `Comparator`
 `사용자`가 입력한 수와 `컴퓨터`의 수를 비교하는 클래스이다.
-- [ ] 비교 결과를 `CompareResult`로 반환한다.
+- [X] 비교 결과를 `CompareResult`로 반환한다.
 
 <br>
 
