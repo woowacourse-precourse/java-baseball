@@ -20,7 +20,7 @@ public class MethodTest {
     }
 
     @Test
-    void convertGamerNumber() {
+    void convertGamerNumberTest() {
         assertThatThrownBy(() -> gameMachine.convertGamerNumber("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
 
