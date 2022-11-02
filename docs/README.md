@@ -14,7 +14,7 @@
 ## ⚙️ 주요 클래스 기능 명세
 
 ### `BaseBallApplication`
-- [ ] `Step`이 종료될 때까지 `Step`을 실행하고 다음 `Step`으로 교체한다.
+- [X] `Step`이 종료될 때까지 `Step`을 실행하고 다음 `Step`으로 교체한다.
 
 <br>
 
