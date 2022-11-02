@@ -51,7 +51,7 @@
 
 <details>
 <summary>Score</summary>
-1. 인터페이스로, getStrike(),getBall(),getCallName() 뼈대 만들기
+1. 인터페이스로, getStrike(),getBall() 뼈대 만들기
 2. Score의 구현체들 만들기
 </details>
 
