@@ -9,6 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
     private static String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
     private static String DUPLICATION_EXCEPTION = "중복된 숫자가 존재합니다.";
+    private static String VALID_NUMBER_EXCEPTION = "가능하지 않은 숫자 입니다.";
+    private static int MIN_NUM = 1;
+    private static int MAX_NUM = 9;
     public ArrayList<Integer> userNumbers;
 
     public void getUserNumbers() {
@@ -36,4 +39,9 @@ public class User {
         }
     }
 
+    public void checkVaildNumber(int number){
+        if(number < MIN_NUM || number > MAX_NUM){
+            throw new IllegalArgumentException(VALID_NUMBER_EXCEPTION);
+        }
+    }
 }
