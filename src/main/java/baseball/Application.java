@@ -24,7 +24,6 @@ public class Application {
         while (true) {
 
             List<Integer> computer_num = createRandomNumber();
-            System.out.println(computer_num);
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
