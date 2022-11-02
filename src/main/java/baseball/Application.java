@@ -31,7 +31,12 @@ public class Application {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료.");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int restartOrNot = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        if (!isValidRestartNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        int restartOrNot = Integer.parseInt(input);
+
         if (restartOrNot == 1) {
             computerNumber = getThreeRandomNumber();
             return false;
@@ -125,5 +130,9 @@ public class Application {
         }
 
         return true;
+    }
+
+    public static boolean isValidRestartNumber(String input) {
+        return (input.equals("1") || input.equals("2"));
     }
 }

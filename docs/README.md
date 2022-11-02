@@ -19,7 +19,8 @@
 2. getThreeRandomNumber(): 컴퓨터의 세 자리 수 생성
 3. disposeOfInputNumber(): 입력받은 수 처리 후 반환
 4. isValidBaseballNumber(): 입력받은 수의 야구 게임 유효성 검증
-5. getNumberOfStrikes(): 스트라이크 개수 계산
-6. getNumberOfBalls(): 볼 개수 계산
-7. disposeOfGameResult(): 점수 계산 후 출력, 상황에 따른 값 반환
-8. determineStopOrNot() : 게임이 종료되었을 시, 재시작과 종료를 처리해주는 메서드
+5. isValidRestartNumber(): 게임 재시작 여부에 대한 입력의 유효성 검증
+6. getNumberOfStrikes(): 스트라이크 개수 계산
+7. getNumberOfBalls(): 볼 개수 계산
+8. disposeOfGameResult(): 점수 계산 후 출력, 상황에 따른 값 반환
+9. determineStopOrNot() : 게임이 종료되었을 시, 재시작과 종료를 처리해주는 메서드
