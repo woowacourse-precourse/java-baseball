@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.Application.getNumberOfStrikes;
+import static baseball.Application.isValidBaseballNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,5 +39,17 @@ public class functionTest {
         b.add(2);b.add(3);b.add(1);
 
         assertThat(getNumberOfStrikes(a, b)).isEqualTo(0);
+    }
+
+    @Test
+    void 수_유효성_검사_기능_테스트() {
+        assertThat(isValidBaseballNumber("123")).isEqualTo(true);
+        assertThat(isValidBaseballNumber("1234")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("112")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("455")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("ABC")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("012")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("1A2")).isEqualTo(false);
+        assertThat(isValidBaseballNumber("035")).isEqualTo(false);
     }
 }

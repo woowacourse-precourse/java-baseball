@@ -92,7 +92,7 @@ public class Application {
 
         List<Character> numberList = new ArrayList<>();
         for (char number : input.toCharArray()) {
-            if (number > '9' || number < '0') {
+            if (number > '9' || number < '1') {
                 return false;
             }
             if (numberList.contains(number)) return false;
