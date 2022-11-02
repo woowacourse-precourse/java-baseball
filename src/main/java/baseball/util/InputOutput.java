@@ -38,7 +38,7 @@ public class InputOutput extends StateCode{
         }
 
         if(input!=null && input.length() != DIGIT)
-            ThrowError(ERROR_OUT_OF_DIGIT);
+            ThrowError(ERROR_INCORRECT_LENGTH_DIGIT);
 
         for(int i=0; i < DIGIT; i++) {
             int num = input.charAt(i) - '0';
