@@ -2,9 +2,7 @@ package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
 
-public class GameInitStep implements Step{
-
-    private static final Step next = new InputNumberStep();
+public class InputNumberStep implements Step{
 
     @Override
     public void execute(BaseBallGameContext context) {
@@ -13,11 +11,11 @@ public class GameInitStep implements Step{
 
     @Override
     public Step next() {
-        return next;
+        return null;
     }
 
     @Override
     public boolean executable() {
-        return true;
+        return false;
     }
 }
