@@ -1,4 +1,4 @@
-package baseball.console;
+package baseball.utils;
 
 public class ConsoleLog {
     public ConsoleLog() {

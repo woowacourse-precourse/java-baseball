@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.console.ConsoleLog;
+import baseball.utils.ConsoleLog;
 
 public class Application {
     public static void main(String[] args) {
