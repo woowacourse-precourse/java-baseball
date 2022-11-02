@@ -11,8 +11,8 @@ public class Judgement {
         ballCnt = 0;
     }
 
-    public void judgeStrike(User user, Computer computer) {
-        setStrikeCntZero();
+    private void judgeStrike(User user, Computer computer) {
+        strikeCnt = 0;
         List<Integer> userNumber = user.getUserInputNumber();
         List<Integer> computerNumber = computer.getRandomNumber();
         for (int i = 0; i < 3; i++) {
@@ -20,8 +20,8 @@ public class Judgement {
         }
     }
 
-    public void judgeBall(User user, Computer computer) {
-        setBallCntZero();
+    private void judgeBall(User user, Computer computer) {
+        ballCnt = 0;
         List<Integer> userNumber = user.getUserInputNumber();
         List<Integer> computerNumber = computer.getRandomNumber();
         for (int i = 0; i < 3; i++) {
@@ -36,11 +36,11 @@ public class Judgement {
         return false;
     }
 
-    private void setStrikeCntZero() {
-        strikeCnt = 0;
+    public int getStrikeCnt() {
+        return strikeCnt;
     }
 
-    private void setBallCntZero() {
-        ballCnt = 0;
+    public int getBallCnt() {
+        return ballCnt;
     }
 }
