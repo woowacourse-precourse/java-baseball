@@ -1,11 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static baseball.Application.GetNumberBaseball;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,10 +25,34 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 숫자생성_테스트(){
-        List<Integer> computer=GetNumberBaseball();
+        List<Integer> computer=getNumberBaseball();
         for(int i=0;i<3;i++){
             System.out.print(computer.get(i));
         }
+    }
+    @Test
+    void 입력받은숫자_리스트변환테스트(){
+        String trynumber= "468";
+        List<Integer> user=transformInteger(trynumber);
+        for(int i=0;i<3;i++){
+            System.out.print(user.get(i));
+        }
+    }
+    @Test
+    void 스트라이크카운트_테스트(){
+        List<Integer> computer=getNumberBaseball();
+        String trynumber= "468";
+        List<Integer> user=transformInteger(trynumber);
+        System.out.print(strikeCount(user,computer)+" "+computer.toString());
+    }
+    @Test
+    void 볼카운트_테스트(){
+
+        List<Integer> computer=getNumberBaseball();
+        String trynumber= "468";
+        List<Integer> user=transformInteger(trynumber);
+        System.out.print(ballCount(user,computer)+" "+computer.toString());
+
     }
     @Test
     void 예외_테스트() {
