@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Checker;
+import baseball.domain.NumberBaseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +37,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void testComputerHasDifferent3Numbers() {
-        NumberBaseBall numberBaseBall = new NumberBaseBall();
-        assertThat(numberBaseBall.computer).isEqualTo(true);
+        NumberBaseball numberBaseball = new NumberBaseball();
+        assertThat(Checker.hasDifferentNumbers(numberBaseball.computerNumber)).isEqualTo(true);
     }
 }
