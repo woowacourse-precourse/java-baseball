@@ -44,6 +44,11 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void exceptionTest() {
+
+     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
