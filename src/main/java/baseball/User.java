@@ -8,11 +8,12 @@ public class User {
 
     public void pickNumbers(){
         String numbers = Console.readLine();
-
         validateInput(numbers);
+
+
     }
 
-    private void validateInput(String input){
+    public void validateInput(String input){
         validateLength(input);
         validateType(input);
         validateUnique(input);

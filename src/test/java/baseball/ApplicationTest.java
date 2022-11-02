@@ -40,6 +40,21 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void testThrowExceptionForInvalidUserInput(){
+        String[] invalidCases = {
+                "1234",
+                "1e34",
+                "1e3",
+                "112",
+        };
+        User user = new User();
+        for (String invalidCase: invalidCases){
+            assertThatThrownBy(() -> user.validateInput(invalidCase))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
