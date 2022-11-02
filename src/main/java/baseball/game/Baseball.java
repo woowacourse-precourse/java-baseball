@@ -36,6 +36,7 @@ public class Baseball implements Game {
 
   @Override
   public void play() {
+    printGameStartMessage();
     do {
       input();
       execute();
@@ -43,12 +44,15 @@ public class Baseball implements Game {
     } while (isNotCorrect());
   }
 
+  private void printGameStartMessage() {
+    System.out.println("숫자 야구 게임을 시작합니다.\n");
+  }
+
   private boolean isNotCorrect() {
     return this.strike != GOAL_DIGIT;
   }
 
   private void input() {
-    System.out.println("숫자 야구 게임을 시작합니다.\n");
     String playerInput = Console.readLine();
     if (isInvalid(playerInput)) {
       throw new IllegalArgumentException();
