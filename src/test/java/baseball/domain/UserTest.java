@@ -46,4 +46,11 @@ public class UserTest {
             user.checkVaildNumber(0);
         });
     }
+
+    @Test()
+    void 글자수길이초과예외처리() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.checkLength("1234");
+        });
+    }
 }
