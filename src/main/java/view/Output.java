@@ -24,4 +24,8 @@ public class Output {
             System.out.println(ballCount+JudgeMessage.BALL + strikeCount+JudgeMessage.STRIKE);
         }
     }
+
+    public static void printThreeStrike() {
+        System.out.println(GuideMessage.THREE_STRIKE);
+    }
 }

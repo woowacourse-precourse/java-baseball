@@ -34,7 +34,8 @@ public class NumberBaseBallGame {
             int ballCount = strikeAndBallCount[1];
             Output.printStrikeAndBallCount(ballCount, strikeCount);
             if (strikeCount == 3) {
-
+                Output.printThreeStrike();
+                break;
             }
         }
     }
