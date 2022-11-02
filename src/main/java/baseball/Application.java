@@ -11,25 +11,30 @@ public class Application {
     }
 
     private static List<Integer> getThreeRandomNumber() {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> randomNumbers = new ArrayList<>();
 
-        while (result.size() < 3) {
+        while (randomNumbers.size() < 3) {
             int tmpRandomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!result.contains(tmpRandomNumber)) {
-                result.add(tmpRandomNumber);
+            if (!randomNumbers.contains(tmpRandomNumber)) {
+                randomNumbers.add(tmpRandomNumber);
             }
         }
-        return result;
+        return randomNumbers;
     }
 
     private static boolean isValidBaseballNumber(String input) {
         if (input.length() != 3) {
             return false;
         }
+
+        List<Character> numberList = new ArrayList<>();
         for (char number : input.toCharArray()) {
             if (number > '9' || number < '0') {
                 return false;
             }
+            if (numberList.contains(number)) return false;
+
+            numberList.add(number);
         }
 
         return true;
