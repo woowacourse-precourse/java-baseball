@@ -15,7 +15,7 @@ public class Application {
         while (keepPlaying) {
             List<Integer> targetNumber = createTargetNumber();
             guessNumber(targetNumber);
-            inputKeepPlaying();
+            keepPlaying = inputKeepPlaying();
         }
     }
 
@@ -101,6 +101,15 @@ public class Application {
         System.out.println(resultString.trim());
     }
 
-    private static void inputKeepPlaying() {
+    private static boolean inputKeepPlaying() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (userInput.equals("2")) {
+            return false;
+        } else if (userInput.equals("1")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
