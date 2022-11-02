@@ -7,10 +7,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    public static int distinguishStrike (List<Integer> inputNumberList, List<Integer> computerNumberList) {
+    public static int distinguishStrike(List<Integer> inputNumberList, List<Integer> computerNumberList) {
         int strikeCounting = 0;
 
-        for (int i = 0; i <3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (inputNumberList.get(i).equals(computerNumberList.get(i))) {
                 strikeCounting += 1;
             }
@@ -19,8 +19,8 @@ public class Application {
         return strikeCounting;
     }
 
-    // ìˆ˜ì • í•„ìš” ì¤‘ë³µëœ ê°’ì„ ì²˜ë¦¬ ëª» í•¨
-    public static int distinguishBall (List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
+    // ¼öÁ¤ ÇÊ¿ä Áßº¹µÈ °ªÀ» Ã³¸® ¸ø ÇÔ
+    public static int distinguishBall(List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
         int ballCounting = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -32,7 +32,8 @@ public class Application {
         return ballCounting - strikeCounting;
     }
 
-    public static void makeComputerNumber (List<Integer> computerNumberList) {
+    public static void makeComputerNumber(List<Integer> computerNumberList) {
+
         for (int j = 0; j < 3; j++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumberList.contains(randomNumber)) {
@@ -41,37 +42,38 @@ public class Application {
         }
     }
 
-    public static void splitNumber (List<Integer> inputNumberList, String inputNumber) {
+    public static void splitNumber(List<Integer> inputNumberList, String inputNumber) {
 
         for (int k = 0; k < 3; k++) {
             inputNumberList.add(Character.getNumericValue(inputNumber.charAt(k)));
         }
-
-        //return inputNumberList;
     }
 
-    public static void printResult (int ballCounting, int strikeCounting) {
+    public static void printResult(int ballCounting, int strikeCounting) {
         if (strikeCounting == 3) {
-            System.out.println("3ìŠ¤íŠ¸ë¼ì´í¬");
-            System.out.println("3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ");
-        }else if (strikeCounting > 0 && ballCounting == 0) {
-            System.out.printf("%dìŠ¤íŠ¸ë¼ì´í¬", strikeCounting);
-        }else if (strikeCounting == 0 && ballCounting > 0) {
-            System.out.printf("%dë³¼", ballCounting);
-        }else if (strikeCounting > 0 && ballCounting > 0) {
-            System.out.printf("%dë³¼ %dìŠ¤íŠ¸ë¼ì´í¬", ballCounting, strikeCounting);
-        }else {
-            System.out.println("ë‚«ì‹±");
+            System.out.println("3½ºÆ®¶óÀÌÅ©");
+            System.out.println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á");
+        } else if (strikeCounting > 0 && ballCounting == 0) {
+            System.out.printf("%d½ºÆ®¶óÀÌÅ©\r\n", strikeCounting);
+        } else if (strikeCounting == 0 && ballCounting > 0) {
+            System.out.printf("%dº¼\r\n", ballCounting);
+        } else if (strikeCounting > 0 && ballCounting > 0) {
+            System.out.printf("%dº¼ %d½ºÆ®¶óÀÌÅ©\r\n", ballCounting, strikeCounting);
+        } else {
+            System.out.println("³´½Ì");
         }
     }
 
+    public static boolean decideRestart() {
+        System.out.println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+        int decidedRestart = Integer.parseInt(Console.readLine());
 
-    public static void main(String[] args) {
+        if (decidedRestart == 1) return true;
+        else return false;
 
-        List<Integer> computerNumberList = new ArrayList<>();
-        List<Integer> inputNumberList = new ArrayList<>();
-        makeComputerNumber(computerNumberList);
+    }
 
+    public static void proceedGame (List<Integer> computerNumberList, List<Integer> inputNumberList) {
         while (true) {
             splitNumber(inputNumberList, Console.readLine());
             int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
@@ -82,6 +84,22 @@ public class Application {
 
             if (strikeCounting == 3) break;
         }
+    }
 
+
+    public static void main(String[] args) {
+
+        List<Integer> computerNumberList = new ArrayList<>();
+        List<Integer> inputNumberList = new ArrayList<>();
+
+        while (true) {
+            System.out.println("¼ıÀÚ ¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+            makeComputerNumber(computerNumberList);
+            proceedGame(computerNumberList, inputNumberList);
+
+            if (!decideRestart()) break;
+
+            computerNumberList.clear();
+        }
     }
 }
