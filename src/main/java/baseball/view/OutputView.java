@@ -6,4 +6,16 @@ public class OutputView {
 	public static void gameStartView(){
 		System.out.println(START_MESSAGE);
 	}
+
+	public static void displayResult(int ball, int strike){
+		String ballStr = "";
+		String strikeStr = "";
+		if (ball > 0){
+			ballStr = String.valueOf(ball) + "볼";
+		}
+		if (strike > 0){
+			strikeStr = String.valueOf(strike) + "볼";
+		}
+		System.out.println(String.join(ballStr, strikeStr));
+	}
 }
