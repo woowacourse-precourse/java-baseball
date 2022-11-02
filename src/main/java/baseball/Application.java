@@ -73,7 +73,15 @@ public class Application {
     }
 
     private static int judgeEachNumber(List<Integer> targetNumber, int position, int userInt) {
-        return 0;
+        int judgeResult = -1;   // Ball인 경우 0, Strike인 경우 1 Nothing인 경우 -1
+        if (targetNumber.contains(userInt)) {
+            if (targetNumber.get(position) == userInt) {
+                judgeResult = 1;
+            } else {
+                judgeResult = 0;
+            }
+        }
+        return judgeResult;
     }
 
     private static void printResult(List<Integer> ballStrikeCount) {
