@@ -19,20 +19,20 @@ public class Application {
         return strikeCounting;
     }
 
-    public static int distinguishOut (List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
-        int outCounting = 0;
+    public static int distinguishBall (List<Integer> inputNumberList, List<Integer> computerNumberList, int strikeCounting) {
+        int ballCounting = 0;
 
         for (int i = 0; i < 3; i++) {
             if (computerNumberList.contains(inputNumberList.get(i))) {
-                outCounting += 1;
+                ballCounting += 1;
             }
         }
 
-        return outCounting - strikeCounting;
+        return ballCounting - strikeCounting;
     }
 
-    public static boolean distinguishNothing (int strikeCounting, int outCounting) {
-        if (strikeCounting == 0 && outCounting == 0) return true;
+    public static boolean distinguishNothing (int strikeCounting, int ballCounting) {
+        if (strikeCounting == 0 && ballCounting == 0) return true;
         else return false;
     }
 
