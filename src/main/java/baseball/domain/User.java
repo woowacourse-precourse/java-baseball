@@ -15,16 +15,16 @@ public class User {
         this.userNumbers = parseStringToInt(numbers);
     }
 
-    public ArrayList<Integer> parseStringToInt(String numbers){
+    public ArrayList<Integer> parseStringToInt(String numbers) {
         ArrayList<Integer> inputNumbers = new ArrayList<>();
-        for(int i=0;i<numbers.length();i++){
+        for (int i = 0; i < numbers.length(); i++) {
             inputNumbers.add(Integer.parseInt(String.valueOf(numbers.charAt(i))));
         }
         return inputNumbers;
     }
 
-    public void checkIsDigit(char number){
-        if(!Character.isDigit(number)){
+    public void checkIsDigit(char number) {
+        if (!Character.isDigit(number)) {
             throw new IllegalArgumentException(ISDIGIT_EXCEPTION);
         }
     }
