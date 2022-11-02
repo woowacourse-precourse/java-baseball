@@ -45,4 +45,27 @@ class ValidatorTest {
 				.hasMessageContaining("[Error] 0이라는 숫자는 포함되면 안됩니다.");
 	}
 
+	@ParameterizedTest(name = "''''{0}'''' 게임이 끝난 후, 재시작 또는 종료에 대한 입력을 할 때 1 또는 2를 정상적으로 입력했을 때 테스트")
+	@ValueSource(strings = {"1", "2"})
+	void validGameProceedNumberTest(String gameProceedNumber) {
+		assertThatNoException().isThrownBy(() -> Validator.validateGameProceedNumber(gameProceedNumber));
+	}
+
+	@ParameterizedTest(name = "''''{0}'''' 게임이 끝난 후, 재시작 또는 종료에 대한 입력을 할 때 길이가 1이 아니면 발생하는 에러 테스트")
+	@ValueSource(strings = {"", "aa", "  ", "a1", "01", "1\n"})
+	void invalidGameProceedNumberLengthTest(String gameProceedNumber) {
+		assertThatThrownBy(()-> Validator.validateGameProceedNumber(gameProceedNumber))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("[Error] 유효하지 않은 입력 길이입니다. " +
+						"1(new game) 또는 2(exit game) 중 하나를 입력해 주세요.");
+	}
+
+	@ParameterizedTest(name = "''''{0}'''' 게임이 끝난 후, 재시작 또는 종료에 대한 입력을 할 때 1 또는 2가 아니면 발생하는 에러 테스트")
+	@ValueSource(strings = {"4", "a", " ", "0", "9", "!", "\n"})
+	void invalidGameProceedNumberValueTest(String gameProceedNumber) {
+		assertThatThrownBy(() -> Validator.validateGameProceedNumber(gameProceedNumber))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("[Error] 유효하지 않은 입력입니다. 1(new game) 또는 2(exit game) 중 하나를 입력해 주세요.");
+	}
+
 }
