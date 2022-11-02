@@ -46,8 +46,24 @@ class ApplicationTest extends NsTest {
 
     @Test
     void exceptionTest() {
-
-     }
+        ExceptionCheck exceptionCheck = new ExceptionCheck();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationLength("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationDuplicate("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationInputZero("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationCharDetect("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {

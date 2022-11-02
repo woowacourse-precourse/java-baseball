@@ -25,7 +25,7 @@ public class ExceptionCheck {
 
     public void verificationCharDetect(String userInput) {
         for (int seq = 0; seq < userInput.length(); seq++) {
-            if (!(userInput.charAt(seq) >= 49) && !(userInput.charAt(seq) <= 59)) {
+            if (!(userInput.charAt(seq) >= 49) || !(userInput.charAt(seq) <= 58)) {
                 throw new IllegalArgumentException();
             }
         }
