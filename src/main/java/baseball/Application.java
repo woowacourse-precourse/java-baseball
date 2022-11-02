@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -66,6 +67,15 @@ public class Application {
 
     private static String inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String input = Console.readLine();
+
+        validateInput(input);
+
+        return input;
+    }
+
+    private static void validateInput(String input) {
+        if(!Pattern.matches("^[1-9]{3}", input))
+            throw new IllegalArgumentException("1부터 9까지 3자리의 숫자를 입력해주세요");
     }
 }
