@@ -23,4 +23,12 @@ public class UserTest {
                 assertThrows(IllegalArgumentException.class, () -> user.input());
         assertEquals(exception.getMessage(), Messages.wrongInputSize);
     }
+
+    @Test
+    void 입력에_중복이_있는_경우_예외_처리() {
+        User user = new User();
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> user.input());
+        assertEquals(exception.getMessage(), Messages.duplicateNumber);
+    }
 }
