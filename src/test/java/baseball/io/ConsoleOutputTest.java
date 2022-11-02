@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ConsoleOutputTest {
-
     private static final ConsoleOutput output = new ConsoleOutput();
     private static ByteArrayOutputStream outputMessage;
 
