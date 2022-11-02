@@ -7,15 +7,11 @@ import java.util.List;
 
 public class Start {
     protected static final int answerLength = 3;
-    private List<Integer> correctAnswer;
+    public static List<Integer> correctAnswer;
 
     public Start() {
         guideToStart();
         this.correctAnswer = setCorrectAnswer();
-    }
-
-    public List<Integer> getCorrectAnswer() {
-        return this.correctAnswer;
     }
 
     private List<Integer> setCorrectAnswer() {
@@ -27,7 +23,6 @@ public class Start {
                 randomNumbers.add(randomNumber);
             }
         }
-
         return  randomNumbers;
     }
     private void guideToStart() {

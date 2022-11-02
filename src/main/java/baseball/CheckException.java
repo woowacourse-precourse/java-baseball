@@ -27,7 +27,6 @@ public class CheckException {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        System.out.println(inputNumber);
         return inputNumber;
     }
 
