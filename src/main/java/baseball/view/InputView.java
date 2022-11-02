@@ -14,6 +14,6 @@ public class InputView {
 
 	public static String restartOrExit() {
 		OutputView.printEndGame();
-		return Console.readLine();
+		return InputException.isRestartOrExitNumber(Console.readLine());
 	}
 }

@@ -7,6 +7,8 @@ public class InputException {
 	private static final String ONE_LETTER_DIVISION_REGEX = "";
 	private static final String NUMBER_REGEX = "^[1-9]*$";
 	private static final String ZERO_NUMBER = "0";
+	private static final String RESTART_NUMBER = "1";
+	private static final String EXIT_NUMBER = "2";
 
 	public static String checkNumberForm(String input) {
 		checkNumberCount(input);
@@ -42,5 +44,15 @@ public class InputException {
 		if (input.contains(ZERO_NUMBER)) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	public static String isRestartOrExitNumber(String input) {
+		if (input.equals(RESTART_NUMBER)) {
+			return RESTART_NUMBER;
+		}
+		if (input.equals(EXIT_NUMBER)) {
+			return EXIT_NUMBER;
+		}
+		throw new IllegalArgumentException();
 	}
 }
