@@ -11,8 +11,13 @@ public class Computer {
     final private static int NUM_END_RANGE_RAM = 9;
     final private List<Integer> numThreeRanOfComputerList;
 
+    public int cntStrike;
+    public int cntBall;
+
     public Computer() {
         this.numThreeRanOfComputerList = new ArrayList<>();
+        this.cntStrike = 0;
+        this.cntBall = 0;
     }
 
     public void creatRanNumOfComputerList() {
@@ -43,6 +48,26 @@ public class Computer {
         }
         return true;
     }
+
+    // strike체크 함수
+    private void checkStrike(List<Integer> splitNumOfCompare) {
+        // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
+        boolean isStrike = true;
+        for (int first = 0; first < splitNumOfCompare.size(); first++) {
+            isStrike = false;
+            int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
+            for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
+                int numAtNow = splitNumOfCompare.get(second);
+                if (first == second && numComputerAtNow == numAtNow) {
+                    isStrike = true;
+                }
+            }
+        }
+        if (isStrike) {
+            this.cntStrike = this.cntStrike + 1;
+        }
+    }
+
 
     public boolean isEqualsCollection(Collection collection_1,
         Collection collection_2) {
