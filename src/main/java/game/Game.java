@@ -15,11 +15,11 @@ public class Game {
     private void generateNum() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            extracted(computer, randomNumber);
+            addNum(computer, randomNumber);
         }
     }
 
-    private void extracted(List<Integer> computer, int randomNumber) {
+    private void addNum(List<Integer> computer, int randomNumber) {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber);
         }
