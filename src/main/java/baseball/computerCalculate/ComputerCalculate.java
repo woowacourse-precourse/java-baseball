@@ -1,9 +1,21 @@
 package baseball.computerCalculate;
 
+import baseball.inputs.GameOutput;
+
 import java.util.List;
 
 public class ComputerCalculate {
     final int gameCount = 3;
+
+    public boolean compareUserAndComputer(String userInput, List<Integer> computerMadeNumbers){
+        GameOutput output = new GameOutput();
+        int strikeCount = strikeCount(userInput,computerMadeNumbers);
+        int ballCount = ballCount(userInput,computerMadeNumbers);
+
+        output.printPlayingCount(strikeCount,ballCount);
+
+        return (strikeCount == 3);
+    }
 
     int strikeCount(String userInput, List<Integer> computerMadeNumbers){
         int strikeCount = 0;
