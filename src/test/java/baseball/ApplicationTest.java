@@ -96,6 +96,13 @@ class ApplicationTest extends NsTest {
 		assertThat(user.checkDigit("591",3)).isTrue();
 	}
 
+	@DisplayName("유저의 입력이 숫자로만 구성되어 있는지 확인한다")
+	@Test
+	void testUserInputIsNumberOnly(){
+		assertThat(user.isNumberOnly("591")).isTrue();
+		assertThat(user.isNumberOnly("ad3")).isFalse();
+	}
+
 
 	@Test
 	void 게임종료_후_재시작() {
