@@ -5,14 +5,14 @@
 
 1️⃣ 랜덤 수 발생
 <br>
-- [ ] 요구사항에 제시된 라이브러리를 참조해 Random 값을 추출하기
+- [x] 요구사항에 제시된 라이브러리를 참조해 Random 값을 추출하기
 ```(java)
 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 
 // Random 값 추출
 // 숫자 하나가 int 값으로 담김
 ```
 
-- [ ] 추출한 Random 값 하나 하나를 리스트에 저장하기
+- [x] 추출한 Random 값 하나 하나를 리스트에 저장하기
 ```(java)
 List<Integer> list = new ArrayList<>() // 이렇게 미리 리스트를 하나 선언
 list.add(Randoms.pickNumberInRange(1, 9))
@@ -21,17 +21,18 @@ list.add(Randoms.pickNumberInRange(1, 9))
 ```
 
 2️⃣ 입력받은 수가 예외의 경우인지 확인
-- [ ] 일단 입력값 추출
+- [x] 일단 입력값 추출
 ```(java)
 camp.nextstep.edu.missionutils.Console의 readLine()
 // 사용자 입력 값 추출
 // String으로 받아옴
 ```
 :collision: 이때 IllegalArgumentException을 발생시켜야 하는 경우
-- [ ] 3자리 수가 아닐 때
+- [x] 3자리 수가 아닐 때
   (ex. 1, 23, 19847)
-- [ ] 숫자가 아닌 다른 문자가 들어갈 때
+- [x] 숫자가 아닌 다른 문자가 들어갈 때
   (ex. "메롱", "$#*")
+- [x] 중복 수가 존재할 때
   
   
 3️⃣ 입력받은 수 관리 방법
@@ -88,3 +89,11 @@ if (1번 받아오면) {
 바로 종료} else {
 IllegalArgumentException 발생}
 ```
+
+### \(@^0^@)/ 기능 구현 순서
+application 클래스에 함수 작성 -> 관련 테스트 실시 -> 클래스 분리 -> 리팩토링
+
+### \(@^0^@)/ 리팩토링 시 집중해서 읽어야 하는 부분
+1. 변수명을 더 직관적으로 지을 수 있나 고민해보기
+2. 함수 길이를 줄이면서 더 가독성/효율성 있는 코드를 작성할 수 있나 생각해보기
+3. 구현이 어려웠던 기능 중 자바 라이브러리에 존재하는 기능이 있나 살펴보기
