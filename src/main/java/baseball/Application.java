@@ -11,10 +11,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int user_input = userInput(PLAYING);
-
-        if (user_input == EXCEPTION) return;
-        System.out.println(user_input);
+//        int user_input = userInput(PLAYING);
+//        if (user_input == EXCEPTION) return;
+//        System.out.println(user_input);
     }
 
     private static int userInput(int play_mode) {
