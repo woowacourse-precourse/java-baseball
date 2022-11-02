@@ -34,4 +34,17 @@ public class MethodTest {
 
         assertThat(result).isEqualTo(gameMachine.convertGamerNumber("123"));
     }
+
+    @Test
+    void restartTest() {
+        assertThatThrownBy(() -> gameMachine.restart("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> gameMachine.restart("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThat(true).isEqualTo(gameMachine.restart("1"));
+
+        assertThat(false).isEqualTo(gameMachine.restart("2"));
+    }
 }
