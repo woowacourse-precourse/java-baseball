@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class InputException {
 	private static final int NUMBER_COUNT = 3;
 	private static final String ONE_LETTER_DIVISION_REGEX = "";
+	private static final String NUMBER_REGEX = "^[1-9]*$";
 
 	private void checkNumberCount(String input) {
 		if (input.length() != NUMBER_COUNT) {
@@ -21,4 +22,12 @@ public class InputException {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	private void checkNumber(String input) {
+		if (!input.matches(NUMBER_REGEX)) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+
 }
