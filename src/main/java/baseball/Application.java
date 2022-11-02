@@ -31,11 +31,6 @@ public class Application {
         return ballCounting - strikeCounting;
     }
 
-    public static boolean distinguishNothing (int strikeCounting, int ballCounting) {
-        if (strikeCounting == 0 && ballCounting == 0) return true;
-        else return false;
-    }
-
     public static List<Integer> makeComputerNumber () {
         List<Integer> computerNumberList = new ArrayList<>();
         for (int j = 0; j < 3; j++) {
@@ -57,13 +52,12 @@ public class Application {
         return inputNumberList;
     }
 
+
     public static void main(String[] args) {
 
         String inputNumber = Console.readLine();
         List<Integer> inputNumberList = splitNumber(inputNumber);
         List<Integer> computerNumberList = makeComputerNumber();
-
-
 
     }
 }
