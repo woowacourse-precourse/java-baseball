@@ -29,6 +29,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void testComputersPickIsValid(){
+        Computer computer = new Computer();
+        ArrayList<Integer> picks = new ArrayList<>();
+
+        for (int num: computer.getComputersPick()){
+            assertThat(picks).doesNotContain(num);
+            picks.add(num);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
