@@ -10,6 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Result {
     public int ReOrClose(List<Integer> RandomNumber) {
+        Rules rules = new Rules();
         int strike = 1;
         int ball;
         int want;
@@ -22,6 +23,17 @@ public class Result {
             List<Integer> inputNumber = returnList(inputNum);
             Collections.reverse(inputNumber);
 
+            strike = rules.Strike(RandomNumber, inputNumber);
+            ball = rules.Ball(RandomNumber, inputNumber);
+            if (strike == 0 && ball == 0) {
+                System.out.println("낫싱");
+            } else if (strike != 0 && ball == 0) {
+                System.out.println(strike + " 스트라이크");
+            } else if (strike == 0 && ball != 0) {
+                System.out.println(ball + " 볼");
+            } else {
+                System.out.println(ball + " 볼 " + strike + " 스트라이크");
+            }
         }
         System.out.println("맞췄습니다.");
         System.out.println("다시 하시려면 1번 종료하시려면 2번을 눌러주세요");
