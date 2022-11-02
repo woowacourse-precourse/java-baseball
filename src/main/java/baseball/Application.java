@@ -16,9 +16,20 @@ public class Application {
         }
         return num;
     }
+    public static void checkInput(String s){
+        if (s.length() != 3){
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        }
+        List<Integer> digits = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        for (int digit = 0; digit < s.length(); digit++){
+            if (!digits.contains(Character.getNumericValue(s.charAt(digit)))){
+                throw new IllegalArgumentException("숫자를 입력해주세요.");
+            }
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> test = generateNumber();
-        System.out.print(test);
+        String test = "123";
+        checkInput(test);
     }
 }
