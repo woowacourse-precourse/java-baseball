@@ -24,7 +24,7 @@
   * [X] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
   * [X] 입력받은 숫자를 한글자씩 나누는 함수
   * [ ] char형 변수를 int형으로 변환해주는 함수
-* [ ] 입력된 값이 잘못된 값인지 체크 하는 기능 (잘못된 경우 IllegalArgumentException 을 발생)
+* [X] 입력된 값이 잘못된 값인지 체크 하는 기능 (잘못된 경우 IllegalArgumentException 을 발생)
   * [X] 중복된 숫자가 존재하는 경우
   * [X] 숫자이외 입력이 들어왔는 경우
   * [X] 1~9 사이 숫자가 아닌경우

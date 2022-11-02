@@ -19,9 +19,13 @@ public class User {
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
+        checkLength(numbers);
         ArrayList<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length(); i++) {
+            checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
+            checkVaildNumber(number);
+            checkDuplicationNumber(inputNumbers,number);
             inputNumbers.add(number);
         }
         return inputNumbers;
