@@ -2,12 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
+
+    private static boolean isNothing(List<Integer> userNumber, List<Integer> computerNumber) {
+        return Collections.disjoint(userNumber, computerNumber);
+    }
 
     private static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
