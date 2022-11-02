@@ -38,6 +38,20 @@ public class Computer {
         return true;
     }
 
+    // 숫자의 각각의 자릿수를 List로 리턴  
+    public List splitEachDigitOfNum(int numTosplit) {
+        List list = new ArrayList<>();
+        // TODO: 숫자가 3개인가? 확인
+        String strParseIntArr = "" + numTosplit;
+        String[] strSplitArr = strParseIntArr.split("");
+
+        for (String str : strSplitArr) {
+            Integer intParseStr = Integer.valueOf(str);
+            list.add(intParseStr);
+        }
+        return list;
+    }
+
     public List<Integer> getNumThreeRanOfComputerList() {
         return numThreeRanOfComputerList;
     }
