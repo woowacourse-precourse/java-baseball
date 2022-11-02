@@ -22,3 +22,57 @@
       - 게임을 다시 진행할 지 묻고, 종료 or 재실행하기
 ---
 
+# 도메인 정의 및 기능 체계화
+
+## NumberForBaseballGame
+### 게임에 사용되는 숫자의 검증과 비교 기능을 제공
+#### 숫자 생성 간 유효성 검증 기능 (validateNumberFollowsRule)
+    - 입력 값은 숫자로만 구성되어야 한다 (checkNumberOnlyConsistOfDigits)   
+    - 입력은 세자리 숫자로 이루어져야 한다 (checkNumberConsistOfThreeDigits)  
+    - 각 자리의 숫자는 범위 내의 값을(1 ~ 9 사이) 가져야 한다 (checkEachDigitOfNumberInRange)
+
+#### 숫자간 비교 결과 반환 기능 (getNumberCompareResult)
+    - 타깃 숫자와 동일한 숫자가 존재하는 경우
+    - 위치가 동일하다면, 스트라이크 하나로 친다
+    - 위치가 다르다면, 볼 하나로 친다
+
+## NumberCompareResult
+### 숫자의 비교 결과와 관련된 출력 / 일치 여부를 반환하는 기능을 제공
+#### 정해진 문자열 형식으로 값을 반환하는 기능(toString)
+    - 결과를 ([x 스트라이크 ][y 볼] | [낫싱])과 같은 형태로 구성된 문자열로 반환한다
+
+#### 완벽하게 매칭되었는지 여부를 반환하는 기능(isEqual)
+    - 완벽하게 일치한 경우에만 true, 그 외에는 false를 반환한다
+
+## BaseballGameApplication
+### 야구 게임 (재)실행과 관련된 기능을 제공
+#### 새로운 BaseballGame 생성 기능
+    - BaseballGame 객체를 생성하고, 실행함
+
+#### 게임이 종료된 경우, 재진행 여부를 결정
+    게임이 정상적으로 종료된 경우 -> 사용자로부터 재진행 여부를 입력받음
+    - 1이 입력되면 게임을 다시 실행
+    - 그 외의 값이 입력되는 경우 애플리케이션 종료
+    
+    게임이 비정상적으로 종료된 경우
+    - 애플리케이션 종료
+
+## BaseballGame
+### 실제 야구 게임 운영과 관련된 기능을 제공
+#### 랜덤한 타깃 숫자 생성하기(RandomNumberGenerator 사용)
+    - 무작위 값을 입력받아 타깃 넘버를 생성
+
+#### 사용자로부터 입력받은 숫자와 랜덤한 타깃 숫자의 비교 결과에 따른 동작 수행하기
+    - InputReader를 통해 사용자가 입력한 숫자를 받아옴
+    - 일치하는 경우, 종료 멘트 출력 후 게임 종료
+    - 일치하지 않는 경우, 형식에 맞게 결과 출력 후 입력받기
+
+## InputReader
+### 사용자 입력을 받아 반환하는 인터페이스 기능을 제공
+#### 사용자 입력을 문자열 형태로 반환하기(getUserInput)
+    - camp.nextstep.edu.missionutils.Console의 readline()을 사용한다
+
+## RandomNumberGenerator
+### 무작위 난수를 제공하는 인터페이스 기능을 제공
+#### 3자리 무작위 난수를 생성해 반환(generateRandomNumber)
+    - camp.nextstep.edu.missionutils.Randoms무작위로 생성된 3자리 난수를 반환
