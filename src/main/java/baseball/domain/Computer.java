@@ -20,7 +20,7 @@ public class Computer {
 	private static List<Integer> getThreeUniqueNumbers() {
 		int randomNumber;
 
-		while (threeUniqueNumbers.size() <= SIZE) {
+		while (threeUniqueNumbers.size() < SIZE) {
 			randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
 
 			if (threeUniqueNumbers.contains(randomNumber)) {
