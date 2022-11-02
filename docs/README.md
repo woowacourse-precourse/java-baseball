@@ -14,7 +14,7 @@
   - 1,2가 아닐경우 IllegalArgumentException 을 발생
 
 # ☑️ 구현한 기능 체크
-* [ ] Game 시작 메서드 생성
+* [X] Game 시작 메서드 생성
 * [ ] 랜덤으로 컴퓨터의 3개의 숫자 생성
   * [ ] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
   * [ ] 중복된 숫자가 존재하는지 체크하는 기능
