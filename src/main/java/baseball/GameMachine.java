@@ -3,17 +3,19 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class GameMachine {
     boolean gaming;
-    List<Integer> Computer;
+    List<Integer> computer;
     List<Integer> gamer;
 
     GameMachine() {
         gaming = false;
-        Computer = Collections.emptyList();
+        computer = Collections.emptyList();
+        gamer = Collections.emptyList();
     }
 
     private List<Integer> generateRandomNumber() {
@@ -55,5 +57,25 @@ public class GameMachine {
         }
 
         return input.equals("1");
+    }
+
+    public List<Integer> strikeAndBall() {
+        int strike = 0, ball = 0;
+
+        for(int i = 0; i < 3; i++) {
+            if(computer.get(i).equals(gamer.get(i))) {
+                strike++;
+            }
+        }
+
+        for(int i = 0; i < 3; i++) {
+            if(computer.contains(gamer.get(i))) {
+                ball++;
+            }
+        }
+
+        ball -= strike;
+
+        return Arrays.asList(strike, ball);
     }
 }
