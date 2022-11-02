@@ -1,7 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 
 import java.util.*;
 
@@ -13,12 +13,16 @@ public class Number {
 
     private int[] digits;
 
+    public Number() {}
+
     public int[] getDigits(){
         return this.digits;
     }
 
     private void setDigits(String input) {
-
+        this.digits = Arrays.stream(input.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
     private int getRandomNumber() {
@@ -26,18 +30,25 @@ public class Number {
     }
 
     public void setRandomNumber() {
-        ArrayList<Integer> randomList = new ArrayList<>();
+        ArrayList<Integer> randomNumberList = new ArrayList<>();
 
-        while(randomList.size() != SIZE_OF_NUMBER) {
-            randomList.add(getRandomNumber());
+        while(randomNumberList.size() != SIZE_OF_NUMBER) {
+            randomNumberList.add(getRandomNumber());
         }
-        digits = convertIntegerSetToIntArray(randomList);
+
+        this.digits = convertIntegerSetToIntArray(randomNumberList);
     }
 
     private int[] convertIntegerSetToIntArray (ArrayList<Integer>  randomList) {
         return randomList.stream()
                 .mapToInt(i -> i)
                 .toArray();
+    }
+
+    public void inputPrediction() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String prediction = Console.readLine();
+        setDigits(prediction);
     }
 
 }
