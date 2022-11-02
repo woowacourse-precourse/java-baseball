@@ -40,11 +40,15 @@ public class Game {
         }
     }
     public void incorrectUserAnswerRule(int userAnswer) {
-        int[] digits = Stream.of(String.valueOf(userAnswer)
-                .split("")).mapToInt(Integer::parseInt).toArray();
+        int[] digits = intToList(userAnswer);
         System.out.println(digits.length);
         if (digits.length != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
+    }
+
+    public int[] intToList(int userAnswer) {
+        return Stream.of(String.valueOf(userAnswer)
+                .split("")).mapToInt(Integer::parseInt).toArray();
     }
 }
