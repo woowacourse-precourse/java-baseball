@@ -1,6 +1,9 @@
 package baseball;
 
+import baseball.game.domain.Game;
+import baseball.game.domain.repository.GameRepository;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +29,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자리수_설정_테스트(){
+        GameRepository gameRepository=GameRepository.getInstance();
+        gameRepository.setGame();
+        Game game= gameRepository.getGame();
+        Assertions.assertThat(game.getGameNumber().size()).isEqualTo(3);
     }
 
     @Override
