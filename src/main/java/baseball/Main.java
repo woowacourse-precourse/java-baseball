@@ -20,6 +20,7 @@ public class Main {
 
             Restart = result.ReOrClose(GamerInput, RandomNumber);
         }
+        System.out.println("종료 되었습니다.");
     }
 
     private List<Integer> GetRandomNum() {
