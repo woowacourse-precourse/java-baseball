@@ -24,7 +24,7 @@ public class Application {
         }
     }
 
-    private List<Integer> createNewAnswer() {
+    public List<Integer> createNewAnswer() {
         int startInclusive = 1;
         int lastInclusive = 9;
         int count = 3;
