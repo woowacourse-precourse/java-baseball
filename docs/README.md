@@ -1,7 +1,10 @@
 ## 🗺 설계
 * [x] 애플리케이션 흐름 구상하기
 
-![](application-flow.png)
-* [ ] 애플리케이션 실행 과정에서 필요한 객체 구상하기
+![](application-flow-blueprint.png)
+
+* [x] 애플리케이션 실행 과정에서 필요한 객체 구상하기
+
+![](application-object-blueprint.png)
 
 ## 🛠 기능 구현
