@@ -9,7 +9,10 @@
 ### User
 
 - 1~9 사이의 서로 다른 세 개의 정수 입력
-- 3자리가 아닐 시 `IllegalArgumentException` 발생
+- 잘못된 입력 시 `IllegalArgumentException` 발생
+    - 3자리가 아닐 경우
+    - 숫자 외의 다른 문자를 입력한 경우
+    - 같은 숫자를 중복해서 입력한 경우
 
 ### Operator
 
