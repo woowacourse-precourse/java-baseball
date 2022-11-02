@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.*;
 
 public class Ball {
 	static int MAX_NUM = 987;
@@ -8,6 +7,7 @@ public class Ball {
 	int number;
 	
 	void Ball() {
+		int randomNumber = Randoms.pickNumberInRange(1, 9);
 		number = randomNumberBall();
 	}
 	

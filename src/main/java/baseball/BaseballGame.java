@@ -3,13 +3,13 @@ package baseball;
 import java.util.Scanner;
 
 public class BaseballGame {
-	int ball;
-	int strike;
-	int userAnswer;
-	int userDecision = 2;
-	Ball computer;
+	static int ball;
+	static int strike;
+	static int userAnswer;
+	static int userDecision = 2;
+	static Ball computer;
 	
-	void run() {
+	static void run() {
 		Output.startGame();
 		while(true) {
 			computer = new Ball();
@@ -20,7 +20,7 @@ public class BaseballGame {
 		}
 	}
 	
-	void progressGame() {
+	static void progressGame() {
 		Output.progressGame();
 		
 		Scanner sc = new Scanner(System.in);
@@ -44,7 +44,7 @@ public class BaseballGame {
 		}
 	}
 	
-	void checkBall(String userAnswer) {
+	static void checkBall(String userAnswer) {
 		int result = 0;
 		char[] userNumber = userAnswer.toCharArray();
 		char[] computerNumber = Integer.toString(computer.number).toCharArray();
@@ -60,7 +60,7 @@ public class BaseballGame {
 		ball = result;
 	}
 	
-	void checkStrike(String userAnswer) {
+	static void checkStrike(String userAnswer) {
 		int result = 0;
 		char[] userNumber = userAnswer.toCharArray();
 		char[] computerNumber = Integer.toString(computer.number).toCharArray();

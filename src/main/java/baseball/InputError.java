@@ -39,8 +39,7 @@ public class InputError {
 			Integer.parseInt(userAnswer);
 			return true;
 		}catch(Exception e) {
-			return false;
+			throw new IllegalArgumentException();
 		}
-		
 	}
 }
