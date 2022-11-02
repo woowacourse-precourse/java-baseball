@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class UserInputValidator {
 
-    private static final int INPUT_SIZE = 3;
+    public static final int INPUT_SIZE = 3;
     private static final String ERROR_MESSAGE_NOT_VALID_INPUT_SIZE = "입력 숫자는 총 3개여야 합니다.";
     private static final String ERROR_MESSAGE_DUPLICATE_NUMBER = "입력 숫자 중 중복된 숫자는 존재할 수 없습니다.";
     private static final String ERROR_MESSAGE_NOT_DIGIT = "입력은 숫자만 허용합니다.";
