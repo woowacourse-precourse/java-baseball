@@ -51,11 +51,31 @@ public class Application {
         }
         return result;
     }
+    public static void playMathBaseball(List<Integer> answer){
+        while (true) {
+            String message = "";
+            System.out.println("숫자를 입력해주세요 : ");
+            List<Integer> input = getInput();
+            List<Integer> result = countAnswer(answer, input);
+            if (result.get(0) != 0) {
+                message = message + Character.forDigit(result.get(0), 10) + "볼 ";
+            }
+            if (result.get(1) != 0) {
+                message = message + Character.forDigit(result.get(1), 10) + "스트라이크";
+            }
+            if (message.length() == 0) {
+                message = "낫싱";
+            }
+            System.out.println(message);
+            if (message.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> answer = List.of(1, 2, 3);
-        List<Integer> input = getInput();
-        List<Integer> test = countAnswer(answer, input);
-        System.out.print(test);
+        playMathBaseball(answer);
     }
 }
