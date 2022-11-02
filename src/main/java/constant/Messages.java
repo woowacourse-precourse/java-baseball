@@ -13,5 +13,5 @@ public class Messages {
     public static final String duplicateNumber = "각 다른 숫자가 입력되야 합니다.";
     public static final String wrongInputSize = "입력은 3자리 숫자만 가능합니다.";
     public static final String wrongAnswer = "잘못된 입력입니다.";
-    public static final String finishGame = "게임을 종료합니다.";
+    public static final String finishGame = "게임 종료";
 }
