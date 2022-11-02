@@ -32,6 +32,8 @@ public class View {
 
 	public int endMessage() {
 		Printer.printGameEndingMessage();
+		Printer.printGameContinueQuestionMessage();
+
 		String proceed = Reader.getUserGameProceedNumber();
 
 		return Integer.parseInt(proceed);
