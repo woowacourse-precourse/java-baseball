@@ -29,6 +29,17 @@ public class Application {
 
         return strikeCounting - outCounting;
     }
+
+    public List<Integer> makeComputerNumber () {
+        List<Integer> computerNumberList = new ArrayList<>();
+        for (int j = 0; j < 3; j++) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumberList.contains(randomNumber)) {
+                computerNumberList.add(randomNumber);
+            }
+        }
+        return computerNumberList;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
