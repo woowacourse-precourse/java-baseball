@@ -43,7 +43,7 @@
 <br> 
 
 ### `Computer`
-- [ ] `컴퓨터`에 해당되는 클래스로 생성 시 임의의 3자리 숫자인 `BaseBallGameNumbers`를 생성한다.
+- [X] `컴퓨터`에 해당되는 클래스로 생성 시 임의의 3자리 숫자인 `BaseBallGameNumbers`를 생성한다.
 
 <br>
 
