@@ -3,7 +3,7 @@ package features;
 public class Game {
 
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    public static final int STRIKE = 3;
+    private static final int STRIKE = 3;
 
     // 입력 기능을 실행한다.
     input();
