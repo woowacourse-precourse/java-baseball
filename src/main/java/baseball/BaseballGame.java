@@ -7,11 +7,33 @@ public class BaseballGame {
 	int strike;
 	int user;
 	int userAnswer;
+	int userdecision = 1;
 	Ball computer = new Ball();
-	int decision = 1;
 	
 	void startGame() {
 		Output.startGame();
+	}
+	
+	void progressGame() {
+		Scanner sc = new Scanner(System.in);
+		Output.progressGame();
+		userAnswer = Integer.parseInt(sc.next());
+		if(InputError.checkOverlapError(userAnswer) && InputError.checkOverlapError(userAnswer)){
+			checkBall(Integer.toString(userAnswer));
+			checkStrike(Integer.toString(userAnswer));
+		}else {
+			userdecision = 2;
+		}
+		
+		if(strike == 3) {
+			Output.rightEverything();
+			Output.endGame();
+			userdecision = Integer.parseInt(sc.next());
+		}else if(strike == 0 && ball == 0) {
+			Output.wrongEverything();
+		}else {
+			Output.oneGameResult(ball,strike);
+		}
 	}
 	
 	void checkBall(String userAnswer) {
