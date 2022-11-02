@@ -32,6 +32,20 @@ public class GameInputOutput {
         return userInput;
     }
 
+    public boolean checkingExitInput(){
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int userInput = Integer.parseInt(Console.readLine());
+        if(userInput == 1){
+            return false;
+        }else if(userInput == 2){
+            return true;
+        }else{
+            throw new IllegalArgumentException("1과 2가 아닌 다른 값을 입력하셨습니다.");
+        }
+    }
+
     boolean haveSameNumbers(String input){
         Set<Integer> numberSet = new HashSet<>();
         for(int stringIndex = 0; stringIndex < input.length(); stringIndex++){
