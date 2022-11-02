@@ -64,25 +64,20 @@ public class Application {
         return numberOfBalls;
     }
 
-    public static int disposeOfGameResult(int numberOfStrikes, int numberOfBalls) {
+    public static String disposeOfGameResult(int numberOfStrikes, int numberOfBalls) {
         if (numberOfBalls + numberOfStrikes == 0) {
-            System.out.println("낫싱");
-            return 1;
+            return "낫싱";
         }
         if (numberOfBalls == 0) {
-            System.out.println(numberOfStrikes + "스트라이크");
-            return 1;
+            return numberOfStrikes + "스트라이크";
         }
         if (numberOfStrikes == 0) {
-            System.out.println(numberOfBalls + "볼");
-            return 1;
+            return numberOfBalls + "볼";
         }
         if (numberOfStrikes == 3) {
-            System.out.println("3스트라이크");
-            return 0;
+            return "3스트라이크";
         }
-        System.out.println(numberOfBalls + "볼 " + numberOfStrikes + "스트라이크");
-        return 1;
+        return numberOfBalls + "볼 " + numberOfStrikes + "스트라이크";
     }
 
     public static boolean isValidBaseballNumber(String input) {
