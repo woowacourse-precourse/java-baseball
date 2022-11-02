@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class GamePlay {
 
   public static void start(Class<? extends Game> gameClazz) {
-    Game game = getGameInstance(gameClazz);
     do {
+      Game game = getGameInstance(gameClazz);
       game.play();
     } while (getPlayerWant() == GameStatus.RESTART);
   }
