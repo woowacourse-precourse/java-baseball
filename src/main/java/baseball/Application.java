@@ -6,6 +6,14 @@ import java.util.*;
 
 public class Application {
 
+    private static int getBallCount(List<Integer> userNumber, List<Integer> computerNumber) {
+        int ballCount = 0;
+        for (Integer computerElement : computerNumber) {
+            ballCount += Collections.frequency(userNumber, computerElement);
+        }
+        return ballCount;
+    }
+
     private static boolean isNothing(List<Integer> userNumber, List<Integer> computerNumber) {
         return Collections.disjoint(userNumber, computerNumber);
     }
@@ -25,7 +33,7 @@ public class Application {
 
     private static boolean isDuplicate(String userNumber) {
         Set<Character> notDuplication = new HashSet<>();
-        for (int index = 0; index < userNumber.length(); index ++) {
+        for (int index = 0; index < userNumber.length(); index++) {
             notDuplication.add(userNumber.charAt(index));
         }
         return notDuplication.size() == userNumber.length();
