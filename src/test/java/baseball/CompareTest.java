@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ResultTest{
+public class CompareTest {
 
     @Test
     void 모두_스트라이크_문구_출력_확인() {
@@ -21,8 +21,8 @@ public class ResultTest{
         Numbers cNum = new Numbers(list);
         Numbers uNum = new Numbers(list);
 
-        Result result = new Result(cNum, uNum);
-        assertEquals(result.getResult(), Messages.successMessage);
+        Compare compare = new Compare(cNum, uNum);
+        assertEquals(compare.getResult(), Messages.successMessage);
     }
 
     @Test
@@ -39,9 +39,9 @@ public class ResultTest{
         list.add(new Number(1));
 
         Numbers uNum = new Numbers(list);
-        Result result = new Result(cNum, uNum);
+        Compare compare = new Compare(cNum, uNum);
 
-        assertEquals(result.getResult(), "3볼");
+        assertEquals(compare.getResult(), "3볼");
     }
 
     @Test
@@ -58,9 +58,9 @@ public class ResultTest{
         }
 
         Numbers uNum = new Numbers(list);
-        Result result = new Result(cNum, uNum);
+        Compare compare = new Compare(cNum, uNum);
 
-        assertEquals(result.getResult(), "2볼 1스트라이크");
+        assertEquals(compare.getResult(), "2볼 1스트라이크");
     }
 
     @Test
@@ -77,8 +77,8 @@ public class ResultTest{
         }
 
         Numbers uNum = new Numbers(list);
-        Result result = new Result(cNum, uNum);
+        Compare compare = new Compare(cNum, uNum);
 
-        assertEquals(result.getResult(), "낫싱");
+        assertEquals(compare.getResult(), "낫싱");
     }
 }

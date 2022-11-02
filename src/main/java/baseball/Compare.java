@@ -3,13 +3,17 @@ package baseball;
 import constant.Messages;
 import domain.Numbers;
 
-public class Result {
+public class Compare {
     private int strikeCount;
     private int ballCount;
 
-    public Result(Numbers computerNumber, Numbers userNumber) {
-        strikeCount = computerNumber.countStrike(userNumber);
-        ballCount = computerNumber.countBall(userNumber);
+    public Compare(Numbers computerNumber, Numbers userNumber) {
+        compareNumbers(computerNumber, userNumber);
+    }
+
+    public void compareNumbers(Numbers computerNumber, Numbers userNumber) {
+        strikeCount = computerNumber.checkStrike(userNumber);
+        ballCount = computerNumber.checkBall(userNumber);
     }
 
     public String getResult() {
