@@ -40,7 +40,7 @@
 <br> 
 
 ### `Step`
-- [ ] 각 단계별로 `BaseBallGameContext`를 사용하여 수행하여야 할 동작을 수행한다.
+- [X] 각 단계별로 `BaseBallGameContext`를 사용하여 수행하여야 할 동작을 수행한다.
 
 <br> <br> <br>
 
