@@ -12,11 +12,20 @@ public class User {
 
     private void validateInput(String input){
         validateLength(input);
+        validateType(input);
     }
 
     private void validateLength(String input){
         if (input.length() != 3){
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateType(String input){
+        for (char c: input.toCharArray()){
+            if (!Character.isDigit(c)){
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
