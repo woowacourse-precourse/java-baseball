@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-class BaseBallViewTest {
-    private final BaseBallView baseBallView;
+class BaseballViewTest {
+    private final BaseballView baseBallView;
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
-    BaseBallViewTest() {
-        this.baseBallView = new BaseBallView();
+    BaseballViewTest() {
+        this.baseBallView = new BaseballView();
     }
 
     @BeforeEach
@@ -29,7 +29,25 @@ class BaseBallViewTest {
 
     @Test
     void 게임_시작_문구_출력() {
-        baseBallView.showBaseBallStartView();
+        baseBallView.showStart();
         Assertions.assertEquals("숫자 야구 게임을 시작합니다.\n", output.toString());
+    }
+
+    @Test
+    void 게임_시작_문구_출력_실패() {
+        baseBallView.showStart();
+        Assertions.assertNotEquals("축구 게임\n", output.toString());
+    }
+
+    @Test
+    void 숫자_입력_문구_출력() {
+        baseBallView.showInput();
+        Assertions.assertEquals("숫자를 입력해주세요 : ", output.toString());
+    }
+
+    @Test
+    void 숫자_입력_문구_출력_실패() {
+        baseBallView.showInput();
+        Assertions.assertNotEquals("문자를 입력해주세요 : ", output.toString());
     }
 }
