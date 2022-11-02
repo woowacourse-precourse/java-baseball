@@ -28,7 +28,6 @@ public class NumberBaseBallGame {
         List<Integer> answerNumber = getAnswerNumber();
         while (true) {
             List<Integer> inputNumber = getInputNumber();
-
         }
     }
 
@@ -36,7 +35,9 @@ public class NumberBaseBallGame {
         List<Integer> inputList = new ArrayList<>();
         String number = Input.scanInputNumber();
         Validator.checkInputNumber(number);
-
+        for (int i=0; i<number.length(); i++) {
+            inputList.add(number.charAt(i) - '0');
+        }
         return inputList;
     }
 

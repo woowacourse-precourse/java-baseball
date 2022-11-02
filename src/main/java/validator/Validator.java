@@ -18,7 +18,9 @@ public class Validator {
         if (!isLengthEqualThree(number)) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER_LENGTH);
         }
-
+        if (!isDuplicatedNumber(number)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER);
+        }
     }
 
     private static boolean isCorrectNumber(String number) {
@@ -34,5 +36,19 @@ public class Validator {
 
     private static boolean isLengthEqualThree(String number) {
         return number.length() == 3;
+    }
+
+    private static boolean isDuplicatedNumber(String number) {
+        int[] numberCount = new int[10]; //  0~9 까지 반복된 횟수를 셀 수 있는 배열 생성
+        for (int i=0; i<number.length(); i++) {
+            int index = number.charAt(i) - '0';
+            numberCount[index]++;
+        }
+        for (int count : numberCount) {
+            if (count > 1) {
+                return false;
+            }
+        }
+        return true;
     }
 }

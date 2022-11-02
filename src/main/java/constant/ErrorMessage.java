@@ -11,4 +11,5 @@ public class ErrorMessage {
     public static final String INPUT_NUMBER_LENGTH = ERROR + "입력된 숫자는 3자리여야 합니다." + END_PROGRAM;
 
     public static final String INCORRECT_NUMBER = ERROR + "입력 형식은 숫자여야 합니다." + END_PROGRAM;
+    public static final String DUPLICATED_NUMBER = ERROR + "입력하신 숫자들 중 중복되는 숫자가 있습니다." + END_PROGRAM;
 }
