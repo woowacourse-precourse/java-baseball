@@ -34,6 +34,10 @@ class ConsolePrint {
 
 public class Application {
 
+    private static boolean isGameOver(int strikeCount) {
+        return strikeCount == 3;
+    }
+
     private static int findStrike(int userNumber, int computerNumber) {
         if (userNumber == computerNumber) {
             return 1;
