@@ -11,4 +11,12 @@ public class Util {
 		}
 		return result;
 	}
+
+	public static boolean isStringContainChar(String dec, char ch){
+		return dec.contains(String.valueOf(ch));
+	}
+
+	public static boolean isStringContainInt(String dec, int num){
+		return dec.contains(String.valueOf(num));
+	}
 }

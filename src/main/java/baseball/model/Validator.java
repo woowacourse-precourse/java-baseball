@@ -5,7 +5,7 @@ import baseball.Util;
 import java.util.Arrays;
 
 public class Validator {
-	final String INPUT_VALUE;
+	public final String INPUT_VALUE;
 	final int CORRECT_LENGTH;
 
 	public Validator(String inputValue, int correctLength) {
