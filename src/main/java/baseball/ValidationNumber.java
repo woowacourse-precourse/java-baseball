@@ -6,6 +6,20 @@ import java.util.List;
 
 public class ValidationNumber {
 
+    int gameNumberSize;
+
+    ValidationNumber(int size) {
+        gameNumberSize = size;
+    }
+
+    public void check(String number) {
+        checkIsNumberAndNotHaveZero(number);
+        // 위의 check를 통과했다면 주어진 number에는 숫자만 존재한다. parseInt() 에러 발생 X
+        List<Integer> numberList = stringToIntegerList(number);
+        checkOverlap(numberList, gameNumberSize);
+        checkNumberSize(numberList, gameNumberSize);
+    }
+
     public List<Integer> stringToIntegerList(String number) {
         List<Integer> returnList = new ArrayList<>();
         String[] split = number.split("");
