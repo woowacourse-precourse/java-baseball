@@ -4,13 +4,7 @@ import java.util.List;
 
 public class UserInputValidator {
 
-    private static final UserInputValidator instance = new UserInputValidator();
-
-    private UserInputValidator() {}
-
-    public static UserInputValidator getInstance() {
-        return instance;
-    }
+    public UserInputValidator() {}
 
     public void validate(List<String> inputValue) {
 
