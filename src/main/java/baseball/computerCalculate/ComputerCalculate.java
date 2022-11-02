@@ -16,5 +16,15 @@ public class ComputerCalculate {
         return strikeCount;
     }
 
-
+    int ballCount(String userInput, List<Integer> computerMadeNumbers){
+        int ballCount = 0;
+        for(int numberIndex = 0; numberIndex < gameCount; numberIndex++){
+            int userValue = Integer.parseInt(userInput.substring(numberIndex,numberIndex+1));
+            boolean isNotStrike = !(userValue == computerMadeNumbers.get(numberIndex));
+            if(isNotStrike && computerMadeNumbers.contains(userValue)){
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 }
