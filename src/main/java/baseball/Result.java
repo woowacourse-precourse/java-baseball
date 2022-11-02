@@ -20,4 +20,9 @@ public class Result {
 
         return this.ballCount + Messages.ball + " " + this.strikeCount + Messages.strike;
     }
+
+    public boolean isThreeStrike() {
+        if(this.strikeCount == 3) return true;
+        return false;
+    }
 }
