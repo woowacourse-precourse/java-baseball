@@ -18,15 +18,16 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Input.startGameMessage();
         computer.putAnswer(List.of(1, 2, 3));
         while (true) {
             List<Integer> guessNumbers = inputNumbers();
             List<Integer> results = computer.returnResult(guessNumbers);
             Integer strikeCnt = results.get(0);
             Integer ballCnt = results.get(1);
+            Output.showGuessResult(strikeCnt, ballCnt);
             if(strikeCnt == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                Output.showGameCompleteMessage();
                 break;
             }
         }
