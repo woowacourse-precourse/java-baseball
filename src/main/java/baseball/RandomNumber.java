@@ -13,16 +13,12 @@ public class RandomNumber {
 		int tens = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
 		int units = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
 
-		while (isSameNumber(hundreds, tens, units)) {
+		while (AnswerChecking.isSameNumber(hundreds, tens, units)) {
 			tens = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
 			units = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
 		}
 
 		return (hundreds * 100) + (tens * 10) + units;
-	}
-
-	private static boolean isSameNumber(int hundreds, int tens, int units) {
-		return hundreds == tens || hundreds == units || tens == units;
 	}
 
 }

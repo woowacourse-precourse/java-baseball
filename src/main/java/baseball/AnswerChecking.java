@@ -6,4 +6,8 @@ public class AnswerChecking {
 		return ans == userInputAns;
 	}
 
+	public static boolean isSameNumber(int hundreds, int tens, int units) {
+		return hundreds == tens || hundreds == units || tens == units;
+	}
+
 }
