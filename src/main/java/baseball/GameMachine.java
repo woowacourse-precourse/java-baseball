@@ -48,4 +48,12 @@ public class GameMachine {
 
         return number;
     }
+
+    public boolean restart(String input) throws  RuntimeException {
+        if(!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+
+        return input.equals("1");
+    }
 }
