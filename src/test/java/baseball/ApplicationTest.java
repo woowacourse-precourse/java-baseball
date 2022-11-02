@@ -118,6 +118,32 @@ class ApplicationTest extends NsTest {
         boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(1, 2)));
         assertThat(result).isTrue();
     }
+
+    @Test
+        // Computer.isRightThreeNumOfComputer
+        // 스트라이크 1 , 볼 1
+    void 유저숫자_스트라이트_볼_낫싱_체크_case_4() {
+        int[] testInt = new int[]{134, 324, 413};
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+        int resultStrike = 0;
+        int resultBall = 0;
+        for (int num : testInt) {
+            computer.setCntBall(0);
+            computer.setCntStrike(0);
+            computer.isRightThreeNumOfComputer(num);
+            resultStrike = computer.getCntStrike();
+            resultBall = computer.getCntBall();
+            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
+            resultList.add(list);
+        }
+
+        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(1, 1)));
+        assertThat(result).isTrue();
+    }
     // computer Test 종료
 
     @Test
