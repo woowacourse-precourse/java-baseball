@@ -123,7 +123,7 @@ BUILD SUCCESSFUL in 0s
   - [x] 컴퓨터 숫자가 중복되는지 확인해주는 함수 구현
 
 - User
-  - [ ] 입력한 숫자를 User안에 넣기
+  - [x] 입력한 숫자를 User안에 넣기
 
 - Judgment
   - [ ] user의 숫자와 컴퓨터의 숫자를 비교하여 스트라이크 판정 함수 구현
