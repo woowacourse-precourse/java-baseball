@@ -1,6 +1,7 @@
 package game;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constant.GuideMessage;
 import validator.Validator;
 import view.Input;
 import view.Output;
@@ -13,12 +14,17 @@ public class NumberBaseBallGame {
 
     public static void run() {
         while (true) {
+            String input = "";
             try {
                 playNumberBaseballGame();
-                String input = Input.scanStartOrEndNumber();
+                input = Input.scanStartOrEndNumber();
                 Validator.checkStartOrEndInput(input);
             } catch (IllegalArgumentException e) {
                 Output.printErrorMessage(e);
+                break;
+            }
+            if (input.equals(GuideMessage.TWO)) {
+                Output.printExitProgramMessage();
                 break;
             }
         }
@@ -28,7 +34,7 @@ public class NumberBaseBallGame {
         Output.printStartGuideMessage();
         List<Integer> answerNumber = getAnswerNumber();
 
-        // debug 정답 확인
+        // todo 지우기 정답 확인 테스트
         System.out.println(answerNumber);
 
         while (true) {
