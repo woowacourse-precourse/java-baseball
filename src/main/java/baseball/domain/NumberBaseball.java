@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class NumberBaseball {
     private String computerNumber;
+    private String gameResult;
 
     public NumberBaseball() {
         createComputerNumber();
@@ -26,5 +27,9 @@ public class NumberBaseball {
 
     public String getComputerNumber() {
         return computerNumber;
+    }
+
+    public void compareComputerNumberWith(String userNumber) {
+
     }
 }

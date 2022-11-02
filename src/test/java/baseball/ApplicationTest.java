@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.cli.ConsoleReader;
 import baseball.domain.Checker;
 import baseball.domain.NumberBaseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -39,6 +40,14 @@ class ApplicationTest extends NsTest {
     void testComputerHasDifferent3Numbers() {
         NumberBaseball numberBaseball = new NumberBaseball();
         assertThat(Checker.hasDifferentNumbers(numberBaseball.getComputerNumber()))
-                .isEqualTo(true);
+                .isTrue();
+    }
+
+    @Test
+    void testCompareNumbersAfterRead() {
+        NumberBaseball numberBaseball = new NumberBaseball();
+        String inputString = ConsoleReader.readString();
+        assertThat(Checker.isValidInputNumbers(inputString)).isTrue();
+        numberBaseball.compareComputerNumberWith(inputString);
     }
 }
