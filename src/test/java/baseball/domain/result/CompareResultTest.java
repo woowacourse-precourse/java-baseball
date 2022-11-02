@@ -59,4 +59,18 @@ class CompareResultTest {
         assertThat(compareResult.isAnswer()).isTrue();
         assertThat(compareResult.toString()).isEqualTo("3스트라이크");
     }
+
+    @Test
+    @DisplayName("3 strike가 아닌 경우 정답이 아니다.")
+    public void ifNot3StrikeThenIsNotAnswer() {
+        // given
+        CompareResult compareResult = new CompareResult();
+
+        // when
+        compareResult.addStrike();
+        compareResult.addStrike();
+
+        // when, then
+        assertThat(compareResult.isAnswer()).isFalse();
+    }
 }
