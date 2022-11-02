@@ -10,7 +10,19 @@ public class OutputView {
 		System.out.println(GAME_START_MESSAGE);
 	}
 
+	public static void printBall(Integer ball) {
+		System.out.println(ball + BALL_MESSAGE);
+	}
+
+	public static void printStrike(Integer strike) {
+		System.out.println(strike + STRIKE_MESSAGE);
+	}
+
 	public static void printNothing() {
 		System.out.println(NOTHING_MESSAGE);
+	}
+
+	public static void printBallAndStrike(Integer ball, Integer strike) {
+		System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
 	}
 }

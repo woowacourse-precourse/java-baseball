@@ -47,11 +47,11 @@ public class Judgment {
 		if (ballCount == INIT_COUNT && strikeCount == INIT_COUNT) {
 			OutputView.printNothing();
 		} else if (ballCount == INIT_COUNT) {
-
+			OutputView.printStrike(strikeCount);
 		} else if (strikeCount == INIT_COUNT) {
-
+			OutputView.printBall(ballCount);
 		} else {
-			
+			OutputView.printBallAndStrike(ballCount, strikeCount);
 		}
 	}
 }
