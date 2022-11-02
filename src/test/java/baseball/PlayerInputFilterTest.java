@@ -42,6 +42,7 @@ public class PlayerInputFilterTest {
 
     @Test
     void 입력이_문제없을때_3자리_배열_리턴(){
-        assertThat(playerInputFilter.saveInput("123")).isEqualTo(new int[]{1, 2, 3});
+        playerInputFilter.saveInput("123");
+        assertThat(playerInputFilter.getResultNumbersArray()).isEqualTo(new int[]{1, 2, 3});
     }
 }
