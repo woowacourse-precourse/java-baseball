@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
 
@@ -32,6 +33,10 @@ public class User {
 				.chars()
 				.distinct()
 				.count();
+	}
+
+	public boolean checkDigit(String checkString, int checkLength){
+		return Objects.equals(checkLength, checkString.length());
 	}
 
 }
