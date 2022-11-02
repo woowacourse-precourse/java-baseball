@@ -65,6 +65,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void numberComparisonTest() {
+        List<Integer> correctAnswer = List.of(1, 2, 3);
+        List<Integer> slicedInput = List.of(3, 2, 1);
+        NumberComparison comparison = new NumberComparison();
+        int strikeCount = comparison.checkStrike(correctAnswer, slicedInput);
+        int ballCount = comparison.checkBall(correctAnswer, slicedInput);
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(2);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -4,10 +4,8 @@ import java.util.List;
 
 public class NumberComparison {
 
-    public int checkStrike(List<Integer> correctAnswer) {
+    public int checkStrike(List<Integer> correctAnswer, List<Integer> slicedInput) {
         int count = 0;
-        UserInput input = new UserInput();
-        List<Integer> slicedInput = input.input();
         for (int seq = 0; seq < correctAnswer.size(); seq++) {
             if (correctAnswer.get(seq).equals(slicedInput.get(seq))) {
                 count++;
@@ -16,10 +14,8 @@ public class NumberComparison {
         return count;
     }
 
-    public int checkBall(List<Integer> correctAnswer) {
+    public int checkBall(List<Integer> correctAnswer, List<Integer> slicedInput) {
         int count = 0;
-        UserInput input = new UserInput();
-        List<Integer> slicedInput = input.input();
         for (int seq = 0; seq < correctAnswer.size(); seq++) {
             if (!(correctAnswer.get(seq).equals(slicedInput.get(seq))) && correctAnswer.contains(slicedInput.get(seq))) {
                 count++;
