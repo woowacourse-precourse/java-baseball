@@ -62,4 +62,23 @@ public class ResultTest{
 
         assertEquals(result.getResult(), "2볼 1스트라이크");
     }
+
+    @Test
+    void 낫싱_경우_테스트() {
+        List<Number> list = new ArrayList<>();
+        for (int i = 1; i <= 3; i++) {
+            list.add(new Number(i));
+        }
+        Numbers cNum = new Numbers(list);
+
+        list = new ArrayList<>();
+        for (int i = 4; i <= 6; i++) {
+            list.add(new Number(i));
+        }
+
+        Numbers uNum = new Numbers(list);
+        Result result = new Result(cNum, uNum);
+
+        assertEquals(result.getResult(), "낫싱");
+    }
 }
