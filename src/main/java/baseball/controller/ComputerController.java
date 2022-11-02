@@ -9,11 +9,15 @@ import java.util.Set;
 
 public class ComputerController {
     public void createAnswer() {
-        Set<Integer> numberHolder = new LinkedHashSet<>();
-        while (numberHolder.size() != 3) {
-            numberHolder.add(Randoms.pickNumberInRange(1, 9));
-        }
+        try {
+            Set<Integer> numberHolder = new LinkedHashSet<>();
+            while (numberHolder.size() != Answer.ANSWER_LIST_SIZE) {
+                numberHolder.add(Randoms.pickNumberInRange(Answer.MIN_ANSWER_VALUE, Answer.MAX_ANSWER_VALUE));
+            }
 
-        AnswerHolder.setAnswer(Answer.of(numberHolder));
+            AnswerHolder.setAnswer(Answer.of(numberHolder));
+        } catch (IllegalArgumentException e) {
+            createAnswer();
+        }
     }
 }
