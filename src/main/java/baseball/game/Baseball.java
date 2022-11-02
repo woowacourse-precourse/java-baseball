@@ -1,9 +1,10 @@
 package baseball.game;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static java.lang.Character.getNumericValue;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -32,6 +33,17 @@ public class Baseball implements Game {
     for (int i = 0; i < GOAL_DIGIT; i++) {
       computerNumbers[i] = uniqueNumbers.get(i);
     }
+  }
+
+  private List<Integer> pickUniqueNumbersInRange(int start, int end, int count) {
+    List<Integer> uniqueNumberArray = new ArrayList<>();
+    while (uniqueNumberArray.size() < count) {
+      int randomNumber = Randoms.pickNumberInRange(start, end);
+      if (!uniqueNumberArray.contains(randomNumber)) {
+        uniqueNumberArray.add(randomNumber);
+      }
+    }
+    return uniqueNumberArray;
   }
 
   @Override
