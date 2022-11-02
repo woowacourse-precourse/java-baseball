@@ -1,7 +1,6 @@
 package baseball;
 
 
-import java.util.Arrays;
 
 public class Application {
 
@@ -16,12 +15,9 @@ public class Application {
         answerNumber.setRandomNumber();
         computerNumber = answerNumber.getDigits();
 
-        System.out.println(Arrays.toString(computerNumber));
 
         userPrediction.inputPrediction();
         userNumber = userPrediction.getDigits();
-
-        System.out.println(Arrays.toString(userNumber));
 
     }
 
