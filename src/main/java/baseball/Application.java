@@ -17,16 +17,11 @@ public class Application {
     public static void StartGame(int GameSwitch){
         while(GameSwitch==1){
             List<Integer> computer = getNumberBaseball();
-            int moreGame=playGame(computer);
+            GameSwitch=checkNumber(computer);
         }
-    }
-    public static void playGame(List<Integer> computer){
-        while(true){
 
-            List<Integer> user = getInput();
-            checkNumber(user, computer);
-        }
     }
+
     public static List<Integer> getNumberBaseball() {
 
         List<Integer> computer = new ArrayList<>();
@@ -62,13 +57,20 @@ public class Application {
         return Number;
     }
 
-    public static void checkNumber(List<Integer> user, List<Integer> computer) {
-        while() {
+    public static int checkNumber(List<Integer> computer) {
+        while(true) {
+            List<Integer> user = getInput();
             int strikeCount = strikeCount(user, computer);
-            int gameswtich=CheckGameover(strikeCount);
+            if(strikeCount==3){
+                break;
+            }
             int ballCount = ballCount(user, computer);
             resultAnswer(strikeCount, ballCount);
+            System.out.println();
         }
+        return CheckGameover();
+
+
     }
 
     public static int strikeCount(List<Integer> user, List<Integer> computer) {
@@ -136,29 +138,27 @@ public class Application {
             System.out.print(strikeCount + " 스트라이크 ");
         }
     }
-    public static int CheckGameover(int strikeCount){
-    if(strikeCount==3){
+    public static int CheckGameover(){
         printWin();
         return gameSwitch();
-    } else return 1;
     }
     public static void printWin(){
-
+        System.out.println("3 스트라이크 ");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static int gameSwitch() {
 
-        String gameSwitch = Console.readLine();
-        int contiune=reGame(gameSwitch);
+        String regameAnswer = Console.readLine();
+       return reGame(regameAnswer);
     }
-    public static int reGame(String gameSwitch){
-        if (gameSwitch.equals("1")) {
+    public static int reGame(String regameAnswer){
+        if (regameAnswer.equals("1")) {
             return 1;
-        } else if (gameSwitch.equals("2")) {
+        } else if (regameAnswer.equals("2")) {
             return 2;
         } else return 3;
     }
     }
-}
+

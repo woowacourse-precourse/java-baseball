@@ -69,7 +69,11 @@ class ApplicationTest extends NsTest {
         user.add(1);
         user.add(2);
         user.add(3);
-        checkNumber(user,computer);
+        checkNumber(computer);
+    }
+    @Test
+    void 게임승리_테스트(){
+        System.out.println(CheckGameover());
     }
     @Test
     void 예외_테스트() {
