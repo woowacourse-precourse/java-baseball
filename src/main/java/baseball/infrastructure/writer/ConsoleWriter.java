@@ -8,4 +8,9 @@ public class ConsoleWriter implements Writer {
     public void println(Object message) {
         System.out.println(message);
     }
+
+    @Override
+    public void print(Object message) {
+        System.out.print(message);
+    }
 }
