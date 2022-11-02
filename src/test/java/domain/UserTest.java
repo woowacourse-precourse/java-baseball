@@ -10,10 +10,17 @@ public class UserTest {
     @Test
     void 숫자외_문자_입력시_예외_처리() {
         User user = new User();
-
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> user.input());
 
         assertEquals(exception.getMessage(), Messages.wrongInput);
+    }
+
+    @Test
+    void 입력_길이가_3이_아닌_경우_예외_처리() {
+        User user = new User();
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> user.input());
+        assertEquals(exception.getMessage(), Messages.wrongInputSize);
     }
 }
