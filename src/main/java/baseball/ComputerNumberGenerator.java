@@ -22,6 +22,10 @@ public class ComputerNumberGenerator {
 
     }
 
+    public void makeThreeDigitNumbers(){
+
+    }
+
     public int[] returnNumbersToArray(){
         return new int[]{};
     }
