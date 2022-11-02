@@ -32,4 +32,10 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void testComputerHasDifferent3Numbers() {
+        NumberBaseBall numberBaseBall = new NumberBaseBall();
+        assertThat(numberBaseBall.computer).isEqualTo(true);
+    }
 }
