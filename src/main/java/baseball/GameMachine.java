@@ -80,6 +80,26 @@ public class GameMachine {
         return Arrays.asList(strike, ball);
     }
 
+    public boolean keepGoing(int strike, int ball) {
+        if(ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if(strike != 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        if(strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+
+        if(strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+
+        return true;
+    }
+
     public void run() {
         while(true) {
             gaming = true;
@@ -92,20 +112,7 @@ public class GameMachine {
                 List<Integer> sb = strikeAndBall();
                 int strike = sb.get(0), ball = sb.get(1);
 
-                if(ball != 0) {
-                    System.out.print(ball + "볼 ");
-                }
-                if(strike != 0) {
-                    System.out.print(strike + "스트라이크");
-                }
-                if(strike == 0 && ball == 0) {
-                    System.out.print("낫싱");
-                }
-                System.out.println();
-                if(strike == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    gaming = false;
-                }
+                gaming = keepGoing(strike, ball);
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
