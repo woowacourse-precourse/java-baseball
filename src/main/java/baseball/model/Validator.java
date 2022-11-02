@@ -8,9 +8,9 @@ public class Validator {
 	final String INPUT_VALUE;
 	final int CORRECT_LENGTH;
 
-	public Validator(String INPUT_VALUE, int CORRECT_LENGTH) {
-		this.INPUT_VALUE = INPUT_VALUE;
-		this.CORRECT_LENGTH = CORRECT_LENGTH;
+	public Validator(String inputValue, int correctLength) {
+		this.INPUT_VALUE = inputValue;
+		this.CORRECT_LENGTH = correctLength;
 		isValidate();
 	}
 
