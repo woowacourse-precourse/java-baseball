@@ -73,9 +73,13 @@ public class Application {
             }
         }
     }
+    public static void checkGameState(String s){
+        if (!(s.equals("1") || s.equals("2"))){
+            throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> answer = List.of(1, 2, 3);
-        playMathBaseball(answer);
+        checkGameState("1");
     }
 }
