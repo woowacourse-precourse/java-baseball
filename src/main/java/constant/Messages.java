@@ -12,4 +12,5 @@ public class Messages {
     public static final String inputIsNull = "입력이 안된 경우 `NULL 값은 입력이 될 수 없습니다.";
     public static final String duplicateNumber = "각 다른 숫자가 입력되야 합니다.";
     public static final String wrongInputSize = "입력은 3자리 숫자만 가능합니다.";
+    public static final String wrongAnswer = "잘못된 입력입니다.";
 }
