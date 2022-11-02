@@ -67,10 +67,11 @@
 
 
 - 기능 설명
-    1. `Console.readLine()`을 활용하여 사용자의 입력을 `userInput`에 받는다.
-    2. `userInput`에 대해 `verifyInput()`을 실행하여 규칙에 맞지 않는다면 예외를 발생시킨다.
-    3. `userInput`을 숫자 `List<Integer>` 변환하여 `userNumber`에 저장한다.
-    4. `userNumber`을 반환한다.
+  1. `Console.readLine()`을 활용하여 사용자의 입력을 `userInput`에 받는다.
+  2. `userInput`를 `List<String>` 형태로 변환한 `userInputList`를 생성한다.
+  3. `userInputList`에 대하여 `verifyInput()`을 실행하여 규칙에 맞지 않는다면 예외를 발생시킨다.
+  4. `userInputList`의 원소 각각을 정수로 변환한 `List<Integer>` `userNumber`을 생성한다.
+  5. `userNumber`을 반환한다.
 
 <br> 
 

@@ -1,9 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,7 +39,16 @@ public class Application {
     }
 
     private static List<Integer> inputUserNumber() {
-        return new ArrayList<>();
+        String userInput = Console.readLine();
+        List<String> userInputList = Arrays.asList(userInput.split(""));
+        verifyInput(userInputList);
+        List<Integer> userNumber = userInputList.stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+        return userNumber;
+    }
+
+    private static void verifyInput(List<String> userInputList) {
     }
 
 
