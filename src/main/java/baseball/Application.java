@@ -85,6 +85,20 @@ public class Application {
     }
 
     private static void printResult(List<Integer> ballStrikeCount) {
+        String resultString = "";
+        int ball = ballStrikeCount.get(0);
+        int strike = ballStrikeCount.get(1);
+
+        if (ball > 0) {
+            resultString += (ball + "볼 ");
+        }
+        if (strike > 0) {
+            resultString += (strike + "스트라이크");
+        }
+        if (resultString.equals("")) {
+            resultString = "낫싱";
+        }
+        System.out.println(resultString.trim());
     }
 
     private static void inputKeepPlaying() {
