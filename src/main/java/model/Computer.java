@@ -2,6 +2,7 @@ package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Computer {
@@ -31,11 +32,25 @@ public class Computer {
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
     public Boolean isRightThreeNumOfComputer(int numOfCompare) {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
+        ArrayList<Integer> splitNumOfCompare = new ArrayList<>();
+
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
-        // TODO: 2.1 if 포함한다면?
-        // TODO: 2.1.1 스트라이크 볼 체크
-        // TODO: 2.2 else 포함안한다면? => 낫싱
+        if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
+            // TODO: 2.1 if 포함한다면?
+            // TODO: 2.1.1 스트라이크 볼 체크
+        } else {
+            // TODO: 2.2 else 포함안한다면? => 낫싱
+        }
         return true;
+    }
+
+    private boolean isEqualsCollection(Collection collection_1,
+        Collection collection_2) {
+        if (collection_1.containsAll(collection_2)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
