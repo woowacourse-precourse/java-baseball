@@ -6,6 +6,7 @@ import view.Input;
 import view.Output;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class NumberBaseBallGame {
@@ -26,6 +27,10 @@ public class NumberBaseBallGame {
     private static void playNumberBaseballGame() throws IllegalArgumentException {
         Output.printStartGuideMessage();
         List<Integer> answerNumber = getAnswerNumber();
+
+        // debug 정답 확인
+        System.out.println(answerNumber);
+
         while (true) {
             int[] strikeAndBallCount = new int[2]; // strike와 ball 갯수를 파악할 수 있는 공간이 2인 배열 생성
             List<Integer> inputNumber = getInputNumber();
@@ -43,12 +48,16 @@ public class NumberBaseBallGame {
     private static void countStrikeAndBall(int[] strikeAndBallCount, List<Integer> answerNumber, List<Integer> inputNumber) {
         int strikeCount = 0;
         int ballCount = 0;
+        HashSet<Integer> leftNumSet = new HashSet<>(answerNumber);
         for (int i=0; i<3 ; i++) {
-            if (answerNumber.get(i) == inputNumber.get(i)) {
+            int answerDigit = answerNumber.get(i);
+            int inputDigit = inputNumber.get(i);
+            if (answerDigit == inputDigit) {
                 strikeCount++;
+                leftNumSet.remove(answerDigit);
                 continue;
             }
-            if (answerNumber.contains(inputNumber.get(i))) {
+            if (leftNumSet.contains(inputNumber.get(i))) {
                 ballCount++;
             }
         }
@@ -69,7 +78,7 @@ public class NumberBaseBallGame {
 
     private static List<Integer> getAnswerNumber() {
         List<Integer> answerList = new ArrayList<>();
-        while (answerList.size() <= 3) {
+        while (answerList.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
             if (!answerList.contains(number)) {
                 answerList.add(number);
