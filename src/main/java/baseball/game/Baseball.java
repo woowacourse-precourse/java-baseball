@@ -32,6 +32,12 @@ public class Baseball implements Game {
 
   @Override
   public void play() {
+    do {
 
+    } while (isNotCorrect());
+  }
+
+  private boolean isNotCorrect() {
+    return this.strike != GOAL_DIGIT;
   }
 }
