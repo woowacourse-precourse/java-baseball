@@ -39,6 +39,7 @@ public class Baseball implements Game {
     do {
       input();
       execute();
+      printResult();
     } while (isNotCorrect());
   }
 
@@ -123,5 +124,23 @@ public class Baseball implements Game {
       order++;
     }
     return ball;
+  }
+
+  private void printResult() {
+    StringBuilder result = new StringBuilder();
+    if (this.ball == 0 && this.strike == 0) {
+      result.append("낫싱");
+    }
+    if (this.ball != 0) {
+      result.append(this.ball).append("볼 ");
+    }
+    if (this.strike != 0) {
+      result.append(this.strike).append("스트라이크 ");
+    }
+    result.append("\n");
+    if (this.strike == 3) {
+      result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    }
+    System.out.println(result);
   }
 }
