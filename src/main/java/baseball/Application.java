@@ -22,6 +22,20 @@ public class Application {
         return randomNumbers;
     }
 
+    private static List<Integer> disposeOfInputNumber() {
+        String input = Console.readLine();
+        if (!isValidBaseballNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        List<Integer> inputNumbers = new ArrayList<>();
+
+        for (char number : input.toCharArray()) {
+            inputNumbers.add(number - '0');
+        }
+
+        return inputNumbers;
+    }
     private static boolean isValidBaseballNumber(String input) {
         if (input.length() != 3) {
             return false;
