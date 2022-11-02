@@ -39,10 +39,10 @@ camp.nextstep.edu.missionutils.Console의 readLine()
 <br>
 
 :collision: 정상적으로 세자리 수를 입력받은 경우
-- [ ] String으로 받아온 숫자를 Integer형 리스트로 변환 + return
+- [x] String으로 받아온 숫자를 Integer형 리스트로 변환 + return
 ```(java)
-str.split("") // 문자열을 한자리 수로 쪼개기
-Arrays.asList() // 위에서 쪼개진 문자열(배열)을 list로 변환
+Character.getNumericValue(문자열.인덱스 안의 값) 
+// 문자열 인덱스 하나의 char 값을 integer로 바꿔 리스트에 넣어줌  
 ```
 
 4️⃣ 두 수의 비교를 통한 ball / strike 판별
@@ -54,7 +54,7 @@ Arrays.asList() // 위에서 쪼개진 문자열(배열)을 list로 변환
 <br>
 - [ ] ball 개수를 구한다
 ```(java)
-int ballNumber = list.contains(입력수의 인덱스)
+if(list.contains(입력수의 인덱스))
 // contain 함수를 통해 겹치는 수의 개수를 찾는다   
 ```
 :collision: 이 때 ballNumber = 0 이면
@@ -93,7 +93,18 @@ IllegalArgumentException 발생}
 ### \(@^0^@)/ 기능 구현 순서
 application 클래스에 함수 작성 -> 관련 테스트 실시 -> 클래스 분리 -> 리팩토링
 
+<br>
+
 ### \(@^0^@)/ 리팩토링 시 집중해서 읽어야 하는 부분
 1. 변수명을 더 직관적으로 지을 수 있나 고민해보기
 2. 함수 길이를 줄이면서 더 가독성/효율성 있는 코드를 작성할 수 있나 생각해보기
 3. 구현이 어려웠던 기능 중 자바 라이브러리에 존재하는 기능이 있나 살펴보기
+
+<br>
+
+### \(@^0^@)/ 커밋 컨벤션
+1. feat: 함수의 기능 구현
+2. fix: 기능 수정(무언가 오류 발생했을 시에)
+3. refactor: 변수명 수정, ..
+4. docs: 리드미 수정
+5. test: 테스트 코드 작성
