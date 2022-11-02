@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    private Computer computer;
+    private static Computer computer;
 
-    public BaseballGame init() {
-        this.computer = new Computer();
-        return this;
+    private BaseballGame() {
+    }
+
+    public static BaseballGame init() {
+        BaseballGame game = new BaseballGame();
+        game.computer = new Computer();
+        return game;
     }
 
     public void start() {
