@@ -90,6 +90,12 @@ class ApplicationTest extends NsTest {
 		assertThat(user.hasDuplication("221")).isTrue();
 	}
 
+	@DisplayName("유저가 입력한 숫자의 길이가 설정된 숫자와 같은지 확인한다")
+	@Test
+	void testUserInputLength(){
+		assertThat(user.checkDigit("591",3)).isTrue();
+	}
+
 
 	@Test
 	void 게임종료_후_재시작() {
