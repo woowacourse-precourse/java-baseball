@@ -16,7 +16,7 @@ public class GameMachine {
         Computer = Collections.emptyList();
     }
 
-    List<Integer> generateRandomNumber() {
+    private List<Integer> generateRandomNumber() {
         List<Integer> random = new ArrayList<>();
         while(random.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -28,7 +28,7 @@ public class GameMachine {
         return random;
     }
 
-    List<Integer> convertGamerNumber(String input) throws RuntimeException {
+    public List<Integer> convertGamerNumber(String input) throws RuntimeException {
         if(input.length() != 3) {
             throw new IllegalArgumentException();
         }
