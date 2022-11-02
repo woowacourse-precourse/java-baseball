@@ -31,4 +31,11 @@ public class MyFunctionTest {
         assertThat(Application.isEnterNumberExcept(hasNoNumber)).isEqualTo(true);
         assertThat(Application.isEnterNumberExcept(overLength_3)).isEqualTo(true);
     }
+
+    @Test
+    void 사용자_입력숫자_리스트_구성_확인() {
+        String correctEnter = "123";
+        List<Integer> correctEnterList = List.of(1,2,3);
+        assertThat(Application.getEnterNumber(correctEnter)).isEqualTo(correctEnterList);
+    }
 }
