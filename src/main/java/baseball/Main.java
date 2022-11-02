@@ -13,12 +13,8 @@ public class Main {
         int Restart = 1;
         while (Restart == 1) {
             List<Integer> RandomNumber = GetRandomNum();
-            int GamerInput;
             System.out.println("숫자 야구 게임을 시작하겠습니다.");
-            System.out.print("숫자를 입력해 주세요 : ");
-            GamerInput = Integer.parseInt(Console.readLine());
-
-            Restart = result.ReOrClose(GamerInput, RandomNumber);
+            Restart = result.ReOrClose(RandomNumber);
         }
         System.out.println("종료 되었습니다.");
     }
