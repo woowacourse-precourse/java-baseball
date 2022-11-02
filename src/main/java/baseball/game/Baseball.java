@@ -2,6 +2,7 @@ package baseball.game;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Baseball implements Game {
@@ -33,11 +34,22 @@ public class Baseball implements Game {
   @Override
   public void play() {
     do {
-
+      input();
     } while (isNotCorrect());
   }
 
   private boolean isNotCorrect() {
     return this.strike != GOAL_DIGIT;
+  }
+
+  private void input() {
+    String playerInput = Console.readLine();
+    if (isInvalid(playerInput)) {
+      throw new IllegalArgumentException();
+    }
+  }
+
+  private boolean isInvalid(String playerInput) {
+    return false;
   }
 }
