@@ -19,9 +19,9 @@
 * [X] 랜덤으로 컴퓨터의 3개의 숫자 생성
   * [X] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
   * [X] 중복된 숫자가 존재하는지 체크하는 기능
-* [ ] 사용자에게 입력 받는 함수
-  * [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-  * [ ] 입력받은 숫자를 한글자씩 나누는 함수
+* [X] 사용자에게 입력 받는 함수
+  * [X] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+  * [X] 입력받은 숫자를 한글자씩 나누는 함수
 * [ ] 입력된 값이 잘못된 값인지 체크 하는 기능 (잘못된 경우 IllegalArgumentException 을 발생)
   * [ ] 중복된 숫자가 존재하는 경우
   * [ ] 1~9 사이 숫자가 아닌경우

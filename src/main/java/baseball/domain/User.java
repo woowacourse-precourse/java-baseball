@@ -11,6 +11,7 @@ public class User {
 
     public void getUserNumbers() {
         String numbers = Console.readLine();
+        this.userNumbers = parseStringToInt(numbers);
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers){
@@ -20,4 +21,6 @@ public class User {
         }
         return inputNumbers;
     }
+
+    public void check
 }
