@@ -5,16 +5,17 @@ import baseball.system.AnswerHolder;
 import baseball.system.conversion.Converter;
 import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.validation.NumberValidator;
+import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.validation.Validator;
 import baseball.view.InputView;
 import baseball.vo.Answer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -64,11 +65,10 @@ class ApplicationTest extends NsTest {
         assertThat(AnswerHolder.getAnswer()).isNotNull();
     }
 
-    @Disabled("현재는 타입 캐스트 예외가 발생한다.")
     @ParameterizedTest(name = "{displayName} {index} - {0}")
-    @MethodSource("sourceOfIntegerListNotIntegerBetWeen1And9")
+    @MethodSource("sourceOfIntegerListNotBetWeen1And9")
     @DisplayName("Answer 에 저장할 값이 1에서 9 사이의 정수가 아니면 예외가 발생한다.")
-    void givenIntegerListNotIntegerBetWeen1And9_whenValidatingGiven_ThenThrowsException(List<?> given) {
+    void givenIntegerListNotBetWeen1And9_whenValidatingGiven_ThenThrowsException(List<?> given) {
         // when & then
         Validator numberValidator = new NumberValidator();
 
@@ -115,13 +115,10 @@ class ApplicationTest extends NsTest {
                 .hasMessage(NumberValidator.DUPLICATING_NUMBER_MESSAGE);
     }
 
-    public static Stream<List> sourceOfIntegerListNotIntegerBetWeen1And9() {
+    public static Stream<List<Integer>> sourceOfIntegerListNotBetWeen1And9() {
         return Stream.of(
-                List.of("1", 3, 4),
                 List.of(0, 6, 3),
-                List.of(4, 6, 10),
-                List.of(2, 6.5, 8),
-                List.of(2, "-", 7)
+                List.of(4, 6, 10)
         );
     }
 
@@ -132,7 +129,7 @@ class ApplicationTest extends NsTest {
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
 
-        Mockito.mockStatic(Console.class);
+        MockedStatic<Console> mockedStatic = Mockito.mockStatic(Console.class);
         Mockito.when(Console.readLine()).thenReturn("");
         // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
 
@@ -143,6 +140,9 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(outputStreamCaptor.toString().trim())
                 .isEqualTo(InputView.NUMBER_INPUT_NUDGE_MESSAGE.trim());
+
+        // after
+        mockedStatic.close();
     }
 
     @Test
@@ -151,7 +151,7 @@ class ApplicationTest extends NsTest {
         String EXPECTED = "468";
 
         //given
-        Mockito.mockStatic(Console.class);
+        MockedStatic<Console> mockStatic = Mockito.mockStatic(Console.class);
         Mockito.when(Console.readLine()).thenReturn(EXPECTED);
         // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
 
@@ -161,6 +161,9 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(target).isEqualTo(EXPECTED);
+
+        //after
+        mockStatic.close();
     }
 
     @Test
@@ -170,10 +173,29 @@ class ApplicationTest extends NsTest {
         String input = "467";
 
         //when
-        Converter converter = new StringToIntegerListConverter();
-        List<Integer> target = (List<Integer>) converter.convert(input);
+        Converter<String, List<Integer>> converter = new StringToIntegerListConverter();
+        List<Integer> target = converter.convert(input);
 
         //then
         assertThat(target).containsExactly(4, 6, 7);
+    }
+
+    @ParameterizedTest(name = "{displayName} {index} - {0}")
+    @MethodSource("sourceOfStringIncludingNotNaturalNumber")
+    @DisplayName("사용자로부터 받은 입력값이 자연수로 이루어지지 않은 경우 예외가 발생한다.")
+    void givenIntegerListIncludingNotNaturalNumber_whenValidatingGiven_ThenThrowsException(String given) {
+        // when
+        Validator validator = new StringToIntegerListConversionValidator();
+        assertThatThrownBy(() -> validator.validate(given))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(StringToIntegerListConversionValidator.VALUE_NOT_NATURAL_NUMBER_MESSAGE);
+    }
+
+    public static Stream<String> sourceOfStringIncludingNotNaturalNumber() {
+        return Stream.of(
+                "일34",
+                "26.6",
+                "2-7"
+        );
     }
 }

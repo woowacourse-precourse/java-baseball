@@ -13,7 +13,7 @@ public class NumberValidator extends AbstractValidator {
     @Override
     public void checkSupports(Object target) {
         if (!(target instanceof List)) {
-            throwValidatorNotSupportedException(target.getClass().toString());
+            throwValidatorNotSupportedException(target.getClass().getSimpleName());
         }
     }
 
