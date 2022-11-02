@@ -38,6 +38,7 @@ class ApplicationTest extends NsTest {
     @Test
     void testComputerHasDifferent3Numbers() {
         NumberBaseball numberBaseball = new NumberBaseball();
-        assertThat(Checker.hasDifferentNumbers(numberBaseball.computerNumber)).isEqualTo(true);
+        assertThat(Checker.hasDifferentNumbers(numberBaseball.getComputerNumber()))
+                .isEqualTo(true);
     }
 }
