@@ -1,4 +1,8 @@
-package model;
+package baseball.model;
+
+import baseball.Util;
+
+import java.util.Arrays;
 
 public class Validator {
 	final String INPUT_VALUE;
@@ -23,4 +27,10 @@ public class Validator {
 		}
 	}
 
+	private void isAllDistinctNum(){
+		String distinctString = Util.getDistinctString(INPUT_VALUE);
+		if (distinctString.length() != INPUT_VALUE.length()){
+			throw new IllegalArgumentException("Duplicate number found");
+		}
+	}
 }
