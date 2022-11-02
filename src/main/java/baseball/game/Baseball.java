@@ -50,10 +50,16 @@ public class Baseball implements Game {
   }
 
   private boolean isInvalid(String playerInput) {
-    return isInvalidLength(playerInput);
+    return isInvalidLength(playerInput) ||
+        isAllCharacterNotNumeric(playerInput);
   }
 
   private boolean isInvalidLength(String playerInput) {
     return playerInput.length() != GOAL_DIGIT;
+  }
+
+  private boolean isAllCharacterNotNumeric(String playerInput) {
+    return playerInput.chars()
+        .allMatch(Character::isDigit);
   }
 }
