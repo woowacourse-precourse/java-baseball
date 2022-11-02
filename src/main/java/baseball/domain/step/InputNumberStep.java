@@ -14,7 +14,7 @@ public class InputNumberStep implements Step {
     @Override
     public void execute(BaseBallGameContext context) {
         Writer writer = context.writer();
-        writer.println(INPUT_NUMBER_MESSAGE);
+        writer.print(INPUT_NUMBER_MESSAGE);
 
         Reader reader = context.reader();
         context.changePlayerNumbers(new BaseBallGameNumbers(reader.readLine()));

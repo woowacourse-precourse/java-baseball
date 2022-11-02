@@ -18,7 +18,7 @@ public class DetermineRestartGameStep implements Step {
     @Override
     public void execute(BaseBallGameContext context) {
         Writer writer = context.writer();
-        writer.println(RESTART_GAME_MESSAGE);
+        writer.print(RESTART_GAME_MESSAGE);
 
         Reader reader = context.reader();
         String input = reader.readLine();
@@ -36,7 +36,7 @@ public class DetermineRestartGameStep implements Step {
             return;
         }
 
-        throw new IllegalArgumentException("0 또는 1의 값을 입력하지 않았습니다.");
+        throw new IllegalArgumentException("1 또는 2의 값을 입력하지 않았습니다.");
     }
 
     @Override

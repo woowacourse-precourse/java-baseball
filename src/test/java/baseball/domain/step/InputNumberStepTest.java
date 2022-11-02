@@ -66,7 +66,7 @@ class InputNumberStepTest {
         inputNumberStep.execute(context);
 
         // then
-        verify(writer, times(1)).println(inputNumberMessage);
+        verify(writer, times(1)).print(inputNumberMessage);
     }
 
     @Test

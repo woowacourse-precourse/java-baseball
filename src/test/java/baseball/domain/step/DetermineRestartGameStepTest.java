@@ -53,7 +53,7 @@ class DetermineRestartGameStepTest {
         determineRestartGameStep.execute(context);
 
         // then
-        verify(writer, times(1)).println(restartGameMessage);
+        verify(writer, times(1)).print(restartGameMessage);
     }
 
     @ParameterizedTest(name = "사용자가 잘못된 입력( EX[ {argumentsWithNames} ] )을 입력한 경우 IllegalArgumentException을 발생시킨다")
