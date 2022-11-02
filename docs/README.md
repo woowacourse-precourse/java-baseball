@@ -22,3 +22,4 @@
 5. getNumberOfStrikes(): 스트라이크 개수 계산
 6. getNumberOfBalls(): 볼 개수 계산
 7. disposeOfGameResult(): 점수 계산 후 출력, 상황에 따른 값 반환
+8. determineStopOrNot() : 게임이 종료되었을 시, 재시작과 종료를 처리해주는 메서드
