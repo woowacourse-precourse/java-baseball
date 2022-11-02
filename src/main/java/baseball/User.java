@@ -9,9 +9,9 @@ public class User {
 
     public static List<Integer> toIntUserInput(String userInput) {
         List<Integer> userNum = new ArrayList<>();
-        int[] userInputArr =  new int[] {Integer.valueOf(userInput)};
+        String[] userInputArr = userInput.split("");
         for (int i = 0; i < userInput.length(); i++) {
-            userNum.add(userInputArr[i]);
+            userNum.add(Integer.valueOf(userInputArr[i]));
         }
         return userNum;
     }
