@@ -35,6 +35,16 @@ public class Computer {
 		return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, MAX_ANSWER_COUNT);
 	}
 
+	public boolean isAnswer(Player player) {
+		playerBaseballNumberList = player.getCurrentUserAnswer();
+		return IntStream.range(MIN_START_SEQ, MAX_ANSWER_COUNT)
+				.allMatch(this::isSameNumber);
+	}
+
+	private boolean isSameNumber(int seq) {
+		return playerBaseballNumberList.get(seq).compareTo(answerBaseballNumberList.get(seq)) == 0;
+	}
+
 	public CompareResultDto countBallAndStrike(Player player) {
 		initCount();
 
