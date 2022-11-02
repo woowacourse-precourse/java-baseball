@@ -29,9 +29,14 @@ public class Application {
         String[] inputArray = Console.readLine().split("");
 
         List<Integer> userAnswer = new ArrayList<>();
-        for (String input : inputArray) {
-            userAnswer.add(Integer.parseInt(input));
+        try {
+            for (String input : inputArray) {
+                userAnswer.add(Integer.parseInt(input));
+            }
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
+
         return userAnswer;
     }
 
