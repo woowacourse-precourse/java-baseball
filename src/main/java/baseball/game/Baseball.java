@@ -89,7 +89,9 @@ public class Baseball implements Game {
   }
 
   private void setPlayerNumbers(String playerInput) {
-    int[] playerInputArray = playerInput.chars().toArray();
+    int[] playerInputArray = playerInput.chars()
+        .map(Character::getNumericValue)
+        .toArray();
     System.arraycopy(playerInputArray, 0,
         this.playerNumbers, 0, playerInputArray.length);
   }
