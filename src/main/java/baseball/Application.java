@@ -8,23 +8,44 @@ public class Application {
     private static final int PLAYING = 3;
     private static final int READY = 1;
     private static final int EXCEPTION = -1;
+    private static final int ONEMORETIME = 1;
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int regame_input = 1;
-        int playing_input = 1;
+        boolean playing_exception = false;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            playing_input = startGame();
-            if (playing_input == EXCEPTION) return;
+            playing_exception = startGame();
+            if (playing_exception) return;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             regame_input = userInput(READY);
             if (regame_input == EXCEPTION) return;
-        } while (regame_input == 1);
+        } while (regame_input == ONEMORETIME);
     }
 
-    private static int startGame() {
+    private static boolean startGame() {
+        boolean answer=false;
+        int playing_input=1;
+        int computer_num;
+
+        computer_num=initComputerNum();
+        while(!answer){
+            System.out.print("숫자를 입력해주세요 : ");
+            playing_input=userInput(PLAYING);
+            if(playing_input==EXCEPTION) return true;
+            answer=hint(computer_num,playing_input);
+        }
+        return false;
+    }
+
+    private static boolean hint(int computer_num,int player_num){
+        return true;
+    }
+
+    private static int initComputerNum(){
         return 1;
     }
 
