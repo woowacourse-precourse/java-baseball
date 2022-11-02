@@ -33,4 +33,14 @@ public class Input {
 			return false;
 		}
 	}
+	
+	boolean checkTextError(String userAnswer){
+		try {
+			Integer.parseInt(userAnswer);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
+	}
 }
