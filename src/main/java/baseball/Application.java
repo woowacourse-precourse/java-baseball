@@ -37,6 +37,13 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        Set<Integer> userAnswerSet = new HashSet<>(userAnswer);
+        if (userAnswer.size() != answerLength) {
+            throw new IllegalArgumentException();
+        } else if (userAnswer.size() != userAnswerSet.size()) {
+            throw new IllegalArgumentException();
+        }
+
         return userAnswer;
     }
 
