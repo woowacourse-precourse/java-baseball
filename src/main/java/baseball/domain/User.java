@@ -13,7 +13,7 @@ public class User {
 		this.number = new ArrayList<>();
 	}
 
-	public void init() {
+	private void init() {
 		number.clear();
 	}
 
@@ -22,5 +22,9 @@ public class User {
 		number.addAll(Arrays.stream(inputNumber.split(ONE_LETTER_DIVISION_REGEX))
 			.map(Integer::parseInt)
 			.collect(Collectors.toList()));
+	}
+
+	public List<Integer> getNumber() {
+		return number;
 	}
 }

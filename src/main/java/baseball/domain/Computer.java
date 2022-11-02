@@ -11,6 +11,7 @@ public class Computer {
 	private static final int NUMBER_COUNT = 3;
 	private final List<Integer> number;
 
+
 	public Computer() {
 		number = new ArrayList<>();
 	}
@@ -31,5 +32,9 @@ public class Computer {
 		if (!number.contains(randomNumber)) {
 			number.add(randomNumber);
 		}
+	}
+
+	public List<Integer> getNumber() {
+		return number;
 	}
 }

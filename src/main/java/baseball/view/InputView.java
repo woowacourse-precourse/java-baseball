@@ -7,7 +7,7 @@ public class InputView {
 	private static final String INPUT_RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static String userNumber() {
-		System.out.println(INPUT_USER_NUMBER_MESSAGE);
+		System.out.print(INPUT_USER_NUMBER_MESSAGE);
 		return Console.readLine();
 	}
 }
