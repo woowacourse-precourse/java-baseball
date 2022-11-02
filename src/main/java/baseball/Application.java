@@ -1,14 +1,15 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Application {
     private static final int PLAYING = 3;
     private static final int READY = 1;
     private static final int EXCEPTION = -1;
     private static final int ONEMORETIME = 1;
+    private static final int NUMBEROFDIGITS= 3;
 
 
     public static void main(String[] args) {
@@ -29,24 +30,42 @@ public class Application {
     private static boolean startGame() {
         boolean answer=false;
         int playing_input=1;
-        int computer_num;
+        List<Integer> computer_num;
+        List<Integer> player_num;
 
         computer_num=initComputerNum();
         while(!answer){
             System.out.print("숫자를 입력해주세요 : ");
             playing_input=userInput(PLAYING);
             if(playing_input==EXCEPTION) return true;
-            answer=hint(computer_num,playing_input);
+            player_num=int_to_list(playing_input);
+            answer=hint(computer_num,player_num);
         }
         return false;
     }
 
-    private static boolean hint(int computer_num,int player_num){
+    private static boolean hint(List<Integer> computer_num,List<Integer> player_num){
         return true;
     }
 
-    private static int initComputerNum(){
-        return 1;
+    private static List<Integer> int_to_list(int playing_input){
+        List<Integer> list_num=new ArrayList<>();
+        for(int i=0;i<NUMBEROFDIGITS;i++){
+            list_num.add(playing_input%10);
+            playing_input=playing_input/10;
+        }
+        return list_num;
+    }
+
+    private static List<Integer> initComputerNum(){
+        List<Integer> computer_num = new ArrayList<>();
+        while (computer_num.size() < NUMBEROFDIGITS) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer_num.contains(randomNumber)) {
+                computer_num.add(randomNumber);
+            }
+        }
+        return computer_num;
     }
 
     private static int userInput(int play_mode) {
