@@ -63,7 +63,7 @@
     - [x] 같은 번호가 존재하는 경우
     - [x] 길이가 3이 아닌 경우
 
-- [ ] 3 strike 시, 게임 종료 (Referee)
+- [x] 3 strike 시, 게임 종료 (Referee)
 
 - [x] 입력받은 3개의 숫자 예외 처리 (IllegalArgumentException) => 프로그램 종료
   - [x] 알파벳인 경우 (BallNumber)
