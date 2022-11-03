@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
+import baseball.domain.ConstValue;
 import baseball.domain.User;
 import baseball.service.Judgment;
 import baseball.view.InputView;
@@ -10,7 +11,6 @@ public class BaseballGame {
 	private final Computer computer;
 	private final User user;
 	private final Judgment judgment;
-	private static final String RESTART = "1";
 
 	public BaseballGame() {
 		OutputView.printStartGameMessage();
@@ -27,7 +27,7 @@ public class BaseballGame {
 		} while (judgment.threeStrike());
 
 		String input = InputView.restartOrExit();
-		if (input.equals(RESTART)) {
+		if (input.equals(ConstValue.RESTART)) {
 			run();
 		}
 	}

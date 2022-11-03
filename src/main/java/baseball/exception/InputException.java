@@ -2,13 +2,11 @@ package baseball.exception;
 
 import java.util.Arrays;
 
+import baseball.domain.ConstValue;
+
 public class InputException {
-	private static final int NUMBER_COUNT = 3;
-	private static final String ONE_LETTER_DIVISION_REGEX = "";
 	private static final String NUMBER_REGEX = "^[1-9]*$";
 	private static final String ZERO_NUMBER = "0";
-	private static final String RESTART_NUMBER = "1";
-	private static final String EXIT_NUMBER = "2";
 
 	public static String checkNumberForm(String input) {
 		checkNumberCount(input);
@@ -19,17 +17,17 @@ public class InputException {
 	}
 
 	private static void checkNumberCount(String input) {
-		if (input.length() != NUMBER_COUNT) {
+		if (input.length() != ConstValue.NUMBER_COUNT) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	private static void checkDuplicatedNumber(String input) {
-		int distinctNumberCount = (int)Arrays.stream(input.split(ONE_LETTER_DIVISION_REGEX))
+		int distinctNumberCount = (int)Arrays.stream(input.split(ConstValue.ONE_LETTER_DIVISION_REGEX))
 			.map(Integer::parseInt)
 			.distinct()
 			.count();
-		if (distinctNumberCount != NUMBER_COUNT) {
+		if (distinctNumberCount != ConstValue.NUMBER_COUNT) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -47,11 +45,11 @@ public class InputException {
 	}
 
 	public static String isRestartOrExitNumber(String input) {
-		if (input.equals(RESTART_NUMBER)) {
-			return RESTART_NUMBER;
+		if (input.equals(ConstValue.RESTART)) {
+			return ConstValue.RESTART;
 		}
-		if (input.equals(EXIT_NUMBER)) {
-			return EXIT_NUMBER;
+		if (input.equals(ConstValue.EXIT)) {
+			return ConstValue.EXIT;
 		}
 		throw new IllegalArgumentException();
 	}

@@ -2,13 +2,13 @@ package baseball.service;
 
 import java.util.List;
 
+import baseball.domain.ConstValue;
 import baseball.view.OutputView;
 
 public class Judgment {
 	private int ballCount;
 	private int strikeCount;
 	private static final int INIT_COUNT = 0;
-	private static final int NUMBER_COUNT = 3;
 	private static final int NOTHING = -1;
 
 	public Judgment() {
@@ -22,7 +22,7 @@ public class Judgment {
 
 	public void compareNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {
 		initCount();
-		for (int userNumberIndex = 0; userNumberIndex < NUMBER_COUNT; userNumberIndex++) {
+		for (int userNumberIndex = 0; userNumberIndex < ConstValue.NUMBER_COUNT; userNumberIndex++) {
 			checkStrikeAndBall(userNumberIndex, computerNumbers.indexOf(userNumbers.get(userNumberIndex)));
 		}
 		printStrikeAndBallMessage();
@@ -34,13 +34,13 @@ public class Judgment {
 		}
 		if (computerNumbersIndex.equals(userNumberIndex)) {
 			strikeCount++;
-		} else if (computerNumbersIndex < NUMBER_COUNT) {
+		} else if (computerNumbersIndex < ConstValue.NUMBER_COUNT) {
 			ballCount++;
 		}
 	}
 
 	public boolean threeStrike() {
-		return strikeCount != NUMBER_COUNT;
+		return strikeCount != ConstValue.NUMBER_COUNT;
 	}
 
 	private void printStrikeAndBallMessage() {

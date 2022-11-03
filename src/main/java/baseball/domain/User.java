@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-	private static final String ONE_LETTER_DIVISION_REGEX = "";
 	private final List<Integer> number;
 
 	public User() {
@@ -19,7 +18,7 @@ public class User {
 
 	public void setNumber(String inputNumber) {
 		init();
-		number.addAll(Arrays.stream(inputNumber.split(ONE_LETTER_DIVISION_REGEX))
+		number.addAll(Arrays.stream(inputNumber.split(ConstValue.ONE_LETTER_DIVISION_REGEX))
 			.map(Integer::parseInt)
 			.collect(Collectors.toList()));
 	}
