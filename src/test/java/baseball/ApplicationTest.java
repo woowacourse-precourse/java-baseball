@@ -9,6 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    Application application = new Application();
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -30,8 +33,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void generateAnswer_And_isValidInput_Test() {
-        String answer = Application.generateAnswer();
-        boolean result = Application.isValidInput(answer);
+        String answer = application.generateAnswer();
+        boolean result = application.isValidInput(answer);
         assertThat(result).isEqualTo(true);
     }
 
@@ -39,7 +42,7 @@ class ApplicationTest extends NsTest {
     void 숫자가_아닌_입력() {
         String[] inputs = {"12a", "1a2", "a12", " 12", "12#", "  ", ""};
         for (String input : inputs) {
-            assertThat(Application.isValidInput(input)).isEqualTo(false);
+            assertThat(application.isValidInput(input)).isEqualTo(false);
         }
     }
 
@@ -47,7 +50,7 @@ class ApplicationTest extends NsTest {
     void 세_자리가_아닌_입력() {
         String[] inputs = {"1234", "12", "1", "12345"};
         for (String input : inputs) {
-            assertThat(Application.isValidInput(input)).isEqualTo(false);
+            assertThat(application.isValidInput(input)).isEqualTo(false);
         }
     }
 
@@ -55,7 +58,7 @@ class ApplicationTest extends NsTest {
     void 서로_다른_수가_아닌_입력() {
         String[] inputs = {"111", "112", "121", "211"};
         for (String input : inputs) {
-            assertThat(Application.isValidInput(input)).isEqualTo(false);
+            assertThat(application.isValidInput(input)).isEqualTo(false);
         }
     }
 

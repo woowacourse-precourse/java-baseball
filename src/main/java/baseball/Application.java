@@ -9,15 +9,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Application {
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
 
-    public static void printStart() {
+    public void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static String generateAnswer() {
+    public String generateAnswer() {
         String answer = "";
 
         while(answer.length() < 3) {
@@ -31,18 +32,18 @@ public class Application {
         return answer;
     }
 
-    public static String convertIntToString(int intValue) {
+    public String convertIntToString(int intValue) {
         return String.valueOf(intValue);
     }
 
-    public static boolean isValidInput(String input) {
+    public boolean isValidInput(String input) {
         if(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
             return true;
         }
         return false;
     }
 
-    public static boolean isOnlyNumber(String input) {
+    public boolean isOnlyNumber(String input) {
         Pattern pattern = Pattern.compile("\\D");
         Matcher matcher = pattern.matcher(input);
         if(matcher.find()) {
@@ -51,14 +52,14 @@ public class Application {
         return true;
     }
 
-    public static boolean isThreeDigit(String input) {
+    public boolean isThreeDigit(String input) {
         if(input.length() != 3) {
             return false;
         }
         return true;
     }
 
-    public static boolean isAllDifferent(String input) {
+    public boolean isAllDifferent(String input) {
         char first = input.charAt(0);
         char second = input.charAt(1);
         char third = input.charAt(2);
