@@ -31,7 +31,8 @@ public class Application {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
         while (userGetRightAnswer == false) {
-            String user = getUserAnswerInString();
+            String user = getUserAnswerInString("숫자를 입력해주세요 : ");
+            isValidBaseballNumber(user);
             List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
             userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
             printResult(scoreOfStrikeAndBall);
@@ -49,14 +50,13 @@ public class Application {
         return computer;
     }
 
-    private static String getUserAnswerInString() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+    private static String getUserAnswerInString(String question) {
+        System.out.print(question);
         String user = Console.readLine();
-        isValidAnswer(user);
         return user;
     }
 
-    private static void isValidAnswer(String answer) throws IllegalArgumentException {
+    private static void isValidBaseballNumber(String answer) throws IllegalArgumentException {
         boolean answerIsValid = isValidValue(answer) && isValidLength(answer) && isValidOfDuplication(answer);
         if (!answerIsValid) {
             throw new IllegalArgumentException();
@@ -143,6 +143,7 @@ public class Application {
 
     private static int askRestartOrExit() {
         int result = EXIT;
+        String userAnswer = getUserAnswerInString()
         return result;
     }
 }
