@@ -16,6 +16,10 @@ public class User {
 		this.numbers = convertStringToNumbers(input);
 	}
 
+	public List<Integer> getNumbers() {
+		return List.copyOf(numbers);
+	}
+
 	private List<Integer> convertStringToNumbers(String input) {
 		List<Integer> numbers = Arrays.stream(input.split(""))
 				.map(Integer::parseInt)
