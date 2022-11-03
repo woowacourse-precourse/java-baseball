@@ -28,7 +28,18 @@ public class Game {
         return computer;
     }
 
-    private List<Integer> inputToArrayList(String input) {
+    public void play(String input) {
+        int strike = 0;
+        int ball = 0;
+        List<Integer> player = inputToArrayList(input);
+
+        strike = getStrike(computer, player);
+        ball = getBall(computer, player);
+
+        printResult(ball, strike);
+    }
+
+    public List<Integer> inputToArrayList(String input) {
         List<Integer> player = new ArrayList<>();
         int number;
 
@@ -40,7 +51,7 @@ public class Game {
         return player;
     }
 
-    private int getStrike(List<Integer> computer, List<Integer> player) {
+    public int getStrike(List<Integer> computer, List<Integer> player) {
         int strike = 0;
 
         for (int i = 0; i < player.size(); i++) {
@@ -52,7 +63,7 @@ public class Game {
         return strike;
     }
 
-    private int getBall(List<Integer> computer, List<Integer> player) {
+    public int getBall(List<Integer> computer, List<Integer> player) {
         int ball = 0;
         int playerNumber;
 
@@ -80,5 +91,11 @@ public class Game {
 
     public void resolver(int ball, int strike) {
         System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
+    public boolean isEnd(String input) {
+        List<Integer> player = inputToArrayList(input);
+
+        return player.equals(computer);
     }
 }
