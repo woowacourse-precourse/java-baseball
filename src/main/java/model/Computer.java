@@ -43,9 +43,9 @@ public class Computer {
         }
         // 볼 0
         else if (this.cntBall == 0) {
-            return (this.cntStrike + " 스트라이크");
+            return (this.cntStrike + "스트라이크");
         } else {
-            return (this.cntBall + " 볼 " + this.cntStrike + " 스트라이크");
+            return (this.cntBall + "볼 " + this.cntStrike + "스트라이크");
         }
     }
 
@@ -95,6 +95,7 @@ public class Computer {
             checkStrike(splitNumOfCompare);
             // TODO: 2.1.2 스트라이크 체크
             checkBall(splitNumOfCompare);
+//            System.out.println(this.cntBall + " " + this.cntStrike);
             return true;
         } else {
             // TODO: 2.2 else 포함안한다면? => 낫싱

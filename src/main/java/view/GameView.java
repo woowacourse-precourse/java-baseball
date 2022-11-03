@@ -40,9 +40,10 @@ public class GameView {
                     gameController.initRandNumOfComputer();
                 } else {
                     System.out.println(MSG_GAME_END);
+                    break;
                 }
             }
-
+            gameController.initCntStrikeBallOfComputer();
         }
     }
 
