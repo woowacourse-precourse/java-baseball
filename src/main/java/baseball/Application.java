@@ -24,7 +24,7 @@ public class Application {
         }
     }
 
-    private static boolean playNumberBaseball() throws Exception {
+    private static boolean playNumberBaseball() throws IllegalArgumentException {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
         boolean isWork = true;
@@ -48,13 +48,13 @@ public class Application {
         return computer;
     }
 
-    private static String getUserAnswerInString() throws Exception {
+    private static String getUserAnswerInString() throws IllegalArgumentException {
         String user = Console.readLine();
         isValidAnswer(user);
         return user;
     }
 
-    private static void isValidAnswer(String answer) throws Exception {
+    private static void isValidAnswer(String answer) throws IllegalArgumentException {
         boolean answerIsValid = isValidValue(answer) && isValidLength(answer);
         if (!answerIsValid) {
             throw new IllegalArgumentException();
