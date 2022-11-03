@@ -1,8 +1,22 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+}
+
+class ComputerList {
+    static List<Integer> list;
+
+    private ComputerList() {
+    }
+
+    static void initialize() {
+        list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 }
 
