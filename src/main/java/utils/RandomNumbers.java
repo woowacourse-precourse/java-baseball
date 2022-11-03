@@ -16,6 +16,12 @@ public class RandomNumbers {
     }
     private List<Integer> computerNumbers = new ArrayList<>(numberLength);
 
+    private void fillListRandomNumber() {
+        while (computerNumbers.size() < numberLength) {
+            addSoloNumber();
+        }
+    }
+
     private void addSoloNumber() {
         int rawRandomNumber = Randoms.pickNumberInRange(1,9);
 
