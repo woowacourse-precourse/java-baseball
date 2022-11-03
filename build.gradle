@@ -1,6 +1,25 @@
 plugins {
+    id 'org.ec4j.editorconfig' version '0.0.3'
+    id 'checkstyle'
     id 'java'
 }
+
+editorconfig {
+    excludes = ['build']
+}
+
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion = "9.2"
+}
+
+check.dependsOn editorconfigCheck
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
 
 group 'camp.nextstep.edu'
 version '1.0-SNAPSHOT'
