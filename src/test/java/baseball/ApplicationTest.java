@@ -7,13 +7,16 @@ import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.validation.NumberValidator;
 import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.validation.Validator;
+import baseball.system.voter.BaseballVoter;
 import baseball.view.InputView;
 import baseball.vo.Answer;
+import baseball.dto.Score;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -196,6 +199,35 @@ class ApplicationTest extends NsTest {
                 "일34",
                 "26.6",
                 "2-7"
+        );
+    }
+
+    @ParameterizedTest(name = "{index} - 정답 456에 대해 {0} 입력 시 알맞는 결과를 반환한다.")
+    @MethodSource("sourceOfUserInputAndBaseballResult")
+    void givenAnswerAndUserInput_whenPlayingBaseball_thenReturnsResult(List<Integer> input, Score score) {
+        Answer ANSWER = Answer.of(List.of(4, 5, 6));
+
+        // given
+        MockedStatic<AnswerHolder> mockStatic = Mockito.mockStatic(AnswerHolder.class);
+        Mockito.when(AnswerHolder.getAnswer()).thenReturn(ANSWER);
+        // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+
+        // when
+        BaseballVoter baseballVoter = new BaseballVoter();
+        Score target = baseballVoter.vote(input);
+
+        // then
+        assertThat(target).isEqualTo(score);
+
+        // after
+        mockStatic.close();
+    }
+
+    public static Stream<Arguments> sourceOfUserInputAndBaseballResult() {
+        return Stream.of(
+                Arguments.of(List.of(4, 5, 6), Score.makeNewScoreWith(3, 0)),
+                Arguments.of(List.of(7, 5, 1), Score.makeNewScoreWith(1, 0)),
+                Arguments.of(List.of(6, 2, 4), Score.makeNewScoreWith(0, 2))
         );
     }
 }

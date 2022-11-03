@@ -20,7 +20,7 @@ public class Answer {
 
     public static Answer of(Collection<Integer> target) {
         ArrayList<Integer> targetList = new ArrayList<>(target);
-        Validator validator = new NumberValidator();
+        Validator<List<Integer>> validator = new NumberValidator();
         validator.validate(targetList);
 
         return new Answer(targetList);
@@ -29,5 +29,9 @@ public class Answer {
     @Override
     public String toString() {
         return answer.toString();
+    }
+
+    public List<Integer> getAnswer() {
+        return new ArrayList<>(answer);
     }
 }
