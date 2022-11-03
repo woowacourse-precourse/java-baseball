@@ -23,6 +23,7 @@
 - countBall()
 
 ## [입력값에 대한 결과 출력]
+- printResult()
 
 - printBall()
 
