@@ -13,5 +13,5 @@ public class User {
         // TODO : 길이가 3개인지
         // TODO : 문자열인지 or 정수인지
     }
-    
+
 }
