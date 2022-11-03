@@ -14,7 +14,7 @@ public class InputTest {
     Computer computer = new Computer();
 
     @Test
-    public void 문자열로_받은_입력값이_리스트에_제대로_들어갔는지_확인(){
+    public void 문자열로_받은_입력값이_리스트에_제대로_들어갔는지_확인() {
         // given
         List<Integer> inputList = new ArrayList<>();
         String inputString = "456";
@@ -26,7 +26,7 @@ public class InputTest {
     }
 
     @Test
-    public void 입력값의_길이가_게임에_사용할_숫자의_길이와_같은지_확인(){
+    public void 입력값의_길이가_게임에_사용할_숫자의_길이와_같은지_확인() {
         // given
         List<Integer> inputList = List.of(1, 2, 3);
         int randomNumLength = computer.getRANDOM_NUMBER_LENGTH();
@@ -34,5 +34,15 @@ public class InputTest {
 
         // then
         Assertions.assertThat(inputList.size()).isEqualTo(randomNumLength);
+    }
+
+    @Test
+    public void 입력값이_숫자인지_확인() {
+        // given
+        String inputString = "123";
+        // when
+        boolean isNumber = input.isAllDigits(inputString);
+        // then
+        Assertions.assertThat(isNumber).isEqualTo(true);
     }
 }
