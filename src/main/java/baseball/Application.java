@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 class ConsolePrint {
@@ -68,23 +67,6 @@ public class Application {
         return Collections.disjoint(userNumber, computerNumber);
     }
 
-    private static void createComputerNumber(List<Integer> computerNumber) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computerNumber.contains(randomNumber)) {
-            computerNumber.add(randomNumber);
-        }
-    }
-
-    private static List<Integer> getComputerNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            createComputerNumber(computerNumber);
-        }
-        return computerNumber;
-    }
-
-
-
     private static int getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
         int ballCount = getBallCount(userNumber, computerNumber);
         int strikeCount = getStrikeCount(userNumber, computerNumber);
@@ -122,7 +104,7 @@ public class Application {
 
     private static void startGameLogic() {
         int gameSelect = 0;
-        List<Integer> computerNumber = getComputerNumber();
+        List<Integer> computerNumber = Computer.getRandomNumber();
         ConsolePrint.printGameStart();
         do {
             ConsolePrint.printInputNumber();
