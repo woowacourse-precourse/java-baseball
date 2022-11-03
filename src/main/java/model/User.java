@@ -1,5 +1,7 @@
 package model;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class User {
 
     public int numSelecUser;
@@ -14,4 +16,9 @@ public class User {
         // TODO : 문자열인지 or 정수인지
     }
 
+    public String getString() {
+        String strInput = "";
+        strInput = readLine();
+        return strInput;
+    }
 }
