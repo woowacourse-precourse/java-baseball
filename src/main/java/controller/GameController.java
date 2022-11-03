@@ -22,6 +22,10 @@ public class GameController {
         computer.initComputer();
     }
 
+    public void initCntStrikeBallOfComputer() {
+        computer.initCntStrikeBall();
+    }
+
     public boolean isRightNumOfUser2Computer() {
         int numInputOfUser = user.getNumSelecUser();
         // TODO : 1. 컴퓨터에게 값을준다.
