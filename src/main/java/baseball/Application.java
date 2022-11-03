@@ -116,5 +116,7 @@ public class Application {
         }
     }
 
-
+    public void resetGame(String answer) {
+        answer = generateAnswer();
+    }
 }
