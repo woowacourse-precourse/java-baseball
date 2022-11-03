@@ -70,10 +70,10 @@
     - [x] 소문자
     - [x] 대문자
   - [x] 특수문자인 경우 (BallNumber)
-  - [ ] 한글인 경우 (BallNumber)
-    - [ ] 자음
-    - [ ] 모음
-    - [ ] 단어 (한 글자)
+  - [x] 한글인 경우 (BallNumber)
+    - [x] 자음
+    - [x] 모음
+    - [x] 단어 (한 글자)
   - [ ] 공백이 존재하는 경우 (BallNumber)
   - [ ] 길이가 3이 아닌 경우 (BaseBallGame)
   - [ ] 1~9 범위 벗어난 경우 (BallNumber)

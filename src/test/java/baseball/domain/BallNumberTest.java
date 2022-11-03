@@ -24,4 +24,13 @@ class BallNumberTest {
                 .isThrownBy(() -> new BallNumber("$"))
                 .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
     }
+    
+    @DisplayName("예외 처리 : 한글")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"ㄱ", "ㅏ", "가"})
+    void consonant_exception(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new BallNumber(input))
+                .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
+    }
 }
