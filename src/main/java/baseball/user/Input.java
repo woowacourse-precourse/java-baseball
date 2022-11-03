@@ -38,8 +38,7 @@ public class Input {
      * @return 길이가 같다면 true, 다르다면 false 반환
      */
     public boolean isInputLengthEqualsGameLength(List<Integer> inputDigitList) {
-        Computer computer = new Computer();
-        return inputDigitList.size() == computer.getRANDOM_NUMBER_LENGTH();
+        return inputDigitList.size() == Computer.RANDOM_NUMBER_LENGTH;
     }
 
     /**
