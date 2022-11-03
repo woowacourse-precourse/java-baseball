@@ -44,6 +44,8 @@ public class UserInput {
     }
 
     private static boolean isDuplicateNumber (String inputNum) {
-        return inputNum.matches("^.*(.)\\1.*$");
+        return inputNum.matches("^.(.)\\1$")
+                || inputNum.matches("^(.)\\1.$")
+                || inputNum.matches("^(.).\\1$");
     }
 }
