@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.regex.Pattern;
+
 public class PlayerInputFilter {
     private int[] numbers;
 
@@ -18,7 +20,7 @@ public class PlayerInputFilter {
     }
 
     boolean isNotNumber(String input){
-        return false;
+        return !Pattern.matches("^[1-9]*$", input);
     }
 
     void noNumberException(){
