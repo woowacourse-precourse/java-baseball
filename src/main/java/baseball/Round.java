@@ -41,6 +41,7 @@ public class Round {
             Hint hint = getHint(index);
             putHintCountMap(hint, hintCountMap);
         }
+        Print.printRoundResult(hintCountMap);
     }
 
     private void putHintCountMap (Hint hint, HashMap<Hint, Integer> hintCountMap) {
@@ -48,7 +49,6 @@ public class Round {
             hintCountMap.put(hint, 0);
         }
         hintCountMap.put(hint, hintCountMap.get(hint) + 1);
-        Print.printRoundResult(hintCountMap);
     }
 
     private Hint getHint(int index) {
