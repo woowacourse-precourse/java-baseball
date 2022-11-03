@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BullsAndCows {
 
@@ -19,6 +22,10 @@ public class BullsAndCows {
 
         while (true) {
             String input = getInput(); // 사용자 입력
+            if (!checkInputRegex(input)) {
+                throw new IllegalArgumentException();
+            }
+
             if (isAnswer(input)) {
                 // "3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료"
                 break;
@@ -39,9 +46,15 @@ public class BullsAndCows {
     }
 
     private String getInput() {
-        String input = "";
-        // "숫자를 입력해주세요 : "
-        return input;
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
+
+    private boolean checkInputRegex(String input) {
+        String regex = "\\d{3}$"; // 3자리 숫자
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
     }
 
     private boolean isAnswer(String input) {
