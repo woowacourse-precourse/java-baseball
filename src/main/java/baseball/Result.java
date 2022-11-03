@@ -17,11 +17,11 @@ public class Result {
         int ball;
         int want;
 
-        int inputNum;
+        String inputNum;
 
         while (strike != 3) {
             System.out.print("숫자를 입력해 주세요 : ");
-            inputNum = Integer.parseInt(readLine());
+            inputNum = readLine();
             List<Integer> inputNumber = returnList(inputNum);
             Collections.reverse(inputNumber);
 
@@ -45,11 +45,11 @@ public class Result {
         return want;
     }
 
-    private List<Integer> returnList(int inputNum) {
+    private List<Integer> returnList(String inputNum) {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            list.add(inputNum % 10);
-            inputNum /= 10;
+        for (int idx = 0; idx < inputNum.length(); idx++) {
+            list.add(Integer.parseInt(
+                    String.valueOf(inputNum.charAt(idx))));
         }
         return list;
     }
