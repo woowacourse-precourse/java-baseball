@@ -5,7 +5,7 @@ import static baseball.Computer.NUM_LIMIT_LENGTH;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Player {
 
     public static List<Integer> toIntegerUserInput(String userInput) {
         List<Integer> userInputNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
