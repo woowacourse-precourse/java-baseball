@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.service.BaseballService;
 import baseball.system.conversion.Converter;
 import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.validation.NumberValidator;
@@ -18,5 +19,8 @@ public class BaseBallController {
 
         Validator<List<Integer>> validator = new NumberValidator();
         validator.validate(inputList);
+
+        BaseballService baseballService = new BaseballService();
+        baseballService.compareInputWithAnswer(inputList);
     }
 }
