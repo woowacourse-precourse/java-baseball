@@ -1,8 +1,9 @@
 package baseball;
 
-import static baseball.Computer.*;
+import static baseball.Computer.NUM_LIMIT_LENGTH;
+import static baseball.Computer.createRandomNumbers;
 import static baseball.Message.*;
-import static baseball.User.*;
+import static baseball.User.toIntegerUserInput;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -23,7 +24,6 @@ public class BaseballGame {
         }
         this.strike = 0;
         this.ball = 0;
-        System.out.println(computerNumber);
     }
 
     public void start() {
@@ -92,7 +92,6 @@ public class BaseballGame {
 
             String ask = readLine();
             if (ask.equals("1")) {
-                BaseballGame newGame = new BaseballGame();
                 return true;
             } else if (ask.equals("2")) {
                 System.out.println(END_GAME);
