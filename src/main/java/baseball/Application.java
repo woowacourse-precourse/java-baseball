@@ -1,19 +1,43 @@
 package baseball;
 
+import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
-    static final int start  = 1;
-    static final int exit   = 2;
+    static final int START  = 1;
+    static final int EXIT   = 2;
+    static final int LENGTH_OF_BASEBALL_NUMBER = 3;
+    static final int BALL_COUNT = 1;
+    static final int STRIKE_COUNT = 0;
+
     public static void main(String[] args) {
-        int gameStatus = start;
-        while(gameStatus == start) {
-            startNumberBaseball();
+        int gameStatus = START;
+        while (gameStatus == START) {
+            playNumberBaseball();
             gameStatus = askRestartOrExit();
         }
     }
 
-    private static void startNumberBaseball() {}
+    private static void playNumberBaseball() {
+        String computer = getComputerNumberInString();
+        boolean userGetRightAnswer = false;
+        while (userGetRightAnswer == false) {
+            String user = getUserAnswerInString();
+            List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
+            userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
+            printResult(scoreOfStrikeAndBall);
+        }
+    }
+
+    private static String getComputerNumberInString() {}
+    private static String getUserAnswerInString() {}
+    private static List<Integer> compareComputerAndUser(String computer, String user) {}
+    private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
+    private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
+
     private static int askRestartOrExit() {
-        int result = exit;
+        int result = EXIT;
         return result;
     }
 }
