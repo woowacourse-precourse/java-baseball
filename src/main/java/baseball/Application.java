@@ -36,4 +36,19 @@ public class Application {
 
         return strikeCount;
     }
+
+    public static int checkBall(String userInput) {
+        int ballCount = 0;
+
+        for (int place = 0; place < userInput.length(); place++) {
+            Character computerNum = computerNumber.get(place);
+            Character userNum = userInput.charAt(place);
+
+            if(!computerNum.equals(userNum) && computerNumber.contains(userNum)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
 }

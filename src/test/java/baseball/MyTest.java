@@ -49,6 +49,19 @@ public class MyTest {
         Assertions.assertThat(strikeCount).isEqualTo(0);
     }
 
+    @Test
+    void checkBall() {
+        //given(준비)
+        Application.computerNumber = List.of('1','2','3');
+
+        //when(실행)
+        int ballCount = Application.checkBall("312");
+
+        //then(검증)
+        Assertions.assertThat(ballCount).isEqualTo(3);
+    }
+
+
     
 
 
