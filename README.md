@@ -156,7 +156,6 @@ while (computer.size() < 3) {
 
 
 ## 구현할 기능 목록
-- 클래스 구성
+- 클래스 다이어그램
 
-![class1차](https://user-images.githubusercontent.com/78679830/199510534-2af7784d-c073-4657-a38b-9e166a9caad0.png)
-
+<img src="./docs/img/class2차.png">
