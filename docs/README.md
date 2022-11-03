@@ -1,18 +1,30 @@
 # 기능목록
 ## 객체별 구현목록
 ### ComputerNumberGenerator
-컴퓨터에 저장된 수가 3개가 될 때 까지 반복한다. 
-   1. 1~9까지중에 랜덤한 숫자를 구한다. 
-   2. 이 숫자가 이미 저장되어있는지 확인한다. 
-   3. 저장되어있지 않다면 값을 저장한다.
+컴퓨터에 저장된 수가 3개가 될 때 까지 반복한다.
+1. insertNumber() : 랜덤값 1~9가 이미 있지 않으면 저장시킨다.
+   1. createRandomNumber : 랜덤값 1~9 출력 함수
+   2. isAlreadyInNumbers : 이미 있으면 true 리턴 함수
+   3. putNumber : 값을 저장시키는 함수
+2. makeThreeDigitNumber() : 1~9의 세자리 랜덤 값을 생성한다.
+   1. insertNumber() 3번 반복
+3. returnNumbersToArray : 리스트에 저장한 숫자들을 배열로 리턴해준다.
 
 ### PlayerInputFilter
-사용자가 값을 입력한다. 
-1. 이 값이 숫자가 아니라면 Exception을 보낸다. 
-2. 이 값이 3자리가 아니라면 Exception을 보낸다. 
-3. 이 값에 0이 들어있다면 Exception을 보낸다. 
-4. 입력값중 같은 숫자가 존재한다면 Exception을 보낸다. 
-5. 입력한 값을 배열로 만든다. 
+1. getInput() : readLine으로 입력한 문자열을 반환한다.
+2. checkException(String input) : 입력한 문자열로 에러가 발생하는지 체크한다.
+   1. isNotNumber(String input) : 입력한 문자열에 숫자가 아닌게 있을 떄 참을 반환한다.
+   2. noNumberException() : IllegalArgumentException와 메세지로 예외처리한다.
+   3. isNotThreeDigit(String input) : 문자열의 길이가 3이 아니면 참을 반환한다.
+   4. notThreeDigitException() : IllegalArgumentException와 메세지로 예외처리한다.
+   5. containsZero(String input) : 문자열에 0이 있으면 참을 반환한다.
+   6. containsZeroException() : IllegalArgumentException와 메세지로 예외처리한다.
+   7. containsSameNumber(String input) : 문자열에 같은 숫자가 존재하면 참을 반환한다.
+   8. containsSameNumberException() : IllegalArgumentException와 메세지로 예외처리한다.
+3. insertNumbers()
+   1. getInput() : 문자열을 받아온다.
+   2. checkException(String input) : 문자열 예외처리를 확인한다
+   3. convertNumbersToArray(String input) : 문자열을 int형 배열로 전환해 리턴한다.
 
 ### GameSystem
 1. gameSet = 1로 변수를 정한다. 
