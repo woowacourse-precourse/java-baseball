@@ -46,7 +46,10 @@ public class User {
         return false;
     }
     public static boolean restart() {
-        int input = Integer.parseInt(Console.readLine());
-        return input == RESTART_GAME;
+        String str = Console.readLine();
+        if (!str.equals("1") && !str.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(str) == RESTART_GAME;
     }
 }
