@@ -33,9 +33,9 @@ public class Application {
     }
 
     private static boolean isResumed() {
-        int input = ConsoleReader.readInt();
+        String input = ConsoleReader.readString();
         Validator.validateResumeNumber(input);
-        if (input == 1)
+        if (input.equals("1"))
             return true;
         return false;
     }

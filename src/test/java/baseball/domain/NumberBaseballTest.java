@@ -26,4 +26,23 @@ class NumberBaseballTest extends NumberBaseball{
         numberBaseball.compareComputerNumberWith(inputString);
         assertThat(numberBaseball.getGameResult().length() > 0).isTrue();
     }
+
+    @Test
+    void testArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+           Validator.validateResumeNumber("3");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateResumeNumber("asdf");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateUserNumber("032");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateResumeNumber("133");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateResumeNumber("32");
+        });
+    }
 }

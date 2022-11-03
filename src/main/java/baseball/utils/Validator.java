@@ -2,9 +2,6 @@ package baseball.utils;
 
 public class Validator {
     private static final int GAME_NUMBER = 3;
-    private static boolean hasDifferentNumbers(String numbers) {
-        return numbers.chars().distinct().count() == numbers.length();
-    }
 
     public static void validateUserNumber(String input) {
         if (!hasDifferentNumbers(input))
@@ -15,8 +12,12 @@ public class Validator {
             throw new IllegalArgumentException("숫자는 1부터 9까지만 입력 가능합니다.");
     }
 
-    public static void validateResumeNumber(int input) {
-        if (input != 1 && input != 2)
+    private static boolean hasDifferentNumbers(String numbers) {
+        return numbers.chars().distinct().count() == numbers.length();
+    }
+
+    public static void validateResumeNumber(String input) {
+        if ((!input.equals("1")) && (!input.equals("2")))
             throw new IllegalArgumentException("1 또는 2가 입력되어야 합니다.");
     }
 
@@ -25,7 +26,7 @@ public class Validator {
     }
 
     private static boolean hasZero(String input) {
-        return input.chars().filter(value -> value != 0)
+        return input.chars().filter(value -> (value != '0'))
                 .count() != input.length();
     }
 }
