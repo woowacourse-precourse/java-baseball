@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,112 +18,54 @@ class BaseballGameTest {
         Assertions.assertThat(list.size()).isEqualTo(3);
     }
 
-    @Test
-    void 문자열_길이가_3인_경우_1() {
+    @Test()
+    void 유효한_문자열_확인_1() {
         // given
         BaseballGame baseballGame = new BaseballGame();
 
-        // when
-        boolean check = baseballGame.isStringLengthThree("123");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(true);
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+            () -> baseballGame.checkValidString(" 123"));
     }
 
-    @Test
-    void 문자열_길이가_3인_경우_2() {
+    @Test()
+    void 유효한_문자열_확인_2() {
         // given
         BaseballGame baseballGame = new BaseballGame();
 
-        // when
-        boolean check = baseballGame.isStringLengthThree("1b3");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(true);
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+            () -> baseballGame.checkValidString("abcd"));
     }
 
-    @Test
-    void 문자열_길이가_3인_경우_3() {
+    @Test()
+    void 유효한_문자열_확인_3() {
         // given
         BaseballGame baseballGame = new BaseballGame();
 
-        // when
-        boolean check = baseballGame.isStringLengthThree("abc");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(true);
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+            () -> baseballGame.checkValidString("1234"));
     }
 
-    @Test
-    void 문자열_길이가_3이_아닌_경우_1() {
+    @Test()
+    void 유효한_문자열_확인_4() {
         // given
         BaseballGame baseballGame = new BaseballGame();
 
-        // when
-        boolean check = baseballGame.isStringLengthThree("");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+            () -> baseballGame.checkValidString("v5q"));
     }
 
-    @Test
-    void 문자열_길이가_3이_아닌_경우_2() {
+    @Test()
+    void 유효한_문자열_확인_5() {
         // given
         BaseballGame baseballGame = new BaseballGame();
 
-        // when
-        boolean check = baseballGame.isStringLengthThree("1234");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
-    }
-
-    @Test
-    void 문자열_길이가_3이_아닌_경우_3() {
-        // given
-        BaseballGame baseballGame = new BaseballGame();
-
-        // when
-        boolean check = baseballGame.isStringLengthThree("a23dq");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
-    }
-
-    @Test
-    void 문자열이_숫자만_있지_않은_경우_1() {
-        // given
-        BaseballGame baseballGame = new BaseballGame();
-
-        // when
-        boolean check = baseballGame.isNumber("1b2");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
-    }
-
-    @Test
-    void 문자열이_숫자만_있지_않은_경우_2() {
-        // given
-        BaseballGame baseballGame = new BaseballGame();
-
-        // when
-        boolean check = baseballGame.isNumber("");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
-    }
-
-    @Test
-    void 문자열이_숫자만_있지_않은_경우_3() {
-        // given
-        BaseballGame baseballGame = new BaseballGame();
-
-        // when
-        boolean check = baseballGame.isNumber(" 12 3");
-
-        // then
-        Assertions.assertThat(check).isEqualTo(false);
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+            () -> baseballGame.checkValidString("45 671"));
     }
 
     @Test
