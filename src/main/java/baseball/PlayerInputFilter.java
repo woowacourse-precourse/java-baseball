@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class PlayerInputFilter {
     private static final int NUMBERS_COUNT_LIMIT = 3;
+    private static final int FIRST = 0;
+    private static final int SECOND = 1;
+    private static final int THIRD = 2;
     private static final String NO_NUMBER_EXCEPTION = "입력한 값이 숫자가 아닙니다.";
     private static final String NOT_THREE_DIGIT_EXCEPTION = "입력한 값은 세자리 숫자여야 합니다.";
     private static final String CONTAINS_ZERO_EXCEPTION = "입력 문자열에 0이 있으면 안됩니다.";
@@ -48,7 +51,9 @@ public class PlayerInputFilter {
     }
 
     boolean containsSameNumber(String input){
-        return false;
+        return input.charAt(FIRST) == input.charAt(SECOND)
+                || input.charAt(SECOND) == input.charAt(THIRD)
+                ||  input.charAt(THIRD) == input.charAt(FIRST);
     }
 
     void containsSameNumberException(){
