@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import baseball.exception.InvalidInputException;
 
@@ -39,8 +40,13 @@ public class User {
 	private void validateDigitRange(List<Integer> number) {
 		String REGEX = String.format("[%s-%s]+", MIN_NUMBER, MAX_NUMBER);
 
-		if (!number.toString().matches(REGEX)) {
+		String str = number.stream()
+			.map(n -> String.valueOf(n))
+			.collect(Collectors.joining(""));
+
+		if (!str.matches(REGEX)) {
 			InvalidInputException.numberError();
 		}
 	}
+
 }
