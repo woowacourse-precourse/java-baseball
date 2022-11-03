@@ -18,7 +18,8 @@ public class RandomBallNumber {
         return randomNum;
     }
 
-    public void clearRandomNum() {
+    public String clearRandomNum() {
         randomNum = "";
+        return randomNum;
     }
 }
