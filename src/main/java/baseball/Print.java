@@ -21,7 +21,7 @@ public class Print {
         if (hintCountMap.containsKey(Hint.STRIKE)) {
             System.out.print(hintCountMap.get(Hint.STRIKE) + ROUND_RESULT_STRIKE_MESSAGE);
         }
-        if (hintCountMap.isEmpty()) {
+        if (hintCountMap.getOrDefault(Hint.NOTHING, 0) == 3) {
             System.out.print(ROUND_RESULT_NOTHING_MESSAGE);
         }
         System.out.println();
