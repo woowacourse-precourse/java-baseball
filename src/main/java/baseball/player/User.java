@@ -29,6 +29,9 @@ public class User {
 
     }
 
+    private boolean isDuplication(List<Integer> numberList) {
+        return numberList.size() != numberList.stream().distinct().count();
+    }
 
     private boolean isNotThreeLength(List<Integer> numberList) {
         return numberList.size() != 3;
