@@ -7,24 +7,34 @@ public class TextForGame {
     }
 
     public void inputText() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void printBall(int ballCount) {
+    public void printResult(int ball, int strike) {
+        if(ball == 0 && strike == 0) {
+            printNothing();
+            return;
+        }
+        printBall(ball);
+        printStrike(strike);
+    }
+
+    private void printNothing() {
+        System.out.println("낫싱");
+    }
+
+    private void printBall(int ballCount) {
         if(ballCount > 0) {
             System.out.print(ballCount + "볼" + " ");
         }
     }
 
-    public void printStrike(int strikeCount) {
+    private void printStrike(int strikeCount) {
         if(strikeCount == 0) {
             System.out.println();
         }
         if(strikeCount > 0) {
             System.out.println(strikeCount + "스트라이크");
-        }
-        if(strikeCount == 3) {
-            printEndAndAskAboutNewGame();
         }
     }
 
