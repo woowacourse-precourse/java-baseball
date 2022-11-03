@@ -12,4 +12,10 @@ class ComputerNumberTest {
 		List<Integer> result = new ComputerNumber().computerNumber;
 		assertEquals(3, result.size());
 	}
+
+	@Test
+	void 숫자_중복_테스트() {
+		int result = (int)new ComputerNumber().computerNumber.stream().distinct().count();
+		assertEquals(3, result);
+	}
 }

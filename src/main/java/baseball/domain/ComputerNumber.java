@@ -30,6 +30,6 @@ public class ComputerNumber {
 	}
 
 	private boolean isDuplicate(List<Integer> randomNums) {
-		return NUMBER_LENGTH == randomNums.stream().distinct().count();
+		return NUMBER_LENGTH != randomNums.stream().distinct().count();
 	}
 }
