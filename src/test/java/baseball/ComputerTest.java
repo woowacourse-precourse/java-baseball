@@ -9,7 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ComputerTest {
     @Test
     void 컴퓨터_수_생성() {
-        ArrayList<String> numberList = Computer.createNumber();
+        Computer computer = new Computer();
+
+        ArrayList<String> numberList = computer.createNumber();
 
         assertEquals(numberList.size(),3);
     }
