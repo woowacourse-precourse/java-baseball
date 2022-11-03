@@ -9,26 +9,28 @@ public class GameService {
     private static ArrayList<Integer> answerNumber = new ArrayList<>();
     private static ArrayList<Integer> userNumber = new ArrayList<>();
 
-    public void setGame() throws IllegalArgumentException{
+    public void setGame(){
         setAnswerNumber();
         System.out.println(answerNumber);
-        setUserNumber();
     }
     private void setAnswerNumber(){
         RandomNumber randomNumber = new RandomNumber();
         answerNumber = randomNumber.setRandomNumber();
     }
-    private void setUserNumber(){
+    private void setUserNumber() {
         User user = new User();
         userNumber = user.setUserNumber();
     }
 
-    public void startGame(){
-        int strike;
-        int ball;
-        strike = calculateStrike();
-        ball = calculateBall();
-        printResult(strike,ball);
+    public void startGame() throws IllegalArgumentException{
+        int strike=0;
+        int ball=0;
+        while(strike!=3){
+            setUserNumber();
+            strike = calculateStrike();
+            ball = calculateBall();
+            printResult(strike,ball);
+        }
     }
     private int calculateStrike(){
         int strikeCount=0;

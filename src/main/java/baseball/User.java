@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
-    public static ArrayList<Integer> userNumber = new ArrayList<>();
+    public static ArrayList<Integer> userNumber;
+
     public static ArrayList<Integer> setUserNumber() throws IllegalArgumentException{
         String answer;
+        userNumber = new ArrayList<>();
 
         inputMessage();
         answer = Console.readLine();
