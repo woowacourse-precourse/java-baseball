@@ -72,4 +72,17 @@ class UserNumberTest {
         Assertions.assertThat(exception.getMessage())
                 .isEqualTo("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
     }
+
+    @Test
+    void 사용자_입력_유효성_검사_6() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            UserNumber userNumber = new UserNumber();
+            String input = "12D";
+
+            userNumber.setUserNumbers(input);
+        });
+
+        Assertions.assertThat(exception.getMessage())
+                .isEqualTo("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
+    }
 }
