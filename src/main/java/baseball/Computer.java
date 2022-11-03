@@ -34,9 +34,6 @@ public class Computer {
 
         printResult(counts);
 
-        if (counts[0] == User.NUMBER_DIGIT) {
-            return true;
-        }
-        return false;
+        return counts[0] == User.NUMBER_DIGIT;
     }
 }
