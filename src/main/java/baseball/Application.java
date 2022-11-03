@@ -14,7 +14,7 @@ public class Application {
 
         MyBalls myBalls = new MyBalls();
         List<Integer> myBallNumbers = myBalls.inputBalls();
-
-        ScoreBoard.judge(computerBalls, myBallNumbers);
+        String scoreResult = ScoreBoard.judge(computerBalls, myBallNumbers);
+        System.out.println(scoreResult);
     }
 }
