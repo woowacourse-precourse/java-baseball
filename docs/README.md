@@ -7,6 +7,8 @@
 ## [숫자야구게임 하기]
 
 - playNumberBaseball()
+  
+  - isRightAnswer() 
 
 ## [랜덤 세자리 숫자 구하기]
 - getComputerNumberInString()
