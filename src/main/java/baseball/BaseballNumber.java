@@ -33,4 +33,13 @@ public class BaseballNumber {
         return false;
     }
 
+    public boolean isAllInteger(String numbersStr){
+        for(int i = 0; i < numbersStr.length(); i++){
+            if('0' > numbersStr.charAt(i) || numbersStr.charAt(i) > '9'){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
