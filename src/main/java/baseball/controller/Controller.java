@@ -31,7 +31,7 @@ public class Controller {
             } else if (Ball != 0) {
                 view.ball(Ball);
                 continue;
-            } else if (Strike != 0) {
+            } else if (Strike != 0 && Strike<3) {
                 view.strike(Strike);
                 continue;
             } else if (Strike == 3) {
