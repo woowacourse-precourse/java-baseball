@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -32,52 +33,62 @@ class ApplicationTest extends NsTest {
 //        );
 //    }
 
-    @DisplayName("입력값이 3자리가 아닐 경우 예외를 반환한다 - 3자리 보다 큰 경우")
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+
+    @Nested
+    @DisplayName("만약 플레이어가 입력한 값이")
+    class ExceptionInputValue {
+
+        @Nested
+        @DisplayName("3자리가 아닐 경우")
+        class Size_check {
+
+            @DisplayName("IllegalArgumentException를 반환한다 - 3자리 보다 큰 경우")
+            @Test
+            void 예외_테스트() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("1234"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @DisplayName("IllegalArgumentException를 반환한다 - 3자리 보다 작은 경우")
+            @Test
+            void case1() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("12"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+        }
+
+        @DisplayName("숫자가 아닌 값을 포함할 경우 IllegalArgumentException를 반환한다")
+        @Test
+        void case2() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("a12"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @DisplayName("0을 포함할 경우 IllegalArgumentException를 반환한다")
+        @Test
+        void case3() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("120"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @DisplayName("중복된 값을 포함할 경우 IllegalArgumentException를 반환한다")
+        @Test
+        void case4() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("122"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
     }
-
-    @DisplayName("입력값이 3자리가 아닐시 예외를 반환한다 - 3자리 보다 작은 경우")
-    @Test
-    void case2() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @DisplayName("입력값이 숫자가 아닌 값을 포함할 경우 예외를 반환한다")
-    @Test
-    void case3() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("a12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @DisplayName("입력값이 0을 포함할 경우 예외를 반환한다")
-    @Test
-    void case4() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("120"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @DisplayName("입력값이 중복된 값을 포함할 경우 예외를 반환한다")
-    @Test
-    void case5() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("122"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-
 
 
     @Override
