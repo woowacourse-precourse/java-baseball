@@ -2,6 +2,9 @@ package model;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     public int numSelecUser;
@@ -32,12 +35,22 @@ public class User {
         }
     }
 
-    public boolean isValidLength(String str) throws IllegalArgumentException {
+    public boolean isValidLength(String str) {
         if (str.length() == 3) {
             return true;
         } else {
             throw new IllegalArgumentException("입력의 길이는 \"3\" 만 가능합니다.");
         }
+    }
+
+ 
+    public List getListStrArr2Split(String str) {
+        String[] strArr = str.split("");
+        List<Integer> list = new ArrayList<>();
+        for (String value : strArr) {
+            list.add(Integer.valueOf(value));
+        }
+        return list;
     }
 
 
