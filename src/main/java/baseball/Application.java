@@ -1,6 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -10,9 +14,12 @@ public class Application {
 
         // TODO : 2. 컴퓨터가 가지고 있는 정답 문자열을 랜덤으로 지정
         // TODO : (각 자리마다 숫자가 다르게)
+        String computer="";
+        while(computer.length() < 3){
+            int randomNumber = Randoms.pickNumberInRange(0,9);
+            if (!computer.contains(Integer.toString(randomNumber))){
+                computer += randomNumber;
+            }
+        }
 
-
-
-
-    }
 }
