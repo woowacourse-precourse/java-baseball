@@ -16,11 +16,10 @@ public class Application {
 
         startGame();
 
-        while(true) {
+        do {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
-
-        }
+        } while(true);
     }
 
     public static void startGame() {
