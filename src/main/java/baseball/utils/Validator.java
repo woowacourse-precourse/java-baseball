@@ -26,7 +26,7 @@ public class Validator {
     }
 
     private static void checkNumber(String string) {
-        boolean isNumber = Pattern.matches("^[0-9]*$", string);
+        boolean isNumber = Pattern.matches("^[1-9]*$", string);
         if (!isNumber) {
             throw new IllegalArgumentException();
         }
