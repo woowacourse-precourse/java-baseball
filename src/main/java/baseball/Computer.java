@@ -12,7 +12,7 @@ public class Computer {
         answers = this.generateNumber();
     }
 
-    public List<Integer> generateNumber() {
+    private List<Integer> generateNumber() {
         List list = new ArrayList();
         while (list.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
