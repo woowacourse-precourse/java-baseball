@@ -20,11 +20,19 @@ public class Application {
         private static final String CORRECT_ANSWER_KOR = "스트라이크";
         private static final String SIMILAR_ANSWER_KOR = "볼 ";
         private static final String WRONG_ANSWER_KOR = "낫싱";
+        private static final String USER_WANT_MORE = "1";
+        private static final String USER_WANT_FINISH = "2";
 
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> targetNumbers = getTargetNumbers();
-            repeatUntilUserHitsTargetNumber(targetNumbers);
+            repeatGame();
+        }
+
+        private void repeatGame() {
+            do {
+                List<Integer> targetNumbers = getTargetNumbers();
+                repeatUntilUserHitsTargetNumber(targetNumbers);
+            } while (isUserWantMoreGame());
         }
 
         private List<Integer> getTargetNumbers() {
