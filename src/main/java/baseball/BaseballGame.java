@@ -6,6 +6,8 @@ import static baseball.Compare.STRIKE_INDEX;
 import java.util.List;
 
 public class BaseballGame {
+    public static final int RESTART = 1;
+    public static final int EXIT = 2;
     private final OutputView outputView = new OutputView();
     public BaseballGame() {
     }
@@ -18,7 +20,7 @@ public class BaseballGame {
             game(computer, user);
             outputView.printRestartOrExit();
             user.inputRestartOrExitNumber();
-            if (user.restartOrExitNumber == 1) {
+            if (user.restartOrExitNumber == EXIT) {
                 break ;
             }
         }
