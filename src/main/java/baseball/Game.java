@@ -7,60 +7,70 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-    private List<Integer> computer_answer;
+    private List<Integer> computerAnswer;
     private int currentBall;
     private int currentStrike;
 
     public void init() {
-        computer_answer = new ArrayList<>();
+        computerAnswer = new ArrayList<>();
 
-        while (computer_answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer_answer.contains(randomNumber)) {
-                computer_answer.add(randomNumber);
-            }
-        }
+        addThreeNumberToComputerAnswer();
 
         currentBall = 0;
         currentStrike = 0;
     }
 
-    public void compare_player_input_and_answer(int playerNum) {
+    private void addThreeNumberToComputerAnswer() {
+        while (computerAnswer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            addNumberToComputerAnswer(randomNumber);
+        }
+    }
+
+    private void addNumberToComputerAnswer(int randomNumber) {
+        if (!computerAnswer.contains(randomNumber)) {
+            computerAnswer.add(randomNumber);
+        }
+    }
+
+    public void comparePlayerInputAndAnswer(int playerNum) {
         currentBall = 0;
         currentStrike = 0;
         List<Integer> player_list = new ArrayList<>();
-        int_to_list(playerNum, player_list);
-        compare_list_and_answer(player_list);
+        intToList(playerNum, player_list);
+        compareListAndAnswer(player_list);
     }
 
-    private void compare_list_and_answer(List<Integer> player_list) {
-        for(int i =0;i<3;i++)
-        {
-            if(player_list.get(i) == computer_answer.get(i))
-                currentStrike++;
-            
-            else if(computer_answer.contains(player_list.get(i)))
-                currentBall++;
-            
+    private void compareListAndAnswer(List<Integer> player_list) {
+        for (int indexNum = 0; indexNum < 3; indexNum++) {
+            compareValue(player_list, indexNum);
         }
     }
 
-    private void int_to_list(int playerNum, List<Integer> player_list) {
+    private void compareValue(List<Integer> player_list, int indexNum) {
+        if (player_list.get(indexNum) == computerAnswer.get(indexNum))
+            currentStrike++;
+
+        else if (computerAnswer.contains(player_list.get(indexNum)))
+            currentBall++;
+    }
+
+    private void intToList(int playerNum, List<Integer> playerList) {
         int num = playerNum;
 
-        while(num > 0) {
-            player_list.add(num %10);
+        while (num > 0) {
+            playerList.add(num % 10);
             num /= 10;
         }
 
-        Collections.reverse(player_list);
+        Collections.reverse(playerList);
     }
 
-    public int get_strike() {
+    public int getStrike() {
         return currentStrike;
     }
 
-    public int get_ball() {
+    public int getBall() {
         return currentBall;
     }
 
