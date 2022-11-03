@@ -11,4 +11,8 @@ public class PrintComment {
     public static void printInputComment() {
         System.out.println(INPUT_COMMENT);
     }
+
+    public static void printUserInput(String numbers) {
+        System.out.println(numbers);
+    }
 }

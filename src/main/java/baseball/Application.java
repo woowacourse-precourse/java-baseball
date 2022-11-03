@@ -14,6 +14,7 @@ public class Application {
             PrintComment.printInputComment();
             String userInput = Console.readLine();
             GameState gameState = game.compareNumbers(userInput);
+            PrintComment.printUserInput(userInput);
         } while(true);
     }
 
