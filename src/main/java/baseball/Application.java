@@ -64,12 +64,13 @@ public class Application {
                 ballAndStrike.set(0, ballAndStrike.get(0)-1);
             }
         }
+        System.out.println(ballAndStrike);
         return ballAndStrike;
     }
     public static void caseOfAllStrike(String enterOneOrTwo) {
-        if (Console.readLine().equals("1")) {
+        if (enterOneOrTwo.equals("1")) {
             game();
-        } else if (Console.readLine().equals("2")) {
+        } else if (enterOneOrTwo.equals("2")) {
             System.exit(0);
         } else {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
@@ -83,13 +84,14 @@ public class Application {
         } else if (ballAndStrikeNumber.get(1) == 0) {
             System.out.println(ballAndStrikeNumber.get(0)+"볼 ");
         } else {
-            System.out.println(ballAndStrikeNumber.get(0)+"볼 "+ballAndStrikeNumber.get(0)+"스트라이크");
+            System.out.println(ballAndStrikeNumber.get(0)+"볼 "+ballAndStrikeNumber.get(1)+"스트라이크");
         }
     }
     public static void announceBallAndStrike(List<Integer> randomNumber, List<Integer> ballAndStrikeNumber) {
-        if (strikeNumber == 3) {
+        if (ballAndStrikeNumber.get(1) == 3) {
             finishAnnounce();
-            caseOfAllStrike(Console.readLine());
+            String oneOrTwo = Console.readLine();
+            caseOfAllStrike(oneOrTwo);
         } else {
             caseOfAllBallAndStrike(ballAndStrikeNumber);
             repeatGameUntilSuccess(randomNumber);
@@ -99,7 +101,8 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userEnterNumber = Console.readLine();
         List<Integer> enterNumber = getEnterNumber(userEnterNumber);
-        countBallAndStrike(randomNumber, enterNumber);
+        List<Integer> ballAndStrikeNumber = countBallAndStrike(randomNumber, enterNumber);
+        announceBallAndStrike(randomNumber, ballAndStrikeNumber);
     }
     public static void game() {
         List<Integer> randomNumber = getRandomNumber();
