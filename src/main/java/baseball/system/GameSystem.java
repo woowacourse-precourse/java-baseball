@@ -1,5 +1,8 @@
 package baseball.system;
 
+
+import baseball.player.*;
+
 public class GameSystem {
 
     public void runGame() {
@@ -13,7 +16,7 @@ public class GameSystem {
             if (!selectMenu()) {
                 break;
             }
-            
+
         }
 
 
@@ -21,10 +24,15 @@ public class GameSystem {
 
     private void startGame() {
 
+        Computer computer = new Computer();
+        User user = new User();
+
+        GamePlay gamePlay = new GamePlay(computer,user);
+        gamePlay.playGame();
+        
+
     }
 
-    private void printRunGameText() {
-    }
 
 
 }
