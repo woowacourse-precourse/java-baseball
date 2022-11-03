@@ -14,8 +14,8 @@ import java.util.Set;
 public class BaseballGame {
     private List<Integer> userNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
     private List<Integer> computerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
-    int strike;
-    int ball;
+    private int strike;
+    private int ball;
 
     public BaseballGame() {
         for (int i : createRandomNumbers()) {
