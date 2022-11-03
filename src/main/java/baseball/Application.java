@@ -89,20 +89,25 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computerNumber = makeRandomNumber();
-        boolean flag = false;
-        while (!flag) {
-            List<Integer> userInputNumber;
-            try {
-                userInputNumber = getUserNumber();
-            } catch (IllegalArgumentException exception) {
-                System.out.println("올바르지 않은 입력입니다!");
-                return;
+        Integer programEndFlag = 1;
+        while (programEndFlag.equals(1)) {
+            List<Integer> computerNumber = makeRandomNumber();
+            boolean flag = false;
+            while (!flag) {
+                List<Integer> userInputNumber;
+                try {
+                    userInputNumber = getUserNumber();
+                } catch (IllegalArgumentException exception) {
+                    System.out.println("올바르지 않은 입력입니다!");
+                    return;
+                }
+                int ball = countBall(computerNumber, userInputNumber);
+                int strike = countStrike(computerNumber, userInputNumber);
+                printResult(ball, strike);
+                flag = isGameEnd(strike);
             }
-            int ball = countBall(computerNumber, userInputNumber);
-            int strike = countStrike(computerNumber, userInputNumber);
-            printResult(ball, strike);
-            flag = isGameEnd(strike);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            programEndFlag = Integer.parseInt(readLine());
         }
     }
 }
