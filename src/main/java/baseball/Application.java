@@ -31,6 +31,22 @@ public class Application {
 
         return number_list;
     }
+
+    private static Integer countStrike(
+            List<Integer> computer_number,
+            List<Integer> user_number
+    ) {
+        Integer count = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer_number.get(i).equals(user_number.get(i))) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -39,6 +55,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             List<Integer> user_num = numtoList(guess_number);
+            Integer strike = countStrike(computer_num, user_num);
             break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
         }
     }
