@@ -12,13 +12,15 @@ public class BaseballGame {
     private static final String STRIKE = "스트라이크";
     private static final String GAME_START = "숫자 야구 게임을 시작합니다";
     private static final String GET_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String START_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private List<Integer> computer;
     private List<Integer> user;
     private int ball;
     private int strike;
     private boolean isCorrect;
+    private boolean isExit;
 
     public BaseballGame() {
     }
@@ -34,10 +36,14 @@ public class BaseballGame {
         compareNumbers();
         String result = makeResultString();
         System.out.println(result);
+
+        System.out.println(START_AGAIN);
+        startAgain();
     }
 
     private void initialize() {
         isCorrect = false;
+        isExit = false;
     }
 
     private void makeRandomNumber() {
@@ -108,8 +114,17 @@ public class BaseballGame {
         } else if (ball > 0) {
             answer = String.format("%d%s", ball, BALL);
         } else if (strike > 0) {
-            answer = String.format("%d%s", strike, STRIKE)
+            answer = String.format("%d%s", strike, STRIKE);
         }
         return answer;
+    }
+
+    private void startAgain() {
+        String input = Console.readLine();
+        if (input.equals("2")) {
+            isExit = true;
+        } else if (!input.equals("1")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
