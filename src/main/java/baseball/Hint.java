@@ -1,20 +1,18 @@
 package baseball;
 
+
 import java.util.List;
 
 public class Hint {
-    private final String letterBall = "볼";
-    private final String letterStrike = "스트라이크";
-    private final String letterNothing = "낫싱";
-
     private String hint ="";
 
     private int includedNumber;
     private int matchingNumber;
 
-    public Hint(List<Integer> correctAnswer, List<Integer> userAnswer) {
-        countMatchingNumbers(correctAnswer, userAnswer);
-        countIncludedNumbers(correctAnswer, userAnswer);
+    public Hint() {
+        AnswerSheet answerSheet = new AnswerSheet();
+        countMatchingNumbers(Game.correctAnswer, answerSheet.userAnswer);
+        countIncludedNumbers(Game.correctAnswer, answerSheet.userAnswer);
         getHintOfBall();
         getHintOfStrike();
         this.hint = this.getHint().trim();
@@ -25,7 +23,7 @@ public class Hint {
     }
 
     private void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
-        for (int index = 0; index < Start.answerLength; index++) {
+        for (int index = 0; index < Game.answerLength; index++) {
             if (correctAnswer.get(index) == userAnswer.get(index)) {
                 this.matchingNumber++;
             }
@@ -33,7 +31,7 @@ public class Hint {
     }
 
     private void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
-        for (int index = 0; index < Start.answerLength; index++) {
+        for (int index = 0; index < Game.answerLength; index++) {
             if (userAnswer.contains(correctAnswer.get(index))) {
                 this.includedNumber++;
             }
@@ -42,17 +40,17 @@ public class Hint {
 
     private void getHintOfBall() {
         if (this.includedNumber == 0) {
-            this.hint = letterNothing;
+            this.hint = "낫싱";
         } else {
-            this.hint += "" + (includedNumber - matchingNumber) + letterBall;
+            this.hint += "" + (includedNumber - matchingNumber) + "볼";
         }
     }
 
     private void getHintOfStrike() {
         if (this.includedNumber == 0) {
-            this.hint = letterNothing;
+            this.hint = "낫싱";
         } else {
-            this.hint += " " + matchingNumber + letterStrike;
+            this.hint += " " + matchingNumber + "스트라이크";
         }
     }
 }

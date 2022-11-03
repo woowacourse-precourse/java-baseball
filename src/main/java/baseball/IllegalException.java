@@ -6,18 +6,20 @@ import java.util.List;
 import java.util.Set;
 
 
-public class CheckException {
+public class IllegalException {
 
     protected List<Integer> userAnswer;
 
-    public CheckException(String[] inputArray) {
-        this.userAnswer = isNumber(inputArray);
+
+    public void check(String[] inputArray) {
+        isNumber(inputArray);
         isAnswerLength();
         isAllUnique();
         isNotContainZero();
     }
 
-    private List<Integer> isNumber(String[] inputArray) throws IllegalArgumentException{
+
+    private void isNumber(String[] inputArray){
 
         List<Integer> inputNumber = new ArrayList<>();
         try {
@@ -27,23 +29,23 @@ public class CheckException {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        return inputNumber;
+        userAnswer = inputNumber;
     }
 
-    private void isAnswerLength()  throws IllegalArgumentException{
-        if (userAnswer.size() != Start.answerLength) {
+    private void isAnswerLength(){
+        if (userAnswer.size() != Game.answerLength) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isAllUnique() throws IllegalArgumentException{
+    private void isAllUnique(){
         Set<Integer> uniqueNumber = new HashSet<>(userAnswer);
         if (userAnswer.size() != uniqueNumber.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isNotContainZero() throws IllegalArgumentException {
+    private void isNotContainZero(){
         if (userAnswer.contains(0)) {
             throw new IllegalArgumentException();
         }
