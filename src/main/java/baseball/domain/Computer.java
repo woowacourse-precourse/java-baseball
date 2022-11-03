@@ -11,13 +11,13 @@ public class Computer {
 	private static final int START_INCLUSIVE = 1;
 	private static final int END_INCLUSIVE = 9;
 
-	private static final List<Integer> threeUniqueNumbers = new ArrayList<>(SIZE);
+	private final List<Integer> threeUniqueNumbers = new ArrayList<>(SIZE);
 
 	public List<Integer> getNumbers() {
 		return getThreeUniqueNumbers();
 	}
 
-	private static List<Integer> getThreeUniqueNumbers() {
+	private List<Integer> getThreeUniqueNumbers() {
 		int randomNumber;
 
 		while (threeUniqueNumbers.size() < SIZE) {
