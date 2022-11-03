@@ -75,7 +75,12 @@ public abstract class NumberBaseballGame {
     }
 
     private static void printHint() {
-        //TODO: 플레이어가 입력한 숫자 기반 힌트 출력 구현
+        String hint;
+        if (ball == 0 && strike == 0) hint = "낫싱";
+        else if (ball == 0) hint = strike + "스트라이크";
+        else if (strike == 0) hint = ball + "볼";
+        else hint = ball + "볼 " + strike + "스트라이크";
+        System.out.println(hint);
     }
 
     private static boolean isGameOver() {
