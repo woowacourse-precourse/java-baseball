@@ -11,7 +11,7 @@ public class Retry {
         int requestNum = Integer.parseInt(Console.readLine());
 
         if (requestNum == 1){
-            Play.startGame();
+            SetPlay.startGame();
         } else if (requestNum == 2){
             System.out.println("종료합니다");
         }

@@ -14,10 +14,10 @@ public class User {
         }
         return playerNum;
     }
-    public static void exception(List<Integer> playerNum){
+    public static void exception(List<Integer> playerNum, List<Integer> computer){
         try{
             if(playerNum.size() == 3){
-                Play.run(playerNum);
+                Playing.compare(playerNum, computer);
             }
         }catch (IllegalArgumentException e){
             System.out.println("숫자를 잘못 입력하셨습니다");
