@@ -49,6 +49,12 @@ class InputValidatorTest {
 		}
 
 		@Test
+		void 숫자가_아닌_입력_문자열3() {
+			String ansString = "30+";
+			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateAnsString(ansString));
+		}
+
+		@Test
 		void 동일한_숫자가_포함된_문자열1() {
 			String ansString = "788";
 			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateAnsString(ansString));
