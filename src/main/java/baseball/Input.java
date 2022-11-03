@@ -8,8 +8,15 @@ public class Input {
 
     public Input(String input) {
         CheckLength(input);
+        CheckLange(input);
         CheckContinuous(input);
         this.input = input;
+    }
+
+    private void CheckLange(String input) {
+        for (int i = 0; i < 3; i += 1) {
+            if (input.charAt(i) == '0') throw new IllegalArgumentException();
+        }
     }
 
     private void CheckLength(String input) {
