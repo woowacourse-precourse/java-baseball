@@ -7,7 +7,7 @@ public class PrintMessage {
     public static void  inputUserNum(){
         System.out.println("숫자를 입력해주세요 : ");
     }
-    public static void answerMessage(){
+    public static void answerMessage() {
         System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static void ballStrikeMessage(int ball, int strike){
