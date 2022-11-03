@@ -79,6 +79,24 @@ class InputValidatorTest {
 		);
 	}
 
+	@Test
+	@DisplayName("중복 숫자 입력_1")
+	void 사용자_입력_오류5_1(){
+		String userInput = "557";
+		assertThrows(IllegalArgumentException.class,
+			() -> InputValidator.checkUserBallInput(userInput)
+		);
+	}
+
+	@Test
+	@DisplayName("중복 숫자 입력_2")
+	void 사용자_입력_오류5_2(){
+		String userInput = "888";
+		assertThrows(IllegalArgumentException.class,
+			() -> InputValidator.checkUserBallInput(userInput)
+		);
+	}
+
 
 
 
