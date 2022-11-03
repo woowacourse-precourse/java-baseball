@@ -8,18 +8,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println(CreateThreeNumsOfComputer());
+        Computer computer = new Computer();
+        computer.TestGenerateNumber();
     }
 
-    public static List<Integer> CreateThreeNumsOfComputer() {
-        List<Integer> numsOfComputer = new ArrayList<>();
 
-        while(numsOfComputer.size() < 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if(numsOfComputer.contains(randomNum) == false) {
-                numsOfComputer.add(randomNum);
-            }
-        }
-        return numsOfComputer;
-    }
 }
