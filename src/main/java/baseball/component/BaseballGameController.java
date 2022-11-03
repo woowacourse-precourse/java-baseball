@@ -59,9 +59,15 @@ public class BaseballGameController {
         int ballCount = score.get(0);
         int strikeCount = score.get(1);
 
+        String scoreMessage = generateScoreMessage(ballCount, strikeCount);
+
+        System.out.println(scoreMessage);
+    }
+
+    private String generateScoreMessage(int ballCount, int strikeCount){
+
         if(ballCount==0 && strikeCount==0){
-            System.out.println("낫싱");
-            return;
+            return "낫싱";
         }
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -74,8 +80,7 @@ public class BaseballGameController {
             stringBuilder.append("스트라이크 ");
         }
         stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length());
-
-        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 
     private boolean canPlayNextGame(){
