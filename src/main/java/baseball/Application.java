@@ -19,16 +19,20 @@ public class Application {
     }
 
     public boolean handleRestart() {
-        String s = Console.readLine();
+        String restartKey = Console.readLine();
 
     }
 
-
-
-    //exitKey
     // 1 -> 재시작.
     // 2 -> 종료.
     // 그외 -> 예외처리.
+    private int checkValidRestartKey(String restartKey) {
+        checkInputLength(restartKey, 1);
+        int key = Character.getNumericValue(restartKey.charAt(0));
+        checkInValidRange(1, 2, key);
+        return key;
+    }
+
     public void exit(int exitKey) {
 
     }
