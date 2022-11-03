@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Round {
     private static final int NUMBER_OF_HIDDEN_NUMBER = 3;
-    private static final int MIN_HIDDEN_NUMBER = 9;
+    private static final int MIN_HIDDEN_NUMBER = 1;
     private static final int MAX_HIDDEN_NUMBER = 9;
     private List<Integer> hiddenNumberList;
 
@@ -17,7 +17,7 @@ public class Round {
     public void addNewHiddenNumberToList(List<Integer> numberList) {
         int randomNumber;
         do {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumber = Randoms.pickNumberInRange(MIN_HIDDEN_NUMBER, MAX_HIDDEN_NUMBER);
         } while (numberList.contains(randomNumber));
         numberList.add(randomNumber);
     }
