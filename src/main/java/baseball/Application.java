@@ -1,11 +1,9 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
-import java.util.stream.Collectors;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Application {
     public static void main(String[] args) {
@@ -43,6 +41,14 @@ public class Application {
     }
 
     private static ArrayList<Integer> createAnswerNumber() {
-        
+        ArrayList<Integer> answerNumberArrayList = new ArrayList<>();
+
+        // 1에서 9까지 서로 다른 임의의 수 3개를 생성한다.
+        while (answerNumberArrayList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumberArrayList.contains(randomNumber)) {
+                answerNumberArrayList.add(randomNumber);
+            }
+        }
     }
 }
