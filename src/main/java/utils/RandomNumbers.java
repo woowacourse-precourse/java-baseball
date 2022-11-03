@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class RandomNumbers {
     int numberLength;
-    RandomNumbers(){
+    public RandomNumbers(){
         this(3);
     }
 
-    RandomNumbers(int numberLength) {
+    public RandomNumbers(int numberLength) {
         this.numberLength = numberLength;
     }
     private List<Integer> computerNumbers = new ArrayList<>(numberLength);
