@@ -7,27 +7,51 @@ public class PlayerInputFilter {
         numbers = new int[3];
     }
 
-    public void checkIfNotNumber(String numbers){
+    String getInput(){
+        return "";
+    }
+
+    void checkException(String input){
 
     }
 
-    public void checkIfNotThreeDigit(String numbers){
+    boolean isNotNumber(String input){
+        return false;
+    }
+
+    void noNumberException(){
 
     }
 
-    public void checkIfContainsZero(String numbers){
+    boolean isNotThreeDigit(String input){
+        return false;
+    }
+
+    void notThreeDigitException(){
 
     }
 
-    public void checkIfContainsMultiNumbers(String numbers){
+    boolean containsZero(String input){
+        return false;
+    }
+
+    void containsZeroException(){
 
     }
 
-    public void saveInput(String numbers){
+    boolean containsSameNumber(String input){
+        return false;
+    }
+
+    void containsSameNumberException(){
 
     }
 
-    public int[] getResultNumbersArray(){
+    int[] convertNumbersToArray(String input){
         return new int[]{};
+    }
+
+    void insertNumber(){
+
     }
 }
