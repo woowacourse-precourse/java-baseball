@@ -3,10 +3,25 @@ package baseball.domain;
 import java.util.Objects;
 
 public class BallPosition {
+    private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "Position 은 0~2 사이여야 합니다.";
+    private static final int MIN_POSITION = 0;
+    private static final int MAX_POSITION = 2;
+    
     private final int position;
     
     public BallPosition(final int position) {
+        validateRange(position);
         this.position = position;
+    }
+    
+    private void validateRange(final int position) {
+        if (isPositionOutOfRange(position)) {
+            throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION_MESSAGE);
+        }
+    }
+    
+    private boolean isPositionOutOfRange(final int position) {
+        return position < MIN_POSITION || position > MAX_POSITION;
     }
     
     @Override
