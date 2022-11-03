@@ -20,38 +20,22 @@ public class Player {
 		userNumberList = new ArrayList<>(INIT_LIST_CAPACITY);
 	}
 
-	protected void makeUserNumber() {
+	protected void makeUserNumber(String userInput) {
 		initUserNumber();
-		checkUserInput();
+		makeUserInput(userInput);
 	}
 
-	private void checkUserInput() {
-		int userInput = Integer.parseInt(inputNumber());
+	private void makeUserInput(String userInput) {
+		int userInputToInt = Integer.parseInt(userInput);
 
-		addUserNumber(userInput);
-
-		for (int targetIndex = INIT_INDEX; targetIndex < userNumberList.size() - 1; targetIndex++) {
-			int target = userNumberList.get(targetIndex);
-
-			checkSameNumberExist(targetIndex, target);
-		}
+		addUserNumber(userInputToInt);
 	}
 
-	private String inputNumber() {
+	protected String inputNumber() {
 		System.out.print(USER_INPUT_GUIDE_MESSAGE);
 		String str = Console.readLine();
 
 		return str;
-	}
-
-	private void checkSameNumberExist(int targetIndex, int target) {
-		for (int compareIndex = targetIndex + 1; compareIndex < userNumberList.size(); compareIndex++) {
-			int compareNumber = userNumberList.get(compareIndex);
-
-			if (target == compareNumber) {
-				throw new IllegalArgumentException(ERROR + "중복되는 숫자는 입력할 수 없습니다.");
-			}
-		}
 	}
 
 	private void addUserNumber(int userNumber) {
@@ -68,9 +52,9 @@ public class Player {
 		return userNumberList;
 	}
 
-	protected int inputEndOrRe() {
+	protected String inputEndOrRe() {
 		System.out.println(END_OR_RESTART_MESSAGE);
-		int reOrEnd = Integer.parseInt(Console.readLine());
+		String reOrEnd = Console.readLine();
 
 		return reOrEnd;
 	}
