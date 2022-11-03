@@ -23,4 +23,20 @@ public class Computer {
         }
         return list;
     }
+
+    public boolean checkAnswer(List<Integer> list) {
+        int[] counts = new int[]{0, 0};
+        StringBuilder sb = new StringBuilder();
+
+        for (int i : list) {
+            checkByBalls(i, counts);
+        }
+
+        printResult(counts);
+
+        if (counts[0] == User.NUMBER_DIGIT) {
+            return true;
+        }
+        return false;
+    }
 }
