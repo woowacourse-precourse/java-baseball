@@ -18,11 +18,12 @@ public class Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        for (int i = 0; i < userInput.length(); i++) {
-            guess.add(userInput.charAt(i) - '0');
+        try {
+            guess = typeCast(userInput, guess);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.toString());
+            return;
         }
-
-        // TODO: 프로그램 구현
         List<Integer> answer;
         answer = makeRandomNum();
     }
@@ -31,10 +32,24 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
+            if (!computer.contains(randomNumber))
                 computer.add(randomNumber);
-            }
         }
         return computer;
+    }
+
+    public static boolean redundant(List<Integer> guess) {
+        if (guess.get(0) == guess.get(1) || guess.get(0) == guess.get(2) || guess.get(1) == guess.get(2))
+            return true;
+        else
+            return false;
+    }
+
+    public static List<Integer> typeCast(String userInput, List<Integer> guess) throws IllegalArgumentException {
+        for (int i = 0; i < userInput.length(); i++)
+            guess.add(userInput.charAt(i) - '0');
+        if (redundant(guess))
+            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
+        return guess;
     }
 }
