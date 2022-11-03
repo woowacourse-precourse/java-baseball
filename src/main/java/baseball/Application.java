@@ -49,7 +49,10 @@ public class Application {
         return computer;
     }
 
-    private static String getUserAnswerInString() {}
+    private static String getUserAnswerInString() {
+        String user = Console.readLine();
+        return user;
+    }
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
