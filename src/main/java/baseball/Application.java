@@ -11,7 +11,8 @@ public class Application {
     static final int EXIT   = 2;
     static final int LENGTH_OF_BASEBALL_NUMBER = 3;
     static final int MAXIMUM_STRIKE = 3;
-    static final int STRIKE_COUNT = 0;
+    static final int STRIKE_COUNT_INDEX = 0;
+    static final int BALL_COUNT_INDEX = 1;
 
     public static void main(String[] args) {
         int gameStatus = START;
@@ -109,20 +110,24 @@ public class Application {
         return count;
     }
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
-        return scoreOfStrikeAndBall.get(STRIKE_COUNT) == MAXIMUM_STRIKE;
+        return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == MAXIMUM_STRIKE;
     }
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {
         if (isRightAnswer(scoreOfStrikeAndBall)) {
             printThreeStrike();
             return;
+        } else if (isNoMatchAnswer(scoreOfStrikeAndBall)) {
+            printNothingMatch();
         }
-        printStrike();
-        printBall();
+        printStrike(scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX));
+        printBall(scoreOfStrikeAndBall.get(BALL_COUNT_INDEX));
     }
 
+    private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {}
+    private static void printNothingMatch() {}
     private static void printThreeStrike() {}
-    private static void printStrike() {}
-    private static void printBall() {}
+    private static void printStrike(int strikeCount) {}
+    private static void printBall(int ballCount) {}
 
     private static int askRestartOrExit() {
         int result = EXIT;
