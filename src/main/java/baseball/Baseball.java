@@ -1,11 +1,14 @@
 package baseball;
 
+import baseball.view.GameMessage;
+
 public class Baseball {
+    private GameMessage gameMessage = new GameMessage();
     private User user = new User();
-    public Computer computer = new Computer();
+    private Computer computer = new Computer();
 
     public void playGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        gameMessage.startGame();
 
         computer.throwTheBall();
         user.hitTheBall();
