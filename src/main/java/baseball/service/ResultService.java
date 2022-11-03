@@ -25,7 +25,7 @@ public class ResultService {
             validation.isNumber(inputNum);
 
             List<Integer> inputNumber = returnList(inputNum);
-            Collections.reverse(inputNumber);
+            System.out.println("input : " + inputNumber);
 
             validation.InputValid(RandomNumber, inputNumber);
 
