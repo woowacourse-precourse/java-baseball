@@ -5,29 +5,43 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> gameNumberList = pickGameNumber();
         System.out.println(gameNumberList);
+        List<Integer> userNumberList = inputGameNumber();
+        System.out.println(userNumberList);
     }
 
     public static List<Integer> pickGameNumber() {
         List<Integer> gameNumberList = new ArrayList<>();
         while (gameNumberList.size() != 3) {
-            gameNumberList = checkNumber(gameNumberList);
+            checkNumber(gameNumberList);
         }
         return gameNumberList;
     }
 
-    public static List<Integer> checkNumber(List<Integer> gameNumberList) {
-        int num = Randoms.pickNumberInRange(0, 9);
-        System.out.println(num);
-        if (!gameNumberList.contains(num)) {
-            gameNumberList.add(num);
+    public static void checkNumber(List<Integer> numberList) {
+        int num = Randoms.pickNumberInRange(1, 9);
+
+        if (!numberList.contains(num)) {
+            numberList.add(num);
         }
-        System.out.println(gameNumberList);
-        return gameNumberList;
+    }
+
+    public static List<Integer> inputGameNumber() {
+        List<Integer> userNumberList = new ArrayList<>();
+        String inputNum = readLine();
+        int i = 0;
+        while (userNumberList.size() != 3) {
+            userNumberList.add(Character.getNumericValue(inputNum.charAt(i)));
+            i++;
+        }
+        return userNumberList;
+
     }
 }
