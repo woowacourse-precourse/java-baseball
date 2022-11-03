@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,8 +24,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
+        Player player = new Player();
+        player.playersNumber = Arrays.asList("1234".split(""));
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(() -> InputChecker.checkExceptionNumber(player.playersNumber))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
