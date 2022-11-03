@@ -27,8 +27,8 @@ public class Application {
                 continue;
             }
 
-            int[] numberArrays = {0, 0, 0};
-            addNumber(numberArrays, numberString);
+            int[] userNumbers = {0, 0, 0};
+            addNumber(userNumbers, numberString);
 
         } while (true);
     }
@@ -116,18 +116,18 @@ public class Application {
         return true;
     }
 
-    public static void addNumber(int[] numberArrays, String numberString) {
+    public static void addNumber(int[] userNumbers, String numberString) {
 
         for (int i = 0; i < numberString.length(); i++) {
-            numberArrays[i] = numberString.charAt(i) - 48;
+            userNumbers[i] = numberString.charAt(i) - 48;
         }
 
     }
 
-    public static void countingStrike(int strike, int[] numberArrays, List<Integer> randomNumberList) {
+    public static void countingStrike(int strike, int[] userNumbers, List<Integer> randomNumberList) {
 
         for (int i = 0; i < 3; i++) {
-            if (numberArrays[i] == randomNumberList.get(i)) {
+            if (userNumbers[i] == randomNumberList.get(i)) {
 
                 strike += 1;
             }
