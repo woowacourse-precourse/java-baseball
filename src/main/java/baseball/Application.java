@@ -17,10 +17,11 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
+        System.out.println(computer);
         List<Integer> numberList = inputNum();
-        System.out.println(numberList);
-
+        Baseball baseball = compareNum(numberList, computer);
+        System.out.println("스트라이크 : "+baseball.getStrike());
+        System.out.println("볼 : "+baseball.getBall());
     }
 
     //입력 메서드
@@ -38,11 +39,43 @@ public class Application {
                 numberList.add(num);
             }
         }
-        if (number.length() == 3 && isNumeric == true && numberList.size() == 3) { //서로 다른 수 추가
+        if (number.length() == 3 && isNumeric == true && numberList.size() == 3) {
             return numberList;
         } else {
             throw new IllegalArgumentException("잘못된 값입니다.");
         }
     }
 
+    public static Baseball compareNum(List<Integer> numberList, List<Integer> computer) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (numberList.get(i) == computer.get(i)) {
+                strike += 1;
+            } else if (computer.contains(numberList.get(i))) {
+                ball += 1;
+            }
+        }
+
+        Baseball baseball = new Baseball(strike, ball);
+        return baseball;
+    }
+
+    public static class Baseball{
+        private int strike;
+        private int ball;
+
+        public Baseball(int strike, int ball){
+            this.strike = strike;
+            this.ball = ball;
+        }
+
+        public int getStrike() {
+            return strike;
+        }
+
+        public int getBall() {
+            return ball;
+        }
+    }
 }
