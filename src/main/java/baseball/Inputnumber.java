@@ -19,15 +19,15 @@ public class Inputnumber {
 
     public List<Integer> stringTointList(){
         List<Integer> argList = new ArrayList<>();
-        for(String arg : args){
-            argList.add(Integer.valueOf(arg));
-        }
+        String[] argsTemp = arg.split("");
+        for(String args: argsTemp) argList.add(Integer.valueOf(args));
         return argList;
     }
 
-    public boolean is1to10(List<Integer> list){
-        for(int number : list){
-            if(number <1 || number >9) return false;
+    public boolean is1to10(){
+        for(int i =0; i<arg.length();i++){
+            int checkNumber = Integer.valueOf(arg.substring(i));
+            if(checkNumber<1 || checkNumber>9) return false;
         }
         return true;
     }
