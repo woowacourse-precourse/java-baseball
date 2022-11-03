@@ -12,6 +12,18 @@ public class Application {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
     }
 
+    private static List<Integer> splitDigits(int input) {
+        List<Integer> digits = new ArrayList<>();
+        int front = input / 100;
+        int middle = (input % 100) / 10;
+        int rear = input % 10;
+
+        digits.add(front);
+        digits.add(middle);
+        digits.add(rear);
+
+        return digits;
+    }
     public int isLegalInput(int input) {
         int front = input / 100;
         int middle = (input % 100) / 10;
