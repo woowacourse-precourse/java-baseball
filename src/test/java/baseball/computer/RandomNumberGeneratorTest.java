@@ -23,6 +23,14 @@ public class RandomNumberGeneratorTest {
         }
     }
 
+    @Test
+    void 자릿수의_길이_확인() {
+        for (int testNumbers = 0; testNumbers < 100; testNumbers++) {
+            List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
+            assertThat(gameNumbers.size()).isEqualTo(3);
+        }
+    }
+
     private static boolean isDigitAOtherNumber() {
         List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
         HashSet<Integer> numberSet = new HashSet<>();
