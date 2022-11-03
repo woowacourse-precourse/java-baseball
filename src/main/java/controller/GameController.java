@@ -16,6 +16,6 @@ public class GameController {
     public void callInputNumOfUser() {
         this.user.inputNumOfUser();
     }
-
+    
 
 }
