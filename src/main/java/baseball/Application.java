@@ -129,7 +129,10 @@ public class Application {
     private static void printNothingMatch() {
         System.out.println("낫싱");
     }
-    private static void printThreeStrike() {}
+    private static void printThreeStrike() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
     private static void printStrike(int strikeCount) {}
     private static void printBall(int ballCount) {}
 
