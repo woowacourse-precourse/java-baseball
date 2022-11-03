@@ -80,8 +80,8 @@ class ApplicationTest extends NsTest {
     void countPrintTestBallStrike() {
         int ballCount = 1;
         int strikeCount = 1;
-        PrintCount printCount = new PrintCount();
-        int result = printCount.print(ballCount, strikeCount);
+        GameBranch status = new GameBranch();
+        int result = status.branch(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("1볼 1스트라이크");
     }
@@ -90,8 +90,8 @@ class ApplicationTest extends NsTest {
     void countPrintBall() {
         int ballCount = 2;
         int strikeCount = 0;
-        PrintCount printCount = new PrintCount();
-        int result = printCount.print(ballCount, strikeCount);
+        GameBranch status = new GameBranch();
+        int result = status.branch(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("2볼");
     }
@@ -100,8 +100,8 @@ class ApplicationTest extends NsTest {
     void countPrintStrike() {
         int ballCount = 0;
         int strikeCount = 2;
-        PrintCount printCount = new PrintCount();
-        int result = printCount.print(ballCount, strikeCount);
+        GameBranch status = new GameBranch();
+        int result = status.branch(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("2스트라이크");
     }
@@ -110,8 +110,8 @@ class ApplicationTest extends NsTest {
     void countPrintNothing() {
         int ballCount = 0;
         int strikeCount = 0;
-        PrintCount printCount = new PrintCount();
-        int result = printCount.print(ballCount, strikeCount);
+        GameBranch status = new GameBranch();
+        int result = status.branch(ballCount, strikeCount);
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("낫싱");
     }
@@ -120,9 +120,8 @@ class ApplicationTest extends NsTest {
     void countPrintGameEnd() {
         int ballCount = 0;
         int strikeCount = 3;
-        PrintCount printCount = new PrintCount();
-        int result = printCount.print(ballCount, strikeCount);
-        assertThat(result).isEqualTo(-2);
+        GameBranch status = new GameBranch();
+        int result = status.branch(ballCount, strikeCount);
         assertThat(output()).contains("3스트라이크", "게임 종료");
     }
 
