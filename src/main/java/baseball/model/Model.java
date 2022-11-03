@@ -28,9 +28,11 @@ public class Model {
     }
     public int findStrike(int score,int input){
         int count = 0;
-        if (score / 100 == input / 100) count++;
-        if (score / 10 % 10 == input / 10 %10) count++;
-        if (score % 10 == input % 10) count++;
+        for (int i = 0 ; i < 3 ; i++){
+            if (score % 10 == input % 10) count++;
+            score /= 10;
+            input /= 10;
+        }
         return count;
     }
 
