@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.controller.dto.UserPlayNumbers;
 import baseball.model.NumberBaseball;
 import baseball.model.application.NumberBaseballService;
 import baseball.view.NumberBaseballView;
@@ -11,9 +12,8 @@ public class NumberBaseballController {
 	public void initGame() {
 		numberBaseballView.initPage();
 	}
-	public void playBall() throws IllegalArgumentException {
+	public void playBall() {
 		NumberBaseball computerNumber = numberBaseballService.createNumberBaseball();
-
-		String userInput = numberBaseballView.playPage();
+		UserPlayNumbers userPlayNumbers = numberBaseballView.playPage();
 	}
 }
