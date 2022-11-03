@@ -50,5 +50,7 @@ public class Application {
                 answerNumberArrayList.add(randomNumber);
             }
         }
+
+        return answerNumberArrayList;
     }
 }
