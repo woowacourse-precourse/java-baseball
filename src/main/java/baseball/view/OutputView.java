@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.utils.UserInputValidator;
+
 public class OutputView {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
@@ -11,6 +13,7 @@ public class OutputView {
         printOnlyStrike(strike, ball);
         printOnlyBall(strike, ball);
         printNothing(strike, ball);
+        printGameEnd(strike, ball);
     }
 
     private static void printStrikeAndBall(int strike, int ball) {
@@ -22,7 +25,6 @@ public class OutputView {
     private static void printOnlyStrike(int strike, int ball) {
         if (strike != 0 && ball == 0) {
             System.out.println(strike + STRIKE);
-            System.out.println(GAME_END);
         }
     }
 
@@ -35,6 +37,12 @@ public class OutputView {
     private static void printNothing(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);
+        }
+    }
+
+    private static void printGameEnd(int strike, int ball) {
+        if (strike == UserInputValidator.INPUT_SIZE && ball == 0) {
+            System.out.println(GAME_END);
         }
     }
 }
