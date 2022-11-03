@@ -8,19 +8,27 @@ import java.util.stream.Collectors;
 
 
 public class Score {
-	private final Map<BallCount, Integer> score;
+	private Map<BallCount, Integer> score;
 
 	public Score() {
-		this.score = initEnumMap();
+		this.score = intiScoreMap();
 	}
 
 	public Score(Map<BallCount, Integer> score) {
 		this.score = score;
 	}
 
-	private Map<BallCount, Integer> initEnumMap() {
+	public Score(Computer computer, User user) {
+		this.score = calculateBallCountScore(computer, user);
+	}
+
+	private Map<BallCount, Integer> intiScoreMap() {
 		return Arrays.stream(BallCount.values())
 			.collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b, () -> new EnumMap<>(BallCount.class)));
+	}
+
+	private Map<BallCount, Integer> calculateBallCountScore(Computer computer, User user) {
+		return user.compareWithComputerBalls(computer, intiScoreMap());
 	}
 
 	@Override
@@ -36,5 +44,12 @@ public class Score {
 	@Override
 	public int hashCode() {
 		return Objects.hash(score);
+	}
+
+	@Override
+	public String toString() {
+		return "Score{" +
+			"score=" + score +
+			'}';
 	}
 }
