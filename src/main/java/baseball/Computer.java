@@ -32,7 +32,7 @@ public class Computer {
         return false;
     }
 
-    private List<Integer> getListFromInt(int number) {
+    public List<Integer> getListFromInt(int number) {
         List<Integer> list = new ArrayList<>();
         int divide = 100;
         while (divide > 0) {
@@ -64,7 +64,7 @@ public class Computer {
         return ball;
     }
 
-    private void print(int strike, int ball) {
+    public void print(int strike, int ball) {
         if (strike > 0 && ball > 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         } else if (strike > 0 && ball == 0) {
