@@ -9,6 +9,7 @@
 2. makeThreeDigitNumber() : 1~9의 세자리 랜덤 값을 생성한다.
    1. insertNumber() 3번 반복
 3. returnNumbersToArray : 리스트에 저장한 숫자들을 배열로 리턴해준다.
+4. generateComputerNumber() : 위의 기능들을 통해 3개의 1부터 9중의 숫자를 배열로 리턴해준다. 
 
 ### PlayerInputFilter
 1. getInput() : readLine으로 입력한 문자열을 반환한다.
