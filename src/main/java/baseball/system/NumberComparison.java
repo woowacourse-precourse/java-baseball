@@ -32,6 +32,10 @@ public class NumberComparison {
 
     }
 
+    private void printNothingText() {
+        System.out.println("낫싱");
+    }
+
     private boolean isNothing(int strikeCount, int ballCount) {
         return strikeCount == 0 && ballCount == 0;
     }
