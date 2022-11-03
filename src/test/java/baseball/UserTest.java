@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,14 @@ public class UserTest {
         }
         assertThat(resultList).allMatch((boo) -> {
             return boo.equals(false);
+        });
+    }
+
+    @Test
+    void 입력값이_양수인지_체크() {
+        User user = new User();
+        assertThrows(IllegalArgumentException.class, () -> {
+            user.isValidPositiveInt(-111);
         });
     }
 }
