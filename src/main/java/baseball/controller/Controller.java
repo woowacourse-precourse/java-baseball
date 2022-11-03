@@ -9,12 +9,13 @@ public class Controller {
     Model model = new Model();
     View view = new View();
     Ball ball = new Ball();
+    String input;
 
     public void start() {
         view.startMention();
         while (true) {
             view.printInput();
-            String input = Console.readLine();
+            input = Console.readLine();
 
             if (!model.findException(input)) throw new IllegalArgumentException();
 
