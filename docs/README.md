@@ -48,7 +48,8 @@
   - ball의 개수를 계산하는 함수
 
 
-- void checkAndCountBall(int, int, int)
+- void checkAndCountBall(int, int, int)경
+  - 인수로 받은 두 수를 비교해 ball의 개수를 계산하는 함수
 
 - void countingStrike(int, int[], List<Integer>)
   - strike의 개수를 계산하는 함수
