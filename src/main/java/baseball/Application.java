@@ -87,6 +87,8 @@ public class Application {
     private static void validateInput(String input) {
         if(!Pattern.matches("^[1-9]{3}", input))
             throw new IllegalArgumentException("1부터 9까지 3자리의 숫자를 입력해주세요");
+        if((input.charAt(0)==input.charAt(1))||(input.charAt(0)==input.charAt(2))||(input.charAt(1)==input.charAt(2)))
+            throw new IllegalArgumentException("서로 다른 수를 입력해주세요.");
     }
 
     private static String[] splitInput() {
