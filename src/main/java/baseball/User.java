@@ -7,7 +7,7 @@ import java.util.List;
 public class User {
     public static List<Integer> inputNum(List<Integer> playerNum){
         String playerNumString = Console.readLine();
-        char[] playerNumCharArr = playerNumCharArr = playerNumString.toCharArray();
+        char[] playerNumCharArr = playerNumString.toCharArray();
 
         for(int c : playerNumCharArr){
             playerNum.add(c);
@@ -16,8 +16,8 @@ public class User {
     }
     public static void exception(List<Integer> playerNum){
         try{
-            if(inputNum(playerNum).size() == 3){
-                //Play.run();
+            if(playerNum.size() == 3){
+                Play.run(playerNum);
             }
         }catch (IllegalArgumentException e){
             System.out.println("숫자를 잘못 입력하셨습니다");
