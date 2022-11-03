@@ -53,7 +53,11 @@ public class BaseballGame {
     }
 
     private void createComputerNumbers() {
-        computerNumbers = Randoms
-                .pickUniqueNumbersInRange(1, 9, NUMBER_COUNT_TO_CREATED);
+        while (computerNumbers.size() < NUMBER_COUNT_TO_CREATED) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
+            }
+        }
     }
 }
