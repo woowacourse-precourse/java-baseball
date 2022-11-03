@@ -31,6 +31,9 @@ public class User {
         return numInput;
     }
 
+    public int getNumSelecUser() {
+        return numSelecUser;
+    }
 
     public boolean isValidPositiveInt(int num) {
         if (num > 0) {
