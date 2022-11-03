@@ -1,10 +1,13 @@
 package baseball;
 
+import baseball.data.BaseballNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
     public static void playGame() {
+        BaseballNumber baseballNumber = BaseballNumber.getInstance();
+
 
     }
 
@@ -15,11 +18,11 @@ public class Game {
 
         input = Integer.parseInt(Console.readLine());
 
-        if (input == GameStatus.START.getStatus()) {
+        if (input == GameConstant.START.getValue()) {
             return true;
         }
 
-        if (input == GameStatus.END.getStatus()) {
+        if (input == GameConstant.END.getValue()) {
             return false;
         }
 
