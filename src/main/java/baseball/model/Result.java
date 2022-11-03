@@ -11,9 +11,9 @@ import static baseball.resources.GameConfig.*;
 
 public class Result {
     private final List<Numbers> numbers;
-    private final List<Integer> gameNumber;
+    private final GameNumber gameNumber;
 
-    public Result(List<Numbers> numbers, List<Integer> gameNumber) {
+    public Result(List<Numbers> numbers, GameNumber gameNumber) {
         this.numbers = numbers;
         this.gameNumber = gameNumber;
     }

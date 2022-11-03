@@ -1,30 +1,23 @@
 package baseball.model;
 
-import baseball.utils.GameNumberGenerator;
-import baseball.utils.InputNumberValidator;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.resources.GameConfig.RESTART;
+import static baseball.utils.GameNumberGenerator.generate;
+import static baseball.utils.InputNumberValidator.validate;
 
 public class NumberBaseBallGame {
-    private final InputNumberValidator inputNumberValidator;
-    private List<Integer> gameNumber;
+    private GameNumber gameNumber;
     private boolean isProceeding;
 
-    public NumberBaseBallGame(List<Integer> gameNumber) {
-        this.inputNumberValidator = new InputNumberValidator();
+    public NumberBaseBallGame(GameNumber gameNumber) {
         this.gameNumber = gameNumber;
         this.isProceeding = true;
     }
 
-    public boolean isProceeding() {
-        return isProceeding;
-    }
-
     public void validateInputNumber(String inputNumber) {
-        inputNumberValidator.validate(inputNumber);
+        validate(inputNumber);
     }
 
     public Result result(String inputNumber) {
@@ -36,6 +29,10 @@ public class NumberBaseBallGame {
         return new Result(numbers, gameNumber);
     }
 
+    public boolean isProceeding() {
+        return isProceeding;
+    }
+
     public void end() {
         isProceeding = false;
     }
@@ -43,7 +40,7 @@ public class NumberBaseBallGame {
     public void restart(String restart) {
         if (restart.equals(RESTART)) {
             isProceeding = true;
-            gameNumber = GameNumberGenerator.generate();
+            gameNumber = generate();
         }
     }
 }

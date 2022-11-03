@@ -3,7 +3,7 @@ package baseball.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,7 +44,7 @@ class NumberBaseBallGameTest {
     @DisplayName("결과값 확인 - 스트라이크")
     void check_Result_Only_Strike(){
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1, 2, 3));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new GameNumber(Set.of(1, 2, 3)));
         Result result = numberBaseBallGame.result(inputNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
@@ -59,7 +59,7 @@ class NumberBaseBallGameTest {
     @DisplayName("결과값 확인 - 볼")
     void check_Result_Only_Ball(){
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(2, 3, 1));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new GameNumber(Set.of(2, 3, 1)));
         Result result = numberBaseBallGame.result(inputNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
@@ -74,7 +74,7 @@ class NumberBaseBallGameTest {
     @DisplayName("결과값 확인 - 볼, 스트라이크")
     void check_Result_Ball_Strike(){
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1, 3, 2));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new GameNumber(Set.of(1, 3, 2)));
         Result result = numberBaseBallGame.result(inputNumber);
 
         assertThat(result.hasBallAndStrike()).isTrue();
@@ -89,7 +89,7 @@ class NumberBaseBallGameTest {
     @DisplayName("결과값 확인 - 낫싱")
     void check_Result_Nothing(){
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(4,5,6));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new GameNumber(Set.of(4, 5, 6)));
         Result result = numberBaseBallGame.result(inputNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
@@ -101,7 +101,7 @@ class NumberBaseBallGameTest {
     }
 
     private void failValidateInputNumber(String inputNumber) {
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1,2,3));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new GameNumber(Set.of(1, 2, 3)));
         assertThatThrownBy(() -> numberBaseBallGame.validateInputNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3개의 자연수를 입력하세요");

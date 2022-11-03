@@ -1,7 +1,5 @@
 package baseball.model;
 
-import java.util.List;
-
 public class Numbers {
     private final int index;
     private final int value;
@@ -11,11 +9,19 @@ public class Numbers {
         this.value = value;
     }
 
-    public boolean isStrike(List<Integer> gameNumber) {
-        return gameNumber.contains(value) && gameNumber.get(index) == value;
+    public boolean isStrike(GameNumber gameNumber) {
+        return hasValue(gameNumber) && samePosition(gameNumber);
     }
 
-    public boolean isBall(List<Integer> gameNumber) {
-        return gameNumber.contains(value) && gameNumber.get(index) != value;
+    public boolean isBall(GameNumber gameNumber) {
+        return hasValue(gameNumber) && !samePosition(gameNumber);
+    }
+
+    private boolean hasValue(GameNumber gameNumber) {
+        return gameNumber.contains(value);
+    }
+
+    private boolean samePosition(GameNumber gameNumber) {
+        return gameNumber.get(index) == value;
     }
 }
