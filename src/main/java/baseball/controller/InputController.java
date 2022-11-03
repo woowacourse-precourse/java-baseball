@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputController {
-
     public List<Integer> insertComNumber() {
         List<Integer> insertNum = new ArrayList<>();
         while(insertNum.size() < 3) {
