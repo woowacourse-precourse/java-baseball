@@ -68,7 +68,8 @@ public class Application {
     }
 
     public static boolean checkNumberLengthIsThree(String number){
-        return number.length()==3;
+        String changedNumber = number.replaceAll("[^1-9]","");
+        return changedNumber.length()==3;
     }
 
     public static boolean checkNumberIsDuplicated(String number){
@@ -76,6 +77,5 @@ public class Application {
         HashSet<String> set = new HashSet<>(Arrays.asList(arr));
         return set.size() == 3;
     }
-
 
 }
