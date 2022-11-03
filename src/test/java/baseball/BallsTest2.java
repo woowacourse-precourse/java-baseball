@@ -70,4 +70,21 @@ public class BallsTest2 {
             assertThat(result.getStrike()).isEqualTo(3);
         }
     }
+
+    @Nested
+    class NBallNStrike {
+        @Test
+        void oneBall_oneStrike() {
+            Result result = computer.play(Arrays.asList(1, 3, 5));
+            assertThat(result.getBall()).isEqualTo(1);
+            assertThat(result.getStrike()).isEqualTo(1);
+        }
+
+        @Test
+        void twoBall_OneStrike() {
+            Result result = computer.play(Arrays.asList(1, 3, 2));
+            assertThat(result.getBall()).isEqualTo(2);
+            assertThat(result.getStrike()).isEqualTo(1);
+        }
+    }
 }
