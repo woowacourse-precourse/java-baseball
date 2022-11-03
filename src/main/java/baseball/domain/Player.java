@@ -5,6 +5,8 @@ import baseball.constants.ExceptionMessage;
 import java.util.*;
 
 public class Player {
+    private static final int DIGIT_NUM = 3;
+    private static final String PATTERN = "[1-9]+";
 
     public List<Integer> getInput(String readLine) {
         String verifiedInput = inputVerification(readLine);
@@ -17,7 +19,7 @@ public class Player {
     }
 
     public String inputVerification(String readLine) {
-        if (readLine.length() != 3) {
+        if (readLine.length() != DIGIT_NUM) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_INPUT);
         }
 
@@ -32,11 +34,11 @@ public class Player {
         String[] split = readLine.split("");
         HashSet<String> hashSet = new HashSet<>(List.of(split));
 
-        if (hashSet.size() != 3) {
+        if (hashSet.size() != DIGIT_NUM) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
         }
 
-        String regularExpression = "[1-9]+";
+        String regularExpression = PATTERN;
         if (!(readLine.matches(regularExpression))) {
             throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
         }
