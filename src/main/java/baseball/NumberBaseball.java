@@ -156,4 +156,27 @@ public class NumberBaseball {
             }
         }
     }
+
+    /**
+     * 새로운 게임의 시작을 원하는지에 따라 true나 false를 반환하는 메소드
+     *
+     * @return true or false
+     */
+    public boolean wantRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner sc = new Scanner(System.in);
+        String flag = sc.nextLine();
+
+        try {
+            if (flag.equals("1")) {
+                return true;
+            } else if (flag.equals("2")) {
+                return false;
+            } else {
+                throw new IllegalArgumentException();   // 1과 2이외의 값이 입력되었을 경우 IllegalArgumentException 발생시킴
+            }
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
 }
