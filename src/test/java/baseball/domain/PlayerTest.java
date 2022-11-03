@@ -53,7 +53,7 @@ class PlayerTest {
     }
 
     @Test
-    void 플레이어가_중복된_값을_입력하였을_경우_예외_처리가_되는지_확인() {
+    void 플레이어가_중복된_값을_입력하였을_경우_예외처리가_되는지_확인() {
         String input = "727";
         assertThatThrownBy(() -> player.inputVerification(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -61,7 +61,7 @@ class PlayerTest {
     }
 
     @Test
-    void 플레이어가_1부터_9사이의_값이_아닌_다른값을_입력하였을_경우_예외_처리가_되는지_확인() {
+    void 플레이어가_1부터_9사이의_값이_아닌_다른값을_입력하였을_경우_예외처리가_되는지_확인() {
         String input = "abc";
         assertThatThrownBy(() -> player.inputVerification(input))
                 .isInstanceOf(IllegalArgumentException.class)
