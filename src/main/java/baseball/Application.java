@@ -6,6 +6,7 @@ public class Application {
     static final int ANSWER_COUNT = 3;
     static final String RESTART = "1";
     static final String END = "2";
+    static boolean isContinue = true;
 
     public static void main(String[] args) {
         PrintComment.printStartComment();
@@ -20,7 +21,7 @@ public class Application {
                 continue;
             }
             PrintComment.printCorrectComment();
-        } while(true);
+        } while(isContinue);
     }
 
     public static boolean isRestart(String num) {
