@@ -18,7 +18,11 @@ public class ComputerNumberGenerator {
         return false;
     }
 
-    public void insertNumber(int number){
+    public void putNumber(int number){
+
+    }
+
+    public void insertNumber(){
 
     }
 
