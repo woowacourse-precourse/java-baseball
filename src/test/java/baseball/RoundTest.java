@@ -12,10 +12,9 @@ class RoundTest {
     void addNewHiddenNumberToList_test_new_number_generation() {
         Round round = new Round();
 
-        List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3, 5, 6, 7, 8, 9));
         round.addNewHiddenNumberToList(input);
-        List<Integer> result = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-        assertThat(input).isEqualTo(result);
+        assertThat(input).contains(4);
     }
 }
