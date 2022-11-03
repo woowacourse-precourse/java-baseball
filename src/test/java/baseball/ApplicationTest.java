@@ -67,6 +67,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("입력값이 중복된 값을 포함할 경우 예외를 반환한다")
+    @Test
+    void case5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
 
 

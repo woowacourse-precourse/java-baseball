@@ -29,6 +29,10 @@ public class BaseballGame {
         if (input.contains("0")) {
             throw new IllegalArgumentException();
         }
+
+        if (input.length() != input.chars().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void createComputerNumbers() {
