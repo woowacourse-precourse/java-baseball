@@ -9,6 +9,27 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class BaseballNumberTest {
+    @Test
+    void 정수_리스트를_인자로_받는_생성자() {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int count = 1; count <= BaseballNumber.NUMBER_COUNT; count++) {
+            numbers.add(BaseballNumber.MIN_NUMBER + count - 1);
+        }
+
+        assertDoesNotThrow(() -> new BaseballNumber(numbers));
+    }
+
+    @Test
+    void String을_인자로_받는_생성자() {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int count = 1; count <= BaseballNumber.NUMBER_COUNT; count++) {
+            numbers.add(BaseballNumber.MIN_NUMBER + count - 1);
+        }
+
+        assertDoesNotThrow(() -> new BaseballNumber(numbers));
+    }
 
     @Test
     void 중복된_숫자가_있다면_예외_발생() {
