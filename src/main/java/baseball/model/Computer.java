@@ -29,12 +29,20 @@ public class Computer {
         return computerNumber;
     }
 
-    public boolean isThreeStrike(String hint){
+    public boolean isNotThreeStrike(String hint){
         if(hint.equals("3스트라이크")){
             return false;
         }
         return true;
     }
+
+    public boolean isRestart(String restartInput){
+        if(restartInput.equals("1")){
+            return true;
+        }
+        return false;
+    }
+
 
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;

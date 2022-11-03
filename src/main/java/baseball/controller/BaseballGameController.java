@@ -30,10 +30,18 @@ public class BaseballGameController {
 
             outputView = new OutputView();
             outputView.printHint(hint);
-        } while (computer.isThreeStrike(hint));
+        } while (computer.isNotThreeStrike(hint));
         outputView.printGameEnd();
+        restart();
 
 
+    }
+
+    private void restart() {
+        String restartInput = inputView.restart();
+        if(computer.isRestart(restartInput)){
+            start();
+        }
     }
 
 
