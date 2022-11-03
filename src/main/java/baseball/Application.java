@@ -67,6 +67,10 @@ public class Application {
         return result.toString();
     }
 
+    public static boolean checkNumberIsValid(String number){
+        return checkNumberLengthIsThree(number) && checkNumberIsDuplicated(number);
+    }
+
     public static boolean checkNumberLengthIsThree(String number){
         String changedNumber = number.replaceAll("[^1-9]","");
         return changedNumber.length()==3;
