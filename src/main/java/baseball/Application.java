@@ -35,6 +35,17 @@ public class Application {
         return count;
     }
 
+    public boolean IsMatchZero(List<Integer> answer, List<Integer> userInput) {
+        long count = answer.stream()
+                .filter(answerNumber -> userInput.contains(answerNumber))
+                .count();
+
+        if (count == 0) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
     public List<Integer> getValidUserInput(String input) {
         checkInputLength(input);
         List<Integer> userInput = convertIntegerList(input);
