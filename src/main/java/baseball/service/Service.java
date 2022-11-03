@@ -2,6 +2,7 @@ package baseball.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import baseball.domain.Game;
 import baseball.utils.RandomNumber;
@@ -24,6 +25,14 @@ public class Service {
             correctAnswer = playGame();
         }
         SystemMessage.printCorrectAnswer();
+    }
+
+    public boolean finishGame() {
+        RequestInput.requestFinishGame();
+        String userInput = Console.readLine();
+        Validator.checkUserFinishInput(userInput);
+
+        return Objects.equals(userInput,"2");
     }
 
     private boolean playGame() {
