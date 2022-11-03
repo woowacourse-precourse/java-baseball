@@ -24,7 +24,7 @@ public class Computer {
         Number newRandomNumber;
         do {
             newRandomNumber = new Number(Randoms.pickNumberInRange(1, 9));
-        } while (!computerNumbers.contains(newRandomNumber));
+        } while (computerNumbers.contains(newRandomNumber));
         return newRandomNumber;
     }
 
