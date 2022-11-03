@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.Balls;
 import baseball.domain.PlayResult;
 import baseball.domain.Referee;
 import baseball.utils.ComputerBallGenerator;
@@ -19,11 +20,11 @@ public class BaseBallGameController {
     }
 
     private void playGame() {
-        List<Integer> computerBalls = ComputerBallGenerator.generateComputerBalls();
+        Balls computerBalls = new Balls(ComputerBallGenerator.generateComputerBalls());
         PlayResult playResult;
         do {
-            List<Integer> userBalls = UserInputConvertor.mapToInt(InputView.receiveUserInput());
-            UserInputValidator.isValidBalls(userBalls);
+            List<Integer> userInput = UserInputConvertor.mapToInt(InputView.receiveUserInput());
+            Balls userBalls = new Balls(userInput);
             Referee referee = new Referee(userBalls, computerBalls);
             playResult = referee.notifyResult();
             OutputView.printGameResult(playResult.getStrike(), playResult.getBall());
