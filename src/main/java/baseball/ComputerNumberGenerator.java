@@ -1,9 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
+
+    private static final int MINIMUM_IN_RANGE = 1;
+    private static final int MAXIMUM_IN_RANGE = 9;
     private List<Integer> numbers;
 
     public ComputerNumberGenerator(){
@@ -11,7 +16,7 @@ public class ComputerNumberGenerator {
     }
 
     public int createRandomNumber(){
-        return 100;
+        return Randoms.pickNumberInRange(MINIMUM_IN_RANGE, MAXIMUM_IN_RANGE);
     }
 
     public boolean isAlreadyInNumbers(int number){
