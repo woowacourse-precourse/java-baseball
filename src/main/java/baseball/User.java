@@ -14,8 +14,6 @@ public class User {
     }
 
     public void hitTheBall() {
-        System.out.print("숫자를 입력해주세요 : ");
-
         String inputValue = Console.readLine().strip();
 
         if (!inputValueValidation.isValid(inputValue)) {
