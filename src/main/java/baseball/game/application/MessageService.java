@@ -21,6 +21,12 @@ public class MessageService {
     public void strikeAndBallMessage(Integer strikeCount,Integer ballCount){
         System.out.println(ballCount+" 볼 "+strikeCount+" 스트라이크");
     }
+    public void correctMessage(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+    public void continueMessage(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
 
 
 }
