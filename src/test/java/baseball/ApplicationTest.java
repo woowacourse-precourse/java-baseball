@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApplicationTest extends NsTest {
 	Computer computer = new Computer();
 	User user = new User();
+	Game game = new Game();
 
 	@DisplayName("숫자 생성의 범위를 확인한다")
 	@Test
@@ -145,6 +146,12 @@ class ApplicationTest extends NsTest {
 			}
 		};
 		assertThat(user.processNumbers("591")).isEqualTo(desirableMap);
+	}
+
+	@DisplayName("스트라이크를 확인한다")
+	@Test
+	void verifyStrike(){
+		assertThat(game.isStrike(2,1,2,1)).isTrue();
 	}
 
 
