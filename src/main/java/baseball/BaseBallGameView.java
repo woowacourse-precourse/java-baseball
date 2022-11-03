@@ -22,6 +22,8 @@ public class BaseBallGameView {
             System.out.print(ball + BALL + " ");
 
         if (strike != 0)
-            System.out.println(strike + STRIKE);
+            System.out.print(strike + STRIKE);
+
+        System.out.println();
     }
 }
