@@ -86,5 +86,15 @@ public class Application {
         }
         return ball;
     }
-
+    //nothing 구하는 기능(낫싱이 3일경우 모두 맞지 않는 수)
+    public static int nothing(List<Integer> input_num_list, List<Integer> computer){
+        int nothing = 0;
+        //포함되지 않는 숫자의 개수
+        for(int i=0; i<3; i++){
+            if(!(input_num_list.contains(computer.get(i)))){
+                nothing += 1;
+            }
+        }
+        return nothing;
+    }
 }
