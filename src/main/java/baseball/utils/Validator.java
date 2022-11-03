@@ -2,6 +2,7 @@ package baseball.utils;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -10,6 +11,12 @@ public class Validator {
         checkStringLength(userAnswer, 3);
         checkNumber(userAnswer);
         checkDuplicated(userAnswer);
+    }
+
+    public static void checkUserFinishInput(String userInput) {
+        if(!Objects.equals(userInput, "1") && !Objects.equals(userInput, "2")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void checkStringLength(String string, int length) {
