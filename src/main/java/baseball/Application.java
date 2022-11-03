@@ -16,6 +16,26 @@ public class Application {
             this.strike = strike;
             this.ball = ball;
         }
+
+        void print() {
+            if (strike == 3) {
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+            if (strike == 0 && ball == 0) {
+                System.out.println("낫싱");
+                return;
+            }
+
+            StringBuilder ans = new StringBuilder();
+            if (0 < ball) {
+                ans.append(ball).append("ball ");
+            }
+            if (0 < strike) {
+                ans.append(strike).append("스트라이크");
+            }
+            System.out.println(ans);
+        }
     }
 
     static void printGameStart() {
