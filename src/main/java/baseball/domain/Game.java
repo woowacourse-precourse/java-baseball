@@ -29,6 +29,7 @@ public class Game {
         ball = 0;
         for (int i = 0; i < computer.size(); i++) {
             strike += isStrike(computer.get(i), user.get(i));
+            ball += isBall(computer,user.get(i),i);
         }
     }
 
@@ -45,4 +46,5 @@ public class Game {
         }
         return 0;
     }
+
 }
