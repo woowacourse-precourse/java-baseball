@@ -4,16 +4,16 @@ public class Model {
     public boolean findException(String input){
         boolean check = false;
         if (input.length()==3){
-            check = !checkInput(input);
+            check = checkInput(input);
         }
         return check;
     }
 
     private static boolean checkInput(String input) {
-        boolean check = false;
+        boolean check = true;
         for (int i = 0 ; i < 3 ; i++){
             if (input.charAt(i) < '1' || input.charAt(i) > '9') {
-                check = true;
+                check = false;
                 break;
             }
         }
