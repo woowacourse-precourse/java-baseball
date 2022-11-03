@@ -21,4 +21,12 @@ public class InputNumberValidateTest {
         assertThatThrownBy(() -> game.validate(input))
                 .hasMessage(Game.INVALID_INPUT_TYPE);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "222", "333"})
+    void DUPLICATE_INPUT_NUMBER_중복된_수를_입력_할_수_없음(String input) {
+        Game game = new Game();
+        assertThatThrownBy(() -> game.validate(input))
+                .hasMessage(Game.DUPLICATE_INPUT_NUMBER);
+    }
 }
