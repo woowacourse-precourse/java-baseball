@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constants.ExceptionMessage;
+
 import java.util.*;
 
 public class Player {
@@ -16,14 +18,14 @@ public class Player {
 
     public String inputVerification(String readLine) {
         if (readLine.length() != 3) {
-            throw new IllegalArgumentException("플레이어가 숫자 3개를 입력하지 않았습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_INPUT);
         }
 
         for (int readIndex = 0; readIndex < readLine.length(); readIndex++) {
             char location = readLine.charAt(readIndex);
 
             if (location == '0') {
-                throw new IllegalArgumentException("플레이어가 세자리중 '0'을 입력하였습니다.");
+                throw new IllegalArgumentException(ExceptionMessage.ZERO_INPUT);
             }
         }
 
@@ -31,12 +33,12 @@ public class Player {
         HashSet<String> hashSet = new HashSet<>(List.of(split));
 
         if (hashSet.size() != 3) {
-            throw new IllegalArgumentException("플레이어가 중복된 값을 입력하였습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
         }
 
         String regularExpression = "[1-9]+";
         if (!(readLine.matches(regularExpression))) {
-            throw new IllegalArgumentException("플레이어가 1부터 9사이의 값을 입력하지 않았습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
         }
 
         return readLine;
