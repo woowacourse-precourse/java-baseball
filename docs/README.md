@@ -19,8 +19,10 @@
    1. JudgmentType로 수량 추가 기능
    2. 리스트로 출력 기능 (reportToList)
 6. BaseBallGame
-   1. 1~ 9번까지 서로 다른 임의의 3개 Ball을 생성 (Ball에 순서 포함) 하고 comBallList 생성기능(1~9)
-   2. user에서 입력받은 숫자를 userBallList로 변환하고 comBallList와 비교하고 게임 종료 여부 확인 기능
+   1. 1~ 9번까지 서로 다른 임의의 3개 Ball을 생성하고 comBallList 저장 기능
+   2. user에서 입력받은 숫자를 List로 변환하고 comBallList와 비교하고 격과를 반환
+7. NumberToListChanger
+   1. 숫자를 리스트로 변경 하는 기능
 
 
 
