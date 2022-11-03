@@ -1,0 +1,86 @@
+package baseball;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class Game {
+    protected static boolean is_in_progress = true;
+    protected static List<Integer> random_number = new ArrayList<>();
+
+    public static void start() {
+        is_in_progress = true;
+        create_random_number();
+        while (is_in_progress) {
+            try {
+                List<Integer> value = get_answer();
+                HashMap<String, Integer> score = get_score(value);
+                if (score.getOrDefault("strike" , 0) == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    is_in_progress = false;
+                } else {
+                    if (score.getOrDefault("ball" , null) != null) {
+                        System.out.print(score.get("ball") + "볼 ");
+                    } else if (score.getOrDefault("strike" , null) != null) {
+                        System.out.println(score.get("strike") + "스트라이크");
+                    } else {
+                        System.out.println("낫싱");
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getClass().getName());
+            }
+        }
+    }
+
+    public static HashMap<String, Integer> get_score(List<Integer> answer) {
+        HashMap<String, Integer> score = new HashMap<>();
+        for (int i = 0; i < 3; i++) {
+            int number = answer.get(i);
+            if (random_number.contains(number)) {
+                if (Objects.equals(random_number.get(i), answer.get(i))) {
+                    score.put("strike", score.getOrDefault("strike", 0) + 1);
+                } else {
+                    score.put("ball", score.getOrDefault("ball", 0) + 1);
+                }
+            }
+        }
+        return score;
+    }
+
+    public static void create_random_number() {
+        while (random_number.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!random_number.contains(randomNumber)) {
+                random_number.add(randomNumber);
+            }
+        }
+    }
+
+    public static List<Integer> get_answer() {
+        List<Integer> value = new ArrayList<>();
+        try {
+            System.out.print("숫자를 입력해주세요 : ");
+            String str = Console.readLine();
+            String[] my_list = str.split("");
+            for (String test : my_list) {
+                int var = Integer.parseInt(test);
+                if (!value.contains(var)) {
+                    value.add(var);
+                } else {
+                    throw new Exception();
+                }
+            }
+            if (value.size() > 3) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return value;
+    }
+}
