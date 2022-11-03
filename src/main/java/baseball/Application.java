@@ -14,7 +14,7 @@ public class Application {
     private static final String INPUT_NOT_NUMERIC_ERROR_MESSAGE = "숫자가 아닌 문자가 입력되었습니다.";
     private static final String INPUT_DUPLICATED_ERROR_MESSAGE = "중복된 숫자가 입력되었습니다.";
     private static final int INPUT_BASEBALL_LENGTH = 3;
-    private static final int INPUT_REPLAY_LENGTH = 3;
+    private static final int INPUT_REPLAY_LENGTH = 1;
     private static char REPLAY = '1';
     private static char END = '2';
     public static void main(String[] args) {
@@ -24,16 +24,18 @@ public class Application {
 
     static void gameStart() {
         System.out.println(START_MESSAGE);
-        int[] computer = initializeComputerNumber();
+        int[] computerNumber = initializeComputerNumber();
         boolean playBaseball = true;
         while (playBaseball) {
-            String userInput = getUserInput();
+            String stringUserInput = getUserInput();
+            int[] userInput = new int[INPUT_BASEBALL_LENGTH];
             try {
-                isValidInput(userInput ,InputType.BASEBALL_NUMBER);
+                isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException);
                 break;
             }
+
         }
     }
 
@@ -46,7 +48,7 @@ public class Application {
             }
         }
         int[] computerNumberArray = computerNumberList.stream().mapToInt(i -> i).toArray();
-        
+
         return computerNumberArray;
     }
 
@@ -104,6 +106,15 @@ public class Application {
         }
 
         return isDuplicated;
+    }
+
+    static int[] stringToIntegerArray(String stringUserInput) {
+        int[] input = new int[3];
+        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            input[i] = Integer.parseInt(String.valueOf(stringUserInput.charAt(i)));
+        }
+        
+        return input;
     }
 }
 
