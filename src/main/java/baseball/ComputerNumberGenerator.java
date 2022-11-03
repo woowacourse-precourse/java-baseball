@@ -35,7 +35,7 @@ public class ComputerNumberGenerator {
 
     public void makeThreeDigitNumbers(){
         while(NUMBERS_COUNT_LIMIT > numbers.size()){
-
+            insertNumber();
         }
     }
 
