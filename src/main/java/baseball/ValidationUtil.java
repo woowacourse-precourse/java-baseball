@@ -23,11 +23,10 @@ public class ValidationUtil {
         return list.size() == set.size();
     }
 
-    public static boolean isValid(List<Integer> list) {
+    public static void isValid(List<Integer> list) {
         if (!isValidRange(list) || !isValidCount(list) || !haveNoDuplicatedNum(list)) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
-        return true;
     }
 
     public static List<Integer> mapStringToList(String str) {

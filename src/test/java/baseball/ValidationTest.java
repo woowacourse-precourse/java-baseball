@@ -38,11 +38,6 @@ public class ValidationTest {
 
     @Nested
     class TotalValidationTest {
-        @Test
-        void validTest() {
-            assertThat(ValidationUtil.isValid(List.of(1, 2, 3))).isTrue();
-            assertThat(ValidationUtil.isValid(List.of(7, 8, 9))).isTrue();
-        }
 
         @Test
         void inValidRange() {
