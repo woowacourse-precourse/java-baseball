@@ -26,9 +26,9 @@ GameSystem class :
                     - getStrikeCount method
                     - isAnswer method : 3 strike일 시 selectMenu, 아닐 시 printBallStrikeCount 실행 후 playGame method 실행.
                     - printBallStrikeCount : 낫싱, 볼 ,스트라이크 상황 출력
+        - printAnswerText  : “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 출력.
     - selectMenu method :
         -  MenuSelection class :
-            - printAnswerText  : “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 출력.
             - printMenuSelection : "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력.
                 - inputMenu : 1(재시작),2(종료)중 하나를 입력
                     - 입력이 1,2중 하나로 들어 왔는지 확인하는 method.
