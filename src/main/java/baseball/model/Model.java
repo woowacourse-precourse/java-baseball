@@ -33,4 +33,12 @@ public class Model {
         if (score % 10 == input % 10) count++;
         return count;
     }
+
+    public boolean InputException(String input){
+        boolean check = true;
+        if (input.length()==1){
+            if ("1".equals(input) || "2".equals(input)) check = false;
+        }
+        return check;
+    }
 }
