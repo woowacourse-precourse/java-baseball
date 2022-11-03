@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Compare {
@@ -16,6 +17,7 @@ public class Compare {
     }
 
     public List<Integer> getAnswer() {
+        answer = new ArrayList<>();
         answer.add(getStrikeNum());
         answer.add(getBallNum());
         return answer;
