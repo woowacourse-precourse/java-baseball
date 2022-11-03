@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
-    BaseballNumber computerNumber;
+    private BaseballNumber computerNumber;
 
 
     public Computer() {
