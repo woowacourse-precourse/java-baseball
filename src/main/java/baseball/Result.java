@@ -11,7 +11,9 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class Result {
     public int ReOrClose(List<Integer> RandomNumber) {
         Rules rules = new Rules();
-        int strike = 1;
+        Validation validation = new Validation();
+
+        int strike = 0;
         int ball;
         int want;
 
@@ -19,9 +21,11 @@ public class Result {
 
         while (strike != 3) {
             System.out.print("숫자를 입력해 주세요 : ");
-            inputNum = Integer.parseInt(Console.readLine());
+            inputNum = Integer.parseInt(readLine());
             List<Integer> inputNumber = returnList(inputNum);
             Collections.reverse(inputNumber);
+
+            validation.InputValid(RandomNumber, inputNumber);
 
             strike = rules.Strike(RandomNumber, inputNumber);
             ball = rules.Ball(RandomNumber, inputNumber);
