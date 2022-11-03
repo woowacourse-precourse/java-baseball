@@ -4,7 +4,7 @@ public class Response {
     private int strike;
     private int ball;
 
-    boolean flag = Boolean.FALSE;
+    boolean isCompleted = Boolean.FALSE;
 
     public Response(int strike, int ball) {
         this.strike = strike;
@@ -14,7 +14,7 @@ public class Response {
     public void view() {
         if (strike == 3) {
             printIsAnswer();
-            this.flag = Boolean.TRUE;
+            this.isCompleted = Boolean.TRUE;
             return;
         } else if (strike == 0 && ball == 0) {
             printBallAndStrikeIsZero();

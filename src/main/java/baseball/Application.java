@@ -14,17 +14,25 @@ public class Application {
         Application application = new Application();
         application.run();
 
-
     }
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> Answer = createNewAnswer();
+        List<Integer> answer = createNewAnswer();
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> userInput = getValidUserInput(Console.readLine());
+            int strike = getStrike(answer, userInput);
+            int ball = getBall(answer, userInput, strike);
+            Response response = new Response(strike, ball);
+            response.view();
+            if (response.isCompleted) {
+                break;
+            }
         }
     }
+
+
 
     public int getBall(List<Integer> answer, List<Integer> userInput, int strike) {
         Set<Integer> matchedIndexSet = new HashSet<>();
