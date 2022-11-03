@@ -47,4 +47,27 @@ public class BallsTest2 {
         }
     }
 
+    @Nested
+    class NStrikeTest {
+        @Test
+        void one_strike() {
+            Result result = computer.play(Arrays.asList(1, 4, 5));
+            assertThat(result.getBall()).isEqualTo(0);
+            assertThat(result.getStrike()).isEqualTo(1);
+        }
+
+        @Test
+        void two_strike() {
+            Result result = computer.play(Arrays.asList(1, 2, 5));
+            assertThat(result.getBall()).isEqualTo(0);
+            assertThat(result.getStrike()).isEqualTo(2);
+        }
+
+        @Test
+        void three_strike() {
+            Result result = computer.play(Arrays.asList(1, 2, 3));
+            assertThat(result.getBall()).isEqualTo(0);
+            assertThat(result.getStrike()).isEqualTo(3);
+        }
+    }
 }
