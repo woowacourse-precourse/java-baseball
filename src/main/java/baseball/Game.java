@@ -8,7 +8,7 @@ public class Game {
 
         while (true) {
             player.EnterNumberOfPlayer();
-            InputChecker.checkExceptionNumber(player.playersNumber);
+            InputException.checkExceptionNumber(player.playersNumber);
 
             String resultMessage = computer.compareWithNumberOfPlayer(player.playersNumber);
             System.out.println(resultMessage);

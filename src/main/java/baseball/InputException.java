@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class InputChecker {
+public class InputException {
     public static void checkExceptionNumber(List<String> playersNumber) {
         Set<String> playersNumberSet = new HashSet<>(playersNumber);
         if (playersNumberSet.size() < playersNumber.size()) {
