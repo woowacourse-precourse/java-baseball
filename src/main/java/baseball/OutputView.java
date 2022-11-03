@@ -26,11 +26,12 @@ public class OutputView {
             System.out.printf("%d" + BALL, answer.get(BALL_INDEX));
         }
         if (answer.get(STRIKE_INDEX) > 0) {
-            System.out.printf("%d" + STRIKE + "\n", answer.get(STRIKE_INDEX));
+            System.out.printf("%d" + STRIKE, answer.get(STRIKE_INDEX));
         }
         if (answer.get(STRIKE_INDEX) == 0 && answer.get(BALL_INDEX) == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+        System.out.println();
     }
 
     public void printGameEnd(List<Integer> answer) {
