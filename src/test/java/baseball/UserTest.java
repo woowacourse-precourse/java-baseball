@@ -25,9 +25,21 @@ public class UserTest {
         for (String str : arr) {
             resultList.add(user.isValidNumOfIndividually(str));
         }
-
         assertThat(resultList).allMatch((boo) -> {
             return boo.equals(true);
+        });
+    }
+
+    @Test
+    void 입력_각각의_숫자가_같은가_case_2() {
+        User user = new User();
+        String[] arr = new String[]{"112", "121", "211", "111", "556", "565", "655", "555"};
+        List<Boolean> resultList = new ArrayList<>();
+        for (String str : arr) {
+            resultList.add(user.isValidNumOfIndividually(str));
+        }
+        assertThat(resultList).allMatch((boo) -> {
+            return boo.equals(false);
         });
     }
 }
