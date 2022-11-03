@@ -27,9 +27,14 @@
   * `isLegalNumber`
     * 사용자의 입력이 요구 사항에 부합하는지 검사(서로 다른 3자리 수)
     * 잘못된 값일 경우 `IllegalArgumentException` 발생 후 종료
+    * 잘못된 값의 경우
+      * Integer로 캐스팅이 불가능한 경우
+      * 길이가 3이 아니거나, 첫자리에 0이 있는 경우
+      * 같은 숫자가 2번 이상 등장하는 경우
   * `countNumber`
     * 특정 숫자를 검사하여 사용자 입력에서 해당 숫자의 등장 횟수를 구한다
 
 * ### Computer
+  * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
   * `generateComputersNumber`
     * 상대방(컴퓨터)의 3자리 수 생성
