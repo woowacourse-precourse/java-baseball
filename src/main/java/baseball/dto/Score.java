@@ -49,6 +49,14 @@ public class Score {
         score.put(BALL, score.get(BALL) + 1);
     }
 
+    public Integer getStrikeScore() {
+        return score.get(STRIKE);
+    }
+
+    public Integer getBallScore() {
+        return score.get(BALL);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

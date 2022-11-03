@@ -3,12 +3,14 @@ package baseball;
 import baseball.controller.ComputerController;
 import baseball.system.AnswerHolder;
 import baseball.system.conversion.Converter;
+import baseball.system.conversion.ScoreToMessageConverter;
 import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.validation.NumberValidator;
 import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.validation.Validator;
 import baseball.system.voter.BaseballVoter;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import baseball.vo.Answer;
 import baseball.dto.Score;
 import camp.nextstep.edu.missionutils.Console;
@@ -223,11 +225,43 @@ class ApplicationTest extends NsTest {
         mockStatic.close();
     }
 
-    public static Stream<Arguments> sourceOfUserInputAndBaseballResult() {
+    private static Stream<Arguments> sourceOfUserInputAndBaseballResult() {
         return Stream.of(
                 Arguments.of(List.of(4, 5, 6), Score.makeNewScoreWith(3, 0)),
                 Arguments.of(List.of(7, 5, 1), Score.makeNewScoreWith(1, 0)),
                 Arguments.of(List.of(6, 2, 4), Score.makeNewScoreWith(0, 2))
         );
     }
+
+    @ParameterizedTest(name = "{index} - 주어진 점수에 대해 알맞는 결과 메시지를 출력한다. - {0}")
+    @MethodSource("sourceOfScores")
+    void givenScore_whenRunningOutputView_thenPrintsResult(Score given, String resultMessage) {
+        // given
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        //when
+        OutputView outputView = new OutputView();
+        outputView.printResult(given);
+
+        //then
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo(resultMessage);
+    }
+
+    public static Stream<Arguments> sourceOfScores() {
+        return Stream.of(
+                Arguments.of(Score.makeNewScoreWith(0, 0),
+                        ScoreToMessageConverter.NOTHING_MESSAGE.trim()),
+                Arguments.of(Score.makeNewScoreWith(0, 1),
+                        String.format(ScoreToMessageConverter.BALL_MESSAGE_FORMAT, 1).trim()),
+                Arguments.of(Score.makeNewScoreWith(2, 1),
+                        String.format(ScoreToMessageConverter.BALL_MESSAGE_FORMAT, 1)
+                                .concat(String.format(ScoreToMessageConverter.STRIKE_MESSAGE_FORMAT, 2).trim())
+                ),
+                Arguments.of(Score.makeNewScoreWith(3, 0),
+                        String.format(ScoreToMessageConverter.STRIKE_MESSAGE_FORMAT, 3).trim())
+        );
+    }
+
 }
