@@ -53,6 +53,11 @@ public class Application {
         String user = Console.readLine();
         return user;
     }
+
+    private static boolean isValidAnswer(String user) {
+        return isValidValue() && isValidLength();
+    }
+
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
