@@ -17,4 +17,21 @@ public class Printer {
     public static void gameRestartMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    // TODO refactoring
+    public static void hintMessage(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (ball > 0 && strike > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            return;
+        }
+        if (ball > 0) {
+            System.out.printf("%d볼\n", ball);
+            return;
+        }
+        System.out.printf("%d스트라이크\n", strike);
+    }
 }
