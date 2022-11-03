@@ -1,6 +1,7 @@
 package baseball.service;
 
 import java.util.List;
+import java.util.Map;
 
 import baseball.domain.Game;
 import baseball.utils.RandomNumber;
@@ -18,9 +19,19 @@ public class Service {
     }
 
     public void startGame() {
-        SystemMessage.printGameStart();
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            correctAnswer = playGame();
+        }
+    }
+
+    private boolean playGame() {
         RequestInput.requestAnswer();
         String userInput = Console.readLine();
         Validator.checkUserAnswerInput(userInput);
+        Map<String, Integer> result = game.getResult(userInput);
+        SystemMessage.printGameResult(result);
+
+        return result.get("strike") == 3;
     }
 }
