@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static baseball.validation.ErrorMessage.*;
 import static baseball.validation.InputValidation.*;
 
 public class UserInput {
@@ -19,13 +20,13 @@ public class UserInput {
         String inputNum = consoleLog.input();
 
         if (inputNum.isBlank())
-            throw new IllegalArgumentException("아무것도_입력하지_않았습니다.");
+            throw new IllegalArgumentException(IS_BLANK.message());
         if (!isThreeLength(inputNum))
-            throw new IllegalArgumentException("세_자리가_아닙니다.");
+            throw new IllegalArgumentException(IS_NOT_THREE_LENGTH.message());
         if (!isNumber(inputNum))
-            throw new IllegalArgumentException("숫자가_아니거나_0이_포함되어_있습니다.");
+            throw new IllegalArgumentException(IS_NOT_NUMBER_OR_CONTAINS_0.message());
         if (isDuplicate(inputNum))
-            throw new IllegalArgumentException("중복된_숫자가_포함되어_있습니다.");
+            throw new IllegalArgumentException(IS_DUPLICATE.message());
 
         return inputToList(inputNum);
     }
