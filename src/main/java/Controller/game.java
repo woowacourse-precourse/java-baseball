@@ -1,7 +1,8 @@
-package Utils;
+package Controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import domain.User;
 
 import java.util.ArrayList;
 import java.util.List;

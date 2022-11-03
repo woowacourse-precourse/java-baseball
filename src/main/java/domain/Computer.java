@@ -1,11 +1,13 @@
-package Utils;
+package domain;
+
+import Controller.game;
 
 import java.util.List;
 
 public class Computer {
-    public static List<Integer> threeNumber_List;
+    private static List<Integer> threeNumber_List;
     public static void setThreeNumber_List(){
-        Computer.threeNumber_List=game.anotherThree_RandomNumber();
+        Computer.threeNumber_List= game.anotherThree_RandomNumber();
     }
     public static String getThreeNumber(){
         String threeNum="";
