@@ -13,7 +13,7 @@ public class Application {
         String input = Console.readLine();
         System.out.println(input);
 
-        System.out.println(CheckInputLength(input));
+        ExceptionIfFalse(CheckInputLength(input));
     }
 
     public static boolean CheckInputLength(String input) {
@@ -24,6 +24,14 @@ public class Application {
         }
 
         return isLengthCorrect;
+    }
+
+    public static void ExceptionIfFalse(boolean isResultFalse)
+            throws IllegalArgumentException {
+
+        if(!isResultFalse) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
