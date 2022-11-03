@@ -11,8 +11,8 @@ public class Application {
         // TODO: 프로그램 구현
         while (true) {
             playGame();
-            if(finishApp()){
-               break;
+            if (finishApp()) {
+                break;
             }
         }
     }
@@ -44,7 +44,7 @@ public class Application {
         String tmpStr = Console.readLine();
         List<Integer> numberList = stringToIntegerList(tmpStr);
 
-        validateNumber();
+        validateNumber(numberList);
         // 유효성 검사 해야함
 
         return numberList;
@@ -60,8 +60,10 @@ public class Application {
         return tmpList;
     }
 
-    public static boolean validateNumber() {
-
+    public static boolean validateNumber(List<Integer> inputNumber) {
+        // list 사이즈는 3
+        // 1~9 까지
+        // 중복 없어야 함.
         return true;
     }
 
@@ -69,7 +71,7 @@ public class Application {
         return true;
     }
 
-    public static boolean finishApp(){
+    public static boolean finishApp() {
         return true;
     }
 }
