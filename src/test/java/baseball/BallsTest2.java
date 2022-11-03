@@ -87,4 +87,17 @@ public class BallsTest2 {
             assertThat(result.getStrike()).isEqualTo(1);
         }
     }
+
+    @Nested
+    class getResultToString {
+        @Test
+        void oneBall_oneStrike() {
+            assertThat(computer.play(Arrays.asList(1, 3, 5)).toString()).isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        void twoBall_OneStrike() {
+            assertThat(computer.play(Arrays.asList(1, 3, 2)).toString()).isEqualTo("2볼 1스트라이크");
+        }
+    }
 }
