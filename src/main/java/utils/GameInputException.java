@@ -15,4 +15,12 @@ public class GameInputException {
         }
         throw new IllegalArgumentException();
     }
+
+    private void checkNaturalNumber(String userInput) throws IllegalArgumentException {
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException numberFormatException){
+            throw new IllegalArgumentException();
+        }
+    }
 }
