@@ -17,11 +17,11 @@ public class Application {
         boolean doesUserWin,playingAgain;
 
         do{
-            String userInput = gameInput.userPlayingInput();
             List<Integer> computerInput = gameInput.computerMadeNumbers();
+            String userInput = gameInput.userPlayingInput();
 
             doesUserWin = computerCalculate.compareUserAndComputer(userInput,computerInput);
-            playingAgain = !doesUserWin || gameInput.checkingExitInput();
+            playingAgain = !doesUserWin || gameInput.checkingAgainInput();
 
         }while(playingAgain);
     }
