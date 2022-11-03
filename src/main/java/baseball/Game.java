@@ -31,7 +31,17 @@ public class Game {
 
         return true;
     }
-    // TODO Method: List<Integer> getComputerNumber
+    private List<Integer> getComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
+    }
 
     // TODO Method: List<Integer> getUserNumber
 
