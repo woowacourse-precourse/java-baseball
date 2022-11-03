@@ -19,17 +19,22 @@ public class Game {
             try {
                 List<Integer> value = get_answer();
                 HashMap<String, Integer> score = get_score(value);
-                if (score.getOrDefault("strike" , 0) == 3) {
+                if (score.getOrDefault("strike", -1) == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     is_in_progress = false;
                 } else {
-                    if (score.getOrDefault("ball" , null) != null) {
-                        System.out.print(score.get("ball") + "볼 ");
-                    } else if (score.getOrDefault("strike" , null) != null) {
-                        System.out.println(score.get("strike") + "스트라이크");
+                    int ball = score.getOrDefault("ball", -1);
+                    int strike = score.getOrDefault("strike", -1);
+                    String result = "";
+
+                    if (ball != -1) {
+                        result += score.get("ball") + "볼 ";
+                    } else if (strike != -1) {
+                        result += score.get("strike") + "스트라이크";
                     } else {
-                        System.out.println("낫싱");
+                        result = "낫싱";
                     }
+                    System.out.println(result);
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getClass().getName());
@@ -75,7 +80,7 @@ public class Game {
                     throw new Exception();
                 }
             }
-            if (value.size() > 3) {
+            if (value.size() < 3) {
                 throw new Exception();
             }
         } catch (Exception e) {
