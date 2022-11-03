@@ -17,27 +17,27 @@ public class BaseballGameLauncher {
         baseballGame = new BaseballGame();
         while (true) {
             baseballGame.start();
-            if (!checkToRestartGame()) {
+            if (isCloseGame()) {
                 break;
             }
         }
         System.out.println("게임을 완전히 종료합니다.");
     }
 
-    private boolean checkToRestartGame() {
+    private boolean isCloseGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String input = Console.readLine();
 
         if (input.equals(RESTART_GAME)) {
-            return true;
-        }
-
-        if (input.equals(CLOSE_GAME)) {
             return false;
         }
 
+        if (input.equals(CLOSE_GAME)) {
+            return true;
+        }
+
         System.out.println("올바른 값을 입력해주세요");
-        return checkToRestartGame();
+        return isCloseGame();
     }
 }
