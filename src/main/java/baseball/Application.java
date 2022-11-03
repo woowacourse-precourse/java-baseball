@@ -45,7 +45,7 @@ public class Application {
                 printResult(strike, ball);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                return;
+                throw e;
             }
 
             if(strike == 3){
@@ -114,7 +114,7 @@ public class Application {
 
     public static void validateUserInput(String s) {
         if(s.length() != 3)
-            throw new IllegalArgumentException("자릿수가 모자랍니다.");
+            throw new IllegalArgumentException("자릿수가 3자리가 아닙니다.");
 
         for(int i = 0; i < s.length(); i++){
             if(!(s.charAt(i) >= '0' && s.charAt(i) <= '9'))
