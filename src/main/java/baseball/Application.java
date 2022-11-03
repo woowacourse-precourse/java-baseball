@@ -45,10 +45,18 @@ public class Application {
             return false;
     }
 
+    public static boolean notInteger(List<Integer> guess) {
+        for (int i = 0; i < guess.size(); i++) {
+            if (guess.get(i) < 0 || guess.get(i) > 9)
+                return true;
+        }
+        return false;
+    }
+
     public static List<Integer> typeCast(String userInput, List<Integer> guess) throws IllegalArgumentException {
         for (int i = 0; i < userInput.length(); i++)
             guess.add(userInput.charAt(i) - '0');
-        if (redundant(guess))
+        if (redundant(guess) || notInteger(guess))
             throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         return guess;
     }
