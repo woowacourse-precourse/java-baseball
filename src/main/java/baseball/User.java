@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class User {
     public static ArrayList<Integer> userNumber = new ArrayList<>();
-    public static ArrayList<Integer> setUserNumber() {
+    public static ArrayList<Integer> setUserNumber() throws IllegalArgumentException{
         String answer;
 
         inputMessage();
@@ -20,15 +20,10 @@ public class User {
         System.out.print("숫자를 입력해 주세요: ");
     }
 
-    private static void verifyUserNumber(String answer){
-        try {
+    private static void verifyUserNumber(String answer)throws IllegalArgumentException{
             checkSize(answer);
             checkDigit(answer);
             addUserNumber(answer);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
-        }
-
     }
     private static void addUserNumber(String answer)throws IllegalArgumentException{
         for(int i=0; i<answer.length(); i++){
