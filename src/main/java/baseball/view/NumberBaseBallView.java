@@ -19,4 +19,9 @@ public class NumberBaseBallView {
     public void printResult(Map<String, Integer> result) {
         print(result);
     }
+
+    public String askRestart() {
+        print(ASK_RESTART);
+        return Console.readLine();
+    }
 }

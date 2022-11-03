@@ -23,6 +23,12 @@ public class GameController {
 
             Map<String, Integer> result = numberBaseBallGame.checkResultPoint(inputNumber);
             numberBaseBallView.printResult(result);
+
+            if (numberBaseBallGame.isFinish(result)) {
+                numberBaseBallGame.end();
+                String restart = numberBaseBallView.askRestart();
+                numberBaseBallGame.restart(restart);
+            }
         }
     }
 }

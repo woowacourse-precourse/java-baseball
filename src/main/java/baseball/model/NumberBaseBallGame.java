@@ -1,10 +1,13 @@
 package baseball.model;
 
+import baseball.utils.GameNumberGenerator;
 import baseball.utils.InputNumberValidator;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static baseball.resources.GameConfig.RESTART;
 
 public class NumberBaseBallGame {
     private InputNumberValidator inputNumberValidator;
@@ -39,5 +42,20 @@ public class NumberBaseBallGame {
             }
         }
         return result;
+    }
+
+    public boolean isFinish(Map<String, Integer> result) {
+        return result.getOrDefault("strike", 0) == 3;
+    }
+
+    public void end() {
+        isProceeding = false;
+    }
+
+    public void restart(String restart) {
+        if (restart.equals(RESTART)) {
+            this.isProceeding = true;
+            gameNumber = GameNumberGenerator.generate();
+        }
     }
 }
