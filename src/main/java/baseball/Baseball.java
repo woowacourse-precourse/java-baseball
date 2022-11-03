@@ -51,8 +51,13 @@ public class Baseball {
         }
 
         List<String> resultSentence = new ArrayList<>();
-        resultSentence.add(ball + "볼");
-        resultSentence.add(strike + "스트라이크");
+        if (ball > 0) {
+            resultSentence.add(ball + "볼");
+        }
+
+        if (strike > 0) {
+            resultSentence.add(strike + "스트라이크");
+        }
 
         System.out.println(String.join(" ",resultSentence));
     }
