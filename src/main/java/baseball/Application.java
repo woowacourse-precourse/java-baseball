@@ -113,6 +113,15 @@ public class Application {
         }
     }
 
+    private static void validateGameStart(String user_input) {
+        String pattern = "^[1-2]$";
+        boolean is_match = Pattern.matches(pattern, user_input);
+
+        if (!(is_match)) {
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer_num = createRandomNumber();
@@ -131,6 +140,7 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 user_input = Console.readLine();
+                validateGameStart(user_input);
                 computer_num = createRandomNumber();
             }
         }
