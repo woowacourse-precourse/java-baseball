@@ -5,6 +5,9 @@ public class Game {
     }
 
     public void start() {
-        //TODO 게임 로직
+        Number playerNumber = new Number();
+        Number computerNumber = new Number();
+
+        computerNumber.setRandomNumber();
     }
 }
