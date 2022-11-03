@@ -3,9 +3,10 @@ package baseball.util;
 import baseball.entity.Result;
 
 public class GameLogic {
+    private final int STRIKE_COUNT = 3;
 
     public boolean isGameSet(Result judge) {
-        return judge.getStrike() == 3;
+        return judge.getStrike() == STRIKE_COUNT;
     }
 
     public Result judge(String target, String input) {
