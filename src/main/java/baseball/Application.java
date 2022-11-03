@@ -19,7 +19,7 @@ public class Application {
         return computer_num;
     }
 
-    private static List<Integer> numtoList(String number) {
+    private static List<Integer> numToList(String number) {
         List<Integer> number_list = new ArrayList<>();
 
         String[] number_split = number.split("");
@@ -97,7 +97,7 @@ public class Application {
             List<Integer> computer_num = createRandomNumber();
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
-            List<Integer> user_num = numtoList(guess_number);
+            List<Integer> user_num = numToList(guess_number);
             Integer strike = countStrike(computer_num, user_num);
             Integer ball = countBall(computer_num, user_num, strike);
             System.out.println(setHint(ball, strike));
