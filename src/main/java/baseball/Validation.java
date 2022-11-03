@@ -15,13 +15,13 @@ public class Validation {
 
         if (inputList.size() != RandomList.size() ||
                 IsOnlyNumber.matcher(inputList.toString()).matches()) {
-            throw new IllegalStateException("입력값이 잘못 되었습니다.");
+            throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
         }
 
         for(int idx = 0; idx < inputList.size() - 1; idx++) {
             for (int compare = idx+1; compare < inputList.size(); compare++) {
                 if (inputList.get(idx) == inputList.get(compare))
-                    throw new IllegalStateException("입력값이 잘못 되었습니다.");
+                    throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
             }
         }
     }
