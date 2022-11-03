@@ -15,6 +15,18 @@ public class Score {
 		return new Score(computerNumbers, userNumbers);
 	}
 
+	public int getStrike() {
+		return strike;
+	}
+
+	public int getBall() {
+		return ball;
+	}
+
+	public boolean isWin() {
+		return strike == 3;
+	}
+
 	private void calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {
 		for (int i = 0; i < 3; i++) {
 			calculateBall(computerNumbers.get(i), userNumbers);
