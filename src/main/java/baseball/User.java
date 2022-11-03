@@ -10,12 +10,11 @@ import java.util.regex.Pattern;
 public class User {
     final static int NUMBER_DIGIT = 3;
     final static int RESTART_GAME = 1;
-    final static int QUIT_GAME = 2;
-
-    private User(){
+    
+    private User() {
     }
 
-    public static List userInput() throws IllegalArgumentException{
+    public static List userInput() throws IllegalArgumentException {
         System.out.print(Message.INPUT_NUMBER);
         String str = Console.readLine();
         if (validateUserInput(str)) {
@@ -23,6 +22,7 @@ public class User {
         }
         return StringToNumberList(str);
     }
+
     private static List StringToNumberList(String str) {
         List<Integer> result = new ArrayList();
         for (int i = 0; i < str.length(); i++) {
@@ -45,6 +45,7 @@ public class User {
         }
         return false;
     }
+
     public static boolean restart() {
         String str = Console.readLine();
         if (!str.equals("1") && !str.equals("2")) {
