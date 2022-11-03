@@ -1,59 +1,62 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.List;
-
-public class HintTest {
-    //Hint getHint count 함수 주석처리 하고 해야함
-
+class Hinttest extends NsTest {
     @Test
     void 볼() {
-        List<Integer> computer = List.of(1, 2, 3);
-        List<Integer> user = List.of(2, 1, 9);
-
-        Hint hint = new Hint();
-        hint.countMatchingNumbers(computer, user);
-        hint.countIncludedNumbers(computer, user);
-
-        Assertions.assertThat(hint.getHint()).isEqualTo("2볼");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("513", "413", "241", "135", "2");
+                    assertThat(output()).contains( "3볼", "2볼", "1볼");
+                },
+                1, 3, 5
+        );
     }
+
 
     @Test
     void 볼스트라이크() {
-        List<Integer> computer = List.of(1, 2, 3);
-        List<Integer> user = List.of(2, 4, 3);
-
-        Hint hint = new Hint();
-        hint.countMatchingNumbers(computer, user);
-        hint.countIncludedNumbers(computer, user);
-
-        Assertions.assertThat(hint.getHint()).isEqualTo("1볼 1스트라이크");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("157", "315", "135", "2");
+                    assertThat(output()).contains( "1볼 1스트라이크", "2볼 1스트라이크");
+                },
+                1, 3, 5
+        );
     }
 
     @Test
     void 스트라이크() {
-        List<Integer> computer = List.of(1, 2, 3);
-        List<Integer> user = List.of(1, 2, 3);
-
-        Hint hint = new Hint();
-        hint.countMatchingNumbers(computer, user);
-        hint.countIncludedNumbers(computer, user);
-
-        Assertions.assertThat(hint.getHint()).isEqualTo("3스트라이크");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("178", "139", "135", "2");
+                    assertThat(output()).contains( "1스트라이크", "2스트라이크", "3스트라이크");
+                },
+                1, 3, 5
+        );
     }
 
     @Test
     void 낫싱() {
-        List<Integer> computer = List.of(1, 2, 3);
-        List<Integer> user = List.of(4, 5, 6);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789", "826", "135", "2");
+                    assertThat(output()).contains( "낫싱");
+                },
+                1, 3, 5
+        );
+    }
 
-        Hint hint = new Hint();
-        hint.countMatchingNumbers(computer, user);
-        hint.countIncludedNumbers(computer, user);
 
-        Assertions.assertThat(hint.getHint()).isEqualTo("낫싱");
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
