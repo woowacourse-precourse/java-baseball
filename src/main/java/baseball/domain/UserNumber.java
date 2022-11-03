@@ -29,7 +29,7 @@ public class UserNumber {
 	}
 
 	private boolean isNumber(int[] userNums) {
-		return Arrays.stream(userNums).allMatch(num -> num > 1 && num < 9);
+		return Arrays.stream(userNums).allMatch(num -> 0 <= num && num <= 9);
 	}
 
 	private boolean isRightRange(int[] userNums) {
