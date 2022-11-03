@@ -1,14 +1,17 @@
 package baseball.domain;
 
+import baseball.util.ShowGameMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
+    private final ShowGameMessage showGameMessage = new ShowGameMessage();
     private ScoreBoard scoreBoard;
 
     public void init() {
         scoreBoard = new ScoreBoard(initializeSystemNumberBall());
+        showGameMessage.gameStartMessage();
     }
 
     private List<NumberBall> initializeSystemNumberBall() {
