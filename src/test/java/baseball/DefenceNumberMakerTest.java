@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
-public class DefenceNumberTest {
+public class DefenceNumberMakerTest {
 
     private static final int SIZE = 3;
 
     @Test
     void 중복되지_않는지_확인() {
-        DefenceNumber defenceNumber = new DefenceNumber(3);
-        List<Integer> defenceNumberList = defenceNumber.getDefenceNumber();
+        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker(3);
+        List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
 
         Set<Integer> result = new HashSet<>(defenceNumberList);
 
@@ -23,8 +23,8 @@ public class DefenceNumberTest {
 
     @Test
     void 주어진_크기와_일치하는지_확인() {
-        DefenceNumber defenceNumber = new DefenceNumber(3);
-        List<Integer> defenceNumberList = defenceNumber.getDefenceNumber();
+        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker(3);
+        List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
 
         assertThat(defenceNumberList.size()).isEqualTo(SIZE);
     }

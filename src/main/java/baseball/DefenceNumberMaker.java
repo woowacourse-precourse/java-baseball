@@ -4,13 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefenceNumber {
+public class DefenceNumberMaker {
+
+    int gameNumberSize;
 
     public List<Integer> defenceNumber;
 
-    DefenceNumber(int size) {
+    DefenceNumberMaker(int size) {
         defenceNumber = new ArrayList<>();
-        createDefenceNumber(size);
+        this.gameNumberSize = size;
     }
 
     private void createDefenceNumber(int size) {
@@ -27,6 +29,7 @@ public class DefenceNumber {
     }
 
     public List<Integer> getDefenceNumber() {
+        createDefenceNumber(gameNumberSize);
         return defenceNumber;
     }
 }
