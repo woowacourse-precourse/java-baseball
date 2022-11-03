@@ -41,19 +41,23 @@
         - 낫싱이 아닐 경우 스트라이크 볼 출력
         - 3번으로 돌아간다.
 
-### 리팩토링 class 분리 설계(모든 기능 구현 후 수정 예정)
+### class 설계(수정 중)
 
 - Game
     - 입력값을 받는다. - Validation에 검증 맡김
-    - 입력값과 비교한다.
-        - 비교 결과에 따라 Enum을 생성해 PrintGameMessage에 전달.
+    - 세자리 숫자를 생성한다.
+    - SystemMessage를 이용하여 메세지를 출력한다.
     - 게임을 이어갈 지 입력값을 받는다. - Validation에 검증 맡김
         - 2이면 종료
         - 1이면 숫자 다시 생성 후 게임 재개
-- NumberGenerator
-    - 세자리 숫자를 생성한다.
-- PrintGameMessage
+- SystemMessage
     - 게임 중 나타나는 메세지를 출력한다.
+- NumberBall
+    - 숫자를 가짐
+    - 1-9 숫자를 가지는지 확인한다.
+- ScoreBoard
+  - 게임에서 만든 세자리 숫자를 가진다
+  - 사용자 공들을 비교하여 결과를 낸다.
 - Validation
     - 세자리 입력값 검증
     - 게임 지속 여부 0 or 1 검증
