@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -13,7 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
     
-    private static List<Integer> createRamdomNumbers(int startNumber, int endNumber, int size) {
+    public static List<Integer> createRamdomNumbers(int startNumber, int endNumber, int size) {
     	
     	Set<Integer> randomNumberSet = new HashSet<>(size);
     	
