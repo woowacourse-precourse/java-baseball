@@ -66,7 +66,7 @@ public abstract class NumberBaseballGame {
 
     private static boolean isValidNumberStr(String numberStr) {
         boolean isThreeDigit = numberStr.length() == 3,
-                isOnlyNumber = !numberStr.matches("[a-zA-Z]"),
+                isOnlyNaturalNumber = numberStr.matches("[1-9]{3}"),
                 isEachUniqueNumber = true;
         List<Character> eachNumberList = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public abstract class NumberBaseballGame {
             }
             eachNumberList.add(eachNumber);
         }
-        return isThreeDigit && isOnlyNumber && isEachUniqueNumber;
+        return isThreeDigit && isOnlyNaturalNumber && isEachUniqueNumber;
     }
 
     private static void countBall() {
