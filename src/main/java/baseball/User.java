@@ -10,7 +10,7 @@ import static baseball.Configure.*;
 public class User {
 
 
-	public LinkedHashMap<Integer, Integer> getNumber() {
+	public LinkedHashMap<Integer, Integer> getNumbers() {
 		System.out.println("숫자를 입력해주세요 : ");
 		String input = getInput();
 
