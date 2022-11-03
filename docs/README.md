@@ -40,7 +40,7 @@
   - 입력된 값이 중복되는지 체크하는 함수
 
 
-- void countingBallAndStrike(int, int)
+- void countingBallAndStrike(int, int, int[], List<Integer>)
   - 입력한 수에 대한 결과를 계산하는 함수
 
 
