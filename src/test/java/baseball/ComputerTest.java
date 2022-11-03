@@ -15,4 +15,21 @@ public class ComputerTest {
             assertThat(computerNumber).isInstanceOf(Number.class);
         }
     }
+
+    @Test
+    void computerDuplicateNumber() throws Exception {
+        Computer computer = new Computer();
+
+        for (int i = 0; i < 10000; i++) {
+            computer.pickNewRandomNumbers();
+
+            assertThat(computer.findComputerNumber(0).getNumber())
+                    .isNotEqualTo(computer.findComputerNumber(1).getNumber());
+            assertThat(computer.findComputerNumber(1).getNumber())
+                    .isNotEqualTo(computer.findComputerNumber(2).getNumber());
+            assertThat(computer.findComputerNumber(2).getNumber())
+                    .isNotEqualTo(computer.findComputerNumber(0).getNumber());
+        }
+    }
+    
 }
