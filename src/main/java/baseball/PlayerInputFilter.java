@@ -19,6 +19,12 @@ public class PlayerInputFilter {
         numbers = new int[3];
     }
 
+    public int[] insertNumber(){
+        String input = getInput();
+        checkException(input);
+        return convertNumbersToArray(input);
+    }
+
     String getInput(){
         return Console.readLine();
     }
@@ -69,9 +75,5 @@ public class PlayerInputFilter {
             numbers[index] = Character.getNumericValue(input.charAt(index));
         }
         return numbers;
-    }
-
-    void insertNumber(){
-
     }
 }
