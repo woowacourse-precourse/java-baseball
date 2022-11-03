@@ -1,13 +1,14 @@
-package baseball;
+package baseball.baseballs;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.Baseballs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class BaseballsTest {
+public class ValidationTest {
 
     @Test
     @DisplayName("빈 입력이 주어질 경우 IllegalArgumentException 발생")
