@@ -21,7 +21,7 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
-            int numbers = putInNumber();
+            String numberString = putInNumber();
 
         } while(true);
     }
@@ -43,9 +43,10 @@ public class Application {
         }
     }
 
-    public static Integer putInNumber() {
+    public static String putInNumber() {
         Scanner scanner = new Scanner(System.in);
 
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
+
 }
