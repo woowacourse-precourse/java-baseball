@@ -17,13 +17,17 @@ public class Computer {
 
         while (randomNumber.size() < 3) {
             int randomDigit = Randoms.pickNumberInRange(1, 9);
-            if (containsDigit(randomDigit)) continue;
+            if (containsDigit(randomDigit)) {
+                continue;
+            }
             randomNumber.add(randomDigit);
         }
     }
 
     private boolean containsDigit(int digit) {
-        if (randomNumber.contains(digit)) return true;
+        if (randomNumber.contains(digit)) {
+            return true;
+        }
         return false;
     }
 
