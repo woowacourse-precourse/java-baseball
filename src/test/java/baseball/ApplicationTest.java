@@ -226,8 +226,17 @@ class ApplicationTest extends NsTest {
             assertRandomNumberInRangeTest(() -> {
                 run("246", "2");
                 assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-                ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 종료합니다.");
-            }, 2, 4, 6, 2);
+                ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 완전히 종료합니다.");
+            }, 2, 4, 6);
+        }
+
+        @DisplayName("1과 2 이외의 값 입력하면 제대로 된 입력을 요구한다..")
+        @Test
+        void wrongRestartInput() {
+            assertRandomNumberInRangeTest(() -> {
+                run("246", "3","3","3","2");
+                assertThat(output()).contains("3스트라이크", "올바른 값을 입력해주세요","게임을 완전히 종료합니다.");
+            }, 2, 4, 6);
         }
 
         @Test
