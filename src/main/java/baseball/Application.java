@@ -20,10 +20,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
-        initRandomNumber(computer);
 
+        initRandomNumber(computer);
+        
         String userInput = Console.readLine();
-        validateUserInput(userInput);
+
+        try {
+            validateUserInput(userInput);
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void validateUserInput(String s) {
@@ -39,6 +45,7 @@ public class Application {
     private static void initRandomNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
