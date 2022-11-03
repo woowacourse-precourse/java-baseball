@@ -14,7 +14,7 @@ public class User {
 
     private User(){
     }
-    
+
     public static List userInput() throws IllegalArgumentException{
         System.out.print(Message.INPUT_NUMBER);
         String str = Console.readLine();
@@ -39,7 +39,7 @@ public class User {
             return true;
         }
         for (int i = 0; i < str.length() - 1; i++) {
-            if (str.contains(str.substring(i, i + 1))) {
+            if (str.substring(i + 1).contains(str.substring(i, i + 1))) {
                 return true;
             }
         }
@@ -47,7 +47,6 @@ public class User {
     }
     public static boolean restart() {
         int input = Integer.parseInt(Console.readLine());
-
         return input == RESTART_GAME;
     }
 }
