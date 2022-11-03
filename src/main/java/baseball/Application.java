@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -10,13 +11,31 @@ public class Application {
 }
 
 class ComputerList {
-    static List<Integer> list;
+    private static List<Integer> list;
 
     private ComputerList() {
     }
 
-    static void initialize() {
+    public static void initialize() {
         list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+    }
+
+    public static List<Hint> compareTo(List<Integer> input) {
+        List<Hint> hintArr = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            Hint hint = checkInputValue(i, input.get(i));
+            hintArr.add(hint);
+        }
+        return hintArr;
+    }
+
+    private static Hint checkInputValue(Integer index, Integer value) {
+        if (list.contains(value) && (list.indexOf(value) == index)) {
+            return Hint.STRIKE;
+        } else if (list.contains(value)) {
+            return Hint.BALL;
+        }
+        return Hint.MISS;
     }
 }
 
