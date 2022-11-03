@@ -21,13 +21,11 @@ public class Application {
                 if (play_ball(computer_number, input_number_integer)) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String input_coin = readLine(); // 입력
-                    if (Integer.parseInt(input_coin) == 1) {
-                        ch_more_input = false;
-                    } else {
+                    if (Integer.parseInt(input_coin) != 1) {
                         System.out.println("게임 종료");
                         ch_more_game = false;
-                        ch_more_input = false;
                     }
+                    ch_more_input = false;
                 }
             }
         }
