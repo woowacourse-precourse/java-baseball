@@ -16,7 +16,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("13"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
@@ -26,7 +26,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
@@ -36,7 +36,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
@@ -46,7 +46,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("332"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
@@ -56,7 +56,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("383"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
@@ -66,7 +66,7 @@ class BaseballGameControllerTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("777"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.")
+                        .hasMessageContaining(BaseballGameController.PLAYER_NUMBER_INPUT_ERROR_MSG)
         );
     }
 
