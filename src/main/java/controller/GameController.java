@@ -37,4 +37,9 @@ public class GameController {
         }
     }
 
+    public String getHintOfComputer() {
+        int numInputOfUser = user.getNumSelecUser();
+        return computer.giveHint2User(numInputOfUser);
+    }
+
 }
