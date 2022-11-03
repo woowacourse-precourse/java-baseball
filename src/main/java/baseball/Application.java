@@ -14,7 +14,7 @@ public class Application {
 
     }
 
-    static void gameStart(){
+    static void gameStart() {
         System.out.println(START_MESSAGE);
         int[] computer = initializeComputerNumber();
         boolean playBaseball = true;
@@ -23,7 +23,7 @@ public class Application {
         }
     }
 
-    static int[] initializeComputerNumber(){
+    static int[] initializeComputerNumber() {
         List<Integer> computerNumberList = new ArrayList<>();
         while(computerNumberList.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -35,7 +35,7 @@ public class Application {
         return computerNumberArray;
     }
 
-    static String getUserInput(){
+    static String getUserInput() {
         System.out.print(INPUT_MESSAGE);
         String userInput = Console.readLine();
         return userInput;
