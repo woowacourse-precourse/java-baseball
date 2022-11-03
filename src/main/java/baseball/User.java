@@ -50,4 +50,23 @@ public class User {
             }
         }
     }
+
+    public static int finishInput() throws IllegalArgumentException {
+        String finishNumber;
+
+        finishNumber = Console.readLine();
+
+        return verifyFinishNumber(finishNumber);
+    }
+    private static int verifyFinishNumber(String finishNumber)throws IllegalArgumentException{
+        int restart=1;
+        int exit=0;
+        if(finishNumber.equals("1")){
+            return restart;
+        }
+        else if(finishNumber.equals("2")){
+            return exit;
+        }
+        throw new IllegalArgumentException("User Finish Input Error");
+    }
 }

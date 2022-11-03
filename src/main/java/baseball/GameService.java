@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.RandomNumber;
 import baseball.User;
-
+import baseball.Game;
 import java.util.ArrayList;
 
 public class GameService {
@@ -61,6 +61,19 @@ public class GameService {
         }
         else if(strike==0 && ball==0){
             System.out.println("낫싱");
+        }
+    }
+
+    public void finishGame() throws IllegalArgumentException{
+        int flag;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        flag=User.finishInput();
+        if(flag==1){
+            Game game = new Game();
+            game.run();
+        }
+        else if(flag==2){
+            return;
         }
     }
 }

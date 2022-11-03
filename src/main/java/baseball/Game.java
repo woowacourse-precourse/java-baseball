@@ -6,14 +6,12 @@ public class Game {
         try {
             setGame();
             startGame();
+            finishGame();
         }
         catch (IllegalArgumentException e) {
             System.out.println(e.toString());
             return;
         }
-
-        resultGame();
-        exitGame();
     }
 
     public void setGame()throws IllegalArgumentException{
@@ -22,10 +20,7 @@ public class Game {
     public void startGame() throws IllegalArgumentException{
         gameService.startGame();
     }
-    public void resultGame(){
-
-    }
-    public void exitGame(){
-
+    public void finishGame(){
+        gameService.finishGame();
     }
 }
