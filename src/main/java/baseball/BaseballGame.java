@@ -21,6 +21,10 @@ public class BaseballGame {
         createComputerNumbers();
         String input = Console.readLine();
         isWrongInputValue(input);
+        calculateBallCount(input);
+    }
+
+    private void calculateBallCount(String input) {
         for (int i = 0; i < computerNumbers.size(); i++) {
             String val = String.valueOf(computerNumbers.get(i));
             if (input.contains(val)) {
