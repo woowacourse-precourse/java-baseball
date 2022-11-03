@@ -3,11 +3,17 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameStartService {
 
-	//Todo: 정답 숫자 만들기
+	private final InputView inputView;
+
+	public GameStartService(InputView inputView) {
+		this.inputView = inputView;
+	}
+
 	public List<Integer> makeAnswerNumber() {
 		List<Integer> answer = new ArrayList<>();
 		while (answer.size() < 3) {
@@ -16,7 +22,9 @@ public class GameStartService {
 				answer.add(randomNumber);
 			}
 		}
-		//inputview 에서 게임 시작 출력문 출력
+
+		inputView.printStartGame();
+
 		return answer;
 	}
 
