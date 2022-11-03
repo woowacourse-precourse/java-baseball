@@ -1,9 +1,8 @@
 package baseball.Number;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class NumberList {
+public class NumberListRepository {
     private List<Integer> RandomNumberList;
     private List<Integer> InputNumberList;
 
