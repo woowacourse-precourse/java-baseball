@@ -109,4 +109,23 @@ class BaseBallGameModelTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void 볼_스트라이크_확인5() {
+        BaseBallGameModel baseBallGameModel = new BaseBallGameModel();
+
+        try {
+            Field field = baseBallGameModel.getClass().getDeclaredField("computerNumbers");
+            field.setAccessible(true);
+
+            List<Integer> randomNumbers = Arrays.asList(9, 7, 2);
+            List<Integer> userNumber = Arrays.asList(9, 7, 5);
+            field.set(baseBallGameModel, randomNumbers);
+
+            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
