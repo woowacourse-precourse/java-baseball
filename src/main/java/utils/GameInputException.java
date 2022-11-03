@@ -23,4 +23,10 @@ public class GameInputException {
             throw new IllegalArgumentException();
         }
     }
+
+    private void checkContainZero(String userInput) throws IllegalArgumentException {
+        if (userInput.contains("0")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
