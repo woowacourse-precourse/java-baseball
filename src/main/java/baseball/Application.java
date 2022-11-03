@@ -150,8 +150,10 @@ public class Application {
         if (strikeCount == 0 && ballCount == 0) {
             System.out.print("낫싱");
 
-        } else {
+        } else if(ballCount>0){
             ballAnswer(ballCount);
+            strikeAnswer(strikeCount);
+        } else{
             strikeAnswer(strikeCount);
         }
     }
@@ -167,7 +169,7 @@ public class Application {
     public static void strikeAnswer(int strikeCount) {
 
         if (strikeCount > 0) {
-            System.out.print(strikeCount + "스트라이크 ");
+            System.out.print(strikeCount + "스트라이크");
         }
     }
     public static int CheckGameover(){
@@ -175,7 +177,7 @@ public class Application {
         return gameSwitch();
     }
     public static void printWin(){
-        System.out.println("3 스트라이크 ");
+        System.out.println("3스트라이크 ");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
