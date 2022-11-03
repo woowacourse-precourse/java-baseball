@@ -8,7 +8,7 @@ public class RuleOutput {
         } else if (strike > 0 && strike < 3) {
             showBall(ball);
             showStrike(strike);
-        } else if (strike == 0) {
+        } else if (strike == 0 && ball > 0) {
             showBall(ball);
             System.out.println();
         }
