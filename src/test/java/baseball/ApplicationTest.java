@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
                 () -> {
                     assertThatThrownBy(
                             () ->
-                    runException("578", "d")).isInstanceOf(IllegalArgumentException.class);
+                    runException("578", "673")).isInstanceOf(IllegalArgumentException.class);
                     assertThat(output().contains("3스트라이크"));
                 },
                 5, 7, 8
