@@ -28,6 +28,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 유저_숫자_테스트() {
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
