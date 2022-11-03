@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.resources.GameConfig;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,16 +8,16 @@ import java.util.function.Predicate;
 import static baseball.resources.GameConfig.*;
 
 public class Result {
-    private final List<Numbers> numbers;
-    private final GameNumber gameNumber;
+    private final List<InputNumber> inputNumber;
+    private final BaseNumber baseNumber;
 
-    public Result(List<Numbers> numbers, GameNumber gameNumber) {
-        this.numbers = numbers;
-        this.gameNumber = gameNumber;
+    public Result(List<InputNumber> inputNumber, BaseNumber baseNumber) {
+        this.inputNumber = inputNumber;
+        this.baseNumber = baseNumber;
     }
 
     public boolean isFinish(){
-        return count(strike()) == GameConfig.SIZE;
+        return count(strike()) == SIZE;
     }
 
     public boolean hasBall() {
@@ -41,16 +39,16 @@ public class Result {
         return result;
     }
 
-    private Predicate<Numbers> strike() {
-        return number -> number.isStrike(gameNumber);
+    private Predicate<InputNumber> strike() {
+        return number -> number.isStrike(baseNumber);
     }
 
-    private Predicate<Numbers> ball() {
-        return number -> number.isBall(gameNumber);
+    private Predicate<InputNumber> ball() {
+        return number -> number.isBall(baseNumber);
     }
 
-    private int count(Predicate<Numbers> predicate) {
-        return (int) numbers.stream()
+    private int count(Predicate<InputNumber> predicate) {
+        return (int) inputNumber.stream()
                 .filter(predicate)
                 .count();
     }

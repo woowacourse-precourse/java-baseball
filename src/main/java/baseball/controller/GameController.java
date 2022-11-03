@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.NumberBaseBallGame;
+import baseball.application.NumberBaseBallGame;
 import baseball.model.Result;
 import baseball.view.NumberBaseBallView;
 

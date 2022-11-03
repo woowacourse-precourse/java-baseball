@@ -1,27 +1,27 @@
 package baseball.model;
 
-public class Numbers {
+public class InputNumber {
     private final int index;
     private final int value;
 
-    public Numbers(int index, int value) {
+    public InputNumber(int index, int value) {
         this.index = index;
         this.value = value;
     }
 
-    public boolean isStrike(GameNumber gameNumber) {
+    public boolean isStrike(BaseNumber gameNumber) {
         return hasValue(gameNumber) && samePosition(gameNumber);
     }
 
-    public boolean isBall(GameNumber gameNumber) {
+    public boolean isBall(BaseNumber gameNumber) {
         return hasValue(gameNumber) && !samePosition(gameNumber);
     }
 
-    private boolean hasValue(GameNumber gameNumber) {
+    private boolean hasValue(BaseNumber gameNumber) {
         return gameNumber.contains(value);
     }
 
-    private boolean samePosition(GameNumber gameNumber) {
+    private boolean samePosition(BaseNumber gameNumber) {
         return gameNumber.get(index) == value;
     }
 }
