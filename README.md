@@ -163,7 +163,7 @@ while (computer.size() < 3) {
 ### - 기능 목록 정리
 
 - SystemConstant 클래스
-    1. 시스템 상수를 저장하는 기능
+    1. 시스템 관련 상수를 저장하는 기능
        <br> <br>
 - SystemMsgPrinter 클래스
     1. 입력을 위한 출력 메세지를 화면에 나타내는 기능
@@ -180,8 +180,8 @@ while (computer.size() < 3) {
     1. 입력받은 정수에 맞는 메세지를 출력하는 기능
        <br> <br>
 - InputVerifier 클래스
-    1. 1 ~ 9의 숫자인지 체크하는 기능
-    2. 3개의 숫자인지 체크하는 기능
+    1. 숫자인지 체크하는 기능
+    2. 100 ~ 999 의 숫자인지 체크하는 기능
     3. 서로 다른 3개의 수인지 체크하는 기능
     4. 게임 재시작인지 체크하는 기능
     5. 게임 종료인지 체크하는 기능
@@ -193,12 +193,12 @@ while (computer.size() < 3) {
 - ScoreManager 클래스
     1. BaseballNumber 객체 두 개를 멤버변수로 가짐 
     2. 유저의 최종 점수를 반환하는 기능 
-    3. BaseballNumber의 값을 초기화하는 기능
+    3. BaseballNumber 객체를 초기화하는 기능
    <br> <br>
 - ScoreCalculator 클래스
     1. 두 BaseballNumber 객체에서 같은 자리수, 같은 숫자 개수를 반환하는 기능
     2. 두 BaseballNumber 객체에서 다른 자리수, 같은 숫자 개수를 반환하는 기능 
-    3. 두 BaseballNumber 객체를 통해 점수를 계산하는 기능
+    3. 1번, 2번을 조합해 최종 점수를 계산하는 기능
         <br> <br>
 - BaseballNumber 클래스
     1. List 자료구조로 내부 구현
@@ -211,4 +211,5 @@ while (computer.size() < 3) {
     1. 두 정수값이 같은지 비교하는 기능 
         <br> <br>
 - RandomNumGenerator 클래스
-    1. 1 ~ 9 까지 서로 다른 임의의 수 3개 선택하는 기능
+    1. 1 ~ 9 까지 서로 다른 임의의 수 3개를 조합하는 기능
+    2. 1 ~ 9 까지 임의의 수를 생성하는 기능
