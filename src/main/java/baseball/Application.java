@@ -35,7 +35,7 @@ public class Application {
 
     public static void makeComputerNumber(List<Integer> computerNumberList) {
 
-        for (int j = 0; j < 3; j++) {
+        while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!computerNumberList.contains(randomNumber)) {
@@ -66,29 +66,22 @@ public class Application {
         }
     }
 
-    public static boolean decideRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String decidedRestartString =  Console.readLine();
-        discoverRestartNumberException(decidedRestartString);
+    public static boolean decideRestart(String decidedRestartString) {
         int decidedRestart = Integer.parseInt(decidedRestartString);
 
         if (decidedRestart == 1) return true;
         else return false;
     }
 
-    public static void proceedGame (List<Integer> computerNumberList, List<Integer> inputNumberList) {
-        while (true) {
-            String inputString = Console.readLine();
-            discoverInputNumberException(inputString);
-            splitNumber(inputNumberList, inputString);
-            int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
-            int ballCounting = distinguishBall(inputNumberList, computerNumberList, strikeCounting);
-            inputNumberList.clear();
+    public static int proceedGame (List<Integer> computerNumberList, List<Integer> inputNumberList, String inputString) {
+        splitNumber(inputNumberList, inputString);
+        int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
+        int ballCounting = distinguishBall(inputNumberList, computerNumberList, strikeCounting);
+        inputNumberList.clear();
 
-            printResult(ballCounting, strikeCounting);
+        printResult(ballCounting, strikeCounting);
 
-            if (strikeCounting == 3) break;
-        }
+        return strikeCounting;
     }
 
     public static boolean seekDuplicatedNumber (String inputNumber) {
@@ -128,13 +121,21 @@ public class Application {
 
         List<Integer> computerNumberList = new ArrayList<>();
         List<Integer> inputNumberList = new ArrayList<>();
+        int  proseedingDecision = 0;
 
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             makeComputerNumber(computerNumberList);
-            proceedGame(computerNumberList, inputNumberList);
-
-            if (!decideRestart()) break;
+            while (proseedingDecision < 3) {
+                String inputString = Console.readLine();
+                discoverInputNumberException(inputString);
+                proseedingDecision = proceedGame(computerNumberList, inputNumberList, inputString);
+            }
+            proseedingDecision = 0;
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String decidedRestartString =  Console.readLine();
+            discoverRestartNumberException(decidedRestartString);
+            if (!decideRestart(decidedRestartString)) break;
 
             computerNumberList.clear();
         }
