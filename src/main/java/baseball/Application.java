@@ -43,6 +43,7 @@ public class Application {
             Map<String, Integer> gameResult = new HashMap<>();
 
             do {
+                gameResult.clear();
                 List<Integer> userInputNumbers = getUserInput();
                 getGameResult(userInputNumbers, targetNumbers, gameResult);
                 printGameResult(gameResult);
