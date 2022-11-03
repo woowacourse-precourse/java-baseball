@@ -71,7 +71,15 @@ public class Application {
         return answer.length() == distinctCount;
     }
 
-    private static boolean isValidValue(String answer) {}
+    private static boolean isValidValue(String answer) {
+        boolean result = true;
+        try {
+            Integer.valueOf(answer);
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
+    }
 
 
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
