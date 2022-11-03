@@ -24,7 +24,7 @@ public class Application {
 
         return digits;
     }
-    public int isLegalInput(int input) {
+    private static int isLegalInput(int input) {
         int front = input / 100;
         int middle = (input % 100) / 10;
         int rear = input % 10;
