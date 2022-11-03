@@ -78,7 +78,7 @@ public class Application {
             strike_announcement = strike + "스트라이크";
         if (ball != 0)
             ball_announcement = ball + "볼";
-        if (strike == ball)
+        if (strike == 0 && ball == 0)
             System.out.print("낫싱");
         if (strike == 3) {
             System.out.println("3스트라이크");
