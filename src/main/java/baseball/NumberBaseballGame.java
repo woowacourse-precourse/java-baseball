@@ -4,10 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class NumberBaseballGame {
 
-    private static List<Integer> playerNumberList = new ArrayList<>();
+    private static List<Integer> answerNumberList = new ArrayList<>(), playerNumberList = new ArrayList<>();
+    private static int ball, strike;
 
     public static void start() {
         setup();
@@ -59,11 +61,17 @@ public abstract class NumberBaseballGame {
     }
 
     private static void countBall() {
-        //TODO: ball 수 세기 구현
+        ball = 0;
+        for (Integer playerNumber : playerNumberList) {
+            if (answerNumberList.contains(playerNumber)) ball++;
+        }
     }
 
     private static void countStrike() {
-        //TODO: strike 수 세기 구현
+        strike = 0;
+        for (int i = 0; i < answerNumberList.size(); i++) {
+            if (Objects.equals(answerNumberList.get(i), playerNumberList.get(i))) strike++;
+        }
     }
 
     private static void printHint() {
