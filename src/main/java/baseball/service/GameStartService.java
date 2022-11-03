@@ -5,10 +5,11 @@ import baseball.util.UserUtil;
 import java.util.List;
 
 public class GameStartService {
-    public static List<Integer> getUserNumber() {
-        List<Integer> userNumber = UserUtil.getUserNumber();
-        return null;
+    public static String saveUserNumber() {
+        String userNumberString = UserUtil.getUserNumberString();
+        return userNumberString;
     }
+
 
 
 }

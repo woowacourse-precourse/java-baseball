@@ -14,11 +14,11 @@ public class GameStartController {
 
     private static void startGame() {
         System.out.print("숫자를 입력해주세요 : ");
-        getUserNumber();
+        saveUserNumber();
     }
 
-    private static void getUserNumber() {
-        List<Integer> userNumber = GameStartService.getUserNumber();
+    private static void saveUserNumber() {
+        String userNumber = GameStartService.saveUserNumber();
 
     }
 }
