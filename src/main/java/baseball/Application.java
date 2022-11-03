@@ -30,7 +30,17 @@ public class Application {
         }
     }
 
-    private static String getComputerNumberInString() {}
+    private static String getComputerNumberInString() {
+        String computer = "";
+        while(computer.length() < LENGTH_OF_BASEBALL_NUMBER) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (computer.contains(String.valueOf(randomNumber))) {
+                computer += randomNumber;
+            }
+        }
+        return computer;
+    }
+
     private static String getUserAnswerInString() {}
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
