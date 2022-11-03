@@ -12,7 +12,10 @@ public class Validate {
     }
 
     public static boolean isCommandValid(int num) {
-        return 1<= num && num <= 2;
+        if (num < 1 || 2 < num) {
+            throw new IllegalArgumentException("올바르지 않은 명령어");
+        }
+        return num == 1;
     }
 
     private static List<Integer> isDiffEach(int num) {
