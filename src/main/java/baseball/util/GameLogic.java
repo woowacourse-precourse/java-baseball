@@ -19,7 +19,7 @@ public class GameLogic {
     private int countStrike(String target, String input) {
         int count = 0;
         for (int i = 0; i < target.length(); i++) {
-            if (target.charAt(i) == input.charAt(i)) {
+            if (isMatch(target, input, i)) {
                 count++;
             }
         }
@@ -29,10 +29,18 @@ public class GameLogic {
     private int countBall(String target, String input) {
         int count = 0;
         for (int i = 0; i < target.length(); i++) {
-            if (target.charAt(i) != input.charAt(i) && target.contains(String.valueOf(input.charAt(i)))) {
+            if (!isMatch(target, input, i) && isContains(target, input, i)) {
                 count++;
             }
         }
         return count;
+    }
+
+    private boolean isMatch(String target, String input, int i) {
+        return target.charAt(i) == input.charAt(i);
+    }
+
+    private boolean isContains(String target, String input, int i) {
+        return target.contains(String.valueOf(input.charAt(i)));
     }
 }
