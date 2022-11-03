@@ -50,4 +50,21 @@ public class BaseballNumber {
     private boolean is_out_of_range(int number) {
         return (number < MIN_NUMBER || number > MAX_NUMBER);
     }
+
+    public static BaseballNumber getComputerPickedNumbers() {
+        boolean hasException = true;
+
+        BaseballNumber computerNumbers = null;
+        while (hasException) {
+            try {
+                computerNumbers = new BaseballNumber
+                        (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
+                hasException = false;
+            } catch (IllegalArgumentException e) {
+
+            }
+        }
+        return computerNumbers;
+    }
+
 }
