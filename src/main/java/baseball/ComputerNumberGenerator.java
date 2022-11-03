@@ -21,31 +21,30 @@ public class ComputerNumberGenerator {
         return returnNumbersToArray();
     }
 
-    public int createRandomNumber(){
+    int createRandomNumber(){
         return Randoms.pickNumberInRange(MINIMUM_IN_RANGE, MAXIMUM_IN_RANGE);
     }
 
-    public boolean isAlreadyInNumbers(int number){
+    boolean isAlreadyInNumbers(int number){
         return numbers.contains(number);
     }
 
-    public void putNumber(int number){
+    void putNumber(int number){
         numbers.add(number);
     }
 
-    public void insertNumber(){
+    void insertNumber(){
         int newNumber = createRandomNumber();
         if(!isAlreadyInNumbers(newNumber)) putNumber(newNumber);
     }
 
-    public void makeThreeDigitNumbers(){
+    void makeThreeDigitNumbers(){
         while(NUMBERS_COUNT_LIMIT > numbers.size()){
             insertNumber();
         }
     }
 
-    public int[] returnNumbersToArray(){
+    int[] returnNumbersToArray(){
         return numbers.stream().mapToInt(Integer::intValue).toArray();
     }
-
 }
