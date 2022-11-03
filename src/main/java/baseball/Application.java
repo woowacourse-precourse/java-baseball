@@ -12,35 +12,51 @@ public class Application {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String userInput;
-        List<Integer> guess = new ArrayList<>();
-        try {
-            userInput = br.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            guess = typeCast(userInput, guess);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
-            return;
-        }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> answer;
         answer = makeRandomNum();
-        Result result = checkNum(answer, guess);
-        if (result.getStrike() == 3) {
-            System.out.println(result.getStrike() + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
-        } else if (result.getStrike() == 0 && result.getBall() == 0)
-            System.out.println("낫싱");
-        else if (result.getStrike() == 0)
-            System.out.println(result.getBall() + "볼");
-        else if (result.getBall() == 0)
-            System.out.println(result.getStrike() + "스트라이크");
-        else
-            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
 
+        while (true) {
+            List<Integer> guess = new ArrayList<>();
+            System.out.print("숫자를 입력해주세요 : ");
+            try {
+                userInput = br.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                guess = typeCast(userInput, guess);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.toString());
+                return;
+            }
+            Result result = checkNum(answer, guess);
+            if (result.getStrike() == 3) {
+                System.out.println(result.getStrike() + "스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                try {
+                    String replay = br.readLine();
+                    if (replay.equals("1")) {
+                        answer = makeRandomNum();
+                        continue;
+                    } else if (replay.equals("2"))
+                        return;
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                return;
+            } else if (result.getStrike() == 0 && result.getBall() == 0)
+                System.out.println("낫싱");
+            else if (result.getStrike() == 0)
+                System.out.println(result.getBall() + "볼");
+            else if (result.getBall() == 0)
+                System.out.println(result.getStrike() + "스트라이크");
+            else
+                System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
 
+        }
     }
 
     public static List<Integer> makeRandomNum() {
