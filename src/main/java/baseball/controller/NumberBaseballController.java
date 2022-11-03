@@ -8,6 +8,9 @@ public class NumberBaseballController {
 	private final NumberBaseballView numberBaseballView = new NumberBaseballView();
 	private final NumberBaseballService numberBaseballService = new NumberBaseballService();
 
+	public void initGame() {
+		numberBaseballView.initPage();
+	}
 	public void playBall() {
 		NumberBaseball computerNumber = numberBaseballService.createNumberBaseball();
 	}

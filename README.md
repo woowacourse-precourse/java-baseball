@@ -172,7 +172,7 @@ while (computer.size() < 3) {
 
   -> `Randoms.pickUniqueNumbersInRange`을 통해 생성
 
-- 게임 시작 문구
+- 게임 시작 문구 ✅
 
   - 최초 실행 시, `숫자 야구 게임을 시작합니다.`
 
