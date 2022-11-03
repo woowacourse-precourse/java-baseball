@@ -1,14 +1,16 @@
-package baseball;
+package baseball.game;
 
-import baseball.data.BaseballNumber;
+import baseball.constant.GameConstant;
+import baseball.constant.WarningMessage;
+import baseball.data.AnswerNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
     public static void playGame() {
-        BaseballNumber baseballNumber = BaseballNumber.getInstance();
+        AnswerNumber answerNumber = AnswerNumber.getInstance();
 
-
+        answerNumber.updateNumbers(Generator.generateAnswer());
     }
 
     public static boolean isGameContinued() {

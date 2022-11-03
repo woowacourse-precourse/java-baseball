@@ -1,6 +1,6 @@
-package baseball.data;
+package baseball.game;
 
-import baseball.GameConstant;
+import baseball.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
