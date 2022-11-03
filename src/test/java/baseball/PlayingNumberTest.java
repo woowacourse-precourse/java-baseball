@@ -63,7 +63,7 @@ class PlayingNumberTest {
 	}
 
 	@Nested
-	class validateZeroExceptionTest {
+	class validateREGAXTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
