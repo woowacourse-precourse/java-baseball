@@ -14,24 +14,14 @@ public class Controller {
         while (true) {
             view.printInput();
             String input = Console.readLine();
-            try {
-                if (!model.findException(input)) throw new IllegalArgumentException();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                break;
-            }
+            if (!model.findException(input)) throw new IllegalArgumentException();
             int inp = Integer.parseInt(input);
             int Strike = model.findStrike(ball.getScore(), inp);
             int Ball = model.findBall(ball.getScore(), inp);
             if (Strike == 3){
                 view.threeStrike();
                 String in = Console.readLine();
-                try{
-                    if (model.InputException(in)) throw new IllegalArgumentException();
-                }catch (IllegalArgumentException e){
-                    e.printStackTrace();
-                    break;
-                }
+                if (model.InputException(in)) throw new IllegalArgumentException();
                 if ("1".equals(in)){
                     ball = new Ball();
                 }else if ("2".equals(in)){
