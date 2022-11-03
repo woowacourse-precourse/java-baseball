@@ -23,14 +23,14 @@ public class Application {
 
             String numberString = putInNumber();
 
-            if (! checkNumber(numberString)) {
+            if (!checkNumber(numberString)) {
                 continue;
             }
 
             int[] numberArrays = {0, 0, 0};
             addNumber(numberArrays, numberString);
 
-        } while(true);
+        } while (true);
     }
 
     public static void startGame() {
@@ -60,7 +60,7 @@ public class Application {
 
         try {
 
-            if (! check(numberString)) throw new IllegalStateException();
+            if (!check(numberString)) throw new IllegalStateException();
 
             return true;
 
@@ -74,7 +74,7 @@ public class Application {
 
     public static boolean check(String numberString) {
 
-        if (! checkLength(numberString) || ! checkInteger(numberString) || ! checkDuplicateNumber(numberString)) {
+        if (!checkLength(numberString) || !checkInteger(numberString) || !checkDuplicateNumber(numberString)) {
 
             return false;
         }
@@ -122,5 +122,15 @@ public class Application {
             numberArrays[i] = numberString.charAt(i) - 48;
         }
 
+    }
+
+    public static void countingStrike(int strike, int[] numberArrays, List<Integer> randomNumberList) {
+
+        for (int i = 0; i < 3; i++) {
+            if (numberArrays[i] == randomNumberList.get(i)) {
+
+                strike += 1;
+            }
+        }
     }
 }
