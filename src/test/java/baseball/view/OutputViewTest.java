@@ -100,4 +100,14 @@ public class OutputViewTest {
 
         assertThat(output.toString()).isEqualTo(gameResultMessage);
     }
+
+    @Test
+    void 입력한_수에_대한_볼_스트라이크_개수_출력_낫싱() {
+        int strikeCount = 0;
+        int ballCount = 0;
+        String gameResultMessage = "낫싱\n";
+        OutputView.printGameResultMessage(strikeCount, ballCount);
+
+        assertThat(output.toString()).isEqualTo(gameResultMessage);
+    }
 }
