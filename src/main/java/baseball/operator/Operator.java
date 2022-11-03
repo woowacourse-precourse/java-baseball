@@ -2,8 +2,6 @@ package baseball.operator;
 
 import static baseball.Constant.*;
 
-import java.util.List;
-
 import baseball.Computer;
 import baseball.User;
 import camp.nextstep.edu.missionutils.Console;
@@ -19,7 +17,6 @@ public class Operator {
 
 		checkGameOver = false;
 		System.out.println(START_MESSAGE);
-
 
 		do {
 			gameSystem();
@@ -50,8 +47,8 @@ public class Operator {
 		return request.equals(RESTART_GAME);
 	}
 
-	private void isValidate(String request){
-		if(!request.equals(RESTART_GAME) && !request.equals(END_GAME)){
+	private void isValidate(String request) {
+		if (!request.equals(RESTART_GAME) && !request.equals(END_GAME)) {
 			throw new IllegalArgumentException();
 		}
 	}

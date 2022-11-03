@@ -51,8 +51,8 @@ public class User {
 	}
 
 	private static boolean validateType(String input) {
-		for (char number : input.toCharArray()){
-			if (number < '1' || number > '9'){
+		for (char number : input.toCharArray()) {
+			if (number < '1' || number > '9') {
 				return false;
 			}
 		}
