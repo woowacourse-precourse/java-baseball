@@ -39,7 +39,7 @@ public class PlayerInputFilter {
     }
 
     boolean containsZero(String input){
-        return false;
+        return input.contains("0");
     }
 
     void containsZeroException(){
