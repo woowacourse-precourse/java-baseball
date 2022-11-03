@@ -16,16 +16,20 @@ public class GameApplication {
     public static void playGame(List<Integer> computerNumber) {
         String inputNumber = InputView.inputNumber();
 
+        validateInput(inputNumber);
+
+        List<Integer> userNumber = NumberUtil.getDigitNumberList(inputNumber);
+
+    }
+
+    public static void validateInput(String inputNumber) {
         if (!UserNumberValidation.isValidNumberLength(inputNumber)) {
             throw new IllegalArgumentException();
         }
 
-        List<Integer> userNumber = NumberUtil.getDigitNumberList(inputNumber);
-
-        if (UserNumberValidation.hasEachDifferentNumbers(userNumber)) {
+        if (UserNumberValidation.hasEachDifferentNumbers(inputNumber)) {
             throw new IllegalArgumentException();
         }
     }
-
 
 }
