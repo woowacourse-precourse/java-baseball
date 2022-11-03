@@ -17,4 +17,8 @@ public class RandomBallNumber {
         System.out.println(randomNum);
         return randomNum;
     }
+
+    public void clearRandomNum() {
+        randomNum = "";
+    }
 }
