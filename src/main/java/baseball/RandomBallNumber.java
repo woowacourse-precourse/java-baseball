@@ -11,12 +11,16 @@ public class RandomBallNumber {
     public String createRandomNum() {
         while (randomNum.length() < BALL_NUMBER_LENGTH) {
             String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-            if (!randomNum.contains(randomNumber)) {
+            if (isContainedNumber(randomNumber)) {
                 randomNum = randomNum.concat(randomNumber);
             }
         }
         System.out.println(randomNum);
         return randomNum;
+    }
+
+    private boolean isContainedNumber(String randomNumber) {
+        return !randomNum.contains(randomNumber);
     }
 
     public String clearRandomNum() {
