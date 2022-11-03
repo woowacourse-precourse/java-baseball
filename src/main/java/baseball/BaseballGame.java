@@ -19,4 +19,8 @@ public class BaseballGame {
 
         return list;
     }
+
+    private Boolean isStringLengthThree(String string) {
+        return string.length() == 3;
+    }
 }
