@@ -11,15 +11,19 @@ public class Game {
     private static final String NOTHING = "낫싱";
     private static final String IS_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String RESTART_EXCEPTION = "1 또는 2만 입력이 가능합니다.";
+    private static final String END_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int IS_ANSWER = 3;
     private static final int IS_NONE = 0;
-    private static final boolean status = true;
     private static final int RESTART_NUMBER_LENGTH = 1;
     private static final int RESTART_NUMBER_MIN = 1;
     private static final int RESTART_NUMBER_MAX = 2;
+    private static final int RESTART = 1;
+    private static final int EXIT = 1;
 
     private int strike;
     private int ball;
+    private static boolean status = true;
+
     User user;
     Computer computer;
 
@@ -35,15 +39,28 @@ public class Game {
             user.inputUserNumbers();
             outputHint(computer.randomNumbers, user.userNumbers);
             if (isAnswer(strike)) {
-                System.out.println(IS_CONTINUE);
+                outputRestart();
             }
         }
     }
 
     public void outputRestart() {
+        System.out.println(END_GAME);
         System.out.println(IS_CONTINUE);
-        String answer = Console.readLine();
+        String answerstr = Console.readLine();
+        checkRestartNumberLength(answerstr);
+        checkIsDigit(answerstr.charAt(0));
+        int answerint = charToInt(answerstr.charAt(0));
+        checkValidNumber(answerint);
+        selectRestart(answerint);
+    }
 
+    public void selectRestart(int answer){
+        if(answer==RESTART){
+            computer.createRandomNumbers();
+        }else{
+            status = false;
+        }
     }
 
     public void checkRestartNumberLength(String number) {
