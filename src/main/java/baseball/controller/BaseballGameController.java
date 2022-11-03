@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Umpire;
 import baseball.service.BaseballGameService;
 import baseball.view.GameScreen;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,10 +12,11 @@ public class BaseballGameController {
     public void startGame() {
         GameScreen.printGameStart();
         GameScreen.printUserInput();
-
         String playerInputNumbers = Console.readLine();
+
         baseballGameService.newGame();
-        baseballGameService.playGame(playerInputNumbers);
+        Umpire umpire = baseballGameService.playGame(playerInputNumbers);
+        GameScreen.printGameResult(umpire);
     }
 
 }

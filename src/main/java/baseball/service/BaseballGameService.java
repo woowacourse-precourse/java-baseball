@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.model.GameNumber;
+import baseball.model.Umpire;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,15 +15,19 @@ public class BaseballGameService {
         computerGameNumber = new GameNumber(numberGenerator.createRandomNumbers());
     }
 
-    public void playGame(String playerInputNumbers) {
+    public Umpire playGame(String playerInputNumbers) {
         GameNumber playerGameNumber = new GameNumber(convertToList(playerInputNumbers));
         List<Integer> playerNumbers = playerGameNumber.getNumbers();
         List<Integer> computerNumbers = computerGameNumber.getNumbers();
 
-        calculateMatchScore(playerNumbers, computerNumbers);
+        for (Integer computerNumber : computerNumbers) {
+            System.out.print(computerNumber + " ");
+        }
+        System.out.println();
+        return calculateMatchScore(playerNumbers, computerNumbers);
     }
 
-    private void calculateMatchScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+    private Umpire calculateMatchScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         int strike = 0;
         int ball = 0;
 
@@ -38,6 +43,8 @@ public class BaseballGameService {
                 ball++;
             }
         }
+
+        return new Umpire(ball, strike);
     }
 
 
