@@ -3,6 +3,7 @@ package baseball.system;
 import baseball.player.*;
 
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GamePlay {
 
@@ -32,6 +33,10 @@ public class GamePlay {
             }
         }
 
+    }
+
+    private String inputUserNumber() {
+        return Console.readLine();
     }
 
     private void printInputText() {
