@@ -22,7 +22,7 @@ class ApplicationTest extends NsTest {
         List<Integer> answer = List.of(2, 2, 2);
         List<Integer> userInput = List.of(3, 2, 2);
 
-        assertThat(application.getBall(answer, userInput)).isEqualTo(2);
+        assertThat(application.getBall(answer, userInput, 2)).isEqualTo(0);
     }
 
     @Test

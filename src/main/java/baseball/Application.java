@@ -26,12 +26,12 @@ public class Application {
         }
     }
 
-    public int getBall(List<Integer> answer, List<Integer> userInput) {
+    public int getBall(List<Integer> answer, List<Integer> userInput, int strike) {
         Set<Integer> matchedIndexSet = new HashSet<>();
         for (int i = 0; i < answer.size(); i++) {
             addIndexIfMatchedAnswer(matchedIndexSet, answer.get(i), userInput);
         }
-        return matchedIndexSet.size();
+        return matchedIndexSet.size() - strike;
     }
 
     private Set<Integer> addIndexIfMatchedAnswer(Set<Integer> matchedIndexSet, int answer, List<Integer> userInput) {
