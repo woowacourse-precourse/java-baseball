@@ -1,6 +1,6 @@
 package baseball.system;
 
-import java.util.List;
+import java.util.*;
 
 public class NumberComparison {
 
@@ -30,6 +30,29 @@ public class NumberComparison {
         return false;
 
     }
+
+    private int getBallCount() {
+
+        int ballCount=0;
+
+        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++){
+
+            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(1,2,3));
+            IndexNumbers.remove(indexNumber);
+
+            int userNumber = userNumbers.get(indexNumber);
+
+            if(searchNumber(IndexNumbers,userNumber)){
+                ballCount++;
+            }
+
+        }
+
+        return ballCount;
+
+    }
+
+   
 
     private int getStrikeCount() {
 
