@@ -1,6 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class NumberBaseballGame {
+
+    private static List<Integer> playerNumberList = new ArrayList<>();
 
     public static void start() {
         setup();
@@ -22,7 +29,14 @@ public abstract class NumberBaseballGame {
     }
 
     private static void inputPlayerNumberList() {
-        //TODO: 플레이어로부터 숫자 입력받는 기능 구현
+        playerNumberList.clear();
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String playerNumberStr = Console.readLine();
+        for (int i = 0; i < playerNumberStr.length(); i++) {
+            int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
+            playerNumberList.add(playerNumber);
+        }
     }
 
     private static void countBall() {
