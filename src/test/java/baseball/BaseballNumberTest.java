@@ -99,12 +99,7 @@ public class BaseballNumberTest {
 
     @Test
     void 컴퓨터가_선택한_숫자는_항상_올바르다() {
-        BaseballNumber computerNumbers = BaseballNumber.getComputerPickedNumbers();
-        List<Integer> retrievedNumbers = new ArrayList<>();
-        for (int index = 0; index < BaseballNumber.NUMBER_COUNT; index++) {
-            retrievedNumbers.add(computerNumbers.get(index));
-        }
-        assertDoesNotThrow(() -> new BaseballNumber(retrievedNumbers));
+        assertDoesNotThrow(BaseballNumber::getComputerPickedNumbers);
     }
 
     @Test
