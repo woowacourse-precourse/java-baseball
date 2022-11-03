@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum WarningMessage {
     IllegalInputWarningMessage("잘못된 값을 입력했습니다"),

@@ -1,7 +1,7 @@
 package baseball.data;
 
-import baseball.GameConstant;
-import baseball.WarningMessage;
+import baseball.constant.GameConstant;
+import baseball.constant.WarningMessage;
 
 import java.util.HashSet;
 import java.util.List;
