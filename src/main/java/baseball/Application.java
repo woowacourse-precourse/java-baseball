@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -32,4 +34,15 @@ public class Application {
         }
         return user;
     }
+
+    public static int compareComputerWithUser(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(user.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
