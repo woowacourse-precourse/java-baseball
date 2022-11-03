@@ -10,18 +10,18 @@ import static baseball.resources.Sentence.EXCEPTION;
 import static baseball.resources.Sentence.throwException;
 
 public class InputNumberValidator {
-    public void validate(String inputNumber){
+    public static void validate(String inputNumber){
         validateThreeLength(inputNumber);
         validateDuplicate(inputNumber);
     }
 
-    private void validateThreeLength(String inputNumber) {
+    private static void validateThreeLength(String inputNumber) {
         if (!inputNumber.matches(PATTERN)) {
             throwException(EXCEPTION);
         }
     }
 
-    private void validateDuplicate(String inputNumber) {
+    private static void validateDuplicate(String inputNumber) {
         Set<Character> inputNumbers = IntStream.range(0, inputNumber.length())
                 .mapToObj(inputNumber::charAt)
                 .collect(Collectors.toSet());
