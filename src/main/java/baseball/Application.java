@@ -7,13 +7,12 @@ import java.util.*;
 
 public class Application {
     static int strike, ball;
+    static List<Integer> answer = new ArrayList<>(3);
+    static List<Integer> user_answer = new ArrayList<>(3);
 
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        List<Integer> answer = new ArrayList<>(3);
-        List<Integer> user_answer = new ArrayList<>(3);
         getRandomNum(answer, user_answer);
     }
 
@@ -34,11 +33,15 @@ public class Application {
         ball = 0;
         System.out.print("숫자를 입력해주세요 : ");
         int user_answer = Integer.parseInt(Console.readLine());
-        if (user_answer < 1000 && user_answer > 99) {
+        if (user_answer_available(user_answer)) {
             addUserAnswer(userAnswer, user_answer);
             Collections.reverse(userAnswer);
             compare_Answer(answer, userAnswer);
         } else throw new IllegalArgumentException("잘못된 값 입력.");
+    }
+
+    private static boolean user_answer_available(int user_answer) {
+        return user_answer < 1000 && user_answer > 99;
     }
 
     private static void addUserAnswer(List<Integer> userAnswer, int user_answer) {
@@ -93,8 +96,8 @@ public class Application {
     public static void restart_game() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         if (Integer.parseInt(Console.readLine()) == 1) {
-            List<Integer> answer = new ArrayList<>(3);
-            List<Integer> user_answer = new ArrayList<>(3);
+            answer.clear();
+            user_answer.clear();
             getRandomNum(answer, user_answer);
         }
     }
