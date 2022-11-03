@@ -26,6 +26,40 @@ public class Application {
             Scanner scanner = new Scanner(System.in);
             int userInputNumber = scanner.nextInt();
 
+            List<Integer> user = new ArrayList<>();
+
+            for (int i = 0; i < 3 ; i++) {
+                user.add(userInputNumber%10);
+                userInputNumber /= 10;
+            }
+
+
+            for (int position = 0 ; position<3 ; position++ ){
+
+                if (computer.contains(user.get(position))){
+
+                    if (computer.indexOf(user.get(position)) == position){
+
+                        //strike 상황
+
+                    } else if (computer.indexOf(user.get(position)) != position){
+
+                        //ball 상황
+
+                    }
+
+
+
+                }
+
+
+            }
+
+            // 예외사항 (아직 x)//
+
+
+
+
 
 
         }
