@@ -55,4 +55,24 @@ public class NumberBaseball {
 
         return containCount;
     }
+
+    /**
+     * 사용자의 답 중 정답과 위치와 값이 모두 같은 숫자의 개수를 반환해주는 메소드입니다.
+     *
+     * @param userAnswer -> 사용자가 입력한 답
+     * @return strikeCount -> 정답과 위치와 값이 모두 같은 숫자의 개수
+     */
+    public int getStrikeCount(String userAnswer) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int userDigit = Integer.parseInt(userAnswer.substring(i, i+1));
+
+            if (answer.get(i).equals(userDigit)) {
+                strikeCount += 1;
+            }
+        }
+
+        return strikeCount;
+    }
 }
