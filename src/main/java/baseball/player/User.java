@@ -71,4 +71,7 @@ public class User {
 
     }
 
+    public List<Integer> getUserNumberList() {
+        return userNumberList;
+    }
 }

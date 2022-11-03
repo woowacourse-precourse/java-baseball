@@ -21,20 +21,20 @@ public class Computer {
         for (; computerNumberList.size() < 3; ) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if(isDuplication(numberList)){
-                continue;
+            if(isNotDuplication(numberList)){
+                numberList.add(randomNumber);
             }
-
-            numberList.add(randomNumber);
 
         }
 
         return numberList;
     }
 
-    private boolean isDuplication(List<Integer> numberList) {
+    private boolean isNotDuplication(List<Integer> numberList) {
         return numberList.size() != numberList.stream().distinct().count();
     }
 
-
+    public List<Integer> getComputerNumberList() {
+        return computerNumberList;
+    }
 }
