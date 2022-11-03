@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.utils.GameNumberGenerator;
 import baseball.utils.InputNumberValidator;
 
 import java.util.HashMap;
@@ -12,9 +11,9 @@ public class NumberBaseBallGame {
     private List<Integer> gameNumber;
     private boolean isProceeding;
 
-    public NumberBaseBallGame() {
+    public NumberBaseBallGame(List<Integer> gameNumber) {
         this.inputNumberValidator = new InputNumberValidator();
-        this.gameNumber = GameNumberGenerator.generate();
+        this.gameNumber = gameNumber;
         this.isProceeding = true;
     }
 
