@@ -27,4 +27,17 @@ public class BaseballGameRule {
         return strikeCount;
     }
 
+    private int verifyBalls(List<Integer> playerNumbers) {
+
+        int ballCount = 0;
+        for(int index = 0; index<computerNumbers.size(); index++){
+            if(computerNumbers.contains(playerNumbers.get(index))
+                    && !computerNumbers.get(index).equals(playerNumbers.get(index))) {
+                ballCount += 1;
+            }
+        }
+
+        return ballCount;
+    }
+
 }
