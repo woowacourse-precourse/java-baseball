@@ -41,4 +41,13 @@ class BallNumberTest {
                 .isThrownBy(() -> new BallNumber(" "))
                 .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
     }
+    
+    @DisplayName("예외 처리 : 범위를 벗어난 숫자")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"0", "10"})
+    void exceed_range_exception(String number) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new BallNumber(number))
+                .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
+    }
 }
