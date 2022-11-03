@@ -1,7 +1,8 @@
 package baseball.utils;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static baseball.resources.GameConfig.PATTERN;
 import static baseball.resources.GameConfig.SIZE;
@@ -21,10 +22,9 @@ public class InputNumberValidator {
     }
 
     private void validateDuplicate(String inputNumber) {
-        Set<Character> inputNumbers = new HashSet<>();
-        for (int i = 0; i < inputNumber.length(); i++) {
-            inputNumbers.add(inputNumber.charAt(i));
-        }
+        Set<Character> inputNumbers = IntStream.range(0, inputNumber.length())
+                .mapToObj(inputNumber::charAt)
+                .collect(Collectors.toSet());
 
         if (inputNumbers.size() < SIZE) {
             throwException(EXCEPTION);
