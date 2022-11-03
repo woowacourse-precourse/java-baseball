@@ -33,4 +33,17 @@ public class BaseballsTest {
             Baseballs.of(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "ab3", "a3b", "3ab", "a23", "2a3", "23a", "가12", "가나3", "가나다", " a ","   "})
+    @DisplayName("1~9 이외의 문자가 포함될 경우 IllegalArgumentException 발생")
+    public void test3(String input) throws Exception {
+        //given
+        String userInput = input;
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            Baseballs.of(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
