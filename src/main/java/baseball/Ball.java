@@ -10,6 +10,13 @@ public class Ball {
     }
 
     public BallStatus play(Ball ball) {
+        if (isBallNumMatch(ball)) {
+            return BallStatus.BALL;
+        }
         return BallStatus.NOTHING;
+    }
+
+    private boolean isBallNumMatch(Ball ball) {
+        return this.ballNum == ball.ballNum;
     }
 }
