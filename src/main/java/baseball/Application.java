@@ -3,8 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 public class Application {
 
@@ -25,7 +26,22 @@ public class Application {
         }
     }
 
-    public int getBall()
+    public int getBall(List<Integer> answer, List<Integer> userInput) {
+        Set<Integer> matchedIndexSet = new HashSet<>();
+        for (int i = 0; i < answer.size(); i++) {
+            addIndexIfMatchedAnswer(matchedIndexSet, answer.get(i), userInput);
+        }
+        return matchedIndexSet.size();
+    }
+
+    private Set<Integer> addIndexIfMatchedAnswer(Set<Integer> matchedIndexSet, int answer, List<Integer> userInput) {
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i) == answer) {
+                matchedIndexSet.add(i);
+            }
+        }
+        return matchedIndexSet;
+    }
 
     public int getStrike(List<Integer> answer, List<Integer> userInput) {
         int count = 0;
