@@ -9,4 +9,8 @@ public class Computer {
     public Computer(List<Integer> comBalls) {
         this.comBalls = comBalls;
     }
+
+    public int getBallNumber(int index) {
+        return comBalls.get(index);
+    }
 }
