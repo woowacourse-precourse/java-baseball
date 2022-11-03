@@ -51,4 +51,19 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
     }
+
+    @Test
+    void 입력값이_두_자리_이하이면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        UserNumber userNumber = new UserNumber();
+        Method method = userNumber.getClass().getDeclaredMethod("userNumberValidator", String.class);
+        method.setAccessible(true);
+        String number = "12";
+
+        // when
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, number));
+
+        // then
+        assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
+    }
 }
