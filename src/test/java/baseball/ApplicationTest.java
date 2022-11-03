@@ -28,6 +28,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void isThreeNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isThreeNumber_메서드_잘못된_값_길이_테스트() {
+        String input = "1234";
+        boolean result = false;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isThreeNumber_메서드_잘못된_값_문자_테스트() {
+        String input = "12a";
+        boolean result = false;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
