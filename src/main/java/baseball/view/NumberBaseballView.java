@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.common.Constants;
-import baseball.controller.dto.UserPlayNumbers;
+import baseball.controller.dto.UserInputPlayNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
@@ -9,10 +9,10 @@ public class NumberBaseballView {
 		System.out.println(Constants.WELCOME_MESSAGE);
 	}
 
-	public UserPlayNumbers playPage() {
+	public UserInputPlayNumbers playPage() {
 		System.out.print(Constants.NUMBER_INPUT_PLACE_HOLDER);
 		String userInput = Console.readLine();
 
-		return new UserPlayNumbers(userInput);
+		return new UserInputPlayNumbers(userInput);
 	}
 }

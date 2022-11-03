@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import baseball.model.NumberBaseball;
 import baseball.util.UserInputValidator;
 
-public class UserPlayNumbers {
+public class UserInputPlayNumbers {
 	private final String userInputNumbers;
 
-	public UserPlayNumbers(String userInputNumbers) {
+	public UserInputPlayNumbers(String userInputNumbers) {
 		UserInputValidator.validatePlayNumbers(userInputNumbers);
 		this.userInputNumbers = userInputNumbers;
 	}

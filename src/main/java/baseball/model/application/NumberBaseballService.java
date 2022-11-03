@@ -17,4 +17,8 @@ public class NumberBaseballService {
 
 		return new NumberBaseball(uniqueNumbersInRange);
 	}
+
+	public String compareNumberBaseBall(NumberBaseball computerNumber, NumberBaseball userNumber) {
+
+	}
 }
