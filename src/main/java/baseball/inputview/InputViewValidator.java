@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class InputViewValidator {
     public static final int DEMAND_SIZE = 3;
 
-    public static boolean validateSize(int size) {
-        return size == DEMAND_SIZE;
+    public static boolean validateSize(int number) {
+        return String.valueOf(number).length() == DEMAND_SIZE;
     }
 
     public static boolean validateDifferenceNumber(int number) {
