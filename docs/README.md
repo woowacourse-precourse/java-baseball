@@ -10,7 +10,7 @@
   
   - isRightAnswer() 
 
-  - isValidAnswer()
+  - isValidBaseballNumber()
 
     - isValidValue()
 
