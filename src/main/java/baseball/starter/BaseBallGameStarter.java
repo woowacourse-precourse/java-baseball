@@ -28,4 +28,16 @@ public class BaseBallGameStarter {
             add(computerGeneratedValue);
         }};
     }
+
+    public boolean judgementOperate(List<String> userInputValue, List<String> computerGeneratedValue) {
+        Referee referee = new Referee();
+
+        while (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
+            referee.say(referee.judgement(computerGeneratedValue, userInputValue));
+            System.out.print("숫자를 입력해주세요 : ");
+            userInputValue = new User(userInputValidator)
+                    .stringConvertToStringList(Console.readLine());
+        }
+        return true;
+    }
 }
