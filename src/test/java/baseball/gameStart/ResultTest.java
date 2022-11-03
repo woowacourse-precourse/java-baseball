@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Map;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import baseball.domain.Game;
+import baseball.view.SystemMessage;
 
 public class ResultTest {
 
@@ -41,8 +43,8 @@ public class ResultTest {
         List<Integer> answer = List.of(1, 2, 3);
         List<String> resultList = List.of("낫싱", "3볼", "2볼 1스트라이크", "1스트라이크", "2볼", "3스트라이크");
         Game game = new Game(answer);
-        String result = game.getResult(input);
-        System.out.println(result);
+        Map<String, Integer> result = game.getResult(input);
+        SystemMessage.printGameResult(result);
         Assertions.assertThat(resultList).contains(output());
     }
 }
