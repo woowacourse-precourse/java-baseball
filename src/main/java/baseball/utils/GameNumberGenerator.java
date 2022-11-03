@@ -1,19 +1,22 @@
 package baseball.utils;
 
-import baseball.model.GameNumber;
+import baseball.model.BaseNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import static baseball.resources.GameConfig.*;
 
 public class GameNumberGenerator {
-    public static GameNumber generate(){
-        Set<Integer> gameNumber = new HashSet<>();
-        while (gameNumber.size() < SIZE) {
-            gameNumber.add(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
+    public static BaseNumber generate(){
+        List<Integer> baseNumber = new ArrayList<>();
+        while (baseNumber.size() < SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+            if (!baseNumber.contains(randomNumber)) {
+                baseNumber.add(randomNumber);
+            }
         }
-        return new GameNumber(gameNumber);
+        return new BaseNumber(baseNumber);
     }
 }
