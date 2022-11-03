@@ -49,12 +49,12 @@ public class PlayerInputFilterTest {
     }
 
     @Test
-    void 세자리면_거짓(){
+   void 세_자리면_거짓(){
         assertThat(playerInputFilter.isNotThreeDigit("012")).isFalse();
     }
 
     @Test
-    void 세자리가_아니면_예외처리(){
+    void 세_자리가_아니면_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.notThreeDigitException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("String index out of range: 5");
