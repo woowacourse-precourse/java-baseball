@@ -24,9 +24,9 @@ public class FrontController {
 	}
 
 	public void startGame() {
-		List<Integer> answerNumber;
+
+		List<Integer> answerNumber = gameStartService.makeAnswerNumber();
 		String userInput;
-		//정답 숫자 만들기
 		do {
 			//입력값 받기
 			//입력값 타당성 체크

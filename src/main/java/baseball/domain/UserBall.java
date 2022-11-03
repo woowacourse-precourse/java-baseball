@@ -1,7 +1,7 @@
 package baseball.domain;
 
 public class UserBall {
-	
+
 	private Integer ball;
 	private Integer strike;
 
