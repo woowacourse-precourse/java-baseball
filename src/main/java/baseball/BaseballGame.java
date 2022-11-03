@@ -33,7 +33,7 @@ public class BaseballGame {
         userNumber = toIntegerUserInput(userInput);
         checkInputData(userNumber);
         strike = checkStrikeCount(userNumber);
-
+        ball = checkBallCount(userNumber);
 
 
         gameResult();
@@ -63,6 +63,15 @@ public class BaseballGame {
         return strikeCount;
     }
 
+    public int checkBallCount(List<Integer> userNumber) {
+        int ballCount = 0;
+        for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
+            if (computerNumber.contains(userNumber.get(i)) && computerNumber.indexOf(userNumber.get(i)) != i) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 
     public void gameResult() {
         if (ball != 0 && strike != 0) {
