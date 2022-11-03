@@ -24,23 +24,14 @@ public class Application {
             PrintComment.printRestartComment();
             userInput = Console.readLine();
 
-            if (isRestart(userInput)) {
-                game = new Game();
+            validUserInputRestart(userInput);
+            PrintComment.printUserInput(userInput);
+            if (userInput.equals(END)){
+                isContinue = false;
                 continue;
             }
-            isContinue = false;
-            PrintComment.printUserInput(userInput);
+            game = new Game();
         } while(isContinue);
-    }
-
-    public static boolean isRestart(String num) {
-        if (num.equals(RESTART)) {
-            return true;
-        }
-        if (num.equals(END)) {
-            return false;
-        }
-        throw new IllegalArgumentException();
     }
 
     public static void validUserInputRestart(String num) {
