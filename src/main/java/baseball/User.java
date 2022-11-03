@@ -1,18 +1,18 @@
 package baseball;
 
-import static baseball.BaseballGame.*;
+import static baseball.Computer.NUM_LIMIT_LENGTH;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
-    public static List<Integer> toIntUserInput(String userInput) {
-        List<Integer> userNum = new ArrayList<>();
+    public static List<Integer> toIntegerUserInput(String userInput) {
+        List<Integer> userInputNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
         String[] userInputArr = userInput.split("");
-        for (int i = 0; i < userInput.length(); i++) {
-            userNum.add(Integer.valueOf(userInputArr[i]));
+        for (String str : userInputArr) {
+            userInputNumber.add(Integer.parseInt(str));
         }
-        return userNum;
+        return userInputNumber;
     }
 }
