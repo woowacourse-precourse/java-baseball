@@ -11,12 +11,36 @@ public class Application {
 		// TODO: 프로그램 구현
 	}
 
+	private static void playGame() {
+
+		String message = "숫자 야구 게임을 시작합니다.";
+		System.out.println(message);
+
+		List<Integer> batterSelectList = batterNumberList();
+
+		while(true) {
+
+			message = roundResult(batterSelectList, pitcherNumberList());
+			System.out.println(message);
+
+			if(message.equals("3스트라이크")) {
+				message = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+				System.out.println(message);
+				break;
+			}
+
+		}
+
+		selectGameStart();
+	}
+
 	private static void selectGameStart()  {
 
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 		String select = Console.readLine();
 
 		if(select.equals("1")) {
+			playGame();
 			return;
 		}
 
