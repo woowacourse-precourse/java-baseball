@@ -4,6 +4,7 @@ import baseball.RandomUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,5 +37,13 @@ public class OpponentComputerTest {
 
         assertThat(strikeCount).isEqualTo(0);
         assertThat(ballCount).isEqualTo(0);
+    }
+
+    @Test
+    void 상대방_생성과_동시에_초기화되는_스트라이크_볼_카운트_맵의_Size는_2() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        int strikeAndBallCountMapSize = opponentComputer.getStrikeAndBallCountMap().size();
+
+        assertThat(strikeAndBallCountMapSize).isEqualTo(2);
     }
 }
