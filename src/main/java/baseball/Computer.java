@@ -7,12 +7,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
-    private String computerNumber;
+    private String number;
 
 
     public Computer() {
         try {
-            computerNumber = this.generateNumber();
+            number = this.generateNumber();
         } catch (Exception e) {
             throw e;
         }
@@ -20,7 +20,7 @@ public class Computer {
 
 
     public String getBaseballNumber() {
-        return computerNumber;
+        return number;
     }
 
     public String generateNumber() {

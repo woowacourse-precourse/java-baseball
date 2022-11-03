@@ -3,7 +3,7 @@ package baseball;
 
 
 public class BaseballNumber {
-    private String baseballNumber;
+    private String number;
 
 
     public BaseballNumber() {}
@@ -14,7 +14,7 @@ public class BaseballNumber {
             throw new IllegalArgumentException();
         }
 
-        baseballNumber = input;
+        number = input;
     }
 
 
