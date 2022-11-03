@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
+    // main()메서드에서 값을 받아 처리하는 클래스
     public static class model {
 
         private List<Integer> computerNumberList = new ArrayList<>();
@@ -24,6 +25,7 @@ public class Application {
 
         }
 
+        // 스트라이크를 구별하는 메서드
         public void distinguishStrike() {
             int methodInStrikeCounting = 0;
 
@@ -36,7 +38,7 @@ public class Application {
             strikeCounting = methodInStrikeCounting;
         }
 
-        // 수정 필요 중복된 값을 처리 못 함
+        // 볼을 구별하는 메서드
         public void distinguishBall() {
             int methodInBallCounting = 0;
 
@@ -49,6 +51,7 @@ public class Application {
             ballCounting = methodInBallCounting - strikeCounting;
         }
 
+        // 컴퓨터의 3자리 숫자를 설정하는 메서드
         public void makeComputerNumber() {
 
             while (computerNumberList.size() < 3) {
@@ -60,6 +63,7 @@ public class Application {
             }
         }
 
+        // 사용자가 입력한 3자리 숫자를 리스트로 분리하는 메서드
         public void splitNumber(List<Integer> inputNumberList, String inputNumber) {
 
             for (int k = 0; k < 3; k++) {
@@ -67,6 +71,7 @@ public class Application {
             }
         }
 
+        // 게임종료 시 다시 시작할지 결정하는 메서드
         public boolean decideRestart(String decidedRestartString) {
             discoverRestartNumberException(decidedRestartString);
             int decidedRestart = Integer.parseInt(decidedRestartString);
@@ -75,6 +80,7 @@ public class Application {
             else return false;
         }
 
+        // 입력된 3자리 숫자 중에서 중복된 숫자가 있는지 확인하는 메서드
         public boolean seekDuplicatedNumber (String inputNumber) {
             HashSet<Character> inputNubmerInSet = new HashSet<>();
             for (int p = 0; p < inputNumber.length(); p++) {
@@ -84,6 +90,7 @@ public class Application {
             else return false;
         }
 
+        // 3자리 숫자를 입력할 때 예외 발생시키는 메서드
         public void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
 
             if (inputNumber.length() != 3) {
@@ -104,12 +111,14 @@ public class Application {
             }
         }
 
+        // 재시작 결정 시에 입력되는 숫자의 예외를 발생시키는 메서드
         public void discoverRestartNumberException (String decideRestartString) throws IllegalArgumentException{
             if (!decideRestartString.equals("1") && !decideRestartString.equals("2")) throw new IllegalArgumentException();
         }
 
     }
 
+    // model에서 처리된 값을 출력하는 클래스
     public static class view {
         public void printResult(int ballCounting, int strikeCounting) {
             if (strikeCounting == 3) {
@@ -133,14 +142,17 @@ public class Application {
 
         while (true) {
             model baseballModel = new model();
+
             System.out.println("숫자 야구 게임을 시작합니다.");
             baseballModel.makeComputerNumber();
+
             while (baseballModel.strikeCounting < 3) {
                 String inputString = Console.readLine();
                 baseballModel.proceedGame(inputString);
                 baseballView.printResult(baseballModel.ballCounting, baseballModel.strikeCounting);
                 baseballModel.inputNumberList.clear();
             }
+
             baseballModel.strikeCounting = 0;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String decidedRestartString =  Console.readLine();
