@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -54,6 +55,15 @@ class ApplicationTest extends NsTest {
         assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(1));
         assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(2));
         assertThat(randomNumbers.get(1)).isNotEqualTo(randomNumbers.get(2));
+    }
+
+    @Test
+    void testFunction1_case4() {
+        Computer.pickNumbers();
+        String randomNumbers = Computer.getRandomNumbers().toString();
+        String pattern = "^[1-9]*$";
+
+        assertThat(Pattern.matches(pattern, randomNumbers)).isTrue();
     }
 
     @Override
