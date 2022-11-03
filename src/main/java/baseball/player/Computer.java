@@ -12,17 +12,24 @@ public class Computer {
 
     public Computer() {
         this.computerNumberList = generateRandomThreeNumbers();
+
     }
 
     private List<Integer> generateRandomThreeNumbers() {
 
         List<Integer> numberList = new ArrayList<>();
 
-        for (; computerNumberList.size() < 3; ) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        for (; ; ) {
 
-            if(isNotDuplication(numberList)){
+            numberList.clear();
+
+            for (; numberList.size() < 3; ) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
                 numberList.add(randomNumber);
+            }
+
+            if (isNotDuplication(numberList)) {
+                break;
             }
 
         }
