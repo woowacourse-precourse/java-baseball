@@ -15,11 +15,6 @@ public class Application {
         String usernum = userInput();
         confirmUserInput(usernum);
 
-        while(true){
-
-
-        }
-
 
     }
 
