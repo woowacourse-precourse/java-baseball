@@ -11,6 +11,8 @@ public class Player {
 	private static final int INIT_LIST_CAPACITY = 3;
 	private static final int INIT_INDEX = 0;
 	private static final String USER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
+	private static final String END_OR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
 	private static final String ERROR = "[ERROR]";
 	private static List<Integer> userNumberList;
 
@@ -64,5 +66,12 @@ public class Player {
 
 	protected List<Integer> getUserNumberList() {
 		return userNumberList;
+	}
+
+	protected int inputEndOrRe() {
+		System.out.println(END_OR_RESTART_MESSAGE);
+		int reOrEnd = Integer.parseInt(Console.readLine());
+
+		return reOrEnd;
 	}
 }

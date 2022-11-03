@@ -13,6 +13,7 @@ public class Computer {
 
 	public Computer() {
 		randomNumber = new ArrayList<>(INIT_LIST_CAPACITY);
+		makeRandomNumber();
 	}
 
 	protected void makeRandomNumber() {
