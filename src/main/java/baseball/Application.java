@@ -15,4 +15,14 @@ public class Application {
             }
         }
     }
+    public static List<Integer> convert(String input){
+        List<Integer> convertResult = new ArrayList<>();
+        for(int i = 0;i<input.length();i++){
+            Integer element = Integer.parseInt(input.substring(i,i+1));
+            convertResult.add(element);
+        }
+        return convertResult;
+    }
+
+
 }
