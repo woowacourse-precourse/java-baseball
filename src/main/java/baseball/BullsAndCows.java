@@ -46,6 +46,21 @@ public class BullsAndCows {
         return answerNumber.charAt(index) == userInput.charAt(index);
     }
 
+    private String getBallNumber() {
+        BALL_COUNT = 0;
+
+        for (int index = 0; index < userInput.length(); index++) {
+            if (isBall(index)) {
+                BALL_COUNT++;
+            }
+        }
+        return BALL.of(BALL_COUNT - STRIKE_COUNT);
+    }
+
+    private boolean isBall(int index) {
+        return !isStrike(index) && answerNumberList.contains(userInput.charAt(index));
+    }
+
     private boolean isNothing() {
         return convertStringToCharList(userInput).stream()
                 .noneMatch(answerNumberList::contains);
