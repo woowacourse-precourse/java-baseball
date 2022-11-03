@@ -32,6 +32,21 @@ public class Inputnumber {
         return true;
     }
 
+    public boolean isdifferentNumber(){ //123
+        String sub = arg.substring(0);
+        String compare = arg.substring(1);
+        if(sub.equals(compare)) return false;
+
+        compare = arg.substring(2);
+        if(sub.equals(compare)) return false;
+
+        sub = arg.substring(1);
+        compare = arg.substring(2);
+        if(sub.equals(compare)) return false;
+
+        return true;
+    }
+
 
 
 
