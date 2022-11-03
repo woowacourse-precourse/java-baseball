@@ -73,4 +73,14 @@ public class Application {
         return true;
     }
 
+    public static boolean checkLength(String numberString) {
+
+        if (numberString.length() != 3) {
+
+            return false;
+        }
+
+        return true;
+    }
+
 }
