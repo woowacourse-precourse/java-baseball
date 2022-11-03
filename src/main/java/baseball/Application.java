@@ -65,6 +65,31 @@ public class Application {
         return count;
     }
 
+    private static String setHint(Integer ball, Integer strike) {
+
+        if (ball + strike == 0) {
+            return "낫싱";
+        }
+
+        String hint = "";
+
+        if (ball > 0) {
+            hint = hint.concat(Integer.toString(ball));
+            hint = hint.concat("볼");
+
+            if (strike > 0) {
+                hint = hint.concat(" ");
+            }
+        }
+
+        if (strike > 0) {
+            hint = hint.concat(Integer.toString(strike));
+            hint = hint.concat("스트라이크");
+        }
+
+        return hint;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -75,7 +100,8 @@ public class Application {
             List<Integer> user_num = numtoList(guess_number);
             Integer strike = countStrike(computer_num, user_num);
             Integer ball = countBall(computer_num, user_num, strike);
-            break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
+            System.out.println(setHint(ball, strike));
+            // break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
         }
     }
 }
