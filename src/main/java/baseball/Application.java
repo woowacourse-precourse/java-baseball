@@ -43,20 +43,24 @@ public class Application {
     public static List<Integer> getInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String tryNumber = Console.readLine();
+        if(checkError(tryNumber)){
+            throw new IllegalArgumentException();
+        }
         List<Integer> user = transformInteger(tryNumber);
+
         return user;
 
     }
-    public static void checkError(String tryNumber) throws IllegalArgumentException{
-        if(lengthCheck(tryNumber)&&digitCheck(tryNumber)){
-            throw new IllegalArgumentException();
-        }
+    public static boolean checkError(String tryNumber){
+        if((digitCheck(tryNumber)==false)||lengthCheck(tryNumber)==false){
+            return true;
+        } else return false;
 
     }
     public static boolean lengthCheck(String tryNumber){
-        if(tryNumber.length()!=3){
-            return false;
-        } else return true;
+        if(tryNumber.length()==3){
+            return true;
+        } else return false;
     }
     public static boolean digitCheck(String tryNumber){
         try {
