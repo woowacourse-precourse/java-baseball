@@ -27,7 +27,7 @@ public class User {
         for (int i = 0; i < numbers.length(); i++) {
             checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
-            checkVaildNumber(number);
+            checkValidNumber(number);
             checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }

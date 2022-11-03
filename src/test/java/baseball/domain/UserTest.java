@@ -41,7 +41,7 @@ public class UserTest {
     @Test()
     void 불가능한숫자입력예외처리() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.checkVaildNumber(0);
+            user.checkValidNumber(0);
         });
     }
 
