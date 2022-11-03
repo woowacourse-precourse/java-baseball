@@ -5,15 +5,15 @@ import Controller.game;
 import java.util.List;
 
 public class Computer {
-    private static List<Integer> Number_List;
+    private static List<Integer> number_List;
     public static void number_set(){
-        Computer.Number_List= game.getThree_RandomNumber();
+        Computer.number_List= game.get_ThreeRandomNumbers();
     }
     public static String number_get(){
-        String threeNum="";
-        for (Integer item : Computer.Number_List){
-            threeNum.concat(String.valueOf(item));
+        String numbers="";
+        for (Integer item : Computer.number_List){
+            numbers.concat(String.valueOf(item));
         }
-        return threeNum;
+        return numbers;
     }
 }
