@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class InputUtilsTest {
@@ -11,6 +13,9 @@ class InputUtilsTest {
     @DisplayName("사용자가 올바른 입력에 성공한다")
     @Test
     void 사용자에게_입력받은_숫자가_올바를_경우() {
+        // given
+
+        // when & then
         assertAll(
                 () -> Assertions.assertThatCode(() -> InputUtils.checkIsValidInput("123"))
                         .doesNotThrowAnyException(),
@@ -24,6 +29,9 @@ class InputUtilsTest {
     @DisplayName("사용자가 올바르지 못한 입력으로 실패한다.")
     @Test
     void 사용자에게_입력받은_숫자가_올바르지_못할_경우() {
+        // given
+
+        // when & then
         assertAll(
                 () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("113"))
                         .isInstanceOf(IllegalArgumentException.class),
