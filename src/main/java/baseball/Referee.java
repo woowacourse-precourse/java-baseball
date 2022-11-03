@@ -21,7 +21,7 @@ public class Referee {
     public void playBall() {
         do {
             start();
-        }while (restart());
+        } while (restart());
     }
 
     private void start() {
@@ -31,10 +31,10 @@ public class Referee {
     public boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartIndex = Console.readLine();
-        if(!validRestartIndex(restartIndex)){
+        if (!validRestartIndex(restartIndex)) {
             throw new IllegalArgumentException("1 또는 2를 입력해야합니다.");
         }
-        if(restartIndex.equals("1")){
+        if (restartIndex.equals("1")) {
             comBall.clear();
             return true;
         }
@@ -42,7 +42,7 @@ public class Referee {
     }
 
     private boolean validRestartIndex(String restartIndex) {
-        return restartIndex.equals("1")||restartIndex.equals("2");
+        return restartIndex.equals("1") || restartIndex.equals("2");
     }
 
     public void giveHint() {

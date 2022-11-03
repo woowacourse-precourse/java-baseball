@@ -30,12 +30,12 @@ public class Ball {
         System.out.print("숫자를 입력해주세요 : ");
         String[] humanInput = Console.readLine().split("");
         if (validate(humanInput)) {
-            arrayToList(humanBall, humanInput);
+            stringToIntegerList(humanBall, humanInput);
         }
         this.ball = humanBall;
     }
 
-    private void arrayToList(List<Integer> humanBall, String[] humanInput) {
+    private void stringToIntegerList(List<Integer> humanBall, String[] humanInput) {
         for (int i = 0; i < humanInput.length; i++) {
             humanBall.add(Integer.parseInt(humanInput[i]));
         }
@@ -93,11 +93,11 @@ public class Ball {
         return ball.size();
     }
 
-    public boolean contains(int index){
+    public boolean contains(int index) {
         return ball.contains(index);
     }
 
-    public int get(int index){
+    public int get(int index) {
         return ball.get(index);
     }
 
