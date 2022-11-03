@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.BaseballController;
 import baseball.model.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,13 +60,13 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    static class BaseballTest extends Baseball{
+    static class BaseballTest extends BaseballController {
 
         final String TEST_CASE_ANSWER = "634";
         final int TEST_CASE_LENGTH = 3;
 
         private String getAnswer(){
-            return super.answer;
+            return answer;
         }
 
         private void setAnswer(String newAnswer){

@@ -6,7 +6,7 @@ public class InputView {
 	private static final String TRY_MESSAGE = "숫자를 입력해주세요 : ";
 
 	public static String tryAnswerInput(){
-		System.out.println(TRY_MESSAGE);
+		System.out.print(TRY_MESSAGE);
 		return Console.readLine();
 	}
 }
