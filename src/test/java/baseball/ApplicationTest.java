@@ -154,6 +154,12 @@ class ApplicationTest extends NsTest {
 		assertThat(game.isStrike(2,1,2,1)).isTrue();
 	}
 
+	@DisplayName("볼을 확인한다")
+	@Test
+	void verifyBall(){
+		assertThat(game.isBall(6,5,6,2)).isTrue();
+	}
+
 
 	@Test
 	void 게임종료_후_재시작() {
