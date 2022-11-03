@@ -50,7 +50,7 @@
     - 게임을 이어갈 지 입력값을 받는다. - Validation에 검증 맡김
         - 2이면 종료
         - 1이면 숫자 다시 생성 후 게임 재개
-- SystemMessage
+- ShowGameMessage
     - 게임 중 나타나는 메세지를 출력한다.
 - NumberBall
     - 숫자를 가짐
@@ -61,3 +61,5 @@
 - Validation
     - 세자리 입력값 검증
     - 게임 지속 여부 0 or 1 검증
+- GameMessage
+  - 게임 중 필요한 문자열 상수를 가지고 있다.
