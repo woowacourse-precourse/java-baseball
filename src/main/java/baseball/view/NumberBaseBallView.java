@@ -1,7 +1,6 @@
 package baseball.view;
 
 import baseball.model.Result;
-import baseball.resources.Sentence;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Map;
@@ -26,14 +25,14 @@ public class NumberBaseBallView {
             return;
         }
         if (result.hasBall()) {
-            printf(Sentence.BALL, count.get(BALL_COUNT));
+            printf(BALL, count.get(BALL_COUNT));
             return;
         }
         if (result.hasStrike()) {
             printf(STRIKE, count.get(STRIKE_COUNT));
             return;
         }
-        print(NOTHING);
+        println(NOTHING);
     }
 
     public String askRestart() {
