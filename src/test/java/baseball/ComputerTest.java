@@ -31,5 +31,5 @@ public class ComputerTest {
                     .isNotEqualTo(computer.findComputerNumber(0).getNumber());
         }
     }
-    
+
 }

@@ -32,6 +32,7 @@ public class InputTest {
         int input2 = 1234;
         int input3 = 12;
         int input4 = 100;
+        int input5 = 122;
 
         assertThat(new Numbers(input1))
                 .isInstanceOf(Numbers.class);
@@ -41,6 +42,8 @@ public class InputTest {
         assertThatThrownBy(() -> new Numbers(input3))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Numbers(input4))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Numbers(input5))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
