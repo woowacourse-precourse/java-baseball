@@ -29,4 +29,9 @@ public class NumberComparison {
 
     }
 
+    private void setUserNumbers(List<Integer> userNumbers) {
+        this.userNumbers = userNumbers;
+    }
+
+
 }
