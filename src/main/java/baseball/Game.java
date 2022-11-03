@@ -29,15 +29,17 @@ public class Game {
 
                     if (ball != -1) {
                         result += score.get("ball") + "볼 ";
-                    } else if (strike != -1) {
+                    }
+                    if (strike != -1) {
                         result += score.get("strike") + "스트라이크";
-                    } else {
+                    }
+                    if (strike + ball == -2) {
                         result = "낫싱";
                     }
                     System.out.println(result);
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getClass().getName());
+                throw e;
             }
         }
     }
