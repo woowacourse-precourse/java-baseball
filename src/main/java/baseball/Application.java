@@ -50,6 +50,16 @@ public class Application {
         return userInputNumber;
     }
 
+    public static int countBall(List<Integer> computerNumber, List<Integer> userInputNumber) {
+        int ball = 0;
+        for (int i = 0; i < userInputNumber.size(); i++) {
+            if (computerNumber.contains(userInputNumber.get(i)) && !(computerNumber.get(i).equals(userInputNumber.get(i)))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
     public static void main(String[] args) {
         List<Integer> computerNumber = makeRandomNumber();
         boolean flag = false;
@@ -61,6 +71,7 @@ public class Application {
                 System.out.println("올바르지 않은 입력입니다!");
                 return;
             }
+            int ball = countBall(computerNumber, userInputNumber);
         }
     }
 }
