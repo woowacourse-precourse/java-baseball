@@ -45,5 +45,12 @@ public class User {
         }
     }
 
+    private void validateCheckOverlapping(String userNumber) {
+        Set<Long> userNumbers = new HashSet<>(reprocessingUserNumber(userNumber));
+        if (userNumbers.size() < NUMBER_SIZE_THREE) {
+            throw new IllegalArgumentException("중복된 값이 있습니다.");
+        }
+    }
+
 
 }
