@@ -32,4 +32,55 @@ public class BaseballGame {
         }
         return true;
     }
+
+    public String getAnswerString(List<Integer> computer, List<Integer> user) {
+        int ballCount = getBallCount(computer, user);
+        int strikeCount = getStrikeCount(computer, user);
+
+        String string = "";
+        if (ballCount == 0 && strikeCount == 0) {
+            string = "낫싱";
+        } else {
+            if (ballCount != 0) {
+                string += ballCount + "볼 ";
+            }
+            if (strikeCount != 0) {
+                string += strikeCount + "스트라이크";
+            }
+        }
+
+        return string.trim();
+    }
+
+    private int getBallCount(List<Integer> computer, List<Integer> user) {
+        int ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (isBall(computer, user, i)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
+    private boolean isBall(List<Integer> computer, List<Integer> user, int index) {
+        return computer.contains(user.get(index)) && !computer.get(index).equals(user.get(index));
+    }
+
+    private int getStrikeCount(List<Integer> computer, List<Integer> user) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (isStrike(computer, user, i)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private boolean isStrike(List<Integer> computer, List<Integer> user, int index) {
+        return computer.contains(user.get(index)) && computer.get(index).equals(user.get(index));
+    }
 }
