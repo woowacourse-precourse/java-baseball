@@ -1,4 +1,19 @@
+package baseball;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
+
 class InputTest {
-  
+    @Test
+    @DisplayName("input 정상 값")
+    void create() {
+        //given
+        //when
+        Input input = new Input("123");
+        //then
+        assertThat(input.getInput()).isEqualTo(123);
+    }
 }
