@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -29,7 +30,11 @@ public class Application {
     public static void printGetInputMessage(){
         System.out.print("숫자를 입력해주세요 : ");
     }
-    public static void InputNum() {
-        String userNum = Console.readLine();
+    public static int getUserNumberToInteger() {
+        String userAnswer = Console.readLine();
+        return Integer.valueOf(userAnswer);
+    }
+    public static void convertIntegerToList(){
+        // List<Integer> userAnswerList = new ArrayList<>(Arrays.asList(userAnswer.split("")));
     }
 }
