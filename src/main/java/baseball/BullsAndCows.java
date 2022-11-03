@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.ResultMessage.*;
+
 public class BullsAndCows {
     private final String answerNumber;
     private final List<Character> answerNumberList;
@@ -27,6 +29,21 @@ public class BullsAndCows {
                 .chars()
                 .mapToObj(e -> (char) e)
                 .collect(Collectors.toList());
+    }
+
+    private String getStrikeNumber() {
+        STRIKE_COUNT = 0;
+
+        for (int index = 0; index < userInput.length(); index++) {
+            if (isStrike(index)) {
+                STRIKE_COUNT++;
+            }
+        }
+        return STRIKE.of(STRIKE_COUNT);
+    }
+
+    private boolean isStrike(int index) {
+        return answerNumber.charAt(index) == userInput.charAt(index);
     }
 
     private boolean isNothing() {
