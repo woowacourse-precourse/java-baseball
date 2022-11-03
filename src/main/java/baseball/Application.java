@@ -13,8 +13,11 @@ public class Application {
 			예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
 			힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
     	 */
-    	// 서로 다른 3자리수    	
-    	System.out.println("숫자 야구 게임을 시작합니다.");
+    	// 서로 다른 3자리수   
+       	System.out.println("숫자 야구 게임을 시작합니다.");
+       	getUserNumbers();
+    }   
+    public static int getUserNumbers() {
     	String StringUserAnotherNumbers;
     	Pattern patternOnlyOneToNine;
     	boolean isuserNumberChecking=true;    	
@@ -42,5 +45,6 @@ public class Application {
 	    		System.out.println("서로 다른 숫자로 입력해야함");	    		
 	    	} 
     	}
-    }    
+    	return 0;
+    }
 }
