@@ -7,49 +7,47 @@ import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
-	final int min = 1;
-	final int max = 9;
-	GameService gameService = new GameService();
+	static final int ball = 1;
+	static final int strike = 0;
+	static final int nothing = 0;
 	View view = new View();
 
-	public String createRandom() {
-		String computer = gameService.createRandomNumber();
-
-		return computer;
+	public static String createComputerNumber() {
+		return GameService.createRandomNumber();
 	}
-	public int gameStart(String user, String computer) {
-		boolean isVisited = false;
-
+	public static int gameStart(String user, String computer) {
 		saveUserNumber(user);
 
 		List<Integer> result = compareNumber(computer, user);
-		if (result.get(1) != 0) {
-			if (isVisited)
-				System.out.print(" ");
-			view.printResult(result.get(1), 2);
-		}
-		if (result.get(0) != 0) {
-			if (isVisited)
-				System.out.print(" ");
-			view.printResult(result.get(0), 1);
-			isVisited = true;
-		}
-		if (result.get(0) == 0 && result.get(0) == 0) {
-			if (isVisited)
-				System.out.print(" ");
-			view.printResult(0,3);
-		}
+
+		gameResult(result);
 
 		return result.get(0);
 	}
 
-	public void saveUserNumber(String userNumber) {
-		gameService.checkException(userNumber);
+	public static void gameResult(List<Integer> result) {
+		boolean isVisited = false;
+
+		if (result.get(ball) != nothing) {
+			isVisited = View.printResult(result.get(ball), ball);
+		}
+		if (result.get(strike) != nothing) {
+			if (isVisited)
+				View.printText(View.Text.space.print);
+			View.printResult(result.get(strike), strike);
+		}
+		if (result.get(ball) == nothing && result.get(strike) == nothing) {
+			View.printText(View.Text.nothing.print);
+		}
+		View.printText("\n");
+	}
+	public static void saveUserNumber(String userNumber) {
+		GameService.checkException(userNumber);
 	}
 
-	public List<Integer> compareNumber(String computer, String user) {
-		List<Integer> result = gameService.compareNumber(gameService.convertStringToList(computer),
-				gameService.convertStringToList(user));
+	public static List<Integer> compareNumber(String computer, String user) {
+		List<Integer> result = GameService.compareNumber(GameService.convertStringToList(computer),
+				GameService.convertStringToList(user));
 
 		return result;
 	}

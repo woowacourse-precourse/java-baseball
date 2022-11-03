@@ -6,10 +6,10 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
-	final int min = 1;
-	final int max = 9;
+	static final int min = 1;
+	static final int max = 9;
 
-	public String createRandomNumber() {
+	public static String createRandomNumber() {
 		String random = "";
 
 		for (int i = 0; i < 3; i++) {
@@ -23,20 +23,18 @@ public class GameService {
 		return random;
 	}
 
-	public boolean checkEqualNumber(String number, int addedNumber) {
-		if (number.contains(String.valueOf(addedNumber)))
-			return true;
-		return false;
+	public static boolean checkEqualNumber(String number, int addedNumber) {
+		return number.contains(String.valueOf(addedNumber));
 	}
 
-	public List<String> convertStringToList(String word) {
+	public static List<String> convertStringToList(String word) {
 		List<String> list = new ArrayList<>();
 
 		for (int i = 0; i < word.length(); i++)
 			list.add(String.valueOf(word.charAt(i)));
 		return list;
 	}
-	public List<Integer> compareNumber(List<String> computer, List<String> user) {
+	public static List<Integer> compareNumber(List<String> computer, List<String> user) {
 		List<Integer> result = new ArrayList<>();
 		int cnt = 0;
 		int strike = 0;
@@ -56,16 +54,13 @@ public class GameService {
 		return result;
 	}
 
-	public boolean removeSameNumber(String computer, String user) {
-		if (computer.equals(user)) {
-			return true;
-		}
-		return false;
+	public static boolean removeSameNumber(String computer, String user) {
+		return computer.equals(user);
 	}
 	/*
 	예외 처리
 	 */
-	public void checkException(String number) {
+	public static void checkException(String number) {
 		checkNullException(number);
 		isSameWord(number);
 
@@ -73,7 +68,7 @@ public class GameService {
 			checkUserNumber(Character.getNumericValue(number.charAt(i)));
 		}
 	}
-	public void isSameWord(String number) {
+	public static void isSameWord(String number) {
 		String tmp = "";
 
 		for (int i = 0; i < number.length(); i++) {
@@ -83,12 +78,12 @@ public class GameService {
 			tmp += number.charAt(i);
 		}
 	}
-	public void checkUserNumber(int userNumber) {
+	public static void checkUserNumber(int userNumber) {
 		if (userNumber < 1 || userNumber > 9) {
 			throw new IllegalArgumentException("숫자 범위를 벗어났습니다.");
 		}
 	}
-	public void checkNullException(String number) {
+	public static void checkNullException(String number) {
 		if (number == null || number.isEmpty())
 			throw new IllegalArgumentException("NULL값 에러");
 		if (number.length() != 3)

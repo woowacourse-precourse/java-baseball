@@ -1,27 +1,31 @@
 package baseball.view;
 
-import baseball.controller.GameController;
-import camp.nextstep.edu.missionutils.Console;
-
 public class View {
-	public void printResult(int num, int type) {
+	public enum Text{
+		space (" "),
+		start("숫자 야구 게임을 시작합니다.\n"),
+		input("숫자를 입력해주세요 : "),
+		stop("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"),
+		choice("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"),
+		strike("스트라이크"),
+		ball("볼"),
+		nothing("낫싱");
+		public final String print;
+		Text(String print) {
+			this.print = print;
+		}
+	}
+	public static boolean printResult(int num, int type) {
+		printText(num);
 		if (type == 0)
-			System.out.println("숫자 야구 게임을 시작합니다.");
+			printText(Text.strike.print);
 		if (type == 1)
-			System.out.print(num + "스트라이크 ");
-		if (type == 2)
-			System.out.print(num +"볼 ");
-		if (type == 3)
-			System.out.print("낫싱 ");
-		if (type == 4)
-			System.out.print("숫자를 입력해주세요 : ");
-		if (type == 5)
-			System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		if (type == 6)
-			System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			System.out.print(Text.ball.print);
+		return true;
 	}
 
-	public String inputNumber() {
-		return Console.readLine();
+	public static void printText(String text) {
+		System.out.print(text);
 	}
+	public static void printText(int num) { System.out.print(num); }
 }
