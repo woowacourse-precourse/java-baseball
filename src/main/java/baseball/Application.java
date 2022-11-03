@@ -157,7 +157,19 @@ public class Application {
         return gameSelect;
     }
 
-    public static void main(String[] args) {
+    private static void startGameLogic() {
+        int gameSelect = 0;
+        List<Integer> computerNumber = getComputerNumber();
+        ConsolePrint.printGameStart();
+        do {
+            ConsolePrint.printInputNumber();
+            List<Integer> userNumber = getValidUserNumber();
+            int strikeCount = getGameResult(userNumber, computerNumber);
+            gameSelect = checkGameOver(strikeCount);
+        } while(gameSelect != 2);
+    }
 
+    public static void main(String[] args) {
+        startGameLogic();
     }
 }
