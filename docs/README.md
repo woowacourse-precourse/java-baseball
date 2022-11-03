@@ -48,10 +48,10 @@
   - [x] ball : 위치 : X, 숫자 : O
   - [x] nothing : 위치 : X, 숫자 : X
 
-- [ ] 1 대 3 비교 (Balls)
+- [x] 1 대 3 비교 (Balls)
   - [x] 1 strike : strike 인 공이 존재
   - [x] 1 ball : ball 인 공이 존재
-  - [ ] 1 nothing : strike 또는 ball 인 공이 존재하지 않는 경우
+  - [x] 1 nothing : strike 또는 ball 인 공이 존재하지 않는 경우
 
 - [ ] 3 대 3 비교 (Balls)
   - [ ] 3개의 각 공이 strike, ball, nothing 중 어디에 속하는지 계산

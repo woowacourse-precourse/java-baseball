@@ -25,4 +25,10 @@ class BallsTest {
     void ball() {
         assertThat(balls.compareOneBallInOrder(new Ball(0, 2))).isEqualTo(BallStatus.BALL);
     }
+    
+    @Test
+    @DisplayName("strike, ball 인 공이 없는 경우")
+    void nothing() {
+        assertThat(balls.compareOneBallInOrder(new Ball(0, 5))).isEqualTo(BallStatus.NOTHING);
+    }
 }
