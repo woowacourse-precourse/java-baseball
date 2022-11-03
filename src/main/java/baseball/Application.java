@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,5 +33,18 @@ public class Application {
                 .collect(Collectors.toList());
 
         return digits;
+    }
+
+    public static boolean isValidNumber(List<Integer> digits) {
+        if (digits.size() != 3) {
+            return false;
+        }
+
+        HashSet<Integer> nonDuplicateDigits = new HashSet<>(digits);
+        if (nonDuplicateDigits.size() != digits.size()) {
+            return false;
+        }
+
+        return true;
     }
 }
