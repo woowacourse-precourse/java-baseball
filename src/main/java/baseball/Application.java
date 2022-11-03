@@ -22,7 +22,7 @@ public class Application {
             comp = generateRandomValue();
             while (isInGame) {
                 System.out.print("숫자를 입력해주세요 : ");
-                userInput = splitDigits(isLegalInput(readInt()));
+                userInput = splitDigits(verifyInput(readInt()));
                 result = getResult(userInput, comp);
                 printHint(result);
                 isInGame = !isGameEnd(result);
@@ -96,7 +96,7 @@ public class Application {
         return digits;
     }
 
-    private static int isLegalInput(int input) {
+    private static int verifyInput(int input) {
         int front = input / 100;
         int middle = (input % 100) / 10;
         int rear = input % 10;
