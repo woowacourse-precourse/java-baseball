@@ -28,6 +28,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("중복된 숫자 여부 테스트")
+    @Test
+    void 예외_중복문자_테스트() {
+        //given
+        BaseballNumber dupNumber= new BaseballNumber();
+
+        //when
+        dupNumber.set("313");
+
+        //then
+        assertThat(dupNumber.containDuplicatedNumber()).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
