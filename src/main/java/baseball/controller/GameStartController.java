@@ -18,8 +18,7 @@ public class GameStartController {
     }
 
     private static void saveUserNumber() {
-        String userNumber = GameStartService.saveUserNumber();
-
+        GameStartService.saveUserNumber();
     }
 }
 
