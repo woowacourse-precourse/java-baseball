@@ -35,4 +35,24 @@ public class NumberBaseball {
     public List<Integer> getAnswer() {
         return answer;
     }
+
+    /**
+     * 사용자의 답 중 정답과 값이 같은 숫자의 개수를 반환해주는 메소드입니다.
+     *
+     * @param userAnswer -> 사용자가 입력한 답
+     * @return containCount -> 정답과 값이 같은 숫자의 개수
+     */
+    public int getContainCount(String userAnswer) {
+        int containCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int userDigit = Integer.parseInt(userAnswer.substring(i, i+1));
+
+            if (answer.contains(userDigit)) {
+                containCount += 1;
+            }
+        }
+
+        return containCount;
+    }
 }
