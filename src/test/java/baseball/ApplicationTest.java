@@ -90,6 +90,110 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    @DisplayName("볼카운트가")
+    class ballCount {
+
+        @DisplayName("3스트라이크")
+        @Test
+        void strike3() {
+            assertRandomNumberInRangeTest(() -> {
+                run("246");
+                assertThat(output()).contains("3스트라이크");
+            },
+        2,4, 6
+            );
+        }
+
+        @DisplayName("2스트라이크")
+        @Test
+        void strike2() {
+            assertRandomNumberInRangeTest(() -> {
+                run("246");
+                assertThat(output()).contains("2스트라이크");
+            },
+        2,4, 7
+            );
+        }
+
+        @DisplayName("1스트라이크")
+        @Test
+        void strike1() {
+            assertRandomNumberInRangeTest(() -> {
+                run("256");
+                assertThat(output()).contains("1스트라이크");
+            },
+        2,4, 7
+            );
+        }
+
+        @DisplayName("1볼 1스트라이크")
+        @Test
+        void ball1_strike1() {
+            assertRandomNumberInRangeTest(() -> {
+                        run("265");
+                        assertThat(output()).contains("1볼 1스트라이크");
+                    },
+                    2,4, 6
+            );
+        }
+
+        @DisplayName("2볼 1스트라이크")
+        @Test
+        void ball2_strike1() {
+            assertRandomNumberInRangeTest(() -> {
+                        run("426");
+                        assertThat(output()).contains("2볼 1스트라이크");
+                    },
+                    2,4, 6
+            );
+        }
+
+        @DisplayName("1볼")
+        @Test
+        void ball1() {
+            assertRandomNumberInRangeTest(() -> {
+                run("365");
+                assertThat(output()).contains("1볼");
+            },
+        2,4, 6
+            );
+        }
+
+        @DisplayName("2볼")
+        @Test
+        void ball2() {
+            assertRandomNumberInRangeTest(() -> {
+                run("364");
+                assertThat(output()).contains("2볼");
+            },
+        2,4, 6
+            );
+        }
+
+        @DisplayName("3볼")
+        @Test
+        void ball3() {
+            assertRandomNumberInRangeTest(() -> {
+                run("624");
+                assertThat(output()).contains("3볼");
+            },
+        2,4, 6
+            );
+        }
+
+        @DisplayName("낫싱")
+        @Test
+        void nothing() {
+            assertRandomNumberInRangeTest(() -> {
+                run("357");
+                assertThat(output()).contains("낫싱");
+            },
+        2,4, 6
+            );
+        }
+    }
+
 
     @Override
     public void runMain() {

@@ -22,6 +22,29 @@ public class BaseballGame {
         String input = Console.readLine();
         isWrongInputValue(input);
         calculateBallCount(input);
+        answerMessage();
+    }
+
+    private void answerMessage() {
+        if (strikeCount == 0 && ballCount == 0) {
+            message = "낫싱";
+            System.out.println(message);
+        }
+
+        if (strikeCount != 0 && ballCount != 0) {
+            message = ballCount + "볼 " + strikeCount + "스트라이크";
+            System.out.println(message);
+        }
+
+        if (strikeCount == 0 && ballCount != 0) {
+            message = ballCount + "볼";
+            System.out.println(message);
+        }
+
+        if (strikeCount != 0 && ballCount == 0) {
+            message = strikeCount + "스트라이크";
+            System.out.println(message);
+        }
     }
 
     private void calculateBallCount(String input) {
