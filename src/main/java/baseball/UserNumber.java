@@ -2,33 +2,31 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.lang.Character.*;
 
 public class UserNumber {
 
     private final static int MAX_SIZE = 3;
 
-    private List<Integer> number = new ArrayList<>();
+    private final List<Integer> number;
 
     public UserNumber(String inputNumber) {
-        this.number = converter(inputNumber);
+        this.number = listConverter(inputNumber);
     }
 
     public List<Integer> getNumber() {
         return number;
     }
 
-    private static List<Integer> converter(String inputNumber) {
-        List<Character> numbers = charConverter(inputNumber);
-
-        isNumber(numbers);
-        isMaxSize(numbers);
-        isContainsZero(numbers);
-        isDuplicationNumber(numbers);
-
-        return intConverter(numbers);
+    private static List<Integer> listConverter(String inputNumber) {
+        List<Character> numbers = characterConverter(inputNumber);
+        validation(numbers);
+        return integerConverter(numbers);
     }
 
-    private static List<Character> charConverter(String inputNumber) {
+    private static List<Character> characterConverter(String inputNumber) {
         List<Character> result = new ArrayList<>();
         for (int index = 0; index < inputNumber.length(); index++) {
             result.add(inputNumber.charAt(index));
@@ -36,44 +34,61 @@ public class UserNumber {
         return result;
     }
 
-    private static List<Integer> intConverter(List<Character> numbers) {
-        List<Integer> result = new ArrayList<>();
-        for (Character number : numbers) {
-            result.add(number - '0');
-        }
-        return result;
+    private static List<Integer> integerConverter(List<Character> numbers) {
+        return numbers.stream()
+                .map(UserNumber::getIntegerNumber)
+                .collect(Collectors.toList());
     }
 
-    //== 예외 처리 로직 ==//
+    private static int getIntegerNumber(char number) {
+        return number - '0';
+    }
+
+    //== 검증 로직 ==//
+    private static void validation(List<Character> numbers) {
+        isNumber(numbers);
+        isMaxSize(numbers);
+        isNotContainsZero(numbers);
+        isNotDuplicationNumber(numbers);
+    }
+
     private static void isNumber(List<Character> numbers) {
         for (Character number : numbers) {
-            if (!Character.isDigit(number)) {
+            if (!isDigit(number)) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
     private static void isMaxSize(List<Character> numbers) {
-        if (numbers.size() != MAX_SIZE) {
+        if (isNotMaxSize(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isContainsZero(List<Character> numbers) {
+    private static boolean isNotMaxSize(List<Character> numbers) {
+        return numbers.size() != MAX_SIZE;
+    }
+
+    private static void isNotContainsZero(List<Character> numbers) {
         for (Character number : numbers) {
-            if (number == '0') {
+            if (isZero(number)) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    private static void isDuplicationNumber(List<Character> numbers) {
+    private static boolean isZero(char number) {
+        return number == '0';
+    }
+
+    private static void isNotDuplicationNumber(List<Character> numbers) {
         List<Character> contain = new ArrayList<>();
-        for (Character number : numbers) {
+        numbers.forEach(number -> {
             if (contain.contains(number)) {
                 throw new IllegalArgumentException();
             }
             contain.add(number);
-        }
+        });
     }
 }
