@@ -3,11 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Round {
 
-    private Computer computer;
+    private final Computer computer;
     private Numbers numbers;
 
     private int countBall;
@@ -35,10 +36,19 @@ public class Round {
     }
 
     public void playRound() {
-        List<Hint> hints = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            hints.add(getHint(i));
+        HashMap<Hint, Integer> hintCountMap = new HashMap<>();
+        for (int index = 0; index < 3; index++) {
+            Hint hint = getHint(index);
+            putHintCountMap(hint, hintCountMap);
         }
+    }
+
+    private void putHintCountMap (Hint hint, HashMap<Hint, Integer> hintCountMap) {
+        if (!hintCountMap.containsKey(hint)) {
+            hintCountMap.put(hint, 0);
+        }
+        hintCountMap.put(hint, hintCountMap.get(hint) + 1);
+        Print.printRoundResult(hintCountMap);
     }
 
     private Hint getHint(int index) {
@@ -54,7 +64,7 @@ public class Round {
     private boolean isBall(int index) {
         // 이전 인덱스 : 0 -> 2
         int prevIndex = (index + 2) % 3;
-        // 이후 인덱스 : 2 -> 0;
+        // 이후 인덱스 : 2 -> 0
         int nextIndex = (index + 1) % 3;
 
         boolean isPrevBall = computer.findComputerNumber(prevIndex)
