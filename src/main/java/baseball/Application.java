@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 public class Application {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public static void main(String[] args) {
         gameStart();
 
     }
 
     static void gameStart(){
+        System.out.println(START_MESSAGE);
         int[] computer = initializeComputerNumber();
         boolean playBaseball = true;
         while(playBaseball){
