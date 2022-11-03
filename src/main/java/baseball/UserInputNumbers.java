@@ -3,6 +3,7 @@ package baseball;
 public class UserInputNumbers {
     static final int NUMBER_LENGTH = 3;
     static final int START_IDX = 0;
+    static final int NOT_DUPLICATE_NUMBER = 1;
 
     private int first;
     private int second;
@@ -23,6 +24,9 @@ public class UserInputNumbers {
         if (!isDigit(numbers)) {
             throw new IllegalArgumentException();
         }
+        if (!duplicateNumber(numbers)) {
+            throw new IllegalArgumentException();
+        }
         return true;
     }
 
@@ -33,5 +37,20 @@ public class UserInputNumbers {
             }
         }
         return true;
+    }
+
+    public static boolean duplicateNumber(String numbers) {
+        for (int idx=START_IDX; idx<numbers.length(); idx++) {
+            if (numberCount(numbers, numbers.charAt(idx))!=NOT_DUPLICATE_NUMBER) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int numberCount(String numbers, char num) {
+        return (int) numbers.chars()
+                .filter(c -> c == num)
+                .count();
     }
 }
