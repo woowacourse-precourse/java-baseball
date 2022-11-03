@@ -3,7 +3,73 @@
 ---
 
 ## 🚀 기능 목록
-- 
+
+- ### abstractClasses 패키지
+  - [X] **InputChecker**
+  - 입력이 유효한지 검사하는 추상클래스입니다.
+  - 추상 메서드 isInputErroneous를 가지고 있습니다.
+
+  - [ ] **Game**
+  - 게임 구현에 사용될 추상클래스입니다.
+  - 추가적인 게임 구현시 사용(ex. 여러가지 미니게임들을 포함한 게임팩)
+  - 상수 status와 추상메서드 initialize, terminate를 가집니다.
+    - [ ] getStatus
+    - 게임의 상태를 알려줍니다.
+    - [ ] setStatus
+    - 게임의 상태를 설정합니다.
+
+- ### baseball 패키지
+  - [ ] **Messages**
+    - 게임 작동에 필요한 메시지들을 포함한 Enum 클래스입니다.
+    - [ ] Messages 생성자
+    - 매개변수로 받은 메시지 문자열을 저장합니다.
+    - [ ] printMessage
+      - 저장된 메시지를 콘솔에 출력합니다.
+    - [ ] printScore
+      - 점수를 출력합니다.
+
+  - [ ] **BaseballInputChecker**
+    - 숫자 야구 게임의 입력이 유효한지 검사하는 클래스입니다.
+    - [ ] hasLengthOf
+    - 문자열의 길이가 매개변수 값과 일치하는지 검사합니다.
+    - [ ] hasDigitsOnly
+    - 문자열이 숫자만 포함했는지 검사합니다.
+    - [ ] isInputErroneous
+    - 유효 입력을 검사하기 위해 외부로 노출되는 메서드입니다. 
+    - 게임 상태와 입력을 인자값으로 받습니다.
+      - [ ] isGuessCommandValid
+      - 게임 도중일 경우, 숫자 야구 게임에 유효한 입력인지 검사합니다.
+      - [ ] isEndCommandValid
+      - 게임 종료일 경우, 재시작/종료 입력인지 검사합니다.
+
+  - [ ] **BaseballGame**
+    - 숫자야구 게임을 위한 클래스입니다.
+      - [ ] BaseballGame 생성자
+      - 게임 인스턴스를 생성합니다.
+        - [ ] getBaseballNumber
+        - 야구 게임의 클리어 조건 숫자를 알려줍니다.
+        - [ ] setBaseballNumber
+        - 야구 게임의 클리어 조건을 설정합니다.
+
+      - [ ] initialize
+      - 게임을 초기화 합니다. 
+      - 게임 상태를 게임중으로 바꾸고, 랜덤한 숫자들을 선정해 클리어 조건 숫자로 저장합니다.
+        - [ ] getRandomNumbersOf
+        - 매개변수 개수 만큼의 랜덤 숫자를 생성합니다.
+      - [ ] terminate
+      - 게임을 종료시킵니다.
+      - 게임 상태를 게임끝으로 바꿉니다.
+
+      - [ ] playTurn
+      - 숫자 야구 게임 한 턴을 진행합니다.
+        - [ ] getGuessResult
+        - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 센다.
+          - [ ] getDigitResult
+          - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려준다.
+          - [ ] isGameOver
+          - 게임 종료 조건을 충족했는지 확인합니다.
+      - [ ] askNewGame
+      - 새로운 게임을 시작할지 확인합니다.
 
 ---
 
