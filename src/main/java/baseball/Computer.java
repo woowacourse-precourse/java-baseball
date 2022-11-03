@@ -7,22 +7,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
-    private BaseballNumber computerNumber;
+    private String computerNumber;
 
 
     public Computer() {
-        computerNumber = new BaseballNumber();
-
-        this.generateNumber();
+        try {
+            computerNumber = this.generateNumber();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
 
-
-    public BaseballNumber getBaseballNumber() {
+    public String getBaseballNumber() {
         return computerNumber;
     }
 
-    public void generateNumber() {
+    public String generateNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -34,6 +35,10 @@ public class Computer {
 
         String number = computer.toString().replaceAll("[^0-9]", "");
 
-        computerNumber.set(number);
+        if (!BaseballNumber.isValid(number)) {
+            throw new IllegalArgumentException();
+        }
+
+        return number;
     }
 }
