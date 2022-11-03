@@ -16,6 +16,7 @@ public class DefenceNumberMaker {
     }
 
     private void createDefenceNumber(int size) {
+        defenceNumber.clear();
         while(defenceNumber.size() < size) {
             int random = Randoms.pickNumberInRange(1, 9);
             checkOverlapAndAdd(random);
