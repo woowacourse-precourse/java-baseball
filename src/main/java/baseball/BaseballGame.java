@@ -18,12 +18,8 @@ public class BaseballGame {
     }
 
     private void createComputerNumbers() {
-        while (computerNumbers.size() < NUMBER_COUNT_TO_CREATED) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
-        }
+        computerNumbers = Randoms
+                .pickUniqueNumbersInRange(1, 9, NUMBER_COUNT_TO_CREATED);
     }
 
     public List<Integer> getComputerNumbers() {
