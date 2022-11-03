@@ -29,4 +29,14 @@ class InputTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Input("12"));
     }
+
+    @Test
+    @DisplayName("겹치는 수 입력")
+    void createDuplicateNumber() {
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Input("112"));
+    }
 }
