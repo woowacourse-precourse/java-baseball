@@ -16,16 +16,16 @@ public class BaseballGameRule {
     }
 
     /**
-     * player의 수를 입력받아 strike, ball 수 파악
+     * player의 수를 입력받아 ball, strike 수 파악
      *
      * @param playerNumbers 3개의 Integer List
-     * @return playerScore.get(0) : strike 수
-     *         playerScore.get(1) : ball 수
+     * @return playerScore.get(0) : ball 수
+     *         playerScore.get(1) : strike 수
      */
     public List<Integer> verifyPlayerScore(List<Integer> playerNumbers){
         List<Integer> playerScore = new ArrayList<>();
-        playerScore.add(verifyStrikes(playerNumbers));
         playerScore.add(verifyBalls(playerNumbers));
+        playerScore.add(verifyStrikes(playerNumbers));
         return playerScore;
     }
 
