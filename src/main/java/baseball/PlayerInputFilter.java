@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class PlayerInputFilter {
-
+    private static final int NUMBERS_COUNT_LIMIT = 3;
     private static final String NO_NUMBER_EXCEPTION = "입력한 값이 숫자가 아닙니다.";
     private int[] numbers;
 
@@ -30,7 +30,7 @@ public class PlayerInputFilter {
     }
 
     boolean isNotThreeDigit(String input){
-        return false;
+        return NUMBERS_COUNT_LIMIT != input.length();
     }
 
     void notThreeDigitException(){
