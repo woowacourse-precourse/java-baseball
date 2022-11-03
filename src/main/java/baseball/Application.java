@@ -6,6 +6,19 @@ import camp.nextstep.edu.missionutils.*;
 public class Application {
     static int answer;
 
+    static String checkUserInput(String strIn) {
+        String strOut = "";
+        try {
+            UserInputException.lengthCheck(strIn);
+            UserInputException.numberCheck(strIn);
+            UserInputException.duplicateCheck(strIn);
+            strOut = strIn;
+            return strOut;
+        } catch (IllegalArgumentException e) {
+            return strOut;
+        }
+     }
+
     static int listToInt(List<Integer> listIn) {
         StringBuilder output = new StringBuilder();
         for (Integer integer : listIn) {
