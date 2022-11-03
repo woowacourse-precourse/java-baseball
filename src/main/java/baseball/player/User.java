@@ -28,5 +28,21 @@ public class User {
 
     }
 
+    private boolean isNotNumber(String inputNumber) {
+
+        for(int indexNumber=0; indexNumber<inputNumber.length(); indexNumber++){
+            char ch = inputNumber.charAt(indexNumber);
+
+            if(!Character.isDigit(ch) || ch == '0'){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+    
+
+
 
 }
