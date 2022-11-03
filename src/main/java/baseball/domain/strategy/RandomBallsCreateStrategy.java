@@ -8,10 +8,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomBallsCreateStrategy implements BallsCreateStrategy {
+    private static final String DUPLICATE_NUMBERS_EXCEPTION_MESSAGE = "같은 번호를 여러개 입력할 수 없습니다.";
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "1~9의 범위를 벗어났습니다.";
     private static final int MIN_NUMBER_OF_BALLS = 1;
     private static final int MAX_NUMBER_OF_BALLS = 9;
     private static final int COUNT_OF_BALLS = 3;
+    private static final int MAX_COUNT_OF_EACH_NUMBER = 1;
     
     @Override
     public List<Ball> create() {
@@ -41,6 +43,7 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
     
     private static void isValid(final List<Integer> randomBallNumbers) {
         validateOutOfRange(randomBallNumbers);
+        validateExistSameNumber(randomBallNumbers);
     }
     
     private static void validateOutOfRange(final List<Integer> randomBallNumbers) {
@@ -56,5 +59,26 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
     
     private static boolean isOutOfRange(final Integer randomBallNumber) {
         return randomBallNumber < MIN_NUMBER_OF_BALLS || randomBallNumber > MAX_NUMBER_OF_BALLS;
+    }
+    
+    private static void validateExistSameNumber(final List<Integer> randomBallNumbers) {
+        if (existSameNumber(randomBallNumbers)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBERS_EXCEPTION_MESSAGE);
+        }
+    }
+    
+    private static boolean existSameNumber(final List<Integer> randomBallNumbers) {
+        return randomBallNumbers.stream()
+                .anyMatch(randomBallNumber -> isExceedMaxCountOfEachNumber(randomBallNumbers, randomBallNumber));
+    }
+    
+    private static boolean isExceedMaxCountOfEachNumber(final List<Integer> randomBallNumbers, final int randomBallNumber) {
+        return countOfDuplicateNumber(randomBallNumbers, randomBallNumber) > MAX_COUNT_OF_EACH_NUMBER;
+    }
+    
+    private static int countOfDuplicateNumber(final List<Integer> randomBallNumbers, final int targetRandomBallNumber) {
+        return (int) randomBallNumbers.stream()
+                .filter(randomBallNumber -> randomBallNumber == targetRandomBallNumber)
+                .count();
     }
 }
