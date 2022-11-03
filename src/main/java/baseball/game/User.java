@@ -13,12 +13,12 @@ public class User {
 		return List.copyOf(numbers);
 	}
 
-	public void setUserNumbers(String input) {
-		validateUserInput(input);
+	public void setNumbers(String input) {
+		validateInput(input);
 		this.numbers = convertStringToNumbers(input);
 	}
 
-	private void validateUserInput(String input) {
+	private void validateInput(String input) {
 		if (input.length() != GAME_LENGTH) {
 			throw new IllegalArgumentException(GAME_EXCEPTION_LENGTH_MESSAGE);
 		}
