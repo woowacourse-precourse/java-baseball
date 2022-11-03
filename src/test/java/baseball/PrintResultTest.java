@@ -20,4 +20,17 @@ public class PrintResultTest {
         assertThat(game.printResult(strikeCount, ballCount)).isEqualTo(
                 strikeCount + Game.STRIKE + Game.NEW_LINE + Game.GAME_OVER);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "2, 1",
+            "1, 1",
+            "1, 3",
+            "0, 3"
+    })
+    void BALL_STRIKE_결과_출력(int strikeCount, int ballCount) {
+        Game game = new Game();
+        assertThat(game.printResult(strikeCount, ballCount)).isEqualTo(
+                ballCount + Game.BALL + Game.BLANK + strikeCount + Game.STRIKE);
+    }
 }
