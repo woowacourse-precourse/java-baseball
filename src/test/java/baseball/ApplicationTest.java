@@ -3,10 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -31,5 +35,20 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 입력값이_네_자리_이상이면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        UserNumber userNumber = new UserNumber();
+        Method method = userNumber.getClass().getDeclaredMethod("userNumberValidator", String.class);
+        method.setAccessible(true);
+        String number = "1234";
+
+        // when
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, number));
+
+        // then
+        assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
     }
 }
