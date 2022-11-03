@@ -13,8 +13,8 @@ public class MyBalls {
 
     public List<Integer> inputBalls() {
         Scanner scanner = new Scanner(readLine());
-        System.out.println("숫자를 입력해주세요 : ");
         String myInputBalls = scanner.next();
+        System.out.println("숫자를 입력해주세요 : " + myInputBalls);
 
         List<Integer> myBallNumbers = new ArrayList<>();
         for (int ballIndex = 0; ballIndex < 3; ballIndex++) {
