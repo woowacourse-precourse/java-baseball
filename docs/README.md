@@ -1,6 +1,6 @@
 ##😀 baseball 기능 구현 목록
 ✔️숫자 생성 기능
-* pickUniqueNumbersInRange()를 활용한 서로 다른 3자리의 수를 생성하는 기능 구현
+* pickNumberInRange()를 활용한 서로 다른 3자리의 수를 생성하는 기능 구현
 
 ✔️게임 입출력 기능
 * 사용자 숫자입력 출력 문구 기능 구현
