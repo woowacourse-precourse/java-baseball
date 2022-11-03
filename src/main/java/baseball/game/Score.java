@@ -15,6 +15,11 @@ public class Score {
 		return new Score(computerNumbers, userNumbers);
 	}
 
+	public void invalidate() {
+		this.strike = 0;
+		this.ball = 0;
+	}
+
 	public int getStrike() {
 		return strike;
 	}
