@@ -7,11 +7,17 @@ public class BaseballGame {
 
     public static final int GAME_NUMBER_SIZE = 3;
 
-    public void startAndPlaying() {
-        ValidationNumber validationNumber = new ValidationNumber(GAME_NUMBER_SIZE);
-        DefenceNumber defenceNumberMaker = new DefenceNumber(GAME_NUMBER_SIZE);
-        TextForGame textForGame = new TextForGame();
+    ValidationNumber validationNumber;
+    DefenceNumber defenceNumberMaker;
+    TextForGame textForGame;
 
+    BaseballGame() {
+        validationNumber = new ValidationNumber(GAME_NUMBER_SIZE);
+        defenceNumberMaker = new DefenceNumber(GAME_NUMBER_SIZE);
+        textForGame = new TextForGame();
+    }
+
+    public void startAndPlaying() {
         boolean isPlaying = true;
 
         List<Integer> defenceNumber = defenceNumberMaker.getDefenceNumber();
@@ -22,21 +28,20 @@ public class BaseballGame {
             String input = Console.readLine();
             offenceNumber = validationNumber.checkAndConvertIntegerList(input);
 
-
             int ball = checkBall(defenceNumber, offenceNumber);
             int strike = checkStrike(defenceNumber, offenceNumber);
 
             textForGame.printBall(ball);
             textForGame.printStrike(strike);
 
-            if(strike == 3) {
+            if (strike == 3) {
                 input = Console.readLine();
                 validationNumber.checkEndOrRestartNumber(input);
 
-                if(input.equals("1")) {
+                if (input.equals("1")) {
                     startAndPlaying();
                 }
-                if(input.equals("2")) {
+                if (input.equals("2")) {
                     isPlaying = false;
                 }
             }
@@ -58,9 +63,9 @@ public class BaseballGame {
     public int checkBall(List<Integer> defenceNumber, List<Integer> offenceNumber) {
         int count = 0;
 
-        for(Integer number : offenceNumber) {
+        for (Integer number : offenceNumber) {
             int index = defenceNumber.indexOf(number);
-            if(index != -1 && offenceNumber.indexOf(number) != index) {
+            if (index != -1 && offenceNumber.indexOf(number) != index) {
                 count++;
             }
         }
