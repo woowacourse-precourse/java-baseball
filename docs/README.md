@@ -11,11 +11,8 @@
   - isRightAnswer() 
 
 ## [랜덤 세자리 숫자 구하기]
+
 - getComputerNumberInString()
-
-  - getRandomNumber()
-
-  - getRandomDigit()
 
 ## [사용자 입력값 받기]
 
