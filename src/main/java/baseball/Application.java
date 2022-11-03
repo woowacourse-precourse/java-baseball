@@ -12,7 +12,24 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application application = new Application();
-        application.run();
+        while (true) {
+            application.run();
+        }
+
+    }
+
+    public boolean handleRestart() {
+        String s = Console.readLine();
+
+    }
+
+
+
+    //exitKey
+    // 1 -> 재시작.
+    // 2 -> 종료.
+    // 그외 -> 예외처리.
+    public void exit(int exitKey) {
 
     }
 
@@ -31,8 +48,6 @@ public class Application {
             }
         }
     }
-
-
 
     public int getBall(List<Integer> answer, List<Integer> userInput, int strike) {
         Set<Integer> matchedIndexSet = new HashSet<>();
@@ -70,15 +85,16 @@ public class Application {
     }
 
     public List<Integer> getValidUserInput(String input) {
-        checkInputLength(input);
+        int inputLength = 3;
+        checkInputLength(input, inputLength);
         List<Integer> userInput = convertIntegerList(input);
         checkIsInteger(userInput);
 
         return userInput;
     }
 
-    private void checkInputLength(String input) {
-        if (input.length() != 3) {
+    private void checkInputLength(String input, int length) {
+        if (input.length() != length) {
             throw new IllegalArgumentException("잘못된 입력값 입니다.");
         }
     }
