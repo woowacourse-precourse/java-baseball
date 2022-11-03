@@ -28,4 +28,7 @@ public class Computer {
         return newRandomNumber;
     }
 
+    public Number findComputerNumber(int index) {
+        return computerNumbers.get(index);
+    }
 }
