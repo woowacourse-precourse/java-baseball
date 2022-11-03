@@ -44,4 +44,8 @@ public class Rule {
             }
         }
     }
+
+    public void showResult() {
+        RuleOutput.showResult(ball, strike);
+    }
 }
