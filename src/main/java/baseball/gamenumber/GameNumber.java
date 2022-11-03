@@ -11,7 +11,10 @@ public class GameNumber {
 
     private List<Integer> numberList = new ArrayList<>(NUMBER_DIGITS);
 
-    public GameNumber(ArrayList<Integer> numberList) {
+    public GameNumber() {
+    }
+
+    public GameNumber(List<Integer> numberList) {
         this.numberList = numberList;
     }
 
@@ -19,9 +22,6 @@ public class GameNumber {
         this.numberList = Arrays.stream(numberString.split(SPLIT_ONE))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-    }
-
-    public GameNumber() {
     }
 
     public List<Integer> getNumberList() {
