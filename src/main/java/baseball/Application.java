@@ -1,7 +1,13 @@
 package baseball;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        boolean replay = true;
+        while (replay) {
+            Game.startGame();
+            Output.endMessage();
+            replay = Input.inputReplay();
+        }
     }
 }
