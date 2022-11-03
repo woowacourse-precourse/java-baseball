@@ -82,7 +82,7 @@ class ApplicationTest extends NsTest {
                 {3, 0}
         };
         for (int i = 0; i < computers.length; i++){
-            Map<String, Integer> result = game.countBallAndStrike(computers[i], users[i]);
+            Map<String, Integer> result = game.countBallsAndStrikes(computers[i], users[i]);
             int ballCount = result.getOrDefault("볼", 0);
             int strikeCount = result.getOrDefault("스트라이크", 0);
 
