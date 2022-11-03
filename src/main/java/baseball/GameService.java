@@ -9,7 +9,7 @@ public class GameService {
     private static ArrayList<Integer> answerNumber = new ArrayList<>();
     private static ArrayList<Integer> userNumber = new ArrayList<>();
 
-    public void setGame(){
+    public void setGame() throws IllegalArgumentException{
         setAnswerNumber();
         System.out.println(answerNumber);
         setUserNumber();
@@ -28,6 +28,7 @@ public class GameService {
         int ball;
         strike = calculateStrike();
         ball = calculateBall();
+        printResult(strike,ball);
     }
     private int calculateStrike(){
         int strikeCount=0;
@@ -47,5 +48,17 @@ public class GameService {
             }
         }
         return ballCount;
+    }
+
+    private void printResult(int strike, int ball){
+        if(strike==3){
+            System.out.println(strike+"스트라이크 모두 맞히셨습니다.");
+        }
+        else if(strike>0 || ball>0){
+            System.out.println(ball+"볼 "+strike+"스트라이크 ");
+        }
+        else if(strike==0 && ball==0){
+            System.out.println("낫싱");
+        }
     }
 }
