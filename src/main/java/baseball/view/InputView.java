@@ -17,6 +17,6 @@ public class InputView {
     public static String getUserInputRestartOrNot() {
         System.out.println(GAME_RESTART_OR_NOT_MESSAGE);
         String userInput = Console.readLine();
-        return userInput;
+        return InputException.isOneOrTwo(userInput);
     }
 }

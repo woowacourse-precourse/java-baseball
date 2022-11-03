@@ -12,4 +12,9 @@ public class InputException {
             throw new IllegalArgumentException();
         return userInput;
     }
+
+    public static String isOneOrTwo(String userInput) {
+        if (!userInput.equals("1") && !userInput.equals("2")) throw new IllegalArgumentException();
+        return userInput;
+    }
 }
