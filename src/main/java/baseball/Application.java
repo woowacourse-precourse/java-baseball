@@ -42,4 +42,10 @@ public class Application {
         }
         throw new IllegalArgumentException();
     }
+
+    public static void validUserInputRestart(String num) {
+        if (!num.equals(RESTART) && !num.equals(END)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
