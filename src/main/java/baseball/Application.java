@@ -30,6 +30,10 @@ public class Application {
             int[] userNumbers = {0, 0, 0};
             addNumber(userNumbers, numberString);
 
+            int ball = 0;
+            int strike = 0;
+            countingBallAndStrike(ball, strike, userNumbers, randomNumberList);
+
         } while (true);
     }
 
@@ -149,6 +153,13 @@ public class Application {
 
             ball += 1;
         }
+
+    }
+
+    public static void countingBallAndStrike(int ball, int strike, int[] userNumbers, List<Integer> randomNumberList) {
+
+        countingStrike(strike, userNumbers, randomNumberList);
+        countingBall(ball, userNumbers, randomNumberList);
 
     }
 }
