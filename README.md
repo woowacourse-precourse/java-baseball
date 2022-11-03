@@ -3,7 +3,7 @@
 ## ✅ 기능목록
 
 
-- [ ] Application main method 구현
+- [x] Application main method 구현
 
 ### BaseballGameController
 
