@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public class RandomBallsCreateStrategy implements BallsCreateStrategy {
     private static final String DUPLICATE_NUMBERS_EXCEPTION_MESSAGE = "같은 번호를 여러개 입력할 수 없습니다.";
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "1~9의 범위를 벗어났습니다.";
+    private static final String OUT_OF_LENGTH_EXCEPTION_MESSAGE = "볼 개수는 3개여야 합니다.";
     private static final int MIN_NUMBER_OF_BALLS = 1;
     private static final int MAX_NUMBER_OF_BALLS = 9;
     private static final int COUNT_OF_BALLS = 3;
@@ -44,6 +45,7 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
     private static void isValid(final List<Integer> randomBallNumbers) {
         validateOutOfRange(randomBallNumbers);
         validateExistSameNumber(randomBallNumbers);
+        validateOutOfLength(randomBallNumbers);
     }
     
     private static void validateOutOfRange(final List<Integer> randomBallNumbers) {
@@ -80,5 +82,15 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
         return (int) randomBallNumbers.stream()
                 .filter(randomBallNumber -> randomBallNumber == targetRandomBallNumber)
                 .count();
+    }
+    
+    private static void validateOutOfLength(final List<Integer> randomBallNumbers) {
+        if (isNotCorrectNumbersLength(randomBallNumbers)) {
+            throw new IllegalArgumentException(OUT_OF_LENGTH_EXCEPTION_MESSAGE);
+        }
+    }
+    
+    private static boolean isNotCorrectNumbersLength(final List<Integer> randomBallNumbers) {
+        return randomBallNumbers.size() != COUNT_OF_BALLS;
     }
 }
