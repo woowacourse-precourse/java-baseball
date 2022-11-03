@@ -39,6 +39,17 @@ public class BaseballGame {
         return true;
     }
 
+    public List<Integer> getUserNumberList(String string) {
+        List<Integer> user = new ArrayList<>();
+
+        String[] split = string.split("");
+        for (String s : split) {
+            user.add(Integer.parseInt(s));
+        }
+
+        return user;
+    }
+
     public String getAnswerString(List<Integer> computer, List<Integer> user) {
         int ballCount = getBallCount(computer, user);
         int strikeCount = getStrikeCount(computer, user);

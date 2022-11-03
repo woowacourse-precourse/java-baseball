@@ -23,12 +23,7 @@ public class Application {
 
                 baseballGame.checkValidString(string);
 
-                List<Integer> user = new ArrayList<>();
-
-                String[] split = string.split("");
-                for (String s : split) {
-                    user.add(Integer.parseInt(s));
-                }
+                List<Integer> user = baseballGame.getUserNumberList(string);
 
                 String result = baseballGame.getAnswerString(computer, user);
 
