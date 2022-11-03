@@ -3,7 +3,9 @@ package baseball;
 import java.util.List;
 
 public class Compare {
-    private static final int INPUT_LENGTH = 3;
+    public static final int INPUT_LENGTH = 3;
+    public static final int STRIKE_INDEX = 0;
+    public static final int BALL_INDEX = 1;
     private List<Integer> src;
     private List<Integer> dest;
     private List<Integer> answer;
