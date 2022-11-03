@@ -13,5 +13,9 @@ public class Game {
 		return Objects.equals(computerNumber, userNumber) && !Objects.equals(computerIdx, userIdx);
 	}
 
+	public boolean isNothing(int computerNumber, int computerIdx, int userNumber, int userIdx) {
+		return !Objects.equals(computerNumber, userNumber) && !Objects.equals(computerIdx, userIdx);
+	}
+
 
 }
