@@ -5,13 +5,13 @@ import Controller.game;
 import java.util.List;
 
 public class Computer {
-    private static List<Integer> threeNumber_List;
-    public static void setThreeNumber_List(){
-        Computer.threeNumber_List= game.anotherThree_RandomNumber();
+    private static List<Integer> Number_List;
+    public static void number_set(){
+        Computer.Number_List= game.getThree_RandomNumber();
     }
-    public static String getThreeNumber(){
+    public static String number_get(){
         String threeNum="";
-        for (Integer item : Computer.threeNumber_List){
+        for (Integer item : Computer.Number_List){
             threeNum.concat(String.valueOf(item));
         }
         return threeNum;
