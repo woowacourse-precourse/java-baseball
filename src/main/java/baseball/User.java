@@ -1,12 +1,15 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
     private static final int NUMBER_SIZE_ZERO = 0;
     private static final int NUMBER_SIZE_ONE = 1;
+    private static final int NUMBER_SIZE_THREE = 3;
 
     private List<Long> reprocessingUserNumber(String userNumber) {
         List<Long> userNumbers = new ArrayList<>();
@@ -20,7 +23,7 @@ public class User {
         try {
             Long.parseLong(userNumber);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException("숫자가 아닙니다. 숫자만 입력해 주세요.");
         }
     }
 
@@ -32,8 +35,15 @@ public class User {
 
     private void validateCheckVacuum(String userNumber) {
         if (userNumber.contains(" ")) {
-            throw new IllegalArgumentException("공백을 제거하고 입력해 주세요.");
+            throw new IllegalArgumentException("공백을 제외하고 입력해 주세요.");
         }
     }
+
+    private void validateTheNumber(String userNumber) {
+        if (userNumber.length() != NUMBER_SIZE_THREE) {
+            throw new IllegalArgumentException("3개의 숫자만 입력해 주세요.");
+        }
+    }
+
 
 }
