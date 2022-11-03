@@ -17,7 +17,6 @@ public class Application {
         List<Integer> guessNumber = getGuessNumber();
 
     }
-
     public static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -28,12 +27,15 @@ public class Application {
         }
         return computer;
     }
-
     public static List<Integer> getGuessNumber() {
         String tmpStr = Console.readLine();
-        return stringToIntegerList(tmpStr);
-    }
+        List<Integer> numberList = stringToIntegerList(tmpStr);
 
+        validateNumber();
+        // 유효성 검사 해야함
+
+        return numberList;
+    }
     public static List<Integer> stringToIntegerList(String tmpStr) {
         String[] tmpStrArr = tmpStr.split("");
         List<Integer> tmpList = new ArrayList<>();
@@ -43,11 +45,12 @@ public class Application {
         }
         return tmpList;
     }
-
     public static boolean validateNumber() {
 
         return true;
     }
+    public static void checkNumber(List<Integer> inputNumber){
 
+    }
 
 }

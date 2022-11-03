@@ -18,8 +18,8 @@
 ### 1. playGame
 * [ ]  숫자 생성
 * [ ]  while
-   1. 숫자 입력
-   2. 결과체크
+   1. 숫자 입력 받기
+   2. 숫자 체크
    3. 정답이면 종료 
 * [ ]  애플리케이션 종료 여부 선택
 
@@ -32,9 +32,17 @@
 * [x] List 형태로 return
 
 ### 4. StringToIntegerList
-* [x] string 문자열을 Integer List 로 변경
+* [x] string 문자열을 List<Integer> 형태로 변경
 
-### 5. 세자리숫자유효성검사(validateNumber)
+### 5. validateNumber
 * [ ] 1이상 9이하의 숫자
 * [ ] 서로 다른 3자리 수
 
+### 6. checkNumber
+* [ ] 검사
+* [ ] 결과 출력 
+  * 스트라이크
+  * 볼
+  * 낫싱
+  * if (3스트라이크이면 출력하고, 게임종료)
+  
