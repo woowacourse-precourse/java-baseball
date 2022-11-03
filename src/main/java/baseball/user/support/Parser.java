@@ -1,4 +1,4 @@
-package baseball.game.support;
+package baseball.user.support;
 
 import java.util.ArrayList;
 import java.util.List;

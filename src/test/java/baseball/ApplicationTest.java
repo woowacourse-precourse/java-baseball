@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
-import baseball.game.support.Parser;
+import baseball.user.support.Parser;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

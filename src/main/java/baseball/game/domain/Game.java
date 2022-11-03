@@ -13,6 +13,8 @@ public class Game {
     }
     public Integer getStrikeCount(){return strikeCount;}
     public Integer getBallCount() {return ballCount;}
+    public void updateStrikeCount(){this.strikeCount++;}
+    public void updateBallCount(){this.ballCount++;}
 
     public Game(RandomNumber gameNumber) {
         this.gameNumber = gameNumber;
