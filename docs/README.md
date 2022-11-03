@@ -20,7 +20,14 @@
 
 # 고려한 점
 
-
+-  `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`를 이용하여 1부터 9까지의 값을 3개 뽑아야 한다.
+  - `Randoms` 내에 `pickUniqueNumbersInRange`라는 메서드가 있다는 것을 발견하였다. 이름만 봐도 중복 없이 값을 뽑는다는 듯 했다.
+  - 매개변수는 `startInclusive`, `endInclusive`, `count`가 있었다. 시작값, 끝값, 뽑을 횟수를  뜻했다.
+  - 내부 코드를 확인해보니, `validateRange`로 범위 값 제한이 올바른지, `validateCount`로 count의 선언이 올바른지를 검사하고 있었다.
+    - `validateRange`는 시작값 <= 끝값 관계 및 int형에서의 최댓값을 넘어가거나 최댓값 이상의 갯수를 지니는지 확인한다.
+    - `validateCount`는 뽑을 횟수값이 음수거나 지정한 범위보다 많은지를 확인한다.
+  - 입력이 올바르게 들어왔다면, 해당하는 List를 만든 뒤 시작값부터 끝값을 추가, 랜덤으로 섞은 후 앞에서부터 뽑을 횟수만큼 잘라 반환하는 형태였다.
+  - 로직의 흐름을 충분히 따라갈 수 있었기에, 해당 메서드를 사용하기로 했다.
 
 # 고민한 사항
 
