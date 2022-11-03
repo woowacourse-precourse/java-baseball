@@ -4,6 +4,8 @@ import java.util.List;
 
 public class NumberComparison {
 
+    private final int NUMBERS_SIZE = 3;
+
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
 
@@ -27,6 +29,19 @@ public class NumberComparison {
         printStrikeBallCount(strikeCount,ballCount);
         return false;
 
+    }
+
+    private int getStrikeCount() {
+
+        int strikeCount = 0;
+
+        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++){
+            if(userNumbers.get(indexNumber) == computerNumbers.get(indexNumber) ){
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 
     private void setUserNumbers(List<Integer> userNumbers) {
