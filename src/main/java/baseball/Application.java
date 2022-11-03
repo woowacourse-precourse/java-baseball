@@ -39,6 +39,23 @@ public class Application {
 		userSelectList.add(userSelect % 100 / 10);
 		userSelectList.add(userSelect % 10);
 
+		for(int i = 0; i < userSelectList.size(); i++) {
+			for(int j = i + 1; j < userSelectList.size(); j++) {
+				checkValidate(userSelectList.get(i), userSelectList.get(j));
+			}
+		}
+
 		return userSelectList;
+	}
+
+	private static void checkValidate(int firstNumber, int secondNumber) {
+		if(firstNumber == secondNumber) {
+			try {
+				throw new IllegalArgumentException();
+			} catch(IllegalArgumentException e) {
+				e.printStackTrace();
+				return;
+			}
+		}
 	}
 }
