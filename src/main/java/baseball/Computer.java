@@ -6,22 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    public List<Integer> GenerateRandomThreeNumber() {
+        List<Integer> randomNumList = new ArrayList<>();
 
-    public void TestGenerateNumber() {
-        System.out.println(GenerateRandomThreeNums());
-    }
-
-    public List<Integer> GenerateRandomThreeNums() {
-        List<Integer> numsOfComputer = new ArrayList<>();
-
-        while(numsOfComputer.size() < 3) {
+        while(randomNumList.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
 
-            if(!numsOfComputer.contains(randomNum)) {
-                numsOfComputer.add(randomNum);
+            if(!randomNumList.contains(randomNum)) {
+                randomNumList.add(randomNum);
             }
         }
 
-        return numsOfComputer;
+        return randomNumList;
     }
 }
