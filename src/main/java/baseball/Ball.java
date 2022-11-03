@@ -1,9 +1,15 @@
 package baseball;
 
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Ball {
+	private final static int COMPUTER_MAX_SIZE = 3;
 	public static final int START_INCLUSIVE = 1;
 	public static final int END_INCLUSIVE = 9;
 
@@ -19,5 +25,12 @@ public class Ball {
 
 	public String createRandomBall() {
 		return String.valueOf(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+	}
+	public List<String> makeComputerBalls() {
+		Set<String> balls = new HashSet<>();
+		while (balls.size() < COMPUTER_MAX_SIZE) {
+			balls.add(createRandomBall());
+		}
+		return new ArrayList<>(balls);
 	}
 }
