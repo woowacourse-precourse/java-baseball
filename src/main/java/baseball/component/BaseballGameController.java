@@ -9,6 +9,31 @@ import java.util.List;
 public class BaseballGameController {
 
 
+    public void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        do{
+            BaseballGameRule baseballGameRule = new BaseballGameRule();
+            playSingleGame(baseballGameRule);
+        } while(canPlayNextGame());
+    }
+
+    public void playSingleGame(BaseballGameRule baseballGameRule){
+
+        List<Integer> computerNumbers = generateThreeRandomNumbers();
+        List<Integer> playerNumbers;
+        List<Integer> playerScore;
+
+        baseballGameRule.setComputerNumbers(computerNumbers);
+        do{
+            playerNumbers = readPlayerNumbers();
+            playerScore = baseballGameRule.verifyPlayerScore(playerNumbers);
+            printBallStrikeCountScore(playerScore);
+
+        }while(playerScore.get(1) == 3);
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+    }
+
 
     private List<Integer> readPlayerNumbers(){
         System.out.print("숫자를 입력해주세요 : ");

@@ -7,7 +7,7 @@
 
 ### BaseballGameController
 
-- [ ] 게임 진행 method 구현
+- [x] 게임 진행 method 구현
   - [x] 랜덤한 3자리 컴퓨터 수 생성
   - [x] player 3자리 수 입력받기
   - [x] 스트라이크/볼 수 결과 받아 출력하기
