@@ -11,6 +11,9 @@ import baseball.view.OutputView;
 public class BaseballGameController {
 	public void run() {
 		runOneCycle();
+		if (!choiceRestart()) {
+			runOneCycle();
+		}
 	}
 
 	private void runOneCycle() {
@@ -26,5 +29,17 @@ public class BaseballGameController {
 
 	private boolean isGameEnd(int result) {
 		return result == 3;
+	}
+
+	private boolean choiceRestart() throws IllegalArgumentException {
+		String userChoice = InputView.printInputRestartMessage();
+		if (!isRightInput(userChoice)) {
+			throw new IllegalArgumentException();
+		}
+		return userChoice.equals("1");
+	}
+
+	private boolean isRightInput(String input) {
+		return input.equals("1") || input.equals("2");
 	}
 }
