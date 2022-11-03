@@ -9,7 +9,7 @@ public class PrintComment {
     }
 
     public static void printInputComment() {
-        System.out.println(INPUT_COMMENT);
+        System.out.print(INPUT_COMMENT);
     }
 
     public static void printUserInput(String numbers) {
