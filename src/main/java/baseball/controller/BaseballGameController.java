@@ -1,31 +1,29 @@
 package baseball.controller;
 
 import baseball.domain.BaseballGameStatus;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private static final OutputView outputView = OutputView.INSTANCE;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    private static BaseballGameStatus gameStatus;
+    private BaseballGameStatus gameStatus;
 
-    public static void run() {
-        initializeGame();
-        while (gameStatus.isPlay()) {
-            changeGameStatusToStop();
-        }
+    public BaseballGameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.gameStatus = BaseballGameStatus.PLAY;
     }
 
-    private static void initializeGame() {
+    public void run() {
         outputView.startBaseballGame();
-        changeGameStatusToPlay();
-    }
 
-    private static void changeGameStatusToPlay() {
-        gameStatus = BaseballGameStatus.PLAY;
-    }
+        while (gameStatus.isGameContinues()) {
+            inputView.inputBaseballNumber();
 
-    private static void changeGameStatusToStop() {
-        gameStatus = BaseballGameStatus.STOP;
+            gameStatus = inputView.inputGameStatus();
+        }
     }
 }
