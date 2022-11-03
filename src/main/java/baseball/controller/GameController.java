@@ -4,14 +4,15 @@ import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.ComputerBallGenerator;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
 
     public void run() {
-        Balls answer = getComputerBalls();
-        Balls playerBalls = getPlayerBalls();
+        OutputView.printStartMessage();
+
     }
 
     private Balls getComputerBalls() {
