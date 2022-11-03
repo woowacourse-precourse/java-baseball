@@ -20,7 +20,7 @@ public class NumberGenerator {
     }
 
     public void init() {
-        while (computer.size() < 3) {
+        while (computer.size() < SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (check(randomNumber)){
                 computer.add(randomNumber);
