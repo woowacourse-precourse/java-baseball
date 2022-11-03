@@ -65,9 +65,31 @@ public class Application {
         return ball - strikeNum;
     }
 
+    public static void GoStop(){
+        String playerInput = Console.readLine();
+        System.out.println(playerInput);
+        if (Objects.equals(playerInput, "1")){
+            Execute();
+        }else if(Objects.equals(playerInput, "2")){
+            System.out.println("게임 종료");
+        }else {
+            System.out.println("Invalid input");
+        }
+    }
 
+    public static void Execute(){
+        ArrayList<Integer> answer = GenerateNum();
+        String result=  "";
+        while (!result.equals("3스트라이크")){
+            result = CompareNum(answer, InputNum());
+            System.out.println(result);
+        }
+        GoStop();
+    }
     public static void main(String[] args) {
 //        System.out.println(answer);
+        Execute();
+
 
         // TODO: 프로그램 구현
     }
