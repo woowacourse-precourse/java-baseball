@@ -15,4 +15,14 @@ public class RandomNumbers {
         this.numberLength = numberLength;
     }
     private List<Integer> computerNumbers = new ArrayList<>(numberLength);
+
+    private void addSoloNumber() {
+        int rawRandomNumber = Randoms.pickNumberInRange(1,9);
+
+        if (computerNumbers.contains(rawRandomNumber)) {
+            return;
+        }
+
+        computerNumbers.add(rawRandomNumber);
+    }
 }
