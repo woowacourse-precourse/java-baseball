@@ -12,6 +12,9 @@ public class Application {
         List<Integer> computer = new ArrayList<Integer>();
         CreateRandomNum(computer);
 
+        List<Integer> playerNum = new ArrayList<Integer>();
+        inputNum(playerNum);
+
     }
 
     public static List<Integer> CreateRandomNum(List<Integer> computer){
@@ -22,5 +25,15 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static List<Integer> inputNum(List<Integer> playerNum){
+        String playerNumString = Console.readLine();
+        char [] playerNumCharArr = playerNumString.toCharArray();
+
+        for(int c : playerNumCharArr){
+            playerNum.add(c);
+        }
+        return playerNum;
     }
 }
