@@ -12,6 +12,7 @@ public class BaseballGame {
         List<Integer> randomNumber = Number.getRandomNumber();
 
         while(!end){
+            List<Integer> userNumber = Number.inputUserNumber();
         }
     }
 }

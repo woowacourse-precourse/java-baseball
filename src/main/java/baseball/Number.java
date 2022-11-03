@@ -23,4 +23,58 @@ public class Number {
 
         return number;
     }
+
+    public static List<Integer> inputUserNumber(){
+
+        String userNumberString = Console.readLine();
+        List<Integer> userNumberList = Arrays.stream(userNumberString.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        checkUserNumberLength(userNumberList);
+        checkUserNumberDuplicate(userNumberList);
+        checkUserNumberRange(userNumberList);
+
+        return userNumberList;
+    }
+
+    public static List<Integer> inputNumberForTest(String number){
+
+        String userNumberString = number;
+        List<Integer> userNumberList = Arrays.stream(userNumberString.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        checkUserNumberLength(userNumberList);
+        checkUserNumberDuplicate(userNumberList);
+        checkUserNumberRange(userNumberList);
+
+        return userNumberList;
+    }
+
+    public static void checkUserNumberLength(List<Integer> userNumberList){
+
+        if(userNumberList.size() != 3){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkUserNumberDuplicate(List<Integer> userNumberList){
+
+        List<Integer> alreadyHaveNumber = new ArrayList<>();
+
+        for (int index = 0; index < userNumberList.size(); index++) {
+            if (alreadyHaveNumber.contains(userNumberList.get(index))) {
+                throw new IllegalArgumentException();
+            }
+            alreadyHaveNumber.add(userNumberList.get(index));
+        }
+    }
+
+    public static void checkUserNumberRange(List<Integer> userNumberList){
+
+        if (userNumberList.contains(0)){
+            throw new IllegalArgumentException();
+        }
+    }
 }
