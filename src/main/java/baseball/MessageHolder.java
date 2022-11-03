@@ -50,7 +50,7 @@ public class MessageHolder {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else {
-            System.out.printf("%d볼 %d스트라이크", currentBall, currentStrike);
+            System.out.printf("%d볼 %d스트라이크\n", currentBall, currentStrike);
         }
     }
 
