@@ -63,15 +63,20 @@ public class Game {
         return result;
     }
 
-    public List<Integer> splitDigits(int input) {
+    public List<Integer> readInputForGame() {
+        int input = readInt();
+
+        if (!verifyInputRangeForGame(input)) {
+            throw new IllegalArgumentException();
+        }
+        return (splitDigits(input));
+    }
+
+    private List<Integer> splitDigits(int input) {
         List<Integer> digits = new ArrayList<>();
         int front = input / 100;
         int middle = (input % 100) / 10;
         int rear = input % 10;
-
-        if (input == -1) {
-            throw new IllegalArgumentException();
-        }
 
         digits.add(front);
         digits.add(middle);
@@ -80,18 +85,20 @@ public class Game {
         return digits;
     }
 
-    public int verifyInput(int input) {
+    private boolean verifyInputRangeForGame(int input) {
         int front = input / 100;
         int middle = (input % 100) / 10;
         int rear = input % 10;
 
         if (input < 123 || input > 987 || front == middle || front == rear || middle == rear) {
-            return -1;
+            return false;
         }
-        return input;
+        return true;
     }
 
-    public boolean isQuit(int input) {
+    public boolean readIsQuit() {
+        int input = readInt();
+
         if (input == 2) {
             return true;
         } else if (input == 1) {
@@ -110,5 +117,13 @@ public class Game {
             }
         }
         return computer;
+    }
+
+    private static int readInt() {
+        try {
+            return (Integer.parseInt(Console.readLine()));
+        } catch (NoSuchElementException | NumberFormatException ex) {
+            return -1;
+        }
     }
 }
