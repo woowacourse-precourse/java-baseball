@@ -1,7 +1,11 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,6 +27,15 @@ public class Application {
     }
 
     private static ArrayList<Integer> getPlayerNumber() {
-        
+        String playerString = Console.readLine();
+        ArrayList<Integer> playerNumberArrayList = new ArrayList<>();
+
+        // 게임 플레이어가 입력한 숫자를 잘라 ArrayList에 넣는다.
+        String[] playerStringArray = playerString.split("");
+        for (String letter : playerStringArray) {
+            playerNumberArrayList.add(Integer.parseInt(letter));
+        }
+
+        return playerNumberArrayList;
     }
 }
