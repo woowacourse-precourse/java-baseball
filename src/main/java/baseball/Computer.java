@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    static List<Integer> answers;
+    private static List<Integer> answers;
+    boolean isPlaying;
 
     Computer() {
         System.out.println(Message.START_GAME);
@@ -24,17 +25,16 @@ public class Computer {
         return list;
     }
 
-    public boolean checkAnswer(List<Integer> list) {
+    public void checkAnswer(List<Integer> list) {
         int[] counts = new int[]{0, 0};
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < list.size(); i++) {
             checkByBalls(i, list.get(i), counts);
         }
-
         printResult(counts);
 
-        return counts[0] == User.NUMBER_DIGIT;
+        isPlaying = (counts[0] == User.NUMBER_DIGIT);
     }
     private void checkByBalls(int digit, int num, int[] counts) {
         if (answers.contains(num)) {
