@@ -27,7 +27,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
     public static void printGetInputMessage(){
-        System.out.println();
+        System.out.print("숫자를 입력해주세요 : ");
     }
     public static void InputNum() {
         String userNum = Console.readLine();
