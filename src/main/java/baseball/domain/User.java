@@ -28,7 +28,7 @@ public class User {
             checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
             checkVaildNumber(number);
-            checkDuplicationNumber(inputNumbers,number);
+            checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }
         return inputNumbers;
@@ -46,14 +46,14 @@ public class User {
         }
     }
 
-    public void checkVaildNumber(int number) {
+    public void checkValidNumber(int number) {
         if (number < MIN_NUM || number > MAX_NUM) {
             throw new IllegalArgumentException(VALID_NUMBER_EXCEPTION);
         }
     }
 
-    public void checkLength(String number){
-        if (number.length() > 3){
+    public void checkLength(String number) {
+        if (number.length() > 3) {
             throw new IllegalArgumentException(NUMBER_LENGTH_EXCEPTION);
         }
     }

@@ -18,11 +18,11 @@ public class Game {
     private static final int RESTART_NUMBER_MIN = 1;
     private static final int RESTART_NUMBER_MAX = 2;
     private static final int RESTART = 1;
-    private static final int EXIT = 1;
+    private static final int EXIT = 2;
 
     private int strike;
     private int ball;
-    private static boolean status = true;
+    private boolean status;
 
     User user;
     Computer computer;
@@ -30,6 +30,7 @@ public class Game {
     public Game() {
         this.user = new User();
         this.computer = new Computer();
+        this.status = true;
     }
 
     public void Start() {
@@ -55,10 +56,10 @@ public class Game {
         selectRestart(answerint);
     }
 
-    public void selectRestart(int answer){
-        if(answer==RESTART){
+    public void selectRestart(int answer) {
+        if (answer == RESTART) {
             computer.createRandomNumbers();
-        }else{
+        } else {
             status = false;
         }
     }
@@ -69,19 +70,19 @@ public class Game {
         }
     }
 
-    public void checkValidNumber(int number){
-        if(number<RESTART_NUMBER_MIN || number > RESTART_NUMBER_MAX){
+    public void checkValidNumber(int number) {
+        if (number < RESTART_NUMBER_MIN || number > RESTART_NUMBER_MAX) {
             throw new IllegalArgumentException(RESTART_EXCEPTION);
         }
     }
 
-    public void checkIsDigit(char number){
-        if (!Character.isDigit(number)){
+    public void checkIsDigit(char number) {
+        if (!Character.isDigit(number)) {
             throw new IllegalArgumentException(RESTART_EXCEPTION);
         }
     }
 
-    public int charToInt(char number){
+    public int charToInt(char number) {
         return Integer.parseInt(String.valueOf(number));
     }
 
