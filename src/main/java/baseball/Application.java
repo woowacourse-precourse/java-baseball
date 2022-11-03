@@ -33,6 +33,11 @@ public class Application {
                 //todo: 아닐 경우
                 //todo: 스트라이크, 볼 개수 출력
                 //todo: 3자리 숫자를 입력받는 기능 실행
+                List<Integer> a = new ArrayList<>();
+                a.add(1); a.add(2); a.add(3);
+                List<Integer> b = new ArrayList<>();
+                b.add(4); b.add(5); b.add(1);
+                System.out.println(num_verification(a,b));
             }
         }
     }
@@ -55,28 +60,16 @@ public class Application {
 
         return result;
     }
-    //숫자가 computer 와 위치, 값이 같은지 확인하는 기능
-    public static ArrayList<Integer> num_verification(List<Integer> input_num_list, List<Integer> computer){
-        //검증 결과를 저장할 배열
-        ArrayList<Integer> result = new ArrayList<>();
-        //배열에 들어갈 요소 3가지
+    //strike 개수 구하는 기능
+    public static int strike(List<Integer> input_num_list, List<Integer> computer){
         int strike = 0;
-        int ball = 0;
-        int nothing = 0;
-
         //todo: 1개 이상의 숫자가 같고 자리가 같은 경우 = (맞은개수)스트라이크
         for(int i=0; i<3; i++){
             if(input_num_list.get(i) == computer.get(i)){
                 strike += 1;
             }
-            //todo: 1개 이상의 숫자가 같고 자리가 다른 경우 = (맞은개수)볼
-            else if(input_num_list.get(i) != computer.get(i)
-                    && input_num_list.get(i)){
-
-            }
         }
-
-        //todo: 입력 숫자와 위치가 모두 다른 경우 = 낫싱개수
-        return result;
+        return strike;
     }
+
 }
