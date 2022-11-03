@@ -13,6 +13,9 @@ public class Application {
     private static final String INPUT_REPLAY_ERROR_MESSAGE = "재시작이나 종료를 위해서는 1이나 2를 입력해야 합니다.";
     private static final String INPUT_NOT_NUMERIC_ERROR_MESSAGE = "숫자가 아닌 문자가 입력되었습니다.";
     private static final String INPUT_DUPLICATED_ERROR_MESSAGE = "중복된 숫자가 입력되었습니다.";
+    private static final String RESULT_NOTHING_MESSAGE = "낫싱";
+    private static final String BALL_STRING = "볼";
+    private static final String STRIKE_STRING = "스트라이크";
     private static final int INPUT_BASEBALL_LENGTH = 3;
     private static final int INPUT_REPLAY_LENGTH = 1;
     private static char REPLAY = '1';
@@ -36,8 +39,10 @@ public class Application {
                 System.out.println(illegalArgumentException);
                 break;
             }
+
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
+            printResult(ball, strike);
         }
     }
 
@@ -145,13 +150,31 @@ public class Application {
 
     static int countStrikes(int[] userInput, int[] computerNumber) {
         int count = 0;
-        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
-            if(userInput[i] == computerNumber[i]) {
+        for (int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if (userInput[i] == computerNumber[i]) {
                 count += 1;
             }
         }
 
         return count;
+    }
+
+    static void printResult(int ball, int strike) {
+        boolean hasBall = false;
+        boolean hasStrike = false;
+        if (ball > 0) {
+            System.out.print(ball + BALL_STRING);
+            hasBall = true;
+        }
+        if (hasBall) {
+            System.out.print(" ");
+        }
+        if(strike > 0) {
+            System.out.println(strike + STRIKE_STRING);
+        }
+        if ((!hasBall) && (!hasStrike)) {
+            System.out.println(RESULT_NOTHING_MESSAGE);
+        }
     }
 }
 
