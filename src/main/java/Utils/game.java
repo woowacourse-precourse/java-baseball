@@ -12,7 +12,7 @@ public class game {
         game.readLine();
 
     }
-    public static List<Integer> RandomNumber(){
+    public static List<Integer> Three_RandomNumber(){
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
