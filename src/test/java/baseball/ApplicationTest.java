@@ -31,6 +31,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 기능 요구사항 1
     @Test
     void testFunction1_case1() {
         Computer computer =  new Computer();
@@ -64,6 +65,19 @@ class ApplicationTest extends NsTest {
         String pattern = "^[1-9]*$";
 
         assertThat(Pattern.matches(pattern, randomNumbers)).isTrue();
+    }
+
+    // 기능 요구사항 2
+    public void 게임_플레이어_안내_문구_출력() {
+        assertThat(Computer.GUIDE_OUTPUT).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void 게임플레이어의_숫자_입력() {
+
+    }
+
+    public void 숫자_입력에_대한_예외_판별() {
+
     }
 
     @Override
