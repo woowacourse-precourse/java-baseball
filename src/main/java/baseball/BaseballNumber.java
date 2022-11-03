@@ -66,21 +66,7 @@ public class BaseballNumber {
         }
         return computerNumbers;
     }
-    public static BaseballNumber getComputerPickedNumbers() {
-        boolean hasException = true;
 
-        BaseballNumber computerNumbers = null;
-        while (hasException) {
-            try {
-                computerNumbers = new BaseballNumber
-                        (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
-                hasException = false;
-            } catch (IllegalArgumentException e) {
-
-            }
-        }
-        return computerNumbers;
-    }
 
     public boolean contains(int number) {
         return numbersSet.contains(number);
