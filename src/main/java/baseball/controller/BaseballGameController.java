@@ -11,7 +11,7 @@ import baseball.view.OutputView;
 public class BaseballGameController {
 	public void run() {
 		runOneCycle();
-		if (!choiceRestart()) {
+		if (choiceRestart()) {
 			runOneCycle();
 		}
 	}
