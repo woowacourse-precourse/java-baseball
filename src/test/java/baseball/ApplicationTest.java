@@ -46,11 +46,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void sliceInputTest() {
-        List<Integer> sliced = UserInput.sliceInput("123");
+        UserInput input = new UserInput();
+        List<Integer> sliced = input.sliceInput("123");
         assertThat(sliced.get(0)).isEqualTo(1);
         assertThat(sliced.get(1)).isEqualTo(2);
         assertThat(sliced.get(2)).isEqualTo(3);
-
     }
 
     @Test
