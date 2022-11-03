@@ -23,7 +23,7 @@ public class OutputView {
 
     public void printResult(List<Integer> answer) {
         if (answer.get(BALL_INDEX) > 0) {
-            System.out.printf("%d" + BALL, answer.get(BALL_INDEX));
+            System.out.printf("%d" + BALL + " ", answer.get(BALL_INDEX));
         }
         if (answer.get(STRIKE_INDEX) > 0) {
             System.out.printf("%d" + STRIKE, answer.get(STRIKE_INDEX));
