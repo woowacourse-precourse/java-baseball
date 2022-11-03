@@ -44,7 +44,7 @@
 
 ### 도메인
 - [ ] 1 대 1 비교 (Ball)
-  - [ ] strike : 위치 : O, 숫자 : O
+  - [x] strike : 위치 : O, 숫자 : O
   - [ ] ball : 위치 : X, 숫자 : O
   - [ ] nothing : 위치 : X, 숫자 : X
 
