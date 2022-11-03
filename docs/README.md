@@ -21,5 +21,5 @@
 + 3스트라이크인 경우에만 true를 반환
 
 ### 반환받은 값에 따라 게임 진행을 관리하는 기능
-+ 반환받은 값이 true인 경우 Computer 객체의 endGame() 메서드 호출
-+ false인 경우 게임 반복
++ 반환값이 false인 경우 게임 반복
++ true인 경우 Computer 객체의 endGame() 메서드 호출
