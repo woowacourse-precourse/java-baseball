@@ -26,7 +26,7 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
 
 - [ ] IOHandler 클래스: try~catch로 IOException 처리
   - [X] void printInitMessage() 
-  - [ ] List<Integer> getInput() 메서드: validation도 진행
+  - [X] List<Integer> getInputList() 메서드: validation도 진행
   - [ ] void printScore(Score) 메서드
   - [ ] int getRestartNumber() 메서드: validation도 진행
 
