@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
-    public static final int BALL_CNT = 3;
     private final List<Ball> balls;
 
     public Balls(List<Integer> ballNums) {
@@ -27,8 +26,6 @@ public class Balls {
     }
 
     public Result play(List<Integer> ballNums) {
-        ValidationUtil.isValid(ballNums);
-
         Balls userBalls = new Balls(ballNums);
         Result result = new Result();
 
