@@ -9,6 +9,7 @@ public class BaseballGame {
 
     private Computer computer;
     private User user;
+    private boolean gameOver;
 
     BaseballGame(){
         computer = new Computer();
@@ -18,11 +19,19 @@ public class BaseballGame {
     public void play(){
         System.out.println("숫자 야구 게임을 시작합니다 ");
         computer.pickRandomNumbersFrom1To9();
+        gameOver = false;
 
-        List<Integer> usersPick = user.pickNumbers();
+        while (!gameOver){
+            try {
+                List<Integer> usersPick = user.pickNumbers();
+                Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
+                printResult(result);
+                gameOverIfThreeStrike(result);
 
-        Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
-        printResult(result);
+            }catch (IllegalArgumentException exception) {
+                throw exception;
+            }
+        }
     }
 
     public Map<String, Integer> countBallsAndStrikes(List<Integer> computersPick, List<Integer> usersPick) {
@@ -53,5 +62,11 @@ public class BaseballGame {
         }
         String resultToString = String.join(" ", results);
         System.out.println(resultToString);
+    }
+
+    private void gameOverIfThreeStrike(Map<String, Integer> result){
+        if (result.getOrDefault("스트라이크", 0) == 3) {
+            gameOver = true;
+        }
     }
 }
