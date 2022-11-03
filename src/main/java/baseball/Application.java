@@ -52,6 +52,7 @@ public class Application {
         }
 
         private List<Integer> getUserInput() {
+            System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             return getValueIfAcceptable(input);
         }
