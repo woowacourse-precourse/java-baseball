@@ -81,7 +81,7 @@ public class Application {
         int ballCount = sameNumberCount - strikeCount;
 
         if(sameNumberCount == 0) {
-            return "미싱";
+            return "낫싱";
         } else if (strikeCount == 0) {
             return ballCount + "볼";
         } else if (ballCount == 0) {
