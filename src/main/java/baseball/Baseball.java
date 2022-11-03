@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Baseball {
-    String userNumbers;
-    int numberLength;
-    List<Integer> computerNumber;
+    private String userNumbers;
+    private int numberLength;
+    private List<Integer> computerNumber;
 
     Baseball() {
         this(3);
