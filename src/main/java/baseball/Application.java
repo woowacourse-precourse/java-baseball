@@ -37,9 +37,9 @@ public class Application {
 
     public static boolean isValidInput(String input) {
         if(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static boolean isOnlyNumber(String input) {

@@ -29,8 +29,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 컴퓨터가_임의의_수_생성() {
-        List<Integer>
+    void generateAnswer_And_isValidInput_Test() {
+        String answer = Application.generateAnswer();
+        boolean result = Application.isValidInput(answer);
+        assertThat(result).isEqualTo(true);
     }
 
     @Override
