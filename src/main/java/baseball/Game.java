@@ -12,14 +12,23 @@ public class Game {
 
 
 	void game() {
+		fetchNumbers();
 
 	}
 
-	private void fetchNumbers() {
+	public void fetchNumbers() {
 		fromComputers = computer.getNumbers();
 		fromUsers = user.getNumbers();
 	}
 
+
+    public int extractNumber(LinkedHashMap<Integer, Integer> numbersMap, int idx) {
+        return (int) numbersMap.keySet().toArray()[idx];
+    }
+
+    public int extractIndex(LinkedHashMap<Integer, Integer> numbersMap, int idx) {
+        return (int) numbersMap.values().toArray()[idx];
+    }
 
 
 	public boolean isStrike(int computerNumber, int computerIdx, int userNumber, int userIdx) {
