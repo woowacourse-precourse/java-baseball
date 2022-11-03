@@ -50,6 +50,7 @@ public class Application {
     }
 
     private static String getUserAnswerInString() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
         String user = Console.readLine();
         isValidAnswer(user);
         return user;
@@ -133,7 +134,9 @@ public class Application {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    private static void printStrike(int strikeCount) {}
+    private static void printStrike(int strikeCount) {
+        System.out.printf("%d스트라이크", strikeCount);
+    }
     private static void printBall(int ballCount) {}
 
     private static int askRestartOrExit() {
