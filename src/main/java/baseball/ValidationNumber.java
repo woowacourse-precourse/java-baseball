@@ -50,4 +50,12 @@ public class ValidationNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public void checkEndOrRestartNumber(String number) {
+        String endOrRestartRegex = "^[1-2]$";
+
+        if(!number.matches(endOrRestartRegex)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

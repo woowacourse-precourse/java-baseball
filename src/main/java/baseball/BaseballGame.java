@@ -6,13 +6,13 @@ import java.util.List;
 public class BaseballGame {
 
     public static final int GAME_NUMBER_SIZE = 3;
-    private boolean isPlaying = false;
 
     public void startAndPlaying() {
         ValidationNumber validationNumber = new ValidationNumber(GAME_NUMBER_SIZE);
         DefenceNumber defenceNumberMaker = new DefenceNumber(GAME_NUMBER_SIZE);
         TextForGame textForGame = new TextForGame();
-        isPlaying = true;
+
+        boolean isPlaying = true;
 
         List<Integer> defenceNumber = defenceNumberMaker.getDefenceNumber();
         List<Integer> offenceNumber;
@@ -28,6 +28,15 @@ public class BaseballGame {
 
             textForGame.printBall(ball);
             textForGame.printStrike(strike);
+
+            if(strike == 3) {
+                input = Console.readLine();
+                validationNumber.checkEndOrRestartNumber(input);
+
+                if(input.equals("2")) {
+                    isPlaying = false;
+                }
+            }
         }
     }
 
