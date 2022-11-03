@@ -7,13 +7,13 @@ import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class PlayerTest {
+class PlayingNumberTest {
 	@Nested
 	class ValidateSizeTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("4321");
+				PlayingNumber playingNumber = new PlayingNumber("4321");
 			});
 			assertEquals("3자리 숫자만 입력해주세요.", exception.getMessage());
 		}
@@ -21,7 +21,7 @@ class PlayerTest {
 		@Test
 		void case2() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("17");
+				PlayingNumber playingNumber = new PlayingNumber("17");
 			});
 			assertEquals("3자리 숫자만 입력해주세요.", exception.getMessage());
 		}
@@ -29,7 +29,7 @@ class PlayerTest {
 		@Test
 		void case3() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("");
+				PlayingNumber playingNumber = new PlayingNumber("");
 			});
 			assertEquals("3자리 숫자만 입력해주세요.", exception.getMessage());
 		}
@@ -40,7 +40,7 @@ class PlayerTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("116");
+				PlayingNumber playingNumber = new PlayingNumber("116");
 			});
 			assertEquals("서로 다른 숫자들만 입력해주세요.", exception.getMessage());
 		}
@@ -48,7 +48,7 @@ class PlayerTest {
 		@Test
 		void case2() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("188");
+				PlayingNumber playingNumber = new PlayingNumber("188");
 			});
 			assertEquals("서로 다른 숫자들만 입력해주세요.", exception.getMessage());
 		}
@@ -56,7 +56,7 @@ class PlayerTest {
 		@Test
 		void case3() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("999");
+				PlayingNumber playingNumber = new PlayingNumber("999");
 			});
 			assertEquals("서로 다른 숫자들만 입력해주세요.", exception.getMessage());
 		}
@@ -67,7 +67,7 @@ class PlayerTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("016");
+				PlayingNumber playingNumber = new PlayingNumber("016");
 			});
 			assertEquals("1 ~ 9 사이의 자연수만 입력해주세요.", exception.getMessage());
 		}
@@ -75,7 +75,7 @@ class PlayerTest {
 		@Test
 		void case2() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("108");
+				PlayingNumber playingNumber = new PlayingNumber("108");
 			});
 			assertEquals("1 ~ 9 사이의 자연수만 입력해주세요.", exception.getMessage());
 		}
@@ -83,7 +83,7 @@ class PlayerTest {
 		@Test
 		void case3() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("970");
+				PlayingNumber playingNumber = new PlayingNumber("970");
 			});
 			assertEquals("1 ~ 9 사이의 자연수만 입력해주세요.", exception.getMessage());
 		}
@@ -91,7 +91,7 @@ class PlayerTest {
 		@Test
 		void case4() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("하이루");
+				PlayingNumber playingNumber = new PlayingNumber("하이루");
 			});
 			assertEquals("1 ~ 9 사이의 자연수만 입력해주세요.", exception.getMessage());
 		}
@@ -99,7 +99,7 @@ class PlayerTest {
 		@Test
 		void case5() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-				Player player = new Player("abc");
+				PlayingNumber playingNumber = new PlayingNumber("abc");
 			});
 			assertEquals("1 ~ 9 사이의 자연수만 입력해주세요.", exception.getMessage());
 		}
@@ -110,21 +110,21 @@ class PlayerTest {
 		@Test
 		void case1() {
 			String playingNumber = "369";
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumber(), Integer.parseInt(playingNumber));
 		}
 
 		@Test
 		void case2() {
 			String playingNumber = "716";
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumber(), Integer.parseInt(playingNumber));
 		}
 
 		@Test
 		void case3() {
 			String playingNumber = "486";
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumber(), Integer.parseInt(playingNumber));
 		}
 	}
@@ -135,7 +135,7 @@ class PlayerTest {
 		void case1() {
 			String playingNumber = "369";
 			List<Integer> playingNumbers = List.of(3, 6, 9);
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumbers(), playingNumbers);
 		}
 
@@ -143,7 +143,7 @@ class PlayerTest {
 		void case2() {
 			String playingNumber = "716";
 			List<Integer> playingNumbers = List.of(7, 1, 6);
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumbers(), playingNumbers);
 		}
 
@@ -151,7 +151,7 @@ class PlayerTest {
 		void case3() {
 			String playingNumber = "486";
 			List<Integer> playingNumbers = List.of(4, 8, 6);
-			Player player = new Player(playingNumber);
+			PlayingNumber player = new PlayingNumber(playingNumber);
 			assertEquals(player.getPlayingNumbers(), playingNumbers);
 		}
 	}
