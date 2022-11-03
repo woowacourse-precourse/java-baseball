@@ -22,6 +22,10 @@ public class GameSystem {
 
     }
 
+    private void printRunGameText() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
     private boolean selectMenu() {
 
         MenuSelection menuSelection = new MenuSelection();
