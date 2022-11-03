@@ -6,13 +6,17 @@ import java.util.List;
 
 public class RandomUtils {
 
+    public static final Integer RANDOM_NUMBERS_SIZE = 3;
+    private static final Integer RANDOM_NUMBER_MIN = 1;
+    private static final Integer RANDOM_NUMBER_MAX = 9;
+
     private RandomUtils() {
     }
 
     public static List<Integer> pickThreeRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(0, 10);
+        while (randomNumbers.size() < RANDOM_NUMBERS_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX + 1);
             checkRandomNumberUnique(randomNumbers, randomNumber);
         }
         return randomNumbers;
