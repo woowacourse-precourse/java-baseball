@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Compare {
-    public int countTotal(List<Integer> computer, List<Integer> player){
+    public static int countTotal(List<Integer> computer, List<Integer> player){
         int total = 0;
         for(int p : player){
             if(computer.contains(p)){
@@ -13,7 +13,7 @@ public class Compare {
         return total;
     }
 
-    public int countStrike(List<Integer> computer, List<Integer> player){
+    public static int countStrike(List<Integer> computer, List<Integer> player){
         int strike = 0;
         for(int i = 0; i < player.size(); i++){
             if(computer.get(i).equals(player.get(i))){
@@ -23,7 +23,7 @@ public class Compare {
         return strike;
     }
 
-    public int countBall(List<Integer> computer, List<Integer> player){
+    public static int countBall(List<Integer> computer, List<Integer> player){
         return countTotal(computer, player) - countStrike(computer, player);
     }
 }

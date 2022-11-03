@@ -3,13 +3,10 @@ package baseball;
 import java.util.List;
 
 public class Output {
-
-    private final Compare compare = new Compare();
-
     public String result(List<Integer> computer, List<Integer> player){
-        int total = compare.countTotal(computer, player);
-        int strike = compare.countStrike(computer, player);
-        int ball = compare.countBall(computer, player);
+        int total = Compare.countTotal(computer, player);
+        int strike = Compare.countStrike(computer, player);
+        int ball = Compare.countBall(computer, player);
 
         if (total == 0) {
             return "낫싱";
