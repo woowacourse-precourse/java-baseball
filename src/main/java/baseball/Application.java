@@ -31,10 +31,10 @@ public class Application {
 
     public static List<Integer> getGuessNumber() {
         String tmpStr = Console.readLine();
-        return stringToList(tmpStr);
+        return stringToIntegerList(tmpStr);
     }
 
-    public static List<Integer> stringToList(String tmpStr) {
+    public static List<Integer> stringToIntegerList(String tmpStr) {
         String[] tmpStrArr = tmpStr.split("");
         List<Integer> tmpList = new ArrayList<>();
         for(int i = 0;i<tmpStrArr.length;i++){
