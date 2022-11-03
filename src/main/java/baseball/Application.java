@@ -13,8 +13,8 @@ public class Application {
     }
 
     public static void playGame() {
-        List<Integer> computer = generateNumber();
-        getGuessNumber();
+        List<Integer> computerNumber = generateNumber();
+        List<Integer> guessNumber = getGuessNumber();
 
     }
 
@@ -37,7 +37,7 @@ public class Application {
     public static List<Integer> stringToIntegerList(String tmpStr) {
         String[] tmpStrArr = tmpStr.split("");
         List<Integer> tmpList = new ArrayList<>();
-        for(int i = 0;i<tmpStrArr.length;i++){
+        for (int i = 0; i < tmpStrArr.length; i++) {
             int tmp = Integer.parseInt(tmpStrArr[i]);
             tmpList.add(tmp);
         }
