@@ -33,6 +33,9 @@ public class BaseballGame {
                 input = Console.readLine();
                 validationNumber.checkEndOrRestartNumber(input);
 
+                if(input.equals("1")) {
+                    startAndPlaying();
+                }
                 if(input.equals("2")) {
                     isPlaying = false;
                 }
