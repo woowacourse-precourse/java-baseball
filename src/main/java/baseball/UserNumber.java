@@ -14,7 +14,7 @@ public class UserNumber {
     public static List<Integer> convertInputStringToUserNums(String input) {
         List<Integer> userNums = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            userNums.add(Integer.valueOf(String.valueOf(input.charAt(0))));
+            userNums.add(Integer.valueOf(String.valueOf(input.charAt(i))));
         }
         return userNums;
     }

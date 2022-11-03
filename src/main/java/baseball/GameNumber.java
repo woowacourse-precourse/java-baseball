@@ -48,6 +48,10 @@ public class GameNumber {
         return ball;
     }
 
+    public boolean isNothing(int strikes, int balls) {
+        return strikes + balls == 0;
+    }
+
     public List<Integer> getGameNums() {
         return Collections.unmodifiableList(this.gameNums);
     }
