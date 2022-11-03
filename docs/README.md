@@ -21,12 +21,14 @@
     * 게임 종료 후, 다시 시작/종료 여부 입력 받기
 
 * ### User
+  * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
   * `getUsersNumber`
     * 사용자의 3자리 수 입력 받기
   * `isLegalNumber`
-    * return boolean
     * 사용자의 입력이 요구 사항에 부합하는지 검사(서로 다른 3자리 수)
     * 잘못된 값일 경우 `IllegalArgumentException` 발생 후 종료
+  * `countNumber`
+    * 특정 숫자를 검사하여 사용자 입력에서 해당 숫자의 등장 횟수를 구한다
 
 * ### Computer
   * `generateComputersNumber`
