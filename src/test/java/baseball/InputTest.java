@@ -39,4 +39,16 @@ class InputTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Input("112"));
     }
+
+    @Test
+    @DisplayName("잘못된 입력 범위")
+    void CheckLange() {
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Input("012"));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Input("890"));
+    }
 }
