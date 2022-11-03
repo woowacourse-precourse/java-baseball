@@ -117,12 +117,11 @@ public class Application {
         return new BaseballGameResult(strikeIndexes.size(), ballCnt);
     }
 
-    static void playGame() {
+    static void playGame(String computer) {
         BaseballGameResult result;
         do {
             String input = inputNumber();
             checkInput(input);
-            String computer = pickRandomNumber();
             result = getGameResult(computer, input);
             result.print();
         } while (result.strike != 3);
@@ -143,7 +142,7 @@ public class Application {
     public static void main(String[] args) {
         printGameStart();
         do {
-            playGame();
+            playGame(pickRandomNumber());
         } while (restartGame());
     }
 }
