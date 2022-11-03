@@ -23,15 +23,21 @@ public class GameResult {
     }
 
     public String strikeToString() {
-        if (isExistStrike())
+        if (isExistStrike()) {
             return String.format("%d스트라이크", this.strike);
+        }
         return "";
     }
 
     public String ballToString() {
-        if (isExistBall())
+        if (isExistBall()) {
             return String.format("%d볼", this.ball);
+        }
         return "";
+    }
+
+    public String nothingToString() {
+        return "낫싱";
     }
 
     public boolean isExistStrike() {
@@ -47,7 +53,13 @@ public class GameResult {
     }
 
     public String toString() {
-        return ballToString() + " " + strikeToString();
+        String message = "";
+        if (isNothing()) {
+            message = nothingToString();
+        } else {
+            message = ballToString() + " " + strikeToString();
+        }
+        return message;
     }
 
 }
