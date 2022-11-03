@@ -77,7 +77,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 컴퓨터_숫자_플레이어_숫자_볼_카운트_테스트(){
         Computer computer = new Computer();
-        int ball = computer.countBall(new ArrayList<>(List.of(7, 1, 3)), new ArrayList<Integer>(List.of(7, 1, 3)));
-        assertThat(0).isEqualTo(ball);
+        int ball = computer.countBall(new ArrayList<>(List.of(6, 7, 1)), new ArrayList<Integer>(List.of(7, 1, 3)));
+        assertThat(2).isEqualTo(ball);
     }
 }
