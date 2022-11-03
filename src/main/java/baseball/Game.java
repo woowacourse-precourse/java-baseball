@@ -26,8 +26,14 @@ public class Game {
         // TODO Restart or Not
     }
     public boolean end() {
-        // TODO get User's Input
-        // TODO check Execption
+        String input = sc.nextLine();
+        if (input.charAt(0) == '1') {
+            return false;
+        } else if (input.charAt(0) == '2') {
+            return true;
+        }
+
+        // Exception: 1 or 2 가 아닌 다른값이 들어옴 -> 종료
 
         return true;
     }
