@@ -50,11 +50,12 @@ public class Computer {
         int strikeCount = counts[0];
         int ballCount = counts[1];
 
-        if (strikeCount != 0) {
-            sb.append(strikeCount).append(Message.STRIKE).append(" ");
-        }
+
         if (ballCount != 0) {
             sb.append(ballCount).append(Message.BALL);
+        }
+        if (strikeCount != 0) {
+            sb.append(strikeCount).append(Message.STRIKE).append(" ");
         }
         if (sb.length() == 0) {
             sb.append(Message.NOTHING);
