@@ -25,18 +25,18 @@ public class Application {
         String[] number_split = number.split("");
 
         for (String num : number_split) {
-            Integer to_int = Integer.parseInt(num);
+            int to_int = Integer.parseInt(num);
             number_list.add(to_int);
         }
 
         return number_list;
     }
 
-    private static Integer countStrike(
+    private static int countStrike(
             List<Integer> computer_number,
             List<Integer> user_number
     ) {
-        Integer count = 0;
+        int count = 0;
 
         for (int i = 0; i < 3; i++) {
             if (computer_number.get(i).equals(user_number.get(i))) {
@@ -47,12 +47,12 @@ public class Application {
         return count;
     }
 
-    private static Integer countBall(
+    private static int countBall(
             List<Integer> computer_number,
             List<Integer> user_number,
-            Integer strike
+            int strike
     ) {
-        Integer count = 0;
+        int count = 0;
 
         for (Integer number : user_number) {
             if (computer_number.contains(number)) {
@@ -65,7 +65,7 @@ public class Application {
         return count;
     }
 
-    private static String setHint(Integer ball, Integer strike) {
+    private static String setHint(int ball, int strike) {
 
         if (ball + strike == 0) {
             return "낫싱";
@@ -95,11 +95,12 @@ public class Application {
 
         while (true) {
             List<Integer> computer_num = createRandomNumber();
+            System.out.println(computer_num);
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             List<Integer> user_num = numToList(guess_number);
-            Integer strike = countStrike(computer_num, user_num);
-            Integer ball = countBall(computer_num, user_num, strike);
+            int strike = countStrike(computer_num, user_num);
+            int ball = countBall(computer_num, user_num, strike);
             System.out.println(setHint(ball, strike));
             // break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
         }
