@@ -17,6 +17,10 @@ public abstract class NumberBaseballGame {
     }
 
     private static void gameOver() {
-        //TODO: 게임 종료 구현
+        printGameOverPhrase();
+    }
+
+    private static void printGameOverPhrase() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
