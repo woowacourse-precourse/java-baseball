@@ -10,7 +10,9 @@ public class Game {
     private static final int _strike = 0;
     private static final int _ball = 1;
 
+
     public int scanUserValue() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = scanInput();
         int num = -1;
 
@@ -58,6 +60,7 @@ public class Game {
     }
 
     public boolean scanIsEnd() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String input = Console.readLine();
 
         if (input.equals("1")) {
