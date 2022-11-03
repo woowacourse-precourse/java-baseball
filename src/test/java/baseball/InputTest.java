@@ -19,7 +19,7 @@ class InputTest {
     }
 
     @Test
-    @DisplayName("길이 테스트")
+    @DisplayName("잘못된 길이")
     void createInvalidNumber() {
         //given
         //when
