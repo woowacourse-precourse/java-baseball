@@ -8,21 +8,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Game Util 테스트")
+@DisplayName("GameUtil 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GameUtilTest {
     @Test
-    @DisplayName("숫자를 한글자씩 분할")
-    void split_number_to_one_digits() {
-        int number = 123;
-        List<Integer> result = GameUtil.splitNumberToOneDigits(number);
-        assertThat(result).containsExactly(1, 2, 3);
-    }
-
-    @Test
     @DisplayName("숫자 램덤 생성")
     void generate_number() {
-        int number = GameUtil.generateNumber();
+        int number = GameUtil.pickNumber(3);
         List<Integer> splitOneDigits = GameUtil.splitNumberToOneDigits(number);
 
         assertThat(number).isNotNegative();
