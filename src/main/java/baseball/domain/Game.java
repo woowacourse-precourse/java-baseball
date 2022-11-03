@@ -28,12 +28,19 @@ public class Game {
         strike = 0;
         ball = 0;
         for (int i = 0; i < computer.size(); i++) {
-            strike += isStrike(computer.get(i),user.get(i));
+            strike += isStrike(computer.get(i), user.get(i));
         }
     }
 
     public int isStrike(int computerNumber, int userNumber) {
         if (computerNumber == userNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int isBall(ArrayList<Integer> computer, int userNumber, int index) {
+        if (computer.get(index) != userNumber && computer.contains(userNumber)){
             return 1;
         }
         return 0;
