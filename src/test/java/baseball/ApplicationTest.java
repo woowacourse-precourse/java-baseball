@@ -64,6 +64,24 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    void 스트라이크_개수_테스트() {
+        //given
+        List<Integer> test = new ArrayList<>();
+        test.add(1);
+        test.add(2);
+        test.add(3);
+
+        List<Integer> user = Application.createUserNumberList("763");
+
+
+        //when
+        int strikeCount = Application.strikeCount(test, user);
+
+        //given
+        assertThat(strikeCount).isEqualTo(1);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
