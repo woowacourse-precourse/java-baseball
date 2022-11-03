@@ -2,9 +2,7 @@ package baseball.model;
 
 import baseball.view.UserInput;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class OffenseNumberGenerator {
@@ -16,8 +14,26 @@ public class OffenseNumberGenerator {
 
     public List<Integer> generateOffenseNumbers() {
         String input = userInput.input();
-        List<Integer> unvalidatedNumbers = Utils.convertStringToIntegerList(input);
-        // TODO: 사용자의 입력 값이 적합한지 검증한다.
-        return null;
+        validateOnlyThreeNumbers(input);
+        List<Integer> offenseNumbers = Utils.convertStringToIntegerList(input);
+        validateDifferentNumbers(offenseNumbers);
+        return offenseNumbers;
+    }
+
+    private void validateOnlyThreeNumbers(String input) {
+        String pattern = "^[0-9]*$";
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        if (!input.matches(pattern)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDifferentNumbers(List<Integer> unvalidatedNumbers) {
+        if (unvalidatedNumbers.stream().distinct().count() != 3L) {
+            throw new IllegalArgumentException();
+        }
     }
 }
