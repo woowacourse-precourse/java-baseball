@@ -9,9 +9,9 @@
   - 볼이 1~9까지의 범위가 넘어가면 IllegalArgumentException 발생[o]
     - 볼의 숫자가 0이면 예외 발생[o]
     - 볼의 숫자가 10이면 예외 발생[o]
-  - 3개의 볼중에 같은 수가 하나라도 있으면 IllegalArgumentException 발생[]
+  - 3개의 볼중에 같은 수가 하나라도 있으면 IllegalArgumentException 발생[o]
     - 입력 값이 3개의 숫자가 아니면 예외 발생[o]
-    - 같은 수가 하나라도 있으면 예외 발생[]
+    - 입력 값이 같은 수가 하나라도 있으면 예외 발생[o]
 
 
 ## 예외 처리
