@@ -47,7 +47,7 @@
 
 ### 테스트
 
-- [ ] isGameEnd() 테스트 추가
+- [x] isGameEnd() 테스트 추가
 - [x] printHint() 테스트 추가
 - [ ] getResult() 테스트 추가
 - [ ] readInputForGame() 테스트 추가

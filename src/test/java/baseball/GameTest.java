@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
 
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 
 public class GameTest {
@@ -30,6 +32,23 @@ public class GameTest {
             System.setOut(new PrintStream(out));
             _game.printHint(roundResult);
             Assertions.assertThat(out.toString()).isEqualTo(expected[i]);
+        }
+    }
+
+    @Test
+    void isGameEnd_테스트() {
+        int[][] input = {{0, 3}, {0, 2}, {0, 1}, {3, 0}, {2, 1}, {1, 1}, {0 ,0}};
+        boolean[] expected = {true, false, false, false, false, false, false};
+
+        if (input.length != expected.length) {
+            assertThat(true);
+        }
+
+        for (int i = 0; i < input.length; ++i) {
+            List<Integer> list = new ArrayList<>();
+            list.add(input[i][_ball]);
+            list.add(input[i][_strike]);
+            Assertions.assertThat(_game.isGameEnd(list)).isEqualTo(expected[i]);
         }
     }
 }
