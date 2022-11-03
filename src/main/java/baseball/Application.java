@@ -14,8 +14,11 @@ public class Application {
     private final String NOTHING = "낫싱";
     private final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    String input = "";
+    String answer = "";
+
+    public void startGame() {
+
     }
 
     public void printStart() {
@@ -118,5 +121,10 @@ public class Application {
 
     public void resetGame(String answer) {
         answer = generateAnswer();
+    }
+
+    public static void main(String[] args) {
+        Application application = new Application();
+        application.startGame();
     }
 }
