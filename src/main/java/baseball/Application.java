@@ -9,6 +9,11 @@ public class Application {
     }
 
     private static Boolean CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArray) {
-        
+        HashSet<Integer> playerNumberSet = new HashSet<>();
+
+        // 집합에 게임 플레이어가 입력한 숫자를 넣는다.
+        for (Integer playerNumber : playerNumberArray) {
+            playerNumberSet.add(playerNumber);
+        }
     }
 }
