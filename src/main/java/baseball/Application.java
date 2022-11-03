@@ -10,7 +10,7 @@ public class Application {
     static final int START  = 1;
     static final int EXIT   = 2;
     static final int LENGTH_OF_BASEBALL_NUMBER = 3;
-    static final int BALL_COUNT = 1;
+    static final int MAXIMUM_STRIKE = 3;
     static final int STRIKE_COUNT = 0;
 
     public static void main(String[] args) {
@@ -80,7 +80,6 @@ public class Application {
         return result;
     }
 
-
     private static List<Integer> compareComputerAndUser(String computer, String user) {
         List<Integer> scoreOfStrikeAndBall = new ArrayList<>();
         scoreOfStrikeAndBall.add(countStrike(computer, user));
@@ -109,7 +108,9 @@ public class Application {
         }
         return count;
     }
-    private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
+    private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
+        return scoreOfStrikeAndBall.get(STRIKE_COUNT) == MAXIMUM_STRIKE;
+    }
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
 
     private static int askRestartOrExit() {
