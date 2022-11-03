@@ -9,10 +9,30 @@ import java.util.NoSuchElementException;
 
 public class Application {
     private static final int _ball = 0;
-    private static final int _strike = 0;
+    private static final int _strike = 1;
 
     public static void main(String[] args) {
+        List<Integer> comp, userInput, result;
+        boolean isInGame;
+
         System.out.print("숫자 야구 게임을 시작합니다.\n");
+
+        while (true) {
+            isInGame = true;
+            comp = generateRandomValue();
+            while (isInGame) {
+                System.out.print("숫자를 입력해주세요 : ");
+                userInput = splitDigits(isLegalInput(readInt()));
+                result = getResult(userInput, comp);
+                printHint(result);
+                isInGame = !isGameEnd(result);
+            }
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            if (readInt() == 2) {
+                break;
+            }
+        }
     }
 
     private static boolean isGameEnd(List<Integer> result) {
@@ -33,7 +53,7 @@ public class Application {
         } else if (strikeCount > 0) {
             System.out.print(strikeCount + "스트라이크\n");
         } else {
-            System.out.print(strikeCount + "낫싱\n");
+            System.out.print("낫싱\n");
         }
     }
 
@@ -64,6 +84,10 @@ public class Application {
         int front = input / 100;
         int middle = (input % 100) / 10;
         int rear = input % 10;
+
+        if (input == -1) {
+            throw new IllegalArgumentException();
+        }
 
         digits.add(front);
         digits.add(middle);
