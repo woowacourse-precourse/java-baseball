@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,21 @@ public class Application {
 
         List<Integer> computerNumber = makeRandomNumber();
 
-        String userNumber = inputUserNumber();
+        while(true) {
+
+            String userNumber = Console.readLine();
+
+            //제한사항 체크
+            try {
+                validate(userNumber);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(e);
+            }
+
+            System.out.println(userNumber);
+
+            if (computerNumber.equals(userNumber)) break;
+        }
     }
 
     public static List<Integer> makeRandomNumber(){
@@ -34,6 +49,15 @@ public class Application {
         String userNumber = Console.readLine();
 
         return userNumber;
+    }
+
+    public static void validate(String userNumber){
+        for(char number : userNumber.toCharArray()){
+            // 중복된 숫자가 있으면 예외
+            if( userNumber.chars().filter(c->c == number).count() > 1 ){
+                throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다!");
+            }
+        }
     }
 
 }
