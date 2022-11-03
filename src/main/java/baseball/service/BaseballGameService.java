@@ -8,15 +8,26 @@ import java.util.stream.Collectors;
 
 public class BaseballGameService {
     private final NumberGenerator numberGenerator = new NumberGenerator();
+    private GameNumber computerGameNumber;
 
-    public void playGame(String playerInputNumbers) {
-        GameNumber computerNumbers = new GameNumber(numberGenerator.createRandomNumbers());
-        GameNumber playerNumbers = new GameNumber(convertToList(playerInputNumbers));
-
-        
+    public void newGame() {
+        computerGameNumber = new GameNumber(numberGenerator.createRandomNumbers());
     }
 
+    public void playGame(String playerInputNumbers) {
+        GameNumber playerGameNumber = new GameNumber(convertToList(playerInputNumbers));
+        List<Integer> playerNumbers = playerGameNumber.getNumbers();
+        List<Integer> computerNumbers = computerGameNumber.getNumbers();
+
+        List<Integer> gameResult = playerNumbers.stream()
+                .map(computerNumbers::indexOf)
+                .collect(Collectors.toList());
+    }
+
+
     private List<Integer> convertToList(String playerInputNumbers) {
-        return Arrays.stream(playerInputNumbers.split("")).map(Integer::valueOf).collect(Collectors.toList());
+        return Arrays.stream(playerInputNumbers.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 }

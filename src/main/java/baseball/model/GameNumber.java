@@ -19,6 +19,10 @@ public class GameNumber {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void checkDuplicated(List<Integer> numbers) {
         Set<Integer> DeduplicationNumbers = new HashSet<>(numbers);
 
