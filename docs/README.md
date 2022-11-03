@@ -27,12 +27,13 @@
 
 
 #### 입력뷰
-1. InputView
-   1. user에게 3자리수를 입력받습니다.
-2. InputViewValidator
-   2. 일력받은 숫자가 서로 다른 3자리 수 인자 확인기능
-3. InputRestartGameOrNot
-   1. 입력받은 숫자를 근거로 게임 재시작 기능
+Inputview
+- 게임 입력 숫자 요청
+- 게임 재시작 숫자 요청
+  InputViewValidator
+- 입력된 숫자 길이 확인 기능
+- 입력된 숫자가 서로 다른 숫자 확인 기능
+- TestCase 작성
 
 #### 출력뷰
 1. OutPutView
