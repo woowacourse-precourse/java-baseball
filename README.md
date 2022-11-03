@@ -5,9 +5,9 @@
     - ❌게임 진행하는 메소드 (newGame)
     - ❌게임 재시작하는 메소드 (restartGame)
 - dealer
-    - ❌게임 진행 확인용 boolean 필드 (isGameGoing)
-    - ❌서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
-    - ❌서로 다른 3자리 수를 생성하고 불러오는 메소드 (getNewThreeDifferentNumbers)
+    - ✅게임 진행 확인용 boolean 필드 (isGameGoing)
+    - ✅서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
+    - ✅서로 다른 3자리 수를 생성하고 불러오는 메소드 (getNewThreeDifferentNumbers)
 - player
     - ❌입력값이 담길 String 필드 (inputValue)
     - ❌서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
