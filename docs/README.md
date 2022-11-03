@@ -15,3 +15,19 @@
             - 올바른 입력인지 예외 확인
 - 예외 발생
     - `IllegalArgumentException` 발생 후 어플리케이션 종료
+
+<br>
+
+## 📋 기능 목록
+
+- [ ] 컴퓨터 수를 생성한다.
+    - 컴퓨터 수는 1부터 9까지 서로 다른 임의의 수 3개로 이뤄진다.
+    - `camp.nextstep.edu.missionutils.Randoms.pickNumberInRange()`를 활용
+- [ ] 플레이어의 수와 컴퓨터의 수를 비교한다.
+    - [ ] 몇 개의 수가 동일한 지 구한다.
+    - [ ] 몇 개의 수가 같은 자리에 있는 지 구한다.
+- [ ] 판정 결과를 낸다.
+- [ ] 게임을 시작한다.
+- [ ] 플레이어 수를 생성한다.
+    - `camp.nextstep.edu.missionutils.Console.readLine()`를 활용
+- [ ] 게임을 종료 및 재시작 한다.
