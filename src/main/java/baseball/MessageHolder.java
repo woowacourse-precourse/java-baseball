@@ -1,11 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class MessageHolder {
 
     public void init() {
     }
 
     public void print_start_messege() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public int print_get_game_input() {
