@@ -89,16 +89,29 @@ class NumberScannerTest {
             }
         }
 
+        @Nested
+        class 숫자가_아닌_값을_입력한다 {
+            @ParameterizedTest
+            @ValueSource(strings = {"", "안녕ㅎ", "hi", "^^"})
+            void test(String inputValue) {
+                InputStream inputStream = getInputStream(inputValue);
+                System.setIn(inputStream);
+
+                assertThatThrownBy(numberScanner::inputNumber)
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자만 입력해 주세요.");
+            }
+        }
+
         @Test
-        void 숫자를_입력하지_않는다() {
-            InputStream inputStream = getInputStream("");
+        void 음수_값을_입력한다() {
+            InputStream inputStream = getInputStream("-123");
             System.setIn(inputStream);
 
             assertThatThrownBy(numberScanner::inputNumber)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("세 자리의 숫자를 입력해 주세요.");
+                    .hasMessageContaining("양수만 입력해 주세요.");
         }
-
     }
 
     @Nested
@@ -140,6 +153,4 @@ class NumberScannerTest {
         }
 
     }
-
-
 }

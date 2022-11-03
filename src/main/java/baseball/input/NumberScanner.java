@@ -9,10 +9,7 @@ public class NumberScanner {
 
     public String inputNumber() {
         String inputValue = readLine();
-
-        validateLengthForGame(inputValue);
-        validateContainsZero(inputValue);
-        validateDuplicate(inputValue);
+        validateInputValue(inputValue);
 
         return inputValue;
     }
@@ -29,6 +26,28 @@ public class NumberScanner {
             return Console.readLine();
         } catch (NoSuchElementException e) {
             return "";
+        }
+    }
+
+    private void validateInputValue(String inputValue) {
+        validateItIsNumber(inputValue);
+        validatePositiveNumber(inputValue);
+        validateLengthForGame(inputValue);
+        validateContainsZero(inputValue);
+        validateDuplicate(inputValue);
+    }
+
+    private void validateItIsNumber(String inputValue) {
+        try {
+            Integer.parseInt(inputValue);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해 주세요.");
+        }
+    }
+
+    private void validatePositiveNumber(String inputValue) {
+        if (inputValue.contains("-")) {
+            throw new IllegalArgumentException("양수만 입력해 주세요.");
         }
     }
 
