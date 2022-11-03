@@ -1,17 +1,14 @@
 package baseball;
 
+import baseball.utils.GameNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        Set<Integer> gameNumber = new HashSet<>();
-        while (gameNumber.size() < 3) {
-            gameNumber.add(Randoms.pickNumberInRange(1, 9));
-        }
+        Set<Integer> gameNumber = GameNumberGenerator.generate();
 
         System.out.println("숫자 야구게임을 시작합니다.");
         boolean proceeding = true;
