@@ -28,4 +28,36 @@ public class Computer {
     public ArrayList<Integer> getComputerNumber() {
         return computerNumber;
     }
+
+    public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
+        int count=0;
+        for (int i = 0; i <COMPUTER_NUMBER_SIZE; i++) {
+            count = checkStrikeComputerNumPlayerNum(computerNum, playerNum, count, i);
+        }
+        return count;
+    }
+
+    private static int checkStrikeComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int i) {
+        if(computerNum.get(i)== playerNum.get(i)){
+            count++;
+        }
+        return count;
+    }
+
+    public int countBall(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
+        int count=0;
+        for (int computerNumIdx = 0; computerNumIdx <COMPUTER_NUMBER_SIZE; computerNumIdx++) {
+            for(int playerNumIdx=computerNumIdx+1;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
+                count = checkBallComputerNumPlayerNum(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
+            }
+        }
+        return count;
+    }
+
+    private static int checkBallComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int i, int j) {
+        if(computerNum.get(i)== playerNum.get(j)){
+            count++;
+        }
+        return count;
+    }
 }
