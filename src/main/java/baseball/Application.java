@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -80,6 +77,14 @@ public class Application {
         private void validateUse0(List<Integer> numsList) {
             if (numsList.contains(0)) {
                 throw new IllegalArgumentException("숫자는 1부터 9까지만 사용되어야 합니다. 0을 포함할 수 없습니다.");
+            }
+        }
+
+        private void validateDuplicateValues(List<Integer> numsList) {
+            Set<Integer> numsSet = new HashSet<>(numsList);
+
+            if (numsList.size() != numsSet.size()) {
+                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
             }
         }
     }
