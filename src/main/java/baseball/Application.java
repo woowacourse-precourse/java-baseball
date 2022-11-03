@@ -26,6 +26,7 @@ public class Application {
         }
         List<Integer> answer;
         answer = makeRandomNum();
+
     }
 
     public static List<Integer> makeRandomNum() {
@@ -60,20 +61,37 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         return guess;
     }
-    public static class Result{
+
+    public static class Result {
         public static int strike;
         public static int ball;
-        public Result(){
+
+        public Result() {
         }
-        public Result(int strike,int ball){
-            this.strike=strike;
-            this.ball=ball;
+
+        public Result(int strike, int ball) {
+            this.strike = strike;
+            this.ball = ball;
         }
-        int getStrike(){
+
+        int getStrike() {
             return this.strike;
         }
-        int getBall(){
+
+        int getBall() {
             return this.ball;
         }
+    }
+
+    public static Result checkNum(List<Integer> answer, List<Integer> guess) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < guess.size(); i++) {
+            if (answer.get(i) == guess.get(i))
+                strike++;
+            else if (answer.contains(guess.get(i)))
+                ball++;
+        }
+        return new Result(strike, ball);
     }
 }
