@@ -33,4 +33,11 @@ class UserInputNumbersTest {
         assertThatThrownBy(() -> UserInputNumbers.validUserInputNumber(userInputValue))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 입력값_테스트_비정상입력_같은숫자포함() {
+        String userInputValue = "224";
+        assertThatThrownBy(() -> UserInputNumbers.validUserInputNumber(userInputValue))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
