@@ -14,9 +14,16 @@ public class Application {
 
     public static void playGame() {
         List<Integer> computerNumber = generateNumber();
-        List<Integer> guessNumber = getGuessNumber();
-
+        while (true) {
+            List<Integer> guessNumber = getGuessNumber();
+            boolean isAllStrike = checkNumber(guessNumber);
+            if (isAllStrike) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
+
     public static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -27,6 +34,7 @@ public class Application {
         }
         return computer;
     }
+
     public static List<Integer> getGuessNumber() {
         String tmpStr = Console.readLine();
         List<Integer> numberList = stringToIntegerList(tmpStr);
@@ -36,6 +44,7 @@ public class Application {
 
         return numberList;
     }
+
     public static List<Integer> stringToIntegerList(String tmpStr) {
         String[] tmpStrArr = tmpStr.split("");
         List<Integer> tmpList = new ArrayList<>();
@@ -45,11 +54,13 @@ public class Application {
         }
         return tmpList;
     }
+
     public static boolean validateNumber() {
 
         return true;
     }
-    public static void checkNumber(List<Integer> inputNumber){
+
+    public static boolean checkNumber(List<Integer> inputNumber) {
 
     }
 
