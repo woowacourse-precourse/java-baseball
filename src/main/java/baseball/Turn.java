@@ -22,14 +22,14 @@ public class Turn {
     }
 
     public void transformPlayerInputToList() {
-        String playerInput = getPlayerInput();
+        String playerInput = getPlayerInput(ASK_FOR_NUMBER);
         for (int index = 0; index < playerInput.length(); index++) {
             playerNumberList.add(playerInput.charAt(index) - '0');
         }
     }
 
-    public String getPlayerInput() {
-        System.out.print(ASK_FOR_NUMBER);
+    public String getPlayerInput(String message) {
+        System.out.print(message);
         return Console.readLine();
     }
 

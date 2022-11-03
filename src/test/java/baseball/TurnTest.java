@@ -41,7 +41,7 @@ public class TurnTest {
         final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThat(turn.getPlayerInput()).isEqualTo(testInput);
+        assertThat(turn.getPlayerInput("숫자를 입력해주세요 : ")).isEqualTo(testInput);
     }
 
     @Test
