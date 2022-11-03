@@ -7,21 +7,48 @@ import java.util.List;
 
 public class BaseBallGameModel {
     private int ball, strike;
-    private List<Integer> computer;
+    private List<Integer> computerNumbers = new ArrayList<>();
+    private boolean isFinish;
 
-    public BaseBallGameModel() {
-        this.ball = 0;
-        this.strike = 0;
+    public int ballCount(List<Integer> userNumbers) {
+        ball = 0;
+
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.contains(userNumbers.get(i))
+                    && computerNumbers.get(i) != userNumbers.get(i))
+                ball++;
+        }
+
+        return ball;
     }
 
-    private void createRandomNumber() {
-        computer = new ArrayList<>();
+    public int strikeCount(List<Integer> userNumbers) {
+        strike = 0;
 
-        while (computer.size() < 3) {
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i) == userNumbers.get(i))
+                strike++;
+        }
+
+        if (strike == 3)
+            isFinish = true;
+
+        return strike;
+    }
+
+    public boolean isFinish() {
+        return isFinish;
+    }
+
+    public void createRandomNumber() {
+        computerNumbers.clear();
+        isFinish = false;
+
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if (!computer.contains(randomNumber))
-                computer.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber))
+                computerNumbers.add(randomNumber);
         }
     }
 }
