@@ -61,4 +61,28 @@ public class Application {
 
         return true;
     }
+
+    public static void validateUserInput(String userInput) {
+        try {
+            validateUserInputSize(userInput);
+            validateUserInputForm(userInput);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
+
+    public static void validateUserInputSize(String userInput) {
+        if(userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static Exception validateUserInputForm(String userInput) {
+        for(Character userNumber : userInput.toCharArray()) {
+            if(!('1' <= userNumber && userNumber <='9')) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return null;
+    }
 }
