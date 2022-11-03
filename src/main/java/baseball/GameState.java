@@ -10,4 +10,8 @@ public class GameState {
     public void addBall() {
         ++ball;
     }
+
+    public int getStrike() { return strike; }
+
+    public int getBall() { return ball; }
 }

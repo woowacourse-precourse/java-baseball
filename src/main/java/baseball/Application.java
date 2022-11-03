@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Application {
     static final Set<String> CONTROL_NUMBER = Set.of("1", "2");
+    static final int ANSWER_COUNT = 3;
 
     public static void main(String[] args) {
         PrintComment.printStartComment();
@@ -15,6 +16,11 @@ public class Application {
             String userInput = Console.readLine();
             GameState gameState = game.compareNumbers(userInput);
             PrintComment.printUserInput(userInput);
+            PrintComment.printGameState(gameState);
+            if (gameState.getStrike()!=ANSWER_COUNT) {
+                continue;
+            }
+            PrintComment.printCorrectComment();
         } while(true);
     }
 
