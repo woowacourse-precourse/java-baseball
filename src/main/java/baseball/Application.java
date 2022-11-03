@@ -8,7 +8,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
     }
+
 
     public static class Input {
         public List<Integer> UserNumber() {
@@ -36,16 +38,18 @@ public class Application {
         return false;
     }
 
-    public static boolean PlayAgain(){
+    public static boolean PlayAgain() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         String call = Console.readLine();
         if(call.equals("1")) return true;
-        if(!call.equals("1")) {
+        if (call.equals("2")) return false;
+        else {
             System.out.println("다시 입력해주세요");
             PlayAgain();
         }
-        return false;
+
+        return true;
     }
 }
 
