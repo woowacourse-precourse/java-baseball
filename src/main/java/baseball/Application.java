@@ -13,7 +13,18 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         guess = String.valueOf(new Scanner(System.in));
 
-        if(guess.length() == 3 ) System.out.println(guess);
-        else throw new IllegalArgumentException ("입력이 잘못되었습니다");
+        checkString(guess);
+    }
+
+    public void checkString(String str){
+        int temp = 1;
+        if (str.length()!=3)
+            throw new IllegalArgumentException();
+
+        for (int i = 0; i < str.length(); i++){
+            if(!Character.isDigit(str.charAt(i))){
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
