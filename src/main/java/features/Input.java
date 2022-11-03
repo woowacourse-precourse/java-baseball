@@ -1,33 +1,43 @@
 package features;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import static features.Validation.*;
+import static java.lang.String.valueOf;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 
 public class Input {
-    private static List<Integer> inputNumberRepository = new ArrayList(3);
-    private static final int EXCEPTION = -1;
+    private static Map<Integer, Character> userRepository = new HashMap<>();
 
     // 입력 기능
-    public static List<Integer> input() {
+    public static Map<Integer, Character> input() {
 
         Scanner inputNumbers = new Scanner(System.in);
-
         int threeDigitsNumber = inputNumbers.nextInt();
 
-        // 예외 처리
-//        if (threeDigitsNumber < 100||threeDigitsNumber > 999 ) { EXCEPTION; }
+        if ( ! validationCheck(threeDigitsNumber) ) { }
 
-//         문자열로 쪼재기
-        String numberToString = Integer.toString(threeDigitsNumber);
+        String numberToString = valueOf(threeDigitsNumber);
 
-        // 숫자 쪼개기
-        while (threeDigitsNumber > 0){
-            inputNumberRepository.add(threeDigitsNumber % 10);
-        }
+        char indexZero = getIndex(numberToString, 0);
+        char indexOne = getIndex(numberToString, 1);
+        char indexTwo = getIndex(numberToString, 2);
 
-        return inputNumberRepository;
+        getPut(0, indexZero);
+        getPut(1, indexOne);
+        getPut(2, indexTwo);
+
+        return userRepository;
+    }
+
+    private static char getIndex(String numberToString, int index) {
+        return numberToString.charAt(index);
+    }
+
+    private static Character getPut(int key, char indexValue) {
+        return userRepository.put(key, indexValue);
     }
 }
