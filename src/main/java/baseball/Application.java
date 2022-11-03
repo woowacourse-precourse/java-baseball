@@ -10,21 +10,23 @@ public class Application {
 
     final static int RESTART = 1;
     final static int GAME_OVER = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         while (true) {
-            List<Integer> computerNumber = computerRanmdomNumberExtract();
+            List<Integer> computerNumber = computerRandomNumberExtract();
             playGame(computerNumber);
 
             int userDecision = getUserDecision();
-            if(isGameOver(userDecision, RESTART, GAME_OVER)){
+            if (isGameOver(userDecision, RESTART, GAME_OVER)) {
                 break;
             }
         }
 
     }
-    public static List<Integer> computerRanmdomNumberExtract() {
+
+    public static List<Integer> computerRandomNumberExtract() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -42,7 +44,7 @@ public class Application {
             List<Integer> userNumberList = inputProcess(inputUserNumber);
             int strike = 0;
             int ball = 0;
-            List<Integer> strikeBall = findStrikeBall(computerNumber, userNumberList, strike, ball);
+            List<Integer> strikeBall = findStrikeBall(computerNumber, userNumberList);
             strike = strikeBall.get(0);
             ball = strikeBall.get(1);
             printGameResult(strike, ball);
@@ -54,38 +56,38 @@ public class Application {
     }
 
     public static List<Integer> findStrikeBall(List<Integer> computerNumber,
-        List<Integer> userNumberList,
-        int strike, int ball) {
+        List<Integer> userNumberList) {
+        int strike = 0;
+        int ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (isStrike(computerNumber.get(i), userNumberList.get(i))) {
+            int nowIndexComputerNumber = computerNumber.get(i);
+            int nowIndexUserNumber = userNumberList.get(i);
+            if (isSame(nowIndexComputerNumber, nowIndexUserNumber)) {
                 strike++;
             } else {
-                ball = getBall(computerNumber, userNumberList, ball, i);
+                ball = getBall(computerNumber, nowIndexUserNumber, ball, i);
             }
         }
         return Arrays.asList(strike, ball);
     }
 
 
-
-    public static boolean isStrike(int computer, int user
-    ) {
-        return computer == user;
-    }
-
-    public static int getBall(List<Integer> computerNumber, List<Integer> userNumberList, int ball,
+    public static int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball,
+        // test 스트라이크볼판정_findStrike검증
         int i) {
         for (int j = 0; j < 3; j++) {
+            int otherIndexComputerNumber = computerNumber.get(j);
             if (i == j) {
                 continue;
             }
-            if (isBall(userNumberList.get(i), computerNumber.get(j))) {
+            if (isSame(nowIndexUserNumber, otherIndexComputerNumber)) {
                 ball++;
             }
         }
         return ball;
     }
-    public static boolean isBall(int user, int computer
+
+    public static boolean isSame(int user, int computer // test 스트라이크볼판정_findStrike검증
     ) {
         return user == computer;
     }
@@ -102,15 +104,15 @@ public class Application {
     }
 
 
-    public static Integer getUserDecision() {
+    public static Integer getUserDecision() { //test 게임종료_재시작체크
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Integer user_decision = Integer.parseInt(Console.readLine());
-        System.out.println("user_decision = " + user_decision);
 
         return user_decision;
     }
 
-    public static boolean isGameOver(int userDecision, int RESTART, int GAME_OVER){
+    public static boolean isGameOver(int userDecision, int RESTART,
+        int GAME_OVER) { //test 게임종료_재시작체크
         if (userDecision == GAME_OVER) {
             return true;
         } else if (userDecision == RESTART) {
@@ -120,31 +122,37 @@ public class Application {
         }
     }
 
-    public static String getInputUserNumber() {
+    public static String getInputUserNumber() { // test 입력시오류경우_확인
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
         return inputUserNumber;
     }
 
-    public static void isInputAlright(String user1) {
+    public static void isInputAlright(String userNumber) { // test 입력시오류경우_확인
         //입력시 길이가 숫자길이가 3이 아닌경우
-        if (user1.length() != 3) {
+        if (userNumber.length() != 3) {
             throw new IllegalArgumentException("입력 오류");
         }
         //중복된 숫자가 있는지?
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                inputOverlapCheck(user1, i, j);
+                if (i == j) {
+                    continue;
+                }
+                char nowIndexUserNumber = userNumber.charAt(i);
+                char otherIndexUserNumber = userNumber.charAt(j);
+                inputOverlapCheck(nowIndexUserNumber, otherIndexUserNumber);
             }
         }
     }
 
-    public static List<Integer> inputProcess(String userNumber) {
+    public static List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
         return convertStringToIntegerList(userNumber);
     }
 
-    public static List<Integer> convertStringToIntegerList(String userNumber) {
+
+    public static List<Integer> convertStringToIntegerList(String userNumber) { // test 입력시오류경우_확인
         List<Integer> userNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int putNumber = Character.getNumericValue(userNumber.charAt(i));
@@ -153,12 +161,11 @@ public class Application {
         return userNumberList;
     }
 
-    public static void inputOverlapCheck(String user1, int i, int j) {
-        if (i == j) {
-            return;
-        }
-        if (user1.charAt(j) == user1.charAt(i)) {
+    public static void inputOverlapCheck(char nowIndexUserNumber,
+        char otherIndexUserNumber) {  // test 입력시오류경우_확인
+        if (nowIndexUserNumber == otherIndexUserNumber) {
             throw new IllegalArgumentException("입력 숫자중 중복");
         }
     }
+
 }
