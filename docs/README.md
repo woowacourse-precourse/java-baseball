@@ -8,17 +8,22 @@
 ## 처리
 * gameStart (시작 처리)
     * -> inputNumber
+* gameSet (목표 숫자 설정)
 * gameEnd (종료 처리)
-* checkInputValid (input 유효성 확인)
-    * -> 유효하다면 숫자 처리 로직
-* checkCommandValid (명령어 유효성 확인)
-    * -> 유효하다면 명령어 처리
 * gameMainLogic (숫자 처리 로직)
     * -> getStrikes
     * -> getBalls
     * -> 결과 출력
 * getStrikes (스트라이크 갯수 반환)
 * getBalls (볼 갯수 반환)
+
+
+## 유효성
+
+* checkInputValid (input 유효성 확인)
+  * -> 유효하다면 숫자 처리 로직
+* checkCommandValid (명령어 유효성 확인)
+  * -> 유효하다면 명령어 처리
 
 ## 출력
 * startMessage (시작 안내 출력)
