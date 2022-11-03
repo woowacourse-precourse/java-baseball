@@ -12,23 +12,24 @@ public class Referee {
         this.hint = new Hint();
     }
 
-    public Hint getHint(List<Integer> userBalls) {
+    public Hint getHint(Balls userBalls) {
         hint.init();
-        for (int i = 0; i < userBalls.size(); i++) {
+        for (int i = 0; i < userBalls.getSize(); i++) {
             getStrike(userBalls, i);
             getBall(userBalls, i);
         }
         return this.hint;
     }
 
-    private void getStrike(List<Integer> userBalls, int index) {
-        if (computer.getBallNumber(index) == userBalls.get(index)) {
+    private void getStrike(Balls userBalls, int index) {
+        if (computer.getBallNumber(index).equals(userBalls.getBall(index))) {
             hint.increaseStrike();
         }
     }
 
-    private void getBall(List<Integer> userBalls, int index) {
-        if (userBalls.contains(computer.getBallNumber(index)) && computer.getBallNumber(index) != userBalls.get(index)) {
+    private void getBall(Balls userBalls, int index) {
+        if (userBalls.isContain(computer.getBallNumber(index)) && !computer.getBallNumber(index)
+                .equals(userBalls.getBall(index))) {
             hint.increaseBall();
         }
     }

@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> comBalls;
+    private final Balls comBalls;
 
-    public Computer(List<Integer> comBalls) {
+    public Computer(Balls comBalls) {
         this.comBalls = comBalls;
     }
 
-    public int getBallNumber(int index) {
-        return comBalls.get(index);
+    public Ball getBallNumber(int index) {
+        return comBalls.getBall(index);
     }
 }
