@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 
 public class Input {
     private final static String  REQUEST_PLAYER_GUESS = "숫자를 입력해주세요 : ";
@@ -19,10 +20,15 @@ public class Input {
             throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
         }
 
+        HashSet<Character> guessNumbers = new HashSet<>();
         for (char guessNumber : playerGuess.toCharArray()) {
             if (guessNumber < MIN_GUESS_NUMBER || guessNumber > MAX_GUESS_NUMBER) {
                 throw new IllegalArgumentException("올바른 형식으로 입력해주세요");
             }
+            if (guessNumbers.contains(guessNumber)) {
+                throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
+            }
+            guessNumbers.add(guessNumber);
         }
 
     }
