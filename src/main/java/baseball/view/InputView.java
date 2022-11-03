@@ -12,7 +12,7 @@ public class InputView {
 	}
 
 	public static String printInputRestartMessage() {
-		System.out.println(INPUT_NUMBER_MESSAGE);
+		System.out.println(INPUT_RESTART_MESSAGE);
 		return Console.readLine();
 	}
 }
