@@ -12,7 +12,7 @@ public class Computer {
         numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 
-    public List<Integer> getComputersPick(){
+    public List<Integer> getComputersPick() {
         if (numbers == null){
             pickRandomNumbersFrom1To9();
         }

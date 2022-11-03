@@ -1,16 +1,25 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
-import java.util.ArrayList;
+
+import java.util.*;
 
 public class User {
 
-    public void pickNumbers(){
+    public List<Integer> pickNumbers(){
         String numbers = Console.readLine();
         validateInput(numbers);
 
+        return StringToList(numbers);
+    }
 
+    private List<Integer> StringToList(String input){
+        List<Integer> result = new ArrayList<>();
+
+        for (char c: input.toCharArray()){
+            result.add(Character.getNumericValue(c));
+        }
+        return result;
     }
 
     public void validateInput(String input){
