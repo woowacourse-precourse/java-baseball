@@ -15,12 +15,18 @@ public class ComputerPlayer {
 	}
 
 	public void selectNumbers() {
-		int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER.getValue(), MAXIMUM_NUMBER.getValue());
-		while (numberList.size() < DIGIT_NUMBER.getValue()) {
+		int randomNumber;
+
+		while (numberList.size() < DIGIT_NUMBER.getCode()) {
+			randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER.getCode(), MAXIMUM_NUMBER.getCode());
 			if (!numberList.contains(randomNumber)) {
 				numberList.add(randomNumber);
 			}
 		}
 	}
+
+	 public ArrayList<Integer> getNumberList() {
+		return numberList;
+	 }
 
 }
