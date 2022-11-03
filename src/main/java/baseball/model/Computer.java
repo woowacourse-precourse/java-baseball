@@ -3,7 +3,9 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Computer {
@@ -32,7 +34,15 @@ public class Computer {
 	}
 
 	protected List<Integer> generateRandomNumberList() {
-		return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, MAX_ANSWER_COUNT);
+		Set<Integer> randomNumbers = new LinkedHashSet<>();
+
+		while (randomNumbers.size() != MAX_ANSWER_COUNT) {
+			int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+			randomNumbers.add(randomNumber);
+		}
+
+		return new ArrayList<>(randomNumbers);
+//		return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, MAX_ANSWER_COUNT);
 	}
 
 	public boolean isAnswer(Player player) {
