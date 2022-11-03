@@ -18,11 +18,11 @@ public class Application {
     }
 
     public static List<Integer> generateAnswer() {
-        List<Integer> answer = new ArrayList<>();
+        String answer = "";
 
-        while(answer.size() < 3) {
+        while(answer.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!answer.contains(randomNumber)) {
+            if(!answer.contains((char)randomNumber)) {
                 answer.add(randomNumber);
             }
         }

@@ -28,6 +28,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 컴퓨터가_임의의_수_생성() {
+        List<Integer>
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
