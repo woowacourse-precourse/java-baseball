@@ -14,11 +14,14 @@ public class TurnTest {
     @Test
     void transformPlayerInputToList_test_transforming_input_string_to_list() {
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "234").getBytes();
+        String testInput = "234";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         turn.transformPlayerInputToList();
         try {
-            Field field = turn.getClass().getField("playerNumberList");
+            Field field = turn.getClass().getDeclaredField("playerNumberList");
+            field.setAccessible(true);
+
             List<Integer> list = (List<Integer>) field.get(turn);
 
             List<Integer> result = List.of(2, 3, 4);
@@ -34,16 +37,18 @@ public class TurnTest {
     @Test
     void getPlayerInput_test_getting_input() {
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "234").getBytes();
+        String testInput = "234";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThat(turn.getPlayerInput()).isEqualTo("234");
+        assertThat(turn.getPlayerInput()).isEqualTo(testInput);
     }
 
     @Test
     void validatePlayerNumberList_test_input_length_larger_than_3(){
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "1234").getBytes();
+        String testInput = "1234";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         turn.transformPlayerInputToList();
         assertThatThrownBy(() -> turn.validatePlayerNumberList())
@@ -54,7 +59,8 @@ public class TurnTest {
     @Test
     void validatePlayerNumberList_test_input_length_smaller_than_3(){
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "12").getBytes();
+        String testInput = "12";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         turn.transformPlayerInputToList();
         assertThatThrownBy(() -> turn.validatePlayerNumberList())
@@ -65,7 +71,8 @@ public class TurnTest {
     @Test
     void validatePlayerNumberList_test_input_including_non_number_character(){
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "ab-").getBytes();
+        String testInput = "ab-";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         turn.transformPlayerInputToList();
         assertThatThrownBy(() -> turn.validatePlayerNumberList())
@@ -76,7 +83,8 @@ public class TurnTest {
     @Test
     void validatePlayerNumberList_test_input_including_redundant_numbers(){
         Turn turn = new Turn();
-        final byte[] buf = String.join("\n", "112").getBytes();
+        String testInput = "112";
+        final byte[] buf = String.join("\n", testInput).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         turn.transformPlayerInputToList();
         assertThatThrownBy(() -> turn.validatePlayerNumberList())
