@@ -28,14 +28,15 @@ public class Application {
         boolean playBaseball = true;
         while (playBaseball) {
             String stringUserInput = getUserInput();
-            int[] userInput = new int[INPUT_BASEBALL_LENGTH];
+            int[] userInput;
             try {
                 isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
+                userInput = stringToIntegerArray(stringUserInput);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException);
                 break;
             }
-
+            int ball = countBalls(userInput, computerNumber);
         }
     }
 
@@ -113,8 +114,31 @@ public class Application {
         for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
             input[i] = Integer.parseInt(String.valueOf(stringUserInput.charAt(i)));
         }
-        
+
         return input;
+    }
+
+    static int countBalls(int[] userInput, int[] computerNumber) {
+        int count = 0;
+        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if(isBall(userInput[i], i, computerNumber)) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    static boolean isBall(int userInput, int index, int[] computerNumber) {
+        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if(i == index) {
+                continue;
+            }
+            if(userInput == computerNumber[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
