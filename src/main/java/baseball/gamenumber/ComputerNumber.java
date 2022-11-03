@@ -10,7 +10,7 @@ public class ComputerNumber extends GameNumber {
     private static final int END_INCLUSIVE = 9;
     private static final int NUMBER_DIGITS = 3;
 
-    private final List<Integer> computerNumberList = new ArrayList<>();
+    private final List<Integer> computerNumberList = new ArrayList<>(NUMBER_DIGITS);
 
     public ComputerNumber() {
     }
