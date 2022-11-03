@@ -21,6 +21,7 @@ public class Application {
 
         int strikeCount = 0;
         int ballCount = 0;
+        int nothingCount = 0;
 
         int escapeNumber = 1;
         while (escapeNumber != 1){
@@ -51,9 +52,26 @@ public class Application {
                         //ball 상황
                     }
 
+                } else if (!computer.contains(user.get(position))){
+
+                    nothingCount ++;
+
                 }
 
             }
+
+            if (nothingCount == 3){
+                System.out.println("낫싱");
+            } else if (ballCount > 0 || strikeCount > 0){
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            } else if (ballCount == 0){
+                System.out.println(strikeCount + "스트라이크" );
+            } else if (strikeCount == 0) {
+                System.out.println(ballCount + "볼" );
+            }
+
+
+
 
             // 예외사항 (아직 x)//
 
