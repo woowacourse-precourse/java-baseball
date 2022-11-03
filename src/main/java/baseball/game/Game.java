@@ -43,13 +43,13 @@ public class Game {
 	private boolean isGameOver() {
 		if (score.isWin()) {
 			System.out.println(GAME_WIN_MESSAGE);
-			System.out.println(GAME_RESTART_MESSAGE);
 			return !restartOrExit();
 		}
 		return false;
 	}
 
 	private boolean restartOrExit() {
+		System.out.println(GAME_RESTART_MESSAGE);
 		String input = Console.readLine();
 		if (input.equals("1")) {
 			computer.generateNumbers();
