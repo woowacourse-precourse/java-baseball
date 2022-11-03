@@ -26,17 +26,12 @@ public class Application {
     }
 
     public int getStrike(List<Integer> answer, List<Integer> userInput) {
-        return 0;
-    }
-
-    public int getBall(List<Integer> answer, List<Integer> userInput) {
         int count = 0;
-        List<Integer> collect = answer.stream()
-                .filter(a -> IfContainsThenRemove(a, userInput))
-                .
-                .collect(Collectors.toList());
-
-        System.out.println(collect);
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i) == userInput.get(i)) {
+                count++;
+            }
+        }
         return count;
     }
 
