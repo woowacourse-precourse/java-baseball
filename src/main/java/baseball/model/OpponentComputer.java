@@ -7,4 +7,8 @@ public class OpponentComputer {
     public OpponentComputer(int randomNumber) {
         this.number = randomNumber;
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
