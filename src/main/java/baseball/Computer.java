@@ -27,7 +27,6 @@ public class Computer {
 
     public void checkAnswer(List<Integer> list) {
         int[] counts = new int[]{0, 0};
-        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < list.size(); i++) {
             checkByBalls(i, list.get(i), counts);
