@@ -272,6 +272,20 @@ class ApplicationTest extends NsTest {
         boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(0, 0)));
         assertThat(result).isTrue();
     }
+
+
+    @Test
+        // Computer.isEndTheGame
+    void 게임종료_확인_case_1() {
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+        computer.isRightThreeNumOfComputer(123);
+        boolean result = computer.isEndTheGame();
+        assertThat(result).isTrue();
+    }
     // computer Test 종료
 
     @Test
