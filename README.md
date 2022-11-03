@@ -1,5 +1,48 @@
 # 미션 - 숫자 야구
 
+## 구현 기능 목록
+
+- [ ] FlowHandler 클래스  
+handleGameFlow()에서 while(true) 문으로 무한히 게임 진행  
+게임 시작 시 정답 세팅 및 runGame() 실행, endGame()으로 게임 종료 여부 확인
+
+  runGame: while(isThreeStrike()) 내부에서 무한히 input->점수추출->점수출력 반복
+- 
+  - [ ] ScoreCalculator scoreCalculator 인스턴스 변수
+  - [ ] InputValidator inputValidator 인스턴스 변수
+  - [ ] IOMessageHandler io 인스턴스 변수
+  - [ ] void handleGameFlow() 메서드: end 변수를 가지며 RunGame()의 반환값이 true인 동안 while문을 계속 돔
+    - [ ] void initGame() 메서드: 메세지 출력, 랜덤 생성하여 scoreCalculator 초기화
+    - [ ] boolean runGame() 메서드: end변수를 가지며 endGame()의 반환값이 false인 동안 while문을 계속 돔
+      - [ ] List<Integer> getInput() 메서드: 메세지 출력, 입력 가져와 validation 진행
+      - [ ] Score getScore(List<Integer>) 메서드
+        - [ ] convertScoreToString(Score) 메서드
+      - [ ] boolean isThreeStrike(Score)
+
+- [X] Score 클래스: 볼, 스트라이크 횟수를 보관하는 DTO
+
+- [ ] ScoreCalculator 클래스
+  - [ ] List<Integer> answer 인스턴스 변수 
+  - [ ] ScoreCalculator
+
+- [ ] InputValidator 클래스: try~catch로 IllegalArgumentException 처리
+    - [ ] boolean Validate(List<Integer>) 메서드
+    - [ ] boolean Validate(Integer) 메서드
+
+- [ ] BaseballNumGenerator 클래스
+  - [ ] List<Integer> getThreeNumList() 메서드
+    - [ ] int getSingleDigit() 메서드
+
+
+- [ ] IOMessageHandler 클래스
+  - [ ] void printInitMessage() 메서드
+  - [ ] void printInputMessage() 메서드
+  - [ ] String getInputString() 메서드
+  - [ ] void printResultMessage(String) 메서드
+  - [ ] void printEndMessage() 메서드
+  - [ ] int getRestartDigit() 메서드
+
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
