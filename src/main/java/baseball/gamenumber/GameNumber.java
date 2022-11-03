@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameNumber {
-    private final int NUMBER_DIGITS = 3;
+    public final int NUMBER_DIGITS = 3;
     private final String SPLIT_ONE = "";
 
     private List<Integer> numberList = new ArrayList<>(NUMBER_DIGITS);
