@@ -68,4 +68,13 @@ public class StringTest {
 
         assertThat(input.endsWith("@email.com")).isEqualTo(true);
     }
+
+    @Test
+    void replaceAll_지정된_문자열과_일치하는_모든_문자열_변경() {
+        String input = "AAABBBABAB";
+        String result = "AAAbbbAbAb";
+
+        assertThat(input.replaceAll("B", "b"));
+    }
+
 }
