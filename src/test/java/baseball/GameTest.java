@@ -39,6 +39,8 @@ public class GameTest {
             assertThat(result.get(_ball)).isEqualTo(expected[i][_ball]);
         }
     }
+
+    @Test
     void printHint_테스트() {
         int[][] roundResults = {{1, 1}, {0, 0}, {3, 0}, {2, 0}, {0, 3}, {2, 1}};
         String[] expected = {"1볼 1스트라이크", "낫싱", "3스트라이크", "2스트라이크", "3볼", "1볼 2스트라이크"};
