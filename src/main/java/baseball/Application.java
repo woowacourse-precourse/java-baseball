@@ -52,15 +52,11 @@ public class Application {
 
     }
     public static boolean checkError(String tryNumber){
-        if((digitCheck(tryNumber)==false)||lengthCheck(tryNumber)==false){
-            return true;
-        } else return false;
+        return !digitCheck(tryNumber) || !lengthCheck(tryNumber);
 
     }
     public static boolean lengthCheck(String tryNumber){
-        if(tryNumber.length()==3){
-            return true;
-        } else return false;
+        return tryNumber.length()==3;
     }
     public static boolean digitCheck(String tryNumber){
         try {
