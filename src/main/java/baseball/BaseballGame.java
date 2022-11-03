@@ -26,23 +26,25 @@ public class BaseballGame {
     }
 
     public void run() {
-        initialize();
         System.out.println(GAME_START);
 
-        makeRandomNumber();
-        System.out.println("computer = " + computer);
+        while (!isExit) {
+            initialize();
+            makeRandomNumber();
+            System.out.println("computer = " + computer);
 
-        while (!isCorrect) {
-            System.out.print(GET_NUMBER);
-            getUserNumber();
+            while (!isCorrect) {
+                System.out.print(GET_NUMBER);
+                getUserNumber();
 
-            compareNumbers();
-            String result = makeResultString();
-            System.out.println(result);
+                compareNumbers();
+                String result = makeResultString();
+                System.out.println(result);
+            }
+
+            System.out.println(START_AGAIN);
+            startAgain();
         }
-        
-        System.out.println(START_AGAIN);
-        startAgain();
     }
 
     private void initialize() {
