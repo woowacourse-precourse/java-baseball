@@ -17,16 +17,6 @@ public class IOHandler {
 		System.out.print("숫자를 입력해주세요 : ");
 	}
 
-	public List<Integer> getInputList() {
-		String ansString = Console.readLine(); // Console.readLine()은 단 한 줄의 입력만을 받는 게 맞는가?
-		inputValidator.validateAnsString(ansString);
-		List<Integer> inputList = new ArrayList<>(3);
-		for (char c : ansString.toCharArray()) {
-			inputList.add(c-'0');
-		}
-		return inputList;
-	}
-
 	public void printScore(Score score) {
 		int ball = score.getBall();
 		int strike = score.getStrike();
@@ -50,5 +40,20 @@ public class IOHandler {
 			sb.append(strike + "스트라이크");
 		}
 		return sb.toString();
+	}
+
+	public void printGameEndMessage() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	}
+
+	public List<Integer> getInputList() {
+		String ansString = Console.readLine(); // Console.readLine()은 단 한 줄의 입력만을 받는 게 맞는가?
+		inputValidator.validateAnsString(ansString);
+		List<Integer> inputList = new ArrayList<>(3);
+		for (char c : ansString.toCharArray()) {
+			inputList.add(c-'0');
+		}
+		return inputList;
 	}
 }
