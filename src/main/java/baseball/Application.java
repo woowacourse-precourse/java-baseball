@@ -25,6 +25,9 @@ public class Application {
 
                 int count = countSame(computer, user);
                 System.out.println("count: "+count);
+
+                int strike = countStrike(computer, user);
+                System.out.println("strike: "+strike);
             }
 
         } while (retry);
@@ -97,6 +100,18 @@ public class Application {
 
         for(int num : user) {
             if(computer.contains(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private static int countStrike(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+
+        for(int i=0; i<user.size(); i++) {
+            if(Objects.equals(computer.get(i), user.get(i))) {
                 count++;
             }
         }
