@@ -9,7 +9,7 @@ public class BaseballGame {
     private Computer computer;
     private User user;
 
-    private BaseballGame(){
+    BaseballGame(){
         computer = new Computer();
         user = new User();
     }
@@ -20,10 +20,10 @@ public class BaseballGame {
 
         List<Integer> usersPick = user.pickNumbers();
 
-        Map<String, Integer> result = countBallAndStrike(computer.getComputersPick(), usersPick);
+        Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
     }
 
-    public Map<String, Integer> countBallAndStrike(List<Integer> computersPick, List<Integer> usersPick) {
+    public Map<String, Integer> countBallsAndStrikes(List<Integer> computersPick, List<Integer> usersPick) {
         Map<String, Integer> counts = new TreeMap<>();
 
         for (int i = 0; i < computersPick.size(); i++) {
