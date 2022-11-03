@@ -33,24 +33,24 @@ class ApplicationTest extends NsTest {
 
     @Test
     void testFunction1_case1() {
-        Computer.pickNumbers();
-        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
+        Computer computer =  new Computer();
+        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
 
         assertThat(randomNumbers.size()).isEqualTo(3);
     }
 
     @Test
     void testFunction1_case2() {
-        Computer.pickNumbers();
-        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
+        Computer computer =  new Computer();
+        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
 
         assertThat(randomNumbers).isNotEmpty();
     }
 
     @Test
     void testFunction1_case3() {
-        Computer.pickNumbers();
-        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
+        Computer computer =  new Computer();
+        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
 
         assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(1));
         assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(2));
@@ -59,8 +59,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void testFunction1_case4() {
-        Computer.pickNumbers();
-        String randomNumbers = Computer.getRandomNumbers().toString();
+        Computer computer =  new Computer();
+        String randomNumbers = computer.getRandomNumbers().toString().replaceAll("[^0-9]", "");
         String pattern = "^[1-9]*$";
 
         assertThat(Pattern.matches(pattern, randomNumbers)).isTrue();
