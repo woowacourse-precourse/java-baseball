@@ -40,6 +40,7 @@ public class User {
         long count = baseballNumber.chars()
                 .distinct()
                 .filter(Character::isDigit)
+                .filter(o -> o != '0')
                 .count();
 
         return count == 3;
