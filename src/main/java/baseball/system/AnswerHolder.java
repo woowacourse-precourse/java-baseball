@@ -12,4 +12,8 @@ public class AnswerHolder {
     public static void setAnswer(Answer answer) {
         answerHolder.set(answer);
     }
+
+    public static void clearHolder() {
+        answerHolder.remove();
+    }
 }

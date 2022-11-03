@@ -53,5 +53,11 @@ public class BaseballApplication {
         if (restart == Restart.RESTART) {
             run();
         }
+
+        doAfterRun();
+    }
+
+    private void doAfterRun() {
+        AnswerHolder.clearHolder();
     }
 }
