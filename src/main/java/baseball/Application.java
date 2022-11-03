@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,6 +10,12 @@ public class Application {
         // TODO: 프로그램 구현
         ArrayList<Integer> computerNumbers = getRandomNumbers();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            
+        }
     }
 
     public static ArrayList<Integer> getRandomNumbers() {
