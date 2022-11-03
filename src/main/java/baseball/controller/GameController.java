@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.ComputerBallGenerator;
+import baseball.domain.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
@@ -12,8 +13,20 @@ public class GameController {
 
     public void run() {
         OutputView.printStartMessage();
+        PlayResult playResult = new PlayResult();
+        Balls computerBalls = getComputerBalls();
 
+        while (!playResult.isGameEnd()) {
+            playResult = computerBalls.play(getPlayerBalls());
+            OutputView.printResult(playResult);
+        }
+
+        OutputView.printEndMessage();
+        if (InputView.yesOrNo()) {
+            run();
+        }
     }
+
 
     private Balls getComputerBalls() {
         List<Integer> numbers = ComputerBallGenerator.createComputerBalls();
