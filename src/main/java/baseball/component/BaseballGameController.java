@@ -8,6 +8,8 @@ import java.util.List;
 
 public class BaseballGameController {
 
+    private static final String PLAYER_NUMBER_INPUT_REGEX = "^([1-9])(?!\\1)([1-9])(?!(\\1|\\2))([1-9])$";
+
 
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -38,6 +40,7 @@ public class BaseballGameController {
     private List<Integer> readPlayerNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
         String playerInputString = Console.readLine();
+        validatePlayerNumberInput(playerInputString);
 
         List<Integer> playerNumbers = new ArrayList<>();
         for(int index = 0; index < playerInputString.length(); index++){
@@ -91,5 +94,11 @@ public class BaseballGameController {
             }
         }
         return randomNumbers;
+    }
+
+    private void validatePlayerNumberInput(String playerInput) throws IllegalArgumentException{
+        if( !playerInput.matches(PLAYER_NUMBER_INPUT_REGEX) ){
+            throw new IllegalArgumentException("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.");
+        }
     }
 }

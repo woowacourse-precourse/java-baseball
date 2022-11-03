@@ -16,7 +16,7 @@
 <br/>
 
 - Validation
-  - [ ] player의 3자리 수 입력 validation
+  - [x] player의 3자리 수 입력 validation
     - 3자리 숫자인가
     - 각 자리수가 겹치지 않는가
   - [ ] 게임 진행 여부 입력 validation
