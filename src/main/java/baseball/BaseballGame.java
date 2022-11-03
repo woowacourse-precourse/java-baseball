@@ -37,8 +37,7 @@ public class BaseballGame {
             isWrongInputValue(input);
             calculateBallCount(input);
             String msg = answerMessage();
-            strikeCount = 0;
-            ballCount = 0;
+
             if (msg.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
