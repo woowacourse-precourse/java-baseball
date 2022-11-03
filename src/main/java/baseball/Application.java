@@ -76,5 +76,11 @@ public class Application {
 
             return numsList;
         }
+
+        private void validateUse0(List<Integer> numsList) {
+            if (numsList.contains(0)) {
+                throw new IllegalArgumentException("숫자는 1부터 9까지만 사용되어야 합니다. 0을 포함할 수 없습니다.");
+            }
+        }
     }
 }
