@@ -1,5 +1,6 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -7,19 +8,35 @@ import java.util.regex.Pattern;
 
 public class Player {
 
-    private int input;
+    private static final int BALL_LEN=3;
+    private String input;
 
+    private ArrayList<Integer> inputNum = new ArrayList<>(BALL_LEN);
+    public Player(String input){
+        this.input = input;
+    }
 
-    public void checkException(String input){
-        checkNotInputNumberOrOverSize(input);
-        checkInputDuplicatedNumber(input);
+    public ArrayList<Integer> getInputNum() {
+        return inputNum;
+    }
 
+    public void checkException(){
+        checkNotInputNumberOrOverSize(this.input);
+        checkInputDuplicatedNumber(this.input);
+
+    }
+
+    public void setInputNum(){
+        for (int inputIdx = 0; inputIdx < BALL_LEN; inputIdx++) {
+            int inputInt= this.input.charAt(inputIdx) - '0';
+            this.inputNum.add(inputInt);
+        }
     }
 
     private static void checkInputDuplicatedNumber(String input) {
         Set<Character> set = getCharacterInput(input);
         if(isDuplicatedNumber(input, set)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("야구 게임의 숫자가 중복입니다.");
         }
     }
 
@@ -37,7 +54,7 @@ public class Player {
 
     private static void checkNotInputNumberOrOverSize(String input) {
         if(isNotInputNumberOrOverSize(input)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("야구 게임은 3자리의 숫자만 가능합니다.");
         }
     }
 
