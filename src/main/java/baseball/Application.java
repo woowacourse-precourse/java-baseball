@@ -1,11 +1,14 @@
 package baseball;
 
 import java.util.*;
+import java.util.stream.IntStream;
+
 import camp.nextstep.edu.missionutils.*;
 
 public class Application {
 
     private static Map<String, Integer> strikeAndBallCounter;
+
     public static void main(String[] args) {
         initializerOfStrikeAndBallCounter();
 
@@ -15,7 +18,7 @@ public class Application {
         System.out.print("숫자를 입력해 주세요 : ");
         List<Integer> user = userInput();
 
-
+        countAndSave(computer, user);
 
     }
 
@@ -61,6 +64,26 @@ public class Application {
         }
 
         return true;
+    }
+
+    static void countAndSave(List<Integer> computer, List<Integer> user) {
+        int strikeCounts = countEqualDigits(computer, user);
+        strikeAndBallCounter.put("strike", strikeCounts);
+
+        int ballCounts = countUserNumInComputerNum(computer, user) - strikeCounts;
+        strikeAndBallCounter.put("ball", ballCounts);
+    }
+
+    static int countEqualDigits(List<Integer> computer, List<Integer> user) {
+        return (int)IntStream.range(0, 3).
+                filter(x -> user.get(x)==computer.get(x)).
+                count();
+    }
+
+    static int countUserNumInComputerNum(List<Integer> computer, List<Integer> user) {
+        return (int)user.stream().
+                filter(computer::contains).
+                count();
     }
 
 

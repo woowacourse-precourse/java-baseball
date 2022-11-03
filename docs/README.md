@@ -23,11 +23,11 @@
 >  - [x] `List<Integer> createRandomThreeDigitNum()`
 
 >### 3. 사용자의 입력을 요청하는 메서드
->  - [ ] `List<Integer> enterNum()`
+>  - [x] `List<Integer> userInput()`
 
 >### 4. 사용자의 입력이 올바른지 판단, 아닐 경우 예외를 발생
-> - [ ] `boolean isCorrectedNum(List<Integer> inputNum)`
-> - [ ] Test code 작성 및 검증
+> - [x] `boolean isCorrectedNum(List<Integer> inputNum)`
+> - [x] Test code 작성 및 검증
 
 >### 5.  Strike 개수와 Ball 개수를 세고, 이를 `strikeAndBallCounter`에 저장
 > - [ ] `void countAndSave( List<Integer> computer, List<Integer> user )`
