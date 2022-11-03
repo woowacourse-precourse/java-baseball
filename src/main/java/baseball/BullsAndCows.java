@@ -1,7 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+
 public class BullsAndCows {
 
+    static final int ANSWER_LENGTH = 3;
     static String answer;
 
     public BullsAndCows() {
@@ -25,11 +30,12 @@ public class BullsAndCows {
 
     private void startGame() {
         setAnswer();
-        // "숫자 야구 게임을 시작합니다."
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private void setAnswer() {
-        // 1~9까지 서로 다른 임의의 수 3개를 선택
+        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH); // 1 ~ 9까지 서로 다른 임의의 수 3개를 선택
+        answer = randomNumberList.toString().replaceAll("[^0-9]", "");
     }
 
     private String getInput() {
