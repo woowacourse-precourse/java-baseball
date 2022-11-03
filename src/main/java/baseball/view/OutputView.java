@@ -4,6 +4,7 @@ public class OutputView {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
+    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printGameResult(int strike, int ball) {
         printStrikeAndBall(strike, ball);
@@ -21,6 +22,7 @@ public class OutputView {
     private static void printOnlyStrike(int strike, int ball) {
         if (strike != 0 && ball == 0) {
             System.out.println(strike + STRIKE);
+            System.out.println(GAME_END);
         }
     }
 
