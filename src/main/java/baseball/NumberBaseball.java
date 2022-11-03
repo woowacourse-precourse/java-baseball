@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 숫자 야구 게임에 쓰이는 메소드들을 정의한 클래스입니다.
@@ -130,6 +131,29 @@ public class NumberBaseball {
             }
         } else {
             System.out.println("낫싱");
+        }
+    }
+
+    /**
+     * 하나의 게임 단위를 실행하는 메소드
+     */
+    public void startGame() {
+        Scanner sc = new Scanner(System.in);    /** 이 부분 Console.readLine()으로 바꿔야 함*/
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(getAnswer());    /** 이 부분은 추후에 제거해야 함*/
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userAnswer = sc.nextLine();  /** 이 부분 Console.readLine()으로 바꿔야 함*/
+
+            List<Integer> result = checkAnswer(userAnswer);
+            showResult(result);
+
+            if (result.get(1) == 3) {   // 3 strike인 경우
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 }
