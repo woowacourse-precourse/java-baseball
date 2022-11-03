@@ -31,10 +31,19 @@ public class Game {
 			fetchUserNumbers();
 			calculateGuess();
 			System.out.println(createAnswerMessage());
-
+			CheckUserWin();
 
 		} while (!userWin());
 
+	}
+
+
+	public void CheckUserWin() {
+
+		if (userWin()) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			askUserToContinue();
+		}
 
 	}
 
