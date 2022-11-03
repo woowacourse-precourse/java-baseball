@@ -1,12 +1,10 @@
 package baseball.baseballgame.balllist;
 
-import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.baseballgame.ball.Ball;
 import baseball.baseballgame.ball.BallNumber;
 import java.util.List;
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 
 public class BallListTest {
@@ -25,15 +23,10 @@ public class BallListTest {
 
     @Test
     void return_judgement_type_report() {
-        List<Ball> ballListCase1 = IntStream.range(1, 4)
-                .mapToObj(BallNumber::createBallNumber)
-                .map(Ball::new)
-                .collect(toList());
 
-        BallList computerBallList = new BallList();
-        computerBallList.add(ballListCase1);
+        BallList computerBallList = new BallList(List.of(1, 2, 3));
 
-        BallList userBallList = new BallList(ballListCase1);
+        BallList userBallList = new BallList(List.of(1, 2, 3));
         BallReport judge = computerBallList.judge(userBallList);
 
         BallReport ballReportStrikeCase = new BallReport();

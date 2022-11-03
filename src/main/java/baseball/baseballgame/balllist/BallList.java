@@ -1,9 +1,11 @@
 package baseball.baseballgame.balllist;
 
 import baseball.baseballgame.ball.Ball;
+import baseball.baseballgame.ball.BallNumber;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BallList {
 
@@ -13,8 +15,12 @@ public class BallList {
         this.ballList = new ArrayList<>();
     }
 
-    public BallList(List<Ball> userBallList) {
-        this.ballList = new ArrayList<>(userBallList);
+
+    public BallList(List<Integer> userBallList) {
+        this.ballList = userBallList.stream()
+                .map(BallNumber::new)
+                .map(Ball::new)
+                .collect(Collectors.toList());
     }
 
     public void add(Ball ball) {
