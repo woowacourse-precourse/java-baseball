@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -68,4 +70,12 @@ public class Application {
     public static boolean checkNumberLengthIsThree(String number){
         return number.length()==3;
     }
+
+    public static boolean checkNumberIsDuplicated(String number){
+        String[] arr = number.split("");
+        HashSet<String> set = new HashSet<>(Arrays.asList(arr));
+        return set.size() == 3;
+    }
+
+
 }
