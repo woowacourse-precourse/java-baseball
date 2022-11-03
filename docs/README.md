@@ -3,8 +3,8 @@
 ## 기능 목록
 
 - ### 랜덤 숫자를 생성해주는 기능
-  - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-  - [ ] Random으로 생성한 숫자들이 서로 겹치지 않도록 처리
+  - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+  - [x] Random으로 생성한 숫자들이 서로 겹치지 않도록 처리
 
 - ### 1~9의 숫자 3개를 입력하는 기능
   - [ ] 숫자가 아닌 문자를 입력한 경우 예외 처리
@@ -40,7 +40,7 @@
 ## 요구 사항 체크
 
 - ### 라이브러리
-  - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+  - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
   - [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 
