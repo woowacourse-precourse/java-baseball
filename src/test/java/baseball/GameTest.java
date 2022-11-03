@@ -29,8 +29,8 @@ public class GameTest {
 
     @Test
     void scanIsEnd_테스트() {
-        String[] input = {"1", "0"};
-        boolean[] expected = {true, false};
+        String[] input = {"1", "2"};
+        boolean[] expected = {false, true};
 
         for (int i = 0; i < input.length; ++i) {
             InputStream in = new ByteArrayInputStream(input[i].getBytes());
