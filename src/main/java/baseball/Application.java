@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
@@ -80,7 +81,15 @@ public class Application {
     }
 
 
-    private static List<Integer> compareComputerAndUser(String computer, String user) {}
+    private static List<Integer> compareComputerAndUser(String computer, String user) {
+        List<Integer> scoreOfStrikeAndBall = new ArrayList<>();
+        scoreOfStrikeAndBall.add(countStrike(computer, user));
+        scoreOfStrikeAndBall.add(countBall(computer, user));
+        return scoreOfStrikeAndBall;
+    }
+
+    private static int countStrike(String computer, String user) {}
+    private static int countBall(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
 
