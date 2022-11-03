@@ -4,8 +4,8 @@ package baseball;
 * [O] 랜덤 번호 생성
 * [O] 잘못된 입력 예외 처리(어플리케이션 종료)
 * [O] 입력된 숫자에 대한 스트라이크/볼/낫싱 판별
-* [X] 숫자 반복 입력 기능
-* [X] 게임 종료 시 재시작 기능
+* [O] 숫자 반복 입력 기능
+* [O] 게임 종료 시 재시작 기능
 * [X] 기능별 테스트 작성
 * [X] 테스트 확인
 */
@@ -49,15 +49,25 @@ public class Application {
             }
 
             if(strike == 3){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                initRandomNumber(computer, computerIndexMap);
-
-                userInput = Console.readLine();
-                loopFlag = userInput.equals(START_FLAG);
+                loopFlag = isNewGame(computer, computerIndexMap);
             }
         }
+    }
+
+    private static boolean isNewGame(List<Integer> computer, HashMap<Integer, Integer> computerIndexMap) {
+        String userInput;
+        boolean loopFlag;
+        
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        userInput = Console.readLine();
+        loopFlag = userInput.equals(START_FLAG);
+
+        if(loopFlag)
+            initRandomNumber(computer, computerIndexMap);
+
+        return loopFlag;
     }
 
     private static void printResult(Integer strike, Integer ball) {
@@ -67,10 +77,12 @@ public class Application {
         }
 
         if(ball > 0)
-            System.out.println(ball + "볼 ");
+            System.out.print(ball + "볼 ");
 
         if(strike > 0)
             System.out.println(strike + "스트라이크");
+        else
+            System.out.println();
     }
 
     public static Integer checkBall(HashMap<Integer, Integer> computerIndexMap, String userInput) {
@@ -109,9 +121,11 @@ public class Application {
     }
 
     private static void initRandomNumber(List<Integer> computer, HashMap<Integer,Integer> computerIndexMap) {
+        computer.clear();
+        computerIndexMap.clear();
+
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-
             if (!computer.contains(randomNumber)) {
                 computerIndexMap.put(randomNumber, computer.size());
                 computer.add(randomNumber);
