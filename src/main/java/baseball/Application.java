@@ -14,6 +14,12 @@ public class Application {
         System.out.println("숫자를 입력 해 주세요.");
     }
 
+    public void inputUserPickNumber(String userPickNumber){
+        Console console = System.console();
+        String userPicNumber = console.readLine();
+
+    }
+
 
 }
 
