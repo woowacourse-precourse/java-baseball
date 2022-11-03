@@ -39,7 +39,7 @@ public class Game {
      */
     public void playGameRound(){
         Computer computer = new Computer();
-        List<Integer> computerRandomDigit = computer.createRandomDigits();
+        List<Integer> computerRandomDigit = computer.completedDigits;
 
         while (true){
             try {
