@@ -26,5 +26,9 @@ public class Game {
 
     public void input() {
         String inputNumbers = Console.readLine();
+        validate(inputNumbers);
+    }
+
+    public void validate(String inputNumbers) {
     }
 }
