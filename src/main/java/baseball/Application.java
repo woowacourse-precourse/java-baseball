@@ -17,6 +17,9 @@ public class Application {
         private static final int PICK_COUNT = 3;
         private static final String CORRECT_ANSWER = "strike";
         private static final String SIMILAR_ANSWER = "ball";
+        private static final String CORRECT_ANSWER_KOR = "스트라이크";
+        private static final String SIMILAR_ANSWER_KOR = "볼 ";
+        private static final String WRONG_ANSWER_KOR = "낫싱";
 
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -107,6 +110,15 @@ public class Application {
         private void increaseAnswerCnt(String answer, Map<String, Integer> gameResult) {
             Integer cnt = gameResult.getOrDefault(answer, 0);
             gameResult.put(answer, cnt + 1);
+        }
+
+        private void printGameResult(Map<String, Integer> gameResult) {
+            StringBuilder sb = new StringBuilder();
+
+            appendGameResult(gameResult, sb, SIMILAR_ANSWER, SIMILAR_ANSWER_KOR);
+            appendGameResult(gameResult, sb, CORRECT_ANSWER, CORRECT_ANSWER_KOR);
+            String gameResultToString = createGameResultToString(sb);
+            System.out.println(gameResultToString);
         }
     }
 }
