@@ -26,7 +26,6 @@ public class Application {
             if (! checkNumber(numberString)) {
                 continue;
             }
-            break;
 
         } while(true);
     }
