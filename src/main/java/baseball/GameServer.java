@@ -34,7 +34,23 @@ public class GameServer {
         }
     }
 
-    public void printGameStart(){
+    public void catchInputException(String userNumber)
+            throws IllegalArgumentException {
+        if (userNumber.length() != 3) {
+            throw new IllegalArgumentException();//사용할 때 try-catch문으로 throw처리
+        }
+        if(userNumber.matches("^[1-9]*$")){
+            throw new IllegalArgumentException();
+        }
+        for(int i=0;i<2;i++){
+            String str = userNumber.substring(i+1,2);
+            if(str.contains(userNumber.substring(i,i+1))){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
