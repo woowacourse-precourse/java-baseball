@@ -1,11 +1,13 @@
 package baseball.service;
 
+import java.util.List;
+
 import baseball.domain.Game;
 import baseball.utils.RandomNumber;
+import baseball.utils.Validator;
 import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 
 public class Service {
     Game game;
@@ -19,5 +21,6 @@ public class Service {
         SystemMessage.printGameStart();
         RequestInput.requestAnswer();
         String userInput = Console.readLine();
+        Validator.checkUserAnswerInput(userInput);
     }
 }

@@ -2,13 +2,15 @@ package baseball.gameSetting;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.utils.RandomNumber;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
-public class RandomNumberTest {
+import baseball.utils.RandomNumber;
+
+public class RandomNumberTest  {
 
     @Test
     void check_exist_duplicated_number_in_list() {
