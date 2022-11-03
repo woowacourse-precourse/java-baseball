@@ -1,8 +1,12 @@
 package baseball.controller;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameController {
 
@@ -24,6 +28,14 @@ public class GameController {
       }
     }
     return randomNumbers;
+  }
+
+  List<Integer> getPlayerNumbers() {
+    String playerInput = readLine();
+    return Stream.of(playerInput.split(""))
+        .mapToInt(Integer::parseInt)
+        .boxed()
+        .collect(Collectors.toList());
   }
 
 }
