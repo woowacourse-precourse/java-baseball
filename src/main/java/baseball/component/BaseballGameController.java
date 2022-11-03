@@ -31,7 +31,7 @@ public class BaseballGameController {
             playerScore = baseballGameRule.verifyPlayerScore(playerNumbers);
             printBallStrikeCountScore(playerScore);
 
-        }while(playerScore.get(1) == 3);
+        }while(playerScore.get(1) != 3);
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
