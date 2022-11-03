@@ -62,6 +62,15 @@ public class Computer {
         }
     }
 
+    // 게임을 종료해도 되겠니?
+    public boolean isEndTheGame() {
+        if (this.cntStrike == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
