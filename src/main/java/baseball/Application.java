@@ -14,13 +14,19 @@ public class Application {
         Application application = new Application();
         while (true) {
             application.run();
+            if (application.handleExit()) {
+                break;
+            }
         }
-
     }
 
-    public boolean handleRestart() {
+    public boolean handleExit() {
         String restartKey = Console.readLine();
-
+        int key = checkValidRestartKey(restartKey);
+        if (key == 2) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 
     // 1 -> 재시작.
@@ -31,10 +37,6 @@ public class Application {
         int key = Character.getNumericValue(restartKey.charAt(0));
         checkInValidRange(1, 2, key);
         return key;
-    }
-
-    public void exit(int exitKey) {
-
     }
 
     public void run() {
