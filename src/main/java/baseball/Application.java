@@ -58,4 +58,48 @@ public class Application {
 			}
 		}
 	}
+
+	private static String roundResult(List<Integer> batterNumberList ,List<Integer> pitcherNumberList) {
+
+		String result = "";
+
+		int countStrike = 0, countBall = 0;
+
+		for(int i = 0; i < 3; i++) {
+
+			if(batterNumberList.get(i) != pitcherNumberList.get(i)) {
+
+				if(batterNumberList.contains(pitcherNumberList.get(i))) {
+					countBall++;
+				}
+
+			}
+
+			if(batterNumberList.get(i) == pitcherNumberList.get(i)) {
+				countStrike++;
+			}
+
+		}
+
+		if(countBall > 0) {
+
+			String space = "";
+
+			if(countStrike > 0) {
+				space = " ";
+			}
+
+			result += countBall + "볼" + space;
+		}
+
+		if(countStrike > 0) {
+			result += (countStrike + "스트라이크");
+		}
+
+		if(countBall == 0 && countStrike == 0) {
+			result = "낫싱";
+		}
+
+		return result;
+	}
 }
