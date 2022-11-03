@@ -11,6 +11,10 @@ import static baseball.game.Const.*;
 public class User {
 	private List<Integer> numbers;
 
+	public List<Integer> getNumbers() {
+		return List.copyOf(numbers);
+	}
+
 	public void receiveUserInput() {
 		System.out.print(GAME_INPUT_WAIT_MESSAGE);
 		String input = Console.readLine();
@@ -18,8 +22,13 @@ public class User {
 		this.numbers = convertStringToNumbers(input);
 	}
 
-	public List<Integer> getNumbers() {
-		return List.copyOf(numbers);
+	private void validateUserInput(String input) {
+		if (input.length() != GAME_LENGTH) {
+			throw new IllegalArgumentException(GAME_EXCEPTION_LENGTH_MESSAGE);
+		}
+		if (!input.matches(POSITIVE_INTEGER_ONLY_REGEX)) {
+			throw new IllegalArgumentException(GAME_EXCEPTION_INTEGER_MESSAGE);
+		}
 	}
 
 	private List<Integer> convertStringToNumbers(String input) {
@@ -31,14 +40,5 @@ public class User {
 			throw new IllegalArgumentException(GAME_EXCEPTION_DUPLICATE_MESSAGE);
 		}
 		return numbers;
-	}
-
-	private void validateUserInput(String input) {
-		if (input.length() != GAME_LENGTH) {
-			throw new IllegalArgumentException(GAME_EXCEPTION_LENGTH_MESSAGE);
-		}
-		if (!input.matches(POSITIVE_INTEGER_ONLY_REGEX)) {
-			throw new IllegalArgumentException(GAME_EXCEPTION_INTEGER_MESSAGE);
-		}
 	}
 }

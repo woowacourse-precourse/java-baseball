@@ -14,22 +14,6 @@ public class Score {
 		printResult();
 	}
 
-	private void printResult() {
-		if (strike > 0 && ball > 0) {
-			System.out.printf(GAME_SCORE_STRIKE_BALL_MESSAGE, ball, strike);
-			return;
-		}
-		if (strike > 0) {
-			System.out.printf(GAME_SCORE_STRIKE_MESSAGE, strike);
-			return;
-		}
-		if (ball > 0) {
-			System.out.printf(GAME_SCORE_BALL_MESSAGE, ball);
-			return;
-		}
-		System.out.println(GAME_SCORE_NOTHING_MESSAGE);
-	}
-
 	public static Score calculate(List<Integer> computerNumbers, List<Integer> userNumbers) {
 		return new Score(computerNumbers, userNumbers);
 	}
@@ -59,6 +43,22 @@ public class Score {
 				ball--;
 			}
 		}
+	}
+
+	private void printResult() {
+		if (strike > 0 && ball > 0) {
+			System.out.printf(GAME_SCORE_STRIKE_BALL_MESSAGE, ball, strike);
+			return;
+		}
+		if (strike > 0) {
+			System.out.printf(GAME_SCORE_STRIKE_MESSAGE, strike);
+			return;
+		}
+		if (ball > 0) {
+			System.out.printf(GAME_SCORE_BALL_MESSAGE, ball);
+			return;
+		}
+		System.out.println(GAME_SCORE_NOTHING_MESSAGE);
 	}
 
 	private void calculateBall(Integer computerNumber, List<Integer> userNumbers) {
