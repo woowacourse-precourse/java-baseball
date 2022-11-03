@@ -20,11 +20,11 @@ public class BaseballGame {
         return list;
     }
 
-    private Boolean isStringLengthThree(String string) {
+    public Boolean isStringLengthThree(String string) {
         return string.length() == 3;
     }
 
-    private Boolean isNumber(String string) {
+    public Boolean isNumber(String string) {
         try {
             Integer.parseInt(string);
         } catch (NumberFormatException e) {
