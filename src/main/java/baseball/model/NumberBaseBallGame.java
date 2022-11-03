@@ -20,7 +20,7 @@ public class NumberBaseBallGame {
     }
 
     public boolean isProceeding() {
-        return this.isProceeding;
+        return isProceeding;
     }
 
     public void validateInputNumber(String inputNumber) {
@@ -42,7 +42,7 @@ public class NumberBaseBallGame {
 
     public void restart(String restart) {
         if (restart.equals(RESTART)) {
-            this.isProceeding = true;
+            isProceeding = true;
             gameNumber = GameNumberGenerator.generate();
         }
     }
