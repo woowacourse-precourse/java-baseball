@@ -20,7 +20,7 @@
   - 사용자가 입력한 숫자로 된 문자열을 숫자로 배열에 저장하는 함수
 
 
-- boolean checkNumber(int)
+- boolean checkNumber(String)
   - 사용자가 잘못된 값을 입력했는지 체크하는 함수
 
 
