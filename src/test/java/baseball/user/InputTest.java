@@ -65,4 +65,14 @@ public class InputTest {
         // then
         Assertions.assertThat(isInRange).isEqualTo(true);
     }
+
+    @Test
+    public void 입력값이_범위안에_없는_경우_확인() {
+        // given
+        String inputWrongString = "109";
+        // when
+        boolean isInRange = input.isDigitsInRange(inputWrongString);
+        // then
+        Assertions.assertThat(isInRange).isEqualTo(false);
+    }
 }
