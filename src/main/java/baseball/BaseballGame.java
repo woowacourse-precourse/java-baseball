@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +33,19 @@ public class BaseballGame {
             }catch (IllegalArgumentException exception) {
                 throw exception;
             }
+        }
+    }
+
+    public boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        switch (Console.readLine()) {
+            case "1":
+                return true;
+            case "2":
+                return false;
+            default:
+                throw new IllegalArgumentException("잘못된 입력입니다!");
         }
     }
 
