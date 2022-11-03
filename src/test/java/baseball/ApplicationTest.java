@@ -65,6 +65,33 @@ class ApplicationTest extends NsTest {
 
 
     }
+    @Nested
+    class 입력받은수_저장된수_비교_검증후_볼_스트라이크_개수_테스트{
+        @Test
+        void 볼_테스트(){
+            List<Integer> usernums=List.of(1,2,3);
+            List<Integer> computernums =List.of(2,3,1);
+            BaseballCount baseballCount = new BaseballCount(computernums,usernums);
+            assertThat(baseballCount.ballcount).isEqualTo(3);
+
+            List<Integer> usernums2=List.of(1,2,3);
+            List<Integer> computernums2 =List.of(1,2,3);
+            BaseballCount baseballCount2 = new BaseballCount(computernums2,usernums2);
+            assertThat(baseballCount2.ballcount).isEqualTo(0);
+        }
+        @Test
+        void 스트라이크_테스트(){
+            List<Integer> usernums=List.of(1,2,3);
+            List<Integer> computernums =List.of(2,3,1);
+            BaseballCount baseballCount = new BaseballCount(computernums,usernums);
+            assertThat(baseballCount.strikecount).isEqualTo(0);
+
+            List<Integer> usernums2=List.of(1,2,3);
+            List<Integer> computernums2 =List.of(1,2,3);
+            BaseballCount baseballCount2 = new BaseballCount(computernums2,usernums2);
+            assertThat(baseballCount2.strikecount).isEqualTo(3);
+        }
+    }
 
 
     @Override

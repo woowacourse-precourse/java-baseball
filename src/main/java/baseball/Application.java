@@ -9,14 +9,26 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = RandomNum(3);
-        System.out.println(computer);
-
+        List<Integer> computernums = RandomNum(3);
         String usernum = userInput();
         confirmUserInput(usernum);
+        List<Integer> usernums = stringConvertListInteger(usernum);
 
+        BaseballCount baseballCount = new BaseballCount(computernums, usernums);
+
+        System.out.println(baseballCount.strikecount);
+        System.out.println(baseballCount.ballcount);
 
     }
+
+    public static List<Integer> stringConvertListInteger(String string) {
+        List<Integer> list = new ArrayList<>();
+        for (char chr : string.toCharArray()) {
+            list.add(Character.getNumericValue(chr));
+        }
+        return list;
+    }
+
 
     public static void confirmUserInput(String userInput) {
         List<Integer> list = new ArrayList<>();
