@@ -72,6 +72,11 @@ public class Application {
     }
 
     public static boolean finishApp() {
-        return true;
+        int i = Integer.parseInt(Console.readLine());
+        if(i == 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
