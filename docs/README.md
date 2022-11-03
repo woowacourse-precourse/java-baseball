@@ -17,12 +17,12 @@
 ### 🧐 Abstract
 1. welcome메시지를 출력한다 : "숫자 야구 게임을 시작합니다."<br>
    <br>
-2. ComputerPlayer 클래스를 만든다.<br>
+2. PlayerComputer 클래스를 만든다.<br>
    1-1. Randoms의 pickNumberInRange()를 이용해 Random Number를 1개 받는다. 범위는 1~9 사이<br>
    1-2. 이때 입력 받은 수에 예외사항이 없을 때까지 다시 입력 받는다.(첫번째 랜덤추출 제외)<br>
    1-3. (1-1, 1-2)를 총 3번 입력 받고 마무리 한다.<br>
    <br>
-3. UserPlayer 클래스를 만든다.<br>
+3. PlayerUser 클래스를 만든다.<br>
    2-1. 숫자를 입력 받는다. -> Console의 readline()을 활용.<br>
    2-2. 이때 입력 받은 수를 하나씩 확인하면서 예외사항이 있는지 확인<br>
    -> 예외사항이 있다면 IllegalArgumentException 발생 후 종료<br>
