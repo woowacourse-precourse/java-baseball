@@ -32,7 +32,7 @@ public class Application {
             Map<String, Integer> gameResult = new HashMap<>();
 
             do {
-                int[] userInput = getUserInput();
+                List<Integer> userInput = getUserInput();
                 getGameResult(userInput, gameResult);
                 printGameResult(gameResult);
             } while (gameResult.get(CORRECT_ANSWER) != PICK_COUNT);
@@ -40,12 +40,12 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
-        private int[] getUserInput() {
+        private List<Integer> getUserInput() {
             String input = Console.readLine();
             return getValueIfAcceptable(input);
         }
 
-        private int[] getValueIfAcceptable(String input) {
+        private List<Integer> getValueIfAcceptable(String input) {
             validateInputLength(input);
             List<Integer> numsList = getNumsListIfAcceptable(input);
             validateUse0(numsList);
