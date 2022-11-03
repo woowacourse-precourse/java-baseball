@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseballGame {
 
@@ -13,7 +14,6 @@ public class BaseballGame {
 
     public final static String RESTART_GAME = "1";
     public final static String CLOSE_GAME = "2";
-
 
     private List<Integer> computerNumbers = new ArrayList<>();
     private int strikeCount;
@@ -62,12 +62,6 @@ public class BaseballGame {
 
     private String answerMessage() {
 
-        if (strikeCount != 0 && ballCount != 0) {
-            message = ballCount + "볼 " + strikeCount + "스트라이크";
-            System.out.println(message);
-            return message;
-        }
-
         if (strikeCount == 0 && ballCount != 0) {
             message = ballCount + "볼";
             System.out.println(message);
@@ -80,23 +74,26 @@ public class BaseballGame {
             return message;
         }
 
+        if (strikeCount != 0 && ballCount != 0) {
+            message = ballCount + "볼 " + strikeCount + "스트라이크";
+            System.out.println(message);
+            return message;
+        }
+
         message = "낫싱";
         System.out.println(message);
         return message;
     }
 
     private void calculateBallCount(String input) {
-        for (int i = 0; i < computerNumbers.size(); i++) {
-            String val = String.valueOf(computerNumbers.get(i));
-            if (input.contains(val)) {
-                if (val.equals(String.valueOf(input.charAt(i)))) {
-                    strikeCount++;
-                }
-                if (!val.equals(String.valueOf(input.charAt(i)))) {
-                    ballCount++;
-                }
-            }
-        }
+        strikeCount = (int)IntStream.range(0, 3)
+                .filter(idx -> computerNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
+                .count();
+
+        ballCount = (int) IntStream.range(0, 3)
+                .filter(idx -> input.contains(String.valueOf(computerNumbers.get(idx))))
+                .filter(idx -> !computerNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
+                .count();
     }
 
     private void isWrongInputValue(String input) {
