@@ -1,10 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
