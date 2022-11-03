@@ -11,8 +11,6 @@ public class Exception {
 	private static final String ALLOW_ONLY_ONE_TO_NINE = "[ERROR] 1부터 9까지의 숫자만 입력해 주시기 바랍니다.";
 	private static final String ALLOW_ONLY_STANDARD_NUMBER_LENGTH = "[ERROR] 3자리의 숫자만 입력해 주시기 바랍니다.";
 	private static final String ALLOW_ONLY_OVERLAP_NUMBER = "[ERROR] 중복되지 않는 숫자만 입력해주시기 바랍니다.";
-	private static final String ALLOW_ONLY_RESTART_OR_END_NUMBER = String.format("[ERROR] %d 혹은 %d 숫자만 입력해 주시기 바랍니다.",
-		RESTART_NUMBER, END_NUMBER);
 
 	public static void validOnlyOneToNine(String inputGameNumber) {
 		String regExp = "^[1-9]+$";
@@ -42,9 +40,13 @@ public class Exception {
 			.forEach(number -> inputGameNumberSet.add(number));
 	}
 
-	public static void validRestartOrEndNumber(String inputRestartNumber) {
-		if (!inputRestartNumber.equals(RESTART_NUMBER) || !inputRestartNumber.equals(END_NUMBER)) {
-			throw new IllegalArgumentException(ALLOW_ONLY_RESTART_OR_END_NUMBER);
+	public static void validRestartOrExitNumber(String inputRestartNumber, int restartNumber, int exitNumber) {
+		String stringRestartNumber = Integer.toString(restartNumber);
+		String stringExitNumber = Integer.toString(exitNumber);
+		if (!inputRestartNumber.equals(stringRestartNumber) && !inputRestartNumber.equals(stringExitNumber)) {
+			String allowOnlyRestartOrExitNumber = String.format("[ERROR] %d 혹은 %d 숫자만 입력해 주시기 바랍니다.",
+				restartNumber, exitNumber);
+			throw new IllegalArgumentException(allowOnlyRestartOrExitNumber);
 		}
 	}
 }
