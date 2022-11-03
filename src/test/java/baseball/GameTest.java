@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
 
@@ -9,13 +11,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class GameTest {
     private Game _game = new Game();
     private static final int _ball = 0;
     private static final int _strike = 1;
+
+    @BeforeEach
+    void init() {
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
 
     @Test
     void printHint_테스트() {
@@ -92,4 +100,19 @@ public class GameTest {
         }
         return false;
     }
+
+    @Test
+    void readIsQuit_정상적인_입력() {
+        String[] input = {"1", "2"};
+        boolean[] expected = {false, true};
+
+        for (int i = 0; i < input.length; ++i) {
+            InputStream in = new ByteArrayInputStream(input[i].getBytes());
+            System.setIn(in);
+
+            assertThat(_game.readIsQuit()).isEqualTo(expected[i]);
+        }
+    }
+
+
 }
