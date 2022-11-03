@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baseball.validation.ErrorMessage.*;
+import static baseball.enums.ErrorMessage.*;
 import static baseball.validation.InputValidation.*;
 
 public class UserInput {

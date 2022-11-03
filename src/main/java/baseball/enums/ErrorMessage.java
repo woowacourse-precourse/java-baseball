@@ -1,4 +1,4 @@
-package baseball.validation;
+package baseball.enums;
 
 public enum ErrorMessage {
     IS_BLANK("아무것도 입력하지 않았습니다."),
