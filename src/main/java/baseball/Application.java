@@ -48,7 +48,7 @@ public class Application {
 
     }
     public static void checkError(String tryNumber) throws IllegalArgumentException{
-        if(length(())){
+        if(lengthCheck(tryNumber)&&digitCheck(tryNumber)){
             throw new IllegalArgumentException();
         }
 
@@ -57,6 +57,14 @@ public class Application {
         if(tryNumber.length()!=3){
             return false;
         } else return true;
+    }
+    public static boolean digitCheck(String tryNumber){
+        try {
+            Double.parseDouble(tryNumber);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public static List<Integer> transformInteger(String tryNumber) {
