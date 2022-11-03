@@ -8,9 +8,10 @@ public class StrikeNumbersGenerator {
     private final static int MAX_STRIKE_NUMBER = 9;
     private final static int NUMBER_AMOUNT = 3;
 
-    private final ArrayList<Integer> strikeNumbers = new ArrayList<>();
+    private ArrayList<Integer> strikeNumbers;
 
     public ArrayList<Integer> generateStrikeNumbers() {
+        strikeNumbers = new ArrayList<>();
         for (int countOfNumbers = 0; countOfNumbers < NUMBER_AMOUNT; countOfNumbers++) {
             strikeNumbers.add(pickUniqueNumber());
         }
