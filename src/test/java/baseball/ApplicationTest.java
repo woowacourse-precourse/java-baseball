@@ -34,8 +34,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 유저의숫자_뽑아오기(){
-        int input = 456;
+    void 유저의숫자_뽑아오기_테스트(){
+        String input = "456";
         List<Integer> expect = Arrays.asList(4,5,6);
         List<Integer> result = User.getUserNumber(input);
         assertThat(result).isEqualTo(expect);
