@@ -1,11 +1,21 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Opponent {
     public int generateRandomValue() {
-        return 123;
-    }
+        List<Integer> computer = new ArrayList<>();
 
-    private boolean isNoDuplicateDigits(int value) {
-        return true;
+
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return ((computer.get(0) * 100) + (computer.get(1) * 10) + computer.get(2));
     }
 }
