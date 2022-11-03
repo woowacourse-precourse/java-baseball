@@ -84,8 +84,7 @@ public abstract class NumberBaseballGame {
     }
 
     private static boolean isGameOver() {
-        //TODO: 게임 종료 여부 반환하는 기능 구현 (3스트라이크일 때 종료)
-        return false;
+        return strike == 3;
     }
 
     private static void gameOver() {
