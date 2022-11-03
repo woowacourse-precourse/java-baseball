@@ -17,12 +17,12 @@ public class Computer {
     public int cntBall;
 
     public Computer() {
-        this.numThreeRanOfComputerList = new ArrayList<>();
         this.cntStrike = 0;
         this.cntBall = 0;
     }
 
     public void creatRanNumOfComputerList() {
+        this.numThreeRanOfComputerList = new ArrayList<>();
         while (numThreeRanOfComputerList.size() < 3) {
             int randomNumber = getOneRanNumAnInt();
             if (!numThreeRanOfComputerList.contains(randomNumber)) {
@@ -95,6 +95,7 @@ public class Computer {
             checkStrike(splitNumOfCompare);
             // TODO: 2.1.2 스트라이크 체크
             checkBall(splitNumOfCompare);
+//            System.out.println(this.numThreeRanOfComputerList);
 //            System.out.println(this.cntBall + " " + this.cntStrike);
             return true;
         } else {
