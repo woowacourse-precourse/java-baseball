@@ -10,6 +10,7 @@
 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 
 // Random 값 추출
 // 숫자 하나가 int 값으로 담김
+// 이때 중복값이 들어가지 않도록 해야 함
 ```
 
 - [x] 추출한 Random 값 하나 하나를 리스트에 저장하기
@@ -52,46 +53,47 @@ Character.getNumericValue(문자열.인덱스 안의 값)
 <br>
 :zap: 이때 strike의 개수만큼 ball 개수에서 빼주어야 함
 <br>
-- [ ] ball 개수를 구한다
+:zap: 두 개의 결과값은 리스트로 저장해 다음 단계에서 쓰이도록 한다
+<br>
+- [x] ball 개수를 구한다
 ```(java)
 if(list.contains(입력수의 인덱스))
-// contain 함수를 통해 겹치는 수의 개수를 찾는다   
+// for문을 이용해 contain 함수를 통해 랜덤 숫자에 포함되는 인덱스의 개수를 찾는다   
 ```
 :collision: 이 때 ballNumber = 0 이면
-- [ ] <em>'낫싱'<em> 을 출력!
+- [x] <em>'낫싱'<em> 을 출력!
 
-- [ ] 생성된 함수에 두 리스트(랜덤수, 입력수)를 인자로 받아와 for문(길이 3)을 실행
-<br> 여기서 인덱스 값끼리 같을 때 strike 값에 1씩 더해줌
+- [x] 생성된 함수에 두 리스트(랜덤수, 입력수)를 인자로 받아와 for문(길이 3)을 실행
+<br> 여기서 인덱스 값끼리 같을 때 strike 값에 1씩 더해줌, ball 개수는 빼줌
 
 5️⃣ 결과 출력 (ex. 1볼, 낫싱, 게임 종료 후 재시작/ 완전히 종료)
 <br>
 
 :collision: 아직 숫자를 맞추지 못해 힌트를 얻은 경우
 
-- [ ] (4)번에서 얻은 결과로 출력
+- [x] (4)번에서 얻은 결과로 출력
 ```(java)
-System.out.println(볼+"볼 "+스트라이크개수+"스트라이크") // 이런식으로 출력
+System.out.println(볼개수+"볼 "+스트라이크개수+"스트라이크") // 이런식으로 출력
 ```
 
 :collision: 숫자 맞춘 후
 <br>
-- [ ] 아래의 과정 수행
+- [x] 아래의 과정 수행
 1. Console의 readline함수를 통해 수를 입력받음
-2. 1은 재시작(6번에서 계속), 2는 바로 종료 시켜줌
-3. 그 이외의 문자/숫자가 들어오면 IllegalArgumentException 발생!!
+2. 1은 재시작(6번에서 계속), 2는 경우에 포함시키지 않아 그대로 종료되도록함
+3. 1, 2 이외의 문자/숫자가 들어오면 IllegalArgumentException 발생!!
 
 6️⃣ 재시작에 의한 게임의 반복 구현
 <br>
-- [ ] (5)번에서 readline을 통해 받은 수를 이용!
+- [x] (5)번에서 readline을 통해 받은 수를 이용!
 ```(java)
 if (1번 받아오면) {
-다시 게임을 시작} else if (2번 받아오면) {
-바로 종료} else {
+다시 게임을 시작} else if (1번도 2번도 x) {
 IllegalArgumentException 발생}
 ```
 
 ### \(@^0^@)/ 기능 구현 순서
-application 클래스에 함수 작성 -> 관련 테스트 실시 -> 클래스 분리 -> 리팩토링
+application 클래스에 함수 작성 -> 관련 테스트 실시 -> (필요시 리팩토링) -> 클래스 분리 -> 리팩토링
 
 <br>
 
