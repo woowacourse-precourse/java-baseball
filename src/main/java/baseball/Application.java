@@ -60,6 +60,17 @@ public class Application {
         return ball;
     }
 
+    public static int countStrike(List<Integer> computerNumber, List<Integer> userInputNumber) {
+        int strike = 0;
+        for (int i = 0; i < userInputNumber.size(); i++) {
+            if (computerNumber.get(i).equals(userInputNumber.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+
     public static void main(String[] args) {
         List<Integer> computerNumber = makeRandomNumber();
         boolean flag = false;
@@ -72,6 +83,7 @@ public class Application {
                 return;
             }
             int ball = countBall(computerNumber, userInputNumber);
+            int strike = countStrike(computerNumber, userInputNumber);
         }
     }
 }
