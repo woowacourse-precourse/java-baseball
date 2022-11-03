@@ -1,6 +1,9 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,12 +12,25 @@ public class Application {
 }
 
 class Computer {
-    static List<Integer> numbers;
+    private static ArrayList<Integer> randomNumbers = new ArrayList<>(3);
+
+    Computer() {
+        while(randomNumbers.size() < 3) {
+            Integer newRandomNumber = pickRandomNumber();
+            if (!hasNumber(newRandomNumber)) {
+                randomNumbers.add(newRandomNumber);
+            }
+        }
+    }
 
     private static boolean hasNumber(Integer number) {
-        if (numbers.contains(number)) {
+        if (randomNumbers.contains(number)) {
             return true;
         }
         return false;
+    }
+
+    private static Integer pickRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 }
