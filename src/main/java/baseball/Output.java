@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Output {
-    public String result(List<Integer> computer, List<Integer> player){
+    public static String result(List<Integer> computer, List<Integer> player){
         int total = Compare.countTotal(computer, player);
         int strike = Compare.countStrike(computer, player);
         int ball = Compare.countBall(computer, player);
