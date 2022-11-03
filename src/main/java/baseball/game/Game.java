@@ -25,6 +25,10 @@ public class Game {
 
         answerNumber.updateNumbers(Generator.generateAnswer());
         userNumber.updateNumbers(Scanner.getUserInput());
+
+        Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
+
+
     }
 
     public static boolean isGameContinued() {
