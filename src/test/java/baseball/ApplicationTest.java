@@ -20,6 +20,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void test2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("724", "274", "245", "246", "235", "247", "2");
+                    assertThat(output()).contains("3볼", "2볼 1스트라이크", "2스트라이크", "2스트라이크", "1스트라이크", "3스트라이크",
+                            "게임 종료", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                2, 4, 7);
+    }
+
 
     @Test
     void 예외_테스트() {
