@@ -1,27 +1,28 @@
 package baseball;
 
-import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    private static final int midGame = 1;
-    private static final int endGame = 2;
+    private static final int midGame = 0;
+    private static final int endGame = 1;
+    private static final int exitGame = 2;
+
     private static int ball = 0;
     private static int strike = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> answerNumber = makeAnswerNumber();
     }
 
-    public static String getUserInput () {
-        return Console.readLine();
+    public static String getUserInput (int gameState) {
+        String userInput = Console.readLine();
+        return userInput;
     }
 
-    public static void announceBallAndStrike (int ball, int strike) {
+    public static void announceBallAndStrike () {
         List<String> ballAndStrike = new ArrayList<>();
         if (ball > 0) {
             ballAndStrike.add(String.format("%d볼", ball));
@@ -34,7 +35,6 @@ public class Application {
             return;
         }
         System.out.println("낫싱");
-        return;
     }
 
     public static void announceBasedOnGameState (int gameState) {
@@ -45,6 +45,17 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
+    }
+
+    public static int setGameState () {
+        if (strike == 3) {
+            ball = 0;
+            strike = 0;
+            return endGame;
+        }
+        ball = 0;
+        strike = 0;
+        return midGame;
     }
 
     public static void findBallAndStrike (String userInput, List<Integer> answerNumber) {
