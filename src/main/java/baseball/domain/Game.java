@@ -46,8 +46,14 @@ public class Game {
 
     }
 
-    public void checkRestartNumberLength(String number){
-        if(number.length() > RESTART_NUMBER_LENGTH || number.length() < RESTART_NUMBER_LENGTH){
+    public void checkRestartNumberLength(String number) {
+        if (number.length() > RESTART_NUMBER_LENGTH || number.length() < RESTART_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(RESTART_EXCEPTION);
+        }
+    }
+
+    public void checkIsDigit(char number){
+        if (!Character.isDigit(number)){
             throw new IllegalArgumentException(RESTART_EXCEPTION);
         }
     }
