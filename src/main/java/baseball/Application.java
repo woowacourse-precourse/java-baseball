@@ -1,12 +1,36 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println(Comment.STARTGAME);
+        ComputerList.initialize();
+
+        while (true) {
+            // 입력하기
+            System.out.print(Comment.INPUTNUMBER);
+            String inputStr = Console.readLine();
+            validateInput(inputStr);
+
+        }
+    }
+
+    private static void validateInput(String input) {
+        String tmpInput = input.trim();
+
+        if (tmpInput.length() != 3) {
+            throw new IllegalArgumentException("3자리 수 를 입력해주세요.");
+        }
+
+        String numberOnlyRegex = "^[0-9]+$";
+        boolean matches = tmpInput.matches(numberOnlyRegex);
+        if (!matches) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
     }
 }
 
