@@ -24,4 +24,15 @@ public class Application {
             return userNumber;
         }
     }
+
+    public static boolean ValidationCheck(List<Integer> userNumber) {
+        // 길이 체크
+        // 3자 미만이거나 초과면 오류발생으로 넘어가는데 메세지 출력이 안된다
+        if (userNumber.size() != 3) throw new IllegalArgumentException("오류가 발생했습니다.");
+        // 중복값 체크
+        if (userNumber.size() != userNumber.stream().distinct().count())
+            throw new IllegalArgumentException("오류가 발생했습니다.");
+
+        return false;
+    }
 }
