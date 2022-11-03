@@ -16,4 +16,11 @@
         String requestNewOrStop() = 새 게임 진행 여부 문구 반환
 
 ## Referee 클래스
+
+- 판정 관련 메서드
+
+        void setAnswer(List<Integer> answer) = 정답을 저장한다.
+        List judgeList(List<Integer> userInput) = 판정하여 strike, ball 의 갯수를 담은 리스트를 반환해준다.
+        int judgeNumber(int num, int index) = strike, ball, nothing 을 판정하여 반환
+
 ## NumberBaseballGameMachine 클래스
