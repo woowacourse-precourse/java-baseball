@@ -3,13 +3,14 @@ package baseball.util;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class GameScannerTest {
 
     private void setSystemInput(String input) {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
     }
 
