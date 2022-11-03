@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static final int midGame = 1;
@@ -13,12 +14,11 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner scanner = new Scanner(System.in);
+        List<Integer> answerNumber = makeAnswerNumber();
     }
 
-    public static String getUserInput (Scanner scanner) {
-        String userInput = scanner.nextLine();
-        return userInput;
+    public static String getUserInput () {
+        return Console.readLine();
     }
 
     public static void announceBallAndStrike (int ball, int strike) {
@@ -47,18 +47,16 @@ public class Application {
         }
     }
 
-    public static void findBallAndStrike (String userInput, String answer) {
+    public static void findBallAndStrike (String userInput, List<Integer> answerNumber) {
         for (int digit = 0; digit < 3; digit++) {
-            char presentNumber = userInput.charAt(digit);
-            int ballStrikeOrNot = answer.indexOf(presentNumber);
-            if (ballStrikeOrNot == digit) {
+            int presentNumber = userInput.charAt(digit) - 48;
+            if (presentNumber == answerNumber.get(digit)) {
                 strike++;
                 continue;
             }
-            if (ballStrikeOrNot == -1) {
-                continue;
+            if (answerNumber.contains(presentNumber)) {
+                ball++;
             }
-            ball++;
         }
     }
 
