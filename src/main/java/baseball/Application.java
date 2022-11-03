@@ -27,6 +27,8 @@ public class Application {
                 System.out.println("win: "+win);
             }
 
+            String answer = inputAnswer();
+
         } while (retry);
 
         System.out.println("애플리케이션 종료");
@@ -138,6 +140,16 @@ public class Application {
 
     //재시작/종료 묻기
     private static String inputAnswer() {
-        return Console.readLine();
+        String answer = Console.readLine();
+
+        validateAnswer(answer);
+
+        return answer;
+    }
+
+    private static void validateAnswer(String answer) {
+        if(!Pattern.matches("^[1-2]", answer)) {
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+        }
     }
 }
