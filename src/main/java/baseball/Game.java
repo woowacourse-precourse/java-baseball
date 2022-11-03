@@ -33,4 +33,23 @@ public class Game {
 
         return input.inputDigit(userInput);
     }
+
+    /**
+     * 게임의 한 라운드를 수행하는 메소드
+     */
+    public void playGameRound(){
+        Computer computer = new Computer();
+        List<Integer> computerRandomDigit = computer.createRandomDigits();
+
+        while (true){
+            try {
+                List<Integer> userInputDigit = getUserInput();
+            } catch (IllegalArgumentException e){
+                continue;
+            }
+
+            // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
+
+        }
+    }
 }
