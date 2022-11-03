@@ -71,6 +71,11 @@ public class Computer {
         }
     }
 
+    public void initCntStrikeBall() {
+        this.cntStrike = 0;
+        this.cntBall = 0;
+    }
+
     public boolean isRealRightNumOfUser(int numInputOfUser) {
 
         if (isRightThreeNumOfComputer(numInputOfUser)) {
