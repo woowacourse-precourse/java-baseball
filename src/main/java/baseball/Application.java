@@ -15,6 +15,13 @@ public class Application {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
     }
 
+    private static boolean isGameEnd(List<Integer> result) {
+        if (result.get(_strike) == 3) {
+            return true;
+        }
+        return false;
+    }
+
     private static void printHint(List<Integer> result) {
         int ballCount = result.get(_ball);
         int strikeCount = result.get(_strike);
