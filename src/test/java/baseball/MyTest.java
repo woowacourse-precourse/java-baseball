@@ -61,6 +61,17 @@ public class MyTest {
         Assertions.assertThat(ballCount).isEqualTo(3);
     }
 
+    @Test
+    void checkNothing() {
+        //given(준비)
+        Application.computerNumber = List.of('1','2','3');
+
+        //when(실행)
+        boolean nothingFlag = Application.checkNothing("456");
+
+        //then(검증)
+        Assertions.assertThat(nothingFlag).isTrue();
+    }
 
     
 

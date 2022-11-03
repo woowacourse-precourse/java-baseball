@@ -51,4 +51,14 @@ public class Application {
 
         return ballCount;
     }
+
+    public static boolean checkNothing(String userInput) {
+        for (Character userNumber : userInput.toCharArray()) {
+            if (computerNumber.contains(userNumber)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
