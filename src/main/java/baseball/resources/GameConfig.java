@@ -7,4 +7,6 @@ public abstract class GameConfig {
     public static final String RESTART = "1";
     public static final String FINISH = "2";
     public static final String PATTERN = "[1-9]{3}";
+    public static final String STRIKE_COUNT = "strike";
+    public static final String BALL_COUNT = "ball";
 }
