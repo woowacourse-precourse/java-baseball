@@ -6,19 +6,18 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-
 public class Score {
-	private Map<BallCount, Integer> score;
+	private final Map<BallCount, Integer> score;
 
 	public Score() {
 		this.score = intiScoreMap();
 	}
 
-	public Score(Map<BallCount, Integer> score) {
+	public Score(final Map<BallCount, Integer> score) {
 		this.score = score;
 	}
 
-	public Score(Computer computer, User user) {
+	public Score(final Computer computer, final User user) {
 		this.score = calculateBallCountScore(computer, user);
 	}
 
@@ -27,7 +26,7 @@ public class Score {
 			.collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b, () -> new EnumMap<>(BallCount.class)));
 	}
 
-	private Map<BallCount, Integer> calculateBallCountScore(Computer computer, User user) {
+	private Map<BallCount, Integer> calculateBallCountScore(final Computer computer, final User user) {
 		return user.compareWithComputerBalls(computer, intiScoreMap());
 	}
 
