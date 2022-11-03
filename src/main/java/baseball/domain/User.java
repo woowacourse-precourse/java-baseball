@@ -18,6 +18,7 @@ public class User {
         System.out.print(INPUT_NUMBER);
         String numbers = Console.readLine();
         this.userNumbers = parseStringToInt(numbers);
+        System.out.println();
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
