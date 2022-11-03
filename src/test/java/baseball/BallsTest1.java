@@ -12,10 +12,7 @@ public class BallsTest1 {
 
     @BeforeEach
     void init() {
-        computer = new Balls(Arrays.asList(
-                new Ball(0, 1),
-                new Ball(1, 2),
-                new Ball(2, 3)));
+        computer = new Balls(Arrays.asList(1, 2, 3));
     }
 
     @Test
