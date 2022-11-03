@@ -11,7 +11,7 @@ GameSystem class :
             - 난수를 생성할 때 마다 사용 가능한(전에 사용한) 숫자인지 확인해주는 method.(중복1)
             - 정상적으로 생성된 난수 3개를 arrayList<Integer.>에 저장.
         - User class :
-            - 입력된 값을 저장해 주는 method.
+            - 입력된 값을 저장해 주는 생성자.
             - 길이가 3인 것을 확인해주는 method.
             - 입력이 1~9의 숫자로 들어온 것을 확인해주는 method.
             - 똑같은 숫자가 있는지 확인해주는 method (중복1).
