@@ -29,4 +29,12 @@ public class GameController {
         }
     }
 
+    public boolean isEndGame() {
+        if (computer.isEndTheGame()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
