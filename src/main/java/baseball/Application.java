@@ -14,7 +14,7 @@ public class Application {
         }
     }
 
-    private static String setNumber() {
+    public static String setNumber() {
 
         int first = Randoms.pickNumberInRange(1, 9);
         int second = Randoms.pickNumberInRange(1, 9);
