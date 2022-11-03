@@ -15,10 +15,11 @@ public class Input {
         }
     }
 
-    public static int inputReplay() {
+    public static boolean inputReplay() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
-            return Integer.parseInt(br.readLine());
+            int replay = Integer.parseInt(br.readLine());
+            return Validate.isCommandValid(replay);
         } catch (IOException e) {
             throw new IllegalArgumentException("명령 입력 오류");
         }
