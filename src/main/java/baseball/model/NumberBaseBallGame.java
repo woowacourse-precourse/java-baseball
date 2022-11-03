@@ -5,6 +5,9 @@ import baseball.utils.GameNumberGenerator;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.resources.GameConfig.*;
+import static baseball.resources.Sentence.*;
+
 public class NumberBaseBallGame {
     private Set<Integer> gameNumber;
     private boolean isProceeding;
@@ -24,9 +27,8 @@ public class NumberBaseBallGame {
     }
 
     private void validateThreeLength(String inputNumber) {
-        String pattern = "[1-9]{3}";
-        if (!inputNumber.matches(pattern)) {
-            throw new IllegalArgumentException("서로다른 3자리 자연수를 입력해야 합니다.");
+        if (!inputNumber.matches(PATTERN)) {
+            throwException(EXCEPTION);
         }
     }
 
@@ -36,8 +38,8 @@ public class NumberBaseBallGame {
             inputNumbers.add(inputNumber.charAt(i));
         }
 
-        if (inputNumbers.size() < 3) {
-            throw new IllegalArgumentException("서로다른 3자리 자연수를 입력해야 합니다.");
+        if (inputNumbers.size() < SIZE) {
+            throwException(EXCEPTION);
         }
     }
 }
