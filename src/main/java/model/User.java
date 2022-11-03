@@ -32,7 +32,7 @@ public class User {
         }
     }
 
-    public boolean isValidLength(String str) {
+    public boolean isValidLength(String str) throws IllegalArgumentException {
         if (str.length() == 3) {
             return true;
         } else {
