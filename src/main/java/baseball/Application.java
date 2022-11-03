@@ -27,12 +27,28 @@ public class Application {
     }
 
     private static void start_game() {
+        generate();
+        while (true) {
+
+        }
     }
 
     private static void generate() {
         target.clear();
         for (int i = 0; i < 3; ++i)
             target.add(Randoms.pickNumberInRange(1, 9));
+    }
+
+    private static void read() {
+        user.clear();
+        String input = Console.readLine();
+        if (input.length() != 3)
+            invalid();
+        for (int i = 0; i < 3; ++i) {
+            if (Character.isDigit(input.charAt(i)) == false)
+                invalid();
+            user.add(Character.getNumericValue(input.charAt(i)));
+        }
     }
 
     private static void invalid() {
