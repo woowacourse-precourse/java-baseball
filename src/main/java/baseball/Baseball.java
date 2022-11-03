@@ -46,6 +46,18 @@ public class Baseball {
         return strike;
     }
 
+    private int getBall() {
+        int ballNumber = 0;
+        for (int numberIndex = 0; numberIndex < numberLength; numberIndex ++) {
+            char userCharacter = userNumbers.charAt(numberIndex);
+            int user = Character.getNumericValue(userCharacter);
+
+            ballNumber = checkBall(computerNumber,user,ballNumber);
+        }
+
+        return ballNumber;
+    }
+
     private int checkBall(List<Integer> computerNumber, int userNumber, int ball) {
         if (computerNumber.contains(userNumber)) {
             return ++ball;
