@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.constant.GameConstant;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -10,13 +11,18 @@ import java.util.stream.Collectors;
 
 public class Generator {
     public static List<Integer> generateAnswer() {
+        List<Integer> numbers;
         Set<Integer> answers = new HashSet<>();
 
         while(answers.size() < GameConstant.DIGIT.getValue()) {
             answers.add(getRandomNumber());
         }
 
-        return answers.stream().collect(Collectors.toList());
+        numbers = answers.stream().collect(Collectors.toList());
+
+        Validator.isValidNumber(numbers);
+
+        return numbers;
     }
 
     private static int getRandomNumber() {
