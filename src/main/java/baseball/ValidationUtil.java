@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ValidationUtil {
@@ -12,5 +13,10 @@ public class ValidationUtil {
 
     public static boolean isValidCount(List<Integer> list) {
         return list.size() == VALID_CNT;
+    }
+
+    public static boolean haveNoDuplicatedNum(List<Integer> list) {
+        HashSet<Integer> set = new HashSet<>(list);
+        return list.size() == set.size();
     }
 }

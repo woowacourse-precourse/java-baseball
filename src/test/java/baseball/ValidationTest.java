@@ -27,4 +27,11 @@ public class ValidationTest {
         assertThat(ValidationUtil.isValidCount(List.of(1, 2, 3, 4))).isFalse();
         assertThat(ValidationUtil.isValidCount(List.of(9, 8, 7, 6))).isFalse();
     }
+
+    @Test
+    void duplicatedNumTest() {
+        assertThat(ValidationUtil.haveNoDuplicatedNum(List.of(1, 2, 3))).isTrue();
+        assertThat(ValidationUtil.haveNoDuplicatedNum(List.of(1, 1, 3))).isFalse();
+        assertThat(ValidationUtil.haveNoDuplicatedNum(List.of(1, 1, 1))).isFalse();
+    }
 }
