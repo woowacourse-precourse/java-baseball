@@ -25,10 +25,16 @@ public class Controller {
             int Ball = model.findBall(ball.getScore(), inp);
             if (Strike == 3){
                 view.threeStrike();
-                int regame = Integer.parseInt(Console.readLine());
-                if (regame==1){
+                String in = Console.readLine();
+                try{
+                    if (model.InputException(in)) throw new IllegalArgumentException();
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                    break;
+                }
+                if ("1".equals(in)){
                     ball = new Ball();
-                }else if (regame==2){
+                }else if ("2".equals(in)){
                     break;
                 }
             } else if (Ball != 0 && Strike != 0) {
