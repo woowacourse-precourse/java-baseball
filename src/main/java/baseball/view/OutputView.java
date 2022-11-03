@@ -11,7 +11,7 @@ public class OutputView {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static void printAnswerInputGuide() {
+    public static void printAnswerInputGuideMessage() {
         System.out.println(ANSWER_INPUT_GUIDE);
     }
 
