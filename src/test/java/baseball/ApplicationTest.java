@@ -1,9 +1,9 @@
 package baseball;
 
 import baseball.controller.BaseballController;
-import baseball.model.Validator;
+import baseball.model.TryValidator;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Pattern;
@@ -75,18 +75,22 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 정답이_옳은_길이_인지_확인(){
-            assertThat(getAnswer().length()).isEqualTo(super.ANSWER_LENGTH);
+            super.initGame();
+            String answer = getAnswer();
+            assertThat(answer.length()).isEqualTo(super.ANSWER_LENGTH);
         }
 
         @Test
         void 정답이_숫자만_있는지_확인(){
+            super.initGame();
             String answer = getAnswer();
-            Pattern compile = Pattern.compile("/^[0-9]*$/");
-            assertThat(compile.matcher(answer)).isTrue();
+            Pattern compile = Pattern.compile("[0-9]+");
+            assertThat(compile.matcher(answer).matches()).isEqualTo(true);
         }
 
         @Test
         void 정답에_중복숫자가_없는지_확인(){
+            super.initGame();
             String answer = getAnswer();
             String distinctString = Util.getDistinctString(answer);
             assertThat(answer).isEqualTo(distinctString);
@@ -95,53 +99,57 @@ class ApplicationTest extends NsTest {
         @Test
         void 입력값_333_시_예외발생(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThatThrownBy(() -> new Validator("333", TEST_CASE_LENGTH))
+            assertThatThrownBy(() -> new TryValidator("333", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_abc_시_예외발생(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThatThrownBy(() -> new Validator("abc", TEST_CASE_LENGTH))
+            assertThatThrownBy(() -> new TryValidator("abc", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_3$4_시_예외발생(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThatThrownBy(() -> new Validator("3$4", TEST_CASE_LENGTH))
+            assertThatThrownBy(() -> new TryValidator("3$4", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_34_시_예외발생(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThatThrownBy(() -> new Validator("34", TEST_CASE_LENGTH))
+            assertThatThrownBy(() -> new TryValidator("34", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_346_시_결과(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThat(super.answerCheck("346")).isEqual("3볼");
+            super.answerCheck("346");
+            assertThat(OutputView.getResult(ball, strike)).isEqualTo("3볼 ");
         }
 
         @Test
         void 입력값_152_시_결과(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThat(super.answerCheck("152")).isEqual("낫싱");
+            super.answerCheck("152");
+            assertThat(OutputView.getResult(ball, strike)).isEqualTo("낫싱");
         }
 
         @Test
         void 입력값_673_시_결과(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThat(super.answerCheck("673")).isEqual("1볼 1스트라이크");
+            super.answerCheck("673");
+            assertThat(OutputView.getResult(ball, strike)).isEqualTo("1볼 1스트라이크");
         }
 
         @Test
         void 입력값_634_시_결과(){
             setAnswer(TEST_CASE_ANSWER);
-            assertThat(super.answerCheck("634")).isEqual("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            super.answerCheck("634");
+            assertThat(OutputView.getResult(ball, strike)).isEqualTo("3스트라이크");
         }
     }
 }

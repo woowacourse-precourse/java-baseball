@@ -18,7 +18,7 @@ public class BaseballController {
 	public void start(){
 		do{
 			gameStart();
-		}while(reStartCheck());
+		}while(restartCheck());
 	}
 
 	private void gameStart() {
@@ -31,8 +31,8 @@ public class BaseballController {
 		} while (!isGameWin());
 		OutputView.displayWin();
 	}
-	private boolean reStartCheck(){
-		Validator restartValidator = new RestartValidator(InputView.restartInput(), ANSWER_LENGTH);
+	private boolean restartCheck(){
+		Validator restartValidator = new RestartValidator(InputView.restartInput(), RESTART_ANSWER_LENGTH);
 		return restartValidator.INPUT_VALUE.equals("1");
 	}
 

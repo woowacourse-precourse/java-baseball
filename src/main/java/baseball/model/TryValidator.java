@@ -5,6 +5,7 @@ import baseball.Util;
 public class TryValidator extends Validator{
 	public TryValidator(String inputValue, int correctLength) {
 		super(inputValue, correctLength);
+		isValidate();
 	}
 
 	@Override

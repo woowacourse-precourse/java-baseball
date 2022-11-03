@@ -4,6 +4,7 @@ public class RestartValidator extends Validator{
 
 	public RestartValidator(String inputValue, int correctLength) {
 		super(inputValue, correctLength);
+		isValidate();
 	}
 
 	@Override
