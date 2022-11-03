@@ -12,11 +12,17 @@ public class Application {
 }
 
 class Game {
-    final static String GAME_START_GUIDE_OUTPUT = "숫자 야구 게임을 시작합니다.";
-    { System.out.println(GAME_START_GUIDE_OUTPUT); }
+    final static String GAME_START_GUIDE_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
+    private Computer computer;
+    { System.out.println(GAME_START_GUIDE_MESSAGE); }
 
     Game() {
+        this.computer = new Computer();
+    }
 
+    public void getGamePlayerInput() {
+        System.out.print(PLAYER_INPUT_GUIDE_MESSAGE);
     }
 }
 
