@@ -1,6 +1,8 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.service.ComputerService;
+import baseball.view.GameStartView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -19,6 +21,5 @@ public class Application {
     public static void main(String[] args) {
         GameController gameController = new GameController();
         gameController.gameStart();
-
     }
 }
