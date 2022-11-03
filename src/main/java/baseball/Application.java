@@ -117,6 +117,17 @@ public class Application {
         return new BaseballGameResult(strikeIndexes.size(), ballCnt);
     }
 
+    static void playGame() {
+        BaseballGameResult result;
+        do {
+            String input = inputNumber();
+            checkInput(input);
+            String computer = pickRandomNumber();
+            result = getGameResult(computer, input);
+            result.print();
+        } while (result.strike != 3);
+    }
+
     public static void main(String[] args) {
         printGameStart();
     }
