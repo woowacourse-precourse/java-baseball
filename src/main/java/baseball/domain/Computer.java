@@ -21,4 +21,8 @@ public class Computer {
 		}
 		answer = new ArrayList<>(numSet);
 	}
+
+	public List<Integer> getAnswer() {
+		return answer;
+	}
 }
