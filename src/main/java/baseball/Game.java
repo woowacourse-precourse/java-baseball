@@ -27,4 +27,18 @@ public class Game {
 
         return computer;
     }
+
+    private List<Integer> inputToArrayList(String input) {
+        List<Integer> player = new ArrayList<>();
+        int number;
+
+        for (int i = 0; i < input.length(); i++) {
+            number = Character.getNumericValue(input.charAt(i));
+            player.add(number);
+        }
+
+        return player;
+    }
+
+
 }
