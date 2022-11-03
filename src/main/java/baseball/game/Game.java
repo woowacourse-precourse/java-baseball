@@ -22,18 +22,23 @@ public class Game {
     public static void playGame() {
         AnswerNumber answerNumber = AnswerNumber.getInstance();
         UserNumber userNumber = UserNumber.getInstance();
+        boolean isAnswered = false;
 
         answerNumber.updateNumbers(Generator.generateAnswer());
-        userNumber.updateNumbers(Scanner.getUserInput());
 
-        Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
+        while(!isAnswered) {
+            userNumber.updateNumbers(Scanner.getUserInput());
 
-        if(comparator.getStrike() == GameConstant.DIGIT.getValue()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
+            Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
+
+            if(comparator.getStrike() == GameConstant.DIGIT.getValue()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                isAnswered = true;
+                break;
+            }
+
+            printResult(comparator);
         }
-
-        printResult(comparator);
     }
 
     public static void printResult(Comparator comparator) {
