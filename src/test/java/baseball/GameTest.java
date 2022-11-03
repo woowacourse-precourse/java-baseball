@@ -2,6 +2,9 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,6 +72,27 @@ class GameTest {
         List<Integer> player = List.of(3 , 1, 2);
 
         assertThat(game.getBall(game.computer, player)).isEqualTo(3);
+    }
+
+    @Test
+    void printResult_결과반환() {
+        Game game = new Game();
+        OutputStream out = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(out));
+        game.printResult(1, 2);
+        assertThat("1볼 2스트라이크" + "\n").isEqualTo(out.toString());
+
+
+        out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(0, 3);
+        assertThat("3스트라이크" + "\n").isEqualTo(out.toString());
+
+        out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(0, 0);
+        assertThat("낫싱" + "\n").isEqualTo(out.toString());
     }
 }
 
