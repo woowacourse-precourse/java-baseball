@@ -16,6 +16,7 @@ public class Application {
     }
     public static void StartGame(int GameSwitch){
         while(GameSwitch==1){
+            System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = getNumberBaseball();
             GameSwitch=checkNumber(computer);
         }
@@ -40,7 +41,7 @@ public class Application {
     }
 
     public static List<Integer> getInput() {
-
+        System.out.print("숫자를 입력해주세요 : ");
         String tryNumber = Console.readLine();
         List<Integer> user = transformInteger(tryNumber);
         return user;
