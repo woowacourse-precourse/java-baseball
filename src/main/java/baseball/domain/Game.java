@@ -4,7 +4,7 @@ public class Game {
     private static String START_GAME = "숫자 야구 게임을 시작합니다.";
     User user;
     Computer computer;
-    public Game(){
+    public Game(){  
         this.user = new User();
         this.computer = new Computer();
     }
