@@ -15,8 +15,9 @@ public class User {
 	public List<Integer> numbers = new ArrayList<>();
 
 	public void play() {
-		System.out.println(INPUT_MESSAGE);
+		System.out.printf(INPUT_MESSAGE);
 		String inputNumbers = Console.readLine();
+		inputIsValidate(inputNumbers);
 		numbers = convertStringToIntList(inputNumbers);
 	}
 
@@ -51,7 +52,7 @@ public class User {
 
 	private static boolean validateType(String input) {
 		for (char number : input.toCharArray()){
-			if (number < 1 || number > 9){
+			if (number < '1' || number > '9'){
 				return false;
 			}
 		}
