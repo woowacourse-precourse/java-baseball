@@ -46,4 +46,15 @@ public class OpponentComputerTest {
 
         assertThat(strikeAndBallCountMapSize).isEqualTo(2);
     }
+
+    @Test
+    void 각_자리의_수를_리스트에_저장() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        List<String> numberEachDigits = opponentComputer.addEachDigitToList(123);
+
+        assertThat(numberEachDigits.size()).isEqualTo(3);
+        assertThat(numberEachDigits.get(0)).isEqualTo("1");
+        assertThat(numberEachDigits.get(1)).isEqualTo("2");
+        assertThat(numberEachDigits.get(2)).isEqualTo("3");
+    }
 }
