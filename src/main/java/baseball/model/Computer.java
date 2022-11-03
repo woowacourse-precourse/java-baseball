@@ -37,12 +37,22 @@ public class Computer {
     }
 
     public boolean isRestart(String restartInput){
+        checkNotRestartInput(restartInput);
         if(restartInput.equals("1")){
             return true;
         }
         return false;
     }
 
+    public void checkNotRestartInput(String input){
+        if(isNotRestartInput(input)){
+            throw new IllegalArgumentException("재시작 여부 숫자는 1,2만 가능합니다.");
+        }
+    }
+
+    private static boolean isNotRestartInput(String input) {
+        return input != "1" && input != "2";
+    }
 
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
