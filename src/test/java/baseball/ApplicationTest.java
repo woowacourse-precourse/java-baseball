@@ -24,11 +24,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        Player player = new Player();
-        player.playersNumber = Arrays.asList("1234".split(""));
-
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> InputChecker.checkExceptionNumber(player.playersNumber))
+                assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
