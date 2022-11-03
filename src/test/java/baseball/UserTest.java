@@ -2,11 +2,10 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import model.User;
 import org.junit.jupiter.api.Test;
 
-public class UserTest extends NsTest {
+public class UserTest {
 
     // computer Test
     @Test
@@ -16,8 +15,5 @@ public class UserTest extends NsTest {
         assertThat(result).isEqualTo(123);
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
+
 }
