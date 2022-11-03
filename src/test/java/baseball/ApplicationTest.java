@@ -187,18 +187,40 @@ class ApplicationTest extends NsTest {
 		assertThat(game.extractIndex(map,0)).isEqualTo(0);
 	}
 
-	@DisplayName("컴퓨터와 사용자 숫자의 비교 로직의 작동을 확인한다")
+	@DisplayName("결과 출력 기능을 확인한다 : 낫싱")
 	@Test
-	void testGuessingCalculation(){
+	void canPrintAnswerMessageCase1(){
+		game.strike = 0;
+		game.ball = 0;
+		String answer = "낫싱";
+		assertEquals(game.printAnswerMessage(), answer);
+	}
 
+	@DisplayName("결과 출력 기능을 확인한다 : 1볼 1스트라이크")
+	@Test
+	void canPrintAnswerMessageCase2(){
+		game.strike = 1;
+		game.ball = 1;
+		String answer = "1볼 1스트라이크";
+		assertEquals(game.printAnswerMessage(), answer);
+	}
 
+	@DisplayName("결과 출력 기능을 확인한다 : 1볼")
+	@Test
+	void canPrintAnswerMessageCase3(){
+		game.strike = 0;
+		game.ball = 1;
+		String answer = "1볼";
+		assertEquals(game.printAnswerMessage(), answer);
+	}
 
-		boolean isStrike = true;
-		game.isStrike(2,1,2,1);
-		game.countStrike();
-		int strike = game.strike;
-
-		assertEquals(1, strike);
+	@DisplayName("결과 출력 기능을 확인한다 : 2스트라이크")
+	@Test
+	void canPrintAnswerMessageCase4(){
+		game.strike = 2;
+		game.ball = 0;
+		String answer = "2스트라이크";
+		assertEquals(game.printAnswerMessage(), answer);
 	}
 
 
