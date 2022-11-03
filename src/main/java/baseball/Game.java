@@ -43,7 +43,23 @@ public class Game {
         return computer;
     }
 
-    // TODO Method: List<Integer> getUserNumber
+    private List<Integer> getUserNumber() {
+        String input = sc.nextLine();
+
+        // Exception 1. not Number
+        for(char c : input.toCharArray()) {
+            if (48 <= c && c <= 57) return null;
+        }
+        // Exception 2. not 3 Number
+        if (input.length() != 3) return null;
+
+        List<Integer> userNumbers = new ArrayList<>();
+        for(char c : input.toCharArray()) {
+            userNumbers.add((int) c);
+        }
+
+        return userNumbers;
+    }
 
     // TODO Method: boolean restart
 }
