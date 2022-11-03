@@ -31,4 +31,17 @@ public class BaseballGame {
         return count;
     }
 
+    public int getBallCount(List<Integer> inputNumbers, List<Integer> answer) {
+        int count = 0;
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            if (answer.contains(inputNumbers.get(i))) {
+                count++;
+            }
+            if (isStrike(inputNumbers, answer, i)) {
+                count--;
+            }
+        }
+        return count;
+    }
+
 }
