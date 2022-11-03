@@ -17,10 +17,6 @@ public class GameService {
         RandomNumber randomNumber = new RandomNumber();
         answerNumber = randomNumber.setRandomNumber();
     }
-    private void setUserNumber() {
-        User user = new User();
-        userNumber = user.setUserNumber();
-    }
 
     public void startGame() throws IllegalArgumentException{
         int strike=0;
@@ -31,6 +27,9 @@ public class GameService {
             ball = calculateBall();
             printResult(strike,ball);
         }
+    }
+    private void setUserNumber() {
+        userNumber = User.setUserNumber();
     }
     private int calculateStrike(){
         int strikeCount=0;
@@ -54,7 +53,8 @@ public class GameService {
 
     private void printResult(int strike, int ball){
         if(strike==3){
-            System.out.println(strike+"스트라이크 모두 맞히셨습니다.");
+            System.out.println(strike+"스트라이크");
+            System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         else if(strike>0 || ball>0){
             System.out.println(ball+"볼 "+strike+"스트라이크 ");
