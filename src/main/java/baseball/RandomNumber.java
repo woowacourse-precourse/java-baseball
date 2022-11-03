@@ -11,7 +11,7 @@ public class RandomNumber {
 
 	public List<Integer> createRamdomNumbers(int startNumber, int endNumber, int size) {
     	validateRange(startNumber, endNumber);
-    	validateCount(startNumber, endNumber, size);
+    	validateCount(size);
     	
     	return createRandomNumberList(startNumber, endNumber, size);
     }
@@ -55,12 +55,9 @@ public class RandomNumber {
     }
     
     
-    private void validateCount(final int start, final int end, final int count) {
+    private void validateCount(final int count) {
         if (count < 0) {
             throw new IllegalArgumentException("count cannot be less than zero.");
-        }
-        if (end - start + 1 < count) {
-            throw new IllegalArgumentException("count cannot be greater than the input range.");
         }
     }
 }
