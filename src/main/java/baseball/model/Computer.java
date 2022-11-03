@@ -76,7 +76,57 @@ public class Computer {
     public String getHint(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int strike = countStrike(computerNum,playerNum);
         int ball = countBall(computerNum, playerNum);
-        
 
+        String hint = "";
+        hint = getNothing(strike, ball,hint);
+        hint = getStrikeNoBall(strike, ball,hint);
+        hint = getBallNoStrike(strike, ball,hint);
+        hint = getStrikeAndBall(strike, ball,hint);
+
+        return hint;
+    }
+
+    private static String getStrikeAndBall(int strike, int ball,String hint) {
+        if (isStrikeAndBall(strike, ball)) {
+            return ball + "볼 " + strike + "스트라이크";
+        }
+        return hint;
+    }
+
+    private static String getBallNoStrike(int strike, int ball,String hint) {
+        if(isBallNoStrike(strike, ball)){
+            return ball + "볼";
+        }
+        return hint;
+    }
+
+    private static String getStrikeNoBall(int strike, int ball,String hint) {
+        if(isStrikeNoBall(strike, ball)){
+            return strike + "스트라이크";
+        }
+        return hint;
+    }
+
+    private static String getNothing(int strike, int ball,String hint) {
+        if(isNothing(strike, ball)){
+            return  "낫싱";
+        }
+        return hint;
+    }
+
+    private static boolean isStrikeAndBall(int strike, int ball) {
+        return strike > 0 && ball > 0;
+    }
+
+    private static boolean isBallNoStrike(int strike, int ball) {
+        return strike == 0 && ball > 0;
+    }
+
+    private static boolean isStrikeNoBall(int strike, int ball) {
+        return strike > 0 && ball == 0;
+    }
+
+    private static boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
     }
 }

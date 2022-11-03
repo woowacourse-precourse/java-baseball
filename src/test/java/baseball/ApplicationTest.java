@@ -80,4 +80,12 @@ class ApplicationTest extends NsTest {
         int ball = computer.countBall(new ArrayList<>(List.of(6, 7, 1)), new ArrayList<Integer>(List.of(7, 1, 3)));
         assertThat(2).isEqualTo(ball);
     }
+
+    @Test
+    void 힌트_출력_테스트(){
+        Computer computer = new Computer();
+        String hint = computer.getHint(new ArrayList<>(List.of(2,1,6)), new ArrayList<Integer>(List.of(7, 1, 3)));
+        assertThat("2볼").isEqualTo(hint);
+
+    }
 }
