@@ -39,9 +39,10 @@ public class ResultTest {
     @ValueSource(strings = {"456", "231", "132", "145", "361", "123"})
     void check_result_test(String input) {
         List<Integer> answer = List.of(1, 2, 3);
+        List<String> resultList = List.of("낫싱", "3볼", "2볼 1스트라이크", "1스트라이크", "2볼", "3스트라이크");
         Game game = new Game(answer);
         String result = game.getResult(input);
         System.out.println(result);
-        Assertions.assertThat(output()).contains("낫싱", "3볼", "2볼 1스트라이크", "1스트라이크", "2볼", "3스트라이크");
+        Assertions.assertThat(resultList).contains(output());
     }
 }
