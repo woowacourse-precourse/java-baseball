@@ -47,6 +47,10 @@ public class Inputnumber {
         return true;
     }
 
+    public boolean isNumber(){
+        return arg.chars().allMatch(Character::isDigit);
+    }
+
 
 
 
