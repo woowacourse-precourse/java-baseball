@@ -21,13 +21,15 @@ public class Response {
             return;
         } else if (strike == 0) {
             printBallIsNotZero(ball);
+            System.out.println();
             return;
         } else if (ball == 0) {
             printStrikeIsNotZero(ball);
+            System.out.println();
             return;
         }
         printBallIsNotZero(ball);
-        System.out.println(" ");
+        System.out.print(" ");
         printStrikeIsNotZero(strike);
     }
 

@@ -2,10 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 public class Application {
 
@@ -49,7 +47,8 @@ public class Application {
         List<Integer> answer = createNewAnswer();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> userInput = getValidUserInput(Console.readLine());
+            Scanner scanner = new Scanner(System.in);
+            List<Integer> userInput = getValidUserInput(scanner.nextLine());
             int strike = getStrike(answer, userInput);
             int ball = getBall(answer, userInput, strike);
             Response response = new Response(strike, ball);
