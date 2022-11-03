@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         while (true) {
             playGame();
-            if (finishApp()) {
+            if (restartGame()) {
                 break;
             }
         }
@@ -71,7 +71,7 @@ public class Application {
         return true;
     }
 
-    public static boolean finishApp() {
+    public static boolean restartGame() {
         int i = Integer.parseInt(Console.readLine());
         if(i == 1){
             return true;
