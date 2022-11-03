@@ -10,6 +10,10 @@ public class InputValidation {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException();
         }
+
+        if (input.contains("0")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isNumeric(String input) {
