@@ -29,7 +29,7 @@ public class Application {
 
             StringBuilder ans = new StringBuilder();
             if (0 < ball) {
-                ans.append(ball).append("ball ");
+                ans.append(ball).append("볼 ");
             }
             if (0 < strike) {
                 ans.append(strike).append("스트라이크");
