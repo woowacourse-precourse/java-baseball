@@ -98,7 +98,7 @@ class ApplicationTest extends NsTest {
         @Test
         void strike3() {
             assertRandomNumberInRangeTest(() -> {
-                run("246");
+                        runException("246");
                 assertThat(output()).contains("3스트라이크");
             },
         2,4, 6
@@ -109,7 +109,7 @@ class ApplicationTest extends NsTest {
         @Test
         void strike2() {
             assertRandomNumberInRangeTest(() -> {
-                run("246");
+                        runException("246");
                 assertThat(output()).contains("2스트라이크");
             },
         2,4, 7
@@ -120,7 +120,7 @@ class ApplicationTest extends NsTest {
         @Test
         void strike1() {
             assertRandomNumberInRangeTest(() -> {
-                run("256");
+                        runException("256");
                 assertThat(output()).contains("1스트라이크");
             },
         2,4, 7
@@ -131,7 +131,7 @@ class ApplicationTest extends NsTest {
         @Test
         void ball1_strike1() {
             assertRandomNumberInRangeTest(() -> {
-                        run("265");
+                        runException("265");
                         assertThat(output()).contains("1볼 1스트라이크");
                     },
                     2,4, 6
@@ -142,7 +142,7 @@ class ApplicationTest extends NsTest {
         @Test
         void ball2_strike1() {
             assertRandomNumberInRangeTest(() -> {
-                        run("426");
+                        runException("426");
                         assertThat(output()).contains("2볼 1스트라이크");
                     },
                     2,4, 6
@@ -153,7 +153,7 @@ class ApplicationTest extends NsTest {
         @Test
         void ball1() {
             assertRandomNumberInRangeTest(() -> {
-                run("365");
+                runException("365");
                 assertThat(output()).contains("1볼");
             },
         2,4, 6
@@ -164,7 +164,7 @@ class ApplicationTest extends NsTest {
         @Test
         void ball2() {
             assertRandomNumberInRangeTest(() -> {
-                run("364");
+                runException("364");
                 assertThat(output()).contains("2볼");
             },
         2,4, 6
@@ -175,7 +175,7 @@ class ApplicationTest extends NsTest {
         @Test
         void ball3() {
             assertRandomNumberInRangeTest(() -> {
-                run("624");
+                runException("624");
                 assertThat(output()).contains("3볼");
             },
         2,4, 6
@@ -186,7 +186,7 @@ class ApplicationTest extends NsTest {
         @Test
         void nothing() {
             assertRandomNumberInRangeTest(() -> {
-                run("357");
+                runException("357");
                 assertThat(output()).contains("낫싱");
             },
         2,4, 6
