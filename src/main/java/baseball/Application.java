@@ -60,6 +60,10 @@ public class Application {
         return gostop;
     }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        while(true) {
+            if (gamePlay() == String.valueOf('2')) {
+                break;
+            }
+        }
     }
 }
