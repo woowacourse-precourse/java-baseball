@@ -286,6 +286,28 @@ class ApplicationTest extends NsTest {
         boolean result = computer.isEndTheGame();
         assertThat(result).isTrue();
     }
+
+    @Test
+    void 게임종료_확인_case_2() {
+        int[] testInt = new int[]{124, 143, 423, 132, 321, 213, 182, 134, 521, 324, 813, 283, 184,
+            826, 483, 416, 651, 247, 562, 357, 635, 712, 218, 251, 238, 732, 352, 314, 381, 431,
+            312, 231, 798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789};
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        ArrayList<Boolean> resultList = new ArrayList<>();
+        for (int num : testInt) {
+            computer.setCntBall(0);
+            computer.setCntStrike(0);
+            computer.isRightThreeNumOfComputer(num);
+            resultList.add(computer.isEndTheGame());
+        }
+
+        boolean result = resultList.stream().allMatch(list -> list == false);
+        assertThat(result).isTrue();
+    }
+
     // computer Test 종료
 
     @Test
