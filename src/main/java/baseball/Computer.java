@@ -18,4 +18,23 @@ public class Computer {
         }
         System.out.println(target); //난수 확인용
     }
+
+    public boolean getResult(int number) {
+        List<Integer> numbers = getListFromInt(number);
+
+        return false;
+    }
+
+    private List<Integer> getListFromInt(int number) {
+        List<Integer> list = new ArrayList<>();
+        int divide = 100;
+        while (divide > 0) {
+            list.add(number/divide);
+            number = number%divide;
+            divide = divide/10;
+        }
+        return list;
+    }
+
+
 }

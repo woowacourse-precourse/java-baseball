@@ -12,12 +12,17 @@ public class Application {
 
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
+            computer.startGame();
+
+            System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            if (isValidNumber(input)) {
-                computer.startGame();
-            } else {
+
+            if (!isValidNumber(input)) {
                 throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해야 합니다.");
             }
+
+            int number = Integer.parseInt(input);
+            boolean result = computer.getResult(number);
         }
     }
 
