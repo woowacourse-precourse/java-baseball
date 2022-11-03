@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class Balls {
 
     public static final int BALLS_FORMAL_SIZE = 3;
-    public static final String BALLS_SIZE_EXCEPTION_MESSAGE = "입력은 3자리만 가능합니다.";
-    public static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "중복되지 않은 숫자만 입력 가능합니다.";
+    private static final String BALLS_SIZE_EXCEPTION_MESSAGE = "입력은 " + BALLS_FORMAL_SIZE + "자리만 가능합니다.";
+    private static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "중복되지 않은 숫자만 입력 가능합니다.";
     private final List<Ball> balls;
 
     private Balls(List<Ball> balls) {
