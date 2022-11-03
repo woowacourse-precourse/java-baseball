@@ -47,6 +47,16 @@ public class BaseballGameController {
         System.out.println(stringBuilder.toString());
     }
 
+    private boolean canPlayNextGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String nextGamePlayerInput = Console.readLine();
+
+        if(nextGamePlayerInput.equals("1")){
+            return true;
+        }
+        return false;
+    }
+
     private List<Integer> generateThreeRandomNumbers(){
         List<Integer> randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < 3){
