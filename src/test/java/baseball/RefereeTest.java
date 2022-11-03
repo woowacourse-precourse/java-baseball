@@ -40,4 +40,20 @@ class RefereeTest {
         assertThat(result2).isEqualTo(referee.BALL);
         assertThat(result3).isEqualTo(referee.NOTHING);
     }
+
+    @Test
+    void judgeList() {
+        int zeroIndexNum = 4;
+        int firstIndexNum = 5;
+        int secondIndexNum = 6;
+        referee.setAnswer(List.of(zeroIndexNum, firstIndexNum, secondIndexNum));
+
+        List<Integer> result = referee.judgeList(List.of(zeroIndexNum, firstIndexNum, secondIndexNum));
+        List<Integer> result2 = referee.judgeList(List.of(firstIndexNum, secondIndexNum, zeroIndexNum));
+        List<Integer> result3 = referee.judgeList(List.of(secondIndexNum, firstIndexNum, zeroIndexNum));
+
+        assertThat(result).isEqualTo(List.of(0, 3));
+        assertThat(result2).isEqualTo(List.of(3, 0));
+        assertThat(result3).isEqualTo(List.of(2, 1));
+    }
 }
