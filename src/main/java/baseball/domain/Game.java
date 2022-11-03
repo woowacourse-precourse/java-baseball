@@ -20,10 +20,11 @@ public class Game {
     }
 
     public void Start() {
+        System.out.println(START_GAME);
+        computer.createRandomNumbers();
         while (true) {
-            computer.createRandomNumbers();
-            System.out.println(START_GAME);
             user.inputUserNumbers();
+            outputHint(computer.randomNumbers,user.userNumbers);
         }
     }
 
