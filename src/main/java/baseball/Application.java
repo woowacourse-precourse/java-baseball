@@ -31,7 +31,15 @@ public class Application {
         for (int i = 0; i < answer.size(); i++) {
             addIndexIfMatchedAnswer(matchedIndexSet, answer.get(i), userInput);
         }
-        return matchedIndexSet.size() - strike;
+        int ballCount = ifMinusChangeZero(matchedIndexSet.size() - strike);
+        return ballCount;
+    }
+
+    private int ifMinusChangeZero(int integer) {
+        if (integer < 0) {
+            return 0;
+        }
+        return integer;
     }
 
     private Set<Integer> addIndexIfMatchedAnswer(Set<Integer> matchedIndexSet, int answer, List<Integer> userInput) {
