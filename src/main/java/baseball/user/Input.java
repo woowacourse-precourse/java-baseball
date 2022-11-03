@@ -36,11 +36,11 @@ public class Input {
     /**
      * 입력받은 값의 길이와 게임에 쓸 숫자의 길이가 같은지 체크하는 메소드
      *
-     * @param inputDigitList 입력받은 값이 들어있는 리스트
+     * @param inputString 입력받은 문자열
      * @return 길이가 같다면 true, 다르다면 false 반환
      */
-    public boolean isInputLengthEqualsGameLength(List<Integer> inputDigitList) {
-        return inputDigitList.size() == Computer.RANDOM_NUMBER_LENGTH;
+    public boolean isInputLengthEqualsGameLength(String inputString) {
+        return inputString.length() == Computer.RANDOM_NUMBER_LENGTH;
     }
 
     /**
