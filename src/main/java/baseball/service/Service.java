@@ -23,6 +23,7 @@ public class Service {
         while (!correctAnswer) {
             correctAnswer = playGame();
         }
+        SystemMessage.printCorrectAnswer();
     }
 
     private boolean playGame() {
