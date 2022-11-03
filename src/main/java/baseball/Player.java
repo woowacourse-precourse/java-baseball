@@ -12,7 +12,7 @@ public class Player {
 	private static final int INIT_INDEX = 0;
 	private static final String USER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final String ERROR = "[ERROR]";
-	public static List<Integer> userNumberList;
+	private static List<Integer> userNumberList;
 
 	public Player() {
 		userNumberList = new ArrayList<>(INIT_LIST_CAPACITY);
@@ -60,5 +60,9 @@ public class Player {
 
 	private void initUserNumber() {
 		userNumberList.clear();
+	}
+
+	protected List<Integer> getUserNumberList() {
+		return userNumberList;
 	}
 }
