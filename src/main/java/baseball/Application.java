@@ -55,10 +55,14 @@ public class Application {
         return !digitCheck(tryNumber) || !lengthCheck(tryNumber)||!duplicateCheck(tryNumber);
 
     }
-    public static boolean lengthCheck(String tryNumber){
-        return tryNumber.length()==3;
+
+    public static boolean lengthCheck(String tryNumber) {
+
+        return tryNumber.length() == 3;
     }
-    public static boolean digitCheck(String tryNumber){
+
+    public static boolean digitCheck(String tryNumber) {
+
         try {
             Double.parseDouble(tryNumber);
             return true;
@@ -66,10 +70,13 @@ public class Application {
             return false;
         }
     }
-    public static boolean duplicateCheck(String tryNumber){
-        return (tryNumber.charAt(0)!=tryNumber.charAt(1))&&(tryNumber.charAt(1)!=tryNumber.charAt(2))
-                &&(tryNumber.charAt(0)!=tryNumber.charAt(2));
+
+    public static boolean duplicateCheck(String tryNumber) {
+
+        return (tryNumber.charAt(0) != tryNumber.charAt(1)) && (tryNumber.charAt(1) != tryNumber.charAt(2))
+                && (tryNumber.charAt(0) != tryNumber.charAt(2));
     }
+
 
     public static List<Integer> transformInteger(String tryNumber) {
 
