@@ -120,5 +120,14 @@ public class Application {
             String gameResultToString = createGameResultToString(sb);
             System.out.println(gameResultToString);
         }
+
+
+
+        private void appendGameResult(Map<String, Integer> gameResult, StringBuilder sb, String answer, String answerKor) {
+            if (gameResult.containsKey(answer)) {
+                sb.append(gameResult.get(answer));
+                sb.append(answerKor);
+            }
+        }
     }
 }
