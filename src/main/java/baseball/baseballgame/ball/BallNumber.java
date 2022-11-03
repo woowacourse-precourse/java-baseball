@@ -5,14 +5,9 @@ import java.util.Objects;
 public class BallNumber {
     public static final int MIN_RANGE = 1;
     public static final int MAX_RANGE = 9;
-    private int ballNumber;
+    private final int ballNumber;
 
-    public BallNumber() {
-        new BallNumber(RandomNumber.createFrom1To9());
-    }
-
-
-    BallNumber(int number) {
+    public BallNumber(int number) {
         validateRange(number);
         this.ballNumber = number;
     }

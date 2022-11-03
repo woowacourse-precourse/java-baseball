@@ -47,7 +47,7 @@ public class BallList {
 
     private JudgementType judge(int position, Ball computerBall, List<Ball> computerBallList) {
         Ball ball = ballList.get(position);
-        if (ball == computerBall) {
+        if (ball.equals(computerBall)) {
             return JudgementType.STRIKE;
         }
         if (computerBallList.contains(ball)) {
