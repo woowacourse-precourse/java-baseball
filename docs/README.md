@@ -52,4 +52,4 @@
 - [x] getResult() 테스트 추가
 - [ ] readInputForGame() 테스트 추가
 - [ ] readIsQuit() 테스트 추가
-- [ ] generateRandomValue() 테스트 추가
+- [x] generateRandomValue() 테스트 추가
