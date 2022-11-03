@@ -46,3 +46,5 @@
 ## [게임을 지속할 것인지 확인]
 
 - askRestartOrExit()
+
+  - isValidAnswer()
