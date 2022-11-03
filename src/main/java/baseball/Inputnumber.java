@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inputnumber {
-    String[] args;
+    String arg;
 
     Inputnumber(){
 
     }
     Inputnumber(String[] args){
-        this.args = args;
+        for(String arg : args){
+           this.arg +=arg;
+        }
     }
 
     public List<Integer> stringTointList(){
@@ -29,6 +31,8 @@ public class Inputnumber {
         }
         return true;
     }
+
+
 
 
 
