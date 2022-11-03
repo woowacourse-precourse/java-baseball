@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class BallAndStrikeCounter {
+import static baseball.MapKeyStorage.BALL_KEY;
+import static baseball.MapKeyStorage.STRIKE_KEY;
 
-    private static final String BALL_KEY = "ball";
-    private static final String STRIKE_KEY = "strike";
+public class BallAndStrikeCounter {
 
     public Map<String, Integer> checkBallAndStrikeCount(List<Integer> answer, String inputValue) {
         List<Integer> inputNumber = inputValueToList(inputValue);

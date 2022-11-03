@@ -8,6 +8,8 @@ import baseball.randomnumber.RandomNumberFactory;
 import java.util.List;
 import java.util.Map;
 
+import static baseball.MapKeyStorage.*;
+
 public class BaseballGame {
     private final NumberScanner numberScanner;
     private final BallAndStrikeCounter ballAndStrikeCounter;
@@ -31,24 +33,22 @@ public class BaseballGame {
             messagePrinter.printEnterNumberMessage();
 
             String inputValue = numberScanner.inputNumber();
-
             Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter
                     .checkBallAndStrikeCount(answer, inputValue);
 
             messagePrinter.printBallAndStrikeCount(ballAndStrikeCount);
 
-            if (ballAndStrikeCount.get("strike") == 3) {
-                messagePrinter.printCorrectAnswerMessage(); // 게임 종료 메세지
-                messagePrinter.printRestartMessage();  // 다시 할건지 묻는 메세지
+            if (ballAndStrikeCount.get(STRIKE_KEY) == 3) {
+                messagePrinter.printCorrectAnswerMessage();
+                messagePrinter.printRestartMessage();
 
-                oneOrTwoForRestartGame = numberScanner.inputOneOrTwo();  // 1또는 2를 입력 받음
+                oneOrTwoForRestartGame = numberScanner.inputOneOrTwo();
             }
 
             if (oneOrTwoForRestartGame == 1) {
                 answer = RandomNumberFactory.newRandomNumber();
                 oneOrTwoForRestartGame = 0;
             }
-
         }
 
         System.out.println("2를 입력하여, 게임이 종료되었습니다.");

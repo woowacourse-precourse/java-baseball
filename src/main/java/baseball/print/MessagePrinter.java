@@ -2,12 +2,11 @@ package baseball.print;
 
 import java.util.Map;
 
+import static baseball.MapKeyStorage.BALL_KEY;
+import static baseball.MapKeyStorage.STRIKE_KEY;
 import static baseball.print.Message.*;
 
 public class MessagePrinter {
-
-    private static final String BALL_KEY = "ball";
-    private static final String STRIKE_KEY = "strike";
 
     public void printStartMessage() {
         System.out.println(START_GAME_MESSAGE);
