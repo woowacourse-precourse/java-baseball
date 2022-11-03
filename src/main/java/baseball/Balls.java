@@ -8,15 +8,15 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Integer> ballNums) {
-        List<Ball> result = new ArrayList<>();
-        mapInt2Ball(ballNums, result);
-        this.balls = result;
+        this.balls = mapIntToBall(ballNums);
     }
 
-    private void mapInt2Ball(List<Integer> ballNums, List<Ball> result) {
+    private List<Ball> mapIntToBall(List<Integer> ballNums) {
+        List<Ball> result = new ArrayList<>();
         for (int i = 0; i < BALL_CNT; i++) {
             result.add(new Ball(i, ballNums.get(i)));
         }
+        return result;
     }
 
     public BallStatus play(Ball ball) {
@@ -25,4 +25,17 @@ public class Balls {
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
     }
+
+    public Result play(List<Integer> ballNums) {
+        Balls userBalls = new Balls(ballNums);
+        Result result = new Result();
+
+        for (Ball ball : balls) {
+            BallStatus status = userBalls.play(ball);
+            result.report(status);
+        }
+
+        return result;
+    }
 }
+

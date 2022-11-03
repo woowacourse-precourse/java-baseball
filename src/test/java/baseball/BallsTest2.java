@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class BallsTest2 {
     Balls computer;
 
@@ -15,7 +17,8 @@ public class BallsTest2 {
 
     @Test
     void nothing() {
-
-//        Assertions.assertThat(computer.play())
+        Result result = computer.play(Arrays.asList(4, 5, 6));
+        assertThat(result.getStrike()).isEqualTo(0);
+        assertThat(result.getBall()).isEqualTo(0);
     }
 }
