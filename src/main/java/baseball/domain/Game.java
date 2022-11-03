@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -28,9 +30,15 @@ public class Game {
             user.inputUserNumbers();
             outputHint(computer.randomNumbers, user.userNumbers);
             if (isAnswer(strike)) {
-
+                System.out.println(IS_CONTINUE);
             }
         }
+    }
+
+    public void outputRestart() {
+        System.out.println(IS_CONTINUE);
+        String answer = Console.readLine();
+
     }
 
     public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
