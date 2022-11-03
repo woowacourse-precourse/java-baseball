@@ -3,16 +3,16 @@ package baseball.domain;
 import java.util.ArrayList;
 
 public class Game {
-    private static String START_GAME = "숫자 야구 게임을 시작합니다.";
-    private static String STRIKE = "스트라이크";
-    private static String BALL = "볼";
-    private static String NOTHING = "낫싱";
-    private static String IS_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static int IS_ANSWER = 3;
-    private static int IS_NONE = 0;
+    private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
+    private static final String IS_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int IS_ANSWER = 3;
+    private static final int IS_NONE = 0;
+    private static final boolean status = true;
     private int strike;
     private int ball;
-    private static boolean status = true;
     User user;
     Computer computer;
 
@@ -27,6 +27,9 @@ public class Game {
         while (status) {
             user.inputUserNumbers();
             outputHint(computer.randomNumbers, user.userNumbers);
+            if (isAnswer(strike)) {
+
+            }
         }
     }
 

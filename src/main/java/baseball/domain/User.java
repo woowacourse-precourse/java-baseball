@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
-    private static String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
-    private static String DUPLICATION_EXCEPTION = "중복된 숫자가 존재합니다.";
-    private static String VALID_NUMBER_EXCEPTION = "가능하지 않은 숫자 입니다.";
-    private static String NUMBER_LENGTH_EXCEPTION = "글자의 길이가 초과되었습니다.";
-    private static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
-    private static int MIN_NUM = 1;
-    private static int MAX_NUM = 9;
+    private static final String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
+    private static final String DUPLICATION_EXCEPTION = "중복된 숫자가 존재합니다.";
+    private static final String VALID_NUMBER_EXCEPTION = "가능하지 않은 숫자 입니다.";
+    private static final String NUMBER_LENGTH_EXCEPTION = "글자의 길이가 초과되었습니다.";
+    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    private static final int MIN_NUM = 1;
+    private static final int MAX_NUM = 9;
     public ArrayList<Integer> userNumbers;
 
     public void inputUserNumbers() {
