@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.HashSet;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import baseball.utils.Ball;
 
 class BallTest {
 	Ball ball = Ball.getInstance();

@@ -1,9 +1,11 @@
-package baseball;
+package baseball.domain.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import baseball.utils.InputValidator;
 
 public class User {
 
@@ -14,6 +16,7 @@ public class User {
 	}
 
 	public User(String userBallInput) {
+		InputValidator.checkUserBallInput(userBallInput);
 		this.user = makeUserBallsFromUserInput(userBallInput);
 	}
 
