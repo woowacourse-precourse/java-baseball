@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Nested;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,4 +39,34 @@ public class MyFunctionTest {
         List<Integer> correctEnterList = List.of(1,2,3);
         assertThat(Application.getEnterNumber(correctEnter)).isEqualTo(correctEnterList);
     }
+
+    @Nested
+    class CountBallAndStrikeNumber {
+        @Test
+        void 볼_스트라이크_개수_찍기_1() {
+            List<Integer> randomNumber = List.of(1,2,3);
+            List<Integer> userNumber = List.of(3,1,2);
+            List<Integer> ballAndStrikeNumber = List.of(3,0);
+
+            assertThat(Application.countBallAndStrike(randomNumber, userNumber)).isEqualTo(ballAndStrikeNumber);
+        }
+        @Test
+        void 볼_스트라이크_개수_찍기_2() {
+            List<Integer> randomNumber = List.of(5,9,1);
+            List<Integer> userNumber = List.of(1,9,2);
+            List<Integer> ballAndStrikeNumber = List.of(1,1);
+
+            assertThat(Application.countBallAndStrike(randomNumber, userNumber)).isEqualTo(ballAndStrikeNumber);
+        }
+
+        @Test
+        void 볼_스트라이크_개수_찍기_3() {
+            List<Integer> randomNumber = List.of(2,7,4);
+            List<Integer> userNumber = List.of(3,5,1);
+            List<Integer> ballAndStrikeNumber = List.of(0,0);
+
+            assertThat(Application.countBallAndStrike(randomNumber, userNumber)).isEqualTo(ballAndStrikeNumber);
+        }
+    }
+
 }
