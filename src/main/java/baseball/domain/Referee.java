@@ -12,7 +12,8 @@ public class Referee {
         this.hint = new Hint();
     }
 
-    private Hint getHint(List<Integer> userBalls) {
+    public Hint getHint(List<Integer> userBalls) {
+        hint.init();
         for (int i = 0; i < userBalls.size(); i++) {
             getStrike(userBalls, i);
             getBall(userBalls, i);
@@ -27,8 +28,12 @@ public class Referee {
     }
 
     private void getBall(List<Integer> userBalls, int index) {
-        if (userBalls.contains(userBalls.get(index)) && computer.getBallNumber(index) != userBalls.get(index)) {
+        if (userBalls.contains(computer.getBallNumber(index)) && computer.getBallNumber(index) != userBalls.get(index)) {
             hint.increaseBall();
         }
+    }
+
+    public boolean isEnd() {
+        return hint.isOut();
     }
 }

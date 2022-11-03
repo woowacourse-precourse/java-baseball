@@ -17,4 +17,21 @@ public class Hint {
     public void increaseBall() {
         ball++;
     }
+
+    public boolean isOut() {
+        return strike == 3;
+    }
+
+    public void init() {
+        this.strike=0;
+        this.ball=0;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
