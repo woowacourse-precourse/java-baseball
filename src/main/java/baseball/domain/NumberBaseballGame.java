@@ -17,9 +17,13 @@ public class NumberBaseballGame {
         showGameMessage.gameStartMessage();
     }
 
-    private List<NumberBall> getUserNumberBall() {
+    private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {
         String userInput = getUserInputString();
         validate(userInput);
+        return Stream.of(userInput.split(""))
+                .mapToInt(Integer::parseInt)
+                .mapToObj(NumberBall::new)
+                .collect(Collectors.toList());
     }
 
     private String getUserInputString() {
