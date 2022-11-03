@@ -13,11 +13,17 @@ public class User {
         this.numSelecUser = 0;
     }
 
-    public void choiceNum() {
+    public void inputNumOfUser() {
+        // 숫자 받기
+        String strInput = getString();
         // TODO : 숫자의 검증
-        // TODO : 숫자인지?
+
+        // TODO : 숫자로 변환하면서 숫자인지 검증
+        int numInput = parseIntFromStr(strInput);
         // TODO : 길이가 3개인지
-        // TODO : 문자열인지 or 정수인지
+        isValidLength(strInput);
+        // TODO : 서로 다른 수인지 확인
+        isValidNumOfIndividually(strInput);
     }
 
     public String getString() {
@@ -25,7 +31,7 @@ public class User {
         strInput = readLine();
         return strInput;
     }
-
+   
 
     public int parseIntFromStr(String str) {
         try {
