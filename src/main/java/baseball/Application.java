@@ -36,7 +36,17 @@ public class Application {
         }
 
         private List<Integer> getTargetNumbers() {
-            return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, PICK_COUNT);
+            List<Integer> computer = new ArrayList<>();
+
+            while (computer.size() < PICK_COUNT) {
+                int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+
+                if (!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
+                }
+            }
+
+            return computer;
         }
 
         private void repeatUntilUserHitsTargetNumber(List<Integer> targetNumbers) {
