@@ -74,7 +74,7 @@
     - [x] 자음
     - [x] 모음
     - [x] 단어 (한 글자)
-  - [ ] 공백이 존재하는 경우 (BallNumber)
+  - [x] 공백이 존재하는 경우 (BallNumber)
   - [ ] 길이가 3이 아닌 경우 (BaseBallGame)
   - [ ] 1~9 범위 벗어난 경우 (BallNumber)
   - [ ] 같은 숫자가 존재할 경우 (Balls)

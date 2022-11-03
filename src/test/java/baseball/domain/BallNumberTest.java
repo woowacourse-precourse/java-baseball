@@ -33,4 +33,12 @@ class BallNumberTest {
                 .isThrownBy(() -> new BallNumber(input))
                 .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
     }
+    
+    @Test
+    @DisplayName("예외 처리 : 공백")
+    void space_exception() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new BallNumber(" "))
+                .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
+    }
 }
