@@ -16,7 +16,17 @@ public class Application {
             String inputStr = Console.readLine();
             validateInput(inputStr);
 
+            ArrayList<Integer> inputList = stringToList(inputStr);
         }
+    }
+
+    private static ArrayList<Integer> stringToList(String inputStr) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < inputStr.length(); i++) {
+            int number = Integer.parseInt(inputStr.charAt(i) + "");
+            list.add(number);
+        }
+        return list;
     }
 
     private static void validateInput(String input) {
