@@ -19,4 +19,11 @@ public class BallTest {
         Ball otherBall = new Ball(2, 3);
         assertThat(ball.isBall(otherBall)).isTrue();
     }
+
+    @Test
+    void 낫싱_판단() {
+        Ball ball = new Ball(1, 3);
+        Ball otherBall = new Ball(2, 4);
+        assertThat(ball.isNothing(otherBall)).isTrue();
+    }
 }
