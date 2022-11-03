@@ -24,15 +24,16 @@
    - printStarting 호출 
    - 클래스 변수 computerNumberList를 makeNumber 메서드 호출해 업데이트
 ### <메서드>
-#### 1. (List) makeNumber
+#### 1. (List) makeNumberList
 1. 매개변수
    - 없음
 2. 변수
    - (List) computerNumberList : 랜덤 숫자를 담기 위한 리스트 변수 
    - (int) randomNumber : Randoms.pickNumberInRange 를 통해 생성될 랜덤 숫자 저장할 변수
 3. 구현
-   - computerNumberList 의 size가 3일 때 까지 randomNumber를 생성해 add한다.
-   - 이미 있는 값은 add하지 않는다. (서로 다른 3개 숫자)
+   - computerNumberList 의 size가 3일 때 까지 randomNumber를 생성~~해 add한다~~.
+   - ~~이미 있는 값은 add하지 않는다. (서로 다른 3개 숫자)~~
+   - addNumberIfNotList 호출해 computerNumberList 업데이트
    - computerNumberList 반환
 #### 2. (void) printStarting
 1. 매개변수
@@ -41,6 +42,17 @@
     - 없음
 3. 구현
     - "숫자 야구 게임을 시작합니다." 출력
+#### (추거) 3. (List) addNumberIfNotList
+1. 매개변수
+   - (List) computerNumberList : 리스트에 숫자 있는지 판단 위해 받는 리스트
+   - (int) randomNumber : 리스트에 숫자 있는지 판단 위해 받는 int형 변수
+2. 변수
+   - 없음
+3. 구현
+   - computerNumberList에 randomNumber가 없으면 추가.
+   - computerNumberList 반환
+4. 추가 사유
+    - makeNumberList 메서드의 기능을 줄이기 위해 기존 makeNumberList 메서드 기능을 분리
 ---
 
 ## class User
