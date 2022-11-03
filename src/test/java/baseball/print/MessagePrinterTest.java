@@ -74,6 +74,18 @@ class MessagePrinterTest {
             String result = "3볼";
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
+
+        @Test
+        void strike만_3개인_경우() {
+            Map<String, Integer> ballAndStrikeCount = Map.of(
+                    "ball", 0,
+                    "strike", 3
+            );
+
+            printer.printBallAndStrikeCount(ballAndStrikeCount);
+            String result = "3스트라이크";
+            assertThat(result).isEqualTo(outputStream.toString().trim());
+        }
     }
 
     @Test

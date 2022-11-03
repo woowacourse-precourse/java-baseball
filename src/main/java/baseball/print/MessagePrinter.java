@@ -27,6 +27,11 @@ public class MessagePrinter {
             return;
         }
 
+        if (strikeCount == 3) {
+            System.out.println(strikeCount + STRIKE);
+            return;
+        }
+
         System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
     }
 
