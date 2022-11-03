@@ -24,4 +24,8 @@ public class GameNumber {
     public List<Integer> getNumberList() {
         return numberList;
     }
+
+    public void clear() {
+        numberList.clear();
+    }
 }
