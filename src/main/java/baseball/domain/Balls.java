@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
@@ -17,5 +16,15 @@ public class Balls {
 
     public int size() {
         return balls.size();
+    }
+
+    public PlayResult play(Balls target) {
+        PlayResult playResult = new PlayResult();
+
+        balls.forEach(balls -> {
+            target.balls.stream().map(balls::play).forEach(playResult::save);
+        });
+
+        return playResult;
     }
 }
