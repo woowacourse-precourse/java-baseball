@@ -12,7 +12,7 @@ public class game {
         game.readLine();
 
     }
-    public static List<Integer> Three_RandomNumber(){
+    public static List<Integer> anotherThree_RandomNumber(){
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -26,6 +26,6 @@ public class game {
     }
     public static void readLine(){
         System.out.println("숫자를 입력해 주세요 : " );
-        Console.readLine();
+        User.set_UserNumber(Console.readLine());
     }
 }
