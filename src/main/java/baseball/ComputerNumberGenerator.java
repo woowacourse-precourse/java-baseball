@@ -9,6 +9,7 @@ public class ComputerNumberGenerator {
 
     private static final int MINIMUM_IN_RANGE = 1;
     private static final int MAXIMUM_IN_RANGE = 9;
+    private static final int NUMBERS_COUNT_LIMIT = 3;
     private List<Integer> numbers;
 
     public ComputerNumberGenerator(){
@@ -28,11 +29,14 @@ public class ComputerNumberGenerator {
     }
 
     public void insertNumber(){
-
+        int newNumber = createRandomNumber();
+        if(!isAlreadyInNumbers(newNumber)) putNumber(newNumber);
     }
 
     public void makeThreeDigitNumbers(){
+        while(NUMBERS_COUNT_LIMIT > numbers.size()){
 
+        }
     }
 
     public int[] returnNumbersToArray(){
