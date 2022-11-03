@@ -2,6 +2,7 @@ package baseball.view;
 
 public class OutputView {
 	private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+	private static final String INPUT_USER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final String BALL_MESSAGE = "볼";
 	private static final String STRIKE_MESSAGE = "스트라이크";
 	private static final String NOTHING_MESSAGE = "낫싱";
@@ -10,6 +11,10 @@ public class OutputView {
 
 	public static void printStartGameMessage() {
 		System.out.println(GAME_START_MESSAGE);
+	}
+
+	public static void printInputUserNumber() {
+		System.out.println(INPUT_USER_NUMBER_MESSAGE);
 	}
 
 	public static void printBall(Integer ball) {
