@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private Computer() {}
 
-    public List<Integer> generateNumber() {
+    List answers;
+    Computer() {
+        answers = Computer.generateNumber();
+    }
+
+    static public List<Integer> generateNumber() {
         List list = new ArrayList();
         while (list.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
