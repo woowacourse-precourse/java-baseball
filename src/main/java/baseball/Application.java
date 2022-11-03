@@ -21,6 +21,7 @@ public class Application {
                 continue;
             }
             PrintComment.printCorrectComment();
+            PrintComment.printRestartComment();
         } while(isContinue);
     }
 

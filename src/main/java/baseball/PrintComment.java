@@ -4,6 +4,7 @@ public class PrintComment {
     private static final String START = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_COMMENT = "숫자를 입력해주세요 : ";
     private static final String CORRECT_COMMENT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
@@ -39,5 +40,9 @@ public class PrintComment {
 
     public static void printCorrectComment() {
         System.out.println(CORRECT_COMMENT);
+    }
+
+    public static void printRestartComment() {
+        System.out.println(RESTART);
     }
 }
