@@ -68,35 +68,6 @@ public class Application {
         return Collections.disjoint(userNumber, computerNumber);
     }
 
-    private static boolean isValidScope(String userNumber) {
-        return userNumber.matches("[1-9]+");
-    }
-
-    private static boolean isThreeLength(String userNumber) {
-        return userNumber.length() == 3;
-    }
-
-    private static boolean isDuplicate(String userNumber) {
-        Set<Character> notDuplication = new HashSet<>();
-        for (int index = 0; index < userNumber.length(); index++) {
-            notDuplication.add(userNumber.charAt(index));
-        }
-        return notDuplication.size() == userNumber.length();
-    }
-
-    private static List<Integer> getUserNumber() throws IllegalArgumentException {
-        String inputUserNumber = Console.readLine();
-        List<Integer> userNumber = new ArrayList<>();
-        if (!isValidScope(inputUserNumber) || !isThreeLength(inputUserNumber)
-                || !isDuplicate(inputUserNumber)) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
-        for (char element : inputUserNumber.toCharArray()) {
-            userNumber.add(element - '0');
-        }
-        return userNumber;
-    }
-
     private static void createComputerNumber(List<Integer> computerNumber) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         if (!computerNumber.contains(randomNumber)) {
@@ -112,15 +83,7 @@ public class Application {
         return computerNumber;
     }
 
-    private static List<Integer> getValidUserNumber() {
-        List<Integer> userNumber = new ArrayList<>();
-        try {
-            userNumber = getUserNumber();
-        } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
-        }
-        return userNumber;
-    }
+
 
     private static int getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
         int ballCount = getBallCount(userNumber, computerNumber);
@@ -163,7 +126,7 @@ public class Application {
         ConsolePrint.printGameStart();
         do {
             ConsolePrint.printInputNumber();
-            List<Integer> userNumber = getValidUserNumber();
+            List<Integer> userNumber = User.getValidNumber();
             int strikeCount = getGameResult(userNumber, computerNumber);
             gameSelect = checkGameOver(strikeCount);
         } while(gameSelect != 2);
