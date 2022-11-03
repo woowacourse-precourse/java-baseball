@@ -1,8 +1,8 @@
-package baseball;
+package baseball.service;
 
 import java.util.List;
 
-public class Rules {
+public class RuleService {
     public int Strike(List<Integer> RandomNumber, List<Integer> InputNumber) {
         int cnt = 0;
         for (int i = 0; i < RandomNumber.size(); i++) {

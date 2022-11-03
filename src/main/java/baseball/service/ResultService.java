@@ -1,6 +1,6 @@
-package baseball;
+package baseball.service;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.exception.InputException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,10 +8,10 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
-public class Result {
+public class ResultService {
     public int ReOrClose(List<Integer> RandomNumber) {
-        Rules rules = new Rules();
-        Validation validation = new Validation();
+        RuleService rules = new RuleService();
+        InputException validation = new InputException();
 
         int strike = 0;
         int ball;
