@@ -11,7 +11,9 @@ public class NumberBaseballController {
 	public void initGame() {
 		numberBaseballView.initPage();
 	}
-	public void playBall() {
+	public void playBall() throws IllegalArgumentException {
 		NumberBaseball computerNumber = numberBaseballService.createNumberBaseball();
+
+		String userInput = numberBaseballView.playPage();
 	}
 }
