@@ -11,6 +11,21 @@ public class User {
     private static final int NUMBER_SIZE_ONE = 1;
     private static final int NUMBER_SIZE_THREE = 3;
 
+    private final List<Long> userNumbers;
+
+    public User(String userNumber) {
+        this.userNumbers = validateReprocessingCheckUserNumber(userNumber);
+    }
+
+    private List<Long> validateReprocessingCheckUserNumber(String userNumber) {
+        validateCompareLetter(userNumber);
+        validateCheckEmpty(userNumber);
+        validateCheckVacuum(userNumber);
+        validateTheNumber(userNumber);
+        validateCheckOverlapping(userNumber);
+        return reprocessingUserNumber(userNumber);
+    }
+
     private List<Long> reprocessingUserNumber(String userNumber) {
         List<Long> userNumbers = new ArrayList<>();
         for (int i = NUMBER_SIZE_ZERO; i < userNumber.length(); i++) {
@@ -52,5 +67,8 @@ public class User {
         }
     }
 
+    public List<Long> getUserNumbers() {
+        return userNumbers;
+    }
 
 }
