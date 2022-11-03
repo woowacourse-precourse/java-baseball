@@ -16,8 +16,10 @@ public class Application {
     private static final String RESULT_NOTHING_MESSAGE = "낫싱";
     private static final String BALL_STRING = "볼";
     private static final String STRIKE_STRING = "스트라이크";
+    private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int INPUT_BASEBALL_LENGTH = 3;
     private static final int INPUT_REPLAY_LENGTH = 1;
+    private static final int MAX_STRIKE = 3;
     private static char REPLAY = '1';
     private static char END = '2';
     public static void main(String[] args) {
@@ -43,6 +45,9 @@ public class Application {
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
             printResult(ball, strike);
+            if(isThreeStrike(strike)) {
+                System.out.println(THREE_STRIKE_MESSAGE);
+            }
         }
     }
 
@@ -169,12 +174,20 @@ public class Application {
         if (hasBall) {
             System.out.print(" ");
         }
-        if(strike > 0) {
+        if (strike > 0) {
             System.out.println(strike + STRIKE_STRING);
         }
         if ((!hasBall) && (!hasStrike)) {
             System.out.println(RESULT_NOTHING_MESSAGE);
         }
+    }
+
+    static boolean isThreeStrike(int strike) {
+        if (strike == MAX_STRIKE) {
+            return true;
+        }
+
+        return false;
     }
 }
 
