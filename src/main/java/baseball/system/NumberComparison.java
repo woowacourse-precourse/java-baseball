@@ -14,7 +14,7 @@ public class NumberComparison {
         setUserNumbers(userNumbers);
 
         int strikeCount = getStrikeCount();
-        int ballCount = getBallCount();
+        int ballCount = getBallCount(); //TODO : if문 다음으로 이동 시킬 것
 
         if (isAnswer(strikeCount)) {
             printAnswerText();
@@ -37,7 +37,7 @@ public class NumberComparison {
 
         for(int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++){
 
-            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(1,2,3));
+            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(0,1,2));
             IndexNumbers.remove(indexNumber);
 
             int userNumber = userNumbers.get(indexNumber);
@@ -52,7 +52,18 @@ public class NumberComparison {
 
     }
 
-   
+    private boolean searchNumber(List<Integer> indexNumbers, int userNumber) {
+
+        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE - 1; indexNumber++){
+            int remainedIndexNumber = indexNumbers.get(indexNumber);
+            if(userNumber == computerNumbers.get(remainedIndexNumber)){
+                return true;
+            }
+        }
+        
+        return false;
+        
+    }
 
     private int getStrikeCount() {
 
