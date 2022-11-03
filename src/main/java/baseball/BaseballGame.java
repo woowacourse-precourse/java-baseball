@@ -15,10 +15,6 @@ public class BaseballGame {
         printMessage(START_MESSAGE);
     }
 
-    public static void printMessage(String message) {
-        System.out.println(message);
-    }
-
     private static void makeRandomNumber() {
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -26,5 +22,9 @@ public class BaseballGame {
                 computerNumbers.add(randomNumber);
             }
         }
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
     }
 }
