@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -53,6 +54,22 @@ class ApplicationTest extends NsTest {
 
         strike = Application.checkStrike(computer,"387");
         assertThat(strike).isEqualTo(3);
+    }
+
+    @Test
+    void 볼_테스트() {
+        HashMap<Integer, Integer> computerIndexMap = new HashMap<>();
+        Integer ball = 0;
+
+        computerIndexMap.put(3,0);
+        computerIndexMap.put(8,1);
+        computerIndexMap.put(7,2);
+
+        ball = Application.checkBall(computerIndexMap,"738");
+        assertThat(ball).isEqualTo(3);
+
+        ball = Application.checkBall(computerIndexMap,"748");
+        assertThat(ball).isEqualTo(2);
     }
 
     @Override

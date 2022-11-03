@@ -32,14 +32,28 @@ public class Application {
         while(strike != 3) {
             userInput = Console.readLine();
 
-            strike = checkStrike(computer, userInput);
-
             try {
                 validateUserInput(userInput);
+                strike = checkStrike(computer, userInput);
+                ball = checkBall(computerIndexMap, userInput);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public static Integer checkBall(HashMap<Integer, Integer> computerIndexMap, String userInput) {
+        int ballCount = 0;
+
+        for (int idx = 0; idx < userInput.length(); idx++) {
+            int userNumber = userInput.charAt(idx) - '0';
+
+            if(computerIndexMap.containsKey(userNumber) && computerIndexMap.get(userNumber) != idx){
+                ballCount++;
+            }
+        }
+
+        return ballCount;
     }
 
     public static Integer checkStrike(List<Integer> computer, String userInput) {
