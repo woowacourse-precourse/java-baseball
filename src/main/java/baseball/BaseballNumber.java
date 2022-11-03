@@ -25,5 +25,12 @@ public class BaseballNumber {
             numbers.add(number);
         }
     }
-    
+
+    public boolean is3Digit(String numbersStr){
+        if(numbersStr.length() == 3){
+            return true;
+        }
+        return false;
+    }
+
 }
