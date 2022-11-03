@@ -14,9 +14,9 @@ class ConsoleLogTest extends NsTest {
     void userInputTest() {
         // given
         String number = "123";
+        run(number);
 
         // when
-        run(number);
         String inputNum = console.input();
 
         // then
