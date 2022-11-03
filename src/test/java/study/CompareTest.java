@@ -1,7 +1,6 @@
 package study;
 
 import baseball.Compare;
-import baseball.Validate;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
