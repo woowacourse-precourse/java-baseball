@@ -18,6 +18,8 @@ public class GamePlay {
     public void playGame(){
 
         NumberComparison numberComparison = new NumberComparison();
+        List<Integer> computerNumbers = computer.getComputerNumberList();
+        numberComparison.setComputerNumbers(computerNumbers);
 
         for(;;){
 
@@ -25,10 +27,9 @@ public class GamePlay {
             String inputNumber = inputUserNumber();
             user.setUser(inputNumber);
 
-            List<Integer> computerNumbers = computer.getComputerNumberList();
             List<Integer> userNumbers = user.getUserNumberList();
 
-            if(numberComparison.startComparison(computerNumbers,userNumbers)){
+            if(numberComparison.startComparison(userNumbers)){
                 break;
             }
         }
