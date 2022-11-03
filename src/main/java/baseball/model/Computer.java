@@ -47,10 +47,21 @@ public class Computer {
     public int countBall(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
         for (int computerNumIdx = 0; computerNumIdx <COMPUTER_NUMBER_SIZE; computerNumIdx++) {
-            for(int playerNumIdx=0;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
-                if(computerNumIdx==playerNumIdx) continue;
-                count = checkBallComputerNumPlayerNum(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
-            }
+            count = getBallCountCompareToPlayerNum(computerNum, playerNum, count, computerNumIdx);
+        }
+        return count;
+    }
+
+    private static int getBallCountCompareToPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int computerNumIdx) {
+        for(int playerNumIdx=0;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
+            count = getBallCountNotSameIdx(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
+        }
+        return count;
+    }
+
+    private static int getBallCountNotSameIdx(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int computerNumIdx, int playerNumIdx) {
+        if(computerNumIdx != playerNumIdx) {
+            count = checkBallComputerNumPlayerNum(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
         }
         return count;
     }
@@ -60,5 +71,12 @@ public class Computer {
             count++;
         }
         return count;
+    }
+
+    public String getHint(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
+        int strike = countStrike(computerNum,playerNum);
+        int ball = countBall(computerNum, playerNum);
+        
+
     }
 }
