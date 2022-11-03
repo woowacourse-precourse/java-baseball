@@ -9,6 +9,7 @@ public class Game {
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_GUIDE = "숫자를 입력해주세요 : ";
     public static final String INVALID_INPUT_LENGTH = "숫자를 3개 입력해야 합니다.";
+    public static final String INVALID_INPUT_TYPE = "숫자만 입력해야 합니다.";
 
     public List<Integer> generateRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
@@ -33,6 +34,11 @@ public class Game {
     public void validate(String inputNumbers) {
         if (inputNumbers == null || inputNumbers.length() != 3) {
             throw new IllegalArgumentException(INVALID_INPUT_LENGTH);
+        }
+        try {
+            Integer.parseInt(inputNumbers);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_INPUT_TYPE);
         }
     }
 }
