@@ -47,6 +47,17 @@ public class Application {
         return user;
 
     }
+    public static void checkError(String tryNumber) throws IllegalArgumentException{
+        if(length(())){
+            throw new IllegalArgumentException();
+        }
+
+    }
+    public static boolean lengthCheck(String tryNumber){
+        if(tryNumber.length()!=3){
+            return false;
+        } else return true;
+    }
 
     public static List<Integer> transformInteger(String tryNumber) {
 
