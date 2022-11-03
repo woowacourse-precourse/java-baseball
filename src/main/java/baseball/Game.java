@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    static final int NUMBER_LENGTH = 3;
+    static final int START_IDX = 0;
+
     private static List<Integer> computer;
 
     public Game() {
@@ -27,6 +30,16 @@ public class Game {
         UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
         List<Integer> userInputValues = userInputNumbers.getUserInputNumbers();
         GameState gameState = new GameState();
+
+        for (int idx=START_IDX; idx<NUMBER_LENGTH; idx++) {
+            if (computer.get(idx)==userInputValues.get(idx)) {
+                gameState.addStrike();
+                continue;
+            }
+            if (computer.contains(userInputValues.get(idx))) {
+                gameState.addBall();
+            }
+        }
         return gameState;
     }
 }
