@@ -1,6 +1,8 @@
 package study;
 
 import domain.RandomNumber;
+import domain.UserNumber;
+import domain.UserValidate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -51,5 +53,33 @@ public class NumberTest {
         }
         //then
         assertEquals(nums.length, compare.size());
+    }
+
+    @Test
+    public void 입력값사이즈확인() throws Exception{
+        //given
+        UserValidate userValidate = new UserValidate();
+        String test1 = "1234";
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> userValidate.check_size(test1));
+    }
+
+    @Test
+    public void 입력값숫자만인지확인() throws Exception{
+        //given
+        String test1 = "123";
+        String test2 = "1a3";
+        UserValidate userValidate = new UserValidate();
+
+        //when
+        boolean t1 = userValidate.check_int(test1);
+        boolean t2 = userValidate.check_int(test2);
+
+        //then
+        assertEquals(true, t1);
+        assertEquals(false, t2);
+        assertThrows(IllegalArgumentException.class, () -> userValidate.check_Integer(test2));
     }
 }
