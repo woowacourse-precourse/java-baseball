@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,5 +63,9 @@ public class Application {
             result.append(Integer.toString(strikeCount)+"스트라이크");
         }
         return result.toString();
+    }
+
+    public static boolean checkNumberLengthIsThree(String number){
+        return number.length()==3;
     }
 }
