@@ -3,9 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Crew {
 
     public final List<Member> members;
