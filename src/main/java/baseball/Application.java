@@ -22,6 +22,16 @@ public class Application {
                 strikeNumberList.add(gameNumberList.get(i));
             }
         }
+        for (int i = 0; i < 3; i++) {
+            if (gameNumberList.contains(userNumberList.get(i)) && !strikeNumberList.contains(userNumberList.get(i))) {
+                ball++;
+            }
+        }
+        if (strike != 0 && ball != 0) {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        } else {
+            System.out.println("낫띵");
+        }
         System.out.println(strike + "스트라이크");
         System.out.println(userNumberList);
     }
