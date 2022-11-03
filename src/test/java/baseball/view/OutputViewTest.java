@@ -30,4 +30,14 @@ public class OutputViewTest {
 
         assertThat(output.toString()).isEqualTo(gameStartMessage);
     }
+
+    @Test
+    void 입력한_수에_대한_볼_스트라이크_개수_출력_1볼() {
+        int strikeCount = 0;
+        int ballCount = 1;
+        String gameResultMessage = "1볼\n";
+        OutputView.printGameResultMessage(strikeCount, ballCount);
+
+        assertThat(output.toString()).isEqualTo(gameResultMessage);
+    }
 }
