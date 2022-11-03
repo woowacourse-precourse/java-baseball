@@ -23,7 +23,9 @@ public class FrontController {
 	}
 
 	public void startApplication() {
-
+		do {
+			startGame();
+		} while (!exit());
 	}
 
 	public void startGame() {
