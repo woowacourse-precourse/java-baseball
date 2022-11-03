@@ -13,6 +13,7 @@ public class Input {
     public void getPlayerGuess() {
         System.out.print(REQUEST_PLAYER_GUESS);
         playerGuess = Console.readLine();
+        validateGuess();
     }
 
     private void validateGuess() {
