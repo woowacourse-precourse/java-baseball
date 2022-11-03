@@ -1,74 +1,62 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
 
     public static final int GAME_NUMBER_SIZE = 3;
 
-    ValidationNumber validationNumber;
-    DefenceNumber defenceNumberMaker;
+    public static final int BALL_INDEX = 0;
+    public static final int STRIKE_INDEX = 1;
+
+    public static final int RESTART = 1;
+    public static final int END = 2;
+
+
+    StrikeAndBall strikeAndBall;
+    User user;
     TextForGame textForGame;
+    List<Integer> result;
+    boolean isPlaying;
+
 
     BaseballGame() {
-        validationNumber = new ValidationNumber(GAME_NUMBER_SIZE);
-        defenceNumberMaker = new DefenceNumber(GAME_NUMBER_SIZE);
+        strikeAndBall = new StrikeAndBall(GAME_NUMBER_SIZE);
+        user = new User(GAME_NUMBER_SIZE);
         textForGame = new TextForGame();
+        result = new ArrayList<>();
     }
 
     public void startAndPlaying() {
-        boolean isPlaying = true;
+        isPlaying = true;
+        strikeAndBall.setDefenceNumber();
 
-        List<Integer> defenceNumber = defenceNumberMaker.getDefenceNumber();
-        List<Integer> offenceNumber;
-
-        while (isPlaying) {
+        while(isPlaying) {
             textForGame.inputText();
-            String input = Console.readLine();
-            offenceNumber = validationNumber.checkAndConvertIntegerList(input);
+            List<Integer> offenceNumber = user.inputGameNumber();
+            strikeAndBall.setOffenceNumber(offenceNumber);
 
-            int ball = checkBall(defenceNumber, offenceNumber);
-            int strike = checkStrike(defenceNumber, offenceNumber);
+            result = strikeAndBall.getBallAndStrikeCount();
 
-            textForGame.printBall(ball);
-            textForGame.printStrike(strike);
+            textForGame.printResult(result.get(BALL_INDEX), result.get(STRIKE_INDEX));
 
-            if (strike == 3) {
-                input = Console.readLine();
-                validationNumber.checkEndOrRestartNumber(input);
-
-                if (input.equals("1")) {
-                    startAndPlaying();
-                }
-                if (input.equals("2")) {
-                    isPlaying = false;
-                }
+            if(result.get(STRIKE_INDEX) == GAME_NUMBER_SIZE) {
+                endOrRestart();
             }
         }
     }
 
-    public int checkStrike(List<Integer> defenceNumber, List<Integer> offenceNumber) {
-        int count = 0;
+    public void endOrRestart() {
+        textForGame.printEndAndAskAboutNewGame();
+        String numberString = user.inputEndOrRestart();
+        int number = Integer.parseInt(numberString);
 
-        for (int i = 0; i < GAME_NUMBER_SIZE; i++) {
-            if (defenceNumber.get(i).equals(offenceNumber.get(i))) {
-                count++;
-            }
+        if(number == END) {
+            isPlaying = false;
         }
-
-        return count;
-    }
-
-    public int checkBall(List<Integer> defenceNumber, List<Integer> offenceNumber) {
-        int count = 0;
-
-        for (Integer number : offenceNumber) {
-            int index = defenceNumber.indexOf(number);
-            if (index != -1 && offenceNumber.indexOf(number) != index) {
-                count++;
-            }
+        if(number == RESTART) {
+            startAndPlaying();
         }
-        return count;
     }
 }
