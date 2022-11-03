@@ -13,7 +13,7 @@ class NumberBaseBallGameTest {
     void enter_Correct_InputNumber(){
         String inputNumber = "123";
         NumberBaseBallGame numberBaseBallGame = mock(NumberBaseBallGame.class);
-        doNothing().when(numberBaseBallGame).inputNumberValidate(inputNumber);
+        doNothing().when(numberBaseBallGame).validateInputNumber(inputNumber);
     }
 
     @Test
@@ -39,7 +39,7 @@ class NumberBaseBallGameTest {
 
     private void failValidateInputNumber(String inputNumber) {
         NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame();
-        assertThatThrownBy(() -> numberBaseBallGame.inputNumberValidate(inputNumber))
+        assertThatThrownBy(() -> numberBaseBallGame.validateInputNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3개의 자연수를 입력하세요");
     }

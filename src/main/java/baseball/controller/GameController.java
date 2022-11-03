@@ -17,7 +17,7 @@ public class GameController {
 
         while (numberBaseBallGame.isProceeding()) {
             String inputNumber = numberBaseBallView.askInputNumber();
-            numberBaseBallGame.inputNumberValidate(inputNumber);
+            numberBaseBallGame.validateInputNumber(inputNumber);
         }
     }
 }
