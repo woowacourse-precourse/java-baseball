@@ -33,6 +33,13 @@ class BaseballTest {
 			List<Integer> result = Collections.emptyList();
 			assertThat(Baseball.splitDigits(threeDigitNumber)).isEqualTo(result);
 		}
+
+		@Test
+		void case4() {
+			String threeDigitNumber = "abc";
+			List<Integer> result = Collections.emptyList();
+			assertThat(Baseball.splitDigits(threeDigitNumber)).isEqualTo(result);
+		}
 	}
 
 	@Nested
