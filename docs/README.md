@@ -27,24 +27,33 @@
    3. convertNumbersToArray(String input) : 문자열을 int형 배열로 전환해 리턴한다.
 
 ### GameSystem
-1. gameSet = 1로 변수를 정한다. 
-2. gameSet이 1일 동안 반복시킨다. 
-   1. 배열에 컴퓨터의 값을 랜덤하게 구해 저장시킨다. 
-   2. 배열에 사용자의 값을 입력받아 저장시킨다. 
-   3. 컴퓨터와 사용자의 값이 3스트라이크가 될때 까지 반복한다. 
-      1. 사람의 수를 첫째 자리부터 셋째자리까지 비교한다. 
-          1. 만약 그 숫자가 존재하고 자리까지 같다면 스트라이크 1증가
-          2. 만약 그 숫자가 존재하지만 자리가 다르면 볼이 1증가
-      2. 결과를 출력한다. 
-         1. "a볼 b스트라이크"로 출력한다. 
-            1. a==0이면 "b스트라이크"로 출력한다. 
-            2. b==0이면 "a볼"로 출력한다. 
-            3. a==0 && b==0이면 "낫싱"으로 출력한다. 
-   4. "3개의 숫자를 모두 맞추셨습니다! 게임 종료" 를 출력한다. 
-   5. "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요"를 출력한다. 
-3. 입력을 받는다. (1 또는 2)
-   1. 값이 1 또는 2인지 확인한다. 
-      1. 값이 1또는 2가 아닐 경우 재입력을 요구한다. 
-   2. gameSet에 값을 저장한다. 
-      1. gameSet의 값에 따라 반복문이 반복될지, 종료될지 정해진다.
+1. makeGame() : 게임을 생성한다. gameSet이 2가 아닌동안 반복한다.
+   1. setGameStatus() : 전역변수 gameSet = 1로 설정
+   2. initializeGame() : game에 대한 초기값을 설정해준다.
+      1. setComputerNumber() : ComputerNumberGenerator.makeThreeDigitNumber()후에 returnListToArray해준다.
+   3. startGame() : 게임을 시작시킨다. strikeCount == 3 일때까지 반복한다.
+      1. setPlayer() : PlayerinputFilter.insertNumber()를 이용해 전역변수 정수형 배열 player에 입력한 문자열을 숫자 3개로 저장한다.
+      2. initializeScore() : 전역변수 strikeCount, ballCount = 0으로 초기화한다.
+      3. countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 점수를 만든다.
+         1. checkComputerWithPlayerNumber() : 반복문으로 0부터 2까지 인덱스를 이용해 컴퓨터와 사람을 비교한다.
+         2. scoreGameWithIndex(int index) : 인덱스를 이용해 플레이어와 컴퓨터를 비교한다.
+         3. isStrike(int index) : 플레이어 인덱스의 숫자와 컴퓨터 인덱스 숫자가 같다면 참을 반환
+         4. isBall(int index) : 플레이어 인덱스의 숫자가 컴퓨터 인덱스의 숫자와는 다르지만 컴퓨터가 해당 값을 가지고 있다면 참을 반환
+         5. increaseStrike() : 전역변수 strikeCount를 1증가 시켜준다.
+         6. increaseBall() : 전역변수 ballCount를 1증가시킨다.
+      4. getResultOfScores() : 점수들에 따른 결과를 출력해준다.
+         1. isNothing() : strikeCount == 0 && ballCount == 0일 때 참을 반환한다.
+         2. printNothing() : “낫싱”을 출력해준다.
+         3. isOnlyBall() : strikeCount == 0 && ballCount != 0일때 참을 반환한다.
+         4. printOnlyBall() : “a 볼”을 출력해준다.
+         5. isOnlyStrike() : strikeCount != 0 && ballCount == 0일때 참을 반환한다.
+         6. printOnlyStrike() : “b 스트라이크”를 출력한다.
+         7. isBothBallAndStrike() : strikeCount !=0 && ballCount != 0일때 참을 반환한다.
+         8. printBothBallAndStrike() : “a볼 b스트라이크” 를 출력한다.
+   4. DetermineToEndOrNot() : 게임을 계속할지 끝낼지 확인한다.
+      1. askOpinion() : 입력을 받아 문자열로 받아온다.
+      2. isMoreGame(String opinion) : 문자열이 “1”이면 참을 반환
+      3. isEndOfGame(String opinion) : 문자열이 “2”이면 참을 반환
+      4. finishGame() : gameSet=2로 초기화한다. 
+
 
