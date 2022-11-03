@@ -33,7 +33,7 @@ public class Number {
                 .toArray();
     }
 
-    private int getRandomNumber() {
+    public int getRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
@@ -54,7 +54,7 @@ public class Number {
     }
 
     public void inputPrediction() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String prediction = Console.readLine();
         setDigits(prediction);
     }
