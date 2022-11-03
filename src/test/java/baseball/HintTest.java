@@ -3,11 +3,11 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+
 import java.util.List;
 
 public class HintTest {
+    //Hint getHint count 함수 주석처리 하고 해야함
 
     @Test
     void 볼() {

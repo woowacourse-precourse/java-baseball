@@ -1,5 +1,6 @@
 package baseball;
 
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.Set;
 public class IllegalException {
 
     protected List<Integer> userAnswer;
-
 
     public void check(String[] inputArray) {
         isNumber(inputArray);

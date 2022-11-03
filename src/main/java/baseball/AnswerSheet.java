@@ -1,7 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +10,14 @@ public class AnswerSheet {
 
     public static List<Integer> userAnswer = new ArrayList<>();
     protected String[] inputArray;
+    public boolean boolCorrectAnswer;
 
     IllegalException illegalException = new IllegalException();
-    Hint hint = new Hint();
 
     public void getUserAnswer() {
-
-        while (true) {
-            guideToEnterNumber();
-            userAnswer.clear();
-            setUserAnswer();
-
-            if (hint.getHint().equals("3스트라이크")) {
-                System.out.println("end");
-                break;
-            }
-        }
+        guideToEnterNumber();
+        userAnswer.clear();
+        setUserAnswer();
     }
 
     private void guideToEnterNumber() {
@@ -44,6 +36,13 @@ public class AnswerSheet {
         return inputArray;
     }
 
+    public boolean isCorrectAnswer(String hint) {
+        this.boolCorrectAnswer = false;
+        if (hint.equals("3스트라이크")) {
+            this.boolCorrectAnswer =true;
+        }
+        return this.boolCorrectAnswer;
+    }
 
 
 

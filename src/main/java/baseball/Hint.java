@@ -5,8 +5,7 @@ import java.util.List;
 
 
 public class Hint {
-    private static String hint ="";
-
+    private static String hint;
     private int includedNumber;
     private int matchingNumber;
 
@@ -15,8 +14,8 @@ public class Hint {
     public String getHint() {
         hint ="";
 
-        //countMatchingNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
-        //countIncludedNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
+        countMatchingNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
+        countIncludedNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
 
         getHintOfBall();
         getHintOfStrike();
