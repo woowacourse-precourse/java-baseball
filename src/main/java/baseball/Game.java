@@ -15,6 +15,14 @@ public class Game {
 	private static final int RETRY_NUMBER = 1;
 	private static final int END_NUMBER = 2;
 
+	public void run() {
+		setGame();
+	}
+
+	private void setGame() {
+		start();
+		play();
+	}
 
 	private void play() throws IllegalArgumentException {
 
@@ -56,7 +64,7 @@ public class Game {
 			SystemMessage.printEND();
 		}
 
-		throw new IllegalArgumentException(SystemMessage.printError());
+		// throw new IllegalArgumentException(SystemMessage.printError()); TODO: 1과 2가 아닌 값이 들어왔을 때 처리 필요
 	}
 
 	private String getPlayerInput() throws IllegalArgumentException {
