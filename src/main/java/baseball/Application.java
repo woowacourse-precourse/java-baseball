@@ -25,6 +25,8 @@ public class Application {
         }
     }
 
+    public int getBall()
+
     public int getStrike(List<Integer> answer, List<Integer> userInput) {
         int count = 0;
         for (int i = 0; i < answer.size(); i++) {
@@ -33,17 +35,6 @@ public class Application {
             }
         }
         return count;
-    }
-
-    public boolean IsMatchZero(List<Integer> answer, List<Integer> userInput) {
-        long count = answer.stream()
-                .filter(answerNumber -> userInput.contains(answerNumber))
-                .count();
-
-        if (count == 0) {
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
     }
 
     public List<Integer> getValidUserInput(String input) {
