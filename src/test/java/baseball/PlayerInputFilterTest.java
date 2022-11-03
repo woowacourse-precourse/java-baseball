@@ -56,7 +56,7 @@ public class PlayerInputFilterTest {
     void 세_자리가_아니면_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.notThreeDigitException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("String index out of range: 5");
+                .hasMessageContaining("입력한 값은 세자리 숫자여야 합니다.");
     }
 
     @Test

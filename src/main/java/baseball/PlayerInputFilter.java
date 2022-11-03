@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class PlayerInputFilter {
     private static final int NUMBERS_COUNT_LIMIT = 3;
     private static final String NO_NUMBER_EXCEPTION = "입력한 값이 숫자가 아닙니다.";
+    private static final String NOT_THREE_DIGIT_EXCEPTION = "입력한 값은 세자리 숫자여야 합니다.";
     private int[] numbers;
 
     public PlayerInputFilter(){
@@ -34,7 +35,7 @@ public class PlayerInputFilter {
     }
 
     void notThreeDigitException(){
-
+        throw new IllegalArgumentException(NOT_THREE_DIGIT_EXCEPTION);
     }
 
     boolean containsZero(String input){
