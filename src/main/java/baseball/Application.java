@@ -23,9 +23,9 @@ public class Application {
         int strike=0;
         int ball=0;
         for (int i=0;i<answer.size();i++) {
-            if (answer.get(i) == (int)num.charAt(i)){
+            if (answer.get(i) == (int)num.charAt(i)-48){
                 strike += 1;
-            } else if (answer.contains((int)num.charAt(i))){
+            } else if (answer.contains((int)num.charAt(i)-48)){
                 ball += 1;
             }
         }
@@ -60,10 +60,13 @@ public class Application {
         return gostop;
     }
     public static void main(String[] args) {
-        while(true) {
-            if (gamePlay() == String.valueOf('2')) {
-                break;
-            }
-        }
+        List<Integer> answer = getRandomNum();
+        String num = numberInput();
+        System.out.println((int)num.charAt(0));
+//        while(true) {
+//            if (gamePlay() == String.valueOf('2')) {
+//                break;
+//            }
+//        }
     }
 }
