@@ -5,6 +5,7 @@ import java.util.*;
 public class NumberComparison {
 
     private final int NUMBERS_SIZE = 3;
+    private final int ANSWER_COUNT = 3;
 
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
@@ -29,6 +30,10 @@ public class NumberComparison {
         printStrikeBallCount(strikeCount,ballCount);
         return false;
 
+    }
+
+    private boolean isAnswer(int strikeCount) {
+        return strikeCount == ANSWER_COUNT;
     }
 
     private int getBallCount() {
