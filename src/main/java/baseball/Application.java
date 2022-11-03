@@ -1,7 +1,15 @@
 package baseball;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        do {
+            Computer opponent = new Computer();
+            do {
+                opponent.checkAnswer(User.userInput());
+            } while (opponent.isPlaying);
+            System.out.println(Message.CORRECT_ANSWER);
+        } while (User.restart());
     }
 }
