@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,6 +30,7 @@ public class Application {
             int nothing = nothing(input_num_list(input_num), computer);
             //숫자 검증 기능(출력기능)
             print_verification(strike,ball,nothing);
+            //3스트라이크일 경우 while문 종료
             if(strike == 3){
                 break;
             }
@@ -35,8 +38,7 @@ public class Application {
     }
     //숫자를 입력받는 기능
     public static int int_input(){
-        Scanner sc = new Scanner(System.in);
-        int input_num = sc.nextInt();
+        int input_num = Integer.getInteger(Console.readLine());
         // 잘못된 값을 입력했을 때 예외 처리
         if(!(input_num > 99 && input_num < 1000)){
             throw new IllegalArgumentException();
@@ -108,7 +110,7 @@ public class Application {
         }
         //스트라이크가 1개 이상, 볼이 1개 이상일 경우
         else if(strike > 0 && ball > 0){
-            System.out.println(ball + "볼" + strike + "스트라이크" );
+            System.out.println(ball + "볼 " + strike + "스트라이크" );
         }
         //스트라이크가 0개, 볼이 1개이상
         else if(strike == 0 && ball > 0) {
