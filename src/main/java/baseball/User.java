@@ -1,11 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import static baseball.Configure.*;
+import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
@@ -17,6 +17,12 @@ public class User {
 		handleInputError(input);
 
 		return processNumbers(input);
+	}
+
+	public int getIntention() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : ");
+		String answer = getInput();
+		return Integer.parseInt(answer);
 	}
 
 	public LinkedHashMap<Integer, Integer> processNumbers(String input) {

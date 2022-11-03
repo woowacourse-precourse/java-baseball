@@ -10,7 +10,7 @@ public class Game {
 
 	LinkedHashMap<Integer, Integer> fromComputers;
 	LinkedHashMap<Integer, Integer> fromUsers;
-
+	int userIntention;
 
 	int computerNumber;
 	int computerNumIdx;
@@ -94,6 +94,10 @@ public class Game {
 
 	public void fetchUserNumbers() {
 		fromUsers = user.getNumbers();
+	}
+
+	public void askUserToContinue() {
+		userIntention = user.getIntention();
 	}
 
 
