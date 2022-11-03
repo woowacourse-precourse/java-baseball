@@ -14,16 +14,20 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
+        HashMap<Integer, Integer> computerIndexMap = new HashMap<>();
+
         String userInput = "";
         Integer strike = 0, ball = 0, out = 0;
 
-        initRandomNumber(computer);
+        initRandomNumber(computer, computerIndexMap);
 
         while(strike != 3) {
             userInput = Console.readLine();
@@ -59,11 +63,12 @@ public class Application {
         }
     }
 
-    private static void initRandomNumber(List<Integer> computer) {
+    private static void initRandomNumber(List<Integer> computer, HashMap<Integer,Integer> computerIndexMap) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!computer.contains(randomNumber)) {
+                computerIndexMap.put(randomNumber, computer.size());
                 computer.add(randomNumber);
             }
         }
