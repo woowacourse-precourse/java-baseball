@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class User {
-    public static List<Integer> getUserNumber(int inputNumber){
+    public static List<Integer> getUserNumber(String inputNumber){
         List<Integer> userNumbers = new ArrayList<>();
-        int[] userNumberArr = Stream.of(String.valueOf(inputNumber).split("")).mapToInt(Integer::parseInt).toArray();
+        String[] userNumberArr = inputNumber.split("");
+
         for(int i=0; i<userNumberArr.length; i++){
-            userNumbers.add(userNumberArr[i]);
+            userNumbers.add(Integer.valueOf(userNumberArr[i]));
         }
         return userNumbers;
     }
