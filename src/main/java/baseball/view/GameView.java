@@ -12,6 +12,8 @@ public class GameView {
     private final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private final String BALL = "볼 ";
     private final String STRIKE = "스트라이크";
+    private final String NOTHING = "낫싱";
+
     private final InputValidation inputValidation;
 
     public GameView(InputValidation inputValidation) {
@@ -31,6 +33,12 @@ public class GameView {
 
     public void ballsAndStrikes(int ball, int strike) {
         StringBuilder sb = new StringBuilder();
+
+        if (ball == 0 && strike == 0) {
+            System.out.println(NOTHING);
+            return;
+        }
+
         if (ball != 0) {
             sb.append(ball).append(BALL);
         }
