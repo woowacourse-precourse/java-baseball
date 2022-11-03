@@ -56,7 +56,7 @@ public class Application {
         }
     }
 
-    private static int generateRandomValue() {
+    private static List<Integer> generateRandomValue() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -65,7 +65,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
-        return ((computer.get(0) * 100) + (computer.get(1) * 10) + computer.get(2));
+        return computer;
     }
 }
