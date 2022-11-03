@@ -42,4 +42,12 @@ public class BaseballNumber {
         return true;
     }
 
+    public boolean isNonZero(String numbersStr){
+        for(int i = 0; i < numbersStr.length(); i++){
+            if(numbersStr.charAt(i) == 0){
+                return false;
+            }
+        }
+        return true;
+    }
 }
