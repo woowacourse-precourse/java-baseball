@@ -40,8 +40,21 @@ public class Game {
         return ret;
     }
 
-    public int printHint(List<Integer> roundResult) {
-        return 1;
+    public void printHint(List<Integer> roundResult) {
+        int ballCount = roundResult.get(_ball);
+        int strikeCount = roundResult.get(_strike);
+
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.print(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+        else if (ballCount != 0) {
+            System.out.print(ballCount + "볼");
+        }
+        else if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        } else {
+            System.out.print("낫싱");
+        }
     }
 
     public boolean scanIsEnd() {
