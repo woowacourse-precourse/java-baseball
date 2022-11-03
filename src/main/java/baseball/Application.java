@@ -94,14 +94,19 @@ public class Application {
                 int targetNum = targetNumbers.get(i);
 
                 if (userNum == targetNum) {
-                    plusGameResult(CORRECT_ANSWER, gameResult);
+                    increaseAnswerCnt(CORRECT_ANSWER, gameResult);
                     continue;
                 }
 
                 if (targetNumbers.contains(userNum)) {
-                    plusGameResult(SIMILAR_ANSWER, gameResult);
+                    increaseAnswerCnt(SIMILAR_ANSWER, gameResult);
                 }
             }
+        }
+
+        private void increaseAnswerCnt(String answer, Map<String, Integer> gameResult) {
+            Integer cnt = gameResult.getOrDefault(answer, 0);
+            gameResult.put(answer, cnt + 1);
         }
     }
 }
