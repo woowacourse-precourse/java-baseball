@@ -39,7 +39,7 @@ public class PlayerInputFilterTest {
     void 숫자가_아닐때_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.noNumberException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("String index out of range: 5");
+                .hasMessageContaining("입력한 값이 숫자가 아닙니다.");
     }
 
     @Test
