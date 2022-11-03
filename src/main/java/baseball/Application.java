@@ -23,8 +23,8 @@ public class Application {
                 List<Integer> user = getUser();
                 System.out.println("user: "+Arrays.toString(user.toArray()));
 
-                String msg = getMSG(computer, user);
-                System.out.println("msg: "+msg);
+                win = judgeGame(computer, user);
+                System.out.println("win: "+win);
             }
 
         } while (retry);
@@ -92,6 +92,13 @@ public class Application {
     }
 
     //컴퓨터와 사용자 숫자 비교
+    public static boolean judgeGame(List<Integer> computer, List<Integer> user) {
+        String msg = getMSG(computer, user);
+        System.out.println(msg);
+
+        return "3스트라이크".equals(msg);
+    }
+
     private static String getMSG(List<Integer> computer, List<Integer> user) {
         int count = countSame(computer, user);
         int strike = countStrike(computer, user);
