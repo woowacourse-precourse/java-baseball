@@ -32,6 +32,11 @@ public class NumberComparison {
 
     }
 
+    private void printAnswerText() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private boolean isAnswer(int strikeCount) {
         return strikeCount == ANSWER_COUNT;
     }
