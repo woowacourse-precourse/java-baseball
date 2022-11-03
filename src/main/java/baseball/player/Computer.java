@@ -2,6 +2,7 @@ package baseball.player;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -38,7 +39,7 @@ public class Computer {
     }
 
     private boolean isNotDuplication(List<Integer> numberList) {
-        return numberList.size() != numberList.stream().distinct().count();
+        return numberList.size() == numberList.stream().distinct().count();
     }
 
     public List<Integer> getComputerNumberList() {
