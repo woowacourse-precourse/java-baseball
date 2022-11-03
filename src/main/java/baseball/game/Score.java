@@ -3,6 +3,8 @@ package baseball.game;
 import java.util.List;
 import java.util.Objects;
 
+import static baseball.game.Const.*;
+
 public class Score {
 	private int strike;
 	private int ball;
@@ -14,18 +16,18 @@ public class Score {
 
 	private void printResult() {
 		if (strike > 0 && ball > 0) {
-			System.out.printf("%d볼 %d스트라이크%n", ball, strike);
+			System.out.printf(GAME_SCORE_STRIKE_BALL_MESSAGE, ball, strike);
 			return;
 		}
 		if (strike > 0) {
-			System.out.printf("%d스트라이크%n", strike);
+			System.out.printf(GAME_SCORE_STRIKE_MESSAGE, strike);
 			return;
 		}
 		if (ball > 0) {
-			System.out.printf("%d볼%n", ball);
+			System.out.printf(GAME_SCORE_BALL_MESSAGE, ball);
 			return;
 		}
-		System.out.println("낫싱");
+		System.out.println(GAME_SCORE_NOTHING_MESSAGE);
 	}
 
 	public static Score calculate(List<Integer> computerNumbers, List<Integer> userNumbers) {
@@ -46,11 +48,11 @@ public class Score {
 	}
 
 	public boolean isWin() {
-		return strike == 3;
+		return strike == GAME_LENGTH;
 	}
 
 	private void calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < GAME_LENGTH; i++) {
 			calculateBall(computerNumbers.get(i), userNumbers);
 			if (Objects.equals(computerNumbers.get(i), userNumbers.get(i))) {
 				strike++;
@@ -60,7 +62,7 @@ public class Score {
 	}
 
 	private void calculateBall(Integer computerNumber, List<Integer> userNumbers) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < GAME_LENGTH; i++) {
 			if (Objects.equals(computerNumber, userNumbers.get(i))) {
 				ball++;
 			}

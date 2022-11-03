@@ -2,13 +2,15 @@ package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.game.Const.*;
+
 public class Game {
 	private final User user;
 	private final Computer computer;
 	private Score score;
 
 	private Game(Computer computer, User user) {
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		System.out.println(GAME_START_MESSAGE);
 		this.computer = computer;
 		this.user = user;
 	}
@@ -40,8 +42,8 @@ public class Game {
 
 	private boolean isGameOver() {
 		if (score.isWin()) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			System.out.println(GAME_WIN_MESSAGE);
+			System.out.println(GAME_RESTART_MESSAGE);
 			return !restartOrExit();
 		}
 		return false;
@@ -57,6 +59,6 @@ public class Game {
 		if (input.equals("2")) {
 			return false;
 		}
-		throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
+		throw new IllegalArgumentException(GAME_EXCEPTION_RESTART_MESSAGE);
 	}
 }
