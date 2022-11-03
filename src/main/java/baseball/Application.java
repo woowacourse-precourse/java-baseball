@@ -14,7 +14,11 @@ public class Application {
         System.out.println(input);
 
         ExceptionIfFalse(CheckInputLength(input));
+        // 길이 체크
         ExceptionIfFalse(CheckIsInputNumber(input));
+        // 숫자인지 체크
+        ExceptionIfFalse(CheckIsNumberDupli(input));
+        // 중복 체크
     }
 
     public static boolean CheckInputLength(String input) {
@@ -25,6 +29,18 @@ public class Application {
         }
 
         return isLengthCorrect;
+    }
+
+    public static boolean CheckIsNumberDupli(String input) {
+        boolean isNotDuplication = true;
+
+        for(int i = 0; i < input.length()-1; i++) {
+            if(!ReturnFalseIfDupli(input, i)){
+                isNotDuplication = false;
+            }
+        }
+
+        return isNotDuplication;
     }
 
     public static boolean ReturnFalseIfDupli(String input, int idxNumber) {
