@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OpponentTest {
-    private Opponent _opponent;
+    private static Opponent _opponent;
 
     @BeforeAll
-    void initAll() {
+    static void initAll() {
         _opponent = new Opponent();
     }
 
