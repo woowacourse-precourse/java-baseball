@@ -23,6 +23,10 @@ public class Application {
 
             String numberString = putInNumber();
 
+            if (! checkNumber(numberString)) {
+                continue;
+            }
+
         } while(true);
     }
 
@@ -47,6 +51,21 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
+    }
+
+    public static boolean checkNumber(String numberString) {
+
+        try {
+
+
+            return true;
+
+
+        } catch (IllegalStateException e) {
+
+            return false;
+        }
+
     }
 
 }
