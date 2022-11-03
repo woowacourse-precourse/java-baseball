@@ -16,6 +16,8 @@
 
     - isValidLength()
 
+    - isValidOfDuplication()
+
 ## [랜덤 세자리 숫자 구하기]
 
 - getComputerNumberInString()
