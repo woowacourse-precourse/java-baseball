@@ -42,7 +42,7 @@ public class Ball {
     }
 
     private boolean validate(String[] arr) {
-        if (!validLength(arr)) {
+        if (!validInputLength(arr)) {
             throw new IllegalArgumentException("중복되지 않은 1~9 사이의 숫자로 구성된 '세 자리 숫자'를 입력해야합니다.");
         }
         if (!validNumberRange(arr)) {
@@ -85,7 +85,7 @@ public class Ball {
         return validateIndex == 0;
     }
 
-    private boolean validLength(String[] arr) {
+    private boolean validInputLength(String[] arr) {
         return arr.length == 3;
     }
 
