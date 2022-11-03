@@ -97,7 +97,18 @@ public class Application {
         }
         return count;
     }
-    private static int countBall(String computer, String user) {}
+    private static int countBall(String computer, String user) {
+        int count = 0;
+        for (int i = 0; i < LENGTH_OF_BASEBALL_NUMBER; i++) {
+            int nextIndex = (i + 1) % LENGTH_OF_BASEBALL_NUMBER;
+            int nextNextIndex = (i + 2) % LENGTH_OF_BASEBALL_NUMBER;
+            if (user.charAt(i) == computer.charAt(nextIndex) ||
+                    user.charAt(i) == computer.charAt(nextNextIndex)) {
+                count++;
+            }
+        }
+        return count;
+    }
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
 
