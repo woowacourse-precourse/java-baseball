@@ -20,16 +20,31 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
+        String userInput = "";
+        Integer strike = 0, ball = 0, out = 0;
 
         initRandomNumber(computer);
-        
-        String userInput = Console.readLine();
 
-        try {
-            validateUserInput(userInput);
-        } catch(IllegalArgumentException e){
-            System.out.println(e.getMessage());
+        while(strike != 3) {
+            userInput = Console.readLine();
+
+            strike = checkStrike(computer, userInput, strike);
+
+            try {
+                validateUserInput(userInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
+    }
+
+    private static Integer checkStrike(List<Integer> computer, String userInput, Integer strike) {
+        for (int idx = 0; idx < userInput.length(); idx++) {
+            if(userInput.charAt(idx) - '0' == computer.get(idx)){
+                strike++;
+            }
+        }
+        return strike;
     }
 
     public static void validateUserInput(String s) {
