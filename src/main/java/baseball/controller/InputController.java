@@ -1,11 +1,14 @@
 package baseball.controller;
 
+import baseball.utils.InputValidation;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputController {
+    InputValidation inputValidation = new InputValidation();
     public List<Integer> insertComNumber() {
         List<Integer> insertNum = new ArrayList<>();
         while(insertNum.size() < 3) {
@@ -14,6 +17,16 @@ public class InputController {
                 insertNum.add(randomNumber);
             }
         }
+        return insertNum;
+    }
+
+    public List<Integer> insertUserNumber() {
+        List<Integer> insertNum = new ArrayList<>();
+        String input = Console.readLine();
+        if(!inputValidation.userInputValidation(input)) {
+            throw new IllegalArgumentException();
+        }
+        insertNum = stringToListNumber(input);
         return insertNum;
     }
 
