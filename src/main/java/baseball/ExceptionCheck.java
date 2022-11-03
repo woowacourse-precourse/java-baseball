@@ -3,7 +3,7 @@ package baseball;
 public class ExceptionCheck {
 
     public void verificationLength(String userInput) {
-        if (userInput.length() > 3) {
+        if (userInput.length() > 3 || userInput.length() == 0) {
             throw new IllegalArgumentException();
         }
     }

@@ -11,10 +11,10 @@ public class UserInput {
         String userInput = Console.readLine();
 
         ExceptionCheck check = new ExceptionCheck();
+        check.verificationLength(userInput);
         check.verificationInputZero(userInput);
         check.verificationCharDetect(userInput);
         check.verificationDuplicated(userInput);
-        check.verificationLength(userInput);
 
         return sliceInput(userInput);
     }
