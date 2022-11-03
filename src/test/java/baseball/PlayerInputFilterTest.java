@@ -73,7 +73,7 @@ public class PlayerInputFilterTest {
     void 세자리가_아니면_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.containsZeroException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("String index out of range: 5");
+                .hasMessageContaining("입력 문자열에 0이 있으면 안됩니다.");
     }
 
     @Test
