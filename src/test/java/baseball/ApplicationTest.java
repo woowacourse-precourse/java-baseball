@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+        // 컴퓨터 135, 589
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
             () -> {
