@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
         int SIZE = 3;
         List<Integer> computer = CreateNumbers(SIZE);
-
+        String input = Console.readLine();
     }
 
     private static List<Integer> CreateNumbers(int SizeOfNum) {
@@ -22,4 +23,5 @@ public class Application {
         }
         return computer;
     }
+
 }
