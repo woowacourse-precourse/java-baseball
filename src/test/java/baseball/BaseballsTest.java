@@ -46,4 +46,17 @@ public class BaseballsTest {
             Baseballs.of(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "112", "121", "211"})
+    @DisplayName("입력값 중 내부 중복이 있는 경우 IllegalArgumentException 발생")
+    public void test4(String input) throws Exception {
+        //given
+        String userInput = input;
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            Baseballs.of(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
