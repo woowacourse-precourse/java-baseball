@@ -24,7 +24,7 @@ public class BaseballGameController {
 			GameResult result = new GameResult(computerNums, userNums);
 			strikeCount = result.strikeCount;
 			new OutputView(result).printGameResult();
-		} while (isGameEnd(strikeCount));
+		} while (!isGameEnd(strikeCount));
 	}
 
 	private boolean isGameEnd(int result) {
