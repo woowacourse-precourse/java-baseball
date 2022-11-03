@@ -160,6 +160,12 @@ class ApplicationTest extends NsTest {
 		assertThat(game.isBall(6,5,6,2)).isTrue();
 	}
 
+	@DisplayName("나싱을 확인한다")
+	@Test
+	void verifyNothing(){
+		assertThat(game.isNothing(1,2,3,4)).isTrue();
+	}
+
 
 	@Test
 	void 게임종료_후_재시작() {
