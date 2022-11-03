@@ -60,4 +60,20 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         return guess;
     }
+    public static class Result{
+        public static int strike;
+        public static int ball;
+        public Result(){
+        }
+        public Result(int strike,int ball){
+            this.strike=strike;
+            this.ball=ball;
+        }
+        int getStrike(){
+            return this.strike;
+        }
+        int getBall(){
+            return this.ball;
+        }
+    }
 }
