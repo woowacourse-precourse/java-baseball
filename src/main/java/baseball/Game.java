@@ -40,5 +40,15 @@ public class Game {
         return player;
     }
 
+    private int getStrike(List<Integer> computer, List<Integer> player) {
+        int strike = 0;
 
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i) == player.get(i)) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
 }
