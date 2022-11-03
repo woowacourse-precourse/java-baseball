@@ -5,6 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,29 +22,23 @@ public class Application {
         while(true){
             System.out.println("숫자 야구 게임을 시작합니다.");
             System.out.print("숫자를 입력해주세요 :");
-            String input = Console.readLine();
-            validation(input);
+            List<Integer> user = validationAndConvert(Console.readLine());
 
 
         }
 
     }
 
-    public static void validation(String input){
+    public static List<Integer> validationAndConvert(String input){
         if(input.length() != 3)  throw new IllegalArgumentException();
-        Long number = input.chars().filter(c->(c >= '1' && c <= '9')).count();
-        if(number != 3) throw new IllegalArgumentException();
-
+        Set<Integer> result = input.chars().
+                filter(c->(c >= '1' && c <= '9'))
+                .map(c -> c - '0').boxed()
+                .collect(toSet());
+        if(result.size() != 3) throw new IllegalArgumentException();
+        return result.stream().collect(toList());
     }
-    public static List<Integer> convert(String input){
-        List<Integer> convertResult = new ArrayList<>();
-        for(int i = 0;i<input.length();i++){
 
-            Integer element = Integer.parseInt(input.substring(i, i + 1));
-            convertResult.add(element);
-        }
-        return convertResult;
-    }
 
 
 }

@@ -37,14 +37,6 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    @Test
-    public void 입력으로_받은_문자열을_Integer_List로변환() throws Exception{
-        List<Integer> user = Application.convert("123");
-        Assertions.assertThat(user.get(0)).isEqualTo(1);
-        Assertions.assertThat(user.get(1)).isEqualTo(2);
-        Assertions.assertThat(user.get(2)).isEqualTo(3);
-    }
-
 
 
 
