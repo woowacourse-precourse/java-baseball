@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -110,6 +111,16 @@ class ApplicationTest extends NsTest {
 		assertThatCode(() -> user.handleInputError("222"))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
+	}
+
+	@DisplayName("유저 입력에 대한 전처리 수행을 테스트한다")
+	@Test
+	void testUserInputIsProcessed() {
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>();
+		desirableMap.put(5, 0);
+		desirableMap.put(9, 1);
+		desirableMap.put(1, 2);
+		assertThat(user.processNumbers("591")).isEqualTo(desirableMap);
 	}
 
 
