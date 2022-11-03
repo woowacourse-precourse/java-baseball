@@ -40,10 +40,28 @@ class ApplicationTest extends NsTest {
         test.add(3);
 
         //when
-        List<Integer> main = Application.createUserNumberList("123");
+        List<Integer> user = Application.createUserNumberList("123");
 
         //then
-        assertThat(main).isEqualTo(test);
+        assertThat(user).isEqualTo(test);
+    }
+
+    @Test
+    void 숫자_비교_테스트() {
+        //given
+        List<Integer> test = new ArrayList<>();
+        test.add(1);
+        test.add(2);
+        test.add(3);
+
+        List<Integer> user = Application.createUserNumberList("732");
+
+
+        //when
+        int result = Application.compareComputerWithUser(test, user);
+
+        //given
+        assertThat(result).isEqualTo(2);
     }
 
     @Override
