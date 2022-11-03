@@ -11,7 +11,7 @@ public class Application {
         PrintComment.printStartComment();
         Game game = new Game();
         do {
-            System.out.println("숫자를 입력해주세요 :");
+            PrintComment.printInputComment();
             String userInput = Console.readLine();
             GameState gameState = game.compareNumbers(userInput);
         } while(true);
