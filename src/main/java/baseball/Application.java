@@ -8,8 +8,26 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Application {
+    private static final int _ball = 0;
+    private static final int _strike = 0;
+
     public static void main(String[] args) {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
+    }
+
+    private static void printHint(List<Integer> result) {
+        int ballCount = result.get(_ball);
+        int strikeCount = result.get(_strike);
+
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.print(ballCount + "볼 " + strikeCount + "스트라이크\n");
+        } else if (ballCount > 0) {
+            System.out.print(ballCount + "볼\n");
+        } else if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크\n");
+        } else {
+            System.out.print(strikeCount + "낫싱\n");
+        }
     }
 
     private static List<Integer> getResult(List<Integer> input, List<Integer> comp) {
