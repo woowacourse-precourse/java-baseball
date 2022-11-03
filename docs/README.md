@@ -26,7 +26,6 @@
 
 - getUserAnswerInString()
 
-- processIllegalArgumentException()
 
 ## [사용자 입력값과 정답 비교]
 - compareComputerAndUser()
