@@ -68,7 +68,9 @@ public class Application {
 
     public static boolean decideRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int decidedRestart = Integer.parseInt(Console.readLine());
+        String decidedRestartString =  Console.readLine();
+        discoverRestartNumberException(decidedRestartString);
+        int decidedRestart = Integer.parseInt(decidedRestartString);
 
         if (decidedRestart == 1) return true;
         else return false;
@@ -116,6 +118,10 @@ public class Application {
             }
 
         }
+    }
+
+    public static void discoverRestartNumberException (String decideRestartString) throws IllegalArgumentException{
+        if (!decideRestartString.equals("1") && !decideRestartString.equals("2")) throw new IllegalArgumentException();
     }
 
     public static void main(String[] args) {
