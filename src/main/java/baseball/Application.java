@@ -12,37 +12,34 @@ public class Application {
     
     private static void game_start(Game game, MessageHolder messageHolder) {
         boolean isInGame = true;
-        set_game_start(game, messageHolder);
         int player_restart = -1;
+        set_game_start(game, messageHolder);
 
         while (isInGame) {
 
             isInGame = in_game(game, messageHolder);
 
-            player_restart = game_end(messageHolder, isInGame, player_restart);
+            if (!isInGame) {
+                player_restart = game_end_get_player_input(messageHolder);
+            }
 
             if (player_restart == 2) {
-                messageHolder.print_game_end();
                 isInGame = false;
                 break;
             }
 
             if (player_restart == 1) {
                 isInGame = true;
+                player_restart = -1;
                 set_game_start(game, messageHolder);
             }
 
         }
     }
 
-    private static int game_end(MessageHolder messageHolder, boolean isInGame, int player_restart) {
-        
-        if (!isInGame) {
-            messageHolder.print_congrate();
-            messageHolder.print_game_end();
-            player_restart = messageHolder.print_ask_restart_and_get_input();
-        }
-
+    private static int game_end_get_player_input(MessageHolder messageHolder) {
+        int player_restart;
+        player_restart = messageHolder.print_ask_restart_and_get_input();
         return player_restart;
     }
 
