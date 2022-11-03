@@ -12,7 +12,9 @@ import java.util.List;
 public class BaseBallGameController {
 
     public void startGame() {
-        playGame();
+        do {
+            playGame();
+        } while (InputView.decideContinueGame());
     }
 
     private void playGame() {
