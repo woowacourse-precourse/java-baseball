@@ -15,21 +15,22 @@ public class BaseballController {
 	protected String answer;
 	protected int strike;
 	protected int ball ;
+
 	public void start(){
 		do{
-			gameStart();
+			proceedGame();
 		}while(restartCheck());
 	}
 
-	private void gameStart() {
+	private void proceedGame() {
 		OutputView.gameStartView();
 		initGame();
 		do {
 			Validator tryValidator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
 			answerCheck(tryValidator.INPUT_VALUE);
-			OutputView.displayResult(ball, strike);
+			OutputView.tryResultView(ball, strike);
 		} while (!isGameWin());
-		OutputView.displayWin();
+		OutputView.gameWinView();
 	}
 	private boolean restartCheck(){
 		Validator restartValidator = new RestartValidator(InputView.restartInput(), RESTART_ANSWER_LENGTH);
