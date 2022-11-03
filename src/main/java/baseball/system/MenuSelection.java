@@ -1,5 +1,6 @@
 package baseball.system;
 
+import camp.nextstep.edu.missionutils.Console;
 public class MenuSelection {
 
     private final boolean PLAY_GAME = true;
@@ -18,6 +19,17 @@ public class MenuSelection {
 
         return QUIT;
 
+    }
+
+    private String inputSelectionNumber() throws IllegalArgumentException {
+
+        String inputNumber = Console.readLine();
+
+        if(!inputNumber.equals("1") || !inputNumber.equals("2")){
+            throw new IllegalArgumentException();
+        }
+
+        return inputNumber;
     }
 
     private void printMenuSelection() {
