@@ -9,7 +9,13 @@ import java.util.regex.Pattern;
 
 public class User {
     final static int NUMBER_DIGIT = 3;
-    public List userInput() throws IllegalArgumentException{
+    final static int RESTART_GAME = 1;
+    final static int QUIT_GAME = 2;
+
+    private User(){
+    }
+    
+    public static List userInput() throws IllegalArgumentException{
         System.out.print(Message.INPUT_NUMBER);
         String str = Console.readLine();
         if (validateUserInput(str)) {
@@ -25,7 +31,7 @@ public class User {
         return result;
     }
 
-    private boolean validateUserInput(String str) {
+    private static boolean validateUserInput(String str) {
         StringBuilder regex = new StringBuilder();
         regex.append("[1-9]{").append(NUMBER_DIGIT).append("}");
 
@@ -38,5 +44,10 @@ public class User {
             }
         }
         return false;
+    }
+    public static boolean restart() {
+        int input = Integer.parseInt(Console.readLine());
+
+        return input == RESTART_GAME;
     }
 }
