@@ -21,4 +21,14 @@ public class BaseballGame {
         return inputNumbers.get(index) == answer.get(index);
     }
 
+    public int getStrikeCount(List<Integer> inputNumbers, List<Integer> answer) {
+        int count = 0;
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            if (isStrike(inputNumbers, answer, i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
