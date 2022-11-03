@@ -15,8 +15,8 @@ public class Hint {
     public String getHint() {
         hint ="";
 
-        countMatchingNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
-        countIncludedNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
+        //countMatchingNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
+        //countIncludedNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
 
         getHintOfBall();
         getHintOfStrike();
@@ -26,7 +26,7 @@ public class Hint {
         return this.hint.trim();
     }
 
-    private void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    public void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         matchingNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {
@@ -36,7 +36,7 @@ public class Hint {
         }
     }
 
-    private void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    public void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         includedNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {

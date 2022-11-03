@@ -19,6 +19,6 @@ public class AnswerSheetTest{
 
         Assertions.assertThrows(IllegalArgumentException.class,()->answerSheet.getUserAnswer());
     }
-    
+
 
 }
