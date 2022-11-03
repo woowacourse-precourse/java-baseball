@@ -30,5 +30,10 @@ public class User {
         }
     }
 
+    private void validateCheckVacuum(String userNumber) {
+        if (userNumber.contains(" ")) {
+            throw new IllegalArgumentException("공백을 제거하고 입력해 주세요.");
+        }
+    }
 
 }
