@@ -43,10 +43,18 @@ public class User {
         }
     }
 
+    public boolean isValidNumOfIndividually(String str) {
+        if (isNumOfIndividually(str)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
+        }
+    }
+
     // 서로 다른 3자리의 수인지 확인
     // 서로 다른 3자리의 수인지 확인하는 방법은?
     // 1번을 for문 2번?
-    public boolean isValidNumOfIndividually(String str) {
+    public boolean isNumOfIndividually(String str) {
         List<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = 0;
         for (int value : splitStrList) {
