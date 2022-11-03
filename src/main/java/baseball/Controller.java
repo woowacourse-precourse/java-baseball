@@ -8,6 +8,7 @@ public class Controller {
 
     public void run() {
         boolean gameEnd = false;
+        SystemMessage.printGameStart();
         while (!gameEnd) {
             service.setGame();
             service.startGame();
