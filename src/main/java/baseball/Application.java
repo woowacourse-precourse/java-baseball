@@ -12,7 +12,7 @@ public class Application {
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
-    private final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String THREE_STRIKE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String INPUT_EXCEPTION_LOG = "입력이 잘못되었습니다. 게임을 종료합니다.";
 
     String input = "";
@@ -24,7 +24,13 @@ public class Application {
 
         boolean flag = true;
         while(flag) {
-            input = getInput();
+            try {
+                input = getInput();
+            } catch (IllegalArgumentException exception) {
+                System.out.println(INPUT_EXCEPTION_LOG);
+                throw exception;
+            }
+
             if(!isValidInput(input)) {
                 throw new IllegalArgumentException(INPUT_EXCEPTION_LOG);
             }
@@ -45,7 +51,7 @@ public class Application {
     }
 
     public String getInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         return readLine();
     }
 
@@ -121,7 +127,17 @@ public class Application {
         char[] inputCharArray = input.toCharArray();
         char[] answerCharArray = answer.toCharArray();
 
-        
+        for (int inputIdx = 0; inputIdx < inputCharArray.length; inputIdx++) {
+            for (int answerIdx = 0; answerIdx < answerCharArray.length; answerIdx++) {
+                if(inputIdx == answerIdx) {
+                    continue;
+                }
+
+                if(inputCharArray[inputIdx] == answerCharArray[answerIdx]) {
+                    count++;
+                }
+            }
+        }
 
         return count;
     }

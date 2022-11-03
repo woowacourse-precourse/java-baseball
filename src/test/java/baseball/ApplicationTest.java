@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 정답비교() {
-        final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        final String THREE_STRIKE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
         String[] inputs = {"123", "124", "156", "312", "315", "369", "132", "135", "456"};
         String answer = "123";
