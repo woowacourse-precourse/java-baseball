@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UserInputValidator {
+public class BallValidator {
 
     public static final int INPUT_SIZE = 3;
     public static final String KEEP_PLAY_GAME_CODE = "1";

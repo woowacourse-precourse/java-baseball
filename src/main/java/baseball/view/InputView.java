@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.utils.UserInputValidator;
+import baseball.utils.BallValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -21,7 +21,7 @@ public class InputView {
     public static boolean decideContinueGame() {
         System.out.println(INPUT_MESSAGE_CONTINUE_GAME);
         String gameCode = Console.readLine();
-        UserInputValidator.isValidGameCode(gameCode);
-        return gameCode.equals(UserInputValidator.KEEP_PLAY_GAME_CODE);
+        BallValidator.isValidGameCode(gameCode);
+        return gameCode.equals(BallValidator.KEEP_PLAY_GAME_CODE);
     }
 }

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class UserInputConvertor {
+public class BallConvertor {
     public static List<Ball> mapToBalls(List<Integer> ballsBeforeMap) {
-        UserInputValidator.isValidBalls(ballsBeforeMap);
-        return IntStream.range(0, UserInputValidator.INPUT_SIZE)
+        BallValidator.isValidBalls(ballsBeforeMap);
+        return IntStream.range(0, BallValidator.INPUT_SIZE)
                 .mapToObj(index -> new Ball(index + 1, ballsBeforeMap.get(index)))
                 .collect(Collectors.toList());
     }
@@ -24,7 +24,7 @@ public class UserInputConvertor {
     }
 
     private static int charToInt(char ballNo) {
-        UserInputValidator.isValidBallNo(ballNo);
+        BallValidator.isValidBallNo(ballNo);
         return ballNo - '0';
     }
 }

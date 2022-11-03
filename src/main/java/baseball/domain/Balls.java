@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.utils.UserInputConvertor;
+import baseball.utils.BallConvertor;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Integer> balls) {
-        this.balls = UserInputConvertor.mapToBalls(balls);
+        this.balls = BallConvertor.mapToBalls(balls);
     }
 
     public PlayResult compareTo(Balls computerBalls) {
