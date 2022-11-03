@@ -6,9 +6,12 @@ import java.util.List;
 public class User {
 
     private List<Integer> userNumberList;
+    private String inputNumber;
 
-    User(String inputNumber) {
-        this.userNumberList = generateNumberList(inputNumber);
+
+    public void setUser(String inputNumber){
+        this.inputNumber = inputNumber;
+        this.userNumberList = generateNumberList(this.inputNumber);
     }
 
     private List<Integer> generateNumberList(String inputNumber) {
