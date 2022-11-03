@@ -38,8 +38,26 @@ public class Application {
         } else {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
-
+        if (strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
         return strike;
+    }
+    public static String gamePlay() {
+        int checkstrike;
+        String gostop;
+        List<Integer> answer = getRandomNum();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            String num = numberInput();
+            checkstrike = Check(num, answer);
+            if (checkstrike == 3) {
+                gostop = readLine();
+                break;
+            }
+        }
+        return gostop;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
