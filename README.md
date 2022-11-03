@@ -30,7 +30,7 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
   - [ ] List<Integer> printOutput(Score) 메서드
   - [ ] int getRestartNumber() 메서드: validation도 진행
 
-- [ ] InputValidator 클래스: try~catch로 IllegalArgumentException 처리
+- [X] InputValidator 클래스: IllegalArgumentException 상황들 처리
   - [X] boolean validateAnsString(String) 메서드
     - [X] 길이가 3이 아닌 입력 검증
     - [X] 숫자가 아닌 입력 검증
