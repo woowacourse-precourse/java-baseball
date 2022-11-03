@@ -14,16 +14,32 @@ public class Baseballs {
     }
 
     private void validate(String userInput) {
-        if (userInput.isEmpty()) {
+        isEmpty(userInput);
+        isLengthEqualsBaseballCount(userInput);
+        isConsistOfOnlyProperRangedInputs(userInput);
+    }
+
+    private void isConsistOfOnlyProperRangedInputs(String userInput) {
+        for (Character characterInUserInput : userInput.toCharArray()) {
+            isProperRangedInput(characterInUserInput);
+        }
+    }
+
+    private void isProperRangedInput(Character characterInUserInput) {
+        if (characterInUserInput < MIN_VALID_RANGE || characterInUserInput > MAX_VALID_RANGE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void isLengthEqualsBaseballCount(String userInput) {
         if (userInput.length() != BASEBALL_COUNT) {
             throw new IllegalArgumentException();
         }
-        for (Character characterInUserInput : userInput.toCharArray()) {
-            if (characterInUserInput < MIN_VALID_RANGE || characterInUserInput > MAX_VALID_RANGE) {
-                throw new IllegalArgumentException();
-            }
+    }
+
+    private void isEmpty(String userInput) {
+        if (userInput.isEmpty()) {
+            throw new IllegalArgumentException();
         }
     }
 }
