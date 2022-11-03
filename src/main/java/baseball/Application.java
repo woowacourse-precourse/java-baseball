@@ -34,7 +34,14 @@ public class Application {
         String userAnswer = Console.readLine();
         return Integer.valueOf(userAnswer);
     }
-    public static void convertIntegerToList(){
-        // List<Integer> userAnswerList = new ArrayList<>(Arrays.asList(userAnswer.split("")));
+    public static List<Integer> convertIntegerToList(int num){
+        List<Integer> numList = new ArrayList<>();
+
+        String numStr = String.valueOf(num);
+        for (String tmpStr : Arrays.asList(numStr.split(""))){
+            numList.add(Integer.valueOf(tmpStr));
+        }
+
+        return numList;
     }
 }
