@@ -54,4 +54,20 @@ public class Input {
         return true;
     }
 
+    /**
+     * 입력받은 숫자들이 범위 안에 있는지 확인하는 메소드
+     */
+    public boolean isDigitsInRange(String inputString) {
+        List<Integer> inputDigits = inputDigit(inputString);
+
+        for (int index = 0; index < inputDigits.size(); index++) {
+            int digit = inputDigits.get(index);
+            if (digit < Computer.RANDOM_NUMBER_MIN || digit > Computer.RANDOM_NUMBER_MAX) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
