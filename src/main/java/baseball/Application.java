@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -25,5 +26,19 @@ public class Application {
 		}
 
 		return computerSelectList;
+	}
+
+	private static List<Integer> pitcherNumberList() {
+
+		List<Integer> userSelectList = new ArrayList<>();
+
+		System.out.print("숫자를 입력해주세요 : ");
+		int userSelect = Integer.parseInt(Console.readLine());
+
+		userSelectList.add(userSelect / 100);
+		userSelectList.add(userSelect % 100 / 10);
+		userSelectList.add(userSelect % 10);
+
+		return userSelectList;
 	}
 }
