@@ -12,11 +12,11 @@ import static baseball.utils.GameNumberGenerator.generate;
 import static baseball.utils.InputValidator.validate;
 
 public class NumberBaseBallGame {
-    private BaseNumber gameNumber;
+    private BaseNumber baseNumber;
     private boolean isProceeding;
 
     public NumberBaseBallGame(BaseNumber gameNumber) {
-        this.gameNumber = gameNumber;
+        this.baseNumber = gameNumber;
         this.isProceeding = true;
     }
 
@@ -30,7 +30,7 @@ public class NumberBaseBallGame {
         for (int i = 0; i < inputs.length; i++) {
             inputNumber.add(new InputNumber(i, Integer.parseInt(inputs[i])));
         }
-        return new Result(inputNumber, gameNumber);
+        return new Result(inputNumber, baseNumber);
     }
 
     public boolean isProceeding() {
@@ -44,7 +44,7 @@ public class NumberBaseBallGame {
     public void restart(String restart) {
         if (restart.equals(RESTART)) {
             isProceeding = true;
-            gameNumber = generate();
+            baseNumber = generate();
         }
     }
 }

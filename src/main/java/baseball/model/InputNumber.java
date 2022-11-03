@@ -17,11 +17,11 @@ public class InputNumber {
         return hasValue(gameNumber) && !samePosition(gameNumber);
     }
 
-    private boolean hasValue(BaseNumber gameNumber) {
-        return gameNumber.contains(value);
+    private boolean hasValue(BaseNumber baseNumber) {
+        return baseNumber.contains(value);
     }
 
-    private boolean samePosition(BaseNumber gameNumber) {
-        return gameNumber.get(index) == value;
+    private boolean samePosition(BaseNumber baseNumber) {
+        return baseNumber.get(index) == value;
     }
 }

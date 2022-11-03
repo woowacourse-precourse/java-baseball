@@ -7,6 +7,7 @@ import java.util.Map;
 
 import static baseball.resources.GameConfig.*;
 import static baseball.resources.Sentence.*;
+import static baseball.utils.SentencePrint.*;
 
 public class NumberBaseBallView {
     public void start(){
@@ -32,7 +33,7 @@ public class NumberBaseBallView {
             printf(STRIKE, count.get(STRIKE_COUNT));
             return;
         }
-        println(NOTHING);
+        print(NOTHING);
     }
 
     public String askRestart() {

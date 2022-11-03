@@ -4,10 +4,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static baseball.resources.GameConfig.PATTERN;
-import static baseball.resources.GameConfig.SIZE;
+import static baseball.resources.GameConfig.*;
 import static baseball.resources.Sentence.EXCEPTION;
-import static baseball.resources.Sentence.throwException;
+import static baseball.utils.SentencePrint.cause;
 
 public class InputValidator {
     public static void validate(String input){
@@ -17,7 +16,7 @@ public class InputValidator {
 
     private static void validateThreeLength(String input) {
         if (!input.matches(PATTERN)) {
-            throwException(EXCEPTION);
+            cause(EXCEPTION);
         }
     }
 
@@ -27,7 +26,7 @@ public class InputValidator {
                 .collect(Collectors.toSet());
 
         if (inputNumber.size() < SIZE) {
-            throwException(EXCEPTION);
+            cause(EXCEPTION);
         }
     }
 }
