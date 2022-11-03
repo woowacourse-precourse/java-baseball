@@ -1,13 +1,12 @@
-package baseball.model.application;
-
-import static org.assertj.core.api.Assertions.*;
+package baseball.model.numberbaseball.application;
 
 import java.util.List;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import baseball.model.NumberBaseball;
+import baseball.model.numberbaseball.NumberBaseball;
 
 class NumberBaseballServiceTest {
 
@@ -25,8 +24,7 @@ class NumberBaseballServiceTest {
 			.count();
 
 		//then
-		assertThat(numbers.size()).isEqualTo(afterDistinct);
+		Assertions.assertThat(numbers.size()).isEqualTo(afterDistinct);
 
 	}
-
 }
