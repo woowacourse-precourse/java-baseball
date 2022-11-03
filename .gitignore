@@ -39,7 +39,6 @@ out/
 
 ### VS Code ###
 .vscode/
-!/.gitignore
 
 ### mac OS ###
 .DS_Store
