@@ -13,6 +13,10 @@ public class Input {
         this.input = input;
     }
 
+    public int getInput() {
+        return Integer.parseInt(this.input);
+    }
+
     private void CheckLange(String input) {
         for (int i = 0; i < 3; i += 1) {
             if (input.charAt(i) < '1' || input.charAt(i) > '9') throw new IllegalArgumentException();
