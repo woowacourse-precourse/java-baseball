@@ -1,20 +1,16 @@
 package baseball;
 
+import static baseball.Application.isGameOver;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static baseball.Application.GAME_OVER;
-import static baseball.Application.RESTART;
-import static baseball.Application.getUserDecision;
-import static baseball.Application.isGameOver;
-import static baseball.Application.playGame;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
@@ -25,15 +21,21 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력시오류경우_확인(){
 
-        Assertions.assertThatThrownBy(() ->{
-            Application.isInputAlright("122");
-            }).isInstanceOf(IllegalArgumentException.class);
+        /**
+         * 숫자 중복의 경우
+         */
+        Assertions.assertThatThrownBy(() -> Application.isInputAlright("122")).isInstanceOf(IllegalArgumentException.class);
 
-
+        /**
+         * 숫자의 길이가 3보다 큰 경우
+         */
         Assertions.assertThatThrownBy(() ->{
             Application.isInputAlright("1234");
         }).isInstanceOf(IllegalArgumentException.class);
 
+        /**
+         * 숫자의 길이가 3보다 작은 경우
+         */
         Assertions.assertThatThrownBy(() ->{
             Application.isInputAlright("12");
         }).isInstanceOf(IllegalArgumentException.class);
@@ -50,8 +52,8 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList = Arrays.asList(1,3,2);
         int strike=0;
         int ball=0;
-        List<Integer> strikeBall = Application.findStrikeBall(computerNumber, userNumberList,
-                strike, ball);
+        List<Integer> strikeBall = Application.findStrikeBall(computerNumber, userNumberList
+                );
 
         strike = strikeBall.get(0);
         ball = strikeBall.get(1);
@@ -66,8 +68,8 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList2 = Arrays.asList(1,3,2);
         int strike2=0;
         int ball2=0;
-        List<Integer> strikeBall2 = Application.findStrikeBall(computerNumber2, userNumberList2,
-            strike2, ball2);
+        List<Integer> strikeBall2 = Application.findStrikeBall(computerNumber2, userNumberList2
+            );
 
         strike2 = strikeBall2.get(0);
         ball2 = strikeBall2.get(1);
@@ -82,8 +84,8 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList3 = Arrays.asList(1,4,3);
         int strike3=0;
         int ball3=0;
-        List<Integer> strikeBall3 = Application.findStrikeBall(computerNumber3, userNumberList3,
-            strike3, ball3);
+        List<Integer> strikeBall3 = Application.findStrikeBall(computerNumber3, userNumberList3
+           );
 
         strike3 = strikeBall3.get(0);
         ball3 = strikeBall3.get(1);
@@ -98,8 +100,8 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList4 = Arrays.asList(2,1,3);
         int strike4=0;
         int ball4=0;
-        List<Integer> strikeBall4 = Application.findStrikeBall(computerNumber4, userNumberList4,
-            strike4, ball4);
+        List<Integer> strikeBall4 = Application.findStrikeBall(computerNumber4, userNumberList4
+          );
 
         strike4 = strikeBall4.get(0);
         ball4 = strikeBall4.get(1);
@@ -120,7 +122,7 @@ class ApplicationTest extends NsTest {
     void 사용자와컴퓨터List에들어갔는지(){
 
         List<Integer> user = Application.inputProcess("123");
-        List<Integer> compute = Application.computerRanmdomNumberExtract();
+        List<Integer> compute = Application.computerRandomNumberExtract();
 
         Assertions.assertThat(user.size()).isEqualTo(3);
         Assertions.assertThat(compute.size()).isEqualTo(3);
