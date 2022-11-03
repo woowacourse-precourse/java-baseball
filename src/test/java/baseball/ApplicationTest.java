@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -43,5 +44,8 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(user.get(1)).isEqualTo(2);
         Assertions.assertThat(user.get(2)).isEqualTo(3);
     }
+
+
+
 
 }
