@@ -16,6 +16,14 @@ public class Rule {
         strike = 0;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     public void check(List<Integer> user, List<Integer> computer) {
         for (int userIdx = 0; userIdx < 3; userIdx++) {
             checkStrike(user.get(userIdx), computer.get(userIdx));
@@ -31,7 +39,7 @@ public class Rule {
 
     private void checkBall(Integer userDigit, List<Integer> computer, int userIdx) {
         for (int computerIdx = 0; computerIdx < 3; computerIdx++) {
-            if ((userDigit == computer.get(computerIdx)) && (userIdx != computerIdx)) {
+            if ((userDigit.equals(computer.get(computerIdx))) && (userIdx != computerIdx)) {
                 ball++;
             }
         }
