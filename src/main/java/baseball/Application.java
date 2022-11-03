@@ -12,3 +12,9 @@ class Comment {
     final static String REGAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final static String INPUTNUMBER = "숫자를 입력해주세요 : ";
 }
+
+enum Hint {
+    BALL,
+    STRIKE,
+    MISS
+}
