@@ -24,6 +24,7 @@ public class BaseballGame {
         createComputerNumbers();
         while (true) {
             String input = Console.readLine();
+            System.out.println("숫자를 입력해주세요 : " + input);
             isWrongInputValue(input);
             calculateBallCount(input);
             String msg = answerMessage();
