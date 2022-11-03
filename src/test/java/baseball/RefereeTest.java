@@ -23,4 +23,21 @@ class RefereeTest {
         referee.setAnswer(List.of(zeroIndexNum2, firstIndexNum2, secondIndexNum2));
         assertThat(referee.answer).contains(zeroIndexNum2, firstIndexNum2, secondIndexNum2);
     }
+
+    @Test
+    void judgeNumber() {
+        int zeroIndexNum = 4;
+        int firstIndexNum = 5;
+        int secondIndexNum = 6;
+        int notExist = 8;
+        referee.setAnswer(List.of(zeroIndexNum, firstIndexNum, secondIndexNum));
+
+        int result1 = referee.judgeNumber(zeroIndexNum, 0);
+        int result2 = referee.judgeNumber(firstIndexNum, 0);
+        int result3 = referee.judgeNumber(notExist, 0);
+
+        assertThat(result1).isEqualTo(referee.STRIKE);
+        assertThat(result2).isEqualTo(referee.BALL);
+        assertThat(result3).isEqualTo(referee.NOTHING);
+    }
 }
