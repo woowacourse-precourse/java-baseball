@@ -57,6 +57,10 @@ public class Score {
         return score.get(BALL);
     }
 
+    public boolean didWin() {
+        return score.get(STRIKE) == Answer.ANSWER_LIST_SIZE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
