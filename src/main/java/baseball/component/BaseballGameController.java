@@ -23,6 +23,30 @@ public class BaseballGameController {
         return playerNumbers;
     }
 
+    private void printBallStrikeCountScore(List<Integer> score){
+
+        int ballCount = score.get(0);
+        int strikeCount = score.get(1);
+
+        if(ballCount==0 && strikeCount==0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        if(ballCount != 0) {
+            stringBuilder.append(ballCount);
+            stringBuilder.append("볼 ");
+        }
+        if(strikeCount != 0) {
+            stringBuilder.append(strikeCount);
+            stringBuilder.append("스트라이크 ");
+        }
+        stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length());
+
+        System.out.println(stringBuilder.toString());
+    }
+
     private List<Integer> generateThreeRandomNumbers(){
         List<Integer> randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < 3){
