@@ -18,12 +18,13 @@ public class Controller {
 
             if (!model.findException(input)) throw new IllegalArgumentException();
 
-            int inp = Integer.parseInt(input);
-            int Strike = model.findStrike(ball.getScore(), inp);
-            int Ball = model.findBall(ball.getScore(), inp);
+            int number = Integer.parseInt(input);
+            int Strike = model.findStrike(ball.getScore(), number);
+            int Ball = model.findBall(ball.getScore(), number);
 
-            if (Strike == 3) {
-                view.threeStrike();
+            if (Ball == 0 && Strike == 0) {
+                view.incorrect();
+                continue;
             } else if (Ball != 0 && Strike != 0) {
                 view.strikeAndBall(Strike, Ball);
                 continue;
@@ -33,17 +34,16 @@ public class Controller {
             } else if (Strike != 0) {
                 view.strike(Strike);
                 continue;
-            } else if (Ball == 0 && Strike == 0) {
-                view.incorrect();
-                continue;
+            } else if (Strike == 3) {
+                view.threeStrike();
             }
-            String in = Console.readLine();
+            input = Console.readLine();
 
-            if (model.InputException(in)) throw new IllegalArgumentException();
+            if (model.InputException(input)) throw new IllegalArgumentException();
 
-            if ("1".equals(in)) {
+            if ("1".equals(input)) {
                 ball = new Ball();
-            } else if ("2".equals(in)) {
+            } else if ("2".equals(input)) {
                 break;
             }
         }
