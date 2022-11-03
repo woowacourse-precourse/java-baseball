@@ -71,5 +71,20 @@ public class Application {
         }
         return strike;
     }
+    //ball의 개수 구하는 기능
+    public static int ball(List<Integer> input_num_list, List<Integer> computer){
+        //todo: 1개 이상의 숫자가 같고 자리가 다른 경우 = (맞은개수)볼
+        int ball = 0;
+        if(input_num_list.get(0) == computer.get(1) || input_num_list.get(0) == computer.get(2)){
+            ball += 1;
+        }
+        if(input_num_list.get(1) == computer.get(0) || input_num_list.get(1) == computer.get(2)){
+            ball += 1;
+        }
+        if(input_num_list.get(2) == computer.get(0) || input_num_list.get(2) == computer.get(1)){
+            ball += 1;
+        }
+        return ball;
+    }
 
 }
