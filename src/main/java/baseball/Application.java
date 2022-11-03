@@ -53,6 +53,35 @@ public class Application {
         return strikeIndexes;
     }
 
+    static Boolean isBall(int computerIdx, String computer, boolean[] computerUsed,
+                          int inputIdx, String input, boolean[] inputUsed) {
+        if (computerUsed[computerIdx] || inputUsed[inputIdx]) {
+            return false;
+        }
+        if (computer.charAt(computerIdx) != input.charAt(inputIdx)) {
+            return false;
+        }
+        computerUsed[computerIdx] = inputUsed[inputIdx] = true;
+        return true;
+    }
+    static int countBallExceptStrike(String computer, String input, List<Integer> strikeIndexes) {
+        boolean[] computerUsed = new boolean[3];
+        boolean[] inputUsed = new boolean[3];
+        for (int idx : strikeIndexes) {
+            computerUsed[idx] = true;
+            inputUsed[idx] = true;
+        }
+
+        int ballCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ballCnt += isBall(i, computer, computerUsed, j, input, inputUsed)
+                        .compareTo(false);
+            }
+        }
+        return ballCnt;
+    }
+
     public static void main(String[] args) {
         printGameStart();
     }
