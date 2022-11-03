@@ -93,8 +93,9 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer_num = createRandomNumber();
+        String user_input = "1";
 
-        while (true) {
+        while (user_input.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             List<Integer> user_num = numToList(guess_number);
@@ -105,8 +106,9 @@ public class Application {
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                user_input = Console.readLine();
+                computer_num = createRandomNumber();
             }
-            break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
         }
     }
 }
