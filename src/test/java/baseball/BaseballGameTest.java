@@ -89,4 +89,40 @@ class BaseballGameTest {
         // then
         Assertions.assertThat(check).isEqualTo(false);
     }
+
+    @Test
+    void 문자열이_숫자만_있지_않은_경우_1() {
+        // given
+        BaseballGame baseballGame = new BaseballGame();
+
+        // when
+        boolean check = baseballGame.isNumber("1b2");
+
+        // then
+        Assertions.assertThat(check).isEqualTo(false);
+    }
+
+    @Test
+    void 문자열이_숫자만_있지_않은_경우_2() {
+        // given
+        BaseballGame baseballGame = new BaseballGame();
+
+        // when
+        boolean check = baseballGame.isNumber("");
+
+        // then
+        Assertions.assertThat(check).isEqualTo(false);
+    }
+
+    @Test
+    void 문자열이_숫자만_있지_않은_경우_3() {
+        // given
+        BaseballGame baseballGame = new BaseballGame();
+
+        // when
+        boolean check = baseballGame.isNumber(" 12 3");
+
+        // then
+        Assertions.assertThat(check).isEqualTo(false);
+    }
 }
