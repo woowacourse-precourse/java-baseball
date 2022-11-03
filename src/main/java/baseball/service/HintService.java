@@ -41,4 +41,16 @@ public class HintService {
     return false;
   }
 
+  public void printHint() {
+    if (strikeCount == 0 && ballCount == 0) {
+      System.out.println("끝");
+    }
+    if (ballCount != 0) {
+      System.out.println(ballCount + "볼 ");
+    }
+    if (strikeCount != 0) {
+      System.out.println(ballCount + "스트라이크");
+    }
+    System.out.println();
+  }
 }
