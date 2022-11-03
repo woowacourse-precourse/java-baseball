@@ -7,6 +7,7 @@ public class User {
     public int numSelecUser;
 
     public User() {
+        this.numSelecUser = 0;
     }
 
     public void choiceNum() {
@@ -21,4 +22,16 @@ public class User {
         strInput = readLine();
         return strInput;
     }
+
+    public int parseIntFromStr(String str) {
+        int intParseFromstr = 0;
+        try {
+            intParseFromstr = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+        return intParseFromstr;
+    }
+
+ 
 }
