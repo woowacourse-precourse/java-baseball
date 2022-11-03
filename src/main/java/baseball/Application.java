@@ -42,5 +42,7 @@ public class Application {
         return playerNumberArrayList;
     }
 
-
+    private static ArrayList<Integer> createAnswerNumber() {
+        
+    }
 }
