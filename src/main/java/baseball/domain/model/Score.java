@@ -2,6 +2,7 @@ package baseball.domain.model;
 
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -33,7 +34,7 @@ public class Score {
 
     public Map<String, Integer> getResult() {
         return score.keySet().stream()
-                .collect(Collectors.toMap(BallCount::getValue, score::get, (a, b) -> b));
+                .collect(Collectors.toMap(BallCount::getValue, score::get, (a, b) -> b, LinkedHashMap::new));
     }
 
     @Override
