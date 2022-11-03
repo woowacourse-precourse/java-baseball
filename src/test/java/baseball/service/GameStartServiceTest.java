@@ -28,5 +28,12 @@ class GameStartServiceTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @ParameterizedTest
+    @ValueSource(strings = {"123"})
+    void 사용자가_입력한_값이_저장되는지_체크(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        GameStartService.saveUserNumber();
+        assertThat(GameStartRepository.lastUserNumberList.size()).isEqualTo(3);
+    }
 }
