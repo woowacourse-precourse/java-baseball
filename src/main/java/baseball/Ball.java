@@ -9,7 +9,7 @@ import java.util.Set;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Ball {
-	private final static int COMPUTER_MAX_SIZE = 3;
+	private static final int COMPUTER_MAX_SIZE = 3;;
 	public static final int START_INCLUSIVE = 1;
 	public static final int END_INCLUSIVE = 9;
 
