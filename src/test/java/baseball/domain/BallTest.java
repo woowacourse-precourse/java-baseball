@@ -19,4 +19,10 @@ class BallTest {
     void ball() {
         assertThat(ONE_FIVE.compareOneBall(new Ball(2, 5))).isEqualTo(BallStatus.BALL);
     }
+    
+    @Test
+    @DisplayName("nothing")
+    void nothing() {
+        assertThat(ONE_FIVE.compareOneBall(new Ball(2, 6))).isEqualTo(BallStatus.NOTHING);
+    }
 }

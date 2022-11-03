@@ -43,10 +43,10 @@
 - [ ] 3스트라이크가 되기 전까지 반복해서 숫자를 입력 받는다.
 
 ### 도메인
-- [ ] 1 대 1 비교 (Ball)
+- [x] 1 대 1 비교 (Ball)
   - [x] strike : 위치 : O, 숫자 : O
   - [x] ball : 위치 : X, 숫자 : O
-  - [ ] nothing : 위치 : X, 숫자 : X
+  - [x] nothing : 위치 : X, 숫자 : X
 
 - [ ] 1 대 3 비교 (Balls)
   - [ ] 1 strike : strike 인 공이 존재

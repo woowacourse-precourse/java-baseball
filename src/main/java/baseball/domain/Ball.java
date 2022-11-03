@@ -23,8 +23,15 @@ public class Ball {
         if (isStrike(ball)) {
             return BallStatus.STRIKE;
         }
-        
-        return BallStatus.BALL;
+    
+        if (isBall(ball)) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+    
+    private boolean isBall(final Ball ball) {
+        return this.ballNumber.equals(ball.ballNumber);
     }
     
     private boolean isStrike(final Ball ball) {
