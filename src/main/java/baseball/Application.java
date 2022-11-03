@@ -2,11 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Set;
-
 public class Application {
-    static final Set<String> CONTROL_NUMBER = Set.of("1", "2");
     static final int ANSWER_COUNT = 3;
+    static final String RESTART = "1";
+    static final String END = "2";
 
     public static void main(String[] args) {
         PrintComment.printStartComment();
@@ -24,10 +23,13 @@ public class Application {
         } while(true);
     }
 
-    public static boolean validUserInputControl(String num) {
-        if (!CONTROL_NUMBER.contains(num)) {
-            throw new IllegalArgumentException();
+    public static boolean isRestart(String num) {
+        if (num.equals(RESTART)) {
+            return true;
         }
-        return true;
+        if (num.equals(END)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
