@@ -14,6 +14,23 @@ public class Computer {
         this.computerNumberList = generateRandomThreeNumbers();
     }
 
+    private List<Integer> generateRandomThreeNumbers() {
+
+        List<Integer> numberList = new ArrayList<>();
+
+        for (; computerNumberList.size() < 3; ) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if(isDuplication(numberList)){
+                continue;
+            }
+
+            numberList.add(randomNumber);
+
+        }
+
+        return numberList;
+    }
 
 
 
