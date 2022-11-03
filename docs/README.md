@@ -27,7 +27,7 @@
     - `create Method` : 각 자릿수가 서로 다른 랜던함 3자리 숫자를 생성하여 List로 반환하는 메소드
 2. `InputNumber Class` : 사용자로부터 숫자를 입력받고 예외처리
    - `input Method` : 사용자로부터 숫자를 입력받아 List<Integer>에 저장하여 반환하는 메소드
-   - `validation Method` : 입력받은 숫자가 유효한지 검증하고 그 결과를 boolean으로 반환하는 메소드
+   - `validation Method` : 입력받은 숫자를 검증하고 만약 잘못된 입력값이면 예외를 발생시키는 메소드
 3. `CompareNumber Class` : 생성된 숫자와 입력받은 숫자를 비교하는 클래스
    - `getBall Method` : 볼이 몇인지 구하는 메소드
    - `getStrike Method` : 스트라이크가 몇인지 구하는 메소드
