@@ -17,8 +17,11 @@ public class BaseballGame {
         System.out.println(GAME_START_MESSAGE);
         createComputerNumbers();
         String input = Console.readLine();
+        isWrongInputValue(input);
+    }
 
-        if (input.length() != 3) {
+    private void isWrongInputValue(String input) {
+        if (input.length() != NUMBER_COUNT_TO_CREATED) {
             throw new IllegalArgumentException();
         }
 
