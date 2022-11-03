@@ -111,7 +111,18 @@ public class Application {
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
         return scoreOfStrikeAndBall.get(STRIKE_COUNT) == MAXIMUM_STRIKE;
     }
-    private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
+    private static void printResult(List<Integer> scoreOfStrikeAndBall) {
+        if (isRightAnswer(scoreOfStrikeAndBall)) {
+            printThreeStrike();
+            return;
+        }
+        printStrike();
+        printBall();
+    }
+
+    private static void printThreeStrike() {}
+    private static void printStrike() {}
+    private static void printBall() {}
 
     private static int askRestartOrExit() {
         int result = EXIT;
