@@ -14,6 +14,7 @@ public class Application {
         System.out.println(input);
 
         ExceptionIfFalse(CheckInputLength(input));
+        ExceptionIfFalse(CheckIsInputNumber(input));
     }
 
     public static boolean CheckInputLength(String input) {
@@ -24,6 +25,19 @@ public class Application {
         }
 
         return isLengthCorrect;
+    }
+
+    public static boolean CheckIsInputNumber(String input) {
+        boolean isNumberCorrect = true;
+
+        for(int i = 0; i < input.length(); i++) {
+            if(!ReturnIsNumberDigit(input.charAt(i))) {
+                isNumberCorrect = false;
+                break;
+            }
+        }
+
+        return isNumberCorrect;
     }
 
     public static boolean ReturnIsNumberDigit(char digit) {
