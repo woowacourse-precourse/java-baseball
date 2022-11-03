@@ -38,6 +38,10 @@ public class Ball {
         return this.equals(ball);
     }
     
+    public boolean isSameNumber(final Ball targetBall) {
+        return this.ballNumber.equals(targetBall.ballNumber);
+    }
+    
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

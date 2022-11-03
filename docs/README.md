@@ -77,7 +77,7 @@
   - [x] 공백이 존재하는 경우 (BallNumber)
   - [ ] 길이가 3이 아닌 경우 (BaseBallGame)
   - [x] 1~9 범위 벗어난 경우 (BallNumber)
-  - [ ] 같은 숫자가 존재할 경우 (Balls)
+  - [x] 같은 숫자가 존재할 경우 (Balls)
 
 - [ ] 포지션 예외 처리 (IllegalArgumentException)
   - [ ] 0~2 범위 벗어난 경우 (BallPosition)
