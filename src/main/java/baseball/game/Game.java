@@ -7,6 +7,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
+    public static void start() {
+        boolean isContinued = true;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while(isContinued) {
+            Game.playGame();
+            isContinued = isGameContinued();
+        }
+    }
+
     public static void playGame() {
         AnswerNumber answerNumber = AnswerNumber.getInstance();
 
