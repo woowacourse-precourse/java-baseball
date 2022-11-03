@@ -31,4 +31,20 @@ public class UserValidate {
         }
         return flag;
     }
+
+    public int convertCharToInt(String input, int i){
+        return input.charAt(i) - '0';
+    }
+
+    public int[] get_num(String input) throws IllegalArgumentException{
+        int[] numbers = new int[input.length()];
+
+        for (int i = 0; i < input.length(); i++) {
+            if(!check_int(input)){
+                throw new IllegalArgumentException();
+            }
+            numbers[i] = convertCharToInt(input, i);
+        }
+        return numbers;
+    }
 }
