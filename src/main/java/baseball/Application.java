@@ -2,9 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -25,6 +25,21 @@ public class Application {
         }
     }
 
+    public int getStrike(List<Integer> answer, List<Integer> userInput) {
+        return 0;
+    }
+
+    public int getBall(List<Integer> answer, List<Integer> userInput) {
+        int count = 0;
+        List<Integer> collect = answer.stream()
+                .filter(a -> IfContainsThenRemove(a, userInput))
+                .
+                .collect(Collectors.toList());
+
+        System.out.println(collect);
+        return count;
+    }
+
     public List<Integer> getValidUserInput(String input) {
         checkInputLength(input);
         List<Integer> userInput = convertIntegerList(input);
@@ -32,6 +47,7 @@ public class Application {
 
         return userInput;
     }
+
     private void checkInputLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력값 입니다.");

@@ -15,9 +15,20 @@ class ApplicationTest extends NsTest {
 
     Application application = new Application();
 
+
+    @Test
+    @DisplayName("getBall 메서드 테스트")
+    void getBallTest() {
+        List<Integer> answer = List.of(2, 2, 2);
+        List<Integer> userInput = List.of(3, 2, 2);
+
+        application.getBall(answer, userInput);
+    }
+
     @Test
     @DisplayName("getValidUserInput 테스트")
-    void getValidUserInput() {
+    void getValidUserInputTest() {
+
         String generalInput = "123";
         String exceptInput01 = " 12";
         String exceptInput02 = "1-1";
