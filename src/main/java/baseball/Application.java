@@ -7,16 +7,10 @@ public class Application {
     static int answer;
 
     static String checkUserInput(String strIn) {
-        String strOut = "";
-        try {
-            UserInputException.lengthCheck(strIn);
-            UserInputException.numberCheck(strIn);
-            UserInputException.duplicateCheck(strIn);
-            strOut = strIn;
-            return strOut;
-        } catch (IllegalArgumentException e) {
-            return strOut;
-        }
+        UserInputException.lengthCheck(strIn);
+        UserInputException.numberCheck(strIn);
+        UserInputException.duplicateCheck(strIn);
+        return strIn;
      }
 
     static int listToInt(List<Integer> listIn) {
