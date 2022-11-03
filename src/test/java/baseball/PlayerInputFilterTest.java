@@ -65,12 +65,12 @@ public class PlayerInputFilterTest {
     }
 
     @Test
-    void 세자리면_거짓(){
+    void 숫자0_없으면_거짓(){
         assertThat(playerInputFilter.containsZero("122")).isFalse();
     }
 
     @Test
-    void 세자리가_아니면_예외처리(){
+    void 숫자0_있으면_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.containsZeroException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 문자열에 0이 있으면 안됩니다.");
