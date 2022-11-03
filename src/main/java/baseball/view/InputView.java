@@ -11,7 +11,7 @@ public class InputView {
     public static String getUserInput() {
         System.out.println(GET_USER_INPUT_MESSAGE);
         String userInput = Console.readLine();
-        return InputException.isThreeDifferentDigits(userInput);
+        return InputException.isValidInput(userInput);
     }
 
     public static String getUserInputRestartOrNot() {
