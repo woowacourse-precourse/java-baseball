@@ -8,7 +8,9 @@ import java.util.List;
 
 public class game {
     public static void start(){
+        System.out.println("숫자 야구 게임을 시작합니다");
         game.readLine();
+
     }
     public static List<Integer> RandomNumber(){
         List<Integer> computer = new ArrayList<>();
@@ -23,6 +25,7 @@ public class game {
         return computer;
     }
     public static void readLine(){
+        System.out.println("숫자를 입력해 주세요 : " );
         Console.readLine();
     }
 }
