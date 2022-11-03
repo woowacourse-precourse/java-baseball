@@ -17,16 +17,21 @@ public class BaseballGameController {
 	}
 
 	private void runOneCycle() {
-		int strikeCount;
 		OutputView.printStartMessage();
 		List<Integer> computerNums = new ComputerNumber().computerNumber;
-		do {
-			List<Integer> userNums = new UserNumber(InputView.printInputNumberMessage()).userNumber;
-			GameResult result = new GameResult(computerNums, userNums);
-			strikeCount = result.strikeCount;
-			new OutputView(result).printGameResult();
-		} while (!isGameEnd(strikeCount));
+		gameStart(computerNums);
 		OutputView.printClearMessage();
+	}
+
+	private void gameStart(List<Integer> computerNums) {
+		int strikeCount;
+		List<Integer> userNums = new UserNumber(InputView.printInputNumberMessage()).userNumber;
+		GameResult result = new GameResult(computerNums, userNums);
+		strikeCount = result.strikeCount;
+		new OutputView(result).printGameResult();
+		if (!isGameEnd(strikeCount)) {
+			gameStart(computerNums);
+		}
 	}
 
 	private boolean isGameEnd(int result) {
