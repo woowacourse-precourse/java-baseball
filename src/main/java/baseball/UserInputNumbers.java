@@ -8,8 +8,17 @@ public class UserInputNumbers {
     private int third;
 
     public UserInputNumbers(String numbers) {
-        this.first = first;
-        this.second = second;
-        this.third = third;
+        if(validUserInputNumber(numbers)){
+            this.first = first;
+            this.second = second;
+            this.third = third;
+        }
+    }
+
+    public static boolean validUserInputNumber(String numbers) {
+        if (numbers.length()!=NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 }
