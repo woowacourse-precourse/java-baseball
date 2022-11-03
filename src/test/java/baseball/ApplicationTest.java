@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -39,6 +40,19 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(dupNumber.containDuplicatedNumber()).isEqualTo(true);
+    }
+
+    @DisplayName("올바르게 숫자가 생성되었는지 테스트")
+    @Test
+    void 올바른_숫자_생성_테스트() {
+        //given
+        Computer computer = new Computer();
+
+        //when
+        computer.generateNumber();
+
+        //then
+        assertThat(computer.getBaseballNumber().isValid()).isEqualTo(true);
     }
 
     @Override
