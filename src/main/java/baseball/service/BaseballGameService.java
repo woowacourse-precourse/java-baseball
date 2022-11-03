@@ -19,9 +19,25 @@ public class BaseballGameService {
         List<Integer> playerNumbers = playerGameNumber.getNumbers();
         List<Integer> computerNumbers = computerGameNumber.getNumbers();
 
-        List<Integer> gameResult = playerNumbers.stream()
-                .map(computerNumbers::indexOf)
-                .collect(Collectors.toList());
+        calculateMatchScore(playerNumbers, computerNumbers);
+    }
+
+    private void calculateMatchScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int gameCount = 0; gameCount < 3; gameCount++) {
+            int playerPeek = playerNumbers.get(gameCount);
+            int computerPeek = computerNumbers.get(gameCount);
+
+            if (playerPeek == computerPeek) {
+                strike++;
+                continue;
+            }
+            if (computerNumbers.contains(playerPeek)) {
+                ball++;
+            }
+        }
     }
 
 
