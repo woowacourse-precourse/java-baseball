@@ -1,11 +1,8 @@
 package baseball.data;
 
-import baseball.constant.GameConstant;
-import baseball.constant.WarningMessage;
+import baseball.util.Validator;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballNumber {
 
@@ -17,22 +14,6 @@ public class BaseballNumber {
 
     public void updateNumbers(List<Integer> updateNumbers) {
         numbers = updateNumbers;
-        isBetweenOneAndNine();
-        isExistDuplicateNumber();
-    }
-
-    void isBetweenOneAndNine() {
-        for(Integer number : numbers) {
-            if(number < 1 || 9 < number) {
-                throw new IllegalArgumentException(WarningMessage.IllegalValueWarningMessage.getMessage());
-            }
-        }
-    }
-
-    void isExistDuplicateNumber() {
-        Set<Integer> set = new HashSet<>(numbers);
-        if(set.size() < GameConstant.DIGIT.getValue()) {
-            throw new IllegalArgumentException(WarningMessage.DuplicateValueWarningMessage.getMessage());
-        }
+        Validator.isValidNumber(numbers);
     }
 }
