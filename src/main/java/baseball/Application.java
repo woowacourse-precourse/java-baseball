@@ -28,6 +28,9 @@ class ConsolePrint {
 
     public static void printGameOver() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void printGameSelect() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
@@ -119,7 +122,7 @@ public class Application {
         return userNumber;
     }
 
-    private static void getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
+    private static int getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
         int ballCount = getBallCount(userNumber, computerNumber);
         int strikeCount = getStrikeCount(userNumber, computerNumber);
 
@@ -132,6 +135,26 @@ public class Application {
         if (isNothing(userNumber, computerNumber)) {
             ConsolePrint.printNothingMessage();
         }
+        return strikeCount;
+    }
+
+    private static int getGameSelect() {
+        String gameSelect = Console.readLine();
+        if (!gameSelect.equals("1") && !gameSelect.equals("2")) {
+            ConsolePrint.printGameSelect();
+            getGameSelect();
+        }
+        return Integer.parseInt(gameSelect);
+    }
+
+    private static int checkGameOver(int strikeCount) {
+        int gameSelect = 0;
+        if (isGameOver(strikeCount)) {
+            ConsolePrint.printGameOver();
+            ConsolePrint.printGameSelect();
+            gameSelect = getGameSelect();
+        }
+        return gameSelect;
     }
 
     public static void main(String[] args) {
