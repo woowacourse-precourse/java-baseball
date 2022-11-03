@@ -12,9 +12,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
 
     public static boolean isNumeric(String userInput) {
-        ParsePosition pos = new ParsePosition(0);
-        NumberFormat.getInstance().parse(userInput, pos);
-        return userInput.length() == pos.getIndex();
+        for (int i = 0; i < 3; i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static List<Integer> makeRandomNumber() {
@@ -35,27 +38,29 @@ public class Application {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; i++) {
-            Integer tempNum = Integer.parseInt(String.valueOf(userInput.charAt(0)));
+            Integer tempNum = Integer.parseInt(String.valueOf(userInput.charAt(i)));
             if (tempNum.equals(0)) {
                 throw new IllegalArgumentException();
-            } else if (!userInputNumber.contains(tempNum)) {
-                userInputNumber.add(tempNum);
-            } else {
+            } else if (userInputNumber.contains(tempNum)) {
                 throw new IllegalArgumentException();
+            } else {
+                userInputNumber.add(tempNum);
             }
         }
         return userInputNumber;
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         List<Integer> computerNumber = makeRandomNumber();
-        try {
-            List<Integer> userInputNumber = getUserNumber();
-        } catch (IllegalArgumentException exception) {
-            System.out.println("올바르지 않은 입력입니다!");
-            return;
+        boolean flag = false;
+        while (!flag) {
+            List<Integer> userInputNumber;
+            try {
+                userInputNumber = getUserNumber();
+            } catch (IllegalArgumentException exception) {
+                System.out.println("올바르지 않은 입력입니다!");
+                return;
+            }
         }
-
     }
 }
