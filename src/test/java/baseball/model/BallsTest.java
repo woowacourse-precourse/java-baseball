@@ -11,5 +11,6 @@ class BallsTest {
         Balls computer = new Balls(135);
 
         assertThat(computer.compare(3, 1)).isTrue();
+        assertThat(computer.compare(3, 2)).isFalse();
     }
 }
