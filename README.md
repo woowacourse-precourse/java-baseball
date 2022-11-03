@@ -12,9 +12,11 @@
   - [X] **Game**
   - 게임 구현에 사용될 추상클래스입니다.
   - 추가적인 게임 구현시 사용(ex. 여러가지 미니게임들을 포함한 게임팩)
-  - 상수 status와 추상메서드 initialize, terminate를 가집니다.
+  - 상수 status, gameName과 추상메서드 initialize, terminate를 가집니다.
     - [X] getStatus
     - 게임의 상태를 알려줍니다.
+    - [ ] getGameName
+    - 게임의 이름을 알려줍니다.
     - [X] setStatus
     - 게임의 상태를 설정합니다.
 
