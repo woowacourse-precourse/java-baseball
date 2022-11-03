@@ -21,6 +21,13 @@ public class OutputViewTest {
     @AfterEach
     public void restoreStreams() {
         System.setOut(System.out);
-        output.reset();
+    }
+
+    @Test
+    void 게임_시작_문구_출력() {
+        String gameStartMessage = "숫자 야구 게임을 시작합니다.\n";
+        OutputView.printGameStartMessage();
+
+        assertThat(output.toString()).isEqualTo(gameStartMessage);
     }
 }
