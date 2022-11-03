@@ -13,25 +13,26 @@ class RefereeTest {
     @DisplayName("3스트라이크")
     void 스트라이크_3() {
         Referee referee = new Referee(List.of(1, 2, 3), List.of(1, 2, 3));
-        assertEquals(3, referee.getStrike());
-        assertEquals(0, referee.getBall());
+        PlayResult playResult = referee.notifyResult();
+        assertEquals(3, playResult.getStrike());
+        assertEquals(0, playResult.getBall());
     }
 
     @Test
     @DisplayName("3볼")
     void 볼_3() {
         Referee referee = new Referee(List.of(1, 2, 3), List.of(3, 1, 2));
-        assertEquals(0, referee.getStrike());
-        assertEquals(3, referee.getBall());
+        PlayResult playResult = referee.notifyResult();
+        assertEquals(0, playResult.getStrike());
+        assertEquals(3, playResult.getBall());
     }
 
     @Test
     @DisplayName("낫싱")
     void 낫싱() {
         Referee referee = new Referee(List.of(1, 2, 3), List.of(4, 5, 6));
-        assertEquals(0, referee.getStrike());
-        assertEquals(0, referee.getBall());
+        PlayResult playResult = referee.notifyResult();
+        assertEquals(0, playResult.getStrike());
+        assertEquals(0, playResult.getBall());
     }
-
-
 }

@@ -5,12 +5,17 @@ import baseball.utils.UserInputValidator;
 import java.util.List;
 
 public class Referee {
-    private final int strike;
-    private final int ball;
+    private final PlayResult playResult;
 
     public Referee(List<Integer> userBalls, List<Integer> computerBalls) {
-        this.strike = countStrike(userBalls, computerBalls);
-        this.ball = countBall(userBalls, computerBalls);
+        this.playResult = judgeGame(userBalls, computerBalls);
+    }
+
+    private PlayResult judgeGame(List<Integer> userBalls, List<Integer> computerBalls) {
+        PlayResult playResult = new PlayResult();
+        playResult.updateStrike(countStrike(userBalls, computerBalls));
+        playResult.updateBall(countBall(userBalls, computerBalls));
+        return playResult;
     }
 
     private int countStrike(List<Integer> userBalls, List<Integer> computerBalls) {
@@ -26,11 +31,11 @@ public class Referee {
         for (int index = 0; index < UserInputValidator.INPUT_SIZE; index++) {
             count += isBall(computerBalls, userBalls.get(index));
         }
-        return count - strike;
+        return count;
     }
 
     private static int isStrike(int userBall, int computerBall) {
-        if (userBall == computerBall){
+        if (userBall == computerBall) {
             return 1;
         }
         return 0;
@@ -43,11 +48,7 @@ public class Referee {
         return 0;
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
+    public PlayResult notifyResult() {
+        return playResult;
     }
 }
