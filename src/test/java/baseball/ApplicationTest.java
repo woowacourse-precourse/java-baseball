@@ -194,6 +194,30 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @DisplayName("입력한 값이 컴퓨터의 값과")
+    @Nested
+    class AnswerCheck {
+
+        @DisplayName("일치하면 정답 메시지가 출력된다")
+        @Test
+        void rightAnswer() {
+            assertRandomNumberInRangeTest(() -> {
+                run("246");
+                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }, 2, 4, 6);
+        }
+
+        @DisplayName("일치하지않으면 맞힐때까지 게임이 반복된다")
+        @Test
+        void wrongAnswer() {
+            assertRandomNumberInRangeTest(() -> {
+                run("235", "245","246");
+                assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }, 2, 4, 6);
+        }
+    }
+
+
 
     @Override
     public void runMain() {

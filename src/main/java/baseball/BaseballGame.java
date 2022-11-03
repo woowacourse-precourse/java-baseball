@@ -19,32 +19,43 @@ public class BaseballGame {
     public void start() {
         System.out.println(GAME_START_MESSAGE);
         createComputerNumbers();
-        String input = Console.readLine();
-        isWrongInputValue(input);
-        calculateBallCount(input);
-        answerMessage();
+        while (true) {
+            String input = Console.readLine();
+            isWrongInputValue(input);
+            calculateBallCount(input);
+            String msg = answerMessage();
+            strikeCount = 0;
+            ballCount = 0;
+            if (msg.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
-    private void answerMessage() {
-        if (strikeCount == 0 && ballCount == 0) {
-            message = "낫싱";
-            System.out.println(message);
-        }
+    private String answerMessage() {
 
         if (strikeCount != 0 && ballCount != 0) {
             message = ballCount + "볼 " + strikeCount + "스트라이크";
             System.out.println(message);
+            return message;
         }
 
         if (strikeCount == 0 && ballCount != 0) {
             message = ballCount + "볼";
             System.out.println(message);
+            return message;
         }
 
         if (strikeCount != 0 && ballCount == 0) {
             message = strikeCount + "스트라이크";
             System.out.println(message);
+            return message;
         }
+
+        message = "낫싱";
+        System.out.println(message);
+        return message;
     }
 
     private void calculateBallCount(String input) {
