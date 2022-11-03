@@ -15,4 +15,11 @@ public class RandomUtilTest {
             fail();
         }
     }
+
+    @Test
+    void 랜덤_수의_범위는_123부터_987() {
+        int randomNumber = RandomUtil.createRandomNumber();
+
+        assertThat(randomNumber).isBetween(123, 987);
+    }
 }
