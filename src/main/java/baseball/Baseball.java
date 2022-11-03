@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import utils.RandomNumbers;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Baseball {
     String userNumbers;
@@ -21,6 +22,19 @@ public class Baseball {
     private void setComputerNumber() {
         RandomNumbers randomNumbers = new RandomNumbers(numberLength);
         computerNumber = randomNumbers.getComputerNumbers();
+    }
+
+    private void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        List<String> resultSentence = new ArrayList<>();
+        resultSentence.add(ball + "볼");
+        resultSentence.add(strike + "스트라이크");
+
+        System.out.println(String.join(" ",resultSentence));
     }
 
     private void setUserNumbers() {
