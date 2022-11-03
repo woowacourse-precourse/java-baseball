@@ -14,9 +14,12 @@ public class AnswerSheet {
 
 
     public void getUserAnswer() {
-        userAnswer.clear();
-        guideToEnterNumber();
         setUserAnswer();
+        while (userAnswer.get(2) != 9) {
+            userAnswer.clear();
+            guideToEnterNumber();
+            setUserAnswer();
+        }
     }
 
     private void guideToEnterNumber() {
