@@ -1,16 +1,14 @@
 package baseball.model.numberbaseball.application;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import baseball.model.gameresult.GameResult;
-import baseball.model.gameresult.ResultType;
+import baseball.model.gameresult.SingleResultType;
 import baseball.model.numberbaseball.NumberBaseball;
 
 class NumberBaseballServiceTest {
@@ -45,8 +43,7 @@ class NumberBaseballServiceTest {
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(numberBaseballA, numberBaseballB);
 
 		//then
-		Map<ResultType, Integer> gameResultMap = gameResult.getGameResult();
-		Assertions.assertThat(gameResultMap.get(ResultType.BALL)).isEqualTo(3);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.BALL)).isEqualTo(3);
 	}
 
 	@Test
@@ -62,9 +59,8 @@ class NumberBaseballServiceTest {
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(numberBaseballA, numberBaseballB);
 
 		//then
-		Map<ResultType, Integer> gameResultMap = gameResult.getGameResult();
-		Assertions.assertThat(gameResultMap.get(ResultType.STRIKE)).isEqualTo(1);
-		Assertions.assertThat(gameResultMap.get(ResultType.BALL)).isEqualTo(2);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.STRIKE)).isEqualTo(1);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.BALL)).isEqualTo(2);
 	}
 
 	@Test
@@ -80,10 +76,9 @@ class NumberBaseballServiceTest {
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(numberBaseballA, numberBaseballB);
 
 		//then
-		Map<ResultType, Integer> gameResultMap = gameResult.getGameResult();
-		Assertions.assertThat(gameResultMap.get(ResultType.NOTHING)).isEqualTo(3);
-		Assertions.assertThat(gameResultMap.get(ResultType.STRIKE)).isNull();
-		Assertions.assertThat(gameResultMap.get(ResultType.BALL)).isNull();
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.NOTHING)).isEqualTo(3);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.STRIKE)).isEqualTo(0);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.BALL)).isEqualTo(0);
 	}
 
 	@Test
@@ -99,8 +94,7 @@ class NumberBaseballServiceTest {
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(numberBaseballA, numberBaseballB);
 
 		//then
-		Map<ResultType, Integer> gameResultMap = gameResult.getGameResult();
-		Assertions.assertThat(gameResultMap.get(ResultType.STRIKE)).isEqualTo(3);
+		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.STRIKE)).isEqualTo(3);
 	}
 
 }

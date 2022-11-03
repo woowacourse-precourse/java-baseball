@@ -4,7 +4,7 @@ import java.util.List;
 
 import baseball.common.Constants;
 import baseball.model.gameresult.GameResult;
-import baseball.model.gameresult.ResultType;
+import baseball.model.gameresult.SingleResultType;
 import baseball.model.numberbaseball.NumberBaseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -25,20 +25,20 @@ public class NumberBaseballService {
 
 		for (int i = 0; i < Constants.NUMBER_BASEBALL_LENGTH; i++) {
 			int number = userNumber.getNumberAt(i);
-			ResultType resultType = calculateSingleResult(computerNumber, i, number);
-			gameResult.addSingleResult(resultType);
+			SingleResultType singleResultType = calculateSingleResult(computerNumber, i, number);
+			gameResult.addSingleResult(singleResultType);
 		}
 
 		return gameResult;
 	}
 
-	private ResultType calculateSingleResult(NumberBaseball computerNumber, int index, int number) {
+	private SingleResultType calculateSingleResult(NumberBaseball computerNumber, int index, int number) {
 		if (computerNumber.getNumberAt(index) == number) {
-			return ResultType.STRIKE;
+			return SingleResultType.STRIKE;
 		} else if (computerNumber.contains(number)) {
-			return ResultType.BALL;
+			return SingleResultType.BALL;
 		}
 
-		return ResultType.NOTHING;
+		return SingleResultType.NOTHING;
 	}
 }

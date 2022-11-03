@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.common.Constants;
 import baseball.controller.dto.UserInputPlayNumbers;
+import baseball.model.gameresult.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
@@ -14,5 +15,9 @@ public class NumberBaseballView {
 		String userInput = Console.readLine();
 
 		return new UserInputPlayNumbers(userInput);
+	}
+
+	public void resultPage(GameResult gameResult) {
+		System.out.println(gameResult);
 	}
 }

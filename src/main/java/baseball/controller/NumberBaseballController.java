@@ -19,6 +19,8 @@ public class NumberBaseballController {
 		NumberBaseball userNumber = getUserInputPlayNumbers();
 
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
+
+		numberBaseballView.resultPage(gameResult);
 	}
 
 	private NumberBaseball getComputerNumberBaseball() {
