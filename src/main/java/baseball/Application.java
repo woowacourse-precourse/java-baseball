@@ -9,7 +9,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        playGame();
+        while (true) {
+            playGame();
+            if(finishApp()){
+               break;
+            }
+        }
     }
 
     public static void playGame() {
@@ -61,7 +66,10 @@ public class Application {
     }
 
     public static boolean checkNumber(List<Integer> inputNumber) {
-
+        return true;
     }
 
+    public static boolean finishApp(){
+        return true;
+    }
 }
