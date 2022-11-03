@@ -22,7 +22,8 @@ public class ComputerNumber extends GameNumber {
         return pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
 
-    public List<Integer> getComputerNumberList() {
+    @Override
+    public List<Integer> getNumberList() {
         int index = 0;
         while (index < NUMBER_DIGITS) {
             int randomNumber = this.getRandomNumber();
