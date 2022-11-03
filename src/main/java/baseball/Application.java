@@ -95,7 +95,6 @@ public class Application {
         List<Integer> computer_num = createRandomNumber();
 
         while (true) {
-            System.out.println(computer_num);
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             List<Integer> user_num = numToList(guess_number);
