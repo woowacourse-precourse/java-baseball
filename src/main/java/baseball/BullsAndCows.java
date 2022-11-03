@@ -31,6 +31,16 @@ public class BullsAndCows {
                 .collect(Collectors.toList());
     }
 
+    public String getResultOfGuessNumber(String userInput) {
+        this.userInput = userInput;
+
+        if (isNothing()) {
+            return NOTHING.getMessage();
+        }
+
+        return getResultScoreByFormat();
+    }
+
     private String getResultScoreByFormat() {
         return getBallNumber() + getStrikeNumber();
     }
