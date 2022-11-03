@@ -11,12 +11,15 @@ public class Application {
         ComputerList.initialize();
 
         while (true) {
-            // 입력하기
             System.out.print(Comment.INPUTNUMBER);
+
+            // 입력받기
             String inputStr = Console.readLine();
             validateInput(inputStr);
-
             ArrayList<Integer> inputList = stringToList(inputStr);
+
+            // 로직
+            List<Hint> hints = ComputerList.compareTo(inputList);
         }
     }
 
