@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -26,5 +28,38 @@ public class Application {
         }
 
         return answer;
+    }
+
+    public static boolean isValidInput(String input) {
+        if(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isOnlyNumber(String input) {
+        Pattern pattern = Pattern.compile("\\D");
+        Matcher matcher = pattern.matcher(input);
+        if(matcher.find()) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isThreeDigit(String input) {
+        if(input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isAllDifferent(String input) {
+        char first = input.charAt(0);
+        char second = input.charAt(1);
+        char third = input.charAt(2);
+        if(first == second || second == third || first == third) {
+            return false;
+        }
+        return true;
     }
 }
