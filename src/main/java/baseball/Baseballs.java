@@ -17,6 +17,15 @@ public class Baseballs {
         isEmpty(userInput);
         isLengthEqualsBaseballCount(userInput);
         isConsistOfOnlyProperRangedInputs(userInput);
+        hasDuplicatedValueIn(userInput);
+    }
+
+    private void hasDuplicatedValueIn(String userInput) {
+        if (userInput.chars()
+                .distinct()
+                .count() != BASEBALL_COUNT) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void isConsistOfOnlyProperRangedInputs(String userInput) {
