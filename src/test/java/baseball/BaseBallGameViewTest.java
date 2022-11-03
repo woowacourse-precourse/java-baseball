@@ -56,4 +56,11 @@ class BaseBallGameViewTest {
         BaseBallGameView.printResult(0, 3);
         Assertions.assertEquals(result, outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    void 결과_출력_6() {
+        String result = "2볼";
+        BaseBallGameView.printResult(2, 0);
+        Assertions.assertEquals(result, outputStreamCaptor.toString().trim());
+    }
 }
