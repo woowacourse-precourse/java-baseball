@@ -2,13 +2,20 @@ package baseball.validate;
 
 public class Validation {
 
-	public static boolean validateAnswer(String input) {
+	public static void validateAnswer(String input) {
 		validateIsNumber(input);
 		validateLength(input);
 		validateNotHaveZero(input);
 		validateNotHaveDuplicateNumber(input);
+	}
 
-		return true;
+	public static void validateOneOrTwo(String input) {
+		validateIsNumber(input);
+		int num = Integer.parseInt(input);
+
+		if (!(num == 1 || num == 2)) {
+			throw new IllegalArgumentException("숫자 1 또는 2를 입력해 주세요.");
+		}
 	}
 
 	private static void validateIsNumber(String input) {
@@ -16,7 +23,7 @@ public class Validation {
 			Integer.parseInt(input);
 		}
 		catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("문자가 입력되었습니다. 숫자 3자리를 입력해 주세요.");
+			throw new IllegalArgumentException("문자가 입력되었습니다. 숫자를 입력해 주세요.");
 		}
 
 	}
@@ -40,4 +47,6 @@ public class Validation {
 			throw new IllegalArgumentException("입력하신 값이 3자리가 아닙니다. 3자리 수를 입력해 주세요.");
 		}
 	}
+	
+	
 }
