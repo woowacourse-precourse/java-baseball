@@ -7,18 +7,26 @@ import java.util.List;
 
 public class Computer {
     private static final int BALL_COUNT = 3;
-    private final List<Integer> baseballGameNum = new ArrayList<>(BALL_COUNT);
+    private final List<Integer> baseballs = new ArrayList<>(BALL_COUNT);
 
-    public List<Integer> getBaseballGameNum() {
-        return baseballGameNum;
+    public List<Integer> getBaseballs() {
+        return baseballs;
     }
 
     public void makeBalls() {
-        while (baseballGameNum.size() < BALL_COUNT) {
+        while (baseballs.size() < BALL_COUNT) {
             int ball = Randoms.pickNumberInRange(1, 9);
-            if (!baseballGameNum.contains(ball)) {
-                baseballGameNum.add(ball);
-            }
+            insertBall(ball);
         }
+    }
+
+    public void insertBall(int ball) {
+        if (!isDuplicate(ball)) {
+            baseballs.add(ball);
+        }
+    }
+
+    public Boolean isDuplicate(int ball) {
+        return baseballs.contains(ball);
     }
 }

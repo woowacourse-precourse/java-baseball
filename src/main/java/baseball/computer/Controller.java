@@ -3,9 +3,10 @@ package baseball.computer;
 import java.util.List;
 
 public class Controller {
-    public List<Integer> makeBalls(){
-        Computer computer = new Computer();
+    private final Computer computer = new Computer();
+
+    public List<Integer> makeBalls() {
         computer.makeBalls();
-        return computer.getBaseballGameNum();
+        return computer.getBaseballs();
     }
 }
