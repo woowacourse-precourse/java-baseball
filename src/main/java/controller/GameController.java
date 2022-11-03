@@ -8,7 +8,7 @@ public class GameController {
     User user;
     Computer computer;
 
-    public GameController(User user, Computer computer) {
+    public GameController() {
         this.user = new User();
         this.computer = new Computer();
     }
