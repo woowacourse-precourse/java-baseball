@@ -23,4 +23,28 @@ public class IOHandler {
 		return inputList;
 	}
 
+	public void printScore(Score score) {
+		int ball = score.getBall();
+		int strike = score.getStrike();
+		if (ball == 0 && strike == 0) {
+			System.out.println("낫싱");
+			return;
+		}
+		String scoreString = buildNonZeroScoreString(ball, strike);
+		System.out.println(scoreString);
+	}
+
+	public String buildNonZeroScoreString(int ball, int strike) {
+		StringBuilder sb = new StringBuilder();
+		if (ball > 0) {
+			sb.append(ball + "볼");
+		}
+		if (ball > 0 && strike > 0) {
+			sb.append(" ");
+		}
+		if (strike > 0) {
+			sb.append(strike + "스트라이크");
+		}
+		return sb.toString();
+	}
 }
