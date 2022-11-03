@@ -52,6 +52,12 @@ public class Game {
         }
     }
 
+    public void checkValidNumber(int number){
+        if(number<RESTART_NUMBER_MIN || number > RESTART_NUMBER_MAX){
+            throw new IllegalArgumentException(RESTART_EXCEPTION);
+        }
+    }
+
     public void checkIsDigit(char number){
         if (!Character.isDigit(number)){
             throw new IllegalArgumentException(RESTART_EXCEPTION);
