@@ -21,7 +21,9 @@ public class Game {
 
 			printResult();
 
-		} while (true);
+		} while (strike != MAX_STRIKE);
+
+		showThreeStrike();
 	}
 
 	private void initBallAndStrike() {
