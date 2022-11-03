@@ -55,4 +55,14 @@ public class InputTest {
         // then
         Assertions.assertThat(isNumber).isEqualTo(false);
     }
+
+    @Test
+    public void 입력값이_범위안에_있는_경우_확인() {
+        // given
+        String inputRightString = "159";
+        // when
+        boolean isInRange = input.isDigitsInRange(inputRightString);
+        // then
+        Assertions.assertThat(isInRange).isEqualTo(true);
+    }
 }
