@@ -1,9 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BaseballNumber {
 
@@ -22,6 +24,17 @@ public class BaseballNumber {
         this.numbers = numbers;
         this.numbersSet = new HashSet<>(numbers);
 
+        are_all_constrains_met(numbers, numbersSet);
+    }
+
+    public BaseballNumber(String numbersString) throws IllegalArgumentException {
+        this(Arrays.stream(numbersString.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList()));
+
+    }
+
+    public void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet) throws IllegalArgumentException {
         if (is_not_proper_size(numbers)) {
             throw new IllegalArgumentException(NOT_PROPER_SIZE_EXCEPTION_MESSAGE);
         }
@@ -37,6 +50,7 @@ public class BaseballNumber {
         }
 
     }
+
 
     private boolean is_not_proper_size(List<Integer> numbers) {
         return numbers.size() != NUMBER_COUNT;
