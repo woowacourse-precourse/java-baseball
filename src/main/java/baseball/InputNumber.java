@@ -10,7 +10,7 @@ public class InputNumber {
     }
 
     public void checkStringNumberLength(String number) {
-        if ((number.length() < 1) || (number.length() > 3)) {
+        if (!(number.length() == 3)) {
             throw new IllegalArgumentException();
         }
     }
