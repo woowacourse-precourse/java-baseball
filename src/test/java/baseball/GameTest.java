@@ -51,4 +51,35 @@ public class GameTest {
             Assertions.assertThat(_game.isGameEnd(list)).isEqualTo(expected[i]);
         }
     }
+
+    @Test
+    void getResult_테스트() {
+        int opponentValue = 123;
+        int[] userValue = {145, 124, 123, 425, 423, 453, 567, 321};
+        int[][] expected = {{0, 1}, {0, 2}, {0, 3}, {0, 1}, {0, 2}, {0, 1}, {0, 0}, {2, 1}};
+
+        if (userValue.length != expected.length) {
+            assertThat(true);
+        }
+
+        for (int i = 0; i < userValue.length; ++i) {
+            List<Integer> result = _game.getResult(splitDigits(userValue[i]), splitDigits(opponentValue));
+
+            assertThat(result.get(_strike)).isEqualTo(expected[i][_strike]);
+            assertThat(result.get(_ball)).isEqualTo(expected[i][_ball]);
+        }
+    }
+
+    private List<Integer> splitDigits(int input) {
+        List<Integer> digits = new ArrayList<>();
+        int front = input / 100;
+        int middle = (input % 100) / 10;
+        int rear = input % 10;
+
+        digits.add(front);
+        digits.add(middle);
+        digits.add(rear);
+
+        return digits;
+    }
 }
