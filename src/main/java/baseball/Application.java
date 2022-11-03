@@ -43,7 +43,7 @@ public class Application {
         String computer = "";
         while(computer.length() < LENGTH_OF_BASEBALL_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (computer.contains(String.valueOf(randomNumber))) {
+            if (!computer.contains(String.valueOf(randomNumber))) {
                 computer += randomNumber;
             }
         }
@@ -68,7 +68,7 @@ public class Application {
     }
 
     private static boolean isValidOfDuplication(String answer) {
-        Long distinctCount = Stream.of(answer).distinct().count();
+        Long distinctCount = answer.chars().distinct().count();
         return answer.length() == distinctCount;
     }
 
@@ -142,7 +142,7 @@ public class Application {
     }
 
     private static int askRestartOrExit() throws IllegalArgumentException {
-        String userAnswer = getUserAnswerInString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n");
+        String userAnswer = getUserAnswerInString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         if (!isValidAnswer(userAnswer)) {
             throw new IllegalArgumentException();
         }
