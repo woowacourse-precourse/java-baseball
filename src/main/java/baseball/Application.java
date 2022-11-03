@@ -19,7 +19,7 @@ public class Application {
         int[] computer = initializeComputerNumber();
         boolean playBaseball = true;
         while(playBaseball){
-            getUserInput();
+            String userInput = getUserInput();
         }
     }
 
