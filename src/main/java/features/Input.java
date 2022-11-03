@@ -3,6 +3,7 @@ package features;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 public class Input {
@@ -13,14 +14,20 @@ public class Input {
     public static List<Integer> input() {
 
         Scanner inputNumbers = new Scanner(System.in);
-        int inputEachNumber = inputNumbers.nextInt();
 
-        for (Integer integer : inputNumberRepository) {
-            inputNumberRepository.add(inputEachNumber);
+        int threeDigitsNumber = inputNumbers.nextInt();
 
-            if (inputNumberRepository.size()>3) { inputNumberRepository.add(EXCEPTION); }
+        // 예외 처리
+//        if (threeDigitsNumber < 100||threeDigitsNumber > 999 ) { EXCEPTION; }
 
+//         문자열로 쪼재기
+        String numberToString = Integer.toString(threeDigitsNumber);
+
+        // 숫자 쪼개기
+        while (threeDigitsNumber > 0){
+            inputNumberRepository.add(threeDigitsNumber % 10);
         }
+
         return inputNumberRepository;
     }
 }
