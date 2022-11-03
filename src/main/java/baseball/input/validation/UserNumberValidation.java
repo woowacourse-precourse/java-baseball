@@ -10,9 +10,9 @@ public class UserNumberValidation {
         return number.length() == 3;
     }
 
-    public static boolean hasEachDifferentNumbers(List<String> numberDigitList) {
-        Set<String> numberDigitSet = new HashSet<>(numberDigitList);
-        if (numberDigitSet.size() == numberDigitList.size())
+    public static boolean hasEachDifferentNumbers(List<Integer> digitNumberList) {
+        Set<Integer> digitNumberSet = new HashSet<>(digitNumberList);
+        if (digitNumberSet.size() == digitNumberList.size())
             return Boolean.FALSE;
 
         return Boolean.TRUE;

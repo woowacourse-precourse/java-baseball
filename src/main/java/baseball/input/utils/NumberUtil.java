@@ -1,14 +1,16 @@
 package baseball.input.utils;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class NumberUtil {
 
-    public static List<String> getDigitNumberList(String number) {
-        return Stream.of(number.split(""))
-                .collect(Collectors.toList());
+    public static List<Integer> getDigitNumberList(String number) {
+        List<Integer> numberDigitList = new ArrayList<>();
+        for (String numberDigit : number.split("")) {
+            numberDigitList.add(Integer.valueOf(numberDigit));
+        }
+        return numberDigitList;
     }
 
 }

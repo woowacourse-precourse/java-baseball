@@ -14,18 +14,18 @@ public class GameApplication {
     }
 
     public static void playGame(List<Integer> computerNumber) {
-        String userNumber = InputView.inputNumber();
-        if (!UserNumberValidation.isValidNumberLength(userNumber)) {
+        String inputNumber = InputView.inputNumber();
+
+        if (!UserNumberValidation.isValidNumberLength(inputNumber)) {
             throw new IllegalArgumentException();
         }
 
-        List<String> userDigitNumberList = NumberUtil.getDigitNumberList(userNumber);
+        List<Integer> userNumber = NumberUtil.getDigitNumberList(inputNumber);
 
-        if (UserNumberValidation.hasEachDifferentNumbers(userDigitNumberList)) {
+        if (UserNumberValidation.hasEachDifferentNumbers(userNumber)) {
             throw new IllegalArgumentException();
         }
     }
-
 
 
 }
