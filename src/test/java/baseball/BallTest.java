@@ -33,4 +33,11 @@ public class BallTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("볼의 숫자는 1~9까지만 가능합니다.");
     }
+
+    @Test
+    void 볼의_숫자가_10이면_예외발생() {
+        assertThatThrownBy(() -> new Ball(1, 10))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("볼의 숫자는 1~9까지만 가능합니다.");
+    }
 }
