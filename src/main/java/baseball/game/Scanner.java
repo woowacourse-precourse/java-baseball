@@ -10,6 +10,7 @@ public class Scanner {
 
     public static List<Integer> getUserInput() {
         List<Integer> numbers = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine().trim();
 
         for(char ch : input.toCharArray()) {

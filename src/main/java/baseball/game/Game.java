@@ -28,7 +28,30 @@ public class Game {
 
         Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
 
+        if(comparator.getStrike() == GameConstant.DIGIT.getValue()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
 
+        printResult(comparator);
+    }
+
+    public static void printResult(Comparator comparator) {
+        String result = new String();
+
+        if(comparator.getBall() > 0) {
+            result += comparator.getBall() + "볼 ";
+        }
+
+        if(comparator.getStrike() > 0) {
+            result += comparator.getStrike() + "스트라이크";
+        }
+
+        if(result.isBlank()) {
+            result += "낫싱";
+        }
+
+        System.out.println(result);
     }
 
     public static boolean isGameContinued() {
