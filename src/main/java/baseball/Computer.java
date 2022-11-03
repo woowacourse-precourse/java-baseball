@@ -21,4 +21,8 @@ public class Computer {
         }
         return computerNumbers;
     }
+
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
 }

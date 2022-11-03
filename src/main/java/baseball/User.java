@@ -17,5 +17,7 @@ public class User {
         return input;
     }
 
-
+    public List<Integer> getInput() {
+        return input;
+    }
 }
