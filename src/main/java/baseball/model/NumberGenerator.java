@@ -14,7 +14,7 @@ public class NumberGenerator {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addDistinctNumber(defenseNumbers, randomNumber);
         }
-        return defenseNumbers;
+        return Collections.unmodifiableList(defenseNumbers);
     }
 
     private void addDistinctNumber(List<Integer> defenseNumbers, int randomNumber) {
