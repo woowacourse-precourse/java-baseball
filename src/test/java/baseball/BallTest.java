@@ -12,4 +12,11 @@ public class BallTest {
         Ball otherBall = new Ball(1, 3);
         assertThat(ball.isStrike(otherBall)).isTrue();
     }
+
+    @Test
+    void 볼_판단() {
+        Ball ball = new Ball(1, 3);
+        Ball otherBall = new Ball(2, 3);
+        assertThat(ball.isBall(otherBall)).isTrue();
+    }
 }

@@ -14,4 +14,9 @@ public class Ball {
         return this.index == otherBall.index
                 && this.number == otherBall.number;
     }
+
+    public boolean isBall(Ball otherBall) {
+        return this.index != otherBall.index
+                && this.number == otherBall.number;
+    }
 }
