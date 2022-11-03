@@ -1,7 +1,5 @@
 package baseball.game;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +13,7 @@ public class User {
 		return List.copyOf(numbers);
 	}
 
-	public void receiveUserInput() {
-		System.out.print(GAME_INPUT_WAIT_MESSAGE);
-		String input = Console.readLine();
+	public void receiveUserInput(String input) {
 		validateUserInput(input);
 		this.numbers = convertStringToNumbers(input);
 	}
