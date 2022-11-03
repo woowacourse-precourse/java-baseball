@@ -92,4 +92,29 @@ public class TurnTest {
                 .hasMessageContaining("서로 다른 숫자만 입력해주세요.");
     }
 
+    @Test
+    void countNumberOfStrikes_test_strike_count() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "234";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfStrikes(testHiddenNumberList);
+        try {
+            Field turnField = turn.getClass().getDeclaredField("numberOfStrikes");
+            turnField.setAccessible(true);
+
+            int numberOfStrikes = (int) turnField.get(turn);
+
+            assertThat(numberOfStrikes).isEqualTo(2);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -11,5 +11,7 @@
 | 사용자 입력 받기          | getPlayerInput()             | Console API를 사용해 사용자 입력을 받는다.                        |
 | 사용자 입력을 정수 리스트로 변환 | transformPlayerInputToList() | 사용자 입력으로 받은 문자열을 정수 리스트로 변환한다.                       |
 | 사용자 입력 리스트 값 확인    | validatePlayerNumberList()   | 사용자가 잘못된 값을 입력할 경우  IllegalArgumentException을 발생시킨다. |
+| 스트라이크 갯수 계산        | countNumberOfStrikes()       | 스트라이크 갯수를 계산한다.                                      |
 
 ## TODO
+-메시지 "숫자만 입력해 주세요."에 1-9사이 조건 추가
