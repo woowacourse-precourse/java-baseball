@@ -28,4 +28,9 @@ public class BullsAndCows {
                 .mapToObj(e -> (char) e)
                 .collect(Collectors.toList());
     }
+
+    private boolean isNothing() {
+        return convertStringToCharList(userInput).stream()
+                .noneMatch(answerNumberList::contains);
+    }
 }
