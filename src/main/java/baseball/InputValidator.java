@@ -3,14 +3,18 @@ package baseball;
 public class InputValidator {
 
 	public void validateAnsString(String ansString) throws IllegalArgumentException {
-		checkStringLength(ansString);
+		checkStringLength(ansString, 3);
 		checkIsNumber(ansString);
 		checkIsDuplicated(ansString);
 		checkStartWithZero(ansString);
 	}
 
-	private void checkStringLength(String string) {
-		if (string.length() != 3) {
+	public void validateRestartString(String restartString) throws IllegalArgumentException {
+
+	}
+
+	private void checkStringLength(String string, int length) {
+		if (string.length() != length) {
 			throw new IllegalArgumentException();
 		}
 	}
