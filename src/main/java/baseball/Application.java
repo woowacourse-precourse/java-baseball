@@ -52,7 +52,7 @@ public class Application {
 
     }
     public static boolean checkError(String tryNumber){
-        return !digitCheck(tryNumber) || !lengthCheck(tryNumber);
+        return !digitCheck(tryNumber) || !lengthCheck(tryNumber)||!duplicateCheck(tryNumber);
 
     }
     public static boolean lengthCheck(String tryNumber){
@@ -65,6 +65,10 @@ public class Application {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    public static boolean duplicateCheck(String tryNumber){
+        return (tryNumber.charAt(0)!=tryNumber.charAt(1))&&(tryNumber.charAt(1)!=tryNumber.charAt(2))
+                &&(tryNumber.charAt(0)!=tryNumber.charAt(2));
     }
 
     public static List<Integer> transformInteger(String tryNumber) {
