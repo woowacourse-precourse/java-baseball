@@ -11,6 +11,20 @@ public class Application {
 		// TODO: 프로그램 구현
 	}
 
+	private static void selectGameStart()  {
+
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+		String select = Console.readLine();
+
+		if(select.equals("1")) {
+			return;
+		}
+
+		if(select.equals("2")) {
+			return;
+		}
+	}
+
 	private static List<Integer> batterNumberList() {
 
 		List<Integer> computerSelectList = new ArrayList<>();
