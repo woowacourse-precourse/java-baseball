@@ -53,4 +53,8 @@ public class Application {
 
         return answerNumberArrayList;
     }
+
+    private static LinkedHashMap<> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> playerNumber) {
+        
+    }
 }
