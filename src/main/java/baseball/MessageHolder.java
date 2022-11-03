@@ -38,7 +38,6 @@ public class MessageHolder {
         int number = -1;
         try {
             number = Integer.parseInt(playerString);
-            System.out.println(number); // output = 25
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException();
         }
@@ -46,14 +45,19 @@ public class MessageHolder {
     }
 
     public void print_ball_and_strke(int currentBall, int currentStrike) {
-    }
-
-    public void print_congrate() {
-        System.out.print("3개의 숫자를 모두 맞히셨습니다!");
-    }
-
-    public void print_game_end() {
-        System.out.print("게임 종료");
+        if(currentBall == 0 && currentStrike == 0)
+        {
+            System.out.println("낫싱");
+        }
+        else if(currentStrike == 3)
+        {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        else
+        {
+            System.out.printf("%d볼 %d스트라이크", currentBall, currentStrike);
+        }
     }
 
     public int print_ask_restart_and_get_input() {
