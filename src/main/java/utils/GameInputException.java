@@ -13,6 +13,13 @@ public class GameInputException {
         this.numberLength = numberLength;
     }
 
+    public void checkUserInput(String userInput) throws IllegalArgumentException {
+        checkNaturalNumber(userInput);
+        checkNumberLength(userInput);
+        checkContainZero(userInput);
+        checkUniqueNumbers(userInput);
+    }
+
     private void checkNumberLength(String userInput) throws IllegalArgumentException{
         if (userInput.length() == numberLength) {
             return;
