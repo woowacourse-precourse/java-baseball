@@ -68,4 +68,9 @@ public class Application {
 
     }
 
+    public static boolean check(String numberString) {
+
+        return true;
+    }
+
 }
