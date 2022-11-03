@@ -21,5 +21,5 @@
 ## 🤔 예상 객체 관계도
 - player
 - game
-    - rulebook
-        - rule
+- rulebook
+    - rule
