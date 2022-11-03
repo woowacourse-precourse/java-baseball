@@ -12,6 +12,7 @@ public class PlayerInputFilter {
     private static final String NO_NUMBER_EXCEPTION = "입력한 값이 숫자가 아닙니다.";
     private static final String NOT_THREE_DIGIT_EXCEPTION = "입력한 값은 세자리 숫자여야 합니다.";
     private static final String CONTAINS_ZERO_EXCEPTION = "입력 문자열에 0이 있으면 안됩니다.";
+    private static final String CONTAINS_SAME_NUMBER_EXCEPTION = "입력 문자열에 같은 숫자가 존재하면 안됩니다.";
     private int[] numbers;
 
     public PlayerInputFilter(){
@@ -57,7 +58,7 @@ public class PlayerInputFilter {
     }
 
     void containsSameNumberException(){
-
+        throw new IllegalArgumentException(CONTAINS_SAME_NUMBER_EXCEPTION);
     }
 
     int[] convertNumbersToArray(String input){

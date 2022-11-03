@@ -90,7 +90,7 @@ public class PlayerInputFilterTest {
     void 같은_숫자가_있으면_예외처리(){
         assertThatThrownBy(() -> playerInputFilter.containsSameNumberException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("String index out of range: 5");
+                .hasMessageContaining("입력 문자열에 같은 숫자가 존재하면 안됩니다.");
     }
 
     @Test
