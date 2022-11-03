@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +7,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class BallsTest {
+public class BallsTest1 {
     Balls computer;
 
     @BeforeEach
