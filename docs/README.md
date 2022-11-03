@@ -12,7 +12,7 @@
   - 랜덤한 숫자 세 개를 randomNumberList에 add하는 함수
 
   
-- void putInNumber()
+- Integer putInNumber()
   - 사용자가 3개의 숫자를 입력하는 함수
 
 
