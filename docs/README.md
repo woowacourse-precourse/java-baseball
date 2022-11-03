@@ -1,0 +1,1 @@
+기능1. interface 구현
