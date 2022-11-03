@@ -4,7 +4,7 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.*;
 
 public class Application {
-    static int answer;
+    static String answer;
 
     static String checkUserInput(String strIn) {
         UserInputException.lengthCheck(strIn);
@@ -13,12 +13,12 @@ public class Application {
         return strIn;
      }
 
-    static int listToInt(List<Integer> listIn) {
+    static String listToString(List<Integer> listIn) {
         StringBuilder output = new StringBuilder();
         for (Integer integer : listIn) {
             output.append(integer);
         }
-        return Integer.parseInt(output.toString());
+        return output.toString();
     }
 
     static List<Integer> generateNumberSet() {
@@ -32,9 +32,9 @@ public class Application {
         return generatedSet;
     }
 
-    static int generateAnswer() {
+    static String generateAnswer() {
         List<Integer> generatedSet = generateNumberSet();
-        return listToInt(generatedSet);
+        return listToString(generatedSet);
     }
     static void initGame() {
         answer = generateAnswer();
