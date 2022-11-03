@@ -82,6 +82,15 @@ class ApplicationTest extends NsTest {
         assertThat(strikeCount).isEqualTo(1);
     }
 
+    @Test
+    void 컴퓨터_랜덤숫자_개수_테스트() {
+        //given
+        List<Integer> computer = Application.computerNumberList();
+
+        //then
+        assertThat(computer.size()).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
