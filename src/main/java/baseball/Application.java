@@ -7,7 +7,16 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Integer> baseballNumber = BaseballNumber.create();
+        List<Integer> inputNumber = new ArrayList<>();
+
+        while (!baseballNumber.equals(inputNumber)) {
+            inputNumber = inputNumber();
+            int strike = BaseballNumber.countStrike(baseballNumber,inputNumber);
+            int ball = BaseballNumber.countBall(baseballNumber,inputNumber);
+            BaseballNumber.printMessage(strike, ball);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
     private static List<Integer> inputNumber() {
