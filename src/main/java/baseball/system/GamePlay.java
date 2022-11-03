@@ -14,7 +14,25 @@ public class GamePlay {
         this.user = user;
     }
 
-  
+    public void playGame(){
+
+        NumberComparison numberComparison = new NumberComparison();
+
+        for(;;){
+
+            printInputText();
+            String inputNumber = inputUserNumber();
+            user.setUser(inputNumber);
+
+            List<Integer> computerNumbers = computer.getComputerNumberList();
+            List<Integer> userNumbers = user.getUserNumberList();
+
+            if(numberComparison.startComparison(computerNumbers,userNumbers)){
+                break;
+            }
+        }
+
+    }
 
 
 
