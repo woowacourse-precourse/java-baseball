@@ -9,6 +9,8 @@ public class Computer {
 
     final private static int NUM_START_RANGE_RAM = 1;
     final private static int NUM_END_RANGE_RAM = 9;
+    final private static String NOT_TING_ANSWER = "낫싱";
+
     public List<Integer> numThreeRanOfComputerList;
 
     public int cntStrike;
@@ -29,9 +31,37 @@ public class Computer {
         }
     }
 
+    @Override
+    public String toString() {
+        // 볼 0 , 스트라이크 0
+        if (this.cntBall == 0 && this.cntStrike == 0) {
+            return NOT_TING_ANSWER;
+        }
+        // 스트라이크 0
+        else if (this.cntStrike == 0) {
+            return (this.cntBall + "볼 ");
+        }
+        // 볼 0
+        else if (this.cntBall == 0) {
+            return (this.cntStrike + "스트라이크");
+        } else {
+            return (this.cntBall + "볼 " + this.cntStrike + "스트라이크");
+        }
+    }
+
     public int getOneRanNumAnInt() {
         return Randoms.pickNumberInRange(NUM_START_RANGE_RAM, NUM_END_RANGE_RAM);
     }
+
+    // 유저에게 힌트를 주다
+    public String giveHint2User(int numOfCompare) {
+        if (isRightThreeNumOfComputer(numOfCompare)) {
+            return this.toString();
+        } else {
+            return this.toString();
+        }
+    }
+
 
     // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
