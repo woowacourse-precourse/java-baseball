@@ -61,8 +61,11 @@ public class Application {
         }
     }
 
+    private static boolean isValidLength(String answer) {
+        return answer.length() == LENGTH_OF_BASEBALL_NUMBER;
+    }
+
     private static boolean isValidValue(String answer) {}
-    private static boolean isValidLength(String answer) {}
 
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
