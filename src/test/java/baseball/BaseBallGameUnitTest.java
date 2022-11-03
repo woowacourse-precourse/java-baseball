@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,7 +49,6 @@ public class BaseBallGameUnitTest {
     @Test
     public void getResultFromCurrentInputTest() {
         // given
-        int computer1 = 864;
         int [] testUsers = new int[9];
         testUsers[0] = 279; // 낫싱
         testUsers[1] = 486; // 3볼
@@ -61,10 +61,53 @@ public class BaseBallGameUnitTest {
         testUsers[8] = 864; // 3스트라이크
 
         // when
+        List<Integer> computer = new ArrayList<>();
+        computer.add(4);
+        computer.add(6);
+        computer.add(8);
+        computer.add(864);
+
+        // then
         for(int user : testUsers) {
-            Application.ballStrikeCountFromCurrentInput(computer1, user);
+            Application.ballStrikeCountFromCurrentInput(computer, user);
         }
 
+    }
+
+    @Test
+    public void getRandomIntTest() {
+        List<Integer> testList = Application.getComputersValue();
+        for(int value: testList) {
+            System.out.println(value);
+        }
+
+        System.out.println("========================================");
+
+        List<Integer> testList2 = Application.getComputersValue();
+        for(int value : testList2) {
+            System.out.println(value);
+        }
+
+        System.out.println("========================================");
+
+        List<Integer> testList3 = Application.getComputersValue();
+        for(int value : testList3) {
+            System.out.println(value);
+        }
+
+        System.out.println("========================================");
+
+        List<Integer> testList4 = Application.getComputersValue();
+        for(int value : testList4) {
+            System.out.println(value);
+        }
+
+        System.out.println("========================================");
+
+        List<Integer> testList5 = Application.getComputersValue();
+        for(int value : testList5) {
+            System.out.println(value);
+        }
     }
 
 }

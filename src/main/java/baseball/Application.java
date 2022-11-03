@@ -7,6 +7,20 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    public static List<Integer> getComputersValue() {
+        List<Integer> computer = new ArrayList<>();
+
+        while(computer.size() < 3) {
+            int randomInt = (int) (Math.random() * 10);
+            if(randomInt != 0 && !computer.contains(randomInt)) {
+                computer.add(randomInt);
+            }
+
+        }
+        return computer;
+    }
+
+
    public static List<Integer> getPlaceValuesFromNum(int num)  {
         int count = 0;
         List<Integer> placeValuesFromNum = new ArrayList<>();
