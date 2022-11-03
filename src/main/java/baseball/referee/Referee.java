@@ -17,4 +17,16 @@ public class Referee {
 
         return strikeCount;
     }
+
+    public int ball(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
+        int ballCount = 0;
+
+        for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
+            if (userValueIndex != computerValueIndex &&
+                    computerGeneratedValue.get(computerValueIndex).equals(userInputValue.get(userValueIndex))) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
+    }
 }
