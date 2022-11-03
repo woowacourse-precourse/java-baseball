@@ -12,17 +12,19 @@ import java.util.List;
  */
 public class Input {
 
-    public Input(){}
+    public Input() {
+    }
 
     /**
      * 문자열로 받은 입력값을 숫자 리스트로 반환하는 메소드
+     *
      * @param inputString 문자열로 입력받은 값
      * @return 입력받은 숫자를 넣은 리스트
      */
-    public List<Integer> inputDigit(String inputString){
+    public List<Integer> inputDigit(String inputString) {
         List<Integer> inputDigit = new ArrayList<>();
 
-        for(int inputStringIdx=0; inputStringIdx<inputString.length(); inputStringIdx++){
+        for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
             inputDigit.add(inputString.charAt(inputStringIdx) - '0');
         }
 
@@ -31,12 +33,25 @@ public class Input {
 
     /**
      * 입력받은 값의 길이와 게임에 쓸 숫자의 길이가 같은지 체크하는 메소드
+     *
      * @param inputDigitList 입력받은 값이 들어있는 리스트
      * @return 길이가 같다면 true, 다르다면 false 반환
      */
-    public boolean isInputLengthEqualsGameLength(List<Integer> inputDigitList){
+    public boolean isInputLengthEqualsGameLength(List<Integer> inputDigitList) {
         Computer computer = new Computer();
         return inputDigitList.size() == computer.getRANDOM_NUMBER_LENGTH();
+    }
+
+    /**
+     * 입력받은 문자열이 숫자인지 확인하는 메소드
+     */
+    public boolean isAllDigits(String inputString) {
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
 }
