@@ -21,4 +21,19 @@ class Referee {
         }
         return NOTHING;
     }
+    
+    List<Integer> judgeList(List<Integer> userInput) {
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < userInput.size(); i++) {
+            int result = judgeNumber(userInput.get(i), i);
+            if (result == STRIKE) {
+                strike++;
+            }
+            if (result == BALL) {
+                ball++;
+            }
+        }
+        return List.of(ball, strike);
+    }
 }
