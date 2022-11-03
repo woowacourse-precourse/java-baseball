@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
     private static List<Integer> answers;
-    boolean isPlaying;
+    boolean isCorrect;
 
     Computer() {
         System.out.println(Message.START_GAME);
@@ -33,7 +33,7 @@ public class Computer {
         }
         printResult(counts);
 
-        isPlaying = (counts[0] == User.NUMBER_DIGIT);
+        isCorrect = (counts[0] == User.NUMBER_DIGIT);
     }
     private void checkByBalls(int digit, int num, int[] counts) {
         if (answers.contains(num)) {
