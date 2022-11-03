@@ -25,7 +25,7 @@ public class Number {
     private void setDigits(String input) {
 
         if (!isCorrectInput(input)){
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException();
         }
 
         this.digits = Arrays.stream(input.split(""))

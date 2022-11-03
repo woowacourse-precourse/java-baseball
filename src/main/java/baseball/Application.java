@@ -8,7 +8,6 @@ public class Application {
     static final int STRIKE_CASE = 2;
     static final int BALL_CASE = 1;
 
-
     static int strike = 0;
     static int ball = 0;
     static boolean keepGoing = true;
@@ -25,8 +24,10 @@ public class Application {
         answerNumber.setRandomNumber();
         computerNumber = answerNumber.getDigits();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(keepGoing) {
+
             userPrediction.inputPrediction();
             userNumber = userPrediction.getDigits();
 
@@ -35,17 +36,19 @@ public class Application {
             printResult();
 
             if(strike == MAX_COUNT) {
-                checkKeepGoing();
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                checkKeepGoing(answerNumber);
             }
         }
 
     }
 
-    private static void checkKeepGoing() {
+    private static void checkKeepGoing(Number answerNumber) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if(input.equals("1")) {
-            keepGoing = true;
+            answerNumber.setRandomNumber();
+            computerNumber = answerNumber.getDigits();
         }
         if(input.equals("2")) {
             keepGoing = false;
