@@ -12,9 +12,9 @@ public class BaseballGame {
 
     public void gameStart() {
         while (true) {
+            Computer computer = new Computer();
             User user = new User();
             outputView.printGameStart();
-            Computer computer = new Computer();
             game(computer, user);
             outputView.printRestartOrExit();
             user.inputRestartOrExitNumber();
