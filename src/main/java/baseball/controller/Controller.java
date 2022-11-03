@@ -8,45 +8,51 @@ import camp.nextstep.edu.missionutils.Console;
 public class Controller {
     Model model = new Model();
     View view = new View();
-    Ball ball = new Ball();
+    Ball baseball = new Ball();
     String input;
-
+    int number;
+    int strike;
+    int ball;
     public void start() {
         view.startMention();
         while (true) {
             view.printInput();
             input = Console.readLine();
-
             if (!model.findException(input)) throw new IllegalArgumentException();
-
-            int number = Integer.parseInt(input);
-            int Strike = model.findStrike(ball.getScore(), number);
-            int Ball = model.findBall(ball.getScore(), number);
-
-            if (Ball == 0 && Strike == 0) {
-                view.incorrect();
-                continue;
-            } else if (Ball != 0 && Strike != 0) {
-                view.strikeAndBall(Strike, Ball);
-                continue;
-            } else if (Ball != 0) {
-                view.ball(Ball);
-                continue;
-            } else if (Strike<3) {
-                view.strike(Strike);
-                continue;
-            } else if (Strike == 3) {
-                view.threeStrike();
-            }
+            if (checkBallAndStrike()) continue;
             input = Console.readLine();
-
             if (model.InputException(input)) throw new IllegalArgumentException();
-
-            if ("1".equals(input)) {
-                ball = new Ball();
-            } else if ("2".equals(input)) {
-                break;
-            }
+            if (regame()) break;
         }
+    }
+    private boolean checkBallAndStrike() {
+        number = Integer.parseInt(input);
+        strike = model.findStrike(baseball.getScore(), number);
+        ball = model.findBall(baseball.getScore(), number);
+
+        if (ball == 0 && strike == 0) {
+            view.incorrect();
+            return true;
+        } else if (ball != 0 && strike != 0) {
+            view.strikeAndBall(strike, ball);
+            return true;
+        } else if (ball != 0) {
+            view.ball(ball);
+            return true;
+        } else if (strike <3) {
+            view.strike(strike);
+            return true;
+        } else if (strike == 3) {
+            view.threeStrike();
+        }
+        return false;
+    }
+    private boolean regame() {
+        if ("1".equals(input)) {
+            baseball = new Ball();
+        } else if ("2".equals(input)) {
+            return true;
+        }
+        return false;
     }
 }
