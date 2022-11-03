@@ -65,7 +65,10 @@ public class PlayerInputFilter {
     }
 
     int[] convertNumbersToArray(String input){
-        return new int[]{};
+        for(int index = 0; index < input.length(); index++){
+            numbers[index] = Character.getNumericValue(input.charAt(index));
+        }
+        return numbers;
     }
 
     void insertNumber(){
