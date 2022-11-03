@@ -9,11 +9,9 @@ public class ExceptionCheck {
     }
 
     public void verificationDuplicate(String userInput) {
-        char[] inputToCharArr = userInput.toCharArray();
-        for (char seq : inputToCharArr) {
-            if (userInput.contains(String.valueOf(seq))) {
-                throw new IllegalArgumentException();
-            }
+        if (userInput.charAt(0) == userInput.charAt(1) || userInput.charAt(0) == userInput.charAt(2)
+                || userInput.charAt(1) == userInput.charAt(2)) {
+            throw new IllegalArgumentException();
         }
     }
 
