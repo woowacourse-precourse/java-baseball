@@ -1,6 +1,7 @@
 package baseball.input.validation;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserNumberValidation {
@@ -10,13 +11,12 @@ public class UserNumberValidation {
     }
 
     public static boolean hasEachDifferentNumbers(String number) {
-        Set<String> digitNumberSet = new HashSet<>();
-        digitNumberSet.add(number);
-
+        Set<String> digitNumberSet = new HashSet<>(List.of(number.split("")));
+        System.out.println(digitNumberSet.size());
         if (digitNumberSet.size() == number.length())
-            return Boolean.FALSE;
+            return Boolean.TRUE;
 
-        return Boolean.TRUE;
+        return Boolean.FALSE;
     }
 
 }
