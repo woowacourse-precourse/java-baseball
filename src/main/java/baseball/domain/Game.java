@@ -7,10 +7,12 @@ public class Game {
     private static String STRIKE = "스트라이크";
     private static String BALL = "볼";
     private static String NOTHING = "낫싱";
+    private static String IS_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static int IS_ANSWER = 3;
     private static int IS_NONE = 0;
     private int strike;
     private int ball;
+    private static boolean status = true;
     User user;
     Computer computer;
 
@@ -22,9 +24,9 @@ public class Game {
     public void Start() {
         System.out.println(START_GAME);
         computer.createRandomNumbers();
-        while (true) {
+        while (status) {
             user.inputUserNumbers();
-            outputHint(computer.randomNumbers,user.userNumbers);
+            outputHint(computer.randomNumbers, user.userNumbers);
         }
     }
 
@@ -35,7 +37,7 @@ public class Game {
             strike += isStrike(computer.get(i), user.get(i));
             ball += isBall(computer, user.get(i), i);
         }
-        System.out.println(createOutput(strike,ball));
+        System.out.println(createOutput(strike, ball));
     }
 
     public int isStrike(int computerNumber, int userNumber) {
