@@ -10,37 +10,33 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
 - 
   - [ ] ScoreCalculator scoreCalculator 인스턴스 변수
   - [ ] InputValidator inputValidator 인스턴스 변수
-  - [ ] IOMessageHandler io 인스턴스 변수
+  - [ ] IOHandler io 인스턴스 변수
   - [ ] void handleGameFlow() 메서드: end 변수를 가지며 RunGame()의 반환값이 true인 동안 while문을 계속 돔
     - [ ] void initGame() 메서드: 메세지 출력, 랜덤 생성하여 scoreCalculator 초기화
     - [ ] boolean runGame() 메서드: end변수를 가지며 endGame()의 반환값이 false인 동안 while문을 계속 돔
       - [ ] List<Integer> getInput() 메서드: 메세지 출력, 입력 가져와 validation 진행
       - [ ] Score getScore(List<Integer>) 메서드
-        - [ ] convertScoreToString(Score) 메서드
       - [ ] boolean isThreeStrike(Score)
 
 - [X] Score 클래스: 볼, 스트라이크 횟수를 보관하는 DTO
-
-- [ ] ScoreCalculator 클래스
-  - [ ] List<Integer> answer 인스턴스 변수 
-  - [ ] ScoreCalculator
-
-- [ ] InputValidator 클래스: try~catch로 IllegalArgumentException 처리
-    - [ ] boolean Validate(List<Integer>) 메서드
-    - [ ] boolean Validate(Integer) 메서드
 
 - [ ] BaseballNumGenerator 클래스
   - [ ] List<Integer> getThreeNumList() 메서드
     - [ ] int getSingleDigit() 메서드
 
+- [ ] IOHandler 클래스: try~catch로 IOException 처리
+  - [ ] void printInitMessage() 
+  - [ ] List<Integer> getInput() 메서드: validation도 진행
+  - [ ] List<Integer> printOutput(Score) 메서드
+  - [ ] int getRestartNumber() 메서드: validation도 진행
 
-- [ ] IOMessageHandler 클래스
-  - [ ] void printInitMessage() 메서드
-  - [ ] void printInputMessage() 메서드
-  - [ ] String getInputString() 메서드
-  - [ ] void printResultMessage(String) 메서드
-  - [ ] void printEndMessage() 메서드
-  - [ ] int getRestartDigit() 메서드
+- [ ] InputValidator 클래스: try~catch로 IllegalArgumentException 처리
+  - [ ] boolean validateAnsString(String) 메서드
+    - [X] 길이가 3이 아닌 입력 검증
+    - [ ] 숫자가 아닌 입력 검증
+    - [ ] 동일한 숫자가 포함되었는지 검증
+    - [ ] 맨 앞자리가 0인지 검증
+  - [ ] boolean validateRestartString(String) 메서드
 
 
 ## 🔍 진행 방식
