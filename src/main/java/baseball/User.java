@@ -15,4 +15,12 @@ public class User {
         }
         return userNumbers;
     }
+
+    private void validateCompareLetter(String userNumber) {
+        try {
+            Long.parseLong(userNumber);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+    }
 }
