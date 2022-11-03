@@ -24,14 +24,12 @@ public class User {
     }
 
     public int parseIntFromStr(String str) {
-        int intParseFromstr = 0;
         try {
-            intParseFromstr = Integer.parseInt(str);
+            return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
-        return intParseFromstr;
     }
 
- 
+
 }
