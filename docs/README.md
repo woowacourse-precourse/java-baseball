@@ -65,7 +65,7 @@
 
 - [ ] 3 strike 시, 게임 종료 (Referee)
 
-- [ ] 입력받은 3개의 숫자 예외 처리 (IllegalArgumentException) => 프로그램 종료
+- [x] 입력받은 3개의 숫자 예외 처리 (IllegalArgumentException) => 프로그램 종료
   - [x] 알파벳인 경우 (BallNumber)
     - [x] 소문자
     - [x] 대문자
@@ -75,7 +75,7 @@
     - [x] 모음
     - [x] 단어 (한 글자)
   - [x] 공백이 존재하는 경우 (BallNumber)
-  - [ ] 길이가 3이 아닌 경우 (BaseBallGame)
+  - [x] 길이가 3이 아닌 경우 (BaseBallGame)
   - [x] 1~9 범위 벗어난 경우 (BallNumber)
   - [x] 같은 숫자가 존재할 경우 (Balls)
 
