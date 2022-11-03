@@ -25,21 +25,6 @@ class GameTest extends NsTest {
 		);
 	}
 
-	@Test
-	void 사용자의_입력이_3자리가_아니면_예외가_발생한다() {
-		assertThatThrownBy(() -> game.validateUserInput("12"))
-				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessage("1~9까지 3자리 숫자를 입력해주세요.");
-	}
-
-	@Test
-	void 사용자의_입력이_정수가_아니면_예외가_발생한다() {
-		assertThatThrownBy(() -> game.validateUserInput("12삼"))
-				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessage("1~9까지 정수만 입력해주세요.");
-	}
-
-
 	@Override
 	protected void runMain() {
 		Application.main(new String[]{});
