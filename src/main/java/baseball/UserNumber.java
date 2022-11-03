@@ -20,6 +20,6 @@ public class UserNumber {
     }
 
     public List<Integer> getUserNums() {
-        return userNums;
+        return Collections.unmodifiableList(this.userNums);
     }
 }

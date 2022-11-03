@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GameNumber {
@@ -48,6 +49,6 @@ public class GameNumber {
     }
 
     public List<Integer> getGameNums() {
-        return this.gameNums;
+        return Collections.unmodifiableList(this.gameNums);
     }
 }
