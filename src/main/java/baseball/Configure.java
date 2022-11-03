@@ -4,10 +4,6 @@ public enum Configure {
 
 	NUMBER_DIGIT(3),
 
-	STRIKE,
-	BALL,
-	NOTHING,
-
 	RESTART(1),
 	END(2);
 
