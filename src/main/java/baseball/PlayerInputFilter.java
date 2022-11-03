@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class PlayerInputFilter {
     private int[] numbers;
 
@@ -8,7 +10,7 @@ public class PlayerInputFilter {
     }
 
     String getInput(){
-        return "";
+        return Console.readLine();
     }
 
     void checkException(String input){
