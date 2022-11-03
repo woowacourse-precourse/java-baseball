@@ -14,6 +14,7 @@ import java.util.List;
 public class BaseBallGameController {
 
     public void startGame() {
+        InputView.startGame();
         do {
             playGame();
         } while (InputView.decideContinueGame());
