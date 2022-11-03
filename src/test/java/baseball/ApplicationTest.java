@@ -58,6 +58,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("입력값이 0을 포함할 경우 예외를 반환한다")
+    @Test
+    void case4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
 
 
