@@ -21,6 +21,9 @@ public class GameNumber {
                 .collect(Collectors.toList());
     }
 
+    public GameNumber() {
+    }
+
     public List<Integer> getNumberList() {
         return numberList;
     }
