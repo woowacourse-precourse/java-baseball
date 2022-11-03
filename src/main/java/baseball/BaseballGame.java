@@ -16,8 +16,11 @@ public class BaseballGame {
     private int ballCount;
     private String message;
 
-    public void start() {
+    public BaseballGame() {
         System.out.println(GAME_START_MESSAGE);
+    }
+
+    public void start() {
         createComputerNumbers();
         while (true) {
             String input = Console.readLine();
@@ -31,7 +34,21 @@ public class BaseballGame {
                 break;
             }
         }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartGame = Console.readLine();
+
+        if (restartGame.equals("1")) {
+            computerNumbers.clear();
+            start();
+        }
+
+        if (restartGame.equals("2")) {
+            System.out.println("게임을 종료합니다.");
+        }
+
+
     }
+
 
     private String answerMessage() {
 

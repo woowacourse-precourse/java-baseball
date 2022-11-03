@@ -21,17 +21,6 @@ class ApplicationTest extends NsTest {
                 assertThat(output().startsWith(GAME_START_MESSAGE)));
     }
 
-    //TODO
-//    @Test
-//    void 게임종료_후_재시작() {
-//        assertRandomNumberInRangeTest(
-//                () -> {
-//                    run("246", "135", "1", "597", "589", "2");
-//                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-//                },
-//                1, 3, 5, 5, 8, 9
-//        );
-//    }
 
 
     @Nested
@@ -202,7 +191,7 @@ class ApplicationTest extends NsTest {
         @Test
         void rightAnswer() {
             assertRandomNumberInRangeTest(() -> {
-                run("246");
+                runException("246");
                 assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }, 2, 4, 6);
         }
@@ -211,13 +200,48 @@ class ApplicationTest extends NsTest {
         @Test
         void wrongAnswer() {
             assertRandomNumberInRangeTest(() -> {
-                run("235", "245","246");
+                runException("235", "245","246");
                 assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }, 2, 4, 6);
         }
     }
 
+    @DisplayName("정답을 맞힌 후")
+    @Nested
+    class EndGame {
 
+        @DisplayName("1을 입력하면 다시 게임이 시작된다.")
+        @Test
+        void restartGame() {
+            assertRandomNumberInRangeTest(() -> {
+                runException("246", "1", "357");
+                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                        ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "3스트라이크");
+            }, 2, 4, 6, 3,5,7);
+        }
+
+        @DisplayName("2을 입력하면 다시 게임이 종료된다.")
+        @Test
+        void closeGame() {
+            assertRandomNumberInRangeTest(() -> {
+                run("246", "2");
+                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 종료합니다.");
+            }, 2, 4, 6, 2);
+        }
+
+        @Test
+        void 게임종료_후_재시작() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "1", "597", "589", "2");
+                        assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        }
+
+    }
 
     @Override
     public void runMain() {
