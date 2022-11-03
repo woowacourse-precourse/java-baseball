@@ -4,6 +4,7 @@ import baseball.baseballgame.balllist.BallList;
 import baseball.inputview.InputView;
 import baseball.outview.OutView;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
@@ -14,25 +15,37 @@ public class BaseBallGame {
     private final BallList computerBallList;
 
     public BaseBallGame() {
-        this.computerBallList =
-                new BallList(Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, MAX_SIZE));
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < MAX_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        this.computerBallList = new BallList(computer);
     }
 
-    public void start(){
+    public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int ballNumbers = InputView.inputNumber();
-        List<Integer> report = checkUserBallList(ballNumbers);
+        InputView inputView = new InputView();
+        String ballNumbers = inputView.inputNumber();
+        List<Integer> report = this.checkUserBallList(ballNumbers);
         OutView.print(report);
         boolean flag = GameOverChecker.check(report);
-        while (!flag){
-            ballNumbers = InputView.inputNumber();
+        while (!flag) {
+            ballNumbers = inputView.inputNumber();
             report = checkUserBallList(ballNumbers);
             OutView.print(report);
             flag = GameOverChecker.check(report);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (inputView.ask_restart()) {
+            BaseBallGame baseBallGame = new BaseBallGame();
+            baseBallGame.start();
+        }
     }
 
-    public List<Integer> checkUserBallList(int userInoutNumber) {
+    public List<Integer> checkUserBallList(String userInoutNumber) {
         List<Integer> userBallList = NumberToListChanger.change(userInoutNumber);
         return computerBallList.judge(new BallList(userBallList)).reportToList();
     }

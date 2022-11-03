@@ -9,17 +9,17 @@ public class OutView {
         int ballCount = reportList.get(1);
         int nothingCount = reportList.get(2);
 
-        if (strikeCount == 3) {
-            System.out.print(3 + "스트라이크");
-        }
         if (nothingCount == 3) {
             System.out.println("낫싱");
         }
+
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+
         if (strikeCount != 0) {
             System.out.println(strikeCount + "스트라이크");
         }
-        if (ballCount != 0) {
-            System.out.println(ballCount + "볼");
-        }
+
     }
 }
