@@ -3,6 +3,7 @@ package baseball.game;
 import baseball.constant.GameConstant;
 import baseball.constant.WarningMessage;
 import baseball.data.AnswerNumber;
+import baseball.data.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -20,8 +21,10 @@ public class Game {
 
     public static void playGame() {
         AnswerNumber answerNumber = AnswerNumber.getInstance();
+        UserNumber userNumber = UserNumber.getInstance();
 
         answerNumber.updateNumbers(Generator.generateAnswer());
+        userNumber.updateNumbers(Scanner.getUserInput());
     }
 
     public static boolean isGameContinued() {
