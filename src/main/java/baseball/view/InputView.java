@@ -17,25 +17,25 @@ public class InputView {
     private static final String YES_OR_NO_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
-    public static List<Integer> inputPlayerNumber() {
+    public static List<Integer> getInput() {
         System.out.print(GET_NUMBER_MESSAGE);
 
-        String playerBallNumbers = Console.readLine();
-        validateBallNumber(playerBallNumbers);
+        String input = Console.readLine();
+        validate(input);
 
-        return Arrays.stream(separate(playerBallNumbers))
+        return Arrays.stream(separate(input))
             .map(Integer::valueOf)
             .collect(Collectors.toList());
     }
 
-    private static void validateBallNumber(String playerBallNumbers) {
-        if (!Pattern.matches(NUMBER_RANGE, playerBallNumbers)) {
+    private static void validate(String input) {
+        if (!Pattern.matches(NUMBER_RANGE, input)) {
             throw new IllegalArgumentException();
         }
-        if (playerBallNumbers.length() != NUMBER_MAX_RANGE) {
+        if (input.length() != NUMBER_MAX_RANGE) {
             throw new IllegalArgumentException();
         }
-        String[] numbers = separate(playerBallNumbers);
+        String[] numbers = separate(input);
         Set<String> ballNums = new HashSet<>(Arrays.asList(numbers));
 
         if (ballNums.size() != numbers.length) {
@@ -48,7 +48,7 @@ public class InputView {
         return input.split(NUMBER_SEPARATE_DELIMITER);
     }
 
-    public static boolean yesOrNo(){
+    public static boolean yesOrNo() {
         System.out.println(YES_OR_NO_MESSAGE);
 
         String input = Console.readLine();
@@ -57,7 +57,7 @@ public class InputView {
     }
 
     private static void validateInput(String input) {
-        if(!input.equals("1") && !input.equals("2")){
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
