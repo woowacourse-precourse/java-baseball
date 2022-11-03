@@ -46,5 +46,13 @@ public class Application {
             String input = Console.readLine();
             return getValueIfAcceptable(input);
         }
+
+        private int[] getValueIfAcceptable(String input) {
+            validateInputLength(input);
+            int[] intArrayValue = getIntArrayIfAcceptable(input);
+            validateUse0(intArrayValue);
+            validateDuplicateValues(intArrayValue);
+            return intArrayValue;
+        }
     }
 }
