@@ -19,6 +19,19 @@ public class OpponentComputer {
         return Arrays.asList(String.valueOf(number).split(""));
     }
 
+    public void judgeStrikeOrBall(List<String> opponentComputerNumbers, List<String> playerNumbers) {
+        for (int compareEachDigitIndex = 0; compareEachDigitIndex < opponentComputerNumbers.size(); compareEachDigitIndex++) {
+            String opponentComputerNumber = opponentComputerNumbers.get(compareEachDigitIndex);
+            String playerNumber = playerNumbers.get(compareEachDigitIndex);
+            if (opponentComputerNumber.equals(playerNumber)) {
+                strikeAndBallCountMap.put("Strike", strikeAndBallCountMap.get("Strike") + 1);
+            }
+            if (opponentComputerNumbers.contains(playerNumber) && !opponentComputerNumber.equals(playerNumber)) {
+                strikeAndBallCountMap.put("Ball", strikeAndBallCountMap.get("Ball") + 1);
+            }
+        }
+    }
+
     public int getNumber() {
         return number;
     }
