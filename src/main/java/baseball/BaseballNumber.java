@@ -18,4 +18,12 @@ public class BaseballNumber {
         }
     }
 
+    public void setNumbers(String numbersStr){
+        numbers.clear();
+        for(int i = 0; i < 3; i++){
+            int number = Integer.valueOf(numbersStr.charAt(i));
+            numbers.add(number);
+        }
+    }
+    
 }
