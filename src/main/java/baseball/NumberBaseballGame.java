@@ -33,10 +33,29 @@ public abstract class NumberBaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
 
         String playerNumberStr = Console.readLine();
-        for (int i = 0; i < playerNumberStr.length(); i++) {
-            int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
-            playerNumberList.add(playerNumber);
+        if (isValidNumberStr(playerNumberStr)) {
+            for (int i = 0; i < playerNumberStr.length(); i++) {
+                int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
+                playerNumberList.add(playerNumber);
+            }
         }
+        else throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+    }
+
+    private static boolean isValidNumberStr(String numberStr) {
+        boolean isThreeDigit = numberStr.length() == 3,
+                isOnlyNumber = !numberStr.matches("[a-zA-Z]"),
+                isEachUniqueNumber = true;
+        List<Character> eachNumberList = new ArrayList<>();
+
+        for (int i = 0; i < numberStr.length(); i++) {
+            char eachNumber = numberStr.charAt(i);
+            if (eachNumberList.contains(eachNumber)) {
+                isEachUniqueNumber = false;
+            }
+            eachNumberList.add(eachNumber);
+        }
+        return isThreeDigit && isOnlyNumber && isEachUniqueNumber;
     }
 
     private static void countBall() {
