@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import baseball.model.NumberBaseball;
+import baseball.model.numberbaseball.NumberBaseball;
 import baseball.util.UserInputValidator;
 
 public class UserInputPlayNumbers {

@@ -1,8 +1,9 @@
 package baseball.controller;
 
 import baseball.controller.dto.UserInputPlayNumbers;
-import baseball.model.NumberBaseball;
-import baseball.model.application.NumberBaseballService;
+import baseball.model.gameresult.GameResult;
+import baseball.model.numberbaseball.NumberBaseball;
+import baseball.model.numberbaseball.application.NumberBaseballService;
 import baseball.view.NumberBaseballView;
 
 public class NumberBaseballController {
@@ -17,7 +18,7 @@ public class NumberBaseballController {
 		NumberBaseball computerNumber = getComputerNumberBaseball();
 		NumberBaseball userNumber = getUserInputPlayNumbers();
 
-		numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
+		GameResult gameResult = numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
 	}
 
 	private NumberBaseball getComputerNumberBaseball() {

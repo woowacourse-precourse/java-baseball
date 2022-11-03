@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.numberbaseball;
 
 import java.util.List;
 
@@ -11,5 +11,13 @@ public class NumberBaseball {
 
 	public List<Integer> getNumbers() {
 		return numbers;
+	}
+
+	public int getNumberAt(int index) {
+		return numbers.get(index);
+	}
+
+	public boolean contains(int number) {
+		return numbers.contains(number);
 	}
 }
