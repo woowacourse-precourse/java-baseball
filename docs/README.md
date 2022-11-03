@@ -6,5 +6,14 @@
         List<Integer> makeThreeDifferentNumberListInRange(int min, int max) = min 이상 max 이하의 서로 다른 3개의 숫자를 가진 리스트를 반환
 
 ## Message 클래스
+
+- 출력 관련 메서드
+
+        String start() = 게임 시작 문구 반환
+        String requestThreeNumbers() = 숫자 입력 요청 문구 반환
+        String result(int ball, int strike) = 입력에 대한 결과를 반환
+        String success() = 성공 문구 반환
+        String requestNewOrStop() = 새 게임 진행 여부 문구 반환
+
 ## Referee 클래스
 ## NumberBaseballGameMachine 클래스
