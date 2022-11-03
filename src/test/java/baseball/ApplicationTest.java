@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.model.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +35,34 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 컴퓨터_숫자_생성기_크기_테스트() {
+        Computer computer = new Computer();
+        computer.generateComputerNumberThree();
+        assertThat(computer.getComputerNumber().size()).isEqualTo(3);
+
+    }
+
+    @Test
+    void 컴퓨터_숫자_생성기_범위_테스트() {
+        Computer computer = new Computer();
+        computer.generateComputerNumberThree();
+        ArrayList<Integer> computerNumber = computer.getComputerNumber();
+        assertThat(computerNumber).containsAnyOf(1,2,3,4,5,6,7,8,9);
+
+        for (Integer num : computerNumber) {
+            Assertions.assertTrue(num>=1 && num<=9);
+        }
+    }
+
+    @Test
+    void 컴퓨터_숫자_중복_숫자_테스트(){
+        Computer computer = new Computer();
+        computer.generateComputerNumberThree();
+        ArrayList<Integer> computerNumber = computer.getComputerNumber();
+        assertThat(computerNumber).doesNotHaveDuplicates();
+
     }
 }
