@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Application {
-    static int strike = 0, ball = 0;
+    static int strike, ball;
 
     public static void main(String[] args) {
 
@@ -35,13 +35,21 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         int user_answer = Integer.parseInt(Console.readLine());
         if (user_answer < 1000 && user_answer > 99) {
-            for (int i = 0; i < 3; i++) {
-                userAnswer.add(user_answer % 10);
-                user_answer = user_answer / 10;
-            }
+            addUserAnswer(userAnswer, user_answer);
             Collections.reverse(userAnswer);
             compare_Answer(answer, userAnswer);
         } else throw new IllegalArgumentException("잘못된 값 입력.");
+    }
+
+    private static void addUserAnswer(List<Integer> userAnswer, int user_answer) {
+        for (int i = 0; i < 3; i++) {
+            int temp = user_answer % 10;
+            if(!userAnswer.contains(temp)) {
+                userAnswer.add(user_answer % 10);
+                user_answer = user_answer / 10;
+            }
+            else throw new IllegalArgumentException("잘못된 값 입력");
+        }
     }
 
     public static void compare_Answer(List<Integer> answer, List<Integer> userAnswer) {
