@@ -15,7 +15,7 @@
   - 상수 status, gameName과 추상메서드 initialize, terminate를 가집니다.
     - [X] getStatus
     - 게임의 상태를 알려줍니다.
-    - [ ] getGameName
+    - [X] getGameName
     - 게임의 이름을 알려줍니다.
     - [X] setStatus
     - 게임의 상태를 설정합니다.
