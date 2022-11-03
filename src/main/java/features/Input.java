@@ -13,10 +13,10 @@ public class Input {
     public static List<Integer> input() {
 
         Scanner inputNumbers = new Scanner(System.in);
-        int i = inputNumbers.nextInt();
+        int inputEachNumber = inputNumbers.nextInt();
 
         for (Integer integer : inputNumberRepository) {
-            inputNumberRepository.add(i);
+            inputNumberRepository.add(inputEachNumber);
 
             if (inputNumberRepository.size()>3) { inputNumberRepository.add(EXCEPTION); }
 
