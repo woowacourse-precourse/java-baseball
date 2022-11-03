@@ -68,4 +68,11 @@ public class Game {
         }
     }
 
+    public boolean isAnswer(int strike) {
+        if (strike == IS_ANSWER) {
+            return true;
+        }
+        return false;
+    }
+
 }
