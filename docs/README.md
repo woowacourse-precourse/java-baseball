@@ -51,11 +51,11 @@
          7. isBothBallAndStrike() : strikeCount !=0 && ballCount != 0일때 참을 반환한다.
          8. printBothBallAndStrike() : “a볼 b스트라이크” 를 출력한다.
    4. DetermineToEndOrNot() : 게임을 계속할지 끝낼지 확인한다. 정수 opinion이 1도 2도 아니면 반복한다. 
-      1. askOpinion() : 입력을 받아 정수로 반환한다.
-      2. isMoreGame(int opinion) : 정수가 1이면 참을 반환
-      3. isEndOfGame(int opinion) : 정수가 2이면 참을 반환
+      1. askOpinion() : 입력을 받아 문자열로 반환한다.
+      2. isMoreGame(String opinion) : 문자열이 1이면 참을 반환
+      3. isEndOfGame(String opinion) : 문자열이 2이면 참을 반환
       4. finishGame() : gameSet=2로 초기화한다. 
-      5. isNotRightAnswer() : 1도 2도 아닐 경우 참을 반환한다.
+      5. isNotRightAnswer(String opinion) : 1도 2도 아닐 경우 참을 반환한다.
       6. askAnotherOpinion() : 다른 답을 요청한다. 
 
 
