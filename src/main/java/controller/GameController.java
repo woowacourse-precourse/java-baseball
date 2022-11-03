@@ -18,6 +18,10 @@ public class GameController {
         this.user.inputNumOfUser();
     }
 
+    public void initRandNumOfComputer() {
+        computer.initComputer();
+    }
+
     public boolean isRightNumOfUser2Computer() {
         int numInputOfUser = user.getNumSelecUser();
         // TODO : 1. 컴퓨터에게 값을준다.
