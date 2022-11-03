@@ -18,6 +18,7 @@ public class BaseballGameController {
 
 	private void runOneCycle() {
 		int strikeCount;
+		OutputView.printStartMessage();
 		List<Integer> computerNums = new ComputerNumber().computerNumber;
 		do {
 			List<Integer> userNums = new UserNumber(InputView.printInputNumberMessage()).userNumber;
@@ -25,6 +26,7 @@ public class BaseballGameController {
 			strikeCount = result.strikeCount;
 			new OutputView(result).printGameResult();
 		} while (!isGameEnd(strikeCount));
+		OutputView.printClearMessage();
 	}
 
 	private boolean isGameEnd(int result) {
