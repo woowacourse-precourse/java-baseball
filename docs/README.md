@@ -4,6 +4,10 @@
 
 ---
 
+## [숫자야구게임 하기]
+
+- startNumberBaseball()
+
 ## [랜덤 세자리 숫자 구하기]
 
 - getRandomNumber()
