@@ -11,9 +11,9 @@ public class GameService {
 
     public void setGame(){
         setAnswerNumber();
+        System.out.println(answerNumber);
         setUserNumber();
     }
-
     private void setAnswerNumber(){
         RandomNumber randomNumber = new RandomNumber();
         answerNumber = randomNumber.setRandomNumber();
@@ -21,5 +21,31 @@ public class GameService {
     private void setUserNumber(){
         User user = new User();
         userNumber = user.setUserNumber();
+    }
+
+    public void startGame(){
+        int strike;
+        int ball;
+        strike = calculateStrike();
+        ball = calculateBall();
+    }
+    private int calculateStrike(){
+        int strikeCount=0;
+        for(int i=0; i<3; i++){
+            if(answerNumber.get(i) == userNumber.get(i)){
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private int calculateBall(){
+        int ballCount=0;
+        for(int i=0; i<3; i++){
+            if(answerNumber.contains(userNumber.get(i)) && answerNumber.get(i) != userNumber.get(i)){
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
