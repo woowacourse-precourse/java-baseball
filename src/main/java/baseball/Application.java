@@ -17,27 +17,24 @@ public class Application {
             }
         }
         // 3스트라이크가 나올때 까지 반복
-        while(true){
-            // 3자리 숫자 입력 기능 실행
-            int input_num = int_input();
-            // 잘못된 값을 입력했을 때 예외 처리
-            if(!(input_num > 99 && input_num < 1000)){
-                throw new IllegalArgumentException();
-            }else{
-                int strike = strike(input_num_list(input_num), computer);
-                int ball = ball(input_num_list(input_num), computer);
-                int nothing = nothing(input_num_list(input_num), computer);
-                //숫자 검증 기능(출력기능)
-                print_verification(strike,ball,nothing);
-            }
-        }
+        // 3자리 숫자 입력 기능 실행
+        int input_num = int_input();
+        int strike = strike(input_num_list(input_num), computer);
+        int ball = ball(input_num_list(input_num), computer);
+        int nothing = nothing(input_num_list(input_num), computer);
+        //숫자 검증 기능(출력기능)
+        print_verification(strike,ball,nothing);
     }
     //숫자를 입력받는 기능
     public static int int_input(){
         Scanner sc = new Scanner(System.in);
-        int result = sc.nextInt();
+        int input_num = sc.nextInt();
         sc.close();
-        return result;
+        // 잘못된 값을 입력했을 때 예외 처리
+        if(!(input_num > 99 && input_num < 1000)){
+            throw new IllegalArgumentException();
+        }
+        return input_num;
     }
     //input_num 를 배열로 변환하는 기능
     public static List<Integer> input_num_list(int input_num){
