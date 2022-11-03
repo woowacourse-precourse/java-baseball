@@ -114,5 +114,25 @@ public class GameTest {
         }
     }
 
+    @Test
+    void readInputForGame_정상적인_입력() {
+        String[] input = {"123", "234", "987", "567", "159", "184"};
+        int[][] expected = {{1, 2, 3}, {2, 3, 4}, {9, 8, 7}, {5, 6, 7}, {1, 5, 9}, {1, 8, 4}};
+        List<Integer> result, expectedList;
 
+
+        for (int i = 0; i < input.length; ++i) {
+            InputStream in = new ByteArrayInputStream(input[i].getBytes());
+            System.setIn(in);
+
+            result = _game.readInputForGame();
+            expectedList = new ArrayList<>();
+
+            expectedList.add(expected[i][0]);
+            expectedList.add(expected[i][1]);
+            expectedList.add(expected[i][2]);
+
+            assertThat(result).isEqualTo(expectedList);
+        }
+    }
 }

@@ -50,6 +50,6 @@
 - [x] isGameEnd() 테스트 추가
 - [x] printHint() 테스트 추가
 - [x] getResult() 테스트 추가
-- [ ] readInputForGame() 테스트 추가
+- [x] readInputForGame() 테스트 추가
 - [x] readIsQuit() 테스트 추가
 - [x] generateRandomValue() 테스트 추가
