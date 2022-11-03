@@ -61,7 +61,7 @@ public class Game {
 		}
 
 		if (playerChoice == END_NUMBER) {
-			SystemMessage.printEND();
+			SystemMessage.printEnd();
 		}
 
 		// throw new IllegalArgumentException(SystemMessage.printError()); TODO: 1과 2가 아닌 값이 들어왔을 때 처리 필요

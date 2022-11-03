@@ -26,7 +26,7 @@ public class SystemMessage {
 		System.out.println(END_OR_RETRY_MESSAGE);
 	}
 
-	public static void printEND() {
+	public static void printEnd() {
 		System.out.println(END_MESSAGE);
 	}
 
