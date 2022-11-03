@@ -37,7 +37,7 @@ public class InputTest {
     }
 
     @Test
-    public void 입력값이_숫자인지_확인() {
+    public void 입력값이_숫자일_때_확인() {
         // given
         String inputString = "123";
         // when
