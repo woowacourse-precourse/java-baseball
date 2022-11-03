@@ -104,4 +104,8 @@ public class Ball {
     public int indexOf(int index) {
         return ball.indexOf(index);
     }
+
+    public void clear() {
+        ball.clear();
+    }
 }

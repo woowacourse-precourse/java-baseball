@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Referee {
 
@@ -17,39 +17,57 @@ public class Referee {
     public Referee() {
 
     }
-    public void playBall(){
+
+    public void playBall() {
         do {
             start();
-            while(restart());
-        }
+        }while (restart());
     }
 
     private void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         giveHint();
+    }
+
+    public boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartIndex = Console.readLine();
+        if(!validRestartIndex(restartIndex)){
+            throw new IllegalArgumentException("1 또는 2를 입력해야합니다.");
+        }
+        if(restartIndex.equals("1")){
+            comBall.clear();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validRestartIndex(String restartIndex) {
+        return restartIndex.equals("1")||restartIndex.equals("2");
     }
 
     public void giveHint() {
         comBall.makeComputerBalls();
-        while(!isAnswer()){
-            strike=0;
-            ball=0;
+        while (!isAnswer()) {
+            strike = 0;
+            ball = 0;
             humanBall.makeHumanBalls();
             compareStrike(comBall, humanBall);
             compareBall(comBall, humanBall);
-            if(strike==0&&ball==0){
+            if (strike == 0 && ball == 0) {
                 System.out.println(Nothing);
             }
-            if(strike!=0&&ball!=0){
-                System.out.println(ball+Ball+" "+strike+Strike);
+            if (strike != 0 && ball != 0) {
+                System.out.println(ball + Ball + " " + strike + Strike);
             }
-            if(strike!=0&&ball==0){
-                System.out.println(strike+Strike);
+            if (strike != 0 && ball == 0) {
+                System.out.println(strike + Strike);
             }
-            if(strike==0&&ball!=0){
-                System.out.println(ball+Ball);
+            if (strike == 0 && ball != 0) {
+                System.out.println(ball + Ball);
             }
         }
+        strike = 0;
+        ball = 0;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -69,7 +87,9 @@ public class Referee {
         }
     }
 
-    public boolean isAnswer(){
-        return strike==3;
+    public boolean isAnswer() {
+        return strike == 3;
     }
+
+
 }
