@@ -31,6 +31,10 @@ public class BullsAndCows {
                 .collect(Collectors.toList());
     }
 
+    private String getResultScoreByFormat() {
+        return getBallNumber() + getStrikeNumber();
+    }
+
     private String getStrikeNumber() {
         STRIKE_COUNT = 0;
 
