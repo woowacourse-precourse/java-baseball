@@ -13,6 +13,10 @@ public class User {
         this.numSelecUser = 0;
     }
 
+    public void inputNumOfUser() {
+        this.numSelecUser = this.getInputAllRightNumOfUser();
+    }
+
     public int getInputAllRightNumOfUser() {
         // TODO : 숫자 받기
         String strInput = getString();
