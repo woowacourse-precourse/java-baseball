@@ -14,23 +14,22 @@ public class Application {
     public static void main(String[] args) {
         int gameStatus = START;
         while (gameStatus == START) {
-            boolean isWork = playNumberBaseball();
-            if (!isWork) {
+            try {
+                playNumberBaseball();
+            } catch (Exception e) {
+                e.printStackTrace();
                 break;
             }
             gameStatus = askRestartOrExit();
         }
     }
 
-    private static boolean playNumberBaseball() {
+    private static boolean playNumberBaseball() throws Exception {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
         boolean isWork = true;
         while (userGetRightAnswer == false) {
             String user = getUserAnswerInString();
-            if (isValidAnswer(user)) {
-                isWork = false;
-            }
             List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
             userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
             printResult(scoreOfStrikeAndBall);
@@ -49,14 +48,21 @@ public class Application {
         return computer;
     }
 
-    private static String getUserAnswerInString() {
+    private static String getUserAnswerInString() throws Exception {
         String user = Console.readLine();
+        isValidAnswer(user);
         return user;
     }
 
-    private static boolean isValidAnswer(String user) {
-        return isValidValue() && isValidLength();
+    private static void isValidAnswer(String answer) throws Exception {
+        boolean answerIsValid = isValidValue(answer) && isValidLength(answer);
+        if (!answerIsValid) {
+            throw new IllegalArgumentException();
+        }
     }
+
+    private static boolean isValidValue(String answer) {}
+    private static boolean isValidLength(String answer) {}
 
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
