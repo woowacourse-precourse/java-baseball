@@ -127,5 +127,13 @@ public class Application {
                 sb.append(answerKor);
             }
         }
+
+        private String createGameResultToString(StringBuilder sb) {
+            if (sb.length() > 0) {
+                return sb.toString();
+            }
+
+            return WRONG_ANSWER_KOR;
+        }
     }
 }
