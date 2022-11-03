@@ -11,6 +11,17 @@ public class Application {
     public static void main(String[] args) {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
     }
+    private static boolean isQuit(int input) {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+
+        if (input == 2) {
+            return true;
+        }
+        else if (input == 1) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
 
     private static int readInt() {
         try {
