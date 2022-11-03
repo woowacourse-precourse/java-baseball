@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -34,4 +35,34 @@ public class ValidationTest {
         assertThat(ValidationUtil.haveNoDuplicatedNum(List.of(1, 1, 3))).isFalse();
         assertThat(ValidationUtil.haveNoDuplicatedNum(List.of(1, 1, 1))).isFalse();
     }
+
+    @Nested
+    class TotalValidationTest {
+        @Test
+        void validTest() {
+            assertThat(ValidationUtil.isValid(List.of(1, 2, 3))).isTrue();
+            assertThat(ValidationUtil.isValid(List.of(7, 8, 9))).isTrue();
+        }
+
+        @Test
+        void inValidRange() {
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(0, 1, 2))).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(8, 9, 10))).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void inValidCount() {
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(1, 2, 3, 10))).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(1, 2))).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(1))).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void duplicatedNum() {
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(1, 1, 2))).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(8, 8, 9))).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid(List.of(7, 8, 8, 9))).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
 }

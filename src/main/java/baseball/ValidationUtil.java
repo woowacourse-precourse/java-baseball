@@ -19,4 +19,11 @@ public class ValidationUtil {
         HashSet<Integer> set = new HashSet<>(list);
         return list.size() == set.size();
     }
+
+    public static boolean isValid(List<Integer> list) {
+        if (!isValidRange(list) || !isValidCount(list) || !haveNoDuplicatedNum(list)) {
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        }
+        return true;
+    }
 }
