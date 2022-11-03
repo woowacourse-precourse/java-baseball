@@ -1,10 +1,14 @@
 package baseball;
 
-import java.lang.*;
-import java.util.Scanner;
-import camp.nextstep.edu.missionutils.*;
+import java.lang.System;
+import java.util.ArrayList;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    private static ArrayList<Integer> target = null;
+    private static ArrayList<Integer> user = null;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -23,6 +27,12 @@ public class Application {
     }
 
     private static void start_game() {
+    }
+
+    private static void generate() {
+        target.clear();
+        for (int i = 0; i < 3; ++i)
+            target.add(Randoms.pickNumberInRange(1, 9));
     }
 
     private static void invalid() {
