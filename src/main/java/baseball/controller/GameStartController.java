@@ -1,13 +1,14 @@
-package baseball;
+package baseball.controller;
 
+import baseball.service.ResultService;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class GameStartController {
     public void GameStart() {
-        Result result = new Result();
+        ResultService result = new ResultService();
 
         int Restart = 1;
         while (Restart == 1) {
