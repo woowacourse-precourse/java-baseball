@@ -23,31 +23,31 @@ public class GameService {
         gameRepository.setGame();
     }
     public void playGame(){
+        System.out.println(gameRepository.getGame().getGameNumber().getRandomNumber());
         User user=new User();
         messageService.gameStartMessage();
         while (gameRepository.getGame().getStrikeCount()!=3){
             play(user);
         }
+        messageService.gameEndMessage();
+        messageService.continueMessage();
     }
     private void play(User user){
         messageService.inputMessage();
         gameRepository.getGame().initCount();
         userService.inputData(user);
         containNumber(user.getInputNumber(),gameRepository.getGame().getGameNumber().getRandomNumber());
-
     }
     private void containNumber(List<Integer> inputData,List<Integer> randomNumber){
-        for (Integer inputDatum : inputData) {
-            if (randomNumber.contains(inputDatum))
-                strikeAndBallCount(randomNumber, inputDatum);
+        for (int i=0;i<inputData.size();i++) {
+            if (randomNumber.contains(inputData.get(i)))
+                strikeAndBallCount(randomNumber.get(i), inputData.get(i));
         }
     }
-    private void strikeAndBallCount(List<Integer> randomNumber,Integer containNumber){
-        for(Integer randomNum:randomNumber){
-            if(Objects.equals(randomNum, containNumber)){
-                gameRepository.getGame().updateStrikeCount();
-                return;
-            }
+    private void strikeAndBallCount(Integer randomNumber,Integer containNumber){
+        if(Objects.equals(randomNumber, containNumber)){
+            gameRepository.getGame().updateStrikeCount();
+            return;
         }
         gameRepository.getGame().updateBallCount();
     }

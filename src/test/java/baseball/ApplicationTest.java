@@ -1,11 +1,14 @@
 package baseball;
 
+import baseball.game.application.GameService;
 import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
 import baseball.user.support.Parser;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -61,7 +64,6 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(()->parser.parseClientInput(input,3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 
     @Override
     public void runMain() {
