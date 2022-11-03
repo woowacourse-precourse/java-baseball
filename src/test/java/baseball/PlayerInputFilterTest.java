@@ -1,6 +1,9 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.*;
 
 import static org.assertj.core.api.Assertions.*;
 public class PlayerInputFilterTest {
@@ -13,36 +16,88 @@ public class PlayerInputFilterTest {
     }
 
     @Test
-    void 숫자_아닐때_예외처리(){
-        assertThatThrownBy(() -> playerInputFilter.checkIfNotNumber("abc"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("플레이어는 숫자를 입력해야합니다.");
+    void 입력값이_문자열로_리턴(){
+        String input = "123";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String result = playerInputFilter.getInput();
+        assertThat(result).isEqualTo(input);
     }
 
     @Test
-    void 세자리_아닐때_예외처리(){
-        assertThatThrownBy(() -> playerInputFilter.checkIfNotThreeDigit("1234"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("플레이어는 세 자리 숫자를 입력해야 합니다.");
+    void 숫자가_아니면_참(){
+        assertThat(playerInputFilter.isNotNumber("abc")).isTrue();
     }
 
     @Test
-    void 입력에_0있으면_예외처리(){
-        assertThatThrownBy(() -> playerInputFilter.checkIfContainsZero("103"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("플레이어의 입력숫자는 0이 아니어야 합니다.");
+    void 숫자만_있으면_거짓(){
+        assertThat(playerInputFilter.isNotNumber("1234")).isFalse();
     }
 
     @Test
-    void 입력에_같은수_있으면_예외처리(){
-        assertThatThrownBy(() -> playerInputFilter.checkIfContainsMultiNumbers("112"))
+    void 숫자가_아닐때_예외처리(){
+        assertThatThrownBy(() -> playerInputFilter.noNumberException())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("플레이어의 입력숫자는 서로 달라야 합니다.");
+                .hasMessageContaining("String index out of range: 5");
     }
 
     @Test
-    void 입력이_문제없을때_3자리_배열_리턴(){
-        playerInputFilter.saveInput("123");
-        assertThat(playerInputFilter.getResultNumbersArray()).isEqualTo(new int[]{1, 2, 3});
+    void 세자리가_아니면_참(){
+        assertThat(playerInputFilter.isNotThreeDigit("0123")).isTrue();
     }
+
+    @Test
+    void 세자리면_거짓(){
+        assertThat(playerInputFilter.isNotThreeDigit("012")).isFalse();
+    }
+
+    @Test
+    void 세자리가_아니면_예외처리(){
+        assertThatThrownBy(() -> playerInputFilter.notThreeDigitException())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void 숫자0_있으면_참(){
+        assertThat(playerInputFilter.containsZero("012")).isTrue();
+    }
+
+    @Test
+    void 세자리면_거짓(){
+        assertThat(playerInputFilter.containsZero("122")).isFalse();
+    }
+
+    @Test
+    void 세자리가_아니면_예외처리(){
+        assertThatThrownBy(() -> playerInputFilter.containsZeroException())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void 같은_숫자가_있으면_참(){
+        assertThat(playerInputFilter.containsSameNumber("122")).isTrue();
+    }
+
+    @Test
+    void 모두_다른_숫자면_거짓(){
+        assertThat(playerInputFilter.containsSameNumber("123")).isFalse();
+    }
+
+    @Test
+    void 같은_숫자가_있으면_예외처리(){
+        assertThatThrownBy(() -> playerInputFilter.containsSameNumberException())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void 문자열_배열로_반환(){
+        assertThat(playerInputFilter.convertNumbersToArray("123")).isEqualTo(new int[]{1, 2, 3});
+    }
+
+
 }
