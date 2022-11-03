@@ -69,7 +69,7 @@
   - [x] 알파벳인 경우 (BallNumber)
     - [x] 소문자
     - [x] 대문자
-  - [ ] 특수문자인 경우 (BallNumber)
+  - [x] 특수문자인 경우 (BallNumber)
   - [ ] 한글인 경우 (BallNumber)
     - [ ] 자음
     - [ ] 모음

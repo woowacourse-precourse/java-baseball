@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,6 +14,14 @@ class BallNumberTest {
     void alphabet_exception(String number) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new BallNumber(number))
+                .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
+    }
+    
+    @Test
+    @DisplayName("예외 처리 : 특수 문자")
+    void special_characters_exception() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new BallNumber("$"))
                 .withMessage("잘못된 입력입니다. (1~9 범위의 3개 숫자만 입력 가능)");
     }
 }
