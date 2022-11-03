@@ -1,14 +1,17 @@
 package baseball.view;
 
+import baseball.model.Result;
+import baseball.resources.Sentence;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Map;
 
+import static baseball.resources.GameConfig.*;
 import static baseball.resources.Sentence.*;
 
 public class NumberBaseBallView {
     public void start(){
-        print(START);
+        println(START);
     }
 
     public String askInputNumber(){
@@ -16,12 +19,25 @@ public class NumberBaseBallView {
         return Console.readLine();
     }
 
-    public void printResult(Map<String, Integer> result) {
-        print(result);
+    public void printResult(Result result) {
+        Map<String, Integer> count = result.getEachCount();
+        if (result.hasBallAndStrike()) {
+            printf(BALL_STRIKE, count.get(BALL_COUNT), count.get(STRIKE_COUNT));
+            return;
+        }
+        if (result.hasBall()) {
+            printf(Sentence.BALL, count.get(BALL_COUNT));
+            return;
+        }
+        if (result.hasStrike()) {
+            printf(STRIKE, count.get(STRIKE_COUNT));
+            return;
+        }
+        print(NOTHING);
     }
 
     public String askRestart() {
-        print(ASK_RESTART);
+        println(ASK_RESTART);
         return Console.readLine();
     }
 }

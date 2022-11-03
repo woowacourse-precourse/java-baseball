@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.utils.GameNumberGenerator;
 import baseball.utils.InputNumberValidator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
 import static baseball.resources.GameConfig.RESTART;
 
 public class NumberBaseBallGame {
-    private InputNumberValidator inputNumberValidator;
+    private final InputNumberValidator inputNumberValidator;
     private List<Integer> gameNumber;
     private boolean isProceeding;
 
@@ -24,11 +25,32 @@ public class NumberBaseBallGame {
         return this.isProceeding;
     }
 
-    public void validateInputNumber(String inputNumber){
+    public void validateInputNumber(String inputNumber) {
         inputNumberValidator.validate(inputNumber);
     }
 
-    public Map<String, Integer> checkResultPoint(String inputValue){
+    public Result result(String inputNumber) {
+        String[] inputNumbers = inputNumber.split("");
+        List<Numbers> numbers = new ArrayList<>();
+        for (int i = 0; i < inputNumbers.length; i++) {
+            numbers.add(new Numbers(i, Integer.parseInt(inputNumbers[i])));
+        }
+        return new Result(numbers, gameNumber);
+    }
+
+    public void end() {
+        isProceeding = false;
+    }
+
+    public void restart(String restart) {
+        if (restart.equals(RESTART)) {
+            this.isProceeding = true;
+            gameNumber = GameNumberGenerator.generate();
+        }
+    }
+
+    @Deprecated
+    public Map<String, Integer> checkResultPoint(String inputValue) {
         String[] numbers = inputValue.split("");
         Map<String, Integer> result = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
@@ -42,20 +64,5 @@ public class NumberBaseBallGame {
             }
         }
         return result;
-    }
-
-    public boolean isFinish(Map<String, Integer> result) {
-        return result.getOrDefault("strike", 0) == 3;
-    }
-
-    public void end() {
-        isProceeding = false;
-    }
-
-    public void restart(String restart) {
-        if (restart.equals(RESTART)) {
-            this.isProceeding = true;
-            gameNumber = GameNumberGenerator.generate();
-        }
     }
 }

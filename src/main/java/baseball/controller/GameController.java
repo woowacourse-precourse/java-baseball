@@ -1,9 +1,8 @@
 package baseball.controller;
 
 import baseball.model.NumberBaseBallGame;
+import baseball.model.Result;
 import baseball.view.NumberBaseBallView;
-
-import java.util.Map;
 
 public class GameController {
     private final NumberBaseBallGame numberBaseBallGame;
@@ -21,10 +20,9 @@ public class GameController {
             String inputNumber = numberBaseBallView.askInputNumber();
             numberBaseBallGame.validateInputNumber(inputNumber);
 
-            Map<String, Integer> result = numberBaseBallGame.checkResultPoint(inputNumber);
+            Result result = numberBaseBallGame.result(inputNumber);
             numberBaseBallView.printResult(result);
-
-            if (numberBaseBallGame.isFinish(result)) {
+            if (result.isFinish()) {
                 numberBaseBallGame.end();
                 String restart = numberBaseBallView.askRestart();
                 numberBaseBallGame.restart(restart);
