@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
