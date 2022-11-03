@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 public class NumberBaseballGame {
     private ScoreBoard scoreBoard;
 
+    public void init() {
+        scoreBoard = new ScoreBoard(initializeSystemNumberBall());
+    }
+
     private List<NumberBall> initializeSystemNumberBall() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         return numbers.stream().map(NumberBall::new).collect(Collectors.toList());
