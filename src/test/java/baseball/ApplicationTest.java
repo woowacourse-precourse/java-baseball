@@ -11,6 +11,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
+    void checkUserInput() {
+        String testString = "766";
+        assertThatThrownBy(() -> Application.checkUserInput(testString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void initGame() {
         for (int i = 0; i < 10; i++) {
             Application.initGame();
