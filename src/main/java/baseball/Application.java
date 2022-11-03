@@ -143,5 +143,22 @@ public class Application {
 
             return WRONG_ANSWER_KOR;
         }
+
+        private boolean isUserWantMoreGame() {
+            while (true) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String input = Console.readLine();
+
+                if (USER_WANT_MORE.equals(input)) {
+                    return true;
+                }
+
+                if (USER_WANT_FINISH.equals(input)) {
+                    return false;
+                }
+
+                System.out.println("잘못된 값을 입력하셨습니다.");
+            }
+        }
     }
 }
