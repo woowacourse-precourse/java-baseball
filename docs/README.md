@@ -28,7 +28,7 @@ camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하여 �
 ### 4. 게임 재시작 여부
 ```
 게임 재시작에 관하여 숫자 입력
-1 입력 시 재시작
-2 입력 시 종료
+1을 입력 시 재시작
+2를 입력 시 종료
 예외사항) 입력 결과가 1이나 2가 아닌 경우 IllegalArgumentException을 발생시켜 애플리케이션을 종료시킨다.
 ```
