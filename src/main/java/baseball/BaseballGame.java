@@ -11,6 +11,7 @@ public class BaseballGame {
 
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
+
     private List<Integer> computerNumbers = new ArrayList<>();
     private int strikeCount;
     private int ballCount;
@@ -35,6 +36,10 @@ public class BaseballGame {
                 break;
             }
         }
+        checkToRestartGame();
+    }
+
+    private void checkToRestartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartGame = Console.readLine();
 
@@ -46,10 +51,7 @@ public class BaseballGame {
         if (restartGame.equals("2")) {
             System.out.println("게임을 종료합니다.");
         }
-
-
     }
-
 
     private String answerMessage() {
 
