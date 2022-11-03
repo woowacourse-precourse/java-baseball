@@ -10,6 +10,9 @@ public class Balls {
     }
 
     public BallStatus play(Ball ball) {
-        return BallStatus.NOTHING;
+        return balls.stream().map(m -> m.play(ball))
+                .filter(status -> status != BallStatus.NOTHING)
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
     }
 }

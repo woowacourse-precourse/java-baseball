@@ -21,7 +21,7 @@ public class Ball {
         return BallStatus.NOTHING;
     }
 
-    private boolean isBallNumMatch(Ball ball) {
+    public boolean isBallNumMatch(Ball ball) {
         return this.ballNum == ball.ballNum;
     }
 
