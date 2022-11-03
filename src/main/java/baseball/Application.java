@@ -26,6 +26,20 @@ public class Application {
         }
         List<Integer> answer;
         answer = makeRandomNum();
+        Result result = checkNum(answer, guess);
+        if (result.getStrike() == 3) {
+            System.out.println(result.getStrike() + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        } else if (result.getStrike() == 0 && result.getBall() == 0)
+            System.out.println("낫싱");
+        else if (result.getStrike() == 0)
+            System.out.println(result.getBall() + "볼");
+        else if (result.getBall() == 0)
+            System.out.println(result.getStrike() + "스트라이크");
+        else
+            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+
 
     }
 
