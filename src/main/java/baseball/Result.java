@@ -22,6 +22,8 @@ public class Result {
         while (strike != 3) {
             System.out.print("숫자를 입력해 주세요 : ");
             inputNum = readLine();
+            validation.isNumber(inputNum);
+
             List<Integer> inputNumber = returnList(inputNum);
             Collections.reverse(inputNumber);
 
@@ -29,6 +31,7 @@ public class Result {
 
             strike = rules.Strike(RandomNumber, inputNumber);
             ball = rules.Ball(RandomNumber, inputNumber);
+
             if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
             } else if (strike != 0 && ball == 0) {
