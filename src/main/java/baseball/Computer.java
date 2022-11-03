@@ -19,8 +19,9 @@ public class Computer {
         }
     }
 
-    public void compareWithNumberOfPlayer(List<String> playersNumber) {
+    public String compareWithNumberOfPlayer(List<String> playersNumber) {
         Map<String, Integer> strikeBallMap = new HashMap<>();
+        String result = "";
         for (String numberOfPlayer : playersNumber) {
             int indexOfComputersNumber = computersNumber.indexOf(numberOfPlayer);
             int indexOfPlayersNumber = playersNumber.indexOf(numberOfPlayer);
@@ -35,17 +36,15 @@ public class Computer {
         }
 
         if (strikeBallMap.getOrDefault("볼", 0) != 0) {
-            System.out.print(strikeBallMap.get("볼") + "볼 ");
+            result = result + (strikeBallMap.get("볼") + "볼 ");
         }
-
         if (strikeBallMap.getOrDefault("스트라이크", 0) != 0) {
-            System.out.print(strikeBallMap.get("스트라이크") + "스트라이크");
+            result = result + (strikeBallMap.get("스트라이크") + "스트라이크");
         }
-
         if (!strikeBallMap.containsKey("볼") && !strikeBallMap.containsKey("스트라이크")) {
-            System.out.print("낫싱");
+            result = result + "낫싱";
         }
 
-        System.out.println();
+        return result;
     }
 }
