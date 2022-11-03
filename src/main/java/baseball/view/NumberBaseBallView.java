@@ -2,6 +2,8 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Map;
+
 import static baseball.resources.Sentence.*;
 
 public class NumberBaseBallView {
@@ -12,5 +14,9 @@ public class NumberBaseBallView {
     public String askInputNumber(){
         print(ASK_INPUT);
         return Console.readLine();
+    }
+
+    public void printResult(Map<String, Integer> result) {
+        print(result);
     }
 }
