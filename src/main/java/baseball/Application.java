@@ -35,10 +35,12 @@ public class Application {
     }
 
     public static List<Integer> stringToList(String tmpStr) {
-        String[] tmpStrArr
+        String[] tmpStrArr = tmpStr.split("");
         List<Integer> tmpList = new ArrayList<>();
-
-        tmpList.add();
+        for(int i = 0;i<tmpStrArr.length;i++){
+            int tmp = Integer.parseInt(tmpStrArr[i]);
+            tmpList.add(tmp);
+        }
         return tmpList;
     }
 
