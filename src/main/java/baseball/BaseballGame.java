@@ -51,14 +51,14 @@ public class BaseballGame extends InputError{
 		int result = 0;
 		char[] userNumber = userAnswer.toCharArray();
 		char[] computerNumber = Integer.toString(computer).toCharArray();
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++) {
-				if(i == j) {
-					continue;
-				}else if(userNumber[i] == computerNumber[j]) {
-					result += 1;
-				}
-			}
+		if(userNumber[0] == computerNumber[1] || userNumber[0] == computerNumber[2]){
+			result += 1;
+		}
+		if(userNumber[1] == computerNumber[0] || userNumber[1] == computerNumber[2]){
+			result += 1;
+		}
+		if(userNumber[2] == computerNumber[0] || userNumber[2] == computerNumber[1]){
+			result += 1;
 		}
 		ball = result;
 	}
