@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
     private static List<Integer> createRandomNumber() {
@@ -90,6 +91,28 @@ public class Application {
         return hint;
     }
 
+    private static void validateUserNumber(String user_number) {
+        if (user_number.length() != 3) {
+            throw new IllegalArgumentException("입력된 값의 길이가 3이 아닙니다.");
+        }
+
+        String pattern = "^[1-9]*$";
+        boolean is_match = Pattern.matches(pattern, user_number);
+
+        if (!(is_match)) {
+            throw new IllegalArgumentException("1-9 외의 값이 입력되었습니다.");
+        }
+
+        String[] number_split = user_number.split("");
+        boolean is_duplicate = number_split[0].equals(number_split[1]);
+        is_duplicate = is_duplicate || number_split[0].equals(number_split[2]);
+        is_duplicate = is_duplicate || number_split[1].equals(number_split[2]);
+
+        if (is_duplicate) {
+            throw new IllegalArgumentException("중복된 수가 입력되었습니다.");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer_num = createRandomNumber();
@@ -98,6 +121,7 @@ public class Application {
         while (user_input.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
+            validateUserNumber(guess_number);
             List<Integer> user_num = numToList(guess_number);
             int strike = countStrike(computer_num, user_num);
             int ball = countBall(computer_num, user_num, strike);
