@@ -45,4 +45,15 @@ public class Application {
         return count;
     }
 
+
+    public static int strikeCount(List<Integer> computer, List<Integer> user) {
+        int strike=0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i) == user.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
 }
