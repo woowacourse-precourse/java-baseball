@@ -24,7 +24,10 @@ public class PlayerInputFilter {
     }
 
     void checkException(String input){
-
+        if(isNotNumber(input)) noNumberException();
+        if(isNotThreeDigit(input)) notThreeDigitException();
+        if(containsZero(input)) containsZeroException();
+        if(containsSameNumber(input)) containsSameNumberException();
     }
 
     boolean isNotNumber(String input){
