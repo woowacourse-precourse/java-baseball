@@ -6,17 +6,11 @@ import java.util.List;
 
 public class UserInput {
 
-    public List<Integer> input() {
+    public String input() {
         System.out.print("숫자를 입력해 주세요 : ");
         String userInput = Console.readLine();
 
-        ExceptionCheck check = new ExceptionCheck();
-        check.verificationLength(userInput);
-        check.verificationInputZero(userInput);
-        check.verificationCharDetect(userInput);
-        check.verificationDuplicated(userInput);
-
-        return sliceInput(userInput);
+        return userInput;
     }
 
     public List<Integer> sliceInput(String userInput) {
