@@ -13,4 +13,10 @@ class BallTest {
     void strike() {
         assertThat(ONE_FIVE.compareOneBall(new Ball(1, 5))).isEqualTo(BallStatus.STRIKE);
     }
+    
+    @Test
+    @DisplayName("ball")
+    void ball() {
+        assertThat(ONE_FIVE.compareOneBall(new Ball(2, 5))).isEqualTo(BallStatus.BALL);
+    }
 }
