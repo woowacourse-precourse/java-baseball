@@ -5,4 +5,9 @@
 | 새로운 랜덤 숫자 리스트를 생성 |generateNewHiddenNumberList()| 상수 NUMBER_OF_HIDDEN_NUMBER 크기의 랜덤 숫자 리스트를 생성한다. |
 | 리스트에 새로운 랜덤 숫자 추가 | addNewHiddenNumberToList() | 주어진 리스트에 존재하지 않는 랜덤 숫자를 하나 추가한다. |
 
+### Turn class
+| 기능        | 메서드명             | 설명                            |
+|-----------|------------------|-------------------------------|
+| 사용자 입력 받기 | getPlayerInput() | Console API를 사용해 사용자 입력을 받는다. |
+
 ## TODO
