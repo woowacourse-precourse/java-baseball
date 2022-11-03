@@ -23,4 +23,23 @@ public class BaseballNumber {
 
         return false;
     }
+
+    public boolean isValid() {
+        final String REGEX = "[1-9]+";
+
+        if (baseballNumber.length() != 3) {
+            return false;
+        }
+
+        if (!baseballNumber.matches(REGEX)) {
+            return false;
+        }
+
+        if(this.containDuplicatedNumber()) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
