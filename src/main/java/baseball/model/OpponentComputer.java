@@ -17,4 +17,8 @@ public class OpponentComputer {
     public int getNumber() {
         return number;
     }
+
+    public Map<String, Integer> getStrikeAndBallCountMap() {
+        return strikeAndBallCountMap;
+    }
 }
