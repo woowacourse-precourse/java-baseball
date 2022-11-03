@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,6 +20,18 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+    @Test
+    void 난수생성() {
+        List<Integer> randomNumber = Application.generateRandomNumber();
+
+        assertThat(randomNumber.size()).isEqualTo(3);
+
+        assertThat(randomNumber.stream().allMatch(v -> v >= 1 && v <= 9)).isTrue();
+
+        List<Integer> differentRandomNumber = Application.generateRandomNumber();
+
+        assertThat(randomNumber).isNotEqualTo(differentRandomNumber);
     }
 
     @Test
