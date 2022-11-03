@@ -22,6 +22,7 @@ public class Computer {
     public boolean getResult(int number) {
         List<Integer> numbers = getListFromInt(number);
         int strike = countStrike(numbers);
+        int ball = countBall(numbers);
 
         return false;
     }
@@ -45,6 +46,17 @@ public class Computer {
             }
         }
         return strike;
+    }
+
+    private int countBall(List<Integer> numbers) {
+        int ball = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) != target.get(i)
+                    && target.contains(numbers.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
     }
 
 }
