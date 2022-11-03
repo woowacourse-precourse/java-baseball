@@ -45,4 +45,12 @@ public class Baseball {
 
         return strike;
     }
+
+    private int checkBall(List<Integer> computerNumber, int userNumber, int ball) {
+        if (computerNumber.contains(userNumber)) {
+            return ++ball;
+        }
+
+        return ball;
+    }
 }
