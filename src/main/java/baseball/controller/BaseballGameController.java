@@ -30,7 +30,7 @@ public class BaseballGameController {
 
             outputView = new OutputView();
             outputView.printHint(hint);
-        } while (computer.getOutcome(hint));
+        } while (computer.isThreeStrike(hint));
         outputView.printGameEnd();
 
 

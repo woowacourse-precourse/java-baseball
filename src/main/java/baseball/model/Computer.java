@@ -29,7 +29,7 @@ public class Computer {
         return computerNumber;
     }
 
-    public boolean getOutcome(String hint){
+    public boolean isThreeStrike(String hint){
         if(hint.equals("3스트라이크")){
             return false;
         }
