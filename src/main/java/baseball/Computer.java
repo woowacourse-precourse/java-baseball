@@ -26,6 +26,9 @@ public class Computer {
 
         print(strike, ball);
 
+        if (strike == 3) {
+            return true;
+        }
         return false;
     }
 
