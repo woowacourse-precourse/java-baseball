@@ -123,7 +123,9 @@ public class Application {
         printBall(scoreOfStrikeAndBall.get(BALL_COUNT_INDEX));
     }
 
-    private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {}
+    private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {
+        return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == 0 && scoreOfStrikeAndBall.get(BALL_COUNT_INDEX) == 0;
+    }
     private static void printNothingMatch() {}
     private static void printThreeStrike() {}
     private static void printStrike(int strikeCount) {}
