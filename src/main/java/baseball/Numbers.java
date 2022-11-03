@@ -54,4 +54,7 @@ public class Numbers {
         numbers.add(number);
     }
 
+    public Number findNumber(int index) {
+        return numbers.get(index);
+    }
 }
