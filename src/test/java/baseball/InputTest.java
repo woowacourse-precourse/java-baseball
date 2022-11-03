@@ -16,4 +16,16 @@ class InputTest {
         //then
         assertThat(input.getInput()).isEqualTo(123);
     }
+
+    @Test
+    @DisplayName("길이 테스트")
+    void createInvalidNumber() {
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Input("1234"));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Input("12"));
+    }
 }
