@@ -11,6 +11,7 @@ public abstract class NumberBaseballGame {
 
     private static List<Integer> answerNumberList = new ArrayList<>(), playerNumberList = new ArrayList<>();
     private static int ball, strike;
+    private static boolean isFirstGame = true;
 
     public static void start() {
         setup();
@@ -24,7 +25,10 @@ public abstract class NumberBaseballGame {
     }
 
     private static void printGameStartPhrase() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        if (isFirstGame) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            isFirstGame = false;
+        }
     }
 
     private static void pickAnswerNumberList() {
