@@ -21,6 +21,7 @@ public class Computer {
 
     public boolean getResult(int number) {
         List<Integer> numbers = getListFromInt(number);
+        int strike = countStrike(numbers);
 
         return false;
     }
@@ -36,5 +37,14 @@ public class Computer {
         return list;
     }
 
+    private int countStrike(List<Integer> numbers) {
+        int strike = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == target.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 
 }
