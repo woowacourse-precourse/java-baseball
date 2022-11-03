@@ -24,23 +24,27 @@ public class Controller {
 
             if (Strike == 3) {
                 view.threeStrike();
-                String in = Console.readLine();
-
-                if (model.InputException(in)) throw new IllegalArgumentException();
-
-                if ("1".equals(in)) {
-                    ball = new Ball();
-                } else if ("2".equals(in)) {
-                    break;
-                }
             } else if (Ball != 0 && Strike != 0) {
                 view.strikeAndBall(Strike, Ball);
+                continue;
             } else if (Ball != 0) {
                 view.ball(Ball);
+                continue;
             } else if (Strike != 0) {
                 view.strike(Strike);
+                continue;
             } else if (Ball == 0 && Strike == 0) {
                 view.incorrect();
+                continue;
+            }
+            String in = Console.readLine();
+
+            if (model.InputException(in)) throw new IllegalArgumentException();
+
+            if ("1".equals(in)) {
+                ball = new Ball();
+            } else if ("2".equals(in)) {
+                break;
             }
         }
     }
