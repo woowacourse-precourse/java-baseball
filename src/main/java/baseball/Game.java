@@ -7,11 +7,12 @@ import java.util.List;
 
 public class Game {
     private List<Integer> computer;
-    private UserInputNumbers userInputValues;
+    private List<Integer> userInputValues;
 
-    public Game(UserInputNumbers userInputValues) {
+    public Game(String userInputValues) {
         this.computer = pickThreeNumber();
-        this.userInputValues = userInputValues;
+        UserInputNumbers userInputNumbers = new UserInputNumbers(userInputValues);
+        this.userInputValues = userInputNumbers.getUserInputNumbers();
     }
 
     public static List<Integer> pickThreeNumber() {

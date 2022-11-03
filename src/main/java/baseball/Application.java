@@ -13,7 +13,7 @@ public class Application {
         do {
             System.out.println("숫자를 입력해주세요 :");
             String userInput = Console.readLine();
-            Game game = new Game(new UserInputNumbers(userInput));
+            Game game = new Game(userInput);
         } while(true);
     }
 
