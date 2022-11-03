@@ -22,13 +22,31 @@ public class NumberComparison {
             return true;
         }
 
-        if(isNothing(strikeCount,ballCount)){
+        if (isNothing(strikeCount, ballCount)) {
             printNothingText();
             return false;
         }
 
-        printStrikeBallCount(strikeCount,ballCount);
+        printStrikeBallCount(strikeCount, ballCount);
         return false;
+
+    }
+
+    private void printStrikeBallCount(int strikeCount, int ballCount) {
+
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼");
+        }
+
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.print(" ");
+        }
+
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+
+        System.out.println();
 
     }
 
@@ -51,16 +69,16 @@ public class NumberComparison {
 
     private int getBallCount() {
 
-        int ballCount=0;
+        int ballCount = 0;
 
-        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++){
+        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++) {
 
-            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(0,1,2));
+            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(0, 1, 2));
             IndexNumbers.remove(indexNumber);
 
             int userNumber = userNumbers.get(indexNumber);
 
-            if(searchNumber(IndexNumbers,userNumber)){
+            if (searchNumber(IndexNumbers, userNumber)) {
                 ballCount++;
             }
 
@@ -72,23 +90,23 @@ public class NumberComparison {
 
     private boolean searchNumber(List<Integer> indexNumbers, int userNumber) {
 
-        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE - 1; indexNumber++){
+        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE - 1; indexNumber++) {
             int remainedIndexNumber = indexNumbers.get(indexNumber);
-            if(userNumber == computerNumbers.get(remainedIndexNumber)){
+            if (userNumber == computerNumbers.get(remainedIndexNumber)) {
                 return true;
             }
         }
-        
+
         return false;
-        
+
     }
 
     private int getStrikeCount() {
 
         int strikeCount = 0;
 
-        for(int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++){
-            if(userNumbers.get(indexNumber) == computerNumbers.get(indexNumber) ){
+        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++) {
+            if (userNumbers.get(indexNumber) == computerNumbers.get(indexNumber)) {
                 strikeCount++;
             }
         }
