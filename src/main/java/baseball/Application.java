@@ -128,7 +128,22 @@ public class Application {
         } while (result.strike != 3);
     }
 
+    static boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = readLine();
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         printGameStart();
+        do {
+            playGame();
+        } while (restartGame());
     }
 }
