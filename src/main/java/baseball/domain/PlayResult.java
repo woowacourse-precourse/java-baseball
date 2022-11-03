@@ -1,16 +1,16 @@
 package baseball.domain;
 
 public class PlayResult {
-    private int strike;
-    private int ball;
+    private int strike = 0;
+    private int ball = 0;
 
-
-    public void updateStrike(int strike) {
-        this.strike = strike;
-    }
-
-    public void updateBall(int ball) {
-        this.ball = ball - strike;
+    public void updateResult(BallStatus ballStatus) {
+        if (ballStatus == BallStatus.STRIKE) {
+            strike++;
+        }
+        if (ballStatus == BallStatus.BALL) {
+            ball++;
+        }
     }
 
     public int getStrike() {
