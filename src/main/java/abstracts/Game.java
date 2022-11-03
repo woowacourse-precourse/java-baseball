@@ -11,6 +11,10 @@ public abstract class Game {
         return this.status;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     abstract void initialize();
     abstract void terminate();
 

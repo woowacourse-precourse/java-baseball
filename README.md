@@ -15,7 +15,7 @@
   - 상수 status와 추상메서드 initialize, terminate를 가집니다.
     - [X] getStatus
     - 게임의 상태를 알려줍니다.
-    - [ ] setStatus
+    - [X] setStatus
     - 게임의 상태를 설정합니다.
 
 - ### baseball 패키지
