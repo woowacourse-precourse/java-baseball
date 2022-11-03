@@ -133,4 +133,13 @@ public class Application {
             }
         }
     }
+
+    public static void checkAndCountBall(int ball, int userNumber, int randomNumber) {
+
+        if (userNumber == randomNumber) {
+
+            ball += 1;
+        }
+
+    }
 }
