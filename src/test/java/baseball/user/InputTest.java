@@ -45,4 +45,14 @@ public class InputTest {
         // then
         Assertions.assertThat(isNumber).isEqualTo(true);
     }
+
+    @Test
+    public void 입력값이_숫자가_아닐_때_확인() {
+        // given
+        String inputString = "일이삼";
+        // when
+        boolean isNumber = input.isAllDigits(inputString);
+        // then
+        Assertions.assertThat(isNumber).isEqualTo(false);
+    }
 }
