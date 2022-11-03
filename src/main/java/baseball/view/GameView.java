@@ -35,7 +35,7 @@ public class GameView {
 		final String REGEX = "[0-9]+";
 
 		if (!num.matches(REGEX)) {
-			InvalidInputException.numberError();
+			InvalidInputException.convertError();
 		}
 	}
 
