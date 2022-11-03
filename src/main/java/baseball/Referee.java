@@ -4,13 +4,42 @@ import java.util.List;
 
 public class Referee {
 
-    int strike = 0;
-    int ball = 0;
+    int strike;
+    int ball;
+
     Ball comBall = new Ball();
     Ball humanBall = new Ball();
 
+    final String Strike = "스트라이크";
+    final String Ball = "볼";
+    final String Nothing = "낫싱";
+
     public Referee() {
 
+    }
+
+    public void giveHint() {
+        comBall.makeComputerBalls();
+        while(!isAnswer()){
+            strike=0;
+            ball=0;
+            humanBall.makeHumanBalls();
+            compareStrike(comBall, humanBall);
+            compareBall(comBall, humanBall);
+            if(strike==0&&ball==0){
+                System.out.println(Nothing);
+            }
+            if(strike!=0&&ball!=0){
+                System.out.println(ball+Ball+" "+strike+Strike);
+            }
+            if(strike!=0&&ball==0){
+                System.out.println(strike+Strike);
+            }
+            if(strike==0&&ball!=0){
+                System.out.println(ball+Ball);
+            }
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void compareStrike(Ball comBall, Ball humanBall) {
@@ -27,5 +56,9 @@ public class Referee {
                 strike++;
             }
         }
+    }
+
+    public boolean isAnswer(){
+        return strike==3;
     }
 }
