@@ -9,6 +9,15 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    static class BaseballGameResult {
+        int strike, ball;
+
+        BaseballGameResult(int strike, int ball) {
+            this.strike = strike;
+            this.ball = ball;
+        }
+    }
+
     static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -80,6 +89,12 @@ public class Application {
             }
         }
         return ballCnt;
+    }
+
+    static BaseballGameResult getGameResult(String computer, String input) {
+        List<Integer> strikeIndexes = countStrike(computer, input);
+        int ballCnt = countBallExceptStrike(computer, input, strikeIndexes);
+        return new BaseballGameResult(strikeIndexes.size(), ballCnt);
     }
 
     public static void main(String[] args) {
