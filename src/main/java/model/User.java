@@ -18,15 +18,15 @@ public class User {
         String strInput = getString();
         // TODO : 숫자로 변환하면서 숫자인지 검증
         int numInput = parseIntFromStr(strInput);
+        // TODO : 입력이 음수인지 확인
+        isValidPositiveInt(numInput);
         // TODO : 길이가 3개인지
         isValidLength(strInput);
         // TODO : 서로 다른 수인지 확인
         isValidNumOfIndividually(strInput);
-        // TODO : 입력이 음수인지 확인
-        isValidPositiveInt(numInput);
-
         return numInput;
     }
+
 
     public boolean isValidPositiveInt(int num) {
         if (num > 0) {
