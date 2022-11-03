@@ -1,6 +1,6 @@
 package baseball.gameController;
 
-import baseball.Random.NumberGenerator;
+import baseball.random.NumberGenerator;
 import baseball.utils.UserInput;
 import baseball.utils.UserOutput;
 
