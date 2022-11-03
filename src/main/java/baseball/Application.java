@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,16 +50,31 @@ public class Application {
 
         private int[] getValueIfAcceptable(String input) {
             validateInputLength(input);
-            int[] intArrayValue = getIntArrayIfAcceptable(input);
-            validateUse0(intArrayValue);
-            validateDuplicateValues(intArrayValue);
-            return intArrayValue;
+            List<Integer> numsList = getNumsListIfAcceptable(input);
+            validateUse0(numsList);
+            validateDuplicateValues(numsList);
+            return numsList;
         }
 
         private void validateInputLength(String input) {
             if (input.length() != PICK_COUNT) {
                 throw new IllegalArgumentException("입력값이 " + PICK_COUNT + "자리가 아닙니다.");
             }
+        }
+
+        private List<Integer> getNumsListIfAcceptable(String input) {
+            String[] inputArray = input.split("");
+            List<Integer> numsList = new ArrayList<>();
+
+            try {
+                for (String s : inputArray) {
+                    numsList.add(Integer.parseInt(s));
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
+            }
+
+            return numsList;
         }
     }
 }
