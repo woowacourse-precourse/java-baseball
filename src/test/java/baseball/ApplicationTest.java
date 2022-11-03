@@ -91,6 +91,20 @@ class ApplicationTest extends NsTest {
         assertThat(Application.isOneOrTwo(input)).isEqualTo(result);
     }
 
+    @Test
+    void checkIfDone_메서드_끝난_경우_테스트() {
+        String input = "2";
+        boolean result = true;
+        assertThat(Application.checkIfDone(input)).isEqualTo(result);
+    }
+
+    @Test
+    void checkIfDone_메서드_재시작하는_경우_테스트() {
+        String input = "1";
+        boolean result = false;
+        assertThat(Application.checkIfDone(input)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -64,7 +64,7 @@ public class Computer {
         return ball;
     }
 
-    public void print(int strike, int ball) {
+    private void print(int strike, int ball) {
         if (strike > 0 && ball > 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         } else if (strike > 0 && ball == 0) {

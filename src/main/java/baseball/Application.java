@@ -15,25 +15,29 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer.startGame();
 
-        String input;
-        boolean match;
-        boolean done;
+        boolean match = false;
+        boolean done = false;
 
         do {
+            if (match) {
+                computer.startGame();
+            }
+
             System.out.print("숫자를 입력해주세요 : ");
-            input = Console.readLine();
+            String input = Console.readLine();
             isValidNumber(input);
 
             match = computer.getResult(Integer.parseInt(input));
             if (match) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                input = Console.readLine();
-                isValidCommand(input);
+                String command = Console.readLine();
+                isValidCommand(command);
 
+                done = checkIfDone(command);
             }
 
-        } while (!match);
+        } while (!match || (match && !done));
     }
 
     public static void isValidNumber(String input) {
@@ -70,6 +74,13 @@ public class Application {
     public static boolean isOneOrTwo(String input) {
         String pattern = "[1|2]";
         if (input.matches(pattern)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean checkIfDone(String command) {
+        if (Integer.parseInt(command) == FINISH) {
             return true;
         }
         return false;
