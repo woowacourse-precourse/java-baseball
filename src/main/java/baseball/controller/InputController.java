@@ -16,4 +16,13 @@ public class InputController {
         }
         return insertNum;
     }
+
+    public List<Integer> stringToListNumber(String usernumber) {
+        List<Integer> usernumtolist = new ArrayList<>();
+        for(int i=0; i<usernumber.length(); i++) {
+            int digit = usernumber.charAt(i) - '0';
+            usernumtolist.add(digit);
+        }
+        return usernumtolist;
+    }
 }
