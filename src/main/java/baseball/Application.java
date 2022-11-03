@@ -7,11 +7,10 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> computerNum = computerNum();
-        System.out.println(computerNum);
+
     }
 
-    public static List<Integer> computerNum() {
+    public static List<Integer> computerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
