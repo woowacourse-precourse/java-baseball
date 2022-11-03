@@ -36,7 +36,7 @@ public class ComputerNumberGenerator {
     }
 
     public int[] returnNumbersToArray(){
-        return new int[]{};
+        return numbers.stream().mapToInt(Integer::intValue).toArray();
     }
 
 }
