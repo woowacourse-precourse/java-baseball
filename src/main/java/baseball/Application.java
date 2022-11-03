@@ -67,6 +67,7 @@ public class Application {
             validateUserInputSize(userInput);
             validateUserInputForm(userInput);
         } catch (IllegalArgumentException e) {
+            System.out.println("입력 형식에 맞지 않습니다, 프로그램을 종료합니다.");
             throw e;
         }
     }
