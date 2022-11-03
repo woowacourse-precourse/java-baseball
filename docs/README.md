@@ -1,0 +1,26 @@
+구현 기능 목록
+
+- BaseballGame 클래스
+    - strike, ball, status(게임진행상태), correctNum(맞혀야 하는 숫자) 필드 정의
+    - 생성 후 status = true, 랜덤 값 생성
+    - 랜덤 값 생성 메소드 정의
+    - strike, ball, status - getter, setter 정의
+    - getCorrectNum - getter 정의
+    - endGame 메소드 정의
+
+- inputoutput 패키지
+    - Inputing 클래스
+        - 서로 다른 3개의 숫자로 입력받는 메소드 정의
+        - LinkedHashSet 객체로 BaseballGame에 리턴
+        - 게임이 끝나면 '1'과 '2'를 입력받는 메소드 정의
+    - Outputing 클래스
+        - 볼, 스트라이크, 낫싱 문자열 입력
+        - 라인 기준으로 출력 처리
+        - 게임 끝 메시지 출력 처리
+        - 게임 종료 출력 처리
+        - BufferedWriter.close 메소드 정의
+
+- calculate 패키지
+    - BaseballCalculator 클래스
+        - strike 개수 연산 후 반환
+        - ball 개수 연산 후 반환
