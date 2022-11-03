@@ -21,7 +21,7 @@ public class User {
             }
         }catch (IllegalArgumentException e){
             System.out.println("숫자를 잘못 입력하셨습니다");
-            //Retry.printSentence();
+            Retry.printSentence();
         }
     }
 }
