@@ -1,21 +1,23 @@
 package baseball.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.*;
 
-import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaseBallResultTypeTest {
+    private static Stream<Arguments> provideInput() {
+        return Stream.of(Arguments.of("123", "321", 0, BaseBallHitsType.BALL),
+                Arguments.of("123", "321", 1, BaseBallHitsType.STRIKE),
+                Arguments.of("123", "321", 2, BaseBallHitsType.BALL));
+    }
 
-    @Test
-    void findBallResultType() {
-
-            String homeRun = "123";
-            String input = "321";
-            int index = 1;
-        BaseBallResultType ballResultType = BaseBallResultType.findBallResultType(homeRun, input, index);
-        assertThat(ballResultType).isEqualTo(BaseBallResultType.STRIKE);
+    @ParameterizedTest
+    @MethodSource("provideInput")
+    void findBallResultType(String homeRun, String hits, int index, BaseBallHitsType baseBallHitsType) {
+        BaseBallHitsType ballResultType = BaseBallHitsType.findBallType(homeRun, hits, index);
+        assertThat(ballResultType).isEqualTo(baseBallHitsType);
     }
 }

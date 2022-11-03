@@ -12,8 +12,8 @@ public class BaseBallMatchCounterTest {
         String homeRun = "123";
         String input = "321";
         BaseBallMatchCounter baseBallMatchCounter = new BaseBallMatchCounter();
-        Map<BaseBallResultType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
-        assertThat(matchResult.get(BaseBallResultType.STRIKE)).isEqualTo(1);
+        Map<BaseBallHitsType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
+        assertThat(matchResult.get(BaseBallHitsType.STRIKE)).isEqualTo(1);
     }
 
     @Test
@@ -21,8 +21,8 @@ public class BaseBallMatchCounterTest {
         String homeRun = "123";
         String input = "321";
         BaseBallMatchCounter baseBallMatchCounter = new BaseBallMatchCounter();
-        Map<BaseBallResultType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
-        assertThat(matchResult.get(BaseBallResultType.BALL)).isEqualTo(2);
+        Map<BaseBallHitsType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
+        assertThat(matchResult.get(BaseBallHitsType.BALL)).isEqualTo(2);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class BaseBallMatchCounterTest {
         String homeRun = "456";
         String input = "321";
         BaseBallMatchCounter baseBallMatchCounter = new BaseBallMatchCounter();
-        Map<BaseBallResultType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
-        assertThat(matchResult.get(BaseBallResultType.NOTING)).isEqualTo(3);
+        Map<BaseBallHitsType, Integer> matchResult = baseBallMatchCounter.getMatchResult(homeRun, input);
+        assertThat(matchResult.get(BaseBallHitsType.NOTING)).isEqualTo(3);
     }
 }
