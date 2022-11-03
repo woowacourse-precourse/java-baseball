@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class BaseBallResultTypeTest {
+class BaseBallHitsTypeResult {
     private static Stream<Arguments> provideInput() {
         return Stream.of(Arguments.of("123", "321", 0, BaseBallHitsType.BALL),
                 Arguments.of("123", "321", 1, BaseBallHitsType.STRIKE),
