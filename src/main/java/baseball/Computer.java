@@ -9,6 +9,7 @@ public class Computer {
     static List answers;
 
     Computer() {
+        System.out.println(Message.START_GAME);
         answers = this.generateNumber();
     }
 
