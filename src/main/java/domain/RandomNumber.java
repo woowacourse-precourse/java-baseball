@@ -1,6 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
@@ -9,16 +12,15 @@ public class RandomNumber {
     private static final int MAX_NUMBER = 9;
     private static final int NUM_SIZE = 3;
 
-    private static ArrayList<Integer> random_numbers = new ArrayList<>();
-
     public RandomNumber() {
 
     }
-    public ArrayList<Integer> setRandomNumber(){
-        while(random_numbers.size() < NUM_SIZE){
-            random_numbers.add(getRandomNumber());
+    public void setRandomNumber(){
+        Set<Integer> random_number_set = new HashSet<>();
+
+        while(random_number_set != null && random_number_set.size() < NUM_SIZE){
+            random_number_set.add(getRandomNumber());
         }
-        return random_numbers;
     }
 
     public int getRandomNumber(){
