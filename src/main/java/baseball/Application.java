@@ -10,8 +10,27 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        String userInput = Console.readLine();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int restart = 0;
 
+        while (restart != 2) {
+            List<Integer> computer = computerNumberList();
+            String result = "";
+            while (!result.equals("3스트라이크")) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String userInput = Console.readLine();
+                List<Integer> user = createUserNumberList(userInput);
+                result = resultJudgement(computer, user);
+                System.out.println(result);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            restart = Integer.parseInt(Console.readLine());
+
+            if(restart == 2)
+                break;
+        }
     }
 
     public static List<Integer> computerNumberList() {
@@ -71,5 +90,4 @@ public class Application {
 
         return ballCount + "볼 " + strikeCount + "스트라이크";
     }
-
 }
