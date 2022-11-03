@@ -35,16 +35,14 @@ public class Application {
         return digits;
     }
 
-    public static boolean isValidNumber(List<Integer> digits) {
+    private static void validateUserNumber(List<Integer> digits) {
         if (digits.size() != 3) {
-            return false;
+            throw new IllegalArgumentException();
         }
 
         HashSet<Integer> nonDuplicateDigits = new HashSet<>(digits);
         if (nonDuplicateDigits.size() != digits.size()) {
-            return false;
+            throw new IllegalArgumentException();
         }
-
-        return true;
     }
 }
