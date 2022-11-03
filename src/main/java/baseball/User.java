@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Compare.INPUT_LENGTH;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +15,15 @@ public class User {
 
     public List<Integer> inputGuessRandomNumbers() {
         inputThreeNumbers = new ArrayList<>();
-        int inputNumbers = Integer.parseInt(Console.readLine());
+        String inputNumbers = Console.readLine();
+        stringToList(inputNumbers);
         return inputThreeNumbers;
+    }
+
+    private void stringToList(String inputNumbers) {
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            inputThreeNumbers.add(Integer.parseInt(inputNumbers.substring(i, i + 1)));
+        }
     }
 
     public int inputRestartOrExitNumber() {
