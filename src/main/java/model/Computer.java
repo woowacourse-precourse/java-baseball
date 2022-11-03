@@ -43,9 +43,9 @@ public class Computer {
         }
         // 볼 0
         else if (this.cntBall == 0) {
-            return (this.cntStrike + "스트라이크");
+            return (this.cntStrike + " 스트라이크");
         } else {
-            return (this.cntBall + "볼 " + this.cntStrike + "스트라이크");
+            return (this.cntBall + " 볼 " + this.cntStrike + " 스트라이크");
         }
     }
 
@@ -55,11 +55,7 @@ public class Computer {
 
     // 유저에게 힌트를 주다
     public String giveHint2User(int numOfCompare) {
-        if (isRightThreeNumOfComputer(numOfCompare)) {
-            return this.toString();
-        } else {
-            return this.toString();
-        }
+        return this.toString();
     }
 
     // 게임을 종료해도 되겠니?
@@ -77,7 +73,6 @@ public class Computer {
     }
 
     public boolean isRealRightNumOfUser(int numInputOfUser) {
-
         if (isRightThreeNumOfComputer(numInputOfUser)) {
             // TODO: 스트라이크와 볼이 있다면
             return true;
