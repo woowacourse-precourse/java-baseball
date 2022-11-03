@@ -27,10 +27,13 @@ public class ComputerNumber extends GameNumber {
         int index = 0;
         while (index < NUMBER_DIGITS) {
             int randomNumber = this.getRandomNumber();
+            if (isDuplicate(computerNumberList, randomNumber)) {
+                continue;
+            }
             if (!(isDuplicate(computerNumberList, randomNumber))) {
                 computerNumberList.add(randomNumber);
+                index++;
             }
-            index++;
         }
         return computerNumberList;
     }
