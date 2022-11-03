@@ -9,16 +9,13 @@ import java.util.List;
 
 public class GameController {
 
-    ComputerBallGenerator generator = new ComputerBallGenerator();
-
     public void run() {
         Balls answer = getComputerBalls();
         Balls playerBalls = getPlayerBalls();
-
     }
 
     private Balls getComputerBalls() {
-        List<Integer> numbers = generator.createComputerBalls();
+        List<Integer> numbers = ComputerBallGenerator.createComputerBalls();
         return getBalls(numbers);
     }
 
