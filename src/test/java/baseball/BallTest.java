@@ -23,4 +23,9 @@ public class BallTest {
         assertThat(computer.play(new Ball(1, 5))).isEqualTo(BallStatus.BALL);
         assertThat(computer.play(new Ball(3, 5))).isEqualTo(BallStatus.BALL);
     }
+
+    @Test
+    void strike() {
+        assertThat(computer.play(new Ball(2, 5))).isEqualTo(BallStatus.STRIKE);
+    }
 }
