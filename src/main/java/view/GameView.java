@@ -13,7 +13,7 @@ public class GameView {
     final String MSG_GAME_END = "게임종료";
 
     final int RESTART_GAME = 1;
-    final int END_GAME = 0;
+    final int END_GAME = 2;
 
     public void run() {
         GameController gameController = new GameController();
@@ -38,7 +38,8 @@ public class GameView {
 
                 if (numInputOfUser == RESTART_GAME) {
                     gameController.initRandNumOfComputer();
-                } else {
+                }
+                if (numInputOfUser == END_GAME) {
                     System.out.println(MSG_GAME_END);
                     break;
                 }
