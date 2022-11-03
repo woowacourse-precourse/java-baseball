@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,6 @@ public class Application {
 
     public static void checkNumber(List<Integer> numberList) {
         int num = Randoms.pickNumberInRange(1, 9);
-
         if (!numberList.contains(num)) {
             numberList.add(num);
         }
@@ -38,23 +38,62 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userNumberList = new ArrayList<>();
         String inputNum = readLine();
-        int i = 0;
-        while (userNumberList.size() != 3) {
-            userNumberList.add(Character.getNumericValue(inputNum.charAt(i)));
-            i++;
-        }
+        userNumberList = checkInput_userNumber(inputNum, 3);
         return userNumberList;
 
     }
 
+    public static List<Integer> checkInput_userNumber(String str, int size) {
+        List<Integer> userNumberList = new ArrayList<>();
+        checkFormat(str);
+        checkSize(str, size);
+        userNumberList = checkNotEqual(str);
+        return userNumberList;
+    }
+
+    public static void checkFormat(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
+    }
+
+    public static void checkSize(String str, int size) {
+        if (str.length() != size) {
+            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+        }
+    }
+
+    public static List<Integer> checkNotEqual(String str) {
+        List<Integer> userNumberList = new ArrayList<>();
+        for (int i = 0; i < str.length(); i++) {
+            int userNumber = Character.getNumericValue(str.charAt(i));
+            if (userNumberList.contains(userNumber)) {
+                throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+            }
+            userNumberList.add(userNumber);
+        }
+        return userNumberList;
+    }
+
+    public static int checkGameCode(String str) {
+        try {
+            if (Integer.parseInt(str) != 1 && Integer.parseInt(str) != 2) {
+                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
+        return Integer.parseInt(str);
+    }
+
     public static int gamePlaying() {
         List<Integer> gameNumberList = pickGameNumber();
-//        List<Integer> userNumberList = inputGameNumber();
-//        System.out.println(gameNumberList);
-
 
         int strike = 0;
-        int ball = 0;
+        int ball;
+
         while (strike != 3) {
             List<Integer> userNumberList = inputGameNumber();
             strike = 0;
@@ -65,10 +104,11 @@ public class Application {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int restartGame = Integer.parseInt(readLine());
+        String gameCode = readLine();
+        int restartGame = checkGameCode(gameCode);
         return restartGame;
-//        System.out.println(userNumberList);
     }
+
 
 
 

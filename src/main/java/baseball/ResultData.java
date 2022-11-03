@@ -21,9 +21,6 @@ public class ResultData {
         }
     }
 
-
-
-
     public List<Integer> strikeCount(int gameNumber, int userNumber, List<Integer> strikeNumberList) {
         if (Objects.equals(gameNumber, userNumber)) {
             strike++;
@@ -32,9 +29,6 @@ public class ResultData {
         if (gameNumberList.contains(userNumber) && !strikeNumberList.contains(userNumber)) {
             ball++;
         }
-        System.out.println(gameNumberList);
-        System.out.println(userNumberList);
-        System.out.println(strike + "" + ball);
         return strikeNumberList;
     }
 
