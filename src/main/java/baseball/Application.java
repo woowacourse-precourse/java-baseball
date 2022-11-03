@@ -54,7 +54,17 @@ public class Application {
         return answerNumberArrayList;
     }
 
-    private static LinkedHashMap<> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> playerNumber) {
-        
+    private static LinkedHashMap<> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> answerNumber) {
+        int strikeCount = 0;
+        ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
+
+        // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
+        for (int i=0; i<4; i++) {
+            if (playerNumber.get(i) == answerNumber.get(i)) {
+                strikeCount = strikeCount + 1;
+            } else if (playerNumber.get(i) != answerNumber.get(i)) {
+                wrongNumberIndexArrayList.add(i);
+            }
+        }
     }
 }
