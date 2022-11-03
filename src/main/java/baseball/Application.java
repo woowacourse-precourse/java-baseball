@@ -1,10 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +11,7 @@ public class Application {
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
     private final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String EXCEPTION_LOG = "예외 상황이 발생했습니다. 프로그램을 종료합니다.";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -74,21 +72,10 @@ public class Application {
         return true;
     }
 
-    public String compareAnswer(String input, String answer) {
-        String result = "";
-
+    public String compareToAnswer(String input, String answer) {
         int strike = countStrike(input, answer);
         int ball = countBall(input, answer);
-
-        if(strike == 0 && ball == 0) {
-            return NOTHING;
-        } else if(strike == 3) {
-            return THREE_STRIKE;
-        } else {
-            result += (ball + BALL + " " + strike+STRIKE);
-        }
-
-        return result;
+        return createResult(strike, ball);
     }
 
     public int countStrike(String input, String answer) {
@@ -119,5 +106,19 @@ public class Application {
         }
 
         return count;
+    }
+
+    public String createResult(int strike, int ball) {
+        if(strike == 0 && ball == 0) {
+            return NOTHING;
+        } else if(strike == 3) {
+            return THREE_STRIKE;
+        } else if (strike == 0 && ball != 0){
+            return ball + BALL;
+        } else if (strike != 0 && ball == 0) {
+            return strike + STRIKE;
+        } else {
+            return (ball + BALL + " " + strike + STRIKE);
+        }
     }
 }

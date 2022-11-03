@@ -62,6 +62,20 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 정답비교() {
+        final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+        String[] inputs = {"123", "124", "156", "312", "315", "369", "132", "135", "456"};
+        String answer = "123";
+        String[] results = {THREE_STRIKE, "2스트라이크", "1스트라이크",
+                "3볼", "2볼", "1볼", "2볼 1스트라이크", "1볼 1스트라이크", "낫싱"};
+
+        for (int i = 0; i < inputs.length; i++) {
+            assertThat(application.compareToAnswer(inputs[i], answer)).isEqualTo(results[i]);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
