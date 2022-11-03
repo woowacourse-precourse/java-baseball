@@ -22,13 +22,13 @@ public class Number {
         return this.digits;
     }
 
-    private void setDigits(String input) {
+    private void setDigits(String inputNumber) {
 
-        if (!isCorrectInput(input)){
+        if (!isCorrectInput(inputNumber)){
             throw new IllegalArgumentException();
         }
 
-        this.digits = Arrays.stream(input.split(""))
+        this.digits = Arrays.stream(inputNumber.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
@@ -47,8 +47,8 @@ public class Number {
         this.digits = convertIntegerSetToIntArray(randomNumberList);
     }
 
-    private int[] convertIntegerSetToIntArray (Set<Integer> set) {
-        return set.stream()
+    private int[] convertIntegerSetToIntArray (Set<Integer> setTypeData) {
+        return setTypeData.stream()
                 .mapToInt(Integer::intValue)
                 .toArray();
     }
@@ -59,28 +59,28 @@ public class Number {
         setDigits(prediction);
     }
 
-    private boolean isCorrectInput(String input) {
-        if(!isCorrectLength(input) || !isCorrectRange(input) || !checkDuplicate(input)) {
+    private boolean isCorrectInput(String inputNumber) {
+        if(!isCorrectLength(inputNumber) || !isCorrectRange(inputNumber) || !checkDuplicate(inputNumber)) {
             return ERROR;
         }
         return true;
     }
 
-    private boolean isCorrectRange(String input) {
+    private boolean isCorrectRange(String inputNumber) {
         Pattern numberPattern = Pattern.compile("^[0-9]*$");
-        return numberPattern.matcher(input).matches();
+        return numberPattern.matcher(inputNumber).matches();
     }
 
-    private boolean isCorrectLength(String input) {
-        return input.length() == SIZE_OF_NUMBER;
+    private boolean isCorrectLength(String inputNumber) {
+        return inputNumber.length() == SIZE_OF_NUMBER;
     }
 
-    private boolean checkDuplicate(String input) {
+    private boolean checkDuplicate(String inputNumber) {
         Set<Character> temp = new HashSet<>();
-        for(char s: input.toCharArray()) {
+        for(char s: inputNumber.toCharArray()) {
             temp.add(s);
         }
-        return input.length() == temp.size();
+        return inputNumber.length() == temp.size();
     }
 
 }

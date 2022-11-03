@@ -43,35 +43,14 @@ public class Application {
 
     }
 
-    private static void checkKeepGoing(Number answerNumber) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if(input.equals("1")) {
-            answerNumber.setRandomNumber();
-            computerNumber = answerNumber.getDigits();
-        }
-        if(input.equals("2")) {
-            keepGoing = false;
-        }
-    }
-
-    private static void printResult() {
-        if(strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        }
-        StringBuilder sb = new StringBuilder();
-        if(ball > 0) {
-            sb.append(ball).append("볼 ");
-        }
-        if(strike > 0) {
-            sb.append(strike).append("스트라이크");
-        }
-        System.out.println(sb);
+    private static void initializeScore() {
+        strike = 0;
+        ball = 0;
     }
 
     private static void calcScore() {
         for(int i = 0; i < MAX_COUNT; i++) {
-            int checkCase = checkBallOrStike(userNumber[i], i);
+            int checkCase = checkBallOrStrike(userNumber[i], i);
             if(checkCase == BALL_CASE) {
                 ball++;
                 continue;
@@ -82,21 +61,44 @@ public class Application {
         }
     }
 
-    private static int checkBallOrStike(int num, int index) {
-        for(int j = 0; j < MAX_COUNT; j++) {
-            if(num == computerNumber[j] && j == index) {
+    private static int checkBallOrStrike(int caseNumber, int caseIndex) {
+        for(int answerCaseIndex = 0; answerCaseIndex < MAX_COUNT; answerCaseIndex++) {
+            int answerCaseNumber = computerNumber[answerCaseIndex];
+
+            if(caseNumber == answerCaseNumber && answerCaseIndex == caseIndex) {
                 return STRIKE_CASE;
             }
-            if(num == computerNumber[j]) {
+            if(caseNumber == answerCaseNumber) {
                 return BALL_CASE;
             }
         }
         return 0;
     }
 
-    private static void initializeScore() {
-        strike = 0;
-        ball = 0;
+    private static void printResult() {
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+        StringBuilder ballAndStrikeSentence = new StringBuilder();
+        if(ball > 0) {
+            ballAndStrikeSentence.append(ball).append("볼 ");
+        }
+        if(strike > 0) {
+            ballAndStrikeSentence.append(strike).append("스트라이크");
+        }
+        System.out.println(ballAndStrikeSentence);
+    }
+
+    private static void checkKeepGoing(Number answerNumber) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(input.equals("1")) {
+            answerNumber.setRandomNumber();
+            computerNumber = answerNumber.getDigits();
+        }
+        if(input.equals("2")) {
+            keepGoing = false;
+        }
     }
 
 }
