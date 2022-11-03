@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,6 +20,9 @@ public class Application {
         do {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
+
+            int numbers = putInNumber();
+
         } while(true);
     }
 
@@ -33,5 +37,11 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumberList.contains(randomNumber)) randomNumberList.add(randomNumber);
         }
+    }
+
+    public static Integer putInNumber() {
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextInt();
     }
 }
