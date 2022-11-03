@@ -25,6 +25,10 @@ class InputUtilsTest {
     @Test
     void 사용자에게_입력받은_숫자가_올바르지_못할_경우() {
         assertAll(
+                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("113"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("103"))
+                        .isInstanceOf(IllegalArgumentException.class),
                 () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("4e1"))
                         .isInstanceOf(IllegalArgumentException.class),
                 () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("erq"))
