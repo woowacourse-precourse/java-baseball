@@ -23,4 +23,12 @@ public class User {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
+
+    private void validateCheckEmpty(String userNumber) {
+        if (userNumber.length() == NUMBER_SIZE_ZERO) {
+            throw new IllegalArgumentException("압력을 하지 않았습니다.");
+        }
+    }
+
+
 }
