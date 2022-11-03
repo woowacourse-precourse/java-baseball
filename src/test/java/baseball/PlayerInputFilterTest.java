@@ -1,5 +1,4 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -98,6 +97,4 @@ public class PlayerInputFilterTest {
     void 문자열_배열로_반환(){
         assertThat(playerInputFilter.convertNumbersToArray("123")).isEqualTo(new int[]{1, 2, 3});
     }
-
-
 }
