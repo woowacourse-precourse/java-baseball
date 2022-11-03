@@ -229,3 +229,19 @@ Javadoc은 슈퍼 타입 메소드를 오버라이드를 한다면 항상 존재
 
 ---
 
+## 추가된 요구 사항
+- #### indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+  예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+  <br>힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
+  <br>
+
+- #### 3항 연산자를 쓰지 않는다.
+  ex) a > b ? printf("a가 크네") : printf("b가 크네");
+
+- #### 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- #### JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+  테스트 도구 사용법이 익숙하지 않다면 test/java/study를 참고하여 학습한 후 테스트를 구현한다.
+- ####  라이브러리
+  camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.<br>
+  Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.<br>
+  사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
