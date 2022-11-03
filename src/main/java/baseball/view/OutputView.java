@@ -14,7 +14,7 @@ public class OutputView {
 	}
 
 	public static void printInputUserNumber() {
-		System.out.println(INPUT_USER_NUMBER_MESSAGE);
+		System.out.print(INPUT_USER_NUMBER_MESSAGE);
 	}
 
 	public static void printBall(Integer ball) {
