@@ -13,12 +13,31 @@ public class Application {
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
     private final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String INPUT_EXCEPTION_LOG = "입력이 잘못되었습니다. 게임을 종료합니다.";
 
     String input = "";
     String answer = "";
 
     public void startGame() {
+        printStart();
+        answer = generateAnswer();
 
+        boolean flag = true;
+        while(flag) {
+            input = getInput();
+            if(!isValidInput(input)) {
+                throw new IllegalArgumentException(INPUT_EXCEPTION_LOG);
+            }
+
+            String result = compareToAnswer(input, answer);
+
+            System.out.println(result);
+            if(result == THREE_STRIKE) {
+                flag = endOfGame();
+            }
+        }
+
+        System.out.println("게임을 종료합니다. 즐거우셨나요?");
     }
 
     public void printStart() {
@@ -102,6 +121,8 @@ public class Application {
         char[] inputCharArray = input.toCharArray();
         char[] answerCharArray = answer.toCharArray();
 
+        
+
         return count;
     }
 
@@ -119,7 +140,27 @@ public class Application {
         }
     }
 
-    public void resetGame(String answer) {
+    public boolean endOfGame() {
+        boolean result;
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = readLine();
+
+            if (input.equals("1")) {
+                result = true;
+                resetGame();
+                break;
+            } else if (input.equals("2")) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    public void resetGame() {
         answer = generateAnswer();
     }
 
