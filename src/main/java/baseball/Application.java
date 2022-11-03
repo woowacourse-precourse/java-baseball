@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final int midGame = 1;
@@ -20,7 +22,7 @@ public class Application {
     }
 
     public static void announceBallAndStrike (int ball, int strike) {
-        ArrayList<String> ballAndStrike = new ArrayList<>();
+        List<String> ballAndStrike = new ArrayList<>();
         if (ball > 0) {
             ballAndStrike.add(String.format("%d볼", ball));
         }
@@ -56,7 +58,12 @@ public class Application {
             if (ballStrikeOrNot == -1) {
                 continue;
             }
-            ball+;
+            ball++;
         }
+    }
+
+    public static List<Integer> makeAnswerNumber () {
+        List<Integer> answerNumber = Randoms.pickUniqueNumbersInRange(1,9,3);
+        return answerNumber;
     }
 }
