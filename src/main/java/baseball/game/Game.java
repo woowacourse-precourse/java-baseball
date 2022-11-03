@@ -31,7 +31,7 @@ public class Game {
 	}
 
 	private String receiveInput(String message) {
-		System.out.println(message);
+		System.out.print(message);
 		return Console.readLine();
 	}
 

@@ -4,7 +4,7 @@ public class Const {
 	public static int GAME_LENGTH = 3;
 	public static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 	public static String GAME_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-	public static String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	public static String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n";
 	public static String GAME_INPUT_WAIT_MESSAGE = "숫자를 입력해주세요 : ";
 	public static String GAME_EXCEPTION_RESTART_MESSAGE = "1 또는 2만 입력해주세요.";
 	public static String GAME_EXCEPTION_DUPLICATE_MESSAGE = "중복된 입력은 허용하지 않습니다.";
