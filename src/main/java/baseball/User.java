@@ -42,7 +42,7 @@ public class User {
         try {
             getValidNumber(inputUserNumber);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            throw new IllegalArgumentException(exception);
         }
         for (char element : inputUserNumber.toCharArray()) {
             userNumber.add(element - '0');
