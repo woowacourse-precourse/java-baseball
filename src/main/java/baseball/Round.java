@@ -2,37 +2,54 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Round {
 
     private final Computer computer;
     private Numbers numbers;
 
-    private int countBall;
-    private int countStrike;
-
     public Round(Computer computer) {
         this.computer = computer;
     }
 
-    public void startNewRound() {
+    public void startNewRound()  {
         Print.printRoundStart();
-        String inputString = Console.readLine();
-        resetScore();
+        String inputString = readNumber();
         inputNewNumbers(inputString);
+    }
+
+    private String readNumber() {
+        String inputString;
+        try {
+            Constructor<Console> constructor = Console.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            Console console = constructor.newInstance();
+
+            Method readLine = Console.class.getDeclaredMethod("readLine");
+            readLine.setAccessible(true);
+            inputString = (String) readLine.invoke(console);
+
+            Field scannerField = Console.class.getDeclaredField("scanner");
+            scannerField.setAccessible(true);
+            Scanner scanner = (Scanner) scannerField.get(console);
+            scannerField.set(console, null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return inputString;
     }
 
     private void inputNewNumbers(String inputString) {
         int input = Integer.parseInt(inputString);
         numbers = new Numbers(input);
-    }
-
-    private void resetScore() {
-        this.countBall = 0;
-        this.countStrike = 0;
     }
 
     public void playRound() {
