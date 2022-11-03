@@ -14,20 +14,28 @@ public class Application {
     public static void main(String[] args) {
         int gameStatus = START;
         while (gameStatus == START) {
-            playNumberBaseball();
+            boolean isWork = playNumberBaseball();
+            if (!isWork) {
+                break;
+            }
             gameStatus = askRestartOrExit();
         }
     }
 
-    private static void playNumberBaseball() {
+    private static boolean playNumberBaseball() {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
+        boolean isWork = true;
         while (userGetRightAnswer == false) {
             String user = getUserAnswerInString();
+            if (isValidAnswer(user)) {
+                isWork = false;
+            }
             List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
             userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
             printResult(scoreOfStrikeAndBall);
         }
+        return isWork;
     }
 
     private static String getComputerNumberInString() {
