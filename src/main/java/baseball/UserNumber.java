@@ -11,7 +11,7 @@ public class UserNumber {
         this.userNums = convertInputStringToUserNums(input);
     }
 
-    private List<Integer> convertInputStringToUserNums(String input) {
+    public static List<Integer> convertInputStringToUserNums(String input) {
         List<Integer> userNums = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             userNums.add(Integer.valueOf(String.valueOf(input.charAt(0))));
