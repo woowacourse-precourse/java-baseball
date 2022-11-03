@@ -22,6 +22,14 @@ public class Application {
             }
             PrintComment.printCorrectComment();
             PrintComment.printRestartComment();
+            userInput = Console.readLine();
+
+            if (isRestart(userInput)) {
+                game = new Game();
+                continue;
+            }
+            isContinue = false;
+            PrintComment.printUserInput(userInput);
         } while(isContinue);
     }
 
