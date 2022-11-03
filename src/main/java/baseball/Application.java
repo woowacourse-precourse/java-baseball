@@ -8,6 +8,7 @@ public class Application {
     static int[] hint; // index 0: 볼, index 1: 스트라이크
 
     static void findHint(String strIn) {
+        hint = new int[2];
         for (int i = 0; i < strIn.length(); i++) {
             if (answer.charAt(i) == strIn.charAt(i)) {
                 hint[1]++;
@@ -22,19 +23,20 @@ public class Application {
         StringBuilder hintOut = new StringBuilder();
         if (hint[0] > 0) {
             hintOut.append(String.format("%d볼 ", hint[0]));
-        } else if (hint[1] > 0) {
+        }
+        if (hint[1] > 0) {
             hintOut.append(String.format("%d스트라이크", hint[1]));
-        } else {
+        }
+        if (hint[0] + hint[1] == 0) {
             hintOut.append("낫싱");
         }
         System.out.println(hintOut.toString());
     }
 
-    static String checkUserInput(String strIn) {
+    static void checkUserInput(String strIn) {
         UserInputException.lengthCheck(strIn);
         UserInputException.numberCheck(strIn);
         UserInputException.duplicateCheck(strIn);
-        return strIn;
      }
 
     static String listToString(List<Integer> listIn) {
@@ -62,12 +64,27 @@ public class Application {
     }
     static void initGame() {
         answer = generateAnswer();
-        hint = new int[2];
+        System.out.println(answer);
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        String tes = "123";
-        System.out.println(tes.indexOf('2'));
+        int gameFlag = 1;
+        while (gameFlag == 1) {
+            initGame();
+            String userInput = "";
+
+            while (!answer.equals(userInput)) {
+                System.out.print("숫자를 입력해주세요 : ");
+                userInput = Console.readLine();
+                checkUserInput(userInput);
+                generateHint(userInput);
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameFlag = Integer.parseInt(Console.readLine());
+        }
+        return;
     }
 }
