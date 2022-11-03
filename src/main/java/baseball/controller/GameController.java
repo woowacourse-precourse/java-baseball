@@ -4,13 +4,11 @@ import java.util.List;
 
 import baseball.service.GameService;
 import baseball.view.View;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 	static final int ball = 1;
 	static final int strike = 0;
 	static final int nothing = 0;
-	View view = new View();
 
 	public static String createComputerNumber() {
 		return GameService.createRandomNumber();
@@ -46,9 +44,7 @@ public class GameController {
 	}
 
 	public static List<Integer> compareNumber(String computer, String user) {
-		List<Integer> result = GameService.compareNumber(GameService.convertStringToList(computer),
+		return GameService.compareNumber(GameService.convertStringToList(computer),
 				GameService.convertStringToList(user));
-
-		return result;
 	}
 }
