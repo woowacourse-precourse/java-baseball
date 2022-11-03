@@ -24,10 +24,11 @@ public class Application {
             if(!(input_num > 99 && input_num < 1000)){
                 throw new IllegalArgumentException();
             }else{
-                //todo: 검증 기능
-                //todo: 아닐 경우
-                //todo: 스트라이크, 볼 개수 출력
-                //todo: 3자리 숫자를 입력받는 기능 실행
+                int strike = strike(input_num_list(input_num), computer);
+                int ball = ball(input_num_list(input_num), computer);
+                int nothing = nothing(input_num_list(input_num), computer);
+                //숫자 검증 기능(출력기능)
+                print_verification(strike,ball,nothing);
             }
         }
     }
@@ -38,7 +39,7 @@ public class Application {
         sc.close();
         return result;
     }
-    //todo: input_num 를 배열로 변환하는 기능
+    //input_num 를 배열로 변환하는 기능
     public static List<Integer> input_num_list(int input_num){
         List<Integer> result = new ArrayList<>();
         //100의 자리수 배열에 추가
@@ -53,7 +54,7 @@ public class Application {
     //strike 개수 구하는 기능
     public static int strike(List<Integer> input_num_list, List<Integer> computer){
         int strike = 0;
-        //todo: 1개 이상의 숫자가 같고 자리가 같은 경우 = (맞은개수)스트라이크
+        //1개 이상의 숫자가 같고 자리가 같은 경우 = (맞은개수)스트라이크
         for(int i=0; i<3; i++){
             if(input_num_list.get(i) == computer.get(i)){
                 strike += 1;
@@ -63,7 +64,7 @@ public class Application {
     }
     //ball의 개수 구하는 기능
     public static int ball(List<Integer> input_num_list, List<Integer> computer){
-        //todo: 1개 이상의 숫자가 같고 자리가 다른 경우 = (맞은개수)볼
+        //1개 이상의 숫자가 같고 자리가 다른 경우 = (맞은개수)볼
         int ball = 0;
         if(input_num_list.get(0) == computer.get(1) || input_num_list.get(0) == computer.get(2)){
             ball += 1;
@@ -86,5 +87,32 @@ public class Application {
             }
         }
         return nothing;
+    }
+    //숫자 검증 기능(출력기능)
+    public static void print_verification(int strike, int ball, int nothing){
+        //스트라이크가 1개 이상, 볼이 0개일 경우
+        if(strike > 0 && ball == 0){
+            //3스트라이크 일 경우
+            if(strike == 3){
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+            //아닐 경우
+            else{
+                System.out.println(strike + "스트라이크");
+            }
+        }
+        //스트라이크가 1개 이상, 볼이 1개 이상일 경우
+        else if(strike > 0 && ball > 0){
+            System.out.println(strike + "스트라이크" + ball + "볼");
+        }
+        //스트라이크가 0개, 볼이 1개이상
+        else if(strike == 0 && ball > 0) {
+            System.out.println(ball + "볼");
+        }
+        //낫싱인 경우
+        else if(nothing == 3){
+            System.out.println("낫싱");
+        }
     }
 }
