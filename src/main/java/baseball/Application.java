@@ -83,4 +83,16 @@ public class Application {
         return true;
     }
 
+    public static boolean checkInteger(String numberString) {
+
+        for (int i = 0; i < numberString.length(); i++) {
+            if (numberString.charAt(i) < 49 || numberString.charAt(i) > 57) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
