@@ -37,6 +37,7 @@ public class Application {
                 break;
             }
             int ball = countBalls(userInput, computerNumber);
+            int strike = countStrikes(userInput, computerNumber);
         }
     }
 
@@ -138,7 +139,19 @@ public class Application {
                 return true;
             }
         }
+
         return false;
+    }
+
+    static int countStrikes(int[] userInput, int[] computerNumber) {
+        int count = 0;
+        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if(userInput[i] == computerNumber[i]) {
+                count += 1;
+            }
+        }
+
+        return count;
     }
 }
 
