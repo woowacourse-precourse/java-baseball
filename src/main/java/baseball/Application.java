@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -36,6 +37,7 @@ public class Application {
 
         for (int j = 0; j < 3; j++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);
             }
@@ -70,12 +72,13 @@ public class Application {
 
         if (decidedRestart == 1) return true;
         else return false;
-
     }
 
     public static void proceedGame (List<Integer> computerNumberList, List<Integer> inputNumberList) {
         while (true) {
-            splitNumber(inputNumberList, Console.readLine());
+            String inputString = Console.readLine();
+            discoverInputNumberException(inputString);
+            splitNumber(inputNumberList, inputString);
             int strikeCounting = distinguishStrike(inputNumberList, computerNumberList);
             int ballCounting = distinguishBall(inputNumberList, computerNumberList, strikeCounting);
             inputNumberList.clear();
@@ -86,6 +89,34 @@ public class Application {
         }
     }
 
+    public static boolean seekDuplicatedNumber (String inputNumber) {
+        HashSet<Character> inputNubmerInSet = new HashSet<>();
+        for (int p = 0; p < inputNumber.length(); p++) {
+            inputNubmerInSet.add(inputNumber.charAt(p));
+        }
+        if (inputNubmerInSet.size() < 3) return true;
+        else return false;
+    }
+
+    public static void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
+
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        if (seekDuplicatedNumber(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int l = 0; l < inputNumber.length(); l++) {
+            if (inputNumber.charAt(l) < 49 || inputNumber.charAt(l) > 57) {
+                throw new IllegalArgumentException();
+            }else if (inputNumber.charAt(l) == '0') {
+                throw new IllegalArgumentException();
+            }
+
+        }
+    }
 
     public static void main(String[] args) {
 
