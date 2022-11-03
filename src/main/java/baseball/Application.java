@@ -88,7 +88,15 @@ public class Application {
         return scoreOfStrikeAndBall;
     }
 
-    private static int countStrike(String computer, String user) {}
+    private static int countStrike(String computer, String user) {
+        int count = 0;
+        for (int i = 0; i < LENGTH_OF_BASEBALL_NUMBER; i++) {
+            if (computer.charAt(i) == user.charAt(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
     private static int countBall(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {}
