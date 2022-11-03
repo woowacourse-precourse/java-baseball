@@ -50,7 +50,7 @@
 
 - [ ] 1 대 3 비교 (Balls)
   - [x] 1 strike : strike 인 공이 존재
-  - [ ] 1 ball : ball 인 공이 존재
+  - [x] 1 ball : ball 인 공이 존재
   - [ ] 1 nothing : strike 또는 ball 인 공이 존재하지 않는 경우
 
 - [ ] 3 대 3 비교 (Balls)
