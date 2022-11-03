@@ -23,6 +23,21 @@ public class Baseball {
         System.out.println();
     }
 
+    private int getStrike() {
+        int strikeNumber = 0;
+
+        for (int numberIndex = 0; numberIndex < numberLength; numberIndex++) {
+            int computer = computerNumber.get(numberIndex);
+
+            char userCharacter = userNumbers.charAt(numberIndex);
+            int user = Character.getNumericValue(userCharacter);
+
+            strikeNumber = checkStrike(computer,user,strikeNumber);
+        }
+
+        return strikeNumber;
+    }
+
     private int checkStrike(int computerNumber, int userNumber, int strike) {
         if (computerNumber == userNumber) {
             return ++strike;
