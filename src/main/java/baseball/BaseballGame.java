@@ -1,9 +1,10 @@
 package baseball;
 
 import static baseball.Computer.*;
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static baseball.Message.*;
 import static baseball.User.*;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballGame {
-
     private List<Integer> userNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
     private List<Integer> computerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
     int strike;
@@ -34,8 +34,6 @@ public class BaseballGame {
         checkInputData(userNumber);
         strike = checkStrikeCount(userNumber);
         ball = checkBallCount(userNumber);
-
-
         gameResult();
     }
 
@@ -51,7 +49,6 @@ public class BaseballGame {
             throw new IllegalArgumentException("중복된 숫자가 있어서는 안됩니다. 서로 다른 숫자로 다시 입력해주세요.");
         }
     }
-
 
     public int checkStrikeCount(List<Integer> userNumber) {
         int strikeCount = 0;
@@ -83,7 +80,7 @@ public class BaseballGame {
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         }
-        if (ball == 0 & strike == 0){
+        if (ball == 0 & strike == 0) {
             System.out.println("낫싱");
         }
     }
@@ -106,5 +103,4 @@ public class BaseballGame {
         }
         return true;
     }
-
 }
