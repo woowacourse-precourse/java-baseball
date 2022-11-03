@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +15,27 @@ public class Number {
     public Number() {
     }
 
+    public String getNumber() {
+        return this.number;
+    }
+
     public void setNumber(String input) {
         isValidInput(input);
         this.number = input;
+    }
+
+    public void setRandomNumber() {
+        Set<Character> numberSet = new HashSet<>();
+        StringBuilder randomNumber = new StringBuilder();
+        while (numberSet.size() != CNT_NUMBER) {
+            numberSet.add(getSingleRandomNumber());
+        }
+        numberSet.forEach(randomNumber::append);
+        this.number = String.valueOf(randomNumber);
+    }
+
+    private char getSingleRandomNumber() {
+        return (char) (pickNumberInRange(MIN_NUMBER, MAX_NUMBER) + '0');
     }
 
     private void isValidInput(String input) {
