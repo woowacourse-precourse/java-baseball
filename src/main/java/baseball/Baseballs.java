@@ -1,9 +1,14 @@
 package baseball;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Baseballs {
     private static final int BASEBALL_COUNT = 3;
     private static char MIN_VALID_RANGE = '1';
     private static char MAX_VALID_RANGE = '9';
+
+    private List<Baseball> baseballs;
 
     public static Baseballs of(String userInput) {
         return new Baseballs(userInput);
@@ -11,6 +16,10 @@ public class Baseballs {
 
     private Baseballs(String userInput) {
         validate(userInput);
+        this.baseballs = userInput.chars()
+                .mapToObj(value -> (char)value)
+                .map(Baseball::new)
+                .collect(Collectors.toList());
     }
 
     private void validate(String userInput) {
