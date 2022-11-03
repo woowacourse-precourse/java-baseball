@@ -17,13 +17,13 @@ class Computer {
     Computer() {
         while(randomNumbers.size() < 3) {
             Integer newRandomNumber = pickRandomNumber();
-            if (!hasNumber(newRandomNumber)) {
+            if (!has(newRandomNumber)) {
                 randomNumbers.add(newRandomNumber);
             }
         }
     }
 
-    private static boolean hasNumber(Integer number) {
+    private static boolean has(Integer number) {
         if (randomNumbers.contains(number)) {
             return true;
         }
