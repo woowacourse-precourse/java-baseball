@@ -1,4 +1,4 @@
-#💻 Start Program
+# 💻 Start Program
 1. Start Number Baseball Game 
 
 
@@ -8,7 +8,7 @@
    - else throw IllegalArgumentException
 
 ---
-#🎮 Start Game
+# 🎮 Start Game
 
 ## Setup Game
 1. Print game start phrase
@@ -17,6 +17,7 @@
 2. Pick Answer Number List
 
    ❗ MUST clear the List not to be affected by previous execution result
+   - pick 3 unique numbers in range 1 ~ 9
 
 ## Play Game
 1. Input Player Number List
