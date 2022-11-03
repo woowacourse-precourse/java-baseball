@@ -1,11 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.assertj.core.api.Assertions.*;
 
 public class AnswerSheetTest{
 
@@ -19,17 +19,6 @@ public class AnswerSheetTest{
 
         Assertions.assertThrows(IllegalArgumentException.class,()->answerSheet.getUserAnswer());
     }
-
-    @Test
-    void 반복가능() {
-        String input = "123\n456\n789";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        answerSheet.getUserAnswer();
-        int result = answerSheet.userAnswer.get(2);
-
-        assertThat(result).isEqualTo(9);
-    }
+    
 
 }

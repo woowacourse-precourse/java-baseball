@@ -5,20 +5,26 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AnswerSheet {
 
-    public List<Integer> userAnswer = new ArrayList<>();
+    public static List<Integer> userAnswer = new ArrayList<>();
     protected String[] inputArray;
 
     IllegalException illegalException = new IllegalException();
-
+    Hint hint = new Hint();
 
     public void getUserAnswer() {
-        setUserAnswer();
-        while (userAnswer.get(2) != 9) {
-            userAnswer.clear();
+
+        while (true) {
             guideToEnterNumber();
+            userAnswer.clear();
             setUserAnswer();
+
+            if (hint.getHint().equals("3스트라이크")) {
+                System.out.println("end");
+                break;
+            }
         }
     }
 
