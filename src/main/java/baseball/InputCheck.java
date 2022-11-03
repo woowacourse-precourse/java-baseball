@@ -14,7 +14,7 @@ public class InputCheck {
         return false;
     }
 
-    private static boolean hasNonDigit(String input) {
+    public static boolean hasNonDigit(String input) {
         char temp;
 
         for (int i = 0; i < input.length(); i++) {
