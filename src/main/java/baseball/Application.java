@@ -13,6 +13,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
     public static void finishAnnounce() {
+        System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
@@ -64,15 +65,12 @@ public class Application {
                 ballAndStrike.set(0, ballAndStrike.get(0)-1);
             }
         }
-        System.out.println(ballAndStrike);
         return ballAndStrike;
     }
     public static void caseOfAllStrike(String enterOneOrTwo) {
         if (enterOneOrTwo.equals("1")) {
             game();
-        } else if (enterOneOrTwo.equals("2")) {
-            System.exit(0);
-        } else {
+        } else if (!enterOneOrTwo.equals("2")) {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
         }
     }
