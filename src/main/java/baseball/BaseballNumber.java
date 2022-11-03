@@ -44,6 +44,18 @@ public class BaseballNumber {
     }
 
     public static void printMessage(int strike, int ball) {
-
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (strike == 0) {
+            System.out.println(ball+"볼");
+            return;
+        }
+        if (ball == 0) {
+            System.out.println(strike+"스트라이크");
+            return;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 }
