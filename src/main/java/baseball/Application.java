@@ -134,6 +134,15 @@ public class Application {
         }
     }
 
+    public static void countingBall(int ball, int[] userNumbers, List<Integer> randomNumberList) {
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                checkAndCountBall(ball, userNumbers[i], randomNumberList.get(i));
+            }
+        }
+    }
+
     public static void checkAndCountBall(int ball, int userNumber, int randomNumber) {
 
         if (userNumber == randomNumber) {
