@@ -27,4 +27,14 @@ public class OpponentComputerTest {
         assertThat(strikeAndBallCountMap.containsKey("Strike")).isTrue();
         assertThat(strikeAndBallCountMap.containsKey("Ball")).isTrue();
     }
+
+    @Test
+    void 상대방_생성과_동시에_초기화되는_스트라이크_볼_카운트_맵의_Value는_0() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        Integer strikeCount = opponentComputer.getStrikeAndBallCountMap().get("Strike");
+        Integer ballCount = opponentComputer.getStrikeAndBallCountMap().get("Ball");
+
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(0);
+    }
 }
