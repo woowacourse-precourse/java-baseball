@@ -26,7 +26,7 @@ public class Application {
         System.out.println(START_MESSAGE);
         int[] computer = initializeComputerNumber();
         boolean playBaseball = true;
-        while(playBaseball){
+        while (playBaseball) {
             String userInput = getUserInput();
             try {
                 isValidInput(userInput ,InputType.BASEBALL_NUMBER);
@@ -39,38 +39,40 @@ public class Application {
 
     static int[] initializeComputerNumber() {
         List<Integer> computerNumberList = new ArrayList<>();
-        while(computerNumberList.size() < 3){
+        while (computerNumberList.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumberList.contains(randomNumber)){
+            if (!computerNumberList.contains(randomNumber)){
                 computerNumberList.add(randomNumber);
             }
         }
         int[] computerNumberArray = computerNumberList.stream().mapToInt(i -> i).toArray();
+        
         return computerNumberArray;
     }
 
     static String getUserInput() {
         System.out.print(INPUT_MESSAGE);
         String userInput = Console.readLine();
+
         return userInput;
     }
 
     static void isValidInput(String userInput, InputType inputType) {
-        if(inputType == InputType.BASEBALL_NUMBER) {
-            if(userInput.length() != INPUT_BASEBALL_LENGTH) {
+        if (inputType == InputType.BASEBALL_NUMBER) {
+            if (userInput.length() != INPUT_BASEBALL_LENGTH) {
                 throw new IllegalArgumentException(INPUT_LENGTH_ERROR_MESSAGE);
             }
-            if(!isNumeric(userInput)) {
+            if (!isNumeric(userInput)) {
                 throw new IllegalArgumentException(INPUT_NOT_NUMERIC_ERROR_MESSAGE);
             }
-            if(hasDuplicatedNumber(userInput)) {
+            if (hasDuplicatedNumber(userInput)) {
                 throw new IllegalArgumentException(INPUT_DUPLICATED_ERROR_MESSAGE);
             }
-        } else if(inputType == InputType.WHETHER_REPLAY) {
-            if(userInput.length() != INPUT_REPLAY_LENGTH) {
+        } else if (inputType == InputType.WHETHER_REPLAY) {
+            if (userInput.length() != INPUT_REPLAY_LENGTH) {
                 throw new IllegalArgumentException(INPUT_REPLAY_ERROR_MESSAGE);
             }
-            if(!(userInput.charAt(0) == REPLAY || userInput.charAt(0) == END)) {
+            if (!(userInput.charAt(0) == REPLAY || userInput.charAt(0) == END)) {
                 throw new IllegalArgumentException(INPUT_REPLAY_ERROR_MESSAGE);
             }
         }
@@ -78,8 +80,8 @@ public class Application {
 
     static boolean isNumeric(String userInput) {
         boolean result = true;
-        for(int i = 0; i < 3; ++i) {
-            if(!(userInput.charAt(i) >= '1' && userInput.charAt(i) <= '9')) {
+        for (int i = 0; i < 3; ++i) {
+            if (!(userInput.charAt(i) >= '1' && userInput.charAt(i) <= '9')) {
                 result = false;
                 break;
             }
@@ -93,11 +95,11 @@ public class Application {
         char firstLetter = userInput.charAt(0);
         char secondLetter = userInput.charAt(1);
         char thirdLetter = userInput.charAt(2);
-        if(firstLetter == secondLetter) {
+        if (firstLetter == secondLetter) {
             isDuplicated = true;
-        } else if(firstLetter == thirdLetter) {
+        } else if (firstLetter == thirdLetter) {
             isDuplicated = true;
-        } else if(secondLetter == thirdLetter) {
+        } else if (secondLetter == thirdLetter) {
             isDuplicated = true;
         }
 
