@@ -21,19 +21,19 @@ public class Application {
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> targetNumbers = getTargetNumbers();
-            repeatUntilUserHitsTargetNumber();
+            repeatUntilUserHitsTargetNumber(targetNumbers);
         }
 
         private List<Integer> getTargetNumbers() {
             return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, PICK_COUNT);
         }
 
-        private void repeatUntilUserHitsTargetNumber() {
+        private void repeatUntilUserHitsTargetNumber(List<Integer> targetNumbers) {
             Map<String, Integer> gameResult = new HashMap<>();
 
             do {
-                List<Integer> userInput = getUserInput();
-                getGameResult(userInput, gameResult);
+                List<Integer> userInputNumbers = getUserInput();
+                getGameResult(userInputNumbers, targetNumbers, gameResult);
                 printGameResult(gameResult);
             } while (gameResult.get(CORRECT_ANSWER) != PICK_COUNT);
 
@@ -85,6 +85,22 @@ public class Application {
 
             if (numsList.size() != numsSet.size()) {
                 throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            }
+        }
+
+        private void getGameResult(List<Integer> userInputNumbers, List<Integer> targetNumbers, Map<String, Integer> gameResult) {
+            for (int i = 0; i < targetNumbers.size(); i++) {
+                int userNum = userInputNumbers.get(i);
+                int targetNum = targetNumbers.get(i);
+
+                if (userNum == targetNum) {
+                    plusGameResult(CORRECT_ANSWER, gameResult);
+                    continue;
+                }
+
+                if (targetNumbers.contains(userNum)) {
+                    plusGameResult(SIMILAR_ANSWER, gameResult);
+                }
             }
         }
     }
