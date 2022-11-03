@@ -6,6 +6,9 @@ import static baseball.print.Message.*;
 
 public class MessagePrinter {
 
+    private static final String BALL_KEY = "ball";
+    private static final String STRIKE_KEY = "strike";
+
     public void printStartMessage() {
         System.out.println(START_GAME_MESSAGE);
     }
@@ -19,8 +22,8 @@ public class MessagePrinter {
     }
 
     public void printBallAndStrikeCount(Map<String, Integer> ballAndStrikeCount) {
-        Integer ballCount = ballAndStrikeCount.get("ball");
-        Integer strikeCount = ballAndStrikeCount.get("strike");
+        Integer ballCount = ballAndStrikeCount.get(BALL_KEY);
+        Integer strikeCount = ballAndStrikeCount.get(STRIKE_KEY);
 
         if (ballCount == 3) {
             System.out.println(ballCount + BALL);
