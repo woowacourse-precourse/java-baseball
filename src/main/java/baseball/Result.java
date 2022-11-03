@@ -21,6 +21,10 @@ public class Result {
         }
     }
 
+    public boolean isGameOver() {
+        return this.strike == 3;
+    }
+
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) return "낫싱";
@@ -29,8 +33,11 @@ public class Result {
         if (ball > 0) {
             result.append(ball).append("볼");
         }
+        if (ball == 0 && strike > 0) {
+            return result.append(strike).append("스트라이크").toString();
+        }
         if (strike > 0) {
-            result.append(' ').append(strike).append("스트라이크");
+            return result.append(' ').append(strike).append("스트라이크").toString();
         }
         return result.toString();
     }

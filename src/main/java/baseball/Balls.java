@@ -13,7 +13,7 @@ public class Balls {
 
     private List<Ball> mapIntToBall(List<Integer> ballNums) {
         List<Ball> result = new ArrayList<>();
-        for (int i = 0; i < BALL_CNT; i++) {
+        for (int i = 0; i < ballNums.size(); i++) {
             result.add(new Ball(i, ballNums.get(i)));
         }
         return result;
