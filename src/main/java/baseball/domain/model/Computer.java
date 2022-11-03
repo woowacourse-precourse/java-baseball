@@ -6,7 +6,7 @@ public class Computer {
 
 	private final List<String> computer;
 
-	public Computer(List<String> computer) {
+	public Computer(final List<String> computer) {
 		this.computer = computer;
 	}
 }

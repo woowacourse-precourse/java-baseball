@@ -11,19 +11,19 @@ public class InputValidator {
 	private static final int MAX_SIZE = 3;
 	private InputValidator(){}
 
-	public static void checkUserBallInput(String userBallInput) {
+	public static void checkUserBallInput(final String userBallInput) {
 		checkBallNumberLength(userBallInput);
 		List<String> splitUserBalls = checkBallNumberIsValidNumber(userBallInput);
 		checkDuplicateBalls(splitUserBalls);
 	}
 
-	private static void checkBallNumberLength(String userBallInput) {
+	private static void checkBallNumberLength(final String userBallInput) {
 		if (userBallInput.length() != MAX_SIZE) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private static List<String> checkBallNumberIsValidNumber(String userBallInput) {
+	private static List<String> checkBallNumberIsValidNumber(final String userBallInput) {
 		String[] splitUserBall = userBallInput.split("");
 		for (String ball : splitUserBall) {
 			checkStandardNumber(ball);
@@ -31,13 +31,13 @@ public class InputValidator {
 		return new ArrayList<>(Arrays.asList(splitUserBall));
 	}
 
-	private static void checkStandardNumber(String ball) {
+	private static void checkStandardNumber(final String ball) {
 		if (!STANDARD_NUMBER.contains(ball)) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private static void checkDuplicateBalls(List<String> balls) {
+	private static void checkDuplicateBalls(final List<String> balls) {
 		if (new HashSet<>(balls).size() != MAX_SIZE) {
 			throw new IllegalArgumentException();
 		}

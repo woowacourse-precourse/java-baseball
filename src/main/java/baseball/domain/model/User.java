@@ -11,16 +11,16 @@ public class User {
 
 	private final List<String> user;
 
-	public User(List<String> user) {
+	public User(final List<String> user) {
 		this.user = user;
 	}
 
-	public User(String userBallInput) {
+	public User(final String userBallInput) {
 		InputValidator.checkUserBallInput(userBallInput);
 		this.user = makeUserBallsFromUserInput(userBallInput);
 	}
 
-	private List<String> makeUserBallsFromUserInput(String userBallInput) {
+	private List<String> makeUserBallsFromUserInput(final String userBallInput) {
 		return new ArrayList<>(Arrays.asList(userBallInput.split("")));
 	}
 
