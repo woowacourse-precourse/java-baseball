@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Computer {
 
-    private List<Integer> completedDigits;
+    public List<Integer> completedDigits;
     public static final int RANDOM_NUMBER_MIN = 1;
     public static final int RANDOM_NUMBER_MAX = 9;
     public static final int RANDOM_NUMBER_LENGTH = 3;
