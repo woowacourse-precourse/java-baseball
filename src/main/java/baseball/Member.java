@@ -10,5 +10,5 @@ public class Member {
     public int getNumber(){
         return number;
     }
-    
+
 }
