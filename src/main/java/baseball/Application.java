@@ -17,13 +17,14 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static List<Integer> generateAnswer() {
+    public static String generateAnswer() {
         String answer = "";
 
         while(answer.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!answer.contains((char)randomNumber)) {
-                answer.add(randomNumber);
+            String numberString = convertIntToString(randomNumber);
+            if(!answer.contains(numberString)) {
+                answer += numberString;
             }
         }
 
