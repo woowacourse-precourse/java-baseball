@@ -1,7 +1,7 @@
 package baseball;
 
 public class Opponent {
-    public void generateRandomValue() {
+    public int generateRandomValue() {
 
     }
 
