@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int RESTART = 1;
+    private static final int FINISH = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Computer computer = new Computer();
@@ -14,6 +17,7 @@ public class Application {
 
         String input;
         boolean match;
+        boolean done;
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
@@ -25,6 +29,7 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 input = Console.readLine();
+                isValidCommand(input);
 
             }
 
@@ -54,5 +59,19 @@ public class Application {
             numberList.add(number);
         }
         return true;
+    }
+
+    private static void isValidCommand(String input) {
+        if (!isOneOrTwo(input)) {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+    }
+
+    private static boolean isOneOrTwo(String input) {
+        String pattern = "[1|2]";
+        if (input.matches(pattern)) {
+            return true;
+        }
+        return false;
     }
 }
