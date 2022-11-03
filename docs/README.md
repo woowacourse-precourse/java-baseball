@@ -24,6 +24,22 @@
   - 사용자가 잘못된 값을 입력했는지 체크하는 함수
 
 
+- boolean check(String)
+  - 입력된 값을 실제로 체크하는 함수
+
+
+- boolean checkLength(String)
+  - 입력된 값의 길이가 3인지 체크하는 함수
+
+
+- boolean checkInteger(String)
+  - 입력된 값이 1~9 사이의 숫자인지 체크하는 함수
+
+
+- boolean checkDuplicateNumber(String)
+  - 입력된 값이 중복되는지 체크하는 함수
+
+
 - void countingBallAndStrike(int, int)
   - 입력한 수에 대한 결과를 계산하는 함수
 
