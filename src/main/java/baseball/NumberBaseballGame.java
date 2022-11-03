@@ -78,16 +78,21 @@ public abstract class NumberBaseballGame {
 
     private static void countBall() {
         ball = 0;
-        for (Integer playerNumber : playerNumberList) {
-            if (answerNumberList.contains(playerNumber)) ball++;
+        for (int i = 0; i < playerNumberList.size(); i++) {
+            int playerNumber = playerNumberList.get(i);
+            if (!isStrike(i) && answerNumberList.contains(playerNumber)) ball++;
         }
     }
 
     private static void countStrike() {
         strike = 0;
         for (int i = 0; i < answerNumberList.size(); i++) {
-            if (Objects.equals(answerNumberList.get(i), playerNumberList.get(i))) strike++;
+            if (isStrike(i)) strike++;
         }
+    }
+
+    private static boolean isStrike(int position) {
+        return Objects.equals(answerNumberList.get(position), playerNumberList.get(position));
     }
 
     private static void printHint() {
