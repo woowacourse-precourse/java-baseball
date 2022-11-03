@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameUtilTest {
     @DisplayName("숫자 비교")
     @Nested
-    class number_compare {
+    class compare_number {
         @ParameterizedTest(name = "낫싱 => {0}, {1}")
         @CsvSource({
                 "123, 987", //xyz, abc
@@ -110,5 +110,13 @@ public class GameUtilTest {
             List<Integer> result = GameUtil.compareNumber(computer, player);
             assertThat(result).containsOnly(2, 1);
         }
+    }
+
+    @Test
+    @DisplayName("숫자를 한글자씩 분할")
+    void split_number_to_one_digits() {
+        int number = 123;
+        List<Integer> result = GameUtil.splitNumberToOneDigits(number);
+        assertThat(result).containsOnly(1, 2, 3);
     }
 }
