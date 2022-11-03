@@ -14,7 +14,7 @@ public class Application {
     public List<Integer> inputNum = new ArrayList<>();
     public List<Integer> comNum = new ArrayList<>();
 
-    public Application() {
+    public Application() throws IllegalArgumentException {
         createNum();
         startGame();
     }
@@ -27,20 +27,32 @@ public class Application {
             }
         }
     }
-    public void startGame() {
+    public void startGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (answer) {
-            getInputNum();
-            setAnswer();
-            showResult();
-            checkAnswer();
+            try {
+                getInputNum();
+                setAnswer();
+                showResult();
+                checkAnswer();
+            } catch (IllegalArgumentException e){
+                answer = false;
+                throw e;
+            }
         }
     }
 
-    public void getInputNum() {
+    public void getInputNum() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
-        String[] numChar = Console.readLine().split("");
-        inputNum = Arrays.stream(numChar).map(Integer::parseInt).collect(Collectors.toList());
+        String numChar = Console.readLine();
+
+        System.out.println(numChar);
+        if (numChar.length() != 3){
+            throw new IllegalArgumentException();
+        }
+
+        // numChar로 받은 input을 stream으로 List<Integer> 타입으로 변환
+        inputNum = Arrays.stream(numChar.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public void setAnswer() {
@@ -79,13 +91,15 @@ public class Application {
         ball = 0;
     }
 
-    public void startOrNot() {
+    public void startOrNot() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String cont = Console.readLine();
         if (cont.equals("1")) {
             resetAll();
         } else if (cont.equals("2")) {
             answer = false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 
