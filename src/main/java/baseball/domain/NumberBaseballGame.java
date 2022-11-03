@@ -21,24 +21,44 @@ public class NumberBaseballGame {
         String userInput = getUserInputString();
         validate(userInput);
     }
+
     private String getUserInputString() {
         return Console.readLine();
     }
 
     private void validate(String userInput) {
-        if (userInput.length() != 3) {
+        if (!supportsInputLength(userInput)) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
-        for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) >= '1' && userInput.charAt(i) <= '9') {
-                continue;
-            }
+
+        if (!supportsNumberRange(userInput)) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_RANGE);
         }
-        int len = (int) Stream.of(userInput.split("")).distinct().count();
-        if (len != 3) {
+
+        if (includesDuplicateNumber(userInput)) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
+    }
+
+    private boolean includesDuplicateNumber(String userInput) {
+        int userInputLength = (int) Stream.of(userInput.split("")).distinct().count();
+        if (userInputLength != 3) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean supportsNumberRange(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (userInput.charAt(i) < '1' || userInput.charAt(i) > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean supportsInputLength(String userInput) {
+        return userInput.length() == 3;
     }
 
     private List<NumberBall> initializeSystemNumberBall() {
