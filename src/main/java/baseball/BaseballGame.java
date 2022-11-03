@@ -20,11 +20,17 @@ public class BaseballGame {
         return list;
     }
 
-    public Boolean isStringLengthThree(String string) {
+    public void checkValidString(String string) {
+        if (!isStringLengthThree(string) || !isNumber(string)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private Boolean isStringLengthThree(String string) {
         return string.length() == 3;
     }
 
-    public Boolean isNumber(String string) {
+    private Boolean isNumber(String string) {
         try {
             Integer.parseInt(string);
         } catch (NumberFormatException e) {
