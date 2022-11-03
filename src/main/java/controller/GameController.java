@@ -13,4 +13,9 @@ public class GameController {
         this.computer = new Computer();
     }
 
+    public void callInputNumOfUser() {
+        this.user.inputNumOfUser();
+    }
+
+
 }
