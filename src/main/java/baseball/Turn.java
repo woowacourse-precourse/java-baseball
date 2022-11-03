@@ -27,4 +27,19 @@ public class Turn {
         System.out.print(ASK_FOR_NUMBER);
         return Console.readLine();
     }
+
+    public void validatePlayerNumberList(){
+        if (playerNumberList.size() != NUMBER_OF_INPUT_DIGITS) {
+            throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
+        }
+        for (int number : playerNumberList) {
+            if (number < 1 || number > 9) {
+                throw new IllegalArgumentException("숫자만 입력해 주세요.");
+            }
+        }
+        Set<Integer> numberSet = new HashSet<>(playerNumberList);
+        if (numberSet.size() < playerNumberList.size()) {
+            throw new IllegalArgumentException("서로 다른 숫자만 입력해주세요.");
+        }
+    }
 }
