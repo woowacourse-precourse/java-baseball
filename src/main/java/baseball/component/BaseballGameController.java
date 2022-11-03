@@ -78,6 +78,7 @@ public class BaseballGameController {
     private boolean canPlayNextGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String nextGamePlayerInput = Console.readLine();
+        validatePlayerNextGameInput(nextGamePlayerInput);
 
         if(nextGamePlayerInput.equals("1")){
             return true;
@@ -99,6 +100,12 @@ public class BaseballGameController {
     private void validatePlayerNumberInput(String playerInput) throws IllegalArgumentException{
         if( !playerInput.matches(PLAYER_NUMBER_INPUT_REGEX) ){
             throw new IllegalArgumentException("[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.");
+        }
+    }
+
+    private void validatePlayerNextGameInput(String playerInput) throws IllegalArgumentException{
+        if( !(playerInput.equals("1") || playerInput.equals("2"))){
+            throw new IllegalArgumentException("[ERROR] 1 또는 2를 입력해주세요");
         }
     }
 }
