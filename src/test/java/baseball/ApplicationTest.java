@@ -70,7 +70,7 @@ class ApplicationTest extends NsTest {
 		assertThat(computer.hasDuplication(list3, 6)).isFalse();
 	}
 
-	@DisplayName("최종 생성된 컴퓨터 난수의 사이즈를 확인한다")
+	@DisplayName("최종 생성된 컴퓨터 난수의 자리수를 확인한다")
 	@RepeatedTest(30)
 	void testComputerNumberSize() {
 		assertThat(computer.getComputerNumber().size()).isEqualTo(3);
@@ -86,21 +86,30 @@ class ApplicationTest extends NsTest {
 
 	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")
 	@Test
-	void testUserInputDuplication(){
+	void testUserInputDuplication() {
 		assertThat(user.hasDuplication("221")).isTrue();
 	}
 
 	@DisplayName("유저가 입력한 숫자의 길이가 설정된 숫자와 같은지 확인한다")
 	@Test
-	void testUserInputLength(){
-		assertThat(user.checkDigit("591",3)).isTrue();
+	void testUserInputLength() {
+		assertThat(user.followDigitRule("591", 3)).isTrue();
 	}
 
 	@DisplayName("유저의 입력이 숫자로만 구성되어 있는지 확인한다")
 	@Test
-	void testUserInputIsNumberOnly(){
+	void testUserInputIsNumberOnly() {
 		assertThat(user.isNumberOnly("591")).isTrue();
 		assertThat(user.isNumberOnly("ad3")).isFalse();
+	}
+
+
+	@DisplayName("유저 입력 오류시 예외 처리가 작동하는지 확인한다")
+	@Test
+	void testUserHandleException() {
+		assertThatCode(() -> user.handleInputError("222"))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
 
 
