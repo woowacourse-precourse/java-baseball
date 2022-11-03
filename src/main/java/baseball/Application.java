@@ -11,7 +11,13 @@ public class Application {
 
         while (gameLife) {
             number = setNumber();
+            gameLife = playGame(number);
         }
+    }
+
+    private static boolean playGame(String number) {
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static String setNumber() {
