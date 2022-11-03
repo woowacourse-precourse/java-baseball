@@ -4,25 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 class ConsolePrint {
+    public static final String BALL_MESSAGE = "볼 ";
+    public static final String STRIKE_MESSAGE = "스트라이크";
+    public static final String NOTHING_MESSAGE = "낫싱";
 
     public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static void printInputNumber() {
-        System.out.print("\n숫자를 입력해주세요 : ");
-    }
-
-    public static void printBallMessage(int ballCount) {
-        System.out.printf("%d볼 ", ballCount);
-    }
-
-    public static void printStrikeMessage(int strikeCount) {
-        System.out.printf("%d스트라이크", strikeCount);
-    }
-
-    public static void printNothingMessage() {
-        System.out.println("낫싱");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void printGameOver() {
@@ -67,20 +58,21 @@ public class Application {
         return Collections.disjoint(userNumber, computerNumber);
     }
 
-    private static int getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
+    private static String getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
+        String gameResult = "";
         int ballCount = getBallCount(userNumber, computerNumber);
         int strikeCount = getStrikeCount(userNumber, computerNumber);
 
         if (ballCount > 0 && strikeCount != ballCount) {
-            ConsolePrint.printBallMessage(ballCount - strikeCount);
+            gameResult += (ballCount - strikeCount) + ConsolePrint.BALL_MESSAGE;
         }
         if (strikeCount > 0) {
-            ConsolePrint.printStrikeMessage(strikeCount);
+            gameResult += strikeCount + ConsolePrint.STRIKE_MESSAGE;
         }
         if (isNothing(userNumber, computerNumber)) {
-            ConsolePrint.printNothingMessage();
+            gameResult += ConsolePrint.NOTHING_MESSAGE;
         }
-        return strikeCount;
+        return gameResult + "\n";
     }
 
     private static int getGameSelect() {
@@ -92,29 +84,26 @@ public class Application {
         return Integer.parseInt(gameSelect);
     }
 
-    private static int checkGameOver(int strikeCount) {
-        int gameSelect = 0;
-        if (isGameOver(strikeCount)) {
-            ConsolePrint.printGameOver();
-            ConsolePrint.printGameSelect();
-            gameSelect = getGameSelect();
-        }
-        return gameSelect;
-    }
 
     private static void startGameLogic() {
-        int gameSelect = 0;
+        int strikeCount = 0;
         List<Integer> computerNumber = Computer.getRandomNumber();
-        ConsolePrint.printGameStart();
         do {
             ConsolePrint.printInputNumber();
-            List<Integer> userNumber = User.getValidNumber();
-            int strikeCount = getGameResult(userNumber, computerNumber);
-            gameSelect = checkGameOver(strikeCount);
-        } while(gameSelect != 2);
+            List<Integer> userNumber = User.getNumber();
+            System.out.print(getGameResult(userNumber, computerNumber));
+            strikeCount = getStrikeCount(userNumber, computerNumber);
+        } while(!isGameOver(strikeCount));
     }
 
     public static void main(String[] args) {
-        startGameLogic();
+        int gameSelect = 0;
+        ConsolePrint.printGameStart();
+        do {
+            startGameLogic();
+            ConsolePrint.printGameOver();
+            ConsolePrint.printGameSelect();
+            gameSelect = getGameSelect();
+        } while (gameSelect != 2);
     }
 }
