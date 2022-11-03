@@ -44,7 +44,21 @@
 - 게임 종료시, 재시작과 종료를 구분하는 1과 2 중 하나의 수를 입력하도록 출력한다.<br>
 ````게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.````<br><br>
 ---
-
+## 📖 클래스별 메서드 및 설명
+|    **클래스**     |                  **메서드**                   |   **반환 타입**   |                           **설 명**                           |
+|:--------------:|:------------------------------------------:|:-------------:|:-----------------------------------------------------------:|
+|  🖥 Computer   |           createRandomNumbers()            | List<Integer> |                   1부터 9까지의 중복없는 랜덤한 수를 생성                   |
+|   🧑🏻 User    |    toIntegerUserInput(String userInput)    | List<Integer> |                 입력받은 문자열 userInput을 정수로 변환                  |
+| ⚾ BaseballGame |            BaseballGame() - 생성자            |     중앙정렬      | BaseballGame() 인스턴스 생성시<br> 랜덤한 3자리수와 스트라이크, 볼 개수를 0으로 초기화. |
+| ⚾ BaseballGame |                  start()                   |     void      |        시작을 알리는 메시지를 출력하고,<br>플레이어에게 3자리의 숫자를 입력받는다.         |
+| ⚾ BaseballGame |  checkInputData(List<Integer> userNumber)  |     void      |                  플레이어가 입력한 값이 조건에 맞는 지 확인                   |
+| ⚾ BaseballGame | checkStrikeCount(List<Integer> userNumber) |      int      |               스트라이크 개수만큼, 스트라이크의 카운트를 1씩 올린다.               |
+| ⚾ BaseballGame |  checkBallCount(List<Integer> userNumber)  |      int      |                   볼 개수만큼, 볼의 카운트를 1씩 올린다.                   |
+| ⚾ BaseballGame |                gameResult()                |     void      |           플레이어가 입력한 값에 대한 결과(볼, 스트라이크, 낫싱)를 알려준다.           |
+| ⚾ BaseballGame |                 endGame()                  |    boolean    |   플레이어가 3스트라이크를 날릴 경우,<br>승리를 알리며 재시작(1)/종료(2)를 선택하도록한다.    |
+|   📢 Message    |                     -                      |    String    |                  야구 게임의 출력 메시지들을 상수로 가진다.                   |
+| 🅰 Application |                     -                      |       -       |  BaseballGame() 인스턴스를 생성하고,<br>게임이 종료될 때까지 게임을 실행한다.<br/>   |
+<br>
 
 ---
 ## **요구사항 체크리스트**
