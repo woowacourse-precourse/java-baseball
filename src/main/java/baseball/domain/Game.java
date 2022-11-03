@@ -10,9 +10,14 @@ public class Game {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
     private static final String IS_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String RESTART_EXCEPTION = "1 또는 2만 입력이 가능합니다.";
     private static final int IS_ANSWER = 3;
     private static final int IS_NONE = 0;
     private static final boolean status = true;
+    private static final int RESTART_NUMBER_LENGTH = 1;
+    private static final int RESTART_NUMBER_MIN = 1;
+    private static final int RESTART_NUMBER_MAX = 2;
+
     private int strike;
     private int ball;
     User user;
@@ -39,6 +44,12 @@ public class Game {
         System.out.println(IS_CONTINUE);
         String answer = Console.readLine();
 
+    }
+
+    public void checkRestartNumberLength(String number){
+        if(number.length() > RESTART_NUMBER_LENGTH || number.length() < RESTART_NUMBER_LENGTH){
+            throw new IllegalArgumentException(RESTART_EXCEPTION);
+        }
     }
 
     public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
