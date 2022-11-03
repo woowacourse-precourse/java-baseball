@@ -6,13 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Integer> computer;
-    private List<Integer> userInput;
+    private static List<Integer> computer;
 
-    public Game(String userInput) {
+    public Game() {
         this.computer = pickThreeNumber();
-        UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
-        this.userInput = userInputNumbers.getUserInputNumbers();
     }
 
     public static List<Integer> pickThreeNumber() {
@@ -24,5 +21,12 @@ public class Game {
             }
         }
         return threeNumber;
+    }
+
+    public GameState compareNumbers(String userInput) {
+        UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
+        List<Integer> userInputValues = userInputNumbers.getUserInputNumbers();
+        GameState gameState = new GameState();
+        return gameState;
     }
 }
