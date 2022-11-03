@@ -7,18 +7,18 @@ import java.util.List;
 
 public class Computer {
 
-    private static final int BallsLength = 3;
+    static final int BallsLength = 3;
 
     public static List<Integer> makeBalls(){
-        List<Integer> computerBalls = new ArrayList<>();
+        List<Integer> computerBallsList = new ArrayList<>();
 
-        while(computerBalls.size()<BallsLength){
+        while(computerBallsList.size()<BallsLength){
             int randomBall = Randoms.pickNumberInRange(1,9);
 
-            if(!computerBalls.contains(randomBall)){
-                computerBalls.add(randomBall);
+            if(!computerBallsList.contains(randomBall)){
+                computerBallsList.add(randomBall);
             }
         }
-        return computerBalls;
+        return computerBallsList;
     }
 }
