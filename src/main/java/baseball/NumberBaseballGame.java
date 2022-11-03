@@ -1,6 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class NumberBaseballGame {
+
+    private static List<Integer> answerNumberList = new ArrayList<>();
 
     public static void start() {
         setup();
@@ -9,7 +14,16 @@ public abstract class NumberBaseballGame {
     }
 
     private static void setup() {
-        //TODO: 게임 준비 구현
+        printGameStartPhrase();
+        pickAnswerNumberList();
+    }
+
+    private static void printGameStartPhrase() {
+        //TODO: 게임 시작 시 문구 출력 구현
+    }
+
+    private static void pickAnswerNumberList() {
+        //TODO: 정답 숫자 리스트 선택 기능 구현
     }
 
     private static void play() {
