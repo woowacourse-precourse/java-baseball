@@ -14,14 +14,21 @@ public class Application {
 
         gameOutput.printWhenStart();
 
-        boolean doesUserWin,playingAgain;
+        List<Integer> computerInput = gameInput.computerMadeNumbers();
+        boolean playingAgain;
 
         do{
-            List<Integer> computerInput = gameInput.computerMadeNumbers();
             String userInput = gameInput.userPlayingInput();
 
-            doesUserWin = computerCalculate.compareUserAndComputer(userInput,computerInput);
+            boolean doesUserWin = computerCalculate.compareUserAndComputer(userInput,computerInput);
+            if(doesUserWin){
+                gameOutput.printWhenUserWin();
+            }
+
             playingAgain = !doesUserWin || gameInput.checkingAgainInput();
+            if(doesUserWin && playingAgain){
+                computerInput = gameInput.computerMadeNumbers();
+            }
 
         }while(playingAgain);
     }
