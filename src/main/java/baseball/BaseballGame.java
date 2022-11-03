@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame extends InputError{
+	static int MAX_STRIKE_NUMBER = 3;
+	static int CONTINUE = 1;
+	static int EXIT = 2;
 	static int ball;
 	static int strike;
-	static int userDecision = 2;
+	static int userDecision = EXIT;
 	static String userAnswer;
 	static int computer;
 
@@ -18,7 +21,7 @@ public class BaseballGame extends InputError{
 		computer = randomNumberBall();
 		while(true) {
 			gameProgress();
-			if(userDecision == 2) {
+			if(userDecision == EXIT) {
 				break;
 			}
 		}
@@ -31,19 +34,19 @@ public class BaseballGame extends InputError{
 			checkStrike(userAnswer);
 		}
 
-		if(strike == 3) {
+		if(strike == MAX_STRIKE_NUMBER) {
 			Output.rightEverything();
 			Output.endGame();
 			userDecision = Integer.parseInt(Console.readLine());
-			if(userDecision == 1){
+			if(userDecision == CONTINUE){
 				computer = randomNumberBall();
 			}
 		}else if(strike == 0 && ball == 0) {
 			Output.wrongEverything();
-			userDecision = 1;
+			userDecision = CONTINUE;
 		}else {
 			Output.oneGameResult(ball,strike);
-			userDecision = 1;
+			userDecision = CONTINUE;
 		}
 	}
 
@@ -67,7 +70,7 @@ public class BaseballGame extends InputError{
 		int result = 0;
 		char[] userNumber = userAnswer.toCharArray();
 		char[] computerNumber = Integer.toString(computer).toCharArray();
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < MAX_STRIKE_NUMBER; i++) {
 			if(userNumber[i] == computerNumber[i]) {
 				result += 1;
 			}
@@ -78,7 +81,7 @@ public class BaseballGame extends InputError{
 	static int randomNumberBall() {
 		List<Integer> computer = new ArrayList<>();
 
-		while (computer.size() < 3) {
+		while (computer.size() < MAX_STRIKE_NUMBER) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!computer.contains(randomNumber)) {
 				computer.add(randomNumber);
