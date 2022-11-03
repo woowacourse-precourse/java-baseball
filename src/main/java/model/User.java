@@ -26,12 +26,20 @@ public class User {
         isValidNumOfIndividually(strInput);
     }
 
+    public boolean isValidPositiveInt(int num) {
+        if (num > 0) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("양수를 입력해주세요.");
+        }
+    }
+
     public String getString() {
         String strInput = "";
         strInput = readLine();
         return strInput;
     }
-   
+
 
     public int parseIntFromStr(String str) {
         try {
