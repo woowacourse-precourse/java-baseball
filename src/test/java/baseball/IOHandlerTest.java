@@ -33,6 +33,13 @@ class IOHandlerTest {
 		assertThat(outputStream.toString()).isEqualTo(initMessage);
 	}
 
+	@Test
+	void printInputMessageTest() {
+		String initMessage = "숫자를 입력해주세요 : ";
+		io.printInputMessage();
+		assertThat(outputStream.toString()).isEqualTo(initMessage);
+	}
+
 	@Nested
 	class printScoreTest {
 
