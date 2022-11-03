@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,13 @@ public class Inputnumber {
             argList.add(Integer.valueOf(arg));
         }
         return argList;
+    }
+
+    public boolean is1to10(List<Integer> list){
+        for(int number : list){
+            if(number <1 || number >9) return false;
+        }
+        return true;
     }
 
 
