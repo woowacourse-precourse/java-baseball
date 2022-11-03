@@ -102,6 +102,10 @@ public class Computer {
         }
     }
 
+    public void initComputer() {
+        this.creatRanNumOfComputerList();
+    }
+
     // strike체크 함수
     private void checkStrike(List<Integer> splitNumOfCompare) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
