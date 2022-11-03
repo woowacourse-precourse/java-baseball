@@ -20,7 +20,7 @@ public class Application {
     }
     public static List<Integer> getRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        while(randomNumber.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
             if(!randomNumber.contains(randomNum)) {
                 randomNumber.add(randomNum);
