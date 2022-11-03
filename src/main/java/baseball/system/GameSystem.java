@@ -22,6 +22,13 @@ public class GameSystem {
 
     }
 
+    private boolean selectMenu() {
+
+        MenuSelection menuSelection = new MenuSelection();
+        return menuSelection.startMenuSelection();
+
+    }
+
     private void startGame() {
 
         Computer computer = new Computer();
@@ -29,7 +36,8 @@ public class GameSystem {
 
         GamePlay gamePlay = new GamePlay(computer,user);
         gamePlay.playGame();
-        
+
+        //TODO : printAnswerText 구현
 
     }
 
