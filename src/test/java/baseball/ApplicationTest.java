@@ -264,4 +264,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("게임의 정답을 맞추었을 때 승리자의 메시지가 출력된다.")
+    void whenRunningOutputViewPrintingWinnerMessage_thenPrintsWinnersMessage() {
+        // given
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        //when
+        OutputView outputView = new OutputView();
+        outputView.printWinnerMessage();
+
+        //then
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Answer.ANSWER_LIST_SIZE));
+    }
+
+    @Test
+    @DisplayName("게임의 재시작 여부를 묻는 메시지가 출력된다.")
+    void whenRunningInputAskingRestartingInput_thenPrintsMessage() {
+        //given
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        MockedStatic<Console> mockStatic = Mockito.mockStatic(Console.class);
+        Mockito.when(Console.readLine()).thenReturn("");
+        // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+
+        //when
+        InputView inputView = new InputView();
+        inputView.getRestartingInput();
+
+        //then
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo(InputView.ASKING_RESTART_MESSAGE.trim());
+
+        //after
+        mockStatic.close();
+    }
 }
