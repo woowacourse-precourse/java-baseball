@@ -75,4 +75,39 @@ public class NumberBaseball {
 
         return strikeCount;
     }
+
+    /**
+     * 사용자의 답안이 정답인지 확인하는 메소드
+     *
+     * 1. 먼저 '겹치는 숫자의 개수' 검사
+     * 2. 0보다 크면 -> 스트라이크 검사 후 '스트라이크 개수' 만큼 '겹치는 숫자의 개수'에서 제거
+     *    0이면 -> 낫싱 처리
+     * 3. 결과 리스트 [ballCount, strikeCount, nothingFlag] 반환
+     *
+     * @param userAnswer -> 사용자가 입력한 답
+     * @return result -> 결과 리스트 [ballCount, strikeCount, nothingFlag]
+     */
+    public List<Integer> checkAnswer(String userAnswer) {
+        List<Integer> result = new ArrayList<>();
+        int ballCount = 0;
+        int strikeCount = 0;
+        int nothingFlag = 0;
+
+        int containCount = getContainCount(userAnswer);
+
+        if (containCount > 0) {    // 겹치는 숫자가 한 개 이상인 경우 -> 스트라이크 검사
+            strikeCount = getStrikeCount(userAnswer);
+        } else {    // 겹치는 숫자가 아무것도 없는 경우
+            nothingFlag = 1;
+        }
+
+        ballCount = containCount - strikeCount;
+
+        result.add(ballCount);
+        result.add(strikeCount);
+        result.add(nothingFlag);
+
+        System.out.println(userAnswer);
+        return result;
+    }
 }
