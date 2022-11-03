@@ -36,7 +36,6 @@ public class Computer {
 
         return counts[0] == User.NUMBER_DIGIT;
     }
-
     private void checkByBalls(int digit, int num, int[] counts) {
         if (answers.contains(num)) {
             if (answers.indexOf(num) == digit) {
@@ -45,5 +44,22 @@ public class Computer {
                 counts[1]++;
             }
         }
+    }
+
+    private void printResult(int[] counts) {
+        StringBuilder sb = new StringBuilder();
+        int strikeCount = counts[0];
+        int ballCount = counts[1];
+
+        if (strikeCount != 0) {
+            sb.append(strikeCount).append(Message.STRIKE).append(" ");
+        }
+        if (ballCount != 0) {
+            sb.append(ballCount).append(Message.BALL);
+        }
+        if (sb.length() == 0) {
+            sb.append(Message.NOTHING);
+        }
+        System.out.println(sb);
     }
 }
