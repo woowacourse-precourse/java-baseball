@@ -56,10 +56,10 @@ public class MessageHolder {
         System.out.print("게임 종료");
     }
 
-    public int print_ask_restart() {
+    public int print_ask_restart_and_get_input() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int playerInput = get_player_restart_input();
-        return 0;
+        return playerInput;
     }
 
     private int get_player_restart_input() {
