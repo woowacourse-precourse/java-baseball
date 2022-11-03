@@ -10,8 +10,7 @@ public class DuplicateByComparison {
 
     public static List<Integer> findOverlapNumber(int i){
         List<Integer> overlapNumber = new ArrayList<>();
-        makeAnswerNumber();
-        makeNumberSplitList(i);
+
         for(int number : makeAnswerNumber()){
             if(makeNumberSplitList(i).equals(number)){
                 overlapNumber.add(number);
