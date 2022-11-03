@@ -9,23 +9,23 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean ch_more_game = true;
-        while(ch_more_game){
-            boolean ch_more_input = true;
+        boolean more_game = true;
+        while(more_game){
+            boolean more_input = true;
             List<Integer> computer_number = pick_randomNumber(); // 숫자 3개 뽑기
-            while(ch_more_input) {
+            while(more_input) {
                 System.out.println("숫자를 입력해주세요 : ");
                 String input_number = readLine(); // 입력
                 maybe_this_number_length_over_3(input_number);
                 List<Integer> input_number_integer = this_number_transformed_to_integer_array(input_number);
                 if (play_ball(computer_number, input_number_integer)) {
+                    more_input = false;
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String input_coin = readLine(); // 입력
                     if (Integer.parseInt(input_coin) != 1) {
                         System.out.println("게임 종료");
-                        ch_more_game = false;
+                        more_game = false;
                     }
-                    ch_more_input = false;
                 }
             }
         }
