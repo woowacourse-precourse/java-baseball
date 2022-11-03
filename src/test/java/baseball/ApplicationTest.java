@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -43,6 +44,15 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> Application.validateUserInput("9x7"))
                         .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 스트라이크_테스트(){
+        List<Integer> computer = Arrays.asList(3,8,7);
+        Integer strike = 0;
+
+        strike = Application.checkStrike(computer,"387");
+        assertThat(strike).isEqualTo(3);
     }
 
     @Override

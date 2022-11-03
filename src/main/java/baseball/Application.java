@@ -28,7 +28,7 @@ public class Application {
         while(strike != 3) {
             userInput = Console.readLine();
 
-            strike = checkStrike(computer, userInput, strike);
+            strike = checkStrike(computer, userInput);
 
             try {
                 validateUserInput(userInput);
@@ -38,13 +38,15 @@ public class Application {
         }
     }
 
-    private static Integer checkStrike(List<Integer> computer, String userInput, Integer strike) {
+    public static Integer checkStrike(List<Integer> computer, String userInput) {
+        int strikeCount = 0;
+
         for (int idx = 0; idx < userInput.length(); idx++) {
             if(userInput.charAt(idx) - '0' == computer.get(idx)){
-                strike++;
+                strikeCount++;
             }
         }
-        return strike;
+        return strikeCount;
     }
 
     public static void validateUserInput(String s) {
