@@ -11,9 +11,22 @@ public class Application {
     public static void main(String[] args) {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
     }
+
+    public int isLegalInput(int input) {
+        int front = input / 100;
+        int middle = (input % 100) / 10;
+        int rear = input % 10;
+
+        if (input < 123 || input > 987
+                || front == middle
+                || front == rear
+                || middle == rear) {
+            return -1;
+        }
+        return input;
+    }
     private static boolean isQuit(int input) {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-
         if (input == 2) {
             return true;
         }
