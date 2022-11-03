@@ -62,12 +62,27 @@ public class Application {
 
             if (nothingCount == 3){
                 System.out.println("낫싱");
-            } else if (ballCount > 0 || strikeCount > 0){
+            } else if (ballCount > 0 || (strikeCount > 0 && strikeCount < 3)){
                 System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
             } else if (ballCount == 0){
                 System.out.println(strikeCount + "스트라이크" );
             } else if (strikeCount == 0) {
                 System.out.println(ballCount + "볼" );
+            } else if (strikeCount == 3) {
+                System.out.println( strikeCount + "스트라이크");
+                System.out.println ("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println ("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                int numberRegameOrFinish = scanner.nextInt();
+
+                if (numberRegameOrFinish == 1) {
+                    escapeNumber = 1;
+                } else if (numberRegameOrFinish == 2) {
+                    escapeNumber = 0;
+
+                }
+
+
             }
 
 
