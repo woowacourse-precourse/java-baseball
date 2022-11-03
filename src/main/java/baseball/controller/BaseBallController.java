@@ -3,9 +3,6 @@ package baseball.controller;
 import baseball.dto.Score;
 import baseball.service.BaseballService;
 import baseball.system.conversion.Converter;
-import baseball.system.conversion.StringToIntegerListConverter;
-import baseball.system.conversion.StringToRestartConverter;
-import baseball.system.validation.NumberValidator;
 import baseball.system.validation.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -14,20 +11,34 @@ import baseball.vo.Restart;
 import java.util.List;
 
 public class BaseBallController {
-    public Restart startGame() {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final BaseballService baseballService;
+    private final Converter<String, Restart> stringToRestartConverter;
+    private final Converter<String, List<Integer>> StringToIntegerListConverter;
+    private final Validator<List<Integer>> numberValidator;
 
+    public BaseBallController(InputView inputView,
+                              OutputView outputView,
+                              BaseballService baseballService,
+                              Converter<String, Restart> stringToRestartConverter,
+                              Converter<String, List<Integer>> stringToIntegerListConverter,
+                              Validator<List<Integer>> numberValidator) {
+
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.baseballService = baseballService;
+        this.stringToRestartConverter = stringToRestartConverter;
+        this.StringToIntegerListConverter = stringToIntegerListConverter;
+        this.numberValidator = numberValidator;
+    }
+
+    public Restart startGame() {
         while (true) {
             String input = inputView.getUserInput();
+            List<Integer> inputList = StringToIntegerListConverter.convert(input);
+            numberValidator.validate(inputList);
 
-            Converter<String, List<Integer>> converter = new StringToIntegerListConverter();
-            List<Integer> inputList = converter.convert(input);
-
-            Validator<List<Integer>> validator = new NumberValidator();
-            validator.validate(inputList);
-
-            BaseballService baseballService = new BaseballService();
             Score score = baseballService.compareInputWithAnswer(inputList);
 
             outputView.printResult(score);
@@ -39,8 +50,7 @@ public class BaseBallController {
 
         outputView.printWinnerMessage();
         String restartingInput = inputView.getRestartingInput();
-        Converter<String, Restart> converter = new StringToRestartConverter();
 
-        return converter.convert(restartingInput);
+        return stringToRestartConverter.convert(restartingInput);
     }
 }

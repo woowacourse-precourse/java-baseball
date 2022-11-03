@@ -21,6 +21,7 @@ public class Answer {
     public static Answer of(Collection<Integer> target) {
         ArrayList<Integer> targetList = new ArrayList<>(target);
         Validator<List<Integer>> validator = new NumberValidator();
+        // TODO: 정적 팩토리 메소드에서 검증 클래스와의 의존성을 분리할 수 없음.
         validator.validate(targetList);
 
         return new Answer(targetList);

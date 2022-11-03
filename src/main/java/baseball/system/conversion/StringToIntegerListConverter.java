@@ -1,15 +1,19 @@
 package baseball.system.conversion;
 
-import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.validation.Validator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StringToIntegerListConverter implements Converter<String, List<Integer>> {
+    private final Validator<String> validator;
+
+    public StringToIntegerListConverter(Validator<String> validator) {
+        this.validator = validator;
+    }
+
     @Override
     public List<Integer> convert(String target) {
-        Validator<String> validator = new StringToIntegerListConversionValidator();
         validator.validate(target);
 
         return target

@@ -178,7 +178,8 @@ class ApplicationTest extends NsTest {
         String input = "467";
 
         //when
-        Converter<String, List<Integer>> converter = new StringToIntegerListConverter();
+        Converter<String, List<Integer>> converter
+                = new StringToIntegerListConverter(new StringToIntegerListConversionValidator());
         List<Integer> target = converter.convert(input);
 
         //then
