@@ -21,6 +21,10 @@ public class BaseballGame {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void createComputerNumbers() {

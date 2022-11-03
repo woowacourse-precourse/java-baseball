@@ -42,9 +42,18 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("입력값이 3자리가 아닐시 예외를 반환한다 - 3자리 보다 작은 경우")
     @Test
-    void case3() {
+    void case2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("입력값이 숫자가 아닌 값을 포함할 경우 예외를 반환한다")
+    @Test
+    void case3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
