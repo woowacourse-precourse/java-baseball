@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,13 @@ public abstract class NumberBaseballGame {
     }
 
     private static void pickAnswerNumberList() {
-        //TODO: 정답 숫자 리스트 선택 기능 구현
+        answerNumberList.clear(); //이전 게임에서의 정답 삭제
+        while (answerNumberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumberList.contains(randomNumber)) {
+                answerNumberList.add(randomNumber);
+            }
+        }
     }
 
     private static void play() {
