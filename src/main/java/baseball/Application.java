@@ -11,6 +11,15 @@ public class Application {
     public static void main(String[] args) {
         System.out.print("숫자 야구 게임을 시작합니다.\n");
     }
+
+    private static int readInt() {
+        try {
+            return (Integer.parseInt(Console.readLine()));
+        } catch (NoSuchElementException ex) {
+            return -1;
+        }
+    }
+
     private static int generateRandomValue() {
         List<Integer> computer = new ArrayList<>();
 
