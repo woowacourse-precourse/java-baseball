@@ -18,7 +18,7 @@ public class Game {
 	}
 
 	public void start() {
-		computer.generateComputerNumbers();
+		computer.generateNumbers();
 		user.receiveUserInput();
 		Score score = Score.calculate(computer.getNumbers(), user.getNumbers());
 	}
