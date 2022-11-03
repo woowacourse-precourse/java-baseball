@@ -47,6 +47,24 @@ public class Application {
         return count;
     }
 
+    private static Integer countBall(
+            List<Integer> computer_number,
+            List<Integer> user_number,
+            Integer strike
+    ) {
+        Integer count = 0;
+
+        for (Integer number : user_number) {
+            if (computer_number.contains(number)) {
+                count += 1;
+            }
+        }
+
+        count -= strike;
+
+        return count;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -56,6 +74,7 @@ public class Application {
             String guess_number = Console.readLine();
             List<Integer> user_num = numtoList(guess_number);
             Integer strike = countStrike(computer_num, user_num);
+            Integer ball = countBall(computer_num, user_num, strike);
             break; // 기능 완전 구현 전까지 반복문을 탈출하기 위함.
         }
     }
