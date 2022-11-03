@@ -25,17 +25,15 @@ public class Application {
         }
     }
 
-    private static boolean playNumberBaseball() throws IllegalArgumentException {
+    private static void playNumberBaseball() throws IllegalArgumentException {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
-        boolean isWork = true;
         while (userGetRightAnswer == false) {
             String user = getUserAnswerInString();
             List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
             userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
             printResult(scoreOfStrikeAndBall);
         }
-        return isWork;
     }
 
     private static String getComputerNumberInString() {
