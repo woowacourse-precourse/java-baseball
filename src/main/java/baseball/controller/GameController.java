@@ -23,20 +23,24 @@ public class GameController {
             threeStrike = false;
             view.announceStart();
             String target = RandomUtil.generateNumber();
-            while (!threeStrike) {
-                String input = view.getInput();
-                Result judgement = logic.judge(target, input);
-                view.ballsAndStrikes(judgement.getBall(), judgement.getStrike());
-                decide(judgement);
-            }
+            startPitch(target);
+        }
+    }
+
+    private void startPitch(String target) {
+        while (!threeStrike) {
+            String input = view.getInput();
+            Result judgement = logic.judge(target, input);
+            view.ballsAndStrikes(judgement.getBall(), judgement.getStrike());
+            decide(judgement);
         }
     }
 
     private void decide(Result judge) {
         if (logic.isGameSet(judge)) {
             view.announceGameSet();
-            gameEnd = !view.isRestart(view.readLine());
             threeStrike = true;
+            gameEnd = !view.isRestart(view.readLine());
         }
     }
 }
