@@ -85,4 +85,14 @@ public class InputTest {
         // then
         Assertions.assertThat(isAllDifferent).isEqualTo(true);
     }
+
+    @Test
+    public void 입력값_중에_중복되는_값이_있을_때_확인() {
+        // given
+        String inputWrongString = "155";
+        // when
+        boolean isAllDifferent = input.isAllDifferentDigit(inputWrongString);
+        // then
+        Assertions.assertThat(isAllDifferent).isEqualTo(false);
+    }
 }
