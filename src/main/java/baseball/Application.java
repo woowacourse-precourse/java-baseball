@@ -61,13 +61,13 @@ public class Application {
         return true;
     }
 
-    private static void isValidCommand(String input) {
+    public static void isValidCommand(String input) {
         if (!isOneOrTwo(input)) {
             throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
     }
 
-    private static boolean isOneOrTwo(String input) {
+    public static boolean isOneOrTwo(String input) {
         String pattern = "[1|2]";
         if (input.matches(pattern)) {
             return true;
