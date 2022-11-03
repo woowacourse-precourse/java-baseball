@@ -10,20 +10,21 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int NUMBER_MAX_RANGE = 3;
     private static final String NUMBER_SEPARATE_DELIMITER = "";
     private static final String NUMBER_RANGE = "^[1-9]*$";
+    private static final String YES_OR_NO_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
 
     public static List<Integer> inputPlayerNumber() {
-        System.out.println(GAME_START_MESSAGE);
         System.out.print(GET_NUMBER_MESSAGE);
 
         String playerBallNumbers = Console.readLine();
         validateBallNumber(playerBallNumbers);
 
-        return Arrays.stream(separate(playerBallNumbers)).map(Integer::valueOf)
+        return Arrays.stream(separate(playerBallNumbers))
+            .map(Integer::valueOf)
             .collect(Collectors.toList());
     }
 
@@ -43,8 +44,21 @@ public class InputView {
 
     }
 
-
     private static String[] separate(String input) {
         return input.split(NUMBER_SEPARATE_DELIMITER);
+    }
+
+    public static boolean yesOrNo(){
+        System.out.println(YES_OR_NO_MESSAGE);
+
+        String input = Console.readLine();
+        validateInput(input);
+        return input.equals("1");
+    }
+
+    private static void validateInput(String input) {
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
+        }
     }
 }
