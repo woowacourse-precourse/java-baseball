@@ -119,4 +119,7 @@ public class NumberComparison {
     }
 
 
+    public void setComputerNumbers(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
+    }
 }
