@@ -12,19 +12,24 @@ public class BaseballGame {
 
     public void gameStart() {
         while (true) {
+            User user = new User();
             outputView.printGameStart();
             Computer computer = new Computer();
-            game(computer);
-
+            game(computer, user);
+            outputView.printRestartOrExit();
+            user.inputRestartOrExitNumber();
+            if (user.restartOrExitNumber == 1) {
+                break ;
+            }
         }
     }
 
-    public void game(Computer computer) {
+    public void game(Computer computer, User user) {
         while (true) {
             List<Integer> compareAnswer;
 
             outputView.printInputHint();
-            User user = new User();
+            user.inputGuessRandomNumbers();
             Compare compare = new Compare(user.getInput(), computer.getComputerNumbers());
             compareAnswer = compare.getAnswer();
             outputView.printResult(compareAnswer);

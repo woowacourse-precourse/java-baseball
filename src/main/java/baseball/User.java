@@ -5,19 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    List<Integer> input;
+    List<Integer> inputThreeNumbers;
+    int restartOrExitNumber;
 
     public User() {
-        this.input = inputValue();
     }
 
-    private List<Integer> inputValue() {
-        input = new ArrayList<>();
+    public List<Integer> inputGuessRandomNumbers() {
+        inputThreeNumbers = new ArrayList<>();
         int inputNumbers = Integer.parseInt(Console.readLine());
-        return input;
+        return inputThreeNumbers;
+    }
+
+    public int inputRestartOrExitNumber() {
+        restartOrExitNumber = Integer.parseInt(Console.readLine());
+        return restartOrExitNumber;
     }
 
     public List<Integer> getInput() {
-        return input;
+        return inputThreeNumbers;
     }
 }
