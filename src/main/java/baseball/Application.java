@@ -141,9 +141,15 @@ public class Application {
         System.out.printf("%d볼", ballCount);
     }
 
-    private static int askRestartOrExit() {
-        int result = EXIT;
-        String userAnswer = getUserAnswerInString()
-        return result;
+    private static int askRestartOrExit() throws IllegalArgumentException {
+        String userAnswer = getUserAnswerInString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n");
+        if (!isValidAnswer(userAnswer)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.valueOf(userAnswer);
+    }
+
+    private static boolean isValidAnswer(String userAnswer) {
+        return userAnswer.equals("1") || userAnswer.equals("2");
     }
 }
