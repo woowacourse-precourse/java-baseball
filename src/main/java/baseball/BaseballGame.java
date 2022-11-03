@@ -17,5 +17,8 @@ public class BaseballGame {
         return answer;
     }
 
+    private boolean isStrike(List<Integer> inputNumbers, List<Integer> answer, int index) {
+        return inputNumbers.get(index) == answer.get(index);
+    }
 
 }
