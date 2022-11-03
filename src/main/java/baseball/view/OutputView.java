@@ -16,11 +16,11 @@ public class OutputView {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void printGameRestartOrEnd() {
+    public static void printGameRestartOrEndMessage() {
         System.out.println(GAME_RESTART_OR_END_MESSAGE);
     }
 
-    public static void printBallAndStrikeOrNothing(int ballCnt, int strikeCnt) {
+    public static void printBallAndStrike(int ballCnt, int strikeCnt) {
         if (isOnlyBall(ballCnt, strikeCnt)) {
             System.out.println(ballCnt + BALL);
 
@@ -29,10 +29,11 @@ public class OutputView {
 
         } else if (isBothBallAndStrike(ballCnt, strikeCnt)) {
             System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
-
-        } else {
-            System.out.println(NOTHING);
         }
+    }
+
+    public static void printNothing() {
+        System.out.println(NOTHING);
     }
 
     private static boolean isOnlyBall(int ballCnt, int strikeCnt) {
