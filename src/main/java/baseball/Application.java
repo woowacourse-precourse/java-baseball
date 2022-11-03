@@ -12,6 +12,18 @@ public class Application {
     public static void InputTest() {
         String input = Console.readLine();
         System.out.println(input);
+
+        System.out.println(CheckInputLength(input));
+    }
+
+    public static boolean CheckInputLength(String input) {
+        boolean isLengthCorrect = true;
+
+        if(input.length() != 3) {
+            isLengthCorrect = false;
+        }
+
+        return isLengthCorrect;
     }
 
 
