@@ -42,7 +42,7 @@ public class Game {
         return ret;
     }
 
-    public void printHint(List<Integer> roundResult) {
+    public int printHint(List<Integer> roundResult) {
         int ballCount = roundResult.get(_ball);
         int strikeCount = roundResult.get(_strike);
 
@@ -57,6 +57,7 @@ public class Game {
         } else {
             System.out.print("낫싱");
         }
+        return strikeCount;
     }
 
     public boolean scanIsEnd() {
