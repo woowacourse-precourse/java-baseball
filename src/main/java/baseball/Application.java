@@ -23,10 +23,47 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             String userInput=readLine();
-            if(!checkUserInput(userInput)){
+            if(!checkErrorInUserInput(userInput)){
                 break;
             }
+            checkScoreInUserInput(userInput);
 
+
+        }
+    }
+
+    static void checkScoreInUserInput(String userInput) {
+        int strikeCnt=0;
+        int ballCnt=0;
+        List<Integer> userInputList = new ArrayList<>();
+
+        for (int index = 0; index < 3; index++) {
+            userInputList.add(userInput.charAt(index) - '0');
+        }
+
+        boolean aleadyCheckedIndex[] = new boolean[3];
+        for (int index = 0; index < 3; index++) {
+            if(userInputList.get(index)==computerRandomNumber.get(index)){
+                strikeCnt++;
+                aleadyCheckedIndex[index]=true;
+            }
+        }
+        for (int index = 0; index < 3; index++) {
+            if(aleadyCheckedIndex[index]){
+               continue;
+            }
+            if(computerRandomNumber.contains(userInputList.get(index))){
+                ballCnt++;
+            }
+        }
+        if(ballCnt==0&&strikeCnt==0){
+            System.out.println("낫싱");
+        } else if (ballCnt==0&&strikeCnt!=0) {
+            System.out.println(strikeCnt+"스트라이크");
+        }else if (ballCnt!=0&&strikeCnt==0){
+            System.out.println(ballCnt+"볼");
+        }else{
+            System.out.println(ballCnt+"볼 "+strikeCnt+"스트라이크");
         }
     }
 
@@ -42,23 +79,19 @@ public class Application {
         return computer;
     }
     //유저 입력 체크
-    static boolean checkUserInput(String userInput){
+    static boolean checkErrorInUserInput(String userInput){
         Set<Integer> numbersSet = new HashSet<>();
         for (int strIndex = 0; strIndex < userInput.length(); strIndex++) {
             int number=userInput.charAt(strIndex)-'0';
             numbersSet.add(number);
         }
-        if(numbersSet.size()==3){
-            return true;
-        }
         try{
-            if (userInput.equals("1")||userInput.equals("2")){
+            if(numbersSet.size()==3){
                 return true;
             }
             else{
                 throw new IllegalArgumentException();
             }
-
         }catch (IllegalArgumentException e){
             return false;
         }
