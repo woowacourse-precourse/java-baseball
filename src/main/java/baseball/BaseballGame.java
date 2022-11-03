@@ -23,4 +23,13 @@ public class BaseballGame {
     private Boolean isStringLengthThree(String string) {
         return string.length() == 3;
     }
+
+    private Boolean isNumber(String string) {
+        try {
+            Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
 }
