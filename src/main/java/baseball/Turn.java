@@ -39,7 +39,7 @@ public class Turn {
         }
         for (int number : playerNumberList) {
             if (number < 1 || number > 9) {
-                throw new IllegalArgumentException("숫자만 입력해 주세요.");
+                throw new IllegalArgumentException("1에서 9까지의 숫자만 입력해 주세요.");
             }
         }
         Set<Integer> numberSet = new HashSet<>(playerNumberList);
