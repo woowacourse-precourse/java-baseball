@@ -26,6 +26,10 @@ class Computer {
         return randomNumbers;
     }
 
+    public static ArrayList<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
+
     private static boolean has(Integer number) {
         if (randomNumbers.contains(number)) {
             return true;

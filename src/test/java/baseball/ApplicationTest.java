@@ -46,6 +46,16 @@ class ApplicationTest extends NsTest {
         assertThat(randomNumbers).isNotEmpty();
     }
 
+    @Test
+    void testFunction1_case3() {
+        Computer.pickNumbers();
+        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
+
+        assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(1));
+        assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(2));
+        assertThat(randomNumbers.get(1)).isNotEqualTo(randomNumbers.get(2));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
