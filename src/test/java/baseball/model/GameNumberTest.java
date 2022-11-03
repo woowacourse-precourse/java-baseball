@@ -6,21 +6,22 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("게임 숫자 생성 테스트")
 class GameNumberTest {
 
     @Nested
-    @DisplayName("게임 숫자 사이즈 테스트")
+    @DisplayName("게임 숫자 사이즈")
     @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
     class GameNumberSizeTest {
         @Order(1)
-        @DisplayName("게임 숫자가 3자리면 정상적으로 생성된다.")
+        @DisplayName("숫자가 3개면 정상적으로 생성된다.")
         @Test
         void validGameNumberSize() {
             assertDoesNotThrow(() -> new GameNumber("123"));
         }
 
         @Order(2)
-        @DisplayName("게임 숫자가 3개가 아니면 예외가 발생한다.")
+        @DisplayName("숫자가 3개가 아니면 예외가 발생한다.")
         @ParameterizedTest(name = "{index}. 예외 발생 입력값 = {0}")
         @ValueSource(strings = {"1", "12", "1234"})
         void invalidGameNumberSize(String numbers) {
@@ -30,20 +31,40 @@ class GameNumberTest {
     }
 
     @Nested
-    @DisplayName("게임 숫자 범위 테스트")
+    @DisplayName("게임 숫자 범위")
     @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
     class GameNumberRangeTest {
 
-        @DisplayName("1~9 범위 내의 숫자 입력시 정상적으로 생성된다.")
+        @Order(1)
+        @DisplayName("숫자가 1~9 범위면 정상적으로 생성된다.")
         @Test
         void validGameNumberRange() {
             assertDoesNotThrow(() -> new GameNumber("123"));
         }
 
-        @DisplayName("1~9 범위를 벗어난 숫자 입력시 예외가 발생한다.")
+        @DisplayName("숫자가 1~9 범위를 벗어나면 예외가 발생한다.")
         @Test
         void invalidGameNumberRange() {
             assertThrows(IllegalArgumentException.class, () -> new GameNumber("012"));
+        }
+    }
+
+    @DisplayName("게임 숫자 중복")
+    @Nested
+    @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
+    class GameNumberDuplicateTest {
+        @Order(1)
+        @DisplayName("숫자가 중복되지 않으면 정상적으로 생성된다.")
+        @Test
+        void gameNumberNonDuplicate() {
+            assertDoesNotThrow(() -> new GameNumber("123"));
+        }
+
+        @Order(2)
+        @DisplayName("숫자중 중복되는 숫자가 있으면 예외가 발생한다.")
+        @Test
+        void gameNumberDuplicate() {
+            assertThrows(IllegalArgumentException.class, () -> new GameNumber("122"));
         }
     }
 }
