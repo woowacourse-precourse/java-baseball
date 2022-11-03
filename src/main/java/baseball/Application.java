@@ -12,11 +12,11 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    private static void CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArray) {
+    private static void CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArrayList) {
         HashSet<Integer> playerNumberSet = new HashSet<>();
 
         // 집합에 게임 플레이어가 입력한 숫자를 넣는다.
-        for (Integer playerNumber : playerNumberArray) {
+        for (Integer playerNumber : playerNumberArrayList) {
             playerNumberSet.add(playerNumber);
         }
 
@@ -35,6 +35,8 @@ public class Application {
         for (String letter : playerStringArray) {
             playerNumberArrayList.add(Integer.parseInt(letter));
         }
+
+        CheckPlayerNumberValidation(playerNumberArrayList);
 
         return playerNumberArrayList;
     }
