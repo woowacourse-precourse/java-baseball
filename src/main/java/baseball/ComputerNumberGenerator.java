@@ -20,7 +20,7 @@ public class ComputerNumberGenerator {
     }
 
     public boolean isAlreadyInNumbers(int number){
-        return false;
+        return numbers.contains(number);
     }
 
     public void putNumber(int number){
