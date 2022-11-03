@@ -31,7 +31,7 @@ public class FrontController {
 		do {
 			userInput = Console.readLine();
 			inputValidUtil.checkInputValid(userInput);
-		} while ();//입력값 정답 체크
+		} while (!userBallService.isAnswer(userInput, answerNumber));
 	}
 
 	public boolean exit() {
