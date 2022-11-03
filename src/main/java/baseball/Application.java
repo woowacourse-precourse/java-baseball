@@ -56,4 +56,20 @@ public class Application {
         return strike;
     }
 
+    public static String resultJudgement(List<Integer> computer, List<Integer> user) {
+        int sameNumberCount = compareComputerWithUser(computer, user);
+        int strikeCount = strikeCount(computer, user);
+        int ballCount = sameNumberCount - strikeCount;
+
+        if(sameNumberCount == 0) {
+            return "미싱";
+        } else if (strikeCount == 0) {
+            return ballCount + "볼";
+        } else if (ballCount == 0) {
+            return strikeCount + "스트라이크";
+        }
+
+        return ballCount + "볼 " + strikeCount + "스트라이크";
+    }
+
 }
