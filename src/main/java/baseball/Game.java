@@ -65,4 +65,20 @@ public class Game {
 
         return ball;
     }
+
+    public void printResult(int ball, int strike) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            return;
+        }
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        resolver(ball, strike);
+    }
+
+    public void resolver(int ball, int strike) {
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
 }
