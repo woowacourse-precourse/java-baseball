@@ -75,4 +75,14 @@ public class InputTest {
         // then
         Assertions.assertThat(isInRange).isEqualTo(false);
     }
+
+    @Test
+    public void 입력값이_모두_다른_값인지_확인() {
+        // given
+        String inputRightString = "159";
+        // when
+        boolean isAllDifferent = input.isAllDifferentDigit(inputRightString);
+        // then
+        Assertions.assertThat(isAllDifferent).isEqualTo(true);
+    }
 }
