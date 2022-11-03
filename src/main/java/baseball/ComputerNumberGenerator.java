@@ -16,6 +16,11 @@ public class ComputerNumberGenerator {
         numbers = new ArrayList<>();
     }
 
+    public int[] generateComputerNumber(){
+        makeThreeDigitNumbers();
+        return returnNumbersToArray();
+    }
+
     public int createRandomNumber(){
         return Randoms.pickNumberInRange(MINIMUM_IN_RANGE, MAXIMUM_IN_RANGE);
     }
