@@ -1,31 +1,45 @@
 package baseball.controller;
 
 import baseball.Util;
+import baseball.model.RestartValidator;
+import baseball.model.TryValidator;
 import baseball.model.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.stream.IntStream;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballController {
 	protected final int ANSWER_LENGTH = 3;
+	private final int RESTART_ANSWER_LENGTH = 1;
 	protected String answer;
-	private int strike;
-	private int ball ;
+	protected int strike;
+	protected int ball ;
 	public void start(){
+		do{
+			gameStart();
+		}while(reStartCheck());
+	}
+
+	private void gameStart() {
 		OutputView.gameStartView();
 		initGame();
 		do {
-			Validator tryValidator = new Validator(InputView.tryAnswerInput(), ANSWER_LENGTH);
+			Validator tryValidator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
 			answerCheck(tryValidator.INPUT_VALUE);
 			OutputView.displayResult(ball, strike);
 		} while (!isGameWin());
+		OutputView.displayWin();
+	}
+	private boolean reStartCheck(){
+		Validator restartValidator = new RestartValidator(InputView.restartInput(), ANSWER_LENGTH);
+		return restartValidator.INPUT_VALUE.equals("1");
 	}
 
-	private void initGame() {
+	protected void initGame() {
 		answer = "";
+		strike = 0;
+		ball = 0;
 		setRandomAnswer();
 	}
 
@@ -38,7 +52,7 @@ public class BaseballController {
 		}
 	}
 
-	private void answerCheck(String tryAnswer){
+	protected void answerCheck(String tryAnswer){
 		strike = 0;
 		ball = 0;
 		for (int i = 0; i < tryAnswer.length(); i++) {
@@ -50,7 +64,7 @@ public class BaseballController {
 		}
 	}
 
-	private boolean isGameWin(){
+	protected boolean isGameWin(){
 		return this.strike == ANSWER_LENGTH;
 	}
 }
