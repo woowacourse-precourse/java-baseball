@@ -8,7 +8,7 @@ public class ExceptionCheck {
         }
     }
 
-    public void verificationDuplicate(String userInput) {
+    public void verificationDuplicated(String userInput) {
         if (userInput.charAt(0) == userInput.charAt(1) || userInput.charAt(0) == userInput.charAt(2)
                 || userInput.charAt(1) == userInput.charAt(2)) {
             throw new IllegalArgumentException();

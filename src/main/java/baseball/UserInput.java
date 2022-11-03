@@ -13,7 +13,7 @@ public class UserInput {
         ExceptionCheck check = new ExceptionCheck();
         check.verificationInputZero(userInput);
         check.verificationCharDetect(userInput);
-        check.verificationDuplicate(userInput);
+        check.verificationDuplicated(userInput);
         check.verificationLength(userInput);
 
         return sliceInput(userInput);
