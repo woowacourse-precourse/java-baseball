@@ -11,6 +11,9 @@ public class BaseballGame {
 
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
+    public final static String RESTART_GAME = "1";
+    public final static String CLOSE_GAME = "2";
+
 
     private List<Integer> computerNumbers = new ArrayList<>();
     private int strikeCount;
@@ -43,12 +46,12 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartGame = Console.readLine();
 
-        if (restartGame.equals("1")) {
+        if (restartGame.equals(RESTART_GAME)) {
             computerNumbers.clear();
             start();
         }
 
-        if (restartGame.equals("2")) {
+        if (restartGame.equals(CLOSE_GAME)) {
             System.out.println("게임을 종료합니다.");
         }
     }
