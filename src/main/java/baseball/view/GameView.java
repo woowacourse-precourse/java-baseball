@@ -9,6 +9,8 @@ public class GameView {
     private final String BALL = "볼 ";
     private final String STRIKE = "스트라이크";
     private final String NOTHING = "낫싱";
+    private final String CMD_CONTINUE = "1";
+    private final String CMD_HALT = "2";
 
     private final InputValidation inputValidation;
 
@@ -49,10 +51,10 @@ public class GameView {
     }
 
     public boolean isRestart(String input) {
-        if (input.equals("1")) {
+        if (input.equals(CMD_CONTINUE)) {
             return true;
         }
-        if (input.equals("2")) {
+        if (input.equals(CMD_HALT)) {
             return false;
         }
         throw new IllegalArgumentException();
