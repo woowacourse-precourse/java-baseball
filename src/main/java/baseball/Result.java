@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.ConstVariable.THREE_STRIKE;
+
 public class Result {
     private int ball;
     private int strike;
@@ -22,7 +24,7 @@ public class Result {
     }
 
     public boolean isGameOver() {
-        return this.strike == 3;
+        return this.strike == THREE_STRIKE;
     }
 
     @Override

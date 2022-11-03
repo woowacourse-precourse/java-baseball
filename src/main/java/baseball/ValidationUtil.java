@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class ValidationUtil {
+import static baseball.ConstVariable.*;
 
-    public static final int MIN = 1;
-    public static final int MAX = 9;
-    public static final int VALID_CNT = 3;
+public class ValidationUtil {
 
     public static boolean isValidRange(List<Integer> list) {
         return list.stream().filter(m -> m >= MIN && m <= MAX).count() == list.size();
