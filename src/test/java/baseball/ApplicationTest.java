@@ -10,8 +10,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 랜덤숫자생성_후_유효성검사() {
-        assertThat(Application.isValid(Application.generateAnswer())).isEqualTo(true);
+    void 정답생성_후_유효성검사_10회반복() {
+        for(int i = 0; i < 10; i++) {
+            assertThat(Application.isValid(Application.generateAnswer())).isEqualTo(true);
+        }
     }
 
     @Test
