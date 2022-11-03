@@ -5,6 +5,7 @@ import java.util.List;
 import baseball.service.GameStartService;
 import baseball.service.UserBallService;
 import baseball.util.InputValidUtil;
+import camp.nextstep.edu.missionutils.Console;
 
 public class FrontController {
 
@@ -28,8 +29,8 @@ public class FrontController {
 		List<Integer> answerNumber = gameStartService.makeAnswerNumber();
 		String userInput;
 		do {
-			//입력값 받기
-			//입력값 타당성 체크
+			userInput = Console.readLine();
+			inputValidUtil.checkInputValid(userInput);
 		} while ();//입력값 정답 체크
 	}
 
