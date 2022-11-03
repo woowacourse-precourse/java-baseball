@@ -12,6 +12,53 @@ public class Game {
 
 	Player player = new Player();
 
+	private static final int RETRY_NUMBER = 1;
+	private static final int END_NUMBER = 2;
+
+
+	private void play() throws IllegalArgumentException {
+
+		Computer computer = new Computer();
+
+		List<Integer> answer = computer.getNumbers();
+
+		while (true) {
+			SystemMessage.printNumberInput();
+
+			String playerInput = getPlayerInput();
+			List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
+			System.out.println(playerInput);
+
+			int strikeCount = Referee.getStrikeCount(answer, playerInputArray);
+
+			Referee.printResult(answer, playerInputArray);
+
+			if (strikeCount == 3) {
+				SystemMessage.printWin();
+				endOrRetry();
+				break;
+			}
+		}
+	}
+
+	private void endOrRetry() {
+		SystemMessage.printEndOrRetry();
+
+		int playerChoice = Integer.parseInt(player.getInput());
+
+		System.out.println(playerChoice);
+
+		if (playerChoice == RETRY_NUMBER) {
+			play();
+		}
+
+		if (playerChoice == END_NUMBER) {
+			SystemMessage.printEND();
+		}
+
+		throw new IllegalArgumentException(SystemMessage.printError());
+	}
+
 	private String getPlayerInput() throws IllegalArgumentException {
 		String playerInput = player.getInput();
 		List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
