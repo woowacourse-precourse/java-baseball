@@ -1,7 +1,9 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class BaseballGameTest {
@@ -15,7 +17,7 @@ class BaseballGameTest {
         List<Integer> list = baseballGame.getRandomNumberList();
 
         // then
-        Assertions.assertThat(list.size()).isEqualTo(3);
+        assertThat(list.size()).isEqualTo(3);
     }
 
     @Test()
@@ -24,7 +26,7 @@ class BaseballGameTest {
         BaseballGame baseballGame = new BaseballGame();
 
         // when, then
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
             () -> baseballGame.checkValidString(" 123"));
     }
 
@@ -34,7 +36,7 @@ class BaseballGameTest {
         BaseballGame baseballGame = new BaseballGame();
 
         // when, then
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
             () -> baseballGame.checkValidString("abcd"));
     }
 
@@ -44,7 +46,7 @@ class BaseballGameTest {
         BaseballGame baseballGame = new BaseballGame();
 
         // when, then
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
             () -> baseballGame.checkValidString("1234"));
     }
 
@@ -54,7 +56,7 @@ class BaseballGameTest {
         BaseballGame baseballGame = new BaseballGame();
 
         // when, then
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
             () -> baseballGame.checkValidString("v5q"));
     }
 
@@ -64,7 +66,7 @@ class BaseballGameTest {
         BaseballGame baseballGame = new BaseballGame();
 
         // when, then
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
             () -> baseballGame.checkValidString("45 671"));
     }
 
@@ -78,8 +80,8 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("3스트라이크");
+        // then
+        assertThat(resultString).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -92,8 +94,8 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("2볼 1스트라이크");
+        // then
+        assertThat(resultString).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
@@ -106,8 +108,8 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("3볼");
+        // then
+        assertThat(resultString).isEqualTo("3볼");
     }
 
     @Test
@@ -120,8 +122,8 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("2볼");
+        // then
+        assertThat(resultString).isEqualTo("2볼");
     }
 
     @Test
@@ -134,8 +136,8 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("1볼");
+        // then
+        assertThat(resultString).isEqualTo("1볼");
     }
 
     @Test
@@ -148,7 +150,7 @@ class BaseballGameTest {
         // when
         String resultString = baseballGame.getAnswerString(computer, user);
 
-        // when
-        Assertions.assertThat(resultString).isEqualTo("낫싱");
+        // then
+        assertThat(resultString).isEqualTo("낫싱");
     }
 }
