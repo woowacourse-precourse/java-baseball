@@ -21,4 +21,8 @@ public class Application {
             throw new IllegalArgumentException("세자리 수가 아니거나 중복되는 숫자 또는 0이 있음");
         }
     }
+
+    private static ArrayList<Integer> getPlayerNumber() {
+        
+    }
 }
