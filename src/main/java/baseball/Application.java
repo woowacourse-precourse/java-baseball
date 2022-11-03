@@ -21,9 +21,7 @@ public class Application {
 
                 String string = sc.nextLine();
 
-                if (!baseballGame.isStringLengthThree(string) || !baseballGame.isNumber(string)) {
-                    throw new IllegalArgumentException();
-                }
+                baseballGame.checkValidString(string);
 
                 List<Integer> user = new ArrayList<>();
 
