@@ -22,8 +22,12 @@ public class BaseballGame {
             String input = Console.readLine();
             offenceNumber = validationNumber.checkAndConvertIntegerList(input);
 
-            int strike = checkStrike(defenceNumber, offenceNumber);
+
             int ball = checkBall(defenceNumber, offenceNumber);
+            int strike = checkStrike(defenceNumber, offenceNumber);
+
+            textForGame.printBall(ball);
+            textForGame.printStrike(strike);
         }
     }
 
