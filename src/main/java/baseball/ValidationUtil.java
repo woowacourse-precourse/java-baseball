@@ -22,8 +22,14 @@ public class ValidationUtil {
     }
 
     public static void isValid(List<Integer> list) {
-        if (!isValidRange(list) || !isValidCount(list) || !haveNoDuplicatedNum(list)) {
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        if (!isValidRange(list)) {
+            throw new IllegalArgumentException("입력값이 범위를 초과하셨습니다.");
+        }
+        if (!isValidCount(list)) {
+            throw new IllegalArgumentException("입력값이 세자리가 아닙니다.");
+        }
+        if (!haveNoDuplicatedNum(list)) {
+            throw new IllegalArgumentException("입력값이 중복되었습니다.");
         }
     }
 
@@ -32,7 +38,7 @@ public class ValidationUtil {
         for (int i = 0; i < str.length(); i++) {
             result.add(Integer.parseInt(String.valueOf(str.charAt(i))));
         }
-        isValid(result);
+//        isValid(result);
         return result;
     }
 }

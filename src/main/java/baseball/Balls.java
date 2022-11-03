@@ -26,6 +26,7 @@ public class Balls {
     }
 
     public Result play(List<Integer> ballNums) {
+        ValidationUtil.isValid(ballNums);
         Balls userBalls = new Balls(ballNums);
         Result result = new Result();
 
