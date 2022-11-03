@@ -19,11 +19,11 @@ public class Application {
         while (gameStatus == START) {
             try {
                 playNumberBaseball();
+                gameStatus = askRestartOrExit();
             } catch (Exception e) {
                 e.printStackTrace();
                 break;
             }
-            gameStatus = askRestartOrExit();
         }
     }
 
@@ -150,6 +150,6 @@ public class Application {
     }
 
     private static boolean isValidAnswer(String userAnswer) {
-        return userAnswer.equals("1") || userAnswer.equals("2");
+        return userAnswer.equals(String.valueOf(START)) || userAnswer.equals(String.valueOf(EXIT));
     }
 }
