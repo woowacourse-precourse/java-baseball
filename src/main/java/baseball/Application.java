@@ -135,4 +135,9 @@ public class Application {
 
         return count;
     }
+
+    //재시작/종료 묻기
+    private static String inputAnswer() {
+        return Console.readLine();
+    }
 }
