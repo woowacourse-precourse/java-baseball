@@ -42,16 +42,16 @@ public class Ball {
     }
 
     private boolean validate(String[] arr) {
-        if (validLength(arr)) {
+        if (!validLength(arr)) {
             throw new IllegalArgumentException("중복되지 않은 1~9 사이의 숫자로 구성된 '세 자리 숫자'를 입력해야합니다.");
         }
-        if (validNumberRange(arr)) {
+        if (!validNumberRange(arr)) {
             throw new IllegalArgumentException("중복되지 않은 '1~9 사이의' 숫자로 구성된 세 자리 숫자를 입력해야합니다.");
         }
-        if (validDuplicate(arr)) {
+        if (!validDuplicate(arr)) {
             throw new IllegalArgumentException("'중복되지 않은' 1~9 사이의 숫자로 구성된 세 자리 숫자를 입력해야합니다.");
         }
-        if(validOnlyNumber(arr)){
+        if (!validOnlyNumber(arr)) {
             throw new IllegalArgumentException("중복되지 않은 1~9 사이의 '숫자로 구성된' 세 자리 숫자를 입력해야합니다.");
         }
         return true;
@@ -63,7 +63,7 @@ public class Ball {
         for (int i = 0; i < arr.length; i++) {
             validateIndex.append(arr[i]);
         }
-        return !Pattern.matches(pattern, validateIndex.toString());
+        return Pattern.matches(pattern, validateIndex.toString());
     }
 
     private boolean validDuplicate(String[] arr) {
@@ -71,7 +71,7 @@ public class Ball {
         if (arr[0].equals(arr[1]) || arr[1].equals(arr[2]) || arr[0].equals(arr[2])) {
             validateIndex = 1;
         }
-        return validateIndex == 1;
+        return validateIndex == 0;
     }
 
     private boolean validNumberRange(String[] arr) {
@@ -82,10 +82,26 @@ public class Ball {
                 break;
             }
         }
-        return validateIndex == 1;
+        return validateIndex == 0;
     }
 
     private boolean validLength(String[] arr) {
-        return arr.length != 3;
+        return arr.length == 3;
+    }
+
+    public int size() {
+        return ball.size();
+    }
+
+    public boolean contains(int index){
+        return ball.contains(index);
+    }
+
+    public int get(int index){
+        return ball.get(index);
+    }
+
+    public int indexOf(int index) {
+        return ball.indexOf(index);
     }
 }
