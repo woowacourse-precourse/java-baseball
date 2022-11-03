@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -11,36 +12,10 @@ public class Application {
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> gameNumberList = pickGameNumber();
-//        List<Integer> userNumberList = inputGameNumber();
-//        System.out.println(gameNumberList);
-        List<Integer> strikeNumberList = new ArrayList<>();
-        int strike = 0;
-        int ball = 0;
-        while (strike != 3) {
-            List<Integer> userNumberList = inputGameNumber();
-            strike = 0;
-            ball = 0;
-            for (int i = 0; i < 3; i++) {
-                if (gameNumberList.get(i) == userNumberList.get(i)) {
-                    strike++;
-                    strikeNumberList.add(gameNumberList.get(i));
-                }
-            }
-            for (int i = 0; i < 3; i++) {
-                if (gameNumberList.contains(userNumberList.get(i)) && !strikeNumberList.contains(userNumberList.get(i))) {
-                    ball++;
-                }
-            }
-            if (strike != 0 || ball != 0) {
-                System.out.println(strike + "스트라이크 " + ball + "볼");
-            } else {
-                System.out.println("낫띵");
-            }
-            System.out.println(gameNumberList + "" + userNumberList);
+        if (gamePlaying() != 2) {
+            gamePlaying();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//        System.out.println(userNumberList);
+
     }
 
     public static List<Integer> pickGameNumber() {
@@ -72,22 +47,24 @@ public class Application {
 
     }
 
-    public static void gamePlaying(List<Integer> gameNumberList) {
+    public static int gamePlaying() {
+        List<Integer> gameNumberList = pickGameNumber();
+//        List<Integer> userNumberList = inputGameNumber();
+//        System.out.println(gameNumberList);
 
-        List<Integer> strikeNumberList = new ArrayList<>();
+
         int strike = 0;
         int ball = 0;
         while (strike != 3) {
             List<Integer> userNumberList = inputGameNumber();
+            List<Integer> strikeNumberList = new ArrayList<>();
             strike = 0;
             ball = 0;
             for (int i = 0; i < 3; i++) {
-                if (gameNumberList.get(i) == userNumberList.get(i)) {
+                if (Objects.equals(gameNumberList.get(i), userNumberList.get(i))) {
                     strike++;
                     strikeNumberList.add(gameNumberList.get(i));
                 }
-            }
-            for (int i = 0; i < 3; i++) {
                 if (gameNumberList.contains(userNumberList.get(i)) && !strikeNumberList.contains(userNumberList.get(i))) {
                     ball++;
                 }
@@ -100,5 +77,13 @@ public class Application {
             System.out.println(gameNumberList + "" + userNumberList);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int restartGame = Integer.parseInt(readLine());
+        return restartGame;
+//        System.out.println(userNumberList);
     }
+
+
+
+
 }
