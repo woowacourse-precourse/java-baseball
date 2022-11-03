@@ -11,6 +11,7 @@ public class Application {
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> answer = new ArrayList<>(3);
         List<Integer> user_answer = new ArrayList<>(3);
         getRandomNum(answer, user_answer);
@@ -34,14 +35,13 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         int user_answer = Integer.parseInt(Console.readLine());
         if (user_answer < 1000 && user_answer > 99) {
-            for (int i = 2; i >= 0; i--) {
+            for (int i = 0; i < 3; i++) {
                 userAnswer.add(user_answer % 10);
                 user_answer = user_answer / 10;
             }
             Collections.reverse(userAnswer);
             compare_Answer(answer, userAnswer);
-        } else throw new IllegalArgumentException();
-
+        } else throw new IllegalArgumentException("잘못된 값 입력.");
     }
 
     public static void compare_Answer(List<Integer> answer, List<Integer> userAnswer) {
@@ -50,24 +50,7 @@ public class Application {
                 compare_eachAnswer(i, j, answer, userAnswer);
             }
         }
-
-        if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            restart_game();
-        } else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            getUserAnswer(answer, userAnswer);
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-            getUserAnswer(answer, userAnswer);
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-            getUserAnswer(answer, userAnswer);
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크 ");
-            getUserAnswer(answer, userAnswer);
-        }
+        check_Answer(answer, userAnswer);
 
     }
 
@@ -76,21 +59,35 @@ public class Application {
             if (Objects.equals(answer.get(i), userAnswer.get(j)))
                 strike++;
         } else if (Objects.equals(answer.get(i), userAnswer.get(j)))
-                ball++;
+            ball++;
+    }
 
+    public static void check_Answer(List<Integer> answer, List<Integer> userAnswer) {
+        String ball_announcement = "";
+        String strike_announcement = "";
+
+        if (strike != 0)
+            strike_announcement = strike + "스트라이크";
+        if (ball != 0)
+            ball_announcement = ball + "볼";
+        if (strike == ball)
+            System.out.print("낫싱");
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            restart_game();
+        } else {
+            System.out.println(ball_announcement + " " + strike_announcement);
+            getUserAnswer(answer, userAnswer);
+        }
     }
 
     public static void restart_game() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int check = Integer.parseInt(Console.readLine());
-        if (check == 1) {
-            strike = 0;
-            ball = 0;
+        if (Integer.parseInt(Console.readLine()) == 1) {
             List<Integer> answer = new ArrayList<>(3);
             List<Integer> user_answer = new ArrayList<>(3);
             getRandomNum(answer, user_answer);
         }
-
     }
 }
-
