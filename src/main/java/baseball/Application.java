@@ -84,6 +84,10 @@ public class Application {
         }
     }
 
+    public static boolean isGameEnd(int strike) {
+        if (strike == 3) return true;
+        else return false;
+    }
 
     public static void main(String[] args) {
         List<Integer> computerNumber = makeRandomNumber();
@@ -99,6 +103,7 @@ public class Application {
             int ball = countBall(computerNumber, userInputNumber);
             int strike = countStrike(computerNumber, userInputNumber);
             printResult(ball, strike);
+            flag = isGameEnd(strike);
         }
     }
 }
