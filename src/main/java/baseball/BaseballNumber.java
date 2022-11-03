@@ -34,7 +34,7 @@ public class BaseballNumber {
 
     }
 
-    public void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet) throws IllegalArgumentException {
+    private void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet) throws IllegalArgumentException {
         if (is_not_proper_size(numbers)) {
             throw new IllegalArgumentException(NOT_PROPER_SIZE_EXCEPTION_MESSAGE);
         }
