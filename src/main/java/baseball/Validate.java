@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validate {
     public static void check(List<Integer> input) {
@@ -19,13 +21,7 @@ public class Validate {
     }
 
     private static boolean isDuplicate(List<Integer> input) {
-        for (int i = 0; i < input.size() - 1; i++) {
-            for (int j = i + 1; j < input.size(); j++) {
-                if (input.get(i).equals(input.get(j))) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        Set<Integer> set = new HashSet<>(input);
+        return set.size() != input.size();
     }
 }
