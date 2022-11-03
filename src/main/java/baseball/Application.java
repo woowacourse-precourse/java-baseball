@@ -27,6 +27,9 @@ public class Application {
                 continue;
             }
 
+            int[] numberArrays = {0, 0, 0};
+            addNumber(numberArrays, numberString);
+
         } while(true);
     }
 
@@ -113,4 +116,11 @@ public class Application {
         return true;
     }
 
+    public static void addNumber(int[] numberArrays, String numberString) {
+
+        for (int i = 0; i < numberString.length(); i++) {
+            numberArrays[i] = numberString.charAt(i) - 48;
+        }
+
+    }
 }
