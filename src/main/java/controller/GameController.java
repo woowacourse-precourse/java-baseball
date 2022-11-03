@@ -41,5 +41,4 @@ public class GameController {
         int numInputOfUser = user.getNumSelecUser();
         return computer.giveHint2User(numInputOfUser);
     }
-
 }
