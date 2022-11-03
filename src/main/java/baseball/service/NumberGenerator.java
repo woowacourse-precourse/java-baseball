@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    static final int START_NUM = 1;
-    static final int END_NUM = 9;
-    static final int PICK_MAX_COUNT = 3;
+    private static final int START_NUM = 1;
+    private static final int END_NUM = 9;
+    private static final int PICK_MAX_COUNT = 3;
 
     public List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>(PICK_MAX_COUNT);
