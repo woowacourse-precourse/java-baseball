@@ -23,6 +23,7 @@ public class BaseballGame {
             offenceNumber = validationNumber.checkAndConvertIntegerList(input);
 
             int strike = checkStrike(defenceNumber, offenceNumber);
+            int ball = checkBall(defenceNumber, offenceNumber);
         }
     }
 
@@ -35,6 +36,18 @@ public class BaseballGame {
             }
         }
 
+        return count;
+    }
+
+    public int checkBall(List<Integer> defenceNumber, List<Integer> offenceNumber) {
+        int count = 0;
+
+        for(Integer number : offenceNumber) {
+            int index = defenceNumber.indexOf(number);
+            if(index != -1 && offenceNumber.indexOf(number) != index) {
+                count++;
+            }
+        }
         return count;
     }
 }

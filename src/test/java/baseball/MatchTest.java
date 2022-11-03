@@ -46,4 +46,44 @@ public class MatchTest {
 
         assertThat(baseballGame.checkStrike(defenceNumber, offenceNumber)).isEqualTo(3);
     }
+
+    @Test
+    void ball_test_1() {
+        List<Integer> defenceNumber = List.of(1, 3, 4);
+        List<Integer> offenceNumber = List.of(2, 3, 4);
+
+        BaseballGame baseballGame = new BaseballGame();
+
+        assertThat(baseballGame.checkBall(defenceNumber, offenceNumber)).isEqualTo(0);
+    }
+
+    @Test
+    void ball_test_2() {
+        List<Integer> defenceNumber = List.of(1, 3, 4);
+        List<Integer> offenceNumber = List.of(3, 4, 1);
+
+        BaseballGame baseballGame = new BaseballGame();
+
+        assertThat(baseballGame.checkBall(defenceNumber, offenceNumber)).isEqualTo(3);
+    }
+
+    @Test
+    void ball_test_3() {
+        List<Integer> defenceNumber = List.of(1, 3, 4);
+        List<Integer> offenceNumber = List.of(1, 4, 8);
+
+        BaseballGame baseballGame = new BaseballGame();
+
+        assertThat(baseballGame.checkBall(defenceNumber, offenceNumber)).isEqualTo(1);
+    }
+
+    @Test
+    void ball_test_4() {
+        List<Integer> defenceNumber = List.of(7, 5, 1);
+        List<Integer> offenceNumber = List.of(1, 7, 6);
+
+        BaseballGame baseballGame = new BaseballGame();
+
+        assertThat(baseballGame.checkBall(defenceNumber, offenceNumber)).isEqualTo(2);
+    }
 }
