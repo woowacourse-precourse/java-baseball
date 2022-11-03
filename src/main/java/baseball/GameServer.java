@@ -10,6 +10,8 @@ public class GameServer {
     private List<Integer> computerNumbers = new ArrayList<>();
     private List<Integer> userNumbers = new ArrayList<>();
     private boolean restart = false;
+    private boolean isNothing = false;
+
 
     public void createRandomNumber() {
         while (computerNumbers.size() < 3) {
@@ -63,6 +65,26 @@ public class GameServer {
         if (!(userNumber.equals("1") || userNumber.equals("2"))) {
             restart = false;
         }
+    }
+
+    public List<Integer> checkUsersInputIsAnswer() {
+        int strike = 0;
+        int ball = 0;
+        List<Integer> numStrikeBall = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i) == userNumbers.get(i)) {
+                ++strike;
+            }
+            if (computerNumbers.get(i) != userNumbers.get(i)) {
+                ++ball;
+            }
+            if (strike == 0 && ball == 0) {
+                isNothing = true;
+            }
+        }
+        numStrikeBall.add(strike);
+        numStrikeBall.add(ball);
+        return numStrikeBall;
     }
 
     public void printGameStart() {
