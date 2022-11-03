@@ -15,31 +15,23 @@ public class Game {
     public static void start() {
         is_in_progress = true;
         create_random_number();
-        while (is_in_progress) {
-            try {
-                List<Integer> value = get_answer();
-                HashMap<String, Integer> score = get_score(value);
-                if (score.getOrDefault("strike", -1) == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    is_in_progress = false;
-                } else {
-                    int ball = score.getOrDefault("ball", -1);
-                    int strike = score.getOrDefault("strike", -1);
-                    String result = "";
 
-                    if (ball != -1) {
-                        result += score.get("ball") + "볼 ";
-                    }
-                    if (strike != -1) {
-                        result += score.get("strike") + "스트라이크";
-                    }
-                    if (strike + ball == -2) {
-                        result = "낫싱";
-                    }
-                    System.out.println(result);
-                }
-            } catch (IllegalArgumentException e) {
-                throw e;
+        while (is_in_progress) {
+            List<Integer> value = get_answer();
+            HashMap<String, Integer> score = get_score(value);
+            if (score.getOrDefault("strike", -1) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                is_in_progress = false;
+            } else {
+                int ball = score.getOrDefault("ball", -1);
+                int strike = score.getOrDefault("strike", -1);
+                String result = "";
+
+                if (ball != -1) result += score.get("ball") + "볼 ";
+                if (strike != -1) result += score.get("strike") + "스트라이크";
+                if (strike + ball == -2) result = "낫싱";
+
+                System.out.println(result);
             }
         }
     }
