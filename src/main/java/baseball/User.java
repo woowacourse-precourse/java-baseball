@@ -2,27 +2,52 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Objects;
+
+import static baseball.Configure.*;
 
 public class User {
 
 
-	private static final int numberDigits = 3;
+	public LinkedHashMap<Integer, Integer> getNumber() {
+		System.out.println("숫자를 입력해주세요 : ");
+		String input = getInput();
 
-	public List<Integer> getUserNumber() {
+		handleInputError(input);
 
-		String userInput = getUserInput();
-
-		List<Integer> numberList = new ArrayList<>();
-
-		return numberList;
+		return processNumbers(input);
 	}
 
-	private static String getUserInput() {
-		String userInput = Console.readLine();
-		return userInput;
+	public LinkedHashMap<Integer, Integer> processNumbers(String input) {
+		return storeIntoMap(storeIntoArray(input));
+	}
+
+	public LinkedHashMap<Integer, Integer> storeIntoMap(String[] numbersArray) {
+
+		LinkedHashMap<Integer, Integer> numbersWithIdx = new LinkedHashMap<>();
+
+		for (int idx = 0; idx < numbersArray.length; idx++) {
+			numbersWithIdx.put(Integer.parseInt(numbersArray[idx]), idx);
+		}
+
+		return numbersWithIdx;
+	}
+
+	private static String[] storeIntoArray(String input) {
+		return input.split("");
+	}
+
+	public void handleInputError(String userInput) {
+
+		if (hasDuplication(userInput) || !followDigitRule(userInput, NUMBER_DIGIT.getValue()) || !isNumberOnly(userInput)) {
+			throw new IllegalArgumentException("잘못입력하였습니다. 프로그램을 종료합니다.");
+		}
+
+	}
+
+	private static String getInput() {
+		return Console.readLine();
 	}
 
 	public boolean hasDuplication(CharSequence checkString) {
@@ -32,7 +57,7 @@ public class User {
 				.count();
 	}
 
-	public boolean checkDigit(String checkString, int checkLength) {
+	public boolean followDigitRule(String checkString, int checkLength) {
 		return Objects.equals(checkLength, checkString.length());
 	}
 
