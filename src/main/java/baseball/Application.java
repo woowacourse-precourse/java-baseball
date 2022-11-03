@@ -25,19 +25,9 @@ public class Application {
                 throw new IllegalArgumentException();
             }else{
                 //todo: 검증 기능
-                    //todo: 3스트라이크 일 경우
-//                if(num_verification(input_num).get(0) == 3){
-//                    System.out.println();
-//                }
-                //todo: 3스트라이크, 게임종료 출력
                 //todo: 아닐 경우
                 //todo: 스트라이크, 볼 개수 출력
                 //todo: 3자리 숫자를 입력받는 기능 실행
-                List<Integer> a = new ArrayList<>();
-                a.add(1); a.add(2); a.add(3);
-                List<Integer> b = new ArrayList<>();
-                b.add(4); b.add(5); b.add(1);
-                System.out.println(num_verification(a,b));
             }
         }
     }
