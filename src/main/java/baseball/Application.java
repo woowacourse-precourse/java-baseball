@@ -9,11 +9,15 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int startAndEndCondition = 1;
-        while (startAndEndCondition != 2) {
+        int intStartEndCondition = 1;
+        while (intStartEndCondition != 2) {
             game();
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            startAndEndCondition = Integer.parseInt(Console.readLine());
+
+            String startEndCondition = Console.readLine();
+            inputValidationOfStartEndCondition(startEndCondition);
+            intStartEndCondition = Integer.parseInt(startEndCondition);
         }
     }
 
@@ -24,33 +28,49 @@ public class Application {
         int strikes = 0;
         while (strikes < 3) {
             System.out.print("숫자를 입력해주세요 : ");
-            user = userInput();
+            user = userInputNumber();
 
-            List<Integer> strikesAndBalls = countAndSave(computer, user);
+            List<Integer> strikesAndBalls = strikeAndBallCounter(computer, user);
             strikes = strikesAndBalls.get(0);
             int balls = strikesAndBalls.get(1);
             printResult(strikes, balls);
         }
-
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
 
     static List<Integer> createRandomThreeDigitNum() {
         List<Integer> computer = new ArrayList<>();
 
-        while(computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!computer.contains(randomNumber)) computer.add(randomNumber);
+        int first = Randoms.pickNumberInRange(1,9);
+        computer.add(first);
+
+        int second = Randoms.pickNumberInRange(1,9);
+        while (second == first) {
+            second = Randoms.pickNumberInRange(1,9);
         }
+        computer.add(second);
+
+        int third = Randoms.pickNumberInRange(1,9);
+        while (third == first || third == second) {
+            third = Randoms.pickNumberInRange(1,9);
+        }
+        computer.add(third);
 
         return computer;
     }
 
-    static List<Integer> userInput() {
+    static void inputValidationOfStartEndCondition(String input) {
+        if (!(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static List<Integer> userInputNumber() {
         List<Integer> user = new ArrayList<>();
 
         String input = Console.readLine();
-        isCorrectedInput(input);
+        inputValidationOfUser(input);
 
         for(char number : input.toCharArray()) {
             user.add(number-'0');
@@ -59,39 +79,24 @@ public class Application {
         return user;
     }
 
-    static boolean isCorrectedInput(String input) {
-        if (input.length() != 3) throw new IllegalArgumentException();
+    static List<Integer> strikeAndBallCounter(List<Integer> computer, List<Integer> user) {
+        Map<String, Integer> strikeAndBall = new LinkedHashMap<>();
 
-        Set<Character> set = new HashSet<>();
-        for (char i : input.toCharArray()) {
-            if (!Character.isDigit(i) || i == '0') throw new IllegalArgumentException();
+        int strikeCounts = countDigitMatched(computer, user);
+        strikeAndBall.put("strike", strikeCounts);
+        int ballCounts = countSearchedAll(computer, user) - strikeCounts;
+        strikeAndBall.put("ball", ballCounts);
 
-            if(!set.contains(i)) set.add(i);
-            else throw new IllegalArgumentException();
-        }
-
-        return true;
+        return new ArrayList<>(strikeAndBall.values());
     }
 
-    static List<Integer> countAndSave(List<Integer> computer, List<Integer> user) {
-        Map<String, Integer> strikeAndBallCounter = new LinkedHashMap<>();
-
-        int strikeCounts = countEqualDigits(computer, user);
-        strikeAndBallCounter.put("strike", strikeCounts);
-
-        int ballCounts = countUserNumInComputerNum(computer, user) - strikeCounts;
-        strikeAndBallCounter.put("ball", ballCounts);
-
-        return new ArrayList<>(strikeAndBallCounter.values());
-    }
-
-    static int countEqualDigits(List<Integer> computer, List<Integer> user) {
+    static int countDigitMatched(List<Integer> computer, List<Integer> user) {
         return (int)IntStream.range(0, 3).
                 filter(x -> user.get(x)==computer.get(x)).
                 count();
     }
 
-    static int countUserNumInComputerNum(List<Integer> computer, List<Integer> user) {
+    static int countSearchedAll(List<Integer> computer, List<Integer> user) {
         return (int)user.stream().
                 filter(computer::contains).
                 count();
@@ -111,5 +116,24 @@ public class Application {
             return;
         }
         System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
+    }
+
+    /* Method set of verifying valid input data */
+    static void inputValidationOfUser(String input) {
+        //1~9 범위의 숫자가 아닌 문자를 포함하는 경우
+        String temp = input.replaceAll("[1-9]", "");
+        if (temp.length() != 0){
+            throw new IllegalArgumentException();
+        }
+        //3자리 수가 아닌 경우
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        //중복 숫자를 포함하는 경우
+        char first = input.charAt(0);
+        char second = input.charAt(1);
+        char third = input.charAt(2);
+        if (first == second || second == third || first == third)
+            throw new IllegalArgumentException();
     }
 }
