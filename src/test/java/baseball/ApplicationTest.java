@@ -74,16 +74,37 @@ class ApplicationTest extends NsTest {
 	@DisplayName("최종 생성된 컴퓨터 난수의 자리수를 확인한다")
 	@RepeatedTest(30)
 	void testComputerNumberSize() {
-		assertThat(computer.getComputerNumber().size()).isEqualTo(3);
+		assertThat(computer.getNumbers().size()).isEqualTo(3);
 	}
 
 	@DisplayName("최종 생성된 컴퓨터 난수의 중복 여부를 확인한다")
-	@RepeatedTest(100)
+	@RepeatedTest(30)
 	void testComputerNumberWithoutDuplication() {
-		List<Integer> list = List.of(2, 2, 2);
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>() {
+			{
+				put(5, 0);
+				put(5, 1);
+				put(5, 2);
+			}
+		};
 
-		assertThat(computer.getComputerNumber()).isNotSameAs(list);
+		assertThat(computer.getNumbers()).isNotSameAs(desirableMap);
 	}
+
+	@DisplayName("컴퓨터 생성 난수의 자료형 전처리 수행을 테스트한다")
+	@Test
+	void testComputerNumberIsProcessed() {
+		List<Integer> createdList = List.of(5, 9, 1);
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>(){
+			{
+				put(5, 0);
+				put(9, 1);
+				put(1, 2);
+			}
+		};
+		assertThat(computer.processNumbers(createdList)).isEqualTo(desirableMap);
+	}
+
 
 	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")
 	@Test
@@ -113,13 +134,16 @@ class ApplicationTest extends NsTest {
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
 
-	@DisplayName("유저 입력에 대한 전처리 수행을 테스트한다")
+	@DisplayName("유저 입력에 대한 자료형 전처리 수행을 테스트한다")
 	@Test
 	void testUserInputIsProcessed() {
-		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>();
-		desirableMap.put(5, 0);
-		desirableMap.put(9, 1);
-		desirableMap.put(1, 2);
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>(){
+			{
+				put(5, 0);
+				put(9, 1);
+				put(1, 2);
+			}
+		};
 		assertThat(user.processNumbers("591")).isEqualTo(desirableMap);
 	}
 
