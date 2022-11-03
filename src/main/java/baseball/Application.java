@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,23 +15,7 @@ public class Application {
         while (true) {
             List<Integer> computer = baseballGame.getRandomNumberList();
 
-            while (true) {
-                System.out.print("숫자를 입력해주세요 : ");
-
-                String string = sc.nextLine();
-
-                baseballGame.checkValidString(string);
-
-                List<Integer> user = baseballGame.getUserNumberList(string);
-
-                String result = baseballGame.getAnswerString(computer, user);
-
-                System.out.println(result);
-
-                if (result.equals("3스트라이크")) {
-                    break;
-                }
-            }
+            baseballGame.start(computer, sc);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 

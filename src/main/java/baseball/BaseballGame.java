@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BaseballGame {
 
@@ -18,6 +19,26 @@ public class BaseballGame {
         }
 
         return list;
+    }
+
+    public void start(List<Integer> computer, Scanner scanner) {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+
+            String string = scanner.nextLine();
+
+            checkValidString(string);
+
+            List<Integer> user = getUserNumberList(string);
+
+            String result = getAnswerString(computer, user);
+
+            System.out.println(result);
+
+            if (result.equals("3스트라이크")) {
+                break;
+            }
+        }
     }
 
     public void checkValidString(String string) {
@@ -39,7 +60,7 @@ public class BaseballGame {
         return true;
     }
 
-    public List<Integer> getUserNumberList(String string) {
+    private List<Integer> getUserNumberList(String string) {
         List<Integer> user = new ArrayList<>();
 
         String[] split = string.split("");
