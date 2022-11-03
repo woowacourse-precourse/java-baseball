@@ -19,15 +19,15 @@ public class Display {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static void printBallMessage(int n) {
-        System.out.print(n+"볼");
+    static void printBallMessage(int n) {
+        System.out.print(n+"볼 ");
     }
 
-    private static void printStrikeMessage(int n) {
+    static void printStrikeMessage(int n) {
         System.out.print(n+"스트라이크");
     }
 
-    private static void printNothingMessage() {
+    static void printNothingMessage() {
         System.out.println("낫싱");
     }
 }
