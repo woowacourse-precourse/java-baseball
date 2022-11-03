@@ -116,12 +116,12 @@ public class Application {
     private static void printResult(List<Integer> scoreOfStrikeAndBall) {
         if (isRightAnswer(scoreOfStrikeAndBall)) {
             printThreeStrike();
-            return;
         } else if (isNoMatchAnswer(scoreOfStrikeAndBall)) {
             printNothingMatch();
+        } else {
+            printBall(scoreOfStrikeAndBall.get(BALL_COUNT_INDEX));
+            printStrike(scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX));
         }
-        printStrike(scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX));
-        printBall(scoreOfStrikeAndBall.get(BALL_COUNT_INDEX));
     }
 
     private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {
@@ -135,9 +135,11 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     private static void printStrike(int strikeCount) {
-        System.out.printf("%d스트라이크", strikeCount);
+        System.out.printf(" %d스트라이크%n", strikeCount);
     }
-    private static void printBall(int ballCount) {}
+    private static void printBall(int ballCount) {
+        System.out.printf("%d볼", ballCount);
+    }
 
     private static int askRestartOrExit() {
         int result = EXIT;
