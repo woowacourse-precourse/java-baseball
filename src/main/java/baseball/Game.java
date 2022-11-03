@@ -13,6 +13,7 @@ public class Game {
     private static final int endGame = 2;
 
     public static List<Integer> correctAnswer = new ArrayList<>();
+    private boolean isCorrect;
     private int newOrEnd = 0;
 
     AnswerSheet answerSheet = new AnswerSheet();
@@ -23,9 +24,12 @@ public class Game {
         setComputerAnswer();
 
         while (true) {
+            answerSheet.guideToEnterNumber();
             answerSheet.getUserAnswer();
-            if (answerSheet.isCorrectAnswer(hint.getHint())) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isCorrect = answerSheet.checkCorrectAnswer(hint.getHint());
+            hint.giveHint();
+            if (isCorrect) {
+                answerSheet.guideAnswerCorrect();
                 break;
             }
         }

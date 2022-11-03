@@ -15,12 +15,11 @@ public class AnswerSheet {
     IllegalException illegalException = new IllegalException();
 
     public void getUserAnswer() {
-        guideToEnterNumber();
         userAnswer.clear();
         setUserAnswer();
     }
 
-    private void guideToEnterNumber() {
+    public void guideToEnterNumber() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
@@ -36,12 +35,16 @@ public class AnswerSheet {
         return inputArray;
     }
 
-    public boolean isCorrectAnswer(String hint) {
+    public boolean checkCorrectAnswer(String hint) {
         this.boolCorrectAnswer = false;
         if (hint.equals("3스트라이크")) {
             this.boolCorrectAnswer =true;
         }
         return this.boolCorrectAnswer;
+    }
+
+    public void guideAnswerCorrect() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 

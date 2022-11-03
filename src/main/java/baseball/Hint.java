@@ -21,11 +21,14 @@ public class Hint {
         getHintOfStrike();
         getHintOfNothing();
 
-        System.out.println(this.hint.trim());
         return this.hint.trim();
     }
 
-    public void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    public void giveHint() {
+        System.out.println(this.hint.trim());
+    }
+
+    private void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         matchingNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {
@@ -35,7 +38,7 @@ public class Hint {
         }
     }
 
-    public void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    private void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         includedNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {
