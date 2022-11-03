@@ -107,7 +107,29 @@ public class NumberBaseball {
         result.add(strikeCount);
         result.add(nothingFlag);
 
-        System.out.println(userAnswer);
         return result;
+    }
+
+    /**
+     * 사용자의 입력한 답에 대한 결과를 화면에 출력해주는 메소드
+     *
+     * @param result -> [ballCount, strikeCount, nothingFlag]
+     */
+    public void showResult(List<Integer> result) {
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+        int nothingFlag = result.get(2);
+
+        if (nothingFlag == 0) {
+            if (strikeCount == 0 && ballCount != 0) {
+                System.out.println(ballCount + "볼");
+            } else if (strikeCount != 0 && ballCount == 0) {
+                System.out.println(strikeCount + "스트라이크");
+            } else {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            }
+        } else {
+            System.out.println("낫싱");
+        }
     }
 }
