@@ -47,4 +47,25 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+    @Test
+    void concat_문자열_뒤에_문자열_추가하기() {
+        String input = "Hello";
+        String result = input.concat(" World!");
+
+        assertThat(result).isEqualTo("Hello World!");
+    }
+
+    @Test
+    void contains_문자열을_포함하고_있는지_확인() {
+        String input = "Choi Seungwon";
+
+        assertThat(input.contains("Choi")).isEqualTo(true);
+    }
+
+    @Test
+    void endsWith_문자열이_지정된_문자열로_끝나는지_확인() {
+        String input = "wonny@email.com";
+
+        assertThat(input.endsWith("@email.com")).isEqualTo(true);
+    }
 }
