@@ -24,22 +24,25 @@ public class User {
         return notDuplication.size() == userNumber.length();
     }
 
-    public static List<Integer> getValidNumber() {
-        List<Integer> userNumber = new ArrayList<>();
-        try {
-            userNumber = getNumber();
-        } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
+    private static void getValidNumber(String inputUserNumber) {
+        if (!isValidScope(inputUserNumber)) {
+            throw new IllegalArgumentException("1 ~ 9 시이의 수만 입력할 수 있습니다.");
         }
-        return userNumber;
+        if (!isThreeLength(inputUserNumber)) {
+            throw new IllegalArgumentException("세 자리의 수만 입력할 수 있습니다.");
+        }
+        if (!isDuplicate(inputUserNumber)) {
+            throw new IllegalArgumentException("중복되지 않은 수만 입력할 수 있습니다.");
+        }
     }
 
-    private static List<Integer> getNumber() throws IllegalArgumentException {
+    public static List<Integer> getNumber() {
         String inputUserNumber = Console.readLine();
         List<Integer> userNumber = new ArrayList<>();
-        if (!isValidScope(inputUserNumber) || !isThreeLength(inputUserNumber)
-                || !isDuplicate(inputUserNumber)) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+        try {
+            getValidNumber(inputUserNumber);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
         }
         for (char element : inputUserNumber.toCharArray()) {
             userNumber.add(element - '0');
