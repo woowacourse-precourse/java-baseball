@@ -160,12 +160,6 @@ class ApplicationTest extends NsTest {
 		assertThat(game.isBall(6,5,6,2)).isTrue();
 	}
 
-	@DisplayName("나싱을 확인한다")
-	@Test
-	void verifyNothing(){
-		assertThat(game.isNothing(1,2,3,4)).isTrue();
-	}
-
 
 	@DisplayName("LinkedHashMap에서 key 값을 꺼내는 기능을 확인한다")
 	@Test
@@ -192,6 +186,22 @@ class ApplicationTest extends NsTest {
 		};
 		assertThat(game.extractIndex(map,0)).isEqualTo(0);
 	}
+
+	@DisplayName("컴퓨터와 사용자 숫자의 비교 로직의 작동을 확인한다")
+	@Test
+	void testGuessingCalculation(){
+
+
+
+		boolean isStrike = true;
+		game.isStrike(2,1,2,1);
+		game.countStrike();
+		int strike = game.strike;
+
+		assertEquals(1, strike);
+	}
+
+
 
 
 
