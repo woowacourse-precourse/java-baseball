@@ -51,4 +51,18 @@ public class Game {
 
         return strike;
     }
+
+    private int getBall(List<Integer> computer, List<Integer> player) {
+        int ball = 0;
+        int playerNumber;
+
+        for (int i = 0; i < player.size(); i++) {
+            playerNumber = player.get(i);
+            if ((computer.contains(playerNumber)) && (computer.indexOf(playerNumber) != i)) {
+                ball++;
+            }
+        }
+
+        return ball;
+    }
 }
