@@ -42,8 +42,22 @@ public class ResultData {
         return strike;
     }
 
-    public int getBall() {
-        return ball;
+    public void printResult() {
+        String strikeStr = "";
+        String ballStr = "";
+
+        if (strike != 0) {
+            strikeStr = strike + "스트라이크";
+        }
+        if (ball != 0) {
+            ballStr = ball + "볼 ";
+        }
+        String resultStr = ballStr + strikeStr;
+        if (!resultStr.equals("")) {
+            System.out.println(resultStr);
+        } else {
+            System.out.println("낫싱");
+        }
     }
 
 

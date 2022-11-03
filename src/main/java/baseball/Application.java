@@ -61,12 +61,7 @@ public class Application {
             ball = 0;
             ResultData resultData = new ResultData(gameNumberList, userNumberList, strike, ball);
             strike = resultData.getStrike();
-            ball = resultData.getBall();
-            if (strike != 0 || ball != 0) {
-                System.out.println( ball + "볼 " + strike + "스트라이크 ");
-            } else {
-                System.out.println("낫싱");
-            }
+            resultData.printResult();
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -75,9 +70,6 @@ public class Application {
 //        System.out.println(userNumberList);
     }
 
-    public void printResult(int strike, int ball) {
-
-    }
 
 
 
