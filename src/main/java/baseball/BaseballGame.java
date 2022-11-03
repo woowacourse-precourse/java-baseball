@@ -26,6 +26,11 @@ public class BaseballGame {
 
     public void start() {
         createComputerNumbers();
+        inputAnswer();
+        checkToRestartGame();
+    }
+
+    private void inputAnswer() {
         while (true) {
             String input = Console.readLine();
             System.out.println("숫자를 입력해주세요 : " + input);
@@ -39,7 +44,6 @@ public class BaseballGame {
                 break;
             }
         }
-        checkToRestartGame();
     }
 
     private void checkToRestartGame() {
