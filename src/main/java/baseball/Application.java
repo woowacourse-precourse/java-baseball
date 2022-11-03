@@ -9,11 +9,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Computer computer = new Computer();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer.startGame();
+        boolean match;
 
-        while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            computer.startGame();
-
+        do {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
@@ -21,9 +21,8 @@ public class Application {
                 throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해야 합니다.");
             }
 
-            int number = Integer.parseInt(input);
-            boolean result = computer.getResult(number);
-        }
+            match = computer.getResult(Integer.parseInt(input));
+        } while (!match);
     }
 
     public static boolean isValidNumber(String input) {
