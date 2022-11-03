@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,8 +16,8 @@ public class Baseball implements Game {
   private static final int START_POSSIBLE_NUMBER = 1;
   private static final int END_POSSIBLE_NUMBER = 9;
 
-  private final int[] computerNumbers = new int[GOAL_DIGIT];
-  private final int[] playerNumbers = new int[GOAL_DIGIT];
+  private final List<Integer> computerNumbers = new ArrayList<>(GOAL_DIGIT);
+  private final List<Integer> playerNumbers = new ArrayList<>(GOAL_DIGIT);
 
   private int strike;
   private int ball;
@@ -30,20 +31,18 @@ public class Baseball implements Game {
   private void setComputerNumbers() {
     List<Integer> uniqueNumbers = pickUniqueNumbersInRange(START_POSSIBLE_NUMBER,
         END_POSSIBLE_NUMBER, GOAL_DIGIT);
-    for (int i = 0; i < GOAL_DIGIT; i++) {
-      computerNumbers[i] = uniqueNumbers.get(i);
-    }
+    computerNumbers.addAll(uniqueNumbers);
   }
 
   private List<Integer> pickUniqueNumbersInRange(int start, int end, int count) {
-    List<Integer> uniqueNumberArray = new ArrayList<>();
-    while (uniqueNumberArray.size() < count) {
+    List<Integer> uniqueNumbers = new ArrayList<>();
+    while (uniqueNumbers.size() < count) {
       int randomNumber = Randoms.pickNumberInRange(start, end);
-      if (!uniqueNumberArray.contains(randomNumber)) {
-        uniqueNumberArray.add(randomNumber);
+      if (!uniqueNumbers.contains(randomNumber)) {
+        uniqueNumbers.add(randomNumber);
       }
     }
-    return uniqueNumberArray;
+    return uniqueNumbers;
   }
 
   @Override
@@ -105,11 +104,12 @@ public class Baseball implements Game {
   }
 
   private void setPlayerNumbers(String playerInput) {
-    int[] playerInputArray = playerInput.chars()
+    List<Integer> playerInputArray = playerInput.chars()
         .map(Character::getNumericValue)
-        .toArray();
-    System.arraycopy(playerInputArray, 0,
-        this.playerNumbers, 0, playerInputArray.length);
+        .boxed()
+        .collect(Collectors.toList());
+    this.playerNumbers.clear();
+    this.playerNumbers.addAll(playerInputArray);
   }
 
   private void execute() {
@@ -119,8 +119,8 @@ public class Baseball implements Game {
 
   private int getStrike() {
     int strike = 0;
-    for (int i = 0; i < computerNumbers.length; i++) {
-      if (playerNumbers[i] == computerNumbers[i]) {
+    for (int i = 0; i < computerNumbers.size(); i++) {
+      if (Objects.equals(playerNumbers.get(i), computerNumbers.get(i))) {
         strike++;
       }
     }
@@ -132,12 +132,12 @@ public class Baseball implements Game {
     int order = 1;
     int[] numberIndexArray = new int[10];
     for (int i = 0; i < GOAL_DIGIT; i++) {
-      numberIndexArray[computerNumbers[i]] = order++;
+      numberIndexArray[computerNumbers.get(i)] = order++;
     }
     order = 1;
     for (int i = 0; i < GOAL_DIGIT; i++) {
-      if (numberIndexArray[playerNumbers[i]] != 0 &&
-          numberIndexArray[playerNumbers[i]] != order) {
+      if (numberIndexArray[playerNumbers.get(i)] != 0 &&
+          numberIndexArray[playerNumbers.get(i)] != order) {
         ball++;
       }
       order++;
