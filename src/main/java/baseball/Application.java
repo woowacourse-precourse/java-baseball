@@ -27,6 +27,17 @@ public class Application {
         return isLengthCorrect;
     }
 
+    public static boolean ReturnFalseIfDupli(String input, int idxNumber) {
+        for(int i = idxNumber + 1; i < input.length(); i++) {
+            if(input.charAt(idxNumber) == input.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
     public static boolean CheckIsInputNumber(String input) {
         boolean isNumberCorrect = true;
 
