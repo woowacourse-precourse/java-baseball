@@ -67,15 +67,27 @@ public class NumberBaseball {
 
     private void makeGameResult() {
         StringBuilder result = new StringBuilder();
-        if (this.ball > 0)
+        if (hasBall())
             result.append(this.ball + "볼 ");
-        if (this.strike > 0)
+        if (hasStrike())
             result.append(this.strike + "스트라이크\n");
-        if (this.strike == 0 && this.ball == 0)
+        if (isNothing())
             result.append("낫싱");
         if (isEnd)
             result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         gameResult = result.toString();
+    }
+
+    private boolean hasBall() {
+        return this.ball > 0;
+    }
+
+    private boolean hasStrike() {
+        return this.strike > 0;
+    }
+
+    private boolean isNothing() {
+        return ((!hasBall()) && (!hasStrike()));
     }
 
 

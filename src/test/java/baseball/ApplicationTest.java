@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.NumberBaseballTest;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void testNumberBaseball() {
+        NumberBaseballTest test = new NumberBaseballTest();
+        test.setup();
+        test.testArgumentException();
+        test.testCompareNumbersAfterRead();
     }
 
     @Override

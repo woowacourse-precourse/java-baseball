@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class NumberBaseballTest extends NumberBaseball{
+public class NumberBaseballTest extends NumberBaseball{
     private NumberBaseball numberBaseball;
     @BeforeEach
-    void setup() {
+    public void setup() {
         numberBaseball = new NumberBaseball();
     }
 
     @Test
-    void testCompareNumbersAfterRead() {
+    public void testCompareNumbersAfterRead() {
         String inputString = "123";
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateUserNumber("1234");
@@ -28,7 +28,7 @@ class NumberBaseballTest extends NumberBaseball{
     }
 
     @Test
-    void testArgumentException() {
+    public void testArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
            Validator.validateResumeNumber("3");
         });
