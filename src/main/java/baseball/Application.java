@@ -18,6 +18,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
         System.out.println("userNumber = " + userNumber);
+
         // TODO: 프로그램 구현
     }
 }
