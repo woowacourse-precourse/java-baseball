@@ -4,6 +4,10 @@ import baseball.entity.Result;
 
 public class GameLogic {
 
+    public boolean isGameSet(Result judge) {
+        return judge.getStrike() == 3;
+    }
+
     public Result judge(String target, String input) {
         Result result = new Result();
         result.setBall(countBall(target, input));
