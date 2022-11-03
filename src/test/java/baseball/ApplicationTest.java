@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,8 +32,18 @@ class ApplicationTest extends NsTest {
 
     @Test
     void testFunction1_case1() {
+        Computer.pickNumbers();
+        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
 
-        assertThat(Computer().randomNumbers);
+        assertThat(randomNumbers.size()).isEqualTo(3);
+    }
+
+    @Test
+    void testFunction1_case2() {
+        Computer.pickNumbers();
+        ArrayList<Integer> randomNumbers = Computer.getRandomNumbers();
+
+        assertThat(randomNumbers).isNotEmpty();
     }
 
     @Override
