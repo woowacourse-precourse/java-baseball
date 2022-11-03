@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,12 +16,14 @@ public class Application {
 		 * 된다.
 		 */
 		// 서로 다른 3자리수
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		System.out.println("숫자 야구 게임을 시작합니다.");		
 		getUserNumbers();
+		getComputerNumbers();
 
 	}
 
-	public static int getUserNumbers() {
+	public static List<Integer> getUserNumbers() {
+		List<Integer> userNumbersList = new ArrayList<>();
 		int intUserNumbers = 0;
 		try {
 			System.out.print("숫자를 입력해주세요 : ");
@@ -41,9 +46,23 @@ public class Application {
 					throw new IllegalArgumentException();
 			}
 			intUserNumbers = Integer.parseInt(StringUserAnotherNumbers); // 숫자만 입력하게끔
+			for(int number=0; number<StringUserAnotherNumbers.length(); number++) {				
+				char[] userNumberChar = StringUserAnotherNumbers.toCharArray();
+				userNumbersList.add((int) userNumberChar[number]-48);				
+			}
 		} catch (IllegalArgumentException e) {
 			System.err.println("서로 다른 숫자(1~9) 3개만 입력하세요"); // 숫자가 아님
 		}
-		return intUserNumbers;
+		return userNumbersList;
+	}
+	public static List<Integer> getComputerNumbers() {
+		List<Integer> computerNumbers = new ArrayList<>();
+		while(computerNumbers.size()<3) {
+			int randomComputerNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1,9);
+			if(!computerNumbers.contains(randomComputerNumber)){
+				computerNumbers.add(randomComputerNumber);
+			}
+		}	
+		return computerNumbers;
 	}
 }
