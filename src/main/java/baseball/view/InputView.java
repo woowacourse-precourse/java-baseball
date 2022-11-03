@@ -10,12 +10,12 @@ public class InputView {
     public static String getExpectedNumberOfUser() {
         System.out.print(EXPECTED_NUMBER_OF_USER_MESSAGE);
         String expectedNumberOfUser = Console.readLine();
-        return InputException.isValidInput(expectedNumberOfUser);
+        return InputException.isExpectedNumberOfUserValid(expectedNumberOfUser);
     }
 
     public static String getValueOfRestartGameOrNot() {
         System.out.println(VALUE_OF_RESTART_GAME_OR_NOT_MESSAGE);
         String valueOfRestartGameOrNot = Console.readLine();
-        return InputException.isOneOrTwo(valueOfRestartGameOrNot);
+        return InputException.isValueOfRestartGameOrNotValid(valueOfRestartGameOrNot);
     }
 }
