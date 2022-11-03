@@ -6,11 +6,6 @@ public class Judgement {
     private int strikeCnt;
     private int ballCnt;
 
-    public Judgement() {
-        strikeCnt = 0;
-        ballCnt = 0;
-    }
-
     private void judgeStrike(User user, Computer computer) {
         strikeCnt = 0;
         List<Integer> userNumber = user.getUserInputNumber();
@@ -29,11 +24,16 @@ public class Judgement {
         }
     }
 
-    public boolean judgeNothing(User user, Computer computer) {
+    public boolean isNothing(User user, Computer computer) {
         judgeStrike(user, computer);
         judgeBall(user, computer);
         if (strikeCnt == 0 && ballCnt == 0) return true;
         return false;
+    }
+
+    public void cntClear() {
+        strikeCnt = 0;
+        ballCnt = 0;
     }
 
     public int getStrikeCnt() {
