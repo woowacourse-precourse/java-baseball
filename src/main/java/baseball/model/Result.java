@@ -19,15 +19,15 @@ public class Result {
     }
 
     public boolean isFinish(){
-        return count(number -> number.isStrike(gameNumber)) == GameConfig.SIZE;
+        return count(strike()) == GameConfig.SIZE;
     }
 
     public boolean hasBall() {
-        return count(number -> number.isBall(gameNumber)) > 0;
+        return count(ball()) > 0;
     }
 
     public boolean hasStrike() {
-        return count(number -> number.isStrike(gameNumber)) > 0;
+        return count(strike()) > 0;
     }
 
     public boolean hasBallAndStrike() {
@@ -36,9 +36,17 @@ public class Result {
 
     public Map<String, Integer> getEachCount(){
         Map<String, Integer> result = new HashMap<>();
-        result.put(STRIKE_COUNT, count(number -> number.isStrike(gameNumber)));
-        result.put(BALL_COUNT, count(number -> number.isBall(gameNumber)));
+        result.put(STRIKE_COUNT, count(strike()));
+        result.put(BALL_COUNT, count(ball()));
         return result;
+    }
+
+    private Predicate<Numbers> strike() {
+        return number -> number.isStrike(gameNumber);
+    }
+
+    private Predicate<Numbers> ball() {
+        return number -> number.isBall(gameNumber);
     }
 
     private int count(Predicate<Numbers> predicate) {
