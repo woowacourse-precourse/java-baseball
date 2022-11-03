@@ -17,6 +17,17 @@ public class Referee {
     public Referee() {
 
     }
+    public void playBall(){
+        do {
+            start();
+            while(restart());
+        }
+    }
+
+    private void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        giveHint();
+    }
 
     public void giveHint() {
         comBall.makeComputerBalls();
