@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
 
     private final String STRIKE = "스트라이크";
@@ -19,6 +21,11 @@ public class Application {
 
     public void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public String getInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        return readLine();
     }
 
     public String generateAnswer() {
