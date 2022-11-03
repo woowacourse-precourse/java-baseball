@@ -46,7 +46,7 @@ public class Application {
                 List<Integer> userInputNumbers = getUserInput();
                 getGameResult(userInputNumbers, targetNumbers, gameResult);
                 printGameResult(gameResult);
-            } while (gameResult.get(CORRECT_ANSWER) != PICK_COUNT);
+            } while (gameResult.getOrDefault(CORRECT_ANSWER, 0) != PICK_COUNT);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
