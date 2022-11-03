@@ -12,6 +12,18 @@ public class InputValidator {
         checkLength(baseballInput, BASEBALL_INPUT_LENGTH);
     }
 
+    public static void checkProgressInput(String progressInput) {
+        checkNumbers(progressInput);
+        checkLength(progressInput, CHECK_PROGRESS_INPUT_LENGTH);
+        checkRightRetryNumber(Integer.parseInt(progressInput));
+    }
+
+    private static void checkRightRetryNumber(Integer progressNumber) {
+        if (progressNumber != RESTART && progressNumber != EXIT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void checkLength(String input, Integer length) {
         if (input.length() != length) {
             throw new IllegalArgumentException();
