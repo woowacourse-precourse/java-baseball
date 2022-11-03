@@ -40,7 +40,7 @@ class InputViewTest {
 
     @Nested
     class inputBaseballNumber_메서드는_숫자를_입력해주세요_라는_메시지를_출력하고 {
-        private String consolePrint = "숫자를 입력해주세요 : \n";
+        private String consolePrint = "숫자를 입력해주세요 : ";
 
         @Nested
         class 만약_숫자를_입력받으면 {
