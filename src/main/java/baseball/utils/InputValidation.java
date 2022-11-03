@@ -37,4 +37,12 @@ public class InputValidation {
         }
         return checkusernumber;
     }
+
+    public boolean userInputValidation(String usernumber) {
+        boolean checkusernumber = true;
+        if(!checkUserNumberLength(usernumber) || !checkUsernumberDigit(usernumber) || !checkSameUsernumber(usernumber)) {
+            checkusernumber = false;
+        }
+        return checkusernumber;
+    }
 }
