@@ -4,6 +4,29 @@ import java.util.List;
 
 public class Judgement {
     /**
+     * 플레이어 수와 컴퓨터 수를 비교해 판정 결과를 반환한다.
+     */
+    public String getJudgementResult(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int ball = countSameNumbers(computerNumbers, playerNumbers);
+        int strike = countSamePosition(computerNumbers, playerNumbers);
+
+        if (ball > 0) {
+            if (ball == strike) {
+                return String.format("%d스트라이크", strike);
+            }
+
+            if (strike > 0) {
+                ball = ball - strike;
+                return String.format("%d볼 %d스트라이크", ball, strike);
+            }
+
+            return String.format("%d볼", ball);
+        }
+
+        return "낫싱";
+    }
+
+    /**
      * 플레이어 수와 컴퓨터의 수를 비교해 동일한 개수를 반환한다.
      */
     public int countSameNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
