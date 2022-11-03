@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
-    private List<Integer> numbers = new ArrayList<>();
+    private static List<Integer> numbers = new ArrayList<>();
 
-    public List<Integer> generate() {
+    public static List<Integer> generate() {
         while (!hasThreeNumbers(numbers)) {
             int random = pickNumberInRange(1, 9);
 
@@ -24,7 +24,7 @@ public class ComputerNumberGenerator {
         numbers.clear();
     }
 
-    private boolean hasThreeNumbers(List<Integer> numbers) {
+    private static boolean hasThreeNumbers(List<Integer> numbers) {
         return numbers.size() == 3;
     }
 }
