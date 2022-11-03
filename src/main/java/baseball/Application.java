@@ -15,6 +15,21 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int gameState = midGame;
+        List<Integer> answerNumber = makeAnswerNumber();
+        String userInput = new String();
+        while (gameState != exitGame) {
+            announceBasedOnGameState(gameState);
+            userInput = getUserInput(gameState);
+            if (gameState == endGame) {
+                gameState = restartOrQuitGame(userInput);
+                continue;
+            }
+            findBallAndStrike(userInput, answerNumber);
+            announceBallAndStrike();
+            gameState = setGameState();
+        }
     }
 
     public static String getUserInput (int gameState) {
@@ -31,7 +46,7 @@ public class Application {
             ballAndStrike.add(String.format("%d스트라이크", strike));
         }
         if (ballAndStrike.size() > 0) {
-            System.out.println(String.join(",", ballAndStrike));
+            System.out.println(String.join(" ", ballAndStrike));
             return;
         }
         System.out.println("낫싱");
@@ -74,5 +89,15 @@ public class Application {
     public static List<Integer> makeAnswerNumber () {
         List<Integer> answerNumber = Randoms.pickUniqueNumbersInRange(1,9,3);
         return answerNumber;
+    }
+
+    public static int restartOrQuitGame (String userInput) {
+        if (userInput.equals("1")) {
+            return midGame;
+        }
+        if (userInput.equals("2")) {
+            return exitGame;
+        }
+        return midGame;
     }
 }
