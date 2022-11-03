@@ -119,6 +119,21 @@ public class Application {
         return userNumber;
     }
 
+    private static void getGameResult(List<Integer> userNumber, List<Integer> computerNumber) {
+        int ballCount = getBallCount(userNumber, computerNumber);
+        int strikeCount = getStrikeCount(userNumber, computerNumber);
+
+        if (ballCount > 0 && strikeCount != ballCount) {
+            ConsolePrint.printBallMessage(ballCount - strikeCount);
+        }
+        if (strikeCount > 0) {
+            ConsolePrint.printStrikeMessage(strikeCount);
+        }
+        if (isNothing(userNumber, computerNumber)) {
+            ConsolePrint.printNothingMessage();
+        }
+    }
+
     public static void main(String[] args) {
 
     }
