@@ -51,4 +51,13 @@ class ScoreTest {
 		assertThat(score.getBall())
 				.isEqualTo(2);
 	}
+
+	@Test
+	void 정답이_123이고_입력이_456_일때_0스트라이크_0볼_이어야한다() {
+		score = Score.calculate(List.of(1, 2, 3), List.of(4, 5, 6));
+		assertThat(score.getStrike())
+				.isEqualTo(0);
+		assertThat(score.getBall())
+				.isEqualTo(0);
+	}
 }
