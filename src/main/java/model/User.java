@@ -23,11 +23,20 @@ public class User {
         return strInput;
     }
 
+
     public int parseIntFromStr(String str) {
         try {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
+
+    public boolean isValidLength(String str) {
+        if (str.length() == 3) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("입력의 길이는 \"3\" 만 가능합니다.");
         }
     }
 
