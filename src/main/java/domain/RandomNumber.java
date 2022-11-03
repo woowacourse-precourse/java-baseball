@@ -9,7 +9,7 @@ public class RandomNumber {
     private static final int MAX_NUMBER = 9;
     private static final int NUM_SIZE = 3;
 
-    private static ArrayList<Integer> random_numbers;
+    private static ArrayList<Integer> random_numbers = new ArrayList<>();
 
     public RandomNumber() {
 
