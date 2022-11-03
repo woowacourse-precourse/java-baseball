@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
@@ -33,12 +34,17 @@ public class Application {
             Map<String, Integer> gameResult = new HashMap<>();
 
             do {
-                int[] usersInput = getUsersInput();
-                getGameResult(usersInput, gameResult);
+                int[] userInput = getUserInput();
+                getGameResult(userInput, gameResult);
                 printGameResult(gameResult);
             } while (gameResult.get(CORRECT_ANSWER) != PICK_COUNT);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+
+        private int[] getUserInput() {
+            String input = Console.readLine();
+            return getValueIfAcceptable(input);
         }
     }
 }
