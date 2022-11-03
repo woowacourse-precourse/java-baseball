@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import utils.GameInputException;
 import utils.RandomNumbers;
 
 import java.util.List;
@@ -17,6 +18,25 @@ public class Baseball {
 
     Baseball(int numberLength) {
         this.numberLength = numberLength;
+    }
+
+
+    public void play() {
+        setComputerNumber();
+
+        int strike = 0;
+        int ball = 0;
+
+        while (strike != numberLength) {
+            setUserNumbers();
+            GameInputException gameInputException = new GameInputException(numberLength);
+            gameInputException.checkUserInput(userNumbers);
+
+            strike = getStrike();
+            ball = getBall() - strike;
+
+            printResult(strike, ball);
+        }
     }
 
     private void setComputerNumber() {
