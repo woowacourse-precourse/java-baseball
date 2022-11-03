@@ -31,6 +31,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력_검증_글자수_부족_예외(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.validateUserInput("97"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 입력_검증_숫자_외_문자입력_예외(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.validateUserInput("9x7"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

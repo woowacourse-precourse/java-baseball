@@ -2,7 +2,7 @@ package baseball;
 
 /*
 * [O] 랜덤 번호 생성
-* [X] 잘못된 입력 예외 처리(어플리케이션 종료)
+* [O] 잘못된 입력 예외 처리(어플리케이션 종료)
 * [X] 입력된 숫자에 대한 스트라이크/볼/낫싱 판별
 * [X] 숫자 반복 입력 기능
 * [X] 게임 종료 시 재시작 기능
@@ -10,6 +10,7 @@ package baseball;
 * [X] 테스트 확인
 */
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,6 +21,19 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
         initRandomNumber(computer);
+
+        String userInput = Console.readLine();
+        validateUserInput(userInput);
+    }
+
+    public static void validateUserInput(String s) {
+        if(s.length() != 3)
+            throw new IllegalArgumentException("자릿수가 모자랍니다.");
+
+        for(int i = 0; i < s.length(); i++){
+            if(!(s.charAt(i) >= '0' && s.charAt(i) <= '9'))
+                throw new IllegalArgumentException("숫자가 아닌 문자 입력 예외.");
+        }
     }
 
     private static void initRandomNumber(List<Integer> computer) {
