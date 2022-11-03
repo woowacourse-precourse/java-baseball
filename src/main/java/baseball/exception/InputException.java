@@ -15,7 +15,7 @@ public class InputException {
     }
 
     public static String isValueOfRestartGameOrNotValid(String valueOfRestartGameOrNot) {
-        if (!valueOfRestartGameOrNot.equals("1") && !valueOfRestartGameOrNot.equals("2")) {
+        if (!isValueOfOneOrTwo(valueOfRestartGameOrNot)) {
             throw new IllegalArgumentException();
         }
         return valueOfRestartGameOrNot;
@@ -25,7 +25,7 @@ public class InputException {
         return expectedNumberOfUser.length() == EXPECTED_NUMBER_OF_USER_LENGTH;
     }
 
-    public static boolean isThreeDifferentDigits(String expectedNumberOfUser) {
+    private static boolean isThreeDifferentDigits(String expectedNumberOfUser) {
         char firstDigit = expectedNumberOfUser.charAt(0);
         char secondDigit = expectedNumberOfUser.charAt(1);
         char thirdDigit = expectedNumberOfUser.charAt(2);
@@ -42,5 +42,12 @@ public class InputException {
             }
         }
         return true;
+    }
+
+    private static boolean isValueOfOneOrTwo(String valueOfRestartGameOrNot) {
+        if (valueOfRestartGameOrNot.equals("1") || valueOfRestartGameOrNot.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }
