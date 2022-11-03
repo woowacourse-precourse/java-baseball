@@ -51,6 +51,14 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 서로_다른_수가_아닌_입력() {
+        String[] inputs = {"111", "112", "121", "211"};
+        for (String input : inputs) {
+            assertThat(Application.isValidInput(input)).isEqualTo(false);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
