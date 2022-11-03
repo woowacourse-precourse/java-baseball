@@ -8,7 +8,7 @@ public class Application {
     static final Set<String> CONTROL_NUMBER = Set.of("1", "2");
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        PrintComment.printStartComment();
         Game game = new Game();
         do {
             System.out.println("숫자를 입력해주세요 :");
