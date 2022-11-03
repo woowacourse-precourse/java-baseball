@@ -22,6 +22,9 @@ public class Application {
             while(!win) {
                 List<Integer> user = getUser();
                 System.out.println("user: "+Arrays.toString(user.toArray()));
+
+                int count = countSame(computer, user);
+                System.out.println("count: "+count);
             }
 
         } while (retry);
@@ -86,5 +89,18 @@ public class Application {
 
     private static String[] splitInput() {
         return inputNumber().split("");
+    }
+
+    //컴퓨터와 사용자 숫자 비교
+    private static int countSame(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+
+        for(int num : user) {
+            if(computer.contains(num)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
