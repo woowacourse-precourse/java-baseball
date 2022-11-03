@@ -21,12 +21,17 @@ public class Application {
     }
 
     public boolean handleExit() {
+        printRestartOrExit();
         String restartKey = Console.readLine();
         int key = checkValidRestartKey(restartKey);
         if (key == 2) {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
+    }
+
+    private void printRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     // 1 -> 재시작.
