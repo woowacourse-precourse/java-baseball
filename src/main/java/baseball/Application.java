@@ -148,7 +148,7 @@ public class Application {
     public static void resultAnswer(int strikeCount, int ballCount) {
 
         if (strikeCount == 0 && ballCount == 0) {
-            System.out.print("나싱");
+            System.out.print("낫싱");
 
         } else {
             ballAnswer(ballCount);
@@ -159,14 +159,14 @@ public class Application {
     public static void ballAnswer(int ballCount) {
 
         if (ballCount > 0) {
-            System.out.print(ballCount + " 볼 ");
+            System.out.print(ballCount + "볼 ");
         }
     }
 
     public static void strikeAnswer(int strikeCount) {
 
         if (strikeCount > 0) {
-            System.out.print(strikeCount + " 스트라이크 ");
+            System.out.print(strikeCount + "스트라이크 ");
         }
     }
     public static int CheckGameover(){
