@@ -64,7 +64,6 @@ public class Application {
     }
     static void initGame() {
         answer = generateAnswer();
-        System.out.println(answer);
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
