@@ -58,6 +58,8 @@ public class Application {
 
         try {
 
+            if (! check(numberString)) throw new IllegalStateException();
+
             return true;
 
 
