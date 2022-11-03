@@ -4,7 +4,9 @@ import java.util.List;
 
 import baseball.service.GameStartService;
 import baseball.service.UserBallService;
+import baseball.util.ErrorConst;
 import baseball.util.InputValidUtil;
+import baseball.util.ViewConst;
 import camp.nextstep.edu.missionutils.Console;
 
 public class FrontController {
@@ -35,7 +37,14 @@ public class FrontController {
 	}
 
 	public boolean exit() {
-
+		String isAgain = Console.readLine();
+		if (isAgain.equals(ViewConst.RESTART)) {
+			return false;
+		}
+		if (isAgain.equals(ViewConst.END)) {
+			return true;
+		}
+		throw new IllegalArgumentException(ErrorConst.RESTART_END_ERROR);
 	}
 
 }
