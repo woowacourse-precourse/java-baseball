@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class ComputerNumber {
 
     private final static int MIN_RANGE = 1;
     private final static int MAX_RANGE = 9;

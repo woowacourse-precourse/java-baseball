@@ -1,15 +1,14 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ComputerTest {
+class ComputerNumberTest {
 
-    Computer computer = new Computer();
+    ComputerNumber computer = new ComputerNumber();
 
     @Test
     void 랜덤_숫자_자리수_테스트() {
