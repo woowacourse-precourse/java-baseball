@@ -45,6 +45,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void sliceInputTest() {
+        List<Integer> sliced = UserInput.sliceInput("123");
+        assertThat(sliced.get(0)).isEqualTo(1);
+        assertThat(sliced.get(1)).isEqualTo(2);
+        assertThat(sliced.get(2)).isEqualTo(3);
+
+    }
+
+    @Test
     void exceptionTest() {
         ExceptionCheck exceptionCheck = new ExceptionCheck();
         assertSimpleTest(() ->
@@ -69,9 +78,11 @@ class ApplicationTest extends NsTest {
     void numberComparisonTest() {
         List<Integer> correctAnswer = List.of(1, 2, 3);
         List<Integer> slicedInput = List.of(3, 2, 1);
+
         NumberComparison comparison = new NumberComparison();
         int strikeCount = comparison.checkStrike(correctAnswer, slicedInput);
         int ballCount = comparison.checkBall(correctAnswer, slicedInput);
+
         assertThat(strikeCount).isEqualTo(1);
         assertThat(ballCount).isEqualTo(2);
     }
@@ -80,8 +91,10 @@ class ApplicationTest extends NsTest {
     void countPrintTestBallStrike() {
         int ballCount = 1;
         int strikeCount = 1;
-        GameBranch status = new GameBranch();
-        int result = status.branch(ballCount, strikeCount);
+
+        GameBranch gameBranch = new GameBranch();
+        int result = gameBranch.status(ballCount, strikeCount);
+
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("1볼 1스트라이크");
     }
@@ -90,8 +103,10 @@ class ApplicationTest extends NsTest {
     void countPrintBall() {
         int ballCount = 2;
         int strikeCount = 0;
-        GameBranch status = new GameBranch();
-        int result = status.branch(ballCount, strikeCount);
+
+        GameBranch gameBranch = new GameBranch();
+        int result = gameBranch.status(ballCount, strikeCount);
+
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("2볼");
     }
@@ -100,8 +115,10 @@ class ApplicationTest extends NsTest {
     void countPrintStrike() {
         int ballCount = 0;
         int strikeCount = 2;
-        GameBranch status = new GameBranch();
-        int result = status.branch(ballCount, strikeCount);
+
+        GameBranch gameBranch = new GameBranch();
+        int result = gameBranch.status(ballCount, strikeCount);
+
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("2스트라이크");
     }
@@ -110,19 +127,54 @@ class ApplicationTest extends NsTest {
     void countPrintNothing() {
         int ballCount = 0;
         int strikeCount = 0;
-        GameBranch status = new GameBranch();
-        int result = status.branch(ballCount, strikeCount);
+
+        GameBranch gameBranch = new GameBranch();
+        int result = gameBranch.status(ballCount, strikeCount);
+
         assertThat(result).isEqualTo(-1);
         assertThat(output()).isEqualTo("낫싱");
     }
 
+//    @Test
+//    void countPrintGameEnd() {
+//        int ballCount = 0;
+//        int strikeCount = 3;
+//
+//        GameBranch gameBranch = new GameBranch();
+//        int result = gameBranch.status(ballCount, strikeCount);
+//
+//        assertThat(output()).contains("3스트라이크", "게임 종료");
+//    }
+
     @Test
-    void countPrintGameEnd() {
-        int ballCount = 0;
-        int strikeCount = 3;
-        GameBranch status = new GameBranch();
-        int result = status.branch(ballCount, strikeCount);
-        assertThat(output()).contains("3스트라이크", "게임 종료");
+    void branchTest_END() {
+        int GAME_END = -2;
+        GameBranch gameBranch = new GameBranch();
+        int branchStatus = gameBranch.branch("1");
+        assertThat(GAME_END).isEqualTo(branchStatus);
+    }
+
+    @Test
+    void branchTest_RESTART() {
+        int GAME_END = -3;
+        GameBranch gameBranch = new GameBranch();
+        int branchStatus = gameBranch.branch("2");
+        assertThat(GAME_END).isEqualTo(branchStatus);
+    }
+
+    @Test
+    void branchTest_THROW_EXCEPTION() {
+        GameBranch gameBranch = new GameBranch();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> gameBranch.branch("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void reStartTest() {
+        List<Integer> computer = Start.reStart();
+        assertThat(computer.size()).isEqualTo(3);
     }
 
     @Override
