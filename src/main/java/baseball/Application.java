@@ -57,30 +57,26 @@ public class Application {
         int ball = 0;
         while (strike != 3) {
             List<Integer> userNumberList = inputGameNumber();
-            List<Integer> strikeNumberList = new ArrayList<>();
             strike = 0;
             ball = 0;
-            for (int i = 0; i < 3; i++) {
-                if (Objects.equals(gameNumberList.get(i), userNumberList.get(i))) {
-                    strike++;
-                    strikeNumberList.add(gameNumberList.get(i));
-                }
-                if (gameNumberList.contains(userNumberList.get(i)) && !strikeNumberList.contains(userNumberList.get(i))) {
-                    ball++;
-                }
-            }
+            ResultData resultData = new ResultData(gameNumberList, userNumberList, strike, ball);
+            strike = resultData.getStrike();
+            ball = resultData.getBall();
             if (strike != 0 || ball != 0) {
                 System.out.println( ball + "볼 " + strike + "스트라이크 ");
             } else {
                 System.out.println("낫싱");
             }
-            System.out.println(gameNumberList + "" + userNumberList);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int restartGame = Integer.parseInt(readLine());
         return restartGame;
 //        System.out.println(userNumberList);
+    }
+
+    public void printResult(int strike, int ball) {
+
     }
 
 
