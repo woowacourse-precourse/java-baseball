@@ -20,4 +20,21 @@ public class InputValidation {
         }
         return checkusernumber;
     }
+
+    public boolean checkSameUsernumber(String usernumber) {
+        boolean checkusernumber = true;
+        boolean[] checknumber = new boolean[10];
+
+        for(int i=0; i<usernumber.length(); i++) {
+            int digit = usernumber.charAt(i) - '0';
+            if(!checknumber[digit]) {
+                checknumber[digit] = true;
+            }
+            else {
+                checkusernumber = false;
+                break;
+            }
+        }
+        return checkusernumber;
+    }
 }
