@@ -8,8 +8,11 @@ import java.util.List;
 public class GameApplication {
 
     public static void startGame() {
-        String userNumber = InputView.inputNumber();
+        playGame();
+    }
 
+    public static void playGame() {
+        String userNumber = InputView.inputNumber();
         if (!UserNumberValidation.isValidNumberLength(userNumber)) {
             throw new IllegalArgumentException();
         }
@@ -20,5 +23,7 @@ public class GameApplication {
             throw new IllegalArgumentException();
         }
     }
+
+
 
 }
