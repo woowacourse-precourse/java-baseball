@@ -17,13 +17,12 @@ public class Game {
     public void play() {
         System.out.println("숫자를 입력해주세요 : ");
 
-        // TODO computerNumber, userNumber 받기
+        List<Integer> computer = getComputerNumber();
+        List<Integer> user = getUserNumber();
 
         // TODO compare computerNumber,userNumber
 
         // TODO print result (X strike, X ball)
-
-        // TODO Restart or Not
     }
     public boolean end() {
         String input = sc.nextLine();
@@ -37,6 +36,7 @@ public class Game {
 
         return true;
     }
+
     private List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -66,6 +66,4 @@ public class Game {
 
         return userNumbers;
     }
-
-    // TODO Method: boolean restart
 }
