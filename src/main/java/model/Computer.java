@@ -71,6 +71,16 @@ public class Computer {
         }
     }
 
+    public boolean isRealRightNumOfUser(int numInputOfUser) {
+
+        if (isRightThreeNumOfComputer(numInputOfUser)) {
+            // TODO: 스트라이크와 볼이 있다면
+            return true;
+        } else {
+            // TODO: 낫싱이면
+            return false;
+        }
+    }
 
     // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
