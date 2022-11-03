@@ -43,6 +43,16 @@ public class Application {
         return String.join("", stringNumbers);
     }
 
+    static List<Integer> countStrike(String computer, String input) {
+        List<Integer> strikeIndexes = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            if (computer.charAt(i) == input.charAt(i)) {
+                strikeIndexes.add(i);
+            }
+        }
+        return strikeIndexes;
+    }
+
     public static void main(String[] args) {
         printGameStart();
     }
