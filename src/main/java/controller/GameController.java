@@ -11,6 +11,7 @@ public class GameController {
     public GameController() {
         this.user = new User();
         this.computer = new Computer();
+        computer.creatRanNumOfComputerList();
     }
 
     public void callInputNumOfUser() {
