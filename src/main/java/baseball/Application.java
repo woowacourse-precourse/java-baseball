@@ -60,13 +60,10 @@ public class Application {
         return gostop;
     }
     public static void main(String[] args) {
-        List<Integer> answer = getRandomNum();
-        String num = numberInput();
-        System.out.println((int)num.charAt(0));
-//        while(true) {
-//            if (gamePlay() == String.valueOf('2')) {
-//                break;
-//            }
-//        }
+        while(true) {
+            if (gamePlay().equals(String.valueOf('2'))) {
+                break;
+            }
+        }
     }
 }
