@@ -52,22 +52,20 @@ public class Application {
         }
         return enterNumber;
     }
-
-    public static void countBallAndStrike(List<Integer> randomNumber, List<Integer> enterNumber) {
-        for(int i = 0; i < 3; i++) {
-            if(randomNumber.contains(enterNumber.get(i))) {
-                ballNumber++;
+    public static List<Integer> countBallAndStrike(List<Integer> randomNumber, List<Integer> enterNumber) {
+        List<Integer> ballAndStrike = new ArrayList<>(Arrays.asList(0, 0));
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.contains(enterNumber.get(i))) {
+                ballAndStrike.set(0, ballAndStrike.get(0)+1);
             }
-            if(randomNumber.get(i) == enterNumber.get(i)) {
-                strikeNumber++;
-                ballNumber--;
+            if (randomNumber.get(i) == enterNumber.get(i)) {
+                ballAndStrike.set(1, ballAndStrike.get(1)+1);
+                ballAndStrike.set(0, ballAndStrike.get(0)-1);
             }
         }
+        return ballAndStrike;
     }
-
-    public static void announceBallAndStrike(List<Integer> randomNumber) {
-        if (strikeNumber == 3) {
-            finishAnnounce();
+    public static void caseOfAllStrike(String enterOneOrTwo) {
         if (Console.readLine().equals("1")) {
             game();
         } else if (Console.readLine().equals("2")) {
@@ -75,16 +73,18 @@ public class Application {
         } else {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
         }
-        } else {
-            if (ballNumber == 0 && strikeNumber == 0) {
+    }
+    public static void caseOfAllBallAndStrike(List<Integer> ballAndStrikeNumber) {
+        if (ballAndStrikeNumber.get(0) == 0 && ballAndStrikeNumber.get(1) == 0) {
             System.out.println("낫싱");
-            } else if (ballNumber == 0){
-                System.out.println(strikeNumber+"스트라이크");
-            } else if (strikeNumber == 0) {
-                System.out.println(ballNumber+"볼 ");
+        } else if (ballAndStrikeNumber.get(0) == 0){
+            System.out.println(ballAndStrikeNumber.get(1)+"스트라이크");
+        } else if (ballAndStrikeNumber.get(1) == 0) {
+            System.out.println(ballAndStrikeNumber.get(0)+"볼 ");
         } else {
-                System.out.println(ballNumber+"볼 "+strikeNumber+"스트라이크");
+            System.out.println(ballAndStrikeNumber.get(0)+"볼 "+ballAndStrikeNumber.get(0)+"스트라이크");
         }
+    }
     public static void announceBallAndStrike(List<Integer> randomNumber, List<Integer> ballAndStrikeNumber) {
         if (strikeNumber == 3) {
             finishAnnounce();
