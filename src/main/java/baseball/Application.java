@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        //TODO: 프로그램 구현
-        //todo: 랜덤으로 3자리 숫자를 정하는 기능
+        //프로그램 구현
+        //랜덤으로 3자리 숫자를 정하는 기능
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,20 +16,27 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println("숫자 야구 게임을 시작합니다.");
         // 3스트라이크가 나올때 까지 반복
-        // 3자리 숫자 입력 기능 실행
-        int input_num = int_input();
-        int strike = strike(input_num_list(input_num), computer);
-        int ball = ball(input_num_list(input_num), computer);
-        int nothing = nothing(input_num_list(input_num), computer);
-        //숫자 검증 기능(출력기능)
-        print_verification(strike,ball,nothing);
+        while(true){
+            // 3자리 숫자 입력 기능 실행
+            System.out.print("숫자를 입력해주세요 : ");
+            int input_num = int_input();
+            // 스트라이크, 볼, 낫싱 확인기능 실행
+            int strike = strike(input_num_list(input_num), computer);
+            int ball = ball(input_num_list(input_num), computer);
+            int nothing = nothing(input_num_list(input_num), computer);
+            //숫자 검증 기능(출력기능)
+            print_verification(strike,ball,nothing);
+            if(strike == 3){
+                break;
+            }
+        }
     }
     //숫자를 입력받는 기능
     public static int int_input(){
         Scanner sc = new Scanner(System.in);
         int input_num = sc.nextInt();
-        sc.close();
         // 잘못된 값을 입력했을 때 예외 처리
         if(!(input_num > 99 && input_num < 1000)){
             throw new IllegalArgumentException();
@@ -101,7 +108,7 @@ public class Application {
         }
         //스트라이크가 1개 이상, 볼이 1개 이상일 경우
         else if(strike > 0 && ball > 0){
-            System.out.println(strike + "스트라이크" + ball + "볼");
+            System.out.println(ball + "볼" + strike + "스트라이크" );
         }
         //스트라이크가 0개, 볼이 1개이상
         else if(strike == 0 && ball > 0) {
