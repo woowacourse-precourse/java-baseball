@@ -31,8 +31,8 @@ public class Computer {
 
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
-        for (int i = 0; i <COMPUTER_NUMBER_SIZE; i++) {
-            count = checkStrikeComputerNumPlayerNum(computerNum, playerNum, count, i);
+        for (int numberIdx = 0; numberIdx <COMPUTER_NUMBER_SIZE; numberIdx++) {
+            count = checkStrikeComputerNumPlayerNum(computerNum, playerNum, count, numberIdx);
         }
         return count;
     }
@@ -47,7 +47,8 @@ public class Computer {
     public int countBall(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
         for (int computerNumIdx = 0; computerNumIdx <COMPUTER_NUMBER_SIZE; computerNumIdx++) {
-            for(int playerNumIdx=computerNumIdx+1;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
+            for(int playerNumIdx=0;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
+                if(computerNumIdx==playerNumIdx) continue;
                 count = checkBallComputerNumPlayerNum(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
             }
         }
