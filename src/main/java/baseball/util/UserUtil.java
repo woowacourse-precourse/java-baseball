@@ -2,9 +2,7 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class UserUtil {
     public static String getUserNumberString() {
@@ -23,9 +21,19 @@ public class UserUtil {
         if(checkOnlyNumber(userNumberString)){
             throw new IllegalArgumentException();
         }
+        if(checkOverlapNumber(userNumberString)){
+            throw new IllegalArgumentException();
+        }
 
     }
 
+    private static boolean checkOverlapNumber(String userNumberString) {
+        Set<String> set = new HashSet<>(Arrays.asList(userNumberString.split("")));
+        if(set.size() == userNumberString.length()){
+            return false;
+        }
+        return true;
+    }
 
 
     private static boolean checkOnlyNumber(String userNumberString) {

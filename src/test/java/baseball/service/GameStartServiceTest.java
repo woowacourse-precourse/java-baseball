@@ -20,7 +20,7 @@ class GameStartServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1","q12","012","1234"," ","12"})
+    @ValueSource(strings = {"1","12","999","1234"," ","012","qs"})
     void 사용자가_입력한_값이_유효한지_체크(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
