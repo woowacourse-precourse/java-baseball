@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+
     public List<Integer> generateRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
         do {
