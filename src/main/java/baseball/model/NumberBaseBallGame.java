@@ -48,21 +48,4 @@ public class NumberBaseBallGame {
             gameNumber = GameNumberGenerator.generate();
         }
     }
-
-    @Deprecated
-    public Map<String, Integer> checkResultPoint(String inputValue) {
-        String[] numbers = inputValue.split("");
-        Map<String, Integer> result = new HashMap<>();
-        for (int i = 0; i < numbers.length; i++) {
-            int currentNumber = Integer.parseInt(numbers[i]);
-            if (gameNumber.contains(currentNumber) && gameNumber.get(i) == currentNumber) {
-                result.put("strike", result.getOrDefault("strike", 0) + 1);
-                continue;
-            }
-            if (gameNumber.contains(currentNumber)) {
-                result.put("ball", result.getOrDefault("ball", 0) + 1);
-            }
-        }
-        return result;
-    }
 }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -42,47 +41,63 @@ class NumberBaseBallGameTest {
     }
 
     @Test
-    @DisplayName("입력값과 정답 동일 - 성공로직")
-    void success(){
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1,2,3));
-        Map<String, Integer> result = numberBaseBallGame.checkResultPoint("123");
+    @DisplayName("결과값 확인 - 스트라이크")
+    void check_Result_Only_Strike(){
+        String inputNumber = "123";
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1, 2, 3));
+        Result result = numberBaseBallGame.result(inputNumber);
 
-        assertThat(result.size()).isEqualTo(1);
-        assertThat(result.get("strike")).isEqualTo(3);
-        assertThat(result.get("ball")).isNull();
+        assertThat(result.hasBallAndStrike()).isFalse();
+        assertThat(result.hasStrike()).isTrue();
+        assertThat(result.hasBall()).isFalse();
+        assertThat(result.isFinish()).isTrue();
+        assertThat(result.getEachCount().get("strike")).isEqualTo(3);
+        assertThat(result.getEachCount().get("ball")).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("볼만 있는 경우")
-    void has_Only_Ball(){
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1,2,3));
-        Map<String, Integer> result = numberBaseBallGame.checkResultPoint("231");
+    @DisplayName("결과값 확인 - 볼")
+    void check_Result_Only_Ball(){
+        String inputNumber = "123";
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(2, 3, 1));
+        Result result = numberBaseBallGame.result(inputNumber);
 
-        assertThat(result.size()).isEqualTo(1);
-        assertThat(result.get("strike")).isNull();
-        assertThat(result.get("ball")).isEqualTo(3);
+        assertThat(result.hasBallAndStrike()).isFalse();
+        assertThat(result.hasStrike()).isFalse();
+        assertThat(result.hasBall()).isTrue();
+        assertThat(result.isFinish()).isFalse();
+        assertThat(result.getEachCount().get("strike")).isEqualTo(0);
+        assertThat(result.getEachCount().get("ball")).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("볼과 스트라이크가 모두 있는 경우")
-    void has_Ball_And_Strike(){
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1,2,3));
-        Map<String, Integer> result = numberBaseBallGame.checkResultPoint("132");
+    @DisplayName("결과값 확인 - 볼, 스트라이크")
+    void check_Result_Ball_Strike(){
+        String inputNumber = "123";
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1, 3, 2));
+        Result result = numberBaseBallGame.result(inputNumber);
 
-        assertThat(result.size()).isEqualTo(2);
-        assertThat(result.get("strike")).isEqualTo(1);
-        assertThat(result.get("ball")).isEqualTo(2);
+        assertThat(result.hasBallAndStrike()).isTrue();
+        assertThat(result.hasStrike()).isTrue();
+        assertThat(result.hasBall()).isTrue();
+        assertThat(result.isFinish()).isFalse();
+        assertThat(result.getEachCount().get("strike")).isEqualTo(1);
+        assertThat(result.getEachCount().get("ball")).isEqualTo(2);
     }
 
     @Test
-    @DisplayName("전부 일치하지 않을 경우")
-    void nothing(){
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(1,2,3));
-        Map<String, Integer> result = numberBaseBallGame.checkResultPoint("456");
+    @DisplayName("결과값 확인 - 낫싱")
+    void check_Result_Nothing(){
+        String inputNumber = "123";
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(List.of(4,5,6));
+        Result result = numberBaseBallGame.result(inputNumber);
 
-        assertThat(result.size()).isEqualTo(0);
-        assertThat(result.get("strike")).isNull();
-        assertThat(result.get("ball")).isNull();
+        assertThat(result.hasBallAndStrike()).isFalse();
+        assertThat(result.hasStrike()).isFalse();
+        assertThat(result.hasBall()).isFalse();
+        assertThat(result.isFinish()).isFalse();
+        assertThat(result.getEachCount().get("strike")).isEqualTo(0);
+        assertThat(result.getEachCount().get("ball")).isEqualTo(0);
     }
 
     private void failValidateInputNumber(String inputNumber) {
