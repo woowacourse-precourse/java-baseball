@@ -45,4 +45,10 @@ public class InputValidator {
         }
     }
 
+    public static void checkIsGameRestartInput(String restartOrExit) {
+        if (!restartOrExit.equals("1") && !restartOrExit.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
