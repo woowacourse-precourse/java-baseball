@@ -24,7 +24,7 @@ public class ComputerNumberGenerator {
     }
 
     public void putNumber(int number){
-
+        numbers.add(number);
     }
 
     public void insertNumber(){
