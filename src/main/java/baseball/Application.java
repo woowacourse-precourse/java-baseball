@@ -7,7 +7,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int randomNumber = makeRandomNumber();
-        System.out.println(randomNumber);
     }
 
 
@@ -27,7 +26,9 @@ public class Application {
             if (numList.get(i) != numList.get(i+1)) tmp += numList.get(i);
         }
 
+        tmp += numList.get(numList.size()-1);
         tmp = tmp.substring(0,3);
+
         return Integer.parseInt(tmp);
     }
 }
