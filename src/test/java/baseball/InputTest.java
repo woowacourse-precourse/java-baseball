@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputTest {
     @Test
     @DisplayName("정상 값")
-    void create() {
+    void getInput() {
         //given
         //when
         Input input = new Input("123");
@@ -20,7 +20,7 @@ class InputTest {
 
     @Test
     @DisplayName("잘못된 길이")
-    void createInvalidNumber() {
+    void CheckLength() {
         //given
         //when
         //then
@@ -32,7 +32,7 @@ class InputTest {
 
     @Test
     @DisplayName("겹치는 수 입력")
-    void createDuplicateNumber() {
+    void CheckContinuous() {
         //given
         //when
         //then
