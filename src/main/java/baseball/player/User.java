@@ -1,5 +1,6 @@
 package baseball.player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -41,7 +42,25 @@ public class User {
         return false;
 
     }
-    
+
+    private List<Integer> changeStringToInteger(String inputNumber) {
+
+        List<Integer> numberList = new ArrayList<>();
+
+        for(int indexNumber=0; indexNumber<inputNumber.length(); indexNumber++){
+
+            String stringNumber = String.valueOf(inputNumber.charAt(indexNumber));
+            int integerNumber = Integer.parseInt(stringNumber);
+
+            numberList.add(integerNumber);
+
+        }
+
+        return numberList;
+
+    }
+
+
 
 
 
