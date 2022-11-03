@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.ConstVariable.*;
@@ -13,10 +14,26 @@ public class Application {
         String userKeyInput = "1";
 
         while (userKeyInput.equals("1")) {
-            computer = new Balls(Randoms.pickUniqueNumbersInRange(MIN, MAX, VALID_CNT));
-            doGame(computer);
-            userKeyInput = Console.readLine();
+            computer = makeRandomComputerBalls();
+            try {
+                doGame(computer);
+                userKeyInput = Console.readLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                return;
+            }
         }
+    }
+
+    private static Balls makeRandomComputerBalls() {
+        List<Integer> comBalls = new ArrayList<>();
+        while (comBalls.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
+            if (!comBalls.contains(randomNumber)) {
+                comBalls.add(randomNumber);
+            }
+        }
+        return new Balls(comBalls);
     }
 
     private static void doGame(Balls computer) {
@@ -26,11 +43,8 @@ public class Application {
         while (!result.isGameOver()) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userNums = ValidationUtil.mapStringToList(Console.readLine());
-            try {
-                result = computer.play(userNums);
-            } catch (IllegalArgumentException e) {
-                return;
-            }
+            result = computer.play(userNums);
+
             System.out.println(result);
         }
 
