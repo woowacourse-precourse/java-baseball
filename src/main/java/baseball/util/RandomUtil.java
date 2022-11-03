@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomUtil {
 
-    public int generateNumber() {
+    public static String generateNumber() {
         Random random = new Random();
         StringBuilder resultString = new StringBuilder();
 
@@ -14,6 +14,6 @@ public class RandomUtil {
                 resultString.append(randomDigit);
             }
         }
-        return Integer.parseInt(resultString.toString());
+        return resultString.toString();
     }
 }
