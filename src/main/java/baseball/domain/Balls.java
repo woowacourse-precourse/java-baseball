@@ -25,7 +25,13 @@ public class Balls {
                 .collect(Collectors.toList());
     }
     
-    public BallStatus compareOneBallInOrder(final Ball ball) {
+    public List<BallStatus> compareBalls(final Balls userBalls) {
+        return userBalls.balls.stream()
+                .map(this::compareOneBallInOrder)
+                .collect(Collectors.toList());
+    }
+    
+    private BallStatus compareOneBallInOrder(final Ball ball) {
         return balls.stream()
                 .map(userBall -> userBall.compareOneBall(ball))
                 .filter(userBall -> userBall != BallStatus.NOTHING)

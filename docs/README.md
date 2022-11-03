@@ -53,8 +53,8 @@
   - [x] 1 ball : ball 인 공이 존재
   - [x] 1 nothing : strike 또는 ball 인 공이 존재하지 않는 경우
 
-- [ ] 3 대 3 비교 (Balls)
-  - [ ] 3개의 각 공이 strike, ball, nothing 중 어디에 속하는지 계산
+- [x] 3 대 3 비교 (Balls)
+  - [x] 3개의 각 공이 strike, ball, nothing 중 어디에 속하는지 계산
 
 - [ ] 컴퓨터 (Balls)
   - [ ] 서로 다른 임의의 수 3개 선택
