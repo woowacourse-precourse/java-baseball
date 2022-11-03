@@ -5,8 +5,8 @@ public abstract class Game {
     public enum Status {
         PLAYING, DONE
     }
-    private Status status;
-    private String gameName;
+    protected Status status;
+    protected String gameName;
 
 
     public Status getStatus() {
@@ -21,7 +21,7 @@ public abstract class Game {
     }
 
 
-    abstract void initialize();
-    abstract void terminate();
+    protected abstract void initialize();
+    protected abstract void terminate();
 
 }
