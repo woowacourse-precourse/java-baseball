@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -55,7 +56,7 @@ public class Application {
     }
 
     private static void isValidAnswer(String answer) throws IllegalArgumentException {
-        boolean answerIsValid = isValidValue(answer) && isValidLength(answer);
+        boolean answerIsValid = isValidValue(answer) && isValidLength(answer) && isValidOfDuplication(answer);
         if (!answerIsValid) {
             throw new IllegalArgumentException();
         }
@@ -65,7 +66,13 @@ public class Application {
         return answer.length() == LENGTH_OF_BASEBALL_NUMBER;
     }
 
+    private static boolean isValidOfDuplication(String answer) {
+        Long distinctCount = Stream.of(answer).distinct().count();
+        return answer.length() == distinctCount;
+    }
+
     private static boolean isValidValue(String answer) {}
+
 
     private static List<Integer> compareComputerAndUser(String computer, String user) {}
     private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {}
