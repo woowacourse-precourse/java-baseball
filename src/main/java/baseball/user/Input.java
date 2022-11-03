@@ -3,7 +3,9 @@ package baseball.user;
 import baseball.Computer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 사용자의 입력을 받는 기능
@@ -64,6 +66,24 @@ public class Input {
             if (digit < Computer.RANDOM_NUMBER_MIN || digit > Computer.RANDOM_NUMBER_MAX) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    /**
+     * 입력값이 모두 다른 숫자인지 확인하는 메소드
+     */
+    public boolean isAllDifferentDigit(String inputString) {
+        List<Integer> inputDigits = inputDigit(inputString);
+        Set<Integer> digitSet = new HashSet<>();
+
+        for (int index = 0; index < inputDigits.size(); index++) {
+            int digit = inputDigits.get(index);
+            digitSet.add(digit);
+        }
+        if (digitSet.size() != Computer.RANDOM_NUMBER_LENGTH) {
+            return false;
         }
 
         return true;
