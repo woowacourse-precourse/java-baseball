@@ -22,28 +22,28 @@ public class UserBallService {
 		UserBall userBall = makeUserBall(userInput, answerNumber);
 
 		if (userBall.getStrike() == 3) {
-			//outputview 에서 성공 출력문
-			//inputview에서 resart 출력문
+			outputView.printSuccess();
+			inputView.printRestartGame();
 			return true;
 		}
 
 		if (userBall.getStrike() == 0 && userBall.getBall() == 0) {
-			//outputview 에서 낫싱 출력문
+			outputView.printNothing();
 			return false;
 		}
 
 		if (userBall.getBall() != 0 && userBall.getStrike() != 0) {
-			//outputview 에서 볼, 스트라이크 출력문
+			outputView.printBallAndStrike(userBall);
 			return false;
 		}
 
 		if (userBall.getBall() != 0) {
-			//outputview 에서 볼 출력문
+			outputView.printBall(userBall);
 			return false;
 		}
 
 		if (userBall.getStrike() != 0) {
-			//outputview 에서 스트라이크 출려문
+			outputView.printStrike(userBall);
 			return false;
 		}
 
