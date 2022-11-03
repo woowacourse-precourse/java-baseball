@@ -37,12 +37,14 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 숫자가_아닌_입력() {
-        String[] inputs = {"12a", "1a2", "a12", " 12", "12#"};
+        String[] inputs = {"12a", "1a2", "a12", " 12", "12#", "  ", ""};
 
         for (String input : inputs) {
             assertThat(Application.isValidInput(input)).isEqualTo(false);
         }
     }
+
+
 
     @Override
     public void runMain() {
