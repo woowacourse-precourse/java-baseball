@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,11 @@ public class BaseballGame {
     public void start() {
         System.out.println(GAME_START_MESSAGE);
         createComputerNumbers();
+        String input = Console.readLine();
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void createComputerNumbers() {

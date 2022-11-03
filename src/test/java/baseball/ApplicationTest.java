@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
 
-
     @DisplayName("게임 시작시 게임 시작 문구를 출력한다.")
     @Test
     void case1() {
@@ -32,6 +31,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("입력값이 3자리가 아닐 경우 예외를 반환한다 - 3자리 보다 큰 경우")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -39,6 +39,18 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("입력값이 3자리가 아닐시 예외를 반환한다 - 3자리 보다 작은 경우")
+    @Test
+    void case3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
 
     @Override
     public void runMain() {
