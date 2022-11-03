@@ -42,7 +42,7 @@ class ComputerNumberTest {
         List<Integer> list = new ArrayList<>();
 
         // when
-        list = computerNumber.getComputerNumberList();
+        list = computerNumber.getNumberList();
 
         // then
         assertThat(list.size()).isEqualTo(3);
