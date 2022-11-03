@@ -19,6 +19,7 @@ public class Application {
     private static void isValidInput(String input) {
         isDuplicated(input);
         input.chars().forEach(c -> isDigitRange((char) c));
+        isRightLength(input);
     }
 
     private static void isDuplicated(String str) {
@@ -34,6 +35,12 @@ public class Application {
         if (charSingleDigit < '0' + MIN_NUMBER) {
             throw new IllegalArgumentException();
         } else if (charSingleDigit > '0' + MAX_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isRightLength(String input) {
+        if (input.length() != CNT_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
