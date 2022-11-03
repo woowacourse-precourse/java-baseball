@@ -42,11 +42,15 @@ public class BaseballGame {
     }
 
     private void printResult(Map<String, Integer> result) {
+        if (result.isEmpty()) {
+            System.out.println("낫싱");
+            return;
+        }
+
         List<String> results = new ArrayList<>();
         for (String key: result.keySet()) {
             results.add(result.get(key) + key);
         }
-
         String resultToString = String.join(" ", results);
         System.out.println(resultToString);
     }
