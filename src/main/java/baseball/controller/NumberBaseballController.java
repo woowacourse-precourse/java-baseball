@@ -12,6 +12,7 @@ public class NumberBaseballController {
 	public void initGame() {
 		numberBaseballView.initPage();
 	}
+
 	public void playBall() {
 		NumberBaseball computerNumber = numberBaseballService.createNumberBaseball();
 		UserPlayNumbers userPlayNumbers = numberBaseballView.playPage();
