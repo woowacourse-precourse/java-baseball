@@ -51,6 +51,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             String num = numberInput();
+            if (num.length() !=3) {
+                throw new IllegalArgumentException();
+            }
             checkstrike = Check(num, answer);
             if (checkstrike == 3) {
                 gostop = readLine();
