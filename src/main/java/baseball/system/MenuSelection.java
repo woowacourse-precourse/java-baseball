@@ -25,11 +25,11 @@ public class MenuSelection {
 
         String inputNumber = Console.readLine();
 
-        if(!inputNumber.equals("1") || !inputNumber.equals("2")){
-            throw new IllegalArgumentException();
+        if(inputNumber.equals("1") || inputNumber.equals("2")){
+            return inputNumber;
         }
 
-        return inputNumber;
+        throw new IllegalArgumentException();
     }
 
     private void printMenuSelection() {
