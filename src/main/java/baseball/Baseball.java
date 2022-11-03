@@ -21,7 +21,7 @@ public class Baseball {
     }
 
 
-    public void play() {
+    public void play() throws IllegalArgumentException{
         setComputerNumber();
 
         int strike = 0;
