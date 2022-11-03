@@ -82,5 +82,40 @@ class InputValidatorTest {
 	@Nested
 	class validateRestartStringTest {
 
+		@Test
+		void 정상적인_문자열1() {
+			String ansString = "1";
+			assertDoesNotThrow(() -> inputValidator.validateRestartString(ansString));
+		}
+
+		@Test
+		void 정상적인_문자열2() {
+			String ansString = "2";
+			assertDoesNotThrow(() -> inputValidator.validateRestartString(ansString));
+		}
+
+		@Test
+		void 길이가_1초과하는_입력_문자열() {
+			String ansString = "12";
+			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateRestartString(ansString));
+		}
+
+		@Test
+		void 길이가_0인_입력_문자열() {
+			String ansString = "";
+			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateRestartString(ansString));
+		}
+
+		@Test
+		void 숫자가_아닌_입력_문자열() {
+			String ansString = "힣";
+			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateRestartString(ansString));
+		}
+
+		@Test
+		void 입력이_1또는_2가_아닌_문자열() {
+			String ansString = "0";
+			assertThrows(IllegalArgumentException.class, () -> inputValidator.validateRestartString(ansString));
+		}
 	}
 }

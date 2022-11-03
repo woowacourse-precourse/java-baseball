@@ -31,12 +31,13 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
   - [ ] int getRestartNumber() 메서드: validation도 진행
 
 - [ ] InputValidator 클래스: try~catch로 IllegalArgumentException 처리
-  - [ ] boolean validateAnsString(String) 메서드
+  - [X] boolean validateAnsString(String) 메서드
     - [X] 길이가 3이 아닌 입력 검증
     - [X] 숫자가 아닌 입력 검증
     - [X] 동일한 숫자가 포함되었는지 검증
-    - [X] 맨 앞자리가 0인지 검증
-  - [ ] boolean validateRestartString(String) 메서드
+    - [X] 맨 앞자리가 0이 아닌지 검증
+  - [X] boolean validateRestartString(String) 메서드
+    - [X] 입력이 문자열 1또는 2인지 검증
 
 
 ## 🔍 진행 방식

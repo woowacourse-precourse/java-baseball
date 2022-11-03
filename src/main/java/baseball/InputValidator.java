@@ -10,7 +10,7 @@ public class InputValidator {
 	}
 
 	public void validateRestartString(String restartString) throws IllegalArgumentException {
-
+		checkOneOrTwo(restartString);
 	}
 
 	private void checkStringLength(String string, int length) {
@@ -39,6 +39,12 @@ public class InputValidator {
 
 	private void checkStartWithZero(String string) {
 		if (string.charAt(0) == '0') {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private void checkOneOrTwo(String string) {
+		if (!(string.equals("1") || string.equals("2"))) {
 			throw new IllegalArgumentException();
 		}
 	}
