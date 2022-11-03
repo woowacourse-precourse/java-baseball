@@ -26,6 +26,7 @@ public class Application {
             if (! checkNumber(numberString)) {
                 continue;
             }
+            break;
 
         } while(true);
     }
@@ -57,7 +58,6 @@ public class Application {
 
         try {
 
-
             return true;
 
 
@@ -70,7 +70,7 @@ public class Application {
 
     public static boolean check(String numberString) {
 
-        if (!checkLength(numberString) || !checkInteger(numberString) || checkDuplicateNumber(numberString)) {
+        if (! checkLength(numberString) || ! checkInteger(numberString) || ! checkDuplicateNumber(numberString)) {
 
             return false;
         }
