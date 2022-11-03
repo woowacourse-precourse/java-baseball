@@ -6,8 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static constant.BaseballConstant.INPUT_MESSAGE;
-import static constant.BaseballConstant.START_MESSAGE;
+import static constant.BaseballConstant.*;
 
 public class BaseballGame {
     private static final List<Integer> computerNumbers = new ArrayList<>();
@@ -15,7 +14,7 @@ public class BaseballGame {
 
     public static void start() {
         makeRandomNumber();
-        printMessage(START_MESSAGE);
+        printMessage(START_MESSAGE + ENTER);
         getUserNumber();
     }
 
@@ -29,7 +28,7 @@ public class BaseballGame {
     }
 
     public static void printMessage(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     public static void getUserNumber() {
