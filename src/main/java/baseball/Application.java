@@ -126,7 +126,9 @@ public class Application {
     private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {
         return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == 0 && scoreOfStrikeAndBall.get(BALL_COUNT_INDEX) == 0;
     }
-    private static void printNothingMatch() {}
+    private static void printNothingMatch() {
+        System.out.println("낫싱");
+    }
     private static void printThreeStrike() {}
     private static void printStrike(int strikeCount) {}
     private static void printBall(int ballCount) {}
