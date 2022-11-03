@@ -10,11 +10,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public int ball = 0;
     public int strike = 0;
-    public boolean answer = false;
+    public boolean answer = true;
     public List<Integer> inputNum = new ArrayList<>();
     public List<Integer> comNum = new ArrayList<>();
 
-    public Application(){
+    public Application() {
         createNum();
         startGame();
     }
@@ -29,11 +29,11 @@ public class Application {
     }
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (!answer){
+        while (answer) {
             getInputNum();
             setAnswer();
             showResult();
-            resetStrikeBall();
+            checkAnswer();
         }
     }
 
@@ -44,8 +44,8 @@ public class Application {
     }
 
     public void setAnswer() {
-        for (int number: inputNum){
-            if (inputNum.indexOf(number) == comNum.indexOf(number)){
+        for (int number: inputNum) {
+            if (inputNum.indexOf(number) == comNum.indexOf(number)) {
                 strike += 1;
             } else if (comNum.contains(number)) {
                 ball += 1;
@@ -59,9 +59,18 @@ public class Application {
         } else if (ball != 0) {
             System.out.printf("%d볼\n", ball);
         } else if (strike != 0) {
-            System.out.printf("%d스트라이크\n", ball);
+            System.out.printf("%d스트라이크\n", strike);
         } else {
             System.out.print("낫싱\n");
+        }
+    }
+
+    public void checkAnswer() {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            startOrNot();
+        } else {
+            resetStrikeBall();
         }
     }
 
@@ -70,7 +79,26 @@ public class Application {
         ball = 0;
     }
 
+    public void startOrNot() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String cont = Console.readLine();
+        if (cont.equals("1")) {
+            resetAll();
+        } else if (cont.equals("2")) {
+            answer = false;
+        }
+    }
+
+    public void resetAll() {
+        strike = 0;
+        ball = 0;
+        answer = true;
+        inputNum = new ArrayList<>();
+        comNum = new ArrayList<>();
+        createNum();
+    }
+
     public static void main(String[] args) {
-        Application app = new Application();
+        new Application();
     }
 }
