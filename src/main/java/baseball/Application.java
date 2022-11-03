@@ -30,6 +30,10 @@ public class Application {
         return answer;
     }
 
+    public static String convertIntToString(int intValue) {
+        return String.valueOf(intValue);
+    }
+
     public static boolean isValidInput(String input) {
         if(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
             return false;
