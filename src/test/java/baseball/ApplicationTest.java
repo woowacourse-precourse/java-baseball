@@ -49,6 +49,34 @@ class ApplicationTest extends NsTest {
         assertThat(Application.isThreeNumber(input)).isEqualTo(result);
     }
 
+    @Test
+    void isDifferentNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isDifferentNumber_메서드_잘못된_값_중복_테스트() {
+        String input = "121";
+        boolean result = false;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isValidNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isValidNumber_메서드_잘못된_값_테스트() {
+        String input = "11a";
+        boolean result = false;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
