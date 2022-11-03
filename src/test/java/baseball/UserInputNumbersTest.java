@@ -27,4 +27,10 @@ class UserInputNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 입력값_테스트_비정상입력_문자포함() {
+        String userInputValue = "12c";
+        assertThatThrownBy(() -> UserInputNumbers.validUserInputNumber(userInputValue))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
