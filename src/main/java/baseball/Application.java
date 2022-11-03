@@ -19,6 +19,9 @@ public class Application {
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        int strikeCount = 0;
+        int ballCount = 0;
+
         int escapeNumber = 1;
         while (escapeNumber != 1){
 
@@ -40,18 +43,15 @@ public class Application {
 
                     if (computer.indexOf(user.get(position)) == position){
 
+                        strikeCount ++;
                         //strike 상황
-
                     } else if (computer.indexOf(user.get(position)) != position){
 
+                        ballCount ++;
                         //ball 상황
-
                     }
 
-
-
                 }
-
 
             }
 
