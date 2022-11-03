@@ -24,8 +24,8 @@
 
    ❗ MUST clear the List not to be affected by previous execution result
    - if wrong input, throw IllegalArgumentException
-   - **Input condition**: length of the input string is 3 && only number && each number is unique
-   - **Example of wrong input**: "5678", "1a3", "177"
+   - **Input condition**: length of the input string is 3 && only natural number && each number is unique
+   - **Example of wrong input**: "5678", "1a3", "510", "177"
 
 
 2. Count ball and strike
