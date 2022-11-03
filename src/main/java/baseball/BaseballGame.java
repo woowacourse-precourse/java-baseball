@@ -56,8 +56,4 @@ public class BaseballGame {
         computerNumbers = Randoms
                 .pickUniqueNumbersInRange(1, 9, NUMBER_COUNT_TO_CREATED);
     }
-
-    public List<Integer> getComputerNumbers() {
-        return computerNumbers;
-    }
 }
