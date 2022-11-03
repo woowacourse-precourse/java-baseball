@@ -23,11 +23,8 @@ public class Application {
                 List<Integer> user = getUser();
                 System.out.println("user: "+Arrays.toString(user.toArray()));
 
-                int count = countSame(computer, user);
-                System.out.println("count: "+count);
-
-                int strike = countStrike(computer, user);
-                System.out.println("strike: "+strike);
+                String msg = getMSG(computer, user);
+                System.out.println("msg: "+msg);
             }
 
         } while (retry);
@@ -95,6 +92,19 @@ public class Application {
     }
 
     //컴퓨터와 사용자 숫자 비교
+    private static String getMSG(List<Integer> computer, List<Integer> user) {
+        int count = countSame(computer, user);
+        int strike = countStrike(computer, user);
+
+        if(count==0) {
+            return "낫싱";
+        } else if(count!=strike) {
+            return (count-strike) + "볼 " + strike + "스트라이크";
+        } else {
+            return strike + "스트라이크";
+        }
+    }
+
     private static int countSame(List<Integer> computer, List<Integer> user) {
         int count = 0;
 
