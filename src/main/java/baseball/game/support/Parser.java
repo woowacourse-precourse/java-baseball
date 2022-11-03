@@ -11,7 +11,7 @@ public class Parser {
     private List<Integer> parserInt(String input,Integer size){
         List<Integer> result=new ArrayList<>();
         for(int i=0;i<input.length();i++){
-            checkDigit(input, size);
+            checkDigit(input, i);
             Integer number=convertCharToInt(input,i);
             checkDuplicate(result,number);
             result.add(number);
@@ -27,7 +27,7 @@ public class Parser {
 
     }
     private void checkDigit(String input,Integer index){
-        if('0' > input.charAt(index) && input.charAt(index) > '9')
+        if('0' > input.charAt(index) || input.charAt(index) > '9')
             throw new IllegalArgumentException();
     }
     private void checkSize(String input,Integer size){
