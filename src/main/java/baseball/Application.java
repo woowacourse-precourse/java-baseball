@@ -12,15 +12,18 @@ public class Application {
 }
 
 class Computer {
-    private static ArrayList<Integer> randomNumbers = new ArrayList<>(3);
+    private static ArrayList<Integer> randomNumbers = pickNumbers();
 
-    Computer() {
+    public static ArrayList<Integer> pickNumbers() {
+        ArrayList<Integer> randomNumbers = new ArrayList<>(3);
         while(randomNumbers.size() < 3) {
             Integer newRandomNumber = pickRandomNumber();
             if (!has(newRandomNumber)) {
                 randomNumbers.add(newRandomNumber);
             }
         }
+
+        return randomNumbers;
     }
 
     private static boolean has(Integer number) {

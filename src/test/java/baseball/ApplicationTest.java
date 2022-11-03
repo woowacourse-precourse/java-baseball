@@ -28,6 +28,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void testFunction1_case1() {
+
+        assertThat(Computer().randomNumbers);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
