@@ -22,6 +22,7 @@ public class BaseballGame {
         List<Integer> usersPick = user.pickNumbers();
 
         Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
+        printResult(result);
     }
 
     public Map<String, Integer> countBallsAndStrikes(List<Integer> computersPick, List<Integer> usersPick) {
@@ -38,5 +39,15 @@ public class BaseballGame {
         }
 
         return counts;
+    }
+
+    private void printResult(Map<String, Integer> result) {
+        List<String> results = new ArrayList<>();
+        for (String key: result.keySet()) {
+            results.add(result.get(key) + key);
+        }
+
+        String resultToString = String.join(" ", results);
+        System.out.println(resultToString);
     }
 }
