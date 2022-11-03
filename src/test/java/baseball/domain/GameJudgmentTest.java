@@ -19,20 +19,20 @@ class GameJudgmentTest {
     }
 
     @Test
-    void 컴퓨터_값이_비어있는지_확인() {
+    void 컴퓨터의_값이_비어있는지_확인() {
         List<Integer> randomNumbers = numberGenerator.createRandomNumbers();
         assertThat(randomNumbers).isNotEmpty();
     }
 
     @Test
-    void 컴퓨터_숫자가_3개가_맞는지_확인() {
+    void 컴퓨터의_숫자가_3개가_맞는지_확인() {
         List<Integer> randomNumbers = numberGenerator.createRandomNumbers();
         int size = randomNumbers.size();
         assertThat(size).isEqualTo(3);
     }
 
     @Test
-    void 컴퓨터_숫자가_중복이_있는지_확인() {
+    void 컴퓨터의_숫자가_중복이_있는지_확인() {
         List<Integer> randomNumbers = numberGenerator.createRandomNumbers();
         HashSet<Integer> hashSet = new HashSet<>(randomNumbers);
 
