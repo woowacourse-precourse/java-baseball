@@ -29,7 +29,7 @@
 - computer number, player number는 `List<Integer>`로 처리
 
 - [x] 판정 기준 컴퓨터 수 입력
-- [ ] player의 입력값으로 판정 결과 리스트 반환
+- [x] player의 입력값으로 판정 결과 리스트 반환
   - [x] strike 판정
   - [x] ball 판정
 

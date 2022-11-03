@@ -15,6 +15,20 @@ public class BaseballGameRule {
         this.computerNumbers = computerNumbers;
     }
 
+    /**
+     * player의 수를 입력받아 strike, ball 수 파악
+     *
+     * @param playerNumbers 3개의 Integer List
+     * @return playerScore.get(0) : strike 수
+     *         playerScore.get(1) : ball 수
+     */
+    public List<Integer> verifyPlayerScore(List<Integer> playerNumbers){
+        List<Integer> playerScore = new ArrayList<>();
+        playerScore.add(verifyStrikes(playerNumbers));
+        playerScore.add(verifyBalls(playerNumbers));
+        return playerScore;
+    }
+
     private int verifyStrikes(List<Integer> playerNumbers) {
 
         int strikeCount = 0;
