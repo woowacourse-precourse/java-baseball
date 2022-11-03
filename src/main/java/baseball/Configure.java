@@ -2,19 +2,12 @@ package baseball;
 
 public enum Configure {
 
-	NUMBER_DIGIT(3),
-
-	RESTART(1),
-	END(2);
-
+	NUMBER_DIGIT(3);
 
 	private int value;
 
 	Configure(int value) {
 		this.value = value;
-	}
-
-	Configure() {
 	}
 
 	public int getValue() {
