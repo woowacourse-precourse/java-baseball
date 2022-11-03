@@ -29,6 +29,13 @@ public class Computer {
         return computerNumber;
     }
 
+    public boolean getOutcome(String hint){
+        if(hint.equals("3스트라이크")){
+            return false;
+        }
+        return true;
+    }
+
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
         for (int numberIdx = 0; numberIdx <COMPUTER_NUMBER_SIZE; numberIdx++) {

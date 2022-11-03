@@ -7,31 +7,34 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private Computer computer;
+    private Computer computer = new Computer();
     private Player player;
     private InputView inputView;
     private OutputView outputView;
 
     public void start() {
+
+        String hint="";
         inputView = new InputView();
         inputView.inputInit();
-        String input = inputView.playerInput();
-
-        player = new Player(input);
-        player.checkException();
-        player.setInputNum();
-
-        computer = new Computer();
         computer.generateComputerNumberThree();
 
-        String hint = computer.getHint(computer.getComputerNumber(), player.getInputNum());
+        do {
+            String input = inputView.playerInput();
 
-        outputView = new OutputView();
-        outputView.printHint(hint);
+            player = new Player(input);
+            player.checkException();
+            player.setInputNum();
+
+            hint = computer.getHint(computer.getComputerNumber(), player.getInputNum());
+
+            outputView = new OutputView();
+            outputView.printHint(hint);
+        } while (computer.getOutcome(hint));
+        outputView.printGameEnd();
+
 
     }
-
-
 
 
 }
