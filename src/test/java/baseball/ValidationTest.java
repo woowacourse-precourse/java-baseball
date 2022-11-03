@@ -10,9 +10,21 @@ public class ValidationTest {
 
     @Test
     void ballRangeValidationTest() {
-        assertThat(ValidationUtil.isValidRange(List.of(1))).isTrue();
-        assertThat(ValidationUtil.isValidRange(List.of(9))).isTrue();
-        assertThat(ValidationUtil.isValidRange(List.of(0))).isFalse();
-        assertThat(ValidationUtil.isValidRange(List.of(10))).isFalse();
+        assertThat(ValidationUtil.isValidRange(List.of(1, 2, 3))).isTrue();
+        assertThat(ValidationUtil.isValidRange(List.of(9, 8, 7))).isTrue();
+        assertThat(ValidationUtil.isValidRange(List.of(0, 1))).isFalse();
+        assertThat(ValidationUtil.isValidRange(List.of(9, 10))).isFalse();
+    }
+
+    @Test
+    void ballCountValidationTest() {
+        assertThat(ValidationUtil.isValidCount(List.of(1, 2, 3))).isTrue();
+        assertThat(ValidationUtil.isValidCount(List.of(9, 8, 7))).isTrue();
+
+        assertThat(ValidationUtil.isValidCount(List.of(1, 2))).isFalse();
+        assertThat(ValidationUtil.isValidCount(List.of(8, 9))).isFalse();
+
+        assertThat(ValidationUtil.isValidCount(List.of(1, 2, 3, 4))).isFalse();
+        assertThat(ValidationUtil.isValidCount(List.of(9, 8, 7, 6))).isFalse();
     }
 }
