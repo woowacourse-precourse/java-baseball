@@ -3,7 +3,7 @@
 
 ### 1. 사용자의 입력
 **`camp.nextstep.edu.missionutils.Console`의 `readLine()` 사용**
-- [ ] 사용자의 입력 유효성 검사
+- [X] 사용자의 입력 유효성 검사
 * 숫자가 아닌 경우
 * 3글자가 아닌 경우
 * 입력에 0이 포함된 경우
