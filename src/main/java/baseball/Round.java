@@ -11,7 +11,15 @@ public class Round {
     private List<Integer> hiddenNumberList;
 
     public Round() {
-        //this.hiddenNumberList = generateNewHiddenNumberList();
+        this.hiddenNumberList = generateNewHiddenNumberList();
+    }
+
+    public List<Integer> generateNewHiddenNumberList() {
+        List<Integer> numberList = new ArrayList<>();
+        while (numberList.size() < NUMBER_OF_HIDDEN_NUMBER) {
+            addNewHiddenNumberToList(numberList);
+        }
+        return numberList;
     }
 
     public void addNewHiddenNumberToList(List<Integer> numberList) {

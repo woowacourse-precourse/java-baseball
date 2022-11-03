@@ -8,6 +8,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class RoundTest {
+
+    @Test
+    void generateNewHiddenNumberList_test_list_generation() {
+        Round round = new Round();
+        List<Integer> result = round.generateNewHiddenNumberList();
+        assertThat(result.size()).isEqualTo(3);
+    }
+
     @Test
     void addNewHiddenNumberToList_test_new_number_generation() {
         Round round = new Round();
