@@ -15,8 +15,7 @@ class RandomNumberFactoryTest {
     class 세개의_숫자가_생성된다 {
         @RepeatedTest(10)
         void 세개의_숫자가_생성된다() {
-            RandomNumber randomNumber = RandomNumberFactory.newRandomNumber();
-            List<Integer> answer = randomNumber.getAnswer();
+            List<Integer> answer = RandomNumberFactory.newRandomNumber();
             assertThat(answer.size()).isEqualTo(3);
         }
     }
@@ -25,8 +24,7 @@ class RandomNumberFactoryTest {
     class 세개의_숫자는_서로_다르다 {
         @RepeatedTest(10)
         void 세개의_숫자는_서로_다르다() {
-            RandomNumber randomNumber = RandomNumberFactory.newRandomNumber();
-            List<Integer> answer = randomNumber.getAnswer();
+            List<Integer> answer = RandomNumberFactory.newRandomNumber();
 
             Integer firstNumber = answer.get(0);
             Integer secondNumber = answer.get(1);
@@ -40,10 +38,12 @@ class RandomNumberFactoryTest {
 
     @Test
     void 만들어진_RandomNumber를_바꿀수_없다() {
-        RandomNumber randomNumber = RandomNumberFactory.newRandomNumber();
-        List<Integer> answer = randomNumber.getAnswer();
+        List<Integer> answer = RandomNumberFactory.newRandomNumber();
 
         assertThatThrownBy(() -> answer.add(100))
+                .isInstanceOf(UnsupportedOperationException.class);
+
+        assertThatThrownBy(() -> answer.remove(0))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
 }

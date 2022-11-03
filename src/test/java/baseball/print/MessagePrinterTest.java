@@ -42,13 +42,6 @@ class MessagePrinterTest {
         assertThat(result).isEqualTo(outputStream.toString().trim());
     }
 
-    @Test
-    void 낫싱_메시지가_출력된다() {
-        printer.printWordNothing();
-        String result = "낫싱";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
     @Nested
     class ball_및_strike_횟수에_대한_메시지가_출력된다 {
         @Test
@@ -86,19 +79,24 @@ class MessagePrinterTest {
             String result = "3스트라이크";
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
+
+        @Test
+        void 아무것도_못_맞춘_경우() {
+            Map<String, Integer> ballAndStrikeCount = Map.of(
+                    "ball", 0,
+                    "strike", 0
+            );
+
+            printer.printBallAndStrikeCount(ballAndStrikeCount);
+            String result = "낫싱";
+            assertThat(result).isEqualTo(outputStream.toString().trim());
+        }
     }
 
     @Test
     void 정답임을_알리는_메시지가_출력된다() {
         printer.printCorrectAnswerMessage();
-        String result = "3개의 숫자를 모두 맞히셨습니다!";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
-    @Test
-    void 게임_종료_메시지가_출력된다() {
-        printer.printGameEndMessage();
-        String result = "게임 종료";
+        String result = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         assertThat(result).isEqualTo(outputStream.toString().trim());
     }
 

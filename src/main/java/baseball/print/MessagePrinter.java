@@ -14,11 +14,7 @@ public class MessagePrinter {
     }
 
     public void printEnterNumberMessage() {
-        System.out.println(INPUT_A_NUMBER_MESSAGE);
-    }
-
-    public void printWordNothing() {
-        System.out.println(NOTHING);
+        System.out.print(INPUT_A_NUMBER_MESSAGE);
     }
 
     public void printBallAndStrikeCount(Map<String, Integer> ballAndStrikeCount) {
@@ -35,15 +31,16 @@ public class MessagePrinter {
             return;
         }
 
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println(NOTHING);
+            return;
+        }
+
         System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
     }
 
     public void printCorrectAnswerMessage() {
-        System.out.println(CORRECT_ANSWER_MESSAGE);
-    }
-
-    public void printGameEndMessage() {
-        System.out.println(GAME_END_MESSAGE);
+        System.out.print(CORRECT_ANSWER_MESSAGE);
     }
 
     public void printRestartMessage() {
