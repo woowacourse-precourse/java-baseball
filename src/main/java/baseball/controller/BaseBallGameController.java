@@ -5,6 +5,7 @@ import baseball.utils.ComputerBallGenerator;
 import baseball.utils.UserInputConvertor;
 import baseball.utils.UserInputValidator;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class BaseBallGameController {
             Referee referee = new Referee(userBalls, computerBalls);
             strike = referee.getStrike();
             ball = referee.getBall();
+            OutputView.printGameResult(strike, ball);
         } while (!gameEnd(strike));
     }
 
