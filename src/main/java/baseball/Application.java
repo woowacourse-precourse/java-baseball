@@ -9,8 +9,6 @@ import java.util.List;
 
 public class Application {
 
-    public static int ballNumber = 0;
-    public static int strikeNumber = 0;
     public static void startAnnounce() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -114,6 +112,6 @@ public class Application {
 
     public static void main(String[] args) {
         startAnnounce();
-        String userEnterNumber = Console.readLine();
+        game();
     }
 }
