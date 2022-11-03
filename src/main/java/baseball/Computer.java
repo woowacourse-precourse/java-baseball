@@ -17,6 +17,11 @@ public class Computer {
     }
 
 
+
+    public BaseballNumber getBaseballNumber() {
+        return computerNumber;
+    }
+
     public void generateNumber() {
         List<Integer> computer = new ArrayList<>();
 
