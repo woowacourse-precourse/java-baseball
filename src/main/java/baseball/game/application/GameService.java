@@ -4,10 +4,13 @@ import baseball.game.domain.repository.GameRepository;
 import baseball.game.support.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class GameService {
     private static final GameService instance=new GameService();
     private final GameRepository gameRepository;
     private final MessageService messageService;
+    private final Parser parser=new Parser();
     private GameService(){
         gameRepository=GameRepository.getInstance();
         messageService=MessageService.getInstance();
@@ -26,7 +29,10 @@ public class GameService {
     }
     private void play(){
         messageService.inputMessage();
+        List<Integer> inputData=input();
+    }
+    private List<Integer> input(){
         String input= Console.readLine();
-        Parser.stringToNumbers(input);
+        return parser.parseClientInput(input,gameRepository.getSize());
     }
 }

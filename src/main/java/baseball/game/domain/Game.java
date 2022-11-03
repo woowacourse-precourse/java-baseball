@@ -1,7 +1,7 @@
 package baseball.game.domain;
 
 public class Game {
-    private RandomNumber gameNumber;
+    private final RandomNumber gameNumber;
     private Integer strikeCount;
     private Integer ballCount;
     public void initCount(){

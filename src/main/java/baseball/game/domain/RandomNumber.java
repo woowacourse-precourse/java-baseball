@@ -7,19 +7,16 @@ import java.util.List;
 
 public class RandomNumber {
     private final List<Integer> randomNumber;
-    private final int SIZE=3;
-    private final int START_RANGE=1;
-    private final int END_RANGE=9;
-    public RandomNumber(){
-        randomNumber=randomNumber();
+    public RandomNumber(Integer size,Integer startRange,Integer endRange){
+        randomNumber=randomNumber(size, startRange, endRange);
     }
     public List<Integer> getRandomNumber(){
         return randomNumber;
     }
-    private List<Integer> randomNumber(){
+    private List<Integer> randomNumber(Integer size,Integer startRange,Integer endRange){
         List<Integer> randomNumber=new ArrayList<>();
-        while(randomNumber.size() <SIZE) {
-            int num = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+        while(randomNumber.size() <size) {
+            int num = Randoms.pickNumberInRange(startRange, endRange);
             if (!randomNumber.contains(num)) {
                 randomNumber.add(num);
             }
