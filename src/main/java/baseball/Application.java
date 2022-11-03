@@ -22,4 +22,9 @@ public class Application {
             }
         }
 
+        // TODO : 3. 사용자가 도전할 숫자를 입력
+        System.out.print("숫자를 입력해주세요 : ");
+        String guessingNumberString = Console.readLine();
+
+
 }
