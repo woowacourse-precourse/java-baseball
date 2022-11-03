@@ -1,8 +1,5 @@
 package baseball.user;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -13,14 +10,9 @@ public class User {
         this.userInputValidator = userInputValidator;
     }
 
-    public List<String> inputNumber() {
-        List<String> inputValue = new ArrayList<>();
-
-        while (inputValue.size() < 3) {
-            inputValue.add(Console.readLine());
-        }
-
-        userInputValidator.validate(inputValue);
-        return inputValue;
+    public List<String> stringConvertToStringList(String inputValue) {
+        List<String> inputValueList = List.of(inputValue.split(""));
+        userInputValidator.validate(inputValueList);
+        return inputValueList;
     }
 }
