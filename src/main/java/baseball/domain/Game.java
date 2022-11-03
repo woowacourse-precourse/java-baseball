@@ -64,6 +64,10 @@ public class Game {
         }
     }
 
+    public int charToInt(char number){
+        return Integer.parseInt(String.valueOf(number));
+    }
+
     public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
         strike = 0;
         ball = 0;
