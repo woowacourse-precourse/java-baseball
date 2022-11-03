@@ -12,12 +12,26 @@ public class BaseballGame {
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
     private List<Integer> computerNumbers = new ArrayList<>();
+    private int strikeCount;
+    private int ballCount;
+    private String message;
 
     public void start() {
         System.out.println(GAME_START_MESSAGE);
         createComputerNumbers();
         String input = Console.readLine();
         isWrongInputValue(input);
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            String val = String.valueOf(computerNumbers.get(i));
+            if (input.contains(val)) {
+                if (val.equals(String.valueOf(input.charAt(i)))) {
+                    strikeCount++;
+                }
+                if (!val.equals(String.valueOf(input.charAt(i)))) {
+                    ballCount++;
+                }
+            }
+        }
     }
 
     private void isWrongInputValue(String input) {
