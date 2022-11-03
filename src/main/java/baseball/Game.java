@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.validate.Validation.validateAnswer;
-import static baseball.validate.Validation.validateOneOrTwo;
+import static baseball.Validation.validateAnswer;
+import static baseball.Validation.validateOneOrTwo;
 
 public class Game {
 	private List<Integer> pitcher;
@@ -22,11 +22,7 @@ public class Game {
 		do {
 			System.out.print("숫자를 입력해주세요 : ");
 			String input = Console.readLine();
-
 			validateAnswer(input);
-			/*if (validateAnswer(input)) {
-				return -1;
-			}*/
 
 			String[] splitInput = input.split("");
 
@@ -38,7 +34,7 @@ public class Game {
 			ballCount = getBallCount(pitcher, hitter);
 			strikeCount = getStrikeCount(pitcher, hitter);
 
-			//printResult(ballCount, strikeCount);
+			printResult(ballCount, strikeCount);
 		} while (strikeCount < 3);
 
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -57,9 +53,7 @@ public class Game {
 			}
 		}
 
-		int strike = getStrikeCount(pitcher ,hitter);
-		ball -= strike;
-
+		ball -= getStrikeCount(pitcher, hitter);
 		return ball;
 	}
 

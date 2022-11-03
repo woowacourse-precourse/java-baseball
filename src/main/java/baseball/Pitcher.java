@@ -16,7 +16,7 @@ public class Pitcher {
 		}
 	}
 
-	public int getNumber(int index) {
-		return number.get(index);
+	public List<Integer> getNumber() {
+		return number;
 	}
 }
