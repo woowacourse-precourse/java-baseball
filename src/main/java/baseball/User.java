@@ -13,12 +13,12 @@ public class User {
 		this.user = user;
 	}
 
-	public User(String userInput) {
-		this.user = makeUserBallsFromUserInput(userInput);
+	public User(String userBallInput) {
+		this.user = makeUserBallsFromUserInput(userBallInput);
 	}
 
-	private List<String> makeUserBallsFromUserInput(String userInput) {
-		return new ArrayList<>(Arrays.asList(userInput.split("")));
+	private List<String> makeUserBallsFromUserInput(String userBallInput) {
+		return new ArrayList<>(Arrays.asList(userBallInput.split("")));
 	}
 
 	@Override
