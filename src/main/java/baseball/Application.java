@@ -70,6 +70,11 @@ public class Application {
 
     public static boolean check(String numberString) {
 
+        if (!checkLength(numberString) || !checkInteger(numberString) || checkDuplicateNumber(numberString)) {
+
+            return false;
+        }
+
         return true;
     }
 
@@ -90,6 +95,18 @@ public class Application {
 
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public static boolean checkDuplicateNumber(String numberString) {
+
+        if ((int) numberString.charAt(0) == (int) numberString.charAt(1)
+                || (int) numberString.charAt(1) == (int) numberString.charAt(2)
+                || (int) numberString.charAt(0) == (int) numberString.charAt(2)) {
+
+            return false;
         }
 
         return true;
