@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 	public static void main(String[] args) {
-		// TODO: 프로그램 구현
+		playGame();
 	}
 
 	private static void playGame() {
@@ -140,4 +140,5 @@ public class Application {
 
 		return result;
 	}
+
 }
