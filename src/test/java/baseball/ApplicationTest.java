@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -21,6 +22,15 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 난수생성() {
         List<Integer> randomNumber = Application.generateRandomNumber();
@@ -35,11 +45,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void 맞힌_개수_확인(){
+        List<Integer> randomNumber = List.of(1,3,5);
+
+        Application.checkRightNumber("152",randomNumber);
+        Application.checkRightNumber("357",randomNumber);
+        Application.checkRightNumber("246",randomNumber);
+        Application.checkRightNumber("135",randomNumber);
+
+        assertThat(output()).contains("1볼 1스트라이크", "2볼","낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Override
