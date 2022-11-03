@@ -8,12 +8,15 @@ import java.util.Objects;
 
 public class Game {
     public static void startGame() {
+        Output.startMessage();
         List<Integer> target = gameSet();
         while (true) {
             int num = Input.inputNumber();
             List<Integer> validNum = Validate.isNumValid(num);
             int[] score = getScore(target, validNum);
-
+            if (Output.scoreMessage(score)) {
+                return;
+            }
         }
     }
 
