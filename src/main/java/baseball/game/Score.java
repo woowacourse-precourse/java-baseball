@@ -9,6 +9,23 @@ public class Score {
 
 	private Score(List<Integer> computerNumbers, List<Integer> userNumbers) {
 		calculateScore(computerNumbers, userNumbers);
+		printResult();
+	}
+
+	private void printResult() {
+		if (strike > 0 && ball > 0) {
+			System.out.printf("%d볼 %d스트라이크%n", ball, strike);
+			return;
+		}
+		if (strike > 0) {
+			System.out.printf("%d스트라이크%n", strike);
+			return;
+		}
+		if (ball > 0) {
+			System.out.printf("%d볼%n", ball);
+			return;
+		}
+		System.out.println("낫싱");
 	}
 
 	public static Score calculate(List<Integer> computerNumbers, List<Integer> userNumbers) {
