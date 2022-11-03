@@ -14,7 +14,7 @@ public class User {
         this.userNumberList = generateNumberList(this.inputNumber);
     }
 
-    private List<Integer> generateNumberList(String inputNumber) {
+    private List<Integer> generateNumberList(String inputNumber) throws IllegalArgumentException {
 
         boolean exceptionCheck = false;
 
