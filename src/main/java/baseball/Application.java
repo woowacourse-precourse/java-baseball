@@ -9,7 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Application {
-    
+
+    private final String STRIKE = "스트라이크";
+    private final String BALL = "볼";
+    private final String NOTHING = "낫싱";
+    private final String THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -67,5 +72,52 @@ public class Application {
             return false;
         }
         return true;
+    }
+
+    public String compareAnswer(String input, String answer) {
+        String result = "";
+
+        int strike = countStrike(input, answer);
+        int ball = countBall(input, answer);
+
+        if(strike == 0 && ball == 0) {
+            return NOTHING;
+        } else if(strike == 3) {
+            return THREE_STRIKE;
+        } else {
+            result += (ball + BALL + " " + strike+STRIKE);
+        }
+
+        return result;
+    }
+
+    public int countStrike(String input, String answer) {
+        int count = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == answer.charAt(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countBall(String input, String answer) {
+        int count = 0;
+        char[] inputCharArray = input.toCharArray();
+        char[] answerCharArray = answer.toCharArray();
+
+        for (int i = 0; i < inputCharArray.length; i++) {
+            for (int j = 0; j < answerCharArray.length; j++) {
+                if(i == j) {
+                    continue;
+                }
+
+                if(inputCharArray[i] == answerCharArray[j]) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 }
