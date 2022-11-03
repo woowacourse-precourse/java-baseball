@@ -52,6 +52,12 @@ public class GameResult {
         return nothing;
     }
 
+    public boolean isGameOver() {
+        if (strike == 3)
+            return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+
     public String toString() {
         String message = "";
         if (isNothing()) {
