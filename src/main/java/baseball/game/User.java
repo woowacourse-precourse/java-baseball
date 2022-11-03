@@ -13,7 +13,7 @@ public class User {
 		return List.copyOf(numbers);
 	}
 
-	public void receiveUserInput(String input) {
+	public void setUserNumbers(String input) {
 		validateUserInput(input);
 		this.numbers = convertStringToNumbers(input);
 	}

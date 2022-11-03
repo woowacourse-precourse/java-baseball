@@ -26,7 +26,7 @@ public class Game {
 
 	private void init() {
 		computer.generateNumbers();
-		user.receiveUserInput(receiveInput(GAME_INPUT_WAIT_MESSAGE));
+		user.setUserNumbers(receiveInput(GAME_INPUT_WAIT_MESSAGE));
 		score = Score.calculate(computer.getNumbers(), user.getNumbers());
 	}
 
@@ -40,7 +40,7 @@ public class Game {
 			if (isGameOver()) {
 				return;
 			}
-			user.receiveUserInput(receiveInput(GAME_INPUT_WAIT_MESSAGE));
+			user.setUserNumbers(receiveInput(GAME_INPUT_WAIT_MESSAGE));
 			score = Score.calculate(computer.getNumbers(), user.getNumbers());
 		}
 	}
