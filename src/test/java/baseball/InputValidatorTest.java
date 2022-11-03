@@ -79,4 +79,8 @@ class InputValidatorTest {
 		}
 	}
 
+	@Nested
+	class validateRestartStringTest {
+
+	}
 }

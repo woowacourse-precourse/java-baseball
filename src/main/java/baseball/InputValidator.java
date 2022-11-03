@@ -6,6 +6,7 @@ public class InputValidator {
 		checkStringLength(ansString);
 		checkIsNumber(ansString);
 		checkIsDuplicated(ansString);
+		checkStartWithZero(ansString);
 	}
 
 	private void checkStringLength(String string) {
@@ -28,6 +29,12 @@ public class InputValidator {
 				used[idx] = true;
 				continue;
 			}
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private void checkStartWithZero(String string) {
+		if (string.charAt(0) == '0') {
 			throw new IllegalArgumentException();
 		}
 	}

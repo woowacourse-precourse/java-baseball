@@ -34,8 +34,8 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
   - [ ] boolean validateAnsString(String) 메서드
     - [X] 길이가 3이 아닌 입력 검증
     - [X] 숫자가 아닌 입력 검증
-    - [ ] 동일한 숫자가 포함되었는지 검증
-    - [ ] 맨 앞자리가 0인지 검증
+    - [X] 동일한 숫자가 포함되었는지 검증
+    - [X] 맨 앞자리가 0인지 검증
   - [ ] boolean validateRestartString(String) 메서드
 
 
