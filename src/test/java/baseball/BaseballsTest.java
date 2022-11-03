@@ -1,6 +1,6 @@
 package baseball;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,5 +58,17 @@ public class BaseballsTest {
         assertThatThrownBy(() -> {
             Baseballs.of(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "987", "158", "231"})
+    @DisplayName("정상적인 입력 시 Baseballs가 정상적으로 생성되는지 확인")
+    public void test5(String input) throws Exception {
+        //given
+        String userInput = input;
+        //when
+        Baseballs baseballs = Baseballs.of(userInput);
+        //then
+        assertThat(baseballs).isInstanceOf(Baseballs.class);
     }
 }
