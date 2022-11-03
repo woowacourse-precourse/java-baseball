@@ -1,24 +1,32 @@
 package baseball;
 
+import baseball.computer.Computer;
+import baseball.counter.Counter;
 import baseball.io.InputUtils;
 import baseball.io.OutputUtils;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import baseball.io.UserInput;
 
 public class Game {
 
-    private List<Integer> inputNumbers;
+    private final Computer computer;
+    private final Counter counter;
+    private UserInput userInput;
 
-    private void saveInputNumbersInGame(String input) {
-        inputNumbers = input.chars().mapToObj(Integer::valueOf).collect(Collectors.toList());
+    public Game(Computer computer, Counter counter) {
+        this.computer = computer;
+        this.counter = counter;
     }
 
-    public void play() {
-        OutputUtils.printGameStartMessage();
-
+    private void play() {
         String input = InputUtils.readNumbersWrittenByUser();
         InputUtils.checkIsValidInput(input);
-        saveInputNumbersInGame(input);
+
+        userInput = new UserInput(input);
+        counter.count(userInput.getUserInputNumbers(), computer.getComputerHoldNumbers());
+    }
+
+    public void start() {
+        OutputUtils.printGameStartMessage();
+        computer.generateRandomNumber();
     }
 }
