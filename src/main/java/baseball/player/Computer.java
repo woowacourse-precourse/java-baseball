@@ -32,6 +32,9 @@ public class Computer {
         return numberList;
     }
 
+    private boolean isDuplication(List<Integer> numberList) {
+        return numberList.size() != numberList.stream().distinct().count();
+    }
 
 
 }
