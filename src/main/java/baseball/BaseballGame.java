@@ -3,7 +3,7 @@ package baseball;
 import static baseball.Computer.NUM_LIMIT_LENGTH;
 import static baseball.Computer.createRandomNumbers;
 import static baseball.Message.*;
-import static baseball.User.toIntegerUserInput;
+import static baseball.Player.toIntegerUserInput;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
