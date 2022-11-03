@@ -46,11 +46,6 @@ public class Outputing {
         printLine();
     }
 
-    public static void printEnd() throws IOException {
-        bw.append("게임 종료");
-        printLine();
-    }
-
     public static void printGameStart() throws IOException {
         bw.append(gameStartMsg);
         printLine();

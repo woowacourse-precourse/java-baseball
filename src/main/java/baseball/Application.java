@@ -8,6 +8,7 @@ import static baseball.inputoutput.Inputing.*;
 import static baseball.inputoutput.Outputing.*;
 
 
+
 public class Application {
 
     private static BaseballCalculator bc = new BaseballCalculator();
@@ -32,9 +33,9 @@ public class Application {
                 printGameEnd();
 
                 if ("2".equals(inputEnd())){
-                    printEnd();
                     bg.endGame();
                 } else {
+                    bg.resetNum();
                     bg.makeRandomNum();
                 }
             }

@@ -38,6 +38,7 @@ public class BaseballGame {
     protected void setStatus(boolean b) {
         status = b;
     }
+
     protected void makeRandomNum() {
         while (correctNum.size() < 3) {
             char randomNumber = (char) (Randoms.pickNumberInRange(1, 9) + '0');
@@ -45,8 +46,10 @@ public class BaseballGame {
         }
     }
 
+    protected void resetNum() {
+        correctNum.clear();
+    }
     protected void endGame() {
-
         status = false;
     }
 }
