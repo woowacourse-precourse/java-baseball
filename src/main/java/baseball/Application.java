@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,34 +14,29 @@ public class Application {
             if(temp % 10 == 0)  throw new IllegalArgumentException();
             placeValuesFromNum.add(temp % 10);
         }
-        placeValuesFromNum.add(num);
 
-        // 각 자릿수 중 같은 수가 있으면 예외 발생 필요.
+       Set<Integer> placeValuesSet = new HashSet<>(placeValuesFromNum);
+        if(placeValuesSet.size() != placeValuesFromNum.size()) {
+            throw new IllegalArgumentException("각 세 자릿수가 모두 다른 자연수만 입력 가능합니다.");
+        }
 
         if(count == 3)  return placeValuesFromNum;
         else throw new IllegalArgumentException("세 자릿수를 입력해주세요.");
    }
 
-    public static void ballStrikeCountFromCurrentInput(int computer, int user) {
-        List<Integer> computersInputList = getPlaceValuesFromNum(computer);
+    public static void ballStrikeCountFromCurrentInput(List<Integer> computersInputList, int user) {
         List<Integer> usersInputList = getPlaceValuesFromNum(user);
 
         int strike = 0;
         int ball = 0;
 
-        if(computersInputList.get(3).equals(usersInputList.get(3))) {
-            strike = 3;
-        }
-        else {
-            for(int idx = 0; idx < computersInputList.size() - 1; idx++) {
-                int computersValue = computersInputList.get(idx);
-                int usersValue = usersInputList.get(idx);
+        for(int idx = 0; idx < computersInputList.size() - 1; idx++) {
+            int computersValue = computersInputList.get(idx);
+            int usersValue = usersInputList.get(idx);
 
-                if(computersValue == usersValue)    strike++;
-                else if(computersInputList.contains(usersValue))    ball++;
-            }
+            if(computersValue == usersValue)    strike++;
+            else if(computersInputList.contains(usersValue))    ball++;
         }
-
         printResult(strike, ball);
 
     }
