@@ -22,7 +22,8 @@ public class GameController {
 
             userAnswer = afterPlaying();
         } catch (IllegalArgumentException e){
-            System.out.println(e);
+            System.err.println(e);
+            System.exit(0);
         }
         return userAnswer;
     }
