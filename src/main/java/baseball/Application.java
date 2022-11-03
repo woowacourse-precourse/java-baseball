@@ -26,6 +26,14 @@ public class Application {
         return isLengthCorrect;
     }
 
+    public static boolean ReturnIsNumberDigit(char digit) {
+        if(digit >= '1' && digit <= '9') {
+            return true;
+        }
+
+        return false;
+    }
+
     public static void ExceptionIfFalse(boolean isResultFalse)
             throws IllegalArgumentException {
 
