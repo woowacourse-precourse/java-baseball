@@ -1,0 +1,85 @@
+## ⚙ 구현해야할 기능 목록
+
+### 입력
+
+- 컴퓨터의 정답 숫자를 맞추기 위한 서로 다른 3자리 수를 입력한다.
+    - Baseballs에서 예외를 처리한다.
+        - 빈 입력이 들어온 경우
+        - 입력의 길이가 3이 아닌 경우
+        - 숫자 외 문자가 입력될 경우
+        - 3자리의 수들 간 중복이 있는 경우
+- 게임의 재시작(값 = 1) 혹은 종료(값 = 2) 여부를 입력받는다
+    - 예외 사항(잘못된 입력)
+        - 빈 값을 입력하는 경우
+        - 1,2 외의 모든 값
+- 예외 사항이 입력될 경우 IllegalArgumentException 을 발생 시키고 애플리케이션을 종료한다.
+
+### 출력
+
+- 게임 시작 시 "숫자 야구 게임을 시작합니다."를 출력한다.
+- 게임 진행 시 출력문구 "숫자를 입력해주세요"를 출력한다.
+- 입력한 수에 대한 결과를 출력한다.
+    - x볼 y스트라이크
+    - 낫싱
+    - 3스트라이크 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+- 진행 중인 게임이 끝나면 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."를 출력한다.    
+
+### 게임
+
+1. 컴퓨터는 1~9 (경계포함) 서로 다른 임의의 수 3개를 선택해 정답을 생성한다.
+2. 플레이어는 각자리가 서로 다른 3개의 숫자를 입력한다.
+3. 컴퓨터는 입력된 숫자에 대한 결과를 계산한다.
+4. 컴퓨터의 숫자를 플레이어가 맞출 때 까지 2~3과정을 반복한다.
+5. 게임을 맞출 경우 게임을 다시 시작하거나 종료할 수 있다.
+
+### 힌트
+
+- 같은 수가 같은 자리에 있는 경우 => 스트라이크에 해당한다.
+- 같은 수가 다른 자리에 있는 경우 => 볼에 해당한다.
+- 정답의 3개 수와 일치하는 수가 하나도 없는 경우 => 낫싱에 해당한다.
+
+<hr>
+
+## 객체 모델
+
+### InputUtils
+
+- static String getValidUserInputForAnswerGame()
+- static String getValidUserInputForRestartGame()
+
+### OutputUtils
+
+### GameGenerator
+
+- Game game
+
+### Game
+
+- Player player
+
+- Computer computer
+
+### Player
+
+- Baseballs input
+
+### Computer
+
+- Baseballs answers
+
+### Baseballs
+
+- List<Baseball\> Baseballs
+
+### Baseball
+
+- int value
+
+### Result
+
+- Count ballCount Count strikeCount
+
+### Count
+
+- int count;
+
