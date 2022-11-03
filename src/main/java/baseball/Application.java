@@ -30,14 +30,16 @@ public class Application {
     }
 
     public static List<Integer> getGuessNumber() {
-        String tmpString = Console.readLine();
-        return stringToList(tmpString);
+        String tmpStr = Console.readLine();
+        return stringToList(tmpStr);
     }
 
-    public static List<Integer> stringToList(String s) {
-        List<Integer> tempList = new ArrayList<>();
+    public static List<Integer> stringToList(String tmpStr) {
+        String[] tmpStrArr
+        List<Integer> tmpList = new ArrayList<>();
 
-        return tempList;
+        tmpList.add();
+        return tmpList;
     }
 
     public static boolean validateNumber() {
