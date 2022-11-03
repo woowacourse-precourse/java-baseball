@@ -53,14 +53,14 @@ public class RuleTest {
         //given
         List<Integer> user = List.of(7, 2, 3);
         List<Integer> computer = List.of(2, 7, 3);
-        String output = "2볼 1스트라이크\r\n";
+        String output = "2볼 1스트라이크";
 
         // when
         rule.check(user, computer);
         rule.showResult();
 
         // then
-        assertThat(output).isEqualTo(out.toString());
+        assertThat(output).isEqualTo(out.toString().trim());
     }
 
     @Test
@@ -68,14 +68,14 @@ public class RuleTest {
         //given
         List<Integer> user = List.of(1, 2, 3);
         List<Integer> computer = List.of(4, 5, 6);
-        String output = "낫싱\r\n";
+        String output = "낫싱";
 
         // when
         rule.check(user, computer);
         rule.showResult();
 
         // then
-        assertThat(output).isEqualTo(out.toString());
+        assertThat(output).isEqualTo(out.toString().trim());
     }
 
     @Test
@@ -83,13 +83,13 @@ public class RuleTest {
         //given
         List<Integer> user = List.of(1, 2, 3);
         List<Integer> computer = List.of(1, 2, 3);
-        String output = "게임 종료\r\n";
+        String output = "게임 종료";
 
         // when
         rule.check(user, computer);
         rule.showResult();
 
         // then
-        assertThat(output).isEqualTo(out.toString());
+        assertThat(output).isEqualTo(out.toString().trim());
     }
 }
