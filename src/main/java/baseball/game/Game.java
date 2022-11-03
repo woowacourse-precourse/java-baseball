@@ -31,13 +31,12 @@ public class Game {
 
             Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
 
+            printResult(comparator);
+
             if(comparator.getStrike() == GameConstant.DIGIT.getValue()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 isAnswered = true;
-                break;
             }
-
-            printResult(comparator);
         }
     }
 
