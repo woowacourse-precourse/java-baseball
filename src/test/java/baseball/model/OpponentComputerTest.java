@@ -90,4 +90,15 @@ public class OpponentComputerTest {
         assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(0);
         assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(2);
     }
+
+    @Test
+    void 상대방_수_리스트와_플레이어_수_리스트를_비교해서_스트라이크_볼_개수_판정_1스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        List<String> opponentComputerNumberEachDigits = List.of("1", "2", "3");
+        List<String> playerNumberEachDigits = List.of("1", "5", "6");
+        opponentComputer.judgeStrikeOrBall(opponentComputerNumberEachDigits, playerNumberEachDigits);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(1);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(0);
+    }
 }
