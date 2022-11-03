@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 class Input {
     private final static int LENGTH_MAX = 3;
@@ -16,7 +17,10 @@ class Input {
         return number;
     }
 
-    static String
+    static String player() {
+        String number = Console.readLine();
+        return number;
+    }
 }
 
 

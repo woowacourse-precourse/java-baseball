@@ -6,6 +6,9 @@ public class Application {
         String numberComputer = Input.computer();
         System.out.println(numberComputer);
 
+        String numberPlayer = Input.player();
+        System.out.println(numberPlayer);
+
 
         }
     }
