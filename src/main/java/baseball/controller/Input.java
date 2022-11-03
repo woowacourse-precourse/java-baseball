@@ -11,7 +11,7 @@ public class Input {
 		while (true) {
 			try {
 				InputView.printInputNumber();
-				String inputGameNumber = getInputGameNumber();
+				String inputGameNumber = getInput();
 				Exception.validOnlyOneToNine(inputGameNumber);
 				Exception.validNumberLength(inputGameNumber);
 				Exception.validOverlapNumber(inputGameNumber);
@@ -22,7 +22,7 @@ public class Input {
 		}
 	}
 
-	private static String getInputGameNumber() {
+	private static String getInput() {
 		return Console.readLine();
 	}
 
@@ -31,5 +31,17 @@ public class Input {
 		return Arrays.stream(gameNumberArray)
 			.map(gameNumber -> Integer.parseInt(gameNumber))
 			.collect(Collectors.toList());
+	}
+
+	public static int getRestartNumber(int restartNumber, int exitNumber) {
+		while (true) {
+			try {
+				String inputRestartNumber = getInput();
+				Exception.validRestartOrExitNumber(inputRestartNumber, restartNumber, exitNumber);
+				return Integer.parseInt(inputRestartNumber);
+			} catch (IllegalArgumentException error) {
+				System.out.println(error);
+			}
+		}
 	}
 }
