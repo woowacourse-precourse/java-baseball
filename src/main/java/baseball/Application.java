@@ -26,8 +26,7 @@ public class Application {
                 throw new IllegalArgumentException(e);
             }
 
-            System.out.println(userNumber);
-
+            // 맞춘다면 반복문 빠져나오기
             if (computerNumber.equals(userNumber)) break;
         }
     }
@@ -54,8 +53,13 @@ public class Application {
     public static void validate(String userNumber){
         for(char number : userNumber.toCharArray()){
             // 중복된 숫자가 있으면 예외
-            if( userNumber.chars().filter(c->c == number).count() > 1 ){
+            if( userNumber.chars().filter(c -> c == number).count() > 1 ){
                 throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다!");
+            }
+
+            // 숫자가 아니면 예외
+            if(Character.isDigit(number)==false){
+                throw new IllegalArgumentException("숫자 이외의 값을 입력하셨습니다!");
             }
         }
     }
