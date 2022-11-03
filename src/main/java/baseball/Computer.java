@@ -52,10 +52,10 @@ public class Computer {
 
 
         if (ballCount != 0) {
-            sb.append(ballCount).append(Message.BALL);
+            sb.append(ballCount).append(Message.BALL).append(" ");
         }
         if (strikeCount != 0) {
-            sb.append(strikeCount).append(Message.STRIKE).append(" ");
+            sb.append(strikeCount).append(Message.STRIKE);
         }
         if (sb.length() == 0) {
             sb.append(Message.NOTHING);
