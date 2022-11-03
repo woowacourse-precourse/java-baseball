@@ -25,4 +25,41 @@ public class Application {
         String number = str.replaceAll("[^0-9]","");
         return number.length() == 3;
     }
+
+    public static String countBallStrike(List<Integer> computer, List<Integer> user){
+        int ballCount = 0, strikeCount = 0;
+
+        for(int i=0;i<computer.size();i++){
+            int computerNumber = computer.get(i);
+            int userNumber = user.get(i);
+
+            if(computerNumber == userNumber){
+                strikeCount++;
+            }
+            else if(computer.contains(userNumber)){
+                ballCount++;
+            }
+        }
+
+        return toStringBallStrike(ballCount, strikeCount);
+    }
+
+    public static String toStringBallStrike(int ballCount, int strikeCount){
+        if(ballCount + strikeCount == 0){
+            return "낫싱";
+        }
+
+        StringBuffer result = new StringBuffer();
+
+        if(ballCount != 0){
+            result.append(Integer.toString(ballCount)+"볼");
+        }
+        if(strikeCount != 0){
+            if(result.length() != 0){
+                result.append(" ");
+            }
+            result.append(Integer.toString(strikeCount)+"스트라이크");
+        }
+        return result.toString();
+    }
 }
