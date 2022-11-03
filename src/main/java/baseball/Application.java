@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,5 +22,15 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static List<Integer> readUserNumber() {
+        String inputNum = Console.readLine();
+        List<String> splittedNum = List.of(inputNum.split(""));
+        List<Integer> digits = splittedNum.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        return digits;
     }
 }
