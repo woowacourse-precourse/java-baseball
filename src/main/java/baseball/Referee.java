@@ -42,7 +42,7 @@ public class Referee {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void compareStrike(Ball comBall, Ball humanBall) {
+    public void compareBall(Ball comBall, Ball humanBall) {
         for (int i = 0; i < comBall.size(); i++) {
             if (humanBall.contains(comBall.get(i)) && humanBall.indexOf(comBall.get(i)) != i) {
                 ball++;
@@ -50,7 +50,7 @@ public class Referee {
         }
     }
 
-    public void compareBall(Ball comBall, Ball humanBall) {
+    public void compareStrike(Ball comBall, Ball humanBall) {
         for (int i = 0; i < comBall.size(); i++) {
             if (humanBall.contains(comBall.get(i)) && humanBall.indexOf(comBall.get(i)) == i) {
                 strike++;
