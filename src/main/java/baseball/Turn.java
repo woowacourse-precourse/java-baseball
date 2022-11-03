@@ -57,4 +57,14 @@ public class Turn {
             }
         }
     }
+
+    public void countNumberOfBalls(List<Integer> hiddenNumberList){
+        for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
+            int hiddenNumber = hiddenNumberList.get(index);
+            int playerNumber = this.playerNumberList.get(index);
+            if (hiddenNumberList.contains(playerNumber) && hiddenNumber != playerNumber) {
+                this.numberOfBalls++;
+            }
+        }
+    }
 }

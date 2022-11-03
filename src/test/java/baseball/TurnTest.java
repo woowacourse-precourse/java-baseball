@@ -117,4 +117,29 @@ public class TurnTest {
         }
     }
 
+    @Test
+    void countNumberOfBalls_test_ball_count() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "132";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+        try {
+            Field turnField = turn.getClass().getDeclaredField("numberOfBalls");
+            turnField.setAccessible(true);
+
+            int numberOfBalls = (int) turnField.get(turn);
+
+            assertThat(numberOfBalls).isEqualTo(1);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
