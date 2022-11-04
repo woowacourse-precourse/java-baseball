@@ -9,6 +9,9 @@ public class InputNumber {
         Scanner scanner = new Scanner(readLine());
         String number = scanner.next();
         System.out.println("숫자를 입력해주세요 : " + number);
+
+        new ExceptionInspection(number);
+
         return number;
     }
 
