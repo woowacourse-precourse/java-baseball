@@ -4,6 +4,7 @@ import java.lang.System;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -15,6 +16,7 @@ public class Application {
     private static String result = null;
     private static Integer strike = 0;
     private static Integer ball = 0;
+    private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -22,7 +24,7 @@ public class Application {
             // Start game
             start_game();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = Console.readLine();
+            String input = sc.nextLine();
             if (input.equals("1"))
                 continue;
             else if (input.equals("2"))
@@ -33,7 +35,14 @@ public class Application {
     }
 
     private static void start_game() {
-        target = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        target = new ArrayList<>();
+        while (target.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!target.contains(randomNumber)) {
+                target.add(randomNumber);
+            }
+        }
+
         while (true) {
             read();
             check();
@@ -46,7 +55,7 @@ public class Application {
     private static void read() {
         duplicate = new HashSet<>();
         user = new ArrayList<>();
-        String input = Console.readLine();
+        String input = sc.nextLine();
         if (input.length() != 3)
             invalid();
         for (int i = 0; i < 3; ++i) {
