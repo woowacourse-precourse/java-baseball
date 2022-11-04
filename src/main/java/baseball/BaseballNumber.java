@@ -10,7 +10,7 @@ public class BaseballNumber {
         listNumber = splitDigitsIntoList(number);
     }
 
-    private ArrayList<Integer> splitDigitsIntoList(int number) {
+    public ArrayList<Integer> splitDigitsIntoList(int number) {
         ArrayList<Integer> resultList = new ArrayList<>();
         String stringNumber = Integer.toString(number);
         for (int i = 0; i < stringNumber.length(); i++) {
