@@ -7,11 +7,14 @@ import java.util.*;
 
 public class Application {
   public static void main(String[] args) {
-
+    setInput();
   }
 
   private static void setInput() {
     List<Integer> computerNumberGroup = setComputerNumberGroup();
+    List<Integer> myNumberGroup = setMyNumberGroup();
+    System.out.println(computerNumberGroup);
+    System.out.println(myNumberGroup);
   }
 
   private static List<Integer> setComputerNumberGroup() {
@@ -25,12 +28,21 @@ public class Application {
     return computerNumberGroup;
   }
 
-  private static String setMyNumberGroupByString() {
-    String inputNumberString = Console.readLine();
-    return inputNumberString;
+  private static List<Integer> setMyNumberGroup(){
+    List<Integer> myNumberGroup = Arrays.asList();
+    String myNumberGroupByString = inputMyNumberGroupByString();
+    if(isValidMyInput(myNumberGroupByString)){
+      myNumberGroup = changeStringToList(myNumberGroupByString);
+    }
+    return myNumberGroup;
   }
 
-  private static void isValidMyInput(String inputNumberString) {
+  private static String inputMyNumberGroupByString() {
+    String myNumberGroupByString = Console.readLine();
+    return myNumberGroupByString;
+  }
+
+  private static boolean isValidMyInput(String inputNumberString) {
     if (!isValidLength(inputNumberString)) {
       throw new IllegalArgumentException("세자리가 아님");
     }
@@ -40,6 +52,7 @@ public class Application {
     if (!isAnotherNumber(inputNumberString)) {
       throw new IllegalArgumentException("중복된 수 입력");
     }
+    return true;
   }
 
   private static boolean isValidLength(String inputNumberString) {
