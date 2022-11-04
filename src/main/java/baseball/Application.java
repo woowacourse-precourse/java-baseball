@@ -13,10 +13,15 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         while (true) {
-            List<Integer> computerNumber = computerRandomNumberExtract();
-            playGame(computerNumber);
+
+
+           // List<Integer> computerNumber = computerRandomNumberExtract();
+            List<Integer> computerNumber = new ArrayList<>();
+            Domain domain = new Domain();
+            computerNumber=domain.getComputerNumber();
+
+            playGame(computerNumber, domain);
 
             int userDecision = getUserDecision();
             if (isGameOver(userDecision, RESTART, GAME_OVER)) {
@@ -37,11 +42,12 @@ public class Application {
         return computer;
     }
 
-    public static void playGame(List<Integer> computerNumber) {
+    public static void playGame(List<Integer> computerNumber, Domain domain) {
         while (true) {
             System.out.print("숫자를 입력하세요 : ");
-            String inputUserNumber = getInputUserNumber();
-            List<Integer> userNumberList = inputProcess(inputUserNumber);
+           // String inputUserNumber = getInputUserNumber();
+
+            List<Integer> userNumberList =domain.getUserNumber();
             int strike = 0;
             int ball = 0;
             List<Integer> strikeBall = findStrikeBall(computerNumber, userNumberList);
@@ -122,50 +128,6 @@ public class Application {
         }
     }
 
-    public static String getInputUserNumber() { // test 입력시오류경우_확인
-        String inputUserNumber = Console.readLine();
 
-        isInputAlright(inputUserNumber);
-        return inputUserNumber;
-    }
-
-    public static void isInputAlright(String userNumber) { // test 입력시오류경우_확인
-        //입력시 길이가 숫자길이가 3이 아닌경우
-        if (userNumber.length() != 3) {
-            throw new IllegalArgumentException("입력 오류");
-        }
-        //중복된 숫자가 있는지?
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j) {
-                    continue;
-                }
-                char nowIndexUserNumber = userNumber.charAt(i);
-                char otherIndexUserNumber = userNumber.charAt(j);
-                inputOverlapCheck(nowIndexUserNumber, otherIndexUserNumber);
-            }
-        }
-    }
-
-    public static List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
-        return convertStringToIntegerList(userNumber);
-    }
-
-
-    public static List<Integer> convertStringToIntegerList(String userNumber) { // test 입력시오류경우_확인
-        List<Integer> userNumberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int putNumber = Character.getNumericValue(userNumber.charAt(i));
-            userNumberList.add(putNumber);
-        }
-        return userNumberList;
-    }
-
-    public static void inputOverlapCheck(char nowIndexUserNumber,
-        char otherIndexUserNumber) {  // test 입력시오류경우_확인
-        if (nowIndexUserNumber == otherIndexUserNumber) {
-            throw new IllegalArgumentException("입력 숫자중 중복");
-        }
-    }
 
 }
