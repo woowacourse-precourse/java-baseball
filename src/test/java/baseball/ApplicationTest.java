@@ -9,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -92,6 +93,26 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1 또는 2를 입력해야 합니다.");
         }
+    }
+
+    @Test
+    void checkStrike1(){
+        assertThat(Application.checkStrikeCount(123, 143)).isEqualTo(2);
+    }
+
+    @Test
+    void checkStrike2(){
+        assertThat(Application.checkStrikeCount(123, 456)).isEqualTo(0);
+    }
+
+    @Test
+    void checkStrike3(){
+        assertThat(Application.checkStrikeCount(123, 173)).isEqualTo(2);
+    }
+
+    @Test
+    void checkStrike4(){
+        assertThat(Application.checkStrikeCount(123, 321)).isEqualTo(1);
     }
 
 
