@@ -2,10 +2,7 @@ package function;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static baseball.Application.*;
@@ -53,4 +50,39 @@ public class FunctionTest {
         assertThat(distinct.size()).isEqualTo(3);
 
     }
+
+    @Test
+    public void 심판_카운트_동작_확인() throws Exception {
+        //case1 1스트라이크 1볼
+        //given
+        List<Integer> input1 = List.of(2,5,3);
+        List<Integer> answer1 = List.of(2,3,8);
+        //when
+        Map<String, Integer> result1 = createRefereeCount(input1,answer1);
+        //then
+        assertThat(result1.get("strike")).isEqualTo(1);
+        assertThat(result1.get("ball")).isEqualTo(1);
+
+        //case2 낫싱
+        //given
+        List<Integer> input2 = List.of(8,5,2);
+        List<Integer> answer2 = List.of(3,4,9);
+        //when
+        Map<String, Integer> result2 = createRefereeCount(input2,answer2);
+
+        //then
+        assertThat(result2.get("ball")).isEqualTo(0);
+        assertThat(result2.get("strike")).isEqualTo(0);
+
+        //case3 3볼
+        //given
+        List<Integer> input3 = List.of(8,5,2);
+        List<Integer> answer3 = List.of(5,2,8);
+        //when
+        Map<String, Integer> result3 = createRefereeCount(input3,answer3);
+
+        //then
+        assertThat(result3.get("ball")).isEqualTo(3);
+    }
+
 }
