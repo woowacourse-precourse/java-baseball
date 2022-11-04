@@ -10,7 +10,7 @@ public class Computer {
         Set <Integer> randomBallSet = new HashSet <>();
         StringBuilder sb = new StringBuilder();
 
-        while(randomBallSet.size() < 3){
+        while (randomBallSet.size() < 3) {
             randomBallSet.add(Randoms.pickNumberInRange(1, 9));
         }
 
