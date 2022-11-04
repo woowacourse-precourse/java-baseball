@@ -13,15 +13,45 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class ApplicationTest extends NsTest {
+    @DisplayName("올바르게 숫자가 생성되었는지 테스트")
     @Test
-    void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
-        );
+    void 올바른_숫자_생성_테스트() {
+        //given
+        Computer computer = new Computer();
+
+        //when
+        computer.generateNumber();
+        String number = computer.getNumber();
+
+        //then
+        assertThat(Validator.isValid(number)).isEqualTo(true);
+    }
+
+    @DisplayName("올바른 게임 결과가 나오는지 테스트")
+    @Nested
+    class CheckGameResult {
+        @Test
+        void 게임종료_후_재시작() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "1", "597", "589", "2");
+                        assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        }
+
+        @Test
+        void 게임종료_후_완전_종료() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("123", "465", "564", "423", "456", "2");
+                        assertThat(output()).contains("낫싱", "2볼 1스트라이크", "3볼", "1스트라이크", "게임 종료");
+                    },
+                    4, 5, 6
+
+            );
+        }
     }
 
     @DisplayName("올바른 게임 결과가 나오는지 테스트")
@@ -65,5 +95,10 @@ class ApplicationTest extends NsTest {
                     4, 5, 6
             )).isInstanceOf(IllegalArgumentException.class);
         }
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
