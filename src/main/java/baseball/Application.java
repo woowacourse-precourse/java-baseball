@@ -30,7 +30,7 @@ public class Application {
             countStrike = countStrike(notStrikeZone);
 
             if (countStrike == 3)
-                printEndingMessage(countStrike);
+                printEndingMessage();
             else
                 countBall = countBall(computerAnswerList, userAnswerList, notStrikeZone);
 
@@ -112,10 +112,9 @@ public class Application {
     public static int countStrike(List<Integer> notStrikeList){
         return 3 - notStrikeList.size();
     }
-    public static void printEndingMessage(int countStrike){
-        if (countStrike==3)
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public static void printEndingMessage(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
     public static int countBall(List<Integer> computerAnswer,
                                  List<Integer> userAnswer,

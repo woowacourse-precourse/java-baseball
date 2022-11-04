@@ -67,8 +67,7 @@ class ApplicationMethodTest {
 
     @Test
     void printEndingMessage() {
-        int countStrike = 3;
-        Application.printEndingMessage(countStrike);
+        Application.printEndingMessage();
     }
 
     @Test
