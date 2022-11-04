@@ -24,7 +24,13 @@ public class GameStartController {
     }
 
     private static void showHint(String hint) {
-        System.out.println(hint);
+        if(hint.equals("3스트라이크")){
+            System.out.println(hint);
+            System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+            controlGame();
+        }else{
+
+        }
     }
 
     private static void saveNumber() {
