@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball;
 
 public class BallCount {
     private int ball = 0;
