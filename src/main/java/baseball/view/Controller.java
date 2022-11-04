@@ -6,16 +6,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
-import static baseball.view.Display.*;
+import static baseball.view.Display.printReGameMessage;
 
 public class Controller {
 
+    private Display display = new Display();
+
     public void printGameStartMessage() {
-        printInitMessage();
+        display.printInitMessage();
     }
 
     public String printAndInputNumber() {
-        printInputNumberMessage();
+        display.printInputNumberMessage();
         String input = Console.readLine();
         InputConfigure.verifyInput(input);
         return input;
@@ -30,16 +32,17 @@ public class Controller {
             flag = true;
         }
         if (ball == 0 && strike == 0) {
-            printNothingMessage();
+            display.printNothingMessage();
+            display.printNewLine();
             return false;
         }
         if (ball > 0) {
-            printBallMessage(ball);
+            display.printBallMessage(ball);
         }
         if (strike > 0) {
-            printStrikeMessage(strike);
+            display.printStrikeMessage(strike);
         }
-        System.out.println("");
+        display.printNewLine();
         return flag;
     }
 
