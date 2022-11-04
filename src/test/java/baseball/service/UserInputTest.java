@@ -103,6 +103,52 @@ class UserInputTest extends NsTest {
         assertEquals("중복된 숫자가 포함되어 있습니다.", exception.getMessage());
     }
 
+    @Test
+    @DisplayName("사용자가 게임 재시작 or 종료 입력이 return되는지 테스트")
+    void inputOneOrTwo() {
+        // given
+        run("1");
+
+        // when
+        String input = userInput.restartOrStop();
+
+        // expected
+        assertEquals("1", input);
+    }
+
+    @Test
+    @DisplayName("사용자가 1 or 2 가 아닌 것을 입력할때 exception과 메시지 테스트")
+    void inputNotOneOrTwo() {
+        // given
+        run("3");
+
+        // expected
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.restartOrStop());
+        assertEquals("1 또는 2를 입력해야 합니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("사용자가 null 입력 안 할 시 exception과 메시지 테스트")
+    void inputNull2() {
+        // given
+        run("");
+
+        // expected
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.restartOrStop());
+        assertEquals("아무것도 입력하지 않았습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("사용자가 blank 입력 안 할 시 exception과 메시지 테스트")
+    void inputBlank2() {
+        // given
+        run(" ");
+
+        // expected
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.restartOrStop());
+        assertEquals("아무것도 입력하지 않았습니다.", exception.getMessage());
+    }
+
     @Override
     protected void runMain() {
 
