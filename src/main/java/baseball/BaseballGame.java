@@ -1,21 +1,20 @@
 package baseball;
 
+import static baseball.Computer.NUMBER_COUNT_TO_CREATED;
+
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
 
-    public final static int NUMBER_COUNT_TO_CREATED = 3;
-
-    private List<Integer> computerNumbers = new ArrayList<>();
+    private Computer computer;
     private int strikeCount;
     private int ballCount;
 
     public void start() {
-        createComputerNumbers();
+        computer = new Computer();
+        computer.createRandomNumbers();
         do {
             String input = inputAnswer();
             calculateBallCount(input);
@@ -23,7 +22,6 @@ public class BaseballGame {
         } while ((strikeCount != 3));
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        computerNumbers.clear();
     }
 
     private String inputAnswer() {
@@ -53,6 +51,7 @@ public class BaseballGame {
     }
 
     private void calculateBallCount(String input) {
+        List<Integer> computerNumbers = computer.getRandomNumbers();
         strikeCount = (int)IntStream.range(0, 3)
                 .filter(idx -> computerNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
                 .count();
@@ -78,15 +77,6 @@ public class BaseballGame {
 
         if (input.length() != input.chars().distinct().count()) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void createComputerNumbers() {
-        while (computerNumbers.size() < NUMBER_COUNT_TO_CREATED) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
         }
     }
 }
