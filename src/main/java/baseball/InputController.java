@@ -4,6 +4,7 @@ import static baseball.NumberController.isStringNumberInRange;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class InputController {
@@ -40,6 +41,11 @@ public class InputController {
         String input = Console.readLine();
         InputController.validateThreeNum(input);
         return NumberController.convertStringToNumbers(input);
+    }
+
+    public static int getExitFlag() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
     }
 
 }
