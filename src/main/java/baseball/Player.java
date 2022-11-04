@@ -1,16 +1,31 @@
 package baseball;
 
-public class Player {
-    private String playerAnswer;
+import camp.nextstep.edu.missionutils.Console;
 
-    public String inputPlayerAnswer() {
-        // 유효성 쪼개기
-        return "";
+import java.util.ArrayList;
+import java.util.List;
+
+public class Player {
+    private List<Integer> playerAnswer;
+
+    public List<Integer> inputAnswer() {
+        String inputAnswer = Console.readLine();
+
+        validate(inputAnswer);
+        toList(inputAnswer);
+
+        return this.playerAnswer;
     }
 
-    public String askHint(String playerAnswer) {
-        // public?
-        // playerAnswer 없는 상황?
-        return "";
+    public void validate(String inputAnswer) {
+
+    }
+
+    public void toList(String inputAnswer) {
+        List<Integer> playerAnswer = new ArrayList<>();
+        for (String digit : inputAnswer.split("")) {
+            playerAnswer.add(Integer.parseInt(digit));
+        }
+        this.playerAnswer = playerAnswer;
     }
 }
