@@ -57,16 +57,11 @@ public class GameSystem {
             GameMessagePrinter.printInput();
             String inputNumber = readLine();
 
-            try {
-                player.setNumber(inputNumber);
-            } catch (IllegalArgumentException Exception) {
-                throw Exception;
-            }
+            player.setNumber(inputNumber);
 
             this.scoreBoard.initScore();
             this.calculateScore();
             GameMessagePrinter.printScore(this.scoreBoard);
         } while (!this.checkWinGame());
-
     }
 }
