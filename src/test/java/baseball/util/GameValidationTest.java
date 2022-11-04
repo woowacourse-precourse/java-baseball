@@ -7,159 +7,159 @@ import org.junit.jupiter.api.Test;
 
 class GameValidationTest {
 
-    @DisplayName("지정된 게임 숫자 길이면 true 반환한다.")
+    @DisplayName("지정된 게임 숫자 길이면 false 반환한다.")
     @Test
-    void validateCorrectLength() {
+    void isValidLength() {
         //given
         String number = "123";
 
         //when
-        boolean result = GameValidation.validateLength(number);
+        boolean result = GameValidation.isInvalidLength(number);
 
         //then
-        assertThat(result).isTrue();
+        assertThat(result).isFalse();
     }
 
-    @DisplayName("지정된 게임 숫자 길이보다 작은 경우 false 반환한다.")
+    @DisplayName("지정된 게임 숫자 길이보다 작은 경우 true 반환한다.")
     @Test
-    void validateShortLength() {
+    void isShortLength() {
         //given
         String number = "1";
 
         //when
-        boolean result = GameValidation.validateLength(number);
+        boolean result = GameValidation.isInvalidLength(number);
 
         //then
-        assertThat(result).isFalse();
+        assertThat(result).isTrue();
     }
 
-    @DisplayName("지정된 게임 숫자 길이보다 큰 경우 false 반환한다.")
+    @DisplayName("지정된 게임 숫자 길이보다 큰 경우 true 반환한다.")
     @Test
-    void validateLongLength() {
+    void isLongLength() {
         //given
         String number = "1234";
 
         //when
-        boolean result = GameValidation.validateLength(number);
-
-        //then
-        assertThat(result).isFalse();
-    }
-
-    @DisplayName("플레이어의 게임 숫자의 각 자리가 모두 숫자면 true 반환한다.")
-    @Test
-    void validateCorrectDigit() {
-        //given
-        String number = "123";
-
-        //when
-        boolean result = GameValidation.validateDigit(number);
+        boolean result = GameValidation.isInvalidLength(number);
 
         //then
         assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 게임 숫자에 영어가 포함되어 있으면 false 반환한다.")
+    @DisplayName("플레이어의 게임 숫자의 각 자리가 모두 숫자면 false 반환한다.")
     @Test
-    void validateDigitWithAlphabet() {
+    void containsAllDigit() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.containsNotDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 영어가 포함되어 있으면 true 반환한다.")
+    @Test
+    void containsDigitWithAlphabet() {
         //given
         String number = "1a3";
 
         //when
-        boolean result = GameValidation.validateDigit(number);
+        boolean result = GameValidation.containsNotDigit(number);
 
         //then
-        assertThat(result).isFalse();
+        assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 게임 숫자에 기호가 포함되어 있으면 false 반환한다.")
+    @DisplayName("플레이어의 게임 숫자에 기호가 포함되어 있으면 true 반환한다.")
     @Test
-    void validateDigitWithSymbol() {
+    void containsDigitWithSymbol() {
         //given
         String number = "1@3";
 
         //when
-        boolean result = GameValidation.validateDigit(number);
+        boolean result = GameValidation.containsNotDigit(number);
 
         //then
-        assertThat(result).isFalse();
+        assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 게임 숫자에 한글이 포함되어 있으면 false 반환한다.")
+    @DisplayName("플레이어의 게임 숫자에 한글이 포함되어 있으면 true 반환한다.")
     @Test
-    void validateDigitWithKorean() {
+    void containsDigitWithKorean() {
         //given
         String number = "1가3";
 
         //when
-        boolean result = GameValidation.validateDigit(number);
+        boolean result = GameValidation.containsNotDigit(number);
 
         //then
-        assertThat(result).isFalse();
+        assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 게임 숫자에 공백이 포함되어 있으면 false 반환한다.")
+    @DisplayName("플레이어의 게임 숫자에 공백이 포함되어 있으면 true 반환한다.")
     @Test
-    void validateDigitWithBlank() {
+    void containsDigitWithBlank() {
         //given
         String number = "1 3";
 
         //when
-        boolean result = GameValidation.validateDigit(number);
-
-        //then
-        assertThat(result).isFalse();
-    }
-
-    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 포함되면 true 반환한다.")
-    @Test
-    void validateCorrectRange() {
-        //given
-        String number = "123";
-
-        //when
-        boolean result = GameValidation.validateRange(number);
+        boolean result = GameValidation.containsNotDigit(number);
 
         //then
         assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 벗어나면 false 반환한다.")
+    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 포함되면 false 반환한다.")
     @Test
-    void validateOutOfRange() {
+    void containsValidRangeDigit() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.containsInvalidRangeDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 벗어나면 true 반환한다.")
+    @Test
+    void containsInValidRangeDigit() {
         //given
         String number = "103";
 
         //when
-        boolean result = GameValidation.validateRange(number);
-
-        //then
-        assertThat(result).isFalse();
-    }
-
-    @DisplayName("플레이어의 게임 숫자에 중복이 존재하지 않으면 true 반환한다.")
-    @Test
-    void validateDuplicationNotExist() {
-        //given
-        String number = "123";
-
-        //when
-        boolean result = GameValidation.validateRange(number);
+        boolean result = GameValidation.containsInvalidRangeDigit(number);
 
         //then
         assertThat(result).isTrue();
     }
 
-    @DisplayName("플레이어의 게임 숫자에 중복이 존재하면 false 반환한다.")
+    @DisplayName("플레이어의 게임 숫자에 중복이 존재하지 않으면 false 반환한다.")
     @Test
-    void validateDuplicationExist() {
+    void containsNotDuplication() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.containsInvalidRangeDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 중복이 존재하면 true 반환한다.")
+    @Test
+    void containsDuplication() {
         //given
         String number = "112";
 
         //when
-        boolean result = GameValidation.validateDuplication(number);
+        boolean result = GameValidation.containsDuplication(number);
 
         //then
-        assertThat(result).isFalse();
+        assertThat(result).isTrue();
     }
 }
