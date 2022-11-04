@@ -13,7 +13,7 @@ public class Application {
             baseballGame();
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int num = Integer.parseInt(Console.readLine());
-            if (num == 2) {
+            if (isSame(2, num)) {
                 break;
             }
         }
@@ -21,8 +21,6 @@ public class Application {
 
     private static void baseballGame() {
         List<Integer> computer = getComputerNumber();
-        List<Integer> user = new ArrayList<>();
-        int[] result = new int[2];
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         for (int i = 0; i < 3; i++) {
@@ -31,38 +29,58 @@ public class Application {
         System.out.println();
 
         while (true) {
-            user = getUserNumber();
+            List<Integer> user = getUserNumber();
             // 값을 제공하면 해당 값의 첫번 째 인덱스를 반환
             // indexof 해서 i 랑 같으면 스트라이크고, -1이면 x i 랑 다르면 볼
 
-            for (int i = 0; i < computer.size(); i++) {
-                int idxOf = computer.indexOf(user.get(i));
-                System.out.println("idxOf = : " + idxOf);
-                if (idxOf == i) {
-                    // strike
-                    result[0]++;
-                    continue;
-                }
-                if (idxOf > 0) {
-                    // ball
-                    result[1]++;
-                    continue;
-                }
-            }
+            int[] result = getResult(computer, user);
 
-            if (result[0] == 0) {
+            if (isSame(0, result[0])) {
                 System.out.println(result[1] + "볼 ");
-            } else if (result[1] == 0) {
+            } else if (isSame(0, result[1])) {
                 System.out.println(result[0] + "스트라이크");
+            } else if (isSame(3, result[1])) {
+                System.out.println("낫싱");
             } else {
                 System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
             }
 
-            if (result[0] == 3) {
+            if (isSame(3, result[0])) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
+    }
+
+    // strike 와 ball 의 결과를 리턴받는 메소드
+    private static int[] getResult(List<Integer> computer, List<Integer> user) {
+        int[] result = new int[2];
+        for (int idx = 0; idx < computer.size(); idx++) {
+            addStrikeAndBall(result, idx, computer.indexOf(user.get(idx)));
+        }
+        return result;
+    }
+
+    // strike 와 ball 의 값을 증가시켜주는 메소드
+    private static void addStrikeAndBall(int[] result, int idx, int idxOf) {
+        if (isSame(idx, idxOf)) {
+            result[0]++; // strike
+            return;
+        }
+        if (isPositive(idxOf)) {
+            result[1]++; // ball
+            return;
+        }
+    }
+
+    // 양수인지 아닌지 확인하는 메소드
+    private static boolean isPositive(int idxOf) {
+        return idxOf > 0;
+    }
+
+    // 파라미터 두개를 비교하는 메소드
+    private static boolean isSame(int i, int idxOf) {
+        return idxOf == i;
     }
 
     // 사용자 숫자 입력받는 메소드
@@ -71,6 +89,13 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         addInputNumber(user, getSplit());
         return user;
+    }
+
+    // 사용자의 숫자를 추가하는 메소드
+    private static void addInputNumber(List<Integer> user, String[] userNumber) {
+        for (Integer num : toInts(userNumber)) {
+            user.add(num);
+        }
     }
 
     // 입력받은 숫자를 분리하여 배열에 저장하는 메소드
@@ -85,14 +110,6 @@ public class Application {
             numbers[i] = Integer.parseInt(userNumber[i]);
         }
         return numbers;
-    }
-
-    // 사용자의 숫자를 추가하는 메소드
-    private static void addInputNumber(List<Integer> user, String[] userNumber) {
-        int[] numbers = toInts(userNumber);
-        for (Integer num : numbers) {
-            user.add(num);
-        }
     }
 
     // 컴퓨터 숫자 부여받는 메소드
