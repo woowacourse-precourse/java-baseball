@@ -118,4 +118,19 @@ public class PlayerTest {
         restart = "382";
         assertThat(player.isOneLetter(restart)).isEqualTo(result);
     }
+
+    @Test
+    void isOneOrTwoTest() {
+        Player player = new Player();
+        boolean result = true;
+        String restart = "1";
+        assertThat(player.isOneOrTwo(restart)).isEqualTo(result);
+        restart = "2";
+        assertThat(player.isOneOrTwo(restart)).isEqualTo(result);
+        result = false;
+        restart = "3";
+        assertThat(player.isOneOrTwo(restart)).isEqualTo(result);
+        restart = "r";
+        assertThat(player.isOneOrTwo(restart)).isEqualTo(result);
+    }
 }
