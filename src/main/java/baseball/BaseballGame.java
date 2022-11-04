@@ -17,17 +17,15 @@ public class BaseballGame {
 
     public void start() {
         createComputerNumbers();
-        while (true) {
+        do {
             String input = inputAnswer();
             isWrongInputValue(input);
             calculateBallCount(input);
-            String msg = answerMessage();
-            if (msg.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                computerNumbers.clear();
-                break;
-            }
-        }
+            answerMessage();
+        } while ((strikeCount != 3));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        computerNumbers.clear();
     }
 
     private String inputAnswer() {
