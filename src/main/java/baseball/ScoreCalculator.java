@@ -32,27 +32,36 @@ public class ScoreCalculator {
     public Score calculateScore(int expect, int actual) {
         int strike = calculateStrike(expect, actual);
         int ball = calculateBall(expect, actual);
+        return findScoreElseError(strike, ball);
+    }
+
+    private Score findScoreElseError(int strike, int ball) {
         return scoreList.stream()
                 .filter((x) -> x.isSame(strike, ball))
                 .findFirst()
-                .get();
+                .orElseThrow(()->new UnsupportedOperationException("지원되지 않은 score 계산방식입니다."));
     }
 
     private int calculateBall(int expect, int actual) {
-        int ball = 0;
-        ball -= calculateStrike(expect, actual);
+        int ball = -calculateStrike(expect, actual);
+        ball += calculateIfPartValueSame(expect, actual);
+        if (ball < 0) return 0;
+        return ball;
+    }
+
+    private static int calculateIfPartValueSame(int expect, int actual) {
+        int count=0;
         Set<Integer> expectSet = new HashSet<>();
         while (expect != 0) {
             expectSet.add(expect % 10);
             expect /= 10;
         }
         while (actual != 0) {
-            if (expectSet.contains(actual % 10)) ball++;
+            if (expectSet.contains(actual % 10)) count++;
             actual /= 10;
             expect /= 10;
         }
-        if (ball < 0) return 0;
-        return ball;
+        return count;
     }
 
     private int calculateStrike(int expect, int actual) {
