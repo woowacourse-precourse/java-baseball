@@ -15,17 +15,24 @@ public class Scoreboard {
     }
 
     public void addBallPoint() {
-        int ballPoint = this.getBallPoint();
-        int newPoint = ballPoint + 1;
+        this.addBallPoint(1);
+    }
 
-        this.setBallPoint(newPoint);
+    private void addBallPoint(int point) {
+        this.setBallPoint(this.getBallPoint() + point);
     }
 
     public void addStrikePoint() {
-        int strikePoint = this.getStrikePoint();
-        int newPoint = strikePoint + 1;
+        this.addStrikePoint(1);
+    }
 
-        this.setStrikePoint(newPoint);
+    private void addStrikePoint(int point) {
+        this.setStrikePoint(this.getStrikePoint() + point);
+    }
+
+    public void addAllPoint(Scoreboard scoreboard) {
+        this.addStrikePoint(scoreboard.getStrikePoint());
+        this.addBallPoint(scoreboard.getBallPoint());
     }
 
     public int getBallPoint() {
@@ -35,6 +42,7 @@ public class Scoreboard {
     public int getStrikePoint() {
         return scoreBoard.get(1);
     }
+
 
     public List<Integer> toList() {
         return scoreBoard;
@@ -47,6 +55,5 @@ public class Scoreboard {
     private void setStrikePoint(int point) {
         scoreBoard.set(1, point);
     }
-
 
 }
