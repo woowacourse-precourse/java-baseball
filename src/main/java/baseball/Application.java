@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import static baseball.Application.StringConst.*;
 
 public class Application {
+    private static NumberGenerator numberGenerator = new NumberGeneratorRandomImpl();
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Boolean userWantToPlayGame = true;
@@ -19,8 +21,12 @@ public class Application {
         }
     }
 
+    public static void setNumberGenerator(NumberGenerator numberGenerator){
+        Application.numberGenerator = numberGenerator;
+    }
+
     public static void playGame() {
-        Integer computerNumber = RandomNumberGenerator.generate();
+        Integer computerNumber = numberGenerator.generate();
         Map<String, Integer> score;
 
         do {

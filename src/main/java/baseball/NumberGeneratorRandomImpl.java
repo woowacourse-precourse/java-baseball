@@ -2,14 +2,17 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RandomNumberGenerator {
-    public static Integer generate() {
+public class NumberGeneratorRandomImpl implements NumberGenerator{
+
+    @Override
+    public Integer generate() {
         return Randoms.pickNumberInList(getCandidateRandomNumbers());
     }
 
-    private static List<Integer> getCandidateRandomNumbers() {
+    private List<Integer> getCandidateRandomNumbers() {
         List<Integer> ret = new ArrayList<>();
         for (int number = 100; number <= 999; ++number)
             if (NumberValidator.valid(number))
