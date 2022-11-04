@@ -26,7 +26,11 @@ public class Application {
                 }
 
                 // 맞춘다면 반복문 빠져나오기
-                if (isComputerNumber(computerNumber,toList(userNumber))) break;
+                if (isComputerNumber(computerNumber,toList(userNumber))) {
+                    System.out.print("3개의 숫자를 모두 맞히셨습니다!");
+                    break;
+                }
+                }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String gameCoin = Console.readLine();
