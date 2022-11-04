@@ -31,4 +31,15 @@ public class NumberComparator {
         }
         return strikeCount;
     }
+
+    private int getBallCount(User user, Computer computer) {
+        int ballCount = 0;
+
+        for (int index = 0; index < numberSize; index++) {
+            if (isBall(user, computer, index)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 }
