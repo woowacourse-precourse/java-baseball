@@ -35,4 +35,16 @@ public class PlayerValidationTest {
         //then
         assertThat(result).isEqualTo(true);
     }
+
+    @Test
+    @DisplayName("종료를 원하는 경우 false 반환")
+    public void test3() throws Exception{
+        //given
+        Player player = new Player();
+        String WANT_EXIT = "2";
+        //when
+        boolean result = player.wantRestart(WANT_EXIT);
+        //then
+        assertThat(result).isEqualTo(false);
+    }
 }
