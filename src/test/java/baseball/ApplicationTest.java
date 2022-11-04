@@ -12,9 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    public void 볼_개수_측정_테스트() {
+        // Given
+        Integer[] realAns = {1, 2, 3};
+        Integer[] case1 = {1, 3, 2};
+        Integer[] case2 = {4, 1, 2};
+
+        // When
+        int ballCase1 = Application.countBall(realAns, case1, 1);
+        int ballCase2 = Application.countBall(realAns, case2, 0);
+
+        // Then
+        assertThat(ballCase1).isEqualTo(2);
+        assertThat(ballCase2).isEqualTo(2);
+
+    }
 
     @Test
-    public void 스트라이크_개수_측정_테스트() throws Exception{
+    public void 스트라이크_개수_측정_테스트() {
         // Given
         Integer[] realAns = {1, 2, 3};
         Integer[] case1 = {1, 2, 4};
@@ -35,7 +51,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void 입력값_변환기_동작_테스트() throws Exception {
+    public void 입력값_변환기_동작_테스트() {
         // Given
         String userInput = "123";
         String userInput1 = "1234";
