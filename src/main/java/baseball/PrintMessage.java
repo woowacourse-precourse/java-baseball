@@ -18,7 +18,7 @@ public class PrintMessage {
             System.out.println("낫싱");
     }
     public static void answerMessage() {
-        System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static void gameContinue(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

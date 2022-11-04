@@ -60,16 +60,16 @@ public class GameSet {
             }
         }
     }
-    public static boolean gameEndCheck(){
+    public static boolean isGameEnd(){
         if(strikeCount == 3){
             PrintMessage.answerMessage();
             PrintMessage.gameContinue();
             String userResponse = Console.readLine();
-            if(ValidCheck.validGameContinuePress(userResponse)){
+            if(ValidCheck.isValidPress(userResponse)){
                 setComputerAnswer();
                 return true;
             }
-            return ValidCheck.validGameContinuePress(userResponse);
+            return ValidCheck.isValidPress(userResponse);
         }
         return true;
     }
