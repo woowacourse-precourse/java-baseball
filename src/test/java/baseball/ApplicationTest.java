@@ -34,6 +34,15 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
+        void convertStringToNumbers() {
+            String input = "123";
+            List<Integer> expected = List.of(1,2,3);
+            List<Integer> real = NumberController.convertStringToNumbers(input);
+            assertThat(real).isEqualTo(expected);
+            }
+
+
+        @Test
         void strikesAndBallsCase1() {
             List<Integer> input = List.of(1, 2, 3);
             List<Integer> computers = List.of(3, 4, 5);
@@ -60,6 +69,7 @@ class ApplicationTest extends NsTest {
             assertThat(real).isEqualTo(expected);
         }
     }
+
 
     @Nested
     class InputControllerTest {
