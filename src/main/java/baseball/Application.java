@@ -23,7 +23,7 @@ public class Application {
         List<Integer> result = creatRandomNumber();
 
         String userInput = Console.readLine();
-        isValidInput(userInput);
+        List<Integer> userInputNumber = isValidInput(userInput);
     }
 
     private static List<Integer> creatRandomNumber() {
@@ -41,27 +41,26 @@ public class Application {
         return computer;
     }
 
-    private static void isValidInput(String userInput) throws IllegalArgumentException {
+    private static List<Integer> isValidInput(String userInput) throws IllegalArgumentException {
 
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
 
+        List<Integer> userInputNumber = new ArrayList<>();
+
         char[] charArray = userInput.toCharArray();
 
-        if (isOverlap(charArray)) {
-            throw new IllegalArgumentException();
-        }
-
         for (char c : charArray) {
-            if (!isValidNumber(c)) {
+
+            if (!isValidNumber(c) || userInputNumber.contains((int)c)) {
                 throw new IllegalArgumentException();
             }
-        }
-    }
 
-    private static boolean isOverlap(char[] charArray) {
-        return charArray[0] == charArray[1] || charArray[1] == charArray[2] || charArray[0] == charArray[2];
+            userInputNumber.add((int)c);
+        }
+
+        return userInputNumber;
     }
 
     private static boolean isValidNumber(char c) {
