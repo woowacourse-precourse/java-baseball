@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
-import java.util.Random;
-
 public class Application {
 
     static void print_result(int ball, int strike) {
@@ -31,13 +28,8 @@ public class Application {
 
     static String get_input() {
         String input_number;
-        try {
-            input_number = Console.readLine();
-            if ((input_number.charAt(0) == '0') || (input_number.length() != 3)) throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            return "";
-        }
+        input_number = Console.readLine();
+        if (!check_legitimacy(input_number)) throw new IllegalArgumentException();
 
         return input_number;
     }
@@ -60,21 +52,23 @@ public class Application {
         return true;
     }
 
-    static boolean check_duplicate(String number) {
+    static boolean check_legitimacy(String number) {
         char[] num_arr = number.toCharArray();
         boolean condition1 = num_arr[0] != num_arr[1];
         boolean condition2 = num_arr[0] != num_arr[2];
         boolean condition3 = num_arr[1] != num_arr[2];
+        boolean condition4 = (num_arr[0] != '0');
+        boolean condition5 = (number.length() == 3);
 
-        return condition1 && condition2 && condition3;
+        return condition1 && condition2 && condition3 && condition4 && condition5;
     }
 
     static String get_computer_number() {
-        String computer_number;
-        do{
-            computer_number = Randoms.pickNumberInRange(100, 1000) + "";
-        } while(!check_duplicate(computer_number));
-
+        String computer_number = "";
+        do {
+            for (int i = 0; i < 3; i++)
+                computer_number += Randoms.pickNumberInRange(0, 9);
+        } while (!check_legitimacy(computer_number));
         return computer_number;
     }
 
