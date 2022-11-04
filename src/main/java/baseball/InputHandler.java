@@ -12,4 +12,10 @@ public class InputHandler {
         System.out.println("입력 수 : "+myNum);
         return myNum;
     }
+    public int getRestartNum() throws IOException {
+        //TODO : try_catch can String to int test
+        int restartNum = Integer.parseInt(br.readLine());
+        System.out.println("입력 수 : "+restartNum);
+        return restartNum;
+    }
 }
