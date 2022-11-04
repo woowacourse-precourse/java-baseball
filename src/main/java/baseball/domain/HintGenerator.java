@@ -23,4 +23,10 @@ public class HintGenerator {
         return numberOfStrikes;
     }
 
+    private int countStrikeOrBall(ArrayList<Integer> playerGuess) {
+        long NumberOfStrikeOrBall = playerGuess.stream()
+                .filter(strikeNumbers::contains)
+                .count();
+        return (int)NumberOfStrikeOrBall;
+    }
 }
