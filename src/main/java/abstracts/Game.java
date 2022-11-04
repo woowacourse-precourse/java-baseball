@@ -16,13 +16,13 @@ public abstract class Game {
         return this.gameName;
     }
 
-    public void setStatus(Status status) {
+    protected void setStatus(Status status) {
         this.status = status;
     }
 
 
-    protected abstract void initialize();
-    protected abstract void terminate();
+    public abstract void initialize();
+    public abstract void terminate();
     public abstract boolean operate(String input);
 
 }
