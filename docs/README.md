@@ -9,19 +9,48 @@
 
 ## 비교 결과 (Comparison Result)
 1. 비교 결과 타입을 리스트로 갖는 모델
+2. 비교 결과 리스트의 타입별 빈도수를 갖는 해시맵 반환
 
 ## 심판 (Referee)
 1. 숫자 비교하여 같으면 스트라이크, 다르면 볼(Comparison Result Type)을 반환
 
-## 비교 결과 변환기 (Comparison Result Formatter)
-1. 비교 결과를 String 상태로 반환
-
 ## 숫자판 (Number Board)
-1. Referee로 다른 숫자판과 비교하여 볼, 스트라이크 개수 계산 기능
-2. 비교한 결과를 Comparison Result Formatter로 변환 후 출력하기
+1. Referee로 유저 숫자들과 상대방 숫자을과 비교하여 볼, 스트라이크 개수 계산 기능
+2. 비교한 결과를 Formatter로 String으로 변환하는 기능
 
 ## 사용자 입력 컨트롤러 (Input Controller)
-1. 3자리 숫자를 입력받아 리스트로 반환
-2. 재시작, 종료 입력받기
+1. N자리 숫자를 입력받아 리스트로 반환
+   1. N자리 숫자인지 검증
+      1. 길이가 N인지 검증
+      2. Integer로 parse 가능한지 검증
+   2. 아니면 IllegalArgumentException 발생시키기
+2. 한자리 숫자 입력받아 반환
+   1. 숫자가 맞는지 검증
+
 
 ## 베이스볼 게임 (Baseball Game)
+1. 게임 시작 기능
+   1. Logger로 시작 메시지 출력하기
+   2. 상대방 숫자 뽑아 저장
+   3. 입력 메시지 출력
+      1. ~ 9의 숫자가 아니면 IllegalArgumentException 발생시키기
+   4. Number board 인스턴스에 생성
+   5. Number board compare 메소드 실행
+      1. compare 반환 값이 true일 경우
+         1. 3개의 숫자를 모두 맞히셨습니다! 출력
+         2. 게임 종료
+      2. compare 반환 값이 false일 경우
+         1. 비교 결과 빈도수 계산하고 출력
+   6. 반복
+
+## 어플리케이샨 (Application)
+1. 어플리케이션 시작 시 Baseball 인스턴스 생성 후 시작
+1. 게임이 끝나면
+   1. 재시작, 종료 선택 여부 메시지 출력
+   2. 재시작, 종료 여부 입력받기
+      1. 1과 2중에 하나인지 검증 아니면 IllegalArgumentException 발생시키기
+      2. 1이면 새로운 Baseball Game 인스턴스 생성 후 시작
+      3. 2면 어플리케이션 종료
+
+## 로거 (Logger)
+1. 출력할 메시지를 받아서 출력
