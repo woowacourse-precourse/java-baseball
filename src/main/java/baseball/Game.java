@@ -35,7 +35,8 @@ public class Game {
             String input = Console.readLine();
             List<Integer> user = makeUserAnswer(input);
 
-            result = playMatch(computer, result, user);
+            result = playMatch(computer, user);
+            System.out.println(result);
         }
 
         System.out.println(RESTART_CONDITION);
@@ -47,7 +48,7 @@ public class Game {
         }
     }
 
-    private static String playMatch(List<Integer> computer, String result, List<Integer> user) {
+    private static String playMatch(List<Integer> computer, List<Integer> user) {
         int strike = ZERO;
         int ball = ZERO;
         for (int i = 0; i < user.size(); i++) {
@@ -55,26 +56,30 @@ public class Game {
             ball = ball(computer, user, ball, i);
         }
 
-        return makeResult(result, strike, ball);
+        return makeResult(strike, ball);
     }
 
-    private static String makeResult(String result, int strike, int ball) {
+    private static String makeResult(int strike, int ball) {
+        String result;
         if (ball == ZERO && strike == ZERO) {
             result = NOTHING;
-            System.out.println(result);
         }else {
-            if (strike == ZERO) {
-                result = ball + BALL;
-                System.out.println(result);
-            } else if (ball == ZERO) {
-                result = strike + STRIKE;
-                if (strike == END_GAME_STRIKE_CONDITION) {
-                    result = END_GAME_CONDITION;
-                }
-                System.out.println(result);
-            } else {
-                System.out.println(ball + BALL + " " + strike + STRIKE);
+            result = ballOrStrike(strike, ball);
+        }
+        return result;
+    }
+
+    private static String ballOrStrike(int strike, int ball) {
+        String result;
+        if (strike == ZERO) {
+            result = ball + BALL;
+        } else if (ball == ZERO) {
+            result = strike + STRIKE;
+            if (strike == END_GAME_STRIKE_CONDITION) {
+                result = END_GAME_CONDITION;
             }
+        } else {
+            result = ball + BALL + " " + strike + STRIKE;
         }
         return result;
     }
