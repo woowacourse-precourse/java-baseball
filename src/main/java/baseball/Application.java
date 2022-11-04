@@ -5,9 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
@@ -51,7 +48,6 @@ public class Application {
     }
 
     public static void printResult(Integer ball, Integer strike, List list){
-
         System.out.println("결과를 출력합니다");
 
         if(strike == 0 && ball == 0) {
@@ -81,17 +77,8 @@ public class Application {
 
     public static void checkAnswer(String str, List answer){
         System.out.println("정답을 확인합니다");
-        //List answer = list;
-        int guess = Integer.parseInt(str);
-        int temp1,temp2;
         int strike = 0;
         int ball = 0;
-
-        temp2 = guess%10;
-        guess = guess/10;
-        temp1 = guess%10;
-        guess = guess/10;
-
 
         if(answer.get(0).toString().charAt(0) == str.charAt(0)) strike += 1;
         else if (answer.get(0).toString().charAt(0) == str.charAt(1) || answer.get(0).toString().charAt(0) == str.charAt(2))
