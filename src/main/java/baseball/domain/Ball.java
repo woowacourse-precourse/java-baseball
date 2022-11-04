@@ -19,23 +19,23 @@ public class Ball {
         this.ballNumber = ballNumber;
     }
     
-    public BallStatus compareOneBall(final Ball ball) {
-        if (isStrike(ball)) {
+    public BallStatus compareOneBall(final Ball userBall) {
+        if (isStrike(userBall)) {
             return BallStatus.STRIKE;
         }
         
-        if (isBall(ball)) {
+        if (isBall(userBall)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
     }
     
-    private boolean isBall(final Ball ball) {
-        return this.ballNumber.equals(ball.ballNumber);
+    private boolean isStrike(final Ball userBall) {
+        return this.equals(userBall);
     }
     
-    private boolean isStrike(final Ball ball) {
-        return this.equals(ball);
+    private boolean isBall(final Ball userBall) {
+        return this.ballNumber.equals(userBall.ballNumber);
     }
     
     public boolean isSameNumber(final Ball targetBall) {
