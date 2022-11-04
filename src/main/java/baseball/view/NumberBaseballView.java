@@ -20,4 +20,8 @@ public class NumberBaseballView {
 	public void resultPage(GameResult gameResult) {
 		System.out.println(gameResult);
 	}
+
+	public void endPage() {
+		System.out.println(Constants.END_GAME_MESSAGE);
+	}
 }

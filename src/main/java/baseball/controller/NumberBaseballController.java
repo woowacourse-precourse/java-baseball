@@ -23,6 +23,8 @@ public class NumberBaseballController {
 			gameResult = numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
 			numberBaseballView.resultPage(gameResult);
 		} while (!gameResult.isEndCondition());
+
+		numberBaseballView.endPage();
 	}
 
 	private NumberBaseball getComputerNumberBaseball() {
