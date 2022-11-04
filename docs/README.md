@@ -21,8 +21,8 @@
   - [x] 입력받는 기능
   - [x] String을 List로 바꾸는 기능
 - Computer 클래스
-  - [ ] random 값을 생성하는 기능
-  - [ ] int 값을 character로 만드는 기능
+  - [x] random 값을 생성하는 기능
+  - [x] int 값을 character로 만드는 기능
 - CompareTwoList 클래스
   - [ ] 두 리스트 비교
 - Output 클래스
