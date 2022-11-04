@@ -12,10 +12,18 @@ import static baseball.validation.InputValidation.*;
 public class UserInput {
     private static final ConsoleLog consoleLog = ConsoleLog.getInstance();
 
-    public UserInput() {
+    private UserInput() {
     }
 
-    public static List<Integer> number(String message) {
+    private static class LazyHolder {
+        private static final UserInput INSTANCE = new UserInput();
+    }
+
+    public static UserInput getInstance() {
+        return LazyHolder.INSTANCE;
+    }
+
+    public List<Integer> number(String message) {
         consoleLog.print(message);
         String inputNum = consoleLog.input();
 
@@ -31,7 +39,7 @@ public class UserInput {
         return inputToList(inputNum);
     }
 
-    private static List<Integer> inputToList(String inputNum) {
+    private List<Integer> inputToList(String inputNum) {
         return Stream.of(inputNum.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed()
