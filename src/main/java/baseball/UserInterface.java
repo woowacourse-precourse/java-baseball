@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class UserInterface {
     public static boolean resultOutput(int strike, int ball) {
         if (strike == 3) {
@@ -20,5 +22,21 @@ public class UserInterface {
             }
         }
         return false;
+    }
+
+    public static boolean exitOrRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            String input = Console.readLine();
+            if (input.equals("1")) {
+                return false;
+            }
+            if (input.equals("2")) {
+                return true;
+            }
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
