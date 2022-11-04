@@ -10,4 +10,12 @@ public class ExceptionBaseball {
         else
             return USER_LENGTH_NOT_3;
     }
+
+    public int checkUserNumAlpha(String userNum) {
+        for (int index = 0; index < userNum.length(); index++) {
+            if (!Character.isDigit(userNum.charAt(index)))
+                return ALPHA_IN_USER;
+        }
+        return 0;
+    }
 }
