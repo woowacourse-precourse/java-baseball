@@ -17,6 +17,9 @@ public class InputView {
         if (isInputNumberLengthNotSame3(inputNumber)) {
             throw new IllegalArgumentException("[ERROR] : 입력하는 수는 3자리여야합니다.");
         }
+        if (isInputNumberContainZero(inputNumber)) {
+            throw new IllegalArgumentException("[ERROR] : 입력하는 수는 0이 포함될 수 없습니다. 1~9까지의 수를 입력해주세요.");
+        }
     }
 
     private static boolean isInputNumberLengthNotSame3(String inputNumber) {
@@ -25,5 +28,9 @@ public class InputView {
 
     private static boolean isInputNumberNotDigit(String inputNumber) {
         return !inputNumber.matches("^[0-9]*$");
+    }
+
+    private static boolean isInputNumberContainZero(String inputNumber) {
+        return inputNumber.contains("0");
     }
 }
