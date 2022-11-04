@@ -21,14 +21,11 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String reStart = sc.nextLine();
+            String string = sc.nextLine();
 
-            if (reStart.equals("1")) {
-            } else if (reStart.equals("2")) {
+            if (!baseballGame.isReStart(string)) {
                 System.out.println("게임 종료");
                 break;
-            } else {
-                throw new IllegalArgumentException();
             }
         }
     }
