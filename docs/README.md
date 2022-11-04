@@ -21,3 +21,24 @@
     - 스트라이크와 볼이 모두 1개 이상인 경우 `N볼 M스트라이크`
     - 스트라이크가 없고 볼만 존재하는 경우 `N볼`
     - 스트라이크와 볼이 모두 0개인 경우 `낫싱`
+
+  
+## 예외 목록
+- 숫자와 관련된 `IllegalArgumentException`
+  - 숫자의 길이가 3이 아닌 경우
+  - 숫자에 0이 포함되어 있는 경우
+  - 3자리 수 내부에 중복된 숫자가 있는 경우
+
+
+## 상수화 목록
+- `GAME_START_MESSAGE`: "숫자 야구를 시작합니다."
+- `GAME_END_MESSAGE`: "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+- `NUMBER_INPUT_REQUEST_MESSAGE`: "숫자를 입력해주세요 :"
+- `RESTART_REQUEST_MESSAGE`: "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+
+
+- `NUMBER_LENGTH`: 3
+- `NUMBER_MIN_VALUE`: 1
+- `NUMBER_MAX_VALUE`: 9
+- `GAME_END_STRIKE_COUNT`: 3
+
