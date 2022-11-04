@@ -18,14 +18,16 @@ public class RandomNumber {
 		return numbersList;
 	}
 
-	static int getRandomNumber() {
-		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-	}
-
 	static void addNumberList(List<Integer> numbersList) {
 		int randomNumber = getRandomNumber();
 		if (!numbersList.contains(randomNumber)) {
 			numbersList.add(randomNumber);
 		}
 	}
+
+	static int getRandomNumber() {
+		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+	}
+
+
 }
