@@ -69,4 +69,16 @@ public class Application {
                 appearedNumList.add(tmpInputStr);
         }
     }
+    // 에러케이스 구분할 것!
+
+    public static List<Boolean> checkWhereIsStrike(List<Integer> computerAnswer, List<Integer> userAnswer){
+        List<Boolean> strikeZone = new ArrayList<>();
+        for (int digit=0; digit<3; digit++){
+            if (computerAnswer.get(digit).equals(userAnswer.get(digit)))
+                strikeZone.add(true);
+            else
+                strikeZone.add(false);
+        }
+        return strikeZone;
+    }
 }
