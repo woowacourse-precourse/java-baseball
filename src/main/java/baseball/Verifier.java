@@ -12,7 +12,7 @@ public class Verifier {
         rules.add(rule);
     }
 
-    public boolean validates(int input) {
+    public boolean validates(String input) {
         return rules.stream()
                 .allMatch(rule -> rule.validates(input));
     }
