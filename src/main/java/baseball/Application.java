@@ -1,8 +1,8 @@
 package baseball;
 
-import java.util.HashSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,6 +20,7 @@ public class Application {
         private int ballCounting;
 
         public void proceedGame (String inputString) {
+            inputNumberList.clear();
             splitNumber(inputNumberList, inputString);
             distinguishStrike();
             distinguishBall();
@@ -80,39 +81,38 @@ public class Application {
             else return false;
         }
 
+        // 3자리 숫자를 입력할 때 예외 발생시키는 메서드
+        public void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
+            checkNumberItem(inputNumber);
+            checkNumberRange(inputNumber);
+            checkDuplicatedNumber(inputNumber);
+        }
+
         // 입력된 3자리 숫자 중에서 중복된 숫자가 있는지 확인하는 메서드
-        public boolean seekDuplicatedNumber (String inputNumber) {
+        public void checkDuplicatedNumber (String inputNumber) throws IllegalArgumentException{
             HashSet<Character> inputNumberInSet = new HashSet<>();
 
             for (int p = 0; p <THE_NUMBER_OF_BALLS; p++) {
                 inputNumberInSet.add(inputNumber.charAt(p));
             }
 
-            return inputNumberInSet.size() < THE_NUMBER_OF_BALLS;
+            if (inputNumberInSet.size() < THE_NUMBER_OF_BALLS) throw new IllegalArgumentException();
         }
 
-        // 3자리 숫자를 입력할 때 예외 발생시키는 메서드
-        public void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
-
-            // 주어진 숫자가 3자리가 아닌 경우 예외 발생
+        // 주어진 숫자가 3자리가 아닌 경우 예외 발생
+        public void checkNumberItem (String inputNumber) throws IllegalArgumentException{
             if (inputNumber.length() != THE_NUMBER_OF_BALLS) {
                 throw new IllegalArgumentException();
             }
+        }
 
-            // 주어진 숫자가 서로 다르지 않은 경우 예외 발생
-            if (seekDuplicatedNumber(inputNumber)) {
-                throw new IllegalArgumentException();
-            }
+        // 입력된 3자리의 숫자가 1~9의 범위 내에 존재하는지 확인
+        public void checkNumberRange (String inputNumber) throws  IllegalArgumentException{
+            IntStream inputNumberStream = inputNumber.chars();
+            inputNumberStream.forEach(number -> {
+                        if (number < 49 || number > 57) throw new IllegalArgumentException();
 
-            // 각 숫자가 1~9가 아닌 경우 예외 발생
-            for (int l = 0; l < inputNumber.length(); l++) {
-                if (inputNumber.charAt(l) < 49 || inputNumber.charAt(l) > 57) {
-                    throw new IllegalArgumentException();
-                }else if (inputNumber.charAt(l) == '0') {
-                    throw new IllegalArgumentException();
-                }
-
-            }
+            });
         }
 
         // 재시작 결정 시에 입력되는 숫자의 예외를 발생시키는 메서드
@@ -161,7 +161,6 @@ public class Application {
             while (model.strikeCounting < THE_NUMBER_OF_BALLS) {
                 model.proceedGame(model.inputBallAndRestartNumber());
                 view.printResult(model.ballCounting, model.strikeCounting);
-                model.inputNumberList.clear();
             }
 
             model.strikeCounting = 0;
