@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
 	static HashMap<String,Integer> possibleBallResult = new HashMap<>();
@@ -44,6 +45,10 @@ public class Application {
 	}
     
     public static void check(String numstr,int strikeCount,int ballCount) {
+    	String pattern = "^[1-9]{3}$";
+		if(Pattern.matches(pattern,numstr)) {  //입력한 문자가 숫자가 아니면 IllegalArgumentException 발생
+			throw new IllegalArgumentException();
+		}
 		possibleBallResult.put("볼",0);
 		possibleBallResult.put("스트라이크",0);
 		
