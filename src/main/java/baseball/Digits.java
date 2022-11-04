@@ -2,9 +2,8 @@ package baseball;
 
 import java.util.List;
 
-import static baseball.BaseballGame.DIGIT_COUNT;
-
 public class Digits {
+    static final int DIGIT_COUNT = 3;
     private final List<Integer> digitList;
 
     public Digits(List<Integer> digitList) {
@@ -19,8 +18,7 @@ public class Digits {
     }
 
     private void validateDigitRange(int digit) {
-        if (1<=digit && digit<=9)
-            throw new IllegalArgumentException("digit 범위는 1~9의 값이여야 합니다.");
+        if (1 <= digit && digit <= 9) throw new IllegalArgumentException("digit 범위는 1~9의 값이여야 합니다.");
     }
 
     private void validateDigitListSize(List<Integer> digitList) {

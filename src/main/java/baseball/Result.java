@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.StringJoiner;
 
+import static baseball.Digits.DIGIT_COUNT;
+
 public class Result {
 
     private final int strikeCount;
@@ -25,7 +27,7 @@ public class Result {
     }
 
     public boolean isComplete() {
-        return strikeCount == BaseballGame.DIGIT_COUNT && ballCount == 0;
+        return strikeCount == DIGIT_COUNT && ballCount == 0;
     }
 
     @Override
