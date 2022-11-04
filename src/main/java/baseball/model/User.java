@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static final int INPUT_NUMBER_SIZE = 3;
-    private List<Integer> userInputNumber;
+    private static final int EXPECTED_NUMBER_OF_USER_LENGTH = 3;
+    private List<Integer> expectedNumberOfUser;
 
     public User() {
-        userInputNumber = new ArrayList<>();
+        expectedNumberOfUser = new ArrayList<>();
     }
 
-    public void setUserInputNumber(String inputNumber) {
-        userInputNumber.clear();
+    public void setExpectedNumberOfUser(String expectedNumberOfUser) {
+        this.expectedNumberOfUser.clear();
 
-        for (int i = 0; i < INPUT_NUMBER_SIZE; i++) {
-            userInputNumber.add(inputNumber.charAt(i) - '0');
+        for (int i = 0; i < EXPECTED_NUMBER_OF_USER_LENGTH; i++) {
+            this.expectedNumberOfUser.add(expectedNumberOfUser.charAt(i) - '0');
         }
     }
 
-    public List<Integer> getUserInputNumber() {
-        return userInputNumber;
+    public List<Integer> getExpectedNumberOfUser() {
+        return expectedNumberOfUser;
     }
 }

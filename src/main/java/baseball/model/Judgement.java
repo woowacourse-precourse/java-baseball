@@ -8,7 +8,7 @@ public class Judgement {
 
     private void judgeStrike(User user, Computer computer) {
         strikeCnt = 0;
-        List<Integer> userNumber = user.getUserInputNumber();
+        List<Integer> userNumber = user.getExpectedNumberOfUser();
         List<Integer> computerNumber = computer.getRandomNumber();
         for (int i = 0; i < 3; i++) {
             if (userNumber.get(i) == computerNumber.get(i)) {
@@ -19,7 +19,7 @@ public class Judgement {
 
     private void judgeBall(User user, Computer computer) {
         ballCnt = 0;
-        List<Integer> userNumber = user.getUserInputNumber();
+        List<Integer> userNumber = user.getExpectedNumberOfUser();
         List<Integer> computerNumber = computer.getRandomNumber();
         for (int i = 0; i < 3; i++) {
             if (userNumber.get(i) != computerNumber.get(i) && computerNumber.contains(userNumber.get(i))) {

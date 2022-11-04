@@ -35,7 +35,7 @@ public class GameController {
     private void continueGameUntilThreeStrike() {
         while (judgement.getStrikeCnt() != 3) {
             String expectedNumberOfUser = InputView.getExpectedNumberOfUser();
-            user.setUserInputNumber(expectedNumberOfUser);
+            user.setExpectedNumberOfUser(expectedNumberOfUser);
 
             if (judgement.isNothing(user, computer)) {
                 OutputView.printNothing();
