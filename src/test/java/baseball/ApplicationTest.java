@@ -40,10 +40,10 @@ class ApplicationTest extends NsTest {
     public void 랜덤숫자_체크() {
 
         //give
-        final Game game = new Game();
+        final NumberGenerator numberGenerator = new NumberGenerator();
 
         //when
-        final List<Integer> list = game.getComputer();
+        final List<Integer> list = numberGenerator.generateNum();
         int[] computerNumbers = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
             computerNumbers[i] = list.get(i).intValue();
