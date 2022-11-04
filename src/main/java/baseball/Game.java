@@ -91,4 +91,13 @@ public class Game {
 
         return Integer.parseInt(inputMenu);
     }
+
+    public boolean isContinue(){
+
+        if(getMenuNumber() == 2){
+            return false;
+        }
+
+        return true;
+    }
 }
