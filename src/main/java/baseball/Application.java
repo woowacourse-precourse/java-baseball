@@ -52,12 +52,16 @@ public class Application {
     public static List<Integer> createBaseballNumberList() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
-            }
+            addRandomNumber(numberList);
         }
         return numberList;
+    }
+
+    private static void addRandomNumber(List<Integer> computer) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
+        }
     }
 
     public static List<Integer> createInputNumberList(String input) {
@@ -95,14 +99,20 @@ public class Application {
         for (int i = 0; i < baseballNumberList.size(); i++) {
             int baseballNumber = baseballNumberList.get(i);
             int inputNumber = inputNumberList.get(i);
-            if(baseballNumber == inputNumber){
-                count.put(STRIKE, count.get(STRIKE) + 1);
-            }
-            if(baseballNumber != inputNumber && baseballNumberList.contains(inputNumber)){
-                count.put(BALL, count.get(BALL) + 1);
-            }
+            addStrike(count, baseballNumber, inputNumber);
+            addBall(baseballNumberList,count,baseballNumber,inputNumber);
         }
         return count;
+    }
+    private static void addBall(List<Integer> baseballNumberList, Map<String, Integer> ballCount, int answer, int input) {
+        if(answer != input && baseballNumberList.contains(input)){
+            ballCount.put(BALL, ballCount.get(BALL) + 1);
+        }
+    }
+    private static void addStrike(Map<String, Integer> strikeCount, int answer, int input) {
+        if(answer == input){
+            strikeCount.put(STRIKE, strikeCount.get(STRIKE) + 1);
+        }
     }
     public static String refereeAnswer(Integer ballCount, Integer strikeCount) {
         if(ballCount > 0 && strikeCount > 0){
