@@ -9,6 +9,10 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
+	private static final String RESTART_NUMBER = "1";
+	private static final String END_NUMBER = "2";
+	private static final int CYCLE_END_NUMBER = 3;
+
 	public void run() {
 		runOneCycle();
 		if (choiceRestart()) {
@@ -35,7 +39,7 @@ public class BaseballGameController {
 	}
 
 	private boolean isGameEnd(int result) {
-		return result == 3;
+		return result == CYCLE_END_NUMBER;
 	}
 
 	private boolean choiceRestart() throws IllegalArgumentException {
@@ -43,10 +47,10 @@ public class BaseballGameController {
 		if (!isRightInput(userChoice)) {
 			throw new IllegalArgumentException();
 		}
-		return userChoice.equals("1");
+		return userChoice.equals(RESTART_NUMBER);
 	}
 
 	private boolean isRightInput(String input) {
-		return input.equals("1") || input.equals("2");
+		return input.equals(RESTART_NUMBER) || input.equals(END_NUMBER);
 	}
 }
