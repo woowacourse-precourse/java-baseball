@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameResultJudgement {
   private int maxLen;
 
@@ -9,25 +12,21 @@ public class GameResultJudgement {
   public GameResultJudgement(int maxLen) {
     this.maxLen = maxLen;
   }
-  public int judgeStrike(String str1, String str2) {
-    int count = 0;
+  public char[] judgeStrikeBallNothing(String str1, String str2) {
 
-    for (int i = 0; i < maxLen; i++) {
-      if (str1.charAt(i) == str2.charAt(i)) {
-        ++count;
-      }
-    }
-    return count;
-  }
-  public int judgeBall(String str1, String str2) {
-    int count = 0;
+    char[] result = new char[3];
 
     for (int i = 0; i < maxLen; i++) {
       char ch = str2.charAt(i);
       if (!(str1.charAt(i) == str2.charAt(i)) && str1.contains(ch+"")) {
-        ++count;
+        ++result[1];
+      } else if (str1.charAt(i) == str2.charAt(i)) {
+        ++result[0];
       }
     }
-    return count;
+    if (result[0] == 0 || result[1] == 0) {
+      ++result[2];
+    }
+    return result;
   }
 }

@@ -18,7 +18,15 @@ class GameResultJudgementTest {
   }
 
   void assertStrike(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeStrike(input, answer));
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[0]);
+  }
+
+  void assertBall(String input, String answer, int expected) {
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[1]);
+  }
+
+  void assertNothing(String input, String answer, int expected) {
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[2]);
   }
   @Test
   @Order(1)
@@ -46,9 +54,6 @@ class GameResultJudgementTest {
 
   }
 
-  void assertBall(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeBall(input, answer));
-  }
   @Test
   @Order(4)
   @DisplayName("볼 3 확인")
@@ -84,9 +89,9 @@ class GameResultJudgementTest {
   @Test
   @Order(8)
   @DisplayName("낫싱 확인")
-  void JudgeNothing() {
-    assertBall("123", "678", 1);
-    assertBall("789", "123", 1);
-    assertBall("789", "456", 1);
+  void JudgeNothingCount() {
+    assertNothing("123", "678", 1);
+    assertNothing("789", "123", 1);
+    assertNothing("789", "456", 1);
   }
 }
