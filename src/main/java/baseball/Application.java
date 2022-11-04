@@ -13,8 +13,9 @@ public class Application {
 	static List<Integer> computer = new ArrayList<>();
     public static void main(String[] args) {
     	String numstr="";      //numstr string에 사용자 입력 받기
-    	randomComNum(computer);  //randomComNum 함수로 computer로부터 랜덤 숫자 정하기
+    	
     	System.out.println("숫자 야구 게임을 시작합니다.");
+    	randomComNum(computer);  //randomComNum 함수로 computer로부터 랜덤 숫자 정하기
 		while(true) {
 			int strikeCount=0;
 			int ballCount=0;
