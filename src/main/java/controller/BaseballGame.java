@@ -18,18 +18,21 @@ public class BaseballGame {
         }
 
         Player.startPhrase();
+        System.out.println(computer.getComputerNumber());
 
         while (!checkExit) {
             playerNumber = Player.numberInput();
-            if (checkException(playerNumber)) {
-                break;
-            }
+            checkException(playerNumber);
+
             playerRepository.setPlayerNumber(playerNumber);
             checkExit = isCorrect(playerRepository, computer);
             hintPrint(playerRepository, computer, checkExit);
         }
 
         Player.printEnd();
+        if (Player.endGame()) {
+            startGame();
+        }
 
     }
 
@@ -44,16 +47,16 @@ public class BaseballGame {
         return userInput == computerNumber;
     }
 
-    public static boolean checkException(String playerNumber) {
+    public static void checkException(String playerNumber) {
         try {
             BaseballException.InputLengthException(playerNumber);
             BaseballException.InputTypeBoundaryException(playerNumber);
             BaseballException.InputRepeatException(playerNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
-            return true;
+            throw new IllegalArgumentException();
         }
-        return false;
+
     }
 
     public static void hintPrint(PlayerRepository playerRepository, Computer computer, boolean isRight) {

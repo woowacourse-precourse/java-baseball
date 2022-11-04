@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BaseballException {
 
-    public static void InputLengthException(String input) {
+    public static void InputLengthException(String input){
         List<String> inputList = new ArrayList<>();
 
         inputList = Arrays.asList(input.split(""));
@@ -18,7 +18,7 @@ public class BaseballException {
         }
     }
 
-    public static void InputTypeBoundaryException(String input) {
+    public static void InputTypeBoundaryException(String input){
 
         for (char letter : input.toCharArray()) {
             if (letter < 48 || letter > 57) {
@@ -30,7 +30,7 @@ public class BaseballException {
         }
     }
 
-    public static void InputRepeatException(String input) {
+    public static void InputRepeatException(String input){
         List<Character> confirm = new ArrayList<>();
 
         for (char letter : input.toCharArray()) {

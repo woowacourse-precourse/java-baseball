@@ -42,5 +42,13 @@ public class Player {
         System.out.println(GameConstant.END_GAME);
         System.out.println(GameConstant.AGAIN);
     }
+
+    public static boolean endGame() {
+        String again;
+
+        again = Console.readLine();
+
+        return again.equals("1");
+    }
 }
 
