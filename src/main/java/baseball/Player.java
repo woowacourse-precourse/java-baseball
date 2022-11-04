@@ -40,22 +40,8 @@ public class Player {
     private List<Integer> toList(String inputNumbers) {
         List<Integer> list = new ArrayList<>(Collections.emptyList());
         for (String number : inputNumbers.split("")) {
-            inputNumberByList(list, number);
+            list.add(Integer.parseInt(number));
         }
         return list;
-    }
-
-    /**
-     * 문자를 리스트에 넣는다.<br>
-     * 만약 리스트에 넣지 못한다면 IllegalArgumentException를 던진다.
-     * @param list 리스트
-     * @param number    문자로 되어있는 숫자
-     */
-    private void inputNumberByList(List<Integer> list, String number) {
-        try {
-            list.add(Integer.parseInt(number));
-        } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
-        }
     }
 }
