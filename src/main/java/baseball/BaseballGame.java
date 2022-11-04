@@ -6,6 +6,8 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame extends Game {
+
+    private final int ANSWER_NUMBER_COUNT = 3;
     private List<Integer> answerNumbers;
 
     BaseballGame() {
@@ -34,10 +36,13 @@ public class BaseballGame extends Game {
     }
     @Override
     protected void initialize() {
+        setStatus(Status.PLAYING);
+        setAnswerNumbers(getRandomNumbersOf(ANSWER_NUMBER_COUNT));
     }
 
 
     @Override
     protected void terminate() {
     }
+
 }

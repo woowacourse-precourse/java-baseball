@@ -53,7 +53,7 @@
         - [X] setBaseballNumber
         - 야구 게임의 클리어 조건을 설정합니다.
 
-      - [ ] initialize
+      - [X] initialize
       - 게임을 초기화 합니다. 
       - 게임 상태를 게임중으로 바꾸고, 랜덤한 숫자들을 선정해 클리어 조건 숫자로 저장합니다.
         - [X] getRandomNumbersOf
