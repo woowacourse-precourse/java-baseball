@@ -11,6 +11,9 @@ public class Application {
         List<Integer> computerAnswerList = new ArrayList<>();
         int userAnswer = 0;
         List<Integer> userAnswerList = new ArrayList<>();
+        List<Integer> notStrikeZone = new ArrayList<>();
+        int countStrike = 0;
+        int countBall = 0;
 
         while (userEndingResponse == 1){
 
@@ -23,6 +26,13 @@ public class Application {
             checkIllegalInputForBaseballGame(userAnswer);
             userAnswerList = convertIntegerToList(userAnswer);
 
+            notStrikeZone = checkWhereIsNotStrike(computerAnswerList, userAnswerList);
+            countStrike = countStrike(notStrikeZone);
+
+            if (countStrike == 3)
+                printEndingMessage(countStrike);
+            else
+                countBall = countBall(computerAnswerList, userAnswerList, notStrikeZone);
 
 
 
