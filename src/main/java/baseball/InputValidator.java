@@ -9,6 +9,9 @@ public class InputValidator {
         if (userInput.length() != 1) {
             throw new IllegalArgumentException();
         }
+        if (!Character.isDigit(userInput.charAt(0))) {
+            throw new IllegalArgumentException();
+        }
     }
     public static void checkIsValidThreeNumbers(String userInput) {
         if (userInput.length() != 3) {
