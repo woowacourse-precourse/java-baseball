@@ -24,4 +24,11 @@ public class Result {
     public void addStrike() {
         strike++;
     }
+
+    public String ballToString() {
+        if (ball == 0) {
+            return null;
+        }
+        return ball + "볼";
+    }
 }
