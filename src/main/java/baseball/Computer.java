@@ -24,7 +24,7 @@ public class Computer {
      *
      * @return 랜덤 숫자
      */
-    private int getRandomNumber() {
+    private int createRandomNumber() {
         Random random = new Random();
         return random.nextInt(9);
     }
@@ -42,9 +42,9 @@ public class Computer {
     /**
      * 랜덤 숫자들을 구한다.
      */
-    public void getRandomNumbers() {
+    public void inputRandomNumbers() {
         while ((randomNumbers.size() != 3)) {
-            addRandomNumberByList(getRandomNumber());
+            addRandomNumberByList(createRandomNumber());
         }
     }
 
