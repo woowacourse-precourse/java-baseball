@@ -10,22 +10,14 @@ import java.util.List;
 public class GameSet {
     private List<Integer> computerAnswer;
     private List<Integer> userAnswer;
-    private static int strikeCount;
-    private static int ballCount;
+    public static int strikeCount;
+    public static int ballCount;
 
     public GameSet(){
-        setComputerAnswer();
+        computerAnswer = CreateRandomNumber.setComputerAnswer();
     }
     //랜덤으로 3자리수 숫자 만들어주는 함수
-    public void setComputerAnswer(){
-        computerAnswer = new ArrayList<>();
-        while(computerAnswer.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerAnswer.contains(randomNumber)) {
-                computerAnswer.add(randomNumber);
-            }
-        }
-    }
+
     //게임을 시작하는 함수
     public void playBaseballGame(){
         PrintMessage.inputMessage();
@@ -36,9 +28,9 @@ public class GameSet {
     }
     // 입력값을 List<Integer> 형태로 변환해주는 함수
     public List<Integer> scanUserAnswer(String inputNumber){
+        ValidCheck.numberCheck(inputNumber);
         List<String> inputArray = List.of(inputNumber.split(""));
         List<Integer> userSolution = new ArrayList<>();
-
         for(String number : inputArray){
             userSolution.add(Integer.parseInt(number));
         }
@@ -63,10 +55,10 @@ public class GameSet {
             PrintMessage.answerMessage();
             PrintMessage.gameContinueMessage();
             if(ValidCheck.isValidPress(Console.readLine())){
-                setComputerAnswer();
+                computerAnswer = CreateRandomNumber.setComputerAnswer();
                 return true;
             }
-            return ValidCheck.isValidPress(Console.readLine());
+            return false;
         }
         return true;
     }
