@@ -24,16 +24,15 @@ public class Turn {
         numberOfStrikes = 0;
     }
 
-    public void transformPlayerInputToList() {
-        String playerInput = getPlayerInput(ASK_FOR_NUMBER);
-        for (int index = 0; index < playerInput.length(); index++) {
-            playerNumberList.add(playerInput.charAt(index) - '0');
-        }
-    }
-
     public String getPlayerInput(String message) {
         System.out.print(message);
         return Console.readLine();
+    }
+
+    public void transformPlayerInputToList(String playerInput) {
+        for (int index = 0; index < playerInput.length(); index++) {
+            playerNumberList.add(playerInput.charAt(index) - '0');
+        }
     }
 
     public void validatePlayerNumberList() {
