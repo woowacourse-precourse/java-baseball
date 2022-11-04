@@ -9,6 +9,10 @@ public class GameResult {
         this.strike = strike;
     }
 
+    public boolean playerWin() {
+        return (strike == 3);
+    }
+
     public int getBall() {
         return ball;
     }

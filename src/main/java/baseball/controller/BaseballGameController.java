@@ -11,12 +11,22 @@ public class BaseballGameController {
 
     public void startGame() {
         GameScreen.printGameStart();
+        baseballGameService.newGame();
+    }
+
+    public void run() {
+        startGame();
+
+        while (!playGame()) {}
+    }
+
+    public boolean playGame() {
         GameScreen.printUserInput();
         String playerInputNumbers = Console.readLine();
-
-        baseballGameService.newGame();
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         GameScreen.printGameResult(gameResult);
+
+        return gameResult.playerWin();
     }
 
 }
