@@ -36,7 +36,7 @@ public class Feat4Test {
         List<Integer> userNUmber = new ArrayList<>(Arrays.asList(1, 2, 6));
         Integer strike = gameService.countStrike(randomNumber, userNUmber);
         Integer ball = gameService.countBall(randomNumber, userNUmber);
-        gameService.printResult(strike, ball);
+        gameService.printResult();
         assertThat(outputMessage.toString()).contains("2스트라이크");
     }
 
@@ -48,7 +48,7 @@ public class Feat4Test {
         List<Integer> userNUmber = new ArrayList<>(Arrays.asList(2, 3, 1));
         Integer strike = gameService.countStrike(randomNumber, userNUmber);
         Integer ball = gameService.countBall(randomNumber, userNUmber);
-        gameService.printResult(strike, ball);
+        gameService.printResult();
         assertThat(outputMessage.toString()).contains("3볼");
     }
 
@@ -60,7 +60,7 @@ public class Feat4Test {
         List<Integer> userNUmber = new ArrayList<>(Arrays.asList(1, 3, 2));
         Integer strike = gameService.countStrike(randomNumber, userNUmber);
         Integer ball = gameService.countBall(randomNumber, userNUmber);
-        gameService.printResult(strike, ball);
+        gameService.printResult();
         assertThat(outputMessage.toString()).contains("2볼 1스트라이크");
     }
 
@@ -72,7 +72,7 @@ public class Feat4Test {
         List<Integer> userNUmber = new ArrayList<>(Arrays.asList(4, 5, 6));
         Integer strike = gameService.countStrike(randomNumber, userNUmber);
         Integer ball = gameService.countBall(randomNumber, userNUmber);
-        gameService.printResult(strike, ball);
+        gameService.printResult();
         assertThat(outputMessage.toString()).contains("낫싱");
     }
 }

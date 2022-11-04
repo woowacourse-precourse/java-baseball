@@ -27,6 +27,7 @@ public class Feat3Test {
 
         List<Integer> randomNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNUmber = new ArrayList<>(Arrays.asList(1, 3, 2));
+        gameService.countStrike(randomNumber, userNUmber);
         Integer ball = gameService.countBall(randomNumber, userNUmber);
         assertThat(ball).isEqualTo(2);
     }
