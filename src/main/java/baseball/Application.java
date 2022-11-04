@@ -12,14 +12,13 @@ public class Application {
 	static HashMap<String,Integer> possibleBallResult = new HashMap<>();
 	static List<Integer> computer = new ArrayList<>();
     public static void main(String[] args) {
-    	randomComNum(computer);  //randomComNum 함수로 computer로부터 랜덤 숫자 정하기
     	String numstr="";      //numstr string에 사용자 입력 받기
     	
     	System.out.println("숫자 야구 게임을 시작합니다.");
 		while(true) {
 			int strikeCount=0;
 			int ballCount=0;
-			
+			randomComNum(computer);  //randomComNum 함수로 computer로부터 랜덤 숫자 정하기
 			if(numstr.equals("1")) {  //게임을 새로 시작할 것인지 종료할 것인지 1,2 선택
 				numstr="";            //numstr = ""로 만들어 else구문으로 다시 진입하게 만드는 장치
 				continue;
