@@ -1,19 +1,24 @@
 package baseball;
 
-import javax.imageio.IIOException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int randomNumber = makeRandomNumber();
-        int userInputNumber = input();
-        System.out.println(userInputNumber);
+        while (true) {
+            int randomNumber = makeRandomNumber();
+            System.out.println(randomNumber);
+
+            int userInputNumber = input();
+            playGame(randomNumber, userInputNumber);
+
+            if (restartOrEndGame() == 2) {
+                System.out.println("게임을 종료합니다.");
+                break;
+            }
+        }
     }
 
 
@@ -52,6 +57,24 @@ public class Application {
 
     public static int exceptionHandler(int n) {
         if (!(n >= 100 && n <1000)) throw new IllegalArgumentException("n은 세자리 숫자입니다.");
+
+        return n;
+    }
+
+
+    public static void playGame(int computerInput, int userInput) {
+        System.out.println("computerInput = " + computerInput);
+        System.out.println("userInput = " + userInput);
+
+        if (computerInput == userInput) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    public static int restartOrEndGame() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임 다시하기: 1 \n게임 종료: 2");
+        int n = sc.nextInt();
 
         return n;
     }
