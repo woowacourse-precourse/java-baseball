@@ -30,3 +30,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### class files ###
+bin/
+### metadata ###
+.metadata/
