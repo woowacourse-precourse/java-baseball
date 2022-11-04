@@ -14,4 +14,13 @@ class ComputerTest {
 
         assertThat(computer.getNumber()).isNotNull();
     }
+
+    @Test
+    void 난수가_세자리_인지_확인() {
+        Computer computer = new Computer();
+
+        computer.generateRandomNumber();
+
+        assertThat(computer.getNumber()).hasSize(3);
+    }
 }
