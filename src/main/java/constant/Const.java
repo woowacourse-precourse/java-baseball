@@ -11,4 +11,7 @@ public class Const {
     public static final int NUMBER_MIN_VALUE =  1;
     public static final int NUMBER_MAX_VALUE =  9;
     public static final int GAME_END_STRIKE_COUNT = 3;
+
+    public static final String RETRY = "1";
+    public static final String EXIT = "2";
 }
