@@ -16,6 +16,7 @@ public class Game {
 
     private void start() {
         computer = new Computer();
+        System.out.println(START);
         play();
     }
 
