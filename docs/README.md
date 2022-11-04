@@ -111,3 +111,39 @@
 - 기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리해 추가하기
 - Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위로 추가
 - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성하기
+
+
+
+
+
+## 구현 순서
+
+1. 상대방(컴퓨터)의 숫자를 설정한다.
+   - 무작위로 상대방의 숫자를 설정하며, camp.nextstep.edu.missionutils`에서 제공하는 `Randoms를 이용한다.
+   - 숫자는 List를 통해 관리한다.
+   - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수가 아니라면, 계속해서 다른 수로 초기화한다.
+
+
+
+2. 사용자에게서 숫자를 입력받는다.
+   - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.(게임이 종료되는 게 아니라, 어플리케이션이 완전히 종료되는 것으로 해석했다.)
+   
+   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+   
+   - #### 사용 예시
+   
+     ```java
+     List<Integer> computer = new ArrayList<>();
+     while (computer.size() < 3) {
+         int randomNumber = Randoms.pickNumberInRange(1, 9);
+         if (!computer.contains(randomNumber)) {
+             computer.add(randomNumber);
+         }
+     }
+     ```
+
+
+
+3. 결과에 따라 출력 / 종료 / 재시작한다.
+   - 사용자가 정답이 아닌 올바른 값을 입력했다면, 볼 카운트를 말해주고 입력을 다시하도록 돕는다.
+   - 사용자가 정답을 입력한경우, 어플리케이션을 종료할지 재시작할지 묻는다.
