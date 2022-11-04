@@ -15,8 +15,11 @@ public class Application {
 
     public static class Validations{
 
+
     }
     public static class Processing {
+        private final Validations validations = new Validations();
+
         public List<String> makeRandomAnswer(){
             List<Integer> answer = new ArrayList<>();
             while ( answer.size() < 3 ){
@@ -26,6 +29,11 @@ public class Application {
                 }
             }
             return answer.stream().map(Object::toString).collect(Collectors.toList());
+        }
+
+        public List<String> askInputNumber(){
+            String inputNum = Console.readLine();
+            return Arrays.asList(inputNum.split(""));
         }
     }
 }
