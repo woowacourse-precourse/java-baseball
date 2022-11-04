@@ -26,7 +26,7 @@ public class Application {
             }
 
             // 맞춘다면 반복문 빠져나오기
-            if (computerNumber.equals(userNumber)) break;
+            if (computerNumber.equals(toList(userNumber))) break;
         }
     }
 
@@ -47,6 +47,17 @@ public class Application {
         String userNumber = Console.readLine();
 
         return userNumber;
+    }
+
+    public static List<Integer> toList(String userNumber){
+        List<Integer> listUserNumber = new ArrayList<>();
+
+        for(int userNumberIndex = 0; userNumberIndex<userNumber.length();userNumberIndex++){
+            // validate를 통해 3글자 숫자임이 확정이므로 0의 아스키 코드 값이 48임을 이용해 문자를 숫자로 바꾸어준다.
+            listUserNumber.add(userNumber.charAt(userNumberIndex) - 48);
+        }
+
+        return listUserNumber;
     }
 
     public static void validate(String userNumber){
