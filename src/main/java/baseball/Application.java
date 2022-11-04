@@ -19,20 +19,15 @@ public class Application {
     }
 
     private static void game(List<Integer> computer) {
-        int strike = 0;
-        int ball = 0;
+        boolean isThreeStrike = false;
 
-        while (strike != 3){
+        while (!isThreeStrike) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> user = new Input(readLine()).getInputList();
 
-            ball = countBall(computer, user);
-            strike = countStrike(computer, user);
+            BaseballReferee baseballReferee = new BaseballReferee(computer, user);
 
-            if (ball != 0) System.out.print(ball + "볼 ");
-            if (strike != 0) System.out.println(strike + "스트라이크");
-            if (ball == 0 && strike == 0) System.out.println("낫싱");
-            if (strike == 3) System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isThreeStrike = baseballReferee.isThreeStrike();
         }
     }
 
@@ -40,32 +35,5 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Coin coin = new Coin(readLine());
         return coin.getCoin();
-    }
-
-    private static int countStrike(List<Integer> computer, List<Integer> user) {
-        int strike = 0;
-
-        for (int i = 0; i < computer.size(); i += 1) {
-            if (computer.get(i) == user.get(i)) strike += 1;
-        }
-        return strike;
-    }
-
-    private static int countBall(List<Integer> computer, List<Integer> user) {
-        int ball = 0;
-
-        for (int i = 0; i < computer.size(); i += 1) {
-            ball += hasBall(computer, user, i);
-        }
-        return ball;
-    }
-
-    private static int hasBall(List<Integer> computer, List<Integer> user, int i) {
-        int ball = 0;
-        for (int j = 0; j < computer.size(); j += 1) {
-            if (i == j) continue;
-            if (computer.get(i) == user.get(j)) ball += 1;
-        }
-        return ball;
     }
 }
