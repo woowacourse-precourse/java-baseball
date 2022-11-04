@@ -20,7 +20,7 @@ class RefereeTest extends NsTest {
 		assertThat(3).isEqualTo(
 			Referee.getStrikeCount(
 				Arrays.asList(1, 2, 3),
-				Arrays.asList(1, 2, 3))
+				"123")
 		);
 	}
 
@@ -28,8 +28,7 @@ class RefereeTest extends NsTest {
 	@DisplayName("낫싱 확인")
 	void case2() {
 		List<Integer> list1 = Arrays.asList(1, 2, 3);
-		List<Integer> list2 = Arrays.asList(4, 5, 6);
-		Referee.printResult(list1, list2);
+		Referee.printResult(list1, "456");
 		assertThat(output()).contains("낫싱");
 	}
 
@@ -37,8 +36,7 @@ class RefereeTest extends NsTest {
 	@DisplayName("볼 개수 확인")
 	void case3() {
 		List<Integer> list1 = Arrays.asList(1, 2, 3);
-		List<Integer> list2 = Arrays.asList(3, 5, 1);
-		Referee.printResult(list1, list2);
+		Referee.printResult(list1, "351");
 		assertThat(output()).contains("2볼");
 	}
 
@@ -46,8 +44,7 @@ class RefereeTest extends NsTest {
 	@DisplayName("볼 + 스트라이크 개수 확인")
 	void case4() {
 		List<Integer> list1 = Arrays.asList(1, 2, 3);
-		List<Integer> list2 = Arrays.asList(1, 3, 2);
-		Referee.printResult(list1, list2);
+		Referee.printResult(list1, "132");
 		assertThat(output()).contains("2볼 1스트라이크");
 	}
 
