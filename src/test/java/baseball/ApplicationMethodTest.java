@@ -26,6 +26,7 @@ public class ApplicationMethodTest {
 
     @Test
     void printGetInputMessage() {
+        Application.printGetInputMessage();
     }
 
     @Test
