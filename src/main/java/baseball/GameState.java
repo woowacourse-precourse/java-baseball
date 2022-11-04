@@ -7,8 +7,8 @@ public class GameState {
     private int ball;
 
     public GameState() {
-        this.strike = 0;
-        this.ball = 0;
+        this.strike = INITIAL_NUMBER;
+        this.ball = INITIAL_NUMBER;
     }
 
     public void addStrike() {
