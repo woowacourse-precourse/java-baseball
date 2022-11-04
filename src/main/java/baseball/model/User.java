@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.view.BaseballConsole;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,14 @@ public class User {
         validateNumbers(input);
         validateLength(input);
         validateDifferentNumbers(input);
+        addNumber(input);
+    }
+
+    private void addNumber(String input) {
+        numbers = new ArrayList<>();
+        for(String number : input.split("")) {
+            numbers.add(Integer.parseInt(number));
+        }
     }
 
     private void validateNumbers(String input) {
