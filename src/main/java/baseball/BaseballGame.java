@@ -3,7 +3,10 @@ package baseball;
 import abstracts.Game;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame extends Game {
@@ -36,19 +39,39 @@ public class BaseballGame extends Game {
         return answerNumbers;
     }
     @Override
-    protected void initialize() {
+    public void initialize() {
         setStatus(Status.PLAYING);
         setAnswerNumbers(getRandomNumbersOf(ANSWER_NUMBER_COUNT));
     }
 
     @Override
-    protected void terminate() {
+    public void terminate() {
         setStatus(Status.DONE);
         setAnswerNumbers(Collections.emptyList());
     }
 
+    private static final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
+    static {
+        operationMapper.put(Status.PLAYING, BaseballGame::playTurn);
+        operationMapper.put(Status.DONE, BaseballGame::askNewGame);
+    }
+
     @Override
     public boolean operate(String input) {
+        return operationMapper
+                .get(this.status)
+                .apply(input);
+    }
+
+    private static boolean playTurn(String input) {
+        System.out.println("playing");
         return false;
     }
+
+    private static boolean askNewGame(String input) {
+        System.out.println("stopped");
+        return false;
+    }
+
+
 }
