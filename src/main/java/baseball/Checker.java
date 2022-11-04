@@ -5,39 +5,52 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Checker {
-	public static final int ZERO = 0;
-	public static final int ONE = 1;
-	public static final String ERROR = "[ERROR] ";
-	public static final String NUMBER_ONLY_ERROR_MESSAGE = ERROR + "숫자만 입력해주세요.";
-	public static final String LENGTH_ERROR_MESSAGE = ERROR + "올바른 길이의 숫자를 입력해주세요.";
-	public static final String NUMBER_RANGE_ERROR_MESSAGE = ERROR + "1~9 사이의 숫자만 입력 가능 합니다.";
-	public static final String SAME_LETTER_ERROR_MESSAGE = ERROR + "중복되는 숫자는 입력할 수 없습니다.";
-	public static final String END_OR_RESTART_INPUT_ERROR_MESSAGE = ERROR + "1혹은 2를 입력해주세요";
+	private static final int ZERO = 0;
+	private static final int END_OR_RESTART_INPUT_LENGTH = 1;
+	private static final int END_INPUT = 2;
+	private static final int RESTART_INPUT = 1;
 
 	public void userInputChecker(String userNumber, int length, Player player) {
+		checkNumberOnlyError(userNumber);
+		checkLengthError(userNumber, length);
+		checkEndOrRestartError(userNumber, length);
+		checkSameLetterError(length, player);
+		checkNumberRangeError(userNumber);
+	}
+
+	private void checkNumberRangeError(String userNumber) {
+		if (userNumber.contains(Integer.toString(ZERO))) {
+			Exception.numberRangeError();
+		}
+	}
+
+	private void checkSameLetterError(int length, Player player) {
+		if (length > END_OR_RESTART_INPUT_LENGTH) {
+			if (isUserInputSameNumber(player)) {
+				Exception.sameLetterError();
+			}
+		}
+	}
+
+	private void checkEndOrRestartError(String userNumber, int length) {
+		if (length == END_OR_RESTART_INPUT_LENGTH) {
+			if (Integer.parseInt(userNumber) > END_INPUT || Integer.parseInt(userNumber) < RESTART_INPUT) {
+				Exception.endOrRestartError();
+			}
+		}
+	}
+
+	private void checkLengthError(String userNumber, int length) {
+		if (userNumber.length() != length) {
+			Exception.lengthError();
+		}
+	}
+
+	private void checkNumberOnlyError(String userNumber) {
 		try {
 			Integer.parseInt(userNumber);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(NUMBER_ONLY_ERROR_MESSAGE);
-		}
-
-		if (userNumber.length() != length) {
-			throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
-		}
-
-		if (length == ONE) {
-			if (Integer.parseInt(userNumber) > 2 || Integer.parseInt(userNumber) < 1) {
-				throw new IllegalArgumentException(END_OR_RESTART_INPUT_ERROR_MESSAGE);
-			}
-		}
-
-		if (length > ONE) {
-			if (isUserInputSameNumber(player)) {
-				throw new IllegalArgumentException(SAME_LETTER_ERROR_MESSAGE);
-			}
-			if (userNumber.contains("0")) {
-				throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
-			}
+			Exception.numberOnlyError();
 		}
 	}
 

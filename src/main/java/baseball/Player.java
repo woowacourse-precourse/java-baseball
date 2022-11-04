@@ -9,11 +9,6 @@ public class Player {
 	private static final int UNIT_HUNDRED = 100;
 	private static final int UNIT_TEN = 10;
 	private static final int INIT_LIST_CAPACITY = 3;
-	private static final int INIT_INDEX = 0;
-	private static final String USER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
-	private static final String END_OR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-	private static final String ERROR = "[ERROR]";
 	private static List<Integer> userNumberList;
 
 	public Player() {
@@ -32,7 +27,7 @@ public class Player {
 	}
 
 	protected String inputNumber() {
-		System.out.print(USER_INPUT_GUIDE_MESSAGE);
+		View.showUerInputGuideMessage();
 		String str = Console.readLine();
 
 		return str;
@@ -53,7 +48,7 @@ public class Player {
 	}
 
 	protected String inputEndOrRe() {
-		System.out.println(END_OR_RESTART_MESSAGE);
+		View.showEndOrRestartGuideMessage();
 		String reOrEnd = Console.readLine();
 
 		return reOrEnd;
