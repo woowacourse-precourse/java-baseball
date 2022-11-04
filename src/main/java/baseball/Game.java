@@ -58,6 +58,6 @@ public class Game {
             return;
         }
 
-        System.out.println(numberOfSTRIKE + "스트라이크 " + numberOfBALL + "볼");
+        System.out.println(numberOfBALL + "볼 " + numberOfSTRIKE + "스트라이크 ");
     }
 }
