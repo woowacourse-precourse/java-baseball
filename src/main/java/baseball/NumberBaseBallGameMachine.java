@@ -69,4 +69,9 @@ public class NumberBaseBallGameMachine {
     public boolean isAnswer(List<Integer> judge) {
         return judge.get(1) == 3;
     }
+
+    public boolean askNewGameOrStop() {
+        display(message.requestNewOrStop() + "\n");
+        return getNewGameOrStop() == 1;
+    }
 }
