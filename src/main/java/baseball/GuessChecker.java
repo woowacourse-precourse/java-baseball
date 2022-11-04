@@ -3,13 +3,15 @@ package baseball;
 public class GuessChecker {
 
     private static final int INPUT_LENGTH = 3;
+    private static final char RANGE_START = '1';
+    private static final char RANGE_END = '9';
 
     private GuessChecker() {
     }
 
     public static void check(String input) {
         checkLength(input);
-        checkIsNumeric(input);
+        checkRange(input);
         checkDuplicate(input);
     }
 
@@ -19,17 +21,17 @@ public class GuessChecker {
         }
     }
 
-    private static void checkIsNumeric(String input) {
+    private static void checkRange(String input) {
         for (int position = 0; position < input.length(); position++) {
             char character = input.charAt(position);
-            if (!isNumeric(character)) {
-                throw new IllegalArgumentException("숫자가 아닌 문자는 들어올 수 없습니다.");
+            if (!isValidRange(character)) {
+                throw new IllegalArgumentException("1 ~ 9까지의 숫자가 아닌 문자는 들어올 수 없습니다.");
             }
         }
     }
 
-    private static boolean isNumeric(char c) {
-        return c >= '0' && c <= '9';
+    private static boolean isValidRange(char c) {
+        return c >= RANGE_START && c <= RANGE_END;
     }
 
     private static void checkDuplicate(String input) {
