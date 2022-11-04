@@ -38,4 +38,18 @@ public class Result {
         }
         return strike + "스트라이크";
     }
+
+    @Override
+    public String toString() {
+        if (ballToString() == null && strikeToString() == null) {
+            return "낫싱";
+        }
+        if (ballToString() == null) {
+            return strikeToString();
+        }
+        if (strikeToString() == null) {
+            return ballToString();
+        }
+        return ballToString() + " " + strikeToString();
+    }
 }
