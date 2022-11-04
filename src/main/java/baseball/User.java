@@ -6,6 +6,16 @@ import java.util.List;
 
 
 public class User {
+    List<Integer> computerNumberList;
+    static boolean keepGame = true;
+
+    User() {
+
+    }
+
+    User(List<Integer> computerNumberList) {
+        this.computerNumberList = computerNumberList;
+    }
 
     int inputNumber() {
         int userNumber = -1;
