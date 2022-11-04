@@ -36,4 +36,17 @@ class GameStartServiceTest {
         GameStartService.saveUserNumber();
         assertThat(GameStartRepository.lastUserNumberList.size()).isEqualTo(3);
     }
+
+    @Test
+    void 난수_생성이_유효한지_체크() {
+        GameStartService.saveComputerNumber();
+        for (int i = 0 ; i <= 100000000; i++) {
+            String firstNum = GameStartRepository.lastComputerNumberList.get(0);
+            String secondNum = GameStartRepository.lastComputerNumberList.get(1);
+            String thirdNum = GameStartRepository.lastComputerNumberList.get(2);
+            assertThat(Integer.parseInt(firstNum) >= 1 && Integer.parseInt(firstNum) <= 9).isTrue();
+            assertThat(Integer.parseInt(secondNum) >= 1 && Integer.parseInt(secondNum) <= 9).isTrue();
+            assertThat(Integer.parseInt(thirdNum) >= 1 && Integer.parseInt(thirdNum) <= 9).isTrue();
+        }
+    }
 }
