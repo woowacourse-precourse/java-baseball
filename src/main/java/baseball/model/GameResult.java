@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.view.OutputView;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -19,6 +20,7 @@ public class GameResult {
     public GameResult(List<Integer> answerNums, List<Integer> playerNums) {
         strikeCount = countStrike(answerNums, playerNums);
         ballCount = countBall(answerNums, playerNums);
+        OutputView.printGameResult(this);
     }
 
     private int countBall(List<Integer> answerNums, List<Integer> playerNums) {

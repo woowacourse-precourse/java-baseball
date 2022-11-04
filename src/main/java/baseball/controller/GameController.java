@@ -9,20 +9,24 @@ import baseball.view.OutputView;
 public class GameController {
 
     public static void run() {
+        OutputView.printGameStart();
         boolean isReGame = true;
 
-        OutputView.printGameStart();
         while (isReGame) {
-            boolean isGameOver = false;
-            AnswerNumber answerNumber = new AnswerNumber();
-            while (!isGameOver) {
-                String inputNum = InputView.requestNum();
-                PlayerNumber playerNumber = new PlayerNumber(inputNum);
-                GameResult gameResult = new GameResult(answerNumber.get(), playerNumber.get());
-                isGameOver = gameResult.isThreeStrike();
-                OutputView.printGameResult(gameResult);
-            }
-            isReGame = InputView.requestIsReGame();
+            isReGame = playGame();
         }
+    }
+
+    public static boolean playGame() {
+        boolean isGameOver = false;
+        AnswerNumber answerNumber = new AnswerNumber();
+
+        while (!isGameOver) {
+            PlayerNumber playerNumber = new PlayerNumber(InputView.requestNum());
+            GameResult gameResult = new GameResult(answerNumber.get(), playerNumber.get());
+
+            isGameOver = gameResult.isThreeStrike();
+        }
+        return InputView.requestIsReGame();
     }
 }
