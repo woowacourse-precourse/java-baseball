@@ -153,8 +153,8 @@ public class BaseballGame implements Game {
             result.append(this.strike).append("스트라이크 ");
         }
         result.append("\n");
-        if (this.strike == 3) {
-            result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        if (this.strike == GOAL_DIGIT) {
+            result.append(GOAL_DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
         }
         System.out.println(result);
     }
