@@ -54,6 +54,11 @@ public class Application {
             //각자리수 리스트 반환 메서드 호출
             List<Integer> eachDigitsList = getEachDigitsList(inputNumber);
 
+            //올바른 수를 입력했는지 체크, 올바르지 않으면 IllegalArgumentException 예외처리
+
+            //세자리 수가 안되거나 초과하는 경우, 네각자리 수 중 0이 포함되거나 경우, 각자리 수 중 중복되는 수가 있는 경우
+            // IllegalArgumentException 던짐
+            checkValidInputNumber(eachDigitsList);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -69,6 +74,23 @@ public class Application {
             inputNumber = inputNumber / 10;
         }
         return result;
+    }
+
+    private static void checkValidInputNumber(List<Integer> eachDigitsList) throws IllegalArgumentException {
+        if (eachDigitsList.size() < 3 || eachDigitsList.size() > 3) {
+            throw new IllegalArgumentException("Invalid Argument");
+        }
+
+        List<Integer> duplicateCheckList = new ArrayList<>();
+        for (Integer check : eachDigitsList) {
+            if (check == 0) {
+                throw new IllegalArgumentException("Invalid Argument");
+            }
+            if (duplicateCheckList.contains(check)) {
+                throw new IllegalArgumentException("Invalid Argument");
+            }
+            duplicateCheckList.add(check);
+        }
     }
 
     private static void checkValidNextProgressNumber(int nextProgress) throws IllegalArgumentException {
