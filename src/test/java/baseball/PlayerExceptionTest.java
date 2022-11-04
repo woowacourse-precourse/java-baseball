@@ -4,7 +4,6 @@ import baseball.exception.PlayerException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PlayerExceptionTest {
 
@@ -40,12 +39,12 @@ public class PlayerExceptionTest {
     }
 
     @Test
-    void 세자리가_아니면_참을_반환(){
+    void 숫자0이_있으면_참을_반환(){
         assertThat(playerException.containsZero("012")).isEqualTo(true);
     }
 
     @Test
-    void 세자리가_아니면_예외처리(){
+    void 숫자0이_있으면_예외처리(){
         assertThatThrownBy(playerException.containsZeroException())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 값에 0이 없어야 합니다. ");
