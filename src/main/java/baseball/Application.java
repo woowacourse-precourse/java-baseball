@@ -110,7 +110,7 @@ public class Application {
     }
 
     private static void initializeHint() {
-        hintMap = new HashMap();
+        hintMap = new HashMap<Hint,Integer>();
         hintMap.put(Hint.STRIKE, 0);
         hintMap.put(Hint.BALL, 0);
     }
