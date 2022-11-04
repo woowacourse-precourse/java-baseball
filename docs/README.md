@@ -11,8 +11,8 @@
 - [x] 게임 종료 시, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
 
 - [ ] 게임 종료 후 재시작 여부 선택 입력
-  - [ ] 1 : 재시작
-  - [ ] 2 : 게임 종료
+  - [x] 1 : 재시작
+  - [x] 2 : 게임 종료
   - [ ] 예외 처리 (SelectedNumberForRestartDTO) : (IllegalArgumentException => 프로그램 종료)
     - [ ] null 또는 empty 인 경우
     - [ ] 알파벳인 경우

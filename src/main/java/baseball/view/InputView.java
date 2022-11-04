@@ -1,9 +1,11 @@
 package baseball.view;
 
+import baseball.dto.SelectedNumberForRestartDTO;
 import baseball.dto.UserNumbersDTO;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+    private static final String SELECTED_NUMBER_FOR_RESTART_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE = "생성할 수 없는 View 클래스입니다.";
     private static final String NUMBER_INPUT_PROMPT_MESSAGE = "숫자를 입력해주세요 : ";
     
@@ -14,5 +16,10 @@ public class InputView {
     public static UserNumbersDTO inputUserBalls() {
         System.out.print(NUMBER_INPUT_PROMPT_MESSAGE);
         return new UserNumbersDTO(Console.readLine());
+    }
+    
+    public static SelectedNumberForRestartDTO inputNumberForRestart() {
+        System.out.println(SELECTED_NUMBER_FOR_RESTART_INPUT_MESSAGE);
+        return new SelectedNumberForRestartDTO(Console.readLine());
     }
 }
