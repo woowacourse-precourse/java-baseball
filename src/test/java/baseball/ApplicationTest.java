@@ -139,16 +139,15 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("낫싱");
     }
 
-//    @Test
-//    void countPrintGameEnd() {
-//        int ballCount = 0;
-//        int strikeCount = 3;
-//
-//        GameBranch gameBranch = new GameBranch();
-//        int result = gameBranch.status(ballCount, strikeCount);
-//
-//        assertThat(output()).contains("3스트라이크", "게임 종료");
-//    }
+    @Test
+    void GameEnd() {
+        GameBranch gameBranch = new GameBranch();
+        int branchEnd = gameBranch.branch("2");
+        assertThat(branchEnd).isEqualTo(-3);
+
+        int branchReStart = gameBranch.branch("1");
+        assertThat(branchReStart).isEqualTo(-2);
+    }
 
     @Test
     void branchTest_END() {

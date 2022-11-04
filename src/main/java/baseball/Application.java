@@ -25,11 +25,12 @@ public class Application {
             int strikeCount = comparison.checkStrike(correctAnswer, slicedInput); // 정답과 유저 입력 값을 비교해서 strikeCount 구함
 
             GameBranch gameBranch = new GameBranch();
-            int gameStatus = gameBranch.status(ballCount, strikeCount);
+            int gameStatus = gameBranch.status(ballCount, strikeCount); // 각 Count가 들어가서 검증
+            // -1이 넘어오면 다시 반복문 처음으로
 
-            if (gameStatus == -2) {
+            if (gameStatus == -2) { // -2가 넘어오면 게임 다시 시작 (strikeCount가 3일 때만 반환될 수 있음.)
                 correctAnswer = Start.reStart();
-            } else if (gameStatus == -3) {
+            } else if (gameStatus == -3) { // -3이 넘어오면 프로그램 종료 (strikeCount가 3일 때만 반환될 수 있음.)
                 break;
             }
         }
