@@ -42,6 +42,7 @@ public class FrontController {
 			inputValidUtil.checkInputValid(userInput);
 			userBall = userBallService.makeUserBall(userInput, answerNumber);
 		} while (!gameEndService.isAnswer(userBall));
+
 	}
 
 	public boolean exit() {
