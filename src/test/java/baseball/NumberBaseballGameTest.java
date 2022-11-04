@@ -34,4 +34,35 @@ public class NumberBaseballGameTest {
 
         assertThat(outputStream.toString().trim()).isEqualTo(result);
     }
+
+    @Test
+    void 특정_숫자와_순서를_가진_공을_하나_생성한다() {
+        Ball ball = new Ball(1, 0);
+
+        assertThat(ball).isInstanceOf(Ball.class);
+    }
+
+    @Test
+    void 특정_숫자와_순서를_가진_공에서_숫자를_체크() throws NoSuchFieldException, IllegalAccessException {
+        Ball ball = new Ball(3, 0);
+        int result = 3;
+
+        Field field = ball.getClass().getDeclaredField("number");
+        field.setAccessible(true);
+        int number = field.getInt(ball);
+
+        assertThat(number).isEqualTo(result);
+    }
+
+    @Test
+    void 특정_숫자와_순서를_가진_꽁에서_순서를_체크() throws NoSuchFieldException, IllegalAccessException {
+        Ball ball = new Ball(1, 2);
+        int result = 2;
+
+        Field field = ball.getClass().getDeclaredField("order");
+        field.setAccessible(true);
+        int order = field.getInt(ball);
+
+        assertThat(order).isEqualTo(result);
+    }
 }
