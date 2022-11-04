@@ -9,6 +9,7 @@ public class User {
 
     public void inputNumber() {
         String inputValue = Console.readLine();
+        InputValidator.validateNumber(inputValue);
         setNumber(inputValue);
     }
 
