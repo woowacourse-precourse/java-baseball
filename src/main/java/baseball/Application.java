@@ -60,15 +60,32 @@ public class Application {
         return true;
     }
 
+    static boolean check_duplicate(String number) {
+        char[] num_arr = number.toCharArray();
+        boolean condition1 = num_arr[0] != num_arr[1];
+        boolean condition2 = num_arr[0] != num_arr[2];
+        boolean condition3 = num_arr[1] != num_arr[2];
+
+        return condition1 && condition2 && condition3;
+    }
+
+    static String get_computer_number() {
+        String computer_number;
+        do{
+            computer_number = Randoms.pickNumberInRange(100, 1000) + "";
+        } while(!check_duplicate(computer_number));
+
+        return computer_number;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        String computer_number;
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean quit = false;
         while (!quit) {
-            String computer_number = Randoms.pickNumberInRange(100, 1000) + "";
+            computer_number = get_computer_number();
             quit = play_game(computer_number);
         }
-
     }
 }
