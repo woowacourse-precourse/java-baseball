@@ -6,8 +6,10 @@ import java.util.List;
 
 public class GameStartController {
     public void GameStart() {
+
         ResultService result = new ResultService();
         RandomValue randomValue = new RandomValue();
+
         int Restart = 1;
 
         while (Restart == 1) {
