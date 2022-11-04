@@ -5,15 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GameResultJudgmentTest {
+class GameResultJudgementTest {
 
-  GameResultJudgmentTest judge;
+  GameResultJudgement judge;
   @BeforeEach
   void GameResultJudgmentCreate() {
-    judge = new GameResultJudgmentTest();
+    judge = new GameResultJudgement();
   }
   @Test
   void GameResultJudgmentCreateWithMaxLen() {
-    judge = new GameResultJudgmentTest(maxLen);
+    judge = new GameResultJudgement(3);
   }
 }
