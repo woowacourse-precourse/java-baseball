@@ -12,7 +12,7 @@
   - [X] **Game**
   - 게임 구현에 사용될 추상클래스입니다.
   - 추가적인 게임 구현시 사용(ex. 여러가지 미니게임들을 포함한 게임팩)
-  - 상수 status, gameName과 추상메서드 initialize, terminate를 가집니다.
+  - 상수 status, gameName과 추상메서드 initialize, terminate, simulate를 가집니다.
     - [X] getStatus
     - 게임의 상태를 알려줍니다.
     - [X] getGameName
@@ -61,17 +61,19 @@
       - [X] terminate
       - 게임을 종료시킵니다.
       - 게임 상태를 게임끝으로 바꿉니다.
-
-      - [ ] playTurn
-      - 숫자 야구 게임 한 턴을 진행합니다.
-        - [ ] getGuessResult
-        - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 센다.
-          - [ ] getDigitResult
-          - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려준다.
-          - [ ] isGameOver
-          - 게임 종료 조건을 충족했는지 확인합니다.
-      - [ ] askNewGame
-      - 새로운 게임을 시작할지 확인합니다.
+      
+      - [ ] simulate
+      - 입력을 검사하고, 게임 상태에 따라 입력을 처리합니다.
+        - [ ] playTurn
+        - 숫자 야구 게임 한 턴을 진행합니다.
+          - [ ] getGuessResult
+          - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 센다.
+            - [ ] getDigitResult
+            - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려준다.
+            - [ ] isGameOver
+            - 게임 종료 조건을 충족했는지 확인합니다.
+        - [ ] askNewGame
+        - 새로운 게임을 시작할지 확인합니다.
 
 ---
 
