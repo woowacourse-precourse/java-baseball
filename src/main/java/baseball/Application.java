@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void startApp() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        // TODO: 게임 시작 호출
+        startGame();
     }
 
     public static void startGame() {
-        String answer = createThreeDigitNumber(); // TODO: 3자리 숫자 랜덤 생성 호출
+        String answer = createThreeDigitNumber();
         boolean isAnswer = false;
 
         while (!isAnswer) {
