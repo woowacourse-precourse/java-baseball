@@ -9,11 +9,10 @@
     - ✅서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
     - ✅서로 다른 3자리 수를 생성하고 불러오는 메소드 (getNewThreeDifferentNumbers)
 - player
-    - ❌입력값이 담길 String 필드 (inputValue)
-    - ❌서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
-    - ❌서로 다른 3자리 수를 불러오는 메소드 (getThreeDifferentNumbers)
-        - ❌입력값의 유효성을 검사하는 메소드 (checkInput)
-        - ❌입력값을 각각의 자릿수로 나누는 메소드 (splitInput)
+    - ✅서로 다른 3자리 수가 담길 List 필드 (threeDifferentNumbers)
+    - ✅서로 다른 3자리 수를 불러오는 메소드 (createThreeDifferentNumbers)
+        - ✅입력값의 유효성을 검사하는 메소드 (checkInput)
+        - ✅입력값을 각각의 자릿수로 나누는 메소드 (splitToDigits)
 - calculator
     - ❌스트라이크가 담길 Integer 필드 (strike)
     - ❌볼이 담길 Integer 필드 (ball)
