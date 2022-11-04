@@ -1,9 +1,8 @@
 package baseball.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class BallsTest {
@@ -11,7 +10,14 @@ class BallsTest {
     @Test
     public void ballSizeExceptionTest() throws Exception {
         List<Integer> integers = List.of(1234);
-        Assertions.assertThatThrownBy(() -> Balls.from(integers))
+        assertThatThrownBy(() -> Balls.from(integers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void ballSameNumberExceptionTest() throws Exception {
+        List<Integer> integers = List.of(778);
+        assertThatThrownBy(() -> Balls.from(integers))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
