@@ -17,6 +17,7 @@ public class Game {
 
     /**
      * 사용자의 입력을 받아 List로 변환해 넘겨주는 메소드
+     *
      * @return 숫자를 차례로 넣은 List
      */
     public List<Integer> getUserInput() {
@@ -37,19 +38,27 @@ public class Game {
     /**
      * 게임의 한 라운드를 수행하는 메소드
      */
-    public void playGameRound(){
+    public void playGameRound() {
         Computer computer = new Computer();
         List<Integer> computerRandomDigit = computer.completedDigits;
 
-        while (true){
+        while (true) {
             try {
                 List<Integer> userInputDigit = getUserInput();
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 continue;
             }
 
             // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
 
         }
+    }
+
+    /**
+     * 게임을 이겼는지(종료할 수 있는지) 확인하는 메소드
+     * 3스트라이크가 되면 종료할 수 있다.
+     */
+    public boolean isGameWin(String checkDigitResult) {
+        return checkDigitResult.equals("3스트라이크");
     }
 }
