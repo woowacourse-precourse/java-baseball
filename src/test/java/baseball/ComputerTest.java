@@ -1,9 +1,10 @@
 package baseball;
+import baseball.entity.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-public class ComputerTest {
+ class ComputerTest {
 
     Computer computer;
 
@@ -15,7 +16,7 @@ public class ComputerTest {
     @Test
     void 랜덤값은_1부터_9사이(){
         assertThat(computer.createRandomNumber()).isLessThanOrEqualTo(9)
-                .isGreaterThat.orEqualTo(1);
+                .isGreaterThanOrEqualTo(1);
     }
 
     @Test
