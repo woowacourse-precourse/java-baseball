@@ -32,4 +32,28 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.checkBaseballInput(input3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 게임_재진행여부_올바른값() {
+        String input = "1";
+        InputValidator.checkProgressInput(input);
+
+        input = "2";
+        InputValidator.checkProgressInput(input);
+    }
+
+    @Test
+    void 게임_재진행여부_잘못된값() {
+        String input1 = "3";
+        assertThatThrownBy(() -> InputValidator.checkProgressInput(input1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String input2 = "t";
+        assertThatThrownBy(() -> InputValidator.checkProgressInput(input2))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String input3 = "12";
+        assertThatThrownBy(() -> InputValidator.checkProgressInput(input3))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
