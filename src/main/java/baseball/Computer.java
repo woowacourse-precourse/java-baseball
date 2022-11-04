@@ -41,8 +41,8 @@ public class Computer {
         if (strikeBallMap.getOrDefault("스트라이크", 0) != 0) {
             result = result + (strikeBallMap.get("스트라이크") + "스트라이크");
         }
-        if (!strikeBallMap.containsKey("볼") && !strikeBallMap.containsKey("스트라이크")) {
-            result = result + "낫싱";
+        if (result.equals("")) {
+            result = "낫싱";
         }
 
         return result;
