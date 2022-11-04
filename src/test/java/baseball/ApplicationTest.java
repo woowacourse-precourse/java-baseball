@@ -32,4 +32,15 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void countBallTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("697");
+                    assertThat(output()).contains("1볼");
+                },
+                5, 8, 9
+        );
+    }
 }

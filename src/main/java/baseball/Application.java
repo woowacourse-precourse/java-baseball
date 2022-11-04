@@ -9,10 +9,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = getComputerValue();
         System.out.println(computer);
         List<Integer> user = new Input(readLine()).getInputList();
         int ball = countBall(computer, user);
+        System.out.print(ball+"볼 ");
     }
 
     private static int countBall(List<Integer> computer, List<Integer> user) {
