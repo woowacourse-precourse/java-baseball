@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,18 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    @DisplayName("야구공 3개 미만 입력 예외케이스")
+    void 플레이어입력_예외_테스트() {
+    	//given, when
+    	String twoLengthBall = "12";
+    	String oneLengthBall = "9";
+    	String zeroLengthBall = "";
+    	//then
+    	assertThatThrownBy(() -> Application.checkLessThanThreeExecption(twoLengthBall)).isInstanceOf(IllegalArgumentException.class);
+    	assertThatThrownBy(() -> Application.checkLessThanThreeExecption(oneLengthBall)).isInstanceOf(IllegalArgumentException.class);
+    	assertThatThrownBy(() -> Application.checkLessThanThreeExecption(zeroLengthBall)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
