@@ -75,6 +75,13 @@
   <br>
   *private boolean isInputException(int number)*<br>
   : 사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
+  <br>
+  *private boolean isRightSize(int number)*<br>
+  : 세자리 수인지 확인합니다.<br>
+  <br>
+  *private boolean isPositiveNumber(int number)*<br>
+  : 음수나 특수문자가 없는지 확인합니다.<br>
+  <br>
     
 
 
