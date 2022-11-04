@@ -6,9 +6,12 @@ import java.util.HashSet;
 public class Input {
     private final static String  REQUEST_PLAYER_GUESS = "숫자를 입력해주세요 : ";
     private final static String REQUEST_PLAYER_CHOICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final static String RESTART = "1";
+    private final static String EXIT = "2";
     private final static int COMMON_GUESS_LENGTH = 3;
     private final static char MIN_GUESS_NUMBER = '1';
     private final static char MAX_GUESS_NUMBER = '9';
+
     private String playerGuess;
     private String playerChoice;
 
@@ -44,10 +47,7 @@ public class Input {
     }
 
     private void validateChoice() {
-        if (playerChoice.length() != 1) {
-            throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
-        }
-        if (!playerChoice.equals("1") && !playerChoice.equals("2")) {
+        if (!playerChoice.equals(RESTART) && !playerChoice.equals(EXIT)) {
             throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
         }
     }
