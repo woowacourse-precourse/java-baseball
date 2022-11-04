@@ -12,13 +12,13 @@
 * 플레이어의 입력값에 중복이 있는 경우
 ### 3. 플레이어와 컴퓨터의 숫자 값을 비교한 결과를 계산하는 기능
 #### 메인 구현 함수
-    BaseballResult compare(List<Integer> userNumber, List<Integer> targetNumber)
+    GameResult Computer.compare(List<Integer> targetNumber)
 ### 4. 계산된 결과를 바탕으로 메세지를 출력하는 기능
 #### 메인 구현 함수
-    void printResult(BaseBallResult result)
+    void printResult(GameResult result)
 ### 5. 계산된 결과를 바탕으로 게임을 종료하거나 다시 입력받는 기능
 #### 메인 구현 함수
-    boolean nextTurn(BaseBallResult result)
+    boolean nextTurn(GameResult result)
 ### 6. 게임이 종료된 경우 게임을 다시 시작하거나 완전히 종료하는 기능
 #### 메인 구현 함수
     void gameExit()
