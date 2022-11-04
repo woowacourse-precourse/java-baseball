@@ -11,6 +11,7 @@ public class Baseball {
     private String userNumbers;
     private int numberLength;
     private List<Integer> computerNumber;
+    GameInputException gameInputException;
 
     Baseball() {
         this(3);
@@ -18,8 +19,8 @@ public class Baseball {
 
     Baseball(int numberLength) {
         this.numberLength = numberLength;
+        gameInputException = new GameInputException(numberLength);
     }
-
 
     public void play() throws IllegalArgumentException{
         setComputerNumber();
@@ -29,7 +30,7 @@ public class Baseball {
 
         while (strike != numberLength) {
             setUserNumbers();
-            GameInputException gameInputException = new GameInputException(numberLength);
+
             gameInputException.checkUserInput(userNumbers);
 
             strike = getStrike();
