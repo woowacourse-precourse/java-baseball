@@ -20,6 +20,12 @@ public class Compare {
     }
 
     public int getNumberOfBall(List<Integer> randomNumberList, List<Integer> inputNumberList){
-        return 0;
+        int numberOfBall = 0;
+        for (Integer inputNumber : inputNumberList){
+            if (randomNumberList.contains(inputNumber)){
+                numberOfBall += 1;
+            }
+        }
+        return numberOfBall;
     }
 }
