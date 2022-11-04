@@ -26,6 +26,11 @@ public class Application {
         return computerNumberGroup;
     }
 
+    private static String setMyNumberGroupByString() {
+        String inputNumberString = Console.readLine();
+        return inputNumberString;
+    }
+
     private static void isValidMyInput(String inputNumberString){
         if(!isValidLength(inputNumberString)){
             throw new IllegalArgumentException("세자리가 아님");
@@ -50,5 +55,4 @@ public class Application {
             return false;
         }
     }
-
 }
