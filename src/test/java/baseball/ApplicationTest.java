@@ -101,4 +101,29 @@ class ApplicationTest extends NsTest {
         assertThat(exception2.getCause().getMessage()).isEqualTo("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
         assertThat(exception3.getCause().getMessage()).isEqualTo("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
     }
+
+    @Test
+    void 중복된_값이_존재하면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        UserNumber userNumber = new UserNumber();
+        Method method = userNumber.getClass().getDeclaredMethod("checkDuplicateValue", List.class);
+        method.setAccessible(true);
+
+        List<Character> numberList1 = "113".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList2 = "499".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList3 = "555".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+
+        // when
+        InvocationTargetException exception1 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList1));
+        InvocationTargetException exception2 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList2));
+        InvocationTargetException exception3 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList3));
+
+        // then
+        assertThat(exception1.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
+        assertThat(exception2.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
+        assertThat(exception3.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
+    }
 }
