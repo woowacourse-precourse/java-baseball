@@ -49,7 +49,7 @@ public class Application {
 
     static class Nums{
         private Set<Integer> sets;
-        Nums(String inputData)  {
+        Nums(String inputData) throws Exception  {
             if(!isValidLength(inputData.length())) throw new IllegalArgumentException() ;
             Set<Integer> sets = InputToSet(inputData);
             if(!isValidSetSize(sets)) throw new IllegalArgumentException();
