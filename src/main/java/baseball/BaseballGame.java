@@ -31,6 +31,10 @@ public class BaseballGame {
         userInput = scanner.nextLine();
         if (invalidUserNumber(userInput)){
             throw new IllegalArgumentException("잘못된 입력입니다.");
+        } else {
+            for (int i = 0; i < 3; i++){
+                this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
+            }
         }
     }
     public boolean restartGame(){
