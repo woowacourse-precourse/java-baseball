@@ -2,12 +2,14 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Application {
-    public static List<Integer> userInputToList(Integer userInput){
+    public List<Integer> userInputToList(Integer userInput){
         List userInputList = new ArrayList<>();
         while(userInput > 0){
             userInputList.add(userInput%10);
@@ -38,8 +40,43 @@ public class Application {
         }
     }
 
+    public static Map<String, Integer> playball(Integer answer, Integer userInput){
+        List answerList = userInputToList(answer);
+        List userInputList = userInputToList(userInput);
+        Map<String, Integer> score = Map.of(
+                "Ball",0,
+                "Strike",0)
+
+        for(int i=0; i<userInputList.size(); i++){
+            Integer ball = userInputList.get(i);
+
+            if(answerList.contains(ball) && answerList.indexOf(ball) == i){
+                score.put("Strike", score.get("Strike")+1);
+            }
+            if(answerList.contains(ball) && answerList.indexOf(ball) != i){
+                score.put("Ball", score.get("Ball")+1);
+            }
+        }
+        return score;
+    }
+
+    public String printResult(Map<String, Integer> score){
+        String answer = "";
+
+        if(!score.get("Ball") == 0){
+            answer += score.get("Ball").toString() + "볼 "
+        }
+        if(!score.get("Strike") == 0){
+            answer += score.get("Strike").toString() + "스트라이크"
+        }
+
+        if(answer.length() == 0){
+            answer = "낫싱";
+        }
+        return answer;
+    }
+
     public static void main(String[] args) {
-        checkUserInput(123);
         // TODO: 프로그램 구현
     }
 }
