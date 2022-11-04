@@ -46,9 +46,9 @@ method 2. String select_Random_Number( )
 
 3) 위치와 숫자를 맞춘경우 > 스트라이크	
 	
-method 3. String compare_two_case(String computer, String user)
+method 3. List<Integer> compare_two_case(String computer, String user)
 
-method 4. List<Integer> is_Strike_or_Ball(String computer, String user , int index)
+method 4. Integer is_Strike_or_Ball(String computer, String user , int index)
 
 method 5. String calculate_Result(List<Integer> list_result) 
     
@@ -58,7 +58,7 @@ method 5. String calculate_Result(List<Integer> list_result)
 
     3 만일 contain != -1 이라면, computer와 user의 index를 비교한는 method4 수행
 
-    4 Method 4 에서 수행한 List를 Methiod 5.에 넣어줌
+    4 Method 4 에서 수행한 Integer를 List에 넣어줌
 
     5 Method 5. 에서 나온 String 을 return.
 
@@ -69,6 +69,8 @@ method 5. String calculate_Result(List<Integer> list_result)
 > list_result의 index 2의 값이 3이면 
 
 2) 3스트라이크가 아닌경우, method 3과 method 4 를 다시 수행.
+
+> method3, 4를 수행하는 큰 method가 필요.
 	
 **6. 사용자에게 게임을 계속할 것인지 아닌지 값을 받기** 
 
