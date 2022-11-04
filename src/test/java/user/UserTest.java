@@ -1,6 +1,6 @@
 package user;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.User;
 import java.io.ByteArrayInputStream;
