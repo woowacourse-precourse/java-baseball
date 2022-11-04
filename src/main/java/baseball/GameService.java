@@ -1,9 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameService {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
+    private static final String RESTART = "1";
+    private static final String QUIT = "2";
+    private static final int THREE_STRIKE = 3;
 
     private final InputBallNumber inputBallNumber;
     private final RandomBallNumber randomBallNumber;
@@ -50,6 +55,22 @@ public class GameService {
         isNothing(strike, ball);
     }
 
+    public void reenterOrEndGame(Result result) {
+        int strike = result.getStrike();
+        if (strike == THREE_STRIKE) {
+            restartOrQuitGame();
+        }
+        if (strike != THREE_STRIKE) {
+            playGame();
+        }
+    }
+
+    public void playGame() {
+        Result strikeAndBall = checkStrikeAndBall();
+        printResult(strikeAndBall);
+        reenterOrEndGame(strikeAndBall);
+    }
+
     private void isOnlyStrike(int strike, int ball) {
         if (strike < 3 && strike > 0 && ball == 0) {
             System.out.println(strike + STRIKE);
@@ -78,6 +99,26 @@ public class GameService {
         if (strike == 3) {
             System.out.println(strike + STRIKE);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private void restartOrQuitGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String num = Console.readLine();
+        isNotRestartAndQuit(num);
+        isRestartGame(num);
+    }
+
+    private void isRestartGame(String num) {
+        if (num.equals(RESTART)) {
+            randomBallNumber.clearRandomNumber();
+            playGame();
+        }
+    }
+
+    private void isNotRestartAndQuit(String num) {
+        if (!num.equals(RESTART) && !num.equals(QUIT)) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
     }
 }
