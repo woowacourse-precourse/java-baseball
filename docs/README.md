@@ -60,8 +60,21 @@
   : 컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
   <br>
   *public static PlayerComputer getInstance()*<br>
-  : PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.
-    
+  : PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  <br>
+- **PlayerUser Class** :  싱글톤 객체를 가진 클래스<br>
+  <br>
+  *public static PlayerUser getInstance()*<br>
+  : PlayerUser 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  <br>
+  *public void inputNumber()*<br>
+  : 사용자에게 세자리 수를 입력하게 한다.<br>
+  <br>
+  *public String getInputNumber()*<br>
+  : playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.<br>
+  <br>
+  *private boolean isInputException(int number)*<br>
+  : 사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
     
 
 
