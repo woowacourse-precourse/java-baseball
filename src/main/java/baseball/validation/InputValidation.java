@@ -14,4 +14,8 @@ public class InputValidation {
                 || input.matches("^(.)\\1.$")
                 || input.matches("^(.).\\1$");
     }
+
+    public static boolean isOneOrTwo(String input) {
+        return input.matches("^[12]$");
+    }
 }
