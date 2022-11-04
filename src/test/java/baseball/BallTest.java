@@ -20,63 +20,78 @@ public class BallTest {
 
     @Test
     void 볼_case1() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3));
         assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(0);
     }
+
     @Test
     void 볼_case2() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(9,8,7));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(4, 5, 7));
         assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(1);
     }
+
     @Test
     void 볼_case3() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(8,6));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(6,8));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(1);
     }
+
     @Test
     void 볼_case4() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(8,9,7));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(3);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(8, 9, 7));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(3);
     }
+
     @Test
     void 볼_case5() {
         List<Integer> answer = new ArrayList<>(Arrays.asList());
         List<Integer> numbers = new ArrayList<>(Arrays.asList());
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(0);
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(0);
+    }
+
+    @Test
+    void 볼_case6_strike가_있는_경우() {
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(7,9,6));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(1);
     }
 
     @Test
     void 볼_error_answer_원소_수_4개() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(6,7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(7,8,9));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
     }
+
     @Test
     void 볼_error_num_원소_수_4개() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(7,8,9,6));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9, 6));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
     }
+
     @Test
     void 볼_error_길이가_다를경우() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(7,8));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
     }
+
     @Test
     void 볼_error_10_이상의_수() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(7,8,10));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 10));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
     }
+
     @Test
     void 볼_error_숫자가_중복된_경우() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(7,8,9));
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(8,8,8));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(8, 8, 8));
+        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
     }
 }
