@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Computer {
 
+    public static final int STRIKE_COUNT = 0;
+    public static final int BALL_COUNT = 1;
+
     public static final int COMPUTER_NUMBER_SIZE = 3;
     private List<Integer> computerNumber;
 
@@ -42,17 +45,26 @@ public class Computer {
 
     public String playGame(List<Integer> playerNumber) {
         List<Integer> computerNumber = getComputerNumber();
-        int strikeCount = 0;
-        int ballCount = 0;
+        List<Integer> strikeAndBallCounts = new ArrayList<>();
+        strikeAndBallCounts.add(0);
+        strikeAndBallCounts.add(0);
         for (int playerNumberIndex = 0; playerNumberIndex < playerNumber.size(); playerNumberIndex++) {
             for (int computerNumberIndex = 0; computerNumberIndex < computerNumber.size(); computerNumberIndex++) {
-                if (playerNumber.get(playerNumberIndex).equals(computerNumber.get(computerNumberIndex))) {
-                    strikeCount = getCount(playerNumberIndex == computerNumberIndex, strikeCount);
-                    ballCount = getCount(playerNumberIndex != computerNumberIndex, ballCount);
-                }
+                calcStrikeAndBallCounts(playerNumber, computerNumber, strikeAndBallCounts,
+                        playerNumberIndex, computerNumberIndex);
             }
         }
-        return getResult(strikeCount, ballCount);
+        return getResult(strikeAndBallCounts.get(STRIKE_COUNT), strikeAndBallCounts.get(BALL_COUNT));
+    }
+
+    private void calcStrikeAndBallCounts(List<Integer> playerNumber, List<Integer> computerNumber,
+            List<Integer> strikeAndBallCounts, int playerNumberIndex, int computerNumberIndex) {
+        if (playerNumber.get(playerNumberIndex).equals(computerNumber.get(computerNumberIndex))) {
+            strikeAndBallCounts.set(STRIKE_COUNT,
+                    getCount(playerNumberIndex == computerNumberIndex, strikeAndBallCounts.get(STRIKE_COUNT)));
+            strikeAndBallCounts.set(BALL_COUNT,
+                    getCount(playerNumberIndex != computerNumberIndex, strikeAndBallCounts.get(BALL_COUNT)));
+        }
     }
 
     private int getCount(boolean condition, int count) {
