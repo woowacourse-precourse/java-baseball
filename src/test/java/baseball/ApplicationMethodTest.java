@@ -83,4 +83,11 @@ class ApplicationMethodTest {
         int countBall = Application.countBall(computerAnswer, userAnswer, notStrikeList);
         assertThat(countBall).isEqualTo(1);
     }
+
+    @Test
+    void printUserScore(){
+        int countStrike = 1;
+        int countBall = 2;
+        Application.printUserScore(countStrike, countBall);
+    }
 }
