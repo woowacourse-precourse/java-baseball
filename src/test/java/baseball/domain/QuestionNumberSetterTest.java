@@ -16,7 +16,7 @@ public class QuestionNumberSetterTest {
 	QuestionNumberSetter questionNumberSetter = new QuestionNumberSetter();
 	@Test
 	@DisplayName("랜덤 숫자 결정 기능 테스트")
-	void setRandomNumberTest() {
+	void pickThreeRandomNumbersTest() {
 		List<Integer> randomNumbers = questionNumberSetter.pickThreeRandomNumbers();
 		String randomNumbersString = randomNumbers.stream()
 				.map(Object::toString).collect(Collectors.joining());
