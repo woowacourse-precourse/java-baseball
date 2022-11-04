@@ -9,6 +9,9 @@ public class Application {
         String numberPlayer = Input.player();
         System.out.println(numberPlayer);
 
+        PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
+        System.out.println(round.countStrikes());
+
 
         }
     }
