@@ -34,8 +34,8 @@ public class GameService {
                 return true;
             }
             System.out.printf(BALL_STRIKE_MESSAGE, ball, strike);
-            return true;
         }
+        return true;
     }
 
     public boolean getPlayResult(List<Integer> userNumber, List<Integer> answer) {
