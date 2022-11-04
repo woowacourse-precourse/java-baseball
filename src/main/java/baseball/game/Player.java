@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.message.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +8,13 @@ import java.util.List;
 public class Player {
 
     public List<Integer> inputPlayerNumber() {
+        System.out.print(SystemMessage.ENTER_NUMBER);
         String playerNumber = Console.readLine();
         return stringToList(playerNumber);
+    }
+
+    public String inputContinueOrStop() {
+        return Console.readLine();
     }
 
     private List<Integer> stringToList(String playerInput) {
