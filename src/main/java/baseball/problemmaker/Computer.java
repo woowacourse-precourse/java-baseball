@@ -58,4 +58,9 @@ public class Computer implements ProblemMaker {
 
         System.out.println(ballCountBuilder);
     }
+
+    @Override
+    public boolean isFinishedCurrentGame(BallCount ballCount) {
+        return false;
+    }
 }

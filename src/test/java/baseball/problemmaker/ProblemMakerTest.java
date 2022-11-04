@@ -40,4 +40,22 @@ public class ProblemMakerTest {
         assertThat(ballCount.getStrike()).isEqualTo(1);
         assertThat(ballCount.getBall()).isEqualTo(2);
     }
+
+    @Test
+    void isFinishedCurrentGame_메서드_사용시_현재_게임이_끝났는지_확인_true() {
+        BallCount ballCount = new BallCount(3, 0);
+        Numbers numbers = new Numbers(List.of(1, 2, 3));
+        ProblemMaker problemMaker = new Computer(numbers);
+
+        assertThat(problemMaker.isFinishedCurrentGame(ballCount)).isEqualTo(true);
+    }
+
+    @Test
+    void isFinishedCurrentGame_메서드_사용시_현재_게임이_끝났는지_확인_false() {
+        BallCount ballCount = new BallCount(2, 0);
+        Numbers numbers = new Numbers(List.of(1, 2, 3));
+        ProblemMaker problemMaker = new Computer(numbers);
+
+        assertThat(problemMaker.isFinishedCurrentGame(ballCount)).isEqualTo(false);
+    }
 }
