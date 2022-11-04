@@ -10,6 +10,7 @@ public class Application {
     static String errorMessage = "입력 형식에 맞지 않습니다 프로그램을 종료합니다.";
     static String startMessage = "숫자 야구 게임을 시작합니다.";
     static String inputMessage = "숫자를 입력해 주세요: ";
+    static String threeStrikeMessage = "3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -97,6 +98,7 @@ public class Application {
         String hintMessage = "";
 
         validateUserInput(userInput);
+        checkUserInputIsThreeStrike(userInput);
 
         if(!checkNothing(userInput)) {
             ballCount = checkBall(userInput);
@@ -126,5 +128,10 @@ public class Application {
 
         hintMessage = hintMessageBuilder.toString();
         return hintMessage;
+    }
+
+    public static void checkUserInputIsThreeStrike(String userInput) {
+        int strikeCount = checkStrike(userInput);
+        System.out.println(threeStrikeMessage);
     }
 }
