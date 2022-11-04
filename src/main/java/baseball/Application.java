@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -14,9 +17,11 @@ public class Application {
 
     String input = "";
     String answer = "";
+    int tryCount = 0;
 
     GameIO gameIO = GameIO.getInstance();
-    Referee referee = new Referee();
+    Referee referee = Referee.getInstance();
+    DB database = DB.getInstance();
 
     public void startGame() {
         gameIO.printStartLog();
@@ -32,6 +37,8 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
+            tryCount++;
+
             String judgement = referee.judge(input, answer);
             gameIO.printResult(judgement);
 
@@ -41,6 +48,7 @@ public class Application {
             }
         } // end of While
 
+        // TODO: 모든 시도 데이터 보여주기
         gameIO.printFinishLog();
     }
 
@@ -73,6 +81,8 @@ public class Application {
 
     public void resetGame() {
         answer = generateAnswer();
+        database.addData(new Data(LocalDateTime.now(), tryCount));
+        tryCount = 0;
     }
 
     public static void main(String[] args) {

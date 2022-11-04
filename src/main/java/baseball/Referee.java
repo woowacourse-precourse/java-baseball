@@ -8,7 +8,13 @@ public class Referee {
     private final String NOTHING = "낫싱";
     static final String THREE_STRIKE = "3스트라이크";
 
-    public Referee() {
+    private static Referee instance;
+
+    public static Referee getInstance() {
+        if (instance == null) {
+            instance = new Referee();
+        }
+        return instance;
     }
 
     public String judge(String input, String answer) {

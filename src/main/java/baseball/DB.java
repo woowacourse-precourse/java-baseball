@@ -4,10 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DB {
+
+    private static DB instance;
     private List<Data> database = new ArrayList<>();
+
+    public static DB getInstance() {
+        if (instance == null) {
+            instance = new DB();
+        }
+        return instance;
+    }
 
     public void addData(Data data) {
         database.add(data);
+    }
+
+    public List<Data> getAllData() {
+        return this.database;
     }
 
     public Data getData(Data data) {
