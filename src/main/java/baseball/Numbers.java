@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,15 @@ public class Numbers {
             }
         }
         return new Numbers(randomNumbers);
+    }
+
+    public static Numbers createInputNumbers() {
+        String[] splitInput = Console.readLine().split("");
+        List<Integer> numbers = new ArrayList<>();
+        for (String input : splitInput) {
+            numbers.add(Integer.parseInt(input));
+        }
+        return new Numbers(numbers);
     }
 
     public List<Integer> getNumbers() {
