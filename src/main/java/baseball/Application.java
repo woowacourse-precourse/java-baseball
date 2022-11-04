@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -51,6 +52,14 @@ public class Application {
 		}
 		possibleBallResult.put("볼",0);
 		possibleBallResult.put("스트라이크",0);
+		
+		HashSet<String> numSet = new HashSet<>(); //입력한 숫자들이 하나라도 중복이 되면 IllegalArgumentException 발생.
+		for(int i=0;i<num.length;i++) {
+			numSet.add(num[i]);
+		}
+		if(numSet.size()!=3) {
+			throw new IllegalArgumentException();
+		}
 		
 		String[] num = numstr.split("");
 		for(int i =0;i<num.length;i++) {
