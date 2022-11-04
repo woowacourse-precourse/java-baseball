@@ -1,0 +1,56 @@
+package baseball.service;
+
+import baseball.model.Computer;
+import baseball.model.Player;
+
+public class GameService {
+
+    Player player;
+    Computer computer;
+    private int strikeCount;
+    private int ballCount;
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setComputer(Computer computer) {
+        this.computer = computer;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public void initializeScore(){
+
+    }
+
+    public void checkComputerWithPlayerNumber(){
+
+    }
+
+    public void scoreGameWithIndex(int index){
+
+    }
+
+    public boolean isStrike(int index){
+        return false;
+    }
+
+    public boolean isBall(int index){
+        return false;
+    }
+
+    public void increaseStrike(){
+
+    }
+
+    public void increaseBall(){
+
+    }
+}
