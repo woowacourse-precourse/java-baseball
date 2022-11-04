@@ -15,5 +15,17 @@ public class Game {
         }
         this.random = randomNumbers;
     }
-    
+    public boolean playgame(){
+        while(true){
+            Inputnumber inputnumber = new Inputnumber();
+            inputnumber.inputCheck();
+            List inputNumber = inputnumber.stringTointList();
+
+            Comparenumber comparenumber = new Comparenumber(random, inputNumber);
+            comparenumber.compareprint();
+            if (!comparenumber.isbaseballcontinue()) return false;
+        }
+    }
+
+
 }
