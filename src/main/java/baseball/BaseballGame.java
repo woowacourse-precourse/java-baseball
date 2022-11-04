@@ -39,7 +39,13 @@ public class BaseballGame {
         }
         return count;
     }
-    
+
+    private void getNothing(List<Integer> inputs, List<Integer> answer) {
+        if (!answer.removeAll(inputs)) {
+            System.out.println("nothing");
+        }
+    }
+
     private boolean isStrike(List<Integer> inputs, List<Integer> answer, int index) {
         return inputs.get(index) == answer.get(index);
     }
