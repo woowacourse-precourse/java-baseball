@@ -9,17 +9,18 @@
     - 스트라이크 개수, 볼 개수 필드
     - 볼개수 업데이트 하는 메서드
     - 스트라이크 개수 업데이트하는 메서드
-4. service : 순수한 비지니스 로직이 담겨 있는 곳
+3. service : 순수한 비지니스 로직이 담겨 있는 곳
     1. 입력값을 판단한하는 역할 (핵심 로직) (스트라이크, 볼, 낫싱 등등)  -> UserBallService
         - 우선 유저 입력값에 따른 UserBall 생성
             - 이때 입력값에 따라 ball , strike가 몇개인지 판다하며 userball 업데이트 한다
-        - 그리고 userball 객체 내부 값에 따라 정답인지 판단
-            - 정답이면, ouputview, inputview의 메서드 후출하고 true 를 반환
-            - 정답이 아니면, 볼, 스타라이크 개수에 따라 Ouputview 출력문 호출하고 false 반환
     2. 게임 시작을 담당하는 서비스 -> GameStartService
         - 정답 숫자 생성하는 로직 -> userballservice
         - inputView에서 게임 시작 출력 메서드 호출
-5. view : 사용자에게 화면을 보여주는 부분에 초점
+    3. 게임 종료 관련 로직 담당 서비스 -> GameEndService
+        - userball 객체 내부 값에 따라 정답인지 판단
+        - 정답이면, ouputview, inputview의 메서드 후출하고 true 를 반환
+        - 정답이 아니면, 볼, 스타라이크 개수에 따라 Ouputview 출력문 호출하고 false 반환
+4. view : 사용자에게 화면을 보여주는 부분에 초점
     1. 입력을 받는 역할 (inputView)
         - 게임 시작 문구 출력하는 메서드
         - 정답 값을 맞추고 게임을 종료할 것인지 사용자한테 출력문 출력 메서드
@@ -28,11 +29,11 @@
         - 볼을 출력하는 메서드
         - 스트라이크를 출력하는 메서드
         - 정답을 맞추면 출력하는 메서드
-6. util : 유용한 패키지 (외부의 의존성 없이 인자값만 받아 처리하는 부분, 에러 상수값)
+5. util : 유용한 패키지 (외부의 의존성 없이 인자값만 받아 처리하는 부분, 에러 상수값)
     - 예외를 처리하는 상수 -> errorConst
     - inputView, outputView에서 사용하는 상수 -> viewConst
     - 입력값을 이 valid 한지 판단하는 로직 -> inputvalidUtil
-7. config :
+6. config :
     - 새로운 객체 매번 생성해주기 보다 생성자 주입 활용
     - 애플리케이션 초기 객체 설정
 
@@ -58,10 +59,11 @@
 4. service : 순수한 비지니스 로직이 담겨 있는 곳
     1. 입력값을 판단한하는 역할 (핵심 로직) (스트라이크, 볼, 낫싱 등등)  -> UserBallService
         - UserBall 객체를 생성 및 입력값에 따른 ball, strike 업데이트 메서드
-        - userball에 따른 OutView 호출하는 메서드
     2. 게임 시작을 담당하는 서비스 -> GameStartService
         - 정답 숫자 생성하는 로직 -> userballservice
         - inputView에서 게임 시작 출력 메서드 호출
+    3. 게임 종료 관련 로직 담당 서비스 -> GameEndService
+        - userball에 따른 OutView 호출하는 메서드
 5. view : 사용자에게 화면을 보여주는 부분에 초점
     1. 입력을 받는 역할 (inputView)
         - 게임 시작 문구 출력하는 메서드
