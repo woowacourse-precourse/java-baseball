@@ -1,6 +1,8 @@
 package baseball.utils;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class GameUtilTest {
     @DisplayName("숫자 램덤 생성")
     void generate_number() {
         int number = GameUtil.pickNumber(3);
-        List<Integer> splitOneDigits = GameUtil.splitNumber(number);
+        List<Integer> splitOneDigits = GameUtil.splitNumberToOneDigits(number);
 
         assertThat(number).isNotNegative();
         assertThat(splitOneDigits)
