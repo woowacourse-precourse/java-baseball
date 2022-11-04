@@ -33,7 +33,7 @@ public class GameResult {
     }
 
     public boolean isNothing() {
-        return true;
+        return strikeCount == ZERO && ballCount == ZERO;
     }
 
     public int getBallCount() {
