@@ -70,7 +70,13 @@ public class GameManager {
     }
 
     private boolean hasDuplicatedDigit(String input) {
+        for(int index = 0;index < input.length();index++) {
+            if(hasEqullDigit(index)) {
+                return true;
+            }
+        }
 
+        return false;
     }
 
     private ArrayList<Integer> inputToUserGuess(String input) {
