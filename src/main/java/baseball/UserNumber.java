@@ -13,17 +13,17 @@ public class UserNumber {
     private static final String REPLACE_CRITERIA = "";
     private static final String DELETE_CRITERIA = " ";
 
-    private final List<Long> userNumbers;
+    private final List<Integer> userNumbers;
 
     public UserNumber(String userNumbers) {
         this.userNumbers = validate(userNumbers);
     }
 
-    private List<Long> validate(String userNumbers) {
-        String newUserNumbers = validateBlank(userNumbers); // 앞뒤, 숫자사이 공백       // 숫자가 맞는지
-        validateNumberCount(newUserNumbers); // 숫자가 개수가 맞는지
-        Long newTypeUserNumbers = validateNumber(newUserNumbers); // 형변환
-        return validateDuplication(newTypeUserNumbers); // 중복된 수가 있는지
+    private List<Integer> validate(String userNumbers) {
+        String newUserNumbers = validateBlank(userNumbers);
+        validateNumberCount(newUserNumbers);
+        Integer newTypeUserNumbers = validateNumber(newUserNumbers);
+        return validateDuplication(newTypeUserNumbers);
     }
 
     private String validateBlank(String userNumbers) {
@@ -40,16 +40,16 @@ public class UserNumber {
         }
     }
 
-    private Long validateNumber(String newUserNumber) {
+    private Integer validateNumber(String newUserNumber) {
         try {
-            return Long.parseLong(newUserNumber);
+            return Integer.parseInt(newUserNumber);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
 
-    private List<Long> validateDuplication(Long newTypeUserNumbers) {
-        Set<Long> numbers = new LinkedHashSet<>();
+    private List<Integer> validateDuplication(Integer newTypeUserNumbers) {
+        Set<Integer> numbers = new LinkedHashSet<>();
         while (newTypeUserNumbers > NUMBER_LENGTH_CRITERIA_ZERO) {
             numbers.add(newTypeUserNumbers % NUMBER_DIVIDE_CRITERIA_TEN);
             newTypeUserNumbers /= NUMBER_DIVIDE_CRITERIA_TEN;
@@ -60,7 +60,7 @@ public class UserNumber {
         return new ArrayList<>(numbers);
     }
 
-    public List<Long> getUserNumbers() {
+    public List<Integer> getUserNumbers() {
         return userNumbers;
     }
 
