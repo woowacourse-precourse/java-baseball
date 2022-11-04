@@ -15,7 +15,7 @@ class InputTest {
         //when
         Input input = new Input("123");
         //then
-        assertThat(input.getInput()).isEqualTo(123);
+        assertThat(input.getInput()).isEqualTo("123");
     }
 
     @Test

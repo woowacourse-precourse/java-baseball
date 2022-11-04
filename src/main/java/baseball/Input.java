@@ -13,8 +13,8 @@ public class Input {
         this.input = input;
     }
 
-    public int getInput() {
-        return Integer.parseInt(this.input);
+    public String getInput() {
+        return this.input;
     }
 
     private void CheckLange(String input) {
