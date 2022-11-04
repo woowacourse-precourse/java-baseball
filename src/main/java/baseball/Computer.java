@@ -40,4 +40,38 @@ public class Computer {
         return randomDigits;
     }
 
+    /**
+     * 유저에게 입력받은 값과 컴퓨터가 생성한 랜덤값을 비교하여 결과를 반환하는 메소드
+     * @param userInputDigits 유저가 입력한 값
+     * @param computerRandomDigit 컴퓨터가 생성한 랜덤 값
+     * @return 볼, 스트라이크, 낫싱 결과
+     */
+    public String checkDigits(List<Integer> userInputDigits, List<Integer> computerRandomDigit) {
+        int strikeCnt = 0;
+        int ballCnt = 0;
+
+        for (int digitIndex = 0; digitIndex < Computer.RANDOM_NUMBER_LENGTH; digitIndex++) {
+            int userDigit = userInputDigits.get(digitIndex);
+            int computerDigit = computerRandomDigit.get(digitIndex);
+
+            if (userDigit == computerDigit) {
+                strikeCnt++;
+            }
+            if (userDigit != computerDigit && computerRandomDigit.contains(userDigit)) {
+                ballCnt++;
+            }
+        }
+
+        if (strikeCnt == 0 && ballCnt == 0) {
+            return "낫싱";
+        } else if (strikeCnt == 0) {
+            return ballCnt + "볼";
+        } else if (ballCnt == 0) {
+            return strikeCnt + "스트라이크";
+        } else {
+            return ballCnt + "볼" + " " + strikeCnt + "스트라이크";
+        }
+
+    }
+
 }
