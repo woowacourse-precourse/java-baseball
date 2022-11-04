@@ -46,4 +46,5 @@ class ComputerTest {
     Computer.testComputerPrint(2);
     Assertions.assertThat("숫자를 입력해주세요 : ").isEqualTo(outContent.toString());
   }
+
 }
