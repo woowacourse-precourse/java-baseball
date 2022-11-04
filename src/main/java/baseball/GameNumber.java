@@ -10,7 +10,8 @@ public class GameNumber {
         this.gameNums = gameNums;
     }
 
-    public int getStrikes(List<Integer> userNums) {
+    public int getStrikes(UserNumber userNumber) {
+        List<Integer> userNums = userNumber.getUserNums();
         int strikes = 0;
         for (int i = 0; i < 3; i++) {
             strikes += checkStrike(gameNums.get(i), userNums.get(i));
@@ -18,7 +19,8 @@ public class GameNumber {
         return strikes;
     }
 
-    public int getBalls(List<Integer> userNums) {
+    public int getBalls(UserNumber userNumber) {
+        List<Integer> userNums = userNumber.getUserNums();
         int balls = 0;
         for (int position = 0; position < 3; position++) {
             balls += checkBall(userNums.get(position), position);

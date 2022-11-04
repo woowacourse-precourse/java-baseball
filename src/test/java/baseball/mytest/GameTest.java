@@ -16,9 +16,10 @@ public class GameTest {
         List<Integer> gameNumbers = Arrays.asList(1, 2, 3);
         GameNumber gameNumber = new GameNumber(gameNumbers);
 
-        List<Integer> userNums = Arrays.asList(4, 5, 6);
-        int strikes = gameNumber.getStrikes(userNums);
-        int balls = gameNumber.getBalls(userNums);
+        String userNums = "456";
+        UserNumber userNumber = new UserNumber(userNums);
+        int strikes = gameNumber.getStrikes(userNumber);
+        int balls = gameNumber.getBalls(userNumber);
 
         Assertions.assertThat(gameNumber.isNothing(strikes, balls)).isEqualTo(true);
     }
@@ -28,9 +29,10 @@ public class GameTest {
         List<Integer> gameNumbers = Arrays.asList(1, 2, 3);
         GameNumber gameNumber = new GameNumber(gameNumbers);
 
-        List<Integer> userNums = Arrays.asList(3, 4, 5);
-        int strikes = gameNumber.getStrikes(userNums);
-        int balls = gameNumber.getBalls(userNums);
+        String userNums = "345";
+        UserNumber userNumber = new UserNumber(userNums);
+        int strikes = gameNumber.getStrikes(userNumber);
+        int balls = gameNumber.getBalls(userNumber);
 
         Assertions.assertThat(gameNumber.isNothing(strikes, balls)).isEqualTo(false);
     }
@@ -43,8 +45,8 @@ public class GameTest {
         UserNumber userNumber = new UserNumber("345");
         List<Integer> userNums = userNumber.getUserNums();
 
-        int strikes = gameNumber.getStrikes(userNums);
-        int balls = gameNumber.getBalls(userNums);
+        int strikes = gameNumber.getStrikes(userNumber);
+        int balls = gameNumber.getBalls(userNumber);
 
         Assertions.assertThat(strikes).isEqualTo(0);
         Assertions.assertThat(balls).isEqualTo(1);
@@ -58,8 +60,8 @@ public class GameTest {
         UserNumber userNumber = new UserNumber("345");
         List<Integer> userNums = userNumber.getUserNums();
 
-        int strikes = gameNumber.getStrikes(userNums);
-        int balls = gameNumber.getBalls(userNums);
+        int strikes = gameNumber.getStrikes(userNumber);
+        int balls = gameNumber.getBalls(userNumber);
 
         Assertions.assertThat(strikes).isEqualTo(3);
         Assertions.assertThat(balls).isEqualTo(0);
@@ -73,8 +75,8 @@ public class GameTest {
         UserNumber userNumber = new UserNumber("345");
         List<Integer> userNums = userNumber.getUserNums();
 
-        int strikes = gameNumber.getStrikes(userNums);
-        int balls = gameNumber.getBalls(userNums);
+        int strikes = gameNumber.getStrikes(userNumber);
+        int balls = gameNumber.getBalls(userNumber);
 
         Assertions.assertThat(strikes).isEqualTo(1);
         Assertions.assertThat(balls).isEqualTo(1);
