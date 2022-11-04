@@ -120,4 +120,23 @@ public class Application {
 
         return duplicationTestList;
     }
+
+    private static int compareNumbers(List<Integer> USERS_NUMBERS, List<Integer> COMPUTERS_NUMBERS) {
+        int strike = ZERO;
+        int ball = ZERO;
+
+        for(int indexNumber = ZERO; indexNumber < MAX_NUMBERS_COUNT; indexNumber++) {
+            if(COMPUTERS_NUMBERS.contains(USERS_NUMBERS.get(indexNumber))) {
+                ball++;
+            }
+            if(COMPUTERS_NUMBERS.get(indexNumber).equals(USERS_NUMBERS.get(indexNumber))) {
+                ball--;
+                strike++;
+            }
+        }
+
+        printCompareResult(strike, ball);
+
+        return strike;
+    }
 }
