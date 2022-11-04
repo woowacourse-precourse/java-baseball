@@ -19,4 +19,12 @@ public class Data {
     public int getTryCount() {
         return tryCount;
     }
+
+    public void modifyTryData(LocalDateTime newTryData) {
+        this.tryDate = newTryData;
+    }
+
+    public void modifyTryCount(int newTryCount) {
+        this.tryCount = newTryCount;
+    }
 }
