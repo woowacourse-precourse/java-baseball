@@ -65,4 +65,37 @@ class GameTest {
         List<Integer> user = Arrays.asList(4, 1, 6);
         assertThat(game.checkStrike(computer, user)).isEqualTo(0);
     }
+
+    @Test
+    void 볼_개수_구하기1(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(1, 5, 7);
+        List<Integer> user = Arrays.asList(4, 1, 6);
+        int strike = game.checkStrike(computer, user);
+        assertThat(game.checkBall(computer, user, strike)).isEqualTo(1);
+    }
+    @Test
+    void 볼_개수_구하기2(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(1, 5, 6);
+        List<Integer> user = Arrays.asList(4, 1, 6);
+        int strike = game.checkStrike(computer, user);
+        assertThat(game.checkBall(computer, user, strike)).isEqualTo(1);
+    }
+    @Test
+    void 볼_개수_구하기3(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(1, 5, 6);
+        List<Integer> user = Arrays.asList(6, 1, 5);
+        int strike = game.checkStrike(computer, user);
+        assertThat(game.checkBall(computer, user, strike)).isEqualTo(3);
+    }
+    @Test
+    void 볼_개수_구하기4(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(6, 1, 5);
+        List<Integer> user = Arrays.asList(6, 1, 5);
+        int strike = game.checkStrike(computer, user);
+        assertThat(game.checkBall(computer, user, strike)).isEqualTo(0);
+    }
 }
