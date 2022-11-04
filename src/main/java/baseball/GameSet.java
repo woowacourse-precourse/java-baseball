@@ -31,6 +31,7 @@ public class GameSet {
         PrintMessage.inputUserNum();
         String inputNumber = Console.readLine();
         userAnswer = makeUserAnswer(inputNumber);
+        ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
@@ -57,5 +58,21 @@ public class GameSet {
                 ballCount++;
             }
         }
+    }
+    public boolean gameEndCheck(){
+        if(strikeCount == 3){
+            PrintMessage.answerMessage();
+
+            String userResponse = Console.readLine();
+            if(userResponse.contains("1")){
+                setComputerAnswer();
+                return true;
+            }
+            if(userResponse.contains("2")){
+                return false;
+            }
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 }

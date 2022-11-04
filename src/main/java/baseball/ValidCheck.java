@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class ValidCheck {
 
-    public void validInputNumber(List<Integer> userInput){
+    public static void validInputNumber(List<Integer> userInput){
         if(userInput.size() != 3){
             throw new IllegalArgumentException();
         }
