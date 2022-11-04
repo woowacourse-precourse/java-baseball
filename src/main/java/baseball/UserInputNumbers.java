@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constant.Constant.*;
+import static constant.ErrorMessage.*;
 
 public class UserInputNumbers {
     private List<Integer> userInputNumbers = new ArrayList<>();
@@ -26,13 +27,13 @@ public class UserInputNumbers {
 
     public static boolean validUserInputNumber(String numbers) {
         if (numbers.length()!=NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_RADIX);
         }
         if (!isValidDigit(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
         }
         if (!duplicateNumber(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATE_INPUT_VALUE);
         }
         return true;
     }
