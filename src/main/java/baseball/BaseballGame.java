@@ -82,15 +82,13 @@ public class BaseballGame {
     }
 
     private String makeResultString() {
-        String answer = "";
-        if (ball == 0 & strike == 0) {
-            answer += NOTHING;
-        }
-        if (ball > 0) {
-            answer += String.format(ANSWER_FORMAT, ball, BALL);
-        }
-        if (strike > 0) {
-            answer += String.format(ANSWER_FORMAT, strike, STRIKE);
+        String answer = NOTHING;
+        if (ball > 0 & strike > 0) {
+            answer = String.format(ANSWER_FORMAT + " " + ANSWER_FORMAT, ball, BALL, strike, STRIKE);
+        } else if (ball > 0) {
+            answer = String.format(ANSWER_FORMAT, ball, BALL);
+        } else if (strike > 0) {
+            answer = String.format(ANSWER_FORMAT, strike, STRIKE);
         }
         return answer;
     }
