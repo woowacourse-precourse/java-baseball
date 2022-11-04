@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
+    final static int ZERO = 0;
     final static int MIN_RANDOM_VALUE = 1;
     final static int MAX_RANDOM_VALUE = 9;
     final static int MIN_PATTERN_VALUE = 1;
@@ -101,5 +102,22 @@ public class Application {
         if(!Pattern.matches(PATTERN, userInputNumbers)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static List<Integer> validateDuplication(String userInputNumbers) {
+        List<Integer> duplicationTestList = new ArrayList<>(MAX_NUMBERS_COUNT);
+
+        for(int indexNumber = ZERO; indexNumber < MAX_NUMBERS_COUNT; indexNumber++) {
+            char charAtIndex = userInputNumbers.charAt(indexNumber);
+            int intIndex = Character.getNumericValue(charAtIndex);
+
+            if(duplicationTestList.contains(intIndex)) {
+                throw new IllegalArgumentException();
+            }
+
+            duplicationTestList.add(intIndex);
+        }
+
+        return duplicationTestList;
     }
 }
