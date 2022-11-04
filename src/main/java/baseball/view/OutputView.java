@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public static void printAnswerInputGuideMessage() {
-        System.out.println(ANSWER_INPUT_GUIDE);
+        System.out.print(ANSWER_INPUT_GUIDE);
     }
 
     public static void printGameEndMessage() {
