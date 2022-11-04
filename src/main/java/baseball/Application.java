@@ -32,24 +32,34 @@ public class Application {
             List<Integer> user = getUserNumber();
             // 값을 제공하면 해당 값의 첫번 째 인덱스를 반환
             // indexof 해서 i 랑 같으면 스트라이크고, -1이면 x i 랑 다르면 볼
-
             int[] result = getResult(computer, user);
 
-            if (isSame(0, result[0])) {
-                System.out.println(result[1] + "볼 ");
-            } else if (isSame(0, result[1])) {
-                System.out.println(result[0] + "스트라이크");
-            } else if (isSame(3, result[1])) {
-                System.out.println("낫싱");
-            } else {
-                System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
-            }
-
+            System.out.println(printResult(result));
             if (isSame(3, result[0])) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
+    }
+
+    // 결과를 프린트하는 메소드
+    private static String printResult(int[] result) {
+        StringBuilder sb = new StringBuilder();
+        // result[0] = strike, result[1] = ball
+        if (isSame(0, result[0]) && isSame(0, result[1])) { // strike ball 둘다 0인 경우
+            sb.append("낫싱");
+            return sb.toString();
+        }
+        if (isSame(0, result[1])) { // ball 이 0인 경우
+            sb.append(result[0] + "스트라이크");
+            return sb.toString();
+        }
+        if (isSame(0, result[0])) { // strike 가 0인 경우
+            sb.append(result[1] + "볼");
+            return sb.toString();
+        }
+        sb.append(result[0] + "볼 " + result[1] + "스트라이크"); // 둘다 0 보다 클 경우
+        return sb.toString();
     }
 
     // strike 와 ball 의 결과를 리턴받는 메소드
@@ -79,8 +89,8 @@ public class Application {
     }
 
     // 파라미터 두개를 비교하는 메소드
-    private static boolean isSame(int i, int idxOf) {
-        return idxOf == i;
+    private static boolean isSame(int num, int idxOf) {
+        return idxOf == num;
     }
 
     // 사용자 숫자 입력받는 메소드
