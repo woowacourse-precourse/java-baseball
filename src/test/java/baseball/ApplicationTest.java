@@ -115,18 +115,22 @@ class ApplicationTest extends NsTest {
         assertThat(Application.checkStrikeCount(123, 321)).isEqualTo(1);
     }
 
+    @Test
     void checkBall1(){
         assertThat(Application.checkStrikeCount(123, 143)).isEqualTo(0);
     }
 
+    @Test
     void checkBall2(){
         assertThat(Application.checkStrikeCount(987, 765)).isEqualTo(1);
     }
 
+    @Test
     void checkBall3(){
         assertThat(Application.checkStrikeCount(915, 125)).isEqualTo(1);
     }
 
+    @Test
     void checkBall4(){
         assertThat(Application.checkStrikeCount(915, 159)).isEqualTo(2);
     }
