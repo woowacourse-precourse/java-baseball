@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static baseball.Application.StringConst.*;
+import static baseball.Application.ScoreConst.*;
 
 public class Application {
     private static NumberGenerator numberGenerator = new NumberGeneratorRandomImpl();
@@ -85,7 +85,7 @@ public class Application {
         return false;
     }
 
-    interface StringConst {
+    interface ScoreConst {
         String BALL = "볼";
         String STRIKE = "스트라이크";
         String NOTHING = "낫싱";
