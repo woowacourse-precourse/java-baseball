@@ -85,9 +85,10 @@ public class Game {
     public String printResult(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
             return NOTHING;
-        }
-        if (strikeCount == 3) {
+        } else if (strikeCount == 3) {
             return strikeCount + STRIKE + NEW_LINE + GAME_OVER;
+        } else if (strikeCount == 0) {
+            return ballCount + BALL;
         }
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
