@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ScoreCalculatorTest {
     ScoreCalculator scoreCalculator;
@@ -75,5 +76,10 @@ class ScoreCalculatorTest {
         Score expect = scoreCalculator.calculateScore(123, 354);
         assertThat(expect).isInstanceOf(NStrikeNBallScore.class);
         assertThat(expect.toString()).isEqualTo("1볼");
+    }
+    @Test
+    void unSupportedTest() {
+        assertThatThrownBy(()->scoreCalculator.calculateScore(1234, 1234))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 }
