@@ -27,6 +27,9 @@ class Computer {
         }
         number = numberList;
     }
+    public List<Integer> getNumber() {
+        return number;
+    }
 }
 
 class Player {
@@ -41,6 +44,9 @@ class Player {
         }
         Collections.reverse(numberList);
         number = numberList;
+    }
+    public List<Integer> getNumber() {
+        return number;
     }
 }
 class Operator {
@@ -64,9 +70,20 @@ class Operator {
             showResult();
         }
     }
-    public int compareNumber() {
-
-
+    public void compareNumber() {
+        int ball = 0;
+        int strike = 0;
+        List<Integer> computerNumber = computer.getNumber();
+        List<Integer> playerNumber = player.getNumber();
+        for(int i = 0; i<computerNumber.size(); i++) {
+            int index = playerNumber.indexOf(computerNumber.get(i));
+            if(index != -1) {
+                if(index == i) strike++;
+                else ball++;
+            }
+        }
+        ballCount = ball;
+        strikeCount = strike;
         if(strikeCount==3)
             correctAnswer = true;
     }
