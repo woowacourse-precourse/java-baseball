@@ -26,4 +26,13 @@ public class Balls {
         }
         return false;
     }
+
+    public boolean isOut(Ball other) {
+        for (Ball ball : balls) {
+            if (!ball.isOut(other)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

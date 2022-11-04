@@ -17,4 +17,8 @@ public class Ball {
     public boolean isBall(Ball other) {
         return this.number == other.number && this.position != other.position;
     }
+
+    public boolean isOut(Ball other) {
+        return this.number != other.number;
+    }
 }
