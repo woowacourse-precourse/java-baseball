@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Computer {
     private List<Integer> numbers;
 
-    public void pickRandomNumbersFrom1To9(){
+    public void pickRandomNumbersFrom1To9() {
         numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,7 +19,7 @@ public class Computer {
     }
 
     public List<Integer> getComputersPick() {
-        if (numbers == null){
+        if (numbers == null) {
             pickRandomNumbersFrom1To9();
         }
         return numbers;

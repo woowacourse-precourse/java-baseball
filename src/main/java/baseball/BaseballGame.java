@@ -13,24 +13,24 @@ public class BaseballGame {
     private User user;
     private boolean gameOver;
 
-    BaseballGame(){
+    BaseballGame() {
         computer = new Computer();
         user = new User();
     }
 
-    public void play(){
+    public void play() {
         System.out.println("숫자 야구 게임을 시작합니다 ");
         computer.pickRandomNumbersFrom1To9();
         gameOver = false;
 
-        while (!gameOver){
+        while (!gameOver) {
             try {
                 List<Integer> usersPick = user.pickNumbers();
                 Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
                 printResult(result);
                 gameOverIfThreeStrike(result);
 
-            }catch (IllegalArgumentException exception) {
+            } catch (IllegalArgumentException exception) {
                 throw exception;
             }
         }
@@ -73,14 +73,14 @@ public class BaseballGame {
         }
 
         List<String> results = new ArrayList<>();
-        for (String key: result.keySet()) {
+        for (String key : result.keySet()) {
             results.add(result.get(key) + key);
         }
         String resultToString = String.join(" ", results);
         System.out.println(resultToString);
     }
 
-    private void gameOverIfThreeStrike(Map<String, Integer> result){
+    private void gameOverIfThreeStrike(Map<String, Integer> result) {
         if (result.getOrDefault("스트라이크", 0) == 3) {
             gameOver = true;
         }
