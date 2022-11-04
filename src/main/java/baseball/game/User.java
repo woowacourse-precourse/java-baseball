@@ -22,7 +22,7 @@ public class User {
         if (input.length() != GAME_LENGTH) {
             throw new IllegalArgumentException(GAME_EXCEPTION_LENGTH_MESSAGE);
         }
-        if (!input.matches(POSITIVE_INTEGER_ONLY_REGEX)) {
+        if (!isOneToNine(input)) {
             throw new IllegalArgumentException(GAME_EXCEPTION_INTEGER_MESSAGE);
         }
     }
