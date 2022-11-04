@@ -1,5 +1,6 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
@@ -30,5 +31,21 @@ class InputTest {
     String sysIn = "123";
     inputClass.printInputString(sysIn);
     assertEquals("[1, 2, 3]", outContent.toString().trim());
+  }
+
+  @Test
+  public void 입력으로_세_자릿_수가_아닌_경우() {
+    String sysIn1 = "12";
+    String sysIn2 = "1234";
+    String sysIn3 = "12345";
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn1);
+    }).isInstanceOf((IllegalArgumentException.class));
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn2);
+    }).isInstanceOf((IllegalArgumentException.class));
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn3);
+    }).isInstanceOf((IllegalArgumentException.class));
   }
 }
