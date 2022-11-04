@@ -56,8 +56,6 @@ public class Application {
 		if(Pattern.matches(pattern,numstr)) {  //입력한 문자가 숫자가 아니면 IllegalArgumentException 발생
 			throw new IllegalArgumentException();
 		}
-		possibleBallResult.put("볼",0);
-		possibleBallResult.put("스트라이크",0);
 		
 		HashSet<String> numSet = new HashSet<>(); //입력한 숫자들이 하나라도 중복이 되면 IllegalArgumentException 발생.
 		for(int i=0;i<num.length;i++) {
@@ -66,6 +64,9 @@ public class Application {
 		if(numSet.size()!=3) {
 			throw new IllegalArgumentException();
 		}
+		
+		possibleBallResult.put("볼",0);
+		possibleBallResult.put("스트라이크",0);
 		
 		String[] num = numstr.split("");
 		for(int i =0;i<num.length;i++) {
