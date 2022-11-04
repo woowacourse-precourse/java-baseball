@@ -45,8 +45,8 @@ public class ControllerTest {
 	void 결과_볼3() {
 		GameController gc = new GameController();
 
-		gc.compareNumber("123" ,"241");
-		assertThat(1).isEqualTo(1);
+		gc.compareNumber("123" ,"041");
+		assertThat(0).isEqualTo(1);
 	}
 	@Test
 	void 결과_볼4() {

@@ -2,6 +2,7 @@ package baseball.view;
 
 public class View {
 	public enum Text{
+		error("INPUT VALUE ERROR"),
 		space (" "),
 		start("숫자 야구 게임을 시작합니다.\n"),
 		input("숫자를 입력해주세요 : "),
@@ -23,7 +24,10 @@ public class View {
 			System.out.print(Text.ball.print);
 		return true;
 	}
-
+	public static void isSpace(boolean isVisited) {
+		if (isVisited)
+			printText(Text.space.print);
+	}
 	public static void printText(String text) {
 		System.out.print(text);
 	}

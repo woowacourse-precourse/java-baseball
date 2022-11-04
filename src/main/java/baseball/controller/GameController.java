@@ -2,6 +2,7 @@ package baseball.controller;
 
 import java.util.List;
 
+import baseball.service.ExceptionHandler;
 import baseball.service.GameService;
 import baseball.view.View;
 
@@ -14,35 +15,30 @@ public class GameController {
 		return GameService.createRandomNumber();
 	}
 	public static int gameStart(String user, String computer) {
-		saveUserNumber(user);
+		checkErrorNumber(user);
 
-		List<Integer> result = compareNumber(computer, user);
-
-		gameResult(result);
-
-		return result.get(0);
+		return gameResult(compareNumber(computer, user));
 	}
-
-	public static void gameResult(List<Integer> result) {
+	public static Integer gameResult(List<Integer> result) {
 		boolean isVisited = false;
 
 		if (result.get(ball) != nothing) {
 			isVisited = View.printResult(result.get(ball), ball);
 		}
 		if (result.get(strike) != nothing) {
-			if (isVisited)
-				View.printText(View.Text.space.print);
+			View.isSpace(isVisited);
 			View.printResult(result.get(strike), strike);
 		}
 		if (result.get(ball) == nothing && result.get(strike) == nothing) {
 			View.printText(View.Text.nothing.print);
 		}
 		View.printText("\n");
-	}
-	public static void saveUserNumber(String userNumber) {
-		GameService.checkException(userNumber);
-	}
 
+		return result.get(strike);
+	}
+	public static void checkErrorNumber(String userNumber) {
+		ExceptionHandler.checkException(userNumber);
+	}
 	public static List<Integer> compareNumber(String computer, String user) {
 		return GameService.compareNumber(GameService.convertStringToList(computer),
 				GameService.convertStringToList(user));
