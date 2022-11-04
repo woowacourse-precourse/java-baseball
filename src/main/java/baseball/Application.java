@@ -35,28 +35,40 @@ public class Application {
             input_number = Console.readLine();
             if ((input_number.charAt(0) == '0') || (input_number.length() != 3)) throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
+            System.out.println(e);
             return "";
         }
 
         return input_number;
     }
 
-
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        String computer_number = Randoms.pickNumberInRange(100, 1000) + "";
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    static boolean play_game(String computer_number) {
         int strike = 0;
         String input_number;
         while (strike != 3) {
             System.out.print("숫자를 입력해주세요: ");
             input_number = get_input();
-            if (input_number.equals(""))
-                break;
-            strike = count_strike(input_number,computer_number);
+            if (input_number.equals("")) break;
+            strike = count_strike(input_number, computer_number);
         }
-        System.out.println(strike);
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int option = Integer.parseInt(Console.readLine());
+            return (option != 1);
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean quit = false;
+        while (!quit) {
+            String computer_number = Randoms.pickNumberInRange(100, 1000) + "";
+            quit = play_game(computer_number);
+        }
 
     }
 }
