@@ -5,10 +5,12 @@ import java.util.HashSet;
 
 public class Input {
     private final static String  REQUEST_PLAYER_GUESS = "숫자를 입력해주세요 : ";
+    private final static String REQUEST_PLAYER_CHOICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private final static int COMMON_GUESS_LENGTH = 3;
     private final static char MIN_GUESS_NUMBER = '1';
     private final static char MAX_GUESS_NUMBER = '9';
     private String playerGuess;
+    private String playerChoice;
 
     public void getPlayerGuess() {
         System.out.print(REQUEST_PLAYER_GUESS);
@@ -32,5 +34,10 @@ public class Input {
             guessNumbers.add(guessNumber);
         }
 
+    }
+
+    public void readPlayerChoice() {
+        System.out.println(REQUEST_PLAYER_CHOICE);
+        playerChoice = Console.readLine();
     }
 }
