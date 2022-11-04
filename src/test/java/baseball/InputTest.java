@@ -23,7 +23,6 @@ public class InputTest {
         }
     }
 
-
     @Test
     void inputExceptionTest() throws Exception {
 
@@ -47,4 +46,6 @@ public class InputTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+
 }

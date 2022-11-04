@@ -5,10 +5,12 @@ import java.util.HashMap;
 public class Print {
 
     private static final String ROUND_START_MESSAGE = "숫자를 입력해주세요 : ";
+
     private static final String ROUND_RESULT_STRIKE_MESSAGE = "스트라이크 ";
     private static final String ROUND_RESULT_BALL_MESSAGE = "볼 ";
     private static final String ROUND_RESULT_NOTHING_MESSAGE = "낫싱";
 
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     public static void printRoundStart() {
         System.out.print(ROUND_START_MESSAGE);
@@ -25,5 +27,9 @@ public class Print {
             System.out.print(ROUND_RESULT_NOTHING_MESSAGE);
         }
         System.out.println();
+    }
+
+    public static void printGameStart(){
+        System.out.println(GAME_START_MESSAGE);
     }
 }
