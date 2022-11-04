@@ -34,9 +34,15 @@ public class GameManager {
         makeNewGuessNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-
+    
+    //README.md 내 주어진 코드 변형
     private void makeNewGuessNumber() {
-
+        while (guessNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!guessNumber.contains(randomNumber)) {
+                guessNumber.add(randomNumber);
+            }
+        }
     }
 
     private void validateInput(String input) {
