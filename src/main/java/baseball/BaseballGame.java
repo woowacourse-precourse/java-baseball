@@ -26,7 +26,7 @@ public class BaseballGame {
         while (!gameOver) {
             try {
                 List<Integer> usersPick = user.pickNumbers();
-                Map<String, Integer> result = countBallsAndStrikes(computer.getNumbers(), usersPick);
+                Map<String, Integer> result = getResult(computer.getNumbers(), usersPick);
                 printResult(result);
                 gameOverIfThreeStrike(result);
 
@@ -50,20 +50,36 @@ public class BaseballGame {
         }
     }
 
-    public Map<String, Integer> countBallsAndStrikes(List<Integer> computersPick, List<Integer> usersPick) {
+    public Map<String, Integer> getResult(List<Integer> computersPick, List<Integer> usersPick) {
         Map<String, Integer> counts = new TreeMap<>();
 
+        counts.put("볼", countBalls(computersPick, usersPick));
+        counts.put("스트라이크", countStrikes(computersPick, usersPick));
+
+        return counts;
+    }
+
+    private int countBalls(List<Integer> computersPick, List<Integer> usersPick) {
+        int count = 0;
         for (int i = 0; i < computersPick.size(); i++) {
             if (computersPick.get(i).equals(usersPick.get(i))) {
-                counts.put("스트라이크", counts.getOrDefault("스트라이크", 0) + 1);
                 continue;
             }
             if (computersPick.contains(usersPick.get(i))) {
-                counts.put("볼", counts.getOrDefault("볼", 0) + 1);
+                count += 1;
             }
         }
+        return count;
+    }
 
-        return counts;
+    private int countStrikes(List<Integer> computersPick, List<Integer> usersPick) {
+        int count = 0;
+        for (int i = 0; i < computersPick.size(); i++) {
+            if (computersPick.get(i).equals(usersPick.get(i))) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     private void printResult(Map<String, Integer> result) {

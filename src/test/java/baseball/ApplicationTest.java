@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
         List<Integer> picks = new ArrayList<>();
 
-        for (int num : computer.getComputersPick()) {
+        for (int num : computer.getNumbers()) {
             assertThat(picks).doesNotContain(num);
             picks.add(num);
         }
@@ -82,7 +82,7 @@ class ApplicationTest extends NsTest {
                 {3, 0}
         };
         for (int i = 0; i < computers.length; i++) {
-            Map<String, Integer> result = game.countBallsAndStrikes(computers[i], users[i]);
+            Map<String, Integer> result = game.getResult(computers[i], users[i]);
             int ballCount = result.getOrDefault("볼", 0);
             int strikeCount = result.getOrDefault("스트라이크", 0);
 
