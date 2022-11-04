@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Balls {
-	private final List<Ball> balls;
+	private List<Ball> balls;
 
 	public Balls(int firstNumber, int secondNumber, int thirdNumber) {
 		Ball firstBall = new Ball(firstNumber, 0);
@@ -12,6 +12,14 @@ public class Balls {
 		Ball thirdBall = new Ball(thirdNumber, 2);
 
 		balls = List.of(firstBall, secondBall, thirdBall);
+	}
+
+	public Balls(String consoleInput) {
+		this(
+			Character.getNumericValue(consoleInput.charAt(0)),
+			Character.getNumericValue(consoleInput.charAt(1)),
+			Character.getNumericValue(consoleInput.charAt(2))
+		);
 	}
 
 	public GameResult getGameResult(Balls otherBalls) {

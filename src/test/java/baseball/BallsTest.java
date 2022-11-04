@@ -28,4 +28,12 @@ public class BallsTest {
 
 		assertThat(balls.getGameResult(ballsToCompare)).isEqualTo(new GameResult(0, 0));
 	}
+
+	@Test
+	void 문자열값을_야구공으로_변환() {
+		Balls balls = new Balls("123");
+		Balls ballsToCompare = new Balls(1, 2, 3);
+
+		assertThat(balls).isEqualTo(ballsToCompare);
+	}
 }
