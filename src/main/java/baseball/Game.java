@@ -35,4 +35,17 @@ public class Game {
             if (input.charAt(i) >= '0' && input.charAt(i) <= '9') throw new IllegalArgumentException();
         }
     }
+
+    public void countBallAndStrike(String randomNumber, String input){
+        // 자리 & 숫자 모두 일치
+        if (randomNumber.equals(input)) return;
+
+        // 볼, 스트라이크 개수 세기
+        int ball = 0;
+        int strike = 0;
+        for (int i =0; i< SIZE; i++){
+            if (randomNumber.charAt(i) == input.charAt(i)) strike++;
+            else if (randomNumber.contains(String.valueOf(input.charAt(i)))) ball++;
+        }
+    }
 }
