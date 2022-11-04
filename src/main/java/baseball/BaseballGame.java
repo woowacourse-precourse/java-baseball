@@ -5,7 +5,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class BaseballGame {
+    Computer computer = new Computer();
+
+    public int run() {
+        computer.pickTargetNumber();
+        Computer.GameResult result;
+        do {
+            System.out.print("숫자를 입력해주세요. : ");
+            List<Integer> userNumber = checkUserNumber(readLine());
+            result = computer.compare(userNumber);
+            printResult(result);
+        } while (nextTurn(result));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.valueOf(readLine());
+    }
+
     public void printResult(Computer.GameResult result) {
         System.out.println(result);
     }
@@ -43,4 +61,12 @@ public class BaseballGame {
         }
         return user;
     }
+
+    public boolean nextTurn(Computer.GameResult result) {
+        if (result.strike == 3) {
+            return false;
+        }
+        return true;
+    }
+
 }
