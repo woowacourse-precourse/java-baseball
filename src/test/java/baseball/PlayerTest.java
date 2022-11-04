@@ -104,4 +104,17 @@ public class PlayerTest {
         number = "";
         assertThat(player.isValidNumber(number)).isEqualTo(result);
     }
+
+    @Test
+    void isOneLetterTest() {
+        Player player = new Player();
+        boolean result = true;
+        String restart = "y";
+        assertThat(player.isOneLetter(restart)).isEqualTo(result);
+        restart = "1";
+        assertThat(player.isOneLetter(restart)).isEqualTo(result);
+        result = false;
+        restart = "382";
+        assertThat(player.isOneLetter(restart)).isEqualTo(result);
+    }
 }
