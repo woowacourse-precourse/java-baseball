@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -41,12 +43,16 @@ class ApplicationTest extends NsTest {
     void 입력값이_네_자리_이상이면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
         // given
         UserNumber userNumber = new UserNumber();
-        Method method = userNumber.getClass().getDeclaredMethod("userNumberValidator", String.class);
+        Method method = userNumber.getClass().getDeclaredMethod("checkUserInputLength", List.class);
         method.setAccessible(true);
+
         String number = "1234";
+        List<Character> numberList = number.chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+
 
         // when
-        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, number));
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList));
 
         // then
         assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
@@ -56,14 +62,19 @@ class ApplicationTest extends NsTest {
     void 입력값이_두_자리_이하이면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
         // given
         UserNumber userNumber = new UserNumber();
-        Method method = userNumber.getClass().getDeclaredMethod("userNumberValidator", String.class);
+        Method method = userNumber.getClass().getDeclaredMethod("checkUserInputLength", List.class);
         method.setAccessible(true);
+
         String number = "12";
+        List<Character> numberList = number.chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+
 
         // when
-        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, number));
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList));
 
         // then
         assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
     }
+
 }
