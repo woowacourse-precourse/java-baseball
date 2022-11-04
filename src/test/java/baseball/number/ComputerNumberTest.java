@@ -1,5 +1,7 @@
 package baseball.number;
 
+import baseball.model.number.ComputerNumber;
+import baseball.model.number.NumberDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

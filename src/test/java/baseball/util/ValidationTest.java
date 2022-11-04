@@ -1,11 +1,11 @@
 package baseball.util;
 
-import baseball.number.NumberDto;
+import baseball.model.number.NumberDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static baseball.util.Validation.validateNumberNotRepeated;
+import static baseball.model.util.Validation.validateNumberNotRepeated;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ValidationTest {
