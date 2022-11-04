@@ -52,14 +52,20 @@ public class GameContext {
     public void handleUserInput() throws IllegalArgumentException {
         userInput = Console.readLine();
 
-        if (!isValidityInput(userInput))
+        if (!isValidityInput(userInput)) {
+            state = GameState.EXIT_WITH_EXCEPTION;
             throw new IllegalArgumentException();
+        }
 
         if (shouldDecideBallCount(userInput))
             decideBallCount(userInput);
         else if (shouldSelectRestartOrExit(userInput)) {
             selectRestartOrExit(userInput);
         }
+    }
+
+    public boolean gameShouldStop() {
+        return (state == GameState.EXIT_NORMALLY) || (state == GameState.EXIT_WITH_EXCEPTION);
     }
 
     private boolean isValidityInput(String userInput) {
