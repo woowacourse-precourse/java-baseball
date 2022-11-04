@@ -7,20 +7,19 @@ public class NumberComparison {
     private final int NUMBERS_SIZE = 3;
     private final int ANSWER_COUNT = 3;
 
-    List<Integer> computerNumbers;
-    List<Integer> userNumbers;
+    private List<Integer> computerNumbers;
+    private List<Integer> userNumbers;
+
+    public NumberComparison(List<Integer> computerNumbers){
+        this.computerNumbers = computerNumbers;
+    }
 
     public boolean startComparison(List<Integer> userNumbers) {
 
-        setUserNumbers(userNumbers);
+        this.userNumbers = userNumbers;
 
         int strikeCount = getStrikeCount();
         int ballCount = getBallCount(); //TODO : if문 다음으로 이동 시킬 것
-
-        if (isAnswer(strikeCount)) {
-            printAnswerText();
-            return true;
-        }
 
         if (isNothing(strikeCount, ballCount)) {
             printNothingText();
@@ -28,6 +27,11 @@ public class NumberComparison {
         }
 
         printStrikeBallCount(strikeCount, ballCount);
+
+        if (isAnswer(strikeCount)) {
+            return true;
+        }
+
         return false;
 
     }
@@ -58,11 +62,6 @@ public class NumberComparison {
         return strikeCount == 0 && ballCount == 0;
     }
 
-    private void printAnswerText() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
     private boolean isAnswer(int strikeCount) {
         return strikeCount == ANSWER_COUNT;
     }
@@ -71,12 +70,12 @@ public class NumberComparison {
 
         int ballCount = 0;
 
-        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++) {
+        for (int index = 0; index < NUMBERS_SIZE; index++) {
 
             List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(0, 1, 2));
-            IndexNumbers.remove(indexNumber);
+            IndexNumbers.remove(index);
 
-            int userNumber = userNumbers.get(indexNumber);
+            int userNumber = userNumbers.get(index);
 
             if (searchNumber(IndexNumbers, userNumber)) {
                 ballCount++;
@@ -90,9 +89,9 @@ public class NumberComparison {
 
     private boolean searchNumber(List<Integer> indexNumbers, int userNumber) {
 
-        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE - 1; indexNumber++) {
-            int remainedIndexNumber = indexNumbers.get(indexNumber);
-            if (userNumber == computerNumbers.get(remainedIndexNumber)) {
+        for (int index = 0; index < NUMBERS_SIZE - 1; index++) {
+            int remainedIndex = indexNumbers.get(index);
+            if (userNumber == computerNumbers.get(remainedIndex)) {
                 return true;
             }
         }
@@ -105,8 +104,8 @@ public class NumberComparison {
 
         int strikeCount = 0;
 
-        for (int indexNumber = 0; indexNumber < NUMBERS_SIZE; indexNumber++) {
-            if (userNumbers.get(indexNumber) == computerNumbers.get(indexNumber)) {
+        for (int index = 0; index < NUMBERS_SIZE; index++) {
+            if (userNumbers.get(index) == computerNumbers.get(index)) {
                 strikeCount++;
             }
         }
@@ -114,12 +113,4 @@ public class NumberComparison {
         return strikeCount;
     }
 
-    private void setUserNumbers(List<Integer> userNumbers) {
-        this.userNumbers = userNumbers;
-    }
-
-
-    public void setComputerNumbers(List<Integer> computerNumbers) {
-        this.computerNumbers = computerNumbers;
-    }
 }
