@@ -110,4 +110,30 @@ class GameValidationTest {
         //then
         assertThat(result).isFalse();
     }
+
+    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 포함되면 true 반환한다.")
+    @Test
+    void validateCorrectRange() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.validateRange(number);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("플레이어의 각 자리 게임 숫자가 정해진 범위에 벗어나면 false 반환한다.")
+    @Test
+    void validateOutOfRange() {
+        //given
+        String number = "103";
+
+        //when
+        boolean result = GameValidation.validateRange(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
 }
