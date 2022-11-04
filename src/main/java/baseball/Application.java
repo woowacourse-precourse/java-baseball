@@ -56,7 +56,8 @@ public class Application {
     }
 
     private static LinkedHashMap<String, ArrayList<Integer>> CountStrikes
-            (ArrayList<Integer> playerNumberArrayList, ArrayList<Integer> answerNumberArrayList) {
+            (ArrayList<Integer> playerNumberArrayList,
+             ArrayList<Integer> answerNumberArrayList) {
         int strikeCount = 0;
         ArrayList<Integer> strikeCountArrayList = new ArrayList<>();
         ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
@@ -104,6 +105,9 @@ public class Application {
     private static LinkedHashMap<String, ArrayList<Integer>> AnalyzePlayerNumber
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList) {
-
+        // 스트라이크의 개수를 계산하는 메소드
+        LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = CountStrikes
+                (playerNumberArrayList, answerNumberArrayList);
+        
     }
 }
