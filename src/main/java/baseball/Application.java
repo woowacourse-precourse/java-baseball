@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(generateNumber());
+        System.out.println(guessNumber());
     }
     public static List<Integer> generateNumber(){
         List<Integer> computer = new ArrayList<>();
@@ -19,5 +19,22 @@ public class Application {
             }
         }
         return computer;
+    }
+    public static List<Integer> guessNumber(){
+        String inputNumberStr = Console.readLine();
+        List<Integer> inputNumberList = stringToIntegerList(inputNumberStr);
+
+        //validateNumber(inputNumberList);
+
+        return inputNumberList;
+    }
+    public static List<Integer> stringToIntegerList(String inputStr){
+        String[] inputStrArr = inputStr.split("");
+        List<Integer> inputIntList = new ArrayList<>();
+        for (int i = 0; i < inputStrArr.length; i++) {
+            int tmp = Integer.parseInt(inputStrArr[i]);
+            inputIntList.add(tmp);
+        }
+        return inputIntList;
     }
 }
