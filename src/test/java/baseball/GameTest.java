@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,6 +36,17 @@ public class GameTest {
 
         assertThatThrownBy(() -> game.getPlayerNumber())
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("플레이어의 숫자 체크")
+    @Test
+    void checkPlayerNumber() {
+        Game game = new Game();
+        game.computerNumber = List.of(4, 5, 7);
+        game.playerNumber = List.of(4, 7, 5);
+        int[] result = game.checkNumber(game.playerNumber);
+
+        assertThat(result).isEqualTo(new int[]{2, 1});
     }
 
 }
