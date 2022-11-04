@@ -2,10 +2,8 @@ package baseball.util;
 
 public class InputValidUtil {
 
-	//Todo: 입력값 타당성 체크
-	public boolean checkInputValid(String userInput) {
-
-		int[] inputNumInts = userInput.chars()
+	public boolean checkInputValid(String userInputNum) {
+		int[] inputNumInts = userInputNum.chars()
 			.map(num -> Integer.parseInt(num + "") - 48)
 			.toArray();
 

@@ -35,12 +35,12 @@ public class FrontController {
 	public void startGame() {
 
 		List<Integer> answerNumber = gameStartService.makeAnswerNumber();
-		String userInput;
+		String userInputNum;
 		UserBall userBall;
 		do {
-			userInput = Console.readLine();
-			inputValidUtil.checkInputValid(userInput);
-			userBall = userBallService.makeUserBall(userInput, answerNumber);
+			userInputNum = Console.readLine();
+			inputValidUtil.checkInputValid(userInputNum);
+			userBall = userBallService.makeUserBall(userInputNum, answerNumber);
 		} while (!gameEndService.isAnswer(userBall));
 
 	}

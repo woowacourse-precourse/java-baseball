@@ -9,31 +9,31 @@ import baseball.util.ViewConst;
 
 public class UserBallService {
 
-	public UserBall makeUserBall(String userInput, List<Integer> answerNumber) {
-		List<Integer> userInputList = userInput.chars()
+	public UserBall makeUserBall(String userInputNum, List<Integer> answerNumber) {
+		List<Integer> userInputNumList = userInputNum.chars()
 			.mapToObj(num -> Integer.parseInt(num + "") - 48)
 			.collect(Collectors.toList());
 
 		UserBall userBall = UserBall.createUserBall();
-		updateBallCount(answerNumber, userInputList, userBall);
-		updateStrikeCount(answerNumber, userInputList, userBall);
+		updateBallCount(answerNumber, userInputNumList, userBall);
+		updateStrikeCount(answerNumber, userInputNumList, userBall);
 		return userBall;
 	}
 
-	private void updateStrikeCount(List<Integer> answerNumber, List<Integer> userInputList, UserBall userBall) {
+	private void updateStrikeCount(List<Integer> answerNumber, List<Integer> userInputNumList, UserBall userBall) {
 		int strikeCount = (int)IntStream.iterate(0, i -> i + 1)
 			.limit(ViewConst.INPUT_NUM_LENGTH)
-			.filter(i -> userInputList.get(i).equals(answerNumber.get(i)))
+			.filter(i -> userInputNumList.get(i).equals(answerNumber.get(i)))
 			.count();
 		userBall.changeStrikeCount(userBall.getStrike() + strikeCount);
 
 	}
 
-	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputList, UserBall userBall) {
+	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputNumList, UserBall userBall) {
 		int ballCount = (int)IntStream.iterate(0, i -> i + 1)
 			.limit(ViewConst.INPUT_NUM_LENGTH)
-			.filter(
-				i -> !userInputList.get(i).equals(answerNumber.get(i)) && userInputList.contains(answerNumber.get(i)))
+			.filter(i -> !userInputNumList.get(i).equals(answerNumber.get(i)) && userInputNumList.contains(
+				answerNumber.get(i)))
 			.count();
 		userBall.changeBallCount(userBall.getBall() + ballCount);
 	}
