@@ -16,7 +16,6 @@ public class Computer {
                 target.add(randomNumber);
             }
         }
-        System.out.println(target); //난수 확인용
     }
 
     public boolean getResult(int number) {
