@@ -19,7 +19,7 @@ public class BaseballGame {
     }
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다 ");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         computer.pickRandomNumbersFrom1To9();
         gameOver = false;
 
@@ -83,17 +83,21 @@ public class BaseballGame {
     }
 
     private void printResult(Map<String, Integer> result) {
-        if (result.isEmpty()) {
-            System.out.println("낫싱");
-            return;
-        }
+        System.out.println(resultMapToString(result));
+    }
 
+    private String resultMapToString(Map<String, Integer> result) {
         List<String> results = new ArrayList<>();
         for (String key : result.keySet()) {
+            if (result.get(key) == 0) {
+                continue;
+            }
             results.add(result.get(key) + key);
         }
-        String resultToString = String.join(" ", results);
-        System.out.println(resultToString);
+        if (results.isEmpty()) {
+            return "낫싱";
+        }
+        return String.join(" ", results);
     }
 
     private void gameOverIfThreeStrike(Map<String, Integer> result) {
