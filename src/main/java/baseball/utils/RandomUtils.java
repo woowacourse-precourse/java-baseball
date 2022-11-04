@@ -23,7 +23,7 @@ public class RandomUtils {
     }
 
     private static void checkRandomNumberUnique(List<Integer> randomNumbers, int randomNumber) {
-        if (!randomNumbers.contains(randomNumbers)) {
+        if (!randomNumbers.contains(randomNumber)) {
             randomNumbers.add(randomNumber);
         }
     }
