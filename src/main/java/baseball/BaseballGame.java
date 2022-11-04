@@ -16,4 +16,8 @@ public class BaseballGame {
         }
         return computer;
     }
+
+    public List<Integer> checkUserNumber(String userInput) throws IllegalArgumentException {
+        return null;
+    }
 }
