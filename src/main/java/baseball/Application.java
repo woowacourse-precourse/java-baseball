@@ -15,7 +15,7 @@ public class Application {
         boolean gameFlag = true;
         while (gameFlag) {
             List<Integer> randomNumber = getRandomNumber();
-            
+
             printEndMessage();
         }
 
@@ -91,6 +91,16 @@ public class Application {
         }
 
         return userInputNumber;
+    }
+
+    public static int getStrikeCount(String userInputNumber, String randomNumber) {
+        int strikeCount = 0;
+        for (int numberIndex = 0; numberIndex < 3; numberIndex++) {
+            if (userInputNumber.charAt(numberIndex) == randomNumber.charAt(numberIndex)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 
 
