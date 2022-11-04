@@ -55,7 +55,8 @@ public class Application {
         return answerNumberArrayList;
     }
 
-    private static ArrayList<ArrayList<Integer>> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> answerNumber) {
+    private static ArrayList<ArrayList<Integer>> countStrikes
+            (ArrayList<Integer> playerNumberArrayList, ArrayList<Integer> answerNumberArrayList) {
         int strikeCount = 0;
         ArrayList<Integer> strikeCountArrayList = new ArrayList<>();
         ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
@@ -63,9 +64,9 @@ public class Application {
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
         for (int i=0; i<4; i++) {
-            if (playerNumber.get(i) == answerNumber.get(i)) {
+            if (playerNumberArrayList.get(i) == answerNumber.get(i)) {
                 strikeCount = strikeCount + 1;
-            } else if (playerNumber.get(i) != answerNumber.get(i)) {
+            } else if (playerNumberArrayList.get(i) != answerNumber.get(i)) {
                 wrongNumberIndexArrayList.add(i);
             }
         }
@@ -75,5 +76,14 @@ public class Application {
         strikeResultArrayList.add(wrongNumberIndexArrayList);
 
         return strikeResultArrayList;
+    }
+
+    private static int countBalls
+            (ArrayList<Integer> playerNumberArrayList,
+             ArrayList<Integer> answerNumberArrayList,
+             ArrayList<ArrayList<Integer>> strikeResultArrayList) {
+        int ballResult = 0;
+
+        return ballResult;
     }
 }
