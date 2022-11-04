@@ -35,4 +35,35 @@ public class Balls {
         }
         return true;
     }
+
+    public Result getResult(Balls other) {
+        int ball = 0, strike = 0, out = 0;
+
+        for (Ball otherBall : other.balls) {
+            switch (judgeball(otherBall)) {
+                case BALL:
+                    ball += 1; break;
+                case STRIKE:
+                    strike += 1; break;
+                case OUT:
+                    out += 1; break;
+            }
+        }
+
+        return new Result(ball, strike, out);
+    }
+
+    private Judgement judgeball(Ball ball) {
+        if (isBall(ball)) {
+            return Judgement.BALL;
+        }
+        if (isStrike(ball)) {
+            return Judgement.STRIKE;
+        }
+        if (isOut(ball)) {
+            return Judgement.OUT;
+        }
+
+        return null;
+    }
 }
