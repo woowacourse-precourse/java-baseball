@@ -28,7 +28,7 @@ public class GameTest {
   public void setUp(){
     outContent = new ByteArrayOutputStream();
     originalOut = System.out;
-    game = new Game(1);
+    game = new Game("1");
     System.setOut(new PrintStream(outContent));
   }
 
@@ -40,7 +40,7 @@ public class GameTest {
   @Order(1)
   @DisplayName("Game 생성 테스트")
   public void isGameStartWhenFlagIs1(){
-    Assertions.assertThat(game.toBeContinued).isEqualTo(1);
+    Assertions.assertThat(game.toBeContinued).isEqualTo("1");
   }
 
   @Test
