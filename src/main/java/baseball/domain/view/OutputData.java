@@ -15,6 +15,7 @@ public class OutputData {
         for (String ballCount : result.keySet()) {
             checkBallCount(ballCount, result.get(ballCount));
         }
+        System.out.println();
     }
 
     private static void checkBallCount(String ballCount, int count) {
