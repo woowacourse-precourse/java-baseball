@@ -26,7 +26,7 @@ public class ScoreboardTest {
     @Test
     void 스트라이크_점수_가져오기() {
         Scoreboard scoreboard = new Scoreboard(0, 3);
-        int strikePoint = scoreboard.getBallPoint();
+        int strikePoint = scoreboard.getStrikePoint();
 
         assertThat(strikePoint).isEqualTo(3);
     }
@@ -38,7 +38,7 @@ public class ScoreboardTest {
 
         int ballPoint = scoreboard.getBallPoint();
 
-        assertThat(ballPoint).isEqualTo(2);
+        assertThat(ballPoint).isEqualTo(1);
     }
 
     @Test
@@ -48,6 +48,6 @@ public class ScoreboardTest {
 
         int strikePoint = scoreboard.getStrikePoint();
 
-        assertThat(strikePoint).isEqualTo(2);
+        assertThat(strikePoint).isEqualTo(1);
     }
 }
