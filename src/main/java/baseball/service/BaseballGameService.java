@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.model.GameNumber;
+import baseball.model.GameResult;
 import baseball.model.Umpire;
 
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class BaseballGameService {
         umpire = new Umpire(computerGameNumber);
     }
 
-    public List<Integer> playGame(String playerInputNumbers) {
+    public GameResult playGame(String playerInputNumbers) {
         GameNumber playerGameNumber = new GameNumber(convertToList(playerInputNumbers));
         umpire.playerNewGameNumber(playerGameNumber);
 

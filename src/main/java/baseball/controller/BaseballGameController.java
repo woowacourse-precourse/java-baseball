@@ -1,10 +1,9 @@
 package baseball.controller;
 
+import baseball.model.GameResult;
 import baseball.service.BaseballGameService;
 import baseball.view.GameScreen;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class BaseballGameController {
 
@@ -16,7 +15,7 @@ public class BaseballGameController {
         String playerInputNumbers = Console.readLine();
 
         baseballGameService.newGame();
-        List<Integer> gameResult = baseballGameService.playGame(playerInputNumbers);
+        GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         GameScreen.printGameResult(gameResult);
     }
 

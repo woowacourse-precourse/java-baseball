@@ -19,7 +19,7 @@ public class Umpire {
         this.playerGameNumber = playerGameNumber;
     }
 
-    public List<Integer> decision() {
+    public GameResult decision() {
         List<Integer> playerNumbers = playerGameNumber.getNumbers();
         List<Integer> computerNumbers = computerGameNumber.getNumbers();
         int strike = 0;
@@ -38,7 +38,7 @@ public class Umpire {
             }
         }
 
-        return List.of(ball, strike);
+        return new GameResult(ball, strike);
     }
 
 }
