@@ -21,7 +21,7 @@ public class NumberBaseBallGame {
                 Validator.checkStartOrEndInput(input);
             } catch (IllegalArgumentException e) {
                 Output.printErrorMessage(e);
-                break;
+                throw e;
             }
             if (input.equals(GuideMessage.TWO)) {
                 Output.printExitProgramMessage();
@@ -30,7 +30,7 @@ public class NumberBaseBallGame {
         }
     }
 
-    private static void playNumberBaseballGame() throws IllegalArgumentException {
+    public static void playNumberBaseballGame() throws IllegalArgumentException {
         Output.printStartGuideMessage();
         List<Integer> answerNumber = getAnswerNumber();
 
@@ -38,12 +38,16 @@ public class NumberBaseBallGame {
         System.out.println(answerNumber);
 
         while (true) {
-            int[] strikeAndBallCount = new int[2]; // strike와 ball 갯수를 파악할 수 있는 공간이 2인 배열 생성
             List<Integer> inputNumber = getInputNumber();
+
+            int[] strikeAndBallCount = new int[2]; // strike와 ball 갯수를 파악할 수 있는 공간이 2인 배열 생성
             countStrikeAndBall(strikeAndBallCount, answerNumber, inputNumber);
+
             int strikeCount = strikeAndBallCount[0];
             int ballCount = strikeAndBallCount[1];
+
             Output.printStrikeAndBallCount(ballCount, strikeCount);
+
             if (strikeCount == 3) {
                 Output.printThreeStrike();
                 break;
@@ -51,7 +55,7 @@ public class NumberBaseBallGame {
         }
     }
 
-    private static void countStrikeAndBall(int[] strikeAndBallCount, List<Integer> answerNumber, List<Integer> inputNumber) {
+    public static void countStrikeAndBall(int[] strikeAndBallCount, List<Integer> answerNumber, List<Integer> inputNumber) {
         int strikeCount = 0;
         int ballCount = 0;
         HashSet<Integer> leftNumSet = new HashSet<>(answerNumber);
@@ -72,7 +76,7 @@ public class NumberBaseBallGame {
     }
 
 
-    private static List<Integer> getInputNumber() throws IllegalArgumentException {
+    public static List<Integer> getInputNumber() throws IllegalArgumentException {
         List<Integer> inputList = new ArrayList<>();
         String number = Input.scanInputNumber();
         Validator.checkInputNumber(number);
@@ -82,7 +86,7 @@ public class NumberBaseBallGame {
         return inputList;
     }
 
-    private static List<Integer> getAnswerNumber() {
+    public static List<Integer> getAnswerNumber() {
         List<Integer> answerList = new ArrayList<>();
         while (answerList.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);

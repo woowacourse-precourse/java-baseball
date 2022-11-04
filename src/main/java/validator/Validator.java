@@ -23,7 +23,7 @@ public class Validator {
         }
     }
 
-    private static boolean isCorrectNumber(String number) {
+    public static boolean isCorrectNumber(String number) {
         char[] digitArray = number.toCharArray();
         for (char digit : digitArray) {
             int boundary = digit - '0'; // 해당 식 결과는 0부터 9 사이의 숫자이여야 한다.
@@ -34,11 +34,11 @@ public class Validator {
         return true;
     }
 
-    private static boolean isLengthEqualThree(String number) {
+    public static boolean isLengthEqualThree(String number) {
         return number.length() == 3;
     }
 
-    private static boolean isDuplicatedNumber(String number) {
+    public static boolean isDuplicatedNumber(String number) {
         int[] numberCount = new int[10]; //  0~9 까지 반복된 횟수를 셀 수 있는 배열 생성
         for (int i=0; i<number.length(); i++) {
             int index = number.charAt(i) - '0';
