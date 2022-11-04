@@ -15,7 +15,11 @@ import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
-
+	@Test
+	void existInvalidLetter_메소드로_유효하지_않은_글자를_입력하는_예외_처리() {
+		String input = "2a3";
+		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+	}
 	@Test
 	void existDuplicateNumber_메소드로_중복된_숫자를_입력하는_예외_처리() {
 		String input = "233";
@@ -40,7 +44,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void 상수_확인() {
-		List<Integer> result = List.of(Constant.NUMBER_AMOUNT, Constant.RESTART_GAME, Constant.END_GAME);
+		List<Integer> result = List.of(Constant.LENGTH_OF_NUMBER, Constant.RESTART_GAME, Constant.END_GAME);
 		assertThat(result).containsExactly(3, 1, 2);
 	}
 
