@@ -4,22 +4,25 @@ import static features.Hint.getCountBall;
 import static features.Hint.getCountNothing;
 import static features.Hint.getCountStrike;
 
-public abstract class Print implements Factory {
+import java.util.Map;
 
-    int countStrike = getCountStrike();
-    int countBall = getCountBall();
-    int countNothing = getCountNothing();
+public class Print{
 
-    private String strike = String.format("%d스트라이크");
-    private String ball = String.format("%d볼 %d스트라이크", countBall, countStrike);
-    private String nothing = "낫싱";
+    private static int countStrike = getCountStrike();
+    private static int countBall = getCountBall();
+    private static int countNothing = getCountNothing();
 
-    @Override
-    public String printResult() {
+    private static String strike = String.format("%d스트라이크", countStrike);
+    private static String ball = String.format("%d볼 %d스트라이크", countBall, countStrike);
+    private static String nothing = "낫싱";
+
+
+
+    public static String printResult() {
         String result = "";
 
         if (countStrike == 3) {
-            result = victory();
+            result = strike;
         }
         if (countBall > 1) {
             result = ball;
@@ -31,9 +34,9 @@ public abstract class Print implements Factory {
         return result;
     }
 
+
     public static String victory() {
-        String victory = "3스트라이크\n"
-                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        String victory = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         return victory;
     }
 

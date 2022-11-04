@@ -6,7 +6,7 @@ import static features.Player.createComputerNumber;
 
 import java.util.Map;
 
-public abstract class Hint implements Factory {
+public class Hint {
 
 
     private static int strike = 0;
@@ -19,14 +19,11 @@ public abstract class Hint implements Factory {
 
     // 사용자, 상대방(컴퓨터) 숫자
     public Hint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
-        this.userNumber = inputUserNumber();
-        this.computerNumber = createComputerNumber();
+        this.userNumber = Input.inputUserNumber();
+        this.computerNumber = Player.createComputerNumber();
     }
 
-
-
     // 힌트 기능 동작
-    @Override
     public void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
 
 
@@ -47,17 +44,14 @@ public abstract class Hint implements Factory {
 
     public static void countStrike(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
 
-        if( userValue == computerValue && userKey == computerKey){
-            strike++;
-
-        }
+        if( userValue == computerValue && userKey == computerKey){ strike++; }
     }
 
     // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
     public static void countBall(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
 
         for (int i=0; i < 3; i++) {
-            if (userValue.equals(computerValue) && userKey != computerKey) {    ball++; }
+            if (userValue.equals(computerValue) && userKey != computerKey) {  ball++;  }
         }
 
     }
@@ -66,7 +60,7 @@ public abstract class Hint implements Factory {
     public static void countNoting(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
 
         for (int i=0; i < 3; i++) {
-            if (userValue != computerValue && userKey != computerKey) {    nothing++;  }
+            if (userValue != computerValue && userKey != computerKey) {  nothing++;  }
         }
 
     }

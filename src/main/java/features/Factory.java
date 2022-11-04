@@ -13,5 +13,4 @@ public interface Factory {
     // 출력 기능
     String printResult();
 
-
 }
