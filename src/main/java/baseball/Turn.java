@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Turn {
     private static final int NUMBER_OF_INPUT_DIGITS= 3;
-    private static final String BALL = "볼";
+    private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String ASK_FOR_NUMBER = "숫자를 입력해주세요 : ";
     private List<Integer> playerNumberList;
@@ -71,11 +71,15 @@ public class Turn {
     }
 
     public String getBallResultString(){
-        StringBuilder ballResult = new StringBuilder();
-        if(this.numberOfBalls > 0){
-            ballResult.append(numberOfBalls);
-            ballResult.append(BALL);
+        return getResultString(this.numberOfBalls, BALL_MESSAGE);
+    }
+
+    public String getResultString(int score, String scoreMessage){
+        StringBuilder result = new StringBuilder();
+        if(score > 0){
+            result.append(score);
+            result.append(scoreMessage);
         }
-        return ballResult.toString();
+        return result.toString();
     }
 }
