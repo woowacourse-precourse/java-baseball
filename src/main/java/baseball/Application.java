@@ -11,6 +11,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
     }
 
     public static void initComputerNumber() {
@@ -138,7 +139,10 @@ public class Application {
 
     public static void checkUserInputIsThreeStrike(String userInput) {
         int strikeCount = checkStrike(userInput);
-        System.out.println(commonMessageMap.get("threeStrikeMessage"));
+
+        if(strikeCount == 3) {
+            System.out.println(commonMessageMap.get("threeStrikeMessage"));
+        }
     }
 
     public static String readeUserInput() {
