@@ -97,4 +97,13 @@ public class PlayerTest {
 
         assertThat(gameResult).isEqualTo(new GameResult(1, 0));
     }
+
+    @Test
+    void 두명의_플레이어가_플레이_0스트라이크_1볼() {
+        Player player = new Player(List.of(1, 2, 3));
+        Player otherPlayer = new Player(List.of(4, 5, 1));
+        GameResult gameResult = player.playGame(otherPlayer);
+
+        assertThat(gameResult).isEqualTo(new GameResult(0, 1));
+    }
 }
