@@ -2,7 +2,7 @@
 ## 3개 클래스로 구성(GameController, User, Computer)
 * ### GameController
   * `ready`
-    * User, Computer 객체 생성
+    * User, Computer의 3자리 수 입력 및 생성
   * `isStrike`
     * 해당 인덱스의 수가 일치하는지 검사
   * `isBall`
