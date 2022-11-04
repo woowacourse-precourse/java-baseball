@@ -11,6 +11,13 @@ public class Application {
         List<Integer> computer = createComputerNumber();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
+        int gameFlag = 0; // gameFlag = 0: 처음, 1: 재시작, 2: 종료
+        while (gameFlag != 2) {
+            int strike = 0;
+            int ball = 0;
+            boolean correctFlag = false;
+        }
     }
 
     private static List<Integer> createComputerNumber() {
