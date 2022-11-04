@@ -15,9 +15,9 @@
   - [x] 2 : 게임 종료
   - [ ] 예외 처리 (SelectedNumberForRestartDTO) : (IllegalArgumentException => 프로그램 종료)
     - [x] null 또는 empty 인 경우
-    - [ ] 알파벳인 경우
-      - [ ] 소문자
-      - [ ] 대문자
+    - [x] 알파벳인 경우
+      - [x] 소문자
+      - [x] 대문자
     - [ ] 특수문자인 경우
     - [ ] 한글인 경우
       - [ ] 자음
