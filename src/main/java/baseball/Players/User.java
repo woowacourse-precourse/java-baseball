@@ -35,7 +35,7 @@ public class User {
         return userNumbersList;
     }
 
-    public boolean countinuable() {
+    public boolean continuable() {
 
         Printer print = new Printer();
 
