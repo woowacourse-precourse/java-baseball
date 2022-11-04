@@ -39,9 +39,8 @@ public class Operator {
 	}
 
 	public boolean requestRestart() {
-		String request;
 		System.out.println(RESTART_REQUEST);
-		request = Console.readLine();
+		String request = Console.readLine();
 		isValidate(request);
 
 		return request.equals(RESTART_GAME);
