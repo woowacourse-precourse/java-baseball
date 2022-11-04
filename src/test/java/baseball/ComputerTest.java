@@ -36,7 +36,7 @@ class ComputerTest {
   @Order(1)
   void computerPrintStartGame() {
     //User.inputValueTestPlayingMode("123");
-    Computer.testComputerPrint(1);
+    Computer.testComputerPrint(1, "");
     Assertions.assertThat("숫자 야구 게임을 시작합니다.").isEqualTo(outContent.toString().trim());
   }
 
@@ -44,16 +44,16 @@ class ComputerTest {
   @Order(2)
   void computerPrintInputNumber() {
     //User.inputValueTestPlayingMode("123");
-    Computer.testComputerPrint(2);
+    Computer.testComputerPrint(2, "");
     Assertions.assertThat("숫자를 입력해주세요 : ").isEqualTo(outContent.toString());
   }
 
   @Test
-  @Order(2)
+  @Order(3)
   void computerGenerateRandom() {
     for (int i = 0; i < 100; i++) {
       HashSet <Character> randset = new HashSet<Character>();
-      String tmp = Computer.testRandomGen();
+      String tmp = Computer.testComputerPrint(3, "");
       randset.add(tmp.charAt(0));
       if (randset.contains(tmp.charAt(1))) {
         throw new IllegalArgumentException("generated value contains duplicated input.");
@@ -64,6 +64,20 @@ class ComputerTest {
       }
       randset.add(tmp.charAt(2));
     }
+  }
+
+  @Test
+  @Order(4)
+  void computerPrintCalculatorResult() {
+    Computer.testComputerPrint(4, "1볼 1스트라이크");
+    Assertions.assertThat("1볼 1스트라이크").isEqualTo(outContent.toString().trim());
+  }
+
+  @Test
+  @Order(4)
+  void computerPrintCalculatorResultNothing() {
+    Computer.testComputerPrint(4, "낫싱");
+    Assertions.assertThat("낫싱").isEqualTo(outContent.toString().trim());
   }
 
 }
