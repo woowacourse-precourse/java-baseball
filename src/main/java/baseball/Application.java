@@ -10,12 +10,12 @@ import java.util.Objects;
 public class Application {
     public static void main(String[] args) {
         //프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
         gameStart();
     }
     //게임 시작
     public static void gameStart(){
         int start_yn = 1; //exit 변수
-        //랜덤으로 3자리 숫자를 정하는 기능
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,9 +23,8 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println("숫자 야구 게임을 시작합니다.");
         // 3스트라이크가 나올때 까지 반복
-        while (true) {
+        while (start_yn == 1) {
             // 3자리 숫자 입력 기능 실행
             System.out.print("숫자를 입력해주세요 : ");
             int input_num = int_input();
@@ -36,12 +35,19 @@ public class Application {
             //숫자 검증 기능(출력기능)
             print_verification(strike, ball, nothing);
             //3스트라이크일 경우 while문 종료 선택 문구
-            if(strike == 3 && exit() == 1){
+            if(strike == 3){
+                start_yn = exit();
+            }
+            if(strike == 3 && start_yn == 1){
                 gameStart();
-            }else if(start_yn == 2){
                 break;
+            }else if(strike == 3 && start_yn == 2){
+                return;
             }
         }
+    }
+    public static void gameExit(){
+        System.out.println("프로그램을 종료합니다.");
     }
     //숫자를 입력받는 기능
     private static int int_input() throws IllegalArgumentException {
