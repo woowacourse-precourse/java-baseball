@@ -26,5 +26,49 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String guessingNumberString = Console.readLine();
 
+        // TODO : 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
+        int strike=0;
+        int ball=0;
 
+        char[] guessingNumberArray = guessingNumberString.toCharArray();
+
+        int indexOfFindingNumber = 0;
+        for (Character findingNumber : guessingNumberArray){
+            //strike, ball 인지 판단하는 함수
+            String checkResult = checkIfStrikeOrBall(computer, findingNumber.toString(), indexOfFindingNumber);
+            indexOfFindingNumber++;
+            if (checkResult.equals("strike")){
+                strike++;
+            }
+            else if (checkResult.equals("ball")){
+                ball++;
+            }
+        }
+
+        if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }
+        else{
+            if (ball != 0){
+                System.out.print(ball + "볼 ");
+            }
+            if (strike != 0){
+                System.out.print(strike + "스트라이크");
+            }
+        }
+        System.out.println();
+    }
+
+
+    //strike, ball 인지 판단하는 함수
+    private static String checkIfStrikeOrBall(String computer, String findingNumber, int indexOfFindingNumber){
+        if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) == findingNumber.charAt(0)) {
+            return "strike";
+        }
+        else if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) != findingNumber.charAt(0)) {
+            return "ball";
+        }
+
+        return "none";
+    }
 }
