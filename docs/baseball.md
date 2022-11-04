@@ -21,6 +21,7 @@
     Baseball : 야구 게임 계산
         - Integer targetNumber : 정답 숫자
         - Integer guessNumber : 추정 숫자
+        - BallCount ballCount : 볼 / 스트라이크 카운트
     
     BallCount : 볼 / 스트라이크 카운트
         - Integer ballCount : 볼 카운트
@@ -46,15 +47,37 @@
    1. 3자리수 loop 돌면서 다른 자리 수와 같은 수가 있으면 count up
    - 볼 / 스트라이크 계산 결과 저장 
    -> BallCount.setBallCount()
-   -> BallCount.setStrikeCount()
 5. 계산 결과 출력 기능
-   - 볼/스트라이크 수 : Baseball.getBallCount()
+   - 볼/스트라이크 수 : Baseball.getBallCount(), Baseball.getStrikeCount() <- BallCount 객체에서 정보 얻어온다.
+   - 결과 경우의 수 출력 : Baseball.getGuessResult()
    - 3스트라이크 -> 게임 종료(7)
 6. 게임 재시작 기능
    - Baseball.restart()
+   - targetNumber, guessNumber, BallCount 초기화
 7. 게임 종료 기능
    - Baseball.end()
    
+## 기능 Flow
+- Baseball.start()로 게임 시작(targetNumber 초기화)
+- Baseball.setGuessNumber()로 숫자 입력 받기
+- Baseball.ruleBallCount(), Baseball.ruleStrikeCount()로 입력받은 GuessNumber의 볼/스트라이크 카운트 계산
+- BallCount.setBallCount()로 ball, strike 수 저장
+- Baseball.getGuessResult()로 결과 경우의 수 받기(ENUM)
+  - Baseball.getBallCount() != 0 && Baseball.getStrikeCount() != 0 : n볼 m스트라이크 (BALL_STRIKE)
+  - Baseball.getBallCount() == 0 && Baseball.getStrikeCount() == 0 : 낫싱 (NOT_SING)
+  - Baseball.getStrikeCount() == 3 : 게임 종료 (END)
+- BALL_STRIKE 
+  - Baseball.getBallCount(), Baseball.getStrikeCount() 로 볼/스트라이크 카운트 출력
+- NOT_SING
+  - "낫싱" 출력
+- END
+  - "3스트라이크
+    3개의 숫자를 모두 맞히셨습니다! 게임 종료 
+    게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
+  - 1 : Baseball.restart()
+  - 2 : Baseball.end()
+
+
 
 
    
