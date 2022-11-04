@@ -75,4 +75,12 @@ public class NumberComparator {
     private boolean isAnswer(int strikeCount) {
         return strikeCount == numberSize;
     }
+
+    public boolean isUserWin(User user, Computer computer) {
+        int strikeCount = getStrikeCount(user, computer);
+        int ballCount = getBallCount(user, computer);
+
+        printGameResult(ballCount, strikeCount);
+        return isAnswer(strikeCount);
+    }
 }
