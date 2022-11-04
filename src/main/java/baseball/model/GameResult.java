@@ -36,6 +36,10 @@ public class GameResult {
         return strikeCount == ZERO && ballCount == ZERO;
     }
 
+    public boolean isThreeStrike() {
+        return true;
+    }
+
     public int getBallCount() {
         return ballCount;
     }

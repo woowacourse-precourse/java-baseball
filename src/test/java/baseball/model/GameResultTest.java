@@ -40,7 +40,20 @@ class GameResultTest {
         GameResult nothing = new GameResult(List.of(1, 2, 3), List.of(4, 5, 6));
         GameResult something = new GameResult(List.of(1, 2, 3), List.of(4, 5, 1));
 
-        Assertions.assertThat(nothing.isNothing()).isTrue();
-        Assertions.assertThat(something.isNothing()).isFalse();
+        Assertions.assertThat(nothing.isNothing())
+            .isTrue();
+        Assertions.assertThat(something.isNothing())
+            .isFalse();
+    }
+
+    @Test
+    void _3스트라이크인지_확인() {
+        GameResult threeStrike = new GameResult(List.of(1, 2, 3), List.of(1, 2, 3));
+        GameResult twoStrike = new GameResult(List.of(1, 2, 3), List.of(1, 2, 4));
+
+        Assertions.assertThat(threeStrike.isThreeStrike())
+            .isTrue();
+        Assertions.assertThat(twoStrike.isThreeStrike())
+            .isFalse();
     }
 }
