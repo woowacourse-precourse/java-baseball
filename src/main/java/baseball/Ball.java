@@ -45,6 +45,9 @@ public class Ball {
         if (isStrike(otherBall)) {
             return BallStatus.STRIKE;
         }
+        if (isBall(otherBall)) {
+            return BallStatus.BALL;
+        }
         return null;
     }
 }
