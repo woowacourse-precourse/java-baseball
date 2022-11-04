@@ -21,5 +21,15 @@ public class Comparenumber {
         else return 0;
 
     }
+    public int[] compareNumber(){
+        int[] compareresult = new int[2];
+        for (int indexNumber =0; indexNumber<3; indexNumber++) {
+            int sum = ballscore(indexNumber)+strickscore(indexNumber);
+            if(sum==2) compareresult[0]++; //strick
+            if(sum==1) compareresult[1]++; //ball
+        }
+        return compareresult;
+    }
+
 
 }
