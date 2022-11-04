@@ -9,12 +9,12 @@ public class Application {
     public static void main(String[] args) {
 
         int userEndingResponse = 1;
-        int userAnswer = 0;
+        int userAnswer;
         int countStrike = 0;
-        int countBall = 0;
-        List<Integer> computerAnswerList = new ArrayList<>();
-        List<Integer> notStrikeZone = new ArrayList<>();
-        List<Integer> userAnswerList = new ArrayList<>();
+        int countBall;
+        List<Integer> computerAnswerList;
+        List<Integer> notStrikeZone;
+        List<Integer> userAnswerList;
 
         while (userEndingResponse == 1){
 
@@ -65,13 +65,13 @@ public class Application {
     }
     public static int getUserNumberToInteger() {
         String userAnswer = Console.readLine();
-        return Integer.valueOf(userAnswer);
+        return Integer.parseInt(userAnswer);
     }
     public static List<Integer> convertIntegerToList(int num){
         List<Integer> numList = new ArrayList<>();
 
         String numStr = String.valueOf(num);
-        for (String tmpStr : Arrays.asList(numStr.split(""))){
+        for (String tmpStr : numStr.split("")){
             numList.add(Integer.valueOf(tmpStr));
         }
 
@@ -90,8 +90,7 @@ public class Application {
 
             // 2. 값에 1-9 이외의 값이 포함되어있을 때
             char tmpInputStr = inputStr.charAt(inputStringIndex);
-            int ASCII_tmpInputStr = tmpInputStr;
-            if (ASCII_tmpInputStr < 49 || ASCII_tmpInputStr > 58)
+            if (tmpInputStr < 49 || tmpInputStr > 58)
                 // 1: 49, 9: 57
                 throw new IllegalArgumentException("1~9 사이의 숫자만 가능합니다.");
 
