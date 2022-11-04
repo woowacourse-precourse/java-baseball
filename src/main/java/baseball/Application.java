@@ -17,7 +17,6 @@ public class Application {
             computer = GenerateComputerNumbers();
             StartGuessingPhase(computer);
         }while(StartQuestioningPhase());
-
     }
 
     public static void StartGuessingPhase(List<Integer> computer) {
@@ -42,6 +41,7 @@ public class Application {
             return false;
         }
     }
+
     public static void PrintResult(int strike, int ball){
         if(strike == 0 && ball == 0){
             System.out.println("낫싱");
