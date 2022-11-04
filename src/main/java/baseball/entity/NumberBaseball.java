@@ -1,10 +1,10 @@
 package baseball.entity;
 
-import baseball.service.RandomNumber;
+import baseball.service.RandomGenerator;
 
 public class NumberBaseball implements Game{
     public static final int GAME_ANSWER_MAX_VALUE = 3;
-    private RandomNumber randomNumber = new RandomNumber();
+    private RandomGenerator randomGenerator = new RandomGenerator();
     private State state;
 
     @Override

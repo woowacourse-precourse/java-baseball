@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
 
-public class RandomNumber {
+public class RandomGenerator {
     public String generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < GAME_ANSWER_MAX_VALUE) {
