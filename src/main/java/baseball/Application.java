@@ -11,12 +11,7 @@ public class Application {
     public static void main(String[] args) {
 
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        computer = createComputerNumber();
 
         String userNumberString = Console.readLine();
         String[] userNumberStringList = userNumberString.split("");
@@ -27,7 +22,19 @@ public class Application {
 
         List<Integer> user = listToArrayList(userNumberStringList);
 
+    }
 
+    public static List<Integer> createComputerNumber() {
+        List<Integer> userNumber = new ArrayList<>();
+
+        while (userNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!userNumber.contains(randomNumber)) {
+                userNumber.add(randomNumber);
+            }
+        }
+
+        return userNumber;
     }
 
     public static List<Integer> listToArrayList(String[] userNumberStringList) {
