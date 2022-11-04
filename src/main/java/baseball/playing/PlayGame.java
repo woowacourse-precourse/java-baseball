@@ -20,15 +20,31 @@ public class PlayGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
         computerNumber = computer.getComputerNumbers();
+        playingGame();
     }
 
     public void playingGame() {
+
+        Map<String, Integer> strikeBall = new HashMap<>();
+
         inputUserNumbers();
+
         while (true) {
             String result = printStrikeOrBall(computerNumber, userNumber);
             System.out.println(result);
 
+            strikeBall = checkStrikeOrBall(computerNumber, userNumber);
+            if(strikeBall.get("Strike") == 3)
+                break;
         }
+
+        endGame();
+    }
+
+    private void endGame() {
+
+        String replaying = Console.readLine();
+
     }
 
     private List<Integer> stringToList(String number) {
