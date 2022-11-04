@@ -25,11 +25,10 @@ public class BaseballGame {
             checkUserNumber();
             compareComputerAndUser();
             printMessage(getResult() + ENTER);
-            checkCorrect();
+            if (checkCorrect()) {
+                askExit();
+            }
         }
-
-        printMessage(CORRECT_MESSAGE + ENTER);
-        printMessage(REGAME_MESSAGE + ENTER);
     }
 
     private static void makeRandomNumber() {
@@ -89,16 +88,22 @@ public class BaseballGame {
         return resultMessage;
     }
 
-    private static void checkCorrect() {
+    private static boolean checkCorrect() {
         if (strike == 3) {
             resetResult();
-            gameAvailable = false;
+            return true;
         }
+        return false;
     }
 
     private static void resetResult() {
         computerNumbers = new ArrayList<>();
         ball = 0;
         strike = 0;
+    }
+
+    public static void askExit() {
+        printMessage(CORRECT_MESSAGE + ENTER);
+        printMessage(REGAME_MESSAGE + ENTER);
     }
 }
