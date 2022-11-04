@@ -73,14 +73,17 @@
   *private String inputNumber()*<br>
   : 사용자에게 세자리 수를 입력하게 한다.<br>
   <br>
-  *private boolean isInputException(int number)*<br>
+  *private boolean isInputException(String number)*<br>
   : 사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
   <br>
-  *private boolean isRightSize(int number)*<br>
+  *private boolean isRightSize(String number)*<br>
   : 세자리 수인지 확인합니다.<br>
   <br>
-  *private boolean isPositiveNumber(int number)*<br>
+  *private boolean isPositiveNumber(String number)*<br>
   : 음수나 특수문자가 없는지 확인합니다.<br>
+  <br>
+  *private boolean isNoDuplicatedNumber(String number)*<br>
+  : 중복숫자가 없는지 확인합니다.<br>
   <br>
     
 
