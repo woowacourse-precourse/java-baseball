@@ -9,7 +9,8 @@ import java.util.Objects;
 public class Game {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String END_GAME_CONDITION = "3스트라이크";
+    private static final String END_GAME_CONDITION = "3스트라이크\n"
+            + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_CONDITION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String INPUT_LENGTH_EXCEPTION = "세자리 수를 입력해주세요";
     private static final String INPUT_OTHER_NUMBER_EXCEPTION = "각각 다른 수를 입력해주세요";
@@ -63,6 +64,9 @@ public class Game {
                 System.out.println(result);
             } else if (ball == 0 && strike != 0) {
                 result = strike + STRKIE;
+                if (strike == 3) {
+                    result = END_GAME_CONDITION;
+                }
                 System.out.println(result);
             } else {
                 System.out.println(ball + BALL + " " + strike + STRKIE);
