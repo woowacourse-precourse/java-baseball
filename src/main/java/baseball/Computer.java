@@ -41,5 +41,7 @@ public class Computer {
         if (!Validator.isValid(number)) {
             throw new IllegalArgumentException();
         }
+
+        this.number = number;
     }
 }
