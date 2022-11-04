@@ -21,6 +21,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         String inputNumber = inputNumberFromPlayer();
+
+        return true;
     }
 
     public static String inputNumberFromPlayer() {

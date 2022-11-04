@@ -5,12 +5,29 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @DisplayName("숫자 입력 기능 테스트")
+    @Test
+    void inputNumberFromPlayerTest() {
+
+        String inputString = "456";
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+        System.setIn(inputStream);
+
+        String inputNumber = Application.inputNumberFromPlayer();
+
+        assertThat(inputNumber).isEqualTo(inputString);
+
+    }
 
 
     @DisplayName("1 ~ 9 사이의 값으로 중복 없이 설정되는지 테스트")
