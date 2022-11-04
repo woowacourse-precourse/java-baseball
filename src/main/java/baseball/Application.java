@@ -82,7 +82,7 @@ public class Application {
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList,
              LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap) {
-        int ballResult = 0;
+        int ballCount = 0;
         HashSet<Integer> wrongPlayerNumberSet = new HashSet<>();
         HashSet<Integer> answerNumberSet = new HashSet<>();
 
@@ -92,8 +92,12 @@ public class Application {
             wrongPlayerNumberSet.add(playerNumberArrayList.get(I));
             answerNumberSet.add(answerNumberArrayList.get(I));
         }
-        wrongPlayerNumberSet.retainAll(answerNumberSet);
 
-        return ballResult;
+        // 두 집합의 교집합을 구한다.
+        HashSet<Integer> ballSet = new HashSet<>(wrongPlayerNumberSet);
+        ballSet.retainAll(answerNumberSet);
+        ballCount = ballSet.size();
+
+        return ballCount;
     }
 }
