@@ -6,17 +6,12 @@ import java.util.List;
 public class User {
 
     private List<Integer> userNumberList;
-    private String inputNumber;
-
 
     public void setUser(String inputNumber){
-        this.inputNumber = inputNumber;
-        this.userNumberList = generateNumberList(this.inputNumber);
+        this.userNumberList = generateNumberList(inputNumber);
     }
 
     private List<Integer> generateNumberList(String inputNumber) throws IllegalArgumentException {
-
-        boolean exceptionCheck = false;
 
         if (isNotNumber(inputNumber)) {
             throw new IllegalArgumentException();
