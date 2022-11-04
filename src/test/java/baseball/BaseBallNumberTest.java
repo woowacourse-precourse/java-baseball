@@ -34,4 +34,22 @@ class BaseBallNumberTest {
       BaseBallNumber baseBallNumber = new BaseBallNumber(List.of('1', '2', '3', '4'));
     }).isInstanceOf(IllegalArgumentException.class);
   }
+
+
+  @Test
+  @DisplayName("validate number duplicate_two")
+  void validateDuplicateTwo() {
+    Assertions.assertThatThrownBy(()->{
+      BaseBallNumber baseBallNumber = new BaseBallNumber(List.of('1', '1', '2'));
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  @DisplayName("validate number duplicate_three")
+  void validateDuplicateThree() {
+    Assertions.assertThatThrownBy(()->{
+      BaseBallNumber baseBallNumber = new BaseBallNumber(List.of('1', '1', '1'));
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
 }
