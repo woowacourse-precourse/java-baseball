@@ -1,17 +1,13 @@
 package baseball;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class FeatureListTest {
 
@@ -24,6 +20,7 @@ public class FeatureListTest {
     @Test
     void digits개의_중복되지_않은_난수_생성_검증() {
         Set<Integer> s = new HashSet<>(GenerateRandomNumber(3));
+
         assertThat(s.size()).isEqualTo(3);
     }
 
