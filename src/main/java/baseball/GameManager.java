@@ -13,4 +13,8 @@ public class GameManager {
     public GameManager(Computer computer) {
         this.computer = computer;
     }
+
+    public void init() {
+        computer.init();
+    }
 }

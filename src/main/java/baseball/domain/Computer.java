@@ -7,7 +7,11 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> baseballNumber = new ArrayList<>();
+    private List<Integer> baseballNumber;
+
+    public Computer() {
+        init();
+    }
 
     public void createBaseballNumber() {
         while (baseballNumber.size() < 3) {
@@ -47,5 +51,12 @@ public class Computer {
             }
         }
         return true;
+    }
+
+    public void init() {
+        if (baseballNumber == null) {
+            baseballNumber = new ArrayList<>();
+        }
+        createBaseballNumber();
     }
 }
