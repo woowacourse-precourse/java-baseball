@@ -1,55 +1,33 @@
 package baseball.model;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import static baseball.resources.GameConfig.*;
 
 public class Result {
-    private final List<InputNumber> inputNumber;
-    private final BaseNumber baseNumber;
+    private final Map<String, Integer> result;
 
-    public Result(List<InputNumber> inputNumber, BaseNumber baseNumber) {
-        this.inputNumber = inputNumber;
-        this.baseNumber = baseNumber;
+    public Result(Map<String, Integer> result) {
+        this.result = result;
+    }
+
+    public Map<String, Integer> getEachCount(){
+        return result;
     }
 
     public boolean isFinish(){
-        return count(strike()) == SIZE;
+        return result.get(STRIKE_COUNT) == SIZE;
     }
 
     public boolean hasBall() {
-        return count(ball()) > 0;
+        return result.getOrDefault(BALL_COUNT, 0) > 0;
     }
 
     public boolean hasStrike() {
-        return count(strike()) > 0;
+        return result.getOrDefault(STRIKE_COUNT, 0) > 0;
     }
 
     public boolean hasBallAndStrike() {
         return hasBall() && hasStrike();
-    }
-
-    public Map<String, Integer> getEachCount(){
-        Map<String, Integer> result = new HashMap<>();
-        result.put(STRIKE_COUNT, count(strike()));
-        result.put(BALL_COUNT, count(ball()));
-        return result;
-    }
-
-    private Predicate<InputNumber> strike() {
-        return number -> number.isStrike(baseNumber);
-    }
-
-    private Predicate<InputNumber> ball() {
-        return number -> number.isBall(baseNumber);
-    }
-
-    private int count(Predicate<InputNumber> predicate) {
-        return (int) inputNumber.stream()
-                .filter(predicate)
-                .count();
     }
 }
