@@ -4,15 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
         getStartMessage();
-        List<Integer> answer = getRandomValue();
-        List<Integer> userInput = charToInt(getUserInput());
-        countBallStrike(answer, userInput);
+
     }
 
     public static void getStartMessage() {
@@ -63,7 +62,7 @@ public class Application {
         return result;
     }
 
-    public static void countBallStrike(List<Integer> answer, List<Integer> userInput) {
+    public static int countBallStrike(List<Integer> answer, List<Integer> userInput) {
         int strikeCounter = 0;
         int ballCounter = 0;
 
@@ -79,6 +78,11 @@ public class Application {
         }
 
         System.out.printf("%d볼 %d스트라이크",strikeCounter,ballCounter);
+        return strikeCounter;
     }
 
+    public static String chooseRestartExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하게요.");
+        return Console.readLine();
+    }
 }
