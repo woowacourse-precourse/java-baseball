@@ -9,13 +9,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
+    public static int THE_NUMBER_OF_BALLS = 3;
+
     // main()메서드에서 값을 받아 처리하는 클래스
     public static class model {
 
         private List<Integer> computerNumberList = new ArrayList<>();
         private List<Integer> inputNumberList = new ArrayList<>();
-        int strikeCounting;
-        int ballCounting;
+        private int strikeCounting;
+        private int ballCounting;
+        private int THE_NUMBER_OF_BALLS = 3;
 
         public void proceedGame (String inputString) {
             discoverInputNumberException(inputString);
@@ -29,7 +32,7 @@ public class Application {
         public void distinguishStrike() {
             int methodInStrikeCounting = 0;
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < THE_NUMBER_OF_BALLS; i++) {
                 if (inputNumberList.get(i).equals(computerNumberList.get(i))) {
                     methodInStrikeCounting += 1;
                 }
@@ -42,7 +45,7 @@ public class Application {
         public void distinguishBall() {
             int methodInBallCounting = 0;
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < THE_NUMBER_OF_BALLS; i++) {
                 if (computerNumberList.contains(inputNumberList.get(i))) {
                     methodInBallCounting += 1;
                 }
@@ -54,7 +57,7 @@ public class Application {
         // 컴퓨터의 3자리 숫자를 설정하는 메서드
         public void makeComputerNumber() {
 
-            while (computerNumberList.size() < 3) {
+            while (computerNumberList.size() < THE_NUMBER_OF_BALLS) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
 
                 if (!computerNumberList.contains(randomNumber)) {
@@ -83,24 +86,28 @@ public class Application {
         // 입력된 3자리 숫자 중에서 중복된 숫자가 있는지 확인하는 메서드
         public boolean seekDuplicatedNumber (String inputNumber) {
             HashSet<Character> inputNubmerInSet = new HashSet<>();
-            for (int p = 0; p < inputNumber.length(); p++) {
+
+            for (int p = 0; p <THE_NUMBER_OF_BALLS; p++) {
                 inputNubmerInSet.add(inputNumber.charAt(p));
             }
-            if (inputNubmerInSet.size() < 3) return true;
-            else return false;
+
+            return inputNubmerInSet.size() < THE_NUMBER_OF_BALLS;
         }
 
         // 3자리 숫자를 입력할 때 예외 발생시키는 메서드
         public void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
 
-            if (inputNumber.length() != 3) {
+            // 주어진 숫자가 3자리가 아닌 경우 예외 발생
+            if (inputNumber.length() != THE_NUMBER_OF_BALLS) {
                 throw new IllegalArgumentException();
             }
 
+            // 주어진 숫자가 서로 다르지 않은 경우 예외 발생
             if (seekDuplicatedNumber(inputNumber)) {
                 throw new IllegalArgumentException();
             }
 
+            // 각 숫자가 1~9가 아닌 경우 예외 발생
             for (int l = 0; l < inputNumber.length(); l++) {
                 if (inputNumber.charAt(l) < 49 || inputNumber.charAt(l) > 57) {
                     throw new IllegalArgumentException();
@@ -121,7 +128,7 @@ public class Application {
     // model에서 처리된 값을 출력하는 클래스
     public static class view {
         public void printResult(int ballCounting, int strikeCounting) {
-            if (strikeCounting == 3) {
+            if (strikeCounting == THE_NUMBER_OF_BALLS) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             } else if (strikeCounting > 0 && ballCounting == 0) {
@@ -146,7 +153,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             baseballModel.makeComputerNumber();
 
-            while (baseballModel.strikeCounting < 3) {
+            while (baseballModel.strikeCounting < THE_NUMBER_OF_BALLS) {
                 String inputString = Console.readLine();
                 baseballModel.proceedGame(inputString);
                 baseballView.printResult(baseballModel.ballCounting, baseballModel.strikeCounting);
