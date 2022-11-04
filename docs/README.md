@@ -1,6 +1,6 @@
 ## 🍀 기능 구현 사항
 
-- [x] 입력값이 유효한지 확인 (InputValidator)
+- [x] 입력값이 유효한지 확인 (NumberValidator)
     - [x] 범위 확인
     - [x] 길이 확인
     - [x] 중복되는 숫자 확인
