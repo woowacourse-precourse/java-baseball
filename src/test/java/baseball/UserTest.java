@@ -10,7 +10,9 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -85,6 +87,27 @@ class UserTest {
         int strike = user.checkStrike(computerList, userList);
         int ball = user.checkBall(computerList, userList, strike);
         assertThat(ball).isEqualTo(2);
+    }
+
+    final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    final PrintStream standardOut = System.out;
+
+    @BeforeEach
+    void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(standardOut);
+    }
+
+    @Test
+    void printResultTest() {
+        int strike = 1;
+        int ball = 1;
+        user.printResult(strike, ball);
+        assertEquals("1볼 1스트라이크", outputStreamCaptor.toString().trim());
     }
 
 
