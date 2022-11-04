@@ -30,5 +30,8 @@ public class Game {
         Output.printEndMessage();
     }
 
+    public boolean reGame() {
+        return input.inputReGameButton();
+    }
 }
 
