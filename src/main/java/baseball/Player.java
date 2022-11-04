@@ -10,7 +10,6 @@ public class Player {
 
     public void EnterNumberOfPlayer() {
         System.out.print("숫자를 입력해주세요 : ");
-        String[] enteredNumber = Console.readLine().split("");
-        playersNumber = Arrays.asList(enteredNumber);
+        playersNumber = Arrays.asList(Console.readLine().split(""));
     }
 }
