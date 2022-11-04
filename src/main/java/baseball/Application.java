@@ -31,6 +31,18 @@ class PlayerNumber {
     List<Integer> playerNumber;
 
     public PlayerNumber() {
+        try{
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> playerNumber = playerInput();
+        } catch(WrongInputException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+class WrongInputException extends IllegalArgumentException{
+    WrongInputException(String message) {
+        super(message);
     }
 }
 
