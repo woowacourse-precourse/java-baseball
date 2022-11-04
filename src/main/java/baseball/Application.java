@@ -10,7 +10,20 @@ class ComputerNumber {
     List<Integer> computerNumber;
 
     public ComputerNumber() {
+        computerNumber = makeRandomNumber();
+    }
 
+    private List<Integer> makeRandomNumber() {
+        List<Integer> numberList = new ArrayList<>();
+        do {
+            int newNumber = Randoms.pickNumberInRange(1, 9);
+            if (numberList.contains(newNumber))
+                continue;
+            numberList.add(newNumber);
+        } while (numberList.size() < 3);
+        System.out.println(numberList);
+
+        return numberList;
     }
 }
 
@@ -22,9 +35,11 @@ class PlayerNumber {
 }
 
 class GameInit{
+    List<Integer> computerNumber;
+    List<Integer> playerNumber;
     public GameInit() {
-        ComputerNumber computerNumber = (ComputerNumber) new ComputerNumber().computerNumber;
-        PlayerNumber playerNumber = (PlayerNumber) new PlayerNumber().playerNumber;
+        List<Integer> computerNumber = new ComputerNumber().computerNumber;
+        List<Integer> playerNumber = new PlayerNumber().playerNumber;
     }
 
 }
