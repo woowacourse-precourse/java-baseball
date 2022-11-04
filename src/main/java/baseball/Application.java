@@ -51,10 +51,20 @@ public class Application {
         }
         return ballNumber;
     }
+    private static int getStrikeNumber(List<Integer> computerNumbers, String userNumbers) {
+        int strikeNumber = 0;
+        for (int index = 0; index < userNumbers.length(); ++index) {
+            if (computerNumbers.get(index) == userNumbers.toCharArray()[index] - '0') {
+                ++strikeNumber;
+            }
+        }
+        return strikeNumber;
+    }
     public static void main(String[] args) {
         noticeStartGame();
         List<Integer> computerNumbers = createComputerNumbers();
         String userNumbers = inputUserNumbers();
         int ballNumber = getBallNumber(computerNumbers, userNumbers);
+        int strikeNumber = getStrikeNumber(computerNumbers, userNumbers);
     }
 }
