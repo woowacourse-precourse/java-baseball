@@ -10,7 +10,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class ResultService {
-    public int ReOrClose(List<Integer> RandomNumber) {
+    public int ReOrClose(List<Integer> randomNumber) {
         RuleService rules = new RuleService();
         InputException validation = new InputException();
         InputValue inputValue = new InputValue();
@@ -22,10 +22,10 @@ public class ResultService {
         while (strike != 3) {
             List<Integer> inputNumber = inputValue.inputNum();
 
-            validation.InputValid(RandomNumber, inputNumber);
+            validation.InputValid(randomNumber, inputNumber);
 
-            strike = rules.Strike(RandomNumber, inputNumber);
-            ball = rules.Ball(RandomNumber, inputNumber);
+            strike = rules.Strike(randomNumber, inputNumber);
+            ball = rules.Ball(randomNumber, inputNumber);
 
             if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
