@@ -38,7 +38,7 @@ public class Computer {
      */
     private int createRandomNumber() {
         Random random = new Random();
-        return random.nextInt(9);
+        return random.nextInt(10);
     }
 
     public List<Integer> getRandomNumbers() {
