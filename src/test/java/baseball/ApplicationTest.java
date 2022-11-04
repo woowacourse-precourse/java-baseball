@@ -51,7 +51,7 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
 
         //when
-        String number = computer.generateNumber();
+        String number = computer.getNumber();
 
         //then
         assertThat(Validator.isValid(number)).isEqualTo(true);

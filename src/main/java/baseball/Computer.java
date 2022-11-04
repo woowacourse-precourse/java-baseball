@@ -15,18 +15,18 @@ public class Computer {
 
     public Computer() {
         try {
-            this.number = this.generateNumber();
+            this.generateNumber();
         } catch (IllegalArgumentException exception) {
             throw exception;
         }
     }
 
 
-    public String getBaseballNumber() {
+    public String getNumber() {
         return this.number;
     }
 
-    public String generateNumber() {
+    public void generateNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < NUMBER_LENGTH) {
@@ -41,7 +41,5 @@ public class Computer {
         if (!Validator.isValid(number)) {
             throw new IllegalArgumentException();
         }
-
-        return number;
     }
 }
