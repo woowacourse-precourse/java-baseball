@@ -1,6 +1,6 @@
 package baseball;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
+import org.mockito.internal.matchers.Null;
 
 public class User {
 
@@ -8,29 +8,40 @@ public class User {
   static String inputNumInString;
 
   User () {
-
   }
+
   public static String inputValue() {
-    inputNumInString = readLine();
+    inputNumInString = Console.readLine();
     return (validateInput());
   }
 
   static String validateInput() {
-    checkInputIsNum();
+    checkInputLength();
+   // checkInputIsNum();
 
-//    if (str == "123") {
-//      System.out.println(str);
-//      return str;
-//    }
-//    System.out.println("EEE");
+
+    System.out.println(inputNumInString);
     return inputNumInString;
   }
 
-  static void checkInputIsNum() {
-    try {
-      int number = Integer.parseInt(inputNumInString);
-    } catch (NumberFormatException ex) {
-      ex.printStackTrace();
+  private static void checkInputLength() {
+    if (inputNumInString.length() != 3) {
+      throw new IllegalArgumentException("input length is not three.");
     }
+  }
+
+  private static void checkInputIsNum() {
+    for (int i = 0; i < 3; i++) {
+      if (!(inputNumInString.charAt(i) >= '0' && inputNumInString.charAt(i) <= '9')) {
+        throw new IllegalArgumentException("input contains things not number");
+      }
+    }
+
+
+  }
+  public static String inputValueTest(String testInput) {
+    inputNumInString = testInput;
+    return (validateInput());
+    //return testInput;
   }
 }

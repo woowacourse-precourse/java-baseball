@@ -2,10 +2,9 @@ package baseball;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.assertj.core.api.Assert;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,11 +29,31 @@ class UserTest {
     System.setErr(originalErr);
   }
 
+  @Test
+  void inputValueTestLengthNoError1() {
+    User.inputValueTest("123");
+    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+//    User.inputValueTest("12a");
+//    Assertions.assertThat("12a").isEqualTo(outContent.toString().trim());
+  }
 
   @Test
-  void inputValueTest() {
-    User.inputValue();
-    Assertions.assertEquals(outContent.toString().trim(), "123");
-    //consoleCaptor.getStandardOutput()
+  void inputValueTestLengthNoError2() {
+    User.inputValueTest("123");
+    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+  }
+
+  @Test
+  void inputValueTestLengthError1() {
+    Assertions.assertThatThrownBy(() -> {
+      User.inputValueTest("");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  void inputValueTestLengthError2() {
+        Assertions.assertThatThrownBy(() -> {
+      User.inputValueTest("1234");
+    }).isInstanceOf(IllegalArgumentException.class);
   }
 }
