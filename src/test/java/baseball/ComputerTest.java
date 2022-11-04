@@ -51,6 +51,20 @@ public class ComputerTest {
     }
 
     @Test
+        // 컴퓨터 초기화 할시 랜덤 컴퓨터 리스트가 초기화가 되는가?
+    void 컴퓨터_랜덤숫자_리스트_초기화_case_1() throws Exception {
+        //given
+        Computer computer = new Computer();
+        // when
+        computer.initComputer();
+        List<Integer> resultList_1 = computer.getNumThreeRanOfComputerList();
+        computer.initComputer();
+        List<Integer> resultList_2 = computer.getNumThreeRanOfComputerList();
+        // then
+        assertThat(resultList_1.equals(resultList_2)).isFalse();
+    }
+
+    @Test
         // Computer.splitEachDigitOfNum Test
     void 두개_Collection_포함() {
         Computer computer = new Computer();

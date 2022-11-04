@@ -32,7 +32,6 @@ public class Computer {
     }
 
     // user에서 가져온 각자릿수 분리 메서드
-
     public boolean isValidNumOfIndividually(String str) {
         if (isNumOfIndividually(str)) {
             return true;
