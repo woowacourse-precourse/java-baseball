@@ -15,11 +15,24 @@ public class Application {
     }
 
     public static boolean StartNumberBaseballGame(){
-        List<Integer> computer = ChooseComputerNumbers(); // 컴퓨터의 숫자 입력받기
+        List<Integer> computer = GenerateComputerNumbers();
+        List<Integer> player = GeneratePlayerNumbers();
         return false;
     }
 
-    public static List<Integer> ChooseComputerNumbers(){
+    public static List<Integer> GeneratePlayerNumbers(){
+        List<Integer> player = new ArrayList<>();
+        String input = Console.readLine();
+        int tempNumbers = Integer.parseInt(input);
+        int divider = (int)Math.pow (10, input.length() -1 );
+        while(divider > 0){
+            player.add(tempNumbers / divider);
+            tempNumbers = tempNumbers - (player.get(player.size() - 1)) * divider;
+            divider = divider / 10;
+        }
+        return player;
+    }
+    public static List<Integer> GenerateComputerNumbers(){
         List<Integer> computer = new ArrayList<>(0);
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -29,8 +42,6 @@ public class Application {
         }
         return computer;
     }
-
-
 }
 //        List<Integer> computer = new ArrayList<>();
 //        while (computer.size() < 3) {
