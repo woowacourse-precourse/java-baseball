@@ -11,11 +11,11 @@ public class Balls {
 	private List<Ball> balls;
 
 	public Balls(int firstNumber, int middleNumber, int lastNumber) {
-		Ball firstBall = new Ball(firstNumber, FIRST);
-		Ball secondBall = new Ball(middleNumber, MIDDLE);
-		Ball thirdBall = new Ball(lastNumber, LAST);
-
-		balls = List.of(firstBall, secondBall, thirdBall);
+		balls = List.of(
+			Ball.create(firstNumber, FIRST),
+			Ball.create(middleNumber, MIDDLE),
+			Ball.create(lastNumber, LAST)
+		);
 	}
 
 	public Balls(String consoleInput) {
@@ -24,6 +24,14 @@ public class Balls {
 			Character.getNumericValue(consoleInput.charAt(MIDDLE)),
 			Character.getNumericValue(consoleInput.charAt(LAST))
 		);
+	}
+
+	public static Balls create(int firstNumber, int middleNumber, int lastNumber) {
+		return new Balls(firstNumber, middleNumber, lastNumber);
+	}
+
+	public static Balls create(String consoleInput) {
+		return new Balls(consoleInput);
 	}
 
 	public GameResult getGameResult(Balls otherBalls) {

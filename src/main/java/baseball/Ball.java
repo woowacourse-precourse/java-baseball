@@ -11,6 +11,10 @@ public class Ball {
 		this.location = location;
 	}
 
+	public static Ball create(int number, int location) {
+		return new Ball(number, location);
+	}
+
 	public CompareResult compare(Ball ballToCompare) {
 		if (this.equals(ballToCompare)) {
 			return CompareResult.STRIKE;
