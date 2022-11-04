@@ -18,7 +18,6 @@ public class User {
 
     public static String getNumber(){
         String numbers="";
-        System.out.print(User.number_List.toString());
         for(Integer item: User.number_List){
             numbers+=Integer.toString(item);
         }
