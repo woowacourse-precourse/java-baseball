@@ -16,6 +16,10 @@ public class InputView {
         return inputNumber;
     }
 
+    public static String inputRestartOrEndNumber() {
+        return Console.readLine();
+    }
+
     private static void validateInputNumber(String inputNumber) {
         if (isInputNumberNotDigit(inputNumber)) {
             throw new IllegalArgumentException("[ERROR] : 입력하는 수는 숫자여야합니다.");
