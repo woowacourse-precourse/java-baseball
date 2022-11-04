@@ -66,28 +66,5 @@ class ApplicationTest extends NsTest {
                 assertThat(Validate.validateCountNumber("12", 3)).isEqualTo(false);
             }
         }
-
-        @Nested
-        class 유효값_확인_기능 {
-            @Test
-            void 유효값인_경우() {
-                assertThat(Validate.validateRangeNumber("123", 1, 9)).isEqualTo(true);
-            }
-
-            @Test
-            void 유효값이_아닌_경우_범위_밖() {
-                assertThat(Validate.validateRangeNumber("012", 1, 9)).isEqualTo(false);
-            }
-
-            @Test
-            void 유효값이_아닌_경우_문자_1() {
-                assertThat(Validate.validateCountNumber("a12", 2)).isEqualTo(false);
-            }
-
-            @Test
-            void 유효값이_아닌_경우_문자_2() {
-                assertThat(Validate.validateCountNumber("12 ", 2)).isEqualTo(false);
-            }
-        }
     }
 }
