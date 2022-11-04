@@ -10,18 +10,27 @@ public class Application {
     private static final int END_CODE = 2;
 
     public static void main(String[] args) {
-        Integer restartOrEnd;
+        int statusCode = 0;
 
         do {
             BaseBallGame baseBallGame = new BaseBallGame(Randoms.pickUniqueNumbersInRange(0, 9, 3));
 
 
-            restartOrEnd = Integer.valueOf(Console.readLine());
-        } while (restartOrEnd == RESTART_CODE);
+            statusCode = convertUserDataToStatusCode(Console.readLine());
 
-        if (restartOrEnd != END_CODE) {
+        } while (statusCode == RESTART_CODE);
+
+        if (statusCode != END_CODE) {
             throw new IllegalArgumentException();
         }
 
+    }
+
+    private static int convertUserDataToStatusCode(String restartOrEndOrError) throws IllegalArgumentException {
+        if (!restartOrEndOrError.matches("[12]")) {
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.valueOf(restartOrEndOrError);
     }
 }
