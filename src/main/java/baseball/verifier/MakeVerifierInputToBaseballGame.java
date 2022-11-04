@@ -15,7 +15,7 @@ public class MakeVerifierInputToBaseballGame implements MakeVerifier {
 
     @Override
     public void checkValid(String input) {
-        if (verifier.validates(input))
-            throw new IllegalArgumentException();
+        if (!(verifier.validates(input)))
+            throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 }
