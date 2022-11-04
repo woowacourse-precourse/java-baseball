@@ -1,7 +1,5 @@
 package baseball.view;
 
-import java.util.List;
-
 import baseball.domain.GameResult;
 
 public class OutputView {
@@ -24,13 +22,15 @@ public class OutputView {
 		printBallAndStrike();
 	}
 
-	public static void printStartMessage() {System.out.println(GAME_START_MESSAGE);}
+	public static void printStartMessage() {
+		System.out.println(GAME_START_MESSAGE);
+	}
 
 	public static void printClearMessage() {
 		System.out.println(GAME_CLEAR_MESSAGE);
 	}
 
-	private void printAllBall () {
+	private void printAllBall() {
 		if (result.ballCount != ZERO_NUMBER && result.strikeCount == ZERO_NUMBER) {
 			System.out.println(result.ballCount + BALL_MESSAGE);
 		}
@@ -41,16 +41,17 @@ public class OutputView {
 			System.out.println(result.strikeCount + STRIKE_MESSAGE);
 		}
 	}
-	private void  printBallAndStrike() {
+
+	private void printBallAndStrike() {
 		if (result.ballCount != ZERO_NUMBER && result.strikeCount != ZERO_NUMBER) {
 			System.out.println(result.ballCount + BALL_MESSAGE + result.strikeCount + STRIKE_MESSAGE);
 		}
 	}
+
 	private void printNothing() {
 		if (result.ballCount == ZERO_NUMBER && result.strikeCount == ZERO_NUMBER) {
 			System.out.println(NOTHING_MESSAGE);
 		}
 	}
-
 
 }

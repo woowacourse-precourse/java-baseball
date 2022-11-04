@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumber {

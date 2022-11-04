@@ -13,13 +13,13 @@ public class GameResult {
 	}
 
 	private int countBall(List<Integer> computerNums, List<Integer> userNums) {
-		return (int)Stream.iterate(0, i -> i+1).limit(computerNums.size())
+		return (int)Stream.iterate(0, i -> i + 1).limit(computerNums.size())
 			.filter(num -> !computerNums.get(num).equals(userNums.get(num)) && computerNums.contains(userNums.get(num)))
 			.count();
 	}
 
 	private int countStrike(List<Integer> computerNums, List<Integer> userNums) {
-		return (int)Stream.iterate(0, i -> i+1).limit(computerNums.size())
+		return (int)Stream.iterate(0, i -> i + 1).limit(computerNums.size())
 			.filter(num -> computerNums.get(num).equals(userNums.get(num))).count();
 	}
 }

@@ -14,7 +14,7 @@ public class UserNumber {
 		this.userNumber = createUserNumber(userInput);
 	}
 
-	private List<Integer> createUserNumber (String str) throws IllegalArgumentException {
+	private List<Integer> createUserNumber(String str) throws IllegalArgumentException {
 		int[] userNumber = convertStringToInt(str);
 		if (checkValidNumber(userNumber)) {
 			return Arrays.stream(userNumber).boxed().collect(Collectors.toList());
