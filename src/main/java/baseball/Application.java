@@ -21,9 +21,24 @@ public class Application {
         }
         return computerNumbers;
     }
+    private static boolean isValidUserNumbers(String userNumbers) {
+        if (userNumbers.length() != 3) {
+            return false;
+        }
+        if (!('1' <= userNumbers.charAt(0) && userNumbers.charAt(0) <= '9') ||
+                !('1' <= userNumbers.charAt(1) && userNumbers.charAt(1) <= '9') ||
+                !('1' <= userNumbers.charAt(2) && userNumbers.charAt(2) <= '9')) {
+            return false;
+        }
+        return userNumbers.charAt(0) != userNumbers.charAt(1) && userNumbers.charAt(0) != userNumbers.charAt(2) &&
+                userNumbers.charAt(1) != userNumbers.charAt(2);
+    }
     private static String inputUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputUserNumbers = Console.readLine();
+        if (!isValidUserNumbers(inputUserNumbers)) {
+            throw new IllegalArgumentException();
+        }
         return inputUserNumbers;
     }
     public static void main(String[] args) {
