@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
     public final static String START_NOTIFICATION = "숫자 야구 게임을 시작합니다.";
     public final static String END_NOTIFICATION = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -16,6 +18,7 @@ public class Game {
         System.out.println(START_NOTIFICATION);
         repeatUntilAnswerCorrect();
         System.out.println(END_NOTIFICATION);
+        selectRestartOrEndGame();
     }
 
     public boolean isContainAnyNumber() {
@@ -66,5 +69,23 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public void selectRestartOrEndGame() {
+        int input;
+        System.out.println(RESTART_NOTIFICATION);
+        input = Integer.parseInt(Console.readLine());
+
+        if (input == 1) {
+            repeatUntilAnswerCorrect();
+            System.out.println(END_NOTIFICATION);
+            selectRestartOrEndGame();
+        }
+        if (input == 2) {
+            System.out.println("게임 종료");
+            System.exit(0);
+        }
+
+        throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 }
