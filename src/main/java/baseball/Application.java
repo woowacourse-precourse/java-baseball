@@ -84,10 +84,17 @@ public class Application {
         return false;
     }
 
+    public static boolean sizeNotMatch(String userInput) {
+        if (userInput.length() != 3)
+            return false;
+        else
+            return true;
+    }
+
     public static List<Integer> typeCast(String userInput, List<Integer> guess) throws IllegalArgumentException {
         for (int i = 0; i < userInput.length(); i++)
             guess.add(userInput.charAt(i) - '0');
-        if (redundant(guess) || notInteger(guess))
+        if (redundant(guess) || notInteger(guess) || sizeNotMatch(userInput))
             throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         return guess;
     }
