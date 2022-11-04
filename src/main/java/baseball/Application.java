@@ -27,4 +27,25 @@ public class Application {
         return computer;
     }
 
+    private static void getBallStrikeLog(int ballCount, int strikeCount) throws IOException {
+
+        int nothing = 0;
+
+        if (ballCount > nothing && strikeCount > nothing) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        } else if (ballCount > nothing) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount > nothing) {
+            System.out.println(strikeCount + "스트라이크");
+            checkSuccess(strikeCount);
+        } else if (ballCount == nothing && strikeCount == nothing) {
+            System.out.println("낫싱");
+        }
+
+        return;
+    }
+
+    private static void checkSuccess(int strikeCount) throws IOException {
+        return;
+    }
 }
