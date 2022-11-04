@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.model.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -28,6 +30,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void Input_String_toIntList_Test(){
+        String test = "123";
+        List<Integer> testList = new Input(test).getBaseballNumberList();
+        assertThat(testList).containsExactly(1, 2, 3);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
