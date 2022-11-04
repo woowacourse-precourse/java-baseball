@@ -24,7 +24,19 @@ public class BaseballGame extends NumberGame {
     public boolean end() {
         return false;
     }
-    
+
+    protected void validateInput(String number, int count, int startInclusive, int endInclusive) {
+        if (!validateSameNumber(number)) {
+            throw new IllegalArgumentException("Duplicate number exists.");
+        }
+        if (!validateCountNumber(number, count)) {
+            throw new IllegalArgumentException("The number must be 3 digits.");
+        }
+        if (!validateRangeNumber(number, startInclusive, endInclusive)) {
+            throw new IllegalArgumentException("The number must be between 1 and 9.");
+        }
+    }
+
     public void result(Point point) {
         int ball = point.getBall();
         int strike = point.getStrike();
