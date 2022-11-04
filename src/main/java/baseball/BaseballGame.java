@@ -11,6 +11,7 @@ public class BaseballGame {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String START_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ANSWER_FORMAT = "%d%s";
 
     private Number computer;
     private Number user;
@@ -39,6 +40,10 @@ public class BaseballGame {
                 compareNumbers();
                 String result = makeResultString();
                 System.out.println(result);
+
+                if (strike == 3) {
+                    isCorrect = true;
+                }
             }
 
             System.out.println(GAME_END);
@@ -82,16 +87,13 @@ public class BaseballGame {
     }
 
     private String makeResultString() {
-        String answer = NOTHING;
-        if (strike == 3) {
-            isCorrect = true;
-            answer = String.format("%d%s", strike, STRIKE);
-        } else if (ball > 0 & strike > 0) {
-            answer = String.format("%d%s %d%s", ball, BALL, strike, STRIKE);
+        String answer = "";
+        if (ball == 0 & strike == 0) {
+            answer += NOTHING;
         } else if (ball > 0) {
-            answer = String.format("%d%s", ball, BALL);
+            answer += String.format(ANSWER_FORMAT, ball, BALL);
         } else if (strike > 0) {
-            answer = String.format("%d%s", strike, STRIKE);
+            answer += String.format(ANSWER_FORMAT, strike, STRIKE);
         }
         return answer;
     }
