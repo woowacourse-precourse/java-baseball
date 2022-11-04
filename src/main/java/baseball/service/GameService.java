@@ -23,6 +23,11 @@ public class GameService {
         controller.printGameStartMessage();
     }
 
+    public boolean startGame() {
+        repeatRound();
+        return askReGame();
+    }
+
     private void repeatRound() {
         boolean flag = false;
         while(!flag) {
@@ -32,5 +37,8 @@ public class GameService {
         }
     }
 
+    private boolean askReGame() {
+        return controller.printReGameAndInput();
+    }
 
 }
