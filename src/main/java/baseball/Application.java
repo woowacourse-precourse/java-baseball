@@ -20,7 +20,7 @@ public class Application {
             try {
                 checkInput(input);
             } catch (IllegalArgumentException e) {
-                exit(0);
+                return;
             }
             String resultString = getResult(computerNumbers, input);
             System.out.println(resultString);
