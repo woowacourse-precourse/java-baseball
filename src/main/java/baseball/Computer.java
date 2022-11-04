@@ -19,6 +19,14 @@ public class Computer {
         this.counts = new HashMap<>();
     }
 
+    public Integer getStrikeCount() {
+        return counts.get("strike");
+    }
+
+    public Integer getBallCount() {
+        return counts.get("ball");
+    }
+
     private List<Integer> getAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
@@ -34,7 +42,7 @@ public class Computer {
         }
     }
 
-    private Result getResult(String input) {
+    public Result getResult(String input) {
         this.inputList = stringToIntegerList(input);
         this.counts = initializeCounts();
 
@@ -42,9 +50,9 @@ public class Computer {
             getStrikeOrBallCount(index);
         }
 
-        if (counts.get("strike") == 3) {
+        if (getStrikeCount() == 3) {
             return Result.ANSWER;
-        } else if (counts.get("strike") == 0 && counts.get("ball") == 0) {
+        } else if (getStrikeCount() == 0 && getBallCount() == 0) {
             return Result.NOTHING;
         } else {
             return Result.STRIKEBALL;
@@ -53,9 +61,9 @@ public class Computer {
 
     private void getStrikeOrBallCount(int index) {
         if (answer.get(index).equals(inputList.get(index))) {
-            counts.put("strike", counts.get("strike") + 1);
+            counts.put("strike", getStrikeCount() + 1);
         } else if (answer.contains(inputList.get(index))) {
-            counts.put("ball", counts.get("ball") + 1);
+            counts.put("ball", getBallCount() + 1);
         }
     }
 
