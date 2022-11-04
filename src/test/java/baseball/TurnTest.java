@@ -143,6 +143,23 @@ public class TurnTest {
     }
 
     @Test
+    void getStrikeResultString_test_strike_result() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "231";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        String result = "2스트라이크";
+
+        assertThat(turn.getStrikeResultString()).isEqualTo(result);
+    }
+
+    @Test
     void getBallResultString_test_ball_result() {
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 

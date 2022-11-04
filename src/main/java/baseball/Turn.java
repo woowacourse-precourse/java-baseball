@@ -11,7 +11,7 @@ import java.util.Set;
 public class Turn {
     private static final int NUMBER_OF_INPUT_DIGITS= 3;
     private static final String BALL_MESSAGE = "볼";
-    private static final String STRIKE = "스트라이크";
+    private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String ASK_FOR_NUMBER = "숫자를 입력해주세요 : ";
     private List<Integer> playerNumberList;
     private int numberOfBalls;
@@ -68,6 +68,10 @@ public class Turn {
                 this.numberOfBalls++;
             }
         }
+    }
+
+    public String getStrikeResultString(){
+        return getResultString(this.numberOfStrikes, STRIKE_MESSAGE);
     }
 
     public String getBallResultString(){
