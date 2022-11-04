@@ -25,29 +25,41 @@ public class Application {
         Player player = new Player(new ArrayList<>());
         player.player3NumberInput();
 
-        int ballCount = 0;
-        int strikeCount = 0;
+        Integer ballCount = 0;
+        Integer strikeCount = 0;
 
-        strike(computer, player, strikeCount);
+        strikeCount = strike(computer, player, strikeCount);
+        ballCount = ball(computer, player, ballCount);
 
-        ball(computer, player, ballCount);
+        resultOutput(ballCount, strikeCount);
 
-        if(ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
-        }
 
     }
 
-    private static void ball(Computer computer, Player player, int ballCount) {
+    private static void resultOutput(Integer ballCount, Integer strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (ballCount == 0 && strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (strikeCount == 0 && ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        } else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
+
+    private static Integer ball(Computer computer, Player player, int ballCount) {
 
         for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
-            if (computer.computerNumber.get(numericComparisonIndex) != player.playerNumber.get(numericComparisonIndex)) {
+            if (!computer.computerNumber.get(numericComparisonIndex).equals(player.playerNumber.get(numericComparisonIndex))) {
                 ballCount = getBallCount(computer, player, ballCount, numericComparisonIndex);
             }
         }
+
+        return ballCount;
     }
 
-    private static int getBallCount(Computer computer, Player player, int ballCount, int numericComparisonIndex) {
+    private static int getBallCount(Computer computer, Player player, Integer ballCount, int numericComparisonIndex) {
 
         for (int playerNumberIndex = 0; playerNumberIndex < 3; playerNumberIndex++) {
             if (String.valueOf(computer.computerNumber.get(numericComparisonIndex)).contains(String.valueOf(player.playerNumber.get(playerNumberIndex)))) {
@@ -57,12 +69,14 @@ public class Application {
         return ballCount;
     }
 
-    private static void strike(Computer computer, Player player, int strikeCount) {
+    private static Integer strike(Computer computer, Player player, Integer strikeCount) {
 
         for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
-            if (computer.computerNumber.get(numericComparisonIndex) == player.playerNumber.get(numericComparisonIndex)) {
+            if (computer.computerNumber.get(numericComparisonIndex).equals(player.playerNumber.get(numericComparisonIndex))) {
                 strikeCount++;
             }
         }
+
+        return strikeCount;
     }
 }
