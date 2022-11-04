@@ -37,9 +37,20 @@ public class Application {
         //길이
         checkLength(inputNumber);
         //중복값
-
+        checkDuplication(inputNumber);
         //1~9사이값만
 
+    }
+
+    public static void checkDuplication(String inputNumber) throws IllegalArgumentException{
+
+        char first = inputNumber.charAt(0);
+        char second = inputNumber.charAt(1);
+        char third = inputNumber.charAt(2);
+
+        if (first == second || first == third || second == third) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void checkLength(String inputNumber) throws IllegalArgumentException{
