@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class StrikeCounter {
 
-    private StrikeResult checkStrike(List<Integer> answer, List<Integer> inputNumber) {
+    public StrikeResult checkStrike(List<Integer> answer, List<Integer> inputNumber) {
         int count = (int) IntStream.range(0, 3)
                 .filter(i -> answer.get(i).equals(inputNumber.get(i)))
                 .count();

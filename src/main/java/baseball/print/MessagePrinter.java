@@ -1,14 +1,8 @@
 package baseball.print;
 
-import java.util.Map;
-
 import static baseball.print.Message.*;
 
 public class MessagePrinter {
-
-    private static final int DIGITS_FOR_THIS_GAME = 3;
-    private static final String STRIKE_KEY = "strike";
-    private static final String BALL_KEY = "ball";
 
     public void printStartMessage() {
         System.out.println(START_GAME_MESSAGE);
@@ -18,46 +12,12 @@ public class MessagePrinter {
         System.out.print(INPUT_A_NUMBER_MESSAGE);
     }
 
-    public void printBallCount(int ballCount) {
-        System.out.println(ballCount + BALL);
-    }
-
-    public void printStrikeCount(int strikeCount) {
-        System.out.println(strikeCount + STRIKE);
+    public void printBallAndStrikeCount(String counts) {
+        System.out.println(counts);
     }
 
     public void printNothing() {
         System.out.println(NOTHING);
-    }
-
-    public void printBallAndStrikeCount(Map<String, Integer> ballAndStrikeCount) {
-        Integer ballCount = ballAndStrikeCount.get(BALL_KEY);
-        Integer strikeCount = ballAndStrikeCount.get(STRIKE_KEY);
-
-        if (containsOnlyBall(ballCount, strikeCount)) {
-            System.out.println(ballCount + BALL);
-            return;
-        }
-
-        if (containsOnlyStrike(ballCount, strikeCount)) {
-            System.out.println(strikeCount + STRIKE);
-            return;
-        }
-
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.println(NOTHING);
-            return;
-        }
-
-        System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
-    }
-
-    private boolean containsOnlyStrike(Integer ballCount, Integer strikeCount) {
-        return 0 < strikeCount && strikeCount <= DIGITS_FOR_THIS_GAME && ballCount == 0;
-    }
-
-    private boolean containsOnlyBall(Integer ballCount, Integer strikeCount) {
-        return 0 < ballCount && ballCount <= DIGITS_FOR_THIS_GAME && strikeCount == 0;
     }
 
     public void printCorrectAnswerMessage() {

@@ -1,25 +1,29 @@
 package baseball;
 
-import baseball.count.BallAndStrikeCounter;
+import baseball.count.ball.BallCounter;
+import baseball.count.strike.StrikeCounter;
+import baseball.input.InputValueParser;
 import baseball.input.NumberScanner;
 import baseball.print.MessagePrinter;
 import baseball.randomnumber.RandomNumberFactory;
 
 import java.util.List;
-import java.util.Map;
 
 public class BaseballGame {
-    private static final String STRIKE_KEY = "strike";
 
     private final NumberScanner numberScanner;
-    private final BallAndStrikeCounter ballAndStrikeCounter;
+    private final InputValueParser inputValueParser;
+    private final BallCounter ballCounter;
+    private final StrikeCounter strikeCounter;
     private final MessagePrinter messagePrinter;
 
-    public BaseballGame(NumberScanner numberScanner,
-                        BallAndStrikeCounter ballAndStrikeCounter,
+    public BaseballGame(NumberScanner numberScanner, InputValueParser inputValueParser,
+                        BallCounter ballCounter, StrikeCounter strikeCounter,
                         MessagePrinter messagePrinter) {
         this.numberScanner = numberScanner;
-        this.ballAndStrikeCounter = ballAndStrikeCounter;
+        this.inputValueParser = inputValueParser;
+        this.ballCounter = ballCounter;
+        this.strikeCounter = strikeCounter;
         this.messagePrinter = messagePrinter;
     }
 
@@ -32,13 +36,16 @@ public class BaseballGame {
         while (oneOrTwoForRestartGame != 2) {
             messagePrinter.printEnterNumberMessage();
 
-            String inputValue = numberScanner.inputNumber();  // 객체화. -> BallList -> List<Ball>
-            Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter
-                    .checkBallAndStrikeCount(answer, inputValue);  // ball이랑 strike를 나눈다.
+            List<Integer> inputValue = inputValueParser.inputValueToList(
+                    numberScanner.inputNumber()
+            );
 
-            messagePrinter.printBallAndStrikeCount(ballAndStrikeCount);
+            int ballCount = ballCounter.checkBall(answer, inputValue).ballCount();
+            int strikeCount = strikeCounter.checkStrike(answer, inputValue).strikeCount();
 
-            if (ballAndStrikeCount.get(STRIKE_KEY) == 3) {
+            printBallAndStrikeCount(ballCount, strikeCount);
+
+            if (strikeCount == 3) {
                 messagePrinter.printCorrectAnswerMessage();
                 messagePrinter.printRestartMessage();
 
@@ -52,5 +59,24 @@ public class BaseballGame {
         }
 
         System.out.println("2를 입력하여, 게임이 종료되었습니다.");
+    }
+
+    public void printBallAndStrikeCount(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            messagePrinter.printNothing();
+            return;
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (0 < ballCount) {
+            stringBuilder.append(ballCount).append("볼 ");
+        }
+
+        if (0 < strikeCount) {
+            stringBuilder.append(strikeCount).append("스트라이크");
+        }
+
+        messagePrinter.printBallAndStrikeCount(stringBuilder.toString());
     }
 }
