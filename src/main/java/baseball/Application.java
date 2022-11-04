@@ -32,6 +32,12 @@ public class Application {
     public static boolean isClearGame(Integer strikeCount) {
         return strikeCount != 3;
     }
+    public static boolean continueGame() {
+        endMessage();
+        String flag = Console.readLine();
+        validateFlag(flag);
+        return flag.equals(RE_START);
+    }
     public static void validateFlag(String flag) {
         if(!flag.equals(END) && !flag.equals(RE_START)){
             throw new IllegalArgumentException("1 or 2만 입력할 수 있습니다.");
