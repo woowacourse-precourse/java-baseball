@@ -29,6 +29,7 @@ public class ConsoleUtil {
         printLine("이렇게 컴퓨터가 알려준 힌트를 통해 3자리의 숫자를 입력하여 컴퓨터가 생각하는 숫자를 맞추면 돼요.");
         printLine("중복되는 숫자가 없는 3자리의 숫자를 입력하는 것을 잊지 마세요.");
         printLine("이제 게임을 시작해볼까요?");
+        printLine("");
     }
 
     public static void printFinish(int strikePoint) {
