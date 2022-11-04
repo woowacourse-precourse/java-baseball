@@ -22,6 +22,6 @@ public class PlayerView {
     }
 
     public String getInput(){
-        return "";
+        return input;
     }
 }
