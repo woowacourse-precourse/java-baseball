@@ -18,4 +18,15 @@ public class BaseballExceptionTest {
 
         assertThat(exception.getMessage()).isEqualTo(GameConstant.INPUT_LENGTH_EXCEPTION);
     }
+    
+    @Test
+    void 사용자_숫자외_입력_예외처리_테스트() {
+        String input = "a12";
+
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseballException.InputTypeException(input);
+        });
+
+        assertThat(exception.getMessage()).isEqualTo(GameConstant.INPUT_TYPE_EXCEPTION);
+    }
 }

@@ -20,6 +20,7 @@ public class Player {
 
             try {
                 BaseballException.InputLengthException(input);
+                BaseballException.InputTypeException(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
             }

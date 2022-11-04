@@ -17,4 +17,13 @@ public class BaseballException {
             throw new IllegalArgumentException(GameConstant.INPUT_LENGTH_EXCEPTION);
         }
     }
+
+    public static void InputTypeException(String input) {
+
+        for (char letter : input.toCharArray()) {
+            if (letter < 48 || letter > 57) {
+                throw new IllegalArgumentException(GameConstant.INPUT_TYPE_EXCEPTION);
+            }
+        }
+    }
 }
