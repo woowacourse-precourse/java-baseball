@@ -38,12 +38,23 @@ class NumberHandlerTest {
     }
 
     @Test
-    void 사용자_잘못된_문자_입력() {
-        NumberHandler numberHandler1 = new NumberHandler();
-        InputStream in1 = new ByteArrayInputStream("178zz".getBytes());
-        System.setIn(in1);
+    void 사용자_잘못된_문자_입력1() {
+        NumberHandler numberHandler = new NumberHandler();
+        InputStream in = new ByteArrayInputStream("178zz".getBytes());
+        System.setIn(in);
 
-        assertThatThrownBy(() -> numberHandler1.setUserNumber())
+        assertThatThrownBy(() -> numberHandler.setUserNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("공백없이 숫자만 입력해주세요.");
+    }
+
+    @Test
+    void 사용자_잘못된_문자_입력2() {
+        NumberHandler numberHandler = new NumberHandler();
+        InputStream in = new ByteArrayInputStream("17 8".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> numberHandler.setUserNumber())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("공백없이 숫자만 입력해주세요.");
     }
@@ -57,6 +68,28 @@ class NumberHandlerTest {
         assertThatThrownBy(() -> numberHandler.setUserNumber())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복되는 숫자 없이 입력해주세요.");
+    }
+
+    @Test
+    void 사용자_숫자_입력범위_불만족1() {
+        NumberHandler numberHandler = new NumberHandler();
+        ByteArrayInputStream in = new ByteArrayInputStream("17".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> numberHandler.setUserNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자 3개만 입력해주세요.");
+    }
+
+    @Test
+    void 사용자_숫자_입력범위_불만족2() {
+        NumberHandler numberHandler = new NumberHandler();
+        ByteArrayInputStream in = new ByteArrayInputStream("1783".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> numberHandler.setUserNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자 3개만 입력해주세요.");
     }
 
 

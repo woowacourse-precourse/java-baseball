@@ -47,6 +47,7 @@ public class NumberHandler {
                     .collect(Collectors.toList());
 
             numberDuplicateCheck(userNumberList);
+            numberLengthCheck(userNumberList);
 
             this.userNumber = userNumberList;
         } catch (NumberFormatException e) {
@@ -59,6 +60,13 @@ public class NumberHandler {
             if (Collections.frequency(digits, digit) > 1) {
                 throw new IllegalArgumentException("중복되는 숫자 없이 입력해주세요.");
             }
+
+        }
+    }
+
+    public void numberLengthCheck(ArrayList<Integer> digits) {
+        if (digits.size() != 3) {
+            throw new IllegalArgumentException("숫자 3개만 입력해주세요.");
         }
     }
 }
