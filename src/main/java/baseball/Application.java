@@ -23,6 +23,9 @@ public class Application {
         if (numbers.length() != 3) {
             return false;
         }
+        if (numbers.contains("0")) {
+            return false;
+        }
         return numbers.charAt(0) != numbers.charAt(1)
                 && numbers.charAt(1) != numbers.charAt(2)
                 && numbers.charAt(2) != numbers.charAt(0);
@@ -60,5 +63,6 @@ public class Application {
             result.show();
         }
         while (!guess.equals(answer));
+
     }
 }
