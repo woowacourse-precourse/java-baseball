@@ -1,7 +1,6 @@
 package baseball;
 
 public class BaseballApplicationManager {
-    private int answer;
     BaseballApplicationManager() {
         // IOManager.printProgramStartMessage
     }
