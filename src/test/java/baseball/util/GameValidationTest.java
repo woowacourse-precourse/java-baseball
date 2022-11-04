@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class GameValidationTest {
 
-    @DisplayName("지정된 게임 숫자 길이인 경우 true 반환한다.")
+    @DisplayName("지정된 게임 숫자 길이면 true 반환한다.")
     @Test
     void validateCorrectLength() {
         //given
@@ -41,6 +41,71 @@ class GameValidationTest {
 
         //when
         boolean result = GameValidation.validateLength(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자의 각 자리가 모두 숫자면 true 반환한다.")
+    @Test
+    void validateCorrectDigit() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.validateDigit(number);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 영어가 포함되어 있으면 false 반환한다.")
+    @Test
+    void validateDigitWithAlphabet() {
+        //given
+        String number = "1a3";
+
+        //when
+        boolean result = GameValidation.validateDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 기호가 포함되어 있으면 false 반환한다.")
+    @Test
+    void validateDigitWithSymbol() {
+        //given
+        String number = "1@3";
+
+        //when
+        boolean result = GameValidation.validateDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 한글이 포함되어 있으면 false 반환한다.")
+    @Test
+    void validateDigitWithKorean() {
+        //given
+        String number = "1가3";
+
+        //when
+        boolean result = GameValidation.validateDigit(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 공백이 포함되어 있으면 false 반환한다.")
+    @Test
+    void validateDigitWithBlank() {
+        //given
+        String number = "1 3";
+
+        //when
+        boolean result = GameValidation.validateDigit(number);
 
         //then
         assertThat(result).isFalse();
