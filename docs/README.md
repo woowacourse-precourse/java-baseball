@@ -1,8 +1,9 @@
-- [ ] 게임 시작 함수
+- [x] 게임 시작 함수
     - [x] 컴퓨터가 임의의 서로 다른 수 3개를 선택
-    - [ ] 사용자 입력 함수 호출
-- [ ] 컴퓨터 수 생성 함수
-    - [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
+    - [x] 사용자 입력 함수 호출
+    - [ ] 비교 함수 호출
+- [x] 컴퓨터 수 생성 함수
+    - [x] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 - [ ] 사용자 입력 함수
     - [ ] 사용자에게서 서로 다른 수 3개를 입력
         - [ ] camp.nextstep.edu.missionutils.Console의 readLine()을 활용
