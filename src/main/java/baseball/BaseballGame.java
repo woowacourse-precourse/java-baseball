@@ -17,6 +17,10 @@ public class BaseballGame extends Game {
         return this.answerNumbers;
     }
 
+    private void setAnswerNumbers(List[] answerNumbers) {
+        this.answerNumbers = answerNumbers;
+    }
+
     @Override
     protected void initialize() {
     }

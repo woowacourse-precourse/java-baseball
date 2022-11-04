@@ -50,7 +50,7 @@
       - 게임 인스턴스를 생성합니다.
         - [X] getBaseballNumber
         - 야구 게임의 클리어 조건 숫자를 알려줍니다.
-        - [ ] setBaseballNumber
+        - [X] setBaseballNumber
         - 야구 게임의 클리어 조건을 설정합니다.
 
       - [ ] initialize
