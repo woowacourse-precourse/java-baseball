@@ -46,12 +46,8 @@ public class Game {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < user.size(); i++) {
-            if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
-                strike++;
-            }
-            if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
-                ball++;
-            }
+            strike = strike(computer, user, strike, i);
+            ball = ball(computer, user, ball, i);
         }
 
         if (ball == 0 && strike == 0) {
@@ -72,6 +68,20 @@ public class Game {
             }
         }
         return result;
+    }
+
+    private static int ball(List<Integer> computer, List<Integer> user, int ball, int i) {
+        if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
+            ball++;
+        }
+        return ball;
+    }
+
+    private static int strike(List<Integer> computer, List<Integer> user, int strike, int i) {
+        if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
+            strike++;
+        }
+        return strike;
     }
 
     private List<Integer> makeUserAnswer(String input) {
