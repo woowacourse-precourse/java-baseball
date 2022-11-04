@@ -18,4 +18,11 @@ public class Validate {
         }
         return false;
     }
+
+    public static boolean validateRangeNumber(String number, int startInclusive, int endInclusive) {
+        if (number.matches(String.format("[+-]?[%d-%d]*(\\.[%d-%d]+)?", startInclusive, endInclusive, startInclusive, endInclusive))) {
+            return true;
+        }
+        return false;
+    }
 }
