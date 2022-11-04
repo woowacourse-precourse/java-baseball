@@ -18,18 +18,27 @@ public class Baseballs {
     private Baseballs(String userInput) {
         validate(userInput);
         this.baseballs = userInput.chars()
-                .mapToObj(value -> (char)value)
+                .mapToObj(value -> (char) value)
                 .map(Baseball::new)
                 .collect(Collectors.toList());
     }
 
     public Result calculateResult(Baseballs another) {
-        return Result.scoreOf(countStrike(another), 0);
+        return Result.scoreOf(countStrike(another), countBall(another));
     }
 
     public int countStrike(Baseballs another) {
-        return (int)IntStream.range(0, BASEBALL_COUNT)
+        return (int) IntStream.range(0, BASEBALL_COUNT)
                 .filter(order -> this.baseballs.get(order).equals(another.baseballs.get(order)))
+                .count();
+    }
+
+    public int countBall(Baseballs another) {
+        return (int) this.baseballs.stream()
+                .filter(baseball ->
+                        another.baseballs.contains(baseball)
+                                && this.baseballs.indexOf(baseball) != another.baseballs.indexOf(baseball)
+                )
                 .count();
     }
 

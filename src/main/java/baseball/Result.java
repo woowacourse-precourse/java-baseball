@@ -23,4 +23,8 @@ public class Result {
         return this.result.get(STRIKE);
     }
 
+    public int countBall() {
+        return this.result.get(BALL);
+    }
+
 }
