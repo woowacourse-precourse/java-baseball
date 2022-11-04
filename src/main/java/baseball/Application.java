@@ -104,6 +104,6 @@ public class Application {
     private static LinkedHashMap<String, ArrayList<Integer>> AnalyzePlayerNumber
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList) {
-        
+
     }
 }
