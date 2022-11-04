@@ -17,4 +17,27 @@ public class Computer {
         }
         return computerNumbers;
     }
+
+    public String[] compareNumber() {
+        String[] gameResult = new String[3];
+        User user = new User();
+        List<Integer> computerNumbers = createRandomNumber();
+        List<Integer> userNumbers = user.createUserNumber();
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            int userNumber = userNumbers.get(i);
+            if (findSameNumber(computerNumbers, userNumber)) {
+                gameResult[i] = "볼";
+                continue;
+            }
+            gameResult[i] = "낫싱";
+        }
+        return gameResult;
+    }
+
+    public boolean findSameNumber(List<Integer> numberList, int number) {
+        if (numberList.contains(number)) {
+            return true;
+        }
+        return false;
+    }
 }
