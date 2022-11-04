@@ -5,6 +5,7 @@ import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 public class Generator {
     public static List<Integer> generateAnswer() {
         List<Integer> numbers;
-        Set<Integer> answers = new HashSet<>();
+        Set<Integer> answers = new LinkedHashSet<>();
 
         while(answers.size() < GameConstant.DIGIT.getValue()) {
             answers.add(getRandomNumber());
