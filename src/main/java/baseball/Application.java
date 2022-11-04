@@ -10,6 +10,7 @@ public class Application {
         Computer computer = new Computer();
         Player player = new Player();
         computer.startGame();
-        List<Integer> integers = player.inputPlayerNumber();
+        List<Integer> playerNumber = player.inputPlayerNumber();
+        System.out.println(computer.playGame(playerNumber));
     }
 }
