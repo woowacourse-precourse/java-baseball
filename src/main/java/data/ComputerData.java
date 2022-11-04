@@ -1,5 +1,8 @@
 package data;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import util.Utils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,5 +16,26 @@ public class ComputerData {
 
     public List<Integer> getComputerData() {
         return computerData;
+    }
+
+    //랜덤으로 컴퓨터 값 생성
+    public void setRandomNum(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < Utils.Numlen) {
+            int randomNumber = Randoms.pickNumberInRange(Utils.STARTNUM, Utils.ENDNUM);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        setComputerData(computer);
+    }
+
+    //랜덤으로 받은 숫자 인덱스에 숫자 위치 값 저장
+    public void setComputerData(List<Integer> data){;
+        int index=1;
+        for(Integer integer: data) {
+            computerData.set(integer, index);
+            index++;
+        }
     }
 }
