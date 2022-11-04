@@ -1,5 +1,7 @@
 package baseball.util;
 
+import java.util.stream.Collectors;
+
 public class GameValidation {
 
     private final static int GAME_NUMBER_LENGTH = 3;
@@ -25,6 +27,13 @@ public class GameValidation {
 
     private static boolean inRange(int codePoint) {
         return START_RANGE <= codePoint && codePoint <= END_RANGE;
+    }
+
+    public static boolean validateDuplication(String input) {
+        return input.chars()
+            .boxed()
+            .collect(Collectors.toSet())
+            .size() == GAME_NUMBER_LENGTH;
     }
 
 }
