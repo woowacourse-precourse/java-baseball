@@ -63,4 +63,28 @@ public class PlayerTest {
         player.setHintCount(computerNumbers, "789");
         assertEquals(player.getHintMessage(), "낫싱");
     }
+
+    @Test
+    void 상태_타입_검사_테스트() {
+        assertThatThrownBy(() -> {
+            player.validateStateNumber("일");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Message.TYPE_EXCEPTION);
+    }
+
+    @Test
+    void 상태_자리_수_검사_테스트() {
+        assertThatThrownBy(() -> {
+            player.validateStateNumber("12");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Message.STATE_LENGTH_EXCEPTION);
+    }
+
+    @Test
+    void 상태_범위_검사_테스트() {
+        assertThatThrownBy(() -> {
+            player.validateStateNumber("3");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
+    }
 }

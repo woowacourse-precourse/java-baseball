@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
+    public static final int PLAYER = 0;
+    public static final int STATE = 1;
     private int strike;
     private int ball;
 
@@ -88,8 +90,22 @@ public class Player {
         }
     }
 
-    private boolean isValidType(String playerNumber) {
-        for (char digit : playerNumber.toCharArray()) {
+    public void validateStateNumber(String stateNumber) {
+        if (!isValidType(stateNumber)) {
+            throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
+        }
+
+        if (!isValidLength(stateNumber, STATE)) {
+            throw new IllegalArgumentException(Message.STATE_LENGTH_EXCEPTION);
+        }
+
+        if (!isValidNumber(stateNumber)) {
+            throw new IllegalArgumentException(Message.STATE_NUMBER_EXCEPTION);
+        }
+    }
+
+    private boolean isValidType(String number) {
+        for (char digit : number.toCharArray()) {
             if (Character.isLetter(digit)) {
                 return false;
             }
@@ -97,8 +113,16 @@ public class Player {
         return true;
     }
 
-    private boolean isValidLength(String playerNumber) {
-        return playerNumber.length() == Config.DIGIT_SIZE;
+    private boolean isValidLength(String number, int type) {
+        switch (type) {
+            case PLAYER:
+                return number.length() == Config.DIGIT_SIZE;
+
+            case STATE:
+                return number.length() == Config.STATE_SIZE;
+        }
+
+        return false;
     }
 
     private boolean isValidDuplication(String playerNumber) {
@@ -117,5 +141,10 @@ public class Player {
             }
         }
         return true;
+    }
+
+    private boolean isValidNumber(String stateNumber) {
+        int number = Integer.parseInt(stateNumber);
+        return Config.STATE_RESTART == number || Config.STATE_SHUTDOWN == number;
     }
 }
