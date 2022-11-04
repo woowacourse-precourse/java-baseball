@@ -9,6 +9,11 @@ public class StringToRestartConverter implements Converter<String, Restart> {
     public static final String EXIT_VALUE = "2";
 
     @Override
+    public boolean supports(Object from, Class to) {
+        return from.getClass() == String.class && to == Restart.class;
+    }
+
+    @Override
     public Restart convert(String target) {
         if (RESTARTING_VALUE.equals(target)) {
             return Restart.RESTART;

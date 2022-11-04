@@ -9,6 +9,11 @@ public class ScoreToMessageConverter implements Converter<Score, String> {
     public static final String STRIKE_MESSAGE_FORMAT = "%d스트라이크";
 
     @Override
+    public boolean supports(Object from, Class to) {
+        return from.getClass() == Score.class && to == String.class;
+    }
+
+    @Override
     public String convert(Score target) {
         Integer ballScore = target.getBallScore();
         Integer strikeScore = target.getStrikeScore();

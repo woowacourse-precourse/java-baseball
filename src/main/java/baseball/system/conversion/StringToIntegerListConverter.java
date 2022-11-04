@@ -13,6 +13,11 @@ public class StringToIntegerListConverter implements Converter<String, List<Inte
     }
 
     @Override
+    public boolean supports(Object from, Class to) {
+        return from.getClass() == String.class && to == List.class;
+    }
+
+    @Override
     public List<Integer> convert(String target) {
         validator.validate(target);
 

@@ -18,6 +18,7 @@ import baseball.view.OutputView;
 import baseball.vo.Restart;
 import baseball.vo.UserNumber;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballApplication {
@@ -28,9 +29,7 @@ public class BaseballApplication {
     private final BaseballService baseballService;
 
     private final Validator<List<Integer>> numberValidator;
-    private final Converter<String, Restart> stringToRestartConverter;
-    private final Converter<String, List<Integer>> stringToIntegerListConverter;
-    private final Converter<List<Integer>, UserNumber> integerListToUserNumberConverter;
+    private final List<Converter> converters;
     private final Voter<UserNumber, Score> voter;
 
     public BaseballApplication() {
@@ -38,17 +37,17 @@ public class BaseballApplication {
         this.outputView = new OutputView();
         this.voter = new BaseballVoter();
         this.numberValidator = new NumberValidator();
-        this.stringToRestartConverter = new StringToRestartConverter();
-        this.stringToIntegerListConverter
-                = new StringToIntegerListConverter(new StringToIntegerListConversionValidator());
-        this.integerListToUserNumberConverter
-                = new IntegerListToUserNumberConverter(numberValidator);
+
+        ArrayList<Converter> converterList = new ArrayList<>();
+        converterList.add(new StringToRestartConverter());
+        converterList.add(new StringToIntegerListConverter(new StringToIntegerListConversionValidator()));
+        converterList.add(new IntegerListToUserNumberConverter(numberValidator));
+        this.converters = converterList;
 
         this.baseballService = new BaseballService(voter);
         this.computerController = new ComputerController();
-        this.baseBallController = new BaseBallController(
-                inputView, outputView, baseballService,
-                stringToRestartConverter, stringToIntegerListConverter, integerListToUserNumberConverter);
+        this.baseBallController
+                = new BaseBallController(inputView, outputView, baseballService, converters);
     }
 
     public void run() {

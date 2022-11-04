@@ -3,38 +3,36 @@ package baseball.controller;
 import baseball.dto.Score;
 import baseball.service.BaseballService;
 import baseball.system.conversion.Converter;
+import baseball.system.exception.ConverterNotFoundException;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Restart;
 import baseball.vo.UserNumber;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class BaseBallController {
     private final InputView inputView;
     private final OutputView outputView;
     private final BaseballService baseballService;
-    private final Converter<String, Restart> stringToRestartConverter;
-    private final Converter<String, List<Integer>> stringToIntegerListConverter;
-    private final Converter<List<Integer>, UserNumber> integerListToUserNumberConverter;
+    private final List<Converter> converters;
 
-    public BaseBallController(InputView inputView, OutputView outputView,
-                              BaseballService baseballService, Converter<String, Restart> stringToRestartConverter,
-                              Converter<String, List<Integer>> stringToIntegerListConverter,
-                              Converter<List<Integer>, UserNumber> integerListToUserNumberConverter) {
+    public BaseBallController(InputView inputView,
+                              OutputView outputView,
+                              BaseballService baseballService,
+                              List<Converter> converters) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.baseballService = baseballService;
-        this.stringToRestartConverter = stringToRestartConverter;
-        this.stringToIntegerListConverter = stringToIntegerListConverter;
-        this.integerListToUserNumberConverter = integerListToUserNumberConverter;
+        this.converters = converters;
     }
 
     public Restart startGame() {
         while (true) {
             String input = inputView.getUserInput();
-            List<Integer> inputList = stringToIntegerListConverter.convert(input);
-            UserNumber userNumber = integerListToUserNumberConverter.convert(inputList);
+            List<Integer> inputList = convert(input, List.class);
+            UserNumber userNumber = convert(inputList, UserNumber.class);
 
             Score score = baseballService.compareInputWithAnswer(userNumber);
 
@@ -48,6 +46,17 @@ public class BaseBallController {
         outputView.printWinnerMessage();
         String restartingInput = inputView.getRestartingInput();
 
-        return stringToRestartConverter.convert(restartingInput);
+        return convert(restartingInput, Restart.class);
+    }
+
+    private <T extends Object> T convert(Object target, Class convertTo) {
+        Iterator<Converter> iterator = converters.iterator();
+        while (iterator.hasNext()) {
+            Converter converter = iterator.next();
+            if (converter.supports(target, convertTo)) {
+                return (T) converter.convert(target);
+            }
+        }
+        throw new ConverterNotFoundException();
     }
 }

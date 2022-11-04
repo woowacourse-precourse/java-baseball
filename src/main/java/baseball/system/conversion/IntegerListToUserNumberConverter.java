@@ -13,6 +13,11 @@ public class IntegerListToUserNumberConverter implements Converter<List<Integer>
     }
 
     @Override
+    public boolean supports(Object from, Class to) {
+        return from instanceof List && to == UserNumber.class;
+    }
+
+    @Override
     public UserNumber convert(List<Integer> target) {
         validator.validate(target);
         return UserNumber.of(target);
