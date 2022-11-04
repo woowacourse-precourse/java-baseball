@@ -39,6 +39,16 @@ public class Application {
         String randomNumber = String.join("", digitList);
         return randomNumber;
     }
+
+    private static boolean hasThreeDigits(String input) {
+        boolean isValid = true;
+
+        if (input.length() != DIGIT_RESTRICTION) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
     public static void main(String[] args) {
         String computer = "";
         boolean iterate = true;
