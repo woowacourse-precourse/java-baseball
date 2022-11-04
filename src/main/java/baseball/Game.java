@@ -35,20 +35,28 @@ public class Game {
     }
 
     // method for testing
-    int strike(String randomNumber, String userNumber) {
+    String strikeAndBall(String randomNumber, String userNumber) {
         int strike = 0;
         int ball = 0;
 
         String[] randomNumberArr = String.valueOf(randomNumber).split("");
         String[] userNumberArr = String.valueOf(userNumber).split("");
 
-        // calculate strike
         for(int i=0; i<NUMBER_LENGTH; i++) {
+            // calculate strike
             if(randomNumberArr[i].equals(userNumberArr[i])) {
                 strike++;
             }
+            // calculate ball
+            for(int k=0; k<NUMBER_LENGTH; k++){
+                if(randomNumberArr[i].equals(userNumberArr[k]) && i != k) {
+                    ball++;
+                }
+            }
         }
-        return strike;
+
+
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
 

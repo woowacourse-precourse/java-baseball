@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 class GameTest {
 
     @Test
-    void returnStrike() {
+    void returnStrikeAndBall() {
         Game game = new Game();
-        assertEquals(1, game.strike("135", "123"));
+        assertEquals("1볼 1스트라이크", game.strikeAndBall("589", "597"));
     }
 
 }
