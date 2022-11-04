@@ -10,12 +10,8 @@ public class PlayerException {
     private static final int THIRD = 2;
     private static final String NOT_NUMBER_EXCEPTION = "입력은 숫자로만 해야 합니다.";
     private static final String NOT_THREE_DIGIT_EXCEPTION = "입력은 세자리 숫자여야 합니다. ";
-    private static final String NO_ZERO_EXCEPTION = "입력은 1부터 9까지의 숫자 3개여야 합니다.";
-    private static final String SAME_NUMBER_EXCEPTION = "입력은 서로 다른 3개의 숫자여야 합니다.";
-
-    public void checkException(String input){
-
-    }
+    private static final String NO_ZERO_EXCEPTION = "입력한 값에 0이 없어야 합니다.";
+    private static final String SAME_NUMBER_EXCEPTION = "입력한 값이 서로 다른 숫자여야 합니다. ";
 
     public boolean isNotNumber(String input){
         return !Pattern.matches("^[1-9]*$", input);
