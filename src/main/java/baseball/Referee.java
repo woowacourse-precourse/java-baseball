@@ -9,10 +9,14 @@ public class Referee {
     public static final int END = 1;
     private static final int LIST_SIZE = 3;
 
-    public static void judge(String guess, List<Integer> answer) {
+    public static int judge(String guess, List<Integer> answer) {
         List<Integer> convertedGuess = stringToIntegerList(guess);
         int ballCount = getBallCount(convertedGuess, answer);
         int strikeCount = getStrikeCount(convertedGuess, answer);
+        if (answer.equals(convertedGuess)) {
+            return END;
+        }
+        return CONTINUATION;
     }
 
     private static int getStrikeCount(List<Integer> guess, List<Integer> answer) {

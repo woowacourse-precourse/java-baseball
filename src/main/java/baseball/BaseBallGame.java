@@ -17,8 +17,12 @@ public class BaseBallGame {
     }
 
     private void play() {
-        String userGuess = inputUserGuess();
-        GuessChecker.check(userGuess);
+        int result;
+        do {
+            String userGuess = inputUserGuess();
+            GuessChecker.check(userGuess);
+            result = Referee.judge(userGuess, computer.getRandomNumbers());
+        } while (result == Referee.CONTINUATION);
     }
 
     private void init() {
