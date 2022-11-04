@@ -46,16 +46,12 @@ public class OutputView {
     private static String parsePlayResults(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(0, 1)
                 .filter(ballStatusIndex -> isBallScoreNotZero(ballStatusScores, ballStatusIndex))
-                .mapToObj(ballStatusIndex -> combinedDisplay(ballStatusScores.get(ballStatusIndex), ballStatusDisplay.get(ballStatusIndex)))
+                .mapToObj(ballStatusIndex -> ballStatusScores.get(ballStatusIndex) + ballStatusDisplay.get(ballStatusIndex))
                 .collect(Collectors.joining(DELIMITER));
     }
     
     private static boolean isBallScoreNotZero(final List<Integer> ballStatusScores, final int ballStatusIndex) {
         return ballStatusScores.get(ballStatusIndex) != 0;
-    }
-    
-    private static String combinedDisplay(final int ballStatusScore, final String ballStatusDisplay) {
-        return ballStatusScore + ballStatusDisplay;
     }
     
     public static void baseBallGameEndMessagePrint() {
