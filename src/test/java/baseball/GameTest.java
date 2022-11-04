@@ -28,8 +28,8 @@ public class GameTest {
   public void setUp(){
     outContent = new ByteArrayOutputStream();
     originalOut = System.out;
-    game = new Game("1");
     System.setOut(new PrintStream(outContent));
+    game = new Game("1");
   }
 
   @AfterEach
