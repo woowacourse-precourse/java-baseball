@@ -179,4 +179,64 @@ public class NumberBaseball {
             return false;
         }
     }
+
+    /**
+     * 사용자의 숫자 입력에 대한 예외를 처리하는 메소드
+     *
+     * 서로 다른 세자리 숫자가 아닌 input은 모두 예외로 처리해야 함
+     * 1. 입력 받은 문자열의 길이가 3인지 확인
+     * 2. 각 자리가 모두 숫자(1~9)인지 확인
+     * 3. 각 자리의 숫자가 서로 다른 숫자인지 확인
+     *
+     * @return userAnswer
+     */
+    public String validateInput() {
+        Scanner scanner = new Scanner(System.in);
+        String userAnswer = scanner.nextLine();
+
+        try {
+            if (userAnswer.length() != 3) {
+                throw new IllegalArgumentException();   // 입력받은 문자열의 길이가 3이 아니면 IllegalArgumentException 발생시킴
+            } else if (!isNumber(userAnswer)) {
+                throw new IllegalArgumentException();   // 각 자리가 1~9의 숫자가 아니면 IllegalArgumentException 발생시킴
+            } else if (!isDiffNumber(userAnswer)) {
+                throw new IllegalArgumentException();   // 각 자리의 숫자가 서로 다른 숫자가 아니면 IllegalArgumentException 발생시킴
+            } else {
+                return userAnswer;
+            }
+        } catch (IllegalArgumentException e) {
+            return "";
+        }
+    }
+
+    /**
+     * 각 자리가 모두 1~9의 숫자인지 확인하는 메소드
+     *
+     * @param userAnswer
+     * @return  true or false
+     */
+    public boolean isNumber(String userAnswer) {
+        for (int i = 0; i < userAnswer.length(); i++) {
+            int uniCode = userAnswer.charAt(i); // 유니코드를 이용하여 숫자를 판별
+
+            if (uniCode < 49 || uniCode > 57) { // 49 ~ 57
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 각 자리의 숫자가 서로 다른 숫자인지 확인
+     *
+     * @param userAnswer
+     * @return true or false
+     */
+    public boolean isDiffNumber(String userAnswer) {
+        int num1 = userAnswer.charAt(0);
+        int num2 = userAnswer.charAt(1);
+        int num3 = userAnswer.charAt(2);
+
+        return (num1 != num2 && num1 != num3 && num2 != num3);
+    }
 }
