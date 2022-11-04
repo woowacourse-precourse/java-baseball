@@ -55,4 +55,11 @@ public class BallTest {
         Ball otherBall = new Ball(2, 2);
         assertThat(ball.play(otherBall)).isEqualTo(BallStatus.BALL);
     }
+
+    @Test
+    void 두개의_볼_비교하여_낫싱_반환() {
+        Ball ball = new Ball(1, 2);
+        Ball otherBall = new Ball(2, 3);
+        assertThat(ball.play(otherBall)).isEqualTo(BallStatus.NOTHING);
+    }
 }
