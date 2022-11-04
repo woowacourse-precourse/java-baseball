@@ -35,4 +35,16 @@ public class BaseballGame {
         System.out.println(START_GAME);
         computer.makeNewNumbers();
     }
+
+    public void playGame() {
+        boolean isPlaying = true;
+        boolean isUserWin = false;
+
+        while (isPlaying) {
+            startGame();
+            do {
+
+            } while (!isUserWin);
+        }
+    }
 }
