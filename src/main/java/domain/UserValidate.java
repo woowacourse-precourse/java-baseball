@@ -6,6 +6,11 @@ public class UserValidate {
     public UserValidate() {
     }
 
+    public int[] validate_user_input(String input) throws IllegalArgumentException{
+        check_size(input);
+        return get_num(input);
+    }
+
     public void check_size(String input) throws IllegalArgumentException{
         if(input.length() != SIZE){
             throw new IllegalArgumentException();
