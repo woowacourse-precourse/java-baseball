@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
@@ -49,7 +48,7 @@ class ApplicationTest extends NsTest {
     void 숫자가_아닌_입력() {
         String[] inputs = {"12a", "1a2", "a12", " 12", "12#", "  ", ""};
         for (String input : inputs) {
-            assertThat(gameIO.isLegalInput(input)).isEqualTo(false);
+            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -57,7 +56,7 @@ class ApplicationTest extends NsTest {
     void 세_자리가_아닌_입력() {
         String[] inputs = {"1234", "12", "1", "12345"};
         for (String input : inputs) {
-            assertThat(gameIO.isLegalInput(input)).isEqualTo(false);
+            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -65,7 +64,7 @@ class ApplicationTest extends NsTest {
     void 서로_다른_수가_아닌_입력() {
         String[] inputs = {"111", "112", "121", "211"};
         for (String input : inputs) {
-            assertThat(gameIO.isLegalInput(input)).isEqualTo(false);
+            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 

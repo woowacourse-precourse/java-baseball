@@ -24,11 +24,11 @@ public class GameIO {
         return readLine();
     }
 
-    public boolean isLegalInput(String input) {
-        if (isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
-            return true;
+    public boolean isLegalInput(String input) throws IllegalArgumentException {
+        if (!(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input))) {
+            throw new IllegalArgumentException();
         }
-        return false;
+        return true;
     }
     public boolean isOnlyNumber(String input) {
         Pattern pattern = Pattern.compile("\\D");

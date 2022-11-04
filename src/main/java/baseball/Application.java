@@ -26,12 +26,10 @@ public class Application {
         while(isContinue) {
             try {
                 input = gameIO.getInput();
-                if (!gameIO.isLegalInput(input)) {
-                    throw new IllegalArgumentException();
-                }
+                gameIO.isLegalInput(input);
             } catch (IllegalArgumentException illegalArgumentException) {
                 gameIO.printInputExceptionLog();
-                throw illegalArgumentException;
+                throw new IllegalArgumentException();
             }
 
             String judgement = referee.judge(input, answer);
