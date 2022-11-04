@@ -28,7 +28,7 @@ public class PlayerException {
         throw new IllegalArgumentException(NOT_THREE_DIGIT_EXCEPTION);
     }
     public boolean containsZero(String input){
-        return false;
+        return input.contains("0");
     }
 
     public void containsZeroException(){
