@@ -3,10 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Baseball {
 	private static final int PLAYING_NUMBER_SIZE = 3;
@@ -26,14 +23,6 @@ public class Baseball {
 			}
 		}
 		return stringBuilder.toString();
-	}
-
-	static List<Integer> splitDigits(String threeDigitNumber) {
-		if (threeDigitNumber.equals("")) {
-			return Collections.emptyList();
-		}
-		List<String> splitString = new ArrayList<>(Arrays.asList(threeDigitNumber.split("")));
-		return splitString.stream().map(Integer::parseInt).collect(Collectors.toList());
 	}
 
 }
