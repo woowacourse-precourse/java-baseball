@@ -14,7 +14,7 @@ public enum Outputs {
 		this.message = message;
 	}
 
-	public String print() {
+	public String get() {
 		return this.message;
 	}
 }

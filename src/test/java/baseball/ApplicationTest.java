@@ -16,7 +16,7 @@ class ApplicationTest extends NsTest {
 	void print_메소드로_출력할_문자열_리턴() {
 		List<String> result = new ArrayList<>();
 		for (Outputs output : Outputs.values()) {
-			result.add(output.print());
+			result.add(output.get());
 		}
 		assertThat(result).containsExactly("숫자 야구 게임을 시작합니다.", "숫자를 입력해주세요 : ", "%d볼", "%d스트라이크", "낫싱",
 			"%d개의 숫자를 모두 맞히셨습니다! 게임 종료", "게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.");
