@@ -15,7 +15,7 @@ public class Application {
         int ball = 0;
         for (int j=0;j<3;++j) {
             if (i == j)
-                j += 1;
+                continue;
             else if (playerNumber == randomNumber.get(j))
                 ball = 1;
         }
@@ -24,7 +24,7 @@ public class Application {
     public static boolean printBallStrike(List<Integer> countBallStrike) {
         boolean end = endGame(countBallStrike);
         if (countBallStrike.get(0) != 0 && countBallStrike.get(1) != 0)
-            System.out.print(countBallStrike.get(0) + "볼 " + countBallStrike.get(1) + "스트라이크");
+            System.out.println(countBallStrike.get(0) + "볼 " + countBallStrike.get(1) + "스트라이크");
         else if (countBallStrike.get(0) != 0 && countBallStrike.get(1) == 0)
             System.out.println(countBallStrike.get(0) + "볼");
         else if (countBallStrike.get(0) == 0 && countBallStrike.get(1) != 0)
@@ -37,11 +37,14 @@ public class Application {
         for (int i=0;i<3;++i) {
             if (playerNumber.get(i) == randomNumber.get(i))
                 strike += 1;
-            else
+            else {
                 ball += countBall(playerNumber.get(i), randomNumber, i);
+                System.out.println(ball);
+            }
         }
         List<Integer> countBallStrike = new ArrayList<>();
         countBallStrike.add(ball);
+        System.out.println(countBallStrike.get(0));
         countBallStrike.add(strike);
         return printBallStrike(countBallStrike);
     }
