@@ -11,4 +11,11 @@ public class Validate {
         }
         return false;
     }
+
+    public static boolean validateCountNumber(String number, int count) {
+        if (number.length() == count) {
+            return true;
+        }
+        return false;
+    }
 }
