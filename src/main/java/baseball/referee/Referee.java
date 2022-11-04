@@ -58,10 +58,7 @@ public class Referee {
     }
 
     public void say(Map<String, Integer> judgement) {
-        if (judgement.get("strikeCount") == 3) {
-            System.out.println(judgement.get("strikeCount") + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else if (judgement.get("strikeCount") == 0 && judgement.get("ballCount") == 0) {
+        if (judgement.get("strikeCount") == 0 && judgement.get("ballCount") == 0) {
             System.out.println("낫싱");
         } else if (judgement.get("strikeCount") != 0 && judgement.get("ballCount") == 0) {
             System.out.println(judgement.get("strikeCount") + "스트라이크");

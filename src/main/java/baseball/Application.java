@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Application {
 
-
     static BaseBallGameStarter baseBallGameStarter = new BaseBallGameStarter();
 
     public static void main(String[] args) {
@@ -19,8 +18,9 @@ public class Application {
 
         while (true) {
             if (baseBallGameStarter.judgementOperate(userInputValue, computerGeneratedValue)) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
                 option = Integer.parseInt(Console.readLine());
             }
             if (option == 1) {

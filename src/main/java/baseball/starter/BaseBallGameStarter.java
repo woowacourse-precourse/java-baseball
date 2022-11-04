@@ -17,10 +17,9 @@ public class BaseBallGameStarter {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-
         List<String> userInputValue = new User(userInputValidator)
-                .stringConvertToStringList(Console.readLine());
-
+                .stringConvertToStringList(
+                        Console.readLine());
         List<String> computerGeneratedValue = new Computer().generateNumber();
 
         return new ArrayList<>() {{
@@ -33,10 +32,14 @@ public class BaseBallGameStarter {
         Referee referee = new Referee();
 
         while (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
-            referee.say(referee.judgement(computerGeneratedValue, userInputValue));
-            System.out.print("숫자를 입력해주세요 : ");
-            userInputValue = new User(userInputValidator)
-                    .stringConvertToStringList(Console.readLine());
+
+            if (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
+                referee.say(referee.judgement(computerGeneratedValue, userInputValue));
+                System.out.print("숫자를 입력해주세요 : ");
+                userInputValue = new User(userInputValidator)
+                        .stringConvertToStringList(
+                                Console.readLine());
+            }
         }
         return true;
     }
