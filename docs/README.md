@@ -78,7 +78,7 @@ Return: void
 
 <br/>
 
-## (5). getUserInputNum()
+## (5). getUserInputNumber()
 
 1. **기능**
 
@@ -92,7 +92,7 @@ Return: void
 
 Argument: void
 
-Return: 사용자가 입력한 수
+Return: String(사용자가 입력한 수)
 
 <br/>
 
