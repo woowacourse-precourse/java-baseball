@@ -9,8 +9,8 @@
     - [ ] 게임이 끝난 경우: (int strike == 3인 경우)
         - 1: 재시작
         - 2: 종료
-    - [ ] 위의 조건에 부합하지 않는 문자/숫자가 들어올 시 IllegalArgumentException 발생 후, 종료.
-- [ ] 출력값 형태:
+    - [x] 위의 조건에 부합하지 않는 문자/숫자가 들어올 시 IllegalArgumentException 발생 후, 종료.
+- [] 출력값 형태:
     - int ball = number of digits that both input and computer have, but at different place.
     - int strike = number of digits that both input and computer have at the same place.
     - ball + "볼" + strike + "스트라이크"

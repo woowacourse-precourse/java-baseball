@@ -94,6 +94,8 @@ public class Application {
                 IllegalArgumentException e = new IllegalArgumentException(EXCEPTION_TEXT);
                 throw e;
             }
+
+
         }
     }
 }
