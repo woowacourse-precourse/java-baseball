@@ -7,6 +7,7 @@ public class GameResult {
 
     private static final int ZERO = 0;
     private static final int NUM_SIZE = 3;
+    private static final int THREE = 3;
 
     private final int strikeCount;
     private final int ballCount;
@@ -37,7 +38,7 @@ public class GameResult {
     }
 
     public boolean isThreeStrike() {
-        return true;
+        return strikeCount == THREE;
     }
 
     public int getBallCount() {
