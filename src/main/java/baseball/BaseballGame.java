@@ -2,6 +2,7 @@ package baseball;
 
 import abstracts.Game;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -43,6 +44,8 @@ public class BaseballGame extends Game {
 
     @Override
     protected void terminate() {
+        setStatus(Status.DONE);
+        setAnswerNumbers(Collections.emptyList());
     }
 
 }
