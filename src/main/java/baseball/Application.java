@@ -141,6 +141,13 @@ public class Application {
     }
 
     private static Boolean IsGameFinished(LinkedHashMap<String, Integer> finalResult) {
-        return result;
+        int strikes = finalResult.get("strikes");
+
+        // 스트라이크의 수가 3이면 끝
+        if (strikes == 3) {
+            return true;
+        } else if (strikes != 3) {
+            return false;
+        }
     }
 }
