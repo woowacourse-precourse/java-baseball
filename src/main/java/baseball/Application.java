@@ -16,8 +16,7 @@ public class Application {
         List<Integer> computerNumber = makeRandomNumber();
 
         while(true) {
-
-            String userNumber = Console.readLine();
+            String userNumber = inputUserNumber();
 
             //제한사항 체크
             try {
@@ -44,7 +43,7 @@ public class Application {
     }
 
     public static String inputUserNumber(){
-        System.out.println("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
 
         return userNumber;
