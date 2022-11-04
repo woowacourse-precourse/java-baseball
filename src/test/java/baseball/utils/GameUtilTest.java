@@ -30,4 +30,10 @@ public class GameUtilTest {
         assertThatThrownBy(() -> GameUtil.validateNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 숫자_파싱_예외_체크() {
+        assertThatThrownBy(() -> GameUtil.parseInt("number"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
