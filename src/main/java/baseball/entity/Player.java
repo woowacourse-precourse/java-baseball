@@ -11,7 +11,9 @@ public class Player {
     }
 
     public void setNumbers(String input){
-
+        for(String numberEach : input.split("")){
+            numbers.add(Integer.parseInt(numberEach));
+        }
     }
 
     public List<Integer> getNumbers(){
