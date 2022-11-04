@@ -13,8 +13,8 @@ public class Application {
 
     private static final int SIZE = 3;
 
-    private static final int START = 1;
-    private static final int END = 9;
+    private static final int STRIKE = 0;
+    private static final int BALL = 1;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -28,8 +28,34 @@ public class Application {
 
         while (true) {
             List<Integer> user = getToEnterNumbers();
+            boolean error = checkUserError(user);
+
+            if (error) {
+                break;
+            }
+
+            // List<Integer> counts = getEachCounts(computer, user);
+            // printBallStrike(counts);
         }
     }
+
+
+    private static boolean checkUserError(List<Integer> user) {
+
+        List<Integer> visitedList = new ArrayList<>();
+
+        for (int i = 0; i < SIZE; i++) {
+            int number = user.get(i);
+
+            boolean isError = visitedList.contains(number);
+
+            if (isError) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static List<Integer> getToEnterNumbers() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -57,9 +83,12 @@ public class Application {
     }
 
     // print 로 바꾸기
-    private static void printBallStrike(int ballCount, int strikeCount) throws IOException {
+    private static void printBallStrike(List<Integer> counts) throws IOException {
 
         int nothing = 0;
+
+        int strikeCount = counts.get(STRIKE);
+        int ballCount = counts.get(BALL);
 
         if (ballCount > nothing && strikeCount > nothing) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
