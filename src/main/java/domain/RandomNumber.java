@@ -25,7 +25,7 @@ public class RandomNumber {
     public void setRandomNumber(){
         Set<Integer> random_number_set = new HashSet<>();
 
-        while(random_number_set != null && random_number_set.size() < NUM_SIZE){
+        while(random_number_set.size() < NUM_SIZE){
             random_number_set.add(getRandomNumber());
         }
         this.computer_numbers = convertSetToArray(random_number_set);
