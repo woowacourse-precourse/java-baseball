@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class UserNumber {
 	private static final int NUMBER_LENGTH = 3;
-	private static final int START_NUMBER = 3;
-	private static final int END_NUMBER = 3;
+	private static final int START_NUMBER = 1;
+	private static final int END_NUMBER = 9;
 	public final List<Integer> userNumber;
 
 	public UserNumber(String userInput) {
