@@ -31,27 +31,14 @@ public class Application {
 
 
         // TODO : 5. 답을 맞추지 못하면 3. 다시 실행, 아니면 반복 멈춤
-
         // 사용자가 맞출 때 까지의 무한 반복
         while (true){
-
-            // TODO : 3. 사용자가 도전할 숫자를 입력
-            System.out.print("숫자를 입력해주세요 : ");
-
-            //사용자가 입력하는 숫자에 대한 문자열
-            String guessingNumberString = Console.readLine();
-
-            if (guessingNumberString.length() != 3)
-                throw new IllegalArgumentException();
-
-
-
 
             // TODO : 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
             int strike=0;
             int ball=0;
 
-            char[] guessingNumberArray = guessingNumberString.toCharArray();
+            char[] guessingNumberArray = inputPlayerNumber().toCharArray();
 
             int indexOfFindingNumber = 0;
             for (Character findingNumber : guessingNumberArray){
@@ -112,6 +99,18 @@ public class Application {
         return randomResult;
     }
 
+    // TODO : 3. 사용자가 도전할 숫자를 입력
+    private static String inputPlayerNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+
+        //사용자가 입력하는 숫자에 대한 문자열
+        String guessingNumberString = Console.readLine();
+        if (guessingNumberString.length() != 3)
+            throw new IllegalArgumentException();
+
+        return guessingNumberString;
+
+    }
 
     //strike, ball 인지 판단하는 함수
     private static String checkIfStrikeOrBall(String computer, String findingNumber, int indexOfFindingNumber){
