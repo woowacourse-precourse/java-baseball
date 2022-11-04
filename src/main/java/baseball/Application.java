@@ -1,7 +1,10 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static baseball.Application.StringConst.*;
 
@@ -31,14 +34,15 @@ public class Application {
     public static void printScore(Map<String, Integer> score) {
         Integer ballCount = score.get(BALL);
         Integer strikeCount = score.get(STRIKE);
+        List<String> result = new ArrayList<>();
 
         if (!ballCount.equals(0))
-            System.out.print(ballCount + BALL);
+            result.add(ballCount + BALL);
         if (!strikeCount.equals(0))
-            System.out.print(" " + strikeCount + STRIKE);
+            result.add(strikeCount + STRIKE);
         if (ballCount.equals(0) && strikeCount.equals(0))
-            System.out.print(NOTHING);
-        System.out.print("\n");
+            result.add(NOTHING);
+        System.out.println(result.stream().collect(Collectors.joining(" ")));
     }
 
     public static Map<String, Integer> calculateScore(Integer computerNumber, Integer userNumber) {
