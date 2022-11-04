@@ -9,6 +9,7 @@ import java.util.Objects;
 public class User {
     List<Integer> computerNumberList;
     boolean keepGame = true;
+    boolean gameOngoing = true;
 
     User() {
 
@@ -19,15 +20,18 @@ public class User {
     }
 
     void main() {
-        int userNumber = inputNumber();
-        checkNumber(userNumber);
-        List<Integer> userNumberList = numberToList(userNumber);
-        int strike = checkStrike(computerNumberList, userNumberList);
-        int ball = checkBall(computerNumberList, userNumberList, strike);
-        printResult(strike, ball);
-        if(strike == 3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            keepOrNot();
+        while (gameOngoing) {
+            int userNumber = inputNumber();
+            checkNumber(userNumber);
+            List<Integer> userNumberList = numberToList(userNumber);
+            int strike = checkStrike(computerNumberList, userNumberList);
+            int ball = checkBall(computerNumberList, userNumberList, strike);
+            printResult(strike, ball);
+            if (strike == 3) {
+                gameOngoing = false;
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                keepOrNot();
+            }
         }
     }
 
@@ -43,24 +47,20 @@ public class User {
     }
 
     void errorControl() {
-        try {
-            throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-
-            System.out.println("프로그램을 종료합니다");
-        }
+        System.out.println("잘못된 값을 입력했습니다.");
+        System.out.println("프로그램을 종료합니다.");
+        throw new IllegalArgumentException();
     }
 
-    boolean checkNumber(int userNumber) {
+    void checkNumber(int userNumber) {
         if (100 <= userNumber & userNumber <= 999) {
             if (numberToList(userNumber).contains(0)) {
                 errorControl();
-                return false;
+                return;
             }
-            return true;
+            return;
         }
         errorControl();
-        return false;
     }
 
     boolean checkType(String userNumber) {
@@ -124,6 +124,7 @@ public class User {
                 keepGame = true;
                 return;
             } else if (userInput.equals("2")) {
+                System.out.println("프로그램을 종료합니다.");
                 keepGame = false;
                 return;
             }
