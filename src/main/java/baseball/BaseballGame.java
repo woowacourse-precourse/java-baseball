@@ -21,7 +21,7 @@ public class BaseballGame {
         } while (nextTurn(result));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.parseInt(Console.readLine());
+        return checkUserAnswer(Console.readLine());
     }
 
     public void printResult(Computer.GameResult result) {
@@ -69,4 +69,18 @@ public class BaseballGame {
         return true;
     }
 
+    public int checkUserAnswer(String userInput) throws IllegalArgumentException {
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        char c = userInput.charAt(0);
+        if (!Character.isDigit(c)) {
+            throw new IllegalArgumentException();
+        }
+        int number = Character.getNumericValue(c);
+        if (number == 1 || number == 2) {
+            return number;
+        }
+        throw new IllegalArgumentException();
+    }
 }
