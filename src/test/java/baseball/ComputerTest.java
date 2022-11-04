@@ -83,4 +83,27 @@ public class ComputerTest {
         assertThat(result.getBall()).isEqualTo(2);
         assertThat(result.getStrike()).isEqualTo(1);
     }
+
+    @Test
+    void judgePlayerInputTest() {
+        Computer computer = new Computer();
+        List<Integer> answer = List.of(5, 2, 9);
+        computer.setAnswer(answer);
+        String playerInput = "374";
+        Result result = computer.judgePlayerInput(playerInput);
+        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(0);
+        playerInput = "243";
+        result = computer.judgePlayerInput(playerInput);
+        assertThat(result.getBall()).isEqualTo(1);
+        assertThat(result.getStrike()).isEqualTo(0);
+        playerInput = "924";
+        result = computer.judgePlayerInput(playerInput);
+        assertThat(result.getBall()).isEqualTo(1);
+        assertThat(result.getStrike()).isEqualTo(1);
+        playerInput = "529";
+        result = computer.judgePlayerInput(playerInput);
+        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(3);
+    }
 }
