@@ -18,9 +18,11 @@ public class BaseballGame {
         user = new User();
         textForGame = new TextForGame();
         result = new ArrayList<>();
+
+        startAndPlaying();
     }
 
-    public void startAndPlaying() {
+    private void startAndPlaying() {
         isPlaying = true;
         strikeAndBall.setDefenceNumber();
 
@@ -39,7 +41,7 @@ public class BaseballGame {
         }
     }
 
-    public void endOrRestart() {
+    private void endOrRestart() {
         textForGame.printEndAndAskAboutNewGame();
         String numberString = user.inputEndOrRestart();
         int number = Integer.parseInt(numberString);
