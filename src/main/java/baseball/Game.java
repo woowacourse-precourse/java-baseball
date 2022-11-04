@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.controller.GameController;
+import baseball.domain.dto.ResultDto;
 import baseball.domain.dto.UserInputDto;
 import baseball.domain.view.InputData;
 import baseball.domain.view.OutputData;
@@ -23,15 +24,36 @@ public class Game {
     }
 
     public void start() {
-        System.out.println(INIT_GAME_START_MESSAGE);
+        initStartMessage();
+
         Ball BallGenerator = Ball.getInstance();
 
-        List<String> computerBalls = BallGenerator.makeComputerBalls();
-        GameController gameController = new GameController(computerBalls);
+        boolean isExitSignal = false;
+        while (!isExitSignal) {
+            List<String> computerBalls = BallGenerator.makeComputerBalls();
+            System.out.println(computerBalls);
 
-        UserInputDto userInputDto = new UserInputDto(InputData.inputUserBallNumber());
+            GameController gameController = new GameController(computerBalls);
 
-        OutputData.gameResultPrint(gameController.doGame(userInputDto));
+            boolean isThreeStrike = false;
+            while (!isThreeStrike) {
+                UserInputDto userInputDto = new UserInputDto(InputData.inputUserBallNumber());
+
+                ResultDto resultDto = gameController.doGame(userInputDto);
+                OutputData.gameResultPrint(resultDto);
+
+                if (resultDto.getThreeStrike()) {
+                    isThreeStrike = true;
+                }
+            }
+            if (gameController.restartGame(new UserInputDto(InputData.inputIsGameRestart()))) {
+                isExitSignal = true;
+            }
+        }
+    }
+
+    private static void initStartMessage() {
+        System.out.println(INIT_GAME_START_MESSAGE);
     }
 
 
