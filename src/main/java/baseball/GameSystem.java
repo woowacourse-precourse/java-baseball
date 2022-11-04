@@ -9,8 +9,10 @@ public class GameSystem {
     private ScoreBoard scoreBoard;
 
 
+    public GameSystem() {}
 
-    public GameSystem() {
+
+    public void initGame() {
         this.player = new Player();
         this.computer = new Computer();
         this.scoreBoard = new ScoreBoard();

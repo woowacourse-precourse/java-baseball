@@ -13,13 +13,7 @@ public class Computer {
     private String number;
 
 
-    public Computer() {
-        try {
-            this.generateNumber();
-        } catch (IllegalArgumentException exception) {
-            throw exception;
-        }
-    }
+    public Computer() {}
 
 
     public String getNumber() {
