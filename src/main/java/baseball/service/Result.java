@@ -33,13 +33,12 @@ public class Result {
         int ball = score.get("ball");
 
         String notification = "";
-        if (ball > 0) {
-            notification += ball+BALL+WHITE_SPACE;
-        } else if (strike > 0) {
-            notification += strike+STRIKE;
-        } else if (ball == 0 && strike == 0) {
+        if (ball > 0)
+            notification += ball + BALL + WHITE_SPACE;
+        if (strike > 0)
+            notification += strike + STRIKE;
+        if (ball == 0 && strike == 0)
             notification = NOTHING;
-        }
         ConsoleLog.getInstance().println(notification);
     }
 }
