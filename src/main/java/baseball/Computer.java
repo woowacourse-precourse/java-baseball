@@ -17,6 +17,8 @@ public class Computer {
     }
 
     public void generateNumber() {
+        this.numbers = new ArrayList<>();
+
         while (numbers.size() < RuleConst.NUMBER_LENGTH) {
             Integer randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
