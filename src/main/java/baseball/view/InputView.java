@@ -11,6 +11,7 @@ import java.util.Set;
 public class InputView {
 
     public static String inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         validateInputNumber(inputNumber);
         return inputNumber;
