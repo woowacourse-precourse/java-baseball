@@ -29,7 +29,6 @@ public class Application {
          *   3) 낫싱
          *   5) 정답
          * */
-
         gameStartFunc();
 
     }
@@ -39,8 +38,8 @@ public class Application {
             System.out.println("숫자야구를 시작합니다.");
             setTargetNumber();
             input();
+            System.out.println(inputNumber);
 
-            System.out.println(targetNumber);
         } catch (Exception e) {
             throw new IllegalArgumentException(inputStr);
         }
@@ -62,6 +61,10 @@ public class Application {
         try {
             inputStr = scan.next();
             inputValidation(inputStr);
+            inputNumber = new ArrayList<>();
+            for(char c : inputStr.toCharArray()){
+                inputNumber.add((int)c - '0');
+            }
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
