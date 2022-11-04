@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -46,6 +49,45 @@ class ApplicationTest extends NsTest {
         Map<String, Integer> score = Application.score(computerNumber, userNumber);
         assertThat(score.get(Application.StringConst.STRIKE)).isEqualTo(0);
         assertThat(score.get(Application.StringConst.BALL)).isEqualTo(3);
+    }
+
+    @Test
+    void 스코어1볼1스트라이크정상출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Integer computerNumber = 583;
+        Integer userNumber = 532;
+        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+
+        Application.printScore(score);
+        assertThat(out.toString()).isEqualTo("1볼 1스트라이크\n");
+    }
+
+    @Test
+    void 스코어3볼0스트라이크정상출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Integer computerNumber = 123;
+        Integer userNumber = 231;
+        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+
+        Application.printScore(score);
+        assertThat(out.toString()).isEqualTo("3볼\n");
+    }
+
+    @Test
+    void 스코어낫싱정상출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Integer computerNumber = 123;
+        Integer userNumber = 456;
+        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+
+        Application.printScore(score);
+        assertThat(out.toString()).isEqualTo("낫싱\n");
     }
 
     @Override
