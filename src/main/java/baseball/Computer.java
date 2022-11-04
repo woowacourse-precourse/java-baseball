@@ -13,5 +13,15 @@ public class Computer {
         return numbers;
     }
 
+    public Integer countStrike(Integer countNumber) {
+        List<Integer> countNumbers = Application.convertToList(countNumber);
+        Integer count = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i).equals(countNumbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }

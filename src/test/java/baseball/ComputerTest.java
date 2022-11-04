@@ -24,4 +24,18 @@ class ComputerTest {
         assertThat(selectRandomNumbers.size()).isEqualTo(3);
         assertThat(selectRandomNumbers.size()).isEqualTo(compare.size());
     }
+
+    @Test
+    @DisplayName("스트라이크의 숫자를 세는 기능")
+    void countStrike() {
+        Computer computer = new Computer();
+        List<Integer> numbers = computer.selectRandomNumbers();
+        Integer compare = 0;
+        for (Integer number : numbers) {
+            compare = 10 * compare + number;
+        }
+        assertThat(computer.countStrike(compare)).isEqualTo(3);
+        assertThat(computer.countStrike(compare-1)).isEqualTo(2);
+        assertThat(computer.countStrike(compare-11)).isEqualTo(1);
+    }
 }
