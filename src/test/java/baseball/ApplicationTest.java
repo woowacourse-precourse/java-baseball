@@ -142,6 +142,18 @@ class ApplicationTest extends NsTest {
             InfoPrinter.printStrikesAndBalls(input);
             assertThat(output()).isEqualTo(result);
         }
+
+        @Test
+        void validateFlagNumNotInt() {
+            String input = "dsf";
+            assertThatThrownBy(() -> InputController.validateFlagNum(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void validateFlagNumNotOneAndTwo() {
+            String input = "12";
+            assertThatThrownBy(() -> InputController.validateFlagNum(input)).isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
