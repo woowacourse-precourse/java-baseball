@@ -38,6 +38,18 @@ public class BaseballGame {
     }
 
     public boolean invalidUserNumber(String userInput){
-
+        // 3자리인지, 중복이 없는지, 1-9 사이의 값이 맞는지
+        if (userInput.length() != 3){
+            return true;
+        }
+        for (int i = 0; i < 3; i++){
+            if (!Character.isDigit(userInput.charAt(i))){
+                return true;
+            }
+        }
+        if (userInput.charAt(0) == userInput.charAt(1) || userInput.charAt(1) == userInput.charAt(2) || userInput.charAt(0) == userInput.charAt(2)){
+            return true;
+        }
+        return false;
     }
 }
