@@ -14,6 +14,11 @@ public class AppConfig implements Factory {
     }
 
     @Override
+    public Map<Integer, Character> createComputerNumber() {
+        return Player.createComputerNumber();
+    }
+
+    @Override
     public void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
 
         getCountStrike();
