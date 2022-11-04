@@ -13,8 +13,7 @@ public class BaseballGame {
     private static final String START_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String ANSWER_FORMAT = "%d%s";
 
-    private Number computer;
-    private Number user;
+
     private int ball;
     private int strike;
     private boolean isCorrect;
@@ -24,20 +23,24 @@ public class BaseballGame {
     }
 
     public void run() {
+        Number computer = new Number();
+        Number user = new Number();
+
         System.out.println(GAME_START);
 
         while (!isExit) {
             initialize();
 
-            computer = new Number();
             computer.setRandomNumber();
             System.out.println("computer = " + computer.getDigits());
 
             while (!isCorrect) {
-                user = new Number();
                 user.inputNumber();
 
-                compareNumbers();
+                List<Integer> computerValue = computer.getDigits();
+                List<Integer> userValue = user.getDigits();
+                compareNumbers(computerValue, userValue);
+
                 String result = makeResultString();
                 System.out.println(result);
 
@@ -57,9 +60,7 @@ public class BaseballGame {
         isExit = false;
     }
 
-    private void compareNumbers() {
-        List<Integer> computerValue = computer.getDigits();
-        List<Integer> userValue = user.getDigits();
+    private void compareNumbers(List<Integer> computerValue, List<Integer> userValue) {
         countBall(computerValue, userValue);
         countStrike(computerValue, userValue);
         ball -= strike;
