@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /** 기능 목록
@@ -15,15 +16,38 @@ import java.util.List;
  *      a) 자릿수가 3자리가 아닌 경우
  *      b) 각 자리수가 중복이 아닌 경우
  *      c) 각 자리수가 1 ~ 9 가 아닌 경우
+ *
+ * 3. 볼/스트라이크 여부 확인
+ *   3-1. 숫자 포함 여부를 인덱스로 판단
+ *
  **/
 
 public class Application {
     public static void main(String[] args) {
 
-        List<Integer> result = creatRandomNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        List<Integer> computerNumber = creatRandomNumber();
+        
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         List<Integer> userInputNumber = isValidInput(userInput);
+
+        for (int i = 0; i < computerNumber.size(); i++) {
+
+            checkBallOrStrike(userInputNumber, computerNumber.get(i))
+        }
+        
+
+    }
+
+    private static int checkBallOrStrike(List<Integer> userInputNumber, int c) {
+
+        if (userInputNumber.contains(c)) {
+            return userInputNumber.indexOf(c);
+        } else {
+            return -1;
+        }
     }
 
     private static List<Integer> creatRandomNumber() {
@@ -53,11 +77,11 @@ public class Application {
 
         for (char c : charArray) {
 
-            if (!isValidNumber(c) || userInputNumber.contains((int)c)) {
+            if (!isValidNumber(c) || userInputNumber.contains((int)(c - '0'))) {
                 throw new IllegalArgumentException();
             }
 
-            userInputNumber.add((int)c);
+            userInputNumber.add((int)(c - '0'));
         }
 
         return userInputNumber;
