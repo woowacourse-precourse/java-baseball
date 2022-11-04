@@ -1,11 +1,12 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import static baseball.Configure.*;
-import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
@@ -14,7 +15,7 @@ public class User {
 		System.out.println("숫자를 입력해주세요 : ");
 		String input = getInput();
 
-		handleInputError(input);
+		handleGuessingInputError(input);
 
 		return processNumbers(input);
 	}
@@ -44,9 +45,17 @@ public class User {
 		return input.split("");
 	}
 
-	public void handleInputError(String userInput) {
+	public void handleGuessingInputError(String userInput) {
 
 		if (hasDuplication(userInput) || !followDigitRule(userInput, NUMBER_DIGIT.getValue()) || !isNumberOnly(userInput)) {
+			throw new IllegalArgumentException("잘못입력하였습니다. 프로그램을 종료합니다.");
+		}
+
+	}
+
+	public void handleIntentionInputError(String userInput) {
+
+		if (!isNumberOnly(userInput) || !isNumberOneOrTwo(userInput)) {
 			throw new IllegalArgumentException("잘못입력하였습니다. 프로그램을 종료합니다.");
 		}
 
@@ -69,6 +78,10 @@ public class User {
 
 	public boolean isNumberOnly(String checkString) {
 		return checkString.matches("[0-9]+");
+	}
+
+	public boolean isNumberOneOrTwo(String checkString) {
+		return checkString.matches("[1-2]+");
 	}
 
 }
