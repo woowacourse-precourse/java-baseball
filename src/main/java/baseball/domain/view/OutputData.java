@@ -46,7 +46,7 @@ public class OutputData {
     private static void printStrikeCount(String ballCount, int count) {
         if (count == 3) {
             System.out.println(count + ballCount);
-            System.out.println(THREE_STRIKE_WIN_MESSAGE);
+            System.out.print(THREE_STRIKE_WIN_MESSAGE);
             return;
         }
         if (count != 0) {
