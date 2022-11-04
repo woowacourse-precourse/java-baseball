@@ -11,12 +11,12 @@ public class PrintMessage {
         System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static void ballStrikeMessage(int ball, int strike){
-        System.out.println(ball + "볼" + " " + strike + "스트라이크");
-    }
-    public static void onlyBallMessage(int ball){
-        System.out.println(ball + "볼");
-    }
-    public static void nothingMessage(){
+        if(strike != 3 && strike != 0)
+            System.out.println(strike + "스트라이크");
+        if(strike != 0 && ball != 0)
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        if(strike == 0 && ball != 0)
+            System.out.println(ball + "볼");
         System.out.println("낫싱");
     }
     public static void gameContinue(){

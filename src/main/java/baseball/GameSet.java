@@ -10,8 +10,8 @@ import java.util.List;
 public class GameSet {
     private List<Integer> computerAnswer;
     private List<Integer> userAnswer;
-    private Integer strikeCount;
-    private Integer ballCount;
+    private static int strikeCount;
+    private static int ballCount;
 
     //
     public GameSet() {
@@ -30,9 +30,9 @@ public class GameSet {
     public void playBaseballGame(){
         PrintMessage.inputUserNum();
         String inputNumber = Console.readLine();
-        this.userAnswer = makeUserAnswer(inputNumber);
+        userAnswer = makeUserAnswer(inputNumber);
         compareAnswer();
-
+        PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
     // 입력값을 List<Integer> 형태로 변환해주는 함수
     public List<Integer> makeUserAnswer(String inputNumber){
@@ -46,8 +46,8 @@ public class GameSet {
     }
     // 볼과 스트라이크 갯수를 세어주는 함수
     public void compareAnswer(){
-        this.strikeCount = 0;
-        this.ballCount = 0;
+        strikeCount = 0;
+        ballCount = 0;
         for(int i = 0; i < userAnswer.size(); i++){
             if(computerAnswer.indexOf(userAnswer.get(i)) == i){
                 strikeCount++;
