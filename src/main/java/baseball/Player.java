@@ -70,7 +70,7 @@ public class Player {
         return stringBuilder.toString().trim();
     }
 
-    public void validateNumber(String playerNumber) {
+    public void validatePlayerNumber(String playerNumber) {
         if (!isValidType(playerNumber)) {
             throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
         }

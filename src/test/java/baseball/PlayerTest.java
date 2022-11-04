@@ -21,7 +21,7 @@ public class PlayerTest {
     @Test
     void 타입_검사_테스트() {
         assertThatThrownBy(() -> {
-            player.validateNumber("12삼");
+            player.validatePlayerNumber("12삼");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
     }
@@ -29,7 +29,7 @@ public class PlayerTest {
     @Test
     void 자리_수_검사_테스트() {
         assertThatThrownBy(() -> {
-            player.validateNumber("1234");
+            player.validatePlayerNumber("1234");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
     }
@@ -37,7 +37,7 @@ public class PlayerTest {
     @Test
     void 중복_검사_테스트() {
         assertThatThrownBy(() -> {
-            player.validateNumber("122");
+            player.validatePlayerNumber("122");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DUPLICATION_EXCEPTION);
     }
@@ -45,7 +45,7 @@ public class PlayerTest {
     @Test
     void 범위_검사_테스트() {
         assertThatThrownBy(() -> {
-            player.validateNumber("120");
+            player.validatePlayerNumber("120");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_RANGE_EXCEPTION);
     }
