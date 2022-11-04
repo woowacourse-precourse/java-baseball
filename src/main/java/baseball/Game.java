@@ -5,6 +5,8 @@ import java.util.*;
 import static baseball.CompareNumber.compare;
 import static baseball.Score.BALL;
 import static baseball.Score.STRIKE;
+import static baseball.Validation.isExistOnlyNumber;
+import static baseball.Validation.isValidLength;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
@@ -52,18 +54,5 @@ public class Game {
         }
 
         System.out.println(numberOfSTRIKE + "스트라이크 " + numberOfBALL + "볼");
-    }
-
-    private static boolean isValidLength(List<String> userInput) {
-        return userInput.size() == 3;
-    }
-
-    private static boolean isExistOnlyNumber(List<String> userInput) {
-        boolean isOnlyNumber = false;
-
-        for (String element : userInput) {
-            isOnlyNumber = isOnlyNumber || Character.isDigit(element.charAt(0));
-        }
-        return isOnlyNumber;
     }
 }
