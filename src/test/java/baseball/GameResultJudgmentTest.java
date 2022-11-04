@@ -2,12 +2,18 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class GameResultJudgmentTest {
 
-  @Test
+  GameResultJudgmentTest judge;
+  @BeforeEach
   void GameResultJudgmentCreate() {
-    GameResultJudgment judge = new GameResultJudgment();
+    judge = new GameResultJudgmentTest();
+  }
+  @Test
+  void GameResultJudgmentCreateWithMaxLen() {
+    judge = new GameResultJudgmentTest(maxLen);
   }
 }
