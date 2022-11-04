@@ -23,5 +23,11 @@ class UserTest {
         assertThat(result).isEqualTo(false);
     }
 
+    @Test
+    void checkTypeTest(){
+        boolean result = user.checkType("sd");
+        assertThat(result).isEqualTo(false);
+    }
+
 
 }

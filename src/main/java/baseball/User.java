@@ -27,6 +27,14 @@ public class User {
         return false;
     }
 
+    boolean checkType(Object userNumber) {
+        if (userNumber.getClass().getName().equals("java.lang.Integer")) {
+            return true;
+        }
+        errorControl();
+        return false;
+    }
+
     List<Integer> numberToList(int userNumber) {
         List<Integer> userNumberList = new ArrayList<>(3);
         for (int divideNumber = 100; divideNumber >= 1; divideNumber /= 10) {
