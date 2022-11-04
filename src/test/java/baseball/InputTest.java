@@ -3,9 +3,12 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
 class InputTest {
     @Test
@@ -15,7 +18,11 @@ class InputTest {
         //when
         Input input = new Input("123");
         //then
-        assertThat(input.getInput()).isEqualTo("123");
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        assertThat(input.getInputList()).isEqualTo(list);
     }
 
     @Test

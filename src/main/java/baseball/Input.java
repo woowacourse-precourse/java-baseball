@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Input {
     private static final int INPUT_LENGTH = 3;
 
@@ -13,8 +16,12 @@ public class Input {
         this.input = input;
     }
 
-    public String getInput() {
-        return this.input;
+    public List<Integer> getInputList() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0 ; i < this.input.length() ; i++) {
+            list.add(Integer.valueOf(String.valueOf(this.input.charAt(i))));
+        }
+        return list;
     }
 
     private void CheckLange(String input) {
