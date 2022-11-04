@@ -2,7 +2,7 @@
 
 ### Computer
 
-- [ ] 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.
+- [x] 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.
   - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms` 의 `pickNumberInRange()`를 활용한다.
 
 - [ ] SystemMessage 를 출력한다.
