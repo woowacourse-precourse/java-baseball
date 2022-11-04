@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
         }
     }
 
-    @DisplayName("올바른 게임 결과가 나오는지 테스트")
+    @DisplayName("예외 케이스 테스트")
     @Nested
     class ExceptionHandle {
         @Test
