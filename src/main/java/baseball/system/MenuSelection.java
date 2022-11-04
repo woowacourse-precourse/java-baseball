@@ -13,7 +13,7 @@ public class MenuSelection {
 
         String selectionNumber = inputSelectionNumber();
 
-        if(selectionNumber.equals("1")){
+        if(selectionNumber.equals("1")){ // TODO : 어떻게 할지 고민해볼 것
             return PLAY_GAME;
         }
 
