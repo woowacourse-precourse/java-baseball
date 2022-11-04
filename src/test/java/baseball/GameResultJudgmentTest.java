@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GameResultJudgmentTest {
 
   @Test
-  void nothing() {
-    
+  void GameResultJudgmentCreate() {
+    GameResultJudgment judge = new GameResultJudgment();
   }
 }
