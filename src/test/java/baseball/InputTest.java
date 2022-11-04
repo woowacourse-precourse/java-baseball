@@ -87,7 +87,7 @@ class InputTest {
 
   @Test
   public void 입력이_숫자인지() {
-    String sysIn1 = "1ㄱ1";
+    String sysIn1 = "1ㄱr";
     String sysIn2 = "10r";
     String sysIn3 = "-=1";
     assertThatThrownBy(() -> {
