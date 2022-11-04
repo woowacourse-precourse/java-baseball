@@ -65,4 +65,15 @@ class ApplicationTest extends NsTest {
                 5, 8, 9
         );
     }
+
+    @Test
+    void 낫싱_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123");
+                    assertThat(output()).contains("낫싱");
+                },
+                5, 8, 9
+        );
+    }
 }
