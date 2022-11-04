@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class CompareTwoListTest {
 
-  CompareTwoList compareTwoList;
+  private CompareTwoList compareTwoList;
 
   @BeforeEach
   public void setCompareClass() {

@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 class OutputTest {
 
   private static ByteArrayOutputStream outContent;
-
-  Output output;
+  private Output output;
 
   @BeforeEach
   public void setOutputClass() {

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class ComputerTest {
 
-  Computer computer;
+  private Computer computer;
 
   @BeforeEach
   public void setComputerClass() {

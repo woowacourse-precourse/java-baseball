@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class EndOrReTest {
 
   private static ByteArrayOutputStream outContent;
-  EndOrRe endOrRe;
+  private EndOrRe endOrRe;
 
   @BeforeEach
   public void setEndOrTest() {
