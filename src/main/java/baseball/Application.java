@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+
+    static final String a = "dfd";
+
+    static final int i = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         while (true) {
@@ -18,10 +24,10 @@ public class Application {
     }
 
     public static void playGame() {
-        List<Integer> computerNumber = generateNumber();
+        List<Integer> randomNumber = generateNumber();
         while (true) {
             List<Integer> guessNumber = getGuessNumber();
-            boolean isAllStrike = checkNumber(guessNumber);
+            boolean isAllStrike = checkNumber(randomNumber, guessNumber);
             if (isAllStrike) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
@@ -86,9 +92,27 @@ public class Application {
         return false;
     }
 
-    public static boolean checkNumber(List<Integer> inputNumber) {
-
-        return true;
+    public static boolean checkNumber(List<Integer> randomNumber, List<Integer> guessNumber) {
+        boolean isCorrect = false;
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0;i < 3 ;i++){
+            if(randomNumber.get(i).equals(guessNumber.get(i))){
+                strike++;
+            }else if(randomNumber.contains(guessNumber.get(i))){
+                ball++;
+            }
+        }
+        if(strike == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isCorrect = true;
+        }else if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else{
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        return isCorrect;
     }
 
     public static boolean restartGame() {
