@@ -26,4 +26,14 @@ public class NumbersTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(numbers));
     }
+
+    @Test
+    @DisplayName("숫자를 비교할 수 있다")
+    void compare_numbers() {
+        Numbers numbers = new Numbers(List.of(4, 2, 5));
+        Numbers numbers2 = new Numbers(List.of(4, 5, 6));
+
+        assertThat(numbers.compareStrikes(numbers2)).isEqualTo(1);
+        assertThat(numbers.compareBalls(numbers2)).isEqualTo(1);
+    }
 }

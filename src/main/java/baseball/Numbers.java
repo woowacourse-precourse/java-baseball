@@ -30,4 +30,38 @@ public class Numbers {
             }
         }
     }
+
+    public int compareStrikes(Numbers other) {
+        int strikes = 0;
+        for (Integer number : numbers) {
+            if (!other.contains(number)) {
+                continue;
+            }
+            if (other.indexOf(number) == this.indexOf(number)) {
+                strikes += 1;
+            }
+        }
+        return strikes;
+    }
+
+    public int compareBalls(Numbers other) {
+        int balls = 0;
+        for (Integer number : numbers) {
+            if (!other.contains(number)) {
+                continue;
+            }
+            if (other.indexOf(number) != this.indexOf(number)) {
+                balls += 1;
+            }
+        }
+        return balls;
+    }
+
+    private boolean contains(Integer number) {
+        return numbers.contains(number);
+    }
+
+    private int indexOf(Integer number) {
+        return numbers.indexOf(number);
+    }
 }
