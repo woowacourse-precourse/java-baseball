@@ -19,8 +19,7 @@ public class Game {
         while (!isAnswer) {
             round.startNewRound();
             round.playRound();
-            //TODO: 라운드 결과에 따라 게임을 멈추는 로직 추가
-            this.isAnswer = true;
+            this.isAnswer = round.isThreeStrike();
         }
     }
 }

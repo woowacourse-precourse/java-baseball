@@ -15,6 +15,7 @@ public class Round {
 
     private final Computer computer;
     private Numbers numbers;
+    HashMap<Hint, Integer> hintCountMap = new HashMap<>();
 
     public Round(Computer computer) {
         this.computer = computer;
@@ -39,7 +40,8 @@ public class Round {
 
             Field scannerField = Console.class.getDeclaredField("scanner");
             scannerField.setAccessible(true);
-            Scanner scanner = (Scanner) scannerField.get(console);
+            /*Scanner scanner = (Scanner) scannerField.get(console);
+            scanner.close();*/
             scannerField.set(console, null);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -53,12 +55,17 @@ public class Round {
     }
 
     public void playRound() {
-        HashMap<Hint, Integer> hintCountMap = new HashMap<>();
+        hintCountMap.clear();
         for (int index = 0; index < 3; index++) {
             Hint hint = getHint(index);
             putHintCountMap(hint, hintCountMap);
         }
         Print.printRoundResult(hintCountMap);
+    }
+
+    public boolean isThreeStrike(){
+        int countStrike = hintCountMap.getOrDefault(Hint.STRIKE, 0);
+        return (countStrike == 3);
     }
 
     private void putHintCountMap (Hint hint, HashMap<Hint, Integer> hintCountMap) {
