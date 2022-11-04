@@ -77,4 +77,28 @@ class ApplicationTest extends NsTest {
         assertThat(exception.getCause().getMessage()).isEqualTo("입력값의 길이가 3이 아닙니다.");
     }
 
+    @Test
+    void 입력값_사이에_1부터_9사이의_숫자가_아니면_예외_발생() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        UserNumber userNumber = new UserNumber();
+        Method method = userNumber.getClass().getDeclaredMethod("checkInputIsNumber", List.class);
+        method.setAccessible(true);
+
+        List<Character> numberList1 = "1;3".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList2 = "ㄱㄴ4".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList3 = "906".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+
+        // when
+        InvocationTargetException exception1 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList1));
+        InvocationTargetException exception2 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList2));
+        InvocationTargetException exception3 = assertThrows(InvocationTargetException.class, () -> method.invoke(userNumber, numberList3));
+
+        // then
+        assertThat(exception1.getCause().getMessage()).isEqualTo("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
+        assertThat(exception2.getCause().getMessage()).isEqualTo("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
+        assertThat(exception3.getCause().getMessage()).isEqualTo("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
+    }
 }
