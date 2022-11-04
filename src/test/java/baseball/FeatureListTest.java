@@ -7,8 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Application.GenerateNonDuplicateRandomNumber;
-import static baseball.Application.GenerateRandomNumber;
+import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FeatureListTest {
@@ -23,6 +22,14 @@ public class FeatureListTest {
     void digits개의_중복되지_않은_난수_생성_검증() {
         Set<Integer> s = new HashSet<>(GenerateRandomNumber(3));
         assertThat(s.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 사용자입력의_크기가_3인지_확인() {
+        String s = "345";
+        assertThat(isValidLength(s.length())).isTrue();
+        String s2 = "3454";
+        assertThat(isValidLength(s2.length())).isFalse();
     }
 
 }
