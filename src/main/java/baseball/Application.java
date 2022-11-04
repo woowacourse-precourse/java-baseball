@@ -130,11 +130,14 @@ public class Application {
         return countBall;
     }
     public static void printUserScore(int countStrike, int countBall){
-        if (countStrike==3 || countBall==0)
-            System.out.println(countBall+"스트라이크");
-        else if (countStrike==0)
-            System.out.println(countBall+"볼");
-        else
-            System.out.println(countBall+"볼 "+countStrike+"스트라이크");
+        if (countStrike!=0) {
+            if (countStrike == 3 || countBall == 0)
+                System.out.println(countStrike + "스트라이크");
+            else
+                System.out.println(countBall+"볼 "+countStrike+"스트라이크");
+        } else {
+            if (countBall != 0)
+                System.out.println(countBall+"볼");
+        }
     }
 }
