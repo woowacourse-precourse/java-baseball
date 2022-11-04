@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
@@ -84,6 +85,14 @@ public class Application {
             if (trial == 0) {
                 System.out.println(MESSAGE_START);
                 computer = generateComputerNumber();
+            }
+
+            System.out.println(MESSAGE_INPUT);
+            String input = readLine();
+
+            if (!hasThreeDigits(input) || !allDifferentDigits(input)) {
+                IllegalArgumentException e = new IllegalArgumentException(EXCEPTION_TEXT);
+                throw e;
             }
         }
     }
