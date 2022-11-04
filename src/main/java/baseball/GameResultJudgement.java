@@ -9,5 +9,7 @@ public class GameResultJudgement {
   public GameResultJudgement(int maxLen) {
     this.maxLen = maxLen;
   }
-
+  public int judgeStrike(String str1, String str2) {
+    return 3;
+  }
 }
