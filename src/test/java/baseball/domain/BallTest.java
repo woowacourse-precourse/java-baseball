@@ -8,7 +8,12 @@ public class BallTest {
 
     @Test
     public void nothingTest() {
-        Ball computerBall = new Ball(1,1);
-        assertThat(computerBall.judge(new Ball(2,3))).isEqualTo(Judgement.Nothing);
+        Ball computerBall = new Ball(1);
+        assertThat(computerBall.judge(new Ball(2))).isEqualTo(Judgement.NOTHING);
+    }
+    @Test
+    public void hasValueTest() {
+        Ball computerBall = new Ball(1);
+        assertThat(computerBall.judge(new Ball(1))).isEqualTo(Judgement.NOT_NOTHING);
     }
 }
