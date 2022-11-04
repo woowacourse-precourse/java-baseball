@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,25 @@ class ApplicationTest extends NsTest {
         softAssert.assertThat(Application.isValidNumbersForGame("151")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("204")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("123")).isTrue();
+    }
+
+    @Test
+    void evaluateGuessTest() {
+        List<Integer> guess1 = Arrays.asList(1, 2, 3);
+        List<Integer> answer1 = Arrays.asList(1, 2, 3);
+        List<Integer> evaluation1 = Arrays.asList(0, 3);
+
+        List<Integer> guess2 = Arrays.asList(1, 2, 3);
+        List<Integer> answer2 = Arrays.asList(7, 8, 9);
+        List<Integer> evaluation2 = Arrays.asList(0, 0);
+
+        List<Integer> guess3 = Arrays.asList(1, 3, 2);
+        List<Integer> answer3 = Arrays.asList(2, 8, 3);
+        List<Integer> evaluation3 = Arrays.asList(2, 0);
+
+        assertThat(Application.evaluateGuess(guess1, answer1)).isEqualTo(evaluation1);
+        assertThat(Application.evaluateGuess(guess2, answer2)).isEqualTo(evaluation2);
+        assertThat(Application.evaluateGuess(guess3, answer3)).isEqualTo(evaluation3);
     }
 
     @Test
