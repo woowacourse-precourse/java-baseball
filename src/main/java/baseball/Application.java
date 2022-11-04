@@ -9,7 +9,7 @@ public class Application {
     static final int STRIKE_CASE = 2;
     static final int BALL_CASE = 1;
     static final String CHEER_UP = "조금만 더 힘내 보세요!";
-    static final String HINT_SENTNECE = "힌트: 낫싱은 중요합니다.";
+    static final String HINT_SENTENCE = "힌트: 낫싱은 중요합니다.";
 
     static int strike = 0;
     static int ball = 0;
@@ -39,14 +39,15 @@ public class Application {
             calcScore();
             printResult();
 
-            tryCount++;
-            if(tryCount > 5) {
-                printRandomSentence();
-            }
-
             if(strike == MAX_COUNT) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 checkKeepGoing(answerNumber);
+                tryCount = 0;
+            }
+
+            tryCount++;
+            if(tryCount > 5) {
+                printRandomSentence();
             }
         }
 
@@ -59,7 +60,7 @@ public class Application {
             System.out.println(CHEER_UP);
         }
         if(randomNumber % 2 == 1) {
-            System.out.println(HINT_SENTNECE);
+            System.out.println(HINT_SENTENCE);
         }
     }
 
@@ -85,7 +86,7 @@ public class Application {
         for(int answerCaseIndex = 0; answerCaseIndex < MAX_COUNT; answerCaseIndex++) {
             int answerCaseNumber = computerNumber[answerCaseIndex];
 
-            if(caseNumber == answerCaseNumber && answerCaseIndex == caseIndex) {
+            if(caseNumber == answerCaseNumber && caseIndex == answerCaseIndex) {
                 return STRIKE_CASE;
             }
             if(caseNumber == answerCaseNumber) {
