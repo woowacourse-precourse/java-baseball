@@ -1,11 +1,16 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameService {
 
+    int strike = 0, ball = 0;
+
     public Integer countStrike(List<Integer> randomNumber, List<Integer> userNumber){
-        int strike = 0;
         for (int index = 0; index < 3; index++) {
             if (randomNumber.get(index).equals(userNumber.get(index))) {
                 strike += 1;
@@ -15,17 +20,16 @@ public class GameService {
     }
 
     public Integer countBall(List<Integer> randomNumber, List<Integer> userNumber) {
-        int strike = countStrike(randomNumber, userNumber);
-        int ball = 0;
         for (int index = 0; index < 3; index++) {
             if (randomNumber.contains(userNumber.get(index))) {
                 ball += 1;
             }
         }
-        return ball - strike;
+        ball = ball - strike;
+        return ball;
     }
 
-    public boolean printResult(Integer strike, Integer ball) {
+    public boolean printResult() {
         boolean isAnswer = false;
         if (strike == 3) {
             System.out.println("3스트라이크");
@@ -45,6 +49,21 @@ public class GameService {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
+        strike = 0;
+        ball = 0;
         return isAnswer;
+    }
+
+    public boolean checkRestart(){
+        List<String> expectedInput = new ArrayList<>(Arrays.asList("1", "2"));
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputRestart = Console.readLine();
+        if (!(expectedInput.contains("1") || expectedInput.contains("2"))) {
+            throw new IllegalArgumentException();
+        }
+        if (inputRestart.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }
