@@ -14,6 +14,29 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
+    public void 입력값_변환기_동작_테스트() throws Exception {
+        // Given
+        String userInput = "123";
+        String userInput1 = "1234";
+        String userInput2 = "abc";
+        String userInput3 = "12";
+
+        // When
+        Integer[] userAnswerArray = Application.userInputToIntegerArray(userInput);
+
+        // Then
+        assertThat(userAnswerArray).isEqualTo(new Integer[]{1, 2, 3});
+
+        assertThatThrownBy(() -> Application.userInputToIntegerArray(userInput1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.userInputToIntegerArray(userInput2))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.userInputToIntegerArray(userInput3))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
     void 정답생성기_테스트() {
         // Given
         Integer[] answer = Application.generateAnswer();
