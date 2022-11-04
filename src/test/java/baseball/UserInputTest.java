@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -8,6 +9,14 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputTest {
+
+    private static UserInput userInput;
+
+    @BeforeAll
+    public static void setUp() {
+        userInput = new UserInput(3);
+    }
+
 
     @Test
     void 사용자_입력값이_숫자가_아닌_경우_유효성검사() {
