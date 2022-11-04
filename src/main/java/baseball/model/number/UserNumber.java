@@ -1,9 +1,9 @@
 package baseball.model.number;
 
-import baseball.model.util.Validation;
+import baseball.model.Validation;
 
-import static baseball.model.util.Constant.*;
-import static baseball.model.util.Utilization.convertStringToIntegerList;
+import static baseball.model.Constant.*;
+import static baseball.model.Utilization.convertStringToIntegerList;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public abstract class UserNumber {

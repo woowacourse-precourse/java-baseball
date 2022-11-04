@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static baseball.model.util.Validation.validateNumberNotRepeated;
+import static baseball.model.Validation.validateNumberNotRepeated;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ValidationTest {

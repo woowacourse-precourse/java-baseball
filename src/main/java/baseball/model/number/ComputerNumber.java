@@ -1,8 +1,8 @@
 package baseball.model.number;
 
-import baseball.model.util.Constant;
-import baseball.model.util.Utilization;
-import baseball.model.util.Validation;
+import baseball.model.Constant;
+import baseball.model.Utilization;
+import baseball.model.Validation;
 
 import java.util.List;
 
