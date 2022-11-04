@@ -14,7 +14,7 @@ public class InputController {
     private Integer getNumberLine(Integer length) {
         String line = getLine();
 
-        if (line.length() > length) {
+        if (line.length() != length) {
             throw new IllegalArgumentException();
         }
 
