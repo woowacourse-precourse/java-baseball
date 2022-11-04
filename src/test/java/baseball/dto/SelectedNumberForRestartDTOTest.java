@@ -36,4 +36,13 @@ class SelectedNumberForRestartDTOTest {
                 .isThrownBy(() -> new SelectedNumberForRestartDTO("$"))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 한글 자음, 모음, 단어 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"ㄱ", "ㅏ", "가"})
+    void korean_exception(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
+    }
 }
