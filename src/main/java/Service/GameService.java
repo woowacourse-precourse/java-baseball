@@ -35,14 +35,18 @@ public class GameService {
         for (int r = 0; r < randomNumbers.length; r++) {
             for (int u = 0; u < userNumbers.length; u++) {
                 if(randomNumbers[r] == userNumbers[u]){
-                    if(u == r){
-                        game.increase_strike();
-                    }
-                    if(u != r){
-                        game.increase_ball();
-                    }
+                    increase_cnt(r, u);
                 }
             }
+        }
+    }
+
+    public void increase_cnt(int r, int u){
+        if(r == u){
+            game.increase_strike();
+        }
+        if(r != u){
+            game.increase_ball();
         }
     }
 }
