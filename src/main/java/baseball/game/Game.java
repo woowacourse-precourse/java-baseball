@@ -1,4 +1,4 @@
-package game;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -22,6 +22,23 @@ public class Game {
     private void addNum(List<Integer> computer, int randomNumber) {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber);
+        }
+    }
+
+    private void checkInput(List<Integer> user)
+    {
+        BallCount ballcounter = new BallCount();
+
+        for (int idx = 0; idx < 3; idx++){
+            checkStrikeOrBall(user, ballcounter, idx);
+        }
+    }
+
+    private void checkStrikeOrBall(List<Integer> user, BallCount ballcounter, int idx) {
+        if (user.get(idx).equals(computer.get(idx))) {
+            ballcounter.plusStrike();
+        } else if (computer.contains(user.get(idx))) {
+            ballcounter.plusBall();
         }
     }
 }
