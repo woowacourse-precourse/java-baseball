@@ -13,4 +13,8 @@ public class GameController {
         endGame();
         askContinue();
     }
+
+    public void startGame(){
+        gameService.set_game();
+    }
 }
