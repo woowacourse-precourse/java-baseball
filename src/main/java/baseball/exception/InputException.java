@@ -18,9 +18,9 @@ public class InputException {
         }
     }
 
-    public void InputValid(List<Integer> RandomList, List<Integer> inputList) {
+    public void InputValid(List<Integer> randomList, List<Integer> inputList) {
 
-        if (inputList.size() != RandomList.size()) {
+        if (inputList.size() != randomList.size()) {
             throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
         }
 
