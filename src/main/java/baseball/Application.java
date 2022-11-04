@@ -22,25 +22,14 @@ public class Application {
         public int inputNumber(){
             System.out.print("숫자를 입력해주세요 : ");
             String inputStr = Console.readLine();
-            boolean isValidInput = isValidInput(inputStr);
-//            HashSet duplRemoveList = new HashSet(Arrays.asList(inputNumber.split("")));
-//            ArrayList<String> list = new ArrayList<>(duplRemoveList);
-//            String inputValidNumber = String.join("", list);
-//
-//            System.out.println(inputValidNumber);
-//
-//
-//            return Integer.parseInt(inputNumber);
+            inputValidation(inputStr);
             return 1;
         }
 
-        public boolean isValidInput(String inputStr){
+        public void inputValidation(String inputStr){
             if(!is3DigitNumber(inputStr) || !isDiffDigitNumber(inputStr)){
                 throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
-                // Error 처리 하기!
             }
-
-            return true;
         }
 
         public boolean is3DigitNumber(String inputStr){
