@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.entity.Player;
+import baseball.model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

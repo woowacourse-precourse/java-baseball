@@ -1,5 +1,5 @@
 package baseball;
-import baseball.entity.Computer;
+import baseball.model.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
