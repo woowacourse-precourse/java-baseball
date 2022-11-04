@@ -22,16 +22,16 @@ public class BullsAndCows {
 //        System.out.println("answer = " + answer);
 
         while (true) {
-            String input = getInput(); // 사용자 입력
-            if (!checkInputRegex(input)) {
+            String predictInput = getPredictInput(); // 사용자 입력
+            if (!checkPredictInputRegex(predictInput)) {
                 throw new IllegalArgumentException();
             }
 
-            if (isAnswer(input)) {
+            if (isAnswer(predictInput)) {
                 System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             } else {
-                printHint(input);
+                printHint(predictInput);
             }
         }
     }
@@ -46,23 +46,23 @@ public class BullsAndCows {
         answer = randomNumberList.toString().replaceAll("[^0-9]", "");
     }
 
-    private String getInput() {
+    private String getPredictInput() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
 
-    private boolean checkInputRegex(String input) {
+    private boolean checkPredictInputRegex(String predictInput) {
         String regex = "\\d{3}$"; // 3자리 숫자
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = pattern.matcher(predictInput);
         return matcher.matches();
     }
 
-    private boolean isAnswer(String input) {
-        return input.equals(answer);
+    private boolean isAnswer(String predictInput) {
+        return predictInput.equals(answer);
     }
 
-    private void printHint(String input) {
+    private void printHint(String predictInput) {
         // 볼, 스트라이크, 낫싱
     }
 
