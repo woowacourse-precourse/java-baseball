@@ -20,6 +20,13 @@ public class Application {
             List<Integer> computer = getRandomInteger();
 
 
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            //다음 진행을 어떻게 할지 입력, 1인 경우 숫자 야구 게임 다시 시작, 2인 경우 종료
+            nextProgress = scanner.nextInt();
+
+            //1, 2 이외의 값을 입력할 경우 IllegalArgumentException 예외처리
+            checkValidNextProgressNumber(nextProgress);
         }
         System.out.println("게임 종료");
     }
@@ -34,6 +41,13 @@ public class Application {
             }
         }
         return result;
+    }
+
+    private static void checkValidNextProgressNumber(int nextProgress) throws IllegalArgumentException {
+        List<Integer> nextProgressList = List.of(1,2);
+        if (!nextProgressList.contains(nextProgress)) {
+            throw new IllegalArgumentException("Invalid Argument");
+        }
     }
 
 }
