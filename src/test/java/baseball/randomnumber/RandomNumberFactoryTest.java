@@ -1,5 +1,6 @@
 package baseball.randomnumber;
 
+import baseball.number.randomnumber.RandomNumberFactory;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RandomBaseballNumberFactoryTest {
+class RandomNumberFactoryTest {
 
     private static final int DIGITS_FOR_THIS_GAME = 3;
 

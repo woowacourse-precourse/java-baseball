@@ -1,4 +1,4 @@
-package baseball.randomnumber;
+package baseball.number.randomnumber;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +11,7 @@ public class RandomNumber {
         this.answer = randomNumber;
     }
 
-    public List<Integer> getAnswer() {
+    public List<Integer> answer() {
         return Collections.unmodifiableList(answer);
     }
 }

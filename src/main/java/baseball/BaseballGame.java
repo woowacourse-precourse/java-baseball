@@ -2,26 +2,24 @@ package baseball;
 
 import baseball.count.ball.BallCounter;
 import baseball.count.strike.StrikeCounter;
-import baseball.input.InputValueParser;
-import baseball.input.NumberScanner;
+import baseball.number.inputnumber.InputNumberParser;
+import baseball.scanner.NumberScanner;
 import baseball.print.MessagePrinter;
-import baseball.randomnumber.RandomNumberFactory;
+import baseball.number.randomnumber.RandomNumberFactory;
 
 import java.util.List;
 
 public class BaseballGame {
 
     private final NumberScanner numberScanner;
-    private final InputValueParser inputValueParser;
+    private final InputNumberParser inputNumberParser;
     private final BallCounter ballCounter;
     private final StrikeCounter strikeCounter;
     private final MessagePrinter messagePrinter;
 
-    public BaseballGame(NumberScanner numberScanner, InputValueParser inputValueParser,
-                        BallCounter ballCounter, StrikeCounter strikeCounter,
-                        MessagePrinter messagePrinter) {
+    public BaseballGame(NumberScanner numberScanner, InputNumberParser inputNumberParser, BallCounter ballCounter, StrikeCounter strikeCounter, MessagePrinter messagePrinter) {
         this.numberScanner = numberScanner;
-        this.inputValueParser = inputValueParser;
+        this.inputNumberParser = inputNumberParser;
         this.ballCounter = ballCounter;
         this.strikeCounter = strikeCounter;
         this.messagePrinter = messagePrinter;
@@ -36,7 +34,7 @@ public class BaseballGame {
         while (oneOrTwoForRestartGame != 2) {
             messagePrinter.printEnterNumberMessage();
 
-            List<Integer> inputValue = inputValueParser.inputValueToList(
+            List<Integer> inputValue = inputNumberParser.parseInputNumber(
                     numberScanner.inputNumber()
             );
 
@@ -61,7 +59,7 @@ public class BaseballGame {
         System.out.println("2를 입력하여, 게임이 종료되었습니다.");
     }
 
-    public void printBallAndStrikeCount(int ballCount, int strikeCount) {
+    private void printBallAndStrikeCount(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             messagePrinter.printNothing();
             return;

@@ -1,4 +1,4 @@
-package baseball.randomnumber;
+package baseball.number.randomnumber;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -8,7 +8,7 @@ import java.util.List;
 public class RandomNumberFactory {
 
     public static List<Integer> newRandomNumber() {
-        return new RandomNumber(generateRandomNumber()).getAnswer();
+        return new RandomNumber(generateRandomNumber()).answer();
     }
 
     private static List<Integer> generateRandomNumber() {
