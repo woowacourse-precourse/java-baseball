@@ -40,4 +40,20 @@ class BallsTest {
         assertThat(computer.isBall(new Ball(3, 0))).isTrue();
         assertThat(computer.isBall(new Ball(1, 0))).isFalse();
     }
+
+    @Test
+    void 존재하지_않는_숫자_아웃_확인하기() {
+        List<Ball> balls = new ArrayList<>();
+
+        balls.add(new Ball(1, 0));
+        balls.add(new Ball(3, 1));
+        balls.add(new Ball(5, 2));
+
+
+        Balls computer = new Balls(balls);
+
+
+        assertThat(computer.isOut(new Ball(2, 1))).isTrue();
+        assertThat(computer.isOut(new Ball(3, 1))).isFalse();
+    }
 }
