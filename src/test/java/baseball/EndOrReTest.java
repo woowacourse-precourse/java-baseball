@@ -57,4 +57,20 @@ class EndOrReTest {
       endOrRe.printInputString(result);
     }).isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  void 입력된_값이_10일_경우() {
+    String result = "10";
+    Assertions.assertThatThrownBy(() -> {
+      endOrRe.printInputString(result);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  void 입력된_값이_한글일_경우() {
+    String result = "우아한테크코스";
+    Assertions.assertThatThrownBy(() -> {
+      endOrRe.printInputString(result);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
