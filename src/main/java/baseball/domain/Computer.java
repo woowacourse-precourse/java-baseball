@@ -29,4 +29,8 @@ public class Computer {
             index++;
         }
     }
+
+    public int[] getAnswer() {
+        return answer;
+    }
 }
