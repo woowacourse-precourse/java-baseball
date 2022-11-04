@@ -239,14 +239,6 @@ public class Computer {
         return list;
     }
 
-    public void setCntStrike(int cntStrike) {
-        this.cntStrike = cntStrike;
-    }
-
-    public void setCntBall(int cntBall) {
-        this.cntBall = cntBall;
-    }
-
     public List<Integer> getNumThreeRanOfComputerList() {
         return numThreeRanOfComputerList;
     }

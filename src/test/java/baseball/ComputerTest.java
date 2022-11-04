@@ -36,7 +36,6 @@ public class ComputerTest {
         String result = "1";
         System.out.println(
             "computer.getNumThreeRanOfComputerList() = " + computer.getNumThreeRanOfComputerList());
-
         assertThat(result).contains("1");
     }
 
@@ -107,8 +106,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -133,8 +131,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -159,8 +156,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -184,8 +180,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -210,8 +205,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -236,8 +230,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -262,8 +255,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -287,8 +279,7 @@ public class ComputerTest {
         int resultStrike = 0;
         int resultBall = 0;
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
@@ -324,8 +315,7 @@ public class ComputerTest {
         ));
         ArrayList<Boolean> resultList = new ArrayList<>();
         for (int num : testInt) {
-            computer.setCntBall(0);
-            computer.setCntStrike(0);
+            computer.initCntStrikeBall();
             computer.isRightThreeNumOfComputer(num);
             resultList.add(computer.isEndTheGame());
         }
