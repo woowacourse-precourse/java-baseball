@@ -139,6 +139,8 @@ public class Application {
         } else {
             if (countBall != 0)
                 System.out.println(countBall+"볼");
+            else
+                System.out.println("낫싱");
         }
     }
 }
