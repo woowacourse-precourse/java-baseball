@@ -33,4 +33,30 @@ public class Selctor {
         }
         return computer;
     }
+    private int[] comparePlayerVsComputer(List<Character> player, List<Integer> computer){
+        int ball = 0;
+        int strike = 0;
+
+        for (int len = player.size(), i=0; i<len;i++){
+            int play = player.get(i) - '0';
+
+            if (play== computer.get(i)){
+                strike++;
+         }
+
+        }
+
+        return 1;
+    }
+    private boolean isBall(int playerNum, List<Integer> computer){
+
+        for (int i = 0; i<3; i++){
+            for (int j = i+1; j<3; j++){
+                if (playerNum == computer.get(j)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
