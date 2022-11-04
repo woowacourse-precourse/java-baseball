@@ -12,4 +12,8 @@ public enum Messages {
         this.message = message;
     }
 
+    public void printMessage() {
+        System.out.println(this.message);
+    }
+
 }

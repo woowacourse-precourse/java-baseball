@@ -21,11 +21,11 @@
     - 게임의 상태를 설정합니다.
 
 - ### baseball 패키지
-  - [ ] **Messages**
+  - [X] **Messages**
     - 게임 작동에 필요한 메시지들을 포함한 Enum 클래스입니다.
-    - [ ] Messages 생성자
+    - [X] Messages 생성자
     - 매개변수로 받은 메시지 문자열을 저장합니다.
-    - [ ] printMessage
+    - [X] printMessage
       - 저장된 메시지를 콘솔에 출력합니다.
     - [ ] printScore
       - 점수를 출력합니다.
@@ -62,7 +62,7 @@
       - 게임을 종료시킵니다.
       - 게임 상태를 게임끝으로 바꿉니다.
       
-      - [ ] operate
+      - [X] operate
       - 게임 상태에 따라 입력을 처리합니다.
         - [ ] playTurn
         - 숫자 야구 게임 한 턴을 진행합니다.
