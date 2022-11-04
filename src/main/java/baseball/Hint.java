@@ -26,6 +26,7 @@ public class Hint {
                 strike++;
                 continue;
             }
+            //수정해야할 부분 인덴트 3
             for(int userIndex=0;userIndex<userNumber.length();userIndex++){
                 if(comNumber.charAt(comIndex) == userNumber.charAt(userIndex)){
                     ball++;
