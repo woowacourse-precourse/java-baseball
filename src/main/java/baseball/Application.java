@@ -32,7 +32,7 @@ public class Application {
     }
 
     // print 로 바꾸기
-    private static void getBallStrikeLog(int ballCount, int strikeCount) throws IOException {
+    private static void printBallStrike(int ballCount, int strikeCount) throws IOException {
 
         int nothing = 0;
 
@@ -47,6 +47,11 @@ public class Application {
             System.out.println("낫싱");
         }
 
+        return;
+    }
+
+    private static void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         return;
     }
 
