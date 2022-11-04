@@ -28,7 +28,7 @@ class ComputerTest {
     @Test
     void 범위_테스트() {
         for (int computerNumber : computerNumbers) {
-            assertThat(computerNumber).isBetween(Config.MIN_NUM, Config.MAX_NUM);
+            assertThat(computerNumber).isBetween(Config.DIGIT_MIN, Config.DIGIT_MAX);
         }
     }
 

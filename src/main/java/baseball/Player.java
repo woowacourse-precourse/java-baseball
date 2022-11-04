@@ -112,7 +112,7 @@ public class Player {
         for (char digit : playerNumber.toCharArray()) {
             int digitNumber = Character.getNumericValue(digit);
 
-            if (Config.MIN_NUM > digitNumber || Config.MAX_NUM < digitNumber) {
+            if (Config.DIGIT_MIN > digitNumber || Config.DIGIT_MAX < digitNumber) {
                 return false;
             }
         }
