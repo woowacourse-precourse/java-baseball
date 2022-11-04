@@ -1,5 +1,7 @@
 package baseball.player;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.Player;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,8 +19,20 @@ public class PlayerValidationTest {
         Player player = new Player();
         //when
         //then
-        Assertions.assertThatThrownBy(() -> {
+        assertThatThrownBy(() -> {
             player.wantRestart(illegalUserInput);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("재시작을 원하는 경우 true 반환")
+    public void test2() throws Exception{
+        //given
+        Player player = new Player();
+        String WANT_RESTART = "1";
+        //when
+        boolean result = player.wantRestart(WANT_RESTART);
+        //then
+        assertThat(result).isEqualTo(true);
     }
 }
