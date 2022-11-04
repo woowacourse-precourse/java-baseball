@@ -6,8 +6,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class UserTest {
 
   private final PrintStream standardOut = System.out;
@@ -30,30 +34,87 @@ class UserTest {
   }
 
   @Test
+  @Order(1)
   void inputValueTestLengthNoError1() {
-    User.inputValueTest("123");
+    User.inputValueTestPlayingMode("123");
     Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
-//    User.inputValueTest("12a");
-//    Assertions.assertThat("12a").isEqualTo(outContent.toString().trim());
   }
 
   @Test
+  @Order(2)
   void inputValueTestLengthNoError2() {
-    User.inputValueTest("123");
+    User.inputValueTestPlayingMode("123");
     Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
   }
 
   @Test
+  @Order(3)
   void inputValueTestLengthError1() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTest("");
+      User.inputValueTestPlayingMode("");
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
+  @Order(4)
   void inputValueTestLengthError2() {
         Assertions.assertThatThrownBy(() -> {
-      User.inputValueTest("1234");
+      User.inputValueTestPlayingMode("1234");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  @Order(5)
+  void inputValueTestOnlyNumNoError1() {
+    User.inputValueTestPlayingMode("123");
+    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+  }
+
+  @Test
+  @Order(6)
+  void inputValueTestOnlyNumNoError2() {
+    User.inputValueTestPlayingMode("124");
+    Assertions.assertThat("124").isEqualTo(outContent.toString().trim());
+  }
+
+  @Test
+  @Order(7)
+  void inputValueTestOnlyNumError1() {
+    Assertions.assertThatThrownBy(() -> {
+      User.inputValueTestPlayingMode("120");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  @Order(8)
+  void inputValueTestOnlyNumError2() {
+    Assertions.assertThatThrownBy(() -> {
+      User.inputValueTestPlayingMode("");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  @Order(8)
+  void inputValueTestOnlyNumError3() {
+    Assertions.assertThatThrownBy(() -> {
+      User.inputValueTestPlayingMode("122");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  ////////////play again mode //////////
+
+  @Test
+  @Order(9)
+  void inputValueTestPlayAgainInput() {
+    User.inputValueTestPlayAgainMode("1");
+    Assertions.assertThat("1").isEqualTo(outContent.toString().trim());
+  }
+
+  @Test
+  @Order(10)
+  void inputValueTestPlayAgainInputError() {
+    Assertions.assertThatThrownBy(() -> {
+      User.inputValueTestPlayAgainMode("");
     }).isInstanceOf(IllegalArgumentException.class);
   }
 }
