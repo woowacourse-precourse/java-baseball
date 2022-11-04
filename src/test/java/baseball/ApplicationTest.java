@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +10,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 class ApplicationTest extends NsTest {
     @Nested
@@ -32,6 +32,33 @@ class ApplicationTest extends NsTest {
                 oneToNine[num]--;
                 assertThat(oneToNine[num] == 0).isTrue();
             }
+        }
+
+        @Test
+        void strikesAndBallsCase1() {
+            List<Integer> input = List.of(1, 2, 3);
+            List<Integer> computers = List.of(3, 4, 5);
+            List<Integer> expected = List.of(0, 1);
+            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            assertThat(real).isEqualTo(expected);
+        }
+
+        @Test
+        void strikesAndBallsCase2() {
+            List<Integer> input = List.of(2, 7, 3);
+            List<Integer> computers = List.of(2, 7, 3);
+            List<Integer> expected = List.of(3, 0);
+            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            assertThat(real).isEqualTo(expected);
+        }
+
+        @Test
+        void strikesAndBallsCase3() {
+            List<Integer> input = List.of(1, 5, 2);
+            List<Integer> computers = List.of(5, 1, 2);
+            List<Integer> expected = List.of(1, 2);
+            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            assertThat(real).isEqualTo(expected);
         }
     }
 

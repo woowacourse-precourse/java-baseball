@@ -30,4 +30,8 @@ public class NumberController {
         return numberList;
     }
 
+    public static List<Integer> getStrikesAndBalls(List<Integer> users, List<Integer> computers) {
+        return Collections.emptyList();
+    }
+
 }
