@@ -12,30 +12,30 @@ public class ScoreBoard {
 
 
     public void initScore() {
-        strikeCount = 0;
-        ballCount = 0;
-        nothing = true;
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        this.nothing = true;
     }
 
     public void upStrikeCount() {
-        strikeCount++;
-        nothing = false;
+        this.strikeCount++;
+        this.nothing = false;
     }
 
     public void upBallCount() {
-        ballCount++;
-        nothing = false;
+        this.ballCount++;
+        this.nothing = false;
     }
 
     public int getStrikeCount() {
-        return strikeCount;
+        return this.strikeCount;
     }
 
     public int getBallCount() {
-        return ballCount;
+        return this.ballCount;
     }
 
     public boolean isNothing() {
-        return nothing;
+        return this.nothing;
     }
 }

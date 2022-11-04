@@ -9,9 +9,9 @@ public class GameSystem {
 
 
     public GameSystem() {
-        player = new Player();
-        computer = new Computer();
-        scoreBoard = new ScoreBoard();
+        this.player = new Player();
+        this.computer = new Computer();
+        this.scoreBoard = new ScoreBoard();
     }
 
 }

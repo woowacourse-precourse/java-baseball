@@ -15,7 +15,7 @@ public class Computer {
 
     public Computer() {
         try {
-            number = this.generateNumber();
+            this.number = this.generateNumber();
         } catch (IllegalArgumentException exception) {
             throw exception;
         }
@@ -23,7 +23,7 @@ public class Computer {
 
 
     public String getBaseballNumber() {
-        return number;
+        return this.number;
     }
 
     public String generateNumber() {
