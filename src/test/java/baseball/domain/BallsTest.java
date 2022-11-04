@@ -28,4 +28,15 @@ class BallsTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> Balls.createBalls(Arrays.asList(1, 3, 3)));
     }
 
+    @Test
+    @DisplayName("Balls Contain 테스트")
+    void isContainTest() {
+        Assertions.assertTrue(Balls.createBalls(Arrays.asList(1,2,3)).isContain(new Ball(1)));
+    }
+
+    @Test
+    @DisplayName("Balls Contain 테스트")
+    void isNotContainTest() {
+        Assertions.assertFalse(Balls.createBalls(Arrays.asList(1,2,3)).isContain(new Ball(4)));
+    }
 }
