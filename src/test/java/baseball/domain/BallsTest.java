@@ -15,8 +15,14 @@ class BallsTest {
     void compare_balls() {
         Balls balls = new Balls("125");
         assertAll(
-                () -> assertThat(balls.compareBalls(new Balls("152"))).isEqualTo(List.of(BallStatus.STRIKE, BallStatus.BALL, BallStatus.BALL)),
-                () -> assertThat(balls.compareBalls(new Balls("132"))).isEqualTo(List.of(BallStatus.STRIKE, BallStatus.NOTHING, BallStatus.BALL))
+                () -> {
+                    List<BallStatus> pitchResult = List.of(BallStatus.STRIKE, BallStatus.BALL, BallStatus.BALL);
+                    assertThat(balls.compareBalls(new Balls("152"))).isEqualTo(pitchResult);
+                },
+                () -> {
+                    List<BallStatus> pitchResult = List.of(BallStatus.STRIKE, BallStatus.NOTHING, BallStatus.BALL);
+                    assertThat(balls.compareBalls(new Balls("132"))).isEqualTo(pitchResult);
+                }
         );
     }
     
