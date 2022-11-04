@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class numberValidator {
+public class NumberValidator {
     public static Boolean valid(Integer number) {
         String numberStringType = String.valueOf(number);
         if(numberStringType.length() != 3)

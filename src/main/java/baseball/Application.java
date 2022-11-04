@@ -26,7 +26,7 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             Integer userNumber = ConsoleReader.readInteger();
-            if(!numberValidator.valid(userNumber))
+            if (!NumberValidator.valid(userNumber))
                 throw new IllegalArgumentException();
 
             score = calculateScore(computerNumber, userNumber);
@@ -48,7 +48,7 @@ public class Application {
         if (ballCount.equals(0) && strikeCount.equals(0))
             result.add(NOTHING);
 
-        System.out.println(result.stream().collect(Collectors.joining(" ")));
+        System.out.print(result.stream().collect(Collectors.joining(" ")) + "\n");
     }
 
     public static Map<String, Integer> calculateScore(Integer computerNumber, Integer userNumber) {

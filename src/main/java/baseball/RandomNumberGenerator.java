@@ -12,7 +12,7 @@ public class RandomNumberGenerator {
     private static List<Integer> getCandidateRandomNumbers() {
         List<Integer> ret = new ArrayList<>();
         for (int number = 100; number <= 999; ++number)
-            if (numberValidator.valid(number))
+            if (NumberValidator.valid(number))
                 ret.add(number);
         return ret;
     }
