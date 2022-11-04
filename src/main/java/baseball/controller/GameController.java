@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.ComNumber;
 import baseball.domain.UserNumber;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class GameController {
             if(!playBall(comNumber)) {
                 break;
             }
-            System.out.println(InputView.GAME_END);
+            System.out.println(OutputView.GAME_END);
             System.out.println(InputView.RESTART_GAME);
         }
     }
