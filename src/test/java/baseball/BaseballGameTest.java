@@ -30,4 +30,17 @@ class BaseballGameTest {
                 ()->assertNotNull(player),
                 ()->assertEquals(player.size(),3));
     }
+    @Test
+    public void playerInputValidation_확인() {
+        assertAll(
+                ()->assertThrows(IllegalArgumentException.class,
+                        () ->Validation.validate("111")),
+                ()->assertThrows(IllegalArgumentException.class,
+                        () ->Validation.validate("991")),
+                ()->assertThrows(IllegalArgumentException.class,
+                        () ->Validation.validate("901")),
+                ()->assertThrows(IllegalArgumentException.class,
+                        () ->Validation.validate("a23"))
+        );
+    }
 }
