@@ -30,6 +30,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트2(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ABCD"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 컴퓨터가_세개의_수를_뽑는지(){
         assertThat(generateComputerNum().size()).isEqualTo(3);
     }
