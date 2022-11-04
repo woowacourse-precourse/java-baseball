@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+
+    static List<Integer> computer;
     public static void main(String[] args) {
 
-        List<Integer> computer = createComputerNumber();
+        computer = createComputerNumber();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -84,6 +86,7 @@ public class Application {
             String inputNumber = Console.readLine();
 
             if (inputNumber.equals("1")) {
+                computer = createComputerNumber();
                 gameFlag = 1;
             } else if (inputNumber.equals("2")) {
                 gameFlag = 2;
