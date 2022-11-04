@@ -1,5 +1,6 @@
 package baseball;
 
+
 public class ScoreBoard {
     private int strikeCount;
     private int ballCount;
