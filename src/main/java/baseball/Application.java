@@ -34,7 +34,7 @@ public class Application {
                 gameIO.isLegalInput(input);
             } catch (IllegalArgumentException illegalArgumentException) {
                 gameIO.printInputExceptionLog();
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("예외로 인한 프로그램 종료");
             }
 
             tryCount++;
