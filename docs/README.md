@@ -20,13 +20,10 @@
 ### PlayerException
 checkException(String input) : 입력한 문자열로 에러가 발생하는지 체크한다.
 1. isNotNumber(String input) : 입력한 문자열에 숫자가 아닌게 있을 떄 참을 반환한다.
-2. noNumberException() : IllegalArgumentException와 메세지로 예외처리한다.
-3. isNotThreeDigit(String input) : 문자열의 길이가 3이 아니면 참을 반환한다.
-4. notThreeDigitException() : IllegalArgumentException와 메세지로 예외처리한다.
-5. containsZero(String input) : 문자열에 0이 있으면 참을 반환한다.
-6. containsZeroException() : IllegalArgumentException와 메세지로 예외처리한다.
-7. containsSameNumber(String input) : 문자열에 같은 숫자가 존재하면 참을 반환한다.
-8. containsSameNumberException() : IllegalArgumentException와 메세지로 예외처리한다.
+2. isNotThreeDigit(String input) : 문자열의 길이가 3이 아니면 참을 반환한다.
+3. containsZero(String input) : 문자열에 0이 있으면 참을 반환한다.
+4. containsSameNumber(String input) : 문자열에 같은 숫자가 존재하면 참을 반환한다.
+5. wrongNumberException() : "입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다."로 예외처리한다. 
 
 ## 뷰
 ### PlayerView
