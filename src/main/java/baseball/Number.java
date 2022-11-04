@@ -13,6 +13,18 @@ public class Number {
     static final int LAST_NUM = 9;
     static final int MAX_DIGIT = 3;
 
+    public List<Integer> makeComputerNumber() {
+        List<Integer> computerNumber = makeRandomNumber();
+
+        while (true) {
+            if (validateNumber(computerNumber)) {
+                return computerNumber;
+            } else {
+                computerNumber = makeRandomNumber();
+            }
+        }
+    }
+
     public List<Integer> makeRandomNumber() {
         List<Integer> randomNum = new ArrayList<>();
 
@@ -23,7 +35,7 @@ public class Number {
         return randomNum;
     }
 
-    public boolean validateNumber(List<Integer> num) { 
+    public boolean validateNumber(List<Integer> num) {
         HashSet<Integer> setNum = Sets.newHashSet(num);
 
         if (setNum.size() == num.size()) {
