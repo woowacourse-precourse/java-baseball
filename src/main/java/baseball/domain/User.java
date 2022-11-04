@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
-    private static final String ISDIGIT_EXCEPTION = "숫자가 아닙니다.";
     private static final String DUPLICATION_EXCEPTION = "중복된 숫자가 존재합니다.";
     private static final String VALID_NUMBER_EXCEPTION = "가능하지 않은 숫자 입니다.";
     private static final String NUMBER_LENGTH_EXCEPTION = "글자의 길이가 초과되었습니다.";
@@ -34,11 +33,7 @@ public class User {
         return inputNumbers;
     }
 
-    public void checkIsDigit(char number) {
-        if (!Character.isDigit(number)) {
-            throw new IllegalArgumentException(ISDIGIT_EXCEPTION);
-        }
-    }
+
 
     public void checkDuplicationNumber(ArrayList<Integer> numbers, int number) {
         if (numbers.contains(number)) {
