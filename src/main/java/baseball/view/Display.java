@@ -2,26 +2,24 @@ package baseball.view;
 
 import static baseball.view.ViewConstants.*;
 
-public class Print {
-    public void startGame() {
+public class Display {
+    public void printStartGame() {
         System.out.println(START_GAME);
     }
 
-    public void inputOffenseNumber() {
+    public void printInputOffenseNumber() {
         System.out.println(INPUT);
     }
 
-    public void threeStrike() {
+    public void printThreeStrike() {
         System.out.println(THREE_STRIKE);
     }
 
-    public void Nothing() {
+    public void printNothing() {
         System.out.println(NOTHING);
     }
 
     public void printBallAndStrike(int ballCount, int strikeCount) {
         System.out.println(String.format(X_BALL_X_STRIKE, ballCount, strikeCount));
     }
-
-
 }
