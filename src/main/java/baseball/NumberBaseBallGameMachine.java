@@ -74,4 +74,13 @@ public class NumberBaseBallGameMachine {
         display(message.requestNewOrStop() + "\n");
         return getNewGameOrStop() == 1;
     }
+
+    public void gameProgress() {
+        boolean success = false;
+        display(message.start() + "\n");
+        while (!success) {
+            success = getInputResult();
+        }
+        display(message.success() + "\n");
+    }
 }
