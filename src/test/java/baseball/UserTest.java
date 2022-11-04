@@ -3,12 +3,24 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
-    User user = new User();
+    private static User user;
+
+    @BeforeAll
+    static void initAll() {
+        user = new User();
+    }
+
 
     @Test
     void numberToListCheck() {
@@ -24,9 +36,31 @@ class UserTest {
     }
 
     @Test
-    void checkTypeTest(){
+    void checkTypeTest() {
         boolean result = user.checkType("sd");
         assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void inputNumberTest1() {
+        String input = "23s";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        int result = user.inputNumber();
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    void inputNumberTest2() {
+        String input = "123";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        int result = user.inputNumber();
+        assertThat(result).isEqualTo(123);
     }
 
 
