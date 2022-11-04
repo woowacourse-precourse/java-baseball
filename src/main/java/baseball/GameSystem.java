@@ -23,11 +23,12 @@ public class GameSystem {
     public void calculateScore() {
         String playerNumber = player.getNumber();
         String computerNumber = computer.getNumber();
+        final int INVALID_INDEX = -1;
 
-        for(char playerNumberChar : playerNumber.toCharArray()) {
+        for (char playerNumberChar : playerNumber.toCharArray()) {
             if (playerNumber.indexOf(playerNumberChar) == computerNumber.indexOf(playerNumberChar)) {
                 scoreBoard.upStrikeCount();
-            } else if(computerNumber.indexOf(playerNumberChar) != -1) {
+            } else if (computerNumber.indexOf(playerNumberChar) != INVALID_INDEX) {
                 scoreBoard.upBallCount();
             }
         }
