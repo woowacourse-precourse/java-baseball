@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball.utils;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class InputValidator {
+public class NumberValidator {
     private static final int VALID_LENGTH = 3;
     private static final int VALID_MIN_RANGE = 1;
     private static final int VALID_MAX_RANGE = 9;
