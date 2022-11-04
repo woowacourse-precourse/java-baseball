@@ -15,6 +15,7 @@ public class InputView {
     public static String requestNum() {
         OutputView.printRequestNum();
         String input = Console.readLine();
+
         return validateRequestNum(input);
     }
 
