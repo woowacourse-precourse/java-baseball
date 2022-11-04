@@ -22,8 +22,7 @@ class NumbersGeneratorTest {
 
         // then
         assertThat(randomNumbers.size()).isEqualTo(3);
-        assertThat(randomNumbers.stream()
-                .allMatch(number -> number >= 1 && number <= 9))
+        assertThat(randomNumbers.stream().allMatch(number -> number >= 1 && number <= 9))
                 .isTrue();
     }
 }
