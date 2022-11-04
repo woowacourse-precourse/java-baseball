@@ -20,6 +20,15 @@ public class Computer {
     }
 
     /**
+     * 숫자를 추가할수 있는가
+     * @param number    숫자
+     * @return  숫자를 추가할수 있으면 ture
+     */
+    private boolean canInputNumber(int number) {
+        return !isZeroNumber(number) && !hasNumberByList(number);
+    }
+
+    /**
      * 랜덤 숫자를 구한다.
      *
      * @return 랜덤 숫자
@@ -27,6 +36,10 @@ public class Computer {
     private int createRandomNumber() {
         Random random = new Random();
         return random.nextInt(9);
+    }
+
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
     }
 
     /**
@@ -46,15 +59,6 @@ public class Computer {
         while ((randomNumbers.size() != 3)) {
             addRandomNumberByList(createRandomNumber());
         }
-    }
-
-    /**
-     * 숫자를 추가할수 있는가
-     * @param number    숫자
-     * @return  숫자를 추가할수 있으면 ture
-     */
-    private boolean canInputNumber(int number) {
-        return !isZeroNumber(number) && !hasNumberByList(number);
     }
 
     /**
