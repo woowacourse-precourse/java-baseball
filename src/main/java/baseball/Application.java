@@ -7,13 +7,14 @@ public class Application {
 
         try {
             BullsAndCows game = new BullsAndCows();
-            do {
+            while ((doRepeat()) == 1) {
                 game.playGame();
-            } while ((doRepeat()) == 1);
-
+            }
         } catch (IllegalArgumentException exception) {
-            System.out.println("잘못된 값을 입력하셨습니다. 프로그램을 종료합니다.");
-       }
+            System.out.println("잘못된 값을 입력하셨습니다.");
+        } finally {
+            System.out.println("프로그램을 종료합니다.");
+        }
     }
 
     private static int doRepeat() {
