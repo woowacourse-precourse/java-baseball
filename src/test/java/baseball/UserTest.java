@@ -33,7 +33,6 @@ public class UserTest {
     }
 
     @Test
-        // 입력을 제대로 받았는지 확인
         // 실수 입력받을때
     void 문자_입력_예외_테스트_case_1() throws Exception {
         //given
@@ -48,7 +47,6 @@ public class UserTest {
     }
 
     @Test
-        // 입력을 제대로 받았는지 확인
         // 음수 입력받을때
     void 문자_입력_예외_테스트_case_2() throws Exception {
         //given
@@ -63,7 +61,6 @@ public class UserTest {
     }
 
     @Test
-        // 입력을 제대로 받았는지 확인
         // 길이가 초가 할때
     void 문자_입력_예외_테스트_case_3() throws Exception {
         //given
@@ -78,7 +75,6 @@ public class UserTest {
     }
 
     @Test
-        // 입력을 제대로 받았는지 확인
         // 입력한 숫자가 각각 자릿수가 같은지 확인
     void 문자_입력_예외_테스트_case_4() throws Exception {
         //given
