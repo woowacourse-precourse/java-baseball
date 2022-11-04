@@ -5,10 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
         //프로그램 구현
+        gameStart();
+    }
+    //게임 시작
+    public static void gameStart(){
+        int start_yn = 1; //exit 변수
         //랜덤으로 3자리 숫자를 정하는 기능
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -29,15 +35,16 @@ public class Application {
             int nothing = nothing(input_num_list(input_num), computer);
             //숫자 검증 기능(출력기능)
             print_verification(strike, ball, nothing);
-            //3스트라이크일 경우 while문 종료
-            if (strike == 3) {
+            //3스트라이크일 경우 while문 종료 선택 문구
+            if(strike == 3 && exit() == 1){
+                gameStart();
+            }else if(start_yn == 2){
                 break;
             }
         }
     }
-
     //숫자를 입력받는 기능
-    private int int_input() throws IllegalArgumentException{
+    private static int int_input() throws IllegalArgumentException {
         // Console 사용하여 String 형태 int 변경
         String input_num_string = Console.readLine();
         int input_num_int = Integer.parseInt(input_num_string);
@@ -66,7 +73,7 @@ public class Application {
         int strike = 0;
         //1개 이상의 숫자가 같고 자리가 같은 경우 = (맞은개수)스트라이크
         for (int i = 0; i < 3; i++) {
-            if (input_num_list.get(i) == computer.get(i)) {
+            if (Objects.equals(input_num_list.get(i), computer.get(i))) {
                 strike += 1;
             }
         }
@@ -77,13 +84,13 @@ public class Application {
     public static int ball(List<Integer> input_num_list, List<Integer> computer) {
         //1개 이상의 숫자가 같고 자리가 다른 경우 = (맞은개수)볼
         int ball = 0;
-        if (input_num_list.get(0) == computer.get(1) || input_num_list.get(0) == computer.get(2)) {
+        if (Objects.equals(input_num_list.get(0), computer.get(1)) || Objects.equals(input_num_list.get(0), computer.get(2))) {
             ball += 1;
         }
-        if (input_num_list.get(1) == computer.get(0) || input_num_list.get(1) == computer.get(2)) {
+        if (Objects.equals(input_num_list.get(1), computer.get(0)) || Objects.equals(input_num_list.get(1), computer.get(2))) {
             ball += 1;
         }
-        if (input_num_list.get(2) == computer.get(0) || input_num_list.get(2) == computer.get(1)) {
+        if (Objects.equals(input_num_list.get(2), computer.get(0)) || Objects.equals(input_num_list.get(2), computer.get(1))) {
             ball += 1;
         }
         return ball;
@@ -127,5 +134,10 @@ public class Application {
         else if (nothing == 3) {
             System.out.println("낫싱");
         }
+    }
+
+    static int exit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }
