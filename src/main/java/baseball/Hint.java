@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Hint {
-    private final static Integer SIZE = 3;
     private Integer ball;
     private Integer strike;
 
@@ -15,32 +14,34 @@ public class Hint {
         return strike;
     }
 
-    public void getHint(List<Integer> user, List<Integer> computer){
-        this.strike= 0;
+    public void getHint(List<Integer> user, List<Integer> computer) {
+        this.strike = 0;
         this.ball = 0;
         getStrikeCount(user, computer);
         getBallCount(user, computer);
         this.ball -= this.strike;
     }
-    private void getStrikeCount(List<Integer> user, List<Integer> computer){
-        for(int i = 0; i < SIZE; i++){
+
+    private void getStrikeCount(List<Integer> user, List<Integer> computer) {
+        for (int i = 0; i < ConstGame.SIZE; i++) {
             strikeCheck(user.get(i), computer.get(i));
         }
     }
 
-    private void strikeCheck(Integer user,Integer computer) {
-        if (user.equals(computer)){
+    private void strikeCheck(Integer user, Integer computer) {
+        if (user.equals(computer)) {
             this.strike += 1;
         }
     }
 
-    private void getBallCount(List<Integer> user, List<Integer> computer){
+    private void getBallCount(List<Integer> user, List<Integer> computer) {
         for (Integer num : user) {
-           ballCheck(num,computer);
+            ballCheck(num, computer);
         }
     }
-    private void ballCheck(Integer userNum,List<Integer> computer){
-        if (computer.contains(userNum)){
+
+    private void ballCheck(Integer userNum, List<Integer> computer) {
+        if (computer.contains(userNum)) {
             this.ball += 1;
         }
     }

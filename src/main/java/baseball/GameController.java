@@ -9,7 +9,8 @@ public class GameController {
     private Hint hint;
     private NumberGenerator numberGenerator;
     private UserAnswer userAnswer;
-    public void run(){
+
+    public void run() {
         String status;
         init();
         gameView.printStart();
@@ -18,9 +19,10 @@ public class GameController {
             playing();
             gameView.printRestart();
             status = Console.readLine();
-        } while(!status.equals("2"));
+        } while (!status.equals(ConstGame.EXIT));
     }
-    private void init(){
+
+    private void init() {
         gameView = new GameView();
         numberGenerator = new NumberGenerator();
         userAnswer = new UserAnswer();
@@ -38,6 +40,6 @@ public class GameController {
 
             hint.getHint(userNumber, computer);
             gameView.printHint(hint.getBall(), hint.getStrike());
-        }while(hint.getStrike() != 3);
+        } while (hint.getStrike() != 3);
     }
 }
