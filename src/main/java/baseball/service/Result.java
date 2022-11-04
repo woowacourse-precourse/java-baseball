@@ -5,6 +5,7 @@ import baseball.utils.ConsoleLog;
 import java.util.Map;
 
 public class Result {
+    private static final ConsoleLog consoleLog = ConsoleLog.getInstance();
     private static final boolean CORRECT_ANSWER = true;
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
@@ -32,13 +33,17 @@ public class Result {
         int strike = score.get("strike");
         int ball = score.get("ball");
 
-        String notification = "";
+        StringBuilder notification = new StringBuilder();
         if (ball > 0)
-            notification += ball + BALL + WHITE_SPACE;
+            notification.append(ball)
+                    .append(BALL)
+                    .append(WHITE_SPACE);
         if (strike > 0)
-            notification += strike + STRIKE;
+            notification.append(strike)
+                    .append(STRIKE);
         if (ball == 0 && strike == 0)
-            notification = NOTHING;
-        ConsoleLog.getInstance().println(notification);
+            notification.append(NOTHING);
+
+        consoleLog.println(notification.toString());
     }
 }
