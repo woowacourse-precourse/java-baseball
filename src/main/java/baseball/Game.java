@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
     public void start() {
@@ -33,6 +34,17 @@ public class Game {
             }
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
+        }
+
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
+                strike++;
+            }
+            if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
+                ball++;
+            }
         }
     }
 }
