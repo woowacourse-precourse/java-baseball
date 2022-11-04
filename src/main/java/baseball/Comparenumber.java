@@ -16,5 +16,10 @@ public class Comparenumber {
         if(randomList.contains(inputList.get(index))){return 1;}
         return 0;
     }
+    public int strickscore(int index){
+        if(randomList.get(index).equals(inputList.get(index))) return 1;
+        else return 0;
+
+    }
 
 }
