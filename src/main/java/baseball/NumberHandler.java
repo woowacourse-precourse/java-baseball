@@ -72,4 +72,5 @@ public class NumberHandler {
             throw new IllegalArgumentException("숫자 3개만 입력해주세요.");
         }
     }
+
 }
