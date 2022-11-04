@@ -72,4 +72,15 @@ public class ErrorChecker {
             throw new IllegalArgumentException(ILLEGAL_INPUT);
         }
     }
+
+    private boolean isIllegalContinueGameInput(String input) {
+        char digit = input.charAt(0);
+        int number = Character.getNumericValue(digit);
+
+        if (continueGameInputList.contains(number)) {
+            return false;
+        }
+        return true;
+    }
+
 }
