@@ -12,6 +12,7 @@ public class ComparisonResult {
 	}
 
 	private void countHint(List<Integer> userNums, List<Integer> computerNums) {
+		resetCount();
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			if (userNums.get(i).equals(computerNums.get(i))) {
 				strikeCount++;
@@ -21,6 +22,11 @@ public class ComparisonResult {
 				ballCount++;
 			}
 		}
+	}
+
+	private static void resetCount() {
+		strikeCount = 0;
+		ballCount = 0;
 	}
 }
 
