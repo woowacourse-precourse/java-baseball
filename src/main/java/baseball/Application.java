@@ -9,6 +9,8 @@ public class Application {
     private final int MAX_NUMBER_SIZE = 3;
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
+    private final String RESTART = "1";
+    private final String NO_RESTART = "2";
 
     String input = "";
     String answer = "";
@@ -62,10 +64,10 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = readLine();
 
-            if (input.equals("1")) {
+            if (input.equals(RESTART)) {
                 resetGame();
                 return true;
-            } else if (input.equals("2")) {
+            } else if (input.equals(NO_RESTART)) {
                 return false;
             }
         }
