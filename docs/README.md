@@ -7,8 +7,8 @@
 - 게임 시작 문구 출력
 
 ### 클래스
-- Computer와 User는 비슷한 코드가 많다. 따라서 부모 클래스 Player를 만들고 상속을 사용한다.
-- 게임의 개수와 승패를 판단하고 출력하고 게임을 진행하는 클래스 playGame
+- Computer와 User 클래스를 players 패키지에 구현
+- 게임의 개수와 승패를 판단하고 출력하고 게임을 진행하는 클래스 playGame을 playing 패키지에 구현
 
 ### 예외처리 목록
 - 사용자가 3개의 숫자를 입력받을 때 중복되거나 범위를 벗어난 수를 입력하면 IllegalArgumentException 발생시킨 후 프로그램 종료.
