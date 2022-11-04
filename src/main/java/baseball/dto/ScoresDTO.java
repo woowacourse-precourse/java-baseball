@@ -5,19 +5,19 @@ import baseball.domain.score.Score;
 
 import java.util.List;
 
-public class RefereeDTO {
-    private final List<Integer> pitchResults;
+public class ScoresDTO {
+    private final List<Integer> scores;
     
-    public RefereeDTO(final Referee referee) {
+    public ScoresDTO(final Referee referee) {
         final Score ball = referee.ball();
         final Score strike = referee.strike();
         final int ballScore = ball.score();
         final int strikeScore = strike.score();
         
-        pitchResults = List.of(ballScore, strikeScore);
+        scores = List.of(ballScore, strikeScore);
     }
     
-    public List<Integer> getPitchResults() {
-        return pitchResults;
+    public List<Integer> getScores() {
+        return scores;
     }
 }

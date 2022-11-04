@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.dto.RefereeDTO;
+import baseball.dto.ScoresDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,8 +23,8 @@ public class OutputView {
         System.out.println(APPLICATION_START_MESSAGE);
     }
     
-    public static void printResult(final RefereeDTO refereeDTO) {
-        final List<Integer> scores = refereeDTO.getPitchResults();
+    public static void printResult(final ScoresDTO scoresDTO) {
+        final List<Integer> scores = scoresDTO.getScores();
         final List<String> ballStatusDisplay = List.of(BALL_DISPLAY, STRIKE_DISPLAY);
         
         if (isNothing(scores)) {

@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.domain.BaseBallGame;
 import baseball.domain.Referee;
-import baseball.dto.RefereeDTO;
+import baseball.dto.ScoresDTO;
 import baseball.dto.SelectedNumberForRestartDTO;
 import baseball.dto.UserNumbersDTO;
 import baseball.view.InputView;
@@ -34,7 +34,7 @@ public class BaseBall {
         boolean isEnd = false;
         while(!isEnd) {
             final Referee referee = playResult(baseBallGame);
-            OutputView.printResult(new RefereeDTO(referee));
+            OutputView.printResult(new ScoresDTO(referee));
             isEnd = referee.isEnd();
         }
     }
