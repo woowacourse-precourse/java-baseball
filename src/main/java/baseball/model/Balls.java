@@ -40,7 +40,7 @@ public class Balls {
         int ball = 0, strike = 0, out = 0;
 
         for (Ball otherBall : other.balls) {
-            switch (judgeball(otherBall)) {
+            switch (judgeBall(otherBall)) {
                 case BALL:
                     ball += 1; break;
                 case STRIKE:
@@ -53,7 +53,7 @@ public class Balls {
         return new Result(ball, strike, out);
     }
 
-    private Judgement judgeball(Ball ball) {
+    private Judgement judgeBall(Ball ball) {
         if (isBall(ball)) {
             return Judgement.BALL;
         }
