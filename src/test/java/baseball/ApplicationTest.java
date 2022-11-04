@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -96,7 +98,7 @@ class ApplicationTest extends NsTest {
 	@Test
 	void testComputerNumberIsProcessed() {
 		List<Integer> createdList = List.of(5, 9, 1);
-		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>(){
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>() {
 			{
 				put(5, 0);
 				put(9, 1);
@@ -127,10 +129,19 @@ class ApplicationTest extends NsTest {
 	}
 
 
-	@DisplayName("유저 입력 오류시 예외 처리가 작동하는지 확인한다")
+	@DisplayName("유저 guessing number 입력 오류시 예외 처리가 작동하는지 확인한다")
 	@Test
-	void testUserHandleException() {
-		assertThatCode(() -> user.handleInputError("222"))
+	void testUserGeussingHandleException() {
+		assertThatCode(() -> user.handleGuessingInputError("222"))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
+	}
+
+	@DisplayName("유저 intention 입력 오류시 예외 처리가 작동하는지 확인한다")
+	@ParameterizedTest
+	@ValueSource(strings = {"3", "abc", "25"})
+	void testUserIntentionHandleException(String input) {
+		assertThatCode(() -> user.handleIntentionInputError(input))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
@@ -138,7 +149,7 @@ class ApplicationTest extends NsTest {
 	@DisplayName("유저 입력에 대한 자료형 전처리 수행을 테스트한다")
 	@Test
 	void testUserInputIsProcessed() {
-		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>(){
+		LinkedHashMap<Integer, Integer> desirableMap = new LinkedHashMap<>() {
 			{
 				put(5, 0);
 				put(9, 1);
@@ -150,81 +161,78 @@ class ApplicationTest extends NsTest {
 
 	@DisplayName("스트라이크를 확인한다")
 	@Test
-	void verifyStrike(){
-		assertThat(game.isStrike(2,1,2,1)).isTrue();
+	void verifyStrike() {
+		assertThat(game.isStrike(2, 1, 2, 1)).isTrue();
 	}
 
 	@DisplayName("볼을 확인한다")
 	@Test
-	void verifyBall(){
-		assertThat(game.isBall(6,5,6,2)).isTrue();
+	void verifyBall() {
+		assertThat(game.isBall(6, 5, 6, 2)).isTrue();
 	}
 
 
 	@DisplayName("LinkedHashMap에서 key 값을 꺼내는 기능을 확인한다")
 	@Test
 	void canExtractKey() {
-		LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>(){
+		LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>() {
 			{
 				put(1, 0);
 				put(2, 1);
 				put(3, 2);
 			}
 		};
-		assertThat(game.extractNumber(map,0)).isEqualTo(1);
+		assertThat(game.extractNumber(map, 0)).isEqualTo(1);
 	}
 
 	@DisplayName("LinkedHashMap에서 value 값을 꺼내는 기능을 확인한다")
 	@Test
 	void canExtractValue() {
-		LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>(){
+		LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>() {
 			{
 				put(1, 0);
 				put(2, 1);
 				put(3, 2);
 			}
 		};
-		assertThat(game.extractIndex(map,0)).isEqualTo(0);
+		assertThat(game.extractIndex(map, 0)).isEqualTo(0);
 	}
 
 	@DisplayName("결과 출력 기능을 확인한다 : 낫싱")
 	@Test
-	void canPrintAnswerMessageCase1(){
+	void canPrintAnswerMessageCase1() {
 		game.strike = 0;
 		game.ball = 0;
 		String answer = "낫싱";
-		assertEquals(game.printAnswerMessage(), answer);
+		assertEquals(game.createAnswerMessage(), answer);
 	}
 
 	@DisplayName("결과 출력 기능을 확인한다 : 1볼 1스트라이크")
 	@Test
-	void canPrintAnswerMessageCase2(){
+	void canPrintAnswerMessageCase2() {
 		game.strike = 1;
 		game.ball = 1;
 		String answer = "1볼 1스트라이크";
-		assertEquals(game.printAnswerMessage(), answer);
+		assertEquals(game.createAnswerMessage(), answer);
 	}
 
 	@DisplayName("결과 출력 기능을 확인한다 : 1볼")
 	@Test
-	void canPrintAnswerMessageCase3(){
+	void canPrintAnswerMessageCase3() {
 		game.strike = 0;
 		game.ball = 1;
 		String answer = "1볼";
-		assertEquals(game.printAnswerMessage(), answer);
+		assertEquals(game.createAnswerMessage(), answer);
 	}
 
 	@DisplayName("결과 출력 기능을 확인한다 : 2스트라이크")
 	@Test
-	void canPrintAnswerMessageCase4(){
+	void canPrintAnswerMessageCase4() {
 		game.strike = 2;
 		game.ball = 0;
 		String answer = "2스트라이크";
-		assertEquals(game.printAnswerMessage(), answer);
+		assertEquals(game.createAnswerMessage(), answer);
 	}
-
-
-
 
 
 	@Test
