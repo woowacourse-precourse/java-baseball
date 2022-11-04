@@ -12,21 +12,14 @@ import org.junit.jupiter.api.Test;
 class OutputTest {
 
   private static ByteArrayOutputStream outContent;
-  private static PrintStream originalOut;
 
   Output output;
 
   @BeforeEach
   public void setOutputClass() {
     outContent = new ByteArrayOutputStream();
-    originalOut = System.out;
     System.setOut(new PrintStream(outContent));
     output = new Output();
-  }
-
-  @AfterEach
-  public void restoreStreams() {
-    System.setOut(originalOut);
   }
 
   @Test
