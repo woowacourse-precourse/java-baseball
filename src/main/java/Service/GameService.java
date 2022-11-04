@@ -49,11 +49,11 @@ public class GameService {
         }
     }
 
-    public void increase_cnt(int r, int u){
-        if(r == u){
+    public void increase_cnt(int index, int tmp){
+        if(index == tmp){
             game.increase_strike();
         }
-        if(r != u && u != -1){
+        if(index != tmp && tmp != -1){
             game.increase_ball();
         }
     }
