@@ -12,6 +12,7 @@ public class Game {
     static final String NOTHING_MSG = "낫싱";
     static final String VICTORY_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String RESTART_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String GAME_START_MSG = "숫자 야구 게임을 시작합니다.";
 
     public int getRandomNumber() {
         int number = 0;
@@ -82,5 +83,9 @@ public class Game {
         else if (strike == 0) {
             System.out.println(strike + STRIKE_MSG);
         }
+    }
+
+    public void gameStartMsg(){
+        System.out.println(GAME_START_MSG);
     }
 }
