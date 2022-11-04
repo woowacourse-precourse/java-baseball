@@ -2,6 +2,8 @@ package baseball.controller;
 
 import java.util.List;
 
+import baseball.domain.UserBall;
+import baseball.service.GameEndService;
 import baseball.service.GameStartService;
 import baseball.service.UserBallService;
 import baseball.util.ErrorConst;
@@ -13,12 +15,14 @@ public class FrontController {
 
 	private final GameStartService gameStartService;
 	private final UserBallService userBallService;
+	private final GameEndService gameEndService;
 	private final InputValidUtil inputValidUtil;
 
 	public FrontController(GameStartService gameStartService, UserBallService userBallService,
-		InputValidUtil inputValidUtil) {
+		GameEndService gameEndService, InputValidUtil inputValidUtil) {
 		this.gameStartService = gameStartService;
 		this.userBallService = userBallService;
+		this.gameEndService = gameEndService;
 		this.inputValidUtil = inputValidUtil;
 	}
 
@@ -32,10 +36,12 @@ public class FrontController {
 
 		List<Integer> answerNumber = gameStartService.makeAnswerNumber();
 		String userInput;
+		UserBall userBall;
 		do {
 			userInput = Console.readLine();
 			inputValidUtil.checkInputValid(userInput);
-		} while (!userBallService.isAnswer(userInput, answerNumber));
+			userBall = userBallService.makeUserBall(userInput, answerNumber);
+		} while (!gameEndService.isAnswer(userBall));
 	}
 
 	public boolean exit() {

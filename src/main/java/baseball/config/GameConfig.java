@@ -1,6 +1,7 @@
 package baseball.config;
 
 import baseball.controller.FrontController;
+import baseball.service.GameEndService;
 import baseball.service.GameStartService;
 import baseball.service.UserBallService;
 import baseball.util.InputValidUtil;
@@ -16,9 +17,10 @@ public class GameConfig {
 
 		GameStartService gameStartService = new GameStartService(inputView);
 		InputValidUtil inputValidUtil = new InputValidUtil();
-		UserBallService userBallService = new UserBallService(outputView, inputView);
+		UserBallService userBallService = new UserBallService();
+		GameEndService gameEndService = new GameEndService(outputView, inputView);
 
-		return new FrontController(gameStartService, userBallService, inputValidUtil);
+		return new FrontController(gameStartService, userBallService, gameEndService, inputValidUtil);
 	}
 
 }
