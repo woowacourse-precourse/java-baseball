@@ -21,6 +21,7 @@ public class Number {
     }
 
     public void setRandomNumber() {
+        digits.clear();
         while (digits.size() < DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!digits.contains(randomNumber)) {
@@ -67,6 +68,7 @@ public class Number {
     }
 
     public void setDigits(String target) {
+        digits.clear();
         for (int i = 0; i < target.length(); i++) {
             char c = target.charAt(i);
             int number = Character.getNumericValue(c);

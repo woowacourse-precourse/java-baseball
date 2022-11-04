@@ -14,50 +14,44 @@ public class BaseballGame {
     private static final String ANSWER_FORMAT = "%d%s";
 
 
+    private Number computer = new Number();
+    private Number user = new Number();
     private int ball;
     private int strike;
-    private boolean isCorrect;
     private boolean isExit;
 
     public BaseballGame() {
     }
 
     public void run() {
-        Number computer = new Number();
-        Number user = new Number();
 
         System.out.println(GAME_START);
 
+        initialize();
+
         while (!isExit) {
-            initialize();
+            user.inputNumber();
 
-            computer.setRandomNumber();
-            System.out.println("computer = " + computer.getDigits());
+            List<Integer> computerValue = computer.getDigits();
+            List<Integer> userValue = user.getDigits();
+            compareNumbers(computerValue, userValue);
 
-            while (!isCorrect) {
-                user.inputNumber();
+            String result = makeResultString();
+            System.out.println(result);
 
-                List<Integer> computerValue = computer.getDigits();
-                List<Integer> userValue = user.getDigits();
-                compareNumbers(computerValue, userValue);
-
-                String result = makeResultString();
-                System.out.println(result);
-
-                if (strike == 3) {
-                    isCorrect = true;
-                }
+            if (strike == 3) {
+                System.out.println(GAME_END);
+                System.out.println(START_AGAIN);
+                startAgain();
             }
 
-            System.out.println(GAME_END);
-            System.out.println(START_AGAIN);
-            startAgain();
         }
     }
 
     private void initialize() {
-        isCorrect = false;
         isExit = false;
+        computer.setRandomNumber();
+        System.out.println("computer = " + computer.getDigits());
     }
 
     private void compareNumbers(List<Integer> computerValue, List<Integer> userValue) {
@@ -91,9 +85,11 @@ public class BaseballGame {
         String answer = "";
         if (ball == 0 & strike == 0) {
             answer += NOTHING;
-        } else if (ball > 0) {
+        }
+        if (ball > 0) {
             answer += String.format(ANSWER_FORMAT, ball, BALL);
-        } else if (strike > 0) {
+        }
+        if (strike > 0) {
             answer += String.format(ANSWER_FORMAT, strike, STRIKE);
         }
         return answer;
@@ -103,7 +99,9 @@ public class BaseballGame {
         String input = Console.readLine();
         if (input.equals("2")) {
             isExit = true;
-        } else if (!input.equals("1")) {
+        } else if (input.equals("1")) {
+            initialize();
+        } else {
             throw new IllegalArgumentException();
         }
     }
