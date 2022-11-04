@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-/***
+/*** 커밋 컨벤션
  * feat: 새로운 기능 추가
  * fix: 버그 수정
  * docs: 문서 수정
@@ -14,6 +14,11 @@ import java.util.List;
  * refactor: 코드 리펙토링
  * test: 테스트 코드, 리펙토링 테스트 코드 추가
  * chore: 빌드 업무 수정, 패키지 매니저 수정
+ */
+
+/*** 구현해야 할 기능
+ * GameTest, 단위 및 통합 테스트 코드 작성
+ * 잘못된 입력값에 대한 IllegalArgumentException 예외 처리
  */
 
 public class Application {
