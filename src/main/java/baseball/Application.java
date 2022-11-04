@@ -10,6 +10,8 @@ public class Application {
     final static int MIN_RANDOM_VALUE = 1;
     final static int MAX_RANDOM_VALUE = 9;
     final static int MAX_NUMBERS_COUNT = 3;
+    final static int INIT_STRIKE_COUNT = 0;
+    final static int MAX_STRIKE_COUNT = 3;
 
     final static String INIT_GAME_START_VALUE = "1";
     final static String MESSAGE_START = "숫자 야구 게임을 시작합니다.";
@@ -40,10 +42,14 @@ public class Application {
         final List<Integer> COMPUTERS_NUMBERS = List.copyOf(setComputersNumbers());
 
         /* 게임 시퀀스 루프 */
-//        int strike = INITE_STRIKE_COUNT;
-//        while(strike < MAX_STRIKE_COUNT) {
-//
-//        }
+        int strike = INIT_STRIKE_COUNT;
+        while(strike < MAX_STRIKE_COUNT) {
+            String userInputNumbers = inputUserNumbers();
+            validateInputPattern(userInputNumbers);
+            final List<Integer> USERS_NUMBERS = List.copyOf(validateDuplication(userInputNumbers));
+
+            strike = compareNumbers(USERS_NUMBERS, COMPUTERS_NUMBERS);
+        }
 
         /* 게임 재시작 여부 확인 파트 */
         System.out.println(MESSAGE_GAME_OVER);
