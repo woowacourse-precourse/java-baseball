@@ -51,6 +51,13 @@ class PlayingBaseball {
         System.out.println(strike+"스트라이크 "+ball+"볼");
     }
 
+    boolean has3Strikes () {
+        if(strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
 
 
 

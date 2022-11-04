@@ -7,14 +7,18 @@ public class Application {
 
         String numberComputer = Input.computer();
         System.out.println(numberComputer);
+        boolean notThreeStrikes = true;
 
-        String numberPlayer = Input.player();
-        System.out.println(numberPlayer);
+        do {
+            String numberPlayer = Input.player();
+            System.out.println(numberPlayer);
 
-        PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
-        System.out.println(round.countStrikes());
-        System.out.println(round.countBalls());
-        round.printResult();
+            PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
+            System.out.println(round.countStrikes());
+            System.out.println(round.countBalls());
+            round.printResult();
+            notThreeStrikes = !round.has3Strikes();
+        } while (notThreeStrikes);
 
         }
     }
