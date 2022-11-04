@@ -9,7 +9,8 @@ import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
 import static baseball.view.Display.*;
 
 public class Controller {
-    public void printRoundStart() {
+
+    public void printGameStartMessage() {
         printInitMessage();
     }
 
