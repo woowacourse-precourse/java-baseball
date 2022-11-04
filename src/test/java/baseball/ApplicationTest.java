@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +25,7 @@ class ApplicationTest extends NsTest {
         void testGetUniqueThreeNumbersIsUnique() {
             int[] oneToNine = new int[10];
             Arrays.setAll(oneToNine, i -> 1);
+            oneToNine[0] = 0;
             List<Integer> result = NumberController.getUniqueThreeNumbers();
             for (int num : result) {
                 oneToNine[num]--;
