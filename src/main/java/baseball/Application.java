@@ -60,28 +60,36 @@ public class Application {
         }
         return strikeNumber;
     }
-    private static void printBallStrikeResult(int ballNumber, int strikeNumber) {
+    private static boolean printBallStrikeResult(int ballNumber, int strikeNumber) {
         if (strikeNumber == 3) {
             System.out.println(strikeNumber + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
         }
         if (strikeNumber == 0 && ballNumber == 0) {
             System.out.println("낫싱");
+            return true;
         }
         if (ballNumber == 0) {
             System.out.println(strikeNumber + "스트라이크");
+            return true;
         }
         if (strikeNumber == 0) {
             System.out.println(ballNumber + "볼");
+            return true;
         }
         System.out.println(ballNumber + "볼 " + strikeNumber + "스트라이크");
+        return true;
     }
     public static void main(String[] args) {
         noticeStartGame();
         List<Integer> computerNumbers = createComputerNumbers();
-        String userNumbers = inputUserNumbers();
-        int ballNumber = getBallNumber(computerNumbers, userNumbers);
-        int strikeNumber = getStrikeNumber(computerNumbers, userNumbers);
-        printBallStrikeResult(ballNumber, strikeNumber);
+        boolean isNotMatchComputerUser = true;
+        while (isNotMatchComputerUser) {
+            String userNumbers = inputUserNumbers();
+            int ballNumber = getBallNumber(computerNumbers, userNumbers);
+            int strikeNumber = getStrikeNumber(computerNumbers, userNumbers);
+            isNotMatchComputerUser = printBallStrikeResult(ballNumber, strikeNumber);
+        }
     }
 }
