@@ -3,10 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -18,6 +23,32 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 컴퓨터_숫자는_세_개_테스트(){
+        List<Integer> computer = Application.selectComputerNumber();
+
+        assertEquals(3, computer.size());
+    }
+
+    @Test
+    void 컴퓨터_숫자는_서로_다른_수_테스트(){
+        List<Integer> computer = Application.selectComputerNumber();
+        Set<Integer> nonDuplicateNumber = new HashSet<>(computer);
+
+        assertEquals(3, nonDuplicateNumber.size());
+    }
+
+    @Test
+    void 컴퓨터_숫자는_1부터_9사이_테스트(){
+        List<Integer> computer = Application.selectComputerNumber();
+
+        for(Integer number : computer){
+            assertThat(number)
+                    .isGreaterThan(0)
+                    .isLessThan(10);
+        }
     }
 
     @Test
