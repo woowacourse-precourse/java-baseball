@@ -121,4 +121,14 @@ public class BaseballGame {
     private boolean isStrike(List<Integer> computer, List<Integer> user, int index) {
         return computer.contains(user.get(index)) && computer.get(index).equals(user.get(index));
     }
+
+    public boolean isReStart(String string) {
+        if (string.equals("1")) {
+            return true;
+        } else if (string.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
