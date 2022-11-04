@@ -20,4 +20,17 @@ public class ComputerTest {
         assertThat(number2).isNotEqualTo(number3);
         assertThat(number3).isNotEqualTo(number1);
     }
+
+    @Test
+    void isBallTest() {
+        Computer computer = new Computer();
+        List<Integer> answer = List.of(5, 3, 7);
+        computer.setAnswer(answer);
+        boolean result = true;
+        assertThat(computer.isBall(7)).isEqualTo(result);
+        assertThat(computer.isBall(3)).isEqualTo(result);
+        result = false;
+        assertThat(computer.isBall(4)).isEqualTo(result);
+        assertThat(computer.isBall(9)).isEqualTo(result);
+    }
 }
