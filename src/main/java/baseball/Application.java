@@ -13,6 +13,7 @@ public class Application {
         // TODO: 프로그램 구현
         int randomNumber = makeRandomNumber();
         int userInputNumber = input();
+        System.out.println(userInputNumber);
     }
 
 
@@ -24,6 +25,7 @@ public class Application {
         }
         return removeRepetitionNumber(numList);
     }
+
 
     public static int removeRepetitionNumber(List<Integer> numList) {
         String tmp = "";
@@ -44,6 +46,11 @@ public class Application {
         System.out.println("숫자를 입력해주세요: ");
         int n = sc.nextInt();
 
+        return exceptionHandler(n);
+    }
+
+
+    public static int exceptionHandler(int n) {
         if (!(n >= 100 && n <1000)) throw new IllegalArgumentException("n은 세자리 숫자입니다.");
 
         return n;
