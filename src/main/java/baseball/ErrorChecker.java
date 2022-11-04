@@ -62,4 +62,9 @@ public class ErrorChecker {
         }
         return false;
     }
+
+    private boolean isIllegalSize(String input) {
+        return input.length() != numberSize;
+    }
+
 }
