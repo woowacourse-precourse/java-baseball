@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class Application {
         return gameStarted;
     }
 
-    private static List<Integer> seperate3Numbers(int input){
+    private static List<Integer> seperate3Numbers(int input) {
         List<Integer> separated = new ArrayList<>();
         for (int i = 2; i >= 0; i--) {
             int digit = input / (int) Math.pow(10, i);
@@ -30,6 +31,35 @@ public class Application {
             separated.add(digit);
         }
         return separated;
+    }
+
+
+    static final int NOTHING = 0;
+    static final int BALL = 1;
+    static final int STRIKE = 2;
+
+    private static HashMap<Integer, Integer> checkBallOrStrike(List<Integer> answerList,
+                                                               List<Integer> userInputList) {
+        HashMap<Integer, Integer> comparedResult = new HashMap<>();
+        comparedResult.put(BALL, 0);
+        comparedResult.put(STRIKE, 0);
+        comparedResult.put(NOTHING, 1);
+        for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
+            if (answerList.contains(userInputList.get(comparingNum))) {
+                comparedResult.put(NOTHING, 0);
+                if (answerList.get(comparingNum) == userInputList.get(comparingNum)) {
+                    int strikes = comparedResult.get(STRIKE);
+                    strikes += 1;
+                    comparedResult.put(STRIKE, strikes);
+                } else {
+                    int balls = comparedResult.get(BALL);
+                    balls += 1;
+                    comparedResult.put(BALL, balls);
+                }
+            }
+        }
+        return comparedResult;
+
     }
 
     public static void main(String[] args) {
@@ -40,8 +70,10 @@ public class Application {
         while (gameOn) {
             int userInput = sc.nextInt();
             List<Integer> separatedInput = seperate3Numbers(userInput);
+            HashMap<Integer,Integer> comparedResult=checkBallOrStrike(answer,separatedInput);
 
-            System.out.println(separatedInput);
+            System.out.println(comparedResult);
+
             gameOn = false;
         }
     }
