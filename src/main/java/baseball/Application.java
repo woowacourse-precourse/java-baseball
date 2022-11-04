@@ -7,11 +7,10 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static void computerRandomNumber(List<String> answerNumber){
-        Random computerRandonNuber = new Random();
+    public static void computerRandomNumber(final List<String> answerNumber){
         for(int i=1; i<4; i++){
-            String randomNumber = String.valueOf(computerRandonNuber.nextInt(9));
-            answerNumber.add(randomNumber);
+            String number= String.valueOf(pickNumberInRange(1,9));
+            answerNumber.add(number);
         }
     }
 
