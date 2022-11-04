@@ -8,11 +8,34 @@ public class BaseballGame {
 
     public static void startGame() {
         PlayerRepository playerRepository = new PlayerRepository();
+        Computer computer = new Computer();
 
-        while (Computer.getLengthOfNumber() < 3) {
-            Computer.generateRandomNumber();
+        while (computer.getLengthOfNumber() < 3) {
+            computer.generateRandomNumber();
         }
+
         Player.startPhrase();
-        playerRepository.setPlayerNumber(Player.numberInput());
+
+        while (!isCorrect(playerRepository, computer)) {
+            playerRepository.setPlayerNumber(Player.numberInput());
+
+        }
     }
+
+    public static boolean isCorrect(PlayerRepository playerRepository, Computer computer) {
+        int userInput;
+        int computerNumber;
+
+        if (playerRepository.getPlayerNumber().equals("")) {
+            return false;
+        }
+
+        userInput = Integer.parseInt(playerRepository.getPlayerNumber());
+
+        computerNumber = computer.getComputerNumber();
+
+        return userInput == computerNumber;
+    }
+
+
 }

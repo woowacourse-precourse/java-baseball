@@ -6,16 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static List<Integer> randomNumber = new ArrayList<>();
+    private List<Integer> randomNumber = new ArrayList<>();
 
-    public static void generateRandomNumber() {
+    public void generateRandomNumber() {
         int random = Randoms.pickNumberInRange(1, 9);
-        if (!randomNumber.contains(random)) {
-            randomNumber.add(random);
+        if (!this.randomNumber.contains((random))) {
+            this.randomNumber.add(random);
         }
     }
 
-    public static int getLengthOfNumber() {
-        return randomNumber.size();
+    public int getLengthOfNumber() {
+        return this.randomNumber.size();
+    }
+
+    public int getComputerNumber() {
+        int i = 100;
+        int computerNumber = 0;
+
+        for (int number: this.randomNumber) {
+            computerNumber += i * number;
+            i /= 10;
+        }
+
+        return computerNumber;
     }
 }

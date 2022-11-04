@@ -1,7 +1,6 @@
 package view;
 
 import constant.GameConstant;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

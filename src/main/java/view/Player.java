@@ -24,6 +24,7 @@ public class Player {
                 BaseballException.InputRepeatException(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
+                return "1";
             }
             return input;
         }

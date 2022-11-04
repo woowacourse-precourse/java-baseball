@@ -5,15 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class ComputerTest {
+    Computer computer = new Computer();
 
     @Test
     void 자동_생성_확인() {
         Integer result = 3;
 
-        while (Computer.getLengthOfNumber() < 3) {
-            Computer.generateRandomNumber();
+        while (computer.getLengthOfNumber() < 3) {
+            computer.generateRandomNumber();
         }
-
-        assertThat(Computer.getLengthOfNumber()).isEqualTo(result);
+        System.out.println(computer.getComputerNumber());
+        assertThat(computer.getLengthOfNumber()).isEqualTo(result);
     }
 }
