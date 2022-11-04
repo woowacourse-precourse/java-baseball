@@ -27,6 +27,9 @@ public class BallGenerator {
         System.out.print(SystemMessage.ENTER_NUMBER);
         String playerBall = Console.readLine();
         List<Integer> playerBalls = stringToIntegerList(playerBall);
+        if (!InputValidator.checkPlayerBall(playerBalls)) {
+            throw new IllegalArgumentException();
+        }
         return playerBalls;
     }
 
