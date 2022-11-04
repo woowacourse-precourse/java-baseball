@@ -3,21 +3,18 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Balls {
-    private final List<Integer> balls = new ArrayList<>();
+    private final List<Ball> balls;
 
-    public Balls(int balls) {
-        while (balls > 0) {
-            this.balls.add(balls % 10);
-            balls /= 10;
-        }
-        Collections.reverse(this.balls);
+    public Balls(List<Ball> balls) {
+        this.balls = balls;
     }
 
-    public boolean compare(int ball, int position) {
-        for (int i = 0; i < balls.size(); i++) {
-            if (i == position && balls.get(i).equals(ball)) {
+    public boolean compare(Ball other) {
+        for (Ball ball : balls) {
+            if (Objects.equals(ball, other)) {
                 return true;
             }
         }
