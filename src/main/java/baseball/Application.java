@@ -12,12 +12,10 @@ public class Application {
         Game game = new Game();
         do {
             game.start();
-            GameState gameState = new GameState(); // refactoring 중 임시 객체
             String userInput; // refactoring 중 임시 변수
-            if (gameState.getStrike()!=ANSWER_COUNT) {
+            if (!game.isAnswer()) {
                 continue;
             }
-            PrintComment.printCorrectComment();
             PrintComment.printRestartComment();
             userInput = Console.readLine();
 

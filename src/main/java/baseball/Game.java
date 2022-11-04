@@ -24,6 +24,14 @@ public class Game {
         compareNumbers(userInputNumbers);
     }
 
+    public boolean isAnswer() {
+        if (gameState.getStrike() == ANSWER_COUNT) {
+            PrintComment.printCorrectComment();
+            return true;
+        }
+        return false;
+    }
+
     public static List<Integer> pickThreeNumber() {
         List<Integer> threeNumber = new ArrayList<>();
         while (threeNumber.size() < NUMBER_LENGTH) {
