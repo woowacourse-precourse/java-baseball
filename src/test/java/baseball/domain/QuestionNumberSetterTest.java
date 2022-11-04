@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,8 +13,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import baseball.testhelper.ComparingResultExample;
+import baseball.testhelper.ComparingTestCases;
+
 public class QuestionNumberSetterTest {
 	QuestionNumberSetter questionNumberSetter = new QuestionNumberSetter();
+
 	@Test
 	@DisplayName("랜덤 숫자 결정 기능 테스트")
 	void pickThreeRandomNumbersTest() {
@@ -28,5 +33,29 @@ public class QuestionNumberSetterTest {
 		Set<String> checkOverlapSet = new HashSet<>();
 		new ArrayList<>(Arrays.asList(randomNumbersString.split("")))
 				.forEach(number -> assertThat(checkOverlapSet.add(number)).isTrue());
+	}
+
+	@Test
+	@DisplayName("사용자 입력 숫자에 대한 결과 반환 기능 테스트")
+	void compareWithRandomNumbersTest() throws NoSuchFieldException, IllegalAccessException {
+		// 테스트를 위해 랜덤 숫자 임의로 설정
+		Field randomNumbersField = QuestionNumberSetter.class.getDeclaredField("randomNumbers");
+		randomNumbersField.setAccessible(true);
+		randomNumbersField.set(questionNumberSetter, ComparingResultExample.RANDOM_NUMBER.getNumbers());
+
+		ComparingTestCases comparingTest = new ComparingTestCases(questionNumberSetter);
+
+		comparingTest.oneBallTest();
+		comparingTest.twoBallTest();
+		comparingTest.threeBallTest();
+
+		comparingTest.oneStrikeTest();
+		comparingTest.twoStrikeTest();
+		comparingTest.threeStrikeTest();
+
+		comparingTest.oneBallOneStrikeTest();
+		comparingTest.twoBallOneStrikeTest();
+
+		comparingTest.nothingTest();
 	}
 }
