@@ -2,16 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     static List<Character> computerNumber;
-    static String errorMessage = "입력 형식에 맞지 않습니다 프로그램을 종료합니다.";
-    static String startMessage = "숫자 야구 게임을 시작합니다.";
-    static String inputMessage = "숫자를 입력해 주세요: ";
-    static String threeStrikeMessage = "3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static Map<String, String> commonMessageMap;
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -27,6 +22,15 @@ public class Application {
                 computerNumber.add(randomNumber);
             }
         }
+    }
+
+    public static void initCommonMessageMap() {
+        commonMessageMap = new HashMap<>();
+
+        commonMessageMap.put("startMessage", "숫자 야구 게임을 시작합니다.");
+        commonMessageMap.put("inputMessage", "숫자를 입력해주세요 : ");
+        commonMessageMap.put("threeStrikeMessage", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        commonMessageMap.put("exitOrProceedMessage", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static int checkStrike(String userInput) {
@@ -134,7 +138,7 @@ public class Application {
 
     public static void checkUserInputIsThreeStrike(String userInput) {
         int strikeCount = checkStrike(userInput);
-        System.out.println(threeStrikeMessage);
+        System.out.println(commonMessageMap.get("threeStrikeMessage"));
     }
 
     public static String readeUserInput() {
