@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputException {
-    private static final Pattern IsOnlyNumber = Pattern.compile("^[0-9]*?");
+    private static final Pattern IsOnlyNumber = Pattern.compile("^[1-9]*?");
     public void isNumber(String input) {
         if (input.isEmpty() || !IsOnlyNumber.matcher(input).matches()) {
             throw new IllegalArgumentException("숫자 외의 값이 입력되었습니다.");
