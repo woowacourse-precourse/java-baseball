@@ -66,16 +66,6 @@ public class Computer {
     }
 
 
-    // user에서 가져온 각자릿수 분리 메서드
-    public boolean isValidNumOfIndividually(String str) {
-        if (isNumOfIndividually(str)) {
-            return true;
-        } else {
-            throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
-        }
-    }
-
-
     // 서로 다른 3자리의 수인지 확인
     // 서로 다른 3자리의 수인지 확인하는 방법은?
     // 1번을 for문 2번?
