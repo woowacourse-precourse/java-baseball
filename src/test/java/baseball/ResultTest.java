@@ -20,4 +20,13 @@ public class ResultTest {
         int answer = 1;
         assertThat(result.getBall()).isEqualTo(answer);
     }
+
+    @Test
+    void addStrikeTest() {
+        Result result = new Result();
+        result.addStrike();
+        result.addStrike();
+        int answer = 2;
+        assertThat(result.getStrike()).isEqualTo(answer);
+    }
 }
