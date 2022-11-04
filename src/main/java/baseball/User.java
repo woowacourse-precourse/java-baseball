@@ -16,6 +16,15 @@ public class User {
         setInputNumber(Integer.parseInt(inputString));
     }
 
+    public void convertIntToList() {
+        int number = getInputNumber();
+        inputNumberList.add(number / 100);
+        number = number % 100;
+        inputNumberList.add(number / 10);
+        number = number % 10;
+        inputNumberList.add(number);
+    }
+
     public int getInputNumber() {
         return inputNumber;
     }
