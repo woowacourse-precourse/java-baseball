@@ -21,7 +21,8 @@ public class EndOrRe {
   }
 
   private void validOneOrTwo(String inputString) {
-    if (!inputString.equals("1") && !inputString.equals("2"))
+    if (!inputString.equals("1") && !inputString.equals("2")) {
       throw new IllegalArgumentException();
+    }
   }
 }
