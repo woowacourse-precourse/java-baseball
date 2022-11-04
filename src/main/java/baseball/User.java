@@ -79,13 +79,27 @@ public class User {
         return strike;
     }
 
-    int checkBall(List<Integer> computerNumberList, List<Integer> userNumberList, int strike){
+    int checkBall(List<Integer> computerNumberList, List<Integer> userNumberList, int strike) {
         int ball = 0;
-        for(int index = 0; index < 3; index++){
-            if (computerNumberList.contains(userNumberList.get(index))){
+        for (int index = 0; index < 3; index++) {
+            if (computerNumberList.contains(userNumberList.get(index))) {
                 ball++;
             }
         }
         return ball - strike;
+    }
+
+    void printResult(int strike, int ball) {
+        if (Objects.equals(strike, 0) & Objects.equals(ball, 0)) {
+            System.out.println("낫싱");
+            return;
+        } else if (Objects.equals(strike, 0)) {
+            System.out.println(ball + "볼");
+            return;
+        } else if (Objects.equals(ball, 0)) {
+            System.out.println((strike + "스트라이크"));
+            return;
+        }
+        System.out.println(ball +"볼 " + strike + "스트라이크");
     }
 }
