@@ -39,10 +39,14 @@ public class Input {
     public void readPlayerChoice() {
         System.out.println(REQUEST_PLAYER_CHOICE);
         playerChoice = Console.readLine();
+        validateChoice();
     }
 
     private void validateChoice() {
         if (playerChoice.length() != 1) {
+            throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
+        }
+        if (!playerChoice.equals("1") && !playerChoice.equals("2")) {
             throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
         }
     }
