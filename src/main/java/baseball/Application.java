@@ -16,11 +16,8 @@ public class Application {
         while (gameFlag) {
             String randomNumber = getRandomNumber();
             startGame(randomNumber);
-
-
+            gameFlag = getRestartFlag();
         }
-
-
     }
 
     public static String getRandomNumber() {
@@ -145,6 +142,15 @@ public class Application {
         }
     }
 
-    
+    public static boolean getRestartFlag() {
+        String userInput = Console.readLine();
+        if (userInput.equals("1")) {
+            return true;
+        } else if (userInput.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
