@@ -1,7 +1,6 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,15 +38,16 @@ public class ComputerTest {
         assertThat(result).contains("1");
     }
 
-    @Test
-    void splitEachDigitOfNum_메서드로_주어진_값을_구분() {
-        Computer computer = new Computer();
-        List<Integer> list = computer.splitEachDigitOfNum(123);
-        List<Integer> resultList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        assertThat(list).isEqualTo(resultList);
-    }
+    // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?
+//    @Test
+//    void splitEachDigitOfNum_메서드로_주어진_값을_구분() {
+//        Computer computer = new Computer();
+//        List<Integer> list = computer.splitEachDigitOfNum(123);
+//        List<Integer> resultList = new ArrayList<>(List.of(
+//            1, 2, 3
+//        ));
+//        assertThat(list).isEqualTo(resultList);
+//    }
 
     @Test
         // 컴퓨터 초기화 할시 랜덤 컴퓨터 리스트가 초기화가 되는가?
@@ -63,19 +63,20 @@ public class ComputerTest {
         assertThat(resultList_1.equals(resultList_2)).isFalse();
     }
 
-    @Test
-        // Computer.splitEachDigitOfNum Test
-    void 두개_Collection_포함() {
-        Computer computer = new Computer();
-        List<Integer> resultList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        List<Integer> list = new ArrayList<>();
-        list.addAll(resultList);
-
-        boolean isEqualsCollection = computer.isEqualsCollection(resultList, list);
-        assertTrue(isEqualsCollection);
-    }
+    // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?
+//    @Test
+//        // Computer.splitEachDigitOfNum Test
+//    void 두개_Collection_포함() {
+//        Computer computer = new Computer();
+//        List<Integer> resultList = new ArrayList<>(List.of(
+//            1, 2, 3
+//        ));
+//        List<Integer> list = new ArrayList<>();
+//        list.addAll(resultList);
+//
+//        boolean isEqualsCollection = computer.isEqualsCollection(resultList, list);
+//        assertTrue(isEqualsCollection);
+//    }
 
     @Test
         // Computer.isRightThreeNumOfComputer
@@ -85,7 +86,7 @@ public class ComputerTest {
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
             1, 3, 5
         ));
-        computer.isRightThreeNumOfComputer(135);
+        computer.isRealRightNumOfUser(135);
         int resultStrike = computer.getCntStrike();
         int resultBall = computer.getCntBall();
         ArrayList resultList = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -107,7 +108,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -132,7 +133,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -157,7 +158,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -181,7 +182,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -206,7 +207,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -231,7 +232,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -256,7 +257,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -280,7 +281,7 @@ public class ComputerTest {
         int resultBall = 0;
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultStrike = computer.getCntStrike();
             resultBall = computer.getCntBall();
             ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
@@ -299,7 +300,7 @@ public class ComputerTest {
             1, 2, 3
         ));
         ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        computer.isRightThreeNumOfComputer(123);
+        computer.isRealRightNumOfUser(123);
         boolean result = computer.isEndTheGame();
         assertThat(result).isTrue();
     }
@@ -316,7 +317,7 @@ public class ComputerTest {
         ArrayList<Boolean> resultList = new ArrayList<>();
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRightThreeNumOfComputer(num);
+            computer.isRealRightNumOfUser(num);
             resultList.add(computer.isEndTheGame());
         }
 

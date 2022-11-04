@@ -13,8 +13,8 @@ public class Computer {
 
     public List<Integer> numThreeRanOfComputerList;
 
-    public int cntStrike;
-    public int cntBall;
+    private int cntStrike;
+    private int cntBall;
 
     public Computer() {
         this.cntStrike = 0;
@@ -39,6 +39,32 @@ public class Computer {
             }
         }
     }
+
+    private boolean isNumOfComputerIndividually() {
+        String strComputerList = "";
+        for (Integer numComputerList : this.numThreeRanOfComputerList) {
+            strComputerList = strComputerList + numComputerList;
+        }
+        if (isNumOfIndividually(strComputerList)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void initCntStrikeBall() {
+        this.cntStrike = 0;
+        this.cntBall = 0;
+    }
+
+    // 게임을 종료해도 되겠니?
+    public boolean isEndTheGame() {
+        if (this.cntStrike == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     // user에서 가져온 각자릿수 분리 메서드
     public boolean isValidNumOfIndividually(String str) {
@@ -104,24 +130,6 @@ public class Computer {
         return Randoms.pickNumberInRange(NUM_START_RANGE_RAM, NUM_END_RANGE_RAM);
     }
 
-    // 유저에게 힌트를 주다
-    public String giveHint2User(int numOfCompare) {
-        return this.toString();
-    }
-
-    // 게임을 종료해도 되겠니?
-    public boolean isEndTheGame() {
-        if (this.cntStrike == 3) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public void initCntStrikeBall() {
-        this.cntStrike = 0;
-        this.cntBall = 0;
-    }
 
     public boolean isRealRightNumOfUser(int numInputOfUser) {
         if (isRightThreeNumOfComputer(numInputOfUser)) {
@@ -135,10 +143,10 @@ public class Computer {
 
     // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
-    public Boolean isRightThreeNumOfComputer(int numOfCompare) {
+    private Boolean isRightThreeNumOfComputer(int numOfCompare) {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
         ArrayList<Integer> splitNumOfCompare = new ArrayList<>();
-        splitNumOfCompare = (ArrayList<Integer>) this.splitEachDigitOfNum(numOfCompare);
+        splitNumOfCompare = (ArrayList<Integer>) splitEachDigitOfNum(numOfCompare);
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
         if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
@@ -155,17 +163,6 @@ public class Computer {
         }
     }
 
-
-    public boolean isNumOfComputerIndividually() {
-        String strComputerList = "";
-        for (Integer numComputerList : this.numThreeRanOfComputerList) {
-            strComputerList = strComputerList + numComputerList;
-        }
-        if (isNumOfIndividually(strComputerList)) {
-            return true;
-        }
-        return false;
-    }
 
     // strike체크 함수
     private void checkStrike(List<Integer> splitNumOfCompare) {
@@ -205,16 +202,7 @@ public class Computer {
         }
     }
 
-    public int getCntStrike() {
-        return cntStrike;
-    }
-
-    public int getCntBall() {
-        return cntBall;
-    }
-
-
-    public boolean isEqualsCollection(Collection collection_1,
+    private boolean isEqualsCollection(Collection collection_1,
         // TODO: collection의 equals 메서드 이용하여 리펙토링
         Collection collection_2) {
         boolean isTrue = true;
@@ -227,7 +215,7 @@ public class Computer {
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
-    public List<Integer> splitEachDigitOfNum(int numTosplit) {
+    private List<Integer> splitEachDigitOfNum(int numTosplit) {
         List list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
         String strParseIntArr = "" + numTosplit;
@@ -239,6 +227,20 @@ public class Computer {
         }
         return list;
     }
+
+    // 유저에게 힌트를 주다
+    public String giveHint2User(int numOfCompare) {
+        return this.toString();
+    }
+
+    public int getCntStrike() {
+        return cntStrike;
+    }
+
+    public int getCntBall() {
+        return cntBall;
+    }
+
 
     public List<Integer> getNumThreeRanOfComputerList() {
         return numThreeRanOfComputerList;
