@@ -12,8 +12,11 @@ public class BaseballGame {
     private int strikeCount;
     private int ballCount;
 
+    public BaseballGame() {
+        this.computer = new Computer();
+    }
+
     public void start() {
-        computer = new Computer();
         computer.createRandomNumbers();
         do {
             String input = inputAnswer();
@@ -21,6 +24,7 @@ public class BaseballGame {
             answerMessage();
         } while ((strikeCount != 3));
 
+        computer.clearRandomNumbers();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
