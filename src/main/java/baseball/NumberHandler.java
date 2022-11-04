@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,12 +39,17 @@ public class NumberHandler {
     public void setUserNumber() {
         String userInput = Console.readLine();
 
-        int[] userNumberArray = Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
+        try {
+            int[] userNumberArray = Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
 
-        ArrayList<Integer> userNumberList = (ArrayList<Integer>) Arrays.stream(userNumberArray)
-                .boxed()
-                .collect(Collectors.toList());
+            ArrayList<Integer> userNumberList = (ArrayList<Integer>) Arrays.stream(userNumberArray)
+                    .boxed()
+                    .collect(Collectors.toList());
 
-        this.userNumber = userNumberList;
+            this.userNumber = userNumberList;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("공백없이 숫자만 입력해주세요.");
+        }
     }
+
 }
