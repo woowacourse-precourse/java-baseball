@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,28 +16,12 @@ class JudgementTest {
         judgement = new Judgement();
     }
 
-    @Test
-    void _1볼() {
-        String actual = judgement.getJudgementResult(computerNumbers, List.of(5, 1, 6));
-        assertThat(actual).isEqualTo("1볼");
-    }
-
-    @Test
-    void _1볼_1스트라이크() {
-        String actual = judgement.getJudgementResult(computerNumbers, List.of(1, 3, 8));
-        assertThat(actual).isEqualTo("1볼 1스트라이크");
-    }
-
-    @Test
-    void _3스트라이크() {
-        String actual = judgement.getJudgementResult(computerNumbers, List.of(1, 2, 3));
-        assertThat(actual).isEqualTo("3스트라이크");
-    }
-
-    @Test
-    void _낫싱() {
-        String actual = judgement.getJudgementResult(computerNumbers, List.of(6, 7, 8));
-        assertThat(actual).isEqualTo("낫싱");
+    @ParameterizedTest
+    @CsvSource(value = {"5, 1, 6, 1볼", "1, 3, 8, 1볼 1스트라이크", "1, 2, 3, 3스트라이크", "4, 5, 6, 낫싱"})
+    void getJudgementResult(int number1, int number2, int number3, String expected) {
+        List<Integer> playerNumbers = List.of(number1, number2, number3);
+        String actual = judgement.getJudgementResult(computerNumbers, playerNumbers);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @ParameterizedTest
