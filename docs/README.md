@@ -1,7 +1,9 @@
 ## 숫자 야구 미션 - 구현 기능 목록
 
-- 게임 진행과 관련된 모든 함수는 Game 클래스에 별도로 구현한다.
+### Game Class
+- 직접직인 게임 진행과 관련된 함수는 Game 클래스에 별도로 구현한다.
 - Game Class 는 인스턴스 변수로 서로 다른 수로 구성된 3자리 수의 숫자를 List 형태로 갖는다.
+- Game Class 는 인스턴스 변수로 유저가 입력한 3자리 숫자를 List 형태로 갖는다.
 - Game Class 에는 랜덤 숫자 생성 시 이용할 ```NUM_START_RANGE``` 와 ```NUM_END_RANGE``` 가 final 클래스 변수로 존재한다.
 - Game Class 내부에 구현할 함수는 아래와 같다.
 
@@ -11,18 +13,15 @@ __1. generateRandomNumber__
    - 파라미터: (start, end)
 
 
-__2. getUserInput__
-   - 기능: 사용자로부터 서로 다른 세 개의 수를 입력받고 배열로 return 함, 입력값을 읽을 때는 ```camp.nextstep.edu.missionutils``` 의 ```Console```을 사용함
+__2. setUserInput__
+   - 기능: 사용자로부터 서로 다른 세 개의 수를 입력받고 Game instance 의 변수에 저장한다. 입력값을 읽을 때는 ```camp.nextstep.edu.missionutils``` 의 ```Console```을 사용한다.
+   - 잘못된 입력이 들어오면 게임을 종료한다. ```endGame()``` 함수 호출
    - 파라미터: None
-   - 예외처리는 ```isInputValid``` 함수로 수행함
+   - 예외처리는 ```InputValidation``` 클래스의 ```isInputValid()``` 함수로 수행함
 
 
-__3. isInputValid__
-  - 기능: 사용자가 입력한 값을 검사함 
-  - 예외 -> ```IllegalArgumentException```
-    - 같은 숫자가 2번 이상 반복될 때
-    - 0이 포함되어 있을 때
-    - 숫자가 아닌 다른 값을 입력했을 때
+__3. endGame__
+  - 기능: 게임을 종료한다는 메시지를 출력함
 
 
 __4. result__
@@ -35,3 +34,28 @@ __5. start__
    - 기능: 게임을 실행하는 함수, 위 함수들을 이용하여 게임을 진행함
    - result 의 return 값에 따라 (즉, 3스트라이크가 나올 때까지) 게임을 반복하여 실행함
    - 파라미터: None
+
+### InputValidation Class
+- 사용자의 입력값의 유효성을 검사하는 함수들은 InputValidation 클래스에 별도로 구현한다.
+- isInputValidation Class 는 ```isInputValid``` 라는 함수로 String 형태의 input 을 검사하며, 내부적으로 세부적인 함수의 실행을 통해 예외를 처리한다.
+- 예외 -> ```IllegalArgumentException```
+    - 같은 숫자가 2번 이상 반복될 때
+    - 길이가 3 을 초과할 때
+    - 0이 포함되어 있을 때
+    - 숫자가 아닌 다른 값을 입력했을 때
+
+
+ __1.isValidInput__
+- 기능: 사용자가 입력한 String input 이 길이가 3을 초과하거나 0을 포함하면 예외를 던지고 아래 두 함수를 호출한다.
+- 파라미터: (input)
+
+
+__2. isIntegerStr__
+- 기능: String input 이 숫자로만 이루어져 있는지 확인한다.
+- 파라미터: (input)
+
+
+__3. isIntegerStr__
+- 기능: String input 에 중복되는 character 가 있는지 확인한다.
+- 파라미터: (input)
+
