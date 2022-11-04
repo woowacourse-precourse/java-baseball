@@ -23,8 +23,8 @@ public class Number {
         return readLine();
     }
 
-    private boolean isThreeDigits(String numbers) {
-        if(numbers.length() > 3) {
+    private boolean isThreeDigits(String input) {
+        if(input.length() > 3) {
             return true;
         }
         return false;
