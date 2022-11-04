@@ -40,21 +40,19 @@ public class Application {
 
     private static HashMap<Integer, Integer> checkBallOrStrike(List<Integer> answerList,
                                                                List<Integer> userInputList) {
-        HashMap<Integer, Integer> comparedResult = new HashMap<>();
-        comparedResult.put(BALL, 0);
-        comparedResult.put(STRIKE, 0);
-        comparedResult.put(NOTHING, 1);
+        HashMap<Integer, Integer> comparedMap = new HashMap<>();
+        comparedMap.put(BALL, 0);
+        comparedMap.put(STRIKE, 0);
+        comparedMap.put(NOTHING, 1);
         for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
-            if (answerList.contains(userInputList.get(comparingNum))) {
-                comparedResult.put(NOTHING, 0);
-                if (isStrike(answerList.get(comparingNum), userInputList.get(comparingNum))) {
-                    addOneToMap(comparedResult,STRIKE);
-                } else {
-                    addOneToMap(comparedResult,BALL);
-                }
+            int answer = answerList.get(comparingNum);
+            int input = userInputList.get(comparingNum);
+            if (answerList.contains(input)) {
+                comparedMap.put(NOTHING, 0);
+                comparedMap = ballOrStrike(comparedMap, answer, input);
             }
         }
-        return comparedResult;
+        return comparedMap;
     }
 
     private static boolean isStrike(int answer, int input) {
@@ -64,33 +62,44 @@ public class Application {
             return false;
         }
     }
-    
-    private static HashMap<Integer, Integer> addOneToMap(HashMap<Integer, Integer> map, int key){
+
+    private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap, int answer, int input) {
+        comparedMap.put(NOTHING, 0);
+        if (isStrike(answer, input)) {
+            addOneToMap(comparedMap, STRIKE);
+        } else {
+            addOneToMap(comparedMap, BALL);
+        }
+
+        return comparedMap;
+    }
+
+    private static HashMap<Integer, Integer> addOneToMap(HashMap<Integer, Integer> map, int key) {
         int oldNumber = map.get(key);
-        map.put(key, oldNumber+1);
+        map.put(key, oldNumber + 1);
         return map;
     }
 
-    private static boolean correctAnswer(HashMap<Integer, Integer> comparedResult) {
+    private static boolean correctAnswer(HashMap<Integer, Integer> comparedMap) {
         boolean correct;
-        if (comparedResult.get(STRIKE) == 3) {
+        if (comparedMap.get(STRIKE) == 3) {
             correct = true;
         } else correct = false;
         return correct;
     }
 
-    private static void printResult(HashMap<Integer, Integer> comparedResult) {
-        int balls = comparedResult.get(BALL);
-        int strikes = comparedResult.get(STRIKE);
-        int nothing = comparedResult.get(NOTHING);
+    private static void printResult(HashMap<Integer, Integer> comparedMap) {
+        int balls = comparedMap.get(BALL);
+        int strikes = comparedMap.get(STRIKE);
+        int nothing = comparedMap.get(NOTHING);
 
-        if (comparedResult.get(NOTHING) != 0) {
+        if (comparedMap.get(NOTHING) != 0) {
             System.out.printf("낫싱");
         }
-        if (comparedResult.get(BALL) != 0) {
+        if (comparedMap.get(BALL) != 0) {
             System.out.printf("%d볼 ", balls);
         }
-        if (comparedResult.get(STRIKE) != 0) {
+        if (comparedMap.get(STRIKE) != 0) {
             System.out.printf("%d스트라이크", strikes);
         }
         System.out.printf("\n");
@@ -104,13 +113,13 @@ public class Application {
         while (gameOn) {
             int userInput = sc.nextInt();
             List<Integer> separatedInput = seperate3Numbers(userInput);
-            HashMap<Integer, Integer> comparedResult = checkBallOrStrike(answer, separatedInput);
-            if (correctAnswer(comparedResult)) {
+            HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
+            if (correctAnswer(comparedMap)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             } else {
-                printResult(comparedResult);
+                printResult(comparedMap);
             }
-            gameOn = !correctAnswer(comparedResult);
+            gameOn = !correctAnswer(comparedMap);
         }
     }
 }
