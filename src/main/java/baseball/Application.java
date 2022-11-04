@@ -7,6 +7,13 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    public static void computerRandomNumber(List<String> answerNumber){
+        Random computerRandonNuber = new Random();
+        for(int i=1; i<4; i++){
+            String randomNumber = String.valueOf(computerRandonNuber.nextInt(9));
+            answerNumber.add(randomNumber);
+        }
+    }
 
     public void gameStartMessage (){
         Console console = System.console();
