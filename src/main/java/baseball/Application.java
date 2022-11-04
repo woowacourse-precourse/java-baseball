@@ -12,6 +12,41 @@ public class Application {
 
     }
 
+    /**
+     * Return list of ball and strike count.
+     * First element of the list (index 0) is ball count and second one (index 1) is strike count.
+     *
+     * @param guess list of numbers to be evaluated.
+     * @param answer answer number list of the 369 game.
+     * @return list of ball and strike count in this order.
+     */
+    public static List<Integer> evaluateGuess (List<Integer> guess, List<Integer> answer) {
+        int ballCount = countBall(guess, answer);
+        int strikeCount = countStrike(guess, answer);
+        return Arrays.asList(ballCount, strikeCount);
+    }
+
+    public static int countBall (List<Integer> guess, List<Integer> answer) {
+        int countOfCommonNumbers = countCommonNumber(guess, answer);
+        int countOfNumbersInSamePosition = countNumbersInSamePosition(guess, answer);
+        return countOfCommonNumbers - countOfNumbersInSamePosition;
+    }
+
+    public static int countStrike (List<Integer> guess, List<Integer> answer) {
+        return countNumbersInSamePosition(guess, answer);
+    }
+
+    public static int countCommonNumber (List<Integer> guess, List<Integer> answer) {
+        return (int) guess.stream().filter(answer::contains).count();
+
+    }
+
+    public static int countNumbersInSamePosition (List<Integer> guess, List<Integer> answer) {
+        return (int) IntStream.range(0, 3)
+                .filter(i -> Objects.equals(guess.get(i), answer.get(i)))
+                .count();
+    }
+
     public static boolean isValidNumbersForGame (String input) {
         if (!isOnlyNumbers(input)) {
             return false;
