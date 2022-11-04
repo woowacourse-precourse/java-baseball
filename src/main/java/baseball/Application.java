@@ -45,7 +45,8 @@ public class Application {
     }
     
     public static void randomComNum(List<Integer> computer) { //randomnumber 서로 다른 3자리수를 컴퓨터가 생성.
-		while(computer.size()<3) {
+		computer.clear();
+    	while(computer.size()<3) {
 			int randomNumber = Randoms.pickNumberInRange(1,9);
 			if(!computer.contains(randomNumber)) {
 				computer.add(randomNumber);
