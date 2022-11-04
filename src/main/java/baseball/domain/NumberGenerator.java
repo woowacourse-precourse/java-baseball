@@ -11,7 +11,6 @@ public class NumberGenerator {
     private static final int END = 9;
 
     public List<Integer> createRandomNumbers() {
-
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < DIGIT_NUM) {

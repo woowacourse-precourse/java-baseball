@@ -9,7 +9,7 @@ public class Referee {
 
         int strike = 0;
         for (int i = 0; i < player.size(); i++) {
-            Integer integer = player.get(i);
+            int integer = player.get(i);
             if (computer.get(i) == integer) {
                 strike++;
             }

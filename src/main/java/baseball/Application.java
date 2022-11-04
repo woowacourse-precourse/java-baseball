@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constants.ExceptionMessage;
 import baseball.domain.NumberComparison;
 import baseball.domain.NumberGenerator;
 import baseball.domain.Player;
@@ -41,7 +42,7 @@ public class Application {
         String reStart = Console.readLine();
         int checkResult = Integer.parseInt(reStart);
         if (!(checkResult > 0 && checkResult <= 2)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
         }
         return checkResult;
     }

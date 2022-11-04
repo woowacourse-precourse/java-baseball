@@ -42,7 +42,6 @@ public class Player {
         if (!(readLine.matches(regularExpression))) {
             throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
         }
-
         return readLine;
     }
 }
