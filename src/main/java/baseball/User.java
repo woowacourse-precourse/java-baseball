@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.RuleConst.*;
 
@@ -25,6 +27,8 @@ public class User {
     }
 
     public void getUsersNumber() {
+        this.numbers = new ArrayList<>(List.of(0, 0, 0));
+
         System.out.println("숫자를 입력해주세요 : ");
 
         String number = Console.readLine();
