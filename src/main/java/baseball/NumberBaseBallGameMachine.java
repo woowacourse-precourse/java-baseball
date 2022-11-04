@@ -1,5 +1,9 @@
 package baseball;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseBallGameMachine {
@@ -16,5 +20,26 @@ public class NumberBaseBallGameMachine {
 
     public void makeNewAnswer() {
         referee.setAnswer(numberMaker.makeThreeDifferentNumberListInRange(1, 9));
+    }
+
+    public List<Integer> getThreeNumberInput() {
+        String trimmedInput = getInputLine().strip();
+        validateThreeNumbers(trimmedInput);
+        return trimmedInput.chars().mapToObj(o -> Character.getNumericValue((char) o)).collect(Collectors.toList());
+    }
+
+    public void validateThreeNumbers(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("공백없이 연속된 3개의 숫자를 입력해야 합니다.");
+        }
+        Set<Character> charSet = input.chars().mapToObj(o -> (char) o).collect(Collectors.toSet());
+        if (charSet.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야 합니다.");
+        }
+        charSet.forEach(o -> {
+            if (!Character.isDigit(o)) {
+                throw new IllegalArgumentException("숫자가 아닌 입력값이 존재합니다.");
+            }
+        });
     }
 }
