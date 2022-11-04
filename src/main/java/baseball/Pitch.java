@@ -10,7 +10,7 @@ import java.util.List;
 public class Pitch {
 
     public static List<Integer> userAnswer = new ArrayList<>();
-    protected String[] inputArray;
+    protected String[] userInput;
     public boolean boolCorrectAnswer;
 
     IllegalArgument illegalArgument = new IllegalArgument();
@@ -25,15 +25,15 @@ public class Pitch {
     }
 
     private void setUserAnswer() {
-        illegalArgument.check(inputArrays());
-        for (String input : inputArray) {
+        illegalArgument.check(getInputFromUser(), Game.answerLength);
+        for (String input : userInput) {
             userAnswer.add(Integer.parseInt(input));
         }
     }
 
-    private String[] inputArrays() {
-        inputArray = Console.readLine().split("");
-        return inputArray;
+    private String[] getInputFromUser() {
+        userInput = Console.readLine().split("");
+        return userInput;
     }
 
     public boolean checkCorrect(String hint) {

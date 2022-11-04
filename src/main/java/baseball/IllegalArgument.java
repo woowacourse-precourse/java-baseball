@@ -11,11 +11,11 @@ public class IllegalArgument {
 
     protected List<Integer> userAnswer;
 
-    public void check(String[] inputArray) {
+    public void check(String[] inputArray, int argumentLength) {
         isNumber(inputArray);
-        isAnswerLength();
-        isAllUnique();
+        isAnswerLength(argumentLength);
         isNotContainZero();
+        isAllUnique();
     }
 
 
@@ -32,8 +32,14 @@ public class IllegalArgument {
         userAnswer = inputNumber;
     }
 
-    private void isAnswerLength() {
-        if (userAnswer.size() != Game.answerLength) {
+    private void isAnswerLength(int argumentLength) {
+        if (userAnswer.size() != argumentLength) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isNotContainZero() {
+        if (userAnswer.contains(0)) {
             throw new IllegalArgumentException();
         }
     }
@@ -45,10 +51,6 @@ public class IllegalArgument {
         }
     }
 
-    private void isNotContainZero() {
-        if (userAnswer.contains(0)) {
-            throw new IllegalArgumentException();
-        }
-    }
+
 
 }
