@@ -17,4 +17,35 @@ public class Computer {
             }
         }
     }
+
+    public int checkStrike(List<Integer> question) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (question.get(i) == baseballNumber.get(i)) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
+    public int checkBall(List<Integer> question, int strike) {
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (baseballNumber.contains(question.get(i)) == true) {
+                ball++;
+            }
+        }
+
+        return ball - strike;
+    }
+
+    public boolean checkNothing(List<Integer> question) {
+        for (int i = 0; i < 3; i++) {
+            if (baseballNumber.contains(question.get(i)) == true) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
