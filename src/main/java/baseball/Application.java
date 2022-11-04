@@ -21,22 +21,20 @@ public class Application {
 
     private static void baseballGame() {
         List<Integer> computer = getComputerNumber();
+        List<Integer> user = new ArrayList<>();
+        int[] result = new int[2];
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         for (int i = 0; i < 3; i++) {
             System.out.print(computer.get(i) + " ");
         }
         System.out.println();
+
         while (true) {
-            ArrayList<Integer> user = new ArrayList<>();
-            System.out.print("숫자를 입력해주세요 : ");
-            String[] userNumber = Console.readLine().split("");
-            for (String str : userNumber) {
-                user.add(Integer.parseInt(str));
-            }
+            user = getUserNumber();
             // 값을 제공하면 해당 값의 첫번 째 인덱스를 반환
             // indexof 해서 i 랑 같으면 스트라이크고, -1이면 x i 랑 다르면 볼
-            int[] result = new int[2];
+
             for (int i = 0; i < computer.size(); i++) {
                 int idxOf = computer.indexOf(user.get(i));
                 System.out.println("idxOf = : " + idxOf);
@@ -67,11 +65,41 @@ public class Application {
         }
     }
 
-    // 컴퓨터 숫자 입력받는 메소드
+    // 사용자 숫자 입력받는 메소드
+    private static List<Integer> getUserNumber() {
+        List<Integer> user = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        addInputNumber(user, getSplit());
+        return user;
+    }
+
+    // 입력받은 숫자를 분리하여 배열에 저장하는 메소드
+    private static String[] getSplit() {
+        return Console.readLine().split("");
+    }
+
+    // 분리하여 배열에 저장된 문자들을 숫자로 변환하는 메소드
+    private static int[] toInts(String[] userNumber) {
+        int[] numbers = new int[userNumber.length];
+        for (int i = 0; i < userNumber.length; i++) {
+            numbers[i] = Integer.parseInt(userNumber[i]);
+        }
+        return numbers;
+    }
+
+    // 사용자의 숫자를 추가하는 메소드
+    private static void addInputNumber(List<Integer> user, String[] userNumber) {
+        int[] numbers = toInts(userNumber);
+        for (Integer num : numbers) {
+            user.add(num);
+        }
+    }
+
+    // 컴퓨터 숫자 부여받는 메소드
     private static List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (isSize(computer)) {
-            getRandomNumber(computer, Randoms.pickNumberInRange(1, 9));
+            addRandomNumber(computer, Randoms.pickNumberInRange(1, 9));
         }
         return computer;
     }
@@ -81,8 +109,8 @@ public class Application {
         return computer.size() < 3;
     }
 
-    // 컴퓨터의 숫자를 랜덤으로 부여하는 메소드
-    private static void getRandomNumber(List<Integer> computer, int randomNumber) {
+    // 컴퓨터의 숫자를 랜덤으로 추가하는 메소드
+    private static void addRandomNumber(List<Integer> computer, int randomNumber) {
         if (isContains(computer, randomNumber)) {
             computer.add(randomNumber);
         }
