@@ -1,5 +1,7 @@
 package study;
 
+import Service.GameService;
+import domain.Game;
 import domain.RandomNumber;
 import domain.UserNumber;
 import domain.UserValidate;
@@ -41,7 +43,7 @@ public class NumberTest {
     }
 
     @Test
-    public void 중복숫자검사() throws Exception{
+    public void 랜덤숫자중복숫자검사() throws Exception{
         //given
         RandomNumber computer = new RandomNumber();
         computer.setRandomNumber();
@@ -56,7 +58,7 @@ public class NumberTest {
     }
 
     @Test
-    public void 입력값사이즈확인() throws Exception{
+    public void 유저입력값사이즈확인() throws Exception{
         //given
         UserValidate userValidate = new UserValidate();
         String test1 = "1234";
@@ -67,7 +69,7 @@ public class NumberTest {
     }
 
     @Test
-    public void 입력값숫자만인지확인() throws Exception{
+    public void 유저입력값숫자만인지확인() throws Exception{
         //given
         String test1 = "123";
         String test2 = "1a3";
@@ -82,4 +84,5 @@ public class NumberTest {
         assertEquals(false, t2);
         assertThrows(IllegalArgumentException.class, () -> userValidate.check_Integer(test2));
     }
+
 }
