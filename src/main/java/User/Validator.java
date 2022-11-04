@@ -11,6 +11,12 @@ public class Validator {
 		haveInvalidLength(numberInput);
 	}
 
+	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException{
+		if (Integer.parseInt(input) != RESTART_GAME && Integer.parseInt(input) != END_GAME) {
+			throw new IllegalArgumentException();
+		}
+	}
+
 	private static void existDuplicateNumber(String numberInput) throws IllegalArgumentException {
 		if (Arrays.stream(numberInput.split("")).distinct().count() != numberInput.length()) {
 			throw new IllegalArgumentException();
