@@ -7,11 +7,6 @@ public class Counter {
     private int strikeCount;
     private int ballCount;
 
-    public Counter() {
-        strikeCount = 0;
-        ballCount = 0;
-    }
-
     public int getStrikeCount() {
         return strikeCount;
     }
