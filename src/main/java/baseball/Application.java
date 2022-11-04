@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 public class Application {
     public static final String STRIKE = "strike";
     public static final String BALL = "ball";
+    public static final String RE_START = "1";
+    public static final String END = "2";
 
     public static void main(String[] args) {
 
@@ -29,6 +31,11 @@ public class Application {
     }
     public static boolean isClearGame(Integer strikeCount) {
         return strikeCount != 3;
+    }
+    public static void validateFlag(String flag) {
+        if(!flag.equals(END) && !flag.equals(RE_START)){
+            throw new IllegalArgumentException("1 or 2만 입력할 수 있습니다.");
+        }
     }
     public static List<Integer> createBaseballNumberList() {
         List<Integer> numberList = new ArrayList<>();
