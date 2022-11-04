@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,5 +40,13 @@ class EndOrReTest {
     String result = "2";
     endOrRe.printInputString(result);
     assertEquals("2", outContent.toString().trim());
+  }
+
+  @Test
+  void 입력된_값이_1과_2가_아닐_경우() {
+    String result = "3";
+    Assertions.assertThatThrownBy(() -> {
+      endOrRe.printInputString(result);
+    }).isInstanceOf(IllegalArgumentException.class);
   }
 }
