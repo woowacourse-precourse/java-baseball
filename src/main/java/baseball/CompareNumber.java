@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class CompareNumber {
-    public Ball compare(List<Integer> computer, List<Integer> input) {
+    public static Ball compare(List<Integer> computer, List<Integer> input) {
         Ball ball = new Ball();
         ball.setBall(0);
         ball.setStrike(0);
@@ -20,11 +20,11 @@ public class CompareNumber {
         return ball;
     }
 
-    private boolean isBall(List<Integer> computer, int i, int num) {
+    private static boolean isBall(List<Integer> computer, int i, int num) {
         return computer.contains(num) && computer.get(i) != num;
     }
 
-    private boolean isStrike(List<Integer> computer, int i, int num) {
+    private static boolean isStrike(List<Integer> computer, int i, int num) {
         return computer.contains(num) && computer.get(i) == num;
     }
 }

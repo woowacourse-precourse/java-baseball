@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class InputNumber {
-    public List<Integer> input() {
+    public static List<Integer> input() {
         System.out.println("숫자를 입력해주세요 : ");
 
         return parseInput(Console.readLine());
     }
 
-    private List<Integer> parseInput(String read) {
+    private static List<Integer> parseInput(String read) {
         List<Integer> result = new ArrayList<>();
 
         if (read.length() != 3) {
@@ -30,7 +30,7 @@ public class InputNumber {
         return result;
     }
 
-    private int parseInt(String num) {
+    private static int parseInt(String num) {
         try {
             return Integer.parseInt(num);
         }
