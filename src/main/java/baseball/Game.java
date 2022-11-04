@@ -16,7 +16,7 @@ public class Game {
 
         while (score.get(STRIKE) != 3) {
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
-            if (!isValidLength(userInput) || !isExistOnlyNumber(userInput)) {
+            if (!isValidLength(userInput, 3) || !isExistOnlyNumber(userInput)) {
                 throw new IllegalArgumentException();
             }
 

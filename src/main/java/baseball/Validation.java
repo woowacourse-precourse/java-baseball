@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Validation {
-    public static boolean isValidLength(List<String> userInput) {
-        return userInput.size() == 3;
+    public static boolean isValidLength(List<String> userInput, int length) {
+        return userInput.size() == length;
     }
 
     public static boolean isExistOnlyNumber(List<String> userInput) {
