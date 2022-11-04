@@ -41,4 +41,12 @@ public class GameService {
         return controller.printReGameAndInput();
     }
 
+    public boolean forTest_askReGame() {
+        boolean b = askReGame();
+        return b;
+    }
+
+    public void forTest_repeatRound() {
+        repeatRound();
+    }
 }
