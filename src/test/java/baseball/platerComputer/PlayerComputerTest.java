@@ -27,5 +27,4 @@ public class PlayerComputerTest {
 		assertThat(input.charAt(0)).isNotSameAs(input.charAt(2));
 		assertThat(input.charAt(1)).isNotSameAs(input.charAt(2));
 	}
-
 }
