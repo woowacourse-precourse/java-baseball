@@ -11,11 +11,9 @@ public class Application {
         PrintComment.printStartComment();
         Game game = new Game();
         do {
-            PrintComment.printInputComment();
-            String userInput = Console.readLine();
-            GameState gameState = game.compareNumbers(userInput);
-            PrintComment.printUserInput(userInput);
-            PrintComment.printGameState(gameState);
+            game.start();
+            GameState gameState = new GameState(); // refactoring 중 임시 객체
+            String userInput; // refactoring 중 임시 변수
             if (gameState.getStrike()!=ANSWER_COUNT) {
                 continue;
             }
