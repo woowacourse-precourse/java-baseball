@@ -27,6 +27,7 @@ public class Inputting {
 
     public static String inputEnd() {
         String inputString = Console.readLine();
+
         if ("1".equals(inputString) || "2".equals(inputString)) {
             return inputString;
         } else {

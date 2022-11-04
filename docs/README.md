@@ -1,7 +1,8 @@
 구현 기능 목록
 
-## Applicaiton 클래스
- - BaseballGame 객체 실행
+## Application 클래스
+ - BaseballGame 한 게임 만들기
+ - 생성하기만 하면 하나의 게임이 실행되도록 만들기
 
 ## BaseballGame 클래스
     strike, ball, status(게임진행상태), correctNum(맞혀야 하는 숫자) 필드 정의
@@ -30,6 +31,18 @@
 #### BaseballCalculator 클래스
     strike 개수 연산 후 반환
     ball 개수 연산 후 반환
+
+## domain 패키지
+
+#### Ball 클래스
+    Ball이라는 가상 물체를 대변하는 클래스 정의
+    Ball이 가지고 있는 속성(ball)에 대한 +1 정의
+    Ball이 가지고 있는 속성 초기화 메소드 정의
+
+#### Strike 클래스
+    Strike이라는 가상 물체를 대변하는 클래스 정의
+    Strike이 가지고 있는 속성(strike)에 대한 +1 정의
+    Strike이 가지고 있는 속성 초기화 메소드 정의
 
 - - -
 

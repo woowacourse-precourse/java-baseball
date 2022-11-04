@@ -1,8 +1,8 @@
 package baseball.inputoutput;
 
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 
 
 public class Outputting {
@@ -17,10 +17,7 @@ public class Outputting {
         bw.close();
     }
 
-    //===============writing===============
-
     public static void writeCase(int strike, int ball) throws IOException {
-
         if (ball > 0) {
             bw.write(String.format("%d볼 ", ball));
         }
@@ -33,8 +30,6 @@ public class Outputting {
             bw.write("낫싱");
         }
     }
-
-    //================printing====================
 
     public static void printLine() throws IOException {
         bw.append("\n").flush();
