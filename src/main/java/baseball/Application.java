@@ -13,12 +13,26 @@ public class Application {
             Arrays.fill(isBall, false);
 
             String computerNumber = setComputerNumber();
-            String playerNumber = Console.readLine();
-
             setIsBall(isBall, computerNumber);
+
+            String playerNumber = Console.readLine();
 
             if(checkPlayerNumber(playerNumber)){
                 throw new IllegalArgumentException();
+            }
+
+            int ballCount = 0;
+            int strikeCount = 0;
+            for (int i = 0; i < computerNumber.length(); i++) {
+                char computerNum = computerNumber.charAt(i);
+                char playerNum = playerNumber.charAt(i);
+
+                if (isBall[computerNum - '0']) {
+                    ballCount++;
+                }
+                if (computerNum == playerNum) {
+                    strikeCount++;
+                }
             }
 
         } catch (IllegalArgumentException exception) {
