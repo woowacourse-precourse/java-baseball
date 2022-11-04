@@ -35,4 +35,13 @@ public class NumbersTest {
             .hasMessageContaining("서로 다른 숫자를 입력해주세요.");
     }
 
+    @Test
+    void validate_메서드_사용시_1에서_9사이의_숫자가_아닐경우_예외발생() {
+        Numbers numbers = new Numbers(Arrays.asList(0, 1, 2));
+
+        assertThatThrownBy(numbers::validate)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("잘못된 입력입니다. 1~9 범위의 숫자만 입력해주세요.");
+    }
+
 }
