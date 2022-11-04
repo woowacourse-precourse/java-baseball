@@ -19,5 +19,20 @@ public class Game {
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        List<Integer> user = new ArrayList<>();
+        try {
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("세자리 수를 입력해주세요");
+            }
+            for (String number : input.split("")) {
+                int ball = Integer.parseInt(number);
+                if (user.contains(ball)) {
+                    throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
+                }
+                user.add(ball);
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 }
