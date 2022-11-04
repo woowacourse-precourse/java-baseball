@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         final int NUMBER_LENGTH = 3;
-        System.out.println("숫자 야구 게임을 시작합니다.");
         String loopChecker = "1";
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         Baseball baseball = new Baseball(NUMBER_LENGTH);
 
         while (loopChecker.equals("1")) {
