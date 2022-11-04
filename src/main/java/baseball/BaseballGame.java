@@ -30,9 +30,11 @@ class BaseballGame {
             }
         }
     }
+
     private void initPlayer() {
         player = new ArrayList<>(Arrays.asList(0, 0, 0));
     }
+
     private void initGame() {
         initComputer();
         initPlayer();
@@ -57,6 +59,7 @@ class BaseballGame {
         result.put(NOTHING, nothing);
         return result;
     }
+
     private boolean userContinueGame() {
         boolean continueGame;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -71,6 +74,7 @@ class BaseballGame {
         }
         return continueGame;
     }
+
     private boolean checkThreeStrike() {
         boolean threeStrike = false;
         List<String> resultForPlayer = new ArrayList<>();
@@ -92,6 +96,7 @@ class BaseballGame {
         System.out.println(String.join(" ", resultForPlayer));
         return threeStrike;
     }
+
     private boolean analyzeResult() {
         boolean continueGame;
         if (checkThreeStrike()) {
@@ -112,14 +117,16 @@ class BaseballGame {
     private boolean checkIsBall(int index, int current) {
         return stepResult.get(index) != STRIKE && computer.contains(current);
     }
-    private boolean checkIsStrike(int index, int current){
+
+    private boolean checkIsStrike(int index, int current) {
         return computer.get(index) == current;
     }
+
     private void doHitLogic() {
         for (int i = 0; i < 3; i++) {
             int currentUserNumber = player.get(i);
 
-            if (checkIsStrike(i,currentUserNumber)) {
+            if (checkIsStrike(i, currentUserNumber)) {
                 stepResult.set(i, STRIKE);
             }
             if (checkIsBall(i, currentUserNumber)) {
@@ -134,15 +141,18 @@ class BaseballGame {
             player.set(i, Integer.parseInt(String.valueOf(number.charAt(i))));
         }
     }
+
     private void initPlayerInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String number= Console.readLine();
+        String number = Console.readLine();
         validate(number);
         setUserNumber(number);
     }
-    private void initStepResult(){
+
+    private void initStepResult() {
         stepResult = new ArrayList<>(Arrays.asList(NOTHING, NOTHING, NOTHING));
     }
+
     private void initStep() {
         initPlayerInput();
         initStepResult();
