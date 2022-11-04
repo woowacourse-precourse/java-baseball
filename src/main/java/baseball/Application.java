@@ -82,4 +82,13 @@ public class Application {
         return set.size() == 3;
     }
 
+    public static List<Integer> changeStringToList(String number){
+        List<Integer> result = new ArrayList<>();
+        char[] arr = number.toCharArray();
+        for(int i=0;i<arr.length;i++){
+            result.add(arr[i]-'0');
+        }
+        return result;
+    }
+
 }
