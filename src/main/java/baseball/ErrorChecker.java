@@ -50,4 +50,16 @@ public class ErrorChecker {
         }
         return false;
     }
+
+    private boolean containIllegalInput(String input) {
+        for (int index = 0; index < input.length(); index++) {
+            char digit = input.charAt(index);
+            int number = Character.getNumericValue(digit);
+
+            if (!(number >= startInclusive && number <= endInclusive)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
