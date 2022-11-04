@@ -23,10 +23,7 @@ public class BaseballGame {
 
     public void start() {
         Input.startGameMessage();
-        List<Integer> answer = RandomGenerator
-                .makeNotDuplicatedRandomNumbers(NUMBER_CNT,MIN_RANGE,MAX_RANGE);
-        System.out.println("(임시) answer is "+ answer);
-        computer.putAnswer(answer);
+        computer.putAnswer();
         while (true) {
             List<Integer> results = checkResultOfEnteredValue();
             if(isThreeStrike(results)) {

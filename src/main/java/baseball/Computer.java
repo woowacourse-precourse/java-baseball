@@ -1,15 +1,19 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import static baseball.Constant.NUMBER_CNT;
+import static baseball.Constant.*;
 
 public class Computer {
     private List<Integer> answer; //answer 3개로 구성되어있는건 검증 못할까>?
     
-    public void putAnswer(List<Integer> numbers) {
+    public void putAnswer() {
+        List<Integer> numbers = makeAnswer();
         if(numbers.size() != NUMBER_CNT) {
             throw new IllegalArgumentException("입력값의 크기는 3개여야 합니다");
         }
@@ -21,12 +25,13 @@ public class Computer {
         if (resultRangeValidated != NUMBER_CNT) {
             throw new IllegalArgumentException("1이상 9이하의 숫자만 들어갈 수 있습니다");
         }
-        answer = new ArrayList<>();
-        answer.add(numbers.get(0));
-        answer.add(numbers.get(1));
-        answer.add(numbers.get(2));
+        answer = numbers;
+        System.out.println("(임시) 숫자야구의 정답 : " + answer);
     }
 
+    protected List<Integer> makeAnswer() {
+        return RandomGenerator.makeNotDuplicatedRandomNumbers(NUMBER_CNT, MIN_RANGE, MAX_RANGE);
+    }
 
     public List<Integer> returnResult(List<Integer> guessNumbers) { // 반환타입 List가 맞을까, []가 맞을까
         List<Integer> result = new ArrayList<>();
@@ -55,4 +60,5 @@ public class Computer {
         result.add(ballCnt);
         return result;
     }
+
 }

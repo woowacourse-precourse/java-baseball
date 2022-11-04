@@ -26,40 +26,61 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("정상이면 오류를 일으키지 않는다")
             void 입력_정상() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
             }
 
             @Test
             @DisplayName("세 개가 아니면 오류를 반환한다")
             void 입력_세개_아님_오류() {
-                Computer computer = new Computer();
-                assertThatThrownBy(() -> computer.putAnswer(List.of(1, 9)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1);
+                    }
+                };
+                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("중복되면 오류를 반환한다")
             void 입력_중복_오류() {
-                Computer computer = new Computer();
-                assertThatThrownBy(() -> computer.putAnswer(List.of(1, 8, 8)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(1, 8, 8);
+                    }
+                };
+                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("1보다 작은 수가 껴있으면 오류를 반환한다")
             void 입력_1보다_작은수_오류() {
-                Computer computer = new Computer();
-                assertThatThrownBy(() -> computer.putAnswer(List.of(0, 8, 8)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                Computer computer = new Computer() {
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(0, 8, 9);
+                    }
+                };
+                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("9보다 큰 수가 껴있으면 오류를 반환한다")
             void 입력_1보다_큰수_오류() {
-                Computer computer = new Computer();
-                assertThatThrownBy(() -> computer.putAnswer(List.of(1, 8, 10)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                Computer computer = new Computer() {
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(1, 8, 10);
+                    }
+                };
+                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
         }
 
@@ -69,89 +90,121 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("모두 동일하면 3스트라이크, 0볼을 반환한다")
             void 쓰리_스트라이크() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(3, 0));
             }
 
             @Test
             @DisplayName("2스트라이크, 0볼을 반환한다")
             void 투_스트라이크() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(0, 1, 4))).isEqualTo(List.of(2, 0));
             }
 
             @Test
             @DisplayName("1스트라이크, 2볼을 반환한다")
             void 원_스트라이크_투_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(4, 1, 9));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(4, 1, 9);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(1, 2));
             }
 
             @Test
             @DisplayName("1스트라이크, 1볼을 반환한다")
             void 원_스트라이크_원_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(4, 1, 5))).isEqualTo(List.of(1, 1));
             }
 
             @Test
             @DisplayName("1스트라이크, 0볼을 반환한다")
             void 원_스트라이크_0_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(3, 6, 4))).isEqualTo(List.of(1, 0));
             }
 
             @Test
             @DisplayName("0스트라이크, 1볼을 반환한다")
             void 영_스트라이크_원_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(4, 2, 3))).isEqualTo(List.of(0, 1));
             }
 
             @Test
             @DisplayName("0스트라이크, 2볼을 반환한다")
             void 영_스트라이크_투_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(4, 9, 3))).isEqualTo(List.of(0, 2));
             }
 
             @Test
             @DisplayName("0스트라이크, 3볼을 반환한다")
             void 영_스트라이크_쓰리_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(1, 4, 9))).isEqualTo(List.of(0, 3));
             }
 
             @Test
             @DisplayName("0스트라이크, 0볼을 반환한다")
             void 영_스트라이크_영_볼() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(9, 1, 4));
+                Computer computer = new Computer(){
+                    @Override
+                    protected List<Integer> makeAnswer() {
+                        return List.of(9, 1, 4);
+                    }
+                };
+                computer.putAnswer();
                 assertThat(computer.returnResult(List.of(7, 3, 8))).isEqualTo(List.of(0, 0));
             }
         }
-
-        @Nested
-        @DisplayName("재입력 -> ")
-        class ComputerReInput {
-            @Test
-            @DisplayName("다시 입력하면 기존 값이 초기화되고 새롭게 시작한다")
-            void 재입력_정상() {
-                Computer computer = new Computer();
-                computer.putAnswer(List.of(1, 2, 3));
-                computer.putAnswer(List.of(9, 1, 4));
-                assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(3, 0));
-            }
-        }
-
+        // 재입력 테스트..? 근데 이게 단위테스트가 맞나?
     }
 
     @Test
