@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 
 public class Application {
     public static void main(String[] args) {
@@ -54,9 +55,11 @@ public class Application {
         return answerNumberArrayList;
     }
 
-    private static LinkedHashMap<> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> answerNumber) {
+    private static ArrayList<ArrayList<Integer>> countStrikes(ArrayList<Integer> playerNumber, ArrayList<Integer> answerNumber) {
         int strikeCount = 0;
+        ArrayList<Integer> strikeCountArrayList = new ArrayList<>();
         ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> strikeResultArrayList = new ArrayList<>();
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
         for (int i=0; i<4; i++) {
@@ -66,5 +69,11 @@ public class Application {
                 wrongNumberIndexArrayList.add(i);
             }
         }
+
+        // 스트라이크의 수와 틀린 숫자 index를 ArrayList로 리턴한다.
+        strikeResultArrayList.add(strikeCountArrayList);
+        strikeResultArrayList.add(wrongNumberIndexArrayList);
+
+        return strikeResultArrayList;
     }
 }
