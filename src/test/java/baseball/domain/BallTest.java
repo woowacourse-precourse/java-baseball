@@ -25,4 +25,10 @@ class BallTest {
     void nothing() {
         assertThat(ONE_FIVE.compareOneBall(new Ball(2, 6))).isEqualTo(BallStatus.NOTHING);
     }
+    
+    @Test
+    @DisplayName("볼 번호가 같은지 확인")
+    void is_same_number() {
+        assertThat(ONE_FIVE.isSameNumber(new Ball(2, 5))).isTrue();
+    }
 }
