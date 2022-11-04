@@ -23,6 +23,10 @@ public class GameResult {
 		return gameResult.getOrDefault(singleResultType, 0);
 	}
 
+	public boolean isEndCondition() {
+		return countSingleResult(SingleResultType.STRIKE) == Constants.NUMBER_BASEBALL_LENGTH;
+	}
+
 	// FIXME : 복잡한 toString() 역할 분담 필요
 	@Override
 	public String toString() {

@@ -16,11 +16,13 @@ public class NumberBaseballController {
 
 	public void playBall() {
 		NumberBaseball computerNumber = getComputerNumberBaseball();
-		NumberBaseball userNumber = getUserInputPlayNumbers();
 
-		GameResult gameResult = numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
-
-		numberBaseballView.resultPage(gameResult);
+		GameResult gameResult;
+		do {
+			NumberBaseball userNumber = getUserInputPlayNumbers();
+			gameResult = numberBaseballService.compareNumberBaseBall(computerNumber, userNumber);
+			numberBaseballView.resultPage(gameResult);
+		} while (!gameResult.isEndCondition());
 	}
 
 	private NumberBaseball getComputerNumberBaseball() {
