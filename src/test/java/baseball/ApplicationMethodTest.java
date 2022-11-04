@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationMethodTest {
 
@@ -48,11 +46,11 @@ class ApplicationMethodTest {
             {add(3); add(4); add(5);}
         };
         List<Integer> userAnswer = new ArrayList<>(){
-            {add(3); add(4); add(5);}
+            {add(3); add(2); add(5);}
         };
         List<Integer> notStrikeZone = Application.checkWhereIsNotStrike(computerAnswer, userAnswer);
 
-        List<Boolean> realAnswer = new ArrayList<>(){};
+        List<Integer> realAnswer = new ArrayList<>(){{add(1);}};
         assertThat(notStrikeZone).isEqualTo(realAnswer);
     }
 
