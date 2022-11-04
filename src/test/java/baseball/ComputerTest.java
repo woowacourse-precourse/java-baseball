@@ -9,7 +9,8 @@ public class ComputerTest {
     @Test
     void 컴퓨터의_랜덤숫자_리스트의_크기는_3() {
         Computer computer = new Computer();
-        List<Integer> randomNumbers = computer.randomNumbers;
+        computer.inputRandomNumbers();
+        List<Integer> randomNumbers = computer.getRandomNumbers();
         Assertions.assertThat(3).isEqualTo(randomNumbers.size());
     }
 }
