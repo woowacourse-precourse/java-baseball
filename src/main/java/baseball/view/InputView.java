@@ -17,7 +17,9 @@ public class InputView {
     }
 
     public static String inputRestartOrEndNumber() {
-        return Console.readLine();
+        String inputRestartOrEndNumber = Console.readLine();
+        validateInputRestartOrEndNumber(inputRestartOrEndNumber);
+        return inputRestartOrEndNumber;
     }
 
     private static void validateInputNumber(String inputNumber) {
@@ -32,6 +34,12 @@ public class InputView {
         }
         if (isDuplicateInputNumber(inputNumber)) {
             throw new IllegalArgumentException("[ERROR] : 입력하는 수는 서로 다른 수여야합니다.");
+        }
+    }
+
+    private static void validateInputRestartOrEndNumber(String inputRestartOrEndNumber) {
+        if (isInputRestartOrEndNumberNotOneOrTwo(inputRestartOrEndNumber)) {
+            throw new IllegalArgumentException("[ERROR] : 재시작 또는 종료 Number는 1, 2입니다. 그 외는 입력할 수 없습니다.");
         }
     }
 
@@ -51,5 +59,9 @@ public class InputView {
         List<String> inputNumberEachDigitList = Arrays.asList(InputNumber.split(""));
         Set<String> inputNumberEachDigitSet = new HashSet<>(inputNumberEachDigitList);
         return inputNumberEachDigitSet.size() != 3;
+    }
+
+    private static boolean isInputRestartOrEndNumberNotOneOrTwo(String inputRestartOrEndNumber) {
+        return (!inputRestartOrEndNumber.equals("1") && !inputRestartOrEndNumber.equals("2"));
     }
 }
