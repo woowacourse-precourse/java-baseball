@@ -11,8 +11,38 @@ public class Application {
 
     }
 
-    static void compareNumber(){
+    static boolean compareNumber(List<Integer> computerNum, String myNum){
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0; i < myNum.length(); i++){
+            for(int j = 0; j < computerNum.size(); j++){
+                if(myNum.charAt(i) == computerNum.get(j) && i == j){
+                    strike +=1;
+                }
+                if(myNum.charAt(i) == computerNum.get(j) && i != j){
+                    ball+=1;
+                }
+            }
+        }
+        if(strike == 3){
+            System.out.println("3스트라이크");
+            return true;
+        }
+        if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+            return false;
+        }
+        if(strike == 0){
+            System.out.println(ball + "볼");
+            return false;
+        }
+        if(ball == 0){
+            System.out.println(strike + "스트라이크");
+            return false;
+        }
 
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+        return false;
     }
 
     static String pickMyNum(){
@@ -60,9 +90,11 @@ public class Application {
     }
 
     static void startGameState()throws IllegalArgumentException{
-        List<Integer> computerNum = pickComputerNum();
         try{
+            List<Integer> computerNum = pickComputerNum();
             String myNum = pickMyNum();
+            boolean isWin = compareNumber(computerNum, myNum);
+
         }
         catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
