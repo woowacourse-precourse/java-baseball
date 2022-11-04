@@ -36,5 +36,5 @@
 
 * ### Computer
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
-  * `generateComputersNumber`
+  * `generateNumber`
     * 상대방(컴퓨터)의 3자리 수 생성
