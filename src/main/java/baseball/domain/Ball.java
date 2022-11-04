@@ -24,7 +24,7 @@ public class Ball {
             return BallStatus.STRIKE;
         }
         
-        if (isBall(userBall)) {
+        if (isSameNumber(userBall)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
@@ -34,12 +34,8 @@ public class Ball {
         return this.equals(userBall);
     }
     
-    private boolean isBall(final Ball userBall) {
-        return this.ballNumber.equals(userBall.ballNumber);
-    }
-    
-    public boolean isSameNumber(final Ball targetBall) {
-        return this.ballNumber.equals(targetBall.ballNumber);
+    public boolean isSameNumber(final Ball otherBall) {
+        return this.ballNumber.equals(otherBall.ballNumber);
     }
     
     @Override
