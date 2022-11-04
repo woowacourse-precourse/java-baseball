@@ -1,11 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
     Computer computer = new Computer();
@@ -15,13 +15,13 @@ public class BaseballGame {
         Computer.GameResult result;
         do {
             System.out.print("숫자를 입력해주세요. : ");
-            List<Integer> userNumber = checkUserNumber(readLine());
+            List<Integer> userNumber = checkUserNumber(Console.readLine());
             result = computer.compare(userNumber);
             printResult(result);
         } while (nextTurn(result));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.valueOf(readLine());
+        return Integer.parseInt(Console.readLine());
     }
 
     public void printResult(Computer.GameResult result) {
