@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -10,6 +10,11 @@ public class Game {
 
     public Game() {
 
+    }
+
+    public List<Integer> getComputer() {
+        generateNum();
+        return computer;
     }
 
     private void generateNum() {
