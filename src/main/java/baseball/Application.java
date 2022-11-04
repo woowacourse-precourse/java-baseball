@@ -27,19 +27,35 @@ public class Application {
         }
         return randomNumber;
     }
-    public static boolean isEnterNumberExcept(String userEnterNumber) {
-        boolean isExcepted = false;
-        List<Integer> OneToNine = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    public static boolean enterNumberLengthExcept(String userEnterNumber) {
+        boolean isEnterNumberExcept = false;
         if (userEnterNumber.length() != 3) {
-            isExcepted = true;
-        } else if (userEnterNumber.charAt(0) == userEnterNumber.charAt(1) || userEnterNumber.charAt(1) == userEnterNumber.charAt(2)
-            || userEnterNumber.charAt(0) == userEnterNumber.charAt(2)) {
-            isExcepted = true;
+            isEnterNumberExcept = true;
         }
+        return isEnterNumberExcept;
+    }
+    public static boolean isEnterNumberRepeat(String userEnterNumber) {
+        boolean isEnterNumberExcept = false;
+        if (userEnterNumber.charAt(0) == userEnterNumber.charAt(1) || userEnterNumber.charAt(1) == userEnterNumber.charAt(2)
+                || userEnterNumber.charAt(0) == userEnterNumber.charAt(2)) {
+            isEnterNumberExcept = true;
+        }
+        return isEnterNumberExcept;
+    }
+    public static boolean hasEnterNumberNoNumber(String userEnterNumber) {
+        boolean isEnterNumberExcept = false;
+        List<Integer> OneToNine = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         for (int i = 0; i < 3; i++) {
             if (!OneToNine.contains(Character.getNumericValue(userEnterNumber.charAt(i)))) {
-                isExcepted = true;
+                isEnterNumberExcept = true;
             }
+        }
+        return isEnterNumberExcept;
+    }
+    public static boolean isEnterNumberExcept(String userEnterNumber) {
+        boolean isExcepted = false;
+        if (enterNumberLengthExcept(userEnterNumber) || isEnterNumberRepeat(userEnterNumber) || hasEnterNumberNoNumber(userEnterNumber)) {
+            isExcepted = true;
         }
         return isExcepted;
     }
