@@ -17,7 +17,7 @@ public class Computer {
         randomNumbers = new ArrayList<>();
     }
 
-    public void generateRandomNumbers() {
+    public void generateUniqueRandomNumbers() {
         randomNumbers.clear();
         while (randomNumbers.size() < RANDOM_NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);

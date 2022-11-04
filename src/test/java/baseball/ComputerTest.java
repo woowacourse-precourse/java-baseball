@@ -18,7 +18,7 @@ public class ComputerTest {
     @Test
     void 숫자_생성_테스트() {
         Computer computer = new Computer();
-        computer.generateRandomNumbers();
+        computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .isNotNull();
     }
@@ -26,7 +26,7 @@ public class ComputerTest {
     @Test
     void 숫자_길이_테스트() {
         Computer computer = new Computer();
-        computer.generateRandomNumbers();
+        computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .isNotEmpty()
                 .size()
@@ -36,7 +36,7 @@ public class ComputerTest {
     @Test
     void 숫자_중복_확인_테스트() {
         Computer computer = new Computer();
-        computer.generateRandomNumbers();
+        computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .doesNotHaveDuplicates();
     }
@@ -44,7 +44,7 @@ public class ComputerTest {
     @Test
     void 숫자_범위_테스트() {
         Computer computer = new Computer();
-        computer.generateRandomNumbers();
+        computer.generateUniqueRandomNumbers();
         List<Integer> randomNumbers = computer.getRandomNumbers();
         for (Integer randomNumber : randomNumbers) {
             assertThat(randomNumber)
