@@ -1,4 +1,5 @@
 package baseball;
+import baseball.view.ScoreResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ public class ScoreResultViewTest {
 
     @BeforeEach
     void initializeClass(){
-        ScoreResultView = new ScoreResult();
+        scoreResultView = new ScoreResultView();
     }
 
     @Test
