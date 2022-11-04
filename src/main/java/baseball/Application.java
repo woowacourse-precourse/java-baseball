@@ -10,8 +10,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        List<Integer> computer = new ArrayList<>();
-        computer = createComputerNumber();
+        List<Integer> computer = createComputerNumber();
 
         String userNumberString = Console.readLine();
         String[] userNumberStringList = userNumberString.split("");
@@ -21,7 +20,7 @@ public class Application {
         }
 
         List<Integer> user = listToArrayList(userNumberStringList);
-
+        
     }
 
     public static List<Integer> createComputerNumber() {
@@ -89,6 +88,10 @@ public class Application {
         }
 
         return false;
+    }
+
+    public static boolean checkThreeStrike(List<Integer> computer, List<Integer> user) {
+        return computer.equals(user);
     }
 
 }
