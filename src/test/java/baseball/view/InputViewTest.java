@@ -38,4 +38,14 @@ public class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] : 입력하는 수는 숫자여야합니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"102", "012", "910"})
+    void 사용자가_입력한_수_입력_받기_0이_포함될_경우_예외_처리(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputNumber)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] : 입력하는 수는 0이 포함될 수 없습니다. 1~9까지의 수를 입력해주세요.");
+    }
 }
