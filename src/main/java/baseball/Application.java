@@ -8,7 +8,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        
+        //프로그램 종료 의사를 확인하는 변수
+        int endTheProcess =0; 
+        
         // TODO : 1. 숫자 야구 게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -22,41 +25,69 @@ public class Application {
             }
         }
 
-        // TODO : 3. 사용자가 도전할 숫자를 입력
-        System.out.print("숫자를 입력해주세요 : ");
-        String guessingNumberString = Console.readLine();
+        // TODO : 5. 답을 맞추지 못하면 3. 다시 실행, 아니면 반복 멈춤
 
-        // TODO : 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
-        int strike=0;
-        int ball=0;
+        // 사용자가 맞출 때 까지의 무한 반복
+        while (true){
 
-        char[] guessingNumberArray = guessingNumberString.toCharArray();
+            // TODO : 3. 사용자가 도전할 숫자를 입력
+            System.out.print("숫자를 입력해주세요 : ");
 
-        int indexOfFindingNumber = 0;
-        for (Character findingNumber : guessingNumberArray){
-            //strike, ball 인지 판단하는 함수
-            String checkResult = checkIfStrikeOrBall(computer, findingNumber.toString(), indexOfFindingNumber);
-            indexOfFindingNumber++;
-            if (checkResult.equals("strike")){
-                strike++;
+            //사용자가 입력하는 숫자에 대한 문자열
+            String guessingNumberString;
+
+            try{
+                guessingNumberString = Console.readLine();
             }
-            else if (checkResult.equals("ball")){
-                ball++;
+            catch(IllegalArgumentException e){
+                endTheProcess=1;
+                break;
+            }
+
+
+            // TODO : 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
+            int strike=0;
+            int ball=0;
+
+            char[] guessingNumberArray = guessingNumberString.toCharArray();
+
+            int indexOfFindingNumber = 0;
+            for (Character findingNumber : guessingNumberArray){
+                //strike, ball 인지 판단하는 함수
+                String checkResult = checkIfStrikeOrBall(computer, findingNumber.toString(), indexOfFindingNumber);
+                indexOfFindingNumber++;
+                if (checkResult.equals("strike")){
+                    strike++;
+                }
+                else if (checkResult.equals("ball")){
+                    ball++;
+                }
+            }
+
+
+            if (strike == 0 && ball == 0){
+                System.out.println("낫싱");
+            }
+            // TODO : 5. 답을 맞추지 못하면  3. 다시 실행, 아니면 반복 멈춤
+            else if (strike == 3){
+                System.out.println(strike + "스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
+            else{
+                if (ball != 0){
+                    System.out.print(ball + "볼 ");
+                }
+                if (strike != 0){
+                    System.out.print(strike + "스트라이크");
+                }
+                System.out.println();
             }
         }
 
-        if (strike == 0 && ball == 0){
-            System.out.println("낫싱");
-        }
-        else{
-            if (ball != 0){
-                System.out.print(ball + "볼 ");
-            }
-            if (strike != 0){
-                System.out.print(strike + "스트라이크");
-            }
-        }
-        System.out.println();
+
+
     }
 
 
