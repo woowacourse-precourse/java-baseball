@@ -1,7 +1,7 @@
 package features;
 
 
-import static features.Validation.*;
+import static extract.Validation.*;
 import static java.lang.String.valueOf;
 
 import java.util.HashMap;
@@ -9,16 +9,18 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-public class Input {
+public class Input{
+
+
     private static Map<Integer, Character> userRepository = new HashMap<>();
 
     // 입력 기능
-    public static Map<Integer, Character> input() {
+    public static Map<Integer, Character> inputUserNumber() {
 
         Scanner inputNumbers = new Scanner(System.in);
         int threeDigitsNumber = inputNumbers.nextInt();
 
-        if ( ! validationCheck(threeDigitsNumber) ) { }
+        if ( ! validationCheck(threeDigitsNumber ) ) { }
 
         String numberToString = valueOf(threeDigitsNumber);
 

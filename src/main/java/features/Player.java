@@ -18,13 +18,13 @@ public class Player {
         int playerNumber = Randoms.pickNumberInRange(1, 9);
         String numberToString = valueOf(playerNumber);
 
-        char indexZero = numberToString.charAt(0);
-        char indexOne = numberToString.charAt(1);
-        char indexTwo = numberToString.charAt(2);
+        char valueZero = numberToString.charAt(0);
+        char valueOne = numberToString.charAt(1);
+        char valueTwo = numberToString.charAt(2);
 
-        computerRepository.put(0, indexZero);
-        computerRepository.put(1, indexOne);
-        computerRepository.put(12, indexTwo);
+        computerRepository.put(0, valueZero);
+        computerRepository.put(1, valueOne);
+        computerRepository.put(2, valueTwo);
 
         return computerRepository;
     }

@@ -1,75 +1,86 @@
 package features;
 
+
 import static extract.Key.getKey;
-import static features.Input.input;
 import static features.Player.createComputerNumber;
 
 import java.util.Map;
 
-public class Hint {
+public abstract class Hint implements Factory {
 
 
-    private static int strike;
-    private static int ball;
-    private static int nothing;
+    private static int strike = 0;
+    private static int ball = 0;
+    private static int nothing = 0;
 
-    public void hint() {
-        this.strike = 0;
-        this.ball = 0;
+
+    private final Map<Integer, Character> userNumber;
+    private final Map<Integer, Character> computerNumber;
+
+    // 사용자, 상대방(컴퓨터) 숫자
+    public Hint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
+        this.userNumber = inputUserNumber();
+        this.computerNumber = createComputerNumber();
     }
 
-    // 사용자 숫자
-    static Map<Integer, Character> userNumber = input();
-    // 상대방(컴퓨터) 숫자
-    static Map<Integer, Character> computerNumber = createComputerNumber();
+
 
     // 힌트 기능 동작
-    public void runHint(Map<Integer, Character> playerNumber) {
+    @Override
+    public void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
 
-        Character userValue0 = userNumber.get(0);
-        Character userValue1 = userNumber.get(1);
-        Character userValue2 = userNumber.get(2);
 
-        Character computerValue0 = computerNumber.get(0);
-        Character computerValue1 = computerNumber.get(1);
-        Character computerValue2 = computerNumber.get(2);
+        for ( int key = 0; key < computerNumber.size(); key++ ){
 
-        Integer userKey0 = getKey(userNumber, userValue0);
-        Integer userKey1 = getKey(userNumber, userValue1);
-        Integer userKey2 = getKey(userNumber, userValue2);
+            Character userValue = userNumber.get(key);
+            Integer userKey = getKey(userNumber, userValue);
+            Character computerValue = computerNumber.get(key);
+            Integer computerKey = getKey(userNumber, computerValue);
 
-        Integer computerKey0 = getKey(computerNumber, computerValue0);
-        Integer computerKey1 = getKey(computerNumber, computerValue1);
-        Integer computerKe2 = getKey(computerNumber, computerValue2);
+            countStrike(userValue, userKey, computerValue, computerKey);
+            countBall(userValue, userKey, computerValue, computerKey);
+            countNoting(userValue, userKey, computerValue, computerKey);
 
-        for (key = 0; key < playerNumber.size(); key++){
-            // 스트라이크 (같은 수 == 같은 수 && 같은 자리 == 같은 자리)
-            if (userValue == computerValue && userKey == computerKey) {
-                strike++;
-            }
-
-            // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
-            if (userValue == computerValue && userKey != computerKey) {
-                ball++;
-            }
-
-            // 낫싱 (같은 수 != 같은 수 && 같은 자리 != 같은 자리)
-            if (userValue != computerValue && userKey != computerKey) {
-                nothing++;
-            }
         }
 
     }
 
-    public int getStrike() {
-        return this.strike;
+    public static void countStrike(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
+
+        if( userValue == computerValue && userKey == computerKey){
+            strike++;
+
+        }
     }
 
-    public int getBall() {
-        return this.ball;
+    // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
+    public static void countBall(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
+
+        for (int i=0; i < 3; i++) {
+            if (userValue.equals(computerValue) && userKey != computerKey) {    ball++; }
+        }
+
     }
 
-    public int getNothing() {
-        return this.nothing;
+    // 낫싱 (같은 수 != 같은 수 && 같은 자리 != 같은 자리)
+    public static void countNoting(Character userValue, Integer userKey, Character computerValue, Integer computerKey) {
+
+        for (int i=0; i < 3; i++) {
+            if (userValue != computerValue && userKey != computerKey) {    nothing++;  }
+        }
+
     }
+
+    public static int getCountStrike() {
+        return strike;
+    }
+
+    public static int getCountBall() {
+        return ball;
+    }
+
+    public static int getCountNothing() {
+        return nothing;
+    }
+
 }

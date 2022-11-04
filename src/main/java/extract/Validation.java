@@ -1,4 +1,4 @@
-package features;
+package extract;
 
 import static java.lang.String.valueOf;
 
