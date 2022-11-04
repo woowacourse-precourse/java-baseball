@@ -16,6 +16,7 @@
     - int Ball(List<Integer> computerNumberList, List<Integer> userNumberList): 볼 판단
     - int Strike(List<Integer> computerNumberList, List<Integer> userNumberList): 스트라이크 판단
   - 정답시 맞히셨습니다와 함께 게임 종료를 출력하며, 게임을 새로 시작하는지 입력받고 게임을 새로 시작하거나 프로그램을 종료하는 기능
+  - void inputUser(): 유저 숫자 입력 기능
 
 ### 클래스
 - Computer와 User 클래스를 players 패키지에 구현
