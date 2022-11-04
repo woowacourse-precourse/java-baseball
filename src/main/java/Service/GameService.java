@@ -25,7 +25,7 @@ public class GameService {
         while(strike != 3){
             game.initialize();
             userNumber.setUser_numbers(userNumber.getUser_numbers());
-            // 계산
+            score_calculate(userNumber.getUser_numbers(), game.getGame_numbers());
             systemMessage.game_score_message(game.getBall_count(), game.getStrike_count());
             strike = game.getStrike_count();
         }
@@ -43,9 +43,9 @@ public class GameService {
         increase_cnt(index, tmp);
     }
 
-    public void score_calculate(){
+    public void score_calculate(int[] userNumbers, int[] randomNumbers){
         for (int i = 0; i < NUM_SIZE; i++) {
-            calculate(game.getGame_numbers(), userNumber.getUser_numbers(), i);
+            calculate(userNumbers, randomNumbers, i);
         }
     }
 
