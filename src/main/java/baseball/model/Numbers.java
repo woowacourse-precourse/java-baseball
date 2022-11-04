@@ -11,8 +11,20 @@ public class Numbers {
     }
 
     public void iterateForEach(BiConsumer<Integer, Integer> consumer) {
-        for (int i = 0 ; i < numbers.size() ; i++) {
+        for (int i = 0; i < numbers.size(); i++) {
             consumer.accept(i, numbers.get(i));
         }
+    }
+
+    public boolean containAnswer(int number) {
+        return numbers.contains(number);
+    }
+
+    public boolean matchStrike(int index, int number) {
+        if (index >= numbers.size()) {
+            return false;
+        }
+
+        return numbers.get(index).equals(number);
     }
 }
