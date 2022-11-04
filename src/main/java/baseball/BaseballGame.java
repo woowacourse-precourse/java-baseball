@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import validator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class BaseballGame {
         makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
         getUserNumber();
+        checkUserNumber();
     }
 
     private static void makeRandomNumber() {
@@ -34,5 +36,12 @@ public class BaseballGame {
     public static void getUserNumber() {
         printMessage(INPUT_MESSAGE);
         userNumber = Console.readLine();
+    }
+
+    public static void checkUserNumber() {
+        InputValidator inputValidator = new InputValidator();
+        if (!InputValidator.isRightInput(userNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
