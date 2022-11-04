@@ -15,7 +15,6 @@ public class InputView {
     public static String requestNum() {
         OutputView.printRequestNum();
         String input = Console.readLine();
-
         return validateRequestNum(input);
     }
 
@@ -24,7 +23,7 @@ public class InputView {
         if (!Pattern.matches(THREE_SIZE_NUM_REGEX, input) || hasDuplicatedNum(input)) {
             throw new IllegalArgumentException();
         }
-        return null;
+        return input;
     }
 
     private static boolean hasDuplicatedNum(String input) {

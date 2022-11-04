@@ -11,6 +11,7 @@ public class GameResult {
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼 ";
+    private static final String EMPTY = "";
 
     private final int strikeCount;
     private final int ballCount;
@@ -33,7 +34,8 @@ public class GameResult {
     }
 
     private boolean isStrike(List<Integer> answerNums, List<Integer> playerNums, int i) {
-        return answerNums.get(i) == playerNums.get(i);
+        return answerNums.get(i)
+            .equals(playerNums.get(i));
     }
 
     public boolean isNothing() {
@@ -44,27 +46,33 @@ public class GameResult {
         return strikeCount == THREE;
     }
 
+    @Override
+    public String toString() {
+        if (isNothing()) {
+            return NOTHING;
+        }
+        return computeBallStr() + computeStrikeStr();
+    }
+
+    private String computeBallStr() {
+        if (ballCount == ZERO) {
+            return EMPTY;
+        }
+        return ballCount + BALL;
+    }
+
+    private String computeStrikeStr() {
+        if (strikeCount == ZERO) {
+            return EMPTY;
+        }
+        return strikeCount + STRIKE;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
 
     public int getStrikeCount() {
         return strikeCount;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        if (isNothing()) {
-            return NOTHING;
-        }
-        if (ballCount != ZERO) {
-            sb.append(ballCount + BALL);
-        }
-        if (strikeCount != ZERO) {
-            sb.append(strikeCount + STRIKE);
-        }
-        return sb.toString();
     }
 }
