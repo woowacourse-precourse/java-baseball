@@ -9,6 +9,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     private static ArrayList<Integer> target = null;
     private static ArrayList<Integer> user = null;
+    private static String result = null;
+    private static Integer strike = 0;
+    private static Integer ball = 0;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -29,7 +32,7 @@ public class Application {
     private static void start_game() {
         generate();
         while (true) {
-
+            read();
         }
     }
 
@@ -48,6 +51,65 @@ public class Application {
             if (Character.isDigit(input.charAt(i)) == false)
                 invalid();
             user.add(Character.getNumericValue(input.charAt(i)));
+        }
+    }
+
+    private static boolean check() {
+        result = new String("");
+        if (check_match())
+            return true;
+        check_strike();
+        check_ball();
+        if (strike > 0)
+            result += Character.toString(strike) + "스트라이크";
+        if (ball > 0) {
+            if (strike > 0)
+                result = ' ' + result;
+            result = Character.toString(ball) + '볼';
+        }
+        if (result.length() == 0)
+            result = "낫싱";
+        return false;
+    }
+
+    private static boolean check_match() {
+        for (int i = 0; i < 3; ++i)
+            if (!user.get(i).equals(target.get(i)))
+                return false;
+        return true;
+    }
+
+    private static void check_strike() {
+        strike = 0;
+        // check strike
+        for (int i = 0; i < 3; ++i) {
+            if (target.get(i) == user.get(i)) {
+                strike++;
+                // mark as strike
+                target.set(i, 0);
+                user.set(i, 0);
+            }
+        }
+    }
+
+    private static void check_ball() {
+        ball = 0;
+        for (int i = 0; i < 3; ++i) {
+            int current_digit = user.get(i);
+            if (current_digit == 0)
+                continue;
+            if (i != 0 && target.get(0) == current_digit) {
+                user.set(i, 0);
+                target.set(0, 0);
+            }
+            else if (i != 1 && target.get(1) == current_digit) {
+                user.set(i, 0);
+                target.set(1, 0);
+            }
+            else if (i != 2 && target.get(2) == current_digit) {
+                user.set(i, 0);
+                target.set(2, 0);
+            }
         }
     }
 
