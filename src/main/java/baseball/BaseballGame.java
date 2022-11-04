@@ -44,6 +44,7 @@ public class BaseballGame {
             startGame();
             do {
                 inputUserNumber();
+                isUserWin = numberComparator.isUserWin(user, computer);
             } while (!isUserWin);
         }
     }
