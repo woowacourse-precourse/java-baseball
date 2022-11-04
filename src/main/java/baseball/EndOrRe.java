@@ -10,6 +10,12 @@ public class EndOrRe {
     return stringToInt(inputString);
   }
 
+  // 테스트용 메소드
+  public void printInputString(String inputString) {
+    validOneOrTwo(inputString);
+    System.out.println(stringToInt(inputString));
+  }
+
   private Integer stringToInt(String inputString) {
     return Integer.valueOf(inputString);
   }
