@@ -20,9 +20,8 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
 
 - [X] Score 클래스: 볼, 스트라이크 횟수를 보관하는 DTO
 
-- [ ] BaseballNumGenerator 클래스
-  - [ ] List<Integer> getThreeNumList() 메서드
-    - [ ] int getSingleDigit() 메서드
+- [X] BaseballNumGenerator 클래스
+  - [X] List<Integer> getBaseballNumber() 메서드
 
 - [X] IOHandler 클래스: try~catch로 IOException 처리
   - [X] void printInitMessage() 메서드
