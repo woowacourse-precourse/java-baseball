@@ -44,8 +44,8 @@ public class Application {
     }
 
     private static void read() {
-        duplicate.clear();
-        user.clear();
+        duplicate = new HashSet<>();
+        user = new ArrayList<>();
         String input = Console.readLine();
         if (input.length() != 3)
             invalid();
@@ -62,7 +62,7 @@ public class Application {
     }
 
     private static void check() {
-        result = new String("");
+        result = "";
         check_strike();
         check_ball();
         if (strike > 0)
