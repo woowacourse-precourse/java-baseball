@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Game {
     private final int CNT_NUMBER = 3;
     private final int STRIKE = 1;
@@ -12,10 +14,14 @@ public class Game {
     private final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
     private final String BALL_MESSAGE = "%d볼\n";
     private final String STRIKE_MESSAGE = "%d스트라이크\n";
+    private final String RESTART_STATUS = "1";
+    private final String END_GAME_STATUS = "2";
+    private final String RESTART_END_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
     private String computer;
     private String player;
     private int strike;
     private int ball;
+    private boolean exit = false;
 
     public Game() {
     }
@@ -30,9 +36,15 @@ public class Game {
         computer = computerNumber.getNumber();
         player = playerNumber.getNumber();
 
-        strike = countStrike();
-        ball = countBall();
-        printCount();
+        while (!exit) {
+            strike = countStrike();
+            ball = countBall();
+            printCount();
+
+            if (strike == CNT_NUMBER) {
+                exit = isEndInput();
+            }
+        }
     }
 
     private int countStrike() {
@@ -77,5 +89,16 @@ public class Game {
         } else if (ball != 0) {
             System.out.printf(BALL_MESSAGE, ball);
         }
+    }
+
+    private boolean isEndInput() {
+        System.out.printf(RESTART_END_MESSAGE, RESTART_STATUS, END_GAME_STATUS);
+        String input = readLine();
+        if (input.equals(END_GAME_STATUS)) {
+            return true;
+        } else if (input.equals(RESTART_STATUS)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
