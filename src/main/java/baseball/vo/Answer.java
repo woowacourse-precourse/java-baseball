@@ -6,6 +6,7 @@ import baseball.system.validation.Validator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class Answer {
     public static final int ANSWER_LIST_SIZE = 3;
@@ -27,12 +28,27 @@ public class Answer {
         return new Answer(targetList);
     }
 
-    @Override
-    public String toString() {
-        return answer.toString();
-    }
-
     public List<Integer> getAnswer() {
         return new ArrayList<>(answer);
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answer=" + answer +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object target) {
+        if (this == target) return true;
+        if (!(target instanceof Answer)) return false;
+        Answer anotherAnswer = (Answer) target;
+        return answer.equals(anotherAnswer.answer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(answer);
     }
 }

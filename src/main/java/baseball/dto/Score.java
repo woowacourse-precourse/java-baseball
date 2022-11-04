@@ -62,11 +62,11 @@ public class Score {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Score)) return false;
-        Score score1 = (Score) o;
-        return score.equals(score1.score);
+    public boolean equals(Object target) {
+        if (this == target) return true;
+        if (!(target instanceof Score)) return false;
+        Score anotherScore = (Score) target;
+        return score.equals(anotherScore.score);
     }
 
     @Override
