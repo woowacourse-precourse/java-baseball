@@ -19,4 +19,17 @@ class GameTest {
         assertThat(result.get(1) != result.get(2)).isEqualTo(true);
     }
 
+    @Test
+    void 사용자_숫자_입력받기(){
+        Game game = new Game();
+        String userNumber = "123";
+
+        InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+        System.setIn(in);
+        List<Integer> user = game.inputUserNumber();
+        assertThat(user.get(0)).isEqualTo(1);
+        assertThat(user.get(1)).isEqualTo(2);
+        assertThat(user.get(2)).isEqualTo(3);
+
+    }
 }
