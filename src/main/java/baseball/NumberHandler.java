@@ -46,10 +46,19 @@ public class NumberHandler {
                     .boxed()
                     .collect(Collectors.toList());
 
+            numberDuplicateCheck(userNumberList);
+
             this.userNumber = userNumberList;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("공백없이 숫자만 입력해주세요.");
         }
     }
 
+    public void numberDuplicateCheck(ArrayList<Integer> digits) {
+        for (int digit : digits) {
+            if (Collections.frequency(digits, digit) > 1) {
+                throw new IllegalArgumentException("중복되는 숫자 없이 입력해주세요.");
+            }
+        }
+    }
 }

@@ -39,14 +39,24 @@ class NumberHandlerTest {
 
     @Test
     void 사용자_잘못된_문자_입력() {
+        NumberHandler numberHandler1 = new NumberHandler();
+        InputStream in1 = new ByteArrayInputStream("178zz".getBytes());
+        System.setIn(in1);
+
+        assertThatThrownBy(() -> numberHandler1.setUserNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("공백없이 숫자만 입력해주세요.");
+    }
+
+    @Test
+    void 사용자_중복_숫자_입력() {
         NumberHandler numberHandler = new NumberHandler();
-        InputStream in = new ByteArrayInputStream("178zz".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("787".getBytes());
         System.setIn(in);
 
         assertThatThrownBy(() -> numberHandler.setUserNumber())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("공백없이 숫자만 입력해주세요.");
-
+                .hasMessage("중복되는 숫자 없이 입력해주세요.");
     }
 
 
