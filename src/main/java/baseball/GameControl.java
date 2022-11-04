@@ -5,7 +5,7 @@ import java.util.*;
 public class GameControl {
 
     private List<Integer> computer;
-    private ArrayList<Integer> player;
+    private List<Integer> player;
 
     public GameControl() {}
 
@@ -14,6 +14,9 @@ public class GameControl {
         Player playerNumber = new Player();
 
         computerNumber.setNumbers();
-        computer = computerNumber.getNumbers();
+        this.computer = computerNumber.getNumbers();
+
+        playerNumber.setNumbers();
+        this.player = playerNumber.getNumbers();
     }
 }
