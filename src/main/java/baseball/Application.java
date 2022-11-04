@@ -43,6 +43,10 @@ public class Application {
         return k;
     }
 
+    public static boolean isBall(int number, List<Integer> answer) {
+        return answer.contains(number);
+    }
+
 
     static class Nums{
         private Set<Integer> sets;
@@ -53,6 +57,8 @@ public class Application {
             this.sets = sets;
         }
     }
+
+
 
     public static void main(String[] args) {
 
