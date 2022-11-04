@@ -65,7 +65,7 @@ public class Game {
         return ballCount;
     }
 
-    private static Integer strike(Computer computer, Player player, Integer strikeCount) {
+    public static Integer strike(Computer computer, Player player, Integer strikeCount) {
 
         for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
             if (computer.computerNumber.get(numericComparisonIndex).equals(player.playerNumber.get(numericComparisonIndex))) {
