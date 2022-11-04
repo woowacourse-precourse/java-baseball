@@ -2,7 +2,6 @@ package baseball.utils;
 
 import baseball.domain.Ball;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,11 +15,10 @@ public class BallConvertor {
     }
 
     public static List<Integer> mapToInt(String userInput) {
-        List<Integer> balls = new ArrayList<>();
-        for (char ballNo : userInput.toCharArray()) {
-            balls.add(charToInt(ballNo));
-        }
-        return balls;
+        return IntStream.range(0, userInput.length())
+                .map(index -> charToInt(userInput.charAt(index)))
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private static int charToInt(char ballNo) {
