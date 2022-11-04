@@ -6,6 +6,9 @@
 ### 2. 플레이어가 입력값을 검증하고 숫자의 값이 잘못된 경우 예외를 발생시키는 기능
 #### 메인 구현 함수
     List<Integer> checkUserNumber(String userInput) throws IllegalArgumentException
+#### 검증 목록
+* 플레이어의 입력값의 길이가 3이 아닌 경우
+* 플레이어의 입력값의 각 Character의 범위가 1부터 9 사이가 아닌 경우
 ### 3. 플레이어와 컴퓨터의 숫자 값을 비교한 결과를 계산하는 기능
 #### 메인 구현 함수
     BaseballResult compare(List<Integer> userNumber, List<Integer> targetNumber)
