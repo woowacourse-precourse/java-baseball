@@ -6,7 +6,9 @@ import java.util.List;
 
 public class Input {
 
-  private static final int STRINGLEN = 3;
+  private static final int STRING_LEN = 3;
+  private static final char MINIMUM_CHAR = '1';
+  private static final char MAXIMUM_CHAR = '9';
 
   public List<Character> readAndMakeInputList() {
     String inputString = Console.readLine();
@@ -31,21 +33,21 @@ public class Input {
   }
 
   private void validStringLength(String inputString) {
-    if (inputString.length() != STRINGLEN) {
-      throw new IllegalArgumentException(inputString + "은 3자리가 아닙니다.");
+    if (inputString.length() != STRING_LEN) {
+      throw new IllegalArgumentException();
     }
   }
 
   private void validOnlyOneNumInList(List<Character> list) {
     if (list.get(0) == list.get(1) || list.get(1) == list.get(2) || list.get(0) == list.get(2)) {
-      throw new IllegalArgumentException("중복이 있습니다.");
+      throw new IllegalArgumentException();
     }
   }
 
   private void validNumElementAndNoZero(List<Character> list) {
     for (Character character : list) {
-      if (character < '1' || '9' < character) {
-        throw new IllegalArgumentException("1에서 9까지만 가능합니다.");
+      if (character < MINIMUM_CHAR || MAXIMUM_CHAR < character) {
+        throw new IllegalArgumentException();
       }
     }
   }
