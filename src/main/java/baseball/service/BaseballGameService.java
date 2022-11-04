@@ -30,18 +30,20 @@ public class BaseballGameService {
         GameGuidePrinter.requestNumberMessage();
 
         String input = Console.readLine();
-        checkUserInput(input);
-
         String[] numbers = input.split("");
+
+        checkUserInput(numbers);
+        return parseIntegerList(numbers);
+    }
+
+    private List<Integer> parseIntegerList(String[] numbers) {
         return Arrays.stream(numbers)
             .map(Integer::parseInt)
             .collect(Collectors.toList());
     }
 
-    private void checkUserInput(String input) throws IllegalArgumentException {
-        checkInputSize(input);
-
-        String[] numbers = input.split("");
+    private void checkUserInput(String[] numbers) throws IllegalArgumentException {
+        checkInputSize(numbers);
 
         for (String number: numbers) {
             if (!checkNumberRange(number)) {
@@ -50,13 +52,13 @@ public class BaseballGameService {
         }
     }
 
-    private void checkInputSize(String input) throws IllegalArgumentException {
-        if (input.length() != size) {
+    private void checkInputSize(String[] input) throws IllegalArgumentException {
+        if (input.length != size) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean checkNumberRange(String number) throws IllegalArgumentException {
+    private boolean checkNumberRange(String number) {
         return '0' <= number.charAt(0) && number.charAt(0) <= '9';
     }
 
