@@ -19,6 +19,15 @@ public class UserNumber {
         List<Character> numberList = tempNumber.chars()
                 .mapToObj(e->(char)e).collect(Collectors.toList());
         checkUserInputLength(numberList);
+        checkInputIsNumber(numberList);
+    }
+
+    private void checkInputIsNumber(List<Character> numberList) {
+        for (int i = 0; i < USER_INPUT_LENGTH; i++) {
+            if (!Character.isDigit(numberList.get(i)) || numberList.get(i) == '0') {
+                throw new IllegalArgumentException("입력값 사이에 1부터 9사이의 숫자가 아닌 문자가 존재합니다.");
+            }
+        }
     }
 
     private void checkUserInputLength(List<Character> numberList) {
