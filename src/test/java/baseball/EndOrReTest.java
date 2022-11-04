@@ -49,4 +49,12 @@ class EndOrReTest {
       endOrRe.printInputString(result);
     }).isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  void 입력된_값이_영어일_경우() {
+    String result = "r";
+    Assertions.assertThatThrownBy(() -> {
+      endOrRe.printInputString(result);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
