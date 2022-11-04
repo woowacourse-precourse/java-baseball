@@ -1,10 +1,22 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class User {
+
+    int inputNumber() {
+        int userNumber = -1;
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        if (checkType(userInput)) {
+            userNumber = Integer.parseInt(userInput);
+        }
+        return userNumber;
+    }
 
     void errorControl() {
         try {
