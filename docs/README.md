@@ -10,10 +10,10 @@
 
 - [x] 게임 종료 시, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
 
-- [ ] 게임 종료 후 재시작 여부 선택 입력
+- [x] 게임 종료 후 재시작 여부 선택 입력
   - [x] 1 : 재시작
   - [x] 2 : 게임 종료
-  - [ ] 예외 처리 (SelectedNumberForRestartDTO) : (IllegalArgumentException => 프로그램 종료)
+  - [x] 예외 처리 (SelectedNumberForRestartDTO) : (IllegalArgumentException => 프로그램 종료)
     - [x] null 또는 empty 인 경우
     - [x] 알파벳인 경우
       - [x] 소문자
@@ -25,7 +25,7 @@
       - [x] 단어
     - [x] 공백인 경우
     - [x] 길이가 1이 아닌 경우
-    - [ ] 1~2 범위 벗어난 경우
+    - [x] 1~2 범위 벗어난 경우
 
 
 ### 출력 (OutputView)

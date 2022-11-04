@@ -62,4 +62,13 @@ class SelectedNumberForRestartDTOTest {
                 .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 1~2 범위를 벗어난 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"0", "3"})
+    void out_of_range_exception(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
+    }
 }
