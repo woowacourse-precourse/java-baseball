@@ -89,8 +89,8 @@ public class Game {
 		}
 
 		if (playerInputArray.size() != playerInputArray.stream().distinct().count()) {
-			System.out.println(SystemMessage.printError());
-			throw new IllegalArgumentException(); //TODO: 에러 메시지 프린트 안되고 있음
+			SystemMessage.printNotUnique();
+			throw new IllegalArgumentException(SystemMessage.NOT_UNIQUE_MESSAGE);
 		}
 
 		return playerInput;

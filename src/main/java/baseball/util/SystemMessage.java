@@ -12,6 +12,7 @@ public class SystemMessage {
 	public static final String NOT_INTEGER_MESSAGE = "숫자가 아닌 값을 입력했습니다. 게임이 종료됩니다.";
 	public static final String NOT_THREE_SIZE_MESSAGE = "숫자는 3개만 입력 가능합니다. 게임이 종료됩니다.";
 	public static final String CONTAINS_ZERO_MESSAGE = "0은 입력할 수 없습니다. 게임이 종료됩니다.";
+	public static final String NOT_UNIQUE_MESSAGE = "중복된 숫자는 입력할 수 없습니다. 게임이 종료됩니다.";
 
 	public static void printStart() {
 		System.out.println(START_MESSAGE);
@@ -35,7 +36,7 @@ public class SystemMessage {
 
 	public static String printError() {
 		return ERROR_MESSAGE;
-	}
+	} // TODO: 예상된 예외사항에 이외의 경우에 출력 필요
 
 	public static void printNotInteger() {
 		System.out.println(NOT_INTEGER_MESSAGE);
@@ -47,5 +48,9 @@ public class SystemMessage {
 
 	public static void printContainsZero() {
 		System.out.println(CONTAINS_ZERO_MESSAGE);
+	}
+
+	public static void printNotUnique() {
+		System.out.println(NOT_UNIQUE_MESSAGE);
 	}
 }
