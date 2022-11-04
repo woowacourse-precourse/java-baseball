@@ -1,6 +1,7 @@
 package Controller;
 
 import Service.GameService;
+import camp.nextstep.edu.missionutils.Console;
 import view.RequestUser;
 import view.SystemMessage;
 
@@ -32,8 +33,18 @@ public class GameController {
 
     public void askContinue(){
         RequestUser.request_retry();
-        if(Userinput == RETRY){
+        if(re_user_input() == RETRY){
             run();
         }
+    }
+
+    public int re_user_input() throws IllegalArgumentException{
+        int user_num = Integer.parseInt(Console.readLine());
+
+        if(user_num < 0 || user_num > EXIT){
+            throw new IllegalArgumentException();
+        }
+
+        return user_num;
     }
 }
