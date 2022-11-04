@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
-    static final int NUMBER_LENGTH = 3;
-    static final int START_IDX = 0;
+import static constant.Constant.*;
 
+public class Game {
     private static List<Integer> computer;
 
     public Game() {
