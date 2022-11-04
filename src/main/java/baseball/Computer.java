@@ -28,4 +28,8 @@ public class Computer {
             }
         }
     }
+
+    public int getNumber(int index) {
+        return numbers.get(index);
+    }
 }
