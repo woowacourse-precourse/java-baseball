@@ -20,9 +20,9 @@ public class StrikeOrBall {
 
         Map<String, Integer> strikeBall = checkStrikeOrBall(computerNumber, userNumber);
 
-        if (strikeBall.get("Strike") == 0) {
+        if (strikeBall.get("Strike") == 0 && strikeBall.get("Ball") != 0) {
             return strikeBall.get("Ball") + "볼";
-        } else if (strikeBall.get("Ball") == 0) {
+        } else if (strikeBall.get("Ball") == 0 && strikeBall.get("Strike") != 0) {
             return strikeBall.get("Strike") + "스트라이크";
         } else if (strikeBall.get("Strike") == 0 && strikeBall.get("Ball") == 0) {
             return "낫싱";
@@ -70,5 +70,4 @@ public class StrikeOrBall {
 
         return ball;
     }
-
 }
