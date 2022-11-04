@@ -3,18 +3,15 @@ package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
-import java.util.Objects;
 
 public class MakeRandom {
-    private static MakeRandom instance;
     private MakeRandom() {
     }
-
+    private static class LazyHolder {
+        private static final MakeRandom INSTANCE = new MakeRandom();
+    }
     public static MakeRandom getInstance() {
-        if(Objects.isNull(instance)) {
-            instance = new MakeRandom();
-        }
-        return instance;
+        return LazyHolder.INSTANCE;
     }
 
     public List<Integer> numbers() {

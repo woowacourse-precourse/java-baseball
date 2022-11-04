@@ -2,21 +2,18 @@ package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Objects;
-
 import static baseball.enums.ErrorMessage.IS_BLANK;
 
 public class ConsoleLog {
-    private static ConsoleLog instance;
-
     private ConsoleLog() {
     }
 
+    private static class LazyHolder {
+        private static final ConsoleLog INSTANCE = new ConsoleLog();
+    }
+
     public static ConsoleLog getInstance() {
-        if(Objects.isNull(instance)) {
-            instance = new ConsoleLog();
-        }
-        return instance;
+        return LazyHolder.INSTANCE;
     }
 
     public void print(String message) {
