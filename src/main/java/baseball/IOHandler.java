@@ -56,4 +56,10 @@ public class IOHandler {
 		}
 		return inputList;
 	}
+
+	public int getRestartInt() {
+		String restartString = Console.readLine(); // Console.readLine()은 단 한 줄의 입력만을 받는 게 맞는가?
+		inputValidator.validateRestartString(restartString);
+		return restartString.charAt(0)-'0';
+	}
 }
