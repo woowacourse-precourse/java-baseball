@@ -65,7 +65,7 @@ public class Application {
         return validateRePlayOrStop(playAgain);
     }
 
-    private static List<Integer> setComputersNumbers() {
+    public static List<Integer> setComputersNumbers() {
         List<Integer> computersNumbers = new ArrayList<>(MAX_NUMBERS_COUNT);
 
         while(computersNumbers.size() < MAX_NUMBERS_COUNT) {
