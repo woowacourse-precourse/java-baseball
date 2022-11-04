@@ -1,35 +1,36 @@
 package baseball.controller;
 
-import java.util.Arrays;
+import baseball.Player;
 import java.util.List;
 
 public class Calculator {
-	private static int ballCount;
-	private static int strikeCount;
+	private static List<Integer> randomNumbers;
 
-	public static List<Integer> getBallStrikeCount(List<Integer> randomNumberList, List<Integer> gameNumberList) {
-		ballCount = 0;
-		strikeCount = 0;
-
-		compareGameNumber(randomNumberList, gameNumberList);
-
-		List<Integer> ballStrikeCount = Arrays.asList(ballCount, strikeCount);
-		return ballStrikeCount;
+	public static void checkPlayerNumbers(Player player, List<Integer> randomNumbers) {
+		Calculator.randomNumbers = randomNumbers;
+		List<Integer> playerNumbers = player.getNumbers();
+		playerNumbers.stream().
+			forEach(playerNumber -> addBallOrStrike(player, playerNumbers, playerNumber));
 	}
 
-	private static void compareGameNumber(List<Integer> randomNumberList, List<Integer> gameNumberList) {
-		for (int idx = 0; idx < gameNumberList.size(); idx++) {
-			addBallOrStrike(randomNumberList, gameNumberList.get(idx), idx);
+	private static void addBallOrStrike(Player player, List<Integer> playerNumbers, int playerNumber) {
+		int playerNumberIdx = playerNumbers.indexOf(playerNumber);
+		if (randomNumbers.contains(playerNumber)) {
+			int randomNumberIdx = randomNumbers.indexOf(playerNumber);
+			addBall(player, playerNumberIdx, randomNumberIdx);
+			addStrike(player, playerNumberIdx, randomNumberIdx);
 		}
 	}
 
-	private static void addBallOrStrike(List<Integer> randomNumberList, int gameNumber, int gameNumberIdx) {
-		if (randomNumberList.contains(gameNumber)) {
-			ballCount++;
-			if (randomNumberList.indexOf(gameNumber) == gameNumberIdx) {
-				ballCount--;
-				strikeCount++;
-			}
+	private static void addBall(Player player, int playerNumberIdx, int randomNumberIdx) {
+		if (randomNumberIdx != playerNumberIdx) {
+			player.addBall();
+		}
+	}
+
+	private static void addStrike(Player player, int playerNumberIdx, int randomNumberIdx) {
+		if (randomNumberIdx == playerNumberIdx) {
+			player.addStrike();
 		}
 	}
 }
