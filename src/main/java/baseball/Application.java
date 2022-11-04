@@ -39,6 +39,7 @@ public class Application {
             }
 
             boolean correctFlag = checkPlayerResult(ball, strike);
+            gameFlag = checkRerunGame(correctFlag, gameFlag);
         }
     }
 
@@ -75,6 +76,22 @@ public class Application {
             System.out.println("낫싱");
         }
         return correctFlag;
+    }
+
+    private static int checkRerunGame(boolean correctFlag, int gameFlag) {
+        if (correctFlag) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String inputNumber = Console.readLine();
+
+            if (inputNumber.equals("1")) {
+                gameFlag = 1;
+            } else if (inputNumber.equals("2")) {
+                gameFlag = 2;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+        return gameFlag;
     }
 
 }
