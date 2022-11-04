@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class UserNumber {
 	private static final int NUMBER_LENGTH = 3;
+	private static final int START_NUMBER = 3;
+	private static final int END_NUMBER = 3;
 	public final List<Integer> userNumber;
 
 	public UserNumber(String userInput) {
@@ -29,7 +31,7 @@ public class UserNumber {
 	}
 
 	private boolean isNumber(int[] userNums) {
-		return Arrays.stream(userNums).allMatch(num -> 0 <= num && num <= 9);
+		return Arrays.stream(userNums).allMatch(num -> START_NUMBER <= num && num <= END_NUMBER);
 	}
 
 	private boolean isRightRange(int[] userNums) {
