@@ -57,6 +57,7 @@ class NumberBaseBallGameTest {
         assertThat(result.isFinish()).isTrue();
         assertThat(result.getEachCount().get("strike")).isEqualTo(3);
         assertThat(result.getEachCount().get("ball")).isEqualTo(0);
+        assertThat(result.isFinish()).isTrue();
     }
 
     @Test
@@ -72,6 +73,7 @@ class NumberBaseBallGameTest {
         assertThat(result.isFinish()).isFalse();
         assertThat(result.getEachCount().get("strike")).isEqualTo(0);
         assertThat(result.getEachCount().get("ball")).isEqualTo(3);
+        assertThat(result.isFinish()).isFalse();
     }
 
     @Test
@@ -87,6 +89,7 @@ class NumberBaseBallGameTest {
         assertThat(result.isFinish()).isFalse();
         assertThat(result.getEachCount().get("strike")).isEqualTo(1);
         assertThat(result.getEachCount().get("ball")).isEqualTo(2);
+        assertThat(result.isFinish()).isFalse();
     }
 
     @Test
@@ -102,6 +105,41 @@ class NumberBaseBallGameTest {
         assertThat(result.isFinish()).isFalse();
         assertThat(result.getEachCount().get("strike")).isEqualTo(0);
         assertThat(result.getEachCount().get("ball")).isEqualTo(0);
+        assertThat(result.isFinish()).isFalse();
+    }
+
+    @Test
+    @DisplayName("재시작 코드값 입력 - 1 재시작 확인")
+    void input_Restart_Code(){
+        String code = "1";
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository();
+        BaseNumber baseNumber = new BaseNumber(List.of(1, 2, 3));
+        baseNumberRepository.saveBaseNumber(baseNumber);
+
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
+        numberBaseBallGame.restart(code);
+
+        BaseNumber newBaseNumber = baseNumberRepository.findBaseNumber();
+
+        assertThat(numberBaseBallGame.isProceeding()).isTrue();
+        assertThat(baseNumber).isNotEqualTo(newBaseNumber);
+    }
+
+    @Test
+    @DisplayName("재시작 코드값 입력 - 2 종료")
+    void input_Finish_Code(){
+        String code = "2";
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository();
+        BaseNumber baseNumber = new BaseNumber(List.of(1, 2, 3));
+        baseNumberRepository.saveBaseNumber(baseNumber);
+
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
+        numberBaseBallGame.restart(code);
+
+        BaseNumber newBaseNumber = baseNumberRepository.findBaseNumber();
+
+        assertThat(numberBaseBallGame.isProceeding()).isFalse();
+        assertThat(baseNumber).isEqualTo(newBaseNumber);
     }
 
     private void failValidateInputNumber(String inputNumber) {
