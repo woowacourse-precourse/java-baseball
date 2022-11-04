@@ -24,34 +24,34 @@ public class OutputView {
     }
     
     public static void printResult(final RefereeDTO refereeDTO) {
-        final List<Integer> pitchResults = refereeDTO.getPitchResults();
+        final List<Integer> scores = refereeDTO.getPitchResults();
         final List<String> ballStatusDisplay = List.of(BALL_DISPLAY, STRIKE_DISPLAY);
         
-        if (isNothing(pitchResults)) {
+        if (isNothing(scores)) {
             System.out.println(NOTHING_DISPLAY);
             return;
         }
-        System.out.println(parsePlayResults(pitchResults, ballStatusDisplay));
+        System.out.println(parsePlayResults(scores, ballStatusDisplay));
     }
     
-    private static boolean isNothing(final List<Integer> pitchResults) {
-        return pitchResults.stream()
+    private static boolean isNothing(final List<Integer> scores) {
+        return scores.stream()
                 .noneMatch(OutputView::isPitchResultNotZero);
     }
     
-    private static boolean isPitchResultNotZero(final Integer pitchResult) {
-        return pitchResult != 0;
+    private static boolean isPitchResultNotZero(final Integer score) {
+        return score != 0;
     }
     
-    private static String parsePlayResults(final List<Integer> pitchResults, final List<String> ballStatusDisplay) {
+    private static String parsePlayResults(final List<Integer> scores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(0, 1)
-                .filter(resultIndex -> isPitchResultNotZero(pitchResults, resultIndex))
-                .mapToObj(resultIndex -> pitchResults.get(resultIndex) + ballStatusDisplay.get(resultIndex))
+                .filter(scoresIndex -> isPitchResultNotZero(scores, scoresIndex))
+                .mapToObj(scoresIndex -> scores.get(scoresIndex) + ballStatusDisplay.get(scoresIndex))
                 .collect(Collectors.joining(DELIMITER));
     }
     
-    private static boolean isPitchResultNotZero(final List<Integer> pitchResults, final int resultIndex) {
-        return pitchResults.get(resultIndex) != 0;
+    private static boolean isPitchResultNotZero(final List<Integer> scores, final int resultIndex) {
+        return scores.get(resultIndex) != 0;
     }
     
     public static void baseBallGameEndMessagePrint() {
