@@ -22,4 +22,8 @@ public class Game {
             this.isAnswer = round.isThreeStrike();
         }
     }
+
+    public boolean replayGame() {
+        return false;
+    }
 }

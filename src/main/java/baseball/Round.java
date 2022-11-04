@@ -1,15 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
 
 public class Round {
 
@@ -23,33 +14,11 @@ public class Round {
 
     public void startNewRound()  {
         Print.printRoundStart();
-        String inputString = readNumber();
-        inputNewNumbers(inputString);
+        String inputString = Input.readString();
+        parseNumbers(inputString);
     }
 
-    private String readNumber() {
-        String inputString;
-        try {
-            Constructor<Console> constructor = Console.class.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            Console console = constructor.newInstance();
-
-            Method readLine = Console.class.getDeclaredMethod("readLine");
-            readLine.setAccessible(true);
-            inputString = (String) readLine.invoke(console);
-
-            Field scannerField = Console.class.getDeclaredField("scanner");
-            scannerField.setAccessible(true);
-            /*Scanner scanner = (Scanner) scannerField.get(console);
-            scanner.close();*/
-            scannerField.set(console, null);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return inputString;
-    }
-
-    private void inputNewNumbers(String inputString) {
+    private void parseNumbers(String inputString) {
         int input = Integer.parseInt(inputString);
         numbers = new Numbers(input);
     }
