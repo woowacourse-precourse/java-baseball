@@ -16,6 +16,10 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static void playGame() {
+
+    }
+
     private static List<Integer> getTargetNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -27,6 +31,7 @@ public class Application {
         return computer;
     }
 
+    // print 로 바꾸기
     private static void getBallStrikeLog(int ballCount, int strikeCount) throws IOException {
 
         int nothing = 0;
@@ -52,9 +57,21 @@ public class Application {
         if (strikeCount == SIZE) {
             System.out.println(SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             int toBeContinue = Integer.valueOf(br.readLine());
-            //checkAgainGame(toBeContinue);
+            checkAgainGame(toBeContinue);
         }
 
         return;
+    }
+
+    private static void checkAgainGame(int toBeContinue) {
+
+        int againGame = 1;
+        int exitGame = 2;
+
+        if (toBeContinue == againGame) {
+            playGame();
+        } else if (toBeContinue == exitGame) {
+            // 게임 종료
+        }
     }
 }
