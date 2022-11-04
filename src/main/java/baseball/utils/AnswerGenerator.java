@@ -10,11 +10,7 @@ public class AnswerGenerator {
     private static final int MAX_RANGE = 9;
     private static final int VALID_LENGTH = 3;
 
-    public AnswerGenerator() {
-
-    }
-
-    public ArrayList<Integer> generateAnswer() {
+    public static ArrayList<Integer> generateAnswer() {
         Set<Integer> nums = new HashSet<>();
         while (nums.size() < VALID_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
