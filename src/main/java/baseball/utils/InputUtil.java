@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class InputUtil {
@@ -9,8 +11,30 @@ public class InputUtil {
     private static final String NUMBER_LENGTH_EXCEPTION = "글자의 길이가 초과되었습니다.";
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
+    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
 
     public InputUtil() {
+    }
+
+
+    public void inputUserNumbers() {
+        System.out.print(INPUT_NUMBER);
+        String numbers = Console.readLine();
+        ArrayList<Integer> userNumbers = parseStringToInt(numbers);
+        System.out.println();
+    }
+
+    public ArrayList<Integer> parseStringToInt(String numbers) {
+        checkLength(numbers);
+        ArrayList<Integer> inputNumbers = new ArrayList<>();
+        for (int i = 0; i < numbers.length(); i++) {
+            checkIsDigit(numbers.charAt(i));
+            int number = charToInt(numbers.charAt(i));
+            checkValidNumber(number);
+            checkDuplicationNumber(inputNumbers, number);
+            inputNumbers.add(number);
+        }
+        return inputNumbers;
     }
 
     public void checkIsDigit(char number) {
