@@ -15,5 +15,6 @@
 | 볼 개수 계산            | countNumberOfBalls()         | 볼 개수를 계산한다.                                          |
 | 스트라이크 결과 문자열 생성    | getStrikeResultString()      | 스트라이크 개수에 따른 출력 문자열을 생성한다.                           |
 | 볼 결과 문자열 생성        | getBallResultString()        | 볼 개수에 따른 출력 문자열을 생성한다.                               |
+| 결과 문자열 출력          |  printResult()  | 결과 문자열을 출력한다.                                        |
 
 ## TODO

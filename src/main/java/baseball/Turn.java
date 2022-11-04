@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class Turn {
@@ -68,6 +67,18 @@ public class Turn {
                 this.numberOfBalls++;
             }
         }
+    }
+
+    public void printResult(){
+        StringBuilder result = new StringBuilder();
+        String ballResult = getBallResultString();
+        String strikeResult = getStrikeResultString();
+        result.append(ballResult);
+        if(!ballResult.isEmpty() && !strikeResult.isEmpty()){
+            result.append(' ');
+        }
+        result.append(strikeResult);
+        System.out.println(result);
     }
 
     public String getStrikeResultString(){

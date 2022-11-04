@@ -4,6 +4,10 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import java.util.List;
 
 import java.lang.reflect.Field;
@@ -140,6 +144,78 @@ public class TurnTest {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void printResult_test_print_result_1ball_1strike() {
+
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "251\n";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        String result = "1볼 1스트라이크\r\n";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        turn.printResult();
+
+        assertThat(out.toString()).isEqualTo(result);
+    }
+
+    @Test
+    void printResult_test_print_result_0ball_3strike() {
+
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "235\n";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        String result = "3스트라이크\r\n";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        turn.printResult();
+
+        assertThat(out.toString()).isEqualTo(result);
+    }
+
+    @Test
+    void printResult_test_print_result_3ball() {
+
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "352\n";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        String result = "3볼\r\n";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        turn.printResult();
+
+        assertThat(out.toString()).isEqualTo(result);
     }
 
     @Test
