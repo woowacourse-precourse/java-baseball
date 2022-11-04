@@ -12,4 +12,12 @@ public class BallTest {
 
 		assertThat(ball.compare(ballToCompare)).isEqualTo(CompareResult.STRIKE);
 	}
+
+	@Test
+	void 같은_수_다른_자리_볼() {
+		Ball ball = new Ball(1, 0);
+		Ball ballToCompare = new Ball(1, 1);
+
+		assertThat(ball.compare(ballToCompare)).isEqualTo(CompareResult.BALL);
+	}
 }
