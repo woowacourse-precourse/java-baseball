@@ -12,6 +12,10 @@ public class Computer {
         this.numbers = new ArrayList<>();
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public void generateNumber() {
         while (numbers.size() < RuleConst.NUMBER_LENGTH) {
             Integer randomNumber = Randoms.pickNumberInRange(1, 9);
