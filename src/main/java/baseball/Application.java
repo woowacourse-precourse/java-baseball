@@ -92,18 +92,18 @@ public class Application {
         return playAgain;
     }
 
-    private static String inputUserNumbers() {
+    public static String inputUserNumbers() {
         System.out.print(MESSAGE_REQUEST_INPUT);
         return Console.readLine();
     }
 
-    private static void validateInputPattern(String userInputNumbers) {
+    public static void validateInputPattern(String userInputNumbers) {
         if(!Pattern.matches(PATTERN, userInputNumbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static List<Integer> validateDuplication(String userInputNumbers) {
+    public static List<Integer> validateDuplication(String userInputNumbers) {
         List<Integer> duplicationTestList = new ArrayList<>(MAX_NUMBERS_COUNT);
 
         for(int indexNumber = ZERO; indexNumber < MAX_NUMBERS_COUNT; indexNumber++) {

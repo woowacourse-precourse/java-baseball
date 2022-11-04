@@ -1,11 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import camp.nextstep.edu.missionutils.test.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,5 +17,12 @@ public class FunctionTest {
 		for(int number : generatedNumbers) {
 			assertThat(number > 0 && number < 10);
 		}
+	}
+	@Test						/* 유저 인풋 테스트 */
+	void userInputTest() {
+		String userInputNumbers;
+		assertThat(userInputNumbers = "123");
+		Application.validateInputPattern(userInputNumbers);
+		final List<Integer> USERS_NUMBERS = List.copyOf(Application.validateDuplication(userInputNumbers));
 	}
 }
