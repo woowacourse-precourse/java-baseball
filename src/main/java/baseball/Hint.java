@@ -19,7 +19,7 @@ public class Hint {
 		}
 	}
 
-	private static boolean getRightAnswer() {
+	public static boolean getRightAnswer() {
 		return ComparisonResult.strikeCount == 3;
 	}
 
@@ -41,6 +41,7 @@ public class Hint {
 
 	private static void hintStrike() {
 		GameView.printStrike(ComparisonResult.strikeCount);
+		GameView.printNewLine();
 	}
 
 	private static void hintBall() {
@@ -48,6 +49,7 @@ public class Hint {
 			GameView.printBallAndStrike(ComparisonResult.ballCount);
 		} else {
 			GameView.printBall(ComparisonResult.ballCount);
+			GameView.printNewLine();
 		}
 	}
 }

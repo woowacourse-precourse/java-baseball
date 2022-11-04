@@ -50,6 +50,10 @@ public class GameView {
 	public static boolean isEnd(String input) {
 		return input.equals(END);
 	}
+
+	public static void printNewLine() {
+		System.out.println();
+	}
 }
 
 
