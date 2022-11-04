@@ -9,6 +9,6 @@ public class View {
     }
 
     static final String getUserInput(){
-        return scanner.next();
+        return scanner.nextLine();
     }
 }
