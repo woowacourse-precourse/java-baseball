@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
@@ -18,6 +19,36 @@ public class Game {
     public static final String NEW_LINE = System.lineSeparator();
     public static final String BLANK = " ";
     public static final String RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String INVALID_EXIT_NUMBER = "1 또는 2만 입력해야 합니다.";
+
+    public void init() {
+        do {
+            start();
+            System.out.println(RESTART_OR_EXIT);
+        } while (isExit());
+    }
+
+    public boolean isExit() {
+        String exitNumber = Console.readLine();
+        if (Objects.equals(exitNumber, "1")) {
+            return true;
+        }
+        if (Objects.equals(exitNumber, "2")) {
+            return false;
+        }
+        throw new IllegalArgumentException(INVALID_EXIT_NUMBER);
+    }
+
+    public void start() {
+        List<Integer> randomNumbers = generateRandomNumber();
+        String result;
+        do {
+            System.out.print(INPUT_GUIDE);
+            String inputNumbers = input();
+            result = judge(inputNumbers, randomNumbers);
+            System.out.println(result);
+        } while (!result.equals(3 + STRIKE + NEW_LINE + GAME_OVER));
+    }
 
     public List<Integer> generateRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
@@ -34,9 +65,10 @@ public class Game {
         }
     }
 
-    public void input() {
+    public String input() {
         String inputNumbers = Console.readLine();
         validate(inputNumbers);
+        return inputNumbers;
     }
 
     public void validate(String inputNumbers) {
