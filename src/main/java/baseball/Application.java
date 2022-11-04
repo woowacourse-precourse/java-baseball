@@ -6,8 +6,8 @@ import static constant.Constant.*;
 import static constant.ErrorMessage.INVALID_INPUT_VALUE;
 
 public class Application {
-    static boolean isContinue = true;
     public static void main(String[] args) {
+        boolean isContinue = true;
         PrintComment.printStartComment();
         Game game = new Game();
         do {
