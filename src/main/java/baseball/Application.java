@@ -1,8 +1,35 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
+
+    static int playerAnswer = 0;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+        do {
+            List<Integer> computer = computer();
+            System.out.println(computer);
+
+            int[] gameResult = new int[2];
+            gameResult[1] = 0;
+            while (gameResult[1] != 3) {
+                List<Integer> playerNumber = playerNumber();
+
+                gameResult = gameResult(computer, playerNumber);
+
+                gameResultPrint(gameResult);
+            }
+
+        } while (playerAnswer != 2);
+
+
     }
 
     // 컴퓨터의 숫자 생성
