@@ -12,6 +12,10 @@ public class OpponentComputer {
 
     public OpponentComputer(int randomNumber) {
         this.number = randomNumber;
+        initStrikeAndBallCountMap();
+    }
+
+    public void initStrikeAndBallCountMap() {
         strikeAndBallCountMap.put("Strike", 0);
         strikeAndBallCountMap.put("Ball", 0);
     }
