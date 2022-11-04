@@ -85,4 +85,43 @@ public class FunctionTest {
         assertThat(result3.get("ball")).isEqualTo(3);
     }
 
+    @Test
+    public void 결과_메세지_반환() throws Exception {
+        //case 1
+        //given
+        Integer ballCount1 = 2;
+        Integer strikeCount1 = 2;
+        //when
+        String message1 = refereeAnswer(ballCount1, strikeCount1);
+        //then
+        assertThat(message1).isEqualTo("2볼 2스트라이크");
+
+        //case 2
+        //given
+        Integer ballCount2 = 1;
+        Integer strikeCount2 = 0;
+        //when
+        String message2 = refereeAnswer(ballCount2, strikeCount2);
+        //then
+        assertThat(message2).isEqualTo("1볼");
+
+        //case 3
+        //given
+        Integer ballCount3 = 0;
+        Integer strikeCount3 = 3;
+        //when
+        String message3 = refereeAnswer(ballCount3, strikeCount3);
+        //then
+        assertThat(message3).isEqualTo("3스트라이크");
+
+        //case 4
+        //given
+        Integer ballCount4 = 0;
+        Integer strikeCount4 = 0;
+        //when
+        String message4 = refereeAnswer(ballCount4, strikeCount4);
+        //then
+        assertThat(message4).isEqualTo("낫싱");
+
+    }
 }
