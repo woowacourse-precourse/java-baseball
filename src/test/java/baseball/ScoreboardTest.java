@@ -1,9 +1,6 @@
 package baseball;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
@@ -65,5 +62,79 @@ public class ScoreboardTest {
         scoreboard1.addAllPoint(scoreboard2);
 
         assertThat(scoreboard1.toList()).containsExactly(2, 1);
+    }
+
+    @DisplayName("문자열 파싱")
+    @Nested
+    class to_string {
+        @Test
+        void 낫싱() {
+            Scoreboard scoreboard = new Scoreboard(0, 0);
+
+            assertThat(scoreboard.toString()).isEqualTo("낫싱");
+        }
+
+        @Test
+        void 원스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(0, 1);
+
+            assertThat(scoreboard.toString()).isEqualTo("1스트라이크");
+        }
+
+        @Test
+        void 투스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(0, 2);
+
+            assertThat(scoreboard.toString()).isEqualTo("2스트라이크");
+        }
+
+        @Test
+        void 쓰리스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(0, 3);
+
+            assertThat(scoreboard.toString()).isEqualTo("3스트라이크");
+        }
+
+        @Test
+        void 원볼() {
+            Scoreboard scoreboard = new Scoreboard(1, 0);
+
+            assertThat(scoreboard.toString()).isEqualTo("1볼");
+        }
+
+        @Test
+        void 원볼_원스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(1, 1);
+
+            assertThat(scoreboard.toString()).isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        void 원볼_투스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(1, 2);
+
+            assertThat(scoreboard.toString()).isEqualTo("1볼 2스트라이크");
+        }
+
+        @Test
+        void 투볼() {
+            Scoreboard scoreboard = new Scoreboard(2, 0);
+
+            assertThat(scoreboard.toString()).isEqualTo("2볼");
+        }
+
+        @Test
+        void 투볼_원스트라이크() {
+            Scoreboard scoreboard = new Scoreboard(2, 1);
+
+            assertThat(scoreboard.toString()).isEqualTo("2볼 1스트라이크");
+        }
+
+        @Test
+        void 쓰리볼() {
+            Scoreboard scoreboard = new Scoreboard(3, 0);
+
+            assertThat(scoreboard.toString()).isEqualTo("3볼");
+        }
     }
 }
