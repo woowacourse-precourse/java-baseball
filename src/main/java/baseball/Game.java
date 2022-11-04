@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constant.Constant.*;
+import static constant.ErrorMessage.INVALID_INPUT_VALUE;
 
 public class Game {
     private static List<Integer> computer;
@@ -30,6 +31,17 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public boolean canRestart() {
+        PrintComment.printRestartComment();
+        String userInput = Console.readLine();
+        validUserInputRestart(userInput);
+        PrintComment.printUserInput(userInput);
+        if (userInput.equals(END)) {
+            return false;
+        }
+        return true;
     }
 
     public static List<Integer> pickThreeNumber() {
@@ -56,5 +68,11 @@ public class Game {
             }
         }
         PrintComment.printGameState(gameState);
+    }
+
+    public static void validUserInputRestart(String num) {
+        if (!num.equals(RESTART) && !num.equals(END)) {
+            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
+        }
     }
 }
