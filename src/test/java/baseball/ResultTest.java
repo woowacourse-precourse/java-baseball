@@ -12,4 +12,12 @@ public class ResultTest {
         assertThat(result.getBall()).isEqualTo(answer);
         assertThat(result.getStrike()).isEqualTo(answer);
     }
+
+    @Test
+    void addBallTest() {
+        Result result = new Result();
+        result.addBall();
+        int answer = 1;
+        assertThat(result.getBall()).isEqualTo(answer);
+    }
 }
