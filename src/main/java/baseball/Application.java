@@ -20,6 +20,16 @@ public class Application {
         return false;
     }
 
+    public static int CheckStrike(List<Integer> computer, List<Integer> player){
+        int strike = 0;
+        for(int index = 0; index < computer.size(); index ++){
+            if(computer.get(index) == player.get(index)){
+                strike ++;
+            }
+        }
+        return strike;
+    }
+
     public static List<Integer> GeneratePlayerNumbers(){
         List<Integer> player = new ArrayList<>();
         String input = Console.readLine();
@@ -32,6 +42,7 @@ public class Application {
         }
         return player;
     }
+
     public static List<Integer> GenerateComputerNumbers(){
         List<Integer> computer = new ArrayList<>(0);
         while(computer.size() < 3){
