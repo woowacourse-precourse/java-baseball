@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.ComNumber;
 import baseball.domain.UserNumber;
+import baseball.view.OutputView;
 
 public class OutputController {
 
@@ -37,5 +38,19 @@ public class OutputController {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
         return gameResult;
+    }
+
+    public String numOfStrikeBall(int strike,int ball) {
+        String result = "";
+        if(strike == InputController.NUMBER_SIZE) {
+            result = OutputView.GAME_END;
+        }
+        else if(strike == 0 && ball == 0) {
+            result = OutputView.NOTHING;
+        }
+        else {
+            result = ball + "볼 " + strike + "스트라이크";
+        }
+        return result;
     }
 }
