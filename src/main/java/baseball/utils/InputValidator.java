@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 import static baseball.resources.GameConfig.*;
 import static baseball.resources.Sentence.EXCEPTION;
-import static baseball.utils.SentencePrint.cause;
 
 public class InputValidator {
     public static void validate(String input){
@@ -16,7 +15,7 @@ public class InputValidator {
 
     private static void validateThreeLength(String input) {
         if (!input.matches(PATTERN)) {
-            cause(EXCEPTION);
+            throw new IllegalArgumentException(EXCEPTION);
         }
     }
 
@@ -26,7 +25,7 @@ public class InputValidator {
                 .collect(Collectors.toSet());
 
         if (inputNumber.size() < SIZE) {
-            cause(EXCEPTION);
+            throw new IllegalArgumentException(EXCEPTION);
         }
     }
 }
