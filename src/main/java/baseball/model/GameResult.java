@@ -17,14 +17,18 @@ public class GameResult {
 
     private int countBall(List<Integer> answerNums, List<Integer> playerNums) {
         return (int) IntStream.range(0, NUM_SIZE)
-            .filter(i -> answerNums.get(i) != playerNums.get(i) && answerNums.contains(playerNums.get(i)))
+            .filter(i -> !isStrike(answerNums, playerNums, i) && answerNums.contains(playerNums.get(i)))
             .count();
     }
 
     private int countStrike(List<Integer> answerNums, List<Integer> playerNums) {
         return (int) IntStream.range(0, NUM_SIZE)
-            .filter(i -> answerNums.get(i) == playerNums.get(i))
+            .filter(i -> isStrike(answerNums, playerNums, i))
             .count();
+    }
+
+    private boolean isStrike(List<Integer> answerNums, List<Integer> playerNums, int i) {
+        return answerNums.get(i) == playerNums.get(i);
     }
 
     public int getBallCount() {
