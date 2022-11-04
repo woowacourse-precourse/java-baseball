@@ -1,4 +1,5 @@
 ## 🙇 이번 미션에서 연습해야 할 사항들 (번호는 중요도가 아님)
+
 1. TDD로 구현하기 -> 예외사항을 테스트코드로 작성해서 구조적인 코딩을 하고 버그를 줄이자!<br>
 2. Collection framework 잘 활용하기 -> 자바에서 제공하는 기능인지 확인하자! -> 코드의 가독성을 높이자<br>
 3. Stream문법 도전하기 -> 코드의 가독성을 높이자<br>
@@ -14,7 +15,9 @@
 11. git 관련 추가학습자료 공부하고 정리하자(노오오력해라)<br>
 
 ## 📝 기능 목록
+
 ### 🧐 Abstract
+
 1. welcome메시지를 출력한다 : "숫자 야구 게임을 시작합니다."<br>
    <br>
 2. ComputerPlayer 클래스를 만든다.<br>
@@ -38,11 +41,32 @@
    <br>
 
 ### 🔎 details for implemetation
-- PlayerComputer Class <br><br>
-private static int getRandomNumber()<br>
-기능 : 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
-<br>
-private boolean isQualifiedNumber(HashMap<Integer, Integer> digits)<br>
-기능 : random Number 세자리가 제대로 만들어졌는지 확인한다.<br>
+
+- **PlayerComputer Class** :  싱글톤 객체를 가진 클래스<br>
+  <br>
+  *private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits)*<br>
+  : random Number 3개가 모두 안 만들어졌는지 확인<br>
+  <br>
+  *private static int getRandomDigit()*<br>
+  : 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
+  <br>
+  *private String combineDigits(HashMap<Integer, Integer> digits)*<br>
+  : 만들어진 무작위 수 세 개를 세자리 수의 문자열로 만듭니다.<br>
+  <br>
+  *private HashMap<Integer, Integer> generateInputNumber*<br>
+  : 세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.<br>
+  <br>
+  *public String getRandomInputNumber()*<br>
+  : 컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
+  <br>
+  *public static PlayerComputer getInstance()*<br>
+  : PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.
+    
+    
+
+
+
+
+
 
 
