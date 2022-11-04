@@ -49,6 +49,32 @@ public class Application {
 
         return isValid;
     }
+
+    private static boolean allDifferentDigits(String input) { // Check if the input's digits are all different.
+        boolean isValid = false;
+        boolean iterate = true;
+
+        while (iterate) {
+            char digitChar = input.charAt(0);
+            String digitStr = Character.toString(digitChar);
+            input = input.replaceFirst(digitStr, "");
+
+            if (input.length() == 0) {
+                iterate = false;
+                continue;
+            }
+
+            if (!input.contains(digitStr)) {
+                isValid = true;
+            } else {
+                isValid = false;
+                iterate = false;
+            }
+        }
+
+        return isValid;
+    }
+
     public static void main(String[] args) {
         String computer = "";
         boolean iterate = true;
