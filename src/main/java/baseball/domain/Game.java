@@ -15,21 +15,23 @@ public class Game {
         this.answer = randomNumberList;
     }
 
-    public Map<String, Integer> getResult(String userAnswer) {
+    public Map<String, Integer> getResult(String userInput) {
         Map<String,Integer> resultMap = new HashMap<>() {{
             put("ball", 0);
             put("strike", 0);
         }};
 
-        List<Integer> answerIntegerList = Converter.toIntegerList(userAnswer);
-        for (int index = 0; index < answerIntegerList.size(); index++) {
-            Integer currentInteger = answerIntegerList.get(index);
-            if (Objects.equals(answer.get(index), currentInteger)) {
+        List<Integer> userAnswer = Converter.toIntegerList(userInput);
+        for (int index = 0; index < userAnswer.size(); index++) {
+            Integer currentAnswer = answer.get(index);
+            Integer currentUserAnswer = userAnswer.get(index);
+
+            if (Objects.equals(currentAnswer, currentUserAnswer)) {
                 resultMap.put("strike",resultMap.get("strike") + 1);
                 continue;
             }
 
-            if (answer.contains(answerIntegerList.get(index))) {
+            if (answer.contains(currentUserAnswer)) {
                 resultMap.put("ball",resultMap.get("ball") + 1);
             }
         }
