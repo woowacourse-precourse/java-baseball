@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +28,21 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 컴퓨터의_수_제대로_생성되었는지_확인() {
+        for (int i = 0; i < 1000; i++) {
+            List<Integer> numArr = Application.makeComputerRandomNumber();
+            assertThat(numArr).hasSize(3);
+
+            assertThat(numArr.get(0))
+                    .isNotEqualTo(numArr.get(1))
+                    .isNotEqualTo(numArr.get(2));
+
+            assertThat(numArr.get(1))
+                    .isNotEqualTo(numArr.get(2));
+        }
     }
 
     @Override
