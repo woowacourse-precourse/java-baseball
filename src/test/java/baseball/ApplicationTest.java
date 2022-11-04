@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +16,14 @@ class ApplicationTest extends NsTest {
     @Nested
     class NumberControllerTest {
         @Test
-        void testGetUniqueThreeNumbersListLength() {
+        void getUniqueThreeNumbersHaveValidLength() {
             final int length = 3;
             List<Integer> result = NumberController.getUniqueThreeNumbers();
             assertThat(result.size()).isEqualTo(length);
         }
 
         @Test
-        void testGetUniqueThreeNumbersIsUnique() {
+        void getUniqueThreeNumbersIsUnique() {
             int[] oneToNine = new int[10];
             Arrays.setAll(oneToNine, i -> 1);
             oneToNine[0] = 0;
@@ -31,6 +32,40 @@ class ApplicationTest extends NsTest {
                 oneToNine[num]--;
                 assertThat(oneToNine[num] == 0).isTrue();
             }
+        }
+    }
+
+    @Nested
+    class InputControllerTest {
+
+        @Test
+        void checkThreeNumNotInt() {
+            String input = "fdgml";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+        }
+
+        @Test
+        void checkThreeNumNoInput() {
+            String input = "";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+        }
+
+        @Test
+        void checkThreeNumNotInRange() {
+            String input = "301";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+        }
+
+        @Test
+        void checkThreeNumLengthOver() {
+            String input = "1234";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+        }
+
+        @Test
+        void checkThreeNumDuplicate() {
+            String input = "221";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
         }
     }
     @Test
