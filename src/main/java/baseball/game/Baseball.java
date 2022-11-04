@@ -22,16 +22,22 @@ public class Baseball implements Game {
     private int strike;
     private int ball;
 
-    public Baseball() {
-        this.strike = 0;
-        this.ball = 0;
+    @Override
+    public void play() {
+        printGameStartMessage();
         setComputerNumbers();
+        do {
+            input();
+            execute();
+            printResult();
+        } while (isNotCorrect());
     }
 
     private void setComputerNumbers() {
         List<Integer> uniqueNumbers = pickUniqueNumbersInRange(START_POSSIBLE_NUMBER,
                 END_POSSIBLE_NUMBER, GOAL_DIGIT);
-        computerNumbers.addAll(uniqueNumbers);
+        this.computerNumbers.clear();
+        this.computerNumbers.addAll(uniqueNumbers);
     }
 
     private List<Integer> pickUniqueNumbersInRange(int start, int end, int count) {
@@ -43,16 +49,6 @@ public class Baseball implements Game {
             }
         }
         return uniqueNumbers;
-    }
-
-    @Override
-    public void play() {
-        printGameStartMessage();
-        do {
-            input();
-            execute();
-            printResult();
-        } while (isNotCorrect());
     }
 
     private void printGameStartMessage() {
