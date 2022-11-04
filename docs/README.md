@@ -1,7 +1,5 @@
 # 🚀기능목록
 
-- top-down방식으로 해보자
-- 클래스 설계를 먼저 해보고 들어가자
 
 ### 입력
 - 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다 (난수발생)
@@ -33,30 +31,29 @@
 
 - END_GAME = 1;
 - ONE_MORE_GAME = 2;
-- validateChoice()
 
 
-- Begin() 게임을 시작할지 결정
+- [ ] validateChoice()
+- [ ] Begin() 게임을 시작할지 결정
   - new Game
-- Guess() 정답을 맞춰볼 수 있다
+- [ ] Guess() 정답을 맞춰볼 수 있다
   - new Number
-- Choose() 게임을 더 할지 말지 결정
+- [ ] Choose() 게임을 더 할지 말지 결정
   - ❗ 1 or 2가 아니면 throw
 
 
 ### 🍄 Game 클래스
 
-- createAnswer() 새로운 게임에 대한 정답 난수 생성
+- [ ] createAnswer() 새로운 게임에 대한 정답 난수 생성
     - new Answer
-    
-- end() 게임 더 할래 말래?
+- [ ] end() 게임 더 할래 말래?
 
 
 ### 🍄 Answer 클래스
 
 발생한 난수를 wrapping 하여 외부에서 답을 바꿀 수 없도록
 
-- compare() 외부에서 입력된 숫자를 내부의 정답과 비교 후 결과만 출력
+- [ ] compare() 외부에서 입력된 숫자를 내부의 정답과 비교 후 결과만 출력
   - 같은 수가 같은 자리에 있으면 스트라이크
   - 다른 자리에 있으면 볼
   - 같은 수가 전혀 없으면 낫싱
@@ -64,11 +61,9 @@
 ### 🍄 Number 클래스
 
 - GAME_NUMBER_SIZE = 3;
-- validateSize()
-- validateDuplicate()
-
-
-- threeDigits()
+- [ ] validateSize()
+- [ ] validateDuplicate()
+- [ ] threeDigits()
   - 세자리 숫자입력 (new number)
   - ❗세자리가 아니면 throw
   - ❗세자리이지만 중복된 숫자면 throw
