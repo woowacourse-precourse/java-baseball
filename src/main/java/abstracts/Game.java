@@ -23,5 +23,6 @@ public abstract class Game {
 
     protected abstract void initialize();
     protected abstract void terminate();
+    public abstract boolean simulate(String input);
 
 }
