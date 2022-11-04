@@ -17,6 +17,7 @@ public class GameView {
 
     public void run() {
         GameController gameController = new GameController();
+        gameController.startGame();
         System.out.println(MSG_FIRST);
         while (true) {
             // User에게 숫자를 입력 받는다.
