@@ -7,4 +7,8 @@ public class User {
     public void setGuessedAnswer(String guessedAnswer) {
         this.guessedAnswer = guessedAnswer;
     }
+
+    public String getGuessedAnswer() {
+        return guessedAnswer;
+    }
 }
