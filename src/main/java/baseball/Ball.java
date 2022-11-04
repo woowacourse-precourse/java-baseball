@@ -8,4 +8,8 @@ public class Ball {
         this.number = number;
         this.order = order;
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
