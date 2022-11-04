@@ -8,7 +8,7 @@
 - [x] 답 저장 (Answer)
   - [x] 스트라이크 / 볼 / 낫싱에 확인되는 숫자 포함 여부 및 자리 확인
 
-- [ ] 답 생성 (AnswerGenerator)
+- [x] 답 생성 (AnswerGenerator)
 
 - [ ] 정답 여부 판단 (Judge)
   - [ ] 볼 / 스트라이크 / 낫싱 판단
