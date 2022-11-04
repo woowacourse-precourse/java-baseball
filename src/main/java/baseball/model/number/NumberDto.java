@@ -5,6 +5,8 @@ import java.util.List;
 public class NumberDto {
     private List<Integer> number;
 
+    public NumberDto() {}
+
     public NumberDto(List<Integer> number) {
         this.number = number;
     }
