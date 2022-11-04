@@ -15,10 +15,13 @@ public class Player {
 
     public void player3NumberInput() {
 
-        while (playerNumber.size() < 3) {
-            System.out.print("숫자를 입력해주세요 : ");
-            playerNumber.add(Integer.parseInt(Console.readLine()));
+        System.out.print("숫자를 입력해주세요 : ");
+        String playerStringNumber = Console.readLine();
+
+        for (int i = 0; i < playerStringNumber.length(); i++) {
+            playerNumber.add(Integer.parseInt(String.valueOf(playerStringNumber.charAt(i))));
         }
     }
 }
+
 
