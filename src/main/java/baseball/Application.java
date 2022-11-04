@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static baseball.CompareNumber.compare;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -14,6 +15,11 @@ public class Application {
         if (!isValidLength(userInput) || !isExistOnlyNumber(userInput)) {
             throw new IllegalArgumentException();
         }
+
+        Map<Score, Integer> score = new HashMap<>(3);
+        initializeScore(score);
+
+        compare(computerNumber, userInput, score);
     }
 
     private static ArrayList<String> getComputerNumber() {
@@ -41,5 +47,11 @@ public class Application {
             isOnlyNumber = isOnlyNumber || Character.isDigit(element.charAt(0));
         }
         return isOnlyNumber;
+    }
+
+    private static void initializeScore(Map<Score, Integer> score) {
+        for (Score name : Score.values()) {
+            score.put(name, 0);
+        }
     }
 }
