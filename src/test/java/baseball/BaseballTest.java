@@ -12,7 +12,7 @@ class BaseballTest {
     @Nested
     class Ball_class_test {
         @Nested
-        @DisplayName("생성자, validateForm 메소드는")
+        @DisplayName("validateForm 메소드는")
         class validateFormTest {
             @Nested
             @DisplayName("세 자리 숫자가 입력되지 않았을 때")
@@ -27,7 +27,7 @@ class BaseballTest {
         }
 
         @Nested
-        @DisplayName("생성자, validateDuplication 메소드는")
+        @DisplayName("validateDuplication 메소드는")
         class validateDuplicationTest {
             @Nested
             @DisplayName("중복을 갖는 숫자가 입력되었을 때")
@@ -39,6 +39,14 @@ class BaseballTest {
                     assertThatThrownBy(()-> new Ball(duplicatedNumber)).isInstanceOf(IllegalArgumentException.class);
                 }
             }
+        }
+
+        @Test
+        @DisplayName("toString 메소드가 String을 반환하는지 확인")
+        void toString_test() {
+            String nonDuplicateThreeDigitNumber = "123";
+            Ball ball = new Ball(nonDuplicateThreeDigitNumber);
+            assertThat(ball.toString()).isEqualTo(nonDuplicateThreeDigitNumber);
         }
     }
 }
