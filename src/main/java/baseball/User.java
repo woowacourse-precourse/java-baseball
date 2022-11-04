@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class User {
@@ -66,5 +67,15 @@ public class User {
             userNumber -= (userNumber / divideNumber) * divideNumber;
         }
         return userNumberList;
+    }
+
+    int checkStrike(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        int strike = 0;
+        for (int index = 0; index < 3; index++) {
+            if (Objects.equals(computerNumberList.get(index), userNumberList.get(index))) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }
