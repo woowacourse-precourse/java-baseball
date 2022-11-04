@@ -30,12 +30,12 @@ public class OutputController {
         boolean gameResult = false;
         int strike = getStrike(comNumber, userNumber);
         int ball = getBall(comNumber, userNumber);
-        if(strike == InputController.NUMBER_SIZE) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if(numOfStrikeBall(strike,ball).equals(OutputView.GAME_END)) {
+            System.out.println(OutputView.THREESTRIKE);
             gameResult = true;
         }
         else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(numOfStrikeBall(strike,ball));
         }
         return gameResult;
     }
