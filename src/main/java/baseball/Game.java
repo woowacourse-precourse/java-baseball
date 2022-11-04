@@ -1,8 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Game {
@@ -19,45 +24,47 @@ public class Game {
         }
     }
 
-    public int inputUserAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+    public String inputUserAnswer() {
+        return Console.readLine();
     }
 
-    public void checkUserAnswerWhichIsCorrect(int userAnswer) {
+    public void checkUserAnswerWhichIsCorrect(String userAnswer) {
         HashMap<String, Integer> strikeAndBallCount = new HashMap<>();
 
         strikeAndBallCount.put("Strike", 0);
         strikeAndBallCount.put("Ball", 0);
 
-        int[] answer = intToList(userAnswer);
+        List<Integer> answer = stringToListInteger(userAnswer);
 
         checkAnswerState(strikeAndBallCount, answer);
     }
 
-    private void checkAnswerState(HashMap<String, Integer> strikeAndBallCount, int[] answer) {
+    private void checkAnswerState(HashMap<String, Integer> strikeAndBallCount, List<Integer> userAnswer) {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (answer[i] == computer.get(j) && i == j) {
-                    strikeAndBallCount.put("Strike", strikeAndBallCount.get("Strike") + 1);
-                    break;
-                } else if (answer[i] == computer.get(j) && i != j) {
-                    strikeAndBallCount.put("Ball", strikeAndBallCount.get("Ball") + 1);
-                    break;
-                }
-            }
+            if (computer.contains(userAnswer.get(i))
+                    && (userAnswer.get(i).equals(computer.get(i)))) {
+                strikeAndBallCount.put("Strike", strikeAndBallCount.get("Strike") + 1);
+            } else if (computer.contains(userAnswer.get(i))
+                    && (!userAnswer.get(i).equals(computer.get(i))))
+            strikeAndBallCount.put("Ball", strikeAndBallCount.get("Ball") + 1);
         }
     }
 
-    public void incorrectUserAnswerRule(int userAnswer) {
-        int[] answer = intToList(userAnswer);
-        if (answer.length != 3) {
+    public void incorrectUserAnswerRule(String userAnswer) {
+        List<Integer> answerList = stringToListInteger(userAnswer);
+        if (answerList.size() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
     }
 
-    private int[] intToList(int userAnswer) {
-        return Stream.of(String.valueOf(userAnswer)
-                .split("")).mapToInt(Integer::parseInt).toArray();
+    private List<Integer> stringToListInteger(String userAnswer) {
+        return listToListInteger(List.of(userAnswer.split("")));
+
+    }
+
+    private List<Integer> listToListInteger(List<String> answerList) {
+        return answerList.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
