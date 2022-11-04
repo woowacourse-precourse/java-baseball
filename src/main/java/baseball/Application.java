@@ -34,13 +34,23 @@ public class Application {
 
     public static void checkInputNumberValidation(String inputNumber) throws IllegalArgumentException {
 
-        //길이
         checkLength(inputNumber);
-        //중복값
-        checkDuplication(inputNumber);
-        //1~9사이값만
 
+        checkDuplication(inputNumber);
+
+        isNumber(inputNumber);
     }
+
+    public static void isNumber(String inputNumber) throws IllegalArgumentException{
+
+        for (char number : inputNumber.toCharArray()) {
+            if (number > '0' && number <= '9') {
+                continue ;
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public static void checkDuplication(String inputNumber) throws IllegalArgumentException{
 
