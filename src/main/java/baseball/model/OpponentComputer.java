@@ -15,6 +15,11 @@ public class OpponentComputer {
         strikeAndBallCountMap.put("Strike", 0);
         strikeAndBallCountMap.put("Ball", 0);
     }
+
+    public void judgeStrikeOrBallCountOfPlayerNumber(int playerNumber) {
+        judgeStrikeOrBall(addEachDigitToList(number), addEachDigitToList(playerNumber));
+    }
+
     public List<String> addEachDigitToList(int number) {
         return Arrays.asList(String.valueOf(number).split(""));
     }
