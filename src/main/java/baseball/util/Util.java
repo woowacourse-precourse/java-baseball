@@ -18,4 +18,10 @@ public class Util {
         }
 
     }
+
+    public static void isCorrectInputRestart(int number){
+        if (number != 1 || number != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

@@ -15,4 +15,8 @@ public class User {
 
         return inputNumbers;
     }
+
+    public int inputRestart() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
