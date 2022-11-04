@@ -7,20 +7,26 @@ import java.util.List;
 public class Computer {
 
   public List<Character> makeRandomNum() {
-    char randNumChar;
     List<Character> characterList = new ArrayList<>();
-    char tmp1 = oneRandomNumChar();
-    characterList.add(tmp1);
-    char tmp2 = 0;
+
+    char index0Value = oneRandomNumChar();
+    characterList.add(index0Value);
+    return compareAndAddList(characterList, index0Value);
+  }
+
+  private List<Character> compareAndAddList(List<Character> characterList, char index0Value) {
+    char randNumChar;
+    char index1Value = 0;
+
     for (int i = 1; i < 3; i++) {
       randNumChar = oneRandomNumChar();
-      while (i == 1 && randNumChar == tmp1) {
+      while (i == 1 && randNumChar == index0Value) {
         randNumChar = oneRandomNumChar();
       }
       if (i == 1) {
-        tmp2 = randNumChar;
+        index1Value = randNumChar;
       }
-      while (i == 2 && (randNumChar == tmp1 || randNumChar == tmp2)) {
+      while (i == 2 && (randNumChar == index0Value || randNumChar == index1Value)) {
         randNumChar = oneRandomNumChar();
       }
       characterList.add(randNumChar);
