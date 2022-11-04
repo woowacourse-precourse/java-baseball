@@ -3,13 +3,13 @@ package baseball;
 
 
 public class GameSystem {
-    BaseballNumber baseballNumber;
+    Player player;
     Computer computer;
     ScoreBoard scoreBoard;
 
 
     public GameSystem() {
-        baseballNumber = new BaseballNumber();
+        player = new Player();
         computer = new Computer();
         scoreBoard = new ScoreBoard();
     }

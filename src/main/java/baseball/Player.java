@@ -2,18 +2,18 @@ package baseball;
 
 
 
-public class BaseballNumber {
+public class Player {
     private String number;
 
 
-    public BaseballNumber() {}
+    public Player() {}
 
 
-    public void set(String input) {
+    public void setNumber(String input) {
         if (!Validator.isValid(input)) {
             throw new IllegalArgumentException();
         }
 
-        number = input;
+        this.number = input;
     }
 }
