@@ -24,9 +24,13 @@ public class Hint {
     static Map<Integer, Character> computerNumber = createComputerNumber();
 
     // 힌트 기능 동작
-    private int runHint(Map<Integer, Character> playerList) {
+    public void runHint(Map<Integer, Character> playerNumber) {
 
-        for (int i = 0; i < playerList.size(); i++) {
+        for (int i = 0; i < playerNumber.size(); i++) {
+
+            boolean userIndex = userNumber.containsValue(userNumber.get(i));
+            boolean computeIndex = computerNumber.containsValue(computerNumber.get(i));
+
             // 스트라이크
             if (userNumber.get(i) == computerNumber.get(i)) {
                 strike++;
@@ -34,8 +38,7 @@ public class Hint {
 
             // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
             for (int index = 0; index < 3; index++) {
-                if (userNumber.get(i) == computerNumber.get(i)
-                        || userNumber.getOrDefault(i,) != computerNumber.values()) {
+                if (userNumber.get(i) == computerNumber.get(i) || userIndex != computeIndex) {
                     ball++;
                 }
             }
@@ -43,7 +46,6 @@ public class Hint {
             // 낫싱을 세어야 하나?
 
         }
-
     }
 
     public int getStrike() {
