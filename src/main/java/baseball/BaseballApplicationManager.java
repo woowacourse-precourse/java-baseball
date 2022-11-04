@@ -19,6 +19,6 @@ public class BaseballApplicationManager {
     }
 
     private boolean keepPlaying() {
-        return false;
+        return IOManager.inputRestart();
     }
 }
