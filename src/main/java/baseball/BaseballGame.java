@@ -17,31 +17,31 @@ public class BaseballGame {
         return answer;
     }
 
-    private boolean isStrike(List<Integer> inputNumbers, List<Integer> answer, int index) {
-        return inputNumbers.get(index) == answer.get(index);
-    }
-
-    public int getStrikeCount(List<Integer> inputNumbers, List<Integer> answer) {
+    public int getStrikeCount(List<Integer> inputs, List<Integer> answer) {
         int count = 0;
-        for (int i = 0; i < inputNumbers.size(); i++) {
-            if (isStrike(inputNumbers, answer, i)) {
+        for (int i = 0; i < inputs.size(); i++) {
+            if (isStrike(inputs, answer, i)) {
                 count++;
             }
         }
         return count;
     }
 
-    public int getBallCount(List<Integer> inputNumbers, List<Integer> answer) {
+    public int getBallCount(List<Integer> inputs, List<Integer> answer) {
         int count = 0;
-        for (int i = 0; i < inputNumbers.size(); i++) {
-            if (answer.contains(inputNumbers.get(i))) {
+        for (int i = 0; i < inputs.size(); i++) {
+            if (answer.contains(inputs.get(i))) {
                 count++;
             }
-            if (isStrike(inputNumbers, answer, i)) {
+            if (isStrike(inputs, answer, i)) {
                 count--;
             }
         }
         return count;
+    }
+    
+    private boolean isStrike(List<Integer> inputs, List<Integer> answer, int index) {
+        return inputs.get(index) == answer.get(index);
     }
 
 }
