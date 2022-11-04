@@ -1,6 +1,10 @@
 package baseball.view;
 
+import baseball.model.Ball;
+import baseball.model.Balls;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -11,5 +15,18 @@ public class InputViewTest {
         assertThatThrownBy(() -> {
             InputView.input("1w3");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력을_Balls로_변환() {
+        Balls balls = InputView.input("123");
+
+        Balls comp = new Balls(List.of(
+            new Ball(1, 0)
+            , new Ball(2, 1)
+            , new Ball(3, 2)
+        ));
+
+        assertThat(balls).isEqualTo(comp);
     }
 }
