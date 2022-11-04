@@ -16,7 +16,7 @@ public class User {
         return userNumber.length() == 3;
     }
 
-    private static boolean isDuplicate(String userNumber) {
+    private static boolean isDuplication(String userNumber) {
         Set<Character> notDuplication = new HashSet<>();
         for (int index = 0; index < userNumber.length(); index++) {
             notDuplication.add(userNumber.charAt(index));
@@ -24,14 +24,14 @@ public class User {
         return notDuplication.size() == userNumber.length();
     }
 
-    private static void getValidNumber(String inputUserNumber) {
+    private static void isValidNumber(String inputUserNumber) {
         if (!isValidScope(inputUserNumber)) {
             throw new IllegalArgumentException("1 ~ 9 시이의 수만 입력할 수 있습니다.");
         }
         if (!isThreeLength(inputUserNumber)) {
             throw new IllegalArgumentException("세 자리의 수만 입력할 수 있습니다.");
         }
-        if (!isDuplicate(inputUserNumber)) {
+        if (!isDuplication(inputUserNumber)) {
             throw new IllegalArgumentException("중복되지 않은 수만 입력할 수 있습니다.");
         }
     }
@@ -40,7 +40,7 @@ public class User {
         String inputUserNumber = Console.readLine();
         List<Integer> userNumber = new ArrayList<>();
         try {
-            getValidNumber(inputUserNumber);
+            isValidNumber(inputUserNumber);
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException(exception);
         }
