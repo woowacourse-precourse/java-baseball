@@ -25,7 +25,7 @@ public class Application {
             user_ball_number = user_Input();
             result = checker(computer_ball_number, user_ball_number);
             if(!result.get(0).equals("")){
-                System.out.print(result.get(0));
+                System.out.print(result.get(0)+" ");
             }
             System.out.println(result.get(1));
         }
