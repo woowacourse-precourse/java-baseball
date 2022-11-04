@@ -18,7 +18,7 @@ class BallTest {
 
     @Test
     public void ballBallTest() throws Exception {
-        assertThat(Ball.of(5, 2).eachBallMatch(computerBall))
+        assertThat(Ball.of(3, 2).eachBallMatch(computerBall))
             .isEqualTo(BallStatus.BALL);
     }
 
@@ -30,6 +30,8 @@ class BallTest {
 
     @Test
     public void ballNothingTest() throws Exception {
+        assertThat(Ball.of(4, 2).eachBallMatch(computerBall))
+            .isEqualTo(BallStatus.NOTHING);
     }
 
 }

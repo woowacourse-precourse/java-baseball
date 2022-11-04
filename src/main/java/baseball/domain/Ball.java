@@ -21,7 +21,11 @@ public class Ball {
         if (this.equals(computerBall)) {
             return BallStatus.STRIKE;
         }
-        return BallStatus.BALL;
+        if (this.ballNumber.equals(computerBall.ballNumber)
+            && this.location != computerBall.location) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
     }
 
     @Override
