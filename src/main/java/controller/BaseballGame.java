@@ -26,16 +26,16 @@ public class BaseballGame {
             }
             playerRepository.setPlayerNumber(playerNumber);
             checkExit = isCorrect(playerRepository, computer);
+            hintPrint(playerRepository, computer, checkExit);
         }
+
+        Player.printEnd();
+
     }
 
     public static boolean isCorrect(PlayerRepository playerRepository, Computer computer) {
         int userInput;
         int computerNumber;
-
-        if (playerRepository.getPlayerNumber().equals("")) {
-            return false;
-        }
 
         userInput = Integer.parseInt(playerRepository.getPlayerNumber());
 
@@ -54,5 +54,51 @@ public class BaseballGame {
             return true;
         }
         return false;
+    }
+
+    public static void hintPrint(PlayerRepository playerRepository, Computer computer, boolean isRight) {
+        int ball = 0;
+        int strike = 0;
+        int index = 0;
+        String computerNumber;
+
+        if (isRight) {
+            return;
+        }
+
+        computerNumber = Integer.toString(computer.getComputerNumber());
+
+        for (char playerChar : playerRepository.getPlayerNumber().toCharArray()) {
+            ball += countBall(playerChar, computerNumber, index);
+            strike += countStrike(playerChar, computerNumber, index);
+            index += 1;
+        }
+
+        Player.printHint(ball, strike);
+    }
+
+    public static int countBall(char playerChar, String computerNumber, int playerIndex) {
+        char[] computerCharArray = computerNumber.toCharArray();
+        int i;
+
+        for (i = 0; i < computerCharArray.length; i++) {
+            if (i == playerIndex) {
+                continue;
+            }
+
+            if (playerChar == computerCharArray[i]) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    public static int countStrike(char playerChar, String computerNumber, int playerIndex) {
+        if (playerChar == computerNumber.charAt(playerIndex)) {
+            return 1;
+        }
+
+        return 0;
     }
 }
