@@ -51,6 +51,22 @@ public class Application {
         return number == answerNumber;
     }
 
+    public static int[] Judgment(Integer[] input, List<Integer> answer) {
+        int[] result =new int[]{0, 0}; //result[0] = 볼, result[1] = 스트라이크
+        for (int i = 0; i <3 ; i++) {
+            if(isStrike(result[i],answer.get(i))) {
+                result[1]++;
+                continue;
+            }
+            if (isContain(input[i], answer)) {
+                result[0]++;
+            }
+        }
+        return result;
+
+
+    }
+
 
 
     static class Nums{
