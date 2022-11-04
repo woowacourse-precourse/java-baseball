@@ -25,6 +25,7 @@ public class Round {
             turn = new Turn();
             turn.start(this.hiddenNumberList);
         } while (!turn.isStrikeOut());
+        turn.printGameOverMessage();
     }
 
     public List<Integer> generateNewHiddenNumberList() {
@@ -42,4 +43,8 @@ public class Round {
         } while (numberList.contains(randomNumber));
         numberList.add(randomNumber);
     }
+
+    /*public boolean wantAnotherRound(){
+
+    }*/
 }

@@ -12,7 +12,7 @@ class RoundTest extends NsTest {
     @Test
     void start_test_round_start() {
         run("467", "135", "235");
-        assertThat(output()).contains("낫싱", "2스트라이크", "3스트라이크");
+        assertThat(output()).contains("낫싱", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Test
