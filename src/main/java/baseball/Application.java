@@ -10,8 +10,7 @@ public class Application {
     public static void main(String[] args) {
         getStartMessage();
         List<Integer> answer = getRandomValue();
-        List<Integer> userInput;
-        makeException();
+        List<Character> userInput = getUserInput();
     }
 
     public static void getStartMessage() {
@@ -24,6 +23,7 @@ public class Application {
 
     public static List<Integer> getRandomValue() {
         List<Integer> answer = new ArrayList<>();
+
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
@@ -33,17 +33,23 @@ public class Application {
         return answer;
     }
 
-    public static List<Integer> getUserInput() {
+    public static List<Character> getUserInput() {
+        String input = Console.readLine();
+        List<Character> inputList = new ArrayList<>();
 
-            String input = Console.readLine();
-            List<Integer> inputList = new ArrayList<>();
+        if (input.length() > 3) {throwInputException();}
 
-            if (input.length() > 3) {makeException();}
-
+        for (char x : input.toCharArray()) {
+            if (!Character.isDigit(x) | inputList.contains(x)) {
+                throwInputException();
+            }
+            inputList.add(x);
+        }
             return inputList;
     }
 
-    public static void makeException() {
+    public static void throwInputException() {
         throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해주십시오");
     }
+
 }
