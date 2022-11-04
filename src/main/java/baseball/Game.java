@@ -57,6 +57,17 @@ public class Game {
                 || inputNumbers.charAt(0) == inputNumbers.charAt(2);
     }
 
+    public String judge(String inputNumbers, List<Integer> randomNumbers) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        return printResult(strikeCount, ballCount);
+    }
+
+    public boolean isStrike(char number, List<Integer> randomNumbers, int index) {
+        return Character.getNumericValue(number) == randomNumbers.get(index);
+    }
+
     public String printResult(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
             return NOTHING;
