@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.entity.Type;
 import baseball.view.Controller;
 
 import java.util.Map;
@@ -32,7 +33,7 @@ public class GameService {
         boolean flag = false;
         while (!flag) {
             String input = controller.printAndInputNumber();
-            Map<String, Integer> resultMap = separator.separateInputResult(input);
+            Map<Type, Integer> resultMap = separator.separateInputResult(input);
             flag = controller.printRoundResult(resultMap);
         }
     }

@@ -17,7 +17,7 @@ class NumberConditionTest {
 
     @Test
     @DisplayName("자릿수가 일치하는지")
-    void testDigitCorrect_false() {
+    void testDigitCorrect_false() {             // 100ms
         boolean mock = numberCondition.isDigitCorrect("9", 0);
         assertThat(mock).isFalse();
     }

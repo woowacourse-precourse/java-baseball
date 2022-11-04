@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.configuration.InputConfigure;
+import baseball.entity.Type;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Map;
@@ -23,9 +24,9 @@ public class Controller {
         return input;
     }
 
-    public boolean printRoundResult(Map<String, Integer> resultMap) {
-        int ball = resultMap.get("ball");
-        int strike = resultMap.get("strike");
+    public boolean printRoundResult(Map<Type, Integer> resultMap) {
+        int ball = resultMap.get(Type.BALL);
+        int strike = resultMap.get(Type.STRIKE);
         boolean flag = false;
 
         if (strike == GAME_ANSWER_MAX_VALUE) {
