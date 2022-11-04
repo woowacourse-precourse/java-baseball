@@ -68,4 +68,20 @@ class InputTest {
       inputClass.printInputString(sysIn4);
     }).isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  public void 입력으로_0_포함된_숫자() {
+    String sysIn1 = "120";
+    String sysIn2 = "102";
+    String sysIn3 = "012";
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn1);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn2);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn3);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
