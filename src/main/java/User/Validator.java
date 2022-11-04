@@ -11,7 +11,7 @@ public class Validator {
 		haveInvalidLength(numberInput);
 	}
 
-	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException{
+	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException {
 		if (input != RESTART_GAME && input != END_GAME) {
 			throw new IllegalArgumentException();
 		}

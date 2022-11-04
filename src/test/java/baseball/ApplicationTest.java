@@ -19,23 +19,28 @@ class ApplicationTest extends NsTest {
 	@Test
 	void validateRestartOrNot_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
 		String input = "3";
-		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input)).isInstanceOf(
+			IllegalArgumentException.class);
 	}
+
 	@Test
 	void haveInvalidLength_메소드로_유효하지_않은_길이의_입력에_대한_예외_처리() {
 		String input = "1243";
 		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
 	}
+
 	@Test
 	void existInvalidLetter_메소드로_유효하지_않은_글자를_입력하는_예외_처리() {
 		String input = "2a3";
 		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
 	}
+
 	@Test
 	void existDuplicateNumber_메소드로_중복된_숫자를_입력하는_예외_처리() {
 		String input = "233";
 		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
 	}
+
 	@Test
 	void getUserInput_메소드로_유저_입력_받기() {
 		String input = "768";
