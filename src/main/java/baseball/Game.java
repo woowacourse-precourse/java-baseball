@@ -15,6 +15,14 @@ public class Game {
     public Game() {
     }
 
+    public void gamePlay() {
+        while (true) {
+            playGameRound();
+            
+            // 여기 계속할지 처리하는 메소드
+        }
+    }
+
     /**
      * 사용자의 입력을 받아 List로 변환해 넘겨주는 메소드
      *
@@ -53,7 +61,7 @@ public class Game {
             // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
             String checkDigitsResult = computer.checkDigits(userInputDigit, computerRandomDigit);
             System.out.println(checkDigitsResult);
-            if(isGameWin(checkDigitsResult)){
+            if (isGameWin(checkDigitsResult)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 // 여기 1, 2 메뉴 선택할 수 있는 메소드 필요
 
@@ -73,11 +81,11 @@ public class Game {
      * 게임을 새로 시작할지(1), 종료할 지(2) 선택하는 메소드
      * 적절한 입력인지 확인하고 예외처리하는 기능
      */
-    public int getMenuNumber(){
+    public int getMenuNumber() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String inputMenu = Console.readLine();
-        if(!input.isAllDigits(inputMenu)){
+        if (!input.isAllDigits(inputMenu)) {
             throw new IllegalArgumentException();
         }
 
