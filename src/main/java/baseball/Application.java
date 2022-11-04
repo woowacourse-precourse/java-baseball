@@ -19,5 +19,9 @@ public class Application {
             restartOrEnd = Integer.valueOf(Console.readLine());
         } while (restartOrEnd == RESTART_CODE);
 
+        if (restartOrEnd != END_CODE) {
+            throw new IllegalArgumentException();
+        }
+
     }
 }
