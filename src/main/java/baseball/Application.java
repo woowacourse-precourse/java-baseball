@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 
 public class Application {
+    public static final String STRIKE = "strike";
+    public static final String BALL = "ball";
 
     public static void main(String[] args) {
 
@@ -48,4 +50,24 @@ public class Application {
         List<String> duplicationCheckList = Arrays.asList(input.split(""));
         return duplicationCheckList.size() == duplicationCheckList.stream().distinct().count();
     }
+
+    public static Map<String, Integer> createRefereeCount(List<Integer> baseballNumberList, List<Integer> inputNumberList) {
+        Map<String, Integer> count = new HashMap<>(){{
+            put(STRIKE,0);
+            put(BALL,0);
+        }};
+
+        for (int i = 0; i < baseballNumberList.size(); i++) {
+            int baseballNumber = baseballNumberList.get(i);
+            int inputNumber = inputNumberList.get(i);
+            if(baseballNumber == inputNumber){
+                count.put(STRIKE, count.get(STRIKE) + 1);
+            }
+            if(baseballNumber != inputNumber && baseballNumberList.contains(inputNumber)){
+                count.put(BALL, count.get(BALL) + 1);
+            }
+        }
+        return count;
+    }
+
 }
