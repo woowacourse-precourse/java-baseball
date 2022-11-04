@@ -22,20 +22,25 @@ public class Application {
             Computer.compare(inputList);
             Computer.printHint();
             Computer.checkResult();
+
+            if (Computer.getGameResult()) {
+                restartQeustion();
+                Computer.gameInitialize();
+            }
         }
     }
 
-    private static boolean restartQeustion() {
+    private static void restartQeustion() {
         System.out.println(Comment.REGAME);
         String restartInput = Console.readLine();
         validateInput(restartInput);
 
         if (restartInput.equals("1")) {
-            return true;
+            Computer.setRestartFlag(true);
         }
 
         if (restartInput.equals("2")) {
-            return false;
+            Computer.setRestartFlag(false);
         }
 
         throw new IllegalArgumentException("1 과 2 중 선택해야합니다.");
@@ -64,17 +69,16 @@ public class Application {
 class Computer {
     private static List<Integer> answerList;
     private static Map<Hint, Integer> hintCountMap;
-
-
-
-    private static Boolean result;
+    private static Boolean gameResult;
+    private static Boolean restartFlag;
     private Computer() {
     }
 
     public static void gameInitialize() {
         answerInitialize();
         hintCountInitialize();
-        result = false;
+        gameResult = false;
+        restartFlag = false;
     }
 
     public static void compare(ArrayList<Integer> inputList) {
@@ -143,14 +147,22 @@ class Computer {
 
     public static void checkResult() {
         if (hintCountMap.get(Hint.STRIKE).equals(3)) {
-            result = true;
+            gameResult = true;
             System.out.println(Comment.ENDGAME);
         }
         hintCountInitialize();
     }
 
-    public static Boolean getResult() {
-        return result;
+    public static Boolean getGameResult() {
+        return gameResult;
+    }
+
+    public static Boolean getRestartFlag() {
+        return restartFlag;
+    }
+
+    public static void setRestartFlag(Boolean restartFlag) {
+        Computer.restartFlag = restartFlag;
     }
 }
 
