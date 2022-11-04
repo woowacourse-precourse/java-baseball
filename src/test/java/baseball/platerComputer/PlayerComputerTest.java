@@ -19,7 +19,7 @@ public class PlayerComputerTest {
 
 	// 중복된 수가 아닌 세자리 수가 나오는지 확인합니다.
 	@Test void getRandomInputNumberTest() {
-		PlayerComputer tester = new PlayerComputer();
+		PlayerComputer tester = PlayerComputer.getInstance();
 		String input = tester.getRandomInputNumber();
 
 		System.out.println("generated Random Number : " + input);
