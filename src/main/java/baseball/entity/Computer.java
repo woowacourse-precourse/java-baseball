@@ -19,7 +19,7 @@ public class Computer {
     }
 
     public void putNumber(int number){
-
+        numbers.add(number);
     }
 
     public boolean isAlreadyInNumbers(int number){
