@@ -49,6 +49,45 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class 결과_테스트 {
+
+        @Test
+        void 스트라이크1() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "4", "5");
+            baseballGame.showResults(userInput);
+        }
+
+        @Test
+        void 스트라이크2볼1() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "2");
+            baseballGame.showResults(userInput);
+        }
+        //
+        @Test
+        void 스트라이크3() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "3");
+            baseballGame.showResults(userInput);
+        }
+        //
+        @Test
+        void 볼3() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("2", "3", "1");
+            baseballGame.showResults(userInput);
+        }
+
+        @Test
+        void 낫싱() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("4", "5", "6");
+            baseballGame.showResults(userInput);
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(

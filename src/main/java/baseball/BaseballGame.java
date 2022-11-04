@@ -43,8 +43,6 @@ public class BaseballGame {
         return convertedList;
     }
 
-
-
     public int countStrike(List<String> userInput) {
         int strikeCnt = 0;
         for (int idx=0; idx<userInput.size(); idx++) {
@@ -81,5 +79,19 @@ public class BaseballGame {
             isSamePosition = true;
         }
         return isSamePosition;
+    }
+
+    public void showResults(List<String> userInput) {
+        String results = "";
+        if (countBall(userInput) > 0) {
+            results += countBall(userInput) + "볼 ";
+        }
+        if (countStrike(userInput) > 0) {
+            results += countStrike(userInput) + "스트라이크";
+        }
+        if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
+            results += "낫싱";
+        }
+        System.out.println(results);
     }
 }
