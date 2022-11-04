@@ -63,6 +63,35 @@ class AnswerTest {
           Assertions.assertThat(outContent.toString().trim()).isEqualTo("3볼");
         }
       }
+
+      @Nested
+      @DisplayName("Strike of")
+      class DescribeStrike {
+
+        @Test
+        @DisplayName("1스트라이크")
+        void compareOneBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('1', '4', '5')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("1스트라이크");
+        }
+
+        @Test
+        @DisplayName("2스트라이크")
+        void compareTwoBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('1', '2', '4')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("2스트라이크");
+        }
+
+        @Test
+        @DisplayName("3스트라이크")
+        void compareThreeBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('1', '2', '3')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("3스트라이크");
+        }
+      }
     }
   }
 }
