@@ -23,8 +23,12 @@ public class Balls {
     
     private static List<Ball> parseBalls(final String numbers) {
         return IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
-                .mapToObj(position -> new Ball(position, numbers.substring(position, position + MAX_COUNT_OF_EACH_NUMBER)))
+                .mapToObj(position -> new Ball(position, numbersSplit(numbers, position)))
                 .collect(Collectors.toList());
+    }
+    
+    private static String numbersSplit(final String numbers, final int position) {
+        return numbers.substring(position, position + MAX_COUNT_OF_EACH_NUMBER);
     }
     
     private void validateExistSameNumber(final List<Ball> balls) {
