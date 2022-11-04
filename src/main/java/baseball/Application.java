@@ -87,6 +87,9 @@ public class Application {
         }
 
 
+        //TODO :
+        if (Console.readLine().equals(1)) endTheProcess=0;
+        else endTheProcess=1;
 
     }
 
