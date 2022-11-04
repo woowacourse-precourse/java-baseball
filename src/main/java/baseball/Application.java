@@ -15,9 +15,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (COIN.equals("1")) {
-            List<Integer> computer = getComputerValue();
+            Computer computer = new Computer();
 
-            game(computer);
+            game(computer.getComputer());
 
             inputCoin();
         }
@@ -26,31 +26,30 @@ public class Application {
     private static void game(List<Integer> computer) {
         int strike = 0;
         int ball = 0;
+
         while (strike != 3){
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> user = new Input(readLine()).getInputList();
 
             ball = countBall(computer, user);
             strike = countStrike(computer, user);
+
             if (ball != 0) System.out.print(ball + "볼 ");
-            if (strike != 0) System.out.print(strike + "스트라이크");
-            System.out.println();
+            if (strike != 0) System.out.println(strike + "스트라이크");
             if (ball == 0 && strike == 0) System.out.println("낫싱");
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }
+            if (strike == 3) System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
     private static void inputCoin() {
-        Coin coin;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        coin = new Coin(readLine());
+        Coin coin = new Coin(readLine());
         COIN = coin.getCoin();
     }
 
     private static int countStrike(List<Integer> computer, List<Integer> user) {
         int strike = 0;
+
         for (int i = 0; i < computer.size(); i += 1) {
             if (computer.get(i) == user.get(i)) strike += 1;
         }
@@ -59,6 +58,7 @@ public class Application {
 
     private static int countBall(List<Integer> computer, List<Integer> user) {
         int ball = 0;
+
         for (int i = 0; i < computer.size(); i += 1) {
             ball += hasBall(computer, user, i);
         }
@@ -72,16 +72,5 @@ public class Application {
             if (computer.get(i) == user.get(j)) ball += 1;
         }
         return ball;
-    }
-
-    private static List<Integer> getComputerValue() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
     }
 }
