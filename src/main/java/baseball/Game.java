@@ -61,6 +61,12 @@ public class Game {
         int strikeCount = 0;
         int ballCount = 0;
 
+        for (int index = 0; index < inputNumbers.length(); index++) {
+            char number = inputNumbers.charAt(index);
+            if (isStrike(number, randomNumbers, index)) {
+                strikeCount++;
+            }
+        }
         return printResult(strikeCount, ballCount);
     }
 
