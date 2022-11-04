@@ -9,6 +9,9 @@ public class NumberBaseballGameController {
 
     private static final String STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY = "Strike";
     private static final String STRIKE_AND_BALL_COUNT_MAP_BALL_KEY = "Ball";
+    private static final int THREE_STRIKE_COUNT = 3;
+    private static final String GAME_RESTART_NUMBER = "1";
+
 
     private static OpponentComputer opponentComputer;
 
@@ -21,7 +24,7 @@ public class NumberBaseballGameController {
     }
 
     public void gamePlay() {
-        while(opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY) != 3) {
+        while(opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY) != THREE_STRIKE_COUNT) {
             String playerNumber = InputView.inputNumber();
             opponentComputer.initStrikeAndBallCountMap();
             opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(Integer.parseInt(playerNumber));
@@ -33,7 +36,7 @@ public class NumberBaseballGameController {
 
     public void gameRestartOrEnd() {
         String restartOrEndNumber = InputView.inputRestartOrEndNumber();
-        if (restartOrEndNumber.equals("1")) {
+        if (restartOrEndNumber.equals(GAME_RESTART_NUMBER)) {
             generateOpponentComputer();
             gamePlay();
         }
