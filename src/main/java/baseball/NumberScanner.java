@@ -19,6 +19,10 @@ public class NumberScanner {
             if (c < 49 || c > 57) {
                 throw new IllegalArgumentException();
             }
+            if (userNumbers.contains(Character.getNumericValue(c))) {
+                throw new IllegalArgumentException();
+            }
+            userNumbers.add(Character.getNumericValue(c));
         }
 
         return userNumbers;
