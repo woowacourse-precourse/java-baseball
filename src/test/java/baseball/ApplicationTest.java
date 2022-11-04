@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -36,8 +37,12 @@ class ApplicationTest extends NsTest {
     @Test
     void generateAnswer_And_isValidInput_Test() {
         String answer = application.generateAnswer();
-        boolean result = gameIO.isLegalInput(answer);
-        assertThat(result).isEqualTo(true);
+
+        try {
+            gameIO.isLegalInput(answer);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Fail.fail("IllegalArgumentException이 발생했습니다.");
+        }
     }
 
     @Test
