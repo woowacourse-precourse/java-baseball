@@ -27,7 +27,7 @@
     - 매개변수로 받은 메시지 문자열을 저장합니다.
     - [X] printMessage
       - 저장된 메시지를 콘솔에 출력합니다.
-    - [ ] printScore
+    - [X] printScore
       - 점수를 출력합니다.
 
   - [ ] **BaseballInputChecker**
