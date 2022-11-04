@@ -13,23 +13,35 @@ public class Application {
 
         public void gameStart () {
             System.out.println("숫자 야구 게임을 시작합니다.");
-            inputNumber();
+            try{
+                inputNumber();
+            } catch(IllegalArgumentException e){
+                throw e;
+            }
         }
         public int inputNumber(){
             System.out.print("숫자를 입력해주세요 : ");
-            String inputNumber = Console.readLine();
+            String inputStr = Console.readLine();
+            boolean isValidInput = isValidInput(inputStr);
+//            HashSet duplRemoveList = new HashSet(Arrays.asList(inputNumber.split("")));
+//            ArrayList<String> list = new ArrayList<>(duplRemoveList);
+//            String inputValidNumber = String.join("", list);
+//
+//            System.out.println(inputValidNumber);
+//
+//
+//            return Integer.parseInt(inputNumber);
+            return 1;
+        }
+
+        public boolean isValidInput(String inputStr){
             String inputNumberRegex = "^[1-9]{3}$";
-            HashSet duplRemoveList = new HashSet(Arrays.asList(inputNumber.split("")));
-            ArrayList<String> list = new ArrayList<>(duplRemoveList);
-            String inputValidNumber = String.join("", list);
-
-            System.out.println(inputValidNumber);
-
-            if(!inputValidNumber.matches(inputNumberRegex)){
-                System.out.println("Bad");
+            if(!inputStr.matches(inputNumberRegex)){
+                throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
                 // Error 처리 하기!
             }
-            return Integer.parseInt(inputNumber);
+
+            return true;
         }
 
     }
@@ -38,7 +50,12 @@ public class Application {
         BaseBallGame baseballGame = BaseBallGame.getGame();
 
         while(true){
-            baseballGame.gameStart();
+            try{
+                baseballGame.gameStart();
+            } catch(IllegalArgumentException e){
+                System.out.println(e);
+                break;
+            }
         }
 
     }
