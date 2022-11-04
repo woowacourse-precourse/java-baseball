@@ -28,26 +28,29 @@ public class Game {
 
         Ball BallGenerator = Ball.getInstance();
 
-        boolean isExitSignal = false;
-        while (!isExitSignal) {
+        boolean isNotProgress = false;
+        while (!isNotProgress) {
             List<String> computerBalls = BallGenerator.makeComputerBalls();
-            System.out.println(computerBalls);
-
             GameController gameController = new GameController(computerBalls);
 
-            boolean isThreeStrike = false;
-            while (!isThreeStrike) {
-                UserInputDto userInputDto = new UserInputDto(InputData.inputUserBallNumber());
+            playBaseball(gameController);
 
-                ResultDto resultDto = gameController.doGame(userInputDto);
-                OutputData.gameResultPrint(resultDto);
-
-                if (resultDto.getThreeStrike()) {
-                    isThreeStrike = true;
-                }
-            }
             if (gameController.restartGame(new UserInputDto(InputData.inputIsGameRestart()))) {
-                isExitSignal = true;
+                isNotProgress = true;
+            }
+        }
+    }
+
+    private static void playBaseball(GameController gameController) {
+        boolean isThreeStrike = false;
+        while (!isThreeStrike) {
+            UserInputDto userInputDto = new UserInputDto(InputData.inputUserBallNumber());
+
+            ResultDto resultDto = gameController.doGame(userInputDto);
+            OutputData.gameResultPrint(resultDto);
+
+            if (resultDto.getThreeStrike()) {
+                isThreeStrike = true;
             }
         }
     }
