@@ -9,8 +9,13 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         try {
+            boolean[] isBall = new boolean[10];
+            Arrays.fill(isBall, false);
+
             String computerNumber = setComputerNumber();
             String playerNumber = Console.readLine();
+
+            setIsBall(isBall, computerNumber);
 
             if(checkPlayerNumber(playerNumber)){
                 throw new IllegalArgumentException();
@@ -18,6 +23,13 @@ public class Application {
 
         } catch (IllegalArgumentException exception) {
 
+        }
+    }
+
+    public static void setIsBall(boolean[] isBall, String computerNumber) {
+        for (int i = 0; i < computerNumber.length(); i++) {
+            char num = computerNumber.charAt(i);
+            isBall[num - '0'] = true;
         }
     }
 
