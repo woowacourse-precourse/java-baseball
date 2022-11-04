@@ -32,6 +32,7 @@ public class Application {
 				System.out.print("숫자를 입력해주세요 : "); 
 				numstr = Console.readLine();
 				check(numstr,strikeCount,ballCount);
+				System.out.println(print(ballCount,strikeCount));
 			}
 			if(strikeCount==3) {       //3개의 숫자를 모두 맞추고 난 후(strikeCount 3개) 게임 다시 시작, 종료를 고르는 구문
 				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -78,5 +79,22 @@ public class Application {
 				possibleBallResult.put("볼", ballCount);
 			}
 		}
+	}
+    
+    public static String print(int ballCount, int strikeCount) {	
+		String printResult="";
+		if(ballCount==0 && strikeCount==0) {
+			printResult="낫싱";
+		}
+		else if(ballCount>0 && strikeCount==0){
+			printResult=String.valueOf(ballCount)+"볼";
+		}
+		else if(ballCount==0 && strikeCount>0) {
+			printResult=String.valueOf(strikeCount)+"스트라이크";
+		}
+		else if(ballCount>0 && strikeCount>0){
+			printResult=String.valueOf(ballCount)+"볼 "+String.valueOf(strikeCount)+"스트라이크";
+		}
+		return printResult;
 	}
 }
