@@ -21,7 +21,7 @@ class BallsTest {
         Balls computer = new Balls(balls);
 
 
-        assertThat(computer.compare(new Ball(3, 1))).isTrue();
-        assertThat(computer.compare(new Ball(3, 2))).isFalse();
+        assertThat(computer.hasStrike(new Ball(3, 1))).isTrue();
+        assertThat(computer.hasStrike(new Ball(3, 2))).isFalse();
     }
 }
