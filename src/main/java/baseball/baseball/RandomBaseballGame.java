@@ -19,4 +19,8 @@ public class RandomBaseballGame {
     public void newGame() {
         randomDigits = createRandomDigits();
     }
+
+    public Result match(Digits digits) {
+        return baseballGame.match(digits, randomDigits);
+    }
 }
