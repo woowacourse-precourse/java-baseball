@@ -1,8 +1,9 @@
 package baseball;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -19,6 +20,7 @@ public class Application {
         private int strikeCounting;
         private int ballCounting;
 
+        // 입력값을 바탕으로 스트라이크와 볼을 찾아내는 게임 진행 메서드
         public void proceedGame (String inputString) {
             inputNumberList.clear();
             splitNumber(inputNumberList, inputString);
@@ -45,6 +47,7 @@ public class Application {
             int methodInBallCounting = 0;
 
             for (int number: inputNumberList) {
+
                 if (computerNumberList.contains(number)) {
                     methodInBallCounting += 1;
                 }
@@ -103,6 +106,7 @@ public class Application {
 
         // 주어진 숫자가 3자리가 아닌 경우 예외 발생
         public void checkNumberItem (String inputNumber) throws IllegalArgumentException{
+
             if (inputNumber.length() != THE_NUMBER_OF_BALLS) {
                 throw new IllegalArgumentException();
             }
@@ -111,6 +115,7 @@ public class Application {
         // 입력된 3자리의 숫자가 1~9의 범위 내에 존재하는지 확인
         public void checkNumberRange (String inputNumber) throws  IllegalArgumentException{
             IntStream inputNumberStream = inputNumber.chars();
+
             inputNumberStream.forEach(number -> {
                         if (number < 49 || number > 57) throw new IllegalArgumentException();
 
@@ -122,8 +127,10 @@ public class Application {
             if (!restartNumber.equals("1") && !restartNumber.equals("2")) throw new IllegalArgumentException();
         }
 
+        // 숫자 입력과 예외처리를 동시에 하는 메서드
         public  String inputBallAndRestartNumber () {
             String inputNumber = Console.readLine();
+
             if (strikeCounting == THE_NUMBER_OF_BALLS) discoverRestartNumberException(inputNumber);
             else discoverInputNumberException(inputNumber);
 
@@ -135,6 +142,7 @@ public class Application {
     // model에서 처리된 값을 출력하는 클래스
     public static class View {
         public void printResult(int ballCounting, int strikeCounting) {
+
             if (strikeCounting == THE_NUMBER_OF_BALLS) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -164,6 +172,7 @@ public class Application {
                 model.proceedGame(model.inputBallAndRestartNumber());
                 view.printResult(model.ballCounting, model.strikeCounting);
             }
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             if (!model.decideRestart(model.inputBallAndRestartNumber())) break;
