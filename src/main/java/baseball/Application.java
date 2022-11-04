@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -71,7 +69,8 @@ public class Application {
     }
     // 에러케이스 구분할 것!
 
-    public static List<Boolean> checkWhereIsStrike(List<Integer> computerAnswer, List<Integer> userAnswer){
+    public static List<Boolean> checkWhereIsStrike(List<Integer> computerAnswer,
+                                                   List<Integer> userAnswer){
         List<Boolean> strikeZone = new ArrayList<>();
         for (int digit=0; digit<3; digit++){
             if (computerAnswer.get(digit).equals(userAnswer.get(digit)))
@@ -80,5 +79,8 @@ public class Application {
                 strikeZone.add(false);
         }
         return strikeZone;
+    }
+    public static int countStrike(List<Boolean> strikeList){
+        return Collections.frequency(strikeList, true);
     }
 }

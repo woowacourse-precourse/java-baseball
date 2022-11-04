@@ -57,4 +57,13 @@ class ApplicationMethodTest {
         };
         assertThat(strikeZone).isEqualTo(realAnswer);
     }
+
+    @Test
+    void countStrike() {
+        List<Boolean> strikeList = new ArrayList<>(){
+            {add(true); add(true); add(true);}
+        };
+        int countTrue = Application.countStrike(strikeList);
+        assertThat(countTrue).isEqualTo(3);
+    }
 }
