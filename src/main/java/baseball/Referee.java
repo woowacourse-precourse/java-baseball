@@ -10,7 +10,7 @@ public class Referee {
 
     ball = calculateBall(userInput, randNum);
     strike = calculateStrike(userInput, randNum);
-    if (calculateStrike(userInput, randNum) == 0 && calculateBall(userInput, randNum) == 0) {
+    if (strike == 0 && ball == 0) {
       return "낫싱\n";
     }
     if (ball != 0 && strike != 0) {
@@ -27,7 +27,7 @@ public class Referee {
     int strikeNum = calculateStrike(userInput, randNum);
     int ballNum = 0;
     for (int i = 0; i < 3; i++) {
-      if (randNum.indexOf(userInput.toString()) != 0) {
+      if (randNum.indexOf(userInput.charAt(i)) != -1) {
         ballNum++;
       }
     }
@@ -42,5 +42,9 @@ public class Referee {
       }
     }
     return strikeCnt;
+  }
+
+  public static void testReferee(String userInput, String randNum) {
+    System.out.println(calculateAnswer(userInput, randNum));
   }
 }
