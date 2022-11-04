@@ -17,8 +17,11 @@
 - 사용자가 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시키고 어플리케이션이 종료된다.
 
 ## 기능 목록
+### BaseballApplicationManager
+- 숫자 야구 게임이 반복해서 실행되도록 한다.
+
 ### BaseballGameManager
-- 숫자 야구 게임의 전반을 관리한다. 
+- 숫자 야구 게임 한 경기의 진행을 관리한다. 
 
 ### RandomAnswerGenerator
 - 숫자 야구 게임에서 사용할 정답을 생성한다.
