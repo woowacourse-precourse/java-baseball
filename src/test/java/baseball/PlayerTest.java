@@ -133,4 +133,23 @@ public class PlayerTest {
         restart = "r";
         assertThat(player.isOneOrTwo(restart)).isEqualTo(result);
     }
+
+    @Test
+    void isValidRestartTest() {
+        Player player = new Player();
+        boolean result = true;
+        String restart = "1";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+        restart = "2";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+        result = false;
+        restart = "12";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+        restart = "2n";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+        restart = "3";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+        restart = "r";
+        assertThat(player.isValidRestart(restart)).isEqualTo(result);
+    }
 }
