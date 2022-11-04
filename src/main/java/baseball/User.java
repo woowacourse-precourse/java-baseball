@@ -7,6 +7,7 @@ import java.util.List;
 public class User {
 
     private static final String RECEIVE_THREE_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RECEIVE_ONE_NUMBER_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private final List<Integer> inputNumber = new ArrayList<>();
 
@@ -30,12 +31,25 @@ public class User {
         inputNumber.clear();
     }
 
-    private boolean isValidateThreeNumber(String input) {
-        return (isValidateLength(input) && isNumber(input) && isDifferentNumber(input));
+    public void receiveOneNumber() {
+        System.out.println(RECEIVE_ONE_NUMBER_MESSAGE);
+        String input = Console.readLine();
+        if (!isValidateOneNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        setInputNumber(input);
     }
 
-    private boolean isValidateLength(String input) {
-        return input.length() == 3;
+    private boolean isValidateOneNumber(String input) {
+        return (isValidateLength(input, 1) && isOneOrTwo(input));
+    }
+
+    private boolean isValidateThreeNumber(String input) {
+        return (isValidateLength(input, 3) && isNumber(input) && isDifferentNumber(input));
+    }
+
+    private boolean isValidateLength(String input, int size) {
+        return input.length() == size;
     }
 
     private boolean isNumber(String input) {
@@ -45,6 +59,11 @@ public class User {
             }
         }
         return true;
+    }
+
+    private boolean isOneOrTwo(String input) {
+        char ch = input.charAt(0);
+        return (ch == '1' || ch == '2');
     }
 
     private boolean isDifferentNumber(String input) {
