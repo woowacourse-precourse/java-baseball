@@ -189,6 +189,8 @@ public class Application {
             // 게임이 끝났는지 확인한다.
             finishResult = IsGameFinished(analyzedResult);
         }
-
+        
+        // 게임이 끝난 경우 재시작과 종료를 게임 플레이어에게 묻는다.
+        return PlayAgain();
     }
 }
