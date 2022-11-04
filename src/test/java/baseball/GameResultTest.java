@@ -84,4 +84,11 @@ class GameResultTest {
         String result = gameResult.getGameResult(computerNumbers, answer);
         Assertions.assertThat(result).isEqualTo(nothing);
     }
+
+    @Test
+    void 사용자_승리_판단_검증() {
+        String result = 3 + STRIKE + System.lineSeparator() + END_GAME_PHRASE;
+        boolean userWin = gameResult.isUserWin(result);
+        Assertions.assertThat(userWin).isTrue();
+    }
 }

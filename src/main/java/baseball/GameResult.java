@@ -15,6 +15,10 @@ public class GameResult {
         System.out.println(result);
     }
 
+    public boolean isUserWin(String result) {
+        return result.equals(3 + STRIKE + System.lineSeparator() + END_GAME_PHRASE);
+    }
+
     public String getGameResult(List<Integer> computerNumbers, List<Integer> answer) {
         int strikeCount = countStrike(computerNumbers, answer);
         int ballCount = countBall(computerNumbers, answer);
