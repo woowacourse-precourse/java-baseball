@@ -31,14 +31,16 @@ public class BaseBall implements Game {
             playerInput();
             compareNumbers();
             showResult();
-        } while (strike != 3);
+        } while (isNotMatchNumbers());
+    }
+
+    private boolean isNotMatchNumbers() {
+        return strike != GameValidator.GAME_NUMBER_LENGTH;
     }
 
     private void generateRandomComputerNumbers() {
         computerNumbers.clear();
-        computerNumbers.addAll(
-            pickUniqueNumbersInRange()
-        );
+        computerNumbers.addAll(pickUniqueNumbersInRange());
     }
 
     private List<Integer> pickUniqueNumbersInRange() {
