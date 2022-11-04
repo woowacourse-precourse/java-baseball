@@ -13,7 +13,7 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumber = Number.getRandomNumber();
 
-        while(true){
+        while(!end){
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userNumber = Number.inputUserNumber();
 
