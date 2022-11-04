@@ -14,7 +14,7 @@
 [Pitcher] 객체
 - playingNumber를 포함한다.
 - 임의의 3자리 숫자로 이루어진 문자열 생성 (컴퓨터)
-- 
+
 [Batter] 객체
 - playingNumber를 포함한다.
 - 임의의 3자리 숫자로 이루어진 문자열 입력 (유저)

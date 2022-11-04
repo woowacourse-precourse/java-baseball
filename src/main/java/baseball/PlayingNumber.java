@@ -12,14 +12,14 @@ public class PlayingNumber {
 	private static final int PLAYING_NUMBER_SIZE = 3;
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
-	private static final String REGAX = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]*$";
+	private static final String REGEX = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]*$";
 
 	private final int playingNumber;
 
 	public PlayingNumber(String playingNumber) {
 		validateSize(playingNumber);
 		validateDuplicate(playingNumber);
-		validateREGAX(playingNumber);
+		validateREGEX(playingNumber);
 		this.playingNumber = Integer.parseInt(playingNumber);
 	}
 
@@ -37,8 +37,8 @@ public class PlayingNumber {
 		}
 	}
 
-	private void validateREGAX(String playingNumber) {
-		Pattern numberPattern = Pattern.compile(REGAX);
+	private void validateREGEX(String playingNumber) {
+		Pattern numberPattern = Pattern.compile(REGEX);
 		if (!numberPattern.matcher(playingNumber).matches()) {
 			throw new IllegalArgumentException("1 ~ 9 사이의 자연수만 입력해주세요.");
 		}
