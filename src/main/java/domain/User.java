@@ -23,5 +23,8 @@ public class User {
         }
         return numbers;
     }
+    public static List<Integer> getNumber_List(){
+        return number_List;
+    }
 
 }

@@ -17,6 +17,23 @@ public class game {
         User user= User.getInstance();
         computer.setNumber();
     }
+    public static void strikeMessage(){
+        int count=0;
+        for(int index=0; index<3; index++ ) {
+            if(Computer.getNumber().charAt(index)==User.getNumber().charAt(index)){
+                count++;
+            }
+        }
+        System.out.print(count+"스트라이크" + " ");
+    }
+    public static void ballMessage(){
+        int count=0;
+        for(int index=0; index<3; index++) {
+           if(Computer.getNumber_List().contains(User.getNumber_List().get(index)));
+           count++;
+        }
+        System.out.print(count + "볼");
+    }
     public static List<Integer> get_ThreeRandomNumbers(){
         List<Integer> computer = new ArrayList<>();
 
