@@ -23,7 +23,7 @@ public class Computer {
     }
 
     public boolean isAlreadyInNumbers(int number){
-        return false;
+        return numbers.contains(number);
     }
 
     public List<Integer> getNumbers(){
