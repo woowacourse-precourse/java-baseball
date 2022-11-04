@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class User {
     List<Integer> computerNumberList;
-    static boolean keepGame = true;
+    boolean keepGame = true;
 
     User() {
 
@@ -16,6 +16,19 @@ public class User {
 
     User(List<Integer> computerNumberList) {
         this.computerNumberList = computerNumberList;
+    }
+
+    void main() {
+        int userNumber = inputNumber();
+        checkNumber(userNumber);
+        List<Integer> userNumberList = numberToList(userNumber);
+        int strike = checkStrike(computerNumberList, userNumberList);
+        int ball = checkBall(computerNumberList, userNumberList, strike);
+        printResult(strike, ball);
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            keepOrNot();
+        }
     }
 
     int inputNumber() {
