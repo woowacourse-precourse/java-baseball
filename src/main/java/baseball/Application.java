@@ -19,12 +19,12 @@ public class Application {
         while (userEndingResponse == 1){
 
             printStartMessage();
-            // computerAnswerList = createComputerLength3IntegerAnswerToList();
-            //* 예시
+            computerAnswerList = createComputerLength3IntegerAnswerToList();
+            /* 예시
             computerAnswerList.add(7);
             computerAnswerList.add(1);
             computerAnswerList.add(3);
-            //*/
+            */
 
             while (countStrike!=3){
 
@@ -41,6 +41,7 @@ public class Application {
 
             printEndingMessage();
             userEndingResponse = getUserNumberToInteger();
+            countStrike = 0;
         }
         // TODO: 프로그램 구현
     }
@@ -82,7 +83,7 @@ public class Application {
         String inputStr = String.valueOf(input);
         int lengthOfInput = inputStr.length();
         if (lengthOfInput != 3)
-            throw new IllegalArgumentException("3자리의 숫자를 입력하십시오.");
+            throw new IllegalArgumentException("숫자의 어느 자리에도 0이 포함되지 않는 3자리의 숫자를 입력하십시오.");
 
         List<Character> appearedNumList = new ArrayList<>();
         for (int inputStringIndex = 0; inputStringIndex < lengthOfInput; inputStringIndex++){
@@ -90,7 +91,7 @@ public class Application {
             // 2. 값에 1-9 이외의 값이 포함되어있을 때
             char tmpInputStr = inputStr.charAt(inputStringIndex);
             int ASCII_tmpInputStr = tmpInputStr;
-            if (ASCII_tmpInputStr < 49 && ASCII_tmpInputStr > 58)
+            if (ASCII_tmpInputStr < 49 || ASCII_tmpInputStr > 58)
                 // 1: 49, 9: 57
                 throw new IllegalArgumentException("1~9 사이의 숫자만 가능합니다.");
 
