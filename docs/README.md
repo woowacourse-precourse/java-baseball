@@ -18,7 +18,7 @@
     void printResult(GameResult result)
 ### 5. 계산된 결과를 바탕으로 게임을 종료하거나 다시 입력받는 기능
 #### 메인 구현 함수
-    boolean nextTurn(GameResult result)
+    boolean nextTurn(GameResult result), int run()
 ### 6. 게임이 종료된 경우 게임을 다시 시작하거나 완전히 종료하는 기능
 #### 메인 구현 함수
-    int run()
+    Applcation.main()
