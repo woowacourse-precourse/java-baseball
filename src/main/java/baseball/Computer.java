@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    private static String[] gameResult;
 
     public List<Integer> createRandomNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
@@ -19,12 +20,17 @@ public class Computer {
     }
 
     public String[] compareNumber() {
-        String[] gameResult = new String[3];
+        gameResult = new String[3];
         User user = new User();
         List<Integer> computerNumbers = createRandomNumber();
         List<Integer> userNumbers = user.createUserNumber();
+        System.out.println(computerNumbers);
         for (int i = 0; i < computerNumbers.size(); i++) {
             int userNumber = userNumbers.get(i);
+            if (findIndexOfSameNumber(computerNumbers, userNumbers, userNumber)) {
+                gameResult[i] = "스트라이크";
+                continue;
+            }
             if (findSameNumber(computerNumbers, userNumber)) {
                 gameResult[i] = "볼";
                 continue;
@@ -34,9 +40,20 @@ public class Computer {
         return gameResult;
     }
 
-    public boolean findSameNumber(List<Integer> numberList, int number) {
-        if (numberList.contains(number)) {
+    public boolean findSameNumber(List<Integer> computerNumbers, int number) {
+        if (computerNumbers.contains(number)) {
             return true;
+        }
+        return false;
+    }
+
+    public boolean findIndexOfSameNumber(List<Integer> computerNumbers, List<Integer> userNumbers, int number) {
+        if (findSameNumber(computerNumbers, number)) {
+            int computerNumberIndex = computerNumbers.indexOf(number);
+            int userNumberIndex = userNumbers.indexOf(number);
+            if (computerNumberIndex == userNumberIndex) {
+                return true;
+            }
         }
         return false;
     }
