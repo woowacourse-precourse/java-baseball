@@ -28,7 +28,7 @@ public class BaseballGame {
         } while ((strikeCount != 3));
 
         computer.clearRandomNumbers();
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        messageCreator.gameClearMessage();
     }
 
     private String inputAnswer() {
@@ -40,7 +40,7 @@ public class BaseballGame {
 
     private void calculateBallCount(String input) {
         List<Integer> computerNumbers = computer.getRandomNumbers();
-        strikeCount = (int)IntStream.range(0, 3)
+        strikeCount = (int) IntStream.range(0, 3)
                 .filter(idx -> computerNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
                 .count();
 
