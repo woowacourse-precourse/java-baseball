@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Solution();
     }
 
     private static void CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArrayList) {
