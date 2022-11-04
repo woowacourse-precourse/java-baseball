@@ -18,9 +18,15 @@ public class Computer {
         this.computerNumber = computerNumber;
     }
 
-    public void startGame() {
+//    public void startGame() {
+//        setComputerNumber(createComputerNumber());
+//        System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
+//    }
+
+    public List<Integer> startGame() { // TODO: void 로 변경하기!!
         setComputerNumber(createComputerNumber());
         System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
+        return getComputerNumber();
     }
 
     public List<Integer> createComputerNumber() {
@@ -61,7 +67,7 @@ public class Computer {
             return SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
         }
         if (strikeCnt > 0 && ballCnt > 0) {
-            return strikeCnt + SystemMessage.STRIKE + ballCnt + SystemMessage.BALL;
+            return ballCnt + SystemMessage.BALL + " " + strikeCnt + SystemMessage.STRIKE;
         }
         if (strikeCnt == 0 && ballCnt > 0) {
             return ballCnt + SystemMessage.BALL;
