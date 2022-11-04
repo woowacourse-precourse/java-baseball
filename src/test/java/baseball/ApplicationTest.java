@@ -66,7 +66,23 @@ class ApplicationTest extends NsTest {
         assertThat(result4).as("countStrike 테스트").isEqualTo(2);
         assertThat(result5).as("countStrike 테스트").isEqualTo(3);
     }
-    
+
+    @Test
+    void isDigitStrike_테스트(){
+        //given
+        final Application T = new Application();
+        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,2,3));  // 2 strike
+
+        //when
+        final boolean result1 = T.isDigitStrike(case1.get(0), case1.get(1), 0); //false
+        final boolean result2 = T.isDigitStrike(case1.get(0), case1.get(1), 1); //true
+        final boolean result3 = T.isDigitStrike(case1.get(0), case1.get(1), 2); //true
+
+        //then
+        assertThat(result1).isEqualTo(false);
+        assertThat(result2).isEqualTo(true);
+        assertThat(result3).isEqualTo(true);
+    }
 
     @Test
     void 예외_테스트() {
