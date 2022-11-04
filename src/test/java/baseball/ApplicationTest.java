@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -17,6 +19,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
+
+    @ParameterizedTest
+    @DisplayName("입력받은 값을 분석하여 Strike, ball 개수 집계 기능 테스트")
+    @CsvSource(value = {"123, 456, 0, 0", "123, 123, 3, 0", "145, 415, 1, 2", "567, 756, 0, 3"})
+    void analyzeInputNumberTest(String inputNumber, String setNumber, int strike, int ball) {
+
+        Map<String, Integer> resultMap = Application.analyzeInputNumber(inputNumber, setNumber);
+
+        assertThat(resultMap.get("strike")).isEqualTo(strike);
+        assertThat(resultMap.get("ball")).isEqualTo(ball);
+    }
 
     @ParameterizedTest
     @DisplayName("입력한 수가 유효하지 않을때 Exception이 발생하는지 통합 테스트")
