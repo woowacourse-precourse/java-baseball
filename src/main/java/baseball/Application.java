@@ -7,6 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    public static void throwLastIllegal(String number)
+    {
+        char lastNumber = number.charAt(0);
+        if(number.length() != 1 || (lastNumber != '1' && lastNumber != '2'))
+            throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+    }
+
+    public static void throwPickedIllegal(String number)
+    {
+        int pickedNumber = 0;
+        if(number.length() != 3) throw new IllegalArgumentException("숫자를 3개 입력해주세요.");
+        for(int i=0; i<3; i++)
+        {
+            pickedNumber = Character.getNumericValue(number.charAt(i));
+            if(!(pickedNumber > 0 && pickedNumber < 10) || !Character.isDigit(number.charAt(i)))
+                throw new IllegalArgumentException("1~9 사이 숫자만 입력해주세요");
+        }
+    }
+
     public static List<Integer> generateRandomNumber() // 난수 생성
     {
         List<Integer> computer = new ArrayList<>();
@@ -66,6 +85,7 @@ public class Application {
         {
             System.out.print("숫자를 입력해주세요 : ");
             pickedNumber = Console.readLine();
+            throwPickedIllegal(pickedNumber);
 
             flag = checkRightNumber(pickedNumber,computer);
 
@@ -73,6 +93,7 @@ public class Application {
             {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 lastNumber = Console.readLine();
+                throwLastIllegal(lastNumber);
             }
             if(lastNumber.equals("1"))
             {

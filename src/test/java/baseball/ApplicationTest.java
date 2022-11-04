@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -65,6 +66,37 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test()
+    void throwIllegalArgumentException(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("1354");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("12a");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run(" ");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        });
+
     }
 
     @Override
