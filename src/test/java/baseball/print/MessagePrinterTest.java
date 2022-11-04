@@ -31,20 +31,6 @@ class MessagePrinterTest {
         System.setOut(printStream);
     }
 
-    @Test
-    void 게임_시작_메시지가_출력된다() {
-        printer.printStartMessage();
-        String result = "숫자 야구 게임을 시작합니다.";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
-    @Test
-    void 숫자_입력_요청_메시지가_출력된다() {
-        printer.printEnterNumberMessage();
-        String result = "숫자를 입력해주세요 :";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
     @Nested
     class ball_및_strike_횟수에_대한_메시지가_출력된다 {
         @Test
@@ -107,19 +93,4 @@ class MessagePrinterTest {
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
     }
-
-    @Test
-    void 정답임을_알리는_메시지가_출력된다() {
-        printer.printCorrectAnswerMessage();
-        String result = DIGITS_FOR_THIS_GAME + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
-    @Test
-    void 게임_재시작_안내_메시지가_출력된다() {
-        printer.printRestartMessage();
-        String result = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-        assertThat(result).isEqualTo(outputStream.toString().trim());
-    }
-
 }

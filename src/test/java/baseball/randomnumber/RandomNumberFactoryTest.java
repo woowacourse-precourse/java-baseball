@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RandomNumberFactoryTest {
 
-    @Nested
+    @Nested  // 줄인다.
     class 정해진_개수의_숫자가_생성된다 {
         @RepeatedTest(10)
         void 정해진_개수의_숫자가_생성된다() {
