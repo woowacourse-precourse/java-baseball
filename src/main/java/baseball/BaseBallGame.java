@@ -21,6 +21,8 @@ class BaseBallGame {
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+    public void gamePlaying(){
         try {
             int computerNumber = getRandomDiff3DigitNumber();
             int userNumber = inputNumber();
@@ -115,5 +117,7 @@ class BaseBallGame {
 
         return hintList;
     }
+
+
 
 }

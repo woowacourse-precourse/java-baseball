@@ -9,6 +9,7 @@ public class Application {
         while(true){
             try{
                 baseballGame.gameStart();
+                baseballGame.gamePlaying();
             } catch(IllegalArgumentException e){
                 System.out.println(e);
                 break;
