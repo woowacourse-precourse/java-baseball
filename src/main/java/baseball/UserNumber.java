@@ -9,9 +9,13 @@ import java.util.stream.Collectors;
 public class UserNumber {
 
     private static final int USER_INPUT_LENGTH = 3;
+    private final List<Character> numberList;
 
-    public void getUserNumber() {
-        String tempNumber = Console.readLine();
+    public UserNumber() {
+        List<Character> tempNumberList = Console.readLine().chars()
+                .mapToObj(e -> (char) e).collect(Collectors.toList());
+        userNumberValidator(tempNumberList);
+        this.numberList = tempNumberList;
     }
 
     private void userNumberValidator(List<Character> numberList) {
