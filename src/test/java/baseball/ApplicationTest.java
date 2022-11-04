@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -31,5 +33,21 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    public void 랜덤숫자_체크() {
+
+        //give
+        final Game game = new Game();
+
+        //when
+        final List<Integer> list = game.getComputer();
+        int[] computerNumbers = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            computerNumbers[i] = list.get(i).intValue();
+        }
+        //then
+        assertThat(computerNumbers).doesNotHaveDuplicates();
     }
 }
