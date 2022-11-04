@@ -22,6 +22,14 @@ public class Balls {
                 .collect(Collectors.toUnmodifiableList()));
     }
 
+    public boolean isStrikePosition(Balls otherBalls, int index) {
+        return this.balls.get(index).equals(otherBalls.balls.get(index));
+    }
+
+    public boolean isBallPosition(Balls userBalls, int index) {
+        return !isStrikePosition(userBalls, index) && this.balls.contains(userBalls.balls.get(index));
+    }
+
     private List<Ball> sizeValidate(List<Ball> balls) {
         if (balls.size() == BALLS_FORMAL_SIZE) {
             return balls;
@@ -39,10 +47,6 @@ public class Balls {
 
     public int getSize() {
         return balls.size();
-    }
-
-    public Ball getBall(int index) {
-        return balls.get(index);
     }
 
     public boolean isContain(Ball ball) {

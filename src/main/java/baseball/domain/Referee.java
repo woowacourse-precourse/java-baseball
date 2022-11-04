@@ -1,18 +1,20 @@
 package baseball.domain;
 
+import static baseball.domain.Balls.BALLS_FORMAL_SIZE;
+
 public class Referee {
 
-    private Computer computer;
+    private Balls comBalls;
     private final Hint hint;
 
-    public Referee(Computer computer) {
-        this.computer = computer;
+    public Referee(Balls comBalls) {
+        this.comBalls = comBalls;
         this.hint = new Hint();
     }
 
     public Hint getHint(Balls userBalls) {
         hint.init();
-        for (int i = 0; i < userBalls.getSize(); i++) {
+        for (int i = 0; i < BALLS_FORMAL_SIZE; i++) {
             getStrike(userBalls, i);
             getBall(userBalls, i);
         }
@@ -20,14 +22,13 @@ public class Referee {
     }
 
     private void getStrike(Balls userBalls, int index) {
-        if (computer.getBallNumber(index).equals(userBalls.getBall(index))) {
+        if (comBalls.isStrikePosition(userBalls,index)) {
             hint.increasePoint(Score.STRIKE);
         }
     }
 
     private void getBall(Balls userBalls, int index) {
-        if (userBalls.isContain(computer.getBallNumber(index)) && !computer.getBallNumber(index)
-                .equals(userBalls.getBall(index))) {
+        if (comBalls.isBallPosition(userBalls,index)) {
             hint.increasePoint(Score.BALL);
         }
     }

@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.Balls;
-import baseball.domain.Computer;
 import baseball.util.RandomNumbers;
 import baseball.domain.Referee;
 import baseball.view.Input;
@@ -18,8 +17,7 @@ public class Game {
 
     public void setGame() {
         Output.printStartGameMessage();
-        Balls comBalls = Balls.createBalls(RandomNumbers.createRandomNumbers());
-        referee = new Referee(new Computer(comBalls));
+        referee = new Referee(Balls.createBalls(RandomNumbers.createRandomNumbers()));
     }
 
     public void run() {
