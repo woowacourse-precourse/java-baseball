@@ -18,26 +18,26 @@ public class Game {
     }
 
     public void start() {
-        PrintComment.printInputComment();
+        System.out.print(INPUT_COMMENT);
         String userInput = Console.readLine();
         UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
-        PrintComment.printUserInput(userInput);
+        System.out.println(userInput);
         compareNumbers(userInputNumbers);
     }
 
     public boolean isAnswer() {
         if (gameState.getStrike() == ANSWER_COUNT) {
-            PrintComment.printCorrectComment();
+            System.out.println(CORRECT_COMMENT);
             return true;
         }
         return false;
     }
 
     public boolean canRestart() {
-        PrintComment.printRestartComment();
+        System.out.println(RESTART_COMMENT);
         String userInput = Console.readLine();
         validUserInputRestart(userInput);
-        PrintComment.printUserInput(userInput);
+        System.out.println(userInput);
         if (userInput.equals(END)) {
             return false;
         }

@@ -1,9 +1,11 @@
 package baseball;
 
+import static constant.Constant.START_COMMENT;
+
 public class Application {
     public static void main(String[] args) {
         boolean isContinue = true;
-        PrintComment.printStartComment();
+        System.out.println(START_COMMENT);
         Game game = new Game();
         do {
             game.start();
