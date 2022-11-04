@@ -17,7 +17,7 @@ class ComputerTest {
     }
 
     @Test
-    void 난수가_세자리_인지_확인() {
+    void 난수가_세_자리_인지_확인() {
         Computer computer = new Computer();
 
         computer.generateRandomNumber();
@@ -26,7 +26,7 @@ class ComputerTest {
     }
 
     @Test
-    void 세자리의_난수가_모두_서로_다른_숫자_인지_확인() {
+    void 세_자리의_난수가_모두_서로_다른_숫자_인지_확인() {
         Computer computer = new Computer();
 
         computer.generateRandomNumber();
