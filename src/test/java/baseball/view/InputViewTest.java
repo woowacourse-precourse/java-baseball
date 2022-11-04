@@ -18,4 +18,23 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> InputView.validateRequestNum("120"));
         Assertions.assertThatThrownBy(() -> InputView.validateRequestNum("112"));
     }
+
+    @Test
+    void 게임_종료시_비정상적인_입력값_처리() {
+        Assertions.assertThatCode(() -> InputView.validateRequestIsReGame(" 1 "))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateRequestIsReGame("1"))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateRequestIsReGame(" 2 "))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateRequestIsReGame("2"))
+            .doesNotThrowAnyException();
+
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame("3"));
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame("0"));
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame("a"));
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame("11"));
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame(""));
+        Assertions.assertThatThrownBy(() -> InputView.validateRequestIsReGame(" "));
+    }
 }

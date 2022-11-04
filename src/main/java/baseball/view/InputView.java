@@ -34,9 +34,12 @@ public class InputView {
 
     public static boolean requestIsReGame() {
         OutputView.printRequestReGame();
-        String input = Console.readLine();
+        return validateRequestIsReGame(Console.readLine());
+    }
 
+    static boolean validateRequestIsReGame(String input) {
         input = Utils.deleteAllSpace(input);
+
         return input.equals(RE_GAME);
     }
 }
