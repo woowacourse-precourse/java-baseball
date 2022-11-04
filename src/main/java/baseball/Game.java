@@ -68,6 +68,8 @@ public class Game {
         String input = Console.readLine();
         if (input.equals("1")) {
             start();
+        } else if (!input.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
     }
 }
