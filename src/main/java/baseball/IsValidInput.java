@@ -20,7 +20,7 @@ public class IsValidInput {
     }
 
     boolean IsValidRestartOrEndGame() {
-        return input.equals("1") || input.equals("2");
+        return input.equals(RE_START_MESSAGE) || input.equals(END_GAME_MESSAGE);
     }
 
     boolean IsValidValue() {
