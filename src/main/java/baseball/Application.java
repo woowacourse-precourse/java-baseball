@@ -100,4 +100,10 @@ public class Application {
 
         return ballCount;
     }
+
+    private static LinkedHashMap<String, ArrayList<Integer>> AnalyzePlayerNumber
+            (ArrayList<Integer> playerNumberArrayList,
+             ArrayList<Integer> answerNumberArrayList) {
+        
+    }
 }
