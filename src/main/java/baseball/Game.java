@@ -89,6 +89,8 @@ public class Game {
             return strikeCount + STRIKE + NEW_LINE + GAME_OVER;
         } else if (strikeCount == 0) {
             return ballCount + BALL;
+        } else if (ballCount == 0) {
+            return strikeCount + STRIKE;
         }
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
