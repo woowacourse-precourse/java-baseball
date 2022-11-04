@@ -4,8 +4,11 @@ import baseball.domain.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputTest {
@@ -47,10 +50,25 @@ class InputTest {
             );
         }
 
+        @Test
+        void case5() {
+            final byte[] buf = String.join("\n", "123").getBytes();
+            ArrayList<Integer> expectedResult = new ArrayList<>();
+            expectedResult.add(1);
+            expectedResult.add(2);
+            expectedResult.add(3);
+
+            Input input = new Input();
+            System.setIn(new ByteArrayInputStream(buf));
+            ArrayList<Integer> result = input.readPlayerGuess();
+
+            assertThat(result).isEqualTo(expectedResult);
+        }
+
         @Override
         public void runMain() {
             Input input = new Input();
-            input.getPlayerGuess();
+            input.readPlayerGuess();
         }
     }
 
