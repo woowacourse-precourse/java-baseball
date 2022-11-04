@@ -25,9 +25,11 @@ public class BaseBall implements Game {
 
     @Override
     public void play() {
-        playerInput();
-        compareNumbers();
-        showResult();
+        do {
+            playerInput();
+            compareNumbers();
+            showResult();
+        } while (strike != 3);
     }
 
     private void playerInput() {
