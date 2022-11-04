@@ -14,7 +14,7 @@ public class Application {
         int ball = countBall(computer, user);
         if (ball != 0) System.out.print(ball + "볼 ");
         int strike = countStrike(computer, user);
-//        if (strike != 0) System.out.println(strike + "스트라이크");
+        if (strike != 0) System.out.println(strike + "스트라이크");
     }
 
     private static int countStrike(List<Integer> computer, List<Integer> user) {
