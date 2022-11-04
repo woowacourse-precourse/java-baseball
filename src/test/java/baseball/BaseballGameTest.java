@@ -38,5 +38,7 @@ public class BaseballGameTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> game.checkUserNumber("224"))
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> game.checkUserNumber("204"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
