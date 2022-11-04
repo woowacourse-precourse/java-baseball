@@ -19,6 +19,24 @@ public class Application {
         String num = readLine();
         return num;
     }
+    public static int duplicateCheck1(String num, int comparison1, int comparison2){
+        int duplicateCount=0;
+        if (num.charAt(comparison1)==num.charAt(comparison2)){
+            duplicateCount+=1;
+        }
+        return  duplicateCount;
+    }
+    public static void duplicateCheck2(String num){
+        int duplicateCount=0;
+        for(int comparison1=0;comparison1<num.length();comparison1++){
+            for(int comparison2=comparison1+1;comparison2<num.length();comparison2++){
+                duplicateCount=duplicateCheck1(num,comparison1,comparison2);
+            }
+        }
+        if (duplicateCount != 0){
+            throw new IllegalArgumentException("입력숫자의 중복을 확인하세요");
+        }
+    }
     public static int Check(String num, List<Integer> answer){
         int strike=0;
         int ball=0;
@@ -50,11 +68,12 @@ public class Application {
         List<Integer> answer = getRandomNum();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            String num = numberInput();
-            if (num.length() !=3) {
-                throw new IllegalArgumentException();
+            String number = numberInput();
+            if (number.length() !=3) {
+                throw new IllegalArgumentException("입력숫자 길이를 확인하세요");
             }
-            checkstrike = Check(num, answer);
+            duplicateCheck2(number);
+            checkstrike = Check(number, answer);
             if (checkstrike == 3) {
                 gostop = readLine();
                 break;
