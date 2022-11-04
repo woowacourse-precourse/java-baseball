@@ -9,24 +9,21 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-
         List<Integer> computer = getComputerValue();
         System.out.println(computer);
         List<Integer> user = new Input(readLine()).getInputList();
-
-        int ball = getBall(computer, user);
-        if (ball != 0) System.out.print(ball + "볼 ");
+        int ball = countBall(computer, user);
     }
 
-    private static int getBall(List<Integer> computer, List<Integer> user) {
+    private static int countBall(List<Integer> computer, List<Integer> user) {
         int ball = 0;
         for (int i = 0; i < computer.size(); i += 1) {
-            ball += countBall(computer, user, i);
+            ball += hasBall(computer, user, i);
         }
         return ball;
     }
 
-    private static int countBall(List<Integer> computer, List<Integer> user, int i) {
+    private static int hasBall(List<Integer> computer, List<Integer> user, int i) {
         int ball = 0;
         for (int j = 0; j < computer.size(); j += 1) {
             if (i == j) continue;
