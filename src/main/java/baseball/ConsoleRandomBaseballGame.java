@@ -36,7 +36,7 @@ public class ConsoleRandomBaseballGame {
      * @return 게임 종료 여부
      */
     private boolean playOneTurn() {
-        Digits digits = gameConsole.readDigits();
+        Digits digits = gameConsole.inputDigits();
         Result result = randomBaseballGame.match(digits);
 
         return gameConsole.printGameResult(result);

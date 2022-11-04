@@ -24,7 +24,7 @@ public class GameConsole {
                 .collect(Collectors.toList());
     }
 
-    public Digits readDigits() throws IllegalArgumentException {
+    private Digits readDigits() throws IllegalArgumentException {
         try {
             return new Digits(readIntegerList());
         } catch (NumberFormatException e) {
