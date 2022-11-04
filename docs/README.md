@@ -22,7 +22,7 @@
 
 - 1 ~ 9 사이 숫자 3개(중복 숫자 없음) 생성
 - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
-- 반환 형태 : `List`
+- 반환 형태 : `String`
 
 
 ### 4. 숫자 일치, 포함 여부 판독 기능
