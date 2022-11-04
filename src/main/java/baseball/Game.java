@@ -10,10 +10,7 @@ public class Game {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() != 3) {
-            addBall(computer, Randoms.pickNumberInRange(1, 9));
-        }
+        List<Integer> computer = makeAnswer();
 
         String result = "";
         while (!result.equals("3스트라이크")) {
@@ -68,6 +65,14 @@ public class Game {
         } else if (!input.equals("2")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
+    }
+
+    private static List<Integer> makeAnswer() {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() != 3) {
+            addBall(list, Randoms.pickNumberInRange(1, 9));
+        }
+        return list;
     }
 
     private static void addBall(List<Integer> list, int random) {
