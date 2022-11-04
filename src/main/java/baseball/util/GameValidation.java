@@ -11,4 +11,9 @@ public class GameValidation {
         return input.length() == GAME_NUMBER_LENGTH;
     }
 
+    public static boolean validateDigit(String input) {
+        return input.chars()
+            .allMatch(Character::isDigit);
+    }
+
 }
