@@ -11,7 +11,7 @@ public class Application {
         
         //프로그램 종료 의사를 확인하는 변수
 
-        
+
         // TODO : 기능 1. 숫자 야구 게임 시작 문구 출력, 게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -23,20 +23,15 @@ public class Application {
         }
     }
 
-    // 기능 2. 에서 6. 묶어놓은 함수
+    // 숫자 야구 게임 프로세스 함수
     private static boolean baseballGameProcess(){
         // 프로그램을 종료시킬지 판단하는 변수
         boolean endTheProcess;
+
+        // 기능 5. 호출
+        repeatGuessing(makeComputerAnswer());
         
-        String computer = makeComputerAnswer();
-        
-        // TODO : 기능 5. 답을 맞추지 못하면 기능 3. 다시 실행, 아니면 반복 멈춤
-        // 사용자가 맞출 때 까지의 무한 반복
-        String endOrContinue = "continueGame";
-        while (endOrContinue.equals("continueGame")){
-            // TODO : 기능 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
-            endOrContinue = compareComputerAndPlayer(computer, inputPlayerNumber().toCharArray());
-        }
+
 
         //TODO : 기능 6. 다른 게임을 진행할 지 , 아니면 프로그램을 멈출 지 1 나 2 입력 받기
         if (Console.readLine().equals("1")) endTheProcess = true;
@@ -129,5 +124,17 @@ public class Application {
         }
         return "continueGame";
 
+    }
+
+    // TODO : 기능 5. 답을 맞추지 못하면 기능 3. 다시 실행, 아니면 반복 멈춤
+    private static void repeatGuessing(String computer){
+        //게임이 멈출지 안 멈출지 판단하는 변수
+        String endOrContinue = "continueGame";
+
+        // 사용자가 맞출 때 까지의 무한 반복
+        while (endOrContinue.equals("continueGame")){
+            // TODO : 기능 4. 컴퓨터의 정답과 사용자가 입력한 숫자를 비교 후 결과 출력
+            endOrContinue = compareComputerAndPlayer(computer, inputPlayerNumber().toCharArray());
+        }
     }
 }
