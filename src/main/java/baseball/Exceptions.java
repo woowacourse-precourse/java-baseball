@@ -35,6 +35,11 @@ public class Exceptions {
         if (uniqueNumbers.size() != 3) {
             throw new IllegalArgumentException("중복된 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
+    }
 
+    public static void isValidReGameAnswer(int reGameAnswer) {
+        if (reGameAnswer != (Constant.START_GAME & Constant.END_GAME)) {
+            throw new IllegalArgumentException("올바르지 않은 재게임 입력입니다. 프로그램을 종료합니다.");
+        }
     }
 }
