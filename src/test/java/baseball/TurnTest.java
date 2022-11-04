@@ -3,14 +3,11 @@ package baseball;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
 import java.util.List;
-
-import java.lang.reflect.Field;
 
 import org.junit.jupiter.api.Test;
 
@@ -171,18 +168,34 @@ public class TurnTest {
 
         assertThat(turn.getStrikeResultString(2)).isEqualTo(resultOutput);
     }
-
-    /*@Test
-    void isStrikeOut_test_strike_out() {
+    @Test
+    void isStrikeOut_test_strike_3(){
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
-        List<Integer> testPlayerNumberList = List.of(2, 3, 5);
+
         Turn turn = new Turn();
 
-        turn.countNumberOfStrikes(testPlayerNumberList, testHiddenNumberList);
+        String testInput = "235";
+        final byte[] buf = testInput.getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
 
-        boolean result = true;
+        turn.start(testHiddenNumberList);
 
-        assertThat(turn.isStrikeOut()).isEqualTo(result);
-    }*/
+        assertThat(turn.isStrikeOut()).isEqualTo(true);
+    }
+
+    @Test
+    void isStrikeOut_test_strike_1() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "264";
+        final byte[] buf = testInput.getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        turn.start(testHiddenNumberList);
+
+        assertThat(turn.isStrikeOut()).isEqualTo(false);
+    }
 
 }
