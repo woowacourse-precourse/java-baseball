@@ -1,10 +1,10 @@
 package baseball.verifiable;
 
-public class checkInputRange implements VerifiableRule {
+public class CheckInputRange implements VerifiableRule {
     private final char lowerNum;
     private final char upperNum;
 
-    public checkInputRange(int lowerNum, int upperNum) {
+    public CheckInputRange(int lowerNum, int upperNum) {
         this.lowerNum = intToChar(lowerNum);
         this.upperNum = intToChar(upperNum);
     }
