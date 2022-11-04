@@ -9,11 +9,10 @@ public class BaseballGameLauncher {
     public final static String RESTART_GAME = "1";
     public final static String CLOSE_GAME = "2";
 
-    private BaseballGame baseballGame;
-    
+
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        baseballGame = new BaseballGame();
+        BaseballGame baseballGame = new BaseballGame();
         do {
             baseballGame.start();
         } while (isRestartGame());
