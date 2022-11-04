@@ -59,7 +59,14 @@ public class Application {
             }
         }
         return comparedResult;
+    }
 
+    private static boolean correctAnswer(HashMap<Integer,Integer> comparedResult){
+        boolean correct;
+        if (comparedResult.get(STRIKE)==3){
+            correct=true;
+        }else correct=false;
+        return correct;
     }
 
     public static void main(String[] args) {
@@ -71,10 +78,9 @@ public class Application {
             int userInput = sc.nextInt();
             List<Integer> separatedInput = seperate3Numbers(userInput);
             HashMap<Integer,Integer> comparedResult=checkBallOrStrike(answer,separatedInput);
+            gameOn=correctAnswer(comparedResult);
 
-            System.out.println(comparedResult);
 
-            gameOn = false;
         }
     }
 }
