@@ -12,13 +12,7 @@ public class Application {
     public static void main(String[] args){
         // TODO: 프로그램 구현
         int randomNumber = makeRandomNumber();
-        try {
-            int userInput = userInput();
-            System.out.println(userInput);
-        }catch (IllegalStateException e) {
-            System.out.println("IllegalStateException 발생");
-            System.out.println("프로그램 종료");
-        }
+        int userInputNumber = input();
     }
 
 
@@ -45,12 +39,12 @@ public class Application {
     }
 
 
-    public static int userInput() {
+    public static int input() {
         Scanner sc = new Scanner(System.in);
         System.out.println("숫자를 입력해주세요: ");
         int n = sc.nextInt();
 
-        if (!(n >= 100 && n <1000)) throw new IllegalStateException();
+        if (!(n >= 100 && n <1000)) throw new IllegalArgumentException("n은 세자리 숫자입니다.");
 
         return n;
     }
