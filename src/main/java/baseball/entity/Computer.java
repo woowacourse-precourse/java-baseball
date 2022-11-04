@@ -27,7 +27,7 @@ public class Computer {
     }
 
     public List<Integer> getNumbers(){
-        return List.of(0);
+        return numbers;
     }
 
 
