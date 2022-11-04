@@ -25,7 +25,7 @@ public class Application {
         }
     }
 
-    private static ArrayList<Integer> getPlayerNumber() {
+    private static ArrayList<Integer> GetPlayerNumber() {
         String playerString = Console.readLine();
         ArrayList<Integer> playerNumberArrayList = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class Application {
         return playerNumberArrayList;
     }
 
-    private static ArrayList<Integer> createAnswerNumber() {
+    private static ArrayList<Integer> CreateAnswerNumber() {
         ArrayList<Integer> answerNumberArrayList = new ArrayList<>();
 
         // 1에서 9까지 서로 다른 임의의 수 3개를 생성한다.
@@ -55,7 +55,7 @@ public class Application {
         return answerNumberArrayList;
     }
 
-    private static LinkedHashMap<String, ArrayList<Integer>> countStrikes
+    private static LinkedHashMap<String, ArrayList<Integer>> CountStrikes
             (ArrayList<Integer> playerNumberArrayList, ArrayList<Integer> answerNumberArrayList) {
         int strikeCount = 0;
         ArrayList<Integer> strikeCountArrayList = new ArrayList<>();
@@ -78,7 +78,7 @@ public class Application {
         return strikeResultLinkedHashMap;
     }
 
-    private static int countBalls
+    private static int CountBalls
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList,
              LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap) {
