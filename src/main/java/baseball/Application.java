@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,6 +15,21 @@ public class Application {
     }
 
     public static class Validations{
+        public void isCorrectInput(String inputNum) throws IllegalArgumentException{
+            List<String> inputNumList = List.of(inputNum.split(""));
+            if( !(isSizeThree(inputNumList) && isNumber(inputNumList)) ){
+                throw new IllegalArgumentException();
+            }
+        }
+
+        private boolean isSizeThree(List<String> inputNumList) {
+            return inputNumList.size() == 3;
+        }
+        private boolean isNumber(List<String> inputNumList) {
+            long numFilter = inputNumList.stream().filter(s -> s.matches("[0-9]")).count();
+
+            return numFilter == 3 ;
+        }
 
 
     }
@@ -32,7 +48,13 @@ public class Application {
         }
 
         public List<String> askInputNumber(){
-            String inputNum = Console.readLine();
+//            String inputNum = Console.readLine();
+            String inputNum = "423";
+            try{
+                validations.isCorrectInput(inputNum);
+            }catch (IllegalArgumentException e){
+                e.printStackTrace();
+            }
             return Arrays.asList(inputNum.split(""));
         }
     }
