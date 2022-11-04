@@ -25,7 +25,10 @@ public class Application {
             strikeCount = count.get(STRIKE);
 
             resultMessage(refereeAnswer(ballCount, strikeCount));
-        } while (strikeCount != 3);
+        } while (isClearGame(strikeCount));
+    }
+    public static boolean isClearGame(Integer strikeCount) {
+        return strikeCount != 3;
     }
     public static List<Integer> createBaseballNumberList() {
         List<Integer> numberList = new ArrayList<>();
