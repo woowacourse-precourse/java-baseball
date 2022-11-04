@@ -14,6 +14,25 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    public static boolean playGame(){
+        List<Integer> computerNumber = createThreeDigitsRandomNumber();
+        System.out.println(computerNumber);
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumber = Console.readLine();
+            if(!checkNumberIsValid(inputNumber)){
+                return false;
+            }
+            List<Integer> userNumber = changeStringToList(inputNumber);
+            String result = countBallStrike(computerNumber, userNumber);
+            System.out.println(result);
+            if(result.equals("3스트라이크")){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return true;
+            }
+        }
+    }
+
     public static List<Integer> createThreeDigitsRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3){
