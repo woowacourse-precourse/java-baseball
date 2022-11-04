@@ -33,4 +33,18 @@ public class ComputerTest {
         assertThat(computer.isBall(4)).isEqualTo(result);
         assertThat(computer.isBall(9)).isEqualTo(result);
     }
+
+    @Test
+    void isStrikeTest() {
+        Computer computer = new Computer();
+        List<Integer> answer = List.of(2, 8, 5);
+        computer.setAnswer(answer);
+        boolean result = true;
+        assertThat(computer.isStrike(1, 8)).isEqualTo(result);
+        assertThat(computer.isStrike(2, 5)).isEqualTo(result);
+        result = false;
+        assertThat(computer.isStrike(1, 7)).isEqualTo(result);
+        assertThat(computer.isStrike(0, 5)).isEqualTo(result);
+        assertThat(computer.isStrike(2, 2)).isEqualTo(result);
+    }
 }
