@@ -53,4 +53,16 @@ class UserInputTest {
         });
         assertEquals("중복되지 않는 3자리 숫자를 입력해주세요.", exception.getMessage());
     }
+
+    @Test
+    void 재시작_여부_입력_숫자_유효성검사() {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            UserInput.getNewGameStatusInput();
+        });
+        assertEquals("1 또는 2중에서 입력해주세요.", exception.getMessage());
+    }
 }
