@@ -26,6 +26,7 @@ public class BallNumber {
     private static void validateNumberForm(final String number) {
         final Pattern pattern = Pattern.compile(NUMBER_FORMAT);
         final Matcher matcher = pattern.matcher(number);
+        
         if (!matcher.matches()) {
             throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
         }
