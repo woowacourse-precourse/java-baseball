@@ -5,8 +5,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static baseball.MapKeyStorage.BALL_KEY;
-import static baseball.MapKeyStorage.STRIKE_KEY;
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
+import static baseball.config.MapKeyStorage.BALL_KEY;
+import static baseball.config.MapKeyStorage.STRIKE_KEY;
 
 public class BallAndStrikeCounter {
 
@@ -23,20 +24,20 @@ public class BallAndStrikeCounter {
     }
 
     private List<Integer> inputValueToList(String inputValue) {
-        return IntStream.range(0, 3)
+        return IntStream.range(0, DIGITS_FOR_THIS_GAME)
                 .mapToObj(i -> Integer.parseInt(inputValue.substring(i, i + 1)))
                 .collect(Collectors.toList());
     }
 
     private int checkBall(List<Integer> answer, List<Integer> inputNumber) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, DIGITS_FOR_THIS_GAME)
                 .filter(i -> answer.contains(inputNumber.get(i)))
                 .filter(i -> !answer.get(i).equals(inputNumber.get(i)))
                 .count();
     }
 
     private int checkStrike(List<Integer> answer, List<Integer> inputNumber) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, DIGITS_FOR_THIS_GAME)
                 .filter(i -> answer.get(i).equals(inputNumber.get(i)))
                 .count();
     }

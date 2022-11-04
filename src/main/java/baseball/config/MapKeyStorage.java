@@ -1,4 +1,4 @@
-package baseball;
+package baseball.config;
 
 public class MapKeyStorage {
     public static final String STRIKE_KEY = "strike";

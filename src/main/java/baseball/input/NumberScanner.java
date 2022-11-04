@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 import java.util.stream.IntStream;
 
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
+
 public class NumberScanner {
 
     public String inputNumber() {
@@ -53,9 +55,8 @@ public class NumberScanner {
 
     private void validateLengthForGame(String inputValue) {
         int length = inputValue.length();
-        final int digit = 3;
 
-        if (length != digit) {
+        if (length != DIGITS_FOR_THIS_GAME) {
             throw new IllegalArgumentException("세 자리의 숫자를 입력해 주세요.");
         }
     }
@@ -67,7 +68,7 @@ public class NumberScanner {
     }
 
     private void validateDuplicate(String inputValue) {
-        long count = IntStream.range(0, 3)
+        long count = IntStream.range(0, DIGITS_FOR_THIS_GAME)
                 .mapToObj(inputValue::charAt)
                 .distinct()
                 .count();

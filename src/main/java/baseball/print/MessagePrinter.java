@@ -2,8 +2,9 @@ package baseball.print;
 
 import java.util.Map;
 
-import static baseball.MapKeyStorage.BALL_KEY;
-import static baseball.MapKeyStorage.STRIKE_KEY;
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
+import static baseball.config.MapKeyStorage.BALL_KEY;
+import static baseball.config.MapKeyStorage.STRIKE_KEY;
 import static baseball.print.Message.*;
 
 public class MessagePrinter {
@@ -20,12 +21,12 @@ public class MessagePrinter {
         Integer ballCount = ballAndStrikeCount.get(BALL_KEY);
         Integer strikeCount = ballAndStrikeCount.get(STRIKE_KEY);
 
-        if (ballCount == 3) {
+        if (ballCount == DIGITS_FOR_THIS_GAME) {
             System.out.println(ballCount + BALL);
             return;
         }
 
-        if (strikeCount == 3) {
+        if (strikeCount == DIGITS_FOR_THIS_GAME) {
             System.out.println(strikeCount + STRIKE);
             return;
         }

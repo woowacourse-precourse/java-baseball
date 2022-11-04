@@ -8,7 +8,8 @@ import baseball.randomnumber.RandomNumberFactory;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.MapKeyStorage.*;
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
+import static baseball.config.MapKeyStorage.*;
 
 public class BaseballGame {
     private final NumberScanner numberScanner;
@@ -38,7 +39,7 @@ public class BaseballGame {
 
             messagePrinter.printBallAndStrikeCount(ballAndStrikeCount);
 
-            if (ballAndStrikeCount.get(STRIKE_KEY) == 3) {
+            if (ballAndStrikeCount.get(STRIKE_KEY) == DIGITS_FOR_THIS_GAME) {
                 messagePrinter.printCorrectAnswerMessage();
                 messagePrinter.printRestartMessage();
 
