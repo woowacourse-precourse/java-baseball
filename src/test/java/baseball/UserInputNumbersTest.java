@@ -2,7 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputNumbersTest {
@@ -37,6 +37,13 @@ class UserInputNumbersTest {
     @Test
     void 입력값_테스트_비정상입력_같은숫자포함() {
         String userInput = "224";
+        assertThatThrownBy(() -> UserInputNumbers.validUserInputNumber(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력값_테스트_비정상입력_범위벗어난_숫자() {
+        String userInput = "102";
         assertThatThrownBy(() -> UserInputNumbers.validUserInputNumber(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
