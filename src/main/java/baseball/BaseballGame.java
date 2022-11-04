@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -11,12 +9,11 @@ public class BaseballGame {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String GET_NUMBER = "숫자를 입력해주세요 : ";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String START_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private List<Integer> computer;
-    private List<Integer> user;
+    private Number computer;
+    private Number user;
     private int ball;
     private int strike;
     private boolean isCorrect;
@@ -30,18 +27,21 @@ public class BaseballGame {
 
         while (!isExit) {
             initialize();
-            makeRandomNumber();
-            System.out.println("computer = " + computer);
+
+            computer = new Number();
+            computer.setRandomNumber();
+            System.out.println("computer = " + computer.getDigits());
 
             while (!isCorrect) {
-                System.out.print(GET_NUMBER);
-                getUserNumber();
+                user = new Number();
+                user.inputNumber();
 
                 compareNumbers();
                 String result = makeResultString();
                 System.out.println(result);
             }
 
+            System.out.println(GAME_END);
             System.out.println(START_AGAIN);
             startAgain();
         }
@@ -52,58 +52,29 @@ public class BaseballGame {
         isExit = false;
     }
 
-    private void makeRandomNumber() {
-        computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-    }
-
-    private void getUserNumber() {
-        String input = Console.readLine();
-        user = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            if (i == 3) {
-                throw new IllegalArgumentException();
-            }
-
-            char c = input.charAt(i);
-            int number = Character.getNumericValue(c);
-            if (!isValidateNumber(number)) {
-                throw new IllegalArgumentException();
-            }
-            user.add(number);
-        }
-    }
-
-    private boolean isValidateNumber(int number) {
-        return number != 0 & !user.contains(number);
-    }
-
     private void compareNumbers() {
-        countBall();
-        countStrike();
+        List<Integer> computerValue = computer.getDigits();
+        List<Integer> userValue = user.getDigits();
+        countBall(computerValue, userValue);
+        countStrike(computerValue, userValue);
         ball -= strike;
     }
 
-    private void countBall() {
+    private void countBall(List<Integer> computerValue, List<Integer> userValue) {
         ball = 0;
         for (int i = 0; i < 3; i++) {
-            Integer target = user.get(i);
-            if (computer.contains(target)) {
+            Integer target = userValue.get(i);
+            if (computerValue.contains(target)) {
                 ball += 1;
             }
         }
     }
 
-    private void countStrike() {
+    private void countStrike(List<Integer> computerValue, List<Integer> userValue) {
         strike = 0;
         for (int i = 0; i < 3; i++) {
-            Integer computerNumber = computer.get(i);
-            Integer userNumber = user.get(i);
+            Integer computerNumber = computerValue.get(i);
+            Integer userNumber = userValue.get(i);
             if (computerNumber.equals(userNumber)) {
                 strike += 1;
             }
@@ -114,7 +85,7 @@ public class BaseballGame {
         String answer = NOTHING;
         if (strike == 3) {
             isCorrect = true;
-            answer = String.format("%d%s\n%s", strike, STRIKE, GAME_END);
+            answer = String.format("%d%s", strike, STRIKE);
         } else if (ball > 0 & strike > 0) {
             answer = String.format("%d%s %d%s", ball, BALL, strike, STRIKE);
         } else if (ball > 0) {

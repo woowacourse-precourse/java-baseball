@@ -1,0 +1,80 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Number {
+
+    private static final String GET_NUMBER = "숫자를 입력해주세요 : ";
+    private static final int MAX_NUMBER = 9;
+    private static final int MIN_NUMBER = 1;
+    private static final int DIGIT = 3;
+
+    private List<Integer> digits;
+
+    public Number() {
+        this.digits = new ArrayList<>();
+    }
+
+    public void setRandomNumber() {
+        while (digits.size() < DIGIT) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            if (!digits.contains(randomNumber)) {
+                digits.add(randomNumber);
+            }
+        }
+    }
+
+    public void inputNumber() {
+        System.out.print(GET_NUMBER);
+        String input = Console.readLine();
+        if (!isValid(input)) {
+            throw new IllegalArgumentException();
+        }
+        setDigits(input);
+    }
+
+    public boolean isValid(String target) {
+        return is3digits(target) & is1to9(target) & isNotDuplicate(target);
+    }
+
+    private boolean is3digits(String target) {
+        return target.length() == DIGIT;
+    }
+
+    private boolean is1to9(String target) {
+        for (int i = 0; i < target.length(); i++) {
+            char c = target.charAt(i);
+            int value = Character.getNumericValue(c);
+            if (!(value >= MIN_NUMBER & value <= MAX_NUMBER)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isNotDuplicate(String target) {
+        Set<Character> duplicate = new HashSet<>();
+        char[] chars = target.toCharArray();
+        for (char c : chars) {
+            duplicate.add(c);
+        }
+        return target.length() == duplicate.size();
+    }
+
+    public void setDigits(String target) {
+        for (int i = 0; i < target.length(); i++) {
+            char c = target.charAt(i);
+            int number = Character.getNumericValue(c);
+            digits.add(number);
+        }
+    }
+
+    public List<Integer> getDigits() {
+        return digits;
+    }
+}
