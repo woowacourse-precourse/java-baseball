@@ -42,4 +42,12 @@ public class NumberComparator {
         }
         return ballCount;
     }
+
+    private void makeStrikeCountText(StringBuilder gameResultBuilder, int strikeCount) {
+        if (strikeCount > 0) {
+            gameResultBuilder.append(strikeCount);
+            gameResultBuilder.append(STRIKE);
+            gameResultBuilder.append(SPACE);
+        }
+    }
 }
