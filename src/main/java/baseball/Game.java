@@ -7,11 +7,13 @@ public class Game {
     public final static String STRIKE = "스트라이크";
     public final static String NOTHING = "낫싱";
     Computer computer = new Computer();
+    Player player = new Player();
     Strike strike = new Strike();
     Ball ball = new Ball();
 
     public void start() {
         System.out.println(START_NOTIFICATION);
+        repeatUntilAnswerCorrect();
     }
 
     public boolean isContainAnyNumber() {
@@ -23,6 +25,22 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public void repeatUntilAnswerCorrect() {
+        boolean isThreeStrike = false;
+        computer.pickThreeNumbersRandomly();
+
+        while (!isThreeStrike) {
+            player.inputNumbers();
+            if (isContainAnyNumber()) {
+                printStrikeBall();
+            }
+            if (!isContainAnyNumber()) {
+                System.out.println(NOTHING);
+            }
+            isThreeStrike = isThreeStrike();
+        }
     }
 
     public void printStrikeBall() {
@@ -38,5 +56,13 @@ public class Game {
         if (strikeCount != 0 && ballCount != 0) {
             System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
         }
+    }
+
+    public boolean isThreeStrike() {
+        int strikeCount = strike.compareCharacterLocationMatch();
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
     }
 }
