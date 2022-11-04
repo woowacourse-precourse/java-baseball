@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Application {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_LENGTH_ERROR_MESSAGE = "입력한 값이 3자리가 아닙니다.";
     private static final String INPUT_REPLAY_ERROR_MESSAGE = "재시작이나 종료를 위해서는 1이나 2를 입력해야 합니다.";
@@ -32,7 +33,7 @@ public class Application {
         int[] computerNumber = initializeComputerNumber();
         boolean playBaseball = true;
         while (playBaseball) {
-            String stringUserInput = getUserInput();
+            String stringUserInput = getUserInput(InputType.BASEBALL_NUMBER);
             int[] userInput;
             try {
                 isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
@@ -47,6 +48,17 @@ public class Application {
             printResult(ball, strike);
             if(isThreeStrike(strike)) {
                 System.out.println(THREE_STRIKE_MESSAGE);
+            }
+
+            try {
+                stringUserInput = getUserInput(InputType.WHETHER_REPLAY);
+                isValidInput(stringUserInput, InputType.WHETHER_REPLAY);
+                if(!willReplay(stringUserInput)) {
+                    playBaseball = false;
+                }
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException);
+                break;
             }
         }
     }
@@ -64,8 +76,13 @@ public class Application {
         return computerNumberArray;
     }
 
-    static String getUserInput() {
-        System.out.print(INPUT_MESSAGE);
+    static String getUserInput(InputType inputType) {
+        if (inputType == InputType.BASEBALL_NUMBER) {
+            System.out.print(INPUT_MESSAGE);
+        }
+        else if (inputType == InputType.WHETHER_REPLAY) {
+            System.out.println(REPLAY_MESSAGE);
+        }
         String userInput = Console.readLine();
 
         return userInput;
@@ -188,6 +205,15 @@ public class Application {
         }
 
         return false;
+    }
+
+    static boolean willReplay(String userInput) {
+        boolean replay = false;
+        if (userInput.charAt(0) == REPLAY) {
+            replay = true;
+        }
+
+        return replay;
     }
 }
 
