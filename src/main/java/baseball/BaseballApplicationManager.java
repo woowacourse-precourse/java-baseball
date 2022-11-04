@@ -2,7 +2,7 @@ package baseball;
 
 public class BaseballApplicationManager {
     BaseballApplicationManager() {
-        // IOManager.printProgramStartMessage
+        IOManager.printProgramStartMessage();
     }
 
     public void startProgram() {
