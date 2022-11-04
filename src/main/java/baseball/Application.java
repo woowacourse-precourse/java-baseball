@@ -22,7 +22,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             Integer userNumber = ConsoleReader.readInteger();
 
-            score = score(computerNumber, userNumber);
+            score = calculateScore(computerNumber, userNumber);
             printScore(score);
         } while (!score.get(STRIKE).equals(3));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -41,7 +41,7 @@ public class Application {
         System.out.print("\n");
     }
 
-    public static Map<String, Integer> score(Integer computerNumber, Integer userNumber) {
+    public static Map<String, Integer> calculateScore(Integer computerNumber, Integer userNumber) {
         Map<String, Integer> ret = new HashMap<>();
         ret.put(STRIKE, 0);
         ret.put(BALL, 0);

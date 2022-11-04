@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     void 볼스트라이크스코어1스트라이크1볼(){
         Integer computerNumber = 583;
         Integer userNumber = 532;
-        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+        Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
         assertThat(score.get(Application.StringConst.STRIKE)).isEqualTo(1);
         assertThat(score.get(Application.StringConst.BALL)).isEqualTo(1);
     }
@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
     void 볼스트라이크스코어0스트라이크3볼(){
         Integer computerNumber = 123;
         Integer userNumber = 231;
-        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+        Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
         assertThat(score.get(Application.StringConst.STRIKE)).isEqualTo(0);
         assertThat(score.get(Application.StringConst.BALL)).isEqualTo(3);
     }
@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
 
         Integer computerNumber = 583;
         Integer userNumber = 532;
-        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+        Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
 
         Application.printScore(score);
         assertThat(out.toString()).isEqualTo("1볼 1스트라이크\n");
@@ -71,7 +71,7 @@ class ApplicationTest extends NsTest {
 
         Integer computerNumber = 123;
         Integer userNumber = 231;
-        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+        Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
 
         Application.printScore(score);
         assertThat(out.toString()).isEqualTo("3볼\n");
@@ -84,7 +84,7 @@ class ApplicationTest extends NsTest {
 
         Integer computerNumber = 123;
         Integer userNumber = 456;
-        Map<String, Integer> score = Application.score(computerNumber, userNumber);
+        Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
 
         Application.printScore(score);
         assertThat(out.toString()).isEqualTo("낫싱\n");
