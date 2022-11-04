@@ -33,4 +33,18 @@ public class User {
 
         return userNumbersList;
     }
+
+    public boolean continuable() {
+        String continueNumber = readLine();
+
+        while (!validate.isContinueNumber(continueNumber)) {
+            continueNumber = readLine();
+        }
+
+        if (continueNumber.equals("1")) {
+            return true;
+        }
+
+        return false;
+    }
 }

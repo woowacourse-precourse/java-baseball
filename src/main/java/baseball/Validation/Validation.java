@@ -57,4 +57,13 @@ public class Validation {
             }
         }
     }
+
+    public boolean isContinueNumber(String continueNumber) {
+
+        if (continueNumber.equals("1") || continueNumber.equals("2")) {
+            return true;
+        }
+
+        return false;
+    }
 }
