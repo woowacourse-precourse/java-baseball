@@ -10,21 +10,35 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         System.out.println(Comment.STARTGAME);
-        ComputerList.initialize();
+        Computer.gameInitialize();
 
         while (true) {
             System.out.print(Comment.INPUTNUMBER);
 
-            // 입력받기
             String inputStr = Console.readLine();
             validateInput(inputStr);
+
             ArrayList<Integer> inputList = stringToList(inputStr);
-
-            // 로직
-            Map<Hint, Integer> hintCountMap = ComputerList.compare(inputList);
-
-            // 출력
+            Computer.compare(inputList);
+            Computer.printHint();
+            Computer.checkResult();
         }
+    }
+
+    private static boolean restartQeustion() {
+        System.out.println(Comment.REGAME);
+        String restartInput = Console.readLine();
+        validateInput(restartInput);
+
+        if (restartInput.equals("1")) {
+            return true;
+        }
+
+        if (restartInput.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 과 2 중 선택해야합니다.");
     }
 
     private static ArrayList<Integer> stringToList(String inputStr) {
@@ -39,10 +53,6 @@ public class Application {
     private static void validateInput(String input) {
         String tmpInput = input.trim();
 
-        if (tmpInput.length() != 3) {
-            throw new IllegalArgumentException("3자리 수 를 입력해주세요.");
-        }
-
         String numberOnlyRegex = "^[0-9]+$";
         boolean matches = tmpInput.matches(numberOnlyRegex);
         if (!matches) {
@@ -51,31 +61,46 @@ public class Application {
     }
 }
 
-class ComputerList {
-    private static List<Integer> list;
+class Computer {
+    private static List<Integer> answerList;
     private static Map<Hint, Integer> hintCountMap;
 
-    private ComputerList() {
+
+
+    private static Boolean result;
+    private Computer() {
     }
 
-    public static void initialize() {
-        list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        generateHintMap();
+    public static void gameInitialize() {
+        answerInitialize();
+        hintCountInitialize();
+        result = false;
     }
 
-    public static Map<Hint, Integer> compare(ArrayList<Integer> inputList) {
+    public static void compare(ArrayList<Integer> inputList) {
         validateList(inputList);
         for (int index = 0; index < inputList.size(); index++) {
-            eachValueMatching(index, list.get(index));
+            eachValueMatching(index, answerList.get(index));
         }
+    }
+
+    private static void answerInitialize() {
+        answerList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+    }
+
+    private static Map<Hint, Integer> hintCountInitialize() {
+        Map<Hint, Integer> hintCountMap = new HashMap<>();
+        hintCountMap.put(Hint.STRIKE, 0);
+        hintCountMap.put(Hint.BALL, 0);
+        hintCountMap.put(Hint.MISS, 0);
         return hintCountMap;
     }
 
     private static void eachValueMatching(int index, Integer value) {
-        if (list.contains(value) && list.get(index) == value) {
+        if (answerList.contains(value) && answerList.get(index).equals(value)) {
             Integer before = hintCountMap.get(Hint.STRIKE);
             hintCountMap.put(Hint.STRIKE, before + 1);
-        } else if (list.contains(value)) {
+        } else if (answerList.contains(value)) {
             Integer before = hintCountMap.get(Hint.BALL);
             hintCountMap.put(Hint.BALL, before + 1);
         } else {
@@ -84,19 +109,48 @@ class ComputerList {
         }
     }
 
+    private static void validateList(ArrayList<Integer> inputList) {
+        if (answerList.size() != 3) {
+            throw new IllegalArgumentException("3자리 수 를 입력해주세요.");
+        }
 
-    private static Map<Hint, Integer> generateHintMap() {
-        Map<Hint, Integer> hintCountMap = new HashMap<>();
-        hintCountMap.put(Hint.STRIKE, 0);
-        hintCountMap.put(Hint.BALL, 0);
-        hintCountMap.put(Hint.MISS, 0);
+        if (answerList == null || inputList == null) {
+            throw new IllegalArgumentException("리스트 값이 유효하지 않습니다.");
+        }
+    }
+
+    public static Map<Hint, Integer> getHintCountMap() {
         return hintCountMap;
     }
 
-    private static void validateList(ArrayList<Integer> inputList) {
-        if (list == null || inputList == null) {
-            throw new IllegalArgumentException("리스트 값이 유효하지 않습니다.");
+    public static void printHint() {
+        Integer ballCount = hintCountMap.get(Hint.BALL);
+        Integer strikeCount = hintCountMap.get(Hint.STRIKE);
+        String hintStr = null;
+
+        if (ballCount == 0 && strikeCount == 0) {
+            hintStr = "낫싱";
+        } else if (ballCount != 0 && strikeCount == 0) {
+            hintStr = String.format("%d볼", ballCount);
+        } else if (ballCount == 0 && strikeCount != 0) {
+            hintStr = String.format("%d스트라이트", strikeCount);
+        } else if (ballCount != 0 && strikeCount != 0) {
+            hintStr = String.format("%d볼 %d스트라이크",ballCount,strikeCount)
         }
+
+        System.out.println(hintStr);
+    }
+
+    public static void checkResult() {
+        if (hintCountMap.get(Hint.STRIKE).equals(3)) {
+            result = true;
+            System.out.println(Comment.ENDGAME);
+        }
+        hintCountInitialize();
+    }
+
+    public static Boolean getResult() {
+        return result;
     }
 }
 
