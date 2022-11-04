@@ -1,8 +1,9 @@
-package baseball.model.domain;
+package baseball.controller;
 
 import baseball.model.Constant;
 import baseball.model.Utilization;
 import baseball.model.Validation;
+import baseball.model.domain.NumberDto;
 
 import java.util.List;
 

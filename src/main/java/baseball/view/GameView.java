@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.controller.GameController;
 import baseball.model.Validation;
-import baseball.model.domain.UserNumber;
+import baseball.controller.UserNumber;
 
 import static baseball.model.Constant.*;
 import static baseball.model.Utilization.convertStringToIntegerList;

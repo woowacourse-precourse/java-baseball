@@ -1,4 +1,6 @@
-package baseball.model.domain;
+package baseball.controller;
+
+import baseball.model.domain.NumberDto;
 
 import static baseball.model.Utilization.convertStringToIntegerList;
 

@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.model.domain.ComputerNumber;
 import baseball.model.domain.HintDto;
 import baseball.model.domain.NumberDto;
 
