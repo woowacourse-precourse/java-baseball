@@ -9,11 +9,11 @@ public class Game {
 
     private final Computer computer;
 
-    public Game(){
+    public Game() {
         computer = new Computer();
     }
 
-    public void start(){
+    public void start() {
         System.out.println(START_MESSAGE);
 
         computer.generateAnswer();
@@ -22,7 +22,7 @@ public class Game {
     public String inputUserNumber() {
         System.out.println(INPUT_MESSAGE);
         String userInput = Console.readLine();
-        InputException.isValidateUserInput(userInput);
+        InputException.checkInputNumberValidation(userInput);
         return userInput;
     }
 
