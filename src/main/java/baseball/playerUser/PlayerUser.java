@@ -8,17 +8,26 @@ public class PlayerUser {
 	private PlayerUser() {
 	}
 
-
-
 	public static PlayerUser getInstance() {
 		return instance;
+	}
+
+	public String getInputNumber() throws IllegalArgumentException {
+		String number = inputNumber();
+//		String number = "123";
+
+		if (isExceptionalInput(number)) {
+			throw new IllegalArgumentException();
+		}
+
+		return number;
 	}
 
 	private String inputNumber() {
 		return Console.readLine();
 	}
 
-	private boolean isInputNumberException(String number) {
+	private boolean isExceptionalInput(String number) {
 		return !isRightNumberSize(number) || !isPositiveNumber(number) || !isNoDuplicatedNumber(
 			number);
 	}
