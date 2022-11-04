@@ -7,4 +7,8 @@ public class Input {
     public static String playerNumber() {
         return Console.readLine();
     }
+
+    public static String restartFlag() {
+        return Console.readLine();
+    }
 }
