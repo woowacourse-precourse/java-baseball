@@ -39,12 +39,7 @@ public class Application {
 
         /* 프로그램 메인 구조, 게임 중단 플래그가 세워질 때 까지 반복, 예외 발생 시 프로그램 중단 */
         while(gameStart.equals(FLAG_RETRY_STRING)) {
-            try {
-                gameStart = playBall();
-            } catch(IllegalArgumentException exception) {
-                exception.printStackTrace();
-                return;
-            }
+            gameStart = playBall();
         }
     }
 
