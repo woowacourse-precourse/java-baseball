@@ -6,7 +6,7 @@ public class Round {
 
     private final Computer computer;
     private Numbers numbers;
-    HashMap<Hint, Integer> hintCountMap = new HashMap<>();
+    private HashMap<Hint, Integer> hintCountMap = new HashMap<>();
 
     public Round(Computer computer) {
         this.computer = computer;
