@@ -9,6 +9,8 @@ public class InputValidator {
 
     private static final List<String> STANDARD_NUMBER = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
     private static final int MAX_SIZE = 3;
+    public static final String RESTART_SIGNAL = "1";
+    public static final String EXIT_SIGNAL = "2";
 
     private InputValidator() {
     }
@@ -46,7 +48,7 @@ public class InputValidator {
     }
 
     public static void checkIsGameRestartInput(String restartOrExit) {
-        if (!restartOrExit.equals("1") && !restartOrExit.equals("2")) {
+        if (!restartOrExit.equals(RESTART_SIGNAL) && !restartOrExit.equals(EXIT_SIGNAL)) {
             throw new IllegalArgumentException();
         }
     }
