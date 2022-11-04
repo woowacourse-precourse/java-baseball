@@ -20,7 +20,7 @@
 
 ## 📋 기능 목록
 
-- [ ] 컴퓨터 수를 생성한다.
+- [x] 컴퓨터 수를 생성한다.
     - 컴퓨터 수는 1부터 9까지 서로 다른 임의의 수 3개로 이뤄진다.
     - `camp.nextstep.edu.missionutils.Randoms.pickNumberInRange()`를 활용
 - [ ] 플레이어의 수와 컴퓨터의 수를 비교한다.
