@@ -31,7 +31,7 @@ public class Game {
 
             Comparator comparator = Comparator.getInstance().compare(answerNumber.getNumbers(), userNumber.getNumbers());
 
-            printResult(comparator);
+            System.out.println(printResult(comparator));
 
             if(comparator.getStrike() == GameConstant.DIGIT.getValue()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -40,7 +40,7 @@ public class Game {
         }
     }
 
-    public static void printResult(Comparator comparator) {
+    public static String printResult(Comparator comparator) {
         String result = new String();
 
         if(comparator.getBall() > 0) {
@@ -55,7 +55,7 @@ public class Game {
             result += "낫싱";
         }
 
-        System.out.println(result);
+        return result;
     }
 
     public static boolean isGameContinued() {
