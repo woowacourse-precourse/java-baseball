@@ -1,19 +1,19 @@
 package baseball;
 
+import static baseball.utils.Constant.GAME_NUMBER_SIZE;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class StrikeAndBall {
 
-    int gameNumberSize;
     DefenceNumberMaker defenceNumberMaker;
 
     List<Integer> defenceNumber;
     List<Integer> offenceNumber;
 
-    StrikeAndBall(int size) {
-        this.gameNumberSize = size;
-        defenceNumberMaker = new DefenceNumberMaker(gameNumberSize);
+    StrikeAndBall() {
+        defenceNumberMaker = new DefenceNumberMaker();
     }
 
     public void setDefenceNumber() {
@@ -34,7 +34,7 @@ public class StrikeAndBall {
     private int checkStrike() {
         int count = 0;
 
-        for (int i = 0; i < gameNumberSize; i++) {
+        for (int i = 0; i < GAME_NUMBER_SIZE; i++) {
             if (defenceNumber.get(i).equals(offenceNumber.get(i))) {
                 count++;
             }

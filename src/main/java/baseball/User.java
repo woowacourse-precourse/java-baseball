@@ -8,8 +8,8 @@ public class User {
     ValidationNumber validationNumber;
     String input;
 
-    User(int size) {
-        validationNumber = new ValidationNumber(size);
+    User() {
+        validationNumber = new ValidationNumber();
     }
 
     public List<Integer> inputGameNumber() {

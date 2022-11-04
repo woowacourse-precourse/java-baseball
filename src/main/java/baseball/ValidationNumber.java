@@ -1,24 +1,20 @@
 package baseball;
 
-import baseball.Utils.ExceptionType;
+import static baseball.utils.Constant.GAME_NUMBER_SIZE;
+
+import baseball.utils.ExceptionType;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class ValidationNumber {
 
-    int gameNumberSize;
-
-    ValidationNumber(int size) {
-        gameNumberSize = size;
-    }
-
     public List<Integer> checkTotalAndConvertIntegerList(String number) {
         checkIsNumberAndNotHaveZero(number);
         // 위의 check를 통과했다면 주어진 number에는 숫자만 존재한다. parseInt() 에러 발생 X
         List<Integer> numberList = stringToIntegerList(number);
-        checkOverlap(numberList, gameNumberSize);
-        checkNumberSize(numberList, gameNumberSize);
+        checkOverlap(numberList);
+        checkNumberSize(numberList);
         return numberList;
     }
 
@@ -38,16 +34,16 @@ public class ValidationNumber {
         }
     }
 
-    private void checkOverlap(List<Integer> number, int size) {
+    private void checkOverlap(List<Integer> number) {
         HashSet<Integer> numberSet = new HashSet<>(number);
 
-        if (numberSet.size() != size) {
+        if (numberSet.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException(ExceptionType.NOT_OVERLAP.getMessage());
         }
     }
 
-    private void checkNumberSize(List<Integer> number, int size) {
-        if (number.size() != size) {
+    private void checkNumberSize(List<Integer> number) {
+        if (number.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException(ExceptionType.INVALID_NUMBER_RANGE.getMessage());
         }
     }

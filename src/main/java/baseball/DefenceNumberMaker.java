@@ -1,23 +1,22 @@
 package baseball;
 
+import static baseball.utils.Constant.GAME_NUMBER_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefenceNumberMaker {
 
-    int gameNumberSize;
-
     public List<Integer> defenceNumber;
 
-    DefenceNumberMaker(int size) {
+    DefenceNumberMaker() {
         defenceNumber = new ArrayList<>();
-        this.gameNumberSize = size;
     }
 
-    private void createDefenceNumber(int size) {
+    private void createDefenceNumber() {
         defenceNumber.clear();
-        while(defenceNumber.size() < size) {
+        while(defenceNumber.size() < GAME_NUMBER_SIZE) {
             int random = Randoms.pickNumberInRange(1, 9);
             checkOverlapAndAdd(random);
         }
@@ -30,7 +29,7 @@ public class DefenceNumberMaker {
     }
 
     public List<Integer> getDefenceNumber() {
-        createDefenceNumber(gameNumberSize);
+        createDefenceNumber();
         return defenceNumber;
     }
 }

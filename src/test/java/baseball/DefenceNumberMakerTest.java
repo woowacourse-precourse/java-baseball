@@ -13,7 +13,7 @@ public class DefenceNumberMakerTest {
 
     @Test
     void 중복되지_않는지_확인() {
-        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker(3);
+        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker();
         List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
 
         Set<Integer> result = new HashSet<>(defenceNumberList);
@@ -23,7 +23,7 @@ public class DefenceNumberMakerTest {
 
     @Test
     void 주어진_크기와_일치하는지_확인() {
-        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker(3);
+        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker();
         List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
 
         assertThat(defenceNumberList.size()).isEqualTo(SIZE);

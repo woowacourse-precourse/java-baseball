@@ -1,4 +1,4 @@
-package baseball.Utils;
+package baseball.utils;
 
 public enum ExceptionType {
 
