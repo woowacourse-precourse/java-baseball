@@ -19,33 +19,6 @@ public class GameUtil {
         return oneDigitNumbers;
     }
 
-    public static Scoreboard compareNumber(int computer, int player) {
-        List<Integer> oneDigitComputerNumbers = splitNumberToOneDigits(computer);
-        List<Integer> oneDigitPlayerNumbers = splitNumberToOneDigits(player);
-
-        if (oneDigitComputerNumbers.equals(oneDigitPlayerNumbers)) {
-            return new Scoreboard(0, 3); // 3스트라이크
-        }
-
-        Scoreboard scoreboard = new Scoreboard();
-        List<Integer> retainOneDigitNumbers = new ArrayList<>(oneDigitComputerNumbers);
-
-        retainOneDigitNumbers.retainAll(oneDigitPlayerNumbers);
-
-        for (int number : retainOneDigitNumbers) {
-            if (oneDigitComputerNumbers.indexOf(number) == oneDigitPlayerNumbers.indexOf(number)) {
-                scoreboard.addStrikePoint();
-                continue;
-            }
-
-            scoreboard.addBallPoint();
-        }
-
-        return scoreboard;
-    }
-
-
-
     public static int pickNumber(int numberDigit) {
         int number = pickOneDigitNumber();
 
