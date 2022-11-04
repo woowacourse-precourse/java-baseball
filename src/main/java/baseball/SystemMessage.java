@@ -8,4 +8,8 @@ public class SystemMessage {
     public void printInputNumber() {
         System.out.println(Message.INPUT_NUMBER);
     }
+
+    public void printInputState() {
+        System.out.println(Message.INPUT_STATE);
+    }
 }
