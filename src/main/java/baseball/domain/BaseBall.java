@@ -5,26 +5,28 @@ import baseball.util.GameValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseBall implements Game {
 
-    private final List<Integer> computerNumbers;
+    private final List<Integer> computerNumbers = new ArrayList<>(GameValidator.GAME_NUMBER_LENGTH);
     private final List<Integer> playerNumbers = new ArrayList<>(GameValidator.GAME_NUMBER_LENGTH);
     private int strike;
     private int ball;
 
     public BaseBall() {
-        computerNumbers = Randoms.pickUniqueNumbersInRange((int) GameValidator.START_RANGE,
-            (int) GameValidator.END_RANGE, GameValidator.GAME_NUMBER_LENGTH);
         resetGameStatus();
     }
 
     @Override
     public void play() {
+        GamePrinter.println("숫자 야구 게임을 시작합니다.");
+        generateRandomComputerNumbers();
         do {
             playerInput();
             compareNumbers();
@@ -32,7 +34,25 @@ public class BaseBall implements Game {
         } while (strike != 3);
     }
 
+    private void generateRandomComputerNumbers() {
+        computerNumbers.clear();
+        computerNumbers.addAll(
+            pickUniqueNumbersInRange()
+        );
+    }
+
+    private List<Integer> pickUniqueNumbersInRange() {
+        Set<Integer> numbers = new HashSet<>();
+        while (numbers.size() != GameValidator.GAME_NUMBER_LENGTH) {
+            numbers.add(
+                Randoms.pickNumberInRange(Character.getNumericValue(GameValidator.START_RANGE),
+                    Character.getNumericValue(GameValidator.END_RANGE)));
+        }
+        return new ArrayList<>(numbers);
+    }
+
     private void playerInput() {
+        GamePrinter.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
         GameValidator.validate(playerInput);
         storePlayerNumbers(playerInput);
@@ -42,6 +62,7 @@ public class BaseBall implements Game {
         playerNumbers.clear();
         playerNumbers.addAll(
             playerInput.chars()
+                .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList())
         );
@@ -87,11 +108,12 @@ public class BaseBall implements Game {
         }
 
         if (strike != 0) {
-            result.append(strike).append("스트라이크").append("\n");
+            result.append(strike).append("스트라이크");
         }
 
         if (strike == GameValidator.GAME_NUMBER_LENGTH) {
-            result.append(GameValidator.GAME_NUMBER_LENGTH).append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            result.append("\n").append(GameValidator.GAME_NUMBER_LENGTH)
+                .append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
         GamePrinter.println(result.toString());
