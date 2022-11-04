@@ -2,6 +2,7 @@
 
 - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     - [ ] 컴퓨터 수는 1에서 9까지 서로 다른 임의의 수 3개를 선택하도록 하는 기능
+        - [ ] 게임을 다시 시작하는 경우, 다시 숫자를 새로 세팅하는 기능
 
 
 - [ ] 게임 시작시, `숫자 야구 게임을 시작합니다.` 게임 시작 문구 출력 기능
