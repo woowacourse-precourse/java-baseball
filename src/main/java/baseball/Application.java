@@ -5,17 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
 
     //잘못된 입력을 받을 경우
-    public static void IllegalInput(int input) {
+    public static void IllegalInput(List<Integer> input) {
         //입력이 3자리의 숫자가 아님
-        if(String.valueOf(input).length()!=3){
-            throw new IllegalArgumentException("올바른 값을 입력해주세요.");
+        if(input.size()!=3){
+            throw new IllegalArgumentException("3자리의 수를 입력하세요.");
         }
-
-
+        //서로 다른 3자리의 숫자가 아닌 경우
+        if(Objects.equals(input.get(0), input.get(1)) || Objects.equals(input.get(0), input.get(2)) || Objects.equals(input.get(1), input.get(2))){
+            throw new IllegalArgumentException("서로 다른 숫자를 입력하세요.");
+        }
     }
 
     //랜덤값을 추출
@@ -30,6 +33,7 @@ public class Application {
         return computer;
     }
 
+    //user에게 값을 받음
     public static List<Integer> InputNum(){
         List<Integer> user = new ArrayList<>();
         String[] userInput = Console.readLine().split("");
@@ -38,6 +42,14 @@ public class Application {
         }
         IllegalInput(user);
         return user;
+    }
+
+    public static String solution(){
+        String answer = "";
+        int strike = 0;
+        int ball = 0;
+
+        return answer;
     }
 
     public static void main(String[] args) {
