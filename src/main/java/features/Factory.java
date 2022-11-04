@@ -4,8 +4,11 @@ import java.util.Map;
 
 public interface Factory {
 
-    // 입력 기능
+    // 사용자 입력 기능
     Map<Integer, Character> inputUserNumber();
+
+    // 상대방(컴퓨터) 입력 기능
+    Map<Integer, Character> createComputerNumber();
 
     // 힌트 기능 동작
     void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber);
