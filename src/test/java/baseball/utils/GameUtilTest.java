@@ -12,6 +12,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GameUtilTest {
     @Test
+    void 숫자_분할() {
+        int number = 123;
+        List<Integer> splitOneDigits = GameUtil.splitNumberToOneDigitNumbers(number);
+
+        assertThat(splitOneDigits).containsExactly(1,2,3);
+    }
+
+    @Test
     void 숫자_랜덤_생성() {
         int number = GameUtil.pickNumber(3);
         List<Integer> splitOneDigits = GameUtil.splitNumberToOneDigitNumbers(number);
