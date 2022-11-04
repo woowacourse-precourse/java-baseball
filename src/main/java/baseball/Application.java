@@ -75,6 +75,7 @@ public class Application {
         }
 
         // 스트라이크의 수와 틀린 숫자 index를 ArrayList로 리턴한다.
+        strikeCountArrayList.add(strikeCount);
         strikeResultLinkedHashMap.put("strikeCountArrayList", strikeCountArrayList);
         strikeResultLinkedHashMap.put("wrongNumberIndexArrayList", wrongNumberIndexArrayList);
 
