@@ -10,8 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
-    private static final int RESTART = 1;
-    private static final int END = 2;
+    private static final String RESTART = "1";
     private static final String PATTERN = "[1-2]+";
     private static final String GAME_WIN_CONDITIONS = "3스트라이크";
 
@@ -20,11 +19,11 @@ public class Application {
         Referee referee = new Referee();
         NumberGenerator numberGenerator = new NumberGenerator();
 
-        int restartNumber = 1;
+        String restartNumber = "1";
         String gameResultNumber = "";
         System.out.println(SystemMessage.INITIAL_MESSAGE);
 
-        while (restartNumber == RESTART) {
+        while (restartNumber.equals(RESTART)) {
             gameResultNumber = "";
             List<Integer> computer = numberGenerator.createRandomNumbers();
 
@@ -40,7 +39,7 @@ public class Application {
         }
     }
 
-    private static int getReStart() {
+    private static String getReStart() {
         System.out.println(SystemMessage.GAME_WIN_MESSAGE);
         System.out.println(SystemMessage.GAME_RESTART_MESSAGE);
 
@@ -49,12 +48,6 @@ public class Application {
         if (!(restart.matches(regularExpression))) {
             throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
         }
-
-        int restartPlayerNumber = Integer.parseInt(restart);
-//        if (!(restartPlayerNumber >= RESTART && restartPlayerNumber <= END)) {
-//            throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
-//        }
-
-        return restartPlayerNumber;
+        return restart;
     }
 }
