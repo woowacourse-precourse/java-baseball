@@ -3,13 +3,14 @@ package baseball.service;
 import baseball.repository.GameStartRepository;
 import baseball.util.UserUtil;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -20,7 +21,7 @@ class GameStartServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1","12","999","1234"," ","012","qs"})
+    @ValueSource(strings = {"1", "12", "999", "1234", " ", "012", "qs"})
     void 사용자가_입력한_값이_유효한지_체크(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
@@ -38,15 +39,24 @@ class GameStartServiceTest {
     }
 
     @Test
+    @RepeatedTest(10000)
     void 난수_생성이_유효한지_체크() {
+        Set<String> randomNumberSet = new HashSet<>();
         GameStartService.saveComputerNumber();
-        for (int i = 0 ; i <= 100000000; i++) {
-            String firstNum = GameStartRepository.lastComputerNumberList.get(0);
-            String secondNum = GameStartRepository.lastComputerNumberList.get(1);
-            String thirdNum = GameStartRepository.lastComputerNumberList.get(2);
-            assertThat(Integer.parseInt(firstNum) >= 1 && Integer.parseInt(firstNum) <= 9).isTrue();
-            assertThat(Integer.parseInt(secondNum) >= 1 && Integer.parseInt(secondNum) <= 9).isTrue();
-            assertThat(Integer.parseInt(thirdNum) >= 1 && Integer.parseInt(thirdNum) <= 9).isTrue();
+        for(int i = 0 ; i < 3 ; i ++){
+            String number = GameStartRepository.lastComputerNumberList.get(i);
+            randomNumberSet.add(number);
+            assertThat(Integer.parseInt(number) >= 1 && Integer.parseInt(number) <= 9).isTrue();
         }
+        assertThat(randomNumberSet.size()).isEqualTo(3);
+
+    }
+
+    @Test
+    void 사용자_입력과_난수_비교가_정상적인지_체크() {
+        GameStartRepository.lastComputerNumberList = new ArrayList<>(Arrays.asList("3", "2", "1"));
+        GameStartRepository.lastUserNumberList = new ArrayList<>(Arrays.asList("1", "2", "3"));
+        String hint = GameStartService.compareNumber();
+        assertThat(hint).isEqualTo("2볼 1스트라이크");
     }
 }
