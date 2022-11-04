@@ -12,9 +12,14 @@ public class Application {
     }
 
     public static void StartNumberBaseballGame(){
-        List<Integer> computer = GenerateComputerNumbers();
-        StartGuessingPhase(computer);
+        List<Integer> computer;
+        do{
+            computer = GenerateComputerNumbers();
+            StartGuessingPhase(computer);
+        }while(StartQuestioningPhase());
+
     }
+
     public static void StartGuessingPhase(List<Integer> computer) {
         List<Integer> player;
         int strike = 0;
@@ -27,6 +32,16 @@ public class Application {
         }
     }
 
+    public static boolean StartQuestioningPhase(){
+        String input;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        input = Console.readLine();
+        if(input.equals("1")){
+            return true;
+        }else {
+            return false;
+        }
+    }
     public static void PrintResult(int strike, int ball){
         if(strike == 0 && ball == 0){
             System.out.println("낫싱");
@@ -37,8 +52,14 @@ public class Application {
         }
         if(strike > 0){
             System.out.print(strike + "스트라이크");
+            if(strike == 3){
+                System.out.println();
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
         }
+        System.out.println();
     }
+
     public static int CheckStrike(List<Integer> computer, List<Integer> player){
         int strike = 0;
         for(int index = 0; index < computer.size(); index ++){
@@ -48,6 +69,7 @@ public class Application {
         }
         return strike;
     }
+
 
     public static int CheckBall(List<Integer> computer, List<Integer> player){
         int ball = 0;
@@ -83,13 +105,3 @@ public class Application {
         return computer;
     }
 }
-//        List<Integer> computer = new ArrayList<>();
-//        while (computer.size() < 3) {
-//            int randomNumber = Randoms.pickNumberInRange(1, 9);
-//            if (!computer.contains(randomNumber)) {
-//                computer.add(randomNumber);
-//            }
-//        }
-//        String input = Console.readLine();
-//        System.out.println(input);
-//        System.out.println(computer);
