@@ -55,34 +55,44 @@ public class Application {
         return answerNumberArrayList;
     }
 
-    private static ArrayList<ArrayList<Integer>> countStrikes
+    private static LinkedHashMap<String, ArrayList<Integer>> countStrikes
             (ArrayList<Integer> playerNumberArrayList, ArrayList<Integer> answerNumberArrayList) {
         int strikeCount = 0;
         ArrayList<Integer> strikeCountArrayList = new ArrayList<>();
         ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
-        ArrayList<ArrayList<Integer>> strikeResultArrayList = new ArrayList<>();
+        LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = new LinkedHashMap<>();
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
         for (int i=0; i<4; i++) {
-            if (playerNumberArrayList.get(i) == answerNumber.get(i)) {
+            if (playerNumberArrayList.get(i) == answerNumberArrayList.get(i)) {
                 strikeCount = strikeCount + 1;
-            } else if (playerNumberArrayList.get(i) != answerNumber.get(i)) {
+            } else if (playerNumberArrayList.get(i) != answerNumberArrayList.get(i)) {
                 wrongNumberIndexArrayList.add(i);
             }
         }
 
         // 스트라이크의 수와 틀린 숫자 index를 ArrayList로 리턴한다.
-        strikeResultArrayList.add(strikeCountArrayList);
-        strikeResultArrayList.add(wrongNumberIndexArrayList);
+        strikeResultLinkedHashMap.put("strikeCountArrayList", strikeCountArrayList);
+        strikeResultLinkedHashMap.put("wrongNumberIndexArrayList", wrongNumberIndexArrayList);
 
-        return strikeResultArrayList;
+        return strikeResultLinkedHashMap;
     }
 
     private static int countBalls
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList,
-             ArrayList<ArrayList<Integer>> strikeResultArrayList) {
+             LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap) {
         int ballResult = 0;
+        HashSet<Integer> wrongPlayerNumberSet = new HashSet<>();
+        HashSet<Integer> answerNumberSet = new HashSet<>();
+
+        // 플레이어가 틀린 숫자의 집합과 스트라이크를 제외한 정답의 집합을 만든다.
+        ArrayList<Integer> wrongNumberIndexArrayList = strikeResultLinkedHashMap.get("wrongNumberIndexArrayList");
+        for (Integer I : wrongNumberIndexArrayList) {
+            wrongPlayerNumberSet.add(playerNumberArrayList.get(I));
+            answerNumberSet.add(answerNumberArrayList.get(I));
+        }
+        wrongPlayerNumberSet.retainAll(answerNumberSet);
 
         return ballResult;
     }
