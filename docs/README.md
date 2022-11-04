@@ -83,3 +83,5 @@
   - [x] 0~2 범위 벗어난 경우 (BallPosition)
 
 - [x] BALL 이 게임 종료에 영향을 미칠 경우 예외 처리 (BallScore)
+
+- [ ] Score(strike, ball)의 범위가 0~3 을 벗어난 경우 예외 처리
