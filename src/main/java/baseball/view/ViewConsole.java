@@ -8,6 +8,7 @@ public class ViewConsole implements Viewable {
     private final int IndexOfStrike = 1;
 
     private final String START_LINE = "숫자 야구 게임을 시작합니다.";
+    private final String INPUT_LINE = "숫자를 입력해주세요 :";
 
 
     @Override
@@ -45,7 +46,7 @@ public class ViewConsole implements Viewable {
 
     @Override
     public void printInput() {
-
+        System.out.print(INPUT_LINE);
     }
 
     @Override
