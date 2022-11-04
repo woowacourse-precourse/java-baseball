@@ -8,25 +8,25 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        boolean more_game = true;
         // 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean more_game = true;
-        // 게임 시작단 or 게임 재시작
+        // 게임 시작단 or 게임 재시작(게임 중단까지 반복)
         while(more_game){
             boolean more_input = true;
             List<Integer> computer_number = pick_randomNumber();
-            // 입력단 or 숫자 추가 입력
+            // 입력단 or 숫자 추가 입력(3진 아웃까지 반복)
             while(more_input) {
                 System.out.println("숫자를 입력해주세요 : ");
-                String input_number = readLine(); // 입력
+                String input_number = readLine();
                 maybe_this_number_length_over_3(input_number);
                 List<Integer> input_number_integer = this_number_transformed_to_integer_array(input_number);
-                // 3진아웃 확인 및 게임 재시작 선택
+                // 3진아웃 확인
                 if (play_ball(computer_number, input_number_integer)) {
                     more_input = false;
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     String input_coin = readLine();
-                    // 게임 종료 확인
+                    // 게임 게임 재시작 선택 및 종료
                     if (Integer.parseInt(input_coin) != 1) {
                         System.out.println("게임 종료");
                         more_game = false;
