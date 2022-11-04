@@ -11,7 +11,7 @@
   - startGame(): 게임 시작 문구 출력및 게임 시작을 위한 컴퓨터의 숫자 생성
   - String printStrikeOrBall(String computerNumber, String userNumber)
      : 입력 받은 사용자의 숫자와 컴퓨터의 숫자를 비교해 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시하는 기능
-  - Map<String, Integer> checkStrikeOrBall(List<Integer> computerNumberList, List<Integer> userNumberList)
+  - Map<String, Integer> checkStrikeOrBall(String computerNumber, String userNumber)
      :볼, 스트라이크의 개수를 판단하는 기능
     - int Ball(List<Integer> computerNumberList, List<Integer> userNumberList): 볼 판단
     - int Strike(List<Integer> computerNumberList, List<Integer> userNumberList): 스트라이크 판단
