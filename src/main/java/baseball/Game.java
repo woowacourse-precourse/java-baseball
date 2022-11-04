@@ -22,6 +22,7 @@ public class Game {
 
     private void play() {
         while (true) {
+            System.out.println(INPUT);
             final String playerInput = Console.readLine();
         }
     }
