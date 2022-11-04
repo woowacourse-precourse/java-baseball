@@ -33,7 +33,7 @@ public class GameController {
                 computerNumbers = makeRandom.numbers();
             }
 
-            List<Integer> userNumbers = userInput.number(ENTER_NUMBER.message());
+            List<Integer> userNumbers = userInput.numbers(ENTER_NUMBER.message());
 
             Map<String, Integer> score = numericalComparison.compareList(computerNumbers, userNumbers);
             if (result.analysis(score) == CORRECT) {

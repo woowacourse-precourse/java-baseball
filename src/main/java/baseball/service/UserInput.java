@@ -23,7 +23,7 @@ public class UserInput {
         return LazyHolder.INSTANCE;
     }
 
-    public List<Integer> number(String message) {
+    public List<Integer> numbers(String message) {
         consoleLog.print(message);
         String inputNum = consoleLog.input();
 

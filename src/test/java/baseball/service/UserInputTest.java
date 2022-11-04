@@ -19,7 +19,7 @@ class UserInputTest extends NsTest {
         run("123");
 
         // when
-        List<Integer> inputToList = userInput.number(message);
+        List<Integer> inputToList = userInput.numbers(message);
 
         // then
         assertThat(output()).isEqualTo("message");
@@ -33,7 +33,7 @@ class UserInputTest extends NsTest {
         run("");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -44,7 +44,7 @@ class UserInputTest extends NsTest {
         run("   ");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -55,7 +55,7 @@ class UserInputTest extends NsTest {
         run("1234");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("세 자리가 아닙니다.", exception.getMessage());
     }
 
@@ -66,7 +66,7 @@ class UserInputTest extends NsTest {
         run("120");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("숫자가 아니거나 0이 포함되어 있습니다", exception.getMessage());
     }
 
@@ -77,7 +77,7 @@ class UserInputTest extends NsTest {
         run("121");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("중복된 숫자가 포함되어 있습니다.", exception.getMessage());
     }
 
@@ -88,7 +88,7 @@ class UserInputTest extends NsTest {
         run("112");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("중복된 숫자가 포함되어 있습니다.", exception.getMessage());
     }
 
@@ -99,7 +99,7 @@ class UserInputTest extends NsTest {
         run("211");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.number(null));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> userInput.numbers(null));
         assertEquals("중복된 숫자가 포함되어 있습니다.", exception.getMessage());
     }
 
