@@ -6,11 +6,20 @@ import java.util.HashMap;
 
 // todo: 싱글톤 객체로 만드는게 가능하지 않나?
 public class PlayerComputer {
-	public int getRandomInputNumber() {
-		HashMap<Integer, Integer> digits;
-		digits = generateInputNumber();
+	public String getRandomInputNumber() {
+		HashMap<Integer, Integer> digits = generateInputNumber();
+		String number = combineDigits(digits);
+		return number;
+	}
 
+	private String combineDigits(HashMap<Integer, Integer> digits) {
+		String number = "";
 
+		for (Integer randomNumber : digits.keySet()) {
+			number += randomNumber.toString();
+		}
+
+		return number;
 	}
 
 	private HashMap<Integer, Integer> generateInputNumber() {
