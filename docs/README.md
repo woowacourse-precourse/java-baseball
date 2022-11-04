@@ -58,7 +58,7 @@ Return: void
 
 <br/>
 
-## (4). printBallAndStrikeCount(int ballCount, int strikeCount)
+## (4). printGameResult(int ballCount, int strikeCount)
 
 1. **기능**
 
