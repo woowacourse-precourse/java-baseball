@@ -1,12 +1,12 @@
 package baseball;
 
 public class InputNumber {
-    String number;
+    static String number;
 
     InputNumber(String number) {
         checkStringNumberLength(number);
         checkStringNumberIsNumber(number);
-        this.number = number;
+        InputNumber.number = number;
     }
 
     public static void checkStringNumberLength(String number) {
