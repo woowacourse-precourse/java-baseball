@@ -22,7 +22,7 @@ public class Balls {
     private BallStatus compareTo(Ball compareBall) {
         return balls.stream()
                 .map(ball -> ball.compareTo(compareBall))
-                .filter(ballStatus -> ballStatus != BallStatus.NOTHING)
+                .filter(BallStatus::isNotNothing)
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
     }

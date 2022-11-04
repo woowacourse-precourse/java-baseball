@@ -5,10 +5,10 @@ public class PlayResult {
     private int ball = 0;
 
     public void updateResult(BallStatus ballStatus) {
-        if (ballStatus == BallStatus.STRIKE) {
+        if (ballStatus.isStrike()) {
             strike++;
         }
-        if (ballStatus == BallStatus.BALL) {
+        if (ballStatus.isBall()) {
             ball++;
         }
     }
