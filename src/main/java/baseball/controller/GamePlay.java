@@ -14,6 +14,7 @@ public class GamePlay {
         while (true){
             System.out.print("숫자를 입력하세요: ");
             int[] guessNumbers = typingNumber();
+            match(guessNumbers);
         }
     }
     public void play(){
@@ -25,4 +26,7 @@ public class GamePlay {
         return user.inputNumber();
     }
 
+    public void match(int[] guessNumbers){
+        computer.compare(guessNumbers);
+    }
 }
