@@ -54,7 +54,7 @@ public class Application {
         }
     }
 
-    private static boolean check() {
+    private static void check() {
         result = new String("");
         check_strike();
         check_ball();
@@ -69,7 +69,6 @@ public class Application {
         }
         if (result.length() == 0)
             result = "낫싱";
-        return false;
     }
 
     private static void check_strike() {
