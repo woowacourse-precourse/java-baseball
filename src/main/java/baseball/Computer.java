@@ -9,19 +9,23 @@ public class Computer {
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
 
-    private List<Integer> RandomNumbers = new ArrayList<>();
+    private List<Integer> randomNumbers = new ArrayList<>();
 
 
     public void createRandomNumbers() {
-        while (RandomNumbers.size() < NUMBER_COUNT_TO_CREATED) {
+        while (randomNumbers.size() < NUMBER_COUNT_TO_CREATED) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!RandomNumbers.contains(randomNumber)) {
-                RandomNumbers.add(randomNumber);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
     }
 
+    public void clearRandomNumbers() {
+        randomNumbers.clear();
+    }
+
     public List<Integer> getRandomNumbers() {
-        return RandomNumbers;
+        return randomNumbers;
     }
 }
