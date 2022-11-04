@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class FunctionTest {
-    Application.AnswerNumber answerNumber;
+    AnswerNumber answerNumber;
 
     @BeforeEach
     void beforeEach() {
-        answerNumber = new Application.AnswerNumber();
+        answerNumber = new AnswerNumber();
     }
 
     @Test
@@ -29,21 +29,31 @@ public class FunctionTest {
     @Test
     void isInputTest() {
         String str1 = "243";
-        assertThat(Application.isInput(str1)).isFalse();
+        assertThat(CheckInput.isInput(str1)).isFalse();
 
         String str2 = "223";
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Application.isInput(str2);
+            CheckInput.isInput(str2);
         });
 
         String str3 = "25T";
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Application.isInput(str3);
+            CheckInput.isInput(str3);
         });
 
         String str4 = "2189";
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Application.isInput(str4);
+            CheckInput.isInput(str4);
         });
+    }
+
+    @Test
+    void ballCountTest() {
+        int[] testArr = {1, 5 , 8};
+        String str1 = "185";
+
+        assertThat(BallCount.ballCount(testArr, str1)).isEqualTo(2);
+
+        assertThat(BallCount.strikeCount(testArr, str1)).isEqualTo(1);
     }
 }
