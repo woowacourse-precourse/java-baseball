@@ -40,6 +40,12 @@ public class Application {
         return randomNumber;
     }
     public static void main(String[] args) {
-        String computer = generateComputerNumber();
+        String computer = "";
+        boolean iterate = true; // 반복문 반복 명령용 변수
+
+        while (iterate) {
+            System.out.println(MESSAGE_START);
+            computer = generateComputerNumber();
+        }
     }
 }

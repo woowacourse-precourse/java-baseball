@@ -1,7 +1,8 @@
 ### 우아한 테크 코스 2주차 과제: 숫자 야구
 - [x] Application 시작했을 때, 컴퓨터의 숫자를 생성(int computer)
   - 우테코 측에서 준비해 준 method 사용
-- [ ] iterate을 이용해서 while loop을 반복
+  - 동시에 게임 시작 문구 반환
+- [x] iterate을 이용해서 while loop을 반복
 - [ ] trial 변수를 사용해서 게임이 막 시작했는지, 진행 중인지 판단.
 - [ ] 입력값 확인:
     - [ ] 서로 다른 3자리의 수
