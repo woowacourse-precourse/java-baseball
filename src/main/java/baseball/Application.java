@@ -8,7 +8,7 @@ import java.util.List;
 public class Application {
 
 
-    private static int GenerateNonDuplicateRandomNumber(List<Integer> randNum) {
+    public static int GenerateNonDuplicateRandomNumber(List<Integer> randNum) {
         int k;
         do {
             k = Randoms.pickNumberInRange(1, 9);
