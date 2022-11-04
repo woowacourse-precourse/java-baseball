@@ -16,4 +16,8 @@ public class Result {
     public int getStrike() {
         return strike;
     }
+
+    public void addBall() {
+        ball++;
+    }
 }
