@@ -49,7 +49,7 @@ public class Application {
         // 게임 무한루프
         int flag = 0;
         while(flag == 0) {
-
+1
         }
         int inputInit;
         List<Integer> inputNum;
