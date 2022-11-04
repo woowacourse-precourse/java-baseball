@@ -30,16 +30,12 @@ public class Game {
             String input = Console.readLine();
             List<Integer> user = new ArrayList<>();
             try {
-                if (input.length() != 3) {
-                    throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION);
-                }
+                validThreeLengthOrSize(input.length(), INPUT_LENGTH_EXCEPTION);
                 for (String number : input.split("")) {
                     int ball = Integer.parseInt(number);
-                    if (user.contains(ball)) {
-                        throw new IllegalArgumentException(INPUT_OTHER_NUMBER_EXCEPTION);
-                    }
                     addBall(user, ball);
                 }
+                validThreeLengthOrSize(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException(e.getMessage());
             }
@@ -79,6 +75,12 @@ public class Game {
             start();
         } else if (!input.equals("2")) {
             throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
+        }
+    }
+
+    private void validThreeLengthOrSize(int number, String message) {
+        if (number != 3) {
+            throw new IllegalArgumentException(message);
         }
     }
 
