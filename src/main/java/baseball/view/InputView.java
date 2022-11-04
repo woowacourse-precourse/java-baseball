@@ -9,11 +9,15 @@ public class InputView {
 
     public String getUserInput() {
         System.out.print(NUMBER_INPUT_NUDGE_MESSAGE);
-        return Console.readLine();
+        return readInput();
     }
 
     public String getRestartingInput() {
         System.out.println(ASKING_RESTART_MESSAGE);
+        return readInput();
+    }
+
+    protected String readInput() {
         return Console.readLine();
     }
 }

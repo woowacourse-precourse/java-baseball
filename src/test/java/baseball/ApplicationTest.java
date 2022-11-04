@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.ComputerController;
+import baseball.dto.Score;
 import baseball.system.AnswerHolder;
 import baseball.system.conversion.Converter;
 import baseball.system.conversion.ScoreToMessageConverter;
@@ -12,18 +13,15 @@ import baseball.system.voter.BaseballVoter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Answer;
-import baseball.dto.Score;
 import baseball.vo.UserNumber;
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import mocking.MockInputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -147,21 +145,14 @@ class ApplicationTest extends NsTest {
             // given
             ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
             System.setOut(new PrintStream(outputStreamCaptor));
-
-            MockedStatic<Console> mockedStatic = Mockito.mockStatic(Console.class);
-            Mockito.when(Console.readLine()).thenReturn("");
-            // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+            InputView inputView = new MockInputView();
 
             // when
-            InputView inputView = new InputView();
             inputView.getUserInput();
 
             // then
             assertThat(outputStreamCaptor.toString().trim())
                     .isEqualTo(InputView.NUMBER_INPUT_NUDGE_MESSAGE.trim());
-
-            // after
-            mockedStatic.close();
         }
 
         @Test
@@ -170,19 +161,14 @@ class ApplicationTest extends NsTest {
             String EXPECTED = "468";
 
             //given
-            MockedStatic<Console> mockStatic = Mockito.mockStatic(Console.class);
-            Mockito.when(Console.readLine()).thenReturn(EXPECTED);
-            // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+            MockInputView inputView = new MockInputView();
+            inputView.setMockMessage(EXPECTED);
 
             //when
-            InputView inputView = new InputView();
             String target = inputView.getUserInput();
 
             //then
             assertThat(target).isEqualTo(EXPECTED);
-
-            //after
-            mockStatic.close();
         }
 
         @Test
@@ -191,21 +177,14 @@ class ApplicationTest extends NsTest {
             //given
             ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
             System.setOut(new PrintStream(outputStreamCaptor));
-
-            MockedStatic<Console> mockStatic = Mockito.mockStatic(Console.class);
-            Mockito.when(Console.readLine()).thenReturn("");
-            // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+            InputView inputView = new MockInputView();
 
             //when
-            InputView inputView = new InputView();
             inputView.getRestartingInput();
 
             //then
             assertThat(outputStreamCaptor.toString().trim())
                     .isEqualTo(InputView.ASKING_RESTART_MESSAGE.trim());
-
-            //after
-            mockStatic.close();
         }
     }
 
@@ -256,9 +235,7 @@ class ApplicationTest extends NsTest {
             Answer ANSWER = Answer.of(List.of(4, 5, 6));
 
             // given
-            MockedStatic<AnswerHolder> mockStatic = Mockito.mockStatic(AnswerHolder.class);
-            Mockito.when(AnswerHolder.getAnswer()).thenReturn(ANSWER);
-            // TODO: 모킹을 위해 Mockito 사용. 아고라에 사용 가능한 지 질문 남겨주었으므로 답변에 따라 코드 수정해야 함.
+            AnswerHolder.setAnswer(ANSWER);
 
             // when
             BaseballVoter baseballVoter = new BaseballVoter();
@@ -266,9 +243,6 @@ class ApplicationTest extends NsTest {
 
             // then
             assertThat(target).isEqualTo(score);
-
-            // after
-            mockStatic.close();
         }
     }
 
