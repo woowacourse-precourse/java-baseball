@@ -84,4 +84,20 @@ class InputTest {
       inputClass.printInputString(sysIn3);
     }).isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  public void 입력이_숫자인지() {
+    String sysIn1 = "1ㄱ1";
+    String sysIn2 = "10r";
+    String sysIn3 = "-=1";
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn1);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn2);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn3);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
