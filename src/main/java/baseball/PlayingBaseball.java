@@ -16,15 +16,16 @@ class PlayingBaseball {
         this.numberOfPlayer = numberPlayer;
     }
 
-    private int countStrikes () {
+    int countStrikes () {
         for (int i = 0; i < LENGTH; i++) {
-            if (numberOfComputer.charAt(i) == numberOfComputer.charAt(i)) {
+            if (numberOfComputer.charAt(i) == numberOfPlayer.charAt(i)) {
                 indexOfStrike.add(i);
                 strike += 1;
             }
         }
         return strike;
     }
+
 
 
 
