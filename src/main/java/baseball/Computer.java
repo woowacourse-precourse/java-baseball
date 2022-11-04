@@ -3,7 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,12 +34,20 @@ public class Computer {
         }
     }
 
-    private void getResult(String input) {
+    private Result getResult(String input) {
         this.inputList = stringToIntegerList(input);
         this.counts = initializeCounts();
 
         for (int index = 0; index < 3; index++) {
             getStrikeOrBallCount(index);
+        }
+
+        if (counts.get("strike") == 3) {
+            return Result.ANSWER;
+        } else if (counts.get("strike") == 0 && counts.get("ball") == 0) {
+            return Result.NOTHING;
+        } else {
+            return Result.STRIKEBALL;
         }
     }
 
@@ -53,7 +60,6 @@ public class Computer {
     }
 
     private HashMap<String, Integer> initializeCounts() {
-
         counts.put("strike", 0);
         counts.put("ball", 0);
         return counts;
