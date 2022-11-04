@@ -10,8 +10,8 @@ public class GameNumbers {
     private final List<Integer> oneDigitPlayerNumbers;
 
     public GameNumbers(int computer, int player) {
-        this.oneDigitComputerNumbers = GameUtil.splitNumberToOneDigits(computer);
-        this.oneDigitPlayerNumbers = GameUtil.splitNumberToOneDigits(player);
+        this.oneDigitComputerNumbers = GameUtil.splitNumberToOneDigitNumbers(computer);
+        this.oneDigitPlayerNumbers = GameUtil.splitNumberToOneDigitNumbers(player);
     }
 
     public Scoreboard compare() {
