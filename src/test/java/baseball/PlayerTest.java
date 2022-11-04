@@ -19,4 +19,19 @@ public class PlayerTest {
         digit = '0';
         assertThat(player.isDigit(digit)).isEqualTo(result);
     }
+
+    @Test
+    void isNumberTest() {
+        Player player = new Player();
+        boolean result = true;
+        String number = "317";
+        assertThat(player.isNumber(number)).isEqualTo(result);
+        number = "222";
+        assertThat(player.isNumber(number)).isEqualTo(result);
+        result = false;
+        number = "703";
+        assertThat(player.isNumber(number)).isEqualTo(result);
+        number = "d32";
+        assertThat(player.isNumber(number)).isEqualTo(result);
+    }
 }
