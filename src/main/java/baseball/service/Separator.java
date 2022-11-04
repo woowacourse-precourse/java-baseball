@@ -5,11 +5,11 @@ import baseball.mapper.StringMapper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Separation {
+public class Separator {
 
     private NumberCondition condition;
 
-    public Separation(String input) {
+    public Separator(String input) {
         this.condition = new NumberCondition(input);
     }
 

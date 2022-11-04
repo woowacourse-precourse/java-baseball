@@ -7,7 +7,7 @@ import java.util.Map;
 public class GameService {
 
     private final String answer;
-    private final Separation separation;
+    private final Separator separator;
     private final RandomGenerator generator;
     private final Controller controller;
 
@@ -16,7 +16,7 @@ public class GameService {
         this.controller = new Controller();
         this.answer = generator.generateRandomNumbers(); // TODO 랜덤 생성 -> gameservice에 할당?
         //this.answer = "123";            // 임시 정답
-        this.separation = new Separation(answer);
+        this.separator = new Separator(answer);
     }
 
     public void initGame() {
@@ -32,7 +32,7 @@ public class GameService {
         boolean flag = false;
         while(!flag) {
             String input = controller.printAndInputNumber();
-            Map<String, Integer> resultMap = separation.separateInputResult(input);
+            Map<String, Integer> resultMap = separator.separateInputResult(input);
             flag = controller.printRoundResult(resultMap);
         }
     }
