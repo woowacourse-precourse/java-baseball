@@ -4,7 +4,7 @@
   - 동시에 게임 시작 문구 반환
 - [x] iterate을 이용해서 while loop을 반복
 - [x] trial 변수를 사용해서 게임이 막 시작했는지, 진행 중인지 판단.
-- [ ] 입력값 확인:
+- [x] 입력값 확인:
     - [x] 서로 다른 3자리의 수
     - [x] 게임이 끝난 경우: (int strike == 3인 경우)
         - 1: 재시작
@@ -34,6 +34,6 @@
     - [x] 상수: Exception용 메세지도 상수로 선언
 
 ### 클린 코드 요구 사항
-- [ ] indent depth 2 이하
-- [ ] 삼항 연산자(condition ? true:false) 사용 X
-- [ ] 1함수 1기능
+- [x] indent depth 2 이하
+- [x] 삼항 연산자(condition ? true:false) 사용 X
+- [x] 1함수 1기능
