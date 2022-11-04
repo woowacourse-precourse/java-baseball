@@ -17,7 +17,7 @@ public class BaseballGame {
         }
     }
 
-    private BaseballGame() {
+    BaseballGame() {
         List<String> convertedList = convertComputerList();
         for (int idx=0; idx<convertedList.size(); idx++) {
             answerMap.put(convertedList.get(idx), idx);
@@ -113,7 +113,7 @@ public class BaseballGame {
         return convertedList;
     }
 
-    public boolean playGame() {
+    public String playGame() {
         boolean isThreeStrike = false;
         BaseballGame baseballGame = new BaseballGame();
 
@@ -125,6 +125,14 @@ public class BaseballGame {
                 break;
             }
         }
-        return isThreeStrike;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userInput = Console.readLine();
+        String isRestart = userInput;
+        return isRestart;
     }
+
+
+
 }
