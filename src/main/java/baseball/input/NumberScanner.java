@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 import java.util.stream.IntStream;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
-
 public class NumberScanner {
+
+    private static final int DIGITS_FOR_THIS_GAME = 3;
 
     public String inputNumber() {
         String inputValue = readLine();
@@ -47,6 +47,7 @@ public class NumberScanner {
         }
     }
 
+    // 비즈니스 로직으로 이동.
     private void validatePositiveNumber(String inputValue) {
         if (inputValue.contains("-")) {
             throw new IllegalArgumentException("양수만 입력해 주세요.");

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BallAndStrikeCounterTest {
@@ -15,7 +14,6 @@ class BallAndStrikeCounterTest {
 
     private final BallAndStrikeCounter ballAndStrikeCounter = new BallAndStrikeCounter();
 
-
     @Test
     void 전부_ball인_경우() {
         List<Integer> answer = List.of(1, 2, 3);
@@ -23,7 +21,7 @@ class BallAndStrikeCounterTest {
 
         Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter.checkBallAndStrikeCount(answer, inputValue);
 
-        assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(DIGITS_FOR_THIS_GAME);
+        assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(3);
         assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(0);
     }
 
@@ -35,10 +33,9 @@ class BallAndStrikeCounterTest {
         Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter.checkBallAndStrikeCount(answer, inputValue);
 
         assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(0);
-        assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(DIGITS_FOR_THIS_GAME);
+        assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(3);
     }
 
-    // 없는 경우?
     @Test
     void 아무것도_못_맞춘_경우() {
         List<Integer> answer = List.of(1, 2, 3);

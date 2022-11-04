@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RandomNumberFactoryTest {
+
+    private static final int DIGITS_FOR_THIS_GAME = 3;
 
     @Nested  // 줄인다.
     class 정해진_개수의_숫자가_생성된다 {

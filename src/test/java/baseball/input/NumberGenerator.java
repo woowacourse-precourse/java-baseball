@@ -4,10 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.stream.IntStream;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class NumberGenerator {
+
+    private static final int DIGITS_FOR_THIS_GAME = 3;
 
     String createCorrectInputValue() {
         StringBuilder stringBuilder = new StringBuilder();

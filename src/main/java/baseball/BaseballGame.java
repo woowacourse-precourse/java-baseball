@@ -8,10 +8,9 @@ import baseball.randomnumber.RandomNumberFactory;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
-import static baseball.config.MapKeyStorage.*;
-
 public class BaseballGame {
+    private static final String STRIKE_KEY = "strike";
+
     private final NumberScanner numberScanner;
     private final BallAndStrikeCounter ballAndStrikeCounter;
     private final MessagePrinter messagePrinter;
@@ -33,13 +32,13 @@ public class BaseballGame {
         while (oneOrTwoForRestartGame != 2) {
             messagePrinter.printEnterNumberMessage();
 
-            String inputValue = numberScanner.inputNumber();
+            String inputValue = numberScanner.inputNumber();  // 객체화. -> BallList -> List<Ball>
             Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter
-                    .checkBallAndStrikeCount(answer, inputValue);
+                    .checkBallAndStrikeCount(answer, inputValue);  // ball이랑 strike를 나눈다.
 
             messagePrinter.printBallAndStrikeCount(ballAndStrikeCount);
 
-            if (ballAndStrikeCount.get(STRIKE_KEY) == DIGITS_FOR_THIS_GAME) {
+            if (ballAndStrikeCount.get(STRIKE_KEY) == 3) {
                 messagePrinter.printCorrectAnswerMessage();
                 messagePrinter.printRestartMessage();
 

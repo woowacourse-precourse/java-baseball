@@ -11,10 +11,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Map;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MessagePrinterTest {
+
+    private static final int DIGITS_FOR_THIS_GAME = 3;
 
     private final MessagePrinter printer = new MessagePrinter();
 

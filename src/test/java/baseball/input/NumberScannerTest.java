@@ -9,10 +9,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.*;
 
 class NumberScannerTest {
+
+    private static final int DIGITS_FOR_THIS_GAME = 3;
 
     private InputStream getInputStream(String input) {
         return new ByteArrayInputStream(input.getBytes());
