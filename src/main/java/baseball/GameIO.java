@@ -25,7 +25,7 @@ public class GameIO {
     }
 
     public boolean isLegalInput(String input) {
-        if(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
+        if (isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input)) {
             return true;
         }
         return false;
@@ -33,13 +33,13 @@ public class GameIO {
     public boolean isOnlyNumber(String input) {
         Pattern pattern = Pattern.compile("\\D");
         Matcher matcher = pattern.matcher(input);
-        if(matcher.find()) {
+        if (matcher.find()) {
             return false;
         }
         return true;
     }
     public boolean isThreeDigit(String input) {
-        if(input.length() != 3) {
+        if (input.length() != 3) {
             return false;
         }
         return true;
@@ -48,7 +48,7 @@ public class GameIO {
         char first = input.charAt(0);
         char second = input.charAt(1);
         char third = input.charAt(2);
-        if(first == second || second == third || first == third) {
+        if (first == second || second == third || first == third) {
             return false;
         }
         return true;

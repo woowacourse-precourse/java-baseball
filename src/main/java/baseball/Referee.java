@@ -52,7 +52,7 @@ public class Referee {
             return NOTHING;
         } else if(strike == MAX_NUMBER_SIZE) {
             return THREE_STRIKE;
-        } else if (strike == 0 && ball != 0){
+        } else if (strike == 0 && ball != 0) {
             return ball + BALL;
         } else if (strike != 0 && ball == 0) {
             return strike + STRIKE;

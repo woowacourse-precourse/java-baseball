@@ -26,7 +26,7 @@ public class Application {
         while(isContinue) {
             try {
                 input = gameIO.getInput();
-                if(!gameIO.isLegalInput(input)) {
+                if (!gameIO.isLegalInput(input)) {
                     throw new IllegalArgumentException();
                 }
             } catch (IllegalArgumentException illegalArgumentException) {
@@ -37,7 +37,7 @@ public class Application {
             String judgement = referee.judge(input, answer);
             gameIO.printResult(judgement);
 
-            if(judgement == Referee.THREE_STRIKE) {
+            if (judgement == Referee.THREE_STRIKE) {
                 gameIO.printGameEndInfo();
                 isContinue = isFinishGame();
             }
@@ -49,10 +49,10 @@ public class Application {
     public String generateAnswer() {
         String answer = "";
 
-        while(answer.length() < MAX_NUMBER_SIZE) {
+        while (answer.length() < MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             String numberString = gameIO.convertIntToString(randomNumber);
-            if(!answer.contains(numberString)) {
+            if (!answer.contains(numberString)) {
                 answer += numberString;
             }
         }
