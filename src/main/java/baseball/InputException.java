@@ -5,7 +5,7 @@ public class InputException {
     private static int NUMBER_LENGTH = 3;
 
     public static void checkInputNumberValidation(String number) {
-        if (isThreeLength(number) && isInteger(number)) {
+        if (isThreeLength(number) && isInteger(number) && hasNotZero(number)) {
             return;
         }
         throw new IllegalArgumentException(INVALID_INPUT_NUMBER_ERROR_MESSAGE);
@@ -21,6 +21,15 @@ public class InputException {
     public static boolean isInteger(String number) {
         for (int digit = 0; digit < NUMBER_LENGTH; digit++) {
             if (!Character.isDigit(number.charAt(digit))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean hasNotZero(String number) {
+        for (int digit = 0; digit < NUMBER_LENGTH; digit++) {
+            if ('0' == number.charAt(digit)) {
                 return false;
             }
         }
