@@ -8,6 +8,7 @@ import java.util.List;
 public class Computer {
     private static final int MINIMUM_VALUE_OF_NUMBER = 1;
     private static final int MAXIMUM_VALUE_OF_NUMBER = 9;
+    private static final int LIST_LIMIT = 3;
     List<Integer> numbers;
 
     public Computer(){
@@ -33,6 +34,12 @@ public class Computer {
     public void insertNumber(){
         int number = createRandomNumber();
         if(!isAlreadyInNumbers(number)) putNumber(number);
+    }
+
+    public void makeThreeDigitNumber(){
+        for(int numberCount = 0; numberCount < LIST_LIMIT; numberCount++){
+            insertNumber();
+        }
     }
 
 
