@@ -2,6 +2,7 @@ package baseball;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.HashSet;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
@@ -45,6 +46,24 @@ class ComputerTest {
     //User.inputValueTestPlayingMode("123");
     Computer.testComputerPrint(2);
     Assertions.assertThat("숫자를 입력해주세요 : ").isEqualTo(outContent.toString());
+  }
+
+  @Test
+  @Order(2)
+  void computerGenerateRandom() {
+    for (int i = 0; i < 100; i++) {
+      HashSet <Character> randset = new HashSet<Character>();
+      String tmp = Computer.testRandomGen();
+      randset.add(tmp.charAt(0));
+      if (randset.contains(tmp.charAt(1))) {
+        throw new IllegalArgumentException("generated value contains duplicated input.");
+      }
+      randset.add(tmp.charAt(1));
+      if (randset.contains(tmp.charAt(2))) {
+        throw new IllegalArgumentException("generated value contains duplicated input.");
+      }
+      randset.add(tmp.charAt(2));
+    }
   }
 
 }
