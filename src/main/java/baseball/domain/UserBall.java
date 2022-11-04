@@ -10,6 +10,10 @@ public class UserBall {
 		this.strike = 0;
 	}
 
+	public static UserBall createUserBall() {
+		return new UserBall(0, 0);
+	}
+
 	public Integer getBall() {
 		return ball;
 	}

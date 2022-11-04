@@ -57,7 +57,7 @@ public class UserBallService {
 			.mapToObj(num -> Integer.parseInt(num + "") - 48)
 			.collect(Collectors.toList());
 
-		UserBall userBall = new UserBall(0, 0);
+		UserBall userBall = UserBall.createUserBall();
 
 		/**
 		 * ball count 갱신
