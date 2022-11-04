@@ -51,9 +51,24 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             int inputNumber = scanner.nextInt();
 
+            //각자리수 리스트 반환 메서드 호출
+            List<Integer> eachDigitsList = getEachDigitsList(inputNumber);
 
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    /**
+     * 입력받은 수를 각 자리수 리스트로 반환하는 메서드
+     */
+    private static List<Integer> getEachDigitsList(int inputNumber) {
+        List<Integer> result = new ArrayList<>();
+
+        while (inputNumber > 0) {
+            result.add(0, inputNumber % 10);
+            inputNumber = inputNumber / 10;
+        }
+        return result;
     }
 
     private static void checkValidNextProgressNumber(int nextProgress) throws IllegalArgumentException {
