@@ -36,9 +36,9 @@ public class Computer {
         List<Integer> list = new ArrayList<>();
         int divide = 100;
         while (divide > 0) {
-            list.add(number/divide);
-            number = number%divide;
-            divide = divide/10;
+            list.add(number / divide);
+            number = number % divide;
+            divide = divide / 10;
         }
         return list;
     }
