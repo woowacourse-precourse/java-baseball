@@ -1,6 +1,8 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -31,15 +33,23 @@ class UserTest {
     }
 
     @Test
-    void numberCheckTest() {
-        boolean result = user.checkNumber(902);
-        assertThat(result).isEqualTo(false);
+    void numberCheckTest1() {
+        assertThatIllegalArgumentException().isThrownBy(() -> user.checkNumber(902));
     }
 
     @Test
-    void checkTypeTest() {
-        boolean result = user.checkType("sd");
-        assertThat(result).isEqualTo(false);
+    void numberCheckTest2() {
+        assertThatNoException().isThrownBy(() -> user.checkNumber(345));
+    }
+
+    @Test
+    void checkTypeTest1() {
+        assertThatIllegalArgumentException().isThrownBy(() -> user.checkType("sd"));
+    }
+
+    @Test
+    void checkTypeTest2() {
+        assertThatNoException().isThrownBy(() -> user.checkType("345"));
     }
 
     @Test
@@ -47,8 +57,7 @@ class UserTest {
         String input = "23s";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        int result = user.inputNumber();
-        assertThat(result).isEqualTo(-1);
+        assertThatIllegalArgumentException().isThrownBy(() -> user.inputNumber());
     }
 
     @Test
@@ -106,14 +115,12 @@ class UserTest {
     }
 
     @Test
-    void keepOrNotTest(){
+    void keepOrNotTest() {
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         user.keepOrNot();
-        boolean result = User.keepGame;
+        boolean result = user.keepGame;
         assertThat(result).isEqualTo(false);
     }
-
-
 }
