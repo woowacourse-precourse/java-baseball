@@ -15,11 +15,17 @@ public class Scoreboard {
     }
 
     public void addBallPoint() {
-        this.setBallPoint(this.getBallPoint() + 1);
+        int ballPoint = this.getBallPoint();
+        int newPoint = ballPoint + 1;
+
+        this.setBallPoint(newPoint);
     }
 
     public void addStrikePoint() {
-        this.setStrikePoint(this.getStrikePoint() + 1);
+        int strikePoint = this.getStrikePoint();
+        int newPoint = strikePoint + 1;
+
+        this.setStrikePoint(newPoint);
     }
 
     public int getBallPoint() {
