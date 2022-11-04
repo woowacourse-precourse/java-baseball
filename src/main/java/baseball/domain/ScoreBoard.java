@@ -14,9 +14,14 @@ public class ScoreBoard {
     public ScoreResult getScore(List<NumberBall> userNumberBalls) {
         int strike = 0, ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (systemNumberBalls.get(i) == userNumberBalls.get(i)) {
+            if (systemNumberBalls.get(i).equals(userNumberBalls.get(i))) {
                 strike++;
-            } else if (systemNumberBalls.contains(userNumberBalls.get(i))) {
+                continue;
+            }
+            int finalI = i;
+            boolean aa = systemNumberBalls.stream()
+                    .anyMatch(systemNumberBall -> systemNumberBall.equals(userNumberBalls.get(finalI)));
+            if(aa) {
                 ball++;
             }
         }
@@ -26,8 +31,11 @@ public class ScoreBoard {
                 .build();
     }
 
-
     public boolean isPlaying() {
         return isPlaying;
+    }
+
+    public void setIsPlaying() {
+        isPlaying = false;
     }
 }
