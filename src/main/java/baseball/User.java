@@ -19,6 +19,11 @@ public class User {
         if (!isValidateThreeNumber(input)) {
             throw new IllegalArgumentException();
         }
+        setInputNumber(input);
+    }
+
+    public List<Integer> getThreeNumber() {
+        return this.inputNumber;
     }
 
     private boolean isValidateThreeNumber(String input) {
@@ -46,4 +51,20 @@ public class User {
         return (number1 != number2 && number2 != number3 && number3 != number1);
     }
 
+    private void setInputNumber(String input) {
+        int number = toInt(input);
+        addEachOfDigit(number);
+    }
+
+    private void addEachOfDigit(int number) {
+        if (number == 0) {
+            return;
+        }
+        addEachOfDigit(number / 10);
+        inputNumber.add(number % 10);
+    }
+
+    private int toInt(String input) {
+        return Integer.parseInt(input);
+    }
 }
