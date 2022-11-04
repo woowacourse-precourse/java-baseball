@@ -102,8 +102,14 @@ public class BaseballGame {
         strike = 0;
     }
 
-    public static void askExit() {
+    private static void askExit() {
         printMessage(CORRECT_MESSAGE + ENTER);
         printMessage(REGAME_MESSAGE + ENTER);
+        String exitNumber = Console.readLine();
+        if (exitNumber.equals("2")) {
+            gameAvailable = false;
+        } else if (exitNumber.equals("1")) {
+            makeRandomNumber();
+        }
     }
 }
