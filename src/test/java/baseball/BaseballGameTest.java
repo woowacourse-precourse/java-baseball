@@ -100,4 +100,12 @@ public class BaseballGameTest {
         }
     }
 
+    @Test
+    void check_user_answer_test() {
+        assertThat(game.checkUserAnswer("1")).isEqualTo(1);
+        assertThat(game.checkUserAnswer("2")).isEqualTo(2);
+        assertThatThrownBy(() -> game.checkUserNumber("3")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> game.checkUserNumber(".")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> game.checkUserNumber("21")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
