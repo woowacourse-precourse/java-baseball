@@ -124,4 +124,19 @@ public class FunctionTest {
         assertThat(message4).isEqualTo("낫싱");
 
     }
+    @Test
+    public void 게임_종료_값_예외처리() throws Exception {
+        //given
+        /**
+         * 1 or 2 이외의 모든 문자
+         */
+        String[] inputs = {"12","종료"," ","end"};
+
+        //when then
+        for (String input : inputs) {
+            assertThatThrownBy(() -> validateFlag(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+    }
 }
