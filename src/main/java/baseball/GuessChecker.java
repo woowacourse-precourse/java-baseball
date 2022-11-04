@@ -10,6 +10,7 @@ public class GuessChecker {
     public static void check(String input) {
         checkLength(input);
         checkIsNumeric(input);
+        checkDuplicate(input);
     }
 
     private static void checkLength(String input) {
@@ -29,5 +30,14 @@ public class GuessChecker {
 
     private static boolean isNumeric(char c) {
         return c >= '0' && c <= '9';
+    }
+
+    private static void checkDuplicate(String input) {
+        for (int position = 0; position < input.length(); position++) {
+            char character = input.charAt(position);
+            if (input.lastIndexOf(character) != position) {
+                throw new IllegalArgumentException("중복된 숫자는 들어올 수 없습니다.");
+            }
+        }
     }
 }
