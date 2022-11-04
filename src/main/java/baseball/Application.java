@@ -1,12 +1,9 @@
 package baseball;
 
-import static org.assertj.core.api.Assertions.*;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import org.assertj.core.api.Assertions;
 
 public class Application {
     public static void main(String[] args) {
@@ -59,6 +56,8 @@ public class Application {
             //세자리 수가 안되거나 초과하는 경우, 네각자리 수 중 0이 포함되거나 경우, 각자리 수 중 중복되는 수가 있는 경우
             // IllegalArgumentException 던짐
             checkValidInputNumber(eachDigitsList);
+
+            exact = matchWithInput(computer, eachDigitsList);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -91,6 +90,49 @@ public class Application {
             }
             duplicateCheckList.add(check);
         }
+    }
+
+    /**
+     * eachDigitsList와 computer 리스트를 비교해서 매칭 결과를 반환하는 메서드
+     */
+    private static int matchWithInput(List<Integer> computer, List<Integer> eachDigitsList) {
+        if (computer.equals(eachDigitsList)) {
+            System.out.println("3스트라이크");
+            return 1;
+        }
+
+        int countStrike = 0;
+        int countBall = 0;
+        List<Integer> candidateBall = new ArrayList<>();    //볼일수도 있는 후보 리스트
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i) == eachDigitsList.get(i)) {
+                countStrike++;
+                continue;
+            }
+            candidateBall.add(computer.get(i));
+        }
+
+        for (Integer candidate : eachDigitsList) {
+            if (candidateBall.contains(candidate)) {
+                countBall++;
+            }
+        }
+
+        if (countStrike == 0 && countBall == 0) {
+            System.out.println("낫싱");
+        }
+        if (countStrike == 0 && countBall != 0) {
+            System.out.println(countBall + "볼");
+        }
+        if (countStrike != 0 && countBall == 0) {
+            System.out.println(countStrike + "스트라이크");
+        }
+        if (countStrike != 0 && countBall != 0) {
+            System.out.println(countBall + "볼 " + countStrike + "스트라이크");
+        }
+
+        return 0;
     }
 
     private static void checkValidNextProgressNumber(int nextProgress) throws IllegalArgumentException {
