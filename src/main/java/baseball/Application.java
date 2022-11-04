@@ -25,4 +25,21 @@ public class Application {
     }
 
 
+    public static Integer[] userInputToIntegerArray(String userInput) throws IllegalArgumentException {
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("입력값이 3자리가 이닙니다.");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (userInput.charAt(i) > '9' || userInput.charAt(i) < '1') {
+                throw new IllegalArgumentException("입력값이 1~9 사이의 숫자가 아닙니다.");
+            }
+        }
+
+        Integer[] result = {0, 0, 0};
+        for (int i = 0; i < 3; i++) {
+            result[i] = userInput.charAt(i) - '0';
+        }
+        return result;
+    }
 }
