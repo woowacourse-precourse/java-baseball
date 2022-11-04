@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Computer {
@@ -35,5 +36,12 @@ public class Computer {
         }
         return count;
     }
+
+    public List<Integer> compare(Integer answer) {
+        Integer strike = countStrike(answer);
+        Integer ball = countBall(answer);
+        return Arrays.asList(strike, ball);
+    }
+
 
 }

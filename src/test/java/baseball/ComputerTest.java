@@ -55,4 +55,16 @@ class ComputerTest {
         }
         assertThat(computer.countBall(compareNumber)).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("정답 숫자를 입력받는 기능")
+    void compare() {
+        Computer computer = new Computer();
+        List<Integer> numbers = computer.selectRandomNumbers();
+        Integer answer = 0;
+        for (Integer number : numbers) {
+            answer = 10 * answer + number;
+        }
+        assertThat(computer.compare(answer)).isEqualTo(List.of(3, 0));
+    }
 }
