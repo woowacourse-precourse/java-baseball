@@ -2,20 +2,27 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 // readLine()
 
 public class PlayerNumber {
 
 
+    public static String getString(){
+        String inputString = Console.readLine();
+        return inputString;
+    }
 
-    /*public static List<Integer> convertNumberList(){
-        System.out.println("숫자를 입력해주세요 : ");
-        String inputStringNumber = Console.readLine();
-
-    }*/
+    public static List<Integer> convertNumberList(String inputNumber) {
+        List<Integer> playerNumberList = new ArrayList<>();
+        int inputIntNumber = Integer.parseInt(inputNumber);
+        while (inputIntNumber != 0) {
+            playerNumberList.add(inputIntNumber % 10);
+            inputIntNumber /= 10;
+        }
+        Collections.reverse(playerNumberList);
+        return playerNumberList;
+    }
 
     public static boolean duplicationCheck(String inputNumber) {
         Set<Character> setNumber = new HashSet<>();
