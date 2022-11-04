@@ -43,7 +43,7 @@ public class Application {
     }
 
     public static void printInputMessage() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void printGameResult(int ballCount, int strikeCount) {
