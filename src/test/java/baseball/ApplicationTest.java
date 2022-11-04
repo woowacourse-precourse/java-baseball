@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -17,7 +18,28 @@ class ApplicationTest extends NsTest {
         List<Integer> randomValues = Application.generateRandomNumber();
 
         assertThat(randomValues.size()).isEqualTo(3);
+
     }
+
+    @Test
+    void checkUserInputTest() {
+        String userInput1 = "123";
+        String userInput2 = "1234";
+        String userInput3 = "A23";
+
+        assertThat(Application.checkUserInput(userInput1)).isEqualTo(true);
+        assertThat(Application.checkUserInput(userInput2)).isEqualTo(false);
+        assertThat(Application.checkUserInput(userInput3)).isEqualTo(false);
+
+    }
+
+    @Test
+    void userInputToIntegerListTest() {
+        String userInput = "123";
+
+        assertThat(Application.userInputStrToIntegerList(userInput)).containsExactly(1, 2, 3);
+    }
+
 
 
     @Test
