@@ -78,18 +78,20 @@ public class Application {
 
         for (char c : charArray) {
 
-            if (!isValidNumber(c) || userInputNumber.contains((int)(c - '0'))) {
+            int number = (int) c - '0';
+
+            if (!isValidNumber(number) || userInputNumber.contains(number)) {
                 throw new IllegalArgumentException();
             }
 
-            userInputNumber.add((int)(c - '0'));
+            userInputNumber.add(number);
         }
 
         return userInputNumber;
     }
 
-    private static boolean isValidNumber(char c) {
-        return 1 <= c - '0' && c - '0' <= 9;
+    private static boolean isValidNumber(int number) {
+        return 1 <= number && number <= 9;
     }
 
     static class BullsAndCowsResult {
