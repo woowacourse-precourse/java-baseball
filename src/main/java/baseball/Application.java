@@ -6,23 +6,48 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Application {
 
     private static final int SIZE = 3;
 
+    private static final int START = 1;
+    private static final int END = 9;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
     }
 
-    private static void playGame() {
+    private static void playGame() throws IOException {
 
+        printStart();
+        List<Integer> computer = getTargetNumbers();
+
+        while (true) {
+            List<Integer> user = getToEnterNumbers();
+        }
+    }
+    private static List<Integer> getToEnterNumbers() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String input = br.readLine();
+        List<Integer> user = new ArrayList<>();
+
+        for (int i = 0; i < SIZE; i++) {
+            char currentValue = input.charAt(i);
+            Integer number = Integer.valueOf(currentValue);
+            user.add(number);
+        }
+
+        return user;
     }
 
     private static List<Integer> getTargetNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -68,7 +93,7 @@ public class Application {
         return;
     }
 
-    private static void checkAgainGame(int toBeContinue) {
+    private static void checkAgainGame(int toBeContinue) throws IOException {
 
         int againGame = 1;
         int exitGame = 2;
