@@ -16,7 +16,7 @@ public class UserBallService {
 		this.outputView = outputView;
 		this.inputView = inputView;
 	}
-	
+
 	public boolean isAnswer(String userInput, List<Integer> answerNumber) {
 		UserBall userBall = makeUserBall(userInput, answerNumber);
 		if (is3Strike(userBall)) {
@@ -60,27 +60,25 @@ public class UserBallService {
 			.collect(Collectors.toList());
 
 		UserBall userBall = UserBall.createUserBall();
+		updateBallCount(answerNumber, userInputList, userBall);
+		updateStrikeCount(answerNumber, userInputList, userBall);
+		return userBall;
+	}
 
-		/**
-		 * ball count 갱신
-		 */
-		for (int i = 0; i < 3; i++) {
-			if (!userInputList.get(i).equals(answerNumber.get(i)) && userInputList.contains(answerNumber.get(i))) {
-				userBall.changeBallCount(userBall.getBall() + 1);
-			}
-		}
-
-		/**
-		 * strike count 갱신
-		 */
+	private void updateStrikeCount(List<Integer> answerNumber, List<Integer> userInputList, UserBall userBall) {
 		for (int i = 0; i < 3; i++) {
 			if (userInputList.get(i).equals(answerNumber.get(i))) {
 				userBall.changeStrikeCount(userBall.getStrike() + 1);
 			}
 		}
+	}
 
-		return userBall;
-
+	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputList, UserBall userBall) {
+		for (int i = 0; i < 3; i++) {
+			if (!userInputList.get(i).equals(answerNumber.get(i)) && userInputList.contains(answerNumber.get(i))) {
+				userBall.changeBallCount(userBall.getBall() + 1);
+			}
+		}
 	}
 
 }
