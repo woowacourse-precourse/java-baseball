@@ -1,5 +1,6 @@
 package view;
 
+import constant.GameConstant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ public class PlayerTest {
 
     @Test
     void 게임_시작_메시지() {
-        String result = "숫자 야구 게임을 시작합니다.";
+        String result = GameConstant.GAME_START_PHRASE;
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));

@@ -15,7 +15,7 @@ public class Player {
             String input;
             Scanner scanner = new Scanner(System.in);
 
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(GameConstant.INPUT_PHRASE);
             input = scanner.nextLine();
 
             try {

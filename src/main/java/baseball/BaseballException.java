@@ -1,5 +1,7 @@
 package baseball;
 
+import constant.GameConstant;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,7 @@ public class BaseballException {
         inputList = Arrays.asList(input.split(""));
 
         if (inputList.size() != 3) {
-            throw new IllegalArgumentException("입려된 값의 길이가 3이 아닙니다.");
+            throw new IllegalArgumentException(GameConstant.INPUT_LENGTH_EXCEPTION);
         }
     }
 }

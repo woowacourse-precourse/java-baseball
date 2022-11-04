@@ -1,5 +1,6 @@
 package baseball;
 
+import constant.GameConstant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,6 @@ public class BaseballExceptionTest {
             BaseballException.InputLengthException(input);
         });
 
-        assertThat(exception.getMessage()).isEqualTo("입려된 값의 길이가 3이 아닙니다.");
+        assertThat(exception.getMessage()).isEqualTo(GameConstant.INPUT_LENGTH_EXCEPTION);
     }
 }
