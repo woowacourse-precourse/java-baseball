@@ -25,21 +25,39 @@ public class Application {
         Player player = new Player(new ArrayList<>());
         player.player3NumberInput();
 
-        List ballIndex = new ArrayList<Integer>();
         int ballCount = 0;
-        List strikeIndex = new ArrayList<Integer>();
         int strikeCount = 0;
 
-        strike(computer, player, strikeIndex, strikeCount);
+        strike(computer, player, strikeCount);
 
+        ball(computer, player, ballCount);
 
     }
 
-    private static void strike(Computer computer, Player player, List strikeIndex, int strikeCount) {
-        for(int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
-            if(computer.computerNumber.get(numericComparisonIndex) == player.playerNumber.get(numericComparisonIndex)) {
+    private static void ball(Computer computer, Player player, int ballCount) {
+
+        for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
+            if (computer.computerNumber.get(numericComparisonIndex) != player.playerNumber.get(numericComparisonIndex)) {
+                ballCount = getBallCount(computer, player, ballCount, numericComparisonIndex);
+            }
+        }
+    }
+
+    private static int getBallCount(Computer computer, Player player, int ballCount, int numericComparisonIndex) {
+
+        for (int playerNumberIndex = 0; playerNumberIndex < 3; playerNumberIndex++) {
+            if (String.valueOf(computer.computerNumber.get(numericComparisonIndex)).contains(String.valueOf(player.playerNumber.get(playerNumberIndex)))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    private static void strike(Computer computer, Player player, int strikeCount) {
+
+        for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
+            if (computer.computerNumber.get(numericComparisonIndex) == player.playerNumber.get(numericComparisonIndex)) {
                 strikeCount++;
-                strikeIndex.add(numericComparisonIndex);
             }
         }
     }
