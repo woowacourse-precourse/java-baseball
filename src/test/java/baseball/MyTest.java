@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class MyTest {
+public class MyTest extends NsTest{
 
     @Test
     void 게임초기화_난수_생성() {
@@ -38,8 +39,35 @@ public class MyTest {
 
     }
 
+    @Test
+    void 볼카운트_출력() {
+        //given
+        GameContext gameCtx = new GameContext();
+        // when
+        String[] inputs = {"246", "153", "513", "135"};
+        // then
+        inputNumbersIntoStdin(inputs);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    gameCtx.initializeContext();
+                    inputNumbersIntoStdin(inputs);
+                    for (String input : inputs)
+                        gameCtx.handleUserInput();
+                    assertThat(output().split("\n")).contains("낫싱", "2볼 1스트라이크", "3볼", "3스트라이크");
+                    assertThat(gameCtx.getState()).isEqualTo(GameState.THREE_STRIKE);
+                },
+                1, 3, 5
+        );
+
+    }
+
     private void inputNumbersIntoStdin(String[] numbers) {
         final byte[] buf = String.join("\n", numbers).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
