@@ -21,6 +21,7 @@ public class BaseballGame {
         getUserNumber();
         checkUserNumber();
         compareComputerAndUser();
+        printMessage(getResult() + ENTER);
     }
 
     private static void makeRandomNumber() {
@@ -64,5 +65,19 @@ public class BaseballGame {
 
     private static boolean isBall(int index) {
         return computerNumbers.contains(userNumber.charAt(index)- '0');
+    }
+
+    public static String getResult() {
+        String resultMessage = "";
+        if (ball == 0 && strike == 0) {
+            return NOTHING_MESSAGE;
+        }
+        if (ball > 0) {
+            resultMessage += ball + BALL_MESSAGE + SPACE;
+        }
+        if (strike > 0) {
+            resultMessage += strike + STRIKE_MESSAGE + SPACE;
+        }
+        return resultMessage;
     }
 }
