@@ -43,6 +43,8 @@ public class ResultService {
 
         want = Integer.parseInt(readLine().replaceAll("\\s", ""));
 
+        validation.ReStartValid(want);
+
         return want;
     }
 }
