@@ -20,24 +20,28 @@ public class Application {
     }
 
     private static void baseballGame() {
+        // computer List 생성
         List<Integer> computer = getComputerNumber();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
+            // user List 생성
             List<Integer> user = getUserNumber();
-            // 값을 제공하면 해당 값의 첫번 째 인덱스를 반환
-            // indexof 해서 i 랑 같으면 스트라이크고, -1이면 x i 랑 다르면 볼
+
+            // 결과 저장
             int[] result = getResult(computer, user);
 
+            // 결과 프린트
             System.out.println(printResult(result));
+
             if (executeApplication(result)) break;
         }
     }
 
     // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
     private static boolean executeApplication(int[] result) {
-        if (isSame(3, result[0])) {
+        if (isSame(3, result[0])) { // strike == 3
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
