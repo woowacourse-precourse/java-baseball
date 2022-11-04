@@ -53,4 +53,23 @@ public class Player {
                 .map(number -> new Ball(new AtomicInteger().getAndIncrement(), number))
                 .collect(Collectors.toList());
     }
+
+    public GameResult playGame(Player otherPlayer) {
+        GameResult gameResult = new GameResult();
+
+        for (Ball ball : balls) {
+            BallStatus ballStatus = otherPlayer.play(ball);
+            gameResult.addResult(ballStatus);
+        }
+        return gameResult;
+    }
+
+    private BallStatus play(Ball otherBall) {
+        return this.balls.stream()
+                .map(ball -> ball.play(otherBall))
+                .filter(ballStatus -> !ballStatus.isNothing())
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
+    }
+
 }

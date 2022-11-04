@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PlayerTest {
@@ -34,4 +35,11 @@ public class PlayerTest {
         );
     }
 
+    @Test
+    void 두명의_플레이어가_플레이() {
+        Player player = new Player(List.of(1, 2, 3));
+        Player otherPlayer = new Player(List.of(1, 2, 3));
+        GameResult gameResult = player.playGame(otherPlayer);
+        assertThat(gameResult).isEqualTo(new GameResult(3, 0));
+    }
 }
