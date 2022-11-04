@@ -37,4 +37,8 @@ public class Computer {
         this.answer = (check.get(0) * 100) + (check.get(1) * 10) + check.get(2);
     }
 
+    public void resetAnswer() {
+        check.clear();
+    }
+
 }
