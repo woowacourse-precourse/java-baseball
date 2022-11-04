@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.NumberController.isStringNumberInRange;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,4 +28,11 @@ public class InputController {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
+
+    public static List<Integer> getUniqueThreeNum() {
+        String input = Console.readLine();
+        InputController.checkThreeNum(input);
+        return NumberController.convertStringToNumbers(input);
+    }
+
 }
