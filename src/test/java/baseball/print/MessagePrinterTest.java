@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -61,28 +63,36 @@ class MessagePrinterTest {
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
 
-        @Test
-        void 전부_ball인_경우() {
-            Map<String, Integer> ballAndStrikeCount = Map.of(
-                    "ball", DIGITS_FOR_THIS_GAME,
-                    "strike", 0
-            );
+       @Nested
+       class ball만_있는_경우 {
+           @ParameterizedTest
+           @ValueSource(ints = {1, 2, DIGITS_FOR_THIS_GAME})
+           void ball만_있는_경우(int ballCount) {
+               Map<String, Integer> ballAndStrikeCount = Map.of(
+                       "ball", ballCount,
+                       "strike", 0
+               );
 
-            printer.printBallAndStrikeCount(ballAndStrikeCount);
-            String result = DIGITS_FOR_THIS_GAME + "볼";
-            assertThat(result).isEqualTo(outputStream.toString().trim());
-        }
+               printer.printBallAndStrikeCount(ballAndStrikeCount);
+               String result = ballCount + "볼";
+               assertThat(result).isEqualTo(outputStream.toString().trim());
+           }
+       }
 
-        @Test
-        void 전부_strike인_경우() {
-            Map<String, Integer> ballAndStrikeCount = Map.of(
-                    "ball", 0,
-                    "strike", DIGITS_FOR_THIS_GAME
-            );
+        @Nested
+        class strike만_있는_경우 {
+            @ParameterizedTest
+            @ValueSource(ints = {1, 2, DIGITS_FOR_THIS_GAME})
+            void strike만_있는_경우(int strikeCount) {
+                Map<String, Integer> ballAndStrikeCount = Map.of(
+                        "ball", 0,
+                        "strike", strikeCount
+                );
 
-            printer.printBallAndStrikeCount(ballAndStrikeCount);
-            String result = DIGITS_FOR_THIS_GAME + "스트라이크";
-            assertThat(result).isEqualTo(outputStream.toString().trim());
+                printer.printBallAndStrikeCount(ballAndStrikeCount);
+                String result = strikeCount + "스트라이크";
+                assertThat(result).isEqualTo(outputStream.toString().trim());
+            }
         }
 
         @Test
