@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -21,16 +24,61 @@ public class Application {
         }
     }
 
-    private static boolean playGame(String number) throws IllegalArgumentException {
+    public static boolean playGame(String number) throws IllegalArgumentException {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         String inputNumber = inputNumberFromPlayer();
-
         checkInputNumberValidation(inputNumber);
 
+        Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
         return true;
     }
+
+    public static Map<String, Integer> analyzeInputNumber(String inputNumber, String number) {
+
+        int strikeNumber = 0;
+        int ballNumber = 0;
+
+        for (int pitchingCount = 0; pitchingCount < 3; pitchingCount++) {
+
+            char pitchingValue = inputNumber.charAt(pitchingCount);
+
+            if (checkStrike(pitchingValue, number.charAt(pitchingCount))) {
+                strikeNumber++;
+            } else if (checkBall(pitchingValue, number)) {
+                ballNumber++;
+            }
+        }
+        Map<String, Integer> analyzeResult = Map.of(
+                "Strike", strikeNumber,
+                "ball", ballNumber
+        );
+
+        return analyzeResult;
+    }
+
+    public static boolean checkBall(char pitchingValue, String numbers) {
+
+        for (int pitchingCount = 1; pitchingCount < 3; pitchingCount++) {
+            if (pitchingValue == numbers.charAt(pitchingCount)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean checkStrike(char pitchingValue, char number) {
+
+        return pitchingValue == number;
+    }
+
+    /*public static int checkStrike(String inputNumber, String number) {
+
+        for (int pitching = 0; pitching < 3; pitching++) {
+            if (inpu)
+        }
+    }*/
 
     public static void checkInputNumberValidation(String inputNumber) throws IllegalArgumentException {
 
