@@ -2,7 +2,11 @@ package baseball;
 
 import java.util.HashSet;
 
+import static baseball.Constant.*;
+
 public class IsValidInput {
+
+
     String input;
     boolean playing;
 
@@ -12,7 +16,7 @@ public class IsValidInput {
     }
 
     boolean IsValidLength() {
-        return ((playing) && (input.length() == 3)) || ((! playing) && (input.length()==1));
+        return ((playing) && (input.length() == PLAYING_NUMBERS_LENGTH)) || ((! playing) && (input.length()==END_GAME_INPUT_LENGTH));
     }
 
     boolean IsValidValue() {
@@ -22,12 +26,12 @@ public class IsValidInput {
         HashSet<String> validNumber = ValidNumber();
         HashSet<String> inputSet = StringToSet();
         inputSet.retainAll(validNumber);
-        return inputSet.size()==3;
+        return inputSet.size()==PLAYING_NUMBERS_LENGTH;
     }
 
     HashSet<String> ValidNumber() {
         HashSet<String> validNumber = new HashSet<>();
-        for(int i=1; i<=9; i++) {
+        for(int i=MIN_RANGE_NUMBER; i<=MAX_RANGE_NUMBER; i++) {
             validNumber.add(String.valueOf(i));
         }
         return validNumber;

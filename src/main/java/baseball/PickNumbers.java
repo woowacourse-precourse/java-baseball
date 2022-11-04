@@ -5,16 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class PickNumbers {
 
-    static final int START_NUMBER = 1;
-    static final int END_NUMBER = 9;
-    static final int NUMBER_COUNT = 3;
 
     List<Integer> pickNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < NUMBER_COUNT) {
-            int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+        while (numbers.size() < PLAYING_NUMBERS_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
             if (! numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
