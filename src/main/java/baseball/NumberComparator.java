@@ -58,4 +58,17 @@ public class NumberComparator {
             gameResultBuilder.append(SPACE);
         }
     }
+
+    private void printGameResult(int ballCount, int strikeCount) {
+        StringBuilder gameResultBuilder = new StringBuilder();
+
+        if (strikeCount == 0 && ballCount == 0) {
+            gameResultBuilder.append(NOTHING);
+        } else {
+            makeBallCountText(gameResultBuilder, ballCount);
+            makeStrikeCountText(gameResultBuilder, strikeCount);
+        }
+
+        System.out.println(gameResultBuilder);
+    }
 }
