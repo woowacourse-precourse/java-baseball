@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.GameConsole;
 import baseball.baseball.Digits;
 import baseball.baseball.RandomBaseballGame;
 import baseball.baseball.Result;
