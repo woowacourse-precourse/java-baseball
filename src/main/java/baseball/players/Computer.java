@@ -2,23 +2,21 @@ package baseball.players;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Computer {
 
-    private List<Integer> computerNumbers = new ArrayList<>();
+    private String computerNumbers = "";
 
     public Computer() {
-        while (computerNumbers.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
+        while (computerNumbers.length() < 3) {
+            String number = Integer.toString(Randoms.pickNumberInRange(1, 9));
 
             if (!computerNumbers.contains(number))
-                computerNumbers.add(number);
+                this.computerNumbers += number;
         }
     }
 
-    public List<Integer> getComputerNumbers() {
+    public String getComputerNumbers() {
         return computerNumbers;
     }
 }
