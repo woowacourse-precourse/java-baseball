@@ -7,6 +7,11 @@ public class InputAndOutput {
     private static final String ANSWER_REQUEST_PHRASE = "숫자를 입력해주세요 : ";
     private static final String RESTART_OR_END_PHRASE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String ENDANSWER_ERR_MESSAGE = "1 혹은 2가 아닙니다.";
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+
+    public static void printGameStartPhrase() {
+        System.out.println(GAME_START);
+    }
 
     public static String getUserAnswer() {
         System.out.print(ANSWER_REQUEST_PHRASE);
