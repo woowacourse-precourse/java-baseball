@@ -40,7 +40,7 @@ public class Domain {
         return computer;
     }
 
-    public static String getInputUserNumber() { // test 입력시오류경우_확인
+    public  String getInputUserNumber() { // test 입력시오류경우_확인
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
