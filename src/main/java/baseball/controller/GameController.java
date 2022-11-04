@@ -15,6 +15,7 @@ public class GameController {
 
     public void start(){
         numberBaseBallView.start();
+        numberBaseBallGame.start();
 
         while (numberBaseBallGame.isProceeding()) {
             String inputNumber = numberBaseBallView.askInputNumber();
