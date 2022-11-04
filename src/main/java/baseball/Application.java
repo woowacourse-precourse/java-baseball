@@ -155,7 +155,16 @@ public class Application {
     }
 
     private static int PlayAgain() {
-        String playerString = Console.readLine();
-        return Integer.parseInt(playerString);
+        // 게임 플레이어가 입력한 숫자가 1 또는 2가 아니면 입력을 다시 받는다.
+        while (true) {
+            String playerString = Console.readLine();
+            int result = Integer.parseInt(playerString);
+
+            if (result == 1 || result == 2) {
+                break;
+            }
+        }
+
+        return result;
     }
 }
