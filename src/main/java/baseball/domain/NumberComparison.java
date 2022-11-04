@@ -2,8 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-public class GameJudgment {
-
+public class NumberComparison {
     public int compare(List<Integer> computer, List<Integer> player) {
         int correctCount = 0;
         for (int playerIndex = 0; playerIndex < player.size(); playerIndex++) {

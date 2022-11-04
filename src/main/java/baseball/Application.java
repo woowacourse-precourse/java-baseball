@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.constants.ExceptionMessage;
-import baseball.domain.NumberComparison;
+import baseball.constants.SystemMessage;
 import baseball.domain.NumberGenerator;
 import baseball.domain.Player;
 import baseball.domain.Referee;
@@ -10,40 +10,51 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
+    private static final int RESTART = 1;
+    private static final int END = 2;
+    private static final String PATTERN = "[1-2]+";
+    private static final String GAME_WIN_CONDITIONS = "3스트라이크";
+
     public static void main(String[] args) {
-        String result = "";
-        int reStart = 1;
-        System.out.println("숫자 야구 게임을 시작합니다.");
         Player player = new Player();
         Referee referee = new Referee();
         NumberGenerator numberGenerator = new NumberGenerator();
 
-        while (reStart == 1) {
-            result = "";
+        int restartNumber = 1;
+        String gameResultNumber = "";
+        System.out.println(SystemMessage.INITIAL_MESSAGE);
+
+        while (restartNumber == RESTART) {
+            gameResultNumber = "";
             List<Integer> computer = numberGenerator.createRandomNumbers();
 
-            while (!(result.equals("3스트라이크"))) {
-                System.out.print("숫자를 입력해주세요 : ");
-                String readLine = Console.readLine();
+            while (!(gameResultNumber.equals(GAME_WIN_CONDITIONS))) {
+                System.out.print(SystemMessage.SETUP_MESSAGE);
+                String playerNumber = Console.readLine();
+                List<Integer> playerInput = player.getInput(playerNumber);
 
-                List<Integer> playerInput = player.getInput(readLine);
-                result = referee.resultJudgment(computer, playerInput);
-                System.out.println(result);
+                gameResultNumber = referee.resultJudgment(computer, playerInput);
+                System.out.println(gameResultNumber);
             }
-            reStart = getReStart();
-
+            restartNumber = getReStart();
         }
     }
 
     private static int getReStart() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(SystemMessage.GAME_WIN_MESSAGE);
+        System.out.println(SystemMessage.GAME_RESTART_MESSAGE);
 
-        String reStart = Console.readLine();
-        int checkResult = Integer.parseInt(reStart);
-        if (!(checkResult > 0 && checkResult <= 2)) {
+        String restart = Console.readLine();
+        String regularExpression = PATTERN;
+        if (!(restart.matches(regularExpression))) {
             throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
         }
-        return checkResult;
+
+        int restartPlayerNumber = Integer.parseInt(restart);
+//        if (!(restartPlayerNumber >= RESTART && restartPlayerNumber <= END)) {
+//            throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
+//        }
+
+        return restartPlayerNumber;
     }
 }
