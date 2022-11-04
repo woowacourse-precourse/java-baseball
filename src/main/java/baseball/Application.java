@@ -66,16 +66,17 @@ public class Application {
         check_strike();
         check_ball();
         if (strike > 0)
-            result += Character.toString(strike) + "스트라이크";
+            result += strike + "스트라이크";
         if (strike == 3)
             result += '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         if (ball > 0) {
             if (strike > 0)
                 result = ' ' + result;
-            result = Character.toString(ball) + '볼';
+            result = ball + '볼' + result;
         }
         if (result.length() == 0)
             result = "낫싱";
+        result += '\n';
     }
 
     private static void check_strike() {
