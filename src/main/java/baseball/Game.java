@@ -1,12 +1,15 @@
 package baseball;
 
-import java.util.Arrays;
-
 public class Game {
     static final int NUMBER_LENGTH = 3;
     String STRING_BALL = "볼";
     String STRING_STRIKE = "스트라이크";
     String STRING_NOTHING = "낫싱";
+    private int strike;
+    private int ball;
+    private int randomNumber;
+    private int userNumber;
+
     public Game() {
     }
     public void play() {
@@ -14,34 +17,17 @@ public class Game {
         UserNumber user = new UserNumber();
 
         // get random number from computer
-        computer.getRandomNumber();
-        int randomNumber = computer.randomNumber;
+        randomNumber = computer.getRandomNumber();
         System.out.println(randomNumber);
 
         while(true) {
             // get user number from user
             user.setUserNumber();
-            int userNumber = user.getUserNumber();
-            System.out.println(userNumber);
+            userNumber = user.getUserNumber();
 
-            int strike = 0;
-            int ball = 0;
-
-            String[] randomNumberArr = String.valueOf(randomNumber).split("");
-            String[] userNumberArr = String.valueOf(userNumber).split("");
-
-            for(int i=0; i<NUMBER_LENGTH; i++) {
-                // calculate strike
-                if(randomNumberArr[i].equals(userNumberArr[i])) {
-                    strike++;
-                }
-                // calculate ball
-                for(int k=0; k<NUMBER_LENGTH; k++){
-                    if(randomNumberArr[i].equals(userNumberArr[k]) && i != k) {
-                        ball++;
-                    }
-                }
-            }
+            initializeBallCount();
+            calculateStrike();
+            calculateBall();
 
             // paint result
             String result = "";
@@ -61,6 +47,35 @@ public class Game {
             }
 
         }
+    }
+
+    private void calculateBall() {
+        String[] randomNumberArr = String.valueOf(randomNumber).split("");
+        String[] userNumberArr = String.valueOf(userNumber).split("");
+        for(int i=0; i<NUMBER_LENGTH; i++) {
+            // calculate ball
+            for (int k = 0; k < NUMBER_LENGTH; k++) {
+                if (randomNumberArr[i].equals(userNumberArr[k]) && i != k) {
+                    ball++;
+                }
+            }
+        }
+    }
+
+    private void calculateStrike() {
+        String[] randomNumberArr = String.valueOf(randomNumber).split("");
+        String[] userNumberArr = String.valueOf(userNumber).split("");
+        for(int i=0; i<NUMBER_LENGTH; i++) {
+            // calculate strike
+            if(randomNumberArr[i].equals(userNumberArr[i])) {
+                strike++;
+            }
+        }
+    }
+
+    private void initializeBallCount() {
+        strike = 0;
+        ball = 0;
     }
 }
 
