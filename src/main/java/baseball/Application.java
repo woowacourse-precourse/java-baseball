@@ -120,10 +120,16 @@ public class Application {
         return ballCount - strikeCount;
     }
 
-    public static void startGame(String randomNumber) {
-        while () {
-            String userInputNumber = getUserInputNumber();
+    public static boolean isThreeStrike(int strikeCount) {
+        if(strikeCount == 3) {
+            return true;
         }
+        return false;
+    }
+    public static void startGame(String randomNumber) {
+        while (true) {
+            printInputMessage();
+            String userInputNumber = getUserInputNumber();
 
     }
 
