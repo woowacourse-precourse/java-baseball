@@ -43,11 +43,26 @@ public class baseballUnitTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 숫자가 있습니다");
         }
+
+        @Test
+        @DisplayName("음수 입력")
+        void 음수입력() {
+            assertThatThrownBy(() -> new User("-12"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("양수만 입력하세요");
+        }
     }
 
     @Nested
     @DisplayName("게임 기능 검증")
     class baseballGameTest {
+        @Test
+        @DisplayName("컴퓨터의 숫자와 유저입력값 비교")
+        void 중복숫자() {
+            assertThatThrownBy(() -> new User("121"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 숫자가 있습니다");
+        }
 
     }
 
