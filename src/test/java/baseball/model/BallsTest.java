@@ -56,4 +56,25 @@ class BallsTest {
         assertThat(computer.isOut(new Ball(2, 1))).isTrue();
         assertThat(computer.isOut(new Ball(3, 1))).isFalse();
     }
+
+    @Test
+    void 사용자_공_3개_판정() {
+        List<Ball> computerBalls = new ArrayList<>();
+
+        computerBalls.add(new Ball(1, 0));
+        computerBalls.add(new Ball(3, 1));
+        computerBalls.add(new Ball(5, 2));
+
+        List<Ball> userBalls = new ArrayList<>();
+
+        userBalls.add(new Ball(2, 2));
+        userBalls.add(new Ball(3, 1));
+        userBalls.add(new Ball(5, 0));
+
+        Balls computer = new Balls(computerBalls);
+        Balls user = new Balls(userBalls);
+
+        Result result = new Result(1, 1, 1);
+        assertThat(computer.getResult(user)).isEqualTo(result);
+    }
 }
