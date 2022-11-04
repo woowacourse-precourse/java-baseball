@@ -43,7 +43,7 @@ public class Application {
         return k;
     }
 
-    public static boolean isBall(int number, List<Integer> answer) {
+    public static boolean isContain(int number, List<Integer> answer) {
         return answer.contains(number);
     }
 
