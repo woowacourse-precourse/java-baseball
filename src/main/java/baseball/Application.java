@@ -139,4 +139,8 @@ public class Application {
             System.out.println(balls+"볼 "+strikes+"스트라이크");
         }
     }
+
+    private static Boolean IsGameFinished(LinkedHashMap<String, Integer> finalResult) {
+        return result;
+    }
 }
