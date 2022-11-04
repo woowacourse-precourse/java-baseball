@@ -37,8 +37,10 @@ public class ResultService {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
             }
         }
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("다시 하시려면 1번 종료하시려면 2번을 눌러주세요");
+
         want = Integer.parseInt(readLine().replaceAll("\\s", ""));
 
         return want;
