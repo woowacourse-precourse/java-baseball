@@ -114,10 +114,10 @@ public class GameUtilTest {
 
         @ParameterizedTest(name = "2볼 1스트라이크 => {0}, {1}")
         @CsvSource({
-                "123, 192", //xyz, xzy
-                "123, 921", //xyz, zyx
-                "123, 219", //xyz, yxz
-                "123, 291", //xyz, yzx
+                "123, 132", //xyz, xzy
+                "123, 321", //xyz, zyx
+                "123, 213", //xyz, yxz
+                "123, 231", //xyz, yzx
         })
         void one_strike(int computer, int player) {
             List<Integer> result = GameUtil.compareNumber(computer, player).toList();
