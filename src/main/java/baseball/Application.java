@@ -23,10 +23,6 @@ public class Application {
         List<Integer> computer = getComputerNumber();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        for (int i = 0; i < 3; i++) {
-            System.out.print(computer.get(i) + " ");
-        }
-        System.out.println();
 
         while (true) {
             List<Integer> user = getUserNumber();
