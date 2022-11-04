@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,4 +19,6 @@ class NumberHandlerTest {
         }
         System.out.println();
     }
+
+
 }
