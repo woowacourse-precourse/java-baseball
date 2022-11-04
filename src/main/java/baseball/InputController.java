@@ -38,6 +38,7 @@ public class InputController {
     }
 
     public static List<Integer> getUniqueThreeNum() {
+        InfoPrinter.printInputInfo();
         String input = Console.readLine();
         InputController.validateThreeNum(input);
         return NumberController.convertStringToNumbers(input);
