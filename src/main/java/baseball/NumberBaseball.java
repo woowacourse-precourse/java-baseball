@@ -1,10 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * 숫자 야구 게임에 쓰이는 메소드들을 정의한 클래스입니다.
@@ -137,11 +137,9 @@ public class NumberBaseball {
     /**
      * 게임 단위 하나의 실행 지속 여부를 결정하는 메소드
      *
-     * 사용자로부터 잘못된 input이 전달되었을 때 실행을 종료하기 위해 false를 반환합니다.
-     *
-     * @return true or false
+     * 사용자로부터 잘못된 input이 전달되었을 때 IllegalArgumentException을 던집니다.
      */
-    public boolean startGame() {
+    public void startGame() throws IllegalArgumentException {
         System.out.println("(테스트용)숫자 야구 게임을 시작합니다.");
         System.out.println("정답 -> " + getAnswer().get(0).toString() + getAnswer().get(1).toString() + getAnswer().get(2).toString());    /** 이 부분은 추후에 제거해야 함*/
 
@@ -149,19 +147,14 @@ public class NumberBaseball {
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = validateInput();    // validateInput을 통해 사용자의 input을 검증
 
-            if (userAnswer.length() == 0) { // 잘못된 input이 전달되었다면 빈 문자열을 반환함
-                break;
-            }
-
             List<Integer> result = checkAnswer(userAnswer);
             showResult(result);
 
             if (result.get(1) == 3) {   // 3 strike인 경우
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return true;
+                break;
             }
         }
-        return false;
     }
 
     /**
@@ -169,21 +162,16 @@ public class NumberBaseball {
      *
      * @return true or false
      */
-    public boolean wantRestart() {
+    public boolean wantRestart() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner sc = new Scanner(System.in);
-        String flag = sc.nextLine();
+        String flag = Console.readLine();
 
-        try {
-            if (flag.equals("1")) {
-                return true;
-            } else if (flag.equals("2")) {
-                return false;
-            } else {
-                throw new IllegalArgumentException();   // 1과 2이외의 값이 입력되었을 경우 IllegalArgumentException 발생시킴
-            }
-        } catch (IllegalArgumentException e) {
+        if (flag.equals("1")) {
+            return true;
+        } else if (flag.equals("2")) {
             return false;
+        } else {
+            throw new IllegalArgumentException();   // 1과 2이외의 값이 입력되었을 경우 IllegalArgumentException 발생시킴
         }
     }
 
@@ -197,22 +185,17 @@ public class NumberBaseball {
      *
      * @return userAnswer
      */
-    public String validateInput() {
-        Scanner scanner = new Scanner(System.in);
-        String userAnswer = scanner.nextLine();
+    public String validateInput() throws IllegalArgumentException {
+        String userAnswer = Console.readLine();
 
-        try {
-            if (userAnswer.length() != 3) {
-                throw new IllegalArgumentException();   // 입력받은 문자열의 길이가 3이 아니면 IllegalArgumentException 발생시킴
-            } else if (!isNumber(userAnswer)) {
-                throw new IllegalArgumentException();   // 각 자리가 1~9의 숫자가 아니면 IllegalArgumentException 발생시킴
-            } else if (!isDiffNumber(userAnswer)) {
-                throw new IllegalArgumentException();   // 각 자리의 숫자가 서로 다른 숫자가 아니면 IllegalArgumentException 발생시킴
-            } else {
-                return userAnswer;
-            }
-        } catch (IllegalArgumentException e) {
-            return "";
+        if (userAnswer.length() != 3) {
+            throw new IllegalArgumentException();   // 입력받은 문자열의 길이가 3이 아니면 IllegalArgumentException 발생시킴
+        } else if (!isNumber(userAnswer)) {
+            throw new IllegalArgumentException();   // 각 자리가 1~9의 숫자가 아니면 IllegalArgumentException 발생시킴
+        } else if (!isDiffNumber(userAnswer)) {
+            throw new IllegalArgumentException();   // 각 자리의 숫자가 서로 다른 숫자가 아니면 IllegalArgumentException 발생시킴
+        } else {
+            return userAnswer;
         }
     }
 
