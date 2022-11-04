@@ -7,6 +7,8 @@ public class Baseball {
 	private static boolean isKeepGaming = true;
 
 	public void startGame() {
+		isKeepInning = true;
+		isKeepGaming = true;
 		while (isKeepGaming) {
 			playInning();
 			Broadcast.printRestartMessage();
