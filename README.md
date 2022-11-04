@@ -136,12 +136,12 @@ BUILD SUCCESSFUL in 0s
 
 ```java
 List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+        while (computer.size() < 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
@@ -153,3 +153,23 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 목록 작성하기
+### 게임진행
+1. [ ] 게임 진행을 위해 랜덤 숫자 3자리를 생성한다.
+    - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - [ ] 3 자리수가 맞는지 판단한다.
+    - [ ] 3 자리수 각각 중복되지 않는지 판단한다.
+    - [ ] 3 자리수 각각 1~9 사이의 값이 맞는지 판단한다.
+2. [ ]  사용자로부터 값을 입력 받는다.
+    - [ ] 3 자리수가 맞는지 판단한다.
+    - [ ] 모두 숫자가 맞는지 판단한다.
+3. [ ] 입력받은 값을 판단한다.
+    - [ ] 숫자와 자리가 맞으면 스트라이크를 올려준다.
+    - [ ] 숫자는 맞고 자리가 맞지 않으면 볼을 올려준다.
+    - [ ] 3스트라이크일 경우 게임이 클리어 된다.
+        - [ ] 클리어 이후 1 입력 시 다시 진행, 2 입력 시 게임을 종료한다.
+
+### 예외상황
+- [ ] 모든 예외 상황은 `IllegalArgumentException` 을 발생시킨다. 이후 프로그램을 종료한다.
+
