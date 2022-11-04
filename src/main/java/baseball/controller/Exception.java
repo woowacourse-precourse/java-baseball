@@ -19,7 +19,7 @@ public class Exception {
 
 	public static void validatePlayerNumber(String inputPlayerNumber) {
 		try {
-			validateOnlyOneToNine(inputPlayerNumber);
+			validateNumberBoundary(inputPlayerNumber);
 			validateNumberLength(inputPlayerNumber);
 			validateOverlapNumber(inputPlayerNumber);
 		} catch (IllegalArgumentException error) {
@@ -28,7 +28,7 @@ public class Exception {
 		}
 	}
 
-	public static void validateOnlyOneToNine(String inputPlayerNumber) {
+	public static void validateNumberBoundary(String inputPlayerNumber) {
 		String regExp = String.format("^[%d-%d]+$", NUMBER_BOUNDARY_START, NUMBER_BOUNDARY_END);
 		if (!inputPlayerNumber.matches(regExp)) {
 			throw new IllegalArgumentException(LIMIT_NUMBER_BOUNDARY);

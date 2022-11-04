@@ -13,25 +13,25 @@ public class Judge {
 		judgeBallAndStrike(ballCount, strikeCount);
 	}
 
-	private static void judgeStrike(int ballCount, int strikeCount) {
+	public static void judgeStrike(int ballCount, int strikeCount) {
 		if (strikeCount > 0 && ballCount == 0) {
 			OutputView.printStrikeCount(strikeCount);
 		}
 	}
 
-	private static void judgeBall(int ballCount, int strikeCount) {
+	public static void judgeBall(int ballCount, int strikeCount) {
 		if (strikeCount == 0 && ballCount > 0) {
 			OutputView.printBallCount(ballCount);
 		}
 	}
 
-	private static void judgeNothing(int ballCount, int strikeCount) {
+	public static void judgeNothing(int ballCount, int strikeCount) {
 		if (strikeCount == 0 && ballCount == 0) {
 			OutputView.printNothing();
 		}
 	}
 
-	private static void judgeBallAndStrike(int ballCount, int strikeCount) {
+	public static void judgeBallAndStrike(int ballCount, int strikeCount) {
 		if (strikeCount > 0 && ballCount > 0) {
 			OutputView.printBallAndStrikeCount(ballCount, strikeCount);
 		}
