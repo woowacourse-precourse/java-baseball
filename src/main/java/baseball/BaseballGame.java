@@ -1,6 +1,8 @@
 package baseball;
 
+import static baseball.HitStatus.BALL;
 import static baseball.HitStatus.NOTHING;
+import static baseball.HitStatus.STRIKE;
 import static baseball.Validation.validate;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -51,12 +53,35 @@ class BaseballGame {
         initPlayerInput();
         initStepResult();
     }
+
+
+    private boolean checkIsBall(int index, int current) {
+        return stepResult.get(index) != STRIKE && computer.contains(current);
+    }
+    private boolean checkIsStrike(int index, int current){
+        return computer.get(index) == current;
+    }
+    private void doHitLogic() {
+        for (int i = 0; i < 3; i++) {
+            int currentUserNumber = player.get(i);
+
+            if (checkIsStrike(i,currentUserNumber)) {
+                stepResult.set(i, STRIKE);
+            }
+            if (checkIsBall(i, currentUserNumber)) {
+                stepResult.set(i, BALL);
+            }
+        }
+    }
+
+
     public void play() {
         initGame();
 
         // TODO: 게임 진행
         while(true){
             initStep();
+            doHitLogic();
             break;
             //TODO: 결과 분석 및 결과에 따른 행동 수행 요구
         }
