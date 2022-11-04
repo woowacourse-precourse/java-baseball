@@ -63,8 +63,11 @@ public class Game {
 
         for (int index = 0; index < inputNumbers.length(); index++) {
             char number = inputNumbers.charAt(index);
+
             if (isStrike(number, randomNumbers, index)) {
                 strikeCount++;
+            } else if (isBall(number, randomNumbers)) {
+                ballCount++;
             }
         }
         return printResult(strikeCount, ballCount);
@@ -72,6 +75,10 @@ public class Game {
 
     public boolean isStrike(char number, List<Integer> randomNumbers, int index) {
         return Character.getNumericValue(number) == randomNumbers.get(index);
+    }
+
+    public boolean isBall(char number, List<Integer> randomNumbers) {
+        return randomNumbers.contains(Character.getNumericValue(number));
     }
 
     public String printResult(int strikeCount, int ballCount) {

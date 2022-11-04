@@ -18,10 +18,25 @@ public class StrikeOrBallJudgeTest {
         );
     }
 
+    public static Stream<Arguments> getIsBallParameters() {
+        return Stream.of(
+                Arguments.of('1', Arrays.asList(2, 3, 1)),
+                Arguments.of('2', Arrays.asList(2, 3, 1)),
+                Arguments.of('3', Arrays.asList(2, 3, 1))
+                );
+    }
+
     @ParameterizedTest
     @MethodSource("getIsStrikeParameters")
     void isStrike_스트라이크인지_판단(char number, List<Integer> randomNumbers, int index) {
         Game game = new Game();
         assertThat(game.isStrike(number, randomNumbers, index)).isTrue();
+    }
+
+    @ParameterizedTest
+    @MethodSource("getIsBallParameters")
+    void isBall_볼인지_판단(char number, List<Integer> randomNumbers) {
+        Game game = new Game();
+        assertThat(game.isBall(number, randomNumbers)).isTrue();
     }
 }
