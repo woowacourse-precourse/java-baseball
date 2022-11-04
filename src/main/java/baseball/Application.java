@@ -28,18 +28,27 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = creatRandomNumber();
-        
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        List<Integer> userInputNumber = isValidInput(userInput);
 
-        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+        boolean result = false;
 
-        for (int i = 0; i < computerNumber.size(); i++) {
-            bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+            List<Integer> userInputNumber = isValidInput(userInput);
+
+            BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+
+            for (int i = 0; i < computerNumber.size(); i++) {
+                bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
+            }
+
+            bullsAndCowsResult.printResult();
+
+            if (bullsAndCowsResult.finish()) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String  = Console.readLine();
+            }
         }
-
-        bullsAndCowsResult.printResult();
     }
 
     private static int findNumberIndex(List<Integer> userInputNumber, int c) {
