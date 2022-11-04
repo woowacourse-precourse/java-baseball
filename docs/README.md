@@ -79,15 +79,15 @@
    - "숫자를 입력해주세요 : " 출력
    - Console.readLine() 으로 숫자를 받아 userNumber에 저장
    - userNumber 반환
-#### (추가) 10. (int) checkType
+#### (추가) 10. (boolean) checkType
 1. 매개변수
    - (Object) userNumber
 2. 변수
    - 없음
 3. 구현
-   - userNumber가 숫자면 int형으로 변환 후 반환
-   - 아니면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
-#### (추가) 9. errorControl
+   - userNumber가 숫자면 ~~int형으로 변환 후 반환~~ true 반환
+   - 아니면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료, false 반환
+#### (추가) 9.(void) errorControl
 1. 매개변수
    - 없음
 2. 변수
@@ -102,7 +102,7 @@
    - (boolean) result
 3. 구현
    - userNumber가 1~9의 숫자로 이루어졌는지 확인
-   - 맞으면 true, 틀리면 ~~false 반환~~ errorControl 발생
+   - 맞으면 true, 틀리면 ~~false 반환~~ errorControl 발생, false 반환
 #### 3. (List) numberToList
 1. 매개변수
    - (int) userNumber
