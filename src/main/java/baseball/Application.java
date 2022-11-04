@@ -16,10 +16,10 @@ public class Application {
         int ball = 0;
         for(int i = 0; i < myNum.length(); i++){
             for(int j = 0; j < computerNum.size(); j++){
-                if(myNum.charAt(i) == computerNum.get(j) && i == j){
+                if(Character.getNumericValue(myNum.charAt(i)) == computerNum.get(j) && i == j){
                     strike +=1;
                 }
-                if(myNum.charAt(i) == computerNum.get(j) && i != j){
+                if(Character.getNumericValue(myNum.charAt(i)) == computerNum.get(j) && i != j){
                     ball+=1;
                 }
             }
@@ -92,8 +92,11 @@ public class Application {
     static void startGameState()throws IllegalArgumentException{
         try{
             List<Integer> computerNum = pickComputerNum();
-            String myNum = pickMyNum();
-            boolean isWin = compareNumber(computerNum, myNum);
+            boolean isWin = false;
+            while(!isWin){
+                String myNum = pickMyNum();
+                isWin = compareNumber(computerNum, myNum);
+            }
 
         }
         catch (IllegalArgumentException e){
