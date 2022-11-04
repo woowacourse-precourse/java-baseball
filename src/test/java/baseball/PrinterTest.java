@@ -25,28 +25,28 @@ class PrinterTest {
 
     @Test
     void 게임_시작_메시지_테스트() {
-        Printer.gameStartMessage();
+        Printer.printGameStart();
         String gameStartMessage = "숫자 야구 게임을 시작합니다.\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(gameStartMessage);
     }
 
     @Test
     void 숫자_입력_메시지_테스트() {
-        Printer.gameInputMessage();
+        Printer.printInputNumber();
         String gameInputMessage = "숫자를 입력해주세요 : ";
         assertThat(outputStreamCaptor.toString()).isEqualTo(gameInputMessage);
     }
 
     @Test
     void 게임_종료_메시지_테스트() {
-        Printer.gameEndMessage();
+        Printer.printGameEnd();
         String gameEndMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(gameEndMessage);
     }
 
     @Test
     void 게임_재시작_입력_테스트() {
-        Printer.gameRestartMessage();
+        Printer.printGameRestart();
         String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(restartMessage);
     }
@@ -56,7 +56,7 @@ class PrinterTest {
         int strike = 0;
         int ball = 0;
 
-        Printer.hintMessage(ball, strike);
+        Printer.printHintMessage(ball, strike);
         String hintMessage = "낫싱\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
@@ -66,7 +66,7 @@ class PrinterTest {
         int strike = 0;
         int ball = 1;
 
-        Printer.hintMessage(ball, strike);
+        Printer.printHintMessage(ball, strike);
         String hintMessage = "1볼\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
@@ -76,7 +76,7 @@ class PrinterTest {
         int strike = 1;
         int ball = 0;
 
-        Printer.hintMessage(ball, strike);
+        Printer.printHintMessage(ball, strike);
         String hintMessage = "1스트라이크\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
@@ -86,7 +86,7 @@ class PrinterTest {
         int strike = 1;
         int ball = 1;
 
-        Printer.hintMessage(ball, strike);
+        Printer.printHintMessage(ball, strike);
         String hintMessage = "1볼 1스트라이크\n";
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
