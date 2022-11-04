@@ -88,4 +88,15 @@ public class ComputerTest {
         // then
         Assertions.assertThat(result).isEqualTo("3볼");
     }
+
+    @Test
+    public void 유저와_컴퓨터의_값을_비교하여_결과_확인_낫싱() {
+        // given
+        List<Integer> userDigits = List.of(4, 5, 6);
+        List<Integer> computerDigits = List.of(1, 2, 3);
+        // when
+        String result = testComputer.checkDigits(userDigits, computerDigits);
+        // then
+        Assertions.assertThat(result).isEqualTo("낫싱");
+    }
 }
