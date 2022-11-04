@@ -2,11 +2,14 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class ApplicationMethodTest {
+class ApplicationMethodTest {
 
     @Test
     void createComputerLength3IntegerAnswerToList() {
@@ -30,14 +33,28 @@ public class ApplicationMethodTest {
     }
 
     @Test
-    void getUserNumberToInteger() {
-    }
+    void getUserNumberToInteger() {}
 
     @Test
-    void convertIntegerToList() {
-    }
+    void convertIntegerToList() {}
 
     @Test
-    void checkIllegalInputForBaseballGame() {
+    void checkIllegalInputForBaseballGame() {}
+
+
+    @Test
+    void checkWhereIsStrike() {
+        List<Integer> computerAnswer = new ArrayList<>(){
+            {add(3); add(4); add(5);}
+        };
+        List<Integer> userAnswer = new ArrayList<>(){
+            {add(3); add(4); add(5);}
+        };
+        List<Boolean> strikeZone = Application.checkWhereIsStrike(computerAnswer, userAnswer);
+
+        List<Boolean> realAnswer = new ArrayList<>(){
+            {add(true); add(true); add(true);}
+        };
+        assertThat(strikeZone).isEqualTo(realAnswer);
     }
 }
