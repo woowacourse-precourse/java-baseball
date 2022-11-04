@@ -22,15 +22,13 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 userInput = br.readLine();
+                if (inputError(userInput))
+                    throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            try {
-                guess = typeCast(userInput, guess);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.toString());
-                return;
-            }
+            guess = typeCast(userInput, guess);
+
             Result result = checkNum(answer, guess);
             if (result.getStrike() == 3) {
                 System.out.println(result.getStrike() + "스트라이크");
@@ -69,27 +67,38 @@ public class Application {
         return computer;
     }
 
-    public static boolean redundant(List<Integer> guess) {
-        if (guess.get(0) == guess.get(1) || guess.get(0) == guess.get(2) || guess.get(1) == guess.get(2))
+    public static boolean inputError(String userInput) {
+        if (sizeNotMatch(userInput) || redundant(userInput) || notInteger(userInput))
             return true;
         else
             return false;
     }
 
-    public static boolean notInteger(List<Integer> guess) {
-        for (int i = 0; i < guess.size(); i++) {
-            if (guess.get(i) < 0 || guess.get(i) > 9)
+    public static boolean sizeNotMatch(String userInput) {
+        if (userInput.length() != 3)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean redundant(String userInput) {
+        char firstNum = userInput.charAt(0);
+        char secondNum = userInput.charAt(1);
+        char thirdNum = userInput.charAt(2);
+        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean notInteger(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (userInput.charAt(i) < 0 || userInput.charAt(i) > 9)
                 return true;
         }
         return false;
     }
 
-    public static boolean sizeNotMatch(String userInput) {
-        if (userInput.length() != 3)
-            return false;
-        else
-            return true;
-    }
 
     public static List<Integer> typeCast(String userInput, List<Integer> guess) throws IllegalArgumentException {
         for (int i = 0; i < userInput.length(); i++)
