@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class Application {
 
         while (true) {
             System.out.println(answer);
+
             System.out.print(Comment.INPUTNUMBER);
             String userInput = Console.readLine();
             validateInput(userInput, 3);
@@ -23,20 +25,27 @@ public class Application {
             calculateHint(answer, userInput);
             printHint();
 
-            if(hintMap.get(Hint.STRIKE).equals(3)){
+            if (hintMap.get(Hint.STRIKE).equals(3)) {
                 System.out.println(Comment.ENDGAME);
 
                 boolean isRestart = checkRestart();
                 if (!isRestart) {
-                    generateNewAnswer();
                     break;
                 }
+                generateNewAnswer();
             }
         }
     }
 
     private static void generateNewAnswer() {
-        answer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> tmpAnswer = new ArrayList<>();
+        while (tmpAnswer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!tmpAnswer.contains(randomNumber)) {
+                tmpAnswer.add(randomNumber);
+            }
+        }
+        answer = tmpAnswer;
     }
 
     private static void validateInput(String input, int digit) {
@@ -94,7 +103,10 @@ public class Application {
         if (restartRely.equals("1")) {
             return true;
         }
-        return false;
+        if (restartRely.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("1 혹은 2 를 입력해주세요.");
     }
 
     private static void initializeHint() {
