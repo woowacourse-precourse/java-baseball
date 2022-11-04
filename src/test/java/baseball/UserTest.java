@@ -27,7 +27,8 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         // when
-        int result = user.getInputAllRightNumOfUser();
+        user.inputNumOfUser();
+        int result = user.getNumSelecUser();
         // then
         assertThat(result).isEqualTo(123);
     }
@@ -43,7 +44,7 @@ public class UserTest {
         // when
         // then
         assertThrows(IllegalArgumentException.class,
-            user::getInputAllRightNumOfUser);
+            user::inputNumOfUser);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class UserTest {
         // when
         // then
         assertThrows(IllegalArgumentException.class,
-            user::getInputAllRightNumOfUser);
+            user::inputNumOfUser);
     }
 
     @Test
@@ -71,7 +72,7 @@ public class UserTest {
         // when
         // then
         assertThrows(IllegalArgumentException.class,
-            user::getInputAllRightNumOfUser);
+            user::inputNumOfUser);
     }
 
     @Test
@@ -85,7 +86,7 @@ public class UserTest {
         // when
         // then
         assertThrows(IllegalArgumentException.class,
-            user::getInputAllRightNumOfUser);
+            user::inputNumOfUser);
     }
 
 //    @Test

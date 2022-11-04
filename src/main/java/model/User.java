@@ -7,7 +7,7 @@ import java.util.List;
 
 public class User {
 
-    public int numSelecUser;
+    private int numSelecUser;
 
     public User() {
         this.numSelecUser = 0;
@@ -17,7 +17,7 @@ public class User {
         this.numSelecUser = this.getInputAllRightNumOfUser();
     }
 
-    public int getInputAllRightNumOfUser() {
+    private int getInputAllRightNumOfUser() {
         // TODO : 숫자 받기
         String strInput = getString();
         // TODO : 숫자로 변환하면서 숫자인지 검증
