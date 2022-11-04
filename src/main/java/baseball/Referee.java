@@ -16,6 +16,7 @@ public class Referee {
         if (answer.equals(convertedGuess)) {
             return END;
         }
+        Printer.printHintMessage(ballCount, strikeCount);
         return CONTINUATION;
     }
 
