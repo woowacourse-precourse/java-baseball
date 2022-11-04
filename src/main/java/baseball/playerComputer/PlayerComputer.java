@@ -32,13 +32,13 @@ public class PlayerComputer {
 	}
 
 	private String combineDigits(HashMap<Integer, Integer> digits) {
-		String number = "";
+		StringBuilder number = new StringBuilder();
 
 		for (Integer randomNumber : digits.keySet()) {
-			number += randomNumber.toString();
+			number.append(randomNumber.toString());
 		}
 
-		return number;
+		return number.toString();
 	}
 
 	private static int getRandomDigit() {
