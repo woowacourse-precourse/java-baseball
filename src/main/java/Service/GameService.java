@@ -31,13 +31,21 @@ public class GameService {
         }
     }
 
-    public void calculate(int[] userNumbers, int[] randomNumbers){
+    public void calculate(int[] userNumbers, int[] randomNumbers, int index){
+        int tmp = -1;
+
         for (int r = 0; r < randomNumbers.length; r++) {
-            for (int u = 0; u < userNumbers.length; u++) {
-                if(randomNumbers[r] == userNumbers[u]){
-                    increase_cnt(r, u);
-                }
+            if(randomNumbers[r] == userNumbers[index]){
+                tmp = r;
+                break;
             }
+        }
+        increase_cnt(index, tmp);
+    }
+
+    public void score_calculate(){
+        for (int i = 0; i < NUM_SIZE; i++) {
+            calculate(game.getGame_numbers(), userNumber.getUser_numbers(), i);
         }
     }
 
@@ -45,7 +53,7 @@ public class GameService {
         if(r == u){
             game.increase_strike();
         }
-        if(r != u){
+        if(r != u && u != -1){
             game.increase_ball();
         }
     }
