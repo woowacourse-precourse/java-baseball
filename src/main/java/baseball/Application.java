@@ -47,6 +47,10 @@ public class Application {
         return answer.contains(number);
     }
 
+    public static boolean isStrike(int number, int answerNumber) {
+        return number == answerNumber;
+    }
+
 
 
     static class Nums{
