@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.UI.InputView;
 import baseball.model.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +38,18 @@ class ApplicationTest extends NsTest {
         String test = "123";
         List<Integer> testList = new Input(test).getBaseballNumberList();
         assertThat(testList).containsExactly(1, 2, 3);
+    }
+
+    @Test
+    void InputView_test(){
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());;
+        System.setIn(in);
+
+        InputView inputView = new InputView();
+        inputView.getBaseballInput();
+        assertThat(inputView.getInput().getBaseballNumberList())
+                .containsExactly(1, 2, 3);
     }
     @Override
     public void runMain() {
