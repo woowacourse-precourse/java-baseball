@@ -16,6 +16,7 @@ public class BaseBall {
     private void playBaseBallGame() {
         repeatBaseBallGame(new BaseBallGame());
         OutputView.baseBallGameEndMessagePrint();
+        OutputView.restartGuidancePrint();
     }
     
     private void repeatBaseBallGame(final BaseBallGame baseBallGame) {

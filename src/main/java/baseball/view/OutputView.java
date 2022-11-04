@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class OutputView {
+    private static final String SELECTED_NUMBER_FOR_RESTART_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String APPLICATION_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE = "생성할 수 없는 View 클래스입니다.";
     private static final String BASEBALL_GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -60,5 +61,9 @@ public class OutputView {
     
     public static void baseBallGameEndMessagePrint() {
         System.out.println(BASEBALL_GAME_END_MESSAGE);
+    }
+    
+    public static void restartGuidancePrint() {
+        System.out.println(SELECTED_NUMBER_FOR_RESTART_INPUT_MESSAGE);
     }
 }
