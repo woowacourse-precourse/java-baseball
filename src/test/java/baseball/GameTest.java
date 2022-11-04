@@ -81,4 +81,21 @@ public class GameTest {
 
         assertThat(game.result(userInput)).isEqualTo(result);
     }
+
+    @Test
+    void print_judge_result() {
+        List<Integer> userInput = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> randomNum = new ArrayList<>(Arrays.asList(1, 3, 2));
+        String result = "2볼 1스트라이크";
+
+        Game game = new Game();
+        game.setRandomNum(randomNum);
+
+        System.setOut(new PrintStream(output));
+
+        game.printResult(game.result(userInput));
+
+        assertThat(output.toString().trim())
+                .contains(result);
+    }
 }
