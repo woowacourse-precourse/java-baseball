@@ -5,14 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomNumberGeneratorTest {
+class NumberGeneratorTest {
 
     Integer randomNumber;
     String randomNumberStringType;
+    NumberGenerator numberGenerator = new NumberGeneratorRandomImpl();
 
     @BeforeEach
     void 랜덤넘버초기화(){
-        randomNumber = RandomNumberGenerator.generate();
+        randomNumber = numberGenerator.generate();
         randomNumberStringType =  String.valueOf(randomNumber);
     }
 

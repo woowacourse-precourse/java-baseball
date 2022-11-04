@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -16,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
+        Application.setNumberGenerator(new NumberGeneratorSequenceImpl(List.of(135, 589)));
+
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
@@ -23,6 +26,8 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+
+        Application.setNumberGenerator(new NumberGeneratorRandomImpl());
     }
 
     @Test
