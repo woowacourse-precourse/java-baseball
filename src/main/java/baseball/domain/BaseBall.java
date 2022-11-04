@@ -14,8 +14,8 @@ import java.util.stream.IntStream;
 
 public class BaseBall implements Game {
 
-    private final List<Integer> computerNumbers = new ArrayList<>(GameValidator.GAME_NUMBER_LENGTH);
-    private final List<Integer> playerNumbers = new ArrayList<>(GameValidator.GAME_NUMBER_LENGTH);
+    private final List<Integer> computerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
+    private final List<Integer> playerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
     private int strike;
     private int ball;
 
@@ -35,7 +35,7 @@ public class BaseBall implements Game {
     }
 
     private boolean isNotMatchNumbers() {
-        return strike != GameValidator.GAME_NUMBER_LENGTH;
+        return strike != GameValidator.NUMBER_LENGTH;
     }
 
     private void generateRandomComputerNumbers() {
@@ -45,10 +45,9 @@ public class BaseBall implements Game {
 
     private List<Integer> pickUniqueNumbersInRange() {
         Set<Integer> numbers = new HashSet<>();
-        while (numbers.size() != GameValidator.GAME_NUMBER_LENGTH) {
+        while (numbers.size() != GameValidator.NUMBER_LENGTH) {
             numbers.add(
-                Randoms.pickNumberInRange(Character.getNumericValue(GameValidator.START_RANGE),
-                    Character.getNumericValue(GameValidator.END_RANGE)));
+                Randoms.pickNumberInRange(GameValidator.RANGE_START, GameValidator.RANGE_END));
         }
         return new ArrayList<>(numbers);
     }
@@ -113,8 +112,8 @@ public class BaseBall implements Game {
             result.append(strike).append("스트라이크");
         }
 
-        if (strike == GameValidator.GAME_NUMBER_LENGTH) {
-            result.append("\n").append(GameValidator.GAME_NUMBER_LENGTH)
+        if (strike == GameValidator.NUMBER_LENGTH) {
+            result.append("\n").append(GameValidator.NUMBER_LENGTH)
                 .append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
