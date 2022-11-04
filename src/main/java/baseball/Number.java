@@ -36,5 +36,11 @@ public class Number {
         return !Pattern.matches(pattern, str);
     }
 
-
+    private boolean isNotDuplicate(String str) {
+        Set<Character> set = new HashSet<>();
+        for(char num : str.toCharArray()) {
+            set.add(num);
+        }
+        return !(set.size() == str.length());
+    }
 }
