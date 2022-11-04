@@ -17,6 +17,8 @@ public class Application {
     final static String MESSAGE_REQUEST_INPUT = "숫자를 입력해주세요 : ";
     final static String MESSAGE_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static String MESSAGE_RETRY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final static String FLAG_RETRY_STRING = "1";
+    final static String FLAG_STOP_STRING = "2";
 
     public static void main(String[] args) {
         System.out.println(MESSAGE_START);
@@ -49,7 +51,7 @@ public class Application {
         System.out.println(MESSAGE_RETRY);
         String playAgain = checkRePlay();
 
-        return /* gameStart 변수에 입력할 값 1 or 2 */;
+        return validateRePlayOrStop(playAgain);
     }
 
     private static List<Integer> setComputersNumbers() {
@@ -69,5 +71,13 @@ public class Application {
     private static String checkRePlay() {
         System.out.println(MESSAGE_REQUEST_INPUT);
         return Console.readLine();
+    }
+
+    private static int validateRePlayOrStop(String playAgain) {
+        if(!(playAgain.equals(FLAG_RETRY_STRING) || playAgain.equals(FLAG_STOP_STRING))) {
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(playAgain);
     }
 }
