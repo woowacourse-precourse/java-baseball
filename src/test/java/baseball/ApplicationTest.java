@@ -29,8 +29,9 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    
     @Test
-    @DisplayName("야구공 3개 미만 입력 예외케이스")
+	@DisplayName("야구공 3개 미만 입력 예외케이스")
     void 플레이어입력_예외_테스트() {
     	//given, when
     	String twoLengthBall = "12";
@@ -42,6 +43,17 @@ class ApplicationTest extends NsTest {
     	assertThatThrownBy(() -> Application.checkLessThanThreeExecption(zeroLengthBall)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("야구공 3개 초과 입력 예외케이스")
+    void 플레이어입력_예외_테스트2() {
+    	//given, when
+    	String fourLengthBall = "1234";
+    	String tenLengthBall = "1234567890";
+    	//then
+    	assertThatThrownBy(() -> Application.checkMoreThanThreeException(fourLengthBall)).isInstanceOf(IllegalArgumentException.class);
+    	assertThatThrownBy(() -> Application.checkMoreThanThreeException(tenLengthBall)).isInstanceOf(IllegalArgumentException.class);
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
