@@ -55,10 +55,10 @@ public class Computer {
         }
     }
 
-    Result judgePlayerInput(String playerInput) {
+    Result judgeNumber(String playerNumber) {
         Result result = new Result();
         for (int i = 0; i < 3; i++) {
-            int digit = playerInput.charAt(i) - '0';
+            int digit = playerNumber.charAt(i) - '0';
             addJudgement(result, i, digit);
         }
         return result;
