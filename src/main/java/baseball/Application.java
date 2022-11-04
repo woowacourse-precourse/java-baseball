@@ -14,7 +14,14 @@ public class Application {
 
     private static List<String> receivingValue() {
         String inputValue = Console.readLine();
-        return List.of(inputValue);
+        List<String> numbers = List.of(inputValue);
+        return
+    }
+
+    private void checkValue(List<String> numbers) throws IllegalArgumentException {
+        if (numbers.contains("0") || numbers.size() > 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
