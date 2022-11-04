@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import net.bytebuddy.pool.TypePool;
 
 public class Application {
     private static final int startGame = 0;
@@ -102,7 +101,13 @@ public class Application {
     }
 
     public static List<Integer> makeAnswerNumber () {
-        List<Integer> answerNumber = Randoms.pickUniqueNumbersInRange(1,9,3);
+        List<Integer> answerNumber = new ArrayList<>();
+        while (answerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumber.contains(randomNumber)) {
+                answerNumber.add(randomNumber);
+            }
+        }
         return answerNumber;
     }
 
