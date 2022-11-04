@@ -1,7 +1,6 @@
 package baseball.model;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Balls {
     private final List<Ball> balls;
@@ -10,7 +9,7 @@ public class Balls {
         this.balls = balls;
     }
 
-    public boolean hasStrike(Ball other) {
+    public boolean isStrike(Ball other) {
         for (Ball ball : balls) {
             if (ball.isStrike(other)) {
                 return true;
@@ -19,9 +18,9 @@ public class Balls {
         return false;
     }
 
-    public boolean hasBall(Ball other) {
+    public boolean isBall(Ball other) {
         for (Ball ball : balls) {
-            if (other.isBall(ball)) {
+            if (ball.isBall(other)) {
                 return true;
             }
         }
