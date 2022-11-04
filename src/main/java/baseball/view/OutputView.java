@@ -45,13 +45,13 @@ public class OutputView {
     
     private static String parsePlayResults(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(0, 1)
-                .filter(position -> isBallScoreNotZero(ballStatusScores, position))
-                .mapToObj(position -> combinedDisplay(ballStatusScores.get(position), ballStatusDisplay.get(position)))
+                .filter(ballStatusIndex -> isBallScoreNotZero(ballStatusScores, ballStatusIndex))
+                .mapToObj(ballStatusIndex -> combinedDisplay(ballStatusScores.get(ballStatusIndex), ballStatusDisplay.get(ballStatusIndex)))
                 .collect(Collectors.joining(DELIMITER));
     }
     
-    private static boolean isBallScoreNotZero(final List<Integer> ballStatusScores, final int position) {
-        return ballStatusScores.get(position) != 0;
+    private static boolean isBallScoreNotZero(final List<Integer> ballStatusScores, final int ballStatusIndex) {
+        return ballStatusScores.get(ballStatusIndex) != 0;
     }
     
     private static String combinedDisplay(final int ballStatusScore, final String ballStatusDisplay) {
