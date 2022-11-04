@@ -12,7 +12,6 @@ import static baseball.Validate.*;
 public class BaseballGame extends NumberGame {
     @Override
     public void start() {
-
     }
 
     @Override
@@ -22,6 +21,15 @@ public class BaseballGame extends NumberGame {
 
     @Override
     public boolean end() {
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String number = Console.readLine();
+        validateInput(number, 1, 1, 2);
+
+        if (number.equals("1")) {
+            return true;
+        }
         return false;
     }
 
