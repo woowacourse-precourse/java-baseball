@@ -5,6 +5,10 @@ public class GameMessagePrinter {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    public static void printInput() {
+        System.out.print("숫자를 입력해 주세요 : ");
+    }
+
     public static void printScore(ScoreBoard scoreBoard) {
         if (scoreBoard.isNothing()) {
             System.out.println("낫싱");
