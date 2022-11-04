@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -12,29 +13,40 @@ public class NumberValidator {
     private static final String LENGTH_ERROR_MESSAGE = "숫자는 세 자리 수여야 합니다.";
     private static final String RANGE_ERROR_MESSAGE = "각 자리 수는 최소 1 이상, 최대 9 이하의 정수여야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "숫자는 중복되어서는 안됩니다.";
+    private static final String TYPE_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
 
-    public static boolean hasValidInput(List<Integer> input) {
-        hasValidLength(input);
-        hasValidRange(input);
-        hasNonDuplicateNumbers(input);
+    public static boolean hasValidInput(List<Integer> userInput) {
+        hasValidLength(userInput);
+        hasValidRange(userInput);
+        hasNonDuplicateNumbers(userInput);
         return true;
     }
 
-    private static void hasValidLength(List<Integer> input) {
-        if (!(input.size() == VALID_LENGTH)) {
+    public static boolean hasValidType(String userInputStr){
+        for(int i=0;i<userInputStr.length();i++){
+            char c = userInputStr.charAt(i);
+            if(!Character.isDigit(c)){
+                throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
+            }
+        }
+        return true;
+    }
+
+    private static void hasValidLength(List<Integer> userInput) {
+        if (!(userInput.size() == VALID_LENGTH)) {
             throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
         }
     }
 
-    private static void hasValidRange(List<Integer> input) {
-        if (!(Collections.max(input) <= VALID_MAX_RANGE && Collections.min(input) >= VALID_MIN_RANGE)) {
+    private static void hasValidRange(List<Integer> userInput) {
+        if (!(Collections.max(userInput) <= VALID_MAX_RANGE && Collections.min(userInput) >= VALID_MIN_RANGE)) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
-    private static void hasNonDuplicateNumbers(List<Integer> input) {
-        Set<Integer> inputSet = new HashSet<>(input);
-        if (!(inputSet.size() == input.size())) {
+    private static void hasNonDuplicateNumbers(List<Integer> userInput) {
+        Set<Integer> userInputSet = new HashSet<>(userInput);
+        if (!(userInputSet.size() == userInput.size())) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
