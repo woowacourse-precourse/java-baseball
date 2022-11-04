@@ -5,7 +5,7 @@ package baseball.service;
 public class NumberCondition {
     private final String answer;
 
-    public NumberCondition(String answer) {
+    NumberCondition(String answer) {
         this.answer = answer;
     }
 

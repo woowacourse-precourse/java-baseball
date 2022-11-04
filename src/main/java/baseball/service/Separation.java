@@ -13,7 +13,7 @@ public class Separation {
         this.condition = new NumberCondition(input);
     }
 
-    Map<String, Integer> separateInputResult(String input) {
+    public Map<String, Integer> separateInputResult(String input) {
         Map<String, Integer> map = new HashMap<>();
         map.put("ball",0);
         map.put("strike",0);
