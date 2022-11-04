@@ -9,6 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
+    private final int MAX_NUMBER_SIZE = 3;
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 9;
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
@@ -58,8 +61,8 @@ public class Application {
     public String generateAnswer() {
         String answer = "";
 
-        while(answer.length() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while(answer.length() < MAX_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             String numberString = convertIntToString(randomNumber);
             if(!answer.contains(numberString)) {
                 answer += numberString;
@@ -145,7 +148,7 @@ public class Application {
     public String createResult(int strike, int ball) {
         if(strike == 0 && ball == 0) {
             return NOTHING;
-        } else if(strike == 3) {
+        } else if(strike == MAX_NUMBER_SIZE) {
             return THREE_STRIKE;
         } else if (strike == 0 && ball != 0){
             return ball + BALL;
