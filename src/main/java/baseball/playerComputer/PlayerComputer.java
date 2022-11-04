@@ -14,13 +14,12 @@ public class PlayerComputer {
 		return instance;
 	}
 
-	public String getRandomInputNumber() {
-		HashMap<Integer, Integer> digits = generateInputNumber();
-		String number = combineDigits(digits);
-		return number;
+	public String getRandomNumber() {
+		HashMap<Integer, Integer> digits = generateNumber();
+		return combineDigits(digits);
 	}
 
-	private HashMap<Integer, Integer> generateInputNumber() {
+	private HashMap<Integer, Integer> generateNumber() {
 		HashMap<Integer, Integer> digits = new HashMap<>();
 		while (isAbleToAddDigit(digits)) {
 			int randomDigit = getRandomDigit();
