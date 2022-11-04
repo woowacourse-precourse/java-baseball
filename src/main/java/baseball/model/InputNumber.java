@@ -9,12 +9,12 @@ public class InputNumber {
         this.value = value;
     }
 
-    public boolean isStrike(BaseNumber gameNumber) {
-        return hasValue(gameNumber) && samePosition(gameNumber);
+    public boolean isStrike(BaseNumber baseNumber) {
+        return hasValue(baseNumber) && samePosition(baseNumber);
     }
 
-    public boolean isBall(BaseNumber gameNumber) {
-        return hasValue(gameNumber) && !samePosition(gameNumber);
+    public boolean isBall(BaseNumber baseNumber) {
+        return hasValue(baseNumber) && !samePosition(baseNumber);
     }
 
     private boolean hasValue(BaseNumber baseNumber) {
