@@ -27,7 +27,15 @@ public class NumberBaseballGameController {
             OutputView.printGameResultMessage(strikeCount, ballCount);
         }
     }
-    
+
+    public void gameRestartOrEnd() {
+        String restartOrEndNumber = InputView.inputRestartOrEndNumber();
+        if (restartOrEndNumber.equals("1")) {
+            generateOpponentComputer();
+            gamePlay();
+        }
+    }
+
     public OpponentComputer getOpponentComputer() {
         return opponentComputer;
     }
