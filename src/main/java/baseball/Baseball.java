@@ -7,6 +7,13 @@ import java.util.List;
 
 public class Baseball {
     private List<Integer> computer;
+    private List<Integer> userNumber;
+
+    public void setUserNumber(String number) {
+        for (int index = 0; index < number.length(); index++) {
+            userNumber.add(Integer.valueOf(number.charAt(index)));
+        }
+    }
 
     public Baseball() {
         computer = new ArrayList<>();
