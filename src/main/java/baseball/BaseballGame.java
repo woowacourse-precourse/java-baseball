@@ -15,6 +15,8 @@ public class BaseballGame {
     }
 
     public void makeRandomNumber() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         boolean[] alreadyUsed = new boolean[10];
         Random random = new Random();
         for (int i = 0; i < 3; i++) {
@@ -34,7 +36,6 @@ public class BaseballGame {
         int strike = 0;
         int ball = 0;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
 
         userInput = scanner.nextLine();
