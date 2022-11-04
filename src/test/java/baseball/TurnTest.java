@@ -148,7 +148,6 @@ public class TurnTest {
 
     @Test
     void printResult_test_print_result_1ball_1strike() {
-
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 
         Turn turn = new Turn();
@@ -172,7 +171,6 @@ public class TurnTest {
 
     @Test
     void printResult_test_print_result_0ball_3strike() {
-
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 
         Turn turn = new Turn();
@@ -196,7 +194,6 @@ public class TurnTest {
 
     @Test
     void printResult_test_print_result_3ball() {
-
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 
         Turn turn = new Turn();
@@ -209,6 +206,29 @@ public class TurnTest {
         turn.countNumberOfStrikes(testHiddenNumberList);
 
         String result = "3볼\r\n";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        turn.printResult();
+
+        assertThat(out.toString()).isEqualTo(result);
+    }
+
+    @Test
+    void printResult_test_print_result_nothing() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "764\n";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        String result = "낫싱\r\n";
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
