@@ -3,9 +3,10 @@ package baseball.domain.score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class BallScoreTest {
     private Score score;
@@ -28,5 +29,14 @@ class BallScoreTest {
     void increase() {
         score = score.increase();
         assertThat(score.score()).isEqualTo(1);
+    }
+    
+    @ParameterizedTest
+    @DisplayName("예외 처리 : 스코어 범위(0~3) 벗어났을 경우")
+    @ValueSource(ints = {-1, 4})
+    void out_of_range_exception(int score) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new BallScore(score))
+                .withMessage("스코어는 0~3의 범위를 벗어날 수 없습니다.");
     }
 }
