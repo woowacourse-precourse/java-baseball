@@ -15,6 +15,7 @@ public class Application {
         do {
             BaseBallGame baseBallGame = new BaseBallGame(Randoms.pickUniqueNumbersInRange(0, 9, 3));
 
+            baseBallGame.gameStart();
 
             statusCode = convertUserDataToStatusCode(Console.readLine());
 
