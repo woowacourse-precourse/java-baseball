@@ -3,7 +3,6 @@ package baseball;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class UserTest {
-
   private final PrintStream standardOut = System.out;
   private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
