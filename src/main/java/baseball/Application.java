@@ -35,11 +35,17 @@ public class Application {
             int[] result = getResult(computer, user);
 
             System.out.println(printResult(result));
-            if (isSame(3, result[0])) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            if (executeApplication(result)) break;
         }
+    }
+
+    // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
+    private static boolean executeApplication(int[] result) {
+        if (isSame(3, result[0])) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 
     // 결과를 프린트하는 메소드
