@@ -3,6 +3,7 @@ package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GameUtil {
     public static List<Integer> splitNumberToOneDigitNumbers(int number) {
@@ -41,5 +42,35 @@ public class GameUtil {
         }
 
         return number + (randomOneDigitNumber * (int) Math.pow(10, oneDigitNumbers.size()));
+    }
+
+    public static boolean isValidNumber(int number) {
+        List<Integer> oneDigitNumbers = splitNumberToOneDigitNumbers(number);
+
+        if (countOneDigitNumbers(oneDigitNumbers, false) != 3) {
+            return false;
+        }
+
+        if (countOneDigitNumbers(oneDigitNumbers, true) != 3) {
+            return false;
+        }
+
+        if (isZeroInOneDigitNumbers(oneDigitNumbers)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static long countOneDigitNumbers(List<Integer> oneDigitNumbers, boolean deduplicate) {
+        if (deduplicate) {
+            return oneDigitNumbers.stream().distinct().count();
+        }
+
+        return oneDigitNumbers.size();
+    }
+
+    private static boolean isZeroInOneDigitNumbers(List<Integer> oneDigitNumbers) {
+        return !oneDigitNumbers.stream().allMatch(oneDigitNumber -> oneDigitNumber > 0);
     }
 }
