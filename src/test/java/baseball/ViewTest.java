@@ -18,4 +18,12 @@ public class ViewTest {
         View.printStartGame();
         assertThat("숫자 야구 게임을 시작합니다.").isEqualTo(out.toString().trim());
     }
+
+    @Test
+    void 게임_종료_또는_새로시작메시지_출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        View.printChoiceEndOrNewGame();
+        assertThat("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.").isEqualTo(out.toString().trim());
+    }
 }
