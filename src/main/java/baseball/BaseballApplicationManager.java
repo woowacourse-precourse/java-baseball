@@ -7,12 +7,18 @@ public class BaseballApplicationManager {
 
     public void startProgram() {
         try {
-            while(true) {
-                // play one game
+            boolean play = true;
+            while(play) {
+                BaseballGameManager gameManager = new BaseballGameManager();
+                gameManager.playGame();
+                play = keepPlaying();
             }
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return;
         }
+    }
+
+    private boolean keepPlaying() {
+        return false;
     }
 }
