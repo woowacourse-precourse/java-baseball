@@ -13,15 +13,14 @@ public class BaseBall {
     
     public void start() {
         OutputView.printApplicationStartMessage();
-        playBaseBallGame();
+        playBaseBallGameUntilEnd();
     }
     
-    private void playBaseBallGame() {
+    private void playBaseBallGameUntilEnd() {
         int selectedNumberForRestart = RESTART_NUMBER;
         
         while (isBaseBallGameRestart(selectedNumberForRestart)) {
-            repeatBaseBallGame(new BaseBallGame());
-            OutputView.baseBallGameEndMessagePrint();
+            playBaseBallGameOnce();
             selectedNumberForRestart = inputNumberForRestart();
         }
     }
@@ -30,14 +29,24 @@ public class BaseBall {
         return selectedNumberForRestart == RESTART_NUMBER;
     }
     
-    private void repeatBaseBallGame(final BaseBallGame baseBallGame) {
+    private void playBaseBallGameOnce() {
+        compareBallsRepeatedly(new BaseBallGame());
+        OutputView.baseBallGameEndMessagePrint();
+    }
+    
+    private void compareBallsRepeatedly(final BaseBallGame baseBallGame) {
         boolean isBaseBallGameEnd = false;
         
         while (!isBaseBallGameEnd) {
-            final Referee referee = playResult(baseBallGame);
-            OutputView.printResult(new ScoresDTO(referee));
+            final Referee referee = compareBallsOnce(baseBallGame);
             isBaseBallGameEnd = referee.isEnd();
         }
+    }
+    
+    private Referee compareBallsOnce(final BaseBallGame baseBallGame) {
+        final Referee referee = playResult(baseBallGame);
+        OutputView.printResult(new ScoresDTO(referee));
+        return referee;
     }
     
     private Referee playResult(final BaseBallGame baseBallGame) {
