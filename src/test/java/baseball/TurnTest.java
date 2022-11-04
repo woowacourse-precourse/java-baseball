@@ -142,4 +142,21 @@ public class TurnTest {
         }
     }
 
+    @Test
+    void getBallResultString_test_ball_result() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "251";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfBalls(testHiddenNumberList);
+
+        String result = "1볼";
+
+        assertThat(turn.getBallResultString()).isEqualTo(result);
+    }
+
 }
