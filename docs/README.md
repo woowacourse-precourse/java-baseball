@@ -16,14 +16,14 @@
 
 ## 🚀 구현 클래스 목록
 
-- Compare 클래스
-  - [ ] 두 리스트 비교
-- ComputerTwoList 클래스
-  - [ ] random 값을 생성하는 기능
-  - [ ] int 값을 character로 만드는 기능
 - Input 클래스
   - [ ] 입력받는 기능
   - [ ] String을 List로 바꾸는 기능
+- Computer 클래스
+  - [ ] random 값을 생성하는 기능
+  - [ ] int 값을 character로 만드는 기능
+- CompareTwoList 클래스
+  - [ ] 두 리스트 비교
 - Output 클래스
   - [ ] 받은 리스트로 출력하는 기능
 - EndOrRe 클래스
