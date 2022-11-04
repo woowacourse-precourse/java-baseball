@@ -28,35 +28,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 한글이_입력되면_예외처리() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("하나둘"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-    @Test
-    void 영어가_입력되면_예외처리() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-    @Test
-    void 숫자와_영어_혼용_예외처리() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1ad"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-    @Test
-    void 아무값도_안들어오면_예외처리() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
