@@ -3,11 +3,15 @@ package baseball.model;
 import java.util.Objects;
 
 public class Ball {
-    private final int ball;
+    private final int number;
     private final int position;
-    public Ball(int ball, int position) {
-        this.ball = ball;
+    public Ball(int number, int position) {
+        this.number = number;
         this.position = position;
+    }
+
+    public boolean isBall(Ball other) {
+        return this.number == other.number && this.position != other.position;
     }
 
     @Override
@@ -15,11 +19,11 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball1 = (Ball) o;
-        return ball == ball1.ball && position == ball1.position;
+        return number == ball1.number && position == ball1.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ball, position);
+        return Objects.hash(number, position);
     }
 }

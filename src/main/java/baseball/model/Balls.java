@@ -18,4 +18,13 @@ public class Balls {
         }
         return false;
     }
+
+    public boolean hasBall(Ball other) {
+        for (Ball ball : balls) {
+            if (other.isBall(ball)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
