@@ -3,10 +3,19 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
+
+    public static List<Integer> GenerateRandomNumber(int digits) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < digits; i++) {
+            list.add(GenerateNonDuplicateRandomNumber(list));
+        }
+        return list;
+    }
 
     public static int GenerateNonDuplicateRandomNumber(List<Integer> randNum) {
         int k;
@@ -19,6 +28,7 @@ public class Application {
 
 
     public static void main(String[] args) {
+
         // TODO: 프로그램 구현
     }
 }
