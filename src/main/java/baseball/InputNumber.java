@@ -6,6 +6,7 @@ public class InputNumber {
     InputNumber(String number) {
         checkStringNumberLength(number);
         checkStringNumberIsNumber(number);
+        checkStringNumberDuplicate(number);
         InputNumber.number = number;
     }
 
@@ -20,6 +21,20 @@ public class InputNumber {
 
         if (!isCheckNumber) {
             throw new IllegalArgumentException("입력한 내용이 숫자가 아닙니다.");
+        }
+    }
+
+    public static void checkStringNumberDuplicate(String number) {
+        for (int i = 0; i < number.length() - 1; i++) {
+            performRepeatForDuplicate(number, i);
+        }
+    }
+
+    public static void performRepeatForDuplicate(String number, int i) {
+        for (int j = 1; j < number.length() - 1; j++) {
+            if (number.charAt(i) == number.charAt(j)) {
+                throw new IllegalArgumentException("입력한 숫자 중 중복되는 숫자가 있습니다.");
+            }
         }
     }
 }
