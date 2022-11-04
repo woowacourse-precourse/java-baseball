@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.generateComputerNum;
+import static baseball.Application.splitUserNumToList;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -40,6 +40,12 @@ class ApplicationTest extends NsTest {
     @Test
     void 컴퓨터가_세개의_수를_뽑는지(){
         assertThat(generateComputerNum().size()).isEqualTo(3);
+    }
+
+    @Test
+    void 유저의_숫자들이_리스트로_저장되었는지(){
+        String num="123";
+        assertThat(splitUserNumToList(num)).containsExactly(1,2,3);
     }
 
     @Override
