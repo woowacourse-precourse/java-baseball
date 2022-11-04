@@ -4,9 +4,9 @@ import java.util.stream.Collectors;
 
 public class GameValidation {
 
-    private final static int GAME_NUMBER_LENGTH = 3;
-    private final static char START_RANGE = '1';
-    private final static char END_RANGE = '9';
+    public final static int GAME_NUMBER_LENGTH = 3;
+    public final static char START_RANGE = '1';
+    public final static char END_RANGE = '9';
 
     private GameValidation() {
     }
