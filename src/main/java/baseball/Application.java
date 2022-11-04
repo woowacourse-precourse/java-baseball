@@ -21,7 +21,6 @@ class ComputerNumber {
                 continue;
             numberList.add(newNumber);
         } while (numberList.size() < 3);
-        System.out.println(numberList);
 
         return numberList;
     }
