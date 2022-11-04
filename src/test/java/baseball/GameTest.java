@@ -30,4 +30,10 @@ public class GameTest {
     boolean result = game.validityChecker(game.generateNumber());
     assertEquals(result, true);
   }
+
+  @Test
+  @DisplayName("유효성 검사 1. Null 확인")
+  public void generateNumberValidateIsStringNotNull() {
+    assertEquals(game.generateNumber() != null, true);
+  }
 }
