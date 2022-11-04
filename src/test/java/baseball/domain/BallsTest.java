@@ -30,7 +30,7 @@ class BallsTest {
         Ball ball01 = Ball.of(1, 0);
         Ball ball02 = Ball.of(2, 1);
         Ball ball03 = Ball.of(3, 2);
-        assertThat(Balls.from(integers).currentBalls()).contains(ball01, ball02, ball03);
+        assertThat(Balls.from(integers).currentBalls()).containsExactly(ball01, ball02, ball03);
     }
 
 }
