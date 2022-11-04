@@ -156,14 +156,14 @@ List<Integer> computer = new ArrayList<>();
 
 ## 기능 목록 작성하기
 ### 게임진행
-1. [ ] 게임 진행을 위해 랜덤 숫자 3자리를 생성한다.
-    - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+1. [x] 게임 진행을 위해 랜덤 숫자 3자리를 생성한다.
+    - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - [x] 3 자리수가 맞는지 판단한다.
+    - [x] 3 자리수 각각 중복되지 않는지 판단한다.
+    - [x] 3 자리수 각각 1~9 사이의 값이 맞는지 판단한다.
+2. [x]  사용자로부터 값을 입력 받는다.
     - [ ] 3 자리수가 맞는지 판단한다.
-    - [ ] 3 자리수 각각 중복되지 않는지 판단한다.
-    - [ ] 3 자리수 각각 1~9 사이의 값이 맞는지 판단한다.
-2. [ ]  사용자로부터 값을 입력 받는다.
-    - [ ] 3 자리수가 맞는지 판단한다.
-    - [ ] 모두 숫자가 맞는지 판단한다.
+    - [x] 모두 숫자가 맞는지 판단한다.
 3. [ ] 입력받은 값을 판단한다.
     - [ ] 숫자와 자리가 맞으면 스트라이크를 올려준다.
     - [ ] 숫자는 맞고 자리가 맞지 않으면 볼을 올려준다.
@@ -173,3 +173,6 @@ List<Integer> computer = new ArrayList<>();
 ### 예외상황
 - [ ] 모든 예외 상황은 `IllegalArgumentException` 을 발생시킨다. 이후 프로그램을 종료한다.
 
+### 리팩토링 및 추가 구현 기능
+- [x] InputView 와 OutputView를 통해서 값을 입출력한다.
+  - [x] OutputView의 필드를 이용해서 출력해줄 메세지를 작성한다.
