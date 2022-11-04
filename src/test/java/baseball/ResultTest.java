@@ -39,4 +39,13 @@ public class ResultTest {
         String answer = "2볼";
         assertThat(result.ballToString()).isEqualTo(answer);
     }
+
+    @Test
+    void strikeToStringTest() {
+        Result result = new Result();
+        assertThat(result.strikeToString()).isEqualTo(null);
+        result.addStrike();
+        String answer = "1스트라이크";
+        assertThat(result.strikeToString()).isEqualTo(answer);
+    }
 }
