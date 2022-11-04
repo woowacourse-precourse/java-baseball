@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Comparison {
-    static int numberOfDigit;
-    static List<Integer> randomNumberList = new ArrayList<>();
-    static List<Integer> userInputNumberList = new ArrayList<>();
+    private static int numberOfDigit;
+    private static List<Integer> randomNumberList = new ArrayList<>();
+    private static List<Integer> userInputNumberList = new ArrayList<>();
 
     public Comparison(int randomNumber, int userInputNumber, final int NUMBER_OF_DIGIT) {
         this.randomNumberList = numberToList(randomNumber);
@@ -27,7 +27,7 @@ public class Comparison {
         return numberList;
     }
 
-    public static int getStrikeCount() {
+    public int getStrikeCount() {
         int strikeCount = 0;
 
         for (int i = 0; i < numberOfDigit; i++) {
@@ -39,7 +39,7 @@ public class Comparison {
         return strikeCount;
     }
 
-    public static int getBallCount() {
+    public int getBallCount() {
         int ballCount = 0;
 
         for (int i = 0; i < numberOfDigit; i++) {
@@ -51,7 +51,7 @@ public class Comparison {
         return ballCount;
     }
 
-    public static int compareDigit(int index1, int index2) {
+    private int compareDigit(int index1, int index2) {
         int randomNumberDigit = randomNumberList.get(index1);
         int userInputNumberDigit = userInputNumberList.get(index2);
 
