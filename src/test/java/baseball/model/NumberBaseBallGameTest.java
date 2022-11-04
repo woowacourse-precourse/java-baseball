@@ -1,10 +1,13 @@
 package baseball.model;
 
 import baseball.application.NumberBaseBallGame;
+import baseball.repository.BaseNumberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,7 +17,7 @@ import static org.mockito.Mockito.mock;
 class NumberBaseBallGameTest {
     @Test
     @DisplayName("정상 값 입력")
-    void enter_Correct_InputNumber(){
+    void enter_Correct_InputNumber() {
         String inputNumber = "123";
         NumberBaseBallGame numberBaseBallGame = mock(NumberBaseBallGame.class);
         doNothing().when(numberBaseBallGame).validateInputNumber(inputNumber);
@@ -22,31 +25,31 @@ class NumberBaseBallGameTest {
 
     @Test
     @DisplayName("3자리 미만의 값 입력시 에러")
-    void enter_LessThreeLength_InputNumber(){
+    void enter_LessThreeLength_InputNumber() {
         String inputNumber = "12";
         failValidateInputNumber(inputNumber);
     }
 
     @Test
     @DisplayName("4자리 이상의 값 입력시 에러")
-    void enter_OverFourLength_InputNumber(){
+    void enter_OverFourLength_InputNumber() {
         String inputNumber = "1234";
         failValidateInputNumber(inputNumber);
     }
 
     @Test
     @DisplayName("문자가 포함된 값 입력시 에러")
-    void enter_InputNumber_WithString(){
+    void enter_InputNumber_WithString() {
         String inputNumber = "12s";
         failValidateInputNumber(inputNumber);
     }
 
     @Test
     @DisplayName("결과값 확인 - 스트라이크")
-    void check_Result_Only_Strike(){
+    void check_Result_Only_Strike() {
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new BaseNumber(List.of(1, 2, 3)));
-        Result result = numberBaseBallGame.result(inputNumber);
+        String baseNumber = "123";
+        Result result = getResult(inputNumber, baseNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
         assertThat(result.hasStrike()).isTrue();
@@ -58,10 +61,10 @@ class NumberBaseBallGameTest {
 
     @Test
     @DisplayName("결과값 확인 - 볼")
-    void check_Result_Only_Ball(){
+    void check_Result_Only_Ball() {
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new BaseNumber(List.of(2, 3, 1)));
-        Result result = numberBaseBallGame.result(inputNumber);
+        String baseNumber = "231";
+        Result result = getResult(inputNumber, baseNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
         assertThat(result.hasStrike()).isFalse();
@@ -73,10 +76,10 @@ class NumberBaseBallGameTest {
 
     @Test
     @DisplayName("결과값 확인 - 볼, 스트라이크")
-    void check_Result_Ball_Strike(){
+    void check_Result_Ball_Strike() {
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new BaseNumber(List.of(1, 3, 2)));
-        Result result = numberBaseBallGame.result(inputNumber);
+        String baseNumber = "132";
+        Result result = getResult(inputNumber, baseNumber);
 
         assertThat(result.hasBallAndStrike()).isTrue();
         assertThat(result.hasStrike()).isTrue();
@@ -88,10 +91,10 @@ class NumberBaseBallGameTest {
 
     @Test
     @DisplayName("결과값 확인 - 낫싱")
-    void check_Result_Nothing(){
+    void check_Result_Nothing() {
         String inputNumber = "123";
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new BaseNumber(List.of(4, 5, 6)));
-        Result result = numberBaseBallGame.result(inputNumber);
+        String baseNumber = "456";
+        Result result = getResult(inputNumber, baseNumber);
 
         assertThat(result.hasBallAndStrike()).isFalse();
         assertThat(result.hasStrike()).isFalse();
@@ -102,9 +105,25 @@ class NumberBaseBallGameTest {
     }
 
     private void failValidateInputNumber(String inputNumber) {
-        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(new BaseNumber(List.of(1, 2, 3)));
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository(new BaseNumber(List.of(1, 2, 3)));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
         assertThatThrownBy(() -> numberBaseBallGame.validateInputNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3개의 자연수를 입력하세요");
+    }
+
+    private Result getResult(String inputNumber, String baseNumber) {
+        List<Integer> numbers = stringToIntegerList(baseNumber);
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository(new BaseNumber(numbers));
+        NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
+        Result result = numberBaseBallGame.result(inputNumber);
+        return result;
+    }
+
+    private List<Integer> stringToIntegerList(String baseNumber) {
+        return Arrays.stream(baseNumber.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
