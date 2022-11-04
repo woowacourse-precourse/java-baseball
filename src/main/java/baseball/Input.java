@@ -14,7 +14,7 @@ public class Input {
     return stringToList(inputString);
   }
 
-  // 테스트용 메소드
+  // method for test
   public void printInputString(String inputString) {
     validStringLength(inputString);
     System.out.println(stringToList(inputString));
