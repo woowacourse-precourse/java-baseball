@@ -26,6 +26,20 @@ public class Application {
         }
     }
 
+    public static int howManyStrike (List<String>listUserNumber, List<String>computerNumber){
+        int strikeCount = 0;
+       for(int i = 0; i<listUserNumber.size(); i++){
+           String userPickNUmber = listUserNumber.get(i);
+           String answerNumber = computerNumber.get(i);
+           if(Objects.equals(userPickNUmber, answerNumber)){
+               strikeCount++;
+           }
+       }return strikeCount;
+    }
+
+
+
+
 
 }
 
