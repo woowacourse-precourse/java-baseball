@@ -14,7 +14,7 @@ public class GameSystem {
     public GameSystem() {}
 
 
-    public void initGame() {
+    public void initiate() {
         this.player = new Player();
         this.computer = new Computer();
         this.scoreBoard = new ScoreBoard();
@@ -35,7 +35,7 @@ public class GameSystem {
     }
 
 
-    public boolean checkWinGame() {
+    public boolean checkWin() {
         if (scoreBoard.getStrikeCount() == WIN_STRIKE_COUNT) {
             return true;
         }
@@ -45,13 +45,8 @@ public class GameSystem {
 
 
     public void run() {
-        this.initGame();
-
-        try {
-            computer.generateNumber();
-        } catch (IllegalArgumentException Exception) {
-            throw Exception;
-        }
+        this.initiate();
+        computer.generateNumber();
 
         do {
             GameMessagePrinter.printInput();
@@ -62,6 +57,6 @@ public class GameSystem {
             this.scoreBoard.initScore();
             this.calculateScore();
             GameMessagePrinter.printScore(this.scoreBoard);
-        } while (!this.checkWinGame());
+        } while (!this.checkWin());
     }
 }
