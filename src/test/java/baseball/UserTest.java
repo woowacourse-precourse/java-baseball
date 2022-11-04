@@ -70,5 +70,13 @@ class UserTest {
         assertThat(user2.computerNumberList).isEqualTo(list);
     }
 
+    @Test
+    void checkStrikeTest() {
+        List<Integer> computerList = Arrays.asList(1, 3, 4);
+        List<Integer> userList = Arrays.asList(5, 3, 2);
+        int strike = user.checkStrike(computerList, userList);
+        assertThat(strike).isEqualTo(1);
+    }
+
 
 }
