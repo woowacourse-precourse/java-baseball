@@ -32,10 +32,55 @@ class PlayerNumber {
     public PlayerNumber() {
         try{
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> playerNumber = playerInput();
+            playerNumber = playerInput();
         } catch(WrongInputException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private List<Integer> playerInput() {
+        String playerInputString = Console.readLine();
+        checkInputFormat(playerInputString);
+        List<Integer> playerInput = convertToIntegerList(playerInputString);
+        return playerInput;
+    }
+
+    private void checkInputFormat(String inputString) {
+        if (inputString.length() != 3)
+            throw new WrongInputException("3자리 수만 입력 가능합니다.");
+        if (!isNumber(inputString))
+            throw new WrongInputException("숫자만 입력 가능합니다.");
+        if (!isAllDifferent(inputString))
+            throw new WrongInputException("서로 다른 수로 이루어져야 합니다.");
+    }
+
+    private List<Integer> convertToIntegerList(String playerInputString) {
+        List<Integer> playerInput = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            char numberInString = playerInputString.charAt(i);
+            int converted = numberInString - '0';
+            playerInput.add(converted);
+        }
+        return playerInput;
+    }
+
+    private boolean isNumber(String inputString) {
+        for (int i = 0; i < 3; i++) {
+            char tmp = inputString.charAt(i);
+            if (('1' <= tmp) && (tmp <= '9'))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean isAllDifferent(String inputString) {
+        char first = inputString.charAt(0);
+        char second = inputString.charAt(1);
+        char third = inputString.charAt(2);
+        if ((first != second) && (second != third) && (third != first)) {
+            return true;
+        }
+        return false;
     }
 }
 
