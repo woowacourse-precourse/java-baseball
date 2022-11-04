@@ -18,7 +18,7 @@ public class BaseballApplicationManager {
         }
     }
 
-    private boolean keepPlaying() {
+    private boolean keepPlaying() throws IllegalArgumentException {
         return IOManager.inputRestart();
     }
 }
