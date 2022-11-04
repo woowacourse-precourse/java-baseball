@@ -35,9 +35,37 @@ public class Application {
                 }
             }
 
+            System.out.println(makeMessage(ballCount, strikeCount));
+            
         } catch (IllegalArgumentException exception) {
 
         }
+    }
+
+    public static String makeMessage(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            return "낫싱";
+        } else {
+            String ballMessage = makeBallMessage(ballCount);
+            String strikeMessage = makeStrikeMessage(strikeCount);
+
+            if (ballCount == 0)  return strikeMessage;
+            else if (strikeCount == 0) return ballMessage;
+            return ballMessage + " " + strikeMessage;
+        }
+    }
+
+    public static String makeBallMessage(Integer ballCount) {
+        if (ballCount == 0) {
+            return "";
+        } else {
+            return ballCount.toString() + "볼 ";
+        }
+    }
+
+    public static String makeStrikeMessage(Integer strikeCount) {
+        if (strikeCount == 0) return "";
+        else return strikeCount.toString() + "스트라이크";
     }
 
     public static void setIsBall(boolean[] isBall, String computerNumber) {
@@ -49,14 +77,11 @@ public class Application {
 
     public static boolean checkPlayerNumber(String playerNumber) {
         boolean[] includedNumber=new boolean[10];
-
         // 3개의 수인지 확인
         if (playerNumber.length() != 3) {
             return false;
         }
-
         Arrays.fill(includedNumber, false);
-
         for (int i = 0; i < playerNumber.length(); i++) {
             char num = playerNumber.charAt(i);
             // 1~9까지의 수인지 확인
@@ -80,7 +105,6 @@ public class Application {
                 computerNumber.add(randomNumber);
             }
         }
-
         return toStringComputerNumber(computerNumber);
     }
 
@@ -89,7 +113,6 @@ public class Application {
         for (Integer num : target) {
             result += num.toString();
         }
-
         return result;
     }
 }
