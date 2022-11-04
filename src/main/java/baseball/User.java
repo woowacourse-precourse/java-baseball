@@ -26,6 +26,10 @@ public class User {
         return this.inputNumber;
     }
 
+    public void resetUserNumber() {
+        inputNumber.clear();
+    }
+
     private boolean isValidateThreeNumber(String input) {
         return (isValidateLength(input) && isNumber(input) && isDifferentNumber(input));
     }
