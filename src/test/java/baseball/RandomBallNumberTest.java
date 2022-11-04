@@ -16,13 +16,13 @@ class RandomBallNumberTest {
 
     @Test
     void 랜덤숫자_길이_테스트() {
-        String randomNum = randomBallNumber.createRandomNum();
-        assertThat(randomNum.length()).isSameAs(3);
+        String randomNumber = randomBallNumber.createRandomNumber();
+        assertThat(randomNumber.length()).isSameAs(3);
     }
 
     @Test
     void 랜덤숫자_클리어_테스트() {
-        String clearRandomNum = randomBallNumber.clearRandomNum();
-        assertThat(clearRandomNum).isEqualTo("");
+        String clearRandomNumber = randomBallNumber.clearRandomNumber();
+        assertThat(clearRandomNumber).isEqualTo("");
     }
 }
