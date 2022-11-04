@@ -15,10 +15,16 @@ public class Application {
     private static List<String> receivingValue() {
         String inputValue = Console.readLine();
         List<String> numbers = List.of(inputValue);
-        return
+        try {
+            checkValue(numbers);
+        } catch (IllegalArgumentException e) {
+            System.out.println("e = " + e);
+        }
+
+        return numbers;
     }
 
-    private void checkValue(List<String> numbers) throws IllegalArgumentException {
+    private static void checkValue(List<String> numbers) throws IllegalArgumentException {
         if (numbers.contains("0") || numbers.size() > 3) {
             throw new IllegalArgumentException();
         }
