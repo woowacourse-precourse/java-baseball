@@ -98,6 +98,4 @@ class InputTest {
             input.readPlayerChoice();
         }
     }
-
-
 }

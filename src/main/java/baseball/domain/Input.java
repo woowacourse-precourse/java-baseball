@@ -18,22 +18,23 @@ public class Input {
         validateGuess();
     }
 
-    private void validateGuess() {
-        if (playerGuess.length() != COMMON_GUESS_LENGTH) {
-            throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
-        }
-
+    private boolean guessAreNotUniqueNumbers() {
         HashSet<Character> guessNumbers = new HashSet<>();
+
         for (char guessNumber : playerGuess.toCharArray()) {
-            if (guessNumber < MIN_GUESS_NUMBER || guessNumber > MAX_GUESS_NUMBER) {
-                throw new IllegalArgumentException("올바른 형식으로 입력해주세요");
-            }
-            if (guessNumbers.contains(guessNumber)) {
-                throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
+            if (guessNumbers.contains(guessNumber) || guessNumber < MIN_GUESS_NUMBER || guessNumber > MAX_GUESS_NUMBER) {
+                return true;
             }
             guessNumbers.add(guessNumber);
         }
 
+        return false;
+    }
+
+    private void validateGuess() {
+        if (playerGuess.length() != COMMON_GUESS_LENGTH || guessAreNotUniqueNumbers()) {
+            throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
+        }
     }
 
     public void readPlayerChoice() {
