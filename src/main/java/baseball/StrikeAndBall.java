@@ -2,7 +2,6 @@ package baseball;
 
 import static baseball.utils.Constant.GAME_NUMBER_SIZE;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StrikeAndBall {
@@ -25,22 +24,28 @@ public class StrikeAndBall {
     }
 
     public List<Integer> getBallAndStrikeCount() {
-        List<Integer> result = new ArrayList<>();
-        result.add(checkBall());
-        result.add(checkStrike());
-        return result;
+        return List.of(checkBall(), checkStrike());
     }
 
     private int checkStrike() {
         int count = 0;
 
         for (int i = 0; i < GAME_NUMBER_SIZE; i++) {
-            if (defenceNumber.get(i).equals(offenceNumber.get(i))) {
+            if (isStrike(i)) {
                 count++;
             }
         }
-
         return count;
+    }
+
+    private boolean isStrike(int index) {
+        Integer defence = defenceNumber.get(index);
+        Integer offence = offenceNumber.get(index);
+
+        if (defence.equals(offence)) {
+            return true;
+        }
+        return false;
     }
 
     private int checkBall() {
@@ -48,10 +53,18 @@ public class StrikeAndBall {
 
         for (Integer number : offenceNumber) {
             int index = defenceNumber.indexOf(number);
-            if (index != -1 && offenceNumber.indexOf(number) != index) {
+            if (isBall(index, number)) {
                 count++;
             }
         }
         return count;
+    }
+
+    private boolean isBall(int index, Integer number) {
+        int offence = offenceNumber.indexOf(number);
+        if (index != -1 && offence != index) {
+            return true;
+        }
+        return false;
     }
 }
