@@ -4,14 +4,15 @@ import java.util.regex.Pattern;
 
 public class PlayerException {
 
+    private static final int LENGTH_LIMIT = 3;
     private static final String NOT_NUMBER_EXCEPTION = "입력은 숫자로만 해야 합니다.";
-
-    public boolean isNotNumber(String input){
-        return !Pattern.matches("^[1-9]*$", input);
-    }
 
     public void checkException(String input){
 
+    }
+
+    public boolean isNotNumber(String input){
+        return !Pattern.matches("^[1-9]*$", input);
     }
 
     public void noNumberException(){
@@ -19,7 +20,7 @@ public class PlayerException {
     }
 
     public boolean isNotThreeDigit(String input){
-        return false;
+        return input.length() != LENGTH_LIMIT;
     }
 
     public void notThreeDigitException(){
