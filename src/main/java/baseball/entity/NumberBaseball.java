@@ -9,7 +9,7 @@ public class NumberBaseball implements Game{
     private GameService gameService;
 
     public NumberBaseball() {
-        this.gameService = new GameService();
+        this.gameService = new GameService(GAME_ANSWER_MAX_VALUE);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class NumberBaseball implements Game{
         gameService.initGame();
         do {
             flag = gameService.startGame();
-            gameService = new GameService();
+            gameService = new GameService(GAME_ANSWER_MAX_VALUE);
         } while (flag);
     }
 

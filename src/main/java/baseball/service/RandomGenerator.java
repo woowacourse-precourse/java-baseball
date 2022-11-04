@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
-
 public class RandomGenerator {
-    public String generateRandomNumbers() {
+    public String generateRandomNumbers(int answerLength) {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < GAME_ANSWER_MAX_VALUE) {
+        while (computer.size() < answerLength) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);

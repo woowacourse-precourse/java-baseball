@@ -11,10 +11,10 @@ public class GameService {
     private final RandomGenerator generator;
     private final Controller controller;
 
-    public GameService() {
+    public GameService(int answerLength) {
         this.generator = new RandomGenerator();
         this.controller = new Controller();
-        this.answer = generator.generateRandomNumbers(); // TODO 랜덤 생성 -> gameservice에 할당?
+        this.answer = generator.generateRandomNumbers(answerLength); // TODO 랜덤 생성 -> gameservice에 할당?
         //this.answer = "123";            // 임시 정답
         this.separator = new Separator(answer);
     }
