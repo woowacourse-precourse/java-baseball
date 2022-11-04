@@ -20,15 +20,14 @@ public class Application {
             }
             System.out.println("num: " + randomNum[count]);
         }
-        //System.out.println("randomNum: " + randomNum);
 
 
-        while(Game(randomNum)){
-            Game(randomNum);
+        while(!game(randomNum)){
+            game(randomNum);
         }
     }
 
-    public static boolean Game(int[] randomNum){
+    public static boolean game(int[] randomNum){
         boolean result = false;
 
         Scanner sc = new Scanner(System.in);
@@ -63,10 +62,11 @@ public class Application {
             }
         }
 
-
         if(ball == 3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            reStart(randomNum);
+            result = true;
         }
         else if(nothing == 3) {
             System.out.println("낫싱");
@@ -79,6 +79,22 @@ public class Application {
         }
 
         return result;
+    }
+
+    public static void reStart(int[] randomNum){
+        Scanner sc = new Scanner(System.in);
+        int reStart = sc.nextInt();
+
+        if(reStart == 1){
+            System.out.println("게임 재시작");
+            game(randomNum);
+        }else if(reStart == 2){
+            System.out.println("게임 종료");
+        }else{
+            System.out.println("1 또는 2로 입력해주세요.");
+        }
+
+        return;
     }
 
 }
