@@ -36,11 +36,29 @@ public class Application {
         return guess;
     }
 
+    public static GuessInfo makeGuessInfo(String guess, String answer) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int matchIndex = answer.indexOf(guess.charAt(i));
+            if (matchIndex == i) {
+                strike += 1;
+            } else if (matchIndex != -1) {
+                ball += 1;
+            }
+        }
+        return new GuessInfo(strike, ball);
+    }
+
     public static void play() {
         String answer = generateAnswer();
         String guess;
         do {
             guess = inputGuess();
-        } while (!guess.equals(answer));
+            GuessInfo result = makeGuessInfo(guess, answer);
+            result.show();
+        }
+        while (!guess.equals(answer));
     }
 }
