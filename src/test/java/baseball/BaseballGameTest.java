@@ -79,4 +79,25 @@ public class BaseballGameTest {
         }
 
     }
+
+    @Nested
+    class BaseballGameLoopTest {
+        Computer computer;
+
+        @BeforeEach
+        public void BeforeEach() {
+            computer = new Computer();
+        }
+
+        @Test
+        void next_turn_test() {
+            boolean next = game.nextTurn(computer. new GameResult(3, 0));
+            assertThat(next).isEqualTo(false);
+            next = game.nextTurn(computer. new GameResult(2, 1));
+            assertThat(next).isEqualTo(true);
+            next = game.nextTurn(computer. new GameResult(0, 0));
+            assertThat(next).isEqualTo(true);
+        }
+    }
+
 }
