@@ -8,9 +8,12 @@ public class Computer {
   }
 
   private static void printInputNumber() {
-    System.out.println("숫자를 입력해주세요 : ");
+    System.out.print("숫자를 입력해주세요 : ");
   }
 
-
+  public static void testComputerPrint(int mode) {
+    if (mode == 1) printGameStart();
+    if (mode == 2) printInputNumber();
+  }
 
 }
