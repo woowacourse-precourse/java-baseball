@@ -37,9 +37,9 @@ public class Comparenumber {
         if(compareresult[0]==0&& compareresult[1]==0) System.out.print("낫싱");
         if(compareresult[0]==3) iscontinue=false;
     }
-
-
-
+    public boolean isbaseballcontinue(){
+        return iscontinue;
+    }
 
 
 }
