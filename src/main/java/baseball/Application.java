@@ -33,6 +33,10 @@ public class Application {
         generate();
         while (true) {
             read();
+            check();
+            System.out.print(result);
+            if (strike == 3)
+                break;
         }
     }
 
