@@ -55,11 +55,6 @@ public class Application {
         return computer;
     }
 
-    public static boolean checkEnteredNumberIsValid(String str){
-        String number = str.replaceAll("[^0-9]","");
-        return number.length() == 3;
-    }
-
     public static String countBallStrike(List<Integer> computer, List<Integer> user){
         int ballCount = 0, strikeCount = 0;
 
