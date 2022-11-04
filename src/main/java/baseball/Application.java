@@ -16,7 +16,7 @@ public class Application {
         generateNewAnswer();
 
         while (true) {
-            System.out.println(answer);
+//            System.out.println(answer);
 
             System.out.print(Comment.INPUTNUMBER);
             String userInput = Console.readLine();
@@ -82,13 +82,13 @@ public class Application {
         String hintStr = null;
 
         if (ballCount != 0 && strikeCount != 0) {
-            hintStr = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
+            hintStr = ballCount + "볼 " + strikeCount + "스트라이크";
         }
         if (ballCount != 0 && strikeCount == 0) {
-            hintStr = String.format("%d볼", ballCount);
+            hintStr = ballCount + "볼";
         }
         if (ballCount == 0 && strikeCount != 0) {
-            hintStr = String.format("%d스트라이트", strikeCount);
+            hintStr = strikeCount + "스트라이크";
         }
         if (hintStr == null) {
             hintStr = "낫싱";
