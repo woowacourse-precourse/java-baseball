@@ -6,6 +6,15 @@ public class Judgement {
     private int strikeCnt;
     private int ballCnt;
 
+    public boolean isNothing(User user, Computer computer) {
+        judgeStrike(user, computer);
+        judgeBall(user, computer);
+        if (strikeCnt == 0 && ballCnt == 0) {
+            return true;
+        }
+        return false;
+    }
+
     private void judgeStrike(User user, Computer computer) {
         strikeCnt = 0;
         List<Integer> userNumber = user.getExpectedNumberOfUser();
@@ -26,15 +35,6 @@ public class Judgement {
                 ballCnt++;
             }
         }
-    }
-
-    public boolean isNothing(User user, Computer computer) {
-        judgeStrike(user, computer);
-        judgeBall(user, computer);
-        if (strikeCnt == 0 && ballCnt == 0) {
-            return true;
-        }
-        return false;
     }
 
     public void cntClear() {
