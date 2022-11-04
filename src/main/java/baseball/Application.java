@@ -34,7 +34,7 @@ public class Application {
         }
     }
 
-    private static String getResult(ArrayList<Integer> computerNumbers, String input) {
+    public static String getResult(ArrayList<Integer> computerNumbers, String input) {
         int ball = 0, strike = 0;
         for (int index = 0; index < 3; index++) {
             int inputNumAtIndex = input.charAt(index) - '0';
@@ -45,7 +45,7 @@ public class Application {
         return result;
     }
 
-    private static String makeResultString(int ball, int strike) {
+    public static String makeResultString(int ball, int strike) {
         if (ball == 0 && strike == 0) return "낫싱";
 
         String result = "";
@@ -54,15 +54,15 @@ public class Application {
         return result;
     }
 
-    private static void checkInput(String input) {
+    public static void checkInput(String input) {
         int num = Integer.parseInt(input);
         HashSet<Character> eachNums = new HashSet<>();
         // 각 자리 수에 중복이 있는지 확인.
         for (int i = 0; i < 3; i++) {
             eachNums.add(input.charAt(i));
         }
-        if (eachNums.size() != 3) throw new IllegalArgumentException();
-        if (num < 0 || num > 999) throw new IllegalArgumentException();
+        if (eachNums.size() != 3) throw new IllegalArgumentException("입력된 수에 중복된 숫자가 있습니다.");
+        if (num < 0 || num > 999) throw new IllegalArgumentException("입력 값의 허용 범위를 넘습니다.");
     }
 
     public static ArrayList<Integer> getRandomNumbers() {
