@@ -110,6 +110,8 @@ public class Application {
             System.out.println(gameResult[0] + "볼");
         } else if (gameResult[1] == 3) {
             threeStrike();
+        } else if (gameResult[0] == 0 && gameResult[1] == 0) {
+            System.out.println("낫싱");
         }
     }
 
