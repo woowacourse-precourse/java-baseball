@@ -1,18 +1,13 @@
 package baseball.util;
 
-import baseball.number.NumberDto;
-
 import java.util.List;
 
-import static baseball.util.Constant.NUMBER_LENGTH;
-
 public abstract class Validation {
-    public static boolean validateNumberNotRepeated(NumberDto numberDto) {
-        return numberDto
-                .getNumber()
+    public static boolean validateNumberNotRepeated(List<Integer> numbers, int numbersSize) {
+        return numbers
                 .stream()
                 .distinct()
-                .count() == NUMBER_LENGTH;
+                .count() == numbersSize;
     }
 
     public static <T> boolean validateNotNull(T object) {
