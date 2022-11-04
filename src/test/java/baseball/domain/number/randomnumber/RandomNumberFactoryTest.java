@@ -19,7 +19,7 @@ class RandomNumberFactoryTest {
         @RepeatedTest(3)
         void 정해진_개수의_숫자가_생성된다() {
             List<Integer> answer = newRandomNumber().answer();
-            assertThat(answer.size()).isEqualTo(DIGITS_FOR_THIS_GAME);
+            assertThat(answer).hasSize(DIGITS_FOR_THIS_GAME);
         }
     }
 

@@ -17,7 +17,7 @@ class InputNumberParserTest {
         String inputValue = "123";
         List<Integer> inputNumber = parseInputNumber(inputValue).inputNumbers();
 
-        assertThat(inputNumber.size()).isEqualTo(3);
+        assertThat(inputNumber).hasSize(3);
     }
 
     @ParameterizedTest(name = "세_자리가_아닌_문자열을_입력받으면_예외를_던진다")
