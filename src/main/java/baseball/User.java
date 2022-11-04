@@ -22,9 +22,7 @@ public class User {
 	}
 
 	public List<Integer> convertStringToIntList(String string) {
-		return Arrays.stream(string.chars()
-				.map(num -> num - '0')
-				.toArray())
+		return Arrays.stream(string.chars().map(num -> num - '0').toArray())
 			.boxed()
 			.collect(Collectors.toList());
 	}
