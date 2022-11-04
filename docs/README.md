@@ -21,4 +21,4 @@
     boolean nextTurn(GameResult result)
 ### 6. 게임이 종료된 경우 게임을 다시 시작하거나 완전히 종료하는 기능
 #### 메인 구현 함수
-    void gameExit()
+    int run()
