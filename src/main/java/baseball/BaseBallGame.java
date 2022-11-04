@@ -25,13 +25,42 @@ class BaseBallGame {
     public void gamePlaying(){
         try {
             int computerNumber = getRandomDiff3DigitNumber();
-            int userNumber = inputNumber();
-            System.out.println(computerNumber + "," +  userNumber);
-            List<Integer> hint = getHint(userNumber, computerNumber);
-            System.out.println(hint);
+            boolean isSolved = false;
+            while(!isSolved){
+                isSolved = solvingProblem(computerNumber);
+            }
         } catch (IllegalArgumentException e) {
             throw e;
         }
+    }
+
+    public boolean solvingProblem(int computerNumber){
+        int userNumber = inputNumber();
+        int ball, strike;
+        System.out.println(computerNumber + "," +  userNumber);
+        List<Integer> hint = getHint(userNumber, computerNumber);
+        ball = hint.get(0);
+        strike = hint.get(1);
+        
+        if(strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        
+        if(ball == 0 && strike == 0){
+                System.out.println("낫싱");
+        } else {
+            if(ball == 0) {
+                System.out.println(strike + "스트라이크");
+            } else if(strike == 0){
+                System.out.println(ball + "볼");
+            } else {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            }
+        }
+
+        return false;
     }
 
 
