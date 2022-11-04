@@ -8,6 +8,9 @@ public class GameResult {
     private static final int ZERO = 0;
     private static final int NUM_SIZE = 3;
     private static final int THREE = 3;
+    private static final String NOTHING = "낫싱";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼 ";
 
     private final int strikeCount;
     private final int ballCount;
@@ -47,5 +50,21 @@ public class GameResult {
 
     public int getStrikeCount() {
         return strikeCount;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        if (isNothing()) {
+            return NOTHING;
+        }
+        if (ballCount != ZERO) {
+            sb.append(ballCount + BALL);
+        }
+        if (strikeCount != ZERO) {
+            sb.append(strikeCount + STRIKE);
+        }
+        return sb.toString();
     }
 }
