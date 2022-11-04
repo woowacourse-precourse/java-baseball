@@ -70,4 +70,18 @@ class ApplicationMethodTest {
         int countStrike = 3;
         Application.printEndingMessage(countStrike);
     }
+
+    @Test
+    void countBall() {
+        List<Integer> computerAnswer = new ArrayList<>(){
+            {add(3); add(6); add(5);}
+        };
+        List<Integer> userAnswer = new ArrayList<>(){
+            {add(3); add(4); add(6);}
+        };
+        List<Integer> notStrikeList = Application.checkWhereIsNotStrike(computerAnswer, userAnswer);
+
+        int countBall = Application.countBall(computerAnswer, userAnswer, notStrikeList);
+        assertThat(countBall).isEqualTo(1);
+    }
 }
