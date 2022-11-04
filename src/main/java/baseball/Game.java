@@ -31,4 +31,11 @@ public class Game {
         }
         return user;
     }
+    public int checkStrike(List<Integer> computer, List<Integer> user){
+        int strike=0;
+        for (int i=0; i<3; i++){
+            if (computer.get(i) == user.get(i)) strike++;
+        }
+        return strike;
+    }
 }
