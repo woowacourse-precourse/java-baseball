@@ -56,12 +56,12 @@ public class Application {
 
     private static boolean check() {
         result = new String("");
-        if (check_match())
-            return true;
         check_strike();
         check_ball();
         if (strike > 0)
             result += Character.toString(strike) + "스트라이크";
+        if (strike == 3)
+            result += '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         if (ball > 0) {
             if (strike > 0)
                 result = ' ' + result;
@@ -70,13 +70,6 @@ public class Application {
         if (result.length() == 0)
             result = "낫싱";
         return false;
-    }
-
-    private static boolean check_match() {
-        for (int i = 0; i < 3; ++i)
-            if (!user.get(i).equals(target.get(i)))
-                return false;
-        return true;
     }
 
     private static void check_strike() {
