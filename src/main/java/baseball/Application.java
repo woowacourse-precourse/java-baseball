@@ -64,7 +64,7 @@ public class Application {
         LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = new LinkedHashMap<>();
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
-        for (int i=0; i<4; i++) {
+        for (int i=0; i<3; i++) {
             boolean equalsResult = playerNumberArrayList.get(i).equals(answerNumberArrayList.get(i));
 
             if (equalsResult) {
