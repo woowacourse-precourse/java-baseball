@@ -41,6 +41,8 @@ public class UserInput {
 
     public String restartOrStop() {
         String input = consoleLog.input();
+        if (input.isBlank())
+            throw new IllegalArgumentException(IS_BLANK.message());
         if (!isOneOrTwo(input))
             throw new IllegalArgumentException(IS_NOT_ONE_OR_TWO.message());
         return input;
