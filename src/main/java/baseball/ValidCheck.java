@@ -18,4 +18,13 @@ public class ValidCheck {
             throw new IllegalArgumentException("중복된 숫자가 있습니다");
         }
     }
+    public static boolean validGameContinuePress(String userResponse){
+        if(userResponse.length() == 1) {
+            if (userResponse.contains("1"))
+                return true;
+            if (userResponse.contains("2"))
+                return false;
+        }
+        throw new IllegalArgumentException("1, 2 의 숫자를 입력하셨습니다");
+    }
 }

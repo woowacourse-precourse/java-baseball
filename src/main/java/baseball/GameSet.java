@@ -30,6 +30,7 @@ public class GameSet {
     public static void playBaseballGame(){
         PrintMessage.inputUserNum();
         String inputNumber = Console.readLine();
+    //    System.out.println(computerAnswer);
         userAnswer = scanUserAnswer(inputNumber);
         ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
@@ -64,14 +65,11 @@ public class GameSet {
             PrintMessage.answerMessage();
             PrintMessage.gameContinue();
             String userResponse = Console.readLine();
-            if(userResponse.contains("1")){
+            if(ValidCheck.validGameContinuePress(userResponse)){
                 setComputerAnswer();
                 return true;
             }
-            if(userResponse.contains("2")){
-                return false;
-            }
-            throw new IllegalArgumentException("1, 2 이외의 숫자를 입력하셨습니다");
+            return ValidCheck.validGameContinuePress(userResponse);
         }
         return true;
     }
