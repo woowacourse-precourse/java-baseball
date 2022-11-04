@@ -101,6 +101,4 @@ public class User {
     public int getNumSelecUser() {
         return numSelecUser;
     }
-
-
 }

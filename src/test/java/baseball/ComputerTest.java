@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class ComputerTest {
         computer.initComputer();
         List<Integer> resultList_2 = computer.getNumThreeRanOfComputerList();
         // then
-        assertThat(resultList_1.equals(resultList_2)).isFalse();
+        assertNotEquals(resultList_1, resultList_2);
     }
 
     // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?
