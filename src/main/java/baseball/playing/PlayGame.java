@@ -7,12 +7,12 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 
-public class playGame {
+public class PlayGame {
 
     private String computerNumber;
     private String userNumber;
 
-    public playGame() {
+    public PlayGame() {
         startGame();
     }
 
@@ -23,7 +23,12 @@ public class playGame {
     }
 
     public void playingGame() {
+        inputUserNumbers();
+        while (true) {
+            String result = printStrikeOrBall(computerNumber, userNumber);
+            System.out.println(result);
 
+        }
     }
 
     private List<Integer> stringToList(String number) {
@@ -37,14 +42,21 @@ public class playGame {
 
     private String printStrikeOrBall(String computerNumber, String userNumber) {
 
-        String printResult = "";
-        List<Integer> computerNumberList = stringToList(computerNumber);
-        List<Integer> userNumberList = stringToList(userNumber);
+        Map<String, Integer> strikeBall = checkStrikeOrBall(computerNumber, userNumber);
 
-        return printResult;
+        if (strikeBall.get("Strike") == 0) {
+            return strikeBall.get("Ball") + "볼";
+        } else if (strikeBall.get("Ball") == 0) {
+            return strikeBall.get("Strike") + "스트라이크";
+        }
+
+        return strikeBall.get("Ball") + "볼 " + strikeBall.get("Strike") + "스트라이크";
     }
 
-    private Map<String, Integer> checkStrikeOrBall(List<Integer> computerNumberList, List<Integer> userNumberList) {
+    private Map<String, Integer> checkStrikeOrBall(String computerNumber, String userNumber) {
+
+        List<Integer> computerNumberList = stringToList(computerNumber);
+        List<Integer> userNumberList = stringToList(userNumber);
 
         Map<String, Integer> strikeBall = new HashMap<>();
 
@@ -81,14 +93,12 @@ public class playGame {
         return ball;
     }
 
-    private String inputUserNumbers() {
+    private void inputUserNumbers() {
 
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         User user = new User(inputNumber);
 
         userNumber = user.getUserNumbers();
-
-        return userNumber;
     }
 }
