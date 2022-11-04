@@ -56,6 +56,17 @@ public class BaseballGame {
         return strikeCnt;
     }
 
+    public int countBall(List<String> userInput) {
+        int BallCnt = 0;
+        for (int idx=0; idx<userInput.size(); idx++) {
+            String separatedInput = userInput.get(idx);
+            if (isSameNumber(separatedInput) && !isSamePosition(separatedInput, idx)) {
+                BallCnt++;
+            }
+        }
+        return BallCnt;
+    }
+
     private boolean isSameNumber(String separatedInput) {
         boolean isSameNumber = false;
         if (answerMap.get(separatedInput) != null) {
