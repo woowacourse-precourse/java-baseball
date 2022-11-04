@@ -48,4 +48,24 @@ class InputTest {
       inputClass.printInputString(sysIn3);
     }).isInstanceOf((IllegalArgumentException.class));
   }
+
+  @Test
+  public void 입력으로_중복된_숫자() {
+    String sysIn1 = "112";
+    String sysIn2 = "121";
+    String sysIn3 = "211";
+    String sysIn4 = "111";
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn1);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn2);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn3);
+    }).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> {
+      inputClass.printInputString(sysIn4);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
