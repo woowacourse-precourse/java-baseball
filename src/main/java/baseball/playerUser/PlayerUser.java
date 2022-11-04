@@ -8,6 +8,8 @@ public class PlayerUser {
 	private PlayerUser() {
 	}
 
+
+
 	public static PlayerUser getInstance() {
 		return instance;
 	}
@@ -35,7 +37,7 @@ public class PlayerUser {
 
 	private boolean isPositiveNumber(String number) {
 		for (char elem : number.toCharArray()) {
-			if (elem >= '1' && elem <= '9') {
+			if (elem < '1' || elem > '9') {
 				return false;
 			}
 		}
