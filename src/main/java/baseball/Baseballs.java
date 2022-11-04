@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Baseballs {
     private static final int BASEBALL_COUNT = 3;
@@ -20,6 +21,16 @@ public class Baseballs {
                 .mapToObj(value -> (char)value)
                 .map(Baseball::new)
                 .collect(Collectors.toList());
+    }
+
+    public Result calculateResult(Baseballs another) {
+        return Result.scoreOf(countStrike(another), 0);
+    }
+
+    public int countStrike(Baseballs another) {
+        return (int)IntStream.range(0, BASEBALL_COUNT)
+                .filter(order -> this.baseballs.get(order).equals(another.baseballs.get(order)))
+                .count();
     }
 
     private void validate(String userInput) {
