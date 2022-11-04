@@ -34,7 +34,8 @@ public class GameService {
     public void play(){
         systemMessage.game_start();
         game.initialize();
-        userNumber.setUser_numbers(userNumber.getUser_numbers());
+        userNumber.setUser_numbers(getUserNumber());
+        score_calculate(userNumber.getUser_numbers(), game.getGame_numbers());
     }
 
     public int[] getUserNumber() throws IllegalArgumentException {
