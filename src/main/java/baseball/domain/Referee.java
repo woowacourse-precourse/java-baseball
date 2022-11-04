@@ -11,9 +11,16 @@ public class Referee {
         ConsoleInString consoleInString = new ConsoleInStringImpl();
         this.computer = Computer.init();
         this.gamer = Gamer.from(consoleInString);
+        matchBalls();
     }
 
-    public static Referee getInstance() {
+    public static Referee initGame() {
         return new Referee();
+    }
+
+    public GameReport matchBalls() {
+        Balls computerBalls = computer.currentComputerBalls();
+        Balls gamerBalls = gamer.currentGamerBalls();
+        return computerBalls.ballsMatch(gamerBalls);
     }
 }

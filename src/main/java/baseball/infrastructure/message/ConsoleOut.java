@@ -13,4 +13,5 @@ public class ConsoleOut {
     /*
     * Int Type Global Variable
     * */
+
 }

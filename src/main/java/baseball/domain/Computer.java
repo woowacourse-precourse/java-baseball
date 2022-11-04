@@ -14,4 +14,8 @@ public class Computer {
     public static Computer init() {
         return new Computer(ComputerRandomNumberGenerator.generate());
     }
+
+    public Balls currentComputerBalls() {
+        return computerBalls;
+    }
 }

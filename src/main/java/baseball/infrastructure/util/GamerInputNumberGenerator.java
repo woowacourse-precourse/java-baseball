@@ -1,6 +1,7 @@
 package baseball.infrastructure.util;
 
 import baseball.domain.ConsoleInString;
+import baseball.infrastructure.message.ConsoleOut;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -11,6 +12,7 @@ public class GamerInputNumberGenerator {
     private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
 
     public static List<Integer> generator(ConsoleInString consoleInString) {
+        System.out.print(ConsoleOut.INPUT_NUMBER_MESSAGE);
         String generatedString = consoleInString.inputString();
         if (!stringValidation(generatedString)) {
             throw new IllegalArgumentException();

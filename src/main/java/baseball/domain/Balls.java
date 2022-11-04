@@ -29,6 +29,24 @@ public class Balls {
         return new Balls(numbers);
     }
 
+    public GameReport ballsMatch(Balls gamerBalls) {
+        List<Ball> gamerBallList = gamerBalls.currentBalls();
+        GameReport gameReport = new GameReport();
+        for (Ball gamerBall : gamerBallList) {
+            BallStatus ballStatus = ballMatching(gamerBall);
+            gameReport.report(ballStatus);
+        }
+        return gameReport;
+    }
+
+    private BallStatus ballMatching(Ball givenBall) {
+        return balls.stream()
+            .map(ball -> ball.eachBallMatch(givenBall))
+            .filter(BallStatus::isNotNothing)
+            .findFirst()
+            .orElse(BallStatus.NOTHING);
+    }
+
     public List<Ball> currentBalls() {
         return balls;
     }

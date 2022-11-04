@@ -15,4 +15,8 @@ public class Gamer {
     public static Gamer from(ConsoleInString consoleInString) {
         return new Gamer(GamerInputNumberGenerator.generator(consoleInString));
     }
+
+    public Balls currentGamerBalls() {
+        return gamerBalls;
+    }
 }
