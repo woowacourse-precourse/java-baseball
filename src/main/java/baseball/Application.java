@@ -53,12 +53,27 @@ public class Application {
         for (int i=0; i<comList.size(); i++) {
             if(comList.get(i) == userList.get(i)) {
                 strike++;
-                userList.set(i, 0);
             } else if (userList.contains(comList.get(i))) {
                 ball++;
             }
         }
 
-        System.out.println(strike +" 스트라이크 " +ball +" 볼");
+        StringBuilder sb = new StringBuilder();
+
+        if (strike == 3) {
+
+        } else if(ball > 0) {
+            sb.append(ball +"볼 ");
+        }
+
+        if(strike > 0) {
+            sb.append(strike +"스트라이크");
+        }
+
+        if(strike == 0 && ball == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb);
     }
 }
