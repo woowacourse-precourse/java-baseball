@@ -24,4 +24,13 @@ class GameResultJudgementTest {
     assertEquals(3, judge.judgeStrike("456", "456"));
     assertEquals(3, judge.judgeStrike("789", "789"));
   }
+  @Test
+  @Order(2)
+  @DisplayName("스트라이크 2 확인")
+  void JudgeStrikeCount2() {
+    assertEquals(2, judge.judgeStrike("123", "143"));
+    assertEquals(2, judge.judgeStrike("456", "356"));
+    assertEquals(2, judge.judgeStrike("789", "782"));
+  }
+
 }
