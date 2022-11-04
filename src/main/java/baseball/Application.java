@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,5 +24,13 @@ public class Application {
         }
 
         return String.valueOf(threeDigitNumberStringBuilder);
+    }
+
+    private static String userInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInputString = Console.readLine();
+        System.out.println(userInputString);
+
+        return userInputString;
     }
 }
