@@ -2,13 +2,16 @@ package baseball;
 
 import java.lang.System;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static ArrayList<Integer> target = null;
-    private static ArrayList<Integer> user = null;
+    private static HashSet<Character> duplicate = null;
+    private static List<Integer> target = null;
+    private static List<Integer> user = null;
     private static String result = null;
     private static Integer strike = 0;
     private static Integer ball = 0;
@@ -30,7 +33,7 @@ public class Application {
     }
 
     private static void start_game() {
-        generate();
+        target = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         while (true) {
             read();
             check();
@@ -40,19 +43,16 @@ public class Application {
         }
     }
 
-    private static void generate() {
-        target.clear();
-        for (int i = 0; i < 3; ++i)
-            target.add(Randoms.pickNumberInRange(1, 9));
-    }
-
     private static void read() {
+        duplicate.clear();
         user.clear();
         String input = Console.readLine();
         if (input.length() != 3)
             invalid();
         for (int i = 0; i < 3; ++i) {
-            if (!Character.isDigit(input.charAt(i)) || input.charAt(i) == '0')
+            if (!Character.isDigit(input.charAt(i)) ||
+                    input.charAt(i) == '0' ||
+                    !duplicate.add(input.charAt(i)))
                 invalid();
             user.add(Character.getNumericValue(input.charAt(i)));
         }
