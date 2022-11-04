@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.security.interfaces.RSAKey;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -20,48 +21,54 @@ public class BaseballGame {
         Computer computer = new Computer();
         Result result;
         String randomBall = computer.makeRandomBall();
+        System.out.println(randomBall);
 
         do {
             result = Result.compareBall(getUserInputNumber(), randomBall);
             result.printResult();
-        } while (!Result.isAllStriek);
+        } while (!result.isAllStrike());
+
+        System.out.println("정답을 맞췄습니다.");
     }
 
     private boolean reGame() {
         String doReGame = getUserInputRegame();
 
+        if(doReGame.equals("2")){
+            System.out.println("게임 종료");
+        }
         return doReGame.equals("1");
     }
-    public String getUserInput(){
-        return readLine();
+
+    public String getUserInput() {
+        return Console.readLine();
     }
-    public String getUserInputNumber(){
+
+    public String getUserInputNumber() {
         System.out.print("숫자를 입력해 주세요 : ");
 
-        String s = validateUserInputNum(getUserInput());
-        System.out.println(s);
-        return s;
+        return validateUserInputNum(getUserInput());
     }
 
     private String validateUserInputNum(String userInput) {
-       if(userInput.length() != 3){
-           throw new IllegalArgumentException("세자리 숫자를 입력하세요.");
-       }
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("세자리 숫자를 입력하세요.");
+        }
 
-       if(!isDigits(userInput)){
-           throw new IllegalArgumentException("숫자를 제외한 다른 문자는 입력이 불가능합니다.");
-       }
+        if (!isDigits(userInput)) {
+            throw new IllegalArgumentException("숫자를 제외한 다른 문자는 입력이 불가능합니다.");
+        }
 
-       if(!checkDuplicate(userInput)){
+        if (!checkDuplicate(userInput)) {
             throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
-       }
+        }
 
-       return userInput;
+        return userInput;
     }
 
-    public boolean isDigits(String userInput){
-        for(char digit : userInput.toCharArray()){
-            if(!Character.isDigit(digit)){
+    public boolean isDigits(String userInput) {
+        for (char digit : userInput.toCharArray()) {
+            if (!Character.isDigit(digit)) {
                 return false;
             }
         }
@@ -82,7 +89,7 @@ public class BaseballGame {
     }
 
     private String validateUserInputRegame(String userInput) {
-        if(!(userInput.equals("1") || !userInput.equals("2"))) {
+        if (!(userInput.equals("1") || userInput.equals("2"))) {
             throw new IllegalArgumentException("1, 2만 입력 가능합니다. 다시 입력해 주세요.");
         }
 

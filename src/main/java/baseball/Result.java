@@ -30,12 +30,14 @@ public class Result {
         for (String digit : userInputNumber.split("")) {
             if (randomNumList.contains(digit) && digit.equals(randomNumList.get(idx))) {
                 strike++;
+                idx++;
                 continue;
             }
+
             if (randomNumList.contains(digit)) {
                 ball++;
-                idx++;
             }
+
             idx++;
         }
         return new Result(strike, ball);
@@ -56,5 +58,9 @@ public class Result {
         }
 
         System.out.println(res.trim());
+    }
+
+    public boolean isAllStrike(){
+        return strikeCnt == 3;
     }
 }
