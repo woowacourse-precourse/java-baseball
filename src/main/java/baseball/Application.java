@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         Operator op = new Operator();
         op.playGame();
-
     }
 }
 
 class Computer {
-    private int number;
+    private List<Integer> number;
 
     public void setNumber() {
         List<Integer> numberList = new ArrayList<>();
@@ -25,17 +25,22 @@ class Computer {
                 numberList.add(randomNumber);
             }
         }
-        int num = numberList.indexOf(0) * 100 + numberList.indexOf(0) * 10 + numberList.indexOf(0);
-        this.number = num;
+        number = numberList;
     }
 }
 
 class Player {
-    private int number;
+    private List<Integer> number;
 
     public void inputNumber() {
+        List<Integer> numberList = new ArrayList<>();
         int num = Integer.valueOf(Console.readLine());
-        this.number = num;
+        while(num>0) {
+            numberList.add(num % 10);
+            num /= 10;
+        }
+        Collections.reverse(numberList);
+        number = numberList;
     }
 }
 class Operator {
@@ -53,7 +58,7 @@ class Operator {
     }
     public void playGame() {
         computer.setNumber();
-        while(!false) {
+        while(!correctAnswer) {
             player.inputNumber();
             compareNumber();
             showResult();
@@ -61,6 +66,9 @@ class Operator {
     }
     public int compareNumber() {
 
+
+        if(strikeCount==3)
+            correctAnswer = true;
     }
     public void showResult() {
 
