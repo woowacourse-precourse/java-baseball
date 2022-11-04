@@ -38,4 +38,11 @@ public class Game {
         }
         return strike;
     }
+    public int checkBall(List<Integer> computer, List<Integer> user, int strike){
+        int ball=0;
+        for (int i=0; i<3; i++){
+            if (computer.contains(user.get(i))) ball++;
+        }
+        return ball - strike;
+    }
 }
