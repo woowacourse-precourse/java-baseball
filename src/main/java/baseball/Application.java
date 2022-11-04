@@ -20,6 +20,7 @@ public class Application {
             }
             System.out.println("num: " + randomNum[count]);
         }
+        //System.out.println("randomNum: " + randomNum);
 
 
         while(Game(randomNum)){
@@ -34,10 +35,33 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-        int userNum = sc.nextInt();
+        String userNum = sc.nextLine();
 
         System.out.println("userNum: " + userNum);
 
+        String[] userNumArr = userNum.split("");
+
+        int ball = 0;
+        int strike = 0;
+        int nothing = 0;
+        for(int i = 0; i < randomNum.length; i++){
+            System.out.println("num: " + userNumArr[i]);
+            String userTarget = String.valueOf(randomNum[i]); // int -> string 형변환
+            if(userNum.contains(userTarget)){
+                for(int j = 0; j < userNumArr.length; j++){
+                    if(userTarget.equals(userNumArr[j])){
+                        if(i == j){
+                            ball++;
+                        }else{
+                            strike++;
+                        }
+                    }
+                }
+                System.out.println(userTarget + "포함되어있음");
+            }else{
+                nothing++;
+            }
+        }
 
 
         return result;
