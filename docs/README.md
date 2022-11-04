@@ -96,7 +96,7 @@ Return: String(사용자가 입력한 수)
 
 <br/>
 
-## (6). getStrikeCount(int userNum)
+## (6). getStrikeCount(int userNum, int randomNum)
 
 1. **기능**
 
@@ -114,7 +114,7 @@ Return: 스트라이크의 개수
 
 <br/>
 
-## (7). getBallCount(int userNum)
+## (7). getBallCount(int userNum, int randomNum)
 
 1. **기능**
 
