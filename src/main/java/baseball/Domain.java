@@ -5,19 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomainConfiguration {
+public class Domain {
 
     String userNumber;
     List<Integer> computerNumber;
     List<Integer> userNumberList;
 
-    public DomainConfiguration(List<Integer> computerNumber, String userNumber) {
-        this.computerNumber = computerRandomNumberExtract();
-        this.userNumberList=
-    }
 
-    public String getUserNumber() {
-        return userNumber;
+
+    public List<Integer> getUserNumber() {
+         return convertStringToIntegerList(getInputUserNumber());
     }
 
     public void setUserNumber(String userNumber) {
@@ -25,7 +22,7 @@ public class DomainConfiguration {
     }
 
     public List<Integer> getComputerNumber() {
-        return computerNumber;
+        return computerRandomNumberExtract();
     }
 
     public void setComputerNumber(List<Integer> computerNumber) {
@@ -47,6 +44,7 @@ public class DomainConfiguration {
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
+
         return inputUserNumber;
     }
 
