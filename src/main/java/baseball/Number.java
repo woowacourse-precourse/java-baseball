@@ -22,7 +22,7 @@ public class Number {
     }
 
     public void setNumber() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
         String input = readLine();
         isValidInput(input);
         this.number = input;
