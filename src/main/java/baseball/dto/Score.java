@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Score {
     public static final String INVALID_STRIKE_BALL_SCORE_MESSAGE = "제시한 스트라이크 또는 볼 점수가 잘못되었습니다.";
     public static final String STRIKE = "스트라이크";
-    public static final String INVALID_ADDING_SCORE_REQUEST_MESSGE_FORMAT = "스트라이크 또는 볼 점수는 %d점을 초과할 수 없습니다.";
+    public static final String INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT = "스트라이크 또는 볼 점수는 %d점을 초과할 수 없습니다.";
     public static final String BALL = "볼";
     private final Map<String, Integer> score;
 
@@ -37,14 +37,14 @@ public class Score {
 
     public void addStrike() {
         if (Answer.ANSWER_LIST_SIZE <= score.get(STRIKE)) {
-            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSGE_FORMAT, Answer.ANSWER_LIST_SIZE));
+            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE));
         }
         score.put(STRIKE, score.get(STRIKE) + 1);
     }
 
     public void addBall() {
         if (Answer.ANSWER_LIST_SIZE <= score.get(BALL)) {
-            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSGE_FORMAT, Answer.ANSWER_LIST_SIZE));
+            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE));
         }
         score.put(BALL, score.get(BALL) + 1);
     }

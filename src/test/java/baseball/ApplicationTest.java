@@ -80,7 +80,7 @@ class ApplicationTest extends NsTest {
     @Nested
     @DisplayName("NumberValidator 테스트")
     class NumberValidatorTest {
-        @ParameterizedTest(name = "{displayName} {index} - {0}")
+        @ParameterizedTest(name = "{displayName} - {0}")
         @MethodSource("baseball.ApplicationTest#sourceOfIntegerListNotBetWeen1And9")
         @DisplayName("Answer 에 저장할 값이 1에서 9 사이의 정수가 아니면 예외가 발생한다.")
         void givenIntegerListNotBetWeen1And9_whenValidatingGiven_ThenThrowsException(List<Integer> given) {
@@ -227,7 +227,7 @@ class ApplicationTest extends NsTest {
             assertThat(target).containsExactly(4, 6, 7);
         }
 
-        @ParameterizedTest(name = "{displayName} {index} - {0}")
+        @ParameterizedTest(name = "{displayName} - {0}")
         @MethodSource("baseball.ApplicationTest#sourceOfStringIncludingNotNaturalNumber")
         @DisplayName("사용자로부터 받은 입력값이 자연수로 이루어지지 않은 경우 예외가 발생한다.")
         void givenIntegerListIncludingNotNaturalNumber_whenValidatingGiven_ThenThrowsException(String given) {
@@ -312,7 +312,7 @@ class ApplicationTest extends NsTest {
 
             //then
             assertThat(outputStreamCaptor.toString().trim())
-                    .isEqualTo(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Answer.ANSWER_LIST_SIZE));
+                    .isEqualTo(String.format(OutputView.WINNING_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE).trim());
         }
     }
 
