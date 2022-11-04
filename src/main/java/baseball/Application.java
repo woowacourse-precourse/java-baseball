@@ -10,7 +10,7 @@ public class Application {
     }
 
     public static void startGame() {
-        String answer; // TODO: 3자리 숫자 랜덤 생성 호출
+        String answer = createThreeDigitNumber(); // TODO: 3자리 숫자 랜덤 생성 호출
         boolean isAnswer = false;
 
         while (!isAnswer) {
@@ -19,6 +19,19 @@ public class Application {
         }
 
         // TODO: 게임 종료 호출
+    }
+
+    public static String createThreeDigitNumber() {
+        String answer = new String();
+
+        while (answer.length() < 3) {
+            String num = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (!answer.contains(num)) {
+                answer += num;
+            }
+        }
+
+        return answer;
     }
 
     public static void main(String[] args) {
