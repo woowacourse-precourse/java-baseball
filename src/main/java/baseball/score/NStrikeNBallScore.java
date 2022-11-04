@@ -5,10 +5,14 @@ public class NStrikeNBallScore implements Score {
     int ball;
 
     public NStrikeNBallScore(int strike, int ball) {
-        if (strike < 0 || ball < 0)
-            throw new IllegalArgumentException("strike or ball is more than zero");
+        validateValue(strike, ball);
         this.strike = strike;
         this.ball = ball;
+    }
+
+    private static void validateValue(int strike, int ball) {
+        if (strike < 0 || ball < 0)
+            throw new IllegalArgumentException("strike or ball is more than zero");
     }
 
     @Override
