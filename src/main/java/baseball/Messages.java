@@ -44,10 +44,4 @@ public enum Messages {
         }
         System.out.println(baseString);
     }
-
-    public static void main(String[] args) {
-        Messages.INPUT.printMessage();
-        Messages.END.printMessage();
-        Messages.ASK.printMessage();
-    }
 }
