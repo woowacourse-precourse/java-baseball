@@ -13,6 +13,7 @@ public class Application {
         int statusCode = 0;
 
         do {
+            System.out.println("숫자 야구 게임을 시작합니다.");
             BaseBallGame baseBallGame = new BaseBallGame(Randoms.pickUniqueNumbersInRange(0, 9, 3));
 
             baseBallGame.gameStart();
