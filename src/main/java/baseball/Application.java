@@ -2,60 +2,94 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Application {
+    static Map<Hint, Integer> hintMap;
+    static List<Integer> answer;
+
     public static void main(String[] args) {
         System.out.println(Comment.STARTGAME);
-        Computer.gameInitialize();
+        generateNewAnswer();
 
         while (true) {
+            System.out.println(answer);
             System.out.print(Comment.INPUTNUMBER);
+            String userInput = Console.readLine();
+            validateInput(userInput, 3);
 
-            String inputStr = Console.readLine();
-            validateInput(inputStr);
+            calculateHint(answer, userInput);
+            printHint();
 
-            ArrayList<Integer> inputList = stringToList(inputStr);
-            Computer.compare(inputList);
-            Computer.printHint();
-            Computer.checkResult();
+            if(hintMap.get(Hint.STRIKE).equals(3)){
+                System.out.println(Comment.ENDGAME);
 
-            if (Computer.getGameResult()) {
-                restartQeustion();
-                Computer.gameInitialize();
+                boolean isRestart = checkRestart();
+                if (!isRestart) {
+                    generateNewAnswer();
+                    break;
+                }
             }
         }
     }
 
-    private static void restartQeustion() {
+    private static void generateNewAnswer() {
+        answer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+    }
+
+    private static boolean checkRestart() {
         System.out.println(Comment.REGAME);
-        String restartInput = Console.readLine();
-        validateInput(restartInput);
-
-        if (restartInput.equals("1")) {
-            Computer.setRestartFlag(true);
+        String restartRely = Console.readLine();
+        validateInput(restartRely, 1);
+        if (restartRely.equals("1")) {
+            return true;
         }
-
-        if (restartInput.equals("2")) {
-            Computer.setRestartFlag(false);
-        }
-
-        throw new IllegalArgumentException("1 과 2 중 선택해야합니다.");
+        return false;
     }
 
-    private static ArrayList<Integer> stringToList(String inputStr) {
-        ArrayList<Integer> list = new ArrayList<>();
+    private static void printHint() {
+        Integer ballCount = hintMap.get(Hint.BALL);
+        Integer strikeCount = hintMap.get(Hint.STRIKE);
+        String hintStr = null;
+
+        if (ballCount != 0 && strikeCount != 0) {
+            hintStr = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
+        }
+        if (ballCount != 0 && strikeCount == 0) {
+            hintStr = String.format("%d볼", ballCount);
+        }
+        if (ballCount == 0 && strikeCount != 0) {
+            hintStr = String.format("%d스트라이트", strikeCount);
+        }
+        if (hintStr == null) {
+            hintStr = "낫싱";
+        }
+        System.out.println(hintStr);
+    }
+
+    private static void calculateHint(List<Integer> answer, String inputStr) {
+        initializeHint();
         for (int i = 0; i < inputStr.length(); i++) {
-            int number = Integer.parseInt(inputStr.charAt(i) + "");
-            list.add(number);
+            Integer target = Integer.parseInt(inputStr.charAt(i) + "");
+            if (answer.contains(target) && answer.get(i).equals(target)) {
+                Integer beforeCnt = hintMap.get(Hint.STRIKE);
+                hintMap.put(Hint.STRIKE, ++beforeCnt);
+            } else if (answer.contains(target)) {
+                Integer beforeCnt = hintMap.get(Hint.BALL);
+                hintMap.put(Hint.BALL, ++beforeCnt);
+            }
         }
-        return list;
     }
 
-    private static void validateInput(String input) {
+    private static void initializeHint() {
+        hintMap = new HashMap();
+        hintMap.put(Hint.STRIKE, 0);
+        hintMap.put(Hint.BALL, 0);
+    }
+
+    private static void validateInput(String input, int digit) {
         String tmpInput = input.trim();
 
         String numberOnlyRegex = "^[0-9]+$";
@@ -63,106 +97,10 @@ public class Application {
         if (!matches) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
-    }
-}
 
-class Computer {
-    private static List<Integer> answerList;
-    private static Map<Hint, Integer> hintCountMap;
-    private static Boolean gameResult;
-    private static Boolean restartFlag;
-    private Computer() {
-    }
-
-    public static void gameInitialize() {
-        answerInitialize();
-        hintCountInitialize();
-        gameResult = false;
-        restartFlag = false;
-    }
-
-    public static void compare(ArrayList<Integer> inputList) {
-        validateList(inputList);
-        for (int index = 0; index < inputList.size(); index++) {
-            eachValueMatching(index, answerList.get(index));
+        if (tmpInput.length() != digit) {
+            throw new IllegalArgumentException(digit + "자릿수를 입력해주세요.");
         }
-    }
-
-    private static void answerInitialize() {
-        answerList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-    }
-
-    private static Map<Hint, Integer> hintCountInitialize() {
-        Map<Hint, Integer> hintCountMap = new HashMap<>();
-        hintCountMap.put(Hint.STRIKE, 0);
-        hintCountMap.put(Hint.BALL, 0);
-        hintCountMap.put(Hint.MISS, 0);
-        return hintCountMap;
-    }
-
-    private static void eachValueMatching(int index, Integer value) {
-        if (answerList.contains(value) && answerList.get(index).equals(value)) {
-            Integer before = hintCountMap.get(Hint.STRIKE);
-            hintCountMap.put(Hint.STRIKE, before + 1);
-        } else if (answerList.contains(value)) {
-            Integer before = hintCountMap.get(Hint.BALL);
-            hintCountMap.put(Hint.BALL, before + 1);
-        } else {
-            Integer before = hintCountMap.get(Hint.MISS);
-            hintCountMap.put(Hint.MISS, before + 1);
-        }
-    }
-
-    private static void validateList(ArrayList<Integer> inputList) {
-        if (answerList.size() != 3) {
-            throw new IllegalArgumentException("3자리 수 를 입력해주세요.");
-        }
-
-        if (answerList == null || inputList == null) {
-            throw new IllegalArgumentException("리스트 값이 유효하지 않습니다.");
-        }
-    }
-
-    public static Map<Hint, Integer> getHintCountMap() {
-        return hintCountMap;
-    }
-
-    public static void printHint() {
-        Integer ballCount = hintCountMap.get(Hint.BALL);
-        Integer strikeCount = hintCountMap.get(Hint.STRIKE);
-        String hintStr = null;
-
-        if (ballCount == 0 && strikeCount == 0) {
-            hintStr = "낫싱";
-        } else if (ballCount != 0 && strikeCount == 0) {
-            hintStr = String.format("%d볼", ballCount);
-        } else if (ballCount == 0 && strikeCount != 0) {
-            hintStr = String.format("%d스트라이트", strikeCount);
-        } else if (ballCount != 0 && strikeCount != 0) {
-            hintStr = String.format("%d볼 %d스트라이크",ballCount,strikeCount)
-        }
-
-        System.out.println(hintStr);
-    }
-
-    public static void checkResult() {
-        if (hintCountMap.get(Hint.STRIKE).equals(3)) {
-            gameResult = true;
-            System.out.println(Comment.ENDGAME);
-        }
-        hintCountInitialize();
-    }
-
-    public static Boolean getGameResult() {
-        return gameResult;
-    }
-
-    public static Boolean getRestartFlag() {
-        return restartFlag;
-    }
-
-    public static void setRestartFlag(Boolean restartFlag) {
-        Computer.restartFlag = restartFlag;
     }
 }
 
@@ -174,5 +112,5 @@ class Comment {
 }
 
 enum Hint {
-    STRIKE, BALL, MISS
+    STRIKE, BALL
 }
