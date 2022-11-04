@@ -1,8 +1,10 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static class BaseBallGame{
@@ -14,7 +16,8 @@ public class Application {
         public void gameStart () {
             System.out.println("숫자 야구 게임을 시작합니다.");
             try{
-                inputNumber();
+                int userNumber = inputNumber();
+                int computerNumber = getRandomDiff3DigitNumber();
             } catch(IllegalArgumentException e){
                 throw e;
             }
@@ -23,7 +26,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String inputStr = Console.readLine();
             inputValidation(inputStr);
-            return 1;
+            return Integer.parseInt(inputStr);
         }
 
         public void inputValidation(String inputStr){
@@ -49,6 +52,20 @@ public class Application {
                 return false;
             }
             return true;
+        }
+
+        public int getRandomDiff3DigitNumber(){
+            String usedNumber = "";
+            String randomDiff3DigitNumber = "";
+
+            while(randomDiff3DigitNumber.length() < 3){
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if(!usedNumber.contains(Integer.toString(randomNumber))){
+                    randomDiff3DigitNumber += Integer.toString(randomNumber);
+                }
+            }
+
+            return Integer.parseInt(randomDiff3DigitNumber);
         }
     }
     public static void main(String[] args) {
