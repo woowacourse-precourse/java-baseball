@@ -42,4 +42,19 @@ public class NumberBaseBallGameMachine {
             }
         });
     }
+
+    public int getNewGameOrStop() {
+        String trimInput = getInputLine().strip();
+        validateNewGameInput(trimInput);
+        return Integer.parseInt(trimInput);
+    }
+
+    public void validateNewGameInput(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("입력값이 한 개가 아닙니다.");
+        }
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("입력값이 1이나 2가 아닙니다.");
+        }
+    }
 }
