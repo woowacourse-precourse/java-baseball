@@ -22,11 +22,11 @@ public class Numbers {
     private void validateNoDuplicates(List<Integer> numbers) {
         boolean[] appearances = new boolean[10];
         for (Integer number : numbers) {
-            if (!appearances[number]) {
-                appearances[number] = true;
-            }
             if (appearances[number]) {
                 throw new IllegalArgumentException("숫자는 중복되면 안됩니다");
+            }
+            if (!appearances[number]) {
+                appearances[number] = true;
             }
         }
     }
