@@ -10,6 +10,22 @@ import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
 
+    @Test
+        // 컴퓨터 numThreeRanOfComputerLisl의 크기가 3인가.
+    void 컴퓨터_랜덤_숫자_생성_크기_테스트() throws Exception {
+        //given
+        Computer computer = new Computer();
+        computer.creatRanNumOfComputerList();
+        // when
+        List<Integer> resultList = computer.getNumThreeRanOfComputerList();
+        // then
+        System.out.println(computer.getNumThreeRanOfComputerList());
+
+        assertThat(resultList.size()).isEqualTo(3);
+    }
+
+    // TODO: 컴퓨터도 각각의 다른 숫자가 있어야한다.
+    
     // computer Test
     @Test
     void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
