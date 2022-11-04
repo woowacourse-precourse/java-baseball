@@ -8,6 +8,7 @@ public interface Constant {
     String STRIKE_MESSAGE = "스트라이크";
     String BALL_MESSAGE = "볼";
     String NOTHING_MESSAGE = "낫싱";
+    String BLANK = " ";
 
     int GAME_RESTART_VALUE = 1;
     int GAME_TERMINATE_VALUE = 2;
@@ -15,5 +16,6 @@ public interface Constant {
     int MIN_NUMBER_VALUE = 1;
     int MAX_NUMBER_VALUE = 9;
 
-    String NUMBER_REGEX = "";
+    int STRIKE_INDEX = 0;
+    int BALL_INDEX = 1;
 }
