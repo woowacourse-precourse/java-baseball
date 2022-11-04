@@ -12,7 +12,7 @@ public class Location {
     }
 
     private boolean isLocation(int location) {
-        return location < 0 || location > 3;
+        return location < 0 || location > 2;
     }
 
     public static Location from(int location) {
