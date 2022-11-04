@@ -16,8 +16,8 @@ public class Computer {
     public Computer() {
         try {
             number = this.generateNumber();
-        } catch (Exception e) {
-            throw e;
+        } catch (IllegalArgumentException exception) {
+            throw exception;
         }
     }
 
@@ -38,7 +38,7 @@ public class Computer {
 
         String number = computer.toString().replaceAll("[^0-9]", "");
 
-        if (!BaseballNumber.isValid(number)) {
+        if (!Validator.isValid(number)) {
             throw new IllegalArgumentException();
         }
 

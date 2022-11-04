@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.internal.bytebuddy.asm.Advice.Thrown;
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.catchThrowable;
+
+
 
 class ApplicationTest extends NsTest {
     @Test
@@ -36,11 +35,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_중복문자_테스트() {
         //given
-        BaseballNumber dupNumber= new BaseballNumber();
+        Player player= new Player();
 
         //then
         assertSimpleTest(() ->
-                assertThatThrownBy(()->dupNumber.set("313"))
+                assertThatThrownBy(()->player.setNumber("313"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -52,11 +51,10 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
 
         //when
-        computer.generateNumber();
-        String number = computer.getBaseballNumber();
+        String number = computer.generateNumber();
 
         //then
-        assertThat(BaseballNumber.isValid(number)).isEqualTo(true);
+        assertThat(Validator.isValid(number)).isEqualTo(true);
     }
 
     @Override
