@@ -1,9 +1,7 @@
 package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class GameUtil {
     public static List<Integer> splitNumberToOneDigitNumbers(int number) {
