@@ -1,8 +1,8 @@
-package baseball;
+package baseball.baseball;
 
 import java.util.StringJoiner;
 
-import static baseball.Digits.DIGIT_COUNT;
+import static baseball.baseball.Digits.DIGIT_COUNT;
 
 public class Result {
 

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-import static baseball.Digits.DIGIT_COUNT;
+import static baseball.baseball.Digits.DIGIT_COUNT;
 
 public class BaseballGame {
 
