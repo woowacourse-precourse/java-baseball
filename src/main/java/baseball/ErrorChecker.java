@@ -32,11 +32,22 @@ public class ErrorChecker {
 
     private int duplicateCount(String input, char word) {
         int count = 0;
-        for(int index=0; index<input.length(); index++) {
+        for (int index = 0; index < input.length(); index++) {
             if (word == input.charAt(index)) {
                 count++;
             }
         }
         return count;
+    }
+
+    private boolean containDuplicateNumber(String input) {
+        for (int index = 0; index < input.length(); index++) {
+            char word = input.charAt(index);
+
+            if (duplicateCount(input, word) > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 }
