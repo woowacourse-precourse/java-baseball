@@ -7,6 +7,9 @@ import baseball.view.OutputView;
 
 public class NumberBaseballGameController {
 
+    private static final String STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY = "Strike";
+    private static final String STRIKE_AND_BALL_COUNT_MAP_BALL_KEY = "Ball";
+
     private static OpponentComputer opponentComputer;
 
     public void generateOpponentComputer() {
@@ -18,12 +21,12 @@ public class NumberBaseballGameController {
     }
 
     public void gamePlay() {
-        while(opponentComputer.getStrikeAndBallCountMap().get("Strike") != 3) {
+        while(opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY) != 3) {
             String playerNumber = InputView.inputNumber();
             opponentComputer.initStrikeAndBallCountMap();
             opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(Integer.parseInt(playerNumber));
-            Integer strikeCount = opponentComputer.getStrikeAndBallCountMap().get("Strike");
-            Integer ballCount = opponentComputer.getStrikeAndBallCountMap().get("Ball");
+            Integer strikeCount = opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY);
+            Integer ballCount = opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_BALL_KEY);
             OutputView.printGameResultMessage(strikeCount, ballCount);
         }
     }
