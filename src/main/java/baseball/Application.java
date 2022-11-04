@@ -7,10 +7,15 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static void computerRandomNumber(final List<String> answerNumber){
-        for(int i=1; i<4; i++){
-            String number= String.valueOf(pickNumberInRange(1,9));
-            answerNumber.add(number);
+    public static String computerRandomNumber(){
+        String [] number = new String[3];
+        StringBuffer numbers = new StringBuffer();
+        for(int i=0; i<number.length; i++){
+            String num = String.valueOf(pickNumberInRange(1,9));
+            if(!num.equals(number[i])) {
+                number[i] = num;
+                numbers.append(num);
+            }
         }
     }
 
