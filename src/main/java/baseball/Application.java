@@ -50,7 +50,7 @@ public class Application {
             }
         }
         Map<String, Integer> analyzeResult = Map.of(
-                "Strike", strikeNumber,
+                "strike", strikeNumber,
                 "ball", ballNumber
         );
 
@@ -59,7 +59,7 @@ public class Application {
 
     public static boolean checkBall(char pitchingValue, String numbers) {
 
-        for (int pitchingCount = 1; pitchingCount < 3; pitchingCount++) {
+        for (int pitchingCount = 0; pitchingCount < 3; pitchingCount++) {
             if (pitchingValue == numbers.charAt(pitchingCount)) {
                 return true;
             }
