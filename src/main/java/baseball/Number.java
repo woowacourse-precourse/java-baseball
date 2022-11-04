@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Number {
     public void setRandomNumbers() {
@@ -29,5 +30,11 @@ public class Number {
         }
         return false;
     }
+
+    private boolean isNumber(String str) {
+        String pattern = "^[0-9]*$";
+        return !Pattern.matches(pattern, str);
+    }
+
 
 }
