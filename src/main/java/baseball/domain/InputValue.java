@@ -12,7 +12,6 @@ public class InputValue {
     private String input;
 
     public List<Integer> inputNum() {
-
         System.out.print("숫자를 입력해 주세요 : ");
         input = readLine().replaceAll("\\s", "");
 
@@ -25,6 +24,7 @@ public class InputValue {
 
     private List<Integer> returnList(String inputNum) {
         List<Integer> list = new ArrayList<>();
+
         for (int idx = 0; idx < inputNum.length(); idx++) {
             list.add(Integer.parseInt(
                     String.valueOf(inputNum.charAt(idx))));
