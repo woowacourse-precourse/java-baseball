@@ -9,6 +9,7 @@ public class InputView {
 
     private static final int NUM_SIZE = 3;
     private static final String RE_GAME = "1";
+    private static final String GAME_OVER = "2";
     private static final String THREE_SIZE_NUM_REGEX = "^[1-9]{3}$";
 
     public static String requestNum() {
@@ -39,7 +40,9 @@ public class InputView {
 
     static boolean validateRequestIsReGame(String input) {
         input = Utils.deleteAllSpace(input);
-
+        if (!input.equals(RE_GAME) && !input.equals(GAME_OVER)) {
+            throw new IllegalArgumentException();
+        }
         return input.equals(RE_GAME);
     }
 }
