@@ -92,27 +92,6 @@
 - **Game Class** 
   : 싱글톤 객체를 가진 클래스로 baseballGame을 진행한다.<br>
   <br>
-  *public static PlayerUser getInstance()*<br>
-  :클래스에서 만들어진 싱글톤 객체를 반환한다.<br>
-  <br>
-  *public String getNumber()*<br>
-  :playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.<br>
-  <br>
-  *private String enterNumber()*<br>
-  :사용자에게 세자리 수를 입력하게 한다.<br>
-  <br>
-  *private boolean isExceptionalInput(String number)*<br>
-  :사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
-  <br>
-  *private boolean isRightSize(String number)*<br>
-  :세자리 수인지 확인합니다.<br>
-  <br>
-  *private boolean isPositiveNumber(String number)*<br>
-  :음수나 특수문자가 없는지 확인합니다.<br>
-  <br>
-  *private boolean isNoDuplicatedNumber(String number)*<br>
-  :중복숫자가 없는지 확인합니다.<br>
-  <br>
 
 
 
