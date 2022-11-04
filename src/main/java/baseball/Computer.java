@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,6 +23,6 @@ public class Computer {
         if (numbers == null) {
             pickRandomNumbersFrom1To9();
         }
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 }
