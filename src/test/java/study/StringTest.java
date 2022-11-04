@@ -1,5 +1,6 @@
 package study;
 
+import baseball.Ball;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -46,5 +47,6 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
+
 
 }

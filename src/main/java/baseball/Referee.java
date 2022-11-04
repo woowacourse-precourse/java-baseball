@@ -25,6 +25,7 @@ public class Referee {
     }
 
     private void start() {
+        comBall.makeComputerBalls();
         giveHint();
     }
 
@@ -46,7 +47,6 @@ public class Referee {
     }
 
     public void giveHint() {
-        comBall.makeComputerBalls();
         while (!isAnswer()) {
             strike = 0;
             ball = 0;
