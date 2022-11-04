@@ -16,4 +16,12 @@ public class UserInput {
 
         return inputList;
     }
+
+    public boolean isStart(){
+        String input = Console.readLine();
+
+        if (input == "1")
+            return true;
+        return false;
+    }
 }
