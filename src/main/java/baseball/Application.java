@@ -65,7 +65,8 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 enterNumber.add(Character.getNumericValue(userEnterNumber.charAt(i)));
             }
-        } else {
+        }
+        if (isEnterNumberExcept(userEnterNumber)) {
             throw new IllegalArgumentException("정확한 세 자리 숫자를 입력해주세요");
         }
         return enterNumber;
@@ -86,7 +87,8 @@ public class Application {
     public static void caseOfAllStrike(String enterOneOrTwo) {
         if (enterOneOrTwo.equals("1")) {
             game();
-        } else if (!enterOneOrTwo.equals("2")) {
+        }
+        if (!enterOneOrTwo.equals("1") && !enterOneOrTwo.equals("2")) {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
         }
     }
