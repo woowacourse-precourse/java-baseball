@@ -1,5 +1,7 @@
 package baseball.playerUser;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class PlayerUser {
 	private static final PlayerUser instance = new PlayerUser();
 
@@ -10,5 +12,8 @@ public class PlayerUser {
 		return instance;
 	}
 
+	private String inputNumber() {
+		return Console.readLine();
+	}
 
 }
