@@ -64,6 +64,19 @@ public class BaseballGame extends Game {
     }
 
     private boolean playTurn(String input) {
+        List<Integer> turnResult = getGuessResult(input);
+        Messages.printScore(turnResult);
+        if(isGameOver(turnResult)) {
+            terminate();
+        }
+        return false;
+    }
+
+    private List<Integer> getGuessResult(String input) {
+        return List.of(0, 0);
+    }
+
+    private boolean isGameOver(List<Integer> turnResult) {
         return false;
     }
 

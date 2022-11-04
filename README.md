@@ -64,7 +64,7 @@
       
       - [X] operate
       - 게임 상태에 따라 입력을 처리합니다.
-        - [ ] playTurn
+        - [X] playTurn
         - 숫자 야구 게임 한 턴을 진행합니다.
           - [ ] getGuessResult
           - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 센다.
