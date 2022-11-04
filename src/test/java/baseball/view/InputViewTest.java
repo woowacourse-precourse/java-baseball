@@ -67,4 +67,14 @@ public class InputViewTest {
         String playerInputNumber = InputView.inputRestartOrEndNumber();
         assertThat(playerInputNumber).isEqualTo(input);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"A", "a", "11", "222", "1a"})
+    void 게임_끝난_후에_재시작_종료_수가_1이나_2가_아니면_예외_처리(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputRestartOrEndNumber)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] : 재시작 또는 종료 Number는 1, 2입니다. 그 외는 입력할 수 없습니다.");
+    }
 }
