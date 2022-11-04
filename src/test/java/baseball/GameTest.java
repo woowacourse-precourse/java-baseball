@@ -64,4 +64,11 @@ public class GameTest {
     assertEquals("2", outContent.toString());
   }
 
+  @Test
+  @DisplayName("유효성 검사 4. 유효하지 않은 값 확인")
+  public void generateNumberValidateIsStringUnavailable() {
+    Assertions.assertThatThrownBy(() -> {
+      game.generateNumberTest("3");
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
 }
