@@ -30,5 +30,10 @@ public class Computer {
         return numbers;
     }
 
+    public void insertNumber(){
+        int number = createRandomNumber();
+        if(!isAlreadyInNumbers(number)) putNumber(number);
+    }
+
 
 }
