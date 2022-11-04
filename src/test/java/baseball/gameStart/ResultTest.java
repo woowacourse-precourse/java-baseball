@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import baseball.domain.Game;
+import baseball.utils.Converter;
 import baseball.view.SystemMessage;
 
 public class ResultTest {
@@ -43,7 +44,9 @@ public class ResultTest {
         List<Integer> answer = List.of(1, 2, 3);
         List<String> resultList = List.of("낫싱", "3볼", "2볼 1스트라이크", "1스트라이크", "2볼", "3스트라이크");
         Game game = new Game(answer);
-        Map<String, Integer> result = game.getResult(input);
+        List<Integer> userAnswer = Converter.toIntegerList(input);
+        game.initializeResultMap();
+        Map<String, Integer> result = game.getResult(userAnswer);
         SystemMessage.printGameResult(result);
         Assertions.assertThat(resultList).contains(output());
     }

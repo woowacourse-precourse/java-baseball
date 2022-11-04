@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import baseball.domain.Game;
+import baseball.utils.Converter;
 import baseball.utils.RandomNumber;
 import baseball.utils.Validator;
 import baseball.view.RequestInput;
@@ -40,7 +41,8 @@ public class Service {
         String userInput = Console.readLine();
         Validator.checkUserAnswerInput(userInput);
         game.initializeResultMap();
-        Map<String, Integer> result = game.getResult(userInput);
+        List<Integer> userAnswer = Converter.toIntegerList(userInput);
+        Map<String, Integer> result = game.getResult(userAnswer);
         SystemMessage.printGameResult(result);
 
         return result.get("strike") == 3;

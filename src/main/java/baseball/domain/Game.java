@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import baseball.utils.Converter;
-
 public class Game {
     private List<Integer> answer = new ArrayList<>();
     private Map<String, Integer> resultMap;
@@ -16,9 +14,7 @@ public class Game {
         this.answer = randomNumberList;
     }
 
-    public Map<String, Integer> getResult(String userInput) {
-        List<Integer> userAnswer = Converter.toIntegerList(userInput);
-
+    public Map<String, Integer> getResult(List<Integer> userAnswer) {
         for (int index = 0; index < userAnswer.size(); index++) {
             Integer currentAnswer = answer.get(index);
             Integer currentUserAnswer = userAnswer.get(index);
