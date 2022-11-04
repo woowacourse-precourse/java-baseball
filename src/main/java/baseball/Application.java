@@ -1,35 +1,38 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 
 public class Application {
     public static void main(String[] args) {
 
         System.out.print("숫자를 입력해 주세요 : ");
+        System.out.println(UserInput.request());
+
 
     }
 }
 
 
 class UserInput {
-    public static int request() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
-}
+    private static String readLine = "";
+    public static String request() {
+        readLine = Console.readLine();
+        validLength();
+        isNumber();
 
-class InputNumber {
-    int inputNumber = 0;
-
-    InputNumber(int inputNumber) {
-        this.inputNumber = inputNumber;
-        validDigits();
+        return readLine;
     }
 
-    private void validDigits() {
-        if (inputNumber > 999 || inputNumber < 111) {
+    private static void validLength() {
+        if (readLine.length() != 3) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static void isNumber() {
+        Integer.parseInt(readLine);
     }
 }
 
@@ -38,19 +41,19 @@ class BaseballNumber {
 
     BaseballNumber(int baseballNumber) {
         divideDigits(baseballNumber);
-        validation();
+        NumberValidation();
     }
 
     private void divideDigits(int baseballNumber) {
-        String tmp = Integer.toString(baseballNumber);
-        String[] stringDigits = tmp.split("");
+        String numberToString = Integer.toString(baseballNumber);
+        String[] eachDigits = numberToString.split("");
 
-        for (int index = 0; index < stringDigits.length; index++) {
-            this.baseballNumber[index] = Integer.parseInt(stringDigits[index]);
+        for (int index = 0; index < eachDigits.length; index++) {
+            this.baseballNumber[index] = Integer.parseInt(eachDigits[index]);
         }
     }
 
-    private void validation() {
+    private void NumberValidation() {
         for (int index = 0; index < baseballNumber.length; index++) {
             validRange(baseballNumber[index]);
             validDuplication(baseballNumber[index], index);
@@ -75,4 +78,3 @@ class BaseballNumber {
     // 위치확인 함수
 
 }
-
