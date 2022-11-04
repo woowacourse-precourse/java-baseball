@@ -1,5 +1,6 @@
 package baseball.util;
 
+import baseball.GameConstants;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
@@ -7,9 +8,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RandomUtil {
-    public static final int NUMBER_LENGTH = 3;
-    public static final int NUMBER_MIN = 1;
-    public static final int NUMBER_MAX = 9;
 
     public static List<Integer> pickNumbers() {
         Set<Integer> randomNumbers = new HashSet<>();
@@ -18,7 +16,7 @@ public class RandomUtil {
     }
 
     public static void pickWithoutDuplicateNumbers(Set<Integer> randomNumbers) {
-        while (randomNumbers.size() < NUMBER_LENGTH) {
+        while (randomNumbers.size() < GameConstants.NUMBER_LENGTH) {
             int num = pickRandomNumber();
             if (!randomNumbers.contains(num)) {
                 randomNumbers.add(num);
@@ -27,7 +25,7 @@ public class RandomUtil {
     }
 
     public static int pickRandomNumber() {
-        return Randoms.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
+        return Randoms.pickNumberInRange(GameConstants.NUMBER_MIN, GameConstants.NUMBER_MAX);
     }
 
     public static List<Integer> toIntegerNumber(Set<Integer> randomNumbers) {

@@ -23,9 +23,8 @@ public class RandomTest {
     class PickNumbersTest {
         @Test
         void case1() {
-            int ballNumberLength = 3;
             assertThat(RandomUtil.pickNumbers().stream().distinct().count())
-                    .isEqualTo(ballNumberLength);
+                    .isEqualTo(GameConstants.NUMBER_LENGTH);
         }
     }
 
