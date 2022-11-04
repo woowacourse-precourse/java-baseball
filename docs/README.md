@@ -13,8 +13,8 @@ __1. generateRandomNumber__
    - 파라미터: (start, end)
 
 
-__2. setUserInput__
-   - 기능: 사용자로부터 서로 다른 세 개의 수를 입력받고 Game instance 의 변수에 저장한다. 입력값을 읽을 때는 ```camp.nextstep.edu.missionutils``` 의 ```Console```을 사용한다.
+__2. getUserInput__
+   - 기능: 사용자로부터 서로 다른 세 개의 수를 입력받고 List 형태로 반환한다. 입력값을 읽을 때는 ```camp.nextstep.edu.missionutils``` 의 ```Console```을 사용한다.
    - 잘못된 입력이 들어오면 게임을 종료한다. ```endGame()``` 함수 호출
    - 파라미터: None
    - 예외처리는 ```InputValidation``` 클래스의 ```isInputValid()``` 함수로 수행함
@@ -24,16 +24,35 @@ __3. endGame__
   - 기능: 게임을 종료한다는 메시지를 출력함
 
 
-__4. result__
-   - 기능: 사용자가 입력한 숫자와 1번에서 생성한 숫자를 비교하여 그 결과를 print 하고, length 2짜리 배열로 return 함
-     - { 볼 개수, 스트라이크 개수 }
-   - 파라미터: 컴퓨터가 생성한 랜덤 숫자, 사용자가 입력한 숫자
-
-
-__5. start__
+__4. start__
    - 기능: 게임을 실행하는 함수, 위 함수들을 이용하여 게임을 진행함
    - result 의 return 값에 따라 (즉, 3스트라이크가 나올 때까지) 게임을 반복하여 실행함
    - 파라미터: None
+
+
+__5. restart__
+- 기능: 게임을 재실행하는 함수, 사용자의 입력값이 1 이면 재시작하며 2 이면 종료한다.
+- 파라미터: None
+- 예외: 1이나 2가 아닌 다른 입력값이 들어왔을 때 ```isValidRestartInput()``` 함수를 이용해서 ```IllegalArgumentException``` 를 발생시킨다.
+
+
+### Hint Class
+- 사용자가 입력한 값을 게임의 정답과 비교하고 힌트를 출력하는 것과 관련된 함수들은 Hint Class 에 구현한다.
+
+__1. result__
+- 기능: 사용자가 입력한 숫자와 1번에서 생성한 숫자를 비교하여 length 2짜리 리스트로 return 함
+    - { 볼 개수, 스트라이크 개수 }
+- 파라미터: 컴퓨터가 생성한 랜덤 숫자, 사용자가 입력한 숫자
+
+
+__2. checkBall__
+- 기능: ball 의 개수를 리턴함 (0 혹은 1)
+- 파라미터: (사용자가 입력한 숫자 중 하나, game 인스턴스의 randomNum)
+
+
+__3. printResult__
+- 기능: ```result()``` 의 결과를 "1볼 1스트라이크" 와 같은 형태로 출력함
+- 파라미터: (result 가 담긴 리스트)
 
 ### InputValidation Class
 - 사용자의 입력값의 유효성을 검사하는 함수들은 InputValidation 클래스에 별도로 구현한다.
@@ -59,3 +78,7 @@ __3. isIntegerStr__
 - 기능: String input 에 중복되는 character 가 있는지 확인한다.
 - 파라미터: (input)
 
+
+__4.isValidRestartInput__
+- 기능: 재시작 여부에 대해 물었을 때의 입력값을 검사한다. (재시작은 1, 종료는 2)
+- 파라미터: (input)
