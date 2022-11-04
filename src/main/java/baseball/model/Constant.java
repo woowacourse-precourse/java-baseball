@@ -1,5 +1,8 @@
 package baseball.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public interface Constant {
     String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     String USER_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -16,6 +19,8 @@ public interface Constant {
     int MIN_NUMBER_VALUE = 1;
     int MAX_NUMBER_VALUE = 9;
 
-    int STRIKE_INDEX = 0;
-    int BALL_INDEX = 1;
+    int BALL_INDEX = 0;
+    int STRIKE_INDEX = 1;
+
+    List<Integer> THREE_STRIKE = Arrays.asList(0, 3);
 }
