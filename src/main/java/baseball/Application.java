@@ -51,10 +51,10 @@ public class Application {
     private static void validateInput(String input, int digit) {
         String tmpInput = input.trim();
 
-        String numberOnlyRegex = "^[0-9]+$";
+        String numberOnlyRegex = "^[1-9]+$";
         boolean matches = tmpInput.matches(numberOnlyRegex);
         if (!matches) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
         }
 
         if (tmpInput.length() != digit) {
