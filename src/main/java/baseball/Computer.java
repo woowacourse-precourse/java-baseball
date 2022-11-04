@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    List<Integer> computerNumber ;
+    List<Integer> computerNumber;
 
     public Computer(List<Integer> computer) {
         this.computerNumber = computer;

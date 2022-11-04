@@ -5,19 +5,27 @@ import java.util.ArrayList;
 public class Game {
 
     public static void play() {
+
         Computer computer = new Computer(new ArrayList<>());
         computer.random3NumberOutput();
-
-        Player player = new Player(new ArrayList<>());
-        player.player3NumberInput();
 
         Integer ballCount = 0;
         Integer strikeCount = 0;
 
-        strikeCount = strike(computer, player, strikeCount);
-        ballCount = ball(computer, player, ballCount);
+        while (strikeCount != 3) {
 
-        resultOutput(ballCount, strikeCount);
+            ballCount = 0;
+            strikeCount = 0;
+
+            Player player = new Player(new ArrayList<>());
+            player.player3NumberInput();
+
+            strikeCount = strike(computer, player, strikeCount);
+            ballCount = ball(computer, player, ballCount);
+
+            resultOutput(ballCount, strikeCount);
+
+        }
     }
 
     private static void resultOutput(Integer ballCount, Integer strikeCount) {
@@ -29,6 +37,10 @@ public class Game {
             System.out.println(ballCount + "볼");
         } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
