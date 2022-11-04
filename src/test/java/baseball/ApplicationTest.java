@@ -49,11 +49,12 @@ class ApplicationTest extends NsTest {
     void 힌트함수_테스트1(){
         int inputNum = 123;
         int comNum = 213;
-//        List<Integer> hint = Application.getHint(inputNum, comNum);
-//        int ball = hint.get(0);
-//        int strike = hint.get(1);
-//        assertThat(ball).isEqualTo(2);
-//        assertThat(strike).isEqualTo(1);
+        BaseBallGame baseBallGame = BaseBallGame.getGame();
+        List<Integer> hint = baseBallGame.getHint(inputNum, comNum);
+        int ball = hint.get(0);
+        int strike = hint.get(1);
+        assertThat(ball).isEqualTo(2);
+        assertThat(strike).isEqualTo(1);
 
     }
 
