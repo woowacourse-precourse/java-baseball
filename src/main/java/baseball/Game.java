@@ -59,7 +59,6 @@ public class Game {
 
     private List<Integer> stringToListInteger(String userAnswer) {
         return listToListInteger(List.of(userAnswer.split("")));
-
     }
 
     private List<Integer> listToListInteger(List<String> answerList) {
