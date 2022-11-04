@@ -67,7 +67,7 @@
   *public static PlayerUser getInstance()*<br>
   : PlayerUser 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
   <br>
-  *public void inputNumber()*<br>
+  *private void inputNumber()*<br>
   : 사용자에게 세자리 수를 입력하게 한다.<br>
   <br>
   *public String getInputNumber()*<br>
