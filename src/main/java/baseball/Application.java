@@ -19,6 +19,8 @@ public class Application {
 
             List<Integer> computer = getRandomInteger();
 
+            //랜덤 computer 수 맞추는 메서드 호출
+            guessComputerInteger(computer, scanner);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -41,6 +43,17 @@ public class Application {
             }
         }
         return result;
+    }
+
+    private static void guessComputerInteger(List<Integer> computer, Scanner scanner) throws IllegalArgumentException {
+        int exact = 0;  //1이면 3스트라이크로 종료, 0이면 이어서
+        while (exact == 0) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int inputNumber = scanner.nextInt();
+
+
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static void checkValidNextProgressNumber(int nextProgress) throws IllegalArgumentException {
