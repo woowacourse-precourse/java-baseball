@@ -29,4 +29,14 @@ public class ResultTest {
         int answer = 2;
         assertThat(result.getStrike()).isEqualTo(answer);
     }
+
+    @Test
+    void ballToStringTest() {
+        Result result = new Result();
+        assertThat(result.ballToString()).isEqualTo(null);
+        result.addBall();
+        result.addBall();
+        String answer = "2볼";
+        assertThat(result.ballToString()).isEqualTo(answer);
+    }
 }
