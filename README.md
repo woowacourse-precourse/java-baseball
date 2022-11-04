@@ -1,5 +1,28 @@
 # 미션 - 숫자 야구
 
+## 기능 구현 목록
+1. 컴퓨터 balls 생성
+   1. 랜덤 숫자 생성
+   2. 기존 balls 에 포함 되어있는지 확인
+   3. 아니라면 balls 에 insert
+   4. ball_count 3 일 때 까지 위 사항 반복
+2. balls 게임 전달
+   1. controller 통해 게임 실행 시 balls 값 접근
+3. 게임 반복
+   1. 야구 게임 status input
+      1. input 1 or 2 까지 반복 
+      2. 반복 실행 or 종료
+4. 야구 게임 기능
+   1. user input, exception
+      1. exception 발생 시 게임 종료
+   2. message 출력 
+   3. status input, 반복
+   4. user input, computer balls compare
+   5. 모두 맞췄을 경우
+      1. 종료 메세지 출력
+      2. do-while 문 종료
+
+---
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.

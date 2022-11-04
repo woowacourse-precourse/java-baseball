@@ -15,44 +15,56 @@ public class BaseballGame {
 
     public void play() {
         printStartMessage();
-        String statusInput;
         do {
-            runGame();
-            printRestartMessage();
-            statusInput = getStatusInput();
-        } while (Objects.equals(statusInput, RE_GAME));
+            Boolean doneGame = runGame();
+            if (!doneGame) {
+                return;
+            }
+        } while (checkStatus());
     }
 
-    public void runGame() {
+    public Boolean runGame() {
         List<Integer> balls = new Controller().getBalls();
         do {
             printInputMessage();
             String input;
             try {
-                input = getInput();
+                input = getBalls();
             } catch (IllegalArgumentException e) {
-                return;
+                // 종료 메세지 출력
+                return false;
             }
-            int[] userBalls = getUserBalls(input);
+            int[] userBalls = stringToArray(input);
             //값 비교
-        } while (true);
+        } while (false);
         // 모두 맞출때까지
+        printFinishMessage();
+        return true;
     }
 
-    public String getInput() throws IllegalArgumentException {
-        String input = readLine();
+    public String getInput() {
+        return readLine();
+    }
+
+    public String getBalls() throws IllegalArgumentException {
+        String input = getInput();
         if (checkInputException(input)) {
             throw new IllegalArgumentException("형식에 맞지 않음");
         }
         return input;
     }
 
-    public String getStatusInput() {
-        return readLine();
+    public int[] stringToArray(String input) {
+        return Stream.of(input).mapToInt(Integer::parseInt).toArray();
     }
 
-    public int[] getUserBalls(String input) {
-        return Stream.of(input).mapToInt(Integer::parseInt).toArray();
+    public Boolean checkStatus() {
+        while (true){
+            printRestartMessage();
+            String statusInput = getInput();
+            if (Objects.equals(statusInput, RE_GAME)) return true;
+            if (Objects.equals(statusInput, STOP_GAME)) return false;
+        }
     }
 
     public Boolean checkInputException(String input) {
