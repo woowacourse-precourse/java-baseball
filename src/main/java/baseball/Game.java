@@ -17,7 +17,12 @@ public class Game {
     private static final String INPUT_RESTART_EXCEPTION = "1 또는 2를 입력해주세요";
     private static final String NOTHING = "낫싱";
     private static final String BALL = "볼";
-    private static final String STRKIE = "스트라이크";
+    private static final String STRIKE = "스트라이크";
+    private static final int ZERO = 0;
+    private static final String INPUT_START = "1";
+    private static final String INPUT_END = "2";
+    private static final int END_GAME_STRIKE_CONDITION = 3;
+    private static final int DEFAULT_SIZE = 3;
 
     public void start() {
         System.out.println(START_GAME);
@@ -35,16 +40,16 @@ public class Game {
 
         System.out.println(RESTART_CONDITION);
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(INPUT_START)) {
             start();
-        } else if (!input.equals("2")) {
+        } else if (!input.equals(INPUT_END)) {
             throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
         }
     }
 
     private static String playMatch(List<Integer> computer, String result, List<Integer> user) {
-        int strike = 0;
-        int ball = 0;
+        int strike = ZERO;
+        int ball = ZERO;
         for (int i = 0; i < user.size(); i++) {
             strike = strike(computer, user, strike, i);
             ball = ball(computer, user, ball, i);
@@ -54,21 +59,21 @@ public class Game {
     }
 
     private static String makeResult(String result, int strike, int ball) {
-        if (ball == 0 && strike == 0) {
+        if (ball == ZERO && strike == ZERO) {
             result = NOTHING;
             System.out.println(result);
         }else {
-            if (strike == 0) {
+            if (strike == ZERO) {
                 result = ball + BALL;
                 System.out.println(result);
-            } else if (ball == 0) {
-                result = strike + STRKIE;
-                if (strike == 3) {
+            } else if (ball == ZERO) {
+                result = strike + STRIKE;
+                if (strike == END_GAME_STRIKE_CONDITION) {
                     result = END_GAME_CONDITION;
                 }
                 System.out.println(result);
             } else {
-                System.out.println(ball + BALL + " " + strike + STRKIE);
+                System.out.println(ball + BALL + " " + strike + STRIKE);
             }
         }
         return result;
@@ -103,14 +108,14 @@ public class Game {
     }
 
     private void validThreeLengthOrSize(int number, String message) {
-        if (number != 3) {
+        if (number != DEFAULT_SIZE) {
             throw new IllegalArgumentException(message);
         }
     }
 
     private static List<Integer> makeAnswer() {
         List<Integer> list = new ArrayList<>();
-        while (list.size() != 3) {
+        while (list.size() != DEFAULT_SIZE) {
             addBall(list, Randoms.pickNumberInRange(1, 9));
         }
         return list;
