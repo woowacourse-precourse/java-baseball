@@ -23,6 +23,7 @@ public class Game {
 
 		initBallAndStrike();
 		compareNumber(computer.getAnswer(), user.getNumber());
+		GameView.printHint(ball,strike);
 	}
 
 	private void initBallAndStrike() {
@@ -44,11 +45,4 @@ public class Game {
 		}
 	}
 
-	public int getBall() {
-		return ball;
-	}
-
-	public int getStrike() {
-		return strike;
-	}
 }
