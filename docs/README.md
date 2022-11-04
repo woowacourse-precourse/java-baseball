@@ -150,12 +150,12 @@ Return boolean
 
 <br/>
 
-## (9). printRestartMessage()
+## (9). startGame(String randomNum)
 
 1. **기능**
 
-- 스트라이크 개수가 3개일 때, 게임 재시작을 묻는 메시지 출력
-- `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
+- 하나의 게임 시작
+- 사용자 입력에 따른 비교 로직, 출력 포함
 
 2. **제한 사항**
 
@@ -163,7 +163,7 @@ Return boolean
 
 3. **Argument and Return**
 
-Argument: void
+Argument: String
 
 return void
 
