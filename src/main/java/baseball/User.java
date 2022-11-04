@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Compare.INPUT_LENGTH;
+import static baseball.InputValidator.checkIsValidThreeNumbers;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class User {
     public List<Integer> inputGuessRandomNumbers() {
         inputThreeNumbers = new ArrayList<>();
         String inputNumbers = Console.readLine();
+        checkIsValidThreeNumbers(inputNumbers);
         stringToList(inputNumbers);
         return inputThreeNumbers;
     }
