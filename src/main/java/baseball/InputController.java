@@ -29,6 +29,13 @@ public class InputController {
         }
     }
 
+    public static void validateFlagNum(String input) {
+        if (!isStringNumberInRange(input, 1, 2)
+                || !(Integer.parseInt(input) == 1 || Integer.parseInt(input) == 2)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
     public static List<Integer> getUniqueThreeNum() {
         String input = Console.readLine();
         InputController.validateThreeNum(input);
