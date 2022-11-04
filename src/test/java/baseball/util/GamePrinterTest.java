@@ -22,10 +22,9 @@ class GamePrinterTest {
         //given
         OutputStream out = setSystemOut();
         String message = "hello";
-        GamePrinter gamePrinter = GamePrinter.getInstance();
 
         //when
-        gamePrinter.print(message);
+        GamePrinter.print(message);
 
         //then
         assertThat(out.toString()).isEqualTo(message);
@@ -37,10 +36,9 @@ class GamePrinterTest {
         //given
         OutputStream out = setSystemOut();
         String message = "hello";
-        GamePrinter gamePrinter = GamePrinter.getInstance();
 
         //when
-        gamePrinter.println(message);
+        GamePrinter.println(message);
 
         //then
         assertThat(out.toString()).isEqualTo(message + "\n");
