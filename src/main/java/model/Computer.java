@@ -31,6 +31,49 @@ public class Computer {
         }
     }
 
+    // user에서 가져온 각자릿수 분리 메서드
+
+    public boolean isValidNumOfIndividually(String str) {
+        if (isNumOfIndividually(str)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
+        }
+    }
+
+
+    // 서로 다른 3자리의 수인지 확인
+    // 서로 다른 3자리의 수인지 확인하는 방법은?
+    // 1번을 for문 2번?
+    public boolean isNumOfIndividually(String str) {
+        List<Integer> splitStrList = getListStrArr2Split(str);
+        int cntSameNum = 0;
+        for (int value : splitStrList) {
+            cntSameNum = 0;
+            for (int index = 0; index < splitStrList.size(); index++) {
+                if (value == splitStrList.get(index)) {
+                    cntSameNum = cntSameNum + 1;
+                }
+            }
+            if (cntSameNum > 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List getListStrArr2Split(String str) {
+        String[] strArr = str.split("");
+        List<Integer> list = new ArrayList<>();
+        for (String value : strArr) {
+            list.add(Integer.valueOf(value));
+        }
+        return list;
+    }
+
+    // User에서 가져온 것
+
+
     @Override
     public String toString() {
         // 볼 0 , 스트라이크 0

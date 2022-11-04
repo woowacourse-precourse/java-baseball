@@ -26,6 +26,7 @@ public class ComputerTest {
 
     // TODO: 컴퓨터도 각각의 다른 숫자가 있어야한다.
 
+
     // computer Test
     @Test
     void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
