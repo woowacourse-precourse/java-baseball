@@ -11,7 +11,7 @@ public class BaseBallGame {
     }
 
     public void start() {
-        Printer.gameStartMessage();
+        Printer.printGameStart();
         init();
         play();
     }
@@ -23,6 +23,8 @@ public class BaseBallGame {
             GuessChecker.check(userGuess);
             result = Referee.judge(userGuess, computer.getRandomNumbers());
         } while (result == Referee.CONTINUATION);
+        Printer.printGameEnd();
+        Printer.printGameRestart();
     }
 
     private void init() {
@@ -30,7 +32,7 @@ public class BaseBallGame {
     }
 
     private String inputUserGuess() {
-        Printer.gameInputMessage();
+        Printer.printInputNumber();
         return Console.readLine();
     }
 }
