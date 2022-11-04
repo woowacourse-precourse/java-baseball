@@ -16,7 +16,7 @@ public class NumberScanner {
         }
 
         for (char c : input.toCharArray()) {
-            if (c == '0') {
+            if (c < 49 || c > 57) {
                 throw new IllegalArgumentException();
             }
         }
