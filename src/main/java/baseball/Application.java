@@ -19,6 +19,12 @@ public class Application {
         String userPicNumber = console.readLine();
 
     }
+    public static void arrUserNumber(String userPickNumber, List<String >listUserNumber ){
+        for(int i = 0; i<userPickNumber.length(); i++) {
+            char splitNumber = userPickNumber.charAt(i);
+           listUserNumber.add(String.valueOf(splitNumber));
+        }
+    }
 
 
 }
