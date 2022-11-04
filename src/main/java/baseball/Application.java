@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         play();
     }
 
@@ -32,6 +33,7 @@ public class Application {
     }
 
     public static String inputGuess() {
+        System.out.print("숫자를 입력해주세요 : ");
         String guess = Console.readLine();
         if (!isValid(guess)) {
             throw new IllegalArgumentException();
@@ -63,6 +65,5 @@ public class Application {
             result.show();
         }
         while (!guess.equals(answer));
-
     }
 }
