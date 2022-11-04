@@ -15,6 +15,10 @@ public class Player {
         this.input = Baseballs.of(playerInput);
     }
 
+    public Baseballs submitAnswer() {
+        return this.input;
+    }
+
     public boolean wantRestart(String playerInput) {
         validate(playerInput);
         if (playerInput.equals(WANT_RESTART)) {

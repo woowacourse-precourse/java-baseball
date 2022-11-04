@@ -20,6 +20,10 @@ public class Computer {
         this.answer = Baseballs.of(generateRandomAnswerInput());
     }
 
+    public Result resultBy(Player player) {
+        return this.answer.calculateResult(player.submitAnswer());
+    }
+
     private String generateRandomAnswerInput() {
         StringBuilder generatedRandomAnswerInput = new StringBuilder();
         List<Integer> candidateValues = generateProperRangedCandidateValues();
