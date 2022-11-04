@@ -12,11 +12,10 @@ public class Application {
         //프로그램 종료 의사를 확인하는 변수
 
         
-        // TODO : 1. 숫자 야구 게임 시작 문구 출력
+        // TODO : 1. 숫자 야구 게임 시작 문구 출력, 게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // TODO  : 7. 1을 입력 받으면 2. 에서 6. 까지의 과정을 다시 반복, 2을 입력 받으면 종료
-
         // 기능 2. 에서 6을 묶어놓은 baseballGameProcess()
         // 게임 한 번이 끝나면 다른 게임을 할 지 안 할 지 결과값을 리턴해준다
         while (baseballGameProcess()==1){
@@ -24,17 +23,12 @@ public class Application {
         }
     }
 
+    // 기능 2. 에서 6. 묶어놓은 함수
     private static int baseballGameProcess(){
-        int endTheProcess =1;
-        // TODO : 2. 컴퓨터가 가지고 있는 정답 문자열을 랜덤으로 지정
-        // TODO : (각 자리마다 숫자가 다르게)
-        String computer="";
-        while(computer.length() < 3){
-            int randomNumber = Randoms.pickNumberInRange(0,9);
-            if (!computer.contains(Integer.toString(randomNumber))){
-                computer += randomNumber;
-            }
-        }
+        int endTheProcess = 1;
+
+        String computer = makeComputerAnswer();
+
 
         // TODO : 5. 답을 맞추지 못하면 3. 다시 실행, 아니면 반복 멈춤
 
@@ -103,6 +97,22 @@ public class Application {
 
         return endTheProcess;
     }
+
+    // TODO : 2. 컴퓨터가 가지고 있는 정답 문자열을 랜덤으로 지정
+    // (각 자리마다 숫자가 다르게)
+    private static String makeComputerAnswer(){
+        String randomResult="";
+        while(randomResult.length() < 3){
+            int randomNumber = Randoms.pickNumberInRange(0,9);
+            if (!randomResult.contains(Integer.toString(randomNumber))){
+                randomResult += randomNumber;
+            }
+        }
+
+        return randomResult;
+    }
+
+
     //strike, ball 인지 판단하는 함수
     private static String checkIfStrikeOrBall(String computer, String findingNumber, int indexOfFindingNumber){
         if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) == findingNumber.charAt(0)) {
