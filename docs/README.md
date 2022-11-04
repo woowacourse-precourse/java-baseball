@@ -8,7 +8,7 @@
 |     🟩     |         구현 기능         |       메서드명        |
 |:----------:|:---------------------:|:-----------------:|
 |     ✅     |      게임 시작 문구 출력      |  getStartMessage  |
-|     🟩     |      컴퓨터 랜덤 값 생성      |  makeRandomValue  | 
+|     🟩     |      컴퓨터 랜덤 값 생성      |  getRandomValue   | 
 |     🟩     |        사용자 입력         |   getUserInput    |
 |     🟩     |   사용자 입력 Exception    |   makeException   |
 |     🟩     | 입력에 따라 볼, 스트라이크 개수 출력 |  countBallStrike  |
