@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 public class PlayerException {
 
     public boolean isNotNumber(String input){
-        return false;
+        return !Pattern.matches("^[1-9]*$", input);
     }
 
-    public void checkInput(String input){
+    public void checkException(String input){
 
     }
 
