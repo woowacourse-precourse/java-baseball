@@ -132,7 +132,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void checkBall4(){
-        assertThat(Application.checkBallCount(915, 159)).isEqualTo(2);
+        assertThat(Application.checkBallCount(915, 159)).isEqualTo(3);
     }
 
 

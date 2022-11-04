@@ -5,18 +5,19 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        while (true) {
-            int randomNumber = makeRandomNumber();
-            System.out.println(randomNumber);
-
-            int userInputNumber = userNumber();
-            playGame(randomNumber, userInputNumber);
-
-            if (restartOrEndGame() == 2) {
-                System.out.println("게임을 종료합니다.");
-                break;
-            }
-        }
+//        while (true) {
+//            int randomNumber = makeRandomNumber();
+//            System.out.println(randomNumber);
+//
+//            int userInputNumber = userNumber();
+//            playGame(randomNumber, userInputNumber);
+//
+//            if (restartOrEndGame() == 2) {
+//                System.out.println("게임을 종료합니다.");
+//                break;
+//            }
+//        }
+        System.out.println(checkBallCount(123, 143));
     }
 
 
@@ -60,9 +61,8 @@ public class Application {
 
 
     public static void playGame(int computerInput, int userInput) {
-        System.out.println("computerInput = " + computerInput);
-        System.out.println("userInput = " + userInput);
         int strikeCount = checkStrikeCount(computerInput, userInput);
+        int ballCount = checkBallCount(computerInput, userInput);
 
         while (true){
             if (strikeCount == 3) {
@@ -82,6 +82,20 @@ public class Application {
             if (computer.charAt(i) == user.charAt(i)) strike++;
         }
         return strike;
+    }
+
+
+    public static int checkBallCount(int computerInput, int userInput) {
+        int ball =0;
+        String computer = ""+computerInput;
+        String user = ""+userInput;
+
+        for (int i = 0; i < 3; i++) {
+            String s = String.valueOf(user.charAt(i));
+            if (computer.contains(s) && computer.charAt(i)!=user.charAt(i)) ball++;
+        }
+
+        return ball;
     }
 
 
