@@ -28,4 +28,9 @@ public class Ball {
                 .distinct()
                 .count();
     }
+
+    @Override
+    public String toString() {
+        return numberBall;
+    }
 }
