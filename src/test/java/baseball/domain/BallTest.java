@@ -24,6 +24,8 @@ class BallTest {
 
     @Test
     public void ballStrikeTest() throws Exception {
+        assertThat(Ball.of(3, 1).eachBallMatch(computerBall))
+            .isEqualTo(BallStatus.STRIKE);
     }
 
     @Test

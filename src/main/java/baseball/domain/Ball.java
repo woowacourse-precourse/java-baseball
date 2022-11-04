@@ -17,6 +17,13 @@ public class Ball {
         return new Ball(givenBallNumber, givenLocation);
     }
 
+    public BallStatus eachBallMatch(Ball computerBall) {
+        if (this.equals(computerBall)) {
+            return BallStatus.STRIKE;
+        }
+        return BallStatus.BALL;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -39,10 +46,6 @@ public class Ball {
         int result = ballNumber != null ? ballNumber.hashCode() : 0;
         result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
-    }
-
-    public BallStatus eachBallMatch(Ball computerBall) {
-        return BallStatus.BALL;
     }
 
 }
