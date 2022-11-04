@@ -21,4 +21,14 @@ public class ComputerTest {
         Set<Integer> numberSet = new HashSet<>(targetNumber);
         assertThat(targetNumber.size()).isEqualTo(numberSet.size());
     }
+    @Test
+    void compare_test() {
+        computer.targetNumber = List.of(1,2,3);
+        assertThat(computer.compare(List.of(1, 2, 3)).strike == 3);
+        assertThat(computer.compare(List.of(1, 2, 3)).ball == 0);
+        assertThat(computer.compare(List.of(2, 1, 3)).strike == 1);
+        assertThat(computer.compare(List.of(2, 1, 3)).ball == 2);
+        assertThat(computer.compare(List.of(4, 5, 6)).strike == 0);
+        assertThat(computer.compare(List.of(4, 5, 6)).ball == 0);
+    }
 }
