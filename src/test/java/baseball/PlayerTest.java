@@ -34,4 +34,23 @@ public class PlayerTest {
         number = "d32";
         assertThat(player.isNumber(number)).isEqualTo(result);
     }
+
+    @Test
+    void isThreeLetterTest() {
+        Player player = new Player();
+        boolean result = true;
+        String number = "omg";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+        number = "007";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+        number = "178";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+        result = false;
+        number = "12";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+        number = "2345";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+        number = "";
+        assertThat(player.isThreeLetter(number)).isEqualTo(result);
+    }
 }
