@@ -14,6 +14,7 @@ public class NumberController {
 
     public static boolean isStringNumberInRange(String input, int start, int end) {
         String range = String.format("^[%d-%d]*$",start, end);
+
         return (Pattern.matches(range, input) && input != null);
     }
 
@@ -22,7 +23,6 @@ public class NumberController {
 
         while (numberList.size() < MAX_NUMBER_OF_DIGIT) {
             int tempNum = Randoms.pickNumberInRange(MIN_NUMBER_OF_RANGE,MAX_NUMBER_OF_RANGE);
-
             if (!numberList.contains(tempNum)) {
                 numberList.add(tempNum);
             }
