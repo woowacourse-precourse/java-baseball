@@ -11,6 +11,10 @@ public class GameResult {
     private static final String END_GAME_PHRASE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int CNT_NUMBER = 3;
 
+    public void printGameResult(String result) {
+        System.out.println(result);
+    }
+
     public String getGameResult(List<Integer> computerNumbers, List<Integer> answer) {
         int strikeCount = countStrike(computerNumbers, answer);
         int ballCount = countBall(computerNumbers, answer);
