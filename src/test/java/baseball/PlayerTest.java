@@ -36,10 +36,20 @@ public class PlayerTest {
     }
 
     @Test
-    void 두명의_플레이어가_플레이() {
+    void 두명의_플레이어가_플레이_3스트라이크() {
         Player player = new Player(List.of(1, 2, 3));
         Player otherPlayer = new Player(List.of(1, 2, 3));
         GameResult gameResult = player.playGame(otherPlayer);
+
         assertThat(gameResult).isEqualTo(new GameResult(3, 0));
+    }
+
+    @Test
+    void 두명의_플레이어가_플레이_3볼() {
+        Player player = new Player(List.of(1, 2, 3));
+        Player otherPlayer = new Player(List.of(3, 1, 2));
+        GameResult gameResult = player.playGame(otherPlayer);
+
+        assertThat(gameResult).isEqualTo(new GameResult(0, 3));
     }
 }
