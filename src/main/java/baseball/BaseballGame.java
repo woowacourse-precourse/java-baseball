@@ -1,13 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import static baseball.Constant.*;
 
 public class BaseballGame {
     private static Computer computer;
@@ -26,7 +19,7 @@ public class BaseballGame {
         computer.putAnswer();
         while (true) {
             List<Integer> results = checkResultOfEnteredValue();
-            if(isThreeStrike(results)) {
+            if (isThreeStrike(results)) {
                 Output.showGameCompleteMessage();
                 break;
             }

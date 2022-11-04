@@ -14,8 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    //pickNumInRange를 검증??
-
     @Nested
     @DisplayName("컴퓨터 ->")
     class ComputerTest {
@@ -204,7 +202,7 @@ class ApplicationTest extends NsTest {
                 assertThat(computer.returnResult(List.of(7, 3, 8))).isEqualTo(List.of(0, 0));
             }
         }
-        // 재입력 테스트..? 근데 이게 단위테스트가 맞나?
+        // 의문 : 재입력 테스트..? 근데 이게 단위테스트가 맞나? 뭔가 "행동"에 관련된 테스트 아냐?? 음....
     }
 
     @Test
