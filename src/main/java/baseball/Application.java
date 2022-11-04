@@ -122,6 +122,19 @@ public class Application {
         }
     }
 
+    private static String isAnswer(int strike) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String user_input = Console.readLine();
+            validateGameStart(user_input);
+
+            return user_input;
+        }
+
+        return "1";
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer_num = createRandomNumber();
@@ -136,12 +149,9 @@ public class Application {
             int ball = countBall(computer_num, user_num, strike);
             System.out.println(setHint(ball, strike));
 
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                user_input = Console.readLine();
-                validateGameStart(user_input);
-                if (user_input.equals("2")) {break;}
+            user_input = isAnswer(strike);
+
+            if (strike == 3 && user_input.equals("1")) {
                 computer_num = createRandomNumber();
             }
         }
