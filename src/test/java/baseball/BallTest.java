@@ -30,4 +30,11 @@ class BallTest {
         // then
         assertThat(ball.getNumber()).isEqualTo(1);
     }
+
+    @Test
+    void 잘못된_입력이_들어온_경우_Exception_반환() {
+        assertThatThrownBy(() -> new Ball(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Const.WRONG_INPUT);
+    }
 }
