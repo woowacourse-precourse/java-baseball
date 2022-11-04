@@ -43,4 +43,15 @@ public class Computer {
         }
         return 2;
     }
+
+    public void addJudgement(Result result, int index, int digit) {
+        int judgement = judgeDigit(index, digit);
+        if (judgement == 1) {
+            result.addBall();
+            return;
+        }
+        if (judgement == 2) {
+            result.addStrike();
+        }
+    }
 }
