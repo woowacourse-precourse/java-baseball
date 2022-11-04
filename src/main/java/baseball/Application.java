@@ -8,8 +8,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        Game();
-
         int[] randomNum = new int[3]; // 서로다른 3개 숫자
         Random rand = new Random();
 
@@ -22,18 +20,24 @@ public class Application {
             }
             System.out.println("num: " + randomNum[count]);
         }
+
+
+        while(Game(randomNum)){
+            Game(randomNum);
+        }
     }
 
-    public static boolean Game(){
+    public static boolean Game(int[] randomNum){
         boolean result = false;
 
         Scanner sc = new Scanner(System.in);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-        String userNum = sc.nextLine();
+        int userNum = sc.nextInt();
 
         System.out.println("userNum: " + userNum);
+
 
 
         return result;
