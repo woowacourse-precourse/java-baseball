@@ -12,10 +12,7 @@ public class Game {
 
         List<Integer> computer = new ArrayList<>();
         while (computer.size() != 3) {
-            int random = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(random)) {
-                computer.add(random);
-            }
+            addBall(computer, Randoms.pickNumberInRange(1, 9));
         }
 
         String result = "";
@@ -32,7 +29,7 @@ public class Game {
                     if (user.contains(ball)) {
                         throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
                     }
-                    user.add(ball);
+                    addBall(user, ball);
                 }
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException(e.getMessage());
@@ -70,6 +67,12 @@ public class Game {
             start();
         } else if (!input.equals("2")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
+        }
+    }
+
+    private static void addBall(List<Integer> list, int random) {
+        if (!list.contains(random)) {
+            list.add(random);
         }
     }
 }
