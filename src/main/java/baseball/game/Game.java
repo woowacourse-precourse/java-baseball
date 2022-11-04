@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import baseball.computer.Computer;
 import baseball.counter.Counter;
@@ -8,13 +8,22 @@ import baseball.io.UserInput;
 
 public class Game {
 
+    private final Result result;
     private final Computer computer;
     private final Counter counter;
     private UserInput userInput;
 
-    public Game(Computer computer, Counter counter) {
+    public Game(Result result, Computer computer, Counter counter) {
+        this.result = result;
         this.computer = computer;
         this.counter = counter;
+    }
+
+    private GameResult getGameResult() {
+        int strikeCount = counter.getStrikeCount();
+        int ballCount = counter.getBallCount();
+
+        return result.getGameResult(strikeCount, ballCount);
     }
 
     private void play() {
