@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 
 public class Input {
 
+    private static final String REQUEST_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+
     public List<Integer> inputUserBalls() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(REQUEST_NUMBERS_MESSAGE);
         return Arrays.stream(getSplit())
                 .map(Integer::parseInt)
                 .collect(Collectors.toUnmodifiableList());
