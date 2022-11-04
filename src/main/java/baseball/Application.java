@@ -42,6 +42,14 @@ public class Application {
         return ret;
     }
 
+    public static Boolean userWantToContinueGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Integer readInteger = ConsoleReader.readInteger();
+        if(readInteger.equals(1))
+            return true;
+        return false;
+    }
+
     interface StringConst {
         String BALL = "볼";
         String STRIKE = "스트라이크";
