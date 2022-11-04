@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     static List<Character> computerNumber;
@@ -11,6 +12,7 @@ public class Application {
     static String startMessage = "숫자 야구 게임을 시작합니다.";
     static String inputMessage = "숫자를 입력해 주세요: ";
     static String threeStrikeMessage = "3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -133,5 +135,10 @@ public class Application {
     public static void checkUserInputIsThreeStrike(String userInput) {
         int strikeCount = checkStrike(userInput);
         System.out.println(threeStrikeMessage);
+    }
+
+    public static String readeUserInput() {
+        String userInput = scanner.nextLine();
+        return userInput;
     }
 }
