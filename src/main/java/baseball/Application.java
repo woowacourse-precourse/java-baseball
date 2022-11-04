@@ -17,6 +17,7 @@ public class Application {
                 numbers.append(num);
             }
         }
+        return numbers.toString();
     }
 
     public void gameStartMessage (){
