@@ -58,4 +58,13 @@ public class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] : 입력하는 수는 서로 다른 수여야합니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2"})
+    void 게임_끝난_후에_재시작_종료_수_입력_받기(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String playerInputNumber = InputView.inputRestartOrEndNumber();
+        assertThat(playerInputNumber).isEqualTo(input);
+    }
 }
