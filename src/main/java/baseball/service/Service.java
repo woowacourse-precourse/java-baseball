@@ -39,6 +39,7 @@ public class Service {
         RequestInput.requestAnswer();
         String userInput = Console.readLine();
         Validator.checkUserAnswerInput(userInput);
+        game.initializeResultMap();
         Map<String, Integer> result = game.getResult(userInput);
         SystemMessage.printGameResult(result);
 

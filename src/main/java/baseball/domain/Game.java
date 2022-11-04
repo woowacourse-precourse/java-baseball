@@ -10,28 +10,32 @@ import baseball.utils.Converter;
 
 public class Game {
     private List<Integer> answer = new ArrayList<>();
+    private Map<String, Integer> resultMap;
 
     public Game(List<Integer> randomNumberList) {
         this.answer = randomNumberList;
     }
 
     public Map<String, Integer> getResult(String userInput) {
-        Map<String, Integer> resultMap = new HashMap<>() {{
-            put("ball", 0);
-            put("strike", 0);
-        }};
-
         List<Integer> userAnswer = Converter.toIntegerList(userInput);
+
         for (int index = 0; index < userAnswer.size(); index++) {
             Integer currentAnswer = answer.get(index);
             Integer currentUserAnswer = userAnswer.get(index);
 
-            countScore(resultMap, currentAnswer, currentUserAnswer);
+            countScore(currentAnswer, currentUserAnswer);
         }
         return resultMap;
     }
 
-    private void countScore(Map<String, Integer> resultMap, Integer currentAnswer, Integer currentUserAnswer) {
+    public void initializeResultMap() {
+        this.resultMap = new HashMap<>() {{
+            put("ball", 0);
+            put("strike", 0);
+        }};
+    }
+
+    private void countScore(Integer currentAnswer, Integer currentUserAnswer) {
         if (isStrike(currentAnswer, currentUserAnswer)) {
             resultMap.put("strike", resultMap.get("strike") + 1);
         }
