@@ -47,6 +47,7 @@ public class BaseballGame {
                 isUserWin = numberComparator.isUserWin(user, computer);
             } while (!isUserWin);
             System.out.println(WIN_GAME);
+            isPlaying = continueGame();
         }
     }
 
@@ -56,5 +57,22 @@ public class BaseballGame {
 
         errorChecker.checkUserNumberError(input);
         user.makeNewNumbers(input);
+    }
+
+    private boolean continueGame() throws IllegalArgumentException {
+        System.out.println(GAME_CONTINUE);
+
+        String input = Console.readLine();
+        errorChecker.checkContinueGameError(input);
+
+        int inputCode = Integer.parseInt(input);
+        if (inputCode == RESTART_GAME) {
+            return true;
+        }
+        if (inputCode == EXIT_GAME) {
+            System.out.println(FINISH_GAME);
+            return false;
+        }
+        return false;
     }
 }
