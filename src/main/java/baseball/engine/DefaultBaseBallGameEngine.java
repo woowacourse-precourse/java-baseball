@@ -31,7 +31,9 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
 
     @Override
     public Numbers parseToNumbers(String number) {
-        validateStringNumber(number);
+        if (number == null || isNotValidNumber(number)) {
+            throw new IllegalArgumentException();
+        }
 
         return new Numbers(number.chars()
                 .map(Character::getNumericValue)
@@ -40,17 +42,15 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
         );
     }
 
-    private void validateStringNumber(String stringNumber) {
+    private boolean isNotValidNumber(String stringNumber) {
         if (stringNumber.length() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            return true;
         }
 
         long count = stringNumber.chars()
                 .filter(Character::isDigit)
                 .count();
 
-        if (count != NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
-        }
+        return count != NUMBERS_SIZE;
     }
 }
