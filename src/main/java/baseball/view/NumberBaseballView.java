@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.common.Constants;
 import baseball.controller.dto.UserInputPlayNumbers;
+import baseball.controller.dto.UserInputRestartCode;
 import baseball.model.gameresult.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -23,5 +24,12 @@ public class NumberBaseballView {
 
 	public void endPage() {
 		System.out.println(Constants.END_GAME_MESSAGE);
+	}
+
+	public UserInputRestartCode restartPage() {
+		System.out.println(Constants.GAME_RESTART_MESSAGE);
+		String userInput = Console.readLine();
+
+		return new UserInputRestartCode(userInput);
 	}
 }

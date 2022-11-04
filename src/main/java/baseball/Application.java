@@ -8,6 +8,9 @@ public class Application {
 		NumberBaseballController numberBaseballController = new NumberBaseballController();
 
 		numberBaseballController.initGame();
-		numberBaseballController.playBall();
+
+		do {
+			numberBaseballController.playBall();
+		} while (numberBaseballController.restart());
 	}
 }
