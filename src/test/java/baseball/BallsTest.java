@@ -36,4 +36,9 @@ public class BallsTest {
 
 		assertThat(balls).isEqualTo(ballsToCompare);
 	}
+
+	@Test
+	void 임의의_값으로_정상적인_객체_생성() {
+		//TODO
+	}
 }

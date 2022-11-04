@@ -1,12 +1,17 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Balls {
 	public static final int FIRST = 0;
 	public static final int MIDDLE = 1;
 	public static final int LAST = 2;
+	public static final int START_INCLUSIVE = 1;
+	public static final int END_INCLUSIVE = 9;
 
 	private List<Ball> balls;
 
@@ -32,6 +37,26 @@ public class Balls {
 
 	public static Balls create(String consoleInput) {
 		return new Balls(consoleInput);
+	}
+
+	public static Balls createRandom() {
+		ArrayList<Integer> randomNumbers = getRandomNumbers();
+		return Balls.create(
+			randomNumbers.get(FIRST),
+			randomNumbers.get(MIDDLE),
+			randomNumbers.get(LAST)
+		);
+	}
+
+	private static ArrayList<Integer> getRandomNumbers() {
+		ArrayList<Integer> randomNumbers = new ArrayList<>();
+		while (randomNumbers.size() < 3) {
+			int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+			if (!randomNumbers.contains(randomNumber)) {
+				randomNumbers.add(randomNumber);
+			}
+		}
+		return randomNumbers;
 	}
 
 	public GameResult getGameResult(Balls otherBalls) {
