@@ -17,7 +17,7 @@ public class Input {
   // 테스트용 메소드
   public void printInputString(String inputString) {
     validStringLength(inputString);
-    System.out.println(stringToList(inputString)); // [1, 2, 3]
+    System.out.println(stringToList(inputString));
   }
 
   private List<Character> stringToList(String inputString) {
