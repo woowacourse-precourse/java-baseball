@@ -78,4 +78,12 @@ public class Computer {
         }
     }
 
+    // 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임을 종료
+    public boolean isCorrect() {
+        if (strikeCnt == 3) {
+            return true;
+        }
+        return false;
+    }
+
 }
