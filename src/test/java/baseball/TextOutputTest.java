@@ -14,4 +14,9 @@ public class TextOutputTest {
     void INPUT_GUIDE_숫자_입력_문구_출력() {
         assertThat(Game.INPUT_GUIDE).isEqualTo("숫자를 입력해주세요 : ");
     }
+
+    @Test
+    void RESTART_OR_EXIT_재시작_및_종료_문구_출력() {
+        assertThat(Game.RESTART_OR_EXIT).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
 }
