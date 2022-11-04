@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-//        Operator op = new Operator();
-//        op.playGame();
+        Operator op = new Operator();
+        op.playGame();
 
     }
 }
@@ -38,10 +38,32 @@ class Player {
         this.number = num;
     }
 }
-//class Operator {
-//    Computer com;
-//    public void playGame() {
-//        com.setNumber();
-//
-//    }
-//}
+class Operator {
+    Computer computer;
+    Player player;
+    private int ballCount;
+    private int strikeCount;
+    private boolean correctAnswer;
+    public Operator() {
+        computer = new Computer();
+        player = new Player();
+        ballCount = 0;
+        strikeCount = 0;
+        correctAnswer = false;
+    }
+    public void playGame() {
+        computer.setNumber();
+        while(!false) {
+            player.inputNumber();
+            compareNumber();
+            showResult();
+        }
+    }
+    public int compareNumber() {
+
+    }
+    public void showResult() {
+
+    }
+
+}
