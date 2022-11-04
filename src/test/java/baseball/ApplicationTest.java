@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -12,6 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    private GameManager gameManager;
+
+    @BeforeEach
+    void beforeEach() {
+        gameManager = new GameManager();
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(() -> {
@@ -30,26 +40,25 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    @Test
-    void 컴퓨터_랜덤숫자_크기_테스트() throws Exception {
-        GameManager gameManager = new GameManager();
+    @Nested
+    class randomNumberTest {
+        @Test
+        void 컴퓨터_랜덤숫자_크기_테스트() throws Exception {
+            gameManager.createComputerBaseballNumber();
+            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
 
-        int result = 3;
-        gameManager.createComputerBaseballNumber();
+            int result = 3;
 
-        List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
+            assertThat(computerRandomNumbers.size()).isEqualTo(result);
+        }
 
-        assertThat(computerRandomNumbers.size()).isEqualTo(result);
-    }
+        @Test
+        void 컴퓨터_랜덤값_숫자인지_확인() throws Exception {
+            gameManager.createComputerBaseballNumber();
+            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
 
-    @Test
-    void 컴퓨터_랜덤값_숫자인지_확인() throws Exception {
-        GameManager gameManager = new GameManager();
-
-        gameManager.createComputerBaseballNumber();
-        List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
-
-        assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
+            assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
+        }
     }
 
     Object getPrivateField(String name, Object transferObject) throws Exception {
