@@ -24,8 +24,11 @@ public class NumberTest {
         list.add(new Number(2));
         list.add(new Number(1));
         list.add(new Number(6));
+
+        Numbers numbers = new Numbers(list);
+
         IllegalArgumentException exception =
-                assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
+                assertThrows(IllegalArgumentException.class, () -> numbers.isValidSize(list));
         assertEquals("입력은 3자리 숫자만 가능합니다.", exception.getMessage());
     }
 
@@ -36,8 +39,10 @@ public class NumberTest {
         list.add(new Number(2));
         list.add(new Number(2));
 
+        Numbers numbers = new Numbers(list);
+
         IllegalArgumentException exception =
-                assertThrows(IllegalArgumentException.class, () -> new Numbers(list));
+                assertThrows(IllegalArgumentException.class, () -> numbers.isDuplicate(list));
         assertEquals(Messages.duplicateNumber, exception.getMessage());
     }
 
