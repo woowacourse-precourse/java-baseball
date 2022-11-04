@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -26,6 +27,17 @@ class ApplicationTest extends NsTest {
         int[] arr = {1, 2, 3, 4, 5, 6};
         int[] subArray = Application.subArray(arr, 1, 3);
         assertThat(subArray).isEqualTo(new int[]{2, 3, 4});
+    }
+
+    @Test
+    void isValidNumbersForGameTest() {
+        SoftAssertions softAssert = new SoftAssertions();
+        softAssert.assertThat(Application.isValidNumbersForGame("")).isFalse();
+        softAssert.assertThat(Application.isValidNumbersForGame("34a")).isFalse();
+        softAssert.assertThat(Application.isValidNumbersForGame("23")).isFalse();
+        softAssert.assertThat(Application.isValidNumbersForGame("151")).isFalse();
+        softAssert.assertThat(Application.isValidNumbersForGame("204")).isFalse();
+        softAssert.assertThat(Application.isValidNumbersForGame("123")).isTrue();
     }
 
     @Test
