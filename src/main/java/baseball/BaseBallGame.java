@@ -120,7 +120,7 @@ class BaseBallGame {
         return Integer.parseInt(randomDiff3DigitNumber);
     }
 
-    private List<Integer> getHint(int userNumber, int computerNumber) {
+    public List<Integer> getHint(int userNumber, int computerNumber) {
         List<Integer> userNumList = new ArrayList<>(Arrays.asList(userNumber / 100, userNumber % 100 / 10, userNumber % 10 / 1));
         List<Integer> computerNumList = new ArrayList<>(
                 Arrays.asList(computerNumber / 100, computerNumber % 100 / 10, computerNumber % 10 / 1));
