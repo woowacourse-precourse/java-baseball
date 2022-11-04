@@ -1,10 +1,13 @@
 package baseball.entity;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
+    private static final int MINIMUM_VALUE_OF_NUMBER = 1;
+    private static final int MAXIMUM_VALUE_OF_NUMBER = 9;
     List<Integer> numbers;
 
     public Computer(){
@@ -12,7 +15,7 @@ public class Computer {
     }
 
     public int createRandomNumber(){
-        return 1;
+        return Randoms.pickNumberInRange(MINIMUM_VALUE_OF_NUMBER, MAXIMUM_VALUE_OF_NUMBER);
     }
 
     public void putNumber(int number){
