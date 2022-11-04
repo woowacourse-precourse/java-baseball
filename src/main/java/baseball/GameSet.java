@@ -8,8 +8,8 @@ import java.util.List;
 
 
 public class GameSet {
-    private static List<Integer> computerAnswer;
-    private static List<Integer> userAnswer;
+    private List<Integer> computerAnswer;
+    private List<Integer> userAnswer;
     private static int strikeCount;
     private static int ballCount;
 
@@ -17,7 +17,7 @@ public class GameSet {
         setComputerAnswer();
     }
     //랜덤으로 3자리수 숫자 만들어주는 함수
-    public static void setComputerAnswer(){
+    public void setComputerAnswer(){
         computerAnswer = new ArrayList<>();
         while(computerAnswer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -27,7 +27,7 @@ public class GameSet {
         }
     }
     //게임을 시작하는 함수
-    public static void playBaseballGame(){
+    public void playBaseballGame(){
         PrintMessage.inputUserNum();
         String inputNumber = Console.readLine();
     //    System.out.println(computerAnswer);
@@ -37,7 +37,7 @@ public class GameSet {
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
     // 입력값을 List<Integer> 형태로 변환해주는 함수
-    public static List<Integer> scanUserAnswer(String inputNumber){
+    public List<Integer> scanUserAnswer(String inputNumber){
         List<String> inputArray = List.of(inputNumber.split(""));
         List<Integer> userSolution = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class GameSet {
         return userSolution;
     }
     // 볼과 스트라이크 갯수를 세어주는 함수
-    public static void compareAnswer(){
+    public void compareAnswer(){
         strikeCount = 0;
         ballCount = 0;
         for(int i = 0; i < userAnswer.size(); i++){
@@ -60,7 +60,7 @@ public class GameSet {
             }
         }
     }
-    public static boolean isGameEnd(){
+    public boolean isGameEnd(){
         if(strikeCount == 3){
             PrintMessage.answerMessage();
             PrintMessage.gameContinue();
