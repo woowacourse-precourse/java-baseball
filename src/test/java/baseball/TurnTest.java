@@ -198,4 +198,12 @@ public class TurnTest {
         assertThat(turn.isStrikeOut()).isEqualTo(false);
     }
 
+    @Test
+    void printGameOverMessage_test_print_message() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Turn turn = new Turn();
+        turn.printGameOverMessage();
+        assertThat(out.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\r\n");
+    }
 }
