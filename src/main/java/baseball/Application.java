@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException{
+    public static void main(String[] args) throws IllegalArgumentException {
         Operator op = new Operator();
         while (op.getRestart()) {
             op.playGame();
@@ -36,6 +35,7 @@ class Computer {
     public List<Integer> getNumber() {
         return number;
     }
+
     public void showInputStatement() {
         System.out.println("서로 다른 숫자 3자리 수를 입력하세요");
     }
@@ -44,20 +44,19 @@ class Computer {
 class Player {
     private List<Integer> number;
 
-    public void inputNumber() throws IllegalArgumentException{
+    public void inputNumber() throws IllegalArgumentException {
         List<Integer> numberList = new ArrayList<>();
         int num;
         try {
             num = Integer.parseInt(Console.readLine());
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
         }
         while (num > 0) {
             numberList.add(num % 10);
             num /= 10;
         }
-        if(!Operator.isCorrectNumber(numberList)) {
+        if (!Operator.isCorrectNumber(numberList)) {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
         }
         Collections.reverse(numberList);
@@ -86,7 +85,7 @@ class Operator {
         restart = true;
     }
 
-    public void playGame() throws IllegalArgumentException{
+    public void playGame() throws IllegalArgumentException {
         showStartStatement();
         computer.setNumber();
         while (!correctAnswer) {
@@ -109,12 +108,13 @@ class Operator {
         List<Integer> playerNumber = player.getNumber();
         for (int i = 0; i < computerNumber.size(); i++) {
             int index = playerNumber.indexOf(computerNumber.get(i));
-            if (index != -1) {
-                if (index == i) {
-                    strike++;
-                } else {
-                    ball++;
-                }
+            if (index == -1) {
+                continue;
+            }
+            if (index == i) {
+                strike++;
+            } else {
+                ball++;
             }
         }
         ballCount = ball;
@@ -123,24 +123,29 @@ class Operator {
             correctAnswer = true;
         }
     }
+
     public static boolean isCorrectNumber(List<Integer> numberList) {
-        if(numberList.size() != 3) return false;
+        if (numberList.size() != 3) {
+            return false;
+        }
         HashMap<Integer, Integer> mapNumber = new HashMap<>();
-        for(Integer num: numberList) {
-            if(mapNumber.containsKey(num)) return false;
-            else mapNumber.put(num, 1);
+        for (Integer num : numberList) {
+            if (mapNumber.containsKey(num)) {
+                return false;
+            } else {
+                mapNumber.put(num, 1);
+            }
         }
         return true;
     }
 
-    public void inputWhetherToRestart() throws IllegalArgumentException{
+    public void inputWhetherToRestart() throws IllegalArgumentException {
         String inputString = Console.readLine();
         if (inputString.equals("1")) {
             restart = true;
         } else if (inputString.equals("2")) {
             restart = false;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
         }
     }
