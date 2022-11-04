@@ -14,12 +14,12 @@ public class Scoreboard {
         this.scoreBoard = new ArrayList<>(List.of(ball, strike));
     }
 
-    public void addBallPoint(int point) {
-        this.setBallPoint(this.getBallPoint() + point);
+    public void addBallPoint() {
+        this.setBallPoint(this.getBallPoint() + 1);
     }
 
-    public void addStrikePoint(int point) {
-        this.setStrikePoint(this.getStrikePoint() + point);
+    public void addStrikePoint() {
+        this.setStrikePoint(this.getStrikePoint() + 1);
     }
 
     public int getBallPoint() {
