@@ -18,6 +18,7 @@ public class Game {
             score = new HashMap<>(3);
             initializeScore(score);
 
+            System.out.print("숫자를 입력해주세요 : ");
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
             if (!isValidLength(userInput, 3) || !isExistOnlyNumber(userInput)) {
                 throw new IllegalArgumentException();
