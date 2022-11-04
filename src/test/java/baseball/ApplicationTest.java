@@ -55,7 +55,6 @@ class ApplicationTest extends NsTest {
 
         strike = strikeBall.get(0);
         ball = strikeBall.get(1);
-        System.out.println("strikeBall = " + strikeBall);
         Assertions.assertThat(strike).isEqualTo(3);
 
 
@@ -71,7 +70,6 @@ class ApplicationTest extends NsTest {
 
         strike2 = strikeBall2.get(0);
         ball2 = strikeBall2.get(1);
-        System.out.println("strikeBall = " + strikeBall2);
         Assertions.assertThat(ball2).isEqualTo(2);
 
 
@@ -87,7 +85,6 @@ class ApplicationTest extends NsTest {
 
         strike3 = strikeBall3.get(0);
         ball3 = strikeBall3.get(1);
-        System.out.println("strikeBall = " + strikeBall3);
         Assertions.assertThat(ball3).isEqualTo(1);
 
 
@@ -103,7 +100,6 @@ class ApplicationTest extends NsTest {
 
         strike4 = strikeBall4.get(0);
         ball4 = strikeBall4.get(1);
-        System.out.println("strikeBall = " + strikeBall4);
         Assertions.assertThat(strike4).isEqualTo(0);
     }
 
