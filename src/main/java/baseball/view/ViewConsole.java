@@ -7,6 +7,8 @@ public class ViewConsole implements Viewable {
     private final int IndexOfBall = 0;
     private final int IndexOfStrike = 1;
 
+    private final String START_LINE = "숫자 야구 게임을 시작합니다.";
+
 
     @Override
     public void printHint(List<Integer> hints) {
@@ -38,7 +40,7 @@ public class ViewConsole implements Viewable {
 
     @Override
     public void printStart() {
-
+        System.out.println(START_LINE);
     }
 
     @Override
