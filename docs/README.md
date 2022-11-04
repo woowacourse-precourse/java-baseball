@@ -42,50 +42,77 @@
 
 ### 🔎 details for implemetation
 
-- **PlayerComputer Class** :  싱글톤 객체를 가진 클래스<br>
+- **PlayerComputer Class**<br>
+  : 싱글톤 객체를 가진 클래스로 컴퓨터의 값을 세팅하고 검증한다.<br>
   <br>
   *private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits)*<br>
-  : random Number 3개가 모두 안 만들어졌는지 확인<br>
+  :random Number 3개가 모두 안 만들어졌는지 확인<br>
   <br>
   *private static int getRandomDigit()*<br>
-  : 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
+  :1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
   <br>
   *private String combineDigits(HashMap<Integer, Integer> digits)*<br>
-  : 만들어진 무작위 수 세 개를 세자리 수의 문자열로 만듭니다.<br>
+  :만들어진 무작위 수 세 개를 세자리 수의 문자열로 만듭니다.<br>
   <br>
-  *private HashMap<Integer, Integer> generateInputNumber*<br>
-  : 세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.<br>
+  *private HashMap<Integer, Integer> generateNumber*<br>
+  :세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.<br>
   <br>
-  *public String getRandomInputNumber()*<br>
-  : 컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
+  *public String getRandomNumber()*<br>
+  :컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
   <br>
   *public static PlayerComputer getInstance()*<br>
-  : PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  :PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
   <br>
-- **PlayerUser Class** :  싱글톤 객체를 가진 클래스<br>
+
+- **PlayerUser Class**
+  : 싱글톤 객체를 가진 클래스로 유저의 입력 값을 받고 검증한다.<br>
   <br>
   *public static PlayerUser getInstance()*<br>
-  : PlayerUser 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  :클래스에서 만들어진 싱글톤 객체를 반환한다.<br>
   <br>
-  *public String getInputNumber()*<br>
-  : playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.<br>
+  *public String getNumber()*<br>
+  :playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.<br>
   <br>
-  *private String inputNumber()*<br>
-  : 사용자에게 세자리 수를 입력하게 한다.<br>
+  *private String enterNumber()*<br>
+  :사용자에게 세자리 수를 입력하게 한다.<br>
   <br>
   *private boolean isExceptionalInput(String number)*<br>
-  : 사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
+  :사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
   <br>
   *private boolean isRightSize(String number)*<br>
-  : 세자리 수인지 확인합니다.<br>
+  :세자리 수인지 확인합니다.<br>
   <br>
   *private boolean isPositiveNumber(String number)*<br>
-  : 음수나 특수문자가 없는지 확인합니다.<br>
+  :음수나 특수문자가 없는지 확인합니다.<br>
   <br>
   *private boolean isNoDuplicatedNumber(String number)*<br>
-  : 중복숫자가 없는지 확인합니다.<br>
+  :중복숫자가 없는지 확인합니다.<br>
   <br>
-    
+
+- **Game Class** 
+  : 싱글톤 객체를 가진 클래스로 baseballGame을 진행한다.<br>
+  <br>
+  *public static PlayerUser getInstance()*<br>
+  :클래스에서 만들어진 싱글톤 객체를 반환한다.<br>
+  <br>
+  *public String getNumber()*<br>
+  :playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.<br>
+  <br>
+  *private String enterNumber()*<br>
+  :사용자에게 세자리 수를 입력하게 한다.<br>
+  <br>
+  *private boolean isExceptionalInput(String number)*<br>
+  :사용자의 입력이 예외사항인지 아닌지를 확인한다.<br>
+  <br>
+  *private boolean isRightSize(String number)*<br>
+  :세자리 수인지 확인합니다.<br>
+  <br>
+  *private boolean isPositiveNumber(String number)*<br>
+  :음수나 특수문자가 없는지 확인합니다.<br>
+  <br>
+  *private boolean isNoDuplicatedNumber(String number)*<br>
+  :중복숫자가 없는지 확인합니다.<br>
+  <br>
 
 
 
