@@ -12,17 +12,11 @@ public class InputData {
 
     public static String inputUserBallNumber() {
         System.out.print(NUMBER_OF_USER_INPUT_MESSAGE);
-        return inputString();
+        return Console.readLine();
     }
 
     public static String inputIsGameRestart() {
         System.out.println(GAME_RESTART_MESSAGE);
-        return inputString();
-    }
-
-    private static String inputString() {
         return Console.readLine();
     }
-
-
 }
