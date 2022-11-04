@@ -27,4 +27,16 @@ public class IOManager {
 
         return 0;
     }
+
+    public static boolean inputRestart() throws IllegalArgumentException {
+        System.out.print(messages.get("ASK_RESTART"));
+        String line = in.nextLine();
+
+        if(line.equals("1"))
+            return true;
+        else if(line.equals("2"))
+            return false;
+
+        throw new IllegalArgumentException("wrong restart format");
+    }
 }
