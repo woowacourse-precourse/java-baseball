@@ -8,18 +8,23 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     public static void main(String[] args) {
-        boolean isRestart = true;
-        while (isRestart) {
-            isRestart = StartNumberBaseballGame();
+        StartNumberBaseballGame();
+    }
+
+    public static void StartNumberBaseballGame(){
+        List<Integer> computer = GenerateComputerNumbers();
+        StartGuessingPhase(computer);
+    }
+    public static void StartGuessingPhase(List<Integer> computer) {
+        List<Integer> player;
+        int strike = 0;
+        int ball = 0;
+        while(strike != 3) {
+            player = GeneratePlayerNumbers();
+            strike = CheckStrike(computer, player);
+            ball = CheckBall(computer, player) - strike;
         }
     }
-
-    public static boolean StartNumberBaseballGame(){
-        List<Integer> computer = GenerateComputerNumbers();
-        List<Integer> player = GeneratePlayerNumbers();
-        return false;
-    }
-
     public static int CheckStrike(List<Integer> computer, List<Integer> player){
         int strike = 0;
         for(int index = 0; index < computer.size(); index ++){
@@ -30,16 +35,16 @@ public class Application {
         return strike;
     }
 
-    public static int CheckBall(List<Integer> computer, List<Integer> player, int strike){
+    public static int CheckBall(List<Integer> computer, List<Integer> player){
         int ball = 0;
         for(int index = 0; index< computer.size(); index ++){
             if(computer.contains(player.get(index))){
                 ball++;
             }
         }
-        return ball - strike;
+        return ball;
     }
-    
+
     public static List<Integer> GeneratePlayerNumbers(){
         List<Integer> player = new ArrayList<>();
         String input = Console.readLine();
