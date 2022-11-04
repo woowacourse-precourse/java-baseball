@@ -1,15 +1,16 @@
 package baseball;
 
+import java.util.List;
+
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.domain.Referee;
 import baseball.util.InputVerifier;
-import baseball.util.StringToArrayList;
 import baseball.util.SystemMessage;
 
-import java.util.List;
-
 public class Game {
+
+	private static final String WIN_CONDITION = "3스트라이크";
 
 	Player player = new Player();
 
@@ -23,22 +24,15 @@ public class Game {
 	}
 
 	private void play() {
-
 		Computer computer = new Computer();
-
 		List<Integer> answer = computer.getNumbers();
 
 		while (true) {
 			SystemMessage.printNumberInput();
-
 			String playerInput = getPlayerInput();
-			List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
+			Referee.printResult(answer, playerInput);
 
-			int strikeCount = Referee.getStrikeCount(answer, playerInputArray);
-
-			Referee.printResult(answer, playerInputArray);
-
-			if (strikeCount == 3) {
+			if (Referee.getResult(answer, playerInput).equals(WIN_CONDITION)) {
 				SystemMessage.printWin();
 				endOrRetry();
 				break;
