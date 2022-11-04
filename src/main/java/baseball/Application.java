@@ -19,7 +19,6 @@ public class Application {
         while (gameFlag != 2) {
             int strike = 0;
             int ball = 0;
-            boolean correctFlag = false;
 
             System.out.print("숫자를 입력해주세요 : ");
             String inputNumber = Console.readLine();
@@ -38,6 +37,8 @@ public class Application {
                     ball += 1;
                 }
             }
+
+            boolean correctFlag = checkPlayerResult(ball, strike);
         }
     }
 
@@ -56,6 +57,24 @@ public class Application {
         if (inputNumber.length() != 3 || !inputNumber.matches("^[1-9]+$")) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean checkPlayerResult(int ball, int strike) {
+        boolean correctFlag = false;
+        if (ball != 0 && strike != 0) {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        } else if (ball != 0) {
+            System.out.printf("%d볼\n", ball);
+        } else if (strike != 0 && strike != 3) {
+            System.out.printf("%d스트라이크\n", strike);
+        } else if (strike == 3) {
+            System.out.printf("%d스트라이크\n", strike);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            correctFlag = true;
+        } else {
+            System.out.println("낫싱");
+        }
+        return correctFlag;
     }
 
 }
