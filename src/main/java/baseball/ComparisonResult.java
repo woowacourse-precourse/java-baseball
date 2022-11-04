@@ -1,9 +1,10 @@
 package baseball;
 
+import static baseball.Constants.NUMBER_LENGTH;
+
 import java.util.List;
 
 public class ComparisonResult {
-	private static final int NUMBER_LENGTH = 3;
 	static int strikeCount = 0;
 	static int ballCount = 0;
 

@@ -1,11 +1,11 @@
 package baseball;
 
+import static baseball.Constants.NUMBER_LENGTH;
+import static baseball.Constants.ZERO;
+
 import java.util.List;
 
 public class InputException extends IllegalArgumentException {
-
-	private static final int INPUT_LENGTH = 3;
-	private static final int ZERO = 0;
 
 	public InputException() {
 	}
@@ -19,7 +19,7 @@ public class InputException extends IllegalArgumentException {
 	}
 
 	public static void checkLength(String input) {
-		if (input.length() != INPUT_LENGTH) {
+		if (input.length() != NUMBER_LENGTH) {
 			throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
 		}
 	}

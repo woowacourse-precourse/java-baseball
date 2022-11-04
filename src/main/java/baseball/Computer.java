@@ -1,15 +1,15 @@
 package baseball;
 
+import static baseball.Constants.NUMBER_LENGTH;
+import static baseball.Constants.MIN_NUMBER;
+import static baseball.Constants.MAX_NUMBER;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-	private static final int NUMBER_LENGTH = 3;
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 9;
-
 	static final List<Integer> computerNums = new ArrayList<>();
 
 	public Computer() {
