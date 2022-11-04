@@ -16,7 +16,7 @@ public class UserInputNumbers {
     }
 
     private void addNumbers(String numbers) {
-        for (int idx=START_IDX; idx<NUMBER_LENGTH; idx++) {
+        for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
             userInputNumbers.add(numbers.charAt(idx)-ZERO_ASCII);
         }
     }
@@ -39,7 +39,7 @@ public class UserInputNumbers {
     }
 
     public static boolean isValidDigit(String num) {
-        for (int idx=START_IDX; idx<num.length(); idx++) {
+        for (int idx = INITIAL_NUMBER; idx<num.length(); idx++) {
             if (num.charAt(idx)<=ZERO_ASCII||num.charAt(idx)>NINE_ASCII) {
                 return false;
             }
@@ -48,7 +48,7 @@ public class UserInputNumbers {
     }
 
     public static boolean duplicateNumber(String numbers) {
-        for (int idx=START_IDX; idx<numbers.length(); idx++) {
+        for (int idx = INITIAL_NUMBER; idx<numbers.length(); idx++) {
             if (numberCount(numbers, numbers.charAt(idx))!=NOT_DUPLICATE_NUMBER) {
                 return false;
             }

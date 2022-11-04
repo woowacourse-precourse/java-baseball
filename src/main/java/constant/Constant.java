@@ -11,7 +11,7 @@ public class Constant {
 
     public static final int ZERO = 0;
     public static final int NUMBER_LENGTH = 3;
-    public static final int START_IDX = 0;
+    public static final int INITIAL_NUMBER = 0;
     public static final int NOT_DUPLICATE_NUMBER = 1;
     public static final char ZERO_ASCII = '0';
     public static final char NINE_ASCII = '9';

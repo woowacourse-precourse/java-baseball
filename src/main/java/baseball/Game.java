@@ -58,7 +58,7 @@ public class Game {
     public void compareNumbers(UserInputNumbers userInput) {
         gameState = new GameState();
         List<Integer> userInputValues = userInput.getUserInputNumbers();
-        for (int idx=START_IDX; idx<NUMBER_LENGTH; idx++) {
+        for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
             if (computer.get(idx)==userInputValues.get(idx)) {
                 gameState.addStrike();
                 continue;
