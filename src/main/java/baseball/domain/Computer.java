@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import static baseball.type.BaseballBound.*;
 public class Computer {
-    private final List<Integer> computerNumbers = createRandomNumbers();
+    private final ComputerNumbers computerNumbers = new ComputerNumbers(createRandomNumbers());
 
     public Computer() {}
 
@@ -20,5 +20,13 @@ public class Computer {
         }
 
         return computerNumbers;
+    }
+
+    public Hint createHint(String playerGuess) {
+        BaseballNumbers baseballNumbers = new BaseballNumbers(playerGuess);
+        int strikes = computerNumbers.countStrikes(baseballNumbers);
+        int balls = computerNumbers.countBalls(baseballNumbers);
+
+        return new Hint(strikes,balls);
     }
 }
