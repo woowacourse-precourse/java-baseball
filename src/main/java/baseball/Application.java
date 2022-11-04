@@ -5,8 +5,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class Application {
-    static final String RESTART_GAME = "1";
-    static final String END_GAME = "2";
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
 
 
     public static boolean isExit(String command) {
