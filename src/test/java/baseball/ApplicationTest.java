@@ -21,6 +21,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void applicationtest(){
+        String [] args = {"123"};
+        Application.main(args);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))

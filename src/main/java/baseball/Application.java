@@ -18,22 +18,29 @@ public class Application {
         int strike = 0;
         int ball = 0;
         System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("args 개수 = " + args.length);
+        System.out.println("computer = " + computer);
+        System.out.println(args[0]);
+        System.out.println(args[0].charAt(1));
         strike = strike(args,computer);
         ball = ball(args,computer);
         print_score(strike,ball);
+        System.out.println("게임을 종료합니다");
     }
 
     public static int strike(String[] args, List<String> computer){
         int strike = 0;
         for(int i=0; i<3 ; i++){
-            String arg = args[i];
-            String ans = computer.get(i);
-            isitstrike(arg,ans,strike);
+            Character arg = args[0].charAt(i);
+            Character ans = computer.get(i).charAt(i);
+            System.out.println("arg = " + arg);
+            System.out.println("ans = " + ans);
+            strike = isitstrike(arg,ans,strike);
         }
         return strike;
     }
 
-    public static int isitstrike(String arg, String ans, int strike){
+    public static int isitstrike(Character arg, Character ans, int strike){
         if(arg == ans){
             strike += 1;
         }
@@ -43,16 +50,16 @@ public class Application {
     public static int ball(String[] args,List<String> computer){
         int ball = 0;
         for(int idx=0 ; idx<3 ; idx++){
-            String arg = args[idx];
+            Character arg = args[0].charAt(idx);
             if(computer.contains(arg)){
-                isitball(arg,computer,idx,ball);
+                ball = isitball(arg,computer,idx,ball);
             }
         }
         return ball;
     }
 
-    public static int isitball(String arg,List<String> computer, int idx, int ball){
-        if(computer.get(idx) != arg){
+    public static int isitball(Character arg,List<String> computer, int idx, int ball){
+        if(computer.get(0).charAt(idx) != arg){
          ball += 1;
         }
         return ball;
