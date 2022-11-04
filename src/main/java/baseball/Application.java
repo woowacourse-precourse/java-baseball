@@ -54,7 +54,7 @@ public class Application {
         if (ballCount.equals(0) && strikeCount.equals(0))
             result.add(NOTHING);
 
-        System.out.print(result.stream().collect(Collectors.joining(" ")) + "\n");
+        System.out.print(String.join(" ", result) + "\n");
     }
 
     public static Map<String, Integer> calculateScore(Integer computerNumber, Integer userNumber) {
