@@ -54,3 +54,9 @@
 4. **game**
     - baseballGame
         + playOneCycle
+
+5. **model**
+    - Input
+    - Hint
+    - State
+    - Result
