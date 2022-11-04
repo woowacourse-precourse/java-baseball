@@ -33,4 +33,24 @@ class BallsTest {
         assertThat(Balls.from(integers).currentBalls()).containsExactly(ball01, ball02, ball03);
     }
 
+    @Test
+    public void ballsOneStrikeOneBallTest() throws Exception {
+        List<Integer> ball01 = List.of(1, 2, 3);
+        List<Integer> ball02 = List.of(1, 3, 9);
+        Balls computerBalls = Balls.from(ball01);
+        Balls userBalls = Balls.from(ball02);
+        GameReport gameReport = computerBalls.ballsMatch(userBalls);
+        gameReport.printCurrentGameCount();
+    }
+
+    @Test
+    public void threeStrikeTest() throws Exception {
+        List<Integer> ball01 = List.of(1, 3, 5);
+        List<Integer> ball02 = List.of(1, 3, 5);
+        Balls computerBalls = Balls.from(ball01);
+        Balls userBalls = Balls.from(ball02);
+        GameReport gameReport = computerBalls.ballsMatch(userBalls);
+        gameReport.printCurrentGameCount();
+    }
+
 }

@@ -1,11 +1,13 @@
 package baseball.domain;
 
+import baseball.infrastructure.message.ConsoleOut;
 import java.security.PublicKey;
 
 public class GameReport {
 
     private int ball = 0;
     private int strike = 0;
+    private int nothing = 0;
 
 
     public void report(BallStatus ballStatus) {
@@ -15,13 +17,36 @@ public class GameReport {
         if (ballStatus.isBall()) {
             this.ball += 1;
         }
+        if (ballStatus.isNothing()) {
+            this.nothing += 1;
+        }
     }
 
     public boolean isThreeStrike() {
+        System.out.println("3스트라이크");
         return this.strike == 3;
     }
 
     public void printCurrentGameCount() {
-        System.out.println(ball + " 볼 " + strike + " 스트라이크");
+
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
+    public boolean isNothing() {
+        return this.nothing == 3;
+    }
+
+    public boolean isNotNothingAndThreeStrike() {
+        if (this.strike != 0 && this.ball != 0) {
+            System.out.println(this.ball+"볼" + this.strike+"스트라이크");
+            return true;
+        }
+        return false;
+    }
+
+    public void clear() {
+        this.ball = 0;
+        this.strike = 0;
+        this.nothing = 0;
     }
 }
