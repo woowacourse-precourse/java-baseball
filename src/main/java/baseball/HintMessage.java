@@ -28,7 +28,6 @@ public class HintMessage {
         }
         if (user.equals(com)) {
             win = resetGame();
-            System.out.println("win = " + win);
             return win;
         }
         return true;

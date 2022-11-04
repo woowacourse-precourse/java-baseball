@@ -2,11 +2,8 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class UserNumber {
 
@@ -27,6 +24,10 @@ public class UserNumber {
         System.out.println("INPUT_NUMBER = " + INPUT_NUMBER);
         List<Integer> inputNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
+        if (inputNumber.length() != 3) {
+            System.out.println("inputNumber = " + inputNumber);
+            throw new IllegalArgumentException();
+        }
         for (int i = 0; i < inputNumber.length(); i++) {
             int number = inputNumber.charAt(i) - '0';
             inputNumbers.add(number);

@@ -26,7 +26,6 @@ public class Application {
                 userNumber = new UserNumber();
                 userNumber.makeUserNumber();
                 user = userNumber.getUserNumber();
-//                game = hint.checkPoint(user, com);
                 win = hint.checkPoint(user, com);
             } while (win);
 
