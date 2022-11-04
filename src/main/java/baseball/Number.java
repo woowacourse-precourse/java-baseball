@@ -1,5 +1,6 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ public class Number {
     private static final int CNT_NUMBER = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public String number;
 
@@ -19,7 +21,9 @@ public class Number {
         return this.number;
     }
 
-    public void setNumber(String input) {
+    public void setNumber() {
+        System.out.println(INPUT_MESSAGE);
+        String input = readLine();
         isValidInput(input);
         this.number = input;
     }

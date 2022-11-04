@@ -9,5 +9,6 @@ public class Game {
         Number computerNumber = new Number();
 
         computerNumber.setRandomNumber();
+        playerNumber.setNumber();
     }
 }
