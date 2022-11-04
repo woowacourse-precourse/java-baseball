@@ -11,9 +11,11 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = getComputerValue();
         List<Integer> user = new Input(readLine()).getInputList();
+
         int ball = countBall(computer, user);
-        if (ball != 0) System.out.print(ball + "볼 ");
         int strike = countStrike(computer, user);
+
+        if (ball != 0) System.out.print(ball + "볼 ");
         if (strike != 0) System.out.println(strike + "스트라이크");
     }
 
