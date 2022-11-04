@@ -11,6 +11,10 @@ public class Application {
 
     }
 
+    private static void setInput(){
+        List<Integer> computerNumberGroup = setComputerNumberGroup();
+    }
+
     private static List<Integer> setComputerNumberGroup(){
         List<Integer> computerNumberGroup = new ArrayList<>();
         while(computerNumberGroup.size()<3){
@@ -22,9 +26,29 @@ public class Application {
         return computerNumberGroup;
     }
 
-    private static String setMyNumberGroupByString(){
-        String inputNumberString = Console.readLine();
-        return inputNumberString;
+    private static void isValidMyInput(String inputNumberString){
+        if(!isValidLength(inputNumberString)){
+            throw new IllegalArgumentException("세자리가 아님");
         }
+        if(!isNumeric(inputNumberString)){
+            throw new IllegalArgumentException("숫자가 아닌 문자 입력");
+        }
+    }
+
+    private static boolean isValidLength(String inputNumberString){
+        if(inputNumberString.length()==3){
+            return true;
+        } else
+            return false;
+    }
+
+    private static boolean isNumeric(String inputNumberString){
+        try{
+            Double.parseDouble(inputNumberString);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
 
 }
