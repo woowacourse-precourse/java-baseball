@@ -1,6 +1,8 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Input {
@@ -15,10 +17,12 @@ public class Input {
     private String playerGuess;
     private String playerChoice;
 
-    public void getPlayerGuess() {
+    public ArrayList<Integer> readPlayerGuess() {
         System.out.print(REQUEST_PLAYER_GUESS);
         playerGuess = Console.readLine();
         validateGuess();
+
+        return getGuessNumbers();
     }
 
     private boolean guessAreNotUniqueNumbers() {
@@ -38,6 +42,13 @@ public class Input {
         if (playerGuess.length() != COMMON_GUESS_LENGTH || guessAreNotUniqueNumbers()) {
             throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
         }
+    }
+
+    private ArrayList<Integer> getGuessNumbers() {
+        ArrayList<Integer> guessNumbers = new ArrayList<>();
+        Arrays.stream(playerGuess.split("")).map(Integer::parseInt).forEach(guessNumbers::add);
+
+        return guessNumbers;
     }
 
     public void readPlayerChoice() {
