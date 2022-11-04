@@ -11,24 +11,9 @@ public class RandomNumberGenerator {
 
     private static List<Integer> getCandidateRandomNumbers() {
         List<Integer> ret = new ArrayList<>();
-        for (int number = 100; number <= 999; ++number) {
-            String numberStringType = String.valueOf(number);
-            if (numberStringType.contains("0"))
-                continue;
-            if (isContainSameCharacter(numberStringType))
-                continue;
-            ret.add(number);
-        }
+        for (int number = 100; number <= 999; ++number)
+            if (numberValidator.valid(number))
+                ret.add(number);
         return ret;
-    }
-
-    private static boolean isContainSameCharacter(String string) {
-        Set<Character> set = new HashSet<>();
-        for(var c : string.toCharArray()){
-            if(set.contains(c))
-                return true;
-            set.add(c);
-        }
-       return false;
     }
 }
