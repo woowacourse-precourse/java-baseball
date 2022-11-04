@@ -30,13 +30,13 @@ public class GameSet {
     public static void playBaseballGame(){
         PrintMessage.inputUserNum();
         String inputNumber = Console.readLine();
-        userAnswer = makeUserAnswer(inputNumber);
+        userAnswer = scanUserAnswer(inputNumber);
         ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
     // 입력값을 List<Integer> 형태로 변환해주는 함수
-    public static List<Integer> makeUserAnswer(String inputNumber){
+    public static List<Integer> scanUserAnswer(String inputNumber){
         List<String> inputArray = List.of(inputNumber.split(""));
         List<Integer> userSolution = new ArrayList<>();
 
