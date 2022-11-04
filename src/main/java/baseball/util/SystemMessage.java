@@ -10,6 +10,7 @@ public class SystemMessage {
 
 	public static final String ERROR_MESSAGE = "잘못된 값을 입력했습니다. 게임이 종료됩니다.";
 	public static final String NOT_INTEGER_MESSAGE = "숫자가 아닌 값을 입력했습니다. 게임이 종료됩니다.";
+	public static final String NOT_THREE_SIZE_MESSAGE = "숫자는 3개만 입력 가능합니다. 게임이 종료됩니다.";
 
 	public static void printStart() {
 		System.out.println(START_MESSAGE);
@@ -37,5 +38,9 @@ public class SystemMessage {
 
 	public static void printNotInteger() {
 		System.out.println(NOT_INTEGER_MESSAGE);
+	}
+
+	public static void printNotSizeThree() {
+		System.out.println(NOT_THREE_SIZE_MESSAGE);
 	}
 }

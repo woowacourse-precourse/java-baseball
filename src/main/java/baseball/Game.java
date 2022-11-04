@@ -74,13 +74,13 @@ public class Game {
 		for (int i = 0; i < playerInput.length(); i++) {
 			if (!Character.isDigit(playerInput.charAt(i))) {
 				SystemMessage.printNotInteger();
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException(SystemMessage.NOT_INTEGER_MESSAGE);
 			}
 		}
 
 		if (playerInput.length() != 3) {
-			System.out.println(playerInput);
-			throw new IllegalArgumentException(SystemMessage.printError());
+			SystemMessage.printNotSizeThree();
+			throw new IllegalArgumentException(SystemMessage.NOT_THREE_SIZE_MESSAGE);
 		}
 
 		if (playerInputArray.contains(0)) {
