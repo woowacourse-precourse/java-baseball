@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Map;
 
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MessagePrinterTest {
@@ -46,37 +47,41 @@ class MessagePrinterTest {
     class ball_및_strike_횟수에_대한_메시지가_출력된다 {
         @Test
         void ball과_strike가_섞여있는_경우() {
+            int ballCount = DIGITS_FOR_THIS_GAME - 1;
+            int strikeCount = DIGITS_FOR_THIS_GAME - ballCount;
+
             Map<String, Integer> ballAndStrikeCount = Map.of(
-                    "ball", 2,
-                    "strike", 1
+                    "ball", ballCount,
+                    "strike", strikeCount
             );
 
             printer.printBallAndStrikeCount(ballAndStrikeCount);
-            String result = "2볼 1스트라이크";
+            String result = ballCount + "볼 " + strikeCount + "스트라이크";
+
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
 
         @Test
-        void ball만_3개인_경우() {
+        void 전부_ball인_경우() {
             Map<String, Integer> ballAndStrikeCount = Map.of(
-                    "ball", 3,
+                    "ball", DIGITS_FOR_THIS_GAME,
                     "strike", 0
             );
 
             printer.printBallAndStrikeCount(ballAndStrikeCount);
-            String result = "3볼";
+            String result = DIGITS_FOR_THIS_GAME + "볼";
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
 
         @Test
-        void strike만_3개인_경우() {
+        void 전부_strike인_경우() {
             Map<String, Integer> ballAndStrikeCount = Map.of(
                     "ball", 0,
-                    "strike", 3
+                    "strike", DIGITS_FOR_THIS_GAME
             );
 
             printer.printBallAndStrikeCount(ballAndStrikeCount);
-            String result = "3스트라이크";
+            String result = DIGITS_FOR_THIS_GAME + "스트라이크";
             assertThat(result).isEqualTo(outputStream.toString().trim());
         }
 
@@ -96,7 +101,7 @@ class MessagePrinterTest {
     @Test
     void 정답임을_알리는_메시지가_출력된다() {
         printer.printCorrectAnswerMessage();
-        String result = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        String result = DIGITS_FOR_THIS_GAME + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
         assertThat(result).isEqualTo(outputStream.toString().trim());
     }
 

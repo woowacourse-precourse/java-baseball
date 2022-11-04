@@ -33,8 +33,8 @@ public class NumberScanner {
 
     private void validateInputValue(String inputValue) {
         validateItIsNumber(inputValue);
-        validatePositiveNumber(inputValue);
         validateLengthForGame(inputValue);
+        validatePositiveNumber(inputValue);
         validateContainsZero(inputValue);
         validateDuplicate(inputValue);
     }
@@ -57,7 +57,7 @@ public class NumberScanner {
         int length = inputValue.length();
 
         if (length != DIGITS_FOR_THIS_GAME) {
-            throw new IllegalArgumentException("세 자리의 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(DIGITS_FOR_THIS_GAME + "자리의 숫자를 입력해 주세요.");
         }
     }
 
@@ -73,7 +73,7 @@ public class NumberScanner {
                 .distinct()
                 .count();
 
-        if (count < 3) {
+        if (count < DIGITS_FOR_THIS_GAME) {
             throw new IllegalArgumentException("중복 숫자는 입력할 수 없습니다.");
         }
     }

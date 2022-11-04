@@ -6,33 +6,31 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RandomNumberFactoryTest {
 
     @Nested
-    class 세개의_숫자가_생성된다 {
+    class 정해진_개수의_숫자가_생성된다 {
         @RepeatedTest(10)
-        void 세개의_숫자가_생성된다() {
+        void 정해진_개수의_숫자가_생성된다() {
             List<Integer> answer = RandomNumberFactory.newRandomNumber();
-            assertThat(answer.size()).isEqualTo(3);
+            assertThat(answer.size()).isEqualTo(DIGITS_FOR_THIS_GAME);
         }
     }
 
     @Nested
-    class 세개의_숫자는_서로_다르다 {
+    class 추출한_숫자는_서로_다르다 {
         @RepeatedTest(10)
-        void 세개의_숫자는_서로_다르다() {
+        void 추출한_숫자는_서로_다르다() {
             List<Integer> answer = RandomNumberFactory.newRandomNumber();
+            long count = answer.stream()
+                    .distinct()
+                    .count();
 
-            Integer firstNumber = answer.get(0);
-            Integer secondNumber = answer.get(1);
-            Integer thirdNumber = answer.get(2);
-
-            assertThat(firstNumber).isNotEqualTo(secondNumber);
-            assertThat(secondNumber).isNotEqualTo(thirdNumber);
-            assertThat(firstNumber).isNotEqualTo(thirdNumber);
+            assertThat(count).isEqualTo(DIGITS_FOR_THIS_GAME);
         }
     }
 

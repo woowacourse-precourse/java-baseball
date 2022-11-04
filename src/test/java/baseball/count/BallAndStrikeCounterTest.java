@@ -1,35 +1,52 @@
-package baseball.input;
+package baseball.count;
 
-import baseball.count.BallAndStrikeCounter;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BallAndStrikeCounterTest {
 
     private static final String BALL_KEY = "ball";
     private static final String STRIKE_KEY = "strike";
+
     private final BallAndStrikeCounter ballAndStrikeCounter = new BallAndStrikeCounter();
-    private final List<Integer> answer = List.of(1, 2, 3);
+    private final List<Integer> answer = new ArrayList<>();
+    private final CaseGenerator caseGenerator = new CaseGenerator();
+
+    @BeforeEach
+    void init() {
+        IntStream.range(1, DIGITS_FOR_THIS_GAME + 1)
+                .forEach(answer::add);
+    }
 
     @Test
-    void ball이_3개인_경우() {
-        String inputValue = "312";
+    void 전부_ball인_경우() {
+        String inputValue = caseGenerator.createBallCase(answer);
         Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter.checkBallAndStrikeCount(answer, inputValue);
-        assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(3);
+
+        assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(DIGITS_FOR_THIS_GAME);
         assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(0);
     }
 
     @Test
-    void strike가_3개인_경우() {
-        String inputValue = "123";
+    void 전부_strike인_경우() {
+        String inputValue = answer.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
         Map<String, Integer> ballAndStrikeCount = ballAndStrikeCounter.checkBallAndStrikeCount(answer, inputValue);
+
         assertThat(ballAndStrikeCount.get(BALL_KEY)).isEqualTo(0);
-        assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(3);
+        assertThat(ballAndStrikeCount.get(STRIKE_KEY)).isEqualTo(DIGITS_FOR_THIS_GAME);
     }
 
     @Nested

@@ -1,6 +1,7 @@
 package baseball.input;
 
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,8 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static baseball.config.GameConfiguration.DIGITS_FOR_THIS_GAME;
+import static org.assertj.core.api.Assertions.*;
 
 class NumberScannerTest {
 
@@ -18,14 +19,16 @@ class NumberScannerTest {
     }
 
     private final NumberScanner numberScanner = new NumberScanner();
+    private final NumberGenerator numberGenerator = new NumberGenerator();
 
     @Nested
     class 게임을_하기위해_숫자를_입력한다 {
         @Nested
-        class 세_자리의_숫자를_입력한다 {
-            @ParameterizedTest
-            @ValueSource(strings = {"123", "456", "789"})
-            void case1(String inputValue) {
+        class 게임에서_요구된_자리수의_숫자를_입력한다 {
+            @RepeatedTest(5)
+            void case1() {
+                String inputValue = numberGenerator.createCorrectInputValue();
+
                 InputStream inputStream = getInputStream(inputValue);
                 System.setIn(inputStream);
 
@@ -34,38 +37,38 @@ class NumberScannerTest {
         }
 
         @Nested
-        class 세_자리_이상의_숫자를_입력한다 {
-            @ParameterizedTest
-            @ValueSource(strings = {"1233", "4567", "78988923"})
-            void case2(String inputValue) {
+        class 게임에서_요구된_자리수_이상의_숫자를_입력한다 {
+            @RepeatedTest(5)
+            void case2() {
+                String inputValue = numberGenerator.createInputValueMoreThanDigits();
                 InputStream inputStream = getInputStream(inputValue);
                 System.setIn(inputStream);
 
                 assertThatThrownBy(numberScanner::inputNumber)
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("세 자리의 숫자를 입력해 주세요.");
+                        .hasMessageContaining(DIGITS_FOR_THIS_GAME + "자리의 숫자를 입력해 주세요.");
             }
         }
 
         @Nested
-        class 세_자리_미만의_숫자를_입력한다 {
-            @ParameterizedTest
-            @ValueSource(strings = {"12", "4", "1"})
-            void case3(String inputValue) {
+        class 게임에서_요구된_자리수_미만의_숫자를_입력한다 {
+            @RepeatedTest(5)
+            void case3() {
+                String inputValue = numberGenerator.createInputValueLessThanDigits();
                 InputStream inputStream = getInputStream(inputValue);
                 System.setIn(inputStream);
 
                 assertThatThrownBy(numberScanner::inputNumber)
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("세 자리의 숫자를 입력해 주세요.");
+                        .hasMessageContaining(DIGITS_FOR_THIS_GAME + "자리의 숫자를 입력해 주세요.");
             }
         }
 
         @Nested
-        class 숫자_0이_포함된_값을_입력한다 {
-            @ParameterizedTest
-            @ValueSource(strings = {"012", "102", "120"})
-            void case4(String inputValue) {
+        class 숫자_0이_포함된_값을_입력한다 {  // repeat test로 변경하고
+            @RepeatedTest(5)
+            void case4() {
+                String inputValue = numberGenerator.createInputValueContainsZero();
                 InputStream inputStream = getInputStream(inputValue);
                 System.setIn(inputStream);
 
@@ -77,11 +80,13 @@ class NumberScannerTest {
 
         @Nested
         class 중복_숫자를_입력한다 {
-            @ParameterizedTest
-            @ValueSource(strings = {"112", "334", "999"})
-            void case5(String inputValue) {
+            @RepeatedTest(5)
+            void case5() {
+                String inputValue = numberGenerator.createDuplicatedNumber();
                 InputStream inputStream = getInputStream(inputValue);
                 System.setIn(inputStream);
+
+                System.out.println(inputValue);
 
                 assertThatThrownBy(numberScanner::inputNumber)
                         .isInstanceOf(IllegalArgumentException.class)
@@ -103,14 +108,18 @@ class NumberScannerTest {
             }
         }
 
-        @Test
-        void 음수_값을_입력한다() {
-            InputStream inputStream = getInputStream("-123");
-            System.setIn(inputStream);
+        @Nested
+        class 음수_값을_입력한다 {
+            @RepeatedTest(10)
+            void 음수_값을_입력한다() {
+                String inputValue = numberGenerator.createNegativeNumber();
+                InputStream inputStream = getInputStream(inputValue);
+                System.setIn(inputStream);
 
-            assertThatThrownBy(numberScanner::inputNumber)
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("양수만 입력해 주세요.");
+                assertThatThrownBy(numberScanner::inputNumber)
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("양수만 입력해 주세요.");
+            }
         }
     }
 
