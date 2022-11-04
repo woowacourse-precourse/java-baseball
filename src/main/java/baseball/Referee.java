@@ -12,6 +12,24 @@ public class Referee {
     public static void judge(String guess, List<Integer> answer) {
         List<Integer> convertedGuess = stringToIntegerList(guess);
         int ballCount = getBallCount(convertedGuess, answer);
+        int strikeCount = getStrikeCount(convertedGuess, answer);
+    }
+
+    private static int getStrikeCount(List<Integer> guess, List<Integer> answer) {
+        int strikeCount = 0;
+
+        for (int position = 0; position < LIST_SIZE; position++) {
+            if (isStrike(guess, answer, position)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private static boolean isStrike(List<Integer> guess, List<Integer> answer, int position) {
+        int guessNumber = guess.get(position);
+        int answerNumber = answer.get(position);
+        return guessNumber == answerNumber;
     }
 
     private static int getBallCount(List<Integer> guess, List<Integer> answer) {
