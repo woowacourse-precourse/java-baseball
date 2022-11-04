@@ -53,4 +53,4 @@
 - [x] readInputForGame() 테스트 추가
 - [x] readIsQuit() 테스트 추가
 - [x] generateRandomValue() 테스트 추가
-- [ ] 사용자 입력 테스트 추가
+- [x] 사용자 입력 테스트(인게임) 추가
