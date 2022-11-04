@@ -26,10 +26,10 @@ public class Game {
 		fetchComputerNumbers();
 
 		do {
-
 			strike = 0;
 			ball = 0;
 
+			doesGameRestart();
 			fetchUserNumbers();
 			calculateGuess();
 			System.out.println(createAnswerMessage());
@@ -39,26 +39,6 @@ public class Game {
 		} while (!endProgram());
 
 	}
-
-
-	public void checkUserIntention() {
-
-		if (userWin) {
-			userIntention = getUserIntention();
-		}
-
-	}
-
-
-	public void checkUserWin() {
-
-		if (userWin()) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			userWin = true;
-		}
-
-	}
-
 
 	public String createAnswerMessage() {
 		StringBuilder sb = new StringBuilder();
@@ -80,7 +60,6 @@ public class Game {
 
 		return sb.toString();
 
-
 	}
 
 	public void calculateGuess() {
@@ -90,7 +69,6 @@ public class Game {
 				checkEachNumAndIdx(comIdx, userIdx);
 				countStrike();
 				countBall();
-
 			}
 
 		}
@@ -123,12 +101,10 @@ public class Game {
 
 
 	public void checkEachNumAndIdx(int comIdx, int userIdx) {
-
 		computerNumber = extractNumber(fromComputers, comIdx);
 		computerNumIdx = extractIndex(fromComputers, comIdx);
 		userNumber = extractNumber(fromUsers, userIdx);
 		userNumIdx = extractIndex(fromUsers, userIdx);
-
 	}
 
 
@@ -160,4 +136,26 @@ public class Game {
 	public boolean endProgram() {
 		return userWin() && userIntention == 2;
 	}
+
+	public void doesGameRestart() {
+		if (userIntention == 1) {
+			fetchComputerNumbers();
+			userIntention = 0;
+			userWin = false;
+		}
+	}
+
+	public void checkUserIntention() {
+		if (userWin) {
+			userIntention = getUserIntention();
+		}
+	}
+
+	public void checkUserWin() {
+		if (userWin()) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			userWin = true;
+		}
+	}
+
 }
