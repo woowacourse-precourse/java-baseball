@@ -28,7 +28,7 @@ class AnswerTest {
       }
 
       @Test
-      @DisplayName("낫싱")
+      @DisplayName("Nothing")
       void compareNoting() {
         Answer answer = new Answer(List.of('1', '2', '3'));
         answer.compare(new BaseBallNumber(List.of('4', '5', '6')));
@@ -90,6 +90,27 @@ class AnswerTest {
           Answer answer = new Answer(List.of('1', '2', '3'));
           answer.compare(new BaseBallNumber(List.of('1', '2', '3')));
           Assertions.assertThat(outContent.toString().trim()).isEqualTo("3스트라이크");
+        }
+      }
+
+      @Nested
+      @DisplayName("Mixture of")
+      class DescribeMixture {
+
+        @Test
+        @DisplayName("1볼 1스트라이크")
+        void compareOneBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('1', '3', '5')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        @DisplayName("2볼 1스트라이크")
+        void compareThreeBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('2', '1', '3')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("2볼 1스트라이크");
         }
       }
     }
