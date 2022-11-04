@@ -29,8 +29,8 @@ public class Ball {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Ball ball1 = (Ball) o;
-        return ball == ball1.ball;
+        Ball otherBall = (Ball) o;
+        return ball == otherBall.ball;
     }
 
     @Override
