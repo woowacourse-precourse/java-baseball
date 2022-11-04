@@ -9,7 +9,13 @@ public class InputConfigure {
 
     private static final int GAME_ANSWER_LENGTH = GAME_ANSWER_MAX_VALUE;
 
-    public static void verifyInput(String input) {
+    public static void verifyReGameInput(String input) throws IllegalArgumentException {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void verifyInput(String input) throws IllegalArgumentException {
         Set<Character> wordSet = new HashSet<>();
 
         checkLength(input);
