@@ -42,16 +42,7 @@
 
 ## 객체 모델
 
-### InputUtils
-
-- static String getValidUserInputForAnswerGame()
-- static String getValidUserInputForRestartGame()
-
 ### OutputUtils
-
-### GameGenerator
-
-- Game game
 
 ### Game
 
@@ -69,7 +60,7 @@
 
 ### Baseballs
 
-- List<Baseball\> Baseballs
+- List<Baseball\> baseballs
 
 ### Baseball
 
@@ -77,9 +68,6 @@
 
 ### Result
 
-- Count ballCount Count strikeCount
+- Map<String,Integer> result
 
-### Count
-
-- int count;
 
