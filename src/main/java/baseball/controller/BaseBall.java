@@ -18,8 +18,8 @@ public class BaseBall {
     
     private void playBaseBallGame() {
         int selectedNumberForRestart = RESTART_NUMBER;
-    
-        while(isRestart(selectedNumberForRestart)) {
+        
+        while (isRestart(selectedNumberForRestart)) {
             repeatBaseBallGame(new BaseBallGame());
             OutputView.baseBallGameEndMessagePrint();
             selectedNumberForRestart = inputNumberForRestart();
@@ -32,7 +32,7 @@ public class BaseBall {
     
     private void repeatBaseBallGame(final BaseBallGame baseBallGame) {
         boolean isEnd = false;
-        while(!isEnd) {
+        while (!isEnd) {
             final Referee referee = playResult(baseBallGame);
             OutputView.printResult(new ScoresDTO(referee));
             isEnd = referee.isEnd();
