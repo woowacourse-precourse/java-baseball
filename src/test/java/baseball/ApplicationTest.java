@@ -14,6 +14,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
+    public void 스트라이크_개수_측정_테스트() throws Exception{
+        // Given
+        Integer[] realAns = {1, 2, 3};
+        Integer[] case1 = {1, 2, 4};
+        Integer[] case2 = {1, 3, 8};
+        Integer[] case3 = {9, 8, 7};
+
+        // When
+        int cnt1 = Application.countStrike(realAns, realAns);
+        int cnt2 = Application.countStrike(realAns, case1);
+        int cnt3 = Application.countStrike(realAns, case2);
+        int cnt4 = Application.countStrike(realAns, case3);
+
+        // Then
+        assertThat(cnt1).isEqualTo(3);
+        assertThat(cnt2).isEqualTo(2);
+        assertThat(cnt3).isEqualTo(1);
+        assertThat(cnt4).isEqualTo(0);
+    }
+
+    @Test
     public void 입력값_변환기_동작_테스트() throws Exception {
         // Given
         String userInput = "123";
