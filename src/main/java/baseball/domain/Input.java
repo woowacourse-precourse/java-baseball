@@ -40,4 +40,10 @@ public class Input {
         System.out.println(REQUEST_PLAYER_CHOICE);
         playerChoice = Console.readLine();
     }
+
+    private void validateChoice() {
+        if (playerChoice.length() != 1) {
+            throw new IllegalArgumentException("올바른 형식으로 입력해주세요.");
+        }
+    }
 }
