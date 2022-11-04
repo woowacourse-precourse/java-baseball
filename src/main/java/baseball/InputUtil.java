@@ -13,6 +13,7 @@ public class InputUtil {
 
         checkUtil.checkIsValidDigit(userNumber);
         checkUtil.checkIsValidLength(userNumber.length());
+        checkUtil.checkIsDuplicated(userNumber);
 
         return userNumber;
     }
