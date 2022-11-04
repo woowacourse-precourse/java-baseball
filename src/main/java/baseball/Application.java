@@ -32,6 +32,8 @@ public class Application {
 				System.out.print("숫자를 입력해주세요 : "); 
 				numstr = Console.readLine();
 				check(numstr,strikeCount,ballCount);
+				strikeCount = possibleBallResult.getOrDefault("스트라이크", 0);
+				ballCount = possibleBallResult.getOrDefault("볼", 0);
 				System.out.println(print(ballCount,strikeCount));
 			}
 			if(strikeCount==3) {       //3개의 숫자를 모두 맞추고 난 후(strikeCount 3개) 게임 다시 시작, 종료를 고르는 구문
