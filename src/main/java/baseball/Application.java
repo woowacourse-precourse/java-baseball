@@ -58,6 +58,7 @@ public class Application {
 
     // 2. 사용자(User)의 컴퓨터를 설정한다.
     private static List<Integer> getNumberOfUser(List<Integer> user) {
+        System.out.print("숫자를 입력해주세요 : ");
         String numOfUserString = Console.readLine();
 
         // 2-1 : 사용자의 입력값을 검증한다.
@@ -75,15 +76,27 @@ public class Application {
     public static void main(String[] args) {
 
         // 1. 상대방(컴퓨터)의 숫자를 설정한다.
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         computer = getNumberOfComputer(computer);
         System.out.println("computer = " + computer); // 테스트 출력
 
         // 2. 사용자에게서 숫자를 입력받는다.
         List<Integer> user = new ArrayList<>();
-        user = getNumberOfUser(user);
-        System.out.println("user = " + user); // 테스트 출력
 
         // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
+        while(isNeedReEnter()) {
+            user.clear();
+            user = getNumberOfUser(user);
+        }
+    }
+
+    // 재입력이 필요하다면 true를 반환하고, 그렇지 않다면 false를 반환한다.
+    private static boolean isNeedReEnter() {
+        // 1. 3S가 나오지 못하는 경우 true를 반환한다.
+//        return true;
+
+        // 2. 3S가 나온 경우에는 false를 반환한다.
+        return false;
     }
 }
