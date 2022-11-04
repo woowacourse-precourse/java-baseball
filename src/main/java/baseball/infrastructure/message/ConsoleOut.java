@@ -12,4 +12,9 @@ public class ConsoleOut {
     public static final String GAME_FINISH = "게임 종료";
     public static final String NOTHING = "낫싱";
 
+    /*
+     * Int type Global Variable
+     * */
+    public static final int BALL_SIZE = 3;
+
 }
