@@ -15,7 +15,7 @@ public class GameService {
     Game game;
 
     public void set_game(){
-        game = new Game(randomNumber.getRandomNumber());
+        game = new Game(randomNumber.getNumbers());
     }
 
     public void start_game(){
