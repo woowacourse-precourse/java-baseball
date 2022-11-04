@@ -86,7 +86,6 @@ public class Application {
             if (target.get(i).equals(user.get(i))) {
                 strike++;
                 // mark as strike
-                target.set(i, 0);
                 user.set(i, 0);
             }
         }
