@@ -8,7 +8,7 @@ public class Game {
     private final int NOT_STRIKE = 0;
     private final int BALL = 1;
     private final int NOT_BALL = 0;
-    private final String CORRECT_MESSAGE = "%d 스트라이크\n"
+    private final String CORRECT_MESSAGE = "%d스트라이크\n"
             + "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private final String NOTHING_MESSAGE = "낫싱\n";
     private final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
@@ -36,13 +36,13 @@ public class Game {
         while (!exit) {
             playerNumber.setNumber();
             player = playerNumber.getNumber();
-            
+
             strike = countStrike();
             ball = countBall();
             printCount();
 
             if (strike == CNT_NUMBER) {
-                exit = isEndInput();
+                exit = isEndInput(computerNumber);
             }
         }
     }
@@ -91,12 +91,14 @@ public class Game {
         }
     }
 
-    private boolean isEndInput() {
+    private boolean isEndInput(Number computerNumber) {
         System.out.printf(RESTART_END_MESSAGE, RESTART_STATUS, END_GAME_STATUS);
         String input = readLine();
         if (input.equals(END_GAME_STATUS)) {
             return true;
         } else if (input.equals(RESTART_STATUS)) {
+            computerNumber.setRandomNumber();
+            computer = computerNumber.getNumber();
             return false;
         }
         throw new IllegalArgumentException();
