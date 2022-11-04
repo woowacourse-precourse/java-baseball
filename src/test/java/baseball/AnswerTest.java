@@ -4,24 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class AnswerTest {
-
-  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-  private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-  private final PrintStream originalOut = System.out;
-  private final PrintStream originalErr = System.err;
-
-  @BeforeEach
-  public void setUpStreams() {
-    System.setOut(new PrintStream(outContent));
-    System.setErr(new PrintStream(errContent));
-  }
 
   @Nested
   @DisplayName("Answer Class")
@@ -31,19 +19,50 @@ class AnswerTest {
     @DisplayName("compare method is")
     class DescribeCompare {
 
+      private ByteArrayOutputStream outContent;
+
+      @BeforeEach
+      public void setUpStreams() {
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+      }
+
       @Test
       @DisplayName("낫싱")
       void compareNoting() {
         Answer answer = new Answer(List.of('1', '2', '3'));
         answer.compare(new BaseBallNumber(List.of('4', '5', '6')));
-        Assertions.assertThat("낫싱").isEqualTo(outContent.toString().trim());
+        Assertions.assertThat(outContent.toString().trim()).isEqualTo("낫싱");
+      }
+
+      @Nested
+      @DisplayName("Ball of")
+      class DescribeBall {
+
+        @Test
+        @DisplayName("1볼")
+        void compareOneBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('4', '3', '6')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("1볼");
+        }
+
+        @Test
+        @DisplayName("2볼")
+        void compareTwoBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('2', '3', '6')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("2볼");
+        }
+
+        @Test
+        @DisplayName("3볼")
+        void compareThreeBall() {
+          Answer answer = new Answer(List.of('1', '2', '3'));
+          answer.compare(new BaseBallNumber(List.of('3', '1', '2')));
+          Assertions.assertThat(outContent.toString().trim()).isEqualTo("3볼");
+        }
       }
     }
-  }
-
-  @AfterEach
-  public void restoreStreams() {
-    System.setOut(originalOut);
-    System.setErr(originalErr);
   }
 }
