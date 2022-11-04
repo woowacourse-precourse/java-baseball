@@ -38,12 +38,26 @@
 ## class Player
 - String getNumber()
     - "숫자를 입력해주세요 : "를 출력하고 사용자로부터 입력받는다
-- void isValidNumber(String number)
+- boolean isDigit(char digit)
+  - digit이 '1'에서 '9'사이에 있는지 리턴한다
+- boolean isNumber(String number)
+  - Number 순회하며 모두 숫자면 true를 리턴한다
+- boolean isThreeLetter(String number)
+  - number가 세 글자이면 true를 리턴한다
+- boolean isAllDifferent(String number)
+  - number의 세 글자가 모두 다르면 true를 리턴한다
+- boolean isValidNumber(String number)
     - getNumber()로 받은 문자열이 올바른 입력이 아니면 예외를 발생시키고 종료한다
 - String getRestart()
     - "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."를 출력하고 사용자로부터 입력받는다
-- void isValidRestart(String restart)
+- boolean isOneLetter(String restart)
+  - restart가 한 글자이면 true를 리턴한다
+- boolean isOneOrTwo(String restart)
+  - restart가 '1'이나 '2'면 true를 리턴한다
+- boolean isValidRestart(String restart)
     - getRestart()으로 받은 문자열이 올바른 입력이 아니면 예외를 발생시키고 종료한다
+- void isNotValid()
+  - IllegalArgumentException() 발생시키고 프로그램 종료
 
 ## class Game
 - void startMessage()
