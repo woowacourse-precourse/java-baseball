@@ -83,4 +83,13 @@ public class NumberBaseBallGameMachine {
         }
         display(message.success() + "\n");
     }
+
+    public void play() {
+        boolean gameContinue = true;
+        while (gameContinue) {
+            makeNewAnswer();
+            gameProgress();
+            gameContinue = askNewGameOrStop();
+        }
+    }
 }
