@@ -46,12 +46,13 @@ public class GameManager {
     }
 
     private void validateInput(String input) {
-        if(!isOneToNine(input))
+        if(!isOneToNine(input)) {
             throw new IllegalArgumentException("each position of input should be from one to nine.");
-        else if(!isThreeChar(input))
+        } else if(!isThreeChar(input)) {
             throw new IllegalArgumentException("length of input should be three.");
-        else if(hasDuplicatedDigit(input))
+        } else if(hasDuplicatedDigit(input)) {
             System.out.println("정답은 세자리 모두 다 다릅니다.");
+        }
     }
 
     private boolean isOneToNine(String input) {
