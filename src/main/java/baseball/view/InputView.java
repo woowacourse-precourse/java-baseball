@@ -5,10 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public static String getGuessedAnswer() {
-        return Console.readLine();
+        String guessedAnswer = Console.readLine();
+        return guessedAnswer;
     }
 
     public static String getRestartOrStopCommand() {
-        return Console.readLine();
+        String restartOrStopCommand = Console.readLine();
+        return restartOrStopCommand;
     }
 }
