@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputValidator {
     public static void checkIsValidThreeNumbers(String userInput) {
         if (userInput.length() != 3) {
@@ -10,5 +13,20 @@ public class InputValidator {
                 throw new IllegalArgumentException();
             }
         }
+        if (checkIsDuplicated(userInput)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean checkIsDuplicated(String userInput) {
+        Set<Integer> inputNumbers = new HashSet<>();
+
+        for (int i = 0; i < userInput.length(); i++) {
+            inputNumbers.add(Integer.parseInt(userInput.substring(i, i + 1)));
+        }
+        if (inputNumbers.size() != 3) {
+            return true;
+        }
+        return false;
     }
 }
