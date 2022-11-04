@@ -6,8 +6,14 @@ public class InputUtil {
 
     private static String userNumber="";
 
-    public String inputUserName(){
+    public static String inputUserNumber(){
+        CheckUtil checkUtil = new CheckUtil();
+
         userNumber = Console.readLine();
+
+        checkUtil.checkIsValidDigit(userNumber);
+        checkUtil.checkIsValidLength(userNumber.length());
+
         return userNumber;
     }
 }
