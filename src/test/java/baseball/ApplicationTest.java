@@ -12,8 +12,26 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
+
+    @DisplayName("입력된 수가 3이 아닐경우 Exception 발생하는지 테스트")
+    @Test
+    void checkLengthTest() {
+
+        String inputNumber = "1234";
+        boolean isTestSuccess = false;
+
+        try {
+            Application.checkLength(inputNumber);
+        } catch (IllegalArgumentException e) {
+            //pass
+            isTestSuccess = true;
+        }
+
+        assertThat(isTestSuccess).isTrue();
+    }
 
     @DisplayName("숫자 입력 기능 테스트")
     @Test
