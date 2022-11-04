@@ -13,6 +13,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Answer;
 import baseball.dto.Score;
+import baseball.vo.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -251,7 +252,7 @@ class ApplicationTest extends NsTest {
     class BaseballVoterTest {
         @ParameterizedTest(name = "{index} - 정답 456에 대해 {0} 입력 시 알맞는 결과를 반환한다.")
         @MethodSource("baseball.ApplicationTest#sourceOfUserInputAndBaseballResult")
-        void givenAnswerAndUserInput_whenPlayingBaseball_thenReturnsResult(List<Integer> input, Score score) {
+        void givenAnswerAndUserInput_whenPlayingBaseball_thenReturnsResult(UserNumber input, Score score) {
             Answer ANSWER = Answer.of(List.of(4, 5, 6));
 
             // given
@@ -273,9 +274,9 @@ class ApplicationTest extends NsTest {
 
     private static Stream<Arguments> sourceOfUserInputAndBaseballResult() {
         return Stream.of(
-                Arguments.of(List.of(4, 5, 6), Score.makeNewScoreWith(3, 0)),
-                Arguments.of(List.of(7, 5, 1), Score.makeNewScoreWith(1, 0)),
-                Arguments.of(List.of(6, 2, 4), Score.makeNewScoreWith(0, 2))
+                Arguments.of(UserNumber.of(List.of(4, 5, 6)), Score.makeNewScoreWith(3, 0)),
+                Arguments.of(UserNumber.of(List.of(7, 5, 1)), Score.makeNewScoreWith(1, 0)),
+                Arguments.of(UserNumber.of(List.of(6, 2, 4)), Score.makeNewScoreWith(0, 2))
         );
     }
 

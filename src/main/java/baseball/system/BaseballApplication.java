@@ -5,6 +5,7 @@ import baseball.controller.ComputerController;
 import baseball.dto.Score;
 import baseball.service.BaseballService;
 import baseball.system.conversion.Converter;
+import baseball.system.conversion.IntegerListToUserNumberConverter;
 import baseball.system.conversion.StringToIntegerListConverter;
 import baseball.system.conversion.StringToRestartConverter;
 import baseball.system.validation.NumberValidator;
@@ -15,6 +16,7 @@ import baseball.system.voter.Voter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Restart;
+import baseball.vo.UserNumber;
 
 import java.util.List;
 
@@ -28,7 +30,8 @@ public class BaseballApplication {
     private final Validator<List<Integer>> numberValidator;
     private final Converter<String, Restart> stringToRestartConverter;
     private final Converter<String, List<Integer>> stringToIntegerListConverter;
-    private final Voter<List<Integer>, Score> voter;
+    private final Converter<List<Integer>, UserNumber> integerListToUserNumberConverter;
+    private final Voter<UserNumber, Score> voter;
 
     public BaseballApplication() {
         this.inputView = new InputView();
@@ -38,12 +41,14 @@ public class BaseballApplication {
         this.stringToRestartConverter = new StringToRestartConverter();
         this.stringToIntegerListConverter
                 = new StringToIntegerListConverter(new StringToIntegerListConversionValidator());
+        this.integerListToUserNumberConverter
+                = new IntegerListToUserNumberConverter(numberValidator);
 
         this.baseballService = new BaseballService(voter);
         this.computerController = new ComputerController();
         this.baseBallController = new BaseBallController(
                 inputView, outputView, baseballService,
-                stringToRestartConverter, stringToIntegerListConverter, numberValidator);
+                stringToRestartConverter, stringToIntegerListConverter, integerListToUserNumberConverter);
     }
 
     public void run() {

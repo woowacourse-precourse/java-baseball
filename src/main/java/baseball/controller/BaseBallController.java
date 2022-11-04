@@ -3,10 +3,10 @@ package baseball.controller;
 import baseball.dto.Score;
 import baseball.service.BaseballService;
 import baseball.system.conversion.Converter;
-import baseball.system.validation.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Restart;
+import baseball.vo.UserNumber;
 
 import java.util.List;
 
@@ -15,31 +15,28 @@ public class BaseBallController {
     private final OutputView outputView;
     private final BaseballService baseballService;
     private final Converter<String, Restart> stringToRestartConverter;
-    private final Converter<String, List<Integer>> StringToIntegerListConverter;
-    private final Validator<List<Integer>> numberValidator;
+    private final Converter<String, List<Integer>> stringToIntegerListConverter;
+    private final Converter<List<Integer>, UserNumber> integerListToUserNumberConverter;
 
-    public BaseBallController(InputView inputView,
-                              OutputView outputView,
-                              BaseballService baseballService,
-                              Converter<String, Restart> stringToRestartConverter,
+    public BaseBallController(InputView inputView, OutputView outputView,
+                              BaseballService baseballService, Converter<String, Restart> stringToRestartConverter,
                               Converter<String, List<Integer>> stringToIntegerListConverter,
-                              Validator<List<Integer>> numberValidator) {
-
+                              Converter<List<Integer>, UserNumber> integerListToUserNumberConverter) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.baseballService = baseballService;
         this.stringToRestartConverter = stringToRestartConverter;
-        this.StringToIntegerListConverter = stringToIntegerListConverter;
-        this.numberValidator = numberValidator;
+        this.stringToIntegerListConverter = stringToIntegerListConverter;
+        this.integerListToUserNumberConverter = integerListToUserNumberConverter;
     }
 
     public Restart startGame() {
         while (true) {
             String input = inputView.getUserInput();
-            List<Integer> inputList = StringToIntegerListConverter.convert(input);
-            numberValidator.validate(inputList);
+            List<Integer> inputList = stringToIntegerListConverter.convert(input);
+            UserNumber userNumber = integerListToUserNumberConverter.convert(inputList);
 
-            Score score = baseballService.compareInputWithAnswer(inputList);
+            Score score = baseballService.compareInputWithAnswer(userNumber);
 
             outputView.printResult(score);
 

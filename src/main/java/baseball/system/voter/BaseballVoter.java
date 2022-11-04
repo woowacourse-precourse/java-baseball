@@ -3,13 +3,14 @@ package baseball.system.voter;
 import baseball.system.AnswerHolder;
 import baseball.vo.Answer;
 import baseball.dto.Score;
+import baseball.vo.UserNumber;
 
 import java.util.List;
 import java.util.Objects;
 
-public class BaseballVoter implements Voter<List<Integer>, Score> {
+public class BaseballVoter implements Voter<UserNumber, Score> {
     @Override
-    public Score vote(List<Integer> target) {
+    public Score vote(UserNumber target) {
         Answer answer = AnswerHolder.getAnswer();
         List<Integer> answerList = answer.getAnswer();
 
