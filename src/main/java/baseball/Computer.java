@@ -12,7 +12,7 @@ public class Computer {
         Set<Integer> computerNumbers = new HashSet<>();
 
         while (computerNumbers.size() < Config.DIGIT_SIZE) {
-            int computerNumber = Randoms.pickNumberInRange(Config.DIGIT_MAX, Config.DIGIT_MIN);
+            int computerNumber = Randoms.pickNumberInRange(Config.DIGIT_MIN, Config.DIGIT_MAX);
             computerNumbers.add(computerNumber);
         }
 
