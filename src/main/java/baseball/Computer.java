@@ -24,12 +24,17 @@ public class Computer {
 
     public boolean isCorrectAnswer(List<Integer> userNumbers) {
         if (isNothing(userNumbers)) {
+            printNothing();
             return false;
         }
 
         int strike = countStrike(userNumbers);
         int ball = countBall(userNumbers);
+        printStrikeAndBall(strike, ball);
 
+        if (strike == 3) {
+            printCorrectAnswer();
+        }
         return strike == 3;
     }
 
@@ -66,5 +71,25 @@ public class Computer {
             }
         }
         return ball;
+    }
+
+    private void printNothing() {
+        System.out.println(NOTHING);
+    }
+
+    private void printCorrectAnswer() {
+        System.out.println(CORRECT_ANSWER);
+    }
+
+    private void printStrikeAndBall(int strike, int ball) {
+        if (strike == 0) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 }
