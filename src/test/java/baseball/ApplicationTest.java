@@ -48,8 +48,8 @@ class ApplicationTest extends NsTest {
     void countStrikeTest() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("589");
-                    assertThat(output()).contains("3스트라이크");
+                    run("519");
+                    assertThat(output()).contains("2스트라이크");
                 },
                 5, 8, 9
         );
@@ -72,6 +72,18 @@ class ApplicationTest extends NsTest {
                 () -> {
                     run("123");
                     assertThat(output()).contains("낫싱");
+                },
+                5, 8, 9
+        );
+    }
+
+    @Test
+    void ThreeStrike() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("589");
+                    assertThat(output()).contains("3스트라이크\n" +
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 },
                 5, 8, 9
         );
