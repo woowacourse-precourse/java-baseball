@@ -23,7 +23,7 @@ public class BaseballGame {
 
         do {
             result = Result.compareBall(getUserInputNumber(), randomBall);
-            printResult(result);
+            result.printResult();
         } while (!Result.isAllStriek);
     }
 

@@ -40,4 +40,21 @@ public class Result {
         }
         return new Result(strike, ball);
     }
+
+    public void printResult() {
+        String res = "";
+        if (strikeCnt == 0 && ballCnt == 0) {
+            res = "낫싱";
+        }
+
+        if (ballCnt != 0) {
+            res = ballCnt + "볼 ";
+        }
+
+        if (strikeCnt != 0) {
+            res += strikeCnt + "스트라이크";
+        }
+
+        System.out.println(res.trim());
+    }
 }
