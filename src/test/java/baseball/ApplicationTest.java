@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import baseball.Opponent;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +27,11 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void OpponentHaveThreeNumber(){
+        Opponent cpu = new Opponent();
+        assertThat(cpu.getNumbers().size()).isEqualTo(3);
     }
 
     @Override
