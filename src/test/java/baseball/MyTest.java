@@ -9,18 +9,14 @@ import java.util.List;
 
 public class MyTest {
 
-    @BeforeEach
-    void initComputerNumber() {
-        Application application = new Application();
-        application.initComputerNumber();
-    }
 
     @Test
     void computerNumberSizeTest() {
         //given(준비)
         Application.initComputerNumber();
-        List<Character> computerNumber = Application.computerNumber;
+
         //when(실행)
+        List<Character> computerNumber = Application.computerNumber;
 
         //then(검증)
         Assertions.assertThat(computerNumber).size().isEqualTo(3);
@@ -30,8 +26,9 @@ public class MyTest {
     void computerNumberRangeTest() {
         //given(준비)
         Application.initComputerNumber();
-        List<Character> computerNumber = Application.computerNumber;
+
         //when(실행)
+        List<Character> computerNumber = Application.computerNumber;
 
         //then(검증)
         for (int i = 0; i < 3; i++) {
@@ -106,6 +103,29 @@ public class MyTest {
         } catch (Exception e) {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
+    }
+
+
+    @Test
+    void giveHint() {
+        //given(준비)
+        Application.computerNumber = List.of('1', '2', '3');
+        String userInput_one = "132";
+        String userInput_two = "123";
+        String userInput_three = "456";
+        String userInput_four = "431";
+
+        //when(실행)
+        String hintMessage_one = Application.giveHint(userInput_one);
+        String hintMessage_two = Application.giveHint(userInput_two);
+        String hintMessage_three = Application.giveHint(userInput_three);
+        String hintMessage_four = Application.giveHint(userInput_four);
+
+        //then(검증)
+        Assertions.assertThat(hintMessage_one).isEqualTo("2볼 1스트라이크");
+        Assertions.assertThat(hintMessage_two).isEqualTo("3스트라이크");
+        Assertions.assertThat(hintMessage_three).isEqualTo("낫싱");
+        Assertions.assertThat(hintMessage_four).isEqualTo("2볼 ");
     }
 
 

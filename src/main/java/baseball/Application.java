@@ -8,6 +8,8 @@ import java.util.List;
 public class Application {
     static List<Character> computerNumber;
     static String errorMessage = "입력 형식에 맞지 않습니다 프로그램을 종료합니다.";
+    static String startMessage = "숫자 야구 게임을 시작합니다.";
+    static String inputMessage = "숫자를 입력해 주세요: ";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -90,8 +92,8 @@ public class Application {
     }
 
     public static String giveHint(String userInput) {
-        int ballCount;
-        int strikeCount;
+        int ballCount = 0;
+        int strikeCount = 0;
         String hintMessage = "";
 
         validateUserInput(userInput);
@@ -99,8 +101,30 @@ public class Application {
         if(!checkNothing(userInput)) {
             ballCount = checkBall(userInput);
             strikeCount = checkStrike(userInput);
+
+        }
+        hintMessage = createHintMessage(ballCount, strikeCount);
+
+        return hintMessage;
+    }
+
+    public static String createHintMessage(int ballCount, int strikeCount) {
+        StringBuilder hintMessageBuilder = new StringBuilder();
+        String hintMessage;
+
+        if(ballCount > 0) {
+            hintMessageBuilder.append(ballCount).append("볼").append(" ");
         }
 
+        if (strikeCount > 0) {
+            hintMessageBuilder.append(strikeCount).append("스트라이크");
+        }
+
+        if(ballCount == 0 && strikeCount == 0) {
+            hintMessageBuilder.append("낫싱");
+        }
+
+        hintMessage = hintMessageBuilder.toString();
         return hintMessage;
     }
 }
