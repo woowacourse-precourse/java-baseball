@@ -24,4 +24,16 @@ public class Computer {
         return count;
     }
 
+    public Integer countBall(Integer countNumber) {
+        List<Integer> countNumbers = Application.convertToList(countNumber);
+        Integer count = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (!numbers.get(i).equals(countNumbers.get(i)) &&
+                    countNumbers.contains(numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }

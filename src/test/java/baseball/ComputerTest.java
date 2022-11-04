@@ -38,4 +38,21 @@ class ComputerTest {
         assertThat(computer.countStrike(compare-1)).isEqualTo(2);
         assertThat(computer.countStrike(compare-11)).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("볼의 숫자를 세는 기능")
+    void countBall() {
+        Computer computer = new Computer();
+        List<Integer> numbers = computer.selectRandomNumbers();
+        List<Integer> compare = new ArrayList<>();
+        for (int i = 1; i < numbers.size(); i++) {
+            compare.add(numbers.get(i));
+        }
+        compare.add(numbers.get(0));
+        Integer compareNumber = 0;
+        for (Integer number : compare) {
+            compareNumber = 10 * compareNumber + number;
+        }
+        assertThat(computer.countBall(compareNumber)).isEqualTo(3);
+    }
 }
