@@ -65,9 +65,11 @@ public class Application {
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
         for (int i=0; i<4; i++) {
-            if (playerNumberArrayList.get(i) == answerNumberArrayList.get(i)) {
+            boolean equalsResult = playerNumberArrayList.get(i).equals(answerNumberArrayList.get(i));
+
+            if (equalsResult) {
                 strikeCount = strikeCount + 1;
-            } else if (playerNumberArrayList.get(i) != answerNumberArrayList.get(i)) {
+            } else if (!playerNumberArrayList.get(i).equals(answerNumberArrayList.get(i))) {
                 wrongNumberIndexArrayList.add(i);
             }
         }
