@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.StringJoiner;
+
 public class Result {
 
     private final int strikeCount;
@@ -24,5 +26,16 @@ public class Result {
 
     public boolean isComplete() {
         return strikeCount == BaseballGame.DIGIT_COUNT && ballCount == 0;
+    }
+
+    @Override
+    public String toString() {
+        if (isNothing()) return "낫싱";
+
+        StringJoiner resultJoiner = new StringJoiner(" ");
+        if (ballCount > 0) resultJoiner.add(ballCount + "볼");
+        if (strikeCount > 0) resultJoiner.add(strikeCount + "스트라이크");
+
+        return resultJoiner.toString();
     }
 }
