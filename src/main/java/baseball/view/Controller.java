@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.configuration.InputConfigure;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ public class Controller {
     public String printAndInputNumber() {
         printInputNumberMessage();
         String input = Console.readLine();
-        // TODO input 유효성 검증 코드 작성
+        InputConfigure.verifyInput(input);
         return input;
     }
 
