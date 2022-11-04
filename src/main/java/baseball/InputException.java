@@ -14,6 +14,13 @@ public class InputException {
         throw new IllegalArgumentException(INVALID_INPUT_NUMBER_ERROR_MESSAGE);
     }
 
+    public static void checkInputRestartValidation(String number) {
+        if ("1".equals(number) || "2".equals(number)) {
+            return;
+        }
+        throw new IllegalArgumentException(INVALID_INPUT_NUMBER_ERROR_MESSAGE);
+    }
+
     public static boolean isThreeLength(String number) {
         if (number.length() == NUMBER_LENGTH) {
             return true;
