@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +17,10 @@ public class Number {
             }
 
         }
+    }
+
+    public String getInputNumber() {
+        return readLine();
     }
 
 
