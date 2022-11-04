@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Scanner;
-
 public class Game {
 
     static final String Notice_intro = "숫자 야구 게임을 시작합니다.";
@@ -11,13 +9,13 @@ public class Game {
 
     public void gameStart() {
         int ComputerNum = Num_Generator.MakeComputerNum();
+        User_Input user = new User_Input();
         System.out.println(Notice_intro);
 
         while (true) {
             System.out.println(Notice_requireNum);
-            Scanner sc = new Scanner(System.in);
-            int userNum= sc.nextInt();
-            System.out.println(userNum);
+            int userInput = user.getUserInput();
+            System.out.println(userInput);
         }
     }
 }
