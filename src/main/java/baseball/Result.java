@@ -15,10 +15,10 @@ public class Result {
     }
 
     public void report(BallStatus status) {
-        if (status == BallStatus.BALL) {
+        if (status.isBall()) {
             this.ball++;
         }
-        if (status == BallStatus.STRIKE) {
+        if (status.isStrike()) {
             this.strike++;
         }
     }
