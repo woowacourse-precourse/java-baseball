@@ -18,48 +18,50 @@ public class Game {
             }
         }
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        List<Integer> user = new ArrayList<>();
-        try {
-            if (input.length() != 3) {
-                throw new IllegalArgumentException("세자리 수를 입력해주세요");
-            }
-            for (String number : input.split("")) {
-                int ball = Integer.parseInt(number);
-                if (user.contains(ball)) {
-                    throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
-                }
-                user.add(ball);
-            }
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
-
         String result = "";
-        int strike = 0;
-        int ball = 0;
-        for (int i = 0; i < user.size(); i++) {
-            if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
-                strike++;
+        while (!result.equals("3스트라이크")) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            List<Integer> user = new ArrayList<>();
+            try {
+                if (input.length() != 3) {
+                    throw new IllegalArgumentException("세자리 수를 입력해주세요");
+                }
+                for (String number : input.split("")) {
+                    int ball = Integer.parseInt(number);
+                    if (user.contains(ball)) {
+                        throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
+                    }
+                    user.add(ball);
+                }
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(e.getMessage());
             }
-            if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
-                ball++;
-            }
-        }
 
-        if (ball == 0 && strike == 0) {
-            result = "낫싱";
-            System.out.println(result);
-        }
-        if (strike == 0 && ball != 0) {
-            result = ball + "볼";
-            System.out.println(result);
-        } else if (ball == 0 && strike != 0) {
-            result = strike + "스트라이크";
-            System.out.println(result);
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            int strike = 0;
+            int ball = 0;
+            for (int i = 0; i < user.size(); i++) {
+                if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
+                    strike++;
+                }
+                if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
+                    ball++;
+                }
+            }
+
+            if (ball == 0 && strike == 0) {
+                result = "낫싱";
+                System.out.println(result);
+            }
+            if (strike == 0 && ball != 0) {
+                result = ball + "볼";
+                System.out.println(result);
+            } else if (ball == 0 && strike != 0) {
+                result = strike + "스트라이크";
+                System.out.println(result);
+            } else {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            }
         }
     }
 }
