@@ -18,6 +18,8 @@ public class Application {
     private static final String FLAG_QUIT = "2";
 
     private static final int DIGIT_RESTRICTION = 3;
+
+
     public static void main(String[] args) {
 
     }
