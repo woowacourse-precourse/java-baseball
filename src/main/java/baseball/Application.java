@@ -171,6 +171,24 @@ public class Application {
     }
 
     private static int PlayGame(ArrayList<Integer> answerNumberArrayList) {
-        
+        Boolean finishResult = false;
+
+        // 게임이 끝나지 않았으면 게임을 반복한다.
+        while (finishResult == false) {
+            // 게임 플레이어에게 숫자를 입력 받는다.
+            ArrayList<Integer> playerNumberArrayList = GetPlayerNumber();
+
+            // 게임 플레이어가 입력한 숫자를 분석한다.
+            LinkedHashMap<String, Integer> analyzedResult = AnalyzePlayerNumber
+                    (playerNumberArrayList,
+                    answerNumberArrayList);
+
+            // 분석한 결과를 출력한다.
+            PrintResult(analyzedResult);
+
+            // 게임이 끝났는지 확인한다.
+            finishResult = IsGameFinished(analyzedResult);
+        }
+
     }
 }
