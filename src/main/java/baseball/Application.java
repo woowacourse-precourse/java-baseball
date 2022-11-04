@@ -176,7 +176,7 @@ public class Application {
         Boolean finishResult = false;
 
         // 게임이 끝나지 않았으면 게임을 반복한다.
-        while (finishResult == false) {
+        while (!finishResult) {
             // 게임 플레이어에게 숫자를 입력 받는다.
             ArrayList<Integer> playerNumberArrayList = GetPlayerNumber();
 
