@@ -51,9 +51,9 @@ class OutputTest {
 
   @Test
   void 볼_스트라이크_출력5() {
-    List<Integer> result = List.of(1, 1);
+    List<Integer> result = List.of(1, 0);
     output.printStrikeBall(result);
-    assertEquals("1볼 1스트라이크", outContent.toString().trim());
+    assertEquals("1스트라이크", outContent.toString().trim());
   }
 
   @Test
@@ -68,5 +68,19 @@ class OutputTest {
     List<Integer> result = List.of(3, 0);
     output.printStrikeBall(result);
     assertEquals("3스트라이크", outContent.toString().trim());
+  }
+
+  @Test
+  void 볼_스트라이크_출력8() {
+    List<Integer> result = List.of(1, 1);
+    output.printStrikeBall(result);
+    assertEquals("1볼 1스트라이크", outContent.toString().trim());
+  }
+
+  @Test
+  void 볼_스트라이크_출력9() {
+    List<Integer> result = List.of(1, 2);
+    output.printStrikeBall(result);
+    assertEquals("2볼 1스트라이크", outContent.toString().trim());
   }
 }
