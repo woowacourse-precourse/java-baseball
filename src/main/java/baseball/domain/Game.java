@@ -32,15 +32,23 @@ public class Game {
 
 	private void compareNumber(List<Integer> answer, List<Integer> number) {
 		for (int index = 0; index < number.size(); index++) {
-			ballAndStrikeCount(answer, number, index);
+			countBallAndStrike(answer, number, index);
 		}
 	}
 
-	private void ballAndStrikeCount(List<Integer> answer, List<Integer> number, int index) {
+	private void countBallAndStrike(List<Integer> answer, List<Integer> number, int index) {
 		if (answer.get(index).equals(number.get(index))) {
 			strike++;
 		} else if (answer.contains(number.get(index))) {
 			ball++;
 		}
+	}
+
+	public int getBall() {
+		return ball;
+	}
+
+	public int getStrike() {
+		return strike;
 	}
 }
