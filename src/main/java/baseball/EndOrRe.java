@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class EndOrRe {
 
+  private static final String ONE = "1";
+  private static final String TWO = "2";
+
   public Integer readAndMakeInputList() {
     String inputString = Console.readLine();
     validOneOrTwo(inputString);
@@ -21,7 +24,7 @@ public class EndOrRe {
   }
 
   private void validOneOrTwo(String inputString) {
-    if (!inputString.equals("1") && !inputString.equals("2")) {
+    if (!inputString.equals(ONE) && !inputString.equals(TWO)) {
       throw new IllegalArgumentException();
     }
   }
