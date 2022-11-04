@@ -22,10 +22,19 @@ public class Player {
         return this.playerNumbers;
     }
 
+    /**
+     * 플레이어의 입력받은 수 저장
+     * @param inputNumbers  플레이어의 입력한 숫자들
+     */
     private void setPlayerNumber(String inputNumbers) {
         this.playerNumbers = toList(inputNumbers);
     }
 
+    /**
+     * 문자열을 리스트로 변환한다.
+     * @param inputNumbers  플레이어의 입력한 숫자들
+     * @return 플레이어의 입력한 숫자들 리스트로 변환한 것을 반환
+     */
     private List<Integer> toList(String inputNumbers) {
         List<Integer> list = new ArrayList<>(Collections.emptyList());
         for (String number : inputNumbers.split("")) {
