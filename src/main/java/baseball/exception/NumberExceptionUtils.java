@@ -1,22 +1,24 @@
 package baseball.exception;
 
+import static baseball.exception.ExceptionMessage.*;
+
 public class NumberExceptionUtils {
 
     public static void isNotDuplicateNumber(String num) {
         if (num.chars().distinct().count() != 3) {
-            throw new IllegalArgumentException("input can't have duplicate number.");
+            throw new IllegalArgumentException(DUPLICATE_DIGIT_EXCEPTION.message());
         }
     }
 
     public static void isThreeDigits(String num) {
         if (num.length() != 3) {
-            throw new IllegalArgumentException("input must be three digits.");
+            throw new IllegalArgumentException(INVALID_DIGIT_EXCEPTION.message());
         }
     }
 
     public static void isPositiveDigits(String num) {
         if (Integer.parseInt(num) < 0) {
-            throw new IllegalArgumentException("input must be positive digits.");
+            throw new IllegalArgumentException(NEGATIVE_DIGIT_EXCEPTION.message());
         }
     }
 }
