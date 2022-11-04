@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -59,6 +60,49 @@ class ApplicationTest extends NsTest {
             List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("baseballNumber", computer);
 
             assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
+        }
+
+    }
+
+    @Nested
+    class checkStrikeBallNothing {
+        @Test
+        void 스트라이크_테스트() throws Exception {
+            List<Integer> computerRandomNumbers = List.of(1, 2, 3);
+
+            int result = 2;
+            List<Integer> question = List.of(1, 2, 4);
+            Field privateFiled = computer.getClass().getDeclaredField("baseballNumber");
+            privateFiled.setAccessible(true);
+            privateFiled.set(computer, computerRandomNumbers);
+
+            assertThat(computer.checkStrike(question)).isEqualTo(result);
+        }
+
+        @Test
+        void 볼_테스트() throws Exception {
+            List<Integer> computerRandomNumbers = List.of(1, 2, 3);
+
+            int result = 2;
+            List<Integer> question = List.of(2, 1, 4);
+            Field privateFiled = computer.getClass().getDeclaredField("baseballNumber");
+            privateFiled.setAccessible(true);
+            privateFiled.set(computer, computerRandomNumbers);
+
+            assertThat(computer.checkBall(question, computer.checkStrike(question))).isEqualTo(result);
+        }
+
+        @Test
+        void 낫싱_테스트() throws Exception {
+            List<Integer> computerRandomNumbers = List.of(1, 2, 3);
+
+            boolean result = true;
+            List<Integer> question = List.of(5, 6, 4);
+            Field privateFiled = computer.getClass().getDeclaredField("baseballNumber");
+            privateFiled.setAccessible(true);
+            privateFiled.set(computer, computerRandomNumbers);
+
+            assertThat(computer.checkNothing(question)).isEqualTo(result);
         }
     }
 
