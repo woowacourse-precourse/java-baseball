@@ -51,4 +51,25 @@ public class Application {
 
         return playerNumber;
     }
+
+    // 플레이어 숫자의 게임 결과 생성
+    public static int[] gameResult(List<Integer> computer, List<Integer> playerNumber) {
+        int[] gameResult = new int[2];
+        
+        for(int i = 0; i < playerNumber.size(); i++) {
+
+            // 볼
+            if(computer.contains(playerNumber.get(i)) && (computer.get(i) != playerNumber.get(i))) {
+                gameResult[0]++;
+            }
+            
+            // 스트라이크 
+            if(computer.get(i) == playerNumber.get(i)) {
+                gameResult[1]++;
+            }
+
+        }
+
+        return gameResult;
+    }
 }
