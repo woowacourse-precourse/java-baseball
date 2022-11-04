@@ -14,8 +14,7 @@ public class RandomNumber {
         this.randomNumber = this.getRandomNumber();
     }
 
-    public int getRandomNumber() {
-
+    public void setRandomNumber() {
         Set<Integer> randomDigitSet = new HashSet<>();
 
         while(true) {
@@ -30,10 +29,11 @@ public class RandomNumber {
         for(int randomDigit: randomDigitSet) {
             randomNumberString += String.valueOf(randomDigit);
         }
-
         randomNumber = Integer.parseInt(randomNumberString);
 
-        return randomNumber;
+    }
 
+    public int getRandomNumber() {
+        return randomNumber;
     }
 }
