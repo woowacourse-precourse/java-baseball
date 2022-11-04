@@ -1,14 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,7 +27,36 @@ class ApplicationTest extends NsTest {
     void listNumber3() {
         List<Integer> list = List.of(1,1,2,2,3,4,5);
         assertThat(Application.removeRepetitionNumber(list)).isEqualTo(123);
+    }
 
+    @Test
+    void userInput1() {
+        int num = 12;
+        assertThatThrownBy(() -> Application.exceptionHandler(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("n은 세자리 숫자입니다.");
+    }
+
+    @Test
+    void userInput2() {
+        int num = 1234;
+        assertThatThrownBy(() -> Application.exceptionHandler(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("n은 세자리 숫자입니다.");
+    }
+
+    @Test
+    void userInput3() {
+        int num = 1;
+        assertThatThrownBy(() -> Application.exceptionHandler(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("n은 세자리 숫자입니다.");
+    }
+
+    @Test
+    void userInput4() {
+        int num = 123;
+        assertThat(Application.exceptionHandler(num)).isEqualTo(123);
     }
 
     @Test
