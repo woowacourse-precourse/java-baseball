@@ -5,7 +5,14 @@ import java.util.List;
 
 public class InputMapping {
     public List<Integer> get(int inputNumber){
-        return new ArrayList<>();
+        if (nonValidateInput(inputNumber))
+            throw new IllegalArgumentException("nonValidateInputNumber");
+        List<Integer> getInputNumberList = new ArrayList<>();
+        while (inputNumber > 0){
+            getInputNumberList.add(inputNumber % 10);
+            inputNumber /= 10;
+        }
+        return getInputNumberList;
     }
 
     private boolean nonValidateInput(int inputNumber){
