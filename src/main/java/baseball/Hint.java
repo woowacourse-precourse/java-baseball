@@ -5,6 +5,9 @@ public class Hint {
     private int ball;
 
     public void getHint(int[] userNumber, int[] computerNumber){
+        this.strike = 0;
+        this.ball = 0;
+
         for (int i = 0; i < 3; i++){
             countStrike(userNumber[i], computerNumber[i]);
             countBall(userNumber[i], computerNumber, i);
