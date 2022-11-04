@@ -20,17 +20,12 @@ public class PlayerComputerTest {
 	// 중복된 수가 아닌 세자리 수가 나오는지 확인합니다.
 	@Test void getRandomInputNumberTest() {
 		PlayerComputer tester = new PlayerComputer();
-		int input = tester.getRandomInputNumber();
+		String input = tester.getRandomInputNumber();
 
-		List<Integer> list = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			list.add(input % 10);
-			input /= 10;
-		}
-
-		assertThat(list.get(0)).isNotSameAs(list.get(1));
-		assertThat(list.get(0)).isNotSameAs(list.get(2));
-		assertThat(list.get(1)).isNotSameAs(list.get(2));
+		System.out.println("generated Random Number : " + input);
+		assertThat(input.charAt(0)).isNotSameAs(input.charAt(1));
+		assertThat(input.charAt(0)).isNotSameAs(input.charAt(2));
+		assertThat(input.charAt(1)).isNotSameAs(input.charAt(2));
 	}
 
 }
