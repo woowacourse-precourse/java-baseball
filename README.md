@@ -48,7 +48,7 @@
     - 숫자야구 게임을 위한 클래스입니다.
       - [X] BaseballGame 생성자
       - 게임 인스턴스를 생성합니다.
-        - [ ] getBaseballNumber
+        - [X] getBaseballNumber
         - 야구 게임의 클리어 조건 숫자를 알려줍니다.
         - [ ] setBaseballNumber
         - 야구 게임의 클리어 조건을 설정합니다.
