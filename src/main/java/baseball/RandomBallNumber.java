@@ -6,25 +6,25 @@ public class RandomBallNumber {
 
     private static final int BALL_NUMBER_LENGTH = 3;
 
-    String randomNum = "";
+    String randomNumber = "";
 
-    public String createRandomNum() {
-        while (randomNum.length() < BALL_NUMBER_LENGTH) {
-            String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-            if (isContainedNumber(randomNumber)) {
-                randomNum = randomNum.concat(randomNumber);
+    public String createRandomNumber() {
+        while (randomNumber.length() < BALL_NUMBER_LENGTH) {
+            String number = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (isContainedNumber(number)) {
+                randomNumber = randomNumber.concat(number);
             }
         }
-        System.out.println(randomNum);
-        return randomNum;
+        System.out.println(randomNumber);
+        return randomNumber;
     }
 
-    private boolean isContainedNumber(String randomNumber) {
-        return !randomNum.contains(randomNumber);
+    private boolean isContainedNumber(String number) {
+        return !randomNumber.contains(number);
     }
 
-    public String clearRandomNum() {
-        randomNum = "";
-        return randomNum;
+    public String clearRandomNumber() {
+        randomNumber = "";
+        return randomNumber;
     }
 }
