@@ -13,11 +13,11 @@ public class PlayGame {
     private String userNumber;
 
     public PlayGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
     }
 
     private void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
         computerNumber = computer.getComputerNumbers();
         playingGame();
@@ -27,24 +27,36 @@ public class PlayGame {
 
         Map<String, Integer> strikeBall = new HashMap<>();
 
-        inputUserNumbers();
-
         while (true) {
+            inputUserNumbers();
             String result = printStrikeOrBall(computerNumber, userNumber);
             System.out.println(result);
 
             strikeBall = checkStrikeOrBall(computerNumber, userNumber);
-            if(strikeBall.get("Strike") == 3)
+            if (strikeBall.get("Strike") == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
+            }
         }
 
-        endGame();
+        replayingGame();
     }
 
-    private void endGame() {
+    private void replayingGame() {
 
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String replaying = Console.readLine();
+        int replayNumber = Integer.parseInt(replaying);
+        checkInputErr(replayNumber);
 
+        if (replayNumber == 1) {
+            startGame();
+        }
+    }
+
+    private void checkInputErr(int replayNumber) throws IllegalArgumentException {
+        if (!(replayNumber == 1 || replayNumber == 2))
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
     }
 
     private List<Integer> stringToList(String number) {
