@@ -9,10 +9,20 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     private final static int NUMBERS_SIZE = 3;
 
     @Override
-    public BallStatus countBall(Numbers answer, Numbers userNumbers) {
+    public BallStatus createBallStatus(Numbers answer, Numbers userNumbers) {
+        if (answer == null || userNumbers == null) {
+            throw new IllegalArgumentException();
+        }
+
         AtomicInteger ball = new AtomicInteger();
         AtomicInteger strike = new AtomicInteger();
 
+        countBallOrStrike(answer, userNumbers, ball, strike);
+
+        return new BallStatus(ball.get(), strike.get());
+    }
+
+    private void countBallOrStrike(Numbers answer, Numbers userNumbers, AtomicInteger ball, AtomicInteger strike) {
         userNumbers.iterateForEach((i, n) -> {
             if (!answer.containAnswer(n)) {
                 return;
@@ -25,8 +35,6 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
 
             ball.getAndIncrement();
         });
-
-        return new BallStatus(ball.get(), strike.get());
     }
 
     @Override
