@@ -7,6 +7,7 @@ import baseball.utils.converter.InputNumbersToResultConverter;
 import baseball.utils.converter.StringToInputNumbersConverter;
 
 import static baseball.resources.GameConfig.RESTART;
+import static baseball.utils.GameNumberGenerator.generate;
 import static baseball.utils.InputValidator.validate;
 
 public class NumberBaseBallGame {
@@ -23,7 +24,7 @@ public class NumberBaseBallGame {
 
     public void start(){
         isProceeding = true;
-        baseNumberRepository.createBaseNumber();
+        baseNumberRepository.saveBaseNumber(generate());
     }
 
     public boolean isProceeding() {
@@ -37,7 +38,7 @@ public class NumberBaseBallGame {
     public void restart(String restart) {
         if (restart.equals(RESTART)) {
             isProceeding = true;
-            baseNumberRepository.createBaseNumber();
+            baseNumberRepository.saveBaseNumber(generate());
         }
     }
 

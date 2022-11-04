@@ -105,7 +105,8 @@ class NumberBaseBallGameTest {
     }
 
     private void failValidateInputNumber(String inputNumber) {
-        BaseNumberRepository baseNumberRepository = new BaseNumberRepository(new BaseNumber(List.of(1, 2, 3)));
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository();
+        baseNumberRepository.saveBaseNumber(new BaseNumber(List.of(1,2,3)));
         NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
         assertThatThrownBy(() -> numberBaseBallGame.validateInputNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -114,10 +115,10 @@ class NumberBaseBallGameTest {
 
     private Result getResult(String inputNumber, String baseNumber) {
         List<Integer> numbers = stringToIntegerList(baseNumber);
-        BaseNumberRepository baseNumberRepository = new BaseNumberRepository(new BaseNumber(numbers));
+        BaseNumberRepository baseNumberRepository = new BaseNumberRepository();
+        baseNumberRepository.saveBaseNumber(new BaseNumber(numbers));
         NumberBaseBallGame numberBaseBallGame = new NumberBaseBallGame(baseNumberRepository);
-        Result result = numberBaseBallGame.result(inputNumber);
-        return result;
+        return numberBaseBallGame.result(inputNumber);
     }
 
     private List<Integer> stringToIntegerList(String baseNumber) {
