@@ -3,6 +3,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Game {
     private boolean isCorrect;
     private int newOrEnd = 0;
 
-    AnswerSheet answerSheet = new AnswerSheet();
+    Pitch pitch = new Pitch();
     Hint hint = new Hint();
 
     public void start() {
@@ -24,15 +25,17 @@ public class Game {
         setComputerAnswer();
 
         while (true) {
-            answerSheet.guideToEnterNumber();
-            answerSheet.getUserAnswer();
-            isCorrect = answerSheet.checkCorrectAnswer(hint.getHint());
-            hint.giveHint();
+            pitch.guideToEnterNumber();
+            pitch.getUserAnswer();
+
+            isCorrect = pitch.checkCorrect(hint.get());
+            hint.show();
             if (isCorrect) {
-                answerSheet.guideAnswerCorrect();
+                pitch.guideAnswerIsCorrect();
                 break;
             }
         }
+
         askContinue();
     }
 

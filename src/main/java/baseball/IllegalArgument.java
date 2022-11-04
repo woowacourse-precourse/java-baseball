@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class IllegalException {
+public class IllegalArgument {
 
     protected List<Integer> userAnswer;
 
@@ -19,7 +19,7 @@ public class IllegalException {
     }
 
 
-    private void isNumber(String[] inputArray){
+    private void isNumber(String[] inputArray) {
 
         List<Integer> inputNumber = new ArrayList<>();
         try {
@@ -32,20 +32,20 @@ public class IllegalException {
         userAnswer = inputNumber;
     }
 
-    private void isAnswerLength(){
+    private void isAnswerLength() {
         if (userAnswer.size() != Game.answerLength) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isAllUnique(){
+    private void isAllUnique() {
         Set<Integer> uniqueNumber = new HashSet<>(userAnswer);
         if (userAnswer.size() != uniqueNumber.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isNotContainZero(){
+    private void isNotContainZero() {
         if (userAnswer.contains(0)) {
             throw new IllegalArgumentException();
         }

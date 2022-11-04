@@ -2,17 +2,18 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AnswerSheet {
+public class Pitch {
 
     public static List<Integer> userAnswer = new ArrayList<>();
     protected String[] inputArray;
     public boolean boolCorrectAnswer;
 
-    IllegalException illegalException = new IllegalException();
+    IllegalArgument illegalArgument = new IllegalArgument();
 
     public void getUserAnswer() {
         userAnswer.clear();
@@ -24,7 +25,7 @@ public class AnswerSheet {
     }
 
     private void setUserAnswer() {
-        illegalException.check(inputArrays());
+        illegalArgument.check(inputArrays());
         for (String input : inputArray) {
             userAnswer.add(Integer.parseInt(input));
         }
@@ -35,18 +36,17 @@ public class AnswerSheet {
         return inputArray;
     }
 
-    public boolean checkCorrectAnswer(String hint) {
+    public boolean checkCorrect(String hint) {
         this.boolCorrectAnswer = false;
         if (hint.equals("3스트라이크")) {
-            this.boolCorrectAnswer =true;
+            this.boolCorrectAnswer = true;
         }
         return this.boolCorrectAnswer;
     }
 
-    public void guideAnswerCorrect() {
+    public void guideAnswerIsCorrect() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
 
 
 }

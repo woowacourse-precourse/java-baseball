@@ -10,12 +10,11 @@ public class Hint {
     private int matchingNumber;
 
 
+    public String get() {
+        hint = "";
 
-    public String getHint() {
-        hint ="";
-
-        countMatchingNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
-        countIncludedNumbers(Game.correctAnswer, AnswerSheet.userAnswer);
+        countMatchingNumbers(Game.correctAnswer, Pitch.userAnswer);
+        countIncludedNumbers(Game.correctAnswer, Pitch.userAnswer);
 
         getHintOfBall();
         getHintOfStrike();
@@ -24,7 +23,7 @@ public class Hint {
         return this.hint.trim();
     }
 
-    public void giveHint() {
+    public void show() {
         System.out.println(this.hint.trim());
     }
 
@@ -50,8 +49,8 @@ public class Hint {
 
 
     private void getHintOfBall() {
-        if ((includedNumber - matchingNumber)!=0){
-           this.hint = "" + (includedNumber - matchingNumber) + "볼";
+        if ((includedNumber - matchingNumber) != 0) {
+            this.hint = "" + (includedNumber - matchingNumber) + "볼";
         }
     }
 

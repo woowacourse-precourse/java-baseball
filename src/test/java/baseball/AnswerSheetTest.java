@@ -9,7 +9,7 @@ import java.io.*;
 
 public class AnswerSheetTest{
 
-    AnswerSheet answerSheet = new AnswerSheet();
+    Pitch pitch = new Pitch();
 
     @Test
     void 예외_발생() {
@@ -17,7 +17,7 @@ public class AnswerSheetTest{
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThrows(IllegalArgumentException.class,()->answerSheet.getUserAnswer());
+        Assertions.assertThrows(IllegalArgumentException.class,()->pitch.getUserAnswer());
     }
 
 
