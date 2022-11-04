@@ -44,4 +44,8 @@ public class UserNumber {
         }
     }
 
+    public List<Character> getNumberList() {
+        return numberList;
+    }
+
 }
