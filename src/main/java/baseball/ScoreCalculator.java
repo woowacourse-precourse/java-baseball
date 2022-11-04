@@ -18,11 +18,11 @@ public class ScoreCalculator {
         scoreList = new ArrayList<>();
         scoreList.addAll(Arrays.asList(new NStrikeNBallScore(3, 0), new NothingScore()));
         for (int strike = 0; strike < 3; strike++) {
-            addScoreList(strike);
+            addScore(strike);
         }
     }
 
-    private void addScoreList(int strike) {
+    private void addScore(int strike) {
         for (int ball = 0; ball < 4 - strike; ball++) {
             if (strike == 0 && ball == 0) continue;
             scoreList.add(new NStrikeNBallScore(strike, ball));
@@ -32,7 +32,10 @@ public class ScoreCalculator {
     public Score calculateScore(int expect, int actual) {
         int strike = calculateStrike(expect, actual);
         int ball = calculateBall(expect, actual);
-        return scoreList.stream().filter((x) -> x.isSame(strike, ball)).findFirst().get();
+        return scoreList.stream()
+                .filter((x) -> x.isSame(strike, ball))
+                .findFirst()
+                .get();
     }
 
     private int calculateBall(int expect, int actual) {
