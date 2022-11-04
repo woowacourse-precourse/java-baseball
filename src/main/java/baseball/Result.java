@@ -31,4 +31,11 @@ public class Result {
         }
         return ball + "볼";
     }
+
+    public String strikeToString() {
+        if (strike == 0) {
+            return null;
+        }
+        return strike + "스트라이크";
+    }
 }
