@@ -6,6 +6,12 @@ public class Game {
     private final int NOT_STRIKE = 0;
     private final int BALL = 1;
     private final int NOT_BALL = 0;
+    private final String CORRECT_MESSAGE = "%d 스트라이크\n"
+            + "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private final String NOTHING_MESSAGE = "낫싱\n";
+    private final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
+    private final String BALL_MESSAGE = "%d볼\n";
+    private final String STRIKE_MESSAGE = "%d스트라이크\n";
     private String computer;
     private String player;
     private int strike;
@@ -26,6 +32,7 @@ public class Game {
 
         strike = countStrike();
         ball = countBall();
+        printCount();
     }
 
     private int countStrike() {
@@ -56,5 +63,19 @@ public class Game {
             return NOT_BALL;
         }
         return BALL;
+    }
+
+    private void printCount() {
+        if (strike == CNT_NUMBER) {
+            System.out.printf(CORRECT_MESSAGE, strike, CNT_NUMBER);
+        } else if (strike == 0 && ball == 0) {
+            System.out.print(NOTHING_MESSAGE);
+        } else if (strike != 0 && ball != 0) {
+            System.out.printf(BALL_STRIKE_MESSAGE, ball, strike);
+        } else if (strike != 0) {
+            System.out.printf(STRIKE_MESSAGE, strike);
+        } else if (ball != 0) {
+            System.out.printf(BALL_MESSAGE, ball);
+        }
     }
 }
