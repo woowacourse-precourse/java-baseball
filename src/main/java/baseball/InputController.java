@@ -21,7 +21,7 @@ public class InputController {
         return true;
     }
 
-    public static void checkThreeNum(String input) {
+    public static void validateThreeNum(String input) {
         if (!isStringNumberInRange(input, 1, 9)
                 || input.length() != 3
                 || !isUniqueChars(input)) {
@@ -31,7 +31,7 @@ public class InputController {
 
     public static List<Integer> getUniqueThreeNum() {
         String input = Console.readLine();
-        InputController.checkThreeNum(input);
+        InputController.validateThreeNum(input);
         return NumberController.convertStringToNumbers(input);
     }
 

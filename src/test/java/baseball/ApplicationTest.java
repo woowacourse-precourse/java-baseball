@@ -10,7 +10,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
 class ApplicationTest extends NsTest {
     @Nested
@@ -25,7 +24,7 @@ class ApplicationTest extends NsTest {
         @Test
         void getUniqueThreeNumbersIsUnique() {
             int[] oneToNine = new int[10];
-            Arrays.setAll(oneToNine, i -> 1);
+            Arrays.fill(oneToNine, 1);
             oneToNine[0] = 0;
             List<Integer> result = NumberController.getUniqueThreeNumbers();
             for (int num : result) {
@@ -68,31 +67,31 @@ class ApplicationTest extends NsTest {
         @Test()
         void checkThreeNumNotInt() {
             String input = "99l";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumNoInput() {
             String input = "";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumNotInRange() {
             String input = "301";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumLengthOver() {
             String input = "1234";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumDuplicate() {
             String input = "221";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
