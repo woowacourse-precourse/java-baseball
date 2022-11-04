@@ -12,12 +12,12 @@ public class Application {
     static List<Integer> answer;
 
     public static void main(String[] args) {
+        //TODO: 게임시작 메서드 하나로 리텍터링
         System.out.println(Comment.STARTGAME);
         generateNewAnswer();
 
         while (true) {
-            System.out.println(answer);
-
+            //TODO: 입력받기 메서드 하나로 리펙터링
             System.out.print(Comment.INPUTNUMBER);
             String userInput = Console.readLine();
             validateInput(userInput, 3);
@@ -26,20 +26,18 @@ public class Application {
             printHint();
 
             boolean isCorrect = checkAnswer();
-            boolean isRestart = false;
+            boolean isRestart = checkRestart(isCorrect);
 
-            if (isCorrect) {
-                isRestart = checkRestart();
+            if (isCorrect && isRestart) {
+                generateNewAnswer();
             }
             if (isCorrect && !isRestart) {
                 break;
             }
-            if (isRestart) {
-                generateNewAnswer();
-            }
         }
     }
 
+    //TODO: 메서드 순서 정리
     private static boolean checkAnswer() {
         if (hintMap.get(Hint.STRIKE).equals(3)) {
             System.out.println(Comment.ENDGAME);
@@ -107,17 +105,20 @@ public class Application {
         System.out.println(hintStr);
     }
 
-    private static boolean checkRestart() {
-        System.out.println(Comment.REGAME);
-        String restartRely = Console.readLine();
-        validateInput(restartRely, 1);
-        if (restartRely.equals("1")) {
-            return true;
+    private static boolean checkRestart(boolean isCorrect) {
+        if (isCorrect) {
+            System.out.println(Comment.REGAME);
+            String restartRely = Console.readLine();
+            validateInput(restartRely, 1);
+            if (restartRely.equals("1")) {
+                return true;
+            }
+            if (restartRely.equals("2")) {
+                return false;
+            }
+            throw new IllegalArgumentException("1 혹은 2 를 입력해주세요.");
         }
-        if (restartRely.equals("2")) {
-            return false;
-        }
-        throw new IllegalArgumentException("1 혹은 2 를 입력해주세요.");
+        return false;
     }
 
     private static void initializeHint() {
