@@ -1,8 +1,41 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class UserInterface {
+    public static List<Integer> getUsersAnswer() {
+        try {
+            List<Integer> answer = new ArrayList<>();
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            if (!validateUsersInput(input)) {
+                throw new IllegalArgumentException();
+            }
+            for (char c : input.toCharArray()) {
+                answer.add((int) c - '0');
+            }
+            return answer;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean validateUsersInput(String input) {
+        Set<Character> inputCharSet = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            inputCharSet.add(c);
+        }
+
+        if (inputCharSet.size() != 3 || inputCharSet.stream().anyMatch(c -> c < '1' || c > '9')) {
+            return false;
+        }
+        return true;
+    }
+
     public static boolean resultOutput(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
