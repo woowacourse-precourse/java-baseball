@@ -3,11 +3,22 @@ package baseball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class GameTest {
+    static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
+    @Test
+    void 시작_문구_출력_체크(){
+        Game game = new Game();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printStartMessage();
+        assertThat(out.toString()).isEqualTo(START_MESSAGE+"\n");
+    }
     @Test
     void 컴퓨터가_생성한_숫자_조건체크(){
         Game game = new Game();
