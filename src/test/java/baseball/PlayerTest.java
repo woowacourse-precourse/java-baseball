@@ -72,4 +72,36 @@ public class PlayerTest {
         number = "tnt";
         assertThat(player.isAllDifferent(number)).isEqualTo(result);
     }
+
+    @Test
+    void isValidNumberTest() {
+        Player player = new Player();
+        boolean result = true;
+        String number = "213";
+        number = "972";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "837";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "374";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "678";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "917";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        result = false;
+        number = "1234";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "9t2";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "102";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "133";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "911";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "   ";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+        number = "";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
+    }
 }
