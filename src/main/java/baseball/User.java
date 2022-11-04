@@ -23,7 +23,7 @@ public class User {
         setInputNumber(input);
     }
 
-    public List<Integer> getThreeNumber() {
+    public List<Integer> getInputNumber() {
         return this.inputNumber;
     }
 

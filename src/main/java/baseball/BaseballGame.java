@@ -19,7 +19,7 @@ public class BaseballGame {
         while (onGame) {
             user.receiveThreeNumber();
 
-            List<Integer> userNumbers = user.getThreeNumber();
+            List<Integer> userNumbers = user.getInputNumber();
             onGame = !computer.isCorrectAnswer(userNumbers);
             user.resetUserNumber();
         }
