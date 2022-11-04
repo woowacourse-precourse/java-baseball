@@ -125,6 +125,18 @@ public class Application {
     }
 
     private static void PrintResult(LinkedHashMap<String, Integer> finalResult) {
-        
+        int strikes = finalResult.get("strikes");
+        int balls = finalResult.get("balls");
+
+        // 결과 출력
+        if (strikes == 0 && balls == 0) {
+            System.out.println("낫싱");
+        } else if (strikes == 0 && balls != 0) {
+            System.out.println(balls+"볼");
+        } else if (strikes != 0 && balls == 0) {
+            System.out.println(strikes+"스트라이크");
+        } else if (strikes != 0 && balls != 0) {
+            System.out.println(balls+"볼 "+strikes+"스트라이크");
+        }
     }
 }
