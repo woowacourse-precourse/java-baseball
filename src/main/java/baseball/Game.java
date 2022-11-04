@@ -29,7 +29,7 @@ public class Game {
 
         print.inputNumbers();
 
-        List<Integer> answerNumbers = computer.getRamdomNumbers();
+        List<Integer> answerNumbers = computer.getRandomNumbers();
         List<Integer> userNumbers = user.getInputNumbers();
 
         while (!comparator.compare(userNumbers, answerNumbers)) {

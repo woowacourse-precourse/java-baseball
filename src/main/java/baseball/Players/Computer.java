@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    public List<Integer> getRamdomNumbers() {
+    public List<Integer> getRandomNumbers() {
 
         List<Integer> res = new ArrayList<>();
 
