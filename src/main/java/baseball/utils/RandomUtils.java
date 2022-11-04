@@ -16,7 +16,7 @@ public class RandomUtils {
     public static List<Integer> pickThreeRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < RANDOM_NUMBERS_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX + 1);
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
             checkRandomNumberUnique(randomNumbers, randomNumber);
         }
         return randomNumbers;
