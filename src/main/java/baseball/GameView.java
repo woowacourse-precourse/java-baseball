@@ -27,8 +27,8 @@ public class GameView {
 		System.out.print(ballCount + BALL);
 	}
 
-	public static void printBallAndStrike(int ballCount, int strikeCount) {
-		System.out.print(ballCount + BALL + " " + strikeCount + STRIKE);
+	public static void printBallAndStrike(int ballCount) {
+		System.out.print(ballCount + BALL + " ");
 	}
 
 	public static void printNothing() {

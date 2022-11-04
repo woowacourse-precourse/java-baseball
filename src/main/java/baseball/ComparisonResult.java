@@ -2,12 +2,12 @@ package baseball;
 
 import java.util.List;
 
-public class Comparison {
+public class ComparisonResult {
 	private static final int NUMBER_LENGTH = 3;
-	private int strikeCount = 0;
-	private int ballCount = 0;
+	static int strikeCount = 0;
+	static int ballCount = 0;
 
-	public Comparison(List<Integer> userNums, List<Integer> computerNums) {
+	public ComparisonResult(List<Integer> userNums, List<Integer> computerNums) {
 		countHint(userNums, computerNums);
 	}
 

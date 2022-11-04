@@ -10,10 +10,9 @@ public class Computer {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	final List<Integer> computerNums;
+	static final List<Integer> computerNums = new ArrayList<>();
 
 	public Computer() {
-		computerNums = new ArrayList<>();
 		generateRandomThreeNums();
 		System.out.println(computerNums);
 	}
