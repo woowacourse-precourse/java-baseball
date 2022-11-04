@@ -36,7 +36,22 @@
 ## calculatedStrikeBallNumber
 - [ ] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
 - [ ] strikeNumber이 0보다 큰고 3보다 작은지 확인
-- [ ] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ball-strikeNumber로 초기화
+- [ ] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ballNumber - strikeNumber로 초기화
 - [ ] strikeNumber이 3인지 확인
 - [ ] true이면 checkBaseBallNumbers의 strike : 3으로 초기화
 - [ ] checkedBaseballNumbers을 리턴
+
+## printBaseballOfResult
+- [ ] Map 매개변수의 요소들의 꺼내서 strikeNumber와 ballNumber에 저장
+- [ ] strikeNumber이 3인지 비교
+- [ ] true이면, "3스트라이크" 출력
+- [ ] true을 리턴
+- [ ] strikeNumber가 0이고, ballNumber가 0인지 비교
+- [ ] true이면 "낫싱" 출력
+- [ ] strikeNumber가 0이고, ballNumber가 0보다 큰지 비교
+- [ ] true이면 "ballNumber + 볼" 출력
+- [ ] ballNumber이 0이고, strikeNumber이 0보다 큰지 비교
+- [ ] true이면, "strikeNumber + 스트라이크" 출력
+- [ ] ballNumber이 0보다 크고, strikeNumber이 0보다 큰지 비교
+- [ ] true이면 "ballNumber + 볼 strikeNumber + 스트라이크"을 출력
+- [ ] false을 리턴
