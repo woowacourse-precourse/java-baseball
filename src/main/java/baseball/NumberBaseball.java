@@ -135,26 +135,33 @@ public class NumberBaseball {
     }
 
     /**
-     * 하나의 게임 단위를 실행하는 메소드
+     * 게임 단위 하나의 실행 지속 여부를 결정하는 메소드
+     *
+     * 사용자로부터 잘못된 input이 전달되었을 때 실행을 종료하기 위해 false를 반환합니다.
+     *
+     * @return true or false
      */
-    public void startGame() {
-        Scanner sc = new Scanner(System.in);    /** 이 부분 Console.readLine()으로 바꿔야 함*/
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(getAnswer());    /** 이 부분은 추후에 제거해야 함*/
+    public boolean startGame() {
+        System.out.println("(테스트용)숫자 야구 게임을 시작합니다.");
+        System.out.println("정답 -> " + getAnswer().get(0).toString() + getAnswer().get(1).toString() + getAnswer().get(2).toString());    /** 이 부분은 추후에 제거해야 함*/
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String userAnswer = sc.nextLine();  /** 이 부분 Console.readLine()으로 바꿔야 함*/
+            String userAnswer = validateInput();    // validateInput을 통해 사용자의 input을 검증
+
+            if (userAnswer.length() == 0) { // 잘못된 input이 전달되었다면 빈 문자열을 반환함
+                break;
+            }
 
             List<Integer> result = checkAnswer(userAnswer);
             showResult(result);
 
             if (result.get(1) == 3) {   // 3 strike인 경우
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     /**
