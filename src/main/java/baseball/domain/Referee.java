@@ -1,14 +1,18 @@
 package baseball.domain;
 
+import baseball.domain.score.BallScore;
+import baseball.domain.score.Score;
+import baseball.domain.score.StrikeScore;
+
 import java.util.List;
 
 public class Referee {
-    private BallStatusScore strike;
-    private BallStatusScore ball;
+    private Score strike;
+    private Score ball;
     
     public Referee() {
-        strike = new BallStatusScore();
-        ball = new BallStatusScore();
+        strike = new StrikeScore();
+        ball = new BallScore();
     }
     
     public void decide(final List<BallStatus> ballStatuses) {
@@ -37,11 +41,11 @@ public class Referee {
         return strike.isGameEnd();
     }
     
-    public BallStatusScore strike() {
+    public Score strike() {
         return strike;
     }
     
-    public BallStatusScore ball() {
+    public Score ball() {
         return ball;
     }
     
