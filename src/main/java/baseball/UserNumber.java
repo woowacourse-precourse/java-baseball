@@ -20,6 +20,13 @@ public class UserNumber {
                 .mapToObj(e->(char)e).collect(Collectors.toList());
         checkUserInputLength(numberList);
         checkInputIsNumber(numberList);
+        checkDuplicateValue(numberList);
+    }
+
+    private void checkDuplicateValue(List<Character> numberList) {
+        if (numberList.get(0) == numberList.get(1) || numberList.get(1) == numberList.get(2) || numberList.get(2) == numberList.get(0)) {
+            throw new IllegalArgumentException("입력값 사이에 중복된 값이 존재합니다.");
+        }
     }
 
     private void checkInputIsNumber(List<Character> numberList) {
