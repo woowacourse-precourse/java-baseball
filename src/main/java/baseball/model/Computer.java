@@ -28,8 +28,23 @@ public class Computer {
             search(guessNumbers[i], i);
         }
 
+        resultPrint();
+
+        reset();
     }
 
+    private void resultPrint() {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("나싱");
+        } else {
+            System.out.println(ballCount + "볼" + strikeCount + "스트라이크");
+        }
+    }
+
+    private void reset() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
 
     private void search(int guessNumber, int index){
 
