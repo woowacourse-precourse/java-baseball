@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Game {
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
@@ -20,5 +22,13 @@ public class Game {
             }
         }
         return computer;
+    }
+    public List<Integer> inputUserNumber(){
+        String numberStr = readLine();
+        List<Integer> user = new ArrayList<>();
+        for (int i=0; i<3; i++){
+            user.add(numberStr.charAt(i)-'0');
+        }
+        return user;
     }
 }
