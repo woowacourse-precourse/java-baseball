@@ -3,6 +3,10 @@ package baseball;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static baseball.PlayerNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +18,15 @@ class PlayerNumberTest {
     private void setUp() {
         playerNumber = new PlayerNumber();
     }
+
+    @Test
+    void 문자_숫자_리스트로_변환_검사(){
+        String convertString = "123";
+        List<Integer> testList = new ArrayList<>(Arrays.asList(1,2,3));
+        assertEquals(testList , convertNumberList(convertString));
+
+    }
+
 
     @Test
     void 숫자_중복_검사() {
