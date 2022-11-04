@@ -26,15 +26,23 @@ public class Game {
             Integer currentAnswer = answer.get(index);
             Integer currentUserAnswer = userAnswer.get(index);
 
-            if (Objects.equals(currentAnswer, currentUserAnswer)) {
+            if (isStrike(currentAnswer,currentUserAnswer)) {
                 resultMap.put("strike",resultMap.get("strike") + 1);
             }
 
-            if (answer.contains(currentUserAnswer)
-                    && !Objects.equals(currentAnswer,currentUserAnswer)) {
+            if (isBall(currentAnswer, currentUserAnswer)) {
                 resultMap.put("ball",resultMap.get("ball") + 1);
             }
         }
         return resultMap;
+    }
+
+    private boolean isBall(Integer answerInt, Integer userAnswerInt) {
+        return answer.contains(userAnswerInt)
+                && !Objects.equals(answerInt, userAnswerInt);
+    }
+
+    private boolean isStrike(Integer answerInt, Integer userAnswerInt) {
+        return Objects.equals(answerInt, userAnswerInt);
     }
 }
