@@ -7,6 +7,27 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        int userEndingResponse = 1;
+        List<Integer> computerAnswerList = new ArrayList<>();
+        int userAnswer = 0;
+        List<Integer> userAnswerList = new ArrayList<>();
+
+        while (userEndingResponse == 1){
+
+            printStartMessage();
+
+            computerAnswerList = createComputerLength3IntegerAnswerToList();
+
+            printGetInputMessage();
+            userAnswer = getUserNumberToInteger();
+            checkIllegalInputForBaseballGame(userAnswer);
+            userAnswerList = convertIntegerToList(userAnswer);
+
+
+
+
+
+        }
         // TODO: 프로그램 구현
     }
 
@@ -69,16 +90,14 @@ public class Application {
     }
     // 에러케이스 구분할 것!
 
-    public static List<Boolean> checkWhereIsStrike(List<Integer> computerAnswer,
+    public static List<Integer> checkWhereIsNotStrike(List<Integer> computerAnswer,
                                                    List<Integer> userAnswer){
-        List<Boolean> strikeZone = new ArrayList<>();
+        List<Integer> notStrikeZone = new ArrayList<>();
         for (int digit=0; digit<3; digit++){
-            if (computerAnswer.get(digit).equals(userAnswer.get(digit)))
-                strikeZone.add(true);
-            else
-                strikeZone.add(false);
+            if (!computerAnswer.get(digit).equals(userAnswer.get(digit)))
+                notStrikeZone.add(digit);
         }
-        return strikeZone;
+        return notStrikeZone;
     }
     public static int countStrike(List<Boolean> strikeList){
         return Collections.frequency(strikeList, true);
@@ -87,5 +106,8 @@ public class Application {
         if (countStrike==3)
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+    public static void countBall(){
+
     }
 }

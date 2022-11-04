@@ -43,19 +43,17 @@ class ApplicationMethodTest {
 
 
     @Test
-    void checkWhereIsStrike() {
+    void checkWhereIsNotStrike() {
         List<Integer> computerAnswer = new ArrayList<>(){
             {add(3); add(4); add(5);}
         };
         List<Integer> userAnswer = new ArrayList<>(){
             {add(3); add(4); add(5);}
         };
-        List<Boolean> strikeZone = Application.checkWhereIsStrike(computerAnswer, userAnswer);
+        List<Integer> notStrikeZone = Application.checkWhereIsNotStrike(computerAnswer, userAnswer);
 
-        List<Boolean> realAnswer = new ArrayList<>(){
-            {add(true); add(true); add(true);}
-        };
-        assertThat(strikeZone).isEqualTo(realAnswer);
+        List<Boolean> realAnswer = new ArrayList<>(){};
+        assertThat(notStrikeZone).isEqualTo(realAnswer);
     }
 
     @Test
