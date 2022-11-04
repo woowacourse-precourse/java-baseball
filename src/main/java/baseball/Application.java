@@ -5,10 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
     final static int MIN_RANDOM_VALUE = 1;
     final static int MAX_RANDOM_VALUE = 9;
+    final static int MIN_PATTERN_VALUE = 1;
+    final static int MAX_PATTERN_VALUE = 9;
     final static int MAX_NUMBERS_COUNT = 3;
     final static int INIT_STRIKE_COUNT = 0;
     final static int MAX_STRIKE_COUNT = 3;
@@ -20,6 +23,9 @@ public class Application {
     final static String MESSAGE_RETRY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final static String FLAG_RETRY_STRING = "1";
     final static String FLAG_STOP_STRING = "2";
+    final static String PATTERN = "^[" + MIN_PATTERN_VALUE +
+                                    "-" + MAX_PATTERN_VALUE +
+                                    "]{" + MAX_NUMBERS_COUNT + "}?$";
 
     public static void main(String[] args) {
         System.out.println(MESSAGE_START);
@@ -89,5 +95,11 @@ public class Application {
     private static String inputUserNumbers() {
         System.out.print(MESSAGE_REQUEST_INPUT);
         return Console.readLine();
+    }
+
+    private static void validateInputPattern(String userInputNumbers) {
+        if(!Pattern.matches(PATTERN, userInputNumbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
