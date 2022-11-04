@@ -13,7 +13,6 @@ public class BaseballGame {
     private List<Integer> computerNumbers = new ArrayList<>();
     private int strikeCount;
     private int ballCount;
-    private String message;
 
     public void start() {
         createComputerNumbers();
@@ -35,29 +34,22 @@ public class BaseballGame {
     }
 
 
-    private String answerMessage() {
-
+    private void answerMessage() {
         if (strikeCount == 0 && ballCount != 0) {
-            message = ballCount + "볼";
-            System.out.println(message);
-            return message;
+            System.out.println(ballCount + "볼");
         }
 
         if (strikeCount != 0 && ballCount == 0) {
-            message = strikeCount + "스트라이크";
-            System.out.println(message);
-            return message;
+            System.out.println(strikeCount + "스트라이크");
         }
 
         if (strikeCount != 0 && ballCount != 0) {
-            message = ballCount + "볼 " + strikeCount + "스트라이크";
-            System.out.println(message);
-            return message;
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
 
-        message = "낫싱";
-        System.out.println(message);
-        return message;
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        }
     }
 
     private void calculateBallCount(String input) {
