@@ -20,6 +20,6 @@ public enum ResultMessage {
             return "";
         }
 
-        return number + this.name();
+        return number + getMessage();
     }
 }
