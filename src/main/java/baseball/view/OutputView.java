@@ -31,7 +31,7 @@ public class OutputView {
             System.out.println(NOTHING_DISPLAY);
             return;
         }
-        System.out.println(parsePlayResultsMessage(ballStatusScores, ballStatusDisplay));
+        System.out.println(parsePlayResults(ballStatusScores, ballStatusDisplay));
     }
     
     private static boolean isNothing(final List<Integer> ballStatusScores) {
@@ -43,10 +43,10 @@ public class OutputView {
         return ballScore != 0;
     }
     
-    private static String parsePlayResultsMessage(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay) {
+    private static String parsePlayResults(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(0, 1)
                 .filter(position -> isBallScoreNotZero(ballStatusScores, position))
-                .mapToObj(position -> parsePlayResultMessage(ballStatusScores, ballStatusDisplay, position))
+                .mapToObj(position -> combinedDisplay(ballStatusScores.get(position), ballStatusDisplay.get(position)))
                 .collect(Collectors.joining(DELIMITER));
     }
     
@@ -54,8 +54,8 @@ public class OutputView {
         return ballStatusScores.get(position) != 0;
     }
     
-    private static String parsePlayResultMessage(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay, final int position) {
-        return ballStatusScores.get(position) + ballStatusDisplay.get(position);
+    private static String combinedDisplay(final int ballStatusScore, final String ballStatusDisplay) {
+        return ballStatusScore + ballStatusDisplay;
     }
     
     public static void baseBallGameEndMessagePrint() {

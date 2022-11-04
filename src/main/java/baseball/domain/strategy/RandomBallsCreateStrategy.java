@@ -27,9 +27,9 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
     
     private static List<Integer> createCorrectRandomBallNumbers() {
         try {
-            final List<Integer> randomBallNumbers = createRandomBallNumbers();
-            isValid(randomBallNumbers);
-            return randomBallNumbers;
+            final List<Integer> ballNumbers = createRandomBallNumbers();
+            isValid(ballNumbers);
+            return ballNumbers;
         } catch (IllegalArgumentException e) {
             return createCorrectRandomBallNumbers();
         }
@@ -42,55 +42,55 @@ public class RandomBallsCreateStrategy implements BallsCreateStrategy {
                 .collect(Collectors.toList());
     }
     
-    private static void isValid(final List<Integer> randomBallNumbers) {
-        validateOutOfRange(randomBallNumbers);
-        validateExistSameNumber(randomBallNumbers);
-        validateOutOfLength(randomBallNumbers);
+    private static void isValid(final List<Integer> ballNumbers) {
+        validateOutOfRange(ballNumbers);
+        validateExistSameNumber(ballNumbers);
+        validateOutOfLength(ballNumbers);
     }
     
-    private static void validateOutOfRange(final List<Integer> randomBallNumbers) {
-        if (existNumberOutOfRange(randomBallNumbers)) {
+    private static void validateOutOfRange(final List<Integer> ballNumbers) {
+        if (existNumberOutOfRange(ballNumbers)) {
             throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean existNumberOutOfRange(final List<Integer> randomBallNumbers) {
-        return randomBallNumbers.stream()
+    private static boolean existNumberOutOfRange(final List<Integer> ballNumbers) {
+        return ballNumbers.stream()
                 .anyMatch(RandomBallsCreateStrategy::isOutOfRange);
     }
     
-    private static boolean isOutOfRange(final Integer randomBallNumber) {
-        return randomBallNumber < MIN_NUMBER_OF_BALLS || randomBallNumber > MAX_NUMBER_OF_BALLS;
+    private static boolean isOutOfRange(final Integer ballNumber) {
+        return ballNumber < MIN_NUMBER_OF_BALLS || ballNumber > MAX_NUMBER_OF_BALLS;
     }
     
-    private static void validateExistSameNumber(final List<Integer> randomBallNumbers) {
-        if (existSameNumber(randomBallNumbers)) {
+    private static void validateExistSameNumber(final List<Integer> ballNumbers) {
+        if (existSameNumber(ballNumbers)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBERS_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean existSameNumber(final List<Integer> randomBallNumbers) {
-        return randomBallNumbers.stream()
-                .anyMatch(randomBallNumber -> isExceedMaxCountOfEachNumber(randomBallNumbers, randomBallNumber));
+    private static boolean existSameNumber(final List<Integer> ballNumbers) {
+        return ballNumbers.stream()
+                .anyMatch(ballNumber -> isExceedMaxCountOfEachNumber(ballNumbers, ballNumber));
     }
     
-    private static boolean isExceedMaxCountOfEachNumber(final List<Integer> randomBallNumbers, final int randomBallNumber) {
-        return countOfDuplicateNumber(randomBallNumbers, randomBallNumber) > MAX_COUNT_OF_EACH_NUMBER;
+    private static boolean isExceedMaxCountOfEachNumber(final List<Integer> ballNumbers, final int ballNumber) {
+        return countOfDuplicateNumber(ballNumbers, ballNumber) > MAX_COUNT_OF_EACH_NUMBER;
     }
     
-    private static int countOfDuplicateNumber(final List<Integer> randomBallNumbers, final int targetRandomBallNumber) {
-        return (int) randomBallNumbers.stream()
-                .filter(randomBallNumber -> randomBallNumber == targetRandomBallNumber)
+    private static int countOfDuplicateNumber(final List<Integer> ballNumbers, final int targetBallNumber) {
+        return (int) ballNumbers.stream()
+                .filter(ballNumber -> ballNumber == targetBallNumber)
                 .count();
     }
     
-    private static void validateOutOfLength(final List<Integer> randomBallNumbers) {
-        if (isNotCorrectNumbersLength(randomBallNumbers)) {
+    private static void validateOutOfLength(final List<Integer> ballNumbers) {
+        if (isNotCorrectNumbersLength(ballNumbers)) {
             throw new IllegalArgumentException(OUT_OF_LENGTH_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean isNotCorrectNumbersLength(final List<Integer> randomBallNumbers) {
-        return randomBallNumbers.size() != COUNT_OF_BALLS;
+    private static boolean isNotCorrectNumbersLength(final List<Integer> ballNumbers) {
+        return ballNumbers.size() != COUNT_OF_BALLS;
     }
 }
