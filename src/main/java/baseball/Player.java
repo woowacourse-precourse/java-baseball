@@ -72,6 +72,10 @@ public class Player {
         return stringBuilder.toString().trim();
     }
 
+    public boolean isMaxStrike() {
+        return strike == Config.MAX_STRIKE;
+    }
+
     public void validatePlayerNumber(String playerNumber) {
         if (!isValidType(playerNumber)) {
             throw new IllegalArgumentException(Message.TYPE_EXCEPTION);

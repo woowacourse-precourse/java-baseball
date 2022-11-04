@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
     Player player;
@@ -62,6 +63,14 @@ public class PlayerTest {
 
         player.setHintCount(computerNumbers, "789");
         assertEquals(player.getHintMessage(), "낫싱");
+    }
+
+    @Test
+    void 게임_종료_테스트() {
+        List<Integer> computerNumbers = new ArrayList<>(Arrays.asList(1, 2, 3));
+        player.setHintCount(computerNumbers, "123");
+
+        assertTrue(player.isMaxStrike());
     }
 
     @Test
