@@ -12,6 +12,7 @@ public class Application {
         getStartMessage();
         List<Integer> answer = getRandomValue();
         List<Integer> userInput = charToInt(getUserInput());
+        countBallStrike(answer, userInput);
     }
 
     public static void getStartMessage() {
@@ -55,10 +56,29 @@ public class Application {
 
     public static List<Integer> charToInt(List<Character> userInput) {
         List<Integer> result = new ArrayList<>();
+
         for (char x : userInput) {
             result.add(Integer.parseInt(String.valueOf(x)));
         }
         return result;
+    }
+
+    public static void countBallStrike(List<Integer> answer, List<Integer> userInput) {
+        int strikeCounter = 0;
+        int ballCounter = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int answerValue = answer.get(i);
+            int userInputValue = userInput.get(i);
+
+            if (answerValue == userInputValue) {
+                strikeCounter++;
+            } else if (answer.contains(userInputValue)) {
+                ballCounter++;
+            }
+        }
+
+        System.out.printf("%d볼 %d스트라이크",strikeCounter,ballCounter);
     }
 
 }
