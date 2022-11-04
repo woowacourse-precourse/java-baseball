@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class BaseballGame {
     int[] computerNumber;
     int[] userNumber;
+    Hint hint;
     BaseballGame(){
+        this.hint = new Hint();
     }
 
     public void makeRandomNumber() {
@@ -27,6 +29,8 @@ public class BaseballGame {
 
     public void startGame(){
         String userInput;
+        int strike = 0;
+        int ball = 0;
         Scanner scanner = new Scanner(System.in);
         userInput = scanner.nextLine();
         if (invalidUserNumber(userInput)){
@@ -36,6 +40,8 @@ public class BaseballGame {
                 this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
             }
         }
+
+        hint.getHint(userNumber, computerNumber);
     }
     public boolean restartGame(){
         return true;
