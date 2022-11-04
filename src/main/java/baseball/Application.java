@@ -35,7 +35,7 @@ public class Application {
         }
 
         public boolean isValidInput(String inputStr){
-            if(is3DigitNumber(inputStr)){
+            if(!is3DigitNumber(inputStr) || !isDiffDigitNumber(inputStr)){
                 throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
                 // Error 처리 하기!
             }
@@ -49,9 +49,18 @@ public class Application {
                 return false;
             }
             return true;
-
         }
 
+
+        public boolean isDiffDigitNumber(String inputStr){
+            if(inputStr.charAt(0) == inputStr.charAt(1)
+                    || inputStr.charAt(1) == inputStr.charAt(2)
+                    || inputStr.charAt(0) == inputStr.charAt(2)
+            ) {
+                return false;
+            }
+            return true;
+        }
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
