@@ -16,13 +16,6 @@ public class PlayerViewTest {
     }
 
     @Test
-    void 입력_요청문이_올바르게_나오는지(){
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        assertThat(playerView.requestInput).isEqualTo("숫자를 입력해주세요 : ");
-    }
-
-    @Test
     void 입력_문자열이_정상반환_되는지(){
         String input = "123";
         OutputStream out = new ByteArrayOutputStream();
@@ -38,37 +31,37 @@ public class PlayerViewTest {
         String input = "abc";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(playerView.readInput())
+        assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 값은 숫자여야 합니다. ");
     }
 
     @Test
-    void 입력이_숫자가_없으면_있으면_예외처리(){
+    void 입력이_숫자가_네자리면_예외처리(){
         String input = "0123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(playerView.readInput())
+        assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 값은 세 자리여야 합니다. ");
     }
 
     @Test
-    void 입력이_숫자가_없으면_있으면_예외처리(){
+    void 입력이_숫자가_0이_있으면_예외처리(){
         String input = "012";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(playerView.readInput())
+        assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 값에 0이 없어야 합니다. ");
     }
 
     @Test
-    void 입력이_숫자가_없으면_있으면_예외처리(){
+    void 입력이_숫자가_같으면_예외처리(){
         String input = "112";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(playerView.readInput())
+        assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 값이 서로 다른 숫자여야 합니다. ");
     }
