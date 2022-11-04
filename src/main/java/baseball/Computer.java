@@ -25,4 +25,8 @@ public class Computer {
     public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
+
+    public boolean isBall(int digit) {
+        return answer.contains(digit);
+    }
 }
