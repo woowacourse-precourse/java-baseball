@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Application {
     static boolean endGameState(){
-        System.out.println("3개의 숫자를 모두 맟히셨습니다! 게임 졸료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        System.out.println("3개의 숫자를 모두 맟히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String myNumber = Console.readLine();
         if(myNumber.equals("1")){
             return true;
@@ -98,7 +98,7 @@ public class Application {
         return computer;
     }
 
-    static void startGameState()throws IllegalArgumentException{
+    static boolean startGameState()throws IllegalArgumentException{
         try{
             List<Integer> computerNum = pickComputerNum();
             boolean isWin = false;
@@ -106,8 +106,7 @@ public class Application {
                 String myNum = pickMyNum();
                 isWin = compareNumber(computerNum, myNum);
             }
-            boolean againGame = endGameState();
-            System.out.println(againGame);
+            return endGameState();
         }
         catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
@@ -117,7 +116,16 @@ public class Application {
 
     static void startApplicationState(){
         // 리턴값에 따라 반복 여부 결정 필요
-        startGameState();
+        try{
+            boolean againGame = true;
+            while(againGame){
+                againGame = startGameState();
+            }
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
