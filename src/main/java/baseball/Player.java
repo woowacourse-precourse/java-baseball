@@ -3,9 +3,9 @@ package baseball;
 import java.util.List;
 
 public class Player {
-	List<Integer> numbers;
-	int strike = 0;
-	int ball = 0;
+	private List<Integer> numbers;
+	private int strike = 0;
+	private int ball = 0;
 
 	public Player(List<Integer> numbers) {
 		this.numbers = numbers;
