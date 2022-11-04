@@ -61,6 +61,6 @@ public class Computer implements ProblemMaker {
 
     @Override
     public boolean isFinishedCurrentGame(BallCount ballCount) {
-        return false;
+        return ballCount.getStrike() == 3;
     }
 }
