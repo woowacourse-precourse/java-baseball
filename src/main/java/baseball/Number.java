@@ -22,4 +22,14 @@ public class Number {
 
         return randomNum;
     }
+
+    public boolean validateNumber(List<Integer> num) { 
+        HashSet<Integer> setNum = Sets.newHashSet(num);
+
+        if (setNum.size() == num.size()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
