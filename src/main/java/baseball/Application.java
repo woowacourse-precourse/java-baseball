@@ -150,6 +150,7 @@ public class Application {
         // 스트라이크의 수가 3이면 끝
         if (strikes == 3) {
             result = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if (strikes != 3) {
             result = false;
         }
