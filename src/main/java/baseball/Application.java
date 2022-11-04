@@ -48,7 +48,7 @@ public class Application {
         if (input.length() != 3)
             invalid();
         for (int i = 0; i < 3; ++i) {
-            if (Character.isDigit(input.charAt(i)) == false)
+            if (!Character.isDigit(input.charAt(i)) || input.charAt(i) == '0')
                 invalid();
             user.add(Character.getNumericValue(input.charAt(i)));
         }
