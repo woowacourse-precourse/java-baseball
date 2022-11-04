@@ -2,6 +2,8 @@ package baseball;
 
 public class BaseballGameConsole {
 
+    private final Computer computer = new Computer();
+
     public void playGame(Player player) {
         startingGuide(player.getName());
         do {
@@ -16,7 +18,7 @@ public class BaseballGameConsole {
 
     private void playSingleGame(Player player) {
         boolean matchedAllNumber = false;
-        // Computer selects random number
+        String randomNumber = computer.selectRandomNumber();
 
         do {
             System.out.println("숫자를 입력해주세요. :");
