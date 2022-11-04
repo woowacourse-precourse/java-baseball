@@ -41,16 +41,24 @@ public class Game {
     public void playGameRound() {
         Computer computer = new Computer();
         List<Integer> computerRandomDigit = computer.completedDigits;
+        List<Integer> userInputDigit;
 
         while (true) {
             try {
-                List<Integer> userInputDigit = getUserInput();
+                userInputDigit = getUserInput();
             } catch (IllegalArgumentException e) {
                 continue;
             }
 
             // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
+            String checkDigitsResult = computer.checkDigits(userInputDigit, computerRandomDigit);
+            System.out.println(checkDigitsResult);
+            if(isGameWin(checkDigitsResult)){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                // 여기 1, 2 메뉴 선택할 수 있는 메소드 필요
 
+            }
         }
     }
 
