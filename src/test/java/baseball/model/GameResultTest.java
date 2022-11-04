@@ -34,4 +34,13 @@ class GameResultTest {
         Assertions.assertThat(threeBall.getBallCount())
             .isEqualTo(3);
     }
+
+    @Test
+    void 낫싱인지_확인() {
+        GameResult nothing = new GameResult(List.of(1, 2, 3), List.of(4, 5, 6));
+        GameResult something = new GameResult(List.of(1, 2, 3), List.of(4, 5, 1));
+
+        Assertions.assertThat(nothing.isNothing()).isTrue();
+        Assertions.assertThat(something.isNothing()).isFalse();
+    }
 }
