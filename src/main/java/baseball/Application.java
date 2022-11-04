@@ -8,34 +8,58 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void main(String[] args) throws IllegalArgumentException{
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int restart = 1;
-        while(restart == 1) {
-            String answer = makeBall();
-            boolean isEnd = false;
-            while(!isEnd) {
-                System.out.println("숫자를 입력해주세요 : ");
-                String input = Console.readLine();
+        boolean endGame = false;
+        String answer = makeBall();
+        while(!endGame) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            if(input.length() != 3 || !checkDigit(input)) {
+                throw new IllegalArgumentException();
+            }
 
-                int[] result = count(answer, input); // [0] = strikes, [1] = balls
+            int[] result = count(answer, input); // [0] = strikes, [1] = balls
 
-                isEnd = printRes(result);
-                restart = manageGame(isEnd);
+            boolean isEnd = printRes(result);
+            endGame = manageGame(isEnd);
+            if(isEnd && !endGame) {
+                answer = makeBall();
             }
         }
     }
 
-    public static int manageGame(boolean isEnd) {
-        int restart = 1;
+    private static boolean checkDigit(String input) {
+        if(!Character.isDigit(input.charAt(0))) {
+            return false;
+        }
+        if(!Character.isDigit(input.charAt(1))) {
+            return false;
+        }
+        if(!Character.isDigit(input.charAt(2))) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean manageGame(boolean isEnd) throws IllegalArgumentException{
         if (isEnd) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String gameEnd = Console.readLine();
-            restart = Integer.valueOf(gameEnd);
+            if(!(gameEnd.equals("1") || gameEnd.equals("2"))) {
+                throw new IllegalArgumentException();
+            }
+
+            if(gameEnd.equals("1")) {
+                return false;
+            } else if(gameEnd.equals("2")) {
+                return true;
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
-        return restart;
+        return false;
     }
 
     public static String makeBall() {
