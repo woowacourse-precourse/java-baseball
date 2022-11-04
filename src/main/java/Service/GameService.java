@@ -25,9 +25,7 @@ public class GameService {
     public void play_game(){
         int strike = 0;
         while(strike != 3){
-            game.initialize();
-            userNumber.setUser_numbers(userNumber.getUser_numbers());
-            score_calculate(userNumber.getUser_numbers(), game.getGame_numbers());
+            play();
             systemMessage.game_score_message(game.getBall_count(), game.getStrike_count());
             strike = game.getStrike_count();
         }
@@ -37,6 +35,12 @@ public class GameService {
         systemMessage.game_start();
         game.initialize();
         userNumber.setUser_numbers(userNumber.getUser_numbers());
+    }
+
+    public int[] getUserNumber() throws IllegalArgumentException {
+        RequestUser.request_input();
+        String user_input = Console.readLine();
+        return userValidate.get_num(user_input);
     }
 
     public void calculate(int[] userNumbers, int[] randomNumbers, int index){
