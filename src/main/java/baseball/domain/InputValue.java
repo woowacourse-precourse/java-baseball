@@ -14,7 +14,7 @@ public class InputValue {
     public List<Integer> inputNum() {
 
         System.out.print("숫자를 입력해 주세요 : ");
-        input = readLine();
+        input = readLine().replaceAll("\\s", "");
 
         validation.isNumber(input);
 
