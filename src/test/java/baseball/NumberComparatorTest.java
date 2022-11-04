@@ -69,4 +69,86 @@ public class NumberComparatorTest {
         boolean isUserWin = numberComparator.isUserWin(user, computer);
         assertThat(isUserWin).isEqualTo(false);
     }
+
+    @Test
+    void isUserWin_메서드로_스트라이크_개수_검사() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 3;
+
+        NumberComparator numberComparator = new NumberComparator(numberSize);
+        Computer computer = new Computer(numberSize, startInclusive, endInclusive);
+        computer.makeNewNumbers();
+
+        StringBuilder numberBuilder = new StringBuilder();
+        for (int index = 0; index < numberSize; index++) {
+            int number = computer.getNumber(index);
+            if (index == 1) {
+                number += 3;
+            }
+            numberBuilder.append(number);
+        }
+
+        User user = new User();
+        user.makeNewNumbers(numberBuilder.toString());
+
+        numberComparator.isUserWin(user, computer);
+
+        String expectedText = "2스트라이크";
+        assertThat(output.toString().contains(expectedText)).isEqualTo(true);
+    }
+
+    @Test
+    void isUserWin_메서드로_볼_검사() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 3;
+
+        NumberComparator numberComparator = new NumberComparator(numberSize);
+        Computer computer = new Computer(numberSize, startInclusive, endInclusive);
+        computer.makeNewNumbers();
+
+        StringBuilder numberBuilder = new StringBuilder();
+        for (int index = 0; index < numberSize; index++) {
+            int number = computer.getNumber(index);
+            number += 2;
+            numberBuilder.append(number);
+        }
+
+        User user = new User();
+        user.makeNewNumbers(numberBuilder.toString());
+
+        numberComparator.isUserWin(user, computer);
+
+        String expectedText = "1볼";
+        assertThat(output.toString().contains(expectedText)).isEqualTo(true);
+    }
+
+    @Test
+    void isUserWin_메서드로_스트라이크와_볼_개수_검사() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 3;
+
+        NumberComparator numberComparator = new NumberComparator(numberSize);
+        Computer computer = new Computer(numberSize, startInclusive, endInclusive);
+        computer.makeNewNumbers();
+
+        StringBuilder numberBuilder = new StringBuilder();
+        for (int index = 0; index < numberSize; index++) {
+            int number = computer.getNumber(index);
+            if (number > 1) {
+                number += 1;
+            }
+            numberBuilder.append(number);
+        }
+
+        User user = new User();
+        user.makeNewNumbers(numberBuilder.toString());
+
+        numberComparator.isUserWin(user, computer);
+
+        String expectedText = "1볼 1스트라이크";
+        assertThat(output.toString().contains(expectedText)).isEqualTo(true);
+    }
 }
