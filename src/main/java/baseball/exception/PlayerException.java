@@ -8,6 +8,10 @@ public class PlayerException {
         return false;
     }
 
+    public void checkInput(String input){
+
+    }
+
     public void noNumberException(){
 
     }
@@ -17,7 +21,6 @@ public class PlayerException {
     }
 
     public void notThreeDigitException(){
-
     }
     public boolean containsZero(String input){
         return false;
