@@ -15,14 +15,10 @@ public class Ball {
 		if (this.equals(ballToCompare)) {
 			return CompareResult.STRIKE;
 		}
-		if (ballToCompare.isSameNumber(number) && ballToCompare.isDifferentLocation(location)) {
+		if (ballToCompare.isSameNumber(number)) {
 			return CompareResult.BALL;
 		}
 		return CompareResult.NOTHING;
-	}
-
-	private boolean isDifferentLocation(int location) {
-		return this.location != location;
 	}
 
 	private boolean isSameNumber(int number) {
