@@ -7,6 +7,8 @@ import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
 
 public class InputConfigure {
 
+    private static final int GAME_ANSWER_LENGTH = GAME_ANSWER_MAX_VALUE;
+
     public static void verifyInput(String input) {
         Set<Character> wordSet = new HashSet<>();
 
@@ -20,12 +22,12 @@ public class InputConfigure {
     }
 
     private static void checkLength(String input) {
-        if (input.length() != GAME_ANSWER_MAX_VALUE)
+        if (input.length() != GAME_ANSWER_LENGTH)
             throw new IllegalArgumentException();
     }
 
     private static void checkDifferenceEachOther(Set<Character> wordSet) {
-        if (wordSet.size() != GAME_ANSWER_MAX_VALUE)
+        if (wordSet.size() != GAME_ANSWER_LENGTH)
             throw new IllegalArgumentException();
     }
 
