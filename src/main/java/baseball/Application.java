@@ -16,7 +16,7 @@ public class Application {
         generateNewAnswer();
 
         while (true) {
-//            System.out.println(answer);
+            System.out.println(answer);
 
             System.out.print(Comment.INPUTNUMBER);
             String userInput = Console.readLine();
@@ -25,16 +25,27 @@ public class Application {
             calculateHint(answer, userInput);
             printHint();
 
-            if (hintMap.get(Hint.STRIKE).equals(3)) {
-                System.out.println(Comment.ENDGAME);
+            boolean isCorrect = checkAnswer();
+            boolean isRestart = false;
 
-                boolean isRestart = checkRestart();
-                if (!isRestart) {
-                    break;
-                }
+            if (isCorrect) {
+                isRestart = checkRestart();
+            }
+            if (isCorrect && !isRestart) {
+                break;
+            }
+            if (isRestart) {
                 generateNewAnswer();
             }
         }
+    }
+
+    private static boolean checkAnswer() {
+        if (hintMap.get(Hint.STRIKE).equals(3)) {
+            System.out.println(Comment.ENDGAME);
+            return true;
+        }
+        return false;
     }
 
     private static void generateNewAnswer() {
@@ -110,7 +121,7 @@ public class Application {
     }
 
     private static void initializeHint() {
-        hintMap = new HashMap<Hint,Integer>();
+        hintMap = new HashMap<Hint, Integer>();
         hintMap.put(Hint.STRIKE, 0);
         hintMap.put(Hint.BALL, 0);
     }
