@@ -85,4 +85,9 @@ public class Application {
 
         return playAgain;
     }
+
+    private static String inputUserNumbers() {
+        System.out.print(MESSAGE_REQUEST_INPUT);
+        return Console.readLine();
+    }
 }
