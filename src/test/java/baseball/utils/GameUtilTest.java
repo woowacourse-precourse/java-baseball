@@ -42,7 +42,7 @@ public class GameUtilTest {
                 "123, 928", //xyz, ayb
                 "123, 983", //xyz, abz
         })
-        void one_strikes(int computer, int player) {
+        void one_strike(int computer, int player) {
             List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(0, 1);
         }
@@ -117,11 +117,19 @@ public class GameUtilTest {
                 "123, 132", //xyz, xzy
                 "123, 321", //xyz, zyx
                 "123, 213", //xyz, yxz
-                "123, 231", //xyz, yzx
         })
-        void one_strike(int computer, int player) {
+        void two_balls_one_strike(int computer, int player) {
             List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(2, 1);
+        }
+
+        @ParameterizedTest(name = "3볼 => {0}, {1}")
+        @CsvSource({
+                "123, 231", //xyz, yzx
+        })
+        void three_balls(int computer, int player) {
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
+            assertThat(result).containsOnly(3, 0);
         }
     }
 }
