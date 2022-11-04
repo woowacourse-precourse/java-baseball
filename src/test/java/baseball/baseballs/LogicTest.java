@@ -42,6 +42,17 @@ public class LogicTest {
         );
     }
 
+    private static Stream<Arguments> provideBaseballInputsAndNothing() {
+        return Stream.of(
+                //answerInput, userInput, nothing
+                Arguments.of(String.valueOf(123), String.valueOf(789), 0),
+                Arguments.of(String.valueOf(456), String.valueOf(123), 0),
+                Arguments.of(String.valueOf(123), String.valueOf(546), 0),
+                Arguments.of(String.valueOf(138), String.valueOf(925), 0),
+                Arguments.of(String.valueOf(231), String.valueOf(698), 0)
+        );
+    }
+
     @ParameterizedTest
     @DisplayName("같은 위치에서 값이 일치하는 경우 스트라이크")
     @MethodSource("provideBaseballInputsAndStrikeCounts")
@@ -68,5 +79,19 @@ public class LogicTest {
         //then
         assertThat(result).isInstanceOf(Result.class);
         assertThat(result.countBall()).isEqualTo(ballCount);
+    }
+
+    @ParameterizedTest
+    @DisplayName("볼과 스트라이크가 없는 경우 낫싱")
+    @MethodSource("provideBaseballInputsAndNothing")
+    public void test3(String answerInput, String userInput, int nothing) throws Exception{
+        //given
+        Baseballs answerBaseballs = Baseballs.of(answerInput);
+        Baseballs userBaseballs = Baseballs.of(userInput);
+        //when
+        Result result = answerBaseballs.calculateResult(userBaseballs);
+        //then
+        assertThat(result).isInstanceOf(Result.class);
+        assertThat(result.countBall()+result.countStrike()).isEqualTo(nothing);
     }
 }
