@@ -21,8 +21,8 @@ public class Application {
     private static final int INPUT_BASEBALL_LENGTH = 3;
     private static final int INPUT_REPLAY_LENGTH = 1;
     private static final int MAX_STRIKE = 3;
-    private static char REPLAY = '1';
-    private static char END = '2';
+    private static final char REPLAY = '1';
+    private static final char END = '2';
     public static void main(String[] args) {
         gameStart();
 
@@ -200,11 +200,7 @@ public class Application {
     }
 
     static boolean isThreeStrike(int strike) {
-        if (strike == MAX_STRIKE) {
-            return true;
-        }
-
-        return false;
+        return strike == MAX_STRIKE;
     }
 
     static boolean willReplay(String userInput) {
