@@ -14,4 +14,12 @@ public enum ResultMessage {
     public String getMessage() {
         return this.message;
     }
+
+    public String of(int number) {
+        if (number <= 0) {
+            return "";
+        }
+
+        return number + this.name();
+    }
 }
