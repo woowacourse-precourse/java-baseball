@@ -29,4 +29,8 @@ public class Computer {
     public boolean isBall(int digit) {
         return answer.contains(digit);
     }
+
+    public boolean isStrike(int index, int digit) {
+        return answer.get(index) == digit;
+    }
 }
