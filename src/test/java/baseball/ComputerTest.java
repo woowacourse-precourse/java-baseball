@@ -77,4 +77,15 @@ public class ComputerTest {
         // then
         Assertions.assertThat(result).isEqualTo("2볼 1스트라이크");
     }
+
+    @Test
+    public void 유저와_컴퓨터의_값을_비교하여_결과_확인_3볼() {
+        // given
+        List<Integer> userDigits = List.of(2, 3, 1);
+        List<Integer> computerDigits = List.of(1, 2, 3);
+        // when
+        String result = testComputer.checkDigits(userDigits, computerDigits);
+        // then
+        Assertions.assertThat(result).isEqualTo("3볼");
+    }
 }
