@@ -3,6 +3,8 @@ package baseball.domain;
 import baseball.domain.factory.ComputerBallsFactory;
 import baseball.domain.strategy.RandomBallsCreateStrategy;
 
+import java.util.List;
+
 public class BaseBallGame {
     private static final String NUMBERS_LENGTH_EXCEPTION_MESSAGE = "숫자 3개만 입력할 수 있습니다.";
     private static final int CORRECT_LENGTH_OF_NUMBERS = 3;
@@ -29,8 +31,9 @@ public class BaseBallGame {
     }
     
     private Referee playResult(final String userNumbers) {
+        final List<BallStatus> comparisonResult = computerBalls.compareBalls(new Balls(userNumbers));
         final Referee referee = new Referee();
-        referee.decide(computerBalls.compareBalls(new Balls(userNumbers)));
+        referee.decide(comparisonResult);
         
         return referee;
     }
