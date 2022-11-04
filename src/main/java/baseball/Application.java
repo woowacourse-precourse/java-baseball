@@ -3,16 +3,18 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        String readLine = Console.readLine();
-
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
 
-
-        System.out.println("readLine = " + readLine);
-        System.out.println("randomNumber = " + randomNumber);
-        // TODO: 프로그램 구현
     }
+
+    private static List<String> receivingValue() {
+        String inputValue = Console.readLine();
+        return List.of(inputValue);
+    }
+
 }
