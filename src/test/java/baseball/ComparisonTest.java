@@ -16,4 +16,12 @@ class ComparisonTest {
 
         Assertions.assertThat(numberList).isEqualTo(resultList);
     }
+
+    @Test
+    void 스트라이크_개수_반환(){
+        int result = 1;
+        int strikeCount = Comparison.getStrikeCount(123, 321);
+
+        Assertions.assertThat(strikeCount).isEqualTo(result);
+    }
 }
