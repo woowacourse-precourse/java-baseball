@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Game {
     private static final int NUM_START_RANGE = 1;
     private static final int NUM_END_RANGE = 9;
-    private final List<Integer> randomNum;
+    private List<Integer> randomNum;
 
     public Game() {
         randomNum = generateRandomNumber(NUM_START_RANGE, NUM_END_RANGE);
@@ -29,4 +30,31 @@ public class Game {
         }
         return numbers;
     }
+
+    /**
+     * Set user's input of 3-digit number for game class instance
+     * @see InputValidation#isValidInput(String) input 의 유효성 검사
+     */
+    static List<Integer> getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine().trim();
+        try {
+            InputValidation.isValidInput(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            endGame();
+        }
+
+        ArrayList<Integer> inputList = new ArrayList<>();
+        char[] characterArray = userInput.toCharArray();
+        for(char c : characterArray)
+            inputList.add(Character.getNumericValue(c));
+
+        return inputList;
+    }
+
+    static void endGame() {
+        System.out.println("게임 종료");
+    }
+
 }
