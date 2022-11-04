@@ -1,8 +1,11 @@
 package baseball;
 
 import baseball.UI.InputView;
+import baseball.UI.ResultView;
 import baseball.model.Hint;
 import baseball.model.Input;
+import baseball.model.Result;
+import baseball.model.State;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -46,7 +49,6 @@ class ApplicationTest extends NsTest {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());;
         System.setIn(in);
-
         InputView inputView = new InputView();
         inputView.getBaseballInput();
         assertThat(inputView.getInput().getBaseballNumberList())
@@ -55,13 +57,29 @@ class ApplicationTest extends NsTest {
 
     @Test
     void hint_Model_ToString_Test(){
-
         int ball = 2;
         int strike = 1;
         Hint hint = new Hint(ball, strike);
         assertThat(hint.toString()).isEqualTo("2볼 1스트라이크\n");
     }
+    @Test
+    void resultView_FINISH_Test(){
 
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        ResultView resultView = new ResultView();
+        resultView.printResult(State.FINISH);
+        assertThat(resultView.getResult()).isEqualTo(Result.FINISH);
+    }
+    @Test
+    void resultView_Error_Test(){
+        ResultView resultView = new ResultView();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> resultView.printResult(State.ERROR))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
