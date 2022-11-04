@@ -22,15 +22,17 @@ public class Application {
 
     }
 
-    public static List<Integer> getRandomNumber() {
-        List<Integer> baseballNumber = new ArrayList<>();
-        while (baseballNumber.size() <= 3) {
+    public static String getRandomNumber() {
+        StringBuilder baseballNumber = new StringBuilder();
+        while (baseballNumber.length() <= 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!baseballNumber.contains(randomNumber)) {
-                baseballNumber.add(randomNumber);
+            String number = Integer.toString(randomNumber);
+
+            if (!baseballNumber.toString().contains(number)) {
+                baseballNumber.append(number);
             }
         }
-        return baseballNumber;
+        return baseballNumber.toString();
     }
 
     public static void printStartMessage() {
