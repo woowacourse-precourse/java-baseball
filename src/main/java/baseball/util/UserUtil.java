@@ -58,4 +58,15 @@ public class UserUtil {
     }
 
 
+    public static String getUserInput() {
+        String userInput = Console.readLine();
+        checkUserInput(userInput);
+        return userInput;
+    }
+
+    private static void checkUserInput(String userNumberString) {
+        if(!(userNumberString.equals("1") || userNumberString.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+    }
 }

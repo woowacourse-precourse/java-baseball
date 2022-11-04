@@ -22,8 +22,10 @@ public class GameStartService {
 
 
     public static void saveComputerNumber() {
-        List<String> computerNumberList = RandomUtil.getComputerNumberList();
-        GameStartRepository.saveComputerNumber(computerNumberList);
+        if (GameStartRepository.lastComputerNumberList == null || GameStartRepository.lastComputerNumberList.size() == 0) {
+            List<String> computerNumberList = RandomUtil.getComputerNumberList();
+            GameStartRepository.saveComputerNumber(computerNumberList);
+        }
     }
 
     public static String compareNumber() {
@@ -58,6 +60,11 @@ public class GameStartService {
         return result;
     }
 
+    public static void initBallAndStrike() {
+        GameStartRepository.ball = 0;
+        GameStartRepository.strike = 0;
+    }
+
     private static void isStrike(List<String> computerNumber, List<String> userNumber) {
         for (int i = 0; i < 3; i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
@@ -77,4 +84,12 @@ public class GameStartService {
     }
 
 
+    public static String getUserInput() {
+        return UserUtil.getUserInput();
+    }
+
+    public static void initGame() {
+        initBallAndStrike();
+        GameStartRepository.lastComputerNumberList.clear();
+    }
 }
