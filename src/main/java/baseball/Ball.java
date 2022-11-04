@@ -48,4 +48,14 @@ public class Ball {
 
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return this.number.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "number : " + number;
+    }
 }
