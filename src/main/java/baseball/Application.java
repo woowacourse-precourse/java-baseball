@@ -13,7 +13,13 @@ public class Application {
     public static final String END = "2";
 
     public static void main(String[] args) {
-
+        BaseballGame();
+    }
+    public static void BaseballGame() {
+        introMessage();
+        do {
+            playingGame(createBaseballNumberList());
+        } while(continueGame());
     }
     public static void playingGame(List<Integer> baseballNumberList) {
         String input;
