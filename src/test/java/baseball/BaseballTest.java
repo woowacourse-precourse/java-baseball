@@ -12,16 +12,31 @@ class BaseballTest {
     @Nested
     class Ball_class_test {
         @Nested
-        @DisplayName("Ball 클래스의 생성자, validateForm 메소드는")
+        @DisplayName("생성자, validateForm 메소드는")
         class validateFormTest {
             @Nested
             @DisplayName("세 자리 숫자가 입력되지 않았을 때")
-            class Context_with_세_자리_숫자 {
+            class Context_with_non_three_digit_number {
                 @Test
                 @DisplayName("IllegalArgumentException을 발생시킨다.")
                 void it_returns_IllegalArgumentException() {
                     String twoDigitNumber = "12";
                     assertThatThrownBy(()-> new Ball(twoDigitNumber)).isInstanceOf(IllegalArgumentException.class);
+                }
+            }
+        }
+
+        @Nested
+        @DisplayName("생성자, validateDuplication 메소드는")
+        class validateDuplicationTest {
+            @Nested
+            @DisplayName("중복을 갖는 숫자가 입력되었을 때")
+            class Context_with_duplicated_number {
+                @Test
+                @DisplayName("IllegalArgumentException을 발생시킨다.")
+                void it_returns_IllegalArgumentException() {
+                    String duplicatedNumber = "333";
+                    assertThatThrownBy(()-> new Ball(duplicatedNumber)).isInstanceOf(IllegalArgumentException.class);
                 }
             }
         }
