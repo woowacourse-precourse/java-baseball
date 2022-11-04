@@ -13,11 +13,11 @@ public class Numbers {
     }
 
     public void isDuplicate(List<Number> numbers) {
-        if(numbers.stream().distinct().count() != 3) throw new IllegalArgumentException(Messages.duplicateNumber);
+        if (numbers.stream().distinct().count() != 3) throw new IllegalArgumentException(Messages.duplicateNumber);
     }
 
     public void isValidSize(List<Number> numbers) {
-        if(numbers.size() != 3) throw new IllegalArgumentException(Messages.wrongInputSize);
+        if (numbers.size() != 3) throw new IllegalArgumentException(Messages.wrongInputSize);
     }
 
     public int checkStrike(Numbers userNumber) {
@@ -29,11 +29,11 @@ public class Numbers {
 
     public int checkBall(Numbers userNumber) {
         int count = 0;
-        if(numbers.get(0).equals(userNumber.numbers.get(1)) || numbers.get(0).equals(userNumber.numbers.get(2)))
+        if (numbers.get(0).equals(userNumber.numbers.get(1)) || numbers.get(0).equals(userNumber.numbers.get(2)))
             count += 1;
-        if(numbers.get(1).equals(userNumber.numbers.get(0)) || numbers.get(1).equals(userNumber.numbers.get(2)))
+        if (numbers.get(1).equals(userNumber.numbers.get(0)) || numbers.get(1).equals(userNumber.numbers.get(2)))
             count += 1;
-        if(numbers.get(2).equals(userNumber.numbers.get(0)) || numbers.get(2).equals(userNumber.numbers.get(1)))
+        if (numbers.get(2).equals(userNumber.numbers.get(0)) || numbers.get(2).equals(userNumber.numbers.get(1)))
             count += 1;
         return count;
     }

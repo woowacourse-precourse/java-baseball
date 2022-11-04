@@ -20,7 +20,7 @@ public class Computer {
 
     private boolean checkDuplicate(int randomNumber, List<Number> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if(numbers.get(i).equals(new Number(randomNumber))) return true;
+            if (numbers.get(i).equals(new Number(randomNumber))) return true;
         }
         return false;
     }

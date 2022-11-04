@@ -13,7 +13,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UserTest{
+public class UserTest {
     @Test
     void 숫자외_문자_입력시_예외_처리() {
         User user = new User();

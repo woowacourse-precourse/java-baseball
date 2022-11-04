@@ -18,7 +18,7 @@ public class Application {
         System.out.println(Messages.restartOrFinish);
 
         int input = Integer.parseInt(Console.readLine());
-        if(!checkInput(input)) throw new IllegalArgumentException(Messages.wrongAnswer);
+        if (!checkInput(input)) throw new IllegalArgumentException(Messages.wrongAnswer);
 
         if (input == 2) {
             System.out.println(Messages.finishGame);
@@ -28,7 +28,7 @@ public class Application {
     }
 
     private static boolean checkInput(int input) {
-        if(input == 1 || input == 2) return true;
+        if (input == 1 || input == 2) return true;
         return false;
     }
 }
