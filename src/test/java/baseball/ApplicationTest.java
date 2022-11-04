@@ -38,34 +38,34 @@ class ApplicationTest extends NsTest {
     @Nested
     class InputControllerTest {
 
-        @Test
+        @Test()
         void checkThreeNumNotInt() {
-            String input = "fdgml";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+            String input = "99l";
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumNoInput() {
             String input = "";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumNotInRange() {
             String input = "301";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumLengthOver() {
             String input = "1234";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void checkThreeNumDuplicate() {
             String input = "221";
-            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalAccessError.class);
+            assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
     @Test
