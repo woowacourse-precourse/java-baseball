@@ -30,9 +30,16 @@ public class Application {
     }
 
     private static List<Integer> readUserNumber() {
-        String inputNum = Console.readLine();
-        List<String> splittedNum = List.of(inputNum.split(""));
-        List<Integer> digits = splittedNum.stream()
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        List<Integer> userNum = convertStringToList(userInput);
+
+        return userNum;
+    }
+
+    private static List<Integer> convertStringToList(String userInput) {
+        List<String> splittedUserInput = List.of(userInput.split(""));
+        List<Integer> digits = splittedUserInput.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
