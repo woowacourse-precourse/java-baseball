@@ -12,7 +12,7 @@
 |     🟩     |        사용자 입력         |   getUserInput    |
 |     🟩     |   사용자 입력 Exception    |   makeException   |
 |     🟩     | 입력에 따라 볼, 스트라이크 개수 출력 |  countBallStrike  |
-|     🟩     |     정답을 맞춘 경우의 문구     | getCorrectMessage |
+|     ✅     |     정답을 맞춘 경우의 문구     | getCorrectMessage |
 |     🟩     |      재시작 / 종료 선택      | chooseRestartExit |
 
 <br>
