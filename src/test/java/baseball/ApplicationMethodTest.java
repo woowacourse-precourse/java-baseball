@@ -21,6 +21,7 @@ public class ApplicationMethodTest {
 
     @Test
     void printStartMessage() {
+        Application.printStartMessage();
     }
 
     @Test
