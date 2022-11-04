@@ -6,11 +6,12 @@ public class Comparator {
 
     private Printer print;
 
-    void Comparator() {
-        print = new Printer();
+    public Comparator() {
+        this.print = new Printer();
     }
 
     public boolean compare(List<Integer> userNumbers, List<Integer> answerNumbers) {
+
         int ballCount = 0;
         int strikeCount = 0;
 
