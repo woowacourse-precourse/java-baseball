@@ -29,15 +29,27 @@ class BaseBallGame {
             while(!isSolved){
                 isSolved = solvingProblem(computerNumber);
             }
+            if(reStartGame()) {
+                gamePlaying();
+            }
         } catch (IllegalArgumentException e) {
             throw e;
         }
     }
 
+    public boolean reStartGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answerAboutReplay = Console.readLine();
+        if(answerAboutReplay.equals("1")) {
+            return true;
+        }
+        System.out.println("게임 종료");
+        return false;
+    }
+
     public boolean solvingProblem(int computerNumber){
         int userNumber = inputNumber();
         int ball, strike;
-        System.out.println(computerNumber + "," +  userNumber);
         List<Integer> hint = getHint(userNumber, computerNumber);
         ball = hint.get(0);
         strike = hint.get(1);
