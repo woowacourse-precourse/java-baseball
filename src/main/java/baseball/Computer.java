@@ -2,22 +2,24 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Computer {
 
-    private static void createRandomNumber(List<Integer> computerNumber) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computerNumber.contains(randomNumber)) {
-            computerNumber.add(randomNumber);
+    private List<Integer> computerNumber;
+
+    public void setComputerNumber() {
+        Set<Integer> randomNumbers = new HashSet<>();
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumbers.add(randomNumber);
         }
+        this.computerNumber = new ArrayList<>(randomNumbers);
     }
 
-    public static List<Integer> getRandomNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            createRandomNumber(computerNumber);
-        }
-        return computerNumber;
+    public List<Integer> getComputerNumber() {
+        return this.computerNumber;
     }
 }
