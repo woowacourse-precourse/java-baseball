@@ -125,11 +125,7 @@ public class Application {
     }
     public static void game() {
         List<Integer> randomNumber = getRandomNumber();
-        System.out.print("숫자를 입력해주세요 : ");
-        String userEnterNumber = Console.readLine();
-        List<Integer> enterNumber = getEnterNumber(userEnterNumber);
-        List<Integer> ballAndStrikeNumber = countBallAndStrike(randomNumber, enterNumber);
-        announceBallAndStrike(randomNumber, ballAndStrikeNumber);
+        repeatGameUntilSuccess(randomNumber);
     }
 
     public static void main(String[] args) {
