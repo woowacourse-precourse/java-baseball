@@ -17,7 +17,7 @@
 - 게임 결과를 표현하는 `enum Result class`
   - 총 9가지 경우가 가능하다. 
   - `3S`, `2S`, `1S`, `3B`, `2B`, `1B`, `2S1B`, `1S2B`, `NOTHING`
-- 게임의 상태를 표현하는 `enum GameStatus class`
+- 게임의 상태를 표현하는 `enum Status class`
   - 새 게임 진행 : `RESTART(1)`, 게임 중단 : `EXIT(2)`
 - `컴퓨터` 클래스, `사용자` 클래스, `게임` 클래스
   - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Character, Integer> numberIndexMap`, `makeNewNumber()`, `setNumberIndexMap()`
