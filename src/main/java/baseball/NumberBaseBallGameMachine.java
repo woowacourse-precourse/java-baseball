@@ -77,7 +77,6 @@ public class NumberBaseBallGameMachine {
 
     public void gameProgress() {
         boolean success = false;
-        display(message.start() + "\n");
         while (!success) {
             success = getInputResult();
         }
@@ -86,6 +85,7 @@ public class NumberBaseBallGameMachine {
 
     public void play() {
         boolean gameContinue = true;
+        display(message.start() + "\n");
         while (gameContinue) {
             makeNewAnswer();
             gameProgress();
