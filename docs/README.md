@@ -16,10 +16,11 @@
     - int Ball(List<Integer> computerNumberList, List<Integer> userNumberList): 볼 판단
     - int Strike(List<Integer> computerNumberList, List<Integer> userNumberList): 스트라이크 판단
   - void replayingGame(): 게임을 새로 시작하는지 입력받고 게임을 새로 시작하거나 프로그램을 종료하는 기능
+    - void checkInputErr(int replayNumber): 1 또는 2의 숫자가 아닌 경우 예외처리
   - void inputUser(): 유저 숫자 입력 기능
 
 ### 클래스
-- Computer와 User 클래스를 players 패키지에 구현
+- Compute와 User 클래스를 players 패키지에 구현
 - 게임의 개수와 승패를 판단하고 출력하고 게임을 진행하는 클래스 playGame을 playing 패키지에 구현
 
 ### 예외처리 목록
