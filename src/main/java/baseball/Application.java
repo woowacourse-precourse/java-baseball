@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -12,7 +15,7 @@ public class Application {
         boolean gameFlag = true;
         while (gameFlag) {
             List<Integer> randomNumber = getRandomNumber();
-
+            
             printEndMessage();
         }
 
@@ -55,7 +58,26 @@ public class Application {
         if (resultMessage.length() == 0) {
             resultMessage.append("낫싱");
         }
+        System.out.println(resultMessage.toString());
     }
 
-    
+    public static boolean isWrongInputNumber(String userInputNumber) {
+        int inputNumber = Integer.parseInt(userInputNumber);
+
+        // 세 자리 확인
+        if (inputNumber < 100 || inputNumber > 999) {
+            return true;
+        }
+
+        // 중복 숫자 확인
+        String[] splitNumber = userInputNumber.split("");
+        for (String number : splitNumber) {
+            if (Collections.frequency(Arrays.asList(splitNumber), number) != 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
