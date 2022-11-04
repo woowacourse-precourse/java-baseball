@@ -13,8 +13,12 @@ public class Digits {
         this.digitList = digitList;
     }
 
-    public List<Integer> get() {
+    public List<Integer> getList() {
         return digitList;
+    }
+
+    public int get(int idx) {
+        return digitList.get(idx);
     }
 
     private void validateDigitRange(int digit) {
