@@ -1,4 +1,4 @@
-package baseball.count.strike;
+package baseball.domain.count.strike;
 
 import baseball.domain.count.strike.StrikeCounter;
 import baseball.domain.count.strike.StrikeResult;

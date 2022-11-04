@@ -7,8 +7,8 @@ import java.util.List;
 
 public class RandomNumberFactory {
 
-    public static List<Integer> newRandomNumber() {
-        return new RandomNumber(generateRandomNumber()).answer();
+    public static RandomNumber newRandomNumber() {
+        return new RandomNumber(generateRandomNumber());
     }
 
     private static List<Integer> generateRandomNumber() {

@@ -1,4 +1,4 @@
-package baseball.scanner;
+package baseball.view.scanner;
 
 import baseball.view.scanner.NumberScanner;
 import org.junit.jupiter.api.Test;

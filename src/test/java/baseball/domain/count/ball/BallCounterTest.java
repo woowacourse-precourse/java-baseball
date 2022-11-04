@@ -1,4 +1,4 @@
-package baseball.count.ball;
+package baseball.domain.count.ball;
 
 import baseball.domain.count.ball.BallCounter;
 import baseball.domain.count.ball.BallResult;

@@ -1,12 +1,12 @@
-package baseball.randomnumber;
+package baseball.domain.number.randomnumber;
 
-import baseball.domain.number.randomnumber.RandomNumberFactory;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static baseball.domain.number.randomnumber.RandomNumberFactory.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -18,7 +18,7 @@ class RandomNumberFactoryTest {
     class 정해진_개수의_숫자가_생성된다 {
         @RepeatedTest(3)
         void 정해진_개수의_숫자가_생성된다() {
-            List<Integer> answer = RandomNumberFactory.newRandomNumber();
+            List<Integer> answer = newRandomNumber().answer();
             assertThat(answer.size()).isEqualTo(DIGITS_FOR_THIS_GAME);
         }
     }
@@ -27,7 +27,7 @@ class RandomNumberFactoryTest {
     class 추출한_숫자는_서로_다르다 {
         @RepeatedTest(3)
         void 추출한_숫자는_서로_다르다() {
-            List<Integer> answer = RandomNumberFactory.newRandomNumber();
+            List<Integer> answer = newRandomNumber().answer();
             long count = answer.stream()
                     .distinct()
                     .count();
@@ -38,7 +38,7 @@ class RandomNumberFactoryTest {
 
     @Test
     void 만들어진_RandomNumber를_바꿀수_없다() {
-        List<Integer> answer = RandomNumberFactory.newRandomNumber();
+        List<Integer> answer = newRandomNumber().answer();
 
         assertThatThrownBy(() -> answer.add(100))
                 .isInstanceOf(UnsupportedOperationException.class);

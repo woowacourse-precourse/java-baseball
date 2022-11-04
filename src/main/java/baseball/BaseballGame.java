@@ -2,31 +2,33 @@ package baseball;
 
 import baseball.domain.count.ball.BallCounter;
 import baseball.domain.count.strike.StrikeCounter;
-import baseball.domain.number.inputnumber.InputNumberParser;
-import baseball.view.scanner.NumberScanner;
 import baseball.view.print.MessagePrinter;
-import baseball.domain.number.randomnumber.RandomNumberFactory;
+import baseball.view.scanner.NumberScanner;
 
 import java.util.List;
+
+import static baseball.domain.number.inputnumber.InputNumberParser.parseInputNumber;
+import static baseball.domain.number.randomnumber.RandomNumberFactory.newRandomNumber;
 
 public class BaseballGame {
 
     private final NumberScanner numberScanner;
-    private final InputNumberParser inputNumberParser;
     private final BallCounter ballCounter;
     private final StrikeCounter strikeCounter;
     private final MessagePrinter messagePrinter;
 
-    public BaseballGame(NumberScanner numberScanner, InputNumberParser inputNumberParser, BallCounter ballCounter, StrikeCounter strikeCounter, MessagePrinter messagePrinter) {
+    public BaseballGame(NumberScanner numberScanner,
+                        BallCounter ballCounter,
+                        StrikeCounter strikeCounter,
+                        MessagePrinter messagePrinter) {
         this.numberScanner = numberScanner;
-        this.inputNumberParser = inputNumberParser;
         this.ballCounter = ballCounter;
         this.strikeCounter = strikeCounter;
         this.messagePrinter = messagePrinter;
     }
 
     public void doBaseballGame() {
-        List<Integer> answer = RandomNumberFactory.newRandomNumber();
+        List<Integer> answer = newRandomNumber().answer();
         int oneOrTwoForRestartGame = 0;
 
         messagePrinter.printStartMessage();
@@ -34,12 +36,11 @@ public class BaseballGame {
         while (oneOrTwoForRestartGame != 2) {
             messagePrinter.printEnterNumberMessage();
 
-            List<Integer> inputValue = inputNumberParser.parseInputNumber(
-                    numberScanner.inputNumber()
-            );
+            String inputValue = numberScanner.inputNumber();
+            List<Integer> inputNumber = parseInputNumber(inputValue).inputNumbers();
 
-            int ballCount = ballCounter.checkBall(answer, inputValue).ballCount();
-            int strikeCount = strikeCounter.checkStrike(answer, inputValue).strikeCount();
+            int ballCount = ballCounter.checkBall(answer, inputNumber).ballCount();
+            int strikeCount = strikeCounter.checkStrike(answer, inputNumber).strikeCount();
 
             printBallAndStrikeCount(ballCount, strikeCount);
 
@@ -51,7 +52,7 @@ public class BaseballGame {
             }
 
             if (oneOrTwoForRestartGame == 1) {
-                answer = RandomNumberFactory.newRandomNumber();
+                answer = newRandomNumber().answer();
                 oneOrTwoForRestartGame = 0;
             }
         }
