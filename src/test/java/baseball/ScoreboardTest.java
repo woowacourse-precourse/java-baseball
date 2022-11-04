@@ -33,21 +33,21 @@ public class ScoreboardTest {
 
     @Test
     void 볼_점수_더하기() {
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(1, 0);
         scoreboard.addBallPoint();
 
         int ballPoint = scoreboard.getBallPoint();
 
-        assertThat(ballPoint).isEqualTo(1);
+        assertThat(ballPoint).isEqualTo(2);
     }
 
     @Test
     void 스트라이크_점수_더하기() {
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(0, 1);
         scoreboard.addStrikePoint();
 
         int strikePoint = scoreboard.getStrikePoint();
 
-        assertThat(strikePoint).isEqualTo(1);
+        assertThat(strikePoint).isEqualTo(2);
     }
 }
