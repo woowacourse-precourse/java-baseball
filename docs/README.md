@@ -1,6 +1,6 @@
 ## 구현할 기능목록
 
-- [ ] 숫자야구 정답인 3자리의 랜덤숫자 만들
+- [x] 3자리의 랜덤숫자로 구성된 숫자야구 정답 만들기
 - [ ] 정상적인 숫자 입력받기
 - [ ] 비정상적인 숫자 입력값 처리
     - [ ] 숫자가 아닌 경우
@@ -24,7 +24,9 @@
 - [ ] 들여쓰기의 깊이는 최대 2
 - [ ] 3항 연산자 사용하지 않기
 - [ ] 메소드를 한 가지 일만 하도록 작게 만들기
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하기
+- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 API 사용하기
+    - [ ] Randoms.pickNumberInRange()
+    - [ ] Console.readLine()
 - [ ] docs/README.md 에 구현할 기능 목록 정리 하기
 
 ## 과제 제출 전 체크 리스트
