@@ -11,6 +11,7 @@ import java.util.List;
 public class Game {
 
     Input input = new Input();
+    private final int GAME_CONTINUE_NUMBER = 1;
 
     public Game() {
     }
@@ -93,10 +94,21 @@ public class Game {
 
     public boolean isContinue(){
 
-        if(getMenuNumber() == 2){
-            return false;
+        while (true) {
+            int menuInput;
+
+            try {
+                menuInput = getMenuNumber();
+            } catch (IllegalArgumentException e){
+                continue;
+            }
+
+            if(menuInput == GAME_CONTINUE_NUMBER){
+                return true;
+            } else {
+                return false;
+            }
         }
 
-        return true;
     }
 }
