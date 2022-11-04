@@ -47,4 +47,23 @@ public class ComputerTest {
         assertThat(computer.isStrike(0, 5)).isEqualTo(result);
         assertThat(computer.isStrike(2, 2)).isEqualTo(result);
     }
+
+    @Test
+    void judgeDigitTest() {
+        Computer computer = new Computer();
+        List<Integer> answer = List.of(3, 6, 1);
+        computer.setAnswer(answer);
+        int result = 0;
+        assertThat(computer.judgeDigit(1, 2)).isEqualTo(result);
+        assertThat(computer.judgeDigit(2, 4)).isEqualTo(result);
+        assertThat(computer.judgeDigit(0, 8)).isEqualTo(result);
+        result = 1;
+        assertThat(computer.judgeDigit(0, 6)).isEqualTo(result);
+        assertThat(computer.judgeDigit(1, 1)).isEqualTo(result);
+        assertThat(computer.judgeDigit(2, 3)).isEqualTo(result);
+        result = 2;
+        assertThat(computer.judgeDigit(0, 3)).isEqualTo(result);
+        assertThat(computer.judgeDigit(1, 6)).isEqualTo(result);
+        assertThat(computer.judgeDigit(2, 1)).isEqualTo(result);
+    }
 }
