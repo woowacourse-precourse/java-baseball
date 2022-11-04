@@ -78,4 +78,14 @@ public class User {
         }
         return strike;
     }
+
+    int checkBall(List<Integer> computerNumberList, List<Integer> userNumberList, int strike){
+        int ball = 0;
+        for(int index = 0; index < 3; index++){
+            if (computerNumberList.contains(userNumberList.get(index))){
+                ball++;
+            }
+        }
+        return ball - strike;
+    }
 }
