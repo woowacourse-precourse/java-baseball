@@ -21,10 +21,19 @@ public class BaseBallGame {
         do {
 
             userData = Console.readLine();
+
+            userInputValidCheck(userData);
+
             ballStrikeCount = computerRandomCompareToUserInput(computerRandomThreeValue, userData);
             printByBallAndStrikeCount(ballStrikeCount);
 
         } while (ballStrikeCount.get(STRIKE) != 3);
+    }
+
+    private static void userInputValidCheck(String userInput) {
+        if (userInput.matches("^[0-9]{3}$")) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
