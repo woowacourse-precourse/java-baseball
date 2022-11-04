@@ -8,8 +8,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        String game_status = "1";
         System.out.println("숫자 야구 게임을 시작합니다.");
-        BaseBallGame();
+
+        while(game_status.equals("1")){
+            BaseBallGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            game_status = Console.readLine();
+            if(!(game_status.equals("1") || game_status.equals("2"))){
+                throw new IllegalArgumentException();
+            }
+        }
 
     }
 
@@ -19,7 +28,6 @@ public class Application {
         List<String> result = List.of("","");
 
         computer_ball_number = RandomBallNum();
-        System.out.println(computer_ball_number);
         while(!result.get(1).equals("3스트라이크")){
             System.out.print("숫자를 입력해주세요 : ");
             user_ball_number = user_Input();
