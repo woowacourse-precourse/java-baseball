@@ -54,7 +54,7 @@ public class GameSystem {
 
             player.setNumber(inputNumber);
 
-            this.scoreBoard.initScore();
+            this.scoreBoard.initiate();
             this.calculateScore();
             GameMessagePrinter.printScore(this.scoreBoard);
         } while (!this.checkWin());

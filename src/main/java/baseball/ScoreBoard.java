@@ -8,11 +8,11 @@ public class ScoreBoard {
 
 
     public ScoreBoard() {
-        this.initScore();
+        this.initiate();
     }
 
 
-    public void initScore() {
+    public void initiate() {
         this.strikeCount = 0;
         this.ballCount = 0;
         this.nothing = true;
