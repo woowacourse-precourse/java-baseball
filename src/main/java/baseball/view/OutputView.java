@@ -24,34 +24,34 @@ public class OutputView {
     }
     
     public static void printResult(final RefereeDTO refereeDTO) {
-        final List<Integer> ballStatusScores = refereeDTO.getBallStatusScores();
+        final List<Integer> pitchResults = refereeDTO.getPitchResults();
         final List<String> ballStatusDisplay = List.of(BALL_DISPLAY, STRIKE_DISPLAY);
         
-        if (isNothing(ballStatusScores)) {
+        if (isNothing(pitchResults)) {
             System.out.println(NOTHING_DISPLAY);
             return;
         }
-        System.out.println(parsePlayResults(ballStatusScores, ballStatusDisplay));
+        System.out.println(parsePlayResults(pitchResults, ballStatusDisplay));
     }
     
-    private static boolean isNothing(final List<Integer> ballStatusScores) {
-        return ballStatusScores.stream()
-                .noneMatch(OutputView::isBallScoreNotZero);
+    private static boolean isNothing(final List<Integer> pitchResults) {
+        return pitchResults.stream()
+                .noneMatch(OutputView::isPitchResultNotZero);
     }
     
-    private static boolean isBallScoreNotZero(final Integer ballScore) {
-        return ballScore != 0;
+    private static boolean isPitchResultNotZero(final Integer pitchResult) {
+        return pitchResult != 0;
     }
     
-    private static String parsePlayResults(final List<Integer> ballStatusScores, final List<String> ballStatusDisplay) {
+    private static String parsePlayResults(final List<Integer> pitchResults, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(0, 1)
-                .filter(ballStatusIndex -> isBallScoreNotZero(ballStatusScores, ballStatusIndex))
-                .mapToObj(ballStatusIndex -> ballStatusScores.get(ballStatusIndex) + ballStatusDisplay.get(ballStatusIndex))
+                .filter(resultIndex -> isPitchResultNotZero(pitchResults, resultIndex))
+                .mapToObj(resultIndex -> pitchResults.get(resultIndex) + ballStatusDisplay.get(resultIndex))
                 .collect(Collectors.joining(DELIMITER));
     }
     
-    private static boolean isBallScoreNotZero(final List<Integer> ballStatusScores, final int ballStatusIndex) {
-        return ballStatusScores.get(ballStatusIndex) != 0;
+    private static boolean isPitchResultNotZero(final List<Integer> pitchResults, final int resultIndex) {
+        return pitchResults.get(resultIndex) != 0;
     }
     
     public static void baseBallGameEndMessagePrint() {
