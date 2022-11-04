@@ -22,6 +22,7 @@ public class Application {
         private static final String WRONG_ANSWER_KOR = "낫싱";
         private static final String USER_WANT_MORE = "1";
         private static final String USER_WANT_FINISH = "2";
+        private static final int FORBIDDEN_NUMBER = 0;
 
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -54,24 +55,24 @@ public class Application {
 
             do {
                 gameResult.clear();
-                List<Integer> userInputNumbers = getUserInput();
-                getGameResult(userInputNumbers, targetNumbers, gameResult);
+                List<Integer> userInputNumbers = getUserInputNumbers();
+                summaryGameResult(userInputNumbers, targetNumbers, gameResult);
                 printGameResult(gameResult);
             } while (gameResult.getOrDefault(CORRECT_ANSWER, 0) != PICK_COUNT);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
-        private List<Integer> getUserInput() {
+        private List<Integer> getUserInputNumbers() {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            return getValueIfAcceptable(input);
+            return getUserInputNumbersIfAcceptable(input);
         }
 
-        private List<Integer> getValueIfAcceptable(String input) {
+        private List<Integer> getUserInputNumbersIfAcceptable(String input) {
             validateInputLength(input);
-            List<Integer> numsList = getNumsListIfAcceptable(input);
-            validateUse0(numsList);
+            List<Integer> numsList = getUserInputNumbersIfConvertible(input);
+            validateUseForbiddenNumber(numsList);
             validateDuplicateValues(numsList);
             return numsList;
         }
@@ -82,24 +83,31 @@ public class Application {
             }
         }
 
-        private List<Integer> getNumsListIfAcceptable(String input) {
-            String[] inputArray = input.split("");
-            List<Integer> numsList = new ArrayList<>();
+        private List<Integer> getUserInputNumbersIfConvertible(String input) {
+            String[] splitInput = input.split("");
+            return convertUserInputToInt(splitInput);
+        }
+
+        private List<Integer> convertUserInputToInt(String[] splitInput) {
+            List<Integer> userInputToInt = new ArrayList<>();
 
             try {
-                for (String s : inputArray) {
-                    numsList.add(Integer.parseInt(s));
+                for (String eachCharacter : splitInput) {
+                    userInputToInt.add(Integer.parseInt(eachCharacter));
                 }
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
             }
 
-            return numsList;
+            return userInputToInt;
         }
 
-        private void validateUse0(List<Integer> numsList) {
-            if (numsList.contains(0)) {
-                throw new IllegalArgumentException("숫자는 1부터 9까지만 사용되어야 합니다. 0을 포함할 수 없습니다.");
+        private void validateUseForbiddenNumber(List<Integer> numsList) {
+            if (numsList.contains(FORBIDDEN_NUMBER)) {
+                throw new IllegalArgumentException(
+                        "숫자는 " + START_NUMBER + "부터 " + END_NUMBER + "까지만 사용되어야 합니다. " +
+                        FORBIDDEN_NUMBER +"을 포함할 수 없습니다."
+                );
             }
         }
 
@@ -111,25 +119,25 @@ public class Application {
             }
         }
 
-        private void getGameResult(List<Integer> userInputNumbers, List<Integer> targetNumbers, Map<String, Integer> gameResult) {
-            for (int i = 0; i < targetNumbers.size(); i++) {
-                int userNum = userInputNumbers.get(i);
-                int targetNum = targetNumbers.get(i);
+        private void summaryGameResult(List<Integer> userInputNumbers, List<Integer> targetNumbers, Map<String, Integer> gameResult) {
+            for (int idx = 0; idx < targetNumbers.size(); idx++) {
+                int userNum = userInputNumbers.get(idx);
+                int targetNum = targetNumbers.get(idx);
 
                 if (userNum == targetNum) {
-                    increaseAnswerCnt(CORRECT_ANSWER, gameResult);
+                    putGameResult(CORRECT_ANSWER, gameResult);
                     continue;
                 }
 
                 if (targetNumbers.contains(userNum)) {
-                    increaseAnswerCnt(SIMILAR_ANSWER, gameResult);
+                    putGameResult(SIMILAR_ANSWER, gameResult);
                 }
             }
         }
 
-        private void increaseAnswerCnt(String answer, Map<String, Integer> gameResult) {
-            Integer cnt = gameResult.getOrDefault(answer, 0);
-            gameResult.put(answer, cnt + 1);
+        private void putGameResult(String accuracyResult, Map<String, Integer> gameResult) {
+            Integer cnt = gameResult.getOrDefault(accuracyResult, 0);
+            gameResult.put(accuracyResult, cnt + 1);
         }
 
         private void printGameResult(Map<String, Integer> gameResult) {
