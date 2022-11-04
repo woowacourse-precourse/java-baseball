@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.numbergenerator.NumberGenerator;
+import baseball.numbergenerator.NumberGeneratorRandomImpl;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

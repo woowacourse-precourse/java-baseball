@@ -1,4 +1,4 @@
-package baseball;
+package baseball.numbergenerator;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.numbergenerator.NumberGeneratorRandomImpl;
+import baseball.numbergenerator.NumberGeneratorSequenceImpl;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.numbergenerator.NumberGenerator;
+import baseball.numbergenerator.NumberGeneratorRandomImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
