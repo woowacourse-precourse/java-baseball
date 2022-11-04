@@ -7,8 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BallAndStrike {
-    private static List<Integer> ballAndStrike = new ArrayList<>(Arrays.asList(0, 0));
-    public static List<Integer> countBallAndStrike(List<Integer> randomNumber, List<Integer> enterNumber) {
+    private List<Integer> ballAndStrike;
+    public BallAndStrike() {
+        ballAndStrike = new ArrayList<>(Arrays.asList(0, 0));
+    }
+    public List<Integer> getBallAndStrike() {
+        return this.getBallAndStrike();
+    }
+    public void countBallAndStrike(List<Integer> randomNumber, List<Integer> enterNumber) {
         for (int i = 0; i < 3; i++) {
             if (randomNumber.contains(enterNumber.get(i))) {
                 ballAndStrike.set(0, ballAndStrike.get(0)+1);
@@ -18,9 +24,8 @@ public class BallAndStrike {
                 ballAndStrike.set(0, ballAndStrike.get(0)-1);
             }
         }
-        return ballAndStrike;
     }
-    public static void caseOfAllBallAndStrike(List<Integer> ballAndStrikeNumber) {
+    public void caseOfAllBallAndStrike(List<Integer> ballAndStrikeNumber) {
         String announceBallAndStrike = "";
         if (ballAndStrikeNumber.get(0) == 0 && ballAndStrikeNumber.get(1) == 0) {
             announceBallAndStrike += "낫싱";
