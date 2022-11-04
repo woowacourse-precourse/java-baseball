@@ -12,24 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class NumberTest {
     private static final int MAX_LENGTH = 3;
 
-    public static Number number = new Number();
+    public static Number randomNumber = new Number();
 
     @Test
-    void 난수_길이_체크(){
-        number.setRandomNumber();
-        assertTrue(checkValidLength(number));
+    void 난수_체크(){
+        randomNumber.setRandomNumber();
+        assertTrue(checkValidation(randomNumber));
     }
 
-    @Test
-    void 난수_범주_체크() {
-        number.setRandomNumber();
-        assertTrue(checkValidRange(number));
-    }
-
-    @Test
-    void 난수_중복수_체크() {
-        number.setRandomNumber();
-        assertTrue(checkDuplication(number));
+    private boolean checkValidation(Number number) {
+        return checkDuplication(number)
+                && checkValidRange(number)
+                && checkValidLength(number);
     }
 
     private boolean checkDuplication(Number number) {
