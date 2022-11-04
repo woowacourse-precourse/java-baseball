@@ -9,10 +9,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) {
         Operator op = new Operator();
-        while (op.getRestart()) {
-            op.playGame();
+        try {
+            while (op.getRestart()) {
+                op.playGame();
+            }
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 }
@@ -50,14 +55,14 @@ class Player {
         try {
             num = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
         }
         while (num > 0) {
             numberList.add(num % 10);
             num /= 10;
         }
         if (!Operator.isCorrectNumber(numberList)) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
         }
         Collections.reverse(numberList);
         number = numberList;
@@ -146,7 +151,7 @@ class Operator {
         } else if (inputString.equals("2")) {
             restart = false;
         } else {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. \n 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
         }
     }
 
