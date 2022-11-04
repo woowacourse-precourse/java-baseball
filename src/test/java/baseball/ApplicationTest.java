@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import java.io.ByteArrayInputStream;
@@ -15,6 +17,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
+
+    @ParameterizedTest
+    @DisplayName("입력한 수가 유효하지 않을때 Exception이 발생하는지 통합 테스트")
+    @ValueSource(strings = {"가나다", "122", "가가나나다다라마마바123124", "", "  ", "123"})
+    void checkInputNumberValidationTest(String inputNumber) {
+
+        boolean isTestSuccess = false;
+
+        try {
+            Application.checkInputNumberValidation(inputNumber);
+        } catch (IllegalArgumentException e) {
+            isTestSuccess = true;
+        }
+
+        assertThat(isTestSuccess).isTrue();
+    }
 
     @DisplayName("입력된 수가 1 ~ 9 사이의 값이 아닐 경우 Exception 발생하는지 테스트")
     @Test
