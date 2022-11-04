@@ -39,6 +39,13 @@ public class UserInput {
         return inputToList(inputNum);
     }
 
+    public String restartOrStop() {
+        String input = consoleLog.input();
+        if (!isOneOrTwo(input))
+            throw new IllegalArgumentException(IS_NOT_ONE_OR_TWO.message());
+        return input;
+    }
+
     private List<Integer> inputToList(String inputNum) {
         return Stream.of(inputNum.split(""))
                 .mapToInt(Integer::parseInt)
