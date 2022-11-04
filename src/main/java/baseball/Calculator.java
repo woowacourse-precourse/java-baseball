@@ -11,20 +11,16 @@ public class Calculator {
     private List<Integer> playerNumbers;
     private List<Integer> scores;
 
-    public Calculator(List<Integer> playerNumbers, List<Integer> dealerNumbers) {
-        this.playerNumbers = playerNumbers;
+    public Calculator(List<Integer> dealerNumbers, List<Integer> playerNumbers) {
         this.dealerNumbers = dealerNumbers;
+        this.playerNumbers = playerNumbers;
     }
 
     public List<Integer> getScores() {
         scores = new ArrayList<>();
-        updateScores();
-        return scores;
-    }
-
-    public void updateScores() {
         countBallAndStrike();
         scores.addAll(List.of(ball, strike));
+        return scores;
     }
 
     public void countBallAndStrike() {
