@@ -13,10 +13,6 @@ public class Outputting {
     private static final String gameStartMsg = "숫자 야구 게임을 시작합니다.";
 
 
-    public static void exitOutput() throws IOException {
-        bw.close();
-    }
-
     public static void writeCase(int strike, int ball) throws IOException {
         if (ball > 0) {
             bw.write(String.format("%d볼 ", ball));

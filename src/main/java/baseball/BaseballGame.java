@@ -76,10 +76,9 @@ public class BaseballGame {
         }
     }
 
-    protected void isRestartGame() throws IOException {
+    protected void isRestartGame() {
         if("2".equals(inputEnd())) {
             status = false;
-            exitOutput();
 
         } else {
             resetNum();
