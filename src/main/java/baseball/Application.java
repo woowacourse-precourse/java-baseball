@@ -14,11 +14,16 @@ public class Application {
         System.out.println(computer);
         List<Integer> user = new Input(readLine()).getInputList();
 
+        int ball = getBall(computer, user);
+        if (ball != 0) System.out.print(ball + "볼 ");
+    }
+
+    private static int getBall(List<Integer> computer, List<Integer> user) {
         int ball = 0;
         for (int i = 0; i < computer.size(); i += 1) {
             ball += countBall(computer, user, i);
         }
-        if (ball != 0) System.out.print(ball + "볼 ");
+        return ball;
     }
 
     private static int countBall(List<Integer> computer, List<Integer> user, int i) {
