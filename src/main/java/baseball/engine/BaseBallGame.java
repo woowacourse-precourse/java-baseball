@@ -22,7 +22,7 @@ public class BaseBallGame implements Runnable {
     }
 
     private Numbers parseToNumbers(String stringNumber) {
-        validationStringNumber(stringNumber);
+        validateStringNumber(stringNumber);
 
         return new Numbers(stringNumber.chars()
                 .map(Character::getNumericValue)
@@ -31,7 +31,7 @@ public class BaseBallGame implements Runnable {
         );
     }
 
-    private void validationStringNumber(String stringNumber) {
+    private void validateStringNumber(String stringNumber) {
         if (stringNumber.length() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
