@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,26 @@ class ApplicationTest extends NsTest {
         for (int i = 0; i < list.size(); i++) {
             computerNumbers[i] = list.get(i).intValue();
         }
+
         //then
         assertThat(computerNumbers).doesNotHaveDuplicates();
+    }
+
+    @Test
+    public void 스트라이크_볼_갯수_체크() {
+        //given
+        final BallCount ballCount = new BallCount();
+        final List<Integer> computer = List.of(1,2,3);
+        final List<Integer> user = List.of(3,2,1);
+        final int[] result = {1, 2};
+
+        //when
+        for (int i = 0; i < 3; i++)
+            ballCount.checkStrikeOrBall(user, computer, i);
+
+        final int[] sb = {ballCount.getStrike(), ballCount.getBall()};
+
+        //then
+        assertThat(sb).isEqualTo(result);
     }
 }
