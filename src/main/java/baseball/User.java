@@ -10,7 +10,6 @@ public class User {
 	public static List<Integer> userNums;
 
 	public static void getUserInput() {
-		GameView.printStartGame();
 		GameView.printInstruction();
 		String userInput = Console.readLine();
 		checkUserInput(userInput);
