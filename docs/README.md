@@ -36,3 +36,48 @@
     - 게임 재시작 여부 질문 문구 출력 : "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
     - 사용자로부터 입력 받기
 - 게임 실행 상태가 종료(=2)이면 게임 종료
+
+## 클래스 설계
+### Game
+- problemMaker : Player
+- problemSolver : Player
+- result : Result
+- status : int
+- start()
+- printMessage(String message)
+- isStartStatus() : boolean
+- requestAnswer()
+- checkAnswer()
+- countResult()
+- setStatusByProblemSolver()
+### Player
+- interface
+- numbers : List\<Integer>
+- setNumbers(int sizeOfNumbers)
+- getNumbers() : List\<Integer>
+### ProblemMaker
+- implements Player
+- hasNumber(int number) : boolean
+- isSameAtGivenLocation(int number, int index) : boolean
+### ProblemSolver
+- implements Player
+- chooseToRestart() : int
+### Result
+- ballCount : int
+- strikeCount : int
+- initialize()
+- increaseBallCount()
+- increaseStrikeCount()
+- printResultMessage()
+- createResultMessage() : String
+- isWrongAnswer() : boolean
+### Settings
+- SIZE_OF_NUMBERS : int
+- START_STATUS : int
+- TERMINATE_STATUS : int
+- START_MESSAGE : String
+- ANSWER_REQUEST_MESSAGE : String
+- SUCCESS_MESSAGE : String
+- BALL : String
+- STRIKE : String
+- NOTHING : String
