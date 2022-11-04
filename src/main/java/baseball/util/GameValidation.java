@@ -11,29 +11,33 @@ public class GameValidation {
     private GameValidation() {
     }
 
-    public static boolean validateLength(String input) {
-        return input.length() == GAME_NUMBER_LENGTH;
+    public static boolean isInvalidLength(String input) {
+        return input.length() != GAME_NUMBER_LENGTH;
     }
 
-    public static boolean validateDigit(String input) {
+    public static boolean containsNotDigit(String input) {
         return input.chars()
-            .allMatch(Character::isDigit);
+            .anyMatch(GameValidation::isNotDigit);
     }
 
-    public static boolean validateRange(String input) {
+    private static boolean isNotDigit(int codePoint) {
+        return !Character.isDigit(codePoint);
+    }
+
+    public static boolean containsInvalidRangeDigit(String input) {
         return input.chars()
-            .allMatch(GameValidation::inRange);
+            .anyMatch(GameValidation::inNotRange);
     }
 
-    private static boolean inRange(int codePoint) {
-        return START_RANGE <= codePoint && codePoint <= END_RANGE;
+    private static boolean inNotRange(int codePoint) {
+        return START_RANGE > codePoint || codePoint > END_RANGE;
     }
 
-    public static boolean validateDuplication(String input) {
+    public static boolean containsDuplication(String input) {
         return input.chars()
             .boxed()
             .collect(Collectors.toSet())
-            .size() == GAME_NUMBER_LENGTH;
+            .size() != GAME_NUMBER_LENGTH;
     }
 
 }
