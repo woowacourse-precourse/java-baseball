@@ -25,6 +25,17 @@ public class InputValidation {
     }
 
     /**
+     * Validates user's input for resetting game
+     * @param input 사용자가 입력한 값 (1 혹은 2)
+     * @throws IllegalArgumentException input not valid
+     */
+    static void isValidRestartInput(String input) throws IllegalArgumentException {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("1 이나 2의 값을 입력해주세요.");
+        }
+    }
+
+    /**
      * Check if input string contains only numbers
      * @param input 사용자가 입력한 값
      * @throws IllegalArgumentException input contains non-number string
