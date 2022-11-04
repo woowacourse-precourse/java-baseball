@@ -10,9 +10,9 @@ public class RandomAnswerGenerator {
         int answer = 0;
         Set<Integer> usedNumeric = new HashSet<>();
 
-        // generate random answer
         for(int i = 0; i < 3; i++) {
             int numeric = getRandomNumeric(usedNumeric);
+            usedNumeric.add(numeric);
             answer = 10*answer + numeric;
         }
 
@@ -20,6 +20,13 @@ public class RandomAnswerGenerator {
     }
 
     private static int getRandomNumeric(Set<Integer> usedNumeric) {
-        return 0;
+        if(usedNumeric.size() >= 9)
+            return -1;
+
+        while(true) {
+            int numeric = Randoms.pickNumberInRange(1, 9);
+            if(!usedNumeric.contains(numeric))
+                return numeric;
+        }
     }
 }
