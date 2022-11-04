@@ -37,6 +37,13 @@ public class Score {
                 .collect(Collectors.toMap(BallCount::getValue, score::get, (a, b) -> b, LinkedHashMap::new));
     }
 
+    public Boolean getIsThreeStrike() {
+        if (score.get(BallCount.STRIKE) == 3) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
