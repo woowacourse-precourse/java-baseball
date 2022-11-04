@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Number {
@@ -61,13 +59,10 @@ public class Number {
 
     public static void checkUserNumberDuplicate(List<Integer> userNumberList){
 
-        List<Integer> alreadyHaveNumber = new ArrayList<>();
+        Set<Integer> numSet = new HashSet<>(userNumberList);
 
-        for (int index = 0; index < userNumberList.size(); index++) {
-            if (alreadyHaveNumber.contains(userNumberList.get(index))) {
-                throw new IllegalArgumentException();
-            }
-            alreadyHaveNumber.add(userNumberList.get(index));
+        if(numSet.size()!= userNumberList.size()){
+            throw new IllegalArgumentException();
         }
     }
 
