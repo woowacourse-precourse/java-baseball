@@ -84,8 +84,8 @@ public class Game {
 		}
 
 		if (playerInputArray.contains(0)) {
-			System.out.println(playerInput);
-			throw new IllegalArgumentException(SystemMessage.printError());
+			SystemMessage.printContainsZero();
+			throw new IllegalArgumentException(SystemMessage.CONTAINS_ZERO_MESSAGE);
 		}
 
 		if (playerInputArray.size() != playerInputArray.stream().distinct().count()) {
