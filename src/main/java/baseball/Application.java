@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    final static int INITE_GAME_START_VALUE = 1;
-    final static int FLAG_RETRY_INT = 1;
     final static int MIN_RANDOM_VALUE = 1;
     final static int MAX_RANDOM_VALUE = 9;
     final static int MAX_NUMBERS_COUNT = 3;
 
+    final static String INIT_GAME_START_VALUE = "1";
     final static String MESSAGE_START = "숫자 야구 게임을 시작합니다.";
     final static String MESSAGE_REQUEST_INPUT = "숫자를 입력해주세요 : ";
     final static String MESSAGE_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -23,10 +22,10 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(MESSAGE_START);
 
-        int gameStart = INITE_GAME_START_VALUE;
+        String gameStart = INIT_GAME_START_VALUE;
 
         /* 프로그램 메인 구조, 게임 중단 플래그가 세워질 때 까지 반복, 예외 발생 시 프로그램 중단 */
-        while(gameStart == FLAG_RETRY_INT) {
+        while(gameStart.equals(FLAG_RETRY_STRING)) {
             try {
                 gameStart = playBall();
             } catch(IllegalArgumentException exception) {
@@ -36,7 +35,7 @@ public class Application {
         }
     }
 
-    private static int playBall() {
+    private static String playBall() {
         /* 컴퓨터 숫자 정하기 파트 */
         final List<Integer> COMPUTERS_NUMBERS = List.copyOf(setComputersNumbers());
 
@@ -73,11 +72,11 @@ public class Application {
         return Console.readLine();
     }
 
-    private static int validateRePlayOrStop(String playAgain) {
+    private static String validateRePlayOrStop(String playAgain) {
         if(!(playAgain.equals(FLAG_RETRY_STRING) || playAgain.equals(FLAG_STOP_STRING))) {
             throw new IllegalArgumentException();
         }
 
-        return Integer.parseInt(playAgain);
+        return playAgain;
     }
 }
