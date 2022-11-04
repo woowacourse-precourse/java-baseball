@@ -50,4 +50,12 @@ public class NumberComparator {
             gameResultBuilder.append(SPACE);
         }
     }
+
+    private void makeBallCountText(StringBuilder gameResultBuilder, int ballCount) {
+        if (ballCount > 0) {
+            gameResultBuilder.append(ballCount);
+            gameResultBuilder.append(BALL);
+            gameResultBuilder.append(SPACE);
+        }
+    }
 }
