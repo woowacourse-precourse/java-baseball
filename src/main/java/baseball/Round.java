@@ -15,12 +15,7 @@ public class Round {
     public void startNewRound()  {
         Print.printRoundStart();
         String inputString = Input.readString();
-        parseNumbers(inputString);
-    }
-
-    private void parseNumbers(String inputString) {
-        int input = Integer.parseInt(inputString);
-        numbers = new Numbers(input);
+        numbers = Parse.StringToNumbers(inputString);
     }
 
     public void playRound() {
