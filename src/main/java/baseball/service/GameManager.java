@@ -4,9 +4,9 @@ import baseball.game.Game;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
-public class GamePlay {
+public class GameManager {
 
-    public static void start(Game game) {
+    public static void execute(Game game) {
         do {
             game.play();
         } while (getPlayerWant() == GameStatus.RESTART);

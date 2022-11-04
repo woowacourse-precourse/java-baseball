@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Baseball implements Game {
+public class BaseballGame implements Game {
 
     private static final int GOAL_DIGIT = 3;
     private static final int START_POSSIBLE_NUMBER = 1;
