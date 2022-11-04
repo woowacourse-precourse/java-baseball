@@ -81,15 +81,30 @@ public class Application {
         System.out.println(ballNumber + "볼 " + strikeNumber + "스트라이크");
         return true;
     }
+    private static boolean wantRestart() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.parseInt(Console.readLine());
+        if (!(input == 1 || input == 2)) {
+            throw new IllegalArgumentException();
+        }
+        if (input == 2) {
+            return false;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         noticeStartGame();
-        List<Integer> computerNumbers = createComputerNumbers();
-        boolean isNotMatchComputerUser = true;
-        while (isNotMatchComputerUser) {
-            String userNumbers = inputUserNumbers();
-            int ballNumber = getBallNumber(computerNumbers, userNumbers);
-            int strikeNumber = getStrikeNumber(computerNumbers, userNumbers);
-            isNotMatchComputerUser = printBallStrikeResult(ballNumber, strikeNumber);
+        boolean gameStart = true;
+        while (gameStart) {
+            List<Integer> computerNumbers = createComputerNumbers();
+            boolean isNotMatchComputerUser = true;
+            while (isNotMatchComputerUser) {
+                String userNumbers = inputUserNumbers();
+                int ballNumber = getBallNumber(computerNumbers, userNumbers);
+                int strikeNumber = getStrikeNumber(computerNumbers, userNumbers);
+                isNotMatchComputerUser = printBallStrikeResult(ballNumber, strikeNumber);
+            }
+            gameStart = wantRestart();
         }
     }
 }
