@@ -11,8 +11,8 @@ public class User {
 		GameView.printStartGame();
 		GameView.printInstruction();
 		String userInput = Console.readLine();
+		checkUserInput(userInput);
 		System.out.println(userInput);
-		System.out.println(convertUserInputToList(userInput));
 	}
 
 	public static List<Integer> convertUserInputToList(String userInput) {
@@ -21,5 +21,12 @@ public class User {
 			userInputList.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
 		}
 		return userInputList;
+	}
+
+	public static void checkUserInput(String userInput) {
+		InputException.checkNotNumber(userInput);
+		InputException.checkLength(userInput);
+		InputException.checkDuplicate(convertUserInputToList(userInput));
+		InputException.checkZero(convertUserInputToList(userInput));
 	}
 }

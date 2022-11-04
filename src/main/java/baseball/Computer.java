@@ -15,6 +15,7 @@ public class Computer {
 	public Computer() {
 		this.computerNumbers = new ArrayList<>();
 		this.generateRandomThreeNums();
+		System.out.println(computerNumbers);
 	}
 
 	private void generateRandomThreeNums() {
