@@ -71,6 +71,13 @@ public class Game {
 		String playerInput = player.getInput();
 		List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
 
+		for (int i = 0; i < playerInput.length(); i++) {
+			if (!Character.isDigit(playerInput.charAt(i))) {
+				SystemMessage.printNotInteger();
+				throw new IllegalArgumentException();
+			}
+		}
+
 		if (playerInput.length() != 3) {
 			System.out.println(playerInput);
 			throw new IllegalArgumentException(SystemMessage.printError());
@@ -82,8 +89,8 @@ public class Game {
 		}
 
 		if (playerInputArray.size() != playerInputArray.stream().distinct().count()) {
-			System.out.println(playerInput);
-			throw new IllegalArgumentException(SystemMessage.printError()); //TODO: 에러 메시지 프린트 안되고 있음
+			System.out.println(SystemMessage.printError());
+			throw new IllegalArgumentException(); //TODO: 에러 메시지 프린트 안되고 있음
 		}
 
 		return playerInput;
