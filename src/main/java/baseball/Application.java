@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -9,7 +8,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // playGame();
+//        Operator op = new Operator();
+//        op.playGame();
 
     }
 }
@@ -25,7 +25,23 @@ class Computer {
                 numberList.add(randomNumber);
             }
         }
-        int numCanditate = numberList.indexOf(0) * 100 + numberList.indexOf(0) * 10 + numberList.indexOf(0);
-        this.number = numCanditate;
+        int num = numberList.indexOf(0) * 100 + numberList.indexOf(0) * 10 + numberList.indexOf(0);
+        this.number = num;
     }
 }
+
+class Player {
+    private int number;
+
+    public void inputNumber() {
+        int num = Integer.valueOf(Console.readLine());
+        this.number = num;
+    }
+}
+//class Operator {
+//    Computer com;
+//    public void playGame() {
+//        com.setNumber();
+//
+//    }
+//}
