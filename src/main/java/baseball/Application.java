@@ -11,7 +11,11 @@ public class Application {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        try {
+            startGame();
+        } catch (IllegalStateException e) {
+            System.out.println("게임을 종료합니다.");
+        }
     }
 
     public static void startGame() {
