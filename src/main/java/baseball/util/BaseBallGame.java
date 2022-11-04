@@ -17,12 +17,14 @@ public class BaseBallGame {
 
     public void gameStart () {
         String userData;
+        List<Integer> ballStrikeCount;
         do {
 
             userData = Console.readLine();
-            List<Integer> ballStrikeCount = computerRandomCompareToUserInput(computerRandomThreeValue, userData);
+            ballStrikeCount = computerRandomCompareToUserInput(computerRandomThreeValue, userData);
             printByBallAndStrikeCount(ballStrikeCount);
-        } while (false);
+
+        } while (ballStrikeCount.get(STRIKE) != 3);
     }
 
 
