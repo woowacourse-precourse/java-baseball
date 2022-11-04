@@ -14,7 +14,7 @@ public class Application {
 
         while (true) {
             List<Integer> computerNumber = makeRandomNumber();
-            System.out.println(computerNumber);
+            //System.out.println(computerNumber);
             while (true) {
                 String userNumber = inputUserNumber();
 
@@ -27,7 +27,7 @@ public class Application {
 
                 // 맞춘다면 반복문 빠져나오기
                 if (isComputerNumber(computerNumber,toList(userNumber))) {
-                    System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
             }
