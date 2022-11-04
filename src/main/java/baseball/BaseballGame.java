@@ -41,11 +41,14 @@ public class BaseballGame extends Game {
         setAnswerNumbers(getRandomNumbersOf(ANSWER_NUMBER_COUNT));
     }
 
-
     @Override
     protected void terminate() {
         setStatus(Status.DONE);
         setAnswerNumbers(Collections.emptyList());
     }
 
+    @Override
+    public boolean operate(String input) {
+        return false;
+    }
 }
