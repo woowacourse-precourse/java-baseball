@@ -22,17 +22,16 @@ public class HintMessage {
     public boolean checkPoint(List<Integer> user, List<Integer> com) {
         strike_Score = 0;
         ball_Score = 0;
-        if (user.equals(com)) {
-            System.out.println("3" + STRIKE);
-            System.out.println("정답입니다! 다시시작 1 , 게임을 종료하시려면 2를 입력해주세요");
-            inputNumber = Integer.parseInt(Console.readLine());
-            if (inputNumber == 2) {
-                win = false;
-            }
-        } else if (!user.equals(com)) {
-            checkStrike(user,com);
+        if (!user.equals(com)) {
+            checkStrike(user, com);
+            getHint();
         }
-        return win;
+        if (user.equals(com)) {
+            win = resetGame();
+            System.out.println("win = " + win);
+            return win;
+        }
+        return true;
     }
 
     public void checkStrike(List<Integer> user, List<Integer> com) {
@@ -65,5 +64,12 @@ public class HintMessage {
             System.out.print(NOTHING);
         }
         System.out.println();
+    }
+
+    public boolean resetGame() {
+        System.out.println("3" + STRIKE);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        win = false;
+        return win;
     }
 }
