@@ -108,6 +108,11 @@ public class Application {
         // 스트라이크의 개수를 계산하는 메소드
         LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = CountStrikes
                 (playerNumberArrayList, answerNumberArrayList);
-        
+
+        // 볼의 개수를 계산하는 메소드
+        int ballResult = CountBalls
+                (playerNumberArrayList,
+                        answerNumberArrayList,
+                        strikeResultLinkedHashMap);
     }
 }
