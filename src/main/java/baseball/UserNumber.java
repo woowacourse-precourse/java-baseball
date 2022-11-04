@@ -25,7 +25,7 @@ public class UserNumber {
 
     public void makeUserNumber() {
         System.out.println("INPUT_NUMBER = " + INPUT_NUMBER);
-        Set<Integer> inputNumbers = new LinkedHashSet<>();
+        List<Integer> inputNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
         for (int i = 0; i < inputNumber.length(); i++) {
             int number = inputNumber.charAt(i) - '0';
