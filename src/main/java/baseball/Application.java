@@ -14,13 +14,16 @@ public class Application {
 
 
 
-    public static void showPrompt(List<Integer> answer) {
-        String user = null;
+    public static boolean showPrompt(List<Integer> answer) {
+        String userNum = null;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Console console = null;
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
-            user = Console.readLine();
+            userNum = Console.readLine();
+            if (ExceptionBaseball.checkUserNumAlpha(userNum) || ExceptionBaseball.checkUserNumAlpha(userNum)) {
+                return false;
+            }
+            
         }
     }
     public static List<Integer> getAnswer() {
