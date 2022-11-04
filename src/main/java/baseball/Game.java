@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class Game {
 
     List<Integer> computer;
+    HashMap<String, Integer> strikeAndBallCount;
 
     Game() {
         computer = new ArrayList<>();
@@ -29,14 +30,12 @@ public class Game {
     }
 
     public void checkUserAnswerWhichIsCorrect(String userAnswer) {
-        HashMap<String, Integer> strikeAndBallCount = new HashMap<>();
+        strikeAndBallCount = new HashMap<>();
 
         strikeAndBallCount.put("Strike", 0);
         strikeAndBallCount.put("Ball", 0);
 
-        List<Integer> answer = stringToListInteger(userAnswer);
-
-        checkAnswerState(strikeAndBallCount, answer);
+        checkAnswerState(strikeAndBallCount, stringToListInteger(userAnswer));
     }
 
     private void checkAnswerState(HashMap<String, Integer> strikeAndBallCount, List<Integer> userAnswer) {
@@ -66,4 +65,37 @@ public class Game {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public boolean printResultCompareWithAnswer(HashMap<String, Integer> strikeAndBallCount) {
+        Integer strike = strikeAndBallCount.get("Strike");
+        Integer ball = strikeAndBallCount.get("Ball");
+
+        if (strike == 0 && ball != 0) {
+            System.out.println(strikeAndBallCount.get("Strike") + "스트라이크");
+        } else if (strike != 0 && ball == 0) {
+            System.out.println(strikeAndBallCount.get("Ball") + "볼");
+        } else if (strike != 0 && ball != 0) {
+            System.out.println(strikeAndBallCount.get("Ball") + "볼 "
+                    + strikeAndBallCount.get("Strike") + "스트라이크");
+        } else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            System.out.print("3스트라이크" +"\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
+    }
 }
+
+/** 숫자를 입력해주세요 : 123
+        * 1볼 1스트라이크
+        * 숫자를 입력해주세요 : 145
+        * 1볼
+        * 숫자를 입력해주세요 : 671
+        * 2볼
+        * 숫자를 입력해주세요 : 216
+        * 1스트라이크
+        * 숫자를 입력해주세요 : 713
+        * 3스트라이크
+ */
