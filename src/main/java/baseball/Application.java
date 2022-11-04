@@ -9,7 +9,7 @@ public class Application {
             int randomNumber = makeRandomNumber();
             System.out.println(randomNumber);
 
-            int userInputNumber = input();
+            int userInputNumber = userNumber();
             playGame(randomNumber, userInputNumber);
 
             if (restartOrEndGame() == 2) {
@@ -43,7 +43,7 @@ public class Application {
     }
 
 
-    public static int input() {
+    public static int userNumber() {
         Scanner sc = new Scanner(System.in);
         System.out.println("숫자를 입력해주세요: ");
         int n = sc.nextInt();
