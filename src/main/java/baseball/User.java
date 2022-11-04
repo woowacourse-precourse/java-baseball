@@ -100,6 +100,21 @@ public class User {
             System.out.println((strike + "스트라이크"));
             return;
         }
-        System.out.println(ball +"볼 " + strike + "스트라이크");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
+    void keepOrNot() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (checkType(userInput)) {
+            if (userInput.equals("1")) {
+                keepGame = true;
+                return;
+            } else if (userInput.equals("2")) {
+                keepGame = false;
+                return;
+            }
+        }
+        errorControl();
     }
 }
