@@ -14,7 +14,7 @@ public class GameConsole {
     }
 
     private int readInt() {
-        return Integer.parseInt(readLine());
+        return Integer.parseInt(readLine().trim());
     }
 
     private List<Integer> readIntegerList() throws NumberFormatException {
@@ -36,7 +36,7 @@ public class GameConsole {
         System.out.println(s);
     }
 
-    private void write(String s){
+    private void write(String s) {
         System.out.print(s);
     }
 
@@ -50,7 +50,7 @@ public class GameConsole {
     }
 
     /**
-     * @param result
+     * @param result 게임결과
      * @return 게임 종료 여부
      */
     public boolean printGameResult(Result result) {
@@ -59,7 +59,7 @@ public class GameConsole {
             return true;
         }
 
-        write(result.toString());
+        writeLine(result.toString());
         return false;
     }
 
