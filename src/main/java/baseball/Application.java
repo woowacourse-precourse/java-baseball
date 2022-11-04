@@ -26,7 +26,7 @@ public class Application {
                 }
 
                 // 맞춘다면 반복문 빠져나오기
-                if (computerNumber.equals(toList(userNumber))) break;
+                if (isComputerNumber(computerNumber,toList(userNumber))) break;
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String gameCoin = Console.readLine();
@@ -60,14 +60,14 @@ public class Application {
     }
 
     public static List<Integer> toList(String userNumber){
-        List<Integer> listUserNumber = new ArrayList<>();
+        List<Integer> userNumberList = new ArrayList<>();
 
         for(int userNumberIndex = 0; userNumberIndex<userNumber.length();userNumberIndex++){
             // validate를 통해 3글자 숫자임이 확정이므로 0의 아스키 코드 값이 48임을 이용해 문자를 숫자로 바꾸어준다.
-            listUserNumber.add(userNumber.charAt(userNumberIndex) - 48);
+            userNumberList.add(userNumber.charAt(userNumberIndex) - 48);
         }
 
-        return listUserNumber;
+        return userNumberList;
     }
 
     public static void validateUserNumber(String userNumber){
@@ -95,4 +95,36 @@ public class Application {
         }
     }
 
+    public static boolean isComputerNumber(List<Integer> computerNumber, List<Integer> userNumberList){
+        printHint(computerNumber,userNumberList);
+        return computerNumber.equals(userNumberList);
+    }
+
+    public static void printHint(List<Integer> computerNumber, List<Integer> userNumberList){
+        int strike=0;
+        int ball=0;
+
+        for(int index = 0 ; index < 3;index++){
+            if(checkStrike(computerNumber,userNumberList.get(index),index)){
+                strike++;
+            }
+            if (checkBall(computerNumber,userNumberList.get(index),index)){
+                ball++;
+            }
+        }
+
+        if(ball >0) System.out.println(ball + "볼");
+        if(strike > 0) System.out.println(strike + "스트라이크");
+        if(ball == 0 && strike ==0) System.out.println("낫싱");
+    }
+
+    public static boolean checkStrike (List<Integer> computerNumber, int userNumber, int index){
+        //같은 위치의 같은 값이면 strike
+        return computerNumber.get(index).equals(userNumber);
+    }
+
+    public static boolean checkBall(List<Integer> computerNumber, int userNumber, int index){
+        //같은 위치에 있지 않으면서 computerNumber가 userNumber를 포함하고 있으면 ball
+        return computerNumber.get(index).equals(userNumber) == false && computerNumber.contains(userNumber);
+    }
 }
