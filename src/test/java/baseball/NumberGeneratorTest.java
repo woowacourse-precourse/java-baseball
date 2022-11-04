@@ -11,7 +11,7 @@ class NumberGeneratorTest {
 
     Integer randomNumber;
     String randomNumberStringType;
-    NumberGenerator numberGenerator = new NumberGeneratorRandomImpl();
+    NumberGenerator numberGenerator = NumberGeneratorRandomImpl.getInstance();
 
     @BeforeEach
     void 랜덤넘버초기화(){

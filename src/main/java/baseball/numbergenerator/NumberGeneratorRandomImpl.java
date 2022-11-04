@@ -6,7 +6,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberGeneratorRandomImpl implements NumberGenerator{
+public class NumberGeneratorRandomImpl implements NumberGenerator {
+    private static NumberGeneratorRandomImpl numberGeneratorRandom;
+
+    private NumberGeneratorRandomImpl() {
+    }
+
+    public static NumberGeneratorRandomImpl getInstance() {
+        if (numberGeneratorRandom == null)
+            numberGeneratorRandom = new NumberGeneratorRandomImpl();
+        return numberGeneratorRandom;
+    }
 
     @Override
     public Integer generate() {

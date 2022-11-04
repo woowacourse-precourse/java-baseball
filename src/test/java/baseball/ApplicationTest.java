@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
 
-        Application.setNumberGenerator(new NumberGeneratorRandomImpl());
+        Application.setNumberGenerator(NumberGeneratorRandomImpl.getInstance());
     }
 
     @Test

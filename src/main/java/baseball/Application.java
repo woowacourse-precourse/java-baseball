@@ -11,7 +11,7 @@ import java.util.Map;
 import static baseball.Application.ScoreConst.*;
 
 public class Application {
-    private static NumberGenerator numberGenerator = new NumberGeneratorRandomImpl();
+    private static NumberGenerator numberGenerator = NumberGeneratorRandomImpl.getInstance();
 
     public static void setNumberGenerator(NumberGenerator numberGenerator) {
         Application.numberGenerator = numberGenerator;
