@@ -3,7 +3,6 @@ package baseball;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -114,9 +113,8 @@ public class Application {
 
         // 입력된 3자리의 숫자가 1~9의 범위 내에 존재하는지 확인
         public void checkNumberRange (String inputNumber) throws  IllegalArgumentException{
-            IntStream inputNumberStream = inputNumber.chars();
 
-            inputNumberStream.forEach(number -> {
+            inputNumber.chars().forEach(number -> {
                         if (number < 49 || number > 57) throw new IllegalArgumentException();
 
             });
