@@ -11,12 +11,6 @@ public class InputException {
         }
     }
     public void InputValid(List<Integer> RandomList, List<Integer> inputList) {
-        /**
-         * 3자리 숫자가 입력되어야 함 -> 3자리가 아니면 예외 처리
-         * 각 자리의 숫자가 달라야 함
-         * 숫자가 아닐 경우 예외 처리
-         * 만약 3이 아닌 다른 크기로 변경되었을 경우에도 코드 수정을 최소화 할 수 있도록
-         */
 
         if (inputList.size() != RandomList.size()) {
             throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
