@@ -21,4 +21,13 @@ class BallTest {
         // then
         assertThat(testResult).isTrue();
     }
+
+    @Test
+    void 입력으로_들어온_숫자를_Ball_객체로_변환() {
+        // given
+        Ball ball = new Ball(1);
+
+        // then
+        assertThat(ball.getNumber()).isEqualTo(1);
+    }
 }
