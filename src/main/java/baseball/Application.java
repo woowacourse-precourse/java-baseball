@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -31,5 +34,22 @@ public class Application {
 				throw new IllegalArgumentException("잘못된 입력입니다. 숫자가 아닌 입력이 존재합니다.");
 			}
 		}
+	}
+
+	public static void checkDuplicateBallsException(String balls) {
+		if (isExistsDuplicateBalls(balls)) {
+			throw new IllegalArgumentException("잘못된 입력입니다. 중복된 공이 존재합니다.");
+		}
+	}
+
+	private static boolean isExistsDuplicateBalls(String balls) {
+		Set<Character> uniqueBalls = new HashSet<>();
+		for (char ball : balls.toCharArray()) {
+			if (uniqueBalls.contains(ball)) {
+				return true;
+			}
+			uniqueBalls.add(ball);
+		}
+		return false;
 	}
 }
