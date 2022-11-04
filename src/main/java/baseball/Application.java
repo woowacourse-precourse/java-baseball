@@ -61,12 +61,29 @@ public class Application {
         return comparedResult;
     }
 
-    private static boolean correctAnswer(HashMap<Integer,Integer> comparedResult){
+    private static boolean correctAnswer(HashMap<Integer, Integer> comparedResult) {
         boolean correct;
-        if (comparedResult.get(STRIKE)==3){
-            correct=true;
-        }else correct=false;
+        if (comparedResult.get(STRIKE) == 3) {
+            correct = true;
+        } else correct = false;
         return correct;
+    }
+
+    private static void printResult(HashMap<Integer, Integer> comparedResult){
+        int balls=comparedResult.get(BALL);
+        int strikes=comparedResult.get(STRIKE);
+        int nothing=comparedResult.get(NOTHING);
+
+        if (comparedResult.get(NOTHING)!=0){
+            System.out.printf("낫싱");
+        }
+        if (comparedResult.get(BALL)!=0){
+            System.out.printf("%d볼 ",balls);
+        }
+        if (comparedResult.get(STRIKE)!=0){
+            System.out.printf("%d스트라이크",strikes);
+        }
+        System.out.printf("\n");
     }
 
     public static void main(String[] args) {
@@ -77,10 +94,14 @@ public class Application {
         while (gameOn) {
             int userInput = sc.nextInt();
             List<Integer> separatedInput = seperate3Numbers(userInput);
-            HashMap<Integer,Integer> comparedResult=checkBallOrStrike(answer,separatedInput);
-            gameOn=correctAnswer(comparedResult);
-
-
+            HashMap<Integer, Integer> comparedResult = checkBallOrStrike(answer, separatedInput);
+            if (correctAnswer(comparedResult)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+            else {
+                printResult(comparedResult);
+            }
+            gameOn = !correctAnswer(comparedResult);
         }
     }
 }
