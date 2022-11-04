@@ -61,4 +61,53 @@ public class ErrorCheckerTest {
 
         assertEquals(exception.getMessage(), DUPLICATE_NUMBER);
     }
+
+    @Test
+    void checkUserNumberError_메서드로_정상적인_자릿수_값_입력_테스트() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 9;
+        List<Integer> continueGameInputList = List.of(1, 2);
+
+        ErrorChecker errorChecker = new ErrorChecker(numberSize, startInclusive, endInclusive, continueGameInputList);
+
+        String input = "456";
+
+        Assertions.assertThatCode(() -> errorChecker.checkUserNumberError(input))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void checkUserNumberError_메서드로_잘못된_자릿수_판별_테스트() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 9;
+        List<Integer> continueGameInputList = List.of(1, 2);
+
+        ErrorChecker errorChecker = new ErrorChecker(numberSize, startInclusive, endInclusive, continueGameInputList);
+
+        String input = "1122";
+
+        assertThatThrownBy(() -> errorChecker.checkUserNumberError(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void checkUserNumberError_메서드로_잘못된_자릿수_예외_메시지_테스트() {
+        int numberSize = 3;
+        int startInclusive = 1;
+        int endInclusive = 9;
+        List<Integer> continueGameInputList = List.of(1, 2);
+
+        ErrorChecker errorChecker = new ErrorChecker(numberSize, startInclusive, endInclusive, continueGameInputList);
+
+        String input = "1122";
+
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> errorChecker.checkUserNumberError(input));
+
+        assertEquals(exception.getMessage(), ILLEGAL_SIZE);
+    }
+
+
 }
