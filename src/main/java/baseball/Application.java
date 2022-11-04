@@ -41,11 +41,14 @@ public class Application {
     }
     public static void main(String[] args) {
         String computer = "";
-        boolean iterate = true; // 반복문 반복 명령용 변수
+        boolean iterate = true;
+        int trial = 0;
 
         while (iterate) {
-            System.out.println(MESSAGE_START);
-            computer = generateComputerNumber();
+            if (trial == 0) {
+                System.out.println(MESSAGE_START);
+                computer = generateComputerNumber();
+            }
         }
     }
 }
