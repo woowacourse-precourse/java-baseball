@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.domain.Hint;
+import baseball.domain.Score;
 
 public class Output {
 
@@ -18,8 +19,8 @@ public class Output {
 
     public static void printHint(Hint hint) {
         stringBuilder = new StringBuilder();
-     int strike=hint.getStrike();
-     int ball = hint.getBall();
+        int strike = hint.getScorePoint(Score.STRIKE);
+        int ball = hint.getScorePoint(Score.BALL);
         if (strike == 0 && ball == 0) {
             stringBuilder.append(NOTHING);
         } else if (strike != 0 && ball == 0) {

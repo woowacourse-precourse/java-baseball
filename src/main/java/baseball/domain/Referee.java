@@ -21,14 +21,14 @@ public class Referee {
 
     private void getStrike(Balls userBalls, int index) {
         if (computer.getBallNumber(index).equals(userBalls.getBall(index))) {
-            hint.increaseStrike();
+            hint.increasePoint(Score.STRIKE);
         }
     }
 
     private void getBall(Balls userBalls, int index) {
         if (userBalls.isContain(computer.getBallNumber(index)) && !computer.getBallNumber(index)
                 .equals(userBalls.getBall(index))) {
-            hint.increaseBall();
+            hint.increasePoint(Score.BALL);
         }
     }
 
