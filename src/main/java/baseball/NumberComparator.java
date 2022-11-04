@@ -71,4 +71,8 @@ public class NumberComparator {
 
         System.out.println(gameResultBuilder);
     }
+
+    private boolean isAnswer(int strikeCount) {
+        return strikeCount == numberSize;
+    }
 }
