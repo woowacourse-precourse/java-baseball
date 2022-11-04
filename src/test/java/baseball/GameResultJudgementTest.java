@@ -73,4 +73,12 @@ class GameResultJudgementTest {
     assertBall("456", "786", 1);
     assertBall("789", "217", 1);
   }
+  @Test
+  @Order(7)
+  @DisplayName("볼 0 확인")
+  void JudgeBallCount0() {
+    assertBall("123", "123", 0);
+    assertBall("789", "762", 0);
+    assertBall("789", "289", 0);
+  }
 }
