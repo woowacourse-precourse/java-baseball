@@ -14,14 +14,34 @@ public class Application {
 
     }
 
+    public static void startGame() {
+        initCommonMessageMap();
+        initComputerNumber();
+        System.out.println(computerNumber);
 
+        System.out.println(commonMessageMap.get("startMessage"));
+
+        while(true) {
+            System.out.print(commonMessageMap.get("inputMessage"));
+            String userInput = readeUserInput();
+
+            validateUserInput(userInput);
+
+            if(checkUserInputIsThreeStrike(userInput)) {
+                decideExitOrProceed();
+            }
+
+            String hintMessage = giveHint(userInput);
+            System.out.println(hintMessage);
+        }
+    }
 
     public static void decideExitOrProceed() {
         System.out.println(commonMessageMap.get("exitOrProceedMessage"));
         String userInput = readeUserInput();
 
         if (userInput.equals("1")) {
-            //게임 재시작 로직
+            startGame();
         } else {
             throw new IllegalStateException();
         }
@@ -50,7 +70,6 @@ public class Application {
 
     public static void initCommonMessageMap() {
         commonMessageMap = new HashMap<>();
-
         commonMessageMap.put("startMessage", "숫자 야구 게임을 시작합니다.");
         commonMessageMap.put("inputMessage", "숫자를 입력해주세요 : ");
         commonMessageMap.put("threeStrikeMessage", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");

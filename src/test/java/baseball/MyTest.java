@@ -128,5 +128,22 @@ public class MyTest {
         Assertions.assertThat(hintMessage_four).isEqualTo("2볼 ");
     }
 
+    @Test
+    void checkUserInputIsStrike() {
+        //given(준비)
+        Application.initCommonMessageMap();
+        Application.computerNumber = List.of('1','2','3');
+        String firstInput = "123";
+        String secondInput = "321";
+
+        //when(실행)
+        boolean firstFlag = Application.checkUserInputIsThreeStrike(firstInput);
+        boolean secondFlag = Application.checkUserInputIsThreeStrike(secondInput);
+
+        //then(검증)
+        Assertions.assertThat(firstFlag).isTrue();
+        Assertions.assertThat(secondFlag).isFalse();
+    }
+
 
 }
