@@ -41,4 +41,9 @@ public class InputController {
         }
         return usernumtolist;
     }
+
+    public String chooseGameEnd() {
+        String startorend = Console.readLine();
+        return startorend;
+    }
 }
