@@ -37,7 +37,7 @@
 - [ ] Begin() 게임을 시작할지 결정
   - new Game
 - [ ] Guess() 정답을 맞춰볼 수 있다
-  - new Number
+  - new BaseBallNumber
 - [ ] Choose() 게임을 더 할지 말지 결정
   - ❗ 1 or 2가 아니면 throw
 
@@ -58,7 +58,7 @@
   - 다른 자리에 있으면 볼
   - 같은 수가 전혀 없으면 낫싱
 
-### 🍄 Number 클래스
+### 🍄 BaseBallNumber 클래스
 
 - GAME_NUMBER_SIZE = 3;
 - [ ] validateSize()
