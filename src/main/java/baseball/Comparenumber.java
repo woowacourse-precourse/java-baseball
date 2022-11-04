@@ -12,4 +12,9 @@ public class Comparenumber {
         this.inputList=inputList;
         iscontinue=true;
     }
+    public int ballscore(int index){
+        if(randomList.contains(inputList.get(index))){return 1;}
+        return 0;
+    }
+
 }
