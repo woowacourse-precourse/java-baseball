@@ -25,7 +25,7 @@ public class GameUtilTest {
     }
 
     @ParameterizedTest(name = "숫자 유효성 체크 => {0}")
-    @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222})
+    @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222, 2134, 2243})
     void 숫자_유효성_체크(int number) {
         assertThatThrownBy(() -> GameUtil.validateNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
