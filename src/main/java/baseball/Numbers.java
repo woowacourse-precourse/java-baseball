@@ -38,4 +38,8 @@ public class Numbers {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public void validate() {
+
+    }
 }
