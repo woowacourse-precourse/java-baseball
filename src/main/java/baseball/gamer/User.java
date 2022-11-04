@@ -25,4 +25,11 @@ public class User implements Gamer {
             throw new IllegalArgumentException("잘못된 입력입니다. 1이나 2를 입력해주세요.");
         }
     }
+
+    @Override
+    public Numbers changeNumbers() {
+        Numbers numbers = Numbers.createInputNumbers();
+        this.numbers = numbers;
+        return numbers;
+    }
 }
