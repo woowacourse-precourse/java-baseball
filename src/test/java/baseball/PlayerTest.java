@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 class PlayerTest {
 
     @Nested
@@ -27,4 +30,33 @@ class PlayerTest {
         }
     }
 
+    @Nested
+    class 예외처리 {
+        @Test
+        void case1() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatThrownBy(() -> ref.player = new Player("12"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void case2() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatCode(() -> ref.player = new Player("123"))
+                    .doesNotThrowAnyException();
+        }
+
+        @Test
+        void case3() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatThrownBy(() -> ref.player = new Player("1234"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
