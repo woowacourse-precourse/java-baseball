@@ -4,6 +4,8 @@ import baseball.model.Computer;
 import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+
 public class GamePlay {
     private Computer computer = new Computer();
     private User user = new User();
@@ -11,7 +13,7 @@ public class GamePlay {
         computer.generateNumber();
         while (true){
             System.out.print("숫자를 입력하세요: ");
-            typingNumber();
+            int[] guessNumbers = typingNumber();
         }
     }
     public void play(){
@@ -19,7 +21,8 @@ public class GamePlay {
         playContinuous();
     }
 
-    public void typingNumber(){
-        user.inputNumber();
+    public int[] typingNumber(){
+        return user.inputNumber();
     }
+
 }
