@@ -3,23 +3,27 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumsInputFromUser {
+    private int hundred, ten , one;
+
     public int[] getInputNumForGame() throws IllegalArgumentException{
         int input = Integer.parseInt(Console.readLine());
-        int hundred = input / 100;
-        int ten     = (input % 100) / 10;
-        int one     = ((input % 100) % 10);
+
+        computeEach(input);
 
         checkIfInputDuplicated(hundred, ten, one);
 
-        int[] InputArr = new int[3];
-        InputArr[0]    = hundred;
-        InputArr[1]    = ten;
-        InputArr[2]    = one;
+        int[] InputArr = toArr();
 
         return InputArr;
     }
 
-    public void checkIfInputDuplicated(int hundred, int ten , int one) throws IllegalArgumentException {
+    private void computeEach(int input) {
+        hundred = input / 100;
+        ten     = (input % 100) / 10;
+        one     = ((input % 100) % 10);
+    }
+
+    private void checkIfInputDuplicated(int hundred, int ten , int one) throws IllegalArgumentException {
         IllegalArgumentException exception = new IllegalArgumentException();
 
         if (hundred > 9) throw exception;
@@ -29,4 +33,14 @@ public class NumsInputFromUser {
             throw exception;
         }
     }
+
+    private int[] toArr() {
+        int[] InputArr = new int[3];
+        InputArr[0]    = hundred;
+        InputArr[1]    = ten;
+        InputArr[2]    = one;
+
+        return InputArr;
+    }
+
 }
