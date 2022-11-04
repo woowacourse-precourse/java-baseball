@@ -66,7 +66,7 @@ public class GameManager {
     }
 
     private boolean isThreeChar(String input) {
-
+        return input.length() == 3;
     }
 
     private boolean hasDuplicatedDigit(String input) {
