@@ -23,6 +23,6 @@ public class Result {
     }
 
     public boolean isComplete() {
-        return strikeCount == 3 && ballCount == 0;
+        return strikeCount == BaseballGame.DIGIT_COUNT && ballCount == 0;
     }
 }
