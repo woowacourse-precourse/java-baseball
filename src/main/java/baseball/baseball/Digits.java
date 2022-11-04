@@ -22,12 +22,12 @@ public class Digits {
     }
 
     private void validateDigitRange(int digit) {
-        if (1 <= digit && digit <= 9) throw new IllegalArgumentException("digit 범위는 1~9의 값이여야 합니다.");
+        if (1 <= digit && digit <= 9) throw new IllegalArgumentException("숫자는 1~9의 값이여야 합니다.");
     }
 
     private void validateDigitListSize(List<Integer> digitList) {
         if (digitList.size() == DIGIT_COUNT)
-            throw new IllegalArgumentException("digitList는 항상 " + DIGIT_COUNT + "이여야 합니다.");
+            throw new IllegalArgumentException("숫자의 개수는 항상 " + DIGIT_COUNT + "이여야 합니다.");
     }
 
     private void assertDigitListRange(List<Integer> digitList) {
