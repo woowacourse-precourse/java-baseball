@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.util.BaseBallGame;
+import camp.nextstep.edu.missionutils.Randoms;
+
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseBallGame baseBallGame = new BaseBallGame(Randoms.pickUniqueNumbersInRange(0, 9, 3));
+
     }
 }
