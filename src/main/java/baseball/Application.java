@@ -34,6 +34,19 @@ public class Application {
         return cnt;
     }
 
+    public int cntStrike(String getNum){
+        int cnt = 0;
+        char[] getNumList = getNum.toCharArray();
+        char[] randomNumList = randomNum.toCharArray();
+
+        for(int i = 0; i< 3; i++){
+            if(randomNumList[i] == getNumList[i]){
+                cnt ++;
+            }
+        }
+        return cnt;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -42,6 +55,7 @@ public class Application {
         String userNum = Console.readLine(); // 점수받기
 
         System.out.println(application.cntBall(userNum));
+        System.out.println(application.cntStrike(userNum));
 
     }
 }
