@@ -23,4 +23,12 @@ public class Application {
         return numberList;
     }
 
+    public static List<Integer> createInputNumberList(String input) {
+        List<Integer> inputList = new ArrayList<>();
+        for (String number : input.split("")){
+            inputList.add(Integer.parseInt(number));
+        }
+        return inputList;
+    }
+
 }
