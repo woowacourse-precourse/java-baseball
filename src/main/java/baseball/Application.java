@@ -8,10 +8,13 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        for(int i = 0; i < 1000; i++){
-            System.out.println(RandomBallNum());
-        }
+        String user_ball_number;
+
+        System.out.println(RandomBallNum());
+
+        System.out.print("숫자를 입력해주세요 : ");
+        user_ball_number = user_Input();
+
     }
 
     public static List<Integer> RandomBallNum() {
@@ -24,5 +27,15 @@ public class Application {
         }
 
         return BallNum;
+    }
+
+    public static String user_Input(){
+        String user_ball_number;
+        user_ball_number = Console.readLine();
+        if(user_ball_number.length() != 3 || !user_ball_number.matches("^[0-9]*$")){
+            throw new IllegalArgumentException();
+        }
+
+        return user_ball_number;
     }
 }
