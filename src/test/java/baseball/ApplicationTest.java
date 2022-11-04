@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,6 +16,11 @@ import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void validateRestartOrNot_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
+		String input = "3";
+		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input)).isInstanceOf(IllegalArgumentException.class);
+	}
 	@Test
 	void haveInvalidLength_메소드로_유효하지_않은_길이의_입력에_대한_예외_처리() {
 		String input = "1243";
@@ -49,7 +55,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void 상수_확인() {
-		List<Integer> result = List.of(Constant.LENGTH_OF_NUMBER, Constant.RESTART_GAME, Constant.END_GAME);
+		List<Integer> result = List.of(LENGTH_OF_NUMBER, Integer.parseInt(RESTART_GAME), Integer.parseInt(END_GAME));
 		assertThat(result).containsExactly(3, 1, 2);
 	}
 
