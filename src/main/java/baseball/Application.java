@@ -32,13 +32,13 @@ public class Application {
             }
         }
 
-        if(!dupliccatCheck(value)){ // 중복 값 확인
+        if(!duplicationCheck(value)){ // 중복 값 확인
             throw new IllegalArgumentException();
         }
         return false;
     }
 
-    public static boolean dupliccatCheck(String str) {
+    public static boolean duplicationCheck(String str) {
         int a = (int)str.charAt(0);
         int b = (int)str.charAt(1);
         int c = (int)str.charAt(2);
