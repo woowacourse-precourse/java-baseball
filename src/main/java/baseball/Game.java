@@ -13,9 +13,6 @@ public class Game {
 
 	Player player = new Player();
 
-	private static final int RETRY_NUMBER = 1;
-	private static final int END_NUMBER = 2;
-
 	public void run() {
 		setGame();
 	}
@@ -36,7 +33,6 @@ public class Game {
 
 			String playerInput = getPlayerInput();
 			List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
-			System.out.println(playerInput);
 
 			int strikeCount = Referee.getStrikeCount(answer, playerInputArray);
 
@@ -53,19 +49,27 @@ public class Game {
 	private void endOrRetry() {
 		SystemMessage.printEndOrRetry();
 
-		int playerChoice = Integer.parseInt(player.getInput());
+		String playerChoice = player.getInput();
 
-		System.out.println(playerChoice);
+		InputVerifier inputVerifier = new InputVerifier(playerChoice);
 
-		if (playerChoice == RETRY_NUMBER) {
+		if (!inputVerifier.isInteger()) {
+			SystemMessage.printNotInteger();
+			throw new IllegalArgumentException(SystemMessage.NOT_INTEGER_MESSAGE);
+		}
+
+		if (inputVerifier.isRetryNumber()) {
 			play();
 		}
 
-		if (playerChoice == END_NUMBER) {
+		if (inputVerifier.isEndNumber()) {
 			SystemMessage.printEnd();
 		}
 
-		// throw new IllegalArgumentException(SystemMessage.printError()); TODO: 1과 2가 아닌 값이 들어왔을 때 처리 필요
+		if (inputVerifier.notRetryOrEndNumber()) {
+			SystemMessage.printNotRetryOrEndNumber();
+			throw new IllegalArgumentException(SystemMessage.NOT_RETRY_OR_END_NUMBER_MESSAGE);
+		}
 	}
 
 	private String getPlayerInput() {

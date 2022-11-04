@@ -6,8 +6,26 @@ public class InputVerifier {
 
 	String input;
 
+	private static final int RETRY_NUMBER = 1;
+	private static final int END_NUMBER = 2;
+
 	public InputVerifier(String input) {
 		this.input = input;
+	}
+
+	public boolean isRetryNumber() {
+		int inputToInteger = Integer.parseInt(input);
+		return inputToInteger == RETRY_NUMBER;
+	}
+
+	public boolean isEndNumber() {
+		int inputToInteger = Integer.parseInt(input);
+		return inputToInteger == END_NUMBER;
+	}
+
+	public boolean notRetryOrEndNumber() {
+		int inputToInteger = Integer.parseInt(input);
+		return inputToInteger != RETRY_NUMBER && inputToInteger != END_NUMBER;
 	}
 
 	public boolean isInteger() {
