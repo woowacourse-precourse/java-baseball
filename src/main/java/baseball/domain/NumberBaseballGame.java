@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.dto.ScoreResult;
 import baseball.util.GameExceptionMessage;
 import baseball.util.ShowGameMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -15,6 +16,14 @@ public class NumberBaseballGame {
     private void init() {
         scoreBoard = new ScoreBoard(initializeSystemNumberBall());
         showGameMessage.gameStartMessage();
+    }
+
+    public void play() {
+        init();
+        while (scoreBoard.isPlaying()) {
+            showGameMessage.inputUserNumberMessage();
+            ScoreResult result = scoreBoard.getScore(getUserNumberBall());
+        }
     }
 
     private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {
