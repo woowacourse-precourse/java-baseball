@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -38,6 +37,9 @@ public class Application {
         if(!isNumeric(inputNumberString)){
             throw new IllegalArgumentException("숫자가 아닌 문자 입력");
         }
+        if(!isAnotherNumber(inputNumberString)){
+            throw new IllegalArgumentException("중복된 수 입력");
+        }
     }
 
     private static boolean isValidLength(String inputNumberString){
@@ -54,5 +56,17 @@ public class Application {
         } catch (NumberFormatException e){
             return false;
         }
+    }
+
+    private static boolean isAnotherNumber(String inputNumberString){
+        List<Character> inputNumberStringList = new ArrayList<>();
+        for(char number : inputNumberString.toCharArray()){
+            inputNumberStringList.add(number);
+        }
+        Set<Character> inputNumberStringSet = new HashSet<>(inputNumberStringList);
+        if(inputNumberStringList.size()!=inputNumberStringSet.size()) {
+            return false;
+        }
+        return true;
     }
 }
