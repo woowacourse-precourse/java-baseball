@@ -14,8 +14,11 @@ public class BaseballGame {
     private static final String ANSWER_FORMAT = "%d%s";
 
 
-    private Number computer = new Number();
-    private Number user = new Number();
+    private static Number computer = new Number();
+    private static Number user = new Number();
+    
+    private List<Integer> computerValue;
+    private List<Integer> userValue;
     private int ball;
     private int strike;
     private boolean isExit;
@@ -31,10 +34,9 @@ public class BaseballGame {
 
         while (!isExit) {
             user.inputNumber();
+            userValue = user.getDigits();
 
-            List<Integer> computerValue = computer.getDigits();
-            List<Integer> userValue = user.getDigits();
-            compareNumbers(computerValue, userValue);
+            compareNumbers();
 
             String result = makeResultString();
             System.out.println(result);
@@ -44,40 +46,31 @@ public class BaseballGame {
                 System.out.println(START_AGAIN);
                 startAgain();
             }
-
         }
     }
 
     private void initialize() {
         isExit = false;
         computer.setRandomNumber();
-        System.out.println("computer = " + computer.getDigits());
+        computerValue = computer.getDigits();
+        System.out.println("computer = " + computerValue);
     }
 
-    private void compareNumbers(List<Integer> computerValue, List<Integer> userValue) {
-        countBall(computerValue, userValue);
-        countStrike(computerValue, userValue);
-        ball -= strike;
-    }
-
-    private void countBall(List<Integer> computerValue, List<Integer> userValue) {
+    private void compareNumbers() {
         ball = 0;
+        strike = 0;
         for (int i = 0; i < 3; i++) {
-            Integer target = userValue.get(i);
-            if (computerValue.contains(target)) {
-                ball += 1;
-            }
+            isBallOrStrike(i);
         }
     }
 
-    private void countStrike(List<Integer> computerValue, List<Integer> userValue) {
-        strike = 0;
-        for (int i = 0; i < 3; i++) {
-            Integer computerNumber = computerValue.get(i);
-            Integer userNumber = userValue.get(i);
-            if (computerNumber.equals(userNumber)) {
-                strike += 1;
-            }
+    private void isBallOrStrike(int index) {
+        Integer computerNumber = computerValue.get(index);
+        Integer userNumber = userValue.get(index);
+        if (computerNumber.equals(userNumber)) {
+            strike += 1;
+        } else if (computerValue.contains(userNumber)) {
+            ball += 1;
         }
     }
 
