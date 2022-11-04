@@ -4,6 +4,13 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,6 +54,34 @@ class ConsoleLogTest extends NsTest {
 
         // then
         assertThat(output()).isEqualTo("message");
+    }
+
+    @Test
+    @DisplayName("싱글톤패턴이 멀티 쓰레드 환경에서 하나의 객체를 유지하는지 테스트")
+    void checkTreadSafeSingleton() {
+        // given
+        int threadsAmount = 500;
+
+        // when
+        Set<ConsoleLog> consoleLogSet = Collections.newSetFromMap(new ConcurrentHashMap<>());
+        ExecutorService executorService = Executors.newFixedThreadPool(threadsAmount);
+        for (int i = 0; i < threadsAmount; i++) {
+            executorService.execute(() -> {
+                ConsoleLog consoleLog = ConsoleLog.getInstance();
+                consoleLogSet.add(consoleLog);
+            });
+        }
+
+        executorService.shutdown();
+        try {
+            if (!executorService.awaitTermination(1, TimeUnit.MINUTES))
+                executorService.shutdownNow();
+        } catch (InterruptedException e) {
+            executorService.shutdownNow();
+        }
+
+        // then
+        assertEquals(1, consoleLogSet.size());
     }
 
     @Override
