@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.73.0"
 }
 
 group 'camp.nextstep.edu'
 version '1.0-SNAPSHOT'
+
 
 repositories {
     mavenCentral()
@@ -12,6 +14,45 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+}
+
+
+task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+    file = file("CHANGELOG.md");
+    prependToFile = false; // false will replace the file, true will prepend content
+    fromRepo = file(".");
+    fromRef = "main";
+    toRef = "rohsik2";
+    templateContent = """
+{{#tags}}
+## {{name}}
+ {{#issues}}
+  {{#hasIssue}}
+   {{#hasLink}}
+### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+   {{/hasLink}}
+   {{^hasLink}}
+### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+   {{/hasLink}}
+  {{/hasIssue}}
+  {{^hasIssue}}
+### {{name}}
+  {{/hasIssue}}
+
+  {{#commits}}
+**{{{messageTitle}}}**
+
+{{#messageBodyItems}}
+ * {{.}}
+{{/messageBodyItems}}
+
+[{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+
+  {{/commits}}
+
+ {{/issues}}
+{{/tags}}
+ """;
 }
 
 java {
