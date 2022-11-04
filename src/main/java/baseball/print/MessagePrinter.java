@@ -18,6 +18,18 @@ public class MessagePrinter {
         System.out.print(INPUT_A_NUMBER_MESSAGE);
     }
 
+    public void printBallCount(int ballCount) {
+        System.out.println(ballCount + BALL);
+    }
+
+    public void printStrikeCount(int strikeCount) {
+        System.out.println(strikeCount + STRIKE);
+    }
+
+    public void printNothing() {
+        System.out.println(NOTHING);
+    }
+
     public void printBallAndStrikeCount(Map<String, Integer> ballAndStrikeCount) {
         Integer ballCount = ballAndStrikeCount.get(BALL_KEY);
         Integer strikeCount = ballAndStrikeCount.get(STRIKE_KEY);
