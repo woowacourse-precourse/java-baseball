@@ -66,4 +66,10 @@ class ApplicationMethodTest {
         int countTrue = Application.countStrike(strikeList);
         assertThat(countTrue).isEqualTo(3);
     }
+
+    @Test
+    void printEndingMessage() {
+        int countStrike = 3;
+        Application.printEndingMessage(countStrike);
+    }
 }
