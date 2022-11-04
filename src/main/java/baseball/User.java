@@ -27,11 +27,13 @@ public class User {
         return false;
     }
 
-    boolean checkType(Object userNumber) {
-        if (userNumber.getClass().getName().equals("java.lang.Integer")) {
+    boolean checkType(String userNumber) {
+        try {
+            Integer.parseInt(userNumber);
             return true;
+        } catch (NumberFormatException e) {
+            errorControl();
         }
-        errorControl();
         return false;
     }
 
