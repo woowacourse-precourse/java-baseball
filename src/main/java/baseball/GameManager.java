@@ -1,17 +1,43 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+
 public class GameManager {
-    private String[] guessNumber;
+    private ArrayList<Integer> guessNumber;
+    private boolean isCorrect;
 
     public boolean startGame() {
+        init();
+        while(!isCorrect) {
 
+            String input = Console.readLine();
+            try {
+                validateInput(input);
+            } catch(Exception e) {
+                exitGame(e);
+                return false;
+            }
+
+            ArrayList<Integer> userGuess = inputToUserGuess(input);
+            String resultString = getResultOfUserGuess(userGuess);
+            System.out.println(resultString);
+
+        }
+        return gameover();
     }
 
     private void init() {
 
     }
 
-    private boolean isValid(String input) {
+    private void makeNewGuessNumber() {
+
+    }
+
+    private void validateInput(String input) {
 
     }
 
@@ -27,19 +53,19 @@ public class GameManager {
 
     }
 
-    private void makeNewGuessNumber() {
+    private ArrayList<Integer> inputToUserGuess(String input) {
 
     }
 
-    private String getResultOfUserGuess(String userGuess) {
+    private String getResultOfUserGuess(ArrayList<Integer> userGuess) {
 
     }
 
-    private int getStrike(String userGuess) {
+    private int getStrike(ArrayList<Integer> userGuess) {
 
     }
 
-    private int getBall(String userGuess) {
+    private int getBall(ArrayList<Integer> userGuess) {
 
     }
 
@@ -47,7 +73,7 @@ public class GameManager {
 
     }
 
-    private void gameover() {
+    private boolean gameover() {
 
     }
 
