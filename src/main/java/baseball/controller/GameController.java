@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.model.number.ComputerNumber;
-import baseball.model.number.HintDto;
-import baseball.model.number.NumberDto;
+import baseball.model.domain.ComputerNumber;
+import baseball.model.domain.HintDto;
+import baseball.model.domain.NumberDto;
 
 import java.util.Arrays;
 

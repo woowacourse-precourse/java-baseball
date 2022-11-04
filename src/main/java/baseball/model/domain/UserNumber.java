@@ -1,4 +1,4 @@
-package baseball.model.number;
+package baseball.model.domain;
 
 import static baseball.model.Utilization.convertStringToIntegerList;
 
