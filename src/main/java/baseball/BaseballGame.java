@@ -26,7 +26,7 @@ public class BaseballGame {
         while (!gameOver) {
             try {
                 List<Integer> usersPick = user.pickNumbers();
-                Map<String, Integer> result = countBallsAndStrikes(computer.getComputersPick(), usersPick);
+                Map<String, Integer> result = countBallsAndStrikes(computer.getNumbers(), usersPick);
                 printResult(result);
                 gameOverIfThreeStrike(result);
 

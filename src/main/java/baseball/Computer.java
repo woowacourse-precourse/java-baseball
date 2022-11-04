@@ -18,7 +18,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getComputersPick() {
+    public List<Integer> getNumbers() {
         if (numbers == null) {
             pickRandomNumbersFrom1To9();
         }

@@ -35,18 +35,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void testComputersPickIsValid(){
+    void testComputersPickIsValid() {
         Computer computer = new Computer();
         List<Integer> picks = new ArrayList<>();
 
-        for (int num: computer.getComputersPick()){
+        for (int num : computer.getComputersPick()) {
             assertThat(picks).doesNotContain(num);
             picks.add(num);
         }
     }
 
     @Test
-    void testThrowExceptionForInvalidUserInput(){
+    void testThrowExceptionForInvalidUserInput() {
         String[] invalidCases = {
                 "1234",
                 "1e34",
@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
                 "112",
         };
         User user = new User();
-        for (String invalidCase: invalidCases){
+        for (String invalidCase : invalidCases) {
             assertThatThrownBy(() -> user.validateInput(invalidCase))
                     .isInstanceOf(IllegalArgumentException.class);
         }
@@ -63,13 +63,13 @@ class ApplicationTest extends NsTest {
     @Test
     void testCountBallsAndStrikes() {
         BaseballGame game = new BaseballGame();
-        List<Integer>[] computers = new List[] {
+        List<Integer>[] computers = new List[]{
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(2, 5, 1),
                 Arrays.asList(7, 9, 6),
                 Arrays.asList(4, 5, 6),
         };
-        List<Integer>[] users = new List[] {
+        List<Integer>[] users = new List[]{
                 Arrays.asList(1, 3, 4), // 1b 1s
                 Arrays.asList(6, 8, 9), // out
                 Arrays.asList(7, 9, 6), // 3s
@@ -81,7 +81,7 @@ class ApplicationTest extends NsTest {
                 {0, 3},
                 {3, 0}
         };
-        for (int i = 0; i < computers.length; i++){
+        for (int i = 0; i < computers.length; i++) {
             Map<String, Integer> result = game.countBallsAndStrikes(computers[i], users[i]);
             int ballCount = result.getOrDefault("볼", 0);
             int strikeCount = result.getOrDefault("스트라이크", 0);
