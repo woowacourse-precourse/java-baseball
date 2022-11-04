@@ -20,4 +20,8 @@ public class Result {
     public void addBall() {
         ball++;
     }
+
+    public void addStrike() {
+        strike++;
+    }
 }
