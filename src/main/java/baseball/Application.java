@@ -36,36 +36,17 @@ public class Application {
             }
 
             System.out.println(makeMessage(ballCount, strikeCount));
-            
+
         } catch (IllegalArgumentException exception) {
 
         }
     }
 
-    public static String makeMessage(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
-            return "낫싱";
-        } else {
-            String ballMessage = makeBallMessage(ballCount);
-            String strikeMessage = makeStrikeMessage(strikeCount);
-
-            if (ballCount == 0)  return strikeMessage;
-            else if (strikeCount == 0) return ballMessage;
-            return ballMessage + " " + strikeMessage;
-        }
-    }
-
-    public static String makeBallMessage(Integer ballCount) {
-        if (ballCount == 0) {
-            return "";
-        } else {
-            return ballCount.toString() + "볼 ";
-        }
-    }
-
-    public static String makeStrikeMessage(Integer strikeCount) {
-        if (strikeCount == 0) return "";
-        else return strikeCount.toString() + "스트라이크";
+    public static String makeMessage(Integer ballCount, Integer strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) return "낫싱";
+        if (ballCount == 0)  return strikeCount.toString() + "스트라이크";
+        if (strikeCount == 0) return ballCount.toString() + "볼";
+        return strikeCount.toString() + "스트라이크" + " " + ballCount.toString() + "볼";
     }
 
     public static void setIsBall(boolean[] isBall, String computerNumber) {
