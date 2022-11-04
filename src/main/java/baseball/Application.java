@@ -19,6 +19,30 @@ public class Application {
         }
     }
 
+    /**
+     * 예외사항
+     * 1. 길이가 3이 아닐 때
+     * 2. 숫자가 1~9가 아닌 것이 들어갔을 때
+     * 3. 중복되는 값이 들어가 있을 때
+     */
+    private static void exception(char[] userNumber) {
+        if (!(isSame(userNumber.length, 3))) {
+            throw new IllegalArgumentException();
+        }
+
+        if ((userNumber[0] - '0' <= 0 || userNumber[0] - '0' > 9)
+                || (userNumber[1] - '0' <= 0 || userNumber[1] - '0' > 9)
+                || (userNumber[2] - '0' <= 0 || userNumber[2] - '0' > 9)) {
+            throw new IllegalArgumentException();
+        }
+
+        if ((isSame(userNumber[0], userNumber[1]))
+                || (isSame(userNumber[1], userNumber[2]))
+                || (isSame(userNumber[0], userNumber[2]))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void baseballGame() {
         // computer List 생성
         List<Integer> computer = getComputerNumber();
@@ -117,10 +141,13 @@ public class Application {
     // 입력받은 숫자를 분리하여 배열에 저장하는 메소드
     private static char[] getSplit() {
         String split = Console.readLine();
+
         char[] userNumber = new char[split.length()];
+
         for (int i = 0; i < split.length(); i++) {
             userNumber[i] = split.charAt(i);
         }
+        exception(userNumber);
         return userNumber;
     }
 
