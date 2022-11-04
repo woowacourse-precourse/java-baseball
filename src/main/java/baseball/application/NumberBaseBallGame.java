@@ -1,36 +1,29 @@
 package baseball.application;
 
-import baseball.model.BaseNumber;
-import baseball.model.InputNumber;
+import baseball.repository.BaseNumberRepository;
+import baseball.model.InputNumbers;
 import baseball.model.Result;
-
-import java.util.ArrayList;
-import java.util.List;
+import baseball.utils.converter.InputNumbersToResultConverter;
+import baseball.utils.converter.StringToInputNumbersConverter;
 
 import static baseball.resources.GameConfig.RESTART;
-import static baseball.utils.GameNumberGenerator.generate;
 import static baseball.utils.InputValidator.validate;
 
 public class NumberBaseBallGame {
-    private BaseNumber baseNumber;
     private boolean isProceeding;
+    private BaseNumberRepository baseNumberRepository;
+    private StringToInputNumbersConverter stringToInputNumbersConverter;
+    private InputNumbersToResultConverter inputNumbersToResultConverter;
 
-    public NumberBaseBallGame(BaseNumber gameNumber) {
-        this.baseNumber = gameNumber;
-        this.isProceeding = true;
+    public NumberBaseBallGame(BaseNumberRepository baseNumberRepository) {
+        this.baseNumberRepository = baseNumberRepository;
+        this.stringToInputNumbersConverter = new StringToInputNumbersConverter();
+        this.inputNumbersToResultConverter = new InputNumbersToResultConverter(baseNumberRepository);
     }
 
-    public void validateInputNumber(String input) {
-        validate(input);
-    }
-
-    public Result result(String input) {
-        String[] inputs = input.split("");
-        List<InputNumber> inputNumber = new ArrayList<>();
-        for (int i = 0; i < inputs.length; i++) {
-            inputNumber.add(new InputNumber(i, Integer.parseInt(inputs[i])));
-        }
-        return new Result(inputNumber, baseNumber);
+    public void start(){
+        isProceeding = true;
+        baseNumberRepository.createBaseNumber();
     }
 
     public boolean isProceeding() {
@@ -44,7 +37,16 @@ public class NumberBaseBallGame {
     public void restart(String restart) {
         if (restart.equals(RESTART)) {
             isProceeding = true;
-            baseNumber = generate();
+            baseNumberRepository.createBaseNumber();
         }
+    }
+
+    public void validateInputNumber(String input) {
+        validate(input);
+    }
+
+    public Result result(String input) {
+        InputNumbers inputNumbers = stringToInputNumbersConverter.convert(input);
+        return inputNumbersToResultConverter.convert(inputNumbers);
     }
 }
