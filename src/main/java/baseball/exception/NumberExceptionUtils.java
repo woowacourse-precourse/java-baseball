@@ -13,4 +13,10 @@ public class NumberExceptionUtils {
             throw new IllegalArgumentException("input must be three digits.");
         }
     }
+
+    public static void isPositiveDigits(String num) {
+        if (Integer.parseInt(num) < 0) {
+            throw new IllegalArgumentException("input must be positive digits.");
+        }
+    }
 }
