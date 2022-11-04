@@ -6,7 +6,7 @@ public class NumberGeneratorSequenceImpl implements NumberGenerator{
     private List<Integer> sequence;
     private Integer cursor = 0;
 
-    NumberGeneratorSequenceImpl(List<Integer> sequence){
+    public NumberGeneratorSequenceImpl(List<Integer> sequence){
         this.sequence = sequence;
     }
 
