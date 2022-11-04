@@ -31,7 +31,31 @@ public class Application {
         checkInputNumberValidation(inputNumber);
 
         Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
+        boolean isGameFinish = resultMessagePrint(inputNumberResult);
+
         return true;
+    }
+
+    public static boolean resultMessagePrint(Map<String, Integer> inputNumberResult) {
+
+        int strikeNumber = inputNumberResult.get("strike");
+        int ballNumber = inputNumberResult.get("ball");
+        boolean gameResult = true;
+
+        if (strikeNumber == 0 && ballNumber == 0) {
+            System.out.println("낫싱");
+        } else if (strikeNumber == 3) {
+            System.out.println("3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameResult = false;
+        } else if (strikeNumber > 0 && ballNumber == 0) {
+            System.out.println(strikeNumber + "스트라이크");
+        } else if (strikeNumber == 0 && ballNumber > 0) {
+            System.out.println(ballNumber + "볼");
+        } else if (strikeNumber > 0 && ballNumber > 0) {
+            System.out.println(ballNumber + "볼 " + strikeNumber + "스트라이크");
+        }
+
+        return gameResult;
     }
 
     public static Map<String, Integer> analyzeInputNumber(String inputNumber, String number) {
