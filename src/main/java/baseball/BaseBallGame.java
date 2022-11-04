@@ -18,6 +18,7 @@ public class BaseBallGame {
 
     private void play() {
         String userGuess = inputUserGuess();
+        GuessChecker.check(userGuess);
     }
 
     private void init() {
