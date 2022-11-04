@@ -15,7 +15,12 @@ public class BaseballGame {
 
     }
 
-    public boolean endGame(){
-
+    private boolean endGame(){
+        return true;
     }
+
+    private String getUserInput(){
+        return View.getUserInput();
+    }
+
 }
