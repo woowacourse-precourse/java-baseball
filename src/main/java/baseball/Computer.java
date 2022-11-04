@@ -32,4 +32,8 @@ public class Computer {
     public int getNumber(int index) {
         return numbers.get(index);
     }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }
