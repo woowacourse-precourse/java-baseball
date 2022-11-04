@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 숫자 야구 게임에 쓰이는 메소드들을 정의한 클래스입니다.
+ * 숫자 야구 게임에 쓰이는 메소드들을 정의한 클래스
  *
  * 1. 1부터 9까지 서로 다른 임의의 수 3개로 이루어진 '정답지'를 만들기
  * 2. 사용자의 답안이 맞는지 검증하는 로직 구현
@@ -18,7 +18,7 @@ public class NumberBaseball {
     /** 각각의 인스턴스를 구분할 수 있는 정보인 '정답'에 해당하는 리스트를 멤버로 갖도록 디자인했습니다. */
     private List<Integer> answer = new ArrayList<>();
 
-    /** 생성자를 통해 랜덤한 1~9의 각기 다른 숫자 3개로 이루어진 리스트를 생성하도록 만들었습니다. */
+    /** 생성자를 통해 랜덤한 1~9의 서로 다른 숫자 3개로 이루어진 리스트를 생성하도록 만들었습니다. */
     public NumberBaseball() {
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -38,7 +38,7 @@ public class NumberBaseball {
     }
 
     /**
-     * 사용자의 답 중 정답과 값이 같은 숫자의 개수를 반환해주는 메소드입니다.
+     * 사용자의 답 중 정답과 값이 같은 숫자의 개수를 반환해주는 메소드
      *
      * @param userAnswer -> 사용자가 입력한 답
      * @return containCount -> 정답과 값이 같은 숫자의 개수
@@ -58,7 +58,7 @@ public class NumberBaseball {
     }
 
     /**
-     * 사용자의 답 중 정답과 위치와 값이 모두 같은 숫자의 개수를 반환해주는 메소드입니다.
+     * 사용자의 답 중 정답과 위치와 값이 모두 같은 숫자의 개수를 반환해주는 메소드
      *
      * @param userAnswer -> 사용자가 입력한 답
      * @return strikeCount -> 정답과 위치와 값이 모두 같은 숫자의 개수
@@ -140,9 +140,6 @@ public class NumberBaseball {
      * 사용자로부터 잘못된 input이 전달되었을 때 IllegalArgumentException을 던집니다.
      */
     public void startGame() throws IllegalArgumentException {
-        System.out.println("(테스트용)숫자 야구 게임을 시작합니다.");
-        System.out.println("정답 -> " + getAnswer().get(0).toString() + getAnswer().get(1).toString() + getAnswer().get(2).toString());    /** 이 부분은 추후에 제거해야 함*/
-
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = validateInput();    // validateInput을 통해 사용자의 input을 검증
@@ -178,7 +175,7 @@ public class NumberBaseball {
     /**
      * 사용자의 숫자 입력에 대한 예외를 처리하는 메소드
      *
-     * 서로 다른 세자리 숫자가 아닌 input은 모두 예외로 처리해야 함
+     * 서로 다른 세자리 숫자가 아닌 input은 모두 예외로 처리해야 합니다.
      * 1. 입력 받은 문자열의 길이가 3인지 확인
      * 2. 각 자리가 모두 숫자(1~9)인지 확인
      * 3. 각 자리의 숫자가 서로 다른 숫자인지 확인
@@ -202,7 +199,7 @@ public class NumberBaseball {
     /**
      * 각 자리가 모두 1~9의 숫자인지 확인하는 메소드
      *
-     * @param userAnswer
+     * @param userAnswer -> 사용자가 입력한 답
      * @return  true or false
      */
     public boolean isNumber(String userAnswer) {
@@ -217,9 +214,9 @@ public class NumberBaseball {
     }
 
     /**
-     * 각 자리의 숫자가 서로 다른 숫자인지 확인
+     * 각 자리의 숫자가 서로 다른 숫자인지 확인하는 메소드
      *
-     * @param userAnswer
+     * @param userAnswer -> 사용자가 입력한 답
      * @return true or false
      */
     public boolean isDiffNumber(String userAnswer) {
