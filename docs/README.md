@@ -122,15 +122,8 @@
    - 무작위로 상대방의 숫자를 설정하며, camp.nextstep.edu.missionutils`에서 제공하는 `Randoms를 이용한다.
    - 숫자는 List를 통해 관리한다.
    - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수가 아니라면, 계속해서 다른 수로 초기화한다.
-
-
-
-2. 사용자에게서 숫자를 입력받는다.
-   - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.(게임이 종료되는 게 아니라, 어플리케이션이 완전히 종료되는 것으로 해석했다.)
    
-   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-   
-   - #### 사용 예시
+   - #### camp.nextstep.edu.missionutils 에서 제공하는 Randoms 사용 예시
    
      ```java
      List<Integer> computer = new ArrayList<>();
@@ -141,6 +134,19 @@
          }
      }
      ```
+
+
+
+
+
+2. 사용자에게서 숫자를 입력받는다.
+   
+   - (1) Console의 readline()을 활용하여 사용자에게 String으로 입력받는다.
+   
+   - (2) 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.(게임이 종료되는 게 아니라, 어플리케이션이 완전히 종료되는 것으로 해석했다.)
+   - (3) 사용자가 올바른 값을 입력했다면, 입력한 숫자에 따른 Ball Count를 출력한다.
+
+
 
 
 
