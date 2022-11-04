@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Utils.ExceptionType;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ValidationNumber {
     private void checkIsNumberAndNotHaveZero(String number) {
         String numberRegex = "^[1-9]*$";
         if (!number.matches(numberRegex)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionType.NOT_NUMBER_OR_HAVE_ZERO.getMessage());
         }
     }
 
@@ -41,13 +42,13 @@ public class ValidationNumber {
         HashSet<Integer> numberSet = new HashSet<>(number);
 
         if (numberSet.size() != size) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionType.NOT_OVERLAP.getMessage());
         }
     }
 
     private void checkNumberSize(List<Integer> number, int size) {
         if (number.size() != size) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionType.INVALID_NUMBER_RANGE.getMessage());
         }
     }
 
@@ -55,7 +56,7 @@ public class ValidationNumber {
         String endOrRestartRegex = "^[1-2]$";
 
         if (!number.matches(endOrRestartRegex)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionType.INVALID_NUMBER_END_OR_RESTART.getMessage());
         }
     }
 }
