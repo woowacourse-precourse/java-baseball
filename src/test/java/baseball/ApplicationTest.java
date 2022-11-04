@@ -71,6 +71,24 @@ class ApplicationTest extends NsTest {
         }
     }
 
+
+    @Test
+    void restartGame1() {
+        int num = 2;
+        assertThat(Application.breakExceptionHandler(num)).isEqualTo(num);
+    }
+
+    @Test
+    void restartGame12() {
+        int num = 3;
+        if (!(num == 1 || num ==2)) {
+            assertThatThrownBy(() -> Application.breakExceptionHandler(num))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력해야 합니다.");
+        }
+    }
+
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
