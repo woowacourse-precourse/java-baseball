@@ -32,16 +32,6 @@ public class GameContext {
         state = GameState.RUNNING;
     }
 
-    public String getRandomNumber() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < ANSWER_LENGTH)
-            addDistinctRandomNumber(numbers);
-
-        return numbers.stream().map(Object::toString)
-                .collect(Collectors.joining());
-    }
-
     public void addDistinctRandomNumber(List<Integer> numbers) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -82,6 +72,16 @@ public class GameContext {
                 handleUserInput();
                 break;
         }
+    }
+
+    private String getRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
+
+        while (numbers.size() < ANSWER_LENGTH)
+            addDistinctRandomNumber(numbers);
+
+        return numbers.stream().map(Object::toString)
+                .collect(Collectors.joining());
     }
 
     private boolean isValidityInput(String userInput) {
