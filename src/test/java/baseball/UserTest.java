@@ -78,5 +78,14 @@ class UserTest {
         assertThat(strike).isEqualTo(1);
     }
 
+    @Test
+    void checkBallTest() {
+        List<Integer> computerList = Arrays.asList(1, 2, 7);
+        List<Integer> userList = Arrays.asList(7, 7, 7);
+        int strike = user.checkStrike(computerList, userList);
+        int ball = user.checkBall(computerList, userList, strike);
+        assertThat(ball).isEqualTo(2);
+    }
+
 
 }
