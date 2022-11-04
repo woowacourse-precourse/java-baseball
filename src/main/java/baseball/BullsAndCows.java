@@ -63,7 +63,38 @@ public class BullsAndCows {
     }
 
     private void printHint(String predictInput) {
-        // 볼, 스트라이크, 낫싱
+        int strike = 0;
+        int ball = 0;
+        boolean isNothing = false;
+
+        // 스트라이크 & 볼의 개수 세기
+        for (int i = 0; i < predictInput.length(); i++) {
+            char number = predictInput.charAt(i);
+            int answerIdxOfNumber = answer.indexOf(number);
+
+            if (answerIdxOfNumber == i) {
+                strike++;
+            } else if (answerIdxOfNumber != -1) {
+                ball++;
+            }
+        }
+
+        // 스트라이크와 볼의 개수가 전부 0이라면 낫싱
+        if (strike == 0 && ball == 0) {
+            isNothing = true;
+        }
+
+        // 출력
+        if (isNothing) {
+            System.out.println("낫싱");
+        }
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        System.out.println();
     }
 
 }
