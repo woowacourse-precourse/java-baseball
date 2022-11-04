@@ -15,7 +15,7 @@
 
 Argument: void
 
-Return: 1부터 9까지 정수 원소를 3개 갖는 List
+Return: String(3자리 수)
 
 <br/>
 
@@ -96,7 +96,7 @@ Return: String(사용자가 입력한 수)
 
 <br/>
 
-## (6). getStrikeCount(int userNum, int randomNum)
+## (6). getStrikeCount(String userNum, String randomNum)
 
 1. **기능**
 
@@ -114,7 +114,7 @@ Return: 스트라이크의 개수
 
 <br/>
 
-## (7). getBallCount(int userNum, int randomNum)
+## (7). getBallCount(String userNum, String randomNum)
 
 1. **기능**
 
@@ -203,3 +203,21 @@ Return: Boolean
 Argument: String
 
 Return: Boolean
+
+<br/>
+
+## (12). printInputMessage()
+
+1. **기능**
+
+- `숫자를 입력해주세요 : ` 출력
+
+2. **제한 사항**
+
+- 없음
+
+3. **Argument and Return**
+
+Argument: void
+
+Return: void
