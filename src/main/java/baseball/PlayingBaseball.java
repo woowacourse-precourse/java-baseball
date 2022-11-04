@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PlayingBaseball {
-    private final String numberOfComputer = new String();
-    private final String numberOfPlayer = new String();
+    private final String numberOfComputer;
+    private final String numberOfPlayer;
     private int strike = 0;
     private int ball = 0;
     private List indexOfStrike = new ArrayList<String>();
@@ -14,6 +14,8 @@ class PlayingBaseball {
         this.numberOfComputer = numberComputer;
         this.numberOfPlayer = numberPlayer;
     }
+
+
 
 
 
