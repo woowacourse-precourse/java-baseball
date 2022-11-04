@@ -3,42 +3,55 @@ package baseball.domain;
 import java.util.List;
 
 public class ScoreBoard {
-    private static int ball;
-    private static int strike;
+    private int ball;
+    private int strike;
+    private String result;
 
-    public static String judge(List<Integer> computerBalls, List<Integer> myBallNumbers) {
+    public ScoreBoard(List<Integer> myBallNumbers) {
+        List<Integer> computerBalls = RandomBall.computerBalls;
         for (int number : myBallNumbers) {
             if (computerBalls.contains(number)) {
-                ball++;
+                this.ball++;
             }
 
             if (checkStrike(computerBalls, myBallNumbers, number)) {
-                ball--;
-                strike++;
+                this.ball--;
+                this.strike++;
             }
         }
-
-        String scoreResult = printScoreBoard();
-        return scoreResult;
+        printScoreBoard();
     }
 
-    private static String printScoreBoard() {
-        if (ball == 0 && strike == 0) {
-            return "낫싱";
+    private void printScoreBoard() {
+        if (this.ball == 0 && this.strike == 0) {
+            this.result = "낫싱";
         }
 
-        if (ball == 0 && strike != 0) {
-            return strike + "스트라이크";
+        if (this.ball == 0 && this.strike != 0) {
+            this.result = this.strike + "스트라이크";
         }
 
-        if (ball != 0 && strike == 0) {
-            return ball + "볼";
+        if (this.ball != 0 && this.strike == 0) {
+            this.result = this.ball + "볼";
         }
 
-        return ball + "볼 " + strike + "스트라이크";
+        if (this.ball != 0 && this.strike != 0) {
+            this.result = this.ball + "볼 " + this.strike + "스트라이크";
+        }
     }
 
     private static boolean checkStrike(List<Integer> computerBalls, List<Integer> myBallNumbers, int number) {
         return myBallNumbers.indexOf(number) == computerBalls.indexOf(number);
+    }
+
+    public void checkWin() {
+        if (this.strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            GameStart.askRestartGame();
+        }
+    }
+
+    public void printResult() {
+        System.out.println(this.result);
     }
 }

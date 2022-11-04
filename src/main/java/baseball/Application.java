@@ -1,20 +1,23 @@
 package baseball;
 
-import baseball.domain.MyBalls;
-import baseball.domain.RandomBall;
-import baseball.domain.ScoreBoard;
+import baseball.domain.*;
 
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        RandomBall randomBall = new RandomBall();
-        List<Integer> computerBalls = randomBall.makeRandomBalls();
-        System.out.println(computerBalls);
+        GameStart.gameStart();
+        RandomBall.makeRandomBalls();
 
+        InputNumber inputNumber = new InputNumber();
         MyBalls myBalls = new MyBalls();
-        List<Integer> myBallNumbers = myBalls.inputBalls();
-        String scoreResult = ScoreBoard.judge(computerBalls, myBallNumbers);
-        System.out.println(scoreResult);
+
+        List<Integer> myBallNumbers;
+        while (!GameStart.isWin) {
+            myBallNumbers = myBalls.inputBalls(inputNumber.getNumbers());
+            ScoreBoard scoreBoard = new ScoreBoard(myBallNumbers);
+            scoreBoard.printResult();
+            scoreBoard.checkWin();
+        }
     }
 }
