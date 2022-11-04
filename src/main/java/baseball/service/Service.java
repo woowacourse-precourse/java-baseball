@@ -43,7 +43,8 @@ public class Service {
         game.initializeResultMap();
         List<Integer> userAnswer = Converter.toIntegerList(userInput);
         Map<String, Integer> result = game.getResult(userAnswer);
-        SystemMessage.printGameResult(result);
+        String resultMessage = Converter.changeResultMapToString(result);
+        SystemMessage.printGameResult(resultMessage);
 
         return result.get("strike") == 3;
     }

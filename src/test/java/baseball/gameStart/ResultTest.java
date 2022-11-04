@@ -47,7 +47,8 @@ public class ResultTest {
         List<Integer> userAnswer = Converter.toIntegerList(input);
         game.initializeResultMap();
         Map<String, Integer> result = game.getResult(userAnswer);
-        SystemMessage.printGameResult(result);
+        String resultMessage = Converter.changeResultMapToString(result);
+        SystemMessage.printGameResult(resultMessage);
         Assertions.assertThat(resultList).contains(output());
     }
 }
