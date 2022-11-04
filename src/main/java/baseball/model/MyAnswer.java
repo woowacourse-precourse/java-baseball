@@ -6,8 +6,7 @@ import java.util.List;
 public class MyAnswer {
     private List<Integer> answer;
 
-    public MyAnswer(int number) {
-        setAnswer(number);
+    public MyAnswer() {
     }
 
     public List<Integer> getAnswer() {
