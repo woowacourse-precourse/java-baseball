@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    @Test
+/*    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -26,6 +26,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }*/
+
+    @Test
+    void 서로다른_3자리_숫자_생성_테스트() {
+        String test = Application.createThreeDigitNumber();
+        assertThat(test.length()).isEqualTo(3);
+        assertThat(test.charAt(0)).isNotEqualTo(test.charAt(1)).isNotEqualTo(test.charAt(2));
+        assertThat(test.charAt(1)).isNotEqualTo(test.charAt(2));
     }
 
     @Override
