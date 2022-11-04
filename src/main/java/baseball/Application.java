@@ -153,4 +153,9 @@ public class Application {
 
         return result;
     }
+
+    private static int PlayAgain() {
+        String playerString = Console.readLine();
+        return Integer.parseInt(playerString);
+    }
 }
