@@ -43,4 +43,11 @@ public class BallNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
+    
+    @Override
+    public String toString() {
+        return "BallNumber{" +
+                "number=" + number +
+                '}';
+    }
 }

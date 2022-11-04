@@ -34,4 +34,11 @@ public class BaseBallGame {
         
         return referee;
     }
+    
+    @Override
+    public String toString() {
+        return "BaseBallGame{" +
+                "computerBalls=" + computerBalls +
+                '}';
+    }
 }

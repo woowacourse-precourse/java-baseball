@@ -36,4 +36,12 @@ public class Referee {
     public boolean isEnd() {
         return strike.isGameEnd();
     }
+    
+    @Override
+    public String toString() {
+        return "Referee{" +
+                "strike=" + strike +
+                ", ball=" + ball +
+                '}';
+    }
 }

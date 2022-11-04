@@ -61,4 +61,11 @@ public class Balls {
                 .findAny()
                 .orElse(BallStatus.NOTHING);
     }
+    
+    @Override
+    public String toString() {
+        return "Balls{" +
+                "balls=" + balls +
+                '}';
+    }
 }

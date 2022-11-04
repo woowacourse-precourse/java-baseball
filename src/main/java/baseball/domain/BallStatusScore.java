@@ -20,4 +20,11 @@ public class BallStatusScore {
     public boolean isGameEnd() {
         return score == STRIKE_COUNT_OF_GAME_END_CONDITIONS;
     }
+    
+    @Override
+    public String toString() {
+        return "BallStatusScore{" +
+                "score=" + score +
+                '}';
+    }
 }
