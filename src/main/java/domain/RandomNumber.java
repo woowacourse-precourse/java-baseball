@@ -31,11 +31,11 @@ public class RandomNumber {
         this.computer_numbers = convertSetToArray(random_number_set);
     }
 
-    public int[] convertSetToArray(Set<Integer> set){
+    private int[] convertSetToArray(Set<Integer> set){
         return set.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    public int getRandomNumber(){
+    private int getRandomNumber(){
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 }
