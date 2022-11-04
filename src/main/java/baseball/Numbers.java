@@ -1,9 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers {
+
+    private static final int NUMBERS_SIZE = 3;
+
     private final List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
@@ -11,7 +15,14 @@ public class Numbers {
     }
 
     public static Numbers createRandomNumbers() {
-        return new Numbers(new ArrayList<>());
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < NUMBERS_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+        return new Numbers(randomNumbers);
     }
 
     public List<Integer> getNumbers() {
