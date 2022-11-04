@@ -40,4 +40,11 @@ public class Ball {
     private boolean isSameNumber(Ball otherBall) {
         return this.number == otherBall.number;
     }
+
+    public BallStatus play(Ball otherBall) {
+        if (isStrike(otherBall)) {
+            return BallStatus.STRIKE;
+        }
+        return null;
+    }
 }

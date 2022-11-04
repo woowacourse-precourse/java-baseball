@@ -2,7 +2,8 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BallTest {
 
@@ -39,5 +40,12 @@ public class BallTest {
         assertThatThrownBy(() -> new Ball(1, 10))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("볼의 숫자는 1~9까지만 가능합니다.");
+    }
+
+    @Test
+    void 두개의_볼_비교하여_스트라이크_반환() {
+        Ball ball = new Ball(1, 2);
+        Ball otherBall = new Ball(1, 2);
+        assertThat(ball.play(otherBall)).isEqualTo(BallStatus.STRIKE);
     }
 }
