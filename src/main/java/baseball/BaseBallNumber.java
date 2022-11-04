@@ -6,8 +6,7 @@ import java.util.Set;
 
 public class BaseBallNumber {
 
-  public static final int GAME_NUMBER_SIZE = 3;
-
+  private static final int GAME_NUMBER_SIZE = 3;
   private static List<Character> numbers;
 
   public BaseBallNumber(List<Character> numbers) {
@@ -27,5 +26,14 @@ public class BaseBallNumber {
     if (number.size() != numbers.size()) {
       throw new IllegalArgumentException("Baseball number has duplicate number.");
     }
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder build = new StringBuilder();
+    for (Character character : numbers) {
+      build.append(character);
+    }
+    return (build.toString());
   }
 }
