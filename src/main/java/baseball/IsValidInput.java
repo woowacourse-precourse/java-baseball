@@ -16,13 +16,14 @@ public class IsValidInput {
     }
 
     boolean IsValidLength() {
-        return ((playing) && (input.length() == PLAYING_NUMBERS_LENGTH)) || ((! playing) && (input.length()==END_GAME_INPUT_LENGTH));
+        return ((playing) && (input.length() == PLAYING_NUMBERS_LENGTH));
+    }
+
+    boolean IsValidRestartOrEndGame() {
+        return input.equals("1") || input.equals("2");
     }
 
     boolean IsValidValue() {
-        if (! playing) {
-            return input.equals("1") || input.equals("2");
-        }
         HashSet<String> validNumber = ValidNumber();
         HashSet<String> inputSet = StringToSet();
         inputSet.retainAll(validNumber);
