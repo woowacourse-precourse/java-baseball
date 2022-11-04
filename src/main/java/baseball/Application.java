@@ -1,10 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -41,5 +39,14 @@ public class Application {
             result[i] = userInput.charAt(i) - '0';
         }
         return result;
+    }
+
+    public static int countStrike(Integer[] realAnswer, Integer[] userAnswer){
+        int cnt = 0;
+        for(int i= 0; i<3; i++){
+            if(realAnswer[i].equals(userAnswer[i]))
+                cnt++;
+        }
+        return cnt;
     }
 }
