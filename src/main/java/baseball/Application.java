@@ -110,7 +110,8 @@ public class Application {
             finishAnnounce();
             String oneOrTwo = Console.readLine();
             caseOfAllStrike(oneOrTwo);
-        } else {
+        }
+        if (ballAndStrikeNumber.get(1) < 3) {
             caseOfAllBallAndStrike(ballAndStrikeNumber);
             repeatGameUntilSuccess(randomNumber);
         }
