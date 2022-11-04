@@ -158,7 +158,7 @@ while (computer.size() < 3) {
 ## 📋 구현 대상
 ### - 클래스 다이어그램
 
-<img src="docs/img/class3.png">
+<img src="docs/img/class4.png">
 
 ### - 기능 목록 정리
 
@@ -174,7 +174,7 @@ while (computer.size() < 3) {
     1. 예외처리 및 각종 출력을 위한 메세지를 저장하는 기능
        <br> <br>
 - OutputMsgGenerator 클래스
-    1. 정수 값을 입력받고, 해당 케이스에 맞는 메세지를 반환하는 기능
+    1. 해당 케이스에 맞는 메세지를 반환하는 기능
        <br> <br>
 - OutputHandler 클래스
     1. 입력받은 정수에 맞는 메세지를 출력하는 기능
@@ -190,15 +190,25 @@ while (computer.size() < 3) {
     1. 숫자를 입력받는 기능
     2. 입력받은 숫자를 정수형으로 변경하는 기능
        <br> <br>
-- ScoreManager 클래스
-    1. BaseballNumber 객체 두 개를 멤버변수로 가짐 
+- Score 클래스
+    1. 유저의 최종 점수를 저장하는 기능
     2. 유저의 최종 점수를 반환하는 기능 
-    3. BaseballNumber 객체를 초기화하는 기능
+    <br> <br>
+- BaseballManager 클래스
+    1. BaseballNumber 객체를 두 개, ScoreManager 한개를 멤버변수로 가짐
+    2. BaseballNumber 객체를 초기화하는 기능
+    3. 유저의 최종 점수를 반환하는 기능
+    4. 유저의 최종 점수를 계산하는 기능 
+    <br> <br>
+- ScoreManager 클래스
+    1. Score 객체 한개를 멤버변수로 가짐
+    2. 유저의 최종 점수를 계산해 Score 객체에 입력하는 기능 
+    3. 유저의 최종 점수를 반환하는 기능 
    <br> <br>
 - ScoreCalculator 클래스
     1. 두 BaseballNumber 객체에서 같은 자리수, 같은 숫자 개수를 반환하는 기능
     2. 두 BaseballNumber 객체에서 다른 자리수, 같은 숫자 개수를 반환하는 기능 
-    3. 1번, 2번을 조합해 최종 점수를 계산하는 기능
+    3. 1번, 2번 기능을 조합해 유저의 최종 점수를 계산하는 기능
         <br> <br>
 - BaseballNumber 클래스
     1. List 자료구조로 내부 구현
