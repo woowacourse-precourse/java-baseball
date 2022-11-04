@@ -24,7 +24,7 @@ public class InputUtil {
         for (int i = 0; i < numbers.length(); i++) {
             checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
-            checkValidNumber(number);
+            checkValidNumber(number,MIN_NUM,MAX_NUM);
             checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }
@@ -43,8 +43,8 @@ public class InputUtil {
         }
     }
 
-    public void checkValidNumber(int number) {
-        if (number < MIN_NUM || number > MAX_NUM) {
+    public void checkValidNumber(int number,int minNumber,int maxNumber) {
+        if (number < minNumber || number > maxNumber) {
             throw new IllegalArgumentException(Constant.VALID_NUMBER_EXCEPTION.getConstant());
         }
     }
