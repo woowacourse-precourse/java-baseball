@@ -51,7 +51,6 @@
 - [x] printHint() 테스트 추가
 - [x] getResult() 테스트 추가
 - [x] readInputForGame() 테스트 추가
-- [ ] readInputForGame() 예외처리 테스트 추가
 - [x] readIsQuit() 테스트 추가
-- [ ] readIsQuit() 예외처리 테스트 추가
 - [x] generateRandomValue() 테스트 추가
+- [ ] 사용자 입력 테스트 추가
