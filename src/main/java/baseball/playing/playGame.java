@@ -22,6 +22,10 @@ public class playGame {
         computerNumber = computer.getComputerNumbers();
     }
 
+    public void playingGame() {
+
+    }
+
     private List<Integer> stringToList(String number) {
         List<Integer> numbers = new ArrayList<>();
         for (char num : number.toCharArray()) {
@@ -79,6 +83,7 @@ public class playGame {
 
     private String inputUserNumbers() {
 
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         User user = new User(inputNumber);
 
