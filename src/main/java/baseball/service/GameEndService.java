@@ -25,7 +25,7 @@ public class GameEndService {
 
 	private void printSuccessResult() {
 		outputView.printSuccess();
-		inputView.printRestartGame();
+		inputView.printGameRestart();
 	}
 
 	private boolean is3Strike(UserBall userBall) {

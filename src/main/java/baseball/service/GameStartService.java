@@ -16,12 +16,12 @@ public class GameStartService {
 
 	public List<Integer> initGame() {
 		List<Integer> answer = makeAnswerNumber();
-		printStartGame();
+		printGameStart();
 		return answer;
 	}
 
-	private void printStartGame() {
-		inputView.printStartGame();
+	private void printGameStart() {
+		inputView.printGameStart();
 	}
 
 	private List<Integer> makeAnswerNumber() {
