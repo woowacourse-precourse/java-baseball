@@ -9,7 +9,7 @@ public class GameResult {
         this.strike = strike;
     }
 
-    public boolean playerWin() {
+    public boolean isAllStrike() {
         return (strike == 3);
     }
 

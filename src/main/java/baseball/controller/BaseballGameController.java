@@ -9,15 +9,19 @@ public class BaseballGameController {
 
     private final BaseballGameService baseballGameService = new BaseballGameService();
 
-    public void startGame() {
+    public void run() {
         GameScreen.printGameStart();
-        baseballGameService.newGame();
+        startGame();
     }
 
-    public void run() {
-        startGame();
-
-        while (!playGame()) {}
+    public void startGame() {
+        baseballGameService.newGame();
+        boolean isGameClear = false;
+        while (!isGameClear) {
+            isGameClear = playGame();
+        }
+        GameScreen.printGameEnd();
+        askRetryGame();
     }
 
     public boolean playGame() {
@@ -26,7 +30,11 @@ public class BaseballGameController {
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         GameScreen.printGameResult(gameResult);
 
-        return gameResult.playerWin();
+        return gameResult.isAllStrike();
     }
 
+    private void askRetryGame() {
+        GameScreen.printAskNewGame();
+        String playerInputKey = Console.readLine();
+    }
 }
