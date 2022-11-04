@@ -8,7 +8,6 @@
     - 게임이 성공적으로 종료된 경우(숫자를 맞춘 경우)
     - 게임이 비정상적으로 종료된 경우(에러가 발생한 경우)
 
-  
 ### 게임 진행 관련
 #### 게임 시작 전
       - 랜덤한 타깃 숫자 생성하기
@@ -22,19 +21,51 @@
       - 게임을 다시 진행할 지 묻고, 종료 or 재실행하기
 ---
 
-# 도메인 정의 및 기능 체계화
+# 기능 구현에 필요한 인터페이스 정의 및 기능 체계화
 
-## NumberForBaseballGame
-### 게임에 사용되는 숫자의 검증과 비교 기능을 제공
-#### 숫자 생성 간 유효성 검증 기능 (validateNumberFollowsRule)
-    - 입력 값은 숫자로만 구성되어야 한다 (checkNumberOnlyConsistOfDigits)   
-    - 입력은 세자리 숫자로 이루어져야 한다 (checkNumberConsistOfThreeDigits)  
-    - 각 자리의 숫자는 범위 내의 값을(1 ~ 9 사이) 가져야 한다 (checkEachDigitOfNumberInRange)
+## NumberForGame
+### 게임에 사용되는 숫자의 검증과 비교 기능을 제공하는 인터페이스
+    - 주어진 숫자가 유효한지 검증하는 기능(validateNumber)
+    - 숫자 객체가 동일한지 비교하는 기능(getCompareResult)
 
-#### 숫자간 비교 결과 반환 기능 (getNumberCompareResult)
-    - 타깃 숫자와 동일한 숫자가 존재하는 경우
-    - 위치가 동일하다면, 스트라이크 하나로 친다
-    - 위치가 다르다면, 볼 하나로 친다
+## NumberGroupForGame
+### 게임에 사용되는 숫자"들"의 검증과 비교 기능을 제공하는 인터페이스
+    - 주어진 숫자들이 유효한지 검증하는 기능(validateNumberGroup)
+    - 두 숫자 객체가 동일한지 비교해, 규칙에 따른 결과를 반환하는 기능(getCompareResult)
+
+## InputReaderForGame
+### 설정한 InputStream 으로부터 값을 받아오는 인터페이스
+    - 숫자"들"을 받아오는 기능(readNumberGroup)
+    - 게임 지속 여부를 받아오는 기능(readIntentionOfContinuingGame)
+
+## OutputPrinterForGame
+### 시스템으로부터 받은 값을 출력하는 인터페이스
+    - 설정된 OutputStream으로 전달된 값을 출력 
+
+## Game
+### 한번의 게임 실행을 담당하는 인터페이스
+    - 게임을 시작하는 기능(run)
+
+## GameApplication
+### 전체 게임 운영을 담당하는 인터페이스
+    - 전체 게임 시스템을 운영하는 기능(execute)
+
+## CompareResult -> 규칙이 변화하더라도, 데이터를 전달하는 형태는 크게 변하지 않을것으로 예상(Map)
+### NumberGroup 간의 비교 결과를 담고있는 컨테이너 클래스
+    - 비교 결과를 문자열 형태로 바꾸어주는 기능(toString)
+
+## IntentionOfContinuingGame
+### 게임을 계속 진행할지 여부를 저장하는 enum 객체
+    - (CONTINUE / STOP)을 요소로 가짐
+    - 사용자가 게임을 계속하기를 원하는지 확인하는 메서드(yes)
+    - 사용자가 게임을 그만두기를 원하는지 확인하는 메서드(no)
+
+## BaseballGameConfiguration
+### Baseball 게임에 사용되는 객체들의 의존성 주입을 담당하는 객체
+
+---
+
+# 인터페이스 구현 클래스 목록
 
 ## NumberCompareResult
 ### 숫자의 비교 결과와 관련된 출력 / 일치 여부를 반환하는 기능을 제공
@@ -67,12 +98,40 @@
     - 일치하는 경우, 종료 멘트 출력 후 게임 종료
     - 일치하지 않는 경우, 형식에 맞게 결과 출력 후 입력받기
 
-## InputReader
-### 사용자 입력을 받아 반환하는 인터페이스 기능을 제공
-#### 사용자 입력을 문자열 형태로 반환하기(getUserInput)
-    - camp.nextstep.edu.missionutils.Console의 readline()을 사용한다
+
+## MissionInputReader
+### InputReader 인터페이스 구현체
+    - camp.nextstep.edu.missionutils.Console.readline() 메서드를 이용해 getUserInput을 구현
+
+## TestInputReader
+### InputReader 인터페이스 구현체
+    - 원활한 테스트를 위해 static 메서드 & 실제 입력이 필요한 Console.readline()를 대체하기 위한 목적으로 사용
+    - List<String>을 입력받아 readline() 수행 시 하나씩 반환
 
 ## RandomNumberGenerator
-### 무작위 난수를 제공하는 인터페이스 기능을 제공
+### 무작위 난수를 제공하는 인터페이스
 #### 3자리 무작위 난수를 생성해 반환(generateRandomNumber)
-    - camp.nextstep.edu.missionutils.Randoms무작위로 생성된 3자리 난수를 반환
+
+## MissionInputReader
+### InputReader 인터페이스 구현체
+    - camp.nextstep.edu.missionutils.Randoms를 통해 무작위로 생성된 3자리 난수를 반환
+
+## TestInputReader
+### InputReader 인터페이스 구현체
+    - 원활한 테스트를 위해 static 메서드인 Randoms.()를 대체하기 위한 목적으로 사용
+    - List<String>을 입력받아 readline() 수행 시 하나씩 반환
+
+# 인터페이스 구현 클래스 목록
+
+## NumberForBaseballGame(Implementation)
+### 게임에 사용되는 숫자의 검증과 비교 기능을 제공하는 인터페이스
+#### 숫자 생성 간 유효성 검증 기능 (validateNumberFollowsRule)
+#### 숫자 간 일치 여부 반환(equals)
+    - 두 숫자가 일치하는 경우 true, 그 외에는 false를 반환한다.
+
+## NumberGroupForBaseballGame
+### 게임에 사용되는 숫자의 검증과 비교 기능을 제공
+#### 숫자 생성 간 유효성 검증 기능 (validateNumberFollowsRule)
+    - 입력 값은 숫자로만 구성되어야 한다 (checkNumberOnlyConsistOfDigits)   
+    - 입력은 세자리 숫자로 이루어져야 한다 (checkNumberConsistOfThreeDigits)
+
