@@ -15,7 +15,7 @@ public class AnswerCompareManager {
 
             if(answerStr.charAt(idx) == digit)
                 strikeNum++;
-            else if(answerStr.contains(String.valueOf(input)))
+            else if(answerStr.contains(String.valueOf(digitStr)))
                 ballNum++;
         }
 
