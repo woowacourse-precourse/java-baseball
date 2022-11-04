@@ -56,6 +56,17 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("1볼 1스트라이크", "2볼","낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    @Test
+    void 게임종료(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "1", "589", "2");
+                    assertThat(output()).contains("3스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
