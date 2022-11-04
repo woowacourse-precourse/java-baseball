@@ -20,4 +20,12 @@ public class BallTest {
 
 		assertThat(ball.compare(ballToCompare)).isEqualTo(CompareResult.BALL);
 	}
+
+	@Test
+	void 다른_숫자_낫싱() {
+		Ball ball = new Ball(1, 0);
+		Ball ballToCompare = new Ball(2, 0);
+
+		assertThat(ball.compare(ballToCompare)).isEqualTo(CompareResult.NOTHING);
+	}
 }

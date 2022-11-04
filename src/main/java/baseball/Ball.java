@@ -18,7 +18,7 @@ public class Ball {
 		if (ballToCompare.isSameNumber(number) && ballToCompare.isDifferentLocation(location)) {
 			return CompareResult.BALL;
 		}
-		return CompareResult.BALL;
+		return CompareResult.NOTHING;
 	}
 
 	private boolean isDifferentLocation(int location) {
