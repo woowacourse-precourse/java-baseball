@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
+	public static List<Integer> userNums;
+
 	public static void getUserInput() {
 		GameView.printStartGame();
 		GameView.printInstruction();
@@ -16,11 +18,11 @@ public class User {
 	}
 
 	public static List<Integer> convertUserInputToList(String userInput) {
-		List<Integer> userInputList = new ArrayList<>();
+		userNums = new ArrayList<>();
 		for (int i = 0; i < userInput.length(); i++) {
-			userInputList.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
+			userNums.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
 		}
-		return userInputList;
+		return userNums;
 	}
 
 	public static void checkUserInput(String userInput) {

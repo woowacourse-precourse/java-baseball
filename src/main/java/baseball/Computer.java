@@ -10,12 +10,12 @@ public class Computer {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	private final List<Integer> computerNumbers;
+	final List<Integer> computerNums;
 
 	public Computer() {
-		this.computerNumbers = new ArrayList<>();
-		this.generateRandomThreeNums();
-		System.out.println(computerNumbers);
+		computerNums = new ArrayList<>();
+		generateRandomThreeNums();
+		System.out.println(computerNums);
 	}
 
 	private void generateRandomThreeNums() {
@@ -25,7 +25,7 @@ public class Computer {
 				i--;
 				continue;
 			}
-			computerNumbers.add(randomNum);
+			computerNums.add(randomNum);
 		}
 	}
 
@@ -34,6 +34,6 @@ public class Computer {
 	}
 
 	private boolean isContains(int randomNum) {
-		return computerNumbers.contains(randomNum);
+		return computerNums.contains(randomNum);
 	}
 }
