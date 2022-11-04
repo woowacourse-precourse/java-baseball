@@ -22,7 +22,6 @@ public class Ball {
 
     public boolean validate(int number) {
         char numberToChar = (char) (number + '0');
-        System.out.println(numberToChar);
 
         if ('1' <= numberToChar && numberToChar <= '9') {
             return true;
@@ -33,10 +32,20 @@ public class Ball {
 
     public void generate() {
         this.number = Randoms.pickNumberInList(randomNumberList);
-        System.out.println(this.number);
     }
 
     public Integer getNumber() {
         return this.number;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Ball ball = (Ball) object;
+
+        if (ball.getNumber() == this.number) {
+            return true;
+        }
+
+        return false;
     }
 }
