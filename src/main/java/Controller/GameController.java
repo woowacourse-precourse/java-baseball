@@ -19,26 +19,26 @@ public class GameController {
         askContinue();
     }
 
-    public void startGame(){
+    private void startGame(){
         gameService.set_game();
     }
 
-    public void playGame(){
+    private void playGame(){
         gameService.play_game();
     }
 
-    public void endGame(){
+    private void endGame(){
         SystemMessage.end_game_message();
     }
 
-    public void askContinue(){
+    private void askContinue(){
         RequestUser.request_retry();
         if(re_user_input() == RETRY){
             run();
         }
     }
 
-    public int re_user_input() throws IllegalArgumentException{
+    private int re_user_input() throws IllegalArgumentException{
         int user_num = Integer.parseInt(Console.readLine());
 
         if(user_num < 0 || user_num > EXIT){
