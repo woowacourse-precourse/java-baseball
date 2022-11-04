@@ -53,4 +53,13 @@ class SelectedNumberForRestartDTOTest {
                 .isThrownBy(() -> new SelectedNumberForRestartDTO(" "))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 길이가 1이 아닌 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"12", "123"})
+    void length_exception(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
+    }
 }
