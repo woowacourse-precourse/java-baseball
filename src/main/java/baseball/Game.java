@@ -63,8 +63,7 @@ public class Game {
             System.out.println(checkDigitsResult);
             if (isGameWin(checkDigitsResult)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                // 여기 1, 2 메뉴 선택할 수 있는 메소드 필요
-
+                break;
             }
         }
     }
