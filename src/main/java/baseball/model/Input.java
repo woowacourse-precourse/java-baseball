@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Input {
-    private List<Integer> baseballNumberList;
+    private final List<Integer> baseballNumberList;
 
     public Input(String input){
         IntStream charStream = input.chars();
