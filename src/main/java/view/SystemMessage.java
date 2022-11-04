@@ -2,7 +2,7 @@ package view;
 
 public class SystemMessage {
 
-    public static void game_start(){
+    public void game_start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -21,7 +21,7 @@ public class SystemMessage {
         }
     }
 
-    public static void end_game_message(){
+    public void end_game_message(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
