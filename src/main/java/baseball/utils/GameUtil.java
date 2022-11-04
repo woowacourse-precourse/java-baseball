@@ -1,12 +1,11 @@
 package baseball.utils;
 
-import baseball.Scoreboard;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
 public class GameUtil {
-    public static List<Integer> splitNumberToOneDigits(int number) {
+    public static List<Integer> splitNumber(int number) {
         List<Integer> oneDigitNumbers = new ArrayList<>();
 
         while (number > 0) {
@@ -34,7 +33,7 @@ public class GameUtil {
     }
 
     private static int appendRandomOneDigit(int number) {
-        List<Integer> oneDigitNumbers = splitNumberToOneDigits(number);
+        List<Integer> oneDigitNumbers = splitNumber(number);
         int randomOneDigitNumber = pickOneDigitNumber();
 
         if (oneDigitNumbers.contains(randomOneDigitNumber)) {
