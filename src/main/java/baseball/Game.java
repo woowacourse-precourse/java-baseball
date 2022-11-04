@@ -17,16 +17,14 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userNums = ValidationUtil.mapStringToList(Console.readLine());
             result = computer.play(userNums);
-
             System.out.println(result);
         }
 
         System.out.print(VALID_CNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String userKeyInput = Console.readLine();
-        if (userKeyInput.equals("2")) {
-            setIsNotOver(false);
+        if (Console.readLine().equals("2")) {
+            gameOver();
         }
     }
 
@@ -34,7 +32,7 @@ public class Game {
         return isNotOver;
     }
 
-    private void setIsNotOver(boolean bool) {
-        isNotOver = bool;
+    private void gameOver() {
+        isNotOver = false;
     }
 }
