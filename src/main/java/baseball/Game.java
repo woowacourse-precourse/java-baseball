@@ -28,17 +28,7 @@ public class Game {
         while (!result.equals(END_GAME_CONDITION)) {
             System.out.print(INPUT_NUMBER);
             String input = Console.readLine();
-            List<Integer> user = new ArrayList<>();
-            try {
-                validThreeLengthOrSize(input.length(), INPUT_LENGTH_EXCEPTION);
-                for (String number : input.split("")) {
-                    int ball = Integer.parseInt(number);
-                    addBall(user, ball);
-                }
-                validThreeLengthOrSize(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException(e.getMessage());
-            }
+            List<Integer> user = makeUserAnswer(input);
 
             int strike = 0;
             int ball = 0;
@@ -54,18 +44,19 @@ public class Game {
             if (ball == 0 && strike == 0) {
                 result = NOTHING;
                 System.out.println(result);
-            }
-            if (strike == 0 && ball != 0) {
-                result = ball + BALL;
-                System.out.println(result);
-            } else if (ball == 0 && strike != 0) {
-                result = strike + STRKIE;
-                if (strike == 3) {
-                    result = END_GAME_CONDITION;
+            }else {
+                if (strike == 0) {
+                    result = ball + BALL;
+                    System.out.println(result);
+                } else if (ball == 0) {
+                    result = strike + STRKIE;
+                    if (strike == 3) {
+                        result = END_GAME_CONDITION;
+                    }
+                    System.out.println(result);
+                } else {
+                    System.out.println(ball + BALL + " " + strike + STRKIE);
                 }
-                System.out.println(result);
-            } else {
-                System.out.println(ball + BALL + " " + strike + STRKIE);
             }
         }
 
@@ -76,6 +67,20 @@ public class Game {
         } else if (!input.equals("2")) {
             throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
         }
+    }
+
+    private List<Integer> makeUserAnswer(String input) {
+        List<Integer> user = new ArrayList<>();
+        try {
+            validThreeLengthOrSize(input.length(), INPUT_LENGTH_EXCEPTION);
+            for (String number : input.split("")) {
+                addBall(user, Integer.parseInt(number));
+            }
+            validThreeLengthOrSize(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+        return user;
     }
 
     private void validThreeLengthOrSize(int number, String message) {
