@@ -7,7 +7,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> correctAnswer = Start.startGame(); // 컴퓨터 정답
-        System.out.println("correctAnswer = " + correctAnswer);
 
         while (true) {
             UserInput userInput = new UserInput();
@@ -30,7 +29,6 @@ public class Application {
 
             if (gameStatus == -2) {
                 correctAnswer = Start.reStart();
-                System.out.println("correctAnswer = " + correctAnswer);
             } else if (gameStatus == -3) {
                 break;
             }
