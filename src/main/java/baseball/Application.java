@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,6 +18,10 @@ public class Application {
             int strike = 0;
             int ball = 0;
             boolean correctFlag = false;
+
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumber = Console.readLine();
+            validateInputNumber(inputNumber);
         }
     }
 
@@ -30,4 +35,11 @@ public class Application {
         }
         return computer;
     }
+
+    private static void validateInputNumber(String inputNumber) {
+        if (inputNumber.length() != 3 || !inputNumber.matches("^[1-9]+$")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
