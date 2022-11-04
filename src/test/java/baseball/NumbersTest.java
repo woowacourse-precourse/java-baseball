@@ -18,4 +18,12 @@ public class NumbersTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoNumbers));
         assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourNumbers));
     }
+
+    @Test
+    @DisplayName("숫자는 서로 달라야 한다")
+    void every_number_is_different() {
+        List<Integer> numbers = List.of(1, 2, 1);
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(numbers));
+    }
 }
