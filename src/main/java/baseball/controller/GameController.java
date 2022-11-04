@@ -17,10 +17,9 @@ public class GameController {
     private static final UserInput userInput = UserInput.getInstance();
     private static final NumericalComparison numericalComparison = NumericalComparison.getInstance();
     private static final Result result = Result.getInstance();
-
     private static String gameStatus = STAND_BY.status();
+    private static final boolean CORRECT = true;
     public GameController() {
-
     }
 
     public void startGame() {
@@ -29,16 +28,22 @@ public class GameController {
 
         gameStatus = ONGOING.status();
         while (!gameStatus.equals(STOP.status())) {
+            if (gameStatus.equals(RESTART.status())) {
+                gameStatus = ONGOING.status();
+                computerNumbers = makeRandom.numbers();
+            }
+
             List<Integer> userNumbers = userInput.number(ENTER_NUMBER.message());
 
             Map<String, Integer> score = numericalComparison.compareList(computerNumbers, userNumbers);
-            if (result.analysis(score)) {
+            if (result.analysis(score) == CORRECT) {
                 gameManager();
             }
         }
     }
 
     private void gameManager() {
-        consoleLog.println(CORRECT_ANSWER.message()+"\r\n"+RESTART_OR_STOP.message());
+        consoleLog.println(String.format("%s\r\n%s", CORRECT_ANSWER.message(), RESTART_OR_STOP.message()));
+        gameStatus = userInput.restartOrStop();
     }
 }
