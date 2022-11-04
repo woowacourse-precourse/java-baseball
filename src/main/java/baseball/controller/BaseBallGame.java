@@ -1,28 +1,75 @@
 package baseball.controller;
 
+import baseball.model.Judgement;
+import baseball.model.NumberGenerator;
+import baseball.model.OffenseNumberGenerator;
+import baseball.view.Display;
+import baseball.view.UserInput;
+
+import java.util.List;
+
+
 public class BaseBallGame {
-    private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private boolean repeatFlag;
 
+    private NumberGenerator numberGenerator;
+    private OffenseNumberGenerator offenseNumberGenerator;
+
+    private Display display;
+    private UserInput userInput;
+
     public BaseBallGame() {
-        this.repeatFlag = true;
+        repeatFlag = true;
+        numberGenerator = new NumberGenerator();
+        offenseNumberGenerator = new OffenseNumberGenerator();
+        display = new Display();
+        userInput = new UserInput();
     }
 
     public void startGame() {
-        System.out.println(START_GAME);
+        display.printStartGame();
         repeatGame();
     }
 
     public void repeatGame() {
-        while (repeatFlag == true) {
+        while (repeatFlag) {
             createNewGame();
         }
     }
 
     private boolean createNewGame() {
-        // TODO: Random 한 세 자리 숫자를 생성한다.
-        // TODO: 정답을 추측하는 기능
+        List defenseNumbers = numberGenerator.createDefenseNumbers();
+        offense(defenseNumbers);
+
         // TODO: 계속해서 게임을 할건지 물어 보는 기능
         // TODO: 대답에 따라 게임을 계속할지 판단하는 기능
+        return false;
+    }
+
+    private void offense(List<Integer> defenseNumbers) {
+        boolean offenseFailure = true;
+        Judgement judgement = new Judgement(defenseNumbers);
+        while (offenseFailure) {
+            display.printInputOffenseNumber();
+            List<Integer> offenseNumbers = offenseNumberGenerator.generateOffenseNumbers();
+
+            offenseFailure = !judgement.isThreeStrike(offenseNumbers);
+            List<Integer> resultOfJudgement = judgement.judgeOffenseNumbers(offenseNumbers);
+
+            printJudgement(resultOfJudgement);
+        }
+    }
+
+    private void printJudgement(List<Integer> resultOfJudgement) {
+        int ballCount = resultOfJudgement.get(0);
+        int strikeCount = resultOfJudgement.get(1);
+
+        if (strikeCount == 3) {
+            display.printThreeStrike();
+        } else if (strikeCount == 0 && ballCount == 0) {
+            display.printNothing();
+        } else {
+            display.printBallAndStrike(ballCount, strikeCount);
+        }
     }
 }
