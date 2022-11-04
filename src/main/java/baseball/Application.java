@@ -64,18 +64,38 @@ public class Application {
         // list 사이즈는 3
         // 1~9 까지
         // 중복 없어야 함.
-        return true;
+        if (inputNumber.size() == 3) {
+            return true;
+        }
+
+        if (inputNumber.size() == inputNumber.stream().distinct().count()) {
+            return true;
+        }
+
+        String regExp = "^[1-9]+$";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            String st = Integer.toString(inputNumber.get(i));
+            sb.append(st);
+        }
+        String s = sb.toString();
+        if (s.matches(regExp)) {
+            return true;
+        }
+
+        return false;
     }
 
     public static boolean checkNumber(List<Integer> inputNumber) {
+
         return true;
     }
 
     public static boolean restartGame() {
         int i = Integer.parseInt(Console.readLine());
-        if(i == 1){
+        if (i == 1) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

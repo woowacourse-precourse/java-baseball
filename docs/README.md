@@ -28,7 +28,7 @@
 * [x] 3자리 랜덤 숫자 정하기
 
 ### 3. getGuessNumber
-* [x] Console.readline 으로 입력받기 
+* [x] Console.readLine 으로 입력받기 
 * [x] List 형태로 return
 
 ### 4. StringToIntegerList
@@ -48,4 +48,4 @@
   
 
 ### 7. restartGame
-* [ ] 재시작(1), 앱 종료(2)를 입력받는다. 
+* [x] 재시작(1), 앱 종료(2)를 입력받는다. 
