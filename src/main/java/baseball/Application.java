@@ -14,8 +14,8 @@ public class Application {
         printStartMessage();
         boolean gameFlag = true;
         while (gameFlag) {
-            List<Integer> randomNumber = getRandomNumber();
-
+            String randomNumber = getRandomNumber();
+            startGame(randomNumber);
             printEndMessage();
         }
 
@@ -44,6 +44,9 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public static void printInputMessage() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
     public static void printGameResult(int ballCount, int strikeCount) {
         StringBuilder resultMessage = new StringBuilder();
         if (ballCount != 0) {
@@ -105,7 +108,19 @@ public class Application {
         return strikeCount;
     }
 
-    public static void startGame(int randomNumber) {
+    public static int getBallCount(String userInputNumber, String randomNumber) {
+        int ballCount = 0;
+        int strikeCount = getStrikeCount(userInputNumber, randomNumber);
+        for (String number : userInputNumber.split("")) {
+            if (randomNumber.contains(number)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount - strikeCount;
+    }
+
+    public static void startGame(String randomNumber) {
         while () {
             String userInputNumber = getUserInputNumber();
         }
