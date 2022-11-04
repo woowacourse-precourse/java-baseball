@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+
 import java.util.*;
 
 public class Application {
@@ -10,8 +11,30 @@ public class Application {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
+    }
+
+
+
+    public static void decideExitOrProceed() {
+        System.out.println(commonMessageMap.get("exitOrProceedMessage"));
+        String userInput = readeUserInput();
+
+        if (userInput.equals("1")) {
+            //게임 재시작 로직
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+
+    public static boolean checkUserInputIsThreeStrike(String userInput) {
+        int strikeCount = checkStrike(userInput);
+
+        if(strikeCount == 3) {
+            System.out.println(commonMessageMap.get("threeStrikeMessage"));
+            return true;
+        }
+        return false;
     }
 
     public static void initComputerNumber() {
@@ -32,6 +55,7 @@ public class Application {
         commonMessageMap.put("inputMessage", "숫자를 입력해주세요 : ");
         commonMessageMap.put("threeStrikeMessage", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         commonMessageMap.put("exitOrProceedMessage", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        commonMessageMap.put("errorMessage", "잘못된 형식을 입력했습니다, 프로그램을 종료합니다.");
     }
 
     public static int checkStrike(String userInput) {
@@ -79,7 +103,7 @@ public class Application {
             validateUserInputSize(userInput);
             validateUserInputForm(userInput);
         } catch (IllegalArgumentException e) {
-            System.out.println(errorMessage);
+            System.out.println(commonMessageMap.get("errorMessage"));
             throw e;
         }
     }
@@ -125,7 +149,7 @@ public class Application {
             hintMessageBuilder.append(ballCount).append("볼").append(" ");
         }
 
-        if (strikeCount > 0) {
+        if (strikeCount > 0 && strikeCount < 3) {
             hintMessageBuilder.append(strikeCount).append("스트라이크");
         }
 
@@ -137,16 +161,12 @@ public class Application {
         return hintMessage;
     }
 
-    public static void checkUserInputIsThreeStrike(String userInput) {
-        int strikeCount = checkStrike(userInput);
-
-        if(strikeCount == 3) {
-            System.out.println(commonMessageMap.get("threeStrikeMessage"));
-        }
-    }
-
     public static String readeUserInput() {
         String userInput = scanner.nextLine();
         return userInput;
     }
+
+
+
+
 }
