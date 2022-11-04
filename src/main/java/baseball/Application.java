@@ -55,7 +55,7 @@ public class Application {
     ) {
         int count = 0;
 
-        for (Integer number : user_number) {
+        for (int number : user_number) {
             if (computer_number.contains(number)) {
                 count += 1;
             }
