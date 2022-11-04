@@ -1,15 +1,14 @@
-package baseball.service;
+package baseball.service.hint;
 
+import baseball.service.hint.Hint;
 import java.util.List;
 
 public class HintService {
 
-  private final int strikeCount;
-  private final int ballCount;
-
-  public HintService(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-    this.strikeCount = getStrikeCount(computerNumbers, playerNumbers);
-    this.ballCount = getBallCount(computerNumbers, playerNumbers);
+  public Hint getHint(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+    int ballCount = getBallCount(computerNumbers, playerNumbers);
+    return new Hint(strikeCount, ballCount);
   }
 
   int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -21,6 +20,7 @@ public class HintService {
     }
     return strikeCount;
   }
+
   private int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
     int ballCount = 0;
     for (int i = 0; i < computerNumbers.size(); i++) {
@@ -41,9 +41,16 @@ public class HintService {
     return false;
   }
 
-  public void printHint() {
+  public boolean isNotEnd(Hint hint) {
+    return hint.getStrikeCount() != 3;
+  }
+
+  public void printHint(Hint hint) {
+    int strikeCount = hint.getStrikeCount();
+    int ballCount = hint.getBallCount();
+
     if (strikeCount == 0 && ballCount == 0) {
-      System.out.println("끝");
+      System.out.println("낫싱");
     }
     if (ballCount != 0) {
       System.out.println(ballCount + "볼 ");

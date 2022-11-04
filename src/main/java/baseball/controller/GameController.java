@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
+import baseball.service.hint.Hint;
+import baseball.service.hint.HintService;
+import baseball.service.InputService;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GameController {
 
@@ -15,8 +14,20 @@ public class GameController {
   private static final int END = 9;
   private final List<Integer> computerNumbers;
 
+  private final InputService inputService = new InputService();
+  private final HintService hintService = new HintService();
+
   public GameController() {
     this.computerNumbers = getRandomNumbers();
+  }
+
+  public void play() {
+    Hint hint;
+    do {
+      List<Integer> playerNumbers = inputService.getPlayerNumbers();
+      hint = hintService.getHint(computerNumbers, playerNumbers);
+      hintService.printHint(hint);
+    } while (hintService.isNotEnd(hint));
   }
 
   private List<Integer> getRandomNumbers() {
@@ -28,14 +39,6 @@ public class GameController {
       }
     }
     return randomNumbers;
-  }
-
-  List<Integer> getPlayerNumbers() {
-    String playerInput = readLine();
-    return Stream.of(playerInput.split(""))
-        .mapToInt(Integer::parseInt)
-        .boxed()
-        .collect(Collectors.toList());
   }
 
 }
