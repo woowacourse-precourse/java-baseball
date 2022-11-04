@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Computer {
-    List<Integer> randomNumbers = new ArrayList<>(Collections.emptyList());
+    private final List<Integer> randomNumbers = new ArrayList<>(Collections.emptyList());
 
     /**
      * 리스트에 숫자를 추가한다.
