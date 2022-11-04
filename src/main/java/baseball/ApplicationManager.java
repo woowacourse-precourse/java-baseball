@@ -14,9 +14,22 @@ public class ApplicationManager {
             int strike = Comparison.findStrike(userNumber, computerNumbers);
             int ball = total - strike;
 
-
+            if(Results.isNothing(total)){
+                Output.printNothing();
+            }
+            if(Results.isBall(total, strike)){
+                Output.printBall(ball);
+            }
+            if(Results.isStrike(total, ball)){
+                Output.printStrike(strike);
+            }
+            if (Results.isBallStrike(total, ball, strike)){
+                Output.printBallStrike(ball, strike);
+            }
         }
 
     }
+
+
 
 }
