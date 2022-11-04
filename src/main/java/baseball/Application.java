@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /** 기능 목록
@@ -19,6 +18,7 @@ import java.util.List;
  *
  * 3. 볼/스트라이크 여부 확인
  *   3-1. 숫자 포함 여부를 인덱스로 판단
+ *   3-2. 얻은 인덱스를 별도의 BullsAndCowsResult 객체를 통해 판단
  *
  **/
 
@@ -33,15 +33,16 @@ public class Application {
         String userInput = Console.readLine();
         List<Integer> userInputNumber = isValidInput(userInput);
 
+        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+
         for (int i = 0; i < computerNumber.size(); i++) {
-
-            checkBallOrStrike(userInputNumber, computerNumber.get(i))
+            bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
         }
-        
 
+        bullsAndCowsResult.printResult();
     }
 
-    private static int checkBallOrStrike(List<Integer> userInputNumber, int c) {
+    private static int findNumberIndex(List<Integer> userInputNumber, int c) {
 
         if (userInputNumber.contains(c)) {
             return userInputNumber.indexOf(c);
@@ -89,5 +90,41 @@ public class Application {
 
     private static boolean isValidNumber(char c) {
         return 1 <= c - '0' && c - '0' <= 9;
+    }
+
+    static class BullsAndCowsResult {
+
+        int ballCount;
+        int strikeCount;
+
+        void addCount(int userIndex, int computerIndex) {
+
+            if (userIndex == -1) {
+                return;
+            }
+
+            if (userIndex == computerIndex) {
+                strikeCount++;
+                return;
+            }
+
+            ballCount++;
+        }
+
+        void printResult() {
+
+            if (ballCount == 0 && strikeCount == 0) {
+                System.out.println("낫싱");
+            } else if (strikeCount == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다!! 게임 종료");
+            } else {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            }
+        }
+
+        boolean finish() {
+            return strikeCount == 3;
+        }
     }
 }
