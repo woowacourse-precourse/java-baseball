@@ -28,10 +28,10 @@ public class Game {
 
             if (Objects.equals(currentAnswer, currentUserAnswer)) {
                 resultMap.put("strike",resultMap.get("strike") + 1);
-                continue;
             }
 
-            if (answer.contains(currentUserAnswer)) {
+            if (answer.contains(currentUserAnswer)
+                    && !Objects.equals(currentAnswer,currentUserAnswer)) {
                 resultMap.put("ball",resultMap.get("ball") + 1);
             }
         }
