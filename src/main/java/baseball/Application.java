@@ -92,8 +92,12 @@ public class Application {
         return result.toString();
     }
 
-    public static boolean checkNumberIsValid(String number){
-        return checkNumberLengthIsThree(number) && checkNumberIsDuplicated(number);
+    public static boolean checkNumberIsValid (String number) throws IllegalArgumentException{
+        boolean result = checkNumberLengthIsThree(number) && checkNumberIsDuplicated(number);
+        if(result == false){
+            throw new IllegalArgumentException();
+        }
+        return result;
     }
 
     public static boolean checkNumberLengthIsThree(String number){
