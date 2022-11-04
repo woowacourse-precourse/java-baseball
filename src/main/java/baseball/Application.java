@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -76,6 +77,62 @@ public class Application {
         return isValid;
     }
 
+    private static int countStrikes(String input, String computer) { // strike 수를 세는 메소드
+        int strike = 0; // initialize strike
+
+        for (int i = 0; i < DIGIT_RESTRICTION; i++) {
+            char inputDigit = input.charAt(i);
+            char computerDigit = computer.charAt(i);
+
+            if (inputDigit == computerDigit) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
+    private static int countBalls(String input, String computer) { // ball 수를 세는 메소드
+        int ball = 0; //initialize ball
+
+        for (int i = 0; i < DIGIT_RESTRICTION; i++) {
+            String inputDigit = input.substring(i, i + 1);                 // input의 i-th 문자
+
+            if (computer.contains(inputDigit) && computer.indexOf(inputDigit) != i) {
+                ball++;
+            }
+        }
+
+        return ball;
+    }
+
+    private static HashMap<String, Integer> getScore(String input, String computer) { // 스트라이크와 볼 카운트
+        HashMap<String, Integer> result = new HashMap<>();
+
+        int strike = countStrikes(input, computer);
+        int ball = countBalls(input, computer);
+
+        result.put(STRIKE, strike);
+        result.put(BALL, ball);
+
+        return result;
+    }
+
+    private static void selectMessage(HashMap<String, Integer> score) { // ball과 strike 개수에 따라 메세지 선택
+        int ball = score.get(BALL);
+        int strike = score.get(STRIKE);
+
+        if (strike == 3) { // 3 strike 일때, 게임 종료
+            System.out.println(strike + MESSAGE_STRIKE);
+            System.out.println(MESSAGE_THREE_STRIKES);
+            System.out.println(MESSAGE_RESTART_OR_QUIT);
+        } else if (ball == 0 && strike == 0) {
+            System.out.println(MESSAGE_NOTHING);
+        } else {
+            System.out.println(ball + MESSAGE_BALL + " " + strike + MESSAGE_STRIKE);
+        }
+    }
+
     public static void main(String[] args) {
         String computer = "";
         boolean iterate = true;
@@ -95,7 +152,9 @@ public class Application {
                 throw e;
             }
 
-
+            trial++;
+            HashMap<String, Integer> score = getScore(input, computer);
+            selectMessage(score);
         }
     }
 }
