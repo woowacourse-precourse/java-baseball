@@ -40,4 +40,24 @@ public class UserTest {
         assertThatThrownBy(user::receiveThreeNumber)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 종료_또는_재시작_코드는_한자리이어야_합니다() {
+        String testInput = "32";
+        InputStream in = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(user::receiveOneNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 종료_또는_재시작_코드는_1또는_2이어야_합니다() {
+        String testInput = "3";
+        InputStream in = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(user::receiveOneNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
