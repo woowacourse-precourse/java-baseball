@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Player {
     private List<Integer> playerNumber;
+    Scanner sc = new Scanner(System.in);
 
     public Player() {
     }
 
     public void setNumber() {
-        Scanner sc = new Scanner(System.in);
         for (char c : sc.next().toCharArray()) {
             playerNumber.add(Integer.valueOf(c));
         }
