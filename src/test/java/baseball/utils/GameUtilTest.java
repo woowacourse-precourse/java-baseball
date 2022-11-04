@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("GameUtil 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -23,21 +24,10 @@ public class GameUtilTest {
                 .hasSize(3);
     }
 
-    @DisplayName("숫자 체크")
-    @Nested
-    class is_valid_Number {
-        @ParameterizedTest(name = "올바르지 않은 숫자 => {0}")
-        @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222})
-        void value_of_false(int number) {
-            assertThat(GameUtil.isValidNumber(number)).isFalse();
-        }
-
-        @ParameterizedTest(name = "올바른 숫자 => {0}")
-        @ValueSource(ints = {123})
-        void value_of_true(int number) {
-            assertThat(GameUtil.isValidNumber(number)).isTrue();
-        }
-
+    @ParameterizedTest(name = "숫자 유효성 체크 => {0}")
+    @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222})
+    void 숫자_유효성_체크(int number) {
+        assertThatThrownBy(() -> GameUtil.validateNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
