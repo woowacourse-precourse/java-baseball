@@ -3,6 +3,7 @@ package baseball;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.domain.Referee;
+import baseball.util.InputVerifier;
 import baseball.util.StringToArrayList;
 import baseball.util.SystemMessage;
 
@@ -24,7 +25,7 @@ public class Game {
 		play();
 	}
 
-	private void play() throws IllegalArgumentException {
+	private void play() {
 
 		Computer computer = new Computer();
 
@@ -67,28 +68,27 @@ public class Game {
 		// throw new IllegalArgumentException(SystemMessage.printError()); TODO: 1과 2가 아닌 값이 들어왔을 때 처리 필요
 	}
 
-	private String getPlayerInput() throws IllegalArgumentException {
+	private String getPlayerInput() {
 		String playerInput = player.getInput();
-		List<Integer> playerInputArray = StringToArrayList.convert(playerInput);
 
-		for (int i = 0; i < playerInput.length(); i++) {
-			if (!Character.isDigit(playerInput.charAt(i))) {
-				SystemMessage.printNotInteger();
-				throw new IllegalArgumentException(SystemMessage.NOT_INTEGER_MESSAGE);
-			}
+		InputVerifier inputVerifier = new InputVerifier(playerInput);
+
+		if (!inputVerifier.isInteger()) {
+			SystemMessage.printNotInteger();
+			throw new IllegalArgumentException(SystemMessage.NOT_INTEGER_MESSAGE);
 		}
 
-		if (playerInput.length() != 3) {
+		if (!inputVerifier.isSizeValid()) {
 			SystemMessage.printNotSizeThree();
 			throw new IllegalArgumentException(SystemMessage.NOT_THREE_SIZE_MESSAGE);
 		}
 
-		if (playerInputArray.contains(0)) {
+		if (!inputVerifier.notContainZero()) {
 			SystemMessage.printContainsZero();
 			throw new IllegalArgumentException(SystemMessage.CONTAINS_ZERO_MESSAGE);
 		}
 
-		if (playerInputArray.size() != playerInputArray.stream().distinct().count()) {
+		if (!inputVerifier.isUnique()) {
 			SystemMessage.printNotUnique();
 			throw new IllegalArgumentException(SystemMessage.NOT_UNIQUE_MESSAGE);
 		}
