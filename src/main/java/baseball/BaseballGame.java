@@ -50,10 +50,10 @@ public class BaseballGame extends Game {
         setAnswerNumbers(Collections.emptyList());
     }
 
-    private static final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
-    static {
-        operationMapper.put(Status.PLAYING, BaseballGame::playTurn);
-        operationMapper.put(Status.DONE, BaseballGame::askNewGame);
+    private final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
+    {
+        operationMapper.put(Status.PLAYING, this::playTurn);
+        operationMapper.put(Status.DONE, this::askNewGame);
     }
 
     @Override
@@ -63,12 +63,11 @@ public class BaseballGame extends Game {
                 .apply(input);
     }
 
-    private static boolean playTurn(String input) {
-        System.out.println("playing");
+    private boolean playTurn(String input) {
         return false;
     }
 
-    private static boolean askNewGame(String input) {
+    private boolean askNewGame(String input) {
         System.out.println("stopped");
         return false;
     }
