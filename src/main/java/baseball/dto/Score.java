@@ -30,8 +30,8 @@ public class Score {
         }
 
         HashMap<String, Integer> score = new HashMap<>();
-        score.put("스트라이크", strike);
-        score.put("볼", ball);
+        score.put(STRIKE, strike);
+        score.put(BALL, ball);
         return new Score(score);
     }
 

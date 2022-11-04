@@ -30,22 +30,27 @@ public class BaseBallController {
 
     public Restart startGame() {
         while (true) {
-            String input = inputView.getUserInput();
-            List<Integer> inputList = convert(input, List.class);
-            UserNumber userNumber = convert(inputList, UserNumber.class);
-
+            UserNumber userNumber = getUserNumber();
             Score score = baseballService.compareInputWithAnswer(userNumber);
-
             outputView.printResult(score);
-
             if (score.didWin()) {
                 break;
             }
         }
 
+        return handleWinning();
+    }
+
+    private UserNumber getUserNumber() {
+        String input = inputView.getUserInput();
+        List<Integer> inputList = convert(input, List.class);
+        UserNumber userNumber = convert(inputList, UserNumber.class);
+        return userNumber;
+    }
+
+    private Restart handleWinning() {
         outputView.printWinnerMessage();
         String restartingInput = inputView.getRestartingInput();
-
         return convert(restartingInput, Restart.class);
     }
 
