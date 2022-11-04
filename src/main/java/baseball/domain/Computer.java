@@ -20,11 +20,11 @@ public class Computer {
 		init();
 		do {
 			int randomNumber = Randoms.pickNumberInRange(ConstValue.MINIMUM_NUMBER, ConstValue.MAXIMUM_NUMBER);
-			duplicatedNumber(randomNumber);
+			checkDuplicatedNumber(randomNumber);
 		} while (number.size() != ConstValue.NUMBER_COUNT);
 	}
 
-	private void duplicatedNumber(int randomNumber) {
+	private void checkDuplicatedNumber(int randomNumber) {
 		if (!number.contains(randomNumber)) {
 			number.add(randomNumber);
 		}

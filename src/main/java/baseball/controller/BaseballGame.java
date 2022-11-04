@@ -24,7 +24,7 @@ public class BaseballGame {
 		do {
 			user.setNumber(InputView.userNumber());
 			judgment.compareNumber(user.getNumber(), computer.getNumber());
-		} while (judgment.threeStrike());
+		} while (judgment.isThreeStrike());
 
 		String input = InputView.restartOrExit();
 		if (input.equals(ConstValue.RESTART)) {

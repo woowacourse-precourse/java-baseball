@@ -39,7 +39,7 @@ public class Judgment {
 		}
 	}
 
-	public boolean threeStrike() {
+	public boolean isThreeStrike() {
 		return strikeCount != ConstValue.NUMBER_COUNT;
 	}
 

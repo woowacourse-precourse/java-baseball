@@ -97,6 +97,6 @@ class JudgmentTest {
 		List<Integer> userNumber = Arrays.asList(1, 2, 3);
 		judgment.compareNumber(userNumber, computerNumber);
 		assertThat("3스트라이크").isEqualTo(outputMessage.toString().trim());
-		assertThat(judgment.threeStrike()).isEqualTo(false);
+		assertThat(judgment.isThreeStrike()).isEqualTo(false);
 	}
 }
