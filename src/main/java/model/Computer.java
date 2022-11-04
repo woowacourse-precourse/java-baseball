@@ -21,7 +21,16 @@ public class Computer {
         this.cntBall = 0;
     }
 
-    public void creatRanNumOfComputerList() {
+    public void initComputer() {
+        while (true) {
+            this.creatRanNumOfComputerList();
+            if (isNumOfComputerIndividually()) {
+                break;
+            }
+        }
+    }
+
+    private void creatRanNumOfComputerList() {
         this.numThreeRanOfComputerList = new ArrayList<>();
         while (numThreeRanOfComputerList.size() < 3) {
             int randomNumber = getOneRanNumAnInt();
@@ -146,14 +155,6 @@ public class Computer {
         }
     }
 
-    public void initComputer() {
-        while (true) {
-            this.creatRanNumOfComputerList();
-            if (isNumOfComputerIndividually()) {
-                break;
-            }
-        }
-    }
 
     public boolean isNumOfComputerIndividually() {
         String strComputerList = "";

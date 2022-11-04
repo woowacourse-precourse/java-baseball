@@ -15,7 +15,7 @@ public class ComputerTest {
     void 컴퓨터_랜덤_숫자_생성_크기_테스트_case_1() throws Exception {
         //given
         Computer computer = new Computer();
-        computer.creatRanNumOfComputerList();
+        computer.initComputer();
         // when
         List<Integer> resultList = computer.getNumThreeRanOfComputerList();
         // then
@@ -32,7 +32,7 @@ public class ComputerTest {
     void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
         Computer computer = new Computer();
         List<Integer> list = new ArrayList<>();
-        computer.creatRanNumOfComputerList();
+        computer.initComputer();
         String result = "1";
         System.out.println(
             "computer.getNumThreeRanOfComputerList() = " + computer.getNumThreeRanOfComputerList());
