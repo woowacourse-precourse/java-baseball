@@ -14,14 +14,28 @@ public class Application {
         int restart = 1;
         while(restart == 1) {
             String answer = makeBall();
-            System.out.println("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+            boolean isEnd = false;
+            while(!isEnd) {
+                System.out.println("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
 
-            int[] result = count(answer, input); // [0] = strikes, [1] = balls
+                int[] result = count(answer, input); // [0] = strikes, [1] = balls
 
-            boolean isEnd = printRes(result);
-
+                isEnd = printRes(result);
+                restart = manageGame(isEnd);
+            }
         }
+    }
+
+    public static int manageGame(boolean isEnd) {
+        int restart = 1;
+        if (isEnd) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String gameEnd = Console.readLine();
+            restart = Integer.valueOf(gameEnd);
+        }
+        return restart;
     }
 
     public static String makeBall() {
