@@ -194,7 +194,13 @@ public class Application {
         return PlayAgain();
     }
 
-    private static int Solution() {
-        
+    private static void Solution() {
+        int keepPlaying = 1;
+
+        // 게임 플레이어가 종료를 원하기 전까지 게임을 반복한다.
+        while (keepPlaying == 1) {
+            ArrayList<Integer> answerNumberArrayList = CreateAnswerNumber();
+            keepPlaying = PlayGame(answerNumberArrayList);
+        }
     }
 }
