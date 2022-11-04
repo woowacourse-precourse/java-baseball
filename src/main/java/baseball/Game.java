@@ -16,7 +16,7 @@ public class Game {
 
     public static List<Integer> pickThreeNumber() {
         List<Integer> threeNumber = new ArrayList<>();
-        while (threeNumber.size() < 3) {
+        while (threeNumber.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!threeNumber.contains(randomNumber)) {
                 threeNumber.add(randomNumber);
