@@ -20,4 +20,15 @@ public class NumberComparator {
         return (computer.getNumber(index) != userNumber)
                 && (computer.contains(user.getNumber(index)));
     }
+
+    private int getStrikeCount(User user, Computer computer) {
+        int strikeCount = 0;
+
+        for (int index = 0; index < numberSize; index++) {
+            if (isStrike(user, computer, index)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
