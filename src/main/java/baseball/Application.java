@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    private static final int NUMBER_LENGTH = 3;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -36,13 +38,29 @@ public class Application {
     }
 
     private static void validateUserNumber(List<Integer> digits) {
-        if (digits.size() != 3) {
+        if (digits.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
         HashSet<Integer> nonDuplicateDigits = new HashSet<>(digits);
-        if (nonDuplicateDigits.size() != digits.size()) {
+        if (nonDuplicateDigits.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static List<Integer> baseballGame(List<Integer> userNumber, List<Integer> computerNumber) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            int userDigit = userNumber.get(i);
+            int computerDigit = computerNumber.get(i);
+
+            if (userDigit == computerDigit) {
+                strike++;
+            } else if (computerNumber.contains(userDigit)) {
+                ball++;
+            }
+        }
+        return List.of(strike, ball);
     }
 }
