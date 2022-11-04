@@ -17,4 +17,12 @@ public class Result {
     public int getStrikeCount() {
         return strikeCount;
     }
+
+    public boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    public boolean isComplete() {
+        return strikeCount == 3 && ballCount == 0;
+    }
 }
