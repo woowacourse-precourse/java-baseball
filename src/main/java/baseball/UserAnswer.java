@@ -16,50 +16,39 @@ public class UserAnswer {
     }
 
     public void StringtoList(String userInput){
-        check(userInput);
-        List<Integer> numbers = new ArrayList<>();
-        String[] split = userInput.split("");
-        for (String s : split) {
-            Integer i = Integer.parseInt(s);
-            numbers.add(i);
-        }
-        userNumber = numbers;
+        userNumber = new ArrayList<>();
+        sizeCheck(userInput);
+        numberCheck(userInput);
+        duplicateCheck(userInput);
     }
-    private void check(String userInput){
-        if (!sizeCheck(userInput)){
-            throw new IllegalArgumentException();
-        }
-        if (!isNumber(userInput)){
-            throw new IllegalArgumentException();
-        }
-        if (!duplicateCheck(userInput)){
-            throw  new IllegalArgumentException();
-        }
-    }
-    private boolean duplicateCheck(String userInput){
-        ArrayList<Character> checkList = new ArrayList<>();
+    private void duplicateCheck(String userInput){
         for (int i = 0; i < userInput.length(); i++){
-            if (checkList.contains(userInput.charAt(i))){
-                return false;
-            }
-            checkList.add(userInput.charAt(i));
+            duplicate(Character.toString(userInput.charAt(i)));
         }
-        return true;
+    }
+    private void duplicate(String userInput){
+        Integer i = Integer.parseInt(userInput);
+        if (userNumber.contains(i)){
+            throw new IllegalArgumentException();
+        }
+        userNumber.add(i);
     }
 
-    private boolean sizeCheck(String userInput){
-        if (userInput.length() == SIZE){
-            return true;
+    private void sizeCheck(String userInput){
+        if (!(userInput.length() == SIZE)){
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 
-    private boolean isNumber(String userInput){
+    private void numberCheck(String userInput){
         for (int i = 0 ; i < userInput.length(); i++){
-            if (!Character.isDigit(userInput.charAt(i))){
-                return false;
-            }
+            isDigit(userInput.charAt(i));
         }
-        return true;
+    }
+
+    private void isDigit(char c) {
+        if (!Character.isDigit(c)){
+            throw new IllegalArgumentException();
+        }
     }
 }

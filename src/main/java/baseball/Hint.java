@@ -16,28 +16,32 @@ public class Hint {
     }
 
     public void getHint(List<Integer> user, List<Integer> computer){
-        Integer strike = getStrikeCount(user, computer);
-        Integer ball = getBallCount(user, computer) - strike;
-
-        this.strike = strike;
-        this.ball = ball;
+        this.strike= 0;
+        this.ball = 0;
+        getStrikeCount(user, computer);
+        getBallCount(user, computer);
+        this.ball -= this.strike;
     }
-    private Integer getStrikeCount(List<Integer> user, List<Integer> computer){
-        Integer strike = 0;
+    private void getStrikeCount(List<Integer> user, List<Integer> computer){
         for(int i = 0; i < SIZE; i++){
-            if (user.get(i) == computer.get(i)){
-                strike += 1;
-            }
+            strikeCheck(user.get(i), computer.get(i));
         }
-        return strike;
     }
-    private Integer getBallCount(List<Integer> user, List<Integer> computer){
-        Integer ball = 0;
-        for (Integer num : user) {
-            if (computer.contains(num)){
-                ball += 1;
-            }
+
+    private void strikeCheck(Integer user,Integer computer) {
+        if (user.equals(computer)){
+            this.strike += 1;
         }
-        return ball;
+    }
+
+    private void getBallCount(List<Integer> user, List<Integer> computer){
+        for (Integer num : user) {
+           ballCheck(num,computer);
+        }
+    }
+    private void ballCheck(Integer userNum,List<Integer> computer){
+        if (computer.contains(userNum)){
+            this.ball += 1;
+        }
     }
 }
