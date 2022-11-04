@@ -16,15 +16,12 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Boolean userWantToPlayGame = true;
 
-        while (userWantToPlayGame) {
+        for (Boolean isContinue = true; isContinue; isContinue = userWantToContinueGame())
             playGame();
-            userWantToPlayGame = userWantToContinueGame();
-        }
     }
 
-    public static void setNumberGenerator(NumberGenerator numberGenerator){
+    public static void setNumberGenerator(NumberGenerator numberGenerator) {
         Application.numberGenerator = numberGenerator;
     }
 
