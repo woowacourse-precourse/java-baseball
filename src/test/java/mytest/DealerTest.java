@@ -13,12 +13,14 @@ import org.junit.jupiter.api.RepeatedTest;
 import baseball.Dealer;
 
 public class DealerTest {
-    @DisplayName("서로 다른 세 자리 수인지 확인")
+    @DisplayName("1과 9 사이의 서로 다른 세 자리 수인지 확인")
     @RepeatedTest(5)
     void isAllDifferent() {
         Dealer dealer = new Dealer();
-        List<Integer> threeDifferentNumbers = dealer.getNewThreeDifferentNumbers();
+        List<Integer> threeDifferentNumbers = dealer.createThreeDifferentNumbers();
         Set<Integer> listToSet = new HashSet<>(threeDifferentNumbers);
+
+        assertThat(listToSet).doesNotContain(0);
         assertThat(listToSet.size()).isEqualTo(3);
     }
 
@@ -27,13 +29,13 @@ public class DealerTest {
     void isShuffled() {
         int numberOfDetectedCases = 0;
         int numberOfToTalCases = 1000;
+
         for (int i = 0; i <= numberOfToTalCases; i++) {
             Dealer dealer = new Dealer();
-            List<Integer> threeDifferentNumbers = dealer.getNewThreeDifferentNumbers();
+            List<Integer> threeDifferentNumbers = dealer.createThreeDifferentNumbers();
 
-            boolean isInAscendingOrder = IntStream
-                .range(1, threeDifferentNumbers.size())
-                .allMatch(index -> threeDifferentNumbers.get(index - 1) < threeDifferentNumbers.get(index));
+            boolean isInAscendingOrder = IntStream.range(1, threeDifferentNumbers.size())
+                            .allMatch(index -> threeDifferentNumbers.get(index - 1) < threeDifferentNumbers.get(index));
             if (isInAscendingOrder) {
                 numberOfDetectedCases++;
             }
