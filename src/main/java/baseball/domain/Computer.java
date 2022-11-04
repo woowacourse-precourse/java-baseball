@@ -8,6 +8,7 @@ public class Computer {
     private Balls computerBalls;
 
     public Computer(List<Integer> balls) {
+        computerBalls.from(balls);
     }
 
     private static Computer init() {
