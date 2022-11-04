@@ -95,6 +95,46 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> InputController.checkThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class InfoPrinterTest {
+        @Test
+        void printStrikesAndBallsCase1() {
+            List<Integer> input = List.of(2,1);
+            String result = "1볼 2스트라이크";
+
+            InfoPrinter.printStrikesAndBalls(input);
+            assertThat(output()).isEqualTo(result);
+        }
+
+        @Test
+        void printStrikesAndBallsCase2() {
+            List<Integer> input = List.of(0,2);
+            String result = "2볼";
+
+            InfoPrinter.printStrikesAndBalls(input);
+            assertThat(output()).isEqualTo(result);
+        }
+
+        @Test
+        void printStrikesAndBallsCase3() {
+            List<Integer> input = List.of(3,0);
+            String result = "3스트라이크";
+
+            InfoPrinter.printStrikesAndBalls(input);
+            assertThat(output()).isEqualTo(result);
+        }
+
+        @Test
+        void printStrikesAndBallsCase4() {
+            List<Integer> input = List.of(0,0);
+            String result = "낫싱";
+
+            InfoPrinter.printStrikesAndBalls(input);
+            assertThat(output()).isEqualTo(result);
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
