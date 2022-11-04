@@ -31,12 +31,12 @@ public class Game {
         Number computerNumber = new Number();
 
         computerNumber.setRandomNumber();
-        playerNumber.setNumber();
-
         computer = computerNumber.getNumber();
-        player = playerNumber.getNumber();
 
         while (!exit) {
+            playerNumber.setNumber();
+            player = playerNumber.getNumber();
+            
             strike = countStrike();
             ball = countBall();
             printCount();
