@@ -1,6 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,6 +13,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Nested
+    class NumberControllerTest {
+        @Test
+        void testGetUniqueThreeNumbersListLength() {
+            final int length = 3;
+            List<Integer> result = NumberController.getUniqueThreeNumbers();
+            assertThat(result.size()).isEqualTo(length);
+        }
+
+        @Test
+        void testGetUniqueThreeNumbersIsUnique() {
+            int[] oneToNine = new int[10];
+            Arrays.setAll(oneToNine, i -> 1);
+            List<Integer> result = NumberController.getUniqueThreeNumbers();
+            for (int num : result) {
+                oneToNine[num]--;
+                assertThat(oneToNine[num] == 0).isTrue();
+            }
+        }
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
