@@ -8,10 +8,12 @@ public enum Constant {
     INPUT_NUMBER("숫자를 입력해주세요 : ");
 
     private final String constant;
-    Constant(String constant){
+
+    Constant(String constant) {
         this.constant = constant;
     }
-    public String getConstant(){
+
+    public String getConstant() {
         return constant;
     }
 }

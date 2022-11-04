@@ -11,7 +11,6 @@ public class InputUtil {
     public InputUtil() {
     }
 
-
     public void inputUserNumbers() {
         System.out.print(Constant.INPUT_NUMBER.getConstant());
         String numbers = Console.readLine();
@@ -20,7 +19,7 @@ public class InputUtil {
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
-        checkLength(numbers);
+        checkLength(numbers,3);
         ArrayList<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length(); i++) {
             checkIsDigit(numbers.charAt(i));
@@ -50,8 +49,8 @@ public class InputUtil {
         }
     }
 
-    public void checkLength(String number) {
-        if (number.length() > 3) {
+    public void checkLength(String number,int length) {
+        if (number.length() != length) {
             throw new IllegalArgumentException(Constant.NUMBER_LENGTH_EXCEPTION.getConstant());
         }
     }
