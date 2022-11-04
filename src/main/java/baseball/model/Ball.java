@@ -10,6 +10,10 @@ public class Ball {
         this.position = position;
     }
 
+    public boolean isStrike(Ball other) {
+        return this.number == other.number && this.position == other.position;
+    }
+
     public boolean isBall(Ball other) {
         return this.number == other.number && this.position != other.position;
     }

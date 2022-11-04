@@ -12,7 +12,7 @@ public class Balls {
 
     public boolean hasStrike(Ball other) {
         for (Ball ball : balls) {
-            if (Objects.equals(ball, other)) {
+            if (ball.isStrike(other)) {
                 return true;
             }
         }
