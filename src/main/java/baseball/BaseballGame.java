@@ -10,10 +10,6 @@ import static baseball.Digits.DIGIT_COUNT;
 
 public class BaseballGame {
 
-    public BaseballGame() {
-
-    }
-
     private int getStrikeCount(Digits digits1, Digits digits2) {
         return (int) IntStream.range(0, DIGIT_COUNT)
                 .filter(idx -> digits1.get(idx) == digits2.get(idx))
@@ -30,5 +26,12 @@ public class BaseballGame {
 
     public Digits createRandomDigits() {
         return new Digits(Randoms.pickUniqueNumbersInRange(1, 9, DIGIT_COUNT));
+    }
+
+    public Result match(Digits digits1, Digits digits2) {
+        int strikeCount = getStrikeCount(digits1, digits2);
+        int ballCount = getBallCount(digits1, digits2);
+
+        return new Result(strikeCount, ballCount);
     }
 }
