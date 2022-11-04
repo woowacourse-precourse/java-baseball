@@ -46,7 +46,7 @@ public class NumberHandler {
                     .boxed()
                     .collect(Collectors.toList());
 
-            numberDuplicateCheck(userNumberList);
+            numberDuplicateAndZeroCheck(userNumberList);
             numberLengthCheck(userNumberList);
 
             this.userNumber = userNumberList;
@@ -55,12 +55,15 @@ public class NumberHandler {
         }
     }
 
-    public void numberDuplicateCheck(ArrayList<Integer> digits) {
+    public void numberDuplicateAndZeroCheck(ArrayList<Integer> digits) {
         for (int digit : digits) {
             if (Collections.frequency(digits, digit) > 1) {
                 throw new IllegalArgumentException("중복되는 숫자 없이 입력해주세요.");
             }
 
+            if (digit == 0) {
+                throw new IllegalArgumentException("입력 가능한 숫자 범위는 1 ~ 9 입니다.");
+            }
         }
     }
 

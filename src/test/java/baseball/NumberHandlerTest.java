@@ -92,5 +92,16 @@ class NumberHandlerTest {
                 .hasMessage("숫자 3개만 입력해주세요.");
     }
 
+    @Test
+    void 사용자_숫자_0_입력시() {
+        NumberHandler numberHandler = new NumberHandler();
+        ByteArrayInputStream in = new ByteArrayInputStream("170".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> numberHandler.setUserNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력 가능한 숫자 범위는 1 ~ 9 입니다.");
+    }
+
 
 }
