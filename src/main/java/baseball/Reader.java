@@ -10,7 +10,7 @@ public class Reader {
         return Integer.parseInt(Console.readLine());
     }
 
-    public int readInt(int min,int max) {
+    public int readInt(int min, int max) {
         try {
             int value = readInt();
             validateValue(value, min, max);
