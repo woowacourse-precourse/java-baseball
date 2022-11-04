@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 public class GameContext {
     private final static int ANSWER_LENGTH = 3;
     private final static int SELECTOR_LENGTH = 1;
+    private final static int SELECT_REPLAY = 1;
+    private final static int SELECT_EXIT = 2;
     private String answer;
     private String userInput;
     private GameState state;
@@ -52,8 +54,12 @@ public class GameContext {
 
         if (!isValidityInput(userInput))
             throw new IllegalArgumentException();
+
         if (shouldDecideBallCount(userInput))
             decideBallCount(userInput);
+        else if (shouldSelectRestartOrExit(userInput)) {
+            selectRestartOrExit(userInput);
+        }
     }
 
     private boolean isValidityInput(String userInput) {
@@ -83,6 +89,10 @@ public class GameContext {
 
     private boolean shouldDecideBallCount(String userInput) {
         return (state == GameState.RUNNING) && isNDigitNumberInRange(userInput, ANSWER_LENGTH);
+    }
+
+    private boolean shouldSelectRestartOrExit(String userInput) {
+        return (state == GameState.THREE_STRIKE) && isNDigitNumberInRange(userInput, SELECTOR_LENGTH);
     }
 
     private void decideBallCount(String userInput) {
@@ -120,10 +130,22 @@ public class GameContext {
             System.out.println("낫싱");
         else if (ball == 0 && strike != 0)
             System.out.println(String.format("%d스트라이크", strike));
-        else if ( ball != 0 && strike == 0)
+        else if (ball != 0 && strike == 0)
             System.out.println(String.format("%d볼", ball));
         else
             System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
 
+    }
+
+    private void selectRestartOrExit(String userInput) {
+        switch (Integer.parseInt(userInput)) {
+            case SELECT_REPLAY:
+                state = GameState.REPLAY;
+                break;
+            case SELECT_EXIT:
+                state = GameState.EXIT_NORMALLY;
+                break;
+            default: ;
+        }
     }
 }
