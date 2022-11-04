@@ -292,20 +292,7 @@ public class ComputerTest {
         assertThat(result).isTrue();
     }
 
-
-    @Test
-        // Computer.isEndTheGame
-    void 게임종료_확인_case_1() {
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        computer.isRealRightNumOfUser(123);
-        boolean result = computer.isEndTheGame();
-        assertThat(result).isTrue();
-    }
-
+    
     @Test
     void 컴퓨터가_유저에게_힌트를_준다() throws Exception {
         //given
@@ -356,6 +343,19 @@ public class ComputerTest {
         }
         // then
         assertThat(hintResult).containsAll(hints);
+    }
+
+    @Test
+        // Computer.isEndTheGame
+    void 게임종료_확인_case_1() {
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+        computer.isRealRightNumOfUser(123);
+        boolean result = computer.isEndTheGame();
+        assertThat(result).isTrue();
     }
 
     @Test
