@@ -22,7 +22,7 @@ public class BaseBall {
     }
 
     public void roundOfGame() {
-        System.out.println(Messages.inputNumber);
+        System.out.print(Messages.inputNumber);
         numberOfUser = user.input();
 
         Compare compare = new Compare(numberOfComputer, numberOfUser);
