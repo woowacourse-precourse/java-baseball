@@ -80,4 +80,18 @@ public class Application {
         return false;
     }
 
+    public static String getUserInputNumber() {
+        String userInputNumber = Console.readLine();
+        try {
+            if (isWrongInputNumber(userInputNumber)) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return userInputNumber;
+    }
+
+
 }
