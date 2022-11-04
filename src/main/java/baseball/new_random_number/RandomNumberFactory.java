@@ -11,11 +11,15 @@ public class RandomNumberFactory {
 
     public static Answer createNewAnswer() {
         List<Integer> randomNumbers = generateRandomNumber();
-        List<RandomNumber> randomNumberList = IntStream.range(0, randomNumbers.size())
-                .mapToObj(i -> new RandomNumber(i, randomNumbers.get(i)))
-                .collect(Collectors.toList());
+        List<RandomNumber> randomNumberList = integerToRandomNumber(randomNumbers);
 
         return new Answer(randomNumberList);
+    }
+
+    private static List<RandomNumber> integerToRandomNumber(List<Integer> randomNumbers) {
+        return IntStream.range(0, randomNumbers.size())
+                .mapToObj(i -> new RandomNumber(i, randomNumbers.get(i)))
+                .collect(Collectors.toList());
     }
 
     private static List<Integer> generateRandomNumber() {

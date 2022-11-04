@@ -7,7 +7,7 @@ public class Answer {
 
     private final List<RandomNumber> randomNumbers;
 
-    public Answer(List<RandomNumber> randomNumbers) {
+    Answer(List<RandomNumber> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
 
