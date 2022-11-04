@@ -10,10 +10,11 @@ public class BaseballGame {
     Scanner scanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
+        this.computerNumber = new int[3];
+        this.userNumber = new int[3];
     }
 
     public void makeRandomNumber() {
-        computerNumber = new int[3];
         boolean[] alreadyUsed = new boolean[10];
         Random random = new Random();
         for (int i = 0; i < 3; i++) {
@@ -32,6 +33,10 @@ public class BaseballGame {
         String userInput;
         int strike = 0;
         int ball = 0;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
+
         userInput = scanner.nextLine();
         if (invalidUserNumber(userInput)){
             throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -45,6 +50,7 @@ public class BaseballGame {
     }
     public boolean restartGame(){
         if (hint.strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return isContinue();
         } else {
             return true;
