@@ -16,6 +16,7 @@ public class BullsAndCows {
 
     private int STRIKE_COUNT = 0;
     private int BALL_COUNT = 0;
+    private final int STRIKE_COUNT_FOR_END = 3;
 
 
     BullsAndCows() {
@@ -78,5 +79,9 @@ public class BullsAndCows {
     private boolean isNothing() {
         return convertStringToCharList(userInput).stream()
                 .noneMatch(answerNumberList::contains);
+    }
+
+    public boolean isEnd() {
+        return STRIKE_COUNT == STRIKE_COUNT_FOR_END;
     }
 }
