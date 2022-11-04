@@ -18,4 +18,10 @@ public class Application {
 			throw new IllegalArgumentException("잘못된 입력입니다. 공의 개수가 3개 보다 적습니다.");
 		}
 	}
+
+	public static void checkMoreThanThreeException(String balls) {
+		if (balls.length() > 3) {
+			throw new IllegalArgumentException("잘못된 입력입니다. 공의 개수가 3개 보다 많습니다.");
+		}
+	}
 }
