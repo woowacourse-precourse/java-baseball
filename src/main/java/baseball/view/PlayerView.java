@@ -6,4 +6,16 @@ public class PlayerView {
     public PlayerView(){
         input = "";
     }
+
+    public void requestInput(){
+
+    }
+
+    public void readInput(){
+
+    }
+
+    public String getInput(){
+        return "";
+    }
 }
