@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ public class Application {
     public static void main(String[] args) {
         getStartMessage();
         List<Integer> answer = getRandomValue();
+        List<Integer> userInput;
+        makeException();
     }
 
     public static void getStartMessage() {
@@ -28,5 +31,19 @@ public class Application {
             }
         }
         return answer;
+    }
+
+    public static List<Integer> getUserInput() {
+
+            String input = Console.readLine();
+            List<Integer> inputList = new ArrayList<>();
+
+            if (input.length() > 3) {makeException();}
+
+            return inputList;
+    }
+
+    public static void makeException() {
+        throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해주십시오");
     }
 }
