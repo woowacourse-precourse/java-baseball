@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -31,6 +32,35 @@ public class UserTest {
         assertThat(result).isEqualTo(123);
     }
 
+    @Test
+        // 입력을 제대로 받았는지 확인
+        // 실수 입력받을때
+    void 문자_입력_예외_테스트_case_1() throws Exception {
+        //given
+        User user = new User();
+        String input = "문자를입력";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class,
+            user::getInputAllRightNumOfUser);
+    }
+
+    @Test
+        // 입력을 제대로 받았는지 확인
+        // 실수 입력받을때
+    void 문자_입력_예외_테스트_case_2() throws Exception {
+        //given
+        User user = new User();
+        String input = "-3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class,
+            user::getInputAllRightNumOfUser);
+    }
 //    @Test
 //    void 문자열을_숫자로_변환_case_1() {
 //        User user = new User();
