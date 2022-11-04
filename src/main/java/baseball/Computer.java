@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Computer {
 
+  private static final int RANGE_FIRST = 1;
+  private static final int RANGE_LAST = 9;
+  private static final int RANGE_RADIX = 10;
+
   public List<Character> makeRandomNum() {
     List<Character> characterList = new ArrayList<>();
 
@@ -35,6 +39,6 @@ public class Computer {
   }
 
   private Character oneRandomNumChar() {
-    return Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
+    return Character.forDigit(Randoms.pickNumberInRange(RANGE_FIRST, RANGE_LAST), RANGE_RADIX);
   }
 }
