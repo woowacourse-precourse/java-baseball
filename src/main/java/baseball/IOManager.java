@@ -28,6 +28,10 @@ public class IOManager {
         return 0;
     }
 
+    public static void correctAnswer() {
+        System.out.print(messages.get("CORRECT_ANSWER"));
+    }
+
     public static boolean inputRestart() throws IllegalArgumentException {
         System.out.print(messages.get("ASK_RESTART"));
         String line = in.nextLine();
