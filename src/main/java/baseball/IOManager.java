@@ -25,7 +25,7 @@ public class IOManager {
         return Integer.parseInt(line);
     }
 
-    public static String getHint(int ballNum, int strikeNum) {
+    public static void getHint(int ballNum, int strikeNum) {
         String hint = "";
 
         if(ballNum > 0)
@@ -38,7 +38,7 @@ public class IOManager {
         if(hint.length() == 0)
             hint = "낫싱";
 
-        return hint;
+        System.out.println(hint);
     }
 
     public static void correctAnswer() {
