@@ -2,7 +2,6 @@ package baseball.infrastructure.util;
 
 import baseball.domain.ConsoleInString;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -11,12 +10,13 @@ public class GamerInputNumberGenerator {
 
     private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
 
-    public static List<Integer> generator(ConsoleInString stringNumbers) {
-        if (!stringValidation(stringNumbers.inputString())) {
+    public static List<Integer> generator(ConsoleInString consoleInString) {
+        String generatedString = consoleInString.inputString();
+        if (!stringValidation(generatedString)) {
             throw new IllegalArgumentException();
         }
 
-        String[] stringArray = splitString(stringNumbers.inputString());
+        String[] stringArray = splitString(generatedString);
 
         return stringToListNumber(stringArray);
     }

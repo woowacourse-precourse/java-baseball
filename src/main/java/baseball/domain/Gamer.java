@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.infrastructure.util.ConsoleInStringImpl;
+import baseball.infrastructure.util.GamerInputNumberGenerator;
 import java.util.List;
 
 public class Gamer {
@@ -10,7 +12,7 @@ public class Gamer {
         gamerBalls.from(balls);
     }
 
-    public static Gamer from(List<Integer> balls) {
-        return Gamer.from(balls);
+    public static Gamer from(ConsoleInString consoleInString) {
+        return new Gamer(GamerInputNumberGenerator.generator(consoleInString));
     }
 }

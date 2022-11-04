@@ -7,11 +7,11 @@ public class Computer {
 
     private Balls computerBalls;
 
-    public Computer(List<Integer> balls) {
+    private Computer(List<Integer> balls) {
         computerBalls.from(balls);
     }
 
-    private static Computer init() {
+    public static Computer init() {
         return new Computer(ComputerRandomNumberGenerator.generate());
     }
 }
