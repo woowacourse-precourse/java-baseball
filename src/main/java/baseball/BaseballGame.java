@@ -1,26 +1,46 @@
 package baseball;
 
-public class BaseballGame {
+import baseball.verifiable.CheckDuplicatedInput;
+import baseball.verifiable.CheckInputLength;
+import baseball.verifiable.CheckInputRange;
+import baseball.verifier.MakeVerifierInputToBaseballGame;
+import baseball.verifier.MakeVerifierInputToEndOrNewGame;
+import baseball.verifier.Verifier;
 
-    public void play(){
+public class BaseballGame {
+    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
+
+    private static final String NEW_GAME = "1";
+
+    public void play() {
 
         View.printStartGame();
-        do{
+        do {
             playGame();
-        }while(isEndGame());
+        } while (isEndGame());
 
     }
 
-    public void playGame(){
+    public void playGame() {
 
     }
 
-    private boolean isEndGame(){
-        return  true;
+    public boolean isEndGame() {
+        View.printChoiceEndOrNewGame();
+        String userInput = View.getUserInput();
+        checkVerifierInputToEndOrNewGame(userInput);
+        return getResultToEndOrNewGame(userInput);
     }
 
-    private String getUserInput(){
+    private boolean getResultToEndOrNewGame(String input) {
+        return input.equals(NEW_GAME);
+    }
+
+    private void checkVerifierInputToEndOrNewGame(String input) {
+        verifierInputToEndOrNewGame.checkValid(input);
+    }
+
+    private String getUserInput() {
         return View.getUserInput();
     }
-
 }
