@@ -29,4 +29,14 @@ public class ErrorChecker {
             throw new IllegalArgumentException(DUPLICATE_NUMBER);
         }
     }
+
+    private int duplicateCount(String input, char word) {
+        int count = 0;
+        for(int index=0; index<input.length(); index++) {
+            if (word == input.charAt(index)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
