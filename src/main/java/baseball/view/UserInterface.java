@@ -16,7 +16,7 @@ public class UserInterface {
         number = scanner.nextInt();
         return number;
     }
-    public int gameRestart() {
+    public int checkGameRestart() {
         int number;
         Scanner scanner = new Scanner(System.in);
 
