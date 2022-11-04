@@ -20,7 +20,7 @@ public class UserInput {
     public boolean isStart(){
         String input = Console.readLine();
 
-        if (input == "1")
+        if (input.equals("1"))
             return true;
         return false;
     }
