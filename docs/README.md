@@ -32,3 +32,11 @@
 - [ ] 하나의 매개변수 안에 다른 매개변수의 요소가 포함되는 갯수를 checkedBallNumbers를 0으로 선언한다.
 - [ ] 매개변수들의 길이 만큼 반복하여, Ball인지 확인.
 - [ ] 값이 같으면, checkedBallNumbers에 1을 더함.
+
+## calculatedStrikeBallNumber
+- [ ] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
+- [ ] strikeNumber이 0보다 큰고 3보다 작은지 확인
+- [ ] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ball-strikeNumber로 초기화
+- [ ] strikeNumber이 3인지 확인
+- [ ] true이면 checkBaseBallNumbers의 strike : 3으로 초기화
+- [ ] checkedBaseballNumbers을 리턴
