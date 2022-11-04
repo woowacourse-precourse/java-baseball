@@ -21,16 +21,22 @@ public class Ball {
         }
     }
 
-    public boolean isStrike(Ball otherBall) {
+    public BallStatus play(Ball otherBall) {
+        if (this.isStrike(otherBall)) {
+            return BallStatus.STRIKE;
+        }
+        if (this.isBall(otherBall)) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+
+    private boolean isStrike(Ball otherBall) {
         return isSamePosition(otherBall) && isSameNumber(otherBall);
     }
 
-    public boolean isBall(Ball otherBall) {
+    private boolean isBall(Ball otherBall) {
         return !isSamePosition(otherBall) && isSameNumber(otherBall);
-    }
-
-    public boolean isNothing(Ball otherBall) {
-        return !isSamePosition(otherBall) && !isSameNumber(otherBall);
     }
 
     private boolean isSamePosition(Ball otherBall) {
@@ -41,13 +47,4 @@ public class Ball {
         return this.number == otherBall.number;
     }
 
-    public BallStatus play(Ball otherBall) {
-        if (isStrike(otherBall)) {
-            return BallStatus.STRIKE;
-        }
-        if (isBall(otherBall)) {
-            return BallStatus.BALL;
-        }
-        return BallStatus.NOTHING;
-    }
 }
