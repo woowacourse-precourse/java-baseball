@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.message.SystemMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,9 @@ public class Computer {
         this.computerNumber = computerNumber;
     }
 
-    public void initial() {
+    public void startGame() {
         setComputerNumber(createComputerNumber());
+        System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
     }
 
     public List<Integer> createComputerNumber() {
