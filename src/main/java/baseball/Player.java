@@ -28,7 +28,9 @@ public class Player {
      * @param inputNumbers 플레이어의 입력한 숫자들
      */
     private void setPlayerNumber(String inputNumbers) {
-        this.playerNumbers = toList(inputNumbers);
+        List<Integer> list = toList(inputNumbers);
+        isException(list);
+        this.playerNumbers = list;
     }
 
     /**
@@ -43,5 +45,11 @@ public class Player {
             list.add(Integer.parseInt(number));
         }
         return list;
+    }
+
+    private void isException(List<Integer> playerNumbers) throws IllegalArgumentException {
+        if (playerNumbers.size() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
