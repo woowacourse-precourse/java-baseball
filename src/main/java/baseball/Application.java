@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -23,26 +21,25 @@ public class Application {
 
 
     public static int makeRandomNumber() {
-        List<Integer> numList = new ArrayList<>();
+        String numList = "";
         for (int i = 0; i < 10; i++) {
             int num = (int) ((Math.random() * 9) + 1);
-            numList.add(num);
+            numList += num;
         }
+
         return removeRepetitionNumber(numList);
     }
 
 
-    public static int removeRepetitionNumber(List<Integer> numList) {
-        String tmp = "";
-
-        for (int i = 0; i < numList.size()-1; i++) {
-            if (numList.get(i) != numList.get(i+1)) tmp += numList.get(i);
+    public static int removeRepetitionNumber(String numList) {
+        String result = "";
+        for (int i = 0; i < numList.length(); i++) {
+            String number = String.valueOf(numList.charAt(i));
+            if (!(result.contains(number))) result += number;
         }
+        result = result.substring(0,3);
 
-        tmp += numList.get(numList.size()-1);
-        tmp = tmp.substring(0,3);
-
-        return Integer.parseInt(tmp);
+        return Integer.parseInt(result);
     }
 
 

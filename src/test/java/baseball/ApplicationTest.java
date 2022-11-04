@@ -13,20 +13,26 @@ import static org.assertj.core.api.Assertions.*;
 class ApplicationTest extends NsTest {
     @Test
     void listNumber1() {
-        List<Integer> list = List.of(1,2,3,4,5,6,7,8,9);
-        assertThat(Application.removeRepetitionNumber(list)).isEqualTo(123);
+        String numList = "123456789";
+        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
     }
 
     @Test
     void listNumber2() {
-        List<Integer> list = List.of(1,2,2,2,2,2,2,2,2,3);
-        assertThat(Application.removeRepetitionNumber(list)).isEqualTo(123);
+        String numList = "1222222223";
+        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
     }
 
     @Test
     void listNumber3() {
-        List<Integer> list = List.of(1,1,2,2,3,4,5);
-        assertThat(Application.removeRepetitionNumber(list)).isEqualTo(123);
+        String numList = "1122345678";
+        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
+    }
+
+    @Test
+    void removeRepetition() {
+        String numList = "484647168";
+        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(486);
     }
 
     @Test
