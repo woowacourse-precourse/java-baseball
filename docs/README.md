@@ -183,4 +183,23 @@ return void
 
 Argument: void
 
-Return Boolean
+Return: Boolean
+
+<br/>
+
+## (11). isWrongInputNumber(String userInputNumber)
+
+1. **기능**
+
+- 1 ~ 999 까지의 숫자를 입력했는지 확인
+- 332, 555와 같이 서로 다른 숫자를 입력하지 않은 경우를 확인
+
+2. **제한 사항**
+
+- 없음
+
+3. **Argument and Return**
+
+Argument: String
+
+Return: Boolean
