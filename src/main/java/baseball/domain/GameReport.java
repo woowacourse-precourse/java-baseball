@@ -35,14 +35,7 @@ public class GameReport {
     public boolean isNothing() {
         return this.nothing == 3;
     }
-
-    public boolean isNotNothingAndThreeStrike() {
-        if (this.strike != 0 && this.ball != 0) {
-            System.out.println(this.ball+"볼" + this.strike+"스트라이크");
-            return true;
-        }
-        return false;
-    }
+    
 
     public void clear() {
         this.ball = 0;
