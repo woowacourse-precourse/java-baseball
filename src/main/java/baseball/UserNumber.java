@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class UserNumber {
 
+    private static final int USER_INPUT_LENGTH = 3;
+
     public void getUserNumber() {
         String tempNumber = Console.readLine();
         userNumberValidator(tempNumber);
@@ -16,7 +18,11 @@ public class UserNumber {
     private void userNumberValidator(String tempNumber) {
         List<Character> numberList = tempNumber.chars()
                 .mapToObj(e->(char)e).collect(Collectors.toList());
-        if (numberList.size() != 3) {
+        checkUserInputLength(numberList);
+    }
+
+    private void checkUserInputLength(List<Character> numberList) {
+        if (numberList.size() != USER_INPUT_LENGTH) {
             throw new IllegalArgumentException("입력값의 길이가 3이 아닙니다.");
         }
     }
