@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Application {
     static List<Character> computerNumber;
+    static String errorMessage = "입력 형식에 맞지 않습니다 프로그램을 종료합니다.";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -67,7 +69,7 @@ public class Application {
             validateUserInputSize(userInput);
             validateUserInputForm(userInput);
         } catch (IllegalArgumentException e) {
-            System.out.println("입력 형식에 맞지 않습니다, 프로그램을 종료합니다.");
+            System.out.println(errorMessage);
             throw e;
         }
     }
@@ -85,5 +87,20 @@ public class Application {
             }
         }
         return null;
+    }
+
+    public static String giveHint(String userInput) {
+        int ballCount;
+        int strikeCount;
+        String hintMessage = "";
+
+        validateUserInput(userInput);
+
+        if(!checkNothing(userInput)) {
+            ballCount = checkBall(userInput);
+            strikeCount = checkStrike(userInput);
+        }
+
+        return hintMessage;
     }
 }

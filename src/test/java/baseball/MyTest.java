@@ -1,18 +1,19 @@
 package baseball;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.ThrowableAssert;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 public class MyTest {
-//    @BeforeEach
-//    void initComputerNumber() {
-//        Application application = new Application();
-//        application.initComputerNumber();
-//    }
+
+    @BeforeEach
+    void initComputerNumber() {
+        Application application = new Application();
+        application.initComputerNumber();
+    }
 
     @Test
     void computerNumberSizeTest() {
@@ -20,7 +21,7 @@ public class MyTest {
         Application.initComputerNumber();
         List<Character> computerNumber = Application.computerNumber;
         //when(실행)
-        
+
         //then(검증)
         Assertions.assertThat(computerNumber).size().isEqualTo(3);
     }
@@ -31,17 +32,17 @@ public class MyTest {
         Application.initComputerNumber();
         List<Character> computerNumber = Application.computerNumber;
         //when(실행)
-        
+
         //then(검증)
         for (int i = 0; i < 3; i++) {
-            Assertions.assertThat(computerNumber.get(i)).isBetween('1','9');
+            Assertions.assertThat(computerNumber.get(i)).isBetween('1', '9');
         }
     }
 
     @Test
     void checkStrike() {
         //given(준비)
-        Application.computerNumber = List.of('1','2','3');
+        Application.computerNumber = List.of('1', '2', '3');
 
         //when(실행)
         int strikeCount = Application.checkStrike("456");
@@ -53,7 +54,7 @@ public class MyTest {
     @Test
     void checkBall() {
         //given(준비)
-        Application.computerNumber = List.of('1','2','3');
+        Application.computerNumber = List.of('1', '2', '3');
 
         //when(실행)
         int ballCount = Application.checkBall("312");
@@ -65,7 +66,7 @@ public class MyTest {
     @Test
     void checkNothing() {
         //given(준비)
-        Application.computerNumber = List.of('1','2','3');
+        Application.computerNumber = List.of('1', '2', '3');
 
         //when(실행)
         boolean nothingFlag = Application.checkNothing("456");
@@ -106,7 +107,6 @@ public class MyTest {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
     }
-
 
 
 }
