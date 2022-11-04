@@ -35,15 +35,7 @@ public class Game {
         BallCount ballcounter = new BallCount();
 
         for (int idx = 0; idx < 3; idx++){
-            checkStrikeOrBall(user, ballcounter, idx);
-        }
-    }
-
-    private void checkStrikeOrBall(List<Integer> user, BallCount ballcounter, int idx) {
-        if (user.get(idx).equals(computer.get(idx))) {
-            ballcounter.plusStrike();
-        } else if (computer.contains(user.get(idx))) {
-            ballcounter.plusBall();
+            ballcounter.checkStrikeOrBall(user, computer, idx);
         }
     }
 }
