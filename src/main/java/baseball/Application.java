@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
+        gameStart();
     }
 
     private static String getRandomThreeDigitNumberString() {
@@ -98,4 +99,11 @@ public class Application {
         }
     }
 
+    private static void gameStart() {
+        String answer = getRandomThreeDigitNumberString();
+        int strike = 0;
+        while (checkGameOver(strike)) {
+            strike = compareUserInputToAnswer(userInput(), answer);
+        }
+    }
 }
