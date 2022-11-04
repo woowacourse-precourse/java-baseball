@@ -10,18 +10,26 @@ import java.util.List;
 import static constant.BaseballConstant.*;
 
 public class BaseballGame {
-    private static final List<Integer> computerNumbers = new ArrayList<>();
+    private static List<Integer> computerNumbers = new ArrayList<>();
     private static String userNumber;
     private static int strike = 0;
     private static int ball = 0;
+    private static boolean gameAvailable = true;
 
     public static void start() {
         makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
-        getUserNumber();
-        checkUserNumber();
-        compareComputerAndUser();
-        printMessage(getResult() + ENTER);
+
+        while (gameAvailable) {
+            getUserNumber();
+            checkUserNumber();
+            compareComputerAndUser();
+            printMessage(getResult() + ENTER);
+            checkCorrect();
+        }
+
+        printMessage(CORRECT_MESSAGE + ENTER);
+        printMessage(REGAME_MESSAGE + ENTER);
     }
 
     private static void makeRandomNumber() {
@@ -79,5 +87,18 @@ public class BaseballGame {
             resultMessage += strike + STRIKE_MESSAGE + SPACE;
         }
         return resultMessage;
+    }
+
+    private static void checkCorrect() {
+        if (strike == 3) {
+            resetResult();
+            gameAvailable = false;
+        }
+    }
+
+    private static void resetResult() {
+        computerNumbers = new ArrayList<>();
+        ball = 0;
+        strike = 0;
     }
 }
