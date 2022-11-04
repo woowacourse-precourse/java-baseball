@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class BaseballTest {
     @Test
     void 랜덤_숫자_확인() {
-        List<Integer> number = Baseball.getRandomNumber();
+        List<Integer> number = Baseball.getComputerNumber();
         Set<Integer> check = new HashSet<>(number);
         assertThat(number.size()).isEqualTo(3);
         assertThat(check.size()).isEqualTo(3);
