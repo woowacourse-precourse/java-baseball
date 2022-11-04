@@ -16,6 +16,11 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void haveInvalidLength_메소드로_유효하지_않은_길이의_입력에_대한_예외_처리() {
+		String input = "1243";
+		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+	}
+	@Test
 	void existInvalidLetter_메소드로_유효하지_않은_글자를_입력하는_예외_처리() {
 		String input = "2a3";
 		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
