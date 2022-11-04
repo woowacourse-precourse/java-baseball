@@ -10,4 +10,8 @@ public class NumberComparator {
     public NumberComparator(int numberSize) {
         this.numberSize = numberSize;
     }
+
+    private boolean isStrike(User user, Computer computer, int index) {
+        return user.getNumber(index) == computer.getNumber(index);
+    }
 }
