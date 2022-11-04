@@ -136,4 +136,30 @@ class GameValidationTest {
         //then
         assertThat(result).isFalse();
     }
+
+    @DisplayName("플레이어의 게임 숫자에 중복이 존재하지 않으면 true 반환한다.")
+    @Test
+    void validateDuplicationNotExist() {
+        //given
+        String number = "123";
+
+        //when
+        boolean result = GameValidation.validateRange(number);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("플레이어의 게임 숫자에 중복이 존재하면 false 반환한다.")
+    @Test
+    void validateDuplicationExist() {
+        //given
+        String number = "112";
+
+        //when
+        boolean result = GameValidation.validateDuplication(number);
+
+        //then
+        assertThat(result).isFalse();
+    }
 }
