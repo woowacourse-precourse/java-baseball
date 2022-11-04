@@ -10,14 +10,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String userInput;
-        int replayFlag = 0;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            startGame();
+        }
 
+    }
+
+    public static boolean startGame() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int replayFlag = 0;
+        String userInput;
         List<Integer> answer;
         answer = makeRandomNum();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> guess = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
@@ -38,10 +44,10 @@ public class Application {
                 printWrong(result);
                 replayFlag = 0;                 //(replayFlag) => 0 : 오답, 게임 계속 진행
             }
-            if(replayFlag==0)
-                continue;
-            else if(replayFlag==1)
-                continue;
+            if (replayFlag == 1)
+                return true;
+            else if (replayFlag == 1)
+                return false;
             else
                 continue;
         }
