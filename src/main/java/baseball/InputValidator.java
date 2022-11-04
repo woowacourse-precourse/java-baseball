@@ -5,5 +5,10 @@ public class InputValidator {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
