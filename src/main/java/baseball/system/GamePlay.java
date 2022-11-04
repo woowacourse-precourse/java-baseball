@@ -17,26 +17,26 @@ public class GamePlay {
 
     public void playGame(){
 
-        NumberComparison numberComparison = new NumberComparison();
-        List<Integer> computerNumbers = computer.getComputerNumberList();
-        numberComparison.setComputerNumbers(computerNumbers);
+        NumberComparison numberComparison = new NumberComparison(computer.getComputerNumbers());
 
         for(;;){
 
             printInputText();
-            String inputNumber = inputUserNumber();
+            String inputNumber = inputUserNumbers();
             user.setUser(inputNumber);
 
-            List<Integer> userNumbers = user.getUserNumberList();
+            List<Integer> userNumbers = user.getUserNumbers();
 
             if(numberComparison.startComparison(userNumbers)){
                 break;
             }
         }
 
+        printGameEndText();
+
     }
 
-    private String inputUserNumber() {
+    private String inputUserNumbers() {
         return Console.readLine();
     }
 
@@ -44,5 +44,8 @@ public class GamePlay {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    private void printGameEndText(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 
 }
