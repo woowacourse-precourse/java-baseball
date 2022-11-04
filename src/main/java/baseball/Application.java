@@ -22,6 +22,10 @@ public class Application {
     final static String MESSAGE_REQUEST_INPUT = "숫자를 입력해주세요 : ";
     final static String MESSAGE_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static String MESSAGE_RETRY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final static String MESSAGE_NOTHING = "낫싱";
+    final static String MESSAGE_BALL = "볼";
+    final static String MESSAGE_BLANK = " ";
+    final static String MESSAGE_STRIKE = "스트라이크";
     final static String FLAG_RETRY_STRING = "1";
     final static String FLAG_STOP_STRING = "2";
     final static String PATTERN = "^[" + MIN_PATTERN_VALUE +
@@ -138,5 +142,20 @@ public class Application {
         printCompareResult(strike, ball);
 
         return strike;
+    }
+
+    private static void printCompareResult(int strike, int ball) {
+        if(strike == ZERO && ball == ZERO) {
+            System.out.println(MESSAGE_NOTHING);
+        }
+        if(strike == ZERO && ball != ZERO) {
+            System.out.println(ball + MESSAGE_BALL);
+        }
+        if(strike != ZERO && ball == ZERO) {
+            System.out.println(strike + MESSAGE_STRIKE);
+        }
+        if(strike != ZERO && ball != ZERO) {
+            System.out.println(ball + MESSAGE_BALL + MESSAGE_BLANK + strike + MESSAGE_STRIKE);
+        }
     }
 }
