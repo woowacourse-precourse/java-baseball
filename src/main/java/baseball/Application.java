@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class Application {
     private static final int NUMBER_LENGTH = 3;
+    private static int strike;
+    private static int ball;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -48,9 +50,9 @@ public class Application {
         }
     }
 
-    private static List<Integer> baseballGame(List<Integer> userNumber, List<Integer> computerNumber) {
-        int strike = 0;
-        int ball = 0;
+    private static void countStrikeAndBall(List<Integer> userNumber, List<Integer> computerNumber) {
+        strike = 0;
+        ball = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int userDigit = userNumber.get(i);
             int computerDigit = computerNumber.get(i);
@@ -61,6 +63,5 @@ public class Application {
                 ball++;
             }
         }
-        return List.of(strike, ball);
     }
 }
