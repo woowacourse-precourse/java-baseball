@@ -22,12 +22,20 @@ public class PlayerUser {
 	}
 
 	private boolean isNoDuplicatedNumber(String number) {
-
+		int numberSize = number.length();
+		for (int i = 0; i < numberSize - 1; i++) {
+			String subNumber = number.substring(i + 1);
+			String digit = "" + number.charAt(i);
+			if (subNumber.contains(digit)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private boolean isPositiveNumber(String number) {
 		for (char elem : number.toCharArray()) {
-			if (elem < '1' && elem > '9') {
+			if (elem >= '1' && elem <= '9') {
 				return false;
 			}
 		}
