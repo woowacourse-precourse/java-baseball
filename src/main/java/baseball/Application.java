@@ -50,7 +50,7 @@ public class Application {
 
 
     static class Nums{
-        private Integer[] inputNums;
+        public Integer[] inputNums;
         Nums(String inputData) throws Exception  {
             if(!isValidLength(inputData.length())) throw new IllegalArgumentException() ;
             Set<Integer> sets = InputToSet(inputData);

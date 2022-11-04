@@ -55,4 +55,17 @@ public class FeatureListTest {
         );
     }
 
+    @Test
+    void 사용자_입력값_확인() {
+        String s = "542";
+        Integer[] test = new Integer[]{5, 4, 2};
+        try {
+            Nums nums = new Nums(s);
+            assertThat(nums.inputNums).isEqualTo(test);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
