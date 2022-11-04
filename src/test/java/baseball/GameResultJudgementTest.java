@@ -13,7 +13,7 @@ class GameResultJudgementTest {
   GameResultJudgement judge;
 
   @BeforeEach
-  void GameResultJudgmentCreate() {
+  void GameResultJudgementCreate() {
     judge = new GameResultJudgement(3);
   }
 
@@ -80,5 +80,13 @@ class GameResultJudgementTest {
     assertBall("123", "123", 0);
     assertBall("789", "762", 0);
     assertBall("789", "289", 0);
+  }
+  @Test
+  @Order(8)
+  @DisplayName("낫싱 확인")
+  void JudgeNothing() {
+    assertBall("123", "678", 1);
+    assertBall("789", "123", 1);
+    assertBall("789", "456", 1);
   }
 }
