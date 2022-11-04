@@ -2,18 +2,27 @@ package domain;
 
 import Controller.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static List<Integer> number_List;
-    public static void number_set(){
-        Computer.number_List= game.get_ThreeRandomNumbers();
+    public static List<Integer> number_List;
+
+    public static Computer getInstance(){
+        return new Computer();
     }
-    public static String number_get(){
+
+    public void setNumber(){
+        Computer.number_List=game.get_ThreeRandomNumbers();
+    }
+
+    public static String getNumber(){
         String numbers="";
+
         for (Integer item : Computer.number_List){
-            numbers.concat(String.valueOf(item));
+            numbers+=Integer.toString(item);
         }
+
         return numbers;
     }
 }
