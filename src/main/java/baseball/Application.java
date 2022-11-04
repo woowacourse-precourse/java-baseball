@@ -3,7 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -48,5 +51,15 @@ public class Application {
                 cnt++;
         }
         return cnt;
+    }
+
+    public static int countBall(Integer[] realAnswer, Integer[] userAnswer, int strike){
+        int cnt = 0;
+        Set answerSet = new HashSet(Arrays.asList(realAnswer));
+        for(int i = 0; i<3; i++){
+            if(answerSet.contains(userAnswer[i]))
+                cnt++;
+        }
+        return cnt - strike;
     }
 }
