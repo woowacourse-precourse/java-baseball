@@ -14,6 +14,12 @@ public class Input {
     return stringToList(inputString);
   }
 
+  // 테스트용 메소드
+  public void printInputString(String inputString) {
+    validStringLength(inputString);
+    System.out.println(stringToList(inputString)); // [1, 2, 3]
+  }
+
   private List<Character> stringToList(String inputString) {
     List<Character> list = new ArrayList<>();
     for (int i = 0; i < inputString.length(); i++) {
