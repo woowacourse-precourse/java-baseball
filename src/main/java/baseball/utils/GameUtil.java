@@ -1,11 +1,9 @@
 package baseball.utils;
 
+import baseball.Scoreboard;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class GameUtil {
     public static List<Integer> splitNumberToOneDigits(int number) {
@@ -21,9 +19,32 @@ public class GameUtil {
         return oneDigitNumbers;
     }
 
-    public static List<Integer> compareNumber(int computer, int player) {
-        return List.of(0, 0);
+    public static Scoreboard compareNumber(int computer, int player) {
+        List<Integer> oneDigitComputerNumbers = splitNumberToOneDigits(computer);
+        List<Integer> oneDigitPlayerNumbers = splitNumberToOneDigits(player);
+
+        if (oneDigitComputerNumbers.equals(oneDigitPlayerNumbers)) {
+            return new Scoreboard(0, 3); // 3스트라이크
+        }
+
+        Scoreboard scoreboard = new Scoreboard();
+        List<Integer> retainOneDigitNumbers = new ArrayList<>(oneDigitComputerNumbers);
+
+        retainOneDigitNumbers.retainAll(oneDigitPlayerNumbers);
+
+        for (int number : retainOneDigitNumbers) {
+            if (oneDigitComputerNumbers.indexOf(number) == oneDigitPlayerNumbers.indexOf(number)) {
+                scoreboard.addStrikePoint();
+                continue;
+            }
+
+            scoreboard.addBallPoint();
+        }
+
+        return scoreboard;
     }
+
+
 
     public static int pickNumber(int numberDigit) {
         int number = pickOneDigitNumber();
