@@ -8,17 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballGame {
-    public List<Integer> pickTargetNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
     public List<Integer> checkUserNumber(String userInput) throws IllegalArgumentException {
         if (illegalInput(userInput)) {
             throw new IllegalArgumentException();

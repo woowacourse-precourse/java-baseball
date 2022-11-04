@@ -20,13 +20,6 @@ public class BaseballGameTest {
     }
 
     @Test
-    void create_computer_number() {
-        List<Integer> computer = game.pickTargetNumber();
-        Set<Integer> numberSet = new HashSet<>(computer);
-        assertThat(computer.size()).isEqualTo(numberSet.size());
-    }
-
-    @Test
     void check_user_number_test() {
         assertThat(game.checkUserNumber("123")).isEqualTo(List.of(1, 2, 3));
         assertThat(game.checkUserNumber("359")).isEqualTo(List.of(3, 5, 9));
