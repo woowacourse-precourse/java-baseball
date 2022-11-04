@@ -16,6 +16,22 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
 
+    @DisplayName("입력된 수가 중복되어 있는 경우 Exception 발생하는지 테스트")
+    @Test
+    void checkDuplicationTest() {
+
+        String inputNumber = "112";
+        boolean isTestSuccess = false;
+
+        try {
+            Application.checkDuplication(inputNumber);
+        } catch (IllegalArgumentException e) {
+            isTestSuccess = true;
+        }
+
+        assertThat(isTestSuccess).isTrue();
+    }
+
     @DisplayName("입력된 수가 3이 아닐경우 Exception 발생하는지 테스트")
     @Test
     void checkLengthTest() {
