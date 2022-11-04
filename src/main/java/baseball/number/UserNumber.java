@@ -2,8 +2,6 @@ package baseball.number;
 
 import baseball.util.Validation;
 
-import java.util.List;
-
 import static baseball.util.Constant.*;
 import static baseball.util.Util.convertStringToIntegerList;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -32,13 +30,6 @@ public abstract class UserNumber {
                     return false;
             }
             return true;
-        }
-
-        private static boolean validateNumberNotRepeated(List<Integer> numbers, int numbersSize) {
-            return numbers
-                    .stream()
-                    .distinct()
-                    .count() == numbersSize;
         }
     }
 }
