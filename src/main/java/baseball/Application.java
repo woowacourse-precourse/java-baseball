@@ -46,6 +46,15 @@ public class Application {
     }
 
     private static void checkSuccess(int strikeCount) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        if (strikeCount == SIZE) {
+            System.out.println(SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            int toBeContinue = Integer.valueOf(br.readLine());
+            //checkAgainGame(toBeContinue);
+        }
+
         return;
     }
 }
