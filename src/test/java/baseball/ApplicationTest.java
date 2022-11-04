@@ -11,10 +11,16 @@ import org.junit.jupiter.api.Test;
 
 import User.Input;
 import User.Outputs;
+import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
 
+	@Test
+	void existDuplicateNumber_메소드로_중복된_숫자를_입력하는_예외_처리() {
+		String input = "233";
+		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+	}
 	@Test
 	void getUserInput_메소드로_유저_입력_받기() {
 		String input = "768";
