@@ -37,9 +37,7 @@ class ApplicationTest extends NsTest {
         int result = 3;
         gameManager.createComputerBaseballNumber();
 
-        Field randomNumberFiled = gameManager.getClass().getDeclaredField("computerBaseballNumber");
-        randomNumberFiled.setAccessible(true);
-        List<Integer> computerRandomNumbers = (List<Integer>) randomNumberFiled.get(gameManager);
+        List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
 
         assertThat(computerRandomNumbers.size()).isEqualTo(result);
     }
@@ -49,11 +47,15 @@ class ApplicationTest extends NsTest {
         GameManager gameManager = new GameManager();
 
         gameManager.createComputerBaseballNumber();
-        Field randomNumberFiled = gameManager.getClass().getDeclaredField("computerBaseballNumber");
-        randomNumberFiled.setAccessible(true);
-        List<Integer> computerRandomNumbers = (List<Integer>) randomNumberFiled.get(gameManager);
-
+        List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
 
         assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
+    }
+
+    Object getPrivateField(String name, Object transferObject) throws Exception {
+        Field privateFiled = transferObject.getClass().getDeclaredField(name);
+        privateFiled.setAccessible(true);
+
+        return privateFiled.get(transferObject);
     }
 }
