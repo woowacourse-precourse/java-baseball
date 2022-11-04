@@ -48,8 +48,9 @@ public class Application {
             }
         } // end of While
 
-        // TODO: 모든 시도 데이터 보여주기
+        database.addData(new Data(LocalDateTime.now(), tryCount));
         gameIO.printFinishLog();
+        database.showAllData();
     }
 
     public String generateAnswer() {

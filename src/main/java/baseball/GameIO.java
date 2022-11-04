@@ -64,7 +64,7 @@ public class GameIO {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public void printFinishLog() {
-        System.out.println("게임을 종료합니다. 즐거우셨나요?");
+        System.out.println("게임을 종료합니다. 즐거우셨나요?\n아래는 모든 시도 결과입니다!");
     }
     public void printResult(String result) {
         System.out.println(result);

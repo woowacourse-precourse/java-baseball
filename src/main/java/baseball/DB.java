@@ -19,8 +19,11 @@ public class DB {
         database.add(data);
     }
 
-    public List<Data> getAllData() {
-        return this.database;
+    public void showAllData() {
+        for(int index = 0; index < database.size(); index++) {
+            System.out.print((index+1) + "번 째 시도 --> ");
+            System.out.println(database.get(index));
+        }
     }
 
     public Data getData(Data data) {
