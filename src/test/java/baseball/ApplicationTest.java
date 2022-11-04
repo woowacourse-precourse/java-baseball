@@ -60,6 +60,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void userInput5() {
+        int num = (int) (Math.random()*1000)+1;
+        System.out.println("num = " + num);
+
+        if (!(num >= 100 && num < 1000)) {
+            assertThatThrownBy(() -> Application.exceptionHandler(num))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("n은 세자리 숫자입니다.");
+        }
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
