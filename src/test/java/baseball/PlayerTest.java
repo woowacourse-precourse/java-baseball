@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
@@ -95,5 +96,11 @@ public class PlayerTest {
             player.validateStateNumber("3");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
+    }
+
+    @Test
+    void 재시작_여부_테스트() {
+        assertTrue(player.isRestart(Config.STATE_RESTART));
+        assertFalse(player.isRestart(Config.STATE_SHUTDOWN));
     }
 }
