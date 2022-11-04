@@ -11,10 +11,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
     public static void play(List<String> computerNumber) {
-        Map<Score, Integer> score = new HashMap<>(3);
-        initializeScore(score);
+        boolean isFinished = false;
+        Map<Score, Integer> score;
 
-        while (score.get(STRIKE) != 3) {
+        while (!isFinished) {
+            score = new HashMap<>(3);
+            initializeScore(score);
+
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
             if (!isValidLength(userInput, 3) || !isExistOnlyNumber(userInput)) {
                 throw new IllegalArgumentException();
@@ -23,6 +26,7 @@ public class Game {
             compare(computerNumber, userInput, score);
 
             printResult(score);
+            isFinished = score.get(STRIKE) == 3;
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
