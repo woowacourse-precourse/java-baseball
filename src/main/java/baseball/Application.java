@@ -34,11 +34,35 @@ public class Application {
                 break;
             }
 
-            // List<Integer> counts = getEachCounts(computer, user);
-            // printBallStrike(counts);
+            List<Integer> counts = getEachCounts(computer, user);
+            printBallStrike(counts);
         }
     }
+    private static List<Integer> getEachCounts(List<Integer> computer, List<Integer> user) {
 
+        List<Integer> counts = new ArrayList<>();
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < SIZE; i++) {
+            int computerNumber = computer.get(i);
+            int userNumber = user.get(i);
+
+            if (userNumber == computerNumber) {
+                strikeCount++;
+                continue;
+            }
+            if (computer.contains(userNumber)) {
+                ballCount++;
+            }
+        }
+
+        counts.add(strikeCount);
+        counts.add(ballCount);
+
+        return counts;
+    }
 
     private static boolean checkUserError(List<Integer> user) {
 
