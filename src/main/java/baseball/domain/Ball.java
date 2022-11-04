@@ -40,4 +40,9 @@ public class Ball {
         result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
     }
+
+    public BallStatus eachBallMatch(Ball computerBall) {
+        return BallStatus.BALL;
+    }
+
 }
