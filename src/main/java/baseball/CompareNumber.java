@@ -5,15 +5,13 @@ import java.util.List;
 public class CompareNumber {
     public static Ball compare(List<Integer> computer, List<Integer> input) {
         Ball ball = new Ball();
-        ball.setBall(0);
-        ball.setStrike(0);
 
         for (int i = 0; i < input.size(); i++) {
             if (isBall(computer, i, input.get(i))) {
-                ball.setBall(ball.getBall() + 1);
+                ball.increaseBall();
             }
             else if (isStrike(computer, i, input.get(i))) {
-                ball.setStrike(ball.getStrike() + 1);
+                ball.increaseStrike();
             }
         }
 

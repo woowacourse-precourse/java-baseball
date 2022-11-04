@@ -4,6 +4,19 @@ public class Ball {
     private int ball;
     private int strike;
 
+    public Ball() {
+        this.ball = 0;
+        this.strike = 0;
+    }
+
+    public void increaseBall() {
+        setBall(getBall() + 1);
+    }
+
+    public void increaseStrike() {
+        setStrike(getStrike() + 1);
+    }
+
     public int getBall() {
         return this.ball;
     }
