@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static baseball.Constant.*;
@@ -25,5 +26,19 @@ public class Hint {
             digitHints.add(hint);
         }
         return digitHints;
+    }
+
+    public static String finalHint(List<String> digitHints) {
+        int strikes = Collections.frequency(digitHints, STRIKE);
+        int balls = Collections.frequency(digitHints, BALL);
+        int nothings = Collections.frequency(digitHints, NOTHING);
+
+        if (nothings == 3)
+            return NOTHING;
+        if (strikes > 0 && balls == 0)
+            return (strikes + STRIKE);
+        if (strikes == 0 && balls > 0)
+            return (balls + BALL);
+        return (balls + BALL + " " + strikes + STRIKE);
     }
 }
