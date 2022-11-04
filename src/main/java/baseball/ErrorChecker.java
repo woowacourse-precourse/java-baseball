@@ -67,4 +67,9 @@ public class ErrorChecker {
         return input.length() != numberSize;
     }
 
+    public void checkContinueGameError(String input) throws IllegalArgumentException {
+        if (isIllegalContinueGameInput(input)) {
+            throw new IllegalArgumentException(ILLEGAL_INPUT);
+        }
+    }
 }
