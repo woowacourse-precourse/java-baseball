@@ -36,21 +36,21 @@ public class Computer {
 
     public String playGame(List<Integer> playerNumber) {
         List<Integer> computerNumber = getComputerNumber();
-        int strikeCnt = 0;
-        int ballCnt = 0;
+        int strikeCount = 0;
+        int ballCount = 0;
         for (int i = 0; i < playerNumber.size(); i++) {
             for (int j = 0; j < computerNumber.size(); j++) {
                 if (playerNumber.get(i).equals(computerNumber.get(j))) {
-                    strikeCnt = getCount(i == j, strikeCnt);
-                    ballCnt = getCount(i != j, ballCnt);
+                    strikeCount = getCount(i == j, strikeCount);
+                    ballCount = getCount(i != j, ballCount);
                 }
             }
         }
-        return getResult(strikeCnt, ballCnt);
+        return getResult(strikeCount, ballCount);
     }
 
-    private int getCount(boolean i, int count) {
-        if (i) {
+    private int getCount(boolean condition, int count) {
+        if (condition) {
             count++;
         }
         return count;
