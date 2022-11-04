@@ -53,4 +53,23 @@ public class PlayerTest {
         number = "";
         assertThat(player.isThreeLetter(number)).isEqualTo(result);
     }
+
+    @Test
+    void isAllDifferentTest() {
+        Player player = new Player();
+        boolean result = true;
+        String number = "abc";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+        number = "8n3";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+        number = "827";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+        result = false;
+        number = "0o0";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+        number = "100";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+        number = "tnt";
+        assertThat(player.isAllDifferent(number)).isEqualTo(result);
+    }
 }
