@@ -62,11 +62,29 @@ public class Application {
     public static void playGame(int computerInput, int userInput) {
         System.out.println("computerInput = " + computerInput);
         System.out.println("userInput = " + userInput);
+        int strikeCount = checkStrikeCount(computerInput, userInput);
 
-        if (computerInput == userInput) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n");
+        while (true){
+            if (strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n");
+                break;
+            }
         }
     }
+
+
+    public static int checkStrikeCount(int computerInput, int userInput) {
+        String computer = ""+computerInput;
+        String user = ""+userInput;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.charAt(i) == user.charAt(i)) strike++;
+        }
+        return strike;
+    }
+
+
 
     public static int restartOrEndGame() {
         Scanner sc = new Scanner(System.in);
