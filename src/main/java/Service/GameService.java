@@ -15,7 +15,7 @@ public class GameService {
     UserNumber userNumber = new UserNumber();
     UserValidate userValidate = new UserValidate();
     Game game;
-    SystemMessage systemMessage;
+    SystemMessage systemMessage = new SystemMessage();
 
     public void set_game(){
         randomNumber.setRandomNumber();
@@ -23,6 +23,7 @@ public class GameService {
     }
 
     public void play_game(){
+        systemMessage.game_start();
         int strike = 0;
         while(strike != 3){
             play();
@@ -32,7 +33,6 @@ public class GameService {
     }
 
     public void play(){
-        systemMessage.game_start();
         game.initialize();
         userNumber.setUser_numbers(getUserNumber());
         score_calculate(userNumber.getUser_numbers(), game.getGame_numbers());
