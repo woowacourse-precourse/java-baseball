@@ -12,8 +12,8 @@ public class Feat1Test {
 
     @Test
     void 랜덤_생성_숫자_검증(){
-
-        List<Integer> randomNumber = Number.getRandomNumber();
+        Number makeNumber = new Number();
+        List<Integer> randomNumber = makeNumber.getRandomNumber();
 
         assertThat(randomNumber.size())
                 .isEqualTo(3);

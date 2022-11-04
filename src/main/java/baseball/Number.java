@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Number {
 
-    public static List<Integer> getRandomNumber(){
+    public List<Integer> getRandomNumber(){
 
         List<Integer> number = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Number {
         return number;
     }
 
-    public static List<Integer> inputUserNumber(){
+    public List<Integer> inputUserNumber(){
 
         String userNumberString = Console.readLine();
         List<Integer> userNumberList = Arrays.stream(userNumberString.split(""))
@@ -36,7 +36,7 @@ public class Number {
         return userNumberList;
     }
 
-    public static List<Integer> inputNumberForTest(String number){
+    public List<Integer> inputNumberForTest(String number){
 
         String userNumberString = number;
         List<Integer> userNumberList = Arrays.stream(userNumberString.split(""))
@@ -50,14 +50,14 @@ public class Number {
         return userNumberList;
     }
 
-    public static void checkUserNumberLength(List<Integer> userNumberList){
+    public void checkUserNumberLength(List<Integer> userNumberList){
 
         if(userNumberList.size() != 3){
             throw new IllegalArgumentException();
         }
     }
 
-    public static void checkUserNumberDuplicate(List<Integer> userNumberList){
+    public void checkUserNumberDuplicate(List<Integer> userNumberList){
 
         Set<Integer> numSet = new HashSet<>(userNumberList);
 
@@ -66,7 +66,7 @@ public class Number {
         }
     }
 
-    public static void checkUserNumberRange(List<Integer> userNumberList){
+    public void checkUserNumberRange(List<Integer> userNumberList){
 
         if (userNumberList.contains(0)){
             throw new IllegalArgumentException();
