@@ -7,6 +7,9 @@ import java.util.List;
 public class BaseBallGame {
     private final List<Integer> computerRandomThreeValue;
 
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
+
     public BaseBallGame(List<Integer> computerRandomThreeValue) {
         this.computerRandomThreeValue = List.copyOf(computerRandomThreeValue);
     }
@@ -18,7 +21,7 @@ public class BaseBallGame {
 
             userData = Console.readLine();
             List<Integer> ballStrikeCount = computerRandomCompareToUserInput(computerRandomThreeValue, userData);
-
+            printByBallAndStrikeCount(ballStrikeCount);
         } while (false);
     }
 
@@ -39,5 +42,20 @@ public class BaseBallGame {
         }
 
         return List.of(ballCount, strikeCount);
+    }
+
+
+    private static void printByBallAndStrikeCount (List<Integer> ballStrikeCount) {
+        if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
+            // printCode
+            return;
+        }
+
+        if (ballStrikeCount.get(STRIKE) == 3) {
+            // printCode
+            return;
+        }
+
+        // printCode
     }
 }
