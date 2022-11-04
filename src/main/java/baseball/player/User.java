@@ -5,59 +5,60 @@ import java.util.List;
 
 public class User {
 
-    private List<Integer> userNumberList;
+    private List<Integer> userNumbers;
 
-    public void setUser(String inputNumber){
-        this.userNumberList = generateNumberList(inputNumber);
+    public void setUser(String inputNumbers) {
+        this.userNumbers = generateNumbers(inputNumbers);
     }
 
-    private List<Integer> generateNumberList(String inputNumber) throws IllegalArgumentException {
+    private List<Integer> generateNumbers(String inputNumbers) throws IllegalArgumentException {
 
-        if (isNotNumber(inputNumber)) {
+        if (isNotNumber(inputNumbers)) {
             throw new IllegalArgumentException();
         }
 
-        List<Integer> numberList = changeStringToInteger(inputNumber);
+        List<Integer> numbers = changeStringToInteger(inputNumbers);
 
-        if (isNotThreeLength(numberList) || isDuplication(numberList)) {
+        if (isNotThreeLength(numbers) || isDuplication(numbers)) {
             throw new IllegalArgumentException();
         }
 
-        return numberList;
+        return numbers;
 
     }
 
-    private boolean isDuplication(List<Integer> numberList) {
-        return numberList.size() != numberList.stream().distinct().count();
+    private boolean isDuplication(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
     }
 
-    private boolean isNotThreeLength(List<Integer> numberList) {
-        return numberList.size() != 3;
+    private boolean isNotThreeLength(List<Integer> numbers) {
+        return numbers.size() != 3;
     }
 
-    private List<Integer> changeStringToInteger(String inputNumber) {
+    private List<Integer> changeStringToInteger(String inputNumbers) {
 
-        List<Integer> numberList = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
 
-        for(int indexNumber=0; indexNumber<inputNumber.length(); indexNumber++){
+        for (int index = 0; index < inputNumbers.length(); index++) {
 
-            String stringNumber = String.valueOf(inputNumber.charAt(indexNumber));
+            String stringNumber = String.valueOf(inputNumbers.charAt(index));
             int integerNumber = Integer.parseInt(stringNumber);
 
-            numberList.add(integerNumber);
+            numbers.add(integerNumber);
 
         }
 
-        return numberList;
+        return numbers;
 
     }
 
-    private boolean isNotNumber(String inputNumber) {
+    private boolean isNotNumber(String inputNumbers) {
 
-        for(int indexNumber=0; indexNumber<inputNumber.length(); indexNumber++){
-            char ch = inputNumber.charAt(indexNumber);
+        for (int index = 0; index < inputNumbers.length(); index++) {
 
-            if(!Character.isDigit(ch) || ch == '0'){
+            char ch = inputNumbers.charAt(index);
+
+            if (!Character.isDigit(ch) || ch == '0') {
                 return true;
             }
         }
@@ -66,7 +67,7 @@ public class User {
 
     }
 
-    public List<Integer> getUserNumberList() {
-        return userNumberList;
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
 }

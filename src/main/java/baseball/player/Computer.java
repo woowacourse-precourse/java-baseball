@@ -9,40 +9,39 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-    private List<Integer> computerNumberList;
+    private List<Integer> computerNumbers;
 
     public Computer() {
-        this.computerNumberList = generateRandomThreeNumbers();
-
+        this.computerNumbers = generateRandomThreeNumbers();
     }
 
     private List<Integer> generateRandomThreeNumbers() {
 
-        List<Integer> numberList = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
 
         for (; ; ) {
 
-            numberList.clear();
+            numbers.clear();
 
-            for (; numberList.size() < 3; ) {
+            for (; numbers.size() < 3; ) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
-                numberList.add(randomNumber);
+                numbers.add(randomNumber);
             }
 
-            if (isNotDuplication(numberList)) {
+            if (isNotDuplication(numbers)) {
                 break;
             }
 
         }
 
-        return numberList;
+        return numbers;
     }
 
-    private boolean isNotDuplication(List<Integer> numberList) {
-        return numberList.size() == numberList.stream().distinct().count();
+    private boolean isNotDuplication(List<Integer> numbers) {
+        return numbers.size() == numbers.stream().distinct().count();
     }
 
-    public List<Integer> getComputerNumberList() {
-        return computerNumberList;
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 }
