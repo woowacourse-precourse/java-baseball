@@ -1,15 +1,16 @@
-package baseball;
+package baseball.utils;
 
+import baseball.domain.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.ConstVariable.*;
+import static baseball.domain.ConstVariable.*;
 
 public class RandomUtil {
 
-    static Balls makeRandomComputerBalls() {
+    public static Balls makeRandomComputerBalls() {
         List<Integer> comBalls = new ArrayList<>();
         while (comBalls.size() < VALID_CNT) {
             addNotDuplicatedRandomNumber(comBalls, Randoms.pickNumberInRange(MIN, MAX));

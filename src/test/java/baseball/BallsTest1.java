@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.Ball;
+import baseball.domain.BallStatus;
+import baseball.domain.Balls;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

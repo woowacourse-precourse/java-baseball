@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.ConstVariable.THREE_STRIKE;
+import static baseball.domain.ConstVariable.THREE_STRIKE;
 
 public class Result {
     private int ball;

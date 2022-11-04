@@ -1,10 +1,10 @@
-package baseball;
+package baseball.utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static baseball.ConstVariable.*;
+import static baseball.domain.ConstVariable.*;
 
 public class ValidationUtil {
 

@@ -1,10 +1,11 @@
-package baseball;
+package baseball.domain;
 
+import baseball.utils.ValidationUtil;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.ConstVariable.VALID_CNT;
+import static baseball.domain.ConstVariable.VALID_CNT;
 
 public class Game {
     private boolean isNotOver = true;

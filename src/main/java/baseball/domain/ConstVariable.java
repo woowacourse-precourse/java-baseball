@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public class ConstVariable {
     public static final int MIN = 1;

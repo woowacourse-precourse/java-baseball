@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.ValidationUtil;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
