@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Number {
 
@@ -29,6 +30,13 @@ public class Number {
         }
 
         return computerNumbers;
+    }
+
+    public List<Integer> convertStringtoIntegerList(String answer) {
+        List<String> stringAnswers = List.of(answer.split(""));
+        List<Integer> numberAnswers = stringAnswers.stream().map(Integer::valueOf).collect(Collectors.toList());
+
+        return numberAnswers;
     }
 
     public boolean isValidAnswer(String answer) {
