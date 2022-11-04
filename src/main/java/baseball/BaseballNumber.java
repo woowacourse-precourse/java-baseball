@@ -10,12 +10,12 @@ public class BaseballNumber {
         listNumber = splitDigitsIntoList(number);
     }
 
-    public ArrayList<Integer> splitDigitsIntoList(int number) {
+    public static ArrayList<Integer> splitDigitsIntoList(int number) {
         ArrayList<Integer> resultList = new ArrayList<>();
         String stringNumber = Integer.toString(number);
         for (int i = 0; i < stringNumber.length(); i++) {
             char charDigit = stringNumber.charAt(i);
-            listNumber.add(Character.getNumericValue(charDigit));
+            resultList.add(Character.getNumericValue(charDigit));
         }
         return resultList;
     }
