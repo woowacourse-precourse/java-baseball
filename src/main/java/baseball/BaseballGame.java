@@ -23,6 +23,7 @@ public class BaseballGame {
         computer.createRandomNumbers();
         do {
             String input = inputAnswer();
+            isWrongInputValue(input);
             calculateBallCount(input);
             messageCreator.printResultMessage(strikeCount, ballCount);
         } while ((strikeCount != 3));
@@ -33,7 +34,6 @@ public class BaseballGame {
 
     private String inputAnswer() {
         String input = Console.readLine();
-        isWrongInputValue(input);
         System.out.println("숫자를 입력해주세요 : " + input);
         return input;
     }
