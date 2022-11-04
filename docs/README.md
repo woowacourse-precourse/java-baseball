@@ -36,3 +36,13 @@
    3-5. 게임을 새로 시작할 지, 아니면 완전히 종료할 지, 입력을 받는다.<br>
    3-6. 1을 입력 받았다면 게임을 처음부터 재시작한다. 2를 입력 받았다면 게임을 완전히 종료한다.<br>
    <br>
+
+### 🔎 details for implemetation
+- PlayerComputer Class <br><br>
+private static int getRandomNumber()<br>
+기능 : 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
+<br>
+private boolean isQualifiedNumber(HashMap<Integer, Integer> digits)<br>
+기능 : random Number 세자리가 제대로 만들어졌는지 확인한다.<br>
+
+
