@@ -9,7 +9,28 @@ public class Game {
     private List<Integer> computer = new ArrayList<>();
 
     public Game() {
+        UserInput userInput = new UserInput();
+        BallCount ballcounter = new BallCount();
 
+        generateNum();
+
+        while (true) {
+            System.out.println("숫자를 입력해주세요 : ");
+            List<Integer> user = userInput.getInput();
+            checkInput(user, ballcounter);
+
+            if (isGameEnd(ballcounter)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+
+    private boolean isGameEnd(BallCount ballcounter) {
+        if (ballcounter.getStrike() == 3) {
+            return true;
+        }
+        return false;
     }
 
     public List<Integer> getComputer() {
@@ -30,12 +51,11 @@ public class Game {
         }
     }
 
-    private void checkInput(List<Integer> user)
-    {
-        BallCount ballcounter = new BallCount();
-
-        for (int idx = 0; idx < 3; idx++){
+    private void checkInput(List<Integer> user, BallCount ballcounter) {
+        for (int idx = 0; idx < 3; idx++) {
             ballcounter.checkStrikeOrBall(user, computer, idx);
         }
+
+        System.out.println(ballcounter.toString());
     }
 }
