@@ -70,7 +70,7 @@ class GameResultJudgementTest {
   @DisplayName("볼 1 확인")
   void JudgeBallCount1() {
     assertBall("123", "981", 1);
-    assertBall("456", "786", 1);
+    assertBall("456", "785", 1);
     assertBall("789", "217", 1);
   }
   @Test
