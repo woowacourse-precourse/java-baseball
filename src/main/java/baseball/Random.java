@@ -7,6 +7,9 @@ import java.util.List;
 public class Random {
     static final int NUMBER_OF_DIGIT = 3;
 
+    private Random(){
+    }
+
     public static int getRandomNum() {
         List<Integer> randomNumList;
 
