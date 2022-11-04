@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -23,5 +24,37 @@ class JudgementTest {
         int actual = judgement.countSameNumbers(computerNumbers, playerNumbers);
 
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void _0개의_위치가_같다() {
+        List<Integer> playerNumbers = List.of(3, 4, 5);
+        int count = judgement.countSamePosition(computerNumbers, playerNumbers);
+
+        assertThat(count).isZero();
+    }
+
+    @Test
+    void _1개의_위치가_같다() {
+        List<Integer> playerNumbers = List.of(3, 2, 5);
+        int count = judgement.countSamePosition(computerNumbers, playerNumbers);
+
+        assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    void _2개의_위치가_같다() {
+        List<Integer> playerNumbers = List.of(1, 2, 5);
+        int count = judgement.countSamePosition(computerNumbers, playerNumbers);
+
+        assertThat(count).isEqualTo(2);
+    }
+
+    @Test
+    void _3개의_위치가_같다() {
+        List<Integer> playerNumbers = List.of(1, 2, 3);
+        int count = judgement.countSamePosition(computerNumbers, playerNumbers);
+
+        assertThat(count).isEqualTo(3);
     }
 }
