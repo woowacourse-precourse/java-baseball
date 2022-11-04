@@ -44,4 +44,15 @@ public class ComputerTest {
         // then
         Assertions.assertThat(result).isEqualTo("3스트라이크");
     }
+
+    @Test
+    public void 유저와_컴퓨터의_값을_비교하여_결과_확인_2스트라이크() {
+        // given
+        List<Integer> userDigits = List.of(1, 2, 4);
+        List<Integer> computerDigits = List.of(1, 2, 3);
+        // when
+        String result = testComputer.checkDigits(userDigits, computerDigits);
+        // then
+        Assertions.assertThat(result).isEqualTo("2스트라이크");
+    }
 }
