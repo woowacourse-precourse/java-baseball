@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +35,12 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    @DisplayName("숫자를 자릿수 리스트로 변환한다")
+    void convertToList() {
+        Assertions.assertThat(Application.convertToList(367))
+                .isEqualTo(List.of(3, 6, 7));
     }
 }
