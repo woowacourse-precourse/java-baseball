@@ -12,7 +12,7 @@ public class Application {
     public static int THE_NUMBER_OF_BALLS = 3;
 
     // main()메서드에서 값을 받아 처리하는 클래스
-    public static class model {
+    public static class Model {
 
         private List<Integer> computerNumberList = new ArrayList<>();
         private List<Integer> inputNumberList = new ArrayList<>();
@@ -43,8 +43,8 @@ public class Application {
         public void distinguishBall() {
             int methodInBallCounting = 0;
 
-            for (int i = 0; i < THE_NUMBER_OF_BALLS; i++) {
-                if (computerNumberList.contains(inputNumberList.get(i))) {
+            for (int number: inputNumberList) {
+                if (computerNumberList.contains(number)) {
                     methodInBallCounting += 1;
                 }
             }
@@ -67,14 +67,13 @@ public class Application {
         // 사용자가 입력한 3자리 숫자를 리스트로 분리하는 메서드
         public void splitNumber(List<Integer> inputNumberList, String inputNumber) {
 
-            for (int k = 0; k < 3; k++) {
-                inputNumberList.add(Character.getNumericValue(inputNumber.charAt(k)));
+            for (char number: inputNumber.toCharArray()) {
+                inputNumberList.add(Character.getNumericValue(number));
             }
         }
 
         // 게임종료 시 다시 시작할지 결정하는 메서드
         public boolean decideRestart(String decidedRestartString) {
-            discoverRestartNumberException(decidedRestartString);
             int decidedRestart = Integer.parseInt(decidedRestartString);
 
             if (decidedRestart == 1) return true;
@@ -83,13 +82,13 @@ public class Application {
 
         // 입력된 3자리 숫자 중에서 중복된 숫자가 있는지 확인하는 메서드
         public boolean seekDuplicatedNumber (String inputNumber) {
-            HashSet<Character> inputNubmerInSet = new HashSet<>();
+            HashSet<Character> inputNumberInSet = new HashSet<>();
 
             for (int p = 0; p <THE_NUMBER_OF_BALLS; p++) {
-                inputNubmerInSet.add(inputNumber.charAt(p));
+                inputNumberInSet.add(inputNumber.charAt(p));
             }
 
-            return inputNubmerInSet.size() < THE_NUMBER_OF_BALLS;
+            return inputNumberInSet.size() < THE_NUMBER_OF_BALLS;
         }
 
         // 3자리 숫자를 입력할 때 예외 발생시키는 메서드
@@ -117,8 +116,8 @@ public class Application {
         }
 
         // 재시작 결정 시에 입력되는 숫자의 예외를 발생시키는 메서드
-        public void discoverRestartNumberException (String decideRestartString) throws IllegalArgumentException{
-            if (!decideRestartString.equals("1") && !decideRestartString.equals("2")) throw new IllegalArgumentException();
+        public void discoverRestartNumberException (String restartNumber) throws IllegalArgumentException{
+            if (!restartNumber.equals("1") && !restartNumber.equals("2")) throw new IllegalArgumentException();
         }
 
         public  String inputBallAndRestartNumber () {
@@ -132,7 +131,7 @@ public class Application {
     }
 
     // model에서 처리된 값을 출력하는 클래스
-    public static class view {
+    public static class View {
         public void printResult(int ballCounting, int strikeCounting) {
             if (strikeCounting == THE_NUMBER_OF_BALLS) {
                 System.out.println("3스트라이크");
@@ -151,26 +150,26 @@ public class Application {
 
     public static void main(String[] args) {
 
-        view baseballView = new view();
+        View view = new View();
 
         while (true) {
-            model baseballModel = new model();
+            Model model = new Model();
 
             System.out.println("숫자 야구 게임을 시작합니다.");
-            baseballModel.makeComputerNumber();
+            model.makeComputerNumber();
 
-            while (baseballModel.strikeCounting < THE_NUMBER_OF_BALLS) {
-                baseballModel.proceedGame(baseballModel.inputBallAndRestartNumber());
-                baseballView.printResult(baseballModel.ballCounting, baseballModel.strikeCounting);
-                baseballModel.inputNumberList.clear();
+            while (model.strikeCounting < THE_NUMBER_OF_BALLS) {
+                model.proceedGame(model.inputBallAndRestartNumber());
+                view.printResult(model.ballCounting, model.strikeCounting);
+                model.inputNumberList.clear();
             }
 
-            baseballModel.strikeCounting = 0;
+            model.strikeCounting = 0;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            if (!baseballModel.decideRestart(baseballModel.inputBallAndRestartNumber())) break;
+            if (!model.decideRestart(model.inputBallAndRestartNumber())) break;
 
-            baseballModel.computerNumberList.clear();
+            model.computerNumberList.clear();
         }
     }
 }
