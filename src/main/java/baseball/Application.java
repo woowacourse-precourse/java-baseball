@@ -102,9 +102,11 @@ public class Application {
         return ballCount;
     }
 
-    private static LinkedHashMap<String, ArrayList<Integer>> AnalyzePlayerNumber
+    private static LinkedHashMap<String, Integer> AnalyzePlayerNumber
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList) {
+        LinkedHashMap<String, Integer> finalResult = new LinkedHashMap<>();
+
         // 스트라이크의 개수를 계산하는 메소드
         LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = CountStrikes
                 (playerNumberArrayList, answerNumberArrayList);
@@ -114,5 +116,11 @@ public class Application {
                 (playerNumberArrayList,
                         answerNumberArrayList,
                         strikeResultLinkedHashMap);
+
+        // 최종 결과를 LinkedHashMap에 넣는다.
+        finalResult.put("strikes", strikeResultLinkedHashMap.get("strikeCountArrayList").get(0));
+        finalResult.put("balls", ballResult);
+
+        return finalResult;
     }
 }
