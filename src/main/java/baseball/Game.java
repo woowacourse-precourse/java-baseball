@@ -36,6 +36,7 @@ public class Game {
             throw new IllegalArgumentException(e.getMessage());
         }
 
+        String result = "";
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < user.size(); i++) {
@@ -45,6 +46,11 @@ public class Game {
             if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
                 ball++;
             }
+        }
+
+        if (ball == 0 && strike == 0) {
+            result = "낫싱";
+            System.out.println(result);
         }
     }
 }
