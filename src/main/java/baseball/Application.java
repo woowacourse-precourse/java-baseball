@@ -2,8 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -119,7 +123,10 @@ public class Application {
             }
         }
 
-        private void summaryGameResult(List<Integer> userInputNumbers, List<Integer> targetNumbers, Map<String, Integer> gameResult) {
+        private void summaryGameResult(List<Integer> userInputNumbers,
+                                       List<Integer> targetNumbers,
+                                       Map<String, Integer> gameResult) {
+
             for (int idx = 0; idx < targetNumbers.size(); idx++) {
                 int userNum = userInputNumbers.get(idx);
                 int targetNum = targetNumbers.get(idx);
@@ -149,7 +156,9 @@ public class Application {
             System.out.println(gameResultToString);
         }
 
-        private void appendGameResult(Map<String, Integer> gameResult, StringBuilder sb, String answer, String answerKor) {
+        private void appendGameResult(Map<String, Integer> gameResult, StringBuilder sb,
+                                      String answer, String answerKor) {
+
             if (gameResult.containsKey(answer)) {
                 sb.append(gameResult.get(answer));
                 sb.append(answerKor);
