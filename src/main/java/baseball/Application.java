@@ -67,7 +67,7 @@ public class Application {
         System.out.println("userInput = " + userInput);
 
         if (computerInput == userInput) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n");
         }
     }
 
@@ -75,6 +75,12 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("게임 다시하기: 1 \n게임 종료: 2");
         int n = sc.nextInt();
+
+        return breakExceptionHandler(n);
+    }
+
+    public static int breakExceptionHandler(int n) {
+        if (!(n == 1 || n ==2)) throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
 
         return n;
     }
