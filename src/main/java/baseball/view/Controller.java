@@ -21,7 +21,7 @@ public class Controller {
         return input;
     }
 
-    public boolean printRoundResult(Map<String,Integer> resultMap) {
+    public boolean printRoundResult(Map<String, Integer> resultMap) {
         int ball = resultMap.get("ball");
         int strike = resultMap.get("strike");
         boolean flag = false;
@@ -29,14 +29,14 @@ public class Controller {
         if (strike == GAME_ANSWER_MAX_VALUE) {
             flag = true;
         }
-        if(ball==0 && strike==0) {
+        if (ball == 0 && strike == 0) {
             printNothingMessage();
             return false;
         }
-        if(ball>0) {
+        if (ball > 0) {
             printBallMessage(ball);
         }
-        if(strike>0){
+        if (strike > 0) {
             printStrikeMessage(strike);
         }
         System.out.println("");
@@ -49,7 +49,7 @@ public class Controller {
         String input = Console.readLine();
         InputConfigure.verifyReGameInput(input);
 
-        if(input.equals("1")) {
+        if (input.equals("1")) {
             return true;
         }
         return false;

@@ -12,7 +12,7 @@ public class Display {
     }
 
     public static void printEndingMessage() {
-        System.out.println(GAME_ANSWER_MAX_VALUE+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(GAME_ANSWER_MAX_VALUE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void printReGameMessage() {
@@ -20,11 +20,11 @@ public class Display {
     }
 
     static void printBallMessage(int n) {
-        System.out.print(n+"볼 ");
+        System.out.print(n + "볼 ");
     }
 
     static void printStrikeMessage(int n) {
-        System.out.print(n+"스트라이크");
+        System.out.print(n + "스트라이크");
     }
 
     static void printNothingMessage() {

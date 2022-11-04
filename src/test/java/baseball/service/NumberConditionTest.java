@@ -14,18 +14,21 @@ class NumberConditionTest {
         boolean mock = numberCondition.isDigitCorrect("1", 0);
         assertThat(mock).isTrue();
     }
+
     @Test
     @DisplayName("자릿수가 일치하는지")
     void testDigitCorrect_false() {
         boolean mock = numberCondition.isDigitCorrect("9", 0);
         assertThat(mock).isFalse();
     }
+
     @Test
     @DisplayName("입력값을 포함하는지")
     void testContainsNumber_true() {
         boolean mock = numberCondition.doesContain("3");
         assertThat(mock).isTrue();
     }
+
     @Test
     @DisplayName("입력값을 포함하는지")
     void testContainsNumber_false() {

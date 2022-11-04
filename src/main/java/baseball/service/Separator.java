@@ -15,14 +15,14 @@ public class Separator {
 
     public Map<String, Integer> separateInputResult(String input) {
         Map<String, Integer> map = new HashMap<>();
-        map.put("ball",0);
-        map.put("strike",0);
-        map.put("nothing",0);
+        map.put("ball", 0);
+        map.put("strike", 0);
+        map.put("nothing", 0);
 
-        for(int digit=0 ; digit<input.length() ; digit++) {
+        for (int digit = 0; digit < input.length(); digit++) {
             String partOfNum = StringMapper.ctos(input.charAt(digit));
             String result = checkCurrentCondition(partOfNum, digit);
-            map.put(result, map.get(result)+1);
+            map.put(result, map.get(result) + 1);
         }
 
         return map;
@@ -30,12 +30,12 @@ public class Separator {
 
     private String checkCurrentCondition(String partOfNum, int digit) {
         boolean containCheck = condition.doesContain(partOfNum);
-        boolean digitCheck = condition.isDigitCorrect(partOfNum,digit);
+        boolean digitCheck = condition.isDigitCorrect(partOfNum, digit);
 
-        if(containCheck && digitCheck) {
+        if (containCheck && digitCheck) {
             return "strike";
         }
-        if(containCheck && !digitCheck) {
+        if (containCheck && !digitCheck) {
             return "ball";
         }
         return "nothing";

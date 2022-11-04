@@ -2,7 +2,7 @@ package baseball.entity;
 
 import baseball.service.GameService;
 
-public class NumberBaseball implements Game{
+public class NumberBaseball implements Game {
 
     public static final int GAME_ANSWER_MAX_VALUE = 3;
 

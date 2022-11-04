@@ -30,7 +30,7 @@ public class GameService {
 
     private void repeatRound() {
         boolean flag = false;
-        while(!flag) {
+        while (!flag) {
             String input = controller.printAndInputNumber();
             Map<String, Integer> resultMap = separator.separateInputResult(input);
             flag = controller.printRoundResult(resultMap);

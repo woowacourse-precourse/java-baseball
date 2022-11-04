@@ -1,7 +1,6 @@
 package baseball.service;
 
 
-
 public class NumberCondition {
     private final String answer;
 

@@ -19,7 +19,7 @@ public class InputConfigure {
         Set<Character> wordSet = new HashSet<>();
 
         checkLength(input);
-        for(int i=0 ; i<input.length() ; i++) {
+        for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             wordSet.add(c);
             checkWord(c);
@@ -38,7 +38,7 @@ public class InputConfigure {
     }
 
     private static void checkWord(char c) {
-        if ('1'>c || c>'9')
+        if ('1' > c || c > '9')
             throw new IllegalArgumentException();
     }
 }
