@@ -22,8 +22,29 @@ public class Application {
             } catch (IllegalArgumentException e) {
                 exit(0);
             }
-
+            String resultString = getResult(computerNumbers, input);
+            System.out.println(resultString);
         }
+    }
+
+    private static String getResult(ArrayList<Integer> computerNumbers, String input) {
+        int ball = 0, strike = 0;
+        for (int index = 0; index < 3; index++) {
+            int inputNumAtIndex = input.charAt(index) - '0';
+            if (computerNumbers.get(index) == inputNumAtIndex) strike++;
+            else if (computerNumbers.contains(inputNumAtIndex)) ball++;
+        }
+        String result = makeResultString(ball, strike);
+        return result;
+    }
+
+    private static String makeResultString(int ball, int strike) {
+        if (ball == 0 && strike == 0) return "낫싱";
+
+        String result = "";
+        if (ball != 0) result += ball + "볼 ";
+        if (strike != 0) result += strike + "스트라이크";
+        return result;
     }
 
     private static void checkInput(String input) {
