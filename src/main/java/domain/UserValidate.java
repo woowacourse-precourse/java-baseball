@@ -37,7 +37,7 @@ public class UserValidate {
         return flag;
     }
 
-    public int convertCharToInt(String input, int i){
+    private int convertCharToInt(String input, int i){
         return input.charAt(i) - '0';
     }
 
