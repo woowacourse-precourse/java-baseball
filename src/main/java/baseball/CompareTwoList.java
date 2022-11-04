@@ -24,14 +24,11 @@ public class CompareTwoList {
 
   private int checkIndexBall(List<Character> user, List<Character> computers) {
     int ball = 0;
-    if (user.get(0) == computers.get(1) || user.get(0) == computers.get(2)) {
-      ball++;
-    }
-    if (user.get(1) == computers.get(0) || user.get(1) == computers.get(2)) {
-      ball++;
-    }
-    if (user.get(2) == computers.get(0) || user.get(2) == computers.get(1)) {
-      ball++;
+    for (int i = 0; i < user.size(); i++) {
+      char userNum = user.get(i);
+      if (computers.contains(userNum) && i != computers.indexOf(userNum)) {
+        ball++;
+      }
     }
     return ball;
   }
