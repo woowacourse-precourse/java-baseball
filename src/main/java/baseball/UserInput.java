@@ -8,14 +8,14 @@ public class UserInput {
     private UserInput() {
     }
 
-    public static String getUserInput() {
+    public static int getUserInput() {
         String input = Console.readLine();
         validateNumber(input);
         validateNumberOfDigits(input);
         validateDuplicateNumber(input);
 
         final int inputNumber = Integer.parseInt(input);
-        return input;
+        return inputNumber;
     }
 
     private static void validateNumber(String input) {
