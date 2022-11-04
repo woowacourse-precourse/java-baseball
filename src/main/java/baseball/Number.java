@@ -2,12 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Number {
 
+    List<Integer> userInputNumber;
+
     public Number() {
+        userInputNumber = new ArrayList<>();
     }
 
     public List<Integer> createRandomNumber() {
@@ -19,5 +21,26 @@ public class Number {
             }
         }
         return randomNumberList;
+    }
+
+    public void userInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String inputNumber = System.console().readLine();
+        changeStringToSet(inputNumber);
+    }
+
+    public void userInput(String userInput) {
+        System.out.println("숫자를 입력해주세요 : ");
+        changeStringToSet(userInput);
+    }
+
+    public void changeStringToSet(String userInput) {
+        int number = Integer.parseInt(userInput);
+        while (number > 0) {
+            int n = number % 10;
+            userInputNumber.add(n);
+            number /= 10;
+        }
+        Collections.reverse(userInputNumber);
     }
 }
