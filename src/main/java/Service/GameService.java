@@ -30,4 +30,19 @@ public class GameService {
             strike = game.getStrike_count();
         }
     }
+
+    public void calculate(int[] userNumbers, int[] randomNumbers){
+        for (int r = 0; r < randomNumbers.length; r++) {
+            for (int u = 0; u < userNumbers.length; u++) {
+                if(randomNumbers[r] == userNumbers[u]){
+                    if(u == r){
+                        game.increase_strike();
+                    }
+                    if(u != r){
+                        game.increase_ball();
+                    }
+                }
+            }
+        }
+    }
 }
