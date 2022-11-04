@@ -10,6 +10,7 @@ public class NumberValidator {
     public static void validate(String checkNumber){
         checkSize(checkNumber);
         checkUnique(checkNumber);
+        checkNumberCondition(checkNumber);
     }
 
     public static void checkSize(String checkNumber) throws IllegalArgumentException {
@@ -29,4 +30,17 @@ public class NumberValidator {
             characterList.add(currentChar);
         }
     }
+
+    public static void checkNumberCondition(String checkNumber) throws IllegalArgumentException{
+        for (int i = 0; i < checkNumber.length(); i++) {
+            if (isNumberWrongCondition(Integer.valueOf(checkNumber.charAt(i)))) {
+                throw new IllegalArgumentException("1~9 까지의 수 조건에 충족하지 않습니다.");
+            }
+        }
+    }
+
+    private static boolean isNumberWrongCondition(int currentNumber) {
+        return (currentNumber < NUMBER_MIN_VALUE || currentNumber > NUMBER_MAX_VALUE);
+    }
+
 }
