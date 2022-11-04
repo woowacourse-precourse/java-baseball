@@ -18,7 +18,6 @@ public class BaseballGame {
         createComputerNumbers();
         do {
             String input = inputAnswer();
-            isWrongInputValue(input);
             calculateBallCount(input);
             answerMessage();
         } while ((strikeCount != 3));
@@ -28,9 +27,10 @@ public class BaseballGame {
     }
 
     private String inputAnswer() {
-            String input = Console.readLine();
-            System.out.println("숫자를 입력해주세요 : " + input);
-            return input;
+        String input = Console.readLine();
+        isWrongInputValue(input);
+        System.out.println("숫자를 입력해주세요 : " + input);
+        return input;
     }
 
 
