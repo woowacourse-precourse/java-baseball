@@ -12,11 +12,12 @@ public class BaseballGame {
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String START_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String ANSWER_FORMAT = "%d%s";
+    private static final int DIGIT = 3;
 
 
     private static Number computer = new Number();
     private static Number user = new Number();
-    
+
     private List<Integer> computerValue;
     private List<Integer> userValue;
     private int ball;
@@ -41,7 +42,7 @@ public class BaseballGame {
             String result = makeResultString();
             System.out.println(result);
 
-            if (strike == 3) {
+            if (strike == DIGIT) {
                 System.out.println(GAME_END);
                 System.out.println(START_AGAIN);
                 startAgain();
@@ -59,7 +60,7 @@ public class BaseballGame {
     private void compareNumbers() {
         ball = 0;
         strike = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < DIGIT; i++) {
             isBallOrStrike(i);
         }
     }
