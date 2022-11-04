@@ -43,8 +43,16 @@ public class BaseballGame {
         while (isPlaying) {
             startGame();
             do {
-
+                inputUserNumber();
             } while (!isUserWin);
         }
+    }
+
+    private void inputUserNumber() throws IllegalArgumentException {
+        System.out.print(INPUT_NUMBER);
+        String input = Console.readLine();
+
+        errorChecker.checkUserNumberError(input);
+        user.makeNewNumbers(input);
     }
 }
