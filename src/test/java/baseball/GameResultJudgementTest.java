@@ -43,33 +43,34 @@ class GameResultJudgementTest {
     assertStrike("123", "524", 1);
     assertStrike("456", "957", 1);
     assertStrike("789", "762", 1);
+
   }
 
   void assertBall(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeStrike(input, answer));
+    assertEquals(expected, judge.judgeBall(input, answer));
   }
   @Test
   @Order(4)
   @DisplayName("볼 3 확인")
   void JudgeBallCount3() {
-    assertBall("123", "321", 3);
-    assertBall("456", "654", 3);
-    assertBall("789", "987", 3);
+    assertBall("123", "312", 3);
+    assertBall("456", "645", 3);
+    assertBall("789", "978", 3);
   }
   @Test
   @Order(5)
   @DisplayName("볼 2 확인")
   void JudgeBallCount2() {
-    assertBall("123", "421", 2);
-    assertBall("456", "254", 2);
-    assertBall("789", "187", 2);
+    assertBall("123", "412", 2);
+    assertBall("456", "265", 2);
+    assertBall("789", "198", 2);
   }
   @Test
   @Order(6)
   @DisplayName("볼 1 확인")
   void JudgeBallCount1() {
     assertBall("123", "981", 1);
-    assertBall("456", "784", 1);
+    assertBall("456", "786", 1);
     assertBall("789", "217", 1);
   }
 }

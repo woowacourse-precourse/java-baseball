@@ -19,4 +19,16 @@ public class GameResultJudgement {
     }
     return count;
   }
+  public int judgeBall(String str1, String str2) {
+    int count = 0;
+    System.out.println("start");
+    for (int i = 0; i < maxLen; i++) {
+      char ch = str2.charAt(i);
+      System.out.println(str1+" vs "+ch);
+      if (str1.contains(ch+"")) {
+        ++count;
+      }
+    }
+    return count;
+  }
 }
