@@ -15,6 +15,12 @@ public class NumberScanner {
             throw new IllegalArgumentException();
         }
 
+        for (char c : input.toCharArray()) {
+            if (c == '0') {
+                throw new IllegalArgumentException();
+            }
+        }
+
         return userNumbers;
     }
 }
