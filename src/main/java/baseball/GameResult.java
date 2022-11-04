@@ -11,7 +11,7 @@ public class GameResult {
 		this.ball = 0;
 	}
 
-	public GameResult(int strike, int ball) {
+	protected GameResult(int strike, int ball) {
 		this.strike = strike;
 		this.ball = ball;
 	}
