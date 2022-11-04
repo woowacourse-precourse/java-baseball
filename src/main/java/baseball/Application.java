@@ -40,7 +40,6 @@ public class Application {
         while (strike != 3) {
             System.out.print("숫자를 입력해주세요: ");
             input_number = get_input();
-            if (input_number.equals("")) break;
             strike = count_strike(input_number, computer_number);
         }
         if (strike == 3) {
