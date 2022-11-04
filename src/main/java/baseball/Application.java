@@ -22,11 +22,11 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 userInput = br.readLine();
-                if (inputError(userInput))
-                    throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            if (inputError(userInput))
+                throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
             guess = typeCast(userInput, guess);
 
             Result result = checkNum(answer, guess);
@@ -68,7 +68,7 @@ public class Application {
     }
 
     public static boolean inputError(String userInput) {
-        if (sizeNotMatch(userInput) || redundant(userInput) || notInteger(userInput))
+        if (sizeNotMatch(userInput) || notInteger(userInput) || redundant(userInput))
             return true;
         else
             return false;
@@ -76,16 +76,6 @@ public class Application {
 
     public static boolean sizeNotMatch(String userInput) {
         if (userInput.length() != 3)
-            return true;
-        else
-            return false;
-    }
-
-    public static boolean redundant(String userInput) {
-        char firstNum = userInput.charAt(0);
-        char secondNum = userInput.charAt(1);
-        char thirdNum = userInput.charAt(2);
-        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum)
             return true;
         else
             return false;
@@ -99,12 +89,19 @@ public class Application {
         return false;
     }
 
+    public static boolean redundant(String userInput) {
+        char firstNum = userInput.charAt(0);
+        char secondNum = userInput.charAt(1);
+        char thirdNum = userInput.charAt(2);
+        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum)
+            return true;
+        else
+            return false;
+    }
 
-    public static List<Integer> typeCast(String userInput, List<Integer> guess) throws IllegalArgumentException {
+    public static List<Integer> typeCast(String userInput, List<Integer> guess) {
         for (int i = 0; i < userInput.length(); i++)
             guess.add(userInput.charAt(i) - '0');
-        if (redundant(guess) || notInteger(guess) || sizeNotMatch(userInput))
-            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         return guess;
     }
 
