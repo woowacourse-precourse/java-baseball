@@ -26,6 +26,8 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             Integer userNumber = ConsoleReader.readInteger();
+            if(!numberValidator.valid(userNumber))
+                throw new IllegalArgumentException();
 
             score = calculateScore(computerNumber, userNumber);
             printScore(score);
