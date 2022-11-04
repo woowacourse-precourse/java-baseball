@@ -35,7 +35,7 @@ public class Turn {
         return Console.readLine();
     }
 
-    public void validatePlayerNumberList(){
+    public void validatePlayerNumberList() {
         if (playerNumberList.size() != NUMBER_OF_INPUT_DIGITS) {
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
         }
@@ -50,7 +50,7 @@ public class Turn {
         }
     }
 
-    public void countNumberOfStrikes(List<Integer> hiddenNumberList){
+    public void countNumberOfStrikes(List<Integer> hiddenNumberList) {
         for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
             int hiddenNumber = hiddenNumberList.get(index);
             int playerNumber = this.playerNumberList.get(index);
@@ -60,7 +60,7 @@ public class Turn {
         }
     }
 
-    public void countNumberOfBalls(List<Integer> hiddenNumberList){
+    public void countNumberOfBalls(List<Integer> hiddenNumberList) {
         for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
             int hiddenNumber = hiddenNumberList.get(index);
             int playerNumber = this.playerNumberList.get(index);
@@ -70,36 +70,36 @@ public class Turn {
         }
     }
 
-    public void printResult(){
+    public void printResult() {
         StringBuilder result = new StringBuilder();
         String ballResult = getBallResultString();
         String strikeResult = getStrikeResultString();
         result.append(ballResult);
-        if(!ballResult.isEmpty() && !strikeResult.isEmpty()){
+        if (!ballResult.isEmpty() && !strikeResult.isEmpty()) {
             result.append(' ');
         }
         result.append(strikeResult);
         System.out.println(result);
     }
 
-    public String getStrikeResultString(){
+    public String getStrikeResultString() {
         return getResultString(this.numberOfStrikes, STRIKE_MESSAGE);
     }
 
-    public String getBallResultString(){
+    public String getBallResultString() {
         return getResultString(this.numberOfBalls, BALL_MESSAGE);
     }
 
-    public String getResultString(int score, String scoreMessage){
+    public String getResultString(int score, String scoreMessage) {
         StringBuilder result = new StringBuilder();
-        if(score > 0){
+        if (score > 0) {
             result.append(score);
             result.append(scoreMessage);
         }
         return result.toString();
     }
 
-    public boolean isStrikeOut(){
+    public boolean isStrikeOut() {
         return this.numberOfStrikes == STRIKE_OUT_NUMBER;
     }
 }
