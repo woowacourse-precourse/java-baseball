@@ -55,6 +55,8 @@ public class Application {
 
         // 컴퓨터의 3자리 숫자를 설정하는 메서드
         public void makeComputerNumber() {
+            computerNumberList.clear();
+            strikeCounting = 0;
 
             while (computerNumberList.size() < THE_NUMBER_OF_BALLS) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -162,13 +164,10 @@ public class Application {
                 model.proceedGame(model.inputBallAndRestartNumber());
                 view.printResult(model.ballCounting, model.strikeCounting);
             }
-
-            model.strikeCounting = 0;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             if (!model.decideRestart(model.inputBallAndRestartNumber())) break;
 
-            model.computerNumberList.clear();
         }
     }
 }
