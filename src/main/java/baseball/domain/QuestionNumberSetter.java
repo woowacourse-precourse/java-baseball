@@ -6,16 +6,24 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class QuestionNumberSetter {
-	public List<Integer> pickThreeRandomNumbers() {
-		List<Integer> randomNumbers = new ArrayList<>();
+	private List<Integer> randomNumbers = new ArrayList<>();
 
+	public List<Integer> pickThreeRandomNumbers() {
 		while (randomNumbers.size() < 3) {
-			int oneNumber = Randoms.pickNumberInRange(1, 9);
-			if (randomNumbers.contains(oneNumber) == false) {
-				randomNumbers.add(oneNumber);
-			}
+			int uniqueNumber = pickUniqueRandomNumber();
+			randomNumbers.add(uniqueNumber);
 		}
 
 		return randomNumbers;
+	}
+
+	private int pickUniqueRandomNumber() {
+		int uniqueNumber = 0;
+
+		do {
+			uniqueNumber = Randoms.pickNumberInRange(1, 9);
+		} while (randomNumbers.contains(uniqueNumber));
+
+		return uniqueNumber;
 	}
 }
