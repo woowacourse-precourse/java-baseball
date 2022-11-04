@@ -72,4 +72,17 @@ public class Application {
 
         return gameResult;
     }
+
+    // 플레이어 숫자의 게임 결과 출력
+    public static void gameResultPrint(int[] gameResult) {
+        if(gameResult[0] != 0 && gameResult[1] != 0) {
+            System.out.println(gameResult[0] + "볼 " + gameResult[1] + "스트라이크");
+        } else if (gameResult[0] == 0 && gameResult[1] != 0 && gameResult[1] != 3) {
+            System.out.println(gameResult[1] + "스트라이크");
+        } else if (gameResult[0] != 0 && gameResult[1] == 0) {
+            System.out.println(gameResult[0] + "볼");
+        } else if (gameResult[1] == 3) {
+            threeStrike();
+        }
+    }
 }
