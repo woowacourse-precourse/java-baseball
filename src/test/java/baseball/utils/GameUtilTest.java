@@ -32,7 +32,7 @@ public class GameUtilTest {
                 "123, 987", //xyz, abc
         })
         void nothing(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(0, 0);
         }
 
@@ -43,7 +43,7 @@ public class GameUtilTest {
                 "123, 983", //xyz, abz
         })
         void one_strikes(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(0, 1);
         }
 
@@ -54,7 +54,7 @@ public class GameUtilTest {
                 "123, 923", //xyz, ayz
         })
         void two_strikes(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(0, 2);
         }
 
@@ -63,7 +63,7 @@ public class GameUtilTest {
                 "123, 123", //xyz, xyz
         })
         void three_strikes(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(0, 3);
         }
 
@@ -77,7 +77,7 @@ public class GameUtilTest {
                 "123, 938", //xyz, azb
         })
         void one_ball(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(1, 0);
         }
 
@@ -94,7 +94,7 @@ public class GameUtilTest {
                 "123, 932", //xyz, azy
         })
         void two_balls(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(2, 0);
         }
 
@@ -108,7 +108,7 @@ public class GameUtilTest {
                 "123, 293", //xyz, yaz
         })
         void one_ball_one_strike(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(1, 1);
         }
 
@@ -120,7 +120,7 @@ public class GameUtilTest {
                 "123, 291", //xyz, yzx
         })
         void one_strike(int computer, int player) {
-            List<Integer> result = GameUtil.compareNumber(computer, player);
+            List<Integer> result = GameUtil.compareNumber(computer, player).toList();
             assertThat(result).containsOnly(2, 1);
         }
     }
