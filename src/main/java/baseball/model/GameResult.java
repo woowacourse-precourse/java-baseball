@@ -12,7 +12,13 @@ public class GameResult {
 
     public GameResult(List<Integer> answerNums, List<Integer> playerNums) {
         strikeCount = countStrike(answerNums, playerNums);
-        ballCount = 0;
+        ballCount = countBall(answerNums, playerNums);
+    }
+
+    private int countBall(List<Integer> answerNums, List<Integer> playerNums) {
+        return (int) IntStream.range(0, NUM_SIZE)
+            .filter(i -> answerNums.get(i) != playerNums.get(i) && answerNums.contains(playerNums.get(i)))
+            .count();
     }
 
     private int countStrike(List<Integer> answerNums, List<Integer> playerNums) {

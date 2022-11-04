@@ -9,6 +9,6 @@ public class GameController {
     public static void run() {
         OutputView.printGameStart();
         String inputNum = InputView.requestNum();
-        new PlayerNumber(inputNum);
+        PlayerNumber playerNumber = new PlayerNumber(inputNum);
     }
 }

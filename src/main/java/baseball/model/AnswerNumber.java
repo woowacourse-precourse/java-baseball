@@ -28,4 +28,8 @@ public class AnswerNumber {
         }
         return numbers;
     }
+
+    public List<Integer> get() {
+        return nums;
+    }
 }
