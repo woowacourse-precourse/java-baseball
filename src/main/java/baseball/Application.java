@@ -19,6 +19,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        List<Integer> computer = computerPick();
+        List<Integer> computerNum = computerPick();
+
     }
 }
