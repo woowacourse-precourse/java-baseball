@@ -24,4 +24,20 @@ class BallsTest {
         assertThat(computer.hasStrike(new Ball(3, 1))).isTrue();
         assertThat(computer.hasStrike(new Ball(3, 2))).isFalse();
     }
+
+    @Test
+    void 같은_숫자_다른_위치_볼_확인하기() {
+        List<Ball> balls = new ArrayList<>();
+
+        balls.add(new Ball(1, 0));
+        balls.add(new Ball(3, 1));
+        balls.add(new Ball(5, 2));
+
+
+        Balls computer = new Balls(balls);
+
+
+        assertThat(computer.hasBall(new Ball(3, 0))).isTrue();
+        assertThat(computer.hasBall(new Ball(1, 0))).isFalse();
+    }
 }
