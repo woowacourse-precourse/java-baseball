@@ -22,11 +22,13 @@ public class Application {
     }
     public static List<Integer> guessNumber(){
         String inputNumberStr = Console.readLine();
-        List<Integer> inputNumberList = stringToIntegerList(inputNumberStr);
+        List<Integer> inputNumber = stringToIntegerList(inputNumberStr);
 
-        //validateNumber(inputNumberList);
-
-        return inputNumberList;
+        if(validateNumber(inputNumber)){
+            return inputNumber;
+        }else{
+//            return ??;
+        }
     }
     public static List<Integer> stringToIntegerList(String inputStr){
         String[] inputStrArr = inputStr.split("");
@@ -37,4 +39,30 @@ public class Application {
         }
         return inputIntList;
     }
+    public static boolean validateNumber(List<Integer> inputNumber){
+        //length check
+        if (inputNumber.size() == 3) {
+            return true;
+        }
+
+        //same check
+        if (inputNumber.size() == inputNumber.stream().distinct().count()) {
+            return true;
+        }
+
+        //number only check
+        String regExp = "^[1-9]+$";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            String st = Integer.toString(inputNumber.get(i));
+            sb.append(st);
+        }
+        String s = sb.toString();
+        if (s.matches(regExp)) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
