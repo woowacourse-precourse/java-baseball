@@ -8,16 +8,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.asm.Advice.Exit;
 
-public class Application {
+public class Application {	
 	public static void main(String[] args) {
 		gameStart(getComputerNumbers());
 	}
 	public static void gameStart(List<Integer> comNumber) {
-		System.out.println("숫자 야구 게임을 시작합니다.");
-		boolean isGameContinued = true;
+		System.out.println("숫자 야구 게임을 시작합니다.");		
 		Map<String, Integer> userScore = new HashMap<>();
-		while (isGameContinued) {
+		boolean gameContinued = true;
+		while (gameContinued) {
 			userScore = gameScorePut(comNumber);
 			scoreProcess(userScore);
 		}
@@ -30,18 +31,18 @@ public class Application {
 				computerNumbers.add(randomComputerNumber);
 			}
 		}
-		System.out.println(computerNumbers);
+		System.out.println("초보자용 컴퓨터 번호: "+computerNumbers);
 		return computerNumbers;
 	}
 	public static List<Integer> getUserNumbers() {
 		System.out.print("숫자를 입력해주세요 : ");
 		String userAnotherNumbers = Console.readLine();
-		List<Integer> userNumbersList = userNumberException(userAnotherNumbers);
+		List<Integer> userNumbersList = userNumbersException(userAnotherNumbers);
 		return userNumbersList;
 	}
-	public static List<Integer> userNumberException(String userNumbers) {
+	public static List<Integer> userNumbersException(String userNumbers) {
 		List<Integer> userNumbersList = new ArrayList<>();
-		int intUserNumbers = 0;		
+		int userNumbersInt = 0;		
 		try {
 			Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
 			Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
@@ -60,14 +61,14 @@ public class Application {
 				if (charNumbers != userNumbers.indexOf(userNumbers.charAt(charNumbers))) 
 					throw new IllegalArgumentException();					
 			}
-			intUserNumbers = Integer.parseInt(userNumbers);
+			userNumbersInt = Integer.parseInt(userNumbers);
 			for (int number = 0; number < userNumbers.length(); number++) {
 				char[] userNumberChar = userNumbers.toCharArray();
 				userNumbersList.add((int) userNumberChar[number] - 48);
 			}
 		} catch (IllegalArgumentException illegal) {
 			System.err.println(illegal);
-			System.exit(0);
+			System.exit(0);		
 		}	
 		return userNumbersList;
 	}	
