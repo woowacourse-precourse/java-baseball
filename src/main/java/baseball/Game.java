@@ -67,7 +67,7 @@ public class Game {
                 gameState.addBall();
             }
         }
-        PrintComment.printGameState(gameState);
+        gameState.printGameState();
     }
 
     public static void validUserInputRestart(String num) {

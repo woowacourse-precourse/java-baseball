@@ -16,22 +16,6 @@ public class PrintComment {
         System.out.println(numbers);
     }
 
-    public static void printGameState(GameState gameState) {
-        if (gameState.getStrike()==ZERO && gameState.getBall()==ZERO) {
-            System.out.println(NOTHING);
-            return;
-        }
-        if (gameState.getBall()==ZERO) {
-            System.out.println(gameState.getStrike()+STRIKE);
-            return;
-        }
-        if (gameState.getStrike()==ZERO) {
-            System.out.println(gameState.getBall()+BALL);
-            return;
-        }
-        System.out.println(gameState.getBall()+BALL+" "+gameState.getStrike()+STRIKE);
-    }
-
     public static void printCorrectComment() {
         System.out.println(CORRECT_COMMENT);
     }
