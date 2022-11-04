@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -24,5 +26,9 @@ public class BaseballGame {
 
         int distinctDigitsCount = DIGIT_COUNT * 2 - distinctDigits.size();
         return distinctDigitsCount - getStrikeCount(digits1, digits2);
+    }
+
+    public Digits createRandomDigits() {
+        return new Digits(Randoms.pickUniqueNumbersInRange(1, 9, DIGIT_COUNT));
     }
 }
