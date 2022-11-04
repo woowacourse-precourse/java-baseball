@@ -15,6 +15,25 @@ public class Computer {
             this.strike = strike;
             this.ball = ball;
         }
+
+        boolean isNothing() {
+            return strike == 0 && ball == 0;
+        }
+
+        @Override
+        public String toString() {
+            if (isNothing()) {
+                return "낫싱";
+            }
+            List<String> result = new ArrayList<>();
+            if (ball != 0) {
+                result.add(String.format("%d볼", ball));
+            }
+            if (strike != 0) {
+                result.add(String.format("%d스트라이크", strike));
+            }
+            return String.join(" ", result);
+        }
     }
 
     List<Integer> targetNumber;

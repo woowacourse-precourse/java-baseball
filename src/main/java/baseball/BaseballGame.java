@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballGame {
+    public void printResult(Computer.GameResult result) {
+        System.out.println(result)
+    }
+
     public List<Integer> checkUserNumber(String userInput) throws IllegalArgumentException {
         if (illegalInput(userInput)) {
             throw new IllegalArgumentException();
