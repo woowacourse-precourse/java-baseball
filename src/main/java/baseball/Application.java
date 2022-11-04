@@ -18,10 +18,8 @@ public class Application {
         private List<Integer> inputNumberList = new ArrayList<>();
         private int strikeCounting;
         private int ballCounting;
-        private int THE_NUMBER_OF_BALLS = 3;
 
         public void proceedGame (String inputString) {
-            discoverInputNumberException(inputString);
             splitNumber(inputNumberList, inputString);
             distinguishStrike();
             distinguishBall();
@@ -123,6 +121,14 @@ public class Application {
             if (!decideRestartString.equals("1") && !decideRestartString.equals("2")) throw new IllegalArgumentException();
         }
 
+        public  String inputBallAndRestartNumber () {
+            String inputNumber = Console.readLine();
+            if (strikeCounting == THE_NUMBER_OF_BALLS) discoverRestartNumberException(inputNumber);
+            else discoverInputNumberException(inputNumber);
+
+            return inputNumber;
+        }
+
     }
 
     // model에서 처리된 값을 출력하는 클래스
@@ -154,17 +160,15 @@ public class Application {
             baseballModel.makeComputerNumber();
 
             while (baseballModel.strikeCounting < THE_NUMBER_OF_BALLS) {
-                String inputString = Console.readLine();
-                baseballModel.proceedGame(inputString);
+                baseballModel.proceedGame(baseballModel.inputBallAndRestartNumber());
                 baseballView.printResult(baseballModel.ballCounting, baseballModel.strikeCounting);
                 baseballModel.inputNumberList.clear();
             }
 
             baseballModel.strikeCounting = 0;
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String decidedRestartString =  Console.readLine();
 
-            if (!baseballModel.decideRestart(decidedRestartString)) break;
+            if (!baseballModel.decideRestart(baseballModel.inputBallAndRestartNumber())) break;
 
             baseballModel.computerNumberList.clear();
         }
