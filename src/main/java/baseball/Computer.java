@@ -17,4 +17,15 @@ public class Computer {
         this.startInclusive = startInclusive;
         this.endInclusive = endInclusive;
     }
+
+    public void makeNewNumbers() {
+        numbers.clear();
+
+        while (numbers.size() < numberSize) {
+            int number = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            if (!numbers.contains(number)) {
+                numbers.add(number);
+            }
+        }
+    }
 }
