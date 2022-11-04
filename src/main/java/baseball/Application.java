@@ -22,7 +22,7 @@ public class Application {
 
     public static String getRandomNumber() {
         StringBuilder baseballNumber = new StringBuilder();
-        while (baseballNumber.length() <= 3) {
+        while (baseballNumber.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             String number = Integer.toString(randomNumber);
 
