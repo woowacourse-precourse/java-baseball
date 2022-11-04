@@ -1,12 +1,12 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import camp.nextstep.edu.missionutils.test.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class FunctionTest {
 	@Test						/* 컴퓨터 숫자 생성 테스트 */
@@ -18,11 +18,20 @@ public class FunctionTest {
 			assertThat(number > 0 && number < 10);
 		}
 	}
-	@Test						/* 유저 인풋 테스트 */
+	@Test						/* 유저 인풋/유효성 검사 테스트 */
 	void userInputTest() {
-		String userInputNumbers;
-		assertThat(userInputNumbers = "123");
-		Application.validateInputPattern(userInputNumbers);
-		final List<Integer> USERS_NUMBERS = List.copyOf(Application.validateDuplication(userInputNumbers));
+		assertThatThrownBy(() -> Application.validateInputPattern("as"))
+				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Application.validateInputPattern("asd"))
+				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Application.validateInputPattern("asdf"))
+				.isInstanceOf(IllegalArgumentException.class);
+
+		assertThatThrownBy(() -> Application.validateDuplication("11"))
+				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Application.validateDuplication("111"))
+				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Application.validateDuplication("1111"))
+				.isInstanceOf(IllegalArgumentException.class);
 	}
 }
