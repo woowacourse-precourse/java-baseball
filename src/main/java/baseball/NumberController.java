@@ -35,7 +35,7 @@ public class NumberController {
         int balls = 0;
 
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i) == computers.get(i)) {
+            if (users.get(i).equals(computers.get(i))) {
                 strikes++;
                 continue;
             }
@@ -46,4 +46,11 @@ public class NumberController {
         return List.of(strikes, balls);
     }
 
+    public static List<Integer> convertStringToNumbers(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char numChar : input.toCharArray()) {
+            numbers.add(Character.getNumericValue(numChar));
+        }
+        return numbers;
+    }
 }
