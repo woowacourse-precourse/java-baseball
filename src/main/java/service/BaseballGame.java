@@ -21,14 +21,14 @@ public class BaseballGame {
             ComputerData computerData = new ComputerData();
             computerRepository = new ComputerRepository(computerData);
             computerRepository.setRandomNum();
-            getuserinput();
+            getUserInput();
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
     }
 
     //유저 입력 받기
-    private void getuserinput() throws IllegalArgumentException{
+    private void getUserInput() throws IllegalArgumentException{
         UserData userData = new UserData();
         userRepository = new UserRepository(userData);
         strike=0;
@@ -38,7 +38,7 @@ public class BaseballGame {
             String userinput= Console.readLine();
             userRepository.inputanswer(userinput);
             countBallAndStrike();
-            printresult();
+            printResult();
             return;
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
@@ -60,7 +60,7 @@ public class BaseballGame {
     }
 
     //결과 출력 메서드
-    private void printresult(){;
+    private void printResult(){;
         String msg="";
         if(ball==0&&strike==0){
             msg+=Utils.NOBALLANDNOSTRIKE;
@@ -71,19 +71,19 @@ public class BaseballGame {
         if(strike!=0){
             msg+=strike+Utils.STRIKE;
         }
-        if(checkresult()){
+        if(checkResult()){
             System.out.println(msg);
             System.out.println(Utils.ALLSTRIKE);
             checkRestart();
         }
         else {
             System.out.println(msg);
-            getuserinput();
+            getUserInput();
         }
     }
 
     //정답인지 확인
-    private boolean checkresult(){
+    private boolean checkResult(){
         if(strike==3) {
             return true;
         }
