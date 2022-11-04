@@ -7,8 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static void endGameState(){
-
+    static boolean endGameState(){
+        System.out.println("3개의 숫자를 모두 맟히셨습니다! 게임 졸료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String myNumber = Console.readLine();
+        if(myNumber.equals("1")){
+            return true;
+        }
+        if(myNumber.equals("2")){
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 
     static boolean compareNumber(List<Integer> computerNum, String myNum){
@@ -97,7 +106,8 @@ public class Application {
                 String myNum = pickMyNum();
                 isWin = compareNumber(computerNum, myNum);
             }
-
+            boolean againGame = endGameState();
+            System.out.println(againGame);
         }
         catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
