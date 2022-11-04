@@ -10,11 +10,11 @@ public class Game {
 
     public Game() {
         UserInput userInput = new UserInput();
-        BallCount ballcounter = new BallCount();
 
         generateNum();
 
         while (true) {
+            BallCount ballcounter = new BallCount();
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> user = userInput.getInput();
             checkInput(user, ballcounter);
