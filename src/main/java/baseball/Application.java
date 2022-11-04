@@ -32,6 +32,10 @@ public class Application {
 
         ball(computer, player, ballCount);
 
+        if(ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+
     }
 
     private static void ball(Computer computer, Player player, int ballCount) {
