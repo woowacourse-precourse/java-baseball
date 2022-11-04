@@ -5,10 +5,14 @@ public class BallNumber {
     private int number;
 
     private BallNumber(int number) {
-        if (number < 1 || number > 9) {
+        if (isBallNumber(number)) {
             throw new IllegalArgumentException();
         }
         this.number = number;
+    }
+
+    private boolean isBallNumber(int number) {
+        return number < 1 || number > 9;
     }
 
     public static BallNumber from(int number) {
