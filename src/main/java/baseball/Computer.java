@@ -7,12 +7,18 @@ import java.util.List;
 
 public class Computer {
 
-    public static void random3NumberOutput() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    List<Integer> computerNumber ;
+
+    public Computer(List<Integer> computer) {
+        this.computerNumber = computer;
+    }
+
+    public void random3NumberOutput() {
+
+        while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
         }
     }

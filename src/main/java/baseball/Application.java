@@ -9,10 +9,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        Computer computer = new Computer();
+        Computer computer = new Computer(new ArrayList<>());
         computer.random3NumberOutput();
 
-        Player player = new Player();
+        Player player = new Player(new ArrayList<>());
         player.player3NumberInput();
 
     }
