@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
         getStartMessage();
         List<Integer> answer = getRandomValue();
-        List<Character> userInput = getUserInput();
+        List<Integer> userInput = charToInt(getUserInput());
     }
 
     public static void getStartMessage() {
@@ -50,6 +51,14 @@ public class Application {
 
     public static void throwInputException() {
         throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해주십시오");
+    }
+
+    public static List<Integer> charToInt(List<Character> userInput) {
+        List<Integer> result = new ArrayList<>();
+        for (char x : userInput) {
+            result.add(Integer.parseInt(String.valueOf(x)));
+        }
+        return result;
     }
 
 }
