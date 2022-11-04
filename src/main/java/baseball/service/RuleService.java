@@ -6,8 +6,8 @@ public class RuleService {
     public int Strike(List<Integer> RandomNumber, List<Integer> InputNumber) {
         int cnt = 0;
 
-        for (int i = 0; i < RandomNumber.size(); i++) {
-            if (RandomNumber.get(i) == InputNumber.get(i)) {
+        for (int idx = 0; idx < RandomNumber.size(); idx++) {
+            if (RandomNumber.get(idx) == InputNumber.get(idx)) {
                 cnt++;
             }
         }
@@ -18,8 +18,8 @@ public class RuleService {
     public int Ball(List<Integer> RandomNumber, List<Integer> InputNumber) {
         int cnt = 0;
 
-        for (int in = 0; in < InputNumber.size(); in++) {
-            if (RandomNumber.contains(InputNumber.get(in)))
+        for (int idx = 0; idx < InputNumber.size(); idx++) {
+            if (RandomNumber.contains(InputNumber.get(idx)))
                 cnt++;
         }
 
