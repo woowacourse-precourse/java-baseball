@@ -45,8 +45,14 @@
 - **PlayerComputer Class**<br>
   : 싱글톤 객체를 가진 클래스로 컴퓨터의 값을 세팅하고 검증한다.<br>
   <br>
-  *private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits)*<br>
-  :random Number 3개가 모두 안 만들어졌는지 확인<br>
+  *public static PlayerComputer getInstance()*<br>
+  :PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  <br>
+  *public String getRandomNumber()*<br>
+  :컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
+  <br>
+  *private HashMap<Integer, Integer> generateNumber*<br>
+  :세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.<br>
   <br>
   *private static int getRandomDigit()*<br>
   :1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.<br>
@@ -54,14 +60,8 @@
   *private String combineDigits(HashMap<Integer, Integer> digits)*<br>
   :만들어진 무작위 수 세 개를 세자리 수의 문자열로 만듭니다.<br>
   <br>
-  *private HashMap<Integer, Integer> generateNumber*<br>
-  :세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.<br>
-  <br>
-  *public String getRandomNumber()*<br>
-  :컴퓨터가 게임에 사용할 세자리 수를 String형태로 반환합니다.<br>
-  <br>
-  *public static PlayerComputer getInstance()*<br>
-  :PlayerComputer 클래스는 싱글톤 객체를 가지고 있다. 객체를 반환한다.<br>
+  *private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits)*<br>
+  :random Number 3개가 모두 안 만들어졌는지 확인<br>
   <br>
 
 - **PlayerUser Class**
