@@ -95,8 +95,8 @@ public class Application {
     }
 
     // 파라미터 두개를 비교하는 메소드
-    private static boolean isSame(int num, int idxOf) {
-        return idxOf == num;
+    private static boolean isSame(int num, int compareNum) {
+        return num == compareNum;
     }
 
     // 사용자 숫자 입력받는 메소드
@@ -108,22 +108,27 @@ public class Application {
     }
 
     // 사용자의 숫자를 추가하는 메소드
-    private static void addInputNumber(List<Integer> user, String[] userNumber) {
+    private static void addInputNumber(List<Integer> user, char[] userNumber) {
         for (Integer num : toInts(userNumber)) {
             user.add(num);
         }
     }
 
     // 입력받은 숫자를 분리하여 배열에 저장하는 메소드
-    private static String[] getSplit() {
-        return Console.readLine().split("");
+    private static char[] getSplit() {
+        String split = Console.readLine();
+        char[] userNumber = new char[split.length()];
+        for (int i = 0; i < split.length(); i++) {
+            userNumber[i] = split.charAt(i);
+        }
+        return userNumber;
     }
 
     // 분리하여 배열에 저장된 문자들을 숫자로 변환하는 메소드
-    private static int[] toInts(String[] userNumber) {
+    private static int[] toInts(char[] userNumber) {
         int[] numbers = new int[userNumber.length];
         for (int i = 0; i < userNumber.length; i++) {
-            numbers[i] = Integer.parseInt(userNumber[i]);
+            numbers[i] = userNumber[i] - '0';
         }
         return numbers;
     }
