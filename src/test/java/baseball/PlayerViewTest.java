@@ -33,7 +33,7 @@ public class PlayerViewTest {
         System.setIn(in);
         assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력한 값은 숫자여야 합니다. ");
+                .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class PlayerViewTest {
         System.setIn(in);
         assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력한 값은 세 자리여야 합니다. ");
+                .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
 
     @Test
@@ -53,7 +53,7 @@ public class PlayerViewTest {
         System.setIn(in);
         assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력한 값에 0이 없어야 합니다. ");
+                .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
 
     @Test
@@ -63,6 +63,6 @@ public class PlayerViewTest {
         System.setIn(in);
         assertThatThrownBy(()->playerView.readInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력한 값이 서로 다른 숫자여야 합니다. ");
+                .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
 }
