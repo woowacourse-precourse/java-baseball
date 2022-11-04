@@ -19,5 +19,4 @@ public class AppView {
         String line = readLine();
         return line;
     }
-
 }
