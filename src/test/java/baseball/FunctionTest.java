@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ public class FunctionTest {
     }
 
     @Test
-    void makeAnsNumber() {
+    void makeAnsNumberTest() {
         int[] testArr = new int[3];
         testArr = answerNumber.getNumberArr();
         assertThat(testArr.length == 3);
@@ -23,5 +24,26 @@ public class FunctionTest {
         for(int i = 0; i<3; i++){
             assertThat(testArr[i]).isBetween(1,9);
         }
+    }
+
+    @Test
+    void isInputTest() {
+        String str1 = "243";
+        assertThat(Application.isInput(str1)).isFalse();
+
+        String str2 = "223";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.isInput(str2);
+        });
+
+        String str3 = "25T";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.isInput(str3);
+        });
+
+        String str4 = "2189";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.isInput(str4);
+        });
     }
 }
