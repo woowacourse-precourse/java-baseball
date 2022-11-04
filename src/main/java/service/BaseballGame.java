@@ -38,12 +38,14 @@ public class BaseballGame {
             String userinput= Console.readLine();
             userRepository.inputanswer(userinput);
             countBallAndStrike();
+            printresult();
             return;
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
         }
     }
 
+    //볼이랑 스트라이크 개수 구하기
     private void countBallAndStrike() {
         List<Integer> user = userRepository.getUserData();
         int index = 1;
@@ -55,5 +57,46 @@ public class BaseballGame {
             }
             index++;
         }
+    }
+
+    //결과 출력 메서드
+    private void printresult(){;
+        String msg="";
+        if(ball==0&&strike==0){
+            msg+=Utils.NOBALLANDNOSTRIKE;
+        }
+        if(ball!=0){
+            msg+=ball+Utils.BALL;
+        }
+        if(strike!=0){
+            msg+=strike+Utils.STRIKE;
+        }
+        if(checkresult()){
+            System.out.println(msg);
+            System.out.println(Utils.ALLSTRIKE);
+            checkRestart();
+        }
+        else {
+            System.out.println(msg);
+            getuserinput();
+        }
+    }
+
+    //정답인지 확인
+    private boolean checkresult(){
+        if(strike==3) {
+            return true;
+        }
+        return false;
+    }
+
+    //재시작 할지 확인
+    private void checkRestart(){
+        System.out.println(Utils.RESTARTQUESTION);
+        String restart= Console.readLine();
+        if(restart.equals("1"))
+            init();
+        else if(restart.equals("2"))
+            return;
     }
 }
