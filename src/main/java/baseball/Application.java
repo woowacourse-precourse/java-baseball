@@ -17,6 +17,10 @@ public class Application {
         return list;
     }
 
+    public static boolean isValidLength(int n) {
+        return n == 3;
+    }
+
     public static int GenerateNonDuplicateRandomNumber(List<Integer> randNum) {
         int k;
         do {
