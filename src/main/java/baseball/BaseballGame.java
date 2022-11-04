@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public class BaseballGame extends Message {
+public class BaseballGame {
     private static final String RE_GAME = "1";
     private static final String STOP_GAME = "2";
 
@@ -47,7 +47,7 @@ public class BaseballGame extends Message {
         return input;
     }
 
-    public String getStatusInput(){
+    public String getStatusInput() {
         return readLine();
     }
 

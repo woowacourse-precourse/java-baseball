@@ -8,15 +8,15 @@ public class Message {
     public Message() {
     }
 
-    public void printStartMessage(){
+    public static void printStartMessage() {
         System.out.println(startMessage);
     }
 
-    public void printInputMessage(){
+    public static void printInputMessage() {
         System.out.print(inputMessage);
     }
 
-    public void printRestartMessage(){
+    public static void printRestartMessage() {
         System.out.println(restartMessage);
     }
 }
