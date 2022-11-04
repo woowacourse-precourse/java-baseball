@@ -1,10 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import static constant.Constant.*;
-import static constant.ErrorMessage.INVALID_INPUT_VALUE;
-
 public class Application {
     public static void main(String[] args) {
         boolean isContinue = true;
