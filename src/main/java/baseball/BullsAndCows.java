@@ -16,7 +16,7 @@ public class BullsAndCows {
 
     private int STRIKE_COUNT = 0;
     private int BALL_COUNT = 0;
-    private final int STRIKE_COUNT_FOR_END = 3;
+    private static final int STRIKE_COUNT_FOR_END = 3;
 
 
     BullsAndCows() {
