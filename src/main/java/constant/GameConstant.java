@@ -6,4 +6,6 @@ public final class GameConstant {
     public static final String INPUT_PHRASE = "숫자를 입력해주세요 : ";
     public static final String INPUT_LENGTH_EXCEPTION = "입력된 값의 길이가 3이 아닙니다.";
     public static final String INPUT_TYPE_EXCEPTION = "입력된 값이 숫자가 아닙니다.";
+    public static final String INPUT_BOUNDARY_EXCEPTION = "1과 9사이의 숫자가 아닙니다.";
+    public static final String INPUT_REPEAT_EXCEPTION = "중복된 숫자가 있습니다.";
 }
