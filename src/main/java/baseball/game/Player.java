@@ -14,6 +14,7 @@ public class Player {
     }
 
     public String inputContinueOrStop() {
+        System.out.println(SystemMessage.START_NEW_GAME_OR_END);
         return Console.readLine();
     }
 
