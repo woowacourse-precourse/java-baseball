@@ -12,12 +12,9 @@ public class UserNumber {
 
     public void getUserNumber() {
         String tempNumber = Console.readLine();
-        userNumberValidator(tempNumber);
     }
 
-    private void userNumberValidator(String tempNumber) {
-        List<Character> numberList = tempNumber.chars()
-                .mapToObj(e->(char)e).collect(Collectors.toList());
+    private void userNumberValidator(List<Character> numberList) {
         checkUserInputLength(numberList);
         checkInputIsNumber(numberList);
         checkDuplicateValue(numberList);
