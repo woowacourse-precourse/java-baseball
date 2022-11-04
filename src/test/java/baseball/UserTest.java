@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
@@ -46,8 +45,6 @@ class UserTest {
     @Test
     void inputNumberTest1() {
         String input = "23s";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         int result = user.inputNumber();
@@ -57,8 +54,6 @@ class UserTest {
     @Test
     void inputNumberTest2() {
         String input = "123";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         int result = user.inputNumber();
@@ -108,6 +103,16 @@ class UserTest {
         int ball = 1;
         user.printResult(strike, ball);
         assertEquals("1볼 1스트라이크", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void keepOrNotTest(){
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        user.keepOrNot();
+        boolean result = User.keepGame;
+        assertThat(result).isEqualTo(false);
     }
 
 
