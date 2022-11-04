@@ -66,21 +66,25 @@ public class Application {
 		}
 		return computerNumbers;
 	}
+	public static Map<String, Integer> gameScoreProcess(List<Integer> comNumber) {
+		Map<String, Integer> userScore = new HashMap<>();
+		List<Integer> userNumber = getUserNumbers();
+		for (int i = 0; i < userNumber.size(); i++) {
+			if (userNumber.get(i) == comNumber.get(i)) {
+				userScore.put("스트라이크", userScore.getOrDefault("스트라이크", 0) + 1);
+			} else if (comNumber.contains(userNumber.get(i))) {
+				userScore.put("볼", userScore.getOrDefault("볼", 0) + 1);
+			}
+		}
+		return userScore;
+	}
 
 	public static void gameStart(List<Integer> comNumber) {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		boolean isGameContinued = true;
 		Map<String, Integer> userScore = new HashMap<>();
 		while (isGameContinued) {
-			userScore = new HashMap<>();
-			List<Integer> userNumber = getUserNumbers();
-			for (int i = 0; i < userNumber.size(); i++) {
-				if (userNumber.get(i) == comNumber.get(i)) {
-					userScore.put("스트라이크", userScore.getOrDefault("스트라이크", 0) + 1);
-				} else if (comNumber.contains(userNumber.get(i))) {
-					userScore.put("볼", userScore.getOrDefault("볼", 0) + 1);
-				}
-			}
+			userScore = gameScoreProcess(comNumber);
 			if (userScore.get("스트라이크") == null && userScore.get("볼") == null)
 				System.out.println("낫싱");
 			else if (userScore.get("스트라이크") != null && userScore.get("볼") != null) {
