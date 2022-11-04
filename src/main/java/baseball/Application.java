@@ -12,6 +12,7 @@ public class Application {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String userInput;
+        int replayFlag = 0;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> answer;
@@ -25,35 +26,24 @@ public class Application {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            if (inputError(userInput))
-                throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
+            if (inputError(userInput)) {
+                throw new IllegalArgumentException();
+            }
             guess = typeCast(userInput, guess);
-
             Result result = checkNum(answer, guess);
-            if (result.getStrike() == 3) {
-                System.out.println(result.getStrike() + "스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                try {
-                    String replay = br.readLine();
-                    if (replay.equals("1")) {
-                        answer = makeRandomNum();
-                        continue;
-                    } else if (replay.equals("2"))
-                        return;
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                return;
-            } else if (result.getStrike() == 0 && result.getBall() == 0)
-                System.out.println("낫싱");
-            else if (result.getStrike() == 0)
-                System.out.println(result.getBall() + "볼");
-            else if (result.getBall() == 0)
-                System.out.println(result.getStrike() + "스트라이크");
+            if (correctAnswer(result)) {
+                printRight(result);
+                replayFlag = replay();          //(replayFlag) =>  1 : 재시작, 2 : 게임종료
+            } else {
+                printWrong(result);
+                replayFlag = 0;                 //(replayFlag) => 0 : 오답, 게임 계속 진행
+            }
+            if(replayFlag==0)
+                continue;
+            else if(replayFlag==1)
+                continue;
             else
-                System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
-
+                continue;
         }
     }
 
@@ -136,5 +126,46 @@ public class Application {
                 ball++;
         }
         return new Result(strike, ball);
+    }
+
+
+    public static boolean correctAnswer(Result result) {
+        if (result.getStrike() == 3)
+            return true;
+        else
+            return false;
+    }
+
+    public static void printRight(Result result) {
+        System.out.println(result.getStrike() + "스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void printWrong(Result result) {
+        if (result.getStrike() == 0 && result.getBall() == 0)
+            System.out.println("낫싱");
+        else if (result.getStrike() == 0)
+            System.out.println(result.getBall() + "볼");
+        else if (result.getBall() == 0)
+            System.out.println(result.getStrike() + "스트라이크");
+        else
+            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+    }
+
+    public static int replay() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String replayInput = null;
+        try {
+            replayInput = br.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (replayInput.equals("1")) {
+            return 1;
+        } else if (replayInput.equals("2"))
+            return 2;
+        else
+            throw new IllegalArgumentException();
     }
 }
