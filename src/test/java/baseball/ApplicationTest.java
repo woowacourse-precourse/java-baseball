@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -125,5 +126,25 @@ class ApplicationTest extends NsTest {
         assertThat(exception1.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
         assertThat(exception2.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
         assertThat(exception3.getCause().getMessage()).isEqualTo("입력값 사이에 중복된 값이 존재합니다.");
+    }
+
+    @Test
+    void 정상적인_사용자_입력값_테스트() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        UserNumber userNumber = new UserNumber();
+        Method method = userNumber.getClass().getDeclaredMethod("userNumberValidator", List.class);
+        method.setAccessible(true);
+
+        List<Character> numberList1 = "123".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList2 = "734".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+        List<Character> numberList3 = "891".chars()
+                .mapToObj(e->(char)e).collect(Collectors.toList());
+
+        // then
+        Assertions.assertDoesNotThrow(() -> method.invoke(userNumber, numberList1));
+        Assertions.assertDoesNotThrow(() -> method.invoke(userNumber, numberList2));
+        Assertions.assertDoesNotThrow(() -> method.invoke(userNumber, numberList3));
     }
 }
