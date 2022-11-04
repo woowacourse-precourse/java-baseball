@@ -39,4 +39,10 @@ public class FeatureListTest {
         assertThat(isInputIsNonDuplicate(s)).isEqualTo(set);
     }
 
+    @Test
+    void 입력Set의_사이즈가3인지_확인() {
+        Set<Integer> set = Set.of(3, 4, 5);
+        assertThat(isValidSetSize(set)).isTrue();
+    }
+
 }

@@ -32,6 +32,10 @@ public class Application {
         return set;
     }
 
+    public static boolean isValidSetSize(Set set) {
+        return set.size() == 3;
+    }
+
 
     public static int GenerateNonDuplicateRandomNumber(List<Integer> randNum) {
         int k;
