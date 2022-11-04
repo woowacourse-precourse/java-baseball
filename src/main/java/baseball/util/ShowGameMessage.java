@@ -9,4 +9,8 @@ public class ShowGameMessage {
             isFirstTurn = false;
         }
     }
+
+    public void inputUserNumberMessage() {
+        System.out.print(GameMessage.USER_INPUT);
+    }
 }
