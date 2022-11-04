@@ -79,220 +79,59 @@ public class ComputerTest {
 //    }
 
     @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 3 , 볼 0
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_1() {
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 3, 5
+    void 유저숫자_스트라이트_볼_낫싱_체크_case() throws Exception {
+        //given
+        List<List<Integer>> numInputUser = new ArrayList<>(List.of(
+            // 스트라이크 3 , 볼 0
+            List.of(123),
+            // 스트라이크 2 , 볼 0
+            List.of(124, 143, 423),
+            // 스트라이크 1 , 볼 2
+            List.of(132, 321, 213),
+            // 스트라이크 1 , 볼 1
+            List.of(182, 134, 521, 324, 813, 283),
+            // 스트라이크 1 , 볼 0
+            List.of(184, 826, 483),
+            // 스트라이크 0 , 볼 1
+            List.of(416, 651, 247, 562, 357, 635),
+            // 스트라이크 0 , 볼 2
+            List.of(712, 218, 251, 238, 732, 352, 314, 381, 431),
+            // 스트라이크 0 , 볼 3
+            List.of(312, 231),
+            // 스트라이크 0 , 볼 0
+            List.of(798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789)
         ));
-        computer.isRealRightNumOfUser(135);
-        int resultStrike = computer.getCntStrike();
-        int resultBall = computer.getCntBall();
-        ArrayList resultList = new ArrayList<>(List.of(resultStrike, resultBall));
-
-        assertThat(resultList).isEqualTo(List.of(3, 0));
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 2 , 볼 0
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_2() {
-        int[] testInt = new int[]{124, 143, 423};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(2, 0)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 1 , 볼 2
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_3() {
-        int[] testInt = new int[]{132, 321, 213};
         Computer computer = new Computer();
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
             1, 2, 3
         ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
+        List<List<Integer>> trueList = new ArrayList<>(
+            List.of(
+                List.of(3, 0),
+                List.of(2, 0),
+                List.of(1, 2),
+                List.of(1, 1),
+                List.of(1, 0),
+                List.of(0, 1),
+                List.of(0, 2),
+                List.of(0, 3),
+                List.of(0, 0)
+            )
+        );
+        List<List<Integer>> ResultList = new ArrayList<>();
+        // when
+        for (List<Integer> list : numInputUser) {
+            for (int num : list) {
+                computer.initCntStrikeBall();
+                computer.isRealRightNumOfUser(num);
+            }
+            ResultList.add(List.of(computer.getCntStrike(), computer.getCntBall()));
         }
-
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(1, 2)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 1 , 볼 1
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_4() {
-        int[] testInt = new int[]{182, 134, 521, 324, 813, 283};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(1, 1)));
-        assertThat(result).isTrue();
+        // then
+        assertThat(ResultList).containsAll(trueList);
     }
 
 
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 0 , 볼 1
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_5() {
-        int[] testInt = new int[]{416, 651, 247, 562, 357, 635};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(0, 1)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 0 , 볼 2
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_6() {
-        int[] testInt = new int[]{712, 218, 251, 238, 732, 352, 314, 381, 431};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(0, 2)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 0 , 볼 3
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_7() {
-        int[] testInt = new int[]{312, 231};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(0, 3)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 1 , 볼 0
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_8() {
-        int[] testInt = new int[]{184, 826, 483};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(1, 0)));
-        assertThat(result).isTrue();
-    }
-
-    @Test
-        // Computer.isRightThreeNumOfComputer
-        // 스트라이크 0 , 볼 0
-    void 유저숫자_스트라이트_볼_낫싱_체크_case_9() {
-        int[] testInt = new int[]{798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789};
-        Computer computer = new Computer();
-        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
-            1, 2, 3
-        ));
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        int resultStrike = 0;
-        int resultBall = 0;
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultStrike = computer.getCntStrike();
-            resultBall = computer.getCntBall();
-            ArrayList<Integer> list = new ArrayList<>(List.of(resultStrike, resultBall));
-            resultList.add(list);
-        }
-        boolean result = resultList.stream().allMatch(list -> list.containsAll(List.of(0, 0)));
-        assertThat(result).isTrue();
-    }
-
-    
     @Test
     void 컴퓨터가_유저에게_힌트를_준다() throws Exception {
         //given
