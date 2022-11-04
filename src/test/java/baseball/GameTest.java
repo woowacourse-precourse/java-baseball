@@ -119,7 +119,6 @@ public class GameTest {
         int[][] expected = {{1, 2, 3}, {2, 3, 4}, {9, 8, 7}, {5, 6, 7}, {1, 5, 9}, {1, 8, 4}};
         List<Integer> result, expectedList;
 
-
         for (int i = 0; i < input.length; ++i) {
             InputStream in = new ByteArrayInputStream(input[i].getBytes());
             System.setIn(in);
@@ -132,6 +131,27 @@ public class GameTest {
             expectedList.add(expected[i][2]);
 
             assertThat(result).isEqualTo(expectedList);
+        }
+    }
+
+    @Test
+    void readIsQuit_비_정상적인_입력() {
+        String[] input = {"3", "4", "0", "-1", "a", "", ""};
+        boolean isThrown;
+
+        for (int i = 0; i < input.length; ++i) {
+            isThrown = false;
+            InputStream in = new ByteArrayInputStream(input[i].getBytes());
+            System.setIn(in);
+
+            try {
+                _game.readIsQuit();
+            } catch (IllegalArgumentException ex) {
+                isThrown = true;
+            }
+            if (isThrown == false) {
+                assertThat("IllegalArgumentException was not Thrown").isEqualTo("IllegalArgumentException");
+            }
         }
     }
 }
