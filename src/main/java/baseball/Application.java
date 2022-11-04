@@ -7,38 +7,40 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+
         int userEndingResponse = 1;
-        List<Integer> computerAnswerList = new ArrayList<>();
         int userAnswer = 0;
-        List<Integer> userAnswerList = new ArrayList<>();
-        List<Integer> notStrikeZone = new ArrayList<>();
         int countStrike = 0;
         int countBall = 0;
+        List<Integer> computerAnswerList = new ArrayList<>();
+        List<Integer> notStrikeZone = new ArrayList<>();
+        List<Integer> userAnswerList = new ArrayList<>();
 
         while (userEndingResponse == 1){
 
             printStartMessage();
-
             // computerAnswerList = createComputerLength3IntegerAnswerToList();
             //* 예시
             computerAnswerList.add(7);
             computerAnswerList.add(1);
             computerAnswerList.add(3);
             //*/
-            printGetInputMessage();
-            userAnswer = getUserNumberToInteger();
-            checkIllegalInputForBaseballGame(userAnswer);
-            userAnswerList = convertIntegerToList(userAnswer);
 
-            notStrikeZone = checkWhereIsNotStrike(computerAnswerList, userAnswerList);
-            countStrike = countStrike(notStrikeZone);
+            while (countStrike!=3){
 
-            if (countStrike == 3) {
-                printEndingMessage();
-                userEndingResponse = getUserNumberToInteger();
-            } else
+                printGetInputMessage();
+                userAnswer = getUserNumberToInteger();
+                checkIllegalInputForBaseballGame(userAnswer);
+                userAnswerList = convertIntegerToList(userAnswer);
+
+                notStrikeZone = checkWhereIsNotStrike(computerAnswerList, userAnswerList);
+                countStrike = countStrike(notStrikeZone);
                 countBall = countBall(computerAnswerList, userAnswerList, notStrikeZone);
+                printUserScore(countStrike, countBall);
+            }
 
+            printEndingMessage();
+            userEndingResponse = getUserNumberToInteger();
         }
         // TODO: 프로그램 구현
     }
@@ -51,7 +53,6 @@ public class Application {
                 computerAnswer.add(randomNumber);
             }
         }
-
         return computerAnswer;
     }
 
