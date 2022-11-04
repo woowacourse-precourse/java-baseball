@@ -8,23 +8,8 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(!gameContext.gameShouldStop()) {
-
-            switch (gameContext.getState()) {
-                case RUNNING:
-                    System.out.print("숫자를 입력해주세요 : ");
-                    gameContext.handleUserInput();
-                    break;
-                case REPLAY:
-                    gameContext.initializeContext();
-                    break;
-                case THREE_STRIKE:
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    gameContext.handleUserInput();
-                    break;
-            }
-
-        }
+        while(!gameContext.gameShouldStop())
+            gameContext.run();
 
         System.out.println("게임 종료.");
 

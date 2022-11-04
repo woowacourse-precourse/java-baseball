@@ -68,6 +68,22 @@ public class GameContext {
         return (state == GameState.EXIT_NORMALLY) || (state == GameState.EXIT_WITH_EXCEPTION);
     }
 
+    public void run() {
+        switch (state) {
+            case RUNNING:
+                System.out.print("숫자를 입력해주세요 : ");
+                handleUserInput();
+                break;
+            case REPLAY:
+                initializeContext();
+                break;
+            case THREE_STRIKE:
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                handleUserInput();
+                break;
+        }
+    }
+
     private boolean isValidityInput(String userInput) {
         if (state == GameState.RUNNING && isNDigitNumberInRange(userInput, ANSWER_LENGTH))
             return true;
