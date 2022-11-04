@@ -60,6 +60,14 @@ public class GameUtil {
         }
     }
 
+    public static int parseInt(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
+
     private static long countOneDigitNumbers(List<Integer> oneDigitNumbers, boolean deduplicate) {
         if (deduplicate) {
             return oneDigitNumbers.stream().distinct().count();
