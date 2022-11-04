@@ -7,7 +7,14 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int[] randomNum = randomNum();
 
+        while(!game(randomNum)){
+            game(randomNum);
+        }
+    }
+
+    public static int[] randomNum(){
         int[] randomNum = new int[3]; // 서로다른 3개 숫자
         Random rand = new Random();
 
@@ -20,12 +27,10 @@ public class Application {
             }
             System.out.println("num: " + randomNum[count]);
         }
+        return randomNum;
 
-
-        while(!game(randomNum)){
-            game(randomNum);
-        }
     }
+
 
     public static boolean game(int[] randomNum){
         boolean result = false;
