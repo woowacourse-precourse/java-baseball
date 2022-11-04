@@ -11,6 +11,7 @@ public class Application {
 	static List<Integer> computer = new ArrayList<>();
     public static void main(String[] args) {
     	randomComNum(computer);  //randomComNum 함수로 computer로부터 랜덤 숫자 정하기
+    	String numstr="";      //numstr string에 사용자 입력 받기
     }
     
     public static void randomComNum(List<Integer> computer) { //randomnumber 서로 다른 3자리수를 컴퓨터가 생성.
