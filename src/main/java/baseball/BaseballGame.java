@@ -7,6 +7,7 @@ public class BaseballGame {
     int[] computerNumber;
     int[] userNumber;
     Hint hint;
+    Scanner scanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
     }
@@ -31,7 +32,6 @@ public class BaseballGame {
         String userInput;
         int strike = 0;
         int ball = 0;
-        Scanner scanner = new Scanner(System.in);
         userInput = scanner.nextLine();
         if (invalidUserNumber(userInput)){
             throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -44,7 +44,20 @@ public class BaseballGame {
         hint.getHint(userNumber, computerNumber);
     }
     public boolean restartGame(){
-        return true;
+        if (hint.strike == 3){
+            return isContinue();
+        } else {
+            return true;
+        }
+    }
+
+    private boolean isContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = scanner.nextInt();
+        if (input == 1){
+            return true;
+        }
+        return false;
     }
 
     public boolean invalidUserNumber(String userInput){
