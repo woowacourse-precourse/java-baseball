@@ -49,11 +49,26 @@ public class UserTest {
 
     @Test
         // 입력을 제대로 받았는지 확인
-        // 실수 입력받을때
+        // 음수 입력받을때
     void 문자_입력_예외_테스트_case_2() throws Exception {
         //given
         User user = new User();
         String input = "-3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class,
+            user::getInputAllRightNumOfUser);
+    }
+
+    @Test
+        // 입력을 제대로 받았는지 확인
+        // 길이가 초가 할때
+    void 문자_입력_예외_테스트_case_3() throws Exception {
+        //given
+        User user = new User();
+        String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         // when
