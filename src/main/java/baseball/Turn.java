@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Turn {
-    private static final int NUMBER_OF_INPUT_DIGITS= 3;
+    private static final int NUMBER_OF_INPUT_DIGITS = 3;
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String ASK_FOR_NUMBER = "숫자를 입력해주세요 : ";
+    private static final int STRIKE_OUT_NUMBER = 3;
     private List<Integer> playerNumberList;
     private int numberOfBalls;
     private int numberOfStrikes;
@@ -96,5 +97,9 @@ public class Turn {
             result.append(scoreMessage);
         }
         return result.toString();
+    }
+
+    public boolean isStrikeOut(){
+        return this.numberOfStrikes == STRIKE_OUT_NUMBER;
     }
 }

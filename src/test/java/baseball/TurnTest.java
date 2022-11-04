@@ -252,4 +252,21 @@ public class TurnTest {
         assertThat(turn.getBallResultString()).isEqualTo(result);
     }
 
+    @Test
+    void isStrikeOut_test_strike_out() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "235";
+        final byte[] buf = String.join("\n", testInput).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        turn.transformPlayerInputToList();
+        turn.countNumberOfStrikes(testHiddenNumberList);
+
+        boolean result = true;
+
+        assertThat(turn.isStrikeOut()).isEqualTo(result);
+    }
+
 }
