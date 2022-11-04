@@ -6,6 +6,7 @@ import java.util.Map;
 public class Result {
     private static final String STRIKE = "strike";
     private static final String BALL = "ball";
+    private static final int THREE_STRIKE = 3;
 
     private Map<String, Integer> result;
 
@@ -25,6 +26,13 @@ public class Result {
 
     public int countBall() {
         return this.result.get(BALL);
+    }
+
+    public boolean isEnd() {
+        if (countStrike() == THREE_STRIKE) {
+            return true;
+        }
+        return false;
     }
 
 }
