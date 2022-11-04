@@ -6,14 +6,14 @@ public class InputBallNumber {
 
     private static final int BALL_NUMBER_LENGTH = 3;
 
-    public String inputBallNum() {
+    public String inputBallNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String ballNumbers = Console.readLine();
-        validation(ballNumbers);
+        validateNumber(ballNumbers);
         return ballNumbers;
     }
 
-    public void validation(String ballNumbers) {
+    public void validateNumber(String ballNumbers) {
         checkLength(ballNumbers);
         isOnlyNumbers(ballNumbers);
         checkDuplication(ballNumbers);
