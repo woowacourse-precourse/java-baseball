@@ -1,9 +1,12 @@
 package baseball.validate;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class ValidateNumber {
+
+    private final static List<Integer> CHOICE_LIST = List.of(1, 2);
 
     public static void validateLength(int number, Predicate<Integer> p) {
         String s = String.valueOf(number);
@@ -27,6 +30,11 @@ public class ValidateNumber {
             }
         }
 
+    }
+    public static void validateInList(int number) {
+        if (!CHOICE_LIST.contains(number)) {
+            throw new IllegalStateException("목록에 있는 숫자를 선택해주세요");
+        }
     }
 
 }
