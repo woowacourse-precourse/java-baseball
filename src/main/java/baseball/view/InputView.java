@@ -15,7 +15,7 @@ public class InputView {
     private static final String INPUT_NUMBER_IS_NOT_DIGIT_EXCEPTION = "입력하는 수는 숫자여야합니다.";
     private static final String INPUT_NUMBER_LENGTH_EXCEPTION = "입력하는 수는 3자리여야합니다.";
     private static final String INPUT_NUMBER_CONTAIN_ZERO_EXCEPTION = "입력하는 수는 0이 포함될 수 없습니다. 1~9까지의 수를 입력해주세요.";
-    private static final String INPUT_NUMBER_EACH_DIGIT_DUPLICATE_EXCEPTION = "입력하는 수는 서로 다른 수여야합니다. ";
+    private static final String INPUT_NUMBER_EACH_DIGIT_DUPLICATE_EXCEPTION = "입력하는 수는 서로 다른 수여야합니다.";
     private static final String RESTART_OR_END_NUMBER_NOT_ONE_OR_TWO_EXCEPTION = "재시작 또는 종료 Number는 1, 2입니다. 그 외는 입력할 수 없습니다.";
     private static final int INPUT_NUMBER_CORRECT_LENGTH = 3;
     private static final String INPUT_NUMBER_CORRECT_TYPE = "^[0-9]*$";
