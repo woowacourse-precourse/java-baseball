@@ -16,7 +16,8 @@ public class Application {
         while (gameFlag) {
             String randomNumber = getRandomNumber();
             startGame(randomNumber);
-            printEndMessage();
+
+
         }
 
 
@@ -47,6 +48,7 @@ public class Application {
     public static void printInputMessage() {
         System.out.println("숫자를 입력해주세요 : ");
     }
+
     public static void printGameResult(int ballCount, int strikeCount) {
         StringBuilder resultMessage = new StringBuilder();
         if (ballCount != 0) {
@@ -121,16 +123,28 @@ public class Application {
     }
 
     public static boolean isThreeStrike(int strikeCount) {
-        if(strikeCount == 3) {
+        if (strikeCount == 3) {
             return true;
         }
         return false;
     }
+
     public static void startGame(String randomNumber) {
         while (true) {
             printInputMessage();
             String userInputNumber = getUserInputNumber();
 
+            int strikeCount = getStrikeCount(userInputNumber, randomNumber);
+            int ballCount = getBallCount(userInputNumber, randomNumber);
+            printGameResult(ballCount, strikeCount);
+
+            if (isThreeStrike(strikeCount)) {
+                printEndMessage();
+                break;
+            }
+        }
     }
+
+    
 
 }
