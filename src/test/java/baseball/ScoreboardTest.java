@@ -34,7 +34,7 @@ public class ScoreboardTest {
     @Test
     void 볼_점수_더하기() {
         Scoreboard scoreboard = new Scoreboard();
-        scoreboard.addBallPoint(2);
+        scoreboard.addBallPoint();
 
         int ballPoint = scoreboard.getBallPoint();
 
@@ -44,7 +44,7 @@ public class ScoreboardTest {
     @Test
     void 스트라이크_점수_더하기() {
         Scoreboard scoreboard = new Scoreboard();
-        scoreboard.addStrikePoint(2);
+        scoreboard.addStrikePoint();
 
         int strikePoint = scoreboard.getStrikePoint();
 
