@@ -13,8 +13,8 @@ public class User {
     }
 
     private void setNumber(String inputValue) {
-        for (Character digit : inputValue.toCharArray()) {
-            number.add(Integer.valueOf(String.valueOf(digit)));
+        for (String digit : inputValue.split("")) {
+            number.add(Integer.valueOf((digit)));
         }
     }
 
