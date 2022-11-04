@@ -1,6 +1,7 @@
 package baseball;
 
 public class Message {
+    public static final String START = "숫자 야구 게임을 시작합니다.";
     public static final String TYPE_EXCEPTION = "숫자를 입력해주세요.";
     public static final String DIGIT_LENGTH_EXCEPTION = Config.DIGIT_SIZE + "자리 수를 입력해주세요.";
     public static final String STATE_LENGTH_EXCEPTION = Config.STATE_SIZE + "자리 수를 입력해주세요.";
