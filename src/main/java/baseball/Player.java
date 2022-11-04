@@ -9,31 +9,22 @@ public class Player {
 	private static final int UNIT_HUNDRED = 100;
 	private static final int UNIT_TEN = 10;
 	private static final int INIT_LIST_CAPACITY = 3;
-	private static List<Integer> userNumberList;
+	private List<Integer> userNumberList;
 
 	public Player() {
 		userNumberList = new ArrayList<>(INIT_LIST_CAPACITY);
 	}
 
-	protected void makeUserNumber(String userInput) {
+	protected void addUserNumberInList(String userInput) {
 		initUserNumber();
-		makeUserInput(userInput);
+		separateNumbersByUnit(Integer.parseInt(userInput));
 	}
 
-	private void makeUserInput(String userInput) {
-		int userInputToInt = Integer.parseInt(userInput);
-
-		addUserNumber(userInputToInt);
+	protected static String inputNumber() {
+		return Console.readLine();
 	}
 
-	protected String inputNumber() {
-		View.showUerInputGuideMessage();
-		String str = Console.readLine();
-
-		return str;
-	}
-
-	private void addUserNumber(int userNumber) {
+	private void separateNumbersByUnit(int userNumber) {
 		userNumberList.add(userNumber / UNIT_HUNDRED);
 		userNumberList.add((userNumber % UNIT_HUNDRED) / UNIT_TEN);
 		userNumberList.add((userNumber % UNIT_HUNDRED) % UNIT_TEN);
@@ -45,12 +36,5 @@ public class Player {
 
 	protected List<Integer> getUserNumberList() {
 		return userNumberList;
-	}
-
-	protected String inputEndOrRe() {
-		View.showEndOrRestartGuideMessage();
-		String reOrEnd = Console.readLine();
-
-		return reOrEnd;
 	}
 }

@@ -1,56 +1,51 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
 	private static final int MAX_STRIKE = 3;
+	private static final int INIT_INDEX = 0;
 	private static final int INIT_STRIKE_AND_BALL = 0;
 	private static final int END_OR_RESTART_INPUT_LENGTH = 1;
 	private static final int NUMBERS_INPUT_LENGTH = 3;
-	private static final String END_NUMBER = "2";
-	private static int strike;
-	private static int ball;
+	private int strike;
+	private int ball;
 
-	public void gameStart(Computer computer, Player player, Checker checker) {
-		View.startGameGuideMessage();
-		boolean end;
+	public void startGame(Computer computer, Player player) {
+		View.showStartGameGuideMessage();
+
+		boolean isEnd = false;
 
 		do {
-			game(computer, player, checker);
+			game(computer, player);
 
-			String userInputEnd = player.inputEndOrRe();
-			checker.userInputChecker(userInputEnd, END_OR_RESTART_INPUT_LENGTH, player);
-			end = isEndGame(userInputEnd);
-			isReStart(computer, !end);
+			View.showEndOrRestartGuideMessage();
 
-		} while (!end);
+			String userInput = player.inputNumber();
+			Checker.userInputChecker(userInput, END_OR_RESTART_INPUT_LENGTH, player.getUserNumberList());
+
+			isEnd = Checker.checkEndGame(Integer.parseInt(userInput));
+			Checker.checkReStart(computer, !isEnd);
+		} while (!isEnd);
 	}
 
-	private void game(Computer computer, Player player, Checker checker) {
+	private void game(Computer computer, Player player) {
 
 		do {
 			initBallAndStrike();
 
-			String userInput = player.inputNumber();
-			checker.userInputChecker(userInput, NUMBERS_INPUT_LENGTH, player);
-			player.makeUserNumber(userInput);
+			View.showUserInputGuideMessage();
 
-			calculateStrikeAndBall(computer, player);
-			View.printResult(ball, strike, INIT_STRIKE_AND_BALL);
+			String userInput = player.inputNumber();
+			Checker.userInputChecker(userInput, NUMBERS_INPUT_LENGTH, player.getUserNumberList());
+			player.addUserNumberInList(userInput);
+
+			calculateStrikeAndBall(computer.getRandomNumber(), player.getUserNumberList());
+
+			View.showResult(ball, strike, INIT_STRIKE_AND_BALL);
 		} while (strike != MAX_STRIKE);
 
 		View.showThreeStrike();
-	}
-
-	private boolean isEndGame(String userInputEnd) {
-		if (userInputEnd.equals(END_NUMBER)) {
-			return true;
-		}
-		return false;
-	}
-
-	private static void isReStart(Computer computer, boolean reStart) {
-		if (reStart) {
-			computer.makeRandomNumber();
-		}
 	}
 
 	private void initBallAndStrike() {
@@ -58,18 +53,25 @@ public class Game {
 		this.strike = INIT_STRIKE_AND_BALL;
 	}
 
-	private void calculateStrikeAndBall(Computer computer, Player player) {
-		int computerNumberIndex = 0;
+	private void calculateStrikeAndBall(List<Integer> randomNumber, List<Integer> userNumberList) {
 
-		for (Integer userNumber : player.getUserNumberList()) {
+		for (int numberIndex = INIT_INDEX; numberIndex < randomNumber.size(); numberIndex++) {
 
-			if (computer.getRandomNumberValue(computerNumberIndex) == userNumber) {
-				strike++;
-			} else if (player.getUserNumberList().contains(computer.getRandomNumberValue(computerNumberIndex))) {
-				ball++;
-			}
+			int computerNumber = randomNumber.get(numberIndex);
+			int userNumber = userNumberList.get(numberIndex);
 
-			computerNumberIndex++;
+			strikeOrBall(userNumber, computerNumber, randomNumber);
 		}
+
+	}
+
+	private void strikeOrBall(int userNumber, int computerNumber, List<Integer> randomNumber) {
+
+		if (Checker.isStrike(computerNumber, userNumber)) {
+			strike++;
+		} else if (Checker.isBall(userNumber, randomNumber)) {
+			ball++;
+		}
+
 	}
 }

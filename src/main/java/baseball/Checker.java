@@ -1,74 +1,126 @@
 package baseball;
 
-import java.util.ArrayList;
-
-import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Checker {
-	private static final int ZERO = 0;
+	private static final int INIT_INDEX = 0;
 	private static final int END_OR_RESTART_INPUT_LENGTH = 1;
 	private static final int END_INPUT = 2;
 	private static final int RESTART_INPUT = 1;
+	private static final int USER_NUMBER_INPUT_LENGTH = 3;
+	private static final String ZERO = "0";
 
-	public void userInputChecker(String userNumber, int length, Player player) {
-		checkNumberOnlyError(userNumber);
-		checkLengthError(userNumber, length);
-		checkEndOrRestartError(userNumber, length);
-		checkSameLetterError(length, player);
-		checkNumberRangeError(userNumber);
+	public static void userInputChecker(String userInput, int length, List<Integer> userNumberList) {
+		checkNumberOnlyException(userInput);
+		checkLengthException(userInput, length);
+		checkSameLetterException(length, userNumberList);
+		checkNumberRangeException(userInput, length);
 	}
 
-	private void checkNumberRangeError(String userNumber) {
-		if (userNumber.contains(Integer.toString(ZERO))) {
-			Exception.numberRangeError();
+	private static void checkNumberRangeException(String userInput, int length) {
+
+		if (isEndOrRestartInput(length)) {
+			if (isEndOrRestartRangeException(userInput)) {
+				Exception.endOrRestartException();
+			}
+		}
+
+		if (isUserNumberInput(length)) {
+			if (isUserNumberInputRangeException(userInput)) {
+				Exception.numberRangeException();
+			}
 		}
 	}
 
-	private void checkSameLetterError(int length, Player player) {
+	private static boolean isUserNumberInput(int length) {
+		return length == USER_NUMBER_INPUT_LENGTH;
+	}
+
+	private static boolean isEndOrRestartInput(int length) {
+		return length == END_OR_RESTART_INPUT_LENGTH;
+	}
+
+	private static boolean isUserNumberInputRangeException(String userNumber) {
+		return userNumber.contains(ZERO);
+	}
+
+	private static boolean isEndOrRestartRangeException(String userInput) {
+		return Integer.parseInt(userInput) > END_INPUT || Integer.parseInt(userInput) < RESTART_INPUT;
+	}
+
+	private static void checkSameLetterException(int length, List<Integer> userNumberList) {
+
 		if (length > END_OR_RESTART_INPUT_LENGTH) {
-			if (isUserInputSameNumber(player)) {
-				Exception.sameLetterError();
+			if (isUserInputSameNumber(userNumberList)) {
+				Exception.sameLetterException();
 			}
 		}
+
 	}
 
-	private void checkEndOrRestartError(String userNumber, int length) {
-		if (length == END_OR_RESTART_INPUT_LENGTH) {
-			if (Integer.parseInt(userNumber) > END_INPUT || Integer.parseInt(userNumber) < RESTART_INPUT) {
-				Exception.endOrRestartError();
-			}
+	private static void checkLengthException(String userInput, int length) {
+
+		if (userInput.length() != length) {
+			Exception.lengthException();
 		}
+
 	}
 
-	private void checkLengthError(String userNumber, int length) {
-		if (userNumber.length() != length) {
-			Exception.lengthError();
-		}
-	}
-
-	private void checkNumberOnlyError(String userNumber) {
+	private static void checkNumberOnlyException(String userInput) {
 		try {
-			Integer.parseInt(userNumber);
+			Integer.parseInt(userInput);
 		} catch (NumberFormatException e) {
-			Exception.numberOnlyError();
+			Exception.numberOnlyException();
 		}
 	}
 
-	public boolean isUserInputSameNumber(Player player) {
+	private static boolean isUserInputSameNumber(List<Integer> userNumberList) {
+		for (int targetIndex = INIT_INDEX; targetIndex < userNumberList.size(); targetIndex++) {
 
-		for (int targetIndex = ZERO; targetIndex < player.getUserNumberList().size(); targetIndex++) {
-
-			for (int compareIndex = targetIndex + 1; compareIndex < player.getUserNumberList().size(); compareIndex++) {
-
-				int targetNumber = player.getUserNumberList().get(targetIndex);
-				int compareNumber = player.getUserNumberList().get(compareIndex);
-
-				if (targetNumber == compareNumber) {
-					return true;
-				}
-
+			if (compareNumbers(userNumberList, targetIndex)) {
+				return true;
 			}
 		}
+		return false;
+	}
+
+	private static boolean compareNumbers(List<Integer> userNumberList, int targetIndex) {
+		for (int compareIndex = targetIndex + 1; compareIndex < userNumberList.size(); compareIndex++) {
+
+			int targetNumber = userNumberList.get(targetIndex);
+			int compareNumber = userNumberList.get(compareIndex);
+
+			if (targetNumber == compareNumber) {
+				return true;
+			}
+
+		}
+		return false;
+	}
+
+	public static void checkReStart(Computer computer, boolean isReStart) {
+
+		if (isReStart) {
+			View.showStartGameGuideMessage();
+			computer.makeRandomNumber();
+		}
+
+	}
+
+	public static boolean isStrike(int computerNumber, Integer userNumber) {
+		return computerNumber == userNumber;
+	}
+
+	public static boolean isBall(int userNumber, List<Integer> randomNumber) {
+		return randomNumber.contains(userNumber);
+	}
+
+	public static boolean checkEndGame(int userInput) {
+
+		if (userInput == END_INPUT) {
+			return true;
+		}
+
 		return false;
 	}
 }

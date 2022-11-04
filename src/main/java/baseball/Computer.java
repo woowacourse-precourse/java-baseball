@@ -46,7 +46,7 @@ public class Computer {
 		randomNumber.clear();
 	}
 
-	public int getRandomNumberValue(int index) {
-		return randomNumber.get(index);
+	public List<Integer> getRandomNumber() {
+		return randomNumber;
 	}
 }
