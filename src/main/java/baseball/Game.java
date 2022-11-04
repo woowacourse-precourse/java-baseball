@@ -30,7 +30,7 @@ public class Game {
             String input = Console.readLine();
             List<Integer> user = makeUserAnswer(input);
 
-            result = makeResult(computer, result, user);
+            result = playMatch(computer, result, user);
         }
 
         System.out.println(RESTART_CONDITION);
@@ -42,7 +42,7 @@ public class Game {
         }
     }
 
-    private static String makeResult(List<Integer> computer, String result, List<Integer> user) {
+    private static String playMatch(List<Integer> computer, String result, List<Integer> user) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < user.size(); i++) {
@@ -50,6 +50,10 @@ public class Game {
             ball = ball(computer, user, ball, i);
         }
 
+        return makeResult(result, strike, ball);
+    }
+
+    private static String makeResult(String result, int strike, int ball) {
         if (ball == 0 && strike == 0) {
             result = NOTHING;
             System.out.println(result);
