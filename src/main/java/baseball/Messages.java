@@ -16,4 +16,23 @@ public enum Messages {
         System.out.println(this.message);
     }
 
+    public static void printScore(int balls, int strikes) {
+        StringJoiner baseString = new StringJoiner(" ");
+        if (balls != 0) {
+            baseString.add(String.format("%d볼", balls));
+        }
+        if (strikes != 0) {
+            baseString.add(String.format("%d스트라이크", strikes));
+        }
+        if (baseString.length() == 0) {
+            baseString.add("낫싱");
+        }
+        System.out.println(baseString);
+    }
+
+    public static void main(String[] args) {
+        Messages.INPUT.printMessage();
+        Messages.END.printMessage();
+        Messages.ASK.printMessage();
+    }
 }
