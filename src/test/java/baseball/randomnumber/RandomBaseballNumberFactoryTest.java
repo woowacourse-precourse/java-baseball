@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RandomNumberFactoryTest {
+class RandomBaseballNumberFactoryTest {
 
     private static final int DIGITS_FOR_THIS_GAME = 3;
 

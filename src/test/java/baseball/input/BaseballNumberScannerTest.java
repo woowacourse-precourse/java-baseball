@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.*;
 
-class NumberScannerTest {
+class BaseballNumberScannerTest {
 
     private static final int DIGITS_FOR_THIS_GAME = 3;
 
