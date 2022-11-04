@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Scoreboard 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-
 public class ScoreboardTest {
     @Test
     void 리스트형으로_반환() {
@@ -56,5 +55,15 @@ public class ScoreboardTest {
         int strikePoint = scoreboard.getStrikePoint();
 
         assertThat(strikePoint).isEqualTo(2);
+    }
+
+    @Test
+    void 모든_점수_더하기() {
+        Scoreboard scoreboard1 = new Scoreboard(1, 0);
+        Scoreboard scoreboard2 = new Scoreboard(1, 1);
+
+        scoreboard1.addAllPoint(scoreboard2);
+
+        assertThat(scoreboard1.toList()).containsExactly(2, 1);
     }
 }
