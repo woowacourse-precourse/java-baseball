@@ -24,16 +24,23 @@ public class Number {
         return readLine();
     }
 
-    private boolean isThreeDigits(String input) {
-        if(input.length() > 3) {
+    public boolean isValidString(String input) {
+        if(isNotDuplicate(input) || isNumber(input) || isThreeDigits(input)) {
             return true;
         }
         return false;
     }
 
+    private boolean isThreeDigits(String input) {
+        if(input.length() > 3) {
+            return false;
+        }
+        return true;
+    }
+
     private boolean isNumber(String str) {
         String pattern = "^[0-9]*$";
-        return !Pattern.matches(pattern, str);
+        return Pattern.matches(pattern, str);
     }
 
     private boolean isNotDuplicate(String str) {
@@ -41,6 +48,6 @@ public class Number {
         for(char num : str.toCharArray()) {
             set.add(num);
         }
-        return !(set.size() == str.length());
+        return set.size() == str.length();
     }
 }
