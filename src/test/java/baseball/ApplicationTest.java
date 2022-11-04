@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -15,11 +16,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    private GameManager gameManager;
+    private Computer computer;
 
     @BeforeEach
     void beforeEach() {
-        gameManager = new GameManager();
+        computer = new Computer();
     }
 
     @Test
@@ -44,8 +45,8 @@ class ApplicationTest extends NsTest {
     class randomNumberTest {
         @Test
         void 컴퓨터_랜덤숫자_크기_테스트() throws Exception {
-            gameManager.createComputerBaseballNumber();
-            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
+            computer.createBaseballNumber();
+            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("baseballNumber", computer);
 
             int result = 3;
 
@@ -54,8 +55,8 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 컴퓨터_랜덤값_숫자인지_확인() throws Exception {
-            gameManager.createComputerBaseballNumber();
-            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("computerBaseballNumber", gameManager);
+            computer.createBaseballNumber();
+            List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("baseballNumber", computer);
 
             assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
         }
