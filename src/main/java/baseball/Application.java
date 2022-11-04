@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class Application {
     private static final int NUMBER_LENGTH = 3;
-    private static int strike;
-    private static int ball;
+    private static int strikeCnt;
+    private static int ballCnt;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -51,17 +51,30 @@ public class Application {
     }
 
     private static void countStrikeAndBall(List<Integer> userNumber, List<Integer> computerNumber) {
-        strike = 0;
-        ball = 0;
+        strikeCnt = 0;
+        ballCnt = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int userDigit = userNumber.get(i);
             int computerDigit = computerNumber.get(i);
 
             if (userDigit == computerDigit) {
-                strike++;
+                strikeCnt++;
             } else if (computerNumber.contains(userDigit)) {
-                ball++;
+                ballCnt++;
             }
         }
+    }
+
+    private static void printResult() {
+        if (strikeCnt == NUMBER_LENGTH) {
+            System.out.println(strikeCnt + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
     }
 }
