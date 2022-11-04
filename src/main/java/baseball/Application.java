@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -31,6 +32,23 @@ public class Application {
         String userInputString = Console.readLine();
         System.out.println(userInputString);
 
+        userInputValidation(userInputString);
         return userInputString;
+    }
+
+    private static void userInputValidation(String userInputString) {
+        String pattern = "^[1-9]{3}$";
+        if (!Pattern.matches(pattern, userInputString)) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < userInputString.length(); i++) {
+            String indexDigitNumber = userInputString.charAt(i) + "";
+            String checkOverlapString = userInputString.replace(indexDigitNumber, "");
+
+            if (checkOverlapString.length() < 2) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
