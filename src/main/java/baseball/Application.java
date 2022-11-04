@@ -1,18 +1,32 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class Application {
+    // TODO: [3] 랜덤 숫자 생성 기능
+    public static String randomGenerator() {
+        String computer = "";
+        while (computer.length() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            String randomNumberToString = Integer.toString(randomNumber);
+            if (!computer.contains(randomNumberToString)) {
+                computer = computer + randomNumberToString;
+            }
+        }
+        return computer;
+    }
+
     // TODO: [2] 입력값 유효성 검사 기능
     public static boolean isValid(String sth) {
         if (!sth.matches("[1-9]{3}")) {
             return false;
         }
         String[] charArr = sth.split("");
-        HashSet<String> charSet = new HashSet<String>(Arrays.asList(charArr));
+        HashSet<String> charSet = new HashSet<>(Arrays.asList(charArr));
         if (charSet.size() != sth.length()) {
             return false;
         }
