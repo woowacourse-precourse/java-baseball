@@ -21,6 +21,10 @@ public class BallStatusScore {
         return score == STRIKE_COUNT_OF_GAME_END_CONDITIONS;
     }
     
+    public int score() {
+        return score;
+    }
+    
     @Override
     public String toString() {
         return "BallStatusScore{" +

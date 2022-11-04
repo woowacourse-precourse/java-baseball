@@ -37,6 +37,14 @@ public class Referee {
         return strike.isGameEnd();
     }
     
+    public BallStatusScore strike() {
+        return strike;
+    }
+    
+    public BallStatusScore ball() {
+        return ball;
+    }
+    
     @Override
     public String toString() {
         return "Referee{" +
