@@ -177,6 +177,8 @@ public class Application {
     private static int PlayGame(ArrayList<Integer> answerNumberArrayList) {
         Boolean finishResult = false;
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         // 게임이 끝나지 않았으면 게임을 반복한다.
         while (!finishResult) {
             // 게임 플레이어에게 숫자를 입력 받는다.
