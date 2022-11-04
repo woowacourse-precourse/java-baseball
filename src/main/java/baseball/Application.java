@@ -83,7 +83,7 @@ public class Application {
 
     public static boolean notInteger(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) < 0 || userInput.charAt(i) > 9)
+            if (userInput.charAt(i) - '0' < 0 || userInput.charAt(i) - '0' > 9)
                 return true;
         }
         return false;
