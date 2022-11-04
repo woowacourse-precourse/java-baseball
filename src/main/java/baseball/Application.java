@@ -28,22 +28,12 @@ public class Application {
             boolean isCorrect = checkAnswer();
             boolean isRestart = checkRestart(isCorrect);
 
-            if (isCorrect && isRestart) {
+            if (isRestart) {
                 generateNewAnswer();
-            }
-            if (isCorrect && !isRestart) {
+            } else if (isCorrect) {
                 break;
             }
         }
-    }
-
-    //TODO: 메서드 순서 정리
-    private static boolean checkAnswer() {
-        if (hintMap.get(Hint.STRIKE).equals(3)) {
-            System.out.println(Comment.ENDGAME);
-            return true;
-        }
-        return false;
     }
 
     private static void generateNewAnswer() {
@@ -59,13 +49,11 @@ public class Application {
 
     private static void validateInput(String input, int digit) {
         String tmpInput = input.trim();
-
         String numberOnlyRegex = "^[1-9]+$";
         boolean matches = tmpInput.matches(numberOnlyRegex);
         if (!matches) {
             throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
         }
-
         if (tmpInput.length() != digit) {
             throw new IllegalArgumentException(digit + "자릿수를 입력해주세요.");
         }
@@ -83,6 +71,12 @@ public class Application {
                 hintMap.put(Hint.BALL, ++beforeCnt);
             }
         }
+    }
+
+    private static void initializeHint() {
+        hintMap = new HashMap<Hint, Integer>();
+        hintMap.put(Hint.STRIKE, 0);
+        hintMap.put(Hint.BALL, 0);
     }
 
     private static void printHint() {
@@ -105,6 +99,14 @@ public class Application {
         System.out.println(hintStr);
     }
 
+    private static boolean checkAnswer() {
+        if (hintMap.get(Hint.STRIKE).equals(3)) {
+            System.out.println(Comment.ENDGAME);
+            return true;
+        }
+        return false;
+    }
+
     private static boolean checkRestart(boolean isCorrect) {
         if (isCorrect) {
             System.out.println(Comment.REGAME);
@@ -119,12 +121,6 @@ public class Application {
             throw new IllegalArgumentException("1 혹은 2 를 입력해주세요.");
         }
         return false;
-    }
-
-    private static void initializeHint() {
-        hintMap = new HashMap<Hint, Integer>();
-        hintMap.put(Hint.STRIKE, 0);
-        hintMap.put(Hint.BALL, 0);
     }
 }
 
