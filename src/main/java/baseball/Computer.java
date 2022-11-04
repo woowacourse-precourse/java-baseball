@@ -33,4 +33,14 @@ public class Computer {
     public boolean isStrike(int index, int digit) {
         return answer.get(index) == digit;
     }
+
+    public int judgeDigit(int index, int digit) {
+        if (!isBall(digit)) {
+            return 0;
+        }
+        if (!isStrike(index, digit)) {
+            return 1;
+        }
+        return 2;
+    }
 }
