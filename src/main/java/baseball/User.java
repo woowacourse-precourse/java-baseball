@@ -9,4 +9,14 @@ public class User {
     public User() {
         numbers = new ArrayList<>();
     }
+
+    public void makeNewNumbers(String input) {
+        numbers.clear();
+
+        for (int index = 0; index < input.length(); index++) {
+            char digit = input.charAt(index);
+            int number = Character.getNumericValue(digit);
+            numbers.add(number);
+        }
+    }
 }
