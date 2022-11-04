@@ -44,11 +44,11 @@ public class Computer {
         List<Integer> computerNumber = getComputerNumber();
         int strikeCount = 0;
         int ballCount = 0;
-        for (int i = 0; i < playerNumber.size(); i++) {
-            for (int j = 0; j < computerNumber.size(); j++) {
-                if (playerNumber.get(i).equals(computerNumber.get(j))) {
-                    strikeCount = getCount(i == j, strikeCount);
-                    ballCount = getCount(i != j, ballCount);
+        for (int playerNumberIndex = 0; playerNumberIndex < playerNumber.size(); playerNumberIndex++) {
+            for (int computerNumberIndex = 0; computerNumberIndex < computerNumber.size(); computerNumberIndex++) {
+                if (playerNumber.get(playerNumberIndex).equals(computerNumber.get(computerNumberIndex))) {
+                    strikeCount = getCount(playerNumberIndex == computerNumberIndex, strikeCount);
+                    ballCount = getCount(playerNumberIndex != computerNumberIndex, ballCount);
                 }
             }
         }
