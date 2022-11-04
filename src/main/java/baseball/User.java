@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Compare.INPUT_LENGTH;
+import static baseball.InputValidator.checkIsValidRestartExitString;
 import static baseball.InputValidator.checkIsValidThreeNumbers;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -29,7 +30,11 @@ public class User {
     }
 
     public int inputRestartOrExitNumber() {
-        restartOrExitNumber = Integer.parseInt(Console.readLine());
+        String restartExitString;
+
+        restartExitString = Console.readLine();
+        checkIsValidRestartExitString(restartExitString);
+        restartOrExitNumber = Integer.parseInt(restartExitString);
         return restartOrExitNumber;
     }
 

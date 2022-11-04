@@ -4,6 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
+
+    public static void checkIsValidRestartExitString(String userInput) {
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+    }
     public static void checkIsValidThreeNumbers(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
@@ -17,6 +23,7 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
 
     private static boolean checkIsDuplicated(String userInput) {
         Set<Integer> inputNumbers = new HashSet<>();
