@@ -1,5 +1,10 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Application {
     private static final String EXCEPTION_TEXT = "INPUT MUST CONTAIN 3 DIFFERENT DIGITS ONLY";
 
@@ -19,8 +24,22 @@ public class Application {
 
     private static final int DIGIT_RESTRICTION = 3;
 
+    private static String generateComputerNumber() { // computer의 세자릿수 생성
+        List<String> digitList = new ArrayList<>();
 
+        while (digitList.size() < 3) {
+            int randomDigit = pickNumberInRange(1, 9);
+            String digitStr = String.valueOf(randomDigit);
+
+            if (!digitList.contains(digitStr)) {
+                digitList.add(digitStr);
+            }
+        }
+
+        String randomNumber = String.join("", digitList);
+        return randomNumber;
+    }
     public static void main(String[] args) {
-
+        String computer = generateComputerNumber();
     }
 }
