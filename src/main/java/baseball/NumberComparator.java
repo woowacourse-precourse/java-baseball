@@ -14,4 +14,10 @@ public class NumberComparator {
     private boolean isStrike(User user, Computer computer, int index) {
         return user.getNumber(index) == computer.getNumber(index);
     }
+
+    private boolean isBall(User user, Computer computer, int index) {
+        int userNumber = user.getNumber(index);
+        return (computer.getNumber(index) != userNumber)
+                && (computer.contains(user.getNumber(index)));
+    }
 }
