@@ -16,7 +16,7 @@ public class Game {
     }
 
     public Map<String, Integer> getResult(String userInput) {
-        Map<String,Integer> resultMap = new HashMap<>() {{
+        Map<String, Integer> resultMap = new HashMap<>() {{
             put("ball", 0);
             put("strike", 0);
         }};
@@ -26,15 +26,19 @@ public class Game {
             Integer currentAnswer = answer.get(index);
             Integer currentUserAnswer = userAnswer.get(index);
 
-            if (isStrike(currentAnswer,currentUserAnswer)) {
-                resultMap.put("strike",resultMap.get("strike") + 1);
-            }
-
-            if (isBall(currentAnswer, currentUserAnswer)) {
-                resultMap.put("ball",resultMap.get("ball") + 1);
-            }
+            countScore(resultMap, currentAnswer, currentUserAnswer);
         }
         return resultMap;
+    }
+
+    private void countScore(Map<String, Integer> resultMap, Integer currentAnswer, Integer currentUserAnswer) {
+        if (isStrike(currentAnswer, currentUserAnswer)) {
+            resultMap.put("strike", resultMap.get("strike") + 1);
+        }
+
+        if (isBall(currentAnswer, currentUserAnswer)) {
+            resultMap.put("ball", resultMap.get("ball") + 1);
+        }
     }
 
     private boolean isBall(Integer answerInt, Integer userAnswerInt) {
