@@ -31,7 +31,7 @@ public class UserInput {
         int numberOfDigits = (int) (Math.log10(inputNum) + 1);
 
         if (numberOfDigits != NUMBER_OF_DIGIT) {
-            throw new IllegalArgumentException("3지리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
     }
 

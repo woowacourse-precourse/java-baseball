@@ -31,7 +31,7 @@ class UserInputTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             UserInput.getUserInput();
         });
-        assertEquals("3지리 숫자를 입력해주세요.", exception.getMessage());
+        assertEquals("3자리 숫자를 입력해주세요.", exception.getMessage());
     }
 
     @Test
