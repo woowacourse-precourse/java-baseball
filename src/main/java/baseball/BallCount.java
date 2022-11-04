@@ -27,7 +27,7 @@ public class BallCount {
         if(answer[0] == sndInt || answer[0] == trdInt) ballCnt++;
         if(answer[1] == firInt || answer[1] == trdInt) ballCnt++;
         if(answer[2] == firInt || answer[2] == sndInt) ballCnt++;
-
+        
         return ballCnt;
     }
 }

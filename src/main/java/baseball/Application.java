@@ -26,7 +26,7 @@ public class Application {
             return;
         }
 
-        // 스트라이크, 볼 카운트 출력
+        // 스트라이크 및 볼 카운트 출력
         int ball = BallCount.ballCount(answer, inputValue);
         int strike = BallCount.strikeCount(answer, inputValue);
 
