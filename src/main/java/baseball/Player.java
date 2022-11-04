@@ -19,10 +19,6 @@ public class Player {
 		this.ball++;
 	}
 
-	public void removeBall() {
-		this.ball--;
-	}
-
 	public int getStrike() {
 		return this.strike;
 	}
