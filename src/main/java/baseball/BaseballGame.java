@@ -24,6 +24,21 @@ public class BaseballGame extends NumberGame {
     public boolean end() {
         return false;
     }
+    
+    public void result(Point point) {
+        int ball = point.getBall();
+        int strike = point.getStrike();
+        if (ball == 0 && strike == 0) {
+            System.out.print("낫싱");
+        }
+        if (ball > 0) {
+            System.out.print(String.format("%d볼 ", ball));
+        }
+        if (strike > 0) {
+            System.out.print(String.format("%d스트라이크 ", strike));
+        }
+        System.out.println();
+    }
 
     public Point hint(String playerInput) {
         int strike;
