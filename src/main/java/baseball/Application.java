@@ -9,15 +9,29 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computernums = RandomNum(3);
+        do{
+            List<Integer> computernums = RandomNum(3);
+            gameStart(computernums);
+            System.out.print("1이나 2를 입력해주세요.");
+            String userfinalinput = userInput();
+            confirmUserFinalInput(userfinalinput);
+            if(userfinalinput.equals("2")){
+                break;
+            }
+        }while (true);
 
+    }
+
+    public static void gameStart(List<Integer> computernums){
         while(true){
+            System.out.print("숫자를 입력해주세요 : ");
             String usernum = userInput();
             confirmUserInput(usernum);
             List<Integer> usernums = stringConvertListInteger(usernum);
             BaseballCount baseballCount = new BaseballCount(computernums, usernums);
 
             if(baseballCount.strikecount == 3){
+                System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -27,7 +41,6 @@ public class Application {
             }
             System.out.printf("%d볼 %d스트라이크",baseballCount.ballcount,baseballCount.strikecount);
         }
-
     }
 
     public static List<Integer> stringConvertListInteger(String string) {
@@ -38,6 +51,11 @@ public class Application {
         return list;
     }
 
+    public static void confirmUserFinalInput(String userfinalinput){
+        if(!userfinalinput.equals("1") && !userfinalinput.equals("2")){
+            throw new IllegalArgumentException("1이나 2가 아닙니다.");
+        }
+    }
 
     public static void confirmUserInput(String userInput) {
         List<Integer> list = new ArrayList<>();
@@ -58,7 +76,6 @@ public class Application {
 
 
     public static String userInput() {
-        System.out.print("숫자를 입력해주세요 : ");
         String usernum = Console.readLine();
         return usernum;
     }
