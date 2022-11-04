@@ -5,6 +5,7 @@ import domain.Game;
 import domain.RandomNumber;
 import domain.UserNumber;
 import domain.UserValidate;
+import view.RequestUser;
 import view.SystemMessage;
 
 public class GameService {
@@ -17,6 +18,7 @@ public class GameService {
     SystemMessage systemMessage;
 
     public void set_game(){
+        randomNumber.setRandomNumber();
         game = new Game(randomNumber.getNumbers());
     }
 
@@ -29,6 +31,12 @@ public class GameService {
             systemMessage.game_score_message(game.getBall_count(), game.getStrike_count());
             strike = game.getStrike_count();
         }
+    }
+
+    public void play(){
+        systemMessage.game_start();
+        game.initialize();
+        userNumber.setUser_numbers(userNumber.getUser_numbers());
     }
 
     public void calculate(int[] userNumbers, int[] randomNumbers, int index){
