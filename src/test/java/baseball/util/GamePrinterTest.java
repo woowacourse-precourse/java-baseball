@@ -3,6 +3,7 @@ package baseball.util;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,7 @@ class GamePrinterTest {
 
     @DisplayName("전달받은 메시지를 개행없이 출력한다.")
     @Test
-    void print() {
+    void print() throws IOException {
         //given
         OutputStream out = setSystemOut();
         String message = "hello";
@@ -28,11 +29,12 @@ class GamePrinterTest {
 
         //then
         assertThat(out.toString()).isEqualTo(message);
+        out.close();
     }
 
     @DisplayName("전달받은 메시지를 개행 포함하여 출력한다.")
     @Test
-    void println() {
+    void println() throws IOException {
         //given
         OutputStream out = setSystemOut();
         String message = "hello";
@@ -42,6 +44,7 @@ class GamePrinterTest {
 
         //then
         assertThat(out.toString()).isEqualTo(message + "\n");
+        out.close();
     }
 
 }
