@@ -22,14 +22,14 @@ public class Application {
 
         // 2. 세 자리의 수가 아닌 경우 오류를 발생시킨다.
         if (num > 1000 || num < 100)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("세 자리의 수가 아닙니다.");
 
         // 3. 서로 다른 세 자리의 수가 아닌 경우 오류를 발생시킨다.
         int hundreds = num / 100;
         int tens = (num % 100) / 10;
         int ones = num % 10;
         if (hundreds == tens || hundreds == ones || tens == ones) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 세 자리의 수가 아닙니다.");
         }
 
         return true;
@@ -83,5 +83,7 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         user = getNumberOfUser(user);
         System.out.println("user = " + user); // 테스트 출력
+
+        // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
     }
 }
