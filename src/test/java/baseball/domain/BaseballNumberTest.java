@@ -35,9 +35,9 @@ class BaseballNumberTest {
             private final Integer givenNumber = BASEBALL_NUMBER_UPPER_BOUND + 1;
 
             @Test
-            void BaseballNumberBoundException을_던진다() {
+            void BaseballGameException을_던진다() {
                 assertThatThrownBy(() -> BaseballNumber.valueOf(givenNumber))
-                        .isInstanceOf(BaseballNumberBoundException.class);
+                        .isInstanceOf(BaseballGameException.class);
             }
         }
 
@@ -46,9 +46,9 @@ class BaseballNumberTest {
             private final Integer givenNumber = BASEBALL_NUMBER_LOWER_BOUND - 1;
 
             @Test
-            void BaseballNumberBoundException을_던진다() {
+            void BaseballGameException을_던진다() {
                 assertThatThrownBy(() -> BaseballNumber.valueOf(givenNumber))
-                        .isInstanceOf(BaseballNumberBoundException.class);
+                        .isInstanceOf(BaseballGameException.class);
             }
         }
     }
