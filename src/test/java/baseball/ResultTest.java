@@ -60,4 +60,16 @@ public class ResultTest {
         answer = "2볼 1스트라이크";
         assertThat(result.toString()).isEqualTo(answer);
     }
+
+    @Test
+    void checkFinishTest() {
+        Result result = new Result();
+        result.addStrike();
+        boolean answer = false;
+        assertThat(result.checkFinish()).isEqualTo(answer);
+        result.addStrike();
+        result.addStrike();
+        answer = true;
+        assertThat(result.checkFinish()).isEqualTo(answer);
+    }
 }
