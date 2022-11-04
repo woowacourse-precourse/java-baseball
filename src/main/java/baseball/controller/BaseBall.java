@@ -19,23 +19,24 @@ public class BaseBall {
     private void playBaseBallGame() {
         int selectedNumberForRestart = RESTART_NUMBER;
         
-        while (isRestart(selectedNumberForRestart)) {
+        while (isBaseBallGameRestart(selectedNumberForRestart)) {
             repeatBaseBallGame(new BaseBallGame());
             OutputView.baseBallGameEndMessagePrint();
             selectedNumberForRestart = inputNumberForRestart();
         }
     }
     
-    private static boolean isRestart(final int selectedNumberForRestart) {
+    private static boolean isBaseBallGameRestart(final int selectedNumberForRestart) {
         return selectedNumberForRestart == RESTART_NUMBER;
     }
     
     private void repeatBaseBallGame(final BaseBallGame baseBallGame) {
-        boolean isEnd = false;
-        while (!isEnd) {
+        boolean isBaseBallGameEnd = false;
+        
+        while (!isBaseBallGameEnd) {
             final Referee referee = playResult(baseBallGame);
             OutputView.printResult(new ScoresDTO(referee));
-            isEnd = referee.isEnd();
+            isBaseBallGameEnd = referee.isEnd();
         }
     }
     
