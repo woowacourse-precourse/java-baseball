@@ -1,6 +1,12 @@
 package baseball.view;
 
+import baseball.RandomUtil;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class InputView {
 
@@ -20,6 +26,9 @@ public class InputView {
         if (isInputNumberContainZero(inputNumber)) {
             throw new IllegalArgumentException("[ERROR] : 입력하는 수는 0이 포함될 수 없습니다. 1~9까지의 수를 입력해주세요.");
         }
+        if (isDuplicateInputNumber(inputNumber)) {
+            throw new IllegalArgumentException("[ERROR] : 입력하는 수는 서로 다른 수여야합니다.");
+        }
     }
 
     private static boolean isInputNumberLengthNotSame3(String inputNumber) {
@@ -32,5 +41,11 @@ public class InputView {
 
     private static boolean isInputNumberContainZero(String inputNumber) {
         return inputNumber.contains("0");
+    }
+
+    private static boolean isDuplicateInputNumber(String InputNumber) {
+        List<String> inputNumberEachDigitList = Arrays.asList(InputNumber.split(""));
+        Set<String> inputNumberEachDigitSet = new HashSet<>(inputNumberEachDigitList);
+        return inputNumberEachDigitSet.size() != 3;
     }
 }
