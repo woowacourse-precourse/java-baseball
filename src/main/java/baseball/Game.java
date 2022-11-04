@@ -11,6 +11,7 @@ public class Game {
 	LinkedHashMap<Integer, Integer> fromComputers;
 	LinkedHashMap<Integer, Integer> fromUsers;
 	int userIntention;
+	boolean userWin;
 
 	int computerNumber;
 	int computerNumIdx;
@@ -21,28 +22,39 @@ public class Game {
 	int ball;
 
 
-	void game() {
+	void playGame() {
 		fetchComputerNumbers();
 
 		do {
+
 			strike = 0;
 			ball = 0;
 
 			fetchUserNumbers();
 			calculateGuess();
 			System.out.println(createAnswerMessage());
-			CheckUserWin();
+			checkUserWin();
+			checkUserIntention();
 
-		} while (!userWin());
+		} while (!endProgram());
 
 	}
 
 
-	public void CheckUserWin() {
+	public void checkUserIntention() {
+
+		if (userWin) {
+			userIntention = getUserIntention();
+		}
+
+	}
+
+
+	public void checkUserWin() {
 
 		if (userWin()) {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			askUserToContinue();
+			userWin = true;
 		}
 
 	}
@@ -105,8 +117,8 @@ public class Game {
 		fromUsers = user.getNumbers();
 	}
 
-	public void askUserToContinue() {
-		userIntention = user.getIntention();
+	public int getUserIntention() {
+		return user.getIntention();
 	}
 
 
@@ -143,5 +155,9 @@ public class Game {
 
 	public boolean userWin() {
 		return strike == 3;
+	}
+
+	public boolean endProgram() {
+		return userWin() && userIntention == 2;
 	}
 }
