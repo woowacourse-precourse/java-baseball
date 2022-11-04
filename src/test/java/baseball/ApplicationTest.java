@@ -3,12 +3,31 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void makeAnswerTest() {
+        List<Integer> answer = Application.makeAnswer();
+        Set<Integer> numbersInAnswer = new HashSet<>(answer);
+        assertThat(numbersInAnswer).hasSize(3)
+                .doesNotContain(0);
+    }
+
+    @Test
+    void subArrayTest() {
+        int[] arr = {1, 2, 3, 4, 5, 6};
+        int[] subArray = Application.subArray(arr, 1, 3);
+        assertThat(subArray).isEqualTo(new int[]{2, 3, 4});
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
