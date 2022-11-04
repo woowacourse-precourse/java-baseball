@@ -93,7 +93,25 @@ void 게임종료_후_재시작() {
 
 ### `pickUniqueNumbersInRange()`에서는 왜 안돌았을까
 
-공부해보고 추가할 것.
+#### 코드를 보며 가정
+
+`Assertions` 클래스 내부에 `assertRandomNumberInRangeTest`와 `assertRandomUniqueNumbersInRangeTest`가 따로 있는데, 해당 메서드들은 `assertRandomTest`에 `pickNumberInRange`와 `pickUniqueNumbersInRange`를 각각 지정한다.
+
+해당 코드는 `mockStatic(Randoms.class)`로 지정한 mock의 `when`으로 넘어간다. 만약 지정한 메서드가 코드 내에서 동작한다면, 전달받은 `value, values`에 해당하는 값들이 튀어나오는 구조인 것 같다.
+
+#### 실제 찾아보며 확인
+
+우선 [Mock이 무엇인지](https://medium.com/@SlackBeck/mock-object%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80-85159754b2ac)부터 찾아보았다. 해당하는 글을 읽고 Mock이 어떤 형태인지를 (완벽히는 당연히 아니지만) 이해할 수 있었다.
+
+또한 테스트 코드 내부에서 `mockStatic`을 사용했는데, 이는 `Mockito`에서 static 메서드를 mock으로 지정하여 테스트하는 방법이라고 한다.
+
+#### 이런 구조인 것 같은데?
+
+> 이 역시 어디까지나 가정이니, 틀린 부분이 있다면.. 어떻게든 알려주셨으면 좋겠다 ㅠ
+
+`Mockito`를 이용하여 가짜 객체를 생성하고, `해당하는 함수가 돈다면 이러한 결과만을 반환하라`고 지시하는 것 같다. 즉, 해당 테스트는 `pickNumberInRange()` 메서드에 원하는 값들을 출력하도록 한 Mock 객체를 생성한 것이고, `pickUniqueNumbersInRange()`에 대한 지정이 없었으니 반환형에 대한 빈 값이 나오도록 설정되어 있었으며, 따라서 해당 메서드에서는 빈 List 객체가 나왔던 듯 하다.
+
+이후 `pickNumberInRange()`를 사용하는 방향으로 수정한 이후에는, 내가 작성한 main문이 돌 때 `Randoms`클래스 대신 `Randoms` 클래스를 상속받은 Mock 객체를 받아왔고, `pickNumberInRange()`를 호출했을 때 `1, 3, 5, 5, 8, 9`가 차례대로 호출되어 원하는 답이 나오도록 조절된 상태이므로 해당하는 테스트가 정상 수행된 것 같다.
 
 # 리팩터링
 
