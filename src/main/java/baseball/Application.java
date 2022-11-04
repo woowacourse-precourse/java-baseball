@@ -13,6 +13,7 @@ public class Application {
                 computerNumbers.add(randomNumber);
             }
         }
+
         return computerNumbers;
     }
 
@@ -21,7 +22,7 @@ public class Application {
 
         computerNumbers = setComputerNumbers(computerNumbers);
 
-        for(int numbers : computerNumbers) System.out.println(numbers);
+        for(int numbers : computerNumbers) System.out.println(numbers); //난수 출력 확인.
     }
 }
 
