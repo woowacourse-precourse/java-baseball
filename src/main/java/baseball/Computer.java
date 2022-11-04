@@ -12,7 +12,7 @@ public class Computer {
         this.numbers = new ArrayList<>();
     }
 
-    public void generateComputersNumber() {
+    public void generateNumber() {
         while (numbers.size() < RuleConst.NUMBER_LENGTH) {
             Integer randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
