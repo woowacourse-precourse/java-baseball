@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -93,5 +94,37 @@ public class BaseballGame {
             results += "낫싱";
         }
         System.out.println(results);
+    }
+
+    private List<String> getUserInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        List<String> inputList = convertUserInputToList(userInput);
+
+        return inputList;
+    }
+
+    private List<String> convertUserInputToList(String userInput) {
+        List<String> convertedList = new ArrayList<>();
+        for (int idx = 0; idx < userInput.length(); idx++) {
+            char separatedInput = userInput.charAt(idx);
+            convertedList.add(String.valueOf(userInput.charAt(idx)));
+        }
+        return convertedList;
+    }
+
+    public boolean playGame() {
+        boolean isThreeStrike = false;
+        BaseballGame baseballGame = new BaseballGame();
+
+        while (!isThreeStrike) {
+            List<String> userInput = getUserInput();
+            baseballGame.showResults(userInput);
+            if (baseballGame.countStrike(userInput) == 3) {
+                isThreeStrike = true;
+                break;
+            }
+        }
+        return isThreeStrike;
     }
 }
