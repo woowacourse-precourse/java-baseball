@@ -42,7 +42,6 @@ public class Game {
 
     private void end() {
         print.gameEnd();
-        print.toContinue();
 
         boolean isContinue = user.continuable();
 

@@ -1,5 +1,6 @@
 package baseball.Players;
 
+import baseball.Utils.Printer;
 import baseball.Validation.Validation;
 
 import java.util.ArrayList;
@@ -34,10 +35,16 @@ public class User {
         return userNumbersList;
     }
 
-    public boolean continuable() {
+    public boolean countinuable() {
+
+        Printer print = new Printer();
+
+        print.toContinue();
+
         String continueNumber = readLine();
 
         while (!validate.isContinueNumber(continueNumber)) {
+            print.toContinue();
             continueNumber = readLine();
         }
 
