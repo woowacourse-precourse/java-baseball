@@ -103,5 +103,11 @@ public class Application {
         return strikeCount;
     }
 
+    public static void startGame(int randomNumber) {
+        while () {
+            String userInputNumber = getUserInputNumber();
+        }
+
+    }
 
 }
