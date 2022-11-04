@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Game {
     private static final int NUM_START_RANGE = 1;
@@ -37,6 +34,10 @@ public class Game {
     void setRandomNum(List<Integer> randomNum) {
         this.randomNum = randomNum;
     }
+    // for testing purposes
+    List<Integer> getRandomNum() {
+        return randomNum;
+    }
 
     /**
      * Set user's input of 3-digit number for game class instance
@@ -44,7 +45,10 @@ public class Game {
      */
     static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
+        // TODO: Warning 의 정체는 무엇? Troubleshooting
         String userInput = Console.readLine().trim();
+//        Scanner keyboard = new Scanner(System.in);
+//        String userInput = keyboard.nextLine();
         try {
             InputValidation.isValidInput(userInput);
         } catch (IllegalArgumentException e) {
@@ -131,7 +135,29 @@ public class Game {
         }
     }
 
-    public void start() {}
+    /**
+     * Start game
+     * Loop until 3 strike
+     * Restart depending on user input
+     * @see Game#restart()
+     */
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean isThreeStrike = false;
+        List<Integer> userInput;
+        List<Integer> resultList;
 
+        while (!isThreeStrike) {
+            userInput = getUserInput();
+            resultList = result(userInput);
+            printResult(resultList);
+            if (resultList.equals(new ArrayList<>(Arrays.asList(0, 3)))) {
+                isThreeStrike = true;
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+                endGame();
+                restart();
+            }
+        }
 
+    }
 }
