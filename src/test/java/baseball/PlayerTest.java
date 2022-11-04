@@ -78,6 +78,7 @@ public class PlayerTest {
         Player player = new Player();
         boolean result = true;
         String number = "213";
+        assertThat(player.isValidNumber(number)).isEqualTo(result);
         number = "972";
         assertThat(player.isValidNumber(number)).isEqualTo(result);
         number = "837";
