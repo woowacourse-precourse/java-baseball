@@ -23,13 +23,22 @@ public class PlayingNumber {
 		this.playingNumber = Integer.parseInt(playingNumber);
 	}
 
+	public int getPlayingNumber() {
+		return playingNumber;
+	}
+
+	public List<Integer> getPlayingNumbers() {
+		List<String> splitString = new ArrayList<>(Arrays.asList(Integer.toString(playingNumber).split("")));
+		return splitString.stream().map(Integer::parseInt).collect(Collectors.toList());
+	}
+
 	private void validateSize(String playingNumber) {
 		if (playingNumber.length() != PLAYING_NUMBER_SIZE) {
 			throw new IllegalArgumentException("3자리 숫자만 입력해주세요.");
 		}
 	}
 
-	static void validateDuplicate(String playingNumber) {
+	private void validateDuplicate(String playingNumber) {
 		List<String> splitNumbers = new ArrayList<>(Arrays.asList(playingNumber.split("")));
 		Set<String> nonDuplicateNumbers = new HashSet<>(splitNumbers);
 		if (nonDuplicateNumbers.size() != PLAYING_NUMBER_SIZE) {
@@ -42,15 +51,6 @@ public class PlayingNumber {
 		if (!numberPattern.matcher(playingNumber).matches()) {
 			throw new IllegalArgumentException("1 ~ 9 사이의 자연수만 입력해주세요.");
 		}
-	}
-
-	public List<Integer> getPlayingNumbers() {
-		List<String> splitString = new ArrayList<>(Arrays.asList(Integer.toString(playingNumber).split("")));
-		return splitString.stream().map(Integer::parseInt).collect(Collectors.toList());
-	}
-
-	public int getPlayingNumber() {
-		return playingNumber;
 	}
 
 }
