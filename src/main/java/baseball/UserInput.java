@@ -2,10 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+public class UserInput {
     static final int NUMBER_OF_DIGIT = 3;
 
-    private Input(){
+    private UserInput() {
     }
 
     public static String getUserInput() {
@@ -43,8 +43,8 @@ public class Input {
         }
     }
 
-    private static void compareChar(char ch1, char ch2){
-        if(ch1 == ch2){
+    private static void compareChar(char ch1, char ch2) {
+        if (ch1 == ch2) {
             throw new IllegalArgumentException("중복되지 않는 3자리 숫자를 입력해주세요.");
         }
     }

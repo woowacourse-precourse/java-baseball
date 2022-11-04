@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public class Random {
+public class RandomNumber {
     static final int NUMBER_OF_DIGIT = 3;
 
-    private Random(){
+    private RandomNumber() {
     }
 
     public static int getRandomNum() {
         List<Integer> randomNumList;
 
-        while(true){
+        while (true) {
             randomNumList = Randoms.pickUniqueNumbersInRange(0, 9, NUMBER_OF_DIGIT);
-            if(isValidateDigitNum(randomNumList)){
+            if (isValidateDigitNum(randomNumList)) {
                 break;
             }
         }
@@ -25,7 +25,7 @@ public class Random {
         return randomNum;
     }
 
-    public static int numListToIntValue(List<Integer> numList){
+    public static int numListToIntValue(List<Integer> numList) {
         int listSize = numList.size();
         int resultNum = 0;
 
@@ -36,10 +36,10 @@ public class Random {
         return resultNum;
     }
 
-    public static boolean isValidateDigitNum(List<Integer> numList){
+    public static boolean isValidateDigitNum(List<Integer> numList) {
         int firstDigit = numList.get(0);
 
-        if(firstDigit == 0){
+        if (firstDigit == 0) {
             return false;
         }
         return true;
