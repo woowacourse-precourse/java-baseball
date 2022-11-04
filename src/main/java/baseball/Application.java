@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.count.ball.BallCounter;
-import baseball.count.strike.StrikeCounter;
-import baseball.number.inputnumber.InputNumberParser;
-import baseball.scanner.NumberScanner;
-import baseball.print.MessagePrinter;
+import baseball.domain.count.ball.BallCounter;
+import baseball.domain.count.strike.StrikeCounter;
+import baseball.domain.number.inputnumber.InputNumberParser;
+import baseball.view.scanner.NumberScanner;
+import baseball.view.print.MessagePrinter;
 
 public class Application {
     public static void main(String[] args) {

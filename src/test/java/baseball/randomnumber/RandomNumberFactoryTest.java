@@ -1,6 +1,6 @@
 package baseball.randomnumber;
 
-import baseball.number.randomnumber.RandomNumberFactory;
+import baseball.domain.number.randomnumber.RandomNumberFactory;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ class RandomNumberFactoryTest {
 
     @Nested  // 줄인다.
     class 정해진_개수의_숫자가_생성된다 {
-        @RepeatedTest(10)
+        @RepeatedTest(3)
         void 정해진_개수의_숫자가_생성된다() {
             List<Integer> answer = RandomNumberFactory.newRandomNumber();
             assertThat(answer.size()).isEqualTo(DIGITS_FOR_THIS_GAME);
@@ -25,7 +25,7 @@ class RandomNumberFactoryTest {
 
     @Nested
     class 추출한_숫자는_서로_다르다 {
-        @RepeatedTest(10)
+        @RepeatedTest(3)
         void 추출한_숫자는_서로_다르다() {
             List<Integer> answer = RandomNumberFactory.newRandomNumber();
             long count = answer.stream()

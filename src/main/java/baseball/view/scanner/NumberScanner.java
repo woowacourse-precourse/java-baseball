@@ -1,4 +1,4 @@
-package baseball.scanner;
+package baseball.view.scanner;
 
 import camp.nextstep.edu.missionutils.Console;
 

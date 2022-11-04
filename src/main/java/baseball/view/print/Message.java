@@ -1,4 +1,4 @@
-package baseball.print;
+package baseball.view.print;
 
 public class Message {
 

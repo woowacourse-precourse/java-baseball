@@ -1,4 +1,4 @@
-package baseball.count.strike;
+package baseball.domain.count.strike;
 
 import java.util.List;
 import java.util.stream.IntStream;

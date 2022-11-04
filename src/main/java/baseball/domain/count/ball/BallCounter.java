@@ -1,4 +1,4 @@
-package baseball.count.ball;
+package baseball.domain.count.ball;
 
 import java.util.List;
 import java.util.stream.IntStream;

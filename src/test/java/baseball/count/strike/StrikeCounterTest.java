@@ -1,5 +1,7 @@
 package baseball.count.strike;
 
+import baseball.domain.count.strike.StrikeCounter;
+import baseball.domain.count.strike.StrikeResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

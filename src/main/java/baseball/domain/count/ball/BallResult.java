@@ -1,4 +1,4 @@
-package baseball.count.ball;
+package baseball.domain.count.ball;
 
 public class BallResult {
 

@@ -1,15 +1,13 @@
-package baseball.print;
-
-import static baseball.print.Message.*;
+package baseball.view.print;
 
 public class MessagePrinter {
 
     public void printStartMessage() {
-        System.out.println(START_GAME_MESSAGE);
+        System.out.println(Message.START_GAME_MESSAGE);
     }
 
     public void printEnterNumberMessage() {
-        System.out.print(INPUT_A_NUMBER_MESSAGE);
+        System.out.print(Message.INPUT_A_NUMBER_MESSAGE);
     }
 
     public void printBallAndStrikeCount(String counts) {
@@ -17,14 +15,14 @@ public class MessagePrinter {
     }
 
     public void printNothing() {
-        System.out.println(NOTHING);
+        System.out.println(Message.NOTHING);
     }
 
     public void printCorrectAnswerMessage() {
-        System.out.print(CORRECT_ANSWER_MESSAGE);
+        System.out.print(Message.CORRECT_ANSWER_MESSAGE);
     }
 
     public void printRestartMessage() {
-        System.out.println(RESTART_GAME_MESSAGE);
+        System.out.println(Message.RESTART_GAME_MESSAGE);
     }
 }

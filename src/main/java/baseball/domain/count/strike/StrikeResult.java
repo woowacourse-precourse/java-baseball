@@ -1,4 +1,4 @@
-package baseball.count.strike;
+package baseball.domain.count.strike;
 
 public class StrikeResult {
 
