@@ -6,7 +6,7 @@ import baseball.view.UserInput;
 
 public class User {
     public static ArrayList<Integer> makeUserList() {
-        UserInput.getUserNumber();
+        //UserInput.getUserNumber();
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> UserNumber = new ArrayList();
 

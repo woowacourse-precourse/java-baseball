@@ -13,8 +13,10 @@ public class Controller {
     public void playGame(){
 
         Game.initScore();
-        Game.getBallCount(getUser(), getRandomNumber());
-        Game.getStrikeCount(getUser(), getRandomNumber());
+        ArrayList<Integer> User=getUser();
+        ArrayList<Integer> RandomNum=getRandomNumber();
+        Game.getBallCount(User,RandomNum);
+        Game.getStrikeCount(User,RandomNum);
         Game.finalScore();
     }
 

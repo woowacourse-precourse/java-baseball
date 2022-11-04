@@ -19,7 +19,7 @@ public class GameService {
 
     public void getStrikeCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리, 숫자가 맞으면 Strike
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             if (User.get(i) == Computer.get(i)) {
                 Strikescore += 1;
             }
