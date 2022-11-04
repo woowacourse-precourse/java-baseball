@@ -7,7 +7,7 @@ public class BaseballGame {
         View.printStartGame();
         do{
             playGame();
-        }while(endGame());
+        }while(isEndGame());
 
     }
 
@@ -15,8 +15,8 @@ public class BaseballGame {
 
     }
 
-    private boolean endGame(){
-        return true;
+    private boolean isEndGame(){
+        return  true;
     }
 
     private String getUserInput(){
