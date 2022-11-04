@@ -1,13 +1,23 @@
 package baseball.Players;
 
+import baseball.Validation.Validation;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
+
+    private Validation validate;
+
+    public User() {
+        this.validate = new Validation();
+    }
     public List<Integer> getInputNumbers() {
         String userNumbers = readLine();
+
+        validate.check(userNumbers);
 
         return toList(userNumbers);
     }
