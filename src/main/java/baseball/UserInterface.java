@@ -10,11 +10,13 @@ public class UserInterface {
     public static List<Integer> getUsersAnswer() {
         try {
             List<Integer> answer = new ArrayList<>();
+
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (!validateUsersInput(input)) {
                 throw new IllegalArgumentException();
             }
+
             for (char c : input.toCharArray()) {
                 answer.add((int) c - '0');
             }
@@ -37,22 +39,21 @@ public class UserInterface {
     }
 
     public static boolean resultOutput(int strike, int ball) {
-        if (strike == 3) {
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+        String result = "";
+        if (ball != 0) {
+            result += ball + "볼 ";
         }
         if (strike != 0) {
-            if (ball != 0) {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
-            } else {
-                System.out.println(strike + "스트라이크");
-            }
-        } else {
-            if (ball != 0) {
-                System.out.println(ball + "볼");
-            } else {
-                System.out.println("낫싱");
-            }
+            result += strike + "스트라이크";
+        }
+        if (ball == 0 && strike == 0) {
+            result += "낫싱";
+        }
+        System.out.println(result);
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
         return false;
     }
