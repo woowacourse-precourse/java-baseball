@@ -5,6 +5,7 @@ import baseball.domain.dto.UserInputDto;
 import baseball.domain.model.Computer;
 import baseball.domain.model.Score;
 import baseball.domain.model.User;
+import baseball.utils.InputValidator;
 import java.util.List;
 
 public class GameController {
@@ -20,5 +21,13 @@ public class GameController {
         Score score = new Score(this.computer, user);
 
         return new ResultDto(score);
+    }
+
+    public Boolean restartGame(UserInputDto userInputDto) {
+        InputValidator.checkIsGameRestartInput(userInputDto.getUserInput());
+        if (userInputDto.getUserInput().equals("1")) {
+            return false;
+        }
+        return true;
     }
 }
