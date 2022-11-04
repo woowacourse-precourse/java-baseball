@@ -4,11 +4,14 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+
+    }
+    // 맞출 컴퓨터의 수 생성 함수
+    public static void makeGoalNum(){
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
         List<Integer> computer = new ArrayList<>();
 
-        // 맞출 컴퓨터의 수 생성
         while (computer.size() < 3) {
             int randomNumber = (random.nextInt(9)+1);
             if (!computer.contains(randomNumber)) {
@@ -16,13 +19,22 @@ public class Application {
             }
         }
         System.out.println("맞출 수 : " + computer);
+    }
+
+    // baseball game 함수
+    public static void baseballGame(){
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        List<Integer> computer = new ArrayList<>();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             int num = sc.nextInt();
             List<Integer> numList = returnList(num);
-            checkNum(computer, numList);
+            int result = checkNum(computer, numList);
+            if (result == 2)
+                System.exit(0);
         }
     }
 
@@ -38,16 +50,10 @@ public class Application {
     }
 
     // 숫자 스트라이크/볼 체크
-    public static void checkNum(List<Integer> computer, List<Integer> my){
+    public static Integer checkNum(List<Integer> computer, List<Integer> my){
         Scanner sc = new Scanner(System.in);
         int s = 0;
         int b = 0;
-        if (computer.get(0) == my.get(0) && computer.get(1) == my.get(1) && computer.get(2) == my.get(2)){
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            //int result = sc.nextInt();
-        }
 
         for (int i = 0; i < computer.size(); i++){
             if (computer.contains(my.get(i)) && computer.get(i) == my.get(i)){
@@ -57,7 +63,16 @@ public class Application {
             }
         }
 
-        if (s == 0 && b == 0)
+        if (s == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int result = sc.nextInt();
+            if (result == 1)
+                return 1;
+            return 2;
+        }
+        else if (s == 0 && b == 0)
             System.out.println("낫싱");
         else if (s == 0) {
             System.out.println(b + "볼");
@@ -66,5 +81,6 @@ public class Application {
         }else {
             System.out.println(b + "볼 " + s + "스트라이크");
         }
+        return 0;
     }
 }
