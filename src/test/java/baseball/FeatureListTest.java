@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -36,7 +35,7 @@ public class FeatureListTest {
     void 사용자_입력_문자열을_Set으로_변환() {
         String s = "345";
         Set<Integer> set = Set.of(3, 4, 5);
-        assertThat(isInputIsNonDuplicate(s)).isEqualTo(set);
+        assertThat(InputToSet(s)).isEqualTo(set);
     }
 
     @Test

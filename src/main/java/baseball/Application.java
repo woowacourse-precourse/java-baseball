@@ -23,7 +23,7 @@ public class Application {
         return n == 3;
     }
 
-    public static Set<Integer> isInputIsNonDuplicate(String userInput) {
+    public static Set<Integer> InputToSet(String userInput) {
         String[] splitUserInput = userInput.split("");
         Set<Integer> set =new HashSet<>();
         for (int i = 0; i <userInput.length() ; i++) {
@@ -46,6 +46,16 @@ public class Application {
         return k;
     }
 
+
+    static class Nums{
+        private Set<Integer> sets;
+        Nums(String inputData)  {
+            if(!isValidLength(inputData.length())) throw new IllegalArgumentException() ;
+            Set<Integer> sets = InputToSet(inputData);
+            if(!isValidSetSize(sets)) throw new IllegalArgumentException();
+            this.sets = sets;
+        }
+    }
 
     public static void main(String[] args) {
 
