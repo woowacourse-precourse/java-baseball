@@ -7,7 +7,7 @@ import java.util.List;
 public class GameStartController {
     public void GameStart() {
 
-        ResultService result = new ResultService();
+        ResultService resultService = new ResultService();
         RandomValue randomValue = new RandomValue();
 
         int Restart = 1;
@@ -15,7 +15,7 @@ public class GameStartController {
         while (Restart == 1) {
             List<Integer> RandomNumber = randomValue.randomValue();
             System.out.println("숫자 야구 게임을 시작하겠습니다.");
-            Restart = result.ReOrClose(RandomNumber);
+            Restart = resultService.ReOrClose(RandomNumber);
         }
 
         System.out.println("종료 되었습니다.");
