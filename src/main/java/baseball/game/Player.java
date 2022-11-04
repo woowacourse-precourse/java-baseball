@@ -21,6 +21,12 @@ public class Player {
         if (playerNumber.contains("0")) {
             throw new IllegalArgumentException();
         }
+        for (int i=0; i< playerNumber.length(); i++) {
+            char letter = playerNumber.charAt(i);
+            if (Character.getNumericValue(letter) < 1 || Character.getNumericValue(letter) > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
 
         return stringToList(playerNumber);
     }
