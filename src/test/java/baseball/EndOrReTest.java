@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class EndOrReTest {
 
@@ -26,4 +27,17 @@ class EndOrReTest {
     System.setOut(originalOut);
   }
 
+  @Test
+  void 입력된_값_확인1() {
+    String result = "1";
+    endOrRe.printInputString(result);
+    assertEquals("1", outContent.toString().trim());
+  }
+
+  @Test
+  void 입력된_값_확인2() {
+    String result = "2";
+    endOrRe.printInputString(result);
+    assertEquals("2", outContent.toString().trim());
+  }
 }
