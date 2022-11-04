@@ -60,11 +60,16 @@ public class BaseballGame implements Game {
     }
 
     private void input() {
+        printInputMessage();
         String playerInput = Console.readLine();
         if (isInvalid(playerInput)) {
             throw new IllegalArgumentException();
         }
         setPlayerNumbers(playerInput);
+    }
+
+    private void printInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private boolean isInvalid(String playerInput) {
@@ -156,6 +161,6 @@ public class BaseballGame implements Game {
         if (this.strike == GOAL_DIGIT) {
             result.append(GOAL_DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
         }
-        System.out.println(result);
+        System.out.print(result);
     }
 }
