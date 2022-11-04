@@ -99,8 +99,8 @@ public class Application {
         }
         return notStrikeZone;
     }
-    public static int countStrike(List<Boolean> strikeList){
-        return Collections.frequency(strikeList, true);
+    public static int countStrike(List<Integer> notStrikeList){
+        return 3 - notStrikeList.size();
     }
     public static void printEndingMessage(int countStrike){
         if (countStrike==3)
