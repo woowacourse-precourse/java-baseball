@@ -32,10 +32,10 @@ public class LogicTest {
                 //answerInput, userInput, ballCounts
                 Arguments.of(String.valueOf(123), String.valueOf(123), 0),
                 Arguments.of(String.valueOf(456), String.valueOf(456), 0),
-                Arguments.of(String.valueOf(123), String.valueOf(189), 1),
+                Arguments.of(String.valueOf(123), String.valueOf(189), 0),
                 Arguments.of(String.valueOf(123), String.valueOf(412), 2),
                 Arguments.of(String.valueOf(123), String.valueOf(312), 3),
-                Arguments.of(String.valueOf(159), String.valueOf(561), 0),
+                Arguments.of(String.valueOf(159), String.valueOf(561), 2),
                 Arguments.of(String.valueOf(159), String.valueOf(923), 1),
                 Arguments.of(String.valueOf(159), String.valueOf(921), 2),
                 Arguments.of(String.valueOf(237), String.valueOf(372), 3)
