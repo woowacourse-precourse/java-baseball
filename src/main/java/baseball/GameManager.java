@@ -55,7 +55,13 @@ public class GameManager {
     }
 
     private boolean isOneToNine(String input) {
+        for(char character: input.toCharArray()) {
+            if(character<'1'||character>'9') {
+                return false;
+            }
+        }
 
+        return true;
     }
 
     private boolean isThreeChar(String input) {
