@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GameService {
 
-    int strike = 0, ball = 0;
+    int strike = 0; int ball = 0;
 
     public Integer countStrike(List<Integer> randomNumber, List<Integer> userNumber){
         for (int index = 0; index < 3; index++) {
@@ -29,21 +29,21 @@ public class GameService {
         return ball;
     }
 
-    public boolean printResult() {
-        boolean isAnswer = false;
+    public void printResult() {
         if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            isAnswer = true;
-            return isAnswer;
+            strike = 0;
+            ball = 0;
+            return;
         }
-        if (strike > 0 && ball > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+            if (strike == 0) {
+                System.out.println();
+            }
         }
-        if (strike == 0 && ball > 0) {
-            System.out.println(ball + "볼");
-        }
-        if (strike > 0 && ball == 0) {
+        if (strike > 0) {
             System.out.println(strike + "스트라이크");
         }
         if (strike == 0 && ball == 0) {
@@ -51,7 +51,6 @@ public class GameService {
         }
         strike = 0;
         ball = 0;
-        return isAnswer;
     }
 
     public boolean checkRestart(){
