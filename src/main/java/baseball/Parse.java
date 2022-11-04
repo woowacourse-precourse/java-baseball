@@ -7,4 +7,9 @@ public class Parse {
         return new Numbers(input);
     }
 
+    public static ReplayNumber StringToReplayNumber(String beforeString) {
+        int input = Integer.parseInt(beforeString);
+        return new ReplayNumber(input);
+    }
+
 }

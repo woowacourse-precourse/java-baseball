@@ -24,6 +24,9 @@ public class Game {
     }
 
     public boolean replayGame() {
-        return false;
+        Print.printReplayGame();
+        String inputString = Input.readString();
+        ReplayNumber replayNumber = Parse.StringToReplayNumber(inputString);
+        return replayNumber.isReplay();
     }
 }

@@ -18,5 +18,5 @@ public class ReplayNumber {
     public boolean isReplay() {
         return (replayNumber == 1);
     }
-    
+
 }
