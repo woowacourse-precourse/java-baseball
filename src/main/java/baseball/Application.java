@@ -42,13 +42,11 @@ public class Application {
 
     }
 
-    private static void checkLength(String inputNumber) {
+    public static void checkLength(String inputNumber) throws IllegalArgumentException{
 
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
         }
-
-
     }
 
     public static String inputNumberFromPlayer() {
