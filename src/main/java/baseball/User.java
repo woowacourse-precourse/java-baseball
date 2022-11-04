@@ -2,7 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class User {
 
