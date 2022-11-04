@@ -11,8 +11,12 @@ public class InputView {
         OutputView.printRequestNum();
         String input = Console.readLine();
 
+        return validateRequestNum(input);
+    }
+
+    static String validateRequestNum(String input) {
         input = Utils.deleteAllSpace(input);
-        return input;
+        return null;
     }
 
     public static boolean requestIsReGame() {
