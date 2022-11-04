@@ -51,15 +51,23 @@ public class ExceptionTest {
     }
 
     @Test
-    void 잘못된_재게임_입력값_예외처리_테스트() {
-        int reGameAnswer = 3;
+    void 잘못된_재게임_입력값_예외처리_테스트1() {
+        String reGameAnswer = "3";
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Exceptions.isValidReGameAnswer(reGameAnswer));
     }
 
     @Test
+    void 잘못된_재게임_입력값_예외처리_테스트2() {
+        String reGameAnswer = "a";
+        assertThatThrownBy(() -> Exceptions.isValidReGameAnswer(reGameAnswer))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("올바르지 않은 재게임 입력입니다. 프로그램을 종료합니다.");
+    }
+
+    @Test
     void 잘못된_재게임_입력값_예외처리_메시지_테스트() {
-        int reGameAnswer = 3;
+        String reGameAnswer = "3";
         assertThatThrownBy(() -> Exceptions.isValidReGameAnswer(reGameAnswer))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("올바르지 않은 재게임 입력입니다. 프로그램을 종료합니다.");

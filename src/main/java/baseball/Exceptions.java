@@ -37,8 +37,14 @@ public class Exceptions {
         }
     }
 
-    public static void isValidReGameAnswer(int reGameAnswer) {
-        if (reGameAnswer != (Constant.START_GAME & Constant.END_GAME)) {
+    public static void isValidReGameAnswer(String reGameAnswer) {
+        try {
+            Integer.parseInt(reGameAnswer);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("올바르지 않은 재게임 입력입니다. 프로그램을 종료합니다.");
+        }
+        int reGameAnswerNum = Integer.parseInt(reGameAnswer);
+        if (reGameAnswerNum != Constant.START_GAME && reGameAnswerNum != Constant.END_GAME) {
             throw new IllegalArgumentException("올바르지 않은 재게임 입력입니다. 프로그램을 종료합니다.");
         }
     }
