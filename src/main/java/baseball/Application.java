@@ -53,7 +53,7 @@ public class Application {
     
     public static void check(String numstr,int strikeCount,int ballCount) {
     	String pattern = "^[1-9]{3}$";
-		if(Pattern.matches(pattern,numstr)) {  //입력한 문자가 숫자가 아니면 IllegalArgumentException 발생
+		if(!Pattern.matches(pattern,numstr)) {  //입력한 문자가 숫자가 아니면 IllegalArgumentException 발생
 			throw new IllegalArgumentException();
 		}
 		
