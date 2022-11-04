@@ -11,31 +11,16 @@ public class Application {
         PrintComment.printStartComment();
         Game game = new Game();
         do {
-            PrintComment.printInputComment();
-            String userInput = Console.readLine();
-            GameState gameState = game.compareNumbers(userInput);
-            PrintComment.printUserInput(userInput);
-            PrintComment.printGameState(gameState);
-            if (gameState.getStrike()!=ANSWER_COUNT) {
+            game.start();
+
+            if (!game.isAnswer()) {
                 continue;
             }
-            PrintComment.printCorrectComment();
-            PrintComment.printRestartComment();
-            userInput = Console.readLine();
-
-            validUserInputRestart(userInput);
-            PrintComment.printUserInput(userInput);
-            if (userInput.equals(END)){
+            if (!game.canRestart()){
                 isContinue = false;
                 continue;
             }
             game = new Game();
         } while(isContinue);
-    }
-
-    public static void validUserInputRestart(String num) {
-        if (!num.equals(RESTART) && !num.equals(END)) {
-            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
-        }
     }
 }
