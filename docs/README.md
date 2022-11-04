@@ -73,7 +73,9 @@ if(list.contains(입력수의 인덱스))
 
 - [x] (4)번에서 얻은 결과로 출력
 ```(java)
-System.out.println(볼개수+"볼 "+스트라이크개수+"스트라이크") // 이런식으로 출력
+String announce~~ = "";
+announce += 볼개수 + "볼"; // 이런식으로 문자열에 더해주어
+System.out.println(announce~~) // 출력
 ```
 
 :collision: 숫자 맞춘 후
@@ -88,8 +90,11 @@ System.out.println(볼개수+"볼 "+스트라이크개수+"스트라이크") // 
 - [x] (5)번에서 readline을 통해 받은 수를 이용!
 ```(java)
 if (1번 받아오면) {
-다시 게임을 시작} else if (1번도 2번도 x) {
-IllegalArgumentException 발생}
+다시 게임을 시작
+} 
+if (1번도 2번도 x) {
+IllegalArgumentException 발생
+}
 ```
 
 ### \(@^0^@)/ 기능 구현 순서
