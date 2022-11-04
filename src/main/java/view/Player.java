@@ -18,14 +18,6 @@ public class Player {
             System.out.print(GameConstant.INPUT_PHRASE);
             input = scanner.nextLine();
 
-            try {
-                BaseballException.InputLengthException(input);
-                BaseballException.InputTypeBoundaryException(input);
-                BaseballException.InputRepeatException(input);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e);
-                return "1";
-            }
             return input;
         }
 }
