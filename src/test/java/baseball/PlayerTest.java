@@ -31,7 +31,7 @@ public class PlayerTest {
         assertThatThrownBy(() -> {
             player.validateNumber("1234");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.LENGTH_EXCEPTION);
+                .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PlayerTest {
         assertThatThrownBy(() -> {
             player.validateNumber("120");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.RANGE_EXCEPTION);
+                .hasMessageContaining(Message.DIGIT_RANGE_EXCEPTION);
     }
 
     @Test

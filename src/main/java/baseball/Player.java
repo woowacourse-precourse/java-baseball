@@ -75,8 +75,8 @@ public class Player {
             throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
         }
 
-        if (!isValidLength(playerNumber)) {
-            throw new IllegalArgumentException(Message.LENGTH_EXCEPTION);
+        if (!isValidLength(playerNumber, PLAYER)) {
+            throw new IllegalArgumentException(Message.DIGIT_LENGTH_EXCEPTION);
         }
 
         if (!isValidDuplication(playerNumber)) {
@@ -84,7 +84,7 @@ public class Player {
         }
 
         if (!isValidRange(playerNumber)) {
-            throw new IllegalArgumentException(Message.RANGE_EXCEPTION);
+            throw new IllegalArgumentException(Message.DIGIT_RANGE_EXCEPTION);
         }
     }
 
