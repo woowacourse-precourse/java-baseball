@@ -19,4 +19,18 @@ public class Comparison {
         return numberList;
     }
 
+    public static int getStrikeCount(int randomNumber, int userInputNumber){
+        int strikeCount = 0;
+        List<Integer> randomNumberList = numberToList(randomNumber);
+        List<Integer> userInputNumberList = numberToList(userInputNumber);
+
+        for (int i = 0; i < NUMBER_OF_DIGIT; i++) {
+            if(randomNumberList.get(i) == userInputNumberList.get(i)){
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
 }
