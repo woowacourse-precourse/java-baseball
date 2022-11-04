@@ -10,14 +10,23 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computernums = RandomNum(3);
-        String usernum = userInput();
-        confirmUserInput(usernum);
-        List<Integer> usernums = stringConvertListInteger(usernum);
 
-        BaseballCount baseballCount = new BaseballCount(computernums, usernums);
+        while(true){
+            String usernum = userInput();
+            confirmUserInput(usernum);
+            List<Integer> usernums = stringConvertListInteger(usernum);
+            BaseballCount baseballCount = new BaseballCount(computernums, usernums);
 
-        System.out.println(baseballCount.strikecount);
-        System.out.println(baseballCount.ballcount);
+            if(baseballCount.strikecount == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+            if(baseballCount.strikecount==0 && baseballCount.ballcount ==0){
+                System.out.println("낫싱");
+                continue;
+            }
+            System.out.printf("%d볼 %d스트라이크",baseballCount.ballcount,baseballCount.strikecount);
+        }
 
     }
 
