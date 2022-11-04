@@ -48,6 +48,24 @@ public class Application {
        }return strikeCount;
     }
 
+    public static int howManyBall(String userNumber, String answerNumber){
+        int ballCount = 0;
+        for(int i = 0 ; i<userNumber.length()-1; i++){
+            char userNum = userNumber.charAt(i);
+            char answerNum = answerNumber.charAt(i+1);
+            if(userNum == answerNum){
+                ballCount++;
+            }
+        }return ballCount;
+    }
+
+
+
+
+
+
+
+
 
 
 
