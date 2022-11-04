@@ -29,7 +29,7 @@ public class BaseballGame {
         } while ((strikeCount != 3));
 
         computer.clearRandomNumbers();
-        messageCreator.gameClearMessage();
+        messageCreator.printGameClearMessage();
     }
 
     private String inputAnswer() {
