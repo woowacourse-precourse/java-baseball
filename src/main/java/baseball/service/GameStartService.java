@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.repository.GameStartRepository;
+import baseball.util.RandomUtil;
 import baseball.util.UserUtil;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class GameStartService {
     public static void saveUserNumber() {
         String userNumberString = UserUtil.getUserNumberString();
         List<String> userNumberList = transferToList(userNumberString);
-        GameStartRepository.save(userNumberList);
+        GameStartRepository.saveUserNumber(userNumberList);
     }
 
     private static List<String> transferToList(String userNumberString) {
@@ -20,4 +21,8 @@ public class GameStartService {
     }
 
 
+    public static void saveComputerNumber() {
+        List<String> computerNumberList = RandomUtil.getComputerNumberList();
+        GameStartRepository.saveComputerNumber(computerNumberList);
+    }
 }

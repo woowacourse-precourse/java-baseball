@@ -19,6 +19,11 @@ public class GameStartController {
 
     private static void saveUserNumber() {
         GameStartService.saveUserNumber();
+        saveComputerNumber();
+    }
+
+    private static void saveComputerNumber() {
+        GameStartService.saveComputerNumber();
     }
 }
 
