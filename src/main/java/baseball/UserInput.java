@@ -9,15 +9,17 @@ public class UserInput {
         String input = Console.readLine();
         List<Integer> inputList = new ArrayList<>();
 
-        if (input.length() != 3)
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
+        }
 
         for (int idx = 0; idx < input.length(); idx++) {
             char c = input.charAt(idx);
             int num = Character.getNumericValue(c);
 
-            if (num == -1)
+            if (num == -1) {
                 throw new IllegalArgumentException();
+            }
 
             inputList.add(num);
         }
@@ -25,13 +27,14 @@ public class UserInput {
         return inputList;
     }
 
-    public boolean isStart(){
+    public boolean isStart() {
         String input = Console.readLine();
 
-        if (input.equals("1"))
+        if (input.equals("1")) {
             return true;
-        else if (input.equals("2"))
+        } else if (input.equals("2")) {
             return false;
+        }
         throw new IllegalArgumentException();
     }
 }
