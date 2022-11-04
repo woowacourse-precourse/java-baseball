@@ -43,7 +43,7 @@ public class InputExceptionTest {
     @ValueSource(strings = {"0", "3", "4", "1231", "12", "weq09ue2", "@83j%Wije"})
     void valueOfRestartGameOrNotValid_값에_1이나_2가_아닌_값이_들어왔을때의_유효성_검증(String valueOfRestartGameOrNotValid) {
 
-        assertThatThrownBy(() -> InputException.isExpectedNumberOfUserValid(valueOfRestartGameOrNotValid))
+        assertThatThrownBy(() -> InputException.isValueOfRestartGameOrNotValid(valueOfRestartGameOrNotValid))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
