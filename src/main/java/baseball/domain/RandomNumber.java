@@ -12,11 +12,16 @@ public class RandomNumber {
         return (numSet.size() == numList.size());
     }
 
-    public static void main(){
-        //1부터 9까지의 난수 생성
+    public static ArrayList<Integer> makeRandomNum(){
+        //1부터 9까지의 난수3개 생성
         ArrayList<Integer> RandomNumList= new ArrayList();
         for (int i=0; i < 3; i++){
             int ran_num = (int) floor((random() * 10));
         }
+        if (isSet(RandomNumList)) return RandomNumList;
+        return makeRandomNum();
+    }
+    public static ArrayList<Integer> main(){
+        return makeRandomNum();
     }
 }
