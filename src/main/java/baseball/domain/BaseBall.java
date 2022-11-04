@@ -16,12 +16,7 @@ public class BaseBall implements Game {
 
     private final List<Integer> computerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
     private final List<Integer> playerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
-    private int strike;
-    private int ball;
-
-    public BaseBall() {
-        resetGameStatus();
-    }
+    private final BallCount ballCount = new BallCount();
 
     @Override
     public void play() {
@@ -30,12 +25,8 @@ public class BaseBall implements Game {
         do {
             playerInput();
             compareNumbers();
-            showResult();
-        } while (isNotMatchNumbers());
-    }
-
-    private boolean isNotMatchNumbers() {
-        return strike != GameValidator.NUMBER_LENGTH;
+            ballCount.show();
+        } while (ballCount.check());
     }
 
     private void generateRandomComputerNumbers() {
@@ -56,10 +47,10 @@ public class BaseBall implements Game {
         GamePrinter.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
         GameValidator.validate(playerInput);
-        storePlayerNumbers(playerInput);
+        generatePlayerNumbers(playerInput);
     }
 
-    private void storePlayerNumbers(String playerInput) {
+    private void generatePlayerNumbers(String playerInput) {
         playerNumbers.clear();
         playerNumbers.addAll(
             playerInput.chars()
@@ -70,23 +61,18 @@ public class BaseBall implements Game {
     }
 
     private void compareNumbers() {
-        resetGameStatus();
+        ballCount.reset();
         IntStream.range(0, playerNumbers.size())
-            .forEach(this::storeGameStatus);
+            .forEach(this::updateBallCount);
     }
 
-    private void resetGameStatus() {
-        strike = 0;
-        ball = 0;
-    }
-
-    private void storeGameStatus(int index) {
+    private void updateBallCount(int index) {
         if (isStrike(index)) {
-            strike += 1;
+            ballCount.strike();
         }
 
         if (!isStrike(index) && isBall(index)) {
-            ball += 1;
+            ballCount.ball();
         }
     }
 
@@ -96,28 +82,6 @@ public class BaseBall implements Game {
 
     private boolean isBall(int index) {
         return computerNumbers.contains(playerNumbers.get(index));
-    }
-
-    private void showResult() {
-        StringBuilder result = new StringBuilder();
-        if (ball == 0 && strike == 0) {
-            result.append("낫싱");
-        }
-
-        if (ball != 0) {
-            result.append(ball).append("볼").append(" ");
-        }
-
-        if (strike != 0) {
-            result.append(strike).append("스트라이크");
-        }
-
-        if (strike == GameValidator.NUMBER_LENGTH) {
-            result.append("\n").append(GameValidator.NUMBER_LENGTH)
-                .append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-
-        GamePrinter.println(result.toString());
     }
 
 }
