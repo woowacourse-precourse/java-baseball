@@ -7,9 +7,9 @@ public class Application {
         final int NUMBER_LENGTH = 3;
         System.out.println("숫자 야구 게임을 시작합니다.");
         String loopChecker = "1";
+        Baseball baseball = new Baseball(NUMBER_LENGTH);
 
         while (loopChecker.equals("1")) {
-            Baseball baseball = new Baseball(NUMBER_LENGTH);
             baseball.play();
 
             System.out.println(NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
