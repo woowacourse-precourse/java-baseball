@@ -17,4 +17,16 @@ public class ErrorChecker {
         this.endInclusive = endInclusive;
         this.continueGameInputList = continueGameInputList;
     }
+
+    public void checkUserNumberError(String input) throws IllegalArgumentException {
+        if (isIllegalSize(input)) {
+            throw new IllegalArgumentException(ILLEGAL_SIZE);
+        }
+        if (containIllegalInput(input)) {
+            throw new IllegalArgumentException(ILLEGAL_INPUT);
+        }
+        if (containDuplicateNumber(input)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER);
+        }
+    }
 }
