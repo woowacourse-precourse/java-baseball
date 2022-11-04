@@ -63,12 +63,22 @@ class ValidationTest {
     }
 
     @Test
+    void ZERO_있는지_확인() {
+        // given
+        String hasZero = "102";
+
+        // then
+        assertThat(validation.hasZero(hasZero)).isEqualTo(true);
+    }
+
+    @Test
     void 입력_숫자_유효성_확인() {
         // given
         String inputLess = "1";
         String inputMore = "3124";
         String inputDuplicate = "424";
         String inputNotNumber = "k:#";
+        String inputHasZero = "390";
 
         // then
         assertThatThrownBy(() -> {
@@ -82,6 +92,9 @@ class ValidationTest {
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
             validation.isValidateInput(inputNotNumber);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validation.isValidateInput(inputHasZero);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
