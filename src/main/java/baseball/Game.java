@@ -55,7 +55,6 @@ public class Game {
             System.out.println(checkDigitsResult);
             if(isGameWin(checkDigitsResult)){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 // 여기 1, 2 메뉴 선택할 수 있는 메소드 필요
 
             }
@@ -68,5 +67,20 @@ public class Game {
      */
     public boolean isGameWin(String checkDigitResult) {
         return checkDigitResult.equals("3스트라이크");
+    }
+
+    /**
+     * 게임을 새로 시작할지(1), 종료할 지(2) 선택하는 메소드
+     * 적절한 입력인지 확인하고 예외처리하는 기능
+     */
+    public int getMenuNumber(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String inputMenu = Console.readLine();
+        if(!input.isAllDigits(inputMenu)){
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(inputMenu);
     }
 }
