@@ -18,7 +18,7 @@ public class PlayerTest {
 
     @Test
     void 입력이_리스트로_저장된다(){
-        player.setNumbers(input);
+        player.setNumbers("123");
         assertThat(player.getNumbers()).isEqualTo(List.of(1, 2, 3));
     }
 }
