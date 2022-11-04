@@ -1,12 +1,9 @@
 package baseball;
 
-import net.bytebuddy.pool.TypePool;
-
 import java.util.Map;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class IOManager {
-    private static final Scanner in = new Scanner(System.in);
     private static final Map<String, String> messages = Map.of(
             "PROGRAM_START", "숫자 야구 게임을 시작합니다.\n",
             "REQUIRE_INPUT", "숫자를 입력해주세요 : ",
@@ -20,12 +17,28 @@ public class IOManager {
 
     public static int inputNumber() throws IllegalArgumentException {
         System.out.print(messages.get("REQUIRE_INPUT"));
-        String line = in.nextLine();
+        String line = Console.readLine();
 
         // if not valid
         // throw new IllegalArgumentException();
 
-        return 0;
+        return Integer.parseInt(line);
+    }
+
+    public static String getHint(int ballNum, int strikeNum) {
+        String hint = "";
+
+        if(ballNum > 0)
+            hint += String.valueOf(ballNum) + "볼";
+        if(ballNum > 0 && strikeNum > 0)
+            hint += " ";
+        if(strikeNum > 0)
+            hint += String.valueOf(strikeNum) + "스트라이크";
+
+        if(hint.length() == 0)
+            hint = "낫싱";
+
+        return hint;
     }
 
     public static void correctAnswer() {
@@ -34,7 +47,7 @@ public class IOManager {
 
     public static boolean inputRestart() throws IllegalArgumentException {
         System.out.print(messages.get("ASK_RESTART"));
-        String line = in.nextLine();
+        String line = Console.readLine();
 
         if(line.equals("1"))
             return true;
