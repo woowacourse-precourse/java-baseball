@@ -17,4 +17,8 @@ public class GameController {
     public void startGame(){
         gameService.set_game();
     }
+
+    public void playGame(){
+        gameService.play_game();
+    }
 }
