@@ -35,9 +35,12 @@ public class Application {
 		}
 		return com_Random_Num;
 	}
-	public static int is_Strike_or_Ball(){
-		int answer = 0;
-		return answer;
+	public static int is_Strike_or_Ball(String com, String number, int index){
+		if(com.indexOf(number)==index){
+			return 1;
+		}else{
+			return 0;
+		}
 	}
 	public static List<Integer> compare_two_case(String com, String user){
 		List<Integer> answer = Collections.emptyList();
@@ -47,11 +50,11 @@ public class Application {
 		answer = new LinkedList<>();
 		answer.add(0);
 		answer.add(0);
-		answer.add(0);
-		for(int i=0; i<3; i++){
-			char now_num = user.charAt(i);
-			if(com.contains(String.valueOf(now_num))){
-				answer.set(is_Strike_or_Ball(),answer.get(is_Strike_or_Ball())+1);
+		for(int i=0; i<2; i++){
+			String now_num =String.valueOf(user.charAt(i));
+			if(com.contains(now_num)){
+				int ball_or_strike = is_Strike_or_Ball(com,now_num,i);
+				answer.set(ball_or_strike,answer.get(ball_or_strike)+1);
 			}
 		}
 		return answer;
