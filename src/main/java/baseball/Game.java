@@ -30,34 +30,7 @@ public class Game {
             String input = Console.readLine();
             List<Integer> user = makeUserAnswer(input);
 
-            int strike = 0;
-            int ball = 0;
-            for (int i = 0; i < user.size(); i++) {
-                if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
-                    strike++;
-                }
-                if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
-                    ball++;
-                }
-            }
-
-            if (ball == 0 && strike == 0) {
-                result = NOTHING;
-                System.out.println(result);
-            }else {
-                if (strike == 0) {
-                    result = ball + BALL;
-                    System.out.println(result);
-                } else if (ball == 0) {
-                    result = strike + STRKIE;
-                    if (strike == 3) {
-                        result = END_GAME_CONDITION;
-                    }
-                    System.out.println(result);
-                } else {
-                    System.out.println(ball + BALL + " " + strike + STRKIE);
-                }
-            }
+            result = makeResult(computer, result, user);
         }
 
         System.out.println(RESTART_CONDITION);
@@ -67,6 +40,38 @@ public class Game {
         } else if (!input.equals("2")) {
             throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
         }
+    }
+
+    private static String makeResult(List<Integer> computer, String result, List<Integer> user) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i)) && Objects.equals(computer.get(i), user.get(i))) {
+                strike++;
+            }
+            if (computer.contains(user.get(i)) && !Objects.equals(computer.get(i), user.get(i))) {
+                ball++;
+            }
+        }
+
+        if (ball == 0 && strike == 0) {
+            result = NOTHING;
+            System.out.println(result);
+        }else {
+            if (strike == 0) {
+                result = ball + BALL;
+                System.out.println(result);
+            } else if (ball == 0) {
+                result = strike + STRKIE;
+                if (strike == 3) {
+                    result = END_GAME_CONDITION;
+                }
+                System.out.println(result);
+            } else {
+                System.out.println(ball + BALL + " " + strike + STRKIE);
+            }
+        }
+        return result;
     }
 
     private List<Integer> makeUserAnswer(String input) {
