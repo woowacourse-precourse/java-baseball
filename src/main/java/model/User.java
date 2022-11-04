@@ -31,26 +31,13 @@ public class User {
         return numInput;
     }
 
-    public int getNumSelecUser() {
-        return numSelecUser;
-    }
-
-    public boolean isValidPositiveInt(int num) {
-        if (num > 0) {
-            return true;
-        } else {
-            throw new IllegalArgumentException("양수를 입력해주세요.");
-        }
-    }
-
-    public String getString() {
+    private String getString() {
         String strInput = "";
         strInput = readLine();
         return strInput;
     }
 
-
-    public int parseIntFromStr(String str) {
+    private int parseIntFromStr(String str) {
         try {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
@@ -58,7 +45,15 @@ public class User {
         }
     }
 
-    public boolean isValidLength(String str) {
+    private boolean isValidPositiveInt(int num) {
+        if (num > 0) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("양수를 입력해주세요.");
+        }
+    }
+
+    private boolean isValidLength(String str) {
         if (str.length() == 3) {
             return true;
         } else {
@@ -66,7 +61,7 @@ public class User {
         }
     }
 
-    public boolean isValidNumOfIndividually(String str) {
+    private boolean isValidNumOfIndividually(String str) {
         if (isNumOfIndividually(str)) {
             return true;
         } else {
@@ -77,7 +72,7 @@ public class User {
     // 서로 다른 3자리의 수인지 확인
     // 서로 다른 3자리의 수인지 확인하는 방법은?
     // 1번을 for문 2번?
-    public boolean isNumOfIndividually(String str) {
+    private boolean isNumOfIndividually(String str) {
         List<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = 0;
         for (int value : splitStrList) {
@@ -94,7 +89,7 @@ public class User {
         return true;
     }
 
-    public List getListStrArr2Split(String str) {
+    private List getListStrArr2Split(String str) {
         String[] strArr = str.split("");
         List<Integer> list = new ArrayList<>();
         for (String value : strArr) {
@@ -102,4 +97,10 @@ public class User {
         }
         return list;
     }
+
+    public int getNumSelecUser() {
+        return numSelecUser;
+    }
+
+
 }
