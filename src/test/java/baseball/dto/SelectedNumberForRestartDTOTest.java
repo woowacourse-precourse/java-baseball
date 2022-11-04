@@ -45,4 +45,12 @@ class SelectedNumberForRestartDTOTest {
                 .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
+    
+    @Test
+    @DisplayName("예외 처리 : 공백 입력 시")
+    void space_exception() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(" "))
+                .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
+    }
 }
