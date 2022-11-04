@@ -35,13 +35,21 @@ public class Application {
         }
 
         public boolean isValidInput(String inputStr){
-            String inputNumberRegex = "^[1-9]{3}$";
-            if(!inputStr.matches(inputNumberRegex)){
+            if(is3DigitNumber(inputStr)){
                 throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
                 // Error 처리 하기!
             }
 
             return true;
+        }
+
+        public boolean is3DigitNumber(String inputStr){
+            String inputNumberRegex = "^[1-9]{3}$";
+            if(!inputStr.matches(inputNumberRegex)){
+                return false;
+            }
+            return true;
+
         }
 
     }
