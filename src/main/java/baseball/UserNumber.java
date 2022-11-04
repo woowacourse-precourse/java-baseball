@@ -12,6 +12,7 @@ public class UserNumber {
     private final List<Character> numberList;
 
     public UserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         List<Character> tempNumberList = Console.readLine().chars()
                 .mapToObj(e -> (char) e).collect(Collectors.toList());
         userNumberValidator(tempNumberList);
