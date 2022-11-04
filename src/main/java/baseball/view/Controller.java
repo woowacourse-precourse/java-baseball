@@ -19,13 +19,17 @@ public class Controller {
         return input;
     }
 
-    public void printRoundResult(Map<String,Integer> resultMap) {
+    public boolean printRoundResult(Map<String,Integer> resultMap) {
         int ball = resultMap.get("ball");
         int strike = resultMap.get("strike");
+        boolean flag = false;
 
+        if (strike == GAME_ANSWER_MAX_VALUE) {
+            flag = true;
+        }
         if(ball==0 && strike==0) {
             printNothingMessage();
-            return;
+            return false;
         }
         if(ball>0) {
             printBallMessage(ball);
@@ -33,5 +37,7 @@ public class Controller {
         if(strike>0){
             printStrikeMessage(strike);
         }
+        System.out.println("");
+        return flag;
     }
 }
