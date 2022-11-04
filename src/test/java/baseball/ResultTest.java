@@ -48,4 +48,16 @@ public class ResultTest {
         String answer = "1스트라이크";
         assertThat(result.strikeToString()).isEqualTo(answer);
     }
+
+    @Test
+    void toStringTest() {
+        Result result = new Result();
+        String answer = "낫싱";
+        assertThat(result.toString()).isEqualTo(answer);
+        result.addBall();
+        result.addBall();
+        result.addStrike();
+        answer = "2볼 1스트라이크";
+        assertThat(result.toString()).isEqualTo(answer);
+    }
 }
