@@ -15,7 +15,10 @@ public class Player {
 
     public boolean wantRestart(String playerInput) {
         validate(playerInput);
-        return true;
+        if (playerInput.equals(WANT_RESTART)) {
+            return true;
+        }
+        return false;
     }
 
     private void validate(String playerInput) {
