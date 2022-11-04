@@ -28,7 +28,7 @@ public class UserInputNumbers {
         if (numbers.length()!=NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
-        if (!isDigit(numbers)) {
+        if (!isValidDigit(numbers)) {
             throw new IllegalArgumentException();
         }
         if (!duplicateNumber(numbers)) {
@@ -37,9 +37,9 @@ public class UserInputNumbers {
         return true;
     }
 
-    public static boolean isDigit(String num) {
+    public static boolean isValidDigit(String num) {
         for (int idx=START_IDX; idx<num.length(); idx++) {
-            if (!Character.isDigit(num.charAt(idx))) {
+            if (num.charAt(idx)<=ZERO_ASCII||num.charAt(idx)>NINE_ASCII) {
                 return false;
             }
         }

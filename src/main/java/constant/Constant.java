@@ -14,6 +14,7 @@ public class Constant {
     public static final int START_IDX = 0;
     public static final int NOT_DUPLICATE_NUMBER = 1;
     public static final char ZERO_ASCII = '0';
+    public static final char NINE_ASCII = '9';
 
     public static final int ANSWER_COUNT = 3;
     public static final String RESTART = "1";
