@@ -3,13 +3,11 @@ package baseball;
 import java.util.List;
 
 public class Application {
-
   private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
   private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
   private static final String ENDGAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
   private static final String ENDORRE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
   private static final List<Integer> THREE_STRIKE = List.of(3, 0);
-
 
   public static void main(String[] args) {
     while (true) {
@@ -29,9 +27,10 @@ public class Application {
     while (oneOrTwo == 0) {
       System.out.print(INPUT_MESSAGE);
       Input input = new Input();
-      List<Character> userList = input.readAndMakeInputList();
-      CompareTwoList compareTwoList = new CompareTwoList();
       Output output = new Output();
+      CompareTwoList compareTwoList = new CompareTwoList();
+
+      List<Character> userList = input.readAndMakeInputList();
       List<Integer> strikeBalls = compareTwoList.compareLists(computerList, userList);
       output.printStrikeBall(strikeBalls);
       oneOrTwo = endGameMessage(strikeBalls.equals(THREE_STRIKE), oneOrTwo);
