@@ -10,6 +10,14 @@ import java.util.List;
 
 public class Game {
     static final int INPUT_LENGTH = 3;
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
+    List<Integer> computerNumber;
+    List<Integer> playerNumber;
+
+    public Game(){
+        computerNumber = getComputerNumber();
+    }
 
     public List<Integer> getComputerNumber() {
         List<Integer> computerNumber = new ArrayList<Integer>();
@@ -37,8 +45,30 @@ public class Game {
         return playerNumber;
     }
 
+    public int checkBall(List<Integer> playerNumber) {
+        int ballCount = 0;
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            if (computerNumber.contains(playerNumber.get(i))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 
+    public int checkStrike(List<Integer> playerNumber) {
+        int strikeCount = 0;
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            if (computerNumber.get(i) == playerNumber.get(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 
-
-
+    public int[] checkNumber(List<Integer> playerNumber) {
+        int ballCount = checkBall(playerNumber);
+        int strikeCount = checkStrike(playerNumber);
+        ballCount -= strikeCount;
+        return new int[]{ballCount, strikeCount};
+    }
 }
