@@ -14,6 +14,11 @@ public class GameController {
         // TODO: 제거.
     }
 
+    public void startGame() {
+        computer.initComputer();
+        initCntStrikeBallOfComputer();
+    }
+
     public void callInputNumOfUser() {
         this.user.inputNumOfUser();
     }
