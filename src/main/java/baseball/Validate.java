@@ -1,35 +1,37 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Validate {
-    public static List<Integer> isNumValid(int num) {
-        if (!isThreeLength(num)) {
+    private static final int VALID_LENGTH = 3;
+
+    public static List<Integer> isNumValid(String num) {
+        if (!checkNumLength(num)) {
             throw new IllegalArgumentException("숫자 길이 맞지 않음");
         }
         return isDiffEach(num);
     }
 
     public static boolean isCommandValid(int num) {
-        if (num < 1 || 2 < num) {
-            throw new IllegalArgumentException("올바르지 않은 명령어");
-        }
-        return num == 1;
+        if (num == 1) return true;
+        if (num == 2) return false;
+        throw new IllegalArgumentException("올바르지 않은 명령어");
     }
 
-    private static List<Integer> isDiffEach(int num) {
+    private static List<Integer> isDiffEach(String num) {
         List<Integer> arr = new ArrayList<>();
-        while (num != 0) {
-            int digit = num %10;
+
+        for (int i = 0; i < VALID_LENGTH; i++) {
+            int digit = Integer.parseInt(String.valueOf(num.charAt(i)));
             if(arr.contains(digit)) throw new IllegalArgumentException("중복된 숫자");
-            else arr.add(digit);
-            num = num/10;
+            arr.add(digit);
         }
         return arr;
     }
 
-    private static boolean isThreeLength(int num) {
-        return String.valueOf(num).length() == 3;
+    private static boolean checkNumLength(String num) {
+        return num.length() == VALID_LENGTH;
     }
 }

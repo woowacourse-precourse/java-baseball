@@ -10,9 +10,10 @@ public class Game {
     public static void startGame() {
         Output.startMessage();
         List<Integer> target = gameSet();
+
         while (true) {
-            int num = Input.inputNumber();
-            List<Integer> validNum = Validate.isNumValid(num);
+            String stringNum = Input.inputNumber();
+            List<Integer> validNum = Validate.isNumValid(stringNum);
             int[] score = getScore(target, validNum);
             if (Output.scoreMessage(score)) {
                 return;
