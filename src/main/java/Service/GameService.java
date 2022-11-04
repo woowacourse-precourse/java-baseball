@@ -38,13 +38,13 @@ public class GameService {
         score_calculate(userNumber.getUser_numbers(), game.getGame_numbers());
     }
 
-    public int[] getUserNumber() throws IllegalArgumentException {
+    private int[] getUserNumber() throws IllegalArgumentException {
         RequestUser.request_input();
         String user_input = Console.readLine();
         return userValidate.validate_user_input(user_input);
     }
 
-    public void calculate(int[] userNumbers, int[] randomNumbers, int index){
+    private void calculate(int[] userNumbers, int[] randomNumbers, int index){
         int tmp = -1;
 
         for (int r = 0; r < randomNumbers.length; r++) {
@@ -56,13 +56,13 @@ public class GameService {
         increase_cnt(index, tmp);
     }
 
-    public void score_calculate(int[] userNumbers, int[] randomNumbers){
+    private void score_calculate(int[] userNumbers, int[] randomNumbers){
         for (int i = 0; i < NUM_SIZE; i++) {
             calculate(userNumbers, randomNumbers, i);
         }
     }
 
-    public void increase_cnt(int index, int tmp){
+    private void increase_cnt(int index, int tmp){
         if(index == tmp){
             game.increase_strike();
         }
