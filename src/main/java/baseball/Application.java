@@ -9,30 +9,36 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static String COIN = "1";
-    public static List<Integer> computer;
 
     public static void main(String[] args) {
-        computer = getComputerValue();
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (COIN.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> user = new Input(readLine()).getInputList();
+            List<Integer> computer = getComputerValue();
 
-            int ball = countBall(computer, user);
-            int strike = countStrike(computer, user);
-            game(ball, strike);
+            game(computer);
+
         }
     }
 
-    private static void game(int ball, int strike) {
-        if (ball != 0) System.out.print(ball + "볼 ");
-        if (strike != 0) System.out.print(strike + "스트라이크");
-        System.out.println();
-        if (ball == 0 && strike == 0) System.out.println("낫싱");
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            inputCoin();
+    private static void game(List<Integer> computer) {
+        int strike = 0;
+        int ball = 0;
+        while (strike != 3){
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> user = new Input(readLine()).getInputList();
+
+            ball = countBall(computer, user);
+            strike = countStrike(computer, user);
+            if (ball != 0) System.out.print(ball + "볼 ");
+            if (strike != 0) System.out.print(strike + "스트라이크");
+            System.out.println();
+            if (ball == 0 && strike == 0) System.out.println("낫싱");
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
         }
     }
 
@@ -41,7 +47,6 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         coin = new Coin(readLine());
         COIN = coin.getCoin();
-        if (COIN.equals("1")) computer = getComputerValue();
     }
 
     private static int countStrike(List<Integer> computer, List<Integer> user) {
