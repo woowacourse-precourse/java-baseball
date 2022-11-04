@@ -10,8 +10,8 @@ import java.util.List;
 public class Pitch {
 
     public static List<Integer> userAnswer = new ArrayList<>();
-    protected String[] userInput;
-    public boolean boolCorrectAnswer;
+    protected String[] userInputToGuess;
+    public boolean isCorrectAnswer;
 
     IllegalArgument illegalArgument = new IllegalArgument();
 
@@ -25,23 +25,23 @@ public class Pitch {
     }
 
     private void setUserAnswer() {
-        illegalArgument.check(getInputFromUser(), Game.answerLength);
-        for (String input : userInput) {
+        illegalArgument.check(getUserInputToGuess(), Game.answerLength, Game.numberForAnswer);
+        for (String input : userInputToGuess) {
             userAnswer.add(Integer.parseInt(input));
         }
     }
 
-    private String[] getInputFromUser() {
-        userInput = Console.readLine().split("");
-        return userInput;
+    private String[] getUserInputToGuess() {
+        userInputToGuess = Console.readLine().split("");
+        return userInputToGuess;
     }
 
     public boolean checkCorrect(String hint) {
-        this.boolCorrectAnswer = false;
+        this.isCorrectAnswer = false;
         if (hint.equals("3스트라이크")) {
-            this.boolCorrectAnswer = true;
+            this.isCorrectAnswer = true;
         }
-        return this.boolCorrectAnswer;
+        return this.isCorrectAnswer;
     }
 
     public void guideAnswerIsCorrect() {

@@ -9,48 +9,46 @@ import java.util.Set;
 
 public class IllegalArgument {
 
-    protected List<Integer> userAnswer;
+    protected List<Integer> validatedNumber;
 
-    public void check(String[] inputArray, int argumentLength) {
-        isNumber(inputArray);
+    public void check(String[] userInput, int argumentLength, List<Integer> possibleNumber) {
+        isNumber(userInput);
         isAnswerLength(argumentLength);
-        isNotContainZero();
+        isPossibleNumber(possibleNumber);
         isAllUnique();
     }
 
 
-    private void isNumber(String[] inputArray) {
+    private void isNumber(String[] userInput) {
 
         List<Integer> inputNumber = new ArrayList<>();
         try {
-            for (String input : inputArray) {
+            for (String input : userInput) {
                 inputNumber.add(Integer.parseInt(input));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        userAnswer = inputNumber;
+        validatedNumber = inputNumber;
     }
 
     private void isAnswerLength(int argumentLength) {
-        if (userAnswer.size() != argumentLength) {
+        if (validatedNumber.size() != argumentLength) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isNotContainZero() {
-        if (userAnswer.contains(0)) {
+    private void isPossibleNumber(List<Integer> possibleNumber) {
+        validatedNumber.removeAll(possibleNumber);
+        if (validatedNumber.size() != 0) {
             throw new IllegalArgumentException();
         }
     }
 
     private void isAllUnique() {
-        Set<Integer> uniqueNumber = new HashSet<>(userAnswer);
-        if (userAnswer.size() != uniqueNumber.size()) {
+        Set<Integer> uniqueNumber = new HashSet<>(validatedNumber);
+        if (validatedNumber.size() != uniqueNumber.size()) {
             throw new IllegalArgumentException();
         }
     }
-
-
-
 }

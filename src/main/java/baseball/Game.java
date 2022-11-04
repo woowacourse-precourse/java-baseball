@@ -10,15 +10,21 @@ import java.util.List;
 
 public class Game {
     protected static final int answerLength = 3;
+    protected static final List<Integer> numberForAnswer = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    protected static final int intentionLength = 1;
+    protected static final List<Integer> numberForIntention = List.of(1, 2);
+
     private static final int newGame = 1;
     private static final int endGame = 2;
 
     public static List<Integer> correctAnswer = new ArrayList<>();
     private boolean isCorrect;
-    private int newOrEnd = 0;
+    private String[] userInputForProgress;
+    private int userIntention;
 
     Pitch pitch = new Pitch();
     Hint hint = new Hint();
+    IllegalArgument illegalArgument = new IllegalArgument();
 
     public void start() {
         guideToStart();
@@ -37,6 +43,13 @@ public class Game {
         }
 
         askContinue();
+        getUserIntention();
+        if (userIntention == newGame) {
+            this.start();
+        }
+        if (userIntention == endGame) {
+            return;
+        }
     }
 
     private void guideToStart() {
@@ -56,14 +69,12 @@ public class Game {
 
     private void askContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        newOrEnd = Integer.parseInt(Console.readLine());
+    }
 
-        if (newOrEnd == newGame) {
-            this.start();
-        } else if (newOrEnd == endGame) {
-            return;
-        } else {
-            throw new IllegalArgumentException();
-        }
+    private void getUserIntention() {
+        userInputForProgress = Console.readLine().split("");
+        illegalArgument.check(userInputForProgress, intentionLength, numberForIntention);
+
+        userIntention = Integer.parseInt(userInputForProgress[0]);
     }
 }
