@@ -11,6 +11,6 @@ public class Application {
             } catch (IllegalArgumentException e) {
                 throw e;
             }
-        } while (game.restart());
+        } while (game.askRestart());
     }
 }
