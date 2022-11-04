@@ -13,18 +13,26 @@ public class Game {
     private static final String END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private Computer computer;
+    private Boolean isEnd;
 
     private void start() {
         computer = new Computer();
+        isEnd = Boolean.FALSE;
         System.out.println(START);
         play();
     }
 
     private void play() {
-        while (true) {
+        while (isEnd.equals(Boolean.FALSE)) {
             System.out.println(INPUT);
             printResult(computer.getResult(Console.readLine()));
         }
+        System.out.println(END);
+    }
+
+    private void end() {
+        System.out.println(END);
+        isEnd = Boolean.TRUE;
     }
 
     private void printResult(Result result) {
@@ -34,8 +42,9 @@ public class Game {
         }
 
         System.out.println(getBallString() + getStrikeString());
-        if (computer.getStrikeCount() == 3) {
+        if (result.equals(Result.ANSWER)) {
             System.out.println(SUCCESS);
+            end();
         }
     }
 
