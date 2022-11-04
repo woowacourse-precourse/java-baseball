@@ -8,6 +8,9 @@ import java.util.Random;
 public class Computer {
     private final List<Integer> randomNumbers = new ArrayList<>(Collections.emptyList());
 
+    public Computer() {
+        inputRandomNumbers();
+    }
     /**
      * 리스트에 숫자를 추가한다.
      *
@@ -55,7 +58,7 @@ public class Computer {
     /**
      * 랜덤 숫자들을 구한다.
      */
-    public void inputRandomNumbers() {
+    private void inputRandomNumbers() {
         while ((randomNumbers.size() != 3)) {
             addRandomNumberByList(createRandomNumber());
         }
