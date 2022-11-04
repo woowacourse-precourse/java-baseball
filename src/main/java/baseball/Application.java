@@ -11,13 +11,14 @@ public class Application {
     private static final int endGame = 2;
     private static final int exitGame = 3;
 
-    static int gameState = startGame;
+    private static int gameState;
     private static int ball = 0;
     private static int strike = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
+        gameState = startGame;
         List<Integer> answerNumber = new ArrayList<>();
         String userInput = new String();
         while (gameState != exitGame) {
@@ -28,7 +29,7 @@ public class Application {
             announceBasedOnGameState();
             userInput = getUserInput();
             if (gameState == endGame) {
-                gameState = restartOrQuitGame(userInput);
+                restartOrQuitGame(userInput);
                 continue;
             }
             findBallAndStrike(userInput, answerNumber);
@@ -111,14 +112,13 @@ public class Application {
         return answerNumber;
     }
 
-    public static int restartOrQuitGame (String userInput) {
+    public static void restartOrQuitGame (String userInput) {
         if (userInput.equals("1")) {
-            return startGame;
+            gameState = startGame;
         }
         if (userInput.equals("2")) {
-            return exitGame;
+            gameState = exitGame;
         }
-        return midGame;
     }
 
     public static void isValidInputNumber (String userInput) {
