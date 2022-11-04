@@ -8,16 +8,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        baseballGameProcessStart();
         
-        
-        // TODO : 기능 1. 숫자 야구 게임 시작 문구 출력, 게임 시작
+
+    }
+
+    // TODO : 기능 1. 숫자 야구 게임 시작 (문구 출력)
+    private static void baseballGameProcessStart(){
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // TODO  : 기능 7. 1을 입력 받으면  기능 2. 에서  기능 6. 까지의 과정을 다시 반복, 2을 입력 받으면 종료
         // 기능 2. 에서 6을 묶어놓은 baseballGameProcess()
-        // 게임 한 번이 끝나면 다른 게임을 할 지 안 할 지 결과값을 리턴해준다
+        // 게임 한 번이 끝나면 다른 게임을 할 지 안 할 지 boolean 결과값을 리턴해준다
         while (baseballGameProcess()){
-            //baseballGameProcess() 가 1이면 계속 반복, 아니면 끝난다.
+            // baseballGameProcess() false 일 때 까지 반복
         }
     }
 
@@ -142,5 +146,4 @@ public class Application {
 
     }
 
-    
 }
