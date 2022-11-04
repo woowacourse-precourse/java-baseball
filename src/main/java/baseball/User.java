@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import org.mockito.internal.matchers.Null;
 
 public class User {
 

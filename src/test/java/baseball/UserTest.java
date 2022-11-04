@@ -12,8 +12,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class UserTest {
-  private final PrintStream standardOut = System.out;
-  private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private final PrintStream originalOut = System.out;
