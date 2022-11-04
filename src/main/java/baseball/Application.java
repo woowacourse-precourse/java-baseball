@@ -13,7 +13,20 @@ public class Application {
     public static void main(String[] args) {
 
     }
+    public static void playingGame(List<Integer> baseballNumberList) {
+        String input;
+        Integer strikeCount;
+        Integer ballCount;
+        do {
+            mainMessage();
+            input = Console.readLine();
+            Map<String, Integer> count = createRefereeCount(baseballNumberList, createInputNumberList(input));
+            ballCount = count.get(BALL);
+            strikeCount = count.get(STRIKE);
 
+            resultMessage(refereeAnswer(ballCount, strikeCount));
+        } while (strikeCount != 3);
+    }
     public static List<Integer> createBaseballNumberList() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
