@@ -9,9 +9,7 @@ public class BaseballGameManager {
         while(true) {
             int inputNum = IOManager.inputNumber();
 
-            // compare & print hint
-
-            if(inputNum == answer) {
+            if(AnswerCompareManager.compareAnswer(answer, inputNum)) {
                 IOManager.correctAnswer();
                 break;
             }
