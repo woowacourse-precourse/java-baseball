@@ -7,6 +7,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
+    static final int MIN_RANGE = 1;
+    static final int MAX_RANGE = 9;
+    static final int NUMBER_LENGTH = 3;
     private String number;
 
 
@@ -26,8 +29,8 @@ public class Computer {
     public String generateNumber() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
