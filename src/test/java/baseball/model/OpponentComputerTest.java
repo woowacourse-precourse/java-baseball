@@ -57,4 +57,76 @@ public class OpponentComputerTest {
         assertThat(numberEachDigits.get(1)).isEqualTo("2");
         assertThat(numberEachDigits.get(2)).isEqualTo("3");
     }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_낫싱() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(456);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(0);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(0);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_1볼() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(356);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(0);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(1);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_2볼() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(316);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(0);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(2);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_1스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(156);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(1);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(0);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_2스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(126);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(2);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(0);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_1볼_1스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(413);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(1);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(1);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_2볼_1스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(132);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(1);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(2);
+    }
+
+    @Test
+    void 상대방_수를_받아서_각_자릿수를_리스트에_넣고_스트라이크_볼_개수_판정_3스트라이크() {
+        OpponentComputer opponentComputer = new OpponentComputer(123);
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(123);
+
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Strike")).isEqualTo(3);
+        assertThat(opponentComputer.getStrikeAndBallCountMap().get("Ball")).isEqualTo(0);
+    }
 }
