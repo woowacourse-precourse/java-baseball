@@ -3,7 +3,7 @@ package baseball;
 public class GameManager {
     private String[] guessNumber;
 
-    public void startGame() {
+    public boolean startGame() {
 
     }
 
