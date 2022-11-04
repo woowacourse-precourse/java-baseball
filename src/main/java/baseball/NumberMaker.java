@@ -1,9 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,10 +11,13 @@ public class NumberMaker {
     }
 
     public List<Integer> makeThreeDifferentNumberListInRange(int min, int max) {
-        Set<Integer> numberList = new HashSet<>();
+        List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
-            numberList.add(makeNumberInRange(min, max));
+            int randomNumber = makeNumberInRange(min, max);
+            if (!numberList.contains(randomNumber)) {
+                numberList.add(randomNumber);
+            }
         }
-        return new ArrayList<>(numberList);
+        return numberList;
     }
 }
