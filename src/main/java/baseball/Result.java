@@ -52,4 +52,8 @@ public class Result {
         }
         return ballToString() + " " + strikeToString();
     }
+
+    public boolean checkFinish() {
+        return strike == 3;
+    }
 }
