@@ -19,8 +19,12 @@ public class Application {
 
             printStartMessage();
 
-            computerAnswerList = createComputerLength3IntegerAnswerToList();
-
+            // computerAnswerList = createComputerLength3IntegerAnswerToList();
+            //* 예시
+            computerAnswerList.add(7);
+            computerAnswerList.add(1);
+            computerAnswerList.add(3);
+            //*/
             printGetInputMessage();
             userAnswer = getUserNumberToInteger();
             checkIllegalInputForBaseballGame(userAnswer);
@@ -29,13 +33,11 @@ public class Application {
             notStrikeZone = checkWhereIsNotStrike(computerAnswerList, userAnswerList);
             countStrike = countStrike(notStrikeZone);
 
-            if (countStrike == 3)
+            if (countStrike == 3) {
                 printEndingMessage();
-            else
+                userEndingResponse = getUserNumberToInteger();
+            } else
                 countBall = countBall(computerAnswerList, userAnswerList, notStrikeZone);
-
-
-
 
         }
         // TODO: 프로그램 구현
