@@ -13,6 +13,8 @@ public class Game {
     private final Counter counter;
     private UserInput userInput;
 
+    private static final String DO_RESTART = "1";
+
     public Game(Result result, Computer computer, Counter counter) {
         this.result = result;
         this.computer = computer;
@@ -36,6 +38,12 @@ public class Game {
 
     public void start() {
         OutputUtils.printGameStartMessage();
-        computer.generateRandomNumber();
+
+        do {
+            computer.generateRandomNumber();
+            do {
+                play();
+            } while (getGameResult() != GameResult.THREE_STRIKE);
+        } while (InputUtils.askWhetherToRestart().equals(DO_RESTART));
     }
 }

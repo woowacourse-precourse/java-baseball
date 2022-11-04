@@ -14,6 +14,7 @@ public class Computer {
     }
 
     public void generateRandomNumber() {
+        computerHoldNumbers.clear();
         while (computerHoldNumbers.size() != 3) {
             int generatedNumber = Randoms.pickNumberInRange(1, 9);
             if (computerHoldNumbers.contains(generatedNumber)) {

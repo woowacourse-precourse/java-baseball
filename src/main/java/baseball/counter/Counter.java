@@ -20,7 +20,13 @@ public class Counter {
         return ballCount;
     }
 
+    private void initCount() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
     public void count(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        initCount();
         for (int i = 0; i < 3; i++) {
             int computerNumber = computerNumbers.get(i);
             int userNumber = userNumbers.get(i);

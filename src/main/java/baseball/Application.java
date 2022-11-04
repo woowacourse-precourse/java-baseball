@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.computer.Computer;
+import baseball.counter.Counter;
+import baseball.game.Game;
+import baseball.game.Result;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game = new Game(new Result(), new Computer(), new Counter());
+        game.start();
     }
 }
