@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import net.bytebuddy.pool.TypePool;
 
 public class Application {
     private static final int startGame = 0;
@@ -39,6 +40,15 @@ public class Application {
 
     public static String getUserInput () {
         String userInput = Console.readLine();
+
+        if (gameState == midGame) {
+            isValidInputNumber(userInput);
+        }
+
+        if (gameState == endGame) {
+            isInput1Or2(userInput);
+        }
+
         return userInput;
     }
 
@@ -106,26 +116,24 @@ public class Application {
         return midGame;
     }
 
-    public static boolean isValidInputNumber (String userInput) {
+    public static void isValidInputNumber (String userInput) {
         if (userInput.length() != 3) {
-            return false;
+            throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
         }
         for (int digit = 0; digit < 3; digit++) {
             char presentNumber = userInput.charAt(digit);
             if (presentNumber < '1' || presentNumber > '9') {
-                return false;
+                throw new IllegalArgumentException("1에서 9까지의 숫자만 입력해주세요.");
             }
-            if (presentNumber == userInput.charAt((digit+1) % 3)) {
-                return false;
+            if (presentNumber == userInput.charAt((digit + 1) % 3)) {
+                throw new IllegalArgumentException("서로 다른 세 자리의 수를 입력해주세요");
             }
         }
-        return true;
     }
 
-    public static boolean isInput1Or2 (String userInput) {
-        if (userInput.equals("1") || userInput.equals("2")) {
-            return true;
+    public static void isInput1Or2 (String userInput) {
+        if (!(userInput.equals("1") || userInput.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
         }
-        return false;
     }
 }
