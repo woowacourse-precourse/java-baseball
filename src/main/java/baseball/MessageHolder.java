@@ -4,20 +4,20 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class MessageHolder {
 
-    public void init() {}
-
     public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public int printGetGameInput() {
+    public void printAskGameInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        int getInput = getPlayerGameInput();
-        return getInput;
     }
 
-    private int getPlayerGameInput() {
+    public String GetGameInput() {
         String playerString = Console.readLine();
+        return playerString;
+    }
+
+    public int playerGameInputToInt(String playerString) {
         int playerNum = inGameStringToInt(playerString);
         return playerNum;
     }
@@ -25,9 +25,11 @@ public class MessageHolder {
     private int inGameStringToInt(String playerString) {
         String checkIndex = "^[0-9]{3}$";
         int number = -1;
+
         if (!playerString.matches(checkIndex)) {
             throw new IllegalArgumentException("세자리 숫자를 입력해주십시오.");
         }
+
         number = stringToInt(playerString);
 
         return number;
@@ -54,13 +56,16 @@ public class MessageHolder {
         }
     }
 
-    public int printAskRestartAndGetInput() {
+    public void printAskRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int playerInput = getPlayerRestartInput();
+    }
+
+    public int getPlayerRestartInput() {
+        int playerInput = playerRestartinputToInt();
         return playerInput;
     }
 
-    private int getPlayerRestartInput() {
+    private int playerRestartinputToInt() {
         String playerInput = Console.readLine();
 
         if (!(playerInput.equalsIgnoreCase("1") || playerInput.equalsIgnoreCase("2"))) {

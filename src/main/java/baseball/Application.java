@@ -18,7 +18,8 @@ public class Application {
             isInGame = inGame(game, messageHolder);
 
             if (!isInGame) {
-                playerRestart = messageHolder.printAskRestartAndGetInput();
+                messageHolder.printAskRestart();
+                playerRestart = messageHolder.getPlayerRestartInput();
             }
 
             if (playerRestart == 2) {
@@ -34,7 +35,8 @@ public class Application {
     }
 
     private static boolean inGame(Game game, MessageHolder messageHolder) {
-        int playerNum = messageHolder.printGetGameInput();
+        messageHolder.printAskGameInput();
+        int playerNum = messageHolder.playerGameInputToInt(messageHolder.GetGameInput());
         game.comparePlayerInputAndAnswer(playerNum);
         int currentBall = game.getBall();
         int currentStrike = game.getStrike();
