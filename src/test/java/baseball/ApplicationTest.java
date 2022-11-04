@@ -29,7 +29,6 @@ class ApplicationTest extends NsTest {
 
     }
 
-
     @DisplayName("1 ~ 9 사이의 값으로 중복 없이 설정되는지 테스트")
     @Test
     void setNumberTest() {

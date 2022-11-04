@@ -12,17 +12,43 @@ public class Application {
 
         while (gameLife) {
             number = setNumber();
-            gameLife = playGame(number);
+            try {
+                gameLife = playGame(number);
+            } catch (IllegalArgumentException e) {
+                return ;
+            }
+
         }
     }
 
-    private static boolean playGame(String number) {
+    private static boolean playGame(String number) throws IllegalArgumentException {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         String inputNumber = inputNumberFromPlayer();
 
+        checkInputNumberValidation(inputNumber);
+
         return true;
+    }
+
+    public static void checkInputNumberValidation(String inputNumber) throws IllegalArgumentException {
+
+        //길이
+        checkLength(inputNumber);
+        //중복값
+
+        //1~9사이값만
+
+    }
+
+    private static void checkLength(String inputNumber) {
+
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+
     }
 
     public static String inputNumberFromPlayer() {
