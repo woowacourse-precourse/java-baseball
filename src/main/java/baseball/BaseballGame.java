@@ -46,6 +46,7 @@ public class BaseballGame {
                 inputUserNumber();
                 isUserWin = numberComparator.isUserWin(user, computer);
             } while (!isUserWin);
+            System.out.println(WIN_GAME);
         }
     }
 
