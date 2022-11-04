@@ -3,12 +3,15 @@ package baseball;
 import java.util.Objects;
 
 public class GameResult {
+	public static final int NO_STRIKE = 0;
+	public static final int NO_BALL = 0;
+
 	private int strike;
 	private int ball;
 
 	public GameResult() {
-		this.strike = 0;
-		this.ball = 0;
+		this.strike = NO_STRIKE;
+		this.ball = NO_BALL;
 	}
 
 	protected GameResult(int strike, int ball) {

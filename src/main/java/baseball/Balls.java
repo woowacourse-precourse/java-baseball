@@ -4,21 +4,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Balls {
+	public static final int FIRST = 0;
+	public static final int MIDDLE = 1;
+	public static final int LAST = 2;
+
 	private List<Ball> balls;
 
-	public Balls(int firstNumber, int secondNumber, int thirdNumber) {
-		Ball firstBall = new Ball(firstNumber, 0);
-		Ball secondBall = new Ball(secondNumber, 1);
-		Ball thirdBall = new Ball(thirdNumber, 2);
+	public Balls(int firstNumber, int middleNumber, int lastNumber) {
+		Ball firstBall = new Ball(firstNumber, FIRST);
+		Ball secondBall = new Ball(middleNumber, MIDDLE);
+		Ball thirdBall = new Ball(lastNumber, LAST);
 
 		balls = List.of(firstBall, secondBall, thirdBall);
 	}
 
 	public Balls(String consoleInput) {
 		this(
-			Character.getNumericValue(consoleInput.charAt(0)),
-			Character.getNumericValue(consoleInput.charAt(1)),
-			Character.getNumericValue(consoleInput.charAt(2))
+			Character.getNumericValue(consoleInput.charAt(FIRST)),
+			Character.getNumericValue(consoleInput.charAt(MIDDLE)),
+			Character.getNumericValue(consoleInput.charAt(LAST))
 		);
 	}
 
