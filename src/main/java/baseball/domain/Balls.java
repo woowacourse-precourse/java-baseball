@@ -58,10 +58,10 @@ public class Balls {
                 .collect(Collectors.toList());
     }
     
-    private BallStatus compareOneBallInOrder(final Ball ball) {
+    private BallStatus compareOneBallInOrder(final Ball userBall) {
         return balls.stream()
-                .map(userBall -> userBall.compareOneBall(ball))
-                .filter(userBall -> userBall != BallStatus.NOTHING)
+                .map(computerBall -> computerBall.compareOneBall(userBall))
+                .filter(ballStatusResult -> ballStatusResult != BallStatus.NOTHING)
                 .findAny()
                 .orElse(BallStatus.NOTHING);
     }
