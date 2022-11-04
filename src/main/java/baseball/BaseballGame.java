@@ -12,12 +12,15 @@ import static constant.BaseballConstant.*;
 public class BaseballGame {
     private static final List<Integer> computerNumbers = new ArrayList<>();
     private static String userNumber;
+    private static int strike = 0;
+    private static int ball = 0;
 
     public static void start() {
         makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
         getUserNumber();
         checkUserNumber();
+        compareComputerAndUser();
     }
 
     private static void makeRandomNumber() {
@@ -43,5 +46,23 @@ public class BaseballGame {
         if (!InputValidator.isRightInput(userNumber)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static void compareComputerAndUser() {
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (isStrike(index)) {
+                strike++;
+            } else if (isBall(index)) {
+                ball++;
+            }
+        }
+    }
+
+    private static boolean isStrike(int index) {
+        return userNumber.charAt(index) - '0' == computerNumbers.get(index);
+    }
+
+    private static boolean isBall(int index) {
+        return computerNumbers.contains(userNumber.charAt(index)- '0');
     }
 }
