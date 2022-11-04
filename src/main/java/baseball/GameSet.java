@@ -21,21 +21,12 @@ public class GameSet {
     //게임을 시작하는 함수
     public void playBaseballGame(){
         PrintMessage.inputMessage();
-        userAnswer = scanUserAnswer(Console.readLine());
+        userAnswer = CreateUserNumber.userAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
-    // 입력값을 List<Integer> 형태로 변환해주는 함수
-    public List<Integer> scanUserAnswer(String inputNumber){
-        ValidCheck.numberCheck(inputNumber);
-        List<String> inputArray = List.of(inputNumber.split(""));
-        List<Integer> userSolution = new ArrayList<>();
-        for(String number : inputArray){
-            userSolution.add(Integer.parseInt(number));
-        }
-        return userSolution;
-    }
+
     // 볼과 스트라이크 갯수를 세어주는 함수
     public void compareAnswer(){
         strikeCount = 0;
