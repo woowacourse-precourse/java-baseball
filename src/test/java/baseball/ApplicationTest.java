@@ -3,12 +3,30 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.getStringQuizNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 컴퓨터의_퀴즈_숫자가_3자리가_맞는지_확인() {
+        assertThat(getStringQuizNumber().length()).isEqualTo(3);
+    }
+
+    @Test
+    void 컴퓨터의_퀴즈_숫자가_1부터_9까지가_맞는지_확인() {
+        int testNum = 10;
+        for (int i = 0; i < testNum; i++) {
+            String quizNumber = getStringQuizNumber();
+            for (int j = 0; j < quizNumber.length(); j++) {
+                int quizNumChar = quizNumber.charAt(j) - '0';
+                assertThat(1 <= quizNumChar && quizNumChar <= 9).isEqualTo(true);
+            }
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
