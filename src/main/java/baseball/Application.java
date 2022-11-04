@@ -93,15 +93,17 @@ public class Application {
         }
     }
     public static void caseOfAllBallAndStrike(List<Integer> ballAndStrikeNumber) {
+        String announceBallAndStrike = "";
         if (ballAndStrikeNumber.get(0) == 0 && ballAndStrikeNumber.get(1) == 0) {
-            System.out.println("낫싱");
-        } else if (ballAndStrikeNumber.get(0) == 0){
-            System.out.println(ballAndStrikeNumber.get(1)+"스트라이크");
-        } else if (ballAndStrikeNumber.get(1) == 0) {
-            System.out.println(ballAndStrikeNumber.get(0)+"볼 ");
-        } else {
-            System.out.println(ballAndStrikeNumber.get(0)+"볼 "+ballAndStrikeNumber.get(1)+"스트라이크");
+            announceBallAndStrike += "낫싱";
         }
+        if (ballAndStrikeNumber.get(0) > 0) {
+            announceBallAndStrike += String.valueOf(ballAndStrikeNumber.get(0)) + "볼 ";
+        }
+        if (ballAndStrikeNumber.get(1) > 0) {
+            announceBallAndStrike += String.valueOf(ballAndStrikeNumber.get(1)) + "스트라이크";
+        }
+        System.out.println(announceBallAndStrike);
     }
     public static void announceBallAndStrike(List<Integer> randomNumber, List<Integer> ballAndStrikeNumber) {
         if (ballAndStrikeNumber.get(1) == 3) {
