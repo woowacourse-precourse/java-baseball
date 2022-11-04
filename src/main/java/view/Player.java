@@ -10,8 +10,8 @@ public class Player {
             System.out.println(GameConstant.GAME_START_PHRASE);
         }
 
-        public static int numberInput() {
+        public static String numberInput() {
             Scanner scanner = new Scanner(System.in);
-            return scanner.nextInt();
+            return scanner.nextLine();
         }
 }

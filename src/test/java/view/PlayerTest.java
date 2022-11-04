@@ -20,13 +20,12 @@ public class PlayerTest {
     @Test
     void 사용자_입력() {
         String input = "123";
-        Integer result = 123;
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        String result = "123";
+
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Player.numberInput();
-        assertThat(out).isEqualTo(result.toString());
+
+        assertThat(Player.numberInput()).isEqualTo(result);
     }
 
 }

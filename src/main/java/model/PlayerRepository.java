@@ -1,9 +1,9 @@
 package model;
 
 public class PlayerRepository {
-    private int playerNumber;
+    private String playerNumber;
 
-    public void setPlayerNumber(int number) {
+    public void setPlayerNumber(String number) {
         this.playerNumber = number;
     }
 }
