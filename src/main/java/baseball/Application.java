@@ -6,22 +6,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    private static final int midGame = 0;
-    private static final int endGame = 1;
-    private static final int exitGame = 2;
+    private static final int startGame = 0;
+    private static final int midGame = 1;
+    private static final int endGame = 2;
+    private static final int exitGame = 3;
 
+    static int gameState = startGame;
     private static int ball = 0;
     private static int strike = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int gameState = midGame;
-        List<Integer> answerNumber = makeAnswerNumber();
+        List<Integer> answerNumber = new ArrayList<>();
         String userInput = new String();
         while (gameState != exitGame) {
-            announceBasedOnGameState(gameState);
-            userInput = getUserInput(gameState);
+            if (gameState == startGame) {
+                answerNumber = makeAnswerNumber();
+                gameState = midGame;
+            }
+            announceBasedOnGameState();
+            userInput = getUserInput();
             if (gameState == endGame) {
                 gameState = restartOrQuitGame(userInput);
                 continue;
@@ -32,7 +37,7 @@ public class Application {
         }
     }
 
-    public static String getUserInput (int gameState) {
+    public static String getUserInput () {
         String userInput = Console.readLine();
         return userInput;
     }
@@ -52,7 +57,7 @@ public class Application {
         System.out.println("낫싱");
     }
 
-    public static void announceBasedOnGameState (int gameState) {
+    public static void announceBasedOnGameState () {
         if (gameState == midGame) {
             System.out.print("숫자를 입력해주세요 : ");
         }
@@ -75,7 +80,7 @@ public class Application {
 
     public static void findBallAndStrike (String userInput, List<Integer> answerNumber) {
         for (int digit = 0; digit < 3; digit++) {
-            int presentNumber = userInput.charAt(digit) - 48;
+            int presentNumber = userInput.charAt(digit) - 48; // ascii 코드로 49~57은 1~9를 나타낸다
             if (presentNumber == answerNumber.get(digit)) {
                 strike++;
                 continue;
@@ -93,11 +98,34 @@ public class Application {
 
     public static int restartOrQuitGame (String userInput) {
         if (userInput.equals("1")) {
-            return midGame;
+            return startGame;
         }
         if (userInput.equals("2")) {
             return exitGame;
         }
         return midGame;
+    }
+
+    public static boolean isValidInputNumber (String userInput) {
+        if (userInput.length() != 3) {
+            return false;
+        }
+        for (int digit = 0; digit < 3; digit++) {
+            char presentNumber = userInput.charAt(digit);
+            if (presentNumber < '1' || presentNumber > '9') {
+                return false;
+            }
+            if (presentNumber == userInput.charAt((digit+1) % 3)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isInput1Or2 (String userInput) {
+        if (userInput.equals("1") || userInput.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }
