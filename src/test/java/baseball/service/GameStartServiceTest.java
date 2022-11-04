@@ -59,4 +59,13 @@ class GameStartServiceTest {
         String hint = GameStartService.compareNumber();
         assertThat(hint).isEqualTo("2볼 1스트라이크");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3","12", "999", "1234", " ", "012", "qs","0"})
+    void 게임_재시작시_사용자_입력이_유효한지_체크(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        assertThatThrownBy(() -> GameStartService.saveUserNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
