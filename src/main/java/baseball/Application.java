@@ -66,7 +66,7 @@ public class Application {
 		}
 		return computerNumbers;
 	}
-	public static Map<String, Integer> gameScoreProcess(List<Integer> comNumber) {
+	public static Map<String, Integer> gameScorePut(List<Integer> comNumber) {
 		Map<String, Integer> userScore = new HashMap<>();
 		List<Integer> userNumber = getUserNumbers();
 		for (int i = 0; i < userNumber.size(); i++) {
@@ -78,31 +78,36 @@ public class Application {
 		}
 		return userScore;
 	}
+	public static void scoreProcess(Map<String, Integer> userScore) {
+		Integer strike = userScore.get("스트라이크");
+		Integer ball = userScore.get("볼");
+		if (strike == null && ball == null)
+			System.out.println("낫싱");
+		else if (strike != null && ball != null) {
+			System.out.println(userScore.get("볼") + "볼 " + userScore.get("스트라이크") + "스트라이크");
+		} else if (strike != null && ball == null) {
+			System.out.println(userScore.get("스트라이크") + "스트라이크");
+			if (strike == 3) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+				System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+				String continued = camp.nextstep.edu.missionutils.Console.readLine();
+				if (continued.equals("1"))
+					gameStart(getComputerNumbers());
+				else if (continued.equals("2"))
+					System.exit(0);
+			}
+		} else if (userScore.get("스트라이크") == null && userScore.get("볼") != null) {
+			System.out.println(userScore.get("볼") + "볼");
+		}
+	}
 
 	public static void gameStart(List<Integer> comNumber) {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		boolean isGameContinued = true;
 		Map<String, Integer> userScore = new HashMap<>();
 		while (isGameContinued) {
-			userScore = gameScoreProcess(comNumber);
-			if (userScore.get("스트라이크") == null && userScore.get("볼") == null)
-				System.out.println("낫싱");
-			else if (userScore.get("스트라이크") != null && userScore.get("볼") != null) {
-				System.out.println(userScore.get("볼") + "볼 " + userScore.get("스트라이크") + "스트라이크");
-			} else if (userScore.get("스트라이크") != null && userScore.get("볼") == null) {
-				System.out.println(userScore.get("스트라이크") + "스트라이크");
-				if (userScore.get("스트라이크") == 3) {
-					System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-					System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-					String continued = camp.nextstep.edu.missionutils.Console.readLine();
-					if (continued.equals("1"))
-						gameStart(getComputerNumbers());
-					else if (continued.equals("2"))
-						System.exit(0);
-				}
-			} else if (userScore.get("스트라이크") == null && userScore.get("볼") != null) {
-				System.out.println(userScore.get("볼") + "볼");
-			}
+			userScore = gameScorePut(comNumber);
+			scoreProcess(userScore);
 		}
 		System.out.println(userScore);
 	}
