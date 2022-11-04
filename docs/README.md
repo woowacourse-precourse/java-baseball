@@ -79,6 +79,22 @@
    - "숫자를 입력해주세요 : " 출력
    - Console.readLine() 으로 숫자를 받아 userNumber에 저장
    - userNumber 반환
+#### (추가) 10. (int) checkType
+1. 매개변수
+   - (Object) userNumber
+2. 변수
+   - 없음
+3. 구현
+   - userNumber가 숫자면 int형으로 변환 후 반환
+   - 아니면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
+#### (추가) 9. errorControl
+1. 매개변수
+   - 없음
+2. 변수
+   - 없음
+3. 구현
+   - IllegalArgumentException를 발생시킴
+   - catch문에서 프로그램 종료(?)
 #### 2. (boolean) checkNumber
 1. 매개변수
    - (int) userNumber
@@ -86,7 +102,7 @@
    - (boolean) result
 3. 구현
    - userNumber가 1~9의 숫자로 이루어졌는지 확인
-   - 맞으면 true, 틀리면 false 반환
+   - 맞으면 true, 틀리면 ~~false 반환~~ errorControl 발생
 #### 3. (List) numberToList
 1. 매개변수
    - (int) userNumber
@@ -144,6 +160,7 @@
    - (int) ball = 0 : 볼 개수 담을 변수
 3. 구현
    - inputNumber 호출해 userNumber 업데이트
+   - (추가) checkType 로 입력한게 숫자인지 확인해 아니면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
    - checkNumber로 숫자 체크해 false면 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
    - numberToList 호출해 userNumberList 업데이트
    - checkStrike, checkBall 호출해 strike, ball 업데이트
