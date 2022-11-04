@@ -13,27 +13,28 @@
 - [ ] (User) 게임의 추가 진행 여부 확인을 위해 사용자 입력을 받는 기능
 
 # 🗝 필요한 자료 구조
-- 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Integer, Integer>`
+- 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
 - 게임 결과를 표현하는 `enum Result class`
   - 총 9가지 경우가 가능하다. 
   - `3S`, `2S`, `1S`, `3B`, `2B`, `1B`, `2S1B`, `1S2B`, `NOTHING`
 - 게임의 상태를 표현하는 `enum GameStatus class`
   - 새 게임 진행 : `RESTART(1)`, 게임 중단 : `EXIT(2)`
 - `컴퓨터` 클래스, `사용자` 클래스, `게임` 클래스
-  - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Integer, Integer> numberIndexMap`, `makeNewNumber()`, `setNumberIndexMap(int number)`
-  - `사용자` 클래스 : `int number`, `setNumber()`
-  - `게임` 클래스 : `GameStatus status`, `GameResult result`, `validateNumber()`, `setStatus()`, `setResult()`
+  - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Character, Integer> numberIndexMap`, `makeNewNumber()`, `setNumberIndexMap()`
+  - `사용자` 클래스 : `String number`, `setGameNumber()`, `validateNumber()`, `getOption()`, `validateOption()`
+  - `게임` 클래스 : `GameStatus status`, `GameResult result`, `setStatus()`, `setResult()`
 
 ❓고민해본 것
 - **컴퓨터 숫자의 각 자리별 인덱스**를 미리 저장해둬야 할 것 같았다. 
   - 매번 사용자 입력이 들어올 때마다 컴퓨터의 숫자를 직접 조회하지 않고, 이를 표현해놓은 자료구조로부터 확인할 수 있도록 해야 했다.
   - 이 과정에서 `int[]` 배열을 사용해 숫자별 인덱스를 저장해두려 했는데, 배열이 아닌 Java API를 활용하기 위해 `List<Integer>`로 바꿨다.
-  - 하지만, `List`를 사용하면 10개의 entry를 가지고 있어야 하는데, `Map`을 사용하면 3개의 entry만 가지고 있으면 될 것이라 판단해 `Map<Integer, Integer>`를 사용하는 방향으로 수정했다.
+  - 하지만, `List`를 사용하면 10개의 entry를 가지고 있어야 하는데, `Map`을 사용하면 3개의 entry만 가지고 있으면 될 것이라 판단해 `Map<Character, Integer>`를 사용하는 방향으로 수정했다.
 - **컴퓨터 숫자와 입력 숫자의 숫자 야구 결과를 도출**해내는 과정에 있어서 어떤 구조로 결과를 표현해야 할 지 고민해보았다.
   - 총 나올 수 있는 경우는 9가지이다. 따라서 `if-else 구조`보다는 `enum`을 사용하라는 리팩토링 구조를 본 기억이 나서 이를 도입해보려 했다.
 - **어떤 역할**을 클래스로 만들고, 각 클래스는 **어떤 책임**을 수행해야 할까?
   - 이 고민에 대해서는 **컴퓨터 클래스**, **사용자 클래스**, **게임 클래스**를 생성하는 것으로 결정했다. 결정한 이유는 다음과 같다.
   - 컴퓨터 클래스와 사용자 클래스는 **게임 참가자**라는 역할을 수행한다고 판단했다.
+    - 따라서 게임 참가라는 역할을 수행하기 위해 유효한 숫자를 만들어 준비할 책임도 있다.
     - 하지만 이 두 역할을 일반화하여 하나의 클래스로 만들지 않은 이유는, 컴퓨터 클래스는 정답이 되는 숫자를 가지고, 사용자 클래스는 숫자가 매번 바뀌기 때문에 두 역할이 동일하지 않다고 판단했다.
   - 게임 클래스는 일종의 **심판, 진행자**의 역할을 수행한다고 판단했다.
-    - 따라서 게임의 상태와 결과를 저장하고, 컴퓨터와 사용자의 숫자에 대한 검사 또한 수행할 책임이 있다고 판단했다.
+    - 따라서 게임을 진행하면서 게임의 상태와 결과를 저장할 책임이 있다고 판단했다.
