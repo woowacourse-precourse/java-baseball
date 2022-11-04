@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseBallGameMachine {
     Referee referee = new Referee();
+    Message message = new Message();
     NumberMaker numberMaker = new NumberMaker();
 
     public void display(String message) {
@@ -56,5 +57,16 @@ public class NumberBaseBallGameMachine {
         if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("입력값이 1이나 2가 아닙니다.");
         }
+    }
+
+    public boolean getInputResult() {
+        display(message.requestThreeNumbers());
+        List<Integer> judgeResult = referee.judgeList(getThreeNumberInput());
+        display(message.result(judgeResult) + "\n");
+        return isAnswer(judgeResult);
+    }
+
+    public boolean isAnswer(List<Integer> judge) {
+        return judge.get(1) == 3;
     }
 }
