@@ -3,6 +3,11 @@ package domain;
 public class Game {
     int strike_count;
     int ball_count;
+    int[] game_numbers;
+
+    public Game(int[] game_numbers) {
+        this.game_numbers = game_numbers;
+    }
 
     public void initialize(){
         strike_count = 0;
@@ -23,5 +28,9 @@ public class Game {
 
     public void increase_ball(){
         ball_count += 1;
+    }
+
+    public int[] getGame_numbers() {
+        return game_numbers;
     }
 }
