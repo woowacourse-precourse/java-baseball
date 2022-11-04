@@ -31,7 +31,19 @@ public class NumberController {
     }
 
     public static List<Integer> getStrikesAndBalls(List<Integer> users, List<Integer> computers) {
-        return Collections.emptyList();
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i) == computers.get(i)) {
+                strikes++;
+                continue;
+            }
+            if (computers.contains(users.get(i))) {
+                balls++;
+            }
+        }
+        return List.of(strikes, balls);
     }
 
 }
