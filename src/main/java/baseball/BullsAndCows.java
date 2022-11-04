@@ -38,11 +38,11 @@ public class BullsAndCows {
             return NOTHING.getMessage();
         }
 
-        return getResultScoreByFormat();
+        return getResultScoreByFormat().trim();
     }
 
     private String getResultScoreByFormat() {
-        return getBallNumber() + getStrikeNumber();
+        return getBallNumber() + " " + getStrikeNumber();
     }
 
     private String getStrikeNumber() {
