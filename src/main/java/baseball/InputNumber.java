@@ -1,21 +1,41 @@
 package baseball;
 
-import java.util.IllformedLocaleException;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.ArrayList;
-import camp.nextstep.edu.missionutils.Console;
 
 public class InputNumber {
     public List<Integer> input() {
+        System.out.println("숫자를 입력해주세요 : ");
+
+        return parseInput(Console.readLine());
+    }
+
+    private List<Integer> parseInput(String read) {
         List<Integer> result = new ArrayList<>();
 
-        System.out.println("숫자를 입력해주세요 : ");
-        String read = Console.readLine();
+        if (read.length() != 3) {
+            throw new IllegalArgumentException();
+        }
 
         for (String num : read.split("")) {
-            result.add(Integer.parseInt(num));
+            int parsedNum = parseInt(num);
+            if (result.contains(parsedNum)) {
+                throw new IllegalArgumentException();
+            }
+            result.add(parsedNum);
         }
 
         return result;
+    }
+
+    private int parseInt(String num) {
+        try {
+            return Integer.parseInt(num);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
