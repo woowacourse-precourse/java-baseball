@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.UI.InputView;
+import baseball.model.Hint;
 import baseball.model.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
@@ -34,14 +35,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void Input_String_toIntList_Test(){
+    void input_String_toIntList_Test(){
         String test = "123";
         List<Integer> testList = new Input(test).getBaseballNumberList();
         assertThat(testList).containsExactly(1, 2, 3);
     }
 
     @Test
-    void InputView_test(){
+    void inputView_test(){
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());;
         System.setIn(in);
@@ -51,6 +52,16 @@ class ApplicationTest extends NsTest {
         assertThat(inputView.getInput().getBaseballNumberList())
                 .containsExactly(1, 2, 3);
     }
+
+    @Test
+    void hint_Model_ToString_Test(){
+
+        int ball = 2;
+        int strike = 1;
+        Hint hint = new Hint(ball, strike);
+        assertThat(hint.toString()).isEqualTo("2볼 1스트라이크\n");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
