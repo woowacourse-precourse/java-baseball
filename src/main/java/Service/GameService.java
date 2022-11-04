@@ -41,7 +41,7 @@ public class GameService {
     public int[] getUserNumber() throws IllegalArgumentException {
         RequestUser.request_input();
         String user_input = Console.readLine();
-        return userValidate.get_num(user_input);
+        return userValidate.validate_user_input(user_input);
     }
 
     public void calculate(int[] userNumbers, int[] randomNumbers, int index){
