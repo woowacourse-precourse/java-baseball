@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.ConstVariable.*;
@@ -13,24 +11,11 @@ public class Application {
         String userKeyInput = "1";
 
         while (userKeyInput.equals("1")) {
-            doGame(makeRandomComputerBalls());
+            doGame(RandomUtil.makeRandomComputerBalls());
             userKeyInput = Console.readLine();
         }
     }
 
-    private static Balls makeRandomComputerBalls() {
-        List<Integer> comBalls = new ArrayList<>();
-        while (comBalls.size() < VALID_CNT) {
-            addNotDuplicatedRandomNumber(comBalls, Randoms.pickNumberInRange(MIN, MAX));
-        }
-        return new Balls(comBalls);
-    }
-
-    private static void addNotDuplicatedRandomNumber(List<Integer> comBalls, int randomNumber) {
-        if (!comBalls.contains(randomNumber)) {
-            comBalls.add(randomNumber);
-        }
-    }
 
     private static void doGame(Balls computer) {
         System.out.println("숫자 야구 게임을 시작합니다.");

@@ -38,7 +38,6 @@ public class ValidationUtil {
         for (int i = 0; i < str.length(); i++) {
             result.add(Integer.parseInt(String.valueOf(str.charAt(i))));
         }
-//        isValid(result);
         return result;
     }
 }
