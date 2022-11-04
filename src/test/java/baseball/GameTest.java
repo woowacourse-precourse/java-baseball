@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -42,5 +43,26 @@ class GameTest {
         assertThat(user.get(1)).isEqualTo(2);
         assertThat(user.get(2)).isEqualTo(3);
 
+    }
+    @Test
+    void 스트라이크_구하기1(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(4, 5, 6);
+        List<Integer> user = Arrays.asList(4, 5, 6);
+        assertThat(game.checkStrike(computer, user)).isEqualTo(3);
+    }
+    @Test
+    void 스트라이크_구하기2(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(1, 5, 6);
+        List<Integer> user = Arrays.asList(4, 1, 6);
+        assertThat(game.checkStrike(computer, user)).isEqualTo(1);
+    }
+    @Test
+    void 스트라이크_구하기3(){
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(1, 5, 7);
+        List<Integer> user = Arrays.asList(4, 1, 6);
+        assertThat(game.checkStrike(computer, user)).isEqualTo(0);
     }
 }
