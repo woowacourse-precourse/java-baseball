@@ -29,22 +29,18 @@ public class UserBallService {
 
 		if (userBall.getStrike() == 0 && userBall.getBall() == 0) {
 			outputView.printNothing();
-			return false;
 		}
 
 		if (userBall.getBall() != 0 && userBall.getStrike() != 0) {
 			outputView.printBallAndStrike(userBall);
-			return false;
 		}
 
-		if (userBall.getBall() != 0) {
+		if (userBall.getBall() != 0 && userBall.getStrike() == 0) {
 			outputView.printBall(userBall);
-			return false;
 		}
 
-		if (userBall.getStrike() != 0) {
+		if (userBall.getStrike() != 0 && userBall.getBall() == 0) {
 			outputView.printStrike(userBall);
-			return false;
 		}
 
 		return false;
