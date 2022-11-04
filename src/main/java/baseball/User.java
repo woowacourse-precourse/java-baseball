@@ -19,4 +19,8 @@ public class User {
             numbers.add(number);
         }
     }
+
+    public int getNumber(int index) {
+        return numbers.get(index);
+    }
 }
