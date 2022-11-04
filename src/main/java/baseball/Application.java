@@ -50,6 +50,9 @@ public class Application {
         if (input.length() != 3)
             invalid();
         for (int i = 0; i < 3; ++i) {
+            // no alphabet
+            // no 0
+            // no duplicate digit
             if (!Character.isDigit(input.charAt(i)) ||
                     input.charAt(i) == '0' ||
                     !duplicate.add(input.charAt(i)))
