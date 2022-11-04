@@ -57,6 +57,7 @@ public class Application {
 			throw new IllegalArgumentException();
 		}
 		
+		String[] num = numstr.split("");
 		HashSet<String> numSet = new HashSet<>(); //입력한 숫자들이 하나라도 중복이 되면 IllegalArgumentException 발생.
 		for(int i=0;i<num.length;i++) {
 			numSet.add(num[i]);
@@ -67,8 +68,7 @@ public class Application {
 		
 		possibleBallResult.put("볼",0);
 		possibleBallResult.put("스트라이크",0);
-		
-		String[] num = numstr.split("");
+			
 		for(int i =0;i<num.length;i++) {
 			if(Integer.parseInt(num[i])==computer.get(i)){  //스트라이크 개수 세기(computer 리스트 글자 하나와 사용자 입력 숫자 하나씩 같은지, 같은 위치인지까지 체크 - 스트라이크)
 				strikeCount = possibleBallResult.getOrDefault("스트라이크",0 );
