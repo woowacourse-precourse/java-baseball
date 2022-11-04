@@ -48,13 +48,14 @@ public class Application {
     }
 
 
+
     static class Nums{
-        private Set<Integer> sets;
+        private Integer[] inputNums;
         Nums(String inputData) throws Exception  {
             if(!isValidLength(inputData.length())) throw new IllegalArgumentException() ;
             Set<Integer> sets = InputToSet(inputData);
             if(!isValidSetSize(sets)) throw new IllegalArgumentException();
-            this.sets = sets;
+            this.inputNums = sets.toArray(new Integer[3]);
         }
     }
 
