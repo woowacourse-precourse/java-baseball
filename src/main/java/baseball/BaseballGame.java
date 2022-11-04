@@ -1,33 +1,52 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseballGame {
+    private Player player;
+    private Rule rule;
+    private List<Integer> answer;
+    private List<String> hint;
+    private boolean wrongAnswer;
 
-    public List<Integer> generateAnswer() {
-        List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
-        return answer;
+    public BaseballGame() {
+        player = new Player();
+        rule = new Rule();
+        rule.print(Message.START.get());
+    }
+    public void start() {
+        answer = rule.generateAnswer();
+        wrongAnswer = true;
+        do {
+            rule.print(Message.INPUT.get());
+            player.setNumber();
+            rule.print(makeHint());
+        } while (wrongAnswer);
+        rule.print(Message.END.get());
     }
 
-    public int getStrikeCount(List<Integer> inputs, List<Integer> answer) {
+    private String makeHint() {
+        if (gameSet(player.getNumber(), answer)) {
+            wrongAnswer = false;
+        }
+        getBallCount(player.getNumber(), answer);
+        getStrikeCount(player.getNumber(), answer);
+        getNothing(player.getNumber(), answer);
+        return String.join(" ", hint);
+    }
+
+    public void getStrikeCount(List<Integer> inputs, List<Integer> answer) {
         int count = 0;
         for (int i = 0; i < inputs.size(); i++) {
             if (isStrike(inputs, answer, i)) {
                 count++;
             }
         }
-        return count;
+        hint.add(String.valueOf(count));
     }
 
-    public int getBallCount(List<Integer> inputs, List<Integer> answer) {
+    public void getBallCount(List<Integer> inputs, List<Integer> answer) {
         int count = 0;
         for (int i = 0; i < inputs.size(); i++) {
             if (answer.contains(inputs.get(i))) {
@@ -37,17 +56,21 @@ public class BaseballGame {
                 count--;
             }
         }
-        return count;
+        hint.add(String.valueOf(count));
     }
 
     private void getNothing(List<Integer> inputs, List<Integer> answer) {
         if (!answer.removeAll(inputs)) {
-            System.out.println("nothing");
+            hint.add("낫싱");
         }
     }
 
     private boolean isStrike(List<Integer> inputs, List<Integer> answer, int index) {
         return inputs.get(index) == answer.get(index);
+    }
+
+    public boolean gameSet(List<Integer> inputs, List<Integer> answer) {
+        return Arrays.equals(inputs.toArray(), answer.toArray());
     }
 
 }
