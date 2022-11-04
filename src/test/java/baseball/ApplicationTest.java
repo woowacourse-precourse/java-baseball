@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -23,42 +24,46 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+    @DisplayName("올바른 게임 결과가 나오는지 테스트")
+    @Nested
+    class ExceptionHandle {
+        @Test
+        void 예외_글자길이_테스트() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
 
-    @DisplayName("중복된 숫자 여부 테스트")
-    @Test
-    void 예외_중복문자_테스트() {
-        //given
-        Player player= new Player();
+        @Test
+        void 예외_중복문자_테스트() {
+            Player player = new Player();
 
-        //then
-        assertSimpleTest(() ->
-                assertThatThrownBy(()->player.setNumber("313"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> player.setNumber("313"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
 
-    @DisplayName("올바르게 숫자가 생성되었는지 테스트")
-    @Test
-    void 올바른_숫자_생성_테스트() {
-        //given
-        Computer computer = new Computer();
+        @Test
+        void 예외_0포함_테스트() {
+            Player player = new Player();
 
-        //when
-        String number = computer.getNumber();
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> player.setNumber("130"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
 
-        //then
-        assertThat(Validator.isValid(number)).isEqualTo(true);
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+        @Test
+        void 예외_잘못된_게임_종료값_입력() {
+            assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                    () -> {
+                        run("456", "0");
+                        assertThat(output()).contains("3스트라이크");
+                    },
+                    4, 5, 6
+            )).isInstanceOf(IllegalArgumentException.class);
+        }
     }
 }
