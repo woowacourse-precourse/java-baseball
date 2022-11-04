@@ -54,4 +54,13 @@ public class Computer {
             result.addStrike();
         }
     }
+
+    Result judgePlayerInput(String playerInput) {
+        Result result = new Result();
+        for (int i = 0; i < 3; i++) {
+            int digit = playerInput.charAt(i) - '0';
+            addJudgement(result, i, digit);
+        }
+        return result;
+    }
 }
