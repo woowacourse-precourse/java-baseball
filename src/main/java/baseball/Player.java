@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Player {
-    private final String numbersString;
+    private final String inputNumbers;
     private List<Integer> playerNumbers = new ArrayList<>(Collections.emptyList());
 
-    public Player(String numbersString) {
-        this.numbersString = numbersString;
-        setPlayerNumber(numbersString);
+    public Player(String inputNumbers) {
+        this.inputNumbers = inputNumbers;
+        setPlayerNumber(inputNumbers);
     }
 
     /**
@@ -22,13 +22,13 @@ public class Player {
         return this.playerNumbers;
     }
 
-    private void setPlayerNumber(String numbersString) {
-        this.playerNumbers = toList(numbersString);
+    private void setPlayerNumber(String inputNumbers) {
+        this.playerNumbers = toList(inputNumbers);
     }
 
-    private List<Integer> toList(String numbersString) {
+    private List<Integer> toList(String inputNumbers) {
         List<Integer> list = new ArrayList<>(Collections.emptyList());
-        for (String number : numbersString.split("")) {
+        for (String number : inputNumbers.split("")) {
             list.add(Integer.parseInt(number));
         }
         return list;
