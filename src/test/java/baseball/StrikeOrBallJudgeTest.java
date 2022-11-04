@@ -23,7 +23,7 @@ public class StrikeOrBallJudgeTest {
                 Arguments.of('1', Arrays.asList(2, 3, 1)),
                 Arguments.of('2', Arrays.asList(2, 3, 1)),
                 Arguments.of('3', Arrays.asList(2, 3, 1))
-                );
+        );
     }
 
     @ParameterizedTest
