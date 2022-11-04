@@ -8,12 +8,15 @@ import java.util.stream.IntStream;
 
 public class BaseballGame {
 
-    private Computer computer;
     private int strikeCount;
     private int ballCount;
 
+    private Computer computer;
+    private MessageCreator messageCreator;
+
     public BaseballGame() {
         this.computer = new Computer();
+        this.messageCreator = new MessageCreator();
     }
 
     public void start() {
@@ -21,7 +24,7 @@ public class BaseballGame {
         do {
             String input = inputAnswer();
             calculateBallCount(input);
-            answerMessage();
+            messageCreator.printResultMessage(strikeCount, ballCount);
         } while ((strikeCount != 3));
 
         computer.clearRandomNumbers();
@@ -33,25 +36,6 @@ public class BaseballGame {
         isWrongInputValue(input);
         System.out.println("숫자를 입력해주세요 : " + input);
         return input;
-    }
-
-
-    private void answerMessage() {
-        if (strikeCount == 0 && ballCount != 0) {
-            System.out.println(ballCount + "볼");
-        }
-
-        if (strikeCount != 0 && ballCount == 0) {
-            System.out.println(strikeCount + "스트라이크");
-        }
-
-        if (strikeCount != 0 && ballCount != 0) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        }
-
-        if (strikeCount == 0 && ballCount == 0) {
-            System.out.println("낫싱");
-        }
     }
 
     private void calculateBallCount(String input) {
