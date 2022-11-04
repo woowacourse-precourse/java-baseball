@@ -1,4 +1,4 @@
-package baseball;
+package baseball.verifier;
 
 import baseball.verifiable.VerifiableRule;
 
