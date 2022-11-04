@@ -26,7 +26,7 @@ public class Application {
 
     private static final int DIGIT_RESTRICTION = 3;
 
-    private static String generateComputerNumber() { // computer의 세자릿수 생성
+    private static String generateComputerNumber() {
         List<String> digitList = new ArrayList<>();
 
         while (digitList.size() < 3) {
@@ -52,7 +52,7 @@ public class Application {
         return isValid;
     }
 
-    private static boolean allDifferentDigits(String input) { // Check if the input's digits are all different.
+    private static boolean allDifferentDigits(String input) {
         boolean isValid = false;
         boolean iterate = true;
 
@@ -77,8 +77,8 @@ public class Application {
         return isValid;
     }
 
-    private static int countStrikes(String input, String computer) { // strike 수를 세는 메소드
-        int strike = 0; // initialize strike
+    private static int countStrikes(String input, String computer) {
+        int strike = 0;
 
         for (int i = 0; i < DIGIT_RESTRICTION; i++) {
             char inputDigit = input.charAt(i);
@@ -92,21 +92,7 @@ public class Application {
         return strike;
     }
 
-    private static int countBalls(String input, String computer) { // ball 수를 세는 메소드
-        int ball = 0; //initialize ball
-
-        for (int i = 0; i < DIGIT_RESTRICTION; i++) {
-            String inputDigit = input.substring(i, i + 1);                 // input의 i-th 문자
-
-            if (computer.contains(inputDigit) && computer.indexOf(inputDigit) != i) {
-                ball++;
-            }
-        }
-
-        return ball;
-    }
-
-    private static HashMap<String, Integer> getScore(String input, String computer) { // 스트라이크와 볼 카운트
+    private static HashMap<String, Integer> getScore(String input, String computer) {
         HashMap<String, Integer> result = new HashMap<>();
 
         int strike = countStrikes(input, computer);
@@ -118,11 +104,25 @@ public class Application {
         return result;
     }
 
-    private static void selectMessage(HashMap<String, Integer> score) { // ball과 strike 개수에 따라 메세지 선택
+    private static int countBalls(String input, String computer) {
+        int ball = 0;
+
+        for (int i = 0; i < DIGIT_RESTRICTION; i++) {
+            String inputDigit = input.substring(i, i + 1);
+
+            if (computer.contains(inputDigit) && computer.indexOf(inputDigit) != i) {
+                ball++;
+            }
+        }
+
+        return ball;
+    }
+
+    private static void selectMessage(HashMap<String, Integer> score) {
         int ball = score.get(BALL);
         int strike = score.get(STRIKE);
 
-        if (strike == 3) { // 3 strike 일때, 게임 종료
+        if (strike == 3) {
             System.out.println(strike + MESSAGE_STRIKE);
             System.out.println(MESSAGE_THREE_STRIKES);
             System.out.println(MESSAGE_RESTART_OR_QUIT);
@@ -131,6 +131,20 @@ public class Application {
         } else {
             System.out.println(ball + MESSAGE_BALL + " " + strike + MESSAGE_STRIKE);
         }
+    }
+
+    private static boolean quit(String flag) {
+        boolean isDone;
+
+        if (flag.equals(FLAG_QUIT)) {
+            isDone = true;
+        } else if (flag.equals(FLAG_RESTART)) {
+            isDone = false;
+        } else {
+            throw new IllegalArgumentException("WRONG INPUT");
+        }
+
+        return isDone;
     }
 
     public static void main(String[] args) {
@@ -155,6 +169,14 @@ public class Application {
             trial++;
             HashMap<String, Integer> score = getScore(input, computer);
             selectMessage(score);
+
+            int strike = score.get(STRIKE);
+
+            if (strike == 3) {
+                trial = 0;
+                String flag = readLine();
+                iterate = !quit(flag);
+            }
         }
     }
 }
