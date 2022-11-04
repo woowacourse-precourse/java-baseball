@@ -7,9 +7,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Computer {
-    static final int MIN_RANGE = 1;
-    static final int MAX_RANGE = 9;
-    static final int NUMBER_LENGTH = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+    private static final int NUMBER_LENGTH = 3;
     private String number;
 
 
