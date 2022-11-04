@@ -30,6 +30,16 @@ public class Application {
         return strike;
     }
 
+    public static int CheckBall(List<Integer> computer, List<Integer> player, int strike){
+        int ball = 0;
+        for(int index = 0; index< computer.size(); index ++){
+            if(computer.contains(player.get(index))){
+                ball++;
+            }
+        }
+        return ball - strike;
+    }
+    
     public static List<Integer> GeneratePlayerNumbers(){
         List<Integer> player = new ArrayList<>();
         String input = Console.readLine();
