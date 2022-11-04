@@ -14,7 +14,17 @@ public class GameStartService {
 		this.inputView = inputView;
 	}
 
-	public List<Integer> makeAnswerNumber() {
+	public List<Integer> initGame() {
+		List<Integer> answer = makeAnswerNumber();
+		printStartGame();
+		return answer;
+	}
+
+	private void printStartGame() {
+		inputView.printStartGame();
+	}
+
+	private List<Integer> makeAnswerNumber() {
 		List<Integer> answer = new ArrayList<>();
 		while (answer.size() < 3) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,9 +32,6 @@ public class GameStartService {
 				answer.add(randomNumber);
 			}
 		}
-
-		inputView.printStartGame();
-
 		return answer;
 	}
 

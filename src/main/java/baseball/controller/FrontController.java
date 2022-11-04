@@ -34,7 +34,7 @@ public class FrontController {
 
 	public void startGame() {
 
-		List<Integer> answerNumber = gameStartService.makeAnswerNumber();
+		List<Integer> answerNumber = gameStartService.initGame();
 		String userInputNum;
 		UserBall userBall;
 		do {
