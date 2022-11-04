@@ -14,12 +14,26 @@ public class GameStartController {
 
     private static void startGame() {
         System.out.print("숫자를 입력해주세요 : ");
+        saveNumber();
+        compareNumber();
+    }
+
+    private static void compareNumber() {
+        String HINT = GameStartService.compareNumber();
+        showHint(HINT);
+    }
+
+    private static void showHint(String hint) {
+        System.out.println(hint);
+    }
+
+    private static void saveNumber() {
         saveUserNumber();
+        saveComputerNumber();
     }
 
     private static void saveUserNumber() {
         GameStartService.saveUserNumber();
-        saveComputerNumber();
     }
 
     private static void saveComputerNumber() {
