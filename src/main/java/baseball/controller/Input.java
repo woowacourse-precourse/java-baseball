@@ -8,21 +8,13 @@ import java.util.stream.Collectors;
 
 public class Input {
 	public static List<Integer> getGameNumber() {
-		while (true) {
-			try {
-				InputView.printInputNumber();
-				String inputGameNumber = getInput();
-				Exception.validOnlyOneToNine(inputGameNumber);
-				Exception.validNumberLength(inputGameNumber);
-				Exception.validOverlapNumber(inputGameNumber);
-				return stringToList(inputGameNumber);
-			} catch (IllegalArgumentException error) {
-				System.out.println(error);
-			}
-		}
+		String inputGameNumber = getInput();
+		Exception.validatePlayerNumber(inputGameNumber);
+		return stringToList(inputGameNumber);
 	}
 
 	private static String getInput() {
+		InputView.printInputNumber();
 		return Console.readLine();
 	}
 
@@ -34,14 +26,8 @@ public class Input {
 	}
 
 	public static int getRestartNumber(int restartNumber, int exitNumber) {
-		while (true) {
-			try {
-				String inputRestartNumber = getInput();
-				Exception.validRestartOrExitNumber(inputRestartNumber, restartNumber, exitNumber);
-				return Integer.parseInt(inputRestartNumber);
-			} catch (IllegalArgumentException error) {
-				System.out.println(error);
-			}
-		}
+		String inputRestartNumber = getInput();
+		Exception.validateRestartNumber(inputRestartNumber, restartNumber, exitNumber);
+		return Integer.parseInt(inputRestartNumber);
 	}
 }
