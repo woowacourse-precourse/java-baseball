@@ -36,4 +36,10 @@ public class GameTest {
   public void generateNumberValidateIsStringNotNull() {
     assertEquals(game.generateNumber() != null, true);
   }
+
+  @Test
+  @DisplayName("유효성 검사 2. 유효한 값 확인")
+  public void generateNumberValidateIsStringAvailable() {
+    assertEquals(game.generateNumber() == "1" || game.generateNumber() == "2", true);
+  }
 }
