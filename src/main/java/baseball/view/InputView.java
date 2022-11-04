@@ -1,7 +1,10 @@
 package baseball.view;
 
+import baseball.model.Ball;
 import baseball.model.Balls;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +19,14 @@ public class InputView {
     }
 
     private static Balls asBalls(int num) {
+        List<Ball> ballList = new ArrayList<>();
 
+        for (int position = 2; position >= 0; position--) {
+            Ball ball = new Ball(num % 10, position);
+            ballList.add(ball);
+            num /= 10;
+        }
+
+        return new Balls(ballList);
     }
 }

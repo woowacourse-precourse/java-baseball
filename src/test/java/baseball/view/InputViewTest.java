@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.model.Ball;
 import baseball.model.Balls;
+import baseball.model.Result;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -27,6 +28,6 @@ public class InputViewTest {
             , new Ball(3, 2)
         ));
 
-        assertThat(balls).isEqualTo(comp);
+        assertThat(balls.getResult(comp)).isEqualTo(new Result(0, 3, 0));
     }
 }
