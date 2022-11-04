@@ -12,7 +12,7 @@ public class Validator {
 	}
 
 	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException{
-		if (Integer.parseInt(input) != RESTART_GAME && Integer.parseInt(input) != END_GAME) {
+		if (input != RESTART_GAME && input != END_GAME) {
 			throw new IllegalArgumentException();
 		}
 	}
