@@ -15,29 +15,27 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
 
-    /**
-     *  아직 기능 목록 구현마다의 테스트 작성 남음. 4번 기능 테스트 목록 작성해야함. 5번도 마찬가지
-     */
+
     @Test
     void 입력시오류경우_확인(){
 
         /**
          * 숫자 중복의 경우
          */
-        Assertions.assertThatThrownBy(() -> Application.isInputAlright("122")).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> Domain.isInputAlright("122")).isInstanceOf(IllegalArgumentException.class);
 
         /**
          * 숫자의 길이가 3보다 큰 경우
          */
         Assertions.assertThatThrownBy(() ->{
-            Application.isInputAlright("1234");
+            Domain.isInputAlright("1234");
         }).isInstanceOf(IllegalArgumentException.class);
 
         /**
          * 숫자의 길이가 3보다 작은 경우
          */
         Assertions.assertThatThrownBy(() ->{
-            Application.isInputAlright("12");
+            Domain.isInputAlright("12");
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -52,7 +50,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList = Arrays.asList(1,3,2);
         int strike=0;
         int ball=0;
-        List<Integer> strikeBall = Application.findStrikeBall(computerNumber, userNumberList
+        List<Integer> strikeBall = Game.findStrikeBall(computerNumber, userNumberList
                 );
 
         strike = strikeBall.get(0);
@@ -68,7 +66,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList2 = Arrays.asList(1,3,2);
         int strike2=0;
         int ball2=0;
-        List<Integer> strikeBall2 = Application.findStrikeBall(computerNumber2, userNumberList2
+        List<Integer> strikeBall2 = Game.findStrikeBall(computerNumber2, userNumberList2
             );
 
         strike2 = strikeBall2.get(0);
@@ -84,7 +82,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList3 = Arrays.asList(1,4,3);
         int strike3=0;
         int ball3=0;
-        List<Integer> strikeBall3 = Application.findStrikeBall(computerNumber3, userNumberList3
+        List<Integer> strikeBall3 = Game.findStrikeBall(computerNumber3, userNumberList3
            );
 
         strike3 = strikeBall3.get(0);
@@ -100,7 +98,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList4 = Arrays.asList(2,1,3);
         int strike4=0;
         int ball4=0;
-        List<Integer> strikeBall4 = Application.findStrikeBall(computerNumber4, userNumberList4
+        List<Integer> strikeBall4 = Game.findStrikeBall(computerNumber4, userNumberList4
           );
 
         strike4 = strikeBall4.get(0);
@@ -121,8 +119,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 사용자와컴퓨터List에들어갔는지(){
 
-        List<Integer> user = Application.inputProcess("123");
-        List<Integer> compute = Application.computerRandomNumberExtract();
+        List<Integer> user = Domain.inputProcess("123");
+        List<Integer> compute = Domain.computerRandomNumberExtract();
 
         Assertions.assertThat(user.size()).isEqualTo(3);
         Assertions.assertThat(compute.size()).isEqualTo(3);
