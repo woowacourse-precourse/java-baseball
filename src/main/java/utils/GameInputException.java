@@ -7,7 +7,9 @@ import java.util.Set;
 public class GameInputException {
     int numberLength;
 
-    public GameInputException() {}
+    public GameInputException() {
+        this(3);
+    }
 
     public GameInputException(int numberLength) {
         this.numberLength = numberLength;
