@@ -30,4 +30,9 @@ public class BaseballGame {
 
         WIN_GAME = numberSize + WIN_GAME_TEXT;
     }
+
+    private void startGame() {
+        System.out.println(START_GAME);
+        computer.makeNewNumbers();
+    }
 }
