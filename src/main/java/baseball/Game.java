@@ -21,7 +21,7 @@ public class Game {
      * @param end 랜덤 숫자 생성 범위 끝점
      * @return numbers 랜덤하게 생성한 3자리 수가 들어있는 ArrayList
      */
-    static List<Integer> generateRandomNumber(int start, int end) {
+    private List<Integer> generateRandomNumber(int start, int end) {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(start, end);
@@ -56,5 +56,28 @@ public class Game {
     static void endGame() {
         System.out.println("게임 종료");
     }
+
+    void restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String restart = Console.readLine();
+        try {
+            InputValidation.isValidRestartInput(restart);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            endGame();
+            return;
+        }
+
+        if (restart.equals("1")) {
+            this.randomNum = generateRandomNumber(NUM_START_RANGE, NUM_END_RANGE);
+            start();
+        }
+        else
+            endGame();
+    }
+
+    public void start() {}
+
 
 }
