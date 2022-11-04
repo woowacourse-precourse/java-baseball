@@ -19,6 +19,7 @@ public class BullsAndCows {
     // 게임 전체 실행부
     public void playGame() {
         startGame();
+//        System.out.println("answer = " + answer);
 
         while (true) {
             String input = getInput(); // 사용자 입력
@@ -27,7 +28,7 @@ public class BullsAndCows {
             }
 
             if (isAnswer(input)) {
-                // "3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             } else {
                 printHint(input);
@@ -58,9 +59,7 @@ public class BullsAndCows {
     }
 
     private boolean isAnswer(String input) {
-        boolean correct = false;
-        // answer와 input을 비교
-        return correct;
+        return input.equals(answer);
     }
 
     private void printHint(String input) {
