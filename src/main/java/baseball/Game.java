@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
     private Computer computer;
 
@@ -9,5 +11,8 @@ public class Game {
     }
 
     private void play() {
+        while (true) {
+            final String playerInput = Console.readLine();
+        }
     }
 }
