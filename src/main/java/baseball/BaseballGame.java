@@ -16,7 +16,17 @@ public class BaseballGame extends NumberGame {
 
     @Override
     public boolean play() {
-        return false;
+        System.out.print("숫자를 입력해주세요 : ");
+        String number = Console.readLine();
+        validateInput(number, 3, 1, 9);
+
+        Point point = hint(number);
+        result(point);
+
+        if (point.getStrike() == 3) {
+            return false;
+        }
+        return true;
     }
 
     @Override
