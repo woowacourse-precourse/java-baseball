@@ -307,6 +307,58 @@ public class ComputerTest {
     }
 
     @Test
+    void 컴퓨터가_유저에게_힌트를_준다() throws Exception {
+        //given
+        List<Integer> numInputUser = new ArrayList<>(List.of(
+            // 3스트라이크
+            123,
+            // 2스트라이크
+            124,
+            // 2볼 1스트라이크
+            132,
+            // 1볼 1스트라이크
+            182,
+            // 1스트라이크
+            184,
+            // 1볼
+            416,
+            // 2볼
+            712,
+            // 3볼
+            312,
+            // 낫싱
+            798
+        ));
+        Computer computer = new Computer();
+        computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
+            1, 2, 3
+        ));
+        List<String> hints = new ArrayList<>(
+            List.of(
+                "3스트라이크",
+                "2스트라이크",
+                "2볼 1스트라이크",
+                "1볼 1스트라이크",
+                "1스트라이크",
+                "1볼 ",
+                "2볼 ",
+                "3볼 ",
+                "낫싱"
+            )
+        );
+        List<String> hintResult = new ArrayList<>();
+        // when
+        for (int num : numInputUser) {
+            if (computer.isRealRightNumOfUser(num)) {
+                hintResult.add(computer.toString());
+                computer.initCntStrikeBall();
+            }
+        }
+        // then
+        assertThat(hintResult).containsAll(hints);
+    }
+
+    @Test
     void 게임종료_확인_case_2() {
         int[] testInt = new int[]{124, 143, 423, 132, 321, 213, 182, 134, 521, 324, 813, 283, 184,
             826, 483, 416, 651, 247, 562, 357, 635, 712, 218, 251, 238, 732, 352, 314, 381, 431,
