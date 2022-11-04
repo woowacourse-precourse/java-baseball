@@ -41,6 +41,10 @@ public class Computer {
         return random.nextInt(10);
     }
 
+    /**
+     * 랜덤 숫자들을 가져온다.
+     * @return 랜덤 숫자들
+     */
     public List<Integer> getRandomNumbers() {
         return randomNumbers;
     }
