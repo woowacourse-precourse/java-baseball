@@ -10,23 +10,23 @@ import static org.assertj.core.api.Assertions.*;
 
 class GameTest extends NsTest {
 
-	Game game;
+    Game game;
 
-	@BeforeEach
-	void setUp() {
-		game = Game.create();
-	}
+    @BeforeEach
+    void setUp() {
+        game = Game.create();
+    }
 
-	@Test
-	void 게임시작시_시작메세지가_출력돼야한다() {
-		assertSimpleTest(() ->
-				assertThat(output().contains("숫자 야구 게임을 시작합니다."))
-						.isTrue()
-		);
-	}
+    @Test
+    void 게임시작시_시작메세지가_출력돼야한다() {
+        assertSimpleTest(() ->
+                assertThat(output().contains("숫자 야구 게임을 시작합니다."))
+                        .isTrue()
+        );
+    }
 
-	@Override
-	protected void runMain() {
-		Application.main(new String[]{});
-	}
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
+    }
 }
