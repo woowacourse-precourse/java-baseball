@@ -38,4 +38,9 @@ public class ComputerData {
             index++;
         }
     }
+
+    //숫자 인덱스 값 반환 = 숫자 위치 값 변환
+    public Integer getDataIndex(Integer integer){
+        return computerData.get(integer);
+    }
 }
