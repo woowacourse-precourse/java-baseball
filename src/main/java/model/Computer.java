@@ -147,7 +147,23 @@ public class Computer {
     }
 
     public void initComputer() {
-        this.creatRanNumOfComputerList();
+        while (true) {
+            this.creatRanNumOfComputerList();
+            if (isNumOfComputerIndividually()) {
+                break;
+            }
+        }
+    }
+
+    public boolean isNumOfComputerIndividually() {
+        String strComputerList = "";
+        for (Integer numComputerList : this.numThreeRanOfComputerList) {
+            strComputerList = strComputerList + numComputerList;
+        }
+        if (isNumOfIndividually(strComputerList)) {
+            return true;
+        }
+        return false;
     }
 
     // strike체크 함수
@@ -196,7 +212,9 @@ public class Computer {
         return cntBall;
     }
 
+
     public boolean isEqualsCollection(Collection collection_1,
+        // TODO: collection의 equals 메서드 이용하여 리펙토링
         Collection collection_2) {
         boolean isTrue = true;
         for (Object num : collection_2) {
