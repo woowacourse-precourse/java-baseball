@@ -26,6 +26,16 @@ class PlayingBaseball {
         return strike;
     }
 
+    int countBalls () {
+        for (int i = 0; i < LENGTH; i++) {
+            String temp = String.valueOf(numberOfPlayer.charAt(i));
+            if (!indexOfStrike.contains(i) && numberOfComputer.contains(temp)) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
+
 
 
 

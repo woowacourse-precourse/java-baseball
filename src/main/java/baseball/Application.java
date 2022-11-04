@@ -11,6 +11,7 @@ public class Application {
 
         PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
         System.out.println(round.countStrikes());
+        System.out.println(round.countBalls());
 
 
         }
