@@ -22,16 +22,19 @@ public class PlayerUser {
 	}
 
 	private boolean isNoDuplicatedNumber(String number) {
+
 	}
 
 	private boolean isPositiveNumber(String number) {
 		for (char elem : number.toCharArray()) {
-
+			if (elem < '1' && elem > '9') {
+				return false;
+			}
 		}
+		return true;
 	}
 
 	private boolean isRightNumberSize(String number) {
 		return number.length() == 3;
 	}
-
 }
