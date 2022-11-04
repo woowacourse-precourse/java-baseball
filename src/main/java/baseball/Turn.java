@@ -12,13 +12,22 @@ public class Turn {
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
-    private static final String ASK_FOR_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int STRIKE_OUT_NUMBER = 3;
     private List<Integer> playerNumberList;
     private int numberOfBalls;
     private int numberOfStrikes;
 
     public Turn() {
+    }
+
+    public void start(List<Integer> hiddenNumberList) {
+        String playerInput = getPlayerInput(ASK_FOR_NUMBER_MESSAGE);
+        this.playerNumberList = transformPlayerInputToList(playerInput);
+        validatePlayerNumberList(this.playerNumberList);
+        this.numberOfBalls = countNumberOfBalls(this.playerNumberList, hiddenNumberList);
+        this.numberOfStrikes = countNumberOfStrikes(this.playerNumberList, hiddenNumberList);
+        printResult(this.numberOfBalls, this.numberOfStrikes);
     }
 
     public String getPlayerInput(String message) {
@@ -49,18 +58,6 @@ public class Turn {
         }
     }
 
-    public int countNumberOfStrikes(List<Integer> playerNumberList, List<Integer> hiddenNumberList) {
-        int numberOfStrikes = 0;
-        for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
-            int hiddenNumber = hiddenNumberList.get(index);
-            int playerNumber = playerNumberList.get(index);
-            if (hiddenNumber == playerNumber) {
-                numberOfStrikes++;
-            }
-        }
-        return numberOfStrikes;
-    }
-
     public int countNumberOfBalls(List<Integer> playerNumberList, List<Integer> hiddenNumberList) {
         int numberOfBalls = 0;
         for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
@@ -71,6 +68,18 @@ public class Turn {
             }
         }
         return numberOfBalls;
+    }
+
+    public int countNumberOfStrikes(List<Integer> playerNumberList, List<Integer> hiddenNumberList) {
+        int numberOfStrikes = 0;
+        for (int index = 0; index < NUMBER_OF_INPUT_DIGITS; index++) {
+            int hiddenNumber = hiddenNumberList.get(index);
+            int playerNumber = playerNumberList.get(index);
+            if (hiddenNumber == playerNumber) {
+                numberOfStrikes++;
+            }
+        }
+        return numberOfStrikes;
     }
 
     public void printResult(int numberOfBalls, int numberOfStrikes) {
@@ -88,12 +97,12 @@ public class Turn {
         System.out.println(result);
     }
 
-    public String getStrikeResultString(int numberOfStrikes) {
-        return getResultString(numberOfStrikes, STRIKE_MESSAGE);
-    }
-
     public String getBallResultString(int numberOfBalls) {
         return getResultString(numberOfBalls, BALL_MESSAGE);
+    }
+
+    public String getStrikeResultString(int numberOfStrikes) {
+        return getResultString(numberOfStrikes, STRIKE_MESSAGE);
     }
 
     public String getResultString(int score, String scoreMessage) {

@@ -16,6 +16,25 @@ import org.junit.jupiter.api.Test;
 
 public class TurnTest {
     @Test
+    void start_test(){
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+
+        Turn turn = new Turn();
+
+        String testInput = "534";
+        final byte[] buf = testInput.getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        turn.start(testHiddenNumberList);
+
+        String resultOutput = "숫자를 입력해주세요 : 1볼 1스트라이크\r\n";
+        assertThat(out.toString()).isEqualTo(resultOutput);
+    }
+
+    @Test
     void getPlayerInput_test_getting_input() {
         Turn turn = new Turn();
         String testInput = "234";
@@ -70,20 +89,20 @@ public class TurnTest {
     }
 
     @Test
-    void countNumberOfStrikes_test_strike_count() {
-        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
-        List<Integer> testPlayerNumberList = List.of(2, 4, 5);
-        Turn turn = new Turn();
-        assertThat(turn.countNumberOfStrikes(testPlayerNumberList, testHiddenNumberList))
-                .isEqualTo(2);
-    }
-
-    @Test
     void countNumberOfBalls_test_ball_count() {
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
         List<Integer> testPlayerNumberList = List.of(3, 4, 2);
         Turn turn = new Turn();
         assertThat(turn.countNumberOfBalls(testPlayerNumberList, testHiddenNumberList))
+                .isEqualTo(2);
+    }
+
+    @Test
+    void countNumberOfStrikes_test_strike_count() {
+        List<Integer> testHiddenNumberList = List.of(2, 3, 5);
+        List<Integer> testPlayerNumberList = List.of(2, 4, 5);
+        Turn turn = new Turn();
+        assertThat(turn.countNumberOfStrikes(testPlayerNumberList, testHiddenNumberList))
                 .isEqualTo(2);
     }
 
@@ -136,21 +155,21 @@ public class TurnTest {
     }
 
     @Test
-    void getStrikeResultString_test_strike_result() {
-        Turn turn = new Turn();
-
-        String resultOutput = "2스트라이크";
-
-        assertThat(turn.getStrikeResultString(2)).isEqualTo(resultOutput);
-    }
-
-    @Test
     void getBallResultString_test_ball_result() {
         Turn turn = new Turn();
 
         String resultOutput = "1볼";
 
         assertThat(turn.getBallResultString(1)).isEqualTo(resultOutput);
+    }
+
+    @Test
+    void getStrikeResultString_test_strike_result() {
+        Turn turn = new Turn();
+
+        String resultOutput = "2스트라이크";
+
+        assertThat(turn.getStrikeResultString(2)).isEqualTo(resultOutput);
     }
 
     /*@Test
