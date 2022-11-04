@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Validation extends IllegalArgumentException {
+    private static final String ZERO = "0";
+
     public Validation() {
     }
 
@@ -20,6 +22,9 @@ public class Validation extends IllegalArgumentException {
             throwError();
         }
         if (!(isNumeric(input))) {
+            throwError();
+        }
+        if (hasZero(input)) {
             throwError();
         }
     }
@@ -49,6 +54,13 @@ public class Validation extends IllegalArgumentException {
 
     public boolean isNumeric(String input) {
         if (input.chars().allMatch(Character::isDigit)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasZero(String input) {
+        if (input.contains(ZERO)) {
             return true;
         }
         return false;
