@@ -148,7 +148,6 @@ public class Player {
     }
 
     private boolean isValidNumber(String stateNumber) {
-        int number = Integer.parseInt(stateNumber);
-        return Config.STATE_RESTART == number || Config.STATE_SHUTDOWN == number;
+        return Config.STATE_RESTART.equals(stateNumber) || Config.STATE_SHUTDOWN.equals(stateNumber);
     }
 }
