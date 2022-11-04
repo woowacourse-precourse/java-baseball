@@ -1,37 +1,44 @@
 package baseball.model;
 
+import java.util.List;
+
 public class Umpire {
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
+    private final GameNumber computerGameNumber;
+    private GameNumber playerGameNumber;
 
-    private final int ball;
-    private final int strike;
-    private final boolean nothing;
-
-    public Umpire(int ball, int strike, boolean nothing) {
-        this.ball = ball;
-        this.strike = strike;
-        this.nothing = nothing;
+    public Umpire(GameNumber computerGameNumber, GameNumber playerGameNumber) {
+        this.computerGameNumber = computerGameNumber;
+        this.playerGameNumber = playerGameNumber;
     }
 
-    public Umpire(int ball, int strike) {
-        this(ball, strike, (ball == 0 && strike == 0));
+    public Umpire(GameNumber computerGameNumber) {
+        this(computerGameNumber, null);
     }
 
-    public String decision() {
-        StringBuilder gameResult = new StringBuilder();
-        if (ball > 0) {
-            gameResult.append(ball).append(BALL).append(" ");
-        }
-        if (strike > 0) {
-            gameResult.append(strike).append(STRIKE).append(" ");
-        }
-        if (nothing) {
-            gameResult.append(NOTHING).append(" ");
-        }
-        gameResult.deleteCharAt(gameResult.length() - 1);
-
-        return gameResult.toString();
+    public void playerNewGameNumber(GameNumber playerGameNumber) {
+        this.playerGameNumber = playerGameNumber;
     }
+
+    public List<Integer> decision() {
+        List<Integer> playerNumbers = playerGameNumber.getNumbers();
+        List<Integer> computerNumbers = computerGameNumber.getNumbers();
+        int strike = 0;
+        int ball = 0;
+
+        for (int gameCount = 0; gameCount < 3; gameCount++) {
+            int playerPeek = playerNumbers.get(gameCount);
+            int computerPeek = computerNumbers.get(gameCount);
+
+            if (playerPeek == computerPeek) {
+                strike++;
+                continue;
+            }
+            if (computerNumbers.contains(playerPeek)) {
+                ball++;
+            }
+        }
+
+        return List.of(ball, strike);
+    }
+
 }
