@@ -37,15 +37,17 @@ public class Application {
         }
     }
 
-    public static int howManyStrike (List<String>listUserNumber, List<String>computerNumber){
+
+    public static int howManyStrike (String userNumber, String answerNumber){
         int strikeCount = 0;
-       for(int i = 0; i<listUserNumber.size(); i++){
-           String userPickNUmber = listUserNumber.get(i);
-           String answerNumber = computerNumber.get(i);
-           if(Objects.equals(userPickNUmber, answerNumber)){
-               strikeCount++;
-           }
-       }return strikeCount;
+
+        for(int i = 0; i<userNumber.length();i++){
+            char userNum = userNumber.charAt(i);
+            char answerNum = answerNumber.charAt(i);
+            if(userNum == answerNum){
+                strikeCount ++;
+            }
+        }return strikeCount;
     }
 
     public static int howManyBall(String userNumber, String answerNumber){
