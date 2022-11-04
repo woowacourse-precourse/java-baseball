@@ -24,4 +24,18 @@ public class OutputController {
         }
         return ball;
     }
+
+    public boolean gameResult(ComNumber comNumber, UserNumber userNumber) {
+        boolean gameResult = false;
+        int strike = getStrike(comNumber, userNumber);
+        int ball = getBall(comNumber, userNumber);
+        if(strike == InputController.NUMBER_SIZE) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameResult = true;
+        }
+        else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        return gameResult;
+    }
 }
