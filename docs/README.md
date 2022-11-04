@@ -29,3 +29,7 @@
 
 7. startBaseball
 + 게임시작 안내
+
+
+8. checkValidation
++ myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임종료
