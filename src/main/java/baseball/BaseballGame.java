@@ -50,7 +50,7 @@ public class BaseballGame {
         }
     }
 
-    public int checkStrikeCount(List<Integer> userNumber) {
+    private int checkStrikeCount(List<Integer> userNumber) {
         int strikeCount = 0;
         for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
             if (computerNumber.indexOf(userNumber.get(i)) == i) {
@@ -60,7 +60,7 @@ public class BaseballGame {
         return strikeCount;
     }
 
-    public int checkBallCount(List<Integer> userNumber) {
+    private int checkBallCount(List<Integer> userNumber) {
         int ballCount = 0;
         for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
             if (computerNumber.contains(userNumber.get(i)) && computerNumber.indexOf(userNumber.get(i)) != i) {
@@ -70,7 +70,7 @@ public class BaseballGame {
         return ballCount;
     }
 
-    public void gameResult() {
+    private void gameResult() {
         if (ball != 0 && strike != 0) {
             System.out.println(ball + "볼" + " " + strike + "스트라이크");
         }
