@@ -63,5 +63,12 @@ class UserTest {
         assertThat(result).isEqualTo(123);
     }
 
+    @Test
+    void constructorTest() {
+        List<Integer> list = Arrays.asList(1, 2, 3);
+        User user2 = new User(list);
+        assertThat(user2.computerNumberList).isEqualTo(list);
+    }
+
 
 }
