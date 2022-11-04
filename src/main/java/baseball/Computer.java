@@ -16,4 +16,5 @@ public class Computer {
     if (mode == 2) printInputNumber();
   }
 
+
 }
