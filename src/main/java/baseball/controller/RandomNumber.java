@@ -7,7 +7,6 @@ import java.util.List;
 public class RandomNumber {
 	private static final int START_NUMBER = 1;
 	private static final int END_NUMBER = 9;
-
 	private static final int NUMBER_LIST_LENGTH = 3;
 
 	public static List<Integer> getNumbers() {
@@ -28,6 +27,4 @@ public class RandomNumber {
 	private static int getRandomNumber() {
 		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 	}
-
-
 }

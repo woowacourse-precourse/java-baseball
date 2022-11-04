@@ -66,5 +66,4 @@ class JudgeTest {
 		String result = "2볼 1스트라이크";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());
 	}
-
 }
