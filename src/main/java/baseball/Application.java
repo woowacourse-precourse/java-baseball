@@ -20,6 +20,7 @@ public class Application {
 
             game(computer);
 
+            inputCoin();
         }
     }
 
