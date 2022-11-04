@@ -54,6 +54,20 @@ class ApplicationTest extends NsTest {
     	assertThatThrownBy(() -> Application.checkMoreThanThreeException(tenLengthBall)).isInstanceOf(IllegalArgumentException.class);
     }
     
+    @Test
+    @DisplayName("야구공 숫자가 아닌 입력 예외케이스")
+    void 플레이어입력_예외_테스트3() {
+    	//given, when
+    	String nonNumericBallOne = "1-2";
+    	String nonNumericBallTwo = "가12";
+    	String nonNumericBallThree = "1!";
+    	//then
+    	assertThatThrownBy(() -> Application.checkNonNumericCharacterException(nonNumericBallOne)).isInstanceOf(IllegalArgumentException.class);
+    	assertThatThrownBy(() -> Application.checkNonNumericCharacterException(nonNumericBallTwo)).isInstanceOf(IllegalArgumentException.class);
+    	assertThatThrownBy(() -> Application.checkNonNumericCharacterException(nonNumericBallThree)).isInstanceOf(IllegalArgumentException.class);
+    	
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
