@@ -1,6 +1,6 @@
 package baseball.dto;
 
-import org.junit.platform.commons.util.StringUtils;
+import baseball.utils.StringUtils;
 
 public class UserNumbersDTO {
     private static final String BLANK_INPUT_EXCEPTION_MESSAGE = "Null 또는 Empty 를 입력할 수 없습니다.";
