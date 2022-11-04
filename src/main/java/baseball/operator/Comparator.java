@@ -17,11 +17,6 @@ public class Comparator {
 	static int strikeCount = 0;
 	static int ballCount = 0;
 
-	public Comparator() {
-		this.computer = new Computer();
-		this.user = new User();
-	}
-
 	public void printHintMessage() {
 		if (ballCount == 0 && strikeCount == 0) {
 			System.out.println(NOTHING);
