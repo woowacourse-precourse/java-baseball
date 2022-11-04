@@ -29,9 +29,7 @@ public class GameSet {
     //게임을 시작하는 함수
     public void playBaseballGame(){
         PrintMessage.inputMessage();
-        String inputNumber = Console.readLine();
-    //  System.out.println(computerAnswer);
-        userAnswer = scanUserAnswer(inputNumber);
+        userAnswer = scanUserAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
@@ -64,12 +62,11 @@ public class GameSet {
         if(strikeCount == 3){
             PrintMessage.answerMessage();
             PrintMessage.gameContinueMessage();
-            String userResponse = Console.readLine();
-            if(ValidCheck.isValidPress(userResponse)){
+            if(ValidCheck.isValidPress(Console.readLine())){
                 setComputerAnswer();
                 return true;
             }
-            return ValidCheck.isValidPress(userResponse);
+            return ValidCheck.isValidPress(Console.readLine());
         }
         return true;
     }
