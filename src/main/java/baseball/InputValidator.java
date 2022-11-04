@@ -12,7 +12,7 @@ public class InputValidator {
         if (!Character.isDigit(userInput.charAt(0))) {
             throw new IllegalArgumentException();
         }
-        if (userInput.charAt(0) != '0' || userInput.charAt(0) != '1') {
+        if (!(userInput.charAt(0) == '0' || userInput.charAt(0) == '1')) {
             throw new IllegalArgumentException();
         }
     }
