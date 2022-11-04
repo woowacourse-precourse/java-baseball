@@ -13,11 +13,11 @@ public class Player {
         System.out.print("숫자를 입력해주세요 : ");
         inputNumber = new InputNumber(Console.readLine());
 
-        return inputNumber.number;
+        return InputNumber.number;
     }
 
     public List<String> splitInputNumberToList() {
-        String[] strArr = inputNumber.number.split("");
+        String[] strArr = InputNumber.number.split("");
         List<String> inputNumberList = new ArrayList<>(Arrays.asList(strArr));
 
         return inputNumberList;
