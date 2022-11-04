@@ -9,7 +9,13 @@ public class Computer {
     private List<Integer> numbers;
 
     public void pickRandomNumbersFrom1To9(){
-        numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
     }
 
     public List<Integer> getComputersPick() {

@@ -46,7 +46,7 @@ public class BaseballGame {
             case "2":
                 return false;
             default:
-                throw new IllegalArgumentException("잘못된 입력입니다!");
+                throw new IllegalArgumentException();
         }
     }
 
