@@ -1,0 +1,33 @@
+### 우아한 테크 코스 2주차 과제: 숫자 야구
+- [ ] 입력값 확인:
+    - 서로 다른 3자리의 수
+    - 게임이 끝난 경우: (int strike == 3인 경우)
+        - 1: 재시작
+        - 2: 종료
+    - 위의 조건에 부합하지 않는 문자/숫자가 들어올 시 IllegalArgumentException 발생 후, 종료.
+- [ ] 출력값 형태:
+    - int ball = number of digits that both input and computer have, but at different place.
+    - int strike = number of digits that both input and computer have at the same place.
+    - ball + "볼" + strike + "스트라이크"
+    - ball == 0 && strike == 0 => "낫싱"
+- [ ] 상수:
+    - [ ] 재시작 지표: "1"
+    - [ ] 종료 지표: "2"
+    - [ ] 자리수 제한: 3
+    - [ ] strike 키 값: "strike"
+    - [ ] ball 키 값: "ball"
+    - [ ] 게임 시작 문구: "숫자 야구 게임을 시작합니다."
+    - [ ] 게임 종료 문구: "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    - [ ] 볼: "볼"
+    - [ ] 스트라이크: "스트라이크"
+    - [ ] 낫싱: "낫싱"
+    - [ ] input 요구 문구: "숫자를 입력해주세요 : "
+    - [ ] 재시작/종료 선택 요구 문구: "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+- [ ] 개인적으로 필요하다고 생각되는 사항
+    - [ ] 재시작/종료 선택 요구 시, 1 과 2를 제외한 문자, 숫자가 들어올 시, Exception 발생 애플리케이션 종료.
+    - try/catch를 사용하여 에러 핸들링? - 테스트 케이스가 에러 핸들링 없이 그냥 Exception으로 인해 애플리케이션을 중단시키길 원함.
+
+### 클린 코드 요구 사항
+- [ ] indent depth 2 이하
+- [ ] 삼항 연산자(condition ? true:false) 사용 X
+- [ ] 1함수 1기능
