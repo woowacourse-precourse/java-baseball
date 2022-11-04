@@ -36,6 +36,21 @@ class PlayingBaseball {
         return ball;
     }
 
+    void printResult () {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        System.out.println(strike+"스트라이크 "+ball+"볼");
+    }
+
 
 
 
