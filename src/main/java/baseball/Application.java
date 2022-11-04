@@ -66,13 +66,13 @@ public class Application {
         check_strike();
         check_ball();
         if (strike > 0)
-            result += strike + "스트라이크";
+            result += Integer.toString(strike) + "스트라이크";
         if (strike == 3)
             result += '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         if (ball > 0) {
             if (strike > 0)
                 result = ' ' + result;
-            result = ball + '볼' + result;
+            result = Integer.toString(ball) + '볼' + result;
         }
         if (result.length() == 0)
             result = "낫싱";
@@ -83,7 +83,7 @@ public class Application {
         strike = 0;
         // check strike
         for (int i = 0; i < 3; ++i) {
-            if (target.get(i) == user.get(i)) {
+            if (target.get(i).equals(user.get(i))) {
                 strike++;
                 // mark as strike
                 target.set(i, 0);
@@ -95,21 +95,13 @@ public class Application {
     private static void check_ball() {
         ball = 0;
         for (int i = 0; i < 3; ++i) {
-            int current_digit = user.get(i);
-            if (current_digit == 0)
+            Integer tmp = user.get(i);
+            if (tmp.equals(0))
                 continue;
-            if (i != 0 && target.get(0) == current_digit) {
-                user.set(i, 0);
-                target.set(0, 0);
-            }
-            else if (i != 1 && target.get(1) == current_digit) {
-                user.set(i, 0);
-                target.set(1, 0);
-            }
-            else if (i != 2 && target.get(2) == current_digit) {
-                user.set(i, 0);
-                target.set(2, 0);
-            }
+            if (tmp.equals(target.get(0)) ||
+                    tmp.equals(target.get(1)) ||
+                    tmp.equals(target.get(2)))
+                ball++;
         }
     }
 
