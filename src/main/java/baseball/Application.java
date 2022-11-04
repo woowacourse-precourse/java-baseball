@@ -41,9 +41,20 @@ public class Application {
         }
         return inputUserNumbers;
     }
+    private static int getBallNumber(List<Integer> computerNumbers, String userNumbers) {
+        int ballNumber = 0;
+        for (int index = 0; index < userNumbers.toCharArray().length; ++index) {
+            if (userNumbers.toCharArray()[index] - '0' != computerNumbers.get(index) &&
+                    computerNumbers.contains(userNumbers.toCharArray()[index] - '0')) {
+                ++ballNumber;
+            }
+        }
+        return ballNumber;
+    }
     public static void main(String[] args) {
         noticeStartGame();
         List<Integer> computerNumbers = createComputerNumbers();
         String userNumbers = inputUserNumbers();
+        int ballNumber = getBallNumber(computerNumbers, userNumbers);
     }
 }
