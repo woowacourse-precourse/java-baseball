@@ -17,7 +17,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void 입력시오류경우_확인(){
+    void 입력시예외경우_확인(){
 
         /**
          * 숫자가 아닌 것을 입력한 경우
@@ -52,7 +52,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void findStrike과정검증_출력문형식검증(){
+    void Game_findStrike과정검증_출력문형식검증(){
 
         /**
          * 3스트라이크
