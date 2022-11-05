@@ -3,6 +3,8 @@ package baseball.domain;
 import baseball.exception.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Scanner;
+
 public class User {
     String numbers;
     Validator validator = new Validator();
@@ -15,15 +17,9 @@ public class User {
         return numbers;
     }
 
-    public void inputNumbers() {
+    public void input() {
         String value = Console.readLine();
-        validator.validateInputNumbers(value);
+        validator.validateInput(value);
         setNumbers(value);
-    }
-
-    public Character inputRetry() {
-        String value = Console.readLine();
-        validator.validateInputRetry(value);
-        return value.charAt(0);
     }
 }
