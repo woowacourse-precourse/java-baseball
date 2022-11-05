@@ -56,6 +56,7 @@ public class Application {
         try {
             String answer = readLine().replace(" ", "");
             answerNumber = stringToArrayListInteger(answer);
+            checkNumberSize(answerNumber);
             checkOverlap(answerNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
@@ -72,6 +73,11 @@ public class Application {
         return answerArrayListInteger;
     }
 
+    private void checkNumberSize(ArrayList<Integer> arrayList){
+        if (arrayList.size() > 3){
+            throw new IllegalArgumentException();
+        }
+    }
     private void checkOverlap(ArrayList<Integer> arrayList) {
         Set<Integer> hashSet = new HashSet<>(arrayList);
         if (arrayList.size() != hashSet.size()) {
