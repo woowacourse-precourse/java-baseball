@@ -39,4 +39,14 @@ public class Player {
         }
         return third != first;
     }
+
+    public boolean isValidNumber(String number) {
+        if (!isThreeLetter(number)) {
+            return false;
+        }
+        if (!isNumber(number)) {
+            return false;
+        }
+        return isAllDifferent(number);
+    }
 }
