@@ -8,7 +8,7 @@ import static baseball.Choice.takeChoice;
 import static baseball.Constant.*;
 import static baseball.GameSituation.*;
 import static baseball.Guess.*;
-import static baseball.Hint.compareAnswer;
+import static baseball.Hint.hintPerDigit;
 import static baseball.Hint.finalHint;
 
 public class Application {
@@ -16,7 +16,6 @@ public class Application {
         String choose;
         List<Integer> realAnswer;
         List<Integer> userAnswer;
-        List<String> digitHints;
 
         choose = NEW_GAME;
         realAnswer = makeAnswer();
@@ -27,8 +26,7 @@ public class Application {
             checkGuess(input);
             userAnswer = splitGuess(input);
 
-            digitHints = compareAnswer(realAnswer, userAnswer);
-            String hint = finalHint(digitHints);
+            String hint = finalHint(realAnswer, userAnswer);
             printHint(hint);
 
             if (hint.equals(PERFECT)) {

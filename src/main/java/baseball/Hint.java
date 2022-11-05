@@ -17,7 +17,7 @@ public class Hint {
         return NOTHING;
     }
 
-    public static List<String> compareAnswer(List<Integer> realAnswer, List<Integer> userAnswer) {
+    public static List<String> hintPerDigit(List<Integer> realAnswer, List<Integer> userAnswer) {
         List<String> digitHints = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
@@ -28,10 +28,11 @@ public class Hint {
         return digitHints;
     }
 
-    public static String finalHint(List<String> digitHints) {
-        int strikes = Collections.frequency(digitHints, STRIKE);
-        int balls = Collections.frequency(digitHints, BALL);
-        int nothings = Collections.frequency(digitHints, NOTHING);
+    public static String finalHint(List<Integer> realAnswer, List<Integer> userAnswer) {
+        List<String> hintList = hintPerDigit(realAnswer, userAnswer);
+        int strikes = Collections.frequency(hintList, STRIKE);
+        int balls = Collections.frequency(hintList, BALL);
+        int nothings = Collections.frequency(hintList, NOTHING);
 
         if (nothings == 3)
             return NOTHING;
