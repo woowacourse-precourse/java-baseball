@@ -3,26 +3,24 @@ package baseball.controller;
 import java.util.List;
 
 import baseball.domain.UserBall;
-import baseball.service.GameEndService;
-import baseball.service.GameStartService;
 import baseball.service.UserBallService;
 import baseball.util.ErrorConst;
 import baseball.util.InputValidUtil;
 import baseball.util.ViewConst;
 import camp.nextstep.edu.missionutils.Console;
 
-public class FrontController {
+public class GameCenterController {
 
-	private final GameStartService gameStartService;
+	private final GameStartController gameStartController;
 	private final UserBallService userBallService;
-	private final GameEndService gameEndService;
+	private final GameEndController gameEndController;
 	private final InputValidUtil inputValidUtil;
 
-	public FrontController(GameStartService gameStartService, UserBallService userBallService,
-		GameEndService gameEndService, InputValidUtil inputValidUtil) {
-		this.gameStartService = gameStartService;
+	public GameCenterController(GameStartController gameStartController, UserBallService userBallService,
+		GameEndController gameEndController, InputValidUtil inputValidUtil) {
+		this.gameStartController = gameStartController;
 		this.userBallService = userBallService;
-		this.gameEndService = gameEndService;
+		this.gameEndController = gameEndController;
 		this.inputValidUtil = inputValidUtil;
 	}
 
@@ -33,16 +31,14 @@ public class FrontController {
 	}
 
 	public void startGame() {
-
-		List<Integer> answerNumber = gameStartService.initGame();
+		List<Integer> answerNumber = gameStartController.initGame();
 		String userInputNum;
 		UserBall userBall;
 		do {
 			userInputNum = Console.readLine();
 			inputValidUtil.checkInputValid(userInputNum);
 			userBall = userBallService.makeUserBall(userInputNum, answerNumber);
-		} while (!gameEndService.isAnswer(userBall));
-
+		} while (!gameEndController.isAnswer(userBall));
 	}
 
 	public boolean exit() {

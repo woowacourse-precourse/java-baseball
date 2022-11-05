@@ -1,15 +1,15 @@
-package baseball.service;
+package baseball.controller;
 
 import baseball.domain.UserBall;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class GameEndService {
+public class GameEndController {
 
 	private final OutputView outputView;
 	private final InputView inputView;
 
-	public GameEndService(OutputView outputView, InputView inputView) {
+	public GameEndController(OutputView outputView, InputView inputView) {
 		this.outputView = outputView;
 		this.inputView = inputView;
 	}

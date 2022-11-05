@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class GameStartService {
+public class GameStartController {
 
 	private final InputView inputView;
 
-	public GameStartService(InputView inputView) {
+	public GameStartController(InputView inputView) {
 		this.inputView = inputView;
 	}
 

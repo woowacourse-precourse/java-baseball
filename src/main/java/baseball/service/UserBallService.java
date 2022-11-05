@@ -26,7 +26,6 @@ public class UserBallService {
 			.filter(i -> userInputNumList.get(i).equals(answerNumber.get(i)))
 			.count();
 		userBall.changeStrikeCount(userBall.getStrike() + strikeCount);
-
 	}
 
 	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputNumList, UserBall userBall) {
