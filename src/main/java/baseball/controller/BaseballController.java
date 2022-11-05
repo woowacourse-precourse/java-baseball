@@ -10,7 +10,7 @@ public class BaseballController {
     private BaseballView baseballView;
     private Baseball baseball;
 
-    public BaseballController(BaseballView baseballView, Baseball baseball) {
+    public BaseballController() {
         this.baseballView = new BaseballView();
         this.baseball = new Baseball();
     }
@@ -23,5 +23,10 @@ public class BaseballController {
             list = baseball.estimateScore();
             baseballView.printHint(list);
         } while (list.get(1) == 3);
+    }
+
+    public boolean resumeGame() {
+        baseballView.resumeOrQuitGame();
+        return baseball.inputControllNumber(Console.readLine());
     }
 }
