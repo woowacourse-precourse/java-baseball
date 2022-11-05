@@ -23,6 +23,34 @@ public class Game {
         this.computerNumber = Generate.randomNumber();
     }
 
+    public void start() {
+        System.out.println(START_SENTENCE);
+
+        while (true) {
+            System.out.println(computerNumber);
+            System.out.print(INPUT_SENTENCE);
+
+            this.score = new Score();
+            String userInput = Console.readLine();
+            if (InputException.occur(userInput)) {
+                throw new IllegalArgumentException();
+            }
+
+            this.userNumber = Change.numberToList(userInput);
+            play();
+            System.out.println(getGameResult());
+            if (!isWin()) {
+                continue;
+            }
+
+            System.out.println(WIN_SENTENCE);
+            System.out.println(RESTART_SENTENCE);
+            if (!restart()) {
+                break;
+            }
+        }
+    }
+
     public void play() {
         for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             if (this.userNumber.get(i).equals(this.computerNumber.get(i))) {
