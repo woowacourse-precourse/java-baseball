@@ -89,4 +89,11 @@ public class Application {
             }
         }
     }
+
+    //기능6. 승리했을 경우 (3스트라이크) 실행될 함수 (1 또는 2를 입력받기.)
+    public static String victory(){
+        System.out.println("게임을 계속하려면 1, 종료하려면 2를 입력하세요.");
+        String victory = Console.readLine();
+        return victory;
+    }
 }
