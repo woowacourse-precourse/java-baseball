@@ -1,33 +1,29 @@
 package baseball.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.view.Print.*;
+import static baseball.util.NumberUtil.*;
 
 public class BaseBall {
     private Balls answerBalls;
+    private Balls userBalls;
 
     public void start() {
-        createAnswer();
-    }
+        printGameStart();
 
-    public Balls createAnswer() {
-        answerBalls = new Balls(List.of());
-        List<Integer> answerList = new ArrayList<>();
+        boolean check = true;
+        while (check) {
+            createAnswerBalls();
 
-        while (answerList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerList.contains(randomNumber)) {
-                answerList.add(randomNumber);
-            }
         }
-        answerBalls.setNumberList(answerList);
-
-        return answerBalls;
     }
 
-    // 사용자에게 답을 입력받는다.
+    public void createAnswerBalls() {
+        answerBalls = new Balls(List.of());
+        answerBalls.setNumberList(createRandomNumber());
+    }
+
 
     // 사용자가 입력한 3개의 수의 예외사항을 판단한다.
 
