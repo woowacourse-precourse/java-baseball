@@ -35,7 +35,7 @@ class ApplicationTest extends NsTest {
         Validator validator= new Validator();
         String input = "1234";
 
-        assertThatThrownBy(() -> validator.validateRandomNumberExceedRange(input))
+        assertThatThrownBy(() -> validator.validateRandomNumberExceedLength(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세자리 숫자만 입력해주세요");
     }
@@ -59,6 +59,19 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세자리 숫자만 입력해주세요");
     }
+
+    @Test
+    void 영을_포함하여_입력한_경우_예외를_반환(){
+        Validator validator= new Validator();
+        String input = "1 23";
+
+        assertThatThrownBy(() -> validator.validateContainZero(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("세자리 숫자만 입력해주세요");
+    }
+
+
+
 
     @Test
     void 랜덤_숫자_크기가_3인지_확인(){
