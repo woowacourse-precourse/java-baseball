@@ -14,7 +14,27 @@ public class Application {
     }};
 
     public static void main(String[] args) {
-
+        Application app = new Application();
+        app.printStartingGuide();
+        List<Integer> computerNumberList;
+        List<Integer> userNumberList;
+        while(true){
+            computerNumberList = app.getComputerNumberList();
+            while(true){
+                app.printInputGuide();
+                userNumberList = app.getUserNumberList();
+                String result = app.getResult(userNumberList, computerNumberList);
+                System.out.println(result);
+                if(result.equals("3스트라이크")){
+                    app.printEndingGuide();
+                    app.printRestartGuide();
+                    break;
+                }
+            }
+            if(app.isEnding()){
+                break;
+            }
+        }
     }
 
     public List<Integer> getComputerNumberList() {
