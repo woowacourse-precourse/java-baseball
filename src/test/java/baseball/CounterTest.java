@@ -10,7 +10,8 @@ public class CounterTest {
         BaseballGameNumber computerNumber = new BaseballGameNumber(List.of(3, 6, 9));
         BaseballGameNumber expectedNumber = new BaseballGameNumber(List.of(3, 6, 8));
 
-        int strikeCount = Counter.getStrikeCount(computerNumber, expectedNumber);
+        Count count = Counter.calculate(computerNumber, expectedNumber);
+        int strikeCount = count.getStrikeCount();
 
         Assertions.assertThat(strikeCount).isEqualTo(2);
     }
@@ -20,7 +21,8 @@ public class CounterTest {
         BaseballGameNumber computerNumber = new BaseballGameNumber(List.of(3, 6, 9));
         BaseballGameNumber expectedNumber = new BaseballGameNumber(List.of(6, 2, 5));
 
-        int ballCount = Counter.getBallCount(computerNumber, expectedNumber);
+        Count count = Counter.calculate(computerNumber, expectedNumber);
+        int ballCount = count.getBallCount();
 
         Assertions.assertThat(ballCount).isEqualTo(1);
     }

@@ -1,27 +1,31 @@
 package baseball;
 
 public class Counter {
-    public static int getStrikeCount(BaseballGameNumber actual, BaseballGameNumber expected) {
+
+    public static Count calculate(BaseballGameNumber number, BaseballGameNumber otherNumber) {
+        return new Count(countBall(number, otherNumber), countStrike(number, otherNumber));
+    }
+    private static int countStrike(BaseballGameNumber other, BaseballGameNumber otherNumber) {
         int count = 0;
         for (int order = 0; order < BaseballGameNumber.NUMBER_SIZE; order++) {
-            if (isSameWhenSameOrder(actual, expected, order)) {
+            if (isSameWhenSameOrder(other, otherNumber, order)) {
                 count++;
             }
         }
         return count;
     }
 
-    public static int getBallCount(BaseballGameNumber actual, BaseballGameNumber expected) {
+    private static int countBall(BaseballGameNumber number, BaseballGameNumber otherNumber) {
         int count = 0;
         for (int order = 0; order < BaseballGameNumber.NUMBER_SIZE; order++) {
-            if (actual.contains(expected.numberAt(order)) && !isSameWhenSameOrder(actual, expected, order)) {
+            if (number.contains(otherNumber.numberAt(order)) && !isSameWhenSameOrder(number, otherNumber, order)) {
                 count++;
             }
         }
         return count;
     }
 
-    private static boolean isSameWhenSameOrder(BaseballGameNumber actual, BaseballGameNumber expected, int order) {
-        return actual.numberAt(order) == expected.numberAt(order);
+    private static boolean isSameWhenSameOrder(BaseballGameNumber number, BaseballGameNumber otherNumber, int order) {
+        return number.numberAt(order) == otherNumber.numberAt(order);
     }
 }
