@@ -34,4 +34,39 @@ class ComputerTest {
 		}
 		return false;
 	}
+
+	@Test
+	@DisplayName("컴퓨터가 던진 공 각각의 바운더리 검증")
+	void 컴퓨터가_던진_공_각각의_바운더리_검증() {
+		// given
+		Computer computer = new Computer();
+		int upperBound = 9;
+		int lowerBound = 1;
+		for (int testCase = 0; testCase < 100; testCase++) {
+			// when
+			computer.pitchThreeUniqueBalls();
+			List<Integer> computerBalls = computer.getComputerBalls();
+			// then
+			Assertions.assertThat(isOverUpperBound(computerBalls, upperBound)).isEqualTo(false);
+			Assertions.assertThat(isUnderLowerBound(computerBalls, lowerBound)).isEqualTo(false);
+		}
+	}
+
+	private boolean isOverUpperBound(List<Integer> balls, int upperBound) {
+		for (int ball : balls) {
+			if (ball > upperBound) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isUnderLowerBound(List<Integer> balls, int lowerBound) {
+		for (int ball : balls) {
+			if (ball < lowerBound) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
