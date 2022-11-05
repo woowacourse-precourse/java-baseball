@@ -48,6 +48,56 @@ BUILD SUCCESSFUL in 0s
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+### 🔥 구현 기능 목록
+
+- [ ] FEATURE1. BaseballGame 클래스 생성
+- [ ] FEATURE2. 게임 시작 메시지 출력 메서드
+- [ ] FEATURE3. 난수 정답 생성 메서드
+- [ ] FEATURE4. 플레이어 숫자 입력 메서드
+- [ ] FEATURE5. 입력받은 숫자 비교하여 점수 계산 메서드
+  - [ ] FEATURE6. 점수 계산 결과 BaseballGameResult 클래스
+  - [ ] FEATURE7. 스트라이크 개수 계산 메서드
+  - [ ] FEATURE8. 볼 개수 계산 메서드
+  - [ ] FEATURE9. 클래스 생성자
+  - [ ] FEATURE10. 스트라이크 개수 getter
+  - [ ] FEATURE11. 볼 개수 getter
+  - [ ] FEATURE12. 낫싱 여부 확인 메서드
+  - [ ] FEATURE13. 클래스 toString 메서드 오버라이딩
+- [ ] FEATURE14. 게임 결과 출력 메서드
+- [ ] FEATURE15. 게임 종료 메시지 출력 메서드
+- [ ] FEATURE16. 게임 종료 입력 메서드
+ 
+---
+
+- [ ] **CLASS 1**. `BaseballGame`
+  - **Class Variables:**
+    - [ ] `private List<Integer> answerNums`
+    - [ ] `private List<Integer> inputNums`
+  - **Class Methods:**
+    - [ ] `void gameStart()`
+    - [ ] `void printGameStartMessage()`
+    - [ ] `void printGameResultMessage(BaseballGameResult gameResult)`
+    - [ ] `void printGameEndMessage()`
+    - [ ] `List<Integer> getGameInput() thorws IllegalArgumentException`
+    - [ ] `int getGameRestartInput()`
+    - [ ] `List<Integer> generateRandomAnswerNums()`
+    - [ ] `BaseballGameResult getResultOfGame(List<Integer> inputNums)`
+
+
+- [ ] **CLASS 2**. `BaseballGameResult`
+  - **Class Variables:**
+    - [ ] `private static final String strike`
+    - [ ] `private static final String ball`
+    - [ ] `private static final String nothing`
+  - **Class Methods:**
+    - [ ] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
+    - [ ] `String toString()`
+    - [ ] `int calcStrikes()`
+    - [ ] `int calcBalls()`
+    - [ ] `int numOfStrikes()`
+    - [ ] `int numOfBalls()`
+    - [ ] `Boolean isNothing()`
+
 ### 입출력 요구 사항
 
 #### 입력
