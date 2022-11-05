@@ -45,7 +45,6 @@ public class ResultTest {
         List<String> resultList = List.of("낫싱", "3볼", "2볼 1스트라이크", "1스트라이크", "2볼", "3스트라이크");
         Game game = new Game(answer);
         List<Integer> userAnswer = Converter.toIntegerList(input);
-        game.initializeResultMap();
         Map<String, Integer> result = game.getResult(userAnswer);
         String resultMessage = Converter.changeResultMapToString(result);
         SystemMessage.printGameResult(resultMessage);
