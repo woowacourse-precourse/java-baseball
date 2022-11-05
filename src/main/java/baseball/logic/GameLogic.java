@@ -29,12 +29,17 @@ public class GameLogic {
     }
 
     public void process(String userNumbers, Result result) {
-        result.setBall(0);
-        result.setStrike(0);
+        initializeResult(result);
+
         for (Integer i = 0; i < 3; i++) {
             Integer computerIndex = computerNumbersTable.get(userNumbers.charAt(i) - '0');
             compare(result, i, computerIndex);
         }
+    }
+
+    private void initializeResult(Result result) {
+        result.setBall(0);
+        result.setStrike(0);
     }
 
     private void compare(Result result, Integer userIndex, Integer computerIndex) {
