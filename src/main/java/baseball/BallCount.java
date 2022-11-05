@@ -13,29 +13,26 @@ public class BallCount {
     public BallCount() { }
 
     // 볼 카운트 계산 method
-    public void ruleBallCount(int targetNumber, int guessNumber){
+    public void ruleBallCount(List<Integer> targetNumber, int guessNumber){
         int ballCount = 0;
-        List<Integer> targetDigitList = numberDigitToList(targetNumber);
+//        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
 
-        for (int i = 0; i < targetDigitList.size(); i++) {
-            ballCount += compareDigitList(targetDigitList.get(i),guessDigitList,i);
+        for (int i = 0; i < targetNumber.size(); i++) {
+            ballCount += compareDigitList(targetNumber.get(i),guessDigitList,i);
         }
 
         this.ballCount = ballCount;
     }
 
     // 스트라이크 카운트 계산 method
-    public void ruleStrikeCount(int targetNumber, int guessNumber){
+    public void ruleStrikeCount(List<Integer> targetNumber, int guessNumber){
         int strikeCount = 0;
-        List<Integer> targetDigitList = numberDigitToList(targetNumber);
+//        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
 
-        System.out.println("targetDigitList = " + targetDigitList);
-        System.out.println("guessDigitList = " + guessDigitList);
-
-        for (int i = 0; i < targetDigitList.size(); i++) {
-            if (targetDigitList.get(i) == guessDigitList.get(i)) {
+        for (int i = 0; i < targetNumber.size(); i++) {
+            if (targetNumber.get(i) == guessDigitList.get(i)) {
                 strikeCount++;
             }
         }
@@ -79,10 +76,6 @@ public class BallCount {
         }
 
         return GuessResult.BALL_STRIKE;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
     }
 
 }

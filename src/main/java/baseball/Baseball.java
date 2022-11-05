@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Baseball {
     private Boolean gaming;
-    private int targetNumber;
+    private List<Integer> targetNumber;
     private int guessNumber;
     private BallCount ballCount;
 
@@ -79,21 +79,18 @@ public class Baseball {
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
     private void resetTargetNumber(){
-        int targetNumber = 0;
         int count = 0;
+        targetNumber = new ArrayList<>();
         List<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
-                targetNumber += randomNumber * Math.pow(10,count);
+                targetNumber.add(randomNumber);
                 count++;
             }
         }
-
-        System.out.println("targetNumber = " + targetNumber);
-        this.targetNumber = targetNumber;
     }
 
     // 1~9로 이루어진 서로 다른 세자리 정수인지 Validation
