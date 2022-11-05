@@ -25,6 +25,7 @@ class Game{
 
     void setUserInput() {
         userInput = Console.readLine();
+        checkUserInput();
     }
 
     void checkUserInput() throws IllegalArgumentException{
