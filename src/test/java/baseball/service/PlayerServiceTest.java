@@ -69,8 +69,5 @@ class PlayerServiceTest {
         assertThatThrownBy(() -> {
             validateParseStringToInt(playerInput);
         }).isInstanceOf(IllegalArgumentException.class);
-
     }
-
-
 }
