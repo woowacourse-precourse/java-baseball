@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;;
 
@@ -104,6 +105,49 @@ public class BaseballNumberTest {
             List<Integer> inputNumber = List.of(3, 1, 2);
             int count = BaseballNumber.countBall(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(3);
+        }
+    }
+
+    @Nested
+    class 메시지_출력 {
+        @Test
+        void 낫싱() {
+            int strike = 0;
+            int ball = 0;
+            String message = BaseballNumber.getMessage(strike, ball);
+            assertThat(message).isEqualTo("낫싱");
+        }
+
+        @Test
+        void 볼() {
+            int strike = 0;
+            int ball = 2;
+            String message = BaseballNumber.getMessage(strike, ball);
+            assertThat(message).isEqualTo("2볼");
+        }
+
+        @Test
+        void 스트라이크() {
+            int strike = 2;
+            int ball = 0;
+            String message = BaseballNumber.getMessage(strike, ball);
+            assertThat(message).isEqualTo("2스트라이크");
+        }
+
+        @Test
+        void 스트라이크와_볼이_같이있는경우() {
+            int strike = 2;
+            int ball = 2;
+            String message = BaseballNumber.getMessage(strike, ball);
+            assertThat(message).isEqualTo("2볼 2스트라이크");
+        }
+
+        @Test
+        void 정답() {
+            int strike = 3;
+            int ball = 0;
+            String message = BaseballNumber.getMessage(strike, ball);
+            assertThat(message).isEqualTo("3스트라이크");
         }
     }
 }
