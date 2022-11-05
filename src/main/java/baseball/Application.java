@@ -5,11 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
 
     private static final int NUMBER_SIZE = 3;
     private static final String GAME_RESTART = "1";
+    
+    private static void Exception(String playerInputs) {
+        String numberPattern = "[1-9]{3}";
+        boolean result = Pattern.matches(numberPattern, playerInputs);
+        if (!result) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임 종료됩니다.");
+        }
+    }
 
     private static List<Integer> generateRandomNumberBySize() {
         List<Integer> randomNumber = new ArrayList<>();
@@ -30,6 +39,7 @@ public class Application {
         List<Integer> playerNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String playerInputs = Console.readLine();
+        Exception(playerInputs);
         for (String playerInput : playerInputs.split(""))
             playerNumber.add(Integer.parseInt(playerInput));
         return playerNumber;
