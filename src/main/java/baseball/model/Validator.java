@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.Util;
-
 public abstract class Validator {
 	public final String INPUT_VALUE;
 	final int CORRECT_LENGTH;

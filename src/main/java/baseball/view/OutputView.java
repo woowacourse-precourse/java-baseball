@@ -16,7 +16,7 @@ public class OutputView {
 		System.out.println(START_MESSAGE);
 	}
 
-	public static void tryResultView(BaseballModel model){
+	public static void printTryResult(BaseballModel model){
 		String result = getResult(model.ball, model.strike);
 		System.out.println(result);
 	}
@@ -35,7 +35,7 @@ public class OutputView {
 		return String.join(" ", result);
 	}
 
-	public static void gameWinView(){
+	public static void printGameWinMessage(){
 		System.out.println(WIN_MESSAGE);
 	}
 }

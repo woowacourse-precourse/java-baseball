@@ -34,6 +34,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+
     @Nested
     @DisplayName("입력값 예외 테스트")
     class InputTest{
@@ -57,11 +62,6 @@ class ApplicationTest extends NsTest {
                     assertThatThrownBy(() -> runException("122"))
                             .isInstanceOf(IllegalArgumentException.class));
         }
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
     }
 
     @Nested

@@ -24,11 +24,12 @@ public class BaseballController {
 		OutputView.printGameStartMessage();
 		BaseballModel baseballModel = initGame();
 		do {
-			Validator tryValidator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
-			answerCheck(tryValidator.INPUT_VALUE, baseballModel);
-			OutputView.tryResultView(baseballModel);
+			Validator tryInputValidator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
+			baseballModel.resetCount();
+			answerCheck(tryInputValidator.INPUT_VALUE, baseballModel);
+			OutputView.printTryResult(baseballModel);
 		} while (!isGameWin(baseballModel));
-		OutputView.gameWinView();
+		OutputView.printGameWinMessage();
 	}
 
 	private BaseballModel initGame() {
@@ -48,7 +49,6 @@ public class BaseballController {
 	}
 
 	protected void answerCheck(String tryAnswer, BaseballModel model){
-		model.resetCount();
 		for (int i = 0; i < tryAnswer.length(); i++) {
 			if (model.charAtAnswer(i) == tryAnswer.charAt(i)){
 				model.addStrikeCount();

@@ -28,7 +28,4 @@ public class BaseballModel {
 		return answer.charAt(idx);
 	}
 
-//	public String getAnswer(){
-//		return answer;
-//	}
 }
