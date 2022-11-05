@@ -33,17 +33,17 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("1스트라이크 1볼")
+    @DisplayName("1볼 1스트라이크")
     void 게임4(){
         String result = app.getResult(List.of(1,3,5),List.of(1,2,3));
-        assertThat(result).isEqualTo("1스트라이크 1볼");
+        assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
-    @DisplayName("1스트라이크 2볼")
+    @DisplayName("2볼 1스트라이크")
     void 게임5(){
         String result = app.getResult(List.of(1,3,2),List.of(1,2,3));
-        assertThat(result).isEqualTo("1스트라이크 2볼");
+        assertThat(result).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
