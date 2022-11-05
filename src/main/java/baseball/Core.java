@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Core {
@@ -68,5 +69,21 @@ public class Core {
             return;
         }
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
+    public void validateUserInputThreeDifferentNumbers(String input){
+        if(input.length()!=3){
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        }
+        HashSet<Character> set = new HashSet<>();
+        for(char c : input.toCharArray()){
+            if(!Character.isDigit(c) || c=='0'){
+                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+            }
+            set.add(c);
+        }
+        if(set.size()!=3){
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        }
     }
 }

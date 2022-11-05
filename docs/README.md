@@ -46,9 +46,9 @@
 - ⬜ 사용자의 예측 정답값 입력
   - ⬜ 서로 다른 3자리의 수
   - ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
-- ⬜ validateUserInputThreeDifferentNumbers 메서드 구현
-  - ⬜ 사용자 입력값이 각 자릿수가 1~9사이의 모두 다른 세자리 숫자면 통과
-  - ⬜ 이외의 값이라면 예외 발생
+- ✅ validateUserInputThreeDifferentNumbers 메서드 구현
+  - ✅ 사용자 입력값이 각 자릿수가 1~9사이의 모두 다른 세자리 숫자면 통과
+  - ✅ 이외의 값이라면 IllegalArgumentException 예외 발생
 - ⬜ stringToIntegerList 메서드 구현
   - 숫자 문자열을 입력받아 각 자릿수를 
 
