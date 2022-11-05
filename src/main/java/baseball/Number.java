@@ -14,13 +14,13 @@ public class Number {
     private static final int MAX_NUMBER = 9;
 
     public List randomNumber() {
-        Set<Integer> digitNumberSet = new HashSet<>();
+        Set<String> digitNumberSet = new HashSet<>();
 
         while(digitNumberSet != null && digitNumberSet.size() < DIGIT_NUMBER) {
-            digitNumberSet.add(pickRandomDigitNumber());
+            digitNumberSet.add(Integer.toString(pickRandomDigitNumber()));
         }
 
-        List<Integer> digits = new ArrayList<>(digitNumberSet);
+        List<String> digits = new ArrayList<>(digitNumberSet);
         return digits;
     }
 
@@ -73,12 +73,9 @@ public class Number {
     }
 
     public String userNumber() {
-        String userNum;
-        while(true) {
-            userNum = userInput();
-            if(userNumberCheck(userNum) == true) {
-                break;
-            }
+        String userNum = userInput();
+        if(userNumberCheck(userNum) == false) {
+            throw new IllegalArgumentException();
         }
         return userNum;
     }
