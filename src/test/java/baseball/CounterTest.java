@@ -14,4 +14,14 @@ public class CounterTest {
 
         Assertions.assertThat(strikeCount).isEqualTo(2);
     }
+
+    @Test
+    public void getBallCount_메서드로_볼_개수를_반환() {
+        BaseballGameNumber computerNumber = new BaseballGameNumber(List.of(3, 6, 9));
+        BaseballGameNumber expectedNumber = new BaseballGameNumber(List.of(6, 2, 5));
+
+        int ballCount = Counter.getBallCount(computerNumber, expectedNumber);
+
+        Assertions.assertThat(ballCount).isEqualTo(1);
+    }
 }

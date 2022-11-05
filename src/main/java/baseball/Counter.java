@@ -10,4 +10,8 @@ public class Counter {
         }
         return count;
     }
+
+    public static int getBallCount(BaseballGameNumber actual, BaseballGameNumber expected) {
+        return 0;
+    }
 }
