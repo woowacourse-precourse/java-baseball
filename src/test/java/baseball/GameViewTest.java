@@ -14,7 +14,7 @@ class GameViewTest {
 
         // when
         // then
-        assertThrows(IllegalArgumentException.class, () -> gameView.isValidUser(0));
+        assertThrows(IllegalArgumentException.class, () -> view.isValidUser(0));
     }
 
     void 게임_다시_시작_인풋_테스트_2() throws Exception {
@@ -23,6 +23,6 @@ class GameViewTest {
 
         // when
         // then
-        assertThrows(IllegalArgumentException.class, () -> gameView.isValidUser(3));
+        assertThrows(IllegalArgumentException.class, () -> view.isValidUser(3));
     }
 }
