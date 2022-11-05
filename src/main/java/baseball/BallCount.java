@@ -30,4 +30,23 @@ public class BallCount {
         
         return ballCnt;
     }
+
+    public static void printBallCount(int[] answer, String inputValue) {
+        // 스트라이크 및 볼 카운트 출력
+        int ball = ballCount(answer, inputValue);
+        int strike = strikeCount(answer, inputValue);
+
+        if(ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        else if(ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        else if(ball != 0 && strike != 0){
+            System.out.println(ball+"볼 " + strike + "스트라이크");
+        }
+        else {
+            System.out.println("낫싱");
+        }
+    }
 }
