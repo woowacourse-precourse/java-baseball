@@ -9,6 +9,8 @@
   - 각 자릿수가 1에서 9 사이인지 체크
   - 각 자릿수가 모두 다른지 체크
 - int get(int i) : 리스트 numbers 의 i번째 원소를 반환하는 함수
+- int indexOf(int i) : 리스트 numbers 에서 i의 위치를 반환하는 함수
+  - i가 리스트에 없다면 -1 반환 
 
 ### class Computer
 
