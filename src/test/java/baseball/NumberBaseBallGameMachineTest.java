@@ -6,7 +6,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -139,6 +138,7 @@ class NumberBaseBallGameMachineTest {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
         NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+
         String message = "메시지 테스트 입니다";
         //when
         gameMachine.display(message);
@@ -153,6 +153,7 @@ class NumberBaseBallGameMachineTest {
         String input = "콘솔로 입력합니다.";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+
         NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
         //when
         String inputResult = gameMachine.getInputLine();
@@ -167,11 +168,94 @@ class NumberBaseBallGameMachineTest {
         String input = "312";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+
         NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
         //when
         List<Integer> numberList = gameMachine.getThreeNumberInput();
         //then
         assertThat(numberList.size()).isEqualTo(3);
         assertThat(numberList).contains(1, 2, 3);
+    }
+
+    @DisplayName("새 게임 여부 입력 기능 테스트")
+    @Test
+    void getNewGameOrStop() {
+        //given
+        String input = "1";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        //when
+        int newGameOrStop = gameMachine.getNewGameOrStop();
+        //then
+        assertThat(newGameOrStop).isEqualTo(1);
+    }
+
+    @DisplayName("새 게임 여부 판단 기능 테스트")
+    @Test
+    void askNewGameOrStop() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        String input = "1";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        //when
+        boolean newGameOrStop = gameMachine.askNewGameOrStop();
+        //then
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + "\n");
+        assertThat(newGameOrStop).isTrue();
+    }
+
+    @DisplayName("정답 판단 기능 테스트")
+    @Test
+    void isAnswer() {
+        //given
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        List<Integer> judge = List.of(0, 3);
+        //when
+        boolean result = gameMachine.isAnswer(judge);
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("정답과 입력 비교 기능 테스트")
+    @Test
+    void getInputResult() {
+        //given
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        List<Integer> answer = List.of(1, 2, 3);
+        gameMachine.referee.setAnswer(answer);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        String input = "123";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        boolean inputResult = gameMachine.getInputResult();
+        //then
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("숫자를 입력해주세요 : " + "3스트라이크" + "\n");
+        assertThat(inputResult).isTrue();
+    }
+
+    @DisplayName("정답 생성 기능 테스트")
+    @Test
+    void makeNewAnswer() {
+        //given
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        gameMachine.makeNewAnswer();
+        //when
+        List<Integer> answer = gameMachine.referee.answer;
+        //then
+        assertThat(answer.size()).isEqualTo(3);
+        assertThat(answer).allSatisfy(num -> {
+            assertThat(num).isBetween(1, 9);
+        });
     }
 }
