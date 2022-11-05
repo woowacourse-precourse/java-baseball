@@ -138,4 +138,46 @@ class ApplicationTest extends NsTest {
         assertThat(validUserInput).isEqualTo(userInput);
     }
 
+    @Test
+    void validRestartOrEndInput3() {
+        //given
+        User user = new User();
+        String userInput = "3";
+
+        //when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            user.validRestartOrEndInput(userInput);
+        });
+
+        String message = exception.getMessage();
+
+        //then
+        assertThat(message).isEqualTo("1 또는 2 의 값만 입력이 가능합니다.");
+    }
+
+    @Test
+    void validRestartOrEndInput1() {
+        //given
+        User user = new User();
+        String userInput = "1";
+
+        //when
+        int validRestartOrEndInput = user.validRestartOrEndInput(userInput);
+
+        //then
+        assertThat(validRestartOrEndInput).isEqualTo(1);
+    }
+
+    @Test
+    void validRestartOrEndInput2() {
+        //given
+        User user = new User();
+        String userInput = "2";
+
+        //when
+        int validRestartOrEndInput = user.validRestartOrEndInput(userInput);
+
+        //then
+        assertThat(validRestartOrEndInput).isEqualTo(2);
+    }
 }
