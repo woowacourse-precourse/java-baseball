@@ -17,7 +17,6 @@ public class Game {
     public void gameStart() {
         initGame();
         computerNumber = computer.getComputerNumber();
-        System.out.println(computerNumber);
         do {
             strike=0;
             ball=0;
