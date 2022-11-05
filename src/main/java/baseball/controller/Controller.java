@@ -26,6 +26,7 @@ public class Controller {
             gameResult.calculate(computer, player);
             OutputView.printResult(gameResult.toString());
         } while (gameResult.getStrike() != 3);
+        OutputView.printGameEnd();
     }
 
     boolean chooseRestartOrNot() {
