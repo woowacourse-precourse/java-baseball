@@ -45,4 +45,14 @@ public class Core {
         }
         return false;
     }
+
+    public int countBall(List<Integer> computerNumber,List<Integer> userNumber){
+        int count=0;
+        for(int index=0; index<userNumber.size(); index++){
+            if(isDigitBall(computerNumber, userNumber, index)){
+                count++;
+            }
+        }
+        return count;
+    }
 }
