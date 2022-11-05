@@ -3,9 +3,9 @@ package baseball.input;
 import java.util.List;
 
 public class GameInput {
-    public final Integer first;
-    public final Integer second;
-    public final Integer third;
+    public final int first;
+    public final int second;
+    public final int third;
 
     public GameInput(int num) {
         validateInput(num);
