@@ -39,7 +39,7 @@ public class Player {
 
         Set stringToSet = new HashSet<>(stringToArray);
 
-        if(playerStringNumber.length() != stringToSet.size()) {
+        if (playerStringNumber.length() != stringToSet.size()) {
             return false;
         }
 
