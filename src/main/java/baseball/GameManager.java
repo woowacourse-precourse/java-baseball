@@ -135,7 +135,13 @@ public class GameManager {
     }
 
     private int getBall(ArrayList<Integer> userGuess) {
+        int ret = 0;
+        for(int userIndex = 0;userIndex < 3;userIndex++) {
+            int userDigit = userGuess.get(userIndex);
+            ret += getCountUserDigitInGuess(userIndex, userDigit);
+        }
 
+        return ret;
     }
 
     private boolean isNothing(int strike, int ball) {
