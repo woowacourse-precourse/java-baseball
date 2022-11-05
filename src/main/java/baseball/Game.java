@@ -1,99 +1,97 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Game {
+
     private Integer strike;
     private Integer ball;
     private List<Integer> comNum;
     private List<Integer> userNum;
 
-    public Game(){
+    public Game() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         init();
     }
-
     //함수 호출하자마자 랜덤값 세자리 생성
-    public void init(){
+    public void init() {
         comNum = new ArrayList<>();
-        for(int i =0; i<3;){
-            int num = Randoms.pickNumberInRange(1,9);
-            if(!comNum.contains(num)){
+        for (int i = 0; i < 3; ) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!comNum.contains(num)) {
                 comNum.add(num);
                 i++;
             }
         }
     }
-
     //사용자 세자리 입력받기
-    public void playGame(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요");
+    public void playGame() {
+        System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         this.userNum = makeList(userInput);
         validateUserNum();
-        gameStart();
-        System.out.println(gameResult());
+        compareNumbers();
+        System.out.println(compareResultReturn());
     }
 
     //사용자 입력받은거 리스트로 바꾸기
-    public List<Integer> makeList(String userInput){
+    public List<Integer> makeList(String userInput) {
         String[] arrayInput = userInput.split("");
         List<Integer> userNumbers = new ArrayList<>();
-        for(int i=0; i<userInput.length();i++){
+        for (int i = 0; i < userInput.length(); i++) {
             userNumbers.add(Integer.parseInt(arrayInput[i]));
         }
         return userNumbers;
     }
 
-    public void validateUserNum(){
-        if(userNum.size() != 3){
-            throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+    //사용자 입력 오류시 오류메시지 출력
+    public void validateUserNum() {
+        if (userNum.size() != 3) {
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 세자리 숫자를 입력해주세요.");
         }
-        if(userNum.contains(0)){
-            throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+        if (userNum.contains(0)) {
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 0을 제외한 숫자를 입력해주세요.");
         }
-        for(int i =0; i< userNum.size(); i++){
-            if(Collections.frequency(userNum, userNum.get(i)) != 1){
-                throw  new IllegalArgumentException("올바른 숫자가 아닙니다. 같은 숫자가 존재합니다.");
+        for (int i = 0; i < userNum.size(); i++) {
+            if (Collections.frequency(userNum, userNum.get(i)) != 1) {
+                throw new IllegalArgumentException("올바른 숫자가 아닙니다. 서로 다른 숫자로 이루어져야 합니다.");
             }
         }
     }
 
-    //컴퓨터 숫자와 사용자 숫자 비교
-    public void gameStart(){
+    //스트라이크 , 볼개수 세기
+    public void compareNumbers() {
         this.strike = 0;
         this.ball = 0;
-        for(int i = 0; i < userNum.size(); i++){
-            //스트라이크 카운트
-            if(comNum.indexOf(userNum.get(i))==i){
+        for (int i = 0; i < userNum.size(); i++) {
+            if (comNum.indexOf(userNum.get(i)) == i) {
                 strike++;
                 continue;
             }
-            //볼 카운트
-            if(comNum.contains(userNum.get(i))){
+            if (comNum.contains(userNum.get(i))) {
                 ball++;
             }
         }
     }
 
-    //힌트 메시지 발생
-    public String gameResult(){
-        if(ball != 0 && strike != 0){
-            return (ball + "볼 " + strike + "스트라이크");
+    //힌트메시지 출력
+    public String compareResultReturn() {
+        if (ball != 0 && strike != 0) {
+            return (ball + "볼" + " " + strike + "스트라이크");
         }
-        if(ball ==0 && strike != 0){
-            return(strike + "스트라이크");
+        if (ball == 0 && strike != 0) {
+            return (strike + "스트라이크");
         }
-        if(ball != 0 && strike ==0){
+        if (ball != 0 && strike == 0) {
             return (ball + "볼");
         }
         return ("낫싱");
     }
 
-
+    
 }
