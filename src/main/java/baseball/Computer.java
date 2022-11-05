@@ -16,4 +16,18 @@ public class Computer {
             answerNumber.add(randomNumber);
         }
     }
+
+    public Integer checkStrike(int userNumber, int idx){
+        if(answerNumber.contains(userNumber) && answerNumber.indexOf(userNumber) == idx){
+            return 1;
+        }
+        return 0;
+    }
+
+    public Integer checkBall(int userNumber, int idx){
+        if(answerNumber.contains(userNumber) && answerNumber.indexOf(userNumber) == idx){
+            return 1;
+        }
+        return 0;
+    }
 }
