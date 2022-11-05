@@ -1,29 +1,29 @@
 package baseball;
 
 import java.util.List;
-import java.util.Set;
 
 public class Numbers {
 
-    private final ThreeDigits threeDigits;
+    private static final int DIGITS_LENGTH = 3;
+
+    private final ExclusiveDigits exclusiveDigits;
 
     public Numbers(List<Integer> digits) {
-        validateNoDuplicates(digits);
-        this.threeDigits = new ThreeDigits(digits);
+        validateLength(digits);
+        this.exclusiveDigits = new ExclusiveDigits(digits);
     }
 
-    private void validateNoDuplicates(List<Integer> digits) {
-        Set<Integer> digitsSet = Set.copyOf(digits);
-        if (digits.size() != digitsSet.size()) {
-            throw new IllegalArgumentException("숫자는 중복되면 안됩니다");
+    private void validateLength(List<Integer> digits) {
+        if (digits.size() != DIGITS_LENGTH) {
+            throw new IllegalArgumentException("숫자는 3자리여야 합니다");
         }
     }
 
     public Long countStrikesWith(Numbers other) {
-        return threeDigits.countPositionMatches(other.threeDigits);
+        return exclusiveDigits.countPositionMatches(other.exclusiveDigits);
     }
 
     public Long countBallsWith(Numbers other) {
-        return threeDigits.countDigitMatches(other.threeDigits);
+        return exclusiveDigits.countDigitMatches(other.exclusiveDigits);
     }
 }

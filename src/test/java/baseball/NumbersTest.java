@@ -10,11 +10,21 @@ import org.junit.jupiter.api.Test;
 public class NumbersTest {
 
     @Test
-    @DisplayName("숫자는 서로 달라야 한다")
-    void every_number_is_different() {
-        List<Integer> digits = List.of(1, 2, 1);
+    @DisplayName("숫자가 세 개가 아니면 예외를 던진다")
+    void exception_on_digits_length_is_not_three() {
+        List<Integer> twoDigits = List.of(1, 2);
+        List<Integer> fourDigits = List.of(1, 2, 3, 4);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(digits));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoDigits));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourDigits));
+    }
+
+    @Test
+    @DisplayName("숫자는 세 자리다")
+    void digits_length_is_three() {
+        List<Integer> threeDigits = List.of(1, 2, 3);
+
+        assertThatNoException().isThrownBy(() -> new Numbers(threeDigits));
     }
 
     @Test
