@@ -51,4 +51,20 @@ public interface Validation {
             }
         };
     }
+
+    static Validation isRange(int start, int end){
+        return new Validation() {
+            @Override
+            public boolean check(String inputValue) {
+                boolean isNumber = Validation.isNumber().check(inputValue);
+
+                if(isNumber){
+                    int value = Integer.parseInt(inputValue);
+                    return start <= value && end >= value;
+                }
+
+                return false;
+            }
+        };
+    }
 }
