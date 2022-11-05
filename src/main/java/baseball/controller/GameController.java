@@ -19,19 +19,16 @@ public class GameController {
         playerView = new PlayerView();
         scoreResultView = new ScoreResultView();
         gameStatusView = new GameStatusView();
+        gameStatusService = new GameStatusService();
     }
 
     public void runGame(){
+        generateGameStatus();
         while(gameStatusService.getGameStatus()){
-            initializeGame();
+            generateComputer();
             startGame();
             whatToDoNext();
         }
-    }
-
-    private void initializeGame(){
-        generateComputer();
-        generateGameStatus();
     }
 
     private void generateComputer(){
