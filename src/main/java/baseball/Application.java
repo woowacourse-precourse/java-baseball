@@ -67,11 +67,13 @@ public class Application {
         boolean continueGame = true;
 
         while (continueGame) {
+            List<Integer> userNum = new ArrayList<>();
             try{
-                List<Integer> userNum = getUserInput();
+                userNum = getUserInput();
             }catch(IllegalArgumentException e){
                 System.out.println(e.toString());
             }
+            compareNums(computerNum, userNum);
         }
     }
 
