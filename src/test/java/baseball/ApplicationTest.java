@@ -3,6 +3,7 @@ package baseball;
 import static Controller.Converter.*;
 import static Controller.Guess.*;
 import static Controller.Printer.*;
+import static Controller.Restarter.*;
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static computer.BallsAndStrikesCountCalculator.*;
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import Controller.Game;
+import Controller.Restarter;
 import User.Input;
 import User.Outputs;
 import User.Validator;
@@ -25,6 +27,16 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void restart_메소드로_게임_재시작_여부_리턴() {
+		System.setIn(new ByteArrayInputStream(END_GAME.getBytes()));
+		assertThat(restart()).isFalse();
+		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+		System.setIn(new ByteArrayInputStream(RESTART_GAME.getBytes()));
+		assertThat(restart()).isTrue();
+
+	}
 	@Test
 	void play_메소드로_게임_실행() {
 		assertRandomNumberInRangeTest(() -> {
