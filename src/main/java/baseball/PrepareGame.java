@@ -9,16 +9,15 @@ public class PrepareGame {
     public List<Integer> setComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            computer = isEachDigit(computer);
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if(!isEachDigit(computer, randomNumber)){
+                computer.add(randomNumber);
+            }
         }
         return computer;
     }
 
-    public List<Integer> isEachDigit(List<Integer> checkDigit) {
-        int randomNumber = Randoms.pickNumberInRange(1,9);
-        if(!checkDigit.contains(randomNumber)){
-            checkDigit.add(randomNumber);
-        }
-        return checkDigit;
+    public Boolean isEachDigit(List<Integer> digitList, int digitNumber) {
+        return digitList.contains(digitNumber);
     }
 }
