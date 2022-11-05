@@ -70,8 +70,12 @@ public class GameView {
         return false;
     }
 
-    private int parseIntFromInputOfUser() {
-        return Integer.parseInt(readLine());
+    private int parseIntFromStr(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
     }
 
     private String getString() {
