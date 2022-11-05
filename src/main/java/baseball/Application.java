@@ -51,7 +51,6 @@ public class Application {
         return lst;
     }
 
-
     private int charToInt(char c) {
         if (!Character.isDigit(c)) {
             throw new IllegalArgumentException();
@@ -61,5 +60,21 @@ public class Application {
 
     private boolean isValidSize(String input) {
         return input.length() == 3;
+    }
+
+    private void printStartingGuide(){
+        System.out.println("숫자 아구 게임을 시작합니다.");
+    }
+
+    private void printInputGuide(){
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    private void printEndingGuide(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private void printRestartGuide(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
     }
 }
