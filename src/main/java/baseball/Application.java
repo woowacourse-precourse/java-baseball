@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exception.Exception;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -23,7 +24,7 @@ public class Application {
                 ball = 0;
 
                 String number = Console.readLine();
-                verifyNum(number);
+                Exception.verifyNum(number);
 
                 for(int i = 0; i < number.length(); i++) {
 
@@ -61,16 +62,6 @@ public class Application {
         return computer;
     }
 
-    public static void verifyNum(String number) {
-
-        if(number.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        if(number.charAt(0) == number.charAt(1) || number.charAt(1) == number.charAt(2) ||
-                number.charAt(0) == number.charAt(2)) {
-            throw new IllegalArgumentException();
-        }
-    }
     public static Boolean result(int strike, int ball) {
 
         boolean flag = false;
