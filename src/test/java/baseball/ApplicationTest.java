@@ -3,6 +3,8 @@ package baseball;
 import baseball.controller.ComputerController;
 import baseball.dto.Score;
 import baseball.system.conversion.*;
+import baseball.system.exception.ConverterNotFoundException;
+import baseball.system.exception.ValidatorNotFoundException;
 import baseball.system.holder.AnswerHolder;
 import baseball.system.holder.ConverterHolder;
 import baseball.system.holder.ValidatorHolder;
@@ -29,8 +31,7 @@ import java.util.stream.Stream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @BeforeEach
@@ -330,10 +331,11 @@ class ApplicationTest extends NsTest {
         @Test
         @DisplayName("List<Integer> 를 UserNumber 로 변환하는 요청을 하면 IntegerListToUserNumberConverter 가 동작한다.")
         void givenIntegerListToUserNumber_whenRunningConverterHolder_thenRunsIntegerListToUserNumberConverter() {
-            // supports 통과 여부
+            // given
             List<Integer> target = List.of(5, 7, 3);
             Class<UserNumber> to = UserNumber.class;
 
+            // supports 통과 여부
             assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isTrue();
             assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
             assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
@@ -352,12 +354,13 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("Score 를 String 메시지로 변환하는 요청을 하면 ScoreToMessageConverter 가 동작한다.")
+        @DisplayName("Score 를 String 으로 변환하는 요청을 하면 ScoreToMessageConverter 가 동작한다.")
         void givenScoreToString_whenRunningConverterHolder_thenRunsStringToMessageConverter() {
-            // supports 통과 여부
+            // given
             Score target = Score.makeNewScoreWith(2, 1);
             Class<String> to = String.class;
 
+            // supports 통과 여부
             assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
             assertThat(new ScoreToMessageConverter().supports(target, to)).isTrue();
             assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
@@ -374,12 +377,13 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("String 문자열을 List<Integer> 로 변환하는 요청을 하면 StringToIntegerListConverter 가 동작한다.")
+        @DisplayName("String 을 List<Integer> 로 변환하는 요청을 하면 StringToIntegerListConverter 가 동작한다.")
         void givenStringToIntegerList_whenRunningConverterHolder_thenRunsStringToIntegerListConverter() {
-            // supports 통과 여부
+            // given
             String target = "345";
             Class<List> to = List.class;
 
+            // supports 통과 여부
             assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
             assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
             assertThat(new StringToIntegerListConverter().supports(target, to)).isTrue();
@@ -397,12 +401,13 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        @DisplayName("String 문자열을 Restart 객체로 변환하는 요청을 하면 StringToRestartConverter 가 동작한다.")
+        @DisplayName("String 을 Restart 로 변환하는 요청을 하면 StringToRestartConverter 가 동작한다.")
         void givenStringToRestart_whenRunningConverterHolder_thenRunsStringToRestartConverter() {
-            // supports 통과 여부
+            // given
             String target = StringToRestartConverter.EXIT_VALUE;
             Class<Restart> to = Restart.class;
 
+            // supports 통과 여부
             assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
             assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
             assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
@@ -417,6 +422,84 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> ConverterHolder.convert("3", to))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(StringToRestartConverter.INVALID_INPUT_VALUE_MESSAGE);
+        }
+
+        @Test
+        @DisplayName("어떤 Converter 에도 맞지 않는 값이 주어지면 예외가 발생한다.")
+        void givenDisMatchingToAnyConverters_whenRunningConverterHolder_thenThrowsException() {
+            // given
+            int target = 345;
+            Class<Restart> to = Restart.class;
+
+            assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
+            assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
+            assertThat(new StringToRestartConverter().supports(target, to)).isFalse();
+
+            // 변환 시도시
+            assertThatThrownBy(() -> ConverterHolder.convert(target, to))
+                    .isInstanceOf(ConverterNotFoundException.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("ValidatorHolder 테스트")
+    class ValidatorTest {
+        @Test
+        @DisplayName("List<Integer>가 UserNumber 또는 Answer 객체를 만들기에 적합한 지 검증 요청을 하면 NumberValidator가 동작한다.")
+        void givenIntegerListValidatingForUserNumberOrAnswer_whenRunningValidatorHolder_thenRunsNumberValidator() {
+            // given
+            List<Integer> target = List.of(1, 3, 4);
+            Class<UserNumber> to = UserNumber.class;
+
+            // supports 통과 여부
+            assertThat(new NumberValidator().supports(target, to)).isTrue();
+            assertThat(new StringToIntegerListConversionValidator().supports(target, to)).isFalse();
+
+            // 검증 통과케이스
+            assertThatCode(() -> ValidatorHolder.validate(target, to))
+                    .doesNotThrowAnyException();
+
+            // 검증 실패케이스
+            assertThatThrownBy(() -> ValidatorHolder.validate(List.of(4, 5, 4), to))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(NumberValidator.DUPLICATING_NUMBER_MESSAGE);
+        }
+
+        @Test
+        @DisplayName("String 이 List<Integer> 로 변환하기에 적합한 지 검증 요청을 하면 StringToIntegerListConversionValidator 가 동작한다.")
+        void givenStringValidatingForIntegerList_whenRunningValidatorHolder_thenRunsStringToIntegerListConversionValidator() {
+            // given
+            String target = "345";
+            Class<List> to = List.class;
+
+            // supports 통과 여부
+            assertThat(new NumberValidator().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConversionValidator().supports(target, to)).isTrue();
+
+            // 검증 통과케이스
+            assertThatCode(() -> ValidatorHolder.validate(target, to))
+                    .doesNotThrowAnyException();
+
+            // 검증 실패케이스
+            assertThatThrownBy(() -> ValidatorHolder.validate("6-7", to))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(StringToIntegerListConversionValidator.VALUE_NOT_NATURAL_NUMBER_MESSAGE);
+        }
+
+        @Test
+        @DisplayName("어떤 Validator 에도 맞지 않는 값이 주어지면 예외가 발생한다.")
+        void givenDisMatchingToAnyValidators_whenRunningValidatorHolder_thenThrowsException() {
+            // given
+            int target = 345;
+            Class<List> to = List.class;
+
+            assertThat(new NumberValidator().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConversionValidator().supports(target, to)).isFalse();
+
+            // 변환 시도시
+            assertThatThrownBy(() -> ValidatorHolder.validate(target, to))
+                    .isInstanceOf(ValidatorNotFoundException.class);
         }
     }
 }
