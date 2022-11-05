@@ -14,10 +14,10 @@ public class Game {
     static final String CORRECT_ANSWER = "3스트라이크";
     static final String NOTHING = "낫싱";
 
-    public void printStartMessage(){
+    public void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
-    public List<Integer> createComputerNumber(){
+    public List<Integer> createComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -27,41 +27,42 @@ public class Game {
         }
         return computer;
     }
-    public List<Integer> inputUserNumber(){
+    public List<Integer> inputUserNumber() {
         String numberStr = readLine();
         List<Integer> user = new ArrayList<>();
-        for (int i=0; i<3; i++){
+        for (int i=0; i<3; i++) {
             user.add(numberStr.charAt(i)-'0');
         }
         return user;
     }
-    public int checkStrike(List<Integer> computer, List<Integer> user){
+    public int checkStrike(List<Integer> computer, List<Integer> user) {
         int strike=0;
-        for (int i=0; i<3; i++){
+        for (int i=0; i<3; i++) {
             if (computer.get(i) == user.get(i)) strike++;
         }
         return strike;
     }
-    public int checkBall(List<Integer> computer, List<Integer> user, int strike){
+    public int checkBall(List<Integer> computer, List<Integer> user, int strike) {
         int ball=0;
-        for (int i=0; i<3; i++){
+        for (int i=0; i<3; i++) {
             if (computer.contains(user.get(i))) ball++;
         }
         return ball - strike;
     }
-    public String getResult(List<Integer> computer, List<Integer> user){
+    public String getResult(List<Integer> computer, List<Integer> user) {
         int strike = checkStrike(computer, user);
         int ball = checkBall(computer, user, strike);
 
         String result;
-        if (ball > 0 && strike > 0)
+        if (ball > 0 && strike > 0) {
             result = ball + BALL + strike + STRIKE;
-        else if (ball == 0 && strike > 0)
+        } else if (ball == 0 && strike > 0) {
             result = strike + STRIKE;
-        else if (ball > 0 && strike == 0)
+        } else if (ball > 0 && strike == 0) {
             result = ball + BALL;
-        else
+        } else {
             result = NOTHING;
+        }
 
         return result;
     }
