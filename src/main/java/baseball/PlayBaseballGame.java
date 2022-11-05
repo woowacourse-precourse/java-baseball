@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class PlayBaseballGame {
+    private Integer total;
     private Integer strike;
     private Integer ball;
     private List<Integer> RandomNum;
@@ -38,12 +39,24 @@ public class PlayBaseballGame {
 
     }
 
+    public void countTotal(){
+        for (int i = 0; i < RandomNum.size(); i++){
+            if (RandomNum.contains(UserNum.get(i))){
+                total++;
+            }
+        }
+    }
+
     public void countStrike(){
         for (int i = 0; i < RandomNum.size(); i++){
             if (UserNum.get(i) == RandomNum.get(i)){
                 strike++;
             }
         }
+    }
+
+    public void countBall(){
+        ball = total - strike;
     }
 
 
