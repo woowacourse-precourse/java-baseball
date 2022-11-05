@@ -39,7 +39,7 @@ public class Application {
         }
     }
 
-    private static String getReStart() {
+    public static String getReStart() {
         System.out.println(SystemMessage.GAME_WIN_MESSAGE);
         System.out.println(SystemMessage.GAME_RESTART_MESSAGE);
 

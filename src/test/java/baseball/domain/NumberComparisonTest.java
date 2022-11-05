@@ -44,7 +44,4 @@ class NumberComparisonTest {
         int compare = numberComparison.compare(Arrays.asList(4, 9, 5), Arrays.asList(1, 2, 3));
         assertThat(compare).isEqualTo(result);
     }
-
-
-
 }
