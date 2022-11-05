@@ -55,7 +55,7 @@ BUILD SUCCESSFUL in 0s
 - [x] FEATURE3. 난수 정답 생성 메서드
 - [x] FEATURE4. 플레이어 숫자 입력 메서드
 - [ ] FEATURE5. 입력받은 숫자 비교하여 점수 계산 메서드
-  - [ ] FEATURE6. 점수 계산 결과 BaseballGameResult 클래스
+  - [x] FEATURE6. 점수 계산 결과 BaseballGameResult 클래스
   - [ ] FEATURE7. 스트라이크 개수 계산 메서드
   - [ ] FEATURE8. 볼 개수 계산 메서드
   - [ ] FEATURE9. 클래스 생성자
@@ -89,8 +89,8 @@ BUILD SUCCESSFUL in 0s
 
 - [ ] **CLASS 2**. `BaseballGameResult`
   - **Class Variables:**
-    - [ ] `private static final String strike`
-    - [ ] `private static final String ball`
+    - [x] `private final String strike`
+    - [x] `private final String ball`
   - **Class Methods:**
     - [ ] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
     - [ ] `String toString()`
