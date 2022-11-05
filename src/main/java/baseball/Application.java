@@ -12,10 +12,21 @@ public class Application {
         String correctAnswer = makeRandomNumStr();
 
         String userAnswer = Console.readLine();
+
         lengthCheck(userAnswer);
         numberCheck(userAnswer);
+        duplicateCheck(userAnswer);
 
+    }
 
+    private static void duplicateCheck(String userAnswer) {
+        char first = userAnswer.charAt(0);
+        char second = userAnswer.charAt(1);
+        char third = userAnswer.charAt(2);
+
+        if(first==second||second==third||first==third){
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void numberCheck(String userAnswer) {
