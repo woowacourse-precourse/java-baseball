@@ -15,7 +15,7 @@ class OpponentTest {
 
         @BeforeEach
         void init() {
-            opponent = new Opponent(1, 9, 3);
+            opponent = new Opponent();
         }
 
         @DisplayName("각 숫자가 각각 다르다")
