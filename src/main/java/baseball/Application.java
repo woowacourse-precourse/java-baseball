@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         boolean game = true;
         boolean win = true;
-        HintMessage hint = new HintMessage();
+        HintMessage hintMessage = new HintMessage();
         while (game) {
             ComputerNumber computerNumber = new ComputerNumber();
             computerNumber.makeRandomNumber();
@@ -26,7 +26,7 @@ public class Application {
                 userNumber = new UserNumber();
                 userNumber.makeUserNumber();
                 user = userNumber.getUserNumber();
-                win = hint.checkPoint(user, com);
+                win = hintMessage.checkPoint(user, com);
             } while (win);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
