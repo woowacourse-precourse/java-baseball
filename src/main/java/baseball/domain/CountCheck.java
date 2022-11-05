@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public class CountLogic {
+public class CountCheck {
 
 
     private int strikeCount;
@@ -14,7 +14,7 @@ public class CountLogic {
         return ballCount;
     }
 
-    public CountLogic() {
+    public CountCheck() {
         strikeCount = 0;
         ballCount = 0;
     }

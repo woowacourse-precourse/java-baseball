@@ -9,28 +9,28 @@ public class Hint {
     public static final String SPACE_MESSAGE = " ";
     public static final String NOTHING_MESSAGE = "낫싱";
 
-    private CountLogic countLogic;
+    private CountCheck countCheck;
 
     public Hint(ThreeDigitNum answer, ThreeDigitNum input) {
         List<Integer> answerList = answer.list();
         List<Integer> inputList = input.list();
 
-        countLogic = new CountLogic();
+        countCheck = new CountCheck();
 
         updateStrikeCount(answerList, inputList);
         updateBallCount(answerList, inputList);
     }
     public boolean isAnswer() {
-        return countLogic.isAnswer();
+        return countCheck.isAnswer();
     }
 
     @Override
     public String toString() {
-        if (countLogic.isAllCountEmpty()) {
+        if (countCheck.isAllCountEmpty()) {
             return NOTHING_MESSAGE;
         }
-        String strikeMsg = String.format("%d%s", countLogic.getStrikeCount(), STRIKE_MESSAGE);
-        String ballMsg = String.format("%d%s", countLogic.getBallCount(), BALL_MESSAGE);
+        String strikeMsg = String.format("%d%s", countCheck.getStrikeCount(), STRIKE_MESSAGE);
+        String ballMsg = String.format("%d%s", countCheck.getBallCount(), BALL_MESSAGE);
 
         return makeHintMsg(strikeMsg, ballMsg);
     }
@@ -53,7 +53,7 @@ public class Hint {
         if (!isEqualValue(answerList.get(answerIdx), inputList.get(inputIdx))) {
             return;
         }
-        countLogic.addBallCount();
+        countCheck.addBallCount();
     }
 
     private void updateStrikeCount(List<Integer> answerList, List<Integer> inputList) {
@@ -66,7 +66,7 @@ public class Hint {
         if (!isEqualBirth(answerList, inputList, answerIdx)) {
             return;
         }
-        countLogic.addStrikeCount();
+        countCheck.addStrikeCount();
     }
 
     private boolean isEqualBirth(List<Integer> answerList, List<Integer> inputList, int answerIdx) {
@@ -89,19 +89,19 @@ public class Hint {
     }
 
     private void addStrikeMsg(String strikeMsg, StringBuffer stringBuffer) {
-        if (!countLogic.isStrikeCountEmpty()) {
+        if (!countCheck.isStrikeCountEmpty()) {
             stringBuffer.append(strikeMsg);
         }
     }
 
     private void addSpaceMsg(StringBuffer stringBuffer) {
-        if (countLogic.isAllCountExist()) {
+        if (countCheck.isAllCountExist()) {
             stringBuffer.append(SPACE_MESSAGE);
         }
     }
 
     private void addBallMsg(String ballMsg, StringBuffer stringBuffer) {
-        if (!countLogic.isBallCountEmpty()) {
+        if (!countCheck.isBallCountEmpty()) {
             stringBuffer.append(ballMsg);
         }
     }
