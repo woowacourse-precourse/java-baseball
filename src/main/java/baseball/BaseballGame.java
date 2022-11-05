@@ -39,6 +39,20 @@ public class BaseballGame {
         }
     }
 
+    void printHint() {
+        String hintMessage = "";
+
+        if (this.ball > 0 && this.strike > 0) {
+            hintMessage = this.ball + "볼 " + this.strike + "스트라이크";
+        } else if (strike > 0) {
+            hintMessage = this.strike + "스트라이크";
+        } else if (this.ball > 0) {
+            hintMessage = this.ball + "볼";
+        } else if (this.strike == 0 && this.ball == 0) {
+            hintMessage = "낫싱";
+        }
+        System.out.println(hintMessage);
+    }
 
     public int getBall() {
         return ball;
