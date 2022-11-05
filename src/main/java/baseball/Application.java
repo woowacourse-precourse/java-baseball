@@ -115,8 +115,8 @@ public class Application {
     }
 
     public static boolean checkNumberIsDuplicated(String number) {
-        String[] arr = number.split("");
-        HashSet<String> set = new HashSet<>(Arrays.asList(arr));
+        String[] numberSplit = number.split("");
+        HashSet<String> set = new HashSet<>(Arrays.asList(numberSplit));
         return set.size() == NUMBER_COUNT;
     }
 
