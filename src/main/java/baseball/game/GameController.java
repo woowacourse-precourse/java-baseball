@@ -8,6 +8,7 @@ import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
 import static baseball.game.Option.RESTART;
 import static baseball.game.exception.ExceptionCase.catchOutOfRangeException;
+import static baseball.game.exception.ExceptionCase.catchSpaceException;
 import static baseball.view.InputView.inputRestartView;
 import static baseball.view.InputView.startProgramView;
 import static baseball.view.OutputView.*;
@@ -34,6 +35,7 @@ public class GameController {
     }
     private static void restart(Scanner scanner){
         String input = inputRestartView(scanner);
+        catchSpaceException(input);
         if(input.equals(RESTART)){
             start(scanner);
         }

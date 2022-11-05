@@ -25,4 +25,10 @@ public class ExceptionCase {
             throwException("서로 다른 숫자를 입력해야합니다.");
         }
     }
+
+    public static void catchSpaceException(String input){
+        if(input.trim().isEmpty()){
+            throwException("공백없이 입력하세요.");
+        }
+    }
 }
