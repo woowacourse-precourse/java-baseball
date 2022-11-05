@@ -112,6 +112,9 @@ public class Application {
             }
             game.setUserInput();
         }
+
+        if(game.getGameNums().equals(game.getUserNum()))
+            game.getRightAnswer();
     }
 
     public static void main(String[] args) {
