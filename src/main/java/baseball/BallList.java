@@ -15,14 +15,17 @@ public class BallList {
         this.ballList = ballList;
     }
 
-    public static BallList RandomBallList() {
+    public BallList RandomBallList() {
         List<Ball> ballList = new ArrayList<>();
 
         while (ballList.size()!=3) {
             Ball ball = new Ball(Randoms.pickNumberInRange(1,9));
+            if (!ballList.contains(ball)) {
+                ballList.add(ball);
+            }
         }
-        return new BallList(ballList);
 
+        return new BallList(ballList);
     }
 
     private void checkOverlap(List<Ball> ballList) {
