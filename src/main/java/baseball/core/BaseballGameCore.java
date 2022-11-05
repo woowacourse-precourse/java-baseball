@@ -1,9 +1,9 @@
 package baseball.core;
 
 import baseball.console.GameConsole;
-import baseball.dto.BallStrikeDto;
-import baseball.opponent.ComputerOpponent;
-import baseball.opponent.RandomNumberGenerator;
+import baseball.core.dto.BallStrikeDto;
+import baseball.core.opponent.ComputerOpponent;
+import baseball.core.opponent.RandomNumberGenerator;
 import baseball.printer.GameMessagePrinter;
 
 import java.util.List;
@@ -24,19 +24,16 @@ public class BaseballGameCore {
         while (true) {
             List<Integer> threeNumbers = inputProcess();
             BallStrikeDto answer = checkProcess(threeNumbers);
-            if (isFinish(answer)) {
-                finishProcess();
+            if (isFinished(answer)) {
                 break;
             }
         }
+        finishProcess();
     }
 
-    private void finishProcess() {
-        messagePrinter.printFinishMessage();
-    }
-
-    private boolean isFinish(BallStrikeDto answer) {
-        return answer.getStrikeCount() == 3;
+    private List<Integer> inputProcess() {
+        messagePrinter.printNumberInputMessage();
+        return console.inputThreeNumbers();
     }
 
     private BallStrikeDto checkProcess(List<Integer> threeNumbers) {
@@ -45,8 +42,11 @@ public class BaseballGameCore {
         return answer;
     }
 
-    private List<Integer> inputProcess() {
-        messagePrinter.printNumberInputMessage();
-        return console.inputThreeNumbers();
+    private boolean isFinished(BallStrikeDto answer) {
+        return answer.getStrikeCount() == 3;
+    }
+
+    private void finishProcess() {
+        messagePrinter.printFinishMessage();
     }
 }

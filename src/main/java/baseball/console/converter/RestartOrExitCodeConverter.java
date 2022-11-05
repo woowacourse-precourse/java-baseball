@@ -1,7 +1,7 @@
-package baseball.converter;
+package baseball.console.converter;
 
-import baseball.exception.InputNumberFormatException;
-import baseball.exception.InvalidStatusCodeException;
+import baseball.console.exception.InputNumberFormatException;
+import baseball.console.exception.InvalidStatusCodeException;
 
 public class RestartOrExitCodeConverter {
 

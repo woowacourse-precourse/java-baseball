@@ -1,6 +1,6 @@
-package baseball.opponent;
+package baseball.core.opponent;
 
-import baseball.dto.BallStrikeDto;
+import baseball.core.dto.BallStrikeDto;
 
 import java.util.List;
 

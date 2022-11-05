@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.console.exception;
 
 public class InvalidStatusCodeException extends IllegalNumberInputException {
 

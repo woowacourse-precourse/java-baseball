@@ -4,7 +4,7 @@ import baseball.console.GameConsole;
 import baseball.core.BaseballGameCore;
 import baseball.printer.GameMessagePrinter;
 
-import static baseball.converter.RestartOrExitCodeConverter.EXIT_CODE;
+import static baseball.console.converter.RestartOrExitCodeConverter.EXIT_CODE;
 
 public class BaseballGame {
 

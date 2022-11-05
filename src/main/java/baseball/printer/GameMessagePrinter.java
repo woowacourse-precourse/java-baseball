@@ -1,6 +1,6 @@
 package baseball.printer;
 
-import baseball.dto.BallStrikeDto;
+import baseball.core.dto.BallStrikeDto;
 
 public class GameMessagePrinter {
 
