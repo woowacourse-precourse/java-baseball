@@ -53,12 +53,49 @@ class ApplicationTest extends NsTest {
     @Test
     void test_InputView(){
         String input = "123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());;
+        InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         InputView inputView = new InputView();
         inputView.getBaseballInput();
         assertThat(inputView.getInput().getBaseballNumberList())
                 .containsExactly(1, 2, 3);
+    }
+
+    @Test
+    void test_InputView_Invalid_Size_Error(){
+        String input = "1234";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(inputView::getBaseballInput)
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void test_InputView_Not_Numeric_Error(){
+        String input = "abc";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(inputView::getBaseballInput)
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void test_InputView_Duplication_Error(){
+        String input = "122";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(inputView::getBaseballInput)
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
