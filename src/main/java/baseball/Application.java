@@ -14,10 +14,13 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
     }
+
+
     public static void startGame(){
         computerNum = getRandomNum();
         gameProcess();
     }
+
 
     public static void gameProcess(){
         List<Integer> userNum = getInputNum();
@@ -29,6 +32,7 @@ public class Application {
         keepOrCorrect(computerNum, userNum);
     }
 
+
     public static List<Integer> getRandomNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < numLen) {
@@ -39,6 +43,7 @@ public class Application {
         }
         return computerNum;
     }
+
 
     public static List<Integer> getInputNum(){
         List<String> numbers = new ArrayList<>(List.of("1","2","3","4","5","6","7","8","9"));
@@ -117,6 +122,7 @@ public class Application {
         return strikeCnt;
     }
 
+    
     public static String getHint(int ballCnt, int strikeCnt) {
         String result = "";
         if(ballCnt+strikeCnt==0){
@@ -138,6 +144,7 @@ public class Application {
         return result;
     }
 
+
     public static void keepOrCorrect(List<Integer> computerNum, List<Integer> userNum){
         if(!computerNum.equals(userNum)){
             userNum.clear();
@@ -148,6 +155,7 @@ public class Application {
             restartOrEnd();
         }
     }
+
 
     public static void restartOrEnd(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -164,6 +172,8 @@ public class Application {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
     }
+
+
     public static boolean endGame(){
         return true;
     }
