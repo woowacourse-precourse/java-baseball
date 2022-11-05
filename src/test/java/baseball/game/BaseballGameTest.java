@@ -26,7 +26,7 @@ class BaseballGameTest {
 
     @ParameterizedTest
     @DisplayName("숫자가 정상적으로 입력되는지 확인")
-    @ValueSource(strings = {"123","1234"})
+    @ValueSource(strings = {"123","1234"," ","가나다"})
     void chkInput(String input) {
         //Given
         InputStream in = getPlayerInput(input);
