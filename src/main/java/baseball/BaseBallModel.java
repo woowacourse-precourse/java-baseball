@@ -15,6 +15,7 @@ public class BaseBallModel {
     }
 
     public String generateNumbers(){
+        numbers = "";
         while(numbers.length() < numberLength){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -54,7 +55,6 @@ public class BaseBallModel {
 
         for(int i = 0; i < this.numberLength; i++){
             String tmpInputNumber = Character.toString(inputNumbers.charAt(i));
-
             if(this.numbers.contains(tmpInputNumber) && i != numbers.indexOf(tmpInputNumber)){
                 ballCount += 1;
             }
@@ -77,6 +77,7 @@ public class BaseBallModel {
 
     public boolean restartGame(int flag) throws IllegalArgumentException{
         if(flag == 1){
+            generateNumbers();
             return true;
         }
         else if(flag == 2){
