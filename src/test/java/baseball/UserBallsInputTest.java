@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class UserBallsInputTest {
 
   @Test
-  void nothing() {
-
+  void IsCreateUserBalls() {
+    UserBallsInput input = new UserBallsInput(3);
   }
 }
