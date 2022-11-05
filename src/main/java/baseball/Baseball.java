@@ -46,7 +46,7 @@ public class Baseball {
 
     public void chooseContinue() {
         int isContinue = Integer.parseInt(Console.readLine());
-        
+
         if(isContinue == Constant.RESTART_INPUT_NUM) {
             restart();
         } else if(isContinue == Constant.END_INPUT_NUM) {
