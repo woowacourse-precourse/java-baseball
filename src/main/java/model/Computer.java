@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
 
+
     final private static int NUM_START_RANGE_RAM = 1;
     final private static int NUM_END_RANGE_RAM = 9;
     final private static String NOT_TING_ANSWER = "낫싱";
@@ -78,19 +79,37 @@ public class Computer {
 
     @Override
     public String toString() {
+        ResultType result = getResultType();
+        switch (result) {
+            // 볼 0 , 스트라이크 0
+            case BALL_STRIKE_ZERO:
+                return NOT_TING_ANSWER;
+            // 스트라이크 0
+            case BALL_ONLY:
+                return (this.cntBall + "볼 ");
+            // 볼 0
+            case STRIKE_ONLY:
+                return (this.cntStrike + "스트라이크");
+            case BALL_STRIKE:
+                return (this.cntBall + "볼 " + this.cntStrike + "스트라이크");
+        }
+        return "";
+    }
+
+    private ResultType getResultType() {
         // 볼 0 , 스트라이크 0
         if (this.cntBall == 0 && this.cntStrike == 0) {
-            return NOT_TING_ANSWER;
+            return ResultType.BALL_STRIKE_ZERO;
         }
         // 스트라이크 0
         else if (this.cntStrike == 0) {
-            return (this.cntBall + "볼 ");
+            return ResultType.BALL_ONLY;
         }
         // 볼 0
         else if (this.cntBall == 0) {
-            return (this.cntStrike + "스트라이크");
+            return ResultType.STRIKE_ONLY;
         } else {
-            return (this.cntBall + "볼 " + this.cntStrike + "스트라이크");
+            return ResultType.BALL_STRIKE;
         }
     }
 
