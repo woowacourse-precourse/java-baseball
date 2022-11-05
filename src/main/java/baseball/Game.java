@@ -25,7 +25,15 @@ public class Game {
     private void play() {
         while (isEnd.equals(false)) {
             System.out.println(INPUT);
-            printResult(computer.getResult(Console.readLine()));
+            printResult(computer.getResult(getInput()));
+        }
+    }
+
+    private static String getInput() {
+        try {
+            return Console.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("입력값이 없습니다. 애플리케이션을 종료합니다.");
         }
     }
 

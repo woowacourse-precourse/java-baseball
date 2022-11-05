@@ -11,8 +11,15 @@ public class Application {
         while (isEnd.equals(false)) {
             Game game = new Game();
             game.start();
+            setIsEnd(getInput());
+        }
+    }
 
-            setIsEnd(Console.readLine());
+    private static String getInput() {
+        try {
+            return Console.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("입력값이 없습니다. 애플리케이션을 종료합니다.");
         }
     }
 
