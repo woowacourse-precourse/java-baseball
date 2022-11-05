@@ -10,8 +10,9 @@ public class GameController {
     Computer computer = new Computer();
     List<Integer> goalNumber = Computer.createRandomNumber();
 
-    public static void start() {
+    public void start() {
         Message.start();
+        playing();
     }
 
     public void playing() {
