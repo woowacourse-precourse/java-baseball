@@ -86,5 +86,29 @@ class BaseballEngineTest {
         assertThat(stringResult).isFalse();
     }
 
+    @Test
+    void isValidRetryInput_함수에_시작_입력시_true_반환() {
+        String input = Integer.toString(PlayState.RUN.getState());
+        boolean result = engine.isValidRetryInput(input);
+
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void isValidRetryInput_함수에_시작_종료_이외의_값_입력시_false_반환() {
+        String input = Integer.toString(3);
+        boolean result = engine.isValidRetryInput(input);
+
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void isValidRetryInput_함수에_길이_1_초과의_입력시_false_반환() {
+        String input = Integer.toString(12);
+        boolean result = engine.isValidRetryInput(input);
+
+        assertThat(result).isFalse();
+    }
+
 
 }
