@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class Application {
 
 class Baseball {
     private static List<Integer> computerNumber;
+    private static String userNumber;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
     private static final int NUMBER_PITCH = 3;
@@ -32,5 +34,10 @@ class Baseball {
                 computerNumber.add(randomNumber);
             }
         }
+    }
+
+    private static void getUserNumber() {
+        userNumber = Console.readLine();
+        System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
     }
 }
