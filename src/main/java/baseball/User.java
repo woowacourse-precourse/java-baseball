@@ -7,7 +7,7 @@ public class User {
     private int[] userNumber = new int[Const.NUMBER_LENGTH];
     String userInput;
 
-    public int[] UserInput(){
+    public int[] userNumber(){
         System.out.print(Const.USER_INPUT);
 
         userInput = Console.readLine();

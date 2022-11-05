@@ -21,7 +21,7 @@ public class BaseballGame {
         System.out.println(Const.GAME_START);
         answer = randomNumber.makeRandomNumber(Const.NUMBER_LENGTH);
         do {
-            hint.getHint(user.UserInput(), answer);
+            hint.getHint(user.userNumber(), answer);
         } while (hint.strike != 3);
     }
     public boolean doneGame() {
