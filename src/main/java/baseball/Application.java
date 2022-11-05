@@ -10,7 +10,6 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> targetNum = makeRandomTargetNum();
-        String inputNum = inputUserNum();
 
 
     }
@@ -43,10 +42,21 @@ public class Application {
 
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println("에러");
             return false;
         }
-
     }
+
+    static boolean checkIllegalArgumentException(String inputNum){
+
+        try{
+            int userNum = Integer.parseInt(inputNum);
+
+            return true;
+        } catch (IllegalArgumentException e){
+            return false;
+        }
+    }
+
+
 
 }
