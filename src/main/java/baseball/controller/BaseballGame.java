@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.view.InputValidator.INPUT_LENGTH;
-
 import baseball.model.Answer;
 import baseball.model.RandomNumGenerator;
 import baseball.view.InputView;
@@ -10,26 +8,26 @@ import baseball.vo.Score;
 
 public class BaseballGame {
     public static final int RESTART = 1;
+
     public BaseballGame() {
-            OutputView.printGameStart();
+        OutputView.printGameStart();
     }
 
     public void gameStart() {
         Answer answer = new Answer(RandomNumGenerator.generate());
-        whileUserInputCorrectAnswer(answer);
+        guessAnswer(answer);
         if (InputView.inputRestartOrExitNumber() == RESTART) {
             gameStart();
         }
     }
 
-    public void whileUserInputCorrectAnswer(Answer answer) {
-        while (true) {
-            Score userScore = answer.compare(InputView.inputGuessThreeNumbers());
-            OutputView.printResult(userScore);
-            if (answer.isUserCorrect(userScore)) {
-                OutputView.printGameEnd(userScore);
-                break ;
-            }
+    public void guessAnswer(Answer answer) {
+        Score userScore = answer.compare(InputView.inputGuessThreeNumbers());
+        OutputView.printResult(userScore);
+        if (answer.isUserCorrect(userScore)) {
+            OutputView.printGameEnd();
+        } else if (!answer.isUserCorrect(userScore)) {
+            guessAnswer(answer);
         }
     }
 }
