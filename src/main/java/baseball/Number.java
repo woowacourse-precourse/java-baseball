@@ -3,9 +3,13 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Number {
     public void setRandomNumbers() {
@@ -26,6 +30,10 @@ public class Number {
             throw new IllegalArgumentException();
         }
         return input;
+    }
+
+    private List<Character> stringToList(String str) {
+        return str.chars().mapToObj(number -> (char) number).collect(Collectors.toList());
     }
 
 
