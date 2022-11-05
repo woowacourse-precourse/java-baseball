@@ -27,8 +27,8 @@ public class Exception {
 
     private boolean checkZero(String num){
         if(num.contains("0")){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
