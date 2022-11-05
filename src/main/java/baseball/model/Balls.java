@@ -28,10 +28,8 @@ public class Balls {
     }
 
     public boolean isOut(Ball other) {
-        for (Ball ball : balls) {
-            if (!ball.isOut(other)) {
-                return false;
-            }
+        if (isBall(other) || isStrike(other)) {
+            return false;
         }
         return true;
     }
@@ -60,10 +58,7 @@ public class Balls {
         if (isStrike(ball)) {
             return Judgement.STRIKE;
         }
-        if (isOut(ball)) {
-            return Judgement.OUT;
-        }
 
-        return null;
+        return Judgement.OUT;
     }
 }
