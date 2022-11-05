@@ -63,4 +63,11 @@ public class Player {
         char letter = restart.charAt(0);
         return letter == '1' || letter == '2';
     }
+
+    public boolean isValidRestart(String restart) {
+        if (!isOneLetter(restart)) {
+            return false;
+        }
+        return isOneOrTwo(restart);
+    }
 }
