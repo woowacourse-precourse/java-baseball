@@ -5,6 +5,7 @@ import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.utils.Constant;
 import baseball.utils.InputUtil;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class BaseballService {
                 randomNumbers.add(number);
             }
         }
+        computer.setRandomNumbers(randomNumbers);
     }
 
     public boolean checkDuplication(ArrayList<Integer> randomNumbers, int number) {
@@ -51,7 +53,7 @@ public class BaseballService {
         game.setBall(0);
         game.setStrike(0);
         for (int i = 0; i < computer.getRandomNumbers().size(); i++) {
-            game.setStrike(game.getStrike() + isStrike(computerNumbers.get(i), userNumbers.get(i));
+            game.setStrike(game.getStrike() + isStrike(computerNumbers.get(i), userNumbers.get(i)));
             game.setBall(game.getBall() + isBall(computerNumbers, userNumbers.get(i), i));
         }
         System.out.println(createOutput(game.getStrike(), game.getBall()));
@@ -84,11 +86,33 @@ public class BaseballService {
             return Constant.NOTHING.getMessage();
         }
     }
+
     public boolean checkAnswer() {
         if (game.getStrike() == Constant.IS_ANSWER.getNumber()) {
             return true;
         }
         return false;
+    }
+
+    public void outputRestart() {
+        System.out.println(Constant.END_GAME.getMessage());
+        System.out.println(Constant.IS_CONTINUE.getMessage());
+        String answerstr = Console.readLine();
+        inputUtil.checkLength(answerstr, Constant.RESTART_NUMBER_LENGTH.getNumber());
+        inputUtil.checkIsDigit(answerstr.charAt(0));
+        int answerint = inputUtil.charToInt(answerstr.charAt(0));
+        inputUtil.checkValidNumber(answerint, Constant.RESTART_NUMBER_MIN.getNumber()
+                , Constant.RESTART_NUMBER_MAX.getNumber());
+        selectRestart(answerint);
+    }
+
+
+    public void selectRestart(int answer) {
+        if (answer == Constant.RESTART.getNumber()) {
+            createRandomNumbers();
+        } else {
+            game.setStatus(false);
+        }
     }
 
 }

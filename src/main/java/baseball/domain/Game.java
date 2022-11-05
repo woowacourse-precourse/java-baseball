@@ -43,46 +43,10 @@ public class Game {
         this.ball = ball;
     }
 
-    public void outputRestart() {
-        System.out.println(END_GAME);
-        System.out.println(IS_CONTINUE);
-        String answerstr = Console.readLine();
-        checkRestartNumberLength(answerstr);
-        checkIsDigit(answerstr.charAt(0));
-        int answerint = charToInt(answerstr.charAt(0));
-        checkValidNumber(answerint);
-        selectRestart(answerint);
-    }
 
-    public void selectRestart(int answer) {
-        if (answer == RESTART) {
-            computer.createRandomNumbers();
-        } else {
-            status = false;
-        }
-    }
 
-    public void checkRestartNumberLength(String number) {
-        if (number.length() > RESTART_NUMBER_LENGTH || number.length() < RESTART_NUMBER_LENGTH) {
-            throw new IllegalArgumentException(RESTART_EXCEPTION);
-        }
-    }
 
-    public void checkValidNumber(int number) {
-        if (number < RESTART_NUMBER_MIN || number > RESTART_NUMBER_MAX) {
-            throw new IllegalArgumentException(RESTART_EXCEPTION);
-        }
-    }
 
-    public void checkIsDigit(char number) {
-        if (!Character.isDigit(number)) {
-            throw new IllegalArgumentException(RESTART_EXCEPTION);
-        }
-    }
-
-    public int charToInt(char number) {
-        return Integer.parseInt(String.valueOf(number));
-    }
 
 
 

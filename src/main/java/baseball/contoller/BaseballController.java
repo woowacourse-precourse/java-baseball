@@ -18,7 +18,7 @@ public class BaseballController {
             baseballService.getUserNumbers();
             baseballService.outputHint();
             if (baseballService.checkAnswer()) {
-                outputRestart();
+                baseballService.outputRestart();
             }
         }
     }
