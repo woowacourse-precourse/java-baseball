@@ -4,20 +4,21 @@ import baseball.board.NumberBoard;
 import baseball.compare.ComparisonResultType;
 import baseball.util.InputController;
 import baseball.util.Logger;
-import baseball.util.RandomGenerator;
 import java.util.HashMap;
 import java.util.List;
 
 public class BaseballGame {
 
     private final InputController inputController;
-    private final Integer boardSize;
     private final List<Integer> opponentNumbers;
 
-    public BaseballGame(InputController inputController, Integer size) {
+    public BaseballGame(InputController inputController, List<Integer> opponentNumbers) {
         this.inputController = inputController;
-        this.boardSize = size;
-        this.opponentNumbers = new RandomGenerator().genNumberList(size);
+        this.opponentNumbers = opponentNumbers;
+    }
+
+    private Integer getBoardSize() {
+        return this.opponentNumbers.size();
     }
 
     public void play() {
@@ -45,13 +46,13 @@ public class BaseballGame {
     private boolean tryGuess() {
         Logger.log(BaseballConstants.INPUT_MESSAGE);
 
-        List<Integer> userNumbers = inputController.getEachNumber(boardSize);
+        List<Integer> userNumbers = inputController.getEachNumber(getBoardSize());
         validateNumberInput(userNumbers);
 
         NumberBoard numberBoard = new NumberBoard();
 
         if (checkSuccess(numberBoard.compareNumbers(userNumbers, opponentNumbers))) {
-            Logger.log(boardSize + BaseballConstants.SUCCESS_MESSAGE);
+            Logger.log(getBoardSize() + BaseballConstants.SUCCESS_MESSAGE);
             return true;
         }
 
@@ -60,7 +61,7 @@ public class BaseballGame {
 
     private boolean checkSuccess(HashMap<ComparisonResultType, Integer> resultFrequencyCounter) {
         return resultFrequencyCounter.containsKey(ComparisonResultType.STRIKE) && resultFrequencyCounter.get(
-                ComparisonResultType.STRIKE).equals(boardSize);
+                ComparisonResultType.STRIKE).equals(getBoardSize());
     }
 
     private void validateNumberInput(List<Integer> inputNumbers) throws IllegalArgumentException {
