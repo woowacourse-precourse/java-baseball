@@ -15,7 +15,7 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private List<Integer> generateRandomAnswerNums() {
+    public List<Integer> generateRandomAnswerNums() {
         List<Integer> randomNums = new ArrayList<>();
         while (randomNums.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
