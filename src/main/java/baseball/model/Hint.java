@@ -14,6 +14,13 @@ public class Hint {
     }
     @Override
     public String toString() {
+        if(ball == 0 && strike == 0){
+            return "낫싱\n";
+        }else if(ball == 0){
+            return strike + "스트라이크\n";
+        }else if(strike == 0){
+            return ball + "볼\n";
+        }
         return ball + "볼 " + strike + "스트라이크\n";
     }
 }
