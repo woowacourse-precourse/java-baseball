@@ -13,7 +13,6 @@ public class GameService {
     public void setGame(){
         game = new Game();
         game.setAnswerNumber();
-        System.out.println(game.answerNumber);
     }
 
     public void startGame() throws IllegalArgumentException{

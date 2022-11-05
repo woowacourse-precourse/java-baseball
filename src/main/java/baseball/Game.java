@@ -13,22 +13,20 @@ public class Game {
     }
 
     public void calculateStrike(ArrayList<Integer> userNumber){
-        int strikeCount=0;
+        strike=0;
         for(int i=0; i<3; i++){
             if(answerNumber.get(i) == userNumber.get(i)){
-                strikeCount++;
+                strike++;
             }
         }
-        strike = strikeCount;
     }
 
     public void calculateBall(ArrayList<Integer> userNumber){
-        int ballCount=0;
+        ball=0;
         for(int i=0; i<3; i++){
             if(answerNumber.contains(userNumber.get(i)) && answerNumber.get(i) != userNumber.get(i)){
-                ballCount++;
+                ball++;
             }
         }
-        ball= ballCount;
     }
 }

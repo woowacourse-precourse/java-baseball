@@ -49,13 +49,11 @@ public class User {
         return verifyFinishNumber(Console.readLine());
     }
 
-    public static boolean verifyFinishNumber(String finishNumber)throws IllegalArgumentException{
-        boolean restart=true;
-        boolean exit=false;
+    public static boolean verifyFinishNumber(String finishNumber) throws IllegalArgumentException{
         if(finishNumber.equals("1")){
-            return restart;
+            return true;
         } else if(finishNumber.equals("2")){
-            return exit;
+            return false;
         }
         throw new IllegalArgumentException("User Finish Input Error");
     }

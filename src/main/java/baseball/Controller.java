@@ -8,7 +8,7 @@ public class Controller {
             finishGame();
     }
 
-    public void setGame()throws IllegalArgumentException{
+    public void setGame(){
         gameService.setGame();
     }
     public void startGame() throws IllegalArgumentException{
