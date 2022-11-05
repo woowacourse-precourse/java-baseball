@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class BaseballGameService {
 
-    private User user;
+    private User user = new User();
     private Computer computer;
     private int size;
 
@@ -22,12 +22,23 @@ public class BaseballGameService {
     public void initGame(int start, int end, int size) {
         computer = new Computer(RandomNumber.getRandomNumbers(start, end, size));
         this.size = size;
-
-        GameGuidePrinter.startGameMessage();
     }
-    private void calculateUserScore(List<Integer> userNumbers, List<Integer> gameNumbers) {
+
+    public void playGame() {
+        int strike = 0;
+        while (strike != 3) {
+            computer.clearCount();
+            user.setUserNumbers(getUserNumbers());
+            calculateUserScore();
+
+            GameGuidePrinter.scoreResultMessage(computer.getStrikeCount(), computer.getBallCount());
+            strike = computer.getStrikeCount();
+        }
+    }
+
+    private void calculateUserScore() {
         for (int i = 0; i < size; i++) {
-            calculate(userNumbers, gameNumbers.get(i), i);
+            calculate(user.getUserNumbers(), computer.getGameNumbers().get(i), i);
         }
     }
 
@@ -46,7 +57,7 @@ public class BaseballGameService {
         if (userIndex == gameIndex) {
             computer.increaseStrikeCount();
         }
-        if (userIndex != gameIndex) {
+        if (userIndex != gameIndex && userIndex != -1) {
             computer.increaseBallCount();
         }
     }
