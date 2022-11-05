@@ -19,6 +19,7 @@ public class GameApplication {
     public GameApplication() {
     }
 
+    // 게임 애플리케이션 시작 메소드
     public void gameStart() {
         while (true) {
             baseballGame();
@@ -38,13 +39,14 @@ public class GameApplication {
         return false;
     }
 
-    // 입력 문자가 이 이외의 것일 경우
+    // 입력 문자가 1과2 이외의 것일 경우
     private void isRightInput(String input) {
         if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
 
+    // 하나의 야구숫자게임을 진행하는 메소드
     private void baseballGame() {
         System.out.println(GAME_START_SENTENCE);
 
@@ -52,9 +54,11 @@ public class GameApplication {
         GameNumber userNumber = new GameNumber();
         GameNumber resultNumber = new GameNumber();
 
+        // 컴퓨터의 랜덤 숫자 저장
         computer = computerNumber.getComputerNumber();
 
         while (true) {
+            // 사용자의 랜덤 숫자 저장
             user = userNumber.getUserNumber();
             // 결과 저장
             result = resultNumber.getResult(computer, user);
@@ -62,6 +66,7 @@ public class GameApplication {
             // 결과 프린트
             System.out.println(printResult(result));
 
+            // 3스트라이크 시 게임 종료
             if (executeApplication(result)) break;
         }
     }
