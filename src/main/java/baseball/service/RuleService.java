@@ -3,11 +3,11 @@ package baseball.service;
 import java.util.List;
 
 public class RuleService {
-    public int Strike(List<Integer> RandomNumber, List<Integer> InputNumber) {
+    public int Strike(List<Integer> randomNumber, List<Integer> inputNumber) {
         int cnt = 0;
 
-        for (int idx = 0; idx < RandomNumber.size(); idx++) {
-            if (RandomNumber.get(idx) == InputNumber.get(idx)) {
+        for (int idx = 0; idx < randomNumber.size(); idx++) {
+            if (randomNumber.get(idx) == inputNumber.get(idx)) {
                 cnt++;
             }
         }
@@ -15,15 +15,15 @@ public class RuleService {
         return cnt;
     }
 
-    public int Ball(List<Integer> RandomNumber, List<Integer> InputNumber) {
+    public int Ball(List<Integer> randomNumber, List<Integer> inputNumber) {
         int cnt = 0;
 
-        for (int idx = 0; idx < InputNumber.size(); idx++) {
-            if (RandomNumber.contains(InputNumber.get(idx)))
+        for (int idx = 0; idx < inputNumber.size(); idx++) {
+            if (randomNumber.contains(inputNumber.get(idx)))
                 cnt++;
         }
 
-        return cnt - Strike(RandomNumber, InputNumber);
+        return cnt - Strike(randomNumber, inputNumber);
     }
 
 }
