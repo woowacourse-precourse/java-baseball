@@ -13,7 +13,7 @@ public class User {
     return (validateInput(whichMode));
   }
 
-  static String validateInput(int whichMode) {
+  private static String validateInput(int whichMode) {
     if (whichMode == PLAYAGAINMODE) {
       if (!(input.equals("1") == true || input.equals("2") == true)) {
         throw new IllegalArgumentException("input value is not 1 or 2.");
@@ -24,7 +24,6 @@ public class User {
       checkInputIsNumNonZero();
       checkInputDuplicated();
     }
-//    System.out.println(input);
     return (input);
   }
 
