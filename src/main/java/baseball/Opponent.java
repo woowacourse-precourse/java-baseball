@@ -1,0 +1,23 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Opponent {
+
+	private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+	private static final int MIN_DIGIT = 1;
+	private static final int MAX_DIGIT = 9;
+	private static final int DIGIT_LENGTH = 3;
+	private static List<Integer> answer = new ArrayList<>();
+
+	public void generateAnswerNumber() {
+		while (answer.size() < DIGIT_LENGTH) {
+			int randomNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
+			if (!answer.contains(randomNumber)) {
+				answer.add(randomNumber);
+			}
+		}
+	}
+}
