@@ -8,22 +8,25 @@ import java.util.ArrayList;
 
 public class Controller {
     //객체를 모두 가져온다.
-    GameService Game = new GameService();
-
-    public void playGame(){
-
-        Game.initScore();
-        ArrayList<Integer> User=getUser();
-        ArrayList<Integer> RandomNum=getRandomNumber();
-        Game.getBallCount(User,RandomNum);
-        Game.getStrikeCount(User,RandomNum);
-        Game.finalScore();
+    public void playGame() throws IllegalArgumentException{
+        ArrayList<Integer> RandomNum=getRandomNumbers();
+        for (int i=0; i<3; i++){
+            GameService Game = new GameService();
+            Game.initScore();
+            ArrayList<Integer> User = getUser();
+            Game.getBallCount(User,RandomNum);
+            Game.getStrikeCount(User,RandomNum);
+            if (Game.finalScore()){
+                playGame();
+                break;
+            }
+        }
     }
 
-    public static ArrayList getUser(){
+    public static ArrayList<Integer> getUser(){
         return User.makeUserList();
     }
-    public static ArrayList getRandomNumber(){
+    public static ArrayList<Integer> getRandomNumbers(){
         return RandomNumber.makeRandomNum();
     }
 }

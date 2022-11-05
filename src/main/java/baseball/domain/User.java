@@ -1,19 +1,17 @@
 package baseball.domain;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-import baseball.view.UserInput;
+import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     public static ArrayList<Integer> makeUserList() {
         //UserInput.getUserNumber();
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> UserNumber = new ArrayList();
-
-        for (int i=0; i<3; i++) {
-            Integer num = sc.nextInt();
-            UserNumber.add(num);
+        ArrayList<Integer> UserNumber = new ArrayList<>();
+        String num = Console.readLine();
+        for (int i = 0; i < 3; i++) {
+            //아스키코드 '0'이 45임을 이용한다.
+            UserNumber.add(num.charAt(i) - '0');
         }
+
         return UserNumber;
     }
 }

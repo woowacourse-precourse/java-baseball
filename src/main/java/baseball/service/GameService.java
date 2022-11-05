@@ -18,8 +18,6 @@ public class GameService {
 
     public void getStrikeCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리, 숫자가 맞으면 Strike
-        System.out.println(User);
-        System.out.println(Computer);
         for (int i = 0; i < 3; i++) {
             if (User.get(i)==Computer.get(i)) {
                 Strikescore += 1;
@@ -38,17 +36,20 @@ public class GameService {
         }
     }
 
-    public void finalScore(){
+    public boolean finalScore(){
         this.Strikescore = Strikescore;
         this.Ballscore = Ballscore;
         GameOutput.scoreMessage(Ballscore,Strikescore);
-        if (Strikescore==3) isRestart();
+        if (Strikescore==3) {
+            return isRestart();
+        }
+        return false;
     }
 
     public boolean isRestart(){
         this.Strikescore=Strikescore;
         UserInput.getRetryUserNumber();
         String replay_input = Console.readLine();
-        return replay_input=="1";
+        return Integer.parseInt(replay_input)==1;
     }
 }
