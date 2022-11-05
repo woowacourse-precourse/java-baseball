@@ -5,10 +5,14 @@ import java.util.List;
 
 public class Numbers {
 
+    private static final int DIGIT_MINIMUM = 1;
+    private static final int DIGIT_MAXIMUM = 9;
+
     private final List<Integer> digits;
 
     public Numbers(List<Integer> digits) {
         validateLength(digits);
+        validateRanges(digits);
         validateNoDuplicates(digits);
         this.digits = new ArrayList<>(digits);
     }
@@ -26,6 +30,17 @@ public class Numbers {
                 throw new IllegalArgumentException("숫자는 중복되면 안됩니다");
             }
             appearances[digit] = true;
+        }
+    }
+
+    private void validateRanges(List<Integer> digits) {
+        for (Integer digit : digits) {
+            if (digit < DIGIT_MINIMUM) {
+                throw new IllegalArgumentException("각 숫자는 1 이상이어야 합니다");
+            }
+            if (digit > DIGIT_MAXIMUM) {
+                throw new IllegalArgumentException("각 숫자는 9 이하여야 합니다");
+            }
         }
     }
 
