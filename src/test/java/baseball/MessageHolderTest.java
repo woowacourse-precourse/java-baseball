@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,13 @@ public class MessageHolderTest {
 
     @Test
     void testPlayerGameInputToInt() {
-        
+        holder = new MessageHolder();
+        //int output = holder.playerGameInputToInt("1234");
+
+        assertThrows(IllegalArgumentException.class, ()->{
+            holder.playerGameInputToInt("1234");
+        });
+        //assertEquals(output, 1234);
     }
 
     @Test
