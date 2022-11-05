@@ -15,11 +15,15 @@ public class InputFilter {
         String input = reader.read();
 
         return Optional.ofNullable(input)
-                .orElseThrow(() -> new IllegalArgumentException("null값이 입력되었습니다."));
+                .orElseThrow(() -> {throw new IllegalArgumentException("null값이 입력되었습니다.");} );
     }
 
     public static String[] splitToLetters(String input) {
+        if (input.length() == 0) {
+            throw new IllegalArgumentException("null값이 입력되었습니다.");
+        }
         return input.split(SPLIT_DELIMETER);
+
     }
 
     public static List<Integer> convertToNumbers(String[] letters) {
@@ -39,7 +43,7 @@ public class InputFilter {
 
     private static void checkLength(List<Integer> numbers) {
         if (numbers.size() != INPUT_LENGTH) {
-            throw new IllegalArgumentException("잘못된 길이의 입력값입니다.");
+            throw new IllegalArgumentException("허용되지 않은 형식의 입력값입니다.");
         }
     }
 
