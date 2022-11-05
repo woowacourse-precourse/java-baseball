@@ -28,6 +28,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 컴퓨터랜덤값_테스트() {
+        Baseball baseball = new Baseball();
+        baseball.getGameNumber().stream()
+                .map(number -> assertThat(number).isBetween(1,9));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
