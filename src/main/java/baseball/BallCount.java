@@ -78,6 +78,16 @@ public class BallCount {
         }
     }
 
+    public GuessResult getGuessResult() {
+        if(strikeCount == 3){
+            return GuessResult.END;
+        } else if((ballCount == 0) && (strikeCount == 0)){
+            return GuessResult.NOT_SWING;
+        }
+
+        return GuessResult.BALL_STRIKE;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
