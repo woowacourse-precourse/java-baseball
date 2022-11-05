@@ -38,7 +38,6 @@ public class ViewTest {
     void 스타리이크메시지_출력(){
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        View.printStrike(3);
         View.printStrike(1);
         assertThat("1스트라이크").isEqualTo(out.toString().trim());
     }
