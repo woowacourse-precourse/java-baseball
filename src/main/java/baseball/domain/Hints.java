@@ -20,7 +20,7 @@ public class Hints {
     }
 
     public boolean isNothing() {
-        return this.hints.size() == 0;
+        return this.hints.isEmpty();
     }
 
     @Override
