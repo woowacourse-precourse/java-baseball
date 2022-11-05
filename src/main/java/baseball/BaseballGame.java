@@ -6,6 +6,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class BaseballGame {
+    public void runGame(List<Integer> computerNumber) {
+        int strike;
+        int ball;
+        String result;
+        do {
+            List<Integer> userNumber = getUserNumber();
+            strike = checkStrike(computerNumber, userNumber);
+            ball = checkBall(computerNumber, userNumber);
+            result = getResult(strike, ball);
+            System.out.println(result);
+        } while (strike != 3);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
