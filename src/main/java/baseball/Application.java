@@ -53,4 +53,17 @@ public class Application {
         ballAndStrikeList.add(strike); // index: 1 에 strike
         return ballAndStrikeList;
     }
+
+    public static void printStatus(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크 ");
+        }
+        System.out.println(); // 줄바꿈
+    }
 }
