@@ -42,12 +42,25 @@ public class BaseballGame {
     }
 
     public int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
-        int count = 0;
+        int strikeCount = 0;
         for (int index = 0; index < 3; index++) {
             if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
-                count++;
+                strikeCount++;
             }
         }
-        return count;
+        return strikeCount;
+    }
+
+    public int checkBall(List<Integer> computerNumber, List<Integer> userNumber) {
+        int ballCount = 0;
+        for (int index = 0; index < 3; index++) {
+            if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
+                continue;
+            }
+            if (computerNumber.contains(userNumber.get(index))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
