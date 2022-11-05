@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -147,4 +148,17 @@ class ApplicationTest extends NsTest {
         Assertions.assertDoesNotThrow(() -> method.invoke(userNumber, numberList2));
         Assertions.assertDoesNotThrow(() -> method.invoke(userNumber, numberList3));
     }
+
+    @Test
+    void 생성자_입력을_통한_리스트_생성_테스트() {
+        // given
+        UserNumber userNumber = new UserNumber("123");
+
+        // when
+        List<Character> list = Arrays.asList('1', '2', '3');
+
+        // then
+        assertThat(userNumber.getNumberList()).isEqualTo(list);
+    }
+
 }
