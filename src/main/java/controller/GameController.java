@@ -15,7 +15,7 @@ public class GameController {
 
     public void startGame() {
         computer.initComputer();
-        initCntStrikeBallOfComputer();
+        computer.initCntStrikeBall();
     }
 
     public void callInputNumOfUser() {
@@ -24,6 +24,7 @@ public class GameController {
 
     public void initRandNumOfComputer() {
         computer.initComputer();
+        computer.initCntStrikeBall();
     }
 
     public void initCntStrikeBallOfComputer() {
