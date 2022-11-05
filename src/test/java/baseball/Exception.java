@@ -21,4 +21,14 @@ public class Exception {
       throw new IllegalArgumentException();
     return true;
   }
+
+  //숫자가 아닌 다른게 들어올 경우
+  public static boolean isNumber(String userNumber) {
+    for (int i = 0; i < userNumber.length(); i++)
+    {
+      if (!Character.isDigit(userNumber.charAt(i)))
+        throw new IllegalArgumentException();
+    }
+    return true;
+  }
 }
