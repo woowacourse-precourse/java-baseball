@@ -8,9 +8,24 @@ public class OneBaseBallNumber {
     public OneBaseBallNumber() {
 
     }
-
     OneBaseBallNumber(BaseBallNumber baseBallNumber, int baseBallPosition) {
         this.baseBallNumber = baseBallNumber;
+        this.baseBallPosition = baseBallPosition;
+    }
+
+    public BaseBallNumber getBaseBallNumber() {
+        return baseBallNumber;
+    }
+
+    public void setBaseBallNumber(BaseBallNumber baseBallNumber) {
+        this.baseBallNumber = baseBallNumber;
+    }
+
+    public int getBaseBallPosition() {
+        return baseBallPosition;
+    }
+
+    public void setBaseBallPosition(int baseBallPosition) {
         this.baseBallPosition = baseBallPosition;
     }
 
