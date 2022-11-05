@@ -86,6 +86,7 @@ class Game{
 
     void getRightAnswer(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+        chooseGameConditions();
     }
 
     void chooseGameConditions(){
