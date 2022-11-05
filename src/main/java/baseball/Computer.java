@@ -30,6 +30,17 @@ public class Computer {
         return answer == userInput;
     }
 
+    private int countStrike(List<Integer> answer, List<Integer> userInput) {
+        int strike = 0;
+
+        for(int index = 0; index < MAX; index++) {
+            if(validateConcord(answer.get(index), userInput.get(index))) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
 
 
 }
