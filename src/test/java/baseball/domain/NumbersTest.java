@@ -35,4 +35,10 @@ public class NumbersTest {
                 () -> assertThatThrownBy(() -> new Numbers(1, 2, 3, 4)).isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("서로 다른 3개의 숫자가 아닌경우 IllegalArgumentException 예외를 throw 한다.")
+    @Test
+    void validateDifferentEachNumber() {
+        assertThatThrownBy(() -> new Numbers(1, 2, 1)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

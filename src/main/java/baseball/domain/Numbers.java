@@ -19,12 +19,19 @@ public class Numbers {
 
     public Numbers(List<Number> numberList) {
         validateNumbersSize(numberList);
+        validateDifferentEachNumber(numberList);
         this.numbers = numberList;
     }
 
-    private static void validateNumbersSize(List<Number> numberList) {
+    private void validateNumbersSize(List<Number> numberList) {
         if (numberList.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException("숫자는 " + NUMBER_SIZE + "개여야 합니다.");
+        }
+    }
+
+    private void validateDifferentEachNumber(List<Number> numberList) {
+        if (numberList.stream().distinct().count() != NUMBER_SIZE) {
+            throw new IllegalArgumentException("서로 다른 3개의 숫자여야 합니다.");
         }
     }
 
