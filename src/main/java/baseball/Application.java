@@ -47,13 +47,18 @@ public class Application {
 
         return targetNums;
     }
+    public static int commonNums(List<Integer> list1, List<Integer>list2){
+        list1.retainAll(list2);
+        return list1.size();
+    }
     public static List<Integer> compareNums(List<Integer> targetNums, List<Integer>userNums){
         List<Integer> b_s_list = new ArrayList<>();
         int balls = 0;
         int strikes = 0;
 
-//        balls = count_balls(targetNums,userNums);
+        balls = commonNums(targetNums,userNums);
 //        strikes = count_strikes(targetNums,userNums);
+
 
         b_s_list.add(balls);
         b_s_list.add(strikes);
