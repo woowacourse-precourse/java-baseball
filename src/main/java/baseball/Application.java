@@ -31,12 +31,20 @@ public class Application {
     public static List<Integer> receiveInputOfPlayer(){
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
+        checkLengthOfString(inputString);
         List<Integer> integerList = changeStringToIntegerList(inputString);
         checkDuplicationFromIntegerList(integerList);
         return integerList;
     }
 
-    public static Boolean checkDuplicationFromIntegerList(List<Integer> checkList){
+    public static void checkLengthOfString(String checkString){
+        List<Integer> newList = new ArrayList<>();
+        if(checkString.length() != 3){
+            throw new IllegalArgumentException("3자리의 입력값이 아닙니다.\n프로그램을 종료합니다.");
+        }
+    }
+
+    public static void checkDuplicationFromIntegerList(List<Integer> checkList){
         List<Integer> newList = new ArrayList<>();
         for (Integer number : checkList) {
             if (!newList.contains(number)) {
@@ -46,7 +54,6 @@ public class Application {
         if(newList != checkList){
             throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.\n프로그램을 종료합니다.");
         }
-        return true;
     }
 
     public static List<Integer> changeStringToIntegerList(String numberString){
