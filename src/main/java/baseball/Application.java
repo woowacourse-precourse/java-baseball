@@ -28,15 +28,17 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = creatRandomNumber();
+        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+        String answer = "1";
+        System.out.println(computerNumber);
 
-        boolean result = false;
-
-        while (true) {
+        while (answer.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             List<Integer> userInputNumber = isValidInput(userInput);
 
-            BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+            bullsAndCowsResult.ballCount = 0;
+            bullsAndCowsResult.strikeCount = 0;
 
             for (int i = 0; i < computerNumber.size(); i++) {
                 bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
@@ -46,7 +48,7 @@ public class Application {
 
             if (bullsAndCowsResult.finish()) {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String  = Console.readLine();
+                answer = Console.readLine();
             }
         }
     }
