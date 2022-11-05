@@ -39,6 +39,10 @@ public class OneDigitNumbers implements Iterable<Integer> {
         return this.oneDigitNumbers;
     }
 
+    public int indexOf(int index) {
+        return this.oneDigitNumbers.indexOf(index);
+    }
+
     private List<Integer> splitFrom(int number) {
         List<Integer> oneDigitNumbers = new ArrayList<>();
 
