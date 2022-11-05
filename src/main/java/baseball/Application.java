@@ -16,7 +16,10 @@ public class Application {
             String userInput = getUserInput();
             int userGuess = validateUserInput(userInput, 3);
 
-            List<Integer> comparedResult = compareAnswerWithInput(answer, userGuess);
+            List<Integer> answerDigits = getDigitList(answer);
+            List<Integer> inputDigits = getDigitList(userGuess);
+
+            List<Integer> comparedResult = compareAnswerWithInput(answerDigits, inputDigits);
 
             status = printStrikeAndBall(comparedResult);
 
@@ -50,12 +53,9 @@ public class Application {
         }
     }
 
-    public static List<Integer> compareAnswerWithInput(int answer, int userInput){
+    public static List<Integer> compareAnswerWithInput(List<Integer> answerDigits, List<Integer> inputDigits){
         int strikeCount = 0;
         int ballCount = 0;
-
-        List<Integer> answerDigits = getDigitList(answer);
-        List<Integer> inputDigits = getDigitList(userInput);
 
         for (int i = 0; i<3; i++){
             int answerDigit = answerDigits.get(i);
@@ -73,7 +73,7 @@ public class Application {
         return List.of(strikeCount,ballCount);
     }
 
-    private static List<Integer> getDigitList(int numbers){
+    public static List<Integer> getDigitList(int numbers){
         int tmp = numbers;
         ArrayList<Integer> digits = new ArrayList<Integer>();
 
