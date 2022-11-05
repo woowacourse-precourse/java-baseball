@@ -7,8 +7,7 @@ import java.util.Scanner;
 import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
 import static baseball.game.Option.RESTART;
-import static baseball.game.exception.ExceptionCase.catchOutOfRangeException;
-import static baseball.game.exception.ExceptionCase.catchSpaceException;
+import static baseball.game.exception.ExceptionCase.*;
 import static baseball.view.InputView.inputRestartView;
 import static baseball.view.InputView.startProgramView;
 import static baseball.view.OutputView.*;
@@ -22,6 +21,7 @@ public class GameController {
     }
     public static void playGame(Scanner scanner){
         String input = InputView.inputNumbersView(scanner);
+        catchSpaceException(input);
         setUserNumber(input);
         countScore();
         result(scanner);
@@ -35,7 +35,7 @@ public class GameController {
     }
     private static void restart(Scanner scanner){
         String input = inputRestartView(scanner);
-        catchSpaceException(input);
+        catchWrongOrderRestartException(input);
         if(input.equals(RESTART)){
             start(scanner);
         }

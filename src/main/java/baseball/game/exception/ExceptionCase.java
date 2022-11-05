@@ -31,4 +31,10 @@ public class ExceptionCase {
             throwException("공백없이 입력하세요.");
         }
     }
+
+    public static void catchWrongOrderRestartException(String input){
+        if(!input.equals(RESTART)&!input.equals(END)){
+            throwException(RESTART+"나 "+END+"를 입력하시오");
+        }
+    }
 }
