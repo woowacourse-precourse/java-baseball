@@ -32,4 +32,34 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+
+    @Test
+    public void testIsInputDuplicated()
+    {
+        InputValidator testClass = new InputValidator("133");
+        assertThat(testClass.isInputDuplicated()).isEqualTo(false);
+    }
+
+    @Test
+    public void testIsRightLength()
+    {
+        InputValidator testClass = new InputValidator("12");
+        assertThat(testClass.isRightLength()).isEqualTo(false);
+    }
+
+    @Test
+    public void testIsRightNumber()
+    {
+        InputValidator testClass = new InputValidator("-121");
+        assertThat(testClass.isRightNumber()).isEqualTo(false);
+    }
+
+    @Test
+    public void testInputValidator()
+    {
+        InputValidator testClass = new InputValidator("356");
+        assertThat(testClass.checkInput()).isEqualTo(true);
+    }
+
 }
