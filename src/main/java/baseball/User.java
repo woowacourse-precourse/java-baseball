@@ -1,15 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetNumber {
+public class User {
     private static final int DIGIT_NUMBER = 3;
 
-    public List<Integer> user() {
+    public List<Integer> userNumber() {
         List<Integer> userNumber = new ArrayList<>();
 
         System.out.print(GameMessage.input);
