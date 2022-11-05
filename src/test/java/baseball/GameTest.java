@@ -22,13 +22,13 @@ public class GameTest {
         input.add(3);
         input.add(5);
         assertRandomNumberInRangeTest(
-            () -> {
-                    game.init();
-                    game.compareListAndAnswer(input);
-                    assertEquals(3, game.getStrike());
-                },
-                1, 3, 5
-        );
+                () -> {
+                        game.init();
+                        game.compareListAndAnswer(input);
+                        assertEquals(3, game.getStrike());
+                    },
+                    1, 3, 5
+                );
     }
 
 }

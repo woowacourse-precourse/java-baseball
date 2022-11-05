@@ -9,7 +9,6 @@ public class Application {
         Game game = new Game();
         MessageHolder messageHolder = new MessageHolder();
         gameStart(game, messageHolder);
-
     }
 
     private static void gameStart(Game game, MessageHolder messageHolder) {
@@ -34,7 +33,6 @@ public class Application {
                 playerRestart = -1;
                 setGameStart(game, messageHolder);
             }
-
         }
     }
 

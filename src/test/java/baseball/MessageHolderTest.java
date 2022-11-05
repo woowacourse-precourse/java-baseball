@@ -2,20 +2,23 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 public class MessageHolderTest {
     private static MessageHolder holder;
+
     @BeforeAll
     static void initAll() {
         holder = new MessageHolder();
     }
+
     @Test
     void testGetGameInput() {
         InputStream sysInBackup = System.in;
@@ -42,12 +45,9 @@ public class MessageHolderTest {
 
     @Test
     void testPlayerGameInputToInt() {
-        //int output = holder.playerGameInputToInt("1234");
-
-        assertThrows(IllegalArgumentException.class, ()->{
-            holder.playerGameInputToInt("1234");
-        });
-        //assertEquals(output, 1234);
+        assertThrows(IllegalArgumentException.class, () -> {
+                holder.playerGameInputToInt("1234");
+            });
     }
 
     @Test
@@ -56,7 +56,7 @@ public class MessageHolderTest {
         System.setOut(new PrintStream(out));
 
         holder.printAskGameInput();
-        
+
         String result = "숫자를 입력해주세요 : ";
         assertEquals(result, out.toString());
     }
@@ -65,7 +65,7 @@ public class MessageHolderTest {
     void testPrintAskRestart() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        
+
         holder.printAskRestart();
 
         String result = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -76,7 +76,7 @@ public class MessageHolderTest {
     void testPrintBallAndStrike() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        
+
         holder.printBallAndStrike(1, 1);
 
         String result = "1볼 1스트라이크";
@@ -87,7 +87,7 @@ public class MessageHolderTest {
     void testPrintStartMessage() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        
+
         holder.printStartMessage();
 
         String result = "숫자 야구 게임을 시작합니다.";
