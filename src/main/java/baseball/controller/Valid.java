@@ -9,7 +9,7 @@ public class Valid {
             return false;
         }else if (!isNumListSizeThree(numList)) {
             return false;
-        }else if (!isNotDuplicateAndNumOneToNine(numList)) {
+        }else if (!isNotDuplicate(numList)) {
             return false;
         }
         return true;
@@ -25,7 +25,7 @@ public class Valid {
         return true;
     }
 
-    private static boolean isNotDuplicateAndNumOneToNine(List<Integer> numList) {
+    private static boolean isNotDuplicate(List<Integer> numList) {
         for (Integer num : numList) {
             if(numList.contains(num)){
                 return false;
