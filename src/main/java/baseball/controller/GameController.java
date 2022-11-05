@@ -41,7 +41,7 @@ public class GameController {
     }
 
     private void getPlayerNumbers(){
-
+        gameService.setPlayer(playerView.getPlayerOpinion());
     }
 
     private void matchGame(){
