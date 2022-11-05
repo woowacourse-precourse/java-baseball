@@ -10,30 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다");
-
-        while (true) {
-            List<Integer> computerNumList = generateComputerNum();
-
-            while (true) {
-                String userNum = inputUserNum();
-                List<Integer> userNumList = splitUserNumToList(userNum);
-                String judgeStr = judge(computerNumList, userNumList);
-                System.out.println(judgeStr);
-                if (judgeStr.equals("3스트라이크")) {
-                    break;
-                }
-            }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            int restart = Integer.parseInt(readLine());
-
-            if (restart == 2) {
-                break;
-            }
-
-        }
+        startGame();
     }
 
     private static void startGame(){
@@ -43,6 +20,24 @@ public class Application {
             play=baseballGame();
         }
     }
+
+    private static boolean baseballGame() {
+        List<Integer> computerNumList = generateComputerNum();
+
+        while (true) {
+            String userNum = inputUserNum();
+            List<Integer> userNumList = splitUserNumToList(userNum);
+            String judgeStr = judge(computerNumList, userNumList);
+            System.out.println(judgeStr);
+            if (judgeStr.equals("3스트라이크")) {
+                break;
+            }
+        }
+
+        boolean finish=finishGame();
+        return finish;
+    }
+
 
     public static String judge(List<Integer> computerNumList, List<Integer> userNumList) {
         //수만 같으면 ball,자릿수 까지 같으면 strike
