@@ -22,7 +22,7 @@ public class InputValue {
         return inputNumber;
     }
 
-    private List<Integer> returnList(String inputNum) {
+    public List<Integer> returnList(String inputNum) {
         List<Integer> list = new ArrayList<>();
 
         for (int idx = 0; idx < inputNum.length(); idx++) {
