@@ -20,6 +20,7 @@ public class Hint {
         updateStrikeCount(answerList, inputList);
         updateBallCount(answerList, inputList);
     }
+
     public boolean isAnswer() {
         return countCheck.isAnswer();
     }
@@ -34,8 +35,6 @@ public class Hint {
 
         return makeHintMsg(strikeMsg, ballMsg);
     }
-
-
 
 
     private void updateBallCount(List<Integer> answerList, List<Integer> inputList) {
