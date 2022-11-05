@@ -1,7 +1,9 @@
 package baseball.view;
 
 import baseball.model.MyAnswer;
+import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -9,21 +11,15 @@ public class UserInterface {
 
     }
     public int inputNumber() {
-        int number;
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("숫자를 입력해주세요 : ");
-        number = scanner.nextInt();
-        return number;
+        String number = Console.readLine();
+        return Integer.parseInt(number);
     }
     public int checkGameRestart() {
-        int number;
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        number = scanner.nextInt();
+        String number = Console.readLine();
 
-        return number;
+        return Integer.parseInt(number);
     }
     public void printResult(int strikeCount, int ballCount) {
         if(strikeCount > 0 && ballCount > 0) {
