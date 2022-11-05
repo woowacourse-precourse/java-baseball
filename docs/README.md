@@ -20,11 +20,11 @@
         - [x] 입력된 수의 자릿수의 범위가 1~9가 아닐 때
     - [x] number를 unmodifialbeList로 반환해 불변성 보장
 
-- [ ] 맞춰야 될 세자리 수를 가지는 ComputerBaseballNumber class
-    - [ ] BaseballNumber 클래스를 상속 받음
-    - [ ] 랜덤으로 조건에 맞는 세자리 수를 생성하는 메소드
+- [x] 맞춰야 될 세자리 수를 가지는 ComBaseballNumber class
+    - [x] BaseballNumber 클래스를 상속 받음
+    - [x] 랜덤으로 조건에 맞는 세자리 수를 생성하는 메소드
 
-- [ ] 사용자의 입력을 저장해줄 PlayerBaseballNumber class
+- [ ] 사용자의 입력을 저장해줄 UserBaseballNumber class
     - [ ] BaseballNumber 클래스를 상속 받음
     - [ ] 사용자에 입력에 맞는 BaseballNumber를 생성하는 메소드
     - [ ] 사용자의 입력이 숫자 형식임을 검증해주는 validate 메소드
@@ -40,44 +40,44 @@
 
 # 고민해야 할 점
 
-### Computer 클래스와 Player 클래스의 부모클래스인 User 클래스가 꼭 필요할까?
+### Com 클래스와 User 클래스의 부모클래스인 User 클래스가 꼭 필요할까?
 
 - 필요한 이유
-    - Computer와 Player 클래스 둘 모두 BaseballNumber를 가지고, BaseballNumber를 각자의 방법으로 생성한다는 공통점
+    - Com과 User 클래스 둘 모두 BaseballNumber를 가지고, BaseballNumber를 각자의 방법으로 생성한다는 공통점
 - 필요하지 않은 이유
     - 굳이? 필요할까? 라는 생각
-    - BaseballNumber를 생성하는 방법도, Computer의 경우는 랜덤생성이라 파라미터가 없고,
-      Player는 String을 Argument로 사용해서 통일이 안됨.
+    - BaseballNumber를 생성하는 방법도, Com의 경우는 랜덤생성이라 파라미터가 없고,
+      User는 String을 Argument로 사용해서 통일이 안됨.
 
   필요 없다고 판단함.
 
-### Computer 클래스와 Player 클래스가 필요가 있을까?
+### Com 클래스와 User 클래스가 필요가 있을까?
 
 - 필요한 이유
-    - Computer 역할을 하는 변수가 랜덤생성이란 결과물이 아닌 다른 방법으로 BaseballNumber를 호출하는 위험 또는,
-      Player 역할의 BaseballNumber 가 랜덤생성 할 수도 있으니, 이를 Controller에서 타입으로 규약을 거는 것
+    - Com 역할을 하는 변수가 랜덤생성이란 결과물이 아닌 다른 방법으로 BaseballNumber를 호출하는 위험 또는,
+      User 역할의 BaseballNumber 가 랜덤생성 할 수도 있으니, 이를 Controller에서 타입으로 규약을 거는 것
 - 필요하지 않은 이유
-    - Computer와 Player 클래스가 다른 점이라 봤자 생성방법 뿐인데, 굳이 나눠야 할까?
+    - Com와 User 클래스가 다른 점이라 봤자 생성방법 뿐인데, 굳이 나눠야 할까?
 
 ### 사용자의 입력에 대한 BaseballNumber의 유효성 검증을 어디서 해야 할까?
 
-- Player 클래스에서 해야 한다.
+- User 클래스에서 해야 한다.
     - 유효성에서 벗어나는 경우가 사용자의 입력일 때 밖에 없다.
 - BaseballNumber 클래스에서 해야 한다.
     - 개념적으로 보면 BaseballNumber자체의 값에 대한 유효성이니 BaseballNunber 클래스에서 해야한다.
 
 ### BaseballNumber의 numbers가 랜덤생성되는 메소드는 어디에 정의해야 할까?
 
-- Computer 클래스에서 해야 한다.
-    - 랜덤으로 BaseballNumber를 생성할 일이 Computer일 경우 밖에 없다.
+- Com 클래스에서 해야 한다.
+    - 랜덤으로 BaseballNumber를 생성할 일이 Com일 경우 밖에 없다.
 - BaseballNumber 에서 랜덤으로 수를 생성하는 메소드를 추가한다.
     - 개념적으로 생성하는 것이 BaseballNumber이기에 BaseballNumber에서 추가해야한다.
     - 추후에 BaseballNumber의 조건이 바뀌면, BaseballNumber뿐 아니라,
-      Computer 클래스에서도 수정을 해야 한다.
+      Com 클래스에서도 수정을 해야 한다.
 
 ### 게임을 재시작할 경우, 프로그램의 효율성을 고민해봐야 할 점
 
-- Computer와 Player 객체를 계속해서 재생성 할 것인가?
+- Com와 User 객체를 계속해서 재생성 할 것인가?
 - BaseballNumber 객체를 계속해서 재생성 할 것인가?
 
 ### 클래스 구성에 대해 고민할 점
@@ -86,5 +86,5 @@
     1. 랜덤 생성.
     2. 사용자의 입력에 맞춰서 생성.
        그려면 BaseballNumber라는 abstract Class를 만들고,
-       이를 상속 받은 친구 ComputerBaseballNumber와
-       PlayerBaseballNumber를 정의 하는 거임!!!!
+       이를 상속 받은 친구 ComBaseballNumber와
+       UserBaseballNumber를 정의 하는 거임!!!!
