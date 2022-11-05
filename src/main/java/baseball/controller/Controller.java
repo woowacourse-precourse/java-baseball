@@ -25,7 +25,7 @@ public class Controller {
             player.guessNumbers();
             gameResult.calculate(computer, player);
             OutputView.printResult(gameResult.toString());
-        } while (!gameResult.isThreeStrike());
+        } while (!gameResult.isAllStrike());
         OutputView.printGameEnd();
     }
 

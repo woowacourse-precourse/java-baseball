@@ -27,7 +27,7 @@ public class Player {
     }
 
     void checkInput(String input) {
-        if (!Objects.equals(input.length(), Number.THREE)) {
+        if (!Objects.equals(input.length(), Number.PRESCRIBED_DIGITS)) {
             throw new IllegalArgumentException();
         }
 

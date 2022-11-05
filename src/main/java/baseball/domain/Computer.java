@@ -18,7 +18,7 @@ public class Computer {
 
     public void pickRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < Number.THREE) {
+        while (randomNumbers.size() < Number.PRESCRIBED_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(Number.MIN_PICK, Number.MAX_PICK);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
