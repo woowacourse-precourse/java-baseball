@@ -14,4 +14,8 @@ public class Player {
             value[index] = Character.getNumericValue(input.charAt(index));
         }
     }
+
+    public Integer[] getValue() {
+        return value;
+    }
 }

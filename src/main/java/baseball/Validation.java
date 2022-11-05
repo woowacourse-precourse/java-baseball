@@ -34,7 +34,7 @@ public class Validation {
         return (value.size() == MAX_LENGTH);
     }
 
-    private static void isRestartOrEnd(String input) {
+    public static void isRestartOrEnd(String input) {
         char number = input.charAt(0);
         if (number != '1' || number != '2') {
             throw new IllegalArgumentException();

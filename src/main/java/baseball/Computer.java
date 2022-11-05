@@ -30,4 +30,8 @@ public class Computer {
             index++;
         }
     }
+
+    public boolean isAnswer(Integer[] value) {
+        return true;
+    }
 }
