@@ -1,31 +1,26 @@
-package baseball.inputter;
+package baseball.converter;
 
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.GameEachInputNumberOutOfRangeException;
 import baseball.exception.GameInputNumberOutOfRangeException;
 import baseball.exception.IllegalNumberInputException;
 import baseball.exception.InputNumberFormatException;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BaseballGameNumberInputter {
+public class ThreeNumberConverter {
 
     public static final int NUMBER_RANGE_SIZE = 3;
     private String inputString;
     
-    public List<Integer> inputThreeNumbers() throws IllegalNumberInputException {
-        inputString = input();
+    public List<Integer> getThreeNumbers(String inputString) throws IllegalNumberInputException {
+        this.inputString = inputString;
         List<Integer> integerList = getIntegerListByInputString();
         validateIntegerList(integerList);
         return integerList;
-    }
-
-    private String input() {
-        return Console.readLine();
     }
     
     private List<Integer> getIntegerListByInputString() {
