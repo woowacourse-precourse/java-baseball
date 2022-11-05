@@ -1,0 +1,16 @@
+package baseball;
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
+
+public class InputExceptionTest {
+
+    @Test
+    void occur_올바르지_않는_입력_길이() {
+        String input = "1234";
+
+        assertThatThrownBy(() -> InputException.occur(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+}
