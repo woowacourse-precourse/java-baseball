@@ -8,6 +8,7 @@ public class Application {
         baseBallGame.startGame();
 
         do {
+            baseBallGame.userInput();
             baseBallGame.playGame();
         } while (baseBallGame.restartOrStop() == 1);
     }

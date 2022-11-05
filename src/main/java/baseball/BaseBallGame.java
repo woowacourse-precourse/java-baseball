@@ -33,7 +33,6 @@ public class BaseBallGame {
         while (true) {
 
 //            try {
-            userInput();
             String userInputNumber = user.userInput();
             List<Integer> userInputToList = user.userInputToList(userInputNumber);
 
