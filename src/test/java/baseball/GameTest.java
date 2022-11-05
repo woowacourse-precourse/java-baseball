@@ -26,15 +26,22 @@ class GameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1\n"})
+    @ValueSource(strings = {"123\n"})
     void 게임_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Game game = new Game();
         game.doGame();
         System.out.println(game.getPlayerNums().getNums());
-
+        System.out.println(game.getComputerNums().getNums());
     }
+
+    @Test
+    void 비교_테스트() {
+        Game game = new Game();
+        game.doGame();
+    }
+
 
 
 

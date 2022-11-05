@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constraint.INPUT_NUMER_MENT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +20,7 @@ public class PlayerNums implements Nums{
 
     @Override
     public void setNums() throws IllegalArgumentException{
+        System.out.print("\n"+INPUT_NUMER_MENT);
         String input = Console.readLine().trim();
         isIllegal(input);
         this.nums = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());

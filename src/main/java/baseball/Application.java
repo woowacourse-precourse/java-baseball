@@ -6,7 +6,12 @@ public class Application {
         System.out.println(game.opening());
 
         do {
-            game.doGame();
+            try {
+                game.doGame();
+            } catch (IllegalArgumentException e) {
+                System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
+                break;
+            }
         } while (true);
     }
 }
