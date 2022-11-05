@@ -172,19 +172,22 @@ public class Computer {
     // strike체크 함수
     private void checkStrikeBall(List<Integer> listSplitNum) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
-        boolean isStrike = true;
-        boolean isBall = true;
+        boolean isStrike = true, isBall = true;
         for (int first = 0; first < listSplitNum.size(); first++) {
             isStrike = false;
             isBall = false;
-            int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
+            int numComputerAtNow = getValueOfIndexFromList(numThreeRanOfComputerList, first);
             for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
-                int numAtNow = listSplitNum.get(second);
+                int numAtNow = getValueOfIndexFromList(listSplitNum, second);
                 isStrike = isCheckStrike(isStrike, first, numComputerAtNow, second, numAtNow);
                 isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
             }
             addCntBallStrike(isStrike, isBall);
         }
+    }
+
+    private Integer getValueOfIndexFromList(List<Integer> list, int first) {
+        return list.get(first);
     }
 
     private void addCntBallStrike(boolean isStrike, boolean isBall) {
