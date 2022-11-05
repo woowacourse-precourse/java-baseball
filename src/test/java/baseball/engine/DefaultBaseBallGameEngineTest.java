@@ -44,7 +44,7 @@ class DefaultBaseBallGameEngineTest {
 
     @BeforeEach
     void setUp() {
-        gameEngine = new DefaultBaseBallGameEngine();
+        gameEngine = new DefaultBaseBallGameEngine(new NextStepNumberGenerator());
     }
 
     @Nested

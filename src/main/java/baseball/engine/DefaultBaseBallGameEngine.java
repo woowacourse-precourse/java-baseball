@@ -8,6 +8,12 @@ import java.util.stream.Collectors;
 public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     private final static int NUMBERS_SIZE = 3;
 
+    private final NumberGenerator generator;
+
+    public DefaultBaseBallGameEngine(NumberGenerator generator) {
+        this.generator = generator;
+    }
+
     @Override
     public BallStatus createBallStatus(Numbers answer, Numbers userNumbers) {
         if (answer == null || userNumbers == null) {
@@ -60,5 +66,10 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
                 .count();
 
         return count != NUMBERS_SIZE;
+    }
+
+    @Override
+    public Numbers generateAnswer() {
+        return generator.generate(NUMBERS_SIZE);
     }
 }

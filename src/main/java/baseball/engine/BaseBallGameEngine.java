@@ -7,4 +7,6 @@ public interface BaseBallGameEngine {
     BallStatus createBallStatus(Numbers answer, Numbers userNumbers);
 
     Numbers parseToNumbers(String number);
+
+    Numbers generateAnswer();
 }
