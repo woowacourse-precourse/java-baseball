@@ -29,7 +29,7 @@ public class BaseBallGame {
             user.readHintMsg(hint);
 
             if(hint.isAnswer()) {
-                user.readGameEndMsg();
+                user.readGameCompleteMsg();
                 GameControlNum gameControlNum = user.inputGameControlNum();
 
                 if(!gameControlNum.isRestart()) {
