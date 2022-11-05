@@ -10,6 +10,11 @@ public class Computer {
   public Computer() {
   }
 
+  public void init () {
+    while(isValidateNumber(computerNumbers)) {
+      generateNumbers();
+    }
+  }
   private void generateNumbers() {
     computerNumbers = new ArrayList<>();
     while(computerNumbers.size() < 3) {
