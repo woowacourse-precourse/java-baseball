@@ -26,7 +26,7 @@ public class GameController {
     }
 
     private void generateComputer(){
-
+        gameService.setComputer();
     }
 
     private void generateGameStatus(){
