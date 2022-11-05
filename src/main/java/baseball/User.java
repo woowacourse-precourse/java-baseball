@@ -11,6 +11,13 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
 
+        try{
+            Validation validation = new Validation();
+            validation.validateUserNumber(userNumber);
+        } catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e);
+        }
+
         this.userNumber = toList(userNumber);
     }
 
