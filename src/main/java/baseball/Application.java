@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -10,6 +11,16 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
 
+    }
+
+    private static List<String> createRandom() {
+        List<String> randomNumbers = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumbers.add(String.valueOf(randomNumber));
+        }
+
+        return randomNumbers;
     }
 
     private static List<String> receivingValue() {
@@ -30,7 +41,7 @@ public class Application {
     }
 
     private static void checkValue(List<String> numbers) throws IllegalArgumentException {
-        if (numbers.contains("0") || numbers.size() > 3) {
+        if (isIncludingZero(numbers) || isSizeOverThree(numbers)) {
             throw new IllegalArgumentException();
         }
     }
