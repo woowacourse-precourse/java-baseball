@@ -7,11 +7,7 @@ import java.util.List;
 
 public class Computer {
     private static final int BASEBALL_GAME_DIGIT = 3;
-    private List<Character> baseballNumber = new ArrayList<>();
-
-    public Computer() {
-        makeRandomNumber();
-    }
+    private final List<Character> baseballNumber = new ArrayList<>();
 
     public List<Character> getBaseballNumber() {
         return baseballNumber;
