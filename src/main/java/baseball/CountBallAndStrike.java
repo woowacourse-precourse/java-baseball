@@ -14,11 +14,26 @@ public class CountBallAndStrike {
         return strike;
     }
 
+    public void countBallAndStrike(List<Character> baseballNumber, String number) {
+        ball = countBall(baseballNumber, number);
+        strike = countStrike(baseballNumber, number);
+    }
 
-    private int countStrike(List<Character> baseballNumber, String number){
+    private int countBall(List<Character> baseballNumber, String number) {
         int count = 0;
-        for(int unitNum=0; unitNum<baseballNumber.size(); unitNum++){
-            if(baseballNumber.get(unitNum).equals(number.charAt(unitNum))){
+        for (int unitNum = 0; unitNum < baseballNumber.size(); unitNum++) {
+            if (!(baseballNumber.get(unitNum).equals(number.charAt(unitNum)))
+                    || baseballNumber.contains(unitNum)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int countStrike(List<Character> baseballNumber, String number) {
+        int count = 0;
+        for (int unitNum = 0; unitNum < baseballNumber.size(); unitNum++) {
+            if (baseballNumber.get(unitNum).equals(number.charAt(unitNum))) {
                 count++;
             }
         }
