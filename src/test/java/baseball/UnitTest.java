@@ -409,13 +409,32 @@ class UnitTest {
         assertThat(state).isEqualTo(false);
     }
     @Test
-    public void 낫싱일떄_false를_리턴하는지_확인(){
+    public void isEnd_낫싱일떄_false를_리턴하는지_확인(){
         //given
         int [] score = {0,3};
         //when
         boolean state = application.isEnd(score);
         //then
         assertThat(state).isEqualTo(false);
+    }
+    @Test
+    public void printEndGame_state_true_일때_문구를_출력하는지_확인(){
+        //given
+        final String content = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        //when
+        application.printEndGame(true);
+
+        //then
+        assertEquals(content, outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printEndGame_state_false_일때_문구를_출력하는지_확인(){
+        //given
+        //when
+        application.printEndGame(false);
+
+        //then
+        assertEquals("",outputStreamCaptor.toString().trim());
     }
     private boolean checkIfEachDifferent(int result){
         int i1 = result/100;
