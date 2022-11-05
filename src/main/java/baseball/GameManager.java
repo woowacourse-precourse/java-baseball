@@ -3,9 +3,11 @@ package baseball;
 public class GameManager {
 
     private final Computer computer;
+    private final Player player;
 
-    public GameManager(Computer computer) {
+    public GameManager(Computer computer, Player player) {
         this.computer = computer;
+        this.player = player;
     }
 
     public void run() {
@@ -16,6 +18,13 @@ public class GameManager {
 
     private void playGame() {
         computer.createBalls();
+
+        while (checkGameOver()) {
+            player.createBalls();
+        }
+    }
+
+    private boolean checkGameOver() {
     }
 
     private boolean isGameContinue() {
