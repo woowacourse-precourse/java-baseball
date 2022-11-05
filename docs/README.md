@@ -38,7 +38,7 @@
     - 게임 시작 시 "숫자 야구 게임을 시작합니다." 출력
   - [X] `void printPlayerTurn()` 
     - 컴퓨터 플레이어가 세 자리의 수를 제시한 후 게임 플레이어에게 "숫자를 입력해주세요 : " 출력
-  - [ ] `void printNoting()`, `void printCorrect()`, `void printBallAndString(int, int)`
+  - [X] `void printNoting()`, `void printCorrect()`, `void printBallAndString(int, int)`
     - `void printNoting()` : "낫싱" 출력
     - `void printCorrect()` : "3개의 숫자를 모두 맞히셨습니다! 게임 종료"와 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
     - `void printBallAndString(int, int)` : 입력의 결과와 "숫자를 입력해주세요 : " 출력 
