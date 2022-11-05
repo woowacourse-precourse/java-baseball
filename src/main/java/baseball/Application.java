@@ -33,7 +33,18 @@ public class Application {
         Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
         boolean isGameFinish = resultMessagePrint(inputNumberResult);
 
+        if (isGameFinish) {
+            String orderNumber = inputOrderNumber();
+        }
         return true;
+    }
+
+    public static String inputOrderNumber() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String orderNumber = Console.readLine();
+
+        return orderNumber;
     }
 
     public static boolean resultMessagePrint(Map<String, Integer> inputNumberResult) {
