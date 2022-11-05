@@ -34,7 +34,7 @@ public class NumberMatchProcessorTest {
                 }),
                 DynamicTest.dynamicTest("1스트라이크인 경우", () -> {
 
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 333);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 453);
 
                     assertThat(result).contains(0, 1);
                     assertThat(result).containsExactly(1, 0);
@@ -43,7 +43,7 @@ public class NumberMatchProcessorTest {
                 }),
                 DynamicTest.dynamicTest("1볼인 경우", () -> {
 
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 442);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 452);
 
                     assertThat(result).contains(0, 1);
                     assertThat(result).containsExactly(0, 1);
