@@ -1,5 +1,6 @@
 package baseball.computer;
 
+import baseball.user.User;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -41,6 +42,19 @@ public class Computer {
             ball += 1;
 
 
+    }
+
+    public Integer getUserInput(User user) {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = user.getUserInput();
+
+        if (!Validator.isInteger(userInput))
+            throw new IllegalArgumentException("정수를 입력해주세요");
+        Integer i_userInput = Integer.parseInt(userInput);
+        if (!Validator.isValidInteger(i_userInput))
+            throw new IllegalArgumentException("3자리의 정수를 입력해주세요");
+
+        return i_userInput;
     }
 
     public void start() {
