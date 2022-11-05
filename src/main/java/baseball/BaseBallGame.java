@@ -42,6 +42,7 @@ public class BaseBallGame {
     private int inputRestartCommand() {
         Printer.printGameRestart();
         String commandInput = Console.readLine();
+        CommandChecker.check(commandInput);
         return Integer.parseInt(commandInput);
     }
 }
