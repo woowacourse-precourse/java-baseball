@@ -28,9 +28,9 @@ public class PositiveDigit {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        PositiveDigit digit1 = (PositiveDigit)o;
+        PositiveDigit that = (PositiveDigit)o;
 
-        return digit == digit1.digit;
+        return digit == that.digit;
     }
 
     @Override
