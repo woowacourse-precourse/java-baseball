@@ -7,7 +7,6 @@ import baseball.view.GameView;
 public class Game {
 	private final Computer computer;
 	private User user;
-
 	private int ball;
 	private int strike;
 
@@ -18,12 +17,25 @@ public class Game {
 	public void play() {
 		GameView.printStartMessage();
 		computer.createAnswer();
-
 		user = new User(GameView.inputNum());
 
 		initBallAndStrike();
 		compareNumber(computer.getAnswer(), user.getNumber());
-		GameView.printHint(ball,strike);
+
+		if (isCorrectAnswer()) {
+			GameView.printEndGame();
+		} else {
+			GameView.printHint(ball, strike);
+		}
+
+	}
+
+	private boolean isCorrectAnswer() {
+		if (strike == Computer.ANSWER_LENGTH) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	private void initBallAndStrike() {
