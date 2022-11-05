@@ -45,9 +45,9 @@
   - [ ] 게임 플레이어가 1을 입력할 경우 위의 내용을 반복, 2를 입력할 경우 게임 종료
 
 - [ ] ResultType Enum
-  - [ ] BALL("볼")
-  - [ ] STRIKE("스트라이크")
-  - [ ] NOTHING("낫싱")
+  - [X] BALL("볼")
+  - [X] STRIKE("스트라이크")
+  - [X] NOTHING("낫싱")
 
 - [ ] Result Class
   - [ ] `Map<ResultType, Integer>`를 멤버 변수로 저장하여 결과를 View Class로 전달
