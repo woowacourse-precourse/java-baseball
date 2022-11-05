@@ -16,10 +16,25 @@ public class BaseballNumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1", "10", "11", "12", "13", "000"})
     void 야구게임_넘버는_1과_9사이의_숫자로_이루어집니다(final Integer input) {
-        assertThatThrownBy(() -> {
-            var number = new BaseballNumber(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new BaseballNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(BaseballNumber.ERROR_NUMBER_SIZE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "10", "11", "12", "13", "000"})
+    void 야구게임_넘버는_1과_9사이의_숫자로_문자열을_입력하더라도_동일합니다(final String input) {
+        assertThatThrownBy(() -> new BaseballNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(BaseballNumber.ERROR_NUMBER_SIZE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "b", "$", "#", " "})
+    void 야구게임_넘버는_숫자외_값은_저장할_수_없습니다(final String input) {
+        assertThatThrownBy(() -> new BaseballNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(BaseballNumber.ERROR_INPUT_IS_NUMBER);
     }
 
     @Test
