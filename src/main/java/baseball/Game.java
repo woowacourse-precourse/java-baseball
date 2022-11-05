@@ -25,7 +25,7 @@ public class Game {
     private void play() {
         while (isEnd.equals(false)) {
             System.out.println(INPUT);
-            printResult(computer.getResult(getInput()));
+            printResult(computer.getResultOfInput(getInput()));
         }
     }
 

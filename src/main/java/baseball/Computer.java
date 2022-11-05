@@ -15,7 +15,7 @@ public class Computer {
     private HashMap<String, Integer> counts;
 
     public Computer() {
-        this.answer = getAnswer();
+        this.answer = setAnswer();
         this.counts = new HashMap<>();
     }
 
@@ -27,7 +27,7 @@ public class Computer {
         return counts.get("ball");
     }
 
-    private List<Integer> getAnswer() {
+    private List<Integer> setAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
             addRandomNumber(answer);
@@ -42,7 +42,7 @@ public class Computer {
         }
     }
 
-    public Result getResult(String input) {
+    public Result getResultOfInput(String input) {
         this.inputList = stringToIntegerList(input);
         this.counts = initializeCounts();
 
