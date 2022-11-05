@@ -10,32 +10,30 @@ public class PlayerNumber implements Number {
     List<String> playNumber;
 
     public PlayerNumber(String number) throws IllegalArgumentException  {
-        chkValidation(number);
+        checkValidation(number);
         this.playNumber = new ArrayList<>(Arrays.asList(number.split("")));
     }
 
     @Override
     public List<String> getNumber() {
-
         return playNumber;
     }
 
-    public void chkValidation(String number) throws IllegalArgumentException{
-        isNumber(number);
-        isDuplicate(number);
+    public void checkValidation(String number) throws IllegalArgumentException{
+        checkValidateNumber(number);
+        checkDuplicateNumber(number);
     }
 
-    private int isNumber(String number) throws IllegalArgumentException{
+    private int checkValidateNumber(String number) throws IllegalArgumentException{
         String regExp = "\\d{3}";
 
         if (Pattern.matches(regExp, number)) {
-            System.out.println("pass");
             return 0;
         }
         throw new IllegalArgumentException();
     }
 
-    private void isDuplicate(String number) throws IllegalArgumentException {
+    private void checkDuplicateNumber(String number) throws IllegalArgumentException {
         List<String> numberArr = new ArrayList<>(Arrays.asList(number.split("")));
 
         for (String num : numberArr) {

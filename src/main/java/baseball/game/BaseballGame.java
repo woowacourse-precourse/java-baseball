@@ -21,7 +21,6 @@ public class BaseballGame {
 
         System.out.print("숫자를 입력하세요 : ");
         playerNumber = Console.readLine();
-        System.out.println(playerNumber);
 
         return playerNumber;
     }
