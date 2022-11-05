@@ -51,4 +51,8 @@ public class Computer {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
+
+    public Integer getStrike() {
+        return strike;
+    }
 }
