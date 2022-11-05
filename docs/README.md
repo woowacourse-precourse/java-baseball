@@ -10,7 +10,7 @@
 
 ### 숫자
 
-- [ ] 1부터 9까지 수가 아닌 경우 IllegalArgumentException 예외를 throw 한다.
+- [x] 1부터 9까지 수가 아닌 경우 IllegalArgumentException 예외를 throw 한다.
 - [ ] 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱 이란 힌트를 얻는다.
 
 ### 힌트
