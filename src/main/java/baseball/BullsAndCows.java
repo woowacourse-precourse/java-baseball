@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -28,7 +29,30 @@ public class BullsAndCows {
         createRandomAnswer();
     }
 
-    public String getResultOfGuessNumber(String userInput) {
+    public void playGame() {
+
+        while (!isEnd()) {
+            String userInput = Console.readLine();
+            System.out.println(getResultMessageOfGuessNumber(userInput));
+        }
+
+        String userInput = Console.readLine();
+        ResultMessage resultOfEndGame = getResultOfEndGame(userInput);
+
+        System.out.println(GAME_END_MESSAGE);
+
+        if (resultOfEndGame.equals(RESTART)) {
+            System.out.println(RESTART.getMessage());
+            restart();
+        }
+
+        if (resultOfEndGame.equals(END)) {
+            System.out.println(END.getMessage());
+        }
+
+    }
+
+    private String getResultMessageOfGuessNumber(String userInput) {
         validateIsNumber(userInput);
         validateLength(userInput);
 
