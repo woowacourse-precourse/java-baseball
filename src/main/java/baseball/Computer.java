@@ -10,12 +10,12 @@ public class Computer {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
     private String[] compareResult;
+    private static List<Integer> computerNumbers = new ArrayList<>();
     private int ballCount;
     private int strikeCount;
     private int nothingCount;
 
     public List<Integer> createRandomNumber() {
-        List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
