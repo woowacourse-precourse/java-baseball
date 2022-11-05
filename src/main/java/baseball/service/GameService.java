@@ -11,6 +11,8 @@ public class GameService {
     Computer computer;
     private int strikeCount;
     private int ballCount;
+    private static final int FIRST_INDEX = 0;
+    private static final int LAST_INDEX = 2;
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -34,7 +36,9 @@ public class GameService {
     }
 
     public void checkComputerWithPlayerNumber(){
-
+        for(int index = FIRST_INDEX; index <= LAST_INDEX; index++){
+            scoreGameWithIndex(index);
+        }
     }
 
     public List<Integer> getPlayerNumbers(){
