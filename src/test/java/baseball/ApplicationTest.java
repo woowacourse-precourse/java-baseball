@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -36,6 +37,27 @@ class ApplicationTest extends NsTest {
         System.setOut(new PrintStream(byteArrayOutputStream));
         Application.notifyGameStart();
         assertThat("숫자 야구 게임을 시작합니다.\n").isEqualTo(byteArrayOutputStream.toString());
+    }
+
+    @Test
+    void 상대방의_수_범위(){
+        List<Integer> computerNumbers = Application.createComputerNumbers();
+        for (Integer computerNumber : computerNumbers) {
+            assertThat(computerNumber)
+                    .isGreaterThanOrEqualTo(1)
+                    .isLessThanOrEqualTo(9);
+        }
+    }
+
+    @Test
+    void 상대방의_서로_다른_임의의_수(){
+        List<Integer> computerNumbers = Application.createComputerNumbers();
+        Integer firstNum = computerNumbers.get(0);
+        Integer secondNum = computerNumbers.get(1);
+        Integer thirdNum = computerNumbers.get(2);
+        assertThat(firstNum).isNotEqualTo(secondNum);
+        assertThat(firstNum).isNotEqualTo(thirdNum);
+        assertThat(secondNum).isNotEqualTo(thirdNum);
     }
 
     @Override
