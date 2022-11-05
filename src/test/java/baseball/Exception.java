@@ -36,4 +36,8 @@ public class Exception {
   public static boolean isValidNumber(String userNumber) {
     return (isRightLength(userNumber) && isDuplicated(userNumber) && isNumber(userNumber));
   }
+
+  public static boolean isValidButton(String button) {
+    return (isNumber(button) && button.length() == 1);
+  }
 }
