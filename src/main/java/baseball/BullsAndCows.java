@@ -12,6 +12,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static baseball.GameProgressMessage.GAME_END_MESSAGE;
+import static baseball.GameProgressMessage.GAME_PROGRESS_MESSAGE;
 import static baseball.ResultMessage.*;
 
 public class BullsAndCows {
@@ -35,6 +37,7 @@ public class BullsAndCows {
     public void playGame() {
 
         while (!isEnd()) {
+            System.out.println(GAME_PROGRESS_MESSAGE);
             String userInput = Console.readLine();
             System.out.println(getResultMessageOfGuessNumber(userInput));
         }
