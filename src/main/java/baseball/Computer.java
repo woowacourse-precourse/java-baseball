@@ -17,8 +17,7 @@ public class Computer {
 
     private List<Integer> quizNumberList;
 
-    public Computer() {
-    }
+    public Computer() {}
 
     /* 문제용 숫자 생성 */
     public void init(){
