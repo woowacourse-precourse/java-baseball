@@ -17,14 +17,21 @@ public class MessageHolderTest {
 
         String output = holder.GetGameInput();
         System.setIn(sysInBackup);
-        
-        assertEquals(output, "245");
 
+        assertEquals(output, "245");
     }
 
     @Test
     void testGetPlayerRestartInput() {
-        
+        holder = new MessageHolder();
+        InputStream sysInBackup = System.in;
+        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
+        System.setIn(in);
+
+        int output = holder.getPlayerRestartInput();
+        System.setIn(sysInBackup);
+
+        assertEquals(output, 1);
     }
 
     @Test
