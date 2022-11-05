@@ -14,8 +14,9 @@ import static org.assertj.core.api.Assertions.*;
 class ApplicationTest extends NsTest {
     final GameReadyMachine gameReadyMachine = new GameReadyMachine();
     final GameProcessor gameProcessor = new GameProcessor();
+
     @Test
-    void 자리수_구분되는_숫자생성_1_3(){
+    void 자리수_구분되는_숫자생성_1_3() {
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.setAnswerValue())).isEqualTo(true);
     }
 
@@ -31,13 +32,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 테스트1_4와1_5(){
+    void 테스트1_4와1_5() {
         gameReadyMachine.gameReadyComplete();
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.getAnswerValue())).isEqualTo(true);
     }
 
     @Test
-    void 테스트2_1_with_테스트2_6(){
+    void 테스트2_1_with_테스트2_6() {
         String testData = "234";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);
@@ -45,6 +46,14 @@ class ApplicationTest extends NsTest {
         assertThat(gameProcessor.getLastInput()).isEqualTo("234");
     }
 
+    @Test
+    void return_IllegalArgumentException_test() {
+        String testData = "ㄱㄴㄷ";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> gameProcessor.checkInput())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 
     @Test
