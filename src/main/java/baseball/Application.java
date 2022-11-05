@@ -1,10 +1,14 @@
 package baseball;
 
 import baseball.game.BaseballGame;
+import baseball.number.PlayerNumber;
+import baseball.number.TargetNumber;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        //BaseballGame baseballGame = new BaseballGame();
+        PlayerNumber playerNumber = new PlayerNumber();
+        TargetNumber targetNumber = new TargetNumber();
+        BaseballGame baseballGame = new BaseballGame(playerNumber, targetNumber);
     }
 }

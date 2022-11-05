@@ -58,7 +58,8 @@ class BaseballGameTest {
     @DisplayName("무작위 숫자 생성")
     void generateTestNumber() {
         TargetNumber targetNumber = new TargetNumber();
-        System.out.println("targetNumber.getNumber() = " + targetNumber.getNumber());;
+        System.out.println("targetNumber.getNumber() = " + targetNumber.getNumber());
+
         Assertions.assertThat(targetNumber.getNumber().size()).isEqualTo(3);
     }
 
