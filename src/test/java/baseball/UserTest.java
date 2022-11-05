@@ -14,7 +14,7 @@ public class UserTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         User user = new User();
-        user.getUsersNumber();
+        user.generateNumber();
         Assertions.assertThat(user.getNumbers().equals(List.of(1, 2, 3)));
     }
 
@@ -24,7 +24,7 @@ public class UserTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         User user = new User();
-        Assertions.assertThatThrownBy(() -> user.getUsersNumber()).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> user.generateNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class UserTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         User user = new User();
-        Assertions.assertThatThrownBy(() -> user.getUsersNumber()).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> user.generateNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class UserTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         User user = new User();
-        Assertions.assertThatThrownBy(() -> user.getUsersNumber()).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> user.generateNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -51,6 +51,6 @@ public class UserTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         User user = new User();
-        Assertions.assertThatThrownBy(() -> user.getUsersNumber()).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> user.generateNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 }

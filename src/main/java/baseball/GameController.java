@@ -17,7 +17,7 @@ public class GameController {
 
     public void ready() {
         computer.generateNumber();
-        user.getUsersNumber();
+        user.generateNumber();
     }
 
     public boolean isStrike(int index) {
@@ -72,7 +72,7 @@ public class GameController {
         while (exit != 2) {
             ready();
             while (!judge()) {
-                user.getUsersNumber();
+                user.generateNumber();
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             exit = Integer.parseInt(Console.readLine());
