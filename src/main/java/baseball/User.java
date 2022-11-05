@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
-  static String input;
+  public static String input;
   private static final int PLAYINGMODE = 1;
   private static final int PLAYAGAINMODE = 2;
 
@@ -24,7 +24,7 @@ public class User {
       checkInputIsNumNonZero();
       checkInputDuplicated();
     }
-    System.out.println(input);
+//    System.out.println(input);
     return (input);
   }
 
