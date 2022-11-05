@@ -33,4 +33,11 @@ public class UseFunc {
         }
         return list;
     }
+
+    public static boolean isEqualIntOfTwo(int num_1, int num_2) {
+        if (num_1 == num_2) {
+            return true;
+        }
+        return false;
+    }
 }
