@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameApplication {
-    private static final String GameStart_sentence = "숫자 야구 게임을 시작합니다.";
-    private static final String RestartOrExit_sentence = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String Nothing_sentence = "낫싱";
-    private static final String Strike_sentence = "스트라이크";
-    private static final String Ball_sentence = "볼";
-    private static final String RightAnswer_sentence = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_START_SENTENCE = "숫자 야구 게임을 시작합니다.";
+    private static final String RESTART_OR_EXIT_SENTENCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String NOTHING_SENTENCE = "낫싱";
+    private static final String STRIKE_SENTENCE = "스트라이크";
+    private static final String BALL_SENTENCE = "볼";
+    private static final String RIGHT_ANSWER_SENTENCE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private List<Integer> computer;
     private List<Integer> user;
@@ -23,7 +23,7 @@ public class GameApplication {
         while (true) {
             baseballGame();
 
-            System.out.print(RestartOrExit_sentence);
+            System.out.print(RESTART_OR_EXIT_SENTENCE);
             if (RestartOrExit()) break;
         }
     }
@@ -46,7 +46,7 @@ public class GameApplication {
     }
 
     private void baseballGame() {
-        System.out.println(GameStart_sentence);
+        System.out.println(GAME_START_SENTENCE);
 
         GameNumber computerNumber = new GameNumber();
         GameNumber userNumber = new GameNumber();
@@ -71,25 +71,25 @@ public class GameApplication {
         StringBuilder sb = new StringBuilder();
         // result[0] = strike, result[1] = ball
         if (isSame(0, result[0]) && isSame(0, result[1])) { // strike ball 둘다 0인 경우
-            sb.append(Nothing_sentence);
+            sb.append(NOTHING_SENTENCE);
             return sb.toString();
         }
         if (isSame(0, result[1])) { // ball 이 0인 경우
-            sb.append(result[0] + Strike_sentence);
+            sb.append(result[0] + STRIKE_SENTENCE);
             return sb.toString();
         }
         if (isSame(0, result[0])) { // strike 가 0인 경우
-            sb.append(result[1] + Ball_sentence);
+            sb.append(result[1] + BALL_SENTENCE);
             return sb.toString();
         }
-        sb.append(result[0] + Ball_sentence + " " + result[1] + Strike_sentence); // 둘다 0 보다 클 경우
+        sb.append(result[0] + BALL_SENTENCE + " " + result[1] + STRIKE_SENTENCE); // 둘다 0 보다 클 경우
         return sb.toString();
     }
 
     // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
     public boolean executeApplication(int[] result) {
         if (isSame(3, result[0])) { // strike == 3
-            System.out.println(RightAnswer_sentence);
+            System.out.println(RIGHT_ANSWER_SENTENCE);
             return true;
         }
         return false;
