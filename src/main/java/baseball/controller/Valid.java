@@ -4,6 +4,17 @@ import java.util.List;
 
 public class Valid {
 
+    public boolean isValidNumList(List<Integer> numList) {
+        if (!isNumOneToNine(numList)) {
+            return false;
+        }else if (!isNumListSizeThree(numList)) {
+            return false;
+        }else if (!isNotDuplicateAndNumOneToNine(numList)) {
+            return false;
+        }
+        return true;
+    }
+
 
     private boolean isNumOneToNine(List<Integer> numList) {
         for (Integer num : numList) {
