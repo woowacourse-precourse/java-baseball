@@ -69,4 +69,17 @@ class ComputerTest {
 		}
 		return false;
 	}
+
+	@Test
+	@DisplayName("컴퓨터 던진 공 개수 3개 검증")
+	void 컴퓨터_던진_공_개수_검증() {
+		// given
+		Computer computer = new Computer();
+		int size = 3;
+		// when
+		computer.pitchThreeUniqueBalls();
+		List<Integer> computerBalls = computer.getComputerBalls();
+		// then
+		Assertions.assertThat(computerBalls.size()).isEqualTo(size);
+	}
 }
