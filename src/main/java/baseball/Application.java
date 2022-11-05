@@ -16,7 +16,7 @@ public class Application {
 
     public static boolean isCorrectLength(String consoleInput) { return (consoleInput.length() == 3); }
 
-    public static boolean isInt(String consoleInput) {
+    public static boolean isIntWithNonzeroDigits(String consoleInput) {
         char charInString;
         for (int index = 0; index < consoleInput.length(); index++) {
             charInString = consoleInput.charAt(index);
@@ -43,8 +43,8 @@ public class Application {
     }
 
     public static void validateInput(String consoleInput) {
-        if (!isCorrectLength(consoleInput) || !isInt(consoleInput)) {
-            throw new IllegalArgumentException("Input should be 3-digit integer");
+        if (!isCorrectLength(consoleInput) || !isIntWithNonzeroDigits(consoleInput)) {
+            throw new IllegalArgumentException("Input should be 3-digit integer with non-zero digits");
         } else if (!isDigitDuplicated(consoleInput)) {
             throw new IllegalArgumentException("Input should consist of non-duplicated digits");
         }
@@ -82,7 +82,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             answer = generateAnswer();
 
-            System.out.println(answer);
+            System.out.println(answer); // for debug
 
             predictNumber(answer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
