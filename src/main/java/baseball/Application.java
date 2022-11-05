@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,6 +21,22 @@ public class Application {
             cnt /= 10;
         }
         return answerNumber;
+    }
+
+    static int getInputNumber (){
+        String input;
+        int number = 0;
+        try {
+            input = Console.readLine();
+            number = Integer.parseInt(input);
+            if (number<100 || number>999)
+                throw new IllegalStateException();
+        }
+        catch (IllegalStateException e){
+            e.printStackTrace();
+            throw e;
+        }
+        return number;
     }
 
     public static void main(String[] args) {
