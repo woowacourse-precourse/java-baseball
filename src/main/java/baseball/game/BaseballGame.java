@@ -7,6 +7,8 @@ import java.util.*;
 
 public class BaseballGame {
 
+    private List<String> computerNumList;
+
     private String receiveInput() {
         String inputNum;
         inputNum = Console.readLine();
@@ -29,15 +31,14 @@ public class BaseballGame {
         }
     }
 
-    private List<String> makeComputerNumList() {
-        List<String> computerNumList = new ArrayList<>();
+    private void makeComputerNumList() {
+        computerNumList = new ArrayList<>();
         while (computerNumList.size() < 3) {
             String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
             if (!computerNumList.contains(randomNumber)) {
                 computerNumList.add(randomNumber);
             }
         }
-        return computerNumList;
     }
 
     private int checkBall(List<String> inputNumList, List<String> computerNumList) {
@@ -68,6 +69,8 @@ public class BaseballGame {
         inputNum = receiveInput();
         if (inputNum.equals("2"))
             System.exit(0);
+        if (inputNum.equals("1"))
+            makeComputerNumList();
     }
 
     private void showGameResult(int strikeNum, int ballNum) {
@@ -80,4 +83,5 @@ public class BaseballGame {
         if (strikeNum == 0 & ballNum == 0)
             System.out.println("낫싱");
     }
+
 }
