@@ -26,4 +26,21 @@ class BallTest {
         ball.addBall();
         assertEquals(result, ball.getBall());
     }
+
+    @Test
+    @DisplayName("게임 끝났는지")
+    void isEnd() {
+        Ball ball = new Ball(3, 0);
+
+        assertTrue(ball.isEnd());
+    }
+
+    @Test
+    @DisplayName("결과 출력")
+    void testToString() {
+        String result = "1볼 2스트라이크";
+        Ball ball = new Ball(2, 1);
+
+        assertEquals(result, ball.toString());
+    }
 }
