@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.model.Baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -7,13 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    private static List<Integer> userNumber = getInput();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static List<Integer> getInput(){
+    public Baseball getInput(){
         String input = Console.readLine();
         int inputNumber = strToInteger(input);
-        return mappingToList(inputNumber);
+        List<Integer> userNumber = mappingToList(inputNumber);
+        return new Baseball(userNumber);
     }
 
     public static Integer strToInteger(String input){
