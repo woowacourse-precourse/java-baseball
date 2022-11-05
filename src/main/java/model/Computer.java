@@ -224,13 +224,15 @@ public class Computer {
         ArrayList<Integer> list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
         String strParseIntArr = "" + numTosplit;
-        String[] strSplitArr = strParseIntArr.split("");
-
+        String[] strSplitArr = getSpitArr(strParseIntArr);
         for (String str : strSplitArr) {
             list.add(parseIntegerFromStr(str));
         }
-
         return list;
+    }
+
+    private String[] getSpitArr(String str) {
+        return str.split("");
     }
 
     private Integer parseIntegerFromStr(String str) {
