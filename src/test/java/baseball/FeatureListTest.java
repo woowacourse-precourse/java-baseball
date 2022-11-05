@@ -76,4 +76,10 @@ public class FeatureListTest {
         assertThat(Judgment(input, answer)).isEqualTo(result);
     }
 
+    @Test
+    void 판정출력테스트() {
+        int[] test = new int[]{1, 1};
+        
+    }
+
 }

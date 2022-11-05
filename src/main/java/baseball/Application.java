@@ -94,7 +94,7 @@ public class Application {
         }
     }
 
-    public static void printJudge(int[] judg) {
+    public static String printJudge(int[] judg) {
         String result = "";
         if (judg[0] != 0) {
             result += judg[0]+"볼";
@@ -104,10 +104,9 @@ public class Application {
         }
 
         if (result.equals("")) {
-            System.out.println("낫싱");
-        } else if (!result.equals("")) {
-            System.out.println(result);
+            return "낫싱";
         }
+        return result;
     }
 
     public static void main(String[] args) {
