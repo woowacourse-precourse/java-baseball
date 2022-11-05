@@ -7,22 +7,34 @@ import baseball.verifier.MakeVerifierInputToBaseballGame;
 import baseball.verifier.MakeVerifierInputToEndOrNewGame;
 import baseball.verifier.Verifier;
 
+
 public class BaseballGame {
-    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
-    private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
-
     private static final String NEW_GAME = "1";
+    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame;
+    private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame;
+    private final Computer computer;
 
-    public void play() {
+    public BaseballGame() {
+        verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
+        verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
+        computer = new Computer();
+    }
+
+    public void start() {
 
         View.printStartGame();
         do {
-            playGame();
+            startGame();
         } while (isEndGame());
 
     }
 
-    public void playGame() {
+    private void startGame() {
+        computer.makeRandomNumber();
+
+    }
+
+    private void playGame(){
 
     }
 
