@@ -11,4 +11,8 @@ public class BaseballGame {
     public Hints result(Numbers numbers) {
         return this.numbers.match(numbers);
     }
+
+    public boolean isEnd(Hints hints) {
+        return hints.count(Hint.STRIKE) == 3;
+    }
 }
