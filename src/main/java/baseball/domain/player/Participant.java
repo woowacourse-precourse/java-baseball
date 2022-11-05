@@ -13,6 +13,9 @@ public class Participant implements Player {
     private final List<BaseballNumber> numbers;
 
     public Participant(String input) {
+        if (input.equals("")) {
+            throw new IllegalArgumentException(ERROR_SIZE);
+        }
         validateInputSize(input);
         validateInputElementIsNumber(input);
 

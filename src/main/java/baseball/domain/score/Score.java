@@ -1,5 +1,7 @@
 package baseball.domain.score;
 
+import java.util.Objects;
+
 public class Score {
     private static final Integer FIX_SIZE = 3;
     private final Integer ball;
@@ -38,6 +40,6 @@ public class Score {
     }
 
     public boolean strikeAll() {
-        return this.strike == FIX_SIZE;
+        return Objects.equals(this.strike, FIX_SIZE);
     }
 }

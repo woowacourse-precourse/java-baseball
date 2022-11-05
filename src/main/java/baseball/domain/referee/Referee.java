@@ -8,13 +8,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Referee {
     private Score score;
 
-    public Referee() {
-    }
-
     private void ruled(BaseballNumber original, List<BaseballNumber> target, Integer position) {
         AtomicInteger atomicInteger = new AtomicInteger();
         target.forEach(item -> {
             Integer targetPosition = atomicInteger.getAndIncrement();
+
             if (!original.equals(item)) {
                 return;
             }
