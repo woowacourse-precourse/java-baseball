@@ -24,7 +24,16 @@ public class InputValue {
             userNumber.add(Integer.parseInt(inputValue.substring(i, i + 1)));
         }
 
+        validateUserNumber(userNumber);
         return userNumber;
+    }
+
+    public boolean validateUserNumber(List<Integer> num) {
+        if (checkLength(num) && checkRange(num) && checkEachDifferent(num)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean checkLength(List<Integer> num) {
@@ -52,5 +61,4 @@ public class InputValue {
 
         return setNum.size() == num.size();
     }
-
 }
