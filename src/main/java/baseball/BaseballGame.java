@@ -4,6 +4,8 @@ import Constant.Const;
 import Util.RamdomNumber;
 import java.util.Scanner;
 
+import static Constant.Const.NUMBER_LENGTH;
+
 public class BaseballGame {
     int[] answer;
     Hint hint;
@@ -12,14 +14,14 @@ public class BaseballGame {
     Scanner scanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
-        this.answer = new int[3];
+        this.answer = new int[NUMBER_LENGTH];
         this.user = new User();
-        this.randomNumber = new RamdomNumber(3);
+        this.randomNumber = new RamdomNumber(NUMBER_LENGTH);
     }
 
     public void startGame(){
         System.out.println(Const.GAME_START);
-        answer = randomNumber.makeRandomNumber(3);
+        answer = randomNumber.makeRandomNumber(NUMBER_LENGTH);
         do {
             user.UserInput();
             hint.getHint(user.getUserNumber(), answer);

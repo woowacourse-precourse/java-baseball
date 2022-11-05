@@ -4,9 +4,11 @@ import Constant.Const;
 
 import java.util.Scanner;
 
+import static Constant.Const.NUMBER_LENGTH;
+
 public class User {
     Scanner Scanner = new Scanner(System.in);
-    int[] userNumber = new int[3];
+    int[] userNumber = new int[NUMBER_LENGTH];
 
 
     public void UserInput(){
@@ -16,18 +18,17 @@ public class User {
         if (invalidUserNumber(userInput)) {
             throw new IllegalArgumentException(Const.INPUT_WRONG);
         } else {
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < NUMBER_LENGTH; i++) {
                 this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
             }
         }
     }
 
     private boolean invalidUserNumber(String userInput){
-        // 3자리인지, 중복이 없는지, 1-9 사이의 값이 맞는지
-        if (userInput.length() != 3){
+        if (userInput.length() != NUMBER_LENGTH){
             return true;
         }
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < NUMBER_LENGTH; i++){
             if (!Character.isDigit(userInput.charAt(i))){
                 return true;
             }
