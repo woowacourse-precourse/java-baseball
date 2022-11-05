@@ -21,10 +21,6 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
-            for (int i = 0; i < 3; i++) {
-                System.out.print(randomNumberList.get(i));
-            }
-            System.out.println();
             String numberString = putInNumber();
 
             if (!checkNumber(numberString)) {
