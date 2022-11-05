@@ -89,20 +89,4 @@ public class Input {
         return true;
     }
 
-    /**
-     * 게임 종료 후 옵션을 제공하는 메소드
-     */
-    public void selectGameMenu(int number) {
-        switch (number) {
-            case 1:
-                // 여기 게임 재시작 기능 추가
-                break;
-            case 2:
-                // 여기 게임 종료 기능 추가
-                break;
-            default:
-                // 예외처리 기능 추가
-                break;
-        }
-    }
 }
