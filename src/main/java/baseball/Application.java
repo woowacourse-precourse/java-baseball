@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -24,7 +25,7 @@ public class Application {
         List<Integer> computer = getTargetNumbers();
 
         while (true) {
-            String input = Console.readLine();
+            String input = setInput();
             boolean error = checkUserError(input);
 
             if (error) {
@@ -32,7 +33,6 @@ public class Application {
             }
 
             List<Integer> user = getToEnterNumbers(input);
-
             List<Integer> counts = getEachCounts(computer, user);
             printBallStrike(counts);
 
@@ -53,6 +53,13 @@ public class Application {
 
             break;
         }
+    }
+
+    private static String setInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        return input;
     }
 
     private static List<Integer> getEachCounts(List<Integer> computer, List<Integer> user) {
@@ -86,8 +93,7 @@ public class Application {
 
         for (int i = 0; i < SIZE; i++) {
             char currentValue = input.charAt(i);
-
-            Integer number = Integer.valueOf(currentValue);
+            int number = Character.getNumericValue(currentValue);
             user.add(number);
         }
 
@@ -133,6 +139,8 @@ public class Application {
     }
 
     private static boolean checkUserError(String input) {
+
+        System.out.println(input);
 
         if(checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
             return true;
@@ -198,6 +206,8 @@ public class Application {
     private static boolean checkAgainGame() {
         int againGame = 1;
         int toBeContinue = Integer.valueOf(Console.readLine());
+
+        System.out.println(toBeContinue);
 
         boolean again = false;
 
