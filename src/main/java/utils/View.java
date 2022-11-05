@@ -22,4 +22,8 @@ public class View {
             System.out.println(ball + HINT_BALL + " " + strike + HINT_STRIKE);
         }
     }
+
+    public static void printGameEnd(){
+        System.out.println(GAME_END_MESSAGE);
+    }
 }

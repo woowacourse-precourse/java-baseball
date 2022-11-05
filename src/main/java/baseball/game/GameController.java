@@ -37,6 +37,8 @@ public class GameController {
         private void start(){
             View.printInput();
             String command = player.getCommand();
+
+            View.printGameEnd();
         }
 
         @Override
