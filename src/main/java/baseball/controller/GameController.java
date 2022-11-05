@@ -10,14 +10,11 @@ import java.util.List;
 
 public class GameController {
 
-    public static final int MAX_STRIKE_SIZE = 3;
-    public static final int RESTART_NUM = 1;
-    private int restartGameNum;
-
     private final ComputerService computerService;
     private final GameStartView gameStartView;
     private final GameResultView gameResultView;
     private final ValidateService validateService;
+    private int restartGameNum = 1;
 
     public GameController() {
         this.computerService = new ComputerService();
@@ -28,27 +25,23 @@ public class GameController {
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> randomNumber = makeRandomNumber();
+        List<Integer> randomNumber = computerService.getRandomNumber();
 
         do {
             List<Integer> inputNumber = gameStartView.getInputNumbers();
             BallCountDto ballCountDto = computerService.compareNumber(inputNumber, randomNumber);
             gameResultView.showScore(ballCountDto);
 
-            if (ballCountDto.getStrike() == MAX_STRIKE_SIZE) {
+            if (ballCountDto.getStrike() == 3) {
                 restartGameNum = validateInputNumber(getReadLine());
-                randomNumber = getIntegers(restartGameNum, randomNumber);
+                randomNumber = makeNewRandomNum(restartGameNum, randomNumber);
             }
-        } while (restartGameNum == RESTART_NUM);
+        } while (restartGameNum == 1);
     }
 
-    private List<Integer> makeRandomNumber() {
-        return computerService.getRandomNumber();
-    }
-
-    private List<Integer> getIntegers(int restartGameNum, List<Integer> randomNumber) {
+    private List<Integer> makeNewRandomNum(int restartGameNum, List<Integer> randomNumber) {
         if (restartGameNum == 1) {
-            randomNumber = makeRandomNumber();
+            randomNumber = computerService.getRandomNumber();
         }
         return randomNumber;
     }
