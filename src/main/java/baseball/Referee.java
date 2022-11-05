@@ -7,6 +7,7 @@ public class Referee {
     private int strike;
 
     public void setStandard(String standard) {
+        ball = strike = 0;
         this.standard = standard;
     }
 
@@ -30,4 +31,19 @@ public class Referee {
     public int getStrike() {
         return strike;
     }
+
+    public void showResult() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ball > 0) {
+            stringBuilder.append(ball + "볼 ");
+        }
+        if (strike > 0) {
+            stringBuilder.append(strike + "스트라이크");
+        }
+        if (stringBuilder.length() == 0) {
+            stringBuilder.append("낫싱");
+        }
+        System.out.println(stringBuilder.toString().trim());
+    }
+
 }
