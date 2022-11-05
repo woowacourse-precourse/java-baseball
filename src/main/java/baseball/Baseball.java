@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
-    private Boolean Gaming;
+    private Boolean gaming;
     private int targetNumber;
     private int guessNumber;
     private BallCount ballCount;
@@ -19,7 +19,7 @@ public class Baseball {
     // 메소드
     // 게임 시작 method
     public void start(){
-        this.Gaming = true;
+        this.gaming = true;
         resetTargetNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -33,8 +33,14 @@ public class Baseball {
 
     // 게임 종료 method
     public void end(){
-        this.Gaming = false;
+        this.gaming = false;
     }
+
+    // 현재 게임중인지 여부 method
+    public boolean isGaming(){
+        return gaming;
+    }
+
 
     // GuessNumber Setter method
     public void setGuessNumber(){
