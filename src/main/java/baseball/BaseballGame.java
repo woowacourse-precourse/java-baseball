@@ -33,4 +33,13 @@ public class BaseballGame {
         }
         return strike;
     }
+
+    public int judgeBall(Number number, List<Integer> computerNumber, int ball) { // 볼 판정
+        for (int digit = 0; digit < 3; digit++) {
+            if (computerNumber.contains(number.getDigit(digit)) && !(computerNumber.get(digit).equals(number.getDigit(digit)))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
