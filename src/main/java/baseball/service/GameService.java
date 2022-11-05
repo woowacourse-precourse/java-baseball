@@ -13,10 +13,10 @@ public class GameService {
     private final ViewController viewController;
 
     public GameService(int answerLength) {
-        this.generator = new RandomGenerator();
+        this.generator = new RandomGenerator(answerLength);
         this.viewController = new ViewController();
-        this.answer = generator.generateRandomNumbers(answerLength); // TODO 랜덤 생성 -> gameservice에 할당?
-        //this.answer = "123";            // 임시 정답
+        this.answer = generator.generateRandomNumbers();
+        //System.out.println(answer);         // 나중에 지워라 ************************************************************
         this.separator = new Separator(answer);
     }
 

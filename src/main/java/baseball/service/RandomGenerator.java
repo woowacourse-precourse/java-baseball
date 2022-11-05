@@ -3,11 +3,16 @@ package baseball.service;
 import baseball.mapper.StringMapper;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class RandomGenerator {
-    public String generateRandomNumbers(int answerLength) {
+    private final int ANSWER_LENGTH;
+
+    public RandomGenerator(int answerLength) {
+        this.ANSWER_LENGTH = answerLength;
+    }
+
+    public String generateRandomNumbers() {
         List<String> computer = new ArrayList<>();
 
         while (computer.size() < answerLength) {
