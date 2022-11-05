@@ -16,7 +16,7 @@
 
 ## 2. ball, strike count / print result
 
-## 2-1. public static void ballStrikeCountFromCurrentInput(List<Integer\> computersInputList, int user) {}
+## 2-1. public static void countBallStrikeFromCurrentInput(List<Integer\> computersInputList, int user) {}
 
 ### input
 - **List<Integer\> computersInputList**
