@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Service {
 
-    public static void service(List<Integer> computer) {
+    public static void startGame(List<Integer> computer) {
         while (true) {
             Parameter.initParam();
             System.out.print("숫자를 입력해주세요 : ");
