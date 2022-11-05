@@ -17,31 +17,31 @@ public class BaseballGame {
     private boolean status = false;
 
 
-    protected int getStrike() {
+    public int getStrike() {
         return strike;
     }
-    protected int getBall() {
+    public int getBall() {
         return ball;
     }
-    protected boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
-    protected LinkedHashSet<Character> getCorrectNum() {
+    public LinkedHashSet<Character> getCorrectNum() {
         return correctNum;
     }
 
 
-    protected void makeRandomNum3() {
+    public void makeRandomNum3() {
         for(int i = 0; i < 3; i++){
-            putRandomNum(makeRandomNum());
+            appendRandomNum(makeRandomNum());
         }
     }
 
-    protected void putRandomNum(char c) {
+    public void appendRandomNum(char c) {
         correctNum.add(c);
     }
 
-    protected char makeRandomNum() {
+    public char makeRandomNum() {
         char randomNumber;
         do {
             randomNumber = (char) (Randoms.pickNumberInRange(1, 9) + '0');
@@ -50,23 +50,23 @@ public class BaseballGame {
         return randomNumber;
     }
 
-    protected void resetNum() {
+    public void resetNum() {
         correctNum.clear();
     }
 
-    protected void submitNum(LinkedHashSet<Character> inputNum) {
+    public void submitNum(LinkedHashSet<Character> inputNum) {
         strike = bc.strikeJudgement(getCorrectNum(), inputNum);
         ball = bc.ballJudgement(getCorrectNum(), inputNum);
     }
 
-    protected void isCorrected() throws IOException {
+    public void isCorrected() throws IOException {
         if(getStrike() == 3) {
             printGameEnd();
             isRestartGame();
         }
     }
 
-    protected void runGame() throws IOException {
+    public void runGame() throws IOException {
         makeRandomNum3();
         status = true;
 
@@ -76,13 +76,13 @@ public class BaseballGame {
 
             submitNum(input3LenNumber());
             writeCase(getStrike(), getBall());
-
             printLine();
+
             isCorrected();
         }
     }
 
-    protected void isRestartGame() {
+    public void isRestartGame() {
         if("2".equals(inputEnd())) {
             status = false;
 

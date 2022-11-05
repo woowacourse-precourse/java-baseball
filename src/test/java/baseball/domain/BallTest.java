@@ -18,7 +18,7 @@ class BallTest {
 
         @Test
         @DisplayName("ball 객체가 잘 생성실되었는가?")
-        void strike() {
+        void ball() {
             assertAll(
                     () -> assertNotNull(ball),
                     () -> assertEquals(ball.ball(), 0)
@@ -46,8 +46,8 @@ class BallTest {
     @Test
     @DisplayName("통합적으로 Ball 클래스가 제대로 실행되는가?")
     void IntegratedTest() {
-        final Ball ball1 = new Ball();
-        final Ball ball2 = new Ball();
+        final var ball1 = new Ball();
+        final var ball2 = new Ball();
 
         ball2.addBall();
         ball2.addBall();

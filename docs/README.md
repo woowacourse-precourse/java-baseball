@@ -8,7 +8,7 @@
     strike, ball, status(게임진행상태), correctNum(맞혀야 하는 숫자) 필드 정의
     생성 후 status = true, 랜덤 값 생성
     랜덤 값 생성 메소드 정의
-    strike, ball, status - getter, setter 정의
+    strike, ball, status - getter 정의
     getCorrectNum - getter 정의
     endGame 메소드 정의
 

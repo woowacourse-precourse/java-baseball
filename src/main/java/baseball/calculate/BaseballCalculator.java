@@ -1,6 +1,5 @@
 package baseball.calculate;
 
-import java.util.Iterator;
 import baseball.domain.Ball;
 import baseball.domain.Strike;
 import java.util.LinkedHashSet;
@@ -13,8 +12,9 @@ public class BaseballCalculator {
 
 
     public int strikeJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
+
         strike.clearStrike();
-        Iterator<Character> inputNumIterator = inputNum.iterator();
+        var inputNumIterator = inputNum.iterator();
 
         for (char character : correctNum) {
             if (character == inputNumIterator.next()) {
@@ -26,6 +26,7 @@ public class BaseballCalculator {
     }
 
     public int ballJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
+
         strikeJudgement(correctNum, inputNum);
         ball.clearBall();
 

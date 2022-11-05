@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballGameTest {
 
-    BaseballGame bg = new BaseballGame();
+    final BaseballGame bg = new BaseballGame();
 
 
     void manipulateNumber(char[] arr) {
@@ -21,7 +21,7 @@ class BaseballGameTest {
                 tmp = bg.makeRandomNum();
             } while(tmp != arr[i]);
 
-            bg.putRandomNum(tmp);
+            bg.appendRandomNum(tmp);
         }
     }
 
@@ -47,8 +47,10 @@ class BaseballGameTest {
         }
 
         @Test
+        @DisplayName("ball과 strike는 제대로 계산이 되는가?")
         void test2() {
-            final LinkedHashSet<Character> lst = new LinkedHashSet<>();
+
+            final var lst = new LinkedHashSet<Character>();
             lst.add('1');
             lst.add('3');
             lst.add('4');

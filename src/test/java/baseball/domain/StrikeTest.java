@@ -46,8 +46,8 @@ class StrikeTest {
     @Test
     @DisplayName("통합적으로 Strike 클래스가 제대로 실행되는가?")
     void IntegratedTest() {
-        final Strike strike1 = new Strike();
-        final Strike strike2 = new Strike();
+        final var strike1 = new Strike();
+        final var strike2 = new Strike();
 
         strike1.addStrike();
         strike1.addStrike();
