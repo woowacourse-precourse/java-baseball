@@ -30,4 +30,19 @@ public class Core {
         }
         return computerRandomNumber;
     }
+
+    public boolean isDigitBall(List<Integer> computerNumber,List<Integer> userNumber, int index){
+        if(isDigitStrike(computerNumber, userNumber, index)){
+            return false;
+        }
+        for(int cur=0; cur<computerNumber.size(); cur++){
+            if(index==cur){
+                continue;
+            }
+            if(userNumber.get(index)==computerNumber.get(cur)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
