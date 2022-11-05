@@ -32,9 +32,7 @@ public class User {
     }
 
     private String getString() {
-        String strInput = "";
-        strInput = readLine();
-        return strInput;
+        return readLine();
     }
 
     private int parseIntFromStr(String str) {
