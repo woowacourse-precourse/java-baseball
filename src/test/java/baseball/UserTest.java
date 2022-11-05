@@ -74,4 +74,13 @@ class UserTest {
         assertThatThrownBy(() -> user.getValidatedInput())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void getValidatedQuitOrNotInput_WhenRun_getQuitOrNotInput_Success() {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        user.setQuitOrNotInput();
+        assertThat(user.getValidatedQuitOrNotInput()).isEqualTo(1);
+    }
 }

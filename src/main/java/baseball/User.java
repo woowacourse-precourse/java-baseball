@@ -8,12 +8,18 @@ import java.util.List;
 public class User {
 
     private String userInput;
+    private String quitOrNotInput;
     private List<Integer> validatedInput;
 
     public void setUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         userInput = input;
+    }
+
+    public void setQuitOrNotInput() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        quitOrNotInput = Console.readLine();
     }
 
     private void validateUserInput() {
@@ -44,6 +50,16 @@ public class User {
             return validatedInput;
         }
         catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    public int getValidatedQuitOrNotInput() {
+        try {
+            Validator validator = new Validator(quitOrNotInput);
+            validator.isOneOrTwo();
+            return Integer.valueOf(quitOrNotInput);
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
