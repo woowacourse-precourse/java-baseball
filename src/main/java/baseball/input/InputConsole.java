@@ -3,13 +3,14 @@ package baseball.input;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputConsole implements InputAble {
+    private final String ONLY_NUMBER = "숫자만 입력할 수 있습니다";
     @Override
     public int acceptInt() {
         try {
             String readLine = Console.readLine();
             return Integer.parseInt(readLine);
         } catch (NumberFormatException e) {
-            throw new IllegalStateException("숫자를 입력해 주세요");
+            throw new IllegalStateException(ONLY_NUMBER);
         }
     }
 }
