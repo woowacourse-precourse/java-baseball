@@ -4,6 +4,9 @@ public class Game {
 
   private static final int ENDGAME = 2;
   private static final int STARTOFGAME = 0;
+  private static final int NOTSTARTOFGAME = 1;
+  private static final int PLAYAGAINMODE = 2;
+
   public static void startGame(int firstCheck) {
     User user = new User();
     Computer computer = new Computer();
@@ -27,9 +30,9 @@ public class Game {
 
   private static int checkContinue(User user, Computer computer) {
     computer.printEndingMessage();
-    if (user.inputValue(2).equals("1")) {
+    if (user.inputValue(PLAYAGAINMODE).equals("1")) {
       Game game = new Game();
-      game.startGame(1);
+      game.startGame(NOTSTARTOFGAME);
     }
     return ENDGAME;
   }

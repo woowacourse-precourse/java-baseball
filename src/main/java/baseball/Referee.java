@@ -3,6 +3,7 @@ package baseball;
 public class Referee {
 
   public static String Answer;
+  private static final int CORRECTINPUTLENGTH = 3;
 
   public static String calculateAnswer(String userInput, String randNum) {
     int ball;
@@ -26,7 +27,7 @@ public class Referee {
   private static int calculateBall(String userInput, String randNum) {
     int strikeNum = calculateStrike(userInput, randNum);
     int ballNum = 0;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < CORRECTINPUTLENGTH; i++) {
       if (randNum.indexOf(userInput.charAt(i)) != -1) {
         ballNum++;
       }
@@ -36,7 +37,7 @@ public class Referee {
 
   private static int calculateStrike(String userInput, String randNum) {
     int strikeCnt = 0;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < CORRECTINPUTLENGTH; i++) {
       if (userInput.charAt(i) == randNum.charAt(i)) {
         strikeCnt++;
       }
