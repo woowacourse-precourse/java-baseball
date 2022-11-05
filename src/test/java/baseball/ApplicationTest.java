@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -32,4 +36,26 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void ballJudgeTest() {
+        Game game = new Game();
+        List<String> computerAnswerList = List.of("1", "2", "3");
+        List<String> userAnswerList = List.of("3", "2", "1");
+        int ballCount = game.countBall(computerAnswerList, userAnswerList);
+        assertThat(ballCount).isEqualTo(2);
+
+
+    }
+
+    @Test
+    void strikeJudgeTest() {
+        Game game = new Game();
+        List<String> computerAnswerList = List.of("1", "2", "3");
+        List<String> userAnswerList = List.of("1", "2", "4");
+        int strikeCount = game.countStrike(computerAnswerList, userAnswerList);
+        assertThat(strikeCount).isEqualTo(2);
+
+    }
+
 }
