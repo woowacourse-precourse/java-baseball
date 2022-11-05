@@ -1,9 +1,9 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Pitcher {
 	private static final int PLAYING_NUMBER_SIZE = 3;
@@ -29,7 +29,7 @@ public class Pitcher {
 		List<Integer> prev = new ArrayList<>();
 
 		while (stringBuilder.length() != PLAYING_NUMBER_SIZE) {
-			int newNumber = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+			int newNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
 			if (!prev.contains(newNumber)) {
 				stringBuilder.append(newNumber);

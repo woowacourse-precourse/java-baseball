@@ -1,19 +1,15 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Batter {
 	private final PlayingNumber playingNumber;
 
 	public Batter() {
-		Broadcast.printInputMessage();
-		this.playingNumber = new PlayingNumber(readLine());
-	}
-
-	public int getPlayingNumber() {
-		return playingNumber.getPlayingNumber();
+		String userInput = Console.readLine();
+		this.playingNumber = new PlayingNumber(userInput);
 	}
 
 	public List<Integer> getPlayingNumbers() {
