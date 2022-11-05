@@ -19,4 +19,8 @@ public class Validator {
         validationList.add(validation);
         return this;
     }
+
+    public boolean validate(String inputValue){
+        return validationList.stream().allMatch((validation -> validation.check(inputValue)));
+    }
 }
