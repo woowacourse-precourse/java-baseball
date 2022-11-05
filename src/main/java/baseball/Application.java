@@ -55,6 +55,11 @@ class Game{
 
         return copyUserNum.isEmpty();
     }
+
+    void printNothing(){
+        System.out.println("낫싱");
+    }
+
 }
 
 public class Application {
