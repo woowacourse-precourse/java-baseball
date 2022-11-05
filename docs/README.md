@@ -89,7 +89,7 @@
 - [ ] printBaseballOfResult함수를 실행 후 결과값을 checkedAnswer에 저장
 - [ ] checkedAnswer의 값이 false이면, inputUserNumberService함수를 실행
 
-## inputAvailableUserAnswerService
+## (void)inputAvailableUserAnswerService?()
 - [ ] 사용자가 응답을 옳바르게 했는지 체크하는 변수, checkedAvailableUserAnswer에 false로 초기화
 - [ ] printToRestartingGameMessage함수를 실행
 - [ ] inputUserAnswer함수를 실행
