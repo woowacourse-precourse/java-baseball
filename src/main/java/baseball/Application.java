@@ -54,6 +54,17 @@ class GameProcessor {
     private String lastInput = null;
     private int strike = 0;
     private int ball = 0;
+    private int[] userValue = {-1, -1, -1};
+    private int[] computerValue = {-1, -1, -1};
+
+    public int[] getUserValue() {
+        return userValue;
+    }
+
+    public int[] getComputerValue() {
+        return computerValue;
+    }
+
 
     public int getStrike() {
         return strike;
@@ -92,30 +103,30 @@ class GameProcessor {
         }
     }
 
-    public void strikeChecker(int userValue,int computerValue)
-    {
-        int strikeCount=0;
+
+    public void strikeChecker(int userValue, int computerValue) {
+        int strikeCount = 0;
         String userValueString = String.valueOf(userValue);
         String computerValueString = String.valueOf(computerValue);
-        if(userValueString.charAt(0)==computerValueString.charAt(0))
-        {
+        if (userValueString.charAt(0) == computerValueString.charAt(0)) {
             strikeCount++;
         }
-        if(userValueString.charAt(1)==computerValueString.charAt(1))
-        {
+        if (userValueString.charAt(1) == computerValueString.charAt(1)) {
             strikeCount++;
         }
-        if(userValueString.charAt(2)==computerValueString.charAt(2))
-        {
+        if (userValueString.charAt(2) == computerValueString.charAt(2)) {
             strikeCount++;
         }
         this.setStrike(strikeCount);
+    }
+
+    public void ballChecker(int userValue, int computerValue) {
+
     }
 }
 
 public class Application {
     public static void main(String[] args) {
-
 
 
     }
