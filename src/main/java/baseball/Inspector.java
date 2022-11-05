@@ -29,11 +29,7 @@ public class Inspector {
         insert_list(correct_answer, computer_list);
         insert_list(answer, user_list);
 
-        System.out.println(computer_list.toString());
-        System.out.println(user_list.toString());
-
         for(int a:computer_list) {
-            System.out.println("비교할 숫자 :" + a);
             if(user_list.contains(a)) {
                 ball++;
             }
