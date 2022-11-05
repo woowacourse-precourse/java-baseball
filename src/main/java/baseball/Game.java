@@ -100,11 +100,11 @@ public class Game {
 
 
     public void start() {
-            isGameOn = true;
-            computerNumber = getComputerNumber();
-            do {
-                getHint();
-            } while (isGameOn);
+        isGameOn = true;
+        computerNumber = List.of(1, 2, 3);
+        do {
+            getHint();
+        } while (isGameOn);
     }
 
     public void notifyStart() {
@@ -115,25 +115,21 @@ public class Game {
         System.out.println(RESTART_OR_END_NOTICE);
     }
 
-    public String getRestartOrEndNumber() throws IllegalArgumentException {
-        String input = Console.readLine();
-        if (input != "1" && input != "2") {
+    public int getRestartOrEndNumber() throws IllegalArgumentException {
+        int input = Integer.parseInt(Console.readLine());
+        if (input != 1 && input != 2) {
             throw new IllegalArgumentException();
         }
         return input;
     }
 
-    public boolean isRestarting(String restartOrEndNumber) {
-        boolean isRestarting = true;
-        if (restartOrEndNumber == "1") {
-            isRestarting = true;
-        } else if (restartOrEndNumber == "2") {
-            isRestarting = false;
+    public void setRestarter(int restartOrEndNumber) {
+        if (restartOrEndNumber == 1) {
+            restarter = true;
+        } else if (restartOrEndNumber == 2) {
+            restarter = false;
         }
-        return isRestarting;
     }
-    public void setRestarter(){
-        restarter = isRestarting(getRestartOrEndNumber());
-    }
+
 }
 
