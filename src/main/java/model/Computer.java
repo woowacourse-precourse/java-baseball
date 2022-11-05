@@ -166,10 +166,9 @@ public class Computer {
 //            System.out.println(this.numThreeRanOfComputerList);
 //            System.out.println(this.cntBall + " " + this.cntStrike);
             return true;
-        } else {
-            // TODO: 2.2 else 포함안한다면? => 낫싱
-            return false;
         }
+        // TODO: 2.2 else 포함안한다면? => 낫싱
+        return false;
     }
 
     // strike체크 함수
