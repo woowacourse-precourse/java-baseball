@@ -44,6 +44,41 @@ public class PrintGameResultTest {
             };
             assertThat(gameMessage.getStrikeCountResult(result.get(BaseballScore.STRIKE))).isEqualTo("");
         }
+    }
 
+    @Nested
+    class GetBallCountResultTest {
+        @Test
+        void case1() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.BALL, 1);
+                }
+            };
+            assertThat(gameMessage.getBallCountResult(result.get(BaseballScore.BALL))).isEqualTo("1볼");
+        }
+
+        @Test
+        void case2() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.BALL, 3);
+                }
+            };
+            assertThat(gameMessage.getBallCountResult(result.get(BaseballScore.BALL))).isEqualTo("3볼");
+        }
+
+        @Test
+        void case3() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.BALL, 0);
+                }
+            };
+            assertThat(gameMessage.getBallCountResult(result.get(BaseballScore.BALL))).isEqualTo("");
+        }
     }
 }
