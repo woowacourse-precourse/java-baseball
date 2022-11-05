@@ -61,14 +61,14 @@ public class Application {
         }
     }
 
-    private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap, int answer, int input) {
+    private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap,
+                                                          int answer, int input) {
         comparedMap.put(NOTHING, 0);
         if (isStrike(answer, input)) {
             addOneToMap(comparedMap, STRIKE);
         } else {
             addOneToMap(comparedMap, BALL);
         }
-
         return comparedMap;
     }
 
@@ -89,7 +89,6 @@ public class Application {
     private static void printResult(HashMap<Integer, Integer> comparedMap) {
         int balls = comparedMap.get(BALL);
         int strikes = comparedMap.get(STRIKE);
-        int nothing = comparedMap.get(NOTHING);
 
         if (comparedMap.get(NOTHING) != 0) {
             System.out.printf("낫싱");
@@ -104,17 +103,21 @@ public class Application {
     }
 
     private static List<Integer> getAndSeperateInput() {
-        Scanner sc = new Scanner(System.in);
-        int userInput = sc.nextInt();
+        int userInput = getUserInt();
         List<Integer> separatedInput = seperate3Numbers(userInput);
         return separatedInput;
+    }
+
+    private static Integer getUserInt(){
+        Scanner sc = new Scanner(System.in);
+        int userInput = sc.nextInt();
+        return userInput;
     }
 
     private static boolean restartOrEndGame() {
         boolean newGame=true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner sc = new Scanner(System.in);
-        int userInput = sc.nextInt();
+        int userInput = getUserInt();
         if (userInput == CONTINUE_GAME) {
             newGame=true;
         } else if (userInput == END_GAME) {
@@ -122,15 +125,6 @@ public class Application {
         }
         //else 예외사항 추가
         return newGame;
-    }
-
-    private static List<Integer> continueGame() {
-        List<Integer> answer = startGame();
-        return answer;
-    }
-
-    private static void endGame() {
-        boolean gameOn = false;
     }
 
     static final int CONTINUE_GAME = 1;
