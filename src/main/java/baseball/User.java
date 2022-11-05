@@ -6,6 +6,7 @@ import java.util.List;
 
 public class User {
     private List<Integer> userNumber;
+    private String gameCoin;
 
     public void setUserNumber(){
         System.out.print("숫자를 입력해주세요 : ");
@@ -35,4 +36,21 @@ public class User {
     public List<Integer> getUserNumber(){
         return this.userNumber;
     }
+
+    public void setGameCoin(){
+        String gameCoin=Console.readLine();
+        try{
+            Validation validation = new Validation();
+            validation.validateGameCoin(gameCoin);
+        } catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e);
+        }
+
+        this.gameCoin=gameCoin;
+    }
+
+    public String getGameCoin(){
+        return this.gameCoin;
+    }
+
 }
