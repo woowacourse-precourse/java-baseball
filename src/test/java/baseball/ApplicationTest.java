@@ -54,6 +54,7 @@ class ApplicationTest extends NsTest {
 
         //then
         Assertions.assertThat(cnt).isEqualTo(0);
+        Assertions.assertThat(computerNumbers.size()).isEqualTo(3);
     }
 
     @Test
