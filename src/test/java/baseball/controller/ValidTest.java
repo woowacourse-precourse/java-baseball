@@ -41,4 +41,24 @@ class ValidTest {
         assertThat(notValidIncludeZero1).isEqualTo(false);
         assertThat(notValidIncludeZero2).isEqualTo(false);
     }
+
+    @Test
+    void numList크기가3이아닌경우() {
+        //given
+        List<Integer> numListSize0 = Arrays.asList();
+        List<Integer> numListSize1 = Arrays.asList(1);
+        List<Integer> numListSize2 = Arrays.asList(1,2);
+        List<Integer> numListSize4 = Arrays.asList(1,2,4);
+        //when
+        boolean notValidSize0 = Valid.isValidNumList(numListSize0);
+        boolean notValidSize1 = Valid.isValidNumList(numListSize1);
+        boolean notValidSize2 = Valid.isValidNumList(numListSize2);
+        boolean notValidSize3 = Valid.isValidNumList(numListSize4);
+        //then
+        assertThat(notValidSize0).isEqualTo(false);
+        assertThat(notValidSize1).isEqualTo(false);
+        assertThat(notValidSize2).isEqualTo(false);
+        assertThat(notValidSize3).isEqualTo(false);
+    }
+
 }
