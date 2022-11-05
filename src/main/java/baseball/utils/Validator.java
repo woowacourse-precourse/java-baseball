@@ -17,7 +17,10 @@ public final class Validator {
     }
 
     public static void validateInputLength(String playerInput) {
-
+        if (playerInput.length() == 3) {
+            return;
+        }
+        throw new IllegalArgumentException(INVALID_INPUT_VALUE_MESSAGE);
     }
 
 
