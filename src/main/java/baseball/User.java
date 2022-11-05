@@ -34,7 +34,13 @@ public class User {
 
 	public static boolean isRestart() {
 		String userInput = Console.readLine();
+		checkRestartInput(userInput);
 		return isEqualToRestart(userInput);
+	}
+
+	private static void checkRestartInput(String userInput) {
+		InputException.checkNotNumber(userInput);
+		InputException.checkNotOneOrTwo(userInput);
 	}
 
 	private static boolean isEqualToRestart(String userInput) {

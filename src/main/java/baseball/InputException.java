@@ -2,6 +2,8 @@ package baseball;
 
 import static baseball.Constants.NUMBER_LENGTH;
 import static baseball.Constants.ZERO;
+import static baseball.Constants.RESTART;
+import static baseball.Constants.END;
 
 import java.util.List;
 
@@ -38,6 +40,12 @@ public class InputException extends IllegalArgumentException {
 	public static void checkZero(List<Integer> input) {
 		if (input.contains(ZERO)) {
 			throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+		}
+	}
+
+	public static void checkNotOneOrTwo(String input) {
+		if (!input.equals(RESTART) && !input.equals(END)) {
+			throw new IllegalArgumentException("1 또는 2가 아닙니다.");
 		}
 	}
 }
