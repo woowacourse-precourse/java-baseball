@@ -32,7 +32,6 @@ public class BaseBallGame {
 
         while (true) {
 
-//            try {
             String userInputNumber = user.userInput();
             List<Integer> userInputToList = user.userInputToList(userInputNumber);
 
@@ -45,10 +44,6 @@ public class BaseBallGame {
                 userWin();
                 break;
             }
-//            } catch (IllegalArgumentException e) {
-//            System.out.println("1~9 사이의 올바른 숫자를 입력해주세요.");
-//            }
-
         }
     }
 
