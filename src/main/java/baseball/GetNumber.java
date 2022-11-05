@@ -8,22 +8,6 @@ import java.util.List;
 
 public class GetNumber {
     private static final int DIGIT_NUMBER = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-
-    public List<Integer> computer() {
-        List<Integer> computerNumber = new ArrayList<>();
-
-        do {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        } while (computerNumber.size() != DIGIT_NUMBER);
-
-        return computerNumber;
-    }
 
     public List<Integer> user() {
         List<Integer> userNumber = new ArrayList<>();
@@ -40,5 +24,11 @@ public class GetNumber {
         }
 
         return userNumber;
+    }
+
+    public void userException(List<Integer> user) {
+        if (user.size() != DIGIT_NUMBER) {
+            throw new IllegalArgumentException();
+        }
     }
 }
