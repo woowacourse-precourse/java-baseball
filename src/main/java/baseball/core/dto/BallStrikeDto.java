@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.core.dto;
 
 public class BallStrikeDto {
 

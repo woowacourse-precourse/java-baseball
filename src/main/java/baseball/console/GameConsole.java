@@ -1,7 +1,7 @@
 package baseball.console;
 
-import baseball.converter.RestartOrExitCodeConverter;
-import baseball.converter.ThreeNumberConverter;
+import baseball.console.converter.RestartOrExitCodeConverter;
+import baseball.console.converter.ThreeNumberConverter;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;

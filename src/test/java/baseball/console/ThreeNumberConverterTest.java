@@ -1,10 +1,10 @@
 package baseball.console;
 
-import baseball.converter.ThreeNumberConverter;
-import baseball.exception.DuplicateNumberException;
-import baseball.exception.EachInputNumberOutOfRangeException;
-import baseball.exception.InputNumberOutOfRangeException;
-import baseball.exception.InputNumberFormatException;
+import baseball.console.converter.ThreeNumberConverter;
+import baseball.console.exception.DuplicateNumberException;
+import baseball.console.exception.EachInputNumberOutOfRangeException;
+import baseball.console.exception.InputNumberOutOfRangeException;
+import baseball.console.exception.InputNumberFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
