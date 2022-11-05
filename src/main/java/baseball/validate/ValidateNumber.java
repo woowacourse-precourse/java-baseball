@@ -40,6 +40,11 @@ public class ValidateNumber {
         }
 
     }
+
+    /**
+     * 선택 목록에 있는 숫자를 선택했는지 확인
+     * @param number 입력 받은 수
+     */
     public static void validateInList(int number) {
         if (!CHOICE_LIST.contains(number)) {
             throw new IllegalStateException("목록에 있는 숫자를 선택해주세요");
