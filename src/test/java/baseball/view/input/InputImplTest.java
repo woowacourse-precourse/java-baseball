@@ -80,4 +80,37 @@ class InputImplTest {
 
         }
     }
+
+    @Nested
+    class EndInputValidationTest {
+        @Test
+        @DisplayName("게임 종료 후 입력은 1 또는 2가 가능하다.")
+        void case1() {
+            //given
+            Input input = new InputImpl();
+            String baseballInput = "1";
+            InputStream in = new ByteArrayInputStream(baseballInput.getBytes());
+            System.setIn(in);
+
+            //when
+            String result = input.endInput();
+
+            //then
+            assertThat(result).isEqualTo(baseballInput);
+        }
+
+        @Test
+        @DisplayName("게임 종료 후 입력은 1 또는 2만 가능하다.")
+        void case2() {
+            //given
+            Input input = new InputImpl();
+            String baseballInput = "3";
+            InputStream in = new ByteArrayInputStream(baseballInput.getBytes());
+            System.setIn(in);
+
+            //then
+            assertThatThrownBy(input::endInput)
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
