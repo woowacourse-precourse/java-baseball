@@ -13,7 +13,7 @@ public class Game {
         randomNumber = new RandomNumber();
         enterNumber = new EnterNumber();
         count = new Count();
-        hint = new Hint();
+        hint = new Hint(count);
     }
     public void finishGame(String enterOneOrTwo) {
         if (enterOneOrTwo.equals("1")) {
@@ -26,32 +26,28 @@ public class Game {
         }
     }
     public void announceBallAndStrike() {
-        // TODO: 변수명 바꾸던지 repeat에 넣던지
+        // TODO: 두개 분리
         if (count.getStrikeNumber() == 3) {
             Announce.finishAnnounce();
             String oneOrTwo = Console.readLine();
             finishGame(oneOrTwo);
         }
         if (count.getStrikeNumber() < 3) {
-            System.out.println(hint.announceResult());
+            hint.announceResult();
+            count.resetCount();
             repeatGameUntilSuccess();
         }
     }
     public void repeatGameUntilSuccess() {
         System.out.print("숫자를 입력해주세요 : ");
         String userEnterNumber = Console.readLine();
-
         enterNumber.getList(userEnterNumber);
-        // TODO: 테스트 완료되면 지울 것
-        System.out.println(enterNumber.getEnterNumber());
 
         count.calStrike(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
         count.calBall(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
-        // TODO: 테스트 완료되면 지울 것
-        System.out.println(count.getStrikeNumber() + " " + count.getBallNumber());
-        announceBallAndStrike();
 
-        count.resetCount();
+        hint = new Hint(count);
+        announceBallAndStrike();
     }
     public void startGame() {
         randomNumber.getList();

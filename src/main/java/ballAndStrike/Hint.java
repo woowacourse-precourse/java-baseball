@@ -2,11 +2,10 @@ package ballAndStrike;
 
 public class Hint {
     private Count count;
-    private Hint hint;
-    public Hint() {
-        count = new Count();
+    public Hint(Count count1) {
+        count = count1;
     }
-    public String announceResult() {
+    public void announceResult() {
         String announceBallAndStrike = "";
         if (count.getBallNumber() == 0 && count.getStrikeNumber() == 0) {
             announceBallAndStrike += "낫싱";
@@ -17,9 +16,6 @@ public class Hint {
         if (count.getStrikeNumber() > 0) {
             announceBallAndStrike += count.getStrikeNumber() + "스트라이크";
         }
-        return announceBallAndStrike;
-    }
-    public void resetResult() {
-        Hint hint1 = new Hint();
+        System.out.println(announceBallAndStrike);
     }
 }
