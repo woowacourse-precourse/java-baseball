@@ -1,6 +1,7 @@
 package baseball.service;
 
 
+
 import baseball.model.Hint;
 import baseball.model.Input;
 import java.util.List;
@@ -11,6 +12,7 @@ public class Service {
     public Service(){
         answer = RandomNumberListGenerator.generate();
     }
+
     public Hint generateHint(Input userInput){
         int strike = findMatchedNumberAndPlace(userInput);
         int ball = findMatchedNumber(userInput) - strike;
@@ -42,10 +44,6 @@ public class Service {
         }
         return 1;
     }
-
-
-
-
 
     public List<Integer> getAnswer() {
         return answer;
