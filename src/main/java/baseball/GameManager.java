@@ -177,6 +177,12 @@ public class GameManager {
         return false;
     }
 
+    private void validateReplaySign(String replaySign) {
+        if(!(replaySign.equals("0") || replaySign.equals("1"))) {
+            throw new IllegalArgumentException("replaySign is not valid.");
+        }
+    }
+
     private void exitGame(Exception e) {
 
     }
