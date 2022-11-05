@@ -17,6 +17,14 @@ public class GameStatusView {
         opinion = "";
     }
 
+    public void inquireOpinion(){
+        while(isNotCorrectAnswer()){
+            askOpinion();
+            readOpinion();
+            checkAlert();
+        }
+    }
+
     public void askOpinion(){
         System.out.println(END_GAME_COMMAND);
         System.out.println(ASK_OPINION_COMMAND);
