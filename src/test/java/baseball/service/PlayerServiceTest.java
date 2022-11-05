@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.utils.Validator.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PlayerServiceTest {
     @Test
@@ -37,14 +38,25 @@ class PlayerServiceTest {
         List<Ball> playerBalls = new ArrayList<>();
         //when
         //then
-        Assertions.assertThatThrownBy(() -> {
-                      for (String inputSplit : inputSplits) {
-                          Ball ball = new Ball(Integer.parseInt(inputSplit));
-                          validateDuplication(playerBalls, ball);
-                          playerBalls.add(ball);
-                      }
-                  })
-                  .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            for (String inputSplit : inputSplits) {
+                Ball ball = new Ball(Integer.parseInt(inputSplit));
+                validateDuplication(playerBalls, ball);
+                playerBalls.add(ball);
+            }
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void generatePlayerBalls_입력_값의_길이가_3이_아닐_경우_예외를_던지는지_테스트() {
+        //given
+        String playerInput = "12";
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            validateInputLength(playerInput);
+            validateParseStringToInt(playerInput);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -54,10 +66,9 @@ class PlayerServiceTest {
         //when
         validateInputLength(playerInput);
         //when, then
-        Assertions.assertThatThrownBy(() -> {
-                      validateParseStringToInt(playerInput);
-                  })
-                  .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validateParseStringToInt(playerInput);
+        }).isInstanceOf(IllegalArgumentException.class);
 
     }
 
