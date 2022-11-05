@@ -67,9 +67,11 @@ countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 
 ### GameStatusService
 전역 변수 gameStart
 1. 생성자 : gameStatus = true로 초기화
-2. isEndOfGame(String opinion) : 문자열이 2이면 참을 반환
-3. stopGame() : gameStart = false로 초기화
-4. getGameStatus() : gameStatus를 반환
+2. setGameStatus(String opinion)
+   1. isEndOfGame(String opinion) : 문자열이 2이면 참을 반환
+   2. stopGame() : gameStart = false로 초기화
+   3. getGameStatus() : gameStatus를 반환
+
 
 ## 컨트롤러
 ### GameController
