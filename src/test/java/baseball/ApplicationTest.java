@@ -130,6 +130,100 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class 예외_처리{
+        @Test
+        void case1(){
+            assertThatThrownBy(() -> Application.validUserNumbers("012"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case2(){
+            assertThatThrownBy(() -> Application.validUserNumbers("1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case3() {
+            assertThatThrownBy(() -> Application.validUserNumbers("12"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case4(){
+            assertThatThrownBy(() -> Application.validUserNumbers("1234"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case5(){
+            assertThatThrownBy(() -> Application.validUserNumbers("000"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case6(){
+            assertThatThrownBy(() -> Application.validUserNumbers("112"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("서로 다른 수를 입력하세요.");
+        }
+        @Test
+        void case7(){
+            assertThatThrownBy(() -> Application.validUserNumbers("121"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("서로 다른 수를 입력하세요.");
+        }
+        @Test
+        void case8(){
+            assertThatThrownBy(() -> Application.validUserNumbers("211"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("서로 다른 수를 입력하세요.");
+        }
+        @Test
+        void case9(){
+            assertThatThrownBy(() -> Application.validUserNumbers("111"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("서로 다른 수를 입력하세요.");
+        }
+        @Test
+        void case10(){
+            assertThatThrownBy(() -> Application.validUserNumbers("1.11"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        @Test
+        void case11(){
+            assertThatThrownBy(() -> Application.validGameOption("0"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력하세요");
+        }
+        @Test
+        void case12(){
+            assertThatThrownBy(() -> Application.validGameOption("-1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력하세요");
+        }
+        @Test
+        void case13(){
+            assertThatThrownBy(() -> Application.validGameOption("ㅂ"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력하세요");
+        }
+        @Test
+        void case14(){
+            assertThatThrownBy(() -> Application.validGameOption("@"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력하세요");
+        }
+        @Test
+        void case15(){
+            assertThatThrownBy(() -> Application.validGameOption("02"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력하세요");
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
