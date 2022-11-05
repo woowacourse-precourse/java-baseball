@@ -55,7 +55,7 @@ public class GameService {
     }
 
     public boolean isBall(int index){
-        return false;
+        return !isStrike(index) && getComputersNumbers().contains(getPlayerNumbers().get(index));
     }
 
     public void increaseStrike(){
