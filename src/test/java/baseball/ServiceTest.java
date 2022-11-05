@@ -20,7 +20,7 @@ public class ServiceTest {
 	}
 	@Test
 	void checkCompareNumber() {
-		assertThat(GameService.compareNumber(Arrays.asList("123"),
-				Arrays.asList("456"))).isEqualTo(Arrays.asList(0, 0));
+		assertThat(GameService.compareNumber("123",
+				"456")).isEqualTo(Arrays.asList(0, 0));
 	}
 }
