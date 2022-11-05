@@ -17,7 +17,7 @@ public final class Validator {
     }
 
     public static void isRestartCommand(int command) throws IllegalArgumentException {
-        if (command == 1 || command == 2) {
+        if (command == Application.CONTINUE || command == Application.EXIT) {
             return;
         }
 
