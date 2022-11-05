@@ -56,6 +56,7 @@ public class Application {
         }
         else {
             int strike = getStrikeNumber(input, computer);
+            int ball = getBallNumber(input, computer);
         }
     }
 
@@ -69,5 +70,21 @@ public class Application {
             }
         }
         return strike;
+    }
+
+    private static int getBallNumber(int input, int computer) {
+        int ball = 0;
+        int[] arrInput = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] arrComputer = Stream.of(String.valueOf(computer).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] checkComputer = new int[10];
+        for (int i = 0; i < arrComputer.length; i++) {
+            checkComputer[arrComputer[i]] = 1;
+        }
+        for (int i = 0; i < arrInput.length; i++) {
+            if (checkComputer[arrInput[i]] == 1 && arrComputer[i] != arrInput[i]) {
+                ball++;
+            }
+        }
+        return ball;
     }
 }
