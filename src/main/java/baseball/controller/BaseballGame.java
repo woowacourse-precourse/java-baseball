@@ -21,15 +21,14 @@ public class BaseballGame {
             outputView.printGameStart();
     }
 
-    public void game() {
-        while (true) {
-            this.computer.randomNumberGenerate();
-            whileUserInputCorrectAnswer();
-            outputView.printRestartOrExit();
-            this.user.inputRestartOrExitNumber();
-            if (this.user.getRestartOrExitNumber() == EXIT) {
-                break ;
-            }
+    public void gameStart() {
+        this.computer.randomNumberGenerate();
+        whileUserInputCorrectAnswer();
+
+        outputView.printRestartOrExit();
+        this.user.inputRestartOrExitNumber();
+        if (this.user.getRestartOrExitNumber() == RESTART) {
+            gameStart();
         }
     }
 
