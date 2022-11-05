@@ -10,8 +10,9 @@ public class Application {
     }
 
     public static void start(){
-        List<Integer> computer = computerNumber();
+        List<Integer> computerNumber = computerNumber();
         List<Integer> userNumber = input();
+        List<Integer> strikeBallList = checkStrikeBall(computerNumber,userNumber);
 
 
     }
@@ -42,5 +43,18 @@ public class Application {
             inputNumberList.add(Character.getNumericValue(inputNumber.charAt(i)));
         }
         return inputNumberList;
+    }
+
+    public static List<Integer> checkStrikeBall(List<Integer> userNumber, List<Integer> computerNumber){
+        int strikeCount = 0, ballCount = 0;
+        for (int i = 0; i < 3; i++){ // 스트라이크와 볼을 계산, 스트라이크 일 경우에도 볼 + 1을 해준다. 따라서 최종 볼은 볼 - 스트라이크다.
+            if (Objects.equals(userNumber.get(i), computerNumber.get(i))){
+                strikeCount++;
+            }
+            if (computerNumber.contains(userNumber.get(i))){
+                ballCount++;
+            }
+        }
+        return Arrays.asList(strikeCount,ballCount - strikeCount);
     }
 }
