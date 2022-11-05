@@ -19,4 +19,9 @@ public class ValidatorTest {
 	void 입력된_숫자가_중복될_경우() {
 		assertThatIllegalArgumentException().isThrownBy(() -> Validator.validateBallsInput("112"));
 	}
+
+	@Test
+	void 종료와_재시작을_구분하는_입력값은_반드시_1_또는_2() {
+		assertThatIllegalArgumentException().isThrownBy(() -> Validator.validateQuitOrRestartInput(""));
+	}
 }

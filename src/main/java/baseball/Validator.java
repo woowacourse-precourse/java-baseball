@@ -4,11 +4,19 @@ import java.util.HashSet;
 
 public class Validator {
 	public static final int PROPER_LENGTH = 3;
+	public static final String RESTART = "1";
+	public static final String QUIT = "2";
 
 	public static void validateBallsInput(String source) {
 		validateOnlyNumeric(source);
 		validateProperLength(source);
 		validateDigitsNotDuplicated(source);
+	}
+
+	public static void validateQuitOrRestartInput(String source) {
+		if (!source.equals(RESTART) && !source.equals(QUIT)) {
+			throw new IllegalArgumentException("반드시 1 또는 2를 입력해주세요.");
+		}
 	}
 
 	private static void validateDigitsNotDuplicated(String source) {
