@@ -14,11 +14,15 @@ public class User {
         if (!isValidUserNumber()) {
             throw new IllegalArgumentException(Const.INPUT_WRONG);
         } else {
-            for (int i = 0; i < Const.NUMBER_LENGTH; i++) {
-                this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
-            }
+            userInputToNumber();
         }
         return userNumber;
+    }
+
+    private void userInputToNumber() {
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++) {
+            this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
+        }
     }
 
     private boolean isValidUserNumber() {
