@@ -28,4 +28,11 @@ class InputValidationTest {
         boolean actual = inputValidation.isNot1To9(input);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"11, true", "aa, true", "121, true", "aba, true", "123, false", "abc, false"})
+    void hasDuplicatedValues(String input, boolean expected) {
+        boolean actual = inputValidation.hasDuplicatedValues(input);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
