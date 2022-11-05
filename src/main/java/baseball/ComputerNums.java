@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNums {
+public class ComputerNums implements Nums{
     private final List<Integer> nums = new ArrayList<>();
 
     public ComputerNums() {
@@ -20,7 +20,9 @@ public class ComputerNums {
         }
     }
 
+
+    @Override
     public List<Integer> getNums() {
-        return nums;
+        return this.nums;
     }
 }
