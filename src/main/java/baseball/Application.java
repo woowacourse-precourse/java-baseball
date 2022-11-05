@@ -12,8 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Application {
-    final static int BALL =0;
-    final static int STRIKE =1;
+    private final static int BALL =0;
+    private final static int STRIKE =1;
+    private final static String CONTINUE ="1";
+    private final static String END = "2";
     private static List<Integer> stringToIntegerList(String str){
         List<Integer> newList = new ArrayList<>();
         for (char x : str.toCharArray()) {
@@ -107,9 +109,14 @@ public class Application {
         //유저인풋받기 - 맞출때까지 반복
                 while(!mainGame(targetNums));
         //재시작 or 종료
-        //askContinue();
+    }
+    private static boolean askContinue(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = userInput();
+        if(input == CONTINUE) return true;
+        return false;
     }
     public static void main(String[] args) {
-//        play();
+        do{play();}while (askContinue());
     }
 }
