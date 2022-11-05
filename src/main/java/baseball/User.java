@@ -19,22 +19,22 @@ public class User {
     }
 
 
-    public static List<Integer>checkUserInput(String userInput){
+    public static List<Integer> checkUserInput(String userInput) {
 
-        if(userInput== null){
+        if (userInput == null) {
             throw new IllegalArgumentException();
         }
 
-        if(userInput.length()!=3){
+        if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
 
         int userInputNum = 0;
 
-        try{
+        try {
             userInputNum = Integer.parseInt(userInput);
 
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
@@ -44,15 +44,15 @@ public class User {
 
     private static List<Integer> makeUserBalls(int userInputNum) {
 
-        List<Integer> userBallsList = Arrays.asList(userInputNum/100, userInputNum%100/10, userInputNum%10);
+        List<Integer> userBallsList = Arrays.asList(userInputNum / 100, userInputNum % 100 / 10, userInputNum % 10);
         Stream<Integer> userBallStream = userBallsList.stream();
 
         int count = (int) userBallStream.distinct().count();
-        if(count!=3){
+        if (count != 3) {
             throw new IllegalArgumentException();
         }
 
-        if(userBallsList.contains(0)){
+        if (userBallsList.contains(0)) {
             throw new IllegalArgumentException();
         }
 
@@ -63,7 +63,7 @@ public class User {
 
     public static boolean wantRegame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput =Console.readLine();
+        String userInput = Console.readLine();
 
         return checkRegameInput(userInput);
     }
@@ -71,10 +71,10 @@ public class User {
 
     static boolean checkRegameInput(String userInput) {
 
-        if("1".equals(userInput)){
+        if ("1".equals(userInput)) {
             return true;
 
-        } else if("2".equals(userInput)){
+        } else if ("2".equals(userInput)) {
             return false;
 
         } else {

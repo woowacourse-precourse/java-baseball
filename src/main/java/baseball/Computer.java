@@ -9,13 +9,13 @@ public class Computer {
 
     static final int BallsLength = 3;
 
-    public static List<Integer> makeBalls(){
+    public static List<Integer> makeBalls() {
         List<Integer> computerBallsList = new ArrayList<>();
 
-        while(computerBallsList.size()<BallsLength){
-            int randomBall = Randoms.pickNumberInRange(1,9);
+        while (computerBallsList.size() < BallsLength) {
+            int randomBall = Randoms.pickNumberInRange(1, 9);
 
-            if(!computerBallsList.contains(randomBall)){
+            if (!computerBallsList.contains(randomBall)) {
                 computerBallsList.add(randomBall);
             }
         }
