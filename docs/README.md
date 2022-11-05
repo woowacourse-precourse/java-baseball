@@ -5,7 +5,7 @@
 ## (List<Integer>)randomNumberCreate()
 - [ ] 세자리수의 난수 생성
 
-## userNumberMessagePrint
+## ()userNumberMessagePrint()
 - [ ] "숫자를 입력하세요 : "를 출력
 
 ## userNumberInput
