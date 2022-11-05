@@ -53,7 +53,9 @@ public class Game {
         int strikeCount = strike.compareCharacterLocationMatch(
                 InputNumber.number,
                 computer.randomNumberListToString());
-        int ballCount = ball.compareCharacterDifferentLocationMatch();
+        int ballCount = ball.compareCharacterDifferentLocationMatch(
+                InputNumber.number,
+                computer.randomNumberListToString());
 
         if (strikeCount == 0) {
             System.out.println(ballCount + BALL);
