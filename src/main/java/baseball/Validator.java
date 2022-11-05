@@ -41,4 +41,9 @@ public class Validator {
                 &&checkDifferent(input))return true;
         throw new IllegalArgumentException();
     }
+
+    public static boolean checkEndInput(String input) throws IllegalArgumentException{
+        if(input.equals("1")||input.equals("2"))return true;
+        throw new IllegalArgumentException();
+    }
 }

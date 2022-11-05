@@ -3,9 +3,9 @@ package baseball;
 public class Game {
     HintMaker hintMaker;
     User user;
-    public Game(HintMaker hintMaker,User user){
-        this.hintMaker = hintMaker;
-        this.user = user;
+    public Game(){
+        this.hintMaker = new HintMaker(new Opponent());
+        this.user = new User();
     }
     public void start(){
         String input="";
@@ -15,5 +15,10 @@ public class Game {
             hint = hintMaker.getHintby(input);
             HintMessage.print(hint);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return;
+    }
+    public String getEndInput(){
+        return user.readEndInput();
     }
 }

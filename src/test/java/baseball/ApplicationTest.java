@@ -2,10 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
-import baseball.Opponent;
-import baseball.HintMaker;
-import baseball.HintMessage;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -84,6 +80,16 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Validator.checkStart("111"))
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkEndInput("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkEndInput("jke"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void goodEndTest(){
+        assertThat(Validator.checkEndInput("1")).isEqualTo(true);
+        assertThat(Validator.checkEndInput("2")).isEqualTo(true);
     }
 
     @Override
