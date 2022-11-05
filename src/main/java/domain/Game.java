@@ -32,9 +32,12 @@ public class Game {
         List<Integer> COMPUTER_NUMBERS = Computer.getRandomNumbers();
         while (true) {
             System.out.print(INPUT_NUMBER_MESSAGE);
-            String UserNumber = Console.readLine();
-            String result = Referee.getJudgement(COMPUTER_NUMBERS, User.getUserNumber(UserNumber));
+            String userNumber = Console.readLine();
+            handleException(userNumber);
+
+            String result = Referee.getJudgement(COMPUTER_NUMBERS, User.getUserNumber(userNumber));
             System.out.println(result);
+
             if (result.equals(3 + STRIKE)) {
                 winGame();
                 break;
@@ -54,6 +57,12 @@ public class Game {
             playGame();
         }
         return true;
+    }
+
+    public static void handleException(String input){
+        InputException.outOfRange(input);
+        InputException.repeatNumber(input);
+        InputException.excludeOneToNine(input);
     }
 
 }
