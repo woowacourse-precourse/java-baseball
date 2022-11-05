@@ -20,7 +20,6 @@ class BallTest {
     void checkNumberOfStrikes(String inputNumber, String computerNumber, int index) {
         int ballCount = ball.compareCharacterDifferentLocationMatch(inputNumber, computerNumber);
         int[] result = {0, 0, 1, 1, 3};
-        
         assertThat(ballCount).isEqualTo(result[index]);
     }
 
