@@ -42,7 +42,7 @@ public class Game {
     }
 
     public String inputUserNumber() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
         String userInput = Console.readLine();
         InputException.checkInputNumberValidation(userInput);
         return userInput;
