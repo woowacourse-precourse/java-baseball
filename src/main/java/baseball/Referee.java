@@ -23,7 +23,7 @@ public class Referee {
         return CONTINUATION;
     }
 
-    private static int getStrikeCount(List<Integer> guess, List<Integer> answer) {
+    private static int getStrikeCount(final List<Integer> guess, final List<Integer> answer) {
         int strikeCount = 0;
 
         for (int position = 0; position < LIST_SIZE; position++) {
@@ -34,13 +34,13 @@ public class Referee {
         return strikeCount;
     }
 
-    private static boolean isStrike(List<Integer> guess, List<Integer> answer, int position) {
+    private static boolean isStrike(final List<Integer> guess, final List<Integer> answer, final int position) {
         int guessNumber = guess.get(position);
         int answerNumber = answer.get(position);
         return guessNumber == answerNumber;
     }
 
-    private static int getBallCount(List<Integer> guess, List<Integer> answer) {
+    private static int getBallCount(final List<Integer> guess, final List<Integer> answer) {
         int ballCount = 0;
 
         for (int position = 0; position < LIST_SIZE; position++) {
@@ -51,13 +51,13 @@ public class Referee {
         return ballCount;
     }
 
-    private static boolean isBall(List<Integer> guess, List<Integer> answer, int position) {
+    private static boolean isBall(final List<Integer> guess, final List<Integer> answer, final int position) {
         int guessNumber = guess.get(position);
         int answerNumber = answer.get(position);
         return answer.contains(guessNumber) && answerNumber != guessNumber;
     }
 
-    private static List<Integer> stringToIntegerList(String guess) {
+    private static List<Integer> stringToIntegerList(final String guess) {
         List<Integer> result = new ArrayList<>();
 
         for (int guessIndex = 0; guessIndex < guess.length(); guessIndex++) {
@@ -67,7 +67,7 @@ public class Referee {
         return result;
     }
 
-    private static int asciiNumberToInt(char asciiNumber) {
+    private static int asciiNumberToInt(final char asciiNumber) {
         return asciiNumber - '0';
     }
 }
