@@ -29,4 +29,11 @@ public final class Validator {
             throw new IllegalArgumentException(INVALID_INPUT_VALUE_MESSAGE);
         }
     }
+
+    public static void validateBallNumberRange(Ball ball) {
+        if (ball.isValidRange()) {
+            return;
+        }
+        throw new IllegalArgumentException(INVALID_INPUT_VALUE_MESSAGE);
+    }
 }
