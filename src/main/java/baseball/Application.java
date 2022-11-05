@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -7,18 +9,14 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame();
 
         baseballGame.startGame();
-        List<Integer> computerNumber = baseballGame.createComputerNumber();
-
         while (true) {
-            List<Integer> userNumber = baseballGame.getUserNumber();
-            int strike = baseballGame.checkStrike(computerNumber, userNumber);
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            List<Integer> computerNumber = baseballGame.createComputerNumber();
+            baseballGame.runGame(computerNumber);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restart = Console.readLine();
+            if (restart.equals("2")) {
                 break;
             }
-            int ball = baseballGame.checkBall(computerNumber, userNumber);
-            String result = baseballGame.getResult(strike, ball);
-            System.out.println(result);
         }
     }
 }
