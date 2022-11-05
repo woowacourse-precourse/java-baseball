@@ -85,6 +85,7 @@ public class GameView {
 
     private void isValidUser(int numInput) {
         isValidPositiveInt(numInput);
+        isValidRightNum(numInput);
     }
 
     private boolean isValidPositiveInt(int num) {
