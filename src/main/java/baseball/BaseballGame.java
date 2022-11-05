@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class BaseballGame {
         if (gameSet(player.getNumber(), answer)) {
             wrongAnswer = false;
         }
+        hint = new ArrayList<>();
         getBallCount(player.getNumber(), answer);
         getStrikeCount(player.getNumber(), answer);
         getNothing(player.getNumber(), answer);
@@ -43,7 +45,9 @@ public class BaseballGame {
                 count++;
             }
         }
-        hint.add(String.valueOf(count));
+        if (count != 0) {
+            hint.add(String.valueOf(count) + "스트라이크");
+        }
     }
 
     public void getBallCount(List<Integer> inputs, List<Integer> answer) {
@@ -56,13 +60,16 @@ public class BaseballGame {
                 count--;
             }
         }
-        hint.add(String.valueOf(count));
+        if (count != 0) {
+            hint.add(String.valueOf(count) + "볼");
+        }
     }
 
     private void getNothing(List<Integer> inputs, List<Integer> answer) {
-        if (!answer.removeAll(inputs)) {
+        if (hint.isEmpty()) {
             hint.add("낫싱");
         }
+        hint.add("\n");
     }
 
     private boolean isStrike(List<Integer> inputs, List<Integer> answer, int index) {

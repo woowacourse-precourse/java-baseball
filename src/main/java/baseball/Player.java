@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,8 +12,9 @@ public class Player {
     }
 
     public void setNumber() {
+        playerNumber = new ArrayList<>();
         for (char c : sc.next().toCharArray()) {
-            playerNumber.add(Integer.valueOf(c));
+            playerNumber.add(Character.getNumericValue(c));
         }
     }
     public List<Integer> getNumber() {

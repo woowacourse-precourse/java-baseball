@@ -12,7 +12,7 @@ public class Rule {
     }
 
     public void print(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     public List<Integer> generateAnswer() {
