@@ -40,6 +40,7 @@ public class User {
             checkWrongNumber(inputNumber);
             checkNumbersLength(inputNumber);
             checkOverlapNumber(inputNumber);
+            // null 값이 입력될 때
         } catch (IllegalArgumentException e){
             System.out.println(e.toString());
         }
