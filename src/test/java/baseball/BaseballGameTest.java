@@ -51,4 +51,31 @@ public class BaseballGameTest {
             assertThat(baseballGame.checkStrike(computerNumber, userNumber)).isEqualTo(result);
         }
     }
+
+    @Nested
+    class checkBallTest {
+        @Test
+        void case1() {
+            List<Integer> computerNumber = List.of(1, 2, 3);
+            List<Integer> userNumber = List.of(1, 2, 3);
+            int result = 0;
+            assertThat(baseballGame.checkBall(computerNumber, userNumber)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> computerNumber = List.of(4, 2, 5);
+            List<Integer> userNumber = List.of(4, 5, 6);
+            int result = 1;
+            assertThat(baseballGame.checkBall(computerNumber, userNumber)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> computerNumber = List.of(1, 2, 3);
+            List<Integer> userNumber = List.of(4, 5, 6);
+            int result = 0;
+            assertThat(baseballGame.checkBall(computerNumber, userNumber)).isEqualTo(result);
+        }
+    }
 }
