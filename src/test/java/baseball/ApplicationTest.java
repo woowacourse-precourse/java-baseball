@@ -2,11 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import java.util.Collections;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -62,6 +65,21 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("입력하신 내용 중에 중복되는 숫자가 있습니다.")
         );
+    }
+
+    @Test
+    void 세개의_난수_생성() {
+        NumberGenerator generator = new NumberGenerator();
+        generator.generateNumber();
+
+        // 세 개의 난수를 생성하였는 지를 확인
+        assertSame(3, generator.getNumbers().size());
+
+        // 1부터 9사이의 숫자인 지와 빈도 수를 통해 중복되는 값이 있는 지를 확인
+        for(int number : generator.getNumbers()) {
+            assertTrue(1 <= number && number <= 9);
+            assertSame(1, Collections.frequency(generator.getNumbers(), number));
+        }
     }
 
     @Override
