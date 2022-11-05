@@ -223,12 +223,16 @@ public class Computer {
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
         ArrayList<Integer> list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
-        String strParseIntArr = "" + numTosplit;
-        String[] strSplitArr = getSpitArr(strParseIntArr);
+        String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
+        
         for (String str : strSplitArr) {
             list.add(parseIntegerFromStr(str));
         }
         return list;
+    }
+
+    private String parseStringFromNum(int num) {
+        return ("" + num);
     }
 
     private String[] getSpitArr(String str) {
