@@ -10,8 +10,8 @@ public class Application {
 
         // TODO: 프로그램 구현
         Game game = new Game();
-        while (game.startGame()) {
+        do {
             game.startGame();
-        }
+        }while (game.startGame());
     }
 }
