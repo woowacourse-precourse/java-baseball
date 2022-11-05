@@ -3,6 +3,8 @@ package baseball.service;
 import baseball.model.Computer;
 import baseball.model.Player;
 
+import java.util.List;
+
 public class GameService {
 
     Player player;
@@ -33,6 +35,10 @@ public class GameService {
 
     public void checkComputerWithPlayerNumber(){
 
+    }
+
+    public List<Integer> getPlayerNumbers(){
+        return player.getNumbers();
     }
 
     public void scoreGameWithIndex(int index){
