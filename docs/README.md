@@ -62,5 +62,7 @@
   - [X] `Map<ResultType, Integer>`를 멤버 변수로 저장하여 결과를 View Class로 전달
   - [X] `void add(ResultType)`
     - 인자로 받은 ResultType에 대응되는 Value에 1 추가
-  - [X] `boolean isNothin(Result result)`
+  - [X] `boolean isNothing()`
     - 비교 결과 ball과 strike의 개수가 모두 0이면 true, 그렇지 않으면 false 반환
+  - [X] `boolean isCorrect()`
+    - 비교 결과 strike의 개수가 3이면 true, 그렇지 않으면 false 반환

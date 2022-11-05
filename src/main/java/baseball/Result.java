@@ -24,8 +24,12 @@ public class Result {
         return this.result.get(resultType);
     }
 
-    private boolean isNothing(Result result) {
-        return (result.get(ResultType.BALL) == 0) && (result.get(ResultType.STRIKE) == 0);
+    public boolean isNothing() {
+        return (this.result.get(ResultType.BALL) == 0) && (this.result.get(ResultType.STRIKE) == 0);
+    }
+
+    public boolean isCorrect() {
+        return this.result.get(ResultType.STRIKE) == 3;
     }
 
 }
