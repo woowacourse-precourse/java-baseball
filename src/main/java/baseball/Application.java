@@ -22,7 +22,7 @@ public class Application {
         String userInputString = readLine();
         List<Integer> userInput = new ArrayList<>();
         for (int i=0; i<3; i++) {
-            userInput.set(i,Character.getNumericValue(i));
+            userInput.add(Character.getNumericValue(i));
         }
         return userInput;
     }
@@ -63,10 +63,9 @@ public class Application {
         boolean correctAnswer;
         boolean quitGame;
         for (int i=0; i<3; i++) {
-            answer.set(i,pickNumberInRange(0,9));
+            answer.add(pickNumberInRange(0,9));
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         while(true) {
             int ball = checkBall(answer,userInput);
             int strike = checkStrike(answer,userInput,ball);
@@ -81,6 +80,5 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
     }
 }
