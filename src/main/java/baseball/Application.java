@@ -64,23 +64,33 @@ public class Application {
         }
         return 0;
     }
+    public static String Re_Start_Game(){
+        String restart;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restart = Console.readLine();
+        return restart;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = Computer_Number();
+        String gamestart = "1";
+        while (gamestart.matches("1")) {
+            List<Integer> computer = Computer_Number();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int All_correct = 0;
-        while (All_correct == 0) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String user = Console.readLine();
-            isValidLength(user);
+            int All_correct = 0;
+            while (All_correct == 0) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String user = Console.readLine();
+                isValidLength(user);
 
-            List<Integer> count = new ArrayList<Integer>(Arrays.asList(0, 0));
-            Check_contain_Number(user, computer, count);
+                List<Integer> count = new ArrayList<Integer>(Arrays.asList(0, 0));
+                Check_contain_Number(user, computer, count);
 
-            Baseball_print(count);
-            All_correct = Check_All_Correct(count);
+                Baseball_print(count);
+                All_correct = Check_All_Correct(count);
+            }
+            gamestart = Re_Start_Game();
         }
     }
 }
