@@ -52,6 +52,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_공백이_포함된_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 23"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
