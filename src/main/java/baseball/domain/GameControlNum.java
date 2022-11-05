@@ -21,4 +21,8 @@ public class GameControlNum {
             throw new IllegalArgumentException("유효하지 않은 입력입니다.");
         }
     }
+
+    public boolean isRestart() {
+        return value == RESTART_VALUE;
+    }
 }
