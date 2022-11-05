@@ -6,16 +6,20 @@ import baseball.model.Hint;
 import baseball.model.Input;
 import baseball.model.Result;
 import baseball.model.State;
+import baseball.service.RandomNumberListGenerator;
+import baseball.service.Service;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -62,6 +66,7 @@ class ApplicationTest extends NsTest {
         Hint hint = new Hint(ball, strike);
         assertThat(hint.toString()).isEqualTo("2볼 1스트라이크\n");
     }
+
     @Test
     void resultView_FINISH_Test(){
 
@@ -80,6 +85,38 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void service_GenerateHint_3strike_Test(){
+        Service service = new Service();
+        String answer = getAnswerString(service);
+        Input input = new Input(answer);
+        assertThat(service.generateHint(input).toString())
+                .isEqualTo("3스트라이크\n");
+    }
+
+    @Test
+    void service_GenerateHint_2Ball_1Strike_Test(){
+        Service service = new Service();
+        String answer = getAnswerString(service);
+        char[] charInput = answer.toCharArray();
+        char swapNum = charInput[2];
+        charInput[2] = charInput[0];
+        charInput[0] = swapNum;
+        String inputChar = new String(charInput);
+        Input input = new Input(inputChar);
+        assertThat(service.generateHint(input).toString())
+                .isEqualTo("2볼 1스트라이크\n");
+    }
+
+
+    private String getAnswerString(Service service){
+        return service.getAnswer()
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
