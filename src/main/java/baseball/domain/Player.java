@@ -17,6 +17,9 @@ public class Player {
 
     private List<Ball> balls;
 
+    public Player() {
+    }
+
     public Player(List<Integer> numbers) {
         validateNumbers(numbers);
         balls = mapToBall(numbers);
@@ -75,6 +78,7 @@ public class Player {
     }
 
     public void changeBalls(List<Integer> newBallNumbers) {
+        validateNumbers(newBallNumbers);
         balls = mapToBall(newBallNumbers);
     }
 }

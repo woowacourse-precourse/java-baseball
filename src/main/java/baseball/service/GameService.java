@@ -12,8 +12,9 @@ public class GameService {
     private final Player player;
     private final Player computer;
 
-    public GameService(List<Integer> playerNumbers) {
-        this(playerNumbers, RandomNumberCreator.createRandomNumbers());
+    public GameService() {
+        this.player = new Player();
+        this.computer = new Player(RandomNumberCreator.createRandomNumbers());
     }
 
     public GameService(List<Integer> playerNumbers, List<Integer> computerNumbers) {
