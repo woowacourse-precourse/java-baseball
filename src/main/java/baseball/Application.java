@@ -67,13 +67,12 @@ class GameProcessor {
 
     public void toArrayValue(int userInput,int computerInput)
     {
-        int digitNumber = 100;
+        String userString = String.valueOf(userInput);
+        String computerString = String.valueOf(computerInput);
+
         for(int digit=0;digit<3;digit++) {
-            userValue[digit] = userInput / digitNumber;
-            computerValue[digit] = computerInput / digitNumber;
-            userInput %= digitNumber;
-            computerInput %= computerInput;
-            digitNumber /= 10;
+            userValue[digit] = Integer.parseInt(userString.substring(digit,digit+1));
+            computerValue[digit] = Integer.parseInt(computerString.substring(digit,digit+1));
         }
     }
 
