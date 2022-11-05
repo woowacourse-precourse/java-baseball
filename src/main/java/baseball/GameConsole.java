@@ -50,12 +50,13 @@ public class GameConsole {
      * @return 게임 종료 여부
      */
     public boolean printGameResult(Result result) {
+        writeLine(result.toString());
+
         if (result.isComplete()) {
             printComplete();
             return true;
         }
 
-        writeLine(result.toString());
         return false;
     }
 
