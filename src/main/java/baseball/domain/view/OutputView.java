@@ -3,7 +3,7 @@ package baseball.domain.view;
 public class OutputView {
     public static final String startGame = "숫자 야구 게임을 시작합니다.";
 
-    public static void startView() {
+    public static void printStart() {
         System.out.println(startGame);
     }
 
@@ -20,5 +20,9 @@ public class OutputView {
         System.out.println(answer);
 
         return strike == 3;
+    }
+
+    public static void printEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

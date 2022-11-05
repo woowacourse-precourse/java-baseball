@@ -7,7 +7,7 @@ import baseball.domain.view.OutputView;
 
 public class Game {
     public Game() {
-        OutputView.startView();
+        OutputView.printStart();
         String randomNumbers = Computer.getRandomNumbers();
         while (true) {
             String inputNumbers = InputView.printNumbers();
@@ -15,5 +15,6 @@ public class Game {
                 break;
             }
         }
+        OutputView.printEnd();
     }
 }
