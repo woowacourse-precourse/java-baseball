@@ -45,7 +45,8 @@ public class GameView {
         }
     }
 
-    private boolean isEndgameInputOfUser(GameController gameController, int numInputOfUser) {
+
+    public boolean isEndgameInputOfUser(GameController gameController, int numInputOfUser) {
         if (isEndGameUserWant(numInputOfUser)) {
             return true;
         }
@@ -73,4 +74,7 @@ public class GameView {
         return Integer.parseInt(readLine());
     }
 
+    private String getString() {
+        return readLine();
+    }
 }
