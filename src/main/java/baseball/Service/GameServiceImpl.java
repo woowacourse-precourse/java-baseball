@@ -1,6 +1,7 @@
 package baseball.Service;
 
 import baseball.Model.Balls;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameServiceImpl implements GameService {
@@ -29,6 +30,26 @@ public class GameServiceImpl implements GameService {
             return num;
         }
         return 0;
+    }
+
+    @Override
+    public int[] getInputs() {
+        String intputNum = Console.readLine();
+        if (intputNum.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        try {
+            Integer.parseInt(intputNum);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return new int[]{
+                intputNum.charAt(0) - '0',
+                intputNum.charAt(1) - '0',
+                intputNum.charAt(2) - '0'
+        };
     }
 
 
