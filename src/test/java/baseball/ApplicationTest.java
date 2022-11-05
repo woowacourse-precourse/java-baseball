@@ -24,6 +24,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_재시작_예외 () {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "9"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+                },
+                1, 2,3
+        );
+
+    }
+
+    @Test
     void 입력이_세자리가_아닌경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))

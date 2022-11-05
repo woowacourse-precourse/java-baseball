@@ -16,6 +16,8 @@ public class Application {
 
             playAgain = user.inputFlag();
         }
+
+
     }
 
 }
