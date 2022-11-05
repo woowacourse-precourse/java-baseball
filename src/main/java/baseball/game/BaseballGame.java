@@ -19,9 +19,11 @@ public class BaseballGame {
         return this.opponentNumbers.size();
     }
 
-    public void play() {
-        start();
+    public static String getStartMessage() {
+        return BaseballConstants.START_MESSAGE;
+    }
 
+    public void play() {
         while (true) {
             boolean isSuccess = tryGuess();
 
@@ -31,10 +33,6 @@ public class BaseballGame {
         }
 
         end();
-    }
-
-    private void start() {
-        Logger.log(BaseballConstants.START_MESSAGE);
     }
 
     private void end() {
