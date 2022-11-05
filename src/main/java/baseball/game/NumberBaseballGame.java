@@ -64,7 +64,7 @@ public abstract class NumberBaseballGame {
         else throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
     }
 
-    protected static boolean isValidNumberStr(String numberStr) {
+    private static boolean isValidNumberStr(String numberStr) {
         boolean isThreeDigit = numberStr.length() == 3,
                 isOnlyNaturalNumber = numberStr.matches("[1-9]{3}"),
                 isEachUniqueNumber = true;
@@ -80,7 +80,7 @@ public abstract class NumberBaseballGame {
         return isThreeDigit && isOnlyNaturalNumber && isEachUniqueNumber;
     }
 
-    protected static String getNumberStrExceptionMessage(String numberStr) {
+    private static String getNumberStrExceptionMessage(String numberStr) {
         if (numberStr.length() != 3) return "3자리 숫자를 입력해주세요.";
         else if (!numberStr.matches("[1-9]{3}")) return "1 ~ 9까지의 숫자만을 입력해주세요.";
         else return "각 자리의 숫자가 서로 다르도록 입력해주세요.";
@@ -101,7 +101,7 @@ public abstract class NumberBaseballGame {
         }
     }
 
-    protected static boolean isStrike(int position) {
+    private static boolean isStrike(int position) {
         return Objects.equals(answerNumberList.get(position), playerNumberList.get(position));
     }
 
