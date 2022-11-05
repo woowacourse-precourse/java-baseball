@@ -1,26 +1,26 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     static final int INPUT_LENGTH = 3;
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
     static final String NOTHING = "낫싱";
-    static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    static final String WIN_NOTICE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String START_NOTICE = "숫자 야구 게임을 시작합니다.";
+    static final String INPUT_NUMBER_NOTICE = "숫자를 입력해주세요 : ";
+    static final String RESTART_OR_END_NOTICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     List<Integer> computerNumber;
     List<Integer> playerNumber;
-
-    public Game() {
-        computerNumber = getComputerNumber();
-    }
+    boolean flag = true;
 
     public List<Integer> getComputerNumber() {
         List<Integer> computerNumber = new ArrayList<Integer>();
@@ -85,9 +85,33 @@ public class Game {
         } else if (countResult[0] != 0 && countResult[1] != 0) {
             System.out.println(countResult[0] + BALL + " " + countResult[1] + STRIKE);
         }
-        if(countResult[1] == 3){
-            System.out.println(GAME_END);
+        if (countResult[1] == 3) {
+            System.out.println(WIN_NOTICE);
+            flag = false;
         }
     }
+
+    public void getHint() {
+        System.out.print(INPUT_NUMBER_NOTICE);
+        playerNumber = getPlayerNumber();
+        printResult(checkNumber(playerNumber));
+    }
+
+    public void start() {
+        notifyStart();
+        computerNumber = getComputerNumber();
+        do {
+            getHint();
+        } while (flag);
+    }
+
+    public void notifyStart() {
+        System.out.println(START_NOTICE);
+    }
+
+    public void notifyRestartOrEnd() {
+        System.out.println(RESTART_OR_END_NOTICE);
+    }
+
 
 }
