@@ -57,7 +57,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     void check_strike(){
-        gameProcessor.strikeChecker(123,123);
+        int[] testData = {1,2,3};
+        int[] testData2 = {1,2,3};
+        gameProcessor.strikeChecker(testData,testData2);
         assertThat(gameProcessor.getStrike()).isEqualTo(3);
     }
 
