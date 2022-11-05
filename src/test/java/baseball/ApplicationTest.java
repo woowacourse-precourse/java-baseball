@@ -13,6 +13,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -60,8 +61,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(judge(computerNumList, userNumList1)).isEqualTo("3스트라이크");
         assertThat(judge(computerNumList, userNumList2)).isEqualTo("낫싱");
-        assertThat(judge(computerNumList, userNumList2)).isEqualTo("2볼 1스트라이크");
+        assertThat(judge(computerNumList, userNumList3)).isEqualTo("2볼 1스트라이크");
     }
+
+    @Test
+    void 볼_판정(){
+        List<Integer> computerNumList = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userNumList= new ArrayList<>(Arrays.asList(1,3,2));
+
+        assertThat(judgeBall(computerNumList,userNumList)).isEqualTo(2);
+    }
+
+
 
 
     @Override
