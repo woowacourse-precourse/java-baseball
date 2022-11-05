@@ -64,9 +64,9 @@ class BaseballTest {
         class CompareByIndex_test {
             @Nested
             @DisplayName("숫자가 동일한 Ball 인스턴스가 입력되었을 때")
-            class Context_with_identical_Ball_instance {
+            class Context_with_identical_number_Ball_instance {
                 @Test
-                @DisplayName("int 3을 반환한다.")
+                @DisplayName("3을 반환한다.")
                 void it_returns_integer_vale_of_3() {
                     String number = "123";
 
@@ -78,18 +78,38 @@ class BaseballTest {
             }
 
             @Nested
-            @DisplayName("동일한 Ball 인스턴스가 입력되었을 때")
-            class Context_with_different_Ball_instance {
+            @DisplayName("숫자가 하나 다른 Ball 인스턴스가 입력되었을 때")
+            class Context_with_different_one_number_Ball_instance {
                 @Test
-                @DisplayName("같은 위치의 숫자 개수를 반환한다.")
-                void it_returns_count_of_same_value_by_index() {
+                @DisplayName("2를 반환한다.")
+                void it_returns_integer_value_of_2() {
                     String number = "123";
-                    String differentNumber = "143";
+                    String differentNumber = "124";
 
                     Ball ball = new Ball(number);
                     Ball differentNumberBall = new Ball(differentNumber);
 
                     assertThat(ball.compareByIndex(differentNumberBall)).isEqualTo(2);
+                }
+            }
+        }
+        
+        @Nested
+        @DisplayName("compareByValue 메소드는")
+        class compareByValue_test {
+            @Nested
+            @DisplayName("Ball 인스턴스가 입력되었을 때")
+            class Context_with_Ball_instance {
+                @Test
+                @DisplayName("포함하는 숫자를 세서 반환한다.")
+                void it_returns_count_of_containing_number() {
+                    String number = "123";
+                    String otherNumber = "512";
+
+                    Ball ball = new Ball(number);
+                    Ball otherBall = new Ball(otherNumber);
+
+                    assertThat(ball.compareByValue(otherBall)).isEqualTo(2);
                 }
             }
         }
