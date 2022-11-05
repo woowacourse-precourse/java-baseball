@@ -32,10 +32,10 @@ public class Numbers {
     public int compareStrikes(Numbers other) {
         int strikes = 0;
         for (Integer digit : digits) {
-            if (!other.contains(digit)) {
+            if (other.doesNotContain(digit)) {
                 continue;
             }
-            if (other.indexOf(digit) == this.indexOf(digit)) {
+            if (other.positionOf(digit) == this.positionOf(digit)) {
                 strikes += 1;
             }
         }
@@ -45,21 +45,21 @@ public class Numbers {
     public int compareBalls(Numbers other) {
         int balls = 0;
         for (Integer digit : digits) {
-            if (!other.contains(digit)) {
+            if (other.doesNotContain(digit)) {
                 continue;
             }
-            if (other.indexOf(digit) != this.indexOf(digit)) {
+            if (other.positionOf(digit) != this.positionOf(digit)) {
                 balls += 1;
             }
         }
         return balls;
     }
 
-    private boolean contains(Integer digit) {
-        return digits.contains(digit);
+    private boolean doesNotContain(Integer digit) {
+        return !digits.contains(digit);
     }
 
-    private int indexOf(Integer digit) {
+    private int positionOf(Integer digit) {
         return digits.indexOf(digit);
     }
 }
