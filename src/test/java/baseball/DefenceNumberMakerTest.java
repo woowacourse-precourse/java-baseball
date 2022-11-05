@@ -28,4 +28,20 @@ public class DefenceNumberMakerTest {
 
         assertThat(defenceNumberList.size()).isEqualTo(SIZE);
     }
+
+    @Test
+    void 만들어진_수가_조건에_부합하는지_확인() {
+        DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker();
+        List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
+
+        StringBuilder sb = new StringBuilder();
+        for(Integer defenceNumber : defenceNumberList) {
+            sb.append(defenceNumber);
+        }
+
+        ValidationNumber validationNumber = new ValidationNumber();
+
+        assertThat(validationNumber.checkTotalAndConvertIntegerList(sb.toString()))
+                .isEqualTo(defenceNumberList);
+    }
 }
