@@ -69,6 +69,13 @@ public class Application {
         return false;
     }
 
+    public void printEndGame(boolean state){
+        if(state){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+
     private int checkIfScoreIsInRange(int i) {
         if(i > 3 || i < 0) throw new IllegalArgumentException("score가 범위 안에 있지 않습니다");
         return i;
