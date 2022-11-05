@@ -5,8 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
+
+    private static final int DIGIT_LENGTH = 3;
 
     /**
      * 게임을 시작 할 때 생성하는 랜덤 넘버 3개 (이때 각 숫자는 중복이 없다)
@@ -65,30 +68,63 @@ public class Application {
         return userInput.matches("\\d\\d\\d");
     }
 
-    public static int countStrike(List<Integer> answer, List<Integer> userInput) {
-        return Integer.MAX_VALUE;
+    public static int countStrike(List<Integer> answerList, List<Integer> userInputList) {
+        int strike = 0;
+        for (int i = 0; i < DIGIT_LENGTH; i++) {
+            int answer = answerList.get(i);
+            int userInput = userInputList.get(i);
+
+            if (answer == userInput)
+                strike++;
+        }
+
+        return strike;
     }
 
-    public static int countBall(List<Integer> answer, List<Integer> userInput) {
-        return Integer.MAX_VALUE;
+    public static int countBall(List<Integer> answerList, List<Integer> userInputList) {
+        int ball = 0;
+        for (int i = 0; i < DIGIT_LENGTH; i++) {
+            int answer = answerList.get(i);
+            int userInput = userInputList.get(i);
+
+            if (answer != userInput && answerList.contains(userInput))
+                ball++;
+        }
+
+        return ball;
     }
 
     public static void printResult(int strike, int ball) {
+        String result = "";
 
+        if (strike == 0 && ball == 0) result = "낫싱";
+
+        if (ball > 0) result += String.format("%d볼 ", ball);
+        if (strike > 0) result += String.format("%d스트라이크", strike);
+        result = result.trim();
+
+        System.out.println(result);
     }
 
     public static void game() {
         List<Integer> randomNumbers = generateRandomNumber();
 
         while (true) {
-            String userInput = receiveUserInput();
+            String userInputStr = receiveUserInput();
 
-            boolean validation = checkUserInput(userInput);
+            boolean validation = checkUserInput(userInputStr);
 
             if (!validation) throw new IllegalArgumentException("3자리의 숫자만 입력해야합니다.");
 
+            List<Integer> userInput = userInputStrToIntegerList(userInputStr);
 
-            break;
+            int strike = countStrike(randomNumbers, userInput);
+            int ball = countBall(randomNumbers, userInput);
+
+            printResult(strike, ball);
+
+            if(strike == DIGIT_LENGTH)
+                break;
         }
     }
 
