@@ -15,7 +15,7 @@ public class GameService {
     public GameService(int answerLength) {
         this.generator = new RandomGenerator(answerLength);
         this.viewController = new ViewController();
-        this.answer = generator.generateRandomNumbers();
+        this.answer = generator.getAnswer();
         //System.out.println(answer);         // 나중에 지워라 ************************************************************
         this.separator = new Separator(answer);
     }

@@ -4,6 +4,7 @@ import baseball.mapper.StringMapper;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RandomGenerator {
     private final int ANSWER_LENGTH;
@@ -12,19 +13,21 @@ public class RandomGenerator {
         this.ANSWER_LENGTH = answerLength;
     }
 
-    public String generateRandomNumbers() {
-        List<String> computer = new ArrayList<>();
+    public String getAnswer() {
+        Set<String> numberSet = generateRandomNumber();
+        String answer = String.join("", numberSet);
+        return answer;
+    }
 
-        while (computer.size() < answerLength) {
+    private Set<String> generateRandomNumber() {
+        Set<String> numberSet = new LinkedHashSet<>();
+
+        while (numberSet.size() < ANSWER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             String strNumber = StringMapper.itos(randomNumber);
-
-            if (!computer.contains(strNumber)) {
-                computer.add(strNumber);
-            }
+            numberSet.add(strNumber);
         }
 
-        String generated = String.join("", computer);
-        return generated;
+        return numberSet;
     }
 }
