@@ -4,23 +4,29 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class UserNumber {
+
+    String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     String REGEX = "[0-9]{3,3}";
     int userNumber;
 
     public UserNumber() {}
 
     public void setUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(OUTPUT_ENTER_NUMBER);
         String input = Console.readLine();
         getValidation(input);
         this.userNumber = Integer.parseInt(input);
-
     }
 
     public void setUserNumber(String input) {
         getValidation(input);
         this.userNumber = Integer.parseInt(input);
     }
+
+    public int getUserNumber() {
+        return userNumber;
+    }
+
 
     private void getValidation(String input) {
         Boolean checkLength = getLengthValidation(input);

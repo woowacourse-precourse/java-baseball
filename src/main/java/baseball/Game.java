@@ -7,6 +7,10 @@ public class Game {
     String STRING_BALL = "볼";
     String STRING_STRIKE = "스트라이크";
     String STRING_NOTHING = "낫싱";
+    String INPUT_QUIT = "2";
+    String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    String OUTPUT_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private int strike;
     private int ball;
     private int randomNumber;
@@ -48,13 +52,15 @@ public class Game {
             System.out.println(result);
 
             if(strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(OUTPUT_SUCCESS);
+                System.out.println(OUTPUT_QUIT);
                 String input = Console.readLine();
-                if(input.equals("2")) {
-                    computer.setRandomNumber();
+                if(input.equals(INPUT_QUIT)) {
                     quit = true;
+                    break;
                 }
+                computer.setRandomNumber();
+                randomNumber = computer.getRandomNumber();
             }
 
         }
