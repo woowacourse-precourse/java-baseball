@@ -1,6 +1,5 @@
 package baseball.service.hint;
 
-import baseball.service.hint.Hint;
 import java.util.List;
 
 public class HintService {
@@ -53,11 +52,13 @@ public class HintService {
       System.out.println("낫싱");
     }
     if (ballCount != 0) {
-      System.out.println(ballCount + "볼 ");
+      System.out.print(ballCount + "볼 ");
     }
     if (strikeCount != 0) {
-      System.out.println(ballCount + "스트라이크");
+      System.out.println(strikeCount + "스트라이크");
     }
-    System.out.println();
+    if (strikeCount == 3) {
+      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
   }
 }
