@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.BaseballController;
+import baseball.model.BaseballModel;
 import baseball.model.TryValidator;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -65,91 +66,81 @@ class ApplicationTest extends NsTest {
         final String TEST_CASE_ANSWER = "634";
         final int TEST_CASE_LENGTH = 3;
 
-        private String getAnswer(){
-            return answer;
-        }
-
-        private void setAnswer(String newAnswer){
-            super.answer = newAnswer;
-        }
 
         @Test
         void 정답이_옳은_길이_인지_확인(){
-            super.initGame();
-            String answer = getAnswer();
+            String answer = getRandomAnswer();
             assertThat(answer.length()).isEqualTo(super.ANSWER_LENGTH);
         }
 
         @Test
         void 정답이_숫자만_있는지_확인(){
-            super.initGame();
-            String answer = getAnswer();
+            String answer = getRandomAnswer();
             Pattern compile = Pattern.compile("[0-9]+");
             assertThat(compile.matcher(answer).matches()).isEqualTo(true);
         }
 
         @Test
         void 정답에_중복숫자가_없는지_확인(){
-            super.initGame();
-            String answer = getAnswer();
+            String answer = getRandomAnswer();
             String distinctString = Util.getDistinctString(answer);
             assertThat(answer).isEqualTo(distinctString);
         }
 
         @Test
         void 입력값_333_시_예외발생(){
-            setAnswer(TEST_CASE_ANSWER);
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
             assertThatThrownBy(() -> new TryValidator("333", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_abc_시_예외발생(){
-            setAnswer(TEST_CASE_ANSWER);
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
             assertThatThrownBy(() -> new TryValidator("abc", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_3$4_시_예외발생(){
-            setAnswer(TEST_CASE_ANSWER);
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
             assertThatThrownBy(() -> new TryValidator("3$4", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_34_시_예외발생(){
-            setAnswer(TEST_CASE_ANSWER);
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
             assertThatThrownBy(() -> new TryValidator("34", TEST_CASE_LENGTH))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 입력값_346_시_결과(){
-            setAnswer(TEST_CASE_ANSWER);
-            super.answerCheck("346");
-            assertThat(OutputView.getResult(ball, strike)).isEqualTo("3볼 ");
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
+            answerCheck("346", baseballModel);
+            assertThat(OutputView.getResult(baseballModel.ball,baseballModel.strike)).isEqualTo("3볼 ");
         }
 
         @Test
         void 입력값_152_시_결과(){
-            setAnswer(TEST_CASE_ANSWER);
-            super.answerCheck("152");
-            assertThat(OutputView.getResult(ball, strike)).isEqualTo("낫싱");
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
+            answerCheck("152", baseballModel);
+            assertThat(OutputView.getResult(baseballModel.ball,baseballModel.strike)).isEqualTo("낫싱");
         }
 
         @Test
         void 입력값_673_시_결과(){
-            setAnswer(TEST_CASE_ANSWER);
-            super.answerCheck("673");
-            assertThat(OutputView.getResult(ball, strike)).isEqualTo("1볼 1스트라이크");
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
+            answerCheck("673", baseballModel);
+            assertThat(OutputView.getResult(baseballModel.ball,baseballModel.strike)).isEqualTo("1볼 1스트라이크");
         }
 
         @Test
         void 입력값_634_시_결과(){
-            setAnswer(TEST_CASE_ANSWER);
-            super.answerCheck("634");
-            assertThat(OutputView.getResult(ball, strike)).isEqualTo("3스트라이크");
+            BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
+            answerCheck("634", baseballModel);
+            assertThat(OutputView.getResult(baseballModel.ball,baseballModel.strike)).isEqualTo("3스트라이크");
         }
     }
 }

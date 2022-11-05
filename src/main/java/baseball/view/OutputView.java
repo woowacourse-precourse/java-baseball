@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.model.BaseballModel;
+
 public class OutputView {
 	private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 	private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -7,12 +9,12 @@ public class OutputView {
 	private static final String STRIKE_MESSAGE = "스트라이크";
 	private static final String NO_MATCH_MESSAGE = "낫싱";
 
-	public static void gameStartView(){
+	public static void printGameStartMessage(){
 		System.out.println(START_MESSAGE);
 	}
 
-	public static void tryResultView(int ball, int strike){
-		String result = getResult(ball, strike);
+	public static void tryResultView(BaseballModel model){
+		String result = getResult(model.ball, model.strike);
 		System.out.println(result);
 	}
 
