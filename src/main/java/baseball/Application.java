@@ -14,6 +14,7 @@ public class Application {
 }
 
 class Baseball {
+    private static int checkRestartGame;
     private static List<Integer> computerNumber;
     private static HashMap<String, Integer> countBallStrike;
     private static String userNumber;
@@ -112,7 +113,7 @@ class Baseball {
     }
 
     private static void checkRestartGame() {
-        int checkRestartGame = Integer.parseInt(Console.readLine());
+        checkRestartGame = Integer.parseInt(Console.readLine());
         if (checkRestartGame == NEW_GAME) {
             System.out.println(NEW_GAME);
             newGame();
@@ -127,4 +128,7 @@ class Baseball {
         return userNumber.matches("^[1-9]{3}$");
     }
 
+    private static boolean isValidRestartNumber() {
+        return checkRestartGame == NEW_GAME || checkRestartGame == END_GAME;
+    }
 }
