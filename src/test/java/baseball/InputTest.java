@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
 class InputTest {
     @Test
@@ -16,7 +15,7 @@ class InputTest {
     void getInput() {
         //given
         //when
-        Input input = new Input("123");
+        Users input = new Users("123");
         //then
         List<Integer> list = new ArrayList<>();
         list.add(1);
@@ -32,9 +31,9 @@ class InputTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("1234"));
+                .isThrownBy(() -> new Users("1234"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("12"));
+                .isThrownBy(() -> new Users("12"));
     }
 
     @Test
@@ -44,7 +43,7 @@ class InputTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("112"));
+                .isThrownBy(() -> new Users("112"));
     }
 
     @Test
@@ -54,8 +53,8 @@ class InputTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("012"));
+                .isThrownBy(() -> new Users("012"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("890"));
+                .isThrownBy(() -> new Users("890"));
     }
 }

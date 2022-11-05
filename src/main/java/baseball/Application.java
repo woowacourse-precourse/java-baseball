@@ -23,7 +23,7 @@ public class Application {
 
         while (!isThreeStrike) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> user = new Input(readLine()).getInputList();
+            List<Integer> user = new Users(readLine()).getInputList();
 
             BaseballReferee baseballReferee = new BaseballReferee(computer, user);
 

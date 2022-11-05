@@ -3,13 +3,13 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Input {
+public class Users {
     private static final int INPUT_LENGTH = 3;
 
     private String input;
 
 
-    public Input(String input) {
+    public Users(String input) {
         CheckLength(input);
         CheckLange(input);
         CheckContinuous(input);

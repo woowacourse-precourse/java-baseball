@@ -1,11 +1,7 @@
 package baseball;
 
-import baseball.Coin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -31,10 +27,10 @@ class CoinTest{
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("0"));
+                .isThrownBy(() -> new Users("0"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("3"));
+                .isThrownBy(() -> new Users("3"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Input("-"));
+                .isThrownBy(() -> new Users("-"));
     }
 }
