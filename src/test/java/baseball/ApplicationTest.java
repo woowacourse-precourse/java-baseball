@@ -70,7 +70,7 @@ class ApplicationTest extends NsTest {
     @Test
     void isDigitStrike_테스트(){
         //given
-        final Application T = new Application();
+        final core T = new core();
         final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,2,3));  // 2 strike
 
         //when
