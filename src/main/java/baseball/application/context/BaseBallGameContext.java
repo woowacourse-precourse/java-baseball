@@ -10,6 +10,8 @@ import baseball.domain.computer.Computer;
 import baseball.domain.number.BaseBallGameNumbers;
 import baseball.domain.player.Player;
 import baseball.domain.result.CompareResult;
+import baseball.domain.step.GameStartStep;
+import baseball.domain.step.Step;
 
 import java.util.List;
 
@@ -26,10 +28,16 @@ public class BaseBallGameContext {
     private Computer computer;
     private final Comparator comparator = new Comparator();
 
+    /* 현재 진행중인 게임의 단계 */
+    private Step step;
+
     public BaseBallGameContext(BaseBallGameConfig config) {
         this.writer = config.writer();
         this.reader = config.reader();
         this.randomNumberGenerator = config.randomNumberGenerator();
+
+        // 게임 시작 스텝으로 설정
+        this.step = new GameStartStep();
     }
 
     public void init() {
@@ -60,5 +68,16 @@ public class BaseBallGameContext {
         return comparator.compare(
                 player.baseBallGameNumbers(),
                 computer.baseBallGameNumbers());
+    }
+
+    public boolean executable() {
+        return step.executable();
+    }
+
+    public void execute() {
+        step.execute(this);
+
+        // 실행 후 다음 단계로 넘어감
+        step = step.next();
     }
 }
