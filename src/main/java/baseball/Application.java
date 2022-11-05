@@ -85,6 +85,20 @@ public class Application {
         return new int[] {strike, ball};
     }
 
+    public static int game_loof(String baseball_answer){
+        int strike = 0;
+        while (strike != 3) {
+            strike = 0;
+            String user_input = baseball_input();
+            if (user_input.equals("error")){
+                return 1;
+            }
+            int[] get_strike_ball = strike_ball(user_input, baseball_answer);
+            strike = get_strike_ball[0];
+        }
+        return 0;
+    }
+
 
 
 
