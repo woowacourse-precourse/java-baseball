@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.Ball;
-import baseball.Result;
+import baseball.model.Ball;
+import baseball.model.Result;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

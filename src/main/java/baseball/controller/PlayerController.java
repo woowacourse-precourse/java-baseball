@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.Ball;
+import baseball.model.Ball;
 import baseball.service.PlayerService;
 
 import java.util.List;

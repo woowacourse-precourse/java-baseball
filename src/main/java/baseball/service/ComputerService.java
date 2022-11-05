@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.Ball;
+import baseball.model.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

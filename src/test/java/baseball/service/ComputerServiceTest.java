@@ -1,8 +1,7 @@
 package baseball.service;
 
-import baseball.Ball;
+import baseball.model.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

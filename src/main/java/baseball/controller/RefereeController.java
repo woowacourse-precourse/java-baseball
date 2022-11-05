@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.Ball;
-import baseball.Result;
+import baseball.model.Ball;
+import baseball.model.Result;
 import baseball.service.RefereeService;
 
 import java.util.List;
