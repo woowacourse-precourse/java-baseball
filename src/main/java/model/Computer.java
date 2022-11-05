@@ -45,7 +45,7 @@ public class Computer {
         for (Integer numComputerList : this.numThreeRanOfComputerList) {
             strComputerList = strComputerList + numComputerList;
         }
-        if (isNumOfIndividually(strComputerList)) {
+        if (UseFunc.isNumOfIndividually(strComputerList)) {
             return true;
         }
         return false;
@@ -64,38 +64,6 @@ public class Computer {
             return false;
         }
     }
-
-    // 서로 다른 3자리의 수인지 확인
-    // 서로 다른 3자리의 수인지 확인하는 방법은?
-    // 1번을 for문 2번?
-    public boolean isNumOfIndividually(String str) {
-        List<Integer> splitStrList = getListStrArr2Split(str);
-        int cntSameNum = 0;
-        for (int value : splitStrList) {
-            cntSameNum = 0;
-            for (int index = 0; index < splitStrList.size(); index++) {
-                if (value == splitStrList.get(index)) {
-                    cntSameNum = cntSameNum + 1;
-                }
-            }
-            if (cntSameNum > 1) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public List getListStrArr2Split(String str) {
-        String[] strArr = str.split("");
-        List<Integer> list = new ArrayList<>();
-        for (String value : strArr) {
-            list.add(Integer.valueOf(value));
-        }
-        return list;
-    }
-
-    // User에서 가져온 것
-
 
     @Override
     public String toString() {

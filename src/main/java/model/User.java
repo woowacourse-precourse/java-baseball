@@ -2,9 +2,6 @@ package model;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
 
     private int numSelecUser;
@@ -58,40 +55,12 @@ public class User {
     }
 
     private boolean isValidNumOfIndividually(String str) {
-        if (isNumOfIndividually(str)) {
+        if (UseFunc.isNumOfIndividually(str)) {
             return true;
         }
         throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
     }
 
-    // 서로 다른 3자리의 수인지 확인
-    // 서로 다른 3자리의 수인지 확인하는 방법은?
-    // 1번을 for문 2번?
-    private boolean isNumOfIndividually(String str) {
-        List<Integer> splitStrList = getListStrArr2Split(str);
-        int cntSameNum = 0;
-        for (int value : splitStrList) {
-            cntSameNum = 0;
-            for (int index = 0; index < splitStrList.size(); index++) {
-                if (value == splitStrList.get(index)) {
-                    cntSameNum = cntSameNum + 1;
-                }
-            }
-            if (cntSameNum > 1) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static List getListStrArr2Split(String str) {
-        String[] strArr = str.split("");
-        List<Integer> list = new ArrayList<>();
-        for (String value : strArr) {
-            list.add(Integer.valueOf(value));
-        }
-        return list;
-    }
 
     public int getNumSelecUser() {
         return numSelecUser;
