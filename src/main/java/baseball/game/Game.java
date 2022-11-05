@@ -43,6 +43,7 @@ public class Game {
 		return judgement;
 	}
 
+	// todo : 리팩토링 명단
 	private int findStrikes(String userInput, String answer) {
 		int counter = 0;
 		int userNumberLength = userInput.length();
@@ -54,6 +55,7 @@ public class Game {
 		return counter;
 	}
 
+	// todo : 리팩토링 명단
 	private int countStrikes(String userInput, String answer, int i) {
 		char userDigit = userInput.charAt(i);
 		char answerDigit = answer.charAt(i);
@@ -65,8 +67,19 @@ public class Game {
 		return 0;
 	}
 
+	// todo : 리팩토링 명단
 	private int findBalls(String userInput, String answer) {
+		int counter = 0;
+		int userNumberLength = userInput.length();
+
+		for (int i = 0; i < userNumberLength; i++) {
+			counter += countBalls(userInput, answer, i);
+		}
+
+		return counter;
 	}
+
+
 
 
 
