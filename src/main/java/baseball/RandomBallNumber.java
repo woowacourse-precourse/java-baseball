@@ -15,7 +15,6 @@ public class RandomBallNumber {
                 randomNumber = randomNumber.concat(number);
             }
         }
-        System.out.println(randomNumber);
         return randomNumber;
     }
 
