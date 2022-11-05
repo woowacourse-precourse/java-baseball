@@ -68,7 +68,7 @@ public class BaseballUtil {
 		}
 		//숫자여부 확인
 		for(char component : userInputText.toCharArray()) {
-			if( 47 > component || component > 57) {
+			if( 49 > component || component > 57) {
 				validation = false;
 			}
 		}
