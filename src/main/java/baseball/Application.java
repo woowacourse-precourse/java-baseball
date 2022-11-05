@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -65,7 +66,7 @@ class Baseball {
 
     private static void getUserNumber() {
         userNumber = Console.readLine();
-        if (!isValidNumber()) {
+        if (!isValidNumber() || !isOverlapNumber()) {
             illegalArgumentException();
         }
         System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
@@ -136,6 +137,14 @@ class Baseball {
 
     private static boolean isValidRestartNumber() {
         return checkRestartGame == NEW_GAME || checkRestartGame == END_GAME;
+    }
+
+    private static boolean isOverlapNumber() {
+        HashSet<String> checkOverlapUserNumber = new HashSet<>();
+        for (int i = 0; i < userNumber.length(); i++) {
+            checkOverlapUserNumber.add(userNumber.substring(i, i + 1));
+        }
+        return checkOverlapUserNumber.size() == computerNumber.size();
     }
 
     private static void illegalArgumentException() {
