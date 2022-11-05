@@ -8,7 +8,7 @@ public class Game {
     private static final String NOTHING = "낫싱";
 
 
-    public String makeHint (List<Character> answer, List<Character> input) {
+    private String makeHint (List<Character> answer, List<Character> input) {
         int strike = countStrike(answer, input);
         int ball = countBall(answer, input);
         if(strike != 0) {
