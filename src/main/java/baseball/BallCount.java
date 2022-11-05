@@ -62,7 +62,7 @@ public class BallCount {
         } else if((ballCount == 0) && (strikeCount != 0)) {
             System.out.println(strikeCount + Constant.STRIKE);
         } else if((ballCount != 0) && (strikeCount != 0)) {
-            System.out.println(ballCount + Constant.BALL + strikeCount + Constant.STRIKE);
+            System.out.println(ballCount + Constant.BALL + " " + strikeCount + Constant.STRIKE);
         }
     }
 
