@@ -11,28 +11,40 @@ public class Application {
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+        int mode = 1;
 
-        List<Integer> computer = createComputerNumber();
+        while (mode == 1) {
+            List<Integer> computer = createComputerNumber();
 
-        System.out.println("숫자를 입력해주세요 : ");
-        String userNumberString = Console.readLine();
-        String[] userNumberStringList = userNumberString.split("");
-
-        if (isWrongInput(userNumberStringList)) {
-            throw new IllegalArgumentException("잘못된 입력값을 입력하셨습니다.");
+            playBaseBallGame(computer);
+            mode = inputMode();
         }
+    }
 
-        List<Integer> user = toArrayList(userNumberStringList);
+    public static void playBaseBallGame(List<Integer> computer) {
+        boolean endGame = false;
 
-        if(isThreeStrike(computer, user)) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
+        while (!endGame) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String userNumberString = Console.readLine();
+            String[] userNumberStringList = userNumberString.split("");
+
+            if (isWrongInput(userNumberStringList)) {
+                throw new IllegalArgumentException("잘못된 입력값을 입력하셨습니다.");
+            }
+
+            List<Integer> user = toArrayList(userNumberStringList);
+
+            endGame = isThreeStrike(computer, user);
+
+            if (endGame) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            } else {
+                List<Integer> strikeCount = checkStrikeCount(computer, user);
+                printStrikeAndBall(strikeCount);
+            }
         }
-
-        List<Integer> strikeCount = checkStrikeCount(computer, user);
-        printStrikeAndBall(strikeCount);
-
     }
 
     public static List<Integer> createComputerNumber() {
@@ -58,12 +70,11 @@ public class Application {
         return userNumberIntegerList;
     }
 
-    public static boolean isWrongInput (String[] userNumberStringList) {
-        if (
-                isIntegerOrCharacter(userNumberStringList)
-                        || isInputLength(userNumberStringList)
-                        || isSameNumbers(userNumberStringList)
-                        || isContainZero(userNumberStringList)) {
+    public static boolean isWrongInput(String[] userNumberStringList) {
+        if (isIntegerOrCharacter(userNumberStringList)
+                || isInputLength(userNumberStringList)
+                || isSameNumbers(userNumberStringList)
+                || isContainZero(userNumberStringList)) {
             return true;
         }
 
@@ -94,8 +105,7 @@ public class Application {
         for (int i = 0; i < userNumberStringList.length; i++) {
             if (haveNumberList.contains(userNumberStringList[i])) {
                 return true;
-            }
-            else {
+            } else {
                 haveNumberList.add(userNumberStringList[i]);
             }
         }
@@ -154,16 +164,29 @@ public class Application {
     public static void printStrikeAndBall(List<Integer> strikeCount) {
         if (strikeCount.get(0) == 0 && strikeCount.get(1) == 0) {
             System.out.println("낫싱");
-        }
-        else if (strikeCount.get(0) == 0 && strikeCount.get(1) > 0) {
-            System.out.println("%s볼");
-        }
-        else if (strikeCount.get(0) > 0 && strikeCount.get(1) == 0) {
-            System.out.println("%s스트라이크");
-        }
-        else {
-            System.out.println("%s볼 %s스트라이크");
+        } else if (strikeCount.get(0) == 0 && strikeCount.get(1) > 0) {
+            System.out.println(String.format("%d볼", strikeCount.get(1)));
+        } else if (strikeCount.get(0) > 0 && strikeCount.get(1) == 0) {
+            System.out.println(String.format("%d스트라이크", strikeCount.get(0)));
+        } else {
+            System.out.println(String.format("%s볼 %s스트라이크", strikeCount.get(1), strikeCount.get(0)));
         }
     }
 
+    public static int inputMode() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.parseInt(Console.readLine());
+
+        while (!(input == 1 || input == 2)) {
+            System.out.println("잘못된 입력입니다.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = Integer.parseInt(Console.readLine());
+        }
+
+        if (input == 2) {
+            System.out.println("게임 종료.");
+        }
+
+        return input;
+    }
 }
