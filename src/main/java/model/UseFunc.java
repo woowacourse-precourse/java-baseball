@@ -35,9 +35,13 @@ public class UseFunc {
         String[] strArr = getArrSplit(str);
         List<Integer> list = new ArrayList<>();
         for (String value : strArr) {
-            list.add(Integer.valueOf(value));
+            list.add(parseIntFromValue(value));
         }
         return list;
+    }
+
+    private static Integer parseIntFromValue(String value) {
+        return Integer.valueOf(value);
     }
 
     private static String[] getArrSplit(String str) {
