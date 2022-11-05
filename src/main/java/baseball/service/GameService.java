@@ -50,7 +50,8 @@ public class GameService {
     }
 
     public boolean isStrike(int index){
-        return false;
+        return getPlayerNumbers().get(index)
+                .equals(getComputersNumbers().get(index));
     }
 
     public boolean isBall(int index){
