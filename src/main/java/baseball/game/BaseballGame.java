@@ -46,4 +46,19 @@ public class BaseballGame {
         checkBallNumList.retainAll(computerNumList);
         return checkBallNumList.size();
     }
+
+    private int checkStrike(List<String> inputNumList, List<String> computerNumList) {
+        int strikeNum = 0;
+        if (checkBall(inputNumList, computerNumList) < 1) {
+            return 0;
+        }
+        for (int i = 0; i < inputNumList.size(); i++) {
+            if (inputNumList.get(i).equals(computerNumList.get(i))) {
+                strikeNum++;
+            }
+        }
+        return strikeNum;
+    }
+
+
 }
