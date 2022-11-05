@@ -22,7 +22,7 @@
 
 * ### User
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
-  * `getUsersNumber`
+  * `generateNumber`
     * 사용자의 3자리 수 입력 받기
   * `isLegalNumber`
     * 사용자의 입력이 요구 사항에 부합하는지 검사(서로 다른 3자리 수)
