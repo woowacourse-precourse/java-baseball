@@ -83,6 +83,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void isDigitBall_테스트(){
+        //given
+        final Core T = new Core();
+        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(2,1,3));
+        final List<List<Integer>> case2 = List.of(List.of(1,2,3), List.of(4,5,6));
+
+        //when
+        final boolean result1 = T.isDigitBall(case1.get(0), case1.get(1), 0);   //true
+        final boolean result2 = T.isDigitBall(case1.get(0), case1.get(1), 1);   //true
+        final boolean result3 = T.isDigitBall(case1.get(0), case1.get(1), 2);   //false
+
+        final boolean result4 = T.isDigitBall(case2.get(0), case2.get(1), 0);   //false
+        final boolean result5 = T.isDigitBall(case2.get(0), case2.get(1), 1);   //false
+        final boolean result6 = T.isDigitBall(case2.get(0), case2.get(1), 2);   //false
+
+        //then
+        assertThat(result1).as("isDigitBall 테스트").isEqualTo(true);
+        assertThat(result2).as("isDigitBall 테스트").isEqualTo(true);
+        assertThat(result3).as("isDigitBall 테스트").isEqualTo(false);
+
+        assertThat(result4).as("isDigitBall 테스트").isEqualTo(false);
+        assertThat(result5).as("isDigitBall 테스트").isEqualTo(false);
+        assertThat(result6).as("isDigitBall 테스트").isEqualTo(false);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
