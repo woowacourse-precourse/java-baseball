@@ -47,6 +47,7 @@ public class Player {
     public int getRestartOrEndNumber(){
         System.out.println(RESTART_OR_END_MESSAGE);
         //해당 수도 validation 필요
+        //regex 1~2로 제한 수정하기!!!
         String playerNumber = readLine();
         validateNumberOrNotNumber(playerNumber);
         validateNumberLength(playerNumber, RESTART_OR_END_NUMBER_LENGTH);

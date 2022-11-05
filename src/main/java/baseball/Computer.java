@@ -24,20 +24,47 @@ public class Computer {
     }
 
     public boolean isNotThreeStrike(List<String> playerNumber) {
-        return
+        return !computerNumber.equals(playerNumber);
     }
 
     public void checkNumber(List<String> playerNumber) {
         //스트라이크, 볼, 낫싱 검사 후 결과 출력
         int strikeCount = 0;
         int ballCount = 0;
-        boolean nothing = isNothing(strikeCount, ballCount);
         for (int i = 0; i < 3; i++) {
             strikeCount += countStrike(computerNumber.get(i), playerNumber.get(i));
             ballCount += countBall(computerNumber.get(i).toString(), playerNumber, i);
         }
-        String ComputerResult = getComputerResult(strikeCount, ballCount, nothing);
-        System.out.println(ComputerResult);
+        String computerResult = getComputerResult(strikeCount, ballCount);
+        System.out.println(computerResult);
+    }
+
+    private String getComputerResult(int strikeCount, int ballCount) {
+        String ballMessage = getBallMessage(ballCount);
+        String strikeMessage = getStrikeMessage(strikeCount);
+        String ballAndStrikeMessage = getBallAndStrikeMessage(ballMessage, strikeMessage);
+        return ballAndStrikeMessage;
+    }
+
+    private String getBallAndStrikeMessage(String ballMessage, String strikeMessage) {
+        if (!Objects.equals(ballMessage, "")) {
+            return String.format("%d %d", ballMessage, strikeMessage);
+        }
+        return String.format("%d%d", ballMessage, strikeMessage);
+    }
+
+    private String getStrikeMessage(int strikeCount) {
+        if (strikeCount > 0) {
+            return String.format("%d, %s", strikeCount, STRIKE_MESSAGE);
+        }
+        return "";
+    }
+
+    private String getBallMessage(int ballCount) {
+        if (ballCount > 0) {
+            return String.format("%d, %s", ballCount, BALL_MESSAGE);
+        }
+        return "";
     }
 
     private int countStrike(Integer eachComputerNumber, String eachPlayerNumber) {
@@ -53,7 +80,4 @@ public class Computer {
         }
         return 0;
     }
-
-
-
 }
