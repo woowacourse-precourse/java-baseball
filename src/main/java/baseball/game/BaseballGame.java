@@ -60,5 +60,13 @@ public class BaseballGame {
         return strikeNum;
     }
 
-
+    private void selectGameRestart(int strikeNum){
+        if(strikeNum != 3)
+            return;
+        String inputNum;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputNum = receiveInput();
+        if(inputNum.equals("2"))
+            System.exit(0);
+    }
 }
