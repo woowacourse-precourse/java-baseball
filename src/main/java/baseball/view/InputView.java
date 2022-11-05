@@ -22,4 +22,8 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
+    public static int inputRestart() {
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
