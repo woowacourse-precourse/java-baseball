@@ -7,22 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
-    private static List<Integer> numbers = new ArrayList<>();
-
+    private static List<Integer> computerNumbers = new ArrayList<>();
     public static List<Integer> generate() {
-        while (!hasThreeNumbers(numbers)) {
+        while (!hasThreeNumbers(computerNumbers)) {
             int random = pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
-            if (!numbers.contains(random)) {
-                numbers.add(random);
+            if (!computerNumbers.contains(random)) {
+                computerNumbers.add(random);
             }
         }
 
-        return numbers;
+        return computerNumbers;
     }
 
     private void initialize() {
-        numbers.clear();
+        computerNumbers.clear();
     }
 
     private static boolean hasThreeNumbers(List<Integer> numbers) {
