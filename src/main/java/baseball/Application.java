@@ -84,6 +84,15 @@ public class Application {
         return false;
     }
 
+    private static String exit_and_restart(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+
+        return input;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -95,9 +104,15 @@ public class Application {
         List<Integer> input_num = rand_num_input();
 
         //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
-        if (process_exception(input_num)) {}
+        if (process_exception(input_num)) {//break;
+        }
 
         //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
         boolean match = compare_input(rand_num, input_num);
+
+        //5. 두 수가 같다면, 게임 종료 후 사용자에게 재시작 여부를 입력 받는다.
+        if (!match) {//continue;
+        }
+        String input = exit_and_restart();
     }
 }
