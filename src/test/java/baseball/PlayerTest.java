@@ -59,4 +59,34 @@ class PlayerTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class 플레이어의_입력받은_수의_중복_예외_처리 {
+        @Test
+        void case1() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatThrownBy(() -> ref.player = new Player("112"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void case2() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatThrownBy(() -> ref.player = new Player("123"))
+                    .doesNotThrowAnyException();
+        }
+
+        @Test
+        void case3() {
+            var ref = new Object() {
+                Player player;
+            };
+            assertThatThrownBy(() -> ref.player = new Player("333"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
