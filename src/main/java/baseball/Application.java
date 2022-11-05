@@ -34,6 +34,7 @@ class Game{
     }
 
     void setUserInput() {
+        this.strike = 0;
         userInput = Console.readLine();
         checkUserInput();
     }
