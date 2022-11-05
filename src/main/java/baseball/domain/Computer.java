@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baseball.restrict.RestrictIntegerConstants;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer implements RestrictIntegerConstants {
 
@@ -15,5 +16,17 @@ public class Computer implements RestrictIntegerConstants {
 
 	public List<Integer> getRandomNumberList() {
 		return randomNumberList;
+	}
+
+	public void makeRandomNumber() {
+		int randomNumber;
+
+		clearRandomNumberList();
+		while (randomNumberList.size() < LIMIT_LIST_SIZE) {
+			randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+			if (!randomNumberList.contains(randomNumber)) {
+				randomNumberList.add(randomNumber);
+			}
+		}
 	}
 }
