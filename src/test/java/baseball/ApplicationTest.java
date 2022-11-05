@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.List;
 
@@ -250,6 +253,51 @@ class ApplicationTest extends NsTest {
         assertThat(result1).as("stringToIntegerList 테스트").isEqualTo(List.of(1,2,3));
         assertThat(result2).as("stringToIntegerList 테스트").isEqualTo(List.of(8,3,7));
 
+    }
+
+    @Test
+    void printGameResult_테스트(){
+        //given
+        final Core T = new Core();
+        final List<Integer> case1 = List.of(3,0);   // 3 strikes
+        final List<Integer> case2 = List.of(0,0);   // 0 strikes 0 balls
+        final List<Integer> case3 = List.of(2,1);   // 2 strikes 1 balls
+        final List<Integer> case4 = List.of(1,2);   // 1 strikes 2 balls
+        final List<Integer> case5 = List.of(2,0);   // 2 strikes 0 balls
+        final List<Integer> case6 = List.of(0,2);   // 0 strikes 1 balls
+
+        //when
+        final OutputStream result1 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result1));
+        T.printGameResult(case1.get(0), case1.get(1));
+
+        final OutputStream result2 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result2));
+        T.printGameResult(case2.get(0), case2.get(1));
+
+        final OutputStream result3 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result3));
+        T.printGameResult(case3.get(0), case3.get(1));
+
+        final OutputStream result4 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result4));
+        T.printGameResult(case4.get(0), case4.get(1));
+
+        final OutputStream result5 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result5));
+        T.printGameResult(case5.get(0), case5.get(1));
+
+        final OutputStream result6 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result6));
+        T.printGameResult(case6.get(0), case6.get(1));
+
+        //then
+        assertThat(result1.toString().strip()).as("printGameResult 테스트").isEqualTo("3스트라이크");
+        assertThat(result2.toString().strip()).as("printGameResult 테스트").isEqualTo("낫싱");
+        assertThat(result3.toString().strip()).as("printGameResult 테스트").isEqualTo("1볼 2스트라이크");
+        assertThat(result4.toString().strip()).as("printGameResult 테스트").isEqualTo("2볼 1스트라이크");
+        assertThat(result5.toString().strip()).as("printGameResult 테스트").isEqualTo("2스트라이크");
+        assertThat(result6.toString().strip()).as("printGameResult 테스트").isEqualTo("2볼");
     }
 
     @Test
