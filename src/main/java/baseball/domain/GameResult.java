@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import baseball.util.Number;
 
 public class GameResult {
     int strike;
@@ -11,6 +12,10 @@ public class GameResult {
 
     public int getStrike() {
         return this.strike;
+    }
+
+    public boolean isThreeStrike() {
+        return this.strike == Number.THREE;
     }
 
     public String toString() {
