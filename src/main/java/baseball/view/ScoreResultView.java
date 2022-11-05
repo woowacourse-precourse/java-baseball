@@ -46,7 +46,7 @@ public class ScoreResultView {
     }
 
     public String printOnlyStrike(){
-        return "";
+        return Integer.toString(strikeCount).concat(STRIKE_COMMAND);
     }
 
     public String printBothBallAndStrike(){
