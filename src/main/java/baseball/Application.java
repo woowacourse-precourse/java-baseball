@@ -157,9 +157,8 @@ class GameProcessor {
         this.setBall(ballCount);
     }
 
-    public boolean isWin()
-    {
-        if(getStrike()==3)
+    public boolean isWin() {
+        if (getStrike() == 3)
             return true;
         else
             return false;

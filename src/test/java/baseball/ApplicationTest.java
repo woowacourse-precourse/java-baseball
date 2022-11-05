@@ -56,31 +56,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void check_strike(){
-        int[] testData = {1,2,3};
-        int[] testData2 = {1,2,3};
-        gameProcessor.strikeChecker(testData,testData2);
+    void check_strike() {
+        int[] testData = {1, 2, 3};
+        int[] testData2 = {1, 2, 3};
+        gameProcessor.strikeChecker(testData, testData2);
         assertThat(gameProcessor.getStrike()).isEqualTo(3);
     }
 
     @Test
-    void check_toArrayValue(){
-        gameProcessor.toArrayValue(123,456);
-        int[] testUserArray = {1,2,3};
-        int[] testComputerArray = {4,5,6};
+    void check_toArrayValue() {
+        gameProcessor.toArrayValue(123, 456);
+        int[] testUserArray = {1, 2, 3};
+        int[] testComputerArray = {4, 5, 6};
         assertThat(gameProcessor.getUserValue()).isEqualTo(testUserArray);
         assertThat(gameProcessor.getComputerValue()).isEqualTo(testComputerArray);
     }
 
     @Test
-    void check_ball(){
-        int[] testData = {3,1,2};
-        int[] testData2 = {1,2,3};
-        gameProcessor.ballChecker(testData,testData2);
+    void check_ball() {
+        int[] testData = {3, 1, 2};
+        int[] testData2 = {1, 2, 3};
+        gameProcessor.ballChecker(testData, testData2);
         assertThat(gameProcessor.getBall()).isEqualTo(3);
     }
+
     @Test
-    void check_is_win(){
+    void check_is_win() {
         assertThat(gameProcessor.isWin()).isEqualTo(false);
     }
 
