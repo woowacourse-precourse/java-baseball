@@ -23,7 +23,7 @@ public class BaseBallModel {
         return new String(numbers);
     }
 
-    public boolean checkNumbers(String inputNumbers){
+    public void checkNumbers(String inputNumbers) throws IllegalArgumentException{
         if(inputNumbers.length() != this.numberLength){
             throw new IllegalArgumentException();
         }
@@ -32,11 +32,9 @@ public class BaseBallModel {
             String cloneNumbers = new String(inputNumbers);
 
             if(cloneNumbers.replace(Character.toString(inputNumbers.charAt(i)), "").length() != this.numberLength-1){
-                return false;
+                throw new IllegalArgumentException();
             }
         }
-
-        return true;
     }
 
     public String getNumbers(){
