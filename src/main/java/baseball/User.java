@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.RESTART;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +31,14 @@ public class User {
 		InputException.checkLength(userInput);
 		InputException.checkDuplicate(convertUserInputToList(userInput));
 		InputException.checkZero(convertUserInputToList(userInput));
+	}
+
+	public static boolean isRestart() {
+		String userInput = Console.readLine();
+		return isEqualToRestart(userInput);
+	}
+
+	private static boolean isEqualToRestart(String userInput) {
+		return userInput.equals(RESTART);
 	}
 }
