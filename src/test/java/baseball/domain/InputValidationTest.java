@@ -26,4 +26,22 @@ class InputValidationTest {
         assertThat(InputValidation.hasOnlyNumbers(input)).isEqualTo(result);
     }
 
+    @Test
+    @DisplayName("사용자_입력_난수가_3개인_케이스를_확인한다")
+    void 사용자_난수_입력시_숫자_범위_개수_일치() {
+        String input = "123";
+        boolean result = true;
+
+        assertThat(InputValidation.is3Numbers(input)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("사용자_입력_난수가_3개가_아닌_케이스를_확인한다")
+    void 사용자_난수_입력시_숫자_범위_개수_불일치() {
+        String input = "1234";
+        boolean result = false;
+
+        assertThat(InputValidation.is3Numbers(input)).isEqualTo(result);
+    }
+
 }

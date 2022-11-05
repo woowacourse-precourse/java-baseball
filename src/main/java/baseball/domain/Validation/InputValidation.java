@@ -9,4 +9,8 @@ public class InputValidation {
     public static boolean hasOnlyNumbers(String inputString) {
         return inputString.matches(NUMBER_REGEX);
     }
+
+    public static boolean is3Numbers(String inputString) {
+        return inputString.length() == 3;
+    }
 }
