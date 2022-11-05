@@ -26,25 +26,16 @@ public class User {
     }
 
     private boolean isValidUserNumber() {
-        return (isValidLength() && isNumber() && isWithinRange() && isDuplicate());
-    }
-
-    private boolean isWithinRange() {
-        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
-            if (!('0' < userInput.charAt(i) && userInput.charAt(i) <= '9')){
-                return false;
-            }
-        }
-        return true;
+        return (isValidLength() && isRightRangeNumber() && isDuplicate());
     }
 
     private boolean isValidLength() {
         return (userInput.length() == Const.NUMBER_LENGTH);
     }
 
-    private boolean isNumber() {
-        for (int i = 0; i < Const.NUMBER_LENGTH; i++) {
-            if (!Character.isDigit(userInput.charAt(i))) {
+    private boolean isRightRangeNumber() {
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
+            if (!('0' < userInput.charAt(i) && userInput.charAt(i) <= '9')){
                 return false;
             }
         }
