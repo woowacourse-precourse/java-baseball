@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.*;
 
+import static baseball.Application.NUMBER_OF_DIGIT;
 import static baseball.CompareNumber.compare;
 import static baseball.Score.BALL;
 import static baseball.Score.STRIKE;
@@ -10,17 +11,20 @@ import static baseball.Validation.isValidLength;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
+    private static final int NUMBER_OF_SCORE = 2;
+
     public static void play(List<String> computerNumber) {
         boolean isFinished = false;
         Map<Score, Integer> score;
 
         while (!isFinished) {
-            score = new HashMap<>(3);
+            score = new HashMap<>(NUMBER_OF_SCORE);
             initializeScore(score);
 
             System.out.print("숫자를 입력해주세요 : ");
+
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
-            if (!isValidLength(userInput, 3) || !isExistOnlyNumber(userInput)) {
+            if (!isValidLength(userInput, NUMBER_OF_DIGIT) || !isExistOnlyNumber(userInput)) {
                 throw new IllegalArgumentException();
             }
 

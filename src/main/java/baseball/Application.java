@@ -10,6 +10,8 @@ import static baseball.Validation.isValidLength;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    public static final int NUMBER_OF_DIGIT = 3;
+
     public static void main(String[] args) {
         boolean isContinue = true;
 
@@ -47,7 +49,7 @@ public class Application {
     private static ArrayList<String> getComputerNumber() {
         ArrayList<String> computerNumber = new ArrayList<>();
 
-        while (computerNumber.size() < 3) {
+        while (computerNumber.size() < NUMBER_OF_DIGIT) {
             String number = Integer.toString(Randoms.pickNumberInRange(1, 9));
 
             if (!computerNumber.contains(number)) {
