@@ -5,13 +5,15 @@ import java.util.List;
 
 public class UseFunc {
 
+    final static int ONLY_ONE_THING_SAME = 1;
+    final static int INIT_NUM = 0;
+
     // 서로 다른 3자리의 수인지 확인
     // 서로 다른 3자리의 수인지 확인하는 방법은?
     // 1번을 for문 2번?
     public static boolean isNumOfIndividually(String str) {
         ArrayList<Integer> splitStrList = getListStrArr2Split(str);
-        int cntSameNum = 0;
-
+        int cntSameNum = INIT_NUM;
         if (isRightContainSameNum(splitStrList, cntSameNum)) {
             return false;
         }
@@ -27,7 +29,7 @@ public class UseFunc {
     }
 
     private static boolean isValidCntSameNumLen(int cntSameNum) {
-        return cntSameNum > 1;
+        return cntSameNum > ONLY_ONE_THING_SAME;
     }
 
     private static int getCntSameNum(List<Integer> splitStrList, int cntSameNum, int value) {
