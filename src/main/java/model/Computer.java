@@ -210,9 +210,14 @@ public class Computer {
         Collection<Integer> collection_2) {
         boolean isTrue = true;
         for (Object num : collection_2) {
-            if (collection_1.contains(num)) {
-                isTrue = true;
-            }
+            isTrue = icContainList(collection_1.contains(num), isTrue);
+        }
+        return isTrue;
+    }
+
+    private boolean icContainList(boolean collection_1, boolean isTrue) {
+        if (collection_1) {
+            isTrue = true;
         }
         return isTrue;
     }
