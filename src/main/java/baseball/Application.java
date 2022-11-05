@@ -19,6 +19,7 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String inputRestartOrExit = Console.readLine();
+            inputRestartOrExit = checkInputRestartOrExitIsValid(inputRestartOrExit);
             if(inputRestartOrExit.equals("2")){
                 break;
             }
@@ -118,6 +119,13 @@ public class Application {
             result.add(arr[i]-'0');
         }
         return result;
+    }
+
+    public static String checkInputRestartOrExitIsValid (String number) throws IllegalArgumentException{
+        if(!number.equals("1") && !number.equals("2") ){
+            throw new IllegalArgumentException();
+        }
+        return number;
     }
 
 }
