@@ -20,6 +20,17 @@ public class FunctionTest extends NsTest {
 		assertThat(computer.computersList.size()).isEqualTo(3);
 	}
 
+	@Test
+	void TestStatus() {
+		Status status = new Status();
+		status.initStatus();
+		assertThat(status.status).isEqualTo("INIT");
+		status.setStatusPlaying();
+		assertThat(status.status).isEqualTo("PLAYING");
+		status.setStatusTerminating();
+		assertThat(status.status).isEqualTo("TERMINATING");
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[]{});
