@@ -11,7 +11,9 @@ public class Application {
     private void playGame() {
         Computer computer = new Computer();
         User user = new User();
+
         computer.generateRandomNumber();
+        GameTextPrinter.printUserInputText();
         user.inputNumber();
     }
 }
