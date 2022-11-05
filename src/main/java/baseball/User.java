@@ -63,8 +63,7 @@ public class User {
         int exit=0;
         if(finishNumber.equals("1")){
             return restart;
-        }
-        else if(finishNumber.equals("2")){
+        } else if(finishNumber.equals("2")){
             return exit;
         }
         throw new IllegalArgumentException("User Finish Input Error");

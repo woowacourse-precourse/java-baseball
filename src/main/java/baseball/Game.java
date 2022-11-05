@@ -3,15 +3,9 @@ package baseball;
 public class Game {
     public static GameService gameService = new GameService();
     public void run() throws IllegalArgumentException{
-        try {
             setGame();
             startGame();
             finishGame();
-        }
-        catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
-            return;
-        }
     }
 
     public void setGame()throws IllegalArgumentException{

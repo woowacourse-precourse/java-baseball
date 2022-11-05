@@ -1,14 +1,12 @@
 package baseball;
 
-import baseball.RandomNumber;
-import baseball.User;
-import baseball.Game;
+import baseball.View.Message;
+
 import java.util.ArrayList;
 
 public class GameService {
     private static ArrayList<Integer> answerNumber = new ArrayList<>();
     private static ArrayList<Integer> userNumber = new ArrayList<>();
-
     public void setGame(){
         setAnswerNumber();
         System.out.println(answerNumber);
@@ -17,16 +15,14 @@ public class GameService {
         RandomNumber randomNumber = new RandomNumber();
         answerNumber = randomNumber.setRandomNumber();
     }
-
     public void startGame() throws IllegalArgumentException{
         int strike=0;
-        int ball=0;
         while(strike!=3){
             setUserNumber();
             strike = calculateStrike();
-            ball = calculateBall();
-            printResult(strike,ball);
+            Message.printResultMessage(strike,calculateBall());
         }
+        Message.printEndMessage();
     }
     private void setUserNumber() {
         userNumber = User.setUserNumber();
@@ -51,22 +47,9 @@ public class GameService {
         return ballCount;
     }
 
-    private void printResult(int strike, int ball){
-        if(strike==3){
-            System.out.println(strike+"스트라이크");
-            System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-        else if(strike>0 || ball>0){
-            System.out.println(ball+"볼 "+strike+"스트라이크 ");
-        }
-        else if(strike==0 && ball==0){
-            System.out.println("낫싱");
-        }
-    }
-
     public void finishGame() throws IllegalArgumentException{
         int flag;
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Message.printRestartMessage();
         flag=User.finishInput();
         if(flag==1){
             Game game = new Game();
