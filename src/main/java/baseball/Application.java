@@ -103,12 +103,38 @@ public class Application {
         System.out.printf("\n");
     }
 
-    private static List<Integer> getAndSeperateInput(){
+    private static List<Integer> getAndSeperateInput() {
         Scanner sc = new Scanner(System.in);
         int userInput = sc.nextInt();
         List<Integer> separatedInput = seperate3Numbers(userInput);
         return separatedInput;
     }
+
+    private static List<Integer> continueOrEndGame() {
+        List<Integer> newAnswer = new ArrayList<>();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner sc = new Scanner(System.in);
+        int userInput = sc.nextInt();
+        if (userInput == CONTINUE_GAME) {
+            newAnswer = continueGame();
+        } else if (userInput == END_GAME) {
+            endGame();
+            boolean gameOn=false;
+        }
+        return newAnswer;
+    }
+
+    private static List<Integer> continueGame() {
+        List<Integer> answer = startGame();
+        return answer;
+    }
+
+    private static void endGame() {
+        boolean gameOn = false;
+    }
+
+    static final int CONTINUE_GAME = 1;
+    static final int END_GAME = 2;
 
     private static void playGame(List<Integer> answer) {
         boolean gameOn = true;
@@ -119,15 +145,9 @@ public class Application {
             printResult(comparedMap);
             if (correctAnswer(comparedMap)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int userInput = sc.nextInt();
-                if (userInput == 1) {
-                    answer = startGame();
-                } else {
-                    gameOn = !correctAnswer(comparedMap);
-                }
+                answer = continueOrEndGame();
             } else {
-                gameOn = !correctAnswer(comparedMap);
+                gameOn = true;
             }
         }
     }
