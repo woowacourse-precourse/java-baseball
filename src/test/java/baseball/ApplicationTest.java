@@ -1,5 +1,6 @@
 package baseball;
 
+import static Controller.Printer.*;
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static computer.BallsAndStrikesCountCalculator.*;
@@ -7,7 +8,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -16,27 +16,36 @@ import User.Input;
 import User.Outputs;
 import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import computer.BallsAndStrikesCountCalculator;
 import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void printGameStartMessage_메소드로_게임_시작_안내_출력() {
+		printGameStartMessage();
+		System.out.print("이 문장은 게임 시작 안내 문장 다음 줄에 출력되어야 합니다.");
+		assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.\n이 문장은 게임 시작 안내 문장 다음 줄에 출력되어야 합니다.");
+	}
+
 	@Test
 	void calculateBallsCount_메소드로_볼_수_계산() {
 		List<Integer> number = List.of(3, 2, 1);
 		List<Integer> answer = List.of(2, 3, 1);
 		assertThat(calculateBallsCount(number, answer)).isEqualTo(2);
 	}
+
 	@Test
 	void calculateStrikesCount_메소드로_스트라이크_수_계산() {
 		List<Integer> number = List.of(3, 8, 4);
 		List<Integer> answer = List.of(2, 8, 5);
 		assertThat(calculateStrikesCount(number, answer)).isEqualTo(1);
 	}
+
 	@Test
 	void generateRandomNumber_메소드로_서로_다른_세개의_숫자_선택() {
 		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 		assertThat(randomNumberGenerator.generateRandomNumber()).doesNotHaveDuplicates();
 	}
+
 	@Test
 	void validateRestartOrNot_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
 		String input = "3";
