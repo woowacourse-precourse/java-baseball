@@ -26,4 +26,8 @@ public class Ball {
     public int hashCode() {
         return Objects.hash(getNumber());
     }
+
+    public boolean isValidRange() {
+        return number >= 1 && number <= 9;
+    }
 }
