@@ -1,6 +1,24 @@
 package baseball.view;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Input {
+
+    public List<Integer> inputNumber() {
+        String text = Console.readLine();
+        validateInput(text);
+        
+        return text.chars().boxed()
+                .collect(Collectors.toList());
+    }
+
+    public static void validateInput(String text) {
+        validateNumber(text);
+        validateLength(text);
+        validateOverlap(text);
+    }
 
     public static void validateNumber(String text) {
         if (!text.chars().allMatch(Character::isDigit)) {

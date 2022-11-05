@@ -35,7 +35,7 @@
 
 ### 입력
 
-- [ ] 서로 다른 3자리의 수를 입력받는다.
+- [x] 서로 다른 3자리의 수를 입력받는다.
     - [x] 숫자가 아닐 경우 IllegalArgumentException 예외를 throw한다.
     - [x] 3자리의 수가 아닐 경우 IllegalArgumentException 예외를 throw한다.
     - [x] 서로 다른 수가 아닐 경우 IllegalArgumentException 예외를 throw 한다.
