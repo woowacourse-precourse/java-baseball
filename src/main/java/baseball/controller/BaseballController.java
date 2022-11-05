@@ -11,11 +11,8 @@ import baseball.view.OutputView;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballController {
-	protected final int ANSWER_LENGTH = 3;
+	private final int ANSWER_LENGTH = 3;
 	private final int RESTART_ANSWER_LENGTH = 1;
-//	protected String answer;
-//	protected int strike;
-//	protected int ball ;
 
 	public void start(){
 		do{
@@ -34,7 +31,7 @@ public class BaseballController {
 		OutputView.gameWinView();
 	}
 
-	protected BaseballModel initGame() {
+	private BaseballModel initGame() {
 		String randomAnswer = getRandomAnswer();
 		return new BaseballModel(randomAnswer);
 	}
@@ -67,7 +64,7 @@ public class BaseballController {
 	}
 
 
-	protected boolean isGameWin(BaseballModel model){
+	private boolean isGameWin(BaseballModel model){
 		return model.strike == ANSWER_LENGTH;
 	}
 }

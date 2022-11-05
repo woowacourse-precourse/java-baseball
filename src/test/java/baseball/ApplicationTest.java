@@ -134,7 +134,7 @@ class ApplicationTest extends NsTest {
             void 입력값_346_시_결과_테스트(){
                 BaseballModel baseballModel = new BaseballModel(TEST_CASE_ANSWER);
                 answerCheck("346", baseballModel);
-                assertThat(OutputView.getResult(baseballModel.ball, baseballModel.strike)).isEqualTo("3볼 ");
+                assertThat(OutputView.getResult(baseballModel.ball, baseballModel.strike)).isEqualTo("3볼");
             }
 
             @Test
