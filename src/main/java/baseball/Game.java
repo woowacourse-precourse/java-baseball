@@ -45,17 +45,20 @@ public class Game {
         }
         return ball - strike;
     }
-    public void printResult(List<Integer> computer, List<Integer> user){
+    public String getResult(List<Integer> computer, List<Integer> user){
         int strike = checkStrike(computer, user);
         int ball = checkBall(computer, user, strike);
 
+        String result;
         if (ball > 0 && strike > 0)
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            result = ball + "볼 " + strike + "스트라이크";
         else if (ball == 0 && strike > 0)
-            System.out.println(strike + "스트라이크");
+            result = strike + "스트라이크";
         else if (ball > 0 && strike == 0)
-            System.out.println(ball + "볼");
+            result = ball + "볼";
         else
-            System.out.println("낫싱");
+            result = "낫싱";
+
+        return result;
     }
 }
