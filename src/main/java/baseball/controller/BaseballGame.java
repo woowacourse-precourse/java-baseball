@@ -1,46 +1,33 @@
 package baseball.controller;
 
-import static baseball.model.Score.INPUT_LENGTH;
-import static baseball.model.Score.STRIKE_INDEX;
+import static baseball.view.InputValidator.INPUT_LENGTH;
 
-import baseball.model.Computer;
+import baseball.model.Answer;
+import baseball.model.RandomNumGenerator;
+import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.model.Score;
-import baseball.model.User;
-import java.util.List;
+import baseball.vo.Score;
 
 public class BaseballGame {
     public static final int RESTART = 1;
-    public static final int EXIT = 2;
-    private final OutputView outputView = new OutputView();
-    private Computer computer;
-    private User user;
     public BaseballGame() {
-            this.computer = new Computer();
-            this.user = new User();
-            outputView.printGameStart();
+            OutputView.printGameStart();
     }
 
     public void gameStart() {
-        this.computer.randomNumberGenerate();
-        whileUserInputCorrectAnswer();
-
-        outputView.printRestartOrExit();
-        this.user.inputRestartOrExitNumber();
-        if (this.user.getRestartOrExitNumber() == RESTART) {
+        Answer answer = new Answer(RandomNumGenerator.generate());
+        whileUserInputCorrectAnswer(answer);
+        if (InputView.inputRestartOrExitNumber() == RESTART) {
             gameStart();
         }
     }
 
-    public void whileUserInputCorrectAnswer() {
-        Score score = new Score();
+    public void whileUserInputCorrectAnswer(Answer answer) {
         while (true) {
-            outputView.printInputHint();
-            this.user.inputGuessRandomNumbers();
-            List<Integer> userScore = score.getScore(this.user.getInput(), this.computer.getComputerNumbers());
-            outputView.printResult(userScore);
-            if (userScore.get(STRIKE_INDEX) == INPUT_LENGTH) {
-                outputView.printGameEnd(userScore);
+            Score userScore = answer.compare(InputView.inputGuessThreeNumbers());
+            OutputView.printResult(userScore);
+            if (userScore.getStrike() == INPUT_LENGTH) {
+                OutputView.printGameEnd(userScore);
                 break ;
             }
         }
