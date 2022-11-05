@@ -104,9 +104,10 @@ public class Application {
         }
 
         String[] number_split = user_number.split("");
-        boolean is_duplicate = number_split[0].equals(number_split[1]);
-        is_duplicate = is_duplicate || number_split[0].equals(number_split[2]);
-        is_duplicate = is_duplicate || number_split[1].equals(number_split[2]);
+        String digit1 = number_split[0];
+        String digit2 = number_split[1];
+        String digit3 = number_split[2];
+        boolean is_duplicate = digit1.equals(digit2) || digit1.equals(digit3) || digit2.equals(digit3);
 
         if (is_duplicate) {
             throw new IllegalArgumentException("중복된 수가 입력되었습니다.");
