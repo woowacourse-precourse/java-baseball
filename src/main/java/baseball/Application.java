@@ -20,8 +20,16 @@ public class Application {
         return computer;
     }
 
+    public static void isValidLength(String s) {
+        if (s.length() != 3) {
+            throw new IllegalArgumentException("세자리 수보다 크거나 작음");
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = Computer_Number();
+
+        String user = Console.readLine();
+        isValidLength(user);
     }
 }
