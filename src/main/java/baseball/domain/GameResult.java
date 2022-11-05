@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.Message;
 import baseball.util.Number;
 
 import java.util.List;
@@ -23,19 +24,16 @@ public class GameResult {
     }
 
     public String toString() {
-        if (strike == 3) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-        }
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
+        if (Objects.equals(strike, Number.ZERO) && Objects.equals(ball, Number.ZERO)) {
+            return Message.NOTHING;
         }
 
         StringBuilder result = new StringBuilder();
         if (Number.isPositive(ball)) {
-            result.append(ball).append("볼 ");
+            result.append(ball).append(Message.BALL).append(Message.SPACE);
         }
         if (Number.isPositive(strike)) {
-            result.append(strike).append("스트라이크");
+            result.append(strike).append(Message.STRIKE);
         }
         return result.toString();
     }
