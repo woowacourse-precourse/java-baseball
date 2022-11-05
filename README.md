@@ -89,8 +89,8 @@ BUILD SUCCESSFUL in 0s
 
 - [ ] **CLASS 2**. `BaseballGameResult`
   - **Class Variables:**
-    - [x] `private final String strike`
-    - [x] `private final String ball`
+    - [x] `private final int strike`
+    - [x] `private final int ball`
   - **Class Methods:**
     - [ ] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
     - [ ] `String toString()`
