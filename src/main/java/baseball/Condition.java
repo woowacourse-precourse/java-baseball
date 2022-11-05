@@ -9,11 +9,13 @@ public class Condition {
 	static Application application = new Application();
 
 	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
-		List<Integer> userNumbersList = new ArrayList<>();
+		
+		List<Integer> userNumbersList = new ArrayList<>();		
 		int userNumbersInt = 0;
 		final Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
-		Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
-		boolean isUserNumberMatch = matchUserNumber.find();
+		final Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
+		final boolean isUserNumberMatch = matchUserNumber.find();
+		
 		if (!isUserNumberMatch)
 			throw new IllegalArgumentException();
 		if (userNumbers.length() != 3)
@@ -35,11 +37,13 @@ public class Condition {
 	}
 
 	public static void continuedExceptionProcess(String continued) throws IllegalArgumentException {
-		if (continued.equals("1"))
+		
+		if (continued.equals("1")) {
 			application.gameStart(application.getComputerNumbers());
-		else if (continued.equals("2"))
+		}else if (continued.equals("2")) {
 			application.gameSet = false;
-		else
+		}else {
 			throw new IllegalArgumentException();
+		}			
 	}
 }
