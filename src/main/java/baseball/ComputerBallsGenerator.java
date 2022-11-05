@@ -1,9 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
-import org.w3c.dom.ls.LSOutput;
 
 public class ComputerBallsGenerator {
   private int maxLen;
@@ -14,7 +11,7 @@ public class ComputerBallsGenerator {
   public ComputerBallsGenerator(int maxLen) {
     this.maxLen = maxLen;
   }
-  public String ballGenerator(){
-    return "123";
+  public String ballsGenerator(){
+    return Randoms.pickUniqueNumbersInRange(1, 9, this.maxLen).toString().replaceAll("[^0-9]","");
   }
 }
