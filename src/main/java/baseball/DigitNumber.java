@@ -22,7 +22,7 @@ public enum DigitNumber {
         return INSTANCE;
     }
 
-    private static class DigitNumberBuilder {
+    public static class DigitNumberBuilder {
 
         private final int digit;
 
@@ -52,21 +52,16 @@ public enum DigitNumber {
         return computerNumber;
     }
 
-    public Map<Integer, Integer> convertNumberToMap(int digitNumber) {
+    public Map<Integer, Integer> convertNumberToMap(String userNumberStr) throws IllegalArgumentException {
+        Validator.isVaildNumber(userNumberStr, digit);
         Map<Integer, Integer> userNumber = new HashMap<>();
 
-        for (int index = digit - 1; index >= 0; ) {
-            int number = getDigitNumberOf(digitNumber, index);
-            userNumber.put(number, index);
+        for (int i = 0; i < digit; i++) {
+            int current = userNumberStr.charAt(i) - '0';
+            userNumber.put(current, i);
         }
 
         return userNumber;
-    }
-
-    private int getDigitNumberOf(int digitNumber, int index) {
-        int pow = (int) Math.pow(10, index);
-        int number = digitNumber / pow;
-        return number % pow;
     }
 
 }
