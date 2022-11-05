@@ -30,4 +30,16 @@ public class BaseballGame {
             System.exit(1);
         }
     }
+
+    private List<String> makeComputerNumList(){
+        List<String> computerNumList = new ArrayList<>();
+        while (computerNumList.size() < 3) {
+            String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            if (!computerNumList.contains(randomNumber)) {
+                computerNumList.add(randomNumber);
+            }
+        }
+        return computerNumList;
+    }
+
 }
