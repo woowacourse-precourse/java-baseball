@@ -1,13 +1,17 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class BallMaker {
+    private String informationMessage = "숫자를 입력해 주세요 : ";
     private int ballSize;
     private boolean allowDuplicate;
 
@@ -18,8 +22,8 @@ public class BallMaker {
     public BallMaker() {
         this.ballSize = 3;
         this.allowDuplicate = false;
-        this.maximum=9;
-        this.minimum=1;
+        this.maximum = 9;
+        this.minimum = 1;
     }
 
     public List<Integer> getRandomBall() {
@@ -29,16 +33,27 @@ public class BallMaker {
         return new ArrayList<>();
     }
 
+    public List<Integer> getUserBall() {
+        printInformation();
+        String userOpinion = Console.readLine();
+        if (!checkValidation(userOpinion)) {
+            throw new IllegalArgumentException("유효하지 않은 입력입니다.");
+        }
+        return makeUserBall(userOpinion);
+    }
+
     private List<Integer> getUniqueRandomBall() {
         Set<Integer> result = new HashSet<>();
         while (result.size() != ballSize) {
-            result.add(Randoms.pickNumberInRange(minimum,maximum));
+            result.add(Randoms.pickNumberInRange(minimum, maximum));
         }
         return new ArrayList<>(result);
     }
 
-    public List<Integer> getUserBall() {
-        List<Integer> userBall = new ArrayList<>();
-        return userBall;
+    private void printInformation() {
+        System.out.printf(informationMessage);
     }
+
+
+
 }
