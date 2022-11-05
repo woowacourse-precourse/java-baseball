@@ -37,7 +37,9 @@ public class Baseball {
     }
 
     // GuessNumber Setter method
-    public void setGuessNumber(int guessNumber){
+    public void setGuessNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+        int guessNumber = Integer.parseInt(Console.readLine());
         if(!isValidNum(guessNumber)){
             end();
             throw new IllegalArgumentException();
@@ -46,17 +48,31 @@ public class Baseball {
         this.guessNumber = guessNumber;
     }
 
-    public void getBallCount(){
-        this.ballCount.getBallCount();
-    }
-
-    public void getStrikeCount(){
-        this.ballCount.getStrikeCount();
-    }
-
-    // 결과 ENUM 출력 method
+    // GuessNumber에 대한 결과 출력 method
     public void getGuessResult(){
+        int guessBallCount = ballCount.getBallCount();
+        int guessStrikeCount = ballCount.getStrikeCount();
 
+        if((guessBallCount != 0) && (guessStrikeCount !=0)){
+            System.out.println(guessBallCount+"볼 "+guessStrikeCount+"스트라이크");
+            setGuessNumber();
+        } else if((guessBallCount == 0) && (guessStrikeCount ==0)){
+            System.out.println("낫싱");
+            setGuessNumber();
+        } else if(guessStrikeCount == 3){
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            chooseContinue();
+        }
+    }
+
+    private void chooseContinue(){
+        String isContinue = Console.readLine();
+
+        if(isContinue == "1"){
+            restart();
+        } else if(isContinue == "2"){
+            end();
+        }
     }
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
