@@ -187,9 +187,13 @@ public class Computer {
                 addCntStrike();
             }
             if (isBall) {
-                this.cntBall = this.cntBall + 1;
+                addCntBall();
             }
         }
+    }
+
+    private void addCntBall() {
+        this.cntBall = this.cntBall + 1;
     }
 
     private void addCntStrike() {
