@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> answerNumber = new ArrayList<>();
-    private Integer strike;
-    private Integer ball;
+    private Integer strike = 0;
+    private Integer ball = 0;
 
     public void makeAnswerNumber(){
         while(answerNumber.size() < 3) {

@@ -40,7 +40,7 @@ public class Game {
 
     }
 
-    public int gameStart(){
+    public void gameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
         computer.makeAnswerNumber();
@@ -51,16 +51,12 @@ public class Game {
             String userNumberString = readLine();
             checkExceptionFromUserInputData(userNumberString);
 
-            try {
-                List<Integer>userNumber = makeUserNumberToList(Integer.parseInt(userNumberString));
-                computer.checkNumberCount(userNumber);
-                System.out.println(computer.countResultString());
-            } catch (IllegalArgumentException e) {
-                return -1;
-            }
+            List<Integer>userNumber = makeUserNumberToList(Integer.parseInt(userNumberString));
+            computer.checkNumberCount(userNumber);
+            System.out.println(computer.countResultString());
+
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return 1;
     }
 
 }

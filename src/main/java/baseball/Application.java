@@ -1,18 +1,13 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
-    public List<Integer> makeUserNumberToList(String userNumberString){
-        int userNumber = Integer.parseInt(userNumberString);
-        List<Integer> listNumber = new ArrayList<>();
-        while(userNumber < 0){
-            listNumber.add(userNumber%10);
-            userNumber /= 10;
+    public void checkExceptionFromUserInputData(String userNumber) {
+        if (!userNumber.equals("1") && !userNumber.equals("2")) {
+            throw new IllegalArgumentException();
         }
-        return listNumber;
     }
 
     public static void main(String[] args) {
