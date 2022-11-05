@@ -36,7 +36,8 @@ public class Balls {
     }
 
     public void convertInputToBall(String input) throws IllegalArgumentException {
-        // 반복문으로 한글자씩 때어보면서 ball 로 만드는데, 이미 ball 로 만들때 잘못된 경우라면 예외를 반환하니깐 그냥 순서대로 담으면 된다.
+        ballList.clear();
+
         if (input.length() != SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT);
         }

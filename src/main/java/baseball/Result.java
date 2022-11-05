@@ -49,11 +49,22 @@ public class Result {
         }
     }
 
+    public void clear() {
+        this.strike = 0;
+        this.ball = 0;
+        this.indexOfStrike.clear();
+    }
+
     public Integer getStrike() {
         return this.strike;
     }
 
     public Integer getBall() {
         return this.ball;
+    }
+
+    @Override
+    public String toString() {
+        return "strike : " + strike + " ball : " + ball;
     }
 }
