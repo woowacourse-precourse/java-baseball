@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.exception.Exception;
+import baseball.game.Parameter;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -14,14 +15,9 @@ public class Application {
             List<Integer> computer = getRandomNum();
             System.out.println(computer);
 
-            int strike;
-            int ball;
-
             while (true) {
+                Parameter.initParam();
                 System.out.print("숫자를 입력해주세요 : ");
-
-                strike = 0;
-                ball = 0;
 
                 String number = Console.readLine();
                 Exception.verifyNum(number);
@@ -30,12 +26,15 @@ public class Application {
 
                     int num = Integer.parseInt(String.valueOf(number.charAt(i)));
                     if (num == computer.get(i)) {
-                        strike++;
+                        Parameter.addStrike();
                     }
                     if (num != computer.get(i) && computer.contains(num) ) {
-                        ball++;
+                        Parameter.addBall();
                     }
                 }
+
+                int strike = Parameter.getStrike();
+                int ball = Parameter.getBall();
 
                 if(Boolean.TRUE.equals(result(strike, ball))) {
                     break;
