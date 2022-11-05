@@ -11,7 +11,7 @@ public class Player {
     public String getPlayerNumber() throws IllegalArgumentException{
         System.out.print(INPUT_NUMBER_MESSAGE);
         String playerNumber = readLine();
-        validateInputNumber(playerNumber, PLAYER_NUMBER_LENGTH);
+        validateInputNumber(playerNumber, GAME_NUMBER_LENGTH);
         return playerNumber;
     }
 
