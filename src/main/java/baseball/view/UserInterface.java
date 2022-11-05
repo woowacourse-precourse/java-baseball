@@ -1,10 +1,6 @@
 package baseball.view;
 
-import baseball.model.MyAnswer;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Collections;
-import java.util.Scanner;
 
 public class UserInterface {
     public UserInterface() {
