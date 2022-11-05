@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Numbers {
-    private static final int LENGTH = 3;
+    public static final int LENGTH = 3;
     private final List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
