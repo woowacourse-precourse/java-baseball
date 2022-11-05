@@ -14,16 +14,21 @@ public class Application {
         String userNumber = Console.readLine();
         try {
             checkNumberLength(userNumber);
-            for (int i = 0; i < userNumber.length(); i++) {
-                int n = Character.getNumericValue(userNumber.charAt(i));
-                checkAdequateNumber(n);
-                if (checkOverlap(user, n)) {
-                    user.add(n);
-                }
-            }
+            addUserNumber(user, userNumber);
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생");
             return;
+        }
+
+    }
+
+    static void addUserNumber(List<Integer> user, String userNumber) {
+        for (int i = 0; i < userNumber.length(); i++) {
+            int n = Character.getNumericValue(userNumber.charAt(i));
+            checkAdequateNumber(n);
+            if (checkOverlap(user, n)) {
+                user.add(n);
+            }
         }
     }
 
