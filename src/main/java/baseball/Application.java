@@ -95,24 +95,36 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         //1. 상대방이 랜덤한 세 자리수를 생성한다.
         List<Integer> rand_num = rand_num_gen();
 
-        //2. 사용자로부터 세 자리수를 입력받는다.
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> input_num = rand_num_input();
+        while (true) {
+            //2. 사용자로부터 세 자리수를 입력받는다.
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> input_num = rand_num_input();
 
-        //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
-        if (process_exception(input_num)) {//break;
+            //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
+            if (process_exception(input_num)) {
+                break;
+            }
+
+            //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
+            boolean match = compare_input(rand_num, input_num);
+
+            //5. 두 수가 같지 않다면, 게임을 계속해서 진행한다.
+            if (!match) {
+                continue;
+            }
+
+            //6. 두 수가 같다면, 게임을 종료 후 재시작 여부를 사용자에게 입력받는다.
+            String input = exit_and_restart();
+
+            //8. 재시작 여부에 대한 입력에 따라 처리한다.
+            if (input.equals("1")){
+                rand_num = rand_num_gen();
+            } else{
+                break;
+            }
         }
-
-        //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
-        boolean match = compare_input(rand_num, input_num);
-
-        //5. 두 수가 같다면, 게임 종료 후 사용자에게 재시작 여부를 입력 받는다.
-        if (!match) {//continue;
-        }
-        String input = exit_and_restart();
     }
 }
