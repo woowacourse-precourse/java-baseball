@@ -14,12 +14,22 @@ public class Application {
         String userNumber = Console.readLine();
         try {
             checkNumberLength(userNumber);
+            for (int i = 0; i < userNumber.length(); i++) {
+                int n = Character.getNumericValue(userNumber.charAt(i));
+                checkAdequateNumber(n);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생");
             return;
         }
 
 
+    }
+
+    static void checkAdequateNumber(int n) throws IllegalArgumentException {
+        if (n < 1 || n > 9) {
+            throw new IllegalArgumentException();
+        }
     }
 
     static void getComputerNumber(List<Integer> computer) {
@@ -36,4 +46,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
