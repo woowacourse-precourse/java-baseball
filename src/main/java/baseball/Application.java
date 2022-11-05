@@ -25,7 +25,7 @@ public class Application {
                 while(true){
                     String playerNumber = Console.readLine();
 
-                    if(checkPlayerNumber(playerNumber)){
+                    if(!checkPlayerNumber(playerNumber)){
                         throw new IllegalArgumentException();
                     }
 
