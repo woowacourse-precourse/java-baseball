@@ -46,8 +46,13 @@ public class Application {
         List<Integer> userNum = new ArrayList<>();
 
         String str = readLine();
-        Integer number = Integer.parseInt(str);
 
+        while(!userNumberCheck(str)){
+            System.out.print("서로 다른 3자리 숫자로 입력해주세요 : ");
+            str = readLine();
+        }
+
+        Integer number = Integer.parseInt(str);
         userNum.add(number / 100);
         userNum.add((number / 10) % 10);
         userNum.add(number % 10);
@@ -96,5 +101,19 @@ public class Application {
         }
 
         return flag;
+    }
+    public static boolean userNumberCheck(String str){
+
+        if (str.length() != 3) return false;
+
+        else if(!Character.isDigit(str.charAt(0))) return false;
+        else if(!Character.isDigit(str.charAt(1))) return false;
+        else if(!Character.isDigit(str.charAt(2))) return false;
+
+        else if(str.charAt(0) == str.charAt(1)) return false;
+        else if(str.charAt(0) == str.charAt(2)) return false;
+        else if(str.charAt(1) == str.charAt(2)) return false;
+
+        return true;
     }
 }
