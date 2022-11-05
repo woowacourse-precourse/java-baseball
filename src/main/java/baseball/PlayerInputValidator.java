@@ -11,7 +11,8 @@ public class PlayerInputValidator {
 
         HashSet<Character> characters = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {
-            if (characters.contains(input.charAt(i)) || !Character.isDigit(input.charAt(i))) {
+            if (characters.contains(input.charAt(i)) || !Character.isDigit(input.charAt(i))
+                    || input.charAt(i) == '0') {
                 throw new IllegalArgumentException("잘못된 입력값 입니다.");
             }
             characters.add(input.charAt(i));
