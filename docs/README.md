@@ -78,6 +78,7 @@
 - START_MESSAGE : String
 - ANSWER_REQUEST_MESSAGE : String
 - SUCCESS_MESSAGE : String
+- RESTART_REQUEST_MESSAGE : String
 - BALL : String
 - STRIKE : String
 - NOTHING : String
