@@ -70,7 +70,7 @@ public class FeatureListTest {
 
     @Test
     void 판정테스트() {
-        Integer[] input = new Integer[]{1,2,3};
+        Integer[] input = new Integer[]{1, 2, 3};
         List<Integer> answer = List.of(1, 3, 5);
         int[] result = new int[]{1, 1};
         assertThat(Judgment(input, answer)).isEqualTo(result);

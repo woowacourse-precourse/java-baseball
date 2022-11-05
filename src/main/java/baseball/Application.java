@@ -1,6 +1,7 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -80,9 +81,25 @@ public class Application {
     }
 
 
+    private static void baseballGame() {
+        List<Integer> answerList = GenerateRandomNumber(3);
+        int[] judg = new int[]{0, 0};
+        while (judg[1] != 3) {
+            try {
+                Nums nums = new Nums(Console.readLine());
+                judg = Judgment(nums.inputNums, answerList);
+            } catch (Exception e) {
+                System.exit(-1);
+            }
+        }
+    }
 
     public static void main(String[] args) {
-
-        // TODO: 프로그램 구현
+        int endGame = 0;
+        while (endGame!=2)
+        {
+            baseballGame();
+        }
     }
+
 }
