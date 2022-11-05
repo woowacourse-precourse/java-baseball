@@ -13,4 +13,21 @@ public class Game {
     public String getAnswerNumber() {
         return answerNumber;
     }
+
+    private boolean isStrike(char onePlayerNum, int idx) {
+        return answerNumber.charAt(idx) == onePlayerNum;
+    }
+
+    private boolean isBall(char onePlayerNum, int idx) {
+        for (int i = 0; i < 3; i++) {
+            if (i == idx) {
+                continue;
+            }
+            if (answerNumber.charAt(i) == onePlayerNum) {
+                return true;
+            }
+        }
+        return false;
+
+    }
 }
