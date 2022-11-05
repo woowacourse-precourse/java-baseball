@@ -12,4 +12,15 @@ public class Hint {
     }
     return ball;
   }
+
+  // 같은 index로 돌면서, 같은 수를 갖고 있다면 strikeCount
+  public static int strikeCount(String computer, String userNumber) {
+    int strike = 0;
+
+    for (int i = 0; i < userNumber.length(); i++) {
+      if (computer.charAt(i) == userNumber.charAt(i))
+        strike +=1;
+    }
+    return strike;
+  }
 }
