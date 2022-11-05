@@ -11,8 +11,11 @@ public class GameResult {
     int strike;
     int ball;
 
-    public int getStrike() {
-        return this.strike;
+    private void setBall(int ball) {
+        this.ball = ball;
+    }
+    private void setStrike(int strike) {
+        this.strike = strike;
     }
 
     public boolean isThreeStrike() {
@@ -39,8 +42,8 @@ public class GameResult {
 
     public void calculate(Computer computer, Player player) {
         List<Integer> strikeIndexes = countStrike(computer.getNumbers(), player.getNumbers());
-        this.strike = strikeIndexes.size();
-        this.ball = countBallExceptStrike(computer.getNumbers(), player.getNumbers(), strikeIndexes);
+        setBall(strikeIndexes.size());
+        setStrike(countBallExceptStrike(computer.getNumbers(), player.getNumbers(), strikeIndexes));
     }
 
     List<Integer> countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
