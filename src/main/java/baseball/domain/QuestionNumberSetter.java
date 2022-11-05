@@ -10,6 +10,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class QuestionNumberSetter {
 	private List<Integer> randomNumbers = new ArrayList<>();
+	private List<Integer> inputNumbers = new ArrayList<>();
+	private Map<ComparingResults, Integer> comparingResult = new HashMap<>();
 
 	public List<Integer> pickThreeRandomNumbers() {
 		while (randomNumbers.size() < 3) {
@@ -30,32 +32,14 @@ public class QuestionNumberSetter {
 		return uniqueNumber;
 	}
 
-	public Map<ComparingResults, Integer> compareWithRandomNumbers(List<Integer> inputNumbers) {
-		Map<ComparingResults, Integer> comparingResult = new HashMap<>();
 
-		for (int i = 0; i < inputNumbers.size(); i++) {
-			int inputNumberPosition = i;
-			int inputNumber = inputNumbers.get(i);
+	public Map<ComparingResults, Integer> compareWithRandomNumbers(List<Integer> inputNumbersParameter) {
+		this.comparingResult.clear();
+		this.inputNumbers = inputNumbersParameter;
 
+		for (int inputNumber : inputNumbers) {
 			if (randomNumbers.contains(inputNumber)) {
-				int randomNumberPosition = randomNumbers.indexOf(inputNumber);
-				int count = 1;
-
-				if (randomNumberPosition == inputNumberPosition) {
-					if (comparingResult.containsKey(ComparingResults.STRIKE)) {
-						count = comparingResult.get(ComparingResults.STRIKE) + 1;
-					}
-
-					comparingResult.put(ComparingResults.STRIKE, count);
-
-					continue;
-				}
-
-				if (comparingResult.containsKey(ComparingResults.BALL)) {
-					count = comparingResult.get(ComparingResults.BALL) + 1;
-				}
-
-				comparingResult.put(ComparingResults.BALL, count);
+				countBallOrStrike(inputNumber);
 			}
 		}
 
@@ -64,5 +48,36 @@ public class QuestionNumberSetter {
 		}
 
 		return comparingResult;
+	}
+
+	private void countBallOrStrike(int inputNumber) {
+		int inputNumberPosition = inputNumbers.indexOf(inputNumber);
+		int randomNumberPosition = randomNumbers.indexOf(inputNumber);
+
+		if (randomNumberPosition == inputNumberPosition) {
+			countStrike();
+		} else {
+			countBall();
+		}
+	}
+
+	private void countStrike() {
+		int count = 1;
+
+		if (comparingResult.containsKey(ComparingResults.STRIKE)) {
+			count = comparingResult.get(ComparingResults.STRIKE) + 1;
+		}
+
+		comparingResult.put(ComparingResults.STRIKE, count);
+	}
+
+	private void countBall() {
+		int count = 1;
+
+		if (comparingResult.containsKey(ComparingResults.BALL)) {
+			count = comparingResult.get(ComparingResults.BALL) + 1;
+		}
+
+		comparingResult.put(ComparingResults.BALL, count);
 	}
 }
