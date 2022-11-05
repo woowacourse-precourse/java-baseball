@@ -22,6 +22,7 @@ public class BaseballGame {
         printStartMessage();
         while (progress) {
             setGame();
+            checkProgress();
         }
     }
 
@@ -29,5 +30,14 @@ public class BaseballGame {
         this.computer = new Computer();
         this.player = new Player();
         this.hint = new Hint();
+    }
+
+    private void checkProgress() {
+        Integer progressInput = player.getProgressInput();
+        if (progressInput == RESTART) {
+            this.progress = true;
+        } else if (progressInput == EXIT) {
+            this.progress = false;
+        }
     }
 }
