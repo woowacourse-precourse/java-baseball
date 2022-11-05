@@ -1,14 +1,15 @@
 package baseball.computer;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class ComputerFunction {
 
     public int getRandomNumber() {
-        return 0;
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     public boolean collectionListCheckValue(int value, List<Integer> list) {
-        return false;
+        return list.contains(value);
     }
 }
