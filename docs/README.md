@@ -18,7 +18,7 @@
 - [ ] 거짓이면, false를 리턴
 - [ ] 참이면, true를 리턴
 
-## stringToListCreate
+## (List)stringToListCreate(String word)
 - [ ] stringToArray에 매개변수를 배열형태로 변환하여 선언
 - [ ] arrayToList에 stringToArray을 List형태로 변화하여 선언
 - [ ] arrayToList를 리턴
