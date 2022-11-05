@@ -135,7 +135,6 @@ public class Application {
 
         int ballCount;
         int strikeCount;
-        int isEnd;
 
         void init() {
             ballCount = 0;
