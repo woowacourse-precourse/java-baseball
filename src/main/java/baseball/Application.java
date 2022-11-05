@@ -9,14 +9,29 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> targetNum = makeRandomTargetNum();
         List<Integer> userNum = new ArrayList<>();
         String inputUserNum = inputUserNum();
         String[] separatedUserNum = inputUserNum.split("");
+        boolean lengthException = true;
+        boolean duplicateException = true;
+
+        lengthException = checkInputLengthCorrect(inputUserNum);
 
         for (String num : separatedUserNum) {
-            userNumToIntegerListAndCheckDuplicatedNum(userNum, num);
+            duplicateException = userNumToIntegerListAndCheckDuplicatedNum(userNum, num);
+
+            if (!duplicateException)
+                break;
         }
+
+        if(!lengthException || !duplicateException){
+            System.out.println("잘못된 입력 값을 입력했습니다.");
+            return;
+        }
+
+
 
 
     }
@@ -56,7 +71,7 @@ public class Application {
     static boolean checkIllegalArgumentException(String inputNum){
 
         try{
-            int userNum = Integer.parseInt(inputNum);
+            Integer.parseInt(inputNum);
 
             return true;
         } catch (IllegalArgumentException e){
@@ -83,6 +98,16 @@ public class Application {
 
     }
 
+    static int countStrikeNum(List<Integer> targetNum, List<Integer> userNum) {
+        int strikeNum = 0;
 
+        for (int listIndex = 0; listIndex < targetNum.size(); listIndex++) {
+            if (targetNum.get(listIndex).equals(userNum.get(listIndex))) {
+                strikeNum++;
+            }
+        }
+
+        return strikeNum;
+    }
 
 }
