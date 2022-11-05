@@ -138,10 +138,21 @@ public class GameManager {
         int ret = 0;
         for(int userIndex = 0;userIndex < 3;userIndex++) {
             int userDigit = userGuess.get(userIndex);
-            ret += getCountUserDigitInGuess(userIndex, userDigit);
+            ret += countUserDigitInAnswer(userIndex, userDigit);
         }
 
         return ret;
+    }
+
+    private int countUserDigitInAnswer(int userIndex, int userDigit) {
+        int count = 0;
+        for(int answerIndex = 0;answerIndex < 3;answerIndex++) {
+            if(userIndex != answerIndex && userDigit == guessNumber.get(answerIndex)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private boolean isNothing(int strike, int ball) {
