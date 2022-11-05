@@ -3,15 +3,21 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class MessageHolderTest {
-    public MessageHolder holder;
-
+    private MessageHolder holder;
+    @BeforeAll
+    void initAll() {
+        holder = new MessageHolder();
+    }
     @Test
     void testGetGameInput() {
-        holder = new MessageHolder();
         InputStream sysInBackup = System.in;
         ByteArrayInputStream in = new ByteArrayInputStream("245".getBytes());
         System.setIn(in);
@@ -24,7 +30,6 @@ public class MessageHolderTest {
 
     @Test
     void testGetPlayerRestartInput() {
-        holder = new MessageHolder();
         InputStream sysInBackup = System.in;
         ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
         System.setIn(in);
@@ -37,7 +42,6 @@ public class MessageHolderTest {
 
     @Test
     void testPlayerGameInputToInt() {
-        holder = new MessageHolder();
         //int output = holder.playerGameInputToInt("1234");
 
         assertThrows(IllegalArgumentException.class, ()->{
@@ -48,7 +52,12 @@ public class MessageHolderTest {
 
     @Test
     void testPrintAskGameInput() {
-        
+        holder.printAskGameInput();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        String result = "숫자를 입력해주세요 : ";
+        assertEquals(result, out.toString());
     }
 
     @Test
