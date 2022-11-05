@@ -66,7 +66,7 @@
 - [ ] userAnswer에 readLine함수를 이용하여 사용자의 응답을 입력
 - [ ] userAnswer을 리턴
 
-## availableUserAnswerIsChecked
+## (boolean)availableUserAnswerIsChecked(String word)
 - [ ] userAnswer에 매개변수를 저장
 - [ ] regularExpression에 한자리 숫자인 1 또는 2 인지 확인하는 정규표현식을 초기화.
 - [ ] userAnswer이 regularExpression에 유효한지 비교
