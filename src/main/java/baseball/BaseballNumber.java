@@ -10,4 +10,8 @@ public class BaseballNumber {
     BaseballNumber(int number) {
         this.listNumber = Util.splitDigitsIntoList(number);
     }
+
+    int getNumberAt(int index) {
+        return listNumber.get(index);
+    }
 }
