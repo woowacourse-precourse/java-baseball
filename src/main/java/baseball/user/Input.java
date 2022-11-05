@@ -23,7 +23,7 @@ public class Input {
      * @param inputString 문자열로 입력받은 값
      * @return 입력받은 숫자를 넣은 리스트
      */
-    public List<Integer> inputDigit(String inputString) {
+    public List<Integer> changeInputStringToList(String inputString) {
         List<Integer> inputDigit = new ArrayList<>();
 
         for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
@@ -59,7 +59,7 @@ public class Input {
      * 입력받은 숫자들이 범위 안에 있는지 확인하는 메소드
      */
     public boolean isDigitsInRange(String inputString) {
-        List<Integer> inputDigits = inputDigit(inputString);
+        List<Integer> inputDigits = changeInputStringToList(inputString);
 
         for (int index = 0; index < inputDigits.size(); index++) {
             int digit = inputDigits.get(index);
@@ -75,7 +75,7 @@ public class Input {
      * 입력값이 모두 다른 숫자인지 확인하는 메소드
      */
     public boolean isAllDifferentDigit(String inputString) {
-        List<Integer> inputDigits = inputDigit(inputString);
+        List<Integer> inputDigits = changeInputStringToList(inputString);
         Set<Integer> digitSet = new HashSet<>();
 
         for (int index = 0; index < inputDigits.size(); index++) {
