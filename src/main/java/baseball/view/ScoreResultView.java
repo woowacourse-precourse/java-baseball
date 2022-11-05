@@ -1,6 +1,9 @@
 package baseball.view;
 
 public class ScoreResultView {
+    private static final String NOTHING = "낫싱";
+    private static final String BALL_COMMAND = "볼 ";
+    private static final String STRIKE_COMMAND = "스트라이크";
     int ballCount;
     int strikeCount;
 
@@ -27,7 +30,7 @@ public class ScoreResultView {
     }
 
     public String printNothing(){
-        return "";
+        return NOTHING;
     }
 
     public boolean isOnlyBall(){
