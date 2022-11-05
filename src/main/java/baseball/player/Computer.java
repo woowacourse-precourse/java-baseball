@@ -25,6 +25,13 @@ public class Computer {
     }
 
     /**
+     * 생성된 문제를 가져오는 기능
+     */
+    public List<Integer> getProblem() {
+        return problem;
+    }
+
+    /**
      * 랜덤한 수를 생성하는 기능
      */
     public int createRandomNum() {
