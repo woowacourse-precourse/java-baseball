@@ -18,6 +18,10 @@ public class BaseballGameNumber {
         this.numbers = numbers;
     }
 
+    public int numberAt(int order) {
+        return numbers.get(order);
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException(NUMBER_SIZE + "자리 숫자만 가능합니다.");
