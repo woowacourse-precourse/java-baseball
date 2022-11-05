@@ -66,4 +66,26 @@ public class Baseball {
         }
         return count;
     }
+
+    public boolean inputControllNumber(String readLine) {
+        if (isExceptionControllNumber(readLine)) {
+            throw new IllegalArgumentException();
+        }
+        if (readLine.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isExceptionControllNumber(String str) {
+        if (str.length() != 1) {
+            return true;
+        }
+        int charNumber = str.charAt(0) - '0';
+        if (charNumber != 1 && charNumber != 2) {
+            return true;
+        }
+
+        return false;
+    }
 }
