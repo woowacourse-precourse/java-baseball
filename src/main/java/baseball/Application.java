@@ -8,14 +8,6 @@ public class Application {
     private static final int TERMINATE_INPUT = 2;
 
     public static void main(String[] args) {
-        try {
-            startProgram();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void startProgram() {
         do {
             NumberBaseballGame.start();
         } while (isRestartingGame());
