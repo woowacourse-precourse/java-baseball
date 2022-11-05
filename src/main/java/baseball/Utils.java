@@ -18,7 +18,7 @@ class Utils {
         return returnList;
     }
 
-    public static boolean isValidUserInput(String s) {
+    public static boolean isValidUserAnswerInput(String s) {
         // 자리수 확인
         if (s.length() != Constants.NUM_LENGTH) {
             return false;
@@ -40,5 +40,13 @@ class Utils {
         }
 
         return true;
+    }
+
+    public static boolean isValidUserRestartInpit(String s) {
+
+        if ("1".equals(s) || "2".equals(s)) {
+            return true;
+        }
+        return false;
     }
 }

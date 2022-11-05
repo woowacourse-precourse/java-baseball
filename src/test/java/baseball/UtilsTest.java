@@ -19,11 +19,11 @@ class UtilsTest {
         String[] testTrue = {"123", "915"};
 
         for (String test : testFalse) {
-            assertThat(Utils.isValidUserInput(test)).isEqualTo(false);
+            assertThat(Utils.isValidUserAnswerInput(test)).isEqualTo(false);
         }
 
         for (String test : testTrue) {
-            assertThat(Utils.isValidUserInput(test)).isEqualTo(true);
+            assertThat(Utils.isValidUserAnswerInput(test)).isEqualTo(true);
         }
     }
 }

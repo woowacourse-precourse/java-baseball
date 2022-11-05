@@ -13,7 +13,6 @@ public class BaseballGame {
     private int[] result;
 
     public void start() {
-        System.out.println(Constants.START_MESSAGE);
         initGame();
 
         while (!gameDone) {
@@ -21,6 +20,8 @@ public class BaseballGame {
             evaluate();
             printResult();
         }
+
+        gameContinue = user.enterRestartOrNot();
     }
 
     private void printResult() {
@@ -36,6 +37,10 @@ public class BaseballGame {
         } else {
             System.out.print(strike + Constants.STRIKE_MESSAGE + " ");
             System.out.println(ball + Constants.BALL_MESSAGE);
+        }
+
+        if (gameDone) {
+            System.out.println(Constants.GAME_DONE_MESSAGE);
         }
     }
 
@@ -64,12 +69,12 @@ public class BaseballGame {
         this.computer = new Computer();
         this.user = new User();
         this.result = new int[2];
+        this.gameDone = false;
+        this.gameContinue = true;
 
         computer.generateNumbers();
         answer = computer.getNumbers();
 
-        gameDone = false;
-        gameContinue = true;
     }
 
     public boolean isRestart() {
