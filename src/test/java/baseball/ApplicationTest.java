@@ -71,11 +71,6 @@ class ApplicationTest extends NsTest {
         assertThat(HintMessage.getMessage(hint)).isEqualTo("낫싱");
 
     }
-    @Test
-    void userInputTest(){
-        String str = camp.nextstep.edu.missionutils.Console.readLine();
-        assertThat(str).isNotNull();
-    }
 
     @Override
     public void runMain() {
