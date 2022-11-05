@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RandomNumber {
+public class Computer {
 
     static final int NUMBER_LENGTH = 3;
 
     int randomNumber;
 
-    public RandomNumber() {
+    public Computer() {
     }
 
     public void setRandomNumber() {

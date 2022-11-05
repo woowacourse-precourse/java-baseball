@@ -3,13 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
-public class UserNumber {
+public class User {
 
     String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     String REGEX = "[0-9]{3,3}";
     int userNumber;
 
-    public UserNumber() {}
+    public User() {}
 
     public void setUserNumber() {
         System.out.print(OUTPUT_ENTER_NUMBER);
@@ -18,6 +18,7 @@ public class UserNumber {
         this.userNumber = Integer.parseInt(input);
     }
 
+    // method only for test code
     public void setUserNumber(String input) {
         getValidation(input);
         this.userNumber = Integer.parseInt(input);
@@ -26,7 +27,6 @@ public class UserNumber {
     public int getUserNumber() {
         return userNumber;
     }
-
 
     private void getValidation(String input) {
         Boolean checkLength = getLengthValidation(input);

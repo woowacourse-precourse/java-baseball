@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserNumberTest {
-    private UserNumber user;
+class UserTest {
+    private User user;
 
     @BeforeEach
     void createUser() {
-        user = new UserNumber();
+        user = new User();
     }
 
     @Test
@@ -26,7 +26,7 @@ class UserNumberTest {
     }
     @Test
     void isUserNumberNotString() {
-        UserNumber user = new UserNumber();
+        User user = new User();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             user.setUserNumber("aaa");
         });

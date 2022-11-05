@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class RandomNumberTest {
+class ComputerTest {
 
-    private RandomNumber computer;
+    private Computer computer;
 
     @BeforeEach
     void createComputerAndSetRandomNumber() {
-        computer = new RandomNumber();
+        computer = new Computer();
         computer.setRandomNumber();
     }
     @Test
