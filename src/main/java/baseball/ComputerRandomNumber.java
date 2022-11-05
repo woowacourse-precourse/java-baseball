@@ -15,10 +15,10 @@ public class ComputerRandomNumber {
     }
 
     public List<Integer> makeComputerNumber() {
-        while (computerNumber.size()<NUMBER_SIZE) {
+        while (computerNumber.size() < NUMBER_SIZE) {
             int num = Randoms.pickNumberInRange(1, 9);
 
-            if(!computerNumber.contains(num)) {
+            if (!computerNumber.contains(num)) {
                 computerNumber.add(num);
             }
         }

@@ -8,6 +8,7 @@ public class Game {
         computerRandomNumber = new ComputerRandomNumber();
         userInput = new UserInput();
     }
+
     public void run() {
         computerRandomNumber.makeComputerNumber();
         userInput.userNumberInput();

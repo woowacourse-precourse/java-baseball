@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 컴퓨터 번호를 맞추기 위한 입력(서로 다른 3자리)
