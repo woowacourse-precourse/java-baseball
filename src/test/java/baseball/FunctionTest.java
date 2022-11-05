@@ -62,20 +62,52 @@ public class FunctionTest {
 			assertThatThrownBy(() -> BaseballUtil.getUserInteger()).isInstanceOf(IllegalArgumentException.class);
 
 		}
+		
+		@Test
+		void 사용자_입력값_유효성확인_0입력() {
+			String input = "102";
+			SetSystemInput(input);
+			assertThatThrownBy(() -> BaseballUtil.getUserInteger()).isInstanceOf(IllegalArgumentException.class);
+			
+		}
+
 		@Test
 		void 사용자_입력값_Integer_List_반환() {
 			String input = "123";
 			SetSystemInput(input);
-			List<Integer> inputList=  BaseballUtil.getUserInteger();
-			
-			assertThat(inputList).contains(1,2,3);
+			List<Integer> inputList = BaseballUtil.getUserInteger();
+
+			assertThat(inputList).contains(1, 2, 3);
+		}
+		public void SetSystemInput(String input) {
+			OutputStream out = new ByteArrayOutputStream();
+			System.setOut(new PrintStream(out));
+			InputStream in = new ByteArrayInputStream(input.getBytes());
+			System.setIn(in);
 		}
 
-		private void SetSystemInput(String input) {
+	}
+
+	@Nested
+	class ComparisonToolTest {
+		@Test
+		void 비교툴() {
+			List<Integer> computer = BaseballUtil.getRandomInteger();
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			String input = "123";
+			SetSystemInput(input);
+			List<Integer> inputList = BaseballUtil.getUserInteger();
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			System.out.println(12312);
+			
+			
+		}
+		public void SetSystemInput(String input) {
 			OutputStream out = new ByteArrayOutputStream();
 			System.setOut(new PrintStream(out));
 			InputStream in = new ByteArrayInputStream(input.getBytes());
 			System.setIn(in);
 		}
 	}
+
 }
