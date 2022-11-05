@@ -31,7 +31,7 @@ public class Computer {
     System.out.println(calculatedResult);
     return calculatedResult;
   }
-  public static String generateRandom() {
+  private static String generateRandom() {
     StringBuilder sb = new StringBuilder();
     ArrayList<Integer> generateRandNum = new ArrayList<>();
 
