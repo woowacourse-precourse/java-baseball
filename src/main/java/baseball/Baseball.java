@@ -27,7 +27,7 @@ public class Baseball {
 
     // 게임 종료 method
     public void end(){
-
+        this.Gaming = false;
     }
 
     // GuessNumber Setter method
