@@ -35,7 +35,12 @@ public class GameController {
     }
 
     private void startGame(){
-
+        while(!isThreeStrike()){
+            clearScore();
+            getPlayerNumbers();
+            matchGame();
+            showPlayersScore();
+        }
     }
 
     private void clearScore(){
