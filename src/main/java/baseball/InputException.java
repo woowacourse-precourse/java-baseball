@@ -27,4 +27,8 @@ public class InputException {
     public static boolean isInZero(String number) {
         return !number.contains("0");
     }
+
+    public static boolean occur(String number) {
+        return !(checkLength(number) && isAllNumber(number) && isDuplicate(number) && isInZero(number));
+    }
 }
