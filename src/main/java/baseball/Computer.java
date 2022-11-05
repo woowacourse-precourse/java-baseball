@@ -42,5 +42,24 @@ public class Computer {
         return strike;
     }
 
+    private int countBall(List<Integer> answer, List<Integer> userInput) {
+        int ball = 0;
+
+        if(validateConcord(answer.get(0), userInput.get(1))
+                || validateConcord(answer.get(0), userInput.get(2))) {
+            ball++;
+        }
+        if(validateConcord(answer.get(1), userInput.get(0))
+                || validateConcord(answer.get(1), userInput.get(2))) {
+            ball++;
+        }
+        if(validateConcord(answer.get(2), userInput.get(0))
+                || validateConcord(answer.get(2), userInput.get(1))) {
+            ball++;
+        }
+
+        return ball;
+    }
+
 
 }
