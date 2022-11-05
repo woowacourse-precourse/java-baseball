@@ -6,8 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static java.lang.System.exit;
-
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -17,11 +15,7 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            try {
-                checkInput(input);
-            } catch (IllegalArgumentException e) {
-                return;
-            }
+            checkInput(input);
             String resultString = getResult(computerNumbers, input);
             System.out.println(resultString);
 
@@ -29,13 +23,15 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String newGame = Console.readLine();
-                if (newGame == "2") break;
+                if (newGame.equals("2")) break;
+                computerNumbers = getRandomNumbers();
             }
         }
     }
 
     public static String getResult(ArrayList<Integer> computerNumbers, String input) {
-        int ball = 0, strike = 0;
+        int ball = 0;
+        int strike = 0;
         for (int index = 0; index < 3; index++) {
             int inputNumAtIndex = input.charAt(index) - '0';
             if (computerNumbers.get(index) == inputNumAtIndex) strike++;
@@ -56,13 +52,13 @@ public class Application {
 
     public static void checkInput(String input) {
         int num = Integer.parseInt(input);
+        if (num < 100 || num > 999) throw new IllegalArgumentException("입력 값의 허용 범위를 넘습니다.");
         HashSet<Character> eachNums = new HashSet<>();
         // 각 자리 수에 중복이 있는지 확인.
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < input.length(); i++) {
             eachNums.add(input.charAt(i));
         }
         if (eachNums.size() != 3) throw new IllegalArgumentException("입력된 수에 중복된 숫자가 있습니다.");
-        if (num < 0 || num > 999) throw new IllegalArgumentException("입력 값의 허용 범위를 넘습니다.");
     }
 
     public static ArrayList<Integer> getRandomNumbers() {
