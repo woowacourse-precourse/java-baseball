@@ -34,4 +34,21 @@ public class Referee {
         return strike == 0 && ball == 0;
     }
 
+    public static String compare(List<Integer> computerNumber, List<Integer> userNumber) {
+        String result = "";
+        int strike = getStrikeCount(computerNumber, userNumber);
+        int ball = getBallCount(computerNumber, userNumber);
+        if (checkNothing(strike, ball)) {
+            result += "낫싱";
+            return result;
+        } else if (strike == 0) {
+            result += ball + "볼";
+            return result;
+        } else if (ball == 0) {
+            result += strike + "스트라이크";
+            return result;
+        }
+        result += ball + "볼" + strike + "스트라이크";
+        return result;
+    }
 }
