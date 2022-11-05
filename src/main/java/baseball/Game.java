@@ -31,6 +31,20 @@ public class Game {
         System.out.println(hint.toString().trim());
     }
 
+    public boolean run() {
+        while (true) {
+            user.guess();
+            int strike = computer.strike(user.guess);
+            int ball = computer.ball(user.guess);
+            hint(strike, ball);
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                return restart();
+            }
+        }
+    }
+
     public boolean restart() {
         try {
             int input = Integer.parseInt(Console.readLine());
