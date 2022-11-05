@@ -5,7 +5,7 @@ import static baseball.Constants.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NumberValidator {
+public class Validator {
     public static void check(String input) {
         if (!isThreeNumbers(input) || !isAllDifferent(input)) {
             throw new IllegalArgumentException();

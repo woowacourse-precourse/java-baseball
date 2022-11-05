@@ -14,7 +14,7 @@ public class Player {
         System.out.print(ENTER_NUMBERS_MESSAGE);
         String enteredNumbers = Console.readLine();
 
-        NumberValidator.check(enteredNumbers);
+        Validator.check(enteredNumbers);
         splitToDigits(enteredNumbers);
         return threeDifferentNumbers;
     }
