@@ -28,6 +28,7 @@ public class BaseballGame {
             messagePrinter.printNumberInputMessage();
             List<Integer> threeNumbers = threeNumberConverter.getThreeNumbers(console.input());
             BallStrikeDto answer = opponent.answer(threeNumbers);
+            messagePrinter.printResultMessage(answer);
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
