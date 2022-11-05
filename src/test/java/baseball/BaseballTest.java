@@ -113,7 +113,7 @@ class BaseballTest {
         private final Messenger messenger = new Messenger();
 
         @Test
-        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        @DisplayName("printStartMessage 메소드가 게임 시작 메시지를 출력하는지 확인")
         void printStartMessage_test() {
             System.setOut(new PrintStream(outContent));
 
@@ -125,26 +125,38 @@ class BaseballTest {
         }
 
         @Test
-        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        @DisplayName("printInputMessage 메소드가 숫자 입력 메시지를 출력하는지 확인")
         void printInputMessage_test() {
             System.setOut(new PrintStream(outContent));
 
-            String startMessage = "숫자를 입력하세요. : ";
+            String inputMessage = "숫자를 입력하세요. : ";
             messenger.printInputMessage();
 
-            assertThat(outContent.toString()).isEqualTo(startMessage);
+            assertThat(outContent.toString()).isEqualTo(inputMessage);
             System.setOut(originalOut);
         }
 
         @Test
-        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        @DisplayName("printAnswerMessage 메소드가 정답 메시지를 출력하는지 확인")
         void printAnswerMessage_test() {
             System.setOut(new PrintStream(outContent));
 
-            String startMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+            String answerMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
             messenger.printAnswerMessage();
 
-            assertThat(outContent.toString()).isEqualTo(startMessage);
+            assertThat(outContent.toString()).isEqualTo(answerMessage);
+            System.setOut(originalOut);
+        }
+
+        @Test
+        @DisplayName("printRestartOrEndMessage 메소드가 재시작/종료 메시지를 출력하는지 확인")
+        void printRestartOrEndMessage_test() {
+            System.setOut(new PrintStream(outContent));
+
+            String restartOrEndMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+            messenger.printRestartOrEndMessage();
+
+            assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
             System.setOut(originalOut);
         }
     }
