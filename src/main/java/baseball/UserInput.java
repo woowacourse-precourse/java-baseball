@@ -4,13 +4,23 @@ import java.util.HashSet;
 
 import static baseball.Constant.*;
 
-public class ValidInput {
+public class UserInput {
     String input;
     boolean playing;
 
-    ValidInput(String input, boolean playing) {
+    UserInput(String input, boolean playing) {
         this.input = input;
         this.playing = playing;
+    }
+
+    public boolean IsValid() {
+        if (IsValidGuessNumber()) {
+            return true;
+        }
+        if (IsValidGuessNumber()) {
+            return true;
+        }
+        return false;
     }
 
     boolean IsValidLength() {
@@ -21,19 +31,19 @@ public class ValidInput {
         return input.equals(RE_START_MESSAGE) || input.equals(END_GAME_MESSAGE);
     }
 
-    boolean IsValidValue() {
-        HashSet<String> validNumber = ValidNumber();
+    boolean IsValidGuessNumber() {
+        HashSet<String> setRange1To9 = SetRange1To9();
         HashSet<String> inputSet = StringToSet();
-        inputSet.retainAll(validNumber);
+        inputSet.retainAll(setRange1To9);
         return inputSet.size()==PLAYING_NUMBERS_LENGTH;
     }
 
-    HashSet<String> ValidNumber() {
-        HashSet<String> validNumber = new HashSet<>();
+    HashSet<String> SetRange1To9() {
+        HashSet<String> setRange1To9 = new HashSet<>();
         for(int i=MIN_RANGE_NUMBER; i<=MAX_RANGE_NUMBER; i++) {
-            validNumber.add(String.valueOf(i));
+            setRange1To9.add(String.valueOf(i));
         }
-        return validNumber;
+        return setRange1To9;
     }
 
     HashSet<String> StringToSet() {
