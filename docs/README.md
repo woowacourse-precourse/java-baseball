@@ -33,15 +33,17 @@
   - [X] `boolean isNothin(Result result)`
     - 비교 결과 ball과 strike의 개수가 모두 0이면 true, 그렇지 않으면 false 반환
   
-- [ ] GameController Class
+- [ ] Game Class
   - [ ] ``
 
-- [ ] Validator Class
-  - [ ] `boolean isRangeOf(Integer, Integer)`
+- [] Validator Class
+  - [X] `void isRangeOf(Integer, Integer)`
     - 게임 플레이어가 입력한 수가 유효한 수인지 확인하는 메서드
     - 첫 번째 인자는 최대 자리의 수, 두 번째 인자는 게임 플레이어가 입력한 수이다.
-  - [ ] `boolean isRestartable(Integer)`
+    - 범위에 있지 않을 경우 `IllegalArgumentException` 예외를 던진다.
+  - [] `void isRestartable(Integer)`
     - 게임 종료 이후 게임 플레이어가 1, 2 외의 다른 숫자를 입력했는지 확인하는 메서드
+    - 적절한 커맨드가 아닌 경우 `IllegalArgumentException` 예외를 던진다.
 
 - [X] View Class
   - [X] `void printStart()` 
