@@ -5,10 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.participants.StrikeZone;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -35,7 +39,7 @@ class ApplicationTest extends NsTest {
         @Test
         void 예외_테스트1() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> StrikeZone("1"))
+                    assertThatThrownBy(() -> new StrikeZone("1"))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -43,7 +47,7 @@ class ApplicationTest extends NsTest {
         @Test
         void 예외_테스트2() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> StrikeZone("12"))
+                    assertThatThrownBy(() -> new StrikeZone("12"))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -51,7 +55,31 @@ class ApplicationTest extends NsTest {
         @Test
         void 에외_테스트3() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> StrikeZone("123"))
+                    assertThatThrownBy(() -> new StrikeZone("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
+        void 예외_테스트4() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> new StrikeZone(List.of(1)))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
+        void 예외_테스트5() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> new StrikeZone(List.of(1, 2)))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
+        void 에외_테스트6() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> new StrikeZone(List.of(1, 2, 3, 4)))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
