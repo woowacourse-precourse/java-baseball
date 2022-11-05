@@ -41,4 +41,8 @@ public class RandomBaseballGame {
     public Result match(Digits digits) {
         return baseballGame.match(digits, randomDigits);
     }
+
+    public Digits getRandomDigits() {
+        return randomDigits;
+    }
 }
