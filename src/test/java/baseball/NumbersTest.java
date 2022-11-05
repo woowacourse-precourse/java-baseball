@@ -10,16 +10,6 @@ import org.junit.jupiter.api.Test;
 public class NumbersTest {
 
     @Test
-    @DisplayName("숫자는 세 자리다")
-    void numbers_have_length_of_three() {
-        List<Integer> twoDigits = List.of(1, 2);
-        List<Integer> fourDigits = List.of(1, 2, 3, 4);
-
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoDigits));
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourDigits));
-    }
-
-    @Test
     @DisplayName("각 숫자는 1과 9사이다")
     void every_number_is_between_one_to_nine() {
         List<Integer> digitsWithZero = List.of(0, 9, 2);
