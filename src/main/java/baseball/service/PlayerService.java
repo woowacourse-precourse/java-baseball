@@ -12,7 +12,7 @@ public class PlayerService {
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
     public List<Ball> generatePlayerBalls() {
-        System.out.println(INPUT_NUMBER_MESSAGE);
+        System.out.print(INPUT_NUMBER_MESSAGE);
         String playerInput = Console.readLine();
 
         validateInputLength(playerInput);
@@ -28,6 +28,7 @@ public class PlayerService {
         for (String inputSplit : inputSplits) {
             Ball ball = new Ball(Integer.parseInt(inputSplit));
             validateDuplication(playerBalls, ball);
+            validateBallNumberRange(ball);
             playerBalls.add(ball);
         }
         return playerBalls;
