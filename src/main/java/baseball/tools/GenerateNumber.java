@@ -13,10 +13,9 @@ public class GenerateNumber {
             if (uniqueNumbersSet.contains(newNum))
                 continue;
             uniqueNumbersSet.add(newNum);
-            for (int num : uniqueNumbersSet) {
-                uniqueNumber.append(num);
-            }
         }
+        for (int num : uniqueNumbersSet)
+            uniqueNumber.append(num);
         return uniqueNumber;
     }
 }
