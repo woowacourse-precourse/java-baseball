@@ -41,6 +41,11 @@ public class Computer {
         }
     }
 
+    public void clearNumberCount(){
+        strike = 0;
+        ball = 0;
+    }
+
     public String countResultString(){
         if(strike == 0 && ball == 0) {
             return "낫싱";

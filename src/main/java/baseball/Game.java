@@ -11,7 +11,7 @@ public class Game {
 
     public List<Integer> makeUserNumberToList(int userNumber){
         List<Integer> listNumber = new ArrayList<>();
-        while(userNumber < 0){
+        while(userNumber > 0){
             listNumber.add(userNumber%10);
             userNumber /= 10;
         }
@@ -54,6 +54,7 @@ public class Game {
             List<Integer>userNumber = makeUserNumberToList(Integer.parseInt(userNumberString));
             computer.checkNumberCount(userNumber);
             System.out.println(computer.countResultString());
+            computer.clearNumberCount();
 
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
