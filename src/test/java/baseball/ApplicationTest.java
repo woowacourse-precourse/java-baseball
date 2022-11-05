@@ -62,4 +62,13 @@ class ApplicationTest extends NsTest {
         assertThat(testClass.checkInput()).isEqualTo(true);
     }
 
+    @Test
+    public void testComputer()
+    {
+        Computer com = new Computer();
+        com.createNumber();
+        InputValidator testClass = new InputValidator(com.getAnswer());
+        System.out.println(com.getAnswer());
+        assertThat(testClass.checkInput()).isEqualTo(true);
+    }
 }
