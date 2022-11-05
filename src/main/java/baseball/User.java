@@ -1,12 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
-    private List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers;
 
     public List<Integer> getNumbers() {
         return numbers;
@@ -17,7 +16,7 @@ public class User {
         String input = Console.readLine();
 
         if (Utils.isValidUserAnswerInput(input)) {
-            this.numbers = Utils.intToList(Integer.valueOf(input));
+            this.numbers = Utils.intToList(Integer.parseInt(input));
         } else {
             throw new IllegalArgumentException(Constants.WRONG_INPUT_MESSAGE);
         }
@@ -27,15 +26,12 @@ public class User {
         System.out.println(Constants.GAME_RESTART_SELECT_MESSAGE);
         String input = Console.readLine();
 
-        if (Utils.isValidUserRestartInpit(input)) {
-            if ("1".equals(input)) {
-                return true;
-            } else if ("2".equals(input)) {
-                return false;
-            }
+        if ("1".equals(input)) {
+            return true;
+        } else if ("2".equals(input)) {
+            return false;
         } else {
             throw new IllegalArgumentException(Constants.WRONG_INPUT_MESSAGE);
         }
-        return false;
     }
 }

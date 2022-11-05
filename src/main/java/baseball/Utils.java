@@ -25,28 +25,20 @@ class Utils {
         }
 
         // 서로 다른 숫자이어야 한다.
-        boolean duplicateCheck[] = new boolean[10];
+        boolean[] duplicateCheck = new boolean[10];
         for (int i = 0; i < s.length(); i++) {
             int num = Character.getNumericValue(s.charAt(i));
-            if (num < 0 || duplicateCheck[num] == true) {
+            if (num < 0 || duplicateCheck[num]) {
                 return false;
             }
             duplicateCheck[num] = true;
         }
 
         // 0은 허용되지 않는다.
-        if (duplicateCheck[0] == true) {
+        if (duplicateCheck[0]) {
             return false;
         }
 
         return true;
-    }
-
-    public static boolean isValidUserRestartInpit(String s) {
-
-        if ("1".equals(s) || "2".equals(s)) {
-            return true;
-        }
-        return false;
     }
 }
