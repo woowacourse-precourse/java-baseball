@@ -12,6 +12,7 @@ public class User {
         number=new ArrayList<>();
     }
     public void makeUserNumber() {
+        clear();
         System.out.print(Texts.USER_INPUT_NUMBER);
         String number = Console.readLine();
 
@@ -29,4 +30,7 @@ public class User {
         return copyNumber;
     }
 
+    private void clear() {
+        number.clear();
+    }
 }
