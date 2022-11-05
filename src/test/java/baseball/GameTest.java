@@ -158,5 +158,23 @@ class GameTest {
             assertThat(game.isAnswer(result)).isEqualTo(false);
         }
     }
-
+    @Nested
+    class FunctionTest7{
+        @Test
+        void 게임_종료_Case(){
+            Game game = new Game();
+            String num = "2";
+            InputStream in = new ByteArrayInputStream(num.getBytes());
+            System.setIn(in);
+            assertThat(game.isFinish()).isEqualTo(true);
+        }
+        @Test
+        void 게임_다시_시작_Case(){
+            Game game = new Game();
+            String num = "1";
+            InputStream in = new ByteArrayInputStream(num.getBytes());
+            System.setIn(in);
+            assertThat(game.isFinish()).isEqualTo(false);
+        }
+    }
 }
