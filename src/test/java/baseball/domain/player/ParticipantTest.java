@@ -1,10 +1,10 @@
 package baseball.domain.player;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.domain.number.BaseballNumber;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ class ParticipantTest {
         var participant = new Participant("123");
         var actual = participant.numbers();
 
-        Assertions.assertThat(actual)
+        assertThat(actual)
                 .isEqualTo(List.of(
                                 new BaseballNumber(1),
                                 new BaseballNumber(2),
