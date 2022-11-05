@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 
 public class Input {
 
+    private static final int BASEBALL_NUMBER_LENGTH = 3;
+    private static final String RESTART = "1";
+    private static final String END = "2";
+
     public List<Integer> inputBaseballNumber() {
         String text = Console.readLine();
         validateInputBaseballNumber(text);
@@ -29,7 +33,7 @@ public class Input {
     }
 
     private static void validateBaseballNumberLength(String text) {
-        if (text.length() != 3) {
+        if (text.length() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException("3자리가 아닙니다.");
         }
     }
@@ -49,7 +53,7 @@ public class Input {
     }
 
     public static void validateInputRestart(String text) {
-        if (!text.equals("1") && !text.equals("2")) {
+        if (!text.equals(RESTART) && !text.equals(END)) {
             throw new IllegalArgumentException("재시작/종료를 구분하는 1과 2 중 하나의 수를 입력해야 합니다.");
         }
     }
