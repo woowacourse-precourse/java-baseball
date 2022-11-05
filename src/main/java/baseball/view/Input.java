@@ -7,7 +7,7 @@ public class Input {
 
     public String threeNumber() {
         while (true) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String inputData = Console.readLine();
             boolean isValidate = new Validator(inputData).checkBaseballNumber();
             if (isValidate)
