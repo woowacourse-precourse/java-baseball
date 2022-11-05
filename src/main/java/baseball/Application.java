@@ -23,6 +23,10 @@ class Game{
         return computerNum;
     }
 
+    public List<Integer> getUserNum(){
+        return userNum;
+    }
+
     void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
