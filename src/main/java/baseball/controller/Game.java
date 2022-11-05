@@ -18,6 +18,16 @@ public class Game {
         return answerNumber.charAt(idx) == onePlayerNum;
     }
 
+    public void compareNumber(String playerNumber) {
+        for (int i = 0; i < 3; i++) {
+            char onePlayerNumber = playerNumber.charAt(i);
+            if (isStrike(onePlayerNumber, i))
+                strikeCount++;
+            if (isBall(onePlayerNumber, i))
+                ballCount++;
+        }
+    }
+
     private boolean isBall(char onePlayerNum, int idx) {
         for (int i = 0; i < 3; i++) {
             if (i == idx) {
