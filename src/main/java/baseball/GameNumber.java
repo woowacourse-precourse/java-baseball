@@ -66,26 +66,6 @@ public class GameNumber {
         }
     }
 
-    // 결과를 프린트하는 메소드
-    public String printResult(int[] result) {
-        StringBuilder sb = new StringBuilder();
-        // result[0] = strike, result[1] = ball
-        if (isSame(0, result[0]) && isSame(0, result[1])) { // strike ball 둘다 0인 경우
-            sb.append("낫싱");
-            return sb.toString();
-        }
-        if (isSame(0, result[1])) { // ball 이 0인 경우
-            sb.append(result[0] + "스트라이크");
-            return sb.toString();
-        }
-        if (isSame(0, result[0])) { // strike 가 0인 경우
-            sb.append(result[1] + "볼");
-            return sb.toString();
-        }
-        sb.append(result[0] + "볼 " + result[1] + "스트라이크"); // 둘다 0 보다 클 경우
-        return sb.toString();
-    }
-
     // strike 와 ball 의 결과를 리턴받는 메소드
     public int[] getResult(List<Integer> computer, List<Integer> user) {
         int[] result = new int[2];
@@ -105,15 +85,6 @@ public class GameNumber {
             result[1]++; // ball
             return;
         }
-    }
-
-    // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
-    public boolean executeApplication(int[] result) {
-        if (isSame(3, result[0])) { // strike == 3
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        return false;
     }
 
     /**
