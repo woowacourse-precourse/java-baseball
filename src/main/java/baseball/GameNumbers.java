@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameNumbers {
-    private final List<Integer> oneDigitComputerNumbers;
-    private final List<Integer> oneDigitPlayerNumbers;
+    private final OneDigitNumbers oneDigitComputerNumbers;
+    private final OneDigitNumbers oneDigitPlayerNumbers;
 
     public GameNumbers(int computer, int player) {
-        this.oneDigitComputerNumbers = GameUtil.splitNumberToOneDigitNumbers(computer);
-        this.oneDigitPlayerNumbers = GameUtil.splitNumberToOneDigitNumbers(player);
+        this.oneDigitComputerNumbers = new OneDigitNumbers(computer);
+        this.oneDigitPlayerNumbers = new OneDigitNumbers(player);
     }
 
     public Scoreboard compare() {
@@ -19,7 +19,7 @@ public class GameNumbers {
         }
 
         Scoreboard scoreboard = new Scoreboard();
-        List<Integer> retainOneDigitNumbers = this.retainOneDigitNumbers();
+        OneDigitNumbers retainOneDigitNumbers = this.oneDigitComputerNumbers.retainAll(oneDigitPlayerNumbers);
 
         for (int oneDigitNumber : retainOneDigitNumbers) {
             scoreboard.addAllPoint(this.compareOneDigitNumber(oneDigitNumber));
@@ -30,14 +30,6 @@ public class GameNumbers {
 
     private boolean isThreeStrikes() {
         return this.oneDigitComputerNumbers.equals(this.oneDigitPlayerNumbers);
-    }
-
-    private List<Integer> retainOneDigitNumbers() {
-        List<Integer> retainOneDigitNumbers = new ArrayList<>(this.oneDigitComputerNumbers);
-
-        retainOneDigitNumbers.retainAll(this.oneDigitPlayerNumbers);
-
-        return retainOneDigitNumbers;
     }
 
     private Scoreboard compareOneDigitNumber(int oneDigit) {
