@@ -137,6 +137,21 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void 리스트_size_크기가_3이_아닐경우() {
+        //given
+        List<Integer> test = new ArrayList<>();
+        test.add(1);
+        test.add(2);
+        test.add(3);
+        test.add(4);
+
+        //then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.checkSize(test);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
