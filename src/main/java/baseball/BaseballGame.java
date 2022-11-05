@@ -30,6 +30,7 @@ public class BaseballGame {
     public void startGame() {
         do {
             player.getBaseballInput();
+            System.out.println(hint.getBaseballResult(player.getNumbers(), computer.getRandomNumbers()));
         } while (hint.getStrike() != 3);
     }
 
