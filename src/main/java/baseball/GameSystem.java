@@ -12,7 +12,6 @@ public class GameSystem {
 
     public void startGame() {
         String userNumber = number.userNumber();
-        System.out.println(computerNumber);
 
         int ballStrikeResult = check. ballStrikePrintSet(computerNumber, userNumber);
 
