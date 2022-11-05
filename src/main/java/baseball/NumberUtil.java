@@ -2,7 +2,9 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,10 +13,21 @@ public class NumberUtil {
     public static final int NUMBER_START = 1;
     public static final int NUMBER_END = 9;
 
+    public static List<Integer> random() {
+        List<Integer> randomNumberList = new ArrayList<>();
+        while (randomNumberList.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBER_START, NUMBER_END);
+            if (!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
+            }
+        }
+        return randomNumberList;
+    }
+    
     public static List<Integer> input() {
         return parse(Console.readLine());
     }
-    
+
     public static List<Integer> parse(String str) {
         if (lengthCheck(str, NUMBER_SIZE) && numericBoundCheck(str, NUMBER_START, NUMBER_END) && noDuplicateCheck(str)) {
             return str.chars()
