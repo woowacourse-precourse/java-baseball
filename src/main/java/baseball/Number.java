@@ -21,7 +21,6 @@ public class Number {
         }
 
         List<Integer> digits = new ArrayList<>(digitNumberSet);
-
         return digits;
     }
 
@@ -29,4 +28,58 @@ public class Number {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
+    public String userInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String user = Console.readLine();
+        return user;
+    }
+
+    private boolean userNumberDigitIsRight(String userNumber) {
+        if(userNumber.length() != 3) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private static boolean isNumeric(String s) {
+        return s.chars().allMatch(Character::isDigit);
+    }
+
+    private boolean userNumberisNumeric(String userNumber) {
+        return isNumeric(userNumber);
+    }
+
+    private boolean userNumberIsSame(String userNumber) {
+        Set<Character> userNumberDeduplication = new HashSet<>();
+
+        for(int i = 0; i<userNumber.length(); i++) {
+            userNumberDeduplication.add(userNumber.charAt(i));
+        }
+
+        if(userNumberDeduplication.size() < DIGIT_NUMBER) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean userNumberCheck(String userNumber) {
+        if(userNumberDigitIsRight(userNumber) ==  true && userNumberisNumeric(userNumber) == true && userNumberIsSame(userNumber) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String userNumber() {
+        String userNum;
+        while(true) {
+            userNum = userInput();
+            if(userNumberCheck(userNum) == true) {
+                break;
+            }
+        }
+        return userNum;
+    }
 }
