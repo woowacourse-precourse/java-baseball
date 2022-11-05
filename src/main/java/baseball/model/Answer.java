@@ -3,13 +3,11 @@ package baseball.model;
 import static baseball.view.InputValidator.INPUT_LENGTH;
 
 import baseball.vo.Score;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Answer {
+    private static final int CORRECT_STRIKE_NUM = 3;
     List<Integer> answer;
-    Score score;
 
     public Answer(List<Integer> randomThreeNumber) {
         this.answer = randomThreeNumber;
@@ -26,5 +24,9 @@ public class Answer {
             }
         }
         return new Score(strike, ball);
+    }
+
+    public Boolean isUserCorrect(Score userScore) {
+        return userScore.getStrike() == CORRECT_STRIKE_NUM;
     }
 }
