@@ -4,36 +4,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum DigitNumber {
+public class DigitNumber {
 
-    INSTANCE;
+    private static Integer initValue;
+    private final int digit;
 
-    private int digit;
-
-    DigitNumber() {
-
+    private static class DigitNumberHolder {
+        private static final DigitNumber INSTANCE = new DigitNumber(initValue);
     }
 
-    private void build(DigitNumberBuilder builder) {
-        this.digit = builder.digit;
+    private DigitNumber(int digit) {
+        this.digit = digit;
     }
 
-    public static DigitNumber getInstance() {
-        return INSTANCE;
-    }
-
-    public static class DigitNumberBuilder {
-
-        private final int digit;
-
-        private DigitNumberBuilder(int digit) {
-            this.digit = digit;
-        }
-
-        public void build() {
-            DigitNumber.INSTANCE.build(this);
-        }
-
+    public static DigitNumber getInstance(int digit) {
+        DigitNumber.initValue = digit;
+        DigitNumber instance = DigitNumber.DigitNumberHolder.INSTANCE;
+        DigitNumber.initValue = null;
+        return instance;
     }
 
     public Map<Integer, Integer> generateDigitNumberWithoutDuplication() {
