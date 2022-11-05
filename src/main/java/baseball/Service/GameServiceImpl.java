@@ -52,5 +52,14 @@ public class GameServiceImpl implements GameService {
         };
     }
 
+    @Override
+    public int calcStrike(int[] inputNumbers) {
+        int strikeCount = 0;
+        if (balls.getValue(0) == inputNumbers[0]) strikeCount++;
+        if (balls.getValue(1) == inputNumbers[1]) strikeCount++;
+        if (balls.getValue(2) == inputNumbers[2]) strikeCount++;
+        return strikeCount;
+    }
+
 
 }
