@@ -33,8 +33,7 @@ class ValidatorTest {
         String playerInput = "123";
         //when
         //then
-        assertThat(Integer.parseInt(playerInput))
-                .isEqualTo(123);
+        assertThat(Integer.parseInt(playerInput)).isEqualTo(123);
     }
 
 
@@ -83,9 +82,22 @@ class ValidatorTest {
             throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         }
         playerBalls.add(ball);
-
         //then
-        assertThat(playerBalls.size())
-                .isEqualTo(2);
+        assertThat(playerBalls.size()).isEqualTo(2);
+    }
+
+    @Test
+    void validateBallNumberRange_입력된_값이_1부터_9사이의_범위에_해당하지_않으면_예외를_던지는지_테스트() {
+        //given
+        Ball ball = new Ball(0);
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            if (ball.isValidRange()) {
+                return;
+            }
+            throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
     }
 }
