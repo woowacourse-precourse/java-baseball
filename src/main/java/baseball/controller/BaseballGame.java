@@ -24,7 +24,7 @@ public class BaseballGame {
             game(computer, user);
             outputView.printRestartOrExit();
             user.inputRestartOrExitNumber();
-            if (user.restartOrExitNumber == EXIT) {
+            if (user.getRestartOrExitNumber() == EXIT) {
                 break ;
             }
         }

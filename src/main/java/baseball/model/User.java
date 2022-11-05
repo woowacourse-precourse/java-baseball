@@ -23,6 +23,10 @@ public class User {
         return inputThreeNumbers;
     }
 
+    public int getRestartOrExitNumber() {
+        return this.restartOrExitNumber;
+    }
+
     private void stringToList(String inputNumbers) {
         for (int i = 0; i < INPUT_LENGTH; i++) {
             inputThreeNumbers.add(Integer.parseInt(inputNumbers.substring(i, i + 1)));
