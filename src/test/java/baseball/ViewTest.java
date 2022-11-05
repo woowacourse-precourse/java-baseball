@@ -26,4 +26,11 @@ public class ViewTest {
         View.printChoiceEndOrNewGame();
         assertThat("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.").isEqualTo(out.toString().trim());
     }
+    @Test
+    void 숫자를_입력해주세요메시지_출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        View.printPleaseInputNumber();
+        assertThat("숫자를 입력해주세요 : ").isEqualTo(out.toString());
+    }
 }
