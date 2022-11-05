@@ -156,7 +156,7 @@ public class GameManager {
     }
 
     private boolean isNothing(int strike, int ball) {
-
+        return strike == 0 && ball == 0;
     }
 
     private boolean gameover() {
