@@ -6,11 +6,7 @@ public class Application {
         System.out.println(game.opening());
 
         do {
-            try {
-                game.doGame();
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
+            game.doGame();
         } while (game.askContinue());
     }
 }
