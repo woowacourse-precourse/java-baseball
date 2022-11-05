@@ -184,6 +184,10 @@ public class GameManager {
     }
 
     private void exitGame(Exception e) {
-
+        if(e == null) {
+            System.out.println("Thanks for playing game!");
+        } else {
+            System.out.println(e.getMessage());
+        }
     }
 }
