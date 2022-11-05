@@ -21,6 +21,14 @@ public class GameController {
         gameStatusView = new GameStatusView();
     }
 
+    public void runGame(){
+        while(gameStatusService.getGameStatus()){
+            initializeGame();
+            startGame();
+            whatToDoNext();
+        }
+    }
+
     private void initializeGame(){
         generateComputer();
         generateGameStatus();
