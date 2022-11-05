@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class Validator {
 
     public void validatePrediction(String predictedNumber) {
-        if (!validateSize(predictedNumber) && !validateDigits(predictedNumber))
+        if (!validateSize(predictedNumber) || !validateDigits(predictedNumber))
             throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
 
