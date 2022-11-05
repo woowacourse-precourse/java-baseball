@@ -21,7 +21,7 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
-            startBattle(randomNumberList);
+            startGame(randomNumberList);
             endGame();
 
         } while (true);
@@ -32,7 +32,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void startBattle(List<Integer> randomNumberList) {
+    public static void startGame(List<Integer> randomNumberList) {
 
         while(true) {
 
