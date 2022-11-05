@@ -81,12 +81,12 @@ public class Application {
     }
 
     private static void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumber = generateRandomNumberBySize();
-        System.out.println(randomNumber);
+        System.out.println(randomNumber); // DEBUG
         boolean isFinish = false;
         while (!isFinish) {
             List<Integer> playerNumber = inputPlayerNumber();
-            System.out.println(playerNumber);
             isFinish = getNumberHint(randomNumber, playerNumber);
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -97,5 +97,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startGame();
+        System.out.println("게임을 종료합니다.");
     }
 }
