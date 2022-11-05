@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static int createRandomNumber(){
+    static List<Integer> createRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,12 +15,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        int answerNumber = 0; int cnt =100;
-        for (Integer number : computer) {
-            answerNumber += number * cnt;
-            cnt /= 10;
-        }
-        return answerNumber;
+        return computer;
     }
 
     static int getInputNumber (){
