@@ -7,9 +7,9 @@ public class Game {
 
     private final View view;
     private final Judge judge;
-    private final DigitNumber2 digitNumber;
+    private final DigitNumber digitNumber;
 
-    public Game(View view, Judge judge, DigitNumber2 digitNumber) {
+    public Game(View view, Judge judge, DigitNumber digitNumber) {
         this.view = view;
         this.judge = judge;
         this.digitNumber = digitNumber;
