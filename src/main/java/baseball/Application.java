@@ -2,36 +2,38 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 
 class error_check
 {
-    public boolean check_input_lenght(String target)
+    private String target;
+    private boolean check_input_lenght()
     {
-        if (target.length() != 3)
+        if (this.target.length() != 3)
         {
             return false;
         }
         return true;
     }
-    public boolean check_isnum(String target)
+    private boolean check_isnum()
     {
-        for(int i = 0; i < target.length(); i++)
+        for(int i = 0; i < this.target.length(); i++)
         {
-            if ((!Character.isDigit(target.charAt(i))))
+            if (Character.isDigit(this.target.charAt(i)) == false)
             {
                 return false;
             }
         }
         return true;
     }
-    public boolean check_duplicate(String target)
+    private boolean check_duplicate()
     {
         int[] check_array = new int[10];
         int now_value = 0;
-        for (int i = 0; i < target.length(); i++)
+        for (int i = 0; i < this.target.length(); i++)
         {
-            now_value = Character.getNumericValue(target.charAt(i));
+            now_value = Character.getNumericValue(this.target.charAt(i));
             check_array[now_value] += 1;
             if (check_array[now_value] > 1)
             {
@@ -42,13 +44,15 @@ class error_check
     }
     public boolean launch_input_check(String target)
     {
-        if (!check_input_lenght(target)) {
+        this.target = target;
+
+        if (check_input_lenght() == false) {
             return false;
         }
-        if (!check_isnum(target)){
+        if (check_isnum() == false){
             return false;
         }
-        if (!check_duplicate(target)){
+        if (check_duplicate() == false){
             return false;
         }
         return true;
@@ -61,18 +65,35 @@ class input{
         String input_string = Console.readLine();
         return input_string;
     }
-    public void make_integer_arraylist()
+    private ArrayList<Integer> make_integer_list()
     {
-        error_check check = new error_check();
-
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        int tmp = 0;
+        for (int i = 0; i < this.input_string.length(); i++)
+        {
+            tmp = Character.getNumericValue(this.input_string.charAt(i));
+            result.add(tmp);
+        }
+        return result;
+    }
+    public ArrayList<Integer> get_input_value() {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        error_check num_check = new error_check();
         this.input_string = input_number();
-        System.out.println(input_string);
-        System.out.println(check.launch_input_check(input_string));
+
+        if (num_check.launch_input_check(this.input_string) == false)
+        {
+            throw new IllegalArgumentException();
+        }
+        result = make_integer_list();
+        return result;
     }
 }
+
+
 public class Application {
     public static void main(String[] args) {
         input input = new input();
-        input.make_integer_arraylist();
+        input.get_input_value();
     }
 }
