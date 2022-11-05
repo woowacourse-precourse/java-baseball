@@ -3,9 +3,24 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Application {
+    private static List<Integer> stringToIntegerList(String str){
+        List<Integer> newList = new ArrayList<>();
+        for (char x : str.toCharArray()) {
+            newList.add(Character.getNumericValue(x));
+        }
+        return newList;
+    }
+//    private static boolean isNotDuplicate(String str){
+//
+//        return
+//    }
     private static boolean isValidSize(String str){
         return str.length()==3;
     }
@@ -16,6 +31,7 @@ public class Application {
         //정규 표현식을 이용해 Input이 숫자가 아닌 모든 경우와 Input의 범위가 1~9사이가 아닌 경우를 동시에 처리
         if(!isString_in_1to9(input)) return false;
         if(!isValidSize(input)) return false;
+//        if(!isNotDuplicate(input)) return false;
         return true;
     }
     public static List<Integer> createTargetNums(){
