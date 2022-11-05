@@ -1,8 +1,10 @@
 package baseball.domain.score;
 
 public class Score {
+    private static final Integer FIX_SIZE = 3;
     private final Integer ball;
     private final Integer strike;
+
 
     private Score(final Integer ball, final Integer strike) {
         this.ball = ball;
@@ -33,5 +35,9 @@ public class Score {
 
     public Score ball() {
         return new Score(this.ball + 1, this.strike);
+    }
+
+    public boolean strikeAll() {
+        return this.strike == FIX_SIZE;
     }
 }
