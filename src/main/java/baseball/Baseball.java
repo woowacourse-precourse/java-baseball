@@ -77,7 +77,7 @@ public class Baseball {
     }
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
-    private void resetTargetNumber() {
+    public void resetTargetNumber() {
         targetNumber = new ArrayList<>();
         List<Integer> randomNumberList = new ArrayList<>();
 
@@ -91,7 +91,7 @@ public class Baseball {
     }
 
     // 1~9로 이루어진 서로 다른 세자리 정수인지 Validation
-    private boolean isValidNum(int number) {
+    public boolean isValidNum(int number) {
         if(!checkSize(number) || !checkDigit(Integer.toString(number).toCharArray())) {
             return false;
         }
@@ -99,7 +99,7 @@ public class Baseball {
         return true;
     }
 
-    private boolean checkDigit(char[] numberCharArray) {
+    public boolean checkDigit(char[] numberCharArray) {
         for(char numberChar : numberCharArray) {
             if(numberChar == '0') {
                 return false;
@@ -112,7 +112,7 @@ public class Baseball {
         return true;
     }
 
-    private boolean checkSize(int number) {
+    public boolean checkSize(int number) {
         int size = (int)(Math.log10(number)+1);
 
         if(size != Constant.GUESS_NUM_SIZE) {
