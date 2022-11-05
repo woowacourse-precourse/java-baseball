@@ -16,4 +16,14 @@ public class BaseballGameResult {
         }
         return strike;
     }
+
+    int calcBalls(List<Integer> answerNums, List<Integer> inputNums) {
+        int balls = 0;
+        for (int idx = 0; idx < 3; idx++) {
+            if (!answerNums.get(idx).equals(inputNums.get(idx)) && answerNums.contains(inputNums.get(idx))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
