@@ -12,9 +12,7 @@ public class Application {
     static List<Integer> answer;
 
     public static void main(String[] args) {
-        //TODO: 게임시작 메서드 하나로 리텍터링
-        System.out.println(Comment.STARTGAME);
-        generateNewAnswer();
+        startApplication();
 
         while (true) {
             //TODO:
@@ -31,14 +29,19 @@ public class Application {
             boolean isRestart = checkRestart(isCorrect);
 
             if (isRestart) {
-                generateNewAnswer();
+                initializeAnswer();
             } else if (isCorrect) {
                 break;
             }
         }
     }
 
-    private static void generateNewAnswer() {
+    private static void startApplication() {
+        System.out.println(Comment.STARTGAME);
+        initializeAnswer();
+    }
+
+    private static void initializeAnswer() {
         List<Integer> tmpAnswer = new ArrayList<>();
         while (tmpAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
