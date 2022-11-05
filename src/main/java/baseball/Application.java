@@ -17,18 +17,13 @@ public class Application {
             for (int i = 0; i < userNumber.length(); i++) {
                 int n = Character.getNumericValue(userNumber.charAt(i));
                 checkAdequateNumber(n);
+                if (checkOverlap(user, n)) {
+                    user.add(n);
+                }
             }
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생");
             return;
-        }
-
-
-    }
-
-    static void checkAdequateNumber(int n) throws IllegalArgumentException {
-        if (n < 1 || n > 9) {
-            throw new IllegalArgumentException();
         }
     }
 
@@ -47,5 +42,17 @@ public class Application {
         }
     }
 
+    static void checkAdequateNumber(int n) throws IllegalArgumentException {
+        if (n < 1 || n > 9) {
+            throw new IllegalArgumentException();
+        }
+    }
 
+    static boolean checkOverlap(List<Integer> list, int number) throws IllegalArgumentException {
+        if (list.contains(number)) {
+            throw new IllegalArgumentException();
+        } else {
+            return true;
+        }
+    }
 }
