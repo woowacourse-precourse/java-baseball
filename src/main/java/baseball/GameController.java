@@ -15,6 +15,7 @@ public class GameController {
 
     public void playing() {
         List<Integer> userNumber = getUserNumber();
+        computer.getHint(userNumber, goalNumber);
     }
 
     public List<Integer> getUserNumber() throws IllegalArgumentException {
@@ -28,7 +29,18 @@ public class GameController {
             || !Exception.isCheckRange(inputNumber)) {
             throw new IllegalArgumentException();
         }
+        userNumber = changeList(inputNumber);
 
         return userNumber;
     }
+
+    private List<Integer> changeList(String inputNumber) {
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i<inputNumber.length(); i++) {
+            char temp = inputNumber.charAt(i);
+            list.add(i);
+        }
+        return list;
+    }
+
 }

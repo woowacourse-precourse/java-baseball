@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Computer {
@@ -17,5 +18,11 @@ public class Computer {
         }
 
         return randomNumber;
+    }
+
+    public static HashMap<String, Integer> getHint(List<Integer> userNumber, List<Integer> goalNumber) {
+        HashMap<String, Integer> hint = new HashMap<>();
+
+        return hint;
     }
 }

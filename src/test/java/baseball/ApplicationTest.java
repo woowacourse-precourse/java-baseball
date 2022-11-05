@@ -60,6 +60,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void should_Strike_When_SamePositionSameNumber() {
+        List<Integer> randomNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(1, 4, 5);
+        String result = "1스트라이크";
+        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void should_Ball_When_SameNumber() {
+        List<Integer> randomNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 5, 1);
+        String result = "1볼";
+        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void should_Nothing_When_NothingSame() {
+        List<Integer> randomNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 5 , 6);
+        String result = "낫싱";
+        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
