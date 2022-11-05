@@ -32,7 +32,8 @@ public class Application {
 
             int ball = 0;
             int strike = 0;
-            countingBallAndStrike(ball, strike, userNumbers, randomNumberList);
+
+            strike = countingStrike(0, userNumbers, randomNumberList);
 
         } while (true);
     }
@@ -131,7 +132,7 @@ public class Application {
 
     }
 
-    public static void countingStrike(int strike, int[] userNumbers, List<Integer> randomNumberList) {
+    public static Integer countingStrike(int strike, int[] userNumbers, List<Integer> randomNumberList) {
 
         for (int i = 0; i < 3; i++) {
             if (userNumbers[i] == randomNumberList.get(i)) {
@@ -139,6 +140,8 @@ public class Application {
                 strike += 1;
             }
         }
+
+        return strike;
     }
 
     public static void countingBall(int ball, int[] userNumbers, List<Integer> randomNumberList) {
@@ -156,13 +159,6 @@ public class Application {
 
             ball += 1;
         }
-
-    }
-
-    public static void countingBallAndStrike(int ball, int strike, int[] userNumbers, List<Integer> randomNumberList) {
-
-        countingStrike(strike, userNumbers, randomNumberList);
-        countingBall(ball, userNumbers, randomNumberList);
 
     }
 }
