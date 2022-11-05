@@ -2,27 +2,42 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static baseball.ResultMessage.*;
 
 public class BullsAndCows {
-    private final String answerNumber;
-    private final List<Character> answerNumberList;
-    public boolean remainStatus;
+    private final List<Integer> answerNumberList = new ArrayList<>();
 
-    private String userInput;
+    private List<Integer> userInput;
 
     private int strikeCount = 0;
     private int ballCount = 0;
     private static final int STRIKE_COUNT_FOR_END = 3;
 
-
     BullsAndCows() {
-        int randomNumber = Randoms.pickNumberInRange(100, 999);
-        this.answerNumber = String.valueOf(randomNumber);
-        answerNumberList = convertStringToCharList(answerNumber);
+        createRandomAnswer();
+    }
+
+    private void createRandomAnswer() {
+        initCountValues();
+        answerNumberList.clear();
+        while (answerNumberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumberList.contains(randomNumber)) {
+                answerNumberList.add(randomNumber);
+            }
+        }
+    }
+
+    private void initCountValues() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     private List<Character> convertStringToCharList(String string) {
@@ -33,7 +48,9 @@ public class BullsAndCows {
     }
 
     public String getResultOfGuessNumber(String userInput) {
-        this.userInput = userInput;
+        this.userInput = Arrays.stream(userInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         if (isNothing()) {
             return NOTHING.getMessage();
@@ -49,35 +66,33 @@ public class BullsAndCows {
     private String getStrikeNumber() {
         strikeCount = 0;
 
-        for (int index = 0; index < userInput.length(); index++) {
-            if (isStrike(index)) {
-                strikeCount++;
-            }
-        }
+        IntStream.range(0, userInput.size())
+                .filter(this::isStrike)
+                .forEach(index -> strikeCount++);
+
         return STRIKE.of(strikeCount);
     }
 
     private boolean isStrike(int index) {
-        return answerNumber.charAt(index) == userInput.charAt(index);
+        return Objects.equals(answerNumberList.get(index), userInput.get(index));
     }
 
     private String getBallNumber() {
         ballCount = 0;
 
-        for (int index = 0; index < userInput.length(); index++) {
-            if (isBall(index)) {
-                ballCount++;
-            }
-        }
-        return BALL.of(ballCount - strikeCount);
+        IntStream.range(0, userInput.size())
+                .filter(this::isBall)
+                .forEach(index -> ballCount++);
+
+        return BALL.of(ballCount);
     }
 
     private boolean isBall(int index) {
-        return !isStrike(index) && answerNumberList.contains(userInput.charAt(index));
+        return !isStrike(index) && answerNumberList.contains(userInput.get(index));
     }
 
     private boolean isNothing() {
-        return convertStringToCharList(userInput).stream()
+        return userInput.stream()
                 .noneMatch(answerNumberList::contains);
     }
 
