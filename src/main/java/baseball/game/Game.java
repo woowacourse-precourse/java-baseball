@@ -12,5 +12,18 @@ public class Game {
     public static Integer ball;
     public static Integer strike;
 
+    public Game(){
+        makeRandomNumbers();
+    }
+
+    private static void makeRandomNumbers(){
+        computerNumbers = new ArrayList<>();
+        while(computerNumbers.size() <3){
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if(!computerNumbers.contains(randomNumber)){
+                computerNumbers.add(randomNumber);
+            }
+        }
+    }
 
 }
