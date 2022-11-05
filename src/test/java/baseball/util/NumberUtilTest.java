@@ -50,4 +50,17 @@ public class NumberUtilTest {
             checkInputException(input_failure5);
         });
     }
+
+    @DisplayName("힌트를 판단하고 화면에 출력하는 기능 테스트")
+    @Test
+    public void chechHintTest() {
+        List<Integer> answerList1 = List.of(1, 2, 3);
+        List<Integer> userList1 = List.of(1, 2, 3);
+
+        List<Integer> answerList2 = List.of(1, 2, 3);
+        List<Integer> userList2 = List.of(3, 2, 1);
+
+        assertThat(isCorrect(answerList1, userList1)).isTrue();
+        assertThat(isCorrect(answerList2, userList2)).isFalse();
+    }
 }
