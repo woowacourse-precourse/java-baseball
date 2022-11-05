@@ -22,11 +22,11 @@ public class User {
     public static List<Integer>checkUserInput(String userInput){
 
         if(userInput== null){
-            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
+            throw new IllegalArgumentException();
         }
 
         if(userInput.length()!=3){
-            throw new IllegalArgumentException(userInput.length()+"자리는 입력할 수 없습니다.");
+            throw new IllegalArgumentException();
         }
 
         int userInputNum = 0;
@@ -35,7 +35,7 @@ public class User {
             userInputNum = Integer.parseInt(userInput);
 
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException();
         }
 
         return makeUserBalls(userInputNum);
@@ -49,11 +49,11 @@ public class User {
 
         int count = (int) userBallStream.distinct().count();
         if(count!=3){
-            throw new IllegalArgumentException("중복된 숫자는 입력할수 없습니다.");
+            throw new IllegalArgumentException();
         }
 
         if(userBallsList.contains(0)){
-            throw new IllegalArgumentException("볼은 1~9까지의 수 입니다.");
+            throw new IllegalArgumentException();
         }
 
         return userBallsList;
@@ -65,7 +65,7 @@ public class User {
         String userInput =Console.readLine();
 
         if(userInput == null){
-            throw new IllegalArgumentException("공백은 입력할 수 없습니다");
+            throw new IllegalArgumentException();
         }
 
         if("1".equals(userInput)){
@@ -75,7 +75,7 @@ public class User {
             return false;
 
         } else {
-            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다");
+            throw new IllegalArgumentException();
         }
     }
 }

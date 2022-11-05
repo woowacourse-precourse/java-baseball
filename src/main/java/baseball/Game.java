@@ -8,7 +8,7 @@ public class Game {
     private int strike;
 
 
-    public void play() throws IllegalArgumentException{
+    public void play(){
         boolean regame = false;
         do {
             List<Integer> computerBallsList = Computer.makeBalls();
