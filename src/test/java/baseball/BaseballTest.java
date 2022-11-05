@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
@@ -49,4 +50,12 @@ class BaseballTest {
 
         assertThat(scanner.nextLine()).isEqualTo("123");
     }
+
+    @DisplayName("사용자 숫자 자릿수(길이) 확인")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @CsvSource({"'123',true", "'5',false", "'1234',false", "'',false"})
+    void checkNumberLength_userNumber_길이에_따른_boolean_반환(String input, boolean result) {
+        assertThat(checkNumberLength(input)).isEqualTo(result);
+    }
+
 }
