@@ -30,8 +30,8 @@
     - [x] 입력값이 null인지 검증하는 메소드
     - [x] 사용자의 입력이 숫자 형식임을 검증해주는 validate 메소드
 
-- [ ] BaseballNumber 끼리의 결과를 계산해줄 BaseballGameCalculator 클래스
-    - [ ] 게임의 결과(볼, 스트라이크, 낫싱)를 반환하는 로직
+- [x] BaseballNumber 끼리의 결과를 계산해줄 BaseballGameCalculator 클래스
+    - [x] 게임의 결과(볼, 스트라이크)를 반환하는 로직
 
 - [ ] 전체적인 게임의 흐름을 조정할 Controller 클래스
     - [ ] 게임을 초기화하고 진행하는 메소드
