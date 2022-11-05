@@ -24,4 +24,10 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validateNumber("012"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 입력값에_중복인_수가_있을_때_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateNumber("112"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
