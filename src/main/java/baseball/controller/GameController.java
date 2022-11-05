@@ -45,7 +45,7 @@ public class GameController {
     }
 
     private void matchGame(){
-
+        gameService.checkComputerWithPlayerNumber();
     }
 
     private void showPlayersScore(){
