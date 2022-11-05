@@ -70,4 +70,3 @@
 - [ ] userAnswer에 매개변수를 저장
 - [ ] regularExpression에 한자리 숫자인 1 또는 2 인지 확인하는 정규표현식을 초기화.
 - [ ] userAnswer이 regularExpression에 유효한지 비교값을 result에 저장
-- [ ] false이면, false을 리턴
