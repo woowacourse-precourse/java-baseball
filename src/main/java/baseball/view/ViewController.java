@@ -48,6 +48,12 @@ public class ViewController {
             return;
         }
 
+        if (ball > 0 && strike > 0) {
+            display.printBallAndStrikeMessage(ball, strike);
+            display.printNewLine();
+            return;
+        }
+
         if (ball > 0) {
             display.printBallMessage(ball);
         }

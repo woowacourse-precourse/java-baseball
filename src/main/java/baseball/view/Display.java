@@ -46,9 +46,19 @@ public class Display {
         }
     }
 
+    void printBallAndStrikeMessage(int ball, int strike) {
+        try {
+            printBallMessage(ball);
+            bw.write(" ");
+            printStrikeMessage(strike);
+        } catch (IOException e) {
+
+        }
+    }
+
     void printBallMessage(int n) {
         try {
-            bw.write(n + "볼 ");
+            bw.write(n + "볼");
         } catch (IOException e) {
 
         }
