@@ -14,6 +14,6 @@ public class Application {
                 new MessagePrinter()
         );
 
-        baseballGame.doBaseballGame();
+        baseballGame.run();
     }
 }

@@ -28,7 +28,7 @@ public class BaseballGame {
         this.messagePrinter = messagePrinter;
     }
 
-    public void doBaseballGame() {
+    public void run() {
         List<SingleNumber> answer = RandomNumberFactory.newInstance().randomNumbers();
         int oneOrTwoForRestartGame = 0;
 
