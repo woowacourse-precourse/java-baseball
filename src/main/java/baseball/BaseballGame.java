@@ -19,7 +19,7 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        List<Integer> playerNumber = player.getPlayerNumber();
+        String playerNumber = player.getPlayerNumber();
         //computer가 player number 검사
         while(computer.isNotThreeStrike(playerNumber)) {
             //checkNumber에서 스트라이크, 볼 개수 & 낫싱여부 판단 후 결과 출력
