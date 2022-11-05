@@ -12,7 +12,7 @@
   - 한 세트가 끝난 후 게임 종료 여부 결정 시 1, 2가 아닌 다른 값올 입력할 경우
 
 ## 요구 사항 상세
--[ ] DigitNumber enum
+-[X] DigitNumber enum
   - [X] `Map<Integer, Integer> generate3DigitNumberWithoutDuplication()`
     - 컴퓨터 플레이어가 저장할 세 자리의 수를 반환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
