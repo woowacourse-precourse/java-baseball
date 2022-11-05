@@ -14,7 +14,11 @@ public class Computer {
     public void generateNumber(){
         do {
             numbers = pickNumbers();
-        } while (Util.isDuplicated(numbers));
+            System.out.println("1: " + numbers[0] + " 2: " + numbers[1] + " 3:" + numbers[2] );
+
+        } while (!Util.isDuplicated(numbers));
+
+        System.out.println("result: 1: " + numbers[0] + " 2: " + numbers[1] + " 3:" + numbers[2] );
     }
 
     public int[] pickNumbers(){
