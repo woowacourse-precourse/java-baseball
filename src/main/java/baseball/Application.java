@@ -134,8 +134,29 @@ class GameProcessor {
         }
         this.setStrike(strikeCount);
     }
-}
 
+    public void ballChecker(int[] userValue, int[] computerValue) {
+        int ballCount = 0;
+        for (int computerValueDigit = 0; computerValueDigit < 3; computerValueDigit++) {
+            if (userValue[0] == computerValue[computerValueDigit]) {
+                ballCount++;
+                userValue[0] = USER_USED_NUMBER;
+                computerValue[computerValueDigit] = COMPUTER_USED_NUMBER;
+            }
+            if (userValue[1] == computerValue[computerValueDigit]) {
+                ballCount++;
+                userValue[1] = USER_USED_NUMBER;
+                computerValue[computerValueDigit] = COMPUTER_USED_NUMBER;
+            }
+            if (userValue[2] == computerValue[computerValueDigit]) {
+                ballCount++;
+                userValue[2] = USER_USED_NUMBER;
+                computerValue[computerValueDigit] = COMPUTER_USED_NUMBER;
+            }
+        }
+        this.setBall(ballCount);
+    }
+}
 
 
 public class Application {
