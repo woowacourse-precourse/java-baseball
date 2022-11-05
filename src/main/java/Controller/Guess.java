@@ -16,7 +16,6 @@ public class Guess {
 		String number = getUserInput();
 		validateNumberInput(number);
 		List<Integer> digits = convertStringToIntegerList(number);
-		System.out.println();
 
 		int ballsCount = calculateBallsCount(digits, answer);
 		int strikesCount = calculateStrikesCount(digits, answer);
