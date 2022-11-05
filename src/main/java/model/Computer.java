@@ -49,13 +49,19 @@ public class Computer {
 
     private boolean isNumOfComputerIndividually() {
         String strComputerList = "";
-        for (Integer numComputerList : this.numThreeRanOfComputerList) {
-            strComputerList = strComputerList + numComputerList;
-        }
+        strComputerList = getStrFromList(strComputerList);
+       
         if (UseFunc.isNumOfIndividually(strComputerList)) {
             return true;
         }
         return false;
+    }
+
+    private String getStrFromList(String strComputerList) {
+        for (Integer numComputerList : numThreeRanOfComputerList) {
+            strComputerList = strComputerList + numComputerList;
+        }
+        return strComputerList;
     }
 
     public void initCntStrikeBall() {
