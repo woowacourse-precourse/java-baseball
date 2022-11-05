@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     static int goGame = 1;
+    final static int MAX_NUMBER_SIZE = 3;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -12,11 +13,17 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String number = readLine();
-            int randomNumber = pickNumberInRange(100, 999);
+            String randomNumber = String.valueOf(pickNumberInRange(100, 999));
+            System.out.println(randomNumber);
 
             for (int i = 0; i < number.length(); i++) {
-                int dividedNumber = Integer.parseInt(String.valueOf(number.charAt(2 - i)));
+                char dividedNumber = number.charAt(i);
+                int dividedNumberIndex = number.indexOf(dividedNumber);
+                System.out.println(dividedNumberIndex);
                 System.out.println(dividedNumber);
+                if (randomNumber.indexOf(dividedNumber) != -1) {
+
+                }
             }
 
             goGame = 2;
