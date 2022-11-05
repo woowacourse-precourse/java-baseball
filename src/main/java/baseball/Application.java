@@ -31,6 +31,9 @@ public class Application {
             return;
         }
 
+        int strikeNum = countStrikeNum(targetNum, userNum);
+        int ballNum = countBallNum(targetNum, userNum);
+
 
 
 
@@ -92,7 +95,6 @@ public class Application {
 
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println("에러");
             return false;
         }
 
@@ -108,6 +110,18 @@ public class Application {
         }
 
         return strikeNum;
+    }
+
+    static int countBallNum(List<Integer> targetNum, List<Integer> userNum) {
+        int ballNum = 0;
+
+        for (int listIndex = 0; listIndex < userNum.size(); listIndex++) {
+            if(!userNum.get(listIndex).equals(targetNum.get(listIndex)) && targetNum.contains(userNum.get(listIndex))){
+                ballNum++;
+            }
+        }
+
+        return ballNum;
     }
 
 }
