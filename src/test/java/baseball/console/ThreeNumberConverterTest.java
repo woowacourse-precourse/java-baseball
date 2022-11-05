@@ -2,8 +2,8 @@ package baseball.console;
 
 import baseball.converter.ThreeNumberConverter;
 import baseball.exception.DuplicateNumberException;
-import baseball.exception.GameEachInputNumberOutOfRangeException;
-import baseball.exception.GameInputNumberOutOfRangeException;
+import baseball.exception.EachInputNumberOutOfRangeException;
+import baseball.exception.InputNumberOutOfRangeException;
 import baseball.exception.InputNumberFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -84,7 +84,7 @@ class ThreeNumberConverterTest {
 
         //when then
         assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
-                .isInstanceOf(GameEachInputNumberOutOfRangeException.class)
+                .isInstanceOf(EachInputNumberOutOfRangeException.class)
                 .hasMessage("1~9 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
 
@@ -96,7 +96,7 @@ class ThreeNumberConverterTest {
 
         //when then
         assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
-                .isInstanceOf(GameEachInputNumberOutOfRangeException.class)
+                .isInstanceOf(EachInputNumberOutOfRangeException.class)
                 .hasMessage("1~9 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
 
@@ -108,7 +108,7 @@ class ThreeNumberConverterTest {
 
         //when then
         assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
-                .isInstanceOf(GameInputNumberOutOfRangeException.class)
+                .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
 
@@ -120,7 +120,7 @@ class ThreeNumberConverterTest {
 
         //when then
         assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
-                .isInstanceOf(GameInputNumberOutOfRangeException.class)
+                .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
 
@@ -132,7 +132,7 @@ class ThreeNumberConverterTest {
 
         //when then
         assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
-                .isInstanceOf(GameInputNumberOutOfRangeException.class)
+                .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
 
