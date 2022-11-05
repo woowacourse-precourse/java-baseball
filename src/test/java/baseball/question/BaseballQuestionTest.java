@@ -1,5 +1,6 @@
 package baseball.question;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockConstruction;
 import static org.mockito.Mockito.when;
@@ -18,7 +19,9 @@ public class BaseballQuestionTest {
             BaseballType mockBaseballType = mock(BaseballType.class);
             when(mockBaseballType.isFormatCorrect()).thenReturn(false);
 
-            when(new BaseballQuestion(mockBaseballType).ask(123)).thenThrow(new IllegalArgumentException());
+            assertThrows(IllegalArgumentException.class, () -> {
+               new BaseballQuestion(mockBaseballType).ask(123);
+            });
         }
     }
 }
