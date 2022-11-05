@@ -90,7 +90,7 @@
      - 1과 2 이외의 다른 문자인지 검사
     
 ### View
-#### class GameMessage
+#### class Messenger
 1. 게임 시작 문구 출력 기능
    - "숫자 야구 게임을 시작합니다."<br></br>
     
