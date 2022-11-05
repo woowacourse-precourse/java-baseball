@@ -1,14 +1,19 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     final GameReadyMachine gameReadyMachine = new GameReadyMachine();
-
+    final GameProcessor gameProcessor = new GameProcessor();
     @Test
     void 자리수_구분되는_숫자생성_1_3(){
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.setAnswerValue())).isEqualTo(true);
@@ -30,6 +35,17 @@ class ApplicationTest extends NsTest {
         gameReadyMachine.gameReadyComplete();
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.getAnswerValue())).isEqualTo(true);
     }
+
+    @Test
+    void 테스트2_1_with_테스트2_6(){
+        String testData = "234";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        gameProcessor.userInput();
+        assertThat(gameProcessor.getLastInput()).isEqualTo("234");
+    }
+
+
 
     @Test
     void 게임종료_후_재시작() {
