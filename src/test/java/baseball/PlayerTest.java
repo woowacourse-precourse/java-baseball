@@ -76,7 +76,7 @@ class PlayerTest {
             var ref = new Object() {
                 Player player;
             };
-            assertThatThrownBy(() -> ref.player = new Player("123"))
+            assertThatCode(() -> ref.player = new Player("123"))
                     .doesNotThrowAnyException();
         }
 

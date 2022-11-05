@@ -5,12 +5,41 @@ import java.util.Collections;
 import java.util.List;
 
 public class Player {
+    private final static int INPUT_NUMBER_SIZE = 3;
     private final String inputNumbers;
     private List<Integer> playerNumbers = new ArrayList<>(Collections.emptyList());
 
     public Player(String inputNumbers) {
         this.inputNumbers = inputNumbers;
         setPlayerNumber(inputNumbers);
+    }
+
+    /**
+     * 플레이어가 입력한 숫자의 개수가 INPUT_NUMBER_SIZE 와 다르면 예외를 던진다.
+     *
+     * @param playerNumbers 플레어어가 입력한 숫자들
+     * @throws IllegalArgumentException 플레이어의 입력 숫자 갯수가 INPUT_NUMBER_SIZE 와 다르면 던진다.
+     */
+    private static void isNumberCountException(List<Integer> playerNumbers) throws IllegalArgumentException {
+        if (playerNumbers.size() != INPUT_NUMBER_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 중복 숫자가 있으면 예외를 던진다.
+     *
+     * @param playerNumbers 플레이어가 입력한 숫자들
+     * @throws IllegalArgumentException 플레이어의 입력 숫자중 증복 숫자가 있으면 던진다.
+     */
+    private static void isDuplicateNumberException(List<Integer> playerNumbers) throws IllegalArgumentException {
+        boolean[] checkNumbers = new boolean[10];
+        for (Integer playerNumber : playerNumbers) {
+            if (checkNumbers[playerNumber]) {
+                throw new IllegalArgumentException();
+            }
+            checkNumbers[playerNumber] = true;
+        }
     }
 
     /**
@@ -47,20 +76,14 @@ public class Player {
         return list;
     }
 
+    /**
+     * 플레이어가 입력한 숫자의 예외 사항을 체크한다.
+     *
+     * @param playerNumbers 플레이어가 입력한 숫자들
+     * @throws IllegalArgumentException 예외 사항이 발생하면 던진다.
+     */
     private void isException(List<Integer> playerNumbers) throws IllegalArgumentException {
-        if (playerNumbers.size() != 3) {
-            throw new IllegalArgumentException();
-        }
+        isNumberCountException(playerNumbers);
         isDuplicateNumberException(playerNumbers);
-    }
-
-    private static void isDuplicateNumberException(List<Integer> playerNumbers) {
-        boolean[] checkNumbers = new boolean[10];
-        for (Integer playerNumber : playerNumbers) {
-            if (checkNumbers[playerNumber]) {
-                throw new IllegalArgumentException();
-            }
-            checkNumbers[playerNumber] = true;
-        }
     }
 }
