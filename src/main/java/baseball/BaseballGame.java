@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
