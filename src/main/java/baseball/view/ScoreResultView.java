@@ -7,7 +7,7 @@ public class ScoreResultView {
     public ScoreResultView(){}
 
     public void setBallCount(int ballCount) {
-
+        this.ballCount = ballCount;
     }
 
     public void setStrikeCount(int strikeCount){
@@ -23,7 +23,7 @@ public class ScoreResultView {
     }
 
     public boolean isNothing(){
-        return false;
+
     }
 
     public String printNothing(){
@@ -31,7 +31,7 @@ public class ScoreResultView {
     }
 
     public boolean isOnlyBall(){
-        return false;
+
     }
 
     public String printOnlyBall(){
