@@ -11,6 +11,11 @@ public class User {
     private int inputNumber;
 
     public void input() {
+        processInput();
+        convertIntToList();
+    }
+
+    public void processInput() {
         String inputString;
         inputString = Console.readLine();
         setInputNumber(Integer.parseInt(inputString));
@@ -31,5 +36,13 @@ public class User {
 
     public void setInputNumber(int inputNumber) {
         this.inputNumber = inputNumber;
+    }
+
+    public List<Integer> getInputNumberList() {
+        return inputNumberList;
+    }
+
+    public void setInputNumberList(List<Integer> inputNumberList) {
+        this.inputNumberList = inputNumberList;
     }
 }
