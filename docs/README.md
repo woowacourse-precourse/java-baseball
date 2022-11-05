@@ -8,6 +8,7 @@
 - [X] 3자리 수 아닌 경우 Exception 발생
 - [X] 숫자 아닌 경우 Exception 발생
 - [X] 중복 숫자가 포함된 경우 Exception 발생
+- [ ] 1~9 범위가 아닌 숫자의 경우 Exception 발생
 ### 숫자 힌트
 
 ---
