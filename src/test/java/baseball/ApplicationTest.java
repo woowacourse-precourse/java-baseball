@@ -21,6 +21,12 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void calculateBallsCount_메소드로_볼_수_계산() {
+		List<Integer> number = List.of(3, 2, 1);
+		List<Integer> answer = List.of(2, 3, 1);
+		assertThat(calculateBallsCount(number, answer)).isEqualTo(2);
+	}
+	@Test
 	void calculateStrikesCount_메소드로_스트라이크_수_계산() {
 		List<Integer> number = List.of(3, 8, 4);
 		List<Integer> answer = List.of(2, 8, 5);
