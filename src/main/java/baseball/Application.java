@@ -18,10 +18,26 @@ public class Application {
 
     public static boolean isInt(String consoleInput) {
         char charInString;
-        for(int index = 0; index < consoleInput.length(); index++) {
+        for (int index = 0; index < consoleInput.length(); index++) {
             charInString = consoleInput.charAt(index);
-            if(charInString < '1' || charInString > '9')
+            if (charInString < '1' || charInString > '9')
                 return false;
+        }
+        return true;
+    }
+
+    public static boolean isDigitDuplicated(String consoleInput) {
+        boolean[] isUsed = new boolean[10];
+        for (int digit = 1; digit < 10; digit++)
+            isUsed[digit] = false;
+
+        char charInString;
+        int digit;
+        for (int index = 0; index < consoleInput.length(); index++) {
+            charInString = consoleInput.charAt(index);
+            digit = (int)(charInString - '0');
+            if(isUsed[digit]) return false;
+            isUsed[digit] = true;
         }
         return true;
     }
@@ -29,13 +45,11 @@ public class Application {
     public static void validateInput(String consoleInput) throws IllegalArgumentException {
         boolean isValid = true;
         if (!isCorrectLength(consoleInput)) isValid = false;
-        if (!isInt(consoleInput)) isValid = false;
+        else if (!isInt(consoleInput)) isValid = false;
+        else if (!isDigitDuplicated(consoleInput)) isValid = false;
 
         // TODO: raise IllegalArgumentException;
-        if(!isValid) {System.out.println("IllegalArgumentException");}
-        int inputNumber = Integer.parseInt(consoleInput);
-
-        // TODO: implement duplicated number check logic
+        if (!isValid) { System.out.println("IllegalArgumentException"); return; }
     }
 
     public static ArrayList<Integer> separateDigit(int inputNumber) {
