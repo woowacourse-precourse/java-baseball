@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -63,11 +64,11 @@ public class baseballUnitTest {
     @DisplayName("게임 기능 검증")
     class baseballGameTestCase {
 
+        BaseballGame baseballGame = new BaseballGame();
+
         @Test
         @DisplayName("스트라이크 볼 판독기")
         void 스트라이크() {
-            BaseballGame baseballGame = new BaseballGame();
-
             baseballGame.ballReader(1, 1, true);
             assertThat(baseballGame.getStrike()).isEqualTo(1);
         }
@@ -75,8 +76,6 @@ public class baseballUnitTest {
         @Test
         @DisplayName("ball 볼 판독기")
         void 볼() {
-            BaseballGame baseballGame = new BaseballGame();
-
             baseballGame.ballReader(1, 1, false);
             assertThat(baseballGame.getBall()).isEqualTo(1);
         }
@@ -84,8 +83,6 @@ public class baseballUnitTest {
         @Test
         @DisplayName("볼 판독기 (노스트라이크 노볼)")
         void 노볼_노스트라이크() {
-            BaseballGame baseballGame = new BaseballGame();
-
             baseballGame.ballReader(1, 3, false);
             assertThat(baseballGame.getBall()).isEqualTo(0);
         }
@@ -93,7 +90,6 @@ public class baseballUnitTest {
         @Test
         @DisplayName("공던지기 3스트라이크")
         void 공던지기case1() {
-            BaseballGame baseballGame = new BaseballGame();
             ArrayList<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
             ArrayList<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
 
@@ -104,28 +100,27 @@ public class baseballUnitTest {
         @Test
         @DisplayName("공던지기 1스트라이크 1볼")
         void 공던지기case2() {
-            BaseballGame baseballGame = new BaseballGame();
             ArrayList<Integer> user = new ArrayList<>(Arrays.asList(1, 3, 4));
             ArrayList<Integer> computer = new ArrayList<>(Arrays.asList(1, 5, 3));
 
             baseballGame.throwball(user, computer);
             assertThat(baseballGame.getStrike()).isEqualTo(1);
-            assertThat(baseballGame.getBall()).isEqualTo(2);
+            assertThat(baseballGame.getBall()).isEqualTo(1);
         }
 
 
         @Test
-        @DisplayName("ball에 따른 결과 출력 3스트라이크")
+        @DisplayName("print hint test (3스크라이크)")
         void 결과case1() {
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            BaseballGame baseballGame = new BaseballGame();
             ArrayList<Integer> user = new ArrayList<>(Arrays.asList(1, 5, 4));
             ArrayList<Integer> computer = new ArrayList<>(Arrays.asList(1, 5, 4));
+            final String message = 3 + "스트라이크\r\n";
 
             baseballGame.throwball(user, computer);
-            baseballGame.printHint(baseballGame.getBall(), baseballGame.getStrike());
-            assertThat("3스트라이크").isEqualTo(out.toString());
+            baseballGame.printHint();
+            assertThat(message).isEqualTo(out.toString());
         }
 
     }
