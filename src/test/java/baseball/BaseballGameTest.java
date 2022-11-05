@@ -27,6 +27,23 @@ class BaseballGameTest {
     }
 
     @Test
+    void stringToIntListTest() {
+        BaseballGame game = new BaseballGame();
+
+        String num1 = "123";
+        String num2 = "4112";
+        String num3 = "";
+
+        List<Integer> result1 = game.stringToIntList(num1);
+        List<Integer> result2 = game.stringToIntList(num2);
+        List<Integer> result3 = game.stringToIntList(num3);
+
+        assertThat(result1).isEqualTo(List.of(1, 2, 3));
+        assertThat(result2).isEqualTo(List.of(4, 1, 1, 2));
+        assertThat(result3).isEqualTo(List.of());
+    }
+
+    @Test
     void isIllegalInputTest() {
         BaseballGame game = new BaseballGame();
 

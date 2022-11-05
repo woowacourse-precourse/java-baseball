@@ -26,16 +26,26 @@ public class BaseballGame {
         return randomNums;
     }
 
+    public List<Integer> stringToIntList(String numString) {
+        List<Integer> intList = new ArrayList<>();
+
+        for (char num : numString.toCharArray()) {
+            intList.add(Character.getNumericValue(num));
+        }
+
+        return intList;
+    }
+
     public Boolean isIllegalGameInput(int gameInput) {
         if (gameInput <= 111 || 999 <= gameInput) {
-            return Boolean.FALSE;
+            return Boolean.TRUE;
         }
 
         if (checkDuplicateNums(gameInput)) {
-            return Boolean.FALSE;
+            return Boolean.TRUE;
         }
 
-        return Boolean.TRUE;
+        return Boolean.FALSE;
     }
 
     public Boolean checkDuplicateNums(int gameInput) {
