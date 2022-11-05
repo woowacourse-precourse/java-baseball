@@ -2,6 +2,7 @@ package baseball;
 
 import constant.Texts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Checker {
@@ -25,10 +26,10 @@ public class Checker {
         }
     }
     public boolean isNumberDigitLegal(String number) {
-        if (number.length() > 3) {
-            return false;
+        if (number.length() == 3) {
+            return true;
         }
-        return true;
+        return false;
     }
     public boolean isNumberDuplicated(String number) {
         String[] digits = number.split("");
@@ -41,9 +42,12 @@ public class Checker {
         }
         return false;
     }
-    public int checkResult(List<Integer> target, List<Integer> input) {
-        int result = 0;
+    public List<Integer> checkResult(List<Integer> userNumber, List<Integer> computerNumber) {
+        List<Integer> result = new ArrayList<>();
         return result;
+    }
+    public boolean isNothing(List<Integer> result) {
+        return false;
     }
 
     public int isStrike(int target, int input) {
