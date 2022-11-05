@@ -22,10 +22,7 @@ class BallCountTest {
     @Test
     void checkFalse() {
         //given
-        BallCount ballCount = new BallCount();
-        for (int i = 0; i < GameValidator.NUMBER_LENGTH; i++) {
-            ballCount.strike();
-        }
+        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH, 0);
 
         //when
         boolean result = ballCount.check();
@@ -38,10 +35,7 @@ class BallCountTest {
     @Test
     void checkTrue() {
         //given
-        BallCount ballCount = new BallCount();
-        for (int i = 0; i < GameValidator.NUMBER_LENGTH - 1; i++) {
-            ballCount.strike();
-        }
+        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH - 1, 0);
 
         //when
         boolean result = ballCount.check();
@@ -54,9 +48,7 @@ class BallCountTest {
     @Test
     void showBallAndStrike() throws IOException {
         //given
-        BallCount ballCount = new BallCount();
-        ballCount.ball();
-        ballCount.strike();
+        BallCount ballCount = new BallCount(1, 1);
         OutputStream out = setSystemOut();
         String msg = "1볼 1스트라이크";
 
@@ -72,8 +64,7 @@ class BallCountTest {
     @Test
     void showBall() throws IOException {
         //given
-        BallCount ballCount = new BallCount();
-        ballCount.ball();
+        BallCount ballCount = new BallCount(0, 1);
         OutputStream out = setSystemOut();
         String msg = "1볼";
 
@@ -89,8 +80,7 @@ class BallCountTest {
     @Test
     void showStrike() throws IOException {
         //given
-        BallCount ballCount = new BallCount();
-        ballCount.strike();
+        BallCount ballCount = new BallCount(1, 0);
         OutputStream out = setSystemOut();
         String msg = "1스트라이크";
 
@@ -106,10 +96,7 @@ class BallCountTest {
     @Test
     void showStrikeWithInfo() throws IOException {
         //given
-        BallCount ballCount = new BallCount();
-        for (int i = 0; i < GameValidator.NUMBER_LENGTH; i++) {
-            ballCount.strike();
-        }
+        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH, 0);
         OutputStream out = setSystemOut();
         String msg = "3스트라이크";
         String info = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
