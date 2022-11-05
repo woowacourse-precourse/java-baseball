@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Game {
 
@@ -53,13 +51,13 @@ public class Game {
         return strikeAndBallCount;
     }
 
-    public void incorrectUserAnswerRule(String userAnswer) {
+    public void incorrectUserAnswerDigit(String userAnswer) {
         List<Integer> answerList = stringToListInteger(userAnswer);
         if (answerList.size() != 3) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            throw new IllegalArgumentException("숫자 자릿수가 올바르지 않습니다.");
         }
     }
-
+    
     private List<Integer> stringToListInteger(String userAnswer) {
         return listToListInteger(List.of(userAnswer.split("")));
     }
@@ -85,16 +83,14 @@ public class Game {
             System.out.println("낫싱");
         } else if (strike == 3) {
 //            System.out.println(strikeAndBallCount);
-            System.out.print("3스트라이크" + "\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-
+            System.out.println("3스트라이크" + "\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
         return false;
     }
 
-    private String replayGame() {
+    public String replayGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
     }
