@@ -9,7 +9,7 @@ import static constant.BaseballConstant.NUMBER_LENGTH;
 public class InputValidator {
 
     public static boolean isRightInput(String userInput) {
-        return isRightLength(userInput) && isRightRange(userInput) && isDuplicate(userInput);
+        return isRightLength(userInput) && isRightRange(userInput) && isSeparate(userInput);
     }
 
     public static boolean isRightLength(String userInput) {
@@ -20,7 +20,7 @@ public class InputValidator {
         return userInput.matches("[1-9]*$");
     }
 
-    public static boolean isDuplicate(String userInput) {
+    public static boolean isSeparate(String userInput) {
         Set<String> numbers = new HashSet<>(Arrays.asList(userInput.split("")));
 
         return numbers.size() == NUMBER_LENGTH;
