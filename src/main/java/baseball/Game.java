@@ -16,11 +16,10 @@ public class Game {
         computer = new Computer();
         user = new User();
         gameService = new GameService();
+        System.out.println(START_MESSAGE);
     }
 
     public void start() {
-        System.out.println(START_MESSAGE);
-
         computer.generateAnswer();
 
         do {

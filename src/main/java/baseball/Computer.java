@@ -18,7 +18,6 @@ public class Computer {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if(!computer.contains(randomNumber)){
                 computer.add(randomNumber);
-                System.out.print(randomNumber + " ");
             }
         }
     }
