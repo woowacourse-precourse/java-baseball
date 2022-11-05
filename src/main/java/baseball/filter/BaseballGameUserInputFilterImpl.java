@@ -1,6 +1,7 @@
 package baseball.filter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import baseball.message.MessageConstants;
@@ -32,6 +33,16 @@ public class BaseballGameUserInputFilterImpl implements UserInputFilter<Integer>
 
 	@Override
 	public List<Integer> bindingResult(String userInput, int size) {
-		return null;
+		List<Integer> result = new ArrayList<>();
+
+		if (userInput == null || userInput.length() < size) {
+			return Collections.emptyList();
+		}
+		for (int userInputStringIndex = 0; userInputStringIndex < size; userInputStringIndex++) {
+			int userNumber = userInput.charAt(userInputStringIndex) - '0';
+
+			result.add(userNumber);
+		}
+		return result;
 	}
 }
