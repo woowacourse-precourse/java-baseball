@@ -33,7 +33,7 @@ public class BaseballGame {
     }
 
     private static void makeRandomNumber() {
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
@@ -90,7 +90,7 @@ public class BaseballGame {
     }
 
     private static boolean checkCorrect() {
-        return strike == 3;
+        return strike == NUMBER_LENGTH;
     }
 
     private static void resetResult() {
@@ -108,9 +108,9 @@ public class BaseballGame {
             throw new IllegalArgumentException();
         }
 
-        if (exitNumber.equals("2")) {
+        if (Integer.parseInt(exitNumber) == STOP) {
             gameAvailable = false;
-        } else if (exitNumber.equals("1")) {
+        } else if (Integer.parseInt(exitNumber) == CONTINUE) {
             computerNumbers = new ArrayList<>();
             makeRandomNumber();
         }
