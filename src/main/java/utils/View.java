@@ -10,4 +10,16 @@ public class View {
     public static void printInput(){
         System.out.print(INPUT_MESSAGE);
     }
+
+    public static void printHint(int ball, int strike){
+        if (strike == 0 && ball == 0) {
+            System.out.println(HINT_NOTHING);
+        } else if (strike == 0) {
+            System.out.println(ball + HINT_BALL);
+        } else if (ball == 0) {
+            System.out.println(strike + HINT_STRIKE);
+        } else {
+            System.out.println(ball + HINT_BALL + " " + strike + HINT_STRIKE);
+        }
+    }
 }
