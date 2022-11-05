@@ -20,7 +20,7 @@ public class InputTest {
         String inputString = "456";
         List<Integer> testList = Arrays.asList(4, 5, 6);
         // when
-        inputList = input.inputDigit(inputString);
+        inputList = input.changeInputStringToList(inputString);
         // then
         Assertions.assertThat(inputList).isEqualTo(testList);
     }

@@ -41,7 +41,7 @@ public class Game {
             throw new IllegalArgumentException();
         }
 
-        return input.inputDigit(userInput);
+        return input.changeInputStringToList(userInput);
     }
 
     /**
