@@ -45,6 +45,14 @@ public class Game {
         return "";
     }
 
+    public void printStartingMessage() {
+        System.out.printf(STARTING_MESSAGE);
+    }
+
+    public int getNumberOfAttempts() {
+        return numberOfAttempts;
+    }
+
     private void printResult(List<Integer> userBall, List<Integer> computerBall) {
         Map<String, Integer> result = ballReader.getResult(userBall, computerBall);
         if (result.isEmpty()) {
