@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Game {
 	private static final Game instance = new Game();
-
+	private static final int STRIKE = 0;
+	private static final int BALL = 1;
 
 	private Game() {
 	}
