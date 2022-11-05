@@ -60,13 +60,24 @@ public class BaseballGame {
         return strikeNum;
     }
 
-    private void selectGameRestart(int strikeNum){
-        if(strikeNum != 3)
+    private void selectGameRestart(int strikeNum) {
+        if (strikeNum != 3)
             return;
         String inputNum;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         inputNum = receiveInput();
-        if(inputNum.equals("2"))
+        if (inputNum.equals("2"))
             System.exit(0);
+    }
+
+    private void showGameResult(int strikeNum, int ballNum) {
+        if (strikeNum != 0 && ballNum != 0)
+            System.out.println(ballNum + "볼" + " " + strikeNum + "스트라이크");
+        if (strikeNum == 0 && ballNum != 0)
+            System.out.println(ballNum + "볼");
+        if (strikeNum == 3 && ballNum == 3)
+            System.out.println(strikeNum + "스트라이크");
+        if (strikeNum == 0 & ballNum == 0)
+            System.out.println("낫싱");
     }
 }
