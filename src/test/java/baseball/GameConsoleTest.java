@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.baseball.Digits;
+import baseball.baseball.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -66,6 +67,18 @@ class GameConsoleTest {
             boolean shallReplay = gameConsole.inputShallReplay();
 
             assertThat(shallReplay).isEqualTo(false);
+        }
+
+        @Test
+        @DisplayName("1과 2이 아닌 값을 입력한 경우")
+        void cassFail() {
+            GameConsole gameConsole = new GameConsole();
+
+            input("A");
+
+            assertThatThrownBy(gameConsole::inputShallReplay)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1과 2중 하나만 입력하세요");
         }
     }
 
