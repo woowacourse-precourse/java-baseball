@@ -80,4 +80,36 @@ public class Computer {
             }
         }
     }
+
+    public void printGameResult() {
+        compareGameScore();
+        printStrike();
+        printBall();
+        printNothing();
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+        }
+    }
+
+    public void printStrike() {
+        if (ballCount == 0 && strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+            if (strikeCount == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+    }
+
+    public void printBall() {
+        if (strikeCount == 0 && ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        }
+    }
+
+    public void printNothing() {
+        if (nothingCount == 3) {
+            System.out.println("낫싱");
+        }
+    }
 }
