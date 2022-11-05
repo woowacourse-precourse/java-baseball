@@ -17,7 +17,6 @@ public class Game {
 	public void play() {
 		GameView.printStartMessage();
 		computer.createAnswer();
-		System.out.println("computer.getAnswer() = " + computer.getAnswer());
 
 		tryCorrectAnswer();
 	}
