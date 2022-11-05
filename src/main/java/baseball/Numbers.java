@@ -1,22 +1,21 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Numbers {
 
-    private static final int DIGIT_MINIMUM = 1;
-    private static final int DIGIT_MAXIMUM = 9;
     private static final int DIGITS_LENGTH = 3;
 
-    private final List<Integer> digits;
+    private final List<Digit> digits;
 
     public Numbers(List<Integer> digits) {
         validateLength(digits);
-        validateRanges(digits);
         validateNoDuplicates(digits);
-        this.digits = new ArrayList<>(digits);
+        this.digits = digits.stream()
+                .map(Digit::new)
+                .collect(Collectors.toList());
     }
 
     private void validateLength(List<Integer> digits) {
@@ -32,20 +31,9 @@ public class Numbers {
         }
     }
 
-    private void validateRanges(List<Integer> digits) {
-        for (Integer digit : digits) {
-            if (digit < DIGIT_MINIMUM) {
-                throw new IllegalArgumentException("각 숫자는 1 이상이어야 합니다");
-            }
-            if (digit > DIGIT_MAXIMUM) {
-                throw new IllegalArgumentException("각 숫자는 9 이하여야 합니다");
-            }
-        }
-    }
-
     public int countStrikesWith(Numbers other) {
         int strikes = 0;
-        for (Integer digit : digits) {
+        for (Digit digit : digits) {
             if (other.doesNotContain(digit)) {
                 continue;
             }
@@ -58,7 +46,7 @@ public class Numbers {
 
     public int countBallsWith(Numbers other) {
         int balls = 0;
-        for (Integer digit : digits) {
+        for (Digit digit : digits) {
             if (other.doesNotContain(digit)) {
                 continue;
             }
@@ -69,11 +57,11 @@ public class Numbers {
         return balls;
     }
 
-    private boolean doesNotContain(Integer digit) {
+    private boolean doesNotContain(Digit digit) {
         return !digits.contains(digit);
     }
 
-    private int positionOf(Integer digit) {
+    private int positionOf(Digit digit) {
         return digits.indexOf(digit);
     }
 }
