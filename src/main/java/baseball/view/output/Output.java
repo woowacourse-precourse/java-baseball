@@ -5,6 +5,8 @@ public interface Output {
 
     void printNumberRequest();
 
+    void printResult(String resultMessage);
+
 
 
 }

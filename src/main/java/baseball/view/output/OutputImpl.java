@@ -15,4 +15,9 @@ public class OutputImpl implements Output {
     public void printNumberRequest() {
         System.out.print(NUMBER_REQUEST_MESSAGE);
     }
+
+    @Override
+    public void printResult(String resultMessage) {
+        System.out.println(resultMessage);
+    }
 }
