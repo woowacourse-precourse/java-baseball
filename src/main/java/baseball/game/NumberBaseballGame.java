@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,7 +19,7 @@ public abstract class NumberBaseballGame {
         gameOver();
     }
 
-    private static void setup() {
+    protected static void setup() {
         printGameStartPhrase();
         pickAnswerNumberList();
     }
