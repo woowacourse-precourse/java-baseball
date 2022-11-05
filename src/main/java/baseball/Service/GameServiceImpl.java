@@ -70,5 +70,17 @@ public class GameServiceImpl implements GameService {
         return ballCount;
     }
 
+    @Override
+    public void calcResult(int[] inputNumbers) {
+        int strikeCount = calcStrike(inputNumbers);
+        int ballCount = calcBallet(inputNumbers);
+        StringBuilder printString = new StringBuilder();
+
+        if (ballCount > 0) printString.append(ballCount + "볼 ");
+        if (strikeCount > 0) printString.append(strikeCount + "스트라이크");
+        if (ballCount == 0 && strikeCount == 0) printString.append("낫싱");
+        System.out.println(printString);
+    }
+
 
 }

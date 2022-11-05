@@ -6,4 +6,5 @@ public interface GameService {
     int [] getInputs();
     int calcStrike(int [] inputNumbers);
     int calcBallet(int [] inputNumbers);
+    void calcResult(int [] inputNumbers);
 }
