@@ -55,6 +55,23 @@ public class Application {
         return result;
     }
 
+    public void printJudge(int[] score){
+        int strikes = checkIfScoreIsInRange(score[0]);
+        int balls = checkIfScoreIsInRange(score[1]);
+        System.out.println(returnStringByCondition(strikes, balls));
+    }
+
+    private int checkIfScoreIsInRange(int i) {
+        if(i > 3 || i < 0) throw new IllegalArgumentException("score가 범위 안에 있지 않습니다");
+        return i;
+    }
+
+    private String returnStringByCondition(int strikes, int balls){
+        if(balls == 3) return "낫싱";
+        else if(strikes == 3) return "3스트라이크";
+        else return balls+"볼 "+strikes+"스트라이크";
+    }
+
     private void compareEachDigit(int answer, int value, int n, int[] result) {
         while(n >=1){
             if(answer/n == value/n) result[0]++;
