@@ -3,10 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Computer.RAND_NUM_MAX;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,5 +52,16 @@ class ApplicationTest extends NsTest {
         List<Integer> before_number = computer.createRandomNumber();
         Set<Integer> after_number = new HashSet<>(before_number);
         assertThat(after_number.size()).isEqualTo(before_number.size());
+    }
+
+    @Test
+    public void 임의의_3자리_숫자의_범위_테스트() {
+        Computer computer = new Computer();
+        List<Integer> number = computer.createRandomNumber();
+        List<Integer> range = Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+        for(int numberIndex = 0; numberIndex < RAND_NUM_MAX; numberIndex++) {
+            assertThat(range).contains(number.get(numberIndex));
+        }
     }
 }
