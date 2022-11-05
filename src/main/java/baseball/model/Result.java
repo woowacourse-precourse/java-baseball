@@ -26,6 +26,30 @@ public class Result {
         return new Result(ball, strike, out + 1);
     }
 
+    public boolean hasBall() {
+        return ball > 0;
+    }
+
+    public boolean hasStrike() {
+        return strike > 0;
+    }
+
+    public boolean isGameEnd() {
+        return strike == Balls.NUMBER_OF_BALLS;
+    }
+
+    public boolean isNothing() {
+        return ball == 0 && strike == 0;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
