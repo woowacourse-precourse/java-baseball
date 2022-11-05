@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -42,6 +43,8 @@ public class Application {
             userList.add(userNum.charAt(i) - '0');
         }
 
+        userException(userNum, userList);
+
         return userList;
     }
     
@@ -75,5 +78,23 @@ public class Application {
         }
 
         System.out.println(sb);
+    }
+
+    // 예외 처리 기능
+    // 3자리여부, 숫자여부, 중복여부
+    public static void userException(String userNum, List userList) {
+        if (userNum.length() != 3) {
+            throw new IllegalArgumentException("3자리 입력 해주세요");
+        } else if(!userNum.chars().allMatch((Character::isDigit))) {
+            throw new IllegalArgumentException("숫자만 입력 해주세요");
+        }
+
+        for(int i=0; i<3; i++) {
+            int count = Collections.frequency(userList, userNum.charAt(i) -'0');
+
+            if(count > 1) {
+                throw new IllegalArgumentException("다른 숫자만 입력 해주세요");
+            }
+        }
     }
 }
