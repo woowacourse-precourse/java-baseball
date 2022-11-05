@@ -1,13 +1,13 @@
-package baseball;
+package baseball.domain;
 
-public class Number {
+public class BaseBallNumber {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
-    private int inputValue = 0;
+    private int inputValue;
 
-    public Number(int inputValue) {
+    public BaseBallNumber(int inputValue) {
         vaildateNumber(inputValue);
         this.inputValue = inputValue;
     }
