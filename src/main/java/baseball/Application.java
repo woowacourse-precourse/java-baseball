@@ -52,6 +52,13 @@ public class Application {
         }
     }
     
+    public static void resetValue(){
+        computerNumber = new ArrayList<>();
+        userNumber = new ArrayList<>();
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
     public static Integer answerNumber(BufferedReader br) throws IOException{
         String newGameChoice = br.readLine();
         if(newGameChoice.equals("1") || newGameChoice.equals("2")){
