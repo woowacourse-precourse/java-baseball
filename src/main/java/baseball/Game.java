@@ -12,10 +12,13 @@ public class Game {
     static final int INPUT_LENGTH = 3;
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
+    static final String NOTHING = "낫싱";
+    static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     List<Integer> computerNumber;
     List<Integer> playerNumber;
 
-    public Game(){
+    public Game() {
         computerNumber = getComputerNumber();
     }
 
@@ -71,4 +74,20 @@ public class Game {
         ballCount -= strikeCount;
         return new int[]{ballCount, strikeCount};
     }
+
+    public void printResult(int[] countResult) {
+        if (countResult[0] == 0 && countResult[1] == 0) {
+            System.out.println(NOTHING);
+        } else if (countResult[0] != 0 && countResult[1] == 0) {
+            System.out.println(countResult[0] + BALL);
+        } else if (countResult[0] == 0 && countResult[1] != 0) {
+            System.out.println(countResult[1] + STRIKE);
+        } else if (countResult[0] != 0 && countResult[1] != 0) {
+            System.out.println(countResult[0] + BALL + " " + countResult[1] + STRIKE);
+        }
+        if(countResult[1] == 3){
+            System.out.println(GAME_END);
+        }
+    }
+
 }
