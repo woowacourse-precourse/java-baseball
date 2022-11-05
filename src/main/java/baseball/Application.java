@@ -53,4 +53,16 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+    
+    public static int changeStrToInt(String input) {
+        int number;
+
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return number;
+    }
 }
