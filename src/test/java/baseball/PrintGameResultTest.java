@@ -81,4 +81,40 @@ public class PrintGameResultTest {
             assertThat(gameMessage.getBallCountResult(result.get(BaseballScore.BALL))).isEqualTo("");
         }
     }
+
+    @Nested
+    class GetNothingCountResultTest {
+        @Test
+        void case1() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.NOTHING, 1);
+                }
+            };
+            assertThat(gameMessage.getNothingResult(result.get(BaseballScore.NOTHING))).isEqualTo("");
+        }
+
+        @Test
+        void case2() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.NOTHING, 3);
+                }
+            };
+            assertThat(gameMessage.getNothingResult(result.get(BaseballScore.NOTHING))).isEqualTo("낫싱");
+        }
+
+        @Test
+        void case3() {
+            GameMessage gameMessage = new GameMessage();
+            Map<BaseballScore, Integer> result = new HashMap<>() {
+                {
+                    put(BaseballScore.NOTHING, 0);
+                }
+            };
+            assertThat(gameMessage.getNothingResult(result.get(BaseballScore.NOTHING))).isEqualTo("");
+        }
+    }
 }
