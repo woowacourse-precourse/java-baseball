@@ -8,6 +8,11 @@ public class ValidateNumber {
 
     private final static List<Integer> CHOICE_LIST = List.of(1, 2);
 
+    /**
+     * 입력 받은 숫자의 자릿수와 게임에서 설정한 자릿수 비교
+     * @param number 입력 받은 수
+     * @param p 입력 받은 수의 길이와 게임에서 설정한 자릿수를 비교한다.
+     */
     public static void validateLength(int number, Predicate<Integer> p) {
         String s = String.valueOf(number);
         int length = s.length();
