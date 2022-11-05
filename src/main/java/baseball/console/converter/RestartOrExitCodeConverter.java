@@ -5,14 +5,16 @@ import baseball.console.exception.InvalidStatusCodeException;
 
 public class RestartOrExitCodeConverter {
 
-    public static final int RESTART_CODE = 0;
-    public static final int EXIT_CODE = 1;
+    public static final int START_CODE = 1;
+    public static final int EXIT_CODE = 2;
     private String inputString;
 
     public Integer getRestartOrExitCode(String inputString) throws InputNumberFormatException {
         this.inputString = inputString;
+
         int statusCode = getStatusNumber(inputString);
         validateStatusCode(statusCode);
+
         return statusCode;
     }
 
@@ -25,7 +27,7 @@ public class RestartOrExitCodeConverter {
     }
 
     private void validateStatusCode(int num) {
-        if (!(num == RESTART_CODE || num == EXIT_CODE)) {
+        if (!(num == START_CODE || num == EXIT_CODE)) {
             throw new InvalidStatusCodeException(inputString);
         }
         if (inputString.length() != 1) {
