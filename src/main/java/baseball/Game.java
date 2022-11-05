@@ -1,9 +1,15 @@
 package baseball;
 
 public class Game {
-    private ComputerRandomNumber computerRandomNumber = new ComputerRandomNumber();
+    private ComputerRandomNumber computerRandomNumber;
+    private UserInput userInput;
 
+    public Game() {
+        computerRandomNumber = new ComputerRandomNumber();
+        userInput = new UserInput();
+    }
     public void run() {
-        System.out.println(computerRandomNumber.makeComputerNumber());
+        computerRandomNumber.makeComputerNumber();
+        userInput.userNumberInput();
     }
 }
