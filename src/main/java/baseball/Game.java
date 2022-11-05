@@ -3,21 +3,23 @@ package baseball;
 import java.util.List;
 
 public class Game {
-
+    private static final String BALL_STR = "볼 ";
+    private static final String STRIKE_STR = "스트라이크 ";
+    private static final String NOTHING = "낫싱";
 
     public String makeHint (List<Character> answer, List<Character> input) {
         int strike = countStrike(answer, input);
         int ball = countBall(answer, input);
         if(strike != 0) {
             if(ball != 0) {
-                return ball + "볼" + strike + "스트라이크 ";
+                return ball + BALL_STR + strike + STRIKE_STR;
             }
-            return strike + "스트라이크";
+            return strike + STRIKE_STR;
         }
         if(ball != 0) {
-            return ball + "볼";
+            return ball + BALL_STR;
         }
-        return "낫싱";
+        return NOTHING;
     }
 
     public int countStrike(List<Character> answer, List<Character> input) {
