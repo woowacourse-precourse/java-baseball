@@ -1,9 +1,9 @@
 package baseball.domain.baseball.status;
 
-import baseball.domain.baseball.BaseballGame;
+import baseball.domain.baseball.BaseballContext;
 
 public interface BaseballGameStatus {
-    BaseballGameStatus next(BaseballGame baseballGame);
+    BaseballGameStatus next(BaseballContext baseballContext);
 
     boolean runAble();
 }
