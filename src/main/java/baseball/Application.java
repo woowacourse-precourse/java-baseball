@@ -28,8 +28,13 @@ public class Application {
 
         if (num.length() == 3) {
             UserChoiceNum = InputNumber(num);
-        } else if(num.length() !=3){
-           throw new IllegalArgumentException("3자리수만입력가능합니다");
+        }
+        try {
+            if (num.length() != 3) {
+                throw new IllegalArgumentException(String.format("3자리수만입력가능합니다"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return UserChoiceNum;
     }
@@ -81,10 +86,10 @@ public class Application {
         }
     return RandomNumber;
     }
-    public static int HomeRun(){
+    public static int Strike3(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-       
+        int Restart = 0;
         String choice = Console.readLine();
         if(choice.equals("1")){
             Restart = 0;
@@ -94,21 +99,48 @@ public class Application {
         return Restart;
     }
 
+    public static List<Integer> CheckResult(List<Integer> RandomNumber,int[] UserNum){
+        int Restart = 0;
+        HashMap<String, Integer> result = BallStrike(RandomNumber, UserNum);
+        int Ball = result.get("볼");
+        int Strike = result.get("스트라이크");
+        if(Ball ==0 && Strike ==0){
+            System.out.println("낫싱");
+        }
+        if(Strike == 3){
+            System.out.println(Strike + "스트라이크");
+            Restart = Strike3();
+            RandomNumber = Restart(Restart);
+            Strike = 0;
+        }
+        if(Ball == 0 && Strike >0){
 
-
-
+            System.out.printf("%d스트라이크\n",Strike);
+        }
+        if(Ball > 0 && Strike ==0){
+            System.out.printf("%d볼\n",Ball);
+        }
+        if(Ball>0 && Strike>0){
+            System.out.printf("%d볼 %d스트라이크\n",Ball,Strike);
+        }
+        return RandomNumber;
+    }
     public static void main(String[] args) {
         System.out.println("게임을 시작합니다,");
 
         List<Integer> RandomNumber = new ArrayList<>();
         RandomNumber = PickRandomNumber();
+        System.out.println(RandomNumber);
         User: while(RandomNumber.size()>0) {
-            System.out.println(RandomNumber);
             int UserChoiceNum[] = new int[3];
             System.out.print("숫자를 입력해주세요");
             String num = Console.readLine();
             int[] UserNum = GoAndStop(num, UserChoiceNum);
-            //RandomNumber = CheckResult(RandomNumber,UserNum);
+            if(UserNum == null){
+                continue ;
+            }else if(UserNum != null) {
+                RandomNumber = CheckResult(RandomNumber, UserNum);
+            }
         }
     }
 }

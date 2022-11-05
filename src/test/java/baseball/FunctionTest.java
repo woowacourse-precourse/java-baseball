@@ -1,24 +1,17 @@
 package baseball;
 
-
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import static baseball.Application.*;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class FunctionTest {
 @Nested
@@ -112,13 +105,13 @@ class 랜덤으로숫자를뽑기{
     }
     @Nested
     class 스트라이크3번{
-        @Test
+            @Test
             void StrikeTest1(){
             int Restart = 0;
             String choice = "2";
             InputStream in = new ByteArrayInputStream(choice.getBytes());
             System.setIn(in);
-            assertEquals(1,HomeRun());
+            assertEquals(1,Strike3());
         }
 
         @Test
@@ -127,7 +120,21 @@ class 랜덤으로숫자를뽑기{
             String choice = "1";
             InputStream in = new ByteArrayInputStream(choice.getBytes());
             System.setIn(in);
-            assertEquals(0,HomeRun());
+            assertEquals(0,Strike3());
+        }
+    }
+
+    @Nested
+    class Check{
+        @Test
+        void Result(){
+            List<Integer> RandomNumber = List.of(3,1,2);
+            int[] UserNum = new int[]{2,1,3};
+            HashMap<String, Integer> result = BallStrike(RandomNumber, UserNum);
+            int Ball = result.get("볼");
+            int Strike = result.get("스트라이크");
+            RandomNumber = CheckResult(RandomNumber,UserNum);
+            assertEquals(RandomNumber,RandomNumber);
         }
 
     }
