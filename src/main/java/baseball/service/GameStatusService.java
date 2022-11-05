@@ -4,7 +4,9 @@ public class GameStatusService {
 
     private boolean gameStatus;
 
-    public GameStatusService(){}
+    public GameStatusService(){
+        gameStatus = true;
+    }
 
     public boolean isEndOfGame(String opinion){
         return false;
