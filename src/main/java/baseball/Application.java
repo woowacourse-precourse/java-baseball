@@ -10,6 +10,7 @@ class Game{
     private List<Integer> computerNum = new ArrayList<>();
     String userInput;
     private List<Integer> userNum = new ArrayList<>();
+    List<Integer> copyUserNum = new ArrayList<>();
 
     public Game(){
         while (computerNum.size() < 3) {
@@ -47,6 +48,13 @@ class Game{
             userNum.add((int) userInput.charAt(i));
         }
     }
+
+    boolean isNothing(){
+        copyUserNum = new ArrayList<>(userNum);
+        copyUserNum.retainAll(computerNum);
+
+        return copyUserNum.isEmpty();
+    }
 }
 
 public class Application {
@@ -56,7 +64,7 @@ public class Application {
         game.setUserInput();
 
         while(!game.getGameNums().equals(game.getUserNum())) {
-        
+
         }
     }
 
