@@ -138,8 +138,8 @@ public class Application {
         }
         sb = getStringBuilder();
 
-        updateStrikeBallStr(sb, "Strike", typeScoreMap);
         updateStrikeBallStr(sb, "Ball", typeScoreMap);
+        updateStrikeBallStr(sb, "Strike", typeScoreMap);
         return sb.toString().strip();
     }
 
