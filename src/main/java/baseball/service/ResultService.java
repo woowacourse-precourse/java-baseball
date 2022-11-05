@@ -3,8 +3,6 @@ package baseball.service;
 import baseball.domain.InputValue;
 import baseball.exception.InputException;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
@@ -22,7 +20,7 @@ public class ResultService {
         while (strike != 3) {
             List<Integer> inputNumber = inputValue.inputNum();
 
-            validation.InputValid(randomNumber, inputNumber);
+            validation.input(randomNumber, inputNumber);
 
             strike = rules.Strike(randomNumber, inputNumber);
             ball = rules.Ball(randomNumber, inputNumber);
@@ -43,7 +41,7 @@ public class ResultService {
 
         want = Integer.parseInt(readLine().replaceAll("\\s", ""));
 
-        validation.ReStartValid(want);
+        validation.restart(want);
 
         return want;
     }
