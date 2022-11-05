@@ -1,10 +1,11 @@
 package baseball.domain;
 
+import baseball.util.Number;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import baseball.util.Number;
 
 public class GameResult {
     int strike;
@@ -27,10 +28,10 @@ public class GameResult {
         }
 
         StringBuilder result = new StringBuilder();
-        if (0 < ball) {
+        if (Number.isPositive(ball)) {
             result.append(ball).append("볼 ");
         }
-        if (0 < strike) {
+        if (Number.isPositive(strike)) {
             result.append(strike).append("스트라이크");
         }
         return result.toString();
