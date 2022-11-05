@@ -34,7 +34,7 @@ class ResultTest {
         @Test
         @DisplayName("완벽인 경우")
         void caseTrue() {
-            Result result = new Result(3,0);
+            Result result = new Result(3, 0);
 
             assertThat(result.isComplete()).isEqualTo(true);
         }
@@ -42,7 +42,7 @@ class ResultTest {
         @Test
         @DisplayName("완벽이 아닌 경우")
         void caseFalse() {
-            Result result = new Result(2,0);
+            Result result = new Result(2, 0);
 
             assertThat(result.isComplete()).isEqualTo(false);
         }
@@ -78,7 +78,7 @@ class ResultTest {
         @Test
         @DisplayName("낫싱인 경우")
         void caseNothing() {
-            Result result = new Result(0,0);
+            Result result = new Result(0, 0);
 
             assertThat(result.toString()).isEqualTo("낫싱");
         }
