@@ -1,12 +1,12 @@
 package baseball;
 
-public enum Configure {
+public enum Setup {
 
 	NUMBER_DIGIT(3);
 
-	private int value;
+	private final int value;
 
-	Configure(int value) {
+	Setup(int value) {
 		this.value = value;
 	}
 
