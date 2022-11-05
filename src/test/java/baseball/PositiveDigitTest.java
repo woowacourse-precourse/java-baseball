@@ -13,4 +13,11 @@ public class PositiveDigitTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new PositiveDigit(0));
         assertThatIllegalArgumentException().isThrownBy(() -> new PositiveDigit(10));
     }
+
+    @Test
+    @DisplayName("숫자는 1과 9사이다")
+    void digit_is_between_one_and_nine() {
+        assertThatNoException().isThrownBy(() -> new PositiveDigit(1));
+        assertThatNoException().isThrownBy(() -> new PositiveDigit(9));
+    }
 }
