@@ -75,4 +75,34 @@ public class Application {
             cnt++;
         }
     }
+
+
+    public static int CountBall(List<Integer> computerNum, List<Integer> userNum){
+        int ballCnt=0;
+        int cnt=0;
+        int startIdx=0;
+        int endIdx=0;
+
+        while(cnt<numLen*numLen){
+            if(startIdx!=endIdx && computerNum.get(startIdx).equals(userNum.get(endIdx))){
+                ballCnt++;
+            }
+            endIdx++;
+            cnt++;
+            if(endIdx==3){
+                startIdx++;
+                endIdx=0;
+            }
+        }
+        return ballCnt;
+    }
+    public static int CountStrike(List<Integer> computerNum, List<Integer> userNum){
+        int strikeCnt=0;
+        for (int index = 0; index < numLen; index++) {
+            if(computerNum.get(index).equals(userNum.get(index))){
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
 }
