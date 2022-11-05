@@ -13,7 +13,7 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public void start() {
+    public void run() {
         boolean flag = false;
         gameService.initGame();
         do {
@@ -22,7 +22,4 @@ public class NumberBaseball implements Game {
         } while (flag);
     }
 
-    @Override
-    public void end() {
-    }
 }
