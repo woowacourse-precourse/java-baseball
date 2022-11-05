@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Number {
@@ -28,12 +28,10 @@ public class Number {
     }
 
     public void validateDifferentNumber() {
-        List<Integer> compareDigits = new ArrayList<>();
-        compareDigits.addAll(number);
+        HashSet<Integer> compareDigits = new HashSet<>();
 
-        for (int digit = 0; digit < this.number.size(); digit++) {
-            compareDigits.remove(number.get(digit));
-            if (compareDigits.contains(digit)) {
+        for (int digit = 0; digit < 3; digit++) {
+            if (!(compareDigits.add(number.get(digit)))) {
                 throw new IllegalArgumentException("각 자리 수는 서로 다른 숫자여야 합니다.");
             }
         }
