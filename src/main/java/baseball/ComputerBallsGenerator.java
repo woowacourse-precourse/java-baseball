@@ -1,2 +1,5 @@
-package baseball;public class ComputerBallsGenerator {
+package baseball;
+
+public class ComputerBallsGenerator {
+
 }
