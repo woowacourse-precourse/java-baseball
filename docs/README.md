@@ -47,8 +47,8 @@
   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   숫자 하나에 해당하는 힌트 (ball / strike / nothing)
 
-### `compareAnswer` 함수
-* 사용자 답과 정답 비교
+### `hintPerDigit` 함수
+* 한 숫자씩 정답과 비교하여 결과를 리스트에 저장
 * `compareDigit` 3번 실행
 * 입력: `List<Integer>`, `List<Integer>`
   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,5 +60,7 @@
 ### `finalHint` 함수
 * 리스트에 있는 볼, 스트라이크, 낫싱 개수 세기
 * 개수로 최종 힌트에 대한 문자열 조합
-* 입력: `List<String>`
+* 입력: `List<Integer>`, `List<Integer>`
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  정답, 사용자 답
 * 추력: `String`
