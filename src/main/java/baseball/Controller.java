@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 import baseball.service.Service;
 import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
@@ -33,7 +35,10 @@ public class Controller {
     private boolean playGame() {
         RequestInput.requestAnswer();
         String userInput = Console.readLine();
-        return service.playGame(userInput);
+        String result = service.playGame(userInput);
+        SystemMessage.printGameResult(result);
+
+        return Objects.equals(result,"3스트라이크");
     }
 
     private boolean finishGame() {

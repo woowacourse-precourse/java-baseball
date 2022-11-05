@@ -8,7 +8,6 @@ import baseball.domain.Game;
 import baseball.utils.Converter;
 import baseball.utils.RandomNumber;
 import baseball.utils.Validator;
-import baseball.view.SystemMessage;
 
 public class Service {
     Game game;
@@ -27,15 +26,13 @@ public class Service {
 //    }
 
 
-    public boolean playGame(String userInput) {
+    public String playGame(String userInput) {
         Validator.checkUserAnswerInput(userInput);
         game.initializeResultMap();
         List<Integer> userAnswer = Converter.toIntegerList(userInput);
         Map<String, Integer> result = game.getResult(userAnswer);
-        String resultMessage = Converter.changeResultMapToString(result);
-        SystemMessage.printGameResult(resultMessage);
 
-        return result.get("strike") == 3;
+        return Converter.changeResultMapToString(result);
     }
 
     public boolean finishGame(String userInput) {
