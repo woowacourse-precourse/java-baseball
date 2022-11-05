@@ -23,7 +23,7 @@ public class ScoreResultView {
     }
 
     public boolean isNothing(){
-
+        return ballCount == 0 && strikeCount == 0;
     }
 
     public String printNothing(){
