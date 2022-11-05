@@ -3,6 +3,10 @@ package baseball.model;
 import baseball.view.Input;
 
 public class Player {
+    public Player() {
+        setBaseballNumber();
+    }
+
     private String baseballNumber;
 
     // 숫자 입력하기
