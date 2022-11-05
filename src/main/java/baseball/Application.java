@@ -99,7 +99,7 @@ public class Application {
         String pattern = "^[1-9]*$";
         boolean is_match = Pattern.matches(pattern, user_number);
 
-        if (!(is_match)) {
+        if (!is_match) {
             throw new IllegalArgumentException("1-9 외의 값이 입력되었습니다.");
         }
 
