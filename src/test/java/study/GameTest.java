@@ -17,8 +17,7 @@ public class GameTest {
      */
 
     @Test
-    void 사용자가_입력받은_수를_String에서_ListInteger로_데이터_타입_변환() {
-
+    void 사용자가_입력받은_수를_String에서_List_Integer로_데이터_타입_변환() {
         String input = "321";
         List<Integer> integers = new ArrayList<>();
 
