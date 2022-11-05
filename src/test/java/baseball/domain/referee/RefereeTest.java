@@ -48,9 +48,17 @@ class RefereeTest {
 
     // 애초에 2스트라이크 1볼상황은 존재할 수 없네
     // 3개 중에서 2개 맞고 나머지는 스트라이크거나 낫싱이네
+
+    // 1s23b
+    // 12b3s
+    // 13b2s
     @ParameterizedTest
-    @CsvSource(value = {"123:124", "478:78"})
-    void _2스트라이크_1볼인_경우() {
+    @CsvSource(value = {"123:132", "123:213", "123:321"}, delimiterString = ":")
+    void _1스트라이크_2볼인경우(final String original, final String target) {
+        var answers = this.generateAnswers.generate(original, target);
+        var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
+        Assertions.assertThat(actual).isEqualTo("2볼 1스트라이크");
+
     }
 
     // 12s 23s 13s
@@ -69,6 +77,22 @@ class RefereeTest {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
         Assertions.assertThat(actual).isEqualTo("3스트라이크");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:312", "124:412"}, delimiterString = ":")
+    void _3볼(final String original, final String target) {
+        var answers = this.generateAnswers.generate(original, target);
+        var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
+        Assertions.assertThat(actual).isEqualTo("3볼");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:111", "123:222", "123:333"}, delimiterString = ":")
+    void 사용자가_한가지_번호로_밀_경우_얻어걸리는_값이_있을때_1스트라이크_2볼입니다(final String original, final String target) {
+        var answers = this.generateAnswers.generate(original, target);
+        var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
+        Assertions.assertThat(actual).isEqualTo("2볼 1스트라이크");
     }
 
     class GenerateAnswers {
