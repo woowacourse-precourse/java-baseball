@@ -13,4 +13,12 @@ public class Status {
 	public void initStatus() {
 		status = STATUS_INIT;
 	}
+
+	public void setStatusPlaying() {
+		status = STATUS_PLAYING;
+	}
+
+	public void setStatusTerminating() {
+		status = STATUS_TERMINATING;
+	}
 }
