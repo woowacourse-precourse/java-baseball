@@ -1,7 +1,16 @@
 package baseball;
 
+import baseball.game.Game;
+import baseball.game.GameStatus;
+import util.RandomNumber;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameStatus gameStatus = GameStatus.PROGRESSING;
+
+        while (gameStatus.isProgressing()) {
+            Game game = new Game();
+            gameStatus = game.play(RandomNumber.getRandom3Numbers());
+        }
     }
 }
