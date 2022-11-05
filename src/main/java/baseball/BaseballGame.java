@@ -16,34 +16,6 @@ public class BaseballGame {
             this.answer.put(answer.get(idx), idx);
         }
     }
-    
-    BaseballGame() {
-        List<String> convertedList = convertComputerList();
-        for (int idx = 0; idx < convertedList.size(); idx++) {
-            answer.put(convertedList.get(idx), idx);
-        }
-        System.out.println(convertedList);
-    }
-
-    private List<String> convertComputerList() {
-        List<Integer> computerList = generateRandNum();
-        List<String> convertedList = new ArrayList<>();
-        for (Integer integer : computerList) {
-            convertedList.add(String.valueOf(integer));
-        }
-        return convertedList;
-    }
-
-    private List<Integer> generateRandNum() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
 
     public int countStrike(List<String> userInput) {
         int strikeCnt = 0;
@@ -93,21 +65,21 @@ public class BaseballGame {
 
     private String getString1(List<String> userInput, String results) {
         if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
-            results += "낫싱";
+            results += Ball.NOTHING.getName();
         }
         return results;
     }
 
     private String getResults(List<String> userInput, String results) {
         if (countStrike(userInput) > 0) {
-            results += countStrike(userInput) + "스트라이크";
+            results += countStrike(userInput) + Ball.STRIKE.getName();
         }
         return results;
     }
 
     private String getString(List<String> userInput, String results) {
         if (countBall(userInput) > 0) {
-            results += countBall(userInput) + "볼 ";
+            results += countBall(userInput) + Ball.BALL.getName();
         }
         return results;
     }

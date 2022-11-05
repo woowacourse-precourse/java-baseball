@@ -1,12 +1,15 @@
 package baseball;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean gameEndFlag = false;
 
         while (!gameEndFlag) {
-            BaseballGame baseballGame = new BaseballGame();
+            List<String> computerList = AnswerGenerator.convertComputerList();
+            BaseballGame baseballGame = new BaseballGame(computerList);
             String isRestart = baseballGame.playGame();
 
             if (isRestart.equals("2")) {
