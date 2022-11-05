@@ -16,7 +16,6 @@ public class Application {
 
         while (!gameEnd) {
             validationCheck(userNumber());
-            compare(userNumber(), makeNumber()); // 오늘 이거 나누는 작업 해야함. 컴퓨터랑 내가 입력한 번호 비교
             if (!playAgain()) break;
         }
     }
@@ -73,27 +72,27 @@ public class Application {
         return computer;
     }
 
-    // 중복되는 값만 찾는다. 커밋 전. 순서가 없다?
-    // List<Integer> UserNumber, List<Integer> MakeNumber
-    public static List<Integer> compare(List<Integer> userNumber, List<Integer> makeNumber) {
-
-        List<Integer> resultList = userNumber.stream()
-                .filter(old -> makeNumber.stream()
-                        .anyMatch(Predicate.isEqual(old)))
-                .collect(Collectors.toList());
-
-        return resultList;
-    }
-
     public int countStrike(List<Integer> userNumber, List<Integer> makeNumber){
         int strike = 0;
         for(int i = 0; i < 3; i++){
             if(makeNumber.get(i) == userNumber.get(i)){
-                strike += 1;
+                strike = strike + 1;
             }
         }
         return strike;
     }
+
+    public int equalNumber(List<Integer> userNumber, List<Integer> makeNumber) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (makeNumber.contains(userNumber.get(i))) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
+
 
 }
 
