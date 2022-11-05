@@ -11,15 +11,15 @@ public class RandomValue {
     private final static int MAX_SIZE = 3;
 
     public List<Integer> getRandom() {
-        List<Integer> RandomNum = new ArrayList<>();
+        List<Integer> randomNum = new ArrayList<>();
 
-        while (RandomNum.size() < MAX_SIZE) {
+        while (randomNum.size() < MAX_SIZE) {
             int rdNum = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
-            if (!RandomNum.contains(rdNum)){
-                RandomNum.add(rdNum);
+            if (!randomNum.contains(rdNum)){
+                randomNum.add(rdNum);
             }
         }
 
-        return RandomNum;
+        return randomNum;
     }
 }
