@@ -5,6 +5,13 @@ import java.util.List;
 public class UserNumberValidator {
 
     /**
+     * 사용자가 입력한 수에 대해 검증하는 함수
+     */
+    public boolean checkValidationUserNumber(List<Integer> userNumberList){
+        return isDifferent(userNumberList) && isThreeNumber(userNumberList) && isNotZero(userNumberList);
+    }
+
+    /**
      * 유저의 3가지 숫자가 모두 다른지 확인
      */
     public boolean isDifferent(List<Integer> userNumberList){
