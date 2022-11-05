@@ -1,45 +1,45 @@
 package baseball;
 
-import Constant.Const;
-
-import java.util.Scanner;
-
-import static Constant.Const.NUMBER_LENGTH;
+import static Constant.Const.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
-    Scanner Scanner = new Scanner(System.in);
-    int[] userNumber = new int[NUMBER_LENGTH];
+    private int[] userNumber = new int[NUMBER_LENGTH];
+    String userInput;
 
+    public int[] UserInput(){
+        System.out.print(USER_INPUT);
 
-    public void UserInput(){
-        System.out.print(Const.USER_INPUT);
-
-        String userInput = Scanner.nextLine();
-        if (invalidUserNumber(userInput)) {
-            throw new IllegalArgumentException(Const.INPUT_WRONG);
+        userInput = readLine();
+        if (!isValidUserNumber()) {
+            throw new IllegalArgumentException(INPUT_WRONG);
         } else {
             for (int i = 0; i < NUMBER_LENGTH; i++) {
                 this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
             }
         }
+        return userNumber;
     }
 
-    private boolean invalidUserNumber(String userInput){
-        if (userInput.length() != NUMBER_LENGTH){
-            return true;
-        }
+    private boolean isValidUserNumber(){
+        return (isValidLength() && isNumber() && isDuplicate());
+    }
+
+    private boolean isValidLength(){
+        return (userInput.length() == NUMBER_LENGTH);
+    }
+
+    private boolean isNumber(){
         for (int i = 0; i < NUMBER_LENGTH; i++){
             if (!Character.isDigit(userInput.charAt(i))){
-                return true;
+                return false;
             }
         }
-        if (userInput.charAt(0) == userInput.charAt(1) || userInput.charAt(1) == userInput.charAt(2) || userInput.charAt(0) == userInput.charAt(2)){
-            return true;
-        }
-        return false;
+        return true;
     }
 
-    public int[] getUserNumber(){
-        return userNumber;
+    private boolean isDuplicate(){
+        return (userInput.charAt(0) != userInput.charAt(1)
+                && userInput.charAt(1) != userInput.charAt(2) && userInput.charAt(0) != userInput.charAt(2));
     }
 }
