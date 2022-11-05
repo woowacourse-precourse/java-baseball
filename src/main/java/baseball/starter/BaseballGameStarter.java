@@ -3,7 +3,6 @@ package baseball.starter;
 import baseball.computer.Computer;
 import baseball.referee.Referee;
 import baseball.user.User;
-import baseball.user.UserInputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class BaseballGameStarter {
                 referee.sayJudgement(referee.judgement(computerGeneratedValue, userInputValue));
                 System.out.print("숫자를 입력해주세요 : ");
                 userInputValue = new User().stringConvertToStringList(
-                                Console.readLine());
+                        Console.readLine());
             }
         }
         return true;
