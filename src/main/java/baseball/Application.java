@@ -35,4 +35,8 @@ public class Application {
         }
     }
 
+    private static boolean isIncludingZero(List<String> numbers) {
+        return numbers.contains("0");
+    }
+
 }
