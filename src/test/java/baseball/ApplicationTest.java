@@ -32,6 +32,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+
+    public Game playGame() {
+        Game game = new Game();
+        game.play();
+
+        return game;
+    }
+
     // 기능 요구사항 1
     @Test
     void testFunction1_case1() {
@@ -95,7 +107,7 @@ class ApplicationTest extends NsTest {
     void 숫자_중복_테스트_1() {
         String gamePlayerInput = "112";
 
-        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -103,7 +115,7 @@ class ApplicationTest extends NsTest {
     void 숫자_중복_테스트_2() {
         String gamePlayerInput = "122";
 
-        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -111,7 +123,7 @@ class ApplicationTest extends NsTest {
     void 숫자_중복_테스트_3() {
         String gamePlayerInput = "222";
 
-        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -119,7 +131,7 @@ class ApplicationTest extends NsTest {
     void 문자_포함_테스트() {
         String gamePlayerInput = "a12";
 
-        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -127,39 +139,76 @@ class ApplicationTest extends NsTest {
     void 게임_플레이어_입력_숫자_0포함_테스트() {
         String gamePlayerInput = "012";
 
-        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-//    @Test
-//    public void 게임플레이어의_숫자_입력() {
-//        Game game = new Game();
-//        game.getGamePlayerInput()
-//    }
+    // 기능 요구사항 3
+    @Test
+    void 스트라이크_테스트_1() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "145";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-//    @Test
-//    public void 게임플레이어_입력_숫자_체크() {
-//        ArrayList<Integer> gamePlayerRandomNumbers = Game.getUserRandomNumbers();
-//        String regex = "^[1-9]*$";
-//
-//        assertThat(gamePlayerRandomNumbers.length == 3);
-//        assertThat(gamePlayerRandomNumbers.toString());
-//    }
+        assertThat(output()).contains("1스트라이크");
+    }
 
     @Test
-    public void 숫자_입력에_대한_예외_판별() {
+    void 스트라이크_테스트_2() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "125";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
+        assertThat(output()).contains("2스트라이크");
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    void 스트라이크_테스트_3() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "123";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
+
+        assertThat(output()).contains("3스트라이크");
+        assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public Game playGame() {
-        Game game = new Game();
-        game.play();
+    @Test
+    void 볼_테스트_1() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "345";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        return game;
+        assertThat(output()).contains("1볼");
+        assertThat(output()).contains("숫자를 입력해주세요 :");
+    }
+
+    @Test
+    void 볼_테스트_2() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "315";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
+
+        assertThat(output()).contains("2볼");
+        assertThat(output()).contains("숫자를 입력해주세요 :");
+    }
+
+    @Test
+    void 볼_테스트_3() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "312";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
+
+        assertThat(output()).isEqualTo("3볼");
+        assertThat(output()).contains("숫자를 입력해주세요 :");
+    }
+
+    @Test
+    void 낫싱_테스트() {
+        String gamePlayerInput = "123";
+        String computerRandomNumbers = "456";
+        playGame().getResult(computerRandomNumbers, gamePlayerInput);
+
+        assertThat(output()).isEqualTo("낫싱");
+        assertThat(output()).contains("숫자를 입력해주세요 :");
     }
 }
