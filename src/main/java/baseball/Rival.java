@@ -22,4 +22,8 @@ public class Rival {
         }
     }
 
+    public List<Integer> getNumber(){
+        return number;
+    }
+
 }
