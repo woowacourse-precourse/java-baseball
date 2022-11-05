@@ -103,6 +103,7 @@ public class Application {
 
     private static Integer getUserIntInGame()
             throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         if ((input < 100) || (input > 999)) {
@@ -157,7 +158,7 @@ public class Application {
             while (newGame) {
                 System.out.println("숫자 야구 게임을 시작합니다.");
                 List<Integer> answer = startGame();
-                System.out.println(answer);
+//                System.out.println(answer);
                 boolean gameOn = true;
                 while (gameOn) {
                     gameOn = playGame(answer);
