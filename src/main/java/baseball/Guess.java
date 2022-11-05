@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +16,7 @@ public class Guess {
     }
 
     public static void checkGuess(String input) throws IllegalArgumentException {
-        // 입력값이 숫자로만 이루어져 있는지 확인
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(GAME_FINISH);
-        }
-
-        // 입력값이 세 글자인지 확인
-        if (input.length() != 3)
+        if (input.length() != 3 || !isNumeric(input))
             throw new IllegalArgumentException(GAME_FINISH);
     }
 
@@ -35,5 +28,16 @@ public class Guess {
             userAnswer.add(digitInt);
         }
         return userAnswer;
+    }
+
+    private static boolean isNumeric(String str) {
+        boolean isNumeric;
+        try {
+            Integer.parseInt(str);
+            isNumeric = true;
+        } catch (NumberFormatException e) {
+            isNumeric = false;
+        }
+        return isNumeric;
     }
 }
