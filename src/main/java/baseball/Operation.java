@@ -16,7 +16,7 @@ public class Operation {
 		do {
 			User.getUserInput();
 			Hint.searchHint();
-		} while (!Hint.getRightAnswer());
+		} while (!Hint.isRightAnswer());
 	}
 
 	private void restart() {

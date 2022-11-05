@@ -3,33 +3,33 @@ package baseball;
 public class Hint {
 	public static void searchHint() {
 		new ComparisonResult(User.userNums, Computer.computerNums);
-		if (getNothing()) {
+		if (isNothing()) {
 			hintNothing();
 		}
-		if (getBall()) {
+		if (isBall()) {
 			hintBall();
 		}
-		if (getStrike()) {
+		if (isStrike()) {
 			hintStrike();
 		}
-		if (getRightAnswer()) {
+		if (isRightAnswer()) {
 			hintCorrect();
 		}
 	}
 
-	private static boolean getNothing() {
+	private static boolean isNothing() {
 		return ComparisonResult.strikeCount == 0 && ComparisonResult.ballCount == 0;
 	}
 
-	private static boolean getBall() {
+	private static boolean isBall() {
 		return ComparisonResult.ballCount > 0;
 	}
 
-	private static boolean getStrike() {
+	private static boolean isStrike() {
 		return ComparisonResult.strikeCount > 0;
 	}
 
-	public static boolean getRightAnswer() {
+	public static boolean isRightAnswer() {
 		return ComparisonResult.strikeCount == 3;
 	}
 
@@ -39,7 +39,7 @@ public class Hint {
 
 
 	private static void hintBall() {
-		if (getStrike()) {
+		if (isStrike()) {
 			GameView.printBallAndStrike(ComparisonResult.ballCount);
 		} else {
 			GameView.printBall(ComparisonResult.ballCount);
