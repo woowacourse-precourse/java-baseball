@@ -17,25 +17,28 @@ public class Game {
 	public void play() {
 		GameView.printStartMessage();
 		computer.createAnswer();
-
 		tryCorrectAnswer();
 	}
 
 	private void tryCorrectAnswer() {
+		initBallAndStrike();
 		user = new User(GameView.inputNum());
 
-		initBallAndStrike();
 		compareNumber(computer.getAnswer(), user.getNumber());
-
 		GameView.printHint(ball, strike);
-		if (isCorrectAnswer()) {
-			GameView.printEndGame();
 
-			if(GameView.inputRestartOrEnd().equals(GameView.RESTART_NUM)){
-				play();
-			}
+		if (isCorrectAnswer()) {
+			endGame();
 		} else {
 			tryCorrectAnswer();
+		}
+	}
+
+	private void endGame() {
+		GameView.printEndGame();
+
+		if(GameView.inputRestartOrEnd().equals(GameView.RESTART_NUM)){
+			play();
 		}
 	}
 
