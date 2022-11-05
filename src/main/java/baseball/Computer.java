@@ -27,14 +27,13 @@ public class Computer {
     }
 
     public Integer checkBall(int userNumber, int idx){
-        if(answerNumber.contains(userNumber) && answerNumber.indexOf(userNumber) == idx){
+        if(answerNumber.contains(userNumber) && answerNumber.indexOf(userNumber) != idx){
             return 1;
         }
         return 0;
     }
 
     public void checkNumberCount(List<Integer> userNumber){
-
         for(int i=0; i<3; i++){
             strike += checkStrike(userNumber.get(i), i);
             ball += checkBall(userNumber.get(i), i);
