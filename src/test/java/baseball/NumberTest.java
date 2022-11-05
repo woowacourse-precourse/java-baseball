@@ -10,7 +10,7 @@ public class NumberTest {
     Number number = new Number();
 
     @Test
-    void boolean_세자리수_이상_입력_받았을_경우_오류_출력()
+    void boolean_세자리수_이상_입력_받았을_경우_false_반환()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = Number.class.getDeclaredMethod("isThreeDigits", String.class);
         method.setAccessible(true);
@@ -21,4 +21,6 @@ public class NumberTest {
         boolean result = (boolean) method.invoke(number, input);
         assertThat(result).isEqualTo(expeted);
     }
+
+
 }
