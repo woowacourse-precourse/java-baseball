@@ -87,18 +87,14 @@ public class Application {
             return "낫싱";
         }
 
-        StringBuffer result = new StringBuffer();
-
+        StringBuilder result = new StringBuilder();
         if (ballCount != 0) {
-            result.append(Integer.toString(ballCount) + "볼");
+            result.append(Integer.toString(ballCount) + "볼 ");
         }
         if (strikeCount != 0) {
-            if (result.length() != 0) {
-                result.append(" ");
-            }
             result.append(Integer.toString(strikeCount) + "스트라이크");
         }
-        return result.toString();
+        return result.toString().trim();
     }
 
     public static boolean checkNumberIsValid(String number) throws IllegalArgumentException {
