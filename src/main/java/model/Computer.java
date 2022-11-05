@@ -183,12 +183,16 @@ public class Computer {
                 isStrike = isCheckStrike(isStrike, first, numComputerAtNow, second, numAtNow);
                 isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
             }
-            if (isStrike) {
-                addCntStrike();
-            }
-            if (isBall) {
-                addCntBall();
-            }
+            addCntBallStrike(isStrike, isBall);
+        }
+    }
+
+    private void addCntBallStrike(boolean isStrike, boolean isBall) {
+        if (isStrike) {
+            addCntStrike();
+        }
+        if (isBall) {
+            addCntBall();
         }
     }
 
