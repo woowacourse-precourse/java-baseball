@@ -54,6 +54,14 @@ public class BallMaker {
         System.out.printf(informationMessage);
     }
 
+    private List<Integer> makeUserBall(String userOpinion) {
+        final int differenceBetweenCharAndInteger = 48;
+        return userOpinion.chars()
+                .boxed()
+                .map(ch -> ch -= differenceBetweenCharAndInteger)
+                .collect(Collectors.toList());
+    }
+
     private boolean checkValidation(String userInput) {
         if (lengthValidation(userInput) && dataValidation(userInput)) {
             return true;
