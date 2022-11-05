@@ -114,39 +114,39 @@ public class GameManager {
     }
 
     private String getResultString(final int strike, final  int ball) {
-        String ret = "";
+        String resultString = "";
 
         if(ball > 0) {
-            ret += (ball + "볼 ");
+            resultString += (ball + "볼 ");
         }
         if(strike > 0) {
-            ret += (strike + "스트라이크");
+            resultString += (strike + "스트라이크");
         }
 
-        return ret;
+        return resultString;
     }
 
     private int getStrike(ArrayList<Integer> userGuess) {
-        int ret = 0;
+        int strike = 0;
 
         for(int index = 0;index < GUESS_NUMBER_SIZE;index++) {
             if(guessNumber.get(index) == userGuess.get(index)) {
-                ret++;
+                strike++;
             }
         }
 
-        return ret;
+        return strike;
     }
 
     private int getBall(ArrayList<Integer> userGuess) {
-        int ret = 0;
+        int ball = 0;
 
         for(int userIndex = 0;userIndex < GUESS_NUMBER_SIZE;userIndex++) {
             int userDigit = userGuess.get(userIndex);
-            ret += countUserDigitInAnswer(userIndex, userDigit);
+            ball += countUserDigitInAnswer(userIndex, userDigit);
         }
 
-        return ret;
+        return ball;
     }
 
     private int countUserDigitInAnswer(int userIndex, int userDigit) {
