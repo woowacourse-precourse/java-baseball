@@ -17,7 +17,7 @@ public class GameView {
     final int END_GAME = 2;
 
     public void run() {
-        GameController gameController = new GameController();
+        GameController gameController = GameController.getInstanceGameController();
         gameController.startGame();
         System.out.println(MSG_FIRST);
         while (true) {
