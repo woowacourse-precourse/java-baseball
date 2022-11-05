@@ -10,4 +10,8 @@ public class GameStatus {
     public boolean isRestart() {
         return status == 1;
     }
+
+    public boolean isValid() {
+        return status == 1 || status == 2;
+    }
 }
