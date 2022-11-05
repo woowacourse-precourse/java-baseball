@@ -27,6 +27,12 @@ public class Validator {
         }
     }
 
+    void notContainsZero() {
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요(ex. 159)");
+        }
+    }
+
     void isAllDifferent() {
         Set<Integer> inputSet = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {

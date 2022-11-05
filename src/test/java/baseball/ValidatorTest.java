@@ -26,6 +26,15 @@ class ValidatorTest {
     }
 
     @Test
+    void notContainsZero_InvalidInput_ExceptionThrown() {
+        String invalidInput = "103";
+        Validator validator = new Validator(invalidInput);
+        assertThatThrownBy(() -> validator.notContainsZero())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1부터 9까지의 숫자를 입력해주세요(ex. 159)");
+    }
+
+    @Test
     void isAllDifferent_InvalidInput_ExceptionThrown() {
         String invalidInput = "113";
         Validator validator = new Validator(invalidInput);
