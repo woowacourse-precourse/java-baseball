@@ -182,10 +182,10 @@ class ApplicationTest extends NsTest {
 
 
         //when
-        Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
-        Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
-        Throwable thrown3 = catchThrowable(()->{T.validateUserInputOneOrTwo(case3);});
-        Throwable thrown4 = catchThrowable(()->{T.validateUserInputOneOrTwo(case4);});
+        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
+        final Throwable thrown3 = catchThrowable(()->{T.validateUserInputOneOrTwo(case3);});
+        final Throwable thrown4 = catchThrowable(()->{T.validateUserInputOneOrTwo(case4);});
 
         //then
         assertThat(thrown1).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
