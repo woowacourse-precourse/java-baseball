@@ -8,11 +8,15 @@ public class ValidationHandler {
     ValidationHandler() {
     }
 
-    public boolean validateLength(String inputValue) {
-        return inputValue.length() == NUMBER_LENGTH;
+    public void validateLength(String inputValue) {
+        if(inputValue.length() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException("number length must be 3");
+        }
     }
 
-    public boolean isNumber(String inputValue) {
-        return inputValue.matches(REGEX_NOT_NUMBER);
+    public void validateNumber(String inputValue) {
+        if(inputValue.matches(REGEX_NOT_NUMBER)) {
+            throw new IllegalArgumentException("input value must be number");
+        }
     }
 }
