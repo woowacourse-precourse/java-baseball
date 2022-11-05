@@ -81,6 +81,12 @@ public class Computer {
         }
     }
 
+    public void countInitialization() {
+        strikeCount = 0;
+        ballCount = 0;
+        nothingCount = 0;
+    }
+
     public void printGameResult() {
         while (true) {
             compareGameScore();
@@ -95,6 +101,7 @@ public class Computer {
             printStrike();
             printBall();
             printNothing();
+            countInitialization();
         }
     }
 
