@@ -24,10 +24,11 @@
     - [x] BaseballNumber 클래스를 상속 받음
     - [x] 랜덤으로 조건에 맞는 세자리 수를 생성하는 메소드
 
-- [ ] 사용자의 입력을 저장해줄 UserBaseballNumber class
-    - [ ] BaseballNumber 클래스를 상속 받음
-    - [ ] 사용자에 입력에 맞는 BaseballNumber를 생성하는 메소드
-    - [ ] 사용자의 입력이 숫자 형식임을 검증해주는 validate 메소드
+- [x] 사용자의 입력을 저장해줄 UserBaseballNumber class
+    - [x] BaseballNumber 클래스를 상속 받음
+    - [x] 사용자의 입력에 맞는 BaseballNumber를 생성하는 메소드
+    - [x] 입력값이 null인지 검증하는 메소드
+    - [x] 사용자의 입력이 숫자 형식임을 검증해주는 validate 메소드
 
 - [ ] BaseballNumber 끼리의 결과를 계산해줄 BaseballGameCalculator 클래스
     - [ ] 게임의 결과(볼, 스트라이크, 낫싱)를 반환하는 로직
