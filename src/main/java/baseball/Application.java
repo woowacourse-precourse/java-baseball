@@ -16,12 +16,11 @@ public class Application {
     public static void playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerAnswer = generateNumber();
-        boolean isCorrect = false;
-        while(!isCorrect){
+        boolean isCorrectAnswer = false;
+        while(!isCorrectAnswer){
             List<Integer> playerAnswer = getPlayerAnswer();
-            isCorrect = checkAnswer(computerAnswer, playerAnswer);
+            isCorrectAnswer = checkAnswer(computerAnswer, playerAnswer);
         }
-
     }
 
     public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
@@ -48,24 +47,24 @@ public class Application {
     }
 
     public static List<Integer> generateNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        List<Integer> computerAnswer = new ArrayList<>();
+        while (computerAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerAnswer.contains(randomNumber)) {
+                computerAnswer.add(randomNumber);
             }
         }
-        return computer;
+        return computerAnswer;
     }
 
     public static List<Integer> getPlayerAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerAnswerStr = Console.readLine();
-        List<Integer> playerAnswerList = stringToIntegerList(playerAnswerStr);
+        List<Integer> playerAnswer = stringToIntegerList(playerAnswerStr);
 
-        validateNumber(playerAnswerList);
+        validateNumber(playerAnswer);
 
-        return playerAnswerList;
+        return playerAnswer;
     }
 
     public static List<Integer> stringToIntegerList(String inputStr) {
