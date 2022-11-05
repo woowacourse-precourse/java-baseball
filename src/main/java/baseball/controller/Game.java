@@ -5,8 +5,7 @@ import baseball.model.Player;
 import baseball.view.Output;
 
 public class Game {
-    private Player player = new Player();
-    private Computer computer = new Computer();
+    private final Computer computer = new Computer();
     private int strikeCount = 0, ballCount = 0;
 
     private final String answerNumber = computer.getRandomBaseballNumber();
