@@ -37,14 +37,12 @@ public class BaseBallGame {
         }
     }
 
-    private boolean createNewGame() {
+    private void createNewGame() {
         List defenseNumbers = numberGenerator.createDefenseNumbers();
         offense(defenseNumbers);
 
         String inputContinueGame = askContinueGame();
-
-        // TODO: 대답에 따라 게임을 계속할지 판단하는 기능
-        return false;
+        changeRepeatFlag(inputContinueGame);
     }
 
     private void offense(List<Integer> defenseNumbers) {
@@ -82,5 +80,11 @@ public class BaseBallGame {
         String inputContinueGame = userInput.input();
         userInput.validateContinueInput(inputContinueGame);
         return inputContinueGame;
+    }
+
+    private void changeRepeatFlag(String inputContinueGame) {
+        if (inputContinueGame.equals("2")) {
+            repeatFlag = false;
+        }
     }
 }
