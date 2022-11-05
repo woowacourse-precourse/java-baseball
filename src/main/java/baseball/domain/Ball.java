@@ -33,4 +33,15 @@ public class Ball {
     public String toString() {
         return numberBall;
     }
+
+    public int compareByIndex(Ball ball) {
+        String expectedBall = ball.toString();
+        int count = 0;
+        for (int i = 0; i < expectedBall.length(); i++) {
+            if (numberBall.charAt(i) == expectedBall.charAt(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
