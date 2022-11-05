@@ -12,16 +12,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Number {
-    public void setRandomNumbers() {
+    public List<Integer> setRandomNumbers() {
         Set<Integer> NumberSet = new HashSet<>();
         while (NumberSet.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if(!NumberSet.contains(randomNumber)) {
-                NumberSet.add(randomNumber);
-            }
-
+            NumberSet.add(randomNumber);
         }
+        return new ArrayList<>(NumberSet);
     }
 
     public String getInputNumber() {
@@ -32,8 +29,8 @@ public class Number {
         return input;
     }
 
-    private List<Character> stringToList(String str) {
-        return str.chars().mapToObj(number -> (char) number).collect(Collectors.toList());
+    private List<Integer> stringToList(String str) {
+        return str.chars().mapToObj(number -> (int) number).collect(Collectors.toList());
     }
 
     private boolean isValidString(String input) {
