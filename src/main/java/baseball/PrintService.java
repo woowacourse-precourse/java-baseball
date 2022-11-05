@@ -30,6 +30,10 @@ public class PrintService {
             resultStringBuilder.append("스트라이크");
         }
 
+        if (resultStringBuilder.length() == 0) {
+            resultStringBuilder.append("낫싱");
+        }
+
         System.out.println(resultStringBuilder);
     }
 }
