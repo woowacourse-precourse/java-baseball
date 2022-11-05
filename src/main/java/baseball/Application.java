@@ -13,7 +13,12 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String number = readLine();
             int randomNumber = pickNumberInRange(100, 999);
-            System.out.println(randomNumber);
+
+            for (int i = 0; i < number.length(); i++) {
+                int dividedNumber = Integer.parseInt(String.valueOf(number.charAt(2 - i)));
+                System.out.println(dividedNumber);
+            }
+
             goGame = 2;
         } while (goGame != 2);
     }
