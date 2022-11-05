@@ -8,6 +8,16 @@ import org.junit.jupiter.api.Test;
 class ValidTest {
 
     @Test
+    void isValidNumList함수성공테스트(){
+        //given
+        List<Integer> numList = Arrays.asList(1, 2, 3);
+        //when
+        boolean notValid = Valid.isValidNumList(numList);
+        //then
+        assertThat(notValid).isEqualTo(true);
+    }
+
+    @Test
     void 숫자가0이있는경우() {
         //given
         List<Integer> includeZeroNumList = Arrays.asList(1, 2, 0);
@@ -48,7 +58,7 @@ class ValidTest {
         List<Integer> numListSize0 = Arrays.asList();
         List<Integer> numListSize1 = Arrays.asList(1);
         List<Integer> numListSize2 = Arrays.asList(1,2);
-        List<Integer> numListSize4 = Arrays.asList(1,2,4);
+        List<Integer> numListSize4 = Arrays.asList(1,2,4,5);
         //when
         boolean notValidSize0 = Valid.isValidNumList(numListSize0);
         boolean notValidSize1 = Valid.isValidNumList(numListSize1);
