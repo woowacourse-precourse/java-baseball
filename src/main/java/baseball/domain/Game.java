@@ -27,7 +27,6 @@ public class Game {
         this.status = status;
     }
 
-
     public void outputRestart() {
         System.out.println(END_GAME);
         System.out.println(IS_CONTINUE);

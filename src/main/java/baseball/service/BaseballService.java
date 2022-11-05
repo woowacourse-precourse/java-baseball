@@ -16,5 +16,7 @@ public class BaseballService {
         game = new Game();
     }
 
-
+    public boolean getGameStatus(){
+        return game.getStatus();
+    }
 }
