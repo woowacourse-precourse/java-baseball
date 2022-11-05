@@ -2,6 +2,9 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -123,5 +126,19 @@ class NumberBaseBallGameMachineTest {
         assertThatThrownBy(() -> gameMachine.validateNewGameInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력값이 1이나 2가 아닙니다.");
+    }
+
+    @DisplayName("메시지 출력 테스트")
+    @Test
+    void display() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        String message = "메시지 테스트 입니다";
+        //when
+        gameMachine.display(message);
+        //then
+        assertThat(byteArrayOutputStream.toString()).isEqualTo(message);
     }
 }
