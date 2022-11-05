@@ -53,9 +53,7 @@ public class BaseBallGame {
     }
 
 
-    public int restartOrStop() {
-
-        String userInput = user.restartOrEndInput();
+    public int restartOrStop(String userInput) {
 
         int validRestartOrEndInput = user.validRestartOrEndInput(userInput);
 

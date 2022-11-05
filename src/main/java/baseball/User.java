@@ -12,7 +12,7 @@ public class User {
         return validUserInput(userInput);
     }
 
-    public String restartOrEndInput() {
+    public String restartOrStopInput() {
         return readLine();
     }
 
