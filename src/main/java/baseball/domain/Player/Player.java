@@ -3,17 +3,17 @@ package baseball.domain.Player;
 import static baseball.StringEnum.InputExceptionCode.*;
 
 import baseball.domain.Validation.InputValidation;
+import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     private List<Integer> ballNumbers;
 
     public Player() {
+        ballNumbers = new ArrayList<>();
     }
 
-    public void readPlayerNumberInput() {
-        String inputString = Console.readLine();
+    public void readBallNumberInput(String inputString) {
         validateInput(inputString);
     }
 
@@ -42,6 +42,7 @@ public class Player {
     }
 
     private void generateNumberList(String inputString) {
+        ballNumbers.clear();
         for (char input : inputString.toCharArray()) {
             int number = input - '0';
             ballNumbers.add(number);
