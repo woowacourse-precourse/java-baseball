@@ -33,9 +33,18 @@ public class BaseballGameTest {
     void refereeTest() {
         Referee referee = new Referee();
         referee.setStandard("123");
-        referee.judge("156");
-        assertThat(referee.getBall()).isEqualTo(0);
+        referee.judge("136");
+        assertThat(referee.getBall()).isEqualTo(1);
         assertThat(referee.getStrike()).isEqualTo(1);
+
+        referee.setStandard("876");
+        referee.judge("123");
+        assertThat(referee.getBall()).isEqualTo(0);
+        assertThat(referee.getStrike()).isEqualTo(0);
+
+        referee.judge("876");
+        assertThat(referee.getBall()).isEqualTo(0);
+        assertThat(referee.getStrike()).isEqualTo(3);
     }
 
     // 문자열 내 중복 검사 함수
