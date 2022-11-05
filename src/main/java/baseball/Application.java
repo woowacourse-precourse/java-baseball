@@ -12,47 +12,14 @@ public class Application {
             playGame();
         } while (restartGame());
     }
-
     public static void playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerAnswer = generateNumber();
         boolean isCorrectAnswer = false;
-        while(!isCorrectAnswer){
-            List<Integer> playerAnswer = getPlayerAnswer();
-            isCorrectAnswer = checkAnswer(computerAnswer, playerAnswer);
+        while (!isCorrectAnswer) {
+            isCorrectAnswer = checkAnswer(computerAnswer, getPlayerAnswer());
         }
     }
-
-    public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
-        boolean isCorrect = false;
-
-        int strike = 0;
-        int ball = 0;
-        for(int i = 0;i < 3 ;i++){
-            if(computerAnswer.get(i).equals(playerAnswer.get(i))){
-                strike++;
-            }else if(computerAnswer.contains(playerAnswer.get(i))){
-                ball++;
-            }
-        }
-        printResult(strike, ball);
-        return isCorrect;
-    }
-
-    private static boolean printResult(int strike, int ball) {
-        if(strike == 3){
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }else if(strike == 0 && ball == 0){
-            System.out.println("낫싱");
-            return false;
-        }else{
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-            return false;
-        }
-    }
-
     public static List<Integer> generateNumber() {
         List<Integer> computerAnswer = new ArrayList<>();
         while (computerAnswer.size() < 3) {
@@ -63,7 +30,6 @@ public class Application {
         }
         return computerAnswer;
     }
-
     public static List<Integer> getPlayerAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerAnswerStr = Console.readLine();
@@ -73,7 +39,6 @@ public class Application {
 
         return playerAnswer;
     }
-
     public static List<Integer> stringToIntegerList(String inputStr) {
         String[] inputStrArr = inputStr.split("");
         List<Integer> inputIntList = new ArrayList<>();
@@ -83,7 +48,6 @@ public class Application {
         }
         return inputIntList;
     }
-
     public static boolean validateNumber(List<Integer> playerAnswer) {
         //length check
         if (playerAnswer.size() != 3) {
@@ -110,15 +74,43 @@ public class Application {
 
         return true;
     }
+    public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerAnswer.get(i).equals(playerAnswer.get(i))) {
+                strike++;
+            } else if (computerAnswer.contains(playerAnswer.get(i))) {
+                ball++;
+            }
+        }
+        printResult(strike, ball);
+        if(strike == 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private static void printResult(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+
 
     public static boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = Console.readLine();
-        if(s.equals("1")){
+        if (s.equals("1")) {
             return true;
-        }else if(s.equals("2")){
+        } else if (s.equals("2")) {
             return false;
-        }else{
+        } else {
             throw new IllegalArgumentException("not 1,2: input erroooor");
         }
     }

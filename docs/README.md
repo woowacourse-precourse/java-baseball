@@ -27,7 +27,7 @@
 ### 2. generateNumber
 * [x] 3자리 랜덤 숫자 정하기
 
-### 3. getGuessNumber
+### 3. getPlayerAnswer
 * [x] Console.readLine 으로 입력받기 
 * [x] List 형태로 return
 
@@ -45,7 +45,9 @@
   * 볼
   * 낫싱
   * if (3스트라이크이면 출력하고, 게임종료)
-  
 
-### 7. restartGame
+### 7. printResult
+* [x] 
+
+### 8. restartGame
 * [x] 재시작(1), 앱 종료(2)를 입력받는다. 
