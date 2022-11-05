@@ -1,6 +1,8 @@
 package baseball;
 
 public class Game {
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+
     private Player player;
     private Computer computer;
     private Result result;
@@ -11,6 +13,7 @@ public class Game {
     }
 
     public void start() {
+        Utils.announce(GAME_START);
         do {
             play();
         } while (player.wantRestart(Utils.getPlayerInputForRestartGameByConsole()));
@@ -21,7 +24,7 @@ public class Game {
         do {
             player.initMyAnswerBy(Utils.getPlayerInputForGenerateAnswerByConsole());
             result = computer.resultBy(player);
-            Utils.announce(result);
+            Utils.announce(result.toString());
         } while (!result.isEnd());
     }
 }
