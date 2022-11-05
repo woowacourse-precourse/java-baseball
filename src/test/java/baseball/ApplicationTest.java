@@ -8,10 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    final GameReadyMachine gameReadyMachine = new GameReadyMachine();
     @Test
     void getThreeDigitNumber(){
-        final GameReadyMachine gameReadyMachine = new GameReadyMachine();
         assertThat(gameReadyMachine.setAnswerValue()).isEqualTo(true);
+    }
+    @Test
+    void 자리수다른지_체크(){
+        assertThat(gameReadyMachine.checkDigitValue(574)).isEqualTo(true);
+        assertThat(gameReadyMachine.checkDigitValue(686)).isEqualTo(false);
     }
 
     @Test
