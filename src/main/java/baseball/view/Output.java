@@ -1,10 +1,7 @@
 package baseball.view;
 
-import java.util.HashMap;
-
 public class Output {
-    public static void baseballResult(HashMap count) {
-        int strikeCount = (Integer)count.get("strikeCount"), ballCount = (Integer)count.get("ballCount");
+    public static void baseballResult(int strikeCount, int ballCount) {
 
         if (strikeCount == 0 && ballCount == 0)
             System.out.println("낫싱");
