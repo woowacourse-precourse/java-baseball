@@ -8,7 +8,7 @@
   - "숫자 야구 게임을 시작합니다."를 출력하는 함수
 
 
-- void startBattle(List<Integer>)
+- void startGame(List<Integer>)
   - 랜덤하게 주어진 숫자를 받아 사용자와 컴퓨터 대결을 실질적으로 진행하는 함수
 
 
