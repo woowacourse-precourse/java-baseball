@@ -55,14 +55,14 @@ public class Application {
     }
 
     public static List<Integer> createThreeDigitsRandomNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUMBER_COUNT) {
+        List<Integer> computerList = new ArrayList<>();
+        while (computerList.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerList.contains(randomNumber)) {
+                computerList.add(randomNumber);
             }
         }
-        return computer;
+        return computerList;
     }
 
     public static String countBallStrike(List<Integer> computerList, List<Integer> userList) {
