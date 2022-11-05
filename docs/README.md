@@ -11,14 +11,14 @@
         - [x] 3스트라이크 메세지 출력
         - [x] 게임 재시작 여부를 출력
 
-- [ ] 숫자 야구게임에서 사용될 수를 저장하고, 조건을 정의하는 BaseballNumber Abstract Class
-    - [ ] 멤버변수로 List<Integer> numbers 멤버변수를 가짐
-    - [ ] BaseballNumber의 유효성을 체크해주는 validate 메소드들
-        - [ ] 입력된 값이 수가 아닐 때
-        - [ ] 입력된 수가 세 자리의 수가 아닐 때
-        - [ ] 입력된 수의 자릿수 중에서 중복이 있을 때
-        - [ ] 입력된 수의 자릿수의 범위가 1~9가 아닐 때
-    - [ ] number를 unmodifialbeList로 반환해 불변성 보장
+- [x] 숫자 야구게임에서 사용될 수를 저장하고, 조건을 정의하는 BaseballNumber Abstract Class
+    - [x] 멤버변수로 List<Integer> numbers 멤버변수를 가짐
+    - [x] BaseballNumber의 유효성을 체크해주는 validate 메소드들
+        - [x] 입력된 값이 null 일 때
+        - [x] 입력된 수가 세 자리의 수가 아닐 때
+        - [x] 입력된 수의 자릿수 중에서 중복이 있을 때
+        - [x] 입력된 수의 자릿수의 범위가 1~9가 아닐 때
+    - [x] number를 unmodifialbeList로 반환해 불변성 보장
 
 - [ ] 맞춰야 될 세자리 수를 가지는 ComputerBaseballNumber class
     - [ ] BaseballNumber 클래스를 상속 받음
@@ -27,6 +27,7 @@
 - [ ] 사용자의 입력을 저장해줄 PlayerBaseballNumber class
     - [ ] BaseballNumber 클래스를 상속 받음
     - [ ] 사용자에 입력에 맞는 BaseballNumber를 생성하는 메소드
+    - [ ] 사용자의 입력이 숫자 형식임을 검증해주는 validate 메소드
 
 - [ ] BaseballNumber 끼리의 결과를 계산해줄 BaseballGameCalculator 클래스
     - [ ] 게임의 결과(볼, 스트라이크, 낫싱)를 반환하는 로직
