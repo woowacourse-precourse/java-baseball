@@ -6,7 +6,7 @@ import java.util.List;
 public class ExecuteService {
     private Game game;
     private boolean complete;
-    private static final PrintService printService = new PrintService();
+    private final PrintService printService = new PrintService();
     private final ProcessService processService = new ProcessService();
 
     public ExecuteService() {
@@ -16,6 +16,7 @@ public class ExecuteService {
     public void execute() throws IllegalArgumentException {
         this.game = new Game();
         complete = false;
+        List<Integer> answer = game.getAnswer();
 
         while (!complete) {
             printService.requestInput();
@@ -24,7 +25,7 @@ public class ExecuteService {
             processService.validateGameInput(userInput);
             List<Integer> parsedInput = processService.parseGameInput(userInput);
 
-
+            List<Integer> strikeBallCount = processService.compare(parsedInput, answer);
 
         }
     }
