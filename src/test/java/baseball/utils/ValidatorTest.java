@@ -1,12 +1,13 @@
 package baseball.utils;
 
 import baseball.Ball;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.nio.channels.IllegalChannelGroupException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidatorTest {
 
@@ -16,15 +17,14 @@ class ValidatorTest {
         String playerInput = "12삼";
         //when
         //then
-        Assertions.assertThatThrownBy(() -> {
-                      try {
-                          Integer.parseInt(playerInput);
-                      } catch (NumberFormatException e) {
-                          throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
-                      }
-                  })
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+        assertThatThrownBy(() -> {
+            try {
+                Integer.parseInt(playerInput);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            }
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
     }
 
     @Test
@@ -33,8 +33,8 @@ class ValidatorTest {
         String playerInput = "123";
         //when
         //then
-        Assertions.assertThat(Integer.parseInt(playerInput))
-                  .isEqualTo(123);
+        assertThat(Integer.parseInt(playerInput))
+                .isEqualTo(123);
     }
 
 
@@ -43,14 +43,13 @@ class ValidatorTest {
         //given
         String playerInput = "12";
         //when
-        Assertions.assertThatThrownBy(() -> {
-                      if (playerInput.length() == 3) {
-                          return;
-                      }
-                      throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
-                  })
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+        assertThatThrownBy(() -> {
+            if (playerInput.length() == 3) {
+                return;
+            }
+            throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         //then
     }
 
@@ -64,13 +63,12 @@ class ValidatorTest {
         Ball ball = new Ball(1);
         //when
         //then
-        Assertions.assertThatThrownBy(() -> {
-                      if (playerBalls.contains(ball)) {
-                          throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
-                      }
-                  })
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+        assertThatThrownBy(() -> {
+            if (playerBalls.contains(ball)) {
+                throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            }
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
     }
 
     @Test
@@ -87,7 +85,7 @@ class ValidatorTest {
         playerBalls.add(ball);
 
         //then
-        Assertions.assertThat(playerBalls.size())
-                  .isEqualTo(2);
+        assertThat(playerBalls.size())
+                .isEqualTo(2);
     }
 }
