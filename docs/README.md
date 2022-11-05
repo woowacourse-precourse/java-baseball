@@ -34,9 +34,9 @@ checkException(String input) : 입력한 문자열로 에러가 발생하는지 
 
 ### ScoreResultView
 전역변수 ballCount, strikeCount를 가진다.
-1. getBallCount(int ballCount) : 볼을 개수만큼 입력받아 전역변수를 초기화한다. . 
-2. getStrikeCount(int strikeCount) : 스트라이크를 개수만큼 입력받아 전역변수를 초기화한다. 
-3. getResultOfScores(String result) : 점수들에 따른 결과를 출력해준다.
+1. setBallCount(int ballCount) : 볼을 개수만큼 입력받아 전역변수를 초기화한다. . 
+2. setStrikeCount(int strikeCount) : 스트라이크를 개수만큼 입력받아 전역변수를 초기화한다. 
+3. getResultOfScores(String result) : 점수들에 따른 결과를 문자열로 출력해준다. 
 4. makeResultString() : 스트라이크와 볼로, 문자열을 반환한다. 
    1. isNothing() : strikeCount == 0 && ballCount == 0일 때 참을 반환한다.
    2. printNothing() : “낫싱”을 반환한다.
@@ -64,10 +64,25 @@ countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 
 5. increaseStrike() : 전역변수 strikeCount를 1증가 시켜준다.
 6. increaseBall() : 전역변수 ballCount를 1증가시킨다.
 
-### GameStatus
+### GameStatusService
 전역 변수 gameStart
 1. 생성자 : gameStatus = true로 초기화
 2. isEndOfGame(String opinion) : 문자열이 2이면 참을 반환
 3. stopGame() : gameStart = false로 초기화
 4. getGameStatus() : gameStatus를 반환
 
+## 컨트롤러
+### GameController
+위의 클래스들을 참조한다. 
+1. initializeGame()
+   1. generateComputer() : 컴퓨터 생성자 호출 및 랜덤 상수 생성
+   2. generateGameStatus() : GameStatusService를 생성해 gameStatusService를 참으로 초기화
+2. startGame()
+   1. clearScore() : GameService의 strikeCount, ballCount를 0으로 초기화해준다. 
+   2. getPlayerNumbers() : PlayerView에서 입력 요청을 하고, 입력받은 문자열로 Player 클래스형 변수에 넣어 정수형 리스트를 생성시켜준다. 
+   3. matchGame() : GameService에 setPlayer, setComputer을 해서 점수를 계산한다. 
+   4. showPlayersScore() : GameService의 strikeCount, ballCount를 가져와 ScoreResultView로 보내 점수를 출력시킨다. 
+   5. isThreeStrike() : GameService에서 스트라이크 개수를 가져와 3개면 참을 반환한다. 
+   6. whatToDoNext() 
+      1. getPlayersOpinion() : GameStatusView를 통해 입력을 받아온다. 
+      2. setGameStatus(String opinion) : GameStatusService에 문자열 입력변수를 넣어 "2"이면 서비스의 gameStatus를 거짓으로 바꾼다. 
