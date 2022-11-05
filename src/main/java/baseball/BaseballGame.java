@@ -1,8 +1,6 @@
 package baseball;
 
 import baseball.console.GameConsole;
-import baseball.converter.RestartOrExitCodeConverter;
-import baseball.converter.ThreeNumberConverter;
 import baseball.dto.BallStrikeDto;
 import baseball.opponent.ComputerOpponent;
 import baseball.opponent.RandomNumberGenerator;
@@ -14,17 +12,13 @@ import static baseball.converter.RestartOrExitCodeConverter.EXIT_CODE;
 
 public class BaseballGame {
 
-    private ComputerOpponent opponent;
-    private ThreeNumberConverter threeNumberConverter;
-    private RestartOrExitCodeConverter codeConverter;
-    private GameMessagePrinter messagePrinter;
-    private GameConsole console;
+    private final ComputerOpponent opponent;
+    private final GameMessagePrinter messagePrinter;
+    private final GameConsole console;
 
     public BaseballGame() {
         this.messagePrinter = new GameMessagePrinter();
         this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
-        this.threeNumberConverter = new ThreeNumberConverter();
-        this.codeConverter = new RestartOrExitCodeConverter();
         this.console = new GameConsole();
         messagePrinter.printStartMessage();
     }
@@ -34,7 +28,7 @@ public class BaseballGame {
             try {
                 while (true) {
                     messagePrinter.printNumberInputMessage();
-                    List<Integer> threeNumbers = threeNumberConverter.getThreeNumbers(console.input());
+                    List<Integer> threeNumbers = console.inputThreeNumbers();
                     BallStrikeDto answer = opponent.answer(threeNumbers);
                     messagePrinter.printResultMessage(answer);
                     if (answer.getStrikeCount() == 3) {
@@ -43,7 +37,7 @@ public class BaseballGame {
                     }
                 }
                 messagePrinter.printRestartOrExitMessage();
-                int statusCode = codeConverter.getRestartOrExitCode(console.input());
+                int statusCode = console.inputCode();
                 if (statusCode == EXIT_CODE) {
                     break;
                 }
