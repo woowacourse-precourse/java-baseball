@@ -11,7 +11,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> computerNumber = makeComputerRandomNumber();
-
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            checkTheNumber(input);
         }
 
 
@@ -35,5 +37,20 @@ public class Application {
         }
 
         return numArr;
+    }
+
+    public static void checkTheNumber(String input) {
+        boolean isWrongInput = false;
+        int number = changeStrToInt(input);
+        List<Integer> numArr = changeIntToList(number);
+
+        if (isOverlap(numArr) || isNotSizeThree(numArr)
+                || hasZero(numArr) || isNegativeNumber(number)) {
+            isWrongInput = true;
+        }
+
+        if (isWrongInput == true) {
+            throw new IllegalArgumentException();
+        }
     }
 }
