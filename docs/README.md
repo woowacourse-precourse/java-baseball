@@ -9,7 +9,7 @@
 - 3스트라이크가 나올 때 까지 서로 다른 3자리의 수를 입력한다.
 - 종료 후, 재시작을 나타내는 1을 입력시 서로 다른 3자리 수를 다시 입력한다.
 - 종료 후, 종료를 나타내는 2를 입력시 게임은 종료된다.
-- 문자열인 입력 값을 List<Integer> 타입으로 변환한다.
+- 문자열인 입력 값을 List<Integer&#62; 타입으로 변환한다.
 
 ##### ❗ **예외처리** ❗
 - 입력한 값이 비어 있진 않은지 확인한다.
@@ -48,19 +48,20 @@
 ````게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.````<br><br>
 ---
 ## 📖 클래스별 메서드 및 설명
-|    **클래스**     |                  **메서드**                   |   **반환 타입**   |                           **설 명**                           |
-|:--------------:|:-----------------:|:-------------:|:-----------------------------------------------------------:|
-|  🖥 Computer   |           createRandomNumbers()            | List<Integer> |                   1부터 9까지의 중복없는 랜덤한 수를 생성                   |
-|   🧑🏻 User    |    toIntegerUserInput(String userInput)    | List<Integer> |                 입력받은 문자열 userInput을 정수로 변환                  |
-| ⚾ BaseballGame |            BaseballGame() - 생성자            |     중앙정렬      | BaseballGame() 인스턴스 생성시<br> 랜덤한 3자리수와 스트라이크, 볼 개수를 0으로 초기화. |
-| ⚾ BaseballGame |                  start()                   |     void      |        시작을 알리는 메시지를 출력하고,<br>플레이어에게 3자리의 숫자를 입력받는다.         |
-| ⚾ BaseballGame |  checkInputData(List<Integer> userNumber)  |     void      |                  플레이어가 입력한 값이 조건에 맞는 지 확인                   |
-| ⚾ BaseballGame | checkStrikeCount(List<Integer> userNumber) |      int      |               스트라이크 개수만큼, 스트라이크의 카운트를 1씩 올린다.               |
-| ⚾ BaseballGame |  checkBallCount(List<Integer> userNumber)  |      int      |                   볼 개수만큼, 볼의 카운트를 1씩 올린다.                   |
-| ⚾ BaseballGame |                gameResult()                |     void      |            플레이어가 입력한 값에 대한 결과(볼, 스트라이크, 낫싱) 출력.             |
-| ⚾ BaseballGame |                 endGame()                  |    boolean    |   플레이어가 3스트라이크를 날릴 경우,<br>승리를 알리며 재시작(1)/종료(2)를 선택하도록한다.    |
-|   📢 Message    |                     -                      |    String    |                  야구 게임의 출력 메시지들을 상수로 가진다.                   |
-| 🅰 Application |                     -                      |       -       |  BaseballGame() 인스턴스를 생성하고,<br>게임이 종료될 때까지 게임을 실행한다.<br/>   |
+|    **클래스**     |                    **메서드**                     |   **반환 타입**   |                                    **설 명**                                     |
+|:--------------:|:----------------------------------------------:|:-------------:|:------------------------------------------------------------------------------:|
+|  🖥 Computer   |             createRandomNumbers()              | List<Integer&#62; |                            1부터 9까지의 중복없는 랜덤한 수를 생성                             |
+|   🧑🏻 User    |      toIntegerUserInput(String userInput)      | List<Integer&#62; |                           입력받은 문자열 userInput을 정수로 변환                           |
+| ⚾ BaseballGame |            BaseballGame() - **생성자**            |       -       | BaseballGame() 인스턴스 생성시<br>init()메서드를 호출해<br>랜덤한 3자리수를 담은 computerNumber를 가진다. |
+| ⚾ BaseballGame |                     init()                     |     void      |         createRandomNumbers()를 호출해 <br>computerNumber에 램덤한 3자리 수를 담는다.         |
+| ⚾ BaseballGame |                    start()                     |     void      |                  시작을 알리는 메시지를 출력하고,<br>플레이어에게 3자리의 숫자를 입력받는다.                  |
+| ⚾ BaseballGame |  checkInputData(List<Integer&#62; userNumber)  |     void      |                            플레이어가 입력한 값이 조건에 맞는 지 확인                            |
+| ⚾ BaseballGame | checkStrikeCount(List<Integer&#62; userNumber) |      int      |                        스트라이크 개수만큼, 스트라이크의 카운트를 1씩 올린다.                         |
+| ⚾ BaseballGame |  checkBallCount(List<Integer&#62; userNumber)  |      int      |                            볼 개수만큼, 볼의 카운트를 1씩 올린다.                             |
+| ⚾ BaseballGame |                  gameResult()                  |     void      |                      플레이어가 입력한 값에 대한 결과(볼, 스트라이크, 낫싱) 출력.                      |
+| ⚾ BaseballGame |                   endGame()                    |    boolean    |             플레이어가 3스트라이크를 날릴 경우,<br>승리를 알리며 재시작(1)/종료(2)를 선택하도록한다.             |
+|   📢 Message    |                       -                        |    String     |                            야구 게임의 출력 메시지들을 상수로 가진다.                            |
+| 🅰 Application |                       -                        |       -       |             BaseballGame() 인스턴스를 생성하고,<br>게임이 종료될 때까지 게임을 실행.<br/>             |
 <br>
 
 ---
