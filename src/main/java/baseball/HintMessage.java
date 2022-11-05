@@ -11,14 +11,13 @@ import baseball.Application;
 
 public class HintMessage {
     final static String STRIKE = "스트라이크";
-    static int strike_Score = 0;
+    int strike_Score = 0;
 
     final static String BALL = "볼 ";
-    static int ball_Score = 0;
+    int ball_Score = 0;
 
     final static String NOTHING = "낫싱";
-    static boolean isFinish = true;
-    int inputNumber = 0;
+    boolean isFinish = true;
     public boolean checkPoint(List<Integer> user, List<Integer> com) {
         strike_Score = 0;
         ball_Score = 0;
@@ -27,8 +26,9 @@ public class HintMessage {
             getHint();
         }
         if (user.equals(com)) {
-            isFinish = isFinishGame();
-            return isFinish;
+            strike_Score = 3;
+            isFinishGame(strike_Score);
+            return false;
         }
         return true;
     }
@@ -65,10 +65,9 @@ public class HintMessage {
         System.out.println();
     }
 
-    public boolean isFinishGame() {
-        System.out.println("3" + STRIKE);
+    public boolean isFinishGame(int strike_Score) {
+        System.out.println(strike_Score + STRIKE);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        isFinish = false;
-        return isFinish;
+        return false;
     }
 }
