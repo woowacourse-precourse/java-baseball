@@ -11,7 +11,6 @@ public class Game {
 	public void play() {
 		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 		List<Integer> answer = randomNumberGenerator.generateRandomNumber();
-		printGameStartMessage();
 
 		while (true) {
 			if (guess(answer)) {
