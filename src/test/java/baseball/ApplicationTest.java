@@ -29,12 +29,14 @@ class ApplicationTest extends NsTest {
     void getInstanceOfMethodClass(){
         this.validations = new Validations();
         this.processing = new Processing();
-        System.setOut(new PrintStream(outContent));
+        // 별도 출력 테스트를 하지 않을 경우엔 주석 처리하고 실행
+//        System.setOut(new PrintStream(outContent));
     }
 
     @AfterEach
     void restoreStreams() {
-        System.setOut(originalOut);
+        // 별도 출력 테스트를 하지 않을 경우엔 주석 처리하고 실행
+//        System.setOut(originalOut);
     }
 
     @Test
