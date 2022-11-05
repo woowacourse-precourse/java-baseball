@@ -71,3 +71,9 @@
 - [ ] regularExpression에 한자리 숫자인 1 또는 2 인지 확인하는 정규표현식을 초기화.
 - [ ] userAnswer이 regularExpression에 유효한지 비교값을 result에 저장
 - [ ] result을 리턴
+
+## (void)inputAvailableUserNumberService()
+- [ ] availableUserNumberIsChecking 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
+- [ ] userNumberMessagePrint함수를 실행
+- [ ] userNumberInput함수를 실행
+- [ ] availableUserNumberIsChecked함수를 실행
