@@ -17,7 +17,6 @@ public class Participant implements Player {
         validateInputElementIsNumber(input);
 
         this.numbers = Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
                 .map(BaseballNumber::new)
                 .collect(Collectors.toList());
 
