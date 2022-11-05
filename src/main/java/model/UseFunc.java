@@ -21,11 +21,13 @@ public class UseFunc {
     private static boolean isRightContainSameNum(List<Integer> splitStrList, int cntSameNum) {
         for (int value : splitStrList) {
             cntSameNum = getCntSameNum(splitStrList, cntSameNum, value);
-            if (cntSameNum > 1) {
-                return true;
-            }
+            return isValidCntSameNumLen(cntSameNum);
         }
         return false;
+    }
+
+    private static boolean isValidCntSameNumLen(int cntSameNum) {
+        return cntSameNum > 1;
     }
 
     private static int getCntSameNum(List<Integer> splitStrList, int cntSameNum, int value) {
