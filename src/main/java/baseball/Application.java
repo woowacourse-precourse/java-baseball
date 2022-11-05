@@ -50,6 +50,7 @@ class Baseball {
         getUserNumber();
         getBallStrikeNothing();
         printResult();
+        isWinNumber();
     }
 
     private static void buildComputerNumber() {
@@ -95,6 +96,17 @@ class Baseball {
         }
         if (countBallStrike.get(BALL) == 0 && countBallStrike.get(STRIKE) == 0) {
             System.out.println(NOTHING);
+        }
+    }
+
+    private static void isWinNumber() {
+        if (countBallStrike.get(STRIKE) != NUMBER_PITCH) {
+            inputUserNumber();
+            return;
+        }
+        if (countBallStrike.get(STRIKE) == NUMBER_PITCH) {
+            System.out.println(WIN_MESSAGE);
+            System.out.println(INPUT_RESTART_MESSAGE);
         }
     }
 }
