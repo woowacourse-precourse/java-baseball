@@ -16,17 +16,13 @@ public class StrikeCounter {
         this.input = new Input();
     }
 
-    // 유저 일급컬렉션 생성
-    private void createUserNumber() {
-        this.user = new User(stringToUserNumberList(input.inputUserNumber()));
+    public void progressGame() {
+        createUserNumber();
     }
 
-    // 플레이어가 입력한 값을 일급컬렉션으로 초기화
-    private List<Integer> stringToUserNumberList(String inputUserNumber) {
-        List<Integer> userNumberList = new ArrayList<>();
-        for (char c : inputUserNumber.toCharArray()) {
-            userNumberList.add(Integer.parseInt(String.valueOf(c)));
-        }
-        return userNumberList;
+    // 유저 일급컬렉션 생성
+    private void createUserNumber() {
+        this.user = new User(input.inputUserNumber());
     }
+
 }

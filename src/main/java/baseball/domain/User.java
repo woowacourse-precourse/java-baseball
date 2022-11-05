@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -9,11 +10,18 @@ public class User {
     private final List<Integer> userNumberList;
 
     // 일급컬렉션 유저넘버
-    public User(List<Integer> userNumberList) {
-        /*
-        * 예외처리 할 내용 넣기
-        * */
+    public User(String inputUserNumber) {
+        List<Integer> userNumberList = stringToUserNumberList(inputUserNumber);
         this.userNumberList = userNumberList;
+    }
+
+    // 플레이어가 입력한 값을 일급컬렉션으로 초기화
+    private List<Integer> stringToUserNumberList(String inputUserNumber) {
+        List<Integer> userNumberList = new ArrayList<>();
+        for (char c : inputUserNumber.toCharArray()) {
+            userNumberList.add(Integer.parseInt(String.valueOf(c)));
+        }
+        return userNumberList;
     }
 
     private void validateSize(List<Integer> userNumber) {
