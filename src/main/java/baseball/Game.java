@@ -76,28 +76,27 @@ public class Game {
     }
 
     private static String makeResult(int strike, int ball) {
-        String result;
         if (ball == ZERO && strike == ZERO) {
-            result = NOTHING;
-        } else {
-            result = ballOrStrike(strike, ball);
+            return NOTHING;
         }
-        return result;
+        return ballOrStrike(strike, ball);
     }
 
     private static String ballOrStrike(int strike, int ball) {
-        String result;
         if (strike == ZERO) {
-            result = ball + BALL;
-        } else if (ball == ZERO) {
-            result = strike + STRIKE;
-            if (strike == END_GAME_STRIKE_CONDITION) {
-                result = END_GAME_CONDITION;
-            }
-        } else {
-            result = ball + BALL + " " + strike + STRIKE;
+            return ball + BALL;
         }
-        return result;
+        if (ball == ZERO) {
+            return checkEndCondition(strike);
+        }
+        return ball + BALL + " " + strike + STRIKE;
+    }
+
+    private static String checkEndCondition(int strike) {
+        if (strike == END_GAME_STRIKE_CONDITION) {
+            return END_GAME_CONDITION;
+        }
+        return strike + STRIKE;
     }
 
     private static int ball(List<Integer> computer, List<Integer> user, int ball, int i) {
