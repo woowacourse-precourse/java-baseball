@@ -45,11 +45,23 @@ public class GameController {
         }
 
         private void start(){
-            View.printInput();
-            String command = player.getCommand();
+            int predict, compareValue, ball, strike = 0;
 
-            if(numberInputValidator.validate(command)){
-            }
+            do{
+                View.printInput();
+                String command = player.getCommand();
+
+                if(numberInputValidator.validate(command)){
+                    predict = Integer.parseInt(command);
+                    compareValue = computer.compareAnswer(predict);
+
+                    ball = compareValue / 10;
+                    strike = compareValue % 10;
+
+                    View.printHint(ball ,strike);
+                }else{
+                }
+            }while(strike == DIGIT_LENGTH);
 
             View.printGameEnd();
         }

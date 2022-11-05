@@ -36,4 +36,27 @@ public class Computer {
             map[answer.get(i)] = pos;
         }
     }
+
+    public int compareAnswer(int predict){
+        int ball, strike;
+        ball = strike = 0;
+
+        int q = predict;
+        for(int i = 1; q != 0; i++){
+            int num = q % 10;
+            int pos = map[num];
+
+            if(pos > 0){
+                if(i == pos) {
+                    strike++;
+                }else{
+                    ball++;
+                }
+            }
+
+            q /= 10;
+        }
+
+        return ball * 10 + strike;
+    }
 }
