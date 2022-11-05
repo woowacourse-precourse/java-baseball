@@ -25,27 +25,43 @@ public class Game {
     private static final int DEFAULT_SIZE = 3;
 
     public void start() {
-        System.out.println(START_GAME);
+        while (true) {
+            System.out.println(START_GAME);
 
-        List<Integer> computer = makeAnswer();
+            List<Integer> computer = makeAnswer();
 
-        String result = "";
-        while (!result.equals(END_GAME_CONDITION)) {
+            if (playBaseballGame(computer)) {
+                break;
+            }
+        }
+    }
+
+    private boolean playBaseballGame(List<Integer> answer) {
+        while (true) {
+            String result;
             System.out.print(INPUT_NUMBER);
             String input = Console.readLine();
             List<Integer> user = makeUserAnswer(input);
 
-            result = playMatch(computer, user);
-            System.out.println(result);
-        }
+            result = playMatch(answer, user);
+            System.out.println(playMatch(answer, user));
 
-        System.out.println(RESTART_CONDITION);
-        String input = Console.readLine();
-        if (input.equals(INPUT_START)) {
-            start();
-        } else if (!input.equals(INPUT_END)) {
-            throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
+            if (result.equals(END_GAME_CONDITION)) {
+                return restart();
+            }
         }
+    }
+
+    private static boolean restart() {
+        System.out.println(RESTART_CONDITION);
+        String restartInput = Console.readLine();
+        if (restartInput.equals(INPUT_END)) {
+            return true;
+        }
+        if (restartInput.equals(INPUT_START)) {
+            return false;
+        }
+        throw new IllegalArgumentException(INPUT_RESTART_EXCEPTION);
     }
 
     private static String playMatch(List<Integer> computer, List<Integer> user) {
@@ -63,7 +79,7 @@ public class Game {
         String result;
         if (ball == ZERO && strike == ZERO) {
             result = NOTHING;
-        }else {
+        } else {
             result = ballOrStrike(strike, ball);
         }
         return result;
