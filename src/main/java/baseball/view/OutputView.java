@@ -10,10 +10,12 @@ public class OutputView {
     private static final String APPLICATION_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE = "생성할 수 없는 View 클래스입니다.";
     private static final String BASEBALL_GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String DELIMITER = " ";
+    private static final String SPACE_DELIMITER = " ";
     private static final String NOTHING_DISPLAY = "낫싱";
     private static final String BALL_DISPLAY = "볼";
     private static final String STRIKE_DISPLAY = "스트라이크";
+    private static final int MIN_SCORES_INDEX = 0;
+    private static final int MAX_SCORES_INDEX = 1;
     
     private OutputView() {
         throw new IllegalStateException(UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
@@ -40,18 +42,18 @@ public class OutputView {
     }
     
     private static boolean isPitchResultNotZero(final Integer score) {
-        return score != 0;
+        return score != MIN_SCORES_INDEX;
     }
     
     private static String parsePlayResults(final List<Integer> scores, final List<String> ballStatusDisplay) {
-        return IntStream.rangeClosed(0, 1)
+        return IntStream.rangeClosed(MIN_SCORES_INDEX, MAX_SCORES_INDEX)
                 .filter(scoresIndex -> isPitchResultNotZero(scores, scoresIndex))
                 .mapToObj(scoresIndex -> scores.get(scoresIndex) + ballStatusDisplay.get(scoresIndex))
-                .collect(Collectors.joining(DELIMITER));
+                .collect(Collectors.joining(SPACE_DELIMITER));
     }
     
     private static boolean isPitchResultNotZero(final List<Integer> scores, final int resultIndex) {
-        return scores.get(resultIndex) != 0;
+        return scores.get(resultIndex) != MIN_SCORES_INDEX;
     }
     
     public static void baseBallGameEndMessagePrint() {
