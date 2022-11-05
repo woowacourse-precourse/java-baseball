@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
+import static baseball.game.Option.RESTART;
 import static baseball.view.InputView.inputRestartView;
 import static baseball.view.InputView.startProgramView;
 import static baseball.view.OutputView.*;
@@ -30,10 +31,17 @@ public class GameController {
             countStrike(i);
         }
     }
+    private static void restart(Scanner scanner){
+        String input = inputRestartView(scanner);
+        if(input.equals(RESTART)){
+            start(scanner);
+        }
+    }
     private static void result(Scanner scanner){
         resultView(strike,ball);
         if(strike==3){
             threeStrike();
+            restart(scanner);
             return;
         }
         playGame(scanner);
