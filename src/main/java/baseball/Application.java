@@ -14,8 +14,28 @@ public class Application {
         return answer;
     }
 
-    public static void validateNumber(ArrayList<Integer> prediction) throws IllegalArgumentException {
-        // TODO: implement validation logic
+    public static boolean isCorrectLength(String consoleInput) { return (consoleInput.length() == 3); }
+
+    public static boolean isInt(String consoleInput) {
+        char charInString;
+        for(int index = 0; index < consoleInput.length(); index++) {
+            charInString = consoleInput.charAt(index);
+            if(charInString < '1' || charInString > '9')
+                return false;
+        }
+        return true;
+    }
+
+    public static void validateInput(String consoleInput) throws IllegalArgumentException {
+        boolean isValid = true;
+        if (!isCorrectLength(consoleInput)) isValid = false;
+        if (!isInt(consoleInput)) isValid = false;
+
+        // TODO: raise IllegalArgumentException;
+        if(!isValid) {System.out.println("IllegalArgumentException");}
+        int inputNumber = Integer.parseInt(consoleInput);
+
+        // TODO: implement duplicated number check logic
     }
 
     public static ArrayList<Integer> separateDigit(int inputNumber) {
@@ -31,13 +51,15 @@ public class Application {
 
     public static void predictNumber(ArrayList<Integer> answer) {
         ArrayList<Integer> prediction = new ArrayList<>();
-        int inputNumber;
-        boolean isValid;
+        String consoleInput;
         while (!answer.equals(prediction)) {
             System.out.print("숫자를 입력해주세요 : ");
-            inputNumber = Integer.parseInt(Console.readLine());
+            consoleInput = Console.readLine();
+            validateInput(consoleInput);
+
+            int inputNumber = Integer.parseInt(consoleInput);
             prediction = separateDigit(inputNumber);
-            validateNumber(prediction);
+            // TODO: implement method, printHint(answer, prediction);
         }
     }
 
@@ -47,6 +69,9 @@ public class Application {
         while (executionCode == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             answer = generateAnswer();
+
+            System.out.println(answer);
+
             predictNumber(answer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             executionCode = Integer.parseInt(Console.readLine());
