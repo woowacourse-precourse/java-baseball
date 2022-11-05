@@ -9,10 +9,10 @@ public class Computer {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
-
-
-    private User user;
     private String[] compareResult;
+    private int ballCount;
+    private int strikeCount;
+    private int nothingCount;
 
     public List<Integer> createRandomNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
@@ -25,13 +25,12 @@ public class Computer {
         return computerNumbers;
     }
 
-    public String[] createCompareResult() {
-        user = new User();
+    public void createCompareResult() {
+        User user = new User();
         compareResult = new String[3];
         List<Integer> computerNumbers = createRandomNumber();
         List<Integer> userNumbers = user.createUserNumber();
         inputCompareResult(computerNumbers, userNumbers);
-        return compareResult;
     }
 
     public void inputCompareResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
@@ -65,5 +64,20 @@ public class Computer {
             }
         }
         return false;
+    }
+
+    public void compareGameScore() {
+        createCompareResult();
+        for (int i = 0; i < compareResult.length; i++) {
+            if (compareResult[i] == STRIKE) {
+                strikeCount++;
+            }
+            if (compareResult[i] == BALL) {
+                ballCount++;
+            }
+            if (compareResult[i] == NOTHING) {
+                nothingCount++;
+            }
+        }
     }
 }
