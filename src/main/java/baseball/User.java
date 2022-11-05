@@ -1,22 +1,20 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     int number;
 
     public void inputNumber() {
-        Scanner stdInput = new Scanner(System.in);
         String inputValue;
         System.out.print("숫자를 입력해주세요 : ");
-        inputValue = stdInput.nextLine();
+        inputValue = Console.readLine();
 
         if(validateInput(inputValue))
             this.number = Integer.parseInt(inputValue);
     }
 
     private boolean validateInput(String inputValue) throws IllegalArgumentException {
-
         // 사용자가 세 자리 숫자를 입력하였는 지를 확인
         if(inputValue.length() != 3)
             throw new IllegalArgumentException("입력하신 숫자가 세 자리가 아닙니다.");
