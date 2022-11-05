@@ -16,26 +16,16 @@ public class Application {
 
         while (true) {
             String userInput = requestUserInput();
-
-            //TODO 리펙터링
-            calculateHint(answer, userInput);
-            printHint();
+            computeProcessing(userInput);
 
             boolean isCorrect = checkAnswer();
             boolean isRestart = checkRestart(isCorrect);
-
             if (isRestart) {
                 initializeAnswer();
             } else if (isCorrect) {
                 break;
             }
         }
-    }
-
-    private static String requestUserInput() {
-        final int REQUEST_INPUT_DIGIT = 3;
-        System.out.print(Comment.INPUTNUMBER);
-        return validateInput(Console.readLine(), REQUEST_INPUT_DIGIT);
     }
 
     private static void startApplication() {
@@ -45,13 +35,23 @@ public class Application {
 
     private static void initializeAnswer() {
         List<Integer> tmpAnswer = new ArrayList<>();
-        while (tmpAnswer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        final int ANSWER_SIZE = 3;
+        final int START_NUM = 1;
+        final int END_NUM = 9;
+
+        while (tmpAnswer.size() < ANSWER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(START_NUM, END_NUM);
             if (!tmpAnswer.contains(randomNumber)) {
                 tmpAnswer.add(randomNumber);
             }
         }
         answer = tmpAnswer;
+    }
+
+    private static String requestUserInput() {
+        System.out.print(Comment.INPUTNUMBER);
+        final int REQUEST_INPUT_DIGIT = 3;
+        return validateInput(Console.readLine(), REQUEST_INPUT_DIGIT);
     }
 
     private static String validateInput(String input, int digit) {
@@ -65,6 +65,11 @@ public class Application {
             throw new IllegalArgumentException(digit + "자릿수를 입력해주세요.");
         }
         return tmpInput;
+    }
+
+    private static void computeProcessing(String userInput) {
+        calculateHint(answer, userInput);
+        printHint();
     }
 
     private static void calculateHint(List<Integer> answer, String inputStr) {
@@ -104,6 +109,7 @@ public class Application {
         if (hintStr == null) {
             hintStr = "낫싱";
         }
+
         System.out.println(hintStr);
     }
 
