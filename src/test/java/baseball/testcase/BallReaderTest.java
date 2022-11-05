@@ -4,11 +4,12 @@ import baseball.game.BallReader;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-
+import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+
 
 public class BallReaderTest {
     BallReader ballReader = new BallReader();
@@ -26,5 +27,14 @@ public class BallReaderTest {
         System.out.println();
 
         assertThat(ballReader.getResult(firstBall, secondBall)).isInstanceOf(Map.class);
+    }
+
+    @DisplayName("BallReader는 호환되지 않는 공을 입력한다면 예외를 발생시킨다.")
+    @Test
+    void BALLREADER_예외_테스트() {
+        List<Integer> firstBall = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> errorBall = List.of(1,2,3,4);
+
+        assertThatThrownBy(()->ballReader.getResult(firstBall,errorBall)).isInstanceOf(IllegalArgumentException.class);
     }
 }
