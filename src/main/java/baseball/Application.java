@@ -53,8 +53,9 @@ public class Application {
         return targetNums;
     }
     private static int commonNums(List<Integer> list1, List<Integer>list2){
-        list1.retainAll(list2);
-        return list1.size();
+        ArrayList<Integer>list3 = new ArrayList<Integer>(list1);
+        list3.retainAll(list2);
+        return list3.size();
     }
     private static int count_strikes(List<Integer> targetNums, List<Integer>userNums){
         int strike = 0;
@@ -90,33 +91,54 @@ public class Application {
     private static void printResult(List<Integer> ball_Strike){
         int ball = ball_Strike.get(BALL);
         int strike = ball_Strike.get(STRIKE);
-        System.out.println(ball +"볼 " + strike + "스트라이크");
+        if(ball ==0 && strike ==0)
+            System.out.println("낫싱");
+        else
+            System.out.println(ball +"볼 " + strike + "스트라이크");
     }
-    private static boolean is3Strikes(List<Integer> targetNums,List<Integer> userNums){
-        List<Integer> ball_Strike = count_BallStrike(targetNums,userNums);
-        printResult(ball_Strike);
+    private static boolean is3Strikes(List<Integer> ball_Strike){
         if(ball_Strike.get(STRIKE)==3) return true;
         return false;
     }
-    private static boolean mainGame(List<Integer> targetNums){
-        List<Integer> userNums = stringToIntegerList(userInput());
-        if(is3Strikes(targetNums,userNums))  return true;
-        return false;
+    private static void mainGame(List<Integer> targetNums){
+        while(true){
+            List<Integer> userNums= stringToIntegerList(userInput());
+            List<Integer> ball_Strike = count_BallStrike(targetNums,userNums);
+            printResult(ball_Strike);
+            if(is3Strikes(ball_Strike))
+                break;
+        }
     }
     public static void play(){
         //랜덤숫자 생성
         List<Integer> targetNums = createTargetNums();
-        //유저인풋받기 - 맞출때까지 반복
-                while(!mainGame(targetNums));
-        //재시작 or 종료
+        mainGame(targetNums);
+    }
+    private static boolean isValidContInput(String str){
+        if(str == CONTINUE || str == END) return true;
+        else return false;
+    }
+    private static String continueInput(){
+        String input = Console.readLine();
+        try {
+            if(!isValidContInput(input))
+                throw new IllegalArgumentException();
+        }catch (IllegalArgumentException e){
+            //TODO:어플리케이션 종료
+        }
+        return input;
     }
     private static boolean askContinue(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = userInput();
-        if(input == CONTINUE) return true;
-        return false;
+        String input = continueInput();
+        System.out.println(input);
+        if(input.equals(CONTINUE)){
+            return true;
+        }
+        else return false;
     }
     public static void main(String[] args) {
-        do{play();}while (askContinue());
+        do{play();System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");}while (askContinue());
+
     }
 }
