@@ -41,15 +41,18 @@ public class BaseballService {
     }
 
     public void getUserNumbers() {
-        inputUtil.inputUserNumbers();
+        user.setUserNumbers(inputUtil.inputUserNumbers());
     }
 
-    public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
+    public void outputHint() {
+        ArrayList<Integer> userNumbers = user.getUserNumbers();
+        ArrayList<Integer> computerNumbers = computer.getRandomNumbers();
+
         game.setBall(0);
         game.setStrike(0);
-        for (int i = 0; i < computer.size(); i++) {
-            game.setStrike(game.getStrike() + isStrike(computer.get(i), user.get(i)));
-            game.setBall(game.getBall() + isBall(computer, user.get(i), i));
+        for (int i = 0; i < computer.getRandomNumbers().size(); i++) {
+            game.setStrike(game.getStrike() + isStrike(computerNumbers.get(i), userNumbers.get(i));
+            game.setBall(game.getBall() + isBall(computerNumbers, userNumbers.get(i), i));
         }
         System.out.println(createOutput(game.getStrike(), game.getBall()));
     }

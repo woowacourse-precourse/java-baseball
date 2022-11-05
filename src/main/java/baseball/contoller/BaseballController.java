@@ -16,7 +16,7 @@ public class BaseballController {
         baseballService.createRandomNumbers();
         while (baseballService.getGameStatus()) {
             baseballService.getUserNumbers();
-            outputHint(computer.randomNumbers, user.userNumbers);
+            baseballService.outputHint();
             if (isAnswer(strike)) {
                 outputRestart();
             }
