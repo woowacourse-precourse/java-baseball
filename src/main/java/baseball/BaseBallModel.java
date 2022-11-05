@@ -35,9 +35,13 @@ public class BaseBallModel {
         for(int i = 0; i < this.numberLength; i++){
             String cloneNumbers = new String(inputNumbers);
 
+            if(!Character.isDigit(inputNumbers.charAt(i))){
+                throw new IllegalArgumentException();
+            }
             if(cloneNumbers.replace(Character.toString(inputNumbers.charAt(i)), "").length() != this.numberLength-1){
                 throw new IllegalArgumentException();
             }
+
         }
     }
 
