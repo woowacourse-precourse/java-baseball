@@ -23,4 +23,9 @@ public class Exceptions {
             throw new IllegalArgumentException("입력이 너무 짧습니다. 숫자 3자리를 입력하세요.");
         }
     }
+
+    public static void checkOpinionMessage(String userOpinion) {
+        if (!(userOpinion.equals("1") || userOpinion.equals("2")))
+            throw new IllegalArgumentException("1 : 게임 새로 시작, 2 : 게임 종료");
+    }
 }
