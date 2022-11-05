@@ -70,10 +70,22 @@ public class BaseballNumbers {
         for (int baseballIndex = 0; baseballIndex < 3; baseballIndex++) {
             BaseballNumber baseballNumber = ballNumbers.get(baseballIndex);
             int otherBaseballIndex = otherBaseballNumberList.indexOf(baseballNumber);
-            if(baseballIndex != otherBaseballIndex) {
+            if (baseballIndex != otherBaseballIndex) {
                 ballCount++;
             }
         }
         return ballCount;
+    }
+
+    private boolean isNothing(BaseballNumbers otherBaseballNumbers) {
+        List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber otherBaseballNumber = otherBaseballNumberList.get(i);
+            boolean isSameNumber = ballNumbers.contains(otherBaseballNumber);
+            if (isSameNumber) {
+                return false;
+            }
+        }
+        return true;
     }
 }
