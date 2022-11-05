@@ -49,7 +49,7 @@ public class BaseBallModel {
         return result;
     }
 
-    public int getBall(String inputNumbers){
+    private int getBall(String inputNumbers){
         int ballCount = 0;
 
         for(int i = 0; i < this.numberLength; i++){
@@ -63,7 +63,7 @@ public class BaseBallModel {
         return ballCount;
     }
 
-    public int getStrike(String inputNumbers){
+    private int getStrike(String inputNumbers){
         int strikeCount = 0;
 
         for(int i = 0; i < this.numberLength; i++){
