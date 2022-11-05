@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BaseballGame {
     public void startGame() {
@@ -29,5 +31,16 @@ public class BaseballGame {
             userNumber.add(Character.getNumericValue(c));
         }
         return userNumber;
+    }
+
+    public boolean isValidNumber(String userInput) {
+        Set<Character> sameNumberCheck = new HashSet<>();
+        if (userInput.length() != 3) return false;
+        for (char c : userInput.toCharArray()) {
+            if (!Character.isDigit(c)) return false;
+            if (c == '0') return false;
+            sameNumberCheck.add(c);
+        }
+        return sameNumberCheck.size() == 3;
     }
 }
