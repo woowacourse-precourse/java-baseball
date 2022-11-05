@@ -11,10 +11,6 @@ public class Game {
 
     private final String answerNumber = computer.getRandomBaseballNumber();
 
-    public String getAnswerNumber() {
-        return answerNumber;
-    }
-
     public void playGame() {
         do {
             strikeCount = 0;
