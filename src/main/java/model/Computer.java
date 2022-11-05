@@ -22,11 +22,10 @@ public class Computer {
     }
 
     public void initComputer() {
-        while (true) {
+        this.creatRanNumOfComputerList();
+        
+        while (!isNumOfComputerIndividually()) {
             this.creatRanNumOfComputerList();
-            if (isNumOfComputerIndividually()) {
-                break;
-            }
         }
     }
 
@@ -87,7 +86,6 @@ public class Computer {
         return Randoms.pickNumberInRange(NUM_START_RANGE_RAM, NUM_END_RANGE_RAM);
     }
 
-
     public boolean isRealRightNumOfUser(int numInputOfUser) {
         if (isRightThreeNumOfComputer(numInputOfUser)) {
             // TODO: 스트라이크와 볼이 있다면
@@ -119,7 +117,6 @@ public class Computer {
             return false;
         }
     }
-
 
     // strike체크 함수
     private void checkStrike(List<Integer> splitNumOfCompare) {
@@ -197,7 +194,6 @@ public class Computer {
     public int getCntBall() {
         return cntBall;
     }
-
 
     public List<Integer> getNumThreeRanOfComputerList() {
         return numThreeRanOfComputerList;
