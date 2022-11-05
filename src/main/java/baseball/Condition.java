@@ -11,27 +11,25 @@ public class Condition {
 	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
 		
 		List<Integer> userNumbersList = new ArrayList<>();		
-		int userNumbersInt = 0;
+		int userNumbersInt = Integer.parseInt(userNumbers);
 		final Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
 		final Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
 		final boolean isUserNumberMatch = matchUserNumber.find();
-		
-		if (!isUserNumberMatch)
-			throw new IllegalArgumentException();
-		if (userNumbers.length() != 3)
-			throw new IllegalArgumentException();
 		char[] charUserNumbers = new char[userNumbers.length()];
+		
+		if (!isUserNumberMatch) {
+			throw new IllegalArgumentException();
+		}			
+		if (userNumbers.length() != 3) {
+			throw new IllegalArgumentException();
+		}				
 		for (int userNums = 0; userNums < userNumbers.length(); userNums++) {
 			charUserNumbers[userNums] = userNumbers.charAt(userNums);
-		}
-		for (int charNumbers = 0; charNumbers < charUserNumbers.length; charNumbers++) {
-			if (charNumbers != userNumbers.indexOf(userNumbers.charAt(charNumbers)))
-				throw new IllegalArgumentException();
-		}
-		userNumbersInt = Integer.parseInt(userNumbers);
-		for (int number = 0; number < userNumbers.length(); number++) {
 			char[] userNumberChar = userNumbers.toCharArray();
-			userNumbersList.add((int) userNumberChar[number] - 48);
+			userNumbersList.add((int) userNumberChar[userNums] - 48);
+			if (userNums != userNumbers.indexOf(userNumbers.charAt(userNums))) {
+				throw new IllegalArgumentException();
+			}
 		}
 		return userNumbersList;
 	}
