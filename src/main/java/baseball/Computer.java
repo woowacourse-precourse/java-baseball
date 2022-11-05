@@ -7,20 +7,31 @@ import java.util.StringTokenizer;
 
 public class Computer {
 
-  private static String RandomValue;
+  public static String RandomValue;
 
-  private static void printGameStart() {
+  Computer () {
+    RandomValue = generateRandom();
+    //printGameStart();
+    //printInputNumber();
+  }
+
+  public static void printGameStart() {
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
-  private static void printInputNumber() {
+  public static void printInputNumber() {
     System.out.print("숫자를 입력해주세요 : ");
   }
 
-  private static void printCalculateResult(String calculatedResult) {
-    System.out.println(calculatedResult);
+  public static void printEndingMessage() {
+    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
   }
-  private static String generateRandom() {
+  public static String printCalculateResult(String calculatedResult) {
+    System.out.println(calculatedResult);
+    return calculatedResult;
+  }
+  public static String generateRandom() {
     StringBuilder sb = new StringBuilder();
     ArrayList<Integer> generateRandNum = new ArrayList<>();
 
