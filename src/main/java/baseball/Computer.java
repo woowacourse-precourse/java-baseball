@@ -28,8 +28,7 @@ public class Computer {
         for (int i = 0; i < 3; i++) {
             if (computerInput.charAt(i) == playerInput.charAt(i)) {
                 strikeOfHint += 1;
-            }
-            if (computerInput.contains(Character.toString(playerInput.charAt(i)))) {
+            } else if (computerInput.contains(Character.toString(playerInput.charAt(i)))) {
                 ballOfHint += 1;
             }
         }
