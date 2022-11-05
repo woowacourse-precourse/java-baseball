@@ -7,30 +7,24 @@ public class ProcessService {
 
     public void validateGameInput(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력의 길이는 3자리수여야 합니다.");
         }
 
         for (int i = 0; i < input.length(); i++) {
             char digit = input.charAt(i);
             if (digit < '1' || digit > '9') {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("입력은 1 ~ 9 사이의 값이어야만 합니다.");
             }
         }
     }
 
     public void validateEndInput(String input) throws IllegalArgumentException {
         if (input.length() != 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력의 길이는 1자리 수여야 합니다.");
         }
 
-        char digit = input.charAt(0);
-        if (digit < '1' || digit > '9') {
-            throw new IllegalArgumentException();
-        }
-
-        int cmd = Integer.parseInt(input);
-        if (cmd != 1 && cmd != 2) {
-            throw new IllegalArgumentException();
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("입력은 1 또는 2의 커맨드여야 합니다.");
         }
     }
 
