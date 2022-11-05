@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class NumberMatchProcessorTest {
@@ -67,17 +66,6 @@ public class NumberMatchProcessorTest {
                     assertThat(result).containsExactly(3, 0);
                     assertThat(result.size()).isEqualTo(2);
 
-                }),
-                DynamicTest.dynamicTest("입력값이 3자리숫자가 아닌경우 예외를 리턴한다. - case 4자리 숫자", () -> {
-                    assertThatThrownBy(() -> numberMatchProcessor.compare(gameNumber, 1376))
-                            .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
-
-                }),
-                DynamicTest.dynamicTest("입력값이 3자리숫자가 아닌경우 예외를 리턴한다 - case 2자리 숫자.", () -> {
-                    assertThatThrownBy(() -> numberMatchProcessor.compare(gameNumber, 97))
-                            .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
                 })
         );
     }

@@ -4,10 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class NumberValidateTest {
@@ -22,9 +20,15 @@ public class NumberValidateTest {
 
                     numberValidate.validation(467);
                 }),
-                DynamicTest.dynamicTest("3자리 숫자가 아닌경우 예외를 던져준다.", () -> {
+                DynamicTest.dynamicTest("3자리 숫자가 아닌경우 예외를 던져준다. case 2자리 숫자", () -> {
 
                     assertThatThrownBy(() -> numberValidate.validation(47))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
+                }),
+                DynamicTest.dynamicTest("3자리 숫자가 아닌경우 예외를 던져준다. case 4자리 숫자", () -> {
+
+                    assertThatThrownBy(() -> numberValidate.validation(4789))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
                 }),

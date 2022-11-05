@@ -10,8 +10,6 @@ public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
     @Override
     public List<Integer> compare(int gameNum, int userNum) {
-        if (userNum > 999 || userNum < 99) throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
-
 
         List<Integer> result = new ArrayList<>(List.of(0, 0));
 
