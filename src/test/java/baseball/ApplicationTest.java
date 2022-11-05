@@ -9,12 +9,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     final GameReadyMachine gameReadyMachine = new GameReadyMachine();
+
     @Test
-    void getThreeDigitNumber(){
+    void getThreeDigitNumber() {
         assertThat(gameReadyMachine.setValue()).isEqualTo(true);
     }
+
     @Test
-    void 자리수다른지_체크_성공(){
+    void 자리수다른지_체크_성공() {
         assertThat(gameReadyMachine.checkDigitValue(574)).isEqualTo(true);
         assertThat(gameReadyMachine.checkDigitValue(686)).isEqualTo(false);
     }
