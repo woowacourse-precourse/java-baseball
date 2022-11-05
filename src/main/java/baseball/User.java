@@ -25,8 +25,15 @@ public class User {
         List<Integer> userNumbers = new ArrayList<>();
         for (String number : splitNumber) {
             int numberToInt = Integer.parseInt(number);
+            inputException(userNumbers, numberToInt);
             userNumbers.add(numberToInt);
         }
         return userNumbers;
+    }
+
+    public void inputException(List<Integer> userNumbers, int numberToInt) {
+        if (userNumbers.contains(numberToInt)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
