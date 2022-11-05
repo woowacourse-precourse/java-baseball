@@ -34,6 +34,12 @@ class Game {
 
         return Integer.parseInt(Console.readLine());
     }
+
+    public Integer checkNumberLength(Integer gamePlayerInput) {
+        String stringGamePlayerInput = gamePlayerInput.toString();
+
+        return stringGamePlayerInput.length();
+    }
 }
 
 class Computer {
