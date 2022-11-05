@@ -11,20 +11,32 @@ public class UseFunc {
     public static boolean isNumOfIndividually(String str) {
         List<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = 0;
-        for (int value : splitStrList) {
-            cntSameNum = 0;
-            for (int index = 0; index < splitStrList.size(); index++) {
-
-                int numValueListAtNow = getValueIndexList(splitStrList, index);
-                if (isEqualIntOfTwo(value, numValueListAtNow)) {
-                    cntSameNum = cntSameNum + 1;
-                }
-            }
-            if (cntSameNum > 1) {
-                return false;
-            }
+        if (isRightContainSameNum(splitStrList, cntSameNum)) {
+            return false;
         }
         return true;
+    }
+
+    private static boolean isRightContainSameNum(List<Integer> splitStrList, int cntSameNum) {
+        for (int value : splitStrList) {
+            cntSameNum = getCntSameNum(splitStrList, cntSameNum, value);
+            if (cntSameNum > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int getCntSameNum(List<Integer> splitStrList, int cntSameNum, int value) {
+        cntSameNum = 0;
+        for (int index = 0; index < splitStrList.size(); index++) {
+
+            int numValueListAtNow = getValueIndexList(splitStrList, index);
+            if (isEqualIntOfTwo(value, numValueListAtNow)) {
+                cntSameNum = cntSameNum + 1;
+            }
+        }
+        return cntSameNum;
     }
 
     private static int getValueIndexList(List<Integer> list, int index) {
