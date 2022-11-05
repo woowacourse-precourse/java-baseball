@@ -8,21 +8,17 @@ import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static computer.BallsAndStrikesCountCalculator.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import Controller.Game;
-import Controller.Restarter;
 import User.Input;
 import User.Outputs;
 import User.Validator;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import computer.RandomNumberGenerator;
 
@@ -37,6 +33,7 @@ class ApplicationTest extends NsTest {
 		assertThat(restart()).isTrue();
 
 	}
+
 	@Test
 	void play_메소드로_게임_실행() {
 		assertRandomNumberInRangeTest(() -> {
@@ -45,7 +42,7 @@ class ApplicationTest extends NsTest {
 			Game game = new Game();
 			game.play();
 			assertThat(output()).contains("낫싱", "2볼", "2스트라이크", "1볼 1스트라이크", "3스트라이크");
-		}, 3,7,1);
+		}, 3, 7, 1);
 	}
 
 	@Test
