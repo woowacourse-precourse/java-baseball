@@ -154,16 +154,16 @@ public class Application {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                ball = checkAndCountBall(ball, userNumbers[i], randomNumberList.get(j));
+                ball = checkAndCountBall(ball, userNumbers[i], randomNumberList.get(j), i, j);
             }
         }
 
         return ball;
     }
 
-    public static Integer checkAndCountBall(int ball, int userNumber, int randomNumber) {
+    public static Integer checkAndCountBall(int ball, int userNumber, int randomNumber, int userIndex, int randomIndex) {
 
-        if (userNumber == randomNumber) {
+        if (userNumber == randomNumber && userIndex != randomIndex) {
 
             ball += 1;
         }
