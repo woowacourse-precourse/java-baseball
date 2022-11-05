@@ -66,14 +66,14 @@ public class Computer {
 
     private String getStrikeMessage(int strikeCount) {
         if (strikeCount > 0) {
-            return String.format("%d, %s", strikeCount, STRIKE_MESSAGE);
+            return String.format("%d%s", strikeCount, STRIKE_MESSAGE);
         }
         return "";
     }
 
     private String getBallMessage(int ballCount) {
         if (ballCount > 0) {
-            return String.format("%d, %s", ballCount, BALL_MESSAGE);
+            return String.format("%d%s", ballCount, BALL_MESSAGE);
         }
         return "";
     }
