@@ -7,6 +7,7 @@ public class User {
   public static String input;
   private static final int PLAYINGMODE = 1;
   private static final int PLAYAGAINMODE = 2;
+  private static final int CORRECTINPUTLENGTH = 3;
 
   public static String inputValue(int whichMode) {
     input = Console.readLine();
@@ -28,13 +29,13 @@ public class User {
   }
 
   private static void checkInputLength() {
-    if (input.length() != 3) {
+    if (input.length() != CORRECTINPUTLENGTH) {
       throw new IllegalArgumentException("input length is not three.");
     }
   }
 
   private static void checkInputIsNumNonZero() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < CORRECTINPUTLENGTH; i++) {
       if (!(input.charAt(i) >= '1' && input.charAt(i) <= '9')) {
         throw new IllegalArgumentException("input contains which is not number.");
       }
