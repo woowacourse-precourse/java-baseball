@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -19,5 +20,10 @@ public class PrepareGame {
 
     public Boolean isEachDigit(List<Integer> digitList, int digitNumber) {
         return digitList.contains(digitNumber);
+    }
+
+    public String setUserNumber(){
+        String userNumber = Console.readLine();
+        return userNumber;
     }
 }
