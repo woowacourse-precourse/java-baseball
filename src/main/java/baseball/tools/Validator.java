@@ -23,8 +23,8 @@ public class Validator {
 
     private boolean checkBaseballNumberRange() {
         for (int i = 0; i < 3; i++) {
-            int number = baseballNumber.charAt(i);
-            if (number < 1 || number > 9)
+            int number = Integer.parseInt(String.valueOf(baseballNumber.charAt(i)));
+            if (number == 0)
                 return false;
         }
         return true;
