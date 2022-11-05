@@ -15,13 +15,9 @@ public class Application {
         startApplication();
 
         while (true) {
-            //TODO:
-            // 입력받기 메서드 하나로 리펙터링
-            // 숫자 리터럴 상수화
-            System.out.print(Comment.INPUTNUMBER);
-            String userInput = Console.readLine();
-            validateInput(userInput, 3);
+            String userInput = requestUserInput();
 
+            //TODO 리펙터링
             calculateHint(answer, userInput);
             printHint();
 
@@ -34,6 +30,12 @@ public class Application {
                 break;
             }
         }
+    }
+
+    private static String requestUserInput() {
+        final int REQUEST_INPUT_DIGIT = 3;
+        System.out.print(Comment.INPUTNUMBER);
+        return validateInput(Console.readLine(), REQUEST_INPUT_DIGIT);
     }
 
     private static void startApplication() {
@@ -52,7 +54,7 @@ public class Application {
         answer = tmpAnswer;
     }
 
-    private static void validateInput(String input, int digit) {
+    private static String validateInput(String input, int digit) {
         String tmpInput = input.trim();
         String numberOnlyRegex = "^[1-9]+$";
         boolean matches = tmpInput.matches(numberOnlyRegex);
@@ -62,6 +64,7 @@ public class Application {
         if (tmpInput.length() != digit) {
             throw new IllegalArgumentException(digit + "자릿수를 입력해주세요.");
         }
+        return tmpInput;
     }
 
     private static void calculateHint(List<Integer> answer, String inputStr) {
@@ -105,7 +108,8 @@ public class Application {
     }
 
     private static boolean checkAnswer() {
-        if (hintMap.get(Hint.STRIKE).equals(3)) {
+        final int CORRECT_COUNT = 3;
+        if (hintMap.get(Hint.STRIKE).equals(CORRECT_COUNT)) {
             System.out.println(Comment.ENDGAME);
             return true;
         }
@@ -115,19 +119,20 @@ public class Application {
     private static boolean checkRestart(boolean isCorrect) {
         if (isCorrect) {
             System.out.println(Comment.REGAME);
-            String restartRely = Console.readLine();
-            validateInput(restartRely, 1);
-            if (restartRely.equals("1")) {
+
+            final int REQUEST_INPUT_DIGIT = 1;
+            String restartInput = validateInput(Console.readLine(), REQUEST_INPUT_DIGIT);
+
+            if (restartInput.equals("1")) {
                 return true;
             }
-            if (restartRely.equals("2")) {
+            if (restartInput.equals("2")) {
                 return false;
             }
             throw new IllegalArgumentException("1 혹은 2 를 입력해주세요.");
         }
         return false;
     }
-
 
     enum Hint {
         STRIKE, BALL
