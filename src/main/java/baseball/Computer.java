@@ -8,12 +8,12 @@ public class Computer{
     private ArrayList<Integer> computerBalls;
 
     public Computer() {
-        ArrayList<Integer> computerBalls = new ArrayList<>();
+        this.computerBalls = new ArrayList<>();
 
         while (computerBalls.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerBalls.contains(randomNumber)) {
-                computerBalls.add(randomNumber);
+            if (!this.computerBalls.contains(randomNumber)) {
+                this.computerBalls.add(randomNumber);
             }
         }
     }
