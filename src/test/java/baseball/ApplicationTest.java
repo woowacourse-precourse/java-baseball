@@ -45,9 +45,7 @@ class ApplicationTest extends NsTest {
         List<Integer> computer = Application.selectComputerNumber();
 
         for(Integer number : computer){
-            assertThat(number)
-                    .isGreaterThan(0)
-                    .isLessThan(10);
+            assertThat(number).isBetween(1,9);
         }
     }
 
