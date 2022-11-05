@@ -67,5 +67,16 @@ public class Application {
             return Arrays.asList(inputNum.split(""));
         }
 
+        public List<String> findContainedNumbers(List<String> answer, List<String> userNumList){
+            for(int i = 0 ; i < 3 ; i++){
+                String checkNum = userNumList.get(i);
+                if(!answer.contains(checkNum)){
+                    userNumList.set(i, null);
+                }
+            }
+            return userNumList;
+        }
+
+
     }
 }
