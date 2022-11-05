@@ -93,21 +93,21 @@ public class BaseballGame {
 
     private String getString1(List<String> userInput, String results) {
         if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
-            results += "낫싱";
+            results += Ball.NOTHING.name();
         }
         return results;
     }
 
     private String getResults(List<String> userInput, String results) {
         if (countStrike(userInput) > 0) {
-            results += countStrike(userInput) + "스트라이크";
+            results += countStrike(userInput) + Ball.STRIKE.name();
         }
         return results;
     }
 
     private String getString(List<String> userInput, String results) {
         if (countBall(userInput) > 0) {
-            results += countBall(userInput) + "볼 ";
+            results += countBall(userInput) + Ball.BALL.name();
         }
         return results;
     }
