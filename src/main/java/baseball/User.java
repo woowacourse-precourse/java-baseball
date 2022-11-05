@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private int number;
+    private String number;
 
     public void inputNumber() {
         String inputValue;
@@ -11,7 +11,7 @@ public class User {
         inputValue = Console.readLine();
 
         if(validateInput(inputValue))
-            this.number = Integer.parseInt(inputValue);
+            this.number = inputValue;
     }
 
     public boolean inputFlag() throws IllegalArgumentException {
@@ -73,7 +73,7 @@ public class User {
         return false;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return this.number;
     }
 }
