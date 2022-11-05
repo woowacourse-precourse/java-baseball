@@ -161,7 +161,6 @@ public class Computer {
             // TODO: 2.1.1 스트라이크 체크
             checkStrike(splitNumOfCompare);
             // TODO: 2.1.2 스트라이크 체크
-            checkBall(splitNumOfCompare);
 //            System.out.println(this.numThreeRanOfComputerList);
 //            System.out.println(this.cntBall + " " + this.cntStrike);
             return true;
@@ -173,7 +172,7 @@ public class Computer {
     // strike체크 함수
     private void checkStrike(List<Integer> listSplitNum) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
-        Boolean isStrike = true;
+        boolean isStrike = true;
         for (int first = 0; first < listSplitNum.size(); first++) {
             isStrike = false;
             int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
@@ -184,10 +183,11 @@ public class Computer {
             if (isStrike) {
                 this.cntStrike = this.cntStrike + 1;
             }
+
         }
     }
 
-    private boolean isCheckStrike(Boolean isStrike, int first, int numComputerAtNow, int second,
+    private boolean isCheckStrike(boolean isStrike, int first, int numComputerAtNow, int second,
         int numAtNow) {
         if (first == second && numComputerAtNow == numAtNow) {
             isStrike = true;
@@ -195,22 +195,6 @@ public class Computer {
         return isStrike;
     }
 
-    // strike체크 함수
-    private void checkBall(List<Integer> splitNumOfCompare) {
-        // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
-        boolean isBall = true;
-        for (int first = 0; first < splitNumOfCompare.size(); first++) {
-            isBall = false;
-            int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
-            for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
-                int numAtNow = splitNumOfCompare.get(second);
-                isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
-            }
-            if (isBall) {
-                this.cntBall = this.cntBall + 1;
-            }
-        }
-    }
 
     private boolean isBallCheck(boolean isBall, int first, int numComputerAtNow, int second,
         int numAtNow) {
