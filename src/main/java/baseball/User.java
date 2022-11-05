@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
     private static final int DIGIT_NUMBER = 3;
 
-    public List<Integer> userNumber() {
+    public static List<Integer> userNumber() {
         List<Integer> userNumber = new ArrayList<>();
 
         System.out.print(GameMessage.input);
@@ -26,7 +26,7 @@ public class User {
         return userNumber;
     }
 
-    public void userException(String user) {
+    public static void userException(String user) {
         if (user.length() != DIGIT_NUMBER) {
             throw new IllegalArgumentException();
         }
