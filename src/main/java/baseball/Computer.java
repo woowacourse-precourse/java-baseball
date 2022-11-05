@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    
+
     private User user;
-    private static String[] gameResult;
+    private static String[] compareResult;
 
     public List<Integer> createRandomNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
@@ -22,24 +22,25 @@ public class Computer {
     }
 
     public String[] compareNumber() {
-        gameResult = new String[3];
-        User user = new User();
+        compareResult = new String[3];
         List<Integer> computerNumbers = createRandomNumber();
         List<Integer> userNumbers = user.createUserNumber();
-        System.out.println(computerNumbers);
+        return compareResult;
+    }
+
+    public void inputCompareResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for (int i = 0; i < computerNumbers.size(); i++) {
             int userNumber = userNumbers.get(i);
             if (isSameIndexOfSameNumber(computerNumbers, userNumbers, userNumber)) {
-                gameResult[i] = "스트라이크";
+                compareResult[i] = "스트라이크";
                 continue;
             }
             if (isContainsNumber(computerNumbers, userNumber)) {
-                gameResult[i] = "볼";
+                compareResult[i] = "볼";
                 continue;
             }
-            gameResult[i] = "낫싱";
+            compareResult[i] = "낫싱";
         }
-        return gameResult;
     }
 
     public boolean isContainsNumber(List<Integer> computerNumbers, int number) {
