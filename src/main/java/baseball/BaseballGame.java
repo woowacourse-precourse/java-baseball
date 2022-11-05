@@ -28,12 +28,11 @@ public class BaseballGame {
 
     public boolean isEndGame() {
         View.printChoiceEndOrNewGame();
-        String userInput = View.getUserInput();
-        checkVerifierInputToEndOrNewGame(userInput);
+        String userInput = checkVerifierInputToEndOrNewGame(View.getUserInput());
         return userInput.equals(NEW_GAME);
     }
 
-    private void checkVerifierInputToEndOrNewGame(String input) {
-        verifierInputToEndOrNewGame.checkValid(input);
+    private String checkVerifierInputToEndOrNewGame(String input) {
+        return verifierInputToEndOrNewGame.checkValid(input);
     }
 }
