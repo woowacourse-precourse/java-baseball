@@ -1,8 +1,12 @@
 package baseball.baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static baseball.baseball.Digits.DIGIT_COUNT;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class RandomBaseballGame {
     private final BaseballGame baseballGame;
@@ -13,7 +17,21 @@ public class RandomBaseballGame {
     }
 
     private Digits createRandomDigits() {
-        return new Digits(Randoms.pickUniqueNumbersInRange(1, 9, DIGIT_COUNT));
+        Set<Integer> selectedSet = new HashSet<>();
+        List<Integer> randomList = new ArrayList<>();
+
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            int number;
+
+            do {
+                number = pickNumberInRange(1, 9);
+            } while(selectedSet.contains(number));
+
+            selectedSet.add(number);
+            randomList.add(number);
+        }
+
+        return new Digits(randomList);
     }
 
     public void newGame() {
