@@ -36,6 +36,7 @@
 ### GameController
 
 - 게임을 시작할 수 있다.
+- 게임 시작을 알리는 출력을 요청한다.
 - Computer에게 이번 게임의 컴퓨터 random값 3개를 생성하고 반환하도록 호출한다.
 - GameLogic에게 반환 받은 random값 3개를 넘겨주며 게임을 진행한다.
 - GameLogic이 끝나고 나면 User에게 새로운 게임을 시작할지 응답을 요청한다.
