@@ -54,6 +54,10 @@ public class Application {
         Game game = new Game();
         game.start();
         game.setUserInput();
+
+        while(!game.getGameNums().equals(game.getUserNum())) {
+        
+        }
     }
 
     public static void main(String[] args) {
