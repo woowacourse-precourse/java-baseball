@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Game {
+public class BaseballGame {
     public void start() {
         while (true) {
             System.out.println(START_GAME);
