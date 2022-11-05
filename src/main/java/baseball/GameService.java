@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.domain.GameResult;
+import baseball.domain.Player;
+import baseball.domain.RandomNumberCreator;
+
 import java.util.List;
 
 public class GameService {
