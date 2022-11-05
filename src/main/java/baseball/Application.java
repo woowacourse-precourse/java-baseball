@@ -212,4 +212,11 @@ public class Application {
 
         return replayNumberString.length() == 1;
     }
+
+    public static boolean checkReplayNumberCount(String replayNumberString) {
+
+        int replayNumber = replayNumberString.charAt(0) - 48;
+
+        return replayNumber == 1 || replayNumber == 2;
+    }
 }
