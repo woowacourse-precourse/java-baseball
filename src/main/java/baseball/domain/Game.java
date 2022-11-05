@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
