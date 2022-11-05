@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class GameReadyMachine {
-    private int answerValue=0;
+    private int answerValue=100;
 
     public boolean checkDigitValue(int value) {
         int hundredDigits = value / 100;
