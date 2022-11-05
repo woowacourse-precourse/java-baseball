@@ -3,6 +3,7 @@ package baseball;
 import baseball.utils.GameUtil;
 import org.junit.jupiter.api.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,16 +22,16 @@ public class OneDigitNumbersTest {
     class 숫자_길이_확인{
         @Test
         void 중복_제거() {
-            List<Integer> number = List.of(9,8,8);
-            OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(number);
+            List<Integer> numbers = List.of(9,8,8);
+            OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
 
             assertThat(oneDigitNumbers.size(true)).isEqualTo(2);
         }
 
         @Test
         void 일반() {
-            List<Integer> number = List.of(9,8,8);
-            OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(number);
+            List<Integer> numbers = List.of(9,8,8);
+            OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
 
             assertThat(oneDigitNumbers.size()).isEqualTo(3);
         }
@@ -48,5 +49,16 @@ public class OneDigitNumbersTest {
         assertThat(retain.toList()).containsExactly(2, 3);
     }
 
+    @Test
+    void 반복문() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+        List<Integer> afterNumbers = new LinkedList<>();
 
+        for (int oneDigitNumber : oneDigitNumbers) {
+            afterNumbers.add(oneDigitNumber);
+        }
+
+        assertThat(afterNumbers).containsExactly(1, 2, 3);
+    }
 }
