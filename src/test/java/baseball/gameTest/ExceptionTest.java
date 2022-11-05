@@ -22,6 +22,14 @@ public class ExceptionTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void outOfRangeExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
