@@ -22,4 +22,8 @@ public class BaseballNumber {
                 RandomNumGenerator.makeRandomNumWithNDigits(GAME_DIGIT)
         );
     }
+
+    public boolean contains(int number) {
+        return listNumber.contains(number);
+    }
 }
