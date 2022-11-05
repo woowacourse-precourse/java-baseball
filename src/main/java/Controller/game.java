@@ -59,6 +59,7 @@ public class game {
         return input;
 
     }
+
     public static void printMessage(String input) {
         User.setNumber(input);
         game.strikeAndball_Message();
