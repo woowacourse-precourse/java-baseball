@@ -13,26 +13,54 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     static List<Integer> computerRandomNumber = new ArrayList<>();
-
+    static boolean exitOrRestartSign=false;
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             if (computerRandomNumber.size() == 0) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
                 computerRandomNumber = makeRandomNumber();
             }
 
             System.out.print("숫자를 입력해주세요 : ");
-            String userInput=readLine();
+            String userInput=Console.readLine();
             if(!checkErrorInUserInput(userInput)){
                 break;
             }
-            checkScoreInUserInput(userInput);
 
+
+            if(checkScoreInUserInput(userInput)){
+                exitOrRestartSign=exitOrRestart();
+            }
+            if(exitOrRestartSign){
+                break;
+            }
 
         }
     }
+    // 나가기 or 재시작
+    private static boolean exitOrRestart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String message = Console.readLine();
+        try{
+            if(message.equals("1")){
+                    computerRandomNumber.clear();
+                    return false;
+            }
+            else if(message.equals("2")){
+                return true;
+            }
+            else{
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            return true;
+        }
+    }
 
-    static void checkScoreInUserInput(String userInput) {
+
+    // 스트라이크, 볼, 낫싱 판별 후 출력
+    static boolean checkScoreInUserInput(String userInput) {
         int strikeCnt=0;
         int ballCnt=0;
         List<Integer> userInputList = new ArrayList<>();
@@ -65,6 +93,10 @@ public class Application {
         }else{
             System.out.println(ballCnt+"볼 "+strikeCnt+"스트라이크");
         }
+        if(strikeCnt==3){
+            return true;
+        }
+        return false;
     }
 
     //컴퓨터 랜덤 숫자 생성
@@ -93,6 +125,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }catch (IllegalArgumentException e){
+
             return false;
         }
     }
