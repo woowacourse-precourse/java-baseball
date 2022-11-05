@@ -21,8 +21,5 @@ public class Game {
     public void play() {
         computer.makeComputerNumber();
         user.makeUserNumber();
-        System.out.println("---TestOut : computer: "+computer.getNumber()+" user: "+user.getNumber());
-        user.getNumber().add(50);
-        System.out.println("---TestOut : computer: "+computer.getNumber()+" user: "+user.getNumber());
     }
 }
