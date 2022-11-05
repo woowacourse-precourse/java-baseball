@@ -11,6 +11,8 @@ import java.util.List;
 public class Application {
     static List<Integer> computerNumber = new ArrayList<>();
     static List<Integer> userNumber = new ArrayList<>();
+    static Integer strikeCount = 0;
+    static Integer ballCount = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -41,6 +43,19 @@ public class Application {
 
         for(String inputSingleStr : inputStr.split("")){
             userNumber.add(Integer.parseInt(inputSingleStr));
+        }
+    }
+
+    public static void countStrikeAndBall(){
+        strikeCount = 0;
+        ballCount = 0;
+
+        for(int i=0; i<computerNumber.size(); i++){
+            if(computerNumber.get(i) == userNumber.get(i)){
+                strikeCount++;
+            }else if(computerNumber.contains(userNumber.get(i))){
+                ballCount++;
+            }
         }
     }
 }
