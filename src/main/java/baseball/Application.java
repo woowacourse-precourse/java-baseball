@@ -9,5 +9,4 @@ public class Application {
             game.gameStart();
         }while(game.gameContinue());
     }
-
 }
