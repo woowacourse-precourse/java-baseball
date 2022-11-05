@@ -42,21 +42,21 @@ public class Computer {
     }
 
     /* 유효성 검사 */
-    private boolean validation(List<Integer> quizNumbers){
+    private boolean validation(List<Integer> quizNumberList){
         // 1. 숫자가 부족하거나 많은지 확인
-        if (quizNumbers.size() != NUMBER_LENGTH) {
+        if (quizNumberList.size() != NUMBER_LENGTH) {
             return VALID_STATE_FALSE;
         }
 
         // 2. 각각의 숫자가 최소 및 최대 범위에 속하는지 확인
-        for (int number : quizNumbers) {
-            if (number < MIN_RANGE_NUMBER || number > MAX_RANGE_NUMBER) {
+        for (int quizNumber : quizNumberList) {
+            if (quizNumber < MIN_RANGE_NUMBER || quizNumber > MAX_RANGE_NUMBER) {
                 return VALID_STATE_FALSE;
             }
         }
 
         // 3. 중복된 숫자가 없는지 확인
-        if (quizNumbers.stream().distinct().count() != NUMBER_LENGTH) {
+        if (quizNumberList.stream().distinct().count() != NUMBER_LENGTH) {
             return VALID_STATE_FALSE;
         }
 
