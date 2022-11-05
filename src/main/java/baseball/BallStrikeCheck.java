@@ -23,7 +23,6 @@ public class BallStrikeCheck {
 
     public void ballStrikePrint() {
         ballStrikeCount();
-        System.out.println(computerNumber); //check
         if(ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (strike == 3) {
