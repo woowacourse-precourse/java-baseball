@@ -135,10 +135,10 @@ public class Game {
         return list;
     }
 
-    private static void addBall(List<Integer> list, int random) {
-        validateRangeOfBall(random);
-        if (!list.contains(random)) {
-            list.add(random);
+    private static void addBall(List<Integer> list, int ballNumber) {
+        validateRangeOfBall(ballNumber);
+        if (!list.contains(ballNumber)) {
+            list.add(ballNumber);
         }
     }
 
