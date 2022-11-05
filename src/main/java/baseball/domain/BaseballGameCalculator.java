@@ -7,7 +7,7 @@ public class BaseballGameCalculator {
 	private static final int BALL = 0;
 	private static final int STRIKE = 1;
 
-	public int[] calculateBSO(BaseballNumber number1, BaseballNumber number2) {
+	public static int[] calculateBSO(BaseballNumber number1, BaseballNumber number2) {
 		clearBSOResult();
 		List<Integer> numbers1 = number1.getNumbers();
 		List<Integer> numbers2 = number2.getNumbers();
@@ -25,7 +25,7 @@ public class BaseballGameCalculator {
 		return bsoResult.clone();
 	}
 
-	private void clearBSOResult() {
+	private static void clearBSOResult() {
 		bsoResult[BALL] = 0;
 		bsoResult[STRIKE] = 0;
 	}
