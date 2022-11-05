@@ -61,7 +61,16 @@ class GameProcessor {
     public String getLastInput() {
         return lastInput;
     }
-
+    public void checkInput(){
+        try {
+            int num = Integer.parseInt(getLastInput());
+            if (num < 100 || num > 999) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException n) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
 
 public class Application {
