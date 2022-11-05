@@ -38,9 +38,13 @@ public class Computer {
 
     private void addRanNumList() {
         int randomNumber = getOneRanNumAnInt();
-        if (!numThreeRanOfComputerList.contains(randomNumber)) {
+        if (!isContainList(randomNumber)) {
             numThreeRanOfComputerList.add(randomNumber);
         }
+    }
+
+    private boolean isContainList(int randomNumber) {
+        return numThreeRanOfComputerList.contains(randomNumber);
     }
 
     private boolean isNumOfComputerIndividually() {
