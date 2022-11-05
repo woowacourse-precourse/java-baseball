@@ -13,8 +13,11 @@ public class Validator {
     }
 
     private boolean validateDigits(String predictedNumber) {
-        // Validate if predictedNumber is decimal number
         // Validate if digits of predictedNumber are all different
-        return true;
+        return areAllDecimalDigits(predictedNumber);
+    }
+
+    private boolean areAllDecimalDigits(String predictedNumber) {
+        return predictedNumber.matches("[1-9]+");
     }
 }
