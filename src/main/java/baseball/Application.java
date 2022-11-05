@@ -18,8 +18,8 @@ public class Application {
 	public static void gameStart(List<Integer> comNumber) {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		Map<String, Integer> userScore = new HashMap<>();
-		boolean gameContinued = true;
-		while (gameContinued) {
+		boolean isGameContinued = true;
+		while (isGameContinued) {
 			userScore = gameScorePut(comNumber);
 			scoreProcess(userScore);
 		}
@@ -44,34 +44,29 @@ public class Application {
 		return userNumbersList;
 	}
 
-	public static List<Integer> userNumbersException(String userNumbers) {
+	public static List<Integer> userNumbersException (String userNumbers) throws IllegalArgumentException{
 		List<Integer> userNumbersList = new ArrayList<>();
-		int userNumbersInt = 0;
-		try {
-			Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
-			Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
-			boolean isUserNumberMatch = matchUserNumber.find();
-			if (!isUserNumberMatch)
-				throw new IllegalArgumentException();
-			if (userNumbers.length() != 3)
-				throw new IllegalArgumentException();
-			char[] charUserNumbers = new char[userNumbers.length()];
-			for (int userNums = 0; userNums < userNumbers.length(); userNums++) {
-				charUserNumbers[userNums] = userNumbers.charAt(userNums);
-			}
-			for (int charNumbers = 0; charNumbers < charUserNumbers.length; charNumbers++) {
-				if (charNumbers != userNumbers.indexOf(userNumbers.charAt(charNumbers)))
-					throw new IllegalArgumentException();
-			}
-			userNumbersInt = Integer.parseInt(userNumbers);
-			for (int number = 0; number < userNumbers.length(); number++) {
-				char[] userNumberChar = userNumbers.toCharArray();
-				userNumbersList.add((int) userNumberChar[number] - 48);
-			}
-		} catch (IllegalArgumentException illegal) {
-			System.err.println(illegal);
-			System.exit(0);
+		int userNumbersInt = 0;		
+		Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
+		Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
+		boolean isUserNumberMatch = matchUserNumber.find();
+		if (!isUserNumberMatch)
+			throw new IllegalArgumentException();
+		if (userNumbers.length() != 3)
+			throw new IllegalArgumentException();
+		char[] charUserNumbers = new char[userNumbers.length()];
+		for (int userNums = 0; userNums < userNumbers.length(); userNums++) {
+			charUserNumbers[userNums] = userNumbers.charAt(userNums);
 		}
+		for (int charNumbers = 0; charNumbers < charUserNumbers.length; charNumbers++) {
+			if (charNumbers != userNumbers.indexOf(userNumbers.charAt(charNumbers)))
+				throw new IllegalArgumentException();
+		}
+		userNumbersInt = Integer.parseInt(userNumbers);
+		for (int number = 0; number < userNumbers.length(); number++) {
+			char[] userNumberChar = userNumbers.toCharArray();
+			userNumbersList.add((int) userNumberChar[number] - 48);
+		}		
 		return userNumbersList;
 	}
 
