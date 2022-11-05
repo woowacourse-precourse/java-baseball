@@ -6,7 +6,7 @@ import java.util.List;
 
 // 컴퓨터의 난수 생성
 public class CreateRandomNumber {
-  public static String numberMaker() {
+  public static List<Integer> numberMaker() {
     List<Integer> number = new ArrayList<>();
 
     while (number.size() < 3) {
@@ -15,6 +15,6 @@ public class CreateRandomNumber {
         number.add(randomNumber);
     }
 
-    return number.toString();
+    return number;
   }
 }
