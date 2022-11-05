@@ -4,7 +4,9 @@ public class BaseBall {
 
     public void start() {
         BallList computer;
-        computer = BallList.RandomBallList();
+        computer = BallList.computerBallList();
+        BallList user;
+        user =
 
 
 
