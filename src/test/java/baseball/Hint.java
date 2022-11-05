@@ -23,4 +23,12 @@ public class Hint {
     }
     return strike;
   }
+
+  // idx 상관 없이 같은 값을 지닌 ball - idx 일치 && value 일치하는 strike == ball 개수
+  public static int[] ballAndStrike(String computer, String userNumber) {
+    int ballScore = ballCount(computer, userNumber);
+    int strikeScore = strikeCount(computer, userNumber);
+
+    return new int[] {ballScore - strikeScore, strikeScore};
+  }
 }
