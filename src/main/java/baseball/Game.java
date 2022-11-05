@@ -36,7 +36,7 @@ public class Game {
         while (strike != 3){
             String input = inputNumber();
             inputValidator(input);
-            strike = countBallAndStrike(randomNumber, input);
+            strike = count(randomNumber, input);
         }
     }
 
@@ -68,30 +68,38 @@ public class Game {
         }
     }
 
-    public int countBallAndStrike(String randomNumber, String input){
+    public int count(String randomNumber, String input){
         int ball = 0;
         int strike = 0;
 
-        // 자리 & 숫자 모두 일치
-        if (randomNumber.equals(input)) {
-            strike = 3;
-            message.countBallAndStrikeMsg(ball, strike);
-            return strike;
-        }
+        for (int i = 0; i < SIZE; i++){
+            int inc = countStrike(randomNumber, input, i);
+            if (inc != 0){
+                strike += inc;
+            } else {
+                ball += countBall(randomNumber, input, i);
+            }
 
-        // 볼, 스트라이크 개수 세기
-        for (int i =0; i< SIZE; i++){
-            if (randomNumber.charAt(i) == input.charAt(i)) {
-                strike++;
-            }
-            else if (randomNumber.contains(String.valueOf(input.charAt(i)))) {
-                ball++;
-            }
         }
         message.countBallAndStrikeMsg(ball, strike);
         return strike;
     }
 
+    public int countStrike(String randomNumber, String input, int index){
+        int strike = 0;
+        if (randomNumber.charAt(index) == input.charAt(index)) {
+            strike++;
+        }
+        return strike;
+    }
+
+    public int countBall(String randomNumber, String input, int index){
+        int ball = 0;
+        if (randomNumber.contains(String.valueOf(input.charAt(index)))) {
+            ball++;
+        }
+        return ball;
+    }
 
 
     public void inputRestartOrEnd(){
