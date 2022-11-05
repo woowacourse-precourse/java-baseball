@@ -6,6 +6,11 @@ import java.util.List;
 import static baseball.Constant.PLAYING_NUMBERS_LENGTH;
 
 public class Convert {
+
+    public List<Integer> IntegerList (String input) {
+        List<String> stringList = StringToList(input);
+        return StringListToIntegerList(stringList);
+    }
     private List<String> StringToList(String input) {
         List<String> stringList = new ArrayList<>();
         for (int i=0; i<PLAYING_NUMBERS_LENGTH; i++) {
