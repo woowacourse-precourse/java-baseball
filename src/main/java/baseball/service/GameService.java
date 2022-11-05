@@ -59,7 +59,7 @@ public class GameService {
     }
 
     public void increaseStrike(){
-
+        strikeCount++;
     }
 
     public void increaseBall(){
