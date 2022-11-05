@@ -12,13 +12,15 @@ import net.bytebuddy.asm.Advice.Exit;
 
 public class Application {
 	static Message message = new Message();
+	static Condition condition = new Condition();
 	static boolean gameSet = true;
-	public static void main(String[] args) {		
+
+	public static void main(String[] args) {
 		gameStart(getComputerNumbers());
 	}
 
 	public static void gameStart(List<Integer> comNumber) {
-		System.out.println(message.getGamestart());
+		System.out.println(message.getGameStart());
 		Map<String, Integer> userScore = new HashMap<>();
 		while (gameSet) {
 			userScore = gameScorePut(comNumber);
@@ -39,35 +41,9 @@ public class Application {
 	}
 
 	public static List<Integer> getUserNumbers() {
-		System.out.print(message.getInputnumbers());
+		System.out.print(message.getInputNumbers());
 		String userAnotherNumbers = Console.readLine();
-		List<Integer> userNumbersList = userNumbersException(userAnotherNumbers);
-		return userNumbersList;
-	}
-
-	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
-		List<Integer> userNumbersList = new ArrayList<>();
-		int userNumbersInt = 0;
-		Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
-		Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
-		boolean isUserNumberMatch = matchUserNumber.find();
-		if (!isUserNumberMatch)
-			throw new IllegalArgumentException();
-		if (userNumbers.length() != 3)
-			throw new IllegalArgumentException();
-		char[] charUserNumbers = new char[userNumbers.length()];
-		for (int userNums = 0; userNums < userNumbers.length(); userNums++) {
-			charUserNumbers[userNums] = userNumbers.charAt(userNums);
-		}
-		for (int charNumbers = 0; charNumbers < charUserNumbers.length; charNumbers++) {
-			if (charNumbers != userNumbers.indexOf(userNumbers.charAt(charNumbers)))
-				throw new IllegalArgumentException();
-		}
-		userNumbersInt = Integer.parseInt(userNumbers);
-		for (int number = 0; number < userNumbers.length(); number++) {
-			char[] userNumberChar = userNumbers.toCharArray();
-			userNumbersList.add((int) userNumberChar[number] - 48);
-		}
+		List<Integer> userNumbersList = condition.userNumbersException(userAnotherNumbers);
 		return userNumbersList;
 	}
 
@@ -76,7 +52,7 @@ public class Application {
 		List<Integer> userNumber = getUserNumbers();
 		for (int i = 0; i < userNumber.size(); i++) {
 			if (userNumber.get(i) == comNumber.get(i)) {
-				userScore.put(message.getStrike(), userScore.getOrDefault(message.getStrike(), 0) + 1);				
+				userScore.put(message.getStrike(), userScore.getOrDefault(message.getStrike(), 0) + 1);
 			} else if (comNumber.contains(userNumber.get(i))) {
 				userScore.put(message.getBall(), userScore.getOrDefault(message.getBall(), 0) + 1);
 			}
@@ -101,17 +77,8 @@ public class Application {
 	}
 
 	public static void gameContinued(Integer strike) {
-		System.out.println(message.getGameover());
+		System.out.println(message.getGameOver());
 		String continued = Console.readLine();
-		continuedExceptionProcess(continued);
-	}
-
-	public static void continuedExceptionProcess(String continued) throws IllegalArgumentException {
-		if (continued.equals("1"))
-			gameStart(getComputerNumbers());
-		else if (continued.equals("2"))
-			gameSet=false;
-		else
-			throw new IllegalArgumentException();
+		condition.continuedExceptionProcess(continued);
 	}
 }
