@@ -11,6 +11,10 @@ public class BaseballNumber {
         this.ballNumber = convertCharToInteger(ballNumber);
     }
 
+    BaseballNumber(Integer ballNumber) {
+        this.ballNumber = ballNumber;
+    }
+
     private void validateNumberCharacter(char uncheckNumber) {
         if (!Character.isDigit(uncheckNumber)) {
             throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER_EXCEPTION);
