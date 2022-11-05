@@ -77,3 +77,4 @@
 - [ ] userNumberMessagePrint함수를 실행
 - [ ] userNumberInput함수를 실행
 - [ ] availableUserNumberIsChecked함수를 실행 후 출력값을 availableUserNumberIsChecking에 선언
+- [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행
