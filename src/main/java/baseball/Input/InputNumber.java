@@ -9,4 +9,11 @@ public class InputNumber {
 
         return receivedNumber;
     }
+
+    public int getRestartAndEndNumber(){
+        Scanner getNumber = new Scanner(System.in);
+        int buttonNumber = getNumber.nextInt();
+
+        return buttonNumber;
+    }
 }
