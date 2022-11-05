@@ -100,10 +100,10 @@ public class BaseballService {
         String answerstr = Console.readLine();
         inputUtil.checkLength(answerstr, Constant.RESTART_NUMBER_LENGTH.getNumber(),
                 Constant.RESTART_EXCEPTION.getMessage());
-        inputUtil.checkIsDigit(answerstr.charAt(0),Constant.RESTART_EXCEPTION.getMessage());
+        inputUtil.checkIsDigit(answerstr.charAt(0), Constant.RESTART_EXCEPTION.getMessage());
         int answerint = inputUtil.charToInt(answerstr.charAt(0));
         inputUtil.checkValidNumber(answerint, Constant.RESTART_NUMBER_MIN.getNumber()
-                , Constant.RESTART_NUMBER_MAX.getNumber(),Constant.RESTART_EXCEPTION.getMessage());
+                , Constant.RESTART_NUMBER_MAX.getNumber(), Constant.RESTART_EXCEPTION.getMessage());
         selectRestart(answerint);
     }
 

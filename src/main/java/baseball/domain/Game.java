@@ -27,27 +27,21 @@ public class Game {
         this.status = status;
     }
 
-    public int getStrike(){
+    public int getStrike() {
         return strike;
     }
 
-    public void setStrike(int strike){
+    public void setStrike(int strike) {
         this.strike = strike;
     }
 
-    public int getBall(){
+    public int getBall() {
         return ball;
     }
 
-    public void setBall(int ball){
+    public void setBall(int ball) {
         this.ball = ball;
     }
-
-
-
-
-
-
 
 
 }
