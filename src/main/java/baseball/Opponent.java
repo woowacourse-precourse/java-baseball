@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Opponent {
 
-    List<Integer> createValue();
+    List<Integer> createAnswer();
     public Hint getHint(List<Integer> inputValue);
 }

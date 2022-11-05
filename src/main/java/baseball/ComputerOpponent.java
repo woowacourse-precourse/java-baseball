@@ -12,22 +12,22 @@ public class ComputerOpponent implements Opponent {
     static final int END_RANGE = 9;
     static final int SIZE = 3;
 
-    private List<Integer> value = null;
+    private List<Integer> answer = null;
 
     public ComputerOpponent() {
-        value = createValue();
+        answer = createAnswer();
         validateValue();
     }
 
 
     @Override
-    public List<Integer> createValue() {
+    public List<Integer> createAnswer() {
         return Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
     private void validateValue() {
         List<Integer> freq = new ArrayList<>(Collections.nCopies(END_RANGE + 1, 0));
 
-        for (int valueEach : value) {
+        for (int valueEach : answer) {
             if (valueEach < START_RANGE | valueEach > END_RANGE) {
                 throw new IllegalArgumentException("야구게임 값의 각 자릿수는 1 ~ 9사이여야 합니다.");
             }
@@ -41,7 +41,7 @@ public class ComputerOpponent implements Opponent {
 
     @Override
     public Hint getHint(List<Integer> inputValue) {
-        return new Hint(this.value, inputValue);
+        return new Hint(this.answer, inputValue);
     }
 
 }
