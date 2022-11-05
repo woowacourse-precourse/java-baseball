@@ -3,7 +3,6 @@ package baseball;
 import domain.Computer;
 import domain.Referee;
 import domain.User;
-import java.util.List;
 
 public class Application {
 
@@ -17,7 +16,7 @@ public class Application {
 
     private static void playBaseballGame(User user, Referee referee, Computer computer) {
         computer.createRandomNumbers();
-        List<Integer> numbers = computer.getNumbers();
+        user.guessComputerNumbers();
     }
 
 }
