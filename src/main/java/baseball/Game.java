@@ -27,4 +27,10 @@ public class Game {
         }
         return hint.toString().trim();
     }
+
+    public boolean restart(int input) {
+        if (input == 1) return true;
+        if (input == 2) return false;
+        throw new IllegalArgumentException("잘못된 입력입니다");
+    }
 }
