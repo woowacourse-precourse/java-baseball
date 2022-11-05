@@ -179,14 +179,14 @@ public class GameManager {
     }
 
     private void validateReplaySign(String replaySign) {
-        if(!(replaySign.equals("0") || replaySign.equals("1"))) {
+        if(!(replaySign.equals("1") || replaySign.equals("2"))) {
             throw new IllegalArgumentException("replaySign is not valid.");
         }
     }
 
     private void exitGame(Exception e) {
         if(e == null) {
-            System.out.println("Thanks for playing game!");
+            System.out.println("게임 종료");
         } else {
             System.out.println(e.getMessage());
         }
