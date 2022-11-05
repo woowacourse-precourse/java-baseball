@@ -13,7 +13,21 @@ public class Application {
 
         String userAnswer = Console.readLine();
         lengthCheck(userAnswer);
+        numberCheck(userAnswer);
 
+
+    }
+
+    private static void numberCheck(String userAnswer) {
+        for (int i = 0; i < userAnswer.length(); i++) {
+            char c = userAnswer.charAt(i);
+            int numericValue = Character.getNumericValue(c);
+
+            if(numericValue<1||9<numericValue){
+                throw new IllegalArgumentException();
+            }
+
+        }
     }
 
 
