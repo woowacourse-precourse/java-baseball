@@ -156,7 +156,7 @@ public class Computer {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
-        if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
+        if (isContainValueList(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
             // TODO: 2.1.1 스트라이크 체크
             checkStrikeBall(splitNumOfCompare);
@@ -177,6 +177,7 @@ public class Computer {
             isStrike = false;
             isBall = false;
             int numComputerAtNow = getValueOfIndexFromList(numThreeRanOfComputerList, first);
+
             for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
                 int numAtNow = getValueOfIndexFromList(listSplitNum, second);
                 isStrike = isCheckStrike(isStrike, first, numComputerAtNow, second, numAtNow);
@@ -224,15 +225,10 @@ public class Computer {
         return isBall;
     }
 
-    private boolean isEqualsCollection(Collection collection_1, Collection collection_2) {
-        // TODO: collection의 equals 메서드 이용하여 리펙토링
-        boolean isTrue = true;
-        for (Object num : collection_2) {
-            if (collection_1.contains(num)) {
-                isTrue = true;
-            }
-        }
-        return isTrue;
+    private boolean isContainValueList(Collection collection_1,
+        Collection<Integer> collection_2) {
+        
+        return collection_1.stream().anyMatch((num) -> collection_2.contains(num));
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
