@@ -1,10 +1,10 @@
-package baseball;
+package baseball.tool;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-import static baseball.Input.BeforeVerificationSetting.makeNumberSplitList;
+import static baseball.tool.BeforeVerificationSetting.makeNumberSplitList;
 
 public class DuplicateByComparison {
 
@@ -16,7 +16,7 @@ public class DuplicateByComparison {
         List<Integer> overlapNumber = new ArrayList<>();
 
         for(int number : answerNumber){
-            if(makeNumberSplitList(receivedNumber).equals(number)){
+            if(makeNumberSplitList(receivedNumber).contains(number)){
                 overlapNumber.add(number);
             }
         }
