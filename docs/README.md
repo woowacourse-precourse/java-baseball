@@ -40,7 +40,7 @@
     - [x] 3자리의 수가 아닐 경우 IllegalArgumentException 예외를 throw한다.
     - [x] 서로 다른 수가 아닐 경우 IllegalArgumentException 예외를 throw 한다.
 
-- [ ] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력받는다.
+- [x] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력받는다.
     - [x] 1과 2가 아닌 경우 IllegalArgumentException를 throw 한다.
 
 ### 출력

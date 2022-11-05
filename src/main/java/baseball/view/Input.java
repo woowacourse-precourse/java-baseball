@@ -42,6 +42,12 @@ public class Input {
         }
     }
 
+    public int inputRestart() {
+        String text = Console.readLine();
+        validateInputRestart(text);
+        return Integer.parseInt(text);
+    }
+
     public static void validateInputRestart(String text) {
         if (!text.equals("1") && !text.equals("2")) {
             throw new IllegalArgumentException("재시작/종료를 구분하는 1과 2 중 하나의 수를 입력해야 합니다.");
