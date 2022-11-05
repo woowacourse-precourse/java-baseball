@@ -10,13 +10,32 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String correctAnswer = makeRandomNumStr();
-
         String userAnswer = Console.readLine();
 
         lengthCheck(userAnswer);
         numberCheck(userAnswer);
         duplicateCheck(userAnswer);
 
+        int strikeCount = getStrikeCount(correctAnswer, userAnswer);
+        System.out.println(strikeCount+" strike!");
+
+    }
+
+
+    private static int getStrikeCount(String correctAnswer, String userAnswer) {
+
+        int strikeCount = 0;
+
+        for (int i = 0; i < correctAnswer.length(); i++) {
+
+            char target = correctAnswer.charAt(i);
+
+            if (target == userAnswer.charAt(i)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 
     private static void duplicateCheck(String userAnswer) {
