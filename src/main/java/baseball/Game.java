@@ -21,12 +21,16 @@ public class Game {
         System.out.println(START_MESSAGE);
 
         computer.generateAnswer();
-        do {
-            user.setUserNumber(inputUserNumber());
-        } while (gameService.getPlayResult(user.getUserNumber(), computer.getAnswer()));
+        try {
+            do {
+                user.setUserNumber(inputUserNumber());
+            } while (gameService.getPlayResult(user.getUserNumber(), computer.getAnswer()));
 
-        if ("1".equals(inputRestartOrStop())) {
-            start();
+            if ("1".equals(inputRestartOrStop())) {
+                start();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
         }
     }
 
