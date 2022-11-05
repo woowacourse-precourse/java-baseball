@@ -33,4 +33,8 @@ public class Player {
         if(nonDuplicateNumbers.size() != PLAYER_NUMBERS_SIZE)
             throw new IllegalArgumentException("duplicates in the numbers");
     }
+
+    public int findIndexOfNumber(int number){
+        return this.numbers.indexOf(number);
+    }
 }

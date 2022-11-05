@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTest {
     @Test
@@ -34,4 +35,17 @@ public class PlayerTest {
                 .hasMessageContaining("Wrong number range");
     }
 
+    @Test
+    void 컴퓨터의_숫자와_같은_숫자를_포함할_때_인덱스_반환_테스트(){
+        Player player = new Player(List.of(1,2,3));
+
+        assertEquals(0, player.findIndexOfNumber(1));
+    }
+
+    @Test
+    void 컴퓨터의_숫자와_같은_숫자를_포함하지_않을_경우_테스트(){
+        Player player = new Player(List.of(1,2,3));
+
+        assertEquals(-1, player.findIndexOfNumber(5));
+    }
 }
