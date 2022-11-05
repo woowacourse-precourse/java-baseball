@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.GameControlNum;
 import baseball.domain.ThreeDigitNum;
 import baseball.io.InputControl;
 import java.util.List;
@@ -15,6 +16,7 @@ class UserTest {
     @Nested
     @DisplayName("입력한 값이 숫자인지 검증")
     class InputControlTest {
+
         @Test
         void 정수입력() {
             InputControl.strToInt("123");
@@ -35,18 +37,20 @@ class UserTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
     @Nested
     @DisplayName("입력된 값이 추측할 수 형식에 맞는지 검증")
     class InputGuessedValueTest {
+
         @Test
         void 세자릿수_변환_검증() {
             ThreeDigitNum t1 = new ThreeDigitNum(123);
             ThreeDigitNum t2 = new ThreeDigitNum(671);
             ThreeDigitNum t3 = new ThreeDigitNum(913);
 
-            List<Integer> l1 = List.of(1,2,3);
-            List<Integer> l2 = List.of(6,7,1);
-            List<Integer> l3 = List.of(9,1,3);
+            List<Integer> l1 = List.of(1, 2, 3);
+            List<Integer> l2 = List.of(6, 7, 1);
+            List<Integer> l3 = List.of(9, 1, 3);
 
             assertThat(t1.list()).isEqualTo(l1);
 
@@ -57,10 +61,38 @@ class UserTest {
 
         @Test
         void 세자릿수_예외처리_검증() {
-            int[] nums = {1,2,0,90,120,991,441,064};
-            for(int num: nums) {
+            int[] nums = {1, 2, 0, 90, 120, 991, 441, 064};
+            for (int num : nums) {
 
                 assertThatThrownBy(() -> new ThreeDigitNum(num))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("입력된 값이 게임 제어 숫자 형식에 맞는지 검증")
+    class InputGameControlValueTest {
+
+        @Test
+        void 제어숫자로_변환_검증() {
+            GameControlNum g1 = new GameControlNum(1);
+            GameControlNum g2 = new GameControlNum(2);
+
+            int v1 = 1;
+            int v2 = 2;
+
+            assertThat(g1.getValue()).isEqualTo(v1);
+
+            assertThat(g2.getValue()).isEqualTo(v2);
+        }
+
+        @Test
+        void 제어숫자_예외처리_검증() {
+            int[] nums = {0, -1, 3, 90, 120, 991, 441, 064};
+            for (int num : nums) {
+
+                assertThatThrownBy(() -> new GameControlNum(num))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
