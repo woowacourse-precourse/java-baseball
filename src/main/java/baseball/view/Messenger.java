@@ -1,5 +1,8 @@
 package baseball.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Messenger {
 
     public void printStartMessage() {
@@ -16,5 +19,27 @@ public class Messenger {
 
     public void printRestartOrEndMessage() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+    }
+
+    public void printResultMessage(int strike, int ball) {
+        List<String> decisions = new ArrayList<>();
+        String countMessage;
+        if (!isZero(ball)) {
+            countMessage = String.format("%d볼", ball);
+            decisions.add(countMessage);
+        }
+        if (!isZero(strike)) {
+            countMessage = String.format("%d스트라이크", strike);
+            decisions.add(countMessage);
+        }
+        if (isZero(ball) && isZero(strike)) {
+            countMessage = "낫싱";
+            decisions.add(countMessage);
+        }
+        System.out.print(String.join(" ", decisions) + "\n");
+    }
+
+    private boolean isZero(int number) {
+        return number == 0;
     }
 }
