@@ -11,7 +11,7 @@
         - [x] 3스트라이크 메세지 출력
         - [x] 게임 재시작 여부를 출력
 
-- [x] 숫자 야구게임에서 사용될 수를 저장하고, 조건을 정의하는 BaseballNumber Abstract Class
+- [x] 숫자 야구게임에서 사용될 수를 저장하고, 조건을 정의하는 BaseballNumber Class
     - [x] 멤버변수로 List<Integer> numbers 멤버변수를 가짐
     - [x] BaseballNumber의 유효성을 체크해주는 validate 메소드들
         - [x] 입력된 값이 null 일 때
