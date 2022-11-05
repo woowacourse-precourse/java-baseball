@@ -12,4 +12,13 @@ public class GameController {
 
         return instance;
     }
+
+    public Game getBaseBallGame(){
+        return new BaseBallGame();
+    }
+
+    private class BaseBallGame implements Game{
+        @Override
+        public void play() {}
+    }
 }
