@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 
@@ -26,6 +28,14 @@ public class DecisionMakerTest extends NsTest {
     void Stop_의사결정_반환_테스트() {
         command("2");
         assertThat(decisionMaker.getDecision()).isEqualTo("Stop");
+    }
+
+    @DisplayName("1, 2외의 값을 입력했을 경우 예외를 발생시킨다")
+    @ParameterizedTest
+    @ValueSource(strings = { "3", "hello", "야호", "012"})
+    void DecisionMaker_예외_발생_테스트(String stringArg) {
+        command(stringArg);
+        assertThatThrownBy(()->decisionMaker.getDecision()).isInstanceOf(IllegalArgumentException.class);
     }
 
 
