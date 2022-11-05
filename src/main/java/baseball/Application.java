@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static List<Integer> generateRandNum(){
@@ -38,12 +40,30 @@ public class Application {
         }
     }
 
+    public static List<Integer> compareNums(List<Integer> user, List<Integer> computer){
+        List<Integer> res = Arrays.asList(0, 0);
+        for(int i = 0; i < 3; i++){
+            if(Objects.equals(user.get(i), computer.get(i))) {
+                res.set(1, res.get(1)+1);
+                continue;
+            }
+            if(computer.contains(user.get(i))){
+                res.set(0, res.get(0)+1);
+            }
+        }
+
+        return res;
+    }
+
     public static void game(){
+        List<Integer> compared;
         List<Integer> computer = generateRandNum();
         while(true){
             String input = Console.readLine();
             List<Integer> user = parseString(input);
             checkAllow(user);
+            compared = compareNums(user, computer);
+
         }
     }
 
