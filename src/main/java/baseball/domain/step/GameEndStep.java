@@ -1,8 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Writer;
-import baseball.application.random.Range;
 
 public class GameEndStep implements Step {
 
@@ -12,9 +10,7 @@ public class GameEndStep implements Step {
 
     @Override
     public void execute(BaseBallGameContext context) {
-        Writer writer = context.writer();
-
-        writer.println(RIGHT_ANSWER_MESSAGE);
+        context.println(RIGHT_ANSWER_MESSAGE);
     }
 
     @Override

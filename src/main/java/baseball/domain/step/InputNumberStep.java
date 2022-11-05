@@ -1,8 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Reader;
-import baseball.application.io.Writer;
 import baseball.domain.number.BaseBallGameNumbers;
 
 public class InputNumberStep implements Step {
@@ -13,11 +11,9 @@ public class InputNumberStep implements Step {
 
     @Override
     public void execute(BaseBallGameContext context) {
-        Writer writer = context.writer();
-        writer.print(INPUT_NUMBER_MESSAGE);
+        context.print(INPUT_NUMBER_MESSAGE);
 
-        Reader reader = context.reader();
-        context.changePlayerNumbers(new BaseBallGameNumbers(reader.readLine()));
+        context.changePlayerNumbers(new BaseBallGameNumbers(context.readLine()));
     }
 
     @Override

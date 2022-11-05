@@ -24,8 +24,7 @@ public class GameProgressStep implements Step {
         CompareResult compareResult =
                 comparator.compare(player.baseBallGameNumbers(), computer.baseBallGameNumbers());
 
-        Writer writer = context.writer();
-        writer.println(compareResult.toString());
+        context.println(compareResult.toString());
 
         if (compareResult.isAnswer()) {
             next = ANSWER_STEP;

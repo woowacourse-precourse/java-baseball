@@ -1,8 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Reader;
-import baseball.application.io.Writer;
 import baseball.domain.comparator.Comparator;
 import baseball.domain.computer.Computer;
 import baseball.domain.number.BaseBallGameNumbers;
@@ -19,15 +17,11 @@ import static org.mockito.Mockito.*;
 class GameProgressStepTest {
 
     private final BaseBallGameContext context = mock(BaseBallGameContext.class);
-    private final Writer writer = mock(Writer.class);
-    private final Reader reader = mock(Reader.class);
     private final Comparator comparator  = mock(Comparator.class);
 
 
     @BeforeEach
     void init() {
-       when(context.writer()).thenReturn(writer);
-       when(context.reader()).thenReturn(reader);
        when(context.player()).thenReturn(player());
        when(context.computer()).thenReturn(new Computer(new BaseBallGameNumbers("123")));
        when(context.comparator()).thenReturn(comparator);
@@ -125,7 +119,7 @@ class GameProgressStepTest {
         gameProgressStep.execute(context);
 
         // then
-        verify(writer, times(1))
+        verify(context, times(1))
                 .println(compareResult.toString());
     }
 }

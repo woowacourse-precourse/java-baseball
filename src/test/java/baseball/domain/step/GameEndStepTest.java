@@ -1,7 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Writer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,19 +28,14 @@ class GameEndStepTest {
     void printRightAnswerMessageWhenExecuted() {
         // given
         final String rightAnswerMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
         GameEndStep gameEndStep = new GameEndStep();
-
         BaseBallGameContext context = mock(BaseBallGameContext.class);
-        Writer writer = mock(Writer.class);
-
-        when(context.writer()).thenReturn(writer);
 
         // when
         gameEndStep.execute(context);
 
         // then
-        verify(writer, times(1)).println(rightAnswerMessage);
+        verify(context, times(1)).println(rightAnswerMessage);
     }
 
     @Test

@@ -11,8 +11,7 @@ public class GameStartStep implements Step {
 
     @Override
     public void execute(BaseBallGameContext context) {
-        Writer writer = context.writer();
-        writer.println(START_MESSAGE);
+        context.println(START_MESSAGE);
     }
 
     @Override

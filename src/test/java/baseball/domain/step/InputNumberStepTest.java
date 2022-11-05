@@ -1,8 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Reader;
-import baseball.application.io.Writer;
 import baseball.domain.number.BaseBallGameNumbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,13 +14,9 @@ import static org.mockito.Mockito.*;
 class InputNumberStepTest {
 
     private final BaseBallGameContext context = mock(BaseBallGameContext.class);
-    private final Writer writer = mock(Writer.class);
-    private final Reader reader = mock(Reader.class);
 
     @BeforeEach
     public void init() {
-        when(context.writer()).thenReturn(writer);
-        when(context.reader()).thenReturn(reader);
         doNothing().when(context).changePlayerNumbers(any());
     }
 
@@ -57,7 +51,7 @@ class InputNumberStepTest {
     public void printInputNumberMessageWhenExecuted() {
         // given
         String userInput = "123";
-        when(reader.readLine()).thenReturn(userInput);
+        when(context.readLine()).thenReturn(userInput);
 
         String inputNumberMessage = "숫자를 입력해주세요 : ";
         InputNumberStep inputNumberStep = new InputNumberStep();
@@ -66,7 +60,7 @@ class InputNumberStepTest {
         inputNumberStep.execute(context);
 
         // then
-        verify(writer, times(1)).print(inputNumberMessage);
+        verify(context, times(1)).print(inputNumberMessage);
     }
 
     @Test
@@ -74,7 +68,7 @@ class InputNumberStepTest {
     public void makePersonUsingInput() {
         // given
         String userInput = "123";
-        when(reader.readLine()).thenReturn(userInput);
+        when(context.readLine()).thenReturn(userInput);
 
         InputNumberStep inputNumberStep = new InputNumberStep();
 
@@ -90,7 +84,7 @@ class InputNumberStepTest {
     public void throwExceptionWhenConstructPersonUsingInput() {
         // given
         String invalidUserInput = "0321";
-        when(reader.readLine()).thenReturn(invalidUserInput);
+        when(context.readLine()).thenReturn(invalidUserInput);
 
         InputNumberStep inputNumberStep = new InputNumberStep();
 

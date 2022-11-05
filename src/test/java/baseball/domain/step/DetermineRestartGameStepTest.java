@@ -1,9 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Reader;
-import baseball.application.io.Writer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,14 +14,6 @@ import static org.mockito.Mockito.*;
 class DetermineRestartGameStepTest {
 
     private final BaseBallGameContext context = mock(BaseBallGameContext.class);
-    private final Writer writer = mock(Writer.class);
-    private final Reader reader = mock(Reader.class);
-
-    @BeforeEach
-    void init() {
-        when(context.writer()).thenReturn(writer);
-        when(context.reader()).thenReturn(reader);
-    }
 
     @Test
     @DisplayName("실행 가능하다")
@@ -47,13 +36,13 @@ class DetermineRestartGameStepTest {
         final String restartGameMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
-        when(reader.readLine()).thenReturn(input);
+        when(context.readLine()).thenReturn(input);
 
         // when
         determineRestartGameStep.execute(context);
 
         // then
-        verify(writer, times(1)).print(restartGameMessage);
+        verify(context, times(1)).println(restartGameMessage);
     }
 
     @ParameterizedTest(name = "사용자가 잘못된 입력( EX[ {argumentsWithNames} ] )을 입력한 경우 IllegalArgumentException을 발생시킨다")
@@ -61,7 +50,7 @@ class DetermineRestartGameStepTest {
     void throwExceptionWhenInvalidInput(final String input) {
         // given
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
-        when(reader.readLine()).thenReturn(input);
+        when(context.readLine()).thenReturn(input);
 
         // when, then
         assertThrows(IllegalArgumentException.class, () -> determineRestartGameStep.execute(context));
@@ -73,7 +62,7 @@ class DetermineRestartGameStepTest {
         // given
         final String input = "1";
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
-        when(reader.readLine()).thenReturn(input);
+        when(context.readLine()).thenReturn(input);
 
         determineRestartGameStep.execute(context);
 
@@ -90,7 +79,7 @@ class DetermineRestartGameStepTest {
         // given
         final String input = "2";
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
-        when(reader.readLine()).thenReturn(input);
+        when(context.readLine()).thenReturn(input);
 
         determineRestartGameStep.execute(context);
 

@@ -31,14 +31,6 @@ public class BaseBallGameContext {
         this.randomNumberGenerator = config.randomNumberGenerator();
     }
 
-    public Writer writer() {
-        return writer;
-    }
-
-    public Reader reader() {
-        return reader;
-    }
-
     public Player player() {
         return player;
     }
@@ -61,5 +53,17 @@ public class BaseBallGameContext {
 
     public void changePlayerNumbers(BaseBallGameNumbers baseBallGameNumbers) {
         player.changeNumbers(baseBallGameNumbers);
+    }
+
+    public void println(String message) {
+        writer.println(message);
+    }
+
+    public void print(String message) {
+        writer.print(message);
+    }
+
+    public String readLine() {
+        return reader.readLine();
     }
 }
