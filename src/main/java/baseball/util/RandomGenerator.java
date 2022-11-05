@@ -7,18 +7,16 @@ import java.util.List;
 import java.util.Set;
 
 public class RandomGenerator {
-    public RandomGenerator() {
-    }
 
-    private Integer genNumber() {
+    private static Integer genNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
 
-    public List<Integer> genNumberList(int n) {
+    public static List<Integer> genNumberList(int n) {
         Set<Integer> set = new HashSet<>();
 
         while (set.size() < n) {
-            set.add(this.genNumber());
+            set.add(genNumber());
         }
 
         return new ArrayList<>(set);
