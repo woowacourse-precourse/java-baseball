@@ -2,18 +2,13 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -33,31 +28,11 @@ class UserTest {
     }
 
     @Test
-    void numberCheckTest1() {
-        assertThatIllegalArgumentException().isThrownBy(() -> user.checkNumber(902));
-    }
-
-    @Test
-    void numberCheckTest2() {
-        assertThatNoException().isThrownBy(() -> user.checkNumber(345));
-    }
-
-    @Test
-    void checkTypeTest1() {
-        assertThatIllegalArgumentException().isThrownBy(() -> user.checkType("sd"));
-    }
-
-    @Test
-    void checkTypeTest2() {
-        assertThatNoException().isThrownBy(() -> user.checkType("345"));
-    }
-
-    @Test
     void inputNumberTest1() {
         String input = "23s";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> user.inputNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> user.inputGameNumber());
     }
 
     @Test
@@ -65,62 +40,7 @@ class UserTest {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        int result = user.inputNumber();
-        assertThat(result).isEqualTo(123);
-    }
-
-    @Test
-    void constructorTest() {
-        List<Integer> list = Arrays.asList(1, 2, 3);
-        User user2 = new User(list);
-        assertThat(user2.computerNumberList).isEqualTo(list);
-    }
-
-    @Test
-    void checkStrikeTest() {
-        List<Integer> computerList = Arrays.asList(1, 3, 4);
-        List<Integer> userList = Arrays.asList(5, 3, 2);
-        int strike = user.checkStrike(computerList, userList);
-        assertThat(strike).isEqualTo(1);
-    }
-
-    @Test
-    void checkBallTest() {
-        List<Integer> computerList = Arrays.asList(1, 2, 7);
-        List<Integer> userList = Arrays.asList(7, 7, 7);
-        int strike = user.checkStrike(computerList, userList);
-        int ball = user.checkBall(computerList, userList, strike);
-        assertThat(ball).isEqualTo(2);
-    }
-
-    final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    final PrintStream standardOut = System.out;
-
-    @BeforeEach
-    void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.setOut(standardOut);
-    }
-
-    @Test
-    void printResultTest() {
-        int strike = 1;
-        int ball = 1;
-        user.printResult(strike, ball);
-        assertEquals("1볼 1스트라이크", outputStreamCaptor.toString().trim());
-    }
-
-    @Test
-    void keepOrNotTest() {
-        String input = "2";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        user.keepOrNot();
-        boolean result = user.keepGame;
-        assertThat(result).isEqualTo(false);
+        user.inputGameNumber();
+        assertThat(user.userNumber).isEqualTo(123);
     }
 }
