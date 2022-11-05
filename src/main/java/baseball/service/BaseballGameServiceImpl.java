@@ -58,12 +58,15 @@ public class BaseballGameServiceImpl implements GameService, RestrictIntegerCons
 
 	@Override
 	public void restartGame() {
-
+		user.clearUserInputNumberList();
+		computer.clearRandomNumberList();
+		finishGame = false;
+		firstGame = false;
+		startGame();
 	}
 
 	@Override
 	public void exitGame() {
-
 	}
 
 
