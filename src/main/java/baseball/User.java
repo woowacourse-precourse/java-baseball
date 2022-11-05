@@ -18,7 +18,7 @@ public class User {
         if (Utils.isValidUserInput(input)) {
             this.numbers = Utils.intToList(Integer.valueOf(input));
         } else {
-            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+            throw new IllegalArgumentException(Constants.WRONG_INPUT);
         }
     }
 }

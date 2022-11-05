@@ -13,7 +13,7 @@ public class BaseballGame {
     public void start() {
         gameContinueFlag = true;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constants.START_MESSAGE);
         initGame();
 
         while (gameContinueFlag) {
