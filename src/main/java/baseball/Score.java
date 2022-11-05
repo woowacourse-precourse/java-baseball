@@ -11,4 +11,8 @@ public class Score {
     public void setBall(int ball) {
         this.ball = ball;
     }
+
+    public int getStrike() {
+        return strike;
+    }
 }
