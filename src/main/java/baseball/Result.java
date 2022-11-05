@@ -24,4 +24,8 @@ public class Result {
         return this.result.get(resultType);
     }
 
+    private boolean isNothing(Result result) {
+        return (result.get(ResultType.BALL) == 0) && (result.get(ResultType.STRIKE) == 0);
+    }
+
 }

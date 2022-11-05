@@ -30,8 +30,6 @@
   - [X] `boolean isStrike(Integer, Integer)`
     - 게임 플레이어가 입력한 세 자리의 수 중 isBall의 결과가 true인 수와 index를 받아 컴퓨터 플레이어의 수와 비교
     - index가 동일하면 true, 그렇지 않으면 false를 반환
-  - [X] `boolean isNothin(Result result)`
-    - 비교 결과 ball과 strike의 개수가 모두 0이면 true, 그렇지 않으면 false 반환
   
 - [ ] Game Class
   - [ ] ``
@@ -64,3 +62,5 @@
   - [X] `Map<ResultType, Integer>`를 멤버 변수로 저장하여 결과를 View Class로 전달
   - [X] `void add(ResultType)`
     - 인자로 받은 ResultType에 대응되는 Value에 1 추가
+  - [X] `boolean isNothin(Result result)`
+    - 비교 결과 ball과 strike의 개수가 모두 0이면 true, 그렇지 않으면 false 반환

@@ -32,10 +32,6 @@ public class Judge {
             result.add(ResultType.BALL);
         }
 
-        if (isNothing(result)) {
-            result.add(ResultType.NOTHING);
-        }
-
         return result;
     }
 
@@ -48,10 +44,6 @@ public class Judge {
         int computerIndex = computerNumber.get(current);
         int userIndex = userNumber.get(current);
         return computerIndex == userIndex;
-    }
-
-    private boolean isNothing(Result result) {
-        return (result.get(ResultType.BALL) == 0) && (result.get(ResultType.STRIKE) == 0);
     }
 
 }
