@@ -3,7 +3,11 @@ package baseball.domain.validate;
 import baseball.domain.view.OutputView;
 
 public class NumberVerifier {
-    public static void numberVerifier(String randomNumbers, String inputNumbers) {
+    public NumberVerifier() {
+
+    }
+
+    public static boolean numberVerifier(String randomNumbers, String inputNumbers) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < 3; i++) {
@@ -13,6 +17,8 @@ public class NumberVerifier {
                 ball++;
             }
         }
-        OutputView.printResult(strike, ball);
+        return OutputView.printResult(strike, ball);
     }
+
+
 }

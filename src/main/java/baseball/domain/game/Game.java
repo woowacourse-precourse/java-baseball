@@ -9,7 +9,11 @@ public class Game {
     public Game() {
         OutputView.startView();
         String randomNumbers = Computer.getRandomNumbers();
-        String inputNumbers = InputView.printNumbers();
-        NumberVerifier.numberVerifier(randomNumbers, inputNumbers);
+        while (true) {
+            String inputNumbers = InputView.printNumbers();
+            if (NumberVerifier.numberVerifier(randomNumbers, inputNumbers)) {
+                break;
+            }
+        }
     }
 }

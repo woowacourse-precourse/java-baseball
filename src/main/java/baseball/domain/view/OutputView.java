@@ -7,13 +7,18 @@ public class OutputView {
         System.out.println(startGame);
     }
 
-    public static void printResult(int strike, int ball) {
-        if (strike != 0 && ball != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else if (strike == 0 && ball != 0) {
-            System.out.println(strike + "스트라이크");
-        } else if (strike != 0) {
-            System.out.println(ball + "볼");
+    public static boolean printResult(int strike, int ball) {
+        String answer;
+
+        if (ball > 0 && strike > 0) answer = ball + "볼 " + strike + "스트라이크";
+        else {
+            if (ball > 0) answer = ball + "볼";
+            else if (strike > 0) answer = strike + "스트라이크";
+            else answer = "낫싱";
         }
+
+        System.out.println(answer);
+
+        return strike == 3;
     }
 }
