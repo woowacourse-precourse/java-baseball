@@ -19,12 +19,42 @@ public class BallCount {
 
     // 볼 카운트 계산 method
     public void ruleBallCount(int targetNumber, int guessNumber){
+        int ballCount = 0;
+        List<Integer> targetDigitList = numberDigitToList(targetNumber);
+        List<Integer> guessDigitList = numberDigitToList(guessNumber);
 
+        for (int i = 0; i < targetDigitList.size(); i++) {
+            ballCount += compareDigitList(targetDigitList.get(i),guessDigitList,i);
+        }
+    }
+
+    private int compareDigitList(int compareNumber, List<Integer> compareList, int exceptIndex){
+        int result = 0;
+        for(int i = 0; i < compareList.size(); i++) {
+            if (i == exceptIndex){
+                continue;
+            }
+            if (compareList.get(i) == compareNumber) {
+                result++;
+            }
+        }
+
+        return result;
     }
 
     // 스트라이크 카운트 계산 method
     public void ruleStrikeCount(int targetNumber, int guessNumber){
-        targetNumber
+        int strikeCount = 0;
+        List<Integer> targetDigitList = numberDigitToList(targetNumber);
+        List<Integer> guessDigitList = numberDigitToList(guessNumber);
+
+        for (int i = 0; i < targetDigitList.size(); i++) {
+            if (targetDigitList.get(i) == guessDigitList.get(i)) {
+                strikeCount++;
+            }
+        }
+
+        this.strikeCount = strikeCount;
     }
 
     private List<Integer> numberDigitToList(int number){
