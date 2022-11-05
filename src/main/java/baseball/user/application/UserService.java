@@ -5,6 +5,9 @@ import baseball.game.domain.repository.GameRepository;
 import baseball.user.domain.repository.UserRepository;
 import baseball.user.support.Parser;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+
 public class UserService {
     private static final UserService instance=new UserService();
     private final Parser parser=new Parser();
@@ -24,5 +27,9 @@ public class UserService {
         gameRepository.getGame().initCount();
         userRepository.getUser().updateInputNumber(parser.parseClientInput(Console.readLine()
                 ,gameRepository.getSize()));
+    }
+    public List<Integer> inputContinue(){
+        messageService.continueMessage();
+        return parser.parseClientInput(Console.readLine(),1);
     }
 }

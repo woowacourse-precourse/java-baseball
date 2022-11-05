@@ -6,7 +6,6 @@ import baseball.user.domain.repository.UserRepository;
 
 import java.util.List;
 import java.util.Objects;
-
 public class GameService {
     private static final GameService instance = new GameService();
     private final GameRepository gameRepository;
@@ -34,7 +33,7 @@ public class GameService {
             messageService.resultMessage(gameRepository.getGame().getStrikeCount(), gameRepository.getGame().getBallCount());
         }
         messageService.gameEndMessage();
-        messageService.continueMessage();
+        checkContinue(userService.inputContinue());
     }
     private void countResult(List<Integer> inputData, List<Integer> randomNumber){
         for (int i=0;i<inputData.size();i++) {
@@ -48,6 +47,15 @@ public class GameService {
             return;
         }
         gameRepository.getGame().updateBallCount();
+    }
+
+    private void checkContinue(List<Integer> continueInput){
+        if(continueInput.get(0)==1){
+            //다시시작
+        }
+        if(continueInput.get(0)==1){
+            //종료
+        }
     }
 }
 
