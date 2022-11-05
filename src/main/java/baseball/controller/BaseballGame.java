@@ -34,15 +34,14 @@ public class BaseballGame {
     }
 
     public void whileUserInputCorrectAnswer() {
+        Score score = new Score();
         while (true) {
-            List<Integer> compareAnswer;
             outputView.printInputHint();
             this.user.inputGuessRandomNumbers();
-            Score score = new Score(this.user.getInput(), this.computer.getComputerNumbers());
-            compareAnswer = score.getScore();
-            outputView.printResult(compareAnswer);
-            if (compareAnswer.get(STRIKE_INDEX) == INPUT_LENGTH) {
-                outputView.printGameEnd(compareAnswer);
+            List<Integer> userScore = score.getScore(this.user.getInput(), this.computer.getComputerNumbers());
+            outputView.printResult(userScore);
+            if (userScore.get(STRIKE_INDEX) == INPUT_LENGTH) {
+                outputView.printGameEnd(userScore);
                 break ;
             }
         }
