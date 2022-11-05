@@ -31,4 +31,19 @@ public class Application {
             throw new IllegalArgumentException("숫자 세 개만 입력이 가능합니다. 프로그램을 종료합니다.");
         }
     }
+    static int[] compareGuessToComputer(List<Integer> guess, List<Integer> computer) {
+        int[] comparison = new int[2];
+        int num;
+        for (int order = 0; order < guess.size(); order ++) {
+            num = guess.get(order);
+            if (computer.contains(num) && (order == guess.indexOf(num))) {
+                comparison[1]++;
+            }
+            else if (computer.contains(num) && (order != guess.indexOf(num))) {
+                comparison[0]++;
+            }
+        }
+        return comparison;
+    }
+
 }
