@@ -44,6 +44,17 @@ public class Application {
             return false;
         }
     }
+
+    public boolean endGame() {
+        boolean quit = false;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String continueOrQuit = readLine();
+        if (continueOrQuit.equals("2")) {
+            quit = true;
+        }
+        return quit;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
