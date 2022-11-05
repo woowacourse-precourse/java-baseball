@@ -37,6 +37,7 @@ public class Game {
         this.userNum = makeList(userInput);
         validateUserNum();
         gameStart();
+        System.out.println(gameResult());
     }
 
     //사용자 입력받은거 리스트로 바꾸기
@@ -80,7 +81,19 @@ public class Game {
         }
     }
 
-    
+    //힌트 메시지 발생
+    public String gameResult(){
+        if(ball != 0 && strike != 0){
+            return (ball + "볼 " + strike + "스트라이크");
+        }
+        if(ball ==0 && strike != 0){
+            return(strike + "스트라이크");
+        }
+        if(ball != 0 && strike ==0){
+            return (ball + "볼");
+        }
+        return ("낫싱");
+    }
 
 
 }
