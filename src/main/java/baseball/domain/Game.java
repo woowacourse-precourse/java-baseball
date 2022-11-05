@@ -27,6 +27,22 @@ public class Game {
         this.status = status;
     }
 
+    public int getStrike(){
+        return strike;
+    }
+
+    public void setStrike(int strike){
+        this.strike = strike;
+    }
+
+    public int getBall(){
+        return ball;
+    }
+
+    public void setBall(int ball){
+        this.ball = ball;
+    }
+
     public void outputRestart() {
         System.out.println(END_GAME);
         System.out.println(IS_CONTINUE);
@@ -66,44 +82,6 @@ public class Game {
 
     public int charToInt(char number) {
         return Integer.parseInt(String.valueOf(number));
-    }
-
-    public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
-        strike = 0;
-        ball = 0;
-        for (int i = 0; i < computer.size(); i++) {
-            strike += isStrike(computer.get(i), user.get(i));
-            ball += isBall(computer, user.get(i), i);
-        }
-        System.out.println(createOutput(strike, ball));
-    }
-
-    public int isStrike(int computerNumber, int userNumber) {
-        if (computerNumber == userNumber) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public int isBall(ArrayList<Integer> computer, int userNumber, int index) {
-        if (computer.get(index) != userNumber && computer.contains(userNumber)) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public String createOutput(int strike, int ball) {
-        if (strike == IS_ANSWER) {
-            return strike + STRIKE;
-        } else if (strike != IS_NONE && ball != IS_NONE) {
-            return ball + BALL + " " + strike + STRIKE;
-        } else if (strike > IS_NONE) {
-            return strike + STRIKE;
-        } else if (ball > IS_NONE) {
-            return ball + BALL;
-        } else {
-            return NOTHING;
-        }
     }
 
     public boolean isAnswer(int strike) {

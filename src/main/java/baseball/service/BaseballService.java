@@ -40,7 +40,45 @@ public class BaseballService {
         return randomNumbers.contains(number);
     }
 
-    public void getUserNumbers(){
+    public void getUserNumbers() {
         inputUtil.inputUserNumbers();
+    }
+
+    public void outputHint(ArrayList<Integer> computer, ArrayList<Integer> user) {
+        game.setBall(0);
+        game.setStrike(0);
+        for (int i = 0; i < computer.size(); i++) {
+            game.setStrike(game.getStrike() + isStrike(computer.get(i), user.get(i)));
+            game.setBall(game.getBall() + isBall(computer, user.get(i), i));
+        }
+        System.out.println(createOutput(game.getStrike(), game.getBall()));
+    }
+
+    public int isStrike(int computerNumber, int userNumber) {
+        if (computerNumber == userNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int isBall(ArrayList<Integer> computer, int userNumber, int index) {
+        if (computer.get(index) != userNumber && computer.contains(userNumber)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public String createOutput(int strike, int ball) {
+        if (strike == Constant.IS_ANSWER.getNumber()) {
+            return strike + Constant.STRIKE.getMessage();
+        } else if (strike != Constant.IS_NONE.getNumber() && ball != Constant.IS_NONE.getNumber()) {
+            return ball + Constant.BALL.getMessage() + " " + strike + Constant.STRIKE.getMessage();
+        } else if (strike > Constant.IS_NONE.getNumber()) {
+            return strike + Constant.STRIKE.getMessage();
+        } else if (ball > Constant.IS_NONE.getNumber()) {
+            return ball + Constant.BALL.getMessage();
+        } else {
+            return Constant.NOTHING.getMessage();
+        }
     }
 }
