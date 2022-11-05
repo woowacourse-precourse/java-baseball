@@ -9,12 +9,17 @@ public class FlowHandler {
 
 	public int runGame() {
 		List<Integer> baseballNumber = generator.getBaseballNumber();
-		io.printInitMessage();
-		io.printInputMessage();
 		Grader grader = new Grader(baseballNumber);
-		List<Integer> inputList = io.getInputList();
-		io.printScore(grader.getScore(inputList));
-
-		return 1;
+		io.printInitMessage();
+		while (true) {
+			io.printInputMessage();
+			List<Integer> inputList = io.getInputList();
+			Score score = grader.getScore(inputList);
+			io.printScore(score);
+			if (grader.isCorrect(score)) {
+				io.printGameEndMessage();
+				return io.getRestartInt();
+			}
+		}
 	}
 }

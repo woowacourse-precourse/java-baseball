@@ -29,8 +29,8 @@ public class Grader {
 		return new Score(ball, strike);
 	}
 
-	public boolean isCorrect(List<Integer> input) {
-		if (getScore(input).getStrike() == 3) {
+	public boolean isCorrect(Score score) {
+		if (score.getStrike() == 3) {
 			return true;
 		}
 		return false;
