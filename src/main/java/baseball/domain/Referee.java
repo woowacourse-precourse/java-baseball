@@ -11,6 +11,16 @@ public class Referee {
         NumberComparison numberComparison = new NumberComparison();
         int correctCount = numberComparison.compare(computer, player);
 
+        int strike = getStrike(computer, player);
+
+        if (correctCount == 0) {
+            return SystemMessage.NOTHING_MESSAGE;
+        }
+        int ball = correctCount - strike;
+        return getResult(strike, ball);
+    }
+
+    private int getStrike(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         for (int playerIndex = 0; playerIndex < player.size(); playerIndex++) {
             int playerNumber = player.get(playerIndex);
@@ -18,13 +28,7 @@ public class Referee {
                 strike++;
             }
         }
-
-        if (correctCount == 0) {
-            return SystemMessage.NOTHING_MESSAGE;
-        }
-        int ball = correctCount - strike;
-
-        return getResult(strike, ball);
+        return strike;
     }
 
     public String getResult(int strike, int ball) {
