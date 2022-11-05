@@ -60,7 +60,7 @@ BUILD SUCCESSFUL in 0s
     - [x] FEATURE7. 스트라이크 개수 계산 메서드
     - [x] FEATURE8. 볼 개수 계산 메서드
     - [x] FEATURE9. 클래스 생성자
-    - [ ] FEATURE10. 스트라이크 개수 getter
+    - [x] FEATURE10. 스트라이크 개수 getter
     - [ ] FEATURE11. 볼 개수 getter
     - [ ] FEATURE12. 낫싱 여부 확인 메서드
     - [ ] FEATURE13. 클래스 toString 메서드 오버라이딩
@@ -97,7 +97,7 @@ BUILD SUCCESSFUL in 0s
         - [ ] `String toString()`
         - [x] `int calcStrikes(List<Integer> answerNums, List<Integer> inputNums)`
         - [x] `int calcBalls(List<Integer> answerNums, List<Integer> inputNums)`
-        - [ ] `int numOfStrikes()`
+        - [x] `int numOfStrikes()`
         - [ ] `int numOfBalls()`
         - [ ] `Boolean isNothing()`
 

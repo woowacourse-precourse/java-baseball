@@ -12,7 +12,7 @@ public class BaseballGameResult {
         this.ball = calcBalls(answerNums, inputNums);
     }
 
-    int calcStrikes(List<Integer> answerNums, List<Integer> inputNums) {
+    public int calcStrikes(List<Integer> answerNums, List<Integer> inputNums) {
         int strike = 0;
         for (int idx = 0; idx < 3; idx++) {
             if (answerNums.get(idx).equals(inputNums.get(idx))) {
@@ -22,7 +22,7 @@ public class BaseballGameResult {
         return strike;
     }
 
-    int calcBalls(List<Integer> answerNums, List<Integer> inputNums) {
+    public int calcBalls(List<Integer> answerNums, List<Integer> inputNums) {
         int balls = 0;
         for (int idx = 0; idx < 3; idx++) {
             if (!answerNums.get(idx).equals(inputNums.get(idx)) && answerNums.contains(inputNums.get(idx))) {
@@ -30,5 +30,9 @@ public class BaseballGameResult {
             }
         }
         return balls;
+    }
+
+    public int numOfStrikes() {
+        return this.strike;
     }
 }
