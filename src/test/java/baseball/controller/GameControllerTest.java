@@ -17,7 +17,6 @@ class GameControllerTest {
   void 사용자_숫자_입력테스트_성공() {
     InputStream userInput = new ByteArrayInputStream("123".getBytes());
     System.setIn(userInput);
-    GameController gc = new GameController();
     List<Integer> playerNumbers = inputService.getPlayerNumbers();
     Assertions.assertThat(playerNumbers).isEqualTo(List.of(1, 2, 3));
   }
