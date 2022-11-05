@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import static baseball.type.NumberType.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -6,7 +6,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumberGenerator {
+public class ComputerNumberController {
     private static List<Integer> computerNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {

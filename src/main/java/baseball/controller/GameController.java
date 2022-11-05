@@ -5,8 +5,6 @@ import static baseball.type.NumberType.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.ComputerNumberGenerator;
-import baseball.UserNumberGenerator;
 import baseball.domain.Hint;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -20,13 +18,13 @@ public class GameController {
 
     public static void startGame() {
         boolean gameStatus = NO_ANSWER;
-        List<Integer> computerNumbers = ComputerNumberGenerator.generate();
+        List<Integer> computerNumbers = ComputerNumberController.generate();
 
         while (gameStatus == NO_ANSWER) {
             Hint hint = new Hint(STRIKE_ZERO, BALL_ZERO);
             InputView.printTypoNumber();
 
-            List<Integer> userNumbers = UserNumberGenerator.generate();
+            List<Integer> userNumbers = UserNumberController.generate();
 
             hint.countHint(userNumbers, computerNumbers);
             OutputView.printHint(hint);
