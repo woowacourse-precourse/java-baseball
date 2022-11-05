@@ -171,22 +171,28 @@ public class Computer {
     }
 
     // strike체크 함수
-    private void checkStrike(List<Integer> splitNumOfCompare) {
+    private void checkStrike(List<Integer> listSplitNum) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
-        boolean isStrike = true;
-        for (int first = 0; first < splitNumOfCompare.size(); first++) {
+        Boolean isStrike = true;
+        for (int first = 0; first < listSplitNum.size(); first++) {
             isStrike = false;
             int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
             for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
-                int numAtNow = splitNumOfCompare.get(second);
-                if (first == second && numComputerAtNow == numAtNow) {
-                    isStrike = true;
-                }
+                int numAtNow = listSplitNum.get(second);
+                isStrike = isCheckStrike(isStrike, first, numComputerAtNow, second, numAtNow);
             }
             if (isStrike) {
                 this.cntStrike = this.cntStrike + 1;
             }
         }
+    }
+
+    private boolean isCheckStrike(Boolean isStrike, int first, int numComputerAtNow, int second,
+        int numAtNow) {
+        if (first == second && numComputerAtNow == numAtNow) {
+            isStrike = true;
+        }
+        return isStrike;
     }
 
     // strike체크 함수
