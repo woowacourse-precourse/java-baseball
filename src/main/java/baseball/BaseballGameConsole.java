@@ -22,7 +22,7 @@ public class BaseballGameConsole {
 
         do {
             System.out.println("숫자를 입력해주세요. :");
-            // Player predicts number
+            String predictedNumber = player.predictNumber();
             // Validator validates players prediction
 
             // Computer returns result of prediction

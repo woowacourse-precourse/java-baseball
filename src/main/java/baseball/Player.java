@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Player {
 
     private final String name;
@@ -10,5 +12,9 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public String predictNumber() {
+        return Console.readLine();
     }
 }
