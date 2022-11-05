@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 import baseball.exception.InvalidInputException;
 
 public class User {
-	private static final String MIN_NUMBER = "1";
-	private static final String MAX_NUMBER = "9";
 	private List<Integer> number;
 
 	public User(List<Integer> number) {
@@ -37,7 +35,7 @@ public class User {
 	}
 
 	private void validateDigitRange(List<Integer> number) {
-		String REGEX = String.format("[%s-%s]+", MIN_NUMBER, MAX_NUMBER);
+		String REGEX = String.format("[%s-%s]+", Computer.MIN_NUMBER, Computer.MAX_NUMBER);
 
 		String str = number.stream()
 			.map(n -> String.valueOf(n))
