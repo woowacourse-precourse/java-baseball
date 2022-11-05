@@ -1,8 +1,6 @@
 package baseball.domain;
 
 import baseball.domain.count.CountResult;
-import baseball.domain.count.ball.BallCounter;
-import baseball.domain.count.strike.StrikeCounter;
 import baseball.domain.number.inputnumber.InputNumbers;
 import baseball.domain.number.randomnumber.RandomNumberFactory;
 import baseball.domain.number.randomnumber.RandomNumbers;
@@ -14,17 +12,10 @@ import static baseball.domain.number.inputnumber.InputNumberFactory.newInstance;
 public class BaseballGame {
 
     private final NumberScanner numberScanner;
-    private final BallCounter ballCounter;
-    private final StrikeCounter strikeCounter;
     private final MessagePrinter messagePrinter;
 
-    public BaseballGame(NumberScanner numberScanner,
-                        BallCounter ballCounter,
-                        StrikeCounter strikeCounter,
-                        MessagePrinter messagePrinter) {
+    public BaseballGame(NumberScanner numberScanner, MessagePrinter messagePrinter) {
         this.numberScanner = numberScanner;
-        this.ballCounter = ballCounter;
-        this.strikeCounter = strikeCounter;
         this.messagePrinter = messagePrinter;
     }
 
@@ -41,15 +32,10 @@ public class BaseballGame {
             InputNumbers inputNumber = newInstance(inputValue);
 
             CountResult countResult = randomNumbers.countBallAndStrike(inputNumber);
-            int ballCount = countResult.ballCount();
-            int strikeCount = countResult.strikeCount();
+            messagePrinter.printBallAndStrikeCount(countResult.createStringFormatOfCountResult());
 
-            printBallAndStrikeCount(ballCount, strikeCount);
-
-            if (strikeCount == 3) {
+            if (countResult.isThreeStrike()) {
                 messagePrinter.printCorrectAnswerMessage();
-                messagePrinter.printRestartMessage();
-
                 oneOrTwoForRestartGame = numberScanner.inputOneOrTwo();
             }
 
@@ -60,24 +46,5 @@ public class BaseballGame {
         }
 
         System.out.println("2를 입력하여, 게임이 종료되었습니다.");
-    }
-
-    private void printBallAndStrikeCount(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
-            messagePrinter.printNothing();
-            return;
-        }
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        if (0 < ballCount) {
-            stringBuilder.append(ballCount).append("볼 ");
-        }
-
-        if (0 < strikeCount) {
-            stringBuilder.append(strikeCount).append("스트라이크");
-        }
-
-        messagePrinter.printBallAndStrikeCount(stringBuilder.toString());
     }
 }

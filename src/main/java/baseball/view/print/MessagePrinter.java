@@ -20,9 +20,6 @@ public class MessagePrinter {
 
     public void printCorrectAnswerMessage() {
         System.out.print(Message.CORRECT_ANSWER_MESSAGE);
-    }
-
-    public void printRestartMessage() {
         System.out.println(Message.RESTART_GAME_MESSAGE);
     }
 }

@@ -10,11 +10,25 @@ public class CountResult {
         this.strikeCount = strikeCount;
     }
 
-    public int ballCount() {
-        return ballCount;
+    public boolean isThreeStrike() {
+        return strikeCount == 3;
     }
 
-    public int strikeCount() {
-        return strikeCount;
+    public String createStringFormatOfCountResult() {
+        if (ballCount == 0 && strikeCount == 0) {
+            return "낫싱";
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (0 < ballCount) {
+            stringBuilder.append(ballCount).append("볼 ");
+        }
+
+        if (0 < strikeCount) {
+            stringBuilder.append(strikeCount).append("스트라이크");
+        }
+
+        return stringBuilder.toString();
     }
 }
