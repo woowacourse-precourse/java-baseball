@@ -19,7 +19,7 @@ public class Application {
             while (!result.equals("3스트라이크")) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String userInput = Console.readLine();
-                List<Integer> user = createUserNumberList(userInput);
+                List<Integer> user = userNumberValidate(userInput);
                 result = resultJudgement(computer, user);
                 System.out.println(result);
             }
@@ -87,5 +87,14 @@ public class Application {
         }
 
         return ballCount + "볼 " + strikeCount + "스트라이크";
+    }
+
+    public static List<Integer> userNumberValidate(String userInput) throws IllegalArgumentException {
+        List<Integer> user = createUserNumberList(userInput);
+        if (user.size() > 3) {
+            throw new IllegalArgumentException();
+        }
+
+        return user;
     }
 }
