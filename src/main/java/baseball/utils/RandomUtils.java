@@ -1,8 +1,11 @@
 package baseball.utils;
 
-
 public class RandomUtils {
-	public int[] getRandomNumbers() {
+
+	private RandomUtils() {
+
+	}
+	public static int[] getRandomNumbers() {
 		int[] numbers = new int[3];
 
 		for (int i = 0; i < numbers.length; i++) {
