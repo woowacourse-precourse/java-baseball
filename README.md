@@ -172,6 +172,10 @@ List<Integer> computer = new ArrayList<>();
 
 ### 예외상황
 - [ ] 모든 예외 상황은 `IllegalArgumentException` 을 발생시킨다. 이후 프로그램을 종료한다.
+    - 숫자 입력이 아닌 경우
+    - 3자리 수가 아닌 경우
+    - 중복된 값을 입력한 경우
+    - 허용된 범위의 숫자가 아닌 경우
 
 ### 리팩토링 및 추가 구현 기능
 - [x] InputView 와 OutputView를 통해서 값을 입출력한다.
