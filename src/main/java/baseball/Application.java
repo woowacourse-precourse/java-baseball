@@ -3,24 +3,39 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        // TODO: 프로그램 구현
 
         try {
             sendMassage(GameMassage.START_MASSAGE);
 
-            List<Integer> computer = randomThreeDigit();
-            sendMassage(GameMassage.INPUT_NUMBER);
-            List<Integer> user = getUserInput();
-            boolean answer = calculationNumber(computer, user);
+            GameStatus restartOrEnd = GameStatus.START;
+            while (restartOrEnd != GameStatus.END) {
+                List<Integer> computer = randomThreeDigit();
+                boolean answer = false;
+                while (!answer) {
+                    sendMassage(GameMassage.INPUT_NUMBER);
+                    List<Integer> user = getUserInput();
+                    answer = calculationNumber(computer, user);
+                }
 
+                restartOrEnd = getRestartOrEndGame();
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("IllegalArgumentException 발생");
         }
+    }
 
+    private static GameStatus getRestartOrEndGame(){
+        sendMassage(GameMassage.ANSWER);
+        if (isRestart(Console.readLine())) {
+            sendMassage(GameMassage.RESTART_OR_END);
+            return GameStatus.START;
+        }
+        return GameStatus.END;
     }
 
     private static void sendMassage(GameMassage massage){
@@ -61,6 +76,12 @@ public class Application {
         return false;
     }
 
+    private static boolean isRestart(String str) {
+        String regex = "[1]{1,1}";
+        if(str.length()==1) return str.matches(regex);
+        return false;
+    }
+
     private static String removeDuplicated(String str){
         String removeDuplicatedCharRegex = "(([a-z])\\2{1,})";
         return str.replaceAll(removeDuplicatedCharRegex, "");
@@ -70,6 +91,7 @@ public class Application {
         List<Integer> values = new ArrayList<>();
         String input = Console.readLine();
         input = removeDuplicated(input);
+
         String regex = "[1-9]{3,3}";
 
         if (input.matches(regex)) {
