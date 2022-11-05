@@ -8,13 +8,16 @@ import model.UseFunc;
 public class GameView {
 
     final String MSG_FIRST = "숫자 야구 게임을 시작합니다.";
-    final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     final String MSG_THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final String MSG_CHOICE_PLAY_MORE_GAMES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final String MSG_GAME_END = "게임종료";
+    final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    final String MSG_INPUT_NUM = "숫자를 입력해주세요.";
+    final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
+    final static String MSG_INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
-    final int RESTART_GAME = 1;
-    final int END_GAME = 2;
+    final int NUM_RESTART_GAME = 1;
+    final int NUM_END_GAME = 2;
 
     public void run() {
         GameController gameController = GameController.getInstanceGameController();
@@ -57,7 +60,7 @@ public class GameView {
     }
 
     private boolean isEndGameUserWant(int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, END_GAME)) {
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_END_GAME)) {
             System.out.println(MSG_GAME_END);
             return true;
         }
@@ -65,7 +68,7 @@ public class GameView {
     }
 
     private boolean isReGameUserWant(GameController gameController, int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, RESTART_GAME)) {
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_RESTART_GAME)) {
             gameController.reStartGame();
             return true;
         }
@@ -76,7 +79,7 @@ public class GameView {
         try {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException(MSG_INPUT_NUM);
         }
     }
 
@@ -93,13 +96,15 @@ public class GameView {
         if (num > 0) {
             return true;
         }
-        throw new IllegalArgumentException("숫자를 입력해주세요.");
+        throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
     }
 
     private boolean isValidRightNum(int num) {
-        if (UseFunc.isEqualIntOfTwo(num, 1) || UseFunc.isEqualIntOfTwo(num, 2)) {
+        if (UseFunc.isEqualIntOfTwo(num, NUM_RESTART_GAME) || UseFunc.isEqualIntOfTwo(num,
+            NUM_END_GAME)) {
             return true;
         }
-        throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        throw new IllegalArgumentException(MSG_INPUT_ONE_OR_TWO);
     }
+
 }
