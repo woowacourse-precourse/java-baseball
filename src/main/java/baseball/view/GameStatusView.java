@@ -34,6 +34,10 @@ public class GameStatusView {
         System.out.println(WRONG_ANSWER_ALERT);
     }
 
+    public void checkAlert(){
+        if(isNotCorrectAnswer())alertWrongAnswer();
+    }
+
     public String getOpinion(){
         return opinion;
     }
