@@ -20,6 +20,7 @@ import java.util.Map;
 
 public class Application {
     final static String START_FLAG = "1";
+    final static char ZERO_CHARACTER = '0';
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -89,7 +90,7 @@ public class Application {
         int ballCount = 0;
 
         for (int idx = 0; idx < userInput.length(); idx++) {
-            int userNumber = userInput.charAt(idx) - '0';
+            int userNumber = userInput.charAt(idx) - ZERO_CHARACTER;
 
             if(computerIndexMap.containsKey(userNumber) && computerIndexMap.get(userNumber) != idx){
                 ballCount++;
@@ -103,7 +104,7 @@ public class Application {
         int strikeCount = 0;
 
         for (int idx = 0; idx < userInput.length(); idx++) {
-            int userNumber = userInput.charAt(idx) - '0';
+            int userNumber = userInput.charAt(idx) - ZERO_CHARACTER;
 
             if(userNumber == computer.get(idx)){
                 strikeCount++;
@@ -117,7 +118,7 @@ public class Application {
             throw new IllegalArgumentException("자릿수가 3자리가 아닙니다.");
 
         for(int i = 0; i < s.length(); i++){
-            if(!(s.charAt(i) >= '0' && s.charAt(i) <= '9'))
+            if(!isNumberCharacter(s, i))
                 throw new IllegalArgumentException("숫자가 아닌 문자 입력 예외.");
         }
     }
@@ -133,5 +134,9 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+    }
+
+    private static boolean isNumberCharacter(final String s, int i) {
+        return s.charAt(i) >= '0' && s.charAt(i) <= '9';
     }
 }
