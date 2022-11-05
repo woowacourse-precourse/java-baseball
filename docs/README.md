@@ -57,8 +57,8 @@
 ## IntentionOfContinuingGame
 ### 게임을 계속 진행할지 여부를 저장하는 enum 객체
     - (CONTINUE / STOP)을 요소로 가짐
-    - 사용자가 게임을 계속하기를 원하는지 확인하는 메서드(yes)
-    - 사용자가 게임을 그만두기를 원하는지 확인하는 메서드(no)
+    - 사용자의 입력에 알맞은 enum 객체를 반환하는 기능(getIntention)
+    - 사용자의 게임 지속 의사를 반환하는 기능(wantContinue)
 
 ## BaseballGameConfiguration
 ### Baseball 게임에 사용되는 객체들의 의존성 주입을 담당하는 객체
