@@ -5,11 +5,13 @@ import java.util.List;
 public final class OutputMsgGenerator {
     private OutputMsgGenerator() {}
     public static String generate(List<Integer> code) {
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         if (code.get(0) != 0) {
-            result += code.get(0) + OutputMsgContainer.BALL;
+            result.append(code.get(0));
+            result.append(OutputMsgContainer.BALL);
         }
-        result += code.get(1) + OutputMsgContainer.STRIKE;
+        result.append(OutputMsgContainer.SPACE);
+        result.append(OutputMsgContainer.STRIKE);
         return result.toString();
     }
 }
