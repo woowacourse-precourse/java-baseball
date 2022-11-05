@@ -55,13 +55,22 @@ public class Application {
     public static int[] judgment(Integer[] input, List<Integer> answer) {
         int[] result = new int[]{0, 0}; //result[0] = 볼, result[1] = 스트라이크
         for (int i = 0; i < 3; i++) {
-            if (isStrike(input[i], answer.get(i))) {
-                result[1]++;
-                continue;
-            }
-            if (isContain(input[i], answer)) {
-                result[0]++;
-            }
+            int[] temp = returnJudgmentResult(input[i], i, answer);
+            result[0] += temp[0];
+            result[1] += temp[1];
+        }
+        return result;
+    }
+
+    public static int[] returnJudgmentResult(int input, int index, List<Integer> answer) {
+        int[] result = new int[]{0, 0};
+        if (isStrike(input, answer.get(index))) {
+            result[1]++;
+            return result;
+        }
+        if (isContain(input, answer)) {
+            result[0]++;
+
         }
         return result;
     }
