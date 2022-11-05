@@ -1,5 +1,9 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static baseball.type.BaseballBound.BASEBALL_MAX_SIZE;
 
 public class Hint {
@@ -13,5 +17,8 @@ public class Hint {
 
     public boolean isFullStrikes() {
         return (strikes == BASEBALL_MAX_SIZE.getValue());
+    }
+    public List<Integer> getStrikeBallCount() {
+        return Arrays.asList(strikes,balls);
     }
 }

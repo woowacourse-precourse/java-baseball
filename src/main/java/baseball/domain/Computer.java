@@ -6,9 +6,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import static baseball.type.BaseballBound.*;
 public class Computer {
-    private final ComputerNumbers computerNumbers = new ComputerNumbers(createRandomNumbers());
+    private final ComputerNumbers computerNumbers;
 
-    public Computer() {}
+    public Computer() {
+        this.computerNumbers = new ComputerNumbers(createRandomNumbers());
+    }
+    public Computer(List<Integer> numbers) {
+        this.computerNumbers = new ComputerNumbers(numbers);
+    }
 
     public List<Integer> createRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
