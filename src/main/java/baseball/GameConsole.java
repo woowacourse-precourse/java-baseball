@@ -45,22 +45,11 @@ public class GameConsole {
         return readDigits();
     }
 
-    /**
-     * @param result 게임결과
-     * @return 게임 종료 여부
-     */
-    public boolean printGameResult(Result result) {
+    public void printGameResult(Result result) {
         writeLine(result.toString());
-
-        if (result.isComplete()) {
-            printComplete();
-            return true;
-        }
-
-        return false;
     }
 
-    private void printComplete() {
+    public void printComplete() {
         writeLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 

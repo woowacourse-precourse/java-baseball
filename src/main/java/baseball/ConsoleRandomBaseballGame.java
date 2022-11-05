@@ -39,6 +39,13 @@ public class ConsoleRandomBaseballGame {
         Digits digits = gameConsole.inputDigits();
         Result result = randomBaseballGame.match(digits);
 
-        return gameConsole.printGameResult(result);
+        gameConsole.printGameResult(result);
+
+        if (result.isComplete()) {
+            gameConsole.printComplete();
+            return true;
+        } else {
+            return false;
+        }
     }
 }

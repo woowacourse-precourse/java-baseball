@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.baseball.Digits;
-import baseball.baseball.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -79,32 +78,6 @@ class GameConsoleTest {
             assertThatThrownBy(gameConsole::inputShallReplay)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1과 2중 하나만 입력하세요");
-        }
-    }
-
-    @Nested
-    class printGameResult {
-
-        @Test
-        @DisplayName("게임이 끝난 경우")
-        void caseComplete() {
-            GameConsole gameConsole = new GameConsole();
-            Result result = new Result(3, 0);
-
-            boolean isComplete = gameConsole.printGameResult(result);
-
-            assertThat(isComplete).isEqualTo(true);
-        }
-
-        @Test
-        @DisplayName("게임이 안 끝난 경우")
-        void caseNotComplete() {
-            GameConsole gameConsole = new GameConsole();
-            Result result = new Result(2, 1);
-
-            boolean isComplete = gameConsole.printGameResult(result);
-
-            assertThat(isComplete).isEqualTo(false);
         }
     }
 
