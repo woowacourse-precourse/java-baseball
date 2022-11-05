@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
+import baseball.util.Message;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -19,7 +20,7 @@ public class Controller {
         OutputView.printGameStart();
         do {
             playOneGame();
-        } while (!chooseEndOrNot());
+        } while (chooseRestartOrNot());
     }
 
     void playOneGame() {
@@ -32,14 +33,14 @@ public class Controller {
         } while (gameResult.getStrike() != 3);
     }
 
-    boolean chooseEndOrNot() {
-        OutputView.printEndOrNot();
+    boolean chooseRestartOrNot() {
+        OutputView.printRestartOrEnd();
         String input = InputView.inputString();
-        if (input.equals("1")) {
-            return false;
-        }
-        if (input.equals("2")) {
+        if (input.equals(Message.RESTART)) {
             return true;
+        }
+        if (input.equals(Message.END)) {
+            return false;
         }
         throw new IllegalArgumentException();
     }

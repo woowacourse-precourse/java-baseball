@@ -11,8 +11,8 @@ public class OutputView {
         System.out.print(Message.INPUT_REQUEST);
     }
 
-    public static void printEndOrNot() {
-        System.out.println(Message.END_OR_NOT);
+    public static void printRestartOrEnd() {
+        System.out.println(Message.RESTART_OR_END);
     }
 
     public static void printResult(String result) {
