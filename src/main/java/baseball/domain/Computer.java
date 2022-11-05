@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,7 +10,7 @@ public class Computer {
     private final List<Integer> randomNumbers = new ArrayList<>(Collections.emptyList());
 
     public Computer() {
-        inputRandomNumbers();
+        initComputer();
     }
 
     /**
@@ -53,9 +53,9 @@ public class Computer {
     }
 
     /**
-     * 랜덤 숫자들을 구한다.
+     * 컴퓨터의 랜덤 숫자들을 구한다.
      */
-    private void inputRandomNumbers() {
+    private void initComputer() {
         while ((randomNumbers.size() != 3)) {
             addRandomNumberByList(createRandomNumber());
         }

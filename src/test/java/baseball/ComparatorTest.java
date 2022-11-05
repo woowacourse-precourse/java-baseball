@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Comparator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

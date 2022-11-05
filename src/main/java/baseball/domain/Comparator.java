@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
@@ -6,6 +6,16 @@ public class Comparator {
     private int[] result = {0, 0};
 
     public Comparator(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        initComparator(computerNumbers, playerNumbers);
+    }
+
+    /**
+     * 컴퓨터와 플레이어의 숫자를 비교하여 초기화한다.
+     *
+     * @param computerNumbers 컴퓨터의 숫자 목록
+     * @param playerNumbers   플레이어의 숫자 목록
+     */
+    private void initComparator(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         this.result = inputResult(computerNumbers, playerNumbers);
     }
 

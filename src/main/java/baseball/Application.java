@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {

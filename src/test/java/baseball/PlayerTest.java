@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Player;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,8 @@ class PlayerTest {
                 Player player;
             };
             assertThatThrownBy(() -> ref.player = new Player("12"))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("입력한 숫자의 개수가 3개가 아닙니다.");
         }
 
         @Test
@@ -56,7 +58,8 @@ class PlayerTest {
                 Player player;
             };
             assertThatThrownBy(() -> ref.player = new Player("1234"))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("입력한 숫자의 개수가 3개가 아닙니다.");
         }
     }
 
@@ -68,7 +71,8 @@ class PlayerTest {
                 Player player;
             };
             assertThatThrownBy(() -> ref.player = new Player("112"))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다.");
         }
 
         @Test
@@ -86,7 +90,8 @@ class PlayerTest {
                 Player player;
             };
             assertThatThrownBy(() -> ref.player = new Player("333"))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다.");
         }
     }
 }
