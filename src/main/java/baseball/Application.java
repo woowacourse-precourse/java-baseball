@@ -96,12 +96,7 @@ public class Application {
 
     public static boolean checkingUserNumberIsCorrect(String numberString) {
 
-        if (!checkUserNumberLength(numberString) || !checkUserNumberIsInteger(numberString) || !checkUserNumberIsDuplicate(numberString)) {
-
-            return false;
-        }
-
-        return true;
+        return checkUserNumberLength(numberString) && checkUserNumberIsInteger(numberString) && checkUserNumberIsDuplicate(numberString);
     }
 
     public static boolean checkUserNumberLength(String numberString) {
