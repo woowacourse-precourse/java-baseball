@@ -22,7 +22,7 @@ public class BaseballTest {
 
         assertThatThrownBy(() -> Baseball.of(number))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("야구공의 숫자 범위를 벗어났습니다.");
+                .hasMessageContaining(Baseball.OUT_OF_RANGE_MESSAGE);
     }
 
     @Test

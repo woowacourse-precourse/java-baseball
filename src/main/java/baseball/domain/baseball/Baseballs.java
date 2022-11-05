@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Baseballs {
     private static final int BASEBALL_NUMBER = 3;
+    static final String NOT_THREE_LETTERS_MESSAGE = "입력한 숫자가 3글자가 아닙니다.";
+    static final String DUPLICATE_MESSAGE = "중복된 숫자를 입력했습니다.";
 
     private List<Baseball> baseballs;
 
@@ -26,5 +29,33 @@ public class Baseballs {
         }
 
         return new Baseballs(new ArrayList<>(randomBaseBalls));
+    }
+
+    public static Baseballs valueOf(String numbers) {
+        List<Baseball> baseballs = toBaseballs(numbers);
+        validateNumber(baseballs);
+
+        return new Baseballs(baseballs);
+    }
+
+    private static List<Baseball> toBaseballs(String numbers) {
+        return numbers.chars().boxed().map(Baseball::of).collect(Collectors.toList());
+    }
+
+    private static void validateNumber(List<Baseball> baseballs) {
+        validateCharacterCount(baseballs.size());
+        validateDuplicate(baseballs);
+    }
+
+    private static void validateCharacterCount(int size) {
+        if (size != BASEBALL_NUMBER) {
+            throw new IllegalArgumentException(NOT_THREE_LETTERS_MESSAGE);
+        }
+    }
+
+    private static void validateDuplicate(List<Baseball> baseballs) {
+        if (baseballs.stream().distinct().count() != BASEBALL_NUMBER) {
+            throw new IllegalArgumentException(DUPLICATE_MESSAGE);
+        }
     }
 }

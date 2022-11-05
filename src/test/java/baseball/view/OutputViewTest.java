@@ -7,12 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.junit.jupiter.api.Assertions.*;
 
 class OutputViewTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     @BeforeEach
     void setUp() {
@@ -23,7 +20,14 @@ class OutputViewTest {
     void gameStartMessage_메서드_검증() {
         OutputView.gameStartMessage();
 
-        assertThat(outputStreamCaptor.toString().trim()).contains(GAME_START_MESSAGE);
+        assertThat(outputStreamCaptor.toString()).contains(OutputView.GAME_START_MESSAGE);
+    }
+
+    @Test
+    void inputNumberMessage_메서드_검증() {
+        OutputView.inputNumberMessage();
+
+        assertThat(outputStreamCaptor.toString()).contains(OutputView.INPUT_NUMBER_MESSAGE);
     }
 
 }
