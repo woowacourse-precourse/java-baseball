@@ -1,34 +1,18 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Constant.*;
 
-public class GetScore {
-    List<Integer> userNumbers;
-    List<Integer> computerNumbers;
-    public static int strike = 0;
-    public static int ball = 0;
+public class Score {
+    private List<Integer> userNumbers;
+    private List<Integer> computerNumbers;
+    public int strike = 0;
+    public int ball = 0;
 
-    GetScore(List<Integer> computer, List<Integer> user) {
+    public void setComputerAndUser(List<Integer> computer, List<Integer> user) {
         this.computerNumbers = computer;
         this.userNumbers = user;
-    }
-
-    public List<Integer> getScore() {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i=0; i<NUMBERS_LENGTH; i++) {
-            if (isStrike(computerNumbers.get(i), userNumbers.get(i))) {
-                strike += 1;
-            }
-            if (isBall(computerNumbers, userNumbers.get(i))) {
-                ball += 1;
-            }
-        }
-        return Arrays.asList(strike, ball);
     }
 
     public void getStrike() {
