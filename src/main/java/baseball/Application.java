@@ -10,9 +10,11 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> computer = createComputerNumber();
 
-
+        System.out.println("숫자를 입력해주세요 : ");
         String userNumberString = Console.readLine();
         String[] userNumberStringList = userNumberString.split("");
 
@@ -29,6 +31,7 @@ public class Application {
         }
 
         List<Integer> strikeCount = checkStrikeCount(computer, user);
+        printStrikeAndBall(strikeCount);
 
     }
 
@@ -146,6 +149,21 @@ public class Application {
         }
 
         return count;
+    }
+
+    public static void printStrikeAndBall(List<Integer> strikeCount) {
+        if (strikeCount.get(0) == 0 && strikeCount.get(1) == 0) {
+            System.out.println("낫싱");
+        }
+        else if (strikeCount.get(0) == 0 && strikeCount.get(1) > 0) {
+            System.out.println("%s볼");
+        }
+        else if (strikeCount.get(0) > 0 && strikeCount.get(1) == 0) {
+            System.out.println("%s스트라이크");
+        }
+        else {
+            System.out.println("%s볼 %s스트라이크");
+        }
     }
 
 }
