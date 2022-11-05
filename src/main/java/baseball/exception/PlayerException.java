@@ -2,11 +2,15 @@ package baseball.exception;
 
 import java.util.List;
 
+import static baseball.exception.ErrorMessage.DUPLICATE_NUMBER;
+import static baseball.exception.ErrorMessage.NUMBER_SIZE;
+
 public class PlayerException {
     private static final int INPUT_NUMBER_SIZE = 3;
 
     /**
      * 플레이어의 입력받은 숫자들이 정상인지 확인하고 아니면 예외 처리로 던진다.
+     *
      * @param playerNumbers 플레이어의 숫자들
      */
     public void inputExceptionCheck(List<Integer> playerNumbers) {
@@ -24,7 +28,8 @@ public class PlayerException {
         boolean[] checkNumbers = new boolean[10];
         for (Integer playerNumber : playerNumbers) {
             if (checkNumbers[playerNumber]) {
-                throw new IllegalArgumentException("입력한 숫자 중에 중복된 숫자가 있습니다.");
+                throw new IllegalArgumentException(
+                        DUPLICATE_NUMBER.ErrorMessage());
             }
             checkNumbers[playerNumber] = true;
         }
@@ -38,7 +43,8 @@ public class PlayerException {
      */
     private void numberSizeException(List<Integer> playerNumbers) throws IllegalArgumentException {
         if (playerNumbers.size() != INPUT_NUMBER_SIZE) {
-            throw new IllegalArgumentException("입력한 숫자의 개수가 " + INPUT_NUMBER_SIZE + "개가 아닙니다.");
+            throw new IllegalArgumentException(
+                    NUMBER_SIZE.ErrorMessage());
         }
     }
 }

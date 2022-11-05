@@ -40,7 +40,7 @@ class PlayerTest {
             };
             assertThatThrownBy(() -> ref.player = new Player("12"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("입력한 숫자의 개수가 3개가 아닙니다.");
+                    .hasMessage("입력한 숫자의 개수가 올바르지 않습니다. 프로그램을 종료합니다.");
         }
 
         @Test
@@ -59,7 +59,7 @@ class PlayerTest {
             };
             assertThatThrownBy(() -> ref.player = new Player("1234"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("입력한 숫자의 개수가 3개가 아닙니다.");
+                    .hasMessage("입력한 숫자의 개수가 올바르지 않습니다. 프로그램을 종료합니다.");
         }
     }
 
@@ -72,7 +72,7 @@ class PlayerTest {
             };
             assertThatThrownBy(() -> ref.player = new Player("112"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다.");
+                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다. 프로그램을 종료합니다.");
         }
 
         @Test
@@ -91,7 +91,7 @@ class PlayerTest {
             };
             assertThatThrownBy(() -> ref.player = new Player("333"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다.");
+                    .hasMessage("입력한 숫자 중에 중복된 숫자가 있습니다. 프로그램을 종료합니다.");
         }
     }
 }
