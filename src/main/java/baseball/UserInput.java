@@ -37,7 +37,7 @@ public class UserInput {
         inputSet.retainAll(setRange1To9);
         return inputSet.size() == NUMBERS_LENGTH;
     }
-    
+
     private HashSet<String> SetRange1To9() {
         HashSet<String> setRange1To9 = new HashSet<>();
         for(int i=MIN_RANGE_NUMBER; i<=MAX_RANGE_NUMBER; i++) {
@@ -48,7 +48,7 @@ public class UserInput {
 
     private HashSet<String> StringToSet() {
         HashSet<String> inputSet = new HashSet<>();
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<NUMBERS_LENGTH; i++) {
             inputSet.add(String.valueOf(input.charAt(i)));
         }
         return inputSet;
