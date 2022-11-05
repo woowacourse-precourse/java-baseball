@@ -27,4 +27,12 @@ class PlayerTest {
 
         assertThat(Player.isNumeric(s)).isFalse();
     }
+
+    @Test
+    void doubleCheck() {
+
+        String s = "112";
+
+        assertThat(Player.doubleCheck(s)).isFalse();
+    }
 }
