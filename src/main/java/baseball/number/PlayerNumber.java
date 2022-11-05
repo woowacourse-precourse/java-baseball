@@ -19,7 +19,7 @@ public class PlayerNumber implements Number {
         return playNumber;
     }
 
-    private void chkValidation(String number) throws IllegalArgumentException{
+    public void chkValidation(String number) throws IllegalArgumentException{
         isNumber(number);
     }
 
@@ -31,6 +31,10 @@ public class PlayerNumber implements Number {
         } else{
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void main(String[] args) {
+        PlayerNumber playerNumber = new PlayerNumber("간다");
     }
 
 }

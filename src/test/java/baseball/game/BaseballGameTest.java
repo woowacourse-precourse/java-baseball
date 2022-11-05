@@ -1,18 +1,14 @@
 package baseball.game;
 
-import baseball.Application;
 import baseball.number.PlayerNumber;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballGameTest {
 
@@ -32,9 +28,19 @@ class BaseballGameTest {
         InputStream in = getPlayerInput(input);
         System.setIn(in);
 
-        org.assertj.core.api.Assertions.assertThat(baseballGame.getPlayerNumber())
+        org.assertj.core.api.Assertions.assertThat(baseballGame.setPlayerNumber())
                 .isEqualTo(input);
 
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력이 숫자가 아니거나 3자리가 아닌지 확인하기")
+    @ValueSource(strings = {"1234", " ", "가나다","123"})
+    void chkValidNumber(String input) {
+        InputStream in = getPlayerInput(input);
+        System.setIn(in);
+
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> new PlayerNumber(input));
     }
 
 }
