@@ -5,6 +5,8 @@ public class GameConstant {
     public static final int RESTART_NUMBER = 1;
     public static final int END_NUMBER = 2;
     public static final int RESTART_OR_END_NUMBER_LENGTH = 1;
+    public static final int MAX_RANGE_NUM = 9;
+    public static final int MIN_RANGE_NUM = 1;
 
     public static final String PATTERN = "^[0-9]*$"; //숫자만
 
