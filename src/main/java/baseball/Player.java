@@ -70,4 +70,13 @@ public class Player {
         }
         return isOneOrTwo(restart);
     }
+
+    public static void isNotValid() {
+        try {
+            throw new IllegalArgumentException();
+        }
+        catch (Exception e) {
+            System.exit(1);
+        }
+    }
 }
