@@ -56,6 +56,34 @@ public class Application {
         return false;
     }
 
+    private static boolean compare_input(List<Integer> ans, List<Integer> input) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (ans.get(i) == input.get(i)) {
+                strike += 1;
+            } else if (ans.contains(input.get(i))) {
+                ball += 1;
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(String.format("%d볼", ball));
+        } else if (ball == 0) {
+            System.out.println(String.format("%d스트라이크", strike));
+        } else {
+            System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
+        }
+
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -68,5 +96,8 @@ public class Application {
 
         //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
         if (process_exception(input_num)) {}
+
+        //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
+        boolean match = compare_input(rand_num, input_num);
     }
 }
