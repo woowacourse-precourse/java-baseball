@@ -17,25 +17,25 @@ public class User {
 
         validateLength(input);
         validateDigit(input);
-        validateSameDigitByRow(input);
+        validateSameDigit(input);
         convertToInt(input, digits);
         return digits;
     }
 
-    private void validateSameDigitByRow(char[] input) {
+    private void validateSameDigit(char[] input) {
         for (int row = 0; row < DIGITS_SIZE - 1; row++) {
-            validateSameDigitByCol(input, row);
+            validateSameDigitByColumn(input, row);
         }
     }
 
-    private void validateSameDigitByCol(char[] input, int row) {
-        for (int col = row + 1; col < DIGITS_SIZE; col++) {
-            checkSameDigit(input, row, col);
+    private void validateSameDigitByColumn(char[] input, int row) {
+        for (int column = row + 1; column < DIGITS_SIZE; column++) {
+            checkSameDigit(input, row, column);
         }
     }
 
-    private void checkSameDigit(char[] input, int row, int col) {
-        if (isSameDigit(input[row], input[col])) {
+    private void checkSameDigit(char[] input, int row, int column) {
+        if (isSameDigit(input[row], input[column])) {
             throw new IllegalArgumentException("동일한 수를 입력할 수 없습니다.");
         }
     }
