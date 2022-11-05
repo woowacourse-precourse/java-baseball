@@ -21,4 +21,15 @@ class ReceiveConsoleTest {
         //then
         assertThat(numListDto.getNumList()).isEqualTo(Arrays.asList(1,2,3));
     }
+
+    @Test
+    void receiveNum_한글이있는경우테스트() {
+        //given
+        System.setIn(new ByteArrayInputStream(("한1글"+'\n').getBytes()));
+        //when
+        //then
+        assertThatThrownBy(() -> ReceiveConsole.receiveNum())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
