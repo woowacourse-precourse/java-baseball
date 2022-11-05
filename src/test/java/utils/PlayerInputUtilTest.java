@@ -43,12 +43,15 @@ public class PlayerInputUtilTest {
 		String nonNumericBallOne = "1-2";
 		String nonNumericBallTwo = "가12";
 		String nonNumericBallThree = "1!";
+		String zeroBall = "210";
 		// then
-		assertThatThrownBy(() -> PlayerInputUtil.checkNonNumericCharacterException(nonNumericBallOne))
+		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallOne))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkNonNumericCharacterException(nonNumericBallTwo))
+		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallTwo))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkNonNumericCharacterException(nonNumericBallThree))
+		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallThree))
+				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(zeroBall))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -70,4 +73,5 @@ public class PlayerInputUtilTest {
 		assertThatThrownBy(() -> PlayerInputUtil.checkDuplicateBallsException(duplicateBallFour))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
+
 }
