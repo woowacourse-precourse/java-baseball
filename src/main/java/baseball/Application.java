@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Application {
-    private static List<Integer> createTargetNums(){
+    public static List<Integer> createTargetNums(){
         Random r = new Random();
         List<Integer> targetNums = new ArrayList<>();
         int digit = 3;
