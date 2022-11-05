@@ -15,11 +15,23 @@ public class Game {
     private static final String RESTART_OR_EXIT_SENTENCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private boolean exitFlag = false;
+    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> player = new ArrayList<>();
+    Number computerNumber = new Number();
+    Number playerNumber = new Number();
+
+    public void gameStart() {
+        computer = computerNumber.setRandomNumbers();
+        while (!exitFlag) {
+            player = playerNumber.getInputNumber();
+            printHint(computer, player);
+        }
+    }
 
     private void setRestartOrExit() {
         String input = inputRestartOrExit();
         if(input.equals(RESTART)) {
-        //TODO(computer 숫자 재생성)
+            computer = computerNumber.setRandomNumbers();
             return;
         }
         exitFlag = true;
