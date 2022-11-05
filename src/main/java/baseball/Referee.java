@@ -13,10 +13,10 @@ public class Referee {
         List<Integer> convertedGuess = stringToIntegerList(guess);
         int ballCount = getBallCount(convertedGuess, answer);
         int strikeCount = getStrikeCount(convertedGuess, answer);
+        Printer.printHintMessage(ballCount, strikeCount);
         if (answer.equals(convertedGuess)) {
             return END;
         }
-        Printer.printHintMessage(ballCount, strikeCount);
         return CONTINUATION;
     }
 
