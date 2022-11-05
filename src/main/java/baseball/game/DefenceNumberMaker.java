@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static baseball.utils.Constant.GAME_NUMBER_SIZE;
 
@@ -10,7 +10,7 @@ public class DefenceNumberMaker {
 
     public List<Integer> defenceNumber;
 
-    DefenceNumberMaker() {
+    public DefenceNumberMaker() {
         defenceNumber = new ArrayList<>();
     }
 

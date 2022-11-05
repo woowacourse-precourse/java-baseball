@@ -1,8 +1,7 @@
-package baseball;
+package baseball.utils;
 
 import static baseball.utils.Constant.GAME_NUMBER_SIZE;
 
-import baseball.utils.ExceptionType;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

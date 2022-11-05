@@ -1,17 +1,17 @@
-package baseball;
+package baseball.game;
 
 import static baseball.utils.Constant.GAME_NUMBER_SIZE;
 
 import java.util.List;
 
-public class StrikeAndBall {
+public class Referee {
 
     DefenceNumberMaker defenceNumberMaker;
 
     List<Integer> defenceNumber;
     List<Integer> offenceNumber;
 
-    StrikeAndBall() {
+    public Referee() {
         defenceNumberMaker = new DefenceNumberMaker();
     }
 

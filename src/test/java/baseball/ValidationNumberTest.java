@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.utils.ValidationNumber;
 import org.junit.jupiter.api.Test;
 
 public class ValidationNumberTest {

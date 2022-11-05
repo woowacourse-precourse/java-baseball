@@ -2,6 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.game.DefenceNumberMaker;
+import baseball.utils.ValidationNumber;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

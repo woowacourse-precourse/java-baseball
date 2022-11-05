@@ -1,5 +1,6 @@
-package baseball;
+package baseball.game;
 
+import baseball.utils.ValidationNumber;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class User {
     ValidationNumber validationNumber;
     String input;
 
-    User() {
+    public User() {
         validationNumber = new ValidationNumber();
     }
 

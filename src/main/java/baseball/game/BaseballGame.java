@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static baseball.utils.Constant.*;
 
@@ -7,14 +7,14 @@ import java.util.List;
 
 public class BaseballGame {
 
-    StrikeAndBall strikeAndBall;
+    Referee referee;
     User user;
     TextForGame textForGame;
     List<Integer> result;
     boolean isPlaying;
 
-    BaseballGame() {
-        strikeAndBall = new StrikeAndBall();
+    public BaseballGame() {
+        referee = new Referee();
         user = new User();
         textForGame = new TextForGame();
         result = new ArrayList<>();
@@ -24,14 +24,14 @@ public class BaseballGame {
 
     private void startAndPlaying() {
         isPlaying = true;
-        strikeAndBall.setDefenceNumber();
+        referee.setDefenceNumber();
 
         while (isPlaying) {
             textForGame.inputText();
             List<Integer> offenceNumber = user.inputGameNumber();
-            strikeAndBall.setOffenceNumber(offenceNumber);
+            referee.setOffenceNumber(offenceNumber);
 
-            result = strikeAndBall.getBallAndStrikeCount();
+            result = referee.getBallAndStrikeCount();
 
             textForGame.printResult(result.get(BALL_INDEX), result.get(STRIKE_INDEX));
 
