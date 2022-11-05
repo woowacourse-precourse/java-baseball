@@ -20,6 +20,12 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void printNothingMessage_메소드로_낫싱_출력() {
+		printNothingMessage();
+		System.out.print("이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
+		assertThat(output()).isEqualTo("낫싱\n이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
+	}
+	@Test
 	void printAskInputMessage_메소드로_숫자_입력_안내_출력() {
 		printAskInputMessage();
 		System.out.print("이 문장은 숫자 입력 안내 문장과 같은 줄에 출력되어야 합니다.");
