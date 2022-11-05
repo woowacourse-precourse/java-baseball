@@ -25,8 +25,9 @@
 
 ## checkStrikeNumbers
 - [ ] 같은 자리와 같은 수인 숫자들의 개수를 저장하는 checkedStrikeNumbers를 0으로 선언한다.
-- [ ] 매개변수들의 길이 만큼 반복하여, Strike인지 확인.
-- [ ] 값이 같으면, checkedStrikeNumbers에 1을 더함.
+- [ ] 매개변수들의 길이 만큼 반복하여, Strike인지 확인
+- [ ] 값이 같으면, checkedStrikeNumbers에 1을 더함
+- [ ] checkedStrikeNumbers을 리턴
 
 ## checkedBallNumbers
 - [ ] 하나의 매개변수 안에 다른 매개변수의 요소가 포함되는 갯수를 checkedBallNumbers를 0으로 선언한다.
