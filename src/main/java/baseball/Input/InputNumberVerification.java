@@ -2,10 +2,11 @@ package baseball.Input;
 
 import baseball.tool.BeforeVerificationSetting;
 
-public class InputNumberVerification {
-    BeforeVerificationSetting beforeVerificationSetting = new BeforeVerificationSetting();
+import static baseball.tool.BeforeVerificationSetting.*;
 
-    public boolean verifyNumber (int receivedNumber){
+public class InputNumberVerification {
+
+    public static boolean verifyNumber (int receivedNumber){
 
         if(!verifyNumberOverlap(receivedNumber)){
             throw new IllegalArgumentException("각자 다른 숫자를 입력해주세요");
@@ -16,31 +17,35 @@ public class InputNumberVerification {
         }
 
         if(!verifyNumberThreeDigit(receivedNumber)){
-            throw new IllegalArgumentException("숫자만 입력해 주세요");
+            throw new IllegalArgumentException("3개의 숫자만 입력해주세요");
         }
 
         return true;
     }
 
-    private boolean verifyNumberOverlap(int receivedNumber){
-        return beforeVerificationSetting.makeNumberSplitList(receivedNumber).size()
-                == beforeVerificationSetting.makeNumberSplitSet(receivedNumber).size();
+    private static boolean verifyNumberOverlap(int receivedNumber){
+        return makeNumberSplitList(receivedNumber).size()
+                == makeNumberSplitSet(receivedNumber).size();
     }
 
-    private boolean verifyNumberOneToNine(int receivedNumber){
-        for(int oneNumber : beforeVerificationSetting.makeNumberSplitList(receivedNumber)){
+    private static boolean verifyNumberOneToNine(int receivedNumber){
+        int cnt = 0;
+        for(int oneNumber : makeNumberSplitList(receivedNumber)){
             if(1 <= oneNumber  && oneNumber <=9){
-                return true;
+                cnt += 1;
             }
         }
-        return false;
+        if(cnt !=3){
+            return false;
+        }
+        return true;
     }
 
-    private boolean verifyNumberThreeDigit(int receivedNumber){
-        return beforeVerificationSetting.makeNumberSplitList(receivedNumber).size() == 3;
+    private static boolean verifyNumberThreeDigit(int receivedNumber){
+        return makeNumberSplitList(receivedNumber).size() == 3;
     }
 
-    public boolean verifyOneOrTwoButton(int receivedButtonNumber){
+    public static boolean verifyOneOrTwoButton(int receivedButtonNumber){
         if(receivedButtonNumber == 1 || receivedButtonNumber ==2){
             return false;
         }
