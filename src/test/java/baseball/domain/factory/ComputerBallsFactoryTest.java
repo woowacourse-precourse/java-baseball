@@ -15,7 +15,8 @@ class ComputerBallsFactoryTest {
     @Test
     @DisplayName("Computer Balls 생성")
     void create_computer_balls() {
-        final BallsCreateStrategy ballsCreateStrategy = () -> List.of(new Ball(0, 4), new Ball(1, 5), new Ball(2, 2));
+        final BallsCreateStrategy ballsCreateStrategy =
+                () -> List.of(new Ball(0, 4), new Ball(1, 5), new Ball(2, 2));
         Balls balls = ComputerBallsFactory.createComputerBalls(ballsCreateStrategy);
         
         final List<BallStatus> expectedPitchResults = List.of(BallStatus.STRIKE, BallStatus.NOTHING, BallStatus.BALL);
