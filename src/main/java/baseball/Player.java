@@ -17,6 +17,7 @@ public class Player {
             playerNumber.add(Character.getNumericValue(c));
         }
     }
+    
     public List<Integer> getNumber() {
         return playerNumber;
     }

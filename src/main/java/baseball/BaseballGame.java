@@ -8,7 +8,7 @@ public class BaseballGame {
     public BaseballGame() {
         player = new Player();
         rule = new Rule();
-        System.out.print(Message.START.get());
+        System.out.println(Message.START.get());
     }
     public void start() {
         rule.generateAnswer();
@@ -16,9 +16,9 @@ public class BaseballGame {
         do {
             System.out.print(Message.INPUT.get());
             player.setNumber();
-            System.out.print(makeHint());
+            System.out.println(makeHint());
         } while (continueGame);
-        System.out.print(Message.END.get());
+        System.out.println(Message.END.get());
     }
 
     private String makeHint() {

@@ -65,7 +65,6 @@ public class Rule {
         if (hint.isEmpty()) {
             hint.add("낫싱");
         }
-        hint.add("\n");
     }
 
     private boolean isStrike(List<Integer> inputs, int index) {
