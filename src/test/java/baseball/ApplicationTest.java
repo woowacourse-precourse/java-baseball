@@ -180,4 +180,19 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(validRestartOrEndInput).isEqualTo(2);
     }
+
+    @Test
+    void countBall() {
+        //given
+        BaseBallGame baseBallGame = new BaseBallGame();
+        List<Integer> userInputArr = List.of(1, 2, 3);
+        List<Integer> computerRandomNumbers = List.of(4, 5, 6);
+
+        //when
+        int countBall = baseBallGame.countBall(userInputArr, computerRandomNumbers);
+
+        //then
+        assertThat(countBall).isEqualTo(0);
+
+    }
 }
