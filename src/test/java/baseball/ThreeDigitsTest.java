@@ -26,4 +26,22 @@ public class ThreeDigitsTest {
 
         assertThatNoException().isThrownBy(() -> new ThreeDigits(threeDigits));
     }
+
+    @Test
+    @DisplayName("숫자와 그 위치가 같은 개수를 센다")
+    void count_digit_and_position_matches() {
+        ThreeDigits digits = new ThreeDigits(List.of(4, 2, 5));
+        ThreeDigits otherDigits = new ThreeDigits(List.of(4, 5, 6));
+
+        assertThat(digits.countPositionMatches(otherDigits)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("숫자만 같고 위치는 다른 숫자의 개수를 센다")
+    void count_digit_only_matches() {
+        ThreeDigits digits = new ThreeDigits(List.of(4, 2, 5));
+        ThreeDigits otherDigits = new ThreeDigits(List.of(4, 5, 6));
+
+        assertThat(digits.countDigitMatches(otherDigits)).isEqualTo(1);
+    }
 }
