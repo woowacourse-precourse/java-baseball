@@ -1,19 +1,25 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.Player;
 import baseball.service.GameService;
 import baseball.service.GameStatusService;
 import baseball.view.GameStatusView;
+import baseball.view.PlayerView;
 import baseball.view.ScoreResultView;
 
 public class GameController {
-    private Player player;
-    private Computer computer;
-    private GameService gameService;
-    private GameStatusService gameStatusService;
-    private GameStatusView gameStatusView;
-    private ScoreResultView scoreResultView;
+    GameService gameService;
+    GameStatusService gameStatusService;
+    PlayerView playerView;
+    ScoreResultView scoreResultView;
+    GameStatusView gameStatusView;
+
+    public GameController(){
+        gameService = new GameService();
+        gameStatusService = new GameStatusService();
+        playerView = new PlayerView();
+        scoreResultView = new ScoreResultView();
+        gameStatusView = new GameStatusView();
+    }
 
     private void initializeGame(){
 
