@@ -21,13 +21,13 @@ public class NumberCalculator {
         }
     }
 
-    public void isNumber(int index, int userNumber) {
+    private void isNumber(int index, int userNumber) {
         if (computerNumber.contains(userNumber)) {
             isSamePlace(index, userNumber);
         }
     }
 
-    public void isSamePlace(int index, int userNumber) {
+    private void isSamePlace(int index, int userNumber) {
         if (computerNumber.get(index) == userNumber) {
             strike++;
         } else {
