@@ -15,12 +15,16 @@ public class GameSystem {
     private int ballCount;
 
     public GameSystem() {
-        gameAnswer = new GameAnswer();
-        myAnswer = new MyAnswer();
-        userInterface = new UserInterface();
-        System.out.println(gameAnswer.getNumber());
+        int gameLoop;
+        while(true) {
+            gameAnswer = new GameAnswer();
+            myAnswer = new MyAnswer();
+            userInterface = new UserInterface();
 
-        gameProcess();
+            gameProcess();
+            gameLoop = userInterface.checkGameRestart();
+            if(gameLoop == 2) break;
+        }
     }
     public void gameProcess() {
         boolean correctAnswer;
