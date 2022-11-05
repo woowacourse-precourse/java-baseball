@@ -14,8 +14,8 @@ public class BullsAndCows {
 
     private String userInput;
 
-    private int STRIKE_COUNT = 0;
-    private int BALL_COUNT = 0;
+    private int strikeCount = 0;
+    private int ballCount = 0;
     private static final int STRIKE_COUNT_FOR_END = 3;
 
 
@@ -47,14 +47,14 @@ public class BullsAndCows {
     }
 
     private String getStrikeNumber() {
-        STRIKE_COUNT = 0;
+        strikeCount = 0;
 
         for (int index = 0; index < userInput.length(); index++) {
             if (isStrike(index)) {
-                STRIKE_COUNT++;
+                strikeCount++;
             }
         }
-        return STRIKE.of(STRIKE_COUNT);
+        return STRIKE.of(strikeCount);
     }
 
     private boolean isStrike(int index) {
@@ -62,14 +62,14 @@ public class BullsAndCows {
     }
 
     private String getBallNumber() {
-        BALL_COUNT = 0;
+        ballCount = 0;
 
         for (int index = 0; index < userInput.length(); index++) {
             if (isBall(index)) {
-                BALL_COUNT++;
+                ballCount++;
             }
         }
-        return BALL.of(BALL_COUNT - STRIKE_COUNT);
+        return BALL.of(ballCount - strikeCount);
     }
 
     private boolean isBall(int index) {
@@ -82,6 +82,6 @@ public class BullsAndCows {
     }
 
     public boolean isEnd() {
-        return STRIKE_COUNT == STRIKE_COUNT_FOR_END;
+        return strikeCount == STRIKE_COUNT_FOR_END;
     }
 }
