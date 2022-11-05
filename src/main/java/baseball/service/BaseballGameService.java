@@ -25,6 +25,31 @@ public class BaseballGameService {
 
         GameGuidePrinter.startGameMessage();
     }
+    private void calculateUserScore(List<Integer> userNumbers, List<Integer> gameNumbers) {
+        for (int i = 0; i < size; i++) {
+            calculate(userNumbers, gameNumbers.get(i), i);
+        }
+    }
+
+    private void calculate(List<Integer> userNumbers, int gameNumber, int gameIndex) {
+        int userIndex = -1;
+        for (int i = 0; i < size; i++) {
+            if (userNumbers.get(i).equals(gameNumber)) {
+                userIndex = i;
+                break;
+            }
+        }
+        increaseGameCount(userIndex, gameIndex);
+    }
+
+    private void increaseGameCount(int userIndex, int gameIndex) {
+        if (userIndex == gameIndex) {
+            computer.increaseStrikeCount();
+        }
+        if (userIndex != gameIndex) {
+            computer.increaseBallCount();
+        }
+    }
 
     private List<Integer> getUserNumbers() {
         GameGuidePrinter.requestNumberMessage();
