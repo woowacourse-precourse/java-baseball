@@ -48,20 +48,19 @@ public class Computer {
     }
 
     private boolean isNumOfComputerIndividually() {
-        String strComputerList = "";
-        strComputerList = getStrFromList(strComputerList);
-       
+        String strComputerList = getStrFromList();
         if (UseFunc.isNumOfIndividually(strComputerList)) {
             return true;
         }
         return false;
     }
 
-    private String getStrFromList(String strComputerList) {
+    private String getStrFromList() {
+        String strOfList = "";
         for (Integer numComputerList : numThreeRanOfComputerList) {
-            strComputerList = strComputerList + numComputerList;
+            strOfList = strOfList + numComputerList;
         }
-        return strComputerList;
+        return strOfList;
     }
 
     public void initCntStrikeBall() {
