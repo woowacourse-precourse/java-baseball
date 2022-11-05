@@ -40,4 +40,12 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
+
+    // 유저의 입력값이 중복되는 숫자가 있을경우 예외처리
+    private void validateDuplication(List<Integer> userNumber) {
+        HashSet<Integer> set = new HashSet<>(userNumber);
+        if (set.size() != USER_NUMBER_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
