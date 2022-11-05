@@ -404,7 +404,7 @@ class ApplicationTest extends NsTest {
         @DisplayName("String 을 Restart 로 변환하는 요청을 하면 StringToRestartConverter 가 동작한다.")
         void givenStringToRestart_whenRunningConverterHolder_thenRunsStringToRestartConverter() {
             // given
-            String target = StringToRestartConverter.EXIT_VALUE;
+            String target = Restart.EXIT.getValue();
             Class<Restart> to = Restart.class;
 
             // supports 통과 여부
