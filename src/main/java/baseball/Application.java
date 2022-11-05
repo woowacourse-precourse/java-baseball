@@ -11,6 +11,7 @@ class Game{
     String userInput;
     private List<Integer> userNum = new ArrayList<>();
     List<Integer> copyUserNum = new ArrayList<>();
+    private int strike;
 
     public Game(){
         while (computerNum.size() < 3) {
@@ -60,6 +61,14 @@ class Game{
         System.out.println("낫싱");
     }
 
+    void compareNums(){
+        for (Integer integer : copyUserNum) {
+            int indexComputer = computerNum.indexOf(integer);
+            int indexUser = userNum.indexOf(integer);
+            if (indexComputer == indexUser)
+                this.strike++;
+        }
+    }
 }
 
 public class Application {
