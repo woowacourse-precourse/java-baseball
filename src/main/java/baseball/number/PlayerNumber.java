@@ -2,6 +2,7 @@ package baseball.number;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -21,15 +22,26 @@ public class PlayerNumber implements Number {
 
     public void chkValidation(String number) throws IllegalArgumentException{
         isNumber(number);
+        isDuplicate(number);
     }
 
-    private void isNumber(String number) throws IllegalArgumentException{
+    private int isNumber(String number) throws IllegalArgumentException{
         String regExp = "\\d{3}";
 
         if (Pattern.matches(regExp, number)) {
             System.out.println("pass");
-        } else{
-            throw new IllegalArgumentException();
+            return 0;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    private void isDuplicate(String number) throws IllegalArgumentException {
+        List<String> numberArr = new ArrayList<>(Arrays.asList(number.split("")));
+
+        for (String num : numberArr) {
+            if (Collections.frequency(numberArr, num) != 1) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 

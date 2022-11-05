@@ -35,7 +35,7 @@ class BaseballGameTest {
 
     @ParameterizedTest
     @DisplayName("입력이 숫자가 아니거나 3자리가 아닌지 확인하기")
-    @ValueSource(strings = {"1234", " ", "가나다","123"})
+    @ValueSource(strings = {"1234", " ", "가나다", "121"})
     void chkValidNumber(String input) {
         InputStream in = getPlayerInput(input);
         System.setIn(in);
