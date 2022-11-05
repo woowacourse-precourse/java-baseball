@@ -1,9 +1,9 @@
 package baseball;
 
-public class Member {
+public class Computer {
     private final int number;
 
-    public Member(int number){
+    public Computer(int number){
 
         this.number = number;
     }
