@@ -64,7 +64,7 @@ public class Baseball {
 
     private boolean isStateShutDown() {
         String stateNumber = getStateNumber();
-        return Config.STATE_SHUTDOWN.equals(stateNumber);
+        return State.SHUTDOWN.getNumber().equals(stateNumber);
     }
 
     private String getStateNumber() {

@@ -148,6 +148,12 @@ public class Player {
     }
 
     private boolean isValidNumber(String stateNumber) {
-        return Config.STATE_RESTART.equals(stateNumber) || Config.STATE_SHUTDOWN.equals(stateNumber);
+        for (State state : State.values()) {
+            if(state.getNumber().equals(stateNumber)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
