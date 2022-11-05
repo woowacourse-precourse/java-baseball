@@ -13,7 +13,7 @@ public class Application {
         return;
     }
 
-    private static int generateOpponentNumber() {
+    public static int generateOpponentNumber() {
         List<Integer> numList = new ArrayList<>();
 
         while (numList.size() != 3) {
