@@ -27,7 +27,8 @@ public class GameService {
     }
 
     public void initializeScore(){
-
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     public void checkComputerWithPlayerNumber(){
