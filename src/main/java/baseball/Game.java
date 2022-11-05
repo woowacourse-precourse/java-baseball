@@ -27,7 +27,6 @@ public class Game {
         System.out.println(START_SENTENCE);
 
         while (true) {
-            System.out.println(computerNumber);
             System.out.print(INPUT_SENTENCE);
 
             this.score = new Score();
@@ -48,6 +47,7 @@ public class Game {
             if (!restart()) {
                 break;
             }
+            this.computerNumber = Generate.randomNumber();
         }
     }
 
