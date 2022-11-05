@@ -118,14 +118,10 @@ public class Application {
 
     public static boolean checkUserNumberIsDuplicate(String numberString) {
 
-        if ((int) numberString.charAt(0) == (int) numberString.charAt(1)
+        return (int) numberString.charAt(0) == (int) numberString.charAt(1)
                 || (int) numberString.charAt(1) == (int) numberString.charAt(2)
-                || (int) numberString.charAt(0) == (int) numberString.charAt(2)) {
+                || (int) numberString.charAt(0) == (int) numberString.charAt(2);
 
-            return false;
-        }
-
-        return true;
     }
 
     public static void addNumber(int[] userNumbers, String numberString) {
