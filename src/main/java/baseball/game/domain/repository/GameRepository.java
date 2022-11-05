@@ -21,4 +21,7 @@ public class GameRepository {
     public Game getGame(){
         return game;
     }
+    public void initCount(){
+        game.initCount();
+    }
 }
