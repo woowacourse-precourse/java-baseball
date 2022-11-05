@@ -34,8 +34,18 @@ public class Application {
         int strikeNum = countStrikeNum(targetNum, userNum);
         int ballNum = countBallNum(targetNum, userNum);
 
+        if(ballNum != 0){
+            System.out.print(ballNum +"볼 ");
+        }
+        if(strikeNum != 0){
+            System.out.println(strikeNum+"스트라이크");
+        } else{
+            System.out.println();
+        }
 
-
+        if(!checkNothing(strikeNum, ballNum)){
+            System.out.println("낫싱");
+        }
 
     }
 
@@ -122,6 +132,10 @@ public class Application {
         }
 
         return ballNum;
+    }
+
+    static boolean checkNothing(int strikeNum, int ballNum) {
+        return ballNum != 0 || strikeNum != 0;
     }
 
 }
