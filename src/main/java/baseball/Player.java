@@ -20,8 +20,7 @@ public class Player {
      */
     private static void isNumberCountException(List<Integer> playerNumbers) throws IllegalArgumentException {
         if (playerNumbers.size() != INPUT_NUMBER_SIZE) {
-            System.out.println("입력한 숫자의 개수가 " + INPUT_NUMBER_SIZE + "개가 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 숫자의 개수가 " + INPUT_NUMBER_SIZE + "개가 아닙니다.");
         }
     }
 
@@ -35,8 +34,7 @@ public class Player {
         boolean[] checkNumbers = new boolean[10];
         for (Integer playerNumber : playerNumbers) {
             if (checkNumbers[playerNumber]) {
-                System.out.println("입력한 숫자 중에 중복된 숫자가 있습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("입력한 숫자 중에 중복된 숫자가 있습니다.");
             }
             checkNumbers[playerNumber] = true;
         }
