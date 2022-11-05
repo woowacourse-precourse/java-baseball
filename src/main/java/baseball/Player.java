@@ -151,8 +151,4 @@ public class Player {
         return Config.STATE_RESTART.equals(stateNumber) || Config.STATE_SHUTDOWN.equals(stateNumber);
     }
 
-    public boolean isRestart(String stateNumber) {
-        return Config.STATE_RESTART.equals(stateNumber);
-    }
-
 }

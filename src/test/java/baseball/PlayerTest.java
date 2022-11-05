@@ -97,10 +97,4 @@ public class PlayerTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
     }
-
-    @Test
-    void 재시작_여부_테스트() {
-        assertTrue(player.isRestart(Config.STATE_RESTART));
-        assertFalse(player.isRestart(Config.STATE_SHUTDOWN));
-    }
 }
