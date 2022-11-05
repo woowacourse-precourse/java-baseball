@@ -16,8 +16,8 @@
     * 이름 : `inputNum` 
     * 타입 : **String**
   * **Return**
-    * 타입 : **Boolean** 
-    * 입력값에 문제가 없다면 `true`, 아니라면 예외를 발생시킵니다.
+    * 타입 : **void** 
+    * 입력값에 문제가 없다면 예외가 발생하며, 아니라면 단순 처리 후, 종료니다.
   * **설명** <br/>
     게임 플레이어가 입력한 값이 잘못된 입력값이 아닌지 확인하는 메서드 입니다.<br/>
     `IllegalArgumentException`을 발생시킵니다.
@@ -109,10 +109,13 @@
     * **Return**
         * 타입 : **List\<String>**
         * Parameter 2(`userNumList`)의 값들 중<br/>
-          Parameter 1(`computerNumList`)에 속한 값들을 추출하여 반환합니다.
+          Parameter 1(`computerNumList`)에 속하지 않은 값들을 null로 하여 반환합니다.
 
     * **설명**<br/>
-      `calculateStrikeAndBall()`에 사용될 최소한 ball인 값들을 찾습니다.
+      `calculateStrikeAndBall()`에 사용될 최소한 ball인 값들을 찾습니다.<br/>
+      만약 속하지도 않은 값을 단순히 빼버리게 되면 향후 strike계산에 있어 자리 비교가 불가능하기 때문에<br/>
+      반복문을 통해 속하지 않은 값을 발견한 경우, null로 대체하였다.<br/>
+      
 
 <br/>
 
