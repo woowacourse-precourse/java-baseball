@@ -31,4 +31,8 @@ public class Numbers {
         }
         return numbers.get(i);
     }
+
+    public int indexOf(int i) {
+        return numbers.indexOf(i);
+    }
 }
