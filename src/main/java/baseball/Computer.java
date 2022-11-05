@@ -1,9 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Computer {
     private final List<Integer> randomNumbers = new ArrayList<>(Collections.emptyList());
@@ -11,6 +12,7 @@ public class Computer {
     public Computer() {
         inputRandomNumbers();
     }
+
     /**
      * 리스트에 숫자를 추가한다.
      *
@@ -24,8 +26,9 @@ public class Computer {
 
     /**
      * 숫자를 추가할수 있는가
-     * @param number    숫자
-     * @return  숫자를 추가할수 있으면 ture
+     *
+     * @param number 숫자
+     * @return 숫자를 추가할수 있으면 ture
      */
     private boolean canInputNumber(int number) {
         return !isZeroNumber(number) && !hasNumberByList(number);
@@ -37,12 +40,12 @@ public class Computer {
      * @return 랜덤 숫자
      */
     private int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     /**
      * 랜덤 숫자들을 가져온다.
+     *
      * @return 랜덤 숫자들
      */
     public List<Integer> getRandomNumbers() {
@@ -70,6 +73,7 @@ public class Computer {
 
     /**
      * 숫자가 0인지 판별
+     *
      * @param number 숫자
      * @return 숫자가 0이면 ture
      */
