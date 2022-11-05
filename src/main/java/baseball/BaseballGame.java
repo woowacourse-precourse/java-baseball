@@ -17,14 +17,14 @@ public class BaseballGame {
     private static final String GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private int restartNumber;
 
-    public List<Integer> input() {   // 입력
+    public List<Integer> input() {
         System.out.print(INPUT_NUMBER);
         String inputNumber = Console.readLine();
 
         return stringToIntegerList(inputNumber);
     }
 
-    public List<Integer> stringToIntegerList(String inputNumber) {  // 입력 값을 List<Integer>로
+    public List<Integer> stringToIntegerList(String inputNumber) {
         List<Integer> number = new ArrayList<>();
 
         for (int digit = 0; digit < inputNumber.length(); digit++) {
@@ -38,7 +38,6 @@ public class BaseballGame {
 
         Computer computer = new Computer();
         List<Integer> computerNumber = computer.makeRandomNumber();
-        System.out.println(computerNumber);
 
         while(restartNumber == 0) {
             Number number = new Number(input());
@@ -75,7 +74,7 @@ public class BaseballGame {
         System.out.print("\n");
     }
 
-    public int judgeStrike(Number number, List<Integer> computerNumber,  int strike) {   // 스트라이크 판정
+    public int judgeStrike(Number number, List<Integer> computerNumber,  int strike) {
         for (int digit = 0; digit < 3; digit++) {
             if (computerNumber.get(digit).equals(number.getDigit(digit))) {
                 strike++;
@@ -84,7 +83,7 @@ public class BaseballGame {
         return strike;
     }
 
-    public int judgeBall(Number number, List<Integer> computerNumber, int ball) { // 볼 판정
+    public int judgeBall(Number number, List<Integer> computerNumber, int ball) {
         for (int digit = 0; digit < 3; digit++) {
             if (computerNumber.contains(number.getDigit(digit)) && !(computerNumber.get(digit).equals(number.getDigit(digit)))) {
                 ball++;
