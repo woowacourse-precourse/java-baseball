@@ -12,6 +12,7 @@ public class Application {
     private static void numberBaseballGame(){
         PrepareGame prepareGame = new PrepareGame();
         List<Integer> computerNumber = prepareGame.setComputerNumber();
-        String userNumber = prepareGame.setUserNumber();
+        String stringUserNumber = prepareGame.setUserNumber();
+        List<Integer> userNumber = prepareGame.userNumberToList(stringUserNumber);
     }
 }

@@ -37,4 +37,12 @@ public class PrepareGame {
     private Boolean isThreeDigitNumber(String number){
         return number.length() == 3;
     }
+
+    public List<Integer> userNumberToList(String userNumber){
+        List<Integer> userNumberList = new ArrayList<>();
+        for(int index = 0; index < userNumber.length(); index++){
+            userNumberList.add(userNumber.charAt(index) - '0');
+        }
+        return userNumberList;
+    }
 }
