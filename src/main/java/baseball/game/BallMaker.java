@@ -28,7 +28,8 @@ public class BallMaker {
 
     public List<Integer> getRandomBall() {
         if (!allowDuplicate) {
-            return getUniqueRandomBall();
+            List<Integer> result = getUniqueRandomBall();
+            return result;
         }
         return new ArrayList<>();
     }
@@ -43,11 +44,15 @@ public class BallMaker {
     }
 
     private List<Integer> getUniqueRandomBall() {
-        Set<Integer> result = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
         while (result.size() != ballSize) {
-            result.add(Randoms.pickNumberInRange(minimum, maximum));
+            int randomNumber = Randoms.pickNumberInRange(minimum, maximum);
+            if(result.contains(randomNumber)){
+                continue;
+            }
+            result.add(randomNumber);
         }
-        return Randoms.shuffle(new ArrayList<>(result));
+        return result;
     }
 
     private void printInformation() {
