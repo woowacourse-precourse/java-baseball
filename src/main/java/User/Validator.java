@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Validator {
 	public static void validateNumberInput(String numberInput) {
 		existDuplicateNumber(numberInput);
-		existInvalidLetter(numberInput);
+		existInvalidDigits(numberInput);
 		haveInvalidLength(numberInput);
 	}
 
@@ -23,9 +23,9 @@ public class Validator {
 		}
 	}
 
-	private static void existInvalidLetter(String numberInput) throws IllegalArgumentException {
+	private static void existInvalidDigits(String numberInput) throws IllegalArgumentException {
 		if (Arrays.stream(numberInput.split(""))
-			.anyMatch(letter -> !VALID_NUMBERS.contains(Integer.parseInt(letter)))) {
+			.anyMatch(digit -> !VALID_DIGITS.contains(Integer.parseInt(digit)))) {
 			throw new IllegalArgumentException();
 		}
 	}
