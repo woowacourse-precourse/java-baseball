@@ -1,7 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +22,17 @@ public class Application {
     }
 
     // 2. 사용자(User)의 컴퓨터를 설정한다.
-    private static List<Integer> getNumberOfUser(List<Integer> user) {
-        System.out.print("숫자를 입력해주세요 : ");
-        String numOfUserString = Console.readLine();
+    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) {
 
         // 2-1 : 사용자의 입력값을 검증한다.
         try {
-            isValidStringInputOfUser(numOfUserString);
+            isValidStringInputOfUser(numberOfUserString);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
 
         // 2-2 : 사용자의 입력값을 List로 바꾼다.
-        user = stringToList(numOfUserString);
+        user = stringToList(numberOfUserString);
         return user;
     }
 
@@ -80,10 +79,10 @@ public class Application {
     // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
     private static boolean isNeedReEnter() {
         // 1. 3S가 나오지 못하는 경우 true를 반환한다.
-//        return true;
+        return true;
 
         // 2. 3S가 나온 경우에는 false를 반환한다.
-        return false;
+//        return false;
     }
 
     // 3-2-1 : strike count하기
@@ -144,11 +143,29 @@ public class Application {
         // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
         while (isNeedReEnter()) {
             user.clear();
-            user = getNumberOfUser(user);
+//            user.removeAll(user);
+
+            System.out.print("숫자를 입력해주세요 : ");
+            String numberOfUserString = getNumberOfUserString();
+            user = getNumberOfUser(user, numberOfUserString);
 
             String ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
+            System.out.println("ballCount = " + ballCount);
         }
     }
 
-
+    private static String getNumberOfUserString() {
+        /*
+         * WARNING이 나는 이유가 Reflection API 때문인 것 같다.
+         * Console.java 클래스를 들어가보니,
+         * final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
+         * 여기에서 오류가 난 것 같다.
+         *
+         * 하지만 Exception이 발생했다면 "unable to determine if the scanner is closed."를 출력했어야 했을 것이다.
+         * 그렇지 않았으므로, 다른 문제가 발생한 것으로 볼 수 있다.
+         * 이 이상의 것은 구현하고 나서 다시 수정하는 것이 더 빠른 길이라고 생각이 든다. 일단 구현부터...
+         */
+        String numOfUserString = readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
+        return numOfUserString;
+    }
 }
