@@ -10,7 +10,7 @@ public class Game {
 
     List<Integer> computer;
 
-    Game() {
+    public Game() {
         computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
