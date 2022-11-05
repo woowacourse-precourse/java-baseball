@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomsAPITest {
 
     @Test
-    void 숫자_3개_뽑기(){
+    void 숫자_3개_뽑기() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,7 +22,7 @@ public class RandomsAPITest {
     }
 
     @Test
-    void 다른_숫자_3개_뽑기(){
+    void 다른_숫자_3개_뽑기() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
