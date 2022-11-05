@@ -21,4 +21,9 @@ public class User {
             result = false;
         }
     }
+
+    public boolean one_more_time(int num){
+        if(num==2) oneMore = false;
+        return oneMore;
+    }
 }
