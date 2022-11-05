@@ -55,3 +55,7 @@
 - [ ] ballNumber이 0보다 크고, strikeNumber이 0보다 큰지 비교
 - [ ] true이면 "ballNumber + 볼 strikeNumber + 스트라이크"을 출력
 - [ ] false을 리턴
+
+## printToRestartingGameMessage
+- [ ] "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
+- [ ] "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요." 출력
