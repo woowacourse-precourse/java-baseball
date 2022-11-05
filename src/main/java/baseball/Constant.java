@@ -12,4 +12,5 @@ public class Constant {
     public static String OPTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static String NEW_GAME = "1";
     public static String QUIT = "2";
+    public static String NO_ZERO = "정답에 0은 포함될 수 없습니다! 참고해 주세요";
 }

@@ -21,6 +21,9 @@ public class Application {
 
             hint = finalHint(realAnswer, userAnswer);
             printHint(hint);
+
+            if (input.contains("0"))
+                printNoZero();
         }
 
         printCorrect();

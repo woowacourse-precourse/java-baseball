@@ -22,4 +22,8 @@ public class GameSituation {
     public static void printCorrect() {
         System.out.print(CORRECT);
     }
+
+    public static void printNoZero() {
+        System.out.println(NO_ZERO);
+    }
 }
