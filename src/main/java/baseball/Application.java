@@ -88,7 +88,13 @@ public class Application {
         game.setUserInput();
 
         while(!game.getGameNums().equals(game.getUserNum())) {
-
+            if(game.isNothing()) {
+                game.printNothing();
+            }else{
+                game.compareNums();
+                game.printBallStrike();
+            }
+            game.setUserInput();
         }
     }
 
