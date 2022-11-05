@@ -55,24 +55,51 @@ public class Application {
         return res;
     }
 
+    public static boolean result(List<Integer> compareRes){
+        boolean res = false;
+        if(compareRes.get(0) == 0 && compareRes.get(1) == 0){
+            System.out.print("낫싱");
+        }
+        if(compareRes.get(0) > 0){
+            System.out.print(compareRes.get(0) + "볼");
+        }
+        if(compareRes.get(1) > 0){
+            if(compareRes.get(0) > 0){
+                System.out.print(" ");
+            }
+            System.out.print(compareRes.get(1) + "스트라이크");
+        }
+        System.out.print("\n");
+        if (compareRes.get(1) == 3) {
+            res = true;
+        }
+        return res;
+    }
+
     public static void game(){
         List<Integer> compared;
         List<Integer> computer = generateRandNum();
-        while(true){
+
+        boolean gameState = false;
+        while(!gameState){
+            System.out.print("숫자를 입력해 주세요 : ");
             String input = Console.readLine();
             List<Integer> user = parseString(input);
             checkAllow(user);
             compared = compareNums(user, computer);
 
+            gameState = result(compared);
         }
+        System.out.print("3개의 숫자를 모두 맞히셨습니다!");
     }
 
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         while(true){
+            System.out.println("숫자 야구 게임을 시작합니다.");
             game();
+            System.out.println("게임 종료");
         }
 
 
