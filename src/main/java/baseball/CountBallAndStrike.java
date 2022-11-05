@@ -23,7 +23,7 @@ public class CountBallAndStrike {
         int count = 0;
         for (int unitNum = 0; unitNum < baseballNumber.size(); unitNum++) {
             if (!(baseballNumber.get(unitNum).equals(number.charAt(unitNum)))
-                    && baseballNumber.contains(unitNum)) {
+                    && baseballNumber.contains(number.charAt(unitNum))) {
                 count++;
             }
         }
