@@ -18,7 +18,7 @@ public class UserInput {
     }
 
     public List<Integer> inputNumber(){
-        System.out.println(MESSAGE_INPUT);
+        System.out.print(MESSAGE_INPUT);
         String inputNumbers = Console.readLine();
         userInputValidator.validateNumber(inputNumbers);
         return stringToList(inputNumbers);
