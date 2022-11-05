@@ -34,6 +34,10 @@ public class GameController {
 
     public boolean askRestart() {
         System.out.println("현게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return readLine().equals("1");
+
+        String input = readLine();
+        inputExceptionController.checkRestartInputException(input);
+
+        return input.equals("1");
     }
 }
