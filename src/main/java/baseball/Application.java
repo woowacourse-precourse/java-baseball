@@ -19,7 +19,7 @@ public class Application {
                 while (!answer) {
                     sendMassage(GameMassage.INPUT_NUMBER);
                     List<Integer> user = getUserInput();
-                    answer = calculationNumber(computer, user);
+                    answer = calculationDigits(computer, user);
                 }
 
                 restartOrEnd = getRestartOrEndGame();
@@ -31,8 +31,8 @@ public class Application {
 
     private static GameStatus getRestartOrEndGame(){
         sendMassage(GameMassage.ANSWER);
+        sendMassage(GameMassage.RESTART_OR_END);
         if (isRestart(Console.readLine())) {
-            sendMassage(GameMassage.RESTART_OR_END);
             return GameStatus.START;
         }
         return GameStatus.END;
@@ -42,74 +42,66 @@ public class Application {
         System.out.print(massage.getMassage());
     }
 
-    private static void sendMassage(GameMassage massage, int ball, int strike){
-        System.out.print(String.format(massage.getMassage(), ball, strike));
-    }
+    private static boolean calculationDigits(List<Integer> computer, List<Integer> user) {
+        StrikeAndBall strikeAndBall = new StrikeAndBall();
+        strikeAndBall.compareDigits(computer, user);
+        GameMassage gameMassage = strikeAndBall.getResult();
 
-    private static boolean calculationNumber(List<Integer> computer, List<Integer> user) {
-        int strike = 0;
-        int ball = 0;
+        sendMassage(gameMassage);
 
-        for (int i = 0; i < user.size(); i++) {
-            if ((int)user.get(i) == (int)computer.get(i)) {
-                strike++;
-            } else {
-                if (computer.contains(user.get(i))) {
-                    ball++;
-                }
-            }
-        }
-
-        return calculationResult(strike, ball);
-    }
-
-    private static boolean calculationResult(int strike, int ball){
-        if (strike == 0 && ball == 0) {
-            sendMassage(GameMassage.NOTHING);
-        } else {
-            if (strike == 3) {
-                sendMassage(GameMassage.THREE_STRIKE);
-                return true;
-            }
-            sendMassage(GameMassage.NOT_ANSWER, ball, strike);
-        }
-        return false;
+        return gameMassage == GameMassage.ALL_STRIKE;
     }
 
     private static boolean isRestart(String str) {
         String regex = "[1]{1,1}";
-        if(str.length()==1) return str.matches(regex);
+        if(str.length()==1){
+            return str.matches(regex);
+        }
         return false;
     }
 
-    private static List<Integer> getUserInput() {
+    private static void checkDuplicatedDigits(List<Integer> values, boolean[] visited, int digit){
+        if(!visited[digit]){
+            values.add(digit);
+            visited[digit] = true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static List<Integer> inputToDigits(String input) throws IllegalArgumentException{
         boolean[] visited = new boolean[10];
         List<Integer> values = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            int digit = input.charAt(i) - '0';
+            checkDuplicatedDigits(values, visited, digit);
+        }
+        return values;
+    }
+
+    private static List<Integer> getUserInput() throws IllegalArgumentException {
         String input = Console.readLine();
         String isDigitRegex = "[1-9]{3,3}";
 
         if (input.matches(isDigitRegex)) {
-            for (int i = 0; i < input.length(); i++) {
-                int num =input.charAt(i) - '0';
-                if(!visited[num]){
-                    values.add(num);
-                    visited[num] = true;
-                } else{
-                    throw new IllegalArgumentException();
-                }
-            }
-            return values;
+            return inputToDigits(input);
         }
         throw new IllegalArgumentException();
     }
 
+    private static void addNumber(List<Integer> digits, int number){
+        if (!digits.contains(number)) {
+            digits.add(number);
+        }
+    }
+
     private static List<Integer> randomThreeDigit() {
         List<Integer> digits = new ArrayList<>();
-        while (digits.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!digits.contains(randomNumber)) {
-                digits.add(randomNumber);
-            }
+        while (digits.size() < Digits.RANGE.getDigit()) {
+            int randomNumber = Randoms.pickNumberInRange(Digits.FIRST.getDigit(),
+                    Digits.LAST.getDigit());
+            addNumber(digits, randomNumber);
         }
         return digits;
     }
