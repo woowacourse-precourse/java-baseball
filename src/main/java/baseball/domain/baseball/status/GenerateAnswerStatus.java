@@ -1,11 +1,11 @@
 package baseball.domain.baseball.status;
 
-import baseball.domain.baseball.BaseballGame;
+import baseball.domain.baseball.BaseballContext;
 
 public class GenerateAnswerStatus implements BaseballGameStatus {
     @Override
-    public BaseballGameStatus next(BaseballGame baseballGame) {
-        baseballGame.initializeComputerNumber();
+    public BaseballGameStatus next(BaseballContext baseballContext) {
+        baseballContext.initializeComputerNumber();
         return new UserInputStatus();
     }
 

@@ -1,13 +1,16 @@
 package baseball.domain.baseball.status;
 
-import baseball.domain.baseball.BaseballGame;
+import baseball.domain.baseball.BaseballContext;
 
 public class CompareAnswerStatus implements BaseballGameStatus {
+
     @Override
-    public BaseballGameStatus next(BaseballGame baseballGame) {
-        var score = baseballGame.ruled();
+    public BaseballGameStatus next(BaseballContext baseballContext) {
+        var score = baseballContext.ruled();
         var result = score.result();
-        baseballGame.println(result);
+
+        baseballContext.println(result);
+
         if (score.strikeAll()) {
             return new RequestContinueStatus();
         }
