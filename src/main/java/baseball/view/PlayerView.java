@@ -24,4 +24,10 @@ public class PlayerView {
     public String getInput(){
         return input;
     }
+
+    public String getPlayerOpinion(){
+        requestInput();
+        readInput();
+        return getInput();
+    }
 }
