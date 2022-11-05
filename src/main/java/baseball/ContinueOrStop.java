@@ -3,9 +3,9 @@ package baseball;
 public class ContinueOrStop {
   public static boolean choice(String num) {
     if (Exception.isValidButton(num)) {
-      if (num.contains("1")) // 얘두 전역변수로?
+      if (num.contains(Constant.CONTINUE_BUTTON))
         return true;
-      else if (num.contains("2"))
+      else if (num.contains(Constant.STOP_BUTTON))
         return false;
     }
     throw new IllegalArgumentException();
