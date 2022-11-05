@@ -3,7 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.domain.GameControlNum;
+import baseball.domain.GameControlStatus;
 import baseball.domain.ThreeDigitNum;
 import baseball.io.InputControl;
 import java.util.List;
@@ -76,8 +76,8 @@ class UserTest {
 
         @Test
         void 제어숫자로_변환_검증() {
-            GameControlNum g1 = new GameControlNum(1);
-            GameControlNum g2 = new GameControlNum(2);
+            GameControlStatus g1 = new GameControlStatus(1);
+            GameControlStatus g2 = new GameControlStatus(2);
 
             int v1 = 1;
             int v2 = 2;
@@ -92,14 +92,14 @@ class UserTest {
             int[] nums = {0, -1, 3, 90, 120, 991, 441, 064};
             for (int num : nums) {
 
-                assertThatThrownBy(() -> new GameControlNum(num))
+                assertThatThrownBy(() -> new GameControlStatus(num))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
         @Test
         void 재시작여부_판별_검증() {
-            GameControlNum restart = new GameControlNum(1);
-            GameControlNum stop = new GameControlNum(2);
+            GameControlStatus restart = new GameControlStatus(1);
+            GameControlStatus stop = new GameControlStatus(2);
 
             assertThat(restart.isRestart()).isEqualTo(true);
             assertThat(stop.isRestart()).isEqualTo(false);

@@ -1,6 +1,6 @@
 package baseball.user;
 
-import baseball.domain.GameControlNum;
+import baseball.domain.GameControlStatus;
 import baseball.domain.Hint;
 import baseball.domain.ThreeDigitNum;
 import baseball.io.InputControl;
@@ -25,9 +25,9 @@ public class User {
         return new ThreeDigitNum((InputControl.readInt()));
     }
 
-    public GameControlNum inputGameControlNum() {
+    public GameControlStatus inputGameControlNum() {
         OutputControl.println(GAME_RESTART_MESSAGE);
-        return new GameControlNum((InputControl.readInt()));
+        return new GameControlStatus((InputControl.readInt()));
     }
 
     public void readGameStartMsg() {

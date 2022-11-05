@@ -1,13 +1,13 @@
 package baseball.domain;
 
-public class GameControlNum {
+public class GameControlStatus {
 
     public static final int RESTART_VALUE = 1;
     public static final int STOP_VALUE = 2;
 
     private int value;
 
-    public GameControlNum(int num) {
+    public GameControlStatus(int num) {
         value = num;
         validateValue();
     }
