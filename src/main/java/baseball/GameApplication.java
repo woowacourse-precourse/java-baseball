@@ -36,7 +36,7 @@ public class GameApplication {
 
     // 입력 문자가 이 이외의 것일 경우
     private void isRightInput(String input) {
-        if (!input.equals("1") || !input.equals("2")) {
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
