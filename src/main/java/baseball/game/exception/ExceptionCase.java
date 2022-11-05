@@ -19,4 +19,10 @@ public class ExceptionCase {
             throwException(MIN_NUMBER+"~"+MAX_NUMBER+"까지의 숫자를 입력해야 합니다.");
         }
     }
+
+    public static void catchDuplicatedNumberException(Integer number){
+        if(userNumbers.contains(number)){
+            throwException("서로 다른 숫자를 입력해야합니다.");
+        }
+    }
 }
