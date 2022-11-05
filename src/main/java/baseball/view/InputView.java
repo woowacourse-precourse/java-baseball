@@ -15,16 +15,16 @@ public class InputView {
         if (!matcher.matches()) {
             throw new IllegalArgumentException();
         }
-        return asBalls(Integer.parseInt(input));
+        return asBalls(input);
     }
 
-    private static Balls asBalls(int num) {
+    private static Balls asBalls(String input) {
         List<Ball> ballList = new ArrayList<>();
 
         for (int position = 2; position >= 0; position--) {
-            Ball ball = new Ball(num % 10, position);
+            int number = input.charAt(position) - '0';
+            Ball ball = new Ball(number, position);
             ballList.add(ball);
-            num /= 10;
         }
 
         return new Balls(ballList);

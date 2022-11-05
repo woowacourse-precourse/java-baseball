@@ -1,7 +1,5 @@
 package baseball.model;
 
-import java.util.Objects;
-
 public class Ball {
     private final int number;
     private final int position;
