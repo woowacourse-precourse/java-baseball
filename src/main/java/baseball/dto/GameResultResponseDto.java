@@ -3,6 +3,7 @@ package baseball.dto;
 public class GameResultResponseDto {
 
     public static final int GAME_END_SCORE = 3;
+    public static final int CRITERION_ZERO = 0;
     private final int strike;
     private final int ball;
 
@@ -17,6 +18,14 @@ public class GameResultResponseDto {
 
     public int getBall() {
         return ball;
+    }
+
+    public boolean isStrikeZero() {
+        return strike == CRITERION_ZERO;
+    }
+
+    public boolean isBallZero() {
+        return ball == 0;
     }
 
     public boolean isThreeStrike() {
