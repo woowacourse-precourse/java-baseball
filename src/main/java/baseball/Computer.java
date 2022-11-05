@@ -19,4 +19,18 @@ public class Computer {
       }
     }
   }
+
+  private boolean isValidateNumber(List<Integer> numberList) {
+    if(numberList.size() != 3) {
+      return false;
+    }
+
+    for(int i = 0; i < 3; i++) {
+      if(numberList.get(i) < 1 || numberList.get(i) > 9) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
