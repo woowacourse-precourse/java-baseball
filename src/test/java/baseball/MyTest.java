@@ -77,4 +77,22 @@ public class MyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 재시작_질문에_사용자가_값을_입력하지_않았을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkRegameInput(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 재시작_질문에_문자를_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkRegameInput("하하하"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 재시작_질문에_다른숫자를_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkRegameInput("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

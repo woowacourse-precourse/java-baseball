@@ -60,13 +60,16 @@ public class User {
 
     }
 
+
     public static boolean wantRegame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput =Console.readLine();
 
-        if(userInput == null){
-            throw new IllegalArgumentException();
-        }
+        return checkRegameInput(userInput);
+    }
+
+
+    static boolean checkRegameInput(String userInput) {
 
         if("1".equals(userInput)){
             return true;
