@@ -24,4 +24,11 @@ public class Numbers {
         Set<Integer> numberSet = new HashSet<>(numbers);
         return numberSet.size() == LENGTH;
     }
+
+    public int get(int i) {
+        if (i < 0 || i >= LENGTH) {
+            throw new IndexOutOfBoundsException();
+        }
+        return numbers.get(i);
+    }
 }
