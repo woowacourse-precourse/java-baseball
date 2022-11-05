@@ -10,4 +10,8 @@ public class Printer {
 	public static void printAskInputMessage() {
 		System.out.print(ASK_INPUT_MESSAGE.get());
 	}
+
+	public static void printNothingMessage() {
+		System.out.println(NOTHING_MESSAGE.get());
+	}
 }
