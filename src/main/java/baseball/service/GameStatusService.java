@@ -19,6 +19,6 @@ public class GameStatusService {
     }
 
     public boolean getGameStatus(){
-        return false;
+        return gameStatus;
     }
 }
