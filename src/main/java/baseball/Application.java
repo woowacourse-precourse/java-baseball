@@ -28,37 +28,16 @@ public class Application {
         while (true) {
 
             BullsAndCows bullsAndCows = new BullsAndCows();
+            System.out.println(bullsAndCows.computerNumber);
 
-            while (bullsAndCows.bullsAndCowsResult.finish()) {
+            while (!bullsAndCows.bullsAndCowsResult.finish()) {
                 bullsAndCows.start();
             }
 
-            boolean result = bullsAndCows.isContinue();
-
-            if (result) {
+            if (bullsAndCows.exit()) {
                 break;
             }
         }
-
-//        while (answer.equals("1")) {
-//
-//            System.out.print("숫자를 입력해주세요 : ");
-//            String userInput = Console.readLine();
-//            List<Integer> userInputNumber = isValidInput(userInput);
-//
-//            bullsAndCowsResult.init();
-//
-//            for (int i = 0; i < computerNumber.size(); i++) {
-//                bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
-//            }
-//
-//            bullsAndCowsResult.printResult();
-//
-//            if (bullsAndCowsResult.finish()) {
-//                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//                answer = Console.readLine();
-//            }
-//        }
     }
 
     static class BullsAndCows {
@@ -72,7 +51,7 @@ public class Application {
             bullsAndCowsResult = new BullsAndCowsResult();
         }
 
-        boolean start() {
+        void start() {
 
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
@@ -85,25 +64,18 @@ public class Application {
             }
 
             bullsAndCowsResult.printResult();
-
-            if (bullsAndCowsResult.finish()) {
-
-                return isContinue();
-            }
-
-            return false;
         }
 
-        boolean isContinue() {
+        boolean exit() {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String answer = Console.readLine();
 
             if (answer.equals("1")) {
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 
