@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class NumberBaseBallRepository {
+public class NumberBaseballRepository {
     private static final int LIMIT_NUMBER = 10;
     private static final int START_NUMBER = 1;
     private static final int PICK_NUMBER_COUNT = 3;
 
 
-    private static final NumberBaseBallRepository instance = new NumberBaseBallRepository();
+    private static final NumberBaseballRepository instance = new NumberBaseballRepository();
     private static final List<ComputerNumber> numberStore = new ArrayList<>();
 
     public void generateNumber() {
