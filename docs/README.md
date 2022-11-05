@@ -23,7 +23,7 @@
 - [ ] arrayToList에 stringToArray을 List형태로 변화하여 선언
 - [ ] arrayToList를 리턴
 
-## checkStrikeNumbers
+## (int)checkStrikeNumbers(List computerNumbers,List userNumbers)
 - [ ] 같은 자리와 같은 수인 숫자들의 개수를 저장하는 checkedStrikeNumbers를 0으로 선언한다.
 - [ ] 매개변수들의 길이 만큼 반복하여, Strike인지 확인
 - [ ] 값이 같으면, checkedStrikeNumbers에 1을 더함
