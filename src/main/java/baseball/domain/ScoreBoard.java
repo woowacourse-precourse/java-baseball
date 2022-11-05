@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.dto.ScoreResult;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ScoreBoard {
     private List<NumberBall> systemNumberBalls;
@@ -11,24 +12,24 @@ public class ScoreBoard {
         this.systemNumberBalls = systemNumberBalls;
     }
 
-    public ScoreResult getScore(List<NumberBall> userNumberBalls) {
-        int strike = 0, ball = 0;
-        for (int i = 0; i < 3; i++) {
-            if (systemNumberBalls.get(i).equals(userNumberBalls.get(i))) {
-                strike++;
-                continue;
-            }
-            int finalI = i;
-            boolean aa = systemNumberBalls.stream()
-                    .anyMatch(systemNumberBall -> systemNumberBall.equals(userNumberBalls.get(finalI)));
-            if(aa) {
-                ball++;
-            }
-        }
+    public ScoreResult getScoreResult(List<NumberBall> userNumberBalls) {
         return new ScoreResult.Builder()
-                .setStrike(strike)
-                .setBall(ball)
+                .setStrike(countStrike(userNumberBalls))
+                .setBall(countBall(userNumberBalls))
                 .build();
+    }
+
+    private int countStrike(List<NumberBall> userNumberBalls) {
+        return (int) IntStream.range(0, 3)
+                .filter(idx -> systemNumberBalls.get(idx).equals(userNumberBalls.get(idx)))
+                .count();
+    }
+
+    private int countBall(List<NumberBall> userNumberBalls) {
+        return (int) IntStream.range(0, 3)
+                .filter(idx -> !systemNumberBalls.get(idx).equals(userNumberBalls.get(idx)))
+                .filter(idx -> systemNumberBalls.contains(userNumberBalls.get(idx)))
+                .count();
     }
 
     public boolean isPlaying() {
