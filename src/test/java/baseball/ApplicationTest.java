@@ -109,6 +109,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void countBall_테스트(){
+        //given
+        final Core T = new Core();
+        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,5,6));  // 0 balls
+        final List<List<Integer>> case2 = List.of(List.of(3,4,5), List.of(8,5,6));  // 1 balls
+        final List<List<Integer>> case3 = List.of(List.of(1,2,3), List.of(2,1,3));  // 2 balls
+        final List<List<Integer>> case4 = List.of(List.of(3,6,8), List.of(6,8,3));  // 3 balls
+        final List<List<Integer>> case5 = List.of(List.of(6,4,3), List.of(3,6,4));  // 3 balls
+
+        //when
+        final int result1 = T.countBall(case1.get(0), case1.get(1));
+        final int result2 = T.countBall(case2.get(0), case2.get(1));
+        final int result3 = T.countBall(case3.get(0), case3.get(1));
+        final int result4 = T.countBall(case4.get(0), case4.get(1));
+        final int result5 = T.countBall(case5.get(0), case5.get(1));
+
+        //then
+        assertThat(result1).as("countBall 테스트").isEqualTo(0);
+        assertThat(result2).as("countBall 테스트").isEqualTo(1);
+        assertThat(result3).as("countBall 테스트").isEqualTo(2);
+        assertThat(result4).as("countBall 테스트").isEqualTo(3);
+        assertThat(result5).as("countBall 테스트").isEqualTo(3);
+
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
