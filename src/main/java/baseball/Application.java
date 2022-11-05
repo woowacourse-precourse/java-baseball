@@ -20,7 +20,7 @@ public class Application {
         return computer_num;
     }
 
-    private static List<Integer> numToList(String number) {
+    private static List<Integer> numToDigitList(String number) {
         List<Integer> number_list = new ArrayList<>();
 
         String[] number_split = number.split("");
@@ -144,7 +144,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String guess_number = Console.readLine();
             validateUserNumber(guess_number);
-            List<Integer> user_num = numToList(guess_number);
+            List<Integer> user_num = numToDigitList(guess_number);
             int strike = countStrike(computer_num, user_num);
             int ball = countBall(computer_num, user_num, strike);
             System.out.println(setHint(ball, strike));
