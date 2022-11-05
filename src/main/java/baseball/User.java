@@ -13,6 +13,7 @@ public class User {
 
         System.out.print(GameMessage.input);
         String inputStringNumber = Console.readLine();
+        userException(inputStringNumber);
 
         for (int userIndex = 0; userIndex < inputStringNumber.length(); userIndex++) {
             int number = inputStringNumber.charAt(userIndex) - '0';
@@ -25,8 +26,8 @@ public class User {
         return userNumber;
     }
 
-    public void userException(List<Integer> user) {
-        if (user.size() != DIGIT_NUMBER) {
+    public void userException(String user) {
+        if (user.length() != DIGIT_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
