@@ -16,13 +16,13 @@ public class Player {
     }
 
     private void validateInputNumber(String playerNumber, int numberLength) throws IllegalArgumentException {
-        validateNumberOrNotNumber(playerNumber);
+        validateNumberOrNotNumber(playerNumber, PATTERN);
         validateNumberLength(playerNumber, numberLength);
         validateNumberRepeat(playerNumber);
     }
 
-    private void validateNumberOrNotNumber(String playerNumber) {
-        boolean regex = Pattern.matches(PATTERN, playerNumber);
+    private void validateNumberOrNotNumber(String playerNumber, String regexPattern) {
+        boolean regex = Pattern.matches(regexPattern, playerNumber);
         if (!regex) {
             throw new IllegalArgumentException();
         }
@@ -45,9 +45,8 @@ public class Player {
 
     public int getRestartOrEndNumber(){
         System.out.println(RESTART_OR_END_MESSAGE);
-        //regex 1~2로 제한 수정하기!!!
         String playerNumber = readLine();
-        validateNumberOrNotNumber(playerNumber);
+        validateNumberOrNotNumber(playerNumber, RESTART_OR_END_PATTERN);
         validateNumberLength(playerNumber, RESTART_OR_END_NUMBER_LENGTH);
         return Integer.parseInt(playerNumber);
     }

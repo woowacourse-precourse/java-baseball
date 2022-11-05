@@ -9,6 +9,7 @@ public class GameConstant {
     public static final int MIN_RANGE_NUM = 1;
 
     public static final String PATTERN = "^[0-9]*$";
+    public static final String RESTART_OR_END_PATTERN = "^[1-2]*$";
 
     public static final String BALL_MESSAGE = "볼";
     public static final String STRIKE_MESSAGE = "스트라이크";
