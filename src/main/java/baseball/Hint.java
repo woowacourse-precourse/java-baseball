@@ -3,11 +3,6 @@ package baseball;
 public class Hint {
 	public static void searchHint() {
 		new ComparisonResult(User.userNums, Computer.computerNums);
-		if (getRightAnswer()) {
-			GameView.printEndGame();
-			GameView.printRestartInstruction();
-			return;
-		}
 		if (getNothing()) {
 			hintNothing();
 		}
@@ -16,6 +11,10 @@ public class Hint {
 		}
 		if (getStrike()) {
 			hintStrike();
+		}
+		if (getRightAnswer()) {
+			GameView.printEndGame();
+			GameView.printRestartInstruction();
 		}
 	}
 
