@@ -17,6 +17,10 @@ public class ScoreResultView {
         this.strikeCount = strikeCount;
     }
 
+    public void printScore(){
+        getResultOfScores(makeResultString());
+    }
+
     public void getResultOfScores(String result){
         System.out.println(result);
     }
