@@ -8,8 +8,34 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 
+class UI {
+    public static void printGameStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    // 4-1 : 메세지 출력
+    public static void printAnswerMsg() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+}
+
 public class Application {
 
+    // 0-1 게임을 처음 시작하는 경우
+    private static boolean gameStart() {
+
+
+        // 게임을 다시 시작하겠다고 하는 경우에
+        return true;
+
+        // 게임을 그만 하겠다고 하는 경우에
+//        return false;
+    }
+
+    // 0-2 게임을 재시작하는 경우
+    private static void gameReStart() {
+    }
 
     // 1. 상대방(컴퓨터)의 숫자를 설정한다.
     private static List<Integer> getNumberOfComputer(List<Integer> computer) {
@@ -71,10 +97,12 @@ public class Application {
         } else {
             return false;
         }
+//        return !ballCount.equals("3스트라이크");
     }
 
     // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
     private static List<Integer> getNumberOfUserForList(List<Integer> user) {
+        user.clear();
         System.out.print("숫자를 입력해주세요 : ");
 
         // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
@@ -172,12 +200,10 @@ public class Application {
     }
 
     // 4-3-1 : 재시작하기 위한 준비
-    private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user, String ballCount) {
-//        System.out.println("preSetting에 들어왔습니다. 안내문의 출력을 확인하기 바랍니다."); // 테스트 출력 : 출력 결과 잘 확인했음.
+    private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user) {
         computer.clear();
         computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer); // 여기까지 이상없이 되는 것 확인했음
-        ballCount = "";
+        System.out.println("computer = " + computer); // 테스트 출력 : 여기까지 이상없이 되는 것 확인했음
         user.clear();
     }
 
@@ -188,21 +214,32 @@ public class Application {
 
     public static void main(String[] args) {
 
+        boolean repeatState = true;
+
+        repeatState = gameStart();
+
+        while(repeatState) {
+            gameReStart();
+        }
+
+        UI.printGameStart(); // 게임 시작
+
         // 1. 상대방(컴퓨터)의 숫자를 설정한다.
-        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer);
+        System.out.println("computer = " + computer); // 테스트 출력
 
         // 2. 사용자에게서 숫자를 입력받는다.
         List<Integer> user = new ArrayList<>();
 
-        String ballCount = "";
-        // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
-        while (isNeedReEnter(ballCount)) { // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-            user.clear();
-//            user.removeAll(user);
 
+        // -------------- Main에서 더이상 분리하기는 힘들어 보임 --------------
+
+
+        // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
+        String ballCount = "";
+        // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
+        while (isNeedReEnter(ballCount)) {
             // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
             user = getNumberOfUserForList(user);
 
@@ -212,26 +249,36 @@ public class Application {
         }
 
         // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
-
         // 4-1 : 메세지 출력
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        UI.printAnswerMsg();
 
-        // 4-2 : 값 입력받기
+        // 4-2 : 1 또는 2의 값 입력받기
         int restartOrExit = Integer.parseInt(Console.readLine());
 
         // 4-3 : 1을 입력했다면, 재시작하기.
         if (restartOrExit == 1) {
-            preSettingToRestartGame(computer, user, ballCount); // 4-3-1 : 재시작하기 위한 준비
+            preSettingToRestartGame(computer, user); // 4-3-1 : 재시작하기 위한 준비
+            ballCount = "";
 
-            // ----------------- 이상 없는 구현 확인 완료 -----------------
+            // ----------------- 여기까지 이상 없는거 확인했음 -----------------
 
-            restartGame(user); // 4-3-2 : 재시작하기
+            // 4-3-2 : 재시작하기 -> 코드를 다시 쓰는 것은 좋지 않은 발상임. 다른 방법을 어떻게든 떠롤리기 바람.
+            while (isNeedReEnter(ballCount)) { // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
+                user.clear();
+                // 3-2 : user의 정보를얻어와 String으로 받고, List로 변환한다.
+                user = getNumberOfUserForList(user);
+                // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
+                ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
+                System.out.println(ballCount);
+            }
         } else if (restartOrExit == 2) {
             return;
         } else {
-            System.out.println("비정상적 입력값입니다. 어플리케이션을 종료합니다.");
-            return;
+            throw new IllegalArgumentException("비정상적 입력값입니다.");
         }
     }
+
+
+
+
 }
