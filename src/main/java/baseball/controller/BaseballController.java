@@ -9,8 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballController {
     private final BaseballView baseballView;
     private final BaseballService baseballService;
-    final String STOP = "2";
-    final String THREE_STRIKE = "3스트라이크";
+    private static final String THREE_STRIKE = "3스트라이크";
 
     public BaseballController(BaseballView baseballView, BaseballService baseballService) {
         this.baseballView = baseballView;
@@ -22,15 +21,15 @@ public class BaseballController {
         do {
             gameProcess(BaseballNumber.generateNumber());
             baseballView.showContinueOrStop();
-        } while (!Console.readLine().equals(STOP));
+        } while (baseballService.restartCheck(Console.readLine()));
     }
 
     private void gameProcess(String baseballNumber) {
         String strike = "";
         while (!strike.equals(THREE_STRIKE)) {
             baseballView.showInput();
-            Score currentScore = baseballService.compareNumber(baseballNumber, Console.readLine());
-            strike = baseballView.showScore(currentScore);
+            Score score = baseballService.compareNumber(baseballNumber, Console.readLine());
+            strike = baseballView.showScore(score);
         }
     }
 

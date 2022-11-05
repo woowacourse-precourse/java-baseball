@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Calculator {
 
     public static Score count(String baseballNumber, String userNumber) {
-        int strikeCount = (int) IntStream.range(0, 3)
+        int strikeCount = (int) IntStream.range(0, baseballNumber.length())
                 .filter(index -> baseballNumber.toCharArray()[index] == userNumber.toCharArray()[index])
                 .count();
 

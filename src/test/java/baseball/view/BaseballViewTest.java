@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballViewTest {
     private final BaseballView baseBallView;
@@ -57,7 +56,11 @@ class BaseballViewTest {
     @Test
     void 점수_출력_테스트() {
         baseBallView.showScore(new Score(1, 2));
-        assertEquals("1볼 2스트라이크\n", output.toString());
+        assertAll(
+                () -> assertEquals("1볼 2스트라이크\n", output.toString()),
+                () -> assertNotEquals("2볼 1스트라이크\n", output.toString())
+        );
+
     }
 
     @Test

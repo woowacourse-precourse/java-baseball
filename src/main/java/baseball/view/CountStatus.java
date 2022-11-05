@@ -1,26 +1,23 @@
 package baseball.view;
 
-public enum Ball {
-    NO_COUNT {
-        boolean calculator(int ball, int strike) {
-            return ball == 0 && strike == 0;
-        }
-    },
-    ONLY_BALL_COUNT {
-        boolean calculator(int ball, int strike) {
-            return ball != 0 && strike == 0;
-        }
-    },
-    ONLY_STRIKE_COUNT {
-        boolean calculator(int ball, int strike) {
-            return ball == 0 && strike != 0;
-        }
-    },
-    BALL_AND_STRIKE_COUNT {
-        boolean calculator(int ball, int strike) {
-            return ball != 0 && strike != 0;
-        }
-    };
+import baseball.model.Score;
 
-    abstract boolean calculator(int ball, int strike);
+import java.util.function.Predicate;
+
+public enum CountStatus {
+    NO_COUNT(score -> score.getBall() == 0 && score.getStrike() == 0),
+    ONLY_BALL(score -> score.getBall() != 0 && score.getStrike() == 0),
+    ONLY_STRIKE(score -> score.getBall() == 0 && score.getStrike() != 0),
+    BALL_AND_STRIKE(score -> score.getBall() != 0 && score.getStrike() != 0);
+
+    private Predicate<Score> expression;
+
+    CountStatus(Predicate<Score> expression) {
+        this.expression = expression;
+    }
+
+    public boolean check(Score score) {
+        return expression.test(score);
+    }
+
 }
