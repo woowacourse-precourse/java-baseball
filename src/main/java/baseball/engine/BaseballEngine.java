@@ -95,4 +95,18 @@ public class BaseballEngine {
         return true;
     }
 
+    public int getBallCountIfPresentOrZero(List<Integer> answerList, List<Integer> userInputList) {
+        int ballCount = 0;
+
+        for (int i = 0; i < userInputList.size(); i++) {
+            int inputNumber = userInputList.get(i);
+
+            if (answerList.contains(inputNumber) && answerList.indexOf(inputNumber) != i) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
 }
