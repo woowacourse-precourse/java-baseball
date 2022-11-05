@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Application {
+    final static int BALL =0;
+    final static int STRIKE =1;
     private static List<Integer> stringToIntegerList(String str){
         List<Integer> newList = new ArrayList<>();
         for (char x : str.toCharArray()) {
@@ -72,14 +75,33 @@ public class Application {
         b_s_list.add(strikes);
         return b_s_list;
     }
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        String input="";
+    private static String userInput(){
+        String input = Console.readLine();
         try {
             if(!isValidInput(input))
                 throw new IllegalArgumentException();
         }catch (IllegalArgumentException e){
-            //어플리케이션 종료
+            //TODO:어플리케이션 종료
         }
+        return input;
+    }
+    private static boolean is3Strikes(List<Integer> targetNums,List<Integer> userNums){
+        List<Integer> ball_Strike = count_BallStrike(targetNums,userNums);
+        if(ball_Strike.get(STRIKE)==3) return true;
+        return false;
+    }
+    private static boolean mainGame(List<Integer> targetNums){
+        List<Integer> userNums = stringToIntegerList(userInput());
+        if(is3Strikes(targetNums,userNums))  return true;
+        return false;
+    }
+    public static void play(){
+        //랜덤숫자 생성
+        //유저인풋받기 - 맞출때까지 반복
+        //        while(!mainGame());
+        //재시작 or 종료
+    }
+    public static void main(String[] args) {
+        play();
     }
 }
