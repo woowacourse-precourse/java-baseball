@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -130,4 +131,32 @@ class GameTest {
         String result = game.getResult(computer, user);
         assertThat(result).isEqualTo("낫싱");
     }
+    @Nested
+    class FunctionTest6{
+        @Test
+        void 최종정답유무확인1(){
+            Game game = new Game();
+            List<Integer> computer = Arrays.asList(6, 1, 5);
+            List<Integer> user = Arrays.asList(6, 1, 5);
+            String result = game.getResult(computer, user);
+            assertThat(game.isAnswer(result)).isEqualTo(true);
+        }
+        @Test
+        void 최종정답유무확인2(){
+            Game game = new Game();
+            List<Integer> computer = Arrays.asList(6, 1, 5);
+            List<Integer> user = Arrays.asList(6, 1, 4);
+            String result = game.getResult(computer, user);
+            assertThat(game.isAnswer(result)).isEqualTo(false);
+        }
+        @Test
+        void 최종정답유무확인3(){
+            Game game = new Game();
+            List<Integer> computer = Arrays.asList(6, 1, 5);
+            List<Integer> user = Arrays.asList(2, 3, 4);
+            String result = game.getResult(computer, user);
+            assertThat(game.isAnswer(result)).isEqualTo(false);
+        }
+    }
+
 }
