@@ -37,7 +37,7 @@
 ### 🗓️ 개발 계획
 
 - `TurnResult` 클래스에서 담당한다.
-- 비교 대상과 입력 두 BaseballNum을 Builder 패턴으로 입력받고 비교 연산을 수행한다.
+- BaseballNum과 입력된 수를 생성자에서 입력받고 비교 연산을 수행한다.
 - 볼과 스트라이크 수를 반환하는 `getBalls()` , `getStrikes()` 메소드를 지원한다.
 - `toString()`  을 통해 원하는 출력 형태로 변환할 수 있다.
 
