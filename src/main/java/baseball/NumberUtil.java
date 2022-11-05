@@ -2,6 +2,13 @@ package baseball;
 
 
 public class NumberUtil {
+    public static boolean lengthCheck(String str, int length) {
+        if (str == null) {
+            return length == 0;
+        }
+        return str.length() == length;
+    }
+
     public static boolean numericBoundCheck(String str, int start, int end) {
         if (str == null) {
             return false;
