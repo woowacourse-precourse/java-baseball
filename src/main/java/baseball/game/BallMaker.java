@@ -54,6 +54,23 @@ public class BallMaker {
         System.out.printf(informationMessage);
     }
 
+    private boolean checkValidation(String userInput) {
+        if (lengthValidation(userInput) && dataValidation(userInput)) {
+            return true;
+        }
+        return false;
+    }
 
+    private boolean lengthValidation(String userInput) {
+        if (userInput.length() == ballSize) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean dataValidation(String userInput) {
+        String dataRegex = String.format("^[%d-9]*$", minimum);
+        return Pattern.matches(dataRegex, userInput);
+    }
 
 }
