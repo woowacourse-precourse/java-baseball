@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class BaseballNumber {
-	private static final int DIGIT = 3;
+	protected static final int DIGIT = 3;
+	protected static final int MIN_NUMBER = 1;
+	protected static final int MAX_NUMBER = 9;
 	protected List<Integer> numbers;
 
 	public List<Integer> getNumbers() {
@@ -37,14 +39,14 @@ public abstract class BaseballNumber {
 
 	private void numberInRange(List<Integer> numbers) {
 		for (Integer number : numbers) {
-			if (number < 1 || number > 9)
-				throw new IllegalArgumentException("입력된 수가 세 자리수가 아닙니다.");
+			if (number < MIN_NUMBER || number > MAX_NUMBER)
+				throw new IllegalArgumentException("입력된 수의 범위가 1~9가 아닙니다.");
 		}
 	}
 
-	private void numberIsNotDuplicate(List<Integer> numbers){
+	private void numberIsNotDuplicate(List<Integer> numbers) {
 		Set<Integer> numbersSet = new HashSet<>(numbers);
-		if(numbers.size() != numbersSet.size())
+		if (numbers.size() != numbersSet.size())
 			throw new IllegalArgumentException("입력된 수에 중복이 있습니다.");
 	}
 }

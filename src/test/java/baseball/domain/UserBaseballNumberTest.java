@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,7 +15,7 @@ class UserBaseballNumberTest {
 	private static final int DIGIT = 3;
 
 	@Test
-	void 올바르지_않은_사용자_입력(){
+	void 올바르지_않은_사용자_입력() {
 		//given
 		String sizeTwo = "12";
 		String sizeFour = "2357";
@@ -24,34 +24,34 @@ class UserBaseballNumberTest {
 		String containDuplicateNumber = "322";
 
 		//when, then
-		assertThatThrownBy(()-> new UserBaseballNumber(sizeTwo))
+		assertThatThrownBy(() -> new UserBaseballNumber(sizeTwo))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(()-> new UserBaseballNumber(sizeFour))
+		assertThatThrownBy(() -> new UserBaseballNumber(sizeFour))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(()-> new UserBaseballNumber(containZero))
+		assertThatThrownBy(() -> new UserBaseballNumber(containZero))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(()-> new UserBaseballNumber(containNonNumber))
+		assertThatThrownBy(() -> new UserBaseballNumber(containNonNumber))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(()-> new UserBaseballNumber(containDuplicateNumber))
+		assertThatThrownBy(() -> new UserBaseballNumber(containDuplicateNumber))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
-	void 올바른_사용자_입력(){
+	void 올바른_사용자_입력() {
 		//given
 		List<String> testStringList = new ArrayList<>();
-		for(int i = 0; i<10000;i++){
+		for (int i = 0; i < 10000; i++) {
 			StringBuilder sb = new StringBuilder();
-			while(sb.length() != DIGIT){
-				int randomNum = Randoms.pickNumberInRange(MIN_NUM,MAX_NUM);
+			while (sb.length() != DIGIT) {
+				int randomNum = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
 				String randomNumToString = String.valueOf(randomNum);
-				if(sb.indexOf(randomNumToString) == -1)
+				if (sb.indexOf(randomNumToString) == -1)
 					sb.append(randomNum);
 			}
 			testStringList.add(sb.toString());
 		}
 
-		for (String testString : testStringList){
+		for (String testString : testStringList) {
 			new UserBaseballNumber(testString);
 		}
 	}
