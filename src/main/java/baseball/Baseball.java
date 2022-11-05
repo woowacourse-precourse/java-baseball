@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Baseball {
     private boolean gaming;
@@ -90,13 +93,13 @@ public class Baseball {
 
     // 1~9로 이루어진 서로 다른 세자리 정수인지 Validation
     public boolean isValidNum(int number) {
-        if(!checkSize(number) || !checkDigit(Integer.toString(number).toCharArray())) {
+        if(!checkSize(number) || !checkOverlapDigit(number)|| !checkDigit(Integer.toString(number).toCharArray())) {
             return false;
         }
 
         return true;
     }
-    
+
     public boolean checkDigit(char[] numberCharArray) {
         for(char numberChar : numberCharArray) {
             if(numberChar == '0') {
@@ -108,6 +111,13 @@ public class Baseball {
         }
 
         return true;
+    }
+
+    public boolean checkOverlapDigit(int number){
+        Set<String> numberDigitSet = Arrays.stream(String.valueOf(number).split(""))
+                .collect(Collectors.toSet());
+
+        return numberDigitSet.size() == Constant.GUESS_NUM_SIZE;
     }
 
     public boolean checkSize(int number) {
