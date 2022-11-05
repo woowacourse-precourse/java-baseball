@@ -72,9 +72,8 @@ public class Computer {
     public boolean isEndTheGame() {
         if (this.cntStrike == 3) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
