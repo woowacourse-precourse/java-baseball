@@ -8,8 +8,8 @@ public class BaseBallGame {
 
     private final Computer computer;
 
-    public BaseBallGame(Computer computer) {
-        this.computer = computer;
+    public BaseBallGame() {
+        this.computer = new Computer();
     }
 
     public void start() {
@@ -17,7 +17,7 @@ public class BaseBallGame {
         do {
             init();
             play();
-        } while (inputRestartCommand() == RESTART);
+        } while (getRestartCommand() == RESTART);
     }
 
     private void play() {
@@ -39,7 +39,7 @@ public class BaseBallGame {
         return Console.readLine();
     }
 
-    private int inputRestartCommand() {
+    private int getRestartCommand() {
         Printer.printGameRestart();
         String commandInput = Console.readLine();
         CommandChecker.check(commandInput);
