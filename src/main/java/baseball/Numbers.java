@@ -25,9 +25,7 @@ public class Numbers {
             if (appearances[number]) {
                 throw new IllegalArgumentException("숫자는 중복되면 안됩니다");
             }
-            if (!appearances[number]) {
-                appearances[number] = true;
-            }
+            appearances[number] = true;
         }
     }
 
