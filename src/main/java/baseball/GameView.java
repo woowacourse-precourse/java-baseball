@@ -19,11 +19,11 @@ public class GameView {
 	}
 
 	public static void printStrike(int strikeCount) {
-		System.out.print(strikeCount + STRIKE);
+		System.out.println(strikeCount + STRIKE);
 	}
 
 	public static void printBall(int ballCount) {
-		System.out.print(ballCount + BALL);
+		System.out.println(ballCount + BALL);
 	}
 
 	public static void printBallAndStrike(int ballCount) {
@@ -40,10 +40,6 @@ public class GameView {
 
 	public static void printRestartInstruction() {
 		System.out.println(RESTART_INSTRUCTION);
-	}
-
-	public static void printNewLine() {
-		System.out.println();
 	}
 }
 

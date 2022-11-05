@@ -43,13 +43,11 @@ public class Hint {
 			GameView.printBallAndStrike(ComparisonResult.ballCount);
 		} else {
 			GameView.printBall(ComparisonResult.ballCount);
-			GameView.printNewLine();
 		}
 	}
 
 	private static void hintStrike() {
 		GameView.printStrike(ComparisonResult.strikeCount);
-		GameView.printNewLine();
 	}
 
 	private static void hintCorrect() {
