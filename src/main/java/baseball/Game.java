@@ -7,8 +7,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
 
-    public List<Integer> makeUserNumberToList(String userNumberString){
-        int userNumber = Integer.parseInt(userNumberString);
+    public List<Integer> makeUserNumberToList(int userNumber){
         List<Integer> listNumber = new ArrayList<>();
         while(userNumber < 0){
             listNumber.add(userNumber%10);
