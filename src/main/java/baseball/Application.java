@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,7 +17,7 @@ public class Application {
             while (!result.equals("3스트라이크")) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String userInput = Console.readLine();
-                List<Integer> user = userNumberValidate(userInput);
+                List<Integer> user = createUserNumberList(userInput);
                 result = resultJudgement(computer, user);
                 System.out.println(result);
             }
@@ -45,6 +43,10 @@ public class Application {
     public static List<Integer> createUserNumberList(String number) {
         List<Integer> user = new ArrayList<>();
 
+        if (isNumber(number) == false) {
+            throw new IllegalArgumentException();
+        }
+
         for (int i = 0; i < number.length(); i++) {
             int numberToInt = Integer.parseInt(String.valueOf(number.charAt(i)));
             if (user.contains(numberToInt)) {
@@ -52,6 +54,9 @@ public class Application {
             }
             user.add(numberToInt);
         }
+
+        checkSize(user);
+
         return user;
     }
 
@@ -92,13 +97,10 @@ public class Application {
         return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 
-    public static List<Integer> userNumberValidate(String userInput) throws IllegalArgumentException {
-        List<Integer> user = createUserNumberList(userInput);
-        if (user.size() != 3 || isNumber(userInput) == false) {
+    public static void checkSize(List<Integer> user) {
+        if (user.size() != 3) {
             throw new IllegalArgumentException();
         }
-
-        return user;
     }
 
     public static boolean isNumber(String userInput) {
