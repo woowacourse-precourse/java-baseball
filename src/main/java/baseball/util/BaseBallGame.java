@@ -31,7 +31,7 @@ public class BaseBallGame {
     }
 
     private static void userInputValidCheck(String userInput) {
-        if (userInput.matches("^[0-9]{3}$")) {
+        if (!userInput.matches("^[0-9]{3}$")) {
             throw new IllegalArgumentException();
         }
     }
