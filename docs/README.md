@@ -8,7 +8,7 @@
 ## ()userNumberMessagePrint()
 - [ ] "숫자를 입력하세요 : "를 출력
 
-## userNumberInput
+## (String word)userNumberInput()
 - [ ] readLine()함수를 통해 사용자가 입력값을 받음
 
 ## availableUserNumberIsChecked
