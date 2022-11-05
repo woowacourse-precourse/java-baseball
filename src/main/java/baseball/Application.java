@@ -12,7 +12,8 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String number = readLine();
-            System.out.println(number);
+            int randomNumber = pickNumberInRange(100, 999);
+            System.out.println(randomNumber);
             goGame = 2;
         } while (goGame != 2);
     }
