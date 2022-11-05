@@ -12,17 +12,17 @@ public class Player {
     public List<Integer> createThreeDifferentNumbers() {
         threeDifferentNumbers = new ArrayList<>();
         System.out.print(ENTER_NUMBERS_MESSAGE);
-        String input = Console.readLine();
+        String enteredNumbers = Console.readLine();
 
-        NumberValidator.check(input);
-        splitToDigits(input);
+        NumberValidator.check(enteredNumbers);
+        splitToDigits(enteredNumbers);
         return threeDifferentNumbers;
     }
 
-    public void splitToDigits(String input) {
-        for (char character : input.toCharArray()) {
-            Integer number = Character.getNumericValue(character);
-            threeDifferentNumbers.add(number);
+    public void splitToDigits(String numbers) {
+        for (char character : numbers.toCharArray()) {
+            Integer numericValue = Character.getNumericValue(character);
+            threeDifferentNumbers.add(numericValue);
         }
     }
 }
