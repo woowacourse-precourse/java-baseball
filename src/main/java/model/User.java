@@ -84,7 +84,7 @@ public class User {
         return true;
     }
 
-    private List getListStrArr2Split(String str) {
+    private static List getListStrArr2Split(String str) {
         String[] strArr = str.split("");
         List<Integer> list = new ArrayList<>();
         for (String value : strArr) {
