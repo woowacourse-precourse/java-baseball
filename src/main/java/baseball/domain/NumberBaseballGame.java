@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.dto.ScoreResult;
+import baseball.dto.ScoreResultType;
 import baseball.util.GameExceptionMessage;
 import baseball.util.ShowGameMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -22,7 +23,15 @@ public class NumberBaseballGame {
         init();
         while (scoreBoard.isPlaying()) {
             showGameMessage.inputUserNumberMessage();
-            ScoreResult result = scoreBoard.getScore(getUserNumberBall());
+            ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
+            showGameMessage.gameResultMessage(result);
+            if (result.getType() == ScoreResultType.ALL_STRIKE) {
+                if (continueGame(getUserInputString())) {
+                    init();
+                } else {
+                    scoreBoard.setIsPlaying();
+                }
+            }
         }
     }
 
@@ -37,6 +46,22 @@ public class NumberBaseballGame {
 
     private String getUserInputString() {
         return Console.readLine();
+    }
+
+    private boolean continueGame(String userInput) {
+        validateContinueUserInput(userInput);
+        if (userInput.charAt(0) == '1') {
+            return true;
+        }
+        return false;
+    }
+
+    private void validateContinueUserInput(String userInput) {
+        if (userInput.length() > 1) {
+            throw new IllegalArgumentException("길이 1초과");
+        } else if (!(userInput.charAt(0) == '1' || userInput.charAt(0) == '2')) {
+            throw new IllegalArgumentException("1혹은 2만 입력");
+        }
     }
 
     private void validate(String userInput) {
