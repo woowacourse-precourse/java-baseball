@@ -9,6 +9,7 @@ import baseball.domain.comparator.Comparator;
 import baseball.domain.computer.Computer;
 import baseball.domain.number.BaseBallGameNumbers;
 import baseball.domain.player.Player;
+import baseball.domain.result.CompareResult;
 
 import java.util.List;
 
@@ -29,18 +30,6 @@ public class BaseBallGameContext {
         this.writer = config.writer();
         this.reader = config.reader();
         this.randomNumberGenerator = config.randomNumberGenerator();
-    }
-
-    public Player player() {
-        return player;
-    }
-
-    public Computer computer() {
-        return computer;
-    }
-
-    public Comparator comparator() {
-        return comparator;
     }
 
     public void init() {
@@ -65,5 +54,11 @@ public class BaseBallGameContext {
 
     public String readLine() {
         return reader.readLine();
+    }
+
+    public CompareResult comparePlayerAndComputer() {
+        return comparator.compare(
+                player.baseBallGameNumbers(),
+                computer.baseBallGameNumbers());
     }
 }

@@ -1,12 +1,7 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.domain.comparator.Comparator;
-import baseball.domain.computer.Computer;
-import baseball.domain.number.BaseBallGameNumbers;
-import baseball.domain.player.Player;
 import baseball.domain.result.CompareResult;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,30 +12,13 @@ import static org.mockito.Mockito.*;
 class GameProgressStepTest {
 
     private final BaseBallGameContext context = mock(BaseBallGameContext.class);
-    private final Comparator comparator  = mock(Comparator.class);
-
-
-    @BeforeEach
-    void init() {
-       when(context.player()).thenReturn(player());
-       when(context.computer()).thenReturn(new Computer(new BaseBallGameNumbers("123")));
-       when(context.comparator()).thenReturn(comparator);
-    }
 
     private CompareResult answerResult() {
         CompareResult compareResult = new CompareResult();
         compareResult.addStrike();
         compareResult.addStrike();
         compareResult.addStrike();
-
         return compareResult;
-    }
-
-    private Player player() {
-        BaseBallGameNumbers numbers = new BaseBallGameNumbers("123");
-        Player player = new Player();
-        player.changeNumbers(numbers);
-        return player;
     }
 
     @Test
@@ -62,14 +40,14 @@ class GameProgressStepTest {
         // given
         GameProgressStep gameProgressStep = new GameProgressStep();
 
-        when(comparator.compare(any(), any())).thenReturn(answerResult());
+        when(context.comparePlayerAndComputer()).thenReturn(answerResult());
 
         // when
         gameProgressStep.execute(context);
 
         // then
-        verify(comparator, times(1))
-                .compare(any(BaseBallGameNumbers.class), any(BaseBallGameNumbers.class));
+        verify(context, times(1))
+                .comparePlayerAndComputer();
     }
 
     @Test
@@ -78,7 +56,7 @@ class GameProgressStepTest {
         // given
         GameProgressStep gameProgressStep = new GameProgressStep();
 
-        when(comparator.compare(any(), any())).thenReturn(answerResult());
+        when(context.comparePlayerAndComputer()).thenReturn(answerResult());
 
         gameProgressStep.execute(context);
 
@@ -95,7 +73,7 @@ class GameProgressStepTest {
         // given
         GameProgressStep gameProgressStep = new GameProgressStep();
 
-        when(comparator.compare(any(), any())).thenReturn(new CompareResult());
+        when(context.comparePlayerAndComputer()).thenReturn(new CompareResult());
 
         gameProgressStep.execute(context);
 
@@ -113,7 +91,7 @@ class GameProgressStepTest {
         GameProgressStep gameProgressStep = new GameProgressStep();
 
         CompareResult compareResult = new CompareResult();
-        when(comparator.compare(any(), any())).thenReturn(compareResult);
+        when(context.comparePlayerAndComputer()).thenReturn(compareResult);
 
         // when
         gameProgressStep.execute(context);
