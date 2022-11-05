@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 
 public class Referee {
 	private static final int PLAYING_NUMBER_SIZE = 3;
+	private static final String STRIKE_MESSAGE = "%d스트라이크";
+	private static final String BALL_MESSAGE = "%d볼";
+	private static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크";
+	private static final String NOTHING_MESSAGE = "낫싱";
+
 	private final List<Integer> pitcherPlayingNumbers;
 	private final List<Integer> batterPlayingNumbers;
 
@@ -14,20 +19,19 @@ public class Referee {
 		this.batterPlayingNumbers = batter.getPlayingNumbers();
 	}
 
-	public Referee(List<Integer> pitcherPlayingNumbers, List<Integer> batterPlayingNumbers) {
-		this.pitcherPlayingNumbers = pitcherPlayingNumbers;
-		this.batterPlayingNumbers = batterPlayingNumbers;
+	public Referee(List<Integer> firstTestNumbers, List<Integer> secondTestNumbers) {
+		this.pitcherPlayingNumbers = firstTestNumbers;
+		this.batterPlayingNumbers = secondTestNumbers;
 	}
 
 	public String getResultMessage() {
 		if (pitcherPlayingNumbers.equals(batterPlayingNumbers)) {
-			return "3스트라이크";
+			return String.format(STRIKE_MESSAGE, PLAYING_NUMBER_SIZE);
 		}
-		// 스트라이크 개수 메서드
+
 		int numberOfStrikes = getNumberOfStrikes();
-		// 볼 개수 메서드
 		int numberOfBalls = getNumberOfBalls(numberOfStrikes);
-		//리턴 볼이 0일때, 스트라이크가 0일때 낫싱일때
+
 		return judgeResult(numberOfBalls, numberOfStrikes);
 	}
 
@@ -39,8 +43,8 @@ public class Referee {
 		return numberOfStrikes;
 	}
 
-	private int addNumberOfStrikes(int i) {
-		if (pitcherPlayingNumbers.get(i).equals(batterPlayingNumbers.get(i))) {
+	private int addNumberOfStrikes(int index) {
+		if (pitcherPlayingNumbers.get(index).equals(batterPlayingNumbers.get(index))) {
 			return 1;
 		}
 		return 0;
@@ -60,14 +64,14 @@ public class Referee {
 
 	private String judgeResult(int numberOfBalls, int numberOfStrikes) {
 		if (numberOfBalls == 0 && numberOfStrikes == 0) {
-			return "낫싱";
+			return NOTHING_MESSAGE;
 		}
 		if (numberOfBalls == 0) {
-			return String.format("%d스트라이크", numberOfStrikes);
+			return String.format(STRIKE_MESSAGE, numberOfStrikes);
 		}
 		if (numberOfStrikes == 0) {
-			return String.format("%d볼", numberOfBalls);
+			return String.format(BALL_MESSAGE, numberOfBalls);
 		}
-		return String.format("%d볼 %d스트라이크", numberOfBalls, numberOfStrikes);
+		return String.format(BALL_STRIKE_MESSAGE, numberOfBalls, numberOfStrikes);
 	}
 }
