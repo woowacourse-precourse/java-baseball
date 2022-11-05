@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public static List<Integer> createThreeLengthIntegerList() {
-        List<Integer> threeLengthNonDuplicateIntegerList = new ArrayList<>();
-        while (threeLengthNonDuplicateIntegerList.size()
+    public static List<Integer> createNonDuplicateIntegerList() {
+        List<Integer> nonDuplicateIntegerList = new ArrayList<>();
+        while (nonDuplicateIntegerList.size()
                 < GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue()) {
             int randomValue = Random.randomIntegerCreatorFromArgs1ToArgs2(
                     GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_START.getIntegerValue(),
                     GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_FINISH.getIntegerValue());
-            if (!(threeLengthNonDuplicateIntegerList.contains(randomValue))) {
-                threeLengthNonDuplicateIntegerList.add(randomValue);
+            if (!(nonDuplicateIntegerList.contains(randomValue))) {
+                nonDuplicateIntegerList.add(randomValue);
             }
         }
-        return threeLengthNonDuplicateIntegerList;
+        return nonDuplicateIntegerList;
     }
 }
