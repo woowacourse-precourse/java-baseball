@@ -6,15 +6,22 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
+        Application.Processing processing = new Application.Processing();
+        processing.printStartMessage();
+        do{
+            ArrayList<String> answer = processing.makeRandomAnswer();
+            processing.startGame(answer);
+        }
+        while(processing.askContinue());
 
     }
 
     public static class Validations{
-        public void isCorrectInput(String inputNum) throws IllegalArgumentException{
+        public void isCorrectInput(String inputNum){
             List<String> inputNumList = List.of(inputNum.split(""));
-            if( !(isSizeThree(inputNumList) && isNumber(inputNumList)) && !inputNumList.isEmpty() ){
+            if(!(isSizeThree(inputNumList) && isNumber(inputNumList)) && !inputNumList.isEmpty()){
                 throw new IllegalArgumentException();
             }
         }
@@ -41,12 +48,27 @@ public class Application {
             return strikeCount == 3;
         }
 
-
-
     }
+
     public static class Processing {
         private final Validations validations = new Validations();
 
+        public void startGame(ArrayList<String> answer) throws IllegalArgumentException{
+            boolean flag = false ;
+            while (!flag){
+                ArrayList<String> playerInput = askInputNumber();
+                if(validations.checkIsItNothing(answer, playerInput)){
+                    printNothing();
+                }else{
+                    playerInput = findContainedNumbers(answer, playerInput);
+                    Map<String, Object> resultMap = calculateStrikeAndBall(answer, playerInput);
+                    printBall((int)resultMap.get("ballCount"));
+                    printStrike((int)resultMap.get("strikeCount"));
+                    flag = (boolean)resultMap.get("isStrikeThree");
+                }
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
 
         public ArrayList<String> makeRandomAnswer(){
             List<Integer> answer = new ArrayList<>();
@@ -59,18 +81,13 @@ public class Application {
             return (ArrayList<String>) answer.stream().map(Object::toString).collect(Collectors.toList());
         }
 
-        public ArrayList<String> askInputNumber(){
-//            String inputNum = Console.readLine();
-            ArrayList<String> returnList = new ArrayList<>();
-            String inputNum = "423";
-            try{
-                validations.isCorrectInput(inputNum);
-                List<String> splitList = Arrays.asList(inputNum.split(""));
-                returnList.addAll(splitList);
-            }catch (IllegalArgumentException e){
-                e.printStackTrace();
-            }
-            return returnList ;
+        public ArrayList<String> askInputNumber() {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNum = Console.readLine();
+
+            validations.isCorrectInput(inputNum);
+
+            return new ArrayList<>(Arrays.asList(inputNum.split("")));
         }
 
         public ArrayList<String> findContainedNumbers(ArrayList<String> answer, ArrayList<String> userNumList){
@@ -129,5 +146,16 @@ public class Application {
             }
         }
 
+        public boolean askContinue() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String inputNum = Console.readLine();
+            if (inputNum.contentEquals("1")){
+                return true;
+            }else if(inputNum.contentEquals("2")){
+                return false;
+            }else{
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
