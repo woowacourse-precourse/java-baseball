@@ -20,7 +20,7 @@ public class Player {
         System.out.print("숫자를 입력해주세요 : ");
         String playerStringNumber = Console.readLine();
 
-        if (!(doubleCheck(playerStringNumber) && isNumeric(playerStringNumber))) {
+        if (!(doubleCheck(playerStringNumber) && isNumeric(playerStringNumber) && playerStringNumber.length() == 3)) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
 
