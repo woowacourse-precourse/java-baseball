@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class User {
@@ -12,12 +13,13 @@ public class User {
     }
 
     public static List getUserNum() {
-            String userStr = Console.readLine();
-            validateInt(userStr);
-            validateLen(userStr);
-            List<String> user = new ArrayList<>(Arrays.asList(userStr.split("")));
-            validateDup(user);
-            return user;
+        String userStr = Console.readLine();
+        validateInt(userStr);
+        validateLen(userStr);
+        List<String> userStrList = new ArrayList<>(Arrays.asList(userStr.split("")));
+        List<Integer> user = userStrList.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
+        validateDup(user);
+        return user;
     }
 
     // validate type of input
@@ -38,7 +40,7 @@ public class User {
 
     // validate duplicate of input
     public static void validateDup(List user) {
-        Set<String> set = new HashSet<>(user);
+        Set<Integer> set = new HashSet<>(user);
         if (set.size() != user.size()) {
             throw new IllegalArgumentException();
         }
