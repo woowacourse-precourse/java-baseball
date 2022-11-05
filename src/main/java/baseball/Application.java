@@ -1,9 +1,9 @@
 package baseball;
 
-
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,7 +60,23 @@ public class Application {
 		return answer;
 	}
 	public static String calculate_Result(List<Integer> answer_list){
-		return "tmp";
+		String ball_cnt ="";
+		String strike_cnt="";
+		int ball = answer_list.get(0);
+		if(ball !=0) {
+			ball_cnt += ball+"볼";
+		}
+		int strike= answer_list.get(1);
+		if(strike!=0){
+			strike_cnt += strike+"스트라이크";
+		}
+		if(ball_cnt.equals("")){
+			return strike_cnt;
+		}
+		if(strike_cnt.equals("")){
+			return ball_cnt;
+		}
+		return ball_cnt+" "+strike_cnt;
 	}
     public static void start_new_Baseball_Game() {
     	System.out.println("숫자 야구 게임을 시작합니다.");
