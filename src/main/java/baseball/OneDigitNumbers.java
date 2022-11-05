@@ -2,9 +2,10 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class OneDigitNumbers {
+public class OneDigitNumbers implements Iterable<Integer> {
     private final List<Integer> oneDigitNumbers;
 
     public OneDigitNumbers(int number) {
@@ -49,5 +50,24 @@ public class OneDigitNumbers {
         Collections.reverse(oneDigitNumbers);
 
         return oneDigitNumbers;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new OneDigitNumbersIterator();
+    }
+
+    class OneDigitNumbersIterator implements Iterator<Integer> {
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < oneDigitNumbers.size();
+        }
+
+        @Override
+        public Integer next() {
+            return oneDigitNumbers.get(index++);
+        }
     }
 }
