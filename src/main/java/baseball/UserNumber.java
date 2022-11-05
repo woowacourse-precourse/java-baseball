@@ -11,7 +11,7 @@ public class UserNumber {
         System.out.println("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
         List<Integer> userNumberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < userNumber.length(); i++)
             userNumberList.add(userNumber.charAt(i) - '0');
         return userNumberList;
     }
