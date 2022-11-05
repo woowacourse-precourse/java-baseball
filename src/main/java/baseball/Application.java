@@ -1,26 +1,24 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
-    private static List<Integer> generateRandom3Numbers() {
-        List<Integer> randomNums = new ArrayList<>();
-        for (int repetition = 0; repetition < 3; repetition++) {
-            randomNums.add(Randoms.pickNumberInRange(1, 9));
+    private static List<Integer> generateRandomNoDuplication3Numbers() {
+        HashSet<Integer> removeDuplication=new HashSet<>();
+        while(removeDuplication.size()<3) {
+            int random=Randoms.pickNumberInRange(1, 9);
+            removeDuplication.add(random);
         }
+        List<Integer> randomNums = new ArrayList<>(removeDuplication);
         return randomNums;
     }
 
-    private static boolean startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean gameStarted = true;
-        return gameStarted;
+    private static List<Integer> startGame() {
+        List<Integer> answer= generateRandomNoDuplication3Numbers();
+        return answer;
     }
 
     private static List<Integer> seperate3Numbers(int input) {
@@ -111,9 +109,10 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        List<Integer> answer = generateRandom3Numbers();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> answer = startGame();
         System.out.println(answer);
-        boolean gameOn = startGame();
+        boolean gameOn = true;
         Scanner sc = new Scanner(System.in);
         while (gameOn) {
             int userInput = sc.nextInt();
@@ -124,8 +123,7 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 userInput=sc.nextInt();
                 if(userInput==1){
-                    gameOn = startGame();
-                    answer = generateRandom3Numbers();
+                    answer = startGame();
                 }
                 else {
                     gameOn = !correctAnswer(comparedMap);
