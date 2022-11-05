@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
-  // 길이가 3이 아니면 - 추후 전역상수로 바꾸는게..
+  // 길이가 3이 아니면
   public static boolean isRightLength(String userNumber) {
-    if (userNumber.length() != 3)
+    if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH)
       throw new IllegalArgumentException();
     return true;
   }
