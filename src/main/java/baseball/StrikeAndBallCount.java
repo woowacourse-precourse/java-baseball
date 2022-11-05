@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,9 +15,11 @@ public class StrikeAndBallCount {
     private final int digitNumber;
 
     public StrikeAndBallCount(List<Integer> target, List<Integer> guessValue) {
+        List<Integer> copyTarget = new ArrayList<>(target);
+        List<Integer> copyGuessValue = new ArrayList<>(guessValue);
         digitNumber = target.size();
-        setStrikeCountAndCheckIfStrike(target, guessValue);
-        setBallCount(target, guessValue);
+        setStrikeCountAndCheckIfStrike(copyTarget, copyGuessValue);
+        setBallCount(copyTarget, copyGuessValue);
     }
 
     //스트라이크 수를 파악 후, 만약 스트라이크면 해당 요소에 체크 진행(이후 볼 카운트시 이중으로 카운트 방지)
