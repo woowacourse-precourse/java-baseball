@@ -44,4 +44,12 @@ public class Ball {
         }
         return count;
     }
+
+    public int compareByValue(Ball ball) {
+        String expectedBall = ball.toString();
+        return (int) expectedBall.chars()
+                .mapToObj(Character::toString)
+                .filter(numberBall::contains)
+                .count();
+    }
 }
