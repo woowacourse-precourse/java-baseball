@@ -13,6 +13,13 @@ public class Application {
 
     }
 
+    private static boolean getResult() {
+        List<String> receivingNumbers = receivingValue();
+        List<String> random = createRandom();
+
+        return false;
+    }
+
     private static List<String> createRandom() {
         List<String> randomNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
