@@ -7,4 +7,5 @@ public interface GameService {
     int calcStrike(int [] inputNumbers);
     int calcBallet(int [] inputNumbers);
     void calcResult(int [] inputNumbers);
+    boolean isGameOver(int [] inputNumbers);
 }

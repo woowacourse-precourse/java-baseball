@@ -82,5 +82,9 @@ public class GameServiceImpl implements GameService {
         System.out.println(printString);
     }
 
+    @Override
+    public boolean isGameOver(int[] inputNumbers) {
+        return this.calcStrike(inputNumbers) == 3;
+    }
 
 }
