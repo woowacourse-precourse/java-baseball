@@ -3,6 +3,8 @@ package baseball;
 import java.util.Collections;
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class GameNumber {
     private final List<Integer> gameNums;
 
@@ -13,8 +15,8 @@ public class GameNumber {
     public int getStrikes(UserNumber userNumber) {
         List<Integer> userNums = userNumber.getUserNums();
         int strikes = 0;
-        for (int i = 0; i < 3; i++) {
-            strikes += checkStrike(gameNums.get(i), userNums.get(i));
+        for (int position = 0; position < RANGE; position++) {
+            strikes += checkStrike(position, userNums.get(position));
         }
         return strikes;
     }
@@ -22,23 +24,23 @@ public class GameNumber {
     public int getBalls(UserNumber userNumber) {
         List<Integer> userNums = userNumber.getUserNums();
         int balls = 0;
-        for (int position = 0; position < 3; position++) {
+        for (int position = 0; position < RANGE; position++) {
             balls += checkBall(userNums.get(position), position);
         }
         return balls;
     }
 
-    private int checkStrike(int gameNum, int userNum) {
+    private int checkStrike(int position, int userNum) {
         int strike = 0;
-        if (gameNum == userNum) {
+        if (gameNums.get(position) == userNum) {
             return strike + 1;
         }
         return strike;
     }
 
-    private int checkBall(int userNum,int positionOfUserNum) {
+    private int checkBall(int userNum, int positionOfUserNum) {
         int ball = 0;
-        for (int position = 0; position < 3; position++) {
+        for (int position = 0; position < RANGE; position++) {
             if (position == positionOfUserNum) {
                 continue;
             }

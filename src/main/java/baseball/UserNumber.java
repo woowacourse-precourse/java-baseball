@@ -8,7 +8,7 @@ public class UserNumber {
     private final List<Integer> userNums;
 
     public UserNumber(String userNumberInString) {
-        Exceptions.isValidateInputUserNums(userNumberInString);
+        Exceptions.isValidInputUserNums(userNumberInString);
         this.userNums = convertUserNumbers(userNumberInString);
     }
 
