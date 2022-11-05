@@ -118,4 +118,13 @@ class BaseballEngineTest {
 
         assertThat(ballCount).isEqualTo(3);
     }
+
+    @Test
+    void getStrikeCountIfPresentOrZero_함수로_스트라이크_카운트_세기() {
+        List<Integer> answerList = List.of(1, 5, 3);
+        List<Integer> userInputList = List.of(1, 2, 3);
+        int strikeCount = engine.getStrikeCountIfPresentOrZero(answerList, userInputList);
+
+        assertThat(strikeCount).isEqualTo(2);
+    }
 }
