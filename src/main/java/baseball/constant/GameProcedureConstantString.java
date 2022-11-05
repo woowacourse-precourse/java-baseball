@@ -1,7 +1,8 @@
 package baseball.constant;
 
 public enum GameProcedureConstantString {
-    GAME_START_MESSAGE("숫자 야구 게임을 시작합니다.");
+    GAME_START_MESSAGE("숫자 야구 게임을 시작합니다."),
+    USER_SIDE_BASEBALL_CREATE_MESSAGE("숫자를 입력해주세요 : ");
 
     private String stringMessage;
 

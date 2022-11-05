@@ -7,12 +7,18 @@ import java.util.stream.Collectors;
 public class Validation {
 
     public static void userBaseballInputValidation(String userInput) {
-        isInputLengthValidate(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
-        isInteger(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
-        isValidInterval(userInput, GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_START.getIntegerValue(),
-                GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_FINISH.getIntegerValue(),
-                GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
-        isContainsDuplicate(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+        try {
+            isInputLengthValidate(userInput,
+                    GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+            isInteger(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+            isValidInterval(userInput, GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_START.getIntegerValue(),
+                    GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_FINISH.getIntegerValue(),
+                    GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+            isContainsDuplicate(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static void isContainsDuplicate(String userInput, int inputLength) {
