@@ -4,34 +4,32 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class BaseballGame {
 
-    private String receiveInput(){
+    private String receiveInput() {
         String inputNum;
         inputNum = Console.readLine();
         return inputNum;
     }
 
-    private List<String> makeInputNumList(String inputNum){
+    private List<String> makeInputNumList(String inputNum) {
         String[] inputNumArray = inputNum.split("");
         List<String> inputNumList = new ArrayList<>(Arrays.asList(inputNumArray));
         return inputNumList;
     }
 
-    private void makeErrorCheckingInputSize(int[] inputNumArray){
-        try{
-            if(inputNumArray.length > 3)
+    private void makeErrorCheckingInputSize(int[] inputNumArray) {
+        try {
+            if (inputNumArray.length > 3)
                 throw new IllegalArgumentException();
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("세 자리 이상의 수를 입력하였습니다");
             System.exit(1);
         }
     }
 
-    private List<String> makeComputerNumList(){
+    private List<String> makeComputerNumList() {
         List<String> computerNumList = new ArrayList<>();
         while (computerNumList.size() < 3) {
             String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
@@ -42,4 +40,10 @@ public class BaseballGame {
         return computerNumList;
     }
 
+    private int checkBall(List<String> inputNumList, List<String> computerNumList) {
+        List<String> checkBallNumList = new ArrayList<>();
+        checkBallNumList = inputNumList;
+        checkBallNumList.retainAll(computerNumList);
+        return checkBallNumList.size();
+    }
 }
