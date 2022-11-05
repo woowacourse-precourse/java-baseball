@@ -1,6 +1,7 @@
 package baseball;
 
 import static Controller.Converter.*;
+import static Controller.Guess.*;
 import static Controller.Printer.*;
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -20,6 +21,20 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void guess_메소드로_정답을_추측하는_기능_구현() {
+		List<Integer> answer = List.of(4, 9, 2);
+		String wrongInput = "283";
+		System.setIn(new ByteArrayInputStream(wrongInput.getBytes()));
+		assertThat(guess(answer)).isFalse();
+
+		String rightInput = "492";
+		System.setIn(new ByteArrayInputStream(rightInput.getBytes()));
+		assertThat(guess(answer)).isTrue();
+
+		assertThat(output()).isEqualTo("숫자를 입력해주세요 : \n1볼\n숫자를 입력해주세요 : \n3스트라이크");
+	}
+
 	@Test
 	void convertStringToIntegerList_메소드로_문자열을_정수_리스트로_변환() {
 		assertThat(convertStringToIntegerList("746")).isInstanceOf(ArrayList.class);
