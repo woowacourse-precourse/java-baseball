@@ -28,4 +28,15 @@ public class CustumTest {
         assertThat(computer.calcHint("319", "123")).isEqualTo(Arrays.asList(2, 0));
         assertThat(computer.calcHint("123", "123")).isEqualTo(Arrays.asList(0, 3));
     }
+
+    @Test
+    void 힌트_계산_출력하기() {
+        Computer computer = new Computer();
+
+        assertThat(computer.printHint(Arrays.asList(0, 0))).isEqualTo("낫싱");
+        assertThat(computer.printHint(Arrays.asList(0, 3))).isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(computer.printHint(Arrays.asList(1, 2))).isEqualTo("1볼 2스트라이크");
+        assertThat(computer.printHint(Arrays.asList(3, 0))).isEqualTo("3볼");
+        assertThat(computer.printHint(Arrays.asList(2, 1))).isEqualTo("2볼 1스트라이크");
+    }
 }
