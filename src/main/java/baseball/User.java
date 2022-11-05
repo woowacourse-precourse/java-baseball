@@ -2,6 +2,9 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     public String userInput() {
         String userInput = readLine();
@@ -11,6 +14,19 @@ public class User {
 
     public String restartOrEndInput() {
         return readLine();
+    }
+
+    public List<Integer> userInputToList(String userInputNumber) {
+
+        List<Integer> userInputArr = new ArrayList<>();
+
+        String[] split = userInputNumber.split("");
+
+        for (String s : split) {
+            userInputArr.add(Integer.valueOf(s));
+        }
+
+        return userInputArr;
     }
 
     public int validRestartOrEndInput(String userInput) {
