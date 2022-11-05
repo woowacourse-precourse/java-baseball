@@ -44,6 +44,46 @@ class Game {
         hasZero(gamePlayerNumberInput);
     }
 
+    public String getResult(String computerRandomNumbers, String gamePlayerInput) {
+        Integer strikes = countStrikes(computerRandomNumbers, gamePlayerInput);
+        Integer balls = countBalls(computerRandomNumbers, gamePlayerInput );
+        StringBuilder result = new StringBuilder();
+
+        if (strikes > 0) {
+            result.append(strikes + "스트라이크 ");
+        }
+
+        if (balls > 0) {
+            result.append((balls - strikes) + "볼 ");
+        }
+
+        if (strikes == balls && balls == 0) {
+            result.append("낫싱");
+        }
+        System.out.println(result);
+        return result.toString();
+    }
+
+    private Integer countStrikes(String computerRandomNumbers, String gamePlayerInput) {
+        int strikes = 0;
+        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
+            if (computerRandomNumbers.charAt(stringIndex) == gamePlayerInput.charAt(stringIndex)) {
+                strikes++;
+            }
+        }
+        return strikes;
+    }
+
+    private Integer countBalls(String computerRandomNumbers, String gamePlayerInput) {
+        int balls = 0;
+        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
+            if (computerRandomNumbers.contains(Character.toString(gamePlayerInput.charAt(stringIndex)))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
+
     private void checkNumberLength(String stringGamePlayerInput) {
         int stringLength =  stringGamePlayerInput.length();
         if (stringLength > NUMBER_LENGTH || stringLength < 1) {
