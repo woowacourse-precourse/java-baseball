@@ -13,7 +13,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     static List<Integer> computerRandomNumber = new ArrayList<>();
-    static boolean exitOrRestartSign=false;
+    static boolean exitOrRestartSign = false;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
@@ -22,47 +23,47 @@ public class Application {
             }
 
             System.out.print("숫자를 입력해주세요 : ");
-            String userInput=Console.readLine();
-            if(!checkErrorInUserInput(userInput)){
+            String userInput = Console.readLine();
+            if (!checkErrorInUserInput(userInput)) {
                 break;
             }
 
 
-            if(checkScoreInUserInput(userInput)){
-                exitOrRestartSign=exitOrRestart();
+            if (checkScoreInUserInput(userInput)) {
+                exitOrRestartSign = exitOrRestart();
             }
-            if(exitOrRestartSign){
+            if (exitOrRestartSign) {
                 break;
             }
 
         }
     }
+
     // 나가기 or 재시작
     private static boolean exitOrRestart() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String message = Console.readLine();
-        try{
-            if(message.equals("1")){
-                    computerRandomNumber.clear();
-                    return false;
-            }
-            else if(message.equals("2")){
+        try {
+            if (message.equals("1")) {
+                computerRandomNumber.clear();
+                return false;
+            } else if (message.equals("2")) {
                 return true;
-            }
-            else{
+            } else {
                 throw new IllegalArgumentException();
             }
-        }catch (IllegalArgumentException e){
-            return true;
+        } catch (IllegalArgumentException e) {
+            throw e;
         }
+
     }
 
 
     // 스트라이크, 볼, 낫싱 판별 후 출력
     static boolean checkScoreInUserInput(String userInput) {
-        int strikeCnt=0;
-        int ballCnt=0;
+        int strikeCnt = 0;
+        int ballCnt = 0;
         List<Integer> userInputList = new ArrayList<>();
 
         for (int index = 0; index < 3; index++) {
@@ -71,29 +72,29 @@ public class Application {
 
         boolean aleadyCheckedIndex[] = new boolean[3];
         for (int index = 0; index < 3; index++) {
-            if(userInputList.get(index)==computerRandomNumber.get(index)){
+            if (userInputList.get(index) == computerRandomNumber.get(index)) {
                 strikeCnt++;
-                aleadyCheckedIndex[index]=true;
+                aleadyCheckedIndex[index] = true;
             }
         }
         for (int index = 0; index < 3; index++) {
-            if(aleadyCheckedIndex[index]){
-               continue;
+            if (aleadyCheckedIndex[index]) {
+                continue;
             }
-            if(computerRandomNumber.contains(userInputList.get(index))){
+            if (computerRandomNumber.contains(userInputList.get(index))) {
                 ballCnt++;
             }
         }
-        if(ballCnt==0&&strikeCnt==0){
+        if (ballCnt == 0 && strikeCnt == 0) {
             System.out.println("낫싱");
-        } else if (ballCnt==0&&strikeCnt!=0) {
-            System.out.println(strikeCnt+"스트라이크");
-        }else if (ballCnt!=0&&strikeCnt==0){
-            System.out.println(ballCnt+"볼");
-        }else{
-            System.out.println(ballCnt+"볼 "+strikeCnt+"스트라이크");
+        } else if (ballCnt == 0 && strikeCnt != 0) {
+            System.out.println(strikeCnt + "스트라이크");
+        } else if (ballCnt != 0 && strikeCnt == 0) {
+            System.out.println(ballCnt + "볼");
+        } else {
+            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
         }
-        if(strikeCnt==3){
+        if (strikeCnt == 3) {
             return true;
         }
         return false;
@@ -110,23 +111,22 @@ public class Application {
         }
         return computer;
     }
+
     //유저 입력 체크
-    static boolean checkErrorInUserInput(String userInput){
+    static boolean checkErrorInUserInput(String userInput) {
         Set<Integer> numbersSet = new HashSet<>();
         for (int strIndex = 0; strIndex < userInput.length(); strIndex++) {
-            int number=userInput.charAt(strIndex)-'0';
+            int number = userInput.charAt(strIndex) - '0';
             numbersSet.add(number);
         }
-        try{
-            if(numbersSet.size()==3){
+        try {
+            if (numbersSet.size() == 3) {
                 return true;
-            }
-            else{
+            } else {
                 throw new IllegalArgumentException();
             }
-        }catch (IllegalArgumentException e){
-
-            return false;
+        } catch (IllegalArgumentException e) {
+            throw e;
         }
     }
 
