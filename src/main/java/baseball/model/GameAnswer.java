@@ -17,11 +17,11 @@ public class GameAnswer {
     }
 
     public void setNumber() {
-        this.answer = new ArrayList<>();
-        while (this.answer.size() < 3) {
+        answer = new ArrayList<>();
+        while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!this.answer.contains(randomNumber)) {
-                this.answer.add(randomNumber);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
             }
         }
     }

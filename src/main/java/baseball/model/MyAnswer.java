@@ -14,7 +14,7 @@ public class MyAnswer {
     }
 
     public void setAnswer(int number) {
-        this.answer = new ArrayList<>();
+        answer = new ArrayList<>();
         while(number > 0) {
             answer.add(0,number % 10);
             number /= 10;
