@@ -16,12 +16,13 @@ public class Application {
         int num2;
         int num3;
 
-        while(true) {
+        do {
             num1 = (int)(Math.random() * 9 + 1);
             num2 = (int)(Math.random() * 9 + 1);
             num3 = (int)(Math.random() * 9 + 1);
 
-            if(num1 != num2 && num1 != num3 && num2 != num3){break;}};
+        } while (num1 == num2 || num1 == num3 || num2 == num3);
+        ;
 
         ArrayList<Integer> answer = new ArrayList<Integer>();
         answer.add(num1);
