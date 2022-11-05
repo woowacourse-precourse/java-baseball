@@ -195,6 +195,47 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validateUserInputThreeDifferentNumbers_정상처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "384";
+        final String case2 = "247";
+
+        //when
+        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case2);});
+
+        //then
+        assertThat(thrown1).as("validateUserInputThreeDifferentNumbers 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(thrown2).as("validateUserInputThreeDifferentNumbers 정상처리 테스트").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateUserInputThreeDifferentNumbers_예외처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "000";
+        final String case2 = "272";
+        final String case3 = "12345";
+        final String case4 = "";
+        final String case5 = "Exception String";
+
+        //when
+        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case2);});
+        final Throwable thrown3 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case3);});
+        final Throwable thrown4 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case4);});
+        final Throwable thrown5 = catchThrowable(()->{T.validateUserInputThreeDifferentNumbers(case5);});
+
+        //then
+        assertThat(thrown1).as("validateUserInputThreeDifferentNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown2).as("validateUserInputThreeDifferentNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown3).as("validateUserInputThreeDifferentNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown4).as("validateUserInputThreeDifferentNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown5).as("validateUserInputThreeDifferentNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
