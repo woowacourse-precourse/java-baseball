@@ -26,7 +26,7 @@ class BallTest {
     @Test
     void 입력으로_들어온_숫자를_Ball_객체로_변환() {
         // given
-        Ball ball = new Ball(1);
+        Ball ball = new Ball('1');
 
         // then
         assertThat(ball.getNumber()).isEqualTo(1);
@@ -34,7 +34,7 @@ class BallTest {
 
     @Test
     void 잘못된_입력이_들어온_경우_Exception_반환() {
-        assertThatThrownBy(() -> new Ball(0))
+        assertThatThrownBy(() -> new Ball('0'))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_INPUT);
     }

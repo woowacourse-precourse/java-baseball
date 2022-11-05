@@ -12,18 +12,18 @@ public class Ball {
     public Ball() { // Default 생성자
     }
 
-    public Ball(int number) {
+    public Ball(char number) {
         if (!validate(number)) {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
 
-        this.number = number;
+        this.number = number - '0';
     }
 
-    public boolean validate(int number) {
-        char numberToChar = (char) (number + '0');
+    public boolean validate(char number) {
+        int charToInt = number - '0';
 
-        if ('1' <= numberToChar && numberToChar <= '9') {
+        if (1 <= charToInt && charToInt <= 9) {
             return true;
         }
 

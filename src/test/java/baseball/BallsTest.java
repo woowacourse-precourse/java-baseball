@@ -16,11 +16,11 @@ public class BallsTest {
     void 이미_있는_숫자와_겹치는지_확인하는_기능() {
         // given
         Balls balls = new Balls();
-        balls.addBall(new Ball(1));
+        balls.addBall(new Ball('1'));
 
         // then
-        assertThat(balls.checkDuplicate(new Ball(1))).isTrue();
-        assertThat(balls.checkDuplicate(new Ball(2))).isFalse();
+        assertThat(balls.checkDuplicate(new Ball('1'))).isTrue();
+        assertThat(balls.checkDuplicate(new Ball('2'))).isFalse();
     }
 
     @Test
@@ -65,10 +65,10 @@ public class BallsTest {
         Balls balls = new Balls();
 
         // then
-        assertThatThrownBy(balls.convertInputToBall("12345"))
+        assertThatThrownBy(() -> balls.convertInputToBall("12345"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_INPUT);
-        assertThatThrownBy(balls.convertInputToBall("01a"))
+        assertThatThrownBy(() -> balls.convertInputToBall("01a"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_INPUT);
     }
