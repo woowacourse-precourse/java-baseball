@@ -2,8 +2,11 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -140,5 +143,19 @@ class NumberBaseBallGameMachineTest {
         gameMachine.display(message);
         //then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(message);
+    }
+
+    @DisplayName("콘솔로 입력 받기 테스트")
+    @Test
+    void getInputLine(){
+        //given
+        String input = "콘솔로 입력합니다.";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        //when
+        String inputResult = gameMachine.getInputLine();
+        //then
+        assertThat(input).isEqualTo(inputResult);
     }
 }
