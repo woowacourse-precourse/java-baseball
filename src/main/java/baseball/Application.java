@@ -82,6 +82,14 @@ public class Application {
             System.out.println("낫싱");
             return;
         }
+        if (strikeCnt == 0) {
+            System.out.println(ballCnt + "볼");
+            return;
+        }
+        if (ballCnt == 0) {
+            System.out.println(strikeCnt + "스트라이크");
+            return;
+        }
         System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
     }
 
