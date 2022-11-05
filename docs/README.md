@@ -1,10 +1,10 @@
 # 숫자 야구 게임 구현 기능 목록 
 
 ## 컴퓨터 숫자 선택 기능
-- ⬜ generateComputerRandomNumber 메서드 구현
-  - ⬜ 각 자릿수가 다른 random한 세 자리 숫자 리스트 생성
-    - ⬜ `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 random number 생성
-    - ⬜ 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
+- ✅ generateComputerRandomNumber 메서드 구현
+  - ✅ 각 자릿수가 다른 random한 세 자리 숫자 리스트 생성
+    - ✅ `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 random number 생성
+    - ✅ 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
 
 ## 스트라이크 개수 확인 기능
 - ✅ countStrike 메서드 구현

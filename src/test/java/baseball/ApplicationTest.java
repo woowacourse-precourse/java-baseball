@@ -26,11 +26,10 @@ class ApplicationTest extends NsTest {
     @Test
     void generateComputerRandomNumber_테스트(){
         //given
-        final Application T = new Application();
+        final Core T = new Core();
 
         //when
-//        final List<Integer> computerRandomNumber = T.generateComputerRandomNumber();
-        final List<Integer> computerRandomNumber = List.of(1,2,4);
+        final List<Integer> computerRandomNumber = T.generateComputerRandomNumber();
 
         //then
         assertThat(computerRandomNumber.size()).as("컴퓨터 랜덤 숫자 리스트 길이 검사").isEqualTo(3);
