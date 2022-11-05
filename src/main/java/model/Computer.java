@@ -70,7 +70,6 @@ public class Computer {
         this.cntBall = 0;
     }
 
-    // 게임을 종료해도 되겠니?
     public boolean isEndTheGame() {
         if (this.cntStrike == 3) {
             return true;
@@ -82,13 +81,10 @@ public class Computer {
     public String toString() {
         ResultType result = getResultType();
         switch (result) {
-            // 볼 0 , 스트라이크 0
             case BALL_STRIKE_ZERO:
                 return NOT_TING_ANSWER;
-            // 스트라이크 0
             case BALL_ONLY:
                 return (this.cntBall + "볼 ");
-            // 볼 0
             case STRIKE_ONLY:
                 return (this.cntStrike + "스트라이크");
             case BALL_STRIKE:
@@ -98,15 +94,11 @@ public class Computer {
     }
 
     private ResultType getResultType() {
-        // 볼 0 , 스트라이크 0
         if (isHinNotting()) {
             return ResultType.BALL_STRIKE_ZERO;
-        }
-        // 스트라이크 0
-        else if (isHintBallOnly()) {
+        } else if (isHintBallOnly()) {
             return ResultType.BALL_ONLY;
         }
-        // 볼 0
         if (isHintStrikeOnly()) {
             return ResultType.STRIKE_ONLY;
         }
@@ -142,34 +134,21 @@ public class Computer {
 
     public boolean isRealRightNumOfUser(int numInputOfUser) {
         if (isRightThreeNumOfComputer(numInputOfUser)) {
-            // TODO: 스트라이크와 볼이 있다면
             return true;
         }
-        // TODO: 낫싱이면
         return false;
 
     }
 
-    // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
-    // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
     private Boolean isRightThreeNumOfComputer(int numOfCompare) {
-        // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
-        // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
         if (isContainValueList(this.numThreeRanOfComputerList, splitNumOfCompare)) {
-            // TODO: 2.1 if 포함한다면?
-            // TODO: 2.1.1 스트라이크 체크
             checkStrikeBall(splitNumOfCompare);
-            // TODO: 2.1.2 스트라이크 체크
-//            System.out.println(this.numThreeRanOfComputerList);
-//            System.out.println(this.cntBall + " " + this.cntStrike);
             return true;
         }
-        // TODO: 2.2 else 포함안한다면? => 낫싱
         return false;
     }
 
-    // strike체크 함수
     private void checkStrikeBall(List<Integer> listSplitNum) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
         boolean isStrike = true, isBall = true;
@@ -227,11 +206,9 @@ public class Computer {
 
     private boolean isContainValueList(Collection collection_1,
         Collection<Integer> collection_2) {
-        
         return collection_1.stream().anyMatch((num) -> collection_2.contains(num));
     }
 
-    // 숫자의 각각의 자릿수를 List로 리턴
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
         // TODO: 숫자가 3개인가? 확인
         String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
@@ -258,7 +235,6 @@ public class Computer {
         return Integer.valueOf(str);
     }
 
-    // 유저에게 힌트를 주다
     public String giveHint2User(int numOfCompare) {
         return this.toString();
     }
