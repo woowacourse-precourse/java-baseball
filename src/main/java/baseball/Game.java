@@ -15,7 +15,7 @@ public class Game {
     private Computer computer;
     private Boolean isEnd;
 
-    private void start() {
+    public void start() {
         computer = new Computer();
         isEnd = Boolean.FALSE;
         System.out.println(START);
@@ -27,7 +27,6 @@ public class Game {
             System.out.println(INPUT);
             printResult(computer.getResult(Console.readLine()));
         }
-        System.out.println(END);
     }
 
     private void end() {
