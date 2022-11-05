@@ -206,6 +206,105 @@ class UnitTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리가 모두 다른 숫자가 아닙니다");
     }
+
+    @Test
+    public void judge_모두_맟주었을떄_테스트(){
+        //given
+        int answer = 123;
+        int value = 123;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(3,0);
+    }
+
+    @Test
+    public void judge_모두_틀렸을때_테스트(){
+        //given
+        int answer = 123;
+        int value = 312;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(0,3);
+    }
+
+    @Test
+    public void judge_백의_자리가_다를_경우_테스트(){
+        //given
+        int answer = 123;
+        int value = 223;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(2,1);
+    }
+    @Test
+    public void judge_십의_자리가_다를_경우_테스트(){
+        //given
+        int answer = 123;
+        int value = 143;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(2,1);
+    }
+    @Test
+    public void judge_일의_자리가_다를_경우_테스트(){
+        //given
+        int answer = 123;
+        int value = 124;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(2,1);
+    }
+    @Test
+    public void judge_백의자리와_십의자리가_다를떄_테스트(){
+        //given
+        int answer = 123;
+        int value = 213;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(1,2);
+    }
+    @Test
+    public void judge_십의자리와_일의자리가_다를떄_테스트(){
+        //given
+        int answer = 123;
+        int value = 132;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(1,2);
+    }
+    @Test
+    public void judge_백의자리와_일의자리가_다를떄_테스트(){
+        //given
+        int answer = 123;
+        int value = 321;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(1,2);
+    }
     private boolean checkIfEachDifferent(int result){
         int i1 = result/100;
         int i2 = (result % 100) / 10;
