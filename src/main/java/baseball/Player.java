@@ -5,12 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class Player {
-    private final static int INPUT_NUMBER_SIZE = 3;
-    private final String inputNumbers;
+    private static final int INPUT_NUMBER_SIZE = 3;
     private List<Integer> playerNumbers = new ArrayList<>(Collections.emptyList());
 
     public Player(String inputNumbers) {
-        this.inputNumbers = inputNumbers;
         setPlayerNumber(inputNumbers);
     }
 
