@@ -436,6 +436,49 @@ class UnitTest {
         //then
         assertEquals("",outputStreamCaptor.toString().trim());
     }
+    @Test
+    public void isContinueOrEnd_입력이_1_일때_true_반환(){
+        //given
+        String input = "1";
+
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        boolean status = application.isContinueOrEnd();
+        //then
+        Assertions.assertThat(status).isEqualTo(true);
+    }
+    @Test
+    public void isContinueOrEnd_입력이_2_일때_false_반환(){
+        //given
+        String input = "2";
+
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        boolean status = application.isContinueOrEnd();
+        //then
+        Assertions.assertThat(status).isEqualTo(false);
+    }
+    @Test
+    public void isContinueOrEnd_입력이_다른값_일때_예외_출력(){
+        //given
+        String input = "3";
+
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        //then
+        assertThatThrownBy(() -> application.isContinueOrEnd())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1,2 둘 중의 하나의 숫자만 입력해주세요.");
+    }
     private boolean checkIfEachDifferent(int result){
         int i1 = result/100;
         int i2 = (result % 100) / 10;
