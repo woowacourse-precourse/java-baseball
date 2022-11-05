@@ -68,6 +68,6 @@ public class GameController {
     }
 
     private void setGameStatus(String opinion){
-
+        gameStatusService.setGameStatus(opinion);
     }
 }
