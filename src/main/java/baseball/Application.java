@@ -18,6 +18,7 @@ public class Application {
 
 
     public static void main(String[] args) {
+        System.out.println(userThreeInputNumber());
     }
 
     public static ArrayList<Integer> computerThreeRandomNumber(){
@@ -36,6 +37,27 @@ public class Application {
         return comList;
     }
 
+    public static ArrayList<Integer> userThreeInputNumber(){
+        ArrayList<Integer> userList = new ArrayList<>();
+        System.out.println("숫자를 입력해주세요 : ");
+        userThreeNumber = Console.readLine();
+        if(userThreeNumber.length() != 3){
+            throw new IllegalArgumentException("게임 종료");
+        }
+        String [] userThreeNum = userThreeNumber.split("");
+        for(int i = 0; i < computerThreeRandomNumber().size(); i++){
+            userList.add(Integer.parseInt(userThreeNum[i]));
+        }
+        userNumber1 = userList.get(0);
+        userNumber2 = userList.get(1);
+        userNumber3 = userList.get(2);
+
+        if ((userNumber1 == userNumber2) || (userNumber1 == userNumber3) || (userNumber2 == userNumber3)){
+            throw new IllegalArgumentException("게임 종료");
+        }
+
+        return userList;
+    }
+
 }
 
-//  인덴트 문제 존재
