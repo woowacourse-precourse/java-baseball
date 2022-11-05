@@ -223,7 +223,9 @@ public class Application {
 
         try {
 
-            if (!checkReplayNumberLength(replayNumberString) || !checkReplayNumberCount(replayNumberString)) throw new IllegalStateException();
+            if (!checkReplayNumberLength(replayNumberString) || !checkReplayNumberCount(replayNumberString)) {
+                throw new IllegalStateException();
+            }
 
             return true;
         } catch (IllegalStateException e) {
