@@ -43,7 +43,7 @@ public class NumbersTest {
         Numbers numbers = new Numbers(List.of(4, 2, 5));
         Numbers numbers2 = new Numbers(List.of(4, 5, 6));
 
-        assertThat(numbers.compareStrikes(numbers2)).isEqualTo(1);
-        assertThat(numbers.compareBalls(numbers2)).isEqualTo(1);
+        assertThat(numbers.countStrikesWith(numbers2)).isEqualTo(1);
+        assertThat(numbers.countBallsWith(numbers2)).isEqualTo(1);
     }
 }

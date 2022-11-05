@@ -44,7 +44,7 @@ public class Numbers {
         }
     }
 
-    public int compareStrikes(Numbers other) {
+    public int countStrikesWith(Numbers other) {
         int strikes = 0;
         for (Integer digit : digits) {
             if (other.doesNotContain(digit)) {
@@ -57,7 +57,7 @@ public class Numbers {
         return strikes;
     }
 
-    public int compareBalls(Numbers other) {
+    public int countBallsWith(Numbers other) {
         int balls = 0;
         for (Integer digit : digits) {
             if (other.doesNotContain(digit)) {
