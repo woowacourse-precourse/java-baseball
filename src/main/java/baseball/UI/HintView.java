@@ -13,4 +13,7 @@ public class HintView {
         System.out.println(hint);
     }
 
+    public boolean checkWinningCondition(){
+        return hint.getStrike() == 3;
+    }
 }
