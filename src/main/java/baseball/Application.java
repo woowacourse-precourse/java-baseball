@@ -10,8 +10,9 @@ public class Application {
 
         // TODO: 프로그램 구현
         Game game = new Game();
+        boolean isGameState = true;
         do {
-            game.startGame();
-        }while (game.startGame());
+            isGameState = game.startGame();
+        }while (isGameState);
     }
 }

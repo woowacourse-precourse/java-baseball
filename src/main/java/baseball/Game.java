@@ -12,7 +12,8 @@ public class Game {
     private final UserNumber userNumber;
     private List<Integer> com;
     private List<Integer> user;
-    private boolean win;
+    private static boolean isFinish;
+    private static boolean restart;
     private final RestartGameException restartGameException;
 
     public Game() {
@@ -21,7 +22,8 @@ public class Game {
         userNumber = new UserNumber();
         com = new ArrayList<>();
         user = new ArrayList<>();
-        win = true;
+        isFinish = true;
+        restart = true;
         restartGameException = new RestartGameException();
     }
 
@@ -35,16 +37,16 @@ public class Game {
         do {
             userNumber.makeUserNumber();
             user = userNumber.getUserNumber();
-            win = hintMessage.checkPoint(user, com);
-        } while (win);
-
-        return checkRestartGame();
+            hintMessage.isFinish = hintMessage.checkPoint(user, com);
+        } while (hintMessage.isFinish);
+        restart = checkRestartGame();
+        return restart;
     }
 
     public boolean checkRestartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int inputNumber = Integer.parseInt(Console.readLine());
-        boolean restart = true;
+        restart = true;
         if (restartGameException.hasRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }

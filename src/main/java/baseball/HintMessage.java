@@ -17,7 +17,7 @@ public class HintMessage {
     static int ball_Score = 0;
 
     final static String NOTHING = "낫싱";
-    static boolean win = true;
+    static boolean isFinish = true;
     int inputNumber = 0;
     public boolean checkPoint(List<Integer> user, List<Integer> com) {
         strike_Score = 0;
@@ -27,8 +27,8 @@ public class HintMessage {
             getHint();
         }
         if (user.equals(com)) {
-            win = resetGame();
-            return win;
+            isFinish = isFinishGame();
+            return isFinish;
         }
         return true;
     }
@@ -65,10 +65,10 @@ public class HintMessage {
         System.out.println();
     }
 
-    public boolean resetGame() {
+    public boolean isFinishGame() {
         System.out.println("3" + STRIKE);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        win = false;
-        return win;
+        isFinish = false;
+        return isFinish;
     }
 }
