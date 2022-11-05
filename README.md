@@ -223,3 +223,6 @@ while (computer.size() < 3) {
 - RandomNumGenerator 클래스
     1. 1 ~ 9 까지 서로 다른 임의의 수 3개를 조합하는 기능
     2. 1 ~ 9 까지 임의의 수를 생성하는 기능
+- GameManager 클래스
+    1. 게임을 실행하는 기능
+    2. 게임 초기화 기능
