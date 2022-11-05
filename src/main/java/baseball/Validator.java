@@ -3,18 +3,29 @@ package baseball;
 import java.util.HashSet;
 
 public class Validator {
-
 	public static final int PROPER_LENGTH = 3;
 
-	public static void validate(String source) {
-		if (containsNonNumericValue(source)) {
-			throw new IllegalArgumentException("숫자가 아닌 값을 입력할 수 없습니다.");
+	public static void validateBallsInput(String source) {
+		validateOnlyNumeric(source);
+		validateProperLength(source);
+		validateDigitsNotDuplicated(source);
+	}
+
+	private static void validateDigitsNotDuplicated(String source) {
+		if (hasDuplicatedDigit(source)) {
+			throw new IllegalArgumentException("서로 중복되지 않는 세자리 숫자를 입력해주세요.");
 		}
+	}
+
+	private static void validateProperLength(String source) {
 		if (isImproperLength(source)) {
 			throw new IllegalArgumentException("반드시 세자리 숫자를 입력해야 합니다.");
 		}
-		if (hasDuplicatedDigit(source)) {
-			throw new IllegalArgumentException("서로 중복되지 않는 세자리 숫자를 입력해주세요.");
+	}
+
+	private static void validateOnlyNumeric(String source) {
+		if (containsNonNumericValue(source)) {
+			throw new IllegalArgumentException("숫자가 아닌 값을 입력할 수 없습니다.");
 		}
 	}
 
