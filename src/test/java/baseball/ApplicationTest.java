@@ -97,6 +97,18 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void test_InputView_No_Input_Error(){
+        String input = "";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(inputView::getBaseballInput)
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     void test_Hint_Model_ToString(){
