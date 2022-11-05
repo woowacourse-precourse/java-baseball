@@ -1,4 +1,4 @@
-package baseball.opponent;
+package study;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
