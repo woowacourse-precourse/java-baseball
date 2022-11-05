@@ -17,7 +17,7 @@ public class View {
     }
 
     static final void printPleaseInputNumber(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     static final String getUserInput() {
