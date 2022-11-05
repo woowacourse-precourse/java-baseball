@@ -27,4 +27,16 @@ public class BaseBallController {
         return result;
     }
 
+    public boolean restartGame(int flag) throws IllegalArgumentException{
+        boolean result;
+        try {
+            result = baseBallModel.restartGame(flag);
+        }
+        catch(IllegalArgumentException ex){
+            throw ex;
+        }
+
+        return result;
+    }
+
 }

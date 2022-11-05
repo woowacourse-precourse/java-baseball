@@ -75,6 +75,18 @@ public class BaseBallModel {
         return strikeCount;
     }
 
+    public boolean restartGame(int flag) throws IllegalArgumentException{
+        if(flag == 1){
+            return true;
+        }
+        else if(flag == 2){
+            return false;
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+    }
+
     public String getNumbers(){
         return new String(numbers);
     }
