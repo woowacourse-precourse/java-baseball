@@ -2,9 +2,6 @@ package baseball.domain;
 
 import java.util.List;
 
-import javax.swing.text.View;
-
-import baseball.view.GameView;
 import baseball.view.inputView;
 import baseball.view.printView;
 
