@@ -29,7 +29,7 @@ public class Application {
             return numFilter == 3 ;
         }
 
-        public boolean checkIsItNothing(List<String> answer, List<String> userNumList){
+        public boolean checkIsItNothing(ArrayList<String> answer, ArrayList<String> userNumList){
             for (String num : userNumList){
                 if(answer.contains(num)){
                     return false;
@@ -38,10 +38,16 @@ public class Application {
             return true ;
         }
 
+        public boolean isStrikeThree(int strikeCount){
+            return strikeCount == 3;
+        }
+
+
 
     }
     public static class Processing {
         private final Validations validations = new Validations();
+
 
         public ArrayList<String> makeRandomAnswer(){
             List<Integer> answer = new ArrayList<>();
@@ -90,6 +96,17 @@ public class Application {
         }
         public int countBall(int countContained, int countStrike){
             return countContained - countStrike;
+        }
+
+        public Map<String, Object> calculateStrikeAndBall(ArrayList<String> answer, ArrayList<String> containedNumList){
+            Map<String,Object> resultMap = new HashMap<>();
+            int containedNumCnt = countContained(containedNumList);
+            int strikeCnt = countStrike(answer, containedNumList);
+            int ballCnt = countBall(containedNumCnt, strikeCnt);
+            resultMap.put("strikeCount", strikeCnt);
+            resultMap.put("ballCount", ballCnt);
+            resultMap.put("isStrikeThree", validations.isStrikeThree(strikeCnt));
+            return  resultMap;
         }
     }
 }
