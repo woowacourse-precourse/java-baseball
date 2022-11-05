@@ -24,6 +24,12 @@ public class PrepareGame {
 
     public String setUserNumber(){
         String userNumber = Console.readLine();
+        if(!isNumber(userNumber)){
+        }
         return userNumber;
+    }
+
+    public Boolean isNumber(String number){
+        return number.matches("-?\\d+");
     }
 }
