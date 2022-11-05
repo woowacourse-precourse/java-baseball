@@ -184,12 +184,16 @@ public class Computer {
                 isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
             }
             if (isStrike) {
-                this.cntStrike = this.cntStrike + 1;
+                addCntStrike();
             }
             if (isBall) {
                 this.cntBall = this.cntBall + 1;
             }
         }
+    }
+
+    private void addCntStrike() {
+        this.cntStrike = this.cntStrike + 1;
     }
 
     private boolean isCheckStrike(boolean isStrike, int first, int numComputerAtNow, int second,
