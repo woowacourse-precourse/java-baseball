@@ -1,6 +1,6 @@
 package baseball.utils;
 
-public enum Constant {
+public enum ConstantMessage {
     ISDIGIT_EXCEPTION("숫자가 아닙니다."),
     DUPLICATION_EXCEPTION("중복된 숫자가 존재합니다."),
     VALID_NUMBER_EXCEPTION("가능하지 않은 숫자 입니다."),
@@ -9,7 +9,7 @@ public enum Constant {
 
     private final String constant;
 
-    Constant(String constant) {
+    ConstantMessage(String constant) {
         this.constant = constant;
     }
 
