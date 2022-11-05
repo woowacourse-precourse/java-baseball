@@ -22,8 +22,15 @@ public class BaseballGame {
         printStartMessage();
         while (progress) {
             setGame();
+            startGame();
             checkProgress();
         }
+    }
+
+    public void startGame() {
+        do {
+            player.getBaseballInput();
+        } while (hint.getStrike() != 3);
     }
 
     private void setGame() {
