@@ -5,7 +5,7 @@ public class ResultProcessor {
     public Result processResult(String randomNumber, String predictedNumber) {
         Result result = new Result();
         compareRandomAndPredictedNumber(result, randomNumber, predictedNumber);
-        // Calculate result type
+        result.calculateType();
         return result;
     }
 
