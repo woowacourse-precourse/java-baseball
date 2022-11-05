@@ -14,8 +14,14 @@ import User.Input;
 import User.Outputs;
 import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void generateRandomNumber_메소드로_서로_다른_세개의_숫자_선택() {
+		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+		assertThat(randomNumberGenerator.generateRandomNumber()).doesNotHaveDuplicates();
+	}
 	@Test
 	void validateRestartOrNot_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
 		String input = "3";
