@@ -121,12 +121,12 @@ public class Application {
     }
 
     public static List<Integer> changeStringToList(String number) {
-        List<Integer> result = new ArrayList<>();
-        char[] arr = number.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            result.add(arr[i] - '0');
+        List<Integer> numberList = new ArrayList<>();
+        char[] numberToCharArr = number.toCharArray();
+        for (int i = 0; i < numberToCharArr.length; i++) {
+            numberList.add(numberToCharArr[i] - '0');
         }
-        return result;
+        return numberList;
     }
 
     public static String checkInputRestartOrExitIsValid(String number) throws IllegalArgumentException {
