@@ -1,8 +1,8 @@
-package baseball;
+package baseball.model;
 
-import static baseball.Score.INPUT_LENGTH;
-import static baseball.InputValidator.checkIsValidRestartExitString;
-import static baseball.InputValidator.checkIsValidThreeNumbers;
+import static baseball.model.Score.INPUT_LENGTH;
+import static baseball.utils.InputValidator.checkIsValidRestartExitString;
+import static baseball.utils.InputValidator.checkIsValidThreeNumbers;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;

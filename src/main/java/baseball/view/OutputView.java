@@ -1,7 +1,7 @@
-package baseball;
+package baseball.view;
 
-import static baseball.Score.BALL_INDEX;
-import static baseball.Score.STRIKE_INDEX;
+import static baseball.model.Score.BALL_INDEX;
+import static baseball.model.Score.STRIKE_INDEX;
 
 import java.util.List;
 

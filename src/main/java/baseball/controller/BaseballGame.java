@@ -1,8 +1,12 @@
-package baseball;
+package baseball.controller;
 
-import static baseball.Score.INPUT_LENGTH;
-import static baseball.Score.STRIKE_INDEX;
+import static baseball.model.Score.INPUT_LENGTH;
+import static baseball.model.Score.STRIKE_INDEX;
 
+import baseball.model.Computer;
+import baseball.view.OutputView;
+import baseball.model.Score;
+import baseball.model.User;
 import java.util.List;
 
 public class BaseballGame {
