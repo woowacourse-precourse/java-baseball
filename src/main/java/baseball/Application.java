@@ -38,6 +38,21 @@ public class Application {
         return finish;
     }
 
+    private static boolean finishGame() {
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restart=readLine();
+
+        if(!restart.equals("1") && !restart.equals("2")){
+            throw new IllegalArgumentException();
+        }
+        if (restart.equals("2")) {
+            return false;
+        }
+        return true;
+    }
+
 
     public static String judge(List<Integer> computerNumList, List<Integer> userNumList) {
         //수만 같으면 ball,자릿수 까지 같으면 strike
