@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class OutputViewImpl implements OutputView {
+public class OutputConsoleView implements OutputView {
 	private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 	private static final String GET_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final String BALL_MESSAGE = "볼 ";

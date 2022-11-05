@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.view.InputViewImpl;
-import baseball.view.OutputViewImpl;
+import baseball.view.InputConsoleView;
+import baseball.view.OutputConsoleView;
 
 public class Application {
 	public static void main(String[] args) {
-		GameController gc = new GameController(new InputViewImpl(), new OutputViewImpl());
+		GameController gc = new GameController(new InputConsoleView(), new OutputConsoleView());
 		gc.run();
 	}
 }
