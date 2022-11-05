@@ -49,7 +49,6 @@ public class Application {
             if (checkResult.equals("strike")){
                 strike++;
             }
-
             if (checkResult.equals("ball")){
                 ball++;
             }
@@ -61,7 +60,6 @@ public class Application {
         if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) == findingNumber.charAt(0)){
             return "strike";
         }
-
         if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) != findingNumber.charAt(0)){
             return "ball";
         }
@@ -74,16 +72,21 @@ public class Application {
             System.out.println("낫싱");
         }
         if (strike == 3){
-            printResult.append(strike + "스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printResult.append(strike);
+            printResult.append("스트라이크\n");
+            printResult.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            printResult.append("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             System.out.println(printResult);
             return "endGame";
         }
         if (strike < 3){
             if (ball != 0){
-                printResult.append(ball + "볼 ");
+                printResult.append(ball);
+                printResult.append("볼 ");
             }
             if (strike != 0){
-                printResult.append(strike + "스트라이크");
+                printResult.append(strike);
+                printResult.append("스트라이크");
 
             }
             System.out.println(printResult);
