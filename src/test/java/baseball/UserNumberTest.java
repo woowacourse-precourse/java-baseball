@@ -1,12 +1,11 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserNumberTest {
-
-
     private UserNumber user;
 
     @BeforeEach
@@ -17,7 +16,7 @@ class UserNumberTest {
     @Test
     void canSetUserNumberByTest() {
         user.setUserNumber("123");
-        System.out.println(user.userNumber);
+        assertEquals(123, user.userNumber);
     }
     @Test
     void isUserNumberLengthEqualsThree() {
