@@ -42,24 +42,24 @@ class ApplicationTest extends NsTest {
         @Test
         void 사용자_입력_검증_길이가다른_예외() {
             assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserInput("1233")).isInstanceOf(
+                () -> assertThatThrownBy(() -> new UserNums("1233")).isInstanceOf(
                     IllegalArgumentException.class));
         }
 
         @Test
         void 사용자_입력_검증_서로다른수_예외() {
             assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserInput("111")).isInstanceOf(
+                () -> assertThatThrownBy(() -> new UserNums("111")).isInstanceOf(
                     IllegalArgumentException.class));
         }
 
         @Test
         void 사용자_입력_검증_숫자가아닌수_예외() {
             assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserInput("ㅁㅁㅁ")).isInstanceOf(
+                () -> assertThatThrownBy(() -> new UserNums("ㅁㅁㅁ")).isInstanceOf(
                     IllegalArgumentException.class));
             assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserInput("aaa")).isInstanceOf(
+                () -> assertThatThrownBy(() -> new UserNums("aaa")).isInstanceOf(
                     IllegalArgumentException.class));
         }
 
