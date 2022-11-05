@@ -8,6 +8,7 @@ import java.util.List;
 
 class Game{
     private List<Integer> computerNum = new ArrayList<>();
+    private String userInput;
 
     public Game(){
         while (computerNum.size() < 3) {
@@ -19,6 +20,10 @@ class Game{
 
     public List<Integer> getGameNums(){
         return computerNum;
+    }
+
+    void setUserInput() {
+        userInput = Console.readLine();
     }
 }
 
