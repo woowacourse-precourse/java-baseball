@@ -87,6 +87,14 @@ class Game{
     void getRightAnswer(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다!");
     }
+
+    void chooseGameConditions(){
+        String choice = Console.readLine();
+        if(choice.equals("1"))
+            Application.GameController();
+        else
+            end();
+    }
 }
 
 public class Application {
