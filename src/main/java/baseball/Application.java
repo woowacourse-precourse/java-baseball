@@ -50,9 +50,11 @@ public class Application {
             }
         }
         if (inputNumber < 10 && inputNumber > 0 && !())
-*/
+
 
             return usersNumbers;
+
+  */
     }
-}
+
 
