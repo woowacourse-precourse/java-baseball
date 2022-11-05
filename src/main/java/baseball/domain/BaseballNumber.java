@@ -1,52 +1,58 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class BaseballNumber {
-	protected static final int DIGIT = 3;
-	protected static final int MIN_NUMBER = 1;
-	protected static final int MAX_NUMBER = 9;
-	protected List<Integer> numbers;
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class BaseballNumber {
+	private List<Integer> numbers;
+	private static final String VALIDATE_NUMBER_PATTERN = "^[1-9]+$";
+	private static final int MIN_NUMBER = 1;
+	private static final int MAX_NUMBER = 9;
+	private static final char ZERO_CHARACTER = '0';
+	public static final int DIGIT = 3;
+
+	private BaseballNumber(List<Integer> numbers){
+		this.numbers = numbers;
+	}
+
+	public static BaseballNumber createBaseballNumberByRandom(){
+		return new BaseballNumber(generateRandomNumbers());
+	}
+
+	public static BaseballNumber createBaseballNumberByUserInput(String userInput){
+		validateInput(userInput);
+		return new BaseballNumber(convertStringToIntegerList(userInput));
+	}
+
+	private static void validateInput(String input) {
+		if(!input.matches(VALIDATE_NUMBER_PATTERN))
+			throw new IllegalArgumentException("입력된 값에 1~9 외의 값이 포함되어 있습니다.");
+		if (input.length() != DIGIT)
+			throw new IllegalArgumentException("입력값의 자릿수가 3이 아닙니다.");
+		if (input.chars().distinct().count() != input.length())
+			throw new IllegalArgumentException("입력된 숫자 중 중복된 숫자가 존재합니다.");
+	}
+
+	private static List<Integer> generateRandomNumbers() {
+		List<Integer> numbers = new ArrayList<>();
+		while (numbers.size() != DIGIT) {
+			int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+			if (!numbers.contains(randomNumber))
+				numbers.add(randomNumber);
+		}
+		return numbers;
+	}
+
+	private static List<Integer> convertStringToIntegerList(String input) {
+		return input.chars().boxed().map(num -> num - ZERO_CHARACTER)
+			.collect(Collectors.toList());
+	}
 
 	public List<Integer> getNumbers() {
 		return Collections.unmodifiableList(numbers);
-	}
-
-	protected void checkValidation(List<Integer> numbers) {
-		numberIsNotNull(numbers);
-		numberSizeIsCorrect(numbers);
-		numberInRange(numbers);
-		numberIsNotDuplicate(numbers);
-	}
-
-	private void numberIsNotNull(List<Integer> numbers) {
-		if (numbers == null)
-			throw new IllegalArgumentException("입력된 값이 null입니다.");
-		for (Integer number : numbers) {
-			if (number == null) {
-				throw new IllegalArgumentException("입력된 값의 멤버가 null입니다.");
-			}
-		}
-	}
-
-	private void numberSizeIsCorrect(List<Integer> numbers) {
-		if (numbers.size() != DIGIT)
-			throw new IllegalArgumentException("입력된 수가 세 자리수가 아닙니다.");
-	}
-
-	private void numberInRange(List<Integer> numbers) {
-		for (Integer number : numbers) {
-			if (number < MIN_NUMBER || number > MAX_NUMBER)
-				throw new IllegalArgumentException("입력된 수의 범위가 1~9가 아닙니다.");
-		}
-	}
-
-	private void numberIsNotDuplicate(List<Integer> numbers) {
-		Set<Integer> numbersSet = new HashSet<>(numbers);
-		if (numbers.size() != numbersSet.size())
-			throw new IllegalArgumentException("입력된 수에 중복이 있습니다.");
 	}
 }
