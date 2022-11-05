@@ -244,8 +244,6 @@ public class Application {
         boolean repeatState = true;
 
         UI.printGameStart(); // 게임 시작
-
-        repeatState = gameStart();
         while (repeatState) {
             repeatState = gameStart();
         }
