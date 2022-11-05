@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,27 +56,27 @@ public class BaseballGame {
 
     public void showResults(List<String> userInput) {
         String results = "";
-        results = getString(userInput, results);
-        results = getResults(userInput, results);
-        results = getString1(userInput, results);
+        results = showBallResults(userInput, results);
+        results = showStrikeResults(userInput, results);
+        results = showNothingResults(userInput, results);
         System.out.println(results);
     }
 
-    private String getString1(List<String> userInput, String results) {
+    private String showNothingResults(List<String> userInput, String results) {
         if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
             results += Ball.NOTHING.getName();
         }
         return results;
     }
 
-    private String getResults(List<String> userInput, String results) {
+    private String showStrikeResults(List<String> userInput, String results) {
         if (countStrike(userInput) > 0) {
             results += countStrike(userInput) + Ball.STRIKE.getName();
         }
         return results;
     }
 
-    private String getString(List<String> userInput, String results) {
+    private String showBallResults(List<String> userInput, String results) {
         if (countBall(userInput) > 0) {
             results += countBall(userInput) + Ball.BALL.getName();
         }
