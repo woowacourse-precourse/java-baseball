@@ -7,35 +7,54 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
+    public final static int RESTART = 1;
+    public final static int END = 2;
+
     public static void main(String[] args) {
         try {
-            boolean[] isBall = new boolean[10];
-            Arrays.fill(isBall, false);
+            while(true){
 
-            String computerNumber = setComputerNumber();
-            setIsBall(isBall, computerNumber);
+                boolean[] isBall = new boolean[10];
+                Arrays.fill(isBall, false);
 
-            String playerNumber = Console.readLine();
+                String computerNumber = setComputerNumber();
 
-            if(checkPlayerNumber(playerNumber)){
-                throw new IllegalArgumentException();
-            }
+                setIsBall(isBall, computerNumber);
 
-            int ballCount = 0;
-            int strikeCount = 0;
-            for (int i = 0; i < computerNumber.length(); i++) {
-                char computerNum = computerNumber.charAt(i);
-                char playerNum = playerNumber.charAt(i);
 
-                if (isBall[computerNum - '0']) {
-                    ballCount++;
+                while(true){
+                    String playerNumber = Console.readLine();
+
+                    if(checkPlayerNumber(playerNumber)){
+                        throw new IllegalArgumentException();
+                    }
+
+                    int ballCount = 0;
+                    int strikeCount = 0;
+                    for (int i = 0; i < computerNumber.length(); i++) {
+                        char computerNum = computerNumber.charAt(i);
+                        char playerNum = playerNumber.charAt(i);
+
+                        if (isBall[computerNum - '0']) {
+                            ballCount++;
+                        }
+                        if (computerNum == playerNum) {
+                            strikeCount++;
+                        }
+                    }
+                    System.out.println(makeMessage(ballCount, strikeCount));
+
+                    if (strikeCount == 3) break;
                 }
-                if (computerNum == playerNum) {
-                    strikeCount++;
+
+                String playerSelect = Console.readLine();
+                int playerSelectNumber = Integer.parseInt(playerSelect);
+                if (playerSelectNumber == END) {
+                    break;
+                } else if (playerSelectNumber != RESTART) {
+                    throw new IllegalArgumentException();
                 }
             }
-
-            System.out.println(makeMessage(ballCount, strikeCount));
 
         } catch (IllegalArgumentException exception) {
 
@@ -65,6 +84,7 @@ public class Application {
         Arrays.fill(includedNumber, false);
         for (int i = 0; i < playerNumber.length(); i++) {
             char num = playerNumber.charAt(i);
+
             // 1~9까지의 수인지 확인
             if (num < '1' || num > '9') {
                 return false;
