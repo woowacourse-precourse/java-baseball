@@ -72,6 +72,20 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void validatorTest(){
+        assertThatThrownBy(() -> Validator.checkStart("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("-1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("-12"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("131"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("111"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
