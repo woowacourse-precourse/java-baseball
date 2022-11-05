@@ -3,14 +3,16 @@ package baseball.testcase;
 import baseball.game.BallMaker;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayInputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+
 
 public class BallMakerTest extends NsTest {
 
@@ -40,7 +42,7 @@ public class BallMakerTest extends NsTest {
     @Test
     @DisplayName("BallMaker가 UserBall을 제대로 확인 하는지 확인")
     void BALLMAKER가_USERBALL를_제대로_생성하는지_확인() {
-        command("123","321","589","485");
+        command("123", "321", "589", "485");
         List<Integer> firstBall = ballMaker.getUserBall();
         List<Integer> secondBall = ballMaker.getUserBall();
         List<Integer> thirdBall = ballMaker.getUserBall();
@@ -59,7 +61,15 @@ public class BallMakerTest extends NsTest {
         assertThat(firstCheck && secondCheck && thirdCheck && fourthCheck).isTrue();
     }
 
-    private void command(final String... args){
+    @DisplayName("BallMaker가 UserBall을 만드는 과정에서 잘못된 입력을 받는다면 BallMaker는 IllegalArgumentException를 던진다")
+    @ParameterizedTest
+    @ValueSource(strings = { "1234", "hello", "12", "012"})
+    void BALLMAKER의_GETUSERBALL_메서드_예외_발생_테스트(String stringArg) {
+        command(stringArg);
+        assertThatThrownBy(()->ballMaker.getUserBall()).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
     }
