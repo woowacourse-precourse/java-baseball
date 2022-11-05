@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
 
-    List<Integer> getPrivateAccessToComputerAnswer(Computer computer) {
-        List<Integer> computerAnswer = new ArrayList<Integer>();
+    List<String> getPrivateAccessToComputerAnswer(Computer computer) {
+        List<String> computerAnswer = new ArrayList<String>();
         try {
             Field privateField = computer.getClass().getDeclaredField("computerAnswer");
             privateField.setAccessible(true);
-            return (List<Integer>) privateField.get(computer);
+            return (List<String>) privateField.get(computer);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -28,7 +28,7 @@ class ComputerTest {
     @Test
     void sizeOfAnswerShouldBeThree() {
         Computer computer = new Computer();
-        List<Integer> computerAnswer = getPrivateAccessToComputerAnswer(computer);
+        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
 
         assertEquals(3, computerAnswer.size());
     }
@@ -36,10 +36,11 @@ class ComputerTest {
     @Test
     void digitsShouldBeInRangeOneToNine() {
         Computer computer = new Computer();
-        List<Integer> computerAnswer = getPrivateAccessToComputerAnswer(computer);
+        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
         Boolean inRange = true;
 
-        for (Integer digit : computerAnswer){
+        for (String stringDigit : computerAnswer){
+            Integer digit = Integer.parseInt(stringDigit);
             if (digit < 1 || digit > 9) {
                 inRange = false;
                 break;
@@ -51,11 +52,11 @@ class ComputerTest {
     @Test
     void digitsShouldBeDistinct() {
         Computer computer = new Computer();
-        List<Integer> computerAnswer = getPrivateAccessToComputerAnswer(computer);
+        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
         Boolean distinct = true;
-        HashMap<Integer, String> digitsArray = new HashMap<Integer, String>();
+        HashMap<String, String> digitsArray = new HashMap<>();
 
-        for (Integer digit : computerAnswer) {
+        for (String digit : computerAnswer) {
             if (digitsArray.get(digit) != null) {
                 distinct = false;
                 break;

@@ -6,31 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> computerAnswer;
+    private List<String> computerAnswer;
 
     Computer() {
-        this.computerAnswer = setComputerAnswer();
+        setComputerAnswer();
     }
 
-    public List<Integer> setComputerAnswer() {
-        List<Integer> computerAnswer = new ArrayList<>();
+    public void setComputerAnswer() {
+        List<String> computerAnswer = new ArrayList<>();
         while (computerAnswer.size() < 3) {
             addNewDigit(computerAnswer);
         }
-        return computerAnswer;
+        this.computerAnswer = computerAnswer;
     }
 
-    public List<Integer> addNewDigit(List<Integer> computerAnswer) {
-        Integer newDigit = Randoms.pickNumberInRange(1, 9);
+    public void addNewDigit(List<String> computerAnswer) {
+        String newDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
         if (!computerAnswer.contains(newDigit)) {
             computerAnswer.add(newDigit);
         }
-        return computerAnswer;
     }
-    
 
-    public String getHint (String playerAnswer) {
-        //TODO
-        return "";
+    public List<String> giveHint (List<String> playerAnswer) {
+        List<String> ballAndStrike = new ArrayList<>();
+
+        return ballAndStrike;
     }
 }
