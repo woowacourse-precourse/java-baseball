@@ -109,4 +109,19 @@ public class BaseballEngine {
         return ballCount;
     }
 
+    public int getStrikeCountIfPresentOrZero(List<Integer> answerList, List<Integer> userInputList) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < userInputList.size(); i++) {
+            int answer = answerList.get(i);
+            int userInput = userInputList.get(i);
+
+            if (answer == userInput) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
 }
