@@ -8,6 +8,7 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerNumber;
     public List<Integer> getComputerNumber() {
+        setComputerNumber();
         return computerNumber;
     }
     public void setComputerNumber() {

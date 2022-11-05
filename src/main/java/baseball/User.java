@@ -9,6 +9,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
     private List<Integer> userNumber;
 
+    public List<Integer> getUserNumber() {
+        setUserNumber();
+        return userNumber;
+    }
+
     public void setUserNumber() {
         List<Integer> userNumber=makeUserNumber();
 
