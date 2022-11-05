@@ -10,7 +10,7 @@ public class ResultTest {
     @Test
     void 스트라이크_확인() {
         // given
-        Result result = getResult("538", "555");
+        Result result = getResult("538", "521");
 
         // then
         assertThat(result.getStrike()).isEqualTo(1);
@@ -28,17 +28,17 @@ public class ResultTest {
     @Test
     void 스트라이크_볼_확인() {
         // given
-        Result result = getResult("558", "585");
+        Result result = getResult("518", "589");
 
         // then
         assertThat(result.getStrike()).isEqualTo(1);
-        assertThat(result.getBall()).isEqualTo(2);
+        assertThat(result.getBall()).isEqualTo(1);
     }
 
     @Test
     void 낫싱_확인() {
         // given
-        Result result = getResult("558", "123");
+        Result result = getResult("548", "123");
 
         // then
         assertThat(result.getStrike()).isEqualTo(0);
@@ -48,19 +48,19 @@ public class ResultTest {
     @Test
     void 정답_확인() {
         // given
-        Result result = getResult("558", "558");
+        Result result = getResult("548", "548");
 
         // then
         assertThat(result.getStrike()).isEqualTo(3);
     }
 
-    Result getResult(String problem, String input) {
+    Result getResult(String stringOfProblem, String stringOfInput) {
         Balls problem = new Balls();
         Balls input = new Balls();
-        problem.convertInputToBall(problem);
-        input.convertInputToBall(input);
+        problem.convertInputToBall(stringOfProblem);
+        input.convertInputToBall(stringOfInput);
         Result result = new Result();
-
-        return result.getCompareResult(problem, input);
+        result.getCompareResult(problem, input);
+        return result;
     }
 }
