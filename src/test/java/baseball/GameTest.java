@@ -13,8 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Game 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GameTest extends NsTest {
-    private final int computerNumber = 123;
-
     @Test
     void 게임_플레이() {
         assertRandomNumberInRangeTest(
@@ -22,13 +20,15 @@ public class GameTest extends NsTest {
                     run("987", "198", "918", "132", "123");
                     assertThat(output()).contains("낫싱", "1스트라이크", "1볼", "2볼 1스트라이크", "3스트라이크");
                 },
-                1, 3, 5, 5, 8, 9
+                0, 0
         );
     }
 
     @Override
     protected void runMain() {
-        Game game = new Game(this.computerNumber);
-        game.run(GameUtil.splitNumberToOneDigitNumbers(this.computerNumber).size());
+        int computerNumber = 123;
+        Game game = new Game(computerNumber);
+
+        game.run(GameUtil.splitNumberToOneDigitNumbers(computerNumber).size());
     }
 }
