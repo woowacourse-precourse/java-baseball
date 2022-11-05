@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,6 +18,7 @@ public class BullsAndCows {
 
     private static final int NUMBER_LENGTH = 3;
     private static final String REGEX_NOT_NUMBER = "^\\d";
+    private static final String REGEX_HAS_DUPLICATE_VALUE = "(\\w)\\1+";
     private static final int STRIKE_COUNT_FOR_END = 3;
     private static final int RESTART_GAME = 1;
     private static final int END_GAME = 2;
@@ -152,5 +155,13 @@ public class BullsAndCows {
         if (input.matches(REGEX_NOT_NUMBER)) {
             throw new IllegalArgumentException("input value must be number");
         }
+    }
+
+    private void validateIsUniqueNumber(String input) {
+        Pattern pattern = Pattern.compile(REGEX_HAS_DUPLICATE_VALUE);
+        Matcher matcher = pattern.matcher(input);
+        if(matcher.find()) {
+            throw new IllegalArgumentException("number must not be duplicated");
+        };
     }
 }
