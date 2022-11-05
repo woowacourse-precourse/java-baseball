@@ -12,7 +12,6 @@ public class game {
     public static void start(){
         game.printMessage(game.readLine());
     }
-
     public static void strikeAndball_Message(){
         int strike_count=0;
         int ball_count=0;
@@ -31,6 +30,15 @@ public class game {
         if(ball_count!=0) {
             System.out.print(ball_count + "볼");
         }
+        if(strike_count==0&&ball_count==0)
+            game.nothing_Message();
+
+        System.out.print("\n");
+
+    }
+
+    public static void nothing_Message(){
+        System.out.print("낫싱");
     }
     public static List<Integer> get_ThreeRandomNumbers(){
         List<Integer> computer = new ArrayList<>();
