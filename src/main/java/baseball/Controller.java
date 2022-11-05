@@ -2,13 +2,17 @@ package baseball;
 
 public class Controller {
 
+    private GuessResult guessResult;
+    private Baseball baseball;
+
     public void runBaseball(){
-        Baseball baseball = new Baseball();
+        baseball = new Baseball();
         baseball.start();
+
         while (baseball.isGaming()) {
             baseball.setGuessNumber();
 
-            GuessResult guessResult = baseball.getGuessResult();
+            guessResult = baseball.getGuessResult();
             if (guessResult.equals(GuessResult.END)) {
                 baseball.chooseContinue();
             }
