@@ -31,7 +31,8 @@ public class BaseballGame {
             result = playMatch(answer, user);
             System.out.println(result);
 
-            if (result.equals(END_GAME_CONDITION)) {
+            if (result.equals(3 + STRIKE)) {
+                System.out.println(END_GAME_CONDITION);
                 return restart();
             }
         }
@@ -72,16 +73,9 @@ public class BaseballGame {
             return ball + BALL;
         }
         if (ball == ZERO) {
-            return checkEndCondition(strike);
+            return strike + STRIKE;
         }
         return ball + BALL + " " + strike + STRIKE;
-    }
-
-    private static String checkEndCondition(int strike) {
-        if (strike == END_GAME_STRIKE_CONDITION) {
-            return END_GAME_CONDITION;
-        }
-        return strike + STRIKE;
     }
 
     private static int ball(List<Integer> computer, List<Integer> user, int ball, int i) {
