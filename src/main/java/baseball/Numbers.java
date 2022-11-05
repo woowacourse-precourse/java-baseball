@@ -31,34 +31,18 @@ public class Numbers {
         }
     }
 
-    public int countStrikesWith(Numbers other) {
-        int strikes = 0;
-        for (Digit digit : digits) {
-            if (other.doesNotContain(digit)) {
-                continue;
-            }
-            if (other.positionOf(digit) == this.positionOf(digit)) {
-                strikes += 1;
-            }
-        }
-        return strikes;
+    public Long countStrikesWith(Numbers other) {
+        return digits.stream()
+                .filter(other.digits::contains)
+                .filter(digit -> positionOf(digit) == other.positionOf(digit))
+                .count();
     }
 
-    public int countBallsWith(Numbers other) {
-        int balls = 0;
-        for (Digit digit : digits) {
-            if (other.doesNotContain(digit)) {
-                continue;
-            }
-            if (other.positionOf(digit) != this.positionOf(digit)) {
-                balls += 1;
-            }
-        }
-        return balls;
-    }
-
-    private boolean doesNotContain(Digit digit) {
-        return !digits.contains(digit);
+    public Long countBallsWith(Numbers other) {
+        return digits.stream()
+                .filter(other.digits::contains)
+                .filter(digit -> positionOf(digit) != other.positionOf(digit))
+                .count();
     }
 
     private int positionOf(Digit digit) {
