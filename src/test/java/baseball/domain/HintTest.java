@@ -27,4 +27,12 @@ public class HintTest {
                 () -> assertThat(hints.count(Hint.BALL)).isEqualTo(1)
         );
     }
+
+    @DisplayName("스트라이크 또는 볼이 없는 경우 true를 반환한다.")
+    @Test
+    void isNothing() {
+        Hints hints = new Hints(List.of());
+
+        assertThat(hints.isNothing()).isTrue();
+    }
 }
