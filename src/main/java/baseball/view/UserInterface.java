@@ -36,7 +36,7 @@ public class UserInterface {
             System.out.println(strikeCount + "스트라이크");
         }
         if(strikeCount == 0 && ballCount == 0) {
-            System.out.println(strikeCount + "낫싱");
+            System.out.println("낫싱");
         }
     }
 }
