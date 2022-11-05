@@ -9,9 +9,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Computer {
-    private List<Integer> computerNumber = new ArrayList<>();
+    List<Integer> computerNumber;
 
     public void makeComputerNumber() {
+        computerNumber = new ArrayList<>();
         while (computerNumber.size() < GAME_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
             addComputerNumber(computerNumber, randomNumber);
@@ -52,6 +53,7 @@ public class Computer {
         String ballMessage = getBallMessage(ballCount);
         String strikeMessage = getStrikeMessage(strikeCount);
         computerResult = getNothingMessage(strikeCount, ballCount);
+
         if (computerResult.equals("")) {
             computerResult = getBallAndStrikeMessage(ballMessage, strikeMessage);
         }
