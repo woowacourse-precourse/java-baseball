@@ -32,11 +32,19 @@ public class Number {
         return input;
     }
 
+    public int countStrike(List<Character> answer, List<Character> input) {
+        int count = 0;
+        for (int idx = 0; idx < answer.size(); idx++) {
+            if(answer.get(idx) == input.get(idx)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private List<Character> stringToList(String str) {
         return str.chars().mapToObj(number -> (char) number).collect(Collectors.toList());
     }
-
-
 
     private boolean isValidString(String input) {
         if(isNotDuplicate(input) || isNumber(input) || isThreeDigits(input)) {
