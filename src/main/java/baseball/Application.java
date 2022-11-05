@@ -21,6 +21,10 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
+            for (int i = 0; i < 3; i++) {
+                System.out.print(randomNumberList.get(i));
+            }
+            System.out.println();
             String numberString = putInNumber();
 
             if (!checkNumber(numberString)) {
@@ -35,6 +39,7 @@ public class Application {
 
             strike = countingStrike(0, userNumbers, randomNumberList);
             ball = countingBall(0, userNumbers, randomNumberList);
+            printCount(ball, strike);
 
         } while (true);
     }
@@ -147,9 +152,9 @@ public class Application {
 
     public static Integer countingBall(int ball, int[] userNumbers, List<Integer> randomNumberList) {
 
-        for (int i = 0; i < 2; i++) {
-            for (int j = i + 1; j < 3; j++) {
-                ball = checkAndCountBall(0, userNumbers[i], randomNumberList.get(i));
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ball = checkAndCountBall(ball, userNumbers[i], randomNumberList.get(j));
             }
         }
 
@@ -164,5 +169,27 @@ public class Application {
         }
 
         return ball;
+    }
+
+    public static void printCount(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+
+            System.out.println("낫싱");
+        }
+
+        if (ball > 0 && strike == 0) {
+
+            System.out.println(ball + "볼");
+        }
+
+        if (ball == 0 && strike > 0) {
+
+            System.out.println(strike + "스트라이크");
+        }
+
+        if (ball > 0 && strike > 0) {
+
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
     }
 }
