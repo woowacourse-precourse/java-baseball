@@ -4,11 +4,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import view.GameView;
 
 class ApplicationTest extends NsTest {
 
@@ -82,17 +80,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 예외_테스트_추가_4() {
-        GameView gameView = new GameView();
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("123", "589", "0");
-                assertThrows(IllegalArgumentException.class, gameView::run);
-            },
-            5, 8, 9, 5, 8, 9
-        );
-    }
+//    @Test
+//    void 예외_테스트_추가_4() {
+//        GameView gameView = new GameView();
+//        assertRandomNumberInRangeTest(
+//            () -> {
+//                run("123", "589", "0");
+//                assertThrows(IllegalArgumentException.class, gameView::run);
+//            },
+//            5, 8, 9, 5, 8, 9
+//        );
+//    }
 
     @Override
     public void runMain() {
