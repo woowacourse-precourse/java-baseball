@@ -25,6 +25,8 @@ public final class Validator {
 
 
     public static void validateDuplication(List<Ball> playerBalls, Ball ball) {
-
+        if (playerBalls.contains(ball)) {
+            throw new IllegalArgumentException(INVALID_INPUT_VALUE_MESSAGE);
+        }
     }
 }
