@@ -10,13 +10,13 @@ public class BaseballDecision {
 
     public BaseballDecision(NumberHandler numberHandler) {
         this.numberHandler = numberHandler;
-
-        this.strikeCount = 0;
-        this.ballCount = 0;
-        this.nothingFlag = false;
     }
 
     public void makeDecision() {
+        strikeCount = 0;
+        ballCount = 0;
+        nothingFlag = false;
+
         ArrayList<Integer> computerNumber = numberHandler.getComputerNumber();
         ArrayList<Integer> userNumber = numberHandler.getUserNumber();
 

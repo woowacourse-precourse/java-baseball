@@ -26,6 +26,7 @@ class BaseballDecisionTest {
         System.out.println("strike : " + referee.getStrikeCount());
         System.out.println("ball : " + referee.getBallCount());
         System.out.println("nothing : " + referee.getNothingFlag());
+
     }
 
     @Test
@@ -35,6 +36,7 @@ class BaseballDecisionTest {
 
         referee.setBallCount(1);
         referee.setStrikeCount(2);
+        referee.setNothingFlag(false);
         System.out.println("referee = " + referee);
     }
 }
