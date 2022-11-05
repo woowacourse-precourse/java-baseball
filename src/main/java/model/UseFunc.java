@@ -9,8 +9,9 @@ public class UseFunc {
     // 서로 다른 3자리의 수인지 확인하는 방법은?
     // 1번을 for문 2번?
     public static boolean isNumOfIndividually(String str) {
-        List<Integer> splitStrList = getListStrArr2Split(str);
+        ArrayList<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = 0;
+
         if (isRightContainSameNum(splitStrList, cntSameNum)) {
             return false;
         }
@@ -43,9 +44,9 @@ public class UseFunc {
         return list.get(index);
     }
 
-    private static List getListStrArr2Split(String str) {
+    private static ArrayList<Integer> getListStrArr2Split(String str) {
         String[] strArr = getArrSplit(str);
-        List<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         for (String value : strArr) {
             list.add(parseIntFromValue(value));
         }
