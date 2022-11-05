@@ -3,9 +3,9 @@ package baseball;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
+import static baseball.Const.WRONG_INPUT;
 
 public class BallsTest {
 
@@ -34,5 +34,16 @@ public class BallsTest {
         assertThat(balls.getBallList().size()).isEqualTo(3);
         assertThat(balls.getBallList().stream().allMatch((ball) -> 1 <= ball.getNumber() && ball.getNumber() <= 9)).isTrue();
         assertThat(duplicate.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 잘못된_입력이_들어왔을_때_예외를_반환하는_기능() {
+        // given
+        Balls balls = new Balls();
+
+        // then
+        assertThatThrownBy(balls.convertInputToBall("12345"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WRONG_INPUT);
     }
 }
