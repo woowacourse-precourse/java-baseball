@@ -7,4 +7,8 @@ public class Score {
     public int getBall() {
         return ball;
     }
+
+    public void setBall(int ball) {
+        this.ball = ball;
+    }
 }
