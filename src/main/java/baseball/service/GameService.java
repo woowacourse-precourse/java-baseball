@@ -29,4 +29,8 @@ public class GameService {
     public void changePlayerBalls(List<Integer> newBallNumbers) {
         player.changeBalls(newBallNumbers);
     }
+
+    public void changeComputerBalls() {
+        computer.changeBalls(RandomNumberCreator.createRandomNumbers());
+    }
 }
