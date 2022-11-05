@@ -13,4 +13,14 @@ public class Game {
         char letter = playerRestart.charAt(0);
         return letter == '1';
     }
+
+    public boolean tryCycle(Player player, Computer computer) {
+        String playerNumber = player.getNumber();
+        if (!player.isValidNumber(playerNumber)) {
+            Player.isNotValid();
+        }
+        Result result = computer.judgeNumber(playerNumber);
+        System.out.println(result.toString());
+        return result.checkFinish();
+    }
 }
