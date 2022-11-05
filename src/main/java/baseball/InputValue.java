@@ -1,8 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import org.assertj.core.util.Sets;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputValue {
@@ -43,6 +45,12 @@ public class InputValue {
         } else {
             return false;
         }
+    }
+
+    public boolean checkEachDifferent(List<Integer> num) {
+        HashSet<Integer> setNum = Sets.newHashSet(num);
+
+        return setNum.size() == num.size();
     }
 
 }
