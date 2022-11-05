@@ -59,6 +59,9 @@ class GameProcessor{
         lastInput=Console.readLine();
         return lastInput;
     }
+    public String getLastInput(){
+        return lastInput;
+    }
 }
 public class Application {
     public static void main(String[] args) {
