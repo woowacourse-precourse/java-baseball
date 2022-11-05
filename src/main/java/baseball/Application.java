@@ -92,6 +92,21 @@ public class Application {
         return count;
     }
 
+    public String score(List<Integer> userNumber, List<Integer> makeNumber){
+        int count = equalNumber(userNumber, makeNumber);
+        int strike = countStrike(userNumber,makeNumber);
+        int ball = count-strike;
+
+        if(count == 0){
+            return "낫싱";
+        }else if(strike == 0){
+            return ball + "볼";
+        }else if(ball == 0){
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
+    }
+
 
 
 }
