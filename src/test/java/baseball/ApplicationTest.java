@@ -22,6 +22,14 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ApplicationTest extends NsTest {
 
     @Test
+    void 게임_입력_값_유효성_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("456", "123", "ㄱㄴㄷ"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 통합_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
