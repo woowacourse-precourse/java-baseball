@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
 
+    private static final int RESTART = 1;
+
     private final Computer computer;
 
     public BaseBallGame(Computer computer) {
@@ -12,8 +14,10 @@ public class BaseBallGame {
 
     public void start() {
         Printer.printGameStart();
-        init();
-        play();
+        do {
+            init();
+            play();
+        } while (inputRestartCommand() == RESTART);
     }
 
     private void play() {
@@ -34,5 +38,10 @@ public class BaseBallGame {
     private String inputUserGuess() {
         Printer.printInputNumber();
         return Console.readLine();
+    }
+
+    private int inputRestartCommand() {
+        String commandInput = Console.readLine();
+        return Integer.parseInt(commandInput);
     }
 }
