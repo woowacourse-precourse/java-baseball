@@ -1,21 +1,23 @@
 package baseball.game;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 import java.util.stream.Stream;
 
 public class BaseballGame {
 
-    private int receiveInput(){
-        int inputNum;
-        Scanner sc = new Scanner(System.in);
-        inputNum = sc.nextInt();
+    private String receiveInput(){
+        String inputNum;
+        inputNum = Console.readLine();
         return inputNum;
     }
 
-    private int[] makeInputNumArray(int inputNum){
-        int[] inputNumArray = Stream.of(String.valueOf(inputNum).split("")).mapToInt(Integer::parseInt).toArray();
-        return inputNumArray;
+    private List<String> makeInputNumList(String inputNum){
+        String[] inputNumArray = inputNum.split("");
+        List<String> inputNumList = new ArrayList<>(Arrays.asList(inputNumArray));
+        return inputNumList;
     }
 
     private void makeErrorCheckingInputSize(int[] inputNumArray){
@@ -28,5 +30,4 @@ public class BaseballGame {
             System.exit(1);
         }
     }
-
 }
