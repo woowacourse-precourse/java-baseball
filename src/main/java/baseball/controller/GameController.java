@@ -64,7 +64,7 @@ public class GameController {
     }
 
     private String getPlayersOpinion(){
-        return "";
+        return gameStatusView.getOpinion();
     }
 
     private void setGameStatus(String opinion){
