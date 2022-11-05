@@ -18,28 +18,31 @@ public class Application {
             try {
                 gameLife = playGame(number);
             } catch (IllegalArgumentException e) {
-                return ;
+                return;
             }
         }
     }
 
     public static boolean playGame(String number) throws IllegalArgumentException {
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        String inputNumber = inputNumberFromPlayer();
-        checkInputNumberValidation(inputNumber);
+        boolean continueGame = true;
 
-        Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
-        boolean isGameFinish = resultMessagePrint(inputNumberResult);
+        while (continueGame) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String inputNumber = inputNumberFromPlayer();
+            checkInputNumberValidation(inputNumber);
 
-        boolean whetherToContinueGame = true;
-        if (isGameFinish) {
+            boolean nextTurn = true;
+            while (nextTurn) {
+                Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
+                nextTurn = resultMessagePrint(inputNumberResult);
+            }
             String orderNumber = inputOrderNumber();
             checkOrderNumberValidation(orderNumber);
-            whetherToContinueGame = checkOrderNumberValue(orderNumber);
+            continueGame = checkOrderNumberValue(orderNumber);
         }
 
-        return whetherToContinueGame;
+        return continueGame;
     }
 
     public static boolean checkOrderNumberValue(String orderNumber) throws IllegalArgumentException {
@@ -53,10 +56,10 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException{
+    public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException {
 
         if (orderNumber.length() == 1 && (orderNumber.charAt(0) == '1' || orderNumber.charAt(0) == '2')) {
-            return ;
+            return;
         }
         throw new IllegalArgumentException();
     }
@@ -73,13 +76,13 @@ public class Application {
 
         int strikeNumber = inputNumberResult.get("strike");
         int ballNumber = inputNumberResult.get("ball");
-        boolean gameResult = false;
+        boolean gameResult = true;
 
         if (strikeNumber == 0 && ballNumber == 0) {
             System.out.println("낫싱");
         } else if (strikeNumber == 3) {
             System.out.println("3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            gameResult = true;
+            gameResult = false;
         } else if (strikeNumber > 0 && ballNumber == 0) {
             System.out.println(strikeNumber + "스트라이크");
         } else if (strikeNumber == 0 && ballNumber > 0) {
@@ -146,18 +149,18 @@ public class Application {
         isNumber(inputNumber);
     }
 
-    public static void isNumber(String inputNumber) throws IllegalArgumentException{
+    public static void isNumber(String inputNumber) throws IllegalArgumentException {
 
         for (char number : inputNumber.toCharArray()) {
             if (number > '0' && number <= '9') {
-                continue ;
+                continue;
             }
             throw new IllegalArgumentException();
         }
     }
 
 
-    public static void checkDuplication(String inputNumber) throws IllegalArgumentException{
+    public static void checkDuplication(String inputNumber) throws IllegalArgumentException {
 
         char first = inputNumber.charAt(0);
         char second = inputNumber.charAt(1);
@@ -168,7 +171,7 @@ public class Application {
         }
     }
 
-    public static void checkLength(String inputNumber) throws IllegalArgumentException{
+    public static void checkLength(String inputNumber) throws IllegalArgumentException {
 
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
