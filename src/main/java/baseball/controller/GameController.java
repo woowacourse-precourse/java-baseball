@@ -1,7 +1,7 @@
-package controller;
+package baseball.controller;
 
-import decision.DecisionMaker;
-import game.Game;
+import baseball.decision.DecisionMaker;
+import baseball.game.Game;
 
 public class GameController {
     private Game game;

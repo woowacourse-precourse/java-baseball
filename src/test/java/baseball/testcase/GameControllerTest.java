@@ -1,8 +1,8 @@
-package testcase;
+package baseball.testcase;
 
-import controller.GameController;
-import decision.DecisionMaker;
-import game.Game;
+import baseball.controller.GameController;
+import baseball.decision.DecisionMaker;
+import baseball.game.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
