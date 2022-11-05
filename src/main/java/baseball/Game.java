@@ -52,14 +52,19 @@ public class Game {
         return strikeAndBallCount;
     }
 
-    public void incorrectUserAnswerDigit(String userAnswer) {
+    public void checkExceptions(String userAnswer) {
+        incorrectUserAnswerNonNaturalNum(userAnswer);
+        incorrectUserAnswerDigit(userAnswer);
+        incorrectUserAnswerDuplicate(userAnswer);
+    }
+    private void incorrectUserAnswerDigit(String userAnswer) {
         List<Integer> answerList = stringToListInteger(userAnswer);
         if (answerList.size() != 3) {
             throw new IllegalArgumentException("입력 값은 3자리 수로 입력하십시오.");
         }
     }
 
-    public void incorrectUserAnswerDuplicate(String userAnswer) {
+    private void incorrectUserAnswerDuplicate(String userAnswer) {
         HashSet<Character> answerList = new HashSet<Character>();
         for (int i = 0; i < userAnswer.length(); i++) {
             answerList.add(userAnswer.charAt(i));
@@ -68,7 +73,7 @@ public class Game {
         }
     }
 
-    public void incorrectUserAnswerNonNaturalNum(String userAnswer) {
+    private void incorrectUserAnswerNonNaturalNum(String userAnswer) {
         if (!userAnswer.matches("[+-]?\\d*(\\.\\d+)?") || userAnswer.contains("0")) {
             throw new IllegalArgumentException("입력 값은 1 ~ 9 숫자이어야 합니다.");
         }
