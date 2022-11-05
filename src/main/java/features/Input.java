@@ -4,25 +4,32 @@ package features;
 import static extract.Validation.*;
 import static java.lang.String.valueOf;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 
-public class Input{
-
+public class Input extends Exception{
 
     private static Map<Integer, Character> userRepository = new HashMap<>();
+    private static java.lang.IllegalArgumentException IllegalArgumentException;
+
 
     // 입력 기능
     public static Map<Integer, Character> inputUserNumber() {
 
-        Scanner inputNumbers = new Scanner(System.in);
-        int threeDigitsNumber = inputNumbers.nextInt();
+        String userLine = Console.readLine();
 
-        if ( ! validationCheck(threeDigitsNumber ) ) { }
 
-        String numberToString = valueOf(threeDigitsNumber);
+        try {
+            validationCheck(userLine);
+        }catch (IllegalArgumentException illegalArgumentException) {
+            illegalArgumentException.toString();
+
+        }
+
+        String numberToString = valueOf(userLine);
 
         char indexZero = getIndex(numberToString, 0);
         char indexOne = getIndex(numberToString, 1);
