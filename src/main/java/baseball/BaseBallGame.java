@@ -28,7 +28,6 @@ public class BaseBallGame {
             result = Referee.judge(userGuess, computer.getRandomNumbers());
         } while (result == Referee.CONTINUATION);
         Printer.printGameEnd();
-        Printer.printGameRestart();
     }
 
     private void init() {
@@ -41,6 +40,7 @@ public class BaseBallGame {
     }
 
     private int inputRestartCommand() {
+        Printer.printGameRestart();
         String commandInput = Console.readLine();
         return Integer.parseInt(commandInput);
     }
