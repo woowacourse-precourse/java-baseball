@@ -10,6 +10,7 @@ public class GameControl {
     private static final String Ball_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING = "낫싱";
+    private static final String RESTART_CODE = "1";
     private static final String GAME_OVER_CODE = "2";
     private static final boolean PLAYING = true;
     private static final boolean GAMEOVER = false;
@@ -85,6 +86,9 @@ public class GameControl {
 
     public void isRestart(Computer computerNumber) {
         String restartCode = Console.readLine();
+        if(!isRestartCode(restartCode)){
+            throw new IllegalArgumentException();
+        }
         if(restartCode.equals(GAME_OVER_CODE)) {
             isGameOver = GAMEOVER;
         } else {
@@ -97,6 +101,14 @@ public class GameControl {
         if(strike == NUMBER_COUNT) {
             gameStop();
             isRestart(computerNumber);
+        }
+    }
+
+    public boolean isRestartCode(String restartCode) {
+        if(!restartCode.equals(RESTART_CODE) && !restartCode.equals(GAME_OVER_CODE)){
+            return false;
+        } else {
+            return true;
         }
     }
 }
