@@ -22,4 +22,11 @@ public class Computer {
     public boolean checkOverlap(int num) {
         return randomNum.contains(num);
     }
+
+    /**
+     * 길이가 3인지 검증하는 기능
+     */
+    public boolean checkNumLength() {
+        return randomNum.size() == NUM_LENGTH;
+    }
 }
