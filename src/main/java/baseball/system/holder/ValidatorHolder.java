@@ -1,4 +1,4 @@
-package baseball.system;
+package baseball.system.holder;
 
 import baseball.system.exception.ValidatorNotFoundException;
 import baseball.system.validation.Validator;

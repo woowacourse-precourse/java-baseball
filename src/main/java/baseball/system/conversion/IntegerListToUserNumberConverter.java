@@ -1,6 +1,6 @@
 package baseball.system.conversion;
 
-import baseball.system.ValidatorHolder;
+import baseball.system.holder.ValidatorHolder;
 import baseball.vo.UserNumber;
 
 import java.util.List;

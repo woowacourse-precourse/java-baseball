@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.system.AnswerHolder;
+import baseball.system.holder.AnswerHolder;
 import baseball.vo.Answer;
 import camp.nextstep.edu.missionutils.Randoms;
 

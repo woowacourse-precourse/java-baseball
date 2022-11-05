@@ -2,30 +2,25 @@ package baseball.controller;
 
 import baseball.dto.Score;
 import baseball.service.BaseballService;
-import baseball.system.conversion.Converter;
-import baseball.system.exception.ConverterNotFoundException;
+import baseball.system.holder.ConverterHolder;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Restart;
 import baseball.vo.UserNumber;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class BaseBallController {
     private final InputView inputView;
     private final OutputView outputView;
     private final BaseballService baseballService;
-    private final List<Converter> converters;
 
     public BaseBallController(InputView inputView,
                               OutputView outputView,
-                              BaseballService baseballService,
-                              List<Converter> converters) {
+                              BaseballService baseballService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.baseballService = baseballService;
-        this.converters = converters;
     }
 
     public Restart startGame() {
@@ -43,25 +38,14 @@ public class BaseBallController {
 
     private UserNumber getUserNumber() {
         String input = inputView.getUserInput();
-        List<Integer> inputList = convert(input, List.class);
-        UserNumber userNumber = convert(inputList, UserNumber.class);
+        List<Integer> inputList = ConverterHolder.convert(input, List.class);
+        UserNumber userNumber = ConverterHolder.convert(inputList, UserNumber.class);
         return userNumber;
     }
 
     private Restart handleWinning() {
         outputView.printWinnerMessage();
         String restartingInput = inputView.getRestartingInput();
-        return convert(restartingInput, Restart.class);
-    }
-
-    private <T extends Object> T convert(Object target, Class convertTo) {
-        Iterator<Converter> iterator = converters.iterator();
-        while (iterator.hasNext()) {
-            Converter converter = iterator.next();
-            if (converter.supports(target, convertTo)) {
-                return (T) converter.convert(target);
-            }
-        }
-        throw new ConverterNotFoundException();
+        return ConverterHolder.convert(restartingInput, Restart.class);
     }
 }

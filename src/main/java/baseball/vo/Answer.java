@@ -1,6 +1,6 @@
 package baseball.vo;
 
-import baseball.system.ValidatorHolder;
+import baseball.system.holder.ValidatorHolder;
 
 import java.util.ArrayList;
 import java.util.Collection;

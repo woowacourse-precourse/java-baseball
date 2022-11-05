@@ -4,10 +4,10 @@ import baseball.controller.BaseBallController;
 import baseball.controller.ComputerController;
 import baseball.dto.Score;
 import baseball.service.BaseballService;
-import baseball.system.conversion.Converter;
-import baseball.system.conversion.IntegerListToUserNumberConverter;
-import baseball.system.conversion.StringToIntegerListConverter;
-import baseball.system.conversion.StringToRestartConverter;
+import baseball.system.conversion.*;
+import baseball.system.holder.AnswerHolder;
+import baseball.system.holder.ConverterHolder;
+import baseball.system.holder.ValidatorHolder;
 import baseball.system.validation.NumberValidator;
 import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.voter.BaseballVoter;
@@ -26,7 +26,6 @@ public class BaseballApplication {
     private final BaseBallController baseBallController;
     private final BaseballService baseballService;
 
-    private final List<Converter> converters;
     private final Voter<UserNumber, Score> voter;
 
     public BaseballApplication() {
@@ -39,16 +38,17 @@ public class BaseballApplication {
                 new StringToIntegerListConversionValidator()
         ));
 
-        this.converters = List.of(
+        ConverterHolder.setConverters(List.of(
                 new StringToRestartConverter(),
                 new StringToIntegerListConverter(),
-                new IntegerListToUserNumberConverter()
-        );
+                new IntegerListToUserNumberConverter(),
+                new ScoreToMessageConverter()
+        ));
 
         this.baseballService = new BaseballService(voter);
         this.computerController = new ComputerController();
         this.baseBallController
-                = new BaseBallController(inputView, outputView, baseballService, converters);
+                = new BaseBallController(inputView, outputView, baseballService);
     }
 
     public void run() {

@@ -2,11 +2,10 @@ package baseball;
 
 import baseball.controller.ComputerController;
 import baseball.dto.Score;
-import baseball.system.AnswerHolder;
-import baseball.system.ValidatorHolder;
-import baseball.system.conversion.Converter;
-import baseball.system.conversion.ScoreToMessageConverter;
-import baseball.system.conversion.StringToIntegerListConverter;
+import baseball.system.conversion.*;
+import baseball.system.holder.AnswerHolder;
+import baseball.system.holder.ConverterHolder;
+import baseball.system.holder.ValidatorHolder;
 import baseball.system.validation.NumberValidator;
 import baseball.system.validation.StringToIntegerListConversionValidator;
 import baseball.system.validation.Validator;
@@ -24,7 +23,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -36,15 +34,23 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @BeforeEach
     void setup() {
-        ArrayList<Validator> validatorList = new ArrayList<>();
-        validatorList.add(new NumberValidator());
-        validatorList.add(new StringToIntegerListConversionValidator());
-        ValidatorHolder.setValidators(validatorList);
+        ValidatorHolder.setValidators(List.of(
+                new NumberValidator(),
+                new StringToIntegerListConversionValidator()
+        ));
+
+        ConverterHolder.setConverters(List.of(
+                new StringToRestartConverter(),
+                new StringToIntegerListConverter(),
+                new IntegerListToUserNumberConverter(),
+                new ScoreToMessageConverter()
+        ));
     }
 
     @AfterEach
     void after() {
         ValidatorHolder.clearHolder();
+        ConverterHolder.clearHolder();
     }
 
     @Test

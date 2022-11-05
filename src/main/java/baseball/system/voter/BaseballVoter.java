@@ -1,6 +1,6 @@
 package baseball.system.voter;
 
-import baseball.system.AnswerHolder;
+import baseball.system.holder.AnswerHolder;
 import baseball.vo.Answer;
 import baseball.dto.Score;
 import baseball.vo.UserNumber;
