@@ -3,6 +3,9 @@ package baseball;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.assertj.core.api.Assertions.*;
 import static baseball.Const.WRONG_INPUT;
@@ -34,6 +37,26 @@ public class BallsTest {
         assertThat(balls.getBallList().size()).isEqualTo(3);
         assertThat(balls.getBallList().stream().allMatch((ball) -> 1 <= ball.getNumber() && ball.getNumber() <= 9)).isTrue();
         assertThat(duplicate.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 입력을_Balls_클래스로_변경시켜주는_기능() {
+        // given
+        Balls balls = new Balls();
+
+        // when
+        balls.convertInputToBall("123");
+        List<Ball> ballList = balls.getBallList();
+        List<Integer> compareWithResult = List.of(1, 2, 3);
+        boolean result = true;
+        for (int i = 0; i < 3; i++) {
+            if (ballList.get(i).getNumber() != compareWithResult.get(i)) {
+                result = false;
+            }
+        }
+
+        // then
+        assertThat(result).isTrue();
     }
 
     @Test
