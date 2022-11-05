@@ -43,7 +43,6 @@ public class Application {
         return countStrike == 3;
     }
 
-
     public static Integer getUserDecision() { //test 게임종료_재시작체크
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Integer user_decision = Integer.parseInt(Console.readLine());
