@@ -2,9 +2,21 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+
 public class NumberGenerator {
-    int number;
+    private ArrayList<Integer> numbers = new ArrayList<>();
 
     public void generateNumber() {
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if(!numbers.contains(randomNumber))
+                numbers.add(randomNumber);
+        }
+    }
+
+    public void truncateNumbers() {
+        this.numbers.clear();
     }
 }

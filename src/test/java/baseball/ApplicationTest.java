@@ -63,6 +63,7 @@ class ApplicationTest extends NsTest {
                         .hasMessage("입력하신 내용 중에 중복되는 숫자가 있습니다.")
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
