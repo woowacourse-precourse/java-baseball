@@ -35,11 +35,27 @@ class Game {
         return Integer.parseInt(Console.readLine());
     }
 
-    public Integer checkNumberLength(Integer gamePlayerInput) {
-        String stringGamePlayerInput = gamePlayerInput.toString();
-
-        return stringGamePlayerInput.length();
+    public void checkGamePlayerNumberInput(Integer gamePlayerNumberInput) {
+        String stringGamePlayerNumberInput = gamePlayerNumberInput.toString();
+        checkNumberLength(stringGamePlayerNumberInput);
+//        hasSameNumber(stringGamePlayerNumberInput);
     }
+
+    private void checkNumberLength(String stringGamePlayerInput) {
+        int stringLength =  stringGamePlayerInput.length();
+        if (stringLength > 3 || stringLength < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+//    public Boolean hasSameNumber(Integer gamePlayerInput) {
+//        Boolean has = false;
+//        String stringGamePlayerInput = gamePlayerInput.toString();
+//
+//        for (int stringIndex = 0; stringIndex < stringGamePlayerInput.length(); stringIndex++) {
+//            if (stringGamePlayerInput.contains())
+//        }
+//    }
 }
 
 class Computer {
