@@ -9,6 +9,7 @@ public class Numbers {
 
     private static final int DIGIT_MINIMUM = 1;
     private static final int DIGIT_MAXIMUM = 9;
+    private static final int DIGITS_LENGTH = 3;
 
     private final List<Integer> digits;
 
@@ -20,7 +21,7 @@ public class Numbers {
     }
 
     private void validateLength(List<Integer> digits) {
-        if (digits.size() != 3) {
+        if (digits.size() != DIGITS_LENGTH) {
             throw new IllegalArgumentException("숫자는 3자리여야 합니다");
         }
     }
