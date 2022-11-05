@@ -14,11 +14,11 @@ public class PrepareGame {
         return computer;
     }
 
-    public List<Integer> isEachDigit(List<Integer> computer) {
+    public List<Integer> isEachDigit(List<Integer> checkDigit) {
         int randomNumber = Randoms.pickNumberInRange(1,9);
-        if(!computer.contains(randomNumber)){
-            computer.add(randomNumber);
+        if(!checkDigit.contains(randomNumber)){
+            checkDigit.add(randomNumber);
         }
-        return computer;
+        return checkDigit;
     }
 }
