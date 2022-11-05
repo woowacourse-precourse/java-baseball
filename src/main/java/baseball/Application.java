@@ -54,8 +54,68 @@ public class Application {
     }
 
 
+    // 4번 문자를 넣은 이후 비교하는 메소드 (if문 2개를 활용)
+    public static int[] compare_and_change(int strike, int ball, int i, int order_baseball_answer, char answer_char, char compare_char){
+        if (compare_char == answer_char){
+            if (i == order_baseball_answer){
+                strike += 1;
+            } else {
+                ball += 1;
+            }
+        }
+        return new int[]{strike, ball};
+    }
+
+    // 4번 문자를 각각 넣어주는 메소드 (for문을 2개 활용)
+    public static int[] strike_ball(String baseball_input, String baseball_answer){
+        int ball = 0;
+        int strike = 0;
+        int[] get_strike_ball;
+        for (int answer_index=0; answer_index<3; answer_index++){
+            char answer_char = baseball_answer.charAt(answer_index);
+
+            for (int compare_index = 0; compare_index<3; compare_index++){
+                char compare_char = baseball_input.charAt(compare_index);
+                get_strike_ball = compare_and_change(strike, ball, answer_index, compare_index, answer_char, compare_char);
+                strike = get_strike_ball[0];
+                ball = get_strike_ball[1];
+            }
+
+        }
+        return new int[] {strike, ball};
+    }
+
+
+
+
+
+
+
+
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int exit_check = 1;
+        while (exit_check == 1) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String baseball_answer = baseball_random();
+            /*
+            int game_error = game_loof(baseball_answer);
+            if (game_error == 1){
+                break;
+            }
+            */
+
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+
+            exit_check = Integer.parseInt(Console.readLine());
+
+        }
     }
-}
+
+
+    }

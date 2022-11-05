@@ -20,7 +20,14 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
-    
+
+    @Test
+    void test_compare() {
+        int[] test = strike_ball("123", "123");
+        int[] test_new = {3,0};
+        assertThat(test).isEqualTo(test_new);
+    }
+
 
 
     @Test
