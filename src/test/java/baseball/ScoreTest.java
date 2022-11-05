@@ -14,4 +14,13 @@ public class ScoreTest {
 
         assertThat(score.getBall()).isEqualTo(input);
     }
+
+    @Test
+    void setBall_스트라이크의_개수가_수정_반환_되는지_확인() {
+        int input = 3;
+        Score score = new Score();
+        score.setStrike(input);
+
+        assertThat(score.getStrike()).isEqualTo(input);
+    }
 }
