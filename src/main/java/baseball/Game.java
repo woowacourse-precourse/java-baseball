@@ -44,7 +44,7 @@ public class Game {
         }
     }
 
-    private static Integer ball(Computer computer, Player player, int ballCount) {
+    public static Integer ball(Computer computer, Player player, int ballCount) {
 
         for (int numericComparisonIndex = 0; numericComparisonIndex < 3; numericComparisonIndex++) {
             if (!computer.computerNumber.get(numericComparisonIndex).equals(player.playerNumber.get(numericComparisonIndex))) {
