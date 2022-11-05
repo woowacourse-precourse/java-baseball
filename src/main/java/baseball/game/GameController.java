@@ -5,6 +5,8 @@ import static utils.Constant.*;
 import baseball.entity.Computer;
 import baseball.entity.Player;
 import utils.View;
+import utils.validation.Validation;
+import utils.validation.Validator;
 
 public class GameController {
     private static GameController instance;
@@ -26,10 +28,16 @@ public class GameController {
     private class BaseBallGame implements Game{
         Computer computer;
         Player player;
+        Validator numberInputValidator;
 
         public BaseBallGame() {
             computer = new Computer();
             player = new Player();
+
+            numberInputValidator = Validator.build()
+                    .addValidation(Validation.isLength(DIGIT_LENGTH))
+                    .addValidation(Validation.isNumber())
+                    .addValidation(Validation.isNotDuplicationNumber());
         }
 
         private void initialize(){
@@ -39,6 +47,9 @@ public class GameController {
         private void start(){
             View.printInput();
             String command = player.getCommand();
+
+            if(numberInputValidator.validate(command)){
+            }
 
             View.printGameEnd();
         }
