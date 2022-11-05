@@ -11,6 +11,10 @@ public class User {
     public User() {
     }
 
+    static public User makeUser() {
+        return new User();
+    }
+
     public ThreeDigitNum inputGuessedNum() {
         OutputControl.println("숫자를 입력해주세요 : ");
         return new ThreeDigitNum((InputControl.readInt()));
