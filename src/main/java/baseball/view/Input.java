@@ -18,7 +18,10 @@ public class Input {
     }
 
     private List<Integer> textToIntList(String text) {
-        return text.chars().boxed().collect(Collectors.toList());
+        return text.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public static void validateInputBaseballNumber(String text) {
