@@ -14,9 +14,11 @@ public class Restart {
 
         if (restartType.equals(START)) {
             baseballGame.gameStart();
+            answer(baseballGame);
+        } else if (restartType.equals(END)) {
+            System.out.println("게임 종료");
         } else if (!restartType.equals(START) || !restartType.equals(END)) {
             answer(baseballGame);
         }
     }
-
 }
