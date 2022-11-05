@@ -8,13 +8,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Controller {
-    Computer computer;
-    Player player;
-
-    public Controller() {
-        computer = new Computer();
-        player = new Player();
-    }
+    Computer computer = new Computer();
+    Player player = new Player();
+    GameResult gameResult = new GameResult();
 
     public void startGame() {
         OutputView.printGameStart();
@@ -25,10 +21,9 @@ public class Controller {
 
     void playOneGame() {
         computer.pickRandomNumbers();
-        GameResult gameResult;
         do {
             player.guessNumbers();
-            gameResult = new GameResult(computer, player);
+            gameResult.calculate(computer, player);
             OutputView.printResult(gameResult.toString());
         } while (gameResult.getStrike() != 3);
     }
