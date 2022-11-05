@@ -68,7 +68,7 @@ class DigitsTest {
 
             assertThatThrownBy(() -> new Digits(list))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("숫자는 1~9의 값이여야 합니다.");
+                    .hasMessageContaining("숫자들은 중복되면 안됩니다.");
         }
     }
 
