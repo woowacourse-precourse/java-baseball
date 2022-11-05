@@ -200,12 +200,24 @@ public class Application {
 
     public static boolean replayGame() {
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner scanner = new Scanner(System.in);
+        int replayNumber = 0;
 
-        String replayNumberString = scanner.nextLine();
+        while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            Scanner scanner = new Scanner(System.in);
 
-        return checkReplayNumber(replayNumberString);
+            String replayNumberString = scanner.nextLine();
+
+            if (checkReplayNumber(replayNumberString)) {
+
+                replayNumber = replayNumberString.charAt(0) - 48;
+
+                break;
+            }
+        }
+
+        return replayNumber == 1;
+
     }
 
     public static boolean checkReplayNumber(String replayNumberString) {
