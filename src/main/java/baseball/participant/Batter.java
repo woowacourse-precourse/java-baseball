@@ -1,7 +1,6 @@
 package baseball.participant;
 
 import baseball.result.Result;
-import baseball.result.Referee;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
