@@ -23,7 +23,7 @@ public class Computer {
 
     public void initComputer() {
         this.creatRanNumOfComputerList();
-        
+
         while (!isNumOfComputerIndividually()) {
             this.creatRanNumOfComputerList();
         }
@@ -32,10 +32,14 @@ public class Computer {
     private void creatRanNumOfComputerList() {
         this.numThreeRanOfComputerList = new ArrayList<>();
         while (numThreeRanOfComputerList.size() < 3) {
-            int randomNumber = getOneRanNumAnInt();
-            if (!numThreeRanOfComputerList.contains(randomNumber)) {
-                numThreeRanOfComputerList.add(randomNumber);
-            }
+            addRanNumList();
+        }
+    }
+
+    private void addRanNumList() {
+        int randomNumber = getOneRanNumAnInt();
+        if (!numThreeRanOfComputerList.contains(randomNumber)) {
+            numThreeRanOfComputerList.add(randomNumber);
         }
     }
 
