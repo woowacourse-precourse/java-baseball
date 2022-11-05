@@ -84,11 +84,6 @@ public class Game {
         return Integer.parseInt(String.valueOf(number));
     }
 
-    public boolean isAnswer(int strike) {
-        if (strike == IS_ANSWER) {
-            return true;
-        }
-        return false;
-    }
+
 
 }

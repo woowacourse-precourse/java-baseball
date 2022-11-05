@@ -84,4 +84,11 @@ public class BaseballService {
             return Constant.NOTHING.getMessage();
         }
     }
+    public boolean checkAnswer() {
+        if (game.getStrike() == Constant.IS_ANSWER.getNumber()) {
+            return true;
+        }
+        return false;
+    }
+
 }

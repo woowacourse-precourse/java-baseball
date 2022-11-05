@@ -17,7 +17,7 @@ public class BaseballController {
         while (baseballService.getGameStatus()) {
             baseballService.getUserNumbers();
             baseballService.outputHint();
-            if (isAnswer(strike)) {
+            if (baseballService.checkAnswer()) {
                 outputRestart();
             }
         }
