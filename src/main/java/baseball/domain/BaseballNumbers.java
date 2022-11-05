@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class BaseballNumbers {
-    private static final int VALID_BASEBALL_COUNT = 3;
+    private static final int BASEBALL_NUMBERS_SIZE = 3;
 
     List<BaseballNumber> baseballNumbers;
 
@@ -15,14 +15,14 @@ public class BaseballNumbers {
     }
 
     private void validateSize(List<BaseballNumber> baseballNumbers) {
-        if (baseballNumbers.size() != VALID_BASEBALL_COUNT) {
+        if (baseballNumbers.size() != BASEBALL_NUMBERS_SIZE) {
             throw new BaseballGameException();
         }
     }
 
     private void validateDuplicate(List<BaseballNumber> baseballNumbers) {
         HashSet<BaseballNumber> nonDuplicateBaseballs = new HashSet<>(baseballNumbers);
-        if (nonDuplicateBaseballs.size() != VALID_BASEBALL_COUNT) {
+        if (nonDuplicateBaseballs.size() != BASEBALL_NUMBERS_SIZE) {
             throw new BaseballGameException();
         }
     }
