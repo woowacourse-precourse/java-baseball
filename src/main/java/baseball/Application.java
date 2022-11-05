@@ -5,12 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
 
         List<Integer> computer = createComputerNumber();
+
 
         String userNumberString = Console.readLine();
         String[] userNumberStringList = userNumberString.split("");
@@ -20,7 +22,15 @@ public class Application {
         }
 
         List<Integer> user = listToArrayList(userNumberStringList);
-        
+
+        if(checkThreeStrike(computer, user)) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+
+        List<Integer> strikeCount = checkStrikeCount(computer, user);
+
     }
 
     public static List<Integer> createComputerNumber() {
@@ -92,6 +102,40 @@ public class Application {
 
     public static boolean checkThreeStrike(List<Integer> computer, List<Integer> user) {
         return computer.equals(user);
+    }
+
+    public static List<Integer> checkStrikeCount(List<Integer> computer, List<Integer> user) {
+        List<Integer> countResult = new ArrayList<>();
+
+        int strikeCount = countStrike(computer, user);
+        int ballCount = countStirkeAndBall(computer, user) - countStrike(computer, user);
+
+        countResult.add(strikeCount);
+        countResult.add(ballCount);
+
+        return countResult;
+    }
+
+    public static int countStrike(List<Integer> computer, List<Integer> user) {
+        List<Integer> computerSubUser = new ArrayList<>();
+
+        for (int i = 0; i < computer.size(); i++) {
+            computerSubUser.add(computer.get(i) - user.get(i));
+        }
+
+        return Collections.frequency(computerSubUser, 0);
+    }
+
+    public static int countStirkeAndBall(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(user.get(i))) {
+                count += 1;
+            }
+        }
+
+        return count;
     }
 
 }
