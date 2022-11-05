@@ -14,19 +14,14 @@ public class Computer {
 
     public void setNumbers() {
         Set<Integer> numbersSet = new HashSet<>();
-        while(numbersSet.size() < NUMBER_SIZE) {
+        while(numbersSet != null && numbersSet.size() < NUMBER_SIZE) {
             numbersSet.add(Randoms.pickNumberInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER));
         }
         setToArrayList(numbersSet);
-        numberShuffle(numbers);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
-    }
-
-    public void numberShuffle(List<Integer> numbers) {
-        this.numbers = Randoms.shuffle(numbers);
     }
 
     public void setToArrayList(Set<Integer> numbersSet) {

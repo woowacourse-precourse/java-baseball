@@ -32,13 +32,14 @@ public class GameControl {
 
         computerNumber.setNumbers();
         computer = computerNumber.getNumbers();
-        
+
         while(isGameOver) {
             playerNumber.setNumbers();
             player = playerNumber.getNumbers();
             scoreCalculation(player);
             printScore();
             isThreeStrike(computerNumber);
+            resetScore();
         }
     }
 
@@ -48,12 +49,12 @@ public class GameControl {
 
     public void scoreCalculation(List<Integer> player) {
         for(int i = 0; i< NUMBER_COUNT; i++) {
-          if(player.get(i) == computer.get(i)) {
-              strike++;
-          }
-          if(computer.contains(player.get(i))) {
-              strikePlusBall++;
-          }
+            if(player.get(i) == computer.get(i)) {
+                strike++;
+            }
+            if(computer.contains(player.get(i))) {
+                strikePlusBall++;
+            }
             ball = strikePlusBall - strike;
         }
     }
@@ -96,7 +97,6 @@ public class GameControl {
         if(strike == NUMBER_COUNT) {
             gameStop();
             isRestart(computerNumber);
-            resetScore();
         }
     }
 }

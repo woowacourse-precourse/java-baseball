@@ -1,11 +1,12 @@
 package baseball;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Console;
 public class Player {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private List<Integer> numbers;
+    private ArrayList<Integer> numbers;
     public Player() {}
 
     public void setNumbers() {
@@ -15,15 +16,15 @@ public class Player {
         stringToList(input);
     }
 
-    public List<Integer> getNumbers() {
+    public ArrayList<Integer> getNumbers() {
         return numbers;
     }
 
-    public void stringToList(String string) {
-        char[] characterArray = string.toCharArray();
+    public void stringToList(String input) {
+        String[] str = input.split("");
 
-        for(char c : characterArray) {
-            numbers.add((int)c - '0');
+        for(String s : str){
+            numbers.add(Integer.parseInt(s));
         }
     }
 
