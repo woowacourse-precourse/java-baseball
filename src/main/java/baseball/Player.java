@@ -22,4 +22,8 @@ public class Player {
         }
         return allDigit;
     }
+
+    public boolean isThreeLetter(String number) {
+        return number.length() == 3;
+    }
 }
