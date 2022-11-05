@@ -16,7 +16,7 @@ public class PlayerNumber implements Number {
         return playNumber;
     }
 
-    public String setPlayerNumber() throws IllegalArgumentException {
+    public void setPlayerNumber() throws IllegalArgumentException {
         String number = enterPlayerNumber();
         checkValidation(number);
         this.playNumber = new ArrayList<>(Arrays.asList(number.split("")));

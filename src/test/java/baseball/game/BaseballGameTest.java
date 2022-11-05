@@ -3,6 +3,7 @@ package baseball.game;
 import baseball.number.PlayerNumber;
 import baseball.number.TargetNumber;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,12 +15,21 @@ import java.util.Scanner;
 
 class BaseballGameTest {
 
-    BaseballGame baseballGame = new BaseballGame();
+    BaseballGame baseballGame;
     PlayerNumber playerNumber;
+    TargetNumber targetNumber;
     Scanner scanner;
 
     public static InputStream getPlayerInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
+    }
+
+    @BeforeEach
+    public void beforeEach() {
+        playerNumber = new PlayerNumber();
+        targetNumber = new TargetNumber();
+        //baseballGame = new BaseballGame(playerNumber, targetNumber);
+
     }
 
     @ParameterizedTest
@@ -29,7 +39,7 @@ class BaseballGameTest {
         InputStream in = getPlayerInput(input);
         System.setIn(in);
 
-        org.assertj.core.api.Assertions.assertThat(baseballGame.setPlayerNumber())
+        org.assertj.core.api.Assertions.assertThat(playerNumber.enterPlayerNumber())
                 .isEqualTo(input);
 
     }
@@ -41,7 +51,7 @@ class BaseballGameTest {
         InputStream in = getPlayerInput(input);
         System.setIn(in);
 
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> new PlayerNumber(input));
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> playerNumber.setPlayerNumber());
     }
 
     @Test
