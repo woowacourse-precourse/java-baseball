@@ -18,23 +18,34 @@ public class Application {
         return computer;
     }
 
-    static int getInputNumber (){
+    static List<Integer> getInputNumber (){
         String input;
-        int number = 0;
+        int inputNumber = 0;
         try {
             input = Console.readLine();
-            number = Integer.parseInt(input);
-            if (number<100 || number>999)
+            inputNumber = Integer.parseInt(input);
+            if (inputNumber<100 || inputNumber>999)
                 throw new IllegalStateException();
         }
         catch (IllegalStateException e){
             e.printStackTrace();
             throw e;
         }
+
+        List<Integer> number = new ArrayList<>();
+        int cnt=100;
+        for (int i = 0; i < 3; i++) {
+            number.add(inputNumber/cnt);
+            inputNumber %= cnt;
+            cnt/=10;
+        }
+
         return number;
     }
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<Integer> in = getInputNumber();
+
+        System.out.println(in);
     }
 }
