@@ -40,6 +40,10 @@ public class BullsAndCows {
         ballCount = 0;
     }
 
+    public void restart() {
+        createRandomAnswer();
+    }
+
     private List<Character> convertStringToCharList(String string) {
         return string
                 .chars()
