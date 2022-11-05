@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.participant.Computer;
+import baseball.participant.Batter;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ComputerTest {
+class BatterTest {
 
     @Test
     void selectRandomNumber() {
         // given
-        Computer computer = new Computer();
+        Batter batter = new Batter();
 
         // when
-        String randomNumber = computer.selectRandomNumber();
+        String randomNumber = batter.selectRandomNumber();
         Set<String> set = Arrays.stream(randomNumber.split("")).collect(Collectors.toSet());
 
         // then

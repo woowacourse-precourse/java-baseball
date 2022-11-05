@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Computer {
+public class Batter {
 
     private final ResultProcessor processor = new ResultProcessor();
 

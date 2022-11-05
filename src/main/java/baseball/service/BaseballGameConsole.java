@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.participant.Computer;
+import baseball.participant.Batter;
 import baseball.participant.Pitcher;
 import baseball.result.Result;
 import baseball.result.ResultType;
@@ -11,7 +11,7 @@ import static baseball.result.ResultType.*;
 public class BaseballGameConsole {
 
     private final Validator validator = new Validator();
-    private final Computer computer = new Computer();
+    private final Batter batter = new Batter();
 
     public void playGameWithPlayer(Pitcher pitcher) {
         showStartingGuide(pitcher.getName());
@@ -27,14 +27,14 @@ public class BaseballGameConsole {
 
     private void playSingleGame(Pitcher pitcher) {
         boolean matchedAllNumber = false;
-        String randomNumber = computer.selectRandomNumber();
+        String randomNumber = batter.selectRandomNumber();
 
         do {
             System.out.print("숫자를 입력해주세요. : ");
             String predictedNumber = pitcher.predictNumber();
             validator.validatePrediction(predictedNumber);
 
-            Result result = computer.resultOfPrediction(randomNumber, predictedNumber);
+            Result result = batter.resultOfPrediction(randomNumber, predictedNumber);
             matchedAllNumber = result.getResultType() == EXACT_MATCH;
 
             showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());
