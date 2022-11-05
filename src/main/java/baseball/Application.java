@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Application {
 
-    public List<Integer> makeUserNumberToList(Integer userNumber){
+    public List<Integer> makeUserNumberToList(String userNumberString){
+        int userNumber = Integer.parseInt(userNumberString);
         List<Integer> listNumber = new ArrayList<>();
         while(userNumber < 0){
             listNumber.add(userNumber%10);
