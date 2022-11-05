@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class InputImplTest {
 
     @Nested
-    class InputValidationTest {
+    class BaseballInputValidationTest {
 
         @Test
         @DisplayName("서로다른 3자리 숫자는 입력 가능하다.")
