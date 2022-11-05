@@ -7,14 +7,17 @@ import java.util.List;
 public class UserNumber {
     private final List<Integer> userNums;
 
-    public UserNumber(String input) {
-        this.userNums = convertInputStringToUserNums(input);
+    public UserNumber(String userNumberInString) {
+        Exceptions.isValidateInputUserNums(userNumberInString);
+        this.userNums = convertUserNumbers(userNumberInString);
     }
 
-    public static List<Integer> convertInputStringToUserNums(String input) {
+    public static List<Integer> convertUserNumbers(String userNumberInString) {
         List<Integer> userNums = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            userNums.add(Integer.valueOf(String.valueOf(input.charAt(i))));
+            String eachNumber = String.valueOf(userNumberInString.charAt(i));
+            Integer convertedUserNumber = Integer.valueOf(eachNumber);
+            userNums.add(convertedUserNumber);
         }
         return userNums;
     }
