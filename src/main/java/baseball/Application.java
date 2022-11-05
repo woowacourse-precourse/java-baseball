@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
         boolean goOrStop = true;
 
-        while(goOrStop){
+        while (goOrStop) {
             goOrStop = playGame();
         }
 
@@ -20,20 +20,20 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> targetNum = makeRandomTargetNum();
+        System.out.println(targetNum);
 
         boolean go = true;
         boolean restartOrEnd = true;
-        while(go){
+        while (go) {
             int notFinishOrFinishOrException = baseballGame(targetNum);
 
-            if(notFinishOrFinishOrException == 1){
+            if (notFinishOrFinishOrException == 1) {
                 continue;
-            } else if(notFinishOrFinishOrException == 2){
-               go = false;
-                restartOrEnd = gameRestartOrEnd();
-            } else{
+            } else if (notFinishOrFinishOrException == 2) {
                 go = false;
-                makeException();
+                restartOrEnd = gameRestartOrEnd();
+            } else {
+                go = false;
                 restartOrEnd = false;
             }
         }
@@ -57,34 +57,35 @@ public class Application {
                 break;
         }
 
-        if(!lengthException || !duplicateException){
+        if (!lengthException || !duplicateException) {
             return 3;
         }
 
         int strikeNum = countStrikeNum(targetNum, userNum);
         int ballNum = countBallNum(targetNum, userNum);
 
-        if(ballNum != 0){
-            System.out.print(ballNum +"볼 ");
+        if (ballNum != 0) {
+            System.out.print(ballNum + "볼 ");
         }
-        if(strikeNum != 0){
-            System.out.println(strikeNum+"스트라이크");
-        } else{
+        if (strikeNum != 0) {
+            System.out.println(strikeNum + "스트라이크");
+        } else {
             System.out.println();
         }
 
-        if(!checkNothing(strikeNum, ballNum)){
+        if (!checkNothing(strikeNum, ballNum)) {
             System.out.println("낫싱");
         }
 
         if (isThreeStrike(strikeNum)) {
-             return 2;
+            return 2;
 
-        } else{
+        } else {
             return 1;
         }
 
     }
+
     public static List<Integer> makeRandomTargetNum() {
         List<Integer> computer = new ArrayList<>();
 
@@ -106,38 +107,34 @@ public class Application {
     }
 
     static boolean checkInputLengthCorrect(String inputNum) {
-        try {
-            if (inputNum.length() != 3){
-                throw new IllegalArgumentException();
-            }
 
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
+        if (inputNum.length() != 3) {
+            throw new IllegalArgumentException();
         }
+
+        return true;
+
     }
 
     static boolean userNumToIntegerListAndCheckDuplicatedNum(List<Integer> userNum, String inputNum) {
 
-        try{
-            int inputNumToInt = Integer.parseInt(inputNum);
 
-            if (inputNumToInt == 0) {
-                throw new IllegalArgumentException();
-            }
+        int inputNumToInt = Integer.parseInt(inputNum);
 
-            if (!userNum.contains(inputNumToInt)) {
-                userNum.add(inputNumToInt);
-            } else{
-                throw new IllegalArgumentException();
-            }
-
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
+        if (inputNumToInt == 0) {
+            throw new IllegalArgumentException();
         }
 
+        if (!userNum.contains(inputNumToInt)) {
+            userNum.add(inputNumToInt);
+        } else {
+            throw new IllegalArgumentException();
+        }
+
+        return true;
     }
+
+
 
     static int countStrikeNum(List<Integer> targetNum, List<Integer> userNum) {
         int strikeNum = 0;
@@ -155,7 +152,7 @@ public class Application {
         int ballNum = 0;
 
         for (int listIndex = 0; listIndex < userNum.size(); listIndex++) {
-            if(!userNum.get(listIndex).equals(targetNum.get(listIndex)) && targetNum.contains(userNum.get(listIndex))){
+            if (!userNum.get(listIndex).equals(targetNum.get(listIndex)) && targetNum.contains(userNum.get(listIndex))) {
                 ballNum++;
             }
         }
@@ -180,17 +177,14 @@ public class Application {
             return true;
         } else if (selectState.equals("2")) {
             return false;
-        } else{
+        } else {
+            makeException();
             return false;
         }
     }
 
-    static void makeException(){
-        try {
-            throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e){
-            return;
-        }
-    }
+    static void makeException() {
+        throw new IllegalArgumentException();
 
+    }
 }
