@@ -119,6 +119,23 @@
 
 <br/>
 
+* `countContained()`
+   * **Parameter**
+    * 이름 : `containedNumbers`
+    * 타입 : **List\<String>**
+    * `findContainedNumbers()`의 반환값 리스트입니다.
+  * **Parameter 2**
+      * 이름 : `containedNumbers`
+      * 타입 : **List\<String>**
+      * 사용자가 입력한 3개의 숫자로 이루어진 리스트입니다.
+  * **Return**
+      * 타입 : **int**
+  * **설명** <br/>`findContainedNumbers()` 처리를 마친 후, 최소한 Ball 이상인 값들의 갯수를 구하는 메서드입니다.
+  <br/> stream으로 변환하여 `filter()`를 활용했습니다.
+
+<br/>
+
+
 * `countStrike()`
   * **Parameter 1**
     * 이름 : `answer`
@@ -130,7 +147,6 @@
       * 사용자가 입력한 3개의 숫자로 이루어진 리스트입니다.
   * **Return**
       * 타입 : **int**
-      * 
   * **설명**<br/>
     Strike에 해당하는 숫자의 갯수를 반환하는 메서드로<br/>
     Parameter 2(`userNumList`)의 각 값들 중<br/>
@@ -148,7 +164,7 @@
     * 타입 : **int**
   * Return
     * 타입 : **int** 
-  * 상대방의 숫자들과 비교하여 Strike가 아닌 숫자 값들. 즉, Ball의 갯수를 계산하기 위한 메서드입니다.
+  * **설명** <br/>상대방의 숫자들과 비교하여 Strike가 아닌 숫자 값들. 즉, Ball의 갯수를 계산하기 위한 메서드입니다.
   <br/> `containedNumbersCount - strikeCount` 의 계산식을 수행합니다.
 
 <br/>
