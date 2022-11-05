@@ -94,8 +94,8 @@ BUILD SUCCESSFUL in 0s
   - **Class Methods:**
     - [ ] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
     - [ ] `String toString()`
-    - [ ] `int calcStrikes()`
-    - [ ] `int calcBalls()`
+    - [ ] `int calcStrikes(List<Integer> answerNums, List<Integer> inputNums)`
+    - [ ] `int calcBalls(List<Integer> answerNums, List<Integer> inputNums)`
     - [ ] `int numOfStrikes()`
     - [ ] `int numOfBalls()`
     - [ ] `Boolean isNothing()`
