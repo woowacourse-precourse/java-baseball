@@ -61,6 +61,14 @@ class ApplicationTest extends NsTest {
         assertThat(gameProcessor.getStrike()).isEqualTo(3);
     }
 
+    @Test
+    void check_toArrayValue(){
+        gameProcessor.toArrayValue(123,456);
+        int[] testUserArray = {1,2,3};
+        int[] testComputerArray = {4,5,6};
+        assertThat(gameProcessor.getUserValue()).isEqualTo(testUserArray);
+        assertThat(gameProcessor.getComputerValue()).isEqualTo(testComputerArray);
+    }
 
     @Test
     void 게임종료_후_재시작() {
