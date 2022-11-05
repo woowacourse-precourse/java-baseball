@@ -75,4 +75,14 @@ public class Application {
 
         return numArr;
     }
+
+    public static boolean isOverlap(List<Integer> numArr) {
+        boolean overlap = true;
+
+        if (numArr.size() == numArr.stream().distinct().count()) {
+            overlap = false;
+        }
+
+        return overlap;
+    }
 }
