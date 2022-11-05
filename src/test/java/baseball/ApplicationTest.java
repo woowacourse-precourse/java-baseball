@@ -24,6 +24,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 게임_입력_값_유효성_테스트() {
         assertSimpleTest(() ->
+                //runException(args) args는 Application.Main()을 실행할때 들어가는 inputStream
                 assertThatThrownBy(() -> runException("456", "123", "ㄱㄴㄷ"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
