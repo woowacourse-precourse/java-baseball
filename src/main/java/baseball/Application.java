@@ -35,8 +35,17 @@ public class Application {
 
         if (isGameFinish) {
             String orderNumber = inputOrderNumber();
+            checkOrderNumberValidation(orderNumber);
         }
         return true;
+    }
+
+    public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException{
+
+        if (orderNumber.length() == 1 && (orderNumber.charAt(0) == 1 || orderNumber.charAt(0) == 2)) {
+            return ;
+        }
+        throw new IllegalArgumentException();
     }
 
     public static String inputOrderNumber() {
