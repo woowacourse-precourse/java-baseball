@@ -3,19 +3,19 @@ package baseball.controller;
 import baseball.service.ComputerBaseballService;
 import java.util.List;
 
-public class BaseBallController {
+public class BaseballController {
     private ComputerBaseballService computerBaseballService = ComputerBaseballService.getInstance();
 
     // start: Singleton
-    private BaseBallController() {
+    private BaseballController() {
     }
 
-    private static class InnerBaseBallController {
-        private static final BaseBallController instance = new BaseBallController();
+    private static class InnerBaseballController {
+        private static final BaseballController instance = new BaseballController();
     }
 
-    public static BaseBallController getInstance() {
-        return InnerBaseBallController.instance;
+    public static BaseballController getInstance() {
+        return InnerBaseballController.instance;
     }
     // end: Singleton
 
