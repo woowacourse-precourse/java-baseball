@@ -22,6 +22,19 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ApplicationTest extends NsTest {
 
     @ParameterizedTest
+    @DisplayName("플레이어로 부터 게임을 계속할지에 대한 입력값을 받아오는 기능 테스트")
+    @ValueSource(strings = {"2", "1", "3"})
+    void inputOrderNumberTest(String inputOrderNumber) {
+
+        InputStream inputStream = new ByteArrayInputStream(inputOrderNumber.getBytes());
+        System.setIn(inputStream);
+
+        String orderNumber = Application.inputOrderNumber();
+
+        assertThat(orderNumber).isEqualTo(inputOrderNumber);
+    }
+
+    @ParameterizedTest
     @DisplayName("분석한 결과가 3스트라이크 일 경우 true, 아닐 경우 false가 리턴되는지 확인 테스트")
     @CsvSource(value = {"1, 2, false", "0, 3, false", "0, 0, false", "2, 0, false", "3, 0, true"})
     void resultMessagePrintRetrunTest(int strikeNumber, int ballNumber, boolean expectedResult) {
