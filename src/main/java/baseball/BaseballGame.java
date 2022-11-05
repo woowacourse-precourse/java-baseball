@@ -1,17 +1,15 @@
 package baseball;
 
-import Constant.Const;
 import Util.RamdomNumber;
-import java.util.Scanner;
+import static Constant.Const.*;
 
-import static Constant.Const.NUMBER_LENGTH;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
     int[] answer;
     Hint hint;
     User user;
     RamdomNumber randomNumber;
-    Scanner scanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
         this.answer = new int[NUMBER_LENGTH];
@@ -20,27 +18,26 @@ public class BaseballGame {
     }
 
     public void startGame(){
-        System.out.println(Const.GAME_START);
+        System.out.println(GAME_START);
         answer = randomNumber.makeRandomNumber(NUMBER_LENGTH);
         do {
-            user.UserInput();
-            hint.getHint(user.getUserNumber(), answer);
+            hint.getHint(user.UserInput(), answer);
         } while (hint.strike != 3);
     }
     public boolean doneGame(){
-        System.out.println(Const.GAME_DONE);
+        System.out.println(GAME_DONE);
         return restartGame();
     }
 
     private boolean restartGame(){
-        System.out.println(Const.GAME_RESTART);
-        int input = scanner.nextInt();
-        if (input == Const.RESTART){
+        System.out.println(GAME_RESTART);
+        int input = Integer.parseInt(readLine());
+        if (input == RESTART){
             return true;
-        } else if (input == Const.EXIT){
+        } else if (input == EXIT){
             return false;
         } else {
-            throw new IllegalArgumentException(Const.INPUT_WRONG);
+            throw new IllegalArgumentException(INPUT_WRONG);
         }
     }
 }
