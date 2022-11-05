@@ -1,11 +1,13 @@
 package baseball;
 
-import baseball.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
 public class GameApplication {
+    private static final String GameStart_sentence = "숫자 야구 게임을 시작합니다.";
+    private static final String RestartOrExit_sentence = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private List<Integer> computer;
     private List<Integer> user;
     private int[] result;
@@ -17,21 +19,30 @@ public class GameApplication {
         while (true) {
             baseballGame();
 
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.print(RestartOrExit_sentence);
             if (RestartOrExit()) break;
         }
     }
 
+    // 재시작 || 종료를 입력하는 메소드
     private boolean RestartOrExit() {
         String input = Console.readLine();
+        isRightInput(input);
         if (input.equals("2")) {
             return true;
         }
         return false;
     }
 
+    // 입력 문자가 이 이외의 것일 경우
+    private void isRightInput(String input) {
+        if (!input.equals("1") || !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void baseballGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameStart_sentence);
 
         GameNumber computerNumber = new GameNumber();
         GameNumber userNumber = new GameNumber();
@@ -45,9 +56,43 @@ public class GameApplication {
             result = resultNumber.getResult(computer, user);
 
             // 결과 프린트
-            System.out.println(resultNumber.printResult(result));
+            System.out.println(printResult(result));
 
-            if (resultNumber.executeApplication(result)) break;
+            if (executeApplication(result)) break;
         }
+    }
+
+    // 결과를 프린트하는 메소드
+    public String printResult(int[] result) {
+        StringBuilder sb = new StringBuilder();
+        // result[0] = strike, result[1] = ball
+        if (isSame(0, result[0]) && isSame(0, result[1])) { // strike ball 둘다 0인 경우
+            sb.append("낫싱");
+            return sb.toString();
+        }
+        if (isSame(0, result[1])) { // ball 이 0인 경우
+            sb.append(result[0] + "스트라이크");
+            return sb.toString();
+        }
+        if (isSame(0, result[0])) { // strike 가 0인 경우
+            sb.append(result[1] + "볼");
+            return sb.toString();
+        }
+        sb.append(result[0] + "볼 " + result[1] + "스트라이크"); // 둘다 0 보다 클 경우
+        return sb.toString();
+    }
+
+    // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
+    public boolean executeApplication(int[] result) {
+        if (isSame(3, result[0])) { // strike == 3
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    // 파라미터 두개를 비교하는 메소드
+    private boolean isSame(int num, int compareNum) {
+        return num == compareNum;
     }
 }
