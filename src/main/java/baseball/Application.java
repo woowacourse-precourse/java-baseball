@@ -10,10 +10,12 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int playStatus = 1;
+        System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println(computersNumbers());
-        readUsersNumbers();
-        comparing(computersNumbers(), readUsersNumbers());
-
+        while (playStatus == 1) {
+            comparing(computersNumbers(), readUsersNumbers());
+        }
     }
 
     public static ArrayList<Integer> computersNumbers() {
@@ -43,6 +45,7 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> usersNumbers = new ArrayList<Integer>();
 
+        System.out.print("숫자를 입력해주세요: ");
         int inputNumber1 = scanner.nextInt();
         int inputNumber2 = scanner.nextInt();
         int inputNumber3 = scanner.nextInt();
@@ -51,56 +54,44 @@ public class Application {
             usersNumbers.add(0, inputNumber1);
             usersNumbers.add(1, inputNumber2);
             usersNumbers.add(2, inputNumber3);
-        }
-        else{
+        } else {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
         return usersNumbers;
     }
 
-public static ArrayList<Integer> comparing(ArrayList<Integer> computerNumbers, ArrayList<Integer> userNumbers){
+    public static ArrayList<Integer> comparing(ArrayList<Integer> computerNumbers, ArrayList<Integer> userNumbers) {
 
         ArrayList<Integer> hintResult = new ArrayList<Integer>();
 
         int strike = 0;
         int ball = 0;
-        for(int arrayIndex=0; arrayIndex<3; arrayIndex++){
-            if(computerNumbers.get(arrayIndex)==userNumbers.get(arrayIndex)){
+        for (int arrayIndex = 0; arrayIndex < 3; arrayIndex++) {
+            if (computerNumbers.get(arrayIndex) == userNumbers.get(arrayIndex)) {
                 strike++;
             }
-            if(computerNumbers.contains(userNumbers.get(arrayIndex))){
+            if (computerNumbers.contains(userNumbers.get(arrayIndex))) {
                 ball++;
             }
         }
         ball = ball - strike;
-        hintResult.add(0,strike);
-        hintResult.add(1,ball);
+        hintResult.add(0, strike);
+        hintResult.add(1, ball);
 
-        System.out.printf("strike : %1$d ball : %2$d", hintResult.get(0),hintResult.get(1));
+        System.out.printf("strike : %1$d ball : %2$d", hintResult.get(0), hintResult.get(1));
         return hintResult;
-}
+    }
 
- /*       while (usersNumbers.size() < 3) {
-            try {
-                inputNumber = System.in.read();
-            } catch (IOException e) {
-                throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-            }
+    public static void gameResult(ArrayList<Integer> hintScore) {
 
-            if (inputNumber > 10 || inputNumber < 1 || usersNumbers.contains(inputNumber)) {
-                try {
-                    throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-                } catch (IllegalArgumentException e) {
-                    System.out.println("");
-                }
-            }
+        if (hintScore.get(0) == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else if (hintScore.get(0) == 0 && hintScore.get(1) == 0) {
+            System.out.println("낫싱");
+        } else {
+            System.out.printf("%1$d볼 %2$d스트라이크", hintScore.get(1), hintScore.get(0));
         }
-        if (inputNumber < 10 && inputNumber > 0 && !())
-
-
-            return usersNumbers;
-
-  */
+    }
 }
 
 
