@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
-    private Boolean gaming;
-    private List<Integer> targetNumber;
+    private boolean gaming;
     private int guessNumber;
+    private List<Integer> targetNumber;
     private BallCount ballCount;
+    private RandomUtil randomUtil;
 
     public Baseball() {}
 
@@ -53,10 +54,7 @@ public class Baseball {
     }
 
     // GuessNumber Setter method
-    public void setGuessNumber() throws IllegalArgumentException {
-        System.out.print(Constant.INPUT_GUESS_NUM);
-        int guessNumber = Integer.parseInt(Console.readLine());
-
+    public void setGuessNumber(int guessNumber) throws IllegalArgumentException {
         if(!isValidNum(guessNumber)) {
             end();
             throw new IllegalArgumentException();
@@ -82,7 +80,7 @@ public class Baseball {
         List<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < Constant.GUESS_NUM_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(Constant.GUESS_NUM_START_RANGE,Constant.GUESS_NUM_END_RANGE);
+            int randomNumber = randomUtil.generate(Constant.GUESS_NUM_START_RANGE,Constant.GUESS_NUM_END_RANGE);
             if(!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
                 targetNumber.add(randomNumber);
@@ -98,7 +96,7 @@ public class Baseball {
 
         return true;
     }
-
+    
     public boolean checkDigit(char[] numberCharArray) {
         for(char numberChar : numberCharArray) {
             if(numberChar == '0') {
