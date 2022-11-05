@@ -1,10 +1,10 @@
 package baseball.domain;
 
+import baseball.util.Number;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Computer {
     List<Integer> numbers = new ArrayList<>();
 
@@ -18,8 +18,8 @@ public class Computer {
 
     public void pickRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() < Number.THREE) {
+            int randomNumber = Randoms.pickNumberInRange(Number.MIN_PICK, Number.MAX_PICK);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
