@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.entity.Type;
-import baseball.view.Controller;
+import baseball.view.ViewController;
 
 import java.util.Map;
 
@@ -10,18 +10,18 @@ public class GameService {
     private final String answer;
     private final Separator separator;
     private final RandomGenerator generator;
-    private final Controller controller;
+    private final ViewController viewController;
 
     public GameService(int answerLength) {
         this.generator = new RandomGenerator();
-        this.controller = new Controller();
+        this.viewController = new ViewController();
         this.answer = generator.generateRandomNumbers(answerLength); // TODO 랜덤 생성 -> gameservice에 할당?
         //this.answer = "123";            // 임시 정답
         this.separator = new Separator(answer);
     }
 
     public void initGame() {
-        controller.printGameStartMessage();
+        viewController.printGameStartMessage();
     }
 
     public boolean startGame() {
@@ -32,14 +32,14 @@ public class GameService {
     private void repeatRound() {
         boolean flag = false;
         while (!flag) {
-            String input = controller.printAndInputNumber();
+            String input = viewController.printAndInputNumber();
             Map<Type, Integer> resultMap = separator.separateInputResult(input);
-            flag = controller.printRoundResult(resultMap);
+            flag = viewController.printRoundResult(resultMap);
         }
     }
 
     private boolean askReGame() {
-        return controller.printReGameAndInput();
+        return viewController.printReGameAndInput();
     }
 
     public boolean forTest_askReGame() {

@@ -9,11 +9,11 @@ import java.util.Map;
 import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
 import static baseball.view.Display.printReGameMessage;
 
-public class Controller {
+public class ViewController {
 
     private final Display display;
 
-    public Controller() {
+    public ViewController() {
         this.display = new Display();
     }
 
