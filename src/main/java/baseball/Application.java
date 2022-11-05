@@ -28,6 +28,7 @@ public class Application {
 
     private static List<Integer> inputPlayerNumber() {
         List<Integer> playerNumber = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String playerInputs = Console.readLine();
         for (String playerInput : playerInputs.split(""))
             playerNumber.add(Integer.parseInt(playerInput));
