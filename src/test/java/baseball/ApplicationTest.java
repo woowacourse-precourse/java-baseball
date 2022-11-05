@@ -82,6 +82,16 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+    @Test
+    void 낫싱_입력_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789","135");
+                    assertThat(output()).contains("낫싱");
+                },
+                1, 3, 5
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
