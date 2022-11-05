@@ -51,7 +51,20 @@ public class Application {
             userNumber.add(Integer.parseInt(inputSingleStr));
         }
     }
-    
+
+    public static Integer startUserGame(BufferedReader br) throws IOException{
+        if(strikeCount != 3){
+            userInputNumbers(br);
+            countStrikeAndBall();
+            printStrikeAndBall();
+        }else if(strikeCount == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return answerNumber(br);
+        }
+        return 0;
+    }
+
     public static void resetValue(){
         computerNumber = new ArrayList<>();
         userNumber = new ArrayList<>();
