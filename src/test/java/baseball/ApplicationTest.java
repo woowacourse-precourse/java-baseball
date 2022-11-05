@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import baseball.Opponent;
+import baseball.HintMaker;
+import baseball.HintMessage;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -47,6 +50,31 @@ class ApplicationTest extends NsTest {
         assertThat(hintMaker.getHintby("231")).isEqualTo("03");
         assertThat(hintMaker.getHintby("124")).isEqualTo("20");
         assertThat(hintMaker.getHintby("132")).isEqualTo("12");
+    }
+
+    @Test
+    void printMessageTest(){
+        Opponent cpu = new Opponent();
+        List<Integer> cpu_numbers = List.of(1,2,3);
+        cpu.setNumbers(cpu_numbers);
+        HintMaker hintMaker = new HintMaker(cpu);
+
+        String hint;
+
+        hint = hintMaker.getHintby("123");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("3스트라이크");
+        hint = hintMaker.getHintby("231");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("3볼 ");
+        hint = hintMaker.getHintby("132");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("2볼 1스트라이크");
+        hint = hintMaker.getHintby("456");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("낫싱");
+
+    }
+    @Test
+    void userInputTest(){
+        String str = camp.nextstep.edu.missionutils.Console.readLine();
+        assertThat(str).isNotNull();
     }
 
     @Override
