@@ -5,18 +5,18 @@ import java.util.List;
 
 import static baseball.Constant.*;
 
-public class Compare {
+public class GetScore {
     List<Integer> userNumbers;
     List<Integer> computerNumbers;
-    public int strike = 0;
-    public int ball = 0;
+    public static int strike = 0;
+    public static int ball = 0;
 
-    Compare(List<Integer> computer, List<Integer> user) {
+    GetScore(List<Integer> computer, List<Integer> user) {
         this.computerNumbers = computer;
         this.userNumbers = user;
     }
 
-    public List<Integer> countScore() {
+    public List<Integer> getScore() {
         int strike = 0;
         int ball = 0;
 
@@ -31,7 +31,7 @@ public class Compare {
         return Arrays.asList(strike, ball);
     }
 
-    public void countStrike() {
+    public void getStrike() {
         for (int i=0; i<NUMBERS_LENGTH; i++) {
             if (isStrike(computerNumbers.get(i), userNumbers.get(i))) {
                 strike += 1;
@@ -39,7 +39,7 @@ public class Compare {
         }
     }
 
-    public void countBall() {
+    public void getBall() {
         for (int i=0; i<NUMBERS_LENGTH; i++) {
             if (isBall(computerNumbers, userNumbers.get(i))) {
                 ball += 1;
