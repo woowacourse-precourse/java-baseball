@@ -8,9 +8,15 @@ import java.util.Map;
 public class BallReader {
     private static String BALL = "BALL";
     private static String STRIKE = "STRIKE";
+    private int requiredStrikes;
+
+    public BallReader() {
+        this.requiredStrikes = 3;
+    }
 
     public boolean isFinished(List<Integer> userBall, List<Integer> computerBall) {
-        return true;
+        Map<String, Integer> result = getResult(userBall, computerBall);
+        return result.get(STRIKE) == requiredStrikes;
     }
 
     public Map<String, Integer> getResult(List<Integer> userBall, List<Integer> computerBall) {
@@ -20,17 +26,15 @@ public class BallReader {
     }
 
     private List<String> evaluateBall(List<Integer> userBall, List<Integer> computerBall) {
+        final int noNumberInComputer = -1;
         List<String> ballData = new ArrayList<>();
         for (int number : userBall) {
             int userIndex = userBall.indexOf(number);
             int computerIndex = computerBall.indexOf(number);
-            if (computerIndex == -1) {
-                continue;
-            }
             if (userIndex == computerIndex) {
                 ballData.add(STRIKE);
             }
-            if (userIndex != computerIndex) {
+            if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
                 ballData.add(BALL);
             }
         }
@@ -47,7 +51,7 @@ public class BallReader {
     }
 
     private void validateBalls(List<Integer> userBall, List<Integer> computerBall) {
-        if(userBall.size()!=computerBall.size()){
+        if (userBall.size() != computerBall.size()) {
             throw new IllegalArgumentException("서로 호환 되지 않는 공입니다");
         }
     }
