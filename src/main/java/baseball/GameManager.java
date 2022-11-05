@@ -124,7 +124,14 @@ public class GameManager {
     }
 
     private int getStrike(ArrayList<Integer> userGuess) {
+        int ret = 0;
+        for(int index = 0;index < 3;index++) {
+            if(guessNumber.get(index) == userGuess.get(index)) {
+                ret++;
+            }
+        }
 
+        return ret;
     }
 
     private int getBall(ArrayList<Integer> userGuess) {
