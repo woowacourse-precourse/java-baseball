@@ -18,4 +18,10 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validateNumber("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 입력값이_0이_들어가_있는_수일_때_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateNumber("012"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
