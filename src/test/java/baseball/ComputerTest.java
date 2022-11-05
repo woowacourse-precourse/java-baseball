@@ -37,4 +37,18 @@ public class ComputerTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void ball_확인() {
+        try {
+            Constructor<Computer> constructor = Computer.class.getDeclaredConstructor(Numbers.class);
+            constructor.setAccessible(true);
+            Computer test = constructor.newInstance(new Numbers(List.of(1, 2, 3)));
+            Numbers guess = new Numbers(List.of(2, 1, 3));
+            int result = 2;
+            assertThat(result).isEqualTo(test.ball(guess));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
