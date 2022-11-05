@@ -20,8 +20,7 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
-
-
+    
 
 
     @Test
