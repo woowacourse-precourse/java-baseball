@@ -56,25 +56,11 @@ public class Application {
 
         // 4-3 : 1을 입력했다면, 재시작하기.
         if (restartOrExit == 1) {
-            preSettingToRestartGame(computer, user); // 4-3-1 : 재시작하기 위한 준비
-            ballCount = "";
-
-            // ----------------- 여기까지 이상 없는거 확인했음 -----------------
-
-            // 4-3-2 : 재시작하기 -> 코드를 다시 쓰는 것은 좋지 않은 발상임. 다른 방법을 어떻게든 떠롤리기 바람.
-            while (isNeedReEnter(ballCount)) { // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-                user.clear();
-                // 3-2 : user의 정보를얻어와 String으로 받고, List로 변환한다.
-                user = getNumberOfUserForList(user);
-                // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
-                ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
-                System.out.println(ballCount);
-            }
             return true;
         } else if (restartOrExit == 2) {
             return false;
         } else {
-            throw new IllegalArgumentException("비정상적 입력값입니다.");
+            throw new IllegalArgumentException("비정상적인 값입니다.");
         }
     }
 
@@ -261,7 +247,7 @@ public class Application {
 
         repeatState = gameStart();
         while (repeatState) {
-            gameStart();
+            repeatState = gameStart();
         }
     }
 }
