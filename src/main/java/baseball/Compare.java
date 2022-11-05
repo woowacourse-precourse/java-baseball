@@ -18,7 +18,7 @@ public class Compare {
         int strike = 0;
         int ball = 0;
 
-        for (int i=0; i<PLAYING_NUMBERS_LENGTH; i++) {
+        for (int i=0; i<NUMBERS_LENGTH; i++) {
             if (isStrike(computerNumbers.get(i), userNumbers.get(i))) {
                 strike += 1;
             }

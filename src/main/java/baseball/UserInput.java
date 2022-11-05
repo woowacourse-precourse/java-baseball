@@ -24,7 +24,7 @@ public class UserInput {
     }
 
     boolean IsValidLength() {
-        return ((playing) && (input.length() == PLAYING_NUMBERS_LENGTH));
+        return ((playing) && (input.length() == NUMBERS_LENGTH));
     }
 
     boolean IsValidRestartOrEndGame() {
@@ -35,7 +35,7 @@ public class UserInput {
         HashSet<String> setRange1To9 = SetRange1To9();
         HashSet<String> inputSet = StringToSet();
         inputSet.retainAll(setRange1To9);
-        return inputSet.size()==PLAYING_NUMBERS_LENGTH;
+        return inputSet.size() == NUMBERS_LENGTH;
     }
 
     HashSet<String> SetRange1To9() {

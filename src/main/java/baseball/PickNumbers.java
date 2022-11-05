@@ -12,7 +12,7 @@ public class PickNumbers {
 
     List<Integer> pickNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < PLAYING_NUMBERS_LENGTH) {
+        while (numbers.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
             if (! numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
