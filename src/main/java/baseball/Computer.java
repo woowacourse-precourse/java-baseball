@@ -6,13 +6,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static constant.Const.*;
+import static baseball.constant.Const.*;
 
 public class Computer {
 
     private String answer;
 
-    protected void setAnswer() {
+    protected void generateAnswer() {
         answer = makeRandomNumber();
         System.out.println("answer = " + answer);
     }

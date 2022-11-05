@@ -1,10 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import view.Message;
-import validator.NumberValidator;
+import baseball.view.Message;
+import baseball.validator.NumberValidator;
 
-import static constant.Const.RETRY;
+import static baseball.constant.Const.RETRY;
 
 public class User {
     private static String inputNumber;

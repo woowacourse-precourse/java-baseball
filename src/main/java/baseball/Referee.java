@@ -1,6 +1,6 @@
 package baseball;
 
-import view.Message;
+import baseball.view.Message;
 
 public class Referee {
     private int strikeCount;
@@ -44,12 +44,12 @@ public class Referee {
         ballCount = count;
     }
 
-    private boolean isStrike(String answer, String userNumber, int i) {
-        return answer.charAt(i) == userNumber.charAt(i);
+    private boolean isStrike(String answer, String userNumber, int index) {
+        return answer.charAt(index) == userNumber.charAt(index);
     }
 
-    private Boolean isBall(int findIndexWithUserChar, int userNumberCharIndex) {
-        return (findIndexWithUserChar != INDEX_NOT_FOUND && findIndexWithUserChar != userNumberCharIndex);
+    private Boolean isBall(int findIndexInAnswer, int userNumberCharIndex) {
+        return (findIndexInAnswer != INDEX_NOT_FOUND && findIndexInAnswer != userNumberCharIndex);
     }
 
     public void showResult() {
@@ -58,5 +58,9 @@ public class Referee {
 
     public int getStrikeCount() {
         return strikeCount;
+    }
+
+    public int getBallCount(){
+        return ballCount;
     }
 }

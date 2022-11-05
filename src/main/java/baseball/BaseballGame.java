@@ -1,8 +1,8 @@
 package baseball;
 
-import view.Message;
+import baseball.view.Message;
 
-import static constant.Const.GAME_END_STRIKE_COUNT;
+import static baseball.constant.Const.GAME_END_STRIKE_COUNT;
 
 public class BaseballGame {
     private Computer computer;
@@ -24,15 +24,15 @@ public class BaseballGame {
 
     private void init() {
         referee.initCount();
-        computer.setAnswer();
+        computer.generateAnswer();
     }
 
     private void start() {
-        while (referee.getStrikeCount() != GAME_END_STRIKE_COUNT) {
+        do {
             user.enterNumber();
             referee.judge(computer.getAnswer(), user.getInputNumber());
             referee.showResult();
-        }
+        } while (referee.getStrikeCount() != GAME_END_STRIKE_COUNT);
     }
 
     private void end() {

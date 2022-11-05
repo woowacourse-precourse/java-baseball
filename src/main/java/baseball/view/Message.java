@@ -1,6 +1,6 @@
-package view;
+package baseball.view;
 
-import static constant.Const.*;
+import static baseball.constant.Const.*;
 
 public class Message {
 
