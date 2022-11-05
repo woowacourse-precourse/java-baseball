@@ -12,9 +12,12 @@ public class NumberBaseballRepository {
     private static final int START_NUMBER = 1;
     private static final int PICK_NUMBER_COUNT = 3;
 
-
     private static final NumberBaseballRepository instance = new NumberBaseballRepository();
     private static final List<ComputerNumber> numberStore = new ArrayList<>();
+
+    public static NumberBaseballRepository getInstance() {
+        return instance;
+    }
 
     public void generateNumber() {
         clearNumberStore();
