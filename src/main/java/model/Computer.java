@@ -11,6 +11,7 @@ public class Computer {
     final private static int NUM_START_RANGE_RAM = 1;
     final private static int NUM_END_RANGE_RAM = 9;
     final private static String NOT_TING_ANSWER = "낫싱";
+    final private static int COUNT_ZERO = 0;
 
     public List<Integer> numThreeRanOfComputerList;
 
@@ -98,19 +99,41 @@ public class Computer {
 
     private ResultType getResultType() {
         // 볼 0 , 스트라이크 0
-        if (this.cntBall == 0 && this.cntStrike == 0) {
+        if (isHinNotting()) {
             return ResultType.BALL_STRIKE_ZERO;
         }
         // 스트라이크 0
-        else if (this.cntStrike == 0) {
+        else if (isHintBallOnly()) {
             return ResultType.BALL_ONLY;
         }
         // 볼 0
-        else if (this.cntBall == 0) {
+        if (isHintStrikeOnly()) {
             return ResultType.STRIKE_ONLY;
-        } else {
+        }
+        if (isHintBallStrik()) {
             return ResultType.BALL_STRIKE;
         }
+        return null;
+    }
+
+    private boolean isHintBallStrik() {
+        return !UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO) && !UseFunc.isEqualIntOfTwo(cntStrike,
+            COUNT_ZERO);
+    }
+
+    private boolean isHintStrikeOnly() {
+        return UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO);
+    }
+
+    private boolean isHintBallOnly() {
+        return UseFunc.isEqualIntOfTwo(cntStrike, COUNT_ZERO);
+
+    }
+
+    private boolean isHinNotting() {
+        return UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO) && UseFunc.isEqualIntOfTwo(cntStrike,
+            COUNT_ZERO);
+
     }
 
     public int getOneRanNumAnInt() {
