@@ -76,17 +76,17 @@ public class Application {
 
     static List<Integer> compareComputerAndUser(String computer, String user) {
         List<Integer> scoreOfStrikeAndBall = new ArrayList<>();
-        scoreOfStrikeAndBall.add(countSameletterInSameIndexWithoutDuplicate(computer, user));
-        scoreOfStrikeAndBall.add(countSameletterInDifferentIndexWithoutDuplicate(computer, user));
+        scoreOfStrikeAndBall.add(countSameLetterInSameIndexWithoutDuplicate(computer, user));
+        scoreOfStrikeAndBall.add(countSameLetterInDifferentIndexWithoutDuplicate(computer, user));
         return scoreOfStrikeAndBall;
     }
 
-    static int countSameletterInSameIndexWithoutDuplicate(String computer, String user) {
+    static int countSameLetterInSameIndexWithoutDuplicate(String computer, String user) {
         return (int)computer.chars()
                 .filter(i -> i == user.charAt(computer.indexOf(i)))
                         .count();
     }
-    static int countSameletterInDifferentIndexWithoutDuplicate(String computer, String user) {
+    static int countSameLetterInDifferentIndexWithoutDuplicate(String computer, String user) {
         return (int)user.chars()
                 .filter(i -> i != computer.charAt(user.indexOf(i)))
                 .filter(i -> computer.contains(String.valueOf((char)i)))
