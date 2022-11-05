@@ -1,6 +1,13 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class User {
+    public String userInput() {
+        String userInput = readLine();
+
+        return validUserInput(userInput);
+    }
 
 
     public String validUserInput(String userInput) {
