@@ -12,19 +12,19 @@ public class NumbersTest {
     @Test
     @DisplayName("숫자는 세 자리다")
     void numbers_have_length_of_three() {
-        List<Integer> twoNumbers = List.of(1, 2);
-        List<Integer> fourNumbers = List.of(1, 2, 3, 4);
+        List<Integer> twoDigits = List.of(1, 2);
+        List<Integer> fourDigits = List.of(1, 2, 3, 4);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoNumbers));
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoDigits));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourDigits));
     }
 
     @Test
     @DisplayName("숫자는 서로 달라야 한다")
     void every_number_is_different() {
-        List<Integer> numbers = List.of(1, 2, 1);
+        List<Integer> digits = List.of(1, 2, 1);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(numbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(digits));
     }
 
     @Test
