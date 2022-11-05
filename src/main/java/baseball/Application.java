@@ -1,17 +1,76 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 public class Application {
     public static void main(String[] args) {
+
         int opponentNum = generateOpponentNumber();
+        int playerNum = readPlayerNum();
+
 
 
         return;
     }
+
+    private static int readPlayerNum() {
+        int inputNum;
+        try {
+            inputNum = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+
+        validatePlayerNum(inputNum);
+
+        return inputNum;
+    }
+
+    public static void validatePlayerNum(int number) {
+        validateNumLength(number);
+        validateOneToNine(number);
+        validateNotDuplicate(number);
+    }
+
+    private static void validateNumLength(int number) {
+        int length = (int) (Math.log10(number) + 1);
+        if (length != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateOneToNine(int number) {
+        List<Integer> numList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        while (number != 0) {
+            int digit = number % 10;
+            if(!numList.contains(digit)) {
+                throw new IllegalArgumentException();
+            }
+            number /= 10;
+        }
+    }
+
+    private static void validateNotDuplicate(int number) {
+        List<Integer> numList = new ArrayList<>();
+
+        while (number != 0) {
+            int digit = number % 10;
+            if (numList.contains(digit)) {
+                throw new IllegalArgumentException();
+            }
+            numList.add(digit);
+            number /= 10;
+        }
+    }
+
 
     public static int generateOpponentNumber() {
         List<Integer> numList = new ArrayList<>();

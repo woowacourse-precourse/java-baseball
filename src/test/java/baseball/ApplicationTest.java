@@ -50,6 +50,72 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void readPlayerNum_메서드에서_1_부터_9_이외의_입력_case_1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_1_부터_9_이외의_입력_case_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("13가"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_길이가_잘못된_입력_case_1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1343"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void readPlayerNum_메서드에서_길이가_잘못된_입력_case_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("43"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void readPlayerNum_메서드에서_중복된_입력_case_1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("772"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_중복된_입력_case_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("212"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_중복된_입력_case_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("899"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_올바르지_않은_입력_case_1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("80 9"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void readPlayerNum_메서드에서_올바르지_않은_입력_case_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("89 9"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
