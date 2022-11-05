@@ -85,4 +85,14 @@ public class Application {
 
         return overlap;
     }
+
+    public static boolean isNotSizeThree(List<Integer> numArr) {
+        boolean notSizeThree = false;
+
+        if (numArr.size() != 3) {
+            notSizeThree = true;
+        }
+
+        return notSizeThree;
+    }
 }
