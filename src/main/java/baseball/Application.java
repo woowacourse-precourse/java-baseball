@@ -118,9 +118,9 @@ public class Application {
 
     public static boolean checkUserNumberIsDuplicate(String numberString) {
 
-        return (int) numberString.charAt(0) == (int) numberString.charAt(1)
-                || (int) numberString.charAt(1) == (int) numberString.charAt(2)
-                || (int) numberString.charAt(0) == (int) numberString.charAt(2);
+        return (int) numberString.charAt(0) != (int) numberString.charAt(1)
+                && (int) numberString.charAt(1) != (int) numberString.charAt(2)
+                && (int) numberString.charAt(0) != (int) numberString.charAt(2);
 
     }
 
