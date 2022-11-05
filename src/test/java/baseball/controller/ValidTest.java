@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class ValidTest {
 
     @Test
-    void isValidNumList함수성공테스트(){
+    void isValidNumList_함수성공테스트(){
         //given
         List<Integer> numList = Arrays.asList(1, 2, 3);
         //when
@@ -18,7 +18,7 @@ class ValidTest {
     }
 
     @Test
-    void 숫자가0이있는경우() {
+    void isValidNumList_숫자가0이있는경우() {
         //given
         List<Integer> includeZeroNumList = Arrays.asList(1, 2, 0);
         List<Integer> includeZeroNumList2 = Arrays.asList(1, 0,2);
@@ -34,7 +34,7 @@ class ValidTest {
     }
 
     @Test
-    void 중복된숫자가있는경우(){
+    void isValidNumList_중복된숫자가있는경우(){
         //given
         List<Integer> includeDuplicateNumList1 = Arrays.asList(1, 2, 2);
         List<Integer> includeDuplicateNumList2 = Arrays.asList(2, 2, 2);
@@ -53,7 +53,7 @@ class ValidTest {
     }
 
     @Test
-    void numList크기가3이아닌경우() {
+    void isValidNumList_numList크기가3이아닌경우() {
         //given
         List<Integer> numListSize0 = Arrays.asList();
         List<Integer> numListSize1 = Arrays.asList(1);
