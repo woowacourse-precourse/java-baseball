@@ -28,4 +28,19 @@ public class Baseball {
         }
         return false;
     }
+
+    public boolean hasNumber(int index, int number){
+        if(baseballNumber.get(index) == number){
+            return true;
+        }
+        return false;
+    }
+
+    public int getNumber(int index){
+        return baseballNumber.get(index);
+    }
+
+    public int size(){
+        return baseballNumber.size();
+    }
 }

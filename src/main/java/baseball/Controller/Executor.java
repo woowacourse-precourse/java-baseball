@@ -6,22 +6,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Executor {
     private static Scanner scanner = new Scanner(System.in);
     private static Computer computer;
-
+    private static Checker checker = new Checker();
     public static void startGame(){
-        Baseball randomBaseball = new Computer().createRandomBaseball();
+        Baseball computerRandomBaseball = new Computer().createRandomBaseball();
         Printer.start();
-        guessNumber(randomBaseball);
-    }
-    public static void guessNumber(Baseball randomBaseball){
-        Baseball userBaseball = new User().getInput();
-        List<Integer> baseballNumber = userBaseball.getBaseballNumber();
+        guessNumber(computerRandomBaseball);
 
     }
+    public static void guessNumber(Baseball computerRandomBaseBall){
+        Baseball userBaseball = new User().getInput();
+        Map<String, Integer> check_result = checker.start(computerRandomBaseBall, userBaseball);
+
+    }
+
+
 
 
 
