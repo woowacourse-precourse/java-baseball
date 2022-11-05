@@ -20,6 +20,12 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void printRestartOrNotMessage_메소드로_게임_재시작_여부_입력_안내를_출력() {
+		printRestartOrNotMessage(RESTART_GAME, END_GAME);
+		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
+		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n이 문장은 다음 줄에 출력되어야 합니다.");
+	}
+	@Test
 	void printGettingRightAnswerMessage_메소드로_정답을_맞춘_경우_게임_종료를_안내() {
 		printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
