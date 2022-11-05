@@ -61,7 +61,7 @@ class UserTest {
 
         @Test
         void 세자릿수_예외처리_검증() {
-            int[] nums = {1, 2, 0, 90, 120, 991, 441, 064};
+            int[] nums = {1, 2, 0, 90, 120, 991, 1234, 064};
             for (int num : nums) {
 
                 assertThatThrownBy(() -> new ThreeDigitNum(num))

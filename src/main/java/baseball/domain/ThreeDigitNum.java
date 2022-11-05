@@ -28,9 +28,17 @@ public class ThreeDigitNum {
             list.set(idx, num % 10);
 
             num /= 10;
-            --idx;
+            idx = getNextIdx(idx);
         }
         return list;
+    }
+
+    private static int getNextIdx(int idx) {
+        if(idx -1 < 0) {
+            throw new IllegalArgumentException("야구게임 값이 3자리 수를 초과했습니다.");
+        }
+        idx = idx -1;
+        return idx;
     }
 
     public List<Integer> list() {
