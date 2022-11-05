@@ -93,6 +93,7 @@ public class Computer {
         return "";
     }
 
+
     private ResultType getResultType() {
         if (isHinNotting()) {
             return ResultType.BALL_STRIKE_ZERO;

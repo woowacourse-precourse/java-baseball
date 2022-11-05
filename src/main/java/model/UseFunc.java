@@ -12,18 +12,27 @@ public class UseFunc {
         List<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = 0;
         for (int value : splitStrList) {
-            cntSameNum = 0;
-            for (int index = 0; index < splitStrList.size(); index++) {
-                int numValueListAtNow = getValueIndexList(splitStrList, index);
-                if (isEqualIntOfTwo(value, numValueListAtNow)) {
-                    cntSameNum = cntSameNum + 1;
-                }
-            }
+            cntSameNum = getRightSamNum(splitStrList, cntSameNum, value);
             if (cntSameNum > 1) {
                 return false;
             }
         }
         return true;
+    }
+
+    private static int getRightSamNum(List<Integer> splitStrList, int cntSameNum, int value) {
+        for (int index = 0; index < splitStrList.size(); index++) {
+            int numValueListAtNow = getValueIndexList(splitStrList, index);
+            cntSameNum = getCntSameNum(cntSameNum, value, numValueListAtNow);
+        }
+        return cntSameNum;
+    }
+
+    private static int getCntSameNum(int cntSameNum, int value, int numValueListAtNow) {
+        if (isEqualIntOfTwo(value, numValueListAtNow)) {
+            cntSameNum = cntSameNum + 1;
+        }
+        return cntSameNum;
     }
 
     private static int getValueIndexList(List<Integer> list, int index) {
@@ -49,6 +58,4 @@ public class UseFunc {
         }
         return false;
     }
-
-
 }
