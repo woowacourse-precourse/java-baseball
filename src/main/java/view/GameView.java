@@ -36,7 +36,8 @@ public class GameView {
             if (gameController.isEndGame()) {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
-                int numInputOfUser = parseIntFromInputOfUser();
+
+                int numInputOfUser = parseIntFromStr(getString());
                 if (isEndgameInputOfUser(gameController, numInputOfUser)) {
                     break;
                 }
@@ -80,5 +81,13 @@ public class GameView {
 
     private String getString() {
         return readLine();
+    }
+
+
+    private boolean isValidPositiveInt(int num) {
+        if (num > 0) {
+            return true;
+        }
+        throw new IllegalArgumentException("양수를 입력해주세요.");
     }
 }
