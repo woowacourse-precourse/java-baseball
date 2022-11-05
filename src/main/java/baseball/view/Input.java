@@ -11,6 +11,7 @@ public class Input {
     private static final String END = "2";
 
     public List<Integer> inputBaseballNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String text = Console.readLine();
         validateInputBaseballNumber(text);
         return textToIntList(text);
@@ -47,6 +48,7 @@ public class Input {
     }
 
     public int inputRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String text = Console.readLine();
         validateInputRestart(text);
         return Integer.parseInt(text);
