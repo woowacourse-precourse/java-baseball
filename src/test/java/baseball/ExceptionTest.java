@@ -11,7 +11,7 @@ class ExceptionTest {
     @Test
     void checkValidInputTest() {
         String input = "369";
-        boolean result = exception.checkIllegalInput(input);
+        boolean result = exception.checkIllegalGameInput(input);
 
         assertThat(result).isEqualTo(true);
     }
@@ -19,7 +19,7 @@ class ExceptionTest {
     @Test
     void checkInvalidLengthTest() {
         String input = "3333";
-        assertThatThrownBy(() -> exception.checkIllegalInput(input))
+        assertThatThrownBy(() -> exception.checkIllegalGameInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Exception.INVALID_LENGTH_ERROR_MSG);
     }
@@ -27,7 +27,7 @@ class ExceptionTest {
     @Test
     void checkInvalidFormatTest() {
         String input = "19a";
-        assertThatThrownBy(() -> exception.checkIllegalInput(input))
+        assertThatThrownBy(() -> exception.checkIllegalGameInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Exception.INVALID_FORMAT_ERROR_MSG);
     }
@@ -35,8 +35,24 @@ class ExceptionTest {
     @Test
     void checkDuplicateNumberTest() {
         String input = "191";
-        assertThatThrownBy(() -> exception.checkIllegalInput(input))
+        assertThatThrownBy(() -> exception.checkIllegalGameInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Exception.DUPLICATE_NUMBER_ERROR_MSG);
+    }
+
+    @Test
+    void checkValidRestartInputTest() {
+        String input = "1";
+        boolean result = exception.checkIllegalRestartInput(input);
+
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void checkInvalidRestartInputTest() {
+        String input = "ㄱ";
+        assertThatThrownBy(() -> exception.checkIllegalRestartInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Exception.INVALID_RESTART_FORMAT_MSG);
     }
 }
