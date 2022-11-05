@@ -13,10 +13,7 @@ public class Validator {
             return false;
         }
         // 1~9 사이의 숫자를 입력했는지
-        if (!checkBaseballNumberRange()) {
-            return false;
-        }
-        return true;
+        return checkBaseballNumberRange();
     }
 
     private boolean checkBaseballNumberLength() {
