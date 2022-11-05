@@ -2,9 +2,14 @@ package baseball;
 
 import baseball.domain.Ball;
 import baseball.model.Computer;
+import baseball.view.Messenger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -97,6 +102,26 @@ class BaseballTest {
                     assertThat(computer.getComputerRandomNumber()).isNotEqualTo(computerNumber);
                 }
             }
+        }
+    }
+    @Nested
+    @DisplayName("Messenger 클래스")
+    class Messenger_test {
+
+        private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        private final PrintStream originalOut = System.out;
+        private final Messenger messenger = new Messenger();
+
+        @Test
+        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        void printStartMessage_test() {
+            System.setOut(new PrintStream(outContent));
+
+            String startMessage = "게임을 시작합니다.\n";
+            messenger.printStartMessage();
+
+            assertThat(outContent.toString()).isEqualTo(startMessage);
+            System.setOut(originalOut);
         }
     }
 }
