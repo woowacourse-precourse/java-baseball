@@ -93,14 +93,19 @@ public class Game {
     private boolean isEndInput(Number computerNumber) {
         System.out.printf(RESTART_END_MESSAGE, RESTART_STATUS, END_GAME_STATUS);
         String input = readLine();
-        
-        if (END_GAME_STATUS.equals(input)) {
-            return true;
-        } else if (RESTART_STATUS.equals(input)) {
+        isValidInput(input);
+
+        if (RESTART_STATUS.equals(input)) {
             resetGame(computerNumber);
             return false;
         }
-        throw new IllegalArgumentException();
+        return true; // input == END_GAME_STATUS
+    }
+
+    private void isValidInput(String input) {
+        if (!END_GAME_STATUS.equals(input) && !RESTART_STATUS.equals(input)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void resetGame(Number computerNumber) {
