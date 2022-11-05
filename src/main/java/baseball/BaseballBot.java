@@ -9,11 +9,14 @@ public class BaseballBot {
     private static final int END_RANGE = 9;
     private static final int NUM_LENGTH = 3;
 
-    private static final String STRIKE_STR = "스트라이크 ";
-    private static final String BALL_STR = "볼 ";
-    private static final String NOTHING_STR = "낫싱";
+    private static final String STRIKE_STR = "스트라이크strike ";
+    private static final String BALL_STR = "볼ball ";
+    private static final String NOTHING_STR = "낫싱not";
+    private static final String GAME_END_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료end";
 
     private String answer;
+
+    private boolean end = false;
 
     public void createRandomValue() {
         StringBuilder randomNumber = new StringBuilder();
@@ -29,6 +32,7 @@ public class BaseballBot {
     public String checkHint(String userInput) {
         int strike = getStrikeNum(userInput);
         int ball = getBallNum(userInput, strike);
+        checkEnd(strike);
 
         return createHintStr(strike, ball);
     }
@@ -61,11 +65,35 @@ public class BaseballBot {
         return sameNumberCount - strike;
     }
 
+    private void checkEnd(int strike) {
+        if (strike == 3) {
+            end = true;
+        }
+    }
+
     private String createHintStr(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            return NOTHING_STR;
+        if (isEnd()) {
+            return GAME_END_STR;
         }
 
-        return strike + STRIKE_STR + ball + BALL_STR;
+        StringBuilder hintStr = new StringBuilder();
+
+        if (strike == 0 && ball == 0) {
+            hintStr.append(NOTHING_STR);
+        }
+
+        if (strike > 0) {
+            hintStr.append(strike).append(STRIKE_STR);
+        }
+
+        if (ball > 0) {
+            hintStr.append(ball).append(BALL_STR);
+        }
+
+        return hintStr.toString();
+    }
+
+    public boolean isEnd() {
+        return end;
     }
 }
