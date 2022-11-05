@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,5 +35,9 @@ public class Player {
 
     public int findIndexOfNumber(int number){
         return this.numbers.indexOf(number);
+    }
+
+    public boolean compareIndex(int index, int number){
+        return this.numbers.get(index).equals(number);
     }
 }
