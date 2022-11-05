@@ -36,4 +36,8 @@ public class Number {
             }
         }
     }
+
+    public int getDigit(int digit) {
+        return number.get(digit);
+    }
 }
