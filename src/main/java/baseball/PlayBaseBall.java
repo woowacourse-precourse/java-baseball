@@ -12,7 +12,19 @@ public class PlayBaseBall {
         do {
             this.computer = new Computer();
             computer.makeAnswerNum();
-
+            start();
         } while (messenger.selectRepalyOrEnd(user.getUserOpinion()));
+    }
+
+    public void start() {
+        AnswerChecker answerChecker;
+        do {
+            this.user = new User();
+            this.messenger = new Messenger();
+            user.inputNumbers();
+            answerChecker = new AnswerChecker(computer.getAnswer());
+            answerChecker.checkStrikeOrBall(user.getUserNumbers());
+            messenger.printResultMessage(answerChecker);
+        } while (!answerChecker.isAnswer());
     }
 }
