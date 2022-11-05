@@ -9,8 +9,7 @@ public class Application {
             try {
                 game.doGame();
             } catch (IllegalArgumentException e) {
-                System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
-                break;
+                throw new IllegalArgumentException();
             }
         } while (game.askContinue());
     }

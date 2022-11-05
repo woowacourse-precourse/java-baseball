@@ -30,7 +30,7 @@ public class Strike {
 
     private void printStrike() {
         if (strikeNums != 0) {
-            System.out.print(STRIKE+strikeNums.toString());
+            System.out.print(strikeNums.toString()+STRIKE);
         }
     }
 

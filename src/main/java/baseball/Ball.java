@@ -30,7 +30,7 @@ public class Ball {
 
     private void printBall() {
         if (ballNums != 0) {
-            System.out.print(BALL+ballNums.toString()+" ");
+            System.out.print(ballNums.toString()+BALL+" ");
         }
     }
 
