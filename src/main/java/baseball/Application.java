@@ -47,6 +47,9 @@ public class Application {
 
         for (int i = 0; i < number.length(); i++) {
             int numberToInt = Integer.parseInt(String.valueOf(number.charAt(i)));
+            if (user.contains(numberToInt)) {
+                throw new IllegalArgumentException();
+            }
             user.add(numberToInt);
         }
         return user;
@@ -91,7 +94,7 @@ public class Application {
 
     public static List<Integer> userNumberValidate(String userInput) throws IllegalArgumentException {
         List<Integer> user = createUserNumberList(userInput);
-        if (user.size() > 3 || isNumber(userInput) == false) {
+        if (user.size() != 3 || isNumber(userInput) == false) {
             throw new IllegalArgumentException();
         }
 
