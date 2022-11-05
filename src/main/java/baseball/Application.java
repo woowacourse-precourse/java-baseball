@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -106,6 +107,13 @@ public class Application {
         System.out.println(result);
     }
 
+    public static boolean checkNextGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String userInput = Console.readLine();
+
+        return userInput.equals("1");
+    }
+
     public static void game() {
         List<Integer> randomNumbers = generateRandomNumber();
 
@@ -123,13 +131,19 @@ public class Application {
 
             printResult(strike, ball);
 
-            if(strike == DIGIT_LENGTH)
+            if (strike == DIGIT_LENGTH) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
+            }
         }
     }
 
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        game();
+        do {
+            game();
+        } while (checkNextGame());
+
     }
 }
