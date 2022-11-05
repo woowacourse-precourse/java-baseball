@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final int RAND_NUM_MAX = 3;
+    public static final int RAND_NUM_MAX = 3;
     public List<Integer> createRandomNumber() {
         List<Integer> answer = new ArrayList<>();
 
