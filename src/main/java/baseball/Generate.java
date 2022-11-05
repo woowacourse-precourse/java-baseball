@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Generate {
-    public List<Integer> randomNumber(){
+    public static List<Integer> randomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < Constant.NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
