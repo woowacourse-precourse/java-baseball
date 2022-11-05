@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Referee;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     private InputView inputView = new InputView();
+    private Referee referee = new Referee();
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -43,6 +46,12 @@ class ApplicationTest extends NsTest {
 
         List<Integer> list = inputView.inputNumbers();
         assertThat(input.length()).isEqualTo(list.size());
+    }
+
+    @Test
+    void 랜덤값_생성_테스트(){
+        List<Integer> list = referee.makeRandomValues();
+        assertThat(list.size()).isEqualTo(3);
     }
 
     @Test
