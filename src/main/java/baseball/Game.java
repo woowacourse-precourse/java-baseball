@@ -68,6 +68,12 @@ public class Game {
         }
     }
 
+    public void incorrectUserAnswerNonNaturalNum(String userAnswer) {
+        if (!userAnswer.matches("[+-]?\\d*(\\.\\d+)?") || userAnswer.contains("0")) {
+            throw new IllegalArgumentException("입력 값은 1 ~ 9 숫자이어야 합니다.");
+        }
+    }
+
     private List<Integer> stringToListInteger(String userAnswer) {
         return listToListInteger(List.of(userAnswer.split("")));
     }
