@@ -72,11 +72,6 @@ public class Player {
     }
 
     public static void isNotValid() {
-        try {
-            throw new IllegalArgumentException();
-        }
-        catch (Exception e) {
-            System.exit(1);
-        }
+        throw new IllegalArgumentException();
     }
 }
