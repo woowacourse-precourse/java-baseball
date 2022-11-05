@@ -24,6 +24,22 @@ public class BullsAndCows {
         createRandomAnswer();
     }
 
+    public String getResultOfGuessNumber(String userInput) {
+        this.userInput = Arrays.stream(userInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        if (isNothing()) {
+            return NOTHING.getMessage();
+        }
+
+        return getResultScoreByFormat().trim();
+    }
+
+    public void restart() {
+        createRandomAnswer();
+    }
+
     private void createRandomAnswer() {
         initCountValues();
         answerNumberList.clear();
@@ -38,29 +54,6 @@ public class BullsAndCows {
     private void initCountValues() {
         strikeCount = 0;
         ballCount = 0;
-    }
-
-    public void restart() {
-        createRandomAnswer();
-    }
-
-    private List<Character> convertStringToCharList(String string) {
-        return string
-                .chars()
-                .mapToObj(e -> (char) e)
-                .collect(Collectors.toList());
-    }
-
-    public String getResultOfGuessNumber(String userInput) {
-        this.userInput = Arrays.stream(userInput.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-        if (isNothing()) {
-            return NOTHING.getMessage();
-        }
-
-        return getResultScoreByFormat().trim();
     }
 
     private String getResultScoreByFormat() {
