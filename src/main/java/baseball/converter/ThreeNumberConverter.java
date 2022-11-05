@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class ThreeNumberConverter {
 
-    public static final int NUMBER_RANGE_SIZE = 3;
+    private static final int NUMBER_RANGE_SIZE = 3;
     private String inputString;
     
     public List<Integer> getThreeNumbers(String inputString) throws IllegalNumberInputException {
