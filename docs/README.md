@@ -125,6 +125,72 @@ Java 코드의 열 제한은 120자입니다. "문자"는 유니코드 코드 �
 
 ...
 
+
+### 4.1 괄호
+
+#### 4.1.1 괄호는 선택사항에서도 쓰인다.
+
+괄호는 if, else, for, do, while 구문에 쓰이는데 몸체가 없거나 한 줄의 구문에도 괄호가 쓰인다.
+
+#### 4.1.2 비어있지 않은 블럭: K & R 스타일
+
+괄호는 비어있지 않은 블럭과 block-like construct에서 Kernighan과 Ritchie 스타일(Egyptian brackets)을 따른다.
+
+- 여는 괄호 앞에는 줄 바꿈이 없음
+- 여는 괄호 다음에 줄 바꿈
+- 닫는 괄호 전에 줄 바꿈
+- 닫는 괄호 다음에 줄 바꿈, 그런데 이것은 오직 구문이 끝나거나 메소드,  생성자, 클래스가 끝났을 때 적용된다. 예를들어 else나 콤마뒤에 나오는 부분은 줄 바꿈을 하지 않는다.
+
+예:
+
+```java
+return () -> {
+  while (condition()) {
+    method();
+  }
+};
+
+return new MyClass() {
+  @Override public void method() {
+    if (condition()) {
+      try {
+        something();
+      } catch (ProblemException e) {
+        recover();
+      }
+    } else if (otherCondition()) {
+      somethingElse();
+    } else {
+      lastThing();
+    }
+  }
+};
+```
+
+Enum 클래스에는 예외가 있다. 4.8.1
+
+#### 4.1.4 빈 블럭들: 아마 간결하게
+
+빈 블럭이나 block-like construct 에서는 K & R 스타일을 따를 수 있다. 대안으로 { } 괄호 안에 문자가 없거나 줄바꿈이라면 열자마자 끝날 수 있다. 하지만 멀티 블럭 구문에서는 할 수 없다.
+
+예:
+
+```java
+  // 허용
+  void doNothing() {}
+
+  // 마찬가지로 허용
+  void doNothingElse() {
+  }
+```
+
+```java
+ // 허용되지 않음: 멀티 블럭 구문에서는 간결한 빈 블럭을 사용할 수 없음
+  try {
+    doSomething();
+  } catch (Exception e) {}
+```
+
 #### 4.6.2 수평 공백(Horizontal whitespace)-띄어쓰기
 1. if, for, catch와 같은 예약어를 해당 줄 뒤에 오는 여는 괄호( ( ) 괄호로부터 분리한다.
 2. else, catch와 같은 예약어를 해당 줄 앞에 오는 닫는 중괄호( } )에서 분리한다.
