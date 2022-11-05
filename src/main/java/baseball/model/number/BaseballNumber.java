@@ -1,17 +1,26 @@
 package baseball.model.number;
 
 public class BaseballNumber {
-    private static final String INPUT_IS_NOT_NUMBER = "입력은 숫자로 주어져야 합니다";
+    private static final String INPUT_IS_NOT_NUMBER_EXCEPTION = "입력은 숫자로 주어져야 합니다";
+    private static final String OUT_OF_RANGE_NUMBER_EXCEPTION = "범위를 벗어난 숫자입니다";
     Integer ballNumber;
 
     BaseballNumber(char ballNumber) {
         validateNumberCharacter(ballNumber);
+        validateNumberRange(ballNumber);
         this.ballNumber = convertCharToInteger(ballNumber);
     }
 
     private void validateNumberCharacter(char uncheckNumber) {
         if (!Character.isDigit(uncheckNumber)) {
-            throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER);
+            throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER_EXCEPTION);
+        }
+    }
+
+    private void validateNumberRange(char uncheckNumber) {
+        int uncheckInteger = Character.getNumericValue(uncheckNumber);
+        if(uncheckInteger <= 0 || uncheckInteger > 10) {
+            throw new IllegalArgumentException(OUT_OF_RANGE_NUMBER_EXCEPTION);
         }
     }
 
