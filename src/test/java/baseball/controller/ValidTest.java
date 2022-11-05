@@ -26,10 +26,19 @@ class ValidTest {
     @Test
     void 중복된숫자가있는경우(){
         //given
-        List<Integer> includeZeroNumList = Arrays.asList(1, 2, 2);
+        List<Integer> includeDuplicateNumList1 = Arrays.asList(1, 2, 2);
+        List<Integer> includeDuplicateNumList2 = Arrays.asList(2, 2, 2);
+        List<Integer> includeDuplicateNumListIncludeZero = Arrays.asList(0, 2, 2);
+        List<Integer> includeDuplicateNumListIncludeZero2 = Arrays.asList(0, 0, 0);
         //when
-        boolean notValid = Valid.isValidNumList(includeZeroNumList);
+        boolean notValid1 = Valid.isValidNumList(includeDuplicateNumList1);
+        boolean notValid2 = Valid.isValidNumList(includeDuplicateNumList2);
+        boolean notValidIncludeZero1 = Valid.isValidNumList(includeDuplicateNumListIncludeZero);
+        boolean notValidIncludeZero2 = Valid.isValidNumList(includeDuplicateNumListIncludeZero2);
         //then
-        assertThat(notValid).isEqualTo(false);
+        assertThat(notValid1).isEqualTo(false);
+        assertThat(notValid2).isEqualTo(false);
+        assertThat(notValidIncludeZero1).isEqualTo(false);
+        assertThat(notValidIncludeZero2).isEqualTo(false);
     }
 }
