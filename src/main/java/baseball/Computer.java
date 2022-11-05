@@ -13,7 +13,7 @@ public class Computer {
     }
 
     public void generateNumbers() {
-        while (numbers.size() < 3) {
+        while (numbers.size() < Constants.NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);

@@ -18,7 +18,7 @@ public class User {
         if (Utils.isValidUserInput(input)) {
             this.numbers = Utils.intToList(Integer.valueOf(input));
         } else {
-            throw new IllegalArgumentException(Constants.WRONG_INPUT);
+            throw new IllegalArgumentException(Constants.WRONG_INPUT_MESSAGE);
         }
     }
 }

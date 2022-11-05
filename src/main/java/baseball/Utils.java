@@ -19,8 +19,8 @@ class Utils {
     }
 
     public static boolean isValidUserInput(String s) {
-        // 3자리이어야 한다.
-        if (s.length() != 3) {
+        // 자리수 확인
+        if (s.length() != Constants.NUM_LENGTH) {
             return false;
         }
 
