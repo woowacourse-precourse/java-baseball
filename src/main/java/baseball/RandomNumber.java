@@ -11,7 +11,6 @@ public class RandomNumber {
     int randomNumber;
 
     public RandomNumber() {
-        this.randomNumber = this.getRandomNumber();
     }
 
     public void setRandomNumber() {
@@ -29,6 +28,9 @@ public class RandomNumber {
         for(int randomDigit: randomDigitSet) {
             randomNumberString += String.valueOf(randomDigit);
         }
+
+
+
         randomNumber = Integer.parseInt(randomNumberString);
 
     }

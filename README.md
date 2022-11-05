@@ -4,7 +4,7 @@
 
 상대방(컴퓨터)의 숫자 생성 => class RandomNumber
 - 3자리 자연수 생성 (Random API) (0)
-- (validation) 각 자리 숫자가 모두 다른지 확인
+- (test) 각 자리 숫자가 모두 다른지 확인 (0)
 - 통과 시 컴퓨터의 수로 지정 (0)
 
 사용자의 숫자 생성 => class UserNumber
