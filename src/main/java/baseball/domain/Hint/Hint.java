@@ -12,9 +12,9 @@ public class Hint {
         this.strike = 0;
     }
 
-    public void printHint(List<Integer> playerBalls, List<Integer> computerBalls) {
+    public String printHint(List<Integer> playerBalls, List<Integer> computerBalls) {
         determineBallStrike(playerBalls, computerBalls);
-        System.out.println(printStatement());
+        return printStatement();
     }
 
     private void determineBallStrike(List<Integer> playerBalls, List<Integer> computerBalls) {

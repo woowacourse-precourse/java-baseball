@@ -2,9 +2,6 @@ package baseball.domain.Hint;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,13 +9,10 @@ import org.junit.jupiter.api.Test;
 
 class HintTest {
     private Hint hint;
-    private OutputStream outputStream;
 
     @BeforeEach
     void setUp() {
         hint = new Hint();
-        outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
     }
 
     @Test
@@ -28,9 +22,7 @@ class HintTest {
         List<Integer> computerBalls = List.of(1, 2, 3);
         String result = String.format(HintString.STRIKE.getContent(), 3);
 
-        hint.printHint(playerBalls, computerBalls);
-
-        assertThat(outputStream.toString()).isEqualToIgnoringNewLines(result);
+        assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
 
     @Test
@@ -40,9 +32,7 @@ class HintTest {
         List<Integer> computerBalls = List.of(1, 2, 3);
         String result = String.format(HintString.BALL.getContent(), 3);
 
-        hint.printHint(playerBalls, computerBalls);
-
-        assertThat(outputStream.toString()).isEqualToIgnoringNewLines(result);
+        assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
 
     @Test
@@ -52,9 +42,7 @@ class HintTest {
         List<Integer> computerBalls = List.of(1, 2, 3);
         String result = String.format(HintString.BALL.getContent() + HintString.STRIKE.getContent(), 1, 1);
 
-        hint.printHint(playerBalls, computerBalls);
-
-        assertThat(outputStream.toString()).isEqualToIgnoringNewLines(result);
+        assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
 
     @Test
@@ -62,11 +50,9 @@ class HintTest {
     void 낫싱() {
         List<Integer> playerBalls = List.of(7, 5, 8);
         List<Integer> computerBalls = List.of(1, 2, 3);
-        String result = String.format(HintString.NOTHING.getContent());
+        String result = HintString.NOTHING.getContent();
 
-        hint.printHint(playerBalls, computerBalls);
-
-        assertThat(outputStream.toString()).isEqualToIgnoringNewLines(result);
+        assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
 
 
