@@ -14,4 +14,11 @@ class GameTest {
         assertThat(openingPhrase).isEqualTo(game.opening());
     }
 
+    @Test
+    void 게임_시작_컴퓨터_랜덤_생성() {
+        Game game = new Game();
+        game.doGame();
+        System.out.println(game.getComputerNums().getNums());
+    }
+
 }

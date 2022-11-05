@@ -8,7 +8,7 @@ public class ComputerNums implements Nums{
     private final List<Integer> nums = new ArrayList<>();
 
     public ComputerNums() {
-        generateRandomNums();
+
     }
 
     private void generateRandomNums() {
@@ -20,6 +20,10 @@ public class ComputerNums implements Nums{
         }
     }
 
+    @Override
+    public void setNums() {
+        generateRandomNums();
+    }
 
     @Override
     public List<Integer> getNums() {
