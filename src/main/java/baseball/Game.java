@@ -3,8 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    final Computer computer;
-    final User user;
+    private final Computer computer;
+    private final User user;
 
     private Game(Computer computer, User user) {
         this.computer = computer;
@@ -17,27 +17,12 @@ public class Game {
         return new Game(computer, user);
     }
 
-    public void hint(int strike, int ball) {
-        StringBuilder hint = new StringBuilder();
-        if (ball > 0) {
-            hint.append(ball).append("볼 ");
-        }
-        if (strike > 0) {
-            hint.append(strike).append("스트라이크 ");
-        }
-        if (hint.length() == 0) {
-            hint.append("낫싱");
-        }
-        System.out.println(hint.toString().trim());
-    }
-
     public boolean run() {
         while (true) {
             user.guess();
-            int strike = computer.strike(user.guess);
-            int ball = computer.ball(user.guess);
-            hint(strike, ball);
-            if (strike == 3) {
+            Hint hint = computer.hint(user);
+            System.out.println(hint);
+            if (hint.correct()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 return restart();

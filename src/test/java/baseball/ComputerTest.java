@@ -30,9 +30,10 @@ public class ComputerTest {
             Constructor<Computer> constructor = Computer.class.getDeclaredConstructor(Numbers.class);
             constructor.setAccessible(true);
             Computer test = constructor.newInstance(new Numbers(List.of(1, 2, 3)));
-            Numbers guess = new Numbers(List.of(1, 2, 4));
+            User user = new User();
+            user.guess = new Numbers(List.of(1, 2, 4));
             int result = 2;
-            assertThat(result).isEqualTo(test.strike(guess));
+            assertThat(result).isEqualTo(test.strike(user));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,9 +45,10 @@ public class ComputerTest {
             Constructor<Computer> constructor = Computer.class.getDeclaredConstructor(Numbers.class);
             constructor.setAccessible(true);
             Computer test = constructor.newInstance(new Numbers(List.of(1, 2, 3)));
-            Numbers guess = new Numbers(List.of(2, 1, 3));
+            User user = new User();
+            user.guess = new Numbers(List.of(2, 1, 3));
             int result = 2;
-            assertThat(result).isEqualTo(test.ball(guess));
+            assertThat(result).isEqualTo(test.ball(user));
         } catch (Exception e) {
             e.printStackTrace();
         }

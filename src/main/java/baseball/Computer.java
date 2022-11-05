@@ -25,20 +25,24 @@ public class Computer {
         return new Computer(new Numbers(answer));
     }
 
-    public int strike(Numbers guess) {
+    public Hint hint(User user) {
+        return new Hint(strike(user), ball(user));
+    }
+
+    public int strike(User user) {
         int countStrike = 0;
         for (int i = 0; i < LENGTH; i++) {
-            if (answer.get(i) == guess.get(i)) {
+            if (answer.get(i) == user.guess.get(i)) {
                 countStrike++;
             }
         }
         return countStrike;
     }
 
-    public int ball(Numbers guess) {
+    public int ball(User user) {
         int countBall = 0;
         for (int i = 0; i < LENGTH; i++) {
-            int findIndex = answer.indexOf(guess.get(i));
+            int findIndex = answer.indexOf(user.guess.get(i));
             if (findIndex != -1 && findIndex != i) {
                 countBall++;
             }
