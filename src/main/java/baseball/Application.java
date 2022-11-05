@@ -49,6 +49,9 @@ public class Application {
             usersNumbers.add(1, inputNumber2);
             usersNumbers.add(2, inputNumber3);
         }
+        else{
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+        }
         return usersNumbers;
     }
 
