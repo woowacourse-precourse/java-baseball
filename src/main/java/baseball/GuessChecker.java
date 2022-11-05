@@ -9,19 +9,19 @@ public class GuessChecker {
     private GuessChecker() {
     }
 
-    public static void check(String input) {
+    public static void check(final String input) {
         checkLength(input);
         checkRange(input);
         checkDuplicate(input);
     }
 
-    private static void checkLength(String input) {
+    private static void checkLength(final String input) {
         if (input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException("입력의 길이는 3이어야 합니다.");
         }
     }
 
-    private static void checkRange(String input) {
+    private static void checkRange(final String input) {
         for (int position = 0; position < input.length(); position++) {
             char character = input.charAt(position);
             if (!isValidRange(character)) {
@@ -30,11 +30,11 @@ public class GuessChecker {
         }
     }
 
-    private static boolean isValidRange(char c) {
+    private static boolean isValidRange(final char c) {
         return c >= RANGE_START && c <= RANGE_END;
     }
 
-    private static void checkDuplicate(String input) {
+    private static void checkDuplicate(final String input) {
         for (int position = 0; position < input.length(); position++) {
             char character = input.charAt(position);
             if (input.lastIndexOf(character) != position) {
