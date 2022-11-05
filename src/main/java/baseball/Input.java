@@ -20,6 +20,7 @@ public class Input {
 
     public static int oneOrTwo() {
         String input = Console.readLine();
+        validateOneOrTwoInput(input);
         return Integer.parseInt(input);
     }
 
@@ -36,6 +37,15 @@ public class Input {
             numberSet.add(Integer.parseInt(number));
         }
         if (numberSet.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateOneOrTwoInput(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        if (input.charAt(0) < '1' || input.charAt(0) > '2') {
             throw new IllegalArgumentException();
         }
     }
