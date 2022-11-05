@@ -38,12 +38,20 @@ public class NumbersTest {
     }
 
     @Test
-    @DisplayName("숫자를 비교할 수 있다")
-    void compare_numbers() {
+    @DisplayName("숫자끼리 스트라이크를 셀 수 있다")
+    void count_strikes_between_numbers() {
         Numbers numbers = new Numbers(List.of(4, 2, 5));
         Numbers numbers2 = new Numbers(List.of(4, 5, 6));
 
         assertThat(numbers.countStrikesWith(numbers2)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("숫자끼리 볼을 셀 수 있다")
+    void count_balls_between_numbers() {
+        Numbers numbers = new Numbers(List.of(4, 2, 5));
+        Numbers numbers2 = new Numbers(List.of(4, 5, 6));
+
         assertThat(numbers.countBallsWith(numbers2)).isEqualTo(1);
     }
 }
