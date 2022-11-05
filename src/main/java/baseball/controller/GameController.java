@@ -20,6 +20,7 @@ public class GameController {
 
     public void playRecurringGame() {
         String decision = "Play";
+        game.printStartingMessage();
         while (decision.equals("Play")) {
             playGame();
             decision = getUserDecision();
