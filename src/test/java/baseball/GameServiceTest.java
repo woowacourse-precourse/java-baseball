@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class GameServiceTest {
+class GameServiceTest extends NsTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     GameService gameService;
@@ -146,5 +149,19 @@ class GameServiceTest {
         gameService.printResult(result);
         String expectation = "2볼 2스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
+    }
+
+    @Test
+    void 게임_재시작_입력_예외_테스트() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> run("3"));
+        String message = exception.getMessage();
+        assertEquals("1 또는 2를 입력해주세요", message);
+    }
+
+    @Override
+    public void runMain() {
+        Result result = new Result(3, 0);
+        gameService.reenterOrEndGame(result);
     }
 }
