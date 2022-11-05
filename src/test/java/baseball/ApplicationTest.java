@@ -130,7 +130,7 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
                             NumberValidator.INVALID_NUMBER_LIST_SIZE_MESSAGE_FORMAT,
-                            Answer.ANSWER_LIST_SIZE
+                            Answer.ANSWER_SIZE
                     ));
         }
 
@@ -306,7 +306,7 @@ class ApplicationTest extends NsTest {
 
             //then
             assertThat(outputStreamCaptor.toString().trim())
-                    .isEqualTo(String.format(OutputView.WINNING_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE).trim());
+                    .isEqualTo(String.format(OutputView.WINNING_MESSAGE_FORMAT, Answer.ANSWER_SIZE).trim());
         }
     }
 

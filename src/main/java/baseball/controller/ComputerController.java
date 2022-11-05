@@ -19,7 +19,7 @@ public class ComputerController {
 
     private Answer makeAnswer() {
         Set<Integer> numberHolder = new LinkedHashSet<>();
-        while (numberHolder.size() != Answer.ANSWER_LIST_SIZE) {
+        while (numberHolder.size() != Answer.ANSWER_SIZE) {
             numberHolder.add(Randoms.pickNumberInRange(Answer.MIN_ANSWER_VALUE, Answer.MAX_ANSWER_VALUE));
         }
 

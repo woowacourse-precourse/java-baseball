@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Answer {
-    public static final int ANSWER_LIST_SIZE = 3;
+    public static final int ANSWER_SIZE = 3;
     public static final int MIN_ANSWER_VALUE = 1;
     public static final int MAX_ANSWER_VALUE = 9;
 

@@ -33,10 +33,10 @@ public class NumberValidator implements Validator {
     }
 
     private void isListSize3(List<Integer> target) {
-        if (target.size() != Answer.ANSWER_LIST_SIZE) {
+        if (target.size() != Answer.ANSWER_SIZE) {
             throw new IllegalArgumentException(String.format(
                     INVALID_NUMBER_LIST_SIZE_MESSAGE_FORMAT,
-                    Answer.ANSWER_LIST_SIZE
+                    Answer.ANSWER_SIZE
             ));
         }
     }

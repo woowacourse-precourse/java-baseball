@@ -25,7 +25,7 @@ public class Score {
     }
 
     public static Score makeNewScoreWith(Integer strike, Integer ball) {
-        if (Answer.ANSWER_LIST_SIZE < strike || Answer.ANSWER_LIST_SIZE < ball || Answer.ANSWER_LIST_SIZE < strike + ball) {
+        if (Answer.ANSWER_SIZE < strike || Answer.ANSWER_SIZE < ball || Answer.ANSWER_SIZE < strike + ball) {
             throw new IllegalArgumentException(INVALID_STRIKE_BALL_SCORE_MESSAGE);
         }
 
@@ -36,15 +36,15 @@ public class Score {
     }
 
     public void addStrike() {
-        if (Answer.ANSWER_LIST_SIZE <= score.get(STRIKE)) {
-            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE));
+        if (Answer.ANSWER_SIZE <= score.get(STRIKE)) {
+            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_SIZE));
         }
         score.put(STRIKE, score.get(STRIKE) + 1);
     }
 
     public void addBall() {
-        if (Answer.ANSWER_LIST_SIZE <= score.get(BALL)) {
-            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE));
+        if (Answer.ANSWER_SIZE <= score.get(BALL)) {
+            throw new IllegalArgumentException(String.format(INVALID_ADDING_SCORE_REQUEST_MESSAGE_FORMAT, Answer.ANSWER_SIZE));
         }
         score.put(BALL, score.get(BALL) + 1);
     }
@@ -57,8 +57,8 @@ public class Score {
         return score.get(BALL);
     }
 
-    public boolean didWin() {
-        return score.get(STRIKE) == Answer.ANSWER_LIST_SIZE;
+    public boolean isStrikeOut() {
+        return score.get(STRIKE) == Answer.ANSWER_SIZE;
     }
 
     @Override

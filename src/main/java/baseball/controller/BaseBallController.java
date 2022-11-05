@@ -28,7 +28,7 @@ public class BaseBallController {
             UserNumber userNumber = getUserNumber();
             Score score = baseballService.compareInputWithAnswer(userNumber);
             outputView.printResult(score);
-            if (score.didWin()) {
+            if (score.isStrikeOut()) {
                 break;
             }
         }
@@ -39,8 +39,7 @@ public class BaseBallController {
     private UserNumber getUserNumber() {
         String input = inputView.getUserInput();
         List<Integer> inputList = ConverterHolder.convert(input, List.class);
-        UserNumber userNumber = ConverterHolder.convert(inputList, UserNumber.class);
-        return userNumber;
+        return ConverterHolder.convert(inputList, UserNumber.class);
     }
 
     private Restart handleWinning() {

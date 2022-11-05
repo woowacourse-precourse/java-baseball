@@ -15,6 +15,6 @@ public class OutputView {
     }
 
     public void printWinnerMessage() {
-        System.out.printf(WINNING_MESSAGE_FORMAT, Answer.ANSWER_LIST_SIZE);
+        System.out.printf(WINNING_MESSAGE_FORMAT, Answer.ANSWER_SIZE);
     }
 }
