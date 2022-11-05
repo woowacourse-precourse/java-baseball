@@ -18,7 +18,7 @@ public class ScoreResultView {
     }
 
     public void getResultOfScores(String result){
-
+        System.out.println(result);
     }
 
     public String makeResultString(){
