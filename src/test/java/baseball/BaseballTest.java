@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
 
 class BaseballTest {
     @Nested
@@ -309,16 +309,26 @@ class BaseballTest {
     @DisplayName("GameController 클래스")
     class GameController_test {
 
+        private final GameController gameController = new GameController();
+
         @Test
-        @DisplayName("receiveBall 메소드는 세 자리 숫자가 입력되었을 때 Ball 객체를 반환하는지 확인")
+        @DisplayName("receiveBall 메소드에 세 자리 숫자가 입력되었을 때 Ball 객체를 반환하는지 확인")
         void receiveBall_test() {
             String input = "123";
             InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
 
-            GameController gameController = new GameController();
-
             assertThat(gameController.receiveBall()).isInstanceOf(Ball.class);
+        }
+
+        @Test
+        @DisplayName("compareBall 메소드에 Ball 객체가 입력되었을 때 스트라이크의 개수를 int 값으로 반환하는지 확인")
+        void compareBall_test() {
+            String input = "123";
+            Ball ball = new Ball(input);
+            gameController.setComputerNumber();
+
+            assertThat(gameController.compareBall(ball)).isInstanceOf(Integer.class);
         }
     }
 }
