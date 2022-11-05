@@ -3,10 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
+    private static StringBuilder sb;
+    private final static Map<String,String> typeEngKorMap = new HashMap<>(){{
+        put("Strike","스트라이크");
+        put("Ball","볼");
+        put("Nothing","낫싱");
+    }};
+
     public static void main(String[] args) {
 
     }
@@ -107,4 +113,78 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
+        Map<String, Integer> typeScoreMap = getTypeScoreMap();
+        for(int index = 0; index < 3; index++){
+            int nowDigit = userNumberList.get(index);
+            String digitResult = getNumberResult(nowDigit, index, computerNumberList);
+            putResult(typeScoreMap, digitResult);
+        }
+        return getResultStr(typeScoreMap);
+    }
+
+    public Map<String, Integer> getTypeScoreMap(){
+        return new HashMap<>(){{
+            put("Strike", 0);
+            put("Ball", 0);
+            put("Nothing", 0);
+        }};
+    }
+
+    private String getResultStr(Map<String, Integer> typeScoreMap){
+        if(isNothing(typeScoreMap)){
+            return "낫싱";
+        }
+        sb = getStringBuilder();
+
+        updateStrikeBallStr(sb, "Strike", typeScoreMap);
+        updateStrikeBallStr(sb, "Ball", typeScoreMap);
+        return sb.toString().strip();
+    }
+
+    private void updateStrikeBallStr(StringBuilder sb, String type, Map<String, Integer> typeScoreMap){
+        int typeScore = typeScoreMap.get(type);
+        if(typeScore > 0){
+            sb.append(typeScoreMap.get(type))
+                    .append(typeEngKorMap.get(type))
+                    .append(" ");
+        }
+    }
+
+    private StringBuilder getStringBuilder(){
+        if(Objects.isNull(sb)){
+            sb = new StringBuilder();
+        }
+        else{
+            sb.setLength(0);
+        }
+        return sb;
+    }
+
+    private boolean isNothing(Map<String, Integer> typeScoreMap){
+        return typeScoreMap.get("Nothing") == 3;
+    }
+
+    private boolean isAllStrike(Map<String, Integer> typeScoreMap){
+        return typeScoreMap.get("Strike") == 3;
+    }
+
+    private void putResult(Map<String, Integer> typeScoreMap, String digitResult){
+        int prevScore = typeScoreMap.get(digitResult);
+        typeScoreMap.put(digitResult, prevScore+1);
+    }
+
+
+    private String getNumberResult(int nowDigit, int index, List<Integer> computerNumberList){
+        int digitIndex = computerNumberList.indexOf(nowDigit);
+        if(digitIndex == -1){
+            return "Nothing";
+        }
+        if(index == digitIndex){
+            return "Strike";
+        }
+        return "Ball";
+    }
+
 }
