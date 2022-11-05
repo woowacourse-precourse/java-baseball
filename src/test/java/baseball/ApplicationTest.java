@@ -80,13 +80,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 음수가_아닌지_확인() {
-        int number = -1;
-        boolean result = true;
-        assertThat(Application.isNegativeNumber(number)).isEqualTo(result);
-    }
-
-    @Test
     void 입력에_0이_포함되어_있는지_확인() {
         List<Integer> numArr = List.of(0, 0, 1);
         boolean result = true;
