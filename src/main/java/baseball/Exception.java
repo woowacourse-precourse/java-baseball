@@ -3,15 +3,8 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InputException {
-
-
-    public InputException(String input) {
-        exceptionCheck(input);
-    }
-
-
-    private void exceptionCheck(String input) throws IllegalArgumentException {
+public class Exception {
+    public void Check(String input) throws IllegalArgumentException {
         Set<Character> duplicationCheck = new HashSet<>();
         final int MAX_SIZE = 3;
         final int SIGN = 0;
