@@ -11,14 +11,14 @@ public class Referee {
     ball = calculateBall(userInput, randNum);
     strike = calculateStrike(userInput, randNum);
     if (strike == 0 && ball == 0) {
-      return "낫싱\n";
+      return "낫싱";
     }
     if (ball != 0 && strike != 0) {
-      return (ball + "볼 " + strike + "스트라이크\n");
+      return (ball + "볼 " + strike + "스트라이크");
     } else if (ball != 0 && strike == 0) {
-      return (ball + "볼\n");
+      return (ball + "볼");
     } else if (ball == 0 && strike != 0) {
-      return (strike + "스트라이크\n");
+      return (strike + "스트라이크");
     }
     return "";
   }
