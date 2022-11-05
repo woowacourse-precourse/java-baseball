@@ -36,20 +36,24 @@ public class GameService {
         }
     }
 
-    public boolean finalScore(){
+    public Integer finalScore(){
         this.Strikescore = Strikescore;
         this.Ballscore = Ballscore;
         GameOutput.scoreMessage(Ballscore,Strikescore);
         if (Strikescore==3) {
             return isRestart();
         }
-        return false;
+        return 0;
     }
 
-    public boolean isRestart(){
+    public Integer isRestart(){
         this.Strikescore=Strikescore;
         UserInput.getRetryUserNumber();
-        String replay_input = Console.readLine();
-        return Integer.parseInt(replay_input)==1;
+        String str = Console.readLine();
+        Integer replay_input=Integer.parseInt(str);
+        if (replay_input==2){
+            GameOutput.finishGame();
+        }
+        return replay_input;
     }
 }

@@ -16,7 +16,12 @@ public class Controller {
             ArrayList<Integer> User = getUser();
             Game.getBallCount(User,RandomNum);
             Game.getStrikeCount(User,RandomNum);
-            if (Game.finalScore()){
+            //다시 시작하거나 게임 끝내기
+            Integer isEnd = Game.finalScore();
+            if (isEnd==2){
+                break;
+            }
+            if (isEnd==1){
                 playGame();
                 break;
             }
