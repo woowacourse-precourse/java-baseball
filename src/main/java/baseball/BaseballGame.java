@@ -13,6 +13,8 @@ public class BaseballGame {
     private List<Integer> userNumber;
     private List<Integer> computerNumber;
 
+    public BaseballGame() {}
+
     public BaseballGame(List<Integer> user, List<Integer> computer) {
         this.ballCount = 0;
         this.strikeCount = 0;
