@@ -18,21 +18,22 @@ public class InputUtil {
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
-        checkLength(numbers, 3);
+        checkLength(numbers, 3, Constant.NUMBER_LENGTH_EXCEPTION.getMessage());
         ArrayList<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length(); i++) {
-            checkIsDigit(numbers.charAt(i));
+            checkIsDigit(numbers.charAt(i), Constant.ISDIGIT_EXCEPTION.getMessage());
             int number = charToInt(numbers.charAt(i));
-            checkValidNumber(number, Constant.MIN_NUM.getNumber(), Constant.MAX_NUM.getNumber());
+            checkValidNumber(number, Constant.MIN_NUM.getNumber(), Constant.MAX_NUM.getNumber(),
+                    Constant.VALID_NUMBER_EXCEPTION.getMessage());
             checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }
         return inputNumbers;
     }
 
-    public void checkIsDigit(char number) {
+    public void checkIsDigit(char number, String exception) {
         if (!Character.isDigit(number)) {
-            throw new IllegalArgumentException(Constant.ISDIGIT_EXCEPTION.getMessage());
+            throw new IllegalArgumentException(exception);
         }
     }
 
@@ -42,15 +43,15 @@ public class InputUtil {
         }
     }
 
-    public void checkValidNumber(int number, int minNumber, int maxNumber) {
+    public void checkValidNumber(int number, int minNumber, int maxNumber, String exception) {
         if (number < minNumber || number > maxNumber) {
-            throw new IllegalArgumentException(Constant.VALID_NUMBER_EXCEPTION.getMessage());
+            throw new IllegalArgumentException(exception);
         }
     }
 
-    public void checkLength(String number, int length) {
+    public void checkLength(String number, int length, String exception) {
         if (number.length() != length) {
-            throw new IllegalArgumentException(Constant.NUMBER_LENGTH_EXCEPTION.getMessage());
+            throw new IllegalArgumentException(exception);
         }
     }
 
