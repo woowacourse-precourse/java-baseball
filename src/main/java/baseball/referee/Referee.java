@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Referee {
 
-    public int strike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
+    public int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
         int strikeCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
@@ -15,11 +15,10 @@ public class Referee {
                 strikeCount += 1;
             }
         }
-
         return strikeCount;
     }
 
-    public int ball(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
+    public int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
         int ballCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
@@ -47,8 +46,8 @@ public class Referee {
         Map<String, Integer> strikeBallCount = new HashMap<>();
 
         for (int computerValueIndex = 0; computerValueIndex < 3; computerValueIndex++) {
-            strikeCount += strike(computerValueIndex, computerGeneratedValue, userInputValue);
-            ballCount += ball(computerValueIndex, computerGeneratedValue, userInputValue);
+            strikeCount += countStrike(computerValueIndex, computerGeneratedValue, userInputValue);
+            ballCount += countBall(computerValueIndex, computerGeneratedValue, userInputValue);
         }
 
         strikeBallCount.put("strikeCount", strikeCount);
@@ -57,7 +56,7 @@ public class Referee {
         return strikeBallCount;
     }
 
-    public void say(Map<String, Integer> judgement) {
+    public void sayJudgement(Map<String, Integer> judgement) {
         if (judgement.get("strikeCount") == 0 && judgement.get("ballCount") == 0) {
             System.out.println("낫싱");
         } else if (judgement.get("strikeCount") != 0 && judgement.get("ballCount") == 0) {
