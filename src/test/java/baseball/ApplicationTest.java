@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @DisplayName("분석한 결과가 3스트라이크 일 경우 true, 아닐 경우 false가 리턴되는지 확인 테스트")
-    @CsvSource(value = {"1, 2, false", "0, 3, false", "0, 0, false", "2, 0, false", "3, 0, true"})
+    @CsvSource(value = {"1, 2, true", "0, 3, true", "0, 0, true", "2, 0, true", "3, 0, false"})
     void resultMessagePrintRetrunTest(int strikeNumber, int ballNumber, boolean expectedResult) {
 
         Map<String, Integer> resultMap = Map.of(
