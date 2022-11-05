@@ -17,10 +17,14 @@ public class User {
     private int getInputAllRightNumOfUser() {
         String strInput = getString();
         int numInput = parseIntFromStr(strInput);
+        isValidUser(strInput, numInput);
+        return numInput;
+    }
+
+    private void isValidUser(String strInput, int numInput) {
         isValidPositiveInt(numInput);
         isValidLength(strInput);
         isValidNumOfIndividually(strInput);
-        return numInput;
     }
 
     private String getString() {
