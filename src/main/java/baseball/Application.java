@@ -54,10 +54,7 @@ public class Application {
         return false;
     }
 
-    static String pickMyNum(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String myNumber = Console.readLine();
-
+    static void checkInputRule(String myNumber){
         // 입력받은 값이 3자리인지
         if(myNumber.length() != 3){
             throw new IllegalArgumentException();
@@ -65,8 +62,8 @@ public class Application {
 
         // 각 자리가 1~9까지의 수로 이루어져 있는지
         int chkNum;
-        for(int i = 0; i < myNumber.length(); i++){
-            chkNum = Character.getNumericValue(myNumber.charAt(i));
+        for(int numIdx = 0; numIdx < myNumber.length(); numIdx++){
+            chkNum = Character.getNumericValue(myNumber.charAt(numIdx));
             if(chkNum < 1 || chkNum > 9){
                 throw new IllegalArgumentException();
             }
@@ -82,9 +79,17 @@ public class Application {
         if(myNumber.charAt(1) == myNumber.charAt(2)){
             throw new IllegalArgumentException();
         }
+    }
 
-        //System.out.println(myNumber);
-        return myNumber;
+    static String pickMyNum(){
+        try{
+            System.out.print("숫자를 입력해주세요 : ");
+            String myNumber = Console.readLine();
+            checkInputRule(myNumber);
+            return myNumber;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
     }
 
     static List<Integer> pickComputerNum(){
