@@ -39,7 +39,7 @@ public class BaseballGame {
             outputView.printInputHint();
             this.user.inputGuessRandomNumbers();
             Score score = new Score(this.user.getInput(), this.computer.getComputerNumbers());
-            compareAnswer = score.getAnswer();
+            compareAnswer = score.getScore();
             outputView.printResult(compareAnswer);
             if (compareAnswer.get(STRIKE_INDEX) == INPUT_LENGTH) {
                 outputView.printGameEnd(compareAnswer);

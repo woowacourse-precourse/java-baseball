@@ -9,18 +9,18 @@ public class Score {
     public static final int BALL_INDEX = 1;
     private List<Integer> src;
     private List<Integer> dest;
-    private List<Integer> answer;
+    private List<Integer> score;
 
     public Score(List<Integer> src, List<Integer> dest) {
         this.src = src;
         this.dest = dest;
     }
 
-    public List<Integer> getAnswer() {
-        answer = new ArrayList<>();
-        answer.add(getStrikeNum());
-        answer.add(getBallNum());
-        return answer;
+    public List<Integer> getScore() {
+        score = new ArrayList<>();
+        score.add(getStrikeNum());
+        score.add(getBallNum());
+        return score;
     }
 
     private int getStrikeNum() {
@@ -35,11 +35,7 @@ public class Score {
     }
 
     private int getBallNum() {
-        int ballNum;
-        int strikeNum = answer.get(0);
-
-        ballNum = getContainNum() - strikeNum;
-        return ballNum;
+        return getContainNum() - score.get(STRIKE_INDEX);
     }
 
     private int getContainNum() {
