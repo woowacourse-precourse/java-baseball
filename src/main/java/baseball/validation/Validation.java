@@ -50,4 +50,8 @@ public class Validation {
         }
         throw new IllegalArgumentException(UserInputErrorConstantString.LENGTH_ERROR.getStringMessage());
     }
+
+    public static void gameFinishOrNotValidation(String userInput) {
+
+    }
 }

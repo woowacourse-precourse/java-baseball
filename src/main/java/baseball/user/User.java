@@ -16,4 +16,11 @@ public class User {
                 .mapToObj(charDigit -> charDigit - '0')
                 .collect(Collectors.toList());
     }
+
+    public static boolean isGameFinish() {
+        Print.printEndsWithEnter(GameProcedureConstantString.RETRY_GAME_OR_FINISH_GAME_MESSAGE.getStringMessage());
+        String userInput = Input.inputString();
+        Validation.gameFinishOrNotValidation(userInput);
+        return true;
+    }
 }
