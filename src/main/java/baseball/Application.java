@@ -20,7 +20,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> targetNum = makeRandomTargetNum();
-        System.out.println(targetNum);
+
         boolean go = true;
         boolean restartOrEnd = true;
         while(go){
