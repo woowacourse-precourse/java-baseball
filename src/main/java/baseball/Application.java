@@ -23,6 +23,14 @@ public class Application {
         }
         return howManyStrike;
     }
+
+    public boolean returnAnswer (int howManyBall, int howManyStrike) {
+        if (howManyStrike==3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
