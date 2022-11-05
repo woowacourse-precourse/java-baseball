@@ -16,4 +16,12 @@ public class BaseballNumbers {
             throw new IllegalArgumentException(INPUT_SIZE_ERROR);
         }
     }
+
+    private void createBaseballNumber(String uncheckNumbers) {
+        for(int index = 0; index<uncheckNumbers.length(); index++) {
+            char uncheckNumber = uncheckNumbers.charAt(index);
+            BaseballNumber baseballNumber = new BaseballNumber(uncheckNumber);
+            ballNumbers.add(baseballNumber);
+        }
+    }
 }
