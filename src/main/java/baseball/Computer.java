@@ -30,10 +30,9 @@ public class Computer {
     }
 
     private List<Integer> getIntListPlayerNumber(List<String> playerNumber) {
-        List<Integer> intListPlayerNumber = playerNumber.stream()
+        return playerNumber.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        return intListPlayerNumber;
     }
 
     public void checkNumber(List<String> playerNumber) {
