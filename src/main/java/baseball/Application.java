@@ -1,7 +1,7 @@
 package baseball;
 
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public int checkBall (List<Integer> answer, List<Integer> userInput) {
         int howManyBall = 0;
@@ -11,6 +11,17 @@ public class Application {
             }
         }
         return howManyBall;
+    }
+
+    public int checkStrike (List<Integer> answer, List<Integer> userInput, int howManyBall) {
+        int howManyStrike = 0;
+        for (int i=0; i<3; i++) {
+            if (answer.get(i).equals(userInput.get(i))) {
+                howManyStrike++;
+                howManyBall--;
+            }
+        }
+        return howManyStrike;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
