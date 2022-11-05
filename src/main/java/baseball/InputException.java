@@ -28,9 +28,10 @@ public class InputException {
         return !number.contains("0");
     }
 
-    public static void occur(String number) {
+    public static boolean occur(String number) {
         if (!(checkLength(number) && isAllNumber(number) && isDuplicate(number) && isInZero(number))){
             throw new IllegalArgumentException();
         }
+        return false;
     }
 }
