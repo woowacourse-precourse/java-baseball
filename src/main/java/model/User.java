@@ -60,7 +60,6 @@ public class User {
         throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
     }
 
-
     public int getNumSelecUser() {
         return numSelecUser;
     }

@@ -14,7 +14,7 @@ public class GameView {
     final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     final String MSG_INPUT_NUM = "숫자를 입력해주세요.";
     final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
-    final static String MSG_INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
+    final String MSG_INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
     final int NUM_RESTART_GAME = 1;
     final int NUM_END_GAME = 2;
