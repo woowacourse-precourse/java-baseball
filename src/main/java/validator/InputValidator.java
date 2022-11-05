@@ -1,5 +1,6 @@
 package validator;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,23 +17,16 @@ public class InputValidator {
     }
 
     public static boolean isRightRange(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) - '0' < 1 || userInput.charAt(i) - '0' > 9) {
-                return false;
-            }
-        }
-        return true;
+        return userInput.matches("[1-9]*$");
     }
 
     public static boolean isDuplicate(String userInput) {
-        Set<Character> numbers = new HashSet<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            numbers.add(userInput.charAt(i));
-        }
+        Set<String> numbers = new HashSet<>(Arrays.asList(userInput.split("")));
+
         return numbers.size() == NUMBER_LENGTH;
     }
 
     public static boolean isRightExitInput(String exitInput) {
-        return exitInput.equals("1") || exitInput.equals("2");
+        return exitInput.matches("[1-2]");
     }
 }
