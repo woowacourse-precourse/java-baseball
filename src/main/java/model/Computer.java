@@ -154,8 +154,8 @@ public class Computer {
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
     private Boolean isRightThreeNumOfComputer(int numOfCompare) {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
-        ArrayList<Integer> splitNumOfCompare = new ArrayList<>();
-        splitNumOfCompare = (ArrayList<Integer>) splitEachDigitOfNum(numOfCompare);
+        ArrayList<Integer> splitNumOfCompare = (ArrayList<Integer>) splitEachDigitOfNum(
+            numOfCompare);
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
         if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
@@ -209,9 +209,8 @@ public class Computer {
         }
     }
 
-    private boolean isEqualsCollection(Collection collection_1,
+    private boolean isEqualsCollection(Collection collection_1, Collection collection_2) {
         // TODO: collection의 equals 메서드 이용하여 리펙토링
-        Collection collection_2) {
         boolean isTrue = true;
         for (Object num : collection_2) {
             if (collection_1.contains(num)) {
