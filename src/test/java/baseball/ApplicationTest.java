@@ -135,6 +135,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void isEndFlagged_테스트(){
+        //given
+        final Core T = new Core();
+        final int case1 = 0;   //0 strike
+        final int case2 = 1;   //1 strike
+        final int case3 = 2;   //2 strikes
+        final int case4 = 3;   //3 strikes
+
+        //when
+        final boolean result1 = T.isEndFlagged(case1);  //false
+        final boolean result2 = T.isEndFlagged(case2);  //false
+        final boolean result3 = T.isEndFlagged(case3);  //false
+        final boolean result4 = T.isEndFlagged(case4);  //true
+
+        //then
+        assertThat(result1).as("isEndFlagged 테스트").isEqualTo(false);
+        assertThat(result2).as("isEndFlagged 테스트").isEqualTo(false);
+        assertThat(result3).as("isEndFlagged 테스트").isEqualTo(false);
+        assertThat(result4).as("isEndFlagged 테스트").isEqualTo(true);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
