@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateComputerRandomNumber_유효성_테스트(){
+    void generateComputerRandomNumber_테스트(){
         //given
         final Application T = new Application();
 
