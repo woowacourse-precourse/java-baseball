@@ -9,15 +9,16 @@ import java.util.Map;
 
 public class Game {
     Map<String, Integer> ballAndStrike;
+    int strikeCount, ballCount;
     User user;
     Computer computer;
-    boolean restart = false;
+    boolean restart = true;
 
     public Game() {
-        while(true) {
+        while(restart) {
             initGame();
             playGame();
-            playAgain();
+            restart = playAgain();
         }
     }
 
@@ -25,7 +26,7 @@ public class Game {
         user = new User();
         computer = new Computer();
         computer.setRandomNumber();
-        ballAndStrike = new HashMap<>();
+        ballAndStrike = new HashMap<String, Integer>();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -34,18 +35,27 @@ public class Game {
         while(!again) {
             System.out.print("숫자를 입력해주세요 : ");
             user.input();
-            compareNumbers(computer.getRandomNumber() ,user.getInputNumberList());
+            compareNumbers();
             again = printResult();
         }
     }
 
     // 두 수를 비교함.
-    public void compareNumbers(List computerNumber, List userNumber){
-        int ballCount = 0, strikeCount = 0;
+    public void compareNumbers(){
+        ballCount = 0; strikeCount = 0;
+        List userNumber = user.getInputNumberList();
         for(int i = 0; i < userNumber.size(); i++) {
-            if(userNumber.get(i) == computerNumber.get(i)) {
+            containsOrEqual(i);
+        }
+    }
+
+    public void containsOrEqual(int index) {
+        List computerNumber = computer.getRandomNumber();
+        List userNumber = user.getInputNumberList();
+        if(computerNumber.contains(userNumber.get(index))) {
+            if(computerNumber.get(index) == userNumber.get(index)){
                 ballAndStrike.put("strike", ++strikeCount);
-            } else {
+            } else{
                 ballAndStrike.put("ball", ++ballCount);
             }
         }
@@ -53,8 +63,16 @@ public class Game {
 
     public boolean printResult() {
         boolean result = false;
-        System.out.println(ballAndStrike.get("ball")+"볼 "+ballAndStrike.get("strike")+"스트라이크");
-        if(ballAndStrike.get("strike") == 3) {
+        int ball = ballAndStrike.get("ball");
+        int strike = ballAndStrike.get("strike");
+
+        if(ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if(strike > 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        if(strike == 3) {
             result = true;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
