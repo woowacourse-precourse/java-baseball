@@ -13,9 +13,8 @@ import org.junit.jupiter.api.Test;
 class UserTest {
 
     @Nested
-    @DisplayName("입력된 값이 추측할 수 형식에 맞는지 검증")
-    class InputIntTest {
-
+    @DisplayName("입력한 값이 숫자인지 검증")
+    class InputControlTest {
         @Test
         void 정수입력() {
             InputControl.strToInt("123");
@@ -35,6 +34,10 @@ class UserTest {
             assertThatThrownBy(() -> InputControl.strToInt(" "))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+    }
+    @Nested
+    @DisplayName("입력된 값이 추측할 수 형식에 맞는지 검증")
+    class InputGuessedValueTest {
         @Test
         void 세자릿수_변환_검증() {
             ThreeDigitNum t1 = new ThreeDigitNum(123);
