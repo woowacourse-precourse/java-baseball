@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -16,8 +15,7 @@ public class Game {
 
         addThreeNumberToComputerAnswer();
 
-        currentBall = 0;
-        currentStrike = 0;
+        ballAndStrikeInit();
     }
 
     private void addThreeNumberToComputerAnswer() {
@@ -33,18 +31,16 @@ public class Game {
         }
     }
 
-    public void comparePlayerInputAndAnswer(int playerNum) {
-        currentBall = 0;
-        currentStrike = 0;
-        List<Integer> player_list = new ArrayList<>();
-        intToList(playerNum, player_list);
-        compareListAndAnswer(player_list);
-    }
-
-    private void compareListAndAnswer(List<Integer> player_list) {
+    public void compareListAndAnswer(List<Integer> player_list) {
+        ballAndStrikeInit();
         for (int indexNum = 0; indexNum < 3; indexNum++) {
             compareValue(player_list, indexNum);
         }
+    }
+
+    public void ballAndStrikeInit() {
+        currentBall = 0;
+        currentStrike = 0;
     }
 
     private void compareValue(List<Integer> player_list, int indexNum) {
@@ -53,17 +49,6 @@ public class Game {
 
         else if (computerAnswer.contains(player_list.get(indexNum)))
             currentBall++;
-    }
-
-    private void intToList(int playerNum, List<Integer> playerList) {
-        int num = playerNum;
-
-        while (num > 0) {
-            playerList.add(num % 10);
-            num /= 10;
-        }
-
-        Collections.reverse(playerList);
     }
 
     public int getStrike() {
