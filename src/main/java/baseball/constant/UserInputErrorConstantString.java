@@ -19,4 +19,6 @@ public enum UserInputErrorConstantString {
     public String getStringMessage() {
         return stringMessage;
     }
+
+
 }
