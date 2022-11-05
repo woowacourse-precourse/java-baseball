@@ -95,4 +95,16 @@ public class Application {
 
         return notSizeThree;
     }
+
+    public static boolean hasZero(List<Integer> numArr) {
+        boolean isZero = false;
+
+        for (int i : numArr) {
+            if (i == 0) {
+                isZero = true;
+            }
+        }
+
+        return isZero;
+    }
 }
