@@ -3,7 +3,7 @@ package baseball.logic;
 public class Exception {
 
     public String inputException(String num){
-        if(checkSame(num) || checkThreedigit(num)){
+        if(checkSame(num) || checkThreedigit(num) || checkZero(num)){
             throw new IllegalArgumentException();
         }
         return num;
@@ -23,5 +23,12 @@ public class Exception {
             return true;
         }
         return false;
+    }
+
+    private boolean checkZero(String num){
+        if(num.contains("0")){
+            return false;
+        }
+        return true;
     }
 }
