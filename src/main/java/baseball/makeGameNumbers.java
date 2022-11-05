@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class makeGameNumbers {
-    private List<Number> numberList;
+    private List<BaseBallNumber> baseBallNumbersList;
 
     public makeGameNumbers(List<Integer> numberList) {
-        this.numberList = numberList.stream().map(BaseBallNumber::new).collect(Collectors.toList());
+        this.baseBallNumbersList = numberList.stream().map(BaseBallNumber::new).collect(Collectors.toList());
     }
 
 }
