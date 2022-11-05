@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class Input {
 
-    public List<Integer> inputNumber() {
+    public List<Integer> inputBaseballNumber() {
         String text = Console.readLine();
-        validateInput(text);
+        validateInputBaseballNumber(text);
         return textToIntList(text);
     }
 
@@ -17,19 +17,19 @@ public class Input {
                 .collect(Collectors.toList());
     }
 
-    public static void validateInput(String text) {
-        validateNumber(text);
-        validateLength(text);
+    public static void validateInputBaseballNumber(String text) {
+        validateAllMatchNumber(text);
+        validateBaseballNumberLength(text);
         validateOverlap(text);
     }
 
-    private static void validateNumber(String text) {
+    private static void validateAllMatchNumber(String text) {
         if (!text.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자가 아닌 값이 있습니다.");
         }
     }
 
-    private static void validateLength(String text) {
+    private static void validateBaseballNumberLength(String text) {
         if (text.length() != 3) {
             throw new IllegalArgumentException("3자리가 아닙니다.");
         }
