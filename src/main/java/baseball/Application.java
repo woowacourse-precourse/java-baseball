@@ -101,12 +101,7 @@ public class Application {
 
     public static boolean checkUserNumberLength(String numberString) {
 
-        if (numberString.length() != 3) {
-
-            return false;
-        }
-
-        return true;
+        return numberString.length() == 3;
     }
 
     public static boolean checkUserNumberIsInteger(String numberString) {
