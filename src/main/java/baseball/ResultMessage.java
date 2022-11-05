@@ -3,7 +3,9 @@ package baseball;
 public enum ResultMessage {
     STRIKE("스트라이크"),
     BALL("볼"),
-    NOTHING("낫싱");
+    NOTHING("낫싱"),
+    RESTART("재시작"),
+    END("게임 종료");
 
     public final String message;
 
