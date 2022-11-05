@@ -3,7 +3,7 @@ package baseball.model.computer;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class DataProcess {
+public class RandomNumberProcess {
 
 	public static LinkedHashMap<Integer, Integer> storeNumbers(List<Integer> input) {
 		return storeIntoMap(input);
@@ -16,7 +16,6 @@ public class DataProcess {
 		for (int idx = 0; idx < numbersArray.size(); idx++) {
 			numbersWithIdx.put(numbersArray.get(idx), idx);
 		}
-
 		return numbersWithIdx;
 	}
 }

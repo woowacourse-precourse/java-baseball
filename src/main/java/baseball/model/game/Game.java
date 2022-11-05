@@ -1,8 +1,10 @@
-package baseball;
+package baseball.model.game;
+
+import baseball.controller.user.User;
+import baseball.model.computer.Computer;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
-
 
 public class Game {
 	Computer computer = new Computer();
@@ -10,24 +12,24 @@ public class Game {
 
 	LinkedHashMap<Integer, Integer> fromComputers;
 	LinkedHashMap<Integer, Integer> fromUsers;
-	int userIntention;
-	boolean userWin;
+	public int userIntention;
+	public boolean userWin;
 
-	int computerNumber;
-	int computerNumIdx;
-	int userNumber;
-	int userNumIdx;
+	public int computerNumber;
+	public int computerNumIdx;
+	public int userNumber;
+	public int userNumIdx;
 
-	int strike;
-	int ball;
+	public int STRIKE;
+	public int BALL;
 
 
-	void playGame() {
+	public void playGame() {
 		fetchComputerNumbers();
 
 		do {
-			strike = 0;
-			ball = 0;
+			STRIKE = 0;
+			BALL = 0;
 
 			doesGameRestart();
 			fetchUserNumbers();
@@ -47,14 +49,14 @@ public class Game {
 			return String.valueOf(sb.append("낫싱"));
 		}
 
-		sb.append(ball).append("볼 ");
-		sb.append(strike).append("스트라이크");
+		sb.append(BALL).append("볼 ");
+		sb.append(STRIKE).append("스트라이크");
 
-		if (strike == 0) {
+		if (STRIKE == 0) {
 			return sb.toString().replaceAll("\\s[0-9]스트라이크", "");
 		}
 
-		if (ball == 0) {
+		if (BALL == 0) {
 			return sb.toString().replaceAll("[0-9]볼\\s", "");
 		}
 
@@ -76,13 +78,13 @@ public class Game {
 
 	public void countStrike() {
 		if (isStrike(computerNumber, computerNumIdx, userNumber, userNumIdx)) {
-			strike++;
+			STRIKE++;
 		}
 	}
 
 	public void countBall() {
 		if (isBall(computerNumber, computerNumIdx, userNumber, userNumIdx)) {
-			ball++;
+			BALL++;
 		}
 	}
 
@@ -126,11 +128,11 @@ public class Game {
 	}
 
 	public boolean isNothing() {
-		return Objects.equals(strike, 0) && Objects.equals(ball, 0);
+		return Objects.equals(STRIKE, 0) && Objects.equals(BALL, 0);
 	}
 
 	public boolean userWin() {
-		return strike == 3;
+		return STRIKE == 3;
 	}
 
 	public boolean endProgram() {

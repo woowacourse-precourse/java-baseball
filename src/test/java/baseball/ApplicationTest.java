@@ -1,5 +1,12 @@
 package baseball;
 
+import baseball.controller.user.InputProcess;
+import baseball.controller.user.UserError;
+import baseball.model.computer.Computer;
+import baseball.model.computer.ComputerError;
+import baseball.model.computer.NumberGeneration;
+import baseball.model.computer.RandomNumberProcess;
+import baseball.model.game.Game;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -15,14 +22,12 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
-	Computer computer = new Computer();
-	User user = new User();
 	Game game = new Game();
 
 	@DisplayName("숫자 생성의 범위를 확인한다")
 	@Test
 	void testNumberCreationRange() {
-		int randomNumber = computer.createOneRandomNumber();
+		int randomNumber = NumberGeneration.generateOneRandomNumber();
 
 		assertThat(randomNumber).isBetween(1, 9);
 	}
@@ -49,7 +54,7 @@ class ApplicationTest extends NsTest {
 		int[] counts = new int[10];
 
 		for (int counter = 0; counter < 70; counter++) {
-			int randomNumber = computer.createOneRandomNumber();
+			int randomNumber = NumberGeneration.generateOneRandomNumber();
 			counts[randomNumber] = 1;
 		}
 
@@ -69,15 +74,15 @@ class ApplicationTest extends NsTest {
 		List<Integer> list2 = List.of(1, 7);
 		List<Integer> list3 = List.of(2, 5);
 
-		assertThat(computer.hasDuplication(list1, 3)).isTrue();
-		assertThat(computer.hasDuplication(list2, 7)).isTrue();
-		assertThat(computer.hasDuplication(list3, 6)).isFalse();
+		assertThat(ComputerError.hasDuplication(list1, 3)).isTrue();
+		assertThat(ComputerError.hasDuplication(list2, 7)).isTrue();
+		assertThat(ComputerError.hasDuplication(list3, 6)).isFalse();
 	}
 
 	@DisplayName("최종 생성된 컴퓨터 난수의 자리수를 확인한다")
 	@RepeatedTest(30)
 	void testComputerNumberSize() {
-		assertThat(computer.getNumbers().size()).isEqualTo(3);
+		assertThat(Computer.getNumbers().size()).isEqualTo(3);
 	}
 
 	@DisplayName("최종 생성된 컴퓨터 난수의 중복 여부를 확인한다")
@@ -91,7 +96,7 @@ class ApplicationTest extends NsTest {
 			}
 		};
 
-		assertThat(computer.getNumbers()).isNotSameAs(desirableMap);
+		assertThat(Computer.getNumbers()).isNotSameAs(desirableMap);
 	}
 
 	@DisplayName("컴퓨터 생성 난수의 자료형 전처리 수행을 테스트한다")
@@ -105,34 +110,34 @@ class ApplicationTest extends NsTest {
 				put(1, 2);
 			}
 		};
-		assertThat(computer.processNumbers(createdList)).isEqualTo(desirableMap);
+		assertThat(RandomNumberProcess.storeNumbers(createdList)).isEqualTo(desirableMap);
 	}
 
 
 	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")
 	@Test
 	void testUserInputDuplication() {
-		assertThat(user.hasDuplication("221")).isTrue();
+		assertThat(UserError.hasDuplication("221")).isTrue();
 	}
 
 	@DisplayName("유저가 입력한 숫자의 길이가 설정된 숫자와 같은지 확인한다")
 	@Test
 	void testUserInputLength() {
-		assertThat(user.followDigitRule("591", 3)).isTrue();
+		assertThat(UserError.followDigitRule("591", 3)).isTrue();
 	}
 
 	@DisplayName("유저의 입력이 숫자로만 구성되어 있는지 확인한다")
 	@Test
 	void testUserInputIsNumberOnly() {
-		assertThat(user.isNumberOnly("591")).isTrue();
-		assertThat(user.isNumberOnly("ad3")).isFalse();
+		assertThat(UserError.followNumberOnlyRule("591")).isTrue();
+		assertThat(UserError.followNumberOnlyRule("ad3")).isFalse();
 	}
 
 
 	@DisplayName("유저 guessing number 입력 오류시 예외 처리가 작동하는지 확인한다")
 	@Test
-	void testUserGeussingHandleException() {
-		assertThatCode(() -> user.handleGuessingInputError("222"))
+	void testUserGuessingHandleException() {
+		assertThatCode(() -> UserError.handleGuessingError("222"))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
@@ -141,7 +146,7 @@ class ApplicationTest extends NsTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"3", "abc", "25"})
 	void testUserIntentionHandleException(String input) {
-		assertThatCode(() -> user.handleIntentionInputError(input))
+		assertThatCode(() -> UserError.handleIntentionError(input))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
@@ -156,7 +161,7 @@ class ApplicationTest extends NsTest {
 				put(1, 2);
 			}
 		};
-		assertThat(user.processNumbers("591")).isEqualTo(desirableMap);
+		assertThat(InputProcess.storeNumbers("591")).isEqualTo(desirableMap);
 	}
 
 	@DisplayName("스트라이크를 확인한다")
@@ -201,8 +206,8 @@ class ApplicationTest extends NsTest {
 	@DisplayName("결과 출력 기능을 확인한다 : 낫싱")
 	@Test
 	void canPrintAnswerMessageCase1() {
-		game.strike = 0;
-		game.ball = 0;
+		game.STRIKE = 0;
+		game.BALL = 0;
 		String answer = "낫싱";
 		assertEquals(game.createAnswerMessage(), answer);
 	}
@@ -210,8 +215,8 @@ class ApplicationTest extends NsTest {
 	@DisplayName("결과 출력 기능을 확인한다 : 1볼 1스트라이크")
 	@Test
 	void canPrintAnswerMessageCase2() {
-		game.strike = 1;
-		game.ball = 1;
+		game.STRIKE = 1;
+		game.BALL = 1;
 		String answer = "1볼 1스트라이크";
 		assertEquals(game.createAnswerMessage(), answer);
 	}
@@ -219,8 +224,8 @@ class ApplicationTest extends NsTest {
 	@DisplayName("결과 출력 기능을 확인한다 : 1볼")
 	@Test
 	void canPrintAnswerMessageCase3() {
-		game.strike = 0;
-		game.ball = 1;
+		game.STRIKE = 0;
+		game.BALL = 1;
 		String answer = "1볼";
 		assertEquals(game.createAnswerMessage(), answer);
 	}
@@ -228,8 +233,8 @@ class ApplicationTest extends NsTest {
 	@DisplayName("결과 출력 기능을 확인한다 : 2스트라이크")
 	@Test
 	void canPrintAnswerMessageCase4() {
-		game.strike = 2;
-		game.ball = 0;
+		game.STRIKE = 2;
+		game.BALL = 0;
 		String answer = "2스트라이크";
 		assertEquals(game.createAnswerMessage(), answer);
 	}

@@ -2,9 +2,9 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class In {
+public class Input {
 
-	public static String getInput() {
+	public String getInput() {
 		return Console.readLine();
 	}
 }

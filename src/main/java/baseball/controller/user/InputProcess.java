@@ -2,7 +2,7 @@ package baseball.controller.user;
 
 import java.util.LinkedHashMap;
 
-public class DataProcess {
+public class InputProcess {
 
 	public static LinkedHashMap<Integer, Integer> storeNumbers(String input) {
 		return storeIntoMap(storeIntoArray(input));

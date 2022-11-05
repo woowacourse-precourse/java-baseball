@@ -1,10 +1,10 @@
-package baseball.controller;
-
-import static baseball.controller.Setup.*;
+package baseball.controller.user;
 
 import java.util.Objects;
 
-public class InputError {
+import static baseball.controller.Setup.*;
+
+public class UserError {
 
 	public static void handleGuessingError(String userInput) {
 		if (!followDuplicationRule(userInput) || !followDigitRule(userInput, Integer.parseInt(NUMBER_LENGTH.getValue())) || !followNumberOnlyRule(userInput)) {
@@ -18,8 +18,8 @@ public class InputError {
 		}
 	}
 
-	public static boolean followDuplicationRule(CharSequence userInput){
-		return Boolean.parseBoolean(DUPLICATION_ALLOWABLE.getValue()) != hasDuplication(userInput);
+	public static boolean followDuplicationRule(CharSequence userInput) {
+		return Boolean.parseBoolean(DUPLICATION_ALLOWABLE.getValue()) == hasDuplication(userInput);
 	}
 
 	public static boolean followDigitRule(String checkString, int checkLength) {
@@ -35,7 +35,7 @@ public class InputError {
 	}
 
 	public static boolean hasDuplication(CharSequence checkString) {
-		return checkString.length() == checkString.chars()
+		return checkString.length() != checkString.chars()
 				.distinct()
 				.count();
 	}

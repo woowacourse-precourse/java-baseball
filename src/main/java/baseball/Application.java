@@ -1,16 +1,17 @@
 package baseball;
 
+import baseball.controller.Setup;
+import baseball.model.game.Game;
+import baseball.view.Output;
+
 public class Application {
 
-	static void printStartMessage() {
-		System.out.println("숫자 야구 게임을 시작합니다.");
-	}
+	public static Output out = new Output();
+	public static Game game = new Game();
 
 	public static void main(String[] args) {
+		out.print(Setup.START_MESSAGE.getValue());
 
-		printStartMessage();
-
-		Game game = new Game();
 		game.playGame();
 	}
 }

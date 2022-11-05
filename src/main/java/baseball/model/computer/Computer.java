@@ -6,11 +6,13 @@ import java.util.List;
 
 public class Computer {
 
+	static RandomNumberProcess data = new RandomNumberProcess();
+
 	public static LinkedHashMap<Integer, Integer> getNumbers() {
 		List<Integer> numberList = new ArrayList<>();
 		NumberGeneration.generateMultipleRandomNumber(numberList);
 
-		return DataProcess.storeNumbers(numberList);
+		return data.storeNumbers(numberList);
 	}
 
 }

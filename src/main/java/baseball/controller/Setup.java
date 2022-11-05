@@ -6,6 +6,7 @@ public enum Setup {
 	REQUEST_NUMBER_MESSAGE("숫자를 입력해주세요 : "),
 	REQUEST_INTENTION_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : "),
 	ERROR_MESSAGE("잘못입력하였습니다. 프로그램을 종료합니다."),
+	END_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
 
 	DUPLICATION_ALLOWABLE("false"),
 	NUMBER_ONLY_RULE("[0-9]+"),
@@ -18,6 +19,7 @@ public enum Setup {
 	Setup(String value) {
 		this.value = value;
 	}
+
 	public String getValue() {
 		return value;
 	}
