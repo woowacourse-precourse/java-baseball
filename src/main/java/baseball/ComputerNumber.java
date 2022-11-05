@@ -14,4 +14,11 @@ public class ComputerNumber {
         return false;
     }
 
+    private boolean checkListAlreadyContainNumber(Character tempNumber) {
+        if (numberList.contains(tempNumber)) {
+            return true;
+        }
+        return false;
+    }
+
 }
