@@ -12,7 +12,7 @@ import java.util.List;
  * - BullsAndCowsResult : 게임 결과를 저장하는 객체
  * - start() : 숫자 야구 게임을 시작
  *   - 사용자로 부터 조건에 맞는 입력을 받고 (입력이 올바르지 않으면 예외 발생) 볼/스트라이크 개수를 BullsAndCowsResult 객체에 저장
- *   - main 메소드에서 BullsAndCowsResult 의 finish 메소드를 통해 반복
+ *   - main 메소드에서 BullsAndCowsResult 의 finish() 메소드를 통해 반복
  * - isContinue() : 게임을 다시 진행할지 여부를 반환
  *   - 사용자로부터 1 또는 2의 문자를 입력받고 이를 통해 게임 종료/다시 시작 여부를 반환
  *   - main 메소드에서 while 문 마지막에 구현
@@ -64,7 +64,6 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
-
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!computer.contains(randomNumber)) {
@@ -76,18 +75,17 @@ public class Application {
     }
 
     static class BullsAndCows {
-
         List<Integer> computerNumber;
         BullsAndCowsResult bullsAndCowsResult;
 
         public BullsAndCows(List<Integer> computerNumber, BullsAndCowsResult bullsAndCowsResult) {
             System.out.println("숫자 야구 게임을 시작합니다.");
+
             this.computerNumber = computerNumber;
             this.bullsAndCowsResult = bullsAndCowsResult;
         }
 
         void start() {
-
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
@@ -103,7 +101,6 @@ public class Application {
         }
 
         boolean isContinue() {
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String answer = Console.readLine();
 
@@ -112,7 +109,6 @@ public class Application {
     }
 
     private static int findNumberIndex(List<Integer> userInputNumber, int c) {
-
         if (userInputNumber.contains(c)) {
             return userInputNumber.indexOf(c);
         } else {
@@ -121,7 +117,6 @@ public class Application {
     }
 
     private static List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
-
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
@@ -131,7 +126,6 @@ public class Application {
         char[] charArray = userInput.toCharArray();
 
         for (char c : charArray) {
-
             int number = (int) c - '0';
 
             if (!isValidNumber(number)) {
@@ -163,7 +157,6 @@ public class Application {
         }
 
         void addCount(int userIndex, int computerIndex) {
-
             if (userIndex == -1) {
                 return;
             }
@@ -177,12 +170,11 @@ public class Application {
         }
 
         void printResult() {
-
             if (ballCount == 0 && strikeCount == 0) {
                 System.out.println("낫싱");
             } else if (strikeCount == 3) {
                 System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다!! 게임 종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             } else {
                 System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
             }
