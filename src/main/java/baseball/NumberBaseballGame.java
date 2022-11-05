@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public abstract class NumberBaseballGame {
 
-    private static List<Integer> answerNumberList = new ArrayList<>(), playerNumberList = new ArrayList<>();
+    private static final List<Integer> answerNumberList = new ArrayList<>(), playerNumberList = new ArrayList<>();
     private static int ball, strike;
     private static boolean isFirstGame = true;
 
