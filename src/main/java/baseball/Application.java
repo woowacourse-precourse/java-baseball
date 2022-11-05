@@ -90,4 +90,10 @@ public class Application {
     }
     return inputNumberList;
   }
+
+  private static List<Integer> sortList(List<Integer> list){
+    Collections.sort(list);
+    return list;
+  }
 }
+
