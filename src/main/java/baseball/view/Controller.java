@@ -11,7 +11,11 @@ import static baseball.view.Display.printReGameMessage;
 
 public class Controller {
 
-    private Display display = new Display();
+    private final Display display;
+
+    public Controller() {
+        this.display = new Display();
+    }
 
     public void printGameStartMessage() {
         display.printInitMessage();
@@ -27,16 +31,22 @@ public class Controller {
     public boolean printRoundResult(Map<Type, Integer> resultMap) {
         int ball = resultMap.get(Type.BALL);
         int strike = resultMap.get(Type.STRIKE);
-        boolean flag = false;
 
-        if (strike == GAME_ANSWER_MAX_VALUE) {
-            flag = true;
+        if(checkThreeStrike(strike)) {
+            return true;
         }
+
+        printBallStrikeNothing(ball, strike);
+        return false;
+    }
+
+    private void printBallStrikeNothing(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             display.printNothingMessage();
             display.printNewLine();
-            return false;
+            return;
         }
+
         if (ball > 0) {
             display.printBallMessage(ball);
         }
@@ -44,7 +54,10 @@ public class Controller {
             display.printStrikeMessage(strike);
         }
         display.printNewLine();
-        return flag;
+    }
+
+    private boolean checkThreeStrike(int strike) {
+        return strike == GAME_ANSWER_MAX_VALUE;
     }
 
     public boolean printReGameAndInput() {
