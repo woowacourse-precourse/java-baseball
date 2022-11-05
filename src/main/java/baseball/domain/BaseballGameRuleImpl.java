@@ -37,7 +37,7 @@ public class BaseballGameRuleImpl implements GameRule<Integer> {
 
 	@Override
 	public List<Integer> getResultByGameRule() {
-		return null;
+		return resultList;
 	}
 
 	private void initList(List<Integer> status) {
