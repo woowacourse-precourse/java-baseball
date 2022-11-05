@@ -17,11 +17,7 @@ public class Application {
 
             String playerInput = Console.readLine();
 
-            String computerAnswer = computer.getRandomNumber().toString();
-
-            System.out.println(computerAnswer);
-
-            List<Integer> calcHintResult = computer.calcHint(playerInput, computerAnswer);
+            List<Integer> calcHintResult = computer.calcHint(playerInput, computer.getRandomNumberToString());
             String stringResult = computer.printHint(calcHintResult);
             System.out.println(stringResult);
 
