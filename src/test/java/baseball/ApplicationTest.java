@@ -4,8 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     final GameReadyMachine gameReadyMachine = new GameReadyMachine();
@@ -24,6 +23,12 @@ class ApplicationTest extends NsTest {
     void 자리수다른지_체크_성공() {
         assertThat(gameReadyMachine.checkDigitValue(574)).isEqualTo(true);
         assertThat(gameReadyMachine.checkDigitValue(686)).isEqualTo(false);
+    }
+
+    @Test
+    void 테스트1_4(){
+        gameReadyMachine.gameReadyComplete();
+        assertThat()
     }
 
     @Test
