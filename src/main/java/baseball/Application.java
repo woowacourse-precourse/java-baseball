@@ -45,9 +45,14 @@ public class Application {
 
     private static List<Integer> convertStringToList(String userInput) {
         List<String> splittedUserInput = List.of(userInput.split(""));
-        List<Integer> digits = splittedUserInput.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> digits;
+        try {
+            digits = splittedUserInput.stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
 
         validateUserNumber(digits);
         return digits;
