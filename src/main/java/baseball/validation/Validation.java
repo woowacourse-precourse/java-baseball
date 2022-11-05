@@ -1,6 +1,7 @@
 package baseball.validation;
 
 import baseball.constant.GameProcedureConstantInteger;
+import baseball.constant.GameProcedureConstantString;
 import baseball.constant.UserInputErrorConstantString;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,16 @@ public class Validation {
                 GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_FINISH.getIntegerValue(),
                 GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
         isContainsDuplicate(userInput, GameProcedureConstantInteger.BASEBALL_GAME_NUMBER_LENGTH.getIntegerValue());
+    }
+
+    public static void gameFinishOrNotValidation(String userInput) {
+        isInputLengthValidate(userInput,
+                GameProcedureConstantInteger.BASEBALL_GAME_RETRY_REPLY_LENGTH.getIntegerValue());
+        isInteger(userInput, GameProcedureConstantInteger.BASEBALL_GAME_RETRY_REPLY_LENGTH.getIntegerValue());
+        isValidInterval(userInput,
+                GameProcedureConstantInteger.BASEBALL_GAME_RETRY_REPLY_INCLUSIVE_INTEGER_START.getIntegerValue(),
+                GameProcedureConstantInteger.BASEBALL_GAME_RETRY_REPLY_INCLUSIVE_INTEGER_FINISH.getIntegerValue(),
+                GameProcedureConstantInteger.BASEBALL_GAME_RETRY_REPLY_LENGTH.getIntegerValue());
     }
 
     private static void isContainsDuplicate(String userInput, int inputLength) {
@@ -51,7 +62,5 @@ public class Validation {
         throw new IllegalArgumentException(UserInputErrorConstantString.LENGTH_ERROR.getStringMessage());
     }
 
-    public static void gameFinishOrNotValidation(String userInput) {
 
-    }
 }
