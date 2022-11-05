@@ -30,6 +30,14 @@ public class ExceptionTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void notNumberExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1a2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
