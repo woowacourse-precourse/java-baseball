@@ -23,6 +23,10 @@ handleGameFlow()에서 while(true) 문으로 무한히 게임 진행
 - [X] BaseballNumGenerator 클래스
   - [X] List<Integer> getBaseballNumber() 메서드
 
+- [X] Grader 클래스
+  - [X] Score getScore(List<Integer>) 메서드
+  - [X] boolean isCorrect(List<Integer>) 메서드
+  
 - [X] IOHandler 클래스: try~catch로 IOException 처리
   - [X] void printInitMessage() 메서드
   - [X] void printInputMessage() 메서드
