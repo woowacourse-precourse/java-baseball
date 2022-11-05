@@ -24,6 +24,10 @@ public class Game {
 
 		if (isCorrectAnswer()) {
 			GameView.printEndGame();
+
+			if(GameView.inputRestartOrEnd().equals(GameView.RESTART_NUM)){
+				this.play();
+			}
 		} else {
 			GameView.printHint(ball, strike);
 		}

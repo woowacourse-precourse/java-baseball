@@ -17,6 +17,8 @@ public class GameView {
 	private static final String NOTHING_MESSAGE = "낫싱";
 	private static final String WIN_GAME_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
 	private static final String INPUT_RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	public static final String RESTART_NUM = "1";
+	public static final String END_NUM = "2";
 
 	public static void printStartMessage() {
 		System.out.println(START_GAME_MESSAGE);
@@ -60,5 +62,15 @@ public class GameView {
 	public static void printEndGame() {
 		System.out.printf(WIN_GAME_MESSAGE, Computer.ANSWER_LENGTH);
 		System.out.println(INPUT_RESTART_OR_EXIT_MESSAGE);
+	}
+
+	public static String inputRestartOrEnd() {
+		String inputNum = Console.readLine();
+
+		if (!inputNum.equals(RESTART_NUM) && !inputNum.equals(END_NUM)) {
+			InvalidInputException.commandError();
+		}
+
+		return inputNum;
 	}
 }
