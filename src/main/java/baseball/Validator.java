@@ -25,4 +25,9 @@ public class Validator {
     private boolean areAllDifferentDigit(String predictedNumber) {
         return new HashSet<>(Arrays.asList(predictedNumber.split(""))).size() == 3;
     }
+
+    public void validateReplaySelection(String replay) {
+        if (!replay.equals("1") && !replay.equals("2"))
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
+    }
 }
