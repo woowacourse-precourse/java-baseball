@@ -1,6 +1,6 @@
 package baseball.validation;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 import baseball.constant.UserInputErrorConstantString;
 import org.junit.jupiter.api.Assertions;
@@ -33,7 +33,7 @@ class ValidationTest {
 
     @Test
     void Contains0() {
-        assertThrows(IllegalArgumentException.class, () -> Validation.userBaseballInputValidation("012"),
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Validation.userBaseballInputValidation("012"),
                 UserInputErrorConstantString.NOT_BETWEEN_DESIRABLE_INTERVAL_ERROR.getStringMessage());
 
     }

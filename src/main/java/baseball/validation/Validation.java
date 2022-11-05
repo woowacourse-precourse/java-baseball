@@ -41,7 +41,7 @@ public class Validation {
 
     private static void isValidInterval(String userInput, int startDigit, int finishDigit, int integerLength) {
         for (int i = 0; i < integerLength; i++) {
-            if (!((char) startDigit <= userInput.charAt(i) && userInput.charAt(i) <= (char) finishDigit)) {
+            if (!(startDigit <= userInput.charAt(i) - '0' && userInput.charAt(i) - '0' <= finishDigit)) {
                 throw new IllegalArgumentException(UserInputErrorConstantString.NOT_BETWEEN_DESIRABLE_INTERVAL_ERROR.getStringMessage());
             }
         }
