@@ -22,4 +22,10 @@ public class InputVerifier {
             throw new IllegalArgumentException();
         }
     }
+
+    private void isDistinctDigits(String input) {
+        if (Util.hasDuplicatedChar(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
