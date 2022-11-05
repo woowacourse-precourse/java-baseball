@@ -14,7 +14,7 @@ public class Utils {
         return Console.readLine();
     }
 
-    public static void announce(Result result) {
-        System.out.println(result);
+    public static void announce(String message) {
+        System.out.println(message);
     }
 }
