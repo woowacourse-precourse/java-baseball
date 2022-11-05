@@ -32,7 +32,7 @@ public class Game {
     }
 
 
-    public static List<Integer> findStrikeBall(List<Integer> computerNumber,
+    public List<Integer> findStrikeBall(List<Integer> computerNumber,
         List<Integer> userNumberList) {
         int strike = 0;
         int ball = 0;
@@ -49,7 +49,7 @@ public class Game {
     }
 
 
-    public static int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball,
+    public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball,
         // test 스트라이크볼판정_findStrike검증
         int i) {
         for (int j = 0; j < 3; j++) {
@@ -64,12 +64,12 @@ public class Game {
         return ball;
     }
 
-    public static boolean isSame(int user, int computer // test 스트라이크볼판정_findStrike검증
+    public boolean isSame(int user, int computer // test 스트라이크볼판정_findStrike검증
     ) {
         return user == computer;
     }
 
-    public static void printGameResult(int strike, int ball) {
+    public void printGameResult(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -87,14 +87,14 @@ public class Game {
     }
 
 
-    public  Integer getUserDecision() { //test 게임종료_재시작체크
+    public Integer getUserDecision() { //test 게임종료_재시작체크
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Integer user_decision = Integer.parseInt(Console.readLine());
 
         return user_decision;
     }
 
-    public  boolean isGameOver(int userDecision, int RESTART,
+    public boolean isGameOver(int userDecision, int RESTART,
         int GAME_OVER) { //test 게임종료_재시작체크
         if (userDecision == GAME_OVER) {
             return true;

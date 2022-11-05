@@ -28,7 +28,7 @@ public class Domain {
         this.computerNumber = computerNumber;
     }
 
-    public static List<Integer> computerRandomNumberExtract() {
+    public List<Integer> computerRandomNumberExtract() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -39,7 +39,7 @@ public class Domain {
         return computer;
     }
 
-    public  String getInputUserNumber() { // test 입력시오류경우_확인
+    public String getInputUserNumber() { // test 입력시오류경우_확인
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
@@ -48,7 +48,7 @@ public class Domain {
     }
 
 
-    public static void isInputAlright(String userNumber) { // test 입력시오류경우_확인
+    public void isInputAlright(String userNumber) { // test 입력시오류경우_확인
 
         //입력된 것이 숫자가 아닌 경우 ex) 알파벳이 올 수도 있음
         if(!isNumber(userNumber)){
@@ -71,7 +71,7 @@ public class Domain {
         }
     }
 
-    private static void overlapCheckProcess(String userNumber, int i, int j) {
+    private void overlapCheckProcess(String userNumber, int i, int j) {
         if (i == j) {
             return;
         }
@@ -80,7 +80,7 @@ public class Domain {
         inputOverlapCheck(nowIndexUserNumber, otherIndexUserNumber);
     }
 
-    private static boolean isNumber(String userNumber) {
+    private boolean isNumber(String userNumber) {
         for(int index=0; index<userNumber.length(); index++){
             char c = userNumber.charAt(index);
             if(c>='1' && c<='9'){
@@ -93,11 +93,11 @@ public class Domain {
         return true;
     }
 
-    public static List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
+    public List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
         return convertStringToIntegerList(userNumber);
     }
 
-    public static List<Integer> convertStringToIntegerList(String userNumber) { // test 입력시오류경우_확인
+    public List<Integer> convertStringToIntegerList(String userNumber) { // test 입력시오류경우_확인
         List<Integer> userNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int putNumber = Character.getNumericValue(userNumber.charAt(i));
@@ -106,7 +106,7 @@ public class Domain {
         return userNumberList;
     }
 
-    public static void inputOverlapCheck(char nowIndexUserNumber,
+    public void inputOverlapCheck(char nowIndexUserNumber,
         char otherIndexUserNumber) {  // test 입력시오류경우_확인
         if (nowIndexUserNumber == otherIndexUserNumber) {
             throw new IllegalArgumentException("입력 숫자중 중복");
