@@ -2,6 +2,7 @@ package baseball.UI;
 import baseball.model.Input;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class InputView {
@@ -9,9 +10,13 @@ public class InputView {
 
     public void getBaseballInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        checkInputValidation(input);
-        this.input = new Input(input);
+        try{
+            String input = Console.readLine();
+            checkInputValidation(input);
+            this.input = new Input(input);
+        }catch (NoSuchElementException e){
+            throw new IllegalArgumentException("input을 입력해주세요");
+        }
     }
 
     private void checkInputValidation(String input){
@@ -27,7 +32,6 @@ public class InputView {
     }
 
     private void checkNumericValue(String input){
-
         int notNumber = input.chars()
                 .filter(ch -> !Character.isDigit(ch))
                 .toArray()
