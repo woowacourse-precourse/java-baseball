@@ -15,10 +15,24 @@ public class Application {
     static Integer ballCount = 0;
 
     public static void main(String[] args) {
-
-
+        // TODO: 프로그램 구현
+        try{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            while(true) {
+                createRandomNumber();
+                Integer gameResult = startUserGame(br);
+                if(gameResult == 2){
+                    br.close();
+                    break;
+                }else if(gameResult == 1){
+                    resetValue();
+                }
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
-
 
     public static void createRandomNumber(){
         while (computerNumber.size() < 3) {
@@ -30,7 +44,6 @@ public class Application {
     }
 
     public static void userInputNumbers(BufferedReader br) throws IOException{
-
         userNumber.removeAll(userNumber);
 
         System.out.print("숫자를 입력해주세요 : ");
@@ -58,21 +71,19 @@ public class Application {
             countStrikeAndBall();
             printStrikeAndBall();
         }else if(strikeCount == 3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             return answerNumber(br);
         }
         return 0;
     }
 
     public static void resetValue(){
-        computerNumber = new ArrayList<>();
-        userNumber = new ArrayList<>();
         strikeCount = 0;
         ballCount = 0;
     }
 
     public static Integer answerNumber(BufferedReader br) throws IOException{
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String newGameChoice = br.readLine();
         if(newGameChoice.equals("1") || newGameChoice.equals("2")){
             return Integer.parseInt(newGameChoice);
