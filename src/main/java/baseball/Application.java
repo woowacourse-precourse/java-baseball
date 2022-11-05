@@ -1,9 +1,7 @@
 package baseball;
 
-import Controller.game;
-import camp.nextstep.edu.missionutils.Console;
+import Controller.Game;
 import domain.Computer;
-import domain.User;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,7 +11,7 @@ public class Application {
         Computer.setNumber();
 
         while(true) {
-            game.start();
+            Game.start();
         }
     }
 }

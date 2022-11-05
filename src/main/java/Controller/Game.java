@@ -8,9 +8,9 @@ import domain.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class game {
+public class Game {
     public static void start(){
-        game.printMessage(game.readLine());
+        Game.printMessage(Game.readLine());
     }
     public static void strikeAndball_Message(){
         int strike_count=0;
@@ -31,37 +31,29 @@ public class game {
             System.out.print(ball_count + "볼");
         }
         if(strike_count==0&&ball_count==0)
-            game.nothing_Message();
+            Game.nothing_Message();
 
         System.out.print("\n");
 
     }
-
     public static void nothing_Message(){
         System.out.print("낫싱");
     }
-    public static List<Integer> get_ThreeRandomNumbers(){
-        List<Integer> computer = new ArrayList<>();
-
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
     public static String readLine(){
         System.out.print("숫자를 입력해 주세요 : " );
         String input=Console.readLine();
+
+        if(Utils.redundant_Check(input)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        if(Utils.blank_Check(input)) throw new IllegalArgumentException("값을 입력해주세요.");
+        if(Utils.length_check(input)) throw new IllegalArgumentException("3글자 수가 아닙니다.");
+        if(Utils.zeroOrNumber_check(input)) throw new IllegalArgumentException("1~9숫자를 입력해주세요.");
         return input;
 
     }
 
     public static void printMessage(String input) {
         User.setNumber(input);
-        game.strikeAndball_Message();
+        //정답 체크 메서드 자리
+        Game.strikeAndball_Message();
     }
 }

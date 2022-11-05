@@ -1,15 +1,15 @@
 package domain;
 
-import Controller.game;
+import Controller.Game;
+import Controller.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
     public static List<Integer> number_List;
 
     public static void setNumber(){
-        Computer.number_List=game.get_ThreeRandomNumbers();
+        Computer.number_List= Utils.get_ThreeRandomNumbers();
     }
 
     public static String getNumber(){
