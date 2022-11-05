@@ -18,10 +18,16 @@ public class Application {
         return computerNum;
     }
 
-    public static List<Integer> getUserInput() {
+    public static List<Integer> getUserInput() throws IllegalArgumentException{
         List<Integer> userNum = new ArrayList<>();
         String userInput = Console.readLine();
-        for (int i = 0; i < userInput.length(); i++) {
+
+        if(userInput.length() != 3)
+            throw new IllegalArgumentException("게임 종료");
+
+        for (int i = 0; i < userInput.length(); i++){
+            if((int)userInput.charAt(i) == 0)
+                throw new IllegalArgumentException("게임 종료");
             userNum.add((int) userInput.charAt(i));
         }
         return userNum;
@@ -34,7 +40,11 @@ public class Application {
         boolean continueGame = true;
 
         while (continueGame) {
-            List<Integer> userNum = getUserInput();
+            try{
+                List<Integer> userNum = getUserInput();
+            }catch(IllegalArgumentException e){
+                System.out.println(e.toString());
+            }
         }
     }
 
