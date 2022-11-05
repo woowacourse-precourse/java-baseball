@@ -9,29 +9,28 @@ import static constants.GameConstant.*;
 
 public class Player {
     public String getPlayerNumber() throws IllegalArgumentException{
-        System.out.println(INPUT_NUMBER_MESSAGE);
+        System.out.print(INPUT_NUMBER_MESSAGE);
         String playerNumber = readLine();
-        validateInputNumber(playerNumber);
+        validateInputNumber(playerNumber, PLAYER_NUMBER_LENGTH);
         return playerNumber;
     }
 
-    private void validateInputNumber(String playerNumber) throws IllegalArgumentException {
+    private void validateInputNumber(String playerNumber, int numberLength) throws IllegalArgumentException {
         //정수인지, 길이가 맞는지, 반복되는 수 없는지 검사
         validateNumberOrNotNumber(playerNumber);
-        validateNumberLength(playerNumber);
+        validateNumberLength(playerNumber, numberLength);
         validateNumberRepeat(playerNumber);
     }
 
     private void validateNumberOrNotNumber(String playerNumber) {
-        String pattern = "^[0-9]*$"; //숫자만
-        boolean regex = Pattern.matches(pattern, playerNumber);
+        boolean regex = Pattern.matches(PATTERN, playerNumber);
         if (!regex) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateNumberLength(String playerNumber) {
-        if (playerNumber.length() != NUMBER_LENGTH) {
+    private void validateNumberLength(String playerNumber, int numberLength) {
+        if (playerNumber.length() != numberLength) {
             throw new IllegalArgumentException();
         }
     }
@@ -43,5 +42,14 @@ public class Player {
         if (setNumber.size() != playerNumber.length()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getRestartOrEndNumber(){
+        System.out.println(RESTART_OR_END_MESSAGE);
+        //해당 수도 validation 필요
+        String playerNumber = readLine();
+        validateNumberOrNotNumber(playerNumber);
+        validateNumberLength(playerNumber, RESTART_OR_END_NUMBER_LENGTH);
+        return Integer.parseInt(playerNumber);
     }
 }
