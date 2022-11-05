@@ -21,10 +21,24 @@ public class MethodUnitTest {
         int num = Application.makeRandomNum();
         int first = num/100;
         int second = num/10-first*10;
-        int third = num - second*10;
+        int third = num%10;
 
         assertThat(first).isNotEqualTo(second);
         assertThat(first).isNotEqualTo(third);
         assertThat(second).isNotEqualTo(third);
+    }
+
+    @DisplayName("스트라이크 작동 테스트")
+    @Test
+    void strike_작동_테스트(){
+        int noStrike = Application.strike(123, 341);
+        int oneStrike = Application.strike(123, 625);
+        int twoStrike = Application.strike(123, 423);
+        int threeStrike = Application.strike(123,123);
+
+        assertThat(noStrike).isEqualTo(0);
+        assertThat(oneStrike).isEqualTo(1);
+        assertThat(twoStrike).isEqualTo(2);
+        assertThat(threeStrike).isEqualTo(3);
     }
 }
