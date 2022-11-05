@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -9,30 +10,24 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        boolean isGameFinished = false;
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerDigits = generateRandomNumbers();
         System.out.println();
 
-        while (!isGameFinished) {
+        while (answerDigits.size()==3) {
             System.out.print("숫자를 입력해주세요 : ");
+
             String userInput = getUserInput();
-            System.out.println(userInput);
             int userGuess = validateUserInput(userInput, 3);
 
             List<Integer> inputDigits = getDigitList(userGuess);
             List<Integer> comparedResult = compareAnswerWithInput(answerDigits, inputDigits);
 
-            isGameFinished = printStrikeAndBall(comparedResult);
+            boolean isGameFinished = printHint(comparedResult);
             if (isGameFinished) {
                 userInput = getUserInput();
                 userGuess = validateUserInput(userInput, 1);
-                if (userGuess == 1){
-                    isGameFinished = false;
-                    answerDigits = generateRandomNumbers();
-                }else if (userGuess == 2){
-                    isGameFinished = true;
-                }
+                answerDigits = toBeContinued(userGuess, answerDigits);
             }
         }
 
@@ -53,6 +48,8 @@ public class Application {
 
     public static String getUserInput() {
         String userInput = Console.readLine();
+        System.out.println(userInput);
+
         return userInput;
     }
 
@@ -60,12 +57,13 @@ public class Application {
         try {
             if (userInput.length() != checkLength) {
                 throw new IllegalArgumentException("Input should be"+ checkLength +
-                        "digit numbers in the range of 111~999");
+                        "every digit is in the range of 1~9");
             }
             int userGuess = Integer.parseInt(userInput);
             return userGuess;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input should be 3 digit numbers in the range of 111~999");
+            throw new IllegalArgumentException("Input should be"+ checkLength +
+                    "every digit is in the range of 1~9");
         }
     }
 
@@ -102,7 +100,7 @@ public class Application {
         return digits;
     }
 
-    public static boolean printStrikeAndBall(List<Integer> comparedResult) {
+    public static boolean printHint(List<Integer> comparedResult) {
         int strikeCount = comparedResult.get(0);
         int ballCount = comparedResult.get(1);
 
@@ -129,5 +127,15 @@ public class Application {
         return false;
     }
 
+    public static List<Integer> toBeContinued(int userInput, List<Integer> answerDigits){
+
+        if (userInput == 1){
+            answerDigits = generateRandomNumbers();
+        }else if (userInput == 2){
+            answerDigits = Collections.EMPTY_LIST;
+        }
+
+        return answerDigits;
+    }
 
 }
