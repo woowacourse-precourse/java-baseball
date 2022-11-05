@@ -26,5 +26,9 @@ public class Application {
             throw new IllegalArgumentException("숫자만 입력이 가능합니다. 프로그램을 종료합니다");
         }
     }
-
+    static void validateThreeNumbers(String guess) {
+        if (guess.length() != 3) {
+            throw new IllegalArgumentException("숫자 세 개만 입력이 가능합니다. 프로그램을 종료합니다.");
+        }
+    }
 }
