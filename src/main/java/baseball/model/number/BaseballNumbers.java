@@ -63,4 +63,17 @@ public class BaseballNumbers {
         }
         return strikeCount;
     }
+
+    private int getBall(BaseballNumbers otherBaseballNumbers) {
+        List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
+        int ballCount = 0;
+        for (int baseballIndex = 0; baseballIndex < 3; baseballIndex++) {
+            BaseballNumber baseballNumber = ballNumbers.get(baseballIndex);
+            int otherBaseballIndex = otherBaseballNumberList.indexOf(baseballNumber);
+            if(baseballIndex != otherBaseballIndex) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 }
