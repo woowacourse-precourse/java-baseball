@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player {
+public class DigitNumber {
 
     public Map<Integer, Integer> generate3DigitNumberWithoutDuplication() {
         Map<Integer, Integer> computerNumber = new HashMap<>();
