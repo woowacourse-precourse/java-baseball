@@ -27,18 +27,19 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computerNumber = creatRandomNumber();
         BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+
         String answer = "1";
-        System.out.println(computerNumber);
+
+        List<Integer> computerNumber = creatRandomNumber();
 
         while (answer.equals("1")) {
+
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             List<Integer> userInputNumber = isValidInput(userInput);
 
-            bullsAndCowsResult.ballCount = 0;
-            bullsAndCowsResult.strikeCount = 0;
+            bullsAndCowsResult.init();
 
             for (int i = 0; i < computerNumber.size(); i++) {
                 bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
@@ -109,6 +110,12 @@ public class Application {
 
         int ballCount;
         int strikeCount;
+        int isEnd;
+
+        void init() {
+            ballCount = 0;
+            strikeCount = 0;
+        }
 
         void addCount(int userIndex, int computerIndex) {
 
