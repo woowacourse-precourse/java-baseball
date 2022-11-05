@@ -1,6 +1,6 @@
 package baseball.result;
 
-public class ResultProcessor {
+public class Referee {
 
     public Result processResult(String randomNumber, String predictedNumber) {
         Result result = new Result();

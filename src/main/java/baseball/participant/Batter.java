@@ -1,7 +1,7 @@
 package baseball.participant;
 
 import baseball.result.Result;
-import baseball.result.ResultProcessor;
+import baseball.result.Referee;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Batter {
 
-    private final ResultProcessor processor = new ResultProcessor();
+    private final Referee referee = new Referee();
 
     public String selectRandomNumber() {
         List<Integer> randomDigits = new ArrayList<>();
@@ -24,6 +24,6 @@ public class Batter {
     }
 
     public Result resultOfPrediction(String randomNumber, String predictedNumber) {
-        return processor.processResult(randomNumber, predictedNumber);
+        return referee.processResult(randomNumber, predictedNumber);
     }
 }
