@@ -208,6 +208,11 @@ public class Application {
         return true;
     }
 
+    public static boolean checkReplayNumber(String replayNumberString) {
+
+        return checkReplayNumberLength(replayNumberString) && checkReplayNumberCount(replayNumberString);
+    }
+
     public static boolean checkReplayNumberLength(String replayNumberString) {
 
         return replayNumberString.length() == 1;
