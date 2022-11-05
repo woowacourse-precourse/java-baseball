@@ -52,7 +52,7 @@ class ApplicationTest extends NsTest {
         List<Integer> computers = Arrays.asList(2, 4, 5);
         List<Integer> inputs = Arrays.asList(5, 4, 2);
 
-        assertThat(Application.countStrike(computers, inputs)).isEqualTo(2);
+        assertThat(Application.countBall(computers, inputs)).isEqualTo(2);
     }
 
     @Test
