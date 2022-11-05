@@ -71,5 +71,4 @@
 - [ ] regularExpression에 한자리 숫자인 1 또는 2 인지 확인하는 정규표현식을 초기화.
 - [ ] userAnswer이 regularExpression에 유효한지 비교
 - [ ] true이면, true을 리턴
-- [ ] false이면, "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요."출력
-- [ ] false을 리턴
+- [ ] false이면, false을 리턴
