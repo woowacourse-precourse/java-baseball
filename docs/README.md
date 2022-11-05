@@ -12,13 +12,11 @@
   - 한 세트가 끝난 후 게임 종료 여부 결정 시 1, 2가 아닌 다른 값올 입력할 경우
 
 ## 요구 사항 상세
--[ ] Player Class
-  - [ ] `Map<Integer, Integer> generate3DigitNumberWithoutDuplication()`
+-[ ] DigitNumber enum
+  - [X] `Map<Integer, Integer> generate3DigitNumberWithoutDuplication()`
     - 컴퓨터 플레이어가 저장할 세 자리의 수를 반환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
-  - [ ] `Map<Integer, Integer> input3DigitNumberWithoutDuplication()`
-    - 게임 플레이어에게 세 자리의 수를 입력받아 convertNumberToMap 호출 후 그 결과를 반환
-  - [ ] `Map<Integer, Integer> convertNumberToMap(Integer)`
+  - [X] `Map<Integer, Integer> convertNumberToMap(Integer)`
     - 게임 플레이어가 입력한 세 자리의 수를 Map으로 변환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
 
@@ -33,7 +31,10 @@
     - 게임 플레이어가 입력한 세 자리의 수 중 isBall의 결과가 true인 수와 index를 받아 컴퓨터 플레이어의 수와 비교
     - index가 동일하면 true, 그렇지 않으면 false를 반환
   
-- [ ] View Class
+- [ ] GameController Class
+  - [ ] ``
+
+- [X] View Class
   - [X] `void printStart()` 
     - 게임 시작 시 "숫자 야구 게임을 시작합니다." 출력
   - [X] `void printPlayerTurn()` 

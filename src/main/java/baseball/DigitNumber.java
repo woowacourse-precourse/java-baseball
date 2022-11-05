@@ -52,4 +52,21 @@ public enum DigitNumber {
         return computerNumber;
     }
 
+    public Map<Integer, Integer> convertNumberToMap(int digitNumber) {
+        Map<Integer, Integer> userNumber = new HashMap<>();
+
+        for (int index = digit - 1; index >= 0; ) {
+            int number = getDigitNumberOf(digitNumber, index);
+            userNumber.put(number, index);
+        }
+
+        return userNumber;
+    }
+
+    private int getDigitNumberOf(int digitNumber, int index) {
+        int pow = (int) Math.pow(10, index);
+        int number = digitNumber / pow;
+        return number % pow;
+    }
+
 }
