@@ -79,7 +79,17 @@ public class FeatureListTest {
     @Test
     void 판정출력테스트() {
         int[] test = new int[]{1, 1};
-        
+        assertThat(printJudge(test)).isEqualTo("1볼 1스트라이크");
+
+        int[] test2 = new int[]{0, 3};
+        assertThat(printJudge(test2)).isEqualTo("3스트라이크");
+
+        int[] test3 = new int[]{3, 0};
+        assertThat(printJudge(test3)).isEqualTo("3볼");
+
+        int[] test4 = new int[]{0, 0};
+        assertThat(printJudge(test4)).isEqualTo("낫싱");
+
     }
 
 }

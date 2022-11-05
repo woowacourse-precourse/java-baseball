@@ -99,8 +99,14 @@ public class Application {
         if (judg[0] != 0) {
             result += judg[0]+"볼";
         }
+
         if (judg[1] != 0) {
-            result += " " + judg[1] + "스트라이크";
+            if(!result.equals(""))
+            {
+                result += " ";
+            }
+
+            result += judg[1] + "스트라이크";
         }
 
         if (result.equals("")) {
