@@ -1,13 +1,13 @@
 package baseball;
 
-public class Digit {
+public class PositiveDigit {
 
     private static final int MINIMUM = 1;
     private static final int MAXIMUM = 9;
 
     private final int digit;
 
-    public Digit(int digit) {
+    public PositiveDigit(int digit) {
         validateRanges(digit);
         this.digit = digit;
     }
@@ -28,7 +28,7 @@ public class Digit {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Digit digit1 = (Digit)o;
+        PositiveDigit digit1 = (PositiveDigit)o;
 
         return digit == digit1.digit;
     }
