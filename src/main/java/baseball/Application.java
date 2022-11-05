@@ -31,6 +31,15 @@ public class Application {
             return numFilter == 3 ;
         }
 
+        public boolean checkIsItNothing(List<String> answer, List<String> userNumList){
+            for (String num : userNumList){
+                if(answer.contains(num)){
+                    return false;
+                }
+            }
+            return true ;
+        }
+
 
     }
     public static class Processing {
@@ -57,5 +66,6 @@ public class Application {
             }
             return Arrays.asList(inputNum.split(""));
         }
+
     }
 }
