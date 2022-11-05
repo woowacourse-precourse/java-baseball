@@ -6,11 +6,15 @@ import java.util.List;
 import static baseball.Constant.*;
 
 public class Compare {
-    String input;
-    List<Integer> computerNumber;
+    List<Integer> userNumbers;
+    List<Integer> computerNumbers;
 
-    Compare(String input) {
-        this.input = input;
+    Compare(List<Integer> computer, List<Integer> user) {
+        this.computerNumbers = computer;
+        this.userNumbers = user;
     }
-    
+
+    public boolean isStrike(Integer computerNumber, Integer userNumber) {
+        return computerNumber.equals(userNumber);
+    }
 }
