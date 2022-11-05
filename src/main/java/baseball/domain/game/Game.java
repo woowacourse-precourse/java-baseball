@@ -17,6 +17,7 @@ public class Game {
     private void validateInputNumbers(String randomNumbers) {
         while (true) {
             String inputNumbers = InputView.printNumbers();
+            NumberVerifier.inputNumberVerifier(inputNumbers);
             if (NumberVerifier.numberVerifier(randomNumbers, inputNumbers)) {
                 break;
             }
