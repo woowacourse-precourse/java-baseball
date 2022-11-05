@@ -8,6 +8,7 @@ public class GameController {
     private final Computer computer = new Computer();
     private final Player player = new Player();
     private final Judgement judgement = new Judgement();
+    private final InputExceptionController inputExceptionController = new InputExceptionController();
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -19,7 +20,10 @@ public class GameController {
         while (!judgementResult.equals("3스트라이크")) {
             System.out.println("숫자를 입력해주세요 : ");
 
-            List<Integer> playerNumbers = player.createPlayerNumbers(readLine());
+            String input = readLine();
+            inputExceptionController.checkPlayerNumbersInputException(input);
+
+            List<Integer> playerNumbers = player.createPlayerNumbers(input);
             judgementResult = judgement.getJudgementResult(computerNumbers, playerNumbers);
 
             System.out.println(judgementResult);
