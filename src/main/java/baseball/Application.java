@@ -2,8 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     private static List<Integer> rand_num_gen() {
@@ -28,6 +31,19 @@ public class Application {
         }
 
         return input_tolist;
+    }
+
+    private static boolean is_execption(List<Integer> input) {
+        if (input.size() != 3) {
+            return true;
+        }
+
+        Set<Integer> input_toset = new HashSet<>(input);
+        if (input.size() != input_toset.size()) {
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
