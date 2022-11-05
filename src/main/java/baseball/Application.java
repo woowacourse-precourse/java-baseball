@@ -9,27 +9,28 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         int answer = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111,999);
-        int userInput = getUserInput();
-
-        List<Integer> strikeAndBall = compareAnswerWithInput(answer,userInput);
-
-        System.out.println(userInput);
-    }
-
-    public static int getUserInput(){
+        System.out.println(answer);
         System.out.print("숫자를 입력해주세요 : ");
+        String userInput = getUserInput();
+        int userGuess = validateUserInput(userInput, 3);
 
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-        int userGuess = validateUserInput(userInput);
+        List<Integer> comparedResult = compareAnswerWithInput(answer,userInput);
 
-        return userGuess;
+//        printStrikeAndBall(comparedResult);
+
+
     }
 
-    private static int validateUserInput(String userInput) throws IllegalArgumentException{
+    public static String getUserInput(){
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        return userInput;
+    }
+
+    public static int validateUserInput(String userInput , int checkLength) throws IllegalArgumentException{
         try{
             int userGuess = Integer.parseInt(userInput);
 
-            if (userInput.length()!=3){
+            if (userInput.length()!=checkLength){
                 throw new IllegalArgumentException("Wrong input length");
             }
             return userGuess;
@@ -73,4 +74,7 @@ public class Application {
 
         return digits;
     }
+
+
+
 }
