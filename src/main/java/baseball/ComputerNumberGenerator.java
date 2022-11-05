@@ -25,7 +25,7 @@ public class ComputerNumberGenerator {
     }
 
     private static boolean hasThreeNumbers(List<Integer> numbers) {
-        return numbers.size() == COMPUTER_NUMBER_SIZE;
+        return numbers.size() == NUMBER_SIZE;
     }
 }
 
