@@ -1,0 +1,24 @@
+package baseball;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static baseball.Constant.PLAYING_NUMBERS_LENGTH;
+
+public class Convert {
+    private List<String> StringToList(String input) {
+        List<String> stringList = new ArrayList<>();
+        for (int i=0; i<PLAYING_NUMBERS_LENGTH; i++) {
+            stringList.add(String.valueOf(input.charAt(i)));
+        }
+        return stringList;
+    }
+
+    private List<Integer> StringListToIntegerList(List<String> stringList) {
+        List<Integer> integerList = new ArrayList<>();
+        for (int i=0; i<PLAYING_NUMBERS_LENGTH; i++) {
+            integerList.add(Integer.parseInt(stringList.get(i)));
+        }
+        return integerList;
+    }
+}
