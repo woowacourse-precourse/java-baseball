@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class MessageHolderTest {
-    private MessageHolder holder;
+    private static MessageHolder holder;
     @BeforeAll
-    void initAll() {
+    static void initAll() {
         holder = new MessageHolder();
     }
     @Test
@@ -52,27 +52,46 @@ public class MessageHolderTest {
 
     @Test
     void testPrintAskGameInput() {
-        holder.printAskGameInput();
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
+        holder.printAskGameInput();
+        
         String result = "숫자를 입력해주세요 : ";
         assertEquals(result, out.toString());
     }
 
     @Test
     void testPrintAskRestart() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         
+        holder.printAskRestart();
+
+        String result = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        assertEquals(result, out.toString().trim());
     }
 
     @Test
     void testPrintBallAndStrike() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         
+        holder.printBallAndStrike(1, 1);
+
+        String result = "1볼 1스트라이크";
+        assertEquals(result, out.toString().trim());
     }
 
     @Test
     void testPrintStartMessage() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         
+        holder.printStartMessage();
+
+        String result = "숫자 야구 게임을 시작합니다.";
+        assertEquals(result, out.toString().trim());
     }
 
 }
