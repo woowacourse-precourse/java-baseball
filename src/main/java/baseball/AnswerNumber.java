@@ -11,17 +11,27 @@ public class AnswerNumber {
     public int[] getNumberArr() {
         numArr[0] = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
 
-        numArr[1] = returnNum(numArr[0]);
+        numArr[1] = returnSndNum(numArr[0]);
 
-        numArr[2] = returnNum(numArr[1]);
+        numArr[2] = returnTrdNum(numArr[0], numArr[1]);
 
         return numArr;
     }
 
-    public int returnNum(int num) {
+    public int returnSndNum(int num) {
         int tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
 
         while (num == tmp){
+            tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
+        }
+
+        return tmp;
+    }
+
+    public int returnTrdNum(int firNum, int sndNum){
+        int tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
+
+        while (firNum == tmp || sndNum == tmp ){
             tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
         }
 
