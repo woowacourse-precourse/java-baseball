@@ -5,7 +5,7 @@
 ## (List<Integer>)randomNumberCreate()
 - [ ] 세자리수의 난수 생성
 
-## ()userNumberMessagePrint()
+## (void)userNumberMessagePrint()
 - [ ] "숫자를 입력하세요 : "를 출력
 
 ## (String word)userNumberInput()
@@ -58,7 +58,7 @@
 - [ ] true이면 "ballNumber + 볼 strikeNumber + 스트라이크"을 출력
 - [ ] false을 리턴
 
-## printToRestartingGameMessage
+## (void)printToRestartingGameMessage()
 - [ ] "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
 - [ ] "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요." 출력
 
