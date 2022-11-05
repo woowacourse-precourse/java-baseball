@@ -19,4 +19,12 @@ class PlayerTest {
         assertThat(player.playerNumber).isEmpty();
 
     }
+
+    @Test
+    void isNumeric() {
+
+        String s = "english";
+
+        assertThat(Player.isNumeric(s)).isFalse();
+    }
 }

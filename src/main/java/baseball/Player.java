@@ -27,12 +27,12 @@ public class Player {
         }
     }
 
-    private boolean isNumeric(String playerStringNumber) {
+    public static boolean isNumeric(String playerStringNumber) {
 
         return playerStringNumber.chars().allMatch(Character::isDigit);
     }
 
-    private boolean numberCheck(String playerStringNumber) {
+    public static boolean numberCheck(String playerStringNumber) {
 
         return false;
     }
