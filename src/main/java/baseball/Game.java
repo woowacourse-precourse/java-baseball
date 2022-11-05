@@ -9,8 +9,6 @@ public class Game {
         Computer computer = new Computer(new ArrayList<>());
         computer.random3NumberOutput();
 
-        System.out.println("computer.computerNumber = " + computer.computerNumber);
-
         Integer ballCount = 0;
         Integer strikeCount = 0;
 
