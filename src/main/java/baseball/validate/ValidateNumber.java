@@ -8,8 +8,10 @@ public class ValidateNumber {
     private static final String CHECK_DIGIT_LENGTH = "숫자의 자릿수를 확인해주세요";
     private static final String NO_OVERLAP_NUMBER = "각 자리가 중복되지 않는 수를 입력해주세요";
     private static final String ONLY_IN_CHOICE_LIST = "목록에 있는 숫자를 선택해주세요";
+    private static final int REGAME_NUMBER = 1;
+    private static final int END_GAME_NUMBER = 2;
 
-    private final static List<Integer> CHOICE_LIST = List.of(1, 2);
+    private final static List<Integer> CHOICE_LIST = List.of(REGAME_NUMBER, END_GAME_NUMBER);
 
     /**
      * 입력 받은 숫자의 자릿수와 게임에서 설정한 자릿수 비교
