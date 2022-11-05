@@ -22,8 +22,8 @@ public class ResultService {
 
             validation.input(randomNumber, inputNumber);
 
-            strike = rules.Strike(randomNumber, inputNumber);
-            ball = rules.Ball(randomNumber, inputNumber);
+            strike = rules.countStrike(randomNumber, inputNumber);
+            ball = rules.countBall(randomNumber, inputNumber);
 
             if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
