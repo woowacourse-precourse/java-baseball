@@ -5,28 +5,16 @@ import baseball.util.GameValidator;
 
 public class BallCount {
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
-    public BallCount() {
-        reset();
+    public BallCount(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
     }
 
     public boolean check() {
         return strike != GameValidator.NUMBER_LENGTH;
-    }
-
-    public void reset() {
-        strike = 0;
-        ball = 0;
-    }
-
-    public void strike() {
-        strike += 1;
-    }
-
-    public void ball() {
-        ball += 1;
     }
 
     public void show() {

@@ -16,15 +16,15 @@ public class BaseBall implements Game {
 
     private final List<Integer> computerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
     private final List<Integer> playerNumbers = new ArrayList<>(GameValidator.NUMBER_LENGTH);
-    private final BallCount ballCount = new BallCount();
 
     @Override
     public void play() {
         GamePrinter.println("숫자 야구 게임을 시작합니다.");
+        BallCount ballCount;
         generateRandomComputerNumbers();
         do {
             playerInput();
-            compareNumbers();
+            ballCount = compareNumbers();
             ballCount.show();
         } while (ballCount.check());
     }
@@ -60,20 +60,14 @@ public class BaseBall implements Game {
         );
     }
 
-    private void compareNumbers() {
-        ballCount.reset();
-        IntStream.range(0, playerNumbers.size())
-            .forEach(this::updateBallCount);
-    }
-
-    private void updateBallCount(int index) {
-        if (isStrike(index)) {
-            ballCount.strike();
-        }
-
-        if (!isStrike(index) && isBall(index)) {
-            ballCount.ball();
-        }
+    private BallCount compareNumbers() {
+        int strike = (int) IntStream.range(0, playerNumbers.size())
+            .filter(this::isStrike)
+            .count();
+        int ball = (int) IntStream.range(0, playerNumbers.size())
+            .filter(index -> !isStrike(index) && isBall(index))
+            .count();
+        return new BallCount(strike, ball);
     }
 
     private boolean isStrike(int index) {
