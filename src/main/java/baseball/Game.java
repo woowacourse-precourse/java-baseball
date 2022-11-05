@@ -36,6 +36,7 @@ public class Game {
         String userInput = Console.readLine();
         this.userNum = makeList(userInput);
         validateUserNum();
+        gameStart();
     }
 
     //사용자 입력받은거 리스트로 바꾸기
@@ -61,5 +62,25 @@ public class Game {
             }
         }
     }
+
+    //컴퓨터 숫자와 사용자 숫자 비교
+    public void gameStart(){
+        this.strike = 0;
+        this.ball = 0;
+        for(int i = 0; i < userNum.size(); i++){
+            //스트라이크 카운트
+            if(comNum.indexOf(userNum.get(i))==i){
+                strike++;
+                continue;
+            }
+            //볼 카운트
+            if(comNum.contains(userNum.get(i))){
+                ball++;
+            }
+        }
+    }
+
+    
+
 
 }
