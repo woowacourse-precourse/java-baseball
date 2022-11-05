@@ -7,6 +7,10 @@ public class GameSituation {
         System.out.println(GAME_START);
     }
 
+    public static void printFinish() {
+        System.out.println(GAME_FINISH);
+    }
+
     public static void printRetry() {
         System.out.println(OPTION);
     }
@@ -17,6 +21,5 @@ public class GameSituation {
 
     public static void printCorrect() {
         System.out.print(CORRECT);
-        System.out.println(GAME_FINISH);
     }
 }
