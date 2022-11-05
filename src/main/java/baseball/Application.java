@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -77,6 +78,18 @@ public class Application {
             return userNumList;
         }
 
-
+        public int countContained(List<String> containedNumbers){
+            return (int) containedNumbers.stream()
+                    .filter(Objects::nonNull)
+                    .count();
+        }
+        public int countStrike(List<String> answer, List<String> containedNumbers){
+            return (int) containedNumbers.stream()
+                    .filter(num->num.equals(answer.get(containedNumbers.indexOf(num))))
+                    .count();
+        }
+        public int countBall(int countContained, int countStrike){
+            return countContained - countStrike;
+        }
     }
 }
