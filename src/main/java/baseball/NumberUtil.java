@@ -1,7 +1,30 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class NumberUtil {
+    public static final int NUMBER_SIZE = 3;
+    public static final int NUMBER_START = 1;
+    public static final int NUMBER_END = 9;
+
+    public static List<Integer> input() {
+        return parse(Console.readLine());
+    }
+    
+    public static List<Integer> parse(String str) {
+        if (lengthCheck(str, NUMBER_SIZE) && numericBoundCheck(str, NUMBER_START, NUMBER_END) && noDuplicateCheck(str)) {
+            return str.chars()
+                    .mapToObj(ch -> (char) ch)
+                    .map(Character::getNumericValue)
+                    .collect(Collectors.toList());
+        }
+        return null;
+    }
+
     public static boolean lengthCheck(String str, int length) {
         if (str == null) {
             return length == 0;
