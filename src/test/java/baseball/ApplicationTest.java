@@ -3,8 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.generateComputerNum;
-import static baseball.Application.splitUserNumToList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -47,6 +50,19 @@ class ApplicationTest extends NsTest {
         String num="123";
         assertThat(splitUserNumToList(num)).containsExactly(1,2,3);
     }
+
+    @Test
+    void 전체_결과_판정() {
+        List<Integer> computerNumList = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userNumList1= new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userNumList2= new ArrayList<>(Arrays.asList(4,5,6));
+        List<Integer> userNumList3= new ArrayList<>(Arrays.asList(1,3,2));
+
+        assertThat(judge(computerNumList, userNumList1)).isEqualTo("3스트라이크");
+        assertThat(judge(computerNumList, userNumList2)).isEqualTo("낫싱");
+        assertThat(judge(computerNumList, userNumList2)).isEqualTo("2볼 1스트라이크");
+    }
+
 
     @Override
     public void runMain() {
