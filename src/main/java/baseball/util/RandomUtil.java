@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomUtil {
 
-    public Set<Integer> getRandomNumbers(int start, int end, int length) {
+    public static Set<Integer> getRandomNumbers(int start, int end, int length) {
         Set<Integer> randomNumbers  = new LinkedHashSet<>();
 
         while(randomNumbers.size() != length) {
@@ -16,7 +16,7 @@ public class RandomUtil {
 		return randomNumbers;
     }
 
-    public int getUniqueNumber(int start, int end) {
+    public static int getUniqueNumber(int start, int end) {
         int randomNumber = Randoms.pickNumberInRange(start, end);
         return randomNumber;
     }
