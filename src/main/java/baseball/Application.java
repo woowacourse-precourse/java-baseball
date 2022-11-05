@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
 
     private static final int NUMBER_SIZE = 3;
+    private static final String GAME_RESTART = "1";
 
     private static List<Integer> generateRandomNumberBySize() {
         List<Integer> randomNumber = new ArrayList<>();
@@ -49,12 +50,13 @@ public class Application {
         return strike == Application.NUMBER_SIZE;
     }
 
-    private static void printNumberHint(int ball, int strike) {
+    private static boolean printNumberHint(int ball, int strike) {
         if (isNothing(ball, strike)) {
             System.out.println("낫싱");
         } else if (isThreeStrike(strike)) {
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         } else if (strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0) {
@@ -62,9 +64,10 @@ public class Application {
         } else {
             System.out.printf("%d볼 %d스트라이크", ball, strike);
         }
+        return false;
     }
 
-    private static void getNumberHint(List<Integer> randomNumber, List<Integer> playerNumber) {
+    private static boolean getNumberHint(List<Integer> randomNumber, List<Integer> playerNumber) {
         int ball = 0, strike = 0;
         for (Integer number: randomNumber) {
             if (isBall(number, playerNumber)) {
@@ -74,15 +77,25 @@ public class Application {
                 else    ball ++;
             }
         }
-        printNumberHint(ball, strike);
+        return printNumberHint(ball, strike);
+    }
+
+    private static void startGame() {
+        List<Integer> randomNumber = generateRandomNumberBySize();
+        System.out.println(randomNumber);
+        boolean isFinish = false;
+        while (!isFinish) {
+            List<Integer> playerNumber = inputPlayerNumber();
+            System.out.println(playerNumber);
+            isFinish = getNumberHint(randomNumber, playerNumber);
+        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String gameProgress = Console.readLine();
+        if (gameProgress.equals(Application.GAME_RESTART))    startGame();
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> randomNumber = generateRandomNumberBySize();
-        System.out.println(randomNumber);
-        List<Integer> playerNumber = inputPlayerNumber();
-        System.out.println(playerNumber);
-        getNumberHint(randomNumber, playerNumber);
+        startGame();
     }
 }
