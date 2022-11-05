@@ -22,7 +22,7 @@ public class GameView {
     }
 
     public static void printHint(int strikeCount, int ballCount) {
-        if(strikeCount == 0 && ballCount == 0){
+        if (strikeCount == 0 && ballCount == 0) {
             System.out.println(NOTHING_MESSAGE);
             return;
         }
@@ -42,8 +42,8 @@ public class GameView {
         return Console.readLine();
     }
 
-    public static void printResult(boolean correct){
-        if(correct){
+    public static void printResult(boolean correct) {
+        if (correct) {
             System.out.println(FINISH_MESSAGE);
         }
     }

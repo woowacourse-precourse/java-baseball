@@ -42,11 +42,11 @@ public class Game {
     }
 
     public void judgeUserInput(List<Integer> userInput) {
-        int strikeCount = this.judge.getStrikeCount(userInput);
-        int ballCount = this.judge.getBallCount(userInput);
+        int strikeCount = judge.getStrikeCount(userInput);
+        int ballCount = judge.getBallCount(userInput);
         GameView.printHint(strikeCount, ballCount);
         if (strikeCount == Constants.CORRECT_STRIKE_COUNT) {
-            GameView.printResult(this.judge.isCorrect(strikeCount));
+            GameView.printResult(judge.isCorrect(strikeCount));
             this.status = false;
         }
     }
@@ -57,7 +57,7 @@ public class Game {
         if (restartSign == Constants.AGREE_RESTART_SIGN) {
             return true;
         }
-        if (restartSign == Constants.DISAGREE_RESTART_SIGN){
+        if (restartSign == Constants.DISAGREE_RESTART_SIGN) {
             return false;
         }
         throw new IllegalArgumentException();

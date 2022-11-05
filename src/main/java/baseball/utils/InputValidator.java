@@ -19,10 +19,10 @@ public class InputValidator {
         return true;
     }
 
-    public static void hasValidType(String userInputStr){
-        for(int i=0;i<userInputStr.length();i++){
+    public static void hasValidType(String userInputStr) {
+        for (int i = 0; i < userInputStr.length(); i++) {
             char c = userInputStr.charAt(i);
-            if(!Character.isDigit(c)){
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
             }
         }
@@ -35,7 +35,8 @@ public class InputValidator {
     }
 
     private static void hasValidRange(List<Integer> userInput) {
-        if (!(Collections.max(userInput) <= Constants.VALID_MAX_RANGE && Collections.min(userInput) >= Constants.VALID_MIN_RANGE)) {
+        if (!(Collections.max(userInput) <= Constants.VALID_MAX_RANGE
+                && Collections.min(userInput) >= Constants.VALID_MIN_RANGE)) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
@@ -47,8 +48,8 @@ public class InputValidator {
         }
     }
 
-    public static void hasValidRestartSign(int restartSign){
-        if(restartSign != Constants.AGREE_RESTART_SIGN && restartSign != Constants.DISAGREE_RESTART_SIGN){
+    public static void hasValidRestartSign(int restartSign) {
+        if (restartSign != Constants.AGREE_RESTART_SIGN && restartSign != Constants.DISAGREE_RESTART_SIGN) {
             throw new IllegalArgumentException(RESTART_SIGN_ERROR_MESSAGE);
         }
     }

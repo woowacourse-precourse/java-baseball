@@ -38,7 +38,7 @@ public class Judge {
         return ballCount;
     }
 
-    public boolean isCorrect(int strikeCount){
+    public boolean isCorrect(int strikeCount) {
         return strikeCount == Constants.CORRECT_STRIKE_COUNT;
     }
 }
