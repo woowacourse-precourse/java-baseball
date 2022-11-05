@@ -32,6 +32,10 @@ public class View {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
+    static final void printNothing(){
+        System.out.println("낫싱");
+    }
+
     static final String getUserInput() {
         try {
             return bufferedReader.readLine();
