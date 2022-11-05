@@ -9,7 +9,8 @@ public class BaseballManager {
 
     {
         computerNumber = new BaseballNumber(
-                RandomNumGenerator.makeRandomNumWithNDigits(SystemConstant.GAME_DIGIT));
+                RandomNumGenerator.makeRandomNumWithGameDigits());
+        System.out.println(computerNumber.listNumber);
     }
 
     public void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
