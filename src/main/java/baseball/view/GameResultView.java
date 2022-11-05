@@ -25,7 +25,11 @@ public class GameResultView {
             System.out.println(sb);
             return;
         }
-        sb.append(ballCountDto.getStrike()).append(BallState.STRIKE.label()).append(ballCountDto.getBall()).append(BallState.BALL.label());
+        sb.append(ballCountDto.getBall())
+                .append(BallState.BALL.label())
+                .append(" ")
+                .append(ballCountDto.getStrike())
+                .append(BallState.STRIKE.label());
         System.out.println(sb);
     }
 
@@ -46,8 +50,8 @@ public class GameResultView {
     }
 
     private void validateInputNumber(int inputRestartNumber) {
-        if (inputRestartNumber != 1 || inputRestartNumber != 0) {
-            throw new IllegalStateException();
+        if (!(inputRestartNumber == 1 || inputRestartNumber == 2)) {
+            throw new IllegalArgumentException();
         }
     }
 }
