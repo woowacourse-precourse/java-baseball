@@ -16,6 +16,12 @@ public class NumberBaseball implements Game {
     public void run() {
         boolean flag = false;
         gameService.initGame();
+        doGame();
+        gameService.closeBuffer();
+    }
+
+    private void doGame() {
+        boolean flag;
         do {
             flag = gameService.startGame();
             gameService = new GameService(GAME_ANSWER_MAX_VALUE);

@@ -17,6 +17,10 @@ public class ViewController {
         this.display = new Display();
     }
 
+    public void closeBufferedWriter() {
+        display.closeBufferedWriter();
+    }
+
     public void printGameStartMessage() {
         display.printInitMessage();
     }

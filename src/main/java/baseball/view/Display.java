@@ -10,6 +10,14 @@ public class Display {
 
     private static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+    public void closeBufferedWriter() {
+        try {
+            bw.close();
+        } catch (IOException e) {
+
+        }
+    }
+
     public void printInitMessage() {
         try {
             bw.write("숫자 야구 게임을 시작합니다.\n");
@@ -59,6 +67,7 @@ public class Display {
     void printBallMessage(int n) {
         try {
             bw.write(n + "볼");
+            bw.flush();
         } catch (IOException e) {
 
         }
@@ -67,6 +76,7 @@ public class Display {
     void printStrikeMessage(int n) {
         try {
             bw.write(n + "스트라이크");
+            bw.flush();
         } catch (IOException e) {
 
         }
@@ -84,6 +94,7 @@ public class Display {
     void printNewLine() {
         try {
             bw.newLine();
+            bw.flush();
         } catch (IOException e) {
 
         }

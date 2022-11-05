@@ -42,6 +42,10 @@ public class GameService {
         return viewController.printReGameAndInput();
     }
 
+    public void closeBuffer() {
+        viewController.closeBufferedWriter();
+    }
+
     public boolean forTest_askReGame() {
         boolean b = askReGame();
         return b;
