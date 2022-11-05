@@ -47,4 +47,13 @@ public class NumberValidator {
         return (currentNumber < NUMBER_MIN_VALUE || currentNumber > NUMBER_MAX_VALUE);
     }
 
+    public static void checkRetryNumber(String retryNumber){
+        if (isNotRetryOrExit(retryNumber)){
+            throw new IllegalArgumentException("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
+        }
+    }
+
+    private static boolean isNotRetryOrExit(String retryNumber) {
+        return !(retryNumber.equals(RETRY) || retryNumber.equals(EXIT));
+    }
 }
