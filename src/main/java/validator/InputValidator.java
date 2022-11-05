@@ -31,4 +31,8 @@ public class InputValidator {
         }
         return numbers.size() == NUMBER_LENGTH;
     }
+
+    public static boolean isRightExitInput(String exitInput) {
+        return exitInput.equals("1") || exitInput.equals("2");
+    }
 }
