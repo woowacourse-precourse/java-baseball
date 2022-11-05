@@ -21,4 +21,11 @@ class InputValidationTest {
         boolean actual = inputValidation.isNotThreeLetters(input);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"a, true", "abc, true", "1, false", "123, false"})
+    void isNot1To9(String input, boolean expected) {
+        boolean actual = inputValidation.isNot1To9(input);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
