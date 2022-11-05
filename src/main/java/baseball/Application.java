@@ -1,9 +1,5 @@
 package baseball;
 
-
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 /**
  * 1. 게임 시작
  * 2. 컴퓨터의 랜덤 번호 100 ~ 999
@@ -20,8 +16,12 @@ import camp.nextstep.edu.missionutils.Randoms;
  * 사용자에게 진행 결과를 알려주는 기능
  * 결과
  */
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game = new Game();
+        game.run();
     }
+
+
 }
