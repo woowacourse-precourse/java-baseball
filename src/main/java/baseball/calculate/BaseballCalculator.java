@@ -11,6 +11,7 @@ public class BaseballCalculator {
     private final Ball ball = new Ball();
     private final Strike strike = new Strike();
 
+
     public int strikeJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
         strike.clearStrike();
         Iterator<Character> inputNumIterator = inputNum.iterator();
@@ -25,12 +26,11 @@ public class BaseballCalculator {
     }
 
     public int ballJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
+        strikeJudgement(correctNum, inputNum);
         ball.clearBall();
 
-        Iterator<Character> inputNumIterator = inputNum.iterator();
-
-        while(inputNumIterator.hasNext()) {
-            if(correctNum.contains(inputNumIterator.next())) {
+        for(char c : correctNum) {
+            if(inputNum.contains(c)) {
                 ball.addBall();
             }
         }

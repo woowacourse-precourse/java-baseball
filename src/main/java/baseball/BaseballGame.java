@@ -17,12 +17,6 @@ public class BaseballGame {
     private boolean status = false;
 
 
-    // 생성자는 생성에만 힘쓰기
-    BaseballGame() throws IOException {
-        runGame();
-    }
-
-
     protected int getStrike() {
         return strike;
     }
@@ -37,11 +31,23 @@ public class BaseballGame {
     }
 
 
-    protected void makeRandomNum() {
-        while (correctNum.size() < 3) {
-            char randomNumber = (char) (Randoms.pickNumberInRange(1, 9) + '0');
-            correctNum.add(randomNumber);
+    protected void makeRandomNum3() {
+        for(int i = 0; i < 3; i++){
+            putRandomNum(makeRandomNum());
         }
+    }
+
+    protected void putRandomNum(char c) {
+        correctNum.add(c);
+    }
+
+    protected char makeRandomNum() {
+        char randomNumber;
+        do {
+            randomNumber = (char) (Randoms.pickNumberInRange(1, 9) + '0');
+        } while (correctNum.contains(randomNumber));
+
+        return randomNumber;
     }
 
     protected void resetNum() {
@@ -61,7 +67,7 @@ public class BaseballGame {
     }
 
     protected void runGame() throws IOException {
-        makeRandomNum();
+        makeRandomNum3();
         status = true;
 
         printGameStart();
@@ -82,7 +88,8 @@ public class BaseballGame {
 
         } else {
             resetNum();
-            makeRandomNum();
+            makeRandomNum3();
+
         }
     }
 }

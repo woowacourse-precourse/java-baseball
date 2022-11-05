@@ -28,7 +28,8 @@ public class Outputting {
     }
 
     public static void printLine() throws IOException {
-        bw.append("\n").flush();
+        bw.newLine();
+        bw.flush();
     }
 
     public static void printGameEnd() throws IOException {
