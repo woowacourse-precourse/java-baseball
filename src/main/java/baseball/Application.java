@@ -42,6 +42,10 @@ class Game{
 }
 
 public class Application {
+    public static void GameController() {
+        Game game = new Game();
+        game.setUserInput();
+    }
 
     public static void main(String[] args) {
     }
