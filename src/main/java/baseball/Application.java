@@ -39,4 +39,8 @@ public class Application {
         return numbers.contains("0");
     }
 
+    private static boolean isSizeOverThree(List<String> numbers) {
+        return numbers.size() > 3;
+    }
+
 }
