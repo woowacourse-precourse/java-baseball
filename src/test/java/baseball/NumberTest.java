@@ -16,10 +16,10 @@ public class NumberTest {
         method.setAccessible(true);
 
         String input = "1342";
-        boolean expeted = false;
+        boolean expected = false;
 
         boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expeted);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -29,10 +29,10 @@ public class NumberTest {
         method.setAccessible(true);
 
         String input = "13ㄱ2";
-        boolean expeted = false;
+        boolean expected = false;
 
         boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expeted);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -42,9 +42,9 @@ public class NumberTest {
         method.setAccessible(true);
 
         String input = "133";
-        boolean expeted = false;
+        boolean expected = false;
 
         boolean result = (boolean) method.invoke(number, input);
-        assertThat(result).isEqualTo(expeted);
+        assertThat(result).isEqualTo(expected);
     }
 }
