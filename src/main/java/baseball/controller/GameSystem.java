@@ -16,6 +16,8 @@ public class GameSystem {
 
     public GameSystem() {
         int gameLoop;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             gameAnswer = new GameAnswer();
             myAnswer = new MyAnswer();
@@ -32,12 +34,11 @@ public class GameSystem {
             initCount();
             setUserAnswer();
             correctAnswer = checkStrikeBall();
+            userInterface.printResult(strikeCount,ballCount);
             if(correctAnswer) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
-            userInterface.printResult(strikeCount,ballCount);
-
         }
     }
 
