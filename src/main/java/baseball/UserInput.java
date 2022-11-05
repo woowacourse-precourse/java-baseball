@@ -6,21 +6,21 @@ import java.util.List;
 
 public class UserInput {
 
-    public String input() {
+    public String inputNumber() {
         System.out.print("숫자를 입력해 주세요 : ");
         String userInput = Console.readLine();
 
         return userInput;
     }
 
-    public List<Integer> sliceInput(String userInput) {
-        List<Integer> slice = new ArrayList<>();
+    public List<Integer> sliceInputNumber(String userInput) {
+        List<Integer> slicedNumber = new ArrayList<>();
 
         for (int seq = 0; seq < userInput.length(); seq++) {
             Integer slicedSequence = Character.getNumericValue(userInput.charAt(seq));
-            slice.add(slicedSequence);
+            slicedNumber.add(slicedSequence);
         }
 
-        return slice;
+        return slicedNumber;
     }
 }
