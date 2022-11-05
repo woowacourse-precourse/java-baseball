@@ -19,7 +19,7 @@ public class GameLogic {
                     userNonDuplicateIntegerList);
             ResultPrinter.printThisTurnResult(ballStrikeResult);
             isFinish = FinishChecker.isFinish(ballStrikeResult);
-        } while (isFinish);
+        } while (!isFinish);
 
 
     }

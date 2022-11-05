@@ -21,6 +21,6 @@ public class User {
         Print.printEndsWithEnter(GameProcedureConstantString.RETRY_GAME_OR_FINISH_GAME_MESSAGE.getStringMessage());
         String userInput = Input.inputString();
         Validation.gameFinishOrNotValidation(userInput);
-        return (userInput.charAt(0) - '0' == 1);
+        return (userInput.charAt(0) - '0' == 2);
     }
 }

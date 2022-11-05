@@ -15,7 +15,7 @@ public class GameController {
             List<Integer> computerRandomNonDuplicateIntegerList = Computer.createNonDuplicateIntegerList();
             GameLogic.doGameLogicUntilGameFinish(computerRandomNonDuplicateIntegerList);
             isFinish = User.isGameFinish();
-        } while (isFinish);
+        } while (!isFinish);
 
     }
 }
