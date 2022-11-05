@@ -1,6 +1,10 @@
 package baseball;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -20,5 +24,18 @@ class GameTest {
         game.doGame();
         System.out.println(game.getComputerNums().getNums());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1\n"})
+    void 게임_테스트(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Game game = new Game();
+        game.doGame();
+        System.out.println(game.getPlayerNums().getNums());
+
+    }
+
+
 
 }

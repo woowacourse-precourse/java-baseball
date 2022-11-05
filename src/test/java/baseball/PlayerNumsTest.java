@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 class PlayerNumsTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"123\n"})
+    @ValueSource(strings = {"122\n"})
     void 사용자_숫자_입력(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         int playerNumsLen = 3;
