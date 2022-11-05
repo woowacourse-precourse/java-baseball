@@ -7,9 +7,9 @@ public class Computer {
     private final static int STRIKE = 0;
     private final static int BALL = 1;
 
-    private final HintGenerator hintGenerator;
+    private HintGenerator hintGenerator;
 
-    Computer() {
+    public void setStrikeNumbers() {
         ArrayList<Integer> strikeNumbers = new StrikeNumbersGenerator().generateStrikeNumbers();
         this.hintGenerator = new HintGenerator(strikeNumbers);
     }
