@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -73,10 +74,62 @@ class ApplicationTest extends NsTest {
         playGame();
         assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
     }
-//    @Test
-//    public void 게임_시작_안내_문구_출력() {
-//        assertThat().isEqualTo("숫자 야구 게임을 시작합니다.");
-//    }
+
+    @Test
+    void 게임플레이어_숫자_입력_안내_문구_출력() {
+        final byte[] buf = String.join("\n", "246", "135", "2").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        playGame().getGamePlayerInput();
+        assertThat(output()).contains("숫자를 입력해주세요 :");
+    }
+
+    @Test
+    void 게임_플레이어_입력_숫자_길이_테스트() {
+        String gamePlayerInput = "1234";
+
+        assertThatThrownBy(() -> playGame().checkGamePlayerNumberInput(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자_중복_테스트_1() {
+        String gamePlayerInput = "112";
+
+        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자_중복_테스트_2() {
+        String gamePlayerInput = "122";
+
+        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자_중복_테스트_3() {
+        String gamePlayerInput = "222";
+
+        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 문자_포함_테스트() {
+        String gamePlayerInput = "a12";
+
+        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_플레이어_입력_숫자_0포함_테스트() {
+        String gamePlayerInput = "012";
+
+        assertThatThrownBy(() -> playGame().hasSameNumber(gamePlayerInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 //    @Test
 //    public void 게임플레이어의_숫자_입력() {
@@ -103,8 +156,10 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    public void playGame() {
+    public Game playGame() {
         Game game = new Game();
         game.play();
+
+        return game;
     }
 }
