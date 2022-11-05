@@ -133,7 +133,27 @@ public class Application {
         }
         else{
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            restartOrEnd();
         }
+    }
+
+    public static void restartOrEnd(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String option = Console.readLine();
+        if(option.equals("1")){
+            System.out.println(1);
+            startGame();
+        }
+        else if(option.equals("2")){
+            System.out.println(2);
+            endGame();
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+        }
+    }
+    public static boolean endGame(){
+        return true;
     }
 
 }
