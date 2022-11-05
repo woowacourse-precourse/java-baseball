@@ -63,6 +63,10 @@ public class Application {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
 
+        if (digits.contains(0)) {
+            throw new IllegalArgumentException("0 이외의 값을 입력해주세요.");
+        }
+
         HashSet<Integer> nonDuplicateDigits = new HashSet<>(digits);
         if (nonDuplicateDigits.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("동일한 숫자를 입력했습니다.");
