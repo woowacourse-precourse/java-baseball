@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class InputException {
     private static final Pattern IsOnlyNumber = Pattern.compile("^[1-9]*?");
 
-    public void ReStartValid(int input) {
+    public void restart(int input) {
         if (input != 1 && input != 2) {
             throw new IllegalArgumentException("잘못된 값 입력");
         }
@@ -18,7 +18,7 @@ public class InputException {
         }
     }
 
-    public void InputValid(List<Integer> randomList, List<Integer> inputList) {
+    public void input(List<Integer> randomList, List<Integer> inputList) {
 
         if (inputList.size() != randomList.size()) {
             throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
