@@ -10,6 +10,12 @@ import java.util.stream.IntStream;
 
 public class Computer {
     private List<Integer> answer;
+    private int[] map;
+
+    public void initialize(){
+        createAnswer();
+        createMap();
+    }
 
     private void createAnswer(){
         answer = new ArrayList<>();
@@ -18,6 +24,16 @@ public class Computer {
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
+        }
+    }
+
+    private void createMap(){
+        map = IntStream.generate(() -> 0).limit(10).toArray();
+
+        int length = answer.size();
+        for(int i = 0; i < length; i++){
+            int pos = length - i;
+            map[answer.get(i)] = pos;
         }
     }
 }

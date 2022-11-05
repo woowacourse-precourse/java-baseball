@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.entity.Computer;
+
 public class GameController {
     private static GameController instance;
 
@@ -18,7 +20,19 @@ public class GameController {
     }
 
     private class BaseBallGame implements Game{
+        Computer computer;
+
+        public BaseBallGame() {
+            computer = new Computer();
+        }
+
+        private void initialize(){
+            computer.initialize();
+        }
+
         @Override
-        public void play() {}
+        public void play() {
+            initialize();
+        }
     }
 }
