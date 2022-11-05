@@ -1,6 +1,7 @@
 package baseball;
 
-import baseball.inputter.BaseballGameNumberInputter;
+import baseball.console.GameConsole;
+import baseball.converter.ThreeNumberConverter;
 import baseball.opponent.ComputerOpponent;
 import baseball.printer.MessagePrinter;
 import baseball.printer.NumberInputMessagePrinter;
@@ -12,7 +13,8 @@ public class BaseballGame {
 
     private ComputerOpponent opponent;
     private MessagePrinter inputMessagePrinter;
-    private BaseballGameNumberInputter numberInputter;
+    private ThreeNumberConverter threeNumberConverter;
+    private GameConsole console;
 
     public BaseballGame() {
         MessagePrinter startMessagePrinter = new StartMessagePrinter();
@@ -24,7 +26,7 @@ public class BaseballGame {
     public void play() throws IllegalArgumentException {
         try {
             inputMessagePrinter.printMessage();
-            List<Integer> inputNumber = numberInputter.inputThreeNumbers();
+            List<Integer> threeNumbers = threeNumberConverter.getThreeNumbers(console.input());
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
