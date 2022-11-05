@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -34,6 +35,7 @@ public class Game {
         System.out.println("숫자를 입력해주세요");
         String userInput = Console.readLine();
         this.userNum = makeList(userInput);
+        validateUserNum();
     }
 
     //사용자 입력받은거 리스트로 바꾸기
@@ -45,4 +47,19 @@ public class Game {
         }
         return userNumbers;
     }
+
+    public void validateUserNum(){
+        if(userNum.size() != 3){
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+        }
+        if(userNum.contains(0)){
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+        }
+        for(int i =0; i< userNum.size(); i++){
+            if(Collections.frequency(userNum, userNum.get(i)) != 1){
+                throw  new IllegalArgumentException("올바른 숫자가 아닙니다. 같은 숫자가 존재합니다.");
+            }
+        }
+    }
+
 }
