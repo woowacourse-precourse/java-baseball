@@ -8,8 +8,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -154,6 +153,45 @@ class ApplicationTest extends NsTest {
         assertThat(result2).as("isEndFlagged 테스트").isEqualTo(false);
         assertThat(result3).as("isEndFlagged 테스트").isEqualTo(false);
         assertThat(result4).as("isEndFlagged 테스트").isEqualTo(true);
+    }
+
+    @Test
+    void validateUserInputOneOrTwo_정상처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "1";
+        final String case2 = "2";
+
+        //when
+        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
+
+        //then
+        assertThat(thrown1).as("validateUserInputOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(thrown2).as("validateUserInputOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateUserInputOneOrTwo_예외처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "3";
+        final String case2 = "294";
+        final String case3 = "Exception String";
+        final String case4 = "";
+
+
+        //when
+        Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
+        Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
+        Throwable thrown3 = catchThrowable(()->{T.validateUserInputOneOrTwo(case3);});
+        Throwable thrown4 = catchThrowable(()->{T.validateUserInputOneOrTwo(case4);});
+
+        //then
+        assertThat(thrown1).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown2).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown3).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown4).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
