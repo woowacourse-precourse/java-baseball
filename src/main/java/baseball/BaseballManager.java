@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class BaseballManager {
     BaseballNumber userNumber;
     BaseballNumber computerNumber;
@@ -10,8 +12,11 @@ public class BaseballManager {
                 RandomNumGenerator.makeRandomNumWithNDigits(SystemConstant.GAME_DIGIT));
     }
 
-    void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
+    public void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
         userNumber = baseballNum1;
     }
 
+    public void computeUserScore() {
+        scoreManager.makeUserScore(userNumber, computerNumber);
+    }
 }
