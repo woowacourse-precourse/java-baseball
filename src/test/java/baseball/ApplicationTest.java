@@ -39,6 +39,7 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    // Computer class 구현을 위한 테스트 코드
     @Test
     public void 임의의_수가_3개인지_테스트() {
         Computer computer = new Computer();
@@ -63,5 +64,16 @@ class ApplicationTest extends NsTest {
         for(int numberIndex = 0; numberIndex < RAND_NUM_MAX; numberIndex++) {
             assertThat(range).contains(number.get(numberIndex));
         }
+    }
+
+    @Test
+    public void 플레이어가_입력한_숫자_스트라이크_테스트() {
+        Computer computer = new Computer();
+        List<Integer> answer = Arrays.asList(1,2,3);
+        List<Integer> userInput = Arrays.asList(1,2,3);
+
+        int result = computer.judgeNumber(answer, userInput);
+
+        assertThat(result).isEqualTo(STRIKE);
     }
 }
