@@ -18,9 +18,11 @@ class BaseballTest {
     @Nested
     @DisplayName("Ball 클래스")
     class Ball_test {
+
         @Nested
         @DisplayName("validateForm 메소드는")
         class validateForm_test {
+
             @Nested
             @DisplayName("세 자리 숫자가 입력되지 않았을 때")
             class Context_with_non_three_digit_number {
@@ -36,6 +38,7 @@ class BaseballTest {
         @Nested
         @DisplayName("validateDuplication 메소드는")
         class validateDuplication_test {
+
             @Nested
             @DisplayName("중복을 갖는 숫자가 입력되었을 때")
             class Context_with_duplicated_number {
@@ -55,6 +58,41 @@ class BaseballTest {
             Ball ball = new Ball(nonDuplicateThreeDigitNumber);
             assertThat(ball.toString()).isEqualTo(nonDuplicateThreeDigitNumber);
         }
+
+        @Nested
+        @DisplayName("compareByIndex 메소드는")
+        class CompareByIndex_test {
+            @Nested
+            @DisplayName("숫자가 동일한 Ball 인스턴스가 입력되었을 때")
+            class Context_with_identical_Ball_instance {
+                @Test
+                @DisplayName("int 3을 반환한다.")
+                void it_returns_integer_vale_of_3() {
+                    String number = "123";
+
+                    Ball ball = new Ball(number);
+                    Ball identicalNumberBall = new Ball(number);
+
+                    assertThat(ball.compareByIndex(identicalNumberBall)).isEqualTo(3);
+                }
+            }
+
+            @Nested
+            @DisplayName("동일한 Ball 인스턴스가 입력되었을 때")
+            class Context_with_different_Ball_instance {
+                @Test
+                @DisplayName("같은 위치의 숫자 개수를 반환한다.")
+                void it_returns_count_of_same_value_by_index() {
+                    String number = "123";
+                    String differentNumber = "143";
+
+                    Ball ball = new Ball(number);
+                    Ball differentNumberBall = new Ball(differentNumber);
+
+                    assertThat(ball.compareByIndex(differentNumberBall)).isEqualTo(2);
+                }
+            }
+        }
     }
 
     @Nested
@@ -64,6 +102,7 @@ class BaseballTest {
         @Nested
         @DisplayName("getComputerRandomNumber 메소드는")
         class getComputerRandomNumber_test {
+
             @Nested
             @DisplayName("setComputerRandomNumber를 호출하지 않았을 때")
             class Context_without_set_method_call {
@@ -104,6 +143,7 @@ class BaseballTest {
             }
         }
     }
+
     @Nested
     @DisplayName("Messenger 클래스")
     class Messenger_test {
