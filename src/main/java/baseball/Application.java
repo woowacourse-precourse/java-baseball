@@ -59,13 +59,13 @@ public class Application {
 
     public boolean playBaseball() {
         List<Integer> answer = new ArrayList<>();
-        List<Integer> userInput = new ArrayList<>();
         boolean correctAnswer;
         boolean quitGame;
         for (int i=0; i<3; i++) {
             answer.add(pickNumberInRange(0,9));
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> userInput = getUserInput();
         while(true) {
             int ball = checkBall(answer,userInput);
             int strike = checkStrike(answer,userInput,ball);
