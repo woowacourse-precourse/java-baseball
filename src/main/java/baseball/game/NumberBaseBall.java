@@ -14,6 +14,7 @@ public class NumberBaseBall implements PlayAble {
     private final int INPUT_NUMBER_LENGTH = 3;
     private final int STRIKE_INDEX = 1;
     private final int STRIKE_OUT = 3;
+    private final int GAME_END_NUMBER = 2;
 
     private boolean stopGame = false;
     private boolean endGame = false;
@@ -63,6 +64,10 @@ public class NumberBaseBall implements PlayAble {
 
     @Override
     public void end() {
-
+        view.printEnd();
+        view.printIsContinue();
+        if (input.acceptInt() == GAME_END_NUMBER) {
+            this.endGame = true;
+        }
     }
 }
