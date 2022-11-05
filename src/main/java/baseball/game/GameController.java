@@ -70,8 +70,8 @@ public class GameController {
             View.printGameEnd();
         }
 
-        private void end(){
-            int choose;
+        private int end(){
+            int choose = 0;
 
             View.printQuestionNewGame();
             String command = player.getCommand();
@@ -79,15 +79,18 @@ public class GameController {
             if(newGameValidator.validate(command)){
                 choose = Integer.parseInt(command);
             }
+
+            return choose;
         }
 
         @Override
         public void play() {
             View.printIntro();
 
-            initialize();
-            start();
-            end();
+            do{
+                initialize();
+                start();
+            }while(end() == QUESTION_START_VALUE);
         }
     }
 }
