@@ -36,6 +36,5 @@ class GameTest {
         Integer ball = Game.ball(computer, player, 0);
         Assertions.assertThat(ball).isEqualTo(3);
 
-
     }
- }
+}

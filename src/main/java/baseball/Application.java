@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 /*** 구현해야 할 기능
- * GameTest, 단위 및 통합 테스트 코드 작성
+ *
  * 잘못된 입력값에 대한 IllegalArgumentException 예외 처리
  */
 
@@ -35,7 +35,10 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restart = Console.readLine();
-
+            if (!(restart.equals("2") && restart.equals("1"))) {
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+            }
         }
     }
 }
+
