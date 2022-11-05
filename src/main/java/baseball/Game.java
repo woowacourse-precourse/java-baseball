@@ -52,4 +52,38 @@ public class Game {
     private boolean isBall(Balls playerBalls, Balls computerBalls, int i) {
         return computerBalls.contains(playerBalls.get(i))&&computerBalls.indexOf(playerBalls.get(i))!=i;
     }
+
+    public void start() {
+        Balls computerBalls = makeComputerBalls();
+        while(!isAnswer()){
+            initializeBallCount();
+            Balls playerBalls = player.makePlayerBalls();
+            checkBallCounts(playerBalls, computerBalls);
+            System.out.println(printMessage());
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        initializeBallCount();
+    }
+
+    private void initializeBallCount() {
+        strike=0;
+        ball=0;
+    }
+
+    private boolean isAnswer() {
+        return strike==3;
+    }
+
+    public String printMessage() {
+        if (strike == 0 && ball != 0) {
+            return ball + ballCall;
+        }
+        if (strike != 0 && ball == 0) {
+            return strike + strikeCall;
+        }
+        if (strike != 0) {
+            return ball + ballCall + " " + strike + strikeCall;
+        }
+        return Nothing;
+    }
 }
