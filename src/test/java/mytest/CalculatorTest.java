@@ -8,44 +8,44 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-    @DisplayName("볼과 스트라이크의 개수가 주어진 결과와 일치하는지 확인")
+    @DisplayName("볼과 스트라이크 개수가 예상한 결과와 일치하는지 확인")
     @Test
     void case1() {
         List<Integer> dealerNumbers = List.of(1, 3, 7);
         List<Integer> playerNumbers = List.of(1, 3, 7);
-        List<Integer> result = List.of(0, 3);
-        Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
+        List<Integer> actualResult = Calculator.getScoresBy(dealerNumbers, playerNumbers);
+        List<Integer> expectedResult = List.of(0, 3);
 
-        assertThat(calculator.getScores()).isEqualTo(result);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     void case2() {
         List<Integer> dealerNumbers = List.of(4, 2, 5);
         List<Integer> playerNumbers = List.of(4, 5, 6);
-        List<Integer> result = List.of(1, 1);
-        Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
+        List<Integer> actualResult = Calculator.getScoresBy(dealerNumbers, playerNumbers);
+        List<Integer> expectedResult = List.of(1, 1);
 
-        assertThat(calculator.getScores()).isEqualTo(result);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     void case3() {
         List<Integer> dealerNumbers = List.of(3, 4, 5);
         List<Integer> playerNumbers = List.of(7, 8, 9);
-        List<Integer> result = List.of(0, 0);
-        Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
+        List<Integer> actualResult = Calculator.getScoresBy(dealerNumbers, playerNumbers);
+        List<Integer> expectedResult = List.of(0, 0);
 
-        assertThat(calculator.getScores()).isEqualTo(result);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     void case4() {
         List<Integer> dealerNumbers = List.of(5, 9, 8);
         List<Integer> playerNumbers = List.of(8, 5, 1);
-        List<Integer> result = List.of(2, 0);
-        Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
+        List<Integer> actualResult = Calculator.getScoresBy(dealerNumbers, playerNumbers);
+        List<Integer> expectedResult = List.of(2, 0);
 
-        assertThat(calculator.getScores()).isEqualTo(result);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 }
