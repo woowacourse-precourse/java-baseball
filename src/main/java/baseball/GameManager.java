@@ -99,7 +99,16 @@ public class GameManager {
     }
 
     private String getResultOfUserGuess(ArrayList<Integer> userGuess) {
+        final int strike = getStrike(userGuess);
+        final int ball = getBall(userGuess);
 
+        if(isNothing(strike, ball)) {
+            return "낫싱";
+        } else if(strike == 3) {
+            isCorrect = true;
+        }
+
+        return getResultString(strike, ball);
     }
 
     private int getStrike(ArrayList<Integer> userGuess) {
