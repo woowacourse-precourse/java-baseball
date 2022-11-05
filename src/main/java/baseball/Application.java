@@ -19,12 +19,17 @@ public class Application {
         return generateRandomNoDuplication3Numbers();
     }
 
-    private static List<Integer> seperate3Numbers(int input) {
+    private static List<Integer> seperate3Numbers(int input)
+            throws IllegalArgumentException {
         List<Integer> separated = new ArrayList<>();
         for (int i = 2; i >= 0; i--) {
             int digit = input / (int) Math.pow(10, i);
             input = input % (int) Math.pow(10, i);
             separated.add(digit);
+        }
+        HashSet<Integer> isRepeated = new HashSet<>(separated);
+        if (isRepeated.size() < 3) {
+            throw new IllegalArgumentException();
         }
         return separated;
     }
@@ -100,12 +105,14 @@ public class Application {
             throws IllegalArgumentException {
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
+        if ((input < 100) || (input > 999)) {
+            throw new IllegalArgumentException();
+        }
         return input;
     }
 
     private static Integer getUserIntEndGame()
             throws IllegalArgumentException {
-
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         if ((input != 1) && (input != 2)) {
@@ -145,16 +152,20 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        boolean newGame = true;
-        while (newGame) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> answer = startGame();
-            System.out.println(answer);
-            boolean gameOn = true;
-            while (gameOn) {
-                gameOn = playGame(answer);
+        try {
+            boolean newGame = true;
+            while (newGame) {
+                System.out.println("숫자 야구 게임을 시작합니다.");
+                List<Integer> answer = startGame();
+                System.out.println(answer);
+                boolean gameOn = true;
+                while (gameOn) {
+                    gameOn = playGame(answer);
+                }
+                newGame = restartOrEndGame();
             }
-            newGame = restartOrEndGame();
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
         }
     }
 }
