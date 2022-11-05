@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Checker {
-	private static final int INIT_INDEX = 0;
 	private static final int END_OR_RESTART_INPUT_LENGTH = 1;
 	private static final int END_INPUT = 2;
 	private static final int RESTART_INPUT = 1;
@@ -75,33 +74,16 @@ public class Checker {
 	}
 
 	private static boolean isUserInputSameNumber(List<Integer> userNumberList) {
-		for (int targetIndex = INIT_INDEX; targetIndex < userNumberList.size(); targetIndex++) {
+		boolean isSameNumberExist = userNumberList.stream()
+			.distinct()
+			.count() != userNumberList.size();
 
-			if (compareNumbers(userNumberList, targetIndex)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private static boolean compareNumbers(List<Integer> userNumberList, int targetIndex) {
-		for (int compareIndex = targetIndex + 1; compareIndex < userNumberList.size(); compareIndex++) {
-
-			int targetNumber = userNumberList.get(targetIndex);
-			int compareNumber = userNumberList.get(compareIndex);
-
-			if (targetNumber == compareNumber) {
-				return true;
-			}
-
-		}
-		return false;
+		return isSameNumberExist;
 	}
 
 	public static void checkReStart(Computer computer, boolean isReStart) {
 
 		if (isReStart) {
-			View.showStartGameGuideMessage();
 			computer.makeRandomNumber();
 		}
 

@@ -22,6 +22,7 @@ public class Computer {
 	}
 
 	private void selectNumber() {
+
 		while (randomNumber.size() < INIT_LIST_CAPACITY) {
 			int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
@@ -32,6 +33,7 @@ public class Computer {
 	}
 
 	private boolean isExistNumber(int number) {
+
 		if (randomNumber.contains(number)) {
 			return true;
 		}

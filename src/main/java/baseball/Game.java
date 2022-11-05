@@ -12,16 +12,14 @@ public class Game {
 	private int ball;
 
 	public void startGame(Computer computer, Player player) {
-		View.showStartGameGuideMessage();
-
-		boolean isEnd = false;
+		boolean isEnd;
 
 		do {
+			View.showStartGameGuideMessage();
 			game(computer, player);
 
 			View.showEndOrRestartGuideMessage();
-
-			String userInput = player.inputNumber();
+			String userInput = Input.inputNumber();
 			Checker.userInputChecker(userInput, END_OR_RESTART_INPUT_LENGTH, player.getUserNumberList());
 
 			isEnd = Checker.checkEndGame(Integer.parseInt(userInput));
@@ -36,7 +34,7 @@ public class Game {
 
 			View.showUserInputGuideMessage();
 
-			String userInput = player.inputNumber();
+			String userInput = Input.inputNumber();
 			Checker.userInputChecker(userInput, NUMBERS_INPUT_LENGTH, player.getUserNumberList());
 			player.addUserNumberInList(userInput);
 

@@ -20,11 +20,7 @@ public class Player {
 		separateNumbersByUnit(Integer.parseInt(userInput));
 	}
 
-	protected static String inputNumber() {
-		return Console.readLine();
-	}
-
-	private void separateNumbersByUnit(int userNumber) {
+	public void separateNumbersByUnit(int userNumber) {
 		userNumberList.add(userNumber / UNIT_HUNDRED);
 		userNumberList.add((userNumber % UNIT_HUNDRED) / UNIT_TEN);
 		userNumberList.add((userNumber % UNIT_HUNDRED) % UNIT_TEN);
@@ -34,7 +30,7 @@ public class Player {
 		userNumberList.clear();
 	}
 
-	protected List<Integer> getUserNumberList() {
+	public List<Integer> getUserNumberList() {
 		return userNumberList;
 	}
 }
