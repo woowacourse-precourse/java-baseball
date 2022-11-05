@@ -23,8 +23,8 @@ public class Application {
 
     public static Set<Integer> InputToSet(String userInput) {
         String[] splitUserInput = userInput.split("");
-        Set<Integer> set =new LinkedHashSet<>();
-        for (int i = 0; i <userInput.length() ; i++) {
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int i = 0; i < userInput.length(); i++) {
             set.add(Integer.parseInt(splitUserInput[i]));
         }
         return set;
@@ -53,9 +53,9 @@ public class Application {
     }
 
     public static int[] Judgment(Integer[] input, List<Integer> answer) {
-        int[] result =new int[]{0, 0}; //result[0] = 볼, result[1] = 스트라이크
-        for (int i = 0; i <3 ; i++) {
-            if(isStrike(input[i],answer.get(i))) {
+        int[] result = new int[]{0, 0}; //result[0] = 볼, result[1] = 스트라이크
+        for (int i = 0; i < 3; i++) {
+            if (isStrike(input[i], answer.get(i))) {
                 result[1]++;
                 continue;
             }
@@ -69,13 +69,13 @@ public class Application {
     }
 
 
-
-    static class Nums{
+    static class Nums {
         public Integer[] inputNums;
-        Nums(String inputData) throws Exception  {
-            if(!isValidLength(inputData.length())) throw new IllegalArgumentException() ;
+
+        Nums(String inputData) throws Exception {
+            if (!isValidLength(inputData.length())) throw new IllegalArgumentException("잘못된 입력 크기");
             Set<Integer> sets = InputToSet(inputData);
-            if(!isValidSetSize(sets)) throw new IllegalArgumentException();
+            if (!isValidSetSize(sets)) throw new IllegalArgumentException("중복된 숫자 존재");
             this.inputNums = sets.toArray(new Integer[3]);
         }
     }
@@ -85,11 +85,13 @@ public class Application {
         List<Integer> answerList = GenerateRandomNumber(3);
         int[] judg = new int[]{0, 0};
         while (judg[1] != 3) {
+            System.out.print("숫자를 입력해주세요 : ");
             try {
                 Nums nums = new Nums(Console.readLine());
                 judg = Judgment(nums.inputNums, answerList);
+                System.out.println(printJudge(judg));
             } catch (Exception e) {
-                System.exit(-1);
+                throw new IllegalArgumentException(e.getMessage());
             }
         }
     }
@@ -97,12 +99,11 @@ public class Application {
     public static String printJudge(int[] judg) {
         String result = "";
         if (judg[0] != 0) {
-            result += judg[0]+"볼";
+            result += judg[0] + "볼";
         }
 
         if (judg[1] != 0) {
-            if(!result.equals(""))
-            {
+            if (!result.equals("")) {
                 result += " ";
             }
 
@@ -117,9 +118,19 @@ public class Application {
 
     public static void main(String[] args) {
         int endGame = 0;
-        while (endGame!=2)
-        {
-            baseballGame();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (endGame != 2) {
+
+            try {
+                baseballGame();
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                throw e;
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            endGame = Integer.parseInt(Console.readLine());
         }
     }
 
