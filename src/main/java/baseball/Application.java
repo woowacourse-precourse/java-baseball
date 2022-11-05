@@ -78,6 +78,7 @@ public class Application {
         }
 
         System.out.printf("%d볼 %d스트라이크",strikeCounter,ballCounter);
+
         return strikeCounter;
     }
 
@@ -85,4 +86,5 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하게요.");
         return Console.readLine();
     }
+
 }
