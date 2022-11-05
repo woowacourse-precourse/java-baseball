@@ -24,6 +24,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("게임시작 후 종료")
+    void play_exit() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
