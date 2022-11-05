@@ -1,22 +1,27 @@
 package baseball.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
-	static final int min = 1;
-	static final int max = 9;
-	private static int strike = 1;
-	private static int ball = 2;
-	private static int root = 0;
+	private enum Game{
+		min(1),
+		max(9),
+		strike(1),
+		ball(2),
+		root(0);
+		public final int def;
+		Game(int judge) {
+			this.def = judge;
+		}
+	}
 	public static String createRandomNumber() {
 		String random = "";
 
 		for (int i = 0; i < 3; i++) {
-			int randomNumber = Randoms.pickNumberInRange(min, max);
+			int randomNumber = Randoms.pickNumberInRange(Game.min.def, Game.max.def);
 			randomNumber = relocationNumber(random, randomNumber);
 			random += randomNumber;
 		}
@@ -25,7 +30,7 @@ public class GameService {
 	}
 	public static int relocationNumber(String number, int addedNumber) {
 		while (checkSameNumber(number, addedNumber)) {
-			addedNumber = Randoms.pickNumberInRange(min, max);
+			addedNumber = Randoms.pickNumberInRange(Game.min.def, Game.max.def);
 		}
 		return addedNumber;
 	}
@@ -33,7 +38,7 @@ public class GameService {
 		return number.contains(String.valueOf(addedNumber));
 	}
 	public static List<Integer> compareNumber(String computer, String user) {
-		List<Integer> result = Arrays.asList(0, 0, 0);
+		List<Integer> result = Arrays.asList(Game.root.def, Game.root.def, Game.root.def);
 		/*
 		for (int i = 0; i < computer.length(); i++) {
 			if (checkSameNumber(computer, Character.getNumericValue(user.charAt(i)))) {
@@ -46,24 +51,24 @@ public class GameService {
 		}
 		 */
 		for (int i = 0; i < computer.length(); i++) {
-			result.set(root, i);
+			result.set(Game.root.def, i);
 			isStrikeOrBall(computer, Character.toString(user.charAt(i)), result);
 		}
 		//result.add(strike);
 		//result.add(ball);
 
-		return result.subList(strike,result.size());
+		return result.subList(Game.strike.def,result.size());
 	}
 	public static boolean checkSameLocation(String computer, String user) {
 		return computer.equals(user);
 	}
 	public static List<Integer> isStrikeOrBall(String computer, String user, List<Integer> result) {
 		if (checkSameNumber(computer, Integer.parseInt(user))) {
-			if (checkSameLocation(Character.toString(computer.charAt(result.get(root))), user)) {
-				result.set(strike, result.get(strike) + 1);
+			if (checkSameLocation(Character.toString(computer.charAt(result.get(Game.root.def))), user)) {
+				result.set(Game.strike.def, result.get(Game.strike.def) + 1);
 			}
-			if (!checkSameLocation(Character.toString(computer.charAt(result.get(root))), user)) {
-				result.set(ball, result.get(ball) + 1);
+			if (!checkSameLocation(Character.toString(computer.charAt(result.get(Game.root.def))), user)) {
+				result.set(Game.ball.def, result.get(Game.ball.def) + 1);
 			}
 		}
 		return result;

@@ -40,7 +40,6 @@ public class GameController {
 		ExceptionHandler.checkException(userNumber);
 	}
 	public static List<Integer> compareNumber(String computer, String user) {
-		return GameService.compareNumber(GameService.convertStringToList(computer),
-				GameService.convertStringToList(user));
+		return GameService.compareNumber(computer, user);
 	}
 }
