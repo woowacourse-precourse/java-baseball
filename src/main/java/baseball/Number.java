@@ -1,9 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,24 +9,21 @@ public class Number {
     private static final int DIGIT_NUMBER = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
 
     public List randomNumber() {
         Set<String> digitNumberSet = new HashSet<>();
 
         while(digitNumberSet != null && digitNumberSet.size() < DIGIT_NUMBER) {
-            digitNumberSet.add(Integer.toString(pickRandomDigitNumber()));
+            digitNumberSet.add(Integer.toString(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)));
         }
-
         List<String> digits = new ArrayList<>(digitNumberSet);
         return digits;
     }
 
-    private int pickRandomDigitNumber() {
-        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-    }
 
-    public String userInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+    private String userInput() {
+        System.out.print(INPUT_SENTENCE);
         String user = Console.readLine();
         return user;
     }
