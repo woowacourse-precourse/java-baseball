@@ -59,7 +59,7 @@ public class BaseballGame {
         if ((strikeCount == 0) && (ballCount != 0)) {
             result += (ballCount + GameMessage.ball);
         }
-        if ((strikeCount != 0) && (strikeCount ==0)) {
+        if ((strikeCount != 0) && (ballCount == 0)) {
             result += (strikeCount + GameMessage.strike);
         }
         if ((strikeCount != 0) && (ballCount != 0)) {
