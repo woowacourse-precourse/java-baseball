@@ -23,9 +23,19 @@ class ReceiveConsoleTest {
     }
 
     @Test
-    void receiveNum_한글이있는경우테스트() {
+    void receiveNum_한글이있는경우() {
         //given
         System.setIn(new ByteArrayInputStream(("한1글"+'\n').getBytes()));
+        //when
+        //then
+        assertThatThrownBy(() -> ReceiveConsole.receiveNum())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void receiveNum_영어가있는경우() {
+        //given
+        System.setIn(new ByteArrayInputStream(("h1i"+'\n').getBytes()));
         //when
         //then
         assertThatThrownBy(() -> ReceiveConsole.receiveNum())
