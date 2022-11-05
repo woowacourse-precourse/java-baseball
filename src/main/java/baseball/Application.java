@@ -118,7 +118,7 @@ public class Application {
         String pattern = "^[1-2]$";
         boolean is_match = Pattern.matches(pattern, user_input);
 
-        if (!(is_match)) {
+        if (!is_match) {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
     }
