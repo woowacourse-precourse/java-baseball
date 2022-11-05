@@ -7,6 +7,8 @@ public interface Output {
 
     void printResult(String resultMessage);
 
+    void printSuccessMessage();
+
 
 
 }
