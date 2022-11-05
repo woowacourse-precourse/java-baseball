@@ -40,8 +40,8 @@ public class GameResult {
 
     public void calculate(Computer computer, Player player) {
         List<Integer> strikeIndexes = countStrike(computer.getNumbers(), player.getNumbers());
-        setBall(strikeIndexes.size());
-        setStrike(countBallExceptStrike(computer.getNumbers(), player.getNumbers(), strikeIndexes));
+        setStrike(strikeIndexes.size());
+        setBall(countBallExceptStrike(computer.getNumbers(), player.getNumbers(), strikeIndexes));
     }
 
     List<Integer> countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
