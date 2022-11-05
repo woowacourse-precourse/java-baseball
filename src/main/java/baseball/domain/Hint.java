@@ -36,7 +36,7 @@ public class Hint {
         String strikeMsg = String.format("%d스트라이크", strikeCount);
         String ballMsg = String.format("%d볼", ballCount);
 
-        String hintMsg = null;
+        String hintMsg;
         StringBuffer    stringBuffer = new StringBuffer();
         if (!(ballCount == 0)) {
             stringBuffer.append(ballMsg);

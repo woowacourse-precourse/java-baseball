@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class ComputerOpponent implements Opponent {
 
 
-    private ThreeDigitNum answer = null;
+    private ThreeDigitNum answer;
 
     public ComputerOpponent() {
         answer = createAnswer();

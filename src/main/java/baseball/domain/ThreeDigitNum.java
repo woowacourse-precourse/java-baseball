@@ -9,7 +9,7 @@ public class ThreeDigitNum {
     public static final int START_RANGE = 1;
     public static final int END_RANGE = 9;
     public static final int SIZE = 3;
-    private List<Integer> value = null;
+    private List<Integer> value;
 
     public ThreeDigitNum(List<Integer> list) {
         value = list;
@@ -17,7 +17,6 @@ public class ThreeDigitNum {
     }
     public ThreeDigitNum(int num) {
         value = numToDigitList(num);
-
         validateValue();
     }
 
@@ -25,6 +24,7 @@ public class ThreeDigitNum {
         List<Integer> list = new ArrayList<>(Collections.nCopies(SIZE, 0));
         int idx = SIZE -1;
         while(num > 0) {
+            validateIdx(idx);
             list.set(idx, num % 10);
 
             num /= 10;
@@ -33,12 +33,14 @@ public class ThreeDigitNum {
         return list;
     }
 
-    private static int getNextIdx(int idx) {
-        if(idx -1 < 0) {
+    private static void validateIdx(int idx) {
+        if(idx < 0) {
             throw new IllegalArgumentException("야구게임 값이 3자리 수를 초과했습니다.");
         }
-        idx = idx -1;
-        return idx;
+    }
+
+    private static int getNextIdx(int idx) {
+        return idx -1;
     }
 
     public List<Integer> list() {
