@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BaseBallGame {
 
@@ -24,4 +25,17 @@ public class BaseBallGame {
 
         return ball;
     }
+
+    public int countStrike(List<Integer> userInputArr, List<Integer> computerNumbers) {
+        int strike = 0;
+
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (Objects.equals(userInputArr.get(i), computerNumbers.get(i))) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
 }
