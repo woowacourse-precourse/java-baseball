@@ -84,7 +84,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public boolean isGameOver(int[] inputNumbers) {
-        return this.calcStrike(inputNumbers) == 3;
+       return calcStrike(inputNumbers) == 3;
     }
 
     @Override
@@ -96,5 +96,18 @@ public class GameServiceImpl implements GameService {
             return false;
         }
         throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+    }
+
+    @Override
+    public boolean playGame() throws IllegalArgumentException {
+        this.generateNumber();
+        while (true) {
+            int[] userInput = this.getInputs();
+            calcResult(userInput);
+            if (isGameOver(userInput)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return isContinueGame();
+            }
+        }
     }
 }

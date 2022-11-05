@@ -11,4 +11,8 @@ public class GameController {
         this.gameService = new GameServiceImpl();
     }
 
+    public void playGame(){
+        while(this.gameService.playGame()){};
+    }
+
 }

@@ -9,4 +9,5 @@ public interface GameService {
     void calcResult(int [] inputNumbers);
     boolean isGameOver(int [] inputNumbers);
     boolean isContinueGame();
+    boolean playGame();
 }
