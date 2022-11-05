@@ -7,20 +7,35 @@ import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static computer.BallsAndStrikesCountCalculator.*;
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
+import Controller.Game;
 import User.Input;
 import User.Outputs;
 import User.Validator;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void play_메소드로_게임_실행() {
+		assertRandomNumberInRangeTest(() -> {
+			final byte[] buf = String.join("\n", "624", "135", "361", "531", "371").getBytes();
+			System.setIn(new ByteArrayInputStream(buf));
+			Game game = new Game();
+			game.play();
+			assertThat(output()).contains("낫싱", "2볼", "2스트라이크", "1볼 1스트라이크", "3스트라이크");
+		}, 3,7,1);
+	}
+
 	@Test
 	void guess_메소드로_정답을_추측하는_기능_구현() {
 		List<Integer> answer = List.of(4, 9, 2);
