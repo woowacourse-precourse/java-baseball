@@ -27,20 +27,18 @@ public class Application {
 
         boolean continueGame = true;
 
-        while (continueGame) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean nextTurn = true;
+        while (nextTurn) {
             String inputNumber = inputNumberFromPlayer();
             checkInputNumberValidation(inputNumber);
-
-            boolean nextTurn = true;
-            while (nextTurn) {
-                Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
-                nextTurn = resultMessagePrint(inputNumberResult);
-            }
-            String orderNumber = inputOrderNumber();
-            checkOrderNumberValidation(orderNumber);
-            continueGame = checkOrderNumberValue(orderNumber);
+            Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
+            nextTurn = resultMessagePrint(inputNumberResult);
         }
+        String orderNumber = inputOrderNumber();
+        checkOrderNumberValidation(orderNumber);
+        continueGame = checkOrderNumberValue(orderNumber);
+
 
         return continueGame;
     }
