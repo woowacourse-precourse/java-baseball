@@ -48,6 +48,23 @@ public class Application {
         return inputInt;
     }
 
+    public int[] judge(int answer, int value){
+        int n = 100;
+        int [] result = {0,0};
+        compareEachDigit(answer, value, n, result);
+        return result;
+    }
+
+    private void compareEachDigit(int answer, int value, int n, int[] result) {
+        while(n >=1){
+            if(answer/n == value/n) result[0]++;
+            else result[1]++;
+            answer %= n;
+            value %= n;
+            n /= 10;
+        }
+    }
+
     private void checkIfThreeDigit(int input){
         if(input < 100 || input > 999) throw new IllegalArgumentException("입력하신 변수가 3자리 정수가 아닙니다");
     }
