@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,54 @@ class ApplicationTest2 extends NsTest {
 
         assertTrue(Application.isValidInput("123"));
     }
-
+    @DisplayName("볼 스트라이크 계산 테스트1")
+    @Test
+    void count_BallStrike_test1(){
+        //case1
+        //target :456
+        //user:457
+        //expected value: 0 ball 2 strikes
+        ArrayList<Integer> target = new ArrayList<>(List.of(4,5,6));
+        ArrayList<Integer> user = new ArrayList<>(List.of(4,5,7));
+        ArrayList<Integer> ans = new ArrayList<>(List.of(0,2));
+        assertEquals(ans,Application.count_BallStrike(target,user));
+    }
+    @DisplayName("볼 스트라이크 계산 테스트2")
+    @Test
+    void count_BallStrike_test2(){
+        //case2
+        //target :123
+        //user:231
+        //expected value: 3 ball 0 strikes
+        ArrayList<Integer> target = new ArrayList<>(List.of(1,2,3));
+        ArrayList<Integer> user = new ArrayList<>(List.of(2,3,1));
+        ArrayList<Integer> ans = new ArrayList<>(List.of(3,0));
+        assertEquals(ans,Application.count_BallStrike(target,user));
+    }
+    @DisplayName("볼 스트라이크 계산 테스트3")
+    @Test
+    void count_BallStrike_test3(){
+        //case3
+        //target :123
+        //user:456
+        //expected value: 0 ball 0 strikes
+        ArrayList<Integer> target = new ArrayList<>(List.of(1,2,3));
+        ArrayList<Integer> user = new ArrayList<>(List.of(4,5,6));
+        ArrayList<Integer> ans = new ArrayList<>(List.of(0,0));
+        assertEquals(ans,Application.count_BallStrike(target,user));
+    }
+    @DisplayName("볼 스트라이크 계산 테스트4")
+    @Test
+    void count_BallStrike_test4(){
+        //case4
+        //target :123
+        //user:132
+        //expected value: 2 ball 1 strikes
+        ArrayList<Integer> target = new ArrayList<>(List.of(1,2,3));
+        ArrayList<Integer> user = new ArrayList<>(List.of(1,3,2));
+        ArrayList<Integer> ans = new ArrayList<>(List.of(2,1));
+        assertEquals(ans,Application.count_BallStrike(target,user));
+    }
 
     @Override
     public void runMain() {

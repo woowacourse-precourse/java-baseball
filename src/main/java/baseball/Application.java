@@ -47,11 +47,11 @@ public class Application {
 
         return targetNums;
     }
-    public static int commonNums(List<Integer> list1, List<Integer>list2){
+    private static int commonNums(List<Integer> list1, List<Integer>list2){
         list1.retainAll(list2);
         return list1.size();
     }
-    public static int count_strikes(List<Integer> targetNums, List<Integer>userNums){
+    private static int count_strikes(List<Integer> targetNums, List<Integer>userNums){
         int strike = 0;
         for(int index = 0 ; index<targetNums.size();index++){
             if(targetNums.get(index)==userNums.get(index))
@@ -59,7 +59,7 @@ public class Application {
         }
         return strike;
     }
-    public static List<Integer> compareNums(List<Integer> targetNums, List<Integer>userNums){
+    public static List<Integer> count_BallStrike(List<Integer> targetNums, List<Integer>userNums){
         List<Integer> b_s_list = new ArrayList<>();
         int balls = 0;
         int strikes = 0;
