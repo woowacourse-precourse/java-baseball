@@ -8,6 +8,8 @@ import java.util.List;
 public class GameController {
 	private static final int STRIKE_OUT = 3;
 	private static final int RESTART_NUMBER = 1;
+	private static final int EXIT_NUMBER = 2;
+	private static InputView inputView = new InputView(RESTART_NUMBER, EXIT_NUMBER);
 
 	public static void startGame() {
 		start();
@@ -15,7 +17,7 @@ public class GameController {
 	}
 
 	private static void start() {
-		InputView.printGameStart();
+		inputView.printGameStart();
 		RandomNumber randomNumber = new RandomNumber();
 		playGame(randomNumber.getNumbers());
 	}
@@ -34,8 +36,8 @@ public class GameController {
 	}
 
 	private static void restart() {
-		InputView.printRestartOrExit();
-		int restartNumber = Input.getRestartNumber();
+		inputView.printRestartOrExit();
+		int restartNumber = Input.getRestartNumber(RESTART_NUMBER, EXIT_NUMBER);
 		if (restartNumber == RESTART_NUMBER) {
 			startGame();
 		}
