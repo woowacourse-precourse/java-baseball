@@ -13,6 +13,7 @@ public class Application {
         int SIZE = 3;
         int computer = CreateNumbers(SIZE);
         int input = InputNumbers(SIZE);
+        playGame(input, computer);
     }
 
     private static int CreateNumbers(int SizeOfNum) {
@@ -45,5 +46,15 @@ public class Application {
         }
 
         return intInput;
+    }
+
+    private static void playGame(int input, int computer) {
+        if (input == computer) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        else {
+
+        }
     }
 }
