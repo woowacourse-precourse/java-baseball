@@ -50,6 +50,6 @@ public class ScoreResultView {
     }
 
     public String printBothBallAndStrike(){
-        return "";
+        return printOnlyBall().concat(printOnlyStrike());
     }
 }
