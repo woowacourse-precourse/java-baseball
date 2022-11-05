@@ -21,7 +21,6 @@ public class RandomNumber {
                 randomNumber.add(randomNum);
             }
         }
-        System.out.println(randomNumber);
     }
     public void resetNumber() {
         randomNumber.clear();

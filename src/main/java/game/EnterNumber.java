@@ -49,9 +49,6 @@ public class EnterNumber {
         if (!exceptNumber(userEnterNumber)) {
             for (int i = 0; i < 3; i++) {
                 enterNumber.set(i, Character.getNumericValue(userEnterNumber.charAt(i)));
-
-                // TODO: 테스트 완료되면 지울 것
-                System.out.println(userEnterNumber.charAt(i));
             }
         }
         if (exceptNumber(userEnterNumber)) {
