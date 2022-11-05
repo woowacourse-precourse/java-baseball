@@ -1,4 +1,6 @@
-package baseball;
+package baseball.number.client;
+
+import baseball.utils.validation.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,28 +10,14 @@ public class HintsAboutNumbers {
     List<Integer> clientDigitNumbers = new ArrayList<>();
     List<Integer> randomDigitNumbers = new ArrayList<>();
 
-    public boolean hintAboutNumbers(int clientNumber, int randomNumber) {
+    public boolean hintAboutNumbers(List<Integer> clientNumbers, List<Integer> computerNumbers) {
 
-        String strClientNumber = String.valueOf(clientNumber);
-        String strRandomNumber = String.valueOf(randomNumber);
-
-        clientDigitNumbers = getDigitNumberList(strClientNumber);
-        randomDigitNumbers = getDigitNumberList(strRandomNumber);
+        clientDigitNumbers = clientNumbers;
+        randomDigitNumbers = computerNumbers;
 
         List<Integer> numbersOfBallAndStrike = countBallAndStrike();
 
         return isBallOrStrike(numbersOfBallAndStrike);
-    }
-
-    public List<Integer> getDigitNumberList(String StringNumber) {
-        List<Integer> list = new ArrayList<>();
-
-        for(int i = 0; i<StringNumber.length(); i++) {
-            String strDigitNumbers = String.valueOf(StringNumber.charAt(i));
-            int number = Integer.parseInt(strDigitNumbers);
-            list.add(number);
-        }
-        return list;
     }
 
     public boolean isBallOrStrike(List<Integer> ballAndStrike) {
@@ -46,8 +34,7 @@ public class HintsAboutNumbers {
                 System.out.println(ball + " 볼");
                 return false;
             }
-            System.out.println(ball + " 볼");
-            System.out.println(strike + " 스트라이크");
+            System.out.println(ball + " 볼 "+strike + " 스트라이크");
             return false;
         }
         System.out.println("낫싱");
