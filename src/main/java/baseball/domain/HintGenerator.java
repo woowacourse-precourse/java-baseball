@@ -41,6 +41,7 @@ public class HintGenerator {
         long NumberOfStrikeOrBall = playerGuess.stream()
                 .filter(strikeNumbers::contains)
                 .count();
+
         return (int)NumberOfStrikeOrBall;
     }
 }
