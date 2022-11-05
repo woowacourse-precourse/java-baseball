@@ -21,6 +21,7 @@ public class Baseball {
     public void start(){
         this.gaming = true;
         resetTargetNumber();
+        this.ballCount = new BallCount();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -41,11 +42,22 @@ public class Baseball {
         return gaming;
     }
 
+    public void chooseContinue(){
+        int isContinue = Integer.parseInt(Console.readLine());
+
+
+        if(isContinue == 1){
+            restart();
+        } else if(isContinue == 2){
+            end();
+        }
+    }
 
     // GuessNumber Setter method
     public void setGuessNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         int guessNumber = Integer.parseInt(Console.readLine());
+
         if(!isValidNum(guessNumber)){
             end();
             throw new IllegalArgumentException();
@@ -55,45 +67,32 @@ public class Baseball {
     }
 
     // GuessNumber에 대한 결과 출력 method
-    public void getGuessResult(){
-        int guessBallCount = ballCount.getBallCount();
-        int guessStrikeCount = ballCount.getStrikeCount();
+    public GuessResult getGuessResult(){
+        ballCount = new BallCount();
+        ballCount.ruleBallCount(this.targetNumber,this.guessNumber);
+        ballCount.ruleStrikeCount(this.targetNumber,this.guessNumber);
 
-        if((guessBallCount != 0) && (guessStrikeCount !=0)){
-            System.out.println(guessBallCount+"볼 "+guessStrikeCount+"스트라이크");
-            setGuessNumber();
-        } else if((guessBallCount == 0) && (guessStrikeCount ==0)){
-            System.out.println("낫싱");
-            setGuessNumber();
-        } else if(guessStrikeCount == 3){
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            chooseContinue();
-        }
-    }
+        ballCount.printBallCount();
 
-    private void chooseContinue(){
-        String isContinue = Console.readLine();
-
-        if(isContinue == "1"){
-            restart();
-        } else if(isContinue == "2"){
-            end();
-        }
+        return ballCount.getGuessResult();
     }
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
     private void resetTargetNumber(){
         int targetNumber = 0;
+        int count = 0;
         List<Integer> randomNumberList = new ArrayList<>();
 
-        for(int i = 0; i < 3; i++){
+        while (randomNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
-                targetNumber += randomNumber * Math.pow(10,i);
+                targetNumber += randomNumber * Math.pow(10,count);
+                count++;
             }
         }
 
+        System.out.println("targetNumber = " + targetNumber);
         this.targetNumber = targetNumber;
     }
 
