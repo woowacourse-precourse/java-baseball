@@ -1,11 +1,5 @@
 package baseball;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
@@ -14,15 +8,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class MessageHolderTest {
     private static MessageHolder holder;
-
 
     @BeforeAll
     static void initAll() {
         holder = new MessageHolder();
     }
-
 
     @Test
     void testGetGameInput() {
@@ -50,7 +45,8 @@ public class MessageHolderTest {
 
     @Test
     void testPlayerGameInputToInt() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () ->
+            {
                 holder.playerGameInputToInt("1234");
             });
     }
