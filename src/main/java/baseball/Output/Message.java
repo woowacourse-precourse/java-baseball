@@ -9,9 +9,9 @@ public class Message {
     public static final String NUMBER_INPUT_REQUEST_MESSAGE = "숫자를 입력해주세요 : ";
 
     private static final String NOTHING_MESSAGE = "낫싱\n";
-    private static final String BALL_MESSAGE_FORMAT = "%d ball\n";
-    private static final String STRIKE_MESSAGE_FORMAT = "%d strike\n";
-    private static final String BALL_AND_STRIKE_MESSAGE_FORMAT = "%d ball %d strike\n";
+    private static final String BALL_MESSAGE_FORMAT = "%d볼\n";
+    private static final String STRIKE_MESSAGE_FORMAT = "%d스트라이크\n";
+    private static final String BALL_AND_STRIKE_MESSAGE_FORMAT = "%d볼 %d스트라이크\n";
     public static final String USER_INPUT_FOR_HINT_ERROR_MESSAGE = "잘못된 숫자를 입력하였습니다. 프로그램을 종료합니다.";
     public static final String USER_INPUT_FOR_NEXT_GAME_ERROR_MESSAGE ="잘못된 값을 입력하셨습니다. 다시 입력해주세요.(게임 재시작은 1, 종료는 2) : ";
 
