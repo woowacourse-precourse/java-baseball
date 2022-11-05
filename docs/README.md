@@ -9,6 +9,7 @@
 - [ ] 게임을 재시작할지 boolean 값을 반환한다.
     - [ ] 1은 true
     - [ ] 2는 false
+    - [ ] 이외의 값은 IllegalArgumentException 예외를 throw 한다.
 
 ### 숫자
 
