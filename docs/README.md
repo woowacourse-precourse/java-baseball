@@ -95,10 +95,7 @@
   `public Game getInstance()`<br>
   `: 클래스의 싱글톤 객체를 반환합니다.`<br>
   <br>
-  `public int askReplay()`<br>
-  `: 게임이 끝난 후 게임을 다시할지, 끝낼지 사용자에게 1 또는 2를 입력받아 진행합니다.`<br>
-  <br>
-  `public void play(playerComputer computer, playerUser user)`<br>
+  `public int play(playerComputer computer, playerUser user)`<br>
   `: 두 객체, 컴퓨터와 유저를 받아서 게임을 수행한다.`<br>
   <br>
   `private List<Integer> compareUserInputToAnswer(String userInput, String answer)`<br>
@@ -128,7 +125,9 @@
   `private boolean isCorrectAnswer(int numberOfStrike)`<br>
   `: 스트라이크의 개수가 3개인지 확인 후 게임을 끝내야할지 계속해야할지 판단합니다.`<br>
   <br>
-
+  `private int askReplay()`<br>
+  `: 게임이 끝난 후 게임을 다시할지, 끝낼지 사용자에게 1 또는 2를 입력받아 진행합니다.`<br>
+  <br>
 
 
 
