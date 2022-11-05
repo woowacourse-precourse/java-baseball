@@ -71,13 +71,15 @@ public class GameController {
         }
 
         private int end(){
-            int choose = 0;
+            int choose;
 
             View.printQuestionNewGame();
             String command = player.getCommand();
 
             if(newGameValidator.validate(command)){
                 choose = Integer.parseInt(command);
+            }else{
+                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE);
             }
 
             return choose;
