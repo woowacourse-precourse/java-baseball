@@ -8,4 +8,11 @@ public class BallsAndStrikesCountCalculator {
 			.filter(digit -> digit.equals(answer.get(number.indexOf(digit))))
 			.count();
 	}
+
+	public static int calculateBallsCount(List<Integer> number, List<Integer> answer) {
+		return (int)number.stream()
+			.filter(digit -> !digit.equals(answer.get(number.indexOf(digit))))
+			.filter(answer::contains)
+			.count();
+	}
 }
