@@ -124,7 +124,7 @@ public class Application {
         printResult(comparedMap);
         if (correctAnswer(comparedMap)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            gameOn = restartOrEndGame();
+            gameOn = false;
         } else {
             gameOn = true;
         }
