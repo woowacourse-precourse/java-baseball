@@ -17,9 +17,9 @@ public class ResultProcessor {
 
     private void distinguishTypeOfDigit(Result result, String randomNumber, String predictedNumber, int position) {
         if (randomNumber.indexOf(predictedNumber.charAt(position)) == position) {
-            // Increase number of strike
+            result.increaseStrike();
         } else if (randomNumber.contains(String.valueOf(predictedNumber.charAt(position)))) {
-            // Increase number of ball
+            result.increaseBall();
         }
     }
 }

@@ -6,4 +6,12 @@ public class Result {
 
     private int ball = 0;
     private int strike = 0;
+
+    public void increaseStrike() {
+        strike++;
+    }
+
+    public void increaseBall() {
+        ball++;
+    }
 }
