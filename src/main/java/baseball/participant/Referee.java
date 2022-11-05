@@ -4,6 +4,10 @@ import baseball.result.Result;
 
 public class Referee {
 
+    public Result resultOfPrediction(String randomNumber, String predictedNumber) {
+        return processResult(randomNumber, predictedNumber);
+    }
+
     public Result processResult(String randomNumber, String predictedNumber) {
         Result result = new Result();
         compareRandomAndPredictedNumber(result, randomNumber, predictedNumber);

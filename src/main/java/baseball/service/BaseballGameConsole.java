@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.participant.Batter;
 import baseball.participant.Pitcher;
+import baseball.participant.Referee;
 import baseball.result.Result;
 import baseball.result.ResultType;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,6 +13,7 @@ public class BaseballGameConsole {
 
     private final Validator validator = new Validator();
     private final Batter batter = new Batter();
+    private final Referee referee = new Referee();
 
     public void playGameWithPlayer(Pitcher pitcher) {
         showStartingGuide(pitcher.getName());
@@ -34,7 +36,7 @@ public class BaseballGameConsole {
             String predictedNumber = pitcher.predictNumber();
             validator.validatePrediction(predictedNumber);
 
-            Result result = batter.resultOfPrediction(randomNumber, predictedNumber);
+            Result result = referee.resultOfPrediction(randomNumber, predictedNumber);
             matchedAllNumber = result.getResultType() == EXACT_MATCH;
 
             showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());
