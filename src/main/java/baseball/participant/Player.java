@@ -1,4 +1,4 @@
-package baseball;
+package baseball.participant;
 
 import camp.nextstep.edu.missionutils.Console;
 

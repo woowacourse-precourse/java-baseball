@@ -1,8 +1,12 @@
-package baseball;
+package baseball.service;
 
+import baseball.participant.Computer;
+import baseball.participant.Player;
+import baseball.result.Result;
+import baseball.result.ResultType;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.ResultType.*;
+import static baseball.result.ResultType.*;
 
 public class BaseballGameConsole {
 

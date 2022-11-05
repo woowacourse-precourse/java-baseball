@@ -1,6 +1,6 @@
-package baseball;
+package baseball.result;
 
-import static baseball.ResultType.*;
+import static baseball.result.ResultType.*;
 
 public class Result {
 

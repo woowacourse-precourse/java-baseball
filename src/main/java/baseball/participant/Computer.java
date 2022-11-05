@@ -1,5 +1,7 @@
-package baseball;
+package baseball.participant;
 
+import baseball.result.Result;
+import baseball.result.ResultProcessor;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

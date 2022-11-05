@@ -1,4 +1,4 @@
-package baseball;
+package baseball.result;
 
 public class ResultProcessor {
 
