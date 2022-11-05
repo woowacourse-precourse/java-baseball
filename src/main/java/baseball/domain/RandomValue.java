@@ -10,7 +10,7 @@ public class RandomValue {
     private final static int MAX_NUM = 9;
     private final static int MAX_SIZE = 3;
 
-    public List<Integer> randomValue() {
+    public List<Integer> getRandom() {
         List<Integer> RandomNum = new ArrayList<>();
 
         while (RandomNum.size() < MAX_SIZE) {
