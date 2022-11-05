@@ -166,6 +166,23 @@ class GameMessagePrinterTest {
         }
     }
 
+    @Nested
+    @DisplayName("게임 재시작 또는 종료 메세지 출력")
+    class PrintRestartOrExitMessageTest {
+        @Test
+        @DisplayName("메세지 출력")
+        void printRestartOrExitMessageTest() {
+            //given
+            String expect = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+
+            //when
+            messagePrinter.printRestartOrExitMessage();
+
+            //then
+            assertThat(outContent.toString()).isEqualTo(expect);
+        }
+    }
+
     @AfterEach
     void reset() {
         System.setOut(originalOut);
