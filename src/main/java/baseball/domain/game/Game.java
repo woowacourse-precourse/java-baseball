@@ -16,6 +16,8 @@ public class Game {
             }
         }
         OutputView.printEnd();
-        OutputView.printRestart();
+        if (OutputView.printRestart() == 1) {
+            new Game();
+        }
     }
 }
