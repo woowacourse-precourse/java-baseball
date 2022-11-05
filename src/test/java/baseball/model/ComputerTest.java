@@ -15,7 +15,7 @@ class ComputerTest {
         int notValidTestCase=0;
         for (int i = 0; i < 10000; i++) {
             computer[i] = new Computer();
-            List<Integer> generateRandomNumList = computer[i].generateRandomNum();
+            List<Integer> generateRandomNumList = computer[i].generateRandomNumList();
             if(!Valid.isValidNumList(generateRandomNumList)){
                 notValidTestCase++;
             }
