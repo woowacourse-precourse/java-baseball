@@ -46,6 +46,10 @@ class GameReadyMachine {
         System.out.printf("숫자 야구 게임을 시작합니다.\n");
     }
 
+    public int getAnswerValue()
+    {
+        return answerValue;
+    }
 }
 
 public class Application {
