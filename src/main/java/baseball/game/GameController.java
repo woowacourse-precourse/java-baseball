@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.entity.Computer;
+import utils.View;
 
 public class GameController {
     private static GameController instance;
@@ -32,6 +33,8 @@ public class GameController {
 
         @Override
         public void play() {
+            View.printIntro();
+
             initialize();
         }
     }
