@@ -23,4 +23,11 @@ public class Referee {
         return strike;
     }
 
+    public Integer getBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strike = getStrikeCount(computerNumber, userNumber);
+        int ball = correctNumberCount(computerNumber, userNumber) - strike;
+
+        return ball;
+    }
+
 }
