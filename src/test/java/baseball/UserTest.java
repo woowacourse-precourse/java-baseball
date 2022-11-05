@@ -96,5 +96,13 @@ class UserTest {
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
+        @Test
+        void 재시작여부_판별_검증() {
+            GameControlNum restart = new GameControlNum(1);
+            GameControlNum stop = new GameControlNum(2);
+
+            assertThat(restart.isRestart()).isEqualTo(true);
+            assertThat(stop.isRestart()).isEqualTo(false);
+        }
     }
 }
