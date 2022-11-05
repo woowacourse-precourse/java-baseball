@@ -19,4 +19,8 @@ public class BaseballManager {
     public void computeUserScore() {
         scoreManager.makeUserScore(userNumber, computerNumber);
     }
+
+    public List<Integer> getUserScore() {
+        return scoreManager.getUserScore();
+    }
 }
