@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseBallGame {
@@ -17,5 +18,24 @@ public class BaseBallGame {
         }
         return computer;
     }
+
+    public void inputNumbers() throws IllegalStateException{
+        String inputNum = Console.readLine();
+        String[] nums = inputNum.split("");
+
+        if(nums.length != 3){
+            throw new IllegalStateException();
+        }
+        for (String num : nums) {
+            int numInt = Integer.parseInt(num);
+            if (user.contains(numInt)){
+                throw new IllegalStateException();
+            }else{
+                user.add(numInt);
+            }
+        }
+        System.out.println(user);
+    }
+
 
 }
