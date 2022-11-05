@@ -21,7 +21,7 @@ public final class Util {
     public static boolean hasDuplicatedChar(String target) {
         String[] targetArray = target.split("");
         Set<String> targetSet = new HashSet<>(Arrays.asList(targetArray));
-        return targetSet.size() == target.length();
+        return targetSet.size() != target.length();
     }
 
 }
