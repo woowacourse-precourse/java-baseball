@@ -58,15 +58,16 @@ public class BaseBallGame {
 
     private static void printByBallAndStrikeCount (List<Integer> ballStrikeCount) {
         if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
-            // printCode
+            System.out.println("낫싱");
             return;
         }
 
         if (ballStrikeCount.get(STRIKE) == 3) {
-            // printCode
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
-
-        // printCode
+        
+        System.out.println(ballStrikeCount.get(BALL) + "볼 " + ballStrikeCount.get(STRIKE) + "스트라이크");
     }
 }
