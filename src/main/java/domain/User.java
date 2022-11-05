@@ -4,27 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static List<Integer> number_List=new ArrayList<>();
-
-    public static User getInstance(){
-        return new User();
-    }
+    private static String input;
 
     public static void setNumber(String input) {
-        for(int index=0; index<input.length(); index++) {
-            User.number_List.add(Character.getNumericValue(input.charAt(index)));
-        }
+        User.input=input;
+    }
+    public static String getNumber(){
+        return User.input;
     }
 
-    public static String getNumber(){
-        String numbers="";
-        for(Integer item: User.number_List){
-            numbers+=Integer.toString(item);
-        }
-        return numbers;
-    }
-    public static List<Integer> getNumber_List(){
-        return number_List;
-    }
 
 }

@@ -10,29 +10,27 @@ import java.util.List;
 
 public class game {
     public static void start(){
-        System.out.println("숫자 야구 게임을 시작합니다");
-
-        game.readLine();
-        Computer computer=Computer.getInstance();
-        User user= User.getInstance();
-        computer.setNumber();
+        game.printMessage(game.readLine());
     }
-    public static void strikeMessage(){
-        int count=0;
-        for(int index=0; index<3; index++ ) {
+
+    public static void strikeAndball_Message(){
+        int strike_count=0;
+        int ball_count=0;
+        for(int index=0; index<3; index++) {
             if(Computer.getNumber().charAt(index)==User.getNumber().charAt(index)){
-                count++;
+                strike_count++;
+                continue;
+            }
+            if(Computer.getNumber_List().contains(Character.getNumericValue((User.getNumber().charAt(index))))) {
+                ball_count++;
             }
         }
-        System.out.print(count+"스트라이크" + " ");
-    }
-    public static void ballMessage(){
-        int count=0;
-        for(int index=0; index<3; index++) {
-           if(Computer.getNumber_List().contains(User.getNumber_List().get(index)));
-           count++;
+        if(strike_count!=0) {
+            System.out.print(strike_count + "스트라이크" + " ");
         }
-        System.out.print(count + "볼");
+        if(ball_count!=0) {
+            System.out.print(ball_count + "볼");
+        }
     }
     public static List<Integer> get_ThreeRandomNumbers(){
         List<Integer> computer = new ArrayList<>();
@@ -46,10 +44,15 @@ public class game {
         }
         return computer;
     }
-    public static void readLine(){
+
+    public static String readLine(){
         System.out.print("숫자를 입력해 주세요 : " );
         String input=Console.readLine();
+        return input;
 
+    }
+    public static void printMessage(String input) {
         User.setNumber(input);
+        game.strikeAndball_Message();
     }
 }
