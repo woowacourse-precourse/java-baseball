@@ -19,7 +19,7 @@ class ComputerBallsGeneratorTest {
   @Order(1)
   @DisplayName("생성된 balls 개수 확인")
   void isGenerateThreeBalls() {
-    String str = generator.ballsGenerator();
-    assertEquals(3, str.length());
+    generator.ballsGenerator();
+    assertEquals(3, generator.getBallsLength());
   }
 }

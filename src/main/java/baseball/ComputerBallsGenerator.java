@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerBallsGenerator {
   private int maxLen;
+  private String balls;
 
   public ComputerBallsGenerator() {
     this(3);
@@ -11,7 +12,12 @@ public class ComputerBallsGenerator {
   public ComputerBallsGenerator(int maxLen) {
     this.maxLen = maxLen;
   }
-  public String ballsGenerator(){
-    return Randoms.pickUniqueNumbersInRange(1, 9, this.maxLen).toString().replaceAll("[^0-9]","");
+  public void ballsGenerator(){
+    String balls = Randoms.pickUniqueNumbersInRange(1, 9, this.maxLen).toString().replaceAll("[^0-9]","");
+    this.balls = balls;
+  }
+
+  public int getBallsLength() {
+    return balls.length();
   }
 }
