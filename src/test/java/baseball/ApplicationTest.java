@@ -1,5 +1,6 @@
 package baseball;
 
+import static Controller.Converter.*;
 import static Controller.Printer.*;
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -20,50 +21,62 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void convertStringToIntegerList_메소드로_문자열을_정수_리스트로_변환() {
+		assertThat(convertStringToIntegerList("746")).isInstanceOf(ArrayList.class);
+	}
+
+	@Test
 	void printRestartOrNotMessage_메소드로_게임_재시작_여부_입력_안내를_출력() {
 		printRestartOrNotMessage(RESTART_GAME, END_GAME);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
+
 	@Test
 	void printGettingRightAnswerMessage_메소드로_정답을_맞춘_경우_게임_종료를_안내() {
 		printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
+
 	@Test
 	void printResult_메소드로_결과_안내_출력() {
 		printResult(0, 0);
 		printResult(2, 0);
 		printResult(0, 1);
-		printResult(1,2);
+		printResult(1, 2);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("낫싱\n2볼\n1스트라이크\n1볼 2스트라이크\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
+
 	@Test
 	void printStrikesCountMessage_메소드로_스트라이크_개수_출력() {
 		int strikesCount = 2;
 		printStrikesCountMessage(strikesCount);
 		assertThat(output()).isEqualTo("2스트라이크");
 	}
+
 	@Test
 	void printBallsCountMessage_메소드로_볼_개수_출력() {
 		int ballsCount = 3;
 		printBallsCountMessage(ballsCount);
 		assertThat(output()).isEqualTo("3볼");
 	}
+
 	@Test
 	void printNothingMessage_메소드로_낫싱_출력() {
 		printNothingMessage();
 		System.out.print("이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("낫싱\n이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
 	}
+
 	@Test
 	void printAskInputMessage_메소드로_숫자_입력_안내_출력() {
-		printAskInputMessage();
+		printAskingInputMessage();
 		System.out.print("이 문장은 숫자 입력 안내 문장과 같은 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("숫자를 입력해주세요 : 이 문장은 숫자 입력 안내 문장과 같은 줄에 출력되어야 합니다.");
 	}
+
 	@Test
 	void printGameStartMessage_메소드로_게임_시작_안내_출력() {
 		printGameStartMessage();
