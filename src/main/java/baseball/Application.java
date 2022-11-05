@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -10,7 +11,21 @@ public class Application {
         // TODO: 프로그램 구현
         String correctAnswer = makeRandomNumStr();
 
+        String userAnswer = Console.readLine();
+        lengthCheck(userAnswer);
+
     }
+
+
+    private static void lengthCheck(String userAnswer) {
+
+        if (userAnswer.length()!=3){
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+
 
     private static String makeRandomNumStr() {
         Set<String> correctAnswer = new HashSet<>();
