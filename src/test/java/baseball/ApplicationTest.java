@@ -22,7 +22,7 @@ class ApplicationTest extends NsTest {
 	@Test
 	void printBallsCountMessage_메소드로_볼_개수_출력() {
 		int ballsCount = 3;
-		printBallsCount(ballsCount);
+		printBallsCountMessage(ballsCount);
 		assertThat(output()).isEqualTo("3볼");
 	}
 	@Test
