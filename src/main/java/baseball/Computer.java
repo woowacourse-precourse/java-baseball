@@ -4,6 +4,9 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
+    private static final int NUMBER_SIZE = 3;
+    private static final int MINIMUM_NUMBER = 1;
+    private static final int MAXIMUM_NUMBER = 9;
 
     private List<Integer> numbers;
 
@@ -11,22 +14,22 @@ public class Computer {
 
     public void setNumbers() {
         Set<Integer> numbersSet = new HashSet<>();
-        while(numbersSet.size() < 3) {
-            numbersSet.add(Randoms.pickNumberInRange(1,9));
+        while(numbersSet.size() < NUMBER_SIZE) {
+            numbersSet.add(Randoms.pickNumberInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER));
         }
         setToArrayList(numbersSet);
-        numberShuffle(this.numbers);
+        numberShuffle(numbers);
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return numbers;
     }
 
-    public void numberShuffle(List<Integer> lst) {
-        this.numbers = Randoms.shuffle(lst);
+    public void numberShuffle(List<Integer> numbers) {
+        this.numbers = Randoms.shuffle(numbers);
     }
 
-    public void setToArrayList(Set<Integer> set) {
-        this.numbers = new ArrayList<>(set);
+    public void setToArrayList(Set<Integer> numbersSet) {
+        numbers = new ArrayList<>(numbersSet);
     }
 }
