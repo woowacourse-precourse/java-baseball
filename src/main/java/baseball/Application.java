@@ -49,7 +49,9 @@ public class Application {
             int ball = countingBall(0, userNumbers, randomNumberList);
             printCount(ball, strike);
 
-            if (checkThreeStrike(strike)) break;
+            if (checkThreeStrike(strike)) {
+                break;
+            }
 
         }
     }
