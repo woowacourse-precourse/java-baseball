@@ -48,7 +48,14 @@ public class User {
     }
 
     private boolean isDuplicate(){
-        return (userInput.charAt(0) != userInput.charAt(1)
-                && userInput.charAt(1) != userInput.charAt(2) && userInput.charAt(0) != userInput.charAt(2));
+        if (userInput.charAt(0) == userInput.charAt(1)) {
+            return false;
+        } else if (userInput.charAt(1) == userInput.charAt(2)) {
+            return false;
+        } else if (userInput.charAt(0) == userInput.charAt(2)) {
+            return false;
+        }
+
+        return true;
     }
 }
