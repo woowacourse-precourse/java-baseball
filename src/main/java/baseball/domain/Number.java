@@ -28,7 +28,7 @@ public class Number {
 
     private static void validateBound(int number) {
         if ((number < NUMBER_MIN) || (number > NUMBER_MAX)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자의 범위는 " + NUMBER_MIN + "부터 " + NUMBER_MAX + "까지 입니다.");
         }
     }
 }
