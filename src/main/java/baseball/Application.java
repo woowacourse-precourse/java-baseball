@@ -25,6 +25,7 @@ public class Application {
 
     public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
         boolean isCorrect = false;
+
         int strike = 0;
         int ball = 0;
         for(int i = 0;i < 3 ;i++){
@@ -34,16 +35,22 @@ public class Application {
                 ball++;
             }
         }
+        printResult(strike, ball);
+        return isCorrect;
+    }
+
+    private static boolean printResult(int strike, int ball) {
         if(strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            isCorrect = true;
+            return true;
         }else if(strike == 0 && ball == 0){
             System.out.println("낫싱");
+            return false;
         }else{
             System.out.println(ball + "볼 " + strike + "스트라이크");
+            return false;
         }
-        return isCorrect;
     }
 
     public static List<Integer> generateNumber() {
