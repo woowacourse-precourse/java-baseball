@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Compare {
+public class Score {
     public static final int INPUT_LENGTH = 3;
     public static final int STRIKE_INDEX = 0;
     public static final int BALL_INDEX = 1;
@@ -11,7 +11,7 @@ public class Compare {
     private List<Integer> dest;
     private List<Integer> answer;
 
-    public Compare(List<Integer> src, List<Integer> dest) {
+    public Score(List<Integer> src, List<Integer> dest) {
         this.src = src;
         this.dest = dest;
     }

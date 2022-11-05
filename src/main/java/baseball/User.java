@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Compare.INPUT_LENGTH;
+import static baseball.Score.INPUT_LENGTH;
 import static baseball.InputValidator.checkIsValidRestartExitString;
 import static baseball.InputValidator.checkIsValidThreeNumbers;
 

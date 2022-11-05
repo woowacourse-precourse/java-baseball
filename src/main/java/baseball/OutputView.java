@@ -1,7 +1,7 @@
 package baseball;
 
-import static baseball.Compare.BALL_INDEX;
-import static baseball.Compare.STRIKE_INDEX;
+import static baseball.Score.BALL_INDEX;
+import static baseball.Score.STRIKE_INDEX;
 
 import java.util.List;
 
