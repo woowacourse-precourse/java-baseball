@@ -15,6 +15,7 @@
 
 - [x] 1부터 9까지 수가 아닌 경우 IllegalArgumentException 예외를 throw 한다.
 - [x] 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼을 저장한 힌트 콜렉션을 얻는다.
+- [ ] 사이즈가 3이 아닌 경우 IllegalArgumentException 예외를 throw 한다.
 
 ### 힌트
 
