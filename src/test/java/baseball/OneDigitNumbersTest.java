@@ -61,4 +61,12 @@ public class OneDigitNumbersTest {
 
         assertThat(afterNumbers).containsExactly(1, 2, 3);
     }
+
+    @Test
+    void 인덱스로_엘리먼트_찾기() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+
+        assertThat(oneDigitNumbers.indexOf(1)).isEqualTo(1);
+    }
 }
