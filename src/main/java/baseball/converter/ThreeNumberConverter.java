@@ -46,21 +46,25 @@ public class ThreeNumberConverter {
 
     private void validateIntegerList(List<Integer> integerList) {
         Set<Integer> numSet = new HashSet<>(integerList);
-        validateRange(numSet);
-        validateDuplicateNumber(integerList);
+        validateEachNumberRange(numSet);
+        validateRange(integerList);
+        validateDuplicateNumber(numSet, integerList);
     }
 
-    private void validateRange(Set<Integer> numSet) {
+    private void validateEachNumberRange(Set<Integer> numSet) {
         if (numSet.contains(0)) {
             throw new GameEachInputNumberOutOfRangeException(inputString);
         }
-        if (numSet.size() != NUMBER_RANGE_SIZE) {
+    }
+
+    private void validateRange(List<Integer> integerList) {
+        if (integerList.size() != NUMBER_RANGE_SIZE) {
             throw new GameInputNumberOutOfRangeException(inputString);
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> integerList) {
-        if (new HashSet<>(integerList).size() != integerList.size()) {
+    private void validateDuplicateNumber(Set<Integer> numSet, List<Integer> integerList) {
+        if (numSet.size() != integerList.size()) {
             throw new DuplicateNumberException(inputString);
         }
     }
