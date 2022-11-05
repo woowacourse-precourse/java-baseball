@@ -1,6 +1,6 @@
 # 미션 - 숫자 야구
 
-## 구현 기능 V 2.0
+## 구현 기능 V 2.1
 
 ### Computer
 
@@ -24,6 +24,11 @@
     - input과 정답을 비교해서 Strike, Ball 카운트 결정
     - 힌트메세지 출력
 
+### 문제점
+- 재시작 할 때 마다 새로운 Operator를 생성한다.
+- Operator가 생성되면 User, Computer, Comparator가 모두 새로 생성된다.
+- 위 문제는 Computer의 생성자가 호출 될 때 setAnswer 메소드를 실행하여 정답을 생성 및 저장하는데, 이 메소드를 독립적으로 실행하게 하여 해결할 수 있을 것 같다.
+- 그러나 Computer와 Comparator가 Operator를 통해 너무 강하게 결합되어 있어 전체적인 구조를 변경해야 한다.
 
 
 ## 🔍 진행 방식
