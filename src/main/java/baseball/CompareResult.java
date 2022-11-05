@@ -7,17 +7,16 @@ import java.util.List;
  */
 public class CompareResult {
 
-    /**
-     * 비교 결과를 담고있는 리스트 객체
-     */
     private List<List<String>> compareResult;
 
     /**
-     * CompareResult 객체 생성자 클래스
-     * @param compare
+     * CompareResult 객체 생성자
+     *
+     * @param compareResult <br>
+     * ex)[[스트라이크,1],[볼,2]] or [[낫싱]]
      */
-    public CompareResult(List<List<String>> compare){
-        this.compareResult = compare;
+    public CompareResult(List<List<String>> compareResult){
+        this.compareResult = compareResult;
     }
 
     /**
