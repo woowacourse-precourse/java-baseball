@@ -10,21 +10,13 @@ public class Balls {
     }
 
     public boolean isStrike(Ball other) {
-        for (Ball ball : balls) {
-            if (ball.isStrike(other)) {
-                return true;
-            }
-        }
-        return false;
+        return balls.stream()
+                .anyMatch(ball -> ball.isStrike(other));
     }
 
     public boolean isBall(Ball other) {
-        for (Ball ball : balls) {
-            if (ball.isBall(other)) {
-                return true;
-            }
-        }
-        return false;
+        return balls.stream()
+                .anyMatch(ball -> ball.isBall(other));
     }
 
     public Result getResult(Balls other) {
