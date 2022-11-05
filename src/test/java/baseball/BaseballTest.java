@@ -123,5 +123,17 @@ class BaseballTest {
             assertThat(outContent.toString()).isEqualTo(startMessage);
             System.setOut(originalOut);
         }
+
+        @Test
+        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        void printInputMessage_test() {
+            System.setOut(new PrintStream(outContent));
+
+            String startMessage = "숫자를 입력하세요. : ";
+            messenger.printInputMessage();
+
+            assertThat(outContent.toString()).isEqualTo(startMessage);
+            System.setOut(originalOut);
+        }
     }
 }
