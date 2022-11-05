@@ -19,4 +19,8 @@ public class NumberGenerator {
     public void truncateNumbers() {
         this.numbers.clear();
     }
+
+    public ArrayList<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
