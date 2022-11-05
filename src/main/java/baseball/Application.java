@@ -1,26 +1,78 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println("게임을 시작합니다.");
+        //  run("246", "135", "1", "597", "589", "2");
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
 
+
+        do {
+            user.clear();
+            computer.clear();
+
+            gameRun(computer, user);
+            //더 수행할지 여부를
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String oneMore = readLine();
+            if (oneMore.equals("1")) continue;
+            if (oneMore.equals("2")) {
+                System.out.println("게임 종료");
+                break;
+            }
+        } while (true);
+
+
+    }
+
+    /**
+     * 실제로 수행하는 게임
+     * Game run.
+     *
+     * @param computer the computer
+     * @param user     the user
+     */
+    private static void gameRun(List<Integer> computer, List<Integer> user) {
         makeRandomNumber(computer);
 
-        //사용자의 입력
-        usersTurn(user);
+        boolean flag = true;
+        while (flag) {
+            user.clear();
+            usersTurn(user);
+            flag = resultPrint(computer, user);
+        }
+    }
 
-        //사용자의 입력과 답을 비교
+    /**
+     * 결과를 입력받아 정답을 출력하는 메서드
+     * Result print boolean.
+     *
+     * @param computer the computer
+     * @param user     the user
+     * @return the boolean
+     */
+    private static boolean resultPrint(List<Integer> computer, List<Integer> user) {
         Map<String, Integer> result = checking(computer, user);
-        System.out.println(result);
-        //결과를 출력
-        //더 수행할지 여부를 확인
+
+        if (result.isEmpty()) System.out.println("낫싱");
+        if (result.containsKey("볼")) System.out.print(result.get("볼") + "볼 ");
+        if (result.containsKey("스트라이크")) {
+            System.out.print(result.get("스트라이크") + "스트라이크");
+            if (result.get("스트라이크") == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -35,12 +87,11 @@ public class Application {
         Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < 3; i++) {
             if (Objects.equals(answer.get(i), swing.get(i))) {
-                map.put("S", map.getOrDefault("스트라이크", 0) + 1);
+                map.put("스트라이크", map.getOrDefault("스트라이크", 0) + 1);
             } else if (answer.contains(swing.get(i))) {
-                map.put("b", map.getOrDefault("볼", 0) + 1);
+                map.put("볼", map.getOrDefault("볼", 0) + 1);
             }
         }
-        if (map.isEmpty()) map.put("n", 1);
         return map;
     }
 
@@ -52,9 +103,11 @@ public class Application {
      */
     public static void usersTurn(List<Integer> user) {
         while (user.size() != 3) {
-            user.clear();
             System.out.print("숫자를 입력해주세요 : ");
-            String[] inputArray = Console.readLine().split("");
+            String[] inputArray = readLine().split("");
+            if (inputArray.length > 3) {
+                throw new IllegalArgumentException();
+            }
             if (inputLengthCheck(inputArray)) continue;
             addUserList(user, inputArray);
         }
@@ -88,7 +141,6 @@ public class Application {
     public static void inputRange(int i) {
         if (i <= 0 || 10 <= i) throw new IllegalArgumentException();
     }
-
 
     /**
      * 길이가 3인지 확인하는 메서드

@@ -42,4 +42,8 @@ public class LocalTest {
         String[] arr2 = {"1","1","4","4"};
         assertThat(inputLengthCheck(arr2)).isTrue();
     }
+
+    @Test
+    void input_Test(){
+    }
 }
