@@ -46,6 +46,6 @@ public enum Constant implements defaultValue {
 }
 
 interface defaultValue {
-    String DEFAULT_MESSAGE = "";
-    int DEFAULT_NUMBER = 0;
+    final String DEFAULT_MESSAGE = "";
+    final int DEFAULT_NUMBER = 0;
 }

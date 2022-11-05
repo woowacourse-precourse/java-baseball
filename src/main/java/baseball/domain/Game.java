@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class Game {
 
-
-
     private int strike;
     private int ball;
     private boolean status;
@@ -21,17 +19,14 @@ public class Game {
         this.status = true;
     }
 
-    public void Start() {
-        System.out.println(START_GAME);
-        computer.createRandomNumbers();
-        while (status) {
-            user.inputUserNumbers();
-            outputHint(computer.randomNumbers, user.userNumbers);
-            if (isAnswer(strike)) {
-                outputRestart();
-            }
-        }
+    public boolean getStatus() {
+        return status;
     }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
 
     public void outputRestart() {
         System.out.println(END_GAME);
