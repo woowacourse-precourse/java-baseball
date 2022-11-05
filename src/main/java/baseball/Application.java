@@ -41,6 +41,7 @@ class Game {
         checkNumberLength(gamePlayerNumberInput);
         hasSameNumber(gamePlayerNumberInput);
         hasCharacters(gamePlayerNumberInput);
+        hasZero(gamePlayerNumberInput);
     }
 
     private void checkNumberLength(String stringGamePlayerInput) {
@@ -61,6 +62,12 @@ class Game {
     private void hasCharacters(String gamePlayerInput) {
         String regex = "^[0-9]*$";
         if (!gamePlayerInput.matches(regex)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void hasZero(String gamePlayerInput) {
+        if (gamePlayerInput.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
