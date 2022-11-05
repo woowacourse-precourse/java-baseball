@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.GameResultResponseDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
