@@ -21,6 +21,21 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
 
+    @Test
+    void 통합_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    //run() 의 매개변수 : 게임 시작시 사용자가 입력하는 inputStream
+                    run("123", "456", "345", "1", "456", "123", "2");
+                    //프로그램이 종료될때까지의 outputStream = output(), 출력된 문자열중 contains() 안의 문자열이 존재하는지 테스트
+                    assertThat(output()).contains("낫싱", "2볼", "3스트라이크","낫싱", "3스트라이크", "게임 종료");
+                },
+                //랜덤으로 만들어지는 값을 임의가 아닌 직접 넣어준다 밑의 경우 첫번째로 3,4,5, 두번째로 1,2,3 이 만들어짐
+                // assertRandomNumberInRangeTest -> assertRandomTest ->
+                3, 4, 5, 1, 2, 3
+        );
+    }
+
     @ParameterizedTest
     @DisplayName("입력된 값이 1이면 true, 2면 false 리턴하는 기능 테스트")
     @CsvSource(value = {"1, true", "2, false"})
@@ -232,7 +247,6 @@ class ApplicationTest extends NsTest {
             return false;
         }
     }
-
 
     @Test
     void 게임종료_후_재시작() {
