@@ -100,6 +100,17 @@ public class GameTest extends NsTest {
         assertThat(output()).contains("2스트라이크", "1볼 1스트라이크", "2볼", "낫싱");
     }
 
+    @DisplayName("BallMaker의 getRandomBall에서 예외가 나면 Game에도 예외가 전파된다")
+    @Test
+    void BallReader의_getRandomBall_에러_발생에_따른_게임_Game_에러_전파() {
+
+        when(ballMaker.getRandomBall())
+                .thenThrow(new IllegalArgumentException("RanddomeBall에서 예외발생"));
+
+        assertThatThrownBy(() -> game.play())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     protected void runMain() {
 
