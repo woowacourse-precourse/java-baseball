@@ -28,20 +28,6 @@ public class BallCount {
         }
     }
 
-    private int compareDigitList(int compareNumber, List<Integer> compareList, int exceptIndex){
-        int result = 0;
-        for(int i = 0; i < compareList.size(); i++) {
-            if (i == exceptIndex){
-                continue;
-            }
-            if (compareList.get(i) == compareNumber) {
-                result++;
-            }
-        }
-
-        return result;
-    }
-
     // 스트라이크 카운트 계산 method
     public void ruleStrikeCount(int targetNumber, int guessNumber){
         int strikeCount = 0;
@@ -64,20 +50,26 @@ public class BallCount {
                 .boxed().collect(Collectors.toList());
     }
 
+    private int compareDigitList(int compareNumber, List<Integer> compareList, int exceptIndex){
+        int result = 0;
+        for(int i = 0; i < compareList.size(); i++) {
+            if (i == exceptIndex){
+                continue;
+            }
+            if (compareList.get(i) == compareNumber) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
 
     public int getStrikeCount() {
         return strikeCount;
-    }
-
-    private void setBallCount(int ballCount) {
-        this.ballCount = ballCount;
-    }
-
-    private void setStrikeCount(int strikeCount) {
-        this.strikeCount = strikeCount;
     }
 
 }
