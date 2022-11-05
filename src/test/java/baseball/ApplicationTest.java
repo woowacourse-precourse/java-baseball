@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.game.application.GameService;
 import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
 import baseball.user.support.Parser;
@@ -8,7 +7,6 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -64,7 +62,16 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(()->parser.parseClientInput(input,3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @Test
+    void 스트라이크만_입력_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("189", "136","135");
+                    assertThat(output()).contains("1스트라이크", "2스트라이크","3스트라이크");
+                },
+                1, 3, 5
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
