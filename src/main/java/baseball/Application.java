@@ -10,7 +10,11 @@ public class Application {
         List<Integer> targetNums = new ArrayList<>();
         int digit = 3;
         while(digit > 0 ){
-            targetNums.add(r.nextInt(9)+1);
+            int r_num = r.nextInt(9)+1;
+            if (!targetNums.contains(r_num)) {
+                targetNums.add(r_num);
+                digit--;
+            }
         }
 
         return targetNums;
