@@ -16,6 +16,8 @@ public class BullsAndCows {
     private static final int NUMBER_LENGTH = 3;
     private static final String REGEX_NOT_NUMBER = "^\\d";
     private static final int STRIKE_COUNT_FOR_END = 3;
+    private static final int RESTART_GAME = 1;
+    private static final int END_GAME = 2;
 
     private final List<Integer> answerNumberList = new ArrayList<>();
     private List<Integer> userInput;
@@ -41,7 +43,20 @@ public class BullsAndCows {
         return getResultScoreByFormat().trim();
     }
 
-    public void restart() {
+    public String getResultOfEndGame(String userInput) {
+        int flag = Integer.parseInt(userInput);
+        if (flag == (RESTART_GAME)) {
+            return RESTART.getMessage();
+        }
+
+        if (flag == END_GAME) {
+            return END.getMessage();
+        }
+
+        throw new IllegalArgumentException("Game is over, you must input only flag number");
+    }
+
+    private void restart() {
         createRandomAnswer();
     }
 
