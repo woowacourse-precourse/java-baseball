@@ -92,6 +92,16 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+    @Test
+    void 스트라이크_볼_입력_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("153","152","135");
+                    assertThat(output()).contains("2볼 1스트라이크","1볼 1스트라이크");
+                },
+                1, 3, 5
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
