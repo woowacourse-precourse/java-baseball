@@ -23,7 +23,26 @@ public class Computer {
     }
 
     public String judgeNumber(List<Integer> answer, List<Integer> userInput) {
+        // 스트라이크 개수
+        int strike = countStrike(answer, userInput);
 
+        // 볼 개수
+        int ball = countBall(answer, userInput);
+
+        if(strike == 3) {
+            return STRIKE;
+        }
+
+        if(strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+        if(strike == 0) {
+            return (ball + "볼");
+        }
+        if(ball == 0) {
+            return (strike + "스트라이크");
+        }
+        return (ball + "볼 " + strike + "스트라이크");
     }
 
     private boolean validateConcord(int answer, int userInput) {
