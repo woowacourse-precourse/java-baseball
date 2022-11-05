@@ -17,6 +17,7 @@ class GameViewTest {
         assertThrows(IllegalArgumentException.class, () -> view.isValidUser(0));
     }
 
+    @Test
     void 게임_다시_시작_인풋_테스트_2() throws Exception {
         //given
         GameView view = new GameView();
