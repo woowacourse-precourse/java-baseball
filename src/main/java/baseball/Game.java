@@ -20,7 +20,8 @@ public class Game {
 
     List<Integer> computerNumber;
     List<Integer> playerNumber;
-    boolean flag = true;
+    boolean isGameOn;
+    boolean restarter;
 
     public List<Integer> getComputerNumber() {
         List<Integer> computerNumber = new ArrayList<Integer>();
@@ -87,7 +88,7 @@ public class Game {
         }
         if (countResult[1] == 3) {
             System.out.println(WIN_NOTICE);
-            flag = false;
+            isGameOn = false;
         }
     }
 
@@ -97,12 +98,13 @@ public class Game {
         printResult(checkNumber(playerNumber));
     }
 
+
     public void start() {
-        notifyStart();
-        computerNumber = getComputerNumber();
-        do {
-            getHint();
-        } while (flag);
+            isGameOn = true;
+            computerNumber = getComputerNumber();
+            do {
+                getHint();
+            } while (isGameOn);
     }
 
     public void notifyStart() {
@@ -113,5 +115,25 @@ public class Game {
         System.out.println(RESTART_OR_END_NOTICE);
     }
 
+    public String getRestartOrEndNumber() throws IllegalArgumentException {
+        String input = Console.readLine();
+        if (input != "1" && input != "2") {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
 
+    public boolean isRestarting(String restartOrEndNumber) {
+        boolean isRestarting = true;
+        if (restartOrEndNumber == "1") {
+            isRestarting = true;
+        } else if (restartOrEndNumber == "2") {
+            isRestarting = false;
+        }
+        return isRestarting;
+    }
+    public void setRestarter(){
+        restarter = isRestarting(getRestartOrEndNumber());
+    }
 }
+
