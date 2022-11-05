@@ -4,18 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeRandomNumber {
+public class Computer {
     List<Integer> computer = new ArrayList<>();
 
-    List<Integer> getRandomNumber() {
-
+    public Computer() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+    }
 
+    public List<Integer> getRandomNumber() {
         return computer;
     }
 }
