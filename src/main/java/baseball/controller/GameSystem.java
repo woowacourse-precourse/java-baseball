@@ -28,8 +28,12 @@ public class GameSystem {
             initCount();
             setUserAnswer();
             correctAnswer = checkStrikeBall();
-            System.out.println(strikeCount+ " " + ballCount);
-            if(correctAnswer) break;
+            if(correctAnswer) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+            userInterface.printResult(strikeCount,ballCount);
+
         }
     }
 
