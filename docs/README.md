@@ -31,8 +31,8 @@
     - 게임 플레이어가 입력한 세 자리의 수 중 isBall의 결과가 true인 수와 index를 받아 컴퓨터 플레이어의 수와 비교
     - index가 동일하면 true, 그렇지 않으면 false를 반환
   
-- [ ] Game Class
-  - [ ] `void play()`
+- [X] Game Class
+  - [X] `void play()`
     - 게임에서 사용되는 표현을 콘솔에 출력하는 것은 View 객체에게 위임
     - 게임 플레이어가 입력한 세 자리의 수를 받아서 컴퓨터 플레이어의 수와 비교하는 것은 Judge 객체에게 위임
     - 두 수를 비교한 결과를 해석하는 것은 Result 객체에게 위임
