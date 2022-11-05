@@ -22,7 +22,10 @@ public class ScoreResultView {
     }
 
     public String makeResultString(){
-        return "";
+        if(isNothing()) return printNothing();
+        if(isOnlyBall()) return printOnlyBall();
+        if(isOnlyStrike()) return printOnlyStrike();
+        return printBothBallAndStrike();
     }
 
     public boolean isNothing(){
