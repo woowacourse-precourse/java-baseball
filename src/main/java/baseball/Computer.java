@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class Computer {
 
+    private final ResultProcessor processor = new ResultProcessor();
+
     public String selectRandomNumber() {
         List<Integer> randomDigits = new ArrayList<>();
         while (randomDigits.size() != 3) {
@@ -20,7 +22,6 @@ public class Computer {
     }
 
     public Result resultOfPrediction(String randomNumber, String predictedNumber) {
-        // result processor process result and return
-        return new Result();
+        return processor.processResult(randomNumber, predictedNumber);
     }
 }
