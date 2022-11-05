@@ -65,7 +65,6 @@ public class StringTest {
         }
         assertThat(result).isEqualTo(true);
     }
-
     @Test
     void makeAnswer_컴퓨터_정답_만들기(){
         List<Integer> answer = makeAnswer();
