@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -48,5 +48,22 @@ public class Baseball {
             set.add(charNumber);
         }
         return false;
+    }
+
+
+    public List<Integer> estimateScore() {
+        List<Integer> count = new ArrayList<>(3);
+        for (int index = 0; index < userNumber.size(); index++) {
+            if (computer.indexOf(userNumber.get(index)) == -1) {
+                count.add(2, count.get(2) + 1);
+                continue;
+            }
+            if (computer.indexOf(userNumber.get(index)) == index) {
+                count.add(1, count.get(1) + 1);
+                continue;
+            }
+            count.add(0, count.get(0) + 1);
+        }
+        return count;
     }
 }
