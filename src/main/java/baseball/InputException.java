@@ -5,11 +5,11 @@ import java.util.Set;
 
 public class InputException {
 
-    protected String input;
+
     public InputException(String input) {
-        this.input = input;
-        exceptionCheck(this.input);
+        exceptionCheck(input);
     }
+
 
     private void exceptionCheck(String input) throws IllegalArgumentException {
         Set<Character> duplicationCheck = new HashSet<>();
