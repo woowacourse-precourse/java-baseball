@@ -91,10 +91,27 @@ public class Application {
 
     public static List<Integer> userNumberValidate(String userInput) throws IllegalArgumentException {
         List<Integer> user = createUserNumberList(userInput);
-        if (user.size() > 3) {
+        if (user.size() > 3 || isNumber(userInput) == false) {
             throw new IllegalArgumentException();
         }
 
         return user;
+    }
+
+    public static boolean isNumber(String userInput) {
+        char check;
+
+        if (userInput.equals("")) {
+            return false;
+        }
+
+        for (int i = 0; i < userInput.length(); i++) {
+            check = userInput.charAt(i);
+            if (check < 48 || check > 58) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
