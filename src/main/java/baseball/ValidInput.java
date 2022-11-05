@@ -4,13 +4,11 @@ import java.util.HashSet;
 
 import static baseball.Constant.*;
 
-public class IsValidInput {
-
-
+public class ValidInput {
     String input;
     boolean playing;
 
-    IsValidInput(String input, boolean playing) {
+    ValidInput(String input, boolean playing) {
         this.input = input;
         this.playing = playing;
     }
