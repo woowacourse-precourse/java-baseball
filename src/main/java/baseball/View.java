@@ -5,9 +5,7 @@ public class View {
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
     private static class ViewHolder {
-
         private static final View INSTANCE = new View();
-
     }
 
     private View() {
