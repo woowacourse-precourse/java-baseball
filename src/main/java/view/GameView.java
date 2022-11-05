@@ -38,6 +38,7 @@ public class GameView {
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
 
                 int numInputOfUser = parseIntFromStr(getString());
+                isValidUser(numInputOfUser);
                 if (isEndgameInputOfUser(gameController, numInputOfUser)) {
                     break;
                 }
@@ -83,7 +84,7 @@ public class GameView {
         return readLine();
     }
 
-    private void isValidUser(int numInput) {
+    public void isValidUser(int numInput) {
         isValidPositiveInt(numInput);
         isValidRightNum(numInput);
     }

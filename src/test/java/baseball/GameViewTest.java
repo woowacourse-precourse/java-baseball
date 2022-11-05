@@ -1,7 +1,7 @@
 package baseball;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import view.GameView;
@@ -19,26 +19,18 @@ class GameViewTest {
     void 게임_다시_시작_인풋_테스트_1() throws Exception {
         //given
         GameView view = new GameView();
-        // 입력을 담는다.
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
         // when
-
         // then
+        assertThrows(IllegalArgumentException.class, () -> gameView.isValidUser(0));
     }
 
     void 게임_다시_시작_인풋_테스트_2() throws Exception {
         //given
         GameView view = new GameView();
-        // 입력을 담는다.
-        String input = "3";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
 
         // when
-
         // then
+        assertThrows(IllegalArgumentException.class, () -> gameView.isValidUser(3));
     }
 }
