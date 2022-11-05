@@ -11,15 +11,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import net.bytebuddy.asm.Advice.Exit;
 
 public class Application {
-	public static void main(String[] args) {
+	static Message message = new Message();
+	static boolean gameSet = true;
+	public static void main(String[] args) {		
 		gameStart(getComputerNumbers());
 	}
 
 	public static void gameStart(List<Integer> comNumber) {
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		System.out.println(message.getGamestart());
 		Map<String, Integer> userScore = new HashMap<>();
-		boolean isGameContinued = true;
-		while (isGameContinued) {
+		while (gameSet) {
 			userScore = gameScorePut(comNumber);
 			scoreProcess(userScore);
 		}
@@ -38,15 +39,15 @@ public class Application {
 	}
 
 	public static List<Integer> getUserNumbers() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(message.getInputnumbers());
 		String userAnotherNumbers = Console.readLine();
 		List<Integer> userNumbersList = userNumbersException(userAnotherNumbers);
 		return userNumbersList;
 	}
 
-	public static List<Integer> userNumbersException (String userNumbers) throws IllegalArgumentException{
+	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
 		List<Integer> userNumbersList = new ArrayList<>();
-		int userNumbersInt = 0;		
+		int userNumbersInt = 0;
 		Pattern userNumberPattern = Pattern.compile("^[1-9]*$");
 		Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
 		boolean isUserNumberMatch = matchUserNumber.find();
@@ -66,7 +67,7 @@ public class Application {
 		for (int number = 0; number < userNumbers.length(); number++) {
 			char[] userNumberChar = userNumbers.toCharArray();
 			userNumbersList.add((int) userNumberChar[number] - 48);
-		}		
+		}
 		return userNumbersList;
 	}
 
@@ -75,48 +76,42 @@ public class Application {
 		List<Integer> userNumber = getUserNumbers();
 		for (int i = 0; i < userNumber.size(); i++) {
 			if (userNumber.get(i) == comNumber.get(i)) {
-				userScore.put("스트라이크", userScore.getOrDefault("스트라이크", 0) + 1);
+				userScore.put(message.getStrike(), userScore.getOrDefault(message.getStrike(), 0) + 1);				
 			} else if (comNumber.contains(userNumber.get(i))) {
-				userScore.put("볼", userScore.getOrDefault("볼", 0) + 1);
+				userScore.put(message.getBall(), userScore.getOrDefault(message.getBall(), 0) + 1);
 			}
 		}
 		return userScore;
 	}
 
 	public static void scoreProcess(Map<String, Integer> userScore) {
-		Integer strike = userScore.get("스트라이크");
-		Integer ball = userScore.get("볼");
+		Integer strike = userScore.get(message.getStrike());
+		Integer ball = userScore.get(message.getBall());
 		if (strike == null && ball == null) {
-			System.out.println("낫싱");
+			System.out.println(message.getNothing());
 		} else if (strike != null && ball != null) {
-			System.out.println(ball + "볼 " + strike + "스트라이크");
+			System.out.println(ball + message.getBall() + strike + message.getStrike());
 		} else if (strike != null && ball == null) {
-			System.out.println(strike + "스트라이크");
+			System.out.println(strike + message.getStrike());
 			if (strike == 3)
 				gameContinued(strike);
 		} else {
-			System.out.println(ball + "볼");
+			System.out.println(ball + message.getBall());
 		}
 	}
 
 	public static void gameContinued(Integer strike) {
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(message.getGameover());
 		String continued = Console.readLine();
 		continuedExceptionProcess(continued);
 	}
 
-	public static void continuedExceptionProcess(String continued) {
-		try {
-			if (continued.equals("1"))
-				gameStart(getComputerNumbers());
-			else if (continued.equals("2"))
-				System.exit(0);
-			else
-				throw new IllegalArgumentException();
-		} catch (IllegalArgumentException illegal) {
-			System.err.println(illegal);
-			System.exit(0);
-		}
+	public static void continuedExceptionProcess(String continued) throws IllegalArgumentException {
+		if (continued.equals("1"))
+			gameStart(getComputerNumbers());
+		else if (continued.equals("2"))
+			gameSet=false;
+		else
+			throw new IllegalArgumentException();
 	}
 }
