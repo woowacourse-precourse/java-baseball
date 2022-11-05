@@ -14,7 +14,7 @@
 - 숫자야구의 컴퓨터 역할
 - Numbers answer : 답 3자리에 해당됨, 변경할 수 없는 상수
 - Computer generateAnswer() : 숫자 야구의 올바른 답을 생성하는 함수
-  - validation 통과할 때까지 다시 생성한다
+  - 숫자를 중복해서 뽑지 않도록 구현한다
 - int strike(Numbers numbers) : 스트라이크 개수를 계산하는 함수
 - int ball(Numbers numbers) : 볼 개수를 계산하는 함수
 
