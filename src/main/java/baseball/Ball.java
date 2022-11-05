@@ -51,9 +51,4 @@ public class Ball {
     public int hashCode() {
         return this.number.hashCode();
     }
-
-    @Override
-    public String toString() {
-        return "number : " + number;
-    }
 }

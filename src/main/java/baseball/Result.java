@@ -62,9 +62,4 @@ public class Result {
     public Integer getBall() {
         return this.ball;
     }
-
-    @Override
-    public String toString() {
-        return "strike : " + strike + " ball : " + ball;
-    }
 }
