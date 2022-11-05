@@ -15,7 +15,7 @@ public class Player {
     public static final int NUMBER_INDEX_TWO = 2;
     public static final int START_POSITION_NUMBER = 1;
 
-    private final List<Ball> balls;
+    private List<Ball> balls;
 
     public Player(List<Integer> numbers) {
         validateNumbers(numbers);
@@ -74,4 +74,7 @@ public class Player {
                 .orElse(BallStatus.NOTHING);
     }
 
+    public void changeBalls(List<Integer> newBallNumbers) {
+        balls = mapToBall(newBallNumbers);
+    }
 }

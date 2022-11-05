@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.domain.GameResult;
-import baseball.domain.Player;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -107,5 +105,16 @@ public class PlayerTest {
         GameResult gameResult = player.playGame(otherPlayer);
 
         assertThat(gameResult).isEqualTo(new GameResult(0, 1));
+    }
+
+    @Test
+    void 플레이어의_볼3개를_바꾸고_게임실행() {
+        Player player = new Player(List.of(1, 2, 3));
+        Player otherPlayer = new Player(List.of(1, 2, 3));
+
+        player.changeBalls(List.of(4, 5, 6));
+        GameResult gameResult = player.playGame(otherPlayer);
+
+        assertThat(gameResult).isEqualTo(new GameResult(0, 0));
     }
 }
