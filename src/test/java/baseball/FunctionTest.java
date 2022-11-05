@@ -1,17 +1,24 @@
 package baseball;
 
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.jupiter.api.DisplayName;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 
 import static baseball.Application.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.as;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FunctionTest {
 @Nested
@@ -43,12 +50,15 @@ class 랜덤으로숫자를뽑기{
         @Test
         void CheckInputNum(){
             String num = "456";
+            int[] SuccessNum = new int[]{4,5,6};
             String num1 = "45678";
-            int UserChoiceNum[] = new int[3];
-            boolean result = GoAndStop(num,UserChoiceNum);
-            boolean result1 = GoAndStop(num1,UserChoiceNum);
-            assert (result == true);
-            assert (result1 == false);
+            int[] UserChoiceNum = new int[3];
+            int[] result = GoAndStop(num,UserChoiceNum);
+            assertThatThrownBy(() -> Application.GoAndStop(num1,UserChoiceNum))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+            assert ((result.length) == SuccessNum.length);
+
         }
     }
 
@@ -97,7 +107,27 @@ class 랜덤으로숫자를뽑기{
             int[] UserChoiceNum = new int[]{1,2,3};
             HashMap<String,Integer> map = new HashMap<>();
             map = BallStrike(RandomNumber,UserChoiceNum);
-            assert (map.get("홈런") == 1);
+            assert (map.get("스트라이크") == 3);
+        }
+    }
+    @Nested
+    class 스트라이크3번{
+        @Test
+            void StrikeTest1(){
+            int Restart = 0;
+            String choice = "2";
+            InputStream in = new ByteArrayInputStream(choice.getBytes());
+            System.setIn(in);
+            assertEquals(1,HomeRun());
+        }
+
+        @Test
+        void StrikeTest2(){
+            int Restart = 0;
+            String choice = "1";
+            InputStream in = new ByteArrayInputStream(choice.getBytes());
+            System.setIn(in);
+            assertEquals(0,HomeRun());
         }
 
     }
