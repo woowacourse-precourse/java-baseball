@@ -1,21 +1,32 @@
 package baseball;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UnitTest {
 
     Application application;
+    final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    final PrintStream standardOut = System.out;
 
     @BeforeEach
     public void init(){
         application = new Application();
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
+    @AfterEach
+    void tearDown() {
+        System.setOut(standardOut);
+    }
+
     @Test
     public void printStartGame_정상_테스트(){
         //given
@@ -304,6 +315,69 @@ class UnitTest {
 
         //then
         Assertions.assertThat(judge).containsExactly(1,2);
+    }
+
+    @Test
+    public void printJudge_3스트라이크_출력(){
+        //given
+        int [] score = {3,0};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("3스트라이크", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_낫싱_출력(){
+        //given
+        int [] score = {0,3};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("낫싱", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_2볼_1스트라이크_출력(){
+        //given
+        int [] score = {1,2};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("2볼 1스트라이크", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_1볼_2스트라이크_출력(){
+        //given
+        int [] score = {2,1};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("1볼 2스트라이크", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_첫번째_원소가_범위_밖에_있을떄(){
+        //given
+        int [] score = {4,1};
+        //when
+
+        //then
+        assertThatThrownBy(() -> application.printJudge(score))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("score가 범위 안에 있지 않습니다");
+    }
+    @Test
+    public void printJudge_두번째_원소가_범위_밖에_있을떄(){
+        //given
+        int [] score = {1,4};
+        //when
+
+        //then
+        assertThatThrownBy(() -> application.printJudge(score))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("score가 범위 안에 있지 않습니다");
     }
     private boolean checkIfEachDifferent(int result){
         int i1 = result/100;
