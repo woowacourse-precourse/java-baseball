@@ -30,18 +30,25 @@ public class NumberBaseBallGameMachine {
     }
 
     public void validateThreeNumbers(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("공백없이 연속된 3개의 숫자를 입력해야 합니다.");
+        if (input.length() < 3) {
+            throw new IllegalArgumentException("입력값이 부족합니다. (3개 필요)");
         }
+        if (input.length() > 3) {
+            throw new IllegalArgumentException("입력값이 너무 많습니다. (3개 필요, 공백도 입력으로 판단)");
+        }
+
         Set<Character> charSet = input.chars().mapToObj(o -> (char) o).collect(Collectors.toSet());
-        if (charSet.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야 합니다.");
-        }
         charSet.forEach(o -> {
             if (!Character.isDigit(o)) {
                 throw new IllegalArgumentException("숫자가 아닌 입력값이 존재합니다.");
             }
+            if (o == '0') {
+                throw new IllegalArgumentException("1에서 9사이의 입력값만 유효합니다.");
+            }
         });
+        if (charSet.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야 합니다.");
+        }
     }
 
     public int getNewGameOrStop() {
