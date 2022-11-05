@@ -6,8 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberListGenerator {
 
-    public List<Integer> generate(){
-        System.out.println(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+    public static List<Integer> generate(){
         return Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 }
