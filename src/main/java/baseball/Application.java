@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
@@ -108,5 +107,27 @@ public class Application {
             resultMap.put("isStrikeThree", validations.isStrikeThree(strikeCnt));
             return  resultMap;
         }
+
+        public void printStartMessage(){
+            System.out.println("숫자 야구 게임을 시작합니다.");
+        }
+
+        public void printNothing(){
+            System.out.println("낫싱");
+        }
+
+        public void printStrike(int strikeCount){
+            if(strikeCount==0){
+                System.out.println();
+            }else {
+                System.out.printf("%d스트라이크\n", strikeCount);
+            }
+        }
+        public void printBall(int ballCount){
+            if(ballCount!=0) {
+                System.out.printf("%d볼 ", ballCount);
+            }
+        }
+
     }
 }
