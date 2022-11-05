@@ -36,6 +36,10 @@ public class AnswerChecker {
         }
     }
 
+    public boolean isAnswer () {
+        return strikeCnt == 3;
+    }
+
     public int getBallCnt() {
         return ballCnt;
     }
