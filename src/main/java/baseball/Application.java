@@ -17,6 +17,10 @@ public class Application {
         List<String> receivingNumbers = receivingValue();
         List<String> randomNumbers = createRandom();
 
+        int strikesCount = checkStrike(receivingNumbers, randomNumbers);
+        int ballCount = checkBall(receivingNumbers, randomNumbers) - strikesCount;
+
+
         return false;
     }
 
