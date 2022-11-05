@@ -11,8 +11,6 @@
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-
-
 ## 🎯 프로그래밍 요구 사항
 
 - JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
@@ -39,33 +37,39 @@
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
-
 # 기능 목록
+
 - 값에 대한 검증을 수행하는 객체 - `ValidationBullsAndCows`
-  - 사용자가 입력한 문자열 / 랜덤하게 생성된 입력에 대해 검증한다.
-  - 글자수(길이)가 3자인지 검증한다.
-  - 숫자인지 검증한다.
-  - 프로그램 종료조건을 검증한다.
+    - 사용자가 입력한 문자열 / 랜덤하게 생성된 입력에 대해 검증한다.
+        - 글자수(길이)가 3자인지 검증한다.
+        - 숫자인지 검증한다.
+        - 프로그램 종료조건을 검증한다.
+            - 3스트라이크인지 확인한다.
+                - `3스트라이크`라면 `1` 혹은 `2`를 입력받아 `재시작`/`게임종료`를 정할 수 있다.
+                - `3스트라이크`상태에서의 입력값의 길이가 1이고 숫자인지 검증한다.
 
 
 - 숫자야구게임을 진행하는 객체 - `BullsAndCows`
-  - 점수를 구한다.
-    - 스트라이크의 개수에 대한 결과를 반환한다. - `getStrikeScore`
-    - 스트라이크 여부를 판별한다. - `isStrike`
-    - 볼의 개수에 대한 결과를 반환한다. - `getBallScore`
-    - 볼 여부를 판별한다. - `isBall`
-    - `낫싱`인지 조건을 판단한다. - `isNothing`
-  - 결과를 반환한다.
-    - 사용자가 추측한 값에 대한 결과 반환한다. - `getResultOfGuessNumber`
-    - 0볼 0스트라이크 형식의 결과를 반환한다. - `getResultScoreByFormat`
+    - 컴퓨터의 랜덤한 값(정답)을 생성한다.
+        - `1` ~ `Integer.MAX_VALUE - 1`사이의 랜덤한 값을 받아서 3글자 이내의 숫자로 변환하는 방식을 처리한다.
+
+    - 점수를 구한다.
+        - 스트라이크의 개수에 대한 결과를 반환한다. - `getStrikeScore`
+        - 스트라이크 여부를 판별한다. - `isStrike`
+        - 볼의 개수에 대한 결과를 반환한다. - `getBallScore`
+        - 볼 여부를 판별한다. - `isBall`
+        - `낫싱`인지 조건을 판단한다. - `isNothing`
+    - 결과를 반환한다.
+        - 사용자가 추측한 값에 대한 결과 반환한다. - `getResultOfGuessNumber`
+        - 0볼 0스트라이크 형식의 결과를 반환한다. - `getResultScoreByFormat`
 
 
 - 숫자야구게임 결과 Enum - `ResultMessage`
-  - 값
-    - `STRIKE("스트라이크")`
-    - `BALL("볼")`
-    - `NOTHING("낫싱")`
-  - 숫자를 넣었을 때 결과 문구로 반환해주는 기능
-    - `of(int number)`
-      - ex) BALL.of(1) return "1볼"
-      - ex) STRIKE.of(2) return "2스트라이크"
+    - 값
+        - `STRIKE("스트라이크")`
+        - `BALL("볼")`
+        - `NOTHING("낫싱")`
+    - 숫자를 넣었을 때 결과 문구로 반환해주는 기능
+        - `of(int number)`
+            - ex) BALL.of(1) return "1볼"
+            - ex) STRIKE.of(2) return "2스트라이크"
