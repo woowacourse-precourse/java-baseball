@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static final Integer EXCEPT_OCCUR = -1;
+    public static final Integer WRONG_ANSWER = 0;
     public static final Integer RE_GAME = 1;
     public static final Integer END_GAME = 2;
+    public static final Integer CONTINUE_GAME = 3;
 
     public static boolean isLength(String inputNum) {
         if (inputNum.length() != 3) {
@@ -56,7 +57,7 @@ public class Application {
     }
 
     public static List<Integer> userPick() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
         if (isValid(inputNum)) {
             String[] tempNum = inputNum.split("");
@@ -99,55 +100,55 @@ public class Application {
         return result;
     }
 
-    public static Integer continueGame(List<Integer> result) {
-        int strike = result.get(0);
-        if (strike == 3) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String choice = Console.readLine();
-            int continueResult = Character.getNumericValue(choice.charAt(0));
-            return continueResult;
-        } else{
-            return RE_GAME;
+    public static void continueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+        int choiceNum = Character.getNumericValue(choice.charAt(0));
+        if (choiceNum == RE_GAME) {
+            playGame();
+        } else if (choiceNum == END_GAME) {
+            return;
+        } else {
+            continueGame();
         }
     }
 
-    public static void printResult(List<Integer> result) {
+    public static Integer printResult(List<Integer> result) {
         int strike = result.get(0);
         int ball = result.get(1);
         if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return CONTINUE_GAME;
         } else if (strike > 0 && ball > 0) {
-            System.out.println(ball+"볼"+" "+strike+"스트라이크");
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
         } else if (strike > 0 && ball == 0) {
-            System.out.println(strike+"스트라이크");
+            System.out.println(strike + "스트라이크");
         } else if (strike == 0 && ball > 0) {
-            System.out.println(ball+"볼");
+            System.out.println(ball + "볼");
         } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
-
+        return WRONG_ANSWER;
     }
 
-    public static Integer playGame() {
-        try {
-            List<Integer> computerNum = computerPick();
+    public static void playGame() {
+        List<Integer> computerNum = computerPick();
+        int gameResult = 0;
+
+        do {
             List<Integer> userNum = userPick();
             List<Integer> result = compare(computerNum, userNum);
-            printResult(result);
-            return continueGame(result);
-        } catch (IllegalArgumentException e) {
-            return EXCEPT_OCCUR;
+            gameResult = printResult(result);
+        } while (gameResult == WRONG_ANSWER);
+
+        if (gameResult == 3) {
+            continueGame();
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다");
-        while(true){
-            int gameResult = playGame();
-            if (gameResult == END_GAME || gameResult == EXCEPT_OCCUR) {
-                break;
-            }
-        }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        playGame();
     }
 }
