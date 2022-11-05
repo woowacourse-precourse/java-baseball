@@ -217,4 +217,149 @@ public class NumberBaseballGameTest {
         IntStream.range(0, balls.size())
                 .forEach(index -> assertThat(balls.get(index).getNumber()).isEqualTo(result.get(index)));
     }
+
+    @Test
+    void 스트라이크가_있으면_true를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2));
+
+        Method method = ball.getClass().getDeclaredMethod("isStrike", List.class);
+        method.setAccessible(true);
+        boolean result = (boolean) method.invoke(ball, balls);
+
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 스트라이크가_없으면_false를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+
+        Method method = ball.getClass().getDeclaredMethod("isStrike", List.class);
+        method.setAccessible(true);
+        boolean result = (boolean) method.invoke(ball, balls);
+
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 볼이_있으면_true를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+
+        Method method = ball.getClass().getDeclaredMethod("isBall", List.class);
+        method.setAccessible(true);
+        boolean result = (boolean) method.invoke(ball, balls);
+
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 볼이_없으면_false를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2));
+
+        Method method = ball.getClass().getDeclaredMethod("isBall", List.class);
+        method.setAccessible(true);
+        boolean result = (boolean) method.invoke(ball, balls);
+
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 스트라이크면_스트라이크_결과를_반환한다() {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2));
+        BaseballJudge result = BaseballJudge.STRIKE;
+
+        BaseballJudge baseballJudge = ball.getResult(balls);
+
+        assertThat(baseballJudge).isEqualTo(result);
+    }
+
+    @Test
+    void 볼이면_볼_결과를_반환한다() {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        BaseballJudge result = BaseballJudge.BALL;
+
+        BaseballJudge baseballJudge = ball.getResult(balls);
+
+        assertThat(baseballJudge).isEqualTo(result);
+    }
+
+    @Test
+    void 아무것도_아니면_낫싱_결과를_반환한다() {
+        Ball ball = new Ball(3, 0);
+        List<Ball> balls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2));
+        BaseballJudge result = BaseballJudge.NOTHING;
+
+        BaseballJudge baseballJudge = ball.getResult(balls);
+
+        assertThat(baseballJudge).isEqualTo(result);
+    }
+
+    @Test
+    void 스트라이크면_스트라이크_카운트_하나를_올린다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Referee referee = new Referee();
+
+        Method method = referee.getClass().getDeclaredMethod("count", BaseballJudge.class);
+        method.setAccessible(true);
+        method.invoke(referee, BaseballJudge.STRIKE);
+
+        assertThat(referee.getStrikeCount()).isEqualTo(1);
+    }
+
+    @Test
+    void 볼이면_볼_카운트_하나를_올린다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Referee referee = new Referee();
+
+        Method method = referee.getClass().getDeclaredMethod("count", BaseballJudge.class);
+        method.setAccessible(true);
+        method.invoke(referee, BaseballJudge.BALL);
+
+        assertThat(referee.getBallCount()).isEqualTo(1);
+    }
+
+    @Test
+    void 게임결과를_판단한다_1스트라이크_1볼() {
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(3, 2));
+        int resultStrikeCount = 1;
+        int resultBallCount = 1;
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+
+        assertThat(referee.getStrikeCount()).isEqualTo(resultStrikeCount);
+        assertThat(referee.getBallCount()).isEqualTo(resultBallCount);
+    }
+
+    @Test
+    void 게임결과를_판단한다_2볼() {
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2));
+        int resultStrikeCount = 0;
+        int resultBallCount = 2;
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+
+        assertThat(referee.getStrikeCount()).isEqualTo(resultStrikeCount);
+        assertThat(referee.getBallCount()).isEqualTo(resultBallCount);
+    }
+
+    @Test
+    void 게임결과를_판단한다_3스트라이크() {
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        int resultStrikeCount = 3;
+        int resultBallCount = 0;
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+
+        assertThat(referee.getStrikeCount()).isEqualTo(resultStrikeCount);
+        assertThat(referee.getBallCount()).isEqualTo(resultBallCount);
+    }
 }
