@@ -23,4 +23,17 @@ public class Game {
         this.ballReader = ballReader;
     }
 
+    public String play() {
+        List<Integer> computerBall = ballMaker.getRandomBall();
+        boolean finishGame = false;
+        while (finishGame != true) {
+            List<Integer> userBall = ballMaker.getUserBall();
+            finishGame = ballReader.isFinished(userBall, computerBall);
+            printResult(userBall, computerBall);
+            numberOfAttempts += 1;
+        }
+        System.out.printf(ENDING_MESSAGE, numberOfBall);
+        return "";
+    }
+
 }
