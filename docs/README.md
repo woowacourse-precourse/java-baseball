@@ -73,8 +73,18 @@
 - [ ] result을 리턴
 
 ## (void)inputAvailableUserNumberService()
-- [ ] availableUserNumberIsChecking 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
+- [ ] availableUserNumberIsChecking, 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
 - [ ] userNumberMessagePrint함수를 실행
 - [ ] userNumberInput함수를 실행
 - [ ] availableUserNumberIsChecked함수를 실행 후 출력값을 availableUserNumberIsChecking에 선언
 - [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행
+
+## (void)inputUserNumberService()
+- [ ] 사용자가의 수가 컴퓨터의 수와 동일한지 비교후 결과값을 저장하는 checkedAnswer을 false로 초기화
+- [ ] inputAvailableUserNumberService함수를 실행
+- [ ] StringToList함수를 실행
+- [ ] checkStrickNumbers함수를 실행
+- [ ] checkedBallNumbers함수를 실행
+- [ ] calculatedStrikeBallNumber함수를 실행
+- [ ] printBaseballOfResult함수를 실행 후 결과값을 checkedAnswer에 저장
+- [ ] checkedAnswer의 값이 false이면, inputUserNumberService함수를 실행
