@@ -14,7 +14,6 @@ public class BaseballNumber {
     public BaseballNumber(final Integer input) {
         validateNumberIsLessThanMinNumber(input);
         validateNumberIsMoreThanMaxNumber(input);
-
         this.number = input;
     }
 
