@@ -31,6 +31,11 @@ public class ExecuteService {
         printService.printGameEnd();
         String endInput = getUserInput();
         processService.validateEndInput(endInput);
+        int parsedEndInput = Integer.parseInt(endInput);
+
+        if (parsedEndInput == 1) {
+            execute();
+        }
     }
 
     private boolean checkCompleteness(Integer strikes) {
