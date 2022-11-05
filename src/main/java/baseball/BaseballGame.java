@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Computer;
 import domain.Number;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class BaseballGame {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private int restartNumber;
 
     public List<Integer> input() {   // 입력
@@ -30,7 +32,26 @@ public class BaseballGame {
         return number;
     }
 
-    public void makeResult(Number number, List<Integer> computerNumber) {   // 결과 생성
+    public void gameStart() {
+        restartNumber = 0;
+
+        Computer computer = new Computer();
+        List<Integer> computerNumber = computer.makeRandomNumber();
+        System.out.println(computerNumber);
+
+        while(restartNumber == 0) {
+            Number number = new Number(input());
+            makeResult(number, computerNumber);
+        }
+
+        System.out.println(GAME_RESTART);
+
+        if (Console.readLine().equals("1")) {
+            gameStart();
+        };
+    }
+
+    public void makeResult(Number number, List<Integer> computerNumber) {
         int strike = 0;
         int ball = 0;
 
