@@ -57,4 +57,12 @@ public class ViewTest {
         View.printBallAndStrike(2,1);
         assertThat("2볼 1스트라이크").isEqualTo(out.toString().trim());
     }
+
+    @Test
+    void 낫싱메시지_출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        View.printNothing();
+        assertThat("낫싱").isEqualTo(out.toString().trim());
+    }
 }
