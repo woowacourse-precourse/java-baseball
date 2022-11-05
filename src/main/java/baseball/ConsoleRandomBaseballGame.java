@@ -4,6 +4,8 @@ import baseball.baseball.Digits;
 import baseball.baseball.RandomBaseballGame;
 import baseball.baseball.Result;
 
+import static baseball.Random.pickUniqueNumbersInRange;
+
 public class ConsoleRandomBaseballGame {
     private final RandomBaseballGame randomBaseballGame;
     private final GameConsole gameConsole;
@@ -25,7 +27,8 @@ public class ConsoleRandomBaseballGame {
     }
 
     private void playOneGame() {
-        randomBaseballGame.newGame();
+        Digits digits = new Digits(pickUniqueNumbersInRange(1, 9, Digits.DIGIT_COUNT));
+        randomBaseballGame.newGame(digits);
 
         while (true) {
             if (playOneTurn()) break;

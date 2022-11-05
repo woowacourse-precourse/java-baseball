@@ -3,7 +3,7 @@ package baseball.baseball;
 import java.util.List;
 
 public class Digits {
-    static final int DIGIT_COUNT = 3;
+    static public final int DIGIT_COUNT = 3;
     private final List<Integer> digitList;
 
     public Digits(List<Integer> digitList) {
