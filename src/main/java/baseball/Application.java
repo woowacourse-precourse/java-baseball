@@ -7,17 +7,18 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {
     public static void main(String[] args) {
         printStartJavaBaseball();
-        char[] input = InputCheckValidAndReturn();
+        int[] input = InputCheckValidAndReturn();
         int firstRandomNumber = pickNumberInRange(1, 9);
         int secondRandomNumber = pickNumberInRange(1, 9);
         int thirdRandomNumber = pickNumberInRange(1, 9);
+
     }
 
     public static void printStartJavaBaseball() {
         System.out.println("숫자 야구 게임을 시작합니다");
     }
 
-    public static char[] InputCheckValidAndReturn() {
+    public static int[] InputCheckValidAndReturn() {
         String InputString = descriptionAndInput();
         char[] InputCharArray = revertStringToCharArray(InputString);
         int[] InputAsciiArray = revertCharArrayToAsciiArray(InputCharArray);
@@ -27,8 +28,17 @@ public class Application {
         } else if (!isAsciiArrayValid(InputAsciiArray)) {
             throw new IllegalArgumentException();
         }
-        return InputCharArray;
+        return revertCharArrToIntArr(InputCharArray);
     }
+
+    public static int[] revertCharArrToIntArr(char[] charArr) {
+        int[] intArr = new int[charArr.length];
+        for(int i=0;i<charArr.length; i++){
+            intArr[i] = Integer.parseInt(String.valueOf(charArr[i]));
+        }
+        return intArr;
+    }
+
 
     public static String descriptionAndInput() {
         System.out.print("숫자를 입력해주세요:");
