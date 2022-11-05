@@ -11,9 +11,13 @@ public class Computer {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < GAME_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+            addComputerNumber(computerNumber, randomNumber);
+        }
+    }
+
+    private static void addComputerNumber(List<Integer> computerNumber, int randomNumber) {
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
         }
     }
 
