@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.Input.InputManageable;
+import baseball.Output.Message;
 import baseball.Output.OutputManageable;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -29,7 +30,7 @@ public class GameController {
             randomNumber.removeAll(randomNumber);
         }
 
-        while(randomNumber.size() != 3)
+        while(randomNumber.size() != INPUT_SIZE)
         {
             int randInt = Randoms.pickNumberInRange(START_INCLUSIVE,END_INCLUSIVE);
             if(!randomNumber.contains(randInt)) randomNumber.add(randInt);
@@ -80,7 +81,7 @@ public class GameController {
     public String getHint(String userInput)
     {
         if(!isValidUserInput(userInput))
-            throw new IllegalArgumentException("잘못된 숫자를 입력하였습니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException(Message.USER_INPUT_FOR_HINT_ERROR_MESSAGE);
 
         int userInputNumber = Integer.parseInt(userInput);
         return HintGenerator.generateHint(userInputNumber,randomNumber);
@@ -88,7 +89,10 @@ public class GameController {
 
     public boolean isAnswer(String userInput)
     {
-        return getRandomNumber() == Integer.parseInt(userInput);
+        if(isValidUserInput(userInput))
+            return getRandomNumber() == Integer.parseInt(userInput);
+
+        return false;
     }
 
 

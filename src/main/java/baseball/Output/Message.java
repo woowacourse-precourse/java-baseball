@@ -12,6 +12,8 @@ public class Message {
     private static final String BALL_MESSAGE_FORMAT = "%d ball\n";
     private static final String STRIKE_MESSAGE_FORMAT = "%d strike\n";
     private static final String BALL_AND_STRIKE_MESSAGE_FORMAT = "%d ball %d strike\n";
+    public static final String USER_INPUT_FOR_HINT_ERROR_MESSAGE = "잘못된 숫자를 입력하였습니다. 프로그램을 종료합니다.";
+    public static final String USER_INPUT_FOR_NEXT_GAME_ERROR_MESSAGE ="잘못된 값을 입력하셨습니다. 다시 입력해주세요.(게임 재시작은 1, 종료는 2) : ";
 
     public static String getNothingMessage()
     {
@@ -19,17 +21,18 @@ public class Message {
     }
     public static String getBallMessage(int ballCount)
     {
-        return String.format(Message.BALL_MESSAGE_FORMAT,ballCount);
+        return String.format(BALL_MESSAGE_FORMAT,ballCount);
     }
 
     public static String getStrikeMessage(int strikeCount)
     {
-        return String.format(Message.STRIKE_MESSAGE_FORMAT,strikeCount);
+        return String.format(STRIKE_MESSAGE_FORMAT,strikeCount);
     }
 
     public static String getBallAndStrikeMessage(int ballCount,int strikeCount)
     {
-        return String.format(Message.BALL_AND_STRIKE_MESSAGE_FORMAT,ballCount,strikeCount);
+        return String.format(BALL_AND_STRIKE_MESSAGE_FORMAT,ballCount,strikeCount);
     }
+
 
 }
