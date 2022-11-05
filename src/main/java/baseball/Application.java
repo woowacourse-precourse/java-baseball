@@ -84,4 +84,16 @@ public class Application {
         }
         System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
     }
+
+    private static boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (userInput.equals("1")) {
+            return true;
+        }
+        if (userInput.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
 }
