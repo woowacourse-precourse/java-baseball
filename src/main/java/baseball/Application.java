@@ -76,25 +76,27 @@ public class Application {
 
     static List<Integer> compareComputerAndUser(String computer, String user) {
         List<Integer> scoreOfStrikeAndBall = new ArrayList<>();
-        scoreOfStrikeAndBall.add(countStrike(computer, user));
-        scoreOfStrikeAndBall.add(countBall(computer, user));
+        scoreOfStrikeAndBall.add(countSameletterInSameIndexWithoutDuplicate(computer, user));
+        scoreOfStrikeAndBall.add(countSameletterInDifferentIndexWithoutDuplicate(computer, user));
         return scoreOfStrikeAndBall;
     }
 
-    static int countStrike(String computer, String user) {
+    static int countSameletterInSameIndexWithoutDuplicate(String computer, String user) {
         return (int)computer.chars()
                 .filter(i -> i == user.charAt(computer.indexOf(i)))
                         .count();
     }
-    static int countBall(String computer, String user) {
+    static int countSameletterInDifferentIndexWithoutDuplicate(String computer, String user) {
         return (int)user.chars()
                 .filter(i -> i != computer.charAt(user.indexOf(i)))
                 .filter(i -> computer.contains(String.valueOf((char)i)))
                 .count();
     }
+
     static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
         return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == MAXIMUM_STRIKE;
     }
+
     static void printResult(List<Integer> scoreOfStrikeAndBall) {
         if (isRightAnswer(scoreOfStrikeAndBall)) {
             printThreeStrike();
@@ -112,13 +114,16 @@ public class Application {
     static void printNothingMatch() {
         System.out.println("낫싱");
     }
+
     static void printThreeStrike() {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
     static void printStrike(int strikeCount) {
         System.out.printf(" %d스트라이크\n", strikeCount);
     }
+
     static void printBall(int ballCount) {
         System.out.printf("%d볼", ballCount);
     }
