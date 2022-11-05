@@ -32,22 +32,25 @@
   - ⬜ 플레이어가 잘못된 숫자를 입력해서 프로그램이 종료
 
 ## 게임 재시작/프로그램 종료 선택 기능
-- ⬜ checkRestartOrExit 메서드 구현
-  - ⬜ 게임이 종료되면 게임을 다시 시작할 지, 아니면 완전히 종료할지 질문 출력
-  - ⬜ 게임 재시작/프로그램 종료 여부 결정값을 입력받아 반환
-    - ⬜ 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수
-    - ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
-  - ✅ validateUserInputOneOrTwo 메서드 구현
-    - ✅ 사용자 입력값이 1또는 2이면 통과
-    - ✅ 1과 2 이외의 값이라면 IllegalArgumentException 예외 발생
+- ⬜ 게임이 종료되면 게임을 다시 시작할 지, 아니면 완전히 종료할지 질문 출력
+  - ⬜ "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+- ⬜ 게임 재시작/프로그램 종료 여부 결정값을 입력받음
+  - ⬜ 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 값만을 입력받음
+  - ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
+- ✅ validateUserInputOneOrTwo 메서드 구현
+  - ✅ 사용자 입력값이 1또는 2이면 통과
+  - ✅ 1과 2 이외의 값이라면 IllegalArgumentException 예외 발생
+- ⬜ 사용자의 입력값이 1이면 게임 재개, 2이면 프로그램을 종료한다.
 
 ## 플레이어의 예측 정답값 입력 기능
 - ⬜ 사용자의 예측 정답값 입력
   - ⬜ 서로 다른 3자리의 수
-- ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
+  - ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
 - ⬜ validateUserInputThreeDifferentNumbers 메서드 구현
   - ⬜ 사용자 입력값이 각 자릿수가 1~9사이의 모두 다른 세자리 숫자면 통과
   - ⬜ 이외의 값이라면 예외 발생
+- ⬜ stringToIntegerList 메서드 구현
+  - 숫자 문자열을 입력받아 각 자릿수를 
 
 ## 게임시작 문구 출력 기능
 - ⬜ 게임시작 문구 출력
