@@ -16,9 +16,9 @@ public class Application {
     private static final int STRIKE = 0;
     private static final int BALL = 1;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
-
+        playGame();
     }
 
     private static void playGame() throws IOException {
@@ -36,8 +36,25 @@ public class Application {
 
             List<Integer> counts = getEachCounts(computer, user);
             printBallStrike(counts);
+
+            int strikeCount = counts.get(STRIKE);
+            boolean success = checkSuccess(strikeCount);
+
+            if (!success) {
+                continue;
+            }
+
+            boolean again = checkAgainGame();
+
+            if (again) {
+                computer = getTargetNumbers();
+                continue;
+            }
+
+            break;
         }
     }
+
     private static List<Integer> getEachCounts(List<Integer> computer, List<Integer> user) {
 
         List<Integer> counts = new ArrayList<>();
@@ -106,8 +123,7 @@ public class Application {
         return computer;
     }
 
-    // print 로 바꾸기
-    private static void printBallStrike(List<Integer> counts) throws IOException {
+    private static void printBallStrike(List<Integer> counts) {
 
         int nothing = 0;
 
@@ -120,7 +136,6 @@ public class Application {
             System.out.println(ballCount + "볼");
         } else if (strikeCount > nothing) {
             System.out.println(strikeCount + "스트라이크");
-            checkSuccess(strikeCount);
         } else if (ballCount == nothing && strikeCount == nothing) {
             System.out.println("낫싱");
         }
@@ -133,28 +148,30 @@ public class Application {
         return;
     }
 
-    private static void checkSuccess(int strikeCount) throws IOException {
+    private static boolean checkSuccess(int strikeCount) {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        boolean success = false;
 
         if (strikeCount == SIZE) {
             System.out.println(SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            int toBeContinue = Integer.valueOf(br.readLine());
-            checkAgainGame(toBeContinue);
+            success = true;
         }
 
-        return;
+        return success;
     }
 
-    private static void checkAgainGame(int toBeContinue) throws IOException {
+    private static boolean checkAgainGame() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int againGame = 1;
-        int exitGame = 2;
+        int toBeContinue = Integer.valueOf(br.readLine());
+
+        boolean again = false;
 
         if (toBeContinue == againGame) {
-            playGame();
-        } else if (toBeContinue == exitGame) {
-            // 게임 종료
+            again = true;
         }
+
+        return again;
     }
 }
