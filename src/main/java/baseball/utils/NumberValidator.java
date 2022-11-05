@@ -10,6 +10,7 @@ public class NumberValidator {
     private static final String RANGE_ERROR_MESSAGE = "각 자리 수는 최소 1 이상, 최대 9 이하의 정수여야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "숫자는 중복되어서는 안됩니다.";
     private static final String TYPE_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
+    private static final String RESTART_SIGN_ERROR_MESSAGE = "재시작 여부는 1 혹은 2로만 입력이 가능합니다.";
 
     public static boolean hasValidInput(List<Integer> userInput) {
         hasValidLength(userInput);
@@ -43,6 +44,12 @@ public class NumberValidator {
         Set<Integer> userInputSet = new HashSet<>(userInput);
         if (!(userInputSet.size() == userInput.size())) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+        }
+    }
+
+    public static void hasValidRestartSign(int restartSign){
+        if(restartSign != Constants.AGREE_RESTART_SIGN && restartSign != Constants.DISAGREE_RESTART_SIGN){
+            throw new IllegalArgumentException(RESTART_SIGN_ERROR_MESSAGE);
         }
     }
 }
