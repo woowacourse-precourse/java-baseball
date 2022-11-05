@@ -22,7 +22,8 @@ public class GameController {
     }
 
     private void initializeGame(){
-
+        generateComputer();
+        generateGameStatus();
     }
 
     private void generateComputer(){
