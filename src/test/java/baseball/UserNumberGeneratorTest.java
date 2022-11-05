@@ -1,6 +1,5 @@
 package baseball;
 
-import static baseball.UserNumberGenerator.userNumbers;
 import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
