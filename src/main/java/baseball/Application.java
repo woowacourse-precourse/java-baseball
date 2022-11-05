@@ -17,10 +17,17 @@ public class Application {
         return howManyBall;
     }
 
+    public static void exceptionHandling(List<Integer> userInput) throws IllegalArgumentException{
+        if (userInput.size()!=3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static List<Integer> getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInputString = readLine();
         List<Integer> userInput = new ArrayList<>();
+        exceptionHandling(userInput);
         for (int i=0; i<3; i++) {
             userInput.add(Character.getNumericValue(i));
         }
