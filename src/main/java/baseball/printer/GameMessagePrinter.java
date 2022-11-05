@@ -18,7 +18,7 @@ public class GameMessagePrinter {
     }
 
     public void printNumberInputMessage() {
-        System.out.println(NUMBER_INPUT_MESSAGE);
+        System.out.print(NUMBER_INPUT_MESSAGE);
     }
 
     public void printResultMessage(BallStrikeDto dto) {
