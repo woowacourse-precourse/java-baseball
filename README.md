@@ -62,7 +62,7 @@ BUILD SUCCESSFUL in 0s
     - [x] FEATURE9. 클래스 생성자
     - [x] FEATURE10. 스트라이크 개수 getter
     - [x] FEATURE11. 볼 개수 getter
-    - [ ] FEATURE12. 낫싱 여부 확인 메서드
+    - [x] FEATURE12. 낫싱 여부 확인 메서드
     - [ ] FEATURE13. 클래스 toString 메서드 오버라이딩
 - [ ] FEATURE14. 게임 결과 출력 메서드
 - [ ] FEATURE15. 게임 종료 메시지 출력 메서드
@@ -99,7 +99,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `int calcBalls(List<Integer> answerNums, List<Integer> inputNums)`
         - [x] `int numOfStrikes()`
         - [x] `int numOfBalls()`
-        - [ ] `Boolean isNothing()`
+        - [x] `Boolean isNothing()`
 
 ### 입출력 요구 사항
 

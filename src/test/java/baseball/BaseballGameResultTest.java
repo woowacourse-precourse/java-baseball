@@ -45,4 +45,16 @@ class BaseballGameResultTest {
         assertThat(numOfStrikes).isEqualTo(1);
         assertThat(numOfBalls).isEqualTo(2);
     }
+
+    @Test
+    void isNothingTest() {
+        List<Integer> list1 = List.of(1, 2, 3);
+        List<Integer> list2 = List.of(4, 5, 6);
+
+        BaseballGameResult gameResult = new BaseballGameResult(list1, list2);
+
+        Boolean isNothing = gameResult.isNothing();
+
+        assertThat(isNothing).isEqualTo(Boolean.TRUE);
+    }
 }

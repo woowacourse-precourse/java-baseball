@@ -44,4 +44,11 @@ public class BaseballGameResult {
     public int numOfBalls() {
         return this.ball;
     }
+
+    public Boolean isNothing() {
+        if (strike == 0 && ball == 0) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
 }
