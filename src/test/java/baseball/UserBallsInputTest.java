@@ -24,7 +24,7 @@ class UserBallsInputTest {
   public void restoreStreams() {
     System.setOut(originalOut);
   }
-  
+
   @Test
   void InputSuccess() {
     input.inputNumberTest("123");
