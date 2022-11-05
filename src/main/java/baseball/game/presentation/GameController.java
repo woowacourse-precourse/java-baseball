@@ -12,7 +12,6 @@ public class GameController {
         return instance;
     }
     public void run(){
-        gameService.setGame();
-        gameService.playGame();
+        gameService.run();
     }
 }

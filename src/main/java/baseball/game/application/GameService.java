@@ -21,11 +21,13 @@ public class GameService {
     public static GameService getInstance() {
         return instance;
     }
+    public void run(){
+        messageService.gameStartMessage();
+    }
     public void setGame() {
         gameRepository.setGame();
     }
     public void playGame() {
-        messageService.gameStartMessage();
         while (gameRepository.getGame().getStrikeCount() != 3) {
             userService.inputData();
             countResult(userRepository.getUser().getInputNumber()
