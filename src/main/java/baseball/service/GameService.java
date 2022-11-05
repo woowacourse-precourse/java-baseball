@@ -46,7 +46,8 @@ public class GameService {
     }
 
     public void scoreGameWithIndex(int index){
-
+        if(isStrike(index)) increaseStrike();
+        if(isBall(index)) increaseBall();
     }
 
     public boolean isStrike(int index){
