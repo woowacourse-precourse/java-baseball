@@ -26,4 +26,8 @@ public class View {
     public static void printGameEnd(){
         System.out.println(GAME_END_MESSAGE);
     }
+
+    public static void printQuestionNewGame(){
+        System.out.println(QUESTION_NEW_GAME_MESSAGE);
+    }
 }

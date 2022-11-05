@@ -1,5 +1,7 @@
 package baseball.game;
 
+import static utils.Constant.*;
+
 import baseball.entity.Computer;
 import baseball.entity.Player;
 import utils.View;
@@ -41,12 +43,18 @@ public class GameController {
             View.printGameEnd();
         }
 
+        private void end(){
+            View.printQuestionNewGame();
+            String command = player.getCommand();
+        }
+
         @Override
         public void play() {
             View.printIntro();
 
             initialize();
             start();
+            end();
         }
     }
 }
