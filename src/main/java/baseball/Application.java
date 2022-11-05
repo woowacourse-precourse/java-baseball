@@ -8,6 +8,9 @@ public class Application {
     public static void main(String[] args) {
         printStartJavaBaseball();
         char[] input = InputCheckValidAndReturn();
+        int firstRandomNumber = pickNumberInRange(1, 9);
+        int secondRandomNumber = pickNumberInRange(1, 9);
+        int thirdRandomNumber = pickNumberInRange(1, 9);
     }
 
     public static void printStartJavaBaseball() {
