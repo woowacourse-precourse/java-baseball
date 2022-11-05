@@ -65,14 +65,13 @@ class GameProcessor {
         return computerValue;
     }
 
-    public void toArrayValue(int userInput,int computerInput)
-    {
+    public void toArrayValue(int userInput, int computerInput) {
         String userString = String.valueOf(userInput);
         String computerString = String.valueOf(computerInput);
 
-        for(int digit=0;digit<3;digit++) {
-            userValue[digit] = Integer.parseInt(userString.substring(digit,digit+1));
-            computerValue[digit] = Integer.parseInt(computerString.substring(digit,digit+1));
+        for (int digit = 0; digit < 3; digit++) {
+            userValue[digit] = Integer.parseInt(userString.substring(digit, digit + 1));
+            computerValue[digit] = Integer.parseInt(computerString.substring(digit, digit + 1));
         }
     }
 
@@ -113,25 +112,31 @@ class GameProcessor {
         }
     }
 
+    final int USER_USED_NUMBER = -1;
+    final int COMPUTER_USED_NUMBER = -2;
 
-    public void strikeChecker(int[] userValue,int[] computerValue) {
+    public void strikeChecker(int[] userValue, int[] computerValue) {
         int strikeCount = 0;
-        if (userValue[0]==computerValue[0]) {
+        if (userValue[0] == computerValue[0]) {
             strikeCount++;
+            userValue[0] = USER_USED_NUMBER;
+            computerValue[0] = COMPUTER_USED_NUMBER;
         }
-        if (userValue[1]==computerValue[1]) {
+        if (userValue[1] == computerValue[1]) {
             strikeCount++;
+            userValue[1] = USER_USED_NUMBER;
+            computerValue[1] = COMPUTER_USED_NUMBER;
         }
-        if (userValue[2]==computerValue[2]) {
+        if (userValue[2] == computerValue[2]) {
             strikeCount++;
+            userValue[2] = USER_USED_NUMBER;
+            computerValue[2] = COMPUTER_USED_NUMBER;
         }
         this.setStrike(strikeCount);
     }
-
-    public void ballChecker(int userValue, int computerValue) {
-
-    }
 }
+
+
 
 public class Application {
     public static void main(String[] args) {
