@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import static baseball.ResultType.*;
 
 public class BaseballGameConsole {
@@ -11,7 +13,7 @@ public class BaseballGameConsole {
         startingGuide(player.getName());
         do {
             playSingleGame(player);
-        } while (true); // Ask player to play a new game
+        } while (askReplaying());
     }
 
     private void startingGuide(String playerName) {
@@ -46,5 +48,12 @@ public class BaseballGameConsole {
             System.out.println(numberOfBall + "볼");
         else if (resultType == NOTHING)
             System.out.println("낫싱");
+    }
+
+    private boolean askReplaying() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String replay = Console.readLine();
+        // Validate
+        return replay.equals("1");
     }
 }
