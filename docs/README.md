@@ -34,7 +34,10 @@
 - 숫자야구 게임 클래스
 - Computer computer : 게임에 참가한 컴퓨터
 - User user : 게임에 참가한 유저
-- void start() : 게임을 시작하는 함수
+- Game start(User user) : 게임을 시작하는 함수
+  - computer 는 게임을 시작할 때 자동으로 생성됨
+- boolean run() : 게임을 진행하는 함수
+  - 게임이 종료되었을 때 restart 할지 여부를 반환함
 - String hint(int strike, int ball) : 힌트를 제공하는 함수
 - boolean restart() : 게임을 새로 시작하는 함수
   - 입력된 문자열이 한자리 숫자가 아니라면 IllegalArgumentException 던져야 함
