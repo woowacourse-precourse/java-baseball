@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @DisplayName("입력된 게임을 계속할지 확인하는 명령어에 대한 유효성 검사 기능 테스트")
-    @ValueSource(strings = {"2", "1", "3", "   ", "rkadsf", "가나다라마사앚차카탚하"})
+    @ValueSource(strings = {"3", "   ", "rkadsf", "가나다라마사앚차카탚하"})
     void checkOrderNumberValidationTest(String inputNumber) {
 
         assertThatThrownBy(() -> Application.checkOrderNumberValidation(inputNumber))
@@ -102,7 +102,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @DisplayName("입력한 수가 유효하지 않을때 Exception이 발생하는지 통합 테스트")
-    @ValueSource(strings = {"가나다", "122", "가가나나다다라마마바123124", "", "  ", "123"})
+    @ValueSource(strings = {"가나다", "122", "가가나나다다라마마바123124", "", "  "})
     void checkInputNumberValidationTest(String inputNumber) {
 
         boolean isTestSuccess = false;
