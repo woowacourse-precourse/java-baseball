@@ -38,4 +38,47 @@ public class FeatureTest {
             assertThat(gameService.getPlayResult(userNumber, Answer)).isEqualTo(result);
         }
     }
+
+    @Nested
+    class ExceptionTest {
+        @Test
+        void exception_유저의_입력_값이_3자리가_아닌_경우() {
+            String input = "1234";
+
+            assertThatThrownBy(() -> InputException.checkInputNumberValidation(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void exception_유저의_입력_값이_정수가_아닌_경우() {
+            String input = "12a";
+
+            assertThatThrownBy(() -> InputException.checkInputNumberValidation(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void exception_유저의_입력_값에_0이_들어간_경우() {
+            String input = "012";
+
+            assertThatThrownBy(() -> InputException.checkInputNumberValidation(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void exception_유저의_입력_값이_중복인_경우() {
+            String input = "112";
+
+            assertThatThrownBy(() -> InputException.checkInputNumberValidation(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void exception_재시작_혹은_종료_선택시_1과_2가_아닌_수를_입력한_경우() {
+            String input = "3";
+
+            assertThatThrownBy(() -> InputException.checkInputRestartValidation(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
