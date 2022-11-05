@@ -52,6 +52,21 @@ public class Number {
         return count;
     }
 
+    public String makeHint (List<Character> answer, List<Character> input) {
+        int strike = countStrike(answer, input);
+        int ball = countBall(answer, input);
+        if(strike != 0) {
+            if(ball != 0) {
+                return ball + "볼" + strike + "스트라이크 ";
+            }
+            return strike + "스트라이크";
+        }
+        if(ball != 0) {
+            return ball + "볼";
+        }
+        return "낫싱";
+    }
+
     private List<Character> stringToList(String str) {
         return str.chars().mapToObj(number -> (char) number).collect(Collectors.toList());
     }
