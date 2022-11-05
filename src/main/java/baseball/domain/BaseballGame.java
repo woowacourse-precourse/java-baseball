@@ -4,6 +4,7 @@ public class BaseballGame {
 
     private static final int RESTART = 1;
     private static final int END = 2;
+    private static final int RESULT_END = 3;
     private final Numbers numbers;
 
     public BaseballGame(Numbers numbers) {
@@ -15,7 +16,7 @@ public class BaseballGame {
     }
 
     public boolean isEnd(Hints hints) {
-        return hints.count(Hint.STRIKE) == 3;
+        return hints.count(Hint.STRIKE) == RESULT_END;
     }
 
     public boolean restart(int number) {
