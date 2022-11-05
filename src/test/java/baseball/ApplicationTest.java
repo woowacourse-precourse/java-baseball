@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,6 +123,18 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(check).isEqualTo(false);
+    }
+
+    @Test
+    void userInput이_중복일_경우() {
+        //given
+        String userInput = "112";
+
+        //then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.createUserNumberList(userInput);
+        });
+
     }
 
     @Override
