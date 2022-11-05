@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class ValidateNumber {
+    private static final String CHECK_DIGIT_LENGTH = "숫자의 자릿수를 확인해주세요";
+    private static final String NO_OVERLAP_NUMBER = "각 자리가 중복되지 않는 수를 입력해주세요";
+    private static final String ONLY_IN_CHOICE_LIST = "목록에 있는 숫자를 선택해주세요";
 
     private final static List<Integer> CHOICE_LIST = List.of(1, 2);
 
@@ -17,7 +20,7 @@ public class ValidateNumber {
         String s = String.valueOf(number);
         int length = s.length();
         if (!p.test(length)) {
-            throw new IllegalStateException("숫자의 자릿수를 확인해주세요");
+            throw new IllegalStateException(CHECK_DIGIT_LENGTH);
         }
     }
 
@@ -35,7 +38,7 @@ public class ValidateNumber {
         while (linkedList.size() != 0) {
             String pop = linkedList.pop();
             if (linkedList.contains(pop)) {
-                throw new IllegalStateException("각 자리가 중복되지 않는 수를 입력해주세요");
+                throw new IllegalStateException(NO_OVERLAP_NUMBER);
             }
         }
 
@@ -47,7 +50,7 @@ public class ValidateNumber {
      */
     public static void validateInList(int number) {
         if (!CHOICE_LIST.contains(number)) {
-            throw new IllegalStateException("목록에 있는 숫자를 선택해주세요");
+            throw new IllegalStateException(ONLY_IN_CHOICE_LIST);
         }
     }
 
