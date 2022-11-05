@@ -63,6 +63,6 @@ public class GameService {
     }
 
     public void increaseBall(){
-
+        ballCount++;
     }
 }
