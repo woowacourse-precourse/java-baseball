@@ -32,9 +32,20 @@ public class InputValidator {
 
     private static void checkNumbers(String input) {
         for (char ch : input.toCharArray()) {
-            if (!Character.isDigit(ch)) {
-                throw new IllegalArgumentException();
-            }
+            checkDigit(ch);
+            checkNumberRange(Character.getNumericValue(ch));
+        }
+    }
+
+    private static void checkDigit(char ch) {
+        if (!Character.isDigit(ch)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkNumberRange(Integer number) {
+        if (number < 1 || number > 10) {
+            throw new IllegalArgumentException();
         }
     }
 }
