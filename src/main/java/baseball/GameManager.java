@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.view.PrintAndRead;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,4 +18,10 @@ public class GameManager {
     public void init() {
         computer.init();
     }
+
+    public void run() {
+        PrintAndRead.firstStartPrint();
+        PrintAndRead.getBaseballNumber();
+    }
+
 }
