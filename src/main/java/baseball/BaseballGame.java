@@ -19,16 +19,23 @@ public class BaseballGame {
     public BaseballGame() {
         this.messagePrinter = new GameMessagePrinter();
         this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
-
+        this.threeNumberConverter = new ThreeNumberConverter();
+        this.console = new GameConsole();
         messagePrinter.printStartMessage();
     }
 
     public void play() throws IllegalArgumentException {
         try {
-            messagePrinter.printNumberInputMessage();
-            List<Integer> threeNumbers = threeNumberConverter.getThreeNumbers(console.input());
-            BallStrikeDto answer = opponent.answer(threeNumbers);
-            messagePrinter.printResultMessage(answer);
+            while (true) {
+                messagePrinter.printNumberInputMessage();
+                List<Integer> threeNumbers = threeNumberConverter.getThreeNumbers(console.input());
+                BallStrikeDto answer = opponent.answer(threeNumbers);
+                messagePrinter.printResultMessage(answer);
+                if (answer.getStrikeCount() == 3) {
+                    messagePrinter.printFinishMessage();
+                    break;
+                }
+            }
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
