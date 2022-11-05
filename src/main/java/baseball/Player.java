@@ -118,15 +118,15 @@ public class Player {
     }
 
     private boolean isValidLength(String number, int type) {
-        switch (type) {
-            case PLAYER:
-                return number.length() == Config.DIGIT_SIZE;
-
-            case STATE:
-                return number.length() == Config.STATE_SIZE;
+        if (isPlayerNumber(type)) {
+            return number.length() == Config.DIGIT_SIZE;
         }
 
-        return false;
+        return number.length() == Config.STATE_SIZE;
+    }
+
+    private boolean isPlayerNumber(int type) {
+        return PLAYER == type;
     }
 
     private boolean isValidDuplication(String playerNumber) {
@@ -150,5 +150,4 @@ public class Player {
     private boolean isValidNumber(String stateNumber) {
         return Config.STATE_RESTART.equals(stateNumber) || Config.STATE_SHUTDOWN.equals(stateNumber);
     }
-
 }
