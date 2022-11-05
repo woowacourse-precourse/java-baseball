@@ -1,19 +1,22 @@
 package baseball.system;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.utils.Input;
+
 public class MenuSelection {
 
     private final boolean PLAY_GAME = true;
     private final boolean QUIT = false;
 
+    private String selectionNumber;
 
     public boolean startMenuSelection() {
 
         printMenuSelection();
 
-        String selectionNumber = inputSelectionNumber();
+        String inputNumber = Input.input();
+        setSelectionNumber(inputNumber);
 
-        if(selectionNumber.equals("1")){ // TODO : 어떻게 할지 고민해볼 것
+        if (selectionNumber.equals("1")) {
             return PLAY_GAME;
         }
 
@@ -21,18 +24,20 @@ public class MenuSelection {
 
     }
 
-    private String inputSelectionNumber() throws IllegalArgumentException {
+    private void setSelectionNumber(String inputNumber) {
+        this.selectionNumber = selectNumber(inputNumber);
+    }
 
-        String inputNumber = Console.readLine();
+    private String selectNumber(String inputNumber) throws IllegalArgumentException {
 
-        if(isOneOrTwo(inputNumber)){
+        if (isOneOrTwo(inputNumber)) {
             return inputNumber;
         }
 
         throw new IllegalArgumentException();
     }
 
-    private boolean isOneOrTwo(String inputNumber){
+    private boolean isOneOrTwo(String inputNumber) {
         return inputNumber.equals("1") || inputNumber.equals("2");
     }
 
