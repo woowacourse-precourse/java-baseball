@@ -8,10 +8,10 @@ public class Validation {
     }
 
     public static boolean isExistOnlyNumber(List<String> userInput) {
-        boolean isOnlyNumber = false;
+        boolean isOnlyNumber = true;
 
         for (String element : userInput) {
-            isOnlyNumber = isOnlyNumber || Character.isDigit(element.charAt(0));
+            isOnlyNumber = isOnlyNumber && Character.isDigit(element.charAt(0));
         }
         return isOnlyNumber;
     }
