@@ -2,34 +2,74 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.asm.Advice;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
     private static final int RESULT_SIZE = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final int MIN_ACCESS_INPUT_NUMBER = 122;
+    private static final int MAX_ACCESS_INPUT_NUMBER = 987;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String inputNumber = Console.readLine();
+        /*
+         * 사용자가 잘못된 값을 입력하는 경우의 수
+         * 1. length가 3이 아닐 때
+         * 2. 숫자에 0이 포함되어 있을 때
+         * 3. 연속된 숫자가 존재할 때
+         */
+
+        int intUserInput = Integer.parseInt(Console.readLine());
+
+        if (intUserInput < MIN_ACCESS_INPUT_NUMBER || intUserInput > MAX_ACCESS_INPUT_NUMBER) {
+            throw new IllegalArgumentException("INPUT_ERROR");
+        }
+        if (intUserInput % 100 < 10 || intUserInput % 10 == 0) {
+            throw new IllegalArgumentException("INPUT_ERROR");
+        }
+        // 연속된 숫자가 있는지 없는지 확인하기
+        Set<Integer> userInputList = new HashSet<>();
+        userInputList.add(intUserInput / 100);
+        userInputList.add(intUserInput % 100 / 10);
+        userInputList.add(intUserInput % 10);
+        if (userInputList.size() != RESULT_SIZE) {
+            throw new IllegalArgumentException("INPUT_ERROR");
+        }
+
+        String stringUserInput = toStringUserInput(intUserInput);
 
         List<Integer> computerNumber = generateComputerNumber();
         String computerNumberResult = computerNumberListToString(computerNumber);
-        int strikeResult = countStrike(inputNumber,computerNumberResult);
-        int ballResult = countBall(inputNumber, computerNumberResult);
+
+        int strikeResult = countStrike(stringUserInput,computerNumberResult);
+        int ballResult = countBall(stringUserInput, computerNumberResult);
+
         System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
 
         if (!checkedNotThing(ballResult, strikeResult)) {
-            System.out.println(countBall(inputNumber,computerNumberResult) + "볼");
-            System.out.println(countStrike(inputNumber,computerNumberResult) + "스트라이크");
+            if (countBall(stringUserInput,computerNumberResult) != 0) {
+                System.out.println(countBall(stringUserInput,computerNumberResult) + "볼 ");
+            }
+            if (countStrike(stringUserInput,computerNumberResult) != 0) {
+                System.out.println(countStrike(stringUserInput,computerNumberResult) + "스트라이크");
+            }
         }
-
-
     }
+
+    /*
+     * 예외처리 이후 String 으로 다시 변환함
+     */
+    static String toStringUserInput(int userNumber) {
+        return String.valueOf(userNumber);
+    }
+
     /*
      * 컴퓨터의 랜덤한 세 자리 수를 List에 저장함
      */
@@ -46,6 +86,7 @@ public class Application {
         }
         return computerNumberList;
     }
+
     /*
      * Integer List를 String 으로 변환함
      */
@@ -54,6 +95,7 @@ public class Application {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
     }
+
     static int countStrike (String userInput, String computerInput) {
         int strikeCount = 0;
         for (int i = 0; i < RESULT_SIZE; i++) {
@@ -63,9 +105,9 @@ public class Application {
         }
         return  strikeCount;
     }
+
     static int countBall (String userInput, String computerInput) {
-        // 볼이 되려면 우선적으로 같은 자리 같은 숫자가 없는 조건을 걸어야함 그리고 거기서 해당 숫자들의 contains를 확인해야한다.
-        // 볼의 갯수를 먼저 센 다음에 볼에서 스트라이크의 숫자를 빼면 진짜 볼의 갯수가 나올 듯 ?
+
         int ballCount = 0;
         for (int i = 0; i < RESULT_SIZE; i++) {
             if (userInput.contains(computerInput.substring(i,i+1))) {
