@@ -91,7 +91,6 @@ BUILD SUCCESSFUL in 0s
   - **Class Variables:**
     - [ ] `private static final String strike`
     - [ ] `private static final String ball`
-    - [ ] `private static final String nothing`
   - **Class Methods:**
     - [ ] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
     - [ ] `String toString()`
