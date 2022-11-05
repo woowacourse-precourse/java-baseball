@@ -35,4 +35,21 @@ public class Computer {
 
         return Arrays.asList(ballOfHint, strikeOfHint);
     }
+
+    public String printHint(List<Integer> calcHintResult) {
+        int strike = calcHintResult.get(0);
+        int ball = calcHintResult.get(1);
+
+        String result = "";
+
+        if (strike == 0 && ball == 0) {
+            result = "낫싱";
+        } else if (strike == 3) {
+            result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        } else {
+            result = ball + "볼 " + strike + "스트라이크";
+        }
+
+        return result;
+    }
 }
