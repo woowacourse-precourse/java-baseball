@@ -42,7 +42,7 @@ public class Application {
 
     public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException{
 
-        if (orderNumber.length() == 1 && (orderNumber.charAt(0) == 1 || orderNumber.charAt(0) == 2)) {
+        if (orderNumber.length() == 1 && (orderNumber.charAt(0) == '1' || orderNumber.charAt(0) == '2')) {
             return ;
         }
         throw new IllegalArgumentException();
