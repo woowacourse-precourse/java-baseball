@@ -19,19 +19,9 @@ public class Computer {
      * @param number 숫자
      */
     private void addRandomNumberByList(int number) {
-        if (canInputNumber(number)) {
+        if (!hasNumberByList(number)) {
             randomNumbers.add(number);
         }
-    }
-
-    /**
-     * 숫자를 추가할수 있는가
-     *
-     * @param number 숫자
-     * @return 숫자를 추가할수 있으면 ture
-     */
-    private boolean canInputNumber(int number) {
-        return !isZeroNumber(number) && !hasNumberByList(number);
     }
 
     /**
@@ -69,15 +59,5 @@ public class Computer {
         while ((randomNumbers.size() != 3)) {
             addRandomNumberByList(createRandomNumber());
         }
-    }
-
-    /**
-     * 숫자가 0인지 판별
-     *
-     * @param number 숫자
-     * @return 숫자가 0이면 ture
-     */
-    private boolean isZeroNumber(int number) {
-        return number == 0;
     }
 }
