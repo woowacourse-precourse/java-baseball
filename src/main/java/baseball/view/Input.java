@@ -6,13 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     public String threeNumber() {
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputData = Console.readLine();
-            boolean isValidate = new Validator(inputData).checkBaseballNumber();
-            if (isValidate)
-                return inputData;
-        }
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputData = Console.readLine();
+        boolean isValidate = new Validator(inputData).checkBaseballNumber();
+        if (!isValidate)
+            throw new IllegalArgumentException();
+        return inputData;
 
     }
 
