@@ -52,7 +52,7 @@ public class BaseballNumbers {
         }
     }
 
-    private int getStrike(BaseballNumbers otherBaseballNumbers) {
+    public int getStrike(BaseballNumbers otherBaseballNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
             BaseballNumber baseballNumber = ballNumbers.get(i);
@@ -64,7 +64,7 @@ public class BaseballNumbers {
         return strikeCount;
     }
 
-    private int getBall(BaseballNumbers otherBaseballNumbers) {
+    public int getBall(BaseballNumbers otherBaseballNumbers) {
         List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
         int ballCount = 0;
         for (int baseballIndex = 0; baseballIndex < 3; baseballIndex++) {
@@ -77,7 +77,7 @@ public class BaseballNumbers {
         return ballCount;
     }
 
-    private boolean isNothing(BaseballNumbers otherBaseballNumbers) {
+    public boolean isNothing(BaseballNumbers otherBaseballNumbers) {
         List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
         for (int i = 0; i < 3; i++) {
             BaseballNumber otherBaseballNumber = otherBaseballNumberList.get(i);
