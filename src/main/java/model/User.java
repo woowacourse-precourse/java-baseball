@@ -17,7 +17,6 @@ public class User {
     private int getInputAllRightNumOfUser() {
         String strInput = getString();
         int numInput = parseIntFromStr(strInput);
-        // TODO
         isValidUser(strInput, numInput);
         return numInput;
     }
