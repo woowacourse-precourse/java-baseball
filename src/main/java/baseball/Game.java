@@ -136,8 +136,15 @@ public class Game {
     }
 
     private static void addBall(List<Integer> list, int random) {
+        validateRangeOfBall(random);
         if (!list.contains(random)) {
             list.add(random);
+        }
+    }
+
+    private static void validateRangeOfBall(int number) {
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException(RANGE_OF_BALL_EXCEPTION);
         }
     }
 }
