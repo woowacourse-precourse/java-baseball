@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.Player;
+import baseball.view.Output;
 
 public class Game {
     private Player player = new Player();
@@ -12,6 +13,14 @@ public class Game {
 
     public String getAnswerNumber() {
         return answerNumber;
+    }
+
+    public void playGame() {
+        String playerNumber = player.getBaseballNumber();
+        compareNumber(playerNumber);
+
+        Output.baseballResult(strikeCount, ballCount);
+
     }
 
     private boolean isStrike(char onePlayerNum, int idx) {
