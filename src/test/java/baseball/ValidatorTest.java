@@ -42,4 +42,13 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3자리의 숫자를 입력해주세요(ex. 123)");
     }
+
+    @Test
+    void isOneorTwo_InvalidInput_ExceptionThrown() {
+        String invalidInput = "3";
+        Validator validator = new Validator(invalidInput);
+        assertThatThrownBy(() -> validator.isOneOrTwo())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시작하려면 1, 종료하려면 2 둘 중 하나를 입력해주세요");
+    }
 }

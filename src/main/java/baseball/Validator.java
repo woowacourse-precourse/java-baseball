@@ -44,4 +44,9 @@ public class Validator {
         }
     }
 
+    void isOneOrTwo() {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("시작하려면 1, 종료하려면 2 둘 중 하나를 입력해주세요");
+        }
+    }
 }
