@@ -65,15 +65,27 @@ public class Application {
         return userInput.matches("\\d\\d\\d");
     }
 
+    public static int countStrike(List<Integer> answer, List<Integer> userInput) {
+        return Integer.MAX_VALUE;
+    }
+
+    public static int countBall(List<Integer> answer, List<Integer> userInput) {
+        return Integer.MAX_VALUE;
+    }
+
+    public static void printResult(int strike, int ball) {
+
+    }
+
     public static void game() {
         List<Integer> randomNumbers = generateRandomNumber();
 
-        while(true) {
+        while (true) {
             String userInput = receiveUserInput();
 
             boolean validation = checkUserInput(userInput);
 
-            if(!validation) throw new IllegalArgumentException("3자리의 숫자만 입력해야합니다.");
+            if (!validation) throw new IllegalArgumentException("3자리의 숫자만 입력해야합니다.");
 
 
             break;
