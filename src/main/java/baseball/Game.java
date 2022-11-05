@@ -66,4 +66,11 @@ public class Game {
 
         return result;
     }
+    public boolean isAnswer(String result) {
+        if (result.equals(CORRECT_ANSWER)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
