@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class User {
@@ -32,14 +34,26 @@ public class User {
 
     private void checkNumber() {
         if (SMALLEST_NUMBER <= userNumber & userNumber < BIGGEST_NUMBER) {
+            List<Integer> numberList = numberToList(userNumber);
+            Set<Integer> numberSet = new HashSet<>(numberList);
 
-            if (numberToList(userNumber).contains(0)) {
-                makeError();
-                return;
-            }
+            checkNumberHasZero(numberList);
+            checkNumberHasSameNumber(numberList, numberSet);
             return;
         }
         makeError();
+    }
+
+    private void checkNumberHasZero(List<Integer> numberList) {
+        if (numberList.contains(0)) {
+            makeError();
+        }
+    }
+
+    private void checkNumberHasSameNumber(List<Integer> numberList, Set<Integer> numberSet) {
+        if (numberList.size() != numberSet.size()) {
+            makeError();
+        }
     }
 
     private boolean checkType(String userInput) {
