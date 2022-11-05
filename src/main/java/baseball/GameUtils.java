@@ -2,13 +2,17 @@ package baseball;
 
 import baseball.exception.NumberExceptionUtils;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static baseball.common.Constant.DIGIT_LENGTH_LIMIT;
 
 
 public class GameUtils {
@@ -30,5 +34,14 @@ public class GameUtils {
         NumberExceptionUtils.isPositiveDigits(input);
         NumberExceptionUtils.isThreeDigits(input);
         NumberExceptionUtils.isNotDuplicateNumber(input);
+    }
+
+    public static List<Integer> getComputerAnswerNum() {
+        Set<Integer> answer = new HashSet<>();
+        while (answer.size() < DIGIT_LENGTH_LIMIT) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            answer.add(num);
+        }
+        return new ArrayList<>(answer);
     }
 }
