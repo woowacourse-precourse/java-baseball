@@ -8,4 +8,9 @@ public class Game {
     public void finishMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    public boolean checkRestart(String playerRestart) {
+        char letter = playerRestart.charAt(0);
+        return letter == '1';
+    }
 }
