@@ -11,9 +11,11 @@ public class Computer {
     private Integer ball;
 
     public void makeAnswerNumber(){
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!answerNumber.contains(randomNumber)) {
-            answerNumber.add(randomNumber);
+        while(answerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumber.contains(randomNumber)) {
+                answerNumber.add(randomNumber);
+            }
         }
     }
 
