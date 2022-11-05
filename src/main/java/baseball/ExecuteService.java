@@ -25,9 +25,15 @@ public class ExecuteService {
 
             List<Integer> strikeBallCount = processService.compare(parsedInput, answer);
             printService.printStrikeBallResult(strikeBallCount);
+            complete = checkCompleteness(strikeBallCount.get(0));
         }
 
+        printService.printGameEnd();
+        String endInput = getUserInput();
+    }
 
+    private boolean checkCompleteness(Integer strikes) {
+        return strikes == 3;
     }
 
     private String getUserInput() {
