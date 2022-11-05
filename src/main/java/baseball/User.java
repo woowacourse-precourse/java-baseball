@@ -2,33 +2,36 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class User {
-    public void inputNumber(String inputNumbers) {
-        HashSet<Character> set = new HashSet<>();
 
-        try {
-            if (inputNumbers.length() != 3) {
-                throw new IllegalArgumentException();
-            }
+    public static final int MAX_SIZE = 3;
 
-            for (int i = 0; i < inputNumbers.length(); i++) {
-                if (inputNumbers.charAt(i) < '1' || inputNumbers.charAt(i) > '9') {
-                    throw new IllegalArgumentException();
-                }
-                if (set.contains(inputNumbers.charAt(i))) {
-                    throw new IllegalArgumentException();
-                }
-                set.add(inputNumbers.charAt(i));
-            }
+    public ArrayList<String> input(String inputNumbers) {
+        validate(inputNumbers);
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 값 입력됨");
-        }
+        ArrayList<String> userNumber = new ArrayList<>(Arrays.asList(inputNumbers.split("")));
+        return userNumber;
     }
 
+    public static void validate(String inputNumbers) {
+        ArrayList<Character> userValidNumber = new ArrayList<>();
 
-
-
+        if (inputNumbers.length() != MAX_SIZE) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (inputNumbers.charAt(i) < '1' || inputNumbers.charAt(i) > '9') {
+                throw new IllegalArgumentException();
+            }
+            if (userValidNumber.contains(inputNumbers.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+            userValidNumber.add(inputNumbers.charAt(i));
+        }
+    }
 }
