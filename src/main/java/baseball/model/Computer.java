@@ -8,10 +8,9 @@ public class Computer {
     List<Integer> computerNumbers;
 
     public Computer() {
-        this.computerNumbers = randomNumberGenerator();
     }
 
-    private List<Integer> randomNumberGenerator() {
+    public List<Integer> randomNumberGenerate() {
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

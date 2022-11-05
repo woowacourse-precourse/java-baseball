@@ -13,30 +13,32 @@ public class BaseballGame {
     public static final int RESTART = 1;
     public static final int EXIT = 2;
     private final OutputView outputView = new OutputView();
+    private Computer computer;
+    private User user;
     public BaseballGame() {
+            this.computer = new Computer();
+            this.user = new User();
+            outputView.printGameStart();
     }
 
     public void gameStart() {
         while (true) {
-            Computer computer = new Computer();
-            User user = new User();
-            outputView.printGameStart();
-            game(computer, user);
+            this.computer.randomNumberGenerate();
+            game();
             outputView.printRestartOrExit();
-            user.inputRestartOrExitNumber();
-            if (user.getRestartOrExitNumber() == EXIT) {
+            this.user.inputRestartOrExitNumber();
+            if (this.user.getRestartOrExitNumber() == EXIT) {
                 break ;
             }
         }
     }
 
-    public void game(Computer computer, User user) {
+    public void game() {
         while (true) {
             List<Integer> compareAnswer;
-
             outputView.printInputHint();
-            user.inputGuessRandomNumbers();
-            Score score = new Score(user.getInput(), computer.getComputerNumbers());
+            this.user.inputGuessRandomNumbers();
+            Score score = new Score(this.user.getInput(), this.computer.getComputerNumbers());
             compareAnswer = score.getAnswer();
             outputView.printResult(compareAnswer);
             if (compareAnswer.get(STRIKE_INDEX) == INPUT_LENGTH) {
