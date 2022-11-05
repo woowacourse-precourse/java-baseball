@@ -24,7 +24,7 @@ public class Application {
             startGame(randomNumberList);
             endGame();
 
-        } while (true);
+        } while (replayGame());
     }
 
     public static void showGameStart() {
