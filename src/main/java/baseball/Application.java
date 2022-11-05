@@ -9,39 +9,58 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        do{
+        do {
             List<Integer> computernums = RandomNum(3);
             gameStart(computernums);
             System.out.print("1이나 2를 입력해주세요.");
             String userfinalinput = userInput();
             confirmUserFinalInput(userfinalinput);
-            if(userfinalinput.equals("2")){
+            if (userfinalinput.equals("2")) {
                 break;
             }
-        }while (true);
+        } while (true);
 
     }
 
-    public static void gameStart(List<Integer> computernums){
-        while(true){
+    public static void gameStart(List<Integer> computernums) {
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String usernum = userInput();
             confirmUserInput(usernum);
             List<Integer> usernums = stringConvertListInteger(usernum);
             BaseballCount baseballCount = new BaseballCount(computernums, usernums);
 
-            if(baseballCount.strikecount == 3){
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (allStrike(baseballCount)) {
+                allStrikeMessage();
                 break;
             }
-            if(baseballCount.strikecount==0 && baseballCount.ballcount ==0){
-                System.out.println("낫싱");
+            if (allNotSame(baseballCount)) {
+                allNotSameMessage();
                 continue;
             }
-            System.out.printf("%d볼 %d스트라이크",baseballCount.ballcount,baseballCount.strikecount);
+            baseballCountMessage(baseballCount);
         }
     }
+
+    public static boolean allStrike(BaseballCount baseballCount) {
+        return baseballCount.strikecount == 3;
+    }
+
+    public static void allStrikeMessage() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static boolean allNotSame(BaseballCount baseballCount) {
+        return baseballCount.strikecount == 0 && baseballCount.ballcount == 0;
+    }
+    public static void allNotSameMessage(){
+        System.out.println("낫싱");
+    }
+    public static void baseballCountMessage( BaseballCount baseballCount){
+        System.out.printf("%d볼 %d스트라이크", baseballCount.ballcount, baseballCount.strikecount);
+    }
+
 
     public static List<Integer> stringConvertListInteger(String string) {
         List<Integer> list = new ArrayList<>();
@@ -51,8 +70,8 @@ public class Application {
         return list;
     }
 
-    public static void confirmUserFinalInput(String userfinalinput){
-        if(!userfinalinput.equals("1") && !userfinalinput.equals("2")){
+    public static void confirmUserFinalInput(String userfinalinput) {
+        if (!userfinalinput.equals("1") && !userfinalinput.equals("2")) {
             throw new IllegalArgumentException("1이나 2가 아닙니다.");
         }
     }

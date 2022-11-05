@@ -7,27 +7,28 @@ public class BaseballCount {
 
     public int strikecount = 0;
     public int ballcount = 0;
-    public List<Integer> computernums;
-    public List<Integer> usernums;
-
-    public BaseballCount(List<Integer> computernum, List<Integer> usernum) {
-        this.computernums = computernum;
-        this.usernums = usernum;
-        BaseballStart();
+    public BaseballCount(List<Integer> computernums, List<Integer> usernums) {
+        BaseballStart(computernums,usernums);
     }
 
 
-    public void BaseballStart() {
+    public void BaseballStart(List<Integer> computernums, List<Integer> usernums) {
         for (int i = 0; i < computernums.size(); i++) {
-            if (usernums.get(i) == computernums.get(i)) {
+            if (Strike(computernums,usernums,i)) {
                 strikecount++;
                 continue;
             }
-            if (computernums.contains(usernums.get(i))) {
+            if (Ball(computernums,usernums,i)) {
                 ballcount++;
             }
 
         }
+    }
+    private boolean Strike(List<Integer> computernum, List<Integer> usernum,int index){
+        return usernum.get(index) == computernum.get(index);
+    }
+    private boolean Ball(List<Integer> computernum, List<Integer> usernum,int index){
+        return computernum.contains(usernum.get(index));
     }
 
 
