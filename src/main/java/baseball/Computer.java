@@ -18,4 +18,9 @@ public class Computer {
         return randomDigits.stream().map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
+
+    public Result resultOfPrediction(String randomNumber, String predictedNumber) {
+        // result processor process result and return
+        return new Result();
+    }
 }

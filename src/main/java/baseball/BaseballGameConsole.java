@@ -26,7 +26,7 @@ public class BaseballGameConsole {
             String predictedNumber = player.predictNumber();
             validator.validatePrediction(predictedNumber);
 
-            // Computer returns result of prediction
+            Result result = computer.resultOfPrediction(randomNumber, predictedNumber);
             // Update matchedAllNumber
 
             // Show result message
