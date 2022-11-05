@@ -19,9 +19,9 @@ class StrikeTest {
     @DisplayName("스트라이크 판독")
     @ParameterizedTest
     @MethodSource("generateData")
-    void test(String inputNumber, String computerNumber, int index) {
+    void checkNumberOfStrikes(String inputNumber, String computerNumber, int index) {
         int strikeCount = strike.compareCharacterLocationMatch(inputNumber, computerNumber);
-        int[] result = {3,2,1,1,0};
+        int[] result = {3, 2, 1, 1, 0};
         assertThat(strikeCount).isEqualTo(result[index]);
     }
 

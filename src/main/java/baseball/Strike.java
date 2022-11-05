@@ -5,8 +5,7 @@ public class Strike {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (inputNumber.charAt(i)
-                    == computerNumber.charAt(i)) {
+            if (inputNumber.charAt(i) == computerNumber.charAt(i)) {
                 count++;
             }
         }
