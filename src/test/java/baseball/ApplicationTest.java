@@ -11,6 +11,11 @@ class ApplicationTest extends NsTest {
     final GameReadyMachine gameReadyMachine = new GameReadyMachine();
 
     @Test
+    void 자리수_구분되는_숫자생성_1_3(){
+        assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.setAnswerValue())).isEqualTo(true);
+    }
+
+    @Test
     void getThreeDigitNumber() {
         assertThat(gameReadyMachine.setValue()).isEqualTo(true);
     }
