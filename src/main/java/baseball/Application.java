@@ -45,5 +45,19 @@ public class Application {
         }
         return comparison;
     }
+    static String gameResults(int[] comparison) {
+        String result = "";
+        if ((comparison[0]==0) && (comparison[1]==0)) {
+            result = "낫싱";
+            return result;
+        }
+        else if (!(comparison[0]==0)) {
+            result += comparison[0]+"볼 ";
+        }
+        else if (!(comparison[1]==0)) {
+            result += comparison[1]+"스트라이크";
+        }
+        return result;
+    }
 
 }
