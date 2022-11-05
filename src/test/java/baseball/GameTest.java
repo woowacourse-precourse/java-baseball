@@ -1,18 +1,15 @@
 package baseball;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
+import java.util.List;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.OutputStream;
 
-import java.util.List;
-
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 public class GameTest {
     @DisplayName("컴퓨터의 랜덤 숫자얻기")
@@ -84,6 +81,26 @@ public class GameTest {
         System.setOut(new PrintStream(out));
         game.printResult(new int[]{0, 3});
 
-        assertThat(out.toString()).isEqualTo("3스트라이크\r\n" + game.GAME_END+"\r\n");
+        assertThat(out.toString()).isEqualTo("3스트라이크\r\n" + game.WIN_NOTICE+"\r\n");
     }
+
+    @DisplayName("게임 재시작/프로그램 종료 입력값 확인")
+    @Test
+    void checkRestartOrEnd() {
+        Game game = new Game();
+        System.setIn(new ByteArrayInputStream("1".getBytes()));
+
+        assertThat(game.getRestartOrEndNumber()).isEqualTo(1);
+    }
+
+    @DisplayName("게임 재시작/프로그램 종료 입력값 예외확인")
+    @Test
+    void checkRestartOrEndException() {
+        Game game = new Game();
+        System.setIn(new ByteArrayInputStream("3".getBytes()));
+
+        assertThatThrownBy(() -> game.getRestartOrEndNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
