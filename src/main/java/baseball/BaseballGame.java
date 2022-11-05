@@ -8,8 +8,8 @@ public class BaseballGame {
     private Computer computer;
     private User user;
     private Result result;
-    private boolean gameDone;
-    private boolean gameContinue;
+    private boolean isGameDone;
+    private boolean isGameContinue;
     private List<Integer> answer;
 
     public BaseballGame() {
@@ -21,16 +21,22 @@ public class BaseballGame {
     public void start() {
         initGame();
 
-        while (!gameDone) {
+        while (!isGameDone) {
             user.enterInput();
-            evaluate();
-            result.print(gameDone);
+
+            calculateResult();
+            checkGameDone();
+
+            result.print();
+            if (isGameDone) {
+                System.out.println(Constants.GAME_DONE_MESSAGE);
+            }
         }
 
-        gameContinue = user.enterRestartOrNot();
+        isGameContinue = user.enterRestartOrNot();
     }
 
-    private void evaluate() {
+    private void calculateResult() {
         List<Integer> input = user.getNumbers();
         result.reset();
 
@@ -41,21 +47,23 @@ public class BaseballGame {
                 result.addBall();
             }
         }
+    }
 
+    private void checkGameDone() {
         if (result.getStrike() == Constants.NUM_LENGTH && result.getBall() == 0) {
-            gameDone = true;
+            isGameDone = true;
         }
     }
 
     private void initGame() {
-        this.gameDone = false;
-        this.gameContinue = true;
+        this.isGameDone = false;
+        this.isGameContinue = false;
 
         computer.generateNumbers();
         answer = computer.getNumbers();
     }
 
-    public boolean isRestart() {
-        return gameContinue;
+    public boolean isGameContinue() {
+        return isGameContinue;
     }
 }

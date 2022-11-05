@@ -26,7 +26,7 @@ public class Result {
         ball = 0;
     }
 
-    public void print(boolean gameDone) {
+    public void print() {
         if (strike == 0 && ball == 0) {
             System.out.println(Constants.NOTHING_MESSAGE);
         } else if (ball == 0) {
@@ -36,10 +36,6 @@ public class Result {
         } else {
             System.out.print(ball + Constants.BALL_MESSAGE + " ");
             System.out.println(strike + Constants.STRIKE_MESSAGE);
-        }
-
-        if (gameDone) {
-            System.out.println(Constants.GAME_DONE_MESSAGE);
         }
     }
 }

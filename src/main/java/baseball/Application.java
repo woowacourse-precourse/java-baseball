@@ -8,7 +8,7 @@ public class Application {
         System.out.println(Constants.START_MESSAGE);
         do {
             game.start();
-        } while (game.isRestart());
+        } while (game.isGameContinue());
 
     }
 }
