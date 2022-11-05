@@ -28,6 +28,7 @@ public class BaseballGame {
             if (checkCorrect()) {
                 askExit();
             }
+            resetResult();
         }
     }
 
@@ -89,15 +90,10 @@ public class BaseballGame {
     }
 
     private static boolean checkCorrect() {
-        if (strike == 3) {
-            resetResult();
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
 
     private static void resetResult() {
-        computerNumbers = new ArrayList<>();
         ball = 0;
         strike = 0;
     }
@@ -109,6 +105,7 @@ public class BaseballGame {
         if (exitNumber.equals("2")) {
             gameAvailable = false;
         } else if (exitNumber.equals("1")) {
+            computerNumbers = new ArrayList<>();
             makeRandomNumber();
         }
     }
