@@ -24,14 +24,14 @@ public abstract class NumberBaseballGame {
         pickAnswerNumberList();
     }
 
-    private static void printGameStartPhrase() {
+    protected static void printGameStartPhrase() {
         if (isFirstGame) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             isFirstGame = false;
         }
     }
 
-    private static void pickAnswerNumberList() {
+    protected static void pickAnswerNumberList() {
         answerNumberList.clear(); //이전 게임에서의 정답 삭제
         while (answerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -41,7 +41,7 @@ public abstract class NumberBaseballGame {
         }
     }
 
-    private static void play() {
+    protected static void play() {
         do {
             inputPlayerNumberList();
             countBall();
@@ -50,7 +50,7 @@ public abstract class NumberBaseballGame {
         } while(!isGameOver());
     }
 
-    private static void inputPlayerNumberList() {
+    protected static void inputPlayerNumberList() {
         playerNumberList.clear();
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -64,7 +64,7 @@ public abstract class NumberBaseballGame {
         else throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
     }
 
-    private static boolean isValidNumberStr(String numberStr) {
+    protected static boolean isValidNumberStr(String numberStr) {
         boolean isThreeDigit = numberStr.length() == 3,
                 isOnlyNaturalNumber = numberStr.matches("[1-9]{3}"),
                 isEachUniqueNumber = true;
@@ -80,13 +80,13 @@ public abstract class NumberBaseballGame {
         return isThreeDigit && isOnlyNaturalNumber && isEachUniqueNumber;
     }
 
-    private static String getNumberStrExceptionMessage(String numberStr) {
+    protected static String getNumberStrExceptionMessage(String numberStr) {
         if (numberStr.length() != 3) return "3자리 숫자를 입력해주세요.";
         else if (!numberStr.matches("[1-9]{3}")) return "1 ~ 9까지의 숫자만을 입력해주세요.";
         else return "각 자리의 숫자가 서로 다르도록 입력해주세요.";
     }
 
-    private static void countBall() {
+    protected static void countBall() {
         ball = 0;
         for (int i = 0; i < playerNumberList.size(); i++) {
             int playerNumber = playerNumberList.get(i);
@@ -94,18 +94,18 @@ public abstract class NumberBaseballGame {
         }
     }
 
-    private static void countStrike() {
+    protected static void countStrike() {
         strike = 0;
         for (int i = 0; i < answerNumberList.size(); i++) {
             if (isStrike(i)) strike++;
         }
     }
 
-    private static boolean isStrike(int position) {
+    protected static boolean isStrike(int position) {
         return Objects.equals(answerNumberList.get(position), playerNumberList.get(position));
     }
 
-    private static void printHint() {
+    protected static void printHint() {
         String hint;
         if (ball == 0 && strike == 0) hint = "낫싱";
         else if (ball == 0) hint = strike + "스트라이크";
@@ -114,15 +114,36 @@ public abstract class NumberBaseballGame {
         System.out.println(hint);
     }
 
-    private static boolean isGameOver() {
+    protected static boolean isGameOver() {
         return strike == 3;
     }
 
-    private static void gameOver() {
+    protected static void gameOver() {
         printGameOverPhrase();
     }
 
-    private static void printGameOverPhrase() {
+    protected static void printGameOverPhrase() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    //========== Getter ==========
+    protected static List<Integer> getAnswerNumberList() {
+        return answerNumberList;
+    }
+
+    protected static List<Integer> getPlayerNumberList() {
+        return playerNumberList;
+    }
+
+    protected static int getBall() {
+        return ball;
+    }
+
+    protected static int getStrike() {
+        return strike;
+    }
+
+    protected static boolean getIsFirstGame() {
+        return isFirstGame;
     }
 }
