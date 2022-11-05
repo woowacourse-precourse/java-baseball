@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumGenerator {
-    private final List<Integer> NUMS;
+    public final List<Integer> NUMS;
 
     public ComputerNumGenerator() {
         NUMS = generate();

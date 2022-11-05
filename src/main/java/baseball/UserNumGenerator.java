@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class UserNumGenerator {
-    private final List<Integer> NUMS;
+    public final List<Integer> NUMS;
 
     public UserNumGenerator(String input) {
         NUMS = generate(input);
