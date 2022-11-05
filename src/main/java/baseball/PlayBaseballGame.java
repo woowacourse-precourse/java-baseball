@@ -38,6 +38,8 @@ public class PlayBaseballGame {
 
     }
 
+
+
     public static List<Integer> getUserNum(String userInput){
         List<Integer> userNum = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++){
