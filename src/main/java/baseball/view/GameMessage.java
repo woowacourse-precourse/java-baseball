@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.BaseballScore;
+import baseball.GameConstants;
 import java.util.Map;
 
 public class GameMessage {
@@ -9,11 +10,16 @@ public class GameMessage {
     }
 
     public void printGameResult(Map<BaseballScore, Integer> resultScore) {
-        String resultString = "";
-        resultString += getBallCountResult(resultScore.get(BaseballScore.BALL));
-        resultString += getStrikeCountResult(resultScore.get(BaseballScore.STRIKE));
+        String nothingString = getNothingResult(resultScore.get(BaseballScore.NOTHING));
+        String ballString = getBallCountResult(resultScore.get(BaseballScore.BALL));
+        String strikeString = getStrikeCountResult(resultScore.get(BaseballScore.STRIKE));
+    }
 
-
+    public String getNothingResult(int nothingScore) {
+        if(nothingScore == GameConstants.NUMBER_LENGTH) {
+            return BaseballScore.NOTHING.getScoreName();
+        }
+        return "";
     }
 
     public String getStrikeCountResult(int strikeCount) {
