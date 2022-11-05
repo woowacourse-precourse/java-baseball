@@ -1,20 +1,13 @@
 package baseball;
 
-import baseball.view.GameMessage;
-import baseball.view.GameState;
-import baseball.view.InputMessage;
+import baseball.controller.GameController;
 
 public class Baseball {
     private GameState gameState = GameState.START;
-    private GameMessage gameMessage = new GameMessage();
-    private InputMessage inputMessage = new InputMessage();
-    private User user = new User();
-    private Computer computer = new Computer();
+    private GameController gameController =  new GameController();
 
     public void playGame() {
-        gameMessage.startGame();
-        computer.throwTheBall();
-        inputMessage.inputNumber();
-        user.hitTheBall();
+        gameController.start();
+        gameController.play();
     }
 }
