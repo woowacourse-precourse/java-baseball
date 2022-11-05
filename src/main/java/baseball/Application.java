@@ -6,39 +6,16 @@ import java.util.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-
-public static void setUserNumbers(){
-        String inputNumber;
-        inputNumber = readLine();
-        List<Integer> userNumbers = new ArrayList<>();
-        userNumbers = changeIntUsernumbers(inputNumber);
-}
-
-public static List<Integer> changeIntUsernumbers(String inputNubmers){
-        String[] splitNumber = inputNubmers.split("");
-        int[] splitIntNumber = new int[3];
-        List<Integer> userNumbers = new ArrayList<>();
-
-        for(int i =0;i<splitNumber.length;i++){
-            splitIntNumber[i] = Integer.parseInt(splitNumber[i]);
-            userNumbers.add(splitIntNumber[i]);
-        }
-
-        return userNumbers;
-}
-
     public static void playBaseball(){
-        /*List<Integer> computerNumbers = new ArrayList<>();
-        computerNumbers = setComputerNumbers(computerNumbers);
-        for(int numbers : computerNumbers) System.out.println(numbers); //난수 출력 확인.*/
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         Computer computerNumber = new Computer();
         computerNumber.setComputerNumbers();
 
-        for (Integer a : computerNumber.computerNumbers) {
-            System.out.println(a);
-        }
-
-//        setUserNumbers();
+        User userNumber = new User();
+        userNumber.setUserNumbers();
+        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
+        for(int a : userNumber.userNumbers) System.out.print(a+" ");
     }
 
     public static void main(String[] args) {

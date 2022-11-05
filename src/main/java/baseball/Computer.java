@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    public List<Integer> computerNumbers = new ArrayList<>();
+    static List<Integer> computerNumbers = new ArrayList<>();
 
     public void setComputerNumbers() {
 
