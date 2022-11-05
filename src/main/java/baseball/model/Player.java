@@ -15,4 +15,9 @@ public class Player {
     public String getBaseballNumber() {
         return baseballNumber;
     }
+
+    // 게임 계속 또는 종료 선택하기
+    public boolean continueGame() {
+        return input.continueGame();
+    }
 }
