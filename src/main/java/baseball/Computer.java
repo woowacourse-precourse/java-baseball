@@ -6,14 +6,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
     List<Integer> computerNumberList;
+    static final int NUMBER_LENGTH = 3;
 
     Computer() {
         computerNumberList = this.makeNumberList();
     }
 
     private List<Integer> makeNumberList() {
-        List<Integer> computerNumberList = new ArrayList<>(3);
-        while (computerNumberList.size() < 3) {
+        List<Integer> computerNumberList = new ArrayList<>(NUMBER_LENGTH);
+        while (computerNumberList.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addNumberIfNotList(computerNumberList, randomNumber);
         }

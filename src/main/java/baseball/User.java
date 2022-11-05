@@ -6,9 +6,13 @@ import java.util.List;
 
 
 public class User {
-    boolean keepGame = true;
+    boolean keepProgram = true;
     List<Integer> userNumberList;
     int userNumber;
+    final int NUMBER_LENGTH = Computer.NUMBER_LENGTH;
+    final int SMALLEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH - 1);
+    final int BIGGEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH);
+
     User() {
     }
 
@@ -27,7 +31,8 @@ public class User {
     }
 
     private void checkNumber() {
-        if (100 <= userNumber & userNumber <= 999) {
+        if (SMALLEST_NUMBER <= userNumber & userNumber < BIGGEST_NUMBER) {
+
             if (numberToList(userNumber).contains(0)) {
                 makeError();
                 return;
@@ -48,8 +53,8 @@ public class User {
     }
 
     List<Integer> numberToList(int userNumber) {
-        userNumberList = new ArrayList<>(3);
-        for (int divideNumber = 100; divideNumber >= 1; divideNumber /= 10) {
+        userNumberList = new ArrayList<>(NUMBER_LENGTH);
+        for (int divideNumber = SMALLEST_NUMBER; divideNumber >= 1; divideNumber /= 10) {
             userNumberList.add(userNumber / divideNumber);
             userNumber -= (userNumber / divideNumber) * divideNumber;
         }
@@ -60,10 +65,10 @@ public class User {
         String userInput = Console.readLine();
         checkType(userInput);
         if (userInput.equals("1")) {
-            keepGame = true;
+            keepProgram = true;
             return;
         } else if (userInput.equals("2")) {
-            keepGame = false;
+            keepProgram = false;
             return;
         }
         makeError();
