@@ -1,14 +1,12 @@
 package baseball;
 
 public class Strike {
-    Computer computer = new Computer();
-
-    public int compareCharacterLocationMatch() {
+    public int compareCharacterLocationMatch(String inputNumber, String computerNumber) {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if(InputNumber.number.charAt(i)
-                    == computer.randomNumberListToString().charAt(i)){
+            if (inputNumber.charAt(i)
+                    == computerNumber.charAt(i)) {
                 count++;
             }
         }

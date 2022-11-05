@@ -9,6 +9,7 @@ public class Game {
     public final static String BALL = "볼";
     public final static String STRIKE = "스트라이크";
     public final static String NOTHING = "낫싱";
+
     Computer computer = new Computer();
     Player player = new Player();
     Strike strike = new Strike();
@@ -49,7 +50,9 @@ public class Game {
     }
 
     public void printStrikeBall() {
-        int strikeCount = strike.compareCharacterLocationMatch();
+        int strikeCount = strike.compareCharacterLocationMatch(
+                InputNumber.number,
+                computer.randomNumberListToString());
         int ballCount = ball.compareCharacterDifferentLocationMatch();
 
         if (strikeCount == 0) {
@@ -64,7 +67,9 @@ public class Game {
     }
 
     public boolean isThreeStrike() {
-        int strikeCount = strike.compareCharacterLocationMatch();
+        int strikeCount = strike.compareCharacterLocationMatch(
+                InputNumber.number,
+                computer.randomNumberListToString());
         if (strikeCount == 3) {
             return true;
         }

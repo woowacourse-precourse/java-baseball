@@ -7,11 +7,13 @@ public class Ball {
     public int compareCharacterDifferentLocationMatch() {
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            if (computer.randomNumberListToString().contains(InputNumber.number.substring(i, i + 1))) {
+            if (computer.randomNumberListToString()
+                    .contains(InputNumber.number.substring(i, i + 1))) {
                 count++;
             }
         }
-        count = count - strike.compareCharacterLocationMatch();
+        count = count - strike.compareCharacterLocationMatch(InputNumber.number,
+                computer.randomNumberListToString());
         return count;
     }
 }
