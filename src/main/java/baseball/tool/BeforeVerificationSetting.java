@@ -1,4 +1,4 @@
-package baseball.Input;
+package baseball.tool;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,6 +8,7 @@ import java.util.Set;
 public class BeforeVerificationSetting {
 
     public static char[] makeNumberSplitArrangement(int receivedNumber){
+
         String number = Integer.toString(receivedNumber);
         char[] numberSplitArrangement = number.toCharArray();
         return numberSplitArrangement;
@@ -17,7 +18,8 @@ public class BeforeVerificationSetting {
         List<Integer> numberSplitList = new ArrayList<>();
 
         for(char oneNumber : makeNumberSplitArrangement(receivedNumber)){
-            numberSplitList.add((int) oneNumber);
+            int n = oneNumber - '0';
+            numberSplitList.add(n);
         }
         return numberSplitList;
     }
