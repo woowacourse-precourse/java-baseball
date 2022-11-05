@@ -7,30 +7,36 @@ public class Hint {
     public static final String STRIKE_MESSAGE = "스트라이크";
     public static final String BALL_MESSAGE = "볼";
     public static final String SPACE_MESSAGE = " ";
-    private int strikeCount;
-    private int ballCount;
+    public static final String NOTHING_MESSAGE = "낫싱";
+
+    private CountLogic countLogic;
 
     public Hint(ThreeDigitNum answer, ThreeDigitNum input) {
         List<Integer> answerList = answer.list();
         List<Integer> inputList = input.list();
 
-        strikeCount = 0;
-        ballCount = 0;
+        countLogic = new CountLogic();
 
         updateStrikeCount(answerList, inputList);
         updateBallCount(answerList, inputList);
     }
+    public boolean isAnswer() {
+        return countLogic.isAnswer();
+    }
 
     @Override
     public String toString() {
-        if (isAllCountEmpty()) {
-            return "낫싱";
+        if (countLogic.isAllCountEmpty()) {
+            return NOTHING_MESSAGE;
         }
-        String strikeMsg = String.format("%d%s", strikeCount, STRIKE_MESSAGE);
-        String ballMsg = String.format("%d%s", ballCount, BALL_MESSAGE);
+        String strikeMsg = String.format("%d%s", countLogic.getStrikeCount(), STRIKE_MESSAGE);
+        String ballMsg = String.format("%d%s", countLogic.getBallCount(), BALL_MESSAGE);
 
         return makeHintMsg(strikeMsg, ballMsg);
     }
+
+
+
 
     private void updateBallCount(List<Integer> answerList, List<Integer> inputList) {
         for (int answerIdx = 0; answerIdx < answerList.size(); ++answerIdx) {
@@ -41,17 +47,13 @@ public class Hint {
     }
 
     private void updateBallCountEach(List<Integer> answerList, List<Integer> inputList, int answerIdx, int inputIdx) {
-        if (isEqualBirth(answerIdx, inputIdx)) {
+        if (answerIdx == inputIdx) {
             return;
         }
         if (!isEqualValue(answerList.get(answerIdx), inputList.get(inputIdx))) {
             return;
         }
-        addBallCount(answerList.get(answerIdx), inputList.get(inputIdx));
-    }
-
-    private void addBallCount(Integer answerDigit, Integer inputDigit) {
-        ++ballCount;
+        countLogic.addBallCount();
     }
 
     private void updateStrikeCount(List<Integer> answerList, List<Integer> inputList) {
@@ -64,21 +66,12 @@ public class Hint {
         if (!isEqualBirth(answerList, inputList, answerIdx)) {
             return;
         }
-        addStrikeCount();
-    }
-
-    private void addStrikeCount() {
-        ++strikeCount;
+        countLogic.addStrikeCount();
     }
 
     private boolean isEqualBirth(List<Integer> answerList, List<Integer> inputList, int answerIdx) {
         return isEqualValue(answerList.get(answerIdx), inputList.get(answerIdx));
     }
-
-    private boolean isEqualBirth(int answerIdx, int inputIdx) {
-        return answerIdx == inputIdx;
-    }
-
 
     private boolean isEqualValue(Integer answerDigit, Integer inputDigit) {
         return answerDigit.equals(inputDigit);
@@ -96,40 +89,20 @@ public class Hint {
     }
 
     private void addStrikeMsg(String strikeMsg, StringBuffer stringBuffer) {
-        if (!isStrikeCountEmpty()) {
+        if (!countLogic.isStrikeCountEmpty()) {
             stringBuffer.append(strikeMsg);
         }
     }
 
     private void addSpaceMsg(StringBuffer stringBuffer) {
-        if (isAllCountExist()) {
+        if (countLogic.isAllCountExist()) {
             stringBuffer.append(SPACE_MESSAGE);
         }
     }
 
     private void addBallMsg(String ballMsg, StringBuffer stringBuffer) {
-        if (!isBallCountEmpty()) {
+        if (!countLogic.isBallCountEmpty()) {
             stringBuffer.append(ballMsg);
         }
-    }
-
-    private boolean isAllCountExist() {
-        return !(isStrikeCountEmpty() || isBallCountEmpty());
-    }
-
-    private boolean isAllCountEmpty() {
-        return isStrikeCountEmpty() && isBallCountEmpty();
-    }
-
-    private boolean isBallCountEmpty() {
-        return ballCount == 0;
-    }
-
-    private boolean isStrikeCountEmpty() {
-        return strikeCount == 0;
-    }
-
-    public boolean isAnswer() {
-        return strikeCount == 3;
     }
 }
