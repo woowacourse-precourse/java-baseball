@@ -18,8 +18,9 @@
 - Numbers answer : 답 3자리에 해당됨, 변경할 수 없는 상수
 - Computer generateAnswer() : 숫자 야구의 올바른 답을 생성하는 함수
   - 숫자를 중복해서 뽑지 않도록 구현한다
-- int strike(Numbers guess) : 스트라이크 개수를 계산하는 함수
-- int ball(Numbers guess) : 볼 개수를 계산하는 함수
+- Hint hint(User user) : user 가 추측한 답에 대한 힌트를 반환하는 함수
+- int strike(User user) : 스트라이크 개수를 계산하는 함수
+- int ball(User user) : 볼 개수를 계산하는 함수
 
 ### class User
 
@@ -38,7 +39,18 @@
   - computer 는 게임을 시작할 때 자동으로 생성됨
 - boolean run() : 게임을 진행하는 함수
   - 게임이 종료되었을 때 restart 할지 여부를 반환함
-- String hint(int strike, int ball) : 힌트를 제공하는 함수
 - boolean restart() : 게임을 새로 시작하는 함수
   - 입력된 문자열이 한자리 숫자가 아니라면 IllegalArgumentException 던져야 함
   - 입력된 숫자가 1, 2가 아니라면 IllegalArgumentException 던져야 함
+
+### class Hint
+
+- 숫자야구 게임의 힌트에 해당하는 클래스
+- int strike : 스트라이크 개수
+- int ball : 볼 개수
+- String toString() : 힌트를 문자열로 반환
+  - strike == 0 && ball == 0 : 낫싱
+  - string > 0 || ball > 0 : 볼, 스트라이크 개수를 표시
+    - ex) 1볼 1스트라이크, 2볼, 3스트라이크 등
+- boolean correct() : 정답을 맞췄는지 여부를 반환
+  - strike == 3이면 true, 아니면 false
