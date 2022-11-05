@@ -22,6 +22,21 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ApplicationTest extends NsTest {
 
     @ParameterizedTest
+    @DisplayName("분석한 결과가 3스트라이크 일 경우 true, 아닐 경우 false가 리턴되는지 확인 테스트")
+    @CsvSource(value = {"1, 2, false", "0, 3, false", "0, 0, false", "2, 0, false", "3, 0, true"})
+    void resultMessagePrintRetrunTest(int strikeNumber, int ballNumber, boolean expectedResult) {
+
+        Map<String, Integer> resultMap = Map.of(
+                "strike", strikeNumber,
+                "ball", ballNumber
+        );
+
+        boolean result = Application.resultMessagePrint(resultMap);
+
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @ParameterizedTest
     @DisplayName("분석한 결과에 따라 알맞은 내용이 출력되는지 확인 테스트")
     @CsvSource(value = {"1, 2, 2볼 1스트라이크", "0, 3, 3볼", "0, 0, 낫싱", "2, 0, 2스트라이크", "3, 0, 3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"})
     void resultMessagePrintTest(int strikeNumber, int ballNumber, String expectedResultMessage) {
