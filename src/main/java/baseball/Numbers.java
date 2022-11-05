@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Numbers {
 
@@ -24,12 +26,12 @@ public class Numbers {
     }
 
     private void validateNoDuplicates(List<Integer> digits) {
-        boolean[] appearances = new boolean[10];
+        Set<Integer> appearances = new HashSet<>();
         for (Integer digit : digits) {
-            if (appearances[digit]) {
+            if (appearances.contains(digit)) {
                 throw new IllegalArgumentException("숫자는 중복되면 안됩니다");
             }
-            appearances[digit] = true;
+            appearances.add(digit);
         }
     }
 
