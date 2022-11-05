@@ -16,7 +16,7 @@ class ParticipantTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "11", "1111", "11111"})
+    @ValueSource(strings = {"1", "11", "1111", "11111", ""})
     void 입력받은_문자열의_길이는_3자리_입니다(final String input) {
         assertThatThrownBy(() -> {
             new Participant(input);

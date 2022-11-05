@@ -1,6 +1,7 @@
 package baseball.domain.score;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class ScoreTest {
     void 스코어는_스트라이크와_볼에_대한_정보를_가지며_초기화를_통해_낫싱을_반환합니다() {
         var score = Score.generateZero();
 
-        Assertions.assertThat(score.result()).isEqualTo("낫싱");
+        assertThat(score.result()).isEqualTo("낫싱");
     }
 
     @Test
@@ -25,7 +26,7 @@ class ScoreTest {
                 .strike();
         var actual = score.result();
 
-        Assertions.assertThat(actual).isEqualTo("1스트라이크");
+        assertThat(actual).isEqualTo("1스트라이크");
     }
 
     @Test
@@ -34,7 +35,7 @@ class ScoreTest {
                 .ball();
 
         var actual = score.result();
-        Assertions.assertThat(actual).isEqualTo("1볼");
+        assertThat(actual).isEqualTo("1볼");
     }
 
     @Test
@@ -44,7 +45,7 @@ class ScoreTest {
                 .strike();
 
         var actual = score.result();
-        Assertions.assertThat(actual).isEqualTo("1볼 1스트라이크");
+        assertThat(actual).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -55,7 +56,7 @@ class ScoreTest {
                 .ball();
 
         var actual = score.result();
-        Assertions.assertThat(actual).isEqualTo("2볼 1스트라이크");
+        assertThat(actual).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
@@ -66,7 +67,7 @@ class ScoreTest {
                 .strike();
 
         var actual = score.result();
-        Assertions.assertThat(actual).isEqualTo("1볼 2스트라이크");
+        assertThat(actual).isEqualTo("1볼 2스트라이크");
     }
 
     @Test
@@ -78,7 +79,7 @@ class ScoreTest {
 
         var actual = score.result();
 
-        Assertions.assertThat(actual).isEqualTo("3볼");
+        assertThat(actual).isEqualTo("3볼");
     }
 
     @Test
@@ -89,6 +90,6 @@ class ScoreTest {
                 .strike();
 
         var actual = score.result();
-        Assertions.assertThat(actual).isEqualTo("3스트라이크");
+        assertThat(actual).isEqualTo("3스트라이크");
     }
 }

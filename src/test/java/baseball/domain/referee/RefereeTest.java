@@ -1,10 +1,11 @@
 package baseball.domain.referee;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.domain.number.BaseballNumber;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -35,7 +36,7 @@ class RefereeTest {
 
         var actual = score.result();
 
-        Assertions.assertThat(actual).isEqualTo("3스트라이크");
+        assertThat(actual).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -43,7 +44,7 @@ class RefereeTest {
         var answers = generateAnswers.generate(List.of(1, 2, 3), List.of(1, 3, 4));
         var actual = referee.ruled(answers.get(0), answers.get(1)).result();
 
-        Assertions.assertThat(actual).isEqualTo("1볼 1스트라이크");
+        assertThat(actual).isEqualTo("1볼 1스트라이크");
     }
 
     // 애초에 2스트라이크 1볼상황은 존재할 수 없네
@@ -57,7 +58,7 @@ class RefereeTest {
     void _1스트라이크_2볼인경우(final String original, final String target) {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
-        Assertions.assertThat(actual).isEqualTo("2볼 1스트라이크");
+        assertThat(actual).isEqualTo("2볼 1스트라이크");
 
     }
 
@@ -67,7 +68,7 @@ class RefereeTest {
     void _2스트라이크_인경우(final String original, final String target) {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
-        Assertions.assertThat(actual).isEqualTo("2스트라이크");
+        assertThat(actual).isEqualTo("2스트라이크");
     }
 
     @ParameterizedTest
@@ -76,7 +77,7 @@ class RefereeTest {
     void _3스트라이크_인경우(final String original, final String target) {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
-        Assertions.assertThat(actual).isEqualTo("3스트라이크");
+        assertThat(actual).isEqualTo("3스트라이크");
     }
 
     @ParameterizedTest
@@ -84,7 +85,7 @@ class RefereeTest {
     void _3볼(final String original, final String target) {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
-        Assertions.assertThat(actual).isEqualTo("3볼");
+        assertThat(actual).isEqualTo("3볼");
     }
 
     @ParameterizedTest
@@ -92,7 +93,7 @@ class RefereeTest {
     void 사용자가_한가지_번호로_밀_경우_얻어걸리는_값이_있을때_1스트라이크_2볼입니다(final String original, final String target) {
         var answers = this.generateAnswers.generate(original, target);
         var actual = this.referee.ruled(answers.get(0), answers.get(1)).result();
-        Assertions.assertThat(actual).isEqualTo("2볼 1스트라이크");
+        assertThat(actual).isEqualTo("2볼 1스트라이크");
     }
 
     class GenerateAnswers {
