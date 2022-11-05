@@ -1,0 +1,19 @@
+package baseball.model.number;
+
+import java.util.List;
+
+public class BaseballNumbers {
+    private static final String INPUT_SIZE_ERROR = "입력하는 수는 3자리여야 합니다";
+
+    List<BaseballNumber> ballNumbers;
+
+    BaseballNumbers(String numberString) {
+        validateSize(numberString);
+    }
+
+    private void validateSize(String uncheckNumbers) {
+        if(uncheckNumbers.length() != 3) {
+            throw new IllegalArgumentException(INPUT_SIZE_ERROR);
+        }
+    }
+}
