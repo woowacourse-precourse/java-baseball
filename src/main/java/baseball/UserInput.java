@@ -28,7 +28,7 @@ public class UserInput {
     }
 
     boolean IsValidRestartOrEndGame() {
-        return input.equals(RE_START_MESSAGE) || input.equals(END_GAME_MESSAGE);
+        return input.equals(RE_START_MESSAGE) || input.equals(QUIT_GAME_MESSAGE);
     }
 
     boolean IsValidGuessNumber() {
