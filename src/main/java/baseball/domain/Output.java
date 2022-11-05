@@ -6,6 +6,7 @@ public class Output {
     private final static String BALL_FORMAT = "%d볼";
     private final static String STRIKE_FORMAT = "%d스트라이크";
     private final static String NOTHING = "낫싱";
+    private final static String GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printResult(int ballCount, int strikeCount) {
         if (ballCount != 0 && strikeCount != 0) {
@@ -21,7 +22,10 @@ public class Output {
             System.out.printf(STRIKE_FORMAT + NEW_LINE, strikeCount);
             return;
         }
-        System.out.println(NOTHING + NEW_LINE);
+        System.out.println(NOTHING);
     }
 
+    public static void printGameClear() {
+        System.out.println(GAME_CLEAR);
+    }
 }
