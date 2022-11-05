@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -58,6 +60,74 @@ class ApplicationTest extends NsTest {
         assertThat(firstNum).isNotEqualTo(secondNum);
         assertThat(firstNum).isNotEqualTo(thirdNum);
         assertThat(secondNum).isNotEqualTo(thirdNum);
+    }
+
+    @Nested
+    class 힌트_출력{
+        @Test
+        @DisplayName("1볼 1스트라이크")
+        void case1(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(1, 2, 3);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("1볼 1스트라이크");
+        }
+        @Test
+        @DisplayName("1볼")
+        void case2(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(1, 4, 5);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("1볼");
+        }
+        @Test
+        @DisplayName("2볼")
+        void case3(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(6, 7, 1);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("2볼");
+        }
+        @Test
+        @DisplayName("1스트라이크")
+        void case4(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(2, 1, 6);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("1스트라이크");
+        }
+        @Test
+        @DisplayName("3스트라이크")
+        void case5(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(7, 1, 3);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("3스트라이크");
+        }
+        @Test
+        @DisplayName("낫싱")
+        void case6(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(2, 4, 5);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("낫싱");
+        }
+        @Test
+        @DisplayName("2볼 1스트라이크")
+        void case7(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(7, 3, 1);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("2볼 1스트라이크");
+        }
+        @Test
+        @DisplayName("2스트라이크")
+        void case8(){
+            List<Integer> computerNumbers = List.of(7, 1, 3);
+            List<Integer> userNumbers = List.of(7, 1, 5);
+            String hint = Application.getHint(computerNumbers, userNumbers);
+            assertThat(hint).isEqualTo("2스트라이크");
+        }
     }
 
     @Override
