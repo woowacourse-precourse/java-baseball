@@ -61,6 +61,7 @@ public class Application {
             }
         }
 
+        // 같은 자리에 같은 숫자가 있어도 count 되기 때문에, 결과값에서 스트라이크 개수를 빼준다.
         count -= strike;
 
         return count;
