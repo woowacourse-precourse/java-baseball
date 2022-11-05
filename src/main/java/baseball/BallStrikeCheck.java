@@ -20,4 +20,17 @@ public class BallStrikeCheck {
             }
         }
     }
+
+    public void ballStrikePrint() {
+        ballStrikeCount();
+        System.out.println(computerNumber); //check
+        if(ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        }
+    }
 }
