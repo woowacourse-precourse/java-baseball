@@ -12,7 +12,7 @@
 ---
 
 
-## 2. ComputerClass
+## 2. Computer package
 ### 1) 랜덤 숫자 생성 로직 
 - 1~9까지의 난수 생성 기능
 - 중복 제어 기능 
@@ -25,7 +25,7 @@
 
 ---
 
-## 3. UserClass
+## 3. User package
 ### 1) 입력 로직
 - 숫자 입력 기능
 - 입력 예외 처리 기능
@@ -38,7 +38,7 @@
 
 ---
 
-## 4. GameClass
+## 4. Game package
 
 ### 1) 게임 진행 로직
 - 스트라이크, 볼, 나싱 판단 기능
@@ -52,7 +52,7 @@
 
 ---
 
-## 5. ConfigureClass
+## 5. SetupClass (Enum)
 
 ### 1) 게임을 위해 세팅하는 enum class 설정
 - 3자리 수 셋업 
