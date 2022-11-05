@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameNumber {
+    private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
+    private static final int RESULT_SIZE = 2;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
 
     private char[] userNumber;
 
@@ -16,7 +20,7 @@ public class GameNumber {
     // 사용자 숫자 입력받는 메소드
     public List<Integer> getUserNumber() {
         List<Integer> user = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_SENTENCE);
         getSplit();
         addInputNumber(user);
         return user;
@@ -31,6 +35,7 @@ public class GameNumber {
         for (int i = 0; i < split.length(); i++) {
             userNumber[i] = split.charAt(i);
         }
+        // 예외 발생 체크
         exception();
     }
 
@@ -54,7 +59,7 @@ public class GameNumber {
     public List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (isSize(computer)) {
-            addRandomNumber(computer, Randoms.pickNumberInRange(1, 9));
+            addRandomNumber(computer, Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
         return computer;
     }
@@ -68,7 +73,7 @@ public class GameNumber {
 
     // strike 와 ball 의 결과를 리턴받는 메소드
     public int[] getResult(List<Integer> computer, List<Integer> user) {
-        int[] result = new int[2];
+        int[] result = new int[RESULT_SIZE];
         for (int idx = 0; idx < computer.size(); idx++) {
             addStrikeAndBall(result, idx, computer.indexOf(user.get(idx)));
         }
@@ -98,9 +103,9 @@ public class GameNumber {
             throw new IllegalArgumentException();
         }
 
-        if ((userNumber[0] - '0' <= 0 || userNumber[0] - '0' > 9)
-                || (userNumber[1] - '0' <= 0 || userNumber[1] - '0' > 9)
-                || (userNumber[2] - '0' <= 0 || userNumber[2] - '0' > 9)) {
+        if ((userNumber[0] - '0' < MIN_NUMBER || userNumber[0] - '0' > MAX_NUMBER)
+                || (userNumber[1] - '0' < MIN_NUMBER || userNumber[1] - '0' > MAX_NUMBER)
+                || (userNumber[2] - '0' < MIN_NUMBER || userNumber[2] - '0' > MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
