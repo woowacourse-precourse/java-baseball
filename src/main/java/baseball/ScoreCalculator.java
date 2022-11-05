@@ -17,4 +17,11 @@ public class ScoreCalculator {
                 .filter(i -> baseballNum1.getNumberAt(i) == baseballNum2.getNumberAt(i))
                 .count();
     }
+
+    public static Score calculateUserFinalScore(BaseballNumber baseballNum1, BaseballNumber baseballNum2) {
+        return new Score(
+                calculateBallCount(baseballNum1, baseballNum2),
+                calculateStrikeCount(baseballNum1, baseballNum2)
+        );
+    }
 }
