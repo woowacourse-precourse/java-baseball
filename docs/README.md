@@ -37,9 +37,9 @@
   - ⬜ 게임 재시작/프로그램 종료 여부 결정값을 입력받아 반환
     - ⬜ 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수
     - ⬜ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
-  - ⬜ validateUserInputOneOrTwo 메서드 구현
-    - ⬜ 사용자 입력값이 1또는 2이면 통과
-    - ⬜ 1과 2 이외의 값이라면 예외 발생
+  - ✅ validateUserInputOneOrTwo 메서드 구현
+    - ✅ 사용자 입력값이 1또는 2이면 통과
+    - ✅ 1과 2 이외의 값이라면 IllegalArgumentException 예외 발생
 
 ## 플레이어의 예측 정답값 입력 기능
 - ⬜ 사용자의 예측 정답값 입력
