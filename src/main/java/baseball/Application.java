@@ -35,13 +35,14 @@ public class Application {
                         char computerNum = computerNumber.charAt(i);
                         char playerNum = playerNumber.charAt(i);
 
-                        if (isBall[computerNum - '0']) {
-                            ballCount++;
-                        }
                         if (computerNum == playerNum) {
                             strikeCount++;
+                        } else if (isBall[playerNum - '0']) {
+                            ballCount++;
                         }
+
                     }
+
                     System.out.println(makeMessage(ballCount, strikeCount));
 
                     if (strikeCount == 3) break;
