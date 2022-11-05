@@ -4,6 +4,8 @@ import java.util.List;
 
 public class BaseballGame {
     private static final int MAX_STRIKE = 3;
+    private static final int END = 1;
+    private static final int RESTART = 2;
     private  int ballCount;
     private int strikeCount;
     private List<Integer> userNumber;
@@ -18,15 +20,6 @@ public class BaseballGame {
 
     public void start() {
         System.out.println(GameMessage.start);
-    }
-
-    public void isNothing() {
-        List<Integer> userNumber = User.userNumber();
-        List<Integer> computerNumber = Computer.computerNumber();
-
-        if(!computerNumber.contains(userNumber)) {
-            System.out.println(GameMessage.nothing);
-        }
     }
 
     public boolean isStrike() {
@@ -73,8 +66,18 @@ public class BaseballGame {
 
         System.out.println(result);
 
-        if (strikeCount == MAX_STRIKE) {
+        if (isThreeStrike()) {
             System.out.println(GameMessage.end);
         }
+    }
+
+    public boolean isThreeStrike() {
+        boolean threeStrike = false;
+
+        if (strikeCount == MAX_STRIKE) {
+            threeStrike = true;
+        }
+
+        return threeStrike;
     }
 }
