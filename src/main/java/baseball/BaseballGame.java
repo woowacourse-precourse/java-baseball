@@ -4,23 +4,23 @@ import Util.RamdomNumber;
 import java.util.Scanner;
 
 public class BaseballGame {
-    int[] computerNumber;
+    int[] answer;
     Hint hint;
     User user;
     RamdomNumber randomNumber;
-    Scanner continueScanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
-        this.computerNumber = new int[3];
+        this.answer = new int[3];
         this.user = new User();
         this.randomNumber = new RamdomNumber(3);
     }
 
     public void startGame(){
-        computerNumber = randomNumber.makeRandomNumber(3);
+        answer = randomNumber.makeRandomNumber(3);
         do {
             user.UserInput();
-            hint.getHint(user.getUserNumber(), computerNumber);
+            hint.getHint(user.getUserNumber(), answer);
         } while (hint.strike != 3);
     }
     public boolean restartGame(){
@@ -30,7 +30,7 @@ public class BaseballGame {
 
     private boolean continueGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int input = continueScanner.nextInt();
+        int input = scanner.nextInt();
         if (input == 1){
             return true;
         }
