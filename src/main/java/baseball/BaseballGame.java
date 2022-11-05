@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class BaseballGame {
     private List<Integer> PlayerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
@@ -28,7 +27,6 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println(START_GAME);
         System.out.print(INPUT_NUM);
         String PlayerInput = readLine();
         PlayerNumber = toIntegerPlayerInput(PlayerInput);
@@ -37,7 +35,6 @@ public class BaseballGame {
         ball = checkBallCount(PlayerNumber);
         gameResult();
     }
-
 
     private void checkInputData(List<Integer> PlayerNumber) {
         if (PlayerNumber.size() != 3) {
