@@ -24,6 +24,10 @@ public class Balls {
         return balls.indexOf(ball);
     }
 
+    public int size() {
+        return balls.size();
+    }
+
     @Override
     public boolean equals(Object obj) {
         Balls balls = (Balls) obj;
