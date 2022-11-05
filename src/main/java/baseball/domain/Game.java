@@ -27,6 +27,7 @@ public class Game {
 		initBallAndStrike();
 		compareNumber(computer.getAnswer(), user.getNumber());
 
+		GameView.printHint(ball, strike);
 		if (isCorrectAnswer()) {
 			GameView.printEndGame();
 
@@ -34,7 +35,6 @@ public class Game {
 				play();
 			}
 		} else {
-			GameView.printHint(ball, strike);
 			tryCorrectAnswer();
 		}
 	}
