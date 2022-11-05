@@ -1,8 +1,9 @@
 기능 명세
 - 
 - 출력
-    - 프로그램 시작 문구 출력
-    - 프로그램 끝 문구 출력
+    - 프로그램 시작 문구 출력 (ui package - OutputText class - startGame func)
+    - 프로그램 끝 문구 출력 (ui package - OutputText class - endGame func)
+    - 숫자 입력 문구 출력 (ui package - OutputText class - inputNumber func)
     - 맞춘 결과 문구 출력
   
 
