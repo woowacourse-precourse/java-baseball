@@ -26,6 +26,20 @@ public class Application {
         }
     }
 
+    private static ArrayList<String> getComputerNumber() {
+        ArrayList<String> computerNumber = new ArrayList<>();
+
+        while (computerNumber.size() < NUMBER_OF_DIGIT) {
+            String number = Integer.toString(Randoms.pickNumberInRange(1, 9));
+
+            if (!computerNumber.contains(number)) {
+                computerNumber.add(number);
+            }
+        }
+
+        return computerNumber;
+    }
+
     private static boolean getRestartFromUser() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -44,19 +58,5 @@ public class Application {
         }
 
         throw new IllegalArgumentException();
-    }
-
-    private static ArrayList<String> getComputerNumber() {
-        ArrayList<String> computerNumber = new ArrayList<>();
-
-        while (computerNumber.size() < NUMBER_OF_DIGIT) {
-            String number = Integer.toString(Randoms.pickNumberInRange(1, 9));
-
-            if (!computerNumber.contains(number)) {
-                computerNumber.add(number);
-            }
-        }
-
-        return computerNumber;
     }
 }
