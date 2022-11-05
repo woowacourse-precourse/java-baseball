@@ -22,4 +22,33 @@ public interface Validation {
             }
         };
     }
+
+    static Validation isNotDuplicationNumber(){
+        return new Validation() {
+            @Override
+            public boolean check(String inputValue) {
+                boolean isNumber = Validation.isNumber().check(inputValue);
+
+                if(isNumber){
+                    List<Integer> container = new ArrayList<>();
+                    int number = Integer.parseInt(inputValue);
+
+                    int q = number;
+                    while(q != 0){
+                        int digit = q % 10;
+
+                        if(container.contains(digit)){
+                            return false;
+                        }else{
+                            container.add(digit);
+                        }
+
+                        q /= 10;
+                    }
+                }
+
+                return true;
+            }
+        };
+    }
 }
