@@ -32,7 +32,7 @@ public class Game {
     private String receiveInput() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        // TODO: validation check
+        Validation.checkInput(input);
         return input;
     }
 }
