@@ -30,7 +30,6 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println(computerNumber);
         System.out.print(INPUT_NUM);
         String PlayerInput = readLine();
         PlayerNumber = toIntegerPlayerInput(PlayerInput);
