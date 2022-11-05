@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Controller {
             Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
             List<Integer> scores = calculator.getScores();
             ResultViewer.printOut(scores);
-            checkThreeStrikes(scores.get(1));
+            checkThreeStrikes(scores.get(STRIKE_INDEX));
         }
         gameShouldContinue();
     }
@@ -29,18 +31,18 @@ public class Controller {
     }
 
     public static void gameShouldContinue() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(CONGRATULATIONS_MESSAGE);
+        System.out.println(ASK_WHETHER_PLAYING_AGAIN);
         String playerResponse = Console.readLine();
         checkResponseCode(playerResponse);
     }
 
     public static void checkResponseCode(String responseCode) {
-        if (responseCode.equals("1")) {
+        if (responseCode.equals(ONE_FOR_YES)) {
             isGameGoing = true;
             gameStart();
         }
-        if (!responseCode.equals("1") && !responseCode.equals("2")) {
+        if (!responseCode.equals(ONE_FOR_YES) && !responseCode.equals(TWO_FOR_NO)) {
             throw new IllegalArgumentException();
         }
     }

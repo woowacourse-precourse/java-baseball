@@ -1,11 +1,13 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private int ball = 0;
-    private int strike = 0;
+    private int ball = INITIAL_COUNT;
+    private int strike = INITIAL_COUNT;
 
     private List<Integer> dealerNumbers;
     private List<Integer> playerNumbers;

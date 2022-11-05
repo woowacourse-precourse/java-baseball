@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,7 +11,7 @@ public class Player {
 
     public List<Integer> createThreeDifferentNumbers() {
         threeDifferentNumbers = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ENTER_NUMBERS_MESSAGE);
         String input = Console.readLine();
 
         NumberValidator.check(input);

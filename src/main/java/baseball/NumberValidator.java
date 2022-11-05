@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +13,6 @@ public class NumberValidator {
     }
 
     public static boolean isThreeNumbers(String input) {
-        final String VALID_NUMBER_REGEX = "[1-9]{3}";
         return input.matches(VALID_NUMBER_REGEX);
     }
 
@@ -20,6 +21,6 @@ public class NumberValidator {
         for (char character : input.toCharArray()) {
             strToSet.add(character);
         }
-        return strToSet.size() == 3;
+        return strToSet.size() == THREE_DIGITS;
     }
 }

@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.List;
 
 public class ResultViewer {
@@ -7,8 +9,8 @@ public class ResultViewer {
     private static Integer strikeCount;
 
     public static void printOut(List<Integer> scores) {
-        ballCount = scores.get(0);
-        strikeCount = scores.get(1);
+        ballCount = scores.get(BALL_INDEX);
+        strikeCount = scores.get(STRIKE_INDEX);
 
         StringBuilder message = new StringBuilder();
         message.append(getBallMessage());
@@ -21,29 +23,29 @@ public class ResultViewer {
 
     public static String getBallMessage() {
         if (ballCount != 0) {
-            return ballCount + "볼";
+            return ballCount + BALL_MESSAGE; // "1볼"
         }
-        return "";
+        return NO_SPACE; // ""
     }
 
     public static String getSpace() {
         if (ballCount != 0 && strikeCount != 0) {
-            return " ";
+            return SPACE_BETWEEN_WORDS; // 띄어쓰기
         }
-        return "";
+        return NO_SPACE;
     }
 
     public static String getStrikeMessage() {
         if (strikeCount != 0) {
-            return strikeCount + "스트라이크";
+            return strikeCount + STRIKE_MESSAGE; // "1스트라이크"
         }
-        return "";
+        return NO_SPACE;
     }
 
     public static String getNothingMessage() {
         if (ballCount == 0 && strikeCount == 0) {
-            return "낫싱";
+            return NOTHING_MESSAGE;
         }
-        return "";
+        return NO_SPACE;
     }
 }
