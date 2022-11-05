@@ -7,9 +7,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
     private static List<Integer> generateRandomNoDuplication3Numbers() {
-        HashSet<Integer> removeDuplication=new HashSet<>();
-        while(removeDuplication.size()<3) {
-            int random=Randoms.pickNumberInRange(1, 9);
+        HashSet<Integer> removeDuplication = new HashSet<>();
+        while (removeDuplication.size() < 3) {
+            int random = Randoms.pickNumberInRange(1, 9);
             removeDuplication.add(random);
         }
         List<Integer> randomNums = new ArrayList<>(removeDuplication);
@@ -17,7 +17,7 @@ public class Application {
     }
 
     private static List<Integer> startGame() {
-        List<Integer> answer= generateRandomNoDuplication3Numbers();
+        List<Integer> answer = generateRandomNoDuplication3Numbers();
         return answer;
     }
 
@@ -103,9 +103,33 @@ public class Application {
         System.out.printf("\n");
     }
 
+    private static List<Integer> getAndSeperateInput(){
+        Scanner sc = new Scanner(System.in);
+        int userInput = sc.nextInt();
+        List<Integer> separatedInput = seperate3Numbers(userInput);
+        return separatedInput;
+    }
 
-    private static void playGame(){
-
+    private static void playGame(List<Integer> answer) {
+        boolean gameOn = true;
+        Scanner sc = new Scanner(System.in);
+        while (gameOn) {
+            List<Integer> separatedInput = getAndSeperateInput();
+            HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
+            if (correctAnswer(comparedMap)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int userInput = sc.nextInt();
+                if (userInput == 1) {
+                    answer = startGame();
+                } else {
+                    gameOn = !correctAnswer(comparedMap);
+                }
+            } else {
+                printResult(comparedMap);
+                gameOn = !correctAnswer(comparedMap);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -114,24 +138,6 @@ public class Application {
         System.out.println(answer);
         boolean gameOn = true;
         Scanner sc = new Scanner(System.in);
-        while (gameOn) {
-            int userInput = sc.nextInt();
-            List<Integer> separatedInput = seperate3Numbers(userInput);
-            HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
-            if (correctAnswer(comparedMap)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                userInput=sc.nextInt();
-                if(userInput==1){
-                    answer = startGame();
-                }
-                else {
-                    gameOn = !correctAnswer(comparedMap);
-                }
-            } else {
-                printResult(comparedMap);
-                gameOn = !correctAnswer(comparedMap);
-            }
-        }
+        playGame(answer);
     }
 }
