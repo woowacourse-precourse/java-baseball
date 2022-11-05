@@ -9,11 +9,11 @@ public class UserNumber {
 
     public List<Integer> inputUserNumber(){
         System.out.println("숫자를 입력해주세요 : ");
-        String inputNumber = Console.readLine();
-        List<Integer> inputNumberList = new ArrayList<>();
+        String userNumber = Console.readLine();
+        List<Integer> userNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++)
-            inputNumberList.add(inputNumber.charAt(i) - '0');
-        return inputNumberList;
+            userNumberList.add(userNumber.charAt(i) - '0');
+        return userNumberList;
     }
 
 }
