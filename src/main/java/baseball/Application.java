@@ -12,17 +12,20 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        boolean gameEnd = false;
-
-        while (!gameEnd) {
+        while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computer = makeNumber();
             validationCheck(userNumber());
+            String result = "";
+            while (!result.equals("3스트라이크")) {
+                result = score(userNumber(),computer);
+                System.out.println(result);
+            }
             if (!playAgain()) break;
         }
     }
 
-
-    public static List<Integer> userNumber() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    private static List<Integer> userNumber() {
         System.out.print("숫자를 입력해주세요 : ");
 
         String inputNumber = Console.readLine();
@@ -35,7 +38,7 @@ public class Application {
     }
 
 
-    public static boolean validationCheck(List<Integer> userNumber) {
+    private static boolean validationCheck(List<Integer> userNumber) {
         // 길이 체크
         // 3자 미만이거나 초과면 오류발생으로 넘어가는데 메세지 출력이 안된다
         if (userNumber.size() != 3) throw new IllegalArgumentException("오류가 발생했습니다.");
@@ -46,7 +49,7 @@ public class Application {
         return false;
     }
 
-    public static boolean playAgain() {
+    private static boolean playAgain() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         String call = Console.readLine();
@@ -59,8 +62,7 @@ public class Application {
         return true;
     }
 
-    // 랜덤 수를 만드는 메소드
-    public static List<Integer> makeNumber() {
+    private static List<Integer> makeNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -68,11 +70,10 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer); // 정상 출력
         return computer;
     }
 
-    public int countStrike(List<Integer> userNumber, List<Integer> makeNumber){
+    private static int countStrike(List<Integer> userNumber, List<Integer> makeNumber){
         int strike = 0;
         for(int i = 0; i < 3; i++){
             if(makeNumber.get(i) == userNumber.get(i)){
@@ -82,7 +83,7 @@ public class Application {
         return strike;
     }
 
-    public int equalNumber(List<Integer> userNumber, List<Integer> makeNumber) {
+    private static int equalNumber(List<Integer> userNumber, List<Integer> makeNumber) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
             if (makeNumber.contains(userNumber.get(i))) {
@@ -92,7 +93,7 @@ public class Application {
         return count;
     }
 
-    public String score(List<Integer> userNumber, List<Integer> makeNumber){
+    private static String score(List<Integer> userNumber, List<Integer> makeNumber){
         int count = equalNumber(userNumber, makeNumber);
         int strike = countStrike(userNumber,makeNumber);
         int ball = count-strike;
@@ -106,8 +107,5 @@ public class Application {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
-
-
-
 }
 
