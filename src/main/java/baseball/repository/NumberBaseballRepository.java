@@ -11,6 +11,7 @@ public class NumberBaseballRepository {
     private static final int LIMIT_NUMBER = 10;
     private static final int START_NUMBER = 1;
     private static final int PICK_NUMBER_COUNT = 3;
+    private static final int COMPUTER_NUMBER = 0;
 
     private static final NumberBaseballRepository instance = new NumberBaseballRepository();
     private static final List<ComputerNumber> numberStore = new ArrayList<>();
@@ -19,7 +20,7 @@ public class NumberBaseballRepository {
         return instance;
     }
 
-    public void generateNumber() {
+    public ComputerNumber generateComputerNumber() {
         clearNumberStore();
         List<Integer> positiveIntegerList = createPositiveIntegerList();
         List<Integer> pickNumberList = new ArrayList<>();
@@ -28,6 +29,7 @@ public class NumberBaseballRepository {
             positiveIntegerList.remove(pickNumberList.get(currentIndex));
         }
         numberStore.add(new ComputerNumber(pickNumberList));
+        return numberStore.get(COMPUTER_NUMBER);
     }
 
 
