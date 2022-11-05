@@ -49,6 +49,7 @@ class Baseball {
     private static void inputUserNumber() {
         getUserNumber();
         getBallStrikeNothing();
+        printResult();
     }
 
     private static void buildComputerNumber() {
@@ -79,5 +80,21 @@ class Baseball {
         }
         countBallStrike.put(BALL, countBall);
         countBallStrike.put(STRIKE, countStrike);
+    }
+
+    private static void printResult() {
+        if (countBallStrike.get(BALL) != 0 && countBallStrike.get(STRIKE) != 0) {
+            System.out.print(countBallStrike.get(BALL) + BALL);
+            System.out.println(countBallStrike.get(STRIKE) + STRIKE);
+        }
+        if (countBallStrike.get(BALL) != 0 && countBallStrike.get(STRIKE) == 0) {
+            System.out.println(countBallStrike.get(BALL) + BALL);
+        }
+        if (countBallStrike.get(BALL) == 0 && countBallStrike.get(STRIKE) != 0) {
+            System.out.println(countBallStrike.get(STRIKE) + STRIKE);
+        }
+        if (countBallStrike.get(BALL) == 0 && countBallStrike.get(STRIKE) == 0) {
+            System.out.println(NOTHING);
+        }
     }
 }
