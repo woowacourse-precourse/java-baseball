@@ -21,4 +21,12 @@ public class InputExceptionTest {
         assertThatThrownBy(() -> InputException.occur(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void occur_0을_포함하는_입력() {
+        String input = "920";
+
+        assertThatThrownBy(() -> InputException.occur(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
