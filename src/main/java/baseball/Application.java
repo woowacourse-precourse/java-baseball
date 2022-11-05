@@ -66,11 +66,23 @@ public class Application {
     // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
     private static boolean isNeedReEnter(String ballCount) {
         // 3-1-1. 3S가 나오지 못하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-        if(!ballCount.equals("3스트라이크")) {
+        if (!ballCount.equals("3스트라이크")) {
             return true;
         } else {
             return false;
         }
+    }
+
+    // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
+    private static List<Integer> getNumberOfUserForList(List<Integer> user) {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
+        String numberOfUserString = getNumberOfUserString();
+
+        // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
+        user = getNumberOfUser(user, numberOfUserString);
+        return user;
     }
 
     // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
@@ -124,11 +136,9 @@ public class Application {
         if (computer.get(0) == user.get(1) || computer.get(0) == user.get(2)) {
             ballCount++;
         }
-
         if (computer.get(1) == user.get(0) || computer.get(1) == user.get(2)) {
             ballCount++;
         }
-
         if (computer.get(2) == user.get(0) || computer.get(2) == user.get(1)) {
             ballCount++;
         }
@@ -152,13 +162,25 @@ public class Application {
             totalCount = countOfBall + "볼";
         } else if (countOfBall == 0 && countOfStrike == 0) {
             totalCount = "낫싱";
-        } else if (countOfBall != 0 && countOfStrike != 0){
+        } else if (countOfBall != 0 && countOfStrike != 0) {
             totalCount = countOfBall + "볼 " + countOfStrike + "스트라이크";
         } else {
             totalCount = "비정상";
         }
 
         return totalCount;
+    }
+
+    // 4-3-1 : 재시작하기 위한 준비
+    private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user) {
+        computer.clear();
+        computer = getNumberOfComputer(computer);
+        user.clear();
+    }
+
+    // 4-3-2 : 재시작하기
+    private static void restartGame(List<Integer> user) {
+        user = getNumberOfUserForList(user);
     }
 
     public static void main(String[] args) {
@@ -177,13 +199,8 @@ public class Application {
             user.clear();
 //            user.removeAll(user);
 
-            System.out.print("숫자를 입력해주세요 : ");
-
-            // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
-            String numberOfUserString = getNumberOfUserString();
-
-            // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
-            user = getNumberOfUser(user, numberOfUserString);
+            // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
+            user = getNumberOfUserForList(user);
 
             // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
             ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
@@ -191,9 +208,23 @@ public class Application {
         }
 
         // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
+
+        // 4-1 : 메세지 출력
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        // 4-2 : 값 입력받기
         int restartOrExit = Integer.parseInt(Console.readLine());
 
+        // 4-3 : 1을 입력했다면, 재시작하기.
+        if (restartOrExit == 1) {
+            preSettingToRestartGame(computer, user); // 4-3-1 : 재시작하기 위한 준비
+            restartGame(user); // 4-3-2 : 재시작하기
+        } else if (restartOrExit == 2) {
+            return;
+        } else {
+            System.out.println("비정상적 입력값입니다. 어플리케이션을 종료합니다.");
+            return;
+        }
     }
 }
