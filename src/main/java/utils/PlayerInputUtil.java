@@ -10,7 +10,7 @@ public class PlayerInputUtil {
 		String balls = Console.readLine();
 		checkLessThanThreeExecption(balls);
 		checkMoreThanThreeException(balls);
-		checkNonNumericCharacterException(balls);
+		checkOutOfRangeException(balls);
 		checkDuplicateBallsException(balls);
 	}
 
@@ -26,10 +26,10 @@ public class PlayerInputUtil {
 		}
 	}
 
-	public static void checkNonNumericCharacterException(String balls) {
+	public static void checkOutOfRangeException(String balls) {
 		for (char ball : balls.toCharArray()) {
-			if (ball < '0' || '9' < ball) {
-				throw new IllegalArgumentException("잘못된 입력입니다. 숫자가 아닌 입력이 존재합니다.");
+			if (ball < '1' || '9' < ball) {
+				throw new IllegalArgumentException("잘못된 입력입니다. 각 공은 1~9까지만 입력가능합니다.");
 			}
 		}
 	}
