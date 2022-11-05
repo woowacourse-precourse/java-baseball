@@ -17,4 +17,19 @@ public class User {
         }
         return inputNumber;
     }
+    public boolean isValidUserNumber(){
+        List<Integer> inputNumber=makeUserNumber();
+
+        return lengthCheck(inputNumber)
+                &&numberCheck(inputNumber);
+    }
+    public boolean lengthCheck(List<Integer> inputNumber){
+        return inputNumber.size()==3;
+    }
+    public boolean numberCheck(List<Integer> inputNumber){
+        return inputNumber.stream()
+                .filter(n->n>0&&n<10)
+                .distinct()
+                .count()==3;
+    }
 }
