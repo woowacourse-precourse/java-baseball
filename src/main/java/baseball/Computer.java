@@ -34,4 +34,15 @@ public class Computer {
         }
         return countStrike;
     }
+
+    public int ball(Numbers guess) {
+        int countBall = 0;
+        for (int i = 0; i < LENGTH; i++) {
+            int findIndex = answer.indexOf(guess.get(i));
+            if (findIndex != -1 && findIndex != i) {
+                countBall++;
+            }
+        }
+        return countBall;
+    }
 }
