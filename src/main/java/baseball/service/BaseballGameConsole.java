@@ -14,13 +14,13 @@ public class BaseballGameConsole {
     private final Computer computer = new Computer();
 
     public void playGameWithPlayer(Player player) {
-        startingGuide(player.getName());
+        showStartingGuide(player.getName());
         do {
             playSingleGame(player);
         } while (askReplaying());
     }
 
-    private void startingGuide(String playerName) {
+    private void showStartingGuide(String playerName) {
         System.out.println(playerName + "반갑습니다.");
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
