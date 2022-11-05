@@ -11,9 +11,16 @@ public class Player {
     private List<Integer> numbers;
 
     public Player(List<Integer> numbers){
+        validateRange(numbers);
         validateSize(numbers);
         validateDuplicate(numbers);
+
         this.numbers = numbers;
+    }
+
+    private void validateRange(List<Integer> numbers){
+        if(!numbers.stream().allMatch(number -> number > 0 && number <10))
+            throw new IllegalArgumentException("Wrong number range");
     }
 
     private void validateSize(List<Integer> numbers){

@@ -25,4 +25,13 @@ public class PlayerTest {
                 .hasMessageContaining("duplicates in the numbers");
     }
 
+    @Test
+    void 숫자의_범위가_1부터_9사이가_아닐_경우_예외_처리_테스트(){
+        List<Integer> numbers = List.of(10,1,3);
+
+        assertThatThrownBy(() -> new Player(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Wrong number range");
+    }
+
 }
