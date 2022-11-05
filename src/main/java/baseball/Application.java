@@ -82,7 +82,7 @@ public class Application {
 
         try {
 
-            if (!check(numberString)) throw new IllegalStateException();
+            if (!checkingUserNumberIsCorrect(numberString)) throw new IllegalStateException();
 
             return true;
 
@@ -94,7 +94,7 @@ public class Application {
 
     }
 
-    public static boolean check(String numberString) {
+    public static boolean checkingUserNumberIsCorrect(String numberString) {
 
         if (!checkLength(numberString) || !checkInteger(numberString) || !checkDuplicateNumber(numberString)) {
 
