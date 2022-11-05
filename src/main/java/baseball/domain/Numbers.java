@@ -12,15 +12,17 @@ public class Numbers {
     private final List<Number> numbers;
 
     public Numbers(Integer... ints) {
-        this(Arrays.stream(ints)
-                .map(Number::of)
-                .collect(Collectors.toList()));
+        this(Arrays.stream(ints).collect(Collectors.toList()));
     }
 
-    public Numbers(List<Number> numberList) {
-        validateNumbersSize(numberList);
-        validateDifferentEachNumber(numberList);
-        this.numbers = numberList;
+    public Numbers(List<Integer> ints) {
+        List<Number> numbers = ints.stream()
+                .map(Number::of)
+                .collect(Collectors.toList());
+        
+        validateNumbersSize(numbers);
+        validateDifferentEachNumber(numbers);
+        this.numbers = numbers;
     }
 
     private void validateNumbersSize(List<Number> numberList) {
