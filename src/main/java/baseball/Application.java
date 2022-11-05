@@ -8,18 +8,19 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-//        do {
-//            playGame();
-//        } while (restartGame());
+        do {
+            playGame();
+        } while (restartGame());
     }
 
     public static void playGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerAnswer = generateNumber();
-        boolean isCorrect;
-        do {
+        boolean isCorrect = false;
+        while(!isCorrect){
             List<Integer> playerAnswer = getPlayerAnswer();
             isCorrect = checkAnswer(computerAnswer, playerAnswer);
-        } while (isCorrect);
+        }
 
     }
 
@@ -58,6 +59,7 @@ public class Application {
     }
 
     public static List<Integer> getPlayerAnswer() {
+        System.out.print("숫자를 입력해주세요 : ");
         String playerAnswerStr = Console.readLine();
         List<Integer> playerAnswerList = stringToIntegerList(playerAnswerStr);
 
@@ -104,6 +106,7 @@ public class Application {
     }
 
     public static boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = Console.readLine();
         if(s.equals("1")){
             return true;
