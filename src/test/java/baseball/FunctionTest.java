@@ -32,4 +32,12 @@ public class FunctionTest {
         assertThat(comNumber.get(0)).isNotEqualTo(comNumber.get(2));
         assertThat(comNumber.get(1)).isNotEqualTo(comNumber.get(2));
     }
+
+    @DisplayName("게임이 끝나고 재시작 및 종료에 대한 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
+    @Test
+    void replayOrStopExceptionTest() {
+        InputError inputError = new InputError();
+        String answer = "2";
+        assertThat(inputError.replayOrStopException(answer)).isEqualTo(answer);
+    }
 }
