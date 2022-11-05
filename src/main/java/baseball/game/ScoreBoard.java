@@ -1,38 +1,41 @@
 package baseball.game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ScoreBoard {
 
-    private int strike;
     private int ball;
-
-    public void addStrike() {
-        this.strike++;
-    }
+    private int strike;
 
     public void addBall() {
         this.ball++;
     }
 
-    public List<Integer> getScore() {
-        return Arrays.asList(strike, ball);
+    public void addStrike() {
+        this.strike++;
     }
 
-    public void calculate(List<Integer> targetNumbers, List<Integer> requestNumbers) {
-        for (int number : requestNumbers) {
+    public List<Integer> getBallAndStrike() {
+        return Arrays.asList(ball, strike);
+    }
 
-            if (targetNumbers.indexOf(number) == requestNumbers.indexOf(number)) {
-                addStrike();
-                continue;
-            }
-
-            if (targetNumbers.contains(number)) {
-                addBall();
-            }
+    public void printBallAndStrike() {
+        List<String> scoreList = new ArrayList<>();
+        if (ball != 0) {
+            scoreList.add(ball + "볼");
         }
 
+        if (strike != 0) {
+            scoreList.add(strike + "스트라이크");
+        }
+
+        if (scoreList.isEmpty()) {
+            scoreList.add("낫싱");
+        }
+
+        System.out.print(String.join(" ", scoreList));
     }
 
 }
