@@ -13,6 +13,7 @@ public class Game {
     static final String STRIKE = "스트라이크";
     static final String CORRECT_ANSWER = "3스트라이크";
     static final String NOTHING = "낫싱";
+    static final String FINISH_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -71,6 +72,15 @@ public class Game {
             return true;
         } else {
             return false;
+        }
+    }
+    public boolean isFinish() {
+        System.out.println(FINISH_QUESTION);
+        String num = readLine();
+        if (num.equals("1")) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
