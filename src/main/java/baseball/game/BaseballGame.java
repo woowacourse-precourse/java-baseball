@@ -48,8 +48,12 @@ public class BaseballGame {
         validateNumberInput(userNumbers);
 
         NumberBoard numberBoard = new NumberBoard();
+        HashMap<ComparisonResultType, Integer> resultFrequencyCounter =
+                numberBoard.compareNumbers(userNumbers, opponentNumbers);
 
-        if (checkSuccess(numberBoard.compareNumbers(userNumbers, opponentNumbers))) {
+        Logger.log(numberBoard.getResultMessage());
+
+        if (checkSuccess(resultFrequencyCounter)) {
             Logger.log(getBoardSize() + BaseballConstants.SUCCESS_MESSAGE);
             return true;
         }
