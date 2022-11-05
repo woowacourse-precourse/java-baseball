@@ -37,7 +37,7 @@ public class BaseballGame {
         do {
             player.getBaseballInput();
             System.out.println(hint.getBaseballResult(this.player, this.computer));
-        } while (true);
+        } while (!hint.isThreeStrike());
     }
 
     private void checkProgress() {

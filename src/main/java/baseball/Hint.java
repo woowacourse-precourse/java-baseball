@@ -48,4 +48,11 @@ public class Hint {
         countBaseballResult(player, computer);
         return makeHintMessage();
     }
+
+    public boolean isThreeStrike() {
+        if (this.countResult.get("strike") == 3) {
+            return true;
+        }
+        return false;
+    }
 }
