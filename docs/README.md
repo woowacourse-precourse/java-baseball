@@ -35,8 +35,9 @@
 1. 성공 조건 체크 기능
 2. 상대방 숫자 입력 받아 저장
 3. 유저의 숫자 추측 기능
-   1. 입력 메시지 출력
+   1. 입력 메시지 출력 및 입력 받기
       1. 1 ~ 9의 숫자가 아니면 IllegalArgumentException 발생시키기
+      2. 중복 숫자가 있으면 IllegalArgumentException 발생시키기
    2. Number board 인스턴스 생성
    3. Number board compareNumbers 메소드 실행
    4. 비교 결과 빈도수 계산하고 출력
