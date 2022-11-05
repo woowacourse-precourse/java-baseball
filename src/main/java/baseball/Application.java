@@ -17,7 +17,7 @@ public class Application {
         return howManyBall;
     }
 
-    public static void exceptionHandling(List<Integer> userInput) throws IllegalArgumentException{
+    public static void exceptionHandling (List<Integer> userInput) throws IllegalArgumentException{
         if (userInput.size()!=3) {
             throw new IllegalArgumentException();
         }
@@ -43,6 +43,21 @@ public class Application {
             }
         }
         return howManyStrike;
+    }
+
+    public static void printStrikeAndBall (int ball, int strike) {
+        if (ball==0&&strike==0) {
+            System.out.println("낫싱");
+        }
+        if (ball>0&&strike==0) {
+            System.out.println(ball+"볼");
+        }
+        if (ball==0&&strike>0) {
+            System.out.println(strike+"스트라이크");
+        }
+        if (ball>0&&strike>0) {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
     }
 
     public static boolean returnAnswer (int howManyBall, int howManyStrike) {
@@ -77,6 +92,7 @@ public class Application {
             int ball = checkBall(answer,userInput);
             int strike = checkStrike(answer,userInput,ball);
             ball = ball-strike;
+            printStrikeAndBall(ball,strike);
             correctAnswer = returnAnswer(ball,strike);
             if (correctAnswer) {
                 quitGame = endGame();
