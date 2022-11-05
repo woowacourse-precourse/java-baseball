@@ -107,6 +107,19 @@ class Baseball {
         if (countBallStrike.get(STRIKE) == NUMBER_PITCH) {
             System.out.println(WIN_MESSAGE);
             System.out.println(INPUT_RESTART_MESSAGE);
+            checkRestartGame();
+        }
+    }
+
+    private static void checkRestartGame() {
+        int checkRestartGame = Integer.parseInt(Console.readLine());
+        if (checkRestartGame == NEW_GAME) {
+            System.out.println(NEW_GAME);
+            newGame();
+            return;
+        }
+        if (checkRestartGame == END_GAME) {
+            System.out.println(END_GAME);
         }
     }
 }
