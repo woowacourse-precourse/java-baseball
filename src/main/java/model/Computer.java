@@ -144,10 +144,10 @@ public class Computer {
         if (isRightThreeNumOfComputer(numInputOfUser)) {
             // TODO: 스트라이크와 볼이 있다면
             return true;
-        } else {
-            // TODO: 낫싱이면
-            return false;
         }
+        // TODO: 낫싱이면
+        return false;
+
     }
 
     // 컴퓨터야 이 3개의 숫자가 너의 랜덤리스트와 맞니?
