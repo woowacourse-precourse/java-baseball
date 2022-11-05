@@ -15,10 +15,13 @@ class Game {
     final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
     final static int NUMBER_LENGTH = 3;
     private Computer computer;
-    { System.out.println(GAME_START_GUIDE_MESSAGE); }
 
     Game() {
         this.computer = new Computer();
+    }
+
+    public void play() {
+        System.out.println(GAME_START_GUIDE_MESSAGE);
     }
 
     public ArrayList<Integer> getGamePlayerInput() {
