@@ -65,6 +65,17 @@ class GameProcessor {
         return computerValue;
     }
 
+    public void toArrayValue(int userInput,int computerInput)
+    {
+        int digitNumber = 100;
+        for(int digit=0;digit<3;digit++) {
+            userValue[digit] = userInput / digitNumber;
+            computerValue[digit] = computerInput / digitNumber;
+            userInput %= digitNumber;
+            computerInput %= computerInput;
+            digitNumber /= 10;
+        }
+    }
 
     public int getStrike() {
         return strike;
