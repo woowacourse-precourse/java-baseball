@@ -10,34 +10,33 @@ import static baseball.Guess.*;
 import static baseball.Hint.finalHint;
 
 public class Application {
-    public static void main(String[] args) {
-        String choose;
-        String input;
-        String hint;
-        List<Integer> realAnswer;
-        List<Integer> userAnswer;
+    private static void playGame() {
+        String hint = "";
+        List<Integer> realAnswer = makeAnswer();
 
-        choose = NEW_GAME;
-        realAnswer = makeAnswer();
-        printStart();
-
-        while (choose.equals(NEW_GAME)) {
-            input = takeGuess();
+        while (!hint.equals(PERFECT)) {
+            String input = takeGuess();
             checkGuess(input);
-            userAnswer = splitGuess(input);
+            List<Integer> userAnswer = splitGuess(input);
 
             hint = finalHint(realAnswer, userAnswer);
             printHint(hint);
-
-            if (hint.equals(PERFECT)) {
-                printCorrect();
-                printFinish();
-                printRetry();
-                choose = takeChoice();
-                checkChoice(choose);
-                realAnswer = makeAnswer();
-            }
         }
+
+        printCorrect();
+        printFinish();
+
+        printRetry();
+        String choose = takeChoice();
+        checkChoice(choose);
+
+        if (choose.equals(NEW_GAME))
+            playGame();
+    }
+
+    public static void main(String[] args) {
+        printStart();
+        playGame();
         printFinish();
     }
 }
