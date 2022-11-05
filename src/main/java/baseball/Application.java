@@ -15,6 +15,7 @@ public class Application {
             List<Integer> computer = randomThreeDigit();
             sendMassage(GameMassage.INPUT_NUMBER);
             List<Integer> user = getUserInput();
+            boolean answer = calculationNumber(computer, user);
 
         } catch (IllegalArgumentException e) {
             System.out.println("IllegalArgumentException 발생");
@@ -24,6 +25,40 @@ public class Application {
 
     private static void sendMassage(GameMassage massage){
         System.out.print(massage.getMassage());
+    }
+
+    private static void sendMassage(GameMassage massage, int ball, int strike){
+        System.out.print(String.format(massage.getMassage(), ball, strike));
+    }
+
+    private static boolean calculationNumber(List<Integer> computer, List<Integer> user) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < user.size(); i++) {
+            if ((int)user.get(i) == (int)computer.get(i)) {
+                strike++;
+            } else {
+                if (computer.contains(user.get(i))) {
+                    ball++;
+                }
+            }
+        }
+
+        return calculationResult(strike, ball);
+    }
+
+    private static boolean calculationResult(int strike, int ball){
+        if (strike == 0 && ball == 0) {
+            sendMassage(GameMassage.NOTHING);
+        } else {
+            if (strike == 3) {
+                sendMassage(GameMassage.THREE_STRIKE);
+                return true;
+            }
+            sendMassage(GameMassage.NOT_ANSWER, ball, strike);
+        }
+        return false;
     }
 
     private static String removeDuplicated(String str){
