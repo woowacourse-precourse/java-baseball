@@ -164,7 +164,7 @@ public class GameManager {
             return true;
         }
 
-        exitGame(null);
+        exitGame();
         return false;
     }
 
@@ -174,11 +174,7 @@ public class GameManager {
         }
     }
 
-    private void exitGame(Exception e) {
-        if(e == null) {
-            System.out.println("게임 종료");
-        } else {
-            System.out.println(e.getMessage());
-        }
+    private void exitGame() {
+        System.out.println("게임 종료");
     }
 }
