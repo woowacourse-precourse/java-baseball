@@ -72,4 +72,21 @@ public class Application {
         ball -= strike;
         return ball;
     }
+
+    //기능5. 비교한 결과를 알려주기
+    public static void result(int strike, int ball) {
+        if (ball > 0) {
+            if (strike > 0) {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            } else {
+                System.out.println(ball + "볼");
+            }
+        } else {
+            if (strike < 1) {
+                System.out.println("낫싱");
+            } else {
+                System.out.println(strike + "스트라이크");
+            }
+        }
+    }
 }
