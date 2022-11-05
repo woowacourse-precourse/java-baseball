@@ -10,7 +10,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> correctAnswer = Start.startGame(); // 컴퓨터 정답
-        System.out.println("correctAnswer = " + correctAnswer);
 
         while (true) {
             UserInput userInput = new UserInput();
@@ -34,7 +33,6 @@ public class Application {
 
             if (branchSignal == RE_START_SIGNAL) { // RE_START_SIGNAL(-2)가 넘어오면 게임 다시 시작 (strikeCount가 3일 때만 반환될 수 있음.)
                 correctAnswer = Start.reStart();
-                System.out.println("correctAnswer = " + correctAnswer);
             } else if (branchSignal == GAME_EXIT_SIGNAL) { // GAME_EXIT_SIGNAL(-3)이 넘어오면 프로그램 종료 (strikeCount가 3일 때만 반환될 수 있음.)
                 break;
             }
