@@ -14,6 +14,14 @@ public class Result {
         this.ballCount = ballCount;
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
     public boolean isNothing() {
         return strikeCount == 0 && ballCount == 0;
     }
