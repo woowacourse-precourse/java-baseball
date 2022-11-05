@@ -9,6 +9,18 @@ public class User {
         return validUserInput(userInput);
     }
 
+    public int validRestartOrEndInput(String userInput) {
+        if (userInput.equals("1")) {
+            return 1;
+        }
+
+        if (userInput.equals("2")) {
+            return 2;
+        }
+
+        throw new IllegalArgumentException("1 또는 2 의 값만 입력이 가능합니다.");
+
+    }
 
     public String validUserInput(String userInput) {
         if (userInput.length() != 3) {
