@@ -21,6 +21,10 @@ public class ValidateNumber {
         }
     }
 
+    /**
+     * 입력 받은 숫자를 구성하는 수가 중복이 있는지 확인
+     * @param number 입력 받은 수
+     */
     public static void validateOverlap(int number) {
         String[] splitNumber = String.valueOf(number).split("");
         LinkedList<String> linkedList = new LinkedList<>();
