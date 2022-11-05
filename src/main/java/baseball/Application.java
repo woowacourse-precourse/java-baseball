@@ -11,9 +11,7 @@ public class Application {
             String input = Console.readLine();
 
 
-            if (!isValid(input)) {
-                throw new IllegalArgumentException();
-            }
+            if (!isValid(input)) throw new IllegalArgumentException();
 
 
             int strikes = getStrikes(input, answer);
@@ -40,13 +38,10 @@ public class Application {
             input = Console.readLine();
 
 
-            if (isStopOrContinue(input) == 1) {
+            if (isStopOrContinue(input) == 1)
                 answer = Randoms.pickNumberInRange(1, 9) + "" + Randoms.pickNumberInRange(1, 9) + Randoms.pickNumberInRange(1, 9);
-            } else if (isStopOrContinue(input) == 2) {
-                break;
-            } else {
-                throw new IllegalArgumentException();
-            }
+            else if (isStopOrContinue(input) == 2) break;
+            else throw new IllegalArgumentException();
         }
     }
 
@@ -77,12 +72,8 @@ public class Application {
     }
 
     public static int isStopOrContinue(String input) {
-        if (input.equals("1")) {
-            return 1;
-        }
-        if (input.equals("2")) {
-            return 2;
-        }
+        if (input.equals("1")) return 1;
+        else if (input.equals("2")) return 2;
         return 0;
     }
 }
