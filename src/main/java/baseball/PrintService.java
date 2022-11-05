@@ -10,4 +10,26 @@ public class PrintService {
     public void requestInput() {
         System.out.print("숫자를 입력해 주세요: ");
     }
+
+    public void printStrikeBallResult(List<Integer> counts) {
+        StringBuilder resultStringBuilder = new StringBuilder();
+        boolean spacing = false;
+
+        if (counts.get(1) != 0) {
+            resultStringBuilder.append(counts.get(1));
+            resultStringBuilder.append("볼");
+            spacing = true;
+        }
+
+        if (counts.get(0) != 0) {
+            if (spacing) {
+                resultStringBuilder.append(" ");
+            }
+
+            resultStringBuilder.append(counts.get(0));
+            resultStringBuilder.append("스트라이크");
+        }
+
+        System.out.println(resultStringBuilder);
+    }
 }

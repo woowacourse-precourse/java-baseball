@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class ExecuteService {
-    private Game game;
-    private boolean complete;
     private final PrintService printService = new PrintService();
     private final ProcessService processService = new ProcessService();
 
@@ -14,8 +12,8 @@ public class ExecuteService {
     }
 
     public void execute() throws IllegalArgumentException {
-        this.game = new Game();
-        complete = false;
+        Game game = new Game();
+        boolean complete = false;
         List<Integer> answer = game.getAnswer();
 
         while (!complete) {
@@ -26,8 +24,10 @@ public class ExecuteService {
             List<Integer> parsedInput = processService.parseGameInput(userInput);
 
             List<Integer> strikeBallCount = processService.compare(parsedInput, answer);
-
+            printService.printStrikeBallResult(strikeBallCount);
         }
+
+
     }
 
     private String getUserInput() {
