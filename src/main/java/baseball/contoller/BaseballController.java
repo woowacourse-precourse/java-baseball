@@ -13,7 +13,7 @@ public class BaseballController {
 
     public void Start() {
         System.out.println(Constant.START_GAME.getMessage());
-        computer.createRandomNumbers();
+        baseballService.createRandomNumbers();
         while (baseballService.getGameStatus()) {
             user.inputUserNumbers();
             outputHint(computer.randomNumbers, user.userNumbers);
