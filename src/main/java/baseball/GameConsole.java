@@ -63,8 +63,15 @@ public class GameConsole {
         writeLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public boolean inputShallReplay() {
+    public boolean inputShallReplay() throws IllegalArgumentException {
         writeLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return readInt() == 1;
+        String inputVal = readLine();
+
+        if (inputVal.equals("1"))
+            return true;
+        else if (inputVal.equals("2"))
+            return false;
+        else
+            throw new IllegalArgumentException("1과 2중 하나만 입력하세요");
     }
 }
