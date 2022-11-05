@@ -17,4 +17,15 @@ public class Computer {
             }
         }
     }
+
+    private int countStrike(List<Integer> userNumber) {
+        int strike = 0;
+
+        for(int i=0; i< userNumber.size(); i++) {
+            if(computerNumber.get(i).equals(userNumber.get(i)))
+                strike++;
+        }
+
+        return strike;
+    }
 }
