@@ -34,8 +34,8 @@ public class Number {
         return user;
     }
 
-    private boolean userNumberDigitIsRight(String userNumber) {
-        if(userNumber.length() != 3) {
+    private boolean userNumberDigitIsRight(String user) {
+        if(user.length() != 3) {
             return false;
         } else {
             return true;
@@ -46,15 +46,15 @@ public class Number {
         return s.chars().allMatch(Character::isDigit);
     }
 
-    private boolean userNumberisNumeric(String userNumber) {
-        return isNumeric(userNumber);
+    private boolean userNumberisNumeric(String user) {
+        return isNumeric(user);
     }
 
-    private boolean userNumberIsSame(String userNumber) {
+    private boolean userNumberIsSame(String user) {
         Set<Character> userNumberDeduplication = new HashSet<>();
 
-        for(int i = 0; i<userNumber.length(); i++) {
-            userNumberDeduplication.add(userNumber.charAt(i));
+        for(int i = 0; i<user.length(); i++) {
+            userNumberDeduplication.add(user.charAt(i));
         }
 
         if(userNumberDeduplication.size() < DIGIT_NUMBER) {
@@ -64,8 +64,8 @@ public class Number {
         }
     }
 
-    public boolean userNumberCheck(String userNumber) {
-        if(userNumberDigitIsRight(userNumber) ==  true && userNumberisNumeric(userNumber) == true && userNumberIsSame(userNumber) == true) {
+    public boolean userNumberCheck(String user) {
+        if(userNumberDigitIsRight(user) ==  true && userNumberisNumeric(user) == true && userNumberIsSame(user) == true) {
             return true;
         } else {
             return false;
