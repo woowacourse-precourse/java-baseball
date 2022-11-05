@@ -28,6 +28,16 @@ public class BaseballGameTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    // 입력값에 따른 스트라이크, 볼 판별 테스트
+    @Test
+    void refereeTest() {
+        Referee referee = new Referee();
+        referee.setStandard("123");
+        referee.judge("156");
+        assertThat(referee.getBall()).isEqualTo(0);
+        assertThat(referee.getStrike()).isEqualTo(1);
+    }
+
     // 문자열 내 중복 검사 함수
     private boolean hasNoDuplicate(String string) {
         if (string.length() < 2) {
