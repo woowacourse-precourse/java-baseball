@@ -1,8 +1,8 @@
 package baseball;
 
 public class Count {
-    private int ballCount;
-    private int strikeCount;
+    private final int ballCount;
+    private final int strikeCount;
 
     public Count(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
