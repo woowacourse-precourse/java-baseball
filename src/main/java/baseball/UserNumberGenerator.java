@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class UserNumberGenerator {
-    private static List<Integer> userNumbers = new ArrayList<>();
+    static List<Integer> userNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {
         String inputNumber = readLine();
@@ -50,4 +50,7 @@ public class UserNumberGenerator {
         }
     }
 
+    public static void initialize() {
+        userNumbers.clear();
+    }
 }
