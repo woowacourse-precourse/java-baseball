@@ -9,6 +9,34 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+
+
+    }
+
+    public static boolean playGame(boolean goOrStop) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        List<Integer> targetNum = makeRandomTargetNum();
+        boolean go = true;
+        boolean restartOrEnd = true;
+        while(go){
+            int notFinishOrFinishOrException = baseballGame(targetNum);
+
+            if(notFinishOrFinishOrException == 1){
+                continue;
+            } else if(notFinishOrFinishOrException == 2){
+               go = false;
+               restartOrEnd = false;
+            } else{
+                go = false;
+                restartOrEnd = gameRestartOrEnd();
+            }
+        }
+
+        return restartOrEnd;
+    }
+
+    public static int baseballGame(List<Integer> targetNum) {
         List<Integer> userNum = new ArrayList<>();
         String inputUserNum = inputUserNum();
         String[] separatedUserNum = inputUserNum.split("");
@@ -26,7 +54,7 @@ public class Application {
 
         if(!lengthException || !duplicateException){
             System.out.println("잘못된 입력 값을 입력했습니다.");
-            return;
+            return 3;
         }
 
         int strikeNum = countStrikeNum(targetNum, userNum);
@@ -46,18 +74,12 @@ public class Application {
         }
 
         if (isThreeStrike(strikeNum)) {
+             return 2;
 
         } else{
-
+            return 1;
         }
 
-
-    }
-
-    public static boolean playGame(boolean goOrStop) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        List<Integer> targetNum = makeRandomTargetNum();
     }
     public static List<Integer> makeRandomTargetNum() {
         List<Integer> computer = new ArrayList<>();
@@ -152,17 +174,17 @@ public class Application {
         return strikeNum == 3;
     }
 
-    static int GameRestartOrEnd() {
+    static boolean gameRestartOrEnd() {
         System.out.println("3개의 수자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String selectState = Console.readLine();
 
         if (selectState.equals("1")) {
-            return 1;
+            return true;
         } else if (selectState.equals("2")) {
-            return 2;
+            return false;
         } else{
-            return 0;
+            return false;
         }
     }
 
