@@ -19,7 +19,7 @@ public class BaseballGame {
     public BaseballGame() {
         MessagePrinter startMessagePrinter = new StartMessagePrinter();
         this.inputMessagePrinter = new NumberInputMessagePrinter();
-        this.opponent = new ComputerOpponent();
+        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
         startMessagePrinter.printMessage();
     }
 
