@@ -10,11 +10,11 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> targetNum = makeRandomTargetNum();
-
-
+        String inputNum = inputUserNum();
 
 
     }
+
     public static List<Integer> makeRandomTargetNum() {
         List<Integer> computer = new ArrayList<>();
 
@@ -28,10 +28,25 @@ public class Application {
         return computer;
     }
 
-    public static int inputUserNum() {
+    public static String inputUserNum() {
         System.out.print("숫자를 입력하세요: ");
         String userNum = Console.readLine();
 
-        return Integer.parseInt(userNum);
+        return userNum;
     }
+
+    static boolean checkInputLengthCorrect(String inputNum) {
+        try {
+            if (inputNum.length() != 3){
+                throw new IllegalArgumentException();
+            }
+
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println("에러");
+            return false;
+        }
+
+    }
+
 }
