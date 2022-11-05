@@ -63,4 +63,18 @@ public class BaseballGame {
         }
         return ballCount;
     }
+
+    public String getResult(int strike, int ball) {
+        StringBuilder result = new StringBuilder();
+        if (ball != 0) {
+            result.append(ball).append("볼 ");
+        }
+        if (strike != 0) {
+            result.append(strike).append("스트라이크 ");
+        }
+        if (ball == 0 && strike == 0) {
+            result.append("낫싱");
+        }
+        return String.valueOf(result).trim();
+    }
 }
