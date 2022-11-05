@@ -13,7 +13,7 @@ class GameResultJudgementTest {
   private GameResultJudgement judge;
 
   @BeforeEach
-  void GameResultJudgementCreate() {
+  void setUp() {
     judge = new GameResultJudgement(3);
   }
 
