@@ -3,7 +3,7 @@ package baseball.view;
 public class GameOutput {
     public static void scoreMessage(int BallNum, int StrikeNum){
         if (BallNum>0 && StrikeNum>0){
-            System.out.println(BallNum+"볼"+StrikeNum+"스트라이크");
+            System.out.println(BallNum+"볼"+" "+StrikeNum+"스트라이크");
         }
         if (BallNum==0 && StrikeNum!=0){
             System.out.println(StrikeNum+"스트라이크");

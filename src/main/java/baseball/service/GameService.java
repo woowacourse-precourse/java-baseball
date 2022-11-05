@@ -1,11 +1,10 @@
 package baseball.service;
 
-import baseball.domain.User.*;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
     //판단해서 점수를 산출하는 함수
@@ -19,8 +18,10 @@ public class GameService {
 
     public void getStrikeCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리, 숫자가 맞으면 Strike
+        System.out.println(User);
+        System.out.println(Computer);
         for (int i = 0; i < 3; i++) {
-            if (User.get(i) == Computer.get(i)) {
+            if (User.get(i)==Computer.get(i)) {
                 Strikescore += 1;
             }
         }
@@ -47,8 +48,7 @@ public class GameService {
     public boolean isRestart(){
         this.Strikescore=Strikescore;
         UserInput.getRetryUserNumber();
-        Scanner sc = new Scanner(System.in);
-        Integer replay_input = sc.nextInt();
-        return replay_input==1;
+        String replay_input = Console.readLine();
+        return replay_input=="1";
     }
 }
