@@ -14,12 +14,7 @@ public class GameManager {
         while(!isCorrect) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            try {
-                validateInput(input);
-            } catch(Exception e) {
-                exitGame(e);
-                return false;
-            }
+            validateInput(input);
 
             ArrayList<Integer> userGuess = inputToUserGuess(input);
             String resultString = getResultOfUserGuess(userGuess);
@@ -163,12 +158,7 @@ public class GameManager {
     private boolean gameover() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String replaySign = Console.readLine();
-        try {
-            validateReplaySign(replaySign);
-        } catch(Exception e) {
-            exitGame(e);
-            return false;
-        }
+        validateReplaySign(replaySign);
 
         if(replaySign.equals("1")) {
             return true;
