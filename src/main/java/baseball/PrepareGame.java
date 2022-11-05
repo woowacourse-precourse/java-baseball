@@ -24,12 +24,16 @@ public class PrepareGame {
 
     public String setUserNumber(){
         String userNumber = Console.readLine();
-        if(!isNumber(userNumber)){
+        if(!isNumber(userNumber) || !isThreeDigitNumber(userNumber)){
         }
         return userNumber;
     }
 
     public Boolean isNumber(String number){
         return number.matches("-?\\d+");
+    }
+
+    public Boolean isThreeDigitNumber(String number){
+        return number.length() == 3;
     }
 }
