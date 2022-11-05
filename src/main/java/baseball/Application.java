@@ -51,14 +51,22 @@ public class Application {
         list1.retainAll(list2);
         return list1.size();
     }
+    public static int count_strikes(List<Integer> targetNums, List<Integer>userNums){
+        int strike = 0;
+        for(int index = 0 ; index<targetNums.size();index++){
+            if(targetNums.get(index)==userNums.get(index))
+                strike++;
+        }
+        return strike;
+    }
     public static List<Integer> compareNums(List<Integer> targetNums, List<Integer>userNums){
         List<Integer> b_s_list = new ArrayList<>();
         int balls = 0;
         int strikes = 0;
 
         balls = commonNums(targetNums,userNums);
-//        strikes = count_strikes(targetNums,userNums);
-
+        strikes = count_strikes(targetNums,userNums);
+        balls-=strikes;
 
         b_s_list.add(balls);
         b_s_list.add(strikes);
