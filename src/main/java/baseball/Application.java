@@ -105,6 +105,11 @@ public class Application {
         System.out.printf("\n");
     }
 
+
+    private static void playGame(){
+
+    }
+
     public static void main(String[] args) {
         List<Integer> answer = generateRandom3Numbers();
         System.out.println(answer);
@@ -116,10 +121,19 @@ public class Application {
             HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
             if (correctAnswer(comparedMap)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                userInput=sc.nextInt();
+                if(userInput==1){
+                    gameOn = startGame();
+                    answer = generateRandom3Numbers();
+                }
+                else {
+                    gameOn = !correctAnswer(comparedMap);
+                }
             } else {
                 printResult(comparedMap);
+                gameOn = !correctAnswer(comparedMap);
             }
-            gameOn = !correctAnswer(comparedMap);
         }
     }
 }
