@@ -98,7 +98,7 @@
   `public int askReplay()`<br>
   `: 게임이 끝난 후 게임을 다시할지, 끝낼지 사용자에게 1 또는 2를 입력받아 진행합니다.`<br>
   <br>
-  `public int play(playerComputer computer, playerUser user)`<br>
+  `public void play(playerComputer computer, playerUser user)`<br>
   `: 두 객체, 컴퓨터와 유저를 받아서 게임을 수행한다.`<br>
   <br>
   `private List<Integer> compareUserInputToAnswer(String userInput, String answer)`<br>
