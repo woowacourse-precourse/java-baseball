@@ -105,4 +105,25 @@ public class Application {
         }
         return strikeCnt;
     }
+
+    public static String getHint(int ballCnt, int strikeCnt) {
+        String result = "";
+        if(ballCnt+strikeCnt==0){
+            System.out.println("낫싱");
+            result = "낫싱";
+        }
+        else if(ballCnt>0 && strikeCnt==0){
+            System.out.println(ballCnt+"볼");
+            result = ballCnt+"볼";
+        }
+        else if(ballCnt==0 && strikeCnt>0){
+            System.out.println(strikeCnt+"스트라이크");
+            result = strikeCnt+"스트라이크";
+        }
+        else if(ballCnt>0 && strikeCnt>0){
+            System.out.println(ballCnt+"볼"+" "+strikeCnt+"스트라이크");
+            result = ballCnt+"볼"+" "+strikeCnt+"스트라이크";
+        }
+        return result;
+    }
 }
