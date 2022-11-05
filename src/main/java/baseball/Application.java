@@ -21,19 +21,19 @@ public class Application {
         }
     }
 
-    private static void playNumberBaseball() throws IllegalArgumentException {
+    static void playNumberBaseball() throws IllegalArgumentException {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
         while (!userGetRightAnswer) {
-            String user = getUserAnswerInString("숫자를 입력해주세요 : ");
-            isValidBaseballNumber(user);
-            List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
+            String userAnswer = getUserAnswerInString("숫자를 입력해주세요 : ");
+            isValidBaseballNumber(userAnswer);
+            List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, userAnswer);
             userGetRightAnswer = isRightAnswer(scoreOfStrikeAndBall);
             printResult(scoreOfStrikeAndBall);
         }
     }
 
-    private static String getComputerNumberInString() {
+    static String getComputerNumberInString() {
         String computer = "";
         while(computer.length() < LENGTH_OF_BASEBALL_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -44,28 +44,27 @@ public class Application {
         return computer;
     }
 
-    private static String getUserAnswerInString(String question) {
+    static String getUserAnswerInString(String question) {
         System.out.print(question);
         return Console.readLine();
     }
 
-    private static void isValidBaseballNumber(String answer) throws IllegalArgumentException {
+    static void isValidBaseballNumber(String answer) throws IllegalArgumentException {
         boolean answerIsValid = isValidValue(answer) && isValidLength(answer) && isValidOfDuplication(answer);
         if (!answerIsValid) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean isValidLength(String answer) {
+    static boolean isValidLength(String answer) {
         return answer.length() == LENGTH_OF_BASEBALL_NUMBER;
     }
 
-    private static boolean isValidOfDuplication(String answer) {
-        long distinctCount = answer.chars().distinct().count();
-        return answer.length() == distinctCount;
+    static boolean isValidOfDuplication(String answer) {
+        return answer.length() == answer.chars().distinct().count();
     }
 
-    private static boolean isValidValue(String answer) {
+    static boolean isValidValue(String answer) {
         boolean result = true;
         try {
             Integer.valueOf(answer);
@@ -75,38 +74,28 @@ public class Application {
         return result;
     }
 
-    private static List<Integer> compareComputerAndUser(String computer, String user) {
+    static List<Integer> compareComputerAndUser(String computer, String user) {
         List<Integer> scoreOfStrikeAndBall = new ArrayList<>();
         scoreOfStrikeAndBall.add(countStrike(computer, user));
         scoreOfStrikeAndBall.add(countBall(computer, user));
         return scoreOfStrikeAndBall;
     }
 
-    private static int countStrike(String computer, String user) {
-        int count = 0;
-        for (int i = 0; i < LENGTH_OF_BASEBALL_NUMBER; i++) {
-            if (computer.charAt(i) == user.charAt(i)) {
-                count++;
-            }
-        }
-        return count;
+    static int countStrike(String computer, String user) {
+        return (int)computer.chars()
+                .filter(i -> i == user.charAt(computer.indexOf(i)))
+                        .count();
     }
-    private static int countBall(String computer, String user) {
-        int count = 0;
-        for (int i = 0; i < LENGTH_OF_BASEBALL_NUMBER; i++) {
-            int nextIndex = (i + 1) % LENGTH_OF_BASEBALL_NUMBER;
-            int nextNextIndex = (i + 2) % LENGTH_OF_BASEBALL_NUMBER;
-            if (user.charAt(i) == computer.charAt(nextIndex) ||
-                    user.charAt(i) == computer.charAt(nextNextIndex)) {
-                count++;
-            }
-        }
-        return count;
+    static int countBall(String computer, String user) {
+        return (int)user.chars()
+                .filter(i -> i != computer.charAt(user.indexOf(i)))
+                .filter(i -> computer.contains(String.valueOf((char)i)))
+                .count();
     }
-    private static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
+    static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
         return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == MAXIMUM_STRIKE;
     }
-    private static void printResult(List<Integer> scoreOfStrikeAndBall) {
+    static void printResult(List<Integer> scoreOfStrikeAndBall) {
         if (isRightAnswer(scoreOfStrikeAndBall)) {
             printThreeStrike();
         } else if (isNoMatchAnswer(scoreOfStrikeAndBall)) {
@@ -117,24 +106,24 @@ public class Application {
         }
     }
 
-    private static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {
+    static boolean isNoMatchAnswer(List<Integer> scoreOfStrikeAndBall) {
         return scoreOfStrikeAndBall.get(STRIKE_COUNT_INDEX) == 0 && scoreOfStrikeAndBall.get(BALL_COUNT_INDEX) == 0;
     }
-    private static void printNothingMatch() {
+    static void printNothingMatch() {
         System.out.println("낫싱");
     }
-    private static void printThreeStrike() {
+    static void printThreeStrike() {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    private static void printStrike(int strikeCount) {
-        System.out.printf(" %d스트라이크%n", strikeCount);
+    static void printStrike(int strikeCount) {
+        System.out.printf(" %d스트라이크\n", strikeCount);
     }
-    private static void printBall(int ballCount) {
+    static void printBall(int ballCount) {
         System.out.printf("%d볼", ballCount);
     }
 
-    private static int askRestartOrExit() throws IllegalArgumentException {
+    static int askRestartOrExit() throws IllegalArgumentException {
         String userAnswer = getUserAnswerInString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         if (!isValidAnswer(userAnswer)) {
             throw new IllegalArgumentException();
@@ -142,7 +131,7 @@ public class Application {
         return Integer.parseInt(userAnswer);
     }
 
-    private static boolean isValidAnswer(String userAnswer) {
+    static boolean isValidAnswer(String userAnswer) {
         return userAnswer.equals(String.valueOf(START)) || userAnswer.equals(String.valueOf(EXIT));
     }
 }
