@@ -13,6 +13,10 @@ public class GameMessage {
         String nothingString = getNothingResult(resultScore.get(BaseballScore.NOTHING));
         String ballString = getBallCountResult(resultScore.get(BaseballScore.BALL));
         String strikeString = getStrikeCountResult(resultScore.get(BaseballScore.STRIKE));
+
+        String resultString = nothingString + ballString + " " + strikeString;
+
+        System.out.println(resultString.strip());
     }
 
     public String getNothingResult(int nothingScore) {

@@ -2,7 +2,6 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.util.InputValueValidation;
 import baseball.view.GameMessage;
 import java.util.HashMap;
 import java.util.Map;
