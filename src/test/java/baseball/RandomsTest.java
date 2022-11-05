@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.utils.GenerateRandomNumber;
+import baseball.number.computer.ComputerNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ public class RandomsTest {
 
     @Test
     void generateRandomNumber() {
-        GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
-        System.out.println(generateRandomNumber.generateRandomNumber());
+        ComputerNumbers computerNumbers = new ComputerNumbers();
+        System.out.println(computerNumbers.generateRandomNumbers());
     }
 }
