@@ -14,19 +14,23 @@ import java.util.Set;
 
 public class BaseballGame {
     private List<Integer> PlayerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
-    private List<Integer> computerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
     private int strike;
     private int ball;
+    List<Integer> computerNumber;
 
     public BaseballGame() {
+        init();
+    }
+
+    public void init() {
+        computerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
         for (int i : createRandomNumbers()) {
             computerNumber.add(i);
         }
-        this.strike = 0;
-        this.ball = 0;
     }
 
     public void start() {
+        System.out.println(computerNumber);
         System.out.print(INPUT_NUM);
         String PlayerInput = readLine();
         PlayerNumber = toIntegerPlayerInput(PlayerInput);
@@ -91,6 +95,7 @@ public class BaseballGame {
 
             String ask = readLine();
             if (ask.equals("1")) {
+                init();
                 return true;
             } else if (ask.equals("2")) {
                 System.out.println(END_GAME);
