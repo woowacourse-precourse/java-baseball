@@ -27,6 +27,7 @@ public class Application {
         private static final String USER_WANT_MORE = "1";
         private static final String USER_WANT_FINISH = "2";
         private static final int FORBIDDEN_NUMBER = 0;
+        private static final int DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST = 0;
 
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -36,25 +37,25 @@ public class Application {
         private void repeatGame() {
             do {
                 List<Integer> targetNumbers = getTargetNumbers();
-                repeatUntilUserHitsTargetNumber(targetNumbers);
+                repeatUntilUserGetsPerfectAnswer(targetNumbers);
             } while (isUserWantMoreGame());
         }
 
         private List<Integer> getTargetNumbers() {
-            List<Integer> computer = new ArrayList<>();
+            List<Integer> targetNumbers = new ArrayList<>();
 
-            while (computer.size() < PICK_COUNT) {
+            while (targetNumbers.size() < PICK_COUNT) {
                 int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
+                if (!targetNumbers.contains(randomNumber)) {
+                    targetNumbers.add(randomNumber);
                 }
             }
 
-            return computer;
+            return targetNumbers;
         }
 
-        private void repeatUntilUserHitsTargetNumber(List<Integer> targetNumbers) {
+        private void repeatUntilUserGetsPerfectAnswer(List<Integer> targetNumbers) {
             Map<String, Integer> gameResult = new HashMap<>();
 
             do {
@@ -62,7 +63,7 @@ public class Application {
                 List<Integer> userInputNumbers = getUserInputNumbers();
                 summaryGameResult(userInputNumbers, targetNumbers, gameResult);
                 printGameResult(gameResult);
-            } while (gameResult.getOrDefault(CORRECT_ANSWER, 0) != PICK_COUNT);
+            } while (gameResult.getOrDefault(CORRECT_ANSWER, DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST) != PICK_COUNT);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
@@ -143,7 +144,7 @@ public class Application {
         }
 
         private void putGameResult(String accuracyResult, Map<String, Integer> gameResult) {
-            Integer cnt = gameResult.getOrDefault(accuracyResult, 0);
+            Integer cnt = gameResult.getOrDefault(accuracyResult, DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST);
             gameResult.put(accuracyResult, cnt + 1);
         }
 
