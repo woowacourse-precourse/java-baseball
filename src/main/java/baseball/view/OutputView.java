@@ -11,6 +11,7 @@ public class OutputView {
     public static final String BALL_MESSAGE = "%d볼\n";
     public static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
     public static final int CRITERION_ZERO = 0;
+    public static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printGameStart() {
         System.out.println(GAME_START_MESSAGE);
@@ -49,6 +50,10 @@ public class OutputView {
         if (!responseDto.isStrikeZero() && !responseDto.isBallZero()) {
             System.out.printf(BALL_STRIKE_MESSAGE, responseDto.getBall(), responseDto.getStrike());
         }
+    }
+
+    public static void printGameEnd() {
+        System.out.println(GAME_END_MESSAGE);
     }
 
 }
