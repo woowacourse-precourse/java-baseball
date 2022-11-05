@@ -3,6 +3,8 @@ package baseball.utils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.nio.channels.IllegalChannelGroupException;
+
 class ValidatorTest {
 
     @Test
@@ -33,8 +35,20 @@ class ValidatorTest {
 
 
     @Test
-    void validateInputLength() {
+    void validateInputLength_입력된_값의_길이가_3이_아닐때_예외를_던지는지_테스트() {
+        //given
+        String playerInput = "12";
+        //when
+        Assertions.assertThatThrownBy(() -> {
+                      if (playerInput.length() == 3) {
+                          return;
+                      }
+                      throw new IllegalChannelGroupException();
+                  })
+                  .isInstanceOf(IllegalArgumentException.class);
+        //then
     }
+
 
     @Test
     void validateDuplication() {
