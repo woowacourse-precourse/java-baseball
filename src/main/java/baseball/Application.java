@@ -40,13 +40,13 @@ public class Application {
 
         int strikeNumber = inputNumberResult.get("strike");
         int ballNumber = inputNumberResult.get("ball");
-        boolean gameResult = true;
+        boolean gameResult = false;
 
         if (strikeNumber == 0 && ballNumber == 0) {
             System.out.println("낫싱");
         } else if (strikeNumber == 3) {
             System.out.println("3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            gameResult = false;
+            gameResult = true;
         } else if (strikeNumber > 0 && ballNumber == 0) {
             System.out.println(strikeNumber + "스트라이크");
         } else if (strikeNumber == 0 && ballNumber > 0) {
