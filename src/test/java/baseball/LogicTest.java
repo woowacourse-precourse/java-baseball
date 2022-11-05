@@ -14,11 +14,9 @@ public class LogicTest {
     @Test
     void 스트라이크_볼_판정_계산_테스트1() {
         // given
-        int[] answer = {5,3,2};
-        int[] input = {3,2,1};
         int[] count = new int[2];
-        List<Integer> answerNumber = Arrays.stream(answer).boxed().collect(Collectors.toList());
-        List<Integer> inputNumber = Arrays.stream(input).boxed().collect(Collectors.toList());
+        List<Integer> answerNumber = List.of(5, 3, 2);
+        List<Integer> inputNumber = List.of(3, 2, 1);
 
         // when
         NumberBaseBallGame.countStrikeAndBall(count, answerNumber, inputNumber);
@@ -31,11 +29,9 @@ public class LogicTest {
     @Test
     void 스트라이크_볼_판정_계산_테스트2() {
         // given
-        int[] answer = {5,3,2};
-        int[] input = {5,3,2};
         int[] count = new int[2];
-        List<Integer> answerNumber = Arrays.stream(answer).boxed().collect(Collectors.toList());
-        List<Integer> inputNumber = Arrays.stream(input).boxed().collect(Collectors.toList());
+        List<Integer> answerNumber = List.of(5, 3, 2);
+        List<Integer> inputNumber = List.of(5, 3, 2);
 
         // when
         NumberBaseBallGame.countStrikeAndBall(count, answerNumber, inputNumber);
@@ -48,11 +44,9 @@ public class LogicTest {
     @Test
     void 스트라이크_볼_판정_계산_테스트3() {
         // given
-        int[] answer = {6,1,3};
-        int[] input = {7,4,5};
         int[] count = new int[2];
-        List<Integer> answerNumber = Arrays.stream(answer).boxed().collect(Collectors.toList());
-        List<Integer> inputNumber = Arrays.stream(input).boxed().collect(Collectors.toList());
+        List<Integer> answerNumber = List.of(6, 1, 3);
+        List<Integer> inputNumber = List.of(7, 4, 5);
 
         // when
         NumberBaseBallGame.countStrikeAndBall(count, answerNumber, inputNumber);
