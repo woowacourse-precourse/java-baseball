@@ -2,7 +2,11 @@ package baseball.domain;
 
 import java.util.List;
 
+import javax.swing.text.View;
+
 import baseball.view.GameView;
+import baseball.view.inputView;
+import baseball.view.printView;
 
 public class Game {
 	private final Computer computer;
@@ -15,17 +19,17 @@ public class Game {
 	}
 
 	public void play() {
-		GameView.printStartMessage();
+		printView.printStartMessage();
 		computer.createAnswer();
 		tryCorrectAnswer();
 	}
 
 	private void tryCorrectAnswer() {
 		initBallAndStrike();
-		user = new User(GameView.inputNum());
+		user = new User(inputView.inputNum());
 
 		compareNumber(computer.getAnswer(), user.getNumber());
-		GameView.printHint(ball, strike);
+		printView.printHint(ball, strike);
 
 		if (isCorrectAnswer()) {
 			endGame();
@@ -35,9 +39,9 @@ public class Game {
 	}
 
 	private void endGame() {
-		GameView.printEndGame();
+		printView.printEndGame();
 
-		if(GameView.inputRestartOrEnd().equals(GameView.RESTART_NUM)){
+		if(inputView.inputRestartOrEnd().equals(inputView.RESTART_NUM)){
 			play();
 		}
 	}
