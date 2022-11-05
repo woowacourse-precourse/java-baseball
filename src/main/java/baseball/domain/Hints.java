@@ -11,6 +11,14 @@ public class Hints {
         this.hints = hints;
     }
 
+    public int count(Hint countHint) {
+        long count = hints.stream()
+                .filter(hint -> (countHint == hint))
+                .count();
+
+        return Long.valueOf(count).intValue();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
