@@ -9,7 +9,7 @@ public class Ball {
         this.position = position;
     }
 
-    public Ball of(int number, int position) {
+    public static Ball of(int number, int position) {
         return new Ball(number, position);
     }
 
