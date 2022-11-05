@@ -3,9 +3,9 @@ package baseball;
 import java.util.List;
 
 public class BaseballManager {
-    BaseballNumber userNumber;
-    BaseballNumber computerNumber;
-    ScoreManager scoreManager;
+    private BaseballNumber userNumber;
+    private BaseballNumber computerNumber;
+    private ScoreManager scoreManager = new ScoreManager();
 
     {
         computerNumber = new BaseballNumber(
