@@ -3,6 +3,7 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.Validation.InputValidation;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,5 +44,43 @@ class InputValidationTest {
 
         assertThat(InputValidation.is3Numbers(input)).isEqualTo(result);
     }
+
+    @Test
+    @DisplayName("사용자_입력_난수가_1이상_9이하인_케이스를_확인한다")
+    void 사용자_난수_입력시_난수_범위_일치() {
+        List<Integer> numberList = List.of(1, 2, 3);
+        boolean result = true;
+
+        assertThat(InputValidation.isInRange(numberList)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("사용자_입력_난수가_1보다_작거나_9보다_큰_케이스를_확인한다")
+    void 사용자_난수_입력시_난수_범위_불일치() {
+        List<Integer> numberList = List.of(1, 0, 3);
+        boolean result = false;
+
+        assertThat(InputValidation.isInRange(numberList)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("사용자_입력_난수에_중복값이_없는_케이스를_확인한다")
+    void 사용자_난수_입력시_중복_없음() {
+        List<Integer> numberList = List.of(1, 2, 3);
+        boolean result = true;
+
+        assertThat(InputValidation.isNotDuplicate(numberList)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("사용자_입력_난수에_중복값이_있는_케이스를_확인한다")
+    void 사용자_난수_입력시_중복_존재() {
+        List<Integer> numberList = List.of(1, 1, 3);
+        boolean result = false;
+
+        assertThat(InputValidation.isNotDuplicate(numberList)).isEqualTo(result);
+    }
+
+
 
 }
