@@ -27,13 +27,6 @@ public class Balls {
         return false;
     }
 
-    public boolean isOut(Ball other) {
-        if (isBall(other) || isStrike(other)) {
-            return false;
-        }
-        return true;
-    }
-
     public Result getResult(Balls other) {
         int ball = 0, strike = 0, out = 0;
 
