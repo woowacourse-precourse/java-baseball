@@ -9,7 +9,10 @@ public class Input {
     public List<Integer> inputNumber() {
         String text = Console.readLine();
         validateInput(text);
+        return textToIntList(text);
+    }
 
+    private List<Integer> textToIntList(String text) {
         return text.chars().boxed()
                 .collect(Collectors.toList());
     }
