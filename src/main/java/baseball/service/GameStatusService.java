@@ -2,6 +2,8 @@ package baseball.service;
 
 public class GameStatusService {
 
+    private static final String END_GAME = "2";
+
     private boolean gameStatus;
 
     public GameStatusService(){
@@ -9,7 +11,7 @@ public class GameStatusService {
     }
 
     public boolean isEndOfGame(String opinion){
-        return false;
+        return opinion.equals(END_GAME);
     }
 
     public void stopGame(){
