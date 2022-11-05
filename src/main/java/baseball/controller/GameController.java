@@ -9,9 +9,9 @@ import java.util.List;
 
 public class GameController {
 
-  private static final int RANDOM_NUMBER_SIZE = 3;
-  private static final int BEGIN = 1;
-  private static final int END = 9;
+  public static final int RANDOM_NUMBER_SIZE = 3;
+  public static final int BEGIN = 1;
+  public static final int END = 9;
   private final List<Integer> computerNumbers;
 
   private final InputService inputService = new InputService();
