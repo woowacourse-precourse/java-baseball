@@ -29,7 +29,7 @@ public class Game {
             List<Integer> user = makeUserAnswer(input);
 
             result = playMatch(answer, user);
-            System.out.println(playMatch(answer, user));
+            System.out.println(result);
 
             if (result.equals(END_GAME_CONDITION)) {
                 return restart();
