@@ -17,9 +17,15 @@ public class User {
         return numbers;
     }
 
-    public void input() {
+    public void inputNumbers() {
         String value = Console.readLine();
-        validator.validateInput(value);
+        validator.validateInputNumbers(value);
         setNumbers(value);
+    }
+
+    public Character inputRetry() {
+        String value = Console.readLine();
+        validator.validateInputRetry(value);
+        return value.charAt(0);
     }
 }
