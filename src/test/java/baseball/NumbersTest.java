@@ -10,16 +10,6 @@ import org.junit.jupiter.api.Test;
 public class NumbersTest {
 
     @Test
-    @DisplayName("각 숫자는 1과 9사이다")
-    void every_number_is_between_one_to_nine() {
-        List<Integer> digitsWithZero = List.of(0, 9, 2);
-        List<Integer> digitsWithTen = List.of(1, 2, 10);
-
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(digitsWithZero));
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(digitsWithTen));
-    }
-
-    @Test
     @DisplayName("숫자는 서로 달라야 한다")
     void every_number_is_different() {
         List<Integer> digits = List.of(1, 2, 1);
