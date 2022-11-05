@@ -5,11 +5,11 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class NumberList {
-    public final List<Number> numberList;
+public class ComputerNumberList {
+    public final List<Number> computerNumber;
 
-    public NumberList() {
-        this.numberList = getComputerRandomNumber();
+    public ComputerNumberList() {
+        this.computerNumber = getComputerRandomNumber();
     }
 
     private List<Number> getComputerRandomNumber() {

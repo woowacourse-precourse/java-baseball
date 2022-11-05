@@ -1,11 +1,11 @@
 package controller;
 
-import domain.NumberList;
+import domain.ComputerNumberList;
 
 public class BaseballGame {
-    public final NumberList computerNumber;
+    public final ComputerNumberList computerNumber;
 
     public BaseballGame() {
-        this.computerNumber = new NumberList();
+        this.computerNumber = new ComputerNumberList();
     }
 }
