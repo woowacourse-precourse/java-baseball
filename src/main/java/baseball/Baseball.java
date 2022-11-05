@@ -34,7 +34,13 @@ public class Baseball {
 
     // GuessNumber Setter method
     public void setGuessNumber(int guessNumber){
+        if(!isValidNum(guessNumber)){
+            end();
+            throw new IllegalArgumentException();
+        }
 
+        this.guessNumber = guessNumber;
+        ruleBallCount();
     }
 
     public void getBallCount(){
@@ -57,11 +63,6 @@ public class Baseball {
 
     // 볼 카운트 계산 method
     private void ruleBallCount(){
-
-    }
-
-    // 스트라이크 카운트 계산 method
-    private void ruleStrikeCount(){
 
     }
 
