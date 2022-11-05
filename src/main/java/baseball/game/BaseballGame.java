@@ -41,6 +41,7 @@ public class BaseballGame {
         generateNumberState();
 
         countStrike();
+        countBall();
     }
 
     public void countStrike() {
@@ -52,6 +53,16 @@ public class BaseballGame {
         }
         System.out.println("numberState = " + numberState);
         System.out.println("strikeCount = " + strikeCount);
+    }
+
+    public void countBall() {
+        for (int idx = 0; idx< targetList.size(); idx++){
+            if (targetList.contains(playerList.get(idx)) && !numberState.get(idx)) {
+                numberState.set(idx, true);
+                ballCount++;
+            }
+        }
+        System.out.println("ballCount = " + ballCount);
     }
 
     public void generateNumberState() {
