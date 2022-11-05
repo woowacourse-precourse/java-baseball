@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constraint.CLOSING_MENT;
 import static baseball.Constraint.NOTHING;
 import static baseball.Constraint.OPENING_MENT;
 
@@ -20,12 +21,17 @@ public class Game {
     public void doGame() throws IllegalArgumentException{
         this.computerNums.setNums();
         // ===================
-        System.out.println(this.computerNums.getNums());
+        System.out.print(this.computerNums.getNums());
         // ===================
         do {
             playerNums.setNums();
         } while (compare());
+        closing();
 
+    }
+
+    private void closing() {
+        System.out.println(CLOSING_MENT);
     }
 
     private boolean compare() {
