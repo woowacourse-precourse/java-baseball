@@ -1,16 +1,53 @@
 package baseball;
 
-public class GameSet {
-    private final int BALL_COUNT;
-    private final int STRIKE_COUNT;
+import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
+public class Game {
+    private final List<Integer> computerNum;
 
-
-    public GameSet(int ball_count, int strike_count) {
-        BALL_COUNT = ball_count;
-        STRIKE_COUNT = strike_count;
+    public Game(List<Integer> computerNum) {
+        this.computerNum = computerNum;
     }
 
-    public
+    public int getStrikeCount(List<Integer> userNum) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if(computerNum.get(i) == userNum.get(i)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 
+    public int getBallCount(List<Integer> userNum) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if(computerNum.get(i) != userNum.get(i) && computerNum.contains(userNum.get(i))) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    public String play() {
+        boolean gameClear = false;
+        int strikeCount = 0;
+        int ballCount = 0;
+        while (!gameClear) {
+            Messages.inputStart();
+            String input = Console.readLine();
+            List<Integer> userNum = new UserNumGenerator(input).NUMS;
+            strikeCount = getStrikeCount(userNum);
+            ballCount = getBallCount(userNum);
+            gameClear = isClear(strikeCount);
+            Messages.printResult(ballCount, strikeCount);
+        }
+        Messages.gameClear();
+        return ballCount + "볼 " + strikeCount + "스트라이크";
+    }
+
+    public boolean isClear(int strikeCount) {
+        return strikeCount == 3;
+    }
 }
 
