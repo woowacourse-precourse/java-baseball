@@ -87,22 +87,25 @@ public class Computer {
     }
 
     public void printGameResult() {
-        compareGameScore();
-        printStrike();
-        printBall();
-        printNothing();
-        if (ballCount > 0 && strikeCount > 0) {
-            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+        while (true) {
+            compareGameScore();
+            if (strikeCount == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+            if (ballCount > 0 && strikeCount > 0) {
+                System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+            }
+            printStrike();
+            printBall();
+            printNothing();
         }
     }
 
     public void printStrike() {
         if (ballCount == 0 && strikeCount > 0) {
             System.out.println(strikeCount + "스트라이크");
-            if (strikeCount == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }
         }
     }
 
