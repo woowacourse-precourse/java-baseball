@@ -20,4 +20,13 @@ public class InputTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("3자리의 수가 아닐 경우 IllegalArgumentException 예외를 throw한다.")
+    @Test
+    void validate_length() {
+        Assertions.assertAll(
+                () -> assertThatThrownBy(() -> Input.validateLength("12")),
+                () -> assertThatThrownBy(() -> Input.validateLength("1234"))
+        );
+    }
 }
