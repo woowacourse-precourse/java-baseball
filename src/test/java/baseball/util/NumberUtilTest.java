@@ -21,7 +21,33 @@ public class NumberUtilTest {
         assertThat(numberList.get(2)).isGreaterThan(0).isLessThan(10);
         for (int index = 0; index < numberList.size() - 1; index++) {
             for (int compareIndex = index + 1; compareIndex < numberList.size(); compareIndex++)
-            assertThat(numberList.get(index)).isNotEqualTo(numberList.get(compareIndex));
+                assertThat(numberList.get(index)).isNotEqualTo(numberList.get(compareIndex));
         }
+    }
+
+    @DisplayName("사용자 숫자 입력 예외사항 판단 기능 테스트")
+    @Test
+    public void checkInputNumberTest() {
+        String input_failure1 = "1234";
+        String input_failure2 = "098";
+        String input_failure3 = "1 3";
+        String input_failure4 = "-89";
+        String input_failure5 = "f56";
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            checkInputException(input_failure1);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            checkInputException(input_failure2);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            checkInputException(input_failure3);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            checkInputException(input_failure4);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            checkInputException(input_failure5);
+        });
     }
 }
