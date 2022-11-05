@@ -21,6 +21,9 @@ public class Game {
             playGameRound();
             
             // 여기 계속할지 처리하는 메소드
+            if(!isContinue()){
+                break;
+            }
         }
     }
 
