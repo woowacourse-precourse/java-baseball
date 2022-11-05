@@ -6,6 +6,7 @@ import static constants.GameConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Computer {
     private List<Integer> computerNumber = new ArrayList<>();
@@ -24,7 +25,15 @@ public class Computer {
     }
 
     public boolean isNotThreeStrike(List<String> playerNumber) {
-        return !computerNumber.equals(playerNumber);
+        List<Integer> intListPlayerNumber = getIntListPlayerNumber(playerNumber);
+        return !computerNumber.equals(intListPlayerNumber);
+    }
+
+    private List<Integer> getIntListPlayerNumber(List<String> playerNumber) {
+        List<Integer> intListPlayerNumber = playerNumber.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return intListPlayerNumber;
     }
 
     public void checkNumber(List<String> playerNumber) {
