@@ -26,17 +26,26 @@ public class Service {
     }
 
     private int findMatchedNumberAndPlace(Input userInput){
+
+        List<Integer> inputList = userInput.getBaseballNumberList();
+        int inputSize = inputList.size();
         int matchedNumberAndPlace = 0;
-        int inputIteratorNumber = 0;
-        for(int answerNumber : answer){
-            if(userInput.getBaseballNumberList().get(inputIteratorNumber)
-                    == answerNumber){
-                matchedNumberAndPlace++;
-            }
-            inputIteratorNumber++;
+        for(int i = 0; i < inputSize; i++){
+            matchedNumberAndPlace += isIdentical(answer.get(i), inputList.get(i));
         }
         return matchedNumberAndPlace;
     }
+
+    private int isIdentical(int num1, int num2){
+        if(num1 != num2){
+            return 0;
+        }
+        return 1;
+    }
+
+
+
+
 
     public List<Integer> getAnswer() {
         return answer;
