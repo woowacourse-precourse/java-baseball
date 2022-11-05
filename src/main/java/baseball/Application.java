@@ -24,7 +24,7 @@ class GameReadyMachine {
         }
     }
 
-    public boolean setAnswerValue() {
+    public boolean setValue() {
         answerValue = Randoms.pickNumberInRange(100, 999);
         if (answerValue >= 100 || answerValue <= 999)
             return true;
