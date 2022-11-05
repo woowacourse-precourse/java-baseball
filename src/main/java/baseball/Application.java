@@ -42,14 +42,12 @@ public class Application {
         return true;
     }
 
-    public static void validateInput(String consoleInput) throws IllegalArgumentException {
-        boolean isValid = true;
-        if (!isCorrectLength(consoleInput)) isValid = false;
-        else if (!isInt(consoleInput)) isValid = false;
-        else if (!isDigitDuplicated(consoleInput)) isValid = false;
-
-        // TODO: raise IllegalArgumentException;
-        if (!isValid) { System.out.println("IllegalArgumentException"); return; }
+    public static void validateInput(String consoleInput) {
+        if (!isCorrectLength(consoleInput) || !isInt(consoleInput)) {
+            throw new IllegalArgumentException("Input should be 3-digit integer");
+        } else if (!isDigitDuplicated(consoleInput)) {
+            throw new IllegalArgumentException("Input should consist of non-duplicated digits");
+        }
     }
 
     public static ArrayList<Integer> separateDigit(int inputNumber) {
