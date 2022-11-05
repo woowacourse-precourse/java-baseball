@@ -6,29 +6,32 @@ public class Validator {
     private static final String CONTAIN_CHAR_REGEX = "";
     private static final String BLANK = " ";
 
-    public static void validate(int input) {
-
+    public static void validate(String input) {
+        validateRandomNumberExceedLength(input);
+        validateContainChar(input);
+        validateContainBlank(input);
+        validateContainZero(input);
     }
 
-    public void validateRandomNumberExceedLength(String input) {
+    public static void validateRandomNumberExceedLength(String input) {
         if(input.length() < 3){
             throw new IllegalArgumentException(FORBIDDEN_FORMAT_MESSAGE);
         }
     }
 
-    public void validateContainChar(String input) {
+    public static void validateContainChar(String input) {
         if(input.matches(CONTAIN_CHAR_REGEX)){
             throw new IllegalArgumentException(FORBIDDEN_FORMAT_MESSAGE);
         }
     }
 
-    public void validateContainBlank(String input) {
+    public static void validateContainBlank(String input) {
         if(input.contains(BLANK)){
             throw new IllegalArgumentException(FORBIDDEN_FORMAT_MESSAGE);
         }
     }
 
-    public void validateContainZero(String input) {
+    public static void validateContainZero(String input) {
         if(input.contains("0")){
             throw new IllegalArgumentException(FORBIDDEN_FORMAT_MESSAGE);
         }

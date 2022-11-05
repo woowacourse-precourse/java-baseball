@@ -5,10 +5,11 @@ import baseball.domain.Validator;
 import java.io.*;
 
 public class UserInput {
-    private int getInput() throws IOException {
+    private String getInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int input = Integer.parseInt(br.readLine());
-        Validator.validate(input);
+        String input = br.readLine();
+//        int input = Integer.parseInt(br.readLine());
+        Validator.validate(String.valueOf(input));
         return input;
     }
 }
