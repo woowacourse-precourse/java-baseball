@@ -8,7 +8,8 @@ import java.util.List;
 
 class Game{
     private List<Integer> computerNum = new ArrayList<>();
-    private String userInput;
+    String userInput;
+    private List<Integer> userNum = new ArrayList<>();
 
     public Game(){
         while (computerNum.size() < 3) {
@@ -24,6 +25,18 @@ class Game{
 
     void setUserInput() {
         userInput = Console.readLine();
+    }
+
+    void checkUserInput() throws IllegalArgumentException{
+        if (userInput.length() != 3)
+            throw new IllegalArgumentException("게임 종료");
+
+        for (int i = 0; i < userInput.length(); i++) {
+            int userChar = (int)userInput.charAt(i);
+            if (userChar<=0 | userChar>9)
+                throw new IllegalArgumentException("게임 종료");
+            userNum.add((int) userInput.charAt(i));
+        }
     }
 }
 
