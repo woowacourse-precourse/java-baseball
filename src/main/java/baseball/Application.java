@@ -70,7 +70,7 @@ public class Application {
         if (ballCount == 0 && strikeCount == 0) return "낫싱";
         if (ballCount == 0)  return strikeCount.toString() + "스트라이크";
         if (strikeCount == 0) return ballCount.toString() + "볼";
-        return strikeCount.toString() + "스트라이크" + " " + ballCount.toString() + "볼";
+        return ballCount.toString() + "볼" + " " + strikeCount.toString() + "스트라이크";
     }
 
     public static void setIsBall(boolean[] isBall, String computerNumber) {
