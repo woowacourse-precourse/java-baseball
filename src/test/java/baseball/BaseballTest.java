@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.GameController;
 import baseball.domain.Ball;
 import baseball.model.Computer;
 import baseball.view.Messenger;
@@ -7,9 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -218,6 +218,23 @@ class BaseballTest {
 
             assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
             System.setOut(originalOut);
+        }
+    }
+    
+    @Nested
+    @DisplayName("GameController 클래스")
+    class GameController_test {
+
+        @Test
+        @DisplayName("receiveBall 메소드는 세 자리 숫자가 입력되었을 때 Ball 객체를 반환하는지 확인")
+        void receiveBall_test() {
+            String input = "123";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+
+            GameController gameController = new GameController();
+
+            assertThat(gameController.receiveBall()).isInstanceOf(Ball.class);
         }
     }
 }
