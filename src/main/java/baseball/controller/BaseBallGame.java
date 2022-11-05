@@ -41,16 +41,19 @@ public class BaseBallGame {
         List defenseNumbers = numberGenerator.createDefenseNumbers();
         offense(defenseNumbers);
 
-        // TODO: 계속해서 게임을 할건지 물어 보는 기능
+        String inputContinueGame = askContinueGame();
+
         // TODO: 대답에 따라 게임을 계속할지 판단하는 기능
         return false;
     }
 
     private void offense(List<Integer> defenseNumbers) {
-        boolean offenseFailure = true;
         Judgement judgement = new Judgement(defenseNumbers);
+        boolean offenseFailure = true;
+
         while (offenseFailure) {
             display.printInputOffenseNumber();
+
             List<Integer> offenseNumbers = offenseNumberGenerator.generateOffenseNumbers();
 
             offenseFailure = !judgement.isThreeStrike(offenseNumbers);
@@ -71,5 +74,13 @@ public class BaseBallGame {
         } else {
             display.printBallAndStrike(ballCount, strikeCount);
         }
+    }
+
+    private String askContinueGame() {
+        display.printContinueGame();
+
+        String inputContinueGame = userInput.input();
+        userInput.validateContinueInput(inputContinueGame);
+        return inputContinueGame;
     }
 }

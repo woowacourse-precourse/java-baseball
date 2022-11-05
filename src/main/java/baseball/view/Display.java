@@ -22,4 +22,10 @@ public class Display {
     public void printBallAndStrike(int ballCount, int strikeCount) {
         System.out.println(String.format(X_BALL_X_STRIKE, ballCount, strikeCount));
     }
+
+    public void printContinueGame() {
+        System.out.println(CONTINUE_GAME);
+    }
+
+
 }
