@@ -1,7 +1,6 @@
 package baseball.domain.step;
 
 import baseball.application.context.BaseBallGameContext;
-import baseball.application.io.Writer;
 
 public class GameStartStep implements Step {
 
