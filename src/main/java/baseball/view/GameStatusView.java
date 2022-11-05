@@ -1,5 +1,7 @@
 package baseball.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameStatusView {
 
     private static final String END_GAME_COMMAND = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -16,7 +18,7 @@ public class GameStatusView {
     }
 
     public void readOpinion(){
-
+        opinion = Console.readLine();
     }
 
     public boolean isNotCorrectAnswer(){
