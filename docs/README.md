@@ -1,12 +1,30 @@
                             숫자야구 기능 목록
-1.랜덤숫자 3개를 뽑아서 List에저장<br/>
-2.입력받은 숫자3개를 배열에저장<br/>
-(string)으로 받기때문에 int로 바꾼후 하나씩쪼개서 int[] 에 넣어준다.<br/>
-3.자릿수가 정해져있기때문에 for문을 총3번 돌린다.<br/>
-4.그안에서 입력받은수 하나와 랜덤숫자배열안의 숫자 를 비교해서<br/>
-숫자만 일치하면 1볼 을 반환<br/>
-5.숫자와 위치 모두 일치하면 strike 을 반환<br/>
-6.숫자 와 자리 모두 일치하면 <br/>
-*3개의 숫자를 모두 맞히셨습니다!게임 종료 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.를 반환.<br/>
-7.선택한 번호가 1번이면 새로시작호출<br/>
-8.2번이면 종료.
+1.PickRandomNumber() </br>
+-->Console api 를 이용해서 List에 랜덤난수 3개저장</br>
+
+2.InputNumber() </br>
+--> Console 로 입력값을 string 으로만 받을수있기때문에 String으로 받은
+문자열을 int[] 안에 넣어준다.</br>
+
+3.Strike3()</br>
+--> Strike가 3번이면 정답이기때문에 종료하고 한번더할지,아니면 종료할지
+선택창을 뛰워준다.</br>
+
+4.CheckResult()</br>
+-->Ball 갯수 랑Strike 갯수 를 HashMap 으로 받아서 논리연산자에따라 뛰워준다.
+
+5.BallStrike()</br>
+-->ball이랑Strike갯수를 받아서 HashMap으로 리턴해준다.</br>
+
+6.Ball()</br>
+-->Ball값을 계산해서 반환</br>
+
+7.Strike()</br>
+-->Strike값을 계산해서 반환</br>
+
+8.Restart()</br>
+-->다시시작하면 PickRandomNumber()메소드를 호출하여 변수에 넣어준다.</br>
+
+9.GoAndStop()</br>
+-->입력값이 세자리면 int[] 담아서 리턴하고 3자리가 아니면 IllegalArgumentException 을
+발생시킨다.

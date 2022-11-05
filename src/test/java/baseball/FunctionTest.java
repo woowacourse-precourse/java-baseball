@@ -65,7 +65,7 @@ class 랜덤으로숫자를뽑기{
             int i = 1;
             int j = 0;
             ball = Ball(com,user,i,j);
-            assert (ball == 1);
+            assertEquals(ball,1);
         }
     }
 
@@ -79,7 +79,7 @@ class 랜덤으로숫자를뽑기{
             int i = 0;
             int j = 0;
             strike = Strike(com,user,i,j);
-            assert (strike == 1);
+            assertEquals(strike,1);
         }
     }
 
@@ -100,7 +100,7 @@ class 랜덤으로숫자를뽑기{
             int[] UserChoiceNum = new int[]{1,2,3};
             HashMap<String,Integer> map = new HashMap<>();
             map = BallStrike(RandomNumber,UserChoiceNum);
-            assert (map.get("스트라이크") == 3);
+            assertEquals(map.get("스트라이크"),3);
         }
     }
     @Nested
@@ -136,6 +136,5 @@ class 랜덤으로숫자를뽑기{
             RandomNumber = CheckResult(RandomNumber,UserNum);
             assertEquals(RandomNumber,RandomNumber);
         }
-
     }
 }
