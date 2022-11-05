@@ -1,9 +1,8 @@
 package baseball;
 
-import baseball.constants.ExceptionMessage;
 import baseball.constants.SystemMessage;
 import baseball.domain.NumberGenerator;
-import baseball.domain.Player;
+import baseball.Player.Player;
 import baseball.domain.Referee;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,6 +12,7 @@ public class Application {
     private static final String RESTART = "1";
     private static final String PATTERN = "[1-2]+";
     private static final String GAME_WIN_CONDITIONS = "3스트라이크";
+    private static final String RESTART_INPUT = "플레이어가 숫자 1 또는 2가 아닌 다른 값을 입력하였습니다.";
 
     public static void main(String[] args) {
         Player player = new Player();
@@ -46,7 +46,7 @@ public class Application {
         String restart = Console.readLine();
         String regularExpression = PATTERN;
         if (!(restart.matches(regularExpression))) {
-            throw new IllegalArgumentException(ExceptionMessage.RESTART_INPUT);
+            throw new IllegalArgumentException(RESTART_INPUT);
         }
         return restart;
     }

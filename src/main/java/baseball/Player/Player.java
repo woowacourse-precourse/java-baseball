@@ -1,6 +1,4 @@
-package baseball.domain;
-
-import baseball.constants.ExceptionMessage;
+package baseball.Player;
 
 import java.util.*;
 
