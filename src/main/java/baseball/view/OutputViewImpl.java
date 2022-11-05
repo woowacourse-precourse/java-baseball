@@ -37,9 +37,9 @@ public class OutputViewImpl implements OutputView {
 			return;
 		}
 		if (resultBSO[BALL] != 0)
-			System.out.print(resultBSO[0] + BALL_MESSAGE);
+			System.out.print(resultBSO[BALL] + BALL_MESSAGE);
 		if (resultBSO[STRIKE] != 0)
-			System.out.print(resultBSO[1] + STRIKE_MESSAGE);
+			System.out.print(resultBSO[STRIKE] + STRIKE_MESSAGE);
 		System.out.println();
 	}
 }
