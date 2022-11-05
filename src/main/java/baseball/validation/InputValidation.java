@@ -33,4 +33,8 @@ public class InputValidation {
 
         return false;
     }
+
+    public boolean isNotCorrectChoice(String input) {
+        return !(input.equals("1") || input.equals("2"));
+    }
 }
