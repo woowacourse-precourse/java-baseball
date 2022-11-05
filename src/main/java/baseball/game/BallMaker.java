@@ -47,7 +47,7 @@ public class BallMaker {
         while (result.size() != ballSize) {
             result.add(Randoms.pickNumberInRange(minimum, maximum));
         }
-        return new ArrayList<>(result);
+        return Randoms.shuffle(new ArrayList<>(result));
     }
 
     private void printInformation() {
@@ -56,10 +56,7 @@ public class BallMaker {
 
     private List<Integer> makeUserBall(String userOpinion) {
         final int differenceBetweenCharAndInteger = 48;
-        return userOpinion.chars()
-                .boxed()
-                .map(ch -> ch -= differenceBetweenCharAndInteger)
-                .collect(Collectors.toList());
+        return userOpinion.chars().boxed().map(ch -> ch -= differenceBetweenCharAndInteger).collect(Collectors.toList());
     }
 
     private boolean checkValidation(String userInput) {
