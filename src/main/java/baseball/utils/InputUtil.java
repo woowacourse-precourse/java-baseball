@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class InputUtil {
-    private static final int MIN_NUM = 1;
-    private static final int MAX_NUM = 9;
 
     public InputUtil() {
     }
@@ -19,12 +17,12 @@ public class InputUtil {
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
-        checkLength(numbers,3);
+        checkLength(numbers, 3);
         ArrayList<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length(); i++) {
             checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
-            checkValidNumber(number,MIN_NUM,MAX_NUM);
+            checkValidNumber(number, MIN_NUM, MAX_NUM);
             checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }
@@ -43,13 +41,13 @@ public class InputUtil {
         }
     }
 
-    public void checkValidNumber(int number,int minNumber,int maxNumber) {
+    public void checkValidNumber(int number, int minNumber, int maxNumber) {
         if (number < minNumber || number > maxNumber) {
             throw new IllegalArgumentException(ConstantMessage.VALID_NUMBER_EXCEPTION.getConstant());
         }
     }
 
-    public void checkLength(String number,int length) {
+    public void checkLength(String number, int length) {
         if (number.length() != length) {
             throw new IllegalArgumentException(ConstantMessage.NUMBER_LENGTH_EXCEPTION.getConstant());
         }
