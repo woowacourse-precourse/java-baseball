@@ -1,17 +1,24 @@
 package baseball.model;
 
+import baseball.service.GameService;
+
 import java.util.List;
 
 public class Game {
-    private List<String> numbers;
+
+    private List<Integer> numbers;
 
     public Game() {}
 
-    public Game(List<String> numbers){
+    public Game(List<Integer> numbers){
         this.numbers = numbers;
     }
 
-    private void validation(){
-        // TODO: 검증 로직 정의
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }
