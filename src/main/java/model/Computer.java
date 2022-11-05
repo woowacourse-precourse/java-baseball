@@ -204,14 +204,20 @@ public class Computer {
             int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
             for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
                 int numAtNow = splitNumOfCompare.get(second);
-                if (first != second && numComputerAtNow == numAtNow) {
-                    isBall = true;
-                }
+                isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
             }
             if (isBall) {
                 this.cntBall = this.cntBall + 1;
             }
         }
+    }
+
+    private boolean isBallCheck(boolean isBall, int first, int numComputerAtNow, int second,
+        int numAtNow) {
+        if (first != second && numComputerAtNow == numAtNow) {
+            isBall = true;
+        }
+        return isBall;
     }
 
     private boolean isEqualsCollection(Collection collection_1, Collection collection_2) {
