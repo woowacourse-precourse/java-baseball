@@ -15,9 +15,9 @@ public class Computer {
      */
     public void createProblem() {
         problem = new ArrayList<>();
-        while(checkNumLength()){
+        while (checkNumLength()) {
             int num = createRandomNum();
-            if(checkOverlap(num)){
+            if (checkOverlap(num)) {
                 continue;
             }
             problem.add(num);
