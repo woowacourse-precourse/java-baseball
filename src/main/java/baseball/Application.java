@@ -36,13 +36,7 @@ public class Application {
     }
 
     public int insertNumber(){
-        String input = Console.readLine();
-        int inputInt;
-        try{
-            inputInt = Integer.parseInt(input);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException("입력하신 변수가 숫자형이 아닙니다");
-        }
+        int inputInt = getInputToIntType();
         checkIfThreeDigit(inputInt);
         checkIfAllDigitsDifferent(inputInt);
         return inputInt;
@@ -74,6 +68,27 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
+    }
+
+    public boolean isContinueOrEnd(){
+        return insertWhetherContinueOrEnd() == 1;
+    }
+
+    private int insertWhetherContinueOrEnd(){
+        int input = getInputToIntType();
+        if(input !=1 && input != 2) throw new IllegalArgumentException("1,2 둘 중의 하나의 숫자만 입력해주세요.");
+        return input;
+    }
+
+    private int getInputToIntType() {
+        String input = Console.readLine();
+        int inputInt;
+        try{
+            inputInt = Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("입력하신 변수가 숫자형이 아닙니다");
+        }
+        return inputInt;
     }
 
     private int checkIfScoreIsInRange(int i) {
