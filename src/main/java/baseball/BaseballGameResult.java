@@ -7,6 +7,11 @@ public class BaseballGameResult {
     private final int strike;
     private final int ball;
 
+    BaseballGameResult() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
     BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums) {
         this.strike = calcStrikes(answerNums, inputNums);
         this.ball = calcBalls(answerNums, inputNums);
