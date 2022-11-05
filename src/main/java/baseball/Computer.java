@@ -40,10 +40,21 @@ public class Computer {
     }
 
     private String getComputerResult(int strikeCount, int ballCount) {
+        String computerResult;
         String ballMessage = getBallMessage(ballCount);
         String strikeMessage = getStrikeMessage(strikeCount);
-        String ballAndStrikeMessage = getBallAndStrikeMessage(ballMessage, strikeMessage);
-        return ballAndStrikeMessage;
+        computerResult = getNothingMessage(strikeCount, ballCount);
+        if (computerResult.equals("")) {
+            computerResult = getBallAndStrikeMessage(ballMessage, strikeMessage);
+        }
+        return computerResult;
+    }
+
+    private String getNothingMessage(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            return NOTHING_MESSAGE;
+        }
+        return "";
     }
 
     private String getBallAndStrikeMessage(String ballMessage, String strikeMessage) {
