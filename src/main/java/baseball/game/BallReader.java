@@ -16,6 +16,9 @@ public class BallReader {
 
     public boolean isFinished(List<Integer> userBall, List<Integer> computerBall) {
         Map<String, Integer> result = getResult(userBall, computerBall);
+        if (result.get(STRIKE) == null) {
+            return false;
+        }
         return result.get(STRIKE) == requiredStrikes;
     }
 
