@@ -75,12 +75,7 @@ public class Baseball {
         this.targetNumber = targetNumber;
     }
 
-    // 볼 카운트 계산 method
-    private void ruleBallCount(){
-
-    }
-
-    // 1~9로 이루어진 세자리 정수인지 Validation
+    // 1~9로 이루어진 서로 다른 세자리 정수인지 Validation
     private boolean isValidNum(int number){
         if(!checkSize(number)){
             return false;
