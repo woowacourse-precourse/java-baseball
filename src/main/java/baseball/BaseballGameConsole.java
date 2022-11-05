@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.ResultType.*;
+
 public class BaseballGameConsole {
 
     private final Validator validator = new Validator();
@@ -27,7 +29,7 @@ public class BaseballGameConsole {
             validator.validatePrediction(predictedNumber);
 
             Result result = computer.resultOfPrediction(randomNumber, predictedNumber);
-            // Update matchedAllNumber
+            matchedAllNumber = result.getResultType() == EXACT_MATCH;
 
             // Show result message
         } while (!matchedAllNumber);
