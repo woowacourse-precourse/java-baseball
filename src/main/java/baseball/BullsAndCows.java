@@ -138,7 +138,7 @@ public class BullsAndCows {
                 .noneMatch(answerNumberList::contains);
     }
 
-    public boolean isEnd() {
+    private boolean isEnd() {
         return strikeCount == STRIKE_COUNT_FOR_END;
     }
 
