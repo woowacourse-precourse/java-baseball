@@ -8,8 +8,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.awt.desktop.AppForegroundListener;
+import java.io.*;
+import java.util.HashMap;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -19,6 +20,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
+
+    @ParameterizedTest
+    @DisplayName("분석한 결과에 따라 알맞은 내용이 출력되는지 확인 테스트")
+    @CsvSource(value = {"1, 2, 2볼 1스트라이크", "0, 3, 3볼", "0, 0, 낫싱", "2, 0, 2스트라이크", "3, 0, 3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"})
+    void resultMessagePrintTest(int strikeNumber, int ballNumber, String expectedResultMessage) {
+
+        Map<String, Integer> resultMap = Map.of(
+                "strike", strikeNumber,
+                "ball", ballNumber
+        );
+        OutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        if (strikeNumber == 3) {
+            expectedResultMessage = "3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+
+        Application.resultMessagePrint(resultMap);
+
+
+        assertThat(outputStream.toString().trim()).isEqualTo(expectedResultMessage);
+    }
 
     @ParameterizedTest
     @DisplayName("입력받은 값을 분석하여 Strike, ball 개수 집계 기능 테스트")
