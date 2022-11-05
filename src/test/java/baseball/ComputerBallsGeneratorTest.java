@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 class ComputerBallsGeneratorTest {
 
   @Test
-  void nothing() {
-
+  void isClassCreate() {
+    ComputerBallsGenerator generator = new ComputerBallsGenerator(3);
   }
 
 }
