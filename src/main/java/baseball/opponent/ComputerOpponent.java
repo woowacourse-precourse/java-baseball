@@ -15,6 +15,11 @@ public class ComputerOpponent implements Opponent {
 
 
     @Override
+    public int getType() {
+        return Opponent.COMPUTER_OPPONENT;
+    }
+
+    @Override
     public ThreeDigitNum createAnswer() {
         return createRandomThreeDigitNum();
     }
