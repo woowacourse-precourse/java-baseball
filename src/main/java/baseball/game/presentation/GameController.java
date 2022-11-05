@@ -13,5 +13,6 @@ public class GameController {
     }
     public void run(){
         gameService.run();
+        gameService.play();
     }
 }

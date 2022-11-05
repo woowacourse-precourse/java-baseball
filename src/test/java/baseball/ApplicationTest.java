@@ -66,7 +66,7 @@ class ApplicationTest extends NsTest {
     void 스트라이크만_입력_테스트(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("189", "136","135");
+                    run("189", "136","135","2");
                     assertThat(output()).contains("1스트라이크", "2스트라이크","3스트라이크");
                 },
                 1, 3, 5
@@ -76,7 +76,7 @@ class ApplicationTest extends NsTest {
     void 볼만_입력_테스트(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("819", "316","513","135");
+                    run("819", "316","513","135","2");
                     assertThat(output()).contains("1볼", "2볼","3볼");
                 },
                 1, 3, 5
@@ -86,7 +86,7 @@ class ApplicationTest extends NsTest {
     void 낫싱_입력_테스트(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("789","135");
+                    run("789","135","2");
                     assertThat(output()).contains("낫싱");
                 },
                 1, 3, 5
@@ -96,7 +96,7 @@ class ApplicationTest extends NsTest {
     void 스트라이크_볼_입력_테스트(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("153","152","135");
+                    run("153","152","135","2");
                     assertThat(output()).contains("2볼 1스트라이크","1볼 1스트라이크");
                 },
                 1, 3, 5

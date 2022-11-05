@@ -4,7 +4,6 @@ import java.util.List;
 
 public class User {
     private List<Integer> inputNumber;
-
     public List<Integer> getInputNumber() {
         return inputNumber;
     }

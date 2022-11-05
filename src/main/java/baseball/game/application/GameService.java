@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 public class GameService {
     private static final GameService instance = new GameService();
+    private final int CONTINUE=1;
     private final GameRepository gameRepository;
     private final UserRepository userRepository;
     private final MessageService messageService;
@@ -24,11 +25,10 @@ public class GameService {
     public void run(){
         messageService.gameStartMessage();
     }
-    public void setGame() {
+    public void play() {
         gameRepository.setGame();
-    }
-    public void playGame() {
-        while (gameRepository.getGame().getStrikeCount() != 3) {
+        userService.createUser();
+        while (!Objects.equals(gameRepository.getGame().getStrikeCount(), gameRepository.getSize())) {
             userService.inputData();
             countResult(userRepository.getUser().getInputNumber()
                     ,gameRepository.getGame().getGameNumber().getRandomNumber());
@@ -50,13 +50,9 @@ public class GameService {
         }
         gameRepository.getGame().updateBallCount();
     }
-
     private void checkContinue(List<Integer> continueInput){
-        if(continueInput.get(0)==1){
-            //다시시작
-        }
-        if(continueInput.get(0)==1){
-            //종료
+        if(continueInput.contains(CONTINUE)){
+            play();
         }
     }
 }

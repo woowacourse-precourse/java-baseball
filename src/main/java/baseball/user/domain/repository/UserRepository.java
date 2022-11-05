@@ -4,10 +4,13 @@ import baseball.user.domain.User;
 
 public class UserRepository {
     private static final UserRepository instance = new UserRepository();
-    private UserRepository(){user=new User();}
-    private final User user;
+    private UserRepository(){}
+    private User user;
     public static UserRepository getInstance(){
         return instance;
+    }
+    public void createUser(User user){
+        this.user=user;
     }
     public User getUser(){
         return user;
