@@ -12,10 +12,6 @@ public class Rule {
     public Rule() {
     }
 
-    public void print(String message) {
-        System.out.print(message);
-    }
-
     public void generateAnswer() {
         answer = new ArrayList<>();
         while (answer.size() < 3) {
@@ -37,7 +33,7 @@ public class Rule {
         getNothing(inputs);
     }
 
-    public void getStrikeCount(List<Integer> inputs) {
+    private void getStrikeCount(List<Integer> inputs) {
         int count = 0;
         for (int i = 0; i < inputs.size(); i++) {
             if (isStrike(inputs, i)) {
@@ -49,7 +45,7 @@ public class Rule {
         }
     }
 
-    public void getBallCount(List<Integer> inputs) {
+    private void getBallCount(List<Integer> inputs) {
         int count = 0;
         hint = new ArrayList<>();
         for (int i = 0; i < inputs.size(); i++) {
@@ -65,7 +61,7 @@ public class Rule {
         }
     }
 
-    public void getNothing(List<Integer> inputs) {
+    private void getNothing(List<Integer> inputs) {
         if (hint.isEmpty()) {
             hint.add("낫싱");
         }
@@ -76,7 +72,7 @@ public class Rule {
         return inputs.get(index) == answer.get(index);
     }
 
-    public boolean gameSet(List<Integer> inputs) {
+    public boolean is3Strike(List<Integer> inputs) {
         return Arrays.equals(inputs.toArray(), answer.toArray());
     }
 }
