@@ -1,16 +1,21 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Numbers {
 
     private static final int DIGITS_LENGTH = 3;
 
-    private final ExclusiveDigits exclusiveDigits;
+    private final ExclusiveDigits<PositiveDigit> exclusiveDigits;
 
     public Numbers(List<Integer> digits) {
         validateLength(digits);
-        this.exclusiveDigits = new ExclusiveDigits(digits);
+
+        List<PositiveDigit> positiveDigits = digits.stream()
+                .map(PositiveDigit::new)
+                .collect(Collectors.toList());
+        this.exclusiveDigits = new ExclusiveDigits<>(positiveDigits);
     }
 
     private void validateLength(List<Integer> digits) {

@@ -1,6 +1,6 @@
 package baseball;
 
-public class PositiveDigit {
+public class PositiveDigit extends Digit {
 
     private static final int MINIMUM = 1;
     private static final int MAXIMUM = 9;
@@ -38,6 +38,7 @@ public class PositiveDigit {
         return digit;
     }
 
+    @Override
     public int value() {
         return digit;
     }
