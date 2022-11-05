@@ -22,6 +22,16 @@ public class Number {
         return this.digits;
     }
 
+    public void setRandomNumber() {
+        Set<Integer> randomNumberList = new HashSet<>();
+
+        while(randomNumberList.size() < SIZE_OF_NUMBER) {
+            randomNumberList.add(getRandomNumber());
+        }
+
+        this.digits = convertIntegerSetToIntArray(randomNumberList);
+    }
+
     private void setDigits(String inputNumber) {
 
         if (!isCorrectInput(inputNumber)){
@@ -35,16 +45,6 @@ public class Number {
 
     public int getRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-    }
-
-    public void setRandomNumber() {
-        Set<Integer> randomNumberList = new HashSet<>();
-
-        while(randomNumberList.size() < SIZE_OF_NUMBER) {
-            randomNumberList.add(getRandomNumber());
-        }
-
-        this.digits = convertIntegerSetToIntArray(randomNumberList);
     }
 
     private int[] convertIntegerSetToIntArray (Set<Integer> setTypeData) {
