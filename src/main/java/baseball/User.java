@@ -8,6 +8,8 @@ import java.util.List;
 public class User {
 
     public int inputNumber() {
+        Computer computer = new Computer();
+        computer.startGame();
         int number = Integer.parseInt(Console.readLine());
         return number;
     }
