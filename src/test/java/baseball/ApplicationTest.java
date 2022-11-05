@@ -20,6 +20,12 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void printStrikesCountMessage_메소드로_스트라이크_개수_출력() {
+		int strikesCount = 2;
+		printStrikesCountMessage(strikesCount);
+		assertThat(output()).isEqualTo("2스트라이크");
+	}
+	@Test
 	void printBallsCountMessage_메소드로_볼_개수_출력() {
 		int ballsCount = 3;
 		printBallsCountMessage(ballsCount);
