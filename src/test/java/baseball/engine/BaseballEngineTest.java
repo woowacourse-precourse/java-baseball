@@ -41,4 +41,11 @@ class BaseballEngineTest {
         }
 
     }
+
+    @Test
+    void parseInput_함수로_유저_입력값_리스트로_변환() {
+        List<Integer> result = engine.parseInput("123");
+
+        assertThat(result).containsExactly(1, 2, 3);
+    }
 }
