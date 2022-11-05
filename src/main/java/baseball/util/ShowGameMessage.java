@@ -23,6 +23,7 @@ public class ShowGameMessage {
 
     public void gameResultMessage(ScoreResult scoreResult) {
         if (scoreResult.getType() == ScoreResultType.ALL_STRIKE) {
+            strikeMessage(scoreResult.getStrike());
             allStrikeMessage();
             continueGameMessage();
         } else if (scoreResult.getType() == ScoreResultType.STRIKE) {
