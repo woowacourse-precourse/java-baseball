@@ -1,9 +1,13 @@
 package baseball;
 
 public class Operation {
+
+	public Operation() {
+		GameView.printStartGame();
+	}
+
 	public void start() {
 		new Computer();
-		GameView.printStartGame();
 		guessNums();
 		restart();
 	}
@@ -17,6 +21,7 @@ public class Operation {
 
 	private void restart() {
 		if (User.isRestart()) {
+			Computer.resetComputerNums();
 			start();
 		}
 	}

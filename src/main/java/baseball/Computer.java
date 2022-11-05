@@ -35,4 +35,8 @@ public class Computer {
 	private boolean isContains(int randomNum) {
 		return computerNums.contains(randomNum);
 	}
+
+	public static void resetComputerNums() {
+		computerNums.clear();
+	}
 }

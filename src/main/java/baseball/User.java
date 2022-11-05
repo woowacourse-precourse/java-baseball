@@ -15,7 +15,6 @@ public class User {
 		GameView.printInstruction();
 		String userInput = Console.readLine();
 		checkUserInput(userInput);
-		System.out.println(userInput);
 	}
 
 	public static List<Integer> convertUserInputToList(String userInput) {
