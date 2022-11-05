@@ -1,6 +1,13 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,17 +15,38 @@ import static baseball.Application.*;
 
 
 class BaseballTest {
-    @Test
-    void getGuideMessage_현재_userNumber_상태에_따른_메시지_반환() {
-        String input = "123";
+    @DisplayName("안내문구 출력하기")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @ValueSource(strings = {"456", "123"})
+    void getGuideMessage_현재_userNumber_상태에_따른_메시지_반환(String input) {
         String result = getGuideMessage(input);
         assertThat(result).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
     @Test
+    @DisplayName("안내문구 출력하기 (null)")
     void getGuideMessage_현재_userNumber_상태에_따른_메시지_반환2() {
         String input = null;
         String result = getGuideMessage(input);
         assertThat(result).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
+    @Test
+    @DisplayName("사용자 숫자 입력받기")
+    void getUserNumber_입력받은_사용자_숫자_반환() {
+        String input = "123\n";
+
+        /*
+         * camp.nextstep.edu.missionutils.Console의 readLine() 참고하여
+         * Sacnner의 nextLine() 사용함을 확인
+         * 사용자의 입력에 대한 예상 리턴값인지 확인
+         */
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+
+        assertThat(scanner.nextLine()).isEqualTo("123");
     }
 }

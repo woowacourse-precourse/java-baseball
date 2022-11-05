@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(getGuideMessage(null));
         while (true) {
-
+            String userNumber = getUserNumber();
         }
 
     }
@@ -22,4 +22,8 @@ public class Application {
         }
     }
 
+    public static String getUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
 }
