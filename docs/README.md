@@ -25,7 +25,7 @@
 ### GameController
 - [ ] 게임 시작부터 끝까지 게임의 진행 과정을 관리한다.
 ### RandomNumberGenerator
-- [ ] 서로 다른 임의의 숫자 3개를 생성한다.
+- [x] 서로 다른 임의의 숫자 3개를 생성한다.
 ### InputUserNumber
 - [ ] 사용자의 숫자 3개를 입력받는다.
 ### CompareNumbers
