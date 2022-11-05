@@ -15,15 +15,14 @@ public class Game {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computerNum = getComputerNum();
-        List<Integer> userNum = getUserNum();
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        List<Integer> userNum = getUserNum(input);
 
     }
 
-    public  List<Integer> getUserNum() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String s = Console.readLine();
-
-        int num = validateNum(s);
+    public  List<Integer> getUserNum(String input) {
+        int num = validateNum(input);
         List<Integer> userNum = convertInttoList(num);
         validateRangeForAll(userNum);
         validateDigit(userNum);
