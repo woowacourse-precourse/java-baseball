@@ -37,6 +37,7 @@ public class GameManager {
     
     //README.md 내 주어진 코드 변형
     private void makeNewGuessNumber() {
+        guessNumber = new ArrayList<>();
         while (guessNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!guessNumber.contains(randomNumber)) {
@@ -49,7 +50,7 @@ public class GameManager {
         if(!isOneToNine(input)) {
             throw new IllegalArgumentException("each position of input should be from one to nine.");
         } else if(!isThreeChar(input)) {
-            throw new IllegalArgumentException("length of input should be three.");
+            throw new IllegalArgumentException("input length should be three.");
         } else if(hasDuplicatedDigit(input)) {
             System.out.println("정답은 세자리 모두 다 다릅니다.");
         }
