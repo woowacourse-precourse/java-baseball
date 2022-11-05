@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Computer {
+public class Computer implements Player {
     private static final Integer START_INCLUSIVE = 1;
     private static final Integer END_INCLUSIVE = 9;
 
