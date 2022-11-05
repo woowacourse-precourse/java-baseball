@@ -20,7 +20,6 @@ public class Application {
             } catch (IllegalArgumentException e) {
                 return ;
             }
-
         }
     }
 
@@ -33,11 +32,25 @@ public class Application {
         Map<String, Integer> inputNumberResult = analyzeInputNumber(inputNumber, number);
         boolean isGameFinish = resultMessagePrint(inputNumberResult);
 
+        boolean whetherToContinueGame = true;
         if (isGameFinish) {
             String orderNumber = inputOrderNumber();
             checkOrderNumberValidation(orderNumber);
+            whetherToContinueGame = checkOrderNumberValue(orderNumber);
         }
-        return true;
+
+        return whetherToContinueGame;
+    }
+
+    public static boolean checkOrderNumberValue(String orderNumber) throws IllegalArgumentException {
+
+        if (orderNumber.charAt(0) == '1') {
+            return true;
+        } else if (orderNumber.charAt(0) == '2') {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException{
