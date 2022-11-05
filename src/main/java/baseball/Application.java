@@ -17,7 +17,9 @@ public class Application {
         generateNewAnswer();
 
         while (true) {
-            //TODO: 입력받기 메서드 하나로 리펙터링
+            //TODO:
+            // 입력받기 메서드 하나로 리펙터링
+            // 숫자 리터럴 상수화
             System.out.print(Comment.INPUTNUMBER);
             String userInput = Console.readLine();
             validateInput(userInput, 3);
@@ -122,15 +124,19 @@ public class Application {
         }
         return false;
     }
+
+
+    enum Hint {
+        STRIKE, BALL
+    }
+
+    static class Comment {
+        final static String STARTGAME = "숫자 야구 게임을 시작합니다.";
+        final static String ENDGAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        final static String REGAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        final static String INPUTNUMBER = "숫자를 입력해주세요 : ";
+    }
 }
 
-class Comment {
-    final static String STARTGAME = "숫자 야구 게임을 시작합니다.";
-    final static String ENDGAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    final static String REGAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final static String INPUTNUMBER = "숫자를 입력해주세요 : ";
-}
 
-enum Hint {
-    STRIKE, BALL
-}
+
