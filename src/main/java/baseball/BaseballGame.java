@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BaseballGame {
     public void startGame() {
@@ -42,5 +39,15 @@ public class BaseballGame {
             sameNumberCheck.add(c);
         }
         return sameNumberCheck.size() == 3;
+    }
+
+    public int checkStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+        int count = 0;
+        for (int index = 0; index < 3; index++) {
+            if (Objects.equals(computerNumber.get(index), userNumber.get(index))) {
+                count++;
+            }
+        }
+        return count;
     }
 }
