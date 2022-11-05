@@ -53,7 +53,7 @@ BUILD SUCCESSFUL in 0s
 - [x] FEATURE1. BaseballGame 클래스 생성
 - [x] FEATURE2. 게임 시작 메시지 출력 메서드
 - [x] FEATURE3. 난수 정답 생성 메서드
-- [ ] FEATURE4. 플레이어 숫자 입력 메서드
+- [x] FEATURE4. 플레이어 숫자 입력 메서드
 - [ ] FEATURE5. 입력받은 숫자 비교하여 점수 계산 메서드
   - [ ] FEATURE6. 점수 계산 결과 BaseballGameResult 클래스
   - [ ] FEATURE7. 스트라이크 개수 계산 메서드
@@ -80,11 +80,11 @@ BUILD SUCCESSFUL in 0s
     - [ ] `void printGameEndMessage()`
     - [x] `Boolean isIllegalGameInput(int gameInput)`
     - [x] `Boolean checkDuplicateNums(int gameInput)`
-    - [ ] `List<Integer> getGameInput() thorws IllegalArgumentException`
+    - [x] `List<Integer> getGameInput() thorws IllegalArgumentException`
     - [ ] `int getGameRestartInput()`
     - [x] `List<Integer> generateRandomAnswerNums()`
     - [ ] `BaseballGameResult getResultOfGame(List<Integer> inputNums)`
-    - [ ] `List<Integer> stringToIntList(String numString)`
+    - [x] `List<Integer> stringToIntList(String numString)`
 
 
 - [ ] **CLASS 2**. `BaseballGameResult`

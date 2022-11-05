@@ -26,6 +26,16 @@ public class BaseballGame {
         return randomNums;
     }
 
+    public List<Integer> getGameInput() throws IllegalArgumentException {
+        String input = Console.readLine();
+
+        if (isIllegalGameInput(Integer.parseInt(input))) {
+            throw new IllegalArgumentException();
+        }
+
+        return stringToIntList(input);
+    }
+
     public List<Integer> stringToIntList(String numString) {
         List<Integer> intList = new ArrayList<>();
 
