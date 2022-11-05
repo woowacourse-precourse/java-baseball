@@ -2,10 +2,12 @@ package baseball;
 
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import static computer.BallsAndStrikesCountCalculator.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,9 +16,16 @@ import User.Input;
 import User.Outputs;
 import User.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import computer.BallsAndStrikesCountCalculator;
 import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
+	@Test
+	void calculateStrikesCount_메소드로_스트라이크_수_계산() {
+		List<Integer> number = List.of(3, 8, 4);
+		List<Integer> answer = List.of(2, 8, 5);
+		assertThat(calculateStrikesCount(number, answer)).isEqualTo(1);
+	}
 	@Test
 	void generateRandomNumber_메소드로_서로_다른_세개의_숫자_선택() {
 		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
