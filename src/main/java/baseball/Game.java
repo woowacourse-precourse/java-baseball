@@ -32,4 +32,18 @@ public class Game {
         }
         finishMessage();
     }
+
+    public void restartLoop() {
+        Player player = new Player();
+        startMessage();
+        boolean restart = true;
+        while (restart) {
+            start(player);
+            String playerRestart = player.getRestart();
+            if (!player.isValidRestart(playerRestart)) {
+                Player.isNotValid();
+            }
+            restart = checkRestart(playerRestart);
+        }
+    }
 }
