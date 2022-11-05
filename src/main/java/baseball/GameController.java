@@ -22,10 +22,10 @@ public class GameController {
         Message.getUserNumber();
         String inputNumber = Console.readLine();
 
-        if (!isCheckDigit(inputNumber)
-            || !isCheckLength(inputNumber)
-            || !isCheckOverlap(inputNumber)
-            || !isCheckRange(inputNumber)) {
+        if (!Exception.isCheckDigit(inputNumber)
+            || !Exception.isCheckLength(inputNumber)
+            || !Exception.isCheckOverlap(inputNumber)
+            || !Exception.isCheckRange(inputNumber)) {
             throw new IllegalArgumentException();
         }
 
