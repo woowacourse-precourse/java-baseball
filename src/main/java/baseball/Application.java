@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,9 +20,9 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력값을 입력하셨습니다.");
         }
 
-        List<Integer> user = listToArrayList(userNumberStringList);
+        List<Integer> user = toArrayList(userNumberStringList);
 
-        if(checkThreeStrike(computer, user)) {
+        if(isThreeStrike(computer, user)) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
@@ -46,7 +45,7 @@ public class Application {
         return userNumber;
     }
 
-    public static List<Integer> listToArrayList(String[] userNumberStringList) {
+    public static List<Integer> toArrayList(String[] userNumberStringList) {
         List<Integer> userNumberIntegerList = new ArrayList<>();
 
         for (int i = 0; i < userNumberStringList.length; i++) {
@@ -58,17 +57,17 @@ public class Application {
 
     public static boolean isWrongInput (String[] userNumberStringList) {
         if (
-                checkIntegerOrCharacter(userNumberStringList)
-                        || checkInputLength(userNumberStringList)
-                        || checkSameNumbers(userNumberStringList)
-                        || checkGetZero(userNumberStringList)) {
+                isIntegerOrCharacter(userNumberStringList)
+                        || isInputLength(userNumberStringList)
+                        || isSameNumbers(userNumberStringList)
+                        || isContainZero(userNumberStringList)) {
             return true;
         }
 
         return false;
     }
 
-    public static boolean checkIntegerOrCharacter(String[] userNumberStringList) {
+    public static boolean isIntegerOrCharacter(String[] userNumberStringList) {
         for (int i = 0; i < userNumberStringList.length; i++) {
             if (!Character.isDigit(userNumberStringList[i].charAt(0))) {
                 return true;
@@ -78,7 +77,7 @@ public class Application {
         return false;
     }
 
-    public static boolean checkInputLength(String[] userNumberStringList) {
+    public static boolean isInputLength(String[] userNumberStringList) {
         if (userNumberStringList.length > 3 || userNumberStringList.length < 1) {
             return true;
         }
@@ -86,7 +85,7 @@ public class Application {
         return false;
     }
 
-    public static boolean checkSameNumbers(String[] userNumberStringList) {
+    public static boolean isSameNumbers(String[] userNumberStringList) {
         List<String> haveNumberList = new ArrayList<>();
 
         for (int i = 0; i < userNumberStringList.length; i++) {
@@ -101,7 +100,7 @@ public class Application {
         return false;
     }
 
-    public static boolean checkGetZero(String[] userNumberStringList) {
+    public static boolean isContainZero(String[] userNumberStringList) {
         for (int i = 0; i < userNumberStringList.length; i++) {
             if (userNumberStringList[i].equals("0")) {
                 return true;
@@ -111,7 +110,7 @@ public class Application {
         return false;
     }
 
-    public static boolean checkThreeStrike(List<Integer> computer, List<Integer> user) {
+    public static boolean isThreeStrike(List<Integer> computer, List<Integer> user) {
         return computer.equals(user);
     }
 
