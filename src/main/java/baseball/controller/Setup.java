@@ -9,7 +9,7 @@ public enum Setup {
 	END_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
 
 	DUPLICATION_ALLOWABLE("false"),
-	NUMBER_ONLY_RULE("[0-9]+"),
+	NUMBER_ONLY_RULE("[1-9]+"),
 	SELECTION_SCOPE("[1-2]+"),
 
 	NUMBER_LENGTH("3");
