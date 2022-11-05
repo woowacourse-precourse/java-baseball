@@ -14,7 +14,9 @@ public class Application {
             for(int i=0;i<comNum.length;i++){
                 comNum[i]=(int)(Math.random()*9)+1;
             }
-
+            System.out.print("숫자를 입력해주세요 : ");
+            int playerNum=sc.nextInt();
+            System.out.println(getResult(comNum,playerNum));
 
         }
     }
