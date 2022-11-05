@@ -21,7 +21,7 @@ public class Baseball {
         this.gaming = true;
         resetTargetNumber();
         this.ballCount = new BallCount();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constant.START_GAME);
     }
 
     // 게임 재시작 method
@@ -45,16 +45,16 @@ public class Baseball {
         int isContinue = Integer.parseInt(Console.readLine());
 
 
-        if(isContinue == 1) {
+        if(isContinue == Constant.RESTART_INPUT_NUM) {
             restart();
-        } else if(isContinue == 2) {
+        } else if(isContinue == Constant.END_INPUT_NUM) {
             end();
         }
     }
 
     // GuessNumber Setter method
     public void setGuessNumber() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constant.INPUT_GUESS_NUM);
         int guessNumber = Integer.parseInt(Console.readLine());
 
         if(!isValidNum(guessNumber)) {
@@ -78,16 +78,14 @@ public class Baseball {
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
     private void resetTargetNumber() {
-        int count = 0;
         targetNumber = new ArrayList<>();
         List<Integer> randomNumberList = new ArrayList<>();
 
-        while (randomNumberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
+        while (randomNumberList.size() < Constant.GUESS_NUM_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(Constant.GUESS_NUM_START_RANGE,Constant.GUESS_NUM_END_RANGE);
             if(!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
                 targetNumber.add(randomNumber);
-                count++;
             }
         }
     }
@@ -117,7 +115,7 @@ public class Baseball {
     private boolean checkSize(int number) {
         int size = (int)(Math.log10(number)+1);
 
-        if(size != 3) {
+        if(size != Constant.GUESS_NUM_SIZE) {
             return false;
         }
         return true;

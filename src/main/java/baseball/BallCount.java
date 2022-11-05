@@ -15,7 +15,6 @@ public class BallCount {
     // 볼 카운트 계산 method
     public void ruleBallCount(List<Integer> targetNumber, int guessNumber) {
         int ballCount = 0;
-//        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
 
         for (int i = 0; i < targetNumber.size(); i++) {
@@ -28,7 +27,6 @@ public class BallCount {
     // 스트라이크 카운트 계산 method
     public void ruleStrikeCount(List<Integer> targetNumber, int guessNumber) {
         int strikeCount = 0;
-//        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
 
         for (int i = 0; i < targetNumber.size(); i++) {
@@ -55,21 +53,21 @@ public class BallCount {
     }
 
     public void printBallCount() {
-        if(strikeCount == 3){
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(strikeCount == Constant.MAX_STRIKE_COUNT){
+            System.out.println(Constant.THREE_STRIKE);
         } else if((ballCount == 0) && (strikeCount == 0)) {
-            System.out.println("낫싱");
+            System.out.println(Constant.NO_BALL_NO_STRIKE);
         } else if((ballCount != 0) && (strikeCount == 0)) {
-            System.out.println(ballCount + "볼");
+            System.out.println(ballCount + Constant.BALL);
         } else if((ballCount == 0) && (strikeCount != 0)) {
-            System.out.println(strikeCount + "스트라이크");
+            System.out.println(strikeCount + Constant.STRIKE);
         } else if((ballCount != 0) && (strikeCount != 0)) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            System.out.println(ballCount + Constant.BALL + strikeCount + Constant.STRIKE);
         }
     }
 
     public GuessResult getGuessResult() {
-        if(strikeCount == 3) {
+        if(strikeCount == Constant.MAX_STRIKE_COUNT) {
             return GuessResult.END;
         } else if((ballCount == 0) && (strikeCount == 0)) {
             return GuessResult.NOT_SWING;
