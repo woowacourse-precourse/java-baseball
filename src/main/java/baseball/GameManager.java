@@ -160,7 +160,21 @@ public class GameManager {
     }
 
     private boolean gameover() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String replaySign = Console.readLine();
+        try {
+            validateReplaySign(replaySign);
+        } catch(Exception e) {
+            exitGame(e);
+            return false;
+        }
 
+        if(replaySign.equals("1")) {
+            return true;
+        }
+
+        exitGame(null);
+        return false;
     }
 
     private void exitGame(Exception e) {
