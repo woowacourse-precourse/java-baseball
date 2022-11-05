@@ -10,10 +10,10 @@ public class BallCount {
     private int ballCount;
     private int strikeCount;
 
-    public BallCount() { }
+    public BallCount() {}
 
     // 볼 카운트 계산 method
-    public void ruleBallCount(List<Integer> targetNumber, int guessNumber){
+    public void ruleBallCount(List<Integer> targetNumber, int guessNumber) {
         int ballCount = 0;
 //        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
@@ -26,7 +26,7 @@ public class BallCount {
     }
 
     // 스트라이크 카운트 계산 method
-    public void ruleStrikeCount(List<Integer> targetNumber, int guessNumber){
+    public void ruleStrikeCount(List<Integer> targetNumber, int guessNumber) {
         int strikeCount = 0;
 //        List<Integer> targetDigitList = numberDigitToList(targetNumber);
         List<Integer> guessDigitList = numberDigitToList(guessNumber);
@@ -40,15 +40,15 @@ public class BallCount {
         this.strikeCount = strikeCount;
     }
 
-    private List<Integer> numberDigitToList(int number){
+    private List<Integer> numberDigitToList(int number) {
         return Arrays.stream(Arrays.stream(String.valueOf(number).split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray())
                 .boxed().collect(Collectors.toList());
     }
 
-    private int compareDigitList(int compareNumber, List<Integer> compareList, int exceptIndex){
-        if(compareList.contains(compareNumber) && compareList.get(exceptIndex) != compareNumber){
+    private int compareDigitList(int compareNumber, List<Integer> compareList, int exceptIndex) {
+        if(compareList.contains(compareNumber) && compareList.get(exceptIndex) != compareNumber) {
             return 1;
         }
         return 0;
@@ -57,7 +57,7 @@ public class BallCount {
     public void printBallCount() {
         if(strikeCount == 3){
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        } else if((ballCount == 0) && (strikeCount == 0)){
+        } else if((ballCount == 0) && (strikeCount == 0)) {
             System.out.println("낫싱");
         } else if((ballCount != 0) && (strikeCount == 0)) {
             System.out.println(ballCount + "볼");
@@ -69,9 +69,9 @@ public class BallCount {
     }
 
     public GuessResult getGuessResult() {
-        if(strikeCount == 3){
+        if(strikeCount == 3) {
             return GuessResult.END;
-        } else if((ballCount == 0) && (strikeCount == 0)){
+        } else if((ballCount == 0) && (strikeCount == 0)) {
             return GuessResult.NOT_SWING;
         }
 
