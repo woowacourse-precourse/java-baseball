@@ -14,8 +14,23 @@ public class Application {
         System.out.println(START_SENTENCE);
         List<Integer> answer = generateRandomNumber();
 
-        String inputNum = input();
-        List<Integer> ballAndStrikeList = calculate(answer, inputNum);
+        int flag = 1; // flag가 1이면 게임을 계속 진행
+        while (flag == 1) {
+            String inputNum = input();
+            List<Integer> ballAndStrikeList = calculate(answer, inputNum);
+
+            int ball = ballAndStrikeList.get(0);
+            int strike = ballAndStrikeList.get(1);
+            printStatus(ball, strike);
+
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String input = Console.readLine();
+                flag = Integer.parseInt(input);
+                answer = generateRandomNumber();
+            }
+        }
     }
 
     public static List<Integer> generateRandomNumber() {
@@ -48,7 +63,6 @@ public class Application {
                 ball++;
             }
         }
-        System.out.println(ball + ", " + strike);
         ballAndStrikeList.add(ball); // index: 0 에 ball
         ballAndStrikeList.add(strike); // index: 1 에 strike
         return ballAndStrikeList;
