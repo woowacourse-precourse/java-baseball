@@ -50,11 +50,13 @@ public class Game {
         List<Integer> userInputDigit;
 
         while (true) {
-            try {
-                userInputDigit = getUserInput();
-            } catch (IllegalArgumentException e) {
-                continue;
-            }
+//            try {
+//                userInputDigit = getUserInput();
+//            } catch (IllegalArgumentException e) {
+//                continue;
+//            }
+
+            userInputDigit = getUserInput();
 
             // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
             String checkDigitsResult = computer.checkDigits(userInputDigit, computerRandomDigit);
