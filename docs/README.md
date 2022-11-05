@@ -12,7 +12,10 @@
 2. 비교 결과 리스트의 타입별 빈도수를 갖는 해시맵 반환
 
 ## 심판 (Referee)
-1. 숫자 비교하여 같으면 스트라이크, 다르면 볼(Comparison Result Type)을 반환
+1. 숫자, 인덱스, 상대 숫자 리스트를 입력으로 받는다.
+   1. 상대 숫자 리스트와 인덱스와 값이 모두 같으면 스트라이크를 반환
+   2. 리스트에 포함되어 있으면 볼(Comparison Result Type)을 반환
+   3. 없으면 Optional.empty 반환
 
 ## 숫자판 (Number Board)
 1. Referee로 유저 숫자들과 상대방 숫자을과 비교하여 볼, 스트라이크의 빈도수 해시맵 반환
@@ -34,7 +37,7 @@
    1. Logger로 시작 메시지 출력하기
    2. 상대방 숫자 뽑아 저장
    3. 입력 메시지 출력
-      1. ~ 9의 숫자가 아니면 IllegalArgumentException 발생시키기
+      1. 1 ~ 9의 숫자가 아니면 IllegalArgumentException 발생시키기
    4. Number board 인스턴스에 생성
    5. Number board compareNumbers 메소드 실행 후 반환된 빈도수 해시맵 성공 조건 비교
       1. 성공 했을 경우
