@@ -1,5 +1,6 @@
-package baseball.model.computer;
+package baseball.controller.computer;
 
+import baseball.controller.error.ComputerError;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;

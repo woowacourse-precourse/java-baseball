@@ -1,4 +1,4 @@
-package baseball.controller.user;
+package baseball.model.data;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.LinkedHashMap;
 
-import static org.assertj.core.api.Assertions.*;
-
-public class InputProcessTest {
+public class UserNumbersTest {
 	@DisplayName("유저 입력에 대한 자료형 전처리 수행을 테스트한다")
 	@Test
 	void testUserInputIsProcessed() {
@@ -19,7 +17,7 @@ public class InputProcessTest {
 				put(1, 2);
 			}
 		};
-		Assertions.assertThat(InputProcess.storeNumbers("591")).isEqualTo(desirableMap);
+		Assertions.assertThat(UserNumbers.storeNumbers("591")).isEqualTo(desirableMap);
 	}
 
 }

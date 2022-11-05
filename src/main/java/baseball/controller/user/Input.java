@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.controller.user;
 
 import camp.nextstep.edu.missionutils.Console;
 

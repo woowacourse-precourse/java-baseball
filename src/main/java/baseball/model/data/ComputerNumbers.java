@@ -1,9 +1,9 @@
-package baseball.model.computer;
+package baseball.model.data;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class RandomNumberProcess {
+public class ComputerNumbers {
 
 	public static LinkedHashMap<Integer, Integer> storeNumbers(List<Integer> input) {
 		return storeIntoMap(input);

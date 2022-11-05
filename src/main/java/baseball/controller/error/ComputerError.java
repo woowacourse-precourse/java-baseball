@@ -1,4 +1,4 @@
-package baseball.model.computer;
+package baseball.controller.error;
 
 import java.util.List;
 import java.util.Objects;
@@ -7,7 +7,7 @@ import static baseball.controller.Setup.*;
 
 public class ComputerError {
 
-	static boolean followDigitRule(List<Integer> randomNumber) {
+	public static boolean followDigitRule(List<Integer> randomNumber) {
 		return Objects.equals(randomNumber.size(), Integer.parseInt(NUMBER_LENGTH.getValue()));
 	}
 

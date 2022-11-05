@@ -1,4 +1,4 @@
-package baseball.model.computer;
+package baseball.controller.computer;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;

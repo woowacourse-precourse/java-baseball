@@ -1,4 +1,4 @@
-package baseball.controller.user;
+package baseball.controller.error;
 
 import java.util.Objects;
 

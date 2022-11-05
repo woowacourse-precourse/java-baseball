@@ -1,12 +1,11 @@
 package baseball.controller.user;
 
+import baseball.controller.error.UserError;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import org.assertj.core.api.Assertions.*;
 
 public class UserErrorTest {
 	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")

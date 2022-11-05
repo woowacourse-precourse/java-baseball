@@ -1,4 +1,4 @@
-package baseball.model.computer;
+package baseball.model.data;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RandomNumberProcessTest {
+public class ComputerNumbersTest {
 
 	@DisplayName("컴퓨터 생성 난수의 자료형 전처리 수행을 테스트한다")
 	@Test
@@ -21,7 +21,7 @@ public class RandomNumberProcessTest {
 				put(1, 2);
 			}
 		};
-		assertThat(RandomNumberProcess.storeNumbers(createdList)).isEqualTo(desirableMap);
+		assertThat(ComputerNumbers.storeNumbers(createdList)).isEqualTo(desirableMap);
 	}
 
 }

@@ -1,5 +1,6 @@
-package baseball.model.computer;
+package baseball.controller.computer;
 
+import baseball.controller.computer.NumberGeneration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
