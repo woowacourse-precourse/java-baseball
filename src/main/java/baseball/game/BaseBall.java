@@ -29,13 +29,10 @@ public class BaseBall {
         userBalls.setNumberList(getUserNumber());
     }
 
-    // 사용자가 입력한 3개의 수의 예외사항을 판단한다.
-
-    // 힌트를 판단한다.
-
-    // 컴퓨터가 힌트를 화면에 출력한다.
+    // 힌트를 출력하고 판단한다.
+    public boolean printHint() {
+        return isCorrect(answerBalls.getNumberList(), userBalls.getNumberList());
+    }
 
     // 재시작 여부를 사용자에게 입력받는다.
-
-    // 재시작을 판단한다.
 }

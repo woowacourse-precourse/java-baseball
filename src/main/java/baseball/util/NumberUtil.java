@@ -90,4 +90,52 @@ public class NumberUtil {
 
         return true;
     }
+
+    public static boolean isCorrect(List<Integer> answerNumber, List<Integer> userNumber) {
+        List<Integer> hintList = judgeHint(answerNumber, userNumber);
+
+        printHintByList(hintList);
+
+        return isThreeStrike(hintList);
+    }
+
+    public static List<Integer> judgeHint(List<Integer> answerNumber, List<Integer> userNumber) {
+        List<Integer> hintList = new ArrayList<>();
+        for (int index = 0; index < 2; index++) {
+            hintList.add(0);
+        }
+
+        for (int index = 0; index < answerNumber.size(); index++) {
+            if (userNumber.get(index).equals(answerNumber.get(index))) {
+                hintList.set(1, (hintList.get(1).intValue() + 1));
+            } else if (userNumber.contains(answerNumber.get(index))) {
+                hintList.set(0, (hintList.get(0).intValue() + 1));
+            }
+        }
+
+        return hintList;
+    }
+
+    public static void printHintByList(List<Integer> hintList) {
+        if (hintList.get(0) != 0) {
+            printBall(hintList.get(0).intValue());
+        }
+        if (hintList.get(1) != 0) {
+            printStrike(hintList.get(1).intValue());
+        }
+        if ((hintList.get(0) == 0) && hintList.get(1) == 0) {
+            printNothing();
+        }
+        System.out.println();
+    }
+
+    public static boolean isThreeStrike(List<Integer> hintList) {
+        if (hintList.get(1) == 3) {
+            printGiveCorrectAnswer();
+            printInputNewGame();
+            return true;
+        }
+
+        return false;
+    }
 }
