@@ -10,10 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Dealer {
-    private List<Integer> threeDifferentNumbers;
-
     public List<Integer> createThreeDifferentNumbers() {
-        threeDifferentNumbers = new ArrayList<>();
+        List<Integer> threeDifferentNumbers = new ArrayList<>();
         Set<Integer> pickedNumbers = new HashSet<>();
 
         while (pickedNumbers.size() < THREE_DIGITS) {
@@ -22,7 +20,7 @@ public class Dealer {
         }
         threeDifferentNumbers.addAll(pickedNumbers);
         Collections.shuffle(threeDifferentNumbers); // Unless the numbers will be arranged in ascending order.
-        System.out.println(threeDifferentNumbers);
+        System.out.println(threeDifferentNumbers); // 추후 삭제
         return threeDifferentNumbers;
     }
 }
