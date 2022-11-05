@@ -70,3 +70,14 @@
 - boolean replayGame()
   - 게임을 재시작할지, 종료할지 결정하는 함수
   
+
+- boolean checkReplayNumber(String)
+  - 게임의 재시작/종료 여부를 결정하는 입력값이 올바른지 체크하는 함수
+
+
+- boolean checkReplayNumberLength(String)
+  - 게임의 재시작/종료 여부를 결정하는 입력값의 길이가 1인지 체크하는 함수
+
+
+- boolean checkReplayNumberCount(String)
+  - 게임의 재시작/종료 여부를 결정하는 입력값이 1 혹은 2인지 체크하는 함수
