@@ -97,10 +97,14 @@ public class Game {
         if (input.equals(END_GAME_STATUS)) {
             return true;
         } else if (input.equals(RESTART_STATUS)) {
-            computerNumber.setRandomNumber();
-            computer = computerNumber.getNumber();
+            resetGame(computerNumber);
             return false;
         }
         throw new IllegalArgumentException();
+    }
+
+    private void resetGame(Number computerNumber) {
+        computerNumber.setRandomNumber();
+        computer = computerNumber.getNumber();
     }
 }
