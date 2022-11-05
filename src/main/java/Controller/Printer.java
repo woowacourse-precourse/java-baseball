@@ -41,4 +41,8 @@ public class Printer {
 	public static void printNothingMessage() {
 		System.out.println(NOTHING_MESSAGE.get());
 	}
+
+	public static void printGettingRightAnswerMessage() {
+		System.out.println(GAME_END_MESSAGE);
+	}
 }
