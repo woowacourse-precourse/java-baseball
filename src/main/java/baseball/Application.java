@@ -14,14 +14,14 @@ public class Application {
 
         while (true) {
             List<Integer> computerNumList = generateComputerNum();
-            Boolean win=false;
+            Boolean win = false;
 
-            while(win==false) {
+            while (win == false) {
                 String userNum = inputUserNum();
                 List<Integer> userNumList = splitUserNumToList(userNum);
-                String judgeStr = judge(computerNumList,userNumList);
+                String judgeStr = judge(computerNumList, userNumList);
 
-                if(judgeStr.equals("3스트라이크")){
+                if (judgeStr.equals("3스트라이크")) {
                     break;
                 }
             }
@@ -33,27 +33,27 @@ public class Application {
 
     public static String judge(List<Integer> computerNumList, List<Integer> userNumList) {
         //수만 같으면 ball,자릿수 까지 같으면 strike
-        int ball=judgeBall(computerNumList,userNumList);
-        int strike=judgeStrike(computerNumList,userNumList);
+        int ball = judgeBall(computerNumList, userNumList);
+        int strike = judgeStrike(computerNumList, userNumList);
 
-        if(ball!=0 && strike!=0){
-            return ball+"볼 "+strike+"스트라이크";
+        if (ball != 0 && strike != 0) {
+            return ball + "볼 " + strike + "스트라이크";
         }
-        if(ball!=0){
-            return ball+"볼";
+        if (ball != 0) {
+            return ball + "볼";
 
         }
-        if(strike!=0){
-            return strike+"스트라이크";
+        if (strike != 0) {
+            return strike + "스트라이크";
         }
 
         return "낫싱";
     }
 
     public static int judgeBall(List<Integer> computerNumList, List<Integer> userNumList) {
-        int ball=0;
-        for(int comDigit=0; comDigit<3; comDigit++){
-            if(isBall(computerNumList.get(comDigit),userNumList,comDigit)){
+        int ball = 0;
+        for (int comDigit = 0; comDigit < 3; comDigit++) {
+            if (isBall(computerNumList.get(comDigit), userNumList, comDigit)) {
                 ball++;
             }
         }
@@ -61,8 +61,8 @@ public class Application {
     }
 
     private static boolean isBall(int computerNum, List<Integer> userNumList, int comDigit) {
-        for(int userDigit=0;userDigit<3;userDigit++){
-            if(computerNum==userNumList.get(userDigit) && comDigit!=userDigit){
+        for (int userDigit = 0; userDigit < 3; userDigit++) {
+            if (computerNum == userNumList.get(userDigit) && comDigit != userDigit) {
                 return true;
             }
         }
@@ -71,8 +71,12 @@ public class Application {
 
 
     public static int judgeStrike(List<Integer> computerNumList, List<Integer> userNumList) {
-        int strike=0;
-
+        int strike = 0;
+        for (int digit = 0; digit < 3; digit++) {
+            if (computerNumList.get(digit) == userNumList.get(digit)) {
+                strike++;
+            }
+        }
         return strike;
     }
 
