@@ -19,4 +19,12 @@ public class Application {
         }
         return computer;
     }
+    static void validateOnlyNumbers(String guess) {
+        try {
+            int numbers = Integer.parseInt(guess);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력이 가능합니다. 프로그램을 종료합니다");
+        }
+    }
+
 }
