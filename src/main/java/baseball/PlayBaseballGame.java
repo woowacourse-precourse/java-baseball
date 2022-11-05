@@ -38,6 +38,13 @@ public class PlayBaseballGame {
 
     }
 
+    public void countStrike(){
+        for (int i = 0; i < RandomNum.size(); i++){
+            if (UserNum.get(i) == RandomNum.get(i)){
+                strike++;
+            }
+        }
+    }
 
 
     public static List<Integer> getUserNum(String userInput){
