@@ -221,10 +221,13 @@ public class Computer {
 
     // 숫자의 각각의 자릿수를 List로 리턴
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
-        ArrayList<Integer> list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
         String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
-        
+        return getListOfIntegerFromStrArr(strSplitArr);
+    }
+
+    private ArrayList<Integer> getListOfIntegerFromStrArr(String[] strSplitArr) {
+        ArrayList<Integer> list = new ArrayList<>();
         for (String str : strSplitArr) {
             list.add(parseIntegerFromStr(str));
         }
