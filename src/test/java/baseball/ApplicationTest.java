@@ -13,6 +13,7 @@ import baseball.system.voter.BaseballVoter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Answer;
+import baseball.vo.Restart;
 import baseball.vo.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import mocking.MockInputView;
@@ -321,5 +322,101 @@ class ApplicationTest extends NsTest {
                 Arguments.of(Score.makeNewScoreWith(3, 0),
                         String.format(ScoreToMessageConverter.STRIKE_MESSAGE_FORMAT, 3).trim())
         );
+    }
+
+    @Nested
+    @DisplayName("ConverterHolder 테스트")
+    class ConverterHolderTest {
+        @Test
+        @DisplayName("List<Integer> 를 UserNumber 로 변환하는 요청을 하면 IntegerListToUserNumberConverter 가 동작한다.")
+        void givenIntegerListToUserNumber_whenRunningConverterHolder_thenRunsIntegerListToUserNumberConverter() {
+            // supports 통과 여부
+            List<Integer> target = List.of(5, 7, 3);
+            Class<UserNumber> to = UserNumber.class;
+
+            assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isTrue();
+            assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
+            assertThat(new StringToRestartConverter().supports(target, to)).isFalse();
+
+            // 변환 성공케이스
+            Object result = ConverterHolder.convert(target, to);
+            assertThat(result.getClass()).isEqualTo(to);
+            assertThat((UserNumber) result).isEqualTo(UserNumber.of(target));
+
+            // 변환 실패케이스
+            assertThatThrownBy(() -> ConverterHolder.convert(List.of(0, 4, 5), to))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(NumberValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                            Answer.MIN_ANSWER_VALUE, Answer.MAX_ANSWER_VALUE));
+        }
+
+        @Test
+        @DisplayName("Score 를 String 메시지로 변환하는 요청을 하면 ScoreToMessageConverter 가 동작한다.")
+        void givenScoreToString_whenRunningConverterHolder_thenRunsStringToMessageConverter() {
+            // supports 통과 여부
+            Score target = Score.makeNewScoreWith(2, 1);
+            Class<String> to = String.class;
+
+            assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
+            assertThat(new ScoreToMessageConverter().supports(target, to)).isTrue();
+            assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
+            assertThat(new StringToRestartConverter().supports(target, to)).isFalse();
+
+            // 변환 성공케이스
+            Object result = ConverterHolder.convert(target, to);
+            assertThat(result.getClass()).isEqualTo(to);
+            assertThat((String) result).isEqualTo(String.format(
+                    "%s%s",
+                    String.format(ScoreToMessageConverter.BALL_MESSAGE_FORMAT, 1),
+                    String.format(ScoreToMessageConverter.STRIKE_MESSAGE_FORMAT, 2)
+            ));
+        }
+
+        @Test
+        @DisplayName("String 문자열을 List<Integer> 로 변환하는 요청을 하면 StringToIntegerListConverter 가 동작한다.")
+        void givenStringToIntegerList_whenRunningConverterHolder_thenRunsStringToIntegerListConverter() {
+            // supports 통과 여부
+            String target = "345";
+            Class<List> to = List.class;
+
+            assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
+            assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConverter().supports(target, to)).isTrue();
+            assertThat(new StringToRestartConverter().supports(target, to)).isFalse();
+
+            // 변환 성공케이스
+            Object result = ConverterHolder.convert(target, to);
+            assertThat(result).isInstanceOf(List.class);
+            assertThat((List<Integer>) result).isEqualTo(List.of(3, 4, 5));
+
+            // 변환 실패케이스
+            assertThatThrownBy(() -> ConverterHolder.convert("6-4", to))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(StringToIntegerListConversionValidator.VALUE_NOT_NATURAL_NUMBER_MESSAGE);
+        }
+
+        @Test
+        @DisplayName("String 문자열을 Restart 객체로 변환하는 요청을 하면 StringToRestartConverter 가 동작한다.")
+        void givenStringToRestart_whenRunningConverterHolder_thenRunsStringToRestartConverter() {
+            // supports 통과 여부
+            String target = StringToRestartConverter.EXIT_VALUE;
+            Class<Restart> to = Restart.class;
+
+            assertThat(new IntegerListToUserNumberConverter().supports(target, to)).isFalse();
+            assertThat(new ScoreToMessageConverter().supports(target, to)).isFalse();
+            assertThat(new StringToIntegerListConverter().supports(target, to)).isFalse();
+            assertThat(new StringToRestartConverter().supports(target, to)).isTrue();
+
+            // 변환 성공케이스
+            Object result = ConverterHolder.convert(target, to);
+            assertThat(result).isInstanceOf(Restart.class);
+            assertThat((Restart) result).isEqualTo(Restart.EXIT);
+
+            // 변환 실패케이스
+            assertThatThrownBy(() -> ConverterHolder.convert("3", to))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(StringToRestartConverter.INVALID_INPUT_VALUE_MESSAGE);
+        }
     }
 }
