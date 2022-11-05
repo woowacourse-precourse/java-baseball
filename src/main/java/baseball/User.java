@@ -9,6 +9,10 @@ public class User {
         return validUserInput(userInput);
     }
 
+    public String restartOrEndInput() {
+        return readLine();
+    }
+
     public int validRestartOrEndInput(String userInput) {
         if (userInput.equals("1")) {
             return 1;
