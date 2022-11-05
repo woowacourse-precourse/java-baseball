@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.constants.SystemMessage;
+import baseball.gamescore.Ball;
 import baseball.gamescore.Strike;
 
 import java.util.List;
@@ -10,17 +11,18 @@ public class Referee {
 
     public String resultJudgment(List<Integer> computer, List<Integer> player) {
         NumberComparison numberComparison = new NumberComparison();
-        int correctCount = numberComparison.compare(computer, player);
-
         Strike strike = new Strike();
+        Ball ball = new Ball();
+
+        int correctCount = numberComparison.compare(computer, player);
         int getStrike = strike.score(computer, player);
+        int getBall = ball.score(correctCount, getStrike);
 
         if (correctCount == 0) {
             return SystemMessage.NOTHING_MESSAGE;
         }
-        int ball = correctCount - getStrike;
 
-        return getResult(getStrike, ball);
+        return getResult(getStrike, getBall);
     }
 
     public String getResult(int strike, int ball) {
