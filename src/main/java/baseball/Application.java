@@ -12,6 +12,7 @@ public class Application {
         printStartComment();
         while (true){
             printInputNumberComment();
+            List<Integer> player = toIntegers(split(Console.readLine()));
         }
 
     }
@@ -37,4 +38,16 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    public static String[] split(String string){
+        return string.split("");
+    }
+
+    public static List<Integer> toIntegers(String[] input){
+        List<Integer> player = new ArrayList<>();
+
+        for(String number : input)
+            player.add(Integer.parseInt(number));
+
+        return player;
+    }
 }
