@@ -61,6 +61,27 @@ public class Application {
         return digitArray;
     }
 
+    public static void printHint(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
+        int noOfBall = 0, noOfStrike = 0;
+
+        // TODO: implement method to count the no. of balls and strikes
+        int digitOfAnswerAtIndex, digitOfPredictionAtIndex;
+        for (int index = 0; index < 3; index++) {
+            digitOfAnswerAtIndex = answer.get(index);
+            digitOfPredictionAtIndex = prediction.get(index);
+            if (prediction.contains(digitOfAnswerAtIndex)) {
+                if (digitOfAnswerAtIndex == digitOfPredictionAtIndex)
+                    noOfStrike++;
+                else noOfBall++;
+            }
+        }
+        if (noOfBall != 0) System.out.printf("%d볼 ", noOfBall);
+        if (noOfStrike != 0) System.out.printf("%d스트라이크", noOfStrike);
+        if (noOfBall == 0 && noOfStrike == 0) System.out.print("낫싱");
+        System.out.print('\n');
+    }
+
+
     public static void predictNumber(ArrayList<Integer> answer) {
         ArrayList<Integer> prediction = new ArrayList<>();
         String consoleInput;
@@ -71,8 +92,9 @@ public class Application {
 
             int inputNumber = Integer.parseInt(consoleInput);
             prediction = separateDigit(inputNumber);
-            // TODO: implement method, printHint(answer, prediction);
+            printHint(answer, prediction);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void main(String[] args) throws Exception {
@@ -82,7 +104,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             answer = generateAnswer();
 
-            System.out.println(answer); // for debug
+            System.out.println(answer); // for test
 
             predictNumber(answer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
