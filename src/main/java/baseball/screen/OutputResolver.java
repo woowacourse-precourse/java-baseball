@@ -15,6 +15,10 @@ public class OutputResolver {
         System.out.println(resultPrompt);
     }
 
+    public void print(String prompt) {
+        System.out.print(prompt);
+    }
+
     private String buildPrompt(Integer ball, Integer strike) {
         List<String> ballsAndStrikes = new ArrayList<>();
 
