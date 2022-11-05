@@ -31,7 +31,7 @@ public class ScoreResultView {
     }
 
     public boolean isOnlyBall(){
-
+        return ballCount != 0 && strikeCount == 0;
     }
 
     public String printOnlyBall(){
