@@ -8,7 +8,7 @@ public class Player {
     public String getInput() {
         String input = Console.readLine();
 
-        exception.checkIllegalInput(input);
+        exception.checkIllegalGameInput(input);
 
         return input;
     }

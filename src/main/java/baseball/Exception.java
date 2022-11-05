@@ -8,7 +8,7 @@ public class Exception {
     public static final String INVALID_FORMAT_ERROR_MSG ="입력이 숫자 형식이 아닙니다.";
     public static final String DUPLICATE_NUMBER_ERROR_MSG ="서로 다른 수로 이루어진 3자리의 수가 아닙니다.";
 
-    public boolean checkIllegalInput(String str) {
+    public boolean checkIllegalGameInput(String str) {
         if (!isValidLength(str)) {
             throw new IllegalArgumentException(INVALID_LENGTH_ERROR_MSG);
         }
