@@ -22,6 +22,15 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ApplicationTest extends NsTest {
 
     @ParameterizedTest
+    @DisplayName("입력된 게임을 계속할지 확인하는 명령어에 대한 유효성 검사 기능 테스트")
+    @ValueSource(strings = {"2", "1", "3", "   ", "rkadsf", "가나다라마사앚차카탚하"})
+    void checkOrderNumberValidationTest(String inputNumber) {
+
+        assertThatThrownBy(() -> Application.checkOrderNumberValidation(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
     @DisplayName("플레이어로 부터 게임을 계속할지에 대한 입력값을 받아오는 기능 테스트")
     @ValueSource(strings = {"2", "1", "3"})
     void inputOrderNumberTest(String inputOrderNumber) {
