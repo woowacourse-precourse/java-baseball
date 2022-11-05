@@ -22,8 +22,8 @@ public class InputView {
         List<Ball> ballList = new ArrayList<>();
 
         for (int position = 0; position < Balls.NUMBER_OF_BALLS; position++) {
-            int number = input.charAt(position) - '0';
-            Ball ball = new Ball(number, position);
+            int digit = input.charAt(position) - '0';
+            Ball ball = new Ball(digit, position);
             ballList.add(ball);
         }
 
