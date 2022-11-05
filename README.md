@@ -78,6 +78,8 @@ BUILD SUCCESSFUL in 0s
     - [x] `void printGameStartMessage()`
     - [ ] `void printGameResultMessage(BaseballGameResult gameResult)`
     - [ ] `void printGameEndMessage()`
+    - [x] `Boolean isIllegalGameInput(int gameInput)`
+    - [x] `Boolean checkDuplicateNums(int gameInput)`
     - [ ] `List<Integer> getGameInput() thorws IllegalArgumentException`
     - [ ] `int getGameRestartInput()`
     - [x] `List<Integer> generateRandomAnswerNums()`

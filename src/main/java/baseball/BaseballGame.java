@@ -25,4 +25,31 @@ public class BaseballGame {
         }
         return randomNums;
     }
+
+    public Boolean isIllegalGameInput(int gameInput) {
+        if (gameInput <= 111 || 999 <= gameInput) {
+            return Boolean.FALSE;
+        }
+
+        if (checkDuplicateNums(gameInput)) {
+            return Boolean.FALSE;
+        }
+
+        return Boolean.TRUE;
+    }
+
+    public Boolean checkDuplicateNums(int gameInput) {
+        List<Integer> checkList = new ArrayList<>();
+
+        while (gameInput != 0) {
+            int digit = gameInput % 10;
+            if (checkList.contains(digit)) {
+                return Boolean.TRUE;
+            }
+            checkList.add(digit);
+            gameInput /= 10;
+        }
+
+        return Boolean.FALSE;
+    }
 }
