@@ -1,8 +1,7 @@
-package baseball;
+package baseball.model;
 
 import baseball.util.RandomUtil;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Computer {
 

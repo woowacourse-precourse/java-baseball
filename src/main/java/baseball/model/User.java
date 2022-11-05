@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import baseball.util.InputValueValidation;
 import camp.nextstep.edu.missionutils.Console;
