@@ -1,8 +1,8 @@
-package baseball.controller;
+package baseball.controller.user;
 
 import java.util.LinkedHashMap;
 
-public class InputProcess {
+public class DataProcess {
 
 	public static LinkedHashMap<Integer, Integer> storeNumbers(String input) {
 		return storeIntoMap(storeIntoArray(input));
