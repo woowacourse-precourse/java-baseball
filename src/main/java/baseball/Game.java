@@ -10,8 +10,8 @@ public class Game {
     private final HintMessage hintMessage;
     private final ComputerNumber computerNumber;
     private final UserNumber userNumber;
-    private List<Integer> com;
-    private List<Integer> user;
+    private List<Integer> randomComputerNumber;
+    private List<Integer> inputUserNumber;
     private static boolean isFinish;
     private static boolean restart;
     private final RestartGameException restartGameException;
@@ -20,8 +20,8 @@ public class Game {
         hintMessage = new HintMessage();
         computerNumber = new ComputerNumber();
         userNumber = new UserNumber();
-        com = new ArrayList<>();
-        user = new ArrayList<>();
+        randomComputerNumber = new ArrayList<>();
+        inputUserNumber = new ArrayList<>();
         isFinish = true;
         restart = true;
         restartGameException = new RestartGameException();
@@ -29,15 +29,15 @@ public class Game {
 
     public boolean startGame() {
         computerNumber.makeRandomNumber();
-        List<Integer> com = computerNumber.getComputerNumber();
-        for (Integer integer : com) {
+        List<Integer> randomComputerNumber = computerNumber.getComputerNumber();
+        for (Integer integer : randomComputerNumber) {
             System.out.print("computerValue = " + integer + " ");
         }
         System.out.println();
         do {
             userNumber.makeUserNumber();
-            user = userNumber.getUserNumber();
-            hintMessage.isFinish = hintMessage.checkPoint(user, com);
+            inputUserNumber = userNumber.getUserNumber();
+            hintMessage.isFinish = hintMessage.checkPoint(inputUserNumber, randomComputerNumber);
         } while (hintMessage.isFinish);
         restart = checkRestartGame();
         return restart;
