@@ -1,8 +1,10 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,5 +24,15 @@ public class NumbersTest {
 
         assertThat(numbers.match(new Numbers(2, 7, 5)))
                 .isEqualTo(new Hints(List.of(Hint.BALL, Hint.STRIKE, Hint.BALL)));
+    }
+
+
+    @DisplayName("사이즈가 3이 아닌 경우 IllegalArgumentException 예외를 throw 한다.")
+    @Test
+    void validateNumbersSize() {
+        Assertions.assertAll(
+                () -> assertThatThrownBy(() -> new Numbers(1, 2)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Numbers(1, 2, 3, 4)).isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }

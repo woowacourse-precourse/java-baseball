@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Numbers {
 
+    private static final int NUMBER_SIZE = 3;
     private final List<Number> numbers;
 
     public Numbers(int... ints) {
@@ -17,7 +18,14 @@ public class Numbers {
     }
 
     public Numbers(List<Number> numberList) {
+        validateNumbersSize(numberList);
         this.numbers = numberList;
+    }
+
+    private static void validateNumbersSize(List<Number> numberList) {
+        if (numberList.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException("숫자는 " + NUMBER_SIZE + "개여야 합니다.");
+        }
     }
 
     public Hints match(Numbers matchNumbers) {
