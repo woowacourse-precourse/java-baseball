@@ -10,11 +10,11 @@ public class AnswerGeneratorTest {
     void 랜덤_숫자_생성_테스트() {
         //given
         AnswerGenerator answerGenerator = new AnswerGenerator();
-        NumberValidator numberValidator = new NumberValidator();
+        InputValidator inputValidator = new InputValidator();
 
         //when
         List<Integer> tempNums = answerGenerator.generateAnswer();
-        boolean result = numberValidator.hasValidInput(tempNums);
+        boolean result = inputValidator.hasValidInput(tempNums);
 
         //then
         assertThat(result).isEqualTo(true);

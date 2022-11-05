@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class NumberValidator {
+public class InputValidator {
     private static final String LENGTH_ERROR_MESSAGE = "숫자는 세 자리 수여야 합니다.";
     private static final String RANGE_ERROR_MESSAGE = "각 자리 수는 최소 1 이상, 최대 9 이하의 정수여야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "숫자는 중복되어서는 안됩니다.";
