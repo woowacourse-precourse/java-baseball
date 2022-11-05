@@ -33,11 +33,11 @@ public class Application {
 
     public static String judge(List<Integer> computerNumList, List<Integer> userNumList) {
         //수만 같으면 ball,자릿수 까지 같으면 strike
-        int ball=judgeStrike(computerNumList,userNumList);
-        int strike=judgeBall(computerNumList,userNumList);
+        int ball=judgeBall(computerNumList,userNumList);
+        int strike=judgeStrike(computerNumList,userNumList);
 
         if(ball!=0 && strike!=0){
-            return ball+"볼 "+strike+" 스트라이크";
+            return ball+"볼 "+strike+"스트라이크";
         }
         if(ball!=0){
             return ball+"볼";
@@ -50,13 +50,29 @@ public class Application {
         return "낫싱";
     }
 
-    private static int judgeBall(List<Integer> computerNumList, List<Integer> userNumList) {
+    public static int judgeBall(List<Integer> computerNumList, List<Integer> userNumList) {
         int ball=0;
+        for(int comDigit=0; comDigit<3; comDigit++){
+            if(isBall(computerNumList.get(comDigit),userNumList,comDigit)){
+                ball++;
+            }
+        }
         return ball;
     }
 
-    private static int judgeStrike(List<Integer> computerNumList, List<Integer> userNumList) {
+    private static boolean isBall(int computerNum, List<Integer> userNumList, int comDigit) {
+        for(int userDigit=0;userDigit<3;userDigit++){
+            if(computerNum==userNumList.get(userDigit) && comDigit!=userDigit){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static int judgeStrike(List<Integer> computerNumList, List<Integer> userNumList) {
         int strike=0;
+
         return strike;
     }
 
