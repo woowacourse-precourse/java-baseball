@@ -41,7 +41,7 @@ public class ComputerOpponent implements Opponent {
 
     @Override
     public Hint getHint(List<Integer> inputValue) {
-        return null;
+        return new Hint(this.value, inputValue);
     }
 
 }
