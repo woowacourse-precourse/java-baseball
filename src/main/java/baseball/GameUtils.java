@@ -19,6 +19,8 @@ public class GameUtils {
 
     private static int strike = 0;
 
+    private static int ball = 0;
+
     private static List<Integer> answerNum;
 
     private static List<Integer> playerNum;
@@ -63,6 +65,12 @@ public class GameUtils {
     public static void checkStrikeAndUpdateScore(int i, int j) {
         if (i == j && answerNum.get(i).equals(playerNum.get(j))) {
             strike++;
+        }
+    }
+
+    public static void checkBallAndUpdateScore(int i, int j) {
+        if (i != j && answerNum.get(i).equals(playerNum.get(j))) {
+            ball++;
         }
     }
 }
