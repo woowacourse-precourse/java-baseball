@@ -3,33 +3,25 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다!!!");
-        System.out.println("엔서는"+answer(args));
+        System.out.println(generateAnswer(args));
 
     }
 
-    public static ArrayList<Integer> answer(String[] args) {
-        int num1;
-        int num2;
-        int num3;
-
-        do {
-            num1 = (int)(Math.random() * 9 + 1);
-            num2 = (int)(Math.random() * 9 + 1);
-            num3 = (int)(Math.random() * 9 + 1);
-
-        } while (num1 == num2 || num1 == num3 || num2 == num3);
-        ;
-
-        ArrayList<Integer> answer = new ArrayList<Integer>();
-        answer.add(num1);
-        answer.add(num2);
-        answer.add(num3);
-
-        return answer;
+    public static ArrayList<Integer> generateAnswer(String[] args) {
+        ArrayList<Integer> answerNumber = new ArrayList<>();
+        while (answerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumber.contains(randomNumber)) {
+                answerNumber.add(randomNumber);
+            }
+        }
+        return answerNumber;
     }
+
 }
-
