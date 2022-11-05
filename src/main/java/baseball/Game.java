@@ -34,10 +34,7 @@ public class Game {
 
         String userInput = Console.readLine();
 
-        if (!input.isAllDigits(userInput)
-                || !input.isAllDifferentDigit(userInput)
-                || !input.isDigitsInRange(userInput)
-                || !input.isInputLengthEqualsGameLength(userInput)) {
+        if (!input.checkValidateInput(userInput)) {
             throw new IllegalArgumentException();
         }
 
