@@ -13,8 +13,8 @@ public class Application {
         List<Integer> opponent = new ArrayList<>();
         opponent = generateOpponent();
 
+        String player = receiveInputOfPlayer();
     }
-
 
     public static List<Integer> generateOpponent(){
         List<Integer> computer = new ArrayList<>();
@@ -25,6 +25,16 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static String receiveInputOfPlayer(){
+        System.out.print("숫자를 입력해주세요 : ");
+        try {
+            String randomNumber = Console.readLine();
+            return randomNumber;
+        }catch(IllegalStateException exception){
+            throw new IllegalStateException(exception);
+        }
     }
 }
 
