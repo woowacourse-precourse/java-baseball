@@ -13,7 +13,7 @@ public class Player {
         for (String read : verifiedInput.split("")) {
             list.add(Integer.valueOf(read));
         }
-        return list;
+        return Collections.unmodifiableList(list);
     }
 
     public String inputVerification(String readLine) {
