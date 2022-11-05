@@ -32,17 +32,4 @@ public class ViewTest {
                   .inputBaseballNumber();
 
     }
-    @Test
-    @DisplayName("view inputExitOrRestart() 호출 시 문자열이 반환되어야함")
-    void inputExitOrRestart() {
-        given(view.inputExitOrRestart()).willReturn("2");
-        //when
-        String actual = view.inputExitOrRestart();
-        //then
-        Assertions.assertEquals(actual,"2");
-
-        then(view).should(times(1))
-                  .inputExitOrRestart();
-
-    }
 }
