@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.List;
 import static baseball.Const.WRONG_INPUT;
 
 public class Ball {
