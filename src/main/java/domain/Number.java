@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Number {
-    public final List<Integer> number;
+    private final List<Integer> number;
 
     public Number(List<Integer> number) {
         this.number = number;
