@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.Ball;
 import static baseball.Const.WRONG_INPUT;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;

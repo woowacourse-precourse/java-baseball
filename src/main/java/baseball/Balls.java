@@ -1,7 +1,5 @@
 package baseball;
 
-import org.mockito.exceptions.misusing.WrongTypeOfReturnValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import static baseball.Const.SIZE;
