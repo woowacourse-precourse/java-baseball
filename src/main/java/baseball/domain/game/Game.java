@@ -16,5 +16,6 @@ public class Game {
             }
         }
         OutputView.printEnd();
+        OutputView.printRestart();
     }
 }
