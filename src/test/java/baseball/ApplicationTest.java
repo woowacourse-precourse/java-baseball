@@ -28,12 +28,14 @@ class ApplicationTest extends NsTest {
         assertThat(test).isEqualTo(test_new);
     }
 
-    @Test
-    void test_game_loop() {
-        // 안의 console 함수를 잠깐 바꿨다. (123으로 받았을때, 안되는 문자로 받았을 때)
-        int A = game_loof("123");
 
-        assertThat(A).isEqualTo(1);
+
+    @Test
+    void test_print_status() {
+        // 안의 console 함수를 잠깐 바꿨다. (123으로 받았을때, 안되는 문자로 받았을 때)
+        print_status(3,2);
+        print_status(0,1);
+        print_status(1,0);
     }
 
 

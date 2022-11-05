@@ -32,23 +32,16 @@ public class Application {
 
         String user_input = Console.readLine();
         List<String> overlap_check = Arrays.asList(user_input.split(""));
-        try{
-            int error_check = Integer.parseInt(user_input);
-            if (!(error_check > 111 && error_check < 999)){
-                throw new IllegalArgumentException();
-            }
 
-            int not_overlap_first = Collections.frequency(overlap_check, overlap_check.get(0));
-            int not_overlap_second = Collections.frequency(overlap_check, overlap_check.get(1));
-            int not_overlap_third = Collections.frequency(overlap_check, overlap_check.get(2));
+        int error_check = Integer.parseInt(user_input);
+        int not_overlap_first = Collections.frequency(overlap_check, overlap_check.get(0));
+        int not_overlap_second = Collections.frequency(overlap_check, overlap_check.get(1));
+        int not_overlap_third = Collections.frequency(overlap_check, overlap_check.get(2));
 
-            if (not_overlap_first > 1 || not_overlap_second > 1 || not_overlap_third > 1){
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e){
-            String error = "error";
-            return error;
+        if (!(error_check > 111 && error_check < 999 || (not_overlap_first > 1 || not_overlap_second > 1 || not_overlap_third > 1))){
+            throw new IllegalArgumentException();
         }
+
 
         return user_input;
     }
@@ -85,20 +78,19 @@ public class Application {
         return new int[] {strike, ball};
     }
 
-    public static int game_loof(String baseball_answer){
-        int strike = 0;
-        while (strike != 3) {
-            strike = 0;
-            String user_input = baseball_input();
-            if (user_input.equals("error")){
-                return 1;
-            }
-            int[] get_strike_ball = strike_ball(user_input, baseball_answer);
-            strike = get_strike_ball[0];
-        }
-        return 0;
-    }
 
+    // 5번 스트라이크와 볼의 개수를 출력해주는 메소드
+    public static void print_status(int strike, int ball){
+        if (ball>0 && strike>0){
+            System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
+        } else if (strike>0){
+            System.out.println(String.format("%d스트라이크", strike));
+        } else if (ball>0){
+            System.out.println(String.format("%d볼 ", ball));
+        } else {
+            System.out.println("낫싱");
+        }
+    }
 
 
 
@@ -113,15 +105,16 @@ public class Application {
         int exit_check = 1;
         while (exit_check == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
+
             String baseball_answer = baseball_random();
-            /*
-            int game_error = game_loof(baseball_answer);
-            if (game_error == 1){
-                break;
+            int strike = 0;
+            while (strike != 3) {
+                strike = 0;
+                String user_input = baseball_input();
+                int[] get_strike_ball = strike_ball(user_input, baseball_answer);
+                print_status(get_strike_ball[0], get_strike_ball[1]);
+                strike = get_strike_ball[0];
             }
-            */
-
-
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
