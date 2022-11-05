@@ -80,6 +80,10 @@ class ApplicationTest extends NsTest {
             assertTrue(1 <= number && number <= 9);
             assertSame(1, Collections.frequency(generator.getNumbers(), number));
         }
+
+        // 생성한 난수를 모두 삭제하는 지를 확인
+        generator.truncateNumbers();
+        assertSame(0, generator.getNumbers().size());
     }
 
     @Override

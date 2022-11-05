@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    int number;
+    private int number;
 
     public void inputNumber() {
         String inputValue;
@@ -49,4 +49,7 @@ public class User {
         return false;
     }
 
+    public int getNumber() {
+        return this.number;
+    }
 }
