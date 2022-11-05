@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.ComNumber;
 import baseball.domain.UserNumber;
+import baseball.utils.InputValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,7 +13,6 @@ public class GameController {
     InputController inputController = new InputController();
     OutputController outputController = new OutputController();
     ComNumber comNumber = new ComNumber();
-    public static final String RESTART = "1";
     public void makePlayers() {
         System.out.println(InputView.GAME_START);
 
@@ -36,7 +36,7 @@ public class GameController {
             userNumber.setUsernumber(remusernumber);
             if(outputController.gameResult(comNumber,userNumber)) {
                 System.out.println(InputView.RESTART_GAME);
-                if(inputController.chooseGameEnd().equals(RESTART)) { startorend = true; }
+                if(inputController.chooseGameEnd().equals(InputValidation.ONE)) { startorend = true; }
                 else { startorend = false; }
                 break;
             }
