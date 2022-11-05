@@ -44,6 +44,7 @@ public class InputController {
 
     public String chooseGameEnd() {
         String startorend = Console.readLine();
+        inputValidation.startOrEndValidation(startorend);
         return startorend;
     }
 }

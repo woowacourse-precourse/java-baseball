@@ -45,4 +45,10 @@ public class InputValidation {
         }
         return checkusernumber;
     }
+
+    public void startOrEndValidation(String inputnumber) {
+        if(!(inputnumber.equals("1") || inputnumber.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
