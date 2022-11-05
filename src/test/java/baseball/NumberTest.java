@@ -1,7 +1,6 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -30,6 +29,19 @@ public class NumberTest {
         method.setAccessible(true);
 
         String input = "13ㄱ2";
+        boolean expeted = false;
+
+        boolean result = (boolean) method.invoke(number, input);
+        assertThat(result).isEqualTo(expeted);
+    }
+
+    @Test
+    void boolean_중복된_숫자를_입력받은_경우_false_반환()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = Number.class.getDeclaredMethod("isNotDuplicate", String.class);
+        method.setAccessible(true);
+
+        String input = "133";
         boolean expeted = false;
 
         boolean result = (boolean) method.invoke(number, input);
