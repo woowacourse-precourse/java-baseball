@@ -1,16 +1,18 @@
 package baseball;
 
-import baseball.inputter.NumberInputter;
+import baseball.inputter.BaseballGameNumberInputter;
 import baseball.opponent.ComputerOpponent;
 import baseball.printer.MessagePrinter;
 import baseball.printer.NumberInputMessagePrinter;
 import baseball.printer.StartMessagePrinter;
 
+import java.util.List;
+
 public class BaseballGame {
 
     private ComputerOpponent opponent;
     private MessagePrinter inputMessagePrinter;
-    private NumberInputter numberInputter;
+    private BaseballGameNumberInputter numberInputter;
 
     public BaseballGame() {
         MessagePrinter startMessagePrinter = new StartMessagePrinter();
@@ -22,7 +24,7 @@ public class BaseballGame {
     public void play() throws IllegalArgumentException {
         try {
             inputMessagePrinter.printMessage();
-            Integer inputNumber = numberInputter.input();
+            List<Integer> inputNumber = numberInputter.inputThreeNumbers();
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
