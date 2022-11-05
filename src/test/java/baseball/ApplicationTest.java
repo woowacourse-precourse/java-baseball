@@ -31,8 +31,8 @@ class ApplicationTest extends NsTest {
     @DisplayName("랜덤함수 개수가 맞게 생성됬는지 테스트")
     void 랜덤함수_테스트() {
         int num = 3;
-        List<Integer> randomnum = Application.RandomNum(num);
-        assertThat(randomnum.size()).isEqualTo(num);
+        ComputerNums randomnum = new ComputerNums(num);
+        assertThat(randomnum.getNumbers().size()).isEqualTo(num);
 
     }
 

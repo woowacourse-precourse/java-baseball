@@ -72,15 +72,4 @@ public class Application {
         return usernum;
     }
 
-
-    public static List<Integer> RandomNum(int count) {
-        List<Integer> list = new ArrayList<>();
-        while (list.size() < count) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!list.contains(randomNumber)) {
-                list.add(randomNumber);
-            }
-        }
-        return list;
-    }
 }
