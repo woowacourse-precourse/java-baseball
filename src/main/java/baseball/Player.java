@@ -58,4 +58,9 @@ public class Player {
     public boolean isOneLetter(String restart) {
         return restart.length() == 1;
     }
+
+    public boolean isOneOrTwo(String restart) {
+        char letter = restart.charAt(0);
+        return letter == '1' || letter == '2';
+    }
 }
