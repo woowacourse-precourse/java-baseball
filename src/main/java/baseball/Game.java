@@ -35,6 +35,7 @@ public class Game {
 
             this.userNumber = Change.numberToList(userInput);
             play();
+
             System.out.println(getGameResult());
             if (!isWin()) {
                 continue;
