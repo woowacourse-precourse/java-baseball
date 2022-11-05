@@ -16,11 +16,17 @@ public class Game {
     }
 
     public void playGame() {
-        String playerNumber = player.getBaseballNumber();
-        compareNumber(playerNumber);
+        do {
+            strikeCount = 0;
+            ballCount = 0;
+            Player player = new Player();
+            System.out.println(answerNumber);
+            String playerNumber = player.getBaseballNumber();
+            compareNumber(playerNumber);
 
-        Output.baseballResult(strikeCount, ballCount);
+            Output.baseballResult(strikeCount, ballCount);
 
+        } while (strikeCount != 3);
     }
 
     public void compareNumber(String playerNumber) {
