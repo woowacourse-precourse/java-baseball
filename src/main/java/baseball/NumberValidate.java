@@ -7,6 +7,12 @@ import java.util.stream.Stream;
 
 public class NumberValidate {
 
+    /**
+     * 1-9 까지의 숫자인지 검증한다.
+     * 3개의 다른 숫자만 입력했는지 검증한다.
+     * 3자리의 숫자인지 검증한다.
+     * @param inputNumber
+     */
     void validation(int inputNumber){
         if (inputNumber > 999 || inputNumber < 99) throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
 
