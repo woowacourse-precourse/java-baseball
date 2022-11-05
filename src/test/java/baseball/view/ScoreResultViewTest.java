@@ -60,6 +60,6 @@ public class ScoreResultViewTest {
     void 그외에는_둘다_반환(){
         scoreResultView.setBallCount(2);
         scoreResultView.setStrikeCount(1);
-        assertThat(scoreResultView.makeResultString()).isEqualTo("1볼 2스트라이크");
+        assertThat(scoreResultView.makeResultString()).isEqualTo("2볼 1스트라이크");
     }
 }
