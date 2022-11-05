@@ -50,8 +50,8 @@ BUILD SUCCESSFUL in 0s
 
 ### 🔥 구현 기능 목록
 
-- [ ] FEATURE1. BaseballGame 클래스 생성
-- [ ] FEATURE2. 게임 시작 메시지 출력 메서드
+- [x] FEATURE1. BaseballGame 클래스 생성
+- [x] FEATURE2. 게임 시작 메시지 출력 메서드
 - [ ] FEATURE3. 난수 정답 생성 메서드
 - [ ] FEATURE4. 플레이어 숫자 입력 메서드
 - [ ] FEATURE5. 입력받은 숫자 비교하여 점수 계산 메서드
@@ -71,11 +71,11 @@ BUILD SUCCESSFUL in 0s
 
 - [ ] **CLASS 1**. `BaseballGame`
   - **Class Variables:**
-    - [ ] `private List<Integer> answerNums`
-    - [ ] `private List<Integer> inputNums`
+    - [x] `private List<Integer> answerNums`
+    - [x] `private List<Integer> inputNums`
   - **Class Methods:**
     - [ ] `void gameStart()`
-    - [ ] `void printGameStartMessage()`
+    - [x] `void printGameStartMessage()`
     - [ ] `void printGameResultMessage(BaseballGameResult gameResult)`
     - [ ] `void printGameEndMessage()`
     - [ ] `List<Integer> getGameInput() thorws IllegalArgumentException`
