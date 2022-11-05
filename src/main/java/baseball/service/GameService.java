@@ -14,12 +14,14 @@ public class GameService {
     private static final int FIRST_INDEX = 0;
     private static final int LAST_INDEX = 2;
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setPlayer(String input) {
+        player = new Player();
+        player.setNumbers(input);
     }
 
-    public void setComputer(Computer computer) {
-        this.computer = computer;
+    public void setComputer() {
+        computer = new Computer();
+        computer.makeThreeDigitNumber();
     }
 
     public int getStrikeCount() {
