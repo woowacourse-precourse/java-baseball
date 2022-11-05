@@ -21,13 +21,10 @@ public class Game {
     private int strike;
     private int ball;
     private boolean exit = false;
-
-    public Game() {
-    }
-
+    
     public void start() {
-        Number playerNumber = new Number();
-        Number computerNumber = new Number();
+        Player playerNumber = new Player();
+        Computer computerNumber = new Computer();
 
         computerNumber.setRandomNumber();
         computer = computerNumber.getNumber();
@@ -90,7 +87,7 @@ public class Game {
         }
     }
 
-    private boolean isEndInput(Number computerNumber) {
+    private boolean isEndInput(Computer computerNumber) {
         System.out.printf(RESTART_END_MESSAGE, RESTART_STATUS, END_GAME_STATUS);
         String input = readLine();
         isValidInput(input);
@@ -108,7 +105,7 @@ public class Game {
         }
     }
 
-    private void resetGame(Number computerNumber) {
+    private void resetGame(Computer computerNumber) {
         computerNumber.setRandomNumber();
         computer = computerNumber.getNumber();
     }
