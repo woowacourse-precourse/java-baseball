@@ -1,6 +1,9 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BaseBallModel {
 
     private Integer numberLength = null;
@@ -35,6 +38,41 @@ public class BaseBallModel {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public Map<String, Integer> gameResult(String inputNumbers){
+        Map<String, Integer> result = new HashMap<>();
+
+        result.put("ball", getBall(inputNumbers));
+        result.put("strike", getStrike(inputNumbers));
+
+        return result;
+    }
+
+    public int getBall(String inputNumbers){
+        int ballCount = 0;
+
+        for(int i = 0; i < this.numberLength; i++){
+            String tmpInputNumber = Character.toString(inputNumbers.charAt(i));
+
+            if(this.numbers.contains(tmpInputNumber) && i != numbers.indexOf(tmpInputNumber)){
+                ballCount += 1;
+            }
+        }
+
+        return ballCount;
+    }
+
+    public int getStrike(String inputNumbers){
+        int strikeCount = 0;
+
+        for(int i = 0; i < this.numberLength; i++){
+            if(this.numbers.indexOf(inputNumbers.charAt(i)) == i){
+                strikeCount += 1;
+            }
+        }
+
+        return strikeCount;
     }
 
     public String getNumbers(){
