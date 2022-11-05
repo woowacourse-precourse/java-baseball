@@ -14,7 +14,6 @@ public class Baseball {
     private int guessNumber;
     private List<Integer> targetNumber;
     private BallCount ballCount;
-    private RandomUtil randomUtil;
 
     public Baseball() {}
 
@@ -47,8 +46,7 @@ public class Baseball {
 
     public void chooseContinue() {
         int isContinue = Integer.parseInt(Console.readLine());
-
-
+        
         if(isContinue == Constant.RESTART_INPUT_NUM) {
             restart();
         } else if(isContinue == Constant.END_INPUT_NUM) {
@@ -83,10 +81,10 @@ public class Baseball {
         List<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < Constant.GUESS_NUM_SIZE) {
-            int randomNumber = randomUtil.generate(Constant.GUESS_NUM_START_RANGE,Constant.GUESS_NUM_END_RANGE);
-            if(!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
-                targetNumber.add(randomNumber);
+            int number = Randoms.pickNumberInRange(Constant.GUESS_NUM_START_RANGE,Constant.GUESS_NUM_END_RANGE);
+            if(!randomNumberList.contains(number)) {
+                randomNumberList.add(number);
+                targetNumber.add(number);
             }
         }
     }
