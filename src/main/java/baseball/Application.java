@@ -27,11 +27,23 @@ public class Application {
         return user;
     }
 
+    public static void checkAllow(List<Integer> user) {
+        if (user.size() != 3) {
+            throw new IllegalArgumentException("3개의 숫자만 입력해 주세요!");
+        }
+        for (int n : user) {
+            if (n > 9 || n < 1) {
+                throw new IllegalArgumentException("숫자만 입력해 주세요!");
+            }
+        }
+    }
+
     public static void game(){
         List<Integer> computer = generateRandNum();
         while(true){
             String input = Console.readLine();
             List<Integer> user = parseString(input);
+            checkAllow(user);
         }
     }
 
