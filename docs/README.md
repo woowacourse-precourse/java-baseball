@@ -23,14 +23,14 @@
 
 # 기능 구현에 필요한 인터페이스 정의 및 기능 체계화
 
-## NumberForGame
+## DigitForGame
 ### 게임에 사용되는 숫자의 검증과 비교 기능을 제공하는 인터페이스
-    - 주어진 숫자가 유효한지 검증하는 기능(validateNumber)
-    - 숫자 객체가 동일한지 비교하는 기능(getCompareResult)
+    - 주어진 숫자가 유효한지 검증하는 기능(validateDigit)
+    - 숫자 객체가 동일한지 비교하는 기능(equals)
 
-## NumberGroupForGame
+## NumberForGame
 ### 게임에 사용되는 숫자"들"의 검증과 비교 기능을 제공하는 인터페이스
-    - 주어진 숫자들이 유효한지 검증하는 기능(validateNumberGroup)
+    - 주어진 숫자들이 유효한지 검증하는 기능(validateNumber)
     - 두 숫자 객체가 동일한지 비교해, 규칙에 따른 결과를 반환하는 기능(getCompareResult)
 
 ## InputReaderForGame
