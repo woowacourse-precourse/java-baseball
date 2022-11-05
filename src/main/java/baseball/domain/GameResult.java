@@ -39,18 +39,18 @@ public class GameResult {
     }
 
     public void calculate(Computer computer, Player player) {
-        List<Integer> strikeIndexes = countStrike(computer.getNumbers(), player.getNumbers());
+        List<Integer> strikeIndexes = findStrikeIndexes(computer.getNumbers(), player.getNumbers());
         setStrike(strikeIndexes.size());
-        setBall(countBallExceptStrike(computer.getNumbers(), player.getNumbers(), strikeIndexes));
+        setBall(countBall(computer.getNumbers(), player.getNumbers(), strikeIndexes));
     }
 
-    List<Integer> countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    List<Integer> findStrikeIndexes(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         return IntStream.range(Number.ZERO, Number.PRESCRIBED_DIGITS)
                 .filter(i -> Objects.equals(computerNumbers.get(i), playerNumbers.get(i)))
                 .boxed().collect(Collectors.toList());
     }
 
-    int countBallExceptStrike(List<Integer> computer, List<Integer> player, List<Integer> strikeIndexes) {
+    int countBall(List<Integer> computer, List<Integer> player, List<Integer> strikeIndexes) {
         boolean[] computerUsed = new boolean[Number.PRESCRIBED_DIGITS];
         boolean[] playerUsed = new boolean[Number.PRESCRIBED_DIGITS];
         for (int idx : strikeIndexes) {
