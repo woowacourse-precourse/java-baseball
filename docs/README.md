@@ -20,19 +20,28 @@
     - 게임 플레이어가 입력한 세 자리의 수를 Map으로 변환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
 
-- [ ] Game Class
-  - [ ] `String printResultAfterComparation(Map<Integer, Integer>)`
+- [X] Judge Class
+  - [X] `Result compare(Map<Integer, Integer>, Map<Integer, Integer>)`
     - 게임 플레이어가 입력한 세 자리의 수를 분석하여 결과를 반환
-    - 파라미터로 Map<Integer, Integer>를 사용하고, 이는 게임 플레이어가 입력한 수이다.
-  - [ ] `boolean isBall(Integer)` 
+    - 파라미터로 Map<Integer, Integer>를 사용하고, 각각 컴퓨터 플레이어, 게임 플레이어가 입력한 수이다.
+  - [X] `boolean isBall(Integer)` 
     - 게임 플레이어가 입력한 세 자리의 수 중 하나를 받아 컴퓨터 플레이어의 수와 비교
     - 컴퓨터 플레이어의 수가 인자로 받은 수를 포함하면 true, 그렇지 않으면 false를 반환
-  - [ ] `boolean isStrike(Integer, Integer)`
+  - [X] `boolean isStrike(Integer, Integer)`
     - 게임 플레이어가 입력한 세 자리의 수 중 isBall의 결과가 true인 수와 index를 받아 컴퓨터 플레이어의 수와 비교
     - index가 동일하면 true, 그렇지 않으면 false를 반환
+  - [X] `boolean isNothin(Result result)`
+    - 비교 결과 ball과 strike의 개수가 모두 0이면 true, 그렇지 않으면 false 반환
   
 - [ ] GameController Class
   - [ ] ``
+
+- [ ] Validator Class
+  - [ ] `boolean isRangeOf(Integer, Integer)`
+    - 게임 플레이어가 입력한 수가 유효한 수인지 확인하는 메서드
+    - 첫 번째 인자는 최대 자리의 수, 두 번째 인자는 게임 플레이어가 입력한 수이다.
+  - [ ] `boolean isRestartable(Integer)`
+    - 게임 종료 이후 게임 플레이어가 1, 2 외의 다른 숫자를 입력했는지 확인하는 메서드
 
 - [X] View Class
   - [X] `void printStart()` 
