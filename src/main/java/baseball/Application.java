@@ -11,59 +11,61 @@ public class Application {
     public final static int END = 2;
 
     public static void main(String[] args) {
-        try {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true){
+
+            boolean[] isBall = new boolean[10];
+            Arrays.fill(isBall, false);
+
+            String computerNumber = setComputerNumber();
+
+            setIsBall(isBall, computerNumber);
+
+
             while(true){
+                System.out.print("숫자를 입력해주세요 : ");
+                String playerNumber = Console.readLine();
 
-                boolean[] isBall = new boolean[10];
-                Arrays.fill(isBall, false);
-
-                String computerNumber = setComputerNumber();
-
-                setIsBall(isBall, computerNumber);
-
-
-                while(true){
-                    System.out.print("숫자를 입력해주세요 : ");
-                    String playerNumber = Console.readLine();
-
-                    if(!checkPlayerNumber(playerNumber)){
-                        throw new IllegalArgumentException();
-                    }
-
-                    int ballCount = 0;
-                    int strikeCount = 0;
-                    for (int i = 0; i < computerNumber.length(); i++) {
-                        char computerNum = computerNumber.charAt(i);
-                        char playerNum = playerNumber.charAt(i);
-
-                        if (computerNum == playerNum) {
-                            strikeCount++;
-                        } else if (isBall[playerNum - '0']) {
-                            ballCount++;
-                        }
-
-                    }
-
-                    System.out.println(makeMessage(ballCount, strikeCount));
-
-                    if (strikeCount == 3) break;
-                }
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                String playerSelect = Console.readLine();
-                int playerSelectNumber = Integer.parseInt(playerSelect);
-                if (playerSelectNumber == END) {
-                    break;
-                } else if (playerSelectNumber != RESTART) {
+                if(!checkPlayerNumber(playerNumber)){
                     throw new IllegalArgumentException();
                 }
+
+                int ballCount = 0;
+                int strikeCount = 0;
+                for (int i = 0; i < computerNumber.length(); i++) {
+                    char computerNum = computerNumber.charAt(i);
+                    char playerNum = playerNumber.charAt(i);
+
+                    if (computerNum == playerNum) {
+                        strikeCount++;
+                    } else if (isBall[playerNum - '0']) {
+                        ballCount++;
+                    }
+
+                }
+
+                System.out.println(makeMessage(ballCount, strikeCount));
+
+                if (strikeCount == 3) break;
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        } catch (IllegalArgumentException exception) {
+            String playerSelect = Console.readLine();
+            int playerSelectNumber;
 
+            try{
+                playerSelectNumber = Integer.parseInt(playerSelect);
+            } catch(Exception exception){
+                throw new IllegalArgumentException();
+            }
+            if (playerSelectNumber == END) {
+                break;
+            } else if (playerSelectNumber != RESTART) {
+                throw new IllegalArgumentException();
+            }
         }
+
     }
 
     public static String makeMessage(Integer ballCount, Integer strikeCount) {
