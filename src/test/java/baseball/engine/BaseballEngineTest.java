@@ -110,5 +110,12 @@ class BaseballEngineTest {
         assertThat(result).isFalse();
     }
 
+    @Test
+    void getBallCountIfPresentOrZero_함수로_볼_카운트_세기() {
+        List<Integer> answerList = List.of(1, 2, 3);
+        List<Integer> userInputList = List.of(3, 1, 2);
+        int ballCount = engine.getBallCountIfPresentOrZero(answerList, userInputList);
 
+        assertThat(ballCount).isEqualTo(3);
+    }
 }
