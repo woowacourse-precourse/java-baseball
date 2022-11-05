@@ -39,7 +39,9 @@ public class Application {
     }
 
     /** 유저로부터 입력받은 값이 컴퓨터가 생성한 값과 일치하는지 판별 */
-    public static boolean isUserComputerNumberCorrespond(String userNumber, List<Integer> computerNumber) {
+    public static boolean isUserComputerNumberCorrespond(String userInput, List<Integer> computerNumber) {
+        List<Integer> userNumbers = getStringInputToList(userInput);
 
+        return userNumbers.equals(computerNumber);
     }
 }
