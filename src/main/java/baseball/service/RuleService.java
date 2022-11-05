@@ -3,7 +3,7 @@ package baseball.service;
 import java.util.List;
 
 public class RuleService {
-    public int Strike(List<Integer> randomNumber, List<Integer> inputNumber) {
+    public int countStrike(List<Integer> randomNumber, List<Integer> inputNumber) {
         int cnt = 0;
 
         for (int idx = 0; idx < randomNumber.size(); idx++) {
@@ -15,7 +15,7 @@ public class RuleService {
         return cnt;
     }
 
-    public int Ball(List<Integer> randomNumber, List<Integer> inputNumber) {
+    public int countBall(List<Integer> randomNumber, List<Integer> inputNumber) {
         int cnt = 0;
 
         for (int idx = 0; idx < inputNumber.size(); idx++) {
@@ -23,7 +23,7 @@ public class RuleService {
                 cnt++;
         }
 
-        return cnt - Strike(randomNumber, inputNumber);
+        return cnt - countStrike(randomNumber, inputNumber);
     }
 
 }
