@@ -25,4 +25,8 @@ public class GameService {
         GameResult gameResult = computer.playGame(player);
         return gameResult.toResponseDto();
     }
+
+    public void changePlayerBalls(List<Integer> newBallNumbers) {
+        player.changeBalls(newBallNumbers);
+    }
 }

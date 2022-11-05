@@ -18,4 +18,16 @@ public class GameServiceTest {
         assertThat(responseDto.getBall()).isEqualTo(0);
         assertThat(responseDto.isThreeStrike()).isTrue();
     }
+
+    @Test
+    void 플레이어의_볼을_다시입력후_결과확인() {
+        GameService gameService = new GameService(List.of(1, 2, 3), List.of(1, 2, 3));
+
+        gameService.changePlayerBalls(List.of(4, 5, 6));
+        GameResultResponseDto responseDto = gameService.playGame();
+
+        assertThat(responseDto.getStrike()).isEqualTo(0);
+        assertThat(responseDto.getBall()).isEqualTo(0);
+        assertThat(responseDto.isThreeStrike()).isFalse();
+    }
 }
