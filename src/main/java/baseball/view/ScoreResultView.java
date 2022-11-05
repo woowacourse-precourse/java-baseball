@@ -38,7 +38,7 @@ public class ScoreResultView {
     }
 
     public String printOnlyBall(){
-        return "";
+        return Integer.toString(ballCount).concat(BALL_COMMAND);
     }
 
     public boolean isOnlyStrike(){
