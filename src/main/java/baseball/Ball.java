@@ -7,7 +7,6 @@ import static baseball.Const.WRONG_INPUT;
 
 public class Ball {
     private Integer number;
-    private List<Integer> randomNumberList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
     public Ball() { // Default 생성자
     }
@@ -31,7 +30,7 @@ public class Ball {
     }
 
     public void generate() {
-        this.number = Randoms.pickNumberInList(randomNumberList);
+        this.number = Randoms.pickNumberInRange(1, 9);
     }
 
     public Integer getNumber() {

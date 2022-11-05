@@ -42,19 +42,19 @@ public class Game {
     }
 
     public boolean judgeToEnd() {
-        if (result.getStrike() == SIZE) {
-            System.out.println(CORRECT);
-            return true;
-        }
-
         if (result.getStrike() == 0 && result.getBall() == 0) {
             System.out.println(NOTHING);
         }
 
-        if (!(result.getStrike() == 0 && result.getBall() == 0) && !(result.getStrike() == SIZE)) {
+        if (!(result.getStrike() == 0 && result.getBall() == 0)) {
             printBall();
             printStrike();
             System.out.println();
+        }
+
+        if (result.getStrike() == SIZE) {
+            System.out.println(CORRECT);
+            return true;
         }
 
         return false;
