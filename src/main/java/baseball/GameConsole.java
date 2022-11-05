@@ -13,23 +13,19 @@ public class GameConsole {
         return Console.readLine();
     }
 
-    private int readInt() {
-        return Integer.parseInt(readLine().trim());
-    }
-
-    private List<Integer> readIntegerList() throws NumberFormatException {
-        return readLine().trim().chars()
-                .mapToObj(charPoint -> String.valueOf((char) charPoint))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+    private List<Integer> readIntegerList() throws IllegalArgumentException {
+        try {
+            return readLine().trim().chars()
+                    .mapToObj(charPoint -> String.valueOf((char) charPoint))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
     }
 
     private Digits readDigits() throws IllegalArgumentException {
-        try {
-            return new Digits(readIntegerList());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
-        }
+        return new Digits(readIntegerList());
     }
 
     private void writeLine(String s) {
