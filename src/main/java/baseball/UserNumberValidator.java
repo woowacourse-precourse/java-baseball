@@ -19,4 +19,11 @@ public class UserNumberValidator {
         Integer userNumberLen = userNumberList.size();
         return userNumberLen==3;
     }
+
+    /**
+     * 유저가 입력한 3개의 숫자에 0이 없는지 확인
+     */
+    public boolean isNotZero(List<Integer> userNumberList){
+        return !userNumberList.contains(0);
+    }
 }
