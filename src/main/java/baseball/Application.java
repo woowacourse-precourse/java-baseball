@@ -38,6 +38,7 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String input = br.readLine();
             List<String> inputNum = List.of(input.split(""));
+            inputValidate(inputNum);
             getResult(inputNum);
 
             if(ball==0 && strike==0){
@@ -66,5 +67,18 @@ public class Application {
             }
         }
     }
+
+    private static void inputValidate(List<String> inputNum) {
+        if(inputNum.size() != 3){
+            throw new IllegalArgumentException();
+        }
+        if(Set.copyOf(inputNum).size()!=3){
+            throw new IllegalArgumentException();
+        }
+        if(inputNum.contains("0")){
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }
