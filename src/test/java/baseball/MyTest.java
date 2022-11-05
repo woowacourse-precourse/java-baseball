@@ -36,31 +36,44 @@ public class MyTest {
     }
 
     @Test
-    void 사용자가_잘못된_입력값을_입력했을때_exception이_제대로_발생하는지_알아본다(){
-        /*List<String> errorInputList = List.of("1", "10", "223", "", "3455" , "하하하");
-        for(String errorInput :errorInputList){
-            assertThatThrownBy(()-> User.checkUserInput(errorInput))
-                        .isInstanceOf(IllegalArgumentException.class);
-        }*/
+    void 사용자가_볼값을_한자리만_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
         assertThatThrownBy(()-> User.checkUserInput("1"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
-        assertThatThrownBy(()-> User.checkUserInput("10"))
+    @Test
+    void 사용자가_볼값을_두자리만_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkUserInput("23"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
-        assertThatThrownBy(()-> User.checkUserInput("223"))
+    @Test
+    void 사용자가_중복된_볼값을_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkUserInput("232"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @Test
+    void 사용자가_볼값을_입력하지_않았을때_IllegalArgumentException이_발생하는지_알아본다(){
         assertThatThrownBy(()-> User.checkUserInput(""))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
-        assertThatThrownBy(()-> User.checkUserInput("3455"))
+    @Test
+    void 사용자가_볼값으로_3자리이상을_입력했을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkUserInput("2345"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
-        assertThatThrownBy(()-> User.checkUserInput("하하하"))
+    @Test
+    void 사용자가_볼값으로_숫자를_입력하지_않았을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkUserInput("즐겁다"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
 
-        assertThatThrownBy(()-> User.checkUserInput("-256"))
+    @Test
+    void 사용자의_볼값에_0이_포함되어_있을때_IllegalArgumentException이_발생하는지_알아본다(){
+        assertThatThrownBy(()-> User.checkUserInput("012"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -53,6 +53,10 @@ public class User {
             throw new IllegalArgumentException("중복된 숫자는 입력할수 없습니다.");
         }
 
+        if(userBallsList.contains(0)){
+            throw new IllegalArgumentException("볼은 1~9까지의 수 입니다.");
+        }
+
         return userBallsList;
 
     }
