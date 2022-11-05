@@ -23,6 +23,22 @@ public class BaseBallModel {
         return new String(numbers);
     }
 
+    public boolean checkNumbers(String inputNumbers){
+        if(inputNumbers.length() != this.numberLength){
+            throw new IllegalArgumentException();
+        }
+
+        for(int i = 0; i < this.numberLength; i++){
+            String cloneNumbers = new String(inputNumbers);
+
+            if(cloneNumbers.replace(Character.toString(inputNumbers.charAt(i)), "").length() != this.numberLength-1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public String getNumbers(){
         return new String(numbers);
     }
