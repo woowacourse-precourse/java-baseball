@@ -29,4 +29,10 @@ public class InputTest {
                 () -> assertThatThrownBy(() -> Input.validateLength("1234"))
         );
     }
+
+    @DisplayName("서로 다른 수가 아닐 경우 IllegalArgumentException 예외를 throw 한다.")
+    @Test
+    void validate_overlap() {
+        assertThatThrownBy(() -> Input.validateOverlap("121")).isInstanceOf(IllegalArgumentException.class);
+    }
 }

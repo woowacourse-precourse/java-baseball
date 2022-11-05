@@ -13,4 +13,15 @@ public class Input {
             throw new IllegalArgumentException("3자리가 아닙니다.");
         }
     }
+
+    public static void validateOverlap(String text) {
+        long count = text.chars()
+                .distinct()
+                .boxed()
+                .count();
+
+        if (count != text.length()) {
+            throw new IllegalArgumentException("중복된 값이 있습니다.");
+        }
+    }
 }
