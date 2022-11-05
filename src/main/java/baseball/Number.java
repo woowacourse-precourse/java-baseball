@@ -42,6 +42,16 @@ public class Number {
         return count;
     }
 
+    public int countBall(List<Character> answer, List<Character> input) {
+        int count = 0;
+        for(int idx = 0; idx < answer.size(); idx++) {
+            if(answer.get(idx) != input.get(idx) && input.contains(answer.get(idx))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private List<Character> stringToList(String str) {
         return str.chars().mapToObj(number -> (char) number).collect(Collectors.toList());
     }
