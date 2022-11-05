@@ -17,6 +17,10 @@ public class BaseballService {
         do {
             takeTurn();
 
+            if (baseballBot.isEnd() && wantRestart()) {
+                startGame();
+            }
+
         } while (!baseballBot.isEnd());
     }
 
@@ -24,5 +28,10 @@ public class BaseballService {
         String input = player.getInput();
         String hintStr = baseballBot.checkHint(input);
         System.out.println(hintStr);
+    }
+
+    private boolean wantRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.restart");
+        return player.checkRestart();
     }
 }

@@ -13,4 +13,9 @@ public class Player {
         return input;
     }
 
+    public boolean checkRestart() {
+        String input = Console.readLine();
+
+        return input.equals("1");
+    }
 }
