@@ -18,4 +18,8 @@ public class Computer {
 			}
 		}
 	}
+
+	public List<Integer> getComputersList() {
+		return getComputersList();
+	}
 }
