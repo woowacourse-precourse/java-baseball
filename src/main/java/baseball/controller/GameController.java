@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.CounterpartModel;
 import baseball.view.AppView;
 
 public class GameController {
