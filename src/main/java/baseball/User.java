@@ -8,6 +8,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     private List<Integer> userNumber;
+
+    public void setUserNumber() {
+        List<Integer> userNumber=makeUserNumber();
+
+        if(isValidUserNumber(userNumber)){
+            this.userNumber=userNumber;
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다");
+        }
+    }
+
     public List<Integer> makeUserNumber() {
         System.out.println("숫자를 입력해주세요: ");
         String inputString = readLine();
@@ -17,9 +29,7 @@ public class User {
         }
         return inputNumber;
     }
-    public boolean isValidUserNumber(){
-        List<Integer> inputNumber=makeUserNumber();
-
+    public boolean isValidUserNumber(List<Integer> inputNumber){
         return lengthCheck(inputNumber)
                 &&numberCheck(inputNumber);
     }
