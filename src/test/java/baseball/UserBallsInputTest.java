@@ -6,6 +6,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 class UserBallsInputTest {
@@ -26,9 +28,17 @@ class UserBallsInputTest {
   }
 
   @Test
-  void InputSuccess() {
+  @Order(1)
+  @DisplayName("Input 생성 테스트")
+  void inputSuccess() {
     input.inputNumberTest("123");
     assertEquals("123", outContent.toString());
   }
 
+  @Test
+  @Order(2)
+  @DisplayName("유효성 검사 테스트")
+  void inputnumberValidate() {
+    input.validityChecker();
+  }
 }
