@@ -28,7 +28,9 @@ public class Number {
         return input;
     }
 
-    public boolean isValidString(String input) {
+
+
+    private boolean isValidString(String input) {
         if(isNotDuplicate(input) || isNumber(input) || isThreeDigits(input)) {
             return true;
         }
