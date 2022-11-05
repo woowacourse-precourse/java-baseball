@@ -13,7 +13,7 @@ public class ValidatorHolder {
         validatorHolder.set(validators);
     }
 
-    public static void validate(Object target, Class to) {
+    public static void validate(Object target, Class<?> to) {
         List<Validator> validators = validatorHolder.get();
         Iterator<Validator> iterator = validators.iterator();
         while (iterator.hasNext()) {

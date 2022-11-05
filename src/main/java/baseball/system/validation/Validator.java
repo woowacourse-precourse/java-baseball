@@ -1,7 +1,7 @@
 package baseball.system.validation;
 
-public interface Validator<T> {
+public interface Validator {
     boolean supports(Object target, Class<?> to);
 
-    void validate(T target);
+    void validate(Object target);
 }
