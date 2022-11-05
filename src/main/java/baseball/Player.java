@@ -26,4 +26,17 @@ public class Player {
     public boolean isThreeLetter(String number) {
         return number.length() == 3;
     }
+
+    public boolean isAllDifferent(String number) {
+        char first = number.charAt(0);
+        char second = number.charAt(1);
+        char third = number.charAt(2);
+        if (first == second) {
+            return false;
+        }
+        if (second == third) {
+            return false;
+        }
+        return third != first;
+    }
 }
