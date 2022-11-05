@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static constants.GameConstant.*;
@@ -19,12 +20,12 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        String playerNumber = player.getPlayerNumber();
+        List<String> playerNumber = Arrays.asList(player.getPlayerNumber().split(""));
         //computer가 player number 검사
         while(computer.isNotThreeStrike(playerNumber)) {
             //checkNumber에서 스트라이크, 볼 개수 & 낫싱여부 판단 후 결과 출력
             computer.checkNumber(playerNumber);
-            playerNumber = player.getPlayerNumber();
+            playerNumber = Arrays.asList(player.getPlayerNumber().split(""));;
         }
         printClearMessage();
     }
