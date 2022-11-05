@@ -19,7 +19,7 @@ public class Game {
 
     public boolean playgame(){
         while(true){
-            Inputnumber inputnumber = new Inputnumber();
+            Input inputnumber = new Input();
             inputnumber.inputCheck();
             List inputNumber = inputnumber.stringTointList();
             Compare comparenumber = new Compare(random, inputNumber);

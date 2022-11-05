@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inputnumber {
+public class Input {
     String input;
 
-    Inputnumber(){
+    Input(){
         String input = Console.readLine();
         this.input =input;
     }
