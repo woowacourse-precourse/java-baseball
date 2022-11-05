@@ -104,6 +104,13 @@ public class Application {
     }
 
     public static boolean restartGame() {
-        return true;
+        String s = Console.readLine();
+        if(s.equals("1")){
+            return true;
+        }else if(s.equals("2")){
+            return false;
+        }else{
+            throw new IllegalArgumentException("not 1,2: input erroooor");
+        }
     }
 }
