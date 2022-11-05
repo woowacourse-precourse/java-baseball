@@ -11,7 +11,6 @@ public class Application {
 
 	public static void main(String[] args) {
 		out.print(Setup.START_MESSAGE.getValue());
-
-		game.playGame();
+		game.play();
 	}
 }
