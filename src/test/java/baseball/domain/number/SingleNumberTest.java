@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SingleNumberTest {
 
@@ -33,4 +34,22 @@ class SingleNumberTest {
         int result = singleNumber.countBall(answer);
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void 음수를_입력하면_예외를_던진다() {
+        int inputValue = -1;
+
+        assertThatThrownBy(() -> new SingleNumber(0, inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("양수만 입력해 주세요.");
+    }
+
+    @Test
+    void 숫자_0을_포함하면_예외를_던진다() {
+        assertThatThrownBy(() -> new SingleNumber(0, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0은 입력할 수 없습니다.");
+    }
+
+
 }

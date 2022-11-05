@@ -9,7 +9,7 @@ public final class SingleNumber {
     private final int number;
 
     public SingleNumber(int position, int number) {  // 유효성 검증은 받는 쪽에서.
-        // 검증
+        validateInputValue(number);
         this.position = position;
         this.number = number;
     }
@@ -35,5 +35,22 @@ public final class SingleNumber {
     @Override
     public int hashCode() {
         return Objects.hash(position, number);
+    }
+
+    private void validateInputValue(int inputValue) {
+        validatePositiveNumber(inputValue);
+        validateContainsZero(inputValue);
+    }
+
+    private void validatePositiveNumber(int inputValue) {
+        if (inputValue < 0) {
+            throw new IllegalArgumentException("양수만 입력해 주세요.");
+        }
+    }
+
+    private void validateContainsZero(int inputValue) {
+        if (inputValue == 0) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
     }
 }
