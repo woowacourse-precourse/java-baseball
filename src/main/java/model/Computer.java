@@ -25,10 +25,11 @@ public class Computer {
 
     public void initComputer() {
         this.creatRanNumOfComputerList();
+    }
 
-        while (!isNumOfComputerIndividually()) {
-            this.creatRanNumOfComputerList();
-        }
+    public static void main(String[] args) {
+        Computer computer = new Computer();
+        computer.initComputer();
     }
 
     private void creatRanNumOfComputerList() {
@@ -133,6 +134,7 @@ public class Computer {
         return Randoms.pickNumberInRange(NUM_START_RANGE_RAM, NUM_END_RANGE_RAM);
     }
 
+
     public boolean isRealRightNumOfUser(int numInputOfUser) {
         if (isRightThreeNumOfComputer(numInputOfUser)) {
             return true;
@@ -206,7 +208,13 @@ public class Computer {
 
     private boolean isContainValueList(Collection collection_1,
         Collection<Integer> collection_2) {
-        return collection_1.stream().anyMatch((num) -> collection_2.contains(num));
+        boolean isTrue = true;
+        for (Object num : collection_2) {
+            if (collection_1.contains(num)) {
+                isTrue = true;
+            }
+        }
+        return isTrue;
     }
 
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {

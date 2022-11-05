@@ -11,12 +11,13 @@ public class User {
     }
 
     public void inputNumOfUser() {
-        this.numSelecUser = this.getInputAllRightNumOfUser();
+        numSelecUser = this.getInputAllRightNumOfUser();
     }
 
     private int getInputAllRightNumOfUser() {
         String strInput = getString();
         int numInput = parseIntFromStr(strInput);
+        // TODO
         isValidUser(strInput, numInput);
         return numInput;
     }

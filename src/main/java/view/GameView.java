@@ -97,7 +97,7 @@ public class GameView {
     }
 
     private boolean isValidRightNum(int num) {
-        if (UseFunc.isEqualIntOfTwo(num, 1) && UseFunc.isEqualIntOfTwo(num, 2)) {
+        if (UseFunc.isEqualIntOfTwo(num, 1) || UseFunc.isEqualIntOfTwo(num, 2)) {
             return true;
         }
         throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
