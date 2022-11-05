@@ -31,12 +31,9 @@ public class InputNumberVerification {
     private static boolean verifyNumberOneToNine(int receivedNumber){
         int cnt = 0;
         for(int oneNumber : makeNumberSplitList(receivedNumber)){
-            if(1 <= oneNumber  && oneNumber <=9){
-                cnt += 1;
+            if(!(1 <= oneNumber  && oneNumber <=9)){
+                return false;
             }
-        }
-        if(cnt !=3){
-            return false;
         }
         return true;
     }
