@@ -22,6 +22,10 @@ public class Digits {
         return digitList.get(idx);
     }
 
+    private void assertDigitListRange(List<Integer> digitList) {
+        digitList.forEach(this::validateDigitRange);
+    }
+
     private void validateDigitRange(int digit) {
         if (!(1 <= digit && digit <= 9)) throw new IllegalArgumentException("숫자는 1~9의 값이여야 합니다.");
     }
@@ -29,10 +33,6 @@ public class Digits {
     private void validateDigitListSize(List<Integer> digitList) {
         if (digitList.size() != DIGIT_COUNT)
             throw new IllegalArgumentException("숫자의 개수는 항상 " + DIGIT_COUNT + "이여야 합니다.");
-    }
-
-    private void assertDigitListRange(List<Integer> digitList) {
-        digitList.forEach(this::validateDigitRange);
     }
 
     private void assertDistinctDigitList(List<Integer> digitList) {
