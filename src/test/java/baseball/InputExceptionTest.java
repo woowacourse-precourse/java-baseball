@@ -37,4 +37,11 @@ public class InputExceptionTest {
         assertThatThrownBy(() -> InputException.occur(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void occur_올바른_숫자_입력() {
+        String input = "123";
+
+        assertThat(InputException.occur(input)).isEqualTo(false);
+    }
 }
