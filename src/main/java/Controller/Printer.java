@@ -11,6 +11,10 @@ public class Printer {
 		System.out.print(ASK_INPUT_MESSAGE.get());
 	}
 
+	public static void printBallsCount(int ballsCount) {
+		System.out.printf(NUMBER_OF_BALL_MESSAGE.get(), ballsCount);
+	}
+
 	public static void printNothingMessage() {
 		System.out.println(NOTHING_MESSAGE.get());
 	}
