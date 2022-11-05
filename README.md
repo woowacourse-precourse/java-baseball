@@ -84,6 +84,7 @@ BUILD SUCCESSFUL in 0s
     - [ ] `int getGameRestartInput()`
     - [x] `List<Integer> generateRandomAnswerNums()`
     - [ ] `BaseballGameResult getResultOfGame(List<Integer> inputNums)`
+    - [ ] `List<Integer> stringToIntList(String numString)`
 
 
 - [ ] **CLASS 2**. `BaseballGameResult`
