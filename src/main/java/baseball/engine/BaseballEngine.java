@@ -19,4 +19,16 @@ public class BaseballEngine {
 
         return answer;
     }
+
+    public List<Integer> parseInput(String userInput) {
+        List<Integer> userInputList = new ArrayList<>();
+
+        for (char input : userInput.toCharArray()) {
+            int convertedToIntValue = Character.getNumericValue(input);
+            userInputList.add(convertedToIntValue);
+        }
+
+        return userInputList;
+    }
+
 }
