@@ -37,7 +37,6 @@ public class Computer {
     }
 
     public void checkNumber(List<String> playerNumber) {
-        //스트라이크, 볼, 낫싱 검사 후 결과 출력
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < 3; i++) {

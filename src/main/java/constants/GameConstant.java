@@ -8,7 +8,7 @@ public class GameConstant {
     public static final int MAX_RANGE_NUM = 9;
     public static final int MIN_RANGE_NUM = 1;
 
-    public static final String PATTERN = "^[0-9]*$"; //숫자만
+    public static final String PATTERN = "^[0-9]*$";
 
     public static final String BALL_MESSAGE = "볼";
     public static final String STRIKE_MESSAGE = "스트라이크";

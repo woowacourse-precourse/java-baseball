@@ -16,7 +16,6 @@ public class Player {
     }
 
     private void validateInputNumber(String playerNumber, int numberLength) throws IllegalArgumentException {
-        //정수인지, 길이가 맞는지, 반복되는 수 없는지 검사
         validateNumberOrNotNumber(playerNumber);
         validateNumberLength(playerNumber, numberLength);
         validateNumberRepeat(playerNumber);
@@ -46,7 +45,6 @@ public class Player {
 
     public int getRestartOrEndNumber(){
         System.out.println(RESTART_OR_END_MESSAGE);
-        //해당 수도 validation 필요
         //regex 1~2로 제한 수정하기!!!
         String playerNumber = readLine();
         validateNumberOrNotNumber(playerNumber);

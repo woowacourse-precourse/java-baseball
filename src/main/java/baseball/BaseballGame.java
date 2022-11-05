@@ -13,7 +13,7 @@ public class BaseballGame {
         computer = new Computer();
     }
 
-    public void initializeGame() {  //게임 시작 or 재시작 시 호출
+    public void initializeGame() {
         computer.makeComputerNumber();
         playGame();
         checkRestart();
@@ -21,9 +21,7 @@ public class BaseballGame {
 
     private void playGame() {
         List<String> playerNumber = Arrays.asList(player.getPlayerNumber().split(""));
-        //computer가 player number 검사
         while(computer.isNotThreeStrike(playerNumber)) {
-            //checkNumber에서 스트라이크, 볼 개수 & 낫싱여부 판단 후 결과 출력
             computer.checkNumber(playerNumber);
             playerNumber = Arrays.asList(player.getPlayerNumber().split(""));;
         }
