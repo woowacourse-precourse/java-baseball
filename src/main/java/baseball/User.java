@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import baseball.View.Message;
+
 import java.util.ArrayList;
 
 public class User {
@@ -11,15 +13,12 @@ public class User {
         String answer;
         userNumber = new ArrayList<>();
 
-        inputMessage();
+        Message.printRequestUserNumber();
         answer = Console.readLine();
 
         verifyUserNumber(answer);
 
         return userNumber;
-    }
-    private static void inputMessage(){
-        System.out.print("숫자를 입력해 주세요: ");
     }
 
     private static void verifyUserNumber(String answer)throws IllegalArgumentException{
@@ -51,16 +50,16 @@ public class User {
         }
     }
 
-    public static int finishInput() throws IllegalArgumentException {
+    public static boolean finishInput() throws IllegalArgumentException {
         String finishNumber;
 
         finishNumber = Console.readLine();
 
         return verifyFinishNumber(finishNumber);
     }
-    private static int verifyFinishNumber(String finishNumber)throws IllegalArgumentException{
-        int restart=1;
-        int exit=0;
+    private static boolean verifyFinishNumber(String finishNumber)throws IllegalArgumentException{
+        boolean restart=true;
+        boolean exit=false;
         if(finishNumber.equals("1")){
             return restart;
         } else if(finishNumber.equals("2")){

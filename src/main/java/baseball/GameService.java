@@ -1,26 +1,25 @@
 package baseball;
 
 import baseball.View.Message;
+import baseball.Game;
+import baseball.Controller;
 
 import java.util.ArrayList;
 
 public class GameService {
-    private static ArrayList<Integer> answerNumber = new ArrayList<>();
     private static ArrayList<Integer> userNumber = new ArrayList<>();
+    public Game game;
     public void setGame(){
-        setAnswerNumber();
-        System.out.println(answerNumber);
+        game = new Game();
+        game.setAnswerNumber();
+        System.out.println(game.answerNumber);
     }
-    private void setAnswerNumber(){
-        RandomNumber randomNumber = new RandomNumber();
-        answerNumber = randomNumber.setRandomNumber();
-    }
+
     public void startGame() throws IllegalArgumentException{
-        int strike=0;
-        while(strike!=3){
+        while(game.strike!=3){
             setUserNumber();
-            strike = calculateStrike();
-            Message.printResultMessage(strike,calculateBall());
+            game.strike = calculateStrike();
+            Message.printResultMessage(game.strike,calculateBall());
         }
         Message.printEndMessage();
     }
@@ -30,7 +29,7 @@ public class GameService {
     private int calculateStrike(){
         int strikeCount=0;
         for(int i=0; i<3; i++){
-            if(answerNumber.get(i) == userNumber.get(i)){
+            if(game.answerNumber.get(i) == userNumber.get(i)){
                 strikeCount++;
             }
         }
@@ -40,7 +39,7 @@ public class GameService {
     private int calculateBall(){
         int ballCount=0;
         for(int i=0; i<3; i++){
-            if(answerNumber.contains(userNumber.get(i)) && answerNumber.get(i) != userNumber.get(i)){
+            if(game.answerNumber.contains(userNumber.get(i)) && game.answerNumber.get(i) != userNumber.get(i)){
                 ballCount++;
             }
         }
@@ -48,15 +47,11 @@ public class GameService {
     }
 
     public void finishGame() throws IllegalArgumentException{
-        int flag;
         Message.printRestartMessage();
-        flag=User.finishInput();
-        if(flag==1){
-            Game game = new Game();
-            game.run();
+        if(User.finishInput()){
+            Controller con = new Controller();
+            con.run();
         }
-        else if(flag==2){
-            return;
-        }
+        return;
     }
 }
