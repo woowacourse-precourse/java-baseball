@@ -1,4 +1,39 @@
 # 기능 목록
+## 기능 목록 업데이트
+## MVC pattern 적용
+- 기존 작성 기능 목록은 MVC pattern 적용 못한 목록으로, 리펙토링 중 MVC pattern 적용 위해 기능 목록 수정
+## 구현방법
+1. 난수 생성 - Model
+2. User 입력한 숫자 저장 - Model
+3. User 입력 숫자 유효성 확인 - Model
+4. 난수, User 입력 숫자로 strike, Ball 판단 - Model
+5. 결과 출력 - View
+6. 게임 종료 판단, 계속 진행시 2~5 반복 - Model
+7. 게임 종료시 프로그램 재시작 여부 User 입력, 프로그램 종료 여부 판단 - Model
+8. 결과 출력 - View
+
+- 게임 시작
+1. Application 에서 Controller 통해 Computer, User 객체 만듦
+
+## MVC Pattern
+1. Model 
+   - (기존) Computer 클래스: 난수 생성, 저장 및 가공. (다른 기능 삭제)
+     - 생성자, makeNumberList, addNumberIfNotList
+   - (기존) User 클래스: User 입력 숫자 저장, 가공 및 유효성 확인. (다른 기능 삭제)
+     - inputGameNumber(inputNumber), checkType, makeError(errorControl), checkNumber, numberToList
+     - (추가) inputEndNumber
+   - (추가) Game 클래스: 난수, User 입력 숫자로 Strike, Ball 계산, 게임 종료 및 프로그램 종료 판단. Computer, User 객체 만들어 숫자 받음.
+     - checkStrike, checkBall
+     - (추가) 생성자, inputGameData, updateGameData, getStrike, getBall, checkStrikeAndBall, inputEndGameData, keepGame
+2. View
+   - (추가) OutputView 클래스: 모든 출력 함수 구현, 항상 출력되는 문구는 final String 으로 관리
+     - printStarting, printResult
+     - (추가) printKeepGame, printEndGame, printInput
+3. Controller
+   - (추가) GameController: 생성자를 통해 Game, OutputView 객체 생성해 데이터 전달 및 출력하는 함수 구현
+     - (추가)생성자, gameStart, keepGame, endGame
+---
+
 ## 구현 방법
 1. 컴퓨터에서 만든 숫자, 사용자가 입력하는 숫자를 클래스 생성을 통해 객체화한다.
 2. 스트라이크, 볼 개수를 판단하는 메서드는 사용자 클래스에 메서드로 구현한다.
@@ -120,16 +155,17 @@
 3. 구현
    - 매개변수로 받은 두 리스트를 비교해 동일자리, 동일숫자면 strike 개수 증가
    - strike 반환
-#### 5. (void) checkBall
+#### 5. (int) checkBall
 1. 매개변수
    - (List) computerNumberList
    - (List) userNumberList
+   - (추가)(int) strike
 2. 변수
    - (int) ball
 3. 구현
-   - 매개변수로 받은 두 리스트를 비교해 다른자리, 동일숫자면 ball 개수 증가
-     - !! userNumberList 에 동일 숫자 있는 경우 고려 필요
-   - ball 반환
+   - 매개변수로 받은 두 리스트를 비교해 ~~다른자리,~~ 동일숫자를 가지고 있으면 ball 개수 증가
+     - !! userNumberList 에 동일 숫자 있는 경우 고려 필요 (해결 완료)
+   - ball-strike 반환
 
 #### 6. (void) printResult
 1. 매개변수
