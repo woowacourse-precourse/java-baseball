@@ -32,4 +32,11 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    public void 임의의_수가_3개인지_테스트() {
+        Computer computer = new Computer();
+        List<Integer> number = computer.createRandomNumber();
+        assertThat(number.size()).isEqualTo(3);
+    }
 }
