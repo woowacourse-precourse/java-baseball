@@ -10,4 +10,11 @@ public class ScoreCalculator {
                 .filter(i -> baseballNum1.getNumberAt(i) != baseballNum2.getNumberAt(i))
                 .count();
     }
+
+    public static int calculateStrikeCount(BaseballNumber baseballNum1, BaseballNumber baseballNum2) {
+        return (int) Stream.iterate(0, i -> i + 1)
+                .limit(SystemConstant.GAME_DIGIT)
+                .filter(i -> baseballNum1.getNumberAt(i) == baseballNum2.getNumberAt(i))
+                .count();
+    }
 }
