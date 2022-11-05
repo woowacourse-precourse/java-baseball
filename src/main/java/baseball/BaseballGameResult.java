@@ -35,4 +35,8 @@ public class BaseballGameResult {
     public int numOfStrikes() {
         return this.strike;
     }
+
+    public int numOfBalls() {
+        return this.ball;
+    }
 }
