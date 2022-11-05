@@ -10,8 +10,8 @@ public class ResultProcessor {
     }
 
     private void compareRandomAndPredictedNumber(Result result, String randomNumber, String predictedNumber) {
-        for (int i = 0; i < 3; i++) {
-            distinguishTypeOfDigit(result, randomNumber, predictedNumber, i);
+        for (int position = 0; position < 3; position++) {
+            distinguishTypeOfDigit(result, randomNumber, predictedNumber, position);
         }
     }
 
