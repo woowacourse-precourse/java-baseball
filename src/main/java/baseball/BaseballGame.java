@@ -1,38 +1,23 @@
 package baseball;
 
-import java.util.Random;
+import Util.RamdomNumber;
 import java.util.Scanner;
 
 public class BaseballGame {
     int[] computerNumber;
     Hint hint;
     User user;
+    RamdomNumber randomNumber;
     Scanner continueScanner = new Scanner(System.in);
     BaseballGame(){
         this.hint = new Hint();
         this.computerNumber = new int[3];
         this.user = new User();
-    }
-
-    public void makeRandomNumber() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        boolean[] alreadyUsed = new boolean[10];
-        Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            int number = random.nextInt(9) + 1;
-
-            if (!alreadyUsed[number]) {
-                alreadyUsed[number] = true;
-                computerNumber[i] = number;
-            } else {
-                i--;
-            }
-        }
+        this.randomNumber = new RamdomNumber(3);
     }
 
     public void startGame(){
-        makeRandomNumber();
+        computerNumber = randomNumber.makeRandomNumber(3);
         do {
             user.UserInput();
             hint.getHint(user.getUserNumber(), computerNumber);
