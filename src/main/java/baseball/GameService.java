@@ -6,8 +6,8 @@ public class GameService {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
-    private static final String RESTART = "1";
-    private static final String QUIT = "2";
+    private static final String RESTART_GAME = "1";
+    private static final String QUIT_GAME = "2";
     private static final int THREE_STRIKE = 3;
 
     private final InputBallNumber inputBallNumber;
@@ -105,19 +105,19 @@ public class GameService {
     private void restartOrQuitGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String num = Console.readLine();
-        isNotRestartAndQuit(num);
-        isRestartGame(num);
+        isNotRestartedAndQuitedGame(num);
+        isRestartedGame(num);
     }
 
-    private void isRestartGame(String num) {
-        if (num.equals(RESTART)) {
+    private void isRestartedGame(String num) {
+        if (num.equals(RESTART_GAME)) {
             randomBallNumber.clearRandomNumber();
             playGame();
         }
     }
 
-    private void isNotRestartAndQuit(String num) {
-        if (!num.equals(RESTART) && !num.equals(QUIT)) {
+    private void isNotRestartedAndQuitedGame(String num) {
+        if (!num.equals(RESTART_GAME) && !num.equals(QUIT_GAME)) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
     }
