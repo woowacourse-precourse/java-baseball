@@ -54,7 +54,16 @@ public class Game {
 		return counter;
 	}
 
+	private int countStrikes(String userInput, String answer, int i) {
+		char userDigit = userInput.charAt(i);
+		char answerDigit = answer.charAt(i);
 
+		if (userDigit == answerDigit) {
+			return 1;
+		}
+
+		return 0;
+	}
 
 	private int findBalls(String userInput, String answer) {
 	}
