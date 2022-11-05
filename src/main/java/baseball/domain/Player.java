@@ -1,10 +1,12 @@
 package baseball.domain;
 
+import baseball.util.Number;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
     List<Integer> numbers = new ArrayList<>();
@@ -25,16 +27,22 @@ public class Player {
     }
 
     void checkInput(String input) {
-        if (input.length() != 3) {
+        if (!Objects.equals(input.length(), Number.THREE)) {
             throw new IllegalArgumentException();
         }
-        boolean[] used = new boolean[10];
-        used[0] = true;
+
+        List<Character> used = new ArrayList<>();
         for (char ch : input.toCharArray()) {
-            if (!Character.isDigit(ch) || used[ch - '0']) {
+            if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException();
             }
-            used[ch - '0'] = true;
+            if (Objects.equals(Number.ZERO, ch)) {
+                throw new IllegalArgumentException();
+            }
+            if (used.contains(ch)) {
+                throw new IllegalArgumentException();
+            }
+            used.add(ch);
         }
     }
 
