@@ -67,14 +67,14 @@ public class BullsAndCows {
         return getResultScoreByFormat().trim();
     }
 
-    public String getResultOfEndGame(String userInput) {
+    private ResultMessage getResultOfEndGame(String userInput) {
         int flag = Integer.parseInt(userInput);
         if (flag == (RESTART_GAME)) {
-            return RESTART.getMessage();
+            return RESTART;
         }
 
         if (flag == END_GAME) {
-            return END.getMessage();
+            return END;
         }
 
         throw new IllegalArgumentException("Game is over, you must input only flag number");
