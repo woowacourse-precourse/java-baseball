@@ -9,8 +9,8 @@ public class GameController {
     Computer computer;
 
     public GameController() {
-        this.user = new User();
-        this.computer = new Computer();
+        this.user = User.getInstanceUser();
+        this.computer = Computer.getInstanceUser();
     }
 
     public void startGame() {
