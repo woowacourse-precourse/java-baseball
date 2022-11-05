@@ -222,7 +222,15 @@ public class Application {
 
     public static boolean checkReplayNumber(String replayNumberString) {
 
-        return checkReplayNumberLength(replayNumberString) && checkReplayNumberCount(replayNumberString);
+        try {
+
+            if (!checkReplayNumberLength(replayNumberString) || !checkReplayNumberCount(replayNumberString)) throw new IllegalStateException();
+
+            return true;
+        } catch (IllegalStateException e) {
+
+            return false;
+        }
     }
 
     public static boolean checkReplayNumberLength(String replayNumberString) {
