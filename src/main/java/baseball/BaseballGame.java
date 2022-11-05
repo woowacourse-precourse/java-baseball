@@ -1,5 +1,7 @@
 package baseball;
 
+import constant.Message;
+
 import static constant.Const.GAME_END_STRIKE_COUNT;
 
 public class BaseballGame {
@@ -16,11 +18,13 @@ public class BaseballGame {
     public void run() {
         init();
         start();
+        end();
+        askRetry();
     }
 
     private void init() {
-        computer.setAnswer();
         referee.initCount();
+        computer.setAnswer();
     }
 
     private void start() {
@@ -28,6 +32,18 @@ public class BaseballGame {
             user.enterNumber();
             referee.judge(computer.getAnswer(), user.getInputNumber());
             referee.showResult();
+        }
+    }
+
+    private void end() {
+        Message.showGameEndMessage();
+    }
+
+    private void askRetry() {
+        Message.showRetryRequestMessage();
+
+        if (user.hasRetryIntention()) {
+            run();
         }
     }
 }
