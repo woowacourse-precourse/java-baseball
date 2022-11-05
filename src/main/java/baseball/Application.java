@@ -22,5 +22,17 @@ public class Application {
 
         return computer;
     }
+    public void checkUserHasException(List<Integer> user) throws Exception{
+        Exception userException = new IllegalArgumentException();
+
+        if(!(user.size() == 3)) { throw  userException; }
+
+        for(Integer number : user) {
+            if(number == 0) { throw userException; }
+
+            if(user.contains(number)) { throw userException; }
+        }
+
+    }
 
 }
