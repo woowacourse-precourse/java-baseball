@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.OutputStream;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -15,6 +19,7 @@ public class GameTest {
     @Test
     void getComputerNumber() {
         Game game = new Game();
+
         assertThat(game.getComputerNumber()).doesNotContain(0).hasSize(3).doesNotHaveDuplicates();
     }
 
@@ -49,4 +54,36 @@ public class GameTest {
         assertThat(result).isEqualTo(new int[]{2, 1});
     }
 
+    @DisplayName("체크결과 볼스트라이크 출력")
+    @Test
+    void printResult1() {
+        Game game = new Game();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(new int[]{2, 1});
+
+        assertThat(out.toString()).isEqualTo("2볼 1스트라이크\r\n");
+    }
+
+    @DisplayName("체크결과 낫싱 출력")
+    @Test
+    void printResult2() {
+        Game game = new Game();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(new int[]{0, 0});
+
+        assertThat(out.toString()).isEqualTo("낫싱\r\n");
+    }
+
+    @DisplayName("체크결과 3스트라이크 게임종료 출력")
+    @Test
+    void printResult3() {
+        Game game = new Game();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(new int[]{0, 3});
+
+        assertThat(out.toString()).isEqualTo("3스트라이크\r\n" + game.GAME_END+"\r\n");
+    }
 }
