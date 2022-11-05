@@ -1,4 +1,4 @@
-package baseball;
+package game;
 
 public class Announce {
     public static void startAnnounce() {
