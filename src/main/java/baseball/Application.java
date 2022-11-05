@@ -35,9 +35,13 @@ public class Application {
         return !lst.contains(number);
     }
 
+    private String getUserInput(){
+        return Console.readLine();
+    }
+
     public List<Integer> getUserNumberList() {
         List<Integer> lst = new ArrayList<>();
-        String input = Console.readLine();
+        String input = getUserInput();
         if (!isValidSize(input)) {
             throw new IllegalArgumentException();
         }
@@ -76,5 +80,31 @@ public class Application {
 
     private void printRestartGuide(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+    }
+
+    public boolean isEnding(){
+        int gameOption = getGameOption();
+        return gameOption == 2;
+    }
+
+    private int getGameOption(){
+        String userInput = getUserInput();
+        int userInputNumber = strToInt(userInput);
+        if(!isValidOption(userInputNumber)){
+            throw new IllegalArgumentException();
+        }
+        return userInputNumber;
+    }
+
+    private boolean isValidOption(int number){
+        return number == 1 || number == 2;
+    }
+
+    private int strToInt(String input){
+        try{
+            return Integer.parseInt(input);
+        }catch(Exception e){
+            throw new IllegalArgumentException();
+        }
     }
 }
