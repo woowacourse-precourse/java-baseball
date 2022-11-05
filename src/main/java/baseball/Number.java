@@ -11,6 +11,7 @@ public class Number {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_PATTERN = "^[1-9]*$";
 
     public String number;
 
@@ -43,31 +44,23 @@ public class Number {
     }
 
     private void isValidInput(String input) {
-        isDuplicated(input);
-        input.chars().forEach(c -> isDigitRange((char) c));
-        isRightLength(input);
+        if (!isRightLength(input) || isDuplicated(input) || !isDigitRange(input)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    private void isDuplicated(String str) {
+    private boolean isDuplicated(String str) {
         Set<Character> stringCharSet = new HashSet<>();
         str.chars().forEach(c -> stringCharSet.add((char) c));
-        if (stringCharSet.size() != CNT_NUMBER) {
-            throw new IllegalArgumentException();
-        }
+
+        return stringCharSet.size() != CNT_NUMBER;
     }
 
-    private void isDigitRange(Character charSingleDigit) {
-        System.out.printf(String.valueOf(charSingleDigit));
-        if (charSingleDigit < '0' + MIN_NUMBER) {
-            throw new IllegalArgumentException();
-        } else if (charSingleDigit > '0' + MAX_NUMBER) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isDigitRange(String input) {
+        return input.matches(INPUT_PATTERN);
     }
 
-    private void isRightLength(String input) {
-        if (input.length() != CNT_NUMBER) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isRightLength(String input) {
+        return input.length() == CNT_NUMBER;
     }
 }

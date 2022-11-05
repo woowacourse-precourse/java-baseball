@@ -8,8 +8,7 @@ public class Game {
     private final int NOT_STRIKE = 0;
     private final int BALL = 1;
     private final int NOT_BALL = 0;
-    private final String CORRECT_MESSAGE = "%d스트라이크\n"
-            + "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private final String CORRECT_MESSAGE = "%d스트라이크\n%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private final String NOTHING_MESSAGE = "낫싱\n";
     private final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
     private final String BALL_MESSAGE = "%d볼\n";
@@ -94,9 +93,10 @@ public class Game {
     private boolean isEndInput(Number computerNumber) {
         System.out.printf(RESTART_END_MESSAGE, RESTART_STATUS, END_GAME_STATUS);
         String input = readLine();
-        if (input.equals(END_GAME_STATUS)) {
+        
+        if (END_GAME_STATUS.equals(input)) {
             return true;
-        } else if (input.equals(RESTART_STATUS)) {
+        } else if (RESTART_STATUS.equals(input)) {
             resetGame(computerNumber);
             return false;
         }
