@@ -21,5 +21,4 @@ public class Computer {
         int answer = Integer.parseInt(String.valueOf(sb));
         correct_answer = answer;
     }
-    
 }
