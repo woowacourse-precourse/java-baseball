@@ -33,9 +33,14 @@ public class UseFunc {
         for (int index = 0; index < splitStrList.size(); index++) {
 
             int numValueListAtNow = getValueIndexList(splitStrList, index);
-            if (isEqualIntOfTwo(value, numValueListAtNow)) {
-                cntSameNum = cntSameNum + 1;
-            }
+            cntSameNum = addSameNum(cntSameNum, value, numValueListAtNow);
+        }
+        return cntSameNum;
+    }
+
+    private static int addSameNum(int cntSameNum, int value, int numValueListAtNow) {
+        if (isEqualIntOfTwo(value, numValueListAtNow)) {
+            cntSameNum = cntSameNum + 1;
         }
         return cntSameNum;
     }
