@@ -14,8 +14,8 @@ public class Comparator {
 
         CompareResult compareResult = new CompareResult();
         int size = resultNumbers.size();
-        for (int i = 0; i < size; i++) {
-            compare(i, inputNumbers, resultNumbers, compareResult);
+        for (int index = 0; index < size; index++) {
+            compare(index, inputNumbers, resultNumbers, compareResult);
         }
 
         return compareResult;
@@ -31,6 +31,7 @@ public class Comparator {
             compareResult.addStrike();
             return;
         }
+
         if (isBall(inputNumber, resultNumbers)){
             compareResult.addBall();
         }

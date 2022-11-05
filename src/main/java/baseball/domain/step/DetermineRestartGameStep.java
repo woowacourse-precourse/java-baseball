@@ -25,6 +25,7 @@ public class DetermineRestartGameStep implements Step {
             this.next = RESTART_GAME_STEP;
             return;
         }
+
         if (input.equals(APPLICATION_EXIT_FLAG)) {
             this.next = APPLICATION_EXIT_STEP;
             return;

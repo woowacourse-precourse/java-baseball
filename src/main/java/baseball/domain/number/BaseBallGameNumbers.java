@@ -12,7 +12,6 @@ public class BaseBallGameNumbers {
     private final Set<BaseBallGameNumber> numbers = new LinkedHashSet<>();
 
     public BaseBallGameNumbers(String input) {
-
         // 입력의 길이가 너무 길어졌을 때 하나하나 변환하는 것을 막기 위해 최초 검사한다.
         validateInputSize(input);
 
@@ -28,6 +27,7 @@ public class BaseBallGameNumbers {
         for (Integer number : integers) {
             numbers.add(new BaseBallGameNumber(number));
         }
+
         validateNumberSize();
     }
 

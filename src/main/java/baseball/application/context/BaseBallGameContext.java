@@ -17,7 +17,10 @@ import java.util.List;
 
 public class BaseBallGameContext {
 
+    /* 켬퓨터가 가질 수 있는 수의 범위 */
     private static final Range RANGE = new Range(1, 9);
+
+    /* 컴퓨터가 가질 수 있는 수의 개수 */
     private static final int COUNT = 3;
 
     private final Writer writer;
@@ -26,10 +29,11 @@ public class BaseBallGameContext {
 
     private Player player;
     private Computer computer;
-    private final Comparator comparator = new Comparator();
 
     /* 현재 진행중인 게임의 단계 */
     private Step step;
+
+    private final Comparator comparator = new Comparator();
 
     public BaseBallGameContext(BaseBallGameConfig config) {
         this.writer = config.writer();
@@ -75,6 +79,7 @@ public class BaseBallGameContext {
     }
 
     public void execute() {
+        // 현재 단계 실행
         step.execute(this);
 
         // 실행 후 다음 단계로 넘어감

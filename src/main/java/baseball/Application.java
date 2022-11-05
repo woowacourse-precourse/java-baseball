@@ -8,6 +8,7 @@ public class Application {
         BaseBallGameConfig config = new BaseBallGameConfig();
 
         BaseBallApplication baseBallApplication = new BaseBallApplication(config);
+
         baseBallApplication.play();
     }
 }

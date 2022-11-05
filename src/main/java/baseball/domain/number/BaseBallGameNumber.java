@@ -41,8 +41,14 @@ public class BaseBallGameNumber {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BaseBallGameNumber)) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof BaseBallGameNumber)) {
+            return false;
+        }
+
         BaseBallGameNumber that = (BaseBallGameNumber) o;
         return value == that.value;
     }
