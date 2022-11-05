@@ -9,9 +9,17 @@ import java.util.List;
 public class Application {
     public final static int RESTART = 1;
     public final static int END = 2;
+    public final static String numberBaseballStartMessage = "숫자 야구 게임을 시작합니다.";
+    public final static String playerNumberInputMessage = "숫자를 입력해주세요 : ";
+    public final static String gameEndMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public final static String playerOptionMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        System.out.println(numberBaseballStartMessage);
+
         while(true){
 
             boolean[] isBall = new boolean[10];
@@ -23,7 +31,7 @@ public class Application {
 
 
             while(true){
-                System.out.print("숫자를 입력해주세요 : ");
+                System.out.print(playerNumberInputMessage);
                 String playerNumber = Console.readLine();
 
                 if(!checkPlayerNumber(playerNumber)){
@@ -48,8 +56,8 @@ public class Application {
 
                 if (strikeCount == 3) break;
             }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(gameEndMessage);
+            System.out.println(playerOptionMessage);
 
             String playerSelect = Console.readLine();
             int playerSelectNumber;
