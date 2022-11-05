@@ -16,6 +16,13 @@ public class NumbersTest {
     }
 
     @Test
+    void validation_숫자_범위_확인() {
+        Numbers numbers = new Numbers(List.of(1, 0, 10));
+        boolean result = false;
+        assertThat(result).isEqualTo(numbers.validation());
+    }
+
+    @Test
     void validation_숫자_정상_확인() {
         Numbers numbers = new Numbers(List.of(1, 2, 3));
         boolean result = true;
