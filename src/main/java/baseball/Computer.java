@@ -8,16 +8,11 @@ public class Computer {
     List<Integer> computerNumberList;
 
     Computer() {
-        this.printStarting();
         computerNumberList = this.makeNumberList();
     }
 
-    void printStarting() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    List<Integer> makeNumberList() {
-        List<Integer> computerNumberList = new ArrayList<>();
+    private List<Integer> makeNumberList() {
+        List<Integer> computerNumberList = new ArrayList<>(3);
         while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addNumberIfNotList(computerNumberList, randomNumber);
