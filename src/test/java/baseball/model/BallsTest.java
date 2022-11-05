@@ -77,4 +77,17 @@ class BallsTest {
         Result result = new Result(1, 1, 1);
         assertThat(computer.getResult(user)).isEqualTo(result);
     }
+
+    @Test
+    void Balls_중복_숫자_존재할_경우_예외_던지기() {
+        List<Ball> ballList = List.of(
+                new Ball(1, 0)
+                , new Ball(1, 1)
+                , new Ball(2, 2)
+        );
+
+        assertThatThrownBy(() -> {
+            Balls user = new Balls(ballList);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
