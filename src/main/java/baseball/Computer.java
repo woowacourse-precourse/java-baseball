@@ -30,4 +30,12 @@ public class Computer {
         }
         return 0;
     }
+
+    public void checkNumberCount(List<Integer> userNumber){
+
+        for(int i=0; i<3; i++){
+            strike += checkStrike(userNumber.get(i), i);
+            ball += checkBall(userNumber.get(i), i);
+        }
+    }
 }
