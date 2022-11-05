@@ -24,6 +24,14 @@ public class View {
         System.out.println(num + "스트라이크");
     }
 
+    static final void printBall(int num){
+        System.out.println(num + "볼");
+    }
+
+    static final void printBallAndStrike(int ball, int strike){
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
     static final String getUserInput() {
         try {
             return bufferedReader.readLine();
