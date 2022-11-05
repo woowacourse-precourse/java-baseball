@@ -18,9 +18,11 @@ class error_check
     }
     private boolean check_isnum()
     {
+        int temp_num = 0;
         for(int i = 0; i < this.target.length(); i++)
         {
-            if (Character.isDigit(this.target.charAt(i)) == false)
+            temp_num = Character.getNumericValue(this.target.charAt(i));
+            if (!(temp_num > 0 && temp_num < 10))
             {
                 return false;
             }
@@ -93,7 +95,9 @@ class input{
 
 public class Application {
     public static void main(String[] args) {
+        ArrayList<Integer> input_list = new ArrayList<Integer>();
         input input = new input();
-        input.get_input_value();
+        input_list = input.get_input_value();
+        System.out.println(input_list);
     }
 }
