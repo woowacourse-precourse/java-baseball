@@ -23,11 +23,11 @@ public class User {
     public static List<Integer>checkUserInput(String userInput){
 
         if(userInput== null){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
         }
 
         if(userInput.length()!=3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(userInput.length()+"자리는 입력할 수 없습니다.");
         }
 
         int userInputNum = 0;
@@ -36,7 +36,7 @@ public class User {
             userInputNum = Integer.parseInt(userInput);
 
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
 
         return makeUserBalls(userInputNum);
@@ -50,7 +50,7 @@ public class User {
 
         int count = (int) userBallStream.distinct().count();
         if(count!=3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자는 입력할수 없습니다.");
         }
 
         return userBallsList;
