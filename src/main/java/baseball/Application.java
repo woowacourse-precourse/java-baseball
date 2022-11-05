@@ -10,14 +10,23 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Application {
+    private static final int NUMBER_COUNT = 3;
+    private static final String RESTART_NUMBER = "1";
+    private static final String EXIT_NUMBER = "2";
+    private static final String THREE_STRIKE = "3스트라이크";
+    private static final String GAME_OVER_NOTICE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String START_NOTICE = "숫자 야구 게임을 시작합니다.";
+    private static final String RESTART_OR_EXIT_NOTICE = "게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + EXIT_NUMBER + "를 입력하세요.";
+    private static final String INPUT_NUMBER_NOTICE = "숫자를 입력해주세요 : ";
+
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_NOTICE);
         while (true) {
             boolean gameResult = playGame();
             if (gameResult == false)
                 break;
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(RESTART_OR_EXIT_NOTICE);
             String inputRestartOrExit = Console.readLine();
             inputRestartOrExit = checkInputRestartOrExitIsValid(inputRestartOrExit);
             if (inputRestartOrExit.equals("2")) {
@@ -30,7 +39,7 @@ public class Application {
         List<Integer> computerNumber = createThreeDigitsRandomNumber();
         System.out.println(computerNumber);
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_NUMBER_NOTICE);
             String inputNumber = Console.readLine();
             if (!checkNumberIsValid(inputNumber)) {
                 return false;
@@ -38,8 +47,8 @@ public class Application {
             List<Integer> userNumber = changeStringToList(inputNumber);
             String result = countBallStrike(computerNumber, userNumber);
             System.out.println(result);
-            if (result.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (result.equals(THREE_STRIKE)) {
+                System.out.println(GAME_OVER_NOTICE);
                 return true;
             }
         }
@@ -47,7 +56,7 @@ public class Application {
 
     public static List<Integer> createThreeDigitsRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -102,13 +111,13 @@ public class Application {
 
     public static boolean checkNumberLengthIsThree(String number) {
         String changedNumber = number.replaceAll("[^1-9]", "");
-        return changedNumber.length() == 3;
+        return changedNumber.length() == NUMBER_COUNT;
     }
 
     public static boolean checkNumberIsDuplicated(String number) {
         String[] arr = number.split("");
         HashSet<String> set = new HashSet<>(Arrays.asList(arr));
-        return set.size() == 3;
+        return set.size() == NUMBER_COUNT;
     }
 
     public static List<Integer> changeStringToList(String number) {
@@ -121,7 +130,7 @@ public class Application {
     }
 
     public static String checkInputRestartOrExitIsValid(String number) throws IllegalArgumentException {
-        if (!number.equals("1") && !number.equals("2")) {
+        if (!number.equals(RESTART_NUMBER) && !number.equals(EXIT_NUMBER)) {
             throw new IllegalArgumentException();
         }
         return number;
