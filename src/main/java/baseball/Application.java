@@ -30,6 +30,8 @@ public class Application {
         HashSet<Integer> isRepeated = new HashSet<>(separated);
         if (isRepeated.size() < 3) {
             throw new IllegalArgumentException();
+        } else if (isRepeated.contains(0)) {
+            throw new IllegalArgumentException();
         }
         return separated;
     }
