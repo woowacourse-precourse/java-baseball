@@ -55,6 +55,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void check_strike(){
+        gameProcessor.strikeChecker(123,123);
+        assertThat(gameProcessor.getStrike()).isEqualTo(3);
+    }
+
 
     @Test
     void 게임종료_후_재시작() {
