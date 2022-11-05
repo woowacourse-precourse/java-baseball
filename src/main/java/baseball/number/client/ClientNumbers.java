@@ -7,23 +7,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ClientNumbers {
 
-    private final Validation validation;
+   private Validation validation = new Validation();
 
-    public ClientNumbers(Validation validation) {
-        this.validation = validation;
-    }
+    public List<Integer> clientNumberToList(String number){
 
-    public List<Integer> clientNumberToList() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String clientInput = "";
-        try{
-            clientInput = validation.validateClientNumbers(br.readLine());
-        } catch (IOException e) {
-            throw new IllegalArgumentException("문자 변환 오류");
-        }
+        System.out.println(number);
+        String clientInput = validation.validateClientNumbers(number);
 
         List<Integer> digitNumbers = stringToNumberList(clientInput);
         return digitNumbers;

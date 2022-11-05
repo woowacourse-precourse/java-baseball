@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class HintsAboutNumbersTest {
 
-    int randomNumbers = 123;
-    int randomNumbers2 = 223;
+    List<Integer> randomNumbers = List.of(1,2,3);
+    List<Integer> randomNumbers2 = List.of(2,2,2);
     HintsAboutNumbers hintsAboutNumbers = new HintsAboutNumbers();
     
     @Test
@@ -27,16 +27,16 @@ public class HintsAboutNumbersTest {
 
         boolean result1 = hintsAboutNumbers.hintAboutNumbers(List.of(2,2,3),randomNumbers2);
         System.out.println();
-        assertThat(result1).isTrue();
+        assertThat(result1).isFalse();
 
     }
 
     @Test
     void Numbers1_2() {
 
-        boolean result1 = hintsAboutNumbers.hintAboutNumbers(List.of(2,2,2),randomNumbers2);
+        boolean result1 = hintsAboutNumbers.hintAboutNumbers(List.of(2,2,2),List.of(2,2,4));
         System.out.println();
-        assertThat(result1).isFalse();
+        assertThat(result1).isTrue();
         //2 스트라이크 vs 1볼 2스트라이크 ??
 
 
@@ -44,7 +44,7 @@ public class HintsAboutNumbersTest {
 
     @Test
     void Numbers2() {
-        boolean result2 = hintsAboutNumbers.hintAboutNumbers(List.of(1,2,3),randomNumbers);
+        boolean result2 = hintsAboutNumbers.hintAboutNumbers(List.of(3,2,1),randomNumbers);
         System.out.println();
         assertThat(result2).isFalse();
     }

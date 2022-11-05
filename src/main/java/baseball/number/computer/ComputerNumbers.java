@@ -10,11 +10,12 @@ public class ComputerNumbers {
     public List<Integer> generateRandomNumbers() {
 
         List<Integer> computerNumber = new ArrayList<>();
-        for(int i= 0; i<3; i++) {
+        while(computerNumber.size() < 3) {
             int number = Randoms.pickNumberInRange(1,9);
-            computerNumber.add(number);
+            if(!computerNumber.contains(number)) {
+                computerNumber.add(number);
+            }
         }
-
         return computerNumber;
     }
 }

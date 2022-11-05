@@ -26,15 +26,15 @@ public class HintsAboutNumbers {
         int strike = ballAndStrike.get(1);
 
         if(strike <= 3 && strike > 0 && ball == 0) {
-            System.out.println(strike + " 스트라이크");
+            System.out.println(strike + "스트라이크");
             return strike == 3;
         }
-        if(strike >= 0 && strike < 3 && ball > 0 && ball <= 3) {
+        if(strike < 3 && strike >= 0 && ball > 0 &&ball <= 3) {
             if(strike == 0) {
                 System.out.println(ball + " 볼");
                 return false;
             }
-            System.out.println(ball + " 볼 "+strike + " 스트라이크");
+            System.out.println(ball + "볼 "+strike + "스트라이크");
             return false;
         }
         System.out.println("낫싱");
@@ -43,6 +43,7 @@ public class HintsAboutNumbers {
 
     public List<Integer> countBallAndStrike() {
 
+        int totalBall = 0;
         int ball = 0;
         int strike = 0;
 
@@ -50,8 +51,9 @@ public class HintsAboutNumbers {
             int clientDigitNumber = clientDigitNumbers.get(i);
             int randomDigitNumber = randomDigitNumbers.get(i);
 
+            totalBall = isDigitNumberContain(clientDigitNumber, totalBall);
             strike = isDigitNumberMatch(clientDigitNumber,randomDigitNumber,strike);
-            ball = isDigitNumberContain(clientDigitNumber, ball, i);
+            ball = totalBall - strike;
         }
         return List.of(ball, strike);
     }
@@ -63,10 +65,10 @@ public class HintsAboutNumbers {
         return strike;
     }
 
-    public int isDigitNumberContain(int clientDigitNumber, int ball, int i){
-        if(randomDigitNumbers.contains(clientDigitNumber) && randomDigitNumbers.get(i) != clientDigitNumber) {
-            ball++;
+    public int isDigitNumberContain(int clientDigitNumber, int totalBall){
+        if(randomDigitNumbers.contains(clientDigitNumber)) {
+            totalBall++;
         }
-        return ball;
+        return totalBall;
     }
 }
