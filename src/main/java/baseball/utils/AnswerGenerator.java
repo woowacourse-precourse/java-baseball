@@ -6,16 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AnswerGenerator {
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 9;
-    private static final int VALID_LENGTH = 3;
-
     public static ArrayList<Integer> generateAnswer() {
         Set<Integer> nums = new HashSet<>();
-        while (nums.size() < VALID_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
+        while (nums.size() < Constants.VALID_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(Constants.VALID_MIN_RANGE, Constants.VALID_MAX_RANGE);
             nums.add(randomNumber);
         }
         return new ArrayList<>(nums);
     }
 }
+
