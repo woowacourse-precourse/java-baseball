@@ -15,9 +15,7 @@ public class Controller {
 
         while (isGameGoing) {
             List<Integer> playerNumbers = player.createThreeDifferentNumbers();
-            // calculator 스태틱으로 바꾸기
-            Calculator calculator = new Calculator(dealerNumbers, playerNumbers);
-            List<Integer> scores = calculator.getScores();
+            List<Integer> scores = Calculator.getScoresBy(dealerNumbers, playerNumbers);
             ResultViewer.printOut(scores);
             checkThreeStrikes(scores.get(STRIKE_INDEX));
         }

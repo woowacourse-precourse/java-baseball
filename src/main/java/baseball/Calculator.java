@@ -6,33 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private int ball = INITIAL_COUNT;
-    private int strike = INITIAL_COUNT;
+    private static int ballCount = INITIAL_COUNT;
+    private static int strikeCount = INITIAL_COUNT;
 
-    private List<Integer> dealerNumbers;
-    private List<Integer> playerNumbers;
-    private List<Integer> scores;
-
-    public Calculator(List<Integer> dealerNumbers, List<Integer> playerNumbers) {
-        this.dealerNumbers = dealerNumbers;
-        this.playerNumbers = playerNumbers;
-    }
-
-    public List<Integer> getScores() {
-        scores = new ArrayList<>();
-        countBallAndStrike();
-        scores.addAll(List.of(ball, strike));
+    public static List<Integer> getScoresBy(List<Integer> dealerNumbers, List<Integer> playerNumbers) {
+        List<Integer> scores = new ArrayList<>();
+        countBallAndStrike(dealerNumbers, playerNumbers);
+        scores.addAll(List.of(ballCount, strikeCount));
         return scores;
     }
 
-    public void countBallAndStrike() {
+    public static void countBallAndStrike(List<Integer> dealerNumbers, List<Integer> playerNumbers) {
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (playerNumbers.get(i) == dealerNumbers.get(i)) {
-                strike++;
+                strikeCount++;
                 continue;
             }
             if (dealerNumbers.contains(playerNumbers.get(i))) {
-                ball++;
+                ballCount++;
             }
         }
     }
