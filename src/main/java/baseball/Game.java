@@ -7,14 +7,38 @@ public class Game {
     static final int SIZE = 3;
     static final int START_INCLUSIVE = 1;
     static final int END_INCLUSIVE = 9;
-    static final String BALL_MSG = "볼";
-    static final String STRIKE_MSG = "스트라이크";
-    static final String NOTHING_MSG = "낫싱";
-    static final String VICTORY_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    static final String RESTART_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    static final String GAME_START_MSG = "숫자 야구 게임을 시작합니다.";
+
     static final int RESTART = 1;
     static final int END = 2;
+    Message message = new Message();
+
+    public void run(){
+        startGame();
+        endGame();
+    }
+
+    public void init(){
+        message.setGameStartMsg();
+    }
+
+    public void startGame(){
+        String randomNumber = Integer.toString(getRandomNumber());
+        playGame(randomNumber);
+    }
+
+    public void endGame(){
+        message.setRestartMsg();
+        inputRestartOrEnd();
+    }
+
+    public void playGame(String randomNumber){
+        int strike = 0;
+        while (strike != 3){
+            String input = inputNumber();
+            inputValidator(input);
+            strike = countBallAndStrike(randomNumber, input);
+        }
+    }
 
     public int getRandomNumber() {
         int number = 0;
@@ -27,9 +51,9 @@ public class Game {
         return number;
     }
 
-    public void inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
+    public String inputNumber() {
+        message.setNumberInputMsg();
+        return Console.readLine();
     }
 
     public void inputValidator(String input) {
@@ -40,63 +64,41 @@ public class Game {
             throw new IllegalArgumentException();
         // 1~9 범위 외의 랜덤 숫자가 있는 경우
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) >= '0' && input.charAt(i) <= '9') throw new IllegalArgumentException();
+            if (input.charAt(i) <= '0' && input.charAt(i) >= '9') throw new IllegalArgumentException();
         }
     }
 
-    public void countBallAndStrike(String randomNumber, String input){
+    public int countBallAndStrike(String randomNumber, String input){
         int ball = 0;
         int strike = 0;
 
         // 자리 & 숫자 모두 일치
         if (randomNumber.equals(input)) {
             strike = 3;
-            printCountMsg(ball, strike);
-            return;
+            message.countBallAndStrikeMsg(ball, strike);
+            return strike;
         }
 
         // 볼, 스트라이크 개수 세기
         for (int i =0; i< SIZE; i++){
-            if (randomNumber.charAt(i) == input.charAt(i)) strike++;
-            else if (randomNumber.contains(String.valueOf(input.charAt(i)))) ball++;
+            if (randomNumber.charAt(i) == input.charAt(i)) {
+                strike++;
+            }
+            else if (randomNumber.contains(String.valueOf(input.charAt(i)))) {
+                ball++;
+            }
         }
-        printCountMsg(ball, strike);
+        message.countBallAndStrikeMsg(ball, strike);
+        return strike;
     }
 
-    public void printCountMsg(int ball, int strike){
-        // 3개의 숫자를 모두 맞힐 경우
-        if(strike == SIZE) {
-            System.out.println(VICTORY_MSG);
-            System.out.println(RESTART_MSG);
-            inputRestartOrEnd();
-        }
-        // 하나도 없는 경우
-        else if (ball == 0 && strike == 0){
-            System.out.println(NOTHING_MSG);
-        }
-        // 볼, 스트라이크 둘 다 있는 경우
-        else if (ball != 0 && strike != 0){
-            System.out.println(ball + BALL_MSG + " " + strike + STRIKE_MSG);
-        }
-        // 볼만 있는 경우
-        else if (ball == 0){
-            System.out.println(ball + BALL_MSG);
-        }
-        // 스트라이크만 있는 경우
-        else if (strike == 0) {
-            System.out.println(strike + STRIKE_MSG);
-        }
-    }
 
-    public void gameStartMsg(){
-        System.out.println(GAME_START_MSG);
-    }
 
     public void inputRestartOrEnd(){
         int input = Integer.parseInt(Console.readLine());
 
         if (input == 0 || input > END) throw new IllegalArgumentException();
 
-        if (input == RESTART) getRandomNumber();
+        if (input == RESTART) run();
     }
 }
