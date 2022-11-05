@@ -55,4 +55,11 @@ public class Core {
         }
         return count;
     }
+
+    public boolean isEndFlagged(int strikes){
+        if(strikes==3){
+            return true;
+        }
+        return false;
+    }
 }

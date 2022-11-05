@@ -24,9 +24,9 @@
     - ✅ isDigitStrike 메서드에서 true값이 반환되면 isDigitBall 메서드 종료 후 false 값을 반환한다
 
 ## 게임 종료 기능
-- ⬜ isEndFlagged 메서드 구현
-  - ⬜ 스트라이크 개수가 3개이면 true 값을 반환
-  - ⬜ 아니면 false 값을 반환
+- ✅ isEndFlagged 메서드 구현
+  - ✅ 스트라이크 개수가 3개이면 true 값을 반환
+  - ✅ 아니면 false 값을 반환
 - ⬜ 종료조건 발생 전까지는 게임이 계속 진행
   - ⬜ 게임 종료 플래그가 true로 변경
   - ⬜ 플레이어가 잘못된 숫자를 입력해서 프로그램이 종료
