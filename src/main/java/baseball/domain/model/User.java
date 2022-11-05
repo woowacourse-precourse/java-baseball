@@ -1,8 +1,6 @@
 package baseball.domain.model;
 
 import baseball.utils.InputValidator;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +19,7 @@ public class User {
     }
 
     private List<String> makeUserBallsFromUserInput(final String userBallInput) {
-        return new ArrayList<>(Arrays.asList(userBallInput.split("")));
+        return List.of(userBallInput.split(""));
     }
 
     public Map<BallCount, Integer> compareWithComputerBalls(final Computer computer,
