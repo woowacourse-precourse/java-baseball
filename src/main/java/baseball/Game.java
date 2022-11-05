@@ -57,6 +57,11 @@ public class Game {
     }
 
     public boolean restart() {
-        return Console.readLine().equals("1");
+        String userSelect = Console.readLine();
+        if (!(userSelect.equals("1") || userSelect.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+
+        return userSelect.equals("1");
     }
 }
