@@ -43,7 +43,7 @@
 - [ ] true이면 checkBaseBallNumbers의 strike : 3으로 초기화
 - [ ] checkedBaseballNumbers을 리턴
 
-## printBaseballOfResult
+## (boolean)printBaseballOfResult(int strikeSize, int ballSize)
 - [ ] Map 매개변수의 요소들의 꺼내서 strikeNumber와 ballNumber에 저장
 - [ ] strikeNumber이 3인지 비교
 - [ ] true이면, "3스트라이크" 출력
