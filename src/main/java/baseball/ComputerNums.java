@@ -22,6 +22,7 @@ public class ComputerNums implements Nums{
 
     @Override
     public void setNums() {
+        this.nums.clear();
         generateRandomNums();
     }
 

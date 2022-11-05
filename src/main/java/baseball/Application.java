@@ -12,6 +12,6 @@ public class Application {
                 System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
                 break;
             }
-        } while (true);
+        } while (game.askContinue());
     }
 }

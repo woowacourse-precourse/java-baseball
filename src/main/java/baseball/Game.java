@@ -1,8 +1,11 @@
 package baseball;
 
+import static baseball.Constraint.ASK_CONTINUE_MENT;
 import static baseball.Constraint.CLOSING_MENT;
 import static baseball.Constraint.NOTHING;
 import static baseball.Constraint.OPENING_MENT;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
@@ -21,7 +24,7 @@ public class Game {
     public void doGame() throws IllegalArgumentException{
         this.computerNums.setNums();
         // ===================
-        System.out.print(this.computerNums.getNums());
+        //System.out.print(this.computerNums.getNums());
         // ===================
         do {
             playerNums.setNums();
@@ -51,5 +54,10 @@ public class Game {
 
     public PlayerNums getPlayerNums() {
         return playerNums;
+    }
+
+    public boolean askContinue() {
+        System.out.println(ASK_CONTINUE_MENT);
+        return Console.readLine().equals("1");
     }
 }
