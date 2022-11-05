@@ -1,7 +1,6 @@
 package baseball;
 
 import Constant.Const;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -22,11 +21,11 @@ public class User {
         return userNumber;
     }
 
-    private boolean isValidUserNumber(){
+    private boolean isValidUserNumber() {
         return (isValidLength() && isNumber() && isWithinRange() && isDuplicate());
     }
 
-    private boolean isWithinRange(){
+    private boolean isWithinRange() {
         for (int i = 0; i < Const.NUMBER_LENGTH; i++){
             if (!('0' < userInput.charAt(i) && userInput.charAt(i) <= '9')){
                 return false;
@@ -35,13 +34,13 @@ public class User {
         return true;
     }
 
-    private boolean isValidLength(){
+    private boolean isValidLength() {
         return (userInput.length() == Const.NUMBER_LENGTH);
     }
 
-    private boolean isNumber(){
-        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
-            if (!Character.isDigit(userInput.charAt(i))){
+    private boolean isNumber() {
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
                 return false;
             }
         }
