@@ -10,13 +10,13 @@ import java.util.List;
 import static constant.BaseballConstant.*;
 
 public class BaseballGame {
-    private static List<Integer> computerNumbers = new ArrayList<>();
-    private static String userNumber;
-    private static int strike = 0;
-    private static int ball = 0;
-    private static boolean gameAvailable = true;
+    private List<Integer> computerNumbers = new ArrayList<>();
+    private String userNumber;
+    private int strike = 0;
+    private int ball = 0;
+    private boolean gameAvailable = true;
 
-    public static void start() {
+    public void start() {
         makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
 
@@ -32,7 +32,7 @@ public class BaseballGame {
         }
     }
 
-    private static void makeRandomNumber() {
+    private void makeRandomNumber() {
         while (computerNumbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
@@ -41,23 +41,22 @@ public class BaseballGame {
         }
     }
 
-    public static void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.print(message);
     }
 
-    public static void getUserNumber() {
+    private void getUserNumber() {
         printMessage(INPUT_MESSAGE);
         userNumber = Console.readLine();
     }
 
-    public static void checkUserNumber() {
-        InputValidator inputValidator = new InputValidator();
-        if (!inputValidator.isRightInput(userNumber)) {
+    private void checkUserNumber() {
+        if (!InputValidator.isRightInput(userNumber)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void compareComputerAndUser() {
+    private void compareComputerAndUser() {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (isStrike(index)) {
                 strike++;
@@ -67,15 +66,15 @@ public class BaseballGame {
         }
     }
 
-    private static boolean isStrike(int index) {
+    private boolean isStrike(int index) {
         return userNumber.charAt(index) - '0' == computerNumbers.get(index);
     }
 
-    private static boolean isBall(int index) {
+    private boolean isBall(int index) {
         return computerNumbers.contains(userNumber.charAt(index)- '0');
     }
 
-    public static String getResult() {
+    public String getResult() {
         String resultMessage = "";
         if (ball == 0 && strike == 0) {
             return NOTHING_MESSAGE;
@@ -89,22 +88,21 @@ public class BaseballGame {
         return resultMessage;
     }
 
-    private static boolean checkCorrect() {
+    private boolean checkCorrect() {
         return strike == NUMBER_LENGTH;
     }
 
-    private static void resetResult() {
+    private void resetResult() {
         ball = 0;
         strike = 0;
     }
 
-    private static void askExit() {
-        InputValidator inputValidator = new InputValidator();
+    private void askExit() {
         printMessage(CORRECT_MESSAGE + ENTER);
         printMessage(REGAME_MESSAGE + ENTER);
         String exitNumber = Console.readLine();
 
-        if (!inputValidator.isRightExitInput(exitNumber)) {
+        if (!InputValidator.isRightExitInput(exitNumber)) {
             throw new IllegalArgumentException();
         }
 
