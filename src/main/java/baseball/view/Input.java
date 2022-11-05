@@ -1,12 +1,19 @@
 package baseball.view;
 
+import baseball.tools.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
     public String threeNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        while (true) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String inputData = Console.readLine();
+            boolean isValidate = new Validator(inputData).checkBaseballNumber();
+            if (isValidate)
+                return inputData;
+        }
+
     }
 
     public boolean continueGame() {
