@@ -24,7 +24,7 @@ public class Game {
     }
 
     public void start() {
-        initStartMessage();
+        System.out.println(INIT_GAME_START_MESSAGE);
 
         Ball BallGenerator = Ball.getInstance();
 
@@ -54,10 +54,4 @@ public class Game {
             }
         }
     }
-
-    private static void initStartMessage() {
-        System.out.println(INIT_GAME_START_MESSAGE);
-    }
-
-
 }
