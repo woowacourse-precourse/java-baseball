@@ -55,6 +55,9 @@ public class Application {
     }
 
     public static String putInNumber() {
+
+        System.out.print("숫자를 입력해주세요 : ");
+
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
