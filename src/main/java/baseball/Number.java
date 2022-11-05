@@ -21,12 +21,12 @@ public class Number {
         return new ArrayList<>(NumberSet);
     }
 
-    public String getInputNumber() {
+    public List<Integer> getInputNumber() {
         String input = readLine();
         if(!isValidString(input)) {
             throw new IllegalArgumentException();
         }
-        return input;
+        return stringToList(input);
     }
 
     private List<Integer> stringToList(String str) {
