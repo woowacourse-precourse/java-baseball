@@ -23,4 +23,12 @@ class ComputerTest {
 
         assertThat(check).isEqualTo(true);
     }
+
+    @Test
+    void 생성된_문제의_길이가_3인지_검증하는_테스트() {
+        computer.createProblem();
+        List<Integer> problem = computer.getProblem();
+
+        assertThat(problem.size()).isEqualTo(3);
+    }
 }
