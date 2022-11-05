@@ -8,9 +8,6 @@ public class UseFunc {
     final static int ONLY_ONE_THING_SAME = 1;
     final static int INIT_NUM = 0;
 
-    // 서로 다른 3자리의 수인지 확인
-    // 서로 다른 3자리의 수인지 확인하는 방법은?
-    // 1번을 for문 2번?
     public static boolean isNumOfIndividually(String str) {
         ArrayList<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = INIT_NUM;
@@ -35,7 +32,6 @@ public class UseFunc {
     private static int getCntSameNum(List<Integer> splitStrList, int cntSameNum, int value) {
         cntSameNum = 0;
         for (int index = 0; index < splitStrList.size(); index++) {
-
             int numValueListAtNow = getValueIndexList(splitStrList, index);
             cntSameNum = addSameNum(cntSameNum, value, numValueListAtNow);
         }
