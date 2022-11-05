@@ -6,7 +6,7 @@ public class InputControl {
     private static String readLine() {
         return Console.readLine();
     }
-    public static int inputInt() {
+    public static int readInt() {
         return strToInt(readLine());
     }
 
