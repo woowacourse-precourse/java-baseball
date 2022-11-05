@@ -21,6 +21,20 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
+            startBattle(randomNumberList);
+
+        } while (true);
+    }
+
+    public static void startGame() {
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void startBattle(List<Integer> randomNumberList) {
+
+        while(true) {
+
             String numberString = putInNumber();
 
             if (!checkNumber(numberString)) {
@@ -37,12 +51,7 @@ public class Application {
             ball = countingBall(0, userNumbers, randomNumberList);
             printCount(ball, strike);
 
-        } while (true);
-    }
-
-    public static void startGame() {
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        }
     }
 
     public static void putInRandomNumber(List<Integer> randomNumberList) {
