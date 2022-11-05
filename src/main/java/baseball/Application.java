@@ -60,4 +60,16 @@ public class Application {
         }
         return strike;
     }
+
+    //기능4. 컴퓨터와 사용자의 숫자 비교해 볼 개수 구하기
+    public static int ball(List<Integer> computer, List<Integer> user, int strike) {
+        int ball = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+        ball -= strike;
+        return ball;
+    }
 }
