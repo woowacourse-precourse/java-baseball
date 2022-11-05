@@ -10,7 +10,6 @@ import baseball.exception.InvalidInputException;
 public class User {
 	private static final String MIN_NUMBER = "1";
 	private static final String MAX_NUMBER = "9";
-	private static final int NUMBER_LENGTH = 3;
 	private List<Integer> number;
 
 	public User(List<Integer> number) {
@@ -26,13 +25,13 @@ public class User {
 
 	private void validateDuplicate(List<Integer> number) {
 		Set<Integer> numSet = new HashSet<>(number);
-		if (numSet.size() != NUMBER_LENGTH) {
+		if (numSet.size() != Computer.ANSWER_LENGTH) {
 			InvalidInputException.duplicateError();
 		}
 	}
 
 	private void validateNumberSize(List<Integer> number) {
-		if (number.size() != NUMBER_LENGTH) {
+		if (number.size() != Computer.ANSWER_LENGTH) {
 			InvalidInputException.sizeError();
 		}
 	}
