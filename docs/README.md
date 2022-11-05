@@ -51,16 +51,16 @@
 - countResult()
 - setStatusByProblemSolver()
 ### Player
-- interface
+- abstract class
 - numbers : List\<Integer>
 - setNumbers(int sizeOfNumbers)
 - getNumbers() : List\<Integer>
 ### ProblemMaker
-- implements Player
+- extends Player
 - hasNumber(int number) : boolean
 - isSameAtGivenLocation(int number, int index) : boolean
 ### ProblemSolver
-- implements Player
+- extends Player
 - chooseToRestart() : int
 ### Result
 - ballCount : int
