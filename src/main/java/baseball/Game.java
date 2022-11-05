@@ -23,4 +23,13 @@ public class Game {
         System.out.println(result.toString());
         return result.checkFinish();
     }
+
+    public void start(Player player) {
+        Computer computer = new Computer();
+        boolean finish = false;
+        while (!finish) {
+            finish = tryCycle(player, computer);
+        }
+        finishMessage();
+    }
 }
