@@ -42,14 +42,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void input_String_toIntList_Test(){
+    void test_Input_String_toIntList(){
         String test = "123";
         List<Integer> testList = new Input(test).getBaseballNumberList();
         assertThat(testList).containsExactly(1, 2, 3);
     }
 
+
+
     @Test
-    void inputView_test(){
+    void test_InputView(){
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());;
         System.setIn(in);
@@ -60,7 +62,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void hint_Model_ToString_Test(){
+    void test_Hint_Model_ToString(){
         int ball = 2;
         int strike = 1;
         Hint hint = new Hint(ball, strike);
@@ -68,7 +70,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void resultView_FINISH_Test(){
+    void test_ResultView_FINISH(){
 
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -78,7 +80,7 @@ class ApplicationTest extends NsTest {
         assertThat(resultView.getResult()).isEqualTo(Result.FINISH);
     }
     @Test
-    void resultView_Error_Test(){
+    void test_ResultView_Error(){
         ResultView resultView = new ResultView();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> resultView.printResult(State.ERROR))
@@ -87,7 +89,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void service_GenerateHint_3strike_Test(){
+    void test_Service_GenerateHint_3strike(){
         Service service = new Service();
         String answer = getAnswerString(service);
         Input input = new Input(answer);
@@ -96,7 +98,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void service_GenerateHint_2Ball_1Strike_Test(){
+    void test_Service_GenerateHint_2Ball_1Strike(){
         Service service = new Service();
         String answer = getAnswerString(service);
         char[] charInput = answer.toCharArray();
