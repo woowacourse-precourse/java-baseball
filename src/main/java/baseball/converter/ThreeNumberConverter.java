@@ -1,8 +1,8 @@
 package baseball.converter;
 
 import baseball.exception.DuplicateNumberException;
-import baseball.exception.GameEachInputNumberOutOfRangeException;
-import baseball.exception.GameInputNumberOutOfRangeException;
+import baseball.exception.EachInputNumberOutOfRangeException;
+import baseball.exception.InputNumberOutOfRangeException;
 import baseball.exception.IllegalNumberInputException;
 import baseball.exception.InputNumberFormatException;
 
@@ -53,13 +53,13 @@ public class ThreeNumberConverter {
 
     private void validateEachNumberRange(Set<Integer> numSet) {
         if (numSet.contains(0)) {
-            throw new GameEachInputNumberOutOfRangeException(inputString);
+            throw new EachInputNumberOutOfRangeException(inputString);
         }
     }
 
     private void validateRange(List<Integer> integerList) {
         if (integerList.size() != NUMBER_RANGE_SIZE) {
-            throw new GameInputNumberOutOfRangeException(inputString);
+            throw new InputNumberOutOfRangeException(inputString);
         }
     }
 
