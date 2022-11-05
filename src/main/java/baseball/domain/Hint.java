@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class Hint {
         String ballMsg = String.format("%d볼", ballCount);
 
         String hintMsg = null;
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuffer    stringBuffer = new StringBuffer();
         if (!(ballCount == 0)) {
             stringBuffer.append(ballMsg);
         }

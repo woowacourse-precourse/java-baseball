@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,9 +6,9 @@ import java.util.List;
 
 public class ThreeDigitNum {
 
-    static final int START_RANGE = 1;
-    static final int END_RANGE = 9;
-    static final int SIZE = 3;
+    public static final int START_RANGE = 1;
+    public static final int END_RANGE = 9;
+    public static final int SIZE = 3;
     private List<Integer> value = null;
 
     public ThreeDigitNum(List<Integer> list) {

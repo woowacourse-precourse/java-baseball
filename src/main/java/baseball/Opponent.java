@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.Hint;
+import baseball.domain.ThreeDigitNum;
+
 public interface Opponent {
 
     ThreeDigitNum createAnswer();

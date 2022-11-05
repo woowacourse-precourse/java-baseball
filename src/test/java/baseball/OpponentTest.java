@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Hint;
+import baseball.domain.ThreeDigitNum;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
