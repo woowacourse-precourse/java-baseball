@@ -3,6 +3,7 @@ package baseball.game;
 import baseball.playerComputer.PlayerComputer;
 import baseball.playerUser.PlayerUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -30,4 +31,19 @@ public class Game {
 
 		return askReplay();
 	}
+
+	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
+		List<Integer> judgement = new ArrayList<>();
+		int strikeCounter = findStrikes(userInput, answer);
+		int ballCounter = findBalls(userInput, answer);
+
+		judgement.add(strikeCounter);
+		judgement.add(ballCounter);
+
+		return judgement;
+	}
+
+
+
+
 }
