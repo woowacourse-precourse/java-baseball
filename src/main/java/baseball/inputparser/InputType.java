@@ -3,6 +3,8 @@ package baseball.inputparser;
 /**
  * 입력 문자열의 타입을 가지는 enum 클래스입니다.
  * 각 입력 문자열이 게임의 어느 시점에 입력된 문자열인지 나타냅니다.
+ * @version 1.0.0
+ * @author CHO MinHO
  */
 public enum InputType {
     /**

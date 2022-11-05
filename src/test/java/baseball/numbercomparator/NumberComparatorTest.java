@@ -9,6 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * NumberComparator 클래스와 관련된 테스트 클래스입니다.
+ * @version 1.0.0
+ * @author CHO MinHo
  */
 class NumberComparatorTest {
 

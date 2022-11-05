@@ -10,7 +10,7 @@ import static baseball.inputparser.RestartType.RESTART;
 
 /**
  * 사용자의 입력과 관련한 로직 처리를 담당합니다.
- * @version 1.0.0
+ * @version 2.0.0
  * @author Cho MinHo
  */
 public class InputParser {

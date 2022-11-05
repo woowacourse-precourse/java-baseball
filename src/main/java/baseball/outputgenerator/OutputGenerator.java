@@ -4,6 +4,8 @@ import baseball.numbercomparator.Score;
 
 /**
  * 컴퓨터의 난수 리스트와 사용자의 입력 리스트를 비교한 결과를 바탕으로 GameResult 클래스를 생성하는 기능을 담당하는 클래스입니다.
+ * @version 1.0.0
+ * @author CHO MinHO
  */
 public class OutputGenerator {
 

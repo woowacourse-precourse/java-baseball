@@ -8,6 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * OutputGenerator 클래스와 관련된 Test 클래스입니다.
+ * @version 1.0.0
+ * @author CHO MinHO
  */
 class OutputGeneratorTest {
 

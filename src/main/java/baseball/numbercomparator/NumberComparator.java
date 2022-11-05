@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * 컴퓨터가 생성한 숫자와 사용자가 입력한 숫자를 비교하여 결과를 반환하는 로직과 관련된 클래스입니다.
+ * @version 1.0.0
+ * @author CHO MinHo
  */
 public class NumberComparator {
 
