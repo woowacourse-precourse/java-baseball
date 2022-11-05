@@ -27,4 +27,18 @@ public class Judge {
         }
         return ballCnt;
     }
+
+    static void getGameScore(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        int strikeCnt = countStrike(userNumbers, computerNumbers);
+        int ballCnt = countBall(userNumbers, computerNumbers);
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCnt == 0 && ballCnt != 0) {
+            System.out.println(ballCnt + "볼");
+        } else if (strikeCnt != 0 && ballCnt == 0) {
+            System.out.println(strikeCnt + "스트라이크");
+        } else if (strikeCnt != 0 && ballCnt != 0) {
+            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+        }
+    }
 }
