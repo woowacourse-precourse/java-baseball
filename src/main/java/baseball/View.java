@@ -15,4 +15,7 @@ public class View {
         return Console.readLine();
     }
 
+    public void printBaseBallResult(BaseBallDto baseBallDto) {
+        System.out.println(baseBallDto.getResult());
+    }
 }
