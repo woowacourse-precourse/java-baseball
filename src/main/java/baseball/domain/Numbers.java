@@ -1,10 +1,10 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Numbers {
 
@@ -36,18 +36,22 @@ public class Numbers {
     }
 
     public Hints match(Numbers matchNumbers) {
-        List<Hint> hints = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i++) {
-            Number number = numbers.get(i);
-            if (matchNumbers.numbers.get(i).equals(number)) {
-                hints.add(Hint.STRIKE);
-                continue;
-            }
-            if (matchNumbers.numbers.contains(number)) {
-                hints.add(Hint.BALL);
-            }
+        List<Hint> hintList = IntStream.range(0, NUMBER_SIZE)
+                .mapToObj(number -> hint(matchNumbers, number))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        return new Hints(hintList);
+    }
+
+    private Hint hint(Numbers matchNumbers, int index) {
+        if (this.numbers.get(index).equals(matchNumbers.numbers.get(index))) {
+            return Hint.STRIKE;
         }
-        return new Hints(hints);
+        if (this.numbers.contains(matchNumbers.numbers.get(index))) {
+            return Hint.BALL;
+        }
+        return null;
     }
 
     @Override
