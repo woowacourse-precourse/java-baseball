@@ -43,17 +43,44 @@ public class Application {
             }
         }
     }
+    public static void Baseball_print(List count){
+        if ((int)count.get(0) > 0) {
+            System.out.print(count.get(0) + "볼 ");
+        }
+        if ((int)count.get(1) > 0) {
+            System.out.println(count.get(1) + "스트라이크");
+        }
+        if ((int)count.get(1) == 0 && (int)count.get(0) == 0) {
+            System.out.println("낫싱");
+        } else if ((int)count.get(1) == 0) {
+            System.out.println();
+        }
+    }
+
+    public static int Check_All_Correct(List count){
+        if (count.get(1).equals(3)){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return 1;
+        }
+        return 0;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = Computer_Number();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String user = Console.readLine();
-        isValidLength(user);
+        int All_correct = 0;
+        while (All_correct == 0) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String user = Console.readLine();
+            isValidLength(user);
 
-        List<Integer> count = new ArrayList<Integer>(Arrays.asList(0, 0));
-        Check_contain_Number(user, computer, count);
+            List<Integer> count = new ArrayList<Integer>(Arrays.asList(0, 0));
+            Check_contain_Number(user, computer, count);
+
+            Baseball_print(count);
+            All_correct = Check_All_Correct(count);
+        }
     }
 }
