@@ -2,7 +2,7 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputView {
+public class BaseballGameView {
     private static final String START_BASEBALL_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_USER_INPUT = "숫자를 입력해주세요 : ";
     private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
