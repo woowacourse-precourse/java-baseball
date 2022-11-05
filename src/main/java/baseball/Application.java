@@ -15,9 +15,20 @@ public class Application {
 
     private static boolean getResult() {
         List<String> receivingNumbers = receivingValue();
-        List<String> random = createRandom();
+        List<String> randomNumbers = createRandom();
 
         return false;
+    }
+
+    private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
+        int strikesCount = 0;
+        for (int index = 0; index < randomNumbers.size(); index++) {
+            if (receivingNumbers.get(index) == randomNumbers.get(index)) {
+                strikesCount++;
+            }
+        }
+
+        return strikesCount;
     }
 
     private static List<String> createRandom() {
