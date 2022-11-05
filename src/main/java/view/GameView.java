@@ -38,7 +38,7 @@ public class GameView {
                 int numInputOfUser = Integer.parseInt(readLine());
 
                 if (numInputOfUser == RESTART_GAME) {
-                    gameController.initRandNumOfComputer();
+                    gameController.reStartGame();
                 }
                 if (numInputOfUser == END_GAME) {
                     System.out.println(MSG_GAME_END);

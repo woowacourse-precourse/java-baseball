@@ -22,7 +22,7 @@ public class GameController {
         this.user.inputNumOfUser();
     }
 
-    public void initRandNumOfComputer() {
+    public void reStartGame() {
         computer.initComputer();
         computer.initCntStrikeBall();
     }
