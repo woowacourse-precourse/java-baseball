@@ -1,4 +1,4 @@
-package features;
+package configuration;
 
 import java.util.Map;
 
@@ -15,5 +15,11 @@ public interface Factory {
 
     // 출력 기능
     String printResult();
+
+    // 게임 기능
+    String playGame();
+
+    // 예외 기능
+    boolean validationCheck(String userLine);
 
 }
