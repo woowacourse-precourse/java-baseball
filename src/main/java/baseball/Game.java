@@ -85,7 +85,25 @@ public class Game {
             return true;
         }
     }
-    public void play() {}
+    public void play() {
+        printStartMessage();
+        List<Integer> computer = createComputerNumber();
+        List<Integer> user = null;
+
+        while (true) {
+            user = inputUserNumber();
+            String result = getResult(computer, user);
+            System.out.println(result);
+            boolean answer = isAnswer(result);
+
+            if (answer) {
+                if (!isFinish()) {
+                    replay();
+                }
+                break;
+            }
+        }
+    }
     public void replay(){
         play();
     }
