@@ -31,7 +31,7 @@ class PlayerTest {
     }
 
     @Nested
-    class 예외처리 {
+    class 플레이어의_입력받은_수의_개수_예외_처리 {
         @Test
         void case1() {
             var ref = new Object() {
