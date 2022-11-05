@@ -49,7 +49,9 @@ public class GameController {
     }
 
     private void showPlayersScore(){
-
+        scoreResultView.setBallCount(gameService.getBallCount());
+        scoreResultView.setStrikeCount(gameService.getStrikeCount());
+        scoreResultView.printScore();
     }
 
     private boolean isThreeStrike(){
