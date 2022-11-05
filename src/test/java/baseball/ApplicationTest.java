@@ -1,11 +1,16 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -17,12 +22,19 @@ class ApplicationTest extends NsTest {
 
     private Validations validations;
     private Processing processing ;
-
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     @BeforeEach
     void getInstanceOfMethodClass(){
         this.validations = new Validations();
         this.processing = new Processing();
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    void restoreStreams() {
+        System.setOut(originalOut);
     }
 
     @Test
@@ -39,8 +51,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력값_Return_Test(){
         // given
-        String inputNum = "423";
-        List<String> answer = List.of("4","2","3");
+        ArrayList<String> answer = new ArrayList<>(){{ add("4");add("2");add("3");}};
 
         // then
         // readLine 메서드 특성상 테스트 시점에만 해당 메서드에 고정 값 지정 후 테스트 진행
@@ -50,8 +61,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 낫싱_Check_Test(){
         // given
-        List<String> answer = List.of("4","2","3");
-        List<String> userNumList = List.of("1","9","7");
+        ArrayList<String> answer = new ArrayList<>(){{ add("4");add("2");add("3");}};
+        ArrayList<String> userNumList = new ArrayList<>(){{ add("1");add("9");add("7");}};
 
         // when
         boolean isNothing = validations.checkIsItNothing(answer, userNumList);
@@ -78,6 +89,65 @@ class ApplicationTest extends NsTest {
         assertThat(ballCnt).isEqualTo(1);
     }
 
+    @Test
+    void Ball_Print_Test(){
+        // given
+        int ballCount = 2;
+
+        // when
+        processing.printBall(ballCount);
+
+        //then
+        assertThat("2볼 ").isEqualTo(outContent.toString());
+    }
+
+    @Test
+    void StrikeAndBall_Print_Test(){
+        // given
+        int ballCount = 2;
+        int strikeCount = 1;
+
+        // when
+        processing.printBall(ballCount);
+        processing.printStrike(strikeCount);
+
+        //then
+        assertThat("2볼 1스트라이크\n").isEqualTo(outContent.toString());
+    }
+    @Test
+    void StrikeZero_Print_Test(){
+        // given
+        int ballCount = 2;
+        int strikeCount = 0;
+
+        // when
+        processing.printBall(ballCount);
+        processing.printStrike(strikeCount);
+
+        //then
+        assertThat("2볼 \n").isEqualTo(outContent.toString());
+    }
+
+    @Test
+    void 통합_연산_Test(){
+        // given
+        ArrayList<String> answer = new ArrayList<>(){{ add("4"); add("2"); add("3");}} ;
+        ArrayList<String> containedNumList = new ArrayList<>(){{ add("-1"); add("9"); add("3");}}  ;
+        Map<String, Object> resultMap = new HashMap<>(){{
+                put("strikeCount",1);
+                put("ballCount",1);
+                put("isStrikeThree",false);
+        }};
+
+        // when
+        Map<String,Object> testMap = processing.calculateStrikeAndBall(answer,containedNumList);
+
+        // then
+        assertThat(testMap).isEqualTo(resultMap);
+        assertThat(testMap.get("strikeCount")).isEqualTo(1);
+        assertThat(testMap.get("ballCount")).isEqualTo(1);
+        assertThat(testMap.get("isStrikeThree")).isEqualTo(false);
+    }
 
     @Test
     void 게임종료_후_재시작() {
