@@ -205,7 +205,7 @@ public class Application {
 
         String replayNumberString = scanner.nextLine();
 
-        return true;
+        return checkReplayNumber(replayNumberString);
     }
 
     public static boolean checkReplayNumber(String replayNumberString) {
