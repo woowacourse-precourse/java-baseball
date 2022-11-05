@@ -20,15 +20,14 @@ public class Computer {
         List<Integer> computerNumberList = new ArrayList<>();
         while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computerNumberList = addNumberIfNotList(computerNumberList, randomNumber);
+            addNumberIfNotList(computerNumberList, randomNumber);
         }
         return computerNumberList;
     }
 
-    List<Integer> addNumberIfNotList(List<Integer> computerNumberList, int randomNumber) {
+    private void addNumberIfNotList(List<Integer> computerNumberList, int randomNumber) {
         if (!computerNumberList.contains(randomNumber)) {
             computerNumberList.add(randomNumber);
         }
-        return computerNumberList;
     }
 }
