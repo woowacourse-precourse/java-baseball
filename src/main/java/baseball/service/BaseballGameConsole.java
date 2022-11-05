@@ -13,7 +13,7 @@ public class BaseballGameConsole {
     private final Validator validator = new Validator();
     private final Computer computer = new Computer();
 
-    public void playGame(Player player) {
+    public void playGameWithPlayer(Player player) {
         startingGuide(player.getName());
         do {
             playSingleGame(player);
