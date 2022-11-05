@@ -8,6 +8,7 @@
   - 길이가 3인지 체크
   - 각 자릿수가 1에서 9 사이인지 체크
   - 각 자릿수가 모두 다른지 체크
+- int get(int i) : 리스트 numbers 의 i번째 원소를 반환하는 함수
 
 ### class Computer
 
@@ -15,8 +16,8 @@
 - Numbers answer : 답 3자리에 해당됨, 변경할 수 없는 상수
 - Computer generateAnswer() : 숫자 야구의 올바른 답을 생성하는 함수
   - 숫자를 중복해서 뽑지 않도록 구현한다
-- int strike(Numbers numbers) : 스트라이크 개수를 계산하는 함수
-- int ball(Numbers numbers) : 볼 개수를 계산하는 함수
+- int strike(Numbers guess) : 스트라이크 개수를 계산하는 함수
+- int ball(Numbers guess) : 볼 개수를 계산하는 함수
 
 ### class User
 
