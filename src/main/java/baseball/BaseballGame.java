@@ -18,16 +18,18 @@ public class BaseballGame {
 
     public void gameStart() {
         Computer computerBalls = new Computer();
-        Exception exception = new Exception();
-
+        this.strike = 0;
+        this.ball = 0;
+        System.out.print("숫자를 입력하세요 : ");
         String userBalls = Console.readLine();
-        exception.Check(userBalls);
+        Exception.Check(userBalls);
 
         while (throwBall(userBalls, computerBalls.getComputerBalls())) {
             this.strike = 0;
             this.ball = 0;
+            System.out.print("숫자를 입력하세요 : ");
             userBalls = Console.readLine();
-            exception.Check(userBalls);
+            Exception.Check(userBalls);
         }
     }
 
