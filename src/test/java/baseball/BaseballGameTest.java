@@ -78,4 +78,39 @@ public class BaseballGameTest {
             assertThat(baseballGame.checkBall(computerNumber, userNumber)).isEqualTo(result);
         }
     }
+
+    @Nested
+    class getResultTest {
+        @Test
+        void case1() {
+            int strike = 1;
+            int ball = 1;
+            String result = "1볼 1스트라이크";
+            assertThat(baseballGame.getResult(strike, ball)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            int strike = 0;
+            int ball = 2;
+            String result = "2볼";
+            assertThat(baseballGame.getResult(strike, ball)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            int strike = 1;
+            int ball = 0;
+            String result = "1스트라이크";
+            assertThat(baseballGame.getResult(strike, ball)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            int strike = 0;
+            int ball = 0;
+            String result = "낫싱";
+            assertThat(baseballGame.getResult(strike, ball)).isEqualTo(result);
+        }
+    }
 }
