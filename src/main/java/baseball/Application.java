@@ -53,7 +53,12 @@ class GameReadyMachine {
 }
 
 class gameProcessor{
-
+    private String lastInput=null;
+    public String userInput()
+    {
+        lastInput=Console.readLine();
+        return lastInput;
+    }
 }
 public class Application {
     public static void main(String[] args) {
