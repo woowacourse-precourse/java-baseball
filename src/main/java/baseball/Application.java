@@ -141,6 +141,23 @@ class GameProgress {
         return play;
     }
 
-
-
+    public static boolean gameReset() {
+        boolean end = true;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        gameButton = Integer.parseInt(Console.readLine());
+        if (gameButton == 1) {
+            ballCount = 0;
+            strikeCount = 0;
+            end = false;
+        }
+        if (gameButton == 2) {
+            System.out.println("게임 종료");
+            end = true;
+        }
+        if (gameButton != 1 && gameButton != 2){
+            throw new IllegalArgumentException("게임 종료");
+        }
+        return end;
+    }
 }
