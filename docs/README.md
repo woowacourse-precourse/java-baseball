@@ -4,7 +4,7 @@
   - 숫자 야구 게임이 진행되는 함수
   
 
-- void startGame()
+- void showGameStart()
   - "숫자 야구 게임을 시작합니다."를 출력하는 함수
 
 
