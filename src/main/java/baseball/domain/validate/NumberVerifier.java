@@ -34,4 +34,10 @@ public class NumberVerifier {
             }
         }
     }
+
+    public static void isInputNumberOneOrTwo(int number) {
+        if (number < 1 || 2 < number) {
+            throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
+        }
+    }
 }

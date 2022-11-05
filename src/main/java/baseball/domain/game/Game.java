@@ -25,7 +25,9 @@ public class Game {
     }
 
     private void restartGameInputOneOrElseEndGame() {
-        if (OutputView.printRestart() == 1) {
+        int inputNumber = OutputView.printRestart();
+        NumberVerifier.isInputNumberOneOrTwo(inputNumber);
+        if (inputNumber == 1) {
             new Game();
         }
     }
