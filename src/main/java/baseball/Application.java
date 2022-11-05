@@ -52,7 +52,7 @@ class GameReadyMachine {
     }
 }
 
-class gameProcessor{
+class GameProcessor{
     private String lastInput=null;
     public String userInput()
     {
