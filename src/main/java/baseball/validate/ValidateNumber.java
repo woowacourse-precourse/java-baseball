@@ -22,7 +22,7 @@ public class ValidateNumber {
         String s = String.valueOf(number);
         int length = s.length();
         if (!p.test(length)) {
-            throw new IllegalStateException(CHECK_DIGIT_LENGTH);
+            throw new IllegalArgumentException(CHECK_DIGIT_LENGTH);
         }
     }
 
@@ -40,7 +40,7 @@ public class ValidateNumber {
         while (linkedList.size() != 0) {
             String pop = linkedList.pop();
             if (linkedList.contains(pop)) {
-                throw new IllegalStateException(NO_OVERLAP_NUMBER);
+                throw new IllegalArgumentException(NO_OVERLAP_NUMBER);
             }
         }
 
@@ -52,7 +52,7 @@ public class ValidateNumber {
      */
     public static void validateInList(int number) {
         if (!CHOICE_LIST.contains(number)) {
-            throw new IllegalStateException(ONLY_IN_CHOICE_LIST);
+            throw new IllegalArgumentException(ONLY_IN_CHOICE_LIST);
         }
     }
 

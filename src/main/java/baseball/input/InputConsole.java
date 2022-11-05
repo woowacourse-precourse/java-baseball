@@ -10,7 +10,7 @@ public class InputConsole implements InputAble {
             String readLine = Console.readLine();
             return Integer.parseInt(readLine);
         } catch (NumberFormatException e) {
-            throw new IllegalStateException(ONLY_NUMBER);
+            throw new IllegalArgumentException(ONLY_NUMBER);
         }
     }
 }
