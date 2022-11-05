@@ -250,5 +250,7 @@ public class Computer {
         return numThreeRanOfComputerList;
     }
 
-  
+    public static Computer getInstanceUser() {
+        return (new Computer());
+    }
 }
