@@ -126,13 +126,6 @@ public class Application {
         return pitchingValue == number;
     }
 
-    /*public static int checkStrike(String inputNumber, String number) {
-
-        for (int pitching = 0; pitching < 3; pitching++) {
-            if (inpu)
-        }
-    }*/
-
     public static void checkInputNumberValidation(String inputNumber) {
 
         checkLength(inputNumber);
