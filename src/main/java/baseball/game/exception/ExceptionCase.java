@@ -13,4 +13,10 @@ public class ExceptionCase {
             throwException(COUNT_BALL + "개의 숫자를 입력하시오.");
         }
     }
+
+    public static void catchOutOfRangeException(Integer input){
+        if(input<MIN_NUMBER|MAX_NUMBER<input){
+            throwException(MIN_NUMBER+"~"+MAX_NUMBER+"까지의 숫자를 입력해야 합니다.");
+        }
+    }
 }

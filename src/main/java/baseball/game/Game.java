@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.game.Option.COUNT_BALL;
+import static baseball.game.exception.ExceptionCase.catchOutOfRangeException;
 import static baseball.game.exception.ExceptionCase.catchSizeException;
 
 public class Game {
@@ -35,6 +36,7 @@ public class Game {
         int number;
         for(int i = 0;i<COUNT_BALL;i++){
             number = Character.getNumericValue(input.charAt(i));
+            catchOutOfRangeException(number);
             userNumbers.add(number);
         }
     }
