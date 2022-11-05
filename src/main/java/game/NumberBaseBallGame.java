@@ -34,9 +34,6 @@ public class NumberBaseBallGame {
         Output.printStartGuideMessage();
         List<Integer> answerNumber = getAnswerNumber();
 
-        // todo 지우기 정답 확인 테스트
-        System.out.println(answerNumber);
-
         while (true) {
             List<Integer> inputNumber = getInputNumber();
 
