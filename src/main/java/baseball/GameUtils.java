@@ -17,9 +17,9 @@ import static baseball.common.Constant.DIGIT_LENGTH_LIMIT;
 
 public class GameUtils {
 
-    private static int strike = 0;
+    private static int strike;
 
-    private static int ball = 0;
+    private static int ball;
 
     private static List<Integer> answerNum;
 
@@ -31,7 +31,10 @@ public class GameUtils {
     }
 
     public static void playBaseBallGame() {
+        strike = 0;
+        ball = 0;
         playerNum = getPlayerInputNum();
+        compareInputAndAnswer();
     }
 
     public static List<Integer> getPlayerInputNum() {
@@ -62,13 +65,22 @@ public class GameUtils {
         return new ArrayList<>(answer);
     }
 
-    public static void checkStrikeAndUpdateScore(int i, int j) {
+    public static void compareInputAndAnswer() {
+        for (int i = 0; i < answerNum.size(); i++) {
+            for (int j = 0; j < playerNum.size(); j++) {
+                checkStrikeAndUpdateScore(i, j);
+                checkBallAndUpdateScore(i, j);
+            }
+        }
+    }
+
+    private static void checkStrikeAndUpdateScore(int i, int j) {
         if (i == j && answerNum.get(i).equals(playerNum.get(j))) {
             strike++;
         }
     }
 
-    public static void checkBallAndUpdateScore(int i, int j) {
+    private static void checkBallAndUpdateScore(int i, int j) {
         if (i != j && answerNum.get(i).equals(playerNum.get(j))) {
             ball++;
         }
