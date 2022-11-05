@@ -27,7 +27,7 @@ public class GameTest {
     }
 
     @Test
-    void 정답값의_각각의_수가_중복되지_않는지(){
+    void 정답값의_각각의_수가_중복되지_않는지() {
         assertThat(answer.getValue().stream()
                 .distinct()
                 .count() != answer.getValue().size()).isEqualTo(false);
