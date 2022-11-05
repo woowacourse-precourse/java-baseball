@@ -79,7 +79,17 @@ public class Game {
 		return counter;
 	}
 
+	// todo : 리팩토링 명단
+	private int countBalls(String userInput, String answer, int i) {
+		char userDigit = userInput.charAt(i);
+		char answerDigit = answer.charAt(i);
 
+		if (userDigit != answerDigit && answer.contains("" + userDigit)) {
+			return 1;
+		}
+
+		return 0;
+	}
 
 
 
