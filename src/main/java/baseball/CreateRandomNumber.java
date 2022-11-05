@@ -9,7 +9,7 @@ public class CreateRandomNumber {
   public static String numberMaker() {
     List<Integer> number = new ArrayList<>();
 
-    while (number.size() < 3) {
+    while (number.size() < Constant.REQUIRED_NUMBER_LENGTH) {
       int randomNumber = Randoms.pickNumberInRange(1, 9);
       if (!number.contains(randomNumber))
         number.add(randomNumber);

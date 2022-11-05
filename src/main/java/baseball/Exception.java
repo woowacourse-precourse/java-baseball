@@ -8,7 +8,7 @@ public class Exception {
   public static boolean isRightLength(String userNumber) {
     if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH)
       throw new IllegalArgumentException();
-    return true;
+    return true; //여기 true도 전역변수로???
   }
 
   //중복된 숫자가 있으면
