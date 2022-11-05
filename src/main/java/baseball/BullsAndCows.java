@@ -52,12 +52,10 @@ public class BullsAndCows {
         if (resultOfEndGame.equals(END)) {
             System.out.println(END.getMessage());
         }
-
     }
 
     private String getResultMessageOfGuessNumber(String userInput) {
-        validateIsNumber(userInput);
-        validateLength(userInput);
+        validateNumber(userInput);
 
         this.userInput = Arrays.stream(userInput.split(""))
                 .map(Integer::parseInt)
@@ -143,6 +141,12 @@ public class BullsAndCows {
 
     private boolean isEnd() {
         return strikeCount == STRIKE_COUNT_FOR_END;
+    }
+
+    private void validateNumber(String input) {
+        validateIsNumber(input);
+        validateLength(input);
+        validateIsUniqueNumber(input);
     }
 
     private void validateLength(String input) {
