@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Opponent {
 
-	private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final int MIN_DIGIT = 1;
 	private static final int MAX_DIGIT = 9;
 	private static final int DIGIT_LENGTH = 3;
