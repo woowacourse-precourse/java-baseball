@@ -1,4 +1,4 @@
-package Constant;
+package constant;
 
 public class Const {
     public static final int MIN_NUMBER = 1;

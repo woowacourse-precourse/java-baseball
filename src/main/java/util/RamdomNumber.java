@@ -1,6 +1,6 @@
-package Util;
+package util;
 
-import Constant.Const;
+import constant.Const;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RamdomNumber {

@@ -1,7 +1,7 @@
 package baseball;
 
-import Constant.Const;
-import Util.RamdomNumber;
+import constant.Const;
+import util.RamdomNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {

@@ -1,6 +1,6 @@
 package baseball;
 
-import Constant.Const;
+import constant.Const;
 
 public class Hint {
     public int strike;
