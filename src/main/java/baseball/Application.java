@@ -60,7 +60,8 @@ public class Application {
         if (
                 checkIntegerOrCharacter(userNumberStringList)
                         || checkInputLength(userNumberStringList)
-                        || checkSameNumbers(userNumberStringList)) {
+                        || checkSameNumbers(userNumberStringList)
+                        || checkGetZero(userNumberStringList)) {
             return true;
         }
 
@@ -94,6 +95,16 @@ public class Application {
             }
             else {
                 haveNumberList.add(userNumberStringList[i]);
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean checkGetZero(String[] userNumberStringList) {
+        for (int i = 0; i < userNumberStringList.length; i++) {
+            if (userNumberStringList[i].equals("0")) {
+                return true;
             }
         }
 
