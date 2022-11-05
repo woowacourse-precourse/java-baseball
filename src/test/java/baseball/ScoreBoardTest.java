@@ -1,29 +1,53 @@
 package baseball;
 
 import baseball.game.ScoreBoard;
-import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ScoreBoardTest {
 
     @Test
-    void 스코어보드_점수측정_테스트(){
-        ScoreBoard scoreBoard1 = new ScoreBoard();
-        List<Integer> targetNumbers = Arrays.asList(1,2,3);
-        List<Integer> attackNumbers = Arrays.asList(1,2,3);
-        scoreBoard1.calculate(targetNumbers, attackNumbers);
+    void 스코어보드_addBall_addStrike_테스트(){
+        ScoreBoard scoreBoard = new ScoreBoard();
 
-        Assertions.assertThat(scoreBoard1.getScore()).isEqualTo(Arrays.asList(3,0));
+        scoreBoard.addBall();
+        scoreBoard.addBall();
+        scoreBoard.addStrike();
 
-        ScoreBoard scoreBoard2 = new ScoreBoard();
-        List<Integer> targetNumbers2 = Arrays.asList(2,4,8);
-        List<Integer> attackNumbers2 = Arrays.asList(4,6,8);
-        scoreBoard2.calculate(targetNumbers2, attackNumbers2);
+        Assertions.assertThat(scoreBoard.getBallAndStrike()).isEqualTo(Arrays.asList(1,2));
+    }
 
-        Assertions.assertThat(scoreBoard2.getScore()).isEqualTo(Arrays.asList(1,1));
+    @Test
+    void 스코어보드_printBallAndStrike_테스트(){
+        ScoreBoard scoreBoard = new ScoreBoard();
 
+        scoreBoard.addBall();
+        scoreBoard.addBall();
+        scoreBoard.addStrike();
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        scoreBoard.printBallAndStrike();
+
+        String output = "2볼 1스트라이크";
+
+        Assertions.assertThat(out.toString()).isEqualTo(output);
+    }
+
+    @Test
+    void 스코어보드_printBallAndStrike_낫싱_테스트(){
+        ScoreBoard scoreBoard = new ScoreBoard();
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        scoreBoard.printBallAndStrike();
+
+        String output = "낫싱";
+
+        Assertions.assertThat(out.toString()).isEqualTo(output);
     }
 }
