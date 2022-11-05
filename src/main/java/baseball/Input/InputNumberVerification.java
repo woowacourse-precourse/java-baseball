@@ -8,15 +8,15 @@ public class InputNumberVerification {
     public boolean verifyNumber (int receivedNumber){
 
         if(!verifyNumberOverlap(receivedNumber)){
-            return false;
+            throw new IllegalArgumentException("각자 다른 숫자를 입력해주세요");
         }
 
         if(!verifyNumberOneToNine(receivedNumber)){
-            return false;
+            throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요");
         }
 
         if(!verifyNumberThreeDigit(receivedNumber)){
-            return false;
+            throw new IllegalArgumentException("숫자만 입력해 주세요");
         }
 
         return true;
@@ -28,15 +28,22 @@ public class InputNumberVerification {
     }
 
     private boolean verifyNumberOneToNine(int receivedNumber){
-        for(char oneNumber : beforeVerificationSetting.makeNumberSplitArrangement(receivedNumber)){
-            if((int) oneNumber <= 0  || 9 < (int) oneNumber){
-                return false;
+        for(int oneNumber : beforeVerificationSetting.makeNumberSplitList(receivedNumber)){
+            if(1 <= oneNumber  && oneNumber <=9){
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private boolean verifyNumberThreeDigit(int receivedNumber){
-        return beforeVerificationSetting.makeNumberSplitArrangement(receivedNumber).length == 3;
+        return beforeVerificationSetting.makeNumberSplitList(receivedNumber).size() == 3;
+    }
+
+    public boolean verifyOneOrTwoButton(int receivedButtonNumber){
+        if(receivedButtonNumber == 1 || receivedButtonNumber ==2){
+            return false;
+        }
+        return true;
     }
 }
