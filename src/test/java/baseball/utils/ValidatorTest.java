@@ -1,9 +1,12 @@
 package baseball.utils;
 
+import baseball.Ball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.nio.channels.IllegalChannelGroupException;
+import java.util.ArrayList;
+import java.util.List;
 
 class ValidatorTest {
 
@@ -51,6 +54,37 @@ class ValidatorTest {
 
 
     @Test
-    void validateDuplication() {
+    void validateDuplication_입력된_값_중_중복된_값이_있을_경우_예외를_던지는지_테스트() {
+        //given
+        List<Ball> playerBalls = new ArrayList<>();
+        playerBalls.add(new Ball(1));
+
+        Ball ball = new Ball(1);
+        //when
+        //then
+        Assertions.assertThatThrownBy(() -> {
+                      if (playerBalls.contains(ball)) {
+                          throw new IllegalArgumentException();
+                      }
+                  })
+                  .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateDuplication_입력된_값_중_중복된_값이_없을_경우_리스트에_잘_추가되는지_테스트() {
+        //given
+        List<Ball> playerBalls = new ArrayList<>();
+        playerBalls.add(new Ball(1));
+
+        Ball ball = new Ball(2);
+        //when
+        if (playerBalls.contains(ball)) {
+            throw new IllegalArgumentException();
+        }
+        playerBalls.add(ball);
+
+        //then
+        Assertions.assertThat(playerBalls.size())
+                  .isEqualTo(2);
     }
 }
