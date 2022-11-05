@@ -15,13 +15,10 @@ public class Application {
     static Integer ballCount = 0;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        try{
-            userInputNumbers();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+
+
     }
+
 
     public static void createRandomNumber(){
         while (computerNumber.size() < 3) {
@@ -32,18 +29,35 @@ public class Application {
         }
     }
 
-    public static void userInputNumbers() throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void userInputNumbers(BufferedReader br) throws IOException{
+
+        userNumber.removeAll(userNumber);
+
         System.out.print("숫자를 입력해주세요 : ");
         String inputStr = br.readLine();
+        String conversion = "";
 
-        if(!inputStr.matches("[0-9]{3}")){
+        for(int i=0; i<inputStr.length(); i++) {
+            if(inputStr.indexOf(inputStr.charAt(i)) == i){
+                conversion += inputStr.charAt(i);
+            }
+        }
+
+        if(!inputStr.matches("[0-9]{3}") && inputStr.equals(conversion)){
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
 
-        for(String inputSingleStr : inputStr.split("")){
+        for(String inputSingleStr : conversion.split("")){
             userNumber.add(Integer.parseInt(inputSingleStr));
         }
+    }
+    
+    public static Integer answerNumber(BufferedReader br) throws IOException{
+        String newGameChoice = br.readLine();
+        if(newGameChoice.equals("1") || newGameChoice.equals("2")){
+            return Integer.parseInt(newGameChoice);
+        }
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
     }
 
     public static void countStrikeAndBall(){
@@ -60,14 +74,15 @@ public class Application {
     }
 
     public static void printStrikeAndBall(){
-        if(ballCount > 0){
-            System.out.print(ballCount + "볼 " + strikeCount + "스트라이크");
+        if(ballCount > 0 && strikeCount > 0){
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }else if(strikeCount > 0){
-            System.out.print(strikeCount + "스트라이크");
+            System.out.println(strikeCount + "스트라이크");
+        }else if(ballCount > 0){
+            System.out.println(ballCount + "볼");
         }else if(ballCount == 0 && strikeCount == 0){
-            System.out.print("낫싱");
+            System.out.println("낫싱");
         }
     }
 }
-
 
