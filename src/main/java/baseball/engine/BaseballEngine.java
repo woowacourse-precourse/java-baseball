@@ -3,6 +3,7 @@ package baseball.engine;
 import baseball.common.StringUtil;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,6 +61,35 @@ public class BaseballEngine {
             if (sameValueCount >= 2) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public boolean isValidRetryInput(String userInput) {
+        if (StringUtil.isNullOrEmpty(userInput)) {
+            return false;
+        }
+
+        for (char input : userInput.toCharArray()) {
+            if (!Character.isDigit(input)) {
+                return false;
+            }
+        }
+
+        if (userInput.length() > 1) {
+            return false;
+        }
+
+        for (char input : userInput.toCharArray()) {
+            int convertedValue = Character.getNumericValue(input);
+            boolean isInclude = Arrays.stream(PlayState.values())
+                    .anyMatch(i -> i.getState() == convertedValue);
+
+            if (!isInclude) {
+                return false;
+            }
+
         }
 
         return true;
