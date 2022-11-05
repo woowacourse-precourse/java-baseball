@@ -64,8 +64,18 @@ public class BallCount {
         return result;
     }
 
-    public int getBallCount() {
-        return ballCount;
+    public void printBallCount() {
+        if(strikeCount == 3){
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        } else if((ballCount == 0) && (strikeCount == 0)){
+            System.out.println("낫싱");
+        } else if((ballCount != 0) || (strikeCount == 0)) {
+            System.out.println(ballCount + "볼");
+        } else if((ballCount == 0) || (strikeCount != 0)) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if((ballCount != 0) || (strikeCount != 0)) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
     }
 
     public int getStrikeCount() {
