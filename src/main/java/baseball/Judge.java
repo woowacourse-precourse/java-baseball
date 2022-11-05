@@ -10,6 +10,18 @@ public class Judge {
         this.ANSWER = ANSWER;
     }
 
+    /**
+     *
+     * @param guess user's guess
+     * @return count list (ball, strike)
+     */
+    public List<Integer> judgeUserGuess(List<Integer> guess) {
+        int strikeCount = countStrike(guess);
+        int ballCount = countBall(guess) - strikeCount;
+
+        return List.of(ballCount, strikeCount);
+    }
+
     private int countBall(List<Integer> guess) {
         return (int) guess.stream()
                 .filter(number -> ANSWER.contains(number))
@@ -20,12 +32,5 @@ public class Judge {
         return (int) IntStream.range(0, 3)
                 .filter(index -> ANSWER.get(index) == guess.get(index))
                 .count();
-    }
-
-    public List<Integer> judgeUserGuess(List<Integer> guess) {
-        int strikeCount = countStrike(guess);
-        int ballCount = countBall(guess) - strikeCount;
-
-        return List.of(ballCount, strikeCount);
     }
 }
