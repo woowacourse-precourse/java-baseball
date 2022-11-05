@@ -44,8 +44,7 @@ public class Application {
         int number = changeStrToInt(input);
         List<Integer> numArr = changeIntToList(number);
 
-        if (isOverlap(numArr) || isNotSizeThree(numArr)
-                || hasZero(numArr) || isNegativeNumber(number)) {
+        if (isOverlap(numArr) || isNotSizeThree(numArr) || hasZero(numArr)) {
             isWrongInput = true;
         }
 
@@ -53,7 +52,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-    
+
     public static int changeStrToInt(String input) {
         int number;
 
@@ -64,5 +63,16 @@ public class Application {
         }
 
         return number;
+    }
+
+    public static List<Integer> changeIntToList(int number) {
+        List<Integer> numArr = new ArrayList<Integer>();
+
+        while (number > 0) {
+            numArr.add(0, number % 10);
+            number /= 10;
+        }
+
+        return numArr;
     }
 }
