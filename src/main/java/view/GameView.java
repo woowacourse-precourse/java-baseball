@@ -35,7 +35,7 @@ public class GameView {
             if (gameController.isEndGame()) {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
-                int numInputOfUser = Integer.parseInt(readLine());
+                int numInputOfUser = parseIntFromInputOfUser();
 
                 if (numInputOfUser == RESTART_GAME) {
                     gameController.reStartGame();
@@ -47,6 +47,10 @@ public class GameView {
             }
             gameController.initCntStrikeBallOfComputer();
         }
+    }
+
+    private int parseIntFromInputOfUser() {
+        return Integer.parseInt(readLine());
     }
 
 }
