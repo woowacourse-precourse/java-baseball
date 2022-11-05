@@ -22,6 +22,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ApplicationTest extends NsTest {
 
     @ParameterizedTest
+    @DisplayName("입력된 값이 1이면 true, 2면 false 리턴하는 기능 테스트")
+    @CsvSource(value = {"1, true", "2, false"})
+    void checkOrderNumberValue(String inputOrderNumber, boolean expected) {
+
+        boolean result = Application.checkOrderNumberValue(inputOrderNumber);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
     @DisplayName("입력된 게임을 계속할지 확인하는 명령어에 대한 유효성 검사 기능 테스트")
     @ValueSource(strings = {"2", "1", "3", "   ", "rkadsf", "가나다라마사앚차카탚하"})
     void checkOrderNumberValidationTest(String inputNumber) {
