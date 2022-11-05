@@ -20,30 +20,66 @@ public class BaseballGame {
         this.messagePrinter = new GameMessagePrinter();
         this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
         this.console = new GameConsole();
-        messagePrinter.printStartMessage();
     }
 
     public void play() throws IllegalArgumentException {
+        boolean cycleFlag = true;
+
+        messagePrinter.printStartMessage();
+        while (cycleFlag) {
+            cycleFlag = playGameCycle();
+        }
+    }
+
+    private boolean playGameCycle() {
+        try {
+            playBaseballGame();
+            int statusCode = restartOrExitProcess();
+            if (isExitCode(statusCode)) {
+                return false;
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+        return true;
+    }
+
+    private int restartOrExitProcess() {
+        messagePrinter.printRestartOrExitMessage();
+        return console.inputCode();
+    }
+
+    private void playBaseballGame() {
         while (true) {
-            try {
-                while (true) {
-                    messagePrinter.printNumberInputMessage();
-                    List<Integer> threeNumbers = console.inputThreeNumbers();
-                    BallStrikeDto answer = opponent.answer(threeNumbers);
-                    messagePrinter.printResultMessage(answer);
-                    if (answer.getStrikeCount() == 3) {
-                        messagePrinter.printFinishMessage();
-                        break;
-                    }
-                }
-                messagePrinter.printRestartOrExitMessage();
-                int statusCode = console.inputCode();
-                if (statusCode == EXIT_CODE) {
-                    break;
-                }
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e.getMessage());
+            List<Integer> threeNumbers = inputProcess();
+            BallStrikeDto answer = checkProcess(threeNumbers);
+            if (isFinish(answer)) {
+                finishProcess();
+                break;
             }
         }
+    }
+
+    private boolean isExitCode(int statusCode) {
+        return statusCode == EXIT_CODE;
+    }
+
+    private void finishProcess() {
+        messagePrinter.printFinishMessage();
+    }
+
+    private boolean isFinish(BallStrikeDto answer) {
+        return answer.getStrikeCount() == 3;
+    }
+
+    private BallStrikeDto checkProcess(List<Integer> threeNumbers) {
+        BallStrikeDto answer = opponent.answer(threeNumbers);
+        messagePrinter.printResultMessage(answer);
+        return answer;
+    }
+
+    private List<Integer> inputProcess() {
+        messagePrinter.printNumberInputMessage();
+        return console.inputThreeNumbers();
     }
 }
