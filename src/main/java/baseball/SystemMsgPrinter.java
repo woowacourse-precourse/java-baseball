@@ -14,4 +14,8 @@ public final class SystemMsgPrinter {
     public static void printGameRestartMessage() {
         System.out.println(SystemConstant.GAME_RESTART_MESSAGE);
     }
+
+    public static void printGameInputMessage() {
+        System.out.print(SystemConstant.GAME_INPUT_MESSAGE);
+    }
 }
