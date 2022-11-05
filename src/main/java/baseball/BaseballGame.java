@@ -1,8 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BaseballGame {
 
@@ -24,6 +22,29 @@ public class BaseballGame {
             this.ball++;
         }
     }
+    void refereeBaseball(int userBall, ArrayList<Integer> computerBalls, int ballCount) {
+        int computerBall;
+        boolean isStrike;
+        for (int computerBallCount = 0; computerBallCount < computerBalls.size(); computerBallCount++) {
+            computerBall = computerBalls.get(computerBallCount);
+            isStrike = ballCount == computerBallCount;
+            ballReader(userBall, computerBall, isStrike);
+        }
+    }
+
+    void throwball(ArrayList<Integer> userBalls, ArrayList<Integer> computerBalls) {
+        for (int ballCount = 0; ballCount < userBalls.size(); ballCount++) {
+            int userBall = userBalls.get(ballCount);
+            refereeBaseball(userBall, computerBalls, ballCount);
+        }
+    }
 
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
