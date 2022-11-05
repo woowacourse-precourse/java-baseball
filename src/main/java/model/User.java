@@ -46,9 +46,8 @@ public class User {
     private boolean isValidPositiveInt(int num) {
         if (num > 0) {
             return true;
-        } else {
-            throw new IllegalArgumentException("양수를 입력해주세요.");
         }
+        throw new IllegalArgumentException("양수를 입력해주세요.");
     }
 
     private boolean isValidLength(String str) {
