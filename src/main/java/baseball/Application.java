@@ -81,11 +81,22 @@ public class Application {
     }
 
     public static Integer contain(List<Integer> computerNum, List<Integer> userNum) {
-
+        int containCount = 0;
+        for (Integer num : userNum) {
+            if (computerNum.contains(num)) {
+                containCount++;
+            }
+        }
+        return containCount;
     }
 
     public static List<Integer> compare(List<Integer> computerNum, List<Integer> userNum) {
-
+        List<Integer> result = new ArrayList<>();
+        int strike = locate(computerNum, userNum);
+        int ball = contain(computerNum, userNum) - strike;
+        result.add(strike);
+        result.add(ball);
+        return result;
     }
 
     public static Integer continueGame(List<Integer> result) {
