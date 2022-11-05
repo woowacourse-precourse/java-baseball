@@ -11,7 +11,7 @@ public class ResultProcessor {
 
     private void compareRandomAndPredictedNumber(Result result, String randomNumber, String predictedNumber) {
         for (int i = 0; i < 3; i++) {
-            // Distinguish type of digit and increase ball or strike (neither do nothing)
+            distinguishTypeOfDigit(result, randomNumber, predictedNumber, i);
         }
     }
 
