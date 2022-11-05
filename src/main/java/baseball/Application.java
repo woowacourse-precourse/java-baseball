@@ -25,15 +25,13 @@ public class Application {
         Number answerNumber = new Number();
         Number userPrediction = new Number();
 
-        answerNumber.setRandomNumber();
-        computerNumber = answerNumber.getDigits();
+        initializeRandomNumber(answerNumber);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(keepGoing) {
 
-            userPrediction.inputPrediction();
-            userNumber = userPrediction.getDigits();
+            inputUserNumber(userPrediction);
 
             initializeScore();
             calcScore();
@@ -50,7 +48,16 @@ public class Application {
                 printRandomSentence();
             }
         }
+    }
 
+    private static void initializeRandomNumber(Number answerNumber) {
+        answerNumber.setRandomNumber();
+        computerNumber = answerNumber.getDigits();
+    }
+
+    private static void inputUserNumber(Number userPrediction) {
+        userPrediction.inputPrediction();
+        userNumber = userPrediction.getDigits();
     }
 
     private static void printRandomSentence() {
@@ -114,12 +121,13 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if(input.equals("1")) {
-            answerNumber.setRandomNumber();
-            computerNumber = answerNumber.getDigits();
+            initializeRandomNumber(answerNumber);
         }
         if(input.equals("2")) {
             keepGoing = false;
         }
     }
+
+
 
 }
