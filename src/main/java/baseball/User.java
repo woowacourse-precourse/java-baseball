@@ -15,10 +15,9 @@ public class User {
   }
 
   private static String validateInput(int whichMode) {
-    if (whichMode == PLAYAGAINMODE) {
-      if (!(input.equals("1") == true || input.equals("2") == true)) {
-        throw new IllegalArgumentException("input value is not 1 or 2.");
-      }
+    if ((whichMode == PLAYAGAINMODE) && !(input.equals("1") == true ||
+        input.equals("2") == true)) {
+      throw new IllegalArgumentException("input value is not 1 or 2.");
     }
     if (whichMode == PLAYINGMODE) {
       checkInputLength();
