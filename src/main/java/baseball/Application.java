@@ -4,7 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class GameReadyMachine {
-    private int answerValue=100;
+    private int answerValue = 100;
+
+    public int setAnswerValue() {
+        this.setValue();
+        while (!checkDigitValue(this.answerValue)) {
+            this.setValue();
+        }
+        return answerValue;
+    }
 
     public boolean checkDigitValue(int value) {
         int hundredDigits = value / 100;
