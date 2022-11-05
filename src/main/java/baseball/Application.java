@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
@@ -8,6 +9,15 @@ public class Application {
 
         List<Integer> computer = new ArrayList<>();
         getComputerNumber(computer);
+
+        List<Integer> user = new ArrayList<>();
+        String userNumber = Console.readLine();
+        try {
+            checkNumberLength(userNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println("예외 발생");
+            return;
+        }
 
 
     }
@@ -18,6 +28,12 @@ public class Application {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
+        }
+    }
+
+    static void checkNumberLength(String userNumber) throws IllegalArgumentException {
+        if (userNumber.length() != 3) {
+            throw new IllegalArgumentException();
         }
     }
 }
