@@ -15,4 +15,8 @@ public class Score {
     public int getStrike() {
         return strike;
     }
+
+    public void setStrike(int strike) {
+        this.strike = strike;
+    }
 }
