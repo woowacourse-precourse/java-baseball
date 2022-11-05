@@ -1,32 +1,34 @@
 package baseball.logic;
 
+import java.util.List;
+
 public class Exception {
 
-    public String inputException(String num){
-        if(checkSame(num) || checkThreedigit(num) || checkZero(num)){
+    public List<Integer> inputException(List<Integer> playerInput){
+        if(checkSame(playerInput) || checkThreedigit(playerInput) || checkZero(playerInput)){
             throw new IllegalArgumentException();
         }
-        return num;
+        return playerInput;
     }
 
-    private boolean checkSame(String num){
-        for(int i=0; i<num.length()-1; i++){
-            if(num.charAt(i)==num.charAt(i+1)){
+    private boolean checkSame(List<Integer> playerInput){
+        for(int i=0; i<playerInput.size()-1; i++){
+            if(playerInput.get(i)==playerInput.get(i+1)){
                 return true;
             }
         }
         return false;
     }
 
-    private boolean checkThreedigit(String num){
-        if(!(num.length()==3)){
+    private boolean checkThreedigit(List<Integer> playerInput){
+        if(!(playerInput.size()==3)){
             return true;
         }
         return false;
     }
 
-    private boolean checkZero(String num){
-        if(num.contains("0")){
+    private boolean checkZero(List<Integer> playerInput){
+        if(playerInput.contains(0)){
             return true;
         }
         return false;

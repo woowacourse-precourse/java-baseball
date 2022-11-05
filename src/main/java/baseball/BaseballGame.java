@@ -1,7 +1,10 @@
 package baseball;
 
 import baseball.logic.Exception;
+import baseball.logic.Generatenumber;
 import baseball.logic.Inputnumber;
+
+import java.util.List;
 
 public class BaseballGame {
     public void play(){
@@ -9,8 +12,6 @@ public class BaseballGame {
 
         Inputnumber input = new Inputnumber();
         Exception exception = new Exception();
-
-        exception.inputException(input.inputNum());
+        List<Integer> integers = exception.inputException(input.inputNum());
     }
-
 }
