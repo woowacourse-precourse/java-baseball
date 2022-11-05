@@ -89,8 +89,8 @@ public class Application {
     static int countSameLetterInDifferentIndexWithoutDuplicate(String computer, String user) {
         return (int)user.chars()
                 .filter(i -> i != computer.charAt(user.indexOf(i)))
-                .filter(i -> computer.contains(String.valueOf((char)i)))
-                .count();
+                        .filter(i -> computer.contains(String.valueOf((char)i)))
+                                .count();
     }
 
     static boolean isRightAnswer(List<Integer> scoreOfStrikeAndBall) {
