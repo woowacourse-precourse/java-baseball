@@ -3,48 +3,53 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Baseball {
-	private static boolean isKeepInning = true;
-	private static boolean isKeepGaming = true;
+	private static final int PLAYING_NUMBER_SIZE = 3;
+	private static final int START_INPUT = 1;
+	private static final int END_INPUT = 2;
+	private static final String INPUT_ERROR_MESSAGE = "%d 또는 %d만 입력해주세요";
+	private static final String STRIKE_MESSAGE = "%d스트라이크";
+
+	private boolean isKeepInning = true;
+	private boolean isKeepGaming = true;
 
 	public void startGame() {
-		isKeepInning = true;
-		isKeepGaming = true;
 		while (isKeepGaming) {
 			playInning();
-			Broadcast.printRestartMessage();
+			Broadcast.printRestartMessage(START_INPUT, END_INPUT);
 			checkGameEnd();
 		}
 	}
 
-	private static void checkGameEnd() {
+	private void checkGameEnd() {
 		String endCode = Console.readLine();
-		if (endCode.equals("1")) {
+		if (endCode.equals(Integer.toString(START_INPUT))) {
 			isKeepInning = true;
 			return;
 		}
-		if (endCode.equals("2")) {
+		if (endCode.equals(Integer.toString(END_INPUT))) {
 			isKeepGaming = false;
 			return;
 		}
-		throw new IllegalArgumentException("1이나 2만 입력해주세요");
+		throw new IllegalArgumentException(String.format(INPUT_ERROR_MESSAGE, START_INPUT, END_INPUT));
 	}
 
 	private void playInning() {
 		Broadcast.printStartMessage();
-		Pitcher pitcher = new Pitcher();
+		Pitcher computerNumber = new Pitcher();
 		while (isKeepInning) {
-			Batter batter = new Batter();
-			Referee referee = new Referee(pitcher, batter);
-			String resultMessage = referee.getResultMessage();
+			Broadcast.printInputMessage();
+			Batter userInputNumber = new Batter();
+			Referee calculateResult = new Referee(computerNumber, userInputNumber);
+			String resultMessage = calculateResult.getResultMessage();
 			Broadcast.printResultMessage(resultMessage);
 			checkInningEnd(resultMessage);
 		}
 	}
 
 	private void checkInningEnd(String resultMessage) {
-		if (resultMessage.equals("3스트라이크")) {
+		if (resultMessage.equals(String.format(STRIKE_MESSAGE, PLAYING_NUMBER_SIZE))) {
 			isKeepInning = false;
-			Broadcast.printEndMessage();
+			Broadcast.printEndMessage(PLAYING_NUMBER_SIZE);
 		}
 	}
 }
