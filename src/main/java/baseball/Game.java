@@ -5,7 +5,7 @@ import java.util.List;
 public class Game {
     public String play(){
         List<Integer> computerBallsList = Computer.makeBalls();
-        // System.out.println(computerBalls.toString());
+        List<Integer> userBallsList = User.inputBalls();
         return computerBallsList.toString();
     }
 }
