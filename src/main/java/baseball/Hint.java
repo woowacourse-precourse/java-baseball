@@ -13,13 +13,8 @@ public class Hint {
 			hintStrike();
 		}
 		if (getRightAnswer()) {
-			GameView.printEndGame();
-			GameView.printRestartInstruction();
+			hintCorrect();
 		}
-	}
-
-	public static boolean getRightAnswer() {
-		return ComparisonResult.strikeCount == 3;
 	}
 
 	private static boolean getNothing() {
@@ -34,14 +29,14 @@ public class Hint {
 		return ComparisonResult.strikeCount > 0;
 	}
 
+	public static boolean getRightAnswer() {
+		return ComparisonResult.strikeCount == 3;
+	}
+
 	private static void hintNothing() {
 		GameView.printNothing();
 	}
 
-	private static void hintStrike() {
-		GameView.printStrike(ComparisonResult.strikeCount);
-		GameView.printNewLine();
-	}
 
 	private static void hintBall() {
 		if (getStrike()) {
@@ -50,5 +45,15 @@ public class Hint {
 			GameView.printBall(ComparisonResult.ballCount);
 			GameView.printNewLine();
 		}
+	}
+
+	private static void hintStrike() {
+		GameView.printStrike(ComparisonResult.strikeCount);
+		GameView.printNewLine();
+	}
+
+	private static void hintCorrect() {
+		GameView.printEndGame();
+		GameView.printRestartInstruction();
 	}
 }
