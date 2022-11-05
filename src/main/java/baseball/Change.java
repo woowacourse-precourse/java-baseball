@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Change {
-    public static List<Integer> numberToList(int number){
+    public static List<Integer> numberToList(String number){
         List<Integer> newList = new ArrayList<>();
-        String string = String.valueOf(number);
-        for (int i = 0; i<string.length(); i++){
-            newList.add(string.charAt(i) - '0');
+        for (int i = 0; i<number.length(); i++){
+            newList.add(number.charAt(i) - '0');
         }
         return newList;
     }
