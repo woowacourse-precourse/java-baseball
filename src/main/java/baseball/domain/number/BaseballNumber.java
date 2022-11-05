@@ -51,4 +51,8 @@ public class BaseballNumber {
     public String toString() {
         return String.valueOf(this.number);
     }
+
+    public Integer number() {
+        return number;
+    }
 }
