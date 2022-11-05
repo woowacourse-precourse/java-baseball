@@ -16,12 +16,12 @@ public class Game {
         }
         this.random = randomNumbers;
     }
+
     public boolean playgame(){
         while(true){
             Inputnumber inputnumber = new Inputnumber();
             inputnumber.inputCheck();
             List inputNumber = inputnumber.stringTointList();
-
             Comparenumber comparenumber = new Comparenumber(random, inputNumber);
             comparenumber.compareprint();
             if (!comparenumber.isbaseballcontinue()) return false;
@@ -38,8 +38,5 @@ public class Game {
             new IllegalArgumentException("해당하는 숫자가 아닙니다. 프로그램을 종료합니다.");
             return false;
         }
-
     }
-
-
 }
