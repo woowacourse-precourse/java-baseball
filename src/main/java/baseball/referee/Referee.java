@@ -31,7 +31,6 @@ public class Referee {
     }
 
     public Map<String, Integer> judgement(List<String> computerGeneratedValue, List<String> userInputValue) {
-
         int strikeCount = 0;
         int ballCount = 0;
 
