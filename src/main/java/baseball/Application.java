@@ -52,6 +52,25 @@ class GameReadyMachine {
 
 class GameProcessor {
     private String lastInput = null;
+    private int strike = 0;
+    private int ball = 0;
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public void setStrike(int strike) {
+        this.strike = strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public void setBall(int ball) {
+        this.ball = ball;
+    }
+
 
     public String userInput() {
         lastInput = Console.readLine();
@@ -61,7 +80,8 @@ class GameProcessor {
     public String getLastInput() {
         return lastInput;
     }
-    public void checkInput(){
+
+    public void checkInput() {
         try {
             int num = Integer.parseInt(getLastInput());
             if (num < 100 || num > 999) {
@@ -71,6 +91,8 @@ class GameProcessor {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
 
 public class Application {
