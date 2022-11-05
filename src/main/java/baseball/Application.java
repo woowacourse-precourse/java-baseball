@@ -92,11 +92,30 @@ class GameProcessor {
         }
     }
 
-
+    public void strikeChecker(int userValue,int computerValue)
+    {
+        int strikeCount=0;
+        String userValueString = String.valueOf(userValue);
+        String computerValueString = String.valueOf(computerValue);
+        if(userValueString.charAt(0)==computerValueString.charAt(0))
+        {
+            strikeCount++;
+        }
+        if(userValueString.charAt(1)==computerValueString.charAt(1))
+        {
+            strikeCount++;
+        }
+        if(userValueString.charAt(2)==computerValueString.charAt(2))
+        {
+            strikeCount++;
+        }
+        this.setStrike(strikeCount);
+    }
 }
 
 public class Application {
     public static void main(String[] args) {
+
 
 
     }
