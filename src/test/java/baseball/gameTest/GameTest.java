@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static baseball.game.Game.computerNumbers;
+import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,5 +16,11 @@ public class GameTest {
         Game game = new Game();
         Set<Integer> result = Sets.newHashSet(computerNumbers);
         assertThat(result.size()).isEqualTo(COUNT_BALL);
+    }
+
+    @Test
+    void setUserNumberTest(){
+        setUserNumber("111");
+        assertThat(userNumbers).containsExactly(1,1,1);
     }
 }
