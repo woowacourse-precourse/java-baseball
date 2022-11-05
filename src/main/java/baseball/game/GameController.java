@@ -65,7 +65,7 @@ public class GameController {
                 }else{
                     throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE);
                 }
-            }while(strike == DIGIT_LENGTH);
+            }while(strike != DIGIT_LENGTH);
 
             View.printGameEnd();
         }
