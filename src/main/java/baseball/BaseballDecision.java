@@ -13,7 +13,7 @@ public class BaseballDecision {
 
         this.strikeCount = 0;
         this.ballCount = 0;
-        this.nothingFlag = null;
+        this.nothingFlag = false;
     }
 
     public void makeDecision() {
@@ -33,6 +33,25 @@ public class BaseballDecision {
         } else {
             nothingFlag = true;
         }
+    }
+
+    @Override
+    public String toString() {
+        String sign = "";
+
+        if (nothingFlag) {
+            return "낫싱";
+        }
+
+        if (ballCount > 0) {
+            sign += ballCount + "볼 ";
+        }
+
+        if (strikeCount > 0) {
+            sign += strikeCount + "스트라이크";
+        }
+
+        return sign;
     }
 
     public Integer getStrikeCount() {

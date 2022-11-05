@@ -26,6 +26,15 @@ class BaseballDecisionTest {
         System.out.println("strike : " + referee.getStrikeCount());
         System.out.println("ball : " + referee.getBallCount());
         System.out.println("nothing : " + referee.getNothingFlag());
+    }
 
+    @Test
+    void stringify() {
+        NumberHandler numberHandler = new NumberHandler();
+        BaseballDecision referee = new BaseballDecision(numberHandler);
+
+        referee.setBallCount(1);
+        referee.setStrikeCount(2);
+        System.out.println("referee = " + referee);
     }
 }
