@@ -60,9 +60,8 @@ public class User {
     private boolean isValidNumOfIndividually(String str) {
         if (isNumOfIndividually(str)) {
             return true;
-        } else {
-            throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
         }
+        throw new IllegalArgumentException("각각의 다른 숫자를 입력해주세요.");
     }
 
     // 서로 다른 3자리의 수인지 확인
