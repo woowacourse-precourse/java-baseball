@@ -32,4 +32,12 @@ class BaseballGameViewTest {
         baseballGameView.displayGameStart();
         Assertions.assertThat(ProgramMessage.START_MESSAGE).isEqualTo(outputStreamCaptor.toString().trim());
     }
+
+    @DisplayName("출력 - \"숫자를 입력 해 주세요 : \" 출력")
+    @Test
+    void displayPleaseEnterNumber() {
+        baseballGameView.displayPleaseEnterNumber();
+        Assertions.assertThat(ProgramMessage.PLEASE_ENTER_NUMBER).isEqualTo(outputStreamCaptor.toString());
+    }
+
 }

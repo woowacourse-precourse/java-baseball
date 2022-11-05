@@ -12,5 +12,6 @@ public class BaseballGameController {
 
     public void initGame() {
         baseballGameView.displayGameStart();
+        baseballGameView.displayPleaseEnterNumber();
     }
 }
