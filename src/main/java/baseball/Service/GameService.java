@@ -8,4 +8,5 @@ public interface GameService {
     int calcBallet(int [] inputNumbers);
     void calcResult(int [] inputNumbers);
     boolean isGameOver(int [] inputNumbers);
+    boolean isContinueGame();
 }

@@ -87,4 +87,14 @@ public class GameServiceImpl implements GameService {
         return this.calcStrike(inputNumbers) == 3;
     }
 
+    @Override
+    public boolean isContinueGame() {
+        String inputString = Console.readLine();
+        if (inputString.contentEquals("1")) {
+            return true;
+        } else if (inputString.contentEquals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+    }
 }
