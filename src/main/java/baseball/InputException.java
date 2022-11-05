@@ -21,7 +21,10 @@ public class InputException {
         for (int i = 0; i < number.length(); i++) {
             hashSet.add(number.charAt(i));
         }
-
         return hashSet.size() == Constant.NUMBER_LENGTH;
+    }
+
+    public static boolean isInZero(String number) {
+        return !number.contains("0");
     }
 }
