@@ -71,7 +71,7 @@ public class GameManager {
 
     private boolean hasDuplicatedDigit(String input) {
         for(int index = 0;index < input.length();index++) {
-            if(hasEqullDigit(input, index)) {
+            if(hasEqualDigit(input, index)) {
                 return true;
             }
         }
@@ -79,7 +79,7 @@ public class GameManager {
         return false;
     }
 
-    private boolean hasEqullDigit(String input, int index) {
+    private boolean hasEqualDigit(String input, int index) {
         for(int i = 0;i < input.length();i++) {
             if(i != index && input.charAt(i) == input.charAt(index)) {
                 return true;
@@ -90,7 +90,12 @@ public class GameManager {
     }
 
     private ArrayList<Integer> inputToUserGuess(String input) {
+        ArrayList<Integer> ret = new ArrayList<>();
+        for(char character: input.toCharArray()) {
+            ret.add(character - '0');
+        }
 
+        return ret;
     }
 
     private String getResultOfUserGuess(ArrayList<Integer> userGuess) {
