@@ -12,6 +12,7 @@ public class Application {
     private static final int NUMBER_LENGTH = 3;
     private static int strikeCnt;
     private static int ballCnt;
+    private static boolean restart = true;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -94,14 +95,16 @@ public class Application {
         System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
     }
 
-    private static boolean restart() {
+    private static void checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
         if (userInput.equals("1")) {
-            return true;
+            restart = true;
+            return;
         }
         if (userInput.equals("2")) {
-            return false;
+            restart = false;
+            return;
         }
         throw new IllegalArgumentException();
     }
