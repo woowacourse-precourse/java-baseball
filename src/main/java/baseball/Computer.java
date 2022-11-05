@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class Number {
+public class Computer {
 
     static final int FIRST_NUM = 1;
     static final int LAST_NUM = 9;

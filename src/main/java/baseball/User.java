@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class InputValue {
+public class User {
 
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     static final int NUMBER_LENGTH = 3;
