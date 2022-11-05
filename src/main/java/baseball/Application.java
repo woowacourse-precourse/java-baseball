@@ -81,7 +81,7 @@ public class Application {
     }
 
 
-    private static void baseballGame() {
+    public static void baseballGame() {
         List<Integer> answerList = GenerateRandomNumber(3);
         int[] judg = new int[]{0, 0};
         while (judg[1] != 3) {
@@ -91,6 +91,22 @@ public class Application {
             } catch (Exception e) {
                 System.exit(-1);
             }
+        }
+    }
+
+    public static void printJudge(int[] judg) {
+        String result = "";
+        if (judg[0] != 0) {
+            result += judg[0]+"볼";
+        }
+        if (judg[1] != 0) {
+            result += " " + judg[1] + "스트라이크";
+        }
+
+        if (result.equals("")) {
+            System.out.println("낫싱");
+        } else if (!result.equals("")) {
+            System.out.println(result);
         }
     }
 
