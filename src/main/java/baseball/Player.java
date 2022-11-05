@@ -51,5 +51,16 @@ public class Player {
         if (playerNumbers.size() != 3) {
             throw new IllegalArgumentException();
         }
+        isDuplicateNumberException(playerNumbers);
+    }
+
+    private static void isDuplicateNumberException(List<Integer> playerNumbers) {
+        boolean[] checkNumbers = new boolean[10];
+        for (Integer playerNumber : playerNumbers) {
+            if (checkNumbers[playerNumber]) {
+                throw new IllegalArgumentException();
+            }
+            checkNumbers[playerNumber] = true;
+        }
     }
 }
