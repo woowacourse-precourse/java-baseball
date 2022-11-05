@@ -21,6 +21,15 @@ public class Computer {
         return computer;
     }
 
+    public String getRandomNumberToString() {
+        String result = "";
+
+        for (int i = 0; i < computer.size(); i++) {
+            result += computer.get(i);
+        }
+        return result;
+    }
+
     public List<Integer> calcHint(String playerInput, String computerInput) {
         int ballOfHint = 0;
         int strikeOfHint = 0;
