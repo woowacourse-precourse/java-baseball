@@ -28,4 +28,8 @@ public class Game {
             }
         }
     }
+
+    public boolean isWin() {
+        return this.score.getStrike() == Constant.GOAL;
+    }
 }
