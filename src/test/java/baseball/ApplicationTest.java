@@ -1,15 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static baseball.Application.*;
@@ -22,22 +18,12 @@ class ApplicationTest extends NsTest {
 
     private Validations validations;
     private Processing processing ;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
     @BeforeEach
     void getInstanceOfMethodClass(){
         this.validations = new Validations();
         this.processing = new Processing();
-        // 별도 출력 테스트를 하지 않을 경우엔 주석 처리하고 실행
-//        System.setOut(new PrintStream(outContent));
     }
 
-    @AfterEach
-    void restoreStreams() {
-        // 별도 출력 테스트를 하지 않을 경우엔 주석 처리하고 실행
-//        System.setOut(originalOut);
-    }
 
     @Test
     void 입력값_Validation_Test(){
@@ -91,44 +77,7 @@ class ApplicationTest extends NsTest {
         assertThat(ballCnt).isEqualTo(1);
     }
 
-    @Test
-    void Ball_Print_Test(){
-        // given
-        int ballCount = 2;
 
-        // when
-        processing.printBall(ballCount);
-
-        //then
-        assertThat("2볼 ").isEqualTo(outContent.toString());
-    }
-
-    @Test
-    void StrikeAndBall_Print_Test(){
-        // given
-        int ballCount = 2;
-        int strikeCount = 1;
-
-        // when
-        processing.printBall(ballCount);
-        processing.printStrike(strikeCount);
-
-        //then
-        assertThat("2볼 1스트라이크\n").isEqualTo(outContent.toString());
-    }
-    @Test
-    void StrikeZero_Print_Test(){
-        // given
-        int ballCount = 2;
-        int strikeCount = 0;
-
-        // when
-        processing.printBall(ballCount);
-        processing.printStrike(strikeCount);
-
-        //then
-        assertThat("2볼 \n").isEqualTo(outContent.toString());
-    }
 
     @Test
     void 통합_연산_Test(){
