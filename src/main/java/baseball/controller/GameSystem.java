@@ -28,6 +28,7 @@ public class GameSystem {
             if(gameLoop == 2) break;
         }
     }
+
     public void gameProcess() {
         boolean correctAnswer;
         while(true) {
@@ -58,8 +59,7 @@ public class GameSystem {
             computerDigit = computerDigitList.get(i);
             for(int j = 0; j < 3; j++) {
                 myDigit = myDigitList.get(j);
-                if(computerDigit == myDigit && i == j) strikeCount++;
-                if(computerDigit == myDigit && i != j) ballCount++;
+                strikeBallCount(computerDigit,i,myDigit,j);
             }
         }
 
@@ -67,6 +67,10 @@ public class GameSystem {
         return false;
     }
 
+    public void strikeBallCount(int computerDigit, int i, int myDigit, int j) {
+        if(computerDigit == myDigit && i == j) strikeCount++;
+        if(computerDigit == myDigit && i != j) ballCount++;
+    }
     public void initCount() {
         strikeCount = 0;
         ballCount = 0;
