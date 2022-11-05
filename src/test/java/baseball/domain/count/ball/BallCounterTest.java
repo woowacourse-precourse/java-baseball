@@ -12,7 +12,7 @@ class BallCounterTest {
     private final BallCounter ballCounter = new BallCounter();
 
     @Test
-    void ball이_3개인_경우() {
+    void ball이_3개인_경우_ballCount는_3이다() {
         List<SingleNumber> randomNumbers = List.of(
                 new SingleNumber(0, 1),
                 new SingleNumber(1, 2),
@@ -30,7 +30,7 @@ class BallCounterTest {
     }
 
     @Test
-    void ball이_0개인_경우() {
+    void ball이_0개인_경우_ballCount는_0이다() {
         List<SingleNumber> randomNumbers = List.of(
                 new SingleNumber(0, 1),
                 new SingleNumber(1, 2),

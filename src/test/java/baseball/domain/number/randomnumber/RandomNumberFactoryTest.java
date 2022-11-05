@@ -38,7 +38,7 @@ class RandomNumberFactoryTest {
     }
 
     @Test
-    void 만들어진_RandomNumber를_바꿀수_없다() {
+    void 만들어진_RandomNumber를_변경_시도할_경우_예외를_던진다() {
         List<SingleNumber> answer = newInstance().randomNumbers();
 
         assertThatThrownBy(() -> answer.add(new SingleNumber(1, 2)))

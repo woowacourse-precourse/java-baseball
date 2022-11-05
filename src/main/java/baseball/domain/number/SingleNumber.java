@@ -3,7 +3,7 @@ package baseball.domain.number;
 import java.util.List;
 import java.util.Objects;
 
-public class SingleNumber {
+public final class SingleNumber {
 
     private final int position;
     private final int number;
@@ -14,14 +14,13 @@ public class SingleNumber {
     }
 
     public int countBall(List<SingleNumber> singleNumbers) {
-        int ballCount = 0;
         for (SingleNumber singleNumber : singleNumbers) {
-            if (!(position == singleNumber.position) && (number == singleNumber.number)) {
-                ballCount++;
+            if ((position != singleNumber.position) && (number == singleNumber.number)) {
+                return 1;
             }
         }
 
-        return ballCount;
+        return 0;
     }
 
     @Override

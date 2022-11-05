@@ -12,7 +12,7 @@ class StrikeCounterTest {
     private final StrikeCounter strikeCounter = new StrikeCounter();
 
     @Test
-    void strike가_3개인_경우() {
+    void strike가_3개인_경우_strikeCount는_3이다() {
         List<SingleNumber> randomNumbers = List.of(
                 new SingleNumber(0, 1),
                 new SingleNumber(1, 2),
@@ -30,7 +30,7 @@ class StrikeCounterTest {
     }
 
     @Test
-    void strike가_0개인_경우() {
+    void strike가_0개인_경우_strikeCount는_0이다() {
         List<SingleNumber> randomNumbers = List.of(
                 new SingleNumber(0, 1),
                 new SingleNumber(1, 2),
