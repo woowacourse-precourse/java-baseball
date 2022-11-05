@@ -109,4 +109,29 @@ public class Application {
         }
         return oneORtwo;
     }
+
+    //기능7. 게임을 구현한다.
+    public static void game(){
+        System.out.println("숫자 야구를 시작합니다.");
+        List<Integer> computer = computer();
+        List<Integer> player;
+
+        while (true){
+            player = user();
+            int strike = strike(computer, player);
+            int ball = ball(computer, player, strike);
+            result(strike, ball);
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+
+        if (oneORtwo(victory())) {
+            game();
+        } else {
+            System.out.println("수고하셨습니다.");
+        }
+    }
+
 }
