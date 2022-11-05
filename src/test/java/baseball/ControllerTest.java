@@ -1,8 +1,12 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,99 +14,78 @@ import baseball.controller.GameController;
 import baseball.service.GameService;
 
 public class ControllerTest {
+	//예외사항
 	@Test
-	void 랜덤함수_결과() {
-
-	}
-	@Test
-	void 입력함수_결과() {
-		GameController gc = new GameController();
-		gc.saveUserNumber("123");
-		assertThat("123").isEqualTo("123");
-	}
-	@Test
-	void 결과_볼() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"231");
-		assertThat(1).isEqualTo(1);
-	}
-	@Test
-	void 결과_볼1() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"312");
-		assertThat(1).isEqualTo(1);
-	}
-	@Test
-	void 결과_볼2() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"432");
-		assertThat(1).isEqualTo(1);
-	}
-	@Test
-	void 결과_볼3() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"041");
-		assertThat(0).isEqualTo(1);
-	}
-	@Test
-	void 결과_볼4() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"341");
-		assertThat(1).isEqualTo(1);
-	}
-	@Test
-	void 결과_볼5() {
-		GameController gc = new GameController();
-
-		gc.compareNumber("123" ,"341");
-		assertThat(1).isEqualTo(1);
-	}
-
-	@Test
-	void 결과_낫싱() {
-
-	}
-	//예외 처리
-	@Test
-	void 숫자_범위_예외체크() {
-		GameController gc = new GameController();
+	void checkInputNullError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> gc.saveUserNumber("012"))
-						.isInstanceOf(IllegalArgumentException.class));
+				assertThatThrownBy(() -> GameController.checkErrorNumber(null))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
 	}
 	@Test
-	void 숫자_길이체크() {
-		GameController gc = new GameController();
+	void checkInputLengthError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> gc.saveUserNumber("1234"))
-						.isInstanceOf(IllegalArgumentException.class));
+				assertThatThrownBy(() -> GameController.checkErrorNumber("1234"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
 	}
 	@Test
-	void 같은숫자_체크() {
-		GameController gc = new GameController();
+	void checkSameInputValueError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> gc.saveUserNumber("111"))
-						.isInstanceOf(IllegalArgumentException.class));
+				assertThatThrownBy(() -> GameController.checkErrorNumber("4588"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
 	}
 	@Test
-	void 널값_체크() {
-		GameController gc = new GameController();
+	void checkBoundaryInputError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> gc.saveUserNumber(null))
-						.isInstanceOf(IllegalArgumentException.class));
+				assertThatThrownBy(() -> GameController.checkErrorNumber("1250"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
 	}
 	@Test
-	void 숫자외_다른문자() {
-		GameController gc = new GameController();
+	void checkNumberInputError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> gc.saveUserNumber("agf"))
-						.isInstanceOf(IllegalArgumentException.class));
+				assertThatThrownBy(() -> GameController.checkErrorNumber("abcd"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
 	}
 
-
+	//결과
+	@Test
+	void checkResultOneBall() {
+		assertThat(GameController.compareNumber("123", "451")).isEqualTo(Arrays.asList(0,1));
+	}
+	@Test
+	void checkResultTwoBall() {
+		assertThat(GameController.compareNumber("123", "431")).isEqualTo(Arrays.asList(0,2));
+	}
+	@Test
+	void checkResultThreeBall() {
+		assertThat(GameController.compareNumber("123", "312")).isEqualTo(Arrays.asList(0, 3));
+	}
+	@Test
+	void checkResultOneStrike() {
+		assertThat(GameController.compareNumber("123", "426")).isEqualTo(Arrays.asList(1, 0));
+	}
+	@Test
+	void checkResultTwoStrike() {
+		assertThat(GameController.compareNumber("123", "143")).isEqualTo(Arrays.asList(2, 0));
+	}
+	@Test
+	void checkResultThreeStrike() {
+		assertThat(GameController.compareNumber("123", "123")).isEqualTo(Arrays.asList(3, 0));
+	}
+	@Test
+	void checkResultOneStrikeOneBall() {
+		assertThat(GameController.compareNumber("123", "142")).isEqualTo(Arrays.asList(1, 1));
+	}
+	@Test
+	void checkResultOneStrikeTwoBall() {
+		assertThat(GameController.compareNumber("123", "321")).isEqualTo(Arrays.asList(1, 2));
+	}
+	@Test
+	void checkResultNothing() {
+		assertThat(GameController.compareNumber("123", "456")).isEqualTo(Arrays.asList(0, 0));
+	}
 }
