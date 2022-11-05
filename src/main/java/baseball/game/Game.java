@@ -30,7 +30,6 @@ public class Game {
 
     private void play() {
         String input = InputUtils.readNumbersWrittenByUser();
-        InputUtils.checkIsValidInput(input);
 
         userInput = new UserInput(input);
         counter.count(userInput.getUserInputNumbers(), computer.getComputerHoldNumbers());

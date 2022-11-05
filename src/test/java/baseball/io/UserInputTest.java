@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class InputUtilsTest {
+class UserInputTest {
 
     @DisplayName("사용자가 올바른 입력에 성공한다")
     @Test
@@ -15,11 +15,11 @@ class InputUtilsTest {
 
         // when & then
         assertAll(
-                () -> Assertions.assertThatCode(() -> InputUtils.checkIsValidInput("123"))
+                () -> Assertions.assertThatCode(() -> new UserInput("123"))
                         .doesNotThrowAnyException(),
-                () -> Assertions.assertThatCode(() -> InputUtils.checkIsValidInput("521"))
+                () -> Assertions.assertThatCode(() -> new UserInput("521"))
                         .doesNotThrowAnyException(),
-                () -> Assertions.assertThatCode(() -> InputUtils.checkIsValidInput("547"))
+                () -> Assertions.assertThatCode(() -> new UserInput("547"))
                         .doesNotThrowAnyException()
         );
     }
@@ -31,15 +31,15 @@ class InputUtilsTest {
 
         // when & then
         assertAll(
-                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("113"))
+                () -> Assertions.assertThatThrownBy(() -> new UserInput("113"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("103"))
+                () -> Assertions.assertThatThrownBy(() -> new UserInput("103"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("4e1"))
+                () -> Assertions.assertThatThrownBy(() -> new UserInput("4e1"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("erq"))
+                () -> Assertions.assertThatThrownBy(() -> new UserInput("erq"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> InputUtils.checkIsValidInput("1234"))
+                () -> Assertions.assertThatThrownBy(() -> new UserInput("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
