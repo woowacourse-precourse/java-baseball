@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameTest {
 
     @Test
-    void init_무작위_세자리_수_세팅() {
+    void initAnswer_무작위_세자리_수_세팅() {
         Game game = new Game();
-        game.init();
+        game.initAnswer();
         List<Integer> answer = game.getAnswer();
         assertThat(answer).hasSize(3);
     }
