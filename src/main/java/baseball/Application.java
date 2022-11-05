@@ -22,6 +22,7 @@ public class Application {
             putInRandomNumber(randomNumberList);
 
             startBattle(randomNumberList);
+            endGame();
 
         } while (true);
     }
@@ -203,5 +204,11 @@ public class Application {
     public static boolean checkThreeStrike(int strike) {
 
         return strike == 3;
+    }
+
+    public static void endGame() {
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
     }
 }
