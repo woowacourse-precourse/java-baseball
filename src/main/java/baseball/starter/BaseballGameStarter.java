@@ -12,12 +12,10 @@ import java.util.List;
 public class BaseballGameStarter {
 
     public List<List<String>> operate() {
-        UserInputValidator userInputValidator = new UserInputValidator();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<String> userInputValue = new User(userInputValidator)
+        List<String> userInputValue = new User(UserInputValidator.getInstance())
                 .stringConvertToStringList(
                         Console.readLine());
         List<String> computerGeneratedValue = new Computer().generateNumber();
@@ -29,7 +27,7 @@ public class BaseballGameStarter {
 
     public boolean operateRefereeJudgement(List<String> userInputValue, List<String> computerGeneratedValue) {
         Referee referee = new Referee();
-        UserInputValidator userInputValidator = new UserInputValidator();
+        UserInputValidator userInputValidator = UserInputValidator.getInstance();
 
         while (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
             if (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
