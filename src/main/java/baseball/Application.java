@@ -50,7 +50,7 @@ public class Application {
         return user;
     }
 
-    //기능3. 컴퓨터와 사용자의 숫자 비교해 스트라이크 개수 구하기
+    //기능3-1. 컴퓨터와 사용자의 숫자 비교해 스트라이크 개수 구하기
     public static int strike(List<Integer> computer, List<Integer> user){
         int strike = 0;
         for (int i = 0; i < computer.size(); i++) {
@@ -61,7 +61,7 @@ public class Application {
         return strike;
     }
 
-    //기능4. 컴퓨터와 사용자의 숫자 비교해 볼 개수 구하기
+    //기능3-2. 컴퓨터와 사용자의 숫자 비교해 볼 개수 구하기
     public static int ball(List<Integer> computer, List<Integer> user, int strike) {
         int ball = 0;
         for (int i = 0; i < computer.size(); i++) {
@@ -73,7 +73,7 @@ public class Application {
         return ball;
     }
 
-    //기능5. 비교한 결과를 알려주기
+    //기능4. 비교한 결과를 알려주기
     public static void result(int strike, int ball) {
         if (ball > 0) {
             if (strike > 0) {
@@ -90,10 +90,23 @@ public class Application {
         }
     }
 
-    //기능6. 승리했을 경우 (3스트라이크) 실행될 함수 (1 또는 2를 입력받기.)
+    //기능5. 승리했을 경우 (3스트라이크) 실행될 함수 (1 또는 2를 입력받기.)
     public static String victory(){
         System.out.println("게임을 계속하려면 1, 종료하려면 2를 입력하세요.");
         String victory = Console.readLine();
         return victory;
+    }
+
+    //기능6. victory 함수의 결과를 구별한다.(예외 상황 추가)
+    public static boolean oneORtwo(String victory){
+        boolean oneORtwo;
+        if (victory.equals("1")) {
+            oneORtwo = true;
+        } else if (victory.equals("2")) {
+            oneORtwo = false;
+        } else {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        return oneORtwo;
     }
 }
