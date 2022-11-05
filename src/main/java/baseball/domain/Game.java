@@ -17,6 +17,12 @@ public class Game {
 	public void play() {
 		GameView.printStartMessage();
 		computer.createAnswer();
+		System.out.println("computer.getAnswer() = " + computer.getAnswer());
+
+		tryCorrectAnswer();
+	}
+
+	private void tryCorrectAnswer() {
 		user = new User(GameView.inputNum());
 
 		initBallAndStrike();
@@ -26,12 +32,12 @@ public class Game {
 			GameView.printEndGame();
 
 			if(GameView.inputRestartOrEnd().equals(GameView.RESTART_NUM)){
-				this.play();
+				play();
 			}
 		} else {
 			GameView.printHint(ball, strike);
+			tryCorrectAnswer();
 		}
-
 	}
 
 	private boolean isCorrectAnswer() {
