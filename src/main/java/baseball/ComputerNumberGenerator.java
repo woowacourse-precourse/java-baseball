@@ -8,7 +8,9 @@ import java.util.List;
 
 public class ComputerNumberGenerator {
     private static List<Integer> computerNumbers = new ArrayList<>();
+
     public static List<Integer> generate() {
+        initialize();
         while (!hasThreeNumbers(computerNumbers)) {
             int random = pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
@@ -20,7 +22,7 @@ public class ComputerNumberGenerator {
         return computerNumbers;
     }
 
-    private void initialize() {
+    private static void initialize() {
         computerNumbers.clear();
     }
 

@@ -11,14 +11,16 @@ public class UserNumberGenerator {
     private static List<Integer> userNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {
+        initialize();
         String inputNumber = readLine();
 
         validateDuplicate(inputNumber);
         validateNumberSize(inputNumber);
         validateZeroNumber(inputNumber);
 
-        for(int index=0; index<NUMBER_SIZE; index++) {
-            userNumbers.add((int) inputNumber.charAt(index));
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            int numberToInt = inputNumber.charAt(index) - '0';
+            userNumbers.add(numberToInt);
         }
 
         return userNumbers;
@@ -27,11 +29,11 @@ public class UserNumberGenerator {
     private static void validateDuplicate(String inputNumber) {
         HashSet<Character> numbers = new HashSet<>();
 
-        for(char number : inputNumber.toCharArray()) {
+        for (char number : inputNumber.toCharArray()) {
             numbers.add(number);
         }
 
-        if(numbers.size() != NUMBER_SIZE) {
+        if (numbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
