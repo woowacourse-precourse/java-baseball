@@ -53,4 +53,24 @@ class BaseballGameRuleImplTest {
 		result = baseballGameRule.getResultByGameRule();
 		Assertions.assertThat(result).contains(0, 0);
 	}
+
+	@Test
+	void getResultByGameRuleTest() {
+		List<Integer> status;
+		List<Integer> result;
+		GameRule<Integer> baseballGameRule = new BaseballGameRuleImpl();
+
+		result = baseballGameRule.getResultByGameRule();
+		Assertions.assertThat(result).isEmpty();
+
+		status = List.of(1, 2, 3, 1, 2);
+		baseballGameRule.makeResultByGameRule(status);
+		result = baseballGameRule.getResultByGameRule();
+		Assertions.assertThat(result).isEmpty();
+
+		status = List.of(1, 2, 3, 1, 2, 3);
+		baseballGameRule.makeResultByGameRule(status);
+		result = baseballGameRule.getResultByGameRule();
+		Assertions.assertThat(result).contains(0, 3);
+	}
 }
