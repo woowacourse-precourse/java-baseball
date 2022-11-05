@@ -14,18 +14,18 @@ public class NumberBaseball implements Game {
 
     @Override
     public void run() {
-        boolean flag = false;
-        gameService.initGame();
         doGame();
         gameService.closeBuffer();
     }
 
     private void doGame() {
+        gameService.initGame();
         boolean flag;
         do {
             flag = gameService.startGame();
-            gameService = new GameService(GAME_ANSWER_MAX_VALUE);
+            if (flag == true) {
+                gameService = new GameService(GAME_ANSWER_MAX_VALUE);
+            }
         } while (flag);
     }
-
 }
