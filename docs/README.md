@@ -16,7 +16,7 @@
   - [X] `Map<Integer, Integer> generate3DigitNumberWithoutDuplication()`
     - 컴퓨터 플레이어가 저장할 세 자리의 수를 반환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
-  - [X] `Map<Integer, Integer> convertNumberToMap(Integer)`
+  - [X] `Map<Integer, Integer> convertNumberToMap(String)`
     - 게임 플레이어가 입력한 세 자리의 수를 Map으로 변환
     - 반환형은 Map<Integer, Integer>이고, Key는 number, Value는 Digit이다.
 
@@ -32,13 +32,19 @@
     - index가 동일하면 true, 그렇지 않으면 false를 반환
   
 - [ ] Game Class
-  - [ ] ``
+  - [ ] `void play()`
+    - 게임에서 사용되는 표현을 콘솔에 출력하는 것은 View 객체에게 위임
+    - 게임 플레이어가 입력한 세 자리의 수를 받아서 컴퓨터 플레이어의 수와 비교하는 것은 Judge 객체에게 위임
+    - 두 수를 비교한 결과를 해석하는 것은 Result 객체에게 위임
 
 - [X] Validator Class
-  - [X] `void isRangeOf(Integer, Integer)`
+  - [X] `void isVaildNumber(String, Integer)`
     - 게임 플레이어가 입력한 수가 유효한 수인지 확인하는 메서드
     - 첫 번째 인자는 최대 자리의 수, 두 번째 인자는 게임 플레이어가 입력한 수이다.
     - 범위에 있지 않을 경우 `IllegalArgumentException` 예외를 던진다.
+    - 게임 플레이어가 입력한 각 자리의 수가 1과 9 사이에 있지 않을 경우 `IllegalArgumentException` 예외를 던진다.
+    - 게임 플레이어가 입력한 각 자리의 수에 중복이 있을 경우 `IllegalArgumentException` 예외를 던진다.
+  
   - [X] `void isRestartable(Integer)`
     - 게임 종료 이후 게임 플레이어가 1, 2 외의 다른 숫자를 입력했는지 확인하는 메서드
     - 적절한 커맨드가 아닌 경우 `IllegalArgumentException` 예외를 던진다.
