@@ -98,6 +98,8 @@ public class BullsAndCows {
                 answerNumberList.add(randomNumber);
             }
         }
+
+        validateNumber(answerNumberList);
     }
 
     private void initCountValues() {
@@ -144,6 +146,16 @@ public class BullsAndCows {
 
     private boolean isEnd() {
         return strikeCount == STRIKE_COUNT_FOR_END;
+    }
+    
+    private void validateNumber(List<Integer> input) {
+        StringBuilder builder = new StringBuilder();
+        input.forEach(builder::append);
+        String result = builder.toString();
+
+        validateIsNumber(result);
+        validateLength(result);
+        validateIsDuplicatedNumber(result);
     }
 
     private void validateNumber(String input) {
