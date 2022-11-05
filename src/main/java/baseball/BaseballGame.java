@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,25 +11,28 @@ public class BaseballGame {
 
     private Scanner scanner = new Scanner(System.in);
     private List<Integer> answer;
+    private boolean gameContinueFlag;
 
     public void start() {
-        boolean gameContinue = true;
+        gameContinueFlag = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         answer = makeAnswer();
-        
-        while (gameContinue) {
+
+        while (gameContinueFlag) {
             List<Integer> userInput = getUserInput();
         }
     }
 
     private List<Integer> getUserInput() {
-        int userInput = scanner.nextInt();
-        return Utils.intToList(userInput);
-    }
+            String userInput = Console.readLine();
 
-    public boolean isRestart() {
-        return false;
+            if (Utils.isValidUserInput(userInput)) {
+                List<Integer> userInputList = Utils.intToList(Integer.valueOf(userInput));
+                return userInputList;
+            } else {
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+            }
     }
 
     public List<Integer> makeAnswer() {
@@ -43,4 +47,9 @@ public class BaseballGame {
 
         return answer;
     }
+
+    public boolean isRestart() {
+        return gameContinueFlag;
+    }
+
 }
