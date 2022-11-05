@@ -4,7 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -12,7 +14,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class NumberBaseballGameTest {
 
@@ -125,5 +127,82 @@ public class NumberBaseballGameTest {
                     assertThat(checkList.get(ball.getNumber())).isEqualTo(0);
                     checkList.set(ball.getNumber(), 1);
                 });
+    }
+
+    @Test
+    void 입력된_수에서_특정_숫자의_개수를_가져온다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        int result = 1;
+
+        Method method = baseballGame.getClass().getDeclaredMethod("getDigitCount", String.class, int.class);
+        method.setAccessible(true);
+        long digitCount = (long) method.invoke(baseballGame, "123", 3);
+
+        assertThat(digitCount).isEqualTo(result);
+    }
+
+    @Test
+    void 입력_길이가_3이_아니면_예외가_발생한다() throws NoSuchMethodException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+
+        Method method = baseballGame.getClass().getDeclaredMethod("validateNumberLength", String.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(baseballGame, "1234");
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void 입력_값이_1과_9사이의_숫자가_아니면_예외가_발생한다() throws NoSuchMethodException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+
+        Method method = baseballGame.getClass().getDeclaredMethod("validateNumberLength", String.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(baseballGame, "120");
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void 중복된_숫자가_있으면_예외가_발생한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+
+        Method method = baseballGame.getClass().getDeclaredMethod("validateNumberDuplication", String.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(baseballGame, "133");
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void 중복된_숫자가_없는_1과_9사이의_3자리_숫자면_예외가_발생하지_않는다() throws NoSuchMethodException {
+        BaseballGame baseballGame = new BaseballGame();
+
+        Method method = baseballGame.getClass().getDeclaredMethod("validate", String.class);
+        method.setAccessible(true);
+
+        assertThatNoException().isThrownBy(() ->
+                method.invoke(baseballGame, "123"));
+    }
+
+    @Test
+    void 예외가_발생하지_않으면_입력된_값을_반환한다() throws IOException {
+        BaseballGame baseballGame = new BaseballGame();
+        String input = "234";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        String number = baseballGame.inputNumber();
+
+        assertThat(number).isEqualTo(input);
     }
 }
