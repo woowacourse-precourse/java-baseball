@@ -72,6 +72,14 @@ class ApplicationTest extends NsTest {
         assertThat(judgeBall(computerNumList,userNumList)).isEqualTo(2);
     }
 
+    @Test
+    void 스트라이크_판정(){
+        List<Integer> computerNumList = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userNumList= new ArrayList<>(Arrays.asList(1,3,2));
+
+        assertThat(judgeStrike(computerNumList,userNumList)).isEqualTo(1);
+    }
+
 
 
 
