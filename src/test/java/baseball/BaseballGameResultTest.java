@@ -57,4 +57,17 @@ class BaseballGameResultTest {
 
         assertThat(isNothing).isEqualTo(Boolean.TRUE);
     }
+
+    @Test
+    void toStringTest() {
+        List<Integer> list1 = List.of(1, 2, 3);
+        List<Integer> list2 = List.of(4, 5, 6);
+        List<Integer> list3 = List.of(1, 5, 2);
+
+        BaseballGameResult gameResult1 = new BaseballGameResult(list1, list2);
+        BaseballGameResult gameResult2 = new BaseballGameResult(list1, list3);
+
+        assertThat(gameResult1.toString()).isEqualTo("낫싱");
+        assertThat(gameResult2.toString()).isEqualTo("1볼 1스트라이크");
+    }
 }

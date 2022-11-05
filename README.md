@@ -63,7 +63,7 @@ BUILD SUCCESSFUL in 0s
     - [x] FEATURE10. 스트라이크 개수 getter
     - [x] FEATURE11. 볼 개수 getter
     - [x] FEATURE12. 낫싱 여부 확인 메서드
-    - [ ] FEATURE13. 클래스 toString 메서드 오버라이딩
+    - [x] FEATURE13. 클래스 toString 메서드 오버라이딩
 - [ ] FEATURE14. 게임 결과 출력 메서드
 - [ ] FEATURE15. 게임 종료 메시지 출력 메서드
 - [ ] FEATURE16. 게임 종료 입력 메서드
@@ -88,13 +88,13 @@ BUILD SUCCESSFUL in 0s
         - [x] `List<Integer> stringToIntList(String numString)`
 
 
-- [ ] **CLASS 2**. `BaseballGameResult`
+- [x] **CLASS 2**. `BaseballGameResult`
     - **Class Variables:**
         - [x] `private final int strike`
         - [x] `private final int ball`
     - **Class Methods:**
         - [x] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
-        - [ ] `String toString()`
+        - [x] `String toString()`
         - [x] `int calcStrikes(List<Integer> answerNums, List<Integer> inputNums)`
         - [x] `int calcBalls(List<Integer> answerNums, List<Integer> inputNums)`
         - [x] `int numOfStrikes()`

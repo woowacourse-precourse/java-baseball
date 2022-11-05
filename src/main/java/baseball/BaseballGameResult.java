@@ -17,6 +17,26 @@ public class BaseballGameResult {
         this.ball = calcBalls(answerNums, inputNums);
     }
 
+    @Override
+    public String toString() {
+        if (isNothing()) {
+            return "낫싱";
+        }
+
+        String strikeMessage = "";
+        String ballMessage = "";
+
+        if (this.strike != 0) {
+            strikeMessage = String.format("%d스트라이크", this.strike);
+        }
+
+        if (this.ball != 0) {
+            ballMessage = String.format("%d볼", this.ball);
+        }
+
+        return String.format("%s %s", ballMessage, strikeMessage);
+    }
+
     public int calcStrikes(List<Integer> answerNums, List<Integer> inputNums) {
         int strike = 0;
         for (int idx = 0; idx < 3; idx++) {
