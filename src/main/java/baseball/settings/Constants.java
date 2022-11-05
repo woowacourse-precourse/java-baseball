@@ -1,4 +1,4 @@
-package baseball;
+package baseball.settings;
 
 public class Constants {
     public final static int START_NUMBER = 1;

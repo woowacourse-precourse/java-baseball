@@ -1,10 +1,10 @@
-package baseball;
+package baseball.settings;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
 import java.util.List;
 
-public class ResultViewer {
+public class ResultView {
     private static Integer ballCount;
     private static Integer strikeCount;
 

@@ -1,11 +1,11 @@
-package baseball;
+package baseball.settings;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator {
+public class Calculation {
     public static List<Integer> getScoresBy(List<Integer> dealerNumbers, List<Integer> playerNumbers) {
         int ballCount = INITIAL_COUNT;
         int strikeCount = INITIAL_COUNT;

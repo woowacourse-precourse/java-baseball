@@ -1,12 +1,13 @@
-package baseball;
+package baseball.players;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
+import baseball.settings.Validator;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Player {
+public class User {
     private List<Integer> threeDifferentNumbers;
 
     public List<Integer> createThreeDifferentNumbers() {

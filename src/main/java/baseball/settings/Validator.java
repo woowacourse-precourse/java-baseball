@@ -1,6 +1,6 @@
-package baseball;
+package baseball.settings;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
 import java.util.HashSet;
 import java.util.Set;

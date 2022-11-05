@@ -2,6 +2,7 @@ package mytest;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.players.Computer;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,14 +11,12 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
-import baseball.Dealer;
-
-public class DealerTest {
+public class ComputerTest {
     @DisplayName("1과 9 사이의 서로 다른 세 자리 수인지 확인")
     @RepeatedTest(5)
     void isAllDifferent() {
-        Dealer dealer = new Dealer();
-        List<Integer> threeDifferentNumbers = dealer.createThreeDifferentNumbers();
+        Computer computer = new Computer();
+        List<Integer> threeDifferentNumbers = computer.createThreeDifferentNumbers();
         Set<Integer> listToSet = new HashSet<>(threeDifferentNumbers);
 
         assertThat(listToSet).doesNotContain(0);
@@ -31,8 +30,8 @@ public class DealerTest {
         int numberOfToTalCases = 1000;
 
         for (int i = 0; i <= numberOfToTalCases; i++) {
-            Dealer dealer = new Dealer();
-            List<Integer> threeDifferentNumbers = dealer.createThreeDifferentNumbers();
+            Computer computer = new Computer();
+            List<Integer> threeDifferentNumbers = computer.createThreeDifferentNumbers();
 
             boolean isInAscendingOrder = IntStream.range(1, threeDifferentNumbers.size())
                             .allMatch(index -> threeDifferentNumbers.get(index - 1) < threeDifferentNumbers.get(index));

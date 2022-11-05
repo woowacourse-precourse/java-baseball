@@ -1,22 +1,24 @@
-package baseball;
+package baseball.settings;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
+import baseball.players.Computer;
+import baseball.players.User;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public class Controller {
+public class Logic {
     private static boolean isGameGoing = true;
 
     public static void gameStart() {
-        Dealer dealer = new Dealer();
-        Player player = new Player();
-        List<Integer> dealerNumbers = dealer.createThreeDifferentNumbers();
+        Computer computer = new Computer();
+        User user = new User();
+        List<Integer> dealerNumbers = computer.createThreeDifferentNumbers();
 
         while (isGameGoing) {
-            List<Integer> playerNumbers = player.createThreeDifferentNumbers();
-            List<Integer> scores = Calculator.getScoresBy(dealerNumbers, playerNumbers);
-            ResultViewer.printOut(scores);
+            List<Integer> playerNumbers = user.createThreeDifferentNumbers();
+            List<Integer> scores = Calculation.getScoresBy(dealerNumbers, playerNumbers);
+            ResultView.printOut(scores);
             checkThreeStrikes(scores.get(STRIKE_INDEX));
         }
         gameShouldContinue();

@@ -2,7 +2,7 @@ package mytest;
 
 import static org.assertj.core.api.Assertions.*;
 
-import baseball.Validator;
+import baseball.settings.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

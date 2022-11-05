@@ -1,6 +1,6 @@
-package baseball;
+package baseball.players;
 
-import static baseball.Constants.*;
+import static baseball.settings.Constants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Dealer {
+public class Computer {
     public List<Integer> createThreeDifferentNumbers() {
         List<Integer> threeDifferentNumbers = new ArrayList<>();
         Set<Integer> pickedNumbers = new HashSet<>();
