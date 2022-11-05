@@ -5,13 +5,32 @@ import java.util.List;
 
 public class ProcessService {
 
-
     public void validateGameInput(String input) throws IllegalArgumentException {
-        if (input.length() > 3) throw new IllegalArgumentException();
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
 
         for (int i = 0; i < input.length(); i++) {
             char digit = input.charAt(i);
-            if (digit < '1' || digit > '9') throw new IllegalArgumentException();
+            if (digit < '1' || digit > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public void validateEndInput(String input) throws IllegalArgumentException {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+
+        char digit = input.charAt(0);
+        if (digit < '1' || digit > '9') {
+            throw new IllegalArgumentException();
+        }
+
+        int cmd = Integer.parseInt(input);
+        if (cmd != 1 && cmd != 2) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -19,7 +38,7 @@ public class ProcessService {
         List<Integer> parsed = new ArrayList<>();
 
         for (int i = 0; i < input.length(); i++) {
-            String oneDigit = input.substring(i, i+1);
+            String oneDigit = input.substring(i, i + 1);
             parsed.add(Integer.parseInt(oneDigit));
         }
 
@@ -36,8 +55,7 @@ public class ProcessService {
 
             if (inputDigit.equals(answerDigit)) {
                 strikeCount += 1;
-            }
-            else if (answer.contains(inputDigit)) {
+            } else if (answer.contains(inputDigit)) {
                 ballCount += 1;
             }
         }

@@ -30,6 +30,7 @@ public class ExecuteService {
 
         printService.printGameEnd();
         String endInput = getUserInput();
+        processService.validateEndInput(endInput);
     }
 
     private boolean checkCompleteness(Integer strikes) {
