@@ -66,7 +66,7 @@ public class GameController {
     }
 
     private void whatToDoNext(){
-
+        setGameStatus(getPlayersOpinion());
     }
 
     private String getPlayersOpinion(){
