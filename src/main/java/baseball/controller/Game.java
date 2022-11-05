@@ -23,10 +23,6 @@ public class Game {
 
     }
 
-    private boolean isStrike(char onePlayerNum, int idx) {
-        return answerNumber.charAt(idx) == onePlayerNum;
-    }
-
     public void compareNumber(String playerNumber) {
         for (int i = 0; i < 3; i++) {
             char onePlayerNumber = playerNumber.charAt(i);
@@ -35,6 +31,10 @@ public class Game {
             if (isBall(onePlayerNumber, i))
                 ballCount++;
         }
+    }
+
+    private boolean isStrike(char onePlayerNum, int idx) {
+        return answerNumber.charAt(idx) == onePlayerNum;
     }
 
     private boolean isBall(char onePlayerNum, int idx) {
