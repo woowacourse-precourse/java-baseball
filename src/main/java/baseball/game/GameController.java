@@ -7,6 +7,7 @@ import java.util.Scanner;
 import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
 import static baseball.game.Option.RESTART;
+import static baseball.game.exception.ExceptionCase.catchOutOfRangeException;
 import static baseball.view.InputView.inputRestartView;
 import static baseball.view.InputView.startProgramView;
 import static baseball.view.OutputView.*;
