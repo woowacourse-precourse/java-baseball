@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Application {
+    public static boolean isValidInput(String input){
+
+        return true;
+    }
     public static List<Integer> createTargetNums(){
         Random r = new Random();
         List<Integer> targetNums = new ArrayList<>();
@@ -21,5 +25,12 @@ public class Application {
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        String input="";
+        try {
+            if(!isValidInput(input))
+                throw new IllegalArgumentException();
+        }catch (IllegalArgumentException e){
+            //어플리케이션 종료
+        }
     }
 }
