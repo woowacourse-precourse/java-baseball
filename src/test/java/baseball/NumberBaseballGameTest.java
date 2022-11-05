@@ -13,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -204,5 +205,16 @@ public class NumberBaseballGameTest {
         String number = baseballGame.inputNumber();
 
         assertThat(number).isEqualTo(input);
+    }
+
+    @Test
+    void 타자가_숫자를_받으면_해당_숫자의_공들을_생성한다() {
+        Hitter hitter = new Hitter();
+        List<Integer> result = List.of(1, 2, 3);
+
+        List<Ball> balls = hitter.hitBalls("123");
+
+        IntStream.range(0, balls.size())
+                .forEach(index -> assertThat(balls.get(index).getNumber()).isEqualTo(result.get(index)));
     }
 }
