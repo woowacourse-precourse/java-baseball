@@ -16,10 +16,10 @@ public class BaseballQuestion extends Question {
 
     @Override
     public String ask(int candidate) {
-        if (isFormatCorrect(candidate)){
+        if (!isFormatCorrect(candidate)){
             throw new IllegalArgumentException(ExceptionMessage.NOT_FORMAT_CORRECT.getMessage());
         }
-        return null;
+        return answer.response(candidate);
     }
 
     private boolean isFormatCorrect(int candidate){

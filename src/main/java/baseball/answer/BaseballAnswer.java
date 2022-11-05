@@ -8,4 +8,9 @@ public class BaseballAnswer extends Answer {
     public BaseballAnswer(BaseballType baseballGameType){
 
     }
+
+    @Override
+    public String response(int candidate) {
+        return null;
+    }
 }
