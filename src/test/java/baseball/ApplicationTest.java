@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -33,6 +34,24 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(Application.targetNum.size()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
+    void badInputException(){
+        Assertions.assertThatThrownBy(()->
+                Application.inputValidate(List.of("1234")))
+                        .isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->
+                        Application.inputValidate(List.of("112")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->
+                        Application.inputValidate(List.of("103")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+
+    }
+
 
     @Test
     void 게임종료_후_재시작() {
@@ -55,6 +74,10 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
