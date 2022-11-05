@@ -22,10 +22,11 @@ public class ComputerService {
         int strikeCnt = 0, ballCnt = 0;
 
         for (int i = 0; i < inputNumber.size(); i++) {
-            if (isStrike(inputNumber.indexOf(i), randomNumber.indexOf(i))) {
+            if (isStrike(inputNumber.get(i), randomNumber.get(i))) {
                 strikeCnt++;
+                continue;
             }
-            if (isBall(inputNumber.indexOf(i), randomNumber)) {
+            if (isBall(inputNumber.get(i), randomNumber)) {
                 ballCnt++;
             }
         }
