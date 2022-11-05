@@ -10,6 +10,10 @@ public class GameStatusService {
         gameStatus = true;
     }
 
+    public void setGameStatus(String opinion){
+        if(isEndOfGame(opinion)) stopGame();
+    }
+
     public boolean isEndOfGame(String opinion){
         return opinion.equals(END_GAME);
     }
