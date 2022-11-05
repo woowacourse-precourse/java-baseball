@@ -83,9 +83,19 @@ public class GameView {
         return readLine();
     }
 
+    private void isValidUser(int numInput) {
+        isValidPositiveInt(numInput);
+    }
 
     private boolean isValidPositiveInt(int num) {
         if (num > 0) {
+            return true;
+        }
+        throw new IllegalArgumentException("양수를 입력해주세요.");
+    }
+
+    private boolean isValidRightNum(int num) {
+        if (UseFunc.isEqualIntOfTwo(num, 1) && UseFunc.isEqualIntOfTwo(num, 2)) {
             return true;
         }
         throw new IllegalArgumentException("양수를 입력해주세요.");
