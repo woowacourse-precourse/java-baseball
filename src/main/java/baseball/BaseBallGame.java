@@ -5,6 +5,9 @@ import java.util.Objects;
 
 public class BaseBallGame {
 
+    Computer computer = new Computer();
+    User user = new User();
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -16,6 +19,37 @@ public class BaseBallGame {
     public void userWin() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    public void playGame() {
+        // 컴퓨터 랜덤 넘버
+        List<Integer> computerNumbers = computer.makeComputerNumbers();
+
+        System.out.println(computerNumbers);
+
+        while (true) {
+
+//            try {
+            userInput();
+            String userInputNumber = user.userInput();
+            List<Integer> userInputToList = user.userInputToList(userInputNumber);
+
+            int countBall = countBall(userInputToList, computerNumbers);
+            int countStrike = countStrike(userInputToList, computerNumbers);
+
+            makeHint(countBall, countStrike);
+
+            if (countStrike == 3) {
+                userWin();
+                break;
+            }
+//            } catch (IllegalArgumentException e) {
+//            System.out.println("1~9 사이의 올바른 숫자를 입력해주세요.");
+//            }
+
+        }
+
+    }
+
 
     public int countBall(List<Integer> userInputArr, List<Integer> computerNumbers) {
 
