@@ -17,13 +17,13 @@ public class Game {
 
     public void start() {
         computer = new Computer();
-        isEnd = Boolean.FALSE;
+        isEnd = false;
         System.out.println(START);
         play();
     }
 
     private void play() {
-        while (isEnd.equals(Boolean.FALSE)) {
+        while (isEnd.equals(false)) {
             System.out.println(INPUT);
             printResult(computer.getResult(Console.readLine()));
         }
@@ -31,7 +31,7 @@ public class Game {
 
     private void end() {
         System.out.println(END);
-        isEnd = Boolean.TRUE;
+        isEnd = true;
     }
 
     private void printResult(Result result) {

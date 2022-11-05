@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static Boolean isEnd = false;
+
     public static void main(String[] args) {
+        isEnd = false;
+
         while (isEnd.equals(false)) {
             Game game = new Game();
             game.start();
