@@ -104,8 +104,8 @@ public class Game {
             List<Integer> user = makeUserList(input);
             validateThree(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
             return user;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
         }
     }
 

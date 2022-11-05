@@ -11,6 +11,7 @@ public class Constants {
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
     public static final String INPUT_OTHER_NUMBER_EXCEPTION = "각각 다른 수를 입력해주세요";
+    public static final String NUMBER_FORMAT_EXCEPTION = "문자는 입력할 수 없어요";
     public static final String STRIKE = "스트라이크";
     public static final int ZERO = 0;
     public static final String INPUT_START = "1";
