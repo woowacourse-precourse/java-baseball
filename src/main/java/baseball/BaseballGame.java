@@ -40,4 +40,15 @@ public class BaseballGame {
 
         return isStrike;
     }
+
+    public boolean isBall() {
+        boolean isBall = false;
+
+        if ((computerNumber.contains(userNumber)) && (!isStrike())) {
+            ballCount++;
+            isBall = true;
+        }
+
+        return isBall;
+    }
 }
