@@ -21,4 +21,8 @@ public class Status {
 	public void setStatusTerminating() {
 		status = STATUS_TERMINATING;
 	}
+
+	public String getStatus() {
+		return status;
+	}
 }
