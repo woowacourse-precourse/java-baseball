@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.result.Result;
-import baseball.result.Referee;
+import baseball.participant.Referee;
 import baseball.result.ResultType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

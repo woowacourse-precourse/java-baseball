@@ -1,4 +1,6 @@
-package baseball.result;
+package baseball.participant;
+
+import baseball.result.Result;
 
 public class Referee {
 
