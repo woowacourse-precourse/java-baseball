@@ -21,7 +21,11 @@ public class Number {
     }
 
     public String getInputNumber() {
-        return readLine();
+        String input = readLine();
+        if(!isValidString(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 
     public boolean isValidString(String input) {
