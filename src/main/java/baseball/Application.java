@@ -1,15 +1,12 @@
 package baseball;
 
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
-        User user;
+        GameController gameController;
         do {
-            List<Integer> computerNumberList = new Computer().computerNumberList;
-            user = new User(computerNumberList);
-            user.main();
-        } while (user.keepGame);
+            gameController = new GameController();
+            gameController.gameStart();
+        } while (gameController.endProgram());
     }
 }
 
