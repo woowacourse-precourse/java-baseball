@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -20,17 +21,32 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    static boolean compareNumber(List<Integer> computerNum, String myNum){
+    static List<Integer> compareNumber(List<Integer> computerNum, String myNum, Integer myIdx){
+        List<Integer> ballcount = Arrays.asList(0,0);
+        int myCompareNum = Character.getNumericValue(myNum.charAt(myIdx));
+        int comCompareNum;
+        for(int comIdx = 0; comIdx < 3; comIdx++) {
+            comCompareNum = computerNum.get(comIdx);
+            if (myCompareNum == comCompareNum && myIdx != comIdx) {
+                ballcount.set(0, 1);
+            }
+            if (myCompareNum == comCompareNum && myIdx == comIdx) {
+                ballcount.set(1, 1);
+            }
+        }
+        return ballcount;
+    }
+
+    static boolean playGame(List<Integer> computerNum, String myNum){
         int strike = 0;
         int ball = 0;
-        for(int i = 0; i < myNum.length(); i++){
-            for(int j = 0; j < computerNum.size(); j++){
-                if(Character.getNumericValue(myNum.charAt(i)) == computerNum.get(j) && i == j){
-                    strike +=1;
-                }
-                if(Character.getNumericValue(myNum.charAt(i)) == computerNum.get(j) && i != j){
-                    ball+=1;
-                }
+        for(int myIdx = 0; myIdx < myNum.length(); myIdx++){
+            List<Integer> ballcount = compareNumber(computerNum, myNum, myIdx);
+            if(ballcount.get(0) == 1){
+                ball +=1;
+            }
+            if(ballcount.get(1) == 1){
+                strike+=1;
             }
         }
         if(strike == 3){
@@ -81,7 +97,7 @@ public class Application {
         }
     }
 
-    static String pickMyNum(){
+    static String pickMyNum()throws IllegalArgumentException{
         try{
             System.out.print("숫자를 입력해주세요 : ");
             String myNumber = Console.readLine();
@@ -109,7 +125,7 @@ public class Application {
             boolean isWin = false;
             while(!isWin){
                 String myNum = pickMyNum();
-                isWin = compareNumber(computerNum, myNum);
+                isWin = playGame(computerNum, myNum);
             }
             return endGameState();
         }
@@ -119,7 +135,7 @@ public class Application {
 
     }
 
-    static void startApplicationState(){
+    static void startApplicationState()throws IllegalArgumentException{
         // 리턴값에 따라 반복 여부 결정 필요
         try{
             boolean againGame = true;
