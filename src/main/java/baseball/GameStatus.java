@@ -14,4 +14,8 @@ public class GameStatus {
     public boolean isValid() {
         return status == 1 || status == 2;
     }
+
+    public void changeStatus(int status) {
+        this.status = status;
+    }
 }
