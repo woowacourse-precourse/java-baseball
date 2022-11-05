@@ -15,7 +15,7 @@ public class Application {
 
     private static void playBaseballGame() {
         boolean isFirstGame = true;
-        Logger.log(BaseballGame.getStartMessage());
+        Logger.log(BaseballGame.getStartMessage() + '\n');
 
         while (true) {
             if (isFirstGame) {
@@ -23,7 +23,7 @@ public class Application {
                 isFirstGame = false;
             }
 
-            Logger.log(RESTART_OR_EXIT_MESSAGE);
+            Logger.log(RESTART_OR_EXIT_MESSAGE + '\n');
             Integer selectNumber = InputController.getOneNumber();
 
             if (selectNumber.equals(2)) {

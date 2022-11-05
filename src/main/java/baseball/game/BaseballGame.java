@@ -36,7 +36,7 @@ public class BaseballGame {
     }
 
     private void end() {
-        Logger.log(BaseballConstants.END_MESSAGE);
+        Logger.log(BaseballConstants.END_MESSAGE + '\n');
     }
 
     private boolean tryGuess() {
@@ -49,10 +49,10 @@ public class BaseballGame {
         HashMap<ComparisonResultType, Integer> resultFrequencyCounter =
                 numberBoard.compareNumbers(userNumbers, opponentNumbers);
 
-        Logger.log(numberBoard.getResultMessage());
+        Logger.log(numberBoard.getResultMessage() + '\n');
 
         if (checkSuccess(resultFrequencyCounter)) {
-            Logger.log(getBoardSize() + BaseballConstants.SUCCESS_MESSAGE);
+            Logger.log(getBoardSize() + BaseballConstants.SUCCESS_MESSAGE + " ");
             return true;
         }
 
