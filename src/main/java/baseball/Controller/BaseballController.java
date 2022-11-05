@@ -8,8 +8,9 @@ public class BaseballController {
 
     private final NumberService numberService = new NumberServiceImpl();
 
-    public void gameStart () {
+    public void gameStart () throws IllegalArgumentException{
         numberService.createComputerNumber();
+        numberService.createUserNumber();
     }
 
 }
