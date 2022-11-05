@@ -20,21 +20,27 @@ public class Application {
 
 public static void setUserNumbers(){
         String inputNumber;
-        List<String> userNumbers = new ArrayList<>();
-
         inputNumber = readLine();
-//        String[] a = inputNumber.split("");
+        List<Integer> userNumbers = new ArrayList<>();
+        userNumbers = changeIntUsernumbers(inputNumber);
 
-//        userNumbers.add(inputNumber.split(""));
+        // int 변경 확인을 위한 테스트 출력
+        System.out.println(userNumbers.get(1)+ userNumbers.get(2));
+        System.out.println(userNumbers.get(0)+ userNumbers.get(1));
+        System.out.println(userNumbers.get(1));
+        System.out.println(userNumbers.get(2));
+}
+public static List<Integer> changeIntUsernumbers(String inputNubmers){
+        String[] splitNumber = inputNubmers.split("");
+        int[] splitIntNumber = new int[3];
+        List<Integer> userNumbers = new ArrayList<>();
 
-        for(int i =0;i<inputNumber.length();i++){
-            userNumbers.add(String.valueOf(inputNumber.charAt(i)));
-            // 자바 컨벤션으로 인해 수정.
-            // computer의 숫자를 String으로 바꾸면 해결 가능.
-            // 점의 개수를 줄이기 위해 임시배열 생성 후 값을 int로 변환하여 리스트에 더한다.
+        for(int i =0;i<splitNumber.length;i++){
+            splitIntNumber[i] = Integer.parseInt(splitNumber[i]);
+            userNumbers.add(splitIntNumber[i]);
         }
 
-        for(String a : userNumbers) System.out.println(a);
+        return userNumbers;
 }
 
     public static void playBaseball(){
