@@ -29,9 +29,9 @@
   - 입력된 문자열이 숫자가 아니라면 IllegalArgumentException 던져야 함
   - validation 통과하지 못하면 IllegalArgumentException 던져야 함
 
-### class View
+### class Game
 
-- 숫자야구 진행 상황을 띄우는 역할
+- 숫자야구 게임 클래스
 - Computer computer : 게임에 참가한 컴퓨터
 - User user : 게임에 참가한 유저
 - void start() : 게임을 시작하는 함수
