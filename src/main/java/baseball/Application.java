@@ -65,16 +65,16 @@ public class Application {
         return computer;
     }
 
-    public static String countBallStrike(List<Integer> computer, List<Integer> user) {
+    public static String countBallStrike(List<Integer> computerList, List<Integer> userList) {
         int ballCount = 0, strikeCount = 0;
 
-        for (int i = 0; i < computer.size(); i++) {
-            int computerNumber = computer.get(i);
-            int userNumber = user.get(i);
+        for (int i = 0; i < computerList.size(); i++) {
+            int computerNumber = computerList.get(i);
+            int userNumber = userList.get(i);
 
             if (computerNumber == userNumber) {
                 strikeCount++;
-            } else if (computer.contains(userNumber)) {
+            } else if (computerList.contains(userNumber)) {
                 ballCount++;
             }
         }
