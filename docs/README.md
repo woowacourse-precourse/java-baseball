@@ -1,21 +1,5 @@
 # 구현할 기능 목록
 
-## 야구게임
-
-### 진행
-1. Opponent가 게임을 진행할 수(ThreeDigitNum)를 생성한다.
-2. 게임을 시작하여 3 ~ 5을 반복한다.
-3. User가 3자리 수(ThreeDigitNum)를 입력한다.
-4. Opponent가 이(ThreeDigitNum)를 바탕으로 Hint를 제공한다.
-5. Hint를 User에게 보여준다.
-
-### User의 3자리 수(ThreeDigitNum)가 정답인 경우
-
-- 진행의 (5)를 수행한다.
-- 게임 재시작 여부(GameControlNum)을 User에게 입력받는다.
-  - STOP을 입력한 경우 게임을 종료한다.
-  - RESTART를 입력한 경우 진행 (1)을 수행한다.
-
 ## 상대방 (Opponent)
 
 - [✅] 게임을 진행할 수(1 ~ 9 중 서로 다른 무작위 수 3개)를 생성한다.
@@ -36,3 +20,17 @@
     - [✅] 힌트 메시지를 출력한다.
     - [✅] 게임결과 메시지를 출력한다.
     - [✅] 게임 재시작 여부 결정 메시지를 출력한다.
+
+## 야구게임
+
+-  위에 구현한 기능들을 이용하여 게임을 진행한다.
+  1. Opponent가 게임을 진행할 수(ThreeDigitNum)를 생성한다.
+  2. 게임을 시작하여 3 ~ 5을 반복한다.
+  3. User가 3자리 수(ThreeDigitNum)를 입력한다.
+  4. Opponent가 이(ThreeDigitNum)를 바탕으로 Hint를 제공한다.
+  5. Hint를 User에게 보여준다.
+  -  User의 3자리 수(ThreeDigitNum)가 정답인 경우
+    - 진행의 (5)를 수행한다.
+      - 게임 재시작 여부(GameControlNum)을 User에게 입력받는다.
+        - STOP을 입력한 경우 게임을 종료한다.
+        - RESTART를 입력한 경우 진행 (1)을 수행한다.
