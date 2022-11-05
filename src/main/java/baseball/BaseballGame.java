@@ -1,6 +1,6 @@
 package baseball;
 
-import constant.Message;
+import view.Message;
 
 import static constant.Const.GAME_END_STRIKE_COUNT;
 

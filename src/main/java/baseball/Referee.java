@@ -1,6 +1,6 @@
 package baseball;
 
-import constant.Message;
+import view.Message;
 
 public class Referee {
     private int strikeCount;

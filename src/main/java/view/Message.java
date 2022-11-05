@@ -1,4 +1,4 @@
-package constant;
+package view;
 
 import static constant.Const.*;
 

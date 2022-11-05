@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import constant.Message;
+import view.Message;
 import validator.NumberValidator;
 
 import static constant.Const.RETRY;
@@ -9,7 +9,7 @@ import static constant.Const.RETRY;
 public class User {
     private static String inputNumber;
 
-    public void setNumber() {
+    public void enterNumber() {
         inputNumber = getNumberFromInput();
     }
 
