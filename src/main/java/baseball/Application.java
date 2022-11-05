@@ -51,6 +51,8 @@ public class Application {
             ball = countingBall(0, userNumbers, randomNumberList);
             printCount(ball, strike);
 
+            if (checkThreeStrike(strike)) break;
+
         }
     }
 
@@ -196,5 +198,10 @@ public class Application {
 
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
+    }
+
+    public static boolean checkThreeStrike(int strike) {
+
+        return strike == 3;
     }
 }
