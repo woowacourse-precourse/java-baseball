@@ -84,6 +84,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_마이너스_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-123"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
