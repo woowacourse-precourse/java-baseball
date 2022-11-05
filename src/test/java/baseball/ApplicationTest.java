@@ -36,6 +36,42 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("예외 테스트 진행간 잘못된 값 입력")
+    void valid_wrong_input() {
+        assertThatThrownBy(
+                () -> assertRandomNumberInRangeTest(
+                        () -> {
+                            run("246", "1345", "1", "597", "589", "1", "134", "1", "123", "2");
+                            assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                        },
+                        1, 3, 5, 5, 8, 9, 1, 3, 4, 1, 2, 3
+                )
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> assertRandomNumberInRangeTest(
+                        () -> {
+                            run("246", "122", "1", "597", "589", "1", "134", "1", "123", "2");
+                            assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                        },
+                        1, 3, 5, 5, 8, 9, 1, 3, 4, 1, 2, 3
+                )
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> assertRandomNumberInRangeTest(
+                        () -> {
+                            run("246", "1345", "4", "597", "589", "1", "134", "1", "123", "2");
+                            assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                        },
+                        1, 3, 5, 5, 8, 9, 1, 3, 4, 1, 2, 3
+                )
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+
+    @Test
     @DisplayName("예외_테스트_알맞지_않은_길이")
     void valid_string_length() {
         assertSimpleTest(() ->
@@ -55,7 +91,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("숫자가 아닌 값")
+    @DisplayName("예외_테스트_숫자가_아닌_값")
     void valid_not_number() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
