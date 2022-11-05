@@ -114,17 +114,15 @@ class GameProcessor {
     }
 
 
-    public void strikeChecker(int userValue, int computerValue) {
+    public void strikeChecker(int[] userValue,int[] computerValue) {
         int strikeCount = 0;
-        String userValueString = String.valueOf(userValue);
-        String computerValueString = String.valueOf(computerValue);
-        if (userValueString.charAt(0) == computerValueString.charAt(0)) {
+        if (userValue[0]==computerValue[0]) {
             strikeCount++;
         }
-        if (userValueString.charAt(1) == computerValueString.charAt(1)) {
+        if (userValue[1]==computerValue[1]) {
             strikeCount++;
         }
-        if (userValueString.charAt(2) == computerValueString.charAt(2)) {
+        if (userValue[2]==computerValue[2]) {
             strikeCount++;
         }
         this.setStrike(strikeCount);
