@@ -58,6 +58,48 @@ public class GameTest extends NsTest {
         assertThat(game.getNumberOfAttempts()).isEqualTo(2);
     }
 
+    @DisplayName("BallReader에서 받은 결과 값에 따라 낫싱, 볼, 스트라이크 문자를 반환한다.")
+    @Test
+    void BallReader_반환_값에_따른_출력_검사() {
+        //given
+        when(ballReader.isFinished(anyList(),anyList()))
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(true);
+
+        when(ballMaker.getRandomBall())
+                .thenReturn(new ArrayList<>());
+
+        when(ballMaker.getUserBall())
+                .thenReturn(new ArrayList<>());
+
+
+        Map<String,Integer> firstResult = new HashMap<>();
+        firstResult.put("STRIKE",2);
+
+        Map<String,Integer> secondResult = new HashMap<>();
+        secondResult.put("STRIKE",1);
+        secondResult.put("BALL", 1);
+
+        Map<String,Integer> thirdResult = new HashMap<>();
+        thirdResult.put("BALL", 2);
+
+        Map<String,Integer> fourthResult = new HashMap<>();
+
+        when(ballReader.getResult(anyList(),anyList()))
+                .thenReturn(firstResult)
+                .thenReturn(secondResult)
+                .thenReturn(thirdResult)
+                .thenReturn(fourthResult);
+
+        //when
+        game.play();
+
+        //then
+        assertThat(output()).contains("2스트라이크", "1볼 1스트라이크", "2볼", "낫싱");
+    }
+
     @Override
     protected void runMain() {
 
