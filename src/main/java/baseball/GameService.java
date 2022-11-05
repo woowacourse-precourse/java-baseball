@@ -13,7 +13,7 @@ public class GameService {
     private int ball;
     private int strike;
 
-    public boolean printPlayResult(int ball, int strike) {
+    private boolean printPlayResult(int ball, int strike) {
         if (strike == NUMBER_LENGTH) {
             System.out.println(ALL_STRIKE_MESSAGE);
             return false;
