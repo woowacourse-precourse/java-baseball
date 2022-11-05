@@ -45,4 +45,14 @@ public class InputValidationTest {
         }
     }
 
+    @Test
+    void 중복된_숫자가_존재하면_false를_반환()
+    {
+        List<String> inputList = List.of("224","322","553","664","939");
+        for(String input : inputList)
+        {
+            Assertions.assertThat(gameController.isValidUserInput(input)).isFalse();
+        }
+    }
+
 }
