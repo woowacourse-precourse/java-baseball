@@ -9,7 +9,7 @@ public class NumberFactory {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBERS_SIZE = 3;
 
-    public static List<Integer> createRandomNumbers(){
+    public static List<Integer> createRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < NUMBERS_SIZE) {
