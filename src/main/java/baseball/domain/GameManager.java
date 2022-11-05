@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.type.GameFlow;
 import baseball.util.Input;
+import baseball.util.View;
 
 public class GameManager {
     private final int GAME_RESTART = GameFlow.GAME_RESTART.getValue();
@@ -17,6 +18,7 @@ public class GameManager {
     }
 
     public boolean isRestart() {
+        View.printRequestRestart();
         int restartFlag = Integer.parseInt(Input.inputRestartFlag());
         return (restartFlag == GAME_RESTART);
     }

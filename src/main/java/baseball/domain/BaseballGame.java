@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.util.Input;
+import baseball.util.View;
 
 public class BaseballGame {
     private final Computer computer = new Computer();
@@ -10,10 +11,13 @@ public class BaseballGame {
 
     public void play() {
         do {
-            String playerGuess = Input.inputPlayerNumber();
-            Hint hint = computer.createHint(playerGuess);
+            View.printGameStart();
+            View.printRequestPlayerGuess();
+            Hint hint = computer.createHint(Input.inputPlayerNumber());
             checkCorrect(hint);
         } while (!isFinish);
+
+        View.printGameFinish();
     }
 
     private void checkCorrect(Hint hint) {
