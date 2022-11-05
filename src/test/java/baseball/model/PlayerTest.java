@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import baseball.model.Player;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.exception;
 
 import baseball.exception.PlayerException;
 import org.junit.jupiter.api.BeforeEach;

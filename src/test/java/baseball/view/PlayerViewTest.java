@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 import baseball.view.PlayerView;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 import baseball.service.GameStatusService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
