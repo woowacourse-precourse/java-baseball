@@ -6,12 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
-    private static final int CNT_NUMBER = 3;
+    private static final int MAX_STRIKE = 3;
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INPUT_PATTERN = "^[1-9]*$";
 
     public String number;
-    
 
     public String getNumber() {
         return this.number;
@@ -34,7 +33,7 @@ public class Player {
         Set<Character> stringCharSet = new HashSet<>();
         input.chars().forEach(c -> stringCharSet.add((char) c));
 
-        return stringCharSet.size() != CNT_NUMBER;
+        return stringCharSet.size() != MAX_STRIKE;
     }
 
     private boolean isDigitRange(String input) {
@@ -42,6 +41,6 @@ public class Player {
     }
 
     private boolean isRightLength(String input) {
-        return input.length() == CNT_NUMBER;
+        return input.length() == MAX_STRIKE;
     }
 }

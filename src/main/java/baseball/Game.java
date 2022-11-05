@@ -3,7 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    private final int CNT_NUMBER = 3;
+    private final int MAX_STRIKE = 3;
     private final int STRIKE = 1;
     private final int NOT_STRIKE = 0;
     private final int BALL = 1;
@@ -21,7 +21,7 @@ public class Game {
     private int strike;
     private int ball;
     private boolean exit = false;
-    
+
     public void start() {
         Player playerNumber = new Player();
         Computer computerNumber = new Computer();
@@ -37,7 +37,7 @@ public class Game {
             ball = countBall();
             printCount();
 
-            if (strike == CNT_NUMBER) {
+            if (strike == MAX_STRIKE) {
                 exit = isEndInput(computerNumber);
             }
         }
@@ -45,7 +45,7 @@ public class Game {
 
     private int countStrike() {
         int count = 0;
-        for (int i = 0; i < CNT_NUMBER; i++) {
+        for (int i = 0; i < MAX_STRIKE; i++) {
             count += isStrike(computer.charAt(i), player.charAt(i));
         }
         return count;
@@ -60,7 +60,7 @@ public class Game {
 
     private int countBall() {
         int count = 0;
-        for (int i = 0; i < CNT_NUMBER; i++) {
+        for (int i = 0; i < MAX_STRIKE; i++) {
             count += isBall(player.charAt(i));
         }
         return count - strike;
@@ -74,8 +74,8 @@ public class Game {
     }
 
     private void printCount() {
-        if (strike == CNT_NUMBER) {
-            System.out.printf(CORRECT_MESSAGE, strike, CNT_NUMBER);
+        if (strike == MAX_STRIKE) {
+            System.out.printf(CORRECT_MESSAGE, strike, MAX_STRIKE);
         } else if (strike == 0 && ball == 0) {
             System.out.print(NOTHING_MESSAGE);
         } else if (strike != 0 && ball != 0) {
