@@ -9,6 +9,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
+    static final String CORRECT_ANSWER = "3스트라이크";
+    static final String NOTHING = "낫싱";
 
     public void printStartMessage(){
         System.out.println(START_MESSAGE);
@@ -51,13 +55,13 @@ public class Game {
 
         String result;
         if (ball > 0 && strike > 0)
-            result = ball + "볼 " + strike + "스트라이크";
+            result = ball + BALL + strike + STRIKE;
         else if (ball == 0 && strike > 0)
-            result = strike + "스트라이크";
+            result = strike + STRIKE;
         else if (ball > 0 && strike == 0)
-            result = ball + "볼";
+            result = ball + BALL;
         else
-            result = "낫싱";
+            result = NOTHING;
 
         return result;
     }
