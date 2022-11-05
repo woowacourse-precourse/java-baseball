@@ -15,13 +15,7 @@ public class BaseballNumber {
     public int getNumberAt(int index) {
         return listNumber.get(index);
     }
-
-    public void setRandomValue() {
-        this.listNumber = Util.splitDigitsIntoList(
-                RandomNumGenerator.makeRandomNumWithNDigits(SystemConstant.GAME_DIGIT)
-        );
-    }
-
+    
     public boolean contains(int number) {
         return listNumber.contains(number);
     }
