@@ -15,7 +15,7 @@ public class BallList {
         this.ballList = ballList;
     }
 
-    public BallList RandomBallList() {
+    public static BallList RandomBallList() {
         List<Ball> ballList = new ArrayList<>();
 
         while (ballList.size()!=3) {
