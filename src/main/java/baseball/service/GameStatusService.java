@@ -15,7 +15,7 @@ public class GameStatusService {
     }
 
     public void stopGame(){
-
+        gameStatus = false;
     }
 
     public boolean getGameStatus(){
