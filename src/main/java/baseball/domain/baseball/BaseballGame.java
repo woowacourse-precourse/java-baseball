@@ -4,17 +4,19 @@ import baseball.domain.baseball.status.BaseballGameStatus;
 import baseball.domain.baseball.status.InitStatus;
 import baseball.domain.player.Computer;
 import baseball.domain.player.Participant;
+import baseball.domain.player.Player;
 import baseball.domain.referee.Referee;
 import baseball.domain.score.Score;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-    private Referee referee;
+    private final Referee referee;
     private BaseballGameStatus gameStatus;
-    private Computer computer;
-    private Participant participant;
+    private Player computer;
+    private Player participant;
 
     public BaseballGame() {
+        this.referee = new Referee();
         this.gameStatus = new InitStatus();
     }
 
@@ -46,7 +48,6 @@ public class BaseballGame {
     }
 
     public Score ruled() {
-        this.referee = new Referee();
         return referee.ruled(computer.numbers(), participant.numbers());
     }
 }
