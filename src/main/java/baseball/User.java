@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.RuleConst.*;
 
@@ -15,9 +17,7 @@ public class User {
     }
 
     private void setNumbers(String number) {
-        for (int index = 0; index < number.length(); index++) {
-            numbers.set(index, Integer.valueOf(number.substring(index, index + 1)));
-        }
+        numbers = Arrays.stream(number.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public List<Integer> getNumbers() {
