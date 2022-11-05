@@ -23,12 +23,23 @@ public class Application {
     private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
         int strikesCount = 0;
         for (int index = 0; index < randomNumbers.size(); index++) {
-            if (receivingNumbers.get(index) == randomNumbers.get(index)) {
+            if (receivingNumbers.get(index).equals(randomNumbers.get(index))) {
                 strikesCount++;
             }
         }
 
         return strikesCount;
+    }
+
+    private static int checkBall(List<String> receivingNumbers, List<String> randomNumbers) {
+        int ballsCount = 0;
+        for (String receivingNumber : receivingNumbers) {
+            if (randomNumbers.contains(receivingNumber)) {
+                ballsCount++;
+            }
+        }
+
+        return ballsCount;
     }
 
     private static List<String> createRandom() {
