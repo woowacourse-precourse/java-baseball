@@ -9,7 +9,8 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String correctAnswer = makeRandomNumStr();
+//        String correctAnswer = makeRandomNumStr();
+        String correctAnswer = "123";
         String userAnswer = Console.readLine();
 
         lengthCheck(userAnswer);
@@ -17,10 +18,27 @@ public class Application {
         duplicateCheck(userAnswer);
 
         int strikeCount = getStrikeCount(correctAnswer, userAnswer);
+        int ballCount = getBallCount(correctAnswer, userAnswer);
         System.out.println(strikeCount+" strike!");
+        System.out.println(ballCount+" ball!");
 
     }
+    private static int getBallCount(String correctAnswer, String userAnswer) {
 
+        int ballCount = 0;
+
+        for (int i = 0; i < correctAnswer.length(); i++) {
+
+            char c = userAnswer.charAt(i);
+            int findIndex = correctAnswer.indexOf(c);
+
+            if (findIndex != i && findIndex >= 0) {
+                ballCount++;
+            }
+
+        }
+        return ballCount;
+    }
 
     private static int getStrikeCount(String correctAnswer, String userAnswer) {
 
