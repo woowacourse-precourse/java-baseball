@@ -2,6 +2,7 @@ package Controller;
 
 import static Controller.Guess.*;
 import static Controller.Printer.*;
+import static baseball.Constant.*;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Game {
 				break;
 			}
 		}
+		printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
 	}
 
 }
