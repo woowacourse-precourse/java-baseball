@@ -9,13 +9,21 @@ public class Game {
     public Game() {
         OutputView.printStart();
         String randomNumbers = Computer.getRandomNumbers();
+        validateInputNumbers(randomNumbers);
+        OutputView.printEnd();
+        restartGameInputOneOrElseEndGame();
+    }
+
+    private void validateInputNumbers(String randomNumbers) {
         while (true) {
             String inputNumbers = InputView.printNumbers();
             if (NumberVerifier.numberVerifier(randomNumbers, inputNumbers)) {
                 break;
             }
         }
-        OutputView.printEnd();
+    }
+
+    private void restartGameInputOneOrElseEndGame() {
         if (OutputView.printRestart() == 1) {
             new Game();
         }
