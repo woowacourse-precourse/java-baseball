@@ -92,19 +92,32 @@ public class Application {
     }
 
     private static List<Integer> getAndSeperateInput() {
-        int userInput = getUserInt();
+        int userInput = getUserIntInGame();
         return seperate3Numbers(userInput);
     }
 
-    private static Integer getUserInt() {
+    private static Integer getUserIntInGame()
+            throws IllegalArgumentException {
         Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
+        int input = sc.nextInt();
+        return input;
+    }
+
+    private static Integer getUserIntEndGame()
+            throws IllegalArgumentException {
+
+        Scanner sc = new Scanner(System.in);
+        int input = sc.nextInt();
+        if ((input != 1) && (input != 2)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 
     private static boolean restartOrEndGame() {
         boolean newGame = true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int userInput = getUserInt();
+        int userInput = getUserIntEndGame();
         if (userInput == CONTINUE_GAME) {
             newGame = true;
         } else if (userInput == END_GAME) {
