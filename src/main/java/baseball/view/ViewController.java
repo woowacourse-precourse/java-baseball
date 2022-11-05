@@ -32,11 +32,12 @@ public class ViewController {
         int ball = resultMap.get(Type.BALL);
         int strike = resultMap.get(Type.STRIKE);
 
-        if(checkThreeStrike(strike)) {
+        printBallStrikeNothing(ball, strike);
+
+        if (checkThreeStrike(strike)) {
+            display.printEndingMessage();
             return true;
         }
-
-        printBallStrikeNothing(ball, strike);
         return false;
     }
 
