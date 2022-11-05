@@ -23,4 +23,15 @@ class ValidatorTest {
         for (String badInput : badInputs)
             assertThrows(IllegalArgumentException.class, () -> validator.validatePrediction(badInput));
     }
+
+    @Test
+    void validateReplaySelection() {
+        // given
+        Validator validator = new Validator();
+
+        // then
+        assertDoesNotThrow(() -> validator.validateReplaySelection("1"));
+        assertDoesNotThrow(() -> validator.validateReplaySelection("2"));
+        assertThrows(IllegalArgumentException.class, () -> validator.validateReplaySelection("3"));
+    }
 }
