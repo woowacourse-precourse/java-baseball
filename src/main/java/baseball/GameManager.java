@@ -12,6 +12,7 @@ public class GameManager {
 
     public boolean startGame() {
         init();
+
         while(!isCorrect) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
@@ -20,13 +21,14 @@ public class GameManager {
             ArrayList<Integer> userGuess = inputToUserGuess(input);
             String resultString = getResultOfUserGuess(userGuess);
             System.out.println(resultString);
-
         }
+
         return gameover();
     }
 
     private void init() {
         isCorrect = false;
+
         makeNewGuessNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -34,8 +36,10 @@ public class GameManager {
     //README.md 내 주어진 코드 변형
     private void makeNewGuessNumber() {
         guessNumber = new ArrayList<>();
+
         while (guessNumber.size() < GUESS_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!guessNumber.contains(randomNumber)) {
                 guessNumber.add(randomNumber);
             }
@@ -88,6 +92,7 @@ public class GameManager {
 
     private ArrayList<Integer> inputToUserGuess(String input) {
         ArrayList<Integer> ret = new ArrayList<>();
+
         for(char character: input.toCharArray()) {
             ret.add(character - '0');
         }
@@ -110,6 +115,7 @@ public class GameManager {
 
     private String getResultString(final int strike, final  int ball) {
         String ret = "";
+
         if(ball > 0) {
             ret += (ball + "볼 ");
         }
@@ -122,6 +128,7 @@ public class GameManager {
 
     private int getStrike(ArrayList<Integer> userGuess) {
         int ret = 0;
+
         for(int index = 0;index < GUESS_NUMBER_SIZE;index++) {
             if(guessNumber.get(index) == userGuess.get(index)) {
                 ret++;
@@ -133,6 +140,7 @@ public class GameManager {
 
     private int getBall(ArrayList<Integer> userGuess) {
         int ret = 0;
+
         for(int userIndex = 0;userIndex < GUESS_NUMBER_SIZE;userIndex++) {
             int userDigit = userGuess.get(userIndex);
             ret += countUserDigitInAnswer(userIndex, userDigit);
@@ -143,6 +151,7 @@ public class GameManager {
 
     private int countUserDigitInAnswer(int userIndex, int userDigit) {
         int count = 0;
+
         for(int answerIndex = 0;answerIndex < GUESS_NUMBER_SIZE;answerIndex++) {
             if(userIndex != answerIndex && userDigit == guessNumber.get(answerIndex)) {
                 count++;
@@ -158,9 +167,10 @@ public class GameManager {
 
     private boolean gameover() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String replaySign = Console.readLine();
-        validateReplaySign(replaySign);
 
+        String replaySign = Console.readLine();
+
+        validateReplaySign(replaySign);
         if(replaySign.equals("1")) {
             return true;
         }
