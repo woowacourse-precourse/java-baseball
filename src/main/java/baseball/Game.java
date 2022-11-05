@@ -8,6 +8,23 @@ import java.util.Map;
 public class Game {
     Map<String, Integer> ballAndStrike = new HashMap<>();
 
+    User user;
+    Computer computer;
+
+    public void initGame() {
+        user = new User();
+        computer = new Computer();
+        computer.setRandomNumber();
+    }
+
+    public void startGame() {
+        while(true) {
+            initGame();
+            user.input();
+            compareNumbers(computer.getRandomNumber(), user.getInputNumberList());
+        }
+    }
+
     // 두 수를 비교함.
     public Map compareNumbers(List computerNumber, List userNumber){
         int ballCount = 0, strikeCount = 0;
