@@ -36,9 +36,48 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    @DisplayName("예외_테스트_알맞지_않은_길이")
+    void valid_string_length() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 값")
+    void valid_not_number() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1숫자"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("15육"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("예외_테스트_중복된_숫자")
+    void valid_duplicate_number() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("133"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
