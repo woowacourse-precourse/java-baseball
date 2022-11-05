@@ -9,8 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class GameServiceTest extends NsTest {
 
@@ -157,6 +156,11 @@ class GameServiceTest extends NsTest {
                 () -> run("3"));
         String message = exception.getMessage();
         assertEquals("1 또는 2를 입력해주세요", message);
+    }
+
+    @Test
+    void 정상_종료_테스트() {
+        assertDoesNotThrow(() -> run("2"));
     }
 
     @Override
