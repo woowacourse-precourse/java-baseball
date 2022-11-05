@@ -1,8 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -40,6 +40,7 @@ class Game {
     public void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
         checkNumberLength(gamePlayerNumberInput);
         hasSameNumber(gamePlayerNumberInput);
+        hasCharacters(gamePlayerNumberInput);
     }
 
     private void checkNumberLength(String stringGamePlayerInput) {
@@ -49,11 +50,18 @@ class Game {
         }
     }
 
-    public void hasSameNumber(String gamePlayerInput) {
+    private void hasSameNumber(String gamePlayerInput) {
         for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
             if (gamePlayerInput.lastIndexOf(gamePlayerInput.charAt(stringIndex)) != stringIndex) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void hasCharacters(String gamePlayerInput) {
+        String regex = "^[0-9]*$";
+        if (!gamePlayerInput.matches(regex)) {
+            throw new IllegalArgumentException();
         }
     }
 }
