@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -131,7 +132,7 @@ class NumberBaseBallGameMachineTest {
                 .hasMessage("입력값이 1이나 2가 아닙니다.");
     }
 
-    @DisplayName("메시지 출력 테스트")
+    @DisplayName("메시지 출력 기능 테스트")
     @Test
     void display() {
         //given
@@ -145,9 +146,9 @@ class NumberBaseBallGameMachineTest {
         assertThat(byteArrayOutputStream.toString()).isEqualTo(message);
     }
 
-    @DisplayName("콘솔로 입력 받기 테스트")
+    @DisplayName("콘솔로 입력 기능 테스트")
     @Test
-    void getInputLine(){
+    void getInputLine() {
         //given
         String input = "콘솔로 입력합니다.";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
@@ -157,5 +158,20 @@ class NumberBaseBallGameMachineTest {
         String inputResult = gameMachine.getInputLine();
         //then
         assertThat(input).isEqualTo(inputResult);
+    }
+
+    @DisplayName("숫자 3개 입력 기능 테스트")
+    @Test
+    void getThreeNumberInput() {
+        //given
+        String input = "312";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        NumberBaseBallGameMachine gameMachine = new NumberBaseBallGameMachine();
+        //when
+        List<Integer> numberList = gameMachine.getThreeNumberInput();
+        //then
+        assertThat(numberList.size()).isEqualTo(3);
+        assertThat(numberList).contains(1, 2, 3);
     }
 }
