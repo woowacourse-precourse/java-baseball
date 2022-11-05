@@ -40,4 +40,30 @@ public class ValidationTest {
         assertThatThrownBy(() -> Input.validateNumberInput(inputWithDuplicatedNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateOneOrTwoInput_메서드_사용시_1문자_입력이_아닐_경우_예외_발생() {
+        String inputWithTwoCharacters = "12";
+        String inputWithThreeCharacters = "123";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateOneOrTwoInput(inputWithTwoCharacters))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateOneOrTwoInput(inputWithThreeCharacters))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void validateOneOrTwoInput_메서드_사용시_1문자_입력이_1_또는_2가_아닐_경우_예외_발생() {
+        String inputZero = "0";
+        String inputThree = "3";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateOneOrTwoInput(inputZero))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateOneOrTwoInput(inputThree))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
