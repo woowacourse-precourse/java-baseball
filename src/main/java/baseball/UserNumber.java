@@ -25,7 +25,9 @@ public class UserNumber {
         System.out.println(INPUT_NUMBER);
         List<Integer> inputNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
-        userNumberException.checkException(inputNumber);
+        if(userNumberException.checkException(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
         for (int i = 0; i < inputNumber.length(); i++) {
             int number = inputNumber.charAt(i) - '0';
             inputNumbers.add(number);

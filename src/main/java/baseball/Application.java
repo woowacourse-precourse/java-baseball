@@ -2,6 +2,8 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.UserNumberException;
+
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.HintMessage;
@@ -11,6 +13,7 @@ public class Application {
         boolean game = true;
         boolean win = true;
         HintMessage hintMessage = new HintMessage();
+        RestartGameException restartGameException = new RestartGameException();
         while (game) {
             ComputerNumber computerNumber = new ComputerNumber();
             computerNumber.makeRandomNumber();
@@ -31,6 +34,9 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int inputNumber = Integer.parseInt(Console.readLine());
+            if (restartGameException.hasRestartNumber(inputNumber)) {
+                throw new IllegalArgumentException();
+            }
             if (inputNumber == 1) {
                 game = true;
             }
