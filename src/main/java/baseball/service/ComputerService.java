@@ -18,9 +18,8 @@ public class ComputerService {
         return randomNumberList;
     }
 
-    public BallCountDto compareNumber(List<Integer> inputNumber) {
+    public BallCountDto compareNumber(List<Integer> inputNumber, List<Integer> randomNumber) {
         int strikeCnt = 0, ballCnt = 0;
-        List<Integer> randomNumber = getRandomNumber();
 
         for (int i = 0; i < inputNumber.size(); i++) {
             if (isStrike(inputNumber.indexOf(i), randomNumber.indexOf(i))) {

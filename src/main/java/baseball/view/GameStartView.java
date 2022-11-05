@@ -21,7 +21,7 @@ public class GameStartView {
         validateService = new ValidateService();
     }
 
-    public List<Integer> inputNumbers() {
+    public List<Integer> getInputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
         String inputBaseBallNumbers = Console.readLine();
 
