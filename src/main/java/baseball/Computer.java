@@ -1,19 +1,20 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class Computer {
 
   public static String RandomValue;
+  private static final int CORRECTINPUTLENGTH = 3;
+  private static final int GAMESTARTMODE = 1;
+  private static final int INPUTNUMBERMODE = 2;
+  private static final int GENERATERANDOMMODE = 3;
+  private static final int CALCULATEDOUTPUTMODE = 4;
 
   Computer () {
     RandomValue = generateRandom();
-    //printGameStart();
-    //printInputNumber();
-  }
+   }
 
   public static void printGameStart() {
     System.out.println("숫자 야구 게임을 시작합니다.");
@@ -35,7 +36,7 @@ public class Computer {
     StringBuilder sb = new StringBuilder();
     ArrayList<Integer> generateRandNum = new ArrayList<>();
 
-    while (generateRandNum.size() < 3) {
+    while (generateRandNum.size() < CORRECTINPUTLENGTH) {
       int randomNumber = Randoms.pickNumberInRange(1, 9);
       if (!generateRandNum.contains(randomNumber)) {
         generateRandNum.add(randomNumber);
@@ -48,16 +49,16 @@ public class Computer {
   }
 
   public static String testComputerPrint(int mode, String input) {
-    if (mode == 1) {
+    if (mode == GAMESTARTMODE) {
       printGameStart();
     }
-    if (mode == 2) {
+    if (mode == INPUTNUMBERMODE) {
       printInputNumber();
     }
-    if (mode == 3) {
+    if (mode == GENERATERANDOMMODE) {
       return generateRandom();
     }
-    if (mode == 4) {
+    if (mode == CALCULATEDOUTPUTMODE) {
       printCalculateResult(input);
     }
     return "";
