@@ -8,14 +8,10 @@ public class Exception {
 	private static final int NUMBER_LENGTH = 3;
 	private static final int NUMBER_BOUNDARY_START = 1;
 	private static final int NUMBER_BOUNDARY_END = 9;
-	private static final String RESTART_NUMBER = "1";
-	private static final String EXIT_NUMBER = "2";
 	private static final String LIMIT_NUMBER_BOUNDARY = String.format("[ERROR] %d부터 %d까지의 숫자만 입력해 주시기 바랍니다.",
 		NUMBER_BOUNDARY_START, NUMBER_BOUNDARY_END);
 	private static final String LIMIT_NUMBER_LENGTH = String.format("[ERROR] %d자리의 숫자만 입력해 주시기 바랍니다.", NUMBER_LENGTH);
 	private static final String LIMIT_NUMBER_OVERLAP = "[ERROR] 중복되지 않는 숫자만 입력해주시기 바랍니다.";
-	private static final String LIMIT_RESTART_NUMBER_BOUNDARY = String.format("[ERROR] %s혹은 %s숫자만 입력해 주시기 바랍니다.",
-		RESTART_NUMBER, EXIT_NUMBER);
 
 	public static void validatePlayerNumber(String inputPlayerNumber) {
 		try {
@@ -56,18 +52,22 @@ public class Exception {
 			.forEach(number -> inputPlayerNumberSet.add(number));
 	}
 
-	public static void validateRestartNumber(String inputRestartNumber) {
+	public static void validateRestartNumber(String inputRestartNumber, int restartNumber, int exitNumber) {
 		try {
-			Exception.validateRestartOrExitNumber(inputRestartNumber);
+			Exception.validateRestartOrExitNumber(inputRestartNumber, restartNumber, exitNumber);
 		} catch (IllegalArgumentException error) {
 			System.out.println(error);
 			throw new IllegalArgumentException();
 		}
 	}
 
-	public static void validateRestartOrExitNumber(String inputRestartNumber) {
-		if (!inputRestartNumber.equals(RESTART_NUMBER) && !inputRestartNumber.equals(EXIT_NUMBER)) {
-			throw new IllegalArgumentException(LIMIT_RESTART_NUMBER_BOUNDARY);
+	public static void validateRestartOrExitNumber(String inputRestartNumber, int restartNumber, int exitNumber) {
+		String stringRestartNumber = Integer.toString(restartNumber);
+		String stringExitNumber = Integer.toString(exitNumber);
+		if (!inputRestartNumber.equals(stringRestartNumber) && !inputRestartNumber.equals(stringExitNumber)) {
+			String limitRestartNumberBoundary = String.format("[ERROR] %s혹은 %s숫자만 입력해 주시기 바랍니다.",
+				stringRestartNumber, stringExitNumber);
+			throw new IllegalArgumentException(limitRestartNumberBoundary);
 		}
 	}
 }

@@ -25,9 +25,9 @@ public class Input {
 			.collect(Collectors.toList());
 	}
 
-	public static int getRestartNumber() {
+	public static int getRestartNumber(int restartNumber, int exitNumber) {
 		String inputRestartNumber = getInput();
-		Exception.validateRestartNumber(inputRestartNumber);
+		Exception.validateRestartNumber(inputRestartNumber, restartNumber, exitNumber);
 		return Integer.parseInt(inputRestartNumber);
 	}
 }
