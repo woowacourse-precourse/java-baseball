@@ -37,7 +37,7 @@ public class Referee {
         return ballStatus == BallStatus.BALL;
     }
     
-    public boolean isEnd() {
+    public boolean isBaseBallGameEnd() {
         return strike.isGameEnd();
     }
     

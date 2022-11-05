@@ -14,6 +14,6 @@ class RefereeTest {
         Referee referee = new Referee();
         referee.decide(List.of(BallStatus.STRIKE, BallStatus.STRIKE, BallStatus.STRIKE));
         
-        assertThat(referee.isEnd()).isTrue();
+        assertThat(referee.isBaseBallGameEnd()).isTrue();
     }
 }

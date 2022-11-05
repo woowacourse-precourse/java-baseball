@@ -39,7 +39,7 @@ public class BaseBall {
         
         while (!isBaseBallGameEnd) {
             final Referee referee = compareBallsOnce(baseBallGame);
-            isBaseBallGameEnd = referee.isEnd();
+            isBaseBallGameEnd = referee.isBaseBallGameEnd();
         }
     }
     
