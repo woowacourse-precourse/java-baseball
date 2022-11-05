@@ -24,7 +24,7 @@ public class GameResultJudgement {
         ++result[0];
       }
     }
-    if (result[0] == 0 || result[1] == 0) {
+    if (result[0] == 0 && result[1] == 0) {
       ++result[2];
     }
     return result;

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class GameResultJudgementTest {
 
-  GameResultJudgement judge;
+  private GameResultJudgement judge;
 
   @BeforeEach
   void GameResultJudgementCreate() {
@@ -53,7 +53,6 @@ class GameResultJudgementTest {
     assertStrike("789", "762", 1);
 
   }
-
   @Test
   @Order(4)
   @DisplayName("볼 3 확인")
