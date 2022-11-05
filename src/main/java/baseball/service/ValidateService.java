@@ -19,5 +19,11 @@ public class ValidateService {
         return inputBaseBallNumbers.length() > 3;
     }
 
+    public int validateInputNumber(int inputRestartNumber) {
+        if (!(inputRestartNumber == 1 || inputRestartNumber == 2)) {
+            throw new IllegalArgumentException();
+        }
+        return inputRestartNumber;
+    }
 
 }

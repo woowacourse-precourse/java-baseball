@@ -33,25 +33,11 @@ public class GameResultView {
         System.out.println(sb);
     }
 
-    public void checkThreeStrike(BallCountDto ballCountDto) {
-        if (ballCountDto.getStrike() == 3) {
-            System.out.println(GAME_END_MESSAGE);
-        }
-    }
-
     public int checkRestartGame() {
+        System.out.println(GAME_END_MESSAGE);
         System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
 
         String inputRestartString = Console.readLine();
-        int inputRestartNumber = Integer.parseInt(inputRestartString);
-
-        validateInputNumber(inputRestartNumber);
-        return inputRestartNumber;
-    }
-
-    private void validateInputNumber(int inputRestartNumber) {
-        if (!(inputRestartNumber == 1 || inputRestartNumber == 2)) {
-            throw new IllegalArgumentException();
-        }
+        return Integer.parseInt(inputRestartString);
     }
 }
