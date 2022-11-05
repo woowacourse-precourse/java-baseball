@@ -110,18 +110,18 @@ public class Application {
         return separatedInput;
     }
 
-    private static List<Integer> continueOrEndGame() {
-        List<Integer> newAnswer = new ArrayList<>();
+    private static boolean restartOrEndGame() {
+        boolean newGame=true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner sc = new Scanner(System.in);
         int userInput = sc.nextInt();
         if (userInput == CONTINUE_GAME) {
-            newAnswer = continueGame();
+            newGame=true;
         } else if (userInput == END_GAME) {
-            endGame();
-            boolean gameOn=false;
+            newGame = false;
         }
-        return newAnswer;
+        //else 예외사항 추가
+        return newGame;
     }
 
     private static List<Integer> continueGame() {
@@ -136,28 +136,31 @@ public class Application {
     static final int CONTINUE_GAME = 1;
     static final int END_GAME = 2;
 
-    private static void playGame(List<Integer> answer) {
-        boolean gameOn = true;
-        Scanner sc = new Scanner(System.in);
-        while (gameOn) {
-            List<Integer> separatedInput = getAndSeperateInput();
-            HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
-            printResult(comparedMap);
-            if (correctAnswer(comparedMap)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                answer = continueOrEndGame();
-            } else {
-                gameOn = true;
-            }
+    private static boolean playGame(List<Integer> answer) {
+        boolean gameOn;
+        List<Integer> separatedInput = getAndSeperateInput();
+        HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
+        printResult(comparedMap);
+        if (correctAnswer(comparedMap)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameOn = restartOrEndGame();
+        } else {
+            gameOn = true;
         }
+        return gameOn;
     }
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> answer = startGame();
-        System.out.println(answer);
-        boolean gameOn = true;
-        Scanner sc = new Scanner(System.in);
-        playGame(answer);
+        boolean newGame=true;
+        while (newGame) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> answer = startGame();
+            System.out.println(answer);
+            boolean gameOn = true;
+            while (gameOn) {
+                gameOn = playGame(answer);
+            }
+            newGame=restartOrEndGame();
+        }
     }
 }
