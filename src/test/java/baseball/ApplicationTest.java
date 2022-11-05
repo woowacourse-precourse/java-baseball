@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -40,5 +42,13 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
         List<Integer> number = computer.createRandomNumber();
         assertThat(number.size()).isEqualTo(3);
+    }
+
+    @Test
+    public void 임의의_수가_서로_다른_숫자인지_테스트() {
+        Computer computer = new Computer();
+        List<Integer> before_number = computer.createRandomNumber();
+        Set<Integer> after_number = new HashSet<>(before_number);
+        assertThat(after_number.size()).isEqualTo(before_number.size());
     }
 }
