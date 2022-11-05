@@ -24,4 +24,8 @@ public class Result {
         else if (ball > 0) resultType = ONLY_BALL;
         else resultType = NOTHING;
     }
+
+    public ResultType getResultType() {
+        return resultType;
+    }
 }
