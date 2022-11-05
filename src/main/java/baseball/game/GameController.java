@@ -45,7 +45,7 @@ public class GameController {
         }
 
         private void start(){
-            int predict, compareValue, ball, strike = 0;
+            int predict, compareValue, ball, strike;
 
             do{
                 View.printInput();
@@ -60,6 +60,7 @@ public class GameController {
 
                     View.printHint(ball ,strike);
                 }else{
+                    throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE);
                 }
             }while(strike == DIGIT_LENGTH);
 
