@@ -12,6 +12,7 @@ public class Application {
             computer.setRandom();
 
             user.request();
+            baseball.generateEx(user.response);
 
             Inspector inspector = new Inspector();
 
