@@ -5,6 +5,10 @@ public class BaseballManager {
     BaseballNumber computerNumber;
     ScoreManager scoreManager;
 
+    {
+        computerNumber = new BaseballNumber(
+                RandomNumGenerator.makeRandomNumWithNDigits(SystemConstant.GAME_DIGIT));
+    }
 
     void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
         userNumber = baseballNum1;
