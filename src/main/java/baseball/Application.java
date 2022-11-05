@@ -10,6 +10,13 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> targetNum = makeRandomTargetNum();
+        List<Integer> userNum = new ArrayList<>();
+        String inputUserNum = inputUserNum();
+        String[] separatedUserNum = inputUserNum.split("");
+
+        for (String num : separatedUserNum) {
+            userNumToIntegerListAndCheckDuplicatedNum(userNum, num);
+        }
 
 
     }
@@ -55,6 +62,25 @@ public class Application {
         } catch (IllegalArgumentException e){
             return false;
         }
+    }
+
+    static boolean userNumToIntegerListAndCheckDuplicatedNum(List<Integer> userNum, String inputNum) {
+
+        try{
+            int inputNumToInt = Integer.parseInt(inputNum);
+
+            if (!userNum.contains(inputNumToInt)) {
+                userNum.add(inputNumToInt);
+            } else{
+                throw new IllegalArgumentException();
+            }
+
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println("에러");
+            return false;
+        }
+
     }
 
 
