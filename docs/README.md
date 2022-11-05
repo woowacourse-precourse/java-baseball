@@ -10,19 +10,19 @@
 - [x] (Computer) 입력에 대한 유효성을 확인하는 기능
 - [x] (User) 사용자의 입력을 받는 기능
 - [x] (User) 입력에 대한 유효성을 확인하는 기능
-- [ ] (Computer) 컴퓨터의 숫자와 입력 숫자의 게임 결과를 계산하는 기능
-- [ ] (User) 게임의 추가 진행 여부 확인을 위해 사용자 입력을 받는 기능
+- [ ] 컴퓨터의 숫자와 입력 숫자의 게임 결과를 계산하는 기능
+- [x] (User) 게임의 추가 진행 여부 확인을 위해 사용자 입력을 받는 기능
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
 - 게임 결과를 표현하는 `enum Result class`
-  - 총 9가지 경우가 가능하다. 
-  - `3S`, `2S`, `1S`, `3B`, `2B`, `1B`, `2S1B`, `1S2B`, `NOTHING`
+  - 총 10가지 경우가 가능하다. 
+  - `THREESTRIKE`, `TWOSTRIKE`, `ONESTRIKE`, `ONEBALLTWOSTRIKE`, `TWOBALLONESTRIKE`, `ONEBALLONESTRIKE`, `THREEBALL`, `TWOBALL`, `ONEBALL`, `NOTHING`
 - 게임의 상태를 표현하는 `enum Status class`
   - 새 게임 진행 : `PROCEEDING(0)`, `RESTART(1)`, 게임 중단 : `EXIT(2)`
 - `컴퓨터` 클래스, `사용자` 클래스
-  - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Character, Integer> numberIndexMap`, `GameStatus status`, `GameResult result`, `getResultMessage()`, `getStatusBycode()`, `makeNewNumber()`, `setNumberIndexMap()`
-  - `사용자` 클래스 : `String number`, `setGameNumber()`, `isValidNumber()`, `getOption()`, `validateOption()`
+  - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Character, Integer> numberIndexMap`, `makeNewNumber()`, `setNumberIndexMap()`, `getNumberIndexMap()`
+  - `사용자` 클래스 : `String number`, `int gameOption`, `setGameNumber()`, `isValidNumber()`, `setGameOption()`, `isValidOption()`
 
 ❓고민해본 것
 - **컴퓨터 숫자의 각 자리별 인덱스**를 미리 저장해둬야 할 것 같았다. 

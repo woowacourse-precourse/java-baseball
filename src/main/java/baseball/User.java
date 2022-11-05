@@ -3,26 +3,58 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private static String number;
+    private static String gameNumber;
+    private static int gameOption;
 
-    public User() {
-        number = setGameNumber();
+    public User() {}
+
+    public String getGameNumber() {
+        return gameNumber;
+    }
+
+    public int getGameOption() {
+        return gameOption;
     }
 
     /*
     * 3자리이고, 중복이 없으며 1 ~ 9 사이의 숫자로 이루어진 문자열 반환
     * 유효하지 않은 입력에 대해 IllegalArgumentException 던짐
     *
-    * @return String
+    * @return void
     * */
-    public static String setGameNumber() {
+    public static void setGameNumber() {
         String number = Console.readLine();
 
         if (!isValidNumber(number)) {
             throw new IllegalArgumentException();
         }
 
-        return number;
+        gameNumber = number;
+    }
+
+    /*
+    * 게임 새 시작 : 1, 종료 : 2를 입력
+    * 1, 2가 아닌 값인 경우 IllegalArgumentException 던짐
+    *
+    * @return void
+    * */
+    public static void setGameOption() {
+        int option = Integer.parseInt(Console.readLine());
+
+        if (!isValidOption(option)) {
+            throw new IllegalArgumentException();
+        }
+
+        gameOption = option;
+    }
+
+    /*
+    * 주어진 인자가 1 또는 2인지 반환
+    *
+    * @return boolean
+    * */
+    private static boolean isValidOption(int option) {
+        return option == 1 || option == 2;
     }
 
     /*
