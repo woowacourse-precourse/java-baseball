@@ -96,7 +96,7 @@ public class Application {
 
     public static boolean checkingUserNumberIsCorrect(String numberString) {
 
-        if (!checkLength(numberString) || !checkInteger(numberString) || !checkDuplicateNumber(numberString)) {
+        if (!checkUserNumberLength(numberString) || !checkInteger(numberString) || !checkDuplicateNumber(numberString)) {
 
             return false;
         }
@@ -104,7 +104,7 @@ public class Application {
         return true;
     }
 
-    public static boolean checkLength(String numberString) {
+    public static boolean checkUserNumberLength(String numberString) {
 
         if (numberString.length() != 3) {
 
