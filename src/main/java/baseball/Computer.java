@@ -31,6 +31,10 @@ public class Computer {
     }
 
     public List<Integer> calcHint(String playerInput, String computerInput) {
+        if (playerInput.length() != 3) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
+        }
+
         int ballOfHint = 0;
         int strikeOfHint = 0;
 
