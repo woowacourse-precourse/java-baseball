@@ -49,8 +49,8 @@
 - ✅ validateUserInputThreeDifferentNumbers 메서드 구현
   - ✅ 사용자 입력값이 각 자릿수가 1~9사이의 모두 다른 세자리 숫자면 통과
   - ✅ 이외의 값이라면 IllegalArgumentException 예외 발생
-- ⬜ stringToIntegerList 메서드 구현
-  - 숫자 문자열을 입력받아 각 자릿수를 
+- ✅ stringToIntegerList 메서드 구현
+  - ✅ 숫자 문자열을 입력받아 각 자릿수를 요소로 가지는 리스트를 반환
 
 ## 게임시작 문구 출력 기능
 - ⬜ 게임시작 문구 출력

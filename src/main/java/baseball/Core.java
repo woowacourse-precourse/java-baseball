@@ -86,4 +86,12 @@ public class Core {
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
     }
+
+    public List<Integer> stringToIntegerList(String str){
+        List<Integer> integerList = new ArrayList<>();
+        for(String s : str.split("")){
+            integerList.add(Integer.parseInt(s));
+        }
+        return integerList;
+    }
 }
