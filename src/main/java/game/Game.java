@@ -1,2 +1,7 @@
-package decision;public class Game {
+package game;
+
+public class Game {
+    public String play(){
+        return "";
+    }
 }
