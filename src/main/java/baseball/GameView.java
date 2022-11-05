@@ -6,7 +6,7 @@ import static baseball.Constants.STRIKE;
 import static baseball.Constants.BALL;
 import static baseball.Constants.NOTHING;
 import static baseball.Constants.END_GAME;
-import static baseball.Constants.RESTART_GAME;
+import static baseball.Constants.RESTART_INSTRUCTION;
 import static baseball.Constants.RESTART;
 import static baseball.Constants.END;
 
@@ -40,8 +40,8 @@ public class GameView {
 		System.out.println(END_GAME);
 	}
 
-	public static void printRestartGame() {
-		System.out.println(RESTART_GAME);
+	public static void printRestartInstruction() {
+		System.out.println(RESTART_INSTRUCTION);
 	}
 
 	public static boolean isRestart(String input) {

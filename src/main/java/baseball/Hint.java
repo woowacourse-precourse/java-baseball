@@ -5,7 +5,7 @@ public class Hint {
 		new ComparisonResult(User.userNums, Computer.computerNums);
 		if (getRightAnswer()) {
 			GameView.printEndGame();
-			GameView.printRestartGame();
+			GameView.printRestartInstruction();
 			return;
 		}
 		if (getNothing()) {
