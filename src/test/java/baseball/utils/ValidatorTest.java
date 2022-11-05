@@ -1,6 +1,7 @@
 package baseball.utils;
 
 import baseball.Ball;
+import baseball.GameStatus;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ class ValidatorTest {
             try {
                 Integer.parseInt(playerInput);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
             }
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
     }
 
     @Test
@@ -38,7 +39,7 @@ class ValidatorTest {
 
 
     @Test
-    void validateInputLength_입력된_값의_길이가_3이_아닐때_예외를_던지는지_테스트() {
+    void validateInputLength_입력된_공_값의_길이가_3이_아닐때_예외를_던지는지_테스트() {
         //given
         String playerInput = "12";
         //when
@@ -46,15 +47,15 @@ class ValidatorTest {
             if (playerInput.length() == 3) {
                 return;
             }
-            throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         //then
     }
 
 
     @Test
-    void validateDuplication_입력된_값_중_중복된_값이_있을_경우_예외를_던지는지_테스트() {
+    void validateDuplication_입력된_공_값_중_중복된_값이_있을_경우_예외를_던지는지_테스트() {
         //given
         List<Ball> playerBalls = new ArrayList<>();
         playerBalls.add(new Ball(1));
@@ -64,14 +65,14 @@ class ValidatorTest {
         //then
         assertThatThrownBy(() -> {
             if (playerBalls.contains(ball)) {
-                throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
             }
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
     }
 
     @Test
-    void validateDuplication_입력된_값_중_중복된_값이_없을_경우_리스트에_잘_추가되는지_테스트() {
+    void validateDuplication_입력된_공_값_중_중복된_값이_없을_경우_리스트에_잘_추가되는지_테스트() {
         //given
         List<Ball> playerBalls = new ArrayList<>();
         playerBalls.add(new Ball(1));
@@ -79,7 +80,7 @@ class ValidatorTest {
         Ball ball = new Ball(2);
         //when
         if (playerBalls.contains(ball)) {
-            throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         }
         playerBalls.add(ball);
         //then
@@ -87,7 +88,7 @@ class ValidatorTest {
     }
 
     @Test
-    void validateBallNumberRange_입력된_값이_1부터_9사이의_범위에_해당하지_않으면_예외를_던지는지_테스트() {
+    void validateBallNumberRange_입력된_공_값이_1부터_9사이의_범위에_해당하지_않으면_예외를_던지는지_테스트() {
         //given
         Ball ball = new Ball(0);
         //when
@@ -96,8 +97,23 @@ class ValidatorTest {
             if (ball.isValidRange()) {
                 return;
             }
-            throw new IllegalArgumentException("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+    }
+
+    @Test
+    void validateGameStatus_입력된_게임상태_값이_1또는_2가_아니면_예외를_던지는지_테스트() {
+        //given
+        GameStatus gameStatus = new GameStatus(0);
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            if (gameStatus.isValid()) {
+                return;
+            }
+            throw new IllegalArgumentException("게임 상태는 재시작:1, 종료:2 중에서 입력해야 합니다");
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("게임 상태는 재시작:1, 종료:2 중에서 입력해야 합니다");
     }
 }
