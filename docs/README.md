@@ -1,6 +1,6 @@
 # 👩🏻‍💻 구현 기능 목록
 
-### ✔️ About 야구 게임 시작
+### ✔️ About 야구 게임를 위한 수 생성
 
 - `startBaseballGame` : 야구 게임을 진행하는 함수
   - `createComputerNumber` : 서로 다른 랜덤 3 숫자 생성하는 함수 (컴퓨터)
@@ -23,7 +23,7 @@
     - `countSamePlace` : 같은 자리에 있는지 파악하는 함수
     - `countDifferentPlace` : 같은 자리는 아니지만 같은 수가 있는지 파악하는 함수
 
-### ✔️ About 야구 게임 종료
+### ✔️ About 야구 게임 종료 혹은 재시작
 
 - `restartGame` : 게임 재시작 여부를 입력받는 함수
   - 1이 입력되면 다시 게임 시작 함수 호출, 2가 입력되면 게임 종료
