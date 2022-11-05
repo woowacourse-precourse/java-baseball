@@ -4,7 +4,7 @@ public class Hint {
     private final int strike;
     private final int ball;
     public Hint(int ball, int strike){
-        if(ball <= 3 && strike <=3){
+        if(ball >=0 && strike >= 0 && ball <= 3 && strike <=3){
             this.ball = ball;
             this.strike = strike;
         }else{
