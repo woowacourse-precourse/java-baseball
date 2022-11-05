@@ -9,14 +9,11 @@ public class Validator {
 
     public boolean checkBaseballNumber() {
         // 3자리인지
-        System.out.println("입력값: " + baseballNumber);
         if (!checkBaseballNumberLength()) {
-            System.out.println("길이");
             return false;
         }
         // 1~9 사이의 숫자를 입력했는지
         if (!checkBaseballNumberRange()) {
-            System.out.println("범위");
             return false;
         }
         return true;
