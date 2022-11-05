@@ -236,6 +236,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void stringToIntegerList_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "123";
+        final String case2 = "837";
+
+        //when
+        final List<Integer> result1 = T.stringToIntegerList(case1);
+        final List<Integer> result2 = T.stringToIntegerList(case2);
+
+        //then
+        assertThat(result1).as("stringToIntegerList 테스트").isEqualTo(List.of(1,2,3));
+        assertThat(result2).as("stringToIntegerList 테스트").isEqualTo(List.of(8,3,7));
+
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
