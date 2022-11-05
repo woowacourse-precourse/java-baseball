@@ -5,6 +5,7 @@ import static constants.GameConstant.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Computer {
     private List<Integer> computerNumber = new ArrayList<>();
@@ -33,7 +34,7 @@ public class Computer {
         boolean nothing = isNothing(strikeCount, ballCount);
         for (int i = 0; i < 3; i++) {
             strikeCount += countStrike(computerNumber.get(i), playerNumber.get(i));
-            ballCount += countBall(computerNumber.get(i), playerNumber.get(i));
+            ballCount += countBall(computerNumber.get(i).toString(), playerNumber, i);
         }
         String ComputerResult = getComputerResult(strikeCount, ballCount, nothing);
         System.out.println(ComputerResult);
@@ -45,6 +46,14 @@ public class Computer {
         }
         return 0;
     }
+
+    private int countBall(String eachComputerNumber, List<String> playerNumber, int i) {
+        if (playerNumber.contains(eachComputerNumber) && !eachComputerNumber.equals(playerNumber.get(i))) {
+            return 1;
+        }
+        return 0;
+    }
+
 
 
 }
