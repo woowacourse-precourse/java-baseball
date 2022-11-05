@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         boolean gameLife = true;
@@ -19,7 +19,7 @@ public class Application {
         }
     }
 
-    public static boolean playGame(String number) throws IllegalArgumentException {
+    public static boolean playGame(String number) {
 
         boolean continueGame = true;
 
@@ -38,7 +38,7 @@ public class Application {
         return continueGame;
     }
 
-    public static boolean checkOrderNumberValue(String orderNumber) throws IllegalArgumentException {
+    public static boolean checkOrderNumberValue(String orderNumber) {
 
         if (orderNumber.charAt(0) == '1') {
             return true;
@@ -49,7 +49,7 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    public static void checkOrderNumberValidation(String orderNumber) throws IllegalArgumentException {
+    public static void checkOrderNumberValidation(String orderNumber) {
 
         if (orderNumber.length() == 1 && (orderNumber.charAt(0) == '1' || orderNumber.charAt(0) == '2')) {
             return;
@@ -133,7 +133,7 @@ public class Application {
         }
     }*/
 
-    public static void checkInputNumberValidation(String inputNumber) throws IllegalArgumentException {
+    public static void checkInputNumberValidation(String inputNumber) {
 
         checkLength(inputNumber);
 
@@ -142,7 +142,7 @@ public class Application {
         isNumber(inputNumber);
     }
 
-    public static void isNumber(String inputNumber) throws IllegalArgumentException {
+    public static void isNumber(String inputNumber) {
 
         for (char number : inputNumber.toCharArray()) {
             if (number > '0' && number <= '9') {
@@ -153,7 +153,7 @@ public class Application {
     }
 
 
-    public static void checkDuplication(String inputNumber) throws IllegalArgumentException {
+    public static void checkDuplication(String inputNumber) {
 
         char first = inputNumber.charAt(0);
         char second = inputNumber.charAt(1);
@@ -164,7 +164,7 @@ public class Application {
         }
     }
 
-    public static void checkLength(String inputNumber) throws IllegalArgumentException {
+    public static void checkLength(String inputNumber) {
 
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
