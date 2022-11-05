@@ -11,7 +11,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("BaseBallGameNumber를 가지고 생성된다.")
-    public void playerConstructedWithBaseBallGameNumbers() {
+    void playerConstructedWithBaseBallGameNumbers() {
         // given
         String input = "123";
         BaseBallGameNumbers baseBallGameNumbers = new BaseBallGameNumbers(input);

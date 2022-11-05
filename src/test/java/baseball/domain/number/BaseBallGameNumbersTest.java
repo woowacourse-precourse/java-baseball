@@ -15,7 +15,7 @@ class BaseBallGameNumbersTest {
 
     @Test
     @DisplayName("문자열을 통해 생성된다.")
-    public void constructedByString() {
+    void constructedByString() {
         // given
         String input = "123";
 
@@ -28,7 +28,7 @@ class BaseBallGameNumbersTest {
 
     @Test
     @DisplayName("정수 리스트를 통해 생성된다.")
-    public void constructedByIntegerList() {
+    void constructedByIntegerList() {
         // given
         List<Integer> integers = List.of(1, 2, 3);
 
@@ -41,7 +41,7 @@ class BaseBallGameNumbersTest {
 
     @Test
     @DisplayName("입력된 순서가 유지된다.")
-    public void maintainInputOrder() {
+    void maintainInputOrder() {
         // given
         String input = "296";
         List<BaseBallGameNumber> inputNumbers = stream(input.split(""))
@@ -62,7 +62,7 @@ class BaseBallGameNumbersTest {
 
     @Test
     @DisplayName("문자열을 통해 총 3개의 BaseBallGameNumber를 생성하지 못했다면 IllegalArgumentException을 발생시킨다.")
-    public void throwIllegalArgumentExceptionWhenConstructedByInvalidStringInput() {
+    void throwIllegalArgumentExceptionWhenConstructedByInvalidStringInput() {
         // given
         String underRangeInput = "102";
         String duplicatedIntegerInput = "998";
@@ -93,7 +93,7 @@ class BaseBallGameNumbersTest {
 
     @Test
     @DisplayName("정수 리스트를 통해 총 3개의 BaseBallGameNumber를 생성하지 못했다면 IllegalArgumentException을 발생시킨다.")
-    public void throwIllegalArgumentExceptionWhenConstructedByInvalidIntegerInput() {
+    void throwIllegalArgumentExceptionWhenConstructedByInvalidIntegerInput() {
         // given
         List<Integer> underRangeInput = List.of(1, 0, 2);
         List<Integer> upperRangeInput = List.of(12, 3, 5);

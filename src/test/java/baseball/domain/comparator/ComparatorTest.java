@@ -12,7 +12,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("모든 숫자가 위치와 값이 같다면 3스트라이크")
-    public void resultIs_3스트라이크_whenAllNumberIsSamePosition() {
+    void resultIs_3스트라이크_whenAllNumberIsSamePosition() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";
@@ -29,7 +29,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("2개의 다른 위치 같은 숫자와 1개의 같은 위치 숫자인 경우 경우 2볼 1스트라이크")
-    public void resultIs_2볼_1스트라이크_when2NumberIsDifferentPositionAnd1NumberIsSamePosition() {
+    void resultIs_2볼_1스트라이크_when2NumberIsDifferentPositionAnd1NumberIsSamePosition() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";
@@ -47,7 +47,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("1개의 다른 위치 같은 숫자와 2개의 같은 위치 숫자인 경우 경우 1볼 2스트라이크")
-    public void resultIs_1볼_2스트라이크_when1NumberIsDifferentPositionAnd2NumberIsSamePosition() {
+    void resultIs_1볼_2스트라이크_when1NumberIsDifferentPositionAnd2NumberIsSamePosition() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";
@@ -65,7 +65,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("같은 숫자가 없는 경우 낫싱")
-    public void resultIs_낫싱_whenSameNumberIsNotExist() {
+    void resultIs_낫싱_whenSameNumberIsNotExist() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";
@@ -83,7 +83,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("1개의 다른 위치 숫자만 있는 경우 1볼")
-    public void resultIs_1볼_when1NumberIsDifferentPosition() {
+    void resultIs_1볼_when1NumberIsDifferentPosition() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";
@@ -101,7 +101,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("1개의 같은 위치 숫자만 있는 경우 1스트라이크")
-    public void resultIs_1스트라이크_when1NumberIsSamePosition() {
+    void resultIs_1스트라이크_when1NumberIsSamePosition() {
         // given
         Comparator comparator = new Comparator();
         String inputNumber = "123";

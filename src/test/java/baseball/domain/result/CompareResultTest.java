@@ -10,7 +10,7 @@ class CompareResultTest {
 
     @Test
     @DisplayName("strike 개수를 증가시킬 수 있다.")
-    public void addStrike() {
+    void addStrike() {
         // given
         CompareResult compareResult = new CompareResult();
 
@@ -23,7 +23,7 @@ class CompareResultTest {
 
     @Test
     @DisplayName("ball 개수를 증가시킬 수 있다.")
-    public void addBall() {
+    void addBall() {
         // given
         CompareResult compareResult = new CompareResult();
 
@@ -36,7 +36,7 @@ class CompareResultTest {
 
     @Test
     @DisplayName("ball 과 strike가 없는 경우 `낫싱`을 반환한다.")
-    public void return_낫싱_whenNoBallAndStrike() {
+    void return_낫싱_whenNoBallAndStrike() {
         // given
         CompareResult compareResult = new CompareResult();
 
@@ -46,7 +46,7 @@ class CompareResultTest {
 
     @Test
     @DisplayName("3 strike인 경우 정답이다.")
-    public void isAnswerWhen3Strike() {
+    void isAnswerWhen3Strike() {
         // given
         CompareResult compareResult = new CompareResult();
 
@@ -62,7 +62,7 @@ class CompareResultTest {
 
     @Test
     @DisplayName("3 strike가 아닌 경우 정답이 아니다.")
-    public void ifNot3StrikeThenIsNotAnswer() {
+    void ifNot3StrikeThenIsNotAnswer() {
         // given
         CompareResult compareResult = new CompareResult();
 

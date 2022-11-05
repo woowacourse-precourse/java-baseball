@@ -11,7 +11,7 @@ class BaseBallGameNumberTest {
 
     @Test
     @DisplayName("문자열을 통해 생성될 수 있다.")
-    public void constructedByString() {
+    void constructedByString() {
         // given
         String input = "1";
 
@@ -24,7 +24,7 @@ class BaseBallGameNumberTest {
 
     @Test
     @DisplayName("정수를 통해 생성될 수 있다.")
-    public void constructedByInteger() {
+    void constructedByInteger() {
         // given
         int input = 1;
 
@@ -37,7 +37,7 @@ class BaseBallGameNumberTest {
 
     @Test
     @DisplayName("1 ~ 9 사이의 정수를 입력받지 못한 경우 IllegalArgumentException을 발생시킨다.")
-    public void throwIllegalArgumentExceptionWhenConstructedByInvalidInput() {
+    void throwIllegalArgumentExceptionWhenConstructedByInvalidInput() {
         // given
         String largeStringInput = "10";
         String smallStringInput = "0";
@@ -61,7 +61,7 @@ class BaseBallGameNumberTest {
 
     @Test
     @DisplayName("같은 값을 가진 경우 equals실행 시 true를 반환한다.")
-    public void equalsIsTrueWhenHasSameValue() {
+    void equalsIsTrueWhenHasSameValue() {
         // given
         int value = 5;
         BaseBallGameNumber ballGameNumber = new BaseBallGameNumber(value);

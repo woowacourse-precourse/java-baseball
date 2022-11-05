@@ -16,13 +16,13 @@ class InputNumberStepTest {
     private final BaseBallGameContext context = mock(BaseBallGameContext.class);
 
     @BeforeEach
-    public void init() {
+    void init() {
         doNothing().when(context).changePlayerNumbers(any());
     }
 
     @Test
     @DisplayName("실행 가능하다")
-    public void isExecutable() {
+    void isExecutable() {
         // given
         InputNumberStep inputNumberStep = new InputNumberStep();
 
@@ -35,7 +35,7 @@ class InputNumberStepTest {
 
     @Test
     @DisplayName("다음 단계로 [게임 진행 단계]를 갖는다")
-    public void nextIsGameProgressStep() {
+    void nextIsGameProgressStep() {
         // given
         InputNumberStep inputNumberStep = new InputNumberStep();
 
@@ -48,7 +48,7 @@ class InputNumberStepTest {
 
     @Test
     @DisplayName("실행 시 숫자 입력 문구를 출력한다.")
-    public void printInputNumberMessageWhenExecuted() {
+    void printInputNumberMessageWhenExecuted() {
         // given
         String userInput = "123";
         when(context.readLine()).thenReturn(userInput);
@@ -65,7 +65,7 @@ class InputNumberStepTest {
 
     @Test
     @DisplayName("실행 시 사용자로부터 입력을 받아와 3자리 숫자로 변경 후, Context에 저장된 사용자의 입력 정보를 갱신한다.")
-    public void makePersonUsingInput() {
+    void makePersonUsingInput() {
         // given
         String userInput = "123";
         when(context.readLine()).thenReturn(userInput);
@@ -81,7 +81,7 @@ class InputNumberStepTest {
 
     @Test
     @DisplayName("3자리 숫자로 변경 과정에서 IllegalArgumentException이 발생하였다면 catch 하지 않고 던진다.")
-    public void throwExceptionWhenConstructPersonUsingInput() {
+    void throwExceptionWhenConstructPersonUsingInput() {
         // given
         String invalidUserInput = "0321";
         when(context.readLine()).thenReturn(invalidUserInput);

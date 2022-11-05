@@ -17,7 +17,7 @@ class DetermineRestartGameStepTest {
 
     @Test
     @DisplayName("실행 가능하다")
-    public void isExecutable() {
+    void isExecutable() {
         // given
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
 
@@ -58,7 +58,7 @@ class DetermineRestartGameStepTest {
 
     @Test
     @DisplayName("1을 입력받은 경우 다음 단계로 [게임 초기화 단계]를 갖는다")
-    public void nextIsGameProgressStepWhenInputIs1() {
+    void nextIsGameProgressStepWhenInputIs1() {
         // given
         final String input = "1";
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();
@@ -75,7 +75,7 @@ class DetermineRestartGameStepTest {
 
     @Test
     @DisplayName("2을 입력받은 경우 다음 단계로 [애플리케이션 종료 단계]를 갖는다.")
-    public void nextIsApplicationEndStepWhenInputIs0() {
+    void nextIsApplicationEndStepWhenInputIs0() {
         // given
         final String input = "2";
         DetermineRestartGameStep determineRestartGameStep = new DetermineRestartGameStep();

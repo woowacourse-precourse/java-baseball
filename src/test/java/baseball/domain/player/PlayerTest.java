@@ -11,7 +11,7 @@ class PlayerTest {
 
     @Test
     @DisplayName("BaseBallGameNumber를 교체할 수 있다.")
-    public void playerCanChangeBaseBallGameNumbers() {
+    void playerCanChangeBaseBallGameNumbers() {
         // given
         String numbers = "123";
         String changeNumbers = "321";
