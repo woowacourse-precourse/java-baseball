@@ -7,6 +7,8 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PrinterTest {
 
@@ -61,23 +63,22 @@ class PrinterTest {
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
 
-    @Test
-    void 힌트_메시지_테스트_볼() {
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 힌트_메시지_테스트_볼(int ball) {
         int strike = 0;
-        int ball = 1;
-
         Printer.printHintMessage(ball, strike);
-        String hintMessage = "1볼\n";
+        String hintMessage = String.format("%d볼\n", ball);
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
 
-    @Test
-    void 힌트_메시지_테스트_스트라이크() {
-        int strike = 1;
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 힌트_메시지_테스트_스트라이크(int strike) {
         int ball = 0;
 
         Printer.printHintMessage(ball, strike);
-        String hintMessage = "1스트라이크\n";
+        String hintMessage = String.format("%d스트라이크\n", strike);
         assertThat(outputStreamCaptor.toString()).isEqualTo(hintMessage);
     }
 
