@@ -111,6 +111,17 @@ public class GameTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("BallMaker의 getUserBall에서 예외가 나면 Game에도 예외가 전파된다")
+    @Test
+    void BallReader의_getUserBall_예외_발생에_따른_게임_Game_예외_전파() {
+
+        when(ballMaker.getUserBall())
+                .thenThrow(new IllegalArgumentException("UserBall에서 예외발생"));
+
+        assertThatThrownBy(() -> game.play())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     protected void runMain() {
 
