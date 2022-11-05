@@ -14,6 +14,10 @@ public class BaseballNumbers {
         validateDuplicateNumbers();
     }
 
+    public BaseballNumbers(List<Integer> ballNumbers) {
+        createBaseballNumber(ballNumbers);
+    }
+
     private void validateSize(String uncheckNumbers) {
         if (uncheckNumbers.length() != 3) {
             throw new IllegalArgumentException(INPUT_SIZE_EXCEPTION);
@@ -24,6 +28,13 @@ public class BaseballNumbers {
         for (int index = 0; index < uncheckNumbers.length(); index++) {
             char uncheckNumber = uncheckNumbers.charAt(index);
             BaseballNumber baseballNumber = new BaseballNumber(uncheckNumber);
+            ballNumbers.add(baseballNumber);
+        }
+    }
+
+    private void createBaseballNumber(List<Integer> numbers) {
+        for(Integer number: numbers) {
+            BaseballNumber baseballNumber = new BaseballNumber(number);
             ballNumbers.add(baseballNumber);
         }
     }
