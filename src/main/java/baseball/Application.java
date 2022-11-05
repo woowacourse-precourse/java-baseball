@@ -49,4 +49,15 @@ public class Application {
 
         return user;
     }
+
+    //기능3. 컴퓨터와 사용자의 숫자 비교해 스트라이크 개수 구하기
+    public static int strike(List<Integer> computer, List<Integer> user){
+        int strike = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i) == user.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
