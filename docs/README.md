@@ -58,6 +58,12 @@
 - 3자리 수 셋업 
 
 
+## 6. ViewPackage 
+
+### 1) 상위 계층 패키지로서 input과 output 기능 
+- input
+- output
+
 ---
 
 #### 설계의 쟁점 
