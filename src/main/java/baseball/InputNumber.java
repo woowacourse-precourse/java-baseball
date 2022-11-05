@@ -31,7 +31,7 @@ public class InputNumber {
     }
 
     public static void performRepeatForDuplicate(String number, int i) {
-        for (int j = i + 1; j < number.length() - 1; j++) {
+        for (int j = i + 1; j < number.length(); j++) {
             if (number.charAt(i) == number.charAt(j)) {
                 throw new IllegalArgumentException("입력한 숫자 중 중복되는 숫자가 있습니다.");
             }
