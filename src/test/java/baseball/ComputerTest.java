@@ -42,7 +42,7 @@ class ComputerTest {
 		Computer computer = new Computer();
 		int upperBound = 9;
 		int lowerBound = 1;
-		for (int testCase = 0; testCase < 100; testCase++) {
+		for (int testCase = 0; testCase < 1000; testCase++) {
 			// when
 			computer.pitchThreeUniqueBalls();
 			List<Integer> computerBalls = computer.getComputerBalls();
