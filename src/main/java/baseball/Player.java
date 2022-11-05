@@ -8,10 +8,8 @@ import java.util.regex.Pattern;
 public class Player {
   private final ArrayList<Integer> numbers;
   private static final int MAX_SIZE = 3;
-  private boolean progress;
-  public Player(boolean progress){
+  public Player(){
     this.numbers = new ArrayList<>();
-    this.progress = progress;
   };
 
   public ArrayList<Integer> decideNumbers(){
