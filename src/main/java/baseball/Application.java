@@ -64,11 +64,23 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String guessString = Console.readLine();
         validateOnlyNumbers(guessString);
-        validateThreeNumbers(guessString);
+        validateNumberOfValues(guessString, 3);
         for (int idx=0; idx < guessString.length(); idx++){
             guess.add(Character.getNumericValue(guessString.charAt(idx)));
         }
         return guess;
+    }
+    static boolean inputReplay() {
+        String replay = Console.readLine();
+        validateOnlyNumbers(replay);
+        validateNumberOfValues(replay, 1);
+        int replayNum = Integer.parseInt(replay);
+        if (replayNum == 1) {
+            return true;
+        }
+        else if (replayNum == 2) {
+            return false;
+        }
     }
 
 
