@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,10 +55,19 @@ public class Game {
     public void incorrectUserAnswerDigit(String userAnswer) {
         List<Integer> answerList = stringToListInteger(userAnswer);
         if (answerList.size() != 3) {
-            throw new IllegalArgumentException("숫자 자릿수가 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력 값은 3자리 수로 입력하십시오.");
         }
     }
-    
+
+    public void incorrectUserAnswerDuplicate(String userAnswer) {
+        HashSet<Character> answerList = new HashSet<Character>();
+        for (int i = 0; i < userAnswer.length(); i++) {
+            answerList.add(userAnswer.charAt(i));
+        } if (answerList.size() != 3) {
+            throw new IllegalArgumentException("입력 값은 서로 다른 숫자이어야 합니다.");
+        }
+    }
+
     private List<Integer> stringToListInteger(String userAnswer) {
         return listToListInteger(List.of(userAnswer.split("")));
     }
