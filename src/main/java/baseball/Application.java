@@ -43,6 +43,7 @@ public class Application {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
+        validateUserNumber(digits);
         return digits;
     }
 
@@ -103,5 +104,13 @@ public class Application {
             return false;
         }
         throw new IllegalArgumentException();
+    }
+
+    private static void readAndCompare(List<Integer> computerNumber) {
+        while (strikeCnt < NUMBER_LENGTH) {
+            List<Integer> userNumber = readUserNumber();
+            countStrikeAndBall(userNumber, computerNumber);
+            printResult();
+        }
     }
 }
