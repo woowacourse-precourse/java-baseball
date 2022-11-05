@@ -45,5 +45,8 @@ public class BallsTest {
         assertThatThrownBy(balls.convertInputToBall("12345"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_INPUT);
+        assertThatThrownBy(balls.convertInputToBall("01a"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WRONG_INPUT);
     }
 }
