@@ -35,4 +35,11 @@ class InputValidationTest {
         boolean actual = inputValidation.hasDuplicatedValues(input);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0, true", "3, true", "4, true", "1, false", "2, false"})
+    void isNotCorrectSelect(String input, boolean expected) {
+        boolean actual = inputValidation.isNotCorrectChoice(input);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
