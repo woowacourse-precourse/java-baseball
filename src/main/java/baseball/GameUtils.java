@@ -17,6 +17,8 @@ import static baseball.common.Constant.DIGIT_LENGTH_LIMIT;
 
 public class GameUtils {
 
+    private static int strike = 0;
+
     private static List<Integer> answerNum;
 
     private static List<Integer> playerNum;
@@ -56,5 +58,11 @@ public class GameUtils {
             answer.add(num);
         }
         return new ArrayList<>(answer);
+    }
+
+    public static void checkStrikeAndUpdateScore(int i, int j) {
+        if (i == j && answerNum.get(i).equals(playerNum.get(j))) {
+            strike++;
+        }
     }
 }
