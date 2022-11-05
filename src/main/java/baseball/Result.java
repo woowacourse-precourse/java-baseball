@@ -20,4 +20,8 @@ public class Result {
         this.result.put(resultType, added);
     }
 
+    public int get(ResultType resultType) {
+        return this.result.get(resultType);
+    }
+
 }
