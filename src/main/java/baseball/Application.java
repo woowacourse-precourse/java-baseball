@@ -8,21 +8,29 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computer = makeComputer(); // 컴퓨터 번호 만들기
+        System.out.println(computer); // 컴퓨터 번호 출력
+        List<Integer> numberList = inputNum(); // 사용자 3자리 입력
 
-        // 컴퓨터가 만든 3자리수
+        HashMap<String, Integer> map = compareNum(numberList, computer); // 컴퓨터값과 사용자값 비교
+
+        int strike = map.get("strike"); // 스트라이크 값
+        int ball = map.get("ball"); // 볼 값
+        String message = getMessage(strike, ball); // 스트라이크 볼에 따른 메세지 출력
+        System.out.println(message);
+    }
+    // 컴퓨터 3자리 수 만들기
+    public static List<Integer> makeComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
-        List<Integer> numberList = inputNum();
-        Baseball baseball = compareNum(numberList, computer);
-        System.out.println("스트라이크 : "+baseball.getStrike());
-        System.out.println("볼 : "+baseball.getBall());
+        return computer;
     }
+
 
     //입력 메서드
     public static List<Integer> inputNum() {
@@ -46,7 +54,8 @@ public class Application {
         }
     }
 
-    public static Baseball compareNum(List<Integer> numberList, List<Integer> computer) {
+    // 입력값과 컴퓨터 값 비교
+    public static HashMap<String, Integer> compareNum(List<Integer> numberList, List<Integer> computer) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < 3; i++) {
@@ -56,26 +65,32 @@ public class Application {
                 ball += 1;
             }
         }
+        HashMap<String,Integer> map = new HashMap<>();
 
-        Baseball baseball = new Baseball(strike, ball);
-        return baseball;
+        map.put("strike", strike);
+        map.put("ball", ball);
+
+        return map;
     }
 
-    public static class Baseball{
-        private int strike;
-        private int ball;
+    // 스트라이크와 볼 값에 따른 메세지
+    public static String getMessage(int strike, int ball){
 
-        public Baseball(int strike, int ball){
-            this.strike = strike;
-            this.ball = ball;
-        }
+        String message = null;
 
-        public int getStrike() {
-            return strike;
+        if(strike == 0 && ball == 0){
+            message = "낫띵";
         }
-
-        public int getBall() {
-            return ball;
+        else if(strike > 0 && ball == 0){
+            message = strike+"스트라이크";
         }
+        else if(strike == 0 && ball > 0){
+            message = ball+"볼";
+        }
+        else if(strike > 0 && ball > 0){
+            message = ball+"볼 "+strike+"스트라이크";
+        }
+        return message;
     }
+
 }
