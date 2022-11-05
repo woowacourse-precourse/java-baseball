@@ -1,5 +1,10 @@
 package baseball.domain.game;
 
-public class Game {
+import baseball.domain.view.OutputView;
 
+public class Game {
+    public Game() {
+        OutputView.startView();
+
+    }
 }
