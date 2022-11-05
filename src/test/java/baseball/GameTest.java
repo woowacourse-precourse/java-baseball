@@ -98,4 +98,44 @@ class GameTest {
         int strike = game.checkStrike(computer, user);
         assertThat(game.checkBall(computer, user, strike)).isEqualTo(0);
     }
+    @Test
+    void 비교결과_테스트1() {
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(6, 1, 5);
+        List<Integer> user = Arrays.asList(6, 1, 5);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out)); //표준입출력 위치 변경
+        game.printResult(computer, user);
+        assertThat(out.toString()).isEqualTo("3스트라이크\n");
+    }
+    @Test
+    void 비교결과_테스트2() {
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(6, 1, 5);
+        List<Integer> user = Arrays.asList(6, 5, 1);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(computer, user);
+        assertThat(out.toString()).isEqualTo("2볼 1스트라이크\n");
+    }
+    @Test
+    void 비교결과_테스트3() {
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(7, 1, 5);
+        List<Integer> user = Arrays.asList(6, 5, 1);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(computer, user);
+        assertThat(out.toString()).isEqualTo("2볼\n");
+    }
+    @Test
+    void 비교결과_테스트4() {
+        Game game = new Game();
+        List<Integer> computer = Arrays.asList(7, 1, 5);
+        List<Integer> user = Arrays.asList(6, 2, 3);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.printResult(computer, user);
+        assertThat(out.toString()).isEqualTo("낫싱\n");
+    }
 }
