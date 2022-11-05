@@ -20,6 +20,12 @@ class ApplicationTest extends NsTest {
     void 입력시오류경우_확인(){
 
         /**
+         * 숫자가 아닌 것을 입력한 경우
+         */
+
+        Assertions.assertThatThrownBy(() -> Domain.isInputAlright("A12")).isInstanceOf(IllegalArgumentException.class);
+
+        /**
          * 숫자 중복의 경우
          */
         Assertions.assertThatThrownBy(() -> Domain.isInputAlright("122")).isInstanceOf(IllegalArgumentException.class);
@@ -43,6 +49,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 스트라이크볼판정_findStrike검증(){
+
         /**
          * 3스트라이크
          */
@@ -50,6 +57,7 @@ class ApplicationTest extends NsTest {
         List<Integer> userNumberList = Arrays.asList(1,3,2);
         int strike=0;
         int ball=0;
+        Game game = new Game(computerNumber, userNumberList);
         List<Integer> strikeBall = Game.findStrikeBall(computerNumber, userNumberList
                 );
 
@@ -63,6 +71,8 @@ class ApplicationTest extends NsTest {
          */
         List<Integer> computerNumber2 = Arrays.asList(3,1,2);
         List<Integer> userNumberList2 = Arrays.asList(1,3,2);
+
+        Game game2 = new Game(computerNumber2, userNumberList2);
         int strike2=0;
         int ball2=0;
         List<Integer> strikeBall2 = Game.findStrikeBall(computerNumber2, userNumberList2
@@ -70,6 +80,7 @@ class ApplicationTest extends NsTest {
 
         strike2 = strikeBall2.get(0);
         ball2 = strikeBall2.get(1);
+        Game.printGameResult(strike2, ball2);
         Assertions.assertThat(ball2).isEqualTo(2);
 
 
@@ -83,8 +94,10 @@ class ApplicationTest extends NsTest {
         List<Integer> strikeBall3 = Game.findStrikeBall(computerNumber3, userNumberList3
            );
 
+        Game game3 = new Game(computerNumber3, userNumberList3);
         strike3 = strikeBall3.get(0);
         ball3 = strikeBall3.get(1);
+        Game.printGameResult(strike3, ball3);
         Assertions.assertThat(ball3).isEqualTo(1);
 
 
@@ -98,9 +111,28 @@ class ApplicationTest extends NsTest {
         List<Integer> strikeBall4 = Game.findStrikeBall(computerNumber4, userNumberList4
           );
 
+        Game game4 = new Game(computerNumber4, userNumberList4);
         strike4 = strikeBall4.get(0);
         ball4 = strikeBall4.get(1);
+        Game.printGameResult(strike4, ball4);
         Assertions.assertThat(strike4).isEqualTo(0);
+
+        /**
+         * 0볼 n스트라이크 의 경우 출력문 확인
+         */
+        List<Integer> computerNumber5 = Arrays.asList(2,1,4);
+        List<Integer> userNumberList5 = Arrays.asList(2,1,3);
+
+        Game game5 = new Game(computerNumber5, userNumberList5);
+        int strike5=0;
+        int ball5=0;
+        List<Integer> strikeBall5 = Game.findStrikeBall(computerNumber5, userNumberList5
+        );
+        strike5 = strikeBall5.get(0);
+        ball5 = strikeBall5.get(1);
+        Game.printGameResult(strike5, ball5);
+        Assertions.assertThat(strike5).isEqualTo(2);
+
     }
 
 
