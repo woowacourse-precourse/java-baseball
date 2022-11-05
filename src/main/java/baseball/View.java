@@ -23,7 +23,7 @@ public class View {
     }
 
     public void printPlayerTurn() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public void printNoting() {
@@ -41,28 +41,17 @@ public class View {
     }
 
     public void printBallAndStrike(int countOfBall, int countOfStrike) {
-        StringBuilder ballMsg = new StringBuilder();
-
         if (countOfBall != 0 && countOfStrike != 0) {
-            ballMsg.append(
-                String.format("%d볼 %d스트라이크%s", countOfBall, countOfStrike, LINE_SEPARATOR)
-            );
+            System.out.printf("%d볼 %d스트라이크%s", countOfBall, countOfStrike, LINE_SEPARATOR);
+            return;
         }
 
-        if (countOfBall != 0 && countOfStrike == 0) {
-            ballMsg.append(
-                String.format("%d볼%s", countOfBall, LINE_SEPARATOR)
-            );
+        if (countOfBall != 0) {
+            System.out.printf("%d볼%s", countOfBall, LINE_SEPARATOR);
+            return;
         }
 
-        if (countOfBall == 0 && countOfStrike != 0) {
-            ballMsg.append(
-                String.format("%d스트라이크%s", countOfStrike, LINE_SEPARATOR)
-            );
-        }
-
-        ballMsg.append("숫자를 입력해주세요 : ");
-        System.out.println(ballMsg);
+        System.out.printf("%d스트라이크%s", countOfStrike, LINE_SEPARATOR);
     }
 
 }
