@@ -37,17 +37,36 @@ public class GameView {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
                 int numInputOfUser = parseIntFromInputOfUser();
-
-                if (UseFunc.isEqualIntOfTwo(numInputOfUser, RESTART_GAME)) {
-                    gameController.reStartGame();
-                }
-                if (UseFunc.isEqualIntOfTwo(numInputOfUser, END_GAME)) {
-                    System.out.println(MSG_GAME_END);
+                if (isEndgameInputOfUser(gameController, numInputOfUser)) {
                     break;
                 }
             }
             gameController.initCntStrikeBallOfComputer();
         }
+    }
+
+    private boolean isEndgameInputOfUser(GameController gameController, int numInputOfUser) {
+        if (isEndGameUserWant(numInputOfUser)) {
+            return true;
+        }
+        isReGameUserWant(gameController, numInputOfUser);
+        return false;
+    }
+
+    private boolean isEndGameUserWant(int numInputOfUser) {
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, END_GAME)) {
+            System.out.println(MSG_GAME_END);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isReGameUserWant(GameController gameController, int numInputOfUser) {
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, RESTART_GAME)) {
+            gameController.reStartGame();
+            return true;
+        }
+        return false;
     }
 
     private int parseIntFromInputOfUser() {
