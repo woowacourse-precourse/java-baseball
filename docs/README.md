@@ -37,21 +37,17 @@
 
 
 - boolean checkDuplicateNumber(String)
-  - 입력된 값이 중복되는지 체크하가 함수
+  - 입력된 값이 중복되는지 체크하는 함수
 
 
-- void countingBallAndStrike(int, int, int[], List<Integer>)
-  - 입력한 수에 대한 결과를 계산하는 함수
-
-
-- void countingBall(int, int[], List<Integer>)
+- Integer countingBall(int, int[], List<Integer>)
   - ball의 개수를 계산하는 함수
 
 
-- void checkAndCountBall(int, int, int)경
+- Integer checkAndCountBall(int, int, int)경
   - 인수로 받은 두 수를 비교해 ball의 개수를 계산하는 함수
 
-- void countingStrike(int, int[], List<Integer>)
+- Integer countingStrike(int, int[], List<Integer>)
   - strike의 개수를 계산하는 함수
 
 
