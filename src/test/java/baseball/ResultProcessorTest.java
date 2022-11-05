@@ -1,11 +1,10 @@
 package baseball;
 
+import baseball.result.Result;
+import baseball.result.ResultProcessor;
+import baseball.result.ResultType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ResultProcessorTest {
 

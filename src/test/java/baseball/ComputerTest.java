@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.participant.Computer;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
