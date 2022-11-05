@@ -1,9 +1,7 @@
 package baseball;
 
-import java.util.List;
-
 public interface Opponent {
 
-    List<Integer> createAnswer();
-    public Hint getHint(List<Integer> inputValue);
+    ThreeDigitNum createAnswer();
+    public Hint getHint(ThreeDigitNum inputValue);
 }

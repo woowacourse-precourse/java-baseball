@@ -23,7 +23,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(1,2,3);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("3스트라이크");
         }
         @Test
@@ -31,7 +31,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,4);
             List<Integer> input = List.of(1,2,5);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("2스트라이크");
         }
         @Test
@@ -39,7 +39,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,7);
             List<Integer> input = List.of(1,4,5);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("1스트라이크");
         }
         @Test
@@ -47,7 +47,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(2,3,1);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("3볼");
         }
         @Test
@@ -55,7 +55,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(2,6,1);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("2볼");
         }
         @Test
@@ -63,31 +63,15 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(2,5,6);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("1볼");
-        }
-        @Test
-        void 스트라이크_2번_볼_1번() {
-            List<Integer> answer = List.of(1,2,3);
-            List<Integer> input = List.of(1,2,1);
-
-            Hint hint = new Hint(answer,input);
-            assertThat(hint.toString()).isEqualTo("1볼 2스트라이크");
-        }
-        @Test
-        void 스트라이크_1번_볼_2번() {
-            List<Integer> answer = List.of(1,2,3);
-            List<Integer> input = List.of(1,3,2);
-
-            Hint hint = new Hint(answer,input);
-            assertThat(hint.toString()).isEqualTo("2볼 1스트라이크");
         }
         @Test
         void 낫싱() {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(4,5,6);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.toString()).isEqualTo("낫싱");
         }
     }
@@ -101,7 +85,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,3);
             List<Integer> input = List.of(1,2,3);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.isAnswer()).isEqualTo(true);
         }
         @Test
@@ -109,7 +93,7 @@ class OpponentTest {
             List<Integer> answer = List.of(1,2,4);
             List<Integer> input = List.of(1,2,5);
 
-            Hint hint = new Hint(answer,input);
+            Hint hint = new Hint(new ThreeDigitNum(answer),new ThreeDigitNum(input));
             assertThat(hint.isAnswer()).isEqualTo(false);
         }
     }
