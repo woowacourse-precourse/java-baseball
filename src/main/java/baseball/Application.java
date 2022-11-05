@@ -13,7 +13,9 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(START_SENTENCE);
         List<Integer> answer = generateRandomNumber();
+
         String inputNum = input();
+        List<Integer> ballAndStrikeList = calculate(answer, inputNum);
     }
 
     public static List<Integer> generateRandomNumber() {
@@ -30,5 +32,25 @@ public class Application {
     public static String input() {
         System.out.print(INPUT_SENTENCE);
         return Console.readLine();
+    }
+
+    public static List<Integer> calculate(List<Integer> answer, String input) {
+        int ball = 0;
+        int strike = 0;
+        List<Integer> ballAndStrikeList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int num = Character.getNumericValue(input.charAt(i));
+            if (answer.get(i) == num) { // 해당 숫자가 자리수까지 같다면 strike
+                strike++;
+                continue;
+            }
+            if (answer.contains(num)) { // 해당 숫자가 리스트에 존재하면 ball
+                ball++;
+            }
+        }
+        System.out.println(ball + ", " + strike);
+        ballAndStrikeList.add(ball); // index: 0 에 ball
+        ballAndStrikeList.add(strike); // index: 1 에 strike
+        return ballAndStrikeList;
     }
 }
