@@ -11,6 +11,19 @@ public class Application {
 
     }
 
+    public static void playGame(){
+        List<Integer> computerAnswer = generateNumber();
+
+        do{
+            List<Integer> playerAnswer = getPlayerAnswer();
+            checkAnswer(playerAnswer);
+
+        }while(getPlayerAnswer().equals(computerAnswer));
+
+    }
+    public static List<Integer> checkAnswer(List<Integer>){
+        return ;
+    }
     public static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -23,12 +36,12 @@ public class Application {
     }
 
     public static List<Integer> getPlayerAnswer() {
-        String answerStr = Console.readLine();
-        List<Integer> answerList = stringToIntegerList(answerStr);
+        String playerAnswerStr = Console.readLine();
+        List<Integer> playerAnswerList = stringToIntegerList(playerAnswerStr);
 
-        validateNumber(answerList);
+        validateNumber(playerAnswerList);
 
-        return answerList;
+        return playerAnswerList;
     }
 
     public static List<Integer> stringToIntegerList(String inputStr) {
@@ -41,15 +54,15 @@ public class Application {
         return inputIntList;
     }
 
-    public static boolean validateNumber(List<Integer> answerList) {
+    public static boolean validateNumber(List<Integer> playerAnswer) {
         //length check
-        if (answerList.size() != 3) {
+        if (playerAnswer.size() != 3) {
             throw new IllegalArgumentException("length error");
 
         }
 
         //same check
-        if (answerList.size() != answerList.stream().distinct().count()) {
+        if (playerAnswer.size() != playerAnswer.stream().distinct().count()) {
             throw new IllegalArgumentException("duplicate error");
         }
 
@@ -57,7 +70,7 @@ public class Application {
         String regExp = "^[1-9]+$";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 3; i++) {
-            String st = Integer.toString(answerList.get(i));
+            String st = Integer.toString(playerAnswer.get(i));
             sb.append(st);
         }
         String s = sb.toString();
