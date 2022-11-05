@@ -84,6 +84,13 @@ class CheckCount {
         return strikeCount;
     }
 
+    public static int checkBallCount(){
+        if((ComUserNumber.comNumber1 == ComUserNumber.comNumber2) || (ComUserNumber.comNumber1 == ComUserNumber.comNumber3) || ComUserNumber.comNumber2 == ComUserNumber.comNumber3){
+            ballCount++;
+        }
+
+        return ballCount;
+    }
 }
 
 
