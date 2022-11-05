@@ -50,12 +50,12 @@ public class Application {
 
     private static void validateUserNumber(List<Integer> digits) {
         if (digits.size() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
 
         HashSet<Integer> nonDuplicateDigits = new HashSet<>(digits);
         if (nonDuplicateDigits.size() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("동일한 숫자를 입력했습니다.");
         }
     }
 
@@ -106,14 +106,14 @@ public class Application {
             restart = false;
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("1이나 2를 입력해주세요.");
     }
 
     private static void readAndCompare(List<Integer> computerNumber) {
-        while (strikeCnt < NUMBER_LENGTH) {
+        do {
             List<Integer> userNumber = readUserNumber();
             countStrikeAndBall(userNumber, computerNumber);
             printResult();
-        }
+        } while ((strikeCnt < NUMBER_LENGTH));
     }
 }
