@@ -9,22 +9,32 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private HashMap<String, Integer> answerMap = new HashMap<>();
+    private HashMap<String, Integer> answer = new HashMap<>();
 
     public BaseballGame(List<String> answer) {
-        for (int idx=0; idx<answer.size(); idx++) {
-            this.answerMap.put(answer.get(idx), idx);
+        for (int idx = 0; idx < answer.size(); idx++) {
+            this.answer.put(answer.get(idx), idx);
         }
     }
-
+    
     BaseballGame() {
         List<String> convertedList = convertComputerList();
-        for (int idx=0; idx<convertedList.size(); idx++) {
-            answerMap.put(convertedList.get(idx), idx);
+        for (int idx = 0; idx < convertedList.size(); idx++) {
+            answer.put(convertedList.get(idx), idx);
         }
+        System.out.println(convertedList);
     }
 
-    public List<Integer> generateRandNum() {
+    private List<String> convertComputerList() {
+        List<Integer> computerList = generateRandNum();
+        List<String> convertedList = new ArrayList<>();
+        for (Integer integer : computerList) {
+            convertedList.add(String.valueOf(integer));
+        }
+        return convertedList;
+    }
+
+    private List<Integer> generateRandNum() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -35,18 +45,9 @@ public class BaseballGame {
         return computer;
     }
 
-    private List<String> convertComputerList() {
-        List<Integer> computerList = generateRandNum();
-        List<String> convertedList = new ArrayList<>();
-        for (int separatedNumber : computerList) {
-            convertedList.add(String.valueOf(separatedNumber));
-        }
-        return convertedList;
-    }
-
     public int countStrike(List<String> userInput) {
         int strikeCnt = 0;
-        for (int idx=0; idx<userInput.size(); idx++) {
+        for (int idx = 0; idx < userInput.size(); idx++) {
             String separatedInput = userInput.get(idx);
             if (isSameNumber(separatedInput) && isSamePosition(separatedInput, idx)) {
                 strikeCnt++;
@@ -57,7 +58,7 @@ public class BaseballGame {
 
     public int countBall(List<String> userInput) {
         int BallCnt = 0;
-        for (int idx=0; idx<userInput.size(); idx++) {
+        for (int idx = 0; idx < userInput.size(); idx++) {
             String separatedInput = userInput.get(idx);
             if (isSameNumber(separatedInput) && !isSamePosition(separatedInput, idx)) {
                 BallCnt++;
@@ -68,7 +69,7 @@ public class BaseballGame {
 
     private boolean isSameNumber(String separatedInput) {
         boolean isSameNumber = false;
-        if (answerMap.get(separatedInput) != null) {
+        if (answer.get(separatedInput) != null) {
             isSameNumber = true;
         }
         return isSameNumber;
@@ -76,7 +77,7 @@ public class BaseballGame {
 
     private boolean isSamePosition(String separatedInput, int position) {
         boolean isSamePosition = false;
-        if (answerMap.get(separatedInput) == position) {
+        if (answer.get(separatedInput) == position) {
             isSamePosition = true;
         }
         return isSamePosition;
@@ -84,21 +85,37 @@ public class BaseballGame {
 
     public void showResults(List<String> userInput) {
         String results = "";
-        if (countBall(userInput) > 0) {
-            results += countBall(userInput) + "볼 ";
-        }
-        if (countStrike(userInput) > 0) {
-            results += countStrike(userInput) + "스트라이크";
-        }
+        results = getString(userInput, results);
+        results = getResults(userInput, results);
+        results = getString1(userInput, results);
+        System.out.println(results);
+    }
+
+    private String getString1(List<String> userInput, String results) {
         if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
             results += "낫싱";
         }
-        System.out.println(results);
+        return results;
+    }
+
+    private String getResults(List<String> userInput, String results) {
+        if (countStrike(userInput) > 0) {
+            results += countStrike(userInput) + "스트라이크";
+        }
+        return results;
+    }
+
+    private String getString(List<String> userInput, String results) {
+        if (countBall(userInput) > 0) {
+            results += countBall(userInput) + "볼 ";
+        }
+        return results;
     }
 
     private List<String> getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
+        raiseErrorWhenInputLengthOver3(userInput);
         List<String> inputList = convertUserInputToList(userInput);
 
         return inputList;
@@ -108,6 +125,7 @@ public class BaseballGame {
         List<String> convertedList = new ArrayList<>();
         for (int idx = 0; idx < userInput.length(); idx++) {
             char separatedInput = userInput.charAt(idx);
+            raiseErrorWhenInputIsNotDigitOrZero(separatedInput);
             convertedList.add(String.valueOf(userInput.charAt(idx)));
         }
         return convertedList;
@@ -115,12 +133,11 @@ public class BaseballGame {
 
     public String playGame() {
         boolean isThreeStrike = false;
-        BaseballGame baseballGame = new BaseballGame();
 
         while (!isThreeStrike) {
             List<String> userInput = getUserInput();
-            baseballGame.showResults(userInput);
-            if (baseballGame.countStrike(userInput) == 3) {
+            showResults(userInput);
+            if (countStrike(userInput) == 3) {
                 isThreeStrike = true;
                 break;
             }
@@ -128,8 +145,7 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String isRestart = raiseErrorWhenInputIsNot1Or2();
-        return isRestart;
+        return raiseErrorWhenInputIsNot1Or2();
     }
 
     private String raiseErrorWhenInputIsNot1Or2() throws IllegalArgumentException {
@@ -146,21 +162,18 @@ public class BaseballGame {
         return userInput;
     }
 
-    private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) throws IllegalArgumentException {
+    private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) {
         if (!Character.isDigit(separatedInput)) {
-            System.out.println("숫자만 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
         if (separatedInput == '0') {
-            System.out.println("1과 9사이의 숫자만 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1과 9사이의 숫자만 입력해주세요.");
         }
     }
 
-    private void raiseErrorWhenInputLengthOver3(String userInput) throws IllegalArgumentException {
+    private void raiseErrorWhenInputLengthOver3(String userInput) {
         if (userInput.length() > 3) {
-            System.out.println("입력은 세자리 숫자만 허용됩니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력은 세자리 숫자만 허용됩니다.");
         }
     }
 }
