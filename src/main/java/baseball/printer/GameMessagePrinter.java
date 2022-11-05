@@ -6,6 +6,7 @@ public class GameMessagePrinter {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String NUMBER_INPUT_MESSAGE = "숫자를 압력해주세요 : ";
+    private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private final ResultMessageGenerator resultMessageGenerator;
 
@@ -23,5 +24,9 @@ public class GameMessagePrinter {
 
     public void printResultMessage(BallStrikeDto dto) {
         System.out.println(resultMessageGenerator.generateMessage(dto));
+    }
+
+    public void printFinishMessage() {
+        System.out.println(GAME_FINISH_MESSAGE);
     }
 }
