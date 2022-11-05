@@ -49,7 +49,8 @@ public class Application {
             if (checkResult.equals("strike")){
                 strike++;
             }
-            else if (checkResult.equals("ball")){
+
+            if (checkResult.equals("ball")){
                 ball++;
             }
         }
@@ -60,31 +61,32 @@ public class Application {
         if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) == findingNumber.charAt(0)){
             return "strike";
         }
-        else if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) != findingNumber.charAt(0)){
+
+        if (computer.contains(findingNumber) && computer.charAt(indexOfFindingNumber) != findingNumber.charAt(0)){
             return "ball";
         }
         return "none";
     }
 
     private static String printStrikeAndBall(int strike, int ball){
+        StringBuilder printResult = new StringBuilder();
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
         }
-
-        else if (strike == 3){
-            System.out.println(strike + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if (strike == 3){
+            printResult.append(strike + "스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(printResult);
             return "endGame";
         }
-        else{
+        if (strike < 3){
             if (ball != 0){
-                System.out.print(ball + "볼 ");
+                printResult.append(ball + "볼 ");
             }
             if (strike != 0){
-                System.out.print(strike + "스트라이크");
+                printResult.append(strike + "스트라이크");
+
             }
-            System.out.println();
+            System.out.println(printResult);
         }
         return "continueGame";
     }
