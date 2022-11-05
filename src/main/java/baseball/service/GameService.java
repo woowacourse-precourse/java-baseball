@@ -41,6 +41,10 @@ public class GameService {
         return player.getNumbers();
     }
 
+    public List<Integer> getComputersNumbers(){
+        return computer.getNumbers();
+    }
+
     public void scoreGameWithIndex(int index){
 
     }
