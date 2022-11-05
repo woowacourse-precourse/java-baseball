@@ -9,13 +9,17 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
         System.out.println("숫자 야구 게임을 시작합니다!!!");
 
         ArrayList<Integer> generateAnswer = generateAnswer(args);
-        ArrayList<Integer> inputUserNumber = inputUserNumber(args);
-        String AA = numberReferee(generateAnswer,inputUserNumber);
+        while(true) {
+            ArrayList<Integer> inputUserNumber = inputUserNumber(args);
+            String AA = numberReferee(generateAnswer, inputUserNumber);
+            System.out.println(AA);
+            if (AA.equals("3스트라이크")) {break;};
+        }
 
-        System.out.println(AA);
     }
 
 
@@ -35,9 +39,6 @@ public class Application {
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
 
-        System.out.println(inputNumber.charAt(0));
-        System.out.println(inputNumber.charAt(1));
-        System.out.println(inputNumber.charAt(2));
         try {
             if (inputNumber.charAt(0) == inputNumber.charAt(1) || inputNumber.charAt(0) == inputNumber.charAt(2)
             || inputNumber.charAt(1) == inputNumber.charAt(2) || inputNumber.length() !=3){
@@ -48,7 +49,6 @@ public class Application {
             throw new IllegalArgumentException();
             }
         }catch(IllegalArgumentException e){
-            System.out.println("입력오류");
             System.exit(0);
         }
 
@@ -60,8 +60,7 @@ public class Application {
     }
 
     public static String numberReferee(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserNumber) {
-        System.out.println(generateAnswer);
-        System.out.println(inputUserNumber);
+
         String answer = "";
         int strike = 0;
         int ball = 0;
@@ -69,10 +68,8 @@ public class Application {
         for (int i=0; i<3; i++){
             if(Objects.equals(generateAnswer.get(0), inputUserNumber.get(i))) {
                 if(i == 0){
-                    System.out.println("스트라이크!!");
                     strike++;
                 }else{
-                    System.out.println("뽈!");
                     ball++;
                 }
             }
@@ -81,10 +78,8 @@ public class Application {
         for (int i=0; i<3; i++){
             if(Objects.equals(generateAnswer.get(1), inputUserNumber.get(i))) {
                 if(i == 1){
-                    System.out.println("스트라이크!!");
                     strike++;
                 }else{
-                    System.out.println("뽈!");
                     ball++;
                 }
             }
@@ -93,10 +88,8 @@ public class Application {
         for (int i=0; i<3; i++){
             if(Objects.equals(generateAnswer.get(2), inputUserNumber.get(i))) {
                 if(i == 2){
-                    System.out.println("스트라이크!!");
                     strike++;
                 }else{
-                    System.out.println("뽈!");
                     ball++;
                 }
             }
