@@ -73,7 +73,7 @@ public class FeatureListTest {
         Integer[] input = new Integer[]{1, 2, 3};
         List<Integer> answer = List.of(1, 3, 5);
         int[] result = new int[]{1, 1};
-        assertThat(Judgment(input, answer)).isEqualTo(result);
+        assertThat(judgment(input, answer)).isEqualTo(result);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class FeatureListTest {
 
         int[] test4 = new int[]{0, 0};
         assertThat(printJudge(test4)).isEqualTo("낫싱");
-
     }
+
 
 }

@@ -52,7 +52,7 @@ public class Application {
         return number == answerNumber;
     }
 
-    public static int[] Judgment(Integer[] input, List<Integer> answer) {
+    public static int[] judgment(Integer[] input, List<Integer> answer) {
         int[] result = new int[]{0, 0}; //result[0] = 볼, result[1] = 스트라이크
         for (int i = 0; i < 3; i++) {
             if (isStrike(input[i], answer.get(i))) {
@@ -64,8 +64,6 @@ public class Application {
             }
         }
         return result;
-
-
     }
 
 
@@ -88,7 +86,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 Nums nums = new Nums(Console.readLine());
-                judg = Judgment(nums.inputNums, answerList);
+                judg = judgment(nums.inputNums, answerList);
                 System.out.println(printJudge(judg));
             } catch (Exception e) {
                 throw new IllegalArgumentException(e.getMessage());
