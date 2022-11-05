@@ -26,9 +26,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 테스트1_4(){
+    void 테스트1_4와1_5(){
         gameReadyMachine.gameReadyComplete();
-        assertThat()
+        assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.getAnswerValue())).isEqualTo(true);
     }
 
     @Test
