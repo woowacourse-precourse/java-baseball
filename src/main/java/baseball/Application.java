@@ -18,7 +18,7 @@ public class Application {
 		}else{
 			System.out.println(calculate_Result(answer));
 		}
-		if(answer.get(2)==3){
+		if(answer.get(1)==3){
 			System.out.println("축하합니다!");
 			return true;
 		}else{
@@ -86,7 +86,20 @@ public class Application {
 			game_continue = game_play(computer_num);
 		}
     }
+	public static  boolean continue_or_exit(){
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		int continue_or_exit = Integer.parseInt(Console.readLine());
+		if(continue_or_exit==1){
+			return true;
+		}else {
+			return false;
+		}
+	}
 	public static void main(String[] args) {
-        start_new_Baseball_Game();
+        boolean is_contiue = true;
+		while(is_contiue){
+			start_new_Baseball_Game();
+			is_contiue = continue_or_exit();
+		}
     }
 }
