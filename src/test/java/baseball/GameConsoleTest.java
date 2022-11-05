@@ -82,6 +82,32 @@ class GameConsoleTest {
         }
     }
 
+    @Nested
+    class printGameResult {
+
+        @Test
+        @DisplayName("게임이 끝난 경우")
+        void caseComplete() {
+            GameConsole gameConsole = new GameConsole();
+            Result result = new Result(3, 0);
+
+            boolean isComplete = gameConsole.printGameResult(result);
+
+            assertThat(isComplete).isEqualTo(true);
+        }
+
+        @Test
+        @DisplayName("게임이 안 끝난 경우")
+        void caseNotComplete() {
+            GameConsole gameConsole = new GameConsole();
+            Result result = new Result(2, 1);
+
+            boolean isComplete = gameConsole.printGameResult(result);
+
+            assertThat(isComplete).isEqualTo(false);
+        }
+    }
+
     void input(String inputString) {
         InputStream in = new ByteArrayInputStream(inputString.getBytes());
         System.setIn(in);
