@@ -27,6 +27,7 @@ public class Game {
 
             if (result.isNothing()) {
                 view.printNoting();
+                continue;
             }
 
             if (result.isCorrect()) {
