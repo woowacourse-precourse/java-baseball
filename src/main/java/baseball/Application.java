@@ -26,65 +26,16 @@ public class Application {
     public static void main(String[] args) {
 
         while (true) {
-
-            BullsAndCows bullsAndCows = new BullsAndCows();
-            System.out.println(bullsAndCows.computerNumber);
+            BullsAndCows bullsAndCows = new BullsAndCows(creatRandomNumber(), new BullsAndCowsResult());
 
             while (!bullsAndCows.bullsAndCowsResult.finish()) {
                 bullsAndCows.start();
             }
 
-            if (bullsAndCows.exit()) {
+            boolean bullsAndCowsContinue = bullsAndCows.isContinue();
+            if (!bullsAndCowsContinue) {
                 break;
             }
-        }
-    }
-
-    static class BullsAndCows {
-
-        List<Integer> computerNumber;
-        BullsAndCowsResult bullsAndCowsResult;
-
-        public BullsAndCows() {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            computerNumber = creatRandomNumber();
-            bullsAndCowsResult = new BullsAndCowsResult();
-        }
-
-        void start() {
-
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            List<Integer> userInputNumber = isValidInput(userInput);
-
-            bullsAndCowsResult.init();
-
-            for (int i = 0; i < computerNumber.size(); i++) {
-                bullsAndCowsResult.addCount(findNumberIndex(userInputNumber, computerNumber.get(i)), i);
-            }
-
-            bullsAndCowsResult.printResult();
-        }
-
-        boolean exit() {
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String answer = Console.readLine();
-
-            if (answer.equals("1")) {
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-    private static int findNumberIndex(List<Integer> userInputNumber, int c) {
-
-        if (userInputNumber.contains(c)) {
-            return userInputNumber.indexOf(c);
-        } else {
-            return -1;
         }
     }
 
@@ -103,10 +54,55 @@ public class Application {
         return computer;
     }
 
-    private static List<Integer> isValidInput(String userInput) throws IllegalArgumentException {
+    static class BullsAndCows {
+
+        List<Integer> computerNumber;
+        BullsAndCowsResult bullsAndCowsResult;
+
+        public BullsAndCows(List<Integer> computerNumber, BullsAndCowsResult bullsAndCowsResult) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            this.computerNumber = computerNumber;
+            this.bullsAndCowsResult = bullsAndCowsResult;
+        }
+
+        void start() {
+
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+            List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
+
+            bullsAndCowsResult.init();
+
+            for (int i = 0; i < computerNumber.size(); i++) {
+                int userIndex = findNumberIndex(userInputNumber, computerNumber.get(i));
+                bullsAndCowsResult.addCount(userIndex, i);
+            }
+
+            bullsAndCowsResult.printResult();
+        }
+
+        boolean isContinue() {
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String answer = Console.readLine();
+
+            return answer.equals("1");
+        }
+    }
+
+    private static int findNumberIndex(List<Integer> userInputNumber, int c) {
+
+        if (userInputNumber.contains(c)) {
+            return userInputNumber.indexOf(c);
+        } else {
+            return -1;
+        }
+    }
+
+    private static List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
 
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
 
         List<Integer> userInputNumber = new ArrayList<>();
@@ -117,8 +113,12 @@ public class Application {
 
             int number = (int) c - '0';
 
-            if (!isValidNumber(number) || userInputNumber.contains(number)) {
-                throw new IllegalArgumentException();
+            if (!isValidNumber(number)) {
+                throw new IllegalArgumentException("1 ~ 9 사이 숫자가 아닙니다.");
+            }
+
+            if (userInputNumber.contains(number)) {
+                throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
             }
 
             userInputNumber.add(number);
