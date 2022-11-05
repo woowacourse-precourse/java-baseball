@@ -79,7 +79,7 @@ public class Application {
         if (replayNum == 1) {
             return true;
         }
-        else if (replayNum == 2) {
+        else {
             return false;
         }
     }
