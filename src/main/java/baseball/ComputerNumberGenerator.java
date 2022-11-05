@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.type.NumberType.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class ComputerNumberGenerator {
 
     public static List<Integer> generate() {
         while (!hasThreeNumbers(numbers)) {
-            int random = pickNumberInRange(1, 9);
+            int random = pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
             if (!numbers.contains(random)) {
                 numbers.add(random);
@@ -25,7 +26,7 @@ public class ComputerNumberGenerator {
     }
 
     private static boolean hasThreeNumbers(List<Integer> numbers) {
-        return numbers.size() == 3;
+        return numbers.size() == COMPUTER_NUMBER_SIZE;
     }
 }
 
