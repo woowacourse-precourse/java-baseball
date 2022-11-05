@@ -100,6 +100,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임종료_후_다음_진행을_입력할때_잘못된_입력_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(() -> runException("246", "135", "0"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
