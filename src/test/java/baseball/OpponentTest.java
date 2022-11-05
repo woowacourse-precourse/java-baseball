@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OpponentTest {
     @Test
@@ -93,4 +92,25 @@ class OpponentTest {
         }
     }
 
+
+    @Nested
+    @DisplayName("게임결과테스트")
+    class GameResultTest {
+        @Test
+        void 게임승리() {
+            List<Integer> answer = List.of(1,2,3);
+            List<Integer> input = List.of(1,2,3);
+
+            Hint hint = new Hint(answer,input);
+            assertThat(hint.isAnswer()).isEqualTo(true);
+        }
+        @Test
+        void 게임승리_아닌경우() {
+            List<Integer> answer = List.of(1,2,4);
+            List<Integer> input = List.of(1,2,5);
+
+            Hint hint = new Hint(answer,input);
+            assertThat(hint.isAnswer()).isEqualTo(false);
+        }
+    }
 }
