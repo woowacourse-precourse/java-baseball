@@ -53,6 +53,12 @@ public class Game {
         return computerBalls.contains(playerBalls.get(i))&&computerBalls.indexOf(playerBalls.get(i))!=i;
     }
 
+    public void playBall() {
+        do {
+            start();
+        } while (restart());
+    }
+
     public void start() {
         Balls computerBalls = makeComputerBalls();
         while(!isAnswer()){
@@ -63,6 +69,13 @@ public class Game {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         initializeBallCount();
+    }
+
+    public boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartIndex = Console.readLine();
+        validator.validRestartIndex(restartIndex);
+        return restartIndex.equals("1");
     }
 
     private void initializeBallCount() {
