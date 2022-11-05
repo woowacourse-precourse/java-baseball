@@ -51,4 +51,12 @@ public class Referee {
     private Boolean isBall(int findIndexWithUserChar, int userNumberCharIndex) {
         return (findIndexWithUserChar != INDEX_NOT_FOUND && findIndexWithUserChar != userNumberCharIndex);
     }
+
+    public void showResult() {
+        Message.showGameResultMessage(strikeCount, ballCount);
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }
