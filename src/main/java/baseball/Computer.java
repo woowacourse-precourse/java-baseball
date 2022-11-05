@@ -59,9 +59,9 @@ public class Computer {
 
     private String getBallAndStrikeMessage(String ballMessage, String strikeMessage) {
         if (!Objects.equals(ballMessage, "")) {
-            return String.format("%d %d", ballMessage, strikeMessage);
+            return String.format("%s %s", ballMessage, strikeMessage);
         }
-        return String.format("%d%d", ballMessage, strikeMessage);
+        return String.format("%s%s", ballMessage, strikeMessage);
     }
 
     private String getStrikeMessage(int strikeCount) {
