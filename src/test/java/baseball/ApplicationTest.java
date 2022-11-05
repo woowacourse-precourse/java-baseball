@@ -79,6 +79,10 @@ class ApplicationTest extends NsTest {
         gameProcessor.ballChecker(testData,testData2);
         assertThat(gameProcessor.getBall()).isEqualTo(3);
     }
+    @Test
+    void check_is_win(){
+        assertThat(gameProcessor.isWin()).isEqualTo(false);
+    }
 
     @Test
     void 게임종료_후_재시작() {
