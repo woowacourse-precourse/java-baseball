@@ -149,6 +149,22 @@ class GameMessagePrinterTest {
         }
     }
 
+    @Nested
+    @DisplayName("게임 종료 메세지 출력")
+    class PrintFinishMessageTest {
+        @Test
+        @DisplayName("게임 시작 메세지 출력")
+        void printFinishMessageTest() {
+            //given
+            String expect = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+
+            //when
+            messagePrinter.printFinishMessage();
+
+            //then
+            assertThat(outContent.toString()).isEqualTo(expect);
+        }
+    }
 
     @AfterEach
     void reset() {
