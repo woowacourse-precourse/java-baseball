@@ -1,5 +1,7 @@
 package baseball.system;
 
+import baseball.utils.NumberParsing;
+
 import java.util.*;
 
 public class NumberComparison {
@@ -10,7 +12,10 @@ public class NumberComparison {
     private List<Integer> computerNumbers;
     private List<Integer> userNumbers;
 
-    public NumberComparison(List<Integer> computerNumbers){
+    private int strikeCount;
+    private int ballCount;
+
+    public NumberComparison(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 
@@ -18,13 +23,8 @@ public class NumberComparison {
 
         this.userNumbers = userNumbers;
 
-        int strikeCount = getStrikeCount();
-        int ballCount = getBallCount(); //TODO : if문 다음으로 이동 시킬 것
-
-        if (isNothing(strikeCount, ballCount)) {
-            printNothingText();
-            return false;
-        }
+        strikeCount = countStrike();
+        ballCount = countBall();
 
         printStrikeBallCount(strikeCount, ballCount);
 
@@ -36,7 +36,68 @@ public class NumberComparison {
 
     }
 
+
+    private int countBall() {
+
+        int ballCount = 0;
+
+        int userNumber;
+        int computerNumber;
+
+        for (int index = 0; index < NUMBERS_SIZE; index++) {
+
+            userNumber = userNumbers.get(index);
+            computerNumber = computerNumbers.get(index);
+
+            if (!NumberParsing.isSameNumber(computerNumber, userNumber)
+                    && NumberParsing.hasNumber(computerNumbers, userNumber)) {
+                ballCount++;
+            }
+
+        }
+
+        return ballCount;
+
+    }
+
+
+    private int countStrike() {
+
+        int strikeCount = 0;
+
+        int userNumber;
+        int computerNumber;
+
+        for (int index = 0; index < NUMBERS_SIZE; index++) {
+
+            userNumber = userNumbers.get(index);
+            computerNumber = computerNumbers.get(index);
+
+            if (NumberParsing.isSameNumber(userNumber, computerNumber)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private boolean isAnswer(int strikeCount) {
+        return strikeCount == ANSWER_COUNT;
+    }
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
     private void printStrikeBallCount(int strikeCount, int ballCount) {
+
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
 
         if (ballCount != 0) {
             System.out.print(ballCount + "볼");
@@ -52,65 +113,6 @@ public class NumberComparison {
 
         System.out.println();
 
-    }
-
-    private void printNothingText() {
-        System.out.println("낫싱");
-    }
-
-    private boolean isNothing(int strikeCount, int ballCount) {
-        return strikeCount == 0 && ballCount == 0;
-    }
-
-    private boolean isAnswer(int strikeCount) {
-        return strikeCount == ANSWER_COUNT;
-    }
-
-    private int getBallCount() {
-
-        int ballCount = 0;
-
-        for (int index = 0; index < NUMBERS_SIZE; index++) {
-
-            List<Integer> IndexNumbers = new ArrayList<>(Arrays.asList(0, 1, 2));
-            IndexNumbers.remove(index);
-
-            int userNumber = userNumbers.get(index);
-
-            if (searchNumber(IndexNumbers, userNumber)) {
-                ballCount++;
-            }
-
-        }
-
-        return ballCount;
-
-    }
-
-    private boolean searchNumber(List<Integer> indexNumbers, int userNumber) {
-
-        for (int index = 0; index < NUMBERS_SIZE - 1; index++) {
-            int remainedIndex = indexNumbers.get(index);
-            if (userNumber == computerNumbers.get(remainedIndex)) {
-                return true;
-            }
-        }
-
-        return false;
-
-    }
-
-    private int getStrikeCount() {
-
-        int strikeCount = 0;
-
-        for (int index = 0; index < NUMBERS_SIZE; index++) {
-            if (userNumbers.get(index) == computerNumbers.get(index)) {
-                strikeCount++;
-            }
-        }
-
-        return strikeCount;
     }
 
 }
