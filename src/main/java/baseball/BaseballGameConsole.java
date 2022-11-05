@@ -2,6 +2,7 @@ package baseball;
 
 public class BaseballGameConsole {
 
+    private final Validator validator = new Validator();
     private final Computer computer = new Computer();
 
     public void playGame(Player player) {
@@ -23,7 +24,7 @@ public class BaseballGameConsole {
         do {
             System.out.println("숫자를 입력해주세요. :");
             String predictedNumber = player.predictNumber();
-            // Validator validates players prediction
+            validator.validatePrediction(predictedNumber);
 
             // Computer returns result of prediction
             // Update matchedAllNumber
