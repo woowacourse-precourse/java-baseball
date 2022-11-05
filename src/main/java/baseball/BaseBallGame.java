@@ -20,6 +20,10 @@ public class BaseBallGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public void restartOrStopMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     public void playGame() {
         // 컴퓨터 랜덤 넘버
         List<Integer> computerNumbers = computer.makeComputerNumbers();
@@ -49,8 +53,24 @@ public class BaseBallGame {
         }
     }
 
-    public void restartOrStopMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+    public int restartOrStop() {
+        restartOrStopMessage();
+        String userInput = user.restartOrEndInput();
+
+        int validRestartOrEndInput = user.validRestartOrEndInput(userInput);
+
+        if (validRestartOrEndInput == 1) {
+            System.out.println("새로운 게임을 시작합니다.");
+            return 1;
+        }
+
+        if (validRestartOrEndInput == 2) {
+            System.out.println("게임이 종료 되었습니다.");
+            return 2;
+        }
+
+        return 2;
     }
 
 
