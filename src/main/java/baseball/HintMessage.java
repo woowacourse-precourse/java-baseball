@@ -10,8 +10,8 @@ import camp.nextstep.edu.missionutils.Console;
 import baseball.Application;
 
 public class HintMessage {
-    int strike_Score = 0;
-    int ball_Score = 0;
+    private int strike_Score = 0;
+    private int ball_Score = 0;
     public boolean checkPoint(List<Integer> user, List<Integer> com) {
         strike_Score = 0;
         ball_Score = 0;

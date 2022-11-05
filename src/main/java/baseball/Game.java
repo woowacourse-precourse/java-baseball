@@ -14,7 +14,7 @@ public class Game {
     private List<Integer> randomComputerNumber;
     private List<Integer> inputUserNumber;
     private boolean isFinish;
-    private boolean restart;
+    private boolean isRestart;
     private final RestartGameException restartGameException;
 
     public Game() {
@@ -24,7 +24,7 @@ public class Game {
         randomComputerNumber = new ArrayList<>();
         inputUserNumber = new ArrayList<>();
         isFinish = true;
-        restart = true;
+        isRestart = true;
         restartGameException = new RestartGameException();
     }
 
@@ -40,8 +40,8 @@ public class Game {
             inputUserNumber = userNumber.getUserNumber();
             isFinish = hintMessage.checkPoint(inputUserNumber, randomComputerNumber);
         } while (isFinish);
-        restart = checkRestartGame();
-        return restart;
+        isRestart = checkRestartGame();
+        return isRestart;
     }
 
     public boolean checkRestartGame() {
@@ -54,8 +54,8 @@ public class Game {
 //            return true;
 //        }
         if (inputNumber == GAME_END) {
-            restart = false;
+            isRestart = false;
         }
-        return restart;
+        return isRestart;
     }
 }
