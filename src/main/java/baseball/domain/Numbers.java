@@ -11,9 +11,9 @@ public class Numbers {
     private static final int NUMBER_SIZE = 3;
     private final List<Number> numbers;
 
-    public Numbers(int... ints) {
+    public Numbers(Integer... ints) {
         this(Arrays.stream(ints)
-                .mapToObj(Number::of)
+                .map(Number::of)
                 .collect(Collectors.toList()));
     }
 
