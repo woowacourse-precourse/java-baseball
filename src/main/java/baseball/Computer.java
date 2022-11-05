@@ -21,10 +21,11 @@ public class Computer {
         return computerNumbers;
     }
 
-    public String[] compareNumber() {
+    public String[] createCompareResult() {
         compareResult = new String[3];
         List<Integer> computerNumbers = createRandomNumber();
         List<Integer> userNumbers = user.createUserNumber();
+        inputCompareResult(computerNumbers, userNumbers);
         return compareResult;
     }
 
