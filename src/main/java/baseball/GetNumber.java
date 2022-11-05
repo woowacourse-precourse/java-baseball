@@ -28,6 +28,7 @@ public class GetNumber {
     public List<Integer> user() {
         List<Integer> userNumber = new ArrayList<>();
 
+        System.out.print(GameMessage.input);
         String inputStringNumber = Console.readLine();
 
         for (int userIndex = 0; userIndex < inputStringNumber.length(); userIndex++) {
