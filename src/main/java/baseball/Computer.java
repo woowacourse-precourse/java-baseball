@@ -8,6 +8,11 @@ import java.util.List;
 public class Computer {
     public static final int MAX = 3;
     public static final String STRIKE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final Computer COMPUTER = new Computer();
+
+    public static Computer getComputer() {
+        return COMPUTER;
+    }
 
     public List<Integer> createRandomNumber() {
         List<Integer> answer = new ArrayList<>();
