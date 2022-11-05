@@ -159,7 +159,7 @@ public class Computer {
         if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
             // TODO: 2.1.1 스트라이크 체크
-            checkStrike(splitNumOfCompare);
+            checkStrikeBall(splitNumOfCompare);
             // TODO: 2.1.2 스트라이크 체크
 //            System.out.println(this.numThreeRanOfComputerList);
 //            System.out.println(this.cntBall + " " + this.cntStrike);
@@ -170,20 +170,25 @@ public class Computer {
     }
 
     // strike체크 함수
-    private void checkStrike(List<Integer> listSplitNum) {
+    private void checkStrikeBall(List<Integer> listSplitNum) {
         // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
         boolean isStrike = true;
+        boolean isBall = true;
         for (int first = 0; first < listSplitNum.size(); first++) {
             isStrike = false;
+            isBall = false;
             int numComputerAtNow = this.numThreeRanOfComputerList.get(first);
             for (int second = 0; second < this.numThreeRanOfComputerList.size(); second++) {
                 int numAtNow = listSplitNum.get(second);
                 isStrike = isCheckStrike(isStrike, first, numComputerAtNow, second, numAtNow);
+                isBall = isBallCheck(isBall, first, numComputerAtNow, second, numAtNow);
             }
             if (isStrike) {
                 this.cntStrike = this.cntStrike + 1;
             }
-
+            if (isBall) {
+                this.cntBall = this.cntBall + 1;
+            }
         }
     }
 
