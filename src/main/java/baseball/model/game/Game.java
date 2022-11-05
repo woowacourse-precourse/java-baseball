@@ -2,13 +2,17 @@ package baseball.model.game;
 
 import baseball.controller.user.User;
 import baseball.model.computer.Computer;
+import baseball.view.Output;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
+import static baseball.controller.Setup.*;
+
 public class Game {
 	Computer computer = new Computer();
 	User user = new User();
+	Output output = new Output();
 
 	LinkedHashMap<Integer, Integer> fromComputers;
 	LinkedHashMap<Integer, Integer> fromUsers;
@@ -155,7 +159,7 @@ public class Game {
 
 	public void checkUserWin() {
 		if (userWin()) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			output.print(END_MESSAGE.getValue());
 			userWin = true;
 		}
 	}
