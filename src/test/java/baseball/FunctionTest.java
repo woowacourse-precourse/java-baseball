@@ -7,6 +7,7 @@ import java.util.*;
 
 import static baseball.CompareNumber.compare;
 import static baseball.Score.*;
+import static baseball.Validation.isExistOnlyNumber;
 import static baseball.Validation.isValidLength;
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,6 +57,33 @@ public class FunctionTest {
 
             //then
             assertThat(validLength).isEqualTo(false);
+        }
+    }
+
+    @Nested
+    class checkInputContent {
+        @Test
+        void 숫자만_존재하는지_확인() {
+            //given
+            List<String> userInput = new ArrayList<>(asList("1", "2", "3"));
+
+            //when
+            boolean existOnlyNumber = isExistOnlyNumber(userInput);
+
+            //then
+            assertThat(existOnlyNumber).isEqualTo(true);
+        }
+
+        @Test
+        void 숫자_이외의_다른_문자가_있으면_false_반환() {
+            //given
+            List<String> userInput = new ArrayList<>(asList("1", "2", "a"));
+
+            //when
+            boolean existOnlyNumber = isExistOnlyNumber(userInput);
+
+            //then
+            assertThat(existOnlyNumber).isEqualTo(false);
         }
     }
 }
