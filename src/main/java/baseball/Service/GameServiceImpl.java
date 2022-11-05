@@ -61,5 +61,14 @@ public class GameServiceImpl implements GameService {
         return strikeCount;
     }
 
+    @Override
+    public int calcBallet(int[] inputNumbers) {
+        int ballCount = 0;
+        if (balls.getValue(1) == inputNumbers[0] || balls.getValue(2) == inputNumbers[0]) ballCount++;
+        if (balls.getValue(0) == inputNumbers[1] || balls.getValue(2) == inputNumbers[1]) ballCount++;
+        if (balls.getValue(0) == inputNumbers[2] || balls.getValue(1) == inputNumbers[2]) ballCount++;
+        return ballCount;
+    }
+
 
 }

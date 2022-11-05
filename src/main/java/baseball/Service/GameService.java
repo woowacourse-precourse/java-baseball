@@ -5,4 +5,5 @@ public interface GameService {
     int getUniqueNumber(String numStr);
     int [] getInputs();
     int calcStrike(int [] inputNumbers);
+    int calcBallet(int [] inputNumbers);
 }
