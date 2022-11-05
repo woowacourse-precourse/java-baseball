@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -13,6 +16,11 @@ public class Application {
     public static void main(String[] args) {
         notifyGameStart();
         List<Integer> computerNumbers = createComputerNumbers();
+        while (true){
+            List<Integer> userNumbers = InputUserNumber();
+            String hint = getHint(computerNumbers, userNumbers);
+            System.out.println(hint);
+        }
     }
 
     public static List<Integer> createComputerNumbers() {
@@ -32,6 +40,15 @@ public class Application {
 
     public static void notifyGameStart() {
         System.out.println(GAME_START_SIGN);
+    }
+
+    public static List<Integer> InputUserNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNumbers = Console.readLine();
+        validUserNumbers(userNumbers);
+        return Arrays.stream(userNumbers.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static String getHint(List<Integer> computerNumbers, List<Integer> userNumbers) {
