@@ -3,6 +3,7 @@ package view;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import controller.GameController;
+import model.UseFunc;
 
 public class GameView {
 
@@ -37,10 +38,10 @@ public class GameView {
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
                 int numInputOfUser = parseIntFromInputOfUser();
 
-                if (numInputOfUser == RESTART_GAME) {
+                if (UseFunc.isEqualIntOfTwo(numInputOfUser, RESTART_GAME)) {
                     gameController.reStartGame();
                 }
-                if (numInputOfUser == END_GAME) {
+                if (UseFunc.isEqualIntOfTwo(numInputOfUser, END_GAME)) {
                     System.out.println(MSG_GAME_END);
                     break;
                 }
