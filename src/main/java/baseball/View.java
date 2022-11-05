@@ -20,6 +20,10 @@ public class View {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    static final void printStrike(int num){
+        System.out.println(num + "스트라이크");
+    }
+
     static final String getUserInput() {
         try {
             return bufferedReader.readLine();
