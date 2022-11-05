@@ -25,7 +25,7 @@ public class ComputerOpponent implements Opponent {
     }
 
     @Override
-    public Hint getHint(ThreeDigitNum inputValue) {
+    public Hint makeHint(ThreeDigitNum inputValue) {
         return new Hint(this.answer, inputValue);
     }
 

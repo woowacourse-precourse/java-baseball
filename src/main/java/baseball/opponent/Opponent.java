@@ -6,5 +6,5 @@ import baseball.domain.ThreeDigitNum;
 public interface Opponent {
 
     ThreeDigitNum createAnswer();
-    public Hint getHint(ThreeDigitNum inputValue);
+    public Hint makeHint(ThreeDigitNum inputValue);
 }
