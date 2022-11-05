@@ -1,9 +1,7 @@
 package baseball.system;
 
 import baseball.player.*;
-
-import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.utils.Input;
 
 public class GamePlay {
 
@@ -17,27 +15,24 @@ public class GamePlay {
 
     public void playGame(){
 
+        //TODO : 설명 적기
         NumberComparison numberComparison = new NumberComparison(computer.getComputerNumbers());
 
         for(;;){
 
             printInputText();
-            String inputNumber = inputUserNumbers();
-            user.setUser(inputNumber);
 
-            List<Integer> userNumbers = user.getUserNumbers();
+            String inputNumbers = Input.input();
+            user.setUser(inputNumbers);
 
-            if(numberComparison.startComparison(userNumbers)){
+            if(numberComparison.startComparison(user.getUserNumbers())){
                 break;
             }
+
         }
 
         printGameEndText();
 
-    }
-
-    private String inputUserNumbers() {
-        return Console.readLine();
     }
 
     private void printInputText() {
