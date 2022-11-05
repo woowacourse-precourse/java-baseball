@@ -63,6 +63,8 @@ countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 
 4. isBall(int index) : 플레이어 인덱스의 숫자가 컴퓨터 인덱스의 숫자와는 다르지만 컴퓨터가 해당 값을 가지고 있다면 참을 반환
 5. increaseStrike() : 전역변수 strikeCount를 1증가 시켜준다.
 6. increaseBall() : 전역변수 ballCount를 1증가시킨다.
+7. setPlayer(String input) : 뷰에서 받은 입력을 컨트롤러를 통해 받아 플레이어 객체에 저장시킨다. 
+8. setComputer() : 컴퓨터 객체를 새로 만들고, makeThreeDigitNumbers()해준다. 
 
 ### GameStatusService
 전역 변수 gameStart
@@ -77,11 +79,11 @@ countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 
 ### GameController
 위의 클래스들을 참조한다. 
 1. initializeGame()
-   1. generateComputer() : 컴퓨터 생성자 호출 및 랜덤 상수 생성
+   1. generateComputer() : GameService에서 setComputer해준다. 
    2. generateGameStatus() : GameStatusService를 생성해 gameStatusService를 참으로 초기화
 2. startGame()
    1. clearScore() : GameService의 strikeCount, ballCount를 0으로 초기화해준다. 
-   2. getPlayerNumbers() : PlayerView에서 입력 요청을 하고, 입력받은 문자열로 Player 클래스형 변수에 넣어 정수형 리스트를 생성시켜준다. 
+   2. getPlayerNumbers() : PlayerView에서 입력 요청을 하고, 입력받은 문자열을 GameService에 넣어준다.  
    3. matchGame() : GameService에 setPlayer, setComputer을 해서 점수를 계산한다. 
    4. showPlayersScore() : GameService의 strikeCount, ballCount를 가져와 ScoreResultView로 보내 점수를 출력시킨다. 
    5. isThreeStrike() : GameService에서 스트라이크 개수를 가져와 3개면 참을 반환한다. 
