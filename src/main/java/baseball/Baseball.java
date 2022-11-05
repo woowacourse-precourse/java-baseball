@@ -44,11 +44,11 @@ public class Baseball {
     }
 
     public void getBallCount(){
-
+        this.ballCount.getBallCount();
     }
 
     public void getStrikeCount(){
-
+        this.ballCount.getStrikeCount();
     }
 
     // 결과 ENUM 출력 method
