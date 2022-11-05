@@ -1,9 +1,15 @@
 package baseball.system;
 
-
 import baseball.player.*;
 
 public class GameSystem {
+
+
+    private Computer computer;
+    private User user;
+    private MenuSelection menuSelection;
+
+    private GamePlay gamePlay;
 
     public void runGame() {
 
@@ -22,29 +28,28 @@ public class GameSystem {
 
     }
 
-    private void printRunGameText() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
+    private void startGame() {
+
+         computer = new Computer();
+         user = new User();
+
+         gamePlay = new GamePlay(computer,user);
+         gamePlay.playGame();
+
+
     }
 
     private boolean selectMenu() {
 
-        MenuSelection menuSelection = new MenuSelection();
+        menuSelection = new MenuSelection();
         return menuSelection.startMenuSelection();
 
     }
 
-    private void startGame() {
-
-        Computer computer = new Computer();
-        User user = new User();
-
-        GamePlay gamePlay = new GamePlay(computer,user);
-        gamePlay.playGame();
-
-        //TODO : printAnswerText 구현
-
+    private void printRunGameText() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
-
 
 
 }
