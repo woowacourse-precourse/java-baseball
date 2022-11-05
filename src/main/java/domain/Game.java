@@ -56,6 +56,9 @@ public class Game {
         if (restartOrEnd.equals("1")) {
             playGame();
         }
+        if (!(restartOrEnd.equals("1") || restartOrEnd.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
         return true;
     }
 
