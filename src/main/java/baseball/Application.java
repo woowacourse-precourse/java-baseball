@@ -10,6 +10,7 @@ public class Application {
         do {
             baseBallGame.userInput();
             baseBallGame.playGame();
+            baseBallGame.restartOrStopMessage();
         } while (baseBallGame.restartOrStop() == 1);
     }
 }
