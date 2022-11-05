@@ -28,4 +28,13 @@ class InputNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력한 내용이 숫자가 아닙니다.");
     }
+
+    @DisplayName("입력한 숫자 중 중복되는 숫자가 있다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "121", "112", "211"})
+    void inputNumberDuplicateNumber(String input) {
+        assertThatThrownBy(() -> InputNumber.checkStringNumberDuplicate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력한 숫자 중 중복되는 숫자가 있습니다.");
+    }
 }
