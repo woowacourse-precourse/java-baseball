@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class BaseballGame {
@@ -59,17 +60,14 @@ public class BaseballGame {
     }
 
     public Boolean checkDuplicateNums(int gameInput) {
-        List<Integer> checkList = new ArrayList<>();
+        List<Integer> checkList = stringToIntList(String.valueOf(gameInput));
 
-        while (gameInput != 0) {
-            int digit = gameInput % 10;
-            if (checkList.contains(digit)) {
-                return Boolean.TRUE;
-            }
-            checkList.add(digit);
-            gameInput /= 10;
+        List<Integer> removeDuplicateList = new ArrayList<>(new HashSet<>(checkList));
+
+        if (checkList.equals(removeDuplicateList)) {
+            return Boolean.FALSE;
         }
 
-        return Boolean.FALSE;
+        return Boolean.TRUE;
     }
 }
