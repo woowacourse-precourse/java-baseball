@@ -65,4 +65,12 @@ public class ViewTest {
         View.printNothing();
         assertThat("낫싱").isEqualTo(out.toString().trim());
     }
+
+    @Test
+    void 정답메시지_출력(){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        View.printCollect();
+        assertThat("3개의 숫자를 모두 맞히셨습니다! 게임 종료").isEqualTo(out.toString().trim());
+    }
 }
