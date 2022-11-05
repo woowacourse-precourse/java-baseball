@@ -8,7 +8,7 @@ import java.util.List;
 public class InputValue {
 
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-
+    static final int NUMBER_LENGTH = 3;
 
     public List<Integer> getUserNumber() {
         List<Integer> userNumber = new ArrayList<>();
@@ -21,6 +21,10 @@ public class InputValue {
         }
 
         return userNumber;
+    }
+
+    public boolean checkLength(List<Integer> num) {
+        return num.size() == NUMBER_LENGTH;
     }
 
 }
