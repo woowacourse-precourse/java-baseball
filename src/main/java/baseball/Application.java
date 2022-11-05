@@ -8,15 +8,19 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        boolean goOrStop = true;
 
-
+        while(goOrStop){
+            goOrStop = playGame();
+        }
 
     }
 
-    public static boolean playGame(boolean goOrStop) {
+    public static boolean playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> targetNum = makeRandomTargetNum();
+        System.out.println(targetNum);
         boolean go = true;
         boolean restartOrEnd = true;
         while(go){
@@ -26,10 +30,11 @@ public class Application {
                 continue;
             } else if(notFinishOrFinishOrException == 2){
                go = false;
-               restartOrEnd = false;
+                restartOrEnd = gameRestartOrEnd();
             } else{
                 go = false;
-                restartOrEnd = gameRestartOrEnd();
+                makeException();
+                restartOrEnd = false;
             }
         }
 
@@ -53,7 +58,6 @@ public class Application {
         }
 
         if(!lengthException || !duplicateException){
-            System.out.println("잘못된 입력 값을 입력했습니다.");
             return 3;
         }
 
@@ -113,21 +117,14 @@ public class Application {
         }
     }
 
-    static boolean checkIllegalArgumentException(String inputNum){
-
-        try{
-            Integer.parseInt(inputNum);
-
-            return true;
-        } catch (IllegalArgumentException e){
-            return false;
-        }
-    }
-
     static boolean userNumToIntegerListAndCheckDuplicatedNum(List<Integer> userNum, String inputNum) {
 
         try{
             int inputNumToInt = Integer.parseInt(inputNum);
+
+            if (inputNumToInt == 0) {
+                throw new IllegalArgumentException();
+            }
 
             if (!userNum.contains(inputNumToInt)) {
                 userNum.add(inputNumToInt);
@@ -175,7 +172,7 @@ public class Application {
     }
 
     static boolean gameRestartOrEnd() {
-        System.out.println("3개의 수자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String selectState = Console.readLine();
 
@@ -185,6 +182,14 @@ public class Application {
             return false;
         } else{
             return false;
+        }
+    }
+
+    static void makeException(){
+        try {
+            throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e){
+            return;
         }
     }
 
