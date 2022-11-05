@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BaseballGame {
+    private static final String START_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String BALL_MESSAGE = "볼";
@@ -44,7 +45,7 @@ public class BaseballGame {
     public void playBaseballGame() {
         while (strike < NUMBER_LENGTH) {
             // 숫자 입력
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(START_MESSAGE);
             String userInput = readLine();
 
             // 숫자를 입력했는지 검증
@@ -60,7 +61,8 @@ public class BaseballGame {
             printCurrentStatus();
         }
 
-        printFinalMessage();
+        // 게임 종료 메세지
+        System.out.println(SUCCESS_MESSAGE);
     }
 
     /* 숫자 입력 검증 */
@@ -125,11 +127,5 @@ public class BaseballGame {
 
         System.out.println(stringBuilder);
     }
-
-    /* 성공 메세지 및 재시작 여부 메세지 출력 */
-    public void printFinalMessage() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(SUCCESS_MESSAGE);
-        System.out.println(stringBuilder);
-    }
+    
 }
