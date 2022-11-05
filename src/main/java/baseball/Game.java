@@ -9,12 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
 
-    public List<Integer> makeUserNumberToList(int userNumber){
-        List<Integer> listNumber = new ArrayList<>();
-        while(userNumber > 0){
-            listNumber.add(userNumber%10);
-            userNumber /= 10;
-        }
+    public List<Integer> makeUserNumberToList(String userNumber){
+        List<Integer> listNumber = List.of(
+                userNumber.charAt(0) - '0', userNumber.charAt(1) - '0', userNumber.charAt(2) - '0');
         return listNumber;
     }
 
@@ -51,10 +48,10 @@ public class Game {
             String userNumberString = readLine();
             checkExceptionFromUserInputData(userNumberString);
 
-            List<Integer>userNumber = makeUserNumberToList(Integer.parseInt(userNumberString));
+            computer.clearNumberCount();
+            List<Integer>userNumber = makeUserNumberToList(userNumberString);
             computer.checkNumberCount(userNumber);
             System.out.println(computer.countResultString());
-            computer.clearNumberCount();
 
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
