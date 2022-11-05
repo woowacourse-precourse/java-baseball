@@ -1,7 +1,8 @@
-package baseball;
+package baseball.opponent;
 
 import baseball.domain.Hint;
 import baseball.domain.ThreeDigitNum;
+import baseball.opponent.Opponent;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerOpponent implements Opponent {

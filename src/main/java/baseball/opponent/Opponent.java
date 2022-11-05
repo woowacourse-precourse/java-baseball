@@ -1,4 +1,4 @@
-package baseball;
+package baseball.opponent;
 
 import baseball.domain.Hint;
 import baseball.domain.ThreeDigitNum;
