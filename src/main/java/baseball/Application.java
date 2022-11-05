@@ -61,6 +61,14 @@ public class Application {
         System.out.println(returnStringByCondition(strikes, balls));
     }
 
+    public boolean isEnd(int[] score){
+        if(score[0] == 3 && score[1] == 0){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
     private int checkIfScoreIsInRange(int i) {
         if(i > 3 || i < 0) throw new IllegalArgumentException("score가 범위 안에 있지 않습니다");
         return i;
