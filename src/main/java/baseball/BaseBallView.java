@@ -19,7 +19,8 @@ public class BaseBallView {
             }
             catch(IllegalArgumentException ex){
                 System.out.println("비정상적인 입력입니다. 게임을 종료합니다.");
-                return;
+                throw ex;
+//                return;
             }
 
         }
