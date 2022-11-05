@@ -1,5 +1,6 @@
 package baseball.game.application;
 
+import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
 import baseball.user.application.UserService;
 import baseball.user.domain.repository.UserRepository;
@@ -26,14 +27,21 @@ public class GameService {
         messageService.gameStartMessage();
     }
     public void play() {
+        Game game=startGameSet();
+        while (!Objects.equals(gameRepository.getGame().getStrikeCount(), gameRepository.getSize())) {
+            List<Integer> clientInputData=userService.inputData();
+            userService.inputDataUpdate(clientInputData);
+            countResult(userRepository.getUser().getInputNumber(),gameRepository.getGame().getGameNumber());
+            messageService.resultMessage(game.getStrikeCount(),game.getBallCount());
+        }
+        endGame();
+    }
+    private Game startGameSet(){
         gameRepository.setGame();
         userService.createUser();
-        while (!Objects.equals(gameRepository.getGame().getStrikeCount(), gameRepository.getSize())) {
-            userService.inputData();
-            countResult(userRepository.getUser().getInputNumber()
-                    ,gameRepository.getGame().getGameNumber().getRandomNumber());
-            messageService.resultMessage(gameRepository.getGame().getStrikeCount(), gameRepository.getGame().getBallCount());
-        }
+        return gameRepository.getGame();
+    }
+    private void endGame(){
         messageService.gameEndMessage();
         checkContinue(userService.inputContinue());
     }

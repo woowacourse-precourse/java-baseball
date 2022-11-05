@@ -28,13 +28,12 @@ public class UserService {
     public void createUser(){
         userRepository.createUser(new User());
     }
-    public void inputData(){
+    public List<Integer> inputData(){
         messageService.inputMessage();
         gameRepository.initCount();
-        List<Integer> clientInput=parser.parseClientInput(Console.readLine(),gameRepository.getSize());
-        inputDataUpdate(clientInput);
+        return parser.parseClientInput(Console.readLine(),gameRepository.getSize());
     }
-    private void inputDataUpdate(List<Integer> clientInput){
+    public void inputDataUpdate(List<Integer> clientInput){
         User user=userRepository.getUser();
         user.updateInputNumber(clientInput);
     }

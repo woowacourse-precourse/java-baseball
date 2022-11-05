@@ -1,5 +1,7 @@
 package baseball.game.domain;
 
+import java.util.List;
+
 public class Game {
     private final RandomNumber gameNumber;
     private Integer strikeCount;
@@ -8,8 +10,8 @@ public class Game {
         strikeCount=0;
         ballCount=0;
     }
-    public RandomNumber getGameNumber(){
-        return gameNumber;
+    public List<Integer> getGameNumber(){
+        return gameNumber.getRandomNumber();
     }
     public Integer getStrikeCount(){return strikeCount;}
     public Integer getBallCount() {return ballCount;}
