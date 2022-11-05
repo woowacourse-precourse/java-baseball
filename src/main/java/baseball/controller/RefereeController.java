@@ -16,4 +16,8 @@ public class RefereeController {
     public Result generateResult(List<Ball> computerBalls, List<Ball> playerBalls) {
         return refereeService.generateResult(computerBalls, playerBalls);
     }
+
+    public void printResult(Result result) {
+        refereeService.printResult(result);
+    }
 }
