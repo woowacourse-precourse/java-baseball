@@ -1,7 +1,7 @@
 package baseball.exception;
 
 public class Validator {
-    public void validateInput(String input) {
+    public void validateInputNumbers(String input) {
         if (!(isLengthThree(input) && isElementsAreNumber(input))) {
             throw new IllegalArgumentException();
         }
@@ -21,5 +21,11 @@ public class Validator {
 
     private boolean isNumber(char element) {
         return '1' <= element && element <= '9';
+    }
+
+    public void validateInputRetry(String retry) {
+        if (!(retry.equals("1") || retry.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
     }
 }
