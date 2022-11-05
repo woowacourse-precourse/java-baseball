@@ -71,7 +71,16 @@ public class GameNumber {
         }
     }
 
-    // strike 와 ball 의 결과를 리턴받는 메소드
+
+    /**
+     * // strike 와 ball 의 결과를 리턴받는 메소드
+     * ArrayList 의 메소드인 IndexOf 를 사용하여 판단했습니다.
+     * <p>
+     * ArrayList 의 index 와 같은 값이라면 strike, index 와 다르지만 0보다 크면 존재한다는 뜻이므로 ball 을 카운트해주었습니다.
+     * index 가 0보다 작으면 존재하지 않는다는 뜻이므로 아무런 조치를 취하지 않습니다.
+     * <p>
+     * strike 와 ball 은 크기가 2인 배열을 선언하여 표현하였습니다.
+     */
     public int[] getResult(List<Integer> computer, List<Integer> user) {
         int[] result = new int[RESULT_SIZE];
         for (int idx = 0; idx < computer.size(); idx++) {
@@ -80,14 +89,15 @@ public class GameNumber {
         return result;
     }
 
+
     // strike 와 ball 의 값을 증가시켜주는 메소드
     private void addStrikeAndBall(int[] result, int idx, int idxOf) {
         if (isSame(idx, idxOf)) {
-            result[0]++; // strike
+            result[0]++; // strike ++
             return;
         }
         if (isPositive(idxOf)) {
-            result[1]++; // ball
+            result[1]++; // ball ++
             return;
         }
     }
