@@ -20,6 +20,12 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void printBallsCountMessage_메소드로_볼_개수_출력() {
+		int ballsCount = 3;
+		printBallsCount(ballsCount);
+		assertThat(output()).isEqualTo("3볼");
+	}
+	@Test
 	void printNothingMessage_메소드로_낫싱_출력() {
 		printNothingMessage();
 		System.out.print("이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
