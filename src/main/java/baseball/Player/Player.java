@@ -17,10 +17,30 @@ public class Player {
     }
 
     public String inputVerification(String readLine) {
-        if (readLine.length() != DIGIT_NUM) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_INPUT);
-        }
+        validateNumbers(readLine);
+        validateZero(readLine);
+        validateDuplicate(readLine);
+        validateCharacters(readLine);
+        return readLine;
+    }
 
+    private void validateCharacters(String readLine) {
+        String regularExpression = PATTERN;
+        if (!(readLine.matches(regularExpression))) {
+            throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
+        }
+    }
+
+    private void validateDuplicate(String readLine) {
+        String[] split = readLine.split("");
+        HashSet<String> hashSet = new HashSet<>(List.of(split));
+
+        if (hashSet.size() != DIGIT_NUM) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
+        }
+    }
+
+    private void validateZero(String readLine) {
         for (int readIndex = 0; readIndex < readLine.length(); readIndex++) {
             char location = readLine.charAt(readIndex);
 
@@ -28,18 +48,11 @@ public class Player {
                 throw new IllegalArgumentException(ExceptionMessage.ZERO_INPUT);
             }
         }
+    }
 
-        String[] split = readLine.split("");
-        HashSet<String> hashSet = new HashSet<>(List.of(split));
-
-        if (hashSet.size() != DIGIT_NUM) {
-            throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
+    private void validateNumbers(String readLine) {
+        if (readLine.length() != DIGIT_NUM) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_INPUT);
         }
-
-        String regularExpression = PATTERN;
-        if (!(readLine.matches(regularExpression))) {
-            throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
-        }
-        return readLine;
     }
 }
