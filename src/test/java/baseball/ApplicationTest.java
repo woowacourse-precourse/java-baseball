@@ -20,12 +20,19 @@ import computer.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
+	void printGettingRightAnswerMessage_메소드로_정답을_맞춘_경우_게임_종료를_안내() {
+		printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
+		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
+		assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n이 문장은 다음 줄에 출력되어야 합니다.");
+	}
+	@Test
 	void printResult_메소드로_결과_안내_출력() {
 		printResult(0, 0);
 		printResult(2, 0);
 		printResult(0, 1);
 		printResult(1,2);
-		assertThat(output()).isEqualTo("낫싱\n2볼\n1스트라이크\n1볼 2스트라이크");
+		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
+		assertThat(output()).isEqualTo("낫싱\n2볼\n1스트라이크\n1볼 2스트라이크\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
 	@Test
 	void printStrikesCountMessage_메소드로_스트라이크_개수_출력() {
