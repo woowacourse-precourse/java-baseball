@@ -31,7 +31,7 @@ public class Numbers {
 
     private void validateDifferentEachNumber(List<Number> numberList) {
         if (numberList.stream().distinct().count() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("서로 다른 3개의 숫자여야 합니다.");
+            throw new IllegalArgumentException("서로 다른 " + NUMBER_SIZE + "개의 숫자여야 합니다.");
         }
     }
 
