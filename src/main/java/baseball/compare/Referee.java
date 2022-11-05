@@ -1,10 +1,20 @@
 package baseball.compare;
 
+import java.util.List;
+import java.util.Optional;
+
 public class Referee {
-    public static ComparisonResultType judge(Integer a, Integer b) {
-        if (a.equals(b)) {
-            return ComparisonResultType.STRIKE;
+
+    public static Optional<ComparisonResultType> judge(Integer userNumber, Integer index,
+            List<Integer> opponentNumbers) {
+        if (opponentNumbers.get(index).equals(userNumber)) {
+            return Optional.of(ComparisonResultType.STRIKE);
         }
-        return ComparisonResultType.BALL;
+
+        if (opponentNumbers.contains(userNumber)) {
+            return Optional.of(ComparisonResultType.BALL);
+        }
+
+        return Optional.empty();
     }
 }

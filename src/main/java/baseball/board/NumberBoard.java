@@ -14,15 +14,9 @@ public class NumberBoard {
             List<Integer> opponentNumbers) {
         for (int i = 0; i < userNumbers.size(); i++) {
             Integer userNumber = userNumbers.get(i);
-            Integer opponentNumber = opponentNumbers.get(i);
-
-            compareNumber(userNumber, opponentNumber);
+            Referee.judge(userNumber, i, opponentNumbers).ifPresent(this.comparisonResult::add);
         }
 
         return comparisonResult.getFrequency();
-    }
-
-    private void compareNumber(Integer userNumber, Integer opponentNumber) {
-        this.comparisonResult.add(Referee.judge(userNumber, opponentNumber));
     }
 }
