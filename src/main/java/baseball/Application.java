@@ -59,5 +59,16 @@ public class Application {
         }
         return result;
     }
+    static List<Integer> inputGuess() {
+        List<Integer> guess = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        String guessString = Console.readLine();
+        validateOnlyNumbers(guessString);
+        validateThreeNumbers(guessString);
+        for (int idx=0; idx < guessString.length(); idx++){
+            guess.add(Character.getNumericValue(guessString.charAt(idx)));
+        }
+        return guess;
+    }
 
 }
