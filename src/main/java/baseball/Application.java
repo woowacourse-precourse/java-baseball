@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {
-            List<Integer> computernums = RandomNum(3);
+            ComputerNums computernums =new ComputerNums(3);
             gameStart(computernums);
             System.out.print("1이나 2를 입력해주세요.");
             String userfinalinput = userInput();
@@ -22,11 +22,11 @@ public class Application {
 
     }
 
-    public static void gameStart(List<Integer> computernums) {
+    public static void gameStart(ComputerNums computernums) {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             UserNums usernum = new UserNums(Console.readLine());
-            BaseballCount baseballCount = new BaseballCount(computernums, usernum.getNumbers());
+            BaseballCount baseballCount = new BaseballCount(computernums.getNumbers(), usernum.getNumbers());
             if (allStrike(baseballCount)) {
                 allStrikeMessage();
                 break;
