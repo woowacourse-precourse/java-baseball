@@ -1,47 +1,39 @@
 package baseball;
 
 import baseball.console.GameConsole;
-import baseball.dto.BallStrikeDto;
-import baseball.opponent.ComputerOpponent;
-import baseball.opponent.RandomNumberGenerator;
+import baseball.core.BaseballGameCore;
 import baseball.printer.GameMessagePrinter;
-
-import java.util.List;
 
 import static baseball.converter.RestartOrExitCodeConverter.EXIT_CODE;
 
 public class BaseballGame {
 
-    private final ComputerOpponent opponent;
     private final GameMessagePrinter messagePrinter;
     private final GameConsole console;
+    private final BaseballGameCore gameCore;
 
     public BaseballGame() {
         this.messagePrinter = new GameMessagePrinter();
-        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
         this.console = new GameConsole();
+        this.gameCore = new BaseballGameCore(messagePrinter, console);
     }
 
     public void play() throws IllegalArgumentException {
-        boolean cycleFlag = true;
+        int statusCode = 0;
 
         messagePrinter.printStartMessage();
-        while (cycleFlag) {
-            cycleFlag = playGameCycle();
+        while (isNotExitCode(statusCode)) {
+             statusCode = playGameCycle();
         }
     }
 
-    private boolean playGameCycle() {
+    private int playGameCycle() {
         try {
-            playBaseballGame();
-            int statusCode = restartOrExitProcess();
-            if (isExitCode(statusCode)) {
-                return false;
-            }
+            gameCore.playBaseballGame();
+            return restartOrExitProcess();
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-        return true;
     }
 
     private int restartOrExitProcess() {
@@ -49,37 +41,7 @@ public class BaseballGame {
         return console.inputCode();
     }
 
-    private void playBaseballGame() {
-        while (true) {
-            List<Integer> threeNumbers = inputProcess();
-            BallStrikeDto answer = checkProcess(threeNumbers);
-            if (isFinish(answer)) {
-                finishProcess();
-                break;
-            }
-        }
-    }
-
-    private boolean isExitCode(int statusCode) {
-        return statusCode == EXIT_CODE;
-    }
-
-    private void finishProcess() {
-        messagePrinter.printFinishMessage();
-    }
-
-    private boolean isFinish(BallStrikeDto answer) {
-        return answer.getStrikeCount() == 3;
-    }
-
-    private BallStrikeDto checkProcess(List<Integer> threeNumbers) {
-        BallStrikeDto answer = opponent.answer(threeNumbers);
-        messagePrinter.printResultMessage(answer);
-        return answer;
-    }
-
-    private List<Integer> inputProcess() {
-        messagePrinter.printNumberInputMessage();
-        return console.inputThreeNumbers();
+    private boolean isNotExitCode(int statusCode) {
+        return statusCode != EXIT_CODE;
     }
 }
