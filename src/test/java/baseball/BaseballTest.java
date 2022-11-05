@@ -135,5 +135,17 @@ class BaseballTest {
             assertThat(outContent.toString()).isEqualTo(startMessage);
             System.setOut(originalOut);
         }
+
+        @Test
+        @DisplayName("printStartMessage 메소드가 게임시작 메시지를 출력하는지 확인")
+        void printAnswerMessage_test() {
+            System.setOut(new PrintStream(outContent));
+
+            String startMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+            messenger.printAnswerMessage();
+
+            assertThat(outContent.toString()).isEqualTo(startMessage);
+            System.setOut(originalOut);
+        }
     }
 }
