@@ -2,40 +2,37 @@ package baseball;
 
 import java.util.*;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Player {
 
     private static final int FIXED_INPUT_LENGTH = 3;
 
-    private static List<Integer> playerInputList = new ArrayList<>();
+    private static List<Integer> InputList = new ArrayList<>();
 
-    public void input() {
-        String inputString = Console.readLine();
+    public void input(String inputString) {
 
         validateInputLength(inputString);
         validateInputIsNumber(inputString);
         validateInputHasZero(inputString);
         validateInputDuplication(inputString);
 
-        playerInputList.clear();
+        inputStringToInputList(inputString);
+    }
+
+    public void inputStringToInputList(String inputString){
+        InputList.clear();
 
         int inputLength = inputString.length();
 
         for (int idx = 0; idx < inputLength; idx++) {
             char token = inputString.charAt(idx);
-            int tokenToInt = characterToInteger(token);
+            int tokenToInt = token - '0';
 
-            playerInputList.add(tokenToInt);
+            InputList.add(tokenToInt);
         }
     }
 
     public List<Integer> getPlayerInputList() {
-        return Collections.unmodifiableList(playerInputList);
-    }
-
-    public Integer characterToInteger(char c) {
-        return c - '0';
+        return Collections.unmodifiableList(InputList);
     }
 
 
