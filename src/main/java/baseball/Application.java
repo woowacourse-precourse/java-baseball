@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -21,18 +22,17 @@ class Game {
     }
 
     public void play() {
-        System.out.println(GAME_START_GUIDE_MESSAGE);
+        printGuideMessage(GAME_START_GUIDE_MESSAGE);
     }
 
-    public ArrayList<Integer> getGamePlayerInput() {
-        System.out.print(PLAYER_INPUT_GUIDE_MESSAGE);
+    public void printGuideMessage(String guideMessage) {
+        System.out.println(guideMessage);
+    }
 
-        ArrayList<Integer> gamePlayerRandomNumbers = new ArrayList<>(NUMBER_LENGTH);
-        for (int numberOfRandomNumbers = 0; numberOfRandomNumbers < NUMBER_LENGTH; numberOfRandomNumbers++) {
-            gamePlayerRandomNumbers.add(Integer.parseInt(Console.readLine()));
-        }
+    public int getGamePlayerInput() {
+        printGuideMessage(PLAYER_INPUT_GUIDE_MESSAGE);
 
-        return gamePlayerRandomNumbers;
+        return Integer.parseInt(Console.readLine());
     }
 }
 
