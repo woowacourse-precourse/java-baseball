@@ -19,6 +19,7 @@
 
 ## 객체 리스트
     Baseball : 야구 게임 계산
+        - Boolean Gaming : 현재 게임중인지 여부
         - Integer targetNumber : 정답 숫자
         - Integer guessNumber : 추정 숫자
         - BallCount ballCount : 볼 / 스트라이크 카운트
@@ -30,8 +31,9 @@
 ## 기능 리스트
 1. 게임 시작 기능(public)
    - `Baseball.start()`
-   1. resetTargetNumber() 호출
-   2. 게임 시작 문구 출력
+   1. Gaming = true
+   2. resetTargetNumber() 호출
+   3. 게임 시작 문구 출력
 2. 1에서 9까지 서로 다른 임의의 수 3개를 선택 기능(private)
    - `Baseball.resetTarget()`
    1. targetNumber 최신화
@@ -57,9 +59,11 @@
    - targetNumber, guessNumber, BallCount 초기화
 7. 게임 종료 기능(public)
    - `Baseball.end()`
+   - Gaming == false
    
 ## 기능 Flow
 - Baseball.start()로 게임 시작(targetNumber 초기화)
+- while 문 안에서 Baseball.isGaming = true 인 경우 로직 수행
 - Baseball.setGuessNumber()로 숫자 입력 받기
 - Baseball.ruleBallCount(), Baseball.ruleStrikeCount()로 입력받은 GuessNumber의 볼/스트라이크 카운트 계산
 - BallCount.setBallCount()로 ball, strike 수 저장
@@ -77,6 +81,7 @@
     게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
   - 1 : Baseball.restart()
   - 2 : Baseball.end()
+  
 
 
 
