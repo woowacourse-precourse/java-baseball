@@ -1,7 +1,15 @@
 package baseball;
 
+import static constants.GameConstant.START_GAME_MESSAGE;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        printStartMessage();
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.startGame();
+    }
+
+    private static void printStartMessage() {
+        System.out.println(START_GAME_MESSAGE);
     }
 }
