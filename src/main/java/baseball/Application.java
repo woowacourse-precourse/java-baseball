@@ -17,6 +17,9 @@ public class Application {
         startMessage();
         createRandomTargetNum();
         getUserInput();
+        if(!endGame()){
+            main(args);
+        }
     }
 
     private static void startMessage() {
@@ -68,7 +71,7 @@ public class Application {
         }
     }
 
-    private static void inputValidate(List<String> inputNum) {
+    static void inputValidate(List<String> inputNum) {
         if(inputNum.size() != 3){
             throw new IllegalArgumentException();
         }
@@ -78,6 +81,18 @@ public class Application {
         if(inputNum.contains("0")){
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean endGame() throws Exception {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int option = Integer.parseInt(br.readLine());
+
+        if(option==1){
+            targetNum.clear();
+            return false;
+        }
+        return true;
     }
 
 
