@@ -33,4 +33,23 @@ public class Game {
         }
         return new Balls(comBalls);
     }
+
+    public void checkBallCounts(Balls playerBalls, Balls computerBalls) {
+        for (int i = 0; i < ballsLength; i++) {
+            if (isStrike(playerBalls, computerBalls, i)) {
+                strike++;
+            }
+            if (isBall(playerBalls, computerBalls, i)) {
+                ball++;
+            }
+        }
+    }
+
+    private boolean isStrike(Balls playerBalls, Balls computerBalls, int i) {
+        return playerBalls.get(i).equals(computerBalls.get(i));
+    }
+
+    private boolean isBall(Balls playerBalls, Balls computerBalls, int i) {
+        return computerBalls.contains(playerBalls.get(i))&&computerBalls.indexOf(playerBalls.get(i))!=i;
+    }
 }

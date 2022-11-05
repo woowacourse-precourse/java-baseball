@@ -12,6 +12,18 @@ public class Balls {
         this.balls = balls;
     }
 
+    public boolean contains(Ball ball) {
+        return balls.contains(ball);
+    }
+
+    public Ball get(int index) {
+        return this.balls.get(index);
+    }
+
+    public int indexOf(Ball ball) {
+        return balls.indexOf(ball);
+    }
+
     @Override
     public boolean equals(Object obj) {
         Balls balls = (Balls) obj;
