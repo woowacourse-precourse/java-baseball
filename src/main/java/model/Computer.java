@@ -27,11 +27,6 @@ public class Computer {
         this.creatRanNumOfComputerList();
     }
 
-    public static void main(String[] args) {
-        Computer computer = new Computer();
-        computer.initComputer();
-    }
-
     private void creatRanNumOfComputerList() {
         this.numThreeRanOfComputerList = new ArrayList<>();
         while (numThreeRanOfComputerList.size() < 3) {
@@ -223,7 +218,6 @@ public class Computer {
     }
 
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
-        // TODO: 숫자가 3개인가? 확인
         String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
         return getListOfIntegerFromStrArr(strSplitArr);
     }
