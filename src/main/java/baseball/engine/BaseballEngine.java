@@ -1,8 +1,10 @@
 package baseball.engine;
 
+import baseball.common.StringUtil;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballEngine {
 
@@ -29,6 +31,38 @@ public class BaseballEngine {
         }
 
         return userInputList;
+    }
+
+    public boolean isValidAnswerInput(String userInput) {
+        if (StringUtil.isNullOrEmpty(userInput)) {
+            return false;
+        }
+
+        for (char input : userInput.toCharArray()) {
+            if (!Character.isDigit(input)) {
+                return false;
+            }
+        }
+
+        if (userInput.length() != 3) {
+            return false;
+        }
+
+        List<Character> inputList = userInput.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
+
+        for (char input : userInput.toCharArray()) {
+            long sameValueCount = inputList.stream()
+                    .filter(i -> i == input)
+                    .count();
+
+            if (sameValueCount >= 2) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
