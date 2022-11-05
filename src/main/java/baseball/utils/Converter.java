@@ -13,22 +13,22 @@ public class Converter {
                 .collect(Collectors.toList());
     }
 
-    public static String changeResultMapToString(Map<String,Integer> resultMap) {
+    public static String changeResultMapToString(Map<String, Integer> resultMap) {
         String BALL = "볼";
         String STRIKE = "스트라이크";
         Integer ballCount = resultMap.get("ball");
         Integer strikeCount = resultMap.get("strike");
         List<String> resultList = new ArrayList<>();
 
-        if(ballCount > 0) {
+        if (ballCount > 0) {
             resultList.add(ballCount + BALL);
         }
 
-        if(strikeCount > 0) {
+        if (strikeCount > 0) {
             resultList.add(strikeCount + STRIKE);
         }
 
-        if(resultList.size() == 0) {
+        if (resultList.size() == 0) {
             return "낫싱";
         }
 

@@ -38,7 +38,7 @@ public class Controller {
         String result = service.playGame(userInput);
         SystemMessage.printGameResult(result);
 
-        return Objects.equals(result,"3스트라이크");
+        return Objects.equals(result, "3스트라이크");
     }
 
     private boolean finishGame() {

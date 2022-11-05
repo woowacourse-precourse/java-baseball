@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import baseball.utils.RandomNumber;
 
-public class RandomNumberTest  {
+public class RandomNumberTest {
 
     @Test
     void check_exist_duplicated_number_in_list() {

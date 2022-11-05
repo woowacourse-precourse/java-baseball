@@ -1,11 +1,13 @@
 package baseball.gameStart;
 
-import baseball.view.SystemMessage;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import baseball.view.SystemMessage;
 
 public class SystemMessageTest {
 

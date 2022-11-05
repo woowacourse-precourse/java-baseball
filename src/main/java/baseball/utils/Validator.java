@@ -14,7 +14,7 @@ public class Validator {
     }
 
     public static void checkUserFinishInput(String userInput) {
-        if(!Objects.equals(userInput, "1") && !Objects.equals(userInput, "2")) {
+        if (!Objects.equals(userInput, "1") && !Objects.equals(userInput, "2")) {
             throw new IllegalArgumentException();
         }
     }
