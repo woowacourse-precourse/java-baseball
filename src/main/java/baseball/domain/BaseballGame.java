@@ -2,7 +2,6 @@ package baseball.domain;
 
 import baseball.util.Input;
 import baseball.util.View;
-
 import java.util.List;
 
 public class BaseballGame {
@@ -22,6 +21,7 @@ public class BaseballGame {
         do {
             View.printRequestPlayerGuess();
             Hint hint = computer.createHint(Input.inputPlayerNumber());
+            View.printHint(hint);
             checkCorrect(hint);
         } while (!isFinish);
         View.printGameFinish();
