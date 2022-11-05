@@ -5,10 +5,17 @@ public class Application {
         User user = new User();
         NumberGenerator numberGenerator = new NumberGenerator();
 
-        user.inputNumber();
-        System.out.println(user.getNumber());
+        boolean playAgain = true;
 
-        numberGenerator.generateNumber();
-        System.out.println(numberGenerator.getNumbers());
+        while (playAgain) {
+            user.inputNumber();
+            System.out.println(user.getNumber());
+
+            numberGenerator.generateNumber();
+            System.out.println(numberGenerator.getNumbers());
+
+            playAgain = user.inputFlag();
+        }
     }
+
 }

@@ -14,6 +14,30 @@ public class User {
             this.number = Integer.parseInt(inputValue);
     }
 
+    public boolean inputFlag() throws IllegalArgumentException {
+        String inputValue;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputValue = Console.readLine();
+
+        if(validateFlag(inputValue))
+            return true;
+
+        return false;
+    }
+
+    private boolean validateFlag(String inputValue) throws IllegalArgumentException {
+        boolean flag = false;
+
+        if(inputValue.equals("1"))
+            flag = true;
+
+        else if(inputValue.equals("2"))
+            flag = false;
+
+        else throw new IllegalArgumentException("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+
+        return flag;
+    }
     private boolean validateInput(String inputValue) throws IllegalArgumentException {
         // 사용자가 세 자리 숫자를 입력하였는 지를 확인
         if(inputValue.length() != 3)
