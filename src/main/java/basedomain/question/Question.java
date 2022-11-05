@@ -9,4 +9,6 @@ public abstract class Question {
     protected Question(Answer answer){
         this.answer = answer;
     }
+
+    public abstract String ask(int candidate);
 }

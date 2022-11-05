@@ -14,4 +14,8 @@ public enum BaseballType {
     public int getNumberOfDigit() {
         return numberOfDigit;
     }
+
+    public boolean isFormatCorrect(){
+        return true;
+    }
 }
