@@ -8,18 +8,16 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 
     private final Messenger messenger;
-    private final Computer computer;
+    private Ball computerNumber;
 
     public GameController() {
         this.messenger = new Messenger();
-        this.computer = new Computer();
     }
 
     public int compareBall(Ball userNumber){
-        Ball computerNumber = computer.getComputerRandomNumber();
         int strike = computerNumber.compareByIndex(userNumber);
         int ball = computerNumber.compareByValue(userNumber) - strike;
-        messenger.printResult(strike, ball);
+        messenger.printResultMessage(strike, ball);
         return strike;
     }
 
@@ -27,5 +25,11 @@ public class GameController {
         messenger.printInputMessage();
         String userInput = Console.readLine();
         return new Ball(userInput);
+    }
+
+    public void setComputerNumber() {
+        Computer computer = new Computer();
+        computer.setComputerRandomNumber();
+        this.computerNumber = computer.getComputerRandomNumber();
     }
 }
