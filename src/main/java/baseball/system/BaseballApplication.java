@@ -25,30 +25,19 @@ public class BaseballApplication {
     private final ComputerController computerController;
     private final BaseBallController baseBallController;
     private final BaseballService baseballService;
-
     private final Voter<UserNumber, Score> voter;
 
     public BaseballApplication() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.voter = new BaseballVoter();
-
-        ValidatorHolder.setValidators(List.of(
-                new NumberValidator(),
-                new StringToIntegerListConversionValidator()
-        ));
-
-        ConverterHolder.setConverters(List.of(
-                new StringToRestartConverter(),
-                new StringToIntegerListConverter(),
-                new IntegerListToUserNumberConverter(),
-                new ScoreToMessageConverter()
-        ));
-
         this.baseballService = new BaseballService(voter);
         this.computerController = new ComputerController();
         this.baseBallController
                 = new BaseBallController(inputView, outputView, baseballService);
+
+        setValidators();
+        setConverters();
     }
 
     public void run() {
@@ -60,6 +49,22 @@ public class BaseballApplication {
         }
 
         doAfterRun();
+    }
+
+    private void setConverters() {
+        ConverterHolder.setConverters(List.of(
+                new StringToRestartConverter(),
+                new StringToIntegerListConverter(),
+                new IntegerListToUserNumberConverter(),
+                new ScoreToMessageConverter()
+        ));
+    }
+
+    private void setValidators() {
+        ValidatorHolder.setValidators(List.of(
+                new NumberValidator(),
+                new StringToIntegerListConversionValidator()
+        ));
     }
 
     private void doAfterRun() {
