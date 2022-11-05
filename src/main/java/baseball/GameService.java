@@ -7,7 +7,7 @@ import baseball.Controller;
 import java.util.ArrayList;
 
 public class GameService {
-    private static ArrayList<Integer> userNumber = new ArrayList<>();
+    User user;
     Game game;
 
     public void setGame(){
@@ -17,17 +17,14 @@ public class GameService {
     }
 
     public void startGame() throws IllegalArgumentException{
+        user = new User();
         while(game.strike!=3){
-            setUserNumber();
-            game.calculateStrike(userNumber);
-            game.calculateBall(userNumber);
+            user.setUserNumber();
+            game.calculateStrike(user.userNumber);
+            game.calculateBall(user.userNumber);
             Message.printResultMessage(game.strike,game.ball);
         }
         Message.printEndMessage();
-    }
-
-    private void setUserNumber() {
-        userNumber = User.setUserNumber();
     }
 
     public void finishGame() throws IllegalArgumentException{
