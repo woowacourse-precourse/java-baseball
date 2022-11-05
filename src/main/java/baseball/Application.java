@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
 
@@ -55,6 +56,30 @@ public class Application {
         }
         return quit;
     }
+
+    public boolean playBaseball() {
+        List<Integer> answer = new ArrayList<>();
+        List<Integer> userInput = new ArrayList<>();
+        boolean correctAnswer;
+        boolean quitGame;
+        for (int i=0; i<3; i++) {
+            answer.set(i,pickNumberInRange(0,9));
+        }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while(true) {
+            int ball = checkBall(answer,userInput);
+            int strike = checkStrike(answer,userInput,ball);
+            ball = ball-strike;
+            correctAnswer = returnAnswer(ball,strike);
+            if (correctAnswer) {
+                quitGame = endGame();
+                break;
+            }
+        }
+        return quitGame;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
