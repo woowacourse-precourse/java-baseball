@@ -40,4 +40,22 @@ public class Result {
 
         return resultJoiner.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Result)) return false;
+
+        Result result = (Result) o;
+
+        if (strikeCount != result.strikeCount) return false;
+        return ballCount == result.ballCount;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = strikeCount;
+        result = 31 * result + ballCount;
+        return result;
+    }
 }
