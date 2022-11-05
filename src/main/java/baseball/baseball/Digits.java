@@ -9,6 +9,7 @@ public class Digits {
     public Digits(List<Integer> digitList) {
         validateDigitListSize(digitList);
         assertDigitListRange(digitList);
+        assertDistinctDigitList(digitList);
 
         this.digitList = digitList;
     }
@@ -32,5 +33,13 @@ public class Digits {
 
     private void assertDigitListRange(List<Integer> digitList) {
         digitList.forEach(this::validateDigitRange);
+    }
+
+    private void assertDistinctDigitList(List<Integer> digitList) {
+        int originalSize = digitList.size();
+        int distinctSize = (int) digitList.stream().distinct().count();
+
+        if (originalSize != distinctSize)
+            throw new IllegalArgumentException("숫자들은 중복되면 안됩니다.");
     }
 }
