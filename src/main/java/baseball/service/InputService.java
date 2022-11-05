@@ -57,11 +57,11 @@ public class InputService {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     String playerInput = readLine();
     checkValidateGameStatus(playerInput);
-    return playerInput.equals("1");
+    return playerInput.equals(GameStatus.RESTART.getStatus());
   }
 
   private void checkValidateGameStatus(String playerInput) {
-    if (!playerInput.equals(GameStatus.RESTART.getStatus()) ||
+    if (!playerInput.equals(GameStatus.RESTART.getStatus()) &&
         !playerInput.equals(GameStatus.END.getStatus())) {
       throw new IllegalArgumentException();
     }
