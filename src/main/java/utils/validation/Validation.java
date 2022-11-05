@@ -14,4 +14,12 @@ public interface Validation {
             }
         };
     }
+    static Validation isNumber(){
+        return new Validation() {
+            @Override
+            public boolean check(String inputValue) {
+                return inputValue.chars().allMatch(c -> (c >= '1' && c <= '9'));
+            }
+        };
+    }
 }
