@@ -16,6 +16,17 @@ public class Application {
     }
     public static void startGame(){
         computerNum = getRandomNum();
+        gameProcess();
+    }
+
+    public static void gameProcess(){
+        List<Integer> userNum = getInputNum();
+
+        int ballCnt = CountBall(computerNum, userNum);
+        int strikeCnt = CountStrike(computerNum, userNum);
+
+        getHint(ballCnt, strikeCnt);
+        keepOrCorrect(computerNum, userNum);
     }
 
     public static List<Integer> getRandomNum() {
@@ -130,6 +141,7 @@ public class Application {
     public static void keepOrCorrect(List<Integer> computerNum, List<Integer> userNum){
         if(!computerNum.equals(userNum)){
             userNum.clear();
+            gameProcess();
         }
         else{
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
