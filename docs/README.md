@@ -33,3 +33,4 @@
 - [x]  게임의 진행 상태에 대한 정보를 담고 있는 BaseballGameStatus Enum 추가
 - [x]  입력값을 검증해주는 책임을 가지고 있는 InputValidator 유틸 클래스 추가
 - [x]  야구 게임과 관련된 오류를 표현하는 BaseballGameException 커스텀 예외 추가
+- [x]  야구공 List를 랜덤으로 생성하는 책임을 가지고 있는 BaseballFactory 클래스 추가 
