@@ -1,12 +1,23 @@
 package baseball;
 
 public class PrintOut {
-  public static void start() {
+  public static void startMessage() {
     System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
   public static void inputMessage() {
     System.out.println("숫자를 입력해주세요 : ");
+  }
+
+  public static void scoreMessage(int[] ballAndStrike) {
+    if (ballAndStrike[0] != 0 && ballAndStrike[1] == 0)
+      System.out.println(ballAndStrike[0] + "볼");
+    if (ballAndStrike[0] == 0 && ballAndStrike[1] != 0)
+      System.out.println(ballAndStrike[1] + "스트라이크");
+    if (ballAndStrike[0] != 0 && ballAndStrike[1] != 0)
+      System.out.println(ballAndStrike[0] + "볼 " + ballAndStrike[1] + "스트라이크");
+    if (ballAndStrike[0] == 0 && ballAndStrike[1] == 0)
+      System.out.println("낫싱");
   }
 
   public static void endMessage() {
