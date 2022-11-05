@@ -118,14 +118,18 @@ public class Game {
     }
 
     private void validateThree(int number, String message) {
-        if (number != DEFAULT_SIZE) {
+        if (isDefaultSize(number)) {
             throw new IllegalArgumentException(message);
         }
     }
 
+    private static boolean isDefaultSize(int number) {
+        return number != DEFAULT_SIZE;
+    }
+
     private static List<Integer> makeAnswer() {
         List<Integer> list = new ArrayList<>();
-        while (list.size() != DEFAULT_SIZE) {
+        while (isDefaultSize(list.size())) {
             addBall(list, Randoms.pickNumberInRange(1, 9));
         }
         return list;
