@@ -72,8 +72,41 @@ class ApplicationTest extends NsTest {
         List<Integer> answer = Arrays.asList(1,2,3);
         List<Integer> userInput = Arrays.asList(1,2,3);
 
-        int result = computer.judgeNumber(answer, userInput);
+        String result = computer.judgeNumber(answer, userInput);
 
         assertThat(result).isEqualTo(STRIKE);
+    }
+
+    @Test
+    public void 플레이어가_입력한_숫자_n볼_n스트라이크_테스트() {
+        Computer computer = new Computer();
+        List<Integer> answer = Arrays.asList(1,2,3);
+        List<Integer> userInput = Arrays.asList(2,4,3);
+
+        String result = computer.judgeNumber(answer, userInput);
+
+        assertThat(result).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    public void 플레이어가_입력한_숫자_n볼_테스트() {
+        Computer computer = new Computer();
+        List<Integer> answer = Arrays.asList(1,2,3);
+        List<Integer> userInput = Arrays.asList(2,1,4);
+
+        String result = computer.judgeNumber(answer, userInput);
+
+        assertThat(result).isEqualTo("2볼");
+    }
+
+    @Test
+    public void 플레이어가_입력한_숫자_낫싱_테스트() {
+        Computer computer = new Computer();
+        List<Integer> answer = Arrays.asList(1,2,3);
+        List<Integer> userInput = Arrays.asList(4,5,6);
+
+        String result = computer.judgeNumber(answer, userInput);
+
+        assertThat(result).isEqualTo("낫싱");
     }
 }
