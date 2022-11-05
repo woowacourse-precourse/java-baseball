@@ -69,6 +69,15 @@ class Game{
                 this.strike++;
         }
     }
+
+    void printBallStrike(){
+        if (strike == 0)
+            System.out.println(strike + "볼");
+        else if (copyUserNum.size() - strike == 0)
+            System.out.println(strike + "스트라이크");
+        else
+            System.out.println((copyUserNum.size() - strike) + "볼" + strike + "스트라이크");
+    }
 }
 
 public class Application {
