@@ -26,10 +26,14 @@ public class ResultView {
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("1 혹은 2를 입력해주세요");
         }
-        if(intResult == 1){
-            result = Result.FINISH;
-        }else if(intResult == 2){
+        setResult(intResult);
+    }
+
+    private void setResult(int resultNum){
+        if(resultNum == 1){
             result = Result.RESTART;
+        }else if(resultNum == 2){
+            result = Result.FINISH;
         }
     }
 
