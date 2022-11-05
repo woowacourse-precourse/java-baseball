@@ -11,9 +11,11 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> computerNumber = makeComputerRandomNumber();
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-            checkTheNumber(input);
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                checkTheNumber(input);
+            }
         }
 
 
@@ -39,7 +41,7 @@ public class Application {
         return numArr;
     }
 
-    public static void checkTheNumber(String input) {
+    public static List<Integer> checkTheNumber(String input) {
         boolean isWrongInput = false;
         int number = changeStrToInt(input);
         List<Integer> numArr = changeIntToList(number);
@@ -51,6 +53,8 @@ public class Application {
         if (isWrongInput == true) {
             throw new IllegalArgumentException();
         }
+
+        return numArr;
     }
 
     public static int changeStrToInt(String input) {
