@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class Separator {
 
-    private NumberCondition condition;
+    private Condition condition;
 
     public Separator(String input) {
-        this.condition = new NumberCondition(input);
+        this.condition = new Condition(input);
     }
 
     public Map<Type, Integer> separateInputResult(String input) {

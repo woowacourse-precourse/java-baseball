@@ -1,10 +1,10 @@
 package baseball.service;
 
 
-public class NumberCondition {
+public class Condition {
     private final String answer;
 
-    NumberCondition(String answer) {
+    Condition(String answer) {
         this.answer = answer;
     }
 
@@ -12,7 +12,7 @@ public class NumberCondition {
         return answer.contains(oneOfNum);
     }
 
-    protected boolean isDigitCorrect(String oneOfNum, int digit) {
+    boolean isDigitCorrect(String oneOfNum, int digit) {
         boolean result = false;
         if (answer.indexOf(oneOfNum) == digit) {
             result = true;
