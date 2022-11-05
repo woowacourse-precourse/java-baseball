@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import constant.Texts;
 
-import java.util.List;
-
 public class Game {
     Computer computer;
     User user;
@@ -23,5 +21,8 @@ public class Game {
     public void play() {
         computer.makeComputerNumber();
         user.makeUserNumber();
+        System.out.println("---TestOut : computer: "+computer.getNumber()+" user: "+user.getNumber());
+        user.getNumber().add(50);
+        System.out.println("---TestOut : computer: "+computer.getNumber()+" user: "+user.getNumber());
     }
 }
