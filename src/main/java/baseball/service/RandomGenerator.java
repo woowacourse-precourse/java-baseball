@@ -1,23 +1,25 @@
 package baseball.service;
 
+import baseball.mapper.StringMapper;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RandomGenerator {
     public String generateRandomNumbers(int answerLength) {
-        List<Integer> computer = new ArrayList<>();
+        List<String> computer = new ArrayList<>();
+
         while (computer.size() < answerLength) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            String strNumber = StringMapper.itos(randomNumber);
+
+            if (!computer.contains(strNumber)) {
+                computer.add(strNumber);
             }
         }
 
-        List<String> stringNumberList = computer.stream().map(String::valueOf).collect(Collectors.toList());
-        String generated = String.join("", stringNumberList);
+        String generated = String.join("", computer);
         return generated;
     }
 }
