@@ -27,4 +27,15 @@ class BaseballGameServiceImplTest extends NsTest implements RestrictIntegerConst
 			5, 8, 9
 		);
 	}
+
+	@Test
+	void restartGameTest() {
+		assertRandomNumberInRangeTest(
+			() -> {
+				run("123", "965", "178", "597", "589", "1", "123", "2");
+				assertThat(output()).contains("낫싱", "2볼", "1볼", "1볼 1스트라이크", "3스트라이크", "게임 종료", "3스트라이크", "게임 종료");
+			},
+			5, 8, 9, 1, 2, 3
+		);
+	}
 }
