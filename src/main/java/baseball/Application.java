@@ -85,8 +85,14 @@ public class Application {
         }
         return input;
     }
+    private static void printResult(List<Integer> ball_Strike){
+        int ball = ball_Strike.get(BALL);
+        int strike = ball_Strike.get(STRIKE);
+        System.out.println(ball +"볼 " + strike + "스트라이크");
+    }
     private static boolean is3Strikes(List<Integer> targetNums,List<Integer> userNums){
         List<Integer> ball_Strike = count_BallStrike(targetNums,userNums);
+        printResult(ball_Strike);
         if(ball_Strike.get(STRIKE)==3) return true;
         return false;
     }
@@ -97,11 +103,13 @@ public class Application {
     }
     public static void play(){
         //랜덤숫자 생성
+        List<Integer> targetNums = createTargetNums();
         //유저인풋받기 - 맞출때까지 반복
-        //        while(!mainGame());
+                while(!mainGame(targetNums));
         //재시작 or 종료
+        //askContinue();
     }
     public static void main(String[] args) {
-        play();
+//        play();
     }
 }
