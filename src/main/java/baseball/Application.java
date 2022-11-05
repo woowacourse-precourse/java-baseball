@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println(computersNumbers());
+        readUsersNumbers();
     }
 
     public static ArrayList<Integer> computersNumbers() {
@@ -34,6 +35,23 @@ public class Application {
         return false;
     }
 
+    public static ArrayList<Integer> readUsersNumbers() {
+
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> usersNumbers = new ArrayList<Integer>();
+
+        int inputNumber1 = scanner.nextInt();
+        int inputNumber2 = scanner.nextInt();
+        int inputNumber3 = scanner.nextInt();
+
+        if (inputRequirements(inputNumber1, inputNumber2, inputNumber3)) {
+            usersNumbers.add(0, inputNumber1);
+            usersNumbers.add(1, inputNumber2);
+            usersNumbers.add(2, inputNumber3);
+        }
+        return usersNumbers;
+    }
+
  /*       while (usersNumbers.size() < 3) {
             try {
                 inputNumber = System.in.read();
@@ -55,6 +73,6 @@ public class Application {
             return usersNumbers;
 
   */
-    }
+}
 
 
