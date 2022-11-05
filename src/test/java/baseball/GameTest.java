@@ -11,10 +11,12 @@ import org.junit.jupiter.api.Test;
 
 public class GameTest {
     private static Game game;
+
     @BeforeAll
     static void init() {
         game = new Game();
     }
+
     @Test
     void testCompareListAndAnswer() {
         List<Integer> input = new ArrayList<>();
@@ -22,13 +24,12 @@ public class GameTest {
         input.add(3);
         input.add(5);
         assertRandomNumberInRangeTest(
-                () -> {
+                () ->{
                         game.init();
                         game.compareListAndAnswer(input);
                         assertEquals(3, game.getStrike());
-                    },
-                    1, 3, 5
-                );
+                },
+                1, 3, 5);
     }
 
 }
