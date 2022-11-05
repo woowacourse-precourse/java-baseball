@@ -1,8 +1,7 @@
-package baseball.domain;
+package baseball.validation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.validation.InputValidation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
