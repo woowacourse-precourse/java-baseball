@@ -9,19 +9,28 @@ public class Application {
         int status = 0;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int answer = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111,999);
-        System.out.println(answer);
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = getUserInput();
-        int userGuess = validateUserInput(userInput,3);
+        while (status==0) {
+            int answer = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(111, 999);
+            System.out.println(answer);
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = getUserInput();
+            int userGuess = validateUserInput(userInput, 3);
 
-        List<Integer> comparedResult = compareAnswerWithInput(answer,userGuess);
+            List<Integer> comparedResult = compareAnswerWithInput(answer, userGuess);
 
-        status = printStrikeAndBall(comparedResult);
+            status = printStrikeAndBall(comparedResult);
 
+            boolean isGameFinished = (status == 1);
+            if (isGameFinished) {
+                userInput = getUserInput();
+                userGuess = validateUserInput(userInput, 1);
+            }
+            if (userGuess == 1) {
+                status = 1;
+            }
+        }
 
-
-
+        return;
     }
 
     public static String getUserInput(){
@@ -31,11 +40,10 @@ public class Application {
 
     private static int validateUserInput(String userInput , int checkLength) throws IllegalArgumentException{
         try{
-            int userGuess = Integer.parseInt(userInput);
-
-            if (userInput.length()!=checkLength){
+            if (userInput.length() != checkLength){
                 throw new IllegalArgumentException("Wrong input length");
             }
+            int userGuess = Integer.parseInt(userInput);
             return userGuess;
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("Input should be 3 digit numbers in the range of 111~999");
