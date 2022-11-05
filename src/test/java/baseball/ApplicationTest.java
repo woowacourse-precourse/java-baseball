@@ -59,7 +59,7 @@ class ApplicationTest extends NsTest {
 		System.setIn(new ByteArrayInputStream(rightInput.getBytes()));
 		assertThat(guess(answer)).isTrue();
 
-		assertThat(output()).isEqualTo("숫자를 입력해주세요 : \n1볼\n숫자를 입력해주세요 : \n3스트라이크");
+		assertThat(output()).isEqualTo("숫자를 입력해주세요 : 1볼\n숫자를 입력해주세요 : 3스트라이크");
 	}
 
 	@Test
