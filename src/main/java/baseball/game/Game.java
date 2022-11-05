@@ -49,8 +49,41 @@ public class Game {
     }
 
     private List<Integer> calculateResult() {
-        // TODO
-        return Collections.emptyList();
+        int ballCount = countBall();
+        int strikeCount = countStrike();
+        return List.of(ballCount, strikeCount);
+    }
+
+    private int countStrike() {
+        int count = 0;
+        if (digits.get(0) == playerInput.first) {
+            count++;
+        }
+        if (digits.get(1) == playerInput.second) {
+            count++;
+        }
+        if (digits.get(2) == playerInput.third) {
+            count++;
+        }
+        return count;
+    }
+
+    private int countBall() {
+        int count = 0;
+        int first = digits.get(0);
+        int second = digits.get(1);
+        int third = digits.get(2);
+
+        if (playerInput.first == second || playerInput.first == third) {
+            count++;
+        }
+        if (playerInput.second == first || playerInput.second == third) {
+            count++;
+        }
+        if (playerInput.third == first || playerInput.third == second) {
+            count++;
+        }
+        return count;
     }
 
     private void printResult(List<Integer> result) {
