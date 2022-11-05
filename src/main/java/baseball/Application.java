@@ -24,21 +24,6 @@ class Game{
 
 public class Application {
 
-    public static List<Integer> getUserInput() throws IllegalArgumentException {
-        List<Integer> userNum = new ArrayList<>();
-        String userInput = Console.readLine();
-
-        if (userInput.length() != 3)
-            throw new IllegalArgumentException("게임 종료");
-
-        for (int i = 0; i < userInput.length(); i++) {
-            if ((int) userInput.charAt(i) == 0)
-                throw new IllegalArgumentException("게임 종료");
-            userNum.add((int) userInput.charAt(i));
-        }
-        return userNum;
-    }
-
     public static void compareNums(List<Integer> computerNum, List<Integer> userNum) {
         if (computerNum.equals(userNum)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다!");
