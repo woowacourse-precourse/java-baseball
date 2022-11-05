@@ -5,39 +5,39 @@ public class BaseballGame {
     private static final Integer RESTART = 1;
     private static final Integer EXIT = 2;
 
-    private static Player player;
+    private Player player;
 
-    private static Computer computer;
+    private Computer computer;
 
-    private static Hint hint;
+    private Hint hint;
 
-    private static boolean progress;
+    private boolean progress;
+
+    public BaseballGame() {
+        this.player = new Player();
+        this.computer = new Computer();
+        this.hint = new Hint();
+        this.progress = true;
+    }
 
     private static void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void play() {
-        this.progress = true;
         printStartMessage();
         while (progress) {
-            setGame();
             startGame();
             checkProgress();
         }
     }
 
     public void startGame() {
+        computer.pickRandomNumbers();
         do {
             player.getBaseballInput();
-            System.out.println(hint.getBaseballResult(player.getNumbers(), computer.getRandomNumbers()));
-        } while (hint.getStrike() != 3);
-    }
-
-    private void setGame() {
-        this.computer = new Computer();
-        this.player = new Player();
-        this.hint = new Hint();
+            System.out.println(hint.getBaseballResult(this.player, this.computer));
+        } while (true);
     }
 
     private void checkProgress() {

@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Hint {
@@ -10,6 +11,10 @@ public class Hint {
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private Map<String, Integer> countResult;
+
+    public Hint() {
+        this.countResult = new HashMap<>();
+    }
 
     private void initCountResult() {
         this.countResult.put("strike", 0);
