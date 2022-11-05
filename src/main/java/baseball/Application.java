@@ -34,6 +34,7 @@ public class Application {
             int strike = 0;
 
             strike = countingStrike(0, userNumbers, randomNumberList);
+            ball = countingBall(0, userNumbers, randomNumberList);
 
         } while (true);
     }
@@ -144,13 +145,15 @@ public class Application {
         return strike;
     }
 
-    public static void countingBall(int ball, int[] userNumbers, List<Integer> randomNumberList) {
+    public static Integer countingBall(int ball, int[] userNumbers, List<Integer> randomNumberList) {
 
         for (int i = 0; i < 2; i++) {
             for (int j = i + 1; j < 3; j++) {
-                checkAndCountBall(ball, userNumbers[i], randomNumberList.get(i));
+                ball = checkAndCountBall(0, userNumbers[i], randomNumberList.get(i));
             }
         }
+
+        return ball;
     }
 
     public static Integer checkAndCountBall(int ball, int userNumber, int randomNumber) {
