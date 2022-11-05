@@ -13,7 +13,9 @@ public class Baseball {
     // 메소드
     // 게임 시작 method
     public void start(){
-
+        this.Gaming = true;
+        this.resetTarget();
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     // 게임 재시작 method
