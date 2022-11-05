@@ -46,4 +46,9 @@ public class Printer {
 		System.out.printf(GETTING_RIGHT_ANSWER_MESSAGE.get(),lengthOfNumber);
 		System.out.println();
 	}
+
+	public static void printRestartOrNotMessage(String restartGame, String endGame) {
+		System.out.printf(RESTART_OR_NOT_MESSAGE.get(), restartGame, endGame);
+		System.out.println();
+	}
 }
