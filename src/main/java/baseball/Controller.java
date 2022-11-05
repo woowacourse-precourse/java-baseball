@@ -1,6 +1,6 @@
 package baseball;
 
-public class Game {
+public class Controller {
     public static GameService gameService = new GameService();
     public void run() throws IllegalArgumentException{
             setGame();
