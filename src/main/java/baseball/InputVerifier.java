@@ -16,4 +16,10 @@ public class InputVerifier {
     private void isNumber(String input) {
         Integer.parseInt(input);
     }
+
+    private void isThreeDigits(String input) {
+        if (input.length() != SystemConstant.GAME_DIGIT) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
