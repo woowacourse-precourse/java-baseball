@@ -31,9 +31,7 @@ public class Game {
 
             this.score = new Score();
             String userInput = Console.readLine();
-            if (InputException.occur(userInput)) {
-                throw new IllegalArgumentException();
-            }
+            InputException.occur(userInput);
 
             this.userNumber = Change.numberToList(userInput);
             play();
