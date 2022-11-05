@@ -22,31 +22,42 @@ public class Balls {
             throw new IllegalArgumentException();
     }
 
-    public boolean isStrike(Ball other) {
-        return balls.stream()
-                .anyMatch(ball -> ball.isStrike(other));
-    }
-
     public boolean isBall(Ball other) {
         return balls.stream()
                 .anyMatch(ball -> ball.isBall(other));
     }
 
+    public boolean isStrike(Ball other) {
+        return balls.stream()
+                .anyMatch(ball -> ball.isStrike(other));
+    }
+
+    private boolean isOut(Ball ball) {
+        return !isBall(ball) && !isStrike(ball);
+    }
+
     public Result getResult(Balls other) {
-        int ball = 0, strike = 0, out = 0;
+        Result result = new Result(0, 0, 0);
 
         for (Ball otherBall : other.balls) {
-            switch (judgeBall(otherBall)) {
-                case BALL:
-                    ball += 1; break;
-                case STRIKE:
-                    strike += 1; break;
-                case OUT:
-                    out += 1; break;
-            }
+            result = judgeBall(otherBall, result);
         }
 
-        return new Result(ball, strike, out);
+        return result;
+    }
+
+    private Result judgeBall(Ball ball, Result result) {
+        if (isBall(ball)) {
+            result = result.increaseBallCount();
+        }
+        if (isStrike(ball)) {
+            result = result.increaseStrikeCount();
+        }
+        if (isOut(ball)) {
+            result = result.increaseOutCount();
+        }
+
+        return result;
     }
 
     public Judgement judgeBall(Ball ball) {

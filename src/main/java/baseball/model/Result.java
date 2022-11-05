@@ -14,6 +14,18 @@ public class Result {
         this.out = out;
     }
 
+    public Result increaseBallCount() {
+        return new Result(ball + 1, strike, out);
+    }
+
+    public Result increaseStrikeCount() {
+        return new Result(ball, strike + 1, out);
+    }
+
+    public Result increaseOutCount() {
+        return new Result(ball, strike, out + 1);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
