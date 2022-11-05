@@ -15,7 +15,7 @@ public class Application {
     }
 
     private static void playBaseballGame(User user, Referee referee, Computer computer) {
-        
+        computer.createRandomNumbers();
     }
 
 }
