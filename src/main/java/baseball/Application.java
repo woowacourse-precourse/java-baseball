@@ -82,21 +82,21 @@ public class Application {
         return false;
     }
 
-    private static String removeDuplicated(String str){
-        String removeDuplicatedCharRegex = "(([a-z])\\2{1,})";
-        return str.replaceAll(removeDuplicatedCharRegex, "");
-    }
-
     private static List<Integer> getUserInput() {
+        boolean[] visited = new boolean[10];
         List<Integer> values = new ArrayList<>();
         String input = Console.readLine();
-        input = removeDuplicated(input);
+        String isDigitRegex = "[1-9]{3,3}";
 
-        String regex = "[1-9]{3,3}";
-
-        if (input.matches(regex)) {
+        if (input.matches(isDigitRegex)) {
             for (int i = 0; i < input.length(); i++) {
-                values.add(input.charAt(i) - '0');
+                int num =input.charAt(i) - '0';
+                if(!visited[num]){
+                    values.add(num);
+                    visited[num] = true;
+                } else{
+                    throw new IllegalArgumentException();
+                }
             }
             return values;
         }
