@@ -19,4 +19,15 @@ public class UserNumber {
         return userNumberList;
     }
 
+    /**
+     * 사용자 수 검증 함수 호출
+     */
+    public List<Integer> checkInputUserNumber(){
+        List<Integer> userNumberList = inputUserNumber();
+        if(!UserNumberValidator.checkValidationUserNumber(userNumberList)){
+            throw new IllegalArgumentException();
+        }
+        return userNumberList;
+    }
+
 }
