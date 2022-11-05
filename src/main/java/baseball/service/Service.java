@@ -8,9 +8,7 @@ import baseball.domain.Game;
 import baseball.utils.Converter;
 import baseball.utils.RandomNumber;
 import baseball.utils.Validator;
-import baseball.view.RequestInput;
 import baseball.view.SystemMessage;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Service {
     Game game;
@@ -20,25 +18,16 @@ public class Service {
         this.game = new Game(randomNumberList);
     }
 
-    public void startGame() {
-        boolean correctAnswer = false;
-        while (!correctAnswer) {
-            correctAnswer = playGame();
-        }
-        SystemMessage.printCorrectAnswer();
-    }
+//    public void startGame() {
+//        boolean correctAnswer = false;
+//        while (!correctAnswer) {
+//            correctAnswer = playGame();
+//        }
+//        SystemMessage.printCorrectAnswer();
+//    }
 
-    public boolean finishGame() {
-        RequestInput.requestFinishGame();
-        String userInput = Console.readLine();
-        Validator.checkUserFinishInput(userInput);
 
-        return Objects.equals(userInput,"2");
-    }
-
-    private boolean playGame() {
-        RequestInput.requestAnswer();
-        String userInput = Console.readLine();
+    public boolean playGame(String userInput) {
         Validator.checkUserAnswerInput(userInput);
         game.initializeResultMap();
         List<Integer> userAnswer = Converter.toIntegerList(userInput);
@@ -47,5 +36,11 @@ public class Service {
         SystemMessage.printGameResult(resultMessage);
 
         return result.get("strike") == 3;
+    }
+
+    public boolean finishGame(String userInput) {
+        Validator.checkUserFinishInput(userInput);
+
+        return Objects.equals(userInput, "2");
     }
 }
