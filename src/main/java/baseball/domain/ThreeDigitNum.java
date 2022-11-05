@@ -15,12 +15,32 @@ public class ThreeDigitNum {
         value = list;
         validateValue();
     }
+    public ThreeDigitNum(int num) {
+        value = numToDigitList(num);
+
+        validateValue();
+    }
+
+    private static List<Integer> numToDigitList(int num) {
+        List<Integer> list = new ArrayList<>(Collections.nCopies(SIZE, 0));
+        int idx = SIZE -1;
+        while(num > 0) {
+            list.set(idx, num % 10);
+
+            num /= 10;
+            --idx;
+        }
+        return list;
+    }
 
     public List<Integer> list() {
         return this.value;
     }
 
     private void validateValue() {
+        if(value.size() != 3) {
+            throw new IllegalArgumentException("야구게임 값은 3자리 수여야 합니다.");
+        }
         List<Integer> freq = new ArrayList<>(Collections.nCopies(END_RANGE + 1, 0));
 
         for (int valueEach : value) {
