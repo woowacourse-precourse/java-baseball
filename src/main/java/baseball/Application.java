@@ -15,6 +15,7 @@ public class Application {
         List<Integer> opponent = generateOpponent();
         List<Integer> player = receiveInputOfPlayer();
 
+//        System.out.println(opponent.containsAll(player));
     }
 
     public static List<Integer> generateOpponent(){
@@ -51,7 +52,7 @@ public class Application {
                 newList.add(number);
             }
         }
-        if(newList != checkList){
+        if(!checkList.equals(newList)){
             throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.\n프로그램을 종료합니다.");
         }
     }
@@ -64,5 +65,6 @@ public class Application {
             throw new IllegalArgumentException("숫자가 아닌 값이 입력되었습니다.\n프로그램을 종료합니다.");
         }
     }
+
 }
 
