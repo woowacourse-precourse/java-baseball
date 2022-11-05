@@ -7,7 +7,9 @@ public class InputHandler {
         return Console.readLine();
     }
 
-    public int readInt() {
+    public int readIntWithVerification() {
+        String line = readLine();
+        InputVerifier.verifyInput(line);
         return Integer.parseInt(readLine());
     }
 }
