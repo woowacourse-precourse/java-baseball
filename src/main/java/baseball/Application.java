@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.implementation.bytecode.ByteCodeAppender.Size;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -54,7 +55,19 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         else {
-
+            int strike = getStrikeNumber(input, computer);
         }
+    }
+
+    private static int getStrikeNumber(int input, int computer) {
+        int strike = 0;
+        int[] arrInput = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] arrComputer = Stream.of(String.valueOf(computer).split("")).mapToInt(Integer::parseInt).toArray();
+        for (int i = 0; i < arrInput.length; i++) {
+            if (arrInput[i] == arrComputer[i]) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }
