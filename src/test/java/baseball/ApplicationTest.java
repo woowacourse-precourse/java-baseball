@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -44,7 +43,7 @@ class ApplicationTest extends NsTest {
     @Test
     void countStrike_테스트(){
         //given
-        final Application T = new Application();
+        final Core T = new Core();
         final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,5,6));  // 0 strike
         final List<List<Integer>> case2 = List.of(List.of(1,2,3), List.of(4,2,6));  // 1 strike
         final List<List<Integer>> case3 = List.of(List.of(1,2,3), List.of(1,2,6));  // 2 strike
@@ -70,7 +69,7 @@ class ApplicationTest extends NsTest {
     @Test
     void isDigitStrike_테스트(){
         //given
-        final core T = new core();
+        final Core T = new Core();
         final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,2,3));  // 2 strike
 
         //when
