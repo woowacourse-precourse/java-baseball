@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -8,7 +9,6 @@ public class Application {
     private static final String GAME_START_SIGN = "숫자 야구 게임을 시작합니다.";
     private static final int START_VALUE = 1;
     private static final int END_VALUE = 9;
-    private static final int NUMBER_COUNT = 3;
 
     public static void main(String[] args) {
         notifyGameStart();
@@ -16,7 +16,18 @@ public class Application {
     }
 
     public static List<Integer> createComputerNumbers() {
-        return Randoms.pickUniqueNumbersInRange(START_VALUE, END_VALUE, NUMBER_COUNT);
+        List<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(Randoms.pickNumberInRange(START_VALUE, END_VALUE));
+        while (true) {
+            if (computerNumbers.size() == 3) {
+                break;
+            }
+            int randomNumber = Randoms.pickNumberInRange(START_VALUE, END_VALUE);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
+            }
+        }
+        return computerNumbers;
     }
 
     public static void notifyGameStart() {
