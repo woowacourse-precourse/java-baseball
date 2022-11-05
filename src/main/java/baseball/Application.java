@@ -16,8 +16,8 @@ public class Application {
 class Baseball {
     private static int checkRestartGame;
     private static List<Integer> computerNumber;
-    private static HashMap<String, Integer> countBallStrike;
     private static String userNumber;
+    private static HashMap<String, Integer> countBallStrike;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
     private static final int NUMBER_PITCH = 3;
@@ -30,11 +30,6 @@ class Baseball {
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-    private static void init() {
-        computerNumber = new ArrayList<>();
-        countBallStrike = new HashMap<>();
-    }
 
     public static void playGame() {
         System.out.println(START_MESSAGE);
@@ -54,6 +49,11 @@ class Baseball {
         isWinNumber();
     }
 
+    private static void init() {
+        computerNumber = new ArrayList<>();
+        countBallStrike = new HashMap<>();
+    }
+
     private static void buildComputerNumber() {
         while (computerNumber.size() < NUMBER_PITCH) {
             int randomNumber = Randoms.pickNumberInRange(START_NUM_INCLUSIVE, END_NUM_INCLUSIVE);
@@ -65,6 +65,9 @@ class Baseball {
 
     private static void getUserNumber() {
         userNumber = Console.readLine();
+        if (!isValidNumber()) {
+            illegalArgumentException();
+        }
         System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
     }
 
@@ -114,6 +117,9 @@ class Baseball {
 
     private static void checkRestartGame() {
         checkRestartGame = Integer.parseInt(Console.readLine());
+        if (!isValidRestartNumber()) {
+            illegalArgumentException();
+        }
         if (checkRestartGame == NEW_GAME) {
             System.out.println(NEW_GAME);
             newGame();
@@ -130,5 +136,9 @@ class Baseball {
 
     private static boolean isValidRestartNumber() {
         return checkRestartGame == NEW_GAME || checkRestartGame == END_GAME;
+    }
+
+    private static void illegalArgumentException() {
+        throw new IllegalArgumentException();
     }
 }
