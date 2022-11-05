@@ -6,10 +6,10 @@
 
 - [x] 숫자를 비교해 얻은 힌트를 콜렉션에 담아 반환한다.
 - [x] 힌트 콜렉션의 스트라이크 3개면 true를 반환한다.
-- [ ] 게임을 재시작할지 boolean 값을 반환한다.
-    - [ ] 1은 true
-    - [ ] 2는 false
-    - [ ] 이외의 값은 IllegalArgumentException 예외를 throw 한다.
+- [x] 게임을 재시작할지 boolean 값을 반환한다.
+    - [x] 1은 true
+    - [x] 2는 false
+    - [x] 이외의 값은 IllegalArgumentException 예외를 throw 한다.
 
 ### 숫자
 

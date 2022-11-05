@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -32,6 +33,17 @@ public class BaseballGameTest {
                         .isTrue(),
                 () -> assertThat(baseballGame.isEnd(new Hints(List.of(Hint.STRIKE, Hint.STRIKE, Hint.BALL))))
                         .isFalse()
+        );
+    }
+
+    @DisplayName("게임을 재시작할지 boolean 값을 반환한다.")
+    @Test
+    void restart() {
+        Assertions.assertAll(
+                () -> assertThatThrownBy(() -> baseballGame.restart(0)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThat(baseballGame.restart(1)).isTrue(),
+                () -> assertThat(baseballGame.restart(2)).isFalse(),
+                () -> assertThatThrownBy(() -> baseballGame.restart(3)).isInstanceOf(IllegalArgumentException.class)
         );
     }
 }
