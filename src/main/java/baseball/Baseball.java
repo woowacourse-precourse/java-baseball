@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Map;
+
 public class Baseball {
     private Boolean Gaming;
     private int targetNumber;
@@ -14,13 +16,13 @@ public class Baseball {
     // 게임 시작 method
     public void start(){
         this.Gaming = true;
-        this.resetTargetNumber();
+        resetTargetNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     // 게임 재시작 method
     public void restart(){
-        this.resetTargetNumber();
+        resetTargetNumber();
         this.guessNumber = 0;
         this.ballCount = new BallCount();
     }
@@ -35,12 +37,10 @@ public class Baseball {
 
     }
 
-    // 볼 카운트 Getter method
     public void getBallCount(){
 
     }
 
-    // 스트라이크 카운트 Getter method
     public void getStrikeCount(){
 
     }
@@ -63,6 +63,40 @@ public class Baseball {
     // 스트라이크 카운트 계산 method
     private void ruleStrikeCount(){
 
+    }
+
+    // 1~9로 이루어진 세자리 정수인지 Validation
+    private boolean isValidNum(int number){
+        if(!checkSize(number)){
+            return false;
+        }
+        if(!checkDigit(Integer.toString(number).toCharArray())){
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean checkDigit(char[] numberCharArray){
+        for(char numberChar : numberCharArray){
+            if(numberChar == '0'){
+                return false;
+            }
+            if(!Character.isDigit(numberChar)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkSize(int number){
+        int size = (int)(Math.log10(number)+1);
+
+        if(size != 3){
+            return false;
+        }
+        return true;
     }
 
 }
