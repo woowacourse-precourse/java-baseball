@@ -25,7 +25,8 @@ public class GameController {
 
         List<Integer> inputNumber = gameStartView.getInputNumbers();
         BallCountDto ballCountDto = computerService.compareNumber(inputNumber, randomNumber);
-
         gameResultView.showScore(ballCountDto);
+        gameResultView.checkThreeStrike(ballCountDto);
+        int restartGameNum = gameResultView.checkRestartGame();
     }
 }
