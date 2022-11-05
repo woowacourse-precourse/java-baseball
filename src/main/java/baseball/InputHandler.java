@@ -10,6 +10,6 @@ public class InputHandler {
     public int readIntWithVerification() {
         String line = readLine();
         InputVerifier.verifyInput(line);
-        return Integer.parseInt(readLine());
+        return Integer.parseInt(line);
     }
 }
