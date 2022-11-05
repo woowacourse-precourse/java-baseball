@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.GameResultResponseDto;
+import baseball.dto.GameResultResponseDto;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
 import baseball.domain.RandomNumberCreator;

@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.GameResultResponseDto;
+import baseball.dto.GameResultResponseDto;
 
 import java.util.Objects;
 
