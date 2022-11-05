@@ -9,7 +9,7 @@ public class Printer {
 		System.out.println(GAME_START_MESSAGE.get());
 	}
 
-	public static void printAskInputMessage() {
+	public static void printAskingInputMessage() {
 		System.out.print(ASKING_INPUT_MESSAGE.get());
 	}
 
