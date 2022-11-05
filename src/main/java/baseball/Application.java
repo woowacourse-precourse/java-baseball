@@ -37,18 +37,7 @@ public class Application {
         return ballcount;
     }
 
-    static boolean playGame(List<Integer> computerNum, String myNum){
-        int strike = 0;
-        int ball = 0;
-        for(int myIdx = 0; myIdx < myNum.length(); myIdx++){
-            List<Integer> ballcount = compareNumber(computerNum, myNum, myIdx);
-            if(ballcount.get(0) == 1){
-                ball +=1;
-            }
-            if(ballcount.get(1) == 1){
-                strike+=1;
-            }
-        }
+    static boolean printResult(int ball, int strike){
         if(strike == 3){
             System.out.println("3스트라이크");
             return true;
@@ -68,6 +57,21 @@ public class Application {
 
         System.out.println(ball + "볼 " + strike + "스트라이크");
         return false;
+    }
+
+    static boolean playGame(List<Integer> computerNum, String myNum){
+        int ball = 0;
+        int strike = 0;
+        for(int myIdx = 0; myIdx < myNum.length(); myIdx++){
+            List<Integer> ballcount = compareNumber(computerNum, myNum, myIdx);
+            if(ballcount.get(0) == 1){
+                ball +=1;
+            }
+            if(ballcount.get(1) == 1){
+                strike+=1;
+            }
+        }
+        return printResult(ball, strike);
     }
 
     static void checkInputRule(String myNumber){
