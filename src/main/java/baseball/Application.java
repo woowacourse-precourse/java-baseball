@@ -33,6 +33,10 @@ class Game{
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    void end(){
+        System.out.println("게임 종료");
+    }
+
     void setUserInput() {
         this.strike = 0;
         userInput = Console.readLine();
