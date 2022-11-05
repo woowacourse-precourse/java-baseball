@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
@@ -75,6 +74,7 @@ public class Application {
 
         if (strike!=0) System.out.println(strike+"스트라이크");
         if (ball==0 && strike==0) System.out.println("낫싱");
+        if (ball!=0 && strike==0) System.out.println();
     }
 
 
