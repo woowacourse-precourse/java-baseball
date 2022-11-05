@@ -15,4 +15,8 @@ public class Computer {
         this.numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
 }
