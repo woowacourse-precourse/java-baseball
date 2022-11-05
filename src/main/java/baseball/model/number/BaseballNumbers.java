@@ -33,7 +33,7 @@ public class BaseballNumbers {
     }
 
     private void createBaseballNumber(List<Integer> numbers) {
-        for(Integer number: numbers) {
+        for (Integer number : numbers) {
             BaseballNumber baseballNumber = new BaseballNumber(number);
             ballNumbers.add(baseballNumber);
         }
@@ -41,14 +41,26 @@ public class BaseballNumbers {
 
     private void validateDuplicateNumbers() {
         boolean isDuplicatedValue = false;
-        for(int index = 0; index < ballNumbers.size(); index++) {
+        for (int index = 0; index < ballNumbers.size(); index++) {
             BaseballNumber baseballNumber = ballNumbers.get(index);
-            BaseballNumber nextBaseballNumber = ballNumbers.get(index+1);
+            BaseballNumber nextBaseballNumber = ballNumbers.get(index + 1);
             isDuplicatedValue = baseballNumber.equals(nextBaseballNumber);
         }
 
-        if(isDuplicatedValue) {
+        if (isDuplicatedValue) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION);
         }
+    }
+
+    private int getStrike(BaseballNumbers otherBaseballNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber baseballNumber = ballNumbers.get(i);
+            BaseballNumber otherBaseballNumber = otherBaseballNumbers.ballNumbers.get(i);
+            if (baseballNumber.equals(otherBaseballNumber)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 }
