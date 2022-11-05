@@ -1,12 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Application {
@@ -16,23 +13,25 @@ public class Application {
     private static final int STRIKE = 0;
     private static final int BALL = 1;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         playGame();
     }
 
-    private static void playGame() throws IOException {
+    private static void playGame() {
 
         printStart();
         List<Integer> computer = getTargetNumbers();
 
         while (true) {
-            List<Integer> user = getToEnterNumbers();
-            boolean error = checkUserError(user);
+            String input = Console.readLine();
+            boolean error = checkUserError(input);
 
             if (error) {
                 break;
             }
+
+            List<Integer> user = getToEnterNumbers(input);
 
             List<Integer> counts = getEachCounts(computer, user);
             printBallStrike(counts);
@@ -44,6 +43,7 @@ public class Application {
                 continue;
             }
 
+            printAgainQuestion();
             boolean again = checkAgainGame();
 
             if (again) {
@@ -81,30 +81,12 @@ public class Application {
         return counts;
     }
 
-    private static boolean checkUserError(List<Integer> user) {
-
-        List<Integer> visitedList = new ArrayList<>();
-
-        for (int i = 0; i < SIZE; i++) {
-            int number = user.get(i);
-
-            boolean isError = visitedList.contains(number);
-
-            if (isError) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static List<Integer> getToEnterNumbers() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String input = br.readLine();
+    private static List<Integer> getToEnterNumbers(String input) {
         List<Integer> user = new ArrayList<>();
 
         for (int i = 0; i < SIZE; i++) {
             char currentValue = input.charAt(i);
+
             Integer number = Integer.valueOf(currentValue);
             user.add(number);
         }
@@ -145,7 +127,60 @@ public class Application {
 
     private static void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        return;
+    }
+    private static void printAgainQuestion() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private static boolean checkUserError(String input) {
+
+        if(checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
+            return true;
+        }
+
+        return false;
+    }
+    private static boolean checkRangeError(String input) {
+
+        int min = 1;
+        int max = 9;
+
+        for (int i = 0; i < SIZE; i++) {
+            char value = input.charAt(i);
+            int number = Character.getNumericValue(value);
+
+            boolean rangeCheck = (number >= min) && (number <= max);
+
+            if (!rangeCheck) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static boolean checkSizeError(String input) {
+        int size = input.length();
+
+        if (size != SIZE) {
+            return true;
+        }
+
+        return false;
+    }
+    private static boolean checkVisitedError(String input) {
+        List<Integer> visitedList = new ArrayList<>();
+
+        for (int i = 0; i < SIZE; i++) {
+            char value = input.charAt(i);
+            int number = Character.getNumericValue(value);
+
+            if (visitedList.contains(number)) {
+                return true;
+            }
+
+            visitedList.add(number);
+        }
+
+        return false;
     }
 
     private static boolean checkSuccess(int strikeCount) {
@@ -160,11 +195,9 @@ public class Application {
         return success;
     }
 
-    private static boolean checkAgainGame() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+    private static boolean checkAgainGame() {
         int againGame = 1;
-        int toBeContinue = Integer.valueOf(br.readLine());
+        int toBeContinue = Integer.valueOf(Console.readLine());
 
         boolean again = false;
 
