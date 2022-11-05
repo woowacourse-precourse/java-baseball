@@ -1,12 +1,11 @@
 package baseball.printer;
 
-import baseball.dto.BallStrikeDto;
+import baseball.core.dto.BallStrikeDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ResultMessageGeneratorTest {
 
