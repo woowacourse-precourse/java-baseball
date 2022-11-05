@@ -1,6 +1,10 @@
 package baseball;
 
-import java.util.Map;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Baseball {
     private Boolean Gaming;
@@ -40,7 +44,6 @@ public class Baseball {
         }
 
         this.guessNumber = guessNumber;
-        ruleBallCount();
     }
 
     public void getBallCount(){
@@ -58,7 +61,18 @@ public class Baseball {
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
     private void resetTargetNumber(){
+        int targetNumber = 0;
+        List<Integer> randomNumberList = new ArrayList<>();
 
+        for(int i = 0; i < 3; i++){
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if(!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
+                targetNumber += randomNumber * Math.pow(10,i);
+            }
+        }
+
+        this.targetNumber = targetNumber;
     }
 
     // 볼 카운트 계산 method
