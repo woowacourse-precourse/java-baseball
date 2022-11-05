@@ -10,9 +10,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InGame {
 
+    String input;
+
     public void gameStart() {
         System.out.println("숫자를 입력해 주세요 : ");
-        String input = readLine();
+        input = readLine();
 
         validateInGame(input);
         newRandomNumber();
