@@ -21,10 +21,31 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 입력이_세자리가_아닌경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("9123"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
+        );
+    }
+
+    @Test
+    void 입력이_숫자가_아닌경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("q12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력하신 내용 중에 숫자가 아닌 값이 있습니다.")
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("qwe"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력하신 내용 중에 숫자가 아닌 값이 있습니다.")
         );
     }
 
