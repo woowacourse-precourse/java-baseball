@@ -1,9 +1,11 @@
-package features;
+입package configuration;
 
-import static features.Hint.getCountBall;
-import static features.Hint.getCountNothing;
-import static features.Hint.getCountStrike;
-
+import extract.Validation;
+import features.Game;
+import features.Hint;
+import features.Input;
+import features.Player;
+import features.Print;
 import java.util.Map;
 
 public class AppConfig implements Factory {
@@ -21,9 +23,9 @@ public class AppConfig implements Factory {
     @Override
     public void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
 
-        getCountStrike();
-        getCountBall();
-        getCountNothing();
+        Hint.getCountStrike();
+        Hint.getCountBall();
+        Hint.getCountNothing();
 
     }
 
@@ -31,4 +33,16 @@ public class AppConfig implements Factory {
     public String printResult() {
         return Print.printResult();
     }
+
+    @Override
+    public String playGame() {
+        return Game.playGame();
+    }
+
+    @Override
+    public boolean validationCheck(String userLine) {
+        return Validation.validationCheck(userLine);
+    }
+
+
 }
