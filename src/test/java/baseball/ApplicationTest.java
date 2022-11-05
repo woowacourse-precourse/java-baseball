@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.Application.*;
@@ -45,6 +46,38 @@ class ApplicationTest extends NsTest {
         // readLine 메서드 특성상 테스트 시점에만 해당 메서드에 고정 값 지정 후 테스트 진행
         assertThat(answer).isEqualTo(processing.askInputNumber());
     }
+
+    @Test
+    void 낫싱_Check_Test(){
+        // given
+        List<String> answer = List.of("4","2","3");
+        List<String> userNumList = List.of("1","9","7");
+
+        // when
+        boolean isNothing = validations.checkIsItNothing(answer, userNumList);
+
+        //then
+        assertThat(isNothing).isTrue();
+    }
+
+    @Test
+    void Strike_Count_Test(){
+        // given
+        ArrayList<String> answer = new ArrayList<>(){{ add("4"); add("2"); add("3");}} ;
+        ArrayList<String> userNumList = new ArrayList<>(){{ add("2"); add("9"); add("3");}}  ;
+
+        // when
+        ArrayList<String> containedNumList = processing.findContainedNumbers(answer, userNumList);
+        int containedNumCnt = processing.countContained(containedNumList);
+        int strikeCnt = processing.countStrike(answer, containedNumList);
+        int ballCnt = processing.countBall(containedNumCnt, strikeCnt);
+
+        // then
+        assertThat(containedNumCnt).isEqualTo(2);
+        assertThat(strikeCnt).isEqualTo(1);
+        assertThat(ballCnt).isEqualTo(1);
+    }
+
 
     @Test
     void 게임종료_후_재시작() {
