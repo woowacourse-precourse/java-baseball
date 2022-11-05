@@ -8,7 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Computer.RAND_NUM_MAX;
+import static baseball.Computer.MAX;
+import static baseball.Computer.STRIKE;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,7 +62,7 @@ class ApplicationTest extends NsTest {
         List<Integer> number = computer.createRandomNumber();
         List<Integer> range = Arrays.asList(1,2,3,4,5,6,7,8,9);
 
-        for(int numberIndex = 0; numberIndex < RAND_NUM_MAX; numberIndex++) {
+        for(int numberIndex = 0; numberIndex < MAX; numberIndex++) {
             assertThat(range).contains(number.get(numberIndex));
         }
     }
@@ -97,6 +98,17 @@ class ApplicationTest extends NsTest {
         String result = computer.judgeNumber(answer, userInput);
 
         assertThat(result).isEqualTo("2볼");
+    }
+
+    @Test
+    public void 플레이어가_입력한_숫자_n스트라이크_테스트() {
+        Computer computer = new Computer();
+        List<Integer> answer = Arrays.asList(1,2,3);
+        List<Integer> userInput = Arrays.asList(1,5,4);
+
+        String result = computer.judgeNumber(answer, userInput);
+
+        assertThat(result).isEqualTo("1스트라이크");
     }
 
     @Test
