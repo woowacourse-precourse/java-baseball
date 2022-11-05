@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -14,23 +13,18 @@ public class Application {
     static final int STRIKE_COUNT_INDEX = 0;
     static final int BALL_COUNT_INDEX = 1;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         int gameStatus = START;
         while (gameStatus == START) {
-            try {
-                playNumberBaseball();
-                gameStatus = askRestartOrExit();
-            } catch (Exception e) {
-                e.printStackTrace();
-                break;
-            }
+            playNumberBaseball();
+            gameStatus = askRestartOrExit();
         }
     }
 
     private static void playNumberBaseball() throws IllegalArgumentException {
         String computer = getComputerNumberInString();
         boolean userGetRightAnswer = false;
-        while (userGetRightAnswer == false) {
+        while (!userGetRightAnswer) {
             String user = getUserAnswerInString("숫자를 입력해주세요 : ");
             isValidBaseballNumber(user);
             List<Integer> scoreOfStrikeAndBall = compareComputerAndUser(computer, user);
@@ -52,8 +46,7 @@ public class Application {
 
     private static String getUserAnswerInString(String question) {
         System.out.print(question);
-        String user = Console.readLine();
-        return user;
+        return Console.readLine();
     }
 
     private static void isValidBaseballNumber(String answer) throws IllegalArgumentException {
@@ -68,7 +61,7 @@ public class Application {
     }
 
     private static boolean isValidOfDuplication(String answer) {
-        Long distinctCount = answer.chars().distinct().count();
+        long distinctCount = answer.chars().distinct().count();
         return answer.length() == distinctCount;
     }
 
@@ -146,7 +139,7 @@ public class Application {
         if (!isValidAnswer(userAnswer)) {
             throw new IllegalArgumentException();
         }
-        return Integer.valueOf(userAnswer);
+        return Integer.parseInt(userAnswer);
     }
 
     private static boolean isValidAnswer(String userAnswer) {
