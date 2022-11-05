@@ -113,7 +113,7 @@ public class BaseballGame {
     }
 
     private List<String> getUserInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(View.GAME_START_MASSAGE);
         String userInput = Console.readLine();
         raiseErrorWhenInputLengthOver3(userInput);
         List<String> inputList = convertUserInputToList(userInput);
@@ -142,8 +142,8 @@ public class BaseballGame {
                 break;
             }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(View.THREE_STRIKE_MASSAGE);
+        System.out.println(View.GAME_END_OR_RESTART_MASSAGE);
 
         return raiseErrorWhenInputIsNot1Or2();
     }
@@ -152,11 +152,11 @@ public class BaseballGame {
         String userInput = Console.readLine();
 
         try {
-            if (!(userInput.equals("1") || userInput.equals("2"))) {
+            if (!(userInput.equals(View.GAME_RESTART_MASSAGE) || userInput.equals(View.GAME_END_MASSAGE))) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("1과 2만 입력할 수 있습니다.");
+            System.out.println(View.GAME_RESTART_ERROR_MASSAGE);
             return raiseErrorWhenInputIsNot1Or2();
         }
         return userInput;
@@ -164,16 +164,16 @@ public class BaseballGame {
 
     private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) {
         if (!Character.isDigit(separatedInput)) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new IllegalArgumentException(View.INPUT_IS_NOT_DIGIT_MASSAGE);
         }
-        if (separatedInput == '0') {
-            throw new IllegalArgumentException("1과 9사이의 숫자만 입력해주세요.");
+        if (separatedInput == View.ZERO_INPUT_CANNOT_USE) {
+            throw new IllegalArgumentException(View.INPUT_IS_ZERO_MASSAGE);
         }
     }
 
     private void raiseErrorWhenInputLengthOver3(String userInput) {
         if (userInput.length() > 3) {
-            throw new IllegalArgumentException("입력은 세자리 숫자만 허용됩니다.");
+            throw new IllegalArgumentException(View.INPUT_LENGTH_VALIDATION_MASSAGE);
         }
     }
 }
