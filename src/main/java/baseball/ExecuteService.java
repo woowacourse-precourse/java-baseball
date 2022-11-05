@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class ExecuteService {
     private Game game;
@@ -19,7 +20,11 @@ public class ExecuteService {
         while (!complete) {
             printService.requestInput();
             String userInput = getUserInput();
+
             processService.validateGameInput(userInput);
+            List<Integer> parsedInput = processService.parseGameInput(userInput);
+
+
 
         }
     }
