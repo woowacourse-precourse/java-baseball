@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class GameManager {
+    static final int GUESS_NUMBER_SIZE = 3;
     private ArrayList<Integer> guessNumber;
     private boolean isCorrect;
 
@@ -33,7 +34,7 @@ public class GameManager {
     //README.md 내 주어진 코드 변형
     private void makeNewGuessNumber() {
         guessNumber = new ArrayList<>();
-        while (guessNumber.size() < 3) {
+        while (guessNumber.size() < GUESS_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!guessNumber.contains(randomNumber)) {
                 guessNumber.add(randomNumber);
@@ -62,7 +63,7 @@ public class GameManager {
     }
 
     private boolean isThreeChar(String input) {
-        return input.length() == 3;
+        return input.length() == GUESS_NUMBER_SIZE;
     }
 
     private boolean hasDuplicatedDigit(String input) {
@@ -100,7 +101,7 @@ public class GameManager {
 
         if(isNothing(strike, ball)) {
             return "낫싱";
-        } else if(strike == 3) {
+        } else if(strike == GUESS_NUMBER_SIZE) {
             isCorrect = true;
         }
 
@@ -121,7 +122,7 @@ public class GameManager {
 
     private int getStrike(ArrayList<Integer> userGuess) {
         int ret = 0;
-        for(int index = 0;index < 3;index++) {
+        for(int index = 0;index < GUESS_NUMBER_SIZE;index++) {
             if(guessNumber.get(index) == userGuess.get(index)) {
                 ret++;
             }
@@ -132,7 +133,7 @@ public class GameManager {
 
     private int getBall(ArrayList<Integer> userGuess) {
         int ret = 0;
-        for(int userIndex = 0;userIndex < 3;userIndex++) {
+        for(int userIndex = 0;userIndex < GUESS_NUMBER_SIZE;userIndex++) {
             int userDigit = userGuess.get(userIndex);
             ret += countUserDigitInAnswer(userIndex, userDigit);
         }
@@ -142,7 +143,7 @@ public class GameManager {
 
     private int countUserDigitInAnswer(int userIndex, int userDigit) {
         int count = 0;
-        for(int answerIndex = 0;answerIndex < 3;answerIndex++) {
+        for(int answerIndex = 0;answerIndex < GUESS_NUMBER_SIZE;answerIndex++) {
             if(userIndex != answerIndex && userDigit == guessNumber.get(answerIndex)) {
                 count++;
             }
