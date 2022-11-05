@@ -40,7 +40,7 @@ public class BaseballEngine {
         }
 
         for (char input : userInput.toCharArray()) {
-            if (!Character.isDigit(input)) {
+            if (!Character.isDigit(input) || Character.getNumericValue(input) == 0) {
                 return false;
             }
         }
