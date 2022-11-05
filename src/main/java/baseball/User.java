@@ -3,27 +3,30 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     private String number;
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
 
     public void inputNumber() {
-        Computer computer = new Computer();
-        computer.startGame();
+        System.out.print(INPUT_NUMBER);
         number = Console.readLine();
     }
 
+    public void GameStart() {
+        System.out.println(GAME_START);
+    }
+
     public List<Integer> createUserNumber() {
-       inputNumber();
-       String[] splitNumber = number.split("");
-       List<Integer> userNumbers = new ArrayList<>();
-       for (String number : splitNumber) {
-           int numberToInt = Integer.parseInt(number);
-           userNumbers.add(numberToInt);
-       }
-       return userNumbers;
+        inputNumber();
+        String[] splitNumber = number.split("");
+        List<Integer> userNumbers = new ArrayList<>();
+        for (String number : splitNumber) {
+            int numberToInt = Integer.parseInt(number);
+            userNumbers.add(numberToInt);
+        }
+        return userNumbers;
     }
 }
