@@ -1,6 +1,7 @@
 ### 기능 목록
 - playBaseball method
   - 숫자 야구 게임 한 단위를 실행한다.
+  - 랜덤 숫자를 생성한다.
   - getUserInput method, returnAnswer method, checkBall/checkStrike method, endGame method를 포함한다.
 - getUserInput method 
   - "숫자를 입력해주세요 : " 문구를 출력한다.
