@@ -1,11 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class BaseballGame {
     private static final int MAX_STRIKE = 3;
-    private static final int END = 1;
-    private static final int RESTART = 2;
+    private static final String END = "1";
+    private static final String RESTART = "2";
     private  int ballCount;
     private int strikeCount;
     private List<Integer> userNumber;
@@ -79,5 +81,17 @@ public class BaseballGame {
         }
 
         return threeStrike;
+    }
+
+    public boolean isRestart() {
+        System.out.println(GameMessage.restart);
+
+        String restartCheck = Console.readLine();
+
+        if ((!restartCheck.equals(END)) && (!restartCheck.equals(RESTART))) {
+            throw new IllegalArgumentException();
+        }
+
+        return restartCheck.equals(RESTART);
     }
 }
