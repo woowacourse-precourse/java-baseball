@@ -12,7 +12,7 @@ public class Printer {
 	}
 
 	public static void printBallsCount(int ballsCount) {
-		System.out.printf(NUMBER_OF_BALL_MESSAGE.get(), ballsCount);
+		System.out.printf(BALLS_COUNT_MESSAGE.get(), ballsCount);
 	}
 
 	public static void printNothingMessage() {
