@@ -35,8 +35,8 @@ public class BaseballGame {
         } else if (strike == 0) {
             System.out.println(ball + Constants.BALL_MESSAGE);
         } else {
-            System.out.print(strike + Constants.STRIKE_MESSAGE + " ");
-            System.out.println(ball + Constants.BALL_MESSAGE);
+            System.out.print(ball + Constants.BALL_MESSAGE + " ");
+            System.out.println(strike + Constants.STRIKE_MESSAGE);
         }
 
         if (gameDone) {
