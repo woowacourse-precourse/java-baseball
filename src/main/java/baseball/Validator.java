@@ -10,4 +10,10 @@ public final class Validator {
         }
     }
 
+    public static void isRestartable(int command) throws IllegalArgumentException {
+        if (command != 1 && command != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
