@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Baseball.playGame();
     }
 }
 
@@ -33,6 +33,22 @@ class Baseball {
     private static void init() {
         computerNumber = new ArrayList<>();
         countBallStrike = new HashMap<>();
+    }
+
+    public static void playGame() {
+        System.out.println(START_MESSAGE);
+        newGame();
+    }
+
+    private static void newGame() {
+        init();
+        buildComputerNumber();
+        inputUserNumber();
+    }
+
+    private static void inputUserNumber() {
+        getUserNumber();
+        getBallStrikeNothing();
     }
 
     private static void buildComputerNumber() {
