@@ -36,4 +36,28 @@ public class Game {
         }
         return new ArrayList<>(Arrays.asList(ball, strike));
     }
+
+    public void start() {
+        this.setAnswer();
+        while (true) {
+            Print.inputNumber();
+            List<Integer> number = Input.number();
+            List<Integer> ballAndStrikeList = this.getBallAndStrikeList(this.answer, number);
+            int ball = ballAndStrikeList.get(0);
+            int strike = ballAndStrikeList.get(1);
+            Print.ballAndStrike(ball, strike);
+            if (ball == 0 && strike == 3) {
+                this.newGameOrExit();
+                break;
+            }
+        }
+    }
+
+    public void newGameOrExit() {
+        Print.inputOneOrTwo();
+        int oneOrTwo = Input.oneOrTwo();
+        if (oneOrTwo == 1) {
+            this.start();
+        }
+    }
 }
