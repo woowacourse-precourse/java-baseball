@@ -64,4 +64,8 @@ public class User {
     public int getNumSelecUser() {
         return numSelecUser;
     }
+
+    public static User getInstanceUser() {
+        return (new User());
+    }
 }

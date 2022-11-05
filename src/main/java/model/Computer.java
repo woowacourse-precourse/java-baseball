@@ -249,4 +249,6 @@ public class Computer {
     public List<Integer> getNumThreeRanOfComputerList() {
         return numThreeRanOfComputerList;
     }
+
+  
 }
