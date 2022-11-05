@@ -1,18 +1,18 @@
 package baseball.system.validation;
 
-public class StringToIntegerListConversionValidator extends AbstractValidator<String> {
+import java.util.List;
+
+public class StringToIntegerListConversionValidator implements Validator<String> {
     public static final String VALUE_NOT_NATURAL_NUMBER_MESSAGE = "입력값은 정수로만 이루어져야 합니다.";
     public static final String ONLY_NATURAL_NUMBER_REGEX = "^[0-9]+";
 
     @Override
-    protected void checkSupports(Object target) {
-        if (target == null || target.getClass() != String.class) {
-            throwValidatorNotSupportedException(this.getClass().getSimpleName());
-        }
+    public boolean supports(Object target, Class<?> to) {
+        return target != null && target.getClass() == String.class && to == List.class;
     }
 
     @Override
-    protected void doValidate(String target) {
+    public void validate(String target) {
         hasStringOnlyIntegers(target);
     }
 

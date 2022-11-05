@@ -1,17 +1,11 @@
 package baseball.system.conversion;
 
-import baseball.system.validation.Validator;
+import baseball.system.ValidatorHolder;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StringToIntegerListConverter implements Converter<String, List<Integer>> {
-    private final Validator<String> validator;
-
-    public StringToIntegerListConverter(Validator<String> validator) {
-        this.validator = validator;
-    }
-
     @Override
     public boolean supports(Object from, Class to) {
         return from.getClass() == String.class && to == List.class;
@@ -19,7 +13,7 @@ public class StringToIntegerListConverter implements Converter<String, List<Inte
 
     @Override
     public List<Integer> convert(String target) {
-        validator.validate(target);
+        ValidatorHolder.validate(target, List.class);
 
         return target
                 .chars().map(Character::getNumericValue)

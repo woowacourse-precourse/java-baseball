@@ -3,6 +3,7 @@ package baseball;
 import baseball.controller.ComputerController;
 import baseball.dto.Score;
 import baseball.system.AnswerHolder;
+import baseball.system.ValidatorHolder;
 import baseball.system.conversion.Converter;
 import baseball.system.conversion.ScoreToMessageConverter;
 import baseball.system.conversion.StringToIntegerListConverter;
@@ -16,15 +17,14 @@ import baseball.vo.Answer;
 import baseball.vo.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import mocking.MockInputView;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -34,6 +34,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @BeforeEach
+    void setup() {
+        ArrayList<Validator> validatorList = new ArrayList<>();
+        validatorList.add(new NumberValidator());
+        validatorList.add(new StringToIntegerListConversionValidator());
+        ValidatorHolder.setValidators(validatorList);
+    }
+
+    @AfterEach
+    void after() {
+        ValidatorHolder.clearHolder();
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -198,8 +211,7 @@ class ApplicationTest extends NsTest {
             String input = "467";
 
             //when
-            Converter<String, List<Integer>> converter
-                    = new StringToIntegerListConverter(new StringToIntegerListConversionValidator());
+            Converter<String, List<Integer>> converter = new StringToIntegerListConverter();
             List<Integer> target = converter.convert(input);
 
             //then
