@@ -6,42 +6,49 @@ import static baseball.type.NumberType.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Hint;
+import baseball.service.ComputerNumberService;
+import baseball.service.HintService;
+import baseball.service.UserNumberService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
+
     public static void playGame() {
         InputView.printStart();
         startGame();
     }
 
-    public static void startGame() {
+    private static void startGame() {
         boolean gameStatus = NO_ANSWER;
-        List<Integer> computerNumbers = ComputerNumberController.generate();
+        List<Integer> computerNumbers = ComputerNumberService.generate();
 
         while (gameStatus == NO_ANSWER) {
-            Hint hint = new Hint(STRIKE_ZERO, BALL_ZERO);
             InputView.printTypoNumber();
+            List<Integer> userNumbers = UserNumberService.generate();
 
-            List<Integer> userNumbers = UserNumberController.generate();
-
+            Hint hint = HintService.initialize();
             hint.countHint(userNumbers, computerNumbers);
             OutputView.printHint(hint);
-            gameStatus = HintController.isAnswer(hint);
+            gameStatus = HintService.isAnswer(hint);
 
-            int ReTryOrExit = EXIT;
+            int finishCode = EXIT;
             if (gameStatus == YES_ANSWER) {
-                OutputView.printAnswer();
-                OutputView.printReTryOrExit();
-                ReTryOrExit = Integer.parseInt(readLine());
+                finishCode = retryOrExit();
             }
 
-            if (ReTryOrExit == RETRY) {
+            if (finishCode == RETRY) {
                 startGame();
             }
         }
     }
 
+    private static int retryOrExit() {
+        OutputView.printAnswer();
+        OutputView.printRetryOrExit();
+
+        return Integer.parseInt(readLine());
+    }
 
 }

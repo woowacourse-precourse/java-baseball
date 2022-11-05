@@ -1,12 +1,14 @@
-package baseball.controller;
+package baseball.service;
 
-import static baseball.type.NumberType.*;
+import static baseball.type.NumberType.MAXIMUM_NUMBER;
+import static baseball.type.NumberType.MINIMUM_NUMBER;
+import static baseball.type.NumberType.NUMBER_SIZE;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumberController {
+public class ComputerNumberService {
     private static List<Integer> computerNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {
@@ -29,5 +31,5 @@ public class ComputerNumberController {
     private static boolean hasThreeNumbers(List<Integer> numbers) {
         return numbers.size() == NUMBER_SIZE;
     }
-}
 
+}

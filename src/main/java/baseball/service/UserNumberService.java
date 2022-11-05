@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.service;
 
 import static baseball.type.NumberType.NUMBER_SIZE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class UserNumberController {
+public class UserNumberService {
     private static List<Integer> userNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {

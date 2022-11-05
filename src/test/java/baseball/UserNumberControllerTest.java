@@ -3,7 +3,7 @@ package baseball;
 import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.controller.UserNumberController;
+import baseball.service.UserNumberService;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 public class UserNumberControllerTest {
     @AfterEach
     void initailize() {
-        UserNumberController.initialize();
+        UserNumberService.initialize();
     }
     @Test
     void 유저_숫자_갯수_검증() {
@@ -27,7 +27,7 @@ public class UserNumberControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        List<Integer> userNumbers = UserNumberController.generate();
+        List<Integer> userNumbers = UserNumberService.generate();
         int userNumbersSize = userNumbers.size();
 
         assertThat(userNumbersSize).isEqualTo(NUMBER_SIZE);
@@ -41,7 +41,7 @@ public class UserNumberControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        List<Integer> userNumbers = UserNumberController.generate();
+        List<Integer> userNumbers = UserNumberService.generate();
 
         assertThat(userNumbers)
                 .isEqualTo(userNumbers
