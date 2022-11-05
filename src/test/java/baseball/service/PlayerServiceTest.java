@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.utils.Validator.validateDuplication;
+import static baseball.utils.Validator.*;
 
 class PlayerServiceTest {
     @Test
@@ -45,6 +45,20 @@ class PlayerServiceTest {
                       }
                   })
                   .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void generatePlayerBalls_숫자로_변경이_불가능한_문자열이_들어왔을때_예외가_던져지는지_테스트() {
+        //given
+        String playerInput = "12삼";
+        //when
+        validateInputLength(playerInput);
+        //when, then
+        Assertions.assertThatThrownBy(() -> {
+                      validateParseStringToInt(playerInput);
+                  })
+                  .isInstanceOf(IllegalArgumentException.class);
+
     }
 
 
