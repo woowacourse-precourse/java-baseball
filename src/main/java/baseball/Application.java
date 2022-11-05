@@ -167,7 +167,22 @@ class GameProcessor {
 }
 
 class GameFinisher{
+    public void reStartChecker(String endValue)
+    {
+        if(endValue.equals("1"))
+        {
+            //later add 3-2 method
+        }
+        else if(endValue.equals("2"))
+        {
+            //later add 3-3 method
+        }
+        else
+        {
+            throw new IllegalArgumentException();
+        }
 
+    }
 }
 
 public class Application {
