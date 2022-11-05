@@ -21,11 +21,7 @@ public class Input {
     }
 
     public boolean is1to10(){
-        for(int i =0; i<input.length();i++){
-            int checkNumber = Integer.valueOf(input.substring(i));
-            if(checkNumber<1 || checkNumber>9) return false;
-        }
-        return true;
+        return input.replace("^[1-9]","").length() == 3;
     }
 
     public boolean isdifferentNumber(){ //123

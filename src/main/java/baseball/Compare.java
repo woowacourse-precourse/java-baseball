@@ -33,7 +33,7 @@ public class Compare {
         int[] compareresult =compareNumber();
         if(compareresult[1]!=0)System.out.print(compareresult[0]+"볼 ");
         if(compareresult[0]!=0)System.out.print(compareresult[0]+"스트라이크");
-        if(compareresult[0]==0&& compareresult[1]==0) System.out.print("낫싱");
+        if(compareresult[0]==0 && compareresult[1]==0) System.out.print("낫싱");
         if(compareresult[0]==3) iscontinue=false;
     }
     public boolean isbaseballcontinue(){

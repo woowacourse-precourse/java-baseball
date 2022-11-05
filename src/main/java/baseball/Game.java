@@ -33,6 +33,7 @@ public class Game {
         String input = Console.readLine();
         if(Integer.valueOf(input)==1) return true;
         if(Integer.valueOf(input)==2) return false;
+
         new IllegalArgumentException("해당하는 숫자가 아닙니다. 프로그램을 종료합니다.");
         return false;
 
