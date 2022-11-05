@@ -6,7 +6,7 @@
 - [x] 서로 다른 숫자 3개 입력받기
   - [x] 숫자 3개 입력받기
   - [x] 예외 처리 (IllegalArgumentException) => 프로그램 종료
-    - [x] null 또는 empty 인 경우
+    - [x] null 또는 empty 인 경우 (UserNumbersDTO)
 
 - [x] 게임 종료 시, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
 
@@ -82,6 +82,6 @@
 - [x] 포지션 예외 처리 (IllegalArgumentException)
   - [x] 0~2 범위 벗어난 경우 (BallPosition)
 
-- [x] BALL 이 게임 종료에 영향을 미칠 경우 예외 처리 (BallScore)
+- [x] BALL 이 게임 종료에 영향을 미칠 경우 예외 처리 (AbstractScore)
 
 - [x] Score(strike, ball)의 범위가 0~3 을 벗어난 경우 예외 처리
