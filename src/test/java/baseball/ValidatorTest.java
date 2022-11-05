@@ -14,4 +14,9 @@ public class ValidatorTest {
 	void 입력된_숫자가_세자리가_아닐_경우_예외처리() {
 		assertThatIllegalArgumentException().isThrownBy(() -> Validator.validate("1234"));
 	}
+
+	@Test
+	void 입력된_숫자가_중복될_경우() {
+		assertThatIllegalArgumentException().isThrownBy(() -> Validator.validate("112"));
+	}
 }
