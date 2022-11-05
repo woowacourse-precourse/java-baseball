@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.function.Consumer;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -378,6 +379,43 @@ class UnitTest {
         assertThatThrownBy(() -> application.printJudge(score))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("score가 범위 안에 있지 않습니다");
+    }
+
+    @Test
+    public void isEnd_3스트라이크일떄_true를_리턴하는지_확인(){
+        //given
+        int [] score = {3,0};
+        //when
+        boolean state = application.isEnd(score);
+        //then
+        assertThat(state).isEqualTo(true);
+    }
+    @Test
+    public void isEnd_1볼_2스트라이크일떄_false를_리턴하는지_확인(){
+        //given
+        int [] score = {2,1};
+        //when
+        boolean state = application.isEnd(score);
+        //then
+        assertThat(state).isEqualTo(false);
+    }
+    @Test
+    public void isEnd_2볼_1스트라이크일떄_false를_리턴하는지_확인(){
+        //given
+        int [] score = {1,2};
+        //when
+        boolean state = application.isEnd(score);
+        //then
+        assertThat(state).isEqualTo(false);
+    }
+    @Test
+    public void 낫싱일떄_false를_리턴하는지_확인(){
+        //given
+        int [] score = {0,3};
+        //when
+        boolean state = application.isEnd(score);
+        //then
+        assertThat(state).isEqualTo(false);
     }
     private boolean checkIfEachDifferent(int result){
         int i1 = result/100;
