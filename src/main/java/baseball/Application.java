@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -13,6 +15,7 @@ public class Application {
 
 class Baseball {
     private static List<Integer> computerNumber;
+    private static HashMap<String, Integer> countBallStrike;
     private static String userNumber;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
@@ -27,6 +30,11 @@ class Baseball {
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private static void init() {
+        computerNumber = new ArrayList<>();
+        countBallStrike = new HashMap<>();
+    }
+
     private static void buildComputerNumber() {
         while (computerNumber.size() < NUMBER_PITCH) {
             int randomNumber = Randoms.pickNumberInRange(START_NUM_INCLUSIVE, END_NUM_INCLUSIVE);
@@ -39,5 +47,21 @@ class Baseball {
     private static void getUserNumber() {
         userNumber = Console.readLine();
         System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
+    }
+
+    private static void getBallStrikeNothing() {
+        int countBall = 0;
+        int countStrike = 0;
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (!computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))
+                    && userNumber.contains(Integer.toString(computerNumber.get(i)))) {
+                countBall++;
+            }
+            if (computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))) {
+                countStrike++;
+            }
+        }
+        countBallStrike.put(BALL, countBall);
+        countBallStrike.put(STRIKE, countStrike);
     }
 }
