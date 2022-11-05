@@ -10,22 +10,31 @@ import static constant.Const.*;
 
 public class Computer {
 
-    private static String answerNumber;
+    private String answer;
 
-    protected void setAnswerNumber() {
-        answerNumber = makeRandomNumber();
+    protected void setAnswer() {
+        answer = makeRandomNumber();
+        System.out.println("answer = " + answer);
     }
 
     private String makeRandomNumber() {
         Set<String> numbers = new LinkedHashSet<>();
-        while (numbers.size() != NUMBER_LENGTH) {
-            numbers.add(String.valueOf(Randoms.pickNumberInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE)));
-        }
+        addRandomNumber(numbers);
 
         return convertSetToString(numbers);
     }
 
+    private void addRandomNumber(Set<String> numbers) {
+        while (numbers.size() != NUMBER_LENGTH) {
+            numbers.add(String.valueOf(Randoms.pickNumberInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE)));
+        }
+    }
+
     private String convertSetToString(Set<String> numbers) {
         return numbers.stream().collect(Collectors.joining());
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }
