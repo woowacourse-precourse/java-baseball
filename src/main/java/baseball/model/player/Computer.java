@@ -12,6 +12,10 @@ public class Computer {
 
     private BaseballNumbers computerBaseballNumbers;
 
+    public Computer() {
+        createRandomNumbers();
+    }
+
     private void createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < RANDOM_NUMBERS_SIZE) {
