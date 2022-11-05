@@ -1,15 +1,17 @@
 package baseball.domain.count.ball;
 
+import baseball.domain.number.SingleNumber;
+
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class BallCounter {
 
-    public BallResult checkBall(List<Integer> answer, List<Integer> inputNumber) {
-        int count = (int) IntStream.range(0, 3)
-                .filter(i -> answer.contains(inputNumber.get(i)))
-                .filter(i -> !answer.get(i).equals(inputNumber.get(i)))
-                .count();
-        return new BallResult(count);
+    public BallResult checkBall(List<SingleNumber> randomNumbers, List<SingleNumber> inputNumbers) {
+        int ballCount = 0;
+        for (SingleNumber inputNumber : inputNumbers) {
+            ballCount += inputNumber.countBall(randomNumbers);
+        }
+
+        return new BallResult(ballCount);
     }
 }

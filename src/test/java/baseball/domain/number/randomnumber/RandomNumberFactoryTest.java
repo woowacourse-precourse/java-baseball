@@ -1,5 +1,6 @@
 package baseball.domain.number.randomnumber;
 
+import baseball.domain.number.SingleNumber;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class RandomNumberFactoryTest {
     class 정해진_개수의_숫자가_생성된다 {
         @RepeatedTest(3)
         void 정해진_개수의_숫자가_생성된다() {
-            List<Integer> answer = newRandomNumber().answer();
+            List<SingleNumber> answer = newInstance().randomNumbers();
             assertThat(answer).hasSize(DIGITS_FOR_THIS_GAME);
         }
     }
@@ -27,7 +28,7 @@ class RandomNumberFactoryTest {
     class 추출한_숫자는_서로_다르다 {
         @RepeatedTest(3)
         void 추출한_숫자는_서로_다르다() {
-            List<Integer> answer = newRandomNumber().answer();
+            List<SingleNumber> answer = newInstance().randomNumbers();
             long count = answer.stream()
                     .distinct()
                     .count();
@@ -38,9 +39,9 @@ class RandomNumberFactoryTest {
 
     @Test
     void 만들어진_RandomNumber를_바꿀수_없다() {
-        List<Integer> answer = newRandomNumber().answer();
+        List<SingleNumber> answer = newInstance().randomNumbers();
 
-        assertThatThrownBy(() -> answer.add(100))
+        assertThatThrownBy(() -> answer.add(new SingleNumber(1, 2)))
                 .isInstanceOf(UnsupportedOperationException.class);
 
         assertThatThrownBy(() -> answer.remove(0))

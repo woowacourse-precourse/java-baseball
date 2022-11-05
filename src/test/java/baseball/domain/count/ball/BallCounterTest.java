@@ -1,7 +1,6 @@
 package baseball.domain.count.ball;
 
-import baseball.domain.count.ball.BallCounter;
-import baseball.domain.count.ball.BallResult;
+import baseball.domain.number.SingleNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,20 +12,38 @@ class BallCounterTest {
     private final BallCounter ballCounter = new BallCounter();
 
     @Test
-    void ball의_개수가_3개일_경우() {
-        List<Integer> answer = List.of(1, 2, 3);
-        List<Integer> inputNumber = List.of(3, 1, 2);
-        BallResult ballResult = ballCounter.checkBall(answer, inputNumber);
+    void ball이_3개인_경우() {
+        List<SingleNumber> randomNumbers = List.of(
+                new SingleNumber(0, 1),
+                new SingleNumber(1, 2),
+                new SingleNumber(2, 3)
+        );
 
+        List<SingleNumber> inputNumbers = List.of(
+                new SingleNumber(0, 3),
+                new SingleNumber(1, 1),
+                new SingleNumber(2, 2)
+        );
+
+        BallResult ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
         assertThat(ballResult.ballCount()).isEqualTo(3);
     }
 
     @Test
-    void ball의_개수가_0개일_경우() {
-        List<Integer> answer = List.of(1, 2, 3);
-        List<Integer> inputNumber = List.of(1, 2, 3);
-        BallResult ballResult = ballCounter.checkBall(answer, inputNumber);
+    void ball이_0개인_경우() {
+        List<SingleNumber> randomNumbers = List.of(
+                new SingleNumber(0, 1),
+                new SingleNumber(1, 2),
+                new SingleNumber(2, 3)
+        );
 
+        List<SingleNumber> inputNumbers = List.of(
+                new SingleNumber(0, 1),
+                new SingleNumber(1, 2),
+                new SingleNumber(2, 3)
+        );
+
+        BallResult ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
         assertThat(ballResult.ballCount()).isEqualTo(0);
     }
 }

@@ -1,15 +1,19 @@
 package baseball.domain.count.strike;
 
+import baseball.domain.number.SingleNumber;
+
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class StrikeCounter {
 
-    public StrikeResult checkStrike(List<Integer> answer, List<Integer> inputNumber) {
-        int count = (int) IntStream.range(0, 3)
-                .filter(i -> answer.get(i).equals(inputNumber.get(i)))
-                .count();
+    public StrikeResult checkStrike(List<SingleNumber> randomNumbers, List<SingleNumber> inputNumbers) {
+        int strikeCount = 0;
+        for (SingleNumber inputNumber : inputNumbers) {
+            if (randomNumbers.contains(inputNumber)) {
+                strikeCount++;
+            }
+        }
 
-        return new StrikeResult(count);
+        return new StrikeResult(strikeCount);
     }
 }

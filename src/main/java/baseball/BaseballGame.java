@@ -2,13 +2,14 @@ package baseball;
 
 import baseball.domain.count.ball.BallCounter;
 import baseball.domain.count.strike.StrikeCounter;
+import baseball.domain.number.SingleNumber;
+import baseball.domain.number.randomnumber.RandomNumberFactory;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
 import java.util.List;
 
-import static baseball.domain.number.inputnumber.InputNumberParser.parseInputNumber;
-import static baseball.domain.number.randomnumber.RandomNumberFactory.newRandomNumber;
+import static baseball.domain.number.inputnumber.InputNumberFactory.newInstance;
 
 public class BaseballGame {
 
@@ -28,7 +29,7 @@ public class BaseballGame {
     }
 
     public void doBaseballGame() {
-        List<Integer> answer = newRandomNumber().answer();
+        List<SingleNumber> answer = RandomNumberFactory.newInstance().randomNumbers();
         int oneOrTwoForRestartGame = 0;
 
         messagePrinter.printStartMessage();
@@ -37,9 +38,9 @@ public class BaseballGame {
             messagePrinter.printEnterNumberMessage();
 
             String inputValue = numberScanner.inputNumber();
-            List<Integer> inputNumber = parseInputNumber(inputValue).inputNumbers();
+            List<SingleNumber> inputNumber = newInstance(inputValue).inputNumbers();
 
-            int ballCount = ballCounter.checkBall(answer, inputNumber).ballCount();
+            int ballCount = ballCounter.checkBall(answer, inputNumber).ballCount();  // 객체화 시키는게 낫나.. 걍 int 주는게 낫나...
             int strikeCount = strikeCounter.checkStrike(answer, inputNumber).strikeCount();
 
             printBallAndStrikeCount(ballCount, strikeCount);
@@ -52,7 +53,7 @@ public class BaseballGame {
             }
 
             if (oneOrTwoForRestartGame == 1) {
-                answer = newRandomNumber().answer();
+                answer = RandomNumberFactory.newInstance().randomNumbers();
                 oneOrTwoForRestartGame = 0;
             }
         }

@@ -1,16 +1,25 @@
 package baseball.domain.number.inputnumber;
 
+import baseball.domain.number.SingleNumber;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class InputNumberParser {
+public class InputNumberFactory {
 
     private static final int DIGITS_FOR_THIS_GAME = 3;
 
-    public static InputNumber parseInputNumber(String inputValue) {
+    public static InputNumbers newInstance(String inputValue) {
         validateInputValue(inputValue);
-        return new InputNumber(inputValueToList(inputValue));
+        return new InputNumbers(generateSingleNumberList(inputValue));
+    }
+
+    private static List<SingleNumber> generateSingleNumberList(String inputValue) {
+        List<Integer> inputValues = inputValueToList(inputValue);
+        return IntStream.range(0, DIGITS_FOR_THIS_GAME)
+                .mapToObj(i -> new SingleNumber(i, inputValues.get(i)))
+                .collect(Collectors.toList());
     }
 
     private static List<Integer> inputValueToList(String inputValue) {
