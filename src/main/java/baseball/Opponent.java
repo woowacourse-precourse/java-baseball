@@ -18,37 +18,6 @@ public class Opponent {
             }
         }
     }
-    public boolean isStrike(int key,int value){
-        if(numbers.get(key)==value)
-            return true;
-        return false;
-    }
-    public boolean isBall(int key,int value){
-        for(int i=0; i<3; i++){
-            if(key==i) continue;
-            if(numbers.get(i)==value)return true;
-        }
-        return false;
-    }
-    public int getValue(char value){
-        return Character.getNumericValue(value);
-    }
-    public String makeHint(String input){
-        String hint="";
-        int strike=0;
-        int ball=0;
-        int value;
-        for(int i=0; i<3; i++){
-            value = getValue(input.charAt(i));
-            if(isStrike(i,value)){
-              strike++;
-              continue;
-            }
-            if(isBall(i,value)) ball++;
-        }
-        hint += Integer.toString(strike)+Integer.toString(ball);
-        return hint;
-    }
 
     public List<Integer> getNumbers() {
         return numbers;
