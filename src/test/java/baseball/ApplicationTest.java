@@ -69,19 +69,29 @@ class ApplicationTest extends NsTest {
 
     // 기능 요구사항 2
     @Test
-    public void 게임_시작_안내_문구_출력() {
-        assertThat(Game.GAME_START_GUIDE_MESSAGE).isEqualTo("숫자 야구 게임을 시작합니다.");
+    void 게임_시작_안내_문구_출력() {
+        playGame();
+        assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
     }
+//    @Test
+//    public void 게임_시작_안내_문구_출력() {
+//        assertThat().isEqualTo("숫자 야구 게임을 시작합니다.");
+//    }
 
-    @Test
-    public void 게임플레이어의_숫자_입력() {
+//    @Test
+//    public void 게임플레이어의_숫자_입력() {
+//        Game game = new Game();
+//        game.getGamePlayerInput()
+//    }
 
-    }
-
-    @Test
-    public void 게임플레이어_입력_숫자_체크() {
-
-    }
+//    @Test
+//    public void 게임플레이어_입력_숫자_체크() {
+//        ArrayList<Integer> gamePlayerRandomNumbers = Game.getUserRandomNumbers();
+//        String regex = "^[1-9]*$";
+//
+//        assertThat(gamePlayerRandomNumbers.length == 3);
+//        assertThat(gamePlayerRandomNumbers.toString());
+//    }
 
     @Test
     public void 숫자_입력에_대한_예외_판별() {
@@ -91,5 +101,10 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    public void playGame() {
+        Game game = new Game();
+        game.play();
     }
 }
