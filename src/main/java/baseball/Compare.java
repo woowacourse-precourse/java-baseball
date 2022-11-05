@@ -17,4 +17,8 @@ public class Compare {
     public boolean isStrike(Integer computerNumber, Integer userNumber) {
         return computerNumber.equals(userNumber);
     }
+
+    public boolean isBall(List<Integer> computerNumbers, Integer userNumber) {
+        return computerNumbers.contains(userNumber);
+    }
 }
