@@ -45,11 +45,8 @@ public class Application {
             int[] userNumbers = {0, 0, 0};
             addNumber(userNumbers, numberString);
 
-            int ball = 0;
-            int strike = 0;
-
-            strike = countingStrike(0, userNumbers, randomNumberList);
-            ball = countingBall(0, userNumbers, randomNumberList);
+            int strike = countingStrike(0, userNumbers, randomNumberList);
+            int ball = countingBall(0, userNumbers, randomNumberList);
             printCount(ball, strike);
 
             if (checkThreeStrike(strike)) break;
