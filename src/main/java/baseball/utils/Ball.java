@@ -2,9 +2,7 @@ package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Ball {
     private static final int COMPUTER_MAX_SIZE = 3;
@@ -27,10 +25,17 @@ public class Ball {
     }
 
     public List<String> makeComputerBalls() {
-        Set<String> balls = new HashSet<>();
+        List<String> balls = new ArrayList<>();
         while (balls.size() < COMPUTER_MAX_SIZE) {
-            balls.add(createRandomBall());
+            checkBallDuplication(balls);
         }
-        return new ArrayList<>(balls);
+        return balls;
+    }
+
+    private void checkBallDuplication(List<String> balls) {
+        String randomBall = createRandomBall();
+        if (!balls.contains(randomBall)) {
+            balls.add(randomBall);
+        }
     }
 }
