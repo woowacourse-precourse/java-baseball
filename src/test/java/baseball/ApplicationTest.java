@@ -21,10 +21,42 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void randomNumber_길이확인() {
+    void randomNumber_길이확인() {
         List<Integer> randomNumber = Computer.createRandomNumber();
 
         assertThat(randomNumber.size()).isEqualTo(3);
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberOverlap() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberLengthIsNot3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberIsNotDigit() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("number"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberContain0() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test

@@ -1,10 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.nio.channels.IllegalChannelGroupException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GameController {
     Computer computer = new Computer();
@@ -23,6 +21,13 @@ public class GameController {
         List<Integer> userNumber = new ArrayList<>();
         Message.getUserNumber();
         String inputNumber = Console.readLine();
+
+        if (!isCheckDigit(inputNumber)
+            || !isCheckLength(inputNumber)
+            || !isCheckOverlap(inputNumber)
+            || !isCheckRange(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
 
         return userNumber;
     }
