@@ -59,15 +59,4 @@ public class Balls {
 
         return result;
     }
-
-    public Judgement judgeBall(Ball ball) {
-        if (isBall(ball)) {
-            return Judgement.BALL;
-        }
-        if (isStrike(ball)) {
-            return Judgement.STRIKE;
-        }
-
-        return Judgement.OUT;
-    }
 }
