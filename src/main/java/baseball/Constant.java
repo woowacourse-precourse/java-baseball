@@ -14,6 +14,6 @@ public class Constant {
     public static final int GUESS_NUM_END_RANGE = 9;
     public static final int MAX_STRIKE_COUNT = 3;
     public static final int RESTART_INPUT_NUM = 1;
-    public static final int END_INPUT_NUM = 1;
+    public static final int END_INPUT_NUM = 2;
 
 }
