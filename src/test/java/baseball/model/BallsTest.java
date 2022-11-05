@@ -53,8 +53,8 @@ class BallsTest {
         Balls computer = new Balls(balls);
 
 
-        assertThat(computer.isOut(new Ball(2, 1))).isTrue();
-        assertThat(computer.isOut(new Ball(3, 1))).isFalse();
+        assertThat(computer.judgeBall(new Ball(2, 1))).isEqualTo(Judgement.OUT);
+        assertThat(computer.judgeBall(new Ball(3, 1))).isNotEqualTo(Judgement.OUT);
     }
 
     @Test

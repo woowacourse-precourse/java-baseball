@@ -51,7 +51,7 @@ public class Balls {
         return new Result(ball, strike, out);
     }
 
-    private Judgement judgeBall(Ball ball) {
+    public Judgement judgeBall(Ball ball) {
         if (isBall(ball)) {
             return Judgement.BALL;
         }
