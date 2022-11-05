@@ -10,7 +10,7 @@ public class Restart {
         final String END = "2";
 
         String restartType = Console.readLine();
-        Exception.Check(restartType, 1);
+        Exception.check(restartType, 1);
 
         if (restartType.equals(START)) {
             baseballGame.gameStart();
@@ -21,4 +21,5 @@ public class Restart {
             answer(baseballGame);
         }
     }
+
 }

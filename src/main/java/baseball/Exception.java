@@ -4,7 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
-    public static void Check(String input) throws IllegalArgumentException {
+
+    public static void check(String input) throws IllegalArgumentException {
         Set<Character> duplicationCheck = new HashSet<>();
         final int MAX_SIZE = 3;
         final int SIGN = 0;
@@ -29,7 +30,7 @@ public class Exception {
         }
     }
 
-    public static void Check(String input, int maxSize) throws IllegalArgumentException {
+    public static void check(String input, int maxSize) throws IllegalArgumentException {
         Set<Character> duplicationCheck = new HashSet<>();
         final int SIGN = 0;
 

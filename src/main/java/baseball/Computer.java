@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
-public class Computer{
+public class Computer {
 
     private ArrayList<Integer> computerBalls;
 
@@ -21,6 +21,5 @@ public class Computer{
     public ArrayList<Integer> getComputerBalls() {
         return computerBalls;
     }
-
 
 }
