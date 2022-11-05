@@ -26,6 +26,7 @@ public class BaseballGame {
         while (true) {
             Score userScore = answer.compare(InputView.inputGuessThreeNumbers());
             OutputView.printResult(userScore);
+            // TODO: if 문안의 조건을 따로 빼기
             if (userScore.getStrike() == INPUT_LENGTH) {
                 OutputView.printGameEnd(userScore);
                 break ;
