@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         List<Integer> computer = selectComputerNumber();
+        printStartComment();
     }
 
     public static List<Integer> selectComputerNumber(){
@@ -23,4 +24,7 @@ public class Application {
         return computer;
     }
 
+    public static void printStartComment(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 }
