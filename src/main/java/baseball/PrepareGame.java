@@ -18,7 +18,7 @@ public class PrepareGame {
         return computer;
     }
 
-    public Boolean isEachDigit(List<Integer> digitList, int digitNumber) {
+    private Boolean isEachDigit(List<Integer> digitList, int digitNumber) {
         return digitList.contains(digitNumber);
     }
 
@@ -30,11 +30,11 @@ public class PrepareGame {
         return userNumber;
     }
 
-    public Boolean isNumber(String number){
+    private Boolean isNumber(String number){
         return number.matches("-?\\d+");
     }
 
-    public Boolean isThreeDigitNumber(String number){
+    private Boolean isThreeDigitNumber(String number){
         return number.length() == 3;
     }
 }
