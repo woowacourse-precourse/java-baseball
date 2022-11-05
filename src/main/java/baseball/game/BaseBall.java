@@ -24,6 +24,10 @@ public class BaseBall {
         answerBalls.setNumberList(createRandomNumber());
     }
 
+    public void inputUserBalls() {
+        userBalls = new Balls(List.of());
+        userBalls.setNumberList(getUserNumber());
+    }
 
     // 사용자가 입력한 3개의 수의 예외사항을 판단한다.
 
