@@ -10,7 +10,6 @@ public class BaseballManager {
     {
         computerNumber = new BaseballNumber(
                 RandomNumGenerator.makeRandomNumWithGameDigits());
-        System.out.println(computerNumber.listNumber);
     }
 
     public void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
@@ -23,5 +22,10 @@ public class BaseballManager {
 
     public List<Integer> getUserScore() {
         return scoreManager.getUserScore();
+    }
+
+    public void resetComputerNumber() {
+        computerNumber = new BaseballNumber(
+                RandomNumGenerator.makeRandomNumWithGameDigits());
     }
 }
