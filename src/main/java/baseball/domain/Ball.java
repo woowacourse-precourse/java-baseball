@@ -9,7 +9,7 @@ public class Ball {
 
     public Judgement judge(Ball otherBall) {
         if (this.equals(otherBall)) {
-            return Judgement.NOT_NOTHING;
+            return Judgement.SAME_VALUE;
         }
         return Judgement.NOTHING;
     }
