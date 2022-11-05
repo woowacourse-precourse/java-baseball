@@ -16,6 +16,8 @@ public class Player {
     public boolean checkRestart() {
         String input = Console.readLine();
 
+        exception.checkIllegalRestartInput(input);
+
         return input.equals("1");
     }
 }
