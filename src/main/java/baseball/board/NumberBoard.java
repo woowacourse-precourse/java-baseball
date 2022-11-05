@@ -3,8 +3,10 @@ package baseball.board;
 import baseball.compare.ComparisonResult;
 import baseball.compare.ComparisonResultType;
 import baseball.compare.Referee;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class NumberBoard {
 
@@ -18,5 +20,30 @@ public class NumberBoard {
         }
 
         return comparisonResult.getFrequency();
+    }
+
+    public String getResultMessage() {
+        HashMap<ComparisonResultType, Integer> resultFrequency = comparisonResult.getFrequency();
+        List<String> messageList = new ArrayList<>();
+
+        if (resultFrequency.size() != 0) {
+            Optional<String> ballResultMessage = makeResultMessage(resultFrequency, ComparisonResultType.BALL);
+            ballResultMessage.ifPresent(messageList::add);
+
+            Optional<String> strikeResultMessage = makeResultMessage(resultFrequency, ComparisonResultType.STRIKE);
+            strikeResultMessage.ifPresent(messageList::add);
+
+            return String.join(" ", messageList);
+        }
+
+        return NumberBoardConstant.NOT_MATCH_AT_ALL_MESSAGE;
+    }
+
+    private Optional<String> makeResultMessage(HashMap<ComparisonResultType, Integer> resultFrequency,
+            ComparisonResultType type) {
+        if (resultFrequency.containsKey(type)) {
+            return Optional.of(resultFrequency.get(type) + type.getValue());
+        }
+        return Optional.empty();
     }
 }
