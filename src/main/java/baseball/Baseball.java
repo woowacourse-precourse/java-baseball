@@ -14,13 +14,15 @@ public class Baseball {
     // 게임 시작 method
     public void start(){
         this.Gaming = true;
-        this.resetTarget();
+        this.resetTargetNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     // 게임 재시작 method
     public void restart(){
-
+        this.resetTargetNumber();
+        this.guessNumber = 0;
+        this.ballCount = new BallCount();
     }
 
     // 게임 종료 method
@@ -49,7 +51,7 @@ public class Baseball {
     }
 
     // 1에서 9까지 서로 다른 임의의 수 3개를 선택 method
-    private void resetTarget(){
+    private void resetTargetNumber(){
 
     }
 
@@ -62,4 +64,5 @@ public class Baseball {
     private void ruleStrikeCount(){
 
     }
+
 }
