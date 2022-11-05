@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Nested;
@@ -91,23 +92,78 @@ public class FunctionTest {
 	@Nested
 	class ComparisonToolTest {
 		@Test
-		void 비교툴() {
-			List<Integer> computer = BaseballUtil.getRandomInteger();
+		void 결과_비교툴_스트라이크3() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList  = new ArrayList<>();
+			inputList.add(1);
+			inputList.add(3);
+			inputList.add(4);
+			
 			ComparisonTool comparisonTool = new ComparisonTool(computer);
-			String input = "123";
-			SetSystemInput(input);
-			List<Integer> inputList = BaseballUtil.getUserInteger();
 			ComparisonResults result = comparisonTool.compaerResult(inputList);
-			System.out.println(12312);
-			
-			
+			assertThat(result.strike).isEqualTo(3);
+			assertThat(result.ball).isEqualTo(0);
 		}
-		public void SetSystemInput(String input) {
-			OutputStream out = new ByteArrayOutputStream();
-			System.setOut(new PrintStream(out));
-			InputStream in = new ByteArrayInputStream(input.getBytes());
-			System.setIn(in);
+		
+		@Test
+		void 결과_비교툴_볼3() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList  = new ArrayList<>();
+			inputList.add(4);
+			inputList.add(1);
+			inputList.add(3);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.strike).isEqualTo(0);
+			assertThat(result.ball).isEqualTo(3);
 		}
+		
+		@Test
+		void 결과_비교툴_복합() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList  = new ArrayList<>();
+			inputList.add(1);
+			inputList.add(5);
+			inputList.add(3);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.strike).isEqualTo(1);
+			assertThat(result.ball).isEqualTo(1);
+		}
+		
+		@Test
+		void 결과_비교툴_낫싱() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList  = new ArrayList<>();
+			inputList.add(6);
+			inputList.add(7);
+			inputList.add(8);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.strike).isEqualTo(0);
+			assertThat(result.ball).isEqualTo(0);
+		}
+		
+		
 	}
 
 }
