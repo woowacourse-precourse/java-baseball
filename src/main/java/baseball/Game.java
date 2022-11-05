@@ -13,6 +13,7 @@ public class Game {
     static final String STRIKE = "스트라이크";
     static final String CORRECT_ANSWER = "3스트라이크";
     static final String NOTHING = "낫싱";
+    static final String INPUT_QUESTION = "숫자를 입력해주세요 : ";
     static final String FINISH_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void printStartMessage() {
@@ -29,6 +30,7 @@ public class Game {
         return computer;
     }
     public List<Integer> inputUserNumber() {
+        System.out.print(INPUT_QUESTION);
         String numberStr = readLine();
         List<Integer> user = new ArrayList<>();
         for (int i=0; i<3; i++) {
