@@ -14,8 +14,9 @@ public class Application {
 
         User userNumber = new User();
         userNumber.setUserNumbers();
-        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
-        for(int a : userNumber.userNumbers) System.out.print(a+" ");
+
+//        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
+//        for(int a : userNumber.userNumbers) System.out.print(a+" ");
     }
 
     public static void main(String[] args) {

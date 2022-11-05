@@ -17,13 +17,14 @@ public class User {
         String inputNumber;
         inputMessage();
         inputNumber = readLine();
+        checkException(inputNumber);
         userNumbers = new ArrayList<>();
         userNumbers = changeIntUsernumbers(inputNumber);
     }
 
     public static List<Integer> changeIntUsernumbers(String inputNubmers){
         String[] splitNumber = inputNubmers.split("");
-        int[] splitIntNumber = new int[3];
+        int[] splitIntNumber = new int[splitNumber.length];
         List<Integer> userNumbers = new ArrayList<>();
 
         for(int i =0;i<splitNumber.length;i++){
@@ -32,5 +33,33 @@ public class User {
         }
 
         return userNumbers;
+    }
+
+    public static void checkException(String inputNumber){
+        try{
+            checkWrongNumber(inputNumber);
+            checkNumbersLength(inputNumber);
+            checkOverlapNumber(inputNumber);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.toString());
+        }
+    }
+
+    public static void checkNumbersLength(String inputNumber){
+        if(inputNumber.length() != 3) throw new IllegalArgumentException("3개의 정수를 입력 해야합니다.");
+    }
+
+    public static void checkOverlapNumber(String inputNumber){
+        String checkOverlap ="";
+
+        for(char number : inputNumber.toCharArray()){
+            String checkNumber = String.valueOf(number);
+            if(checkOverlap.contains(checkNumber)) throw new IllegalArgumentException("중복된 숫자가 입력됐습니다.");
+            checkOverlap += checkNumber;
+        }
+    }
+
+    public static void checkWrongNumber(String inputNumber){
+        if(inputNumber.contains("0")) throw new IllegalArgumentException("0을 선택할 수 없습니다.");
     }
 }
