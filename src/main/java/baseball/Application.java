@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -21,20 +22,6 @@ public class Application {
         return computer;
     }
 
-    // 2. 사용자(User)의 컴퓨터를 설정한다.
-    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) {
-
-        // 2-1 : 사용자의 입력값을 검증한다.
-        try {
-            isValidStringInputOfUser(numberOfUserString);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-
-        // 2-2 : 사용자의 입력값을 List로 바꾼다.
-        user = stringToList(numberOfUserString);
-        return user;
-    }
 
     // 2-1 : 사용자의 입력값을 검증한다
     private static boolean isValidStringInputOfUser(String stringInputOfUser) throws IllegalArgumentException {
@@ -77,15 +64,47 @@ public class Application {
     }
 
     // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-    private static boolean isNeedReEnter() {
-        // 1. 3S가 나오지 못하는 경우 true를 반환한다.
-        return true;
-
-        // 2. 3S가 나온 경우에는 false를 반환한다.
-//        return false;
+    private static boolean isNeedReEnter(String ballCount) {
+        // 3-1-1. 3S가 나오지 못하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
+        if(!ballCount.equals("3스트라이크")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    // 3-2-1 : strike count하기
+    // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
+    private static String getNumberOfUserString() {
+        /*
+         * WARNING이 나는 이유가 Reflection API 때문인 것 같다.
+         * Console.java 클래스를 들어가보니,
+         * final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
+         * 여기에서 오류가 난 것 같다.
+         *
+         * 하지만 Exception이 발생했다면 "unable to determine if the scanner is closed."를 출력했어야 했을 것이다.
+         * 그렇지 않았으므로, 다른 문제가 발생한 것으로 볼 수 있다.
+         * 이 이상의 것은 구현하고 나서 다시 수정하는 것이 더 빠른 길이라고 생각이 든다. 일단 구현부터...
+         */
+        String numOfUserString = readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
+        return numOfUserString;
+    }
+
+    // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
+    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) {
+
+        // 3-2-2-1 : 사용자의 입력값을 검증한다.
+        try {
+            isValidStringInputOfUser(numberOfUserString);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        // 3-2-2-2 : 사용자의 입력값을 List로 바꾼다.
+        user = stringToList(numberOfUserString);
+        return user;
+    }
+
+    // 3-3-1 : strike count하기
     private static int howMuchStrike(List<Integer> computer, List<Integer> user) {
         int strikeCount = 0;
 
@@ -98,7 +117,7 @@ public class Application {
         return strikeCount;
     }
 
-    // 3-2-2 : ball count하기
+    // 3-3-2 : ball count하기
     private static int howMuchBall(List<Integer> computer, List<Integer> user) {
         int ballCount = 0;
 
@@ -117,16 +136,29 @@ public class Application {
         return ballCount;
     }
 
-    // 3-2 : computer와 user을 비교하여 BallCount를 반환한다.
+    // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
     private static String getBallCount(List<Integer> computer, List<Integer> user) {
-        // 3-2-1. 스트라이크 count하기
+        // 3-3-1. 스트라이크 count하기
         int countOfStrike = howMuchStrike(computer, user);
 
-        // 3-2-2. 볼 conut하기
+        // 3-3-2. 볼 conut하기
         int countOfBall = howMuchBall(computer, user);
 
-        // 3. 두 문자열을 합쳐서 반환하기 ex) 1S + 1B -> return "1S1B";
-        return countOfBall + "볼 " + countOfStrike + "스트라이크";
+        // 3-3-3. 두 문자열을 합치기.
+        String totalCount = "";
+        if (countOfBall == 0 && countOfStrike != 0) {
+            totalCount = countOfStrike + "스트라이크";
+        } else if (countOfBall != 0 && countOfStrike == 0) {
+            totalCount = countOfBall + "볼";
+        } else if (countOfBall == 0 && countOfStrike == 0) {
+            totalCount = "낫싱";
+        } else if (countOfBall != 0 && countOfStrike != 0){
+            totalCount = countOfBall + "볼 " + countOfStrike + "스트라이크";
+        } else {
+            totalCount = "비정상";
+        }
+
+        return totalCount;
     }
 
     public static void main(String[] args) {
@@ -135,37 +167,33 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer); // 테스트 출력
 
         // 2. 사용자에게서 숫자를 입력받는다.
         List<Integer> user = new ArrayList<>();
 
+        String ballCount = "";
         // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
-        while (isNeedReEnter()) {
+        while (isNeedReEnter(ballCount)) { // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
             user.clear();
 //            user.removeAll(user);
 
             System.out.print("숫자를 입력해주세요 : ");
+
+            // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
             String numberOfUserString = getNumberOfUserString();
+
+            // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
             user = getNumberOfUser(user, numberOfUserString);
 
-            String ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
-            System.out.println("ballCount = " + ballCount);
+            // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
+            ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
+            System.out.println(ballCount);
         }
-    }
 
-    private static String getNumberOfUserString() {
-        /*
-         * WARNING이 나는 이유가 Reflection API 때문인 것 같다.
-         * Console.java 클래스를 들어가보니,
-         * final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
-         * 여기에서 오류가 난 것 같다.
-         *
-         * 하지만 Exception이 발생했다면 "unable to determine if the scanner is closed."를 출력했어야 했을 것이다.
-         * 그렇지 않았으므로, 다른 문제가 발생한 것으로 볼 수 있다.
-         * 이 이상의 것은 구현하고 나서 다시 수정하는 것이 더 빠른 길이라고 생각이 든다. 일단 구현부터...
-         */
-        String numOfUserString = readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
-        return numOfUserString;
+        // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int restartOrExit = Integer.parseInt(Console.readLine());
+
     }
 }
