@@ -43,6 +43,21 @@ public class Game {
 		return judgement;
 	}
 
+	private int findStrikes(String userInput, String answer) {
+		int counter = 0;
+		int userNumberLength = userInput.length();
+
+		for (int i = 0; i < userNumberLength; i++) {
+			counter += countStrikes(userInput, answer, i);
+		}
+
+		return counter;
+	}
+
+
+
+	private int findBalls(String userInput, String answer) {
+	}
 
 
 
