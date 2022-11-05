@@ -31,6 +31,7 @@ public class BaseballGame {
     }
 
     private void printClearMessage() {
+        System.out.printf("%d%s%n", GAME_NUMBER_LENGTH, STRIKE_MESSAGE);
         System.out.println(CLEAR_GAME_MESSAGE);
     }
 
