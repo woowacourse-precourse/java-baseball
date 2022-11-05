@@ -22,6 +22,10 @@ public class BaseballGameNumber {
         return numbers.get(order);
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException(NUMBER_SIZE + "자리 숫자만 가능합니다.");
