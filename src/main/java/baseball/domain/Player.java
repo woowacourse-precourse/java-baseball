@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Player {
     List<Integer> numbers = new ArrayList<>();
@@ -47,10 +48,9 @@ public class Player {
     }
 
     List<Integer> convertInput(String input) {
-        List<Integer> convertedIntegers = new ArrayList<>();
-        for (char ch: input.toCharArray()) {
-            convertedIntegers.add(Character.getNumericValue(ch));
-        }
-        return convertedIntegers;
+        return input.chars()
+                .mapToObj(ch -> (char)ch)
+                .map(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 }
