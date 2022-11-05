@@ -3,11 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -31,10 +33,10 @@ public class Application {
 
         public void play() {
             System.out.println("숫자 야구 게임을 시작합니다.");
-            repeatGame();
+            startGame();
         }
 
-        private void repeatGame() {
+        private void startGame() {
             do {
                 List<Integer> targetNumbers = getTargetNumbers();
                 repeatUntilUserGetsPerfectAnswer(targetNumbers);
@@ -89,22 +91,17 @@ public class Application {
         }
 
         private List<Integer> getUserInputNumbersIfConvertible(String input) {
-            String[] splitInput = input.split("");
-            return convertUserInputToInt(splitInput);
-        }
-
-        private List<Integer> convertUserInputToInt(String[] splitInput) {
-            List<Integer> userInputToInt = new ArrayList<>();
+            List<Integer> collect;
 
             try {
-                for (String eachCharacter : splitInput) {
-                    userInputToInt.add(Integer.parseInt(eachCharacter));
-                }
+                collect = Arrays.stream(input.split(""))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
             }
 
-            return userInputToInt;
+            return collect;
         }
 
         private void validateUseForbiddenNumber(List<Integer> numsList) {
