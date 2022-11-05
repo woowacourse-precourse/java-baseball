@@ -2,6 +2,7 @@ package baseball.game;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.board.NumberBoardConstant;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -51,4 +52,11 @@ public class BaseballGameTest {
         assertThat(outputPrint.toString().contains(BaseballConstants.SUCCESS_MESSAGE)).isEqualTo(false);
     }
 
+    @Test
+    void play_메소드는_모든_수가_틀릴시_NOT_MATCH_AT_ALL_MESSAGE_메시지를_출력() {
+        System.setIn(new ByteArrayInputStream("789".getBytes()));
+        assertThatThrownBy(() -> baseballGame.play())
+                .hasMessageContaining("No line found");
+        assertThat(outputPrint.toString().contains(NumberBoardConstant.NOT_MATCH_AT_ALL_MESSAGE)).isEqualTo(true);
+    }
 }
