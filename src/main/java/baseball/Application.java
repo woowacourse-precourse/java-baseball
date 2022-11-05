@@ -75,11 +75,17 @@ public class Application {
         validateOnlyNumbers(replay);
         validateNumberOfValues(replay, 1);
         int replayNum = Integer.parseInt(replay);
+        validateInRange(replayNum);
         if (replayNum == 1) {
             return true;
         }
         else if (replayNum == 2) {
             return false;
+        }
+    }
+    static void validateInRange(int num) {
+        if (!(1 <= num && num <= 2)) {
+            throw new IllegalArgumentException("1 또는 2만 입력이 가능합니다");
         }
     }
 
