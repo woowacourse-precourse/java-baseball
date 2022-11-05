@@ -2,6 +2,9 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import org.junit.jupiter.api.Test;
 
 public class BallsTest {
@@ -38,7 +41,11 @@ public class BallsTest {
 	}
 
 	@Test
-	void 임의의_값으로_정상적인_객체_생성() {
-		//TODO
+	void 중복되지않는_임의의_세자리수를_생성() {
+		ArrayList<Integer> randomNumbers = Balls.getRandomNumbers();
+		HashSet<Integer> randomNumbersSet = new HashSet<>(randomNumbers);
+
+		assertThat(randomNumbers.size()).isEqualTo(3);
+		assertThat(randomNumbersSet.size()).isEqualTo(3);
 	}
 }

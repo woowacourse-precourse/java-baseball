@@ -48,7 +48,7 @@ public class Balls {
 		);
 	}
 
-	private static ArrayList<Integer> getRandomNumbers() {
+	static ArrayList<Integer> getRandomNumbers() {
 		ArrayList<Integer> randomNumbers = new ArrayList<>();
 		while (randomNumbers.size() < 3) {
 			int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
