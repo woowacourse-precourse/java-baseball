@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class BaseballGame {
@@ -9,10 +10,25 @@ public class BaseballGame {
     private int ball;
     private int strike;
 
-    BaseballGame() {
+    public BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.strike = 0;
         this.ball = 0;
+    }
+
+    public void gameStart() {
+        Computer computerBalls = new Computer();
+        Exception exception = new Exception();
+
+        String userBalls = Console.readLine();
+        exception.Check(userBalls);
+
+        while (throwBall(userBalls, computerBalls.getComputerBalls())) {
+            this.strike = 0;
+            this.ball = 0;
+            userBalls = Console.readLine();
+            exception.Check(userBalls);
+        }
     }
 
     void ballReader(int userball, int computerball, boolean isStrike) {
@@ -32,11 +48,19 @@ public class BaseballGame {
         }
     }
 
-    void throwball(ArrayList<Integer> userBalls, ArrayList<Integer> computerBalls) {
-        for (int ballCount = 0; ballCount < userBalls.size(); ballCount++) {
-            int userBall = userBalls.get(ballCount);
+    boolean throwBall(String userBalls, ArrayList<Integer> computerBalls) {
+        for (int ballCount = 0; ballCount < userBalls.length(); ballCount++) {
+            int userBall = userBalls.charAt(ballCount) - '0';
             refereeBaseball(userBall, computerBalls, ballCount);
         }
+
+        printHint();
+
+        if (this.strike == 3) {
+            return false;
+        }
+
+        return true;
     }
 
     void printHint() {
