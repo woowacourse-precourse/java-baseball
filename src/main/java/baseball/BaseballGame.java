@@ -5,6 +5,7 @@ import baseball.core.BaseballGameCore;
 import baseball.printer.GameMessagePrinter;
 
 import static baseball.console.converter.RestartOrExitCodeConverter.EXIT_CODE;
+import static baseball.console.converter.RestartOrExitCodeConverter.START_CODE;
 
 public class BaseballGame {
 
@@ -19,7 +20,7 @@ public class BaseballGame {
     }
 
     public void play() throws IllegalArgumentException {
-        int statusCode = 0;
+        int statusCode = START_CODE;
 
         messagePrinter.printStartMessage();
         while (isNotExitCode(statusCode)) {
