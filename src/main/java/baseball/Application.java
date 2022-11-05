@@ -15,11 +15,19 @@ public class Application {
 
     public static void main(String[] args) {
         notifyGameStart();
+        startGame();
+    }
+
+    private static void startGame() {
         List<Integer> computerNumbers = createComputerNumbers();
         while (true){
             List<Integer> userNumbers = InputUserNumber();
             String hint = getHint(computerNumbers, userNumbers);
             System.out.println(hint);
+            if (hint.equals("3스트라이크")) {
+                System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
