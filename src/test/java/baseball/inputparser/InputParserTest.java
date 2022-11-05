@@ -1,7 +1,7 @@
 package baseball.inputparser;
 
 import org.junit.jupiter.api.Test;
-import java.util.Set;
+import java.util.List;
 
 import static baseball.inputparser.InputParser.parseInGameInput;
 import static baseball.inputparser.InputParser.parseRestartInput;
@@ -22,8 +22,8 @@ class InputParserTest {
     @Test
     void parseInGameInputTest() {
         // Case 1. 정상 케이스
-        Set<Integer> integerSet = parseInGameInput("123");
-        assertThat(integerSet.size()).isEqualTo(3);
+        List<Integer> integerList = parseInGameInput("123");
+        assertThat(integerList.size()).isEqualTo(3);
 
         // Case 2. 비정상 케이스 - 숫자로 파싱되지 않는 경우
         assertThatThrownBy(() -> parseInGameInput("abc"))

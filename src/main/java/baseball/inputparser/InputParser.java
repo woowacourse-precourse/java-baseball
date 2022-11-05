@@ -1,7 +1,7 @@
 package baseball.inputparser;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import static baseball.inputparser.InputType.GAME_RESTART_INPUT;
 import static baseball.inputparser.InputType.IN_GAME_INPUT;
@@ -17,12 +17,12 @@ public class InputParser {
 
     /**
      * 게임이 진행 중일 때 (사용자가 3개의 문자를 입력하는 경우) 입력 문자열에 관한 처리 메서드입니다.
-     * 입력 문자열을 입력으로 받아 해당하는 3개의 숫자를 담은 Set을 반환합니다.
+     * 입력 문자열을 입력으로 받아 해당하는 3개의 숫자를 담은 List를 반환합니다.
      * @param input 입력 문자열
-     * @return 입력으로 받은 3개의 숫자를 담은 Set
+     * @return 입력으로 받은 3개의 숫자를 담은 List
      * @throws IllegalArgumentException 입력 문자열이 정수형으로 파싱되지 않거나, 서로 다른 3개의 숫자가 아닌 경우
      */
-    public static Set<Integer> parseInGameInput(String input) throws IllegalArgumentException {
+    public static List<Integer> parseInGameInput(String input) throws IllegalArgumentException {
         checkCommonInput(input, IN_GAME_INPUT);
         return parseThreeInteger(input);
     }
@@ -73,26 +73,26 @@ public class InputParser {
     }
 
     /**
-     * 입력 문자열이 서로 다른 3개의 숫자인지를 확인하고, 서로 다른 3개의 숫자일 경우 이 숫자들을 담은 Set을 반환합니다.
+     * 입력 문자열이 서로 다른 3개의 숫자인지를 확인하고, 서로 다른 3개의 숫자일 경우 이 숫자들을 담은 List을 반환합니다.
      * @param input 입력 문자열
-     * @return 3개의 서로 다른 숫자들을 담은 Set
+     * @return 3개의 서로 다른 숫자들을 담은 List
      * @throws IllegalArgumentException 입력 문자열이 서로 다른 3개의 숫자가 아닌 경우
      */
-    private static Set<Integer> parseThreeInteger(String input) throws IllegalArgumentException {
+    private static List<Integer> parseThreeInteger(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해야 합니다! ex)123");
         }
 
-        Set<Integer> integerSet = new HashSet<>();
-        // set은 같은 숫자를 중복해서 저장하지 않기 때문에, set을 이용해서 숫자들을 저장하고, 숫자가 총 3개인지 확인합니다.
+        List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            integerSet.add(input.charAt(i) - '0');
+            int currentNumber = input.charAt(i) - '0';
+            // 중복된 숫자를 입력한 경우
+            if (integerList.contains(currentNumber)) {
+                throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해야 합니다! ex)123");
+            }
+            integerList.add(currentNumber);
         }
-
-        if (integerSet.size() < 3) {
-            throw new IllegalArgumentException("3개의 서로 다른 숫자를 입력해야 합니다! ex)123");
-        }
-        return integerSet;
+        return integerList;
     }
 
 }
