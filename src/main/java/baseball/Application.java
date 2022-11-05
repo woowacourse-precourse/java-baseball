@@ -38,7 +38,7 @@ public class Application {
 
             String numberString = putInNumber();
 
-            if (!checkNumber(numberString)) {
+            if (!checkUserNumber(numberString)) {
                 continue;
             }
 
@@ -78,7 +78,7 @@ public class Application {
         return scanner.nextLine();
     }
 
-    public static boolean checkNumber(String numberString) {
+    public static boolean checkUserNumber(String numberString) {
 
         try {
 
