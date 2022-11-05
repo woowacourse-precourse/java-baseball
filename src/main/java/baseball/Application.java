@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.BaseballGame;
 import baseball.domain.count.ball.BallCounter;
 import baseball.domain.count.strike.StrikeCounter;
 import baseball.view.print.MessagePrinter;

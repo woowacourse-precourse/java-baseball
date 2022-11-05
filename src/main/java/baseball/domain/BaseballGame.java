@@ -1,13 +1,13 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.count.CountResult;
 import baseball.domain.count.ball.BallCounter;
 import baseball.domain.count.strike.StrikeCounter;
-import baseball.domain.number.SingleNumber;
+import baseball.domain.number.inputnumber.InputNumbers;
 import baseball.domain.number.randomnumber.RandomNumberFactory;
+import baseball.domain.number.randomnumber.RandomNumbers;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
-
-import java.util.List;
 
 import static baseball.domain.number.inputnumber.InputNumberFactory.newInstance;
 
@@ -29,7 +29,7 @@ public class BaseballGame {
     }
 
     public void run() {
-        List<SingleNumber> answer = RandomNumberFactory.newInstance().randomNumbers();
+        RandomNumbers randomNumbers = RandomNumberFactory.newInstance();
         int oneOrTwoForRestartGame = 0;
 
         messagePrinter.printStartMessage();
@@ -38,10 +38,11 @@ public class BaseballGame {
             messagePrinter.printEnterNumberMessage();
 
             String inputValue = numberScanner.inputNumber();
-            List<SingleNumber> inputNumber = newInstance(inputValue).inputNumbers();
+            InputNumbers inputNumber = newInstance(inputValue);
 
-            int ballCount = ballCounter.checkBall(answer, inputNumber).ballCount();  // 객체화 시키는게 낫나.. 걍 int 주는게 낫나...
-            int strikeCount = strikeCounter.checkStrike(answer, inputNumber).strikeCount();
+            CountResult countResult = randomNumbers.countBallAndStrike(inputNumber);
+            int ballCount = countResult.ballCount();
+            int strikeCount = countResult.strikeCount();
 
             printBallAndStrikeCount(ballCount, strikeCount);
 
@@ -53,7 +54,7 @@ public class BaseballGame {
             }
 
             if (oneOrTwoForRestartGame == 1) {
-                answer = RandomNumberFactory.newInstance().randomNumbers();
+                randomNumbers = RandomNumberFactory.newInstance();
                 oneOrTwoForRestartGame = 0;
             }
         }

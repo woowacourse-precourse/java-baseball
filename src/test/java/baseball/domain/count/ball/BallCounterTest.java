@@ -25,8 +25,8 @@ class BallCounterTest {
                 new SingleNumber(2, 2)
         );
 
-        BallResult ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
-        assertThat(ballResult.ballCount()).isEqualTo(3);
+        int ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
+        assertThat(ballResult).isEqualTo(3);
     }
 
     @Test
@@ -43,7 +43,7 @@ class BallCounterTest {
                 new SingleNumber(2, 3)
         );
 
-        BallResult ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
-        assertThat(ballResult.ballCount()).isEqualTo(0);
+        int ballResult = ballCounter.checkBall(randomNumbers, inputNumbers);
+        assertThat(ballResult).isEqualTo(0);
     }
 }

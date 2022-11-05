@@ -25,8 +25,8 @@ class StrikeCounterTest {
                 new SingleNumber(2, 3)
         );
 
-        StrikeResult strikeResult = strikeCounter.checkStrike(randomNumbers, inputNumbers);
-        assertThat(strikeResult.strikeCount()).isEqualTo(3);
+        int strikeResult = strikeCounter.checkStrike(randomNumbers, inputNumbers);
+        assertThat(strikeResult).isEqualTo(3);
     }
 
     @Test
@@ -43,7 +43,7 @@ class StrikeCounterTest {
                 new SingleNumber(2, 2)
         );
 
-        StrikeResult strikeResult = strikeCounter.checkStrike(randomNumbers, inputNumbers);
-        assertThat(strikeResult.strikeCount()).isEqualTo(0);
+        int strikeResult = strikeCounter.checkStrike(randomNumbers, inputNumbers);
+        assertThat(strikeResult).isEqualTo(0);
     }
 }

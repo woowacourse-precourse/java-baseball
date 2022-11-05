@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StrikeCounter {
 
-    public StrikeResult checkStrike(List<SingleNumber> randomNumbers, List<SingleNumber> inputNumbers) {
+    public int checkStrike(List<SingleNumber> randomNumbers, List<SingleNumber> inputNumbers) {
         int strikeCount = 0;
         for (SingleNumber inputNumber : inputNumbers) {
             if (randomNumbers.contains(inputNumber)) {
@@ -14,6 +14,6 @@ public class StrikeCounter {
             }
         }
 
-        return new StrikeResult(strikeCount);
+        return strikeCount;
     }
 }

@@ -8,8 +8,6 @@ import java.util.stream.IntStream;
 
 public class InputNumberFactory {
 
-    private static final int DIGITS_FOR_THIS_GAME = 3;
-
     public static InputNumbers newInstance(String inputValue) {
         validateInputValue(inputValue);
         return new InputNumbers(generateSingleNumberList(inputValue));
@@ -17,17 +15,18 @@ public class InputNumberFactory {
 
     private static List<SingleNumber> generateSingleNumberList(String inputValue) {
         List<Integer> inputValues = inputValueToList(inputValue);
-        return IntStream.range(0, DIGITS_FOR_THIS_GAME)
+        return IntStream.range(0, 3)
                 .mapToObj(i -> new SingleNumber(i, inputValues.get(i)))
                 .collect(Collectors.toList());
     }
 
     private static List<Integer> inputValueToList(String inputValue) {
-        return IntStream.range(0, DIGITS_FOR_THIS_GAME)
+        return IntStream.range(0, 3)
                 .mapToObj(i -> Integer.parseInt(inputValue.substring(i, i + 1)))
                 .collect(Collectors.toList());
     }
 
+    // TODO SingleNumber에서 구현
     private static void validateInputValue(String inputValue) {
         validateLengthForGame(inputValue);
         validatePositiveNumber(inputValue);
@@ -38,7 +37,7 @@ public class InputNumberFactory {
     private static void validateLengthForGame(String inputValue) {
         int length = inputValue.length();
 
-        if (length != DIGITS_FOR_THIS_GAME) {
+        if (length != 3) {
             throw new IllegalArgumentException("세자리의 숫자를 입력해 주세요.");
         }
     }
@@ -56,12 +55,12 @@ public class InputNumberFactory {
     }
 
     private static void validateDuplicate(String inputValue) {
-        long count = IntStream.range(0, DIGITS_FOR_THIS_GAME)
+        long count = IntStream.range(0, 3)
                 .mapToObj(inputValue::charAt)
                 .distinct()
                 .count();
 
-        if (count < DIGITS_FOR_THIS_GAME) {
+        if (count < 3) {
             throw new IllegalArgumentException("중복 숫자는 입력할 수 없습니다.");
         }
     }

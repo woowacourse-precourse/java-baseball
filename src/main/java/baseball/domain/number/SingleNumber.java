@@ -8,7 +8,8 @@ public final class SingleNumber {
     private final int position;
     private final int number;
 
-    public SingleNumber(int position, int number) {
+    public SingleNumber(int position, int number) {  // 유효성 검증은 받는 쪽에서.
+        // 검증
         this.position = position;
         this.number = number;
     }

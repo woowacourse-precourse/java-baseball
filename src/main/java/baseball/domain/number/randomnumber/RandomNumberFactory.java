@@ -1,5 +1,7 @@
 package baseball.domain.number.randomnumber;
 
+import baseball.domain.count.ball.BallCounter;
+import baseball.domain.count.strike.StrikeCounter;
 import baseball.domain.number.SingleNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -11,7 +13,11 @@ import java.util.stream.IntStream;
 public class RandomNumberFactory {
 
     public static RandomNumbers newInstance() {
-        return new RandomNumbers(generateSingleNumberList());
+        return new RandomNumbers(
+                generateSingleNumberList(),
+                new BallCounter(),
+                new StrikeCounter()
+        );
     }
 
     private static List<SingleNumber> generateSingleNumberList() {
