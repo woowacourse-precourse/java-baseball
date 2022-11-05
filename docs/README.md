@@ -46,10 +46,10 @@
     - [ ] 리스트 안에 들어 있는 숫자를 제외한 숫자 중에서 랜덤으로 숫자를 리턴하는 메서드 `getRandomIntegerExcludeInList`
 - [ ] 게임에서 사용자의 입력을 받는 메서드 `getUsersAnswer`
     - [ ] 입력 받은 문자열을 각 자리수로 쪼갠 숫자 리스트로 반환하는 메서드 `stringToSeparatedIntergerList`
-  - [ ] 입력을 받고 에러처리까지 해준다.
+    - [ ] 입력을 받고 에러처리까지 해준다.
 - [ ] 숫자를 비교해서 결과를 반환하는 메서드
     - [x] `볼`의 갯수를 세는 메서드 `countBall`
-  - [ ] `스트라이크`의 갯수를 세는 메서드 `countStrike`
+    - [x] `스트라이크`의 갯수를 세는 메서드 `countStrike`
 - [ ] 받은 결과 판별하는 메서드 `낫싱, 볼, 스트라이크, 게임 종료` `getGameResult`
 - [ ] 게임이 끝난 후 게임을 다시할 지 물어보는 메서드 `isPlayingNewGame`
 

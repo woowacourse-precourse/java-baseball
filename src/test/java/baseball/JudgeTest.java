@@ -47,4 +47,57 @@ class JudgeTest {
         assertThat(cnt).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("스트라이크가 없을 때")
+    void countNoStrike() throws Exception {
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(3, 1, 2);
+
+        Judge judge = new Judge(answer);
+
+        Method countStrike = Judge.class.getDeclaredMethod("countStrike", List.class);
+        countStrike.setAccessible(true);
+
+        //When
+        Integer cnt = (Integer) countStrike.invoke(judge, guess);
+
+        //Then
+        assertThat(cnt).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("스트라이크가 2개일 때")
+    void count2Strike() throws Exception {
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(6, 2, 3);
+
+        Judge judge = new Judge(answer);
+
+        Method countStrike = Judge.class.getDeclaredMethod("countStrike", List.class);
+        countStrike.setAccessible(true);
+
+        //When
+        Integer cnt = (Integer) countStrike.invoke(judge, guess);
+
+        //Then
+        assertThat(cnt).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("스트라이크가 3개일 때")
+    void countAllStrike() throws Exception {
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(1, 2, 3);
+
+        Judge judge = new Judge(answer);
+
+        Method countStrike = Judge.class.getDeclaredMethod("countStrike", List.class);
+        countStrike.setAccessible(true);
+
+        //When
+        Integer cnt = (Integer) countStrike.invoke(judge, guess);
+
+        //Then
+        assertThat(cnt).isEqualTo(3);
+    }
 }
