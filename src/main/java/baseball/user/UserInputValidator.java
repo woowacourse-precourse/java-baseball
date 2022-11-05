@@ -3,11 +3,13 @@ package baseball.user;
 import java.util.List;
 
 public class UserInputValidator {
-
-    public UserInputValidator() {}
+    private static final UserInputValidator userInputValidator = new UserInputValidator();
+    public static UserInputValidator getInstance() {
+        return userInputValidator;
+    }
+    private UserInputValidator() {}
 
     public void validate(List<String> inputValue) {
-
         if (inputValue.size() != 3 || inputValue.contains("0")) {
             throw new IllegalArgumentException();
         }
