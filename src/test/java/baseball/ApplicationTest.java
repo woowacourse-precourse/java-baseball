@@ -73,6 +73,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void check_ball(){
+        int[] testData = {3,1,2};
+        int[] testData2 = {1,2,3};
+        gameProcessor.ballChecker(testData,testData2);
+        assertThat(gameProcessor.getBall()).isEqualTo(3);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
