@@ -10,7 +10,7 @@ public class Printer {
 	}
 
 	public static void printAskInputMessage() {
-		System.out.print(ASK_INPUT_MESSAGE.get());
+		System.out.print(ASKING_INPUT_MESSAGE.get());
 	}
 
 	public static void printResult(int ballsCount, int strikesCount) {
@@ -43,6 +43,6 @@ public class Printer {
 	}
 
 	public static void printGettingRightAnswerMessage() {
-		System.out.println(GAME_END_MESSAGE);
+		System.out.println(GETTING_RIGHT_ANSWER_MESSAGE.get());
 	}
 }
