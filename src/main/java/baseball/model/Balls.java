@@ -32,7 +32,7 @@ public class Balls {
                 .anyMatch(ball -> ball.isStrike(other));
     }
 
-    private boolean isOut(Ball ball) {
+    public boolean isOut(Ball ball) {
         return !isBall(ball) && !isStrike(ball);
     }
 
