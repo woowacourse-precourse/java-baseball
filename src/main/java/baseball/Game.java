@@ -114,17 +114,22 @@ public class Game {
     }
 
     private List<Integer> makeUserAnswer(String input) {
-        List<Integer> user = new ArrayList<>();
         try {
             validThreeLengthOrSize(input.length(), INPUT_LENGTH_EXCEPTION);
-            for (String number : input.split("")) {
-                addBall(user, Integer.parseInt(number));
-            }
+            List<Integer> user = makeUserList(input);
             validThreeLengthOrSize(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
+            return user;
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-        return user;
+    }
+
+    private static List<Integer> makeUserList(String input) {
+        List<Integer> list = new ArrayList<>();
+        for (String number : input.split("")) {
+            addBall(list, Integer.parseInt(number));
+        }
+        return list;
     }
 
     private void validThreeLengthOrSize(int number, String message) {
