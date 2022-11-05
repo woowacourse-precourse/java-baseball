@@ -47,6 +47,18 @@ public class Application {
 
         return targetNums;
     }
+    public static List<Integer> compareNums(List<Integer> targetNums, List<Integer>userNums){
+        List<Integer> b_s_list = new ArrayList<>();
+        int balls = 0;
+        int strikes = 0;
+
+//        balls = count_balls(targetNums,userNums);
+//        strikes = count_strikes(targetNums,userNums);
+
+        b_s_list.add(balls);
+        b_s_list.add(strikes);
+        return b_s_list;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String input="";
