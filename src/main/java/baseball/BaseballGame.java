@@ -36,6 +36,7 @@ public class BaseballGame {
                     break;
                 }
             }
+            messagePrinter.printRestartOrExitMessage();
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
