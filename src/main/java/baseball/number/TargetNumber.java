@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TargetNumber implements Number {
-
     final int START = 1;
     final int END = 9;
     List<String> targetNumber = new ArrayList<>();
@@ -31,10 +30,5 @@ public class TargetNumber implements Number {
             }
         }
 
-    }
-
-    public static void main(String[] args) {
-        TargetNumber targetNumber1 = new TargetNumber();
-        System.out.println("targetNumber1.getNumber() = " + targetNumber1.getNumber());
     }
 }

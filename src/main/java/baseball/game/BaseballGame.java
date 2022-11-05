@@ -1,27 +1,26 @@
 package baseball.game;
 
 import baseball.number.PlayerNumber;
+import baseball.number.TargetNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
 
     PlayerNumber playerNumber;
+    TargetNumber targetNumber;
 
-    void start() {
-        try {
-            playerNumber = new PlayerNumber(setPlayerNumber());
-        } catch (IllegalArgumentException e){
-            System.out.println("올바른 숫자를 입력하세요.");
-        }
+    public BaseballGame(PlayerNumber playerNumberImpl, TargetNumber targetNumberImpl) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        this.playerNumber = playerNumberImpl;
+        this.targetNumber = targetNumberImpl;
+
+        start();
     }
 
-    public String setPlayerNumber() {
-
-        String playerNumber;
-
-        System.out.print("숫자를 입력하세요 : ");
-        playerNumber = Console.readLine();
-
-        return playerNumber;
+    public void start() {
+        playerNumber.setPlayerNumber();
     }
+
+
+
 }
