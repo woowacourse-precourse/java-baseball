@@ -24,23 +24,23 @@
   - 사용자가 입력한 숫자로 된 문자열을 숫자로 배열에 저장하는 함수
 
 
-- boolean checkNumber(String)
+- boolean checkUserNumber(String)
   - 사용자가 잘못된 값을 입력했는지 체크하는 함수
 
 
-- boolean check(String)
+- boolean checkingUserNumberIsCorrect(String)
   - 입력된 값을 실제로 체크하는 함수
 
 
-- boolean checkLength(String)
+- boolean checkUserNumberLength(String)
   - 입력된 값의 길이가 3인지 체크하는 함수
 
 
-- boolean checkInteger(String)
+- boolean checkUserNumberIsInteger(String)
   - 입력된 값이 1~9 사이의 숫자인지 체크하는 함수
 
 
-- boolean checkDuplicateNumber(String)
+- boolean checkUserNumberIsDuplicate(String)
   - 입력된 값이 중복되는지 체크하는 함수
 
 
