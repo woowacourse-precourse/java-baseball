@@ -111,6 +111,18 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
+    @Test
+    void userInput이_숫자가_아닐경우() {
+        //given
+        String userInput = "12가";
+
+        //when
+        boolean check = Application.isNumber(userInput);
+
+        //then
+        assertThat(check).isEqualTo(false);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
