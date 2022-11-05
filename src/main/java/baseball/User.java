@@ -7,7 +7,7 @@ import baseball.validator.NumberValidator;
 import static baseball.constant.Const.RETRY;
 
 public class User {
-    private static String inputNumber;
+    private String inputNumber;
 
     public void enterNumber() {
         inputNumber = getNumberFromInput();
