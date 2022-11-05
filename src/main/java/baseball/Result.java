@@ -28,4 +28,12 @@ public class Result {
     public ResultType getResultType() {
         return resultType;
     }
+
+    public int numberOfBall() {
+        return ball;
+    }
+
+    public int numberOfStrike() {
+        return strike;
+    }
 }
