@@ -100,7 +100,15 @@ public class Application {
     }
 
     public static Integer continueGame(List<Integer> result) {
-
+        int strike = result.get(0);
+        if (strike == 3) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            int continueResult = Character.getNumericValue(choice.charAt(0));
+            return continueResult;
+        } else{
+            return RE_GAME;
+        }
     }
 
     public static void printResult(List<Integer> result) {
