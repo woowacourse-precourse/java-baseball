@@ -25,6 +25,7 @@ public class PrepareGame {
     public String setUserNumber(){
         String userNumber = Console.readLine();
         if(!isNumber(userNumber) || !isThreeDigitNumber(userNumber)){
+            throw new IllegalArgumentException("Please enter the correct value");
         }
         return userNumber;
     }
