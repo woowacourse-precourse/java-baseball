@@ -20,8 +20,15 @@ public class Application {
         List<Integer> computerNumber = generateComputerNumber();
         String computerNumberResult = computerNumberListToString(computerNumber);
         int strikeResult = countStrike(inputNumber,computerNumberResult);
+        int ballResult = countBall(inputNumber, computerNumberResult);
         System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
-        System.out.println(countStrike(inputNumber,computerNumberResult) + "스트라이크");
+
+        if (!checkedNotThing(ballResult, strikeResult)) {
+            System.out.println(countBall(inputNumber,computerNumberResult) + "볼");
+            System.out.println(countStrike(inputNumber,computerNumberResult) + "스트라이크");
+        }
+
+
     }
     /*
      * 컴퓨터의 랜덤한 세 자리 수를 List에 저장함
@@ -49,15 +56,29 @@ public class Application {
     }
     static int countStrike (String userInput, String computerInput) {
         int strikeCount = 0;
-        if (userInput.substring(0,1).equals(computerInput.substring(0,1))) {
-            strikeCount ++;
-        }
-        if (userInput.substring(1,2).equals(computerInput.substring(1,2))) {
-            strikeCount ++;
-        }
-        if (userInput.substring(2,3).equals(computerInput.substring(2,3))) {
-            strikeCount ++;
+        for (int i = 0; i < RESULT_SIZE; i++) {
+            if (userInput.substring(i,i+1).equals(computerInput.substring(i,i+1))) {
+                strikeCount ++;
+            }
         }
         return  strikeCount;
+    }
+    static int countBall (String userInput, String computerInput) {
+        // 볼이 되려면 우선적으로 같은 자리 같은 숫자가 없는 조건을 걸어야함 그리고 거기서 해당 숫자들의 contains를 확인해야한다.
+        // 볼의 갯수를 먼저 센 다음에 볼에서 스트라이크의 숫자를 빼면 진짜 볼의 갯수가 나올 듯 ?
+        int ballCount = 0;
+        for (int i = 0; i < RESULT_SIZE; i++) {
+            if (userInput.contains(computerInput.substring(i,i+1))) {
+                ballCount ++;
+            }
+        }
+        return ballCount - countStrike(userInput,computerInput);
+    }
+    static boolean checkedNotThing (int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0 ){
+            System.out.println("낫싱");
+            return true;
+        }
+        return false;
     }
 }
