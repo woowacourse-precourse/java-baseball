@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Valid {
@@ -26,9 +27,12 @@ public class Valid {
     }
 
     private static boolean isNotDuplicate(List<Integer> numList) {
+        List<Integer> compareList = new ArrayList<>();
         for (Integer num : numList) {
-            if(numList.contains(num)){
+            if(compareList.contains(num)){
                 return false;
+            }else{
+                compareList.add(num);
             }
         }
         return true;
