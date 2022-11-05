@@ -82,6 +82,7 @@ public class BullsAndCows {
 
     private void restart() {
         createRandomAnswer();
+        playGame();
     }
 
     private void createRandomAnswer() {
