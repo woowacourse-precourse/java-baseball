@@ -1,19 +1,20 @@
 package baseball;
 
+import Constant.Const;
+
 import java.util.Scanner;
 
 public class User {
-    private String userInput;
     Scanner Scanner = new Scanner(System.in);
     int[] userNumber = new int[3];
 
 
     public void UserInput(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Const.USER_INPUT);
 
-        userInput = Scanner.nextLine();
+        String userInput = Scanner.nextLine();
         if (invalidUserNumber(userInput)) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException(Const.INPUT_WRONG);
         } else {
             for (int i = 0; i < 3; i++) {
                 this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));

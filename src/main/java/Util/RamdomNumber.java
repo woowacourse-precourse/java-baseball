@@ -1,6 +1,6 @@
 package Util;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RamdomNumber {
     private int[] randomNumber;
@@ -10,12 +10,9 @@ public class RamdomNumber {
     }
 
     public int[] makeRandomNumber(int size) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         boolean[] alreadyUsed = new boolean[10];
-        Random random = new Random();
         for (int i = 0; i < size; i++) {
-            int number = random.nextInt(9) + 1;
+            int number = Randoms.pickNumberInRange(1, 9);
 
             if (!alreadyUsed[number]) {
                 alreadyUsed[number] = true;

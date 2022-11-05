@@ -1,5 +1,6 @@
 package baseball;
 
+import Constant.Const;
 import Util.RamdomNumber;
 import java.util.Scanner;
 
@@ -17,23 +18,27 @@ public class BaseballGame {
     }
 
     public void startGame(){
+        System.out.println(Const.GAME_START);
         answer = randomNumber.makeRandomNumber(3);
         do {
             user.UserInput();
             hint.getHint(user.getUserNumber(), answer);
         } while (hint.strike != 3);
     }
-    public boolean restartGame(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return continueGame();
+    public boolean doneGame(){
+        System.out.println(Const.GAME_DONE);
+        return restartGame();
     }
 
-    private boolean continueGame(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private boolean restartGame(){
+        System.out.println(Const.GAME_RESTART);
         int input = scanner.nextInt();
-        if (input == 1){
+        if (input == Const.RESTART){
             return true;
+        } else if (input == Const.EXIT){
+            return false;
+        } else {
+            throw new IllegalArgumentException(Const.INPUT_WRONG);
         }
-        return false;
     }
 }

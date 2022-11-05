@@ -5,6 +5,6 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame();
         do {
             baseballGame.startGame();
-        } while (baseballGame.restartGame());
+        } while (baseballGame.doneGame());
     }
 }
