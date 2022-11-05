@@ -150,7 +150,6 @@ public class Computer {
     }
 
     private void checkStrikeBall(List<Integer> listSplitNum) {
-        // TODO: 매개변수 숫자의 첫번째 숫자가 컴퓨터의 나머지 숫자들과 비교
         boolean isStrike = true, isBall = true;
         for (int first = 0; first < listSplitNum.size(); first++) {
             isStrike = false;
