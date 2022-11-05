@@ -7,6 +7,6 @@ public class GameController {
 
     public static void gameStart() {
         List<Integer> computerRandomNonDuplicateThreeLengthIntegerList = Computer.createThreeLengthIntegerList();
-
+        GameLogic.doGameLogicUntilGameFinish(computerRandomNonDuplicateThreeLengthIntegerList);
     }
 }
