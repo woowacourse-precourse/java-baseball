@@ -21,10 +21,10 @@ public class BaseballGame {
             outputView.printGameStart();
     }
 
-    public void gameStart() {
+    public void game() {
         while (true) {
             this.computer.randomNumberGenerate();
-            game();
+            whileUserInputCorrectAnswer();
             outputView.printRestartOrExit();
             this.user.inputRestartOrExitNumber();
             if (this.user.getRestartOrExitNumber() == EXIT) {
@@ -33,7 +33,7 @@ public class BaseballGame {
         }
     }
 
-    public void game() {
+    public void whileUserInputCorrectAnswer() {
         while (true) {
             List<Integer> compareAnswer;
             outputView.printInputHint();
