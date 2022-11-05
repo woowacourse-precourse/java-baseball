@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Validator {
 
     public void validatePrediction(String predictedNumber) {
@@ -13,11 +16,14 @@ public class Validator {
     }
 
     private boolean validateDigits(String predictedNumber) {
-        // Validate if digits of predictedNumber are all different
-        return areAllDecimalDigits(predictedNumber);
+        return areAllDecimalDigits(predictedNumber) && areAllDifferentDigit(predictedNumber);
     }
 
     private boolean areAllDecimalDigits(String predictedNumber) {
         return predictedNumber.matches("[1-9]+");
+    }
+
+    private boolean areAllDifferentDigit(String predictedNumber) {
+        return new HashSet<>(Arrays.asList(predictedNumber.split(""))).size() == 3;
     }
 }
