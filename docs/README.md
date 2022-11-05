@@ -59,6 +59,10 @@
   - 결과를 출력하는 함수
 
 
+- boolean checkThreeStrike(int)
+  - 숫자 세 개를 모두 맞췄는지(strike = 3인지) 체크하는 함수
+
+
 - void endGame()
   - 숫자 세 개를 모두 맞췄을 경우 게임을 종료하는 함수
 
