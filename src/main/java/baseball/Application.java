@@ -70,4 +70,21 @@ public class Application {
         }
         return ballCnt;
     }
+
+    public static void validUserNumbers(String userNumbers){
+        if (!userNumbers.matches("^[1-9]{3}$")){
+            throw new IllegalArgumentException("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+        }
+        if (userNumbers.charAt(0) == userNumbers.charAt(1) ||
+                userNumbers.charAt(0) == userNumbers.charAt(2) ||
+                userNumbers.charAt(1) == userNumbers.charAt(2)){
+            throw new IllegalArgumentException("서로 다른 수를 입력하세요.");
+        }
+    }
+
+    public static void validGameOption(String gameOption) {
+        if (!gameOption.matches("^[1-2]$")) {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        }
+    }
 }
