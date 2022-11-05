@@ -31,4 +31,9 @@ public class Exception {
     }
     return true;
   }
+
+  // 모든 조건을 만족했을 때 true 반환
+  public static boolean isValidNumber(String userNumber) {
+    return (isRightLength(userNumber) && isDuplicated(userNumber) && isNumber(userNumber));
+  }
 }
