@@ -17,22 +17,26 @@ public class Service {
             String number = Console.readLine();
             Exception.verifyNum(number);
 
-            for(int i = 0; i < number.length(); i++) {
-
-                int num = Integer.parseInt(String.valueOf(number.charAt(i)));
-                if (num == computer.get(i)) {
-                    Parameter.addStrike();
-                }
-                if (num != computer.get(i) && computer.contains(num) ) {
-                    Parameter.addBall();
-                }
-            }
+            checkNumber(computer, number);
 
             int strike = Parameter.getStrike();
             int ball = Parameter.getBall();
 
             if(Boolean.TRUE.equals(result(strike, ball))) {
                 break;
+            }
+        }
+    }
+
+    private static void checkNumber(List<Integer> computer, String number) {
+        for(int i = 0; i < number.length(); i++) {
+
+            int num = Integer.parseInt(String.valueOf(number.charAt(i)));
+            if (num == computer.get(i)) {
+                Parameter.addStrike();
+            }
+            if (num != computer.get(i) && computer.contains(num) ) {
+                Parameter.addBall();
             }
         }
     }
