@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.participant.Computer;
-import baseball.participant.Player;
+import baseball.participant.Pitcher;
 import baseball.result.Result;
 import baseball.result.ResultType;
 import camp.nextstep.edu.missionutils.Console;
@@ -13,10 +13,10 @@ public class BaseballGameConsole {
     private final Validator validator = new Validator();
     private final Computer computer = new Computer();
 
-    public void playGameWithPlayer(Player player) {
-        showStartingGuide(player.getName());
+    public void playGameWithPlayer(Pitcher pitcher) {
+        showStartingGuide(pitcher.getName());
         do {
-            playSingleGame(player);
+            playSingleGame(pitcher);
         } while (askReplaying());
     }
 
@@ -25,13 +25,13 @@ public class BaseballGameConsole {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void playSingleGame(Player player) {
+    private void playSingleGame(Pitcher pitcher) {
         boolean matchedAllNumber = false;
         String randomNumber = computer.selectRandomNumber();
 
         do {
             System.out.print("숫자를 입력해주세요. : ");
-            String predictedNumber = player.predictNumber();
+            String predictedNumber = pitcher.predictNumber();
             validator.validatePrediction(predictedNumber);
 
             Result result = computer.resultOfPrediction(randomNumber, predictedNumber);

@@ -2,11 +2,11 @@ package baseball.participant;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Player {
+public class Pitcher {
 
     private final String name;
 
-    public Player(String name) {
+    public Pitcher(String name) {
         this.name = name;
     }
 
