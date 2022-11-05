@@ -77,9 +77,9 @@ class ApplicationTest extends NsTest {
         final boolean result3 = T.isDigitStrike(case1.get(0), case1.get(1), 2); //true
 
         //then
-        assertThat(result1).isEqualTo(false);
-        assertThat(result2).isEqualTo(true);
-        assertThat(result3).isEqualTo(true);
+        assertThat(result1).as("isDigitalStrike 테스트").isEqualTo(false);
+        assertThat(result2).as("isDigitalStrike 테스트").isEqualTo(true);
+        assertThat(result3).as("isDigitalStrike 테스트").isEqualTo(true);
     }
 
     @Test
