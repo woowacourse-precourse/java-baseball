@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.controller.Game;
-import baseball.view.Input;
+import baseball.model.Player;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,6 +11,6 @@ public class Application {
             Game game = new Game();
             game.playGame();
         }
-        while (Input.continueGame());
+        while (Player.continueGame());
     }
 }

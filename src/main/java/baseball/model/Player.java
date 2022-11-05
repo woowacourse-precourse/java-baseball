@@ -10,7 +10,7 @@ public class Player {
     private String baseballNumber;
 
     // 숫자 입력하기
-    private Input input = new Input();
+    private static Input input = new Input();
 
     public void setBaseballNumber() {
         this.baseballNumber = input.threeNumber();
@@ -21,7 +21,7 @@ public class Player {
     }
 
     // 게임 계속 또는 종료 선택하기
-    public boolean continueGame() {
+    public static boolean continueGame() {
         return input.continueGame();
     }
 }
