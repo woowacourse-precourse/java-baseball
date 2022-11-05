@@ -154,8 +154,7 @@ public class Computer {
     // 컴퓨터의 숫자와 매개변수의 숫자를 비교합니다.
     private Boolean isRightThreeNumOfComputer(int numOfCompare) {
         // TODO: 1. numOfCompare를 3개의 숫자로 분리한다.
-        ArrayList<Integer> splitNumOfCompare = (ArrayList<Integer>) splitEachDigitOfNum(
-            numOfCompare);
+        ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
         // TODO: 2. 각숫자가 컴퓨터 랜덤 리스트에 포함하는가 안하는가 확인
         if (isEqualsCollection(this.numThreeRanOfComputerList, splitNumOfCompare)) {
             // TODO: 2.1 if 포함한다면?
@@ -221,17 +220,21 @@ public class Computer {
     }
 
     // 숫자의 각각의 자릿수를 List로 리턴
-    private List<Integer> splitEachDigitOfNum(int numTosplit) {
-        List list = new ArrayList<>();
+    private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
+        ArrayList<Integer> list = new ArrayList<>();
         // TODO: 숫자가 3개인가? 확인
         String strParseIntArr = "" + numTosplit;
         String[] strSplitArr = strParseIntArr.split("");
 
         for (String str : strSplitArr) {
-            Integer intParseStr = Integer.valueOf(str);
-            list.add(intParseStr);
+            list.add(parseIntegerFromStr(str));
         }
+
         return list;
+    }
+
+    private Integer parseIntegerFromStr(String str) {
+        return Integer.valueOf(str);
     }
 
     // 유저에게 힌트를 주다
