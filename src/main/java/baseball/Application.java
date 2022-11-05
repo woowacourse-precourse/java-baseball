@@ -8,16 +8,6 @@ import java.util.List;
 
 public class Application {
 
-    public static List<Integer> createComputerNum() {
-        List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(randomNumber))
-                computerNum.add(randomNumber);
-        }
-        return computerNum;
-    }
-
     public static List<Integer> getUserInput() throws IllegalArgumentException {
         List<Integer> userNum = new ArrayList<>();
         String userInput = Console.readLine();
