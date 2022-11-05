@@ -43,7 +43,7 @@ public class Printer {
 	}
 
 	public static void printGettingRightAnswerMessage(int lengthOfNumber) {
-		System.out.printf(GETTING_RIGHT_ANSWER_MESSAGE.get(),lengthOfNumber);
+		System.out.printf(GETTING_RIGHT_ANSWER_MESSAGE.get(), lengthOfNumber);
 		System.out.println();
 	}
 
