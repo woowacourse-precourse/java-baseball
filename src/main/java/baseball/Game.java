@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private final int GAME_END = 2;
     private final HintMessage hintMessage;
     private final ComputerNumber computerNumber;
     private final UserNumber userNumber;
     private List<Integer> randomComputerNumber;
     private List<Integer> inputUserNumber;
-    private static boolean isFinish;
-    private static boolean restart;
+    private boolean isFinish;
+    private boolean restart;
     private final RestartGameException restartGameException;
 
     public Game() {
@@ -29,7 +30,7 @@ public class Game {
 
     public boolean startGame() {
         computerNumber.makeRandomNumber();
-        List<Integer> randomComputerNumber = computerNumber.getComputerNumber();
+        randomComputerNumber = computerNumber.getComputerNumber();
         for (Integer integer : randomComputerNumber) {
             System.out.print("computerValue = " + integer + " ");
         }
@@ -37,23 +38,22 @@ public class Game {
         do {
             userNumber.makeUserNumber();
             inputUserNumber = userNumber.getUserNumber();
-            hintMessage.isFinish = hintMessage.checkPoint(inputUserNumber, randomComputerNumber);
-        } while (hintMessage.isFinish);
+            isFinish = hintMessage.checkPoint(inputUserNumber, randomComputerNumber);
+        } while (isFinish);
         restart = checkRestartGame();
         return restart;
     }
 
     public boolean checkRestartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(SystemMessage.GAME_CONTINUE_MESSAGE);
         int inputNumber = Integer.parseInt(Console.readLine());
-        restart = true;
         if (restartGameException.hasRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
 //        if (inputNumber == 1) {
 //            return true;
 //        }
-        if (inputNumber == 2) {
+        if (inputNumber == GAME_END) {
             restart = false;
         }
         return restart;

@@ -1,7 +1,6 @@
 package baseball;
 
 public class UserNumberException {
-    static final int INPUT_NUMBER_LENGTH = 3;
     public boolean checkException(String numbers) {
         if (validateNumberLength(numbers)) {
             return true;
@@ -18,14 +17,14 @@ public class UserNumberException {
     }
 
     public boolean validateNumberLength(String numbers) {
-        if (numbers.length() != INPUT_NUMBER_LENGTH) {
+        if (numbers.length() != SystemMessage.NUMBER_SIZE) {
             return true;
         }
         return false;
     }
 
     public boolean isNumber(String numbers) {
-        for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
+        for (int i = 0; i < SystemMessage.NUMBER_SIZE; i++) {
             if (!('1' <= numbers.charAt(i) && numbers.charAt(i) <= '9')) {
                 return true;
             }
@@ -34,12 +33,12 @@ public class UserNumberException {
     }
 
     public boolean hasDuplicatedNumber(int number, String numbers) {
-        for (int i = 1; i < INPUT_NUMBER_LENGTH; i++) {
+        for (int i = 1; i < SystemMessage.NUMBER_SIZE; i++) {
             if (number == numbers.charAt(i)) {
                 return true;
             }
         }
-        for (int i = 1; i < INPUT_NUMBER_LENGTH-1; i++) {
+        for (int i = 1; i < SystemMessage.NUMBER_SIZE-1; i++) {
             if (numbers.charAt(i) == numbers.charAt(i+1)) {
                 return true;
             }
