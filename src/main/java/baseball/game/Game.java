@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.input.GameInput;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,16 +35,17 @@ public class Game {
         System.out.println(START_MESSAGE);
         List<Integer> result;
         do {
-            playerInput = readInput();
+            readInput();
             result = calculateResult();
             printResult(result);
         } while (isCorrect(result));
         System.out.println(END_MESSAGE);
     }
 
-    private GameInput readInput() {
-        // TODO
-        return null;
+    private void readInput() {
+        String line = Console.readLine();
+        int input = Integer.parseInt(line);
+        playerInput = new GameInput(input);
     }
 
     private List<Integer> calculateResult() {
