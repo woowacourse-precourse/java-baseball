@@ -1,9 +1,9 @@
 package baseball;
 
+import Constant.Const;
 import Util.RamdomNumber;
-import static Constant.Const.*;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     int[] answer;
@@ -12,32 +12,32 @@ public class BaseballGame {
     RamdomNumber randomNumber;
     BaseballGame(){
         this.hint = new Hint();
-        this.answer = new int[NUMBER_LENGTH];
+        this.answer = new int[Const.NUMBER_LENGTH];
         this.user = new User();
-        this.randomNumber = new RamdomNumber(NUMBER_LENGTH);
+        this.randomNumber = new RamdomNumber(Const.NUMBER_LENGTH);
     }
 
     public void startGame(){
-        System.out.println(GAME_START);
-        answer = randomNumber.makeRandomNumber(NUMBER_LENGTH);
+        System.out.println(Const.GAME_START);
+        answer = randomNumber.makeRandomNumber(Const.NUMBER_LENGTH);
         do {
             hint.getHint(user.UserInput(), answer);
         } while (hint.strike != 3);
     }
     public boolean doneGame(){
-        System.out.println(GAME_DONE);
+        System.out.println(Const.GAME_DONE);
         return restartGame();
     }
 
     private boolean restartGame(){
-        System.out.println(GAME_RESTART);
-        int input = Integer.parseInt(readLine());
-        if (input == RESTART){
+        System.out.println(Const.GAME_RESTART);
+        int input = Integer.parseInt(Console.readLine());
+        if (input == Const.RESTART){
             return true;
-        } else if (input == EXIT){
+        } else if (input == Const.EXIT){
             return false;
         } else {
-            throw new IllegalArgumentException(INPUT_WRONG);
+            throw new IllegalArgumentException(Const.INPUT_WRONG);
         }
     }
 }

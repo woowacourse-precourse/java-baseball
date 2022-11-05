@@ -2,8 +2,6 @@ package baseball;
 
 import Constant.Const;
 
-import static Constant.Const.NUMBER_LENGTH;
-
 public class Hint {
     public int strike;
     private int ball;
@@ -12,7 +10,7 @@ public class Hint {
         this.strike = 0;
         this.ball = 0;
 
-        for (int i = 0; i < NUMBER_LENGTH; i++){
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
             countStrike(userNumber[i], computerNumber[i]);
             countBall(userNumber[i], computerNumber, i);
         }
@@ -38,7 +36,7 @@ public class Hint {
         }
     }
     private void countBall(int user, int[] computerNumber, int presentIndex){
-        for (int i = 0; i < NUMBER_LENGTH; i++){
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
             if (presentIndex != i && computerNumber[i] == user){
                 this.ball++;
             }

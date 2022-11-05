@@ -1,20 +1,21 @@
 package baseball;
 
-import static Constant.Const.*;
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import Constant.Const;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private int[] userNumber = new int[NUMBER_LENGTH];
+    private int[] userNumber = new int[Const.NUMBER_LENGTH];
     String userInput;
 
     public int[] UserInput(){
-        System.out.print(USER_INPUT);
+        System.out.print(Const.USER_INPUT);
 
-        userInput = readLine();
+        userInput = Console.readLine();
         if (!isValidUserNumber()) {
-            throw new IllegalArgumentException(INPUT_WRONG);
+            throw new IllegalArgumentException(Const.INPUT_WRONG);
         } else {
-            for (int i = 0; i < NUMBER_LENGTH; i++) {
+            for (int i = 0; i < Const.NUMBER_LENGTH; i++) {
                 this.userNumber[i] = Character.getNumericValue(userInput.charAt(i));
             }
         }
@@ -26,7 +27,7 @@ public class User {
     }
 
     private boolean isWithinRange(){
-        for (int i = 0; i < NUMBER_LENGTH; i++){
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
             if (!('0' < userInput.charAt(i) && userInput.charAt(i) <= '9')){
                 return false;
             }
@@ -35,11 +36,11 @@ public class User {
     }
 
     private boolean isValidLength(){
-        return (userInput.length() == NUMBER_LENGTH);
+        return (userInput.length() == Const.NUMBER_LENGTH);
     }
 
     private boolean isNumber(){
-        for (int i = 0; i < NUMBER_LENGTH; i++){
+        for (int i = 0; i < Const.NUMBER_LENGTH; i++){
             if (!Character.isDigit(userInput.charAt(i))){
                 return false;
             }
