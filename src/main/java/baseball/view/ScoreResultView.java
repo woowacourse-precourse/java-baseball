@@ -11,7 +11,7 @@ public class ScoreResultView {
     }
 
     public void setStrikeCount(int strikeCount){
-
+        this.strikeCount = strikeCount;
     }
 
     public void getResultOfScores(String result){
