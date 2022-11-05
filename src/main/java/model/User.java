@@ -53,9 +53,8 @@ public class User {
     private boolean isValidLength(String str) {
         if (str.length() == 3) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력의 길이는 \"3\" 만 가능합니다.");
         }
+        throw new IllegalArgumentException("입력의 길이는 \"3\" 만 가능합니다.");
     }
 
     private boolean isValidNumOfIndividually(String str) {
