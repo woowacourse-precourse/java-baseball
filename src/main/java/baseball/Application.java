@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
 
         boolean gameLife = true;
@@ -15,11 +15,7 @@ public class Application {
 
         while (gameLife) {
             number = setNumber();
-            try {
-                gameLife = playGame(number);
-            } catch (IllegalArgumentException e) {
-                return;
-            }
+            gameLife = playGame(number);
         }
     }
 
@@ -38,7 +34,6 @@ public class Application {
         String orderNumber = inputOrderNumber();
         checkOrderNumberValidation(orderNumber);
         continueGame = checkOrderNumberValue(orderNumber);
-
 
         return continueGame;
     }
