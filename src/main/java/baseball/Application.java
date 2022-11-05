@@ -6,6 +6,21 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 public class Application {
     public static void main(String[] args) {
+        boolean cont = true;
+        List<Integer> computer, guess;
+        int[] comparison;
+        String result;
+        while (cont) {
+            computer = generateRandomNumbers();
+            guess = inputGuess();
+            comparison = compareGuessToComputer(guess, computer);
+            result = gameResults(comparison);
+            if (comparison[1] == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                cont = inputReplay();
+                break;
+            }
+        }
 
     }
     static List<Integer> generateRandomNumbers() {
