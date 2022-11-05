@@ -44,12 +44,12 @@
     - "3스트라이크" : "3개의 숫자를 모두 맞히셨습니다! 게임 종료"와 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
   - [ ] 게임 플레이어가 1을 입력할 경우 위의 내용을 반복, 2를 입력할 경우 게임 종료
 
-- [ ] ResultType Enum
+- [X] ResultType Enum
   - [X] BALL("볼")
   - [X] STRIKE("스트라이크")
   - [X] NOTHING("낫싱")
 
-- [ ] Result Class
-  - [ ] `Map<ResultType, Integer>`를 멤버 변수로 저장하여 결과를 View Class로 전달
-  - [ ] `void add(ResultType)`
+- [X] Result Class
+  - [X] `Map<ResultType, Integer>`를 멤버 변수로 저장하여 결과를 View Class로 전달
+  - [X] `void add(ResultType)`
     - 인자로 받은 ResultType에 대응되는 Value에 1 추가
