@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-class UserBaseballNumberTest {
+public class BaseballNumberTest {
 	private static final int MIN_NUM = 1;
 	private static final int MAX_NUM = 9;
 	private static final int DIGIT = 3;
@@ -24,15 +24,15 @@ class UserBaseballNumberTest {
 		String containDuplicateNumber = "322";
 
 		//when, then
-		assertThatThrownBy(() -> new UserBaseballNumber(sizeTwo))
+		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(sizeTwo))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> new UserBaseballNumber(sizeFour))
+		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(sizeFour))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> new UserBaseballNumber(containZero))
+		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containZero))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> new UserBaseballNumber(containNonNumber))
+		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containNonNumber))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> new UserBaseballNumber(containDuplicateNumber))
+		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containDuplicateNumber))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -52,7 +52,14 @@ class UserBaseballNumberTest {
 		}
 
 		for (String testString : testStringList) {
-			new UserBaseballNumber(testString);
+			BaseballNumber.createBaseballNumberByUserInput(testString);
 		}
+	}
+
+	@Test
+	void 랜덤한_BaseballNumber_생성(){
+		BaseballNumber comBaseballNumber = BaseballNumber.createBaseballNumberByRandom();
+		List<Integer> numbers = comBaseballNumber.getNumbers();
+		System.out.println("numbers = " + numbers);
 	}
 }
