@@ -15,7 +15,6 @@ public class GameController {
 
     public GameController(){
         gameService = new GameService();
-        gameStatusService = new GameStatusService();
         playerView = new PlayerView();
         scoreResultView = new ScoreResultView();
         gameStatusView = new GameStatusView();
@@ -30,7 +29,7 @@ public class GameController {
     }
 
     private void generateGameStatus(){
-
+        gameStatusService = new GameStatusService();
     }
 
     private void startGame(){
