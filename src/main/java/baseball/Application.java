@@ -122,4 +122,9 @@ class Baseball {
             System.out.println(END_GAME);
         }
     }
+
+    private static boolean isValidNumber() {
+        return userNumber.matches("^[1-9]{3}$");
+    }
+
 }
