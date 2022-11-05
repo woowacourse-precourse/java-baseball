@@ -9,11 +9,12 @@ public class InputUtil {
     public InputUtil() {
     }
 
-    public void inputUserNumbers() {
-        System.out.print(ConstantMessage.INPUT_NUMBER.getConstant());
+    public ArrayList<Integer> inputUserNumbers() {
+        System.out.print(Constant.INPUT_NUMBER.getMessage());
         String numbers = Console.readLine();
         ArrayList<Integer> userNumbers = parseStringToInt(numbers);
         System.out.println();
+        return userNumbers;
     }
 
     public ArrayList<Integer> parseStringToInt(String numbers) {
@@ -22,7 +23,7 @@ public class InputUtil {
         for (int i = 0; i < numbers.length(); i++) {
             checkIsDigit(numbers.charAt(i));
             int number = charToInt(numbers.charAt(i));
-            checkValidNumber(number, MIN_NUM, MAX_NUM);
+            checkValidNumber(number, Constant.MIN_NUM.getNumber(), Constant.MAX_NUM.getNumber());
             checkDuplicationNumber(inputNumbers, number);
             inputNumbers.add(number);
         }
@@ -31,25 +32,25 @@ public class InputUtil {
 
     public void checkIsDigit(char number) {
         if (!Character.isDigit(number)) {
-            throw new IllegalArgumentException(ConstantMessage.ISDIGIT_EXCEPTION.getConstant());
+            throw new IllegalArgumentException(Constant.ISDIGIT_EXCEPTION.getMessage());
         }
     }
 
     public void checkDuplicationNumber(ArrayList<Integer> numbers, int number) {
         if (numbers.contains(number)) {
-            throw new IllegalArgumentException(ConstantMessage.DUPLICATION_EXCEPTION.getConstant());
+            throw new IllegalArgumentException(Constant.DUPLICATION_EXCEPTION.getMessage());
         }
     }
 
     public void checkValidNumber(int number, int minNumber, int maxNumber) {
         if (number < minNumber || number > maxNumber) {
-            throw new IllegalArgumentException(ConstantMessage.VALID_NUMBER_EXCEPTION.getConstant());
+            throw new IllegalArgumentException(Constant.VALID_NUMBER_EXCEPTION.getMessage());
         }
     }
 
     public void checkLength(String number, int length) {
         if (number.length() != length) {
-            throw new IllegalArgumentException(ConstantMessage.NUMBER_LENGTH_EXCEPTION.getConstant());
+            throw new IllegalArgumentException(Constant.NUMBER_LENGTH_EXCEPTION.getMessage());
         }
     }
 
