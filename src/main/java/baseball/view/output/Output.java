@@ -9,6 +9,8 @@ public interface Output {
 
     void printSuccessMessage();
 
+    void printEndMessage();
+
 
 
 }
