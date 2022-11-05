@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -29,33 +31,31 @@ class Game {
         System.out.println(guideMessage);
     }
 
-    public int getGamePlayerInput() {
+    public String getGamePlayerInput() {
         printGuideMessage(PLAYER_INPUT_GUIDE_MESSAGE);
 
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
-    public void checkGamePlayerNumberInput(Integer gamePlayerNumberInput) {
-        String stringGamePlayerNumberInput = gamePlayerNumberInput.toString();
-        checkNumberLength(stringGamePlayerNumberInput);
-//        hasSameNumber(stringGamePlayerNumberInput);
+    public void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
+        checkNumberLength(gamePlayerNumberInput);
+        hasSameNumber(gamePlayerNumberInput);
     }
 
     private void checkNumberLength(String stringGamePlayerInput) {
         int stringLength =  stringGamePlayerInput.length();
-        if (stringLength > 3 || stringLength < 1) {
+        if (stringLength > NUMBER_LENGTH || stringLength < 1) {
             throw new IllegalArgumentException();
         }
     }
 
-//    public Boolean hasSameNumber(Integer gamePlayerInput) {
-//        Boolean has = false;
-//        String stringGamePlayerInput = gamePlayerInput.toString();
-//
-//        for (int stringIndex = 0; stringIndex < stringGamePlayerInput.length(); stringIndex++) {
-//            if (stringGamePlayerInput.contains())
-//        }
-//    }
+    public void hasSameNumber(String gamePlayerInput) {
+        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
+            if (gamePlayerInput.lastIndexOf(gamePlayerInput.charAt(stringIndex)) != stringIndex) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
 
 class Computer {
