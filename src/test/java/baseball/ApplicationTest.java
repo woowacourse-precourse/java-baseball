@@ -68,6 +68,38 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력값에_중복되는_숫자가_있는_예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력값에_중복되는_숫자가_있는_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("212"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력값에_중복되는_숫자가_있는_예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("221"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력값에_중복되는_숫자가_있는_예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("222"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
