@@ -10,7 +10,7 @@ public class Game {
         computer.random3NumberOutput();
 
         System.out.println("computer.computerNumber = " + computer.computerNumber);
-        
+
         Integer ballCount = 0;
         Integer strikeCount = 0;
 
@@ -34,15 +34,17 @@ public class Game {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         } else if (ballCount == 0 && strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
+
+            if (strikeCount == 3) {
+                System.out.println(strikeCount + "스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            } else {
+                System.out.println(strikeCount + "스트라이크");
+            }
         } else if (strikeCount == 0 && ballCount > 0) {
             System.out.println(ballCount + "볼");
         } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        }
-
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
