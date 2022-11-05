@@ -115,9 +115,9 @@ public class Game {
 
     private List<Integer> makeUserAnswer(String input) {
         try {
-            validThreeLengthOrSize(input.length(), INPUT_LENGTH_EXCEPTION);
+            validateThree(input.length(), INPUT_LENGTH_EXCEPTION);
             List<Integer> user = makeUserList(input);
-            validThreeLengthOrSize(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
+            validateThree(user.size(), INPUT_OTHER_NUMBER_EXCEPTION);
             return user;
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
@@ -132,7 +132,7 @@ public class Game {
         return list;
     }
 
-    private void validThreeLengthOrSize(int number, String message) {
+    private void validateThree(int number, String message) {
         if (number != DEFAULT_SIZE) {
             throw new IllegalArgumentException(message);
         }
