@@ -14,13 +14,12 @@ public class Application {
 
         while (true) {
             List<Integer> computerNumList = generateComputerNum();
-            Boolean win = false;
 
-            while (win == false) {
+            while (true) {
                 String userNum = inputUserNum();
                 List<Integer> userNumList = splitUserNumToList(userNum);
                 String judgeStr = judge(computerNumList, userNumList);
-
+                System.out.println(judgeStr);
                 if (judgeStr.equals("3스트라이크")) {
                     break;
                 }
@@ -28,6 +27,20 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
+            int restart = Integer.parseInt(readLine());
+
+            if (restart == 2) {
+                break;
+            }
+
+        }
+    }
+
+    private static void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다");
+        boolean play=true;
+        while (play){
+            play=baseballGame();
         }
     }
 
