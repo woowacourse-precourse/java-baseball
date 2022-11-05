@@ -5,7 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
     final static String GAME_START_GUIDE_MESSAGE = "숫자 야구 게임을 시작합니다.";
     final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
+    final static String WIN_CONDITION = "3스트라이크";
+    final static String WIN_GUIDE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    final static String REPEAT_OPTION_GUIDE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final static int NUMBER_LENGTH = 3;
+    String gamePlayerInput;
     private Computer computer;
 
     Game() {
@@ -17,6 +21,14 @@ public class Game {
 
         while (true) {
             printGuideMessage(PLAYER_INPUT_GUIDE_MESSAGE);
+            gamePlayerInput = getGamePlayerInput();
+            checkGamePlayerNumberInput(gamePlayerInput);
+            String result = getResult(computer.getRandomNumbers().toString(), gamePlayerInput);
+            System.out.println(result);
+            if (result == WIN_CONDITION) {
+                System.out.println(WIN_GUIDE_MESSAGE);
+                break;
+            }
         }
     }
 
