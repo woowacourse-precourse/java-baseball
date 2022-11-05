@@ -28,8 +28,6 @@ public class Application {
 
             restart = Integer.parseInt(Console.readLine());
 
-            if(restart == 2)
-                break;
         }
     }
 
