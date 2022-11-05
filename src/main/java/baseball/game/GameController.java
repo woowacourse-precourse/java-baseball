@@ -28,7 +28,7 @@ public class GameController {
     private class BaseBallGame implements Game{
         Computer computer;
         Player player;
-        Validator numberInputValidator;
+        Validator numberInputValidator, newGameValidator;
 
         public BaseBallGame() {
             computer = new Computer();
@@ -38,6 +38,9 @@ public class GameController {
                     .addValidation(Validation.isLength(DIGIT_LENGTH))
                     .addValidation(Validation.isNumber())
                     .addValidation(Validation.isNotDuplicationNumber());
+            newGameValidator = Validator.build()
+                    .addValidation(Validation.isNumber())
+                    .addValidation(Validation.isRange(1, 2));
         }
 
         private void initialize(){
@@ -68,8 +71,14 @@ public class GameController {
         }
 
         private void end(){
+            int choose;
+
             View.printQuestionNewGame();
             String command = player.getCommand();
+
+            if(newGameValidator.validate(command)){
+                choose = Integer.parseInt(command);
+            }
         }
 
         @Override
