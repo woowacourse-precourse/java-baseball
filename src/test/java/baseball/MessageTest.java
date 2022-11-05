@@ -52,7 +52,7 @@ class MessageTest {
         assertThat(successMessage).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    @DisplayName("볼과 스트라이크가 0일 때 테스트")
+    @DisplayName("볼과 스트라이크가 0일 때 결과 메시지 테스트")
     @Test
     void nothingResultTest() {
         //given
@@ -64,7 +64,7 @@ class MessageTest {
         assertThat(resultMessage).isEqualTo("낫싱");
     }
 
-    @DisplayName("볼만 존재할 때 테스트")
+    @DisplayName("볼만 존재할 때 결과 메시지 테스트")
     @Test
     void onlyBallResultTest() {
         //given
@@ -76,7 +76,7 @@ class MessageTest {
         assertThat(resultMessage).isEqualTo(resultBall.get(0) + "볼");
     }
 
-    @DisplayName("스트라이크만 졸재할 때 테스트")
+    @DisplayName("스트라이크만 존재할 때 결과 메시지 테스트")
     @Test
     void onlyStrikeResultTest() {
         //given
@@ -88,7 +88,7 @@ class MessageTest {
         assertThat(resultMessage).isEqualTo(resultStrike.get(1) + "스트라이크");
     }
 
-    @DisplayName("볼과 스트라이크 모두 존재할 때 테스트")
+    @DisplayName("볼과 스트라이크 모두 존재할 때 결과 메시지 테스트")
     @Test
     void ballAndStrikeResultTest() {
         //given
