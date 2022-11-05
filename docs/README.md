@@ -17,7 +17,7 @@
 - [x] 하나의 게임 진행 (Game)
     - [x] 흐름에 따른 적절한 객체 생성 및 호출
 
-- [ ] 게임 진행 (GameController)
+- [x] 게임 진행 (GameController)
 
 - [x] 상황에 알맞는 문구 출력 (GameView)
   - [x] 게임 시작 문구 출력
