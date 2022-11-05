@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 import baseball.domain.BaseballGameCalculator;
 import baseball.domain.BaseballNumber;
-import baseball.domain.ComBaseballNumber;
-import baseball.domain.UserBaseballNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -28,13 +26,13 @@ public class GameController {
 
 	private void startGame() {
 		ov.printGameStartMessage();
-		BaseballNumber com = new ComBaseballNumber();
+		BaseballNumber computer = BaseballNumber.createBaseballNumberByRandom();
 		int[] result;
 
 		do {
 			ov.printInputMessage();
-			BaseballNumber user = new UserBaseballNumber(iv.getUserBaseballNumber());
-			result = BaseballGameCalculator.calculateBSO(com, user);
+			BaseballNumber user = BaseballNumber.createBaseballNumberByUserInput(iv.getUserBaseballNumber());
+			result = BaseballGameCalculator.calculateBSO(computer, user);
 			ov.printBSOResult(result);
 		} while (!Arrays.equals(result, STRIKE_3));
 
