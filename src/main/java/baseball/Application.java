@@ -12,13 +12,11 @@ public class Application {
             int random = Randoms.pickNumberInRange(1, 9);
             removeDuplication.add(random);
         }
-        List<Integer> randomNums = new ArrayList<>(removeDuplication);
-        return randomNums;
+        return new ArrayList<>(removeDuplication);
     }
 
     private static List<Integer> startGame() {
-        List<Integer> answer = generateRandomNoDuplication3Numbers();
-        return answer;
+        return generateRandomNoDuplication3Numbers();
     }
 
     private static List<Integer> seperate3Numbers(int input) {
@@ -54,11 +52,7 @@ public class Application {
     }
 
     private static boolean isStrike(int answer, int input) {
-        if (answer == input) {
-            return true;
-        } else {
-            return false;
-        }
+        return answer == input;
     }
 
     private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap,
@@ -72,18 +66,13 @@ public class Application {
         return comparedMap;
     }
 
-    private static HashMap<Integer, Integer> addOneToMap(HashMap<Integer, Integer> map, int key) {
+    private static void addOneToMap(HashMap<Integer, Integer> map, int key) {
         int oldNumber = map.get(key);
         map.put(key, oldNumber + 1);
-        return map;
     }
 
     private static boolean correctAnswer(HashMap<Integer, Integer> comparedMap) {
-        boolean correct;
-        if (comparedMap.get(STRIKE) == 3) {
-            correct = true;
-        } else correct = false;
-        return correct;
+        return comparedMap.get(STRIKE) == 3;
     }
 
     private static void printResult(HashMap<Integer, Integer> comparedMap) {
@@ -91,7 +80,7 @@ public class Application {
         int strikes = comparedMap.get(STRIKE);
 
         if (comparedMap.get(NOTHING) != 0) {
-            System.out.printf("낫싱");
+            System.out.print("낫싱");
         }
         if (comparedMap.get(BALL) != 0) {
             System.out.printf("%d볼 ", balls);
@@ -99,27 +88,25 @@ public class Application {
         if (comparedMap.get(STRIKE) != 0) {
             System.out.printf("%d스트라이크", strikes);
         }
-        System.out.printf("\n");
+        System.out.print("\n");
     }
 
     private static List<Integer> getAndSeperateInput() {
         int userInput = getUserInt();
-        List<Integer> separatedInput = seperate3Numbers(userInput);
-        return separatedInput;
+        return seperate3Numbers(userInput);
     }
 
-    private static Integer getUserInt(){
+    private static Integer getUserInt() {
         Scanner sc = new Scanner(System.in);
-        int userInput = sc.nextInt();
-        return userInput;
+        return sc.nextInt();
     }
 
     private static boolean restartOrEndGame() {
-        boolean newGame=true;
+        boolean newGame = true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput = getUserInt();
         if (userInput == CONTINUE_GAME) {
-            newGame=true;
+            newGame = true;
         } else if (userInput == END_GAME) {
             newGame = false;
         }
@@ -145,7 +132,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        boolean newGame=true;
+        boolean newGame = true;
         while (newGame) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = startGame();
@@ -154,7 +141,7 @@ public class Application {
             while (gameOn) {
                 gameOn = playGame(answer);
             }
-            newGame=restartOrEndGame();
+            newGame = restartOrEndGame();
         }
     }
 }
