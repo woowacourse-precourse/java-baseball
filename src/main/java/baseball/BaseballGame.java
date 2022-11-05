@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,8 +18,16 @@ public class BaseballGame {
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
-
         }
         return computerNumber;
+    }
+
+    public List<Integer> getUserNumber() {
+        String userInput = Console.readLine();
+        List<Integer> userNumber = new ArrayList<>();
+        for (char c : userInput.toCharArray()) {
+            userNumber.add(Character.getNumericValue(c));
+        }
+        return userNumber;
     }
 }
