@@ -37,7 +37,7 @@ public class GameController {
     }
 
     private void clearScore(){
-
+        gameService.initializeScore();
     }
 
     private void getPlayerNumbers(){
