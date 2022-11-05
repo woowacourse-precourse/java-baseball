@@ -8,22 +8,44 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-
+//        do {
+//            playGame();
+//        } while (restartGame());
     }
 
-    public static void playGame(){
+    public static void playGame() {
         List<Integer> computerAnswer = generateNumber();
-
-        do{
+        boolean isCorrect;
+        do {
             List<Integer> playerAnswer = getPlayerAnswer();
-            checkAnswer(playerAnswer);
-
-        }while(getPlayerAnswer().equals(computerAnswer));
+            isCorrect = checkAnswer(computerAnswer, playerAnswer);
+        } while (isCorrect);
 
     }
-    public static List<Integer> checkAnswer(List<Integer>){
-        return ;
+
+    public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
+        boolean isCorrect = false;
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0;i < 3 ;i++){
+            if(computerAnswer.get(i).equals(playerAnswer.get(i))){
+                strike++;
+            }else if(computerAnswer.contains(playerAnswer.get(i))){
+                ball++;
+            }
+        }
+        if(strike == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isCorrect = true;
+        }else if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else{
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        return isCorrect;
     }
+
     public static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -81,4 +103,7 @@ public class Application {
         return true;
     }
 
+    public static boolean restartGame() {
+        return true;
+    }
 }
