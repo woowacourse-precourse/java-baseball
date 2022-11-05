@@ -219,6 +219,90 @@ class BaseballTest {
             assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
             System.setOut(originalOut);
         }
+
+        @Test
+        @DisplayName("printResultMessage 메소드가 를 출력하는지 확인")
+        void printResultMessage_test() {
+            System.setOut(new PrintStream(outContent));
+
+            String restartOrEndMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+            messenger.printRestartOrEndMessage();
+
+            assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
+            System.setOut(originalOut);
+        }
+
+        @Nested
+        @DisplayName("printResultMessage 메소드는")
+        class printResultMessage_test {
+            @Nested
+            @DisplayName("1과 0을 입력하였을 때")
+            class Context_with_1_strike_and_0_ball {
+                @Test
+                @DisplayName("\"1스트라이크\"를 반환한다.")
+                void it_returns_one_strike_message() {
+                    System.setOut(new PrintStream(outContent));
+                    int strike = 1;
+                    int ball = 0;
+                    String decision = "1스트라이크\n";
+
+                    messenger.printResultMessage(strike, ball);
+
+                    assertThat(outContent.toString()).isEqualTo(decision);
+                }
+            }
+
+            @Nested
+            @DisplayName("0과 3을 입력하였을 때")
+            class Context_with_0_strike_and_3_ball {
+                @Test
+                @DisplayName("\"3볼\"을 반환한다.")
+                void it_returns_3_ball_message() {
+                    System.setOut(new PrintStream(outContent));
+                    int strike = 0;
+                    int ball = 3;
+                    String decision = "3볼\n";
+
+                    messenger.printResultMessage(strike, ball);
+
+                    assertThat(outContent.toString()).isEqualTo(decision);
+                }
+            }
+
+            @Nested
+            @DisplayName("2과 1을 입력하였을 때")
+            class Context_with_2_strike_and_1_ball {
+                @Test
+                @DisplayName("\"1볼 2스트라이크\"을 반환한다.")
+                void it_returns_1_ball_2_strike_message() {
+                    System.setOut(new PrintStream(outContent));
+                    int strike = 2;
+                    int ball = 1;
+                    String decision = "1볼 2스트라이크\n";
+
+                    messenger.printResultMessage(strike, ball);
+
+                    assertThat(outContent.toString()).isEqualTo(decision);
+                }
+            }
+
+            @Nested
+            @DisplayName("0과 0을 입력하였을 때")
+            class Context_with_0_strike_and_0_ball {
+                @Test
+                @DisplayName("\"낫싱\"을 반환한다.")
+                void it_returns_nothing_message() {
+                    System.setOut(new PrintStream(outContent));
+                    int strike = 0;
+                    int ball = 0;
+                    String decision = "낫싱\n";
+
+                    messenger.printResultMessage(strike, ball);
+
+                    assertThat(outContent.toString()).isEqualTo(decision);
+                }
+            }
+        }
     }
     
     @Nested
