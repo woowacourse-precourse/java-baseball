@@ -36,5 +36,13 @@ public class Game {
         this.userNum = makeList(userInput);
     }
 
-    
+    //사용자 입력받은거 리스트로 바꾸기
+    public List<Integer> makeList(String userInput){
+        String[] arrayInput = userInput.split("");
+        List<Integer> userNumbers = new ArrayList<>();
+        for(int i=0; i<userInput.length();i++){
+            userNumbers.add(Integer.parseInt(arrayInput[i]));
+        }
+        return userNumbers;
+    }
 }
