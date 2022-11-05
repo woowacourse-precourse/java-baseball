@@ -13,8 +13,7 @@ public class Input {
     }
 
     private List<Integer> textToIntList(String text) {
-        return text.chars().boxed()
-                .collect(Collectors.toList());
+        return text.chars().boxed().collect(Collectors.toList());
     }
 
     public static void validateInputBaseballNumber(String text) {
@@ -36,13 +35,16 @@ public class Input {
     }
 
     private static void validateOverlap(String text) {
-        long count = text.chars()
-                .distinct()
-                .boxed()
-                .count();
+        long count = text.chars().distinct().boxed().count();
 
         if (count != text.length()) {
             throw new IllegalArgumentException("중복된 값이 있습니다.");
+        }
+    }
+
+    public static void validateInputRestart(String text) {
+        if (!text.equals("1") && !text.equals("2")) {
+            throw new IllegalArgumentException("재시작/종료를 구분하는 1과 2 중 하나의 수를 입력해야 합니다.");
         }
     }
 }

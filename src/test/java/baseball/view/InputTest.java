@@ -49,4 +49,17 @@ public class InputTest {
             Assertions.assertDoesNotThrow(() -> Input.validateInputBaseballNumber(text));
         }
     }
+
+    @DisplayName("1과 2가 아닌 경우 IllegalArgumentException를 throw 한다.")
+    @Test
+    void inputRestart() {
+        Assertions.assertAll(
+                () -> assertThatThrownBy(() -> Input.validateInputRestart("0"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> Assertions.assertDoesNotThrow(() -> Input.validateInputRestart("1")),
+                () -> Assertions.assertDoesNotThrow(() -> Input.validateInputRestart("2")),
+                () -> assertThatThrownBy(() -> Input.validateInputRestart("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
