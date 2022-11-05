@@ -14,9 +14,10 @@ public class FunctionTest {
     void RandomNumberRangeTest() {
         ComputerRandomNumber computerRandomNumber = new ComputerRandomNumber();
         List<Integer> comNumber = computerRandomNumber.makeComputerNumber();
+        System.out.println(comNumber);
 
         for (int i = 0; i < comNumber.size(); i++) {
-            assertThat(comNumber.get(i)).isGreaterThan(0).isLessThan(10);
+            assertThat(comNumber.get(i)).isBetween(1, 9);
         }
     }
 
@@ -25,6 +26,7 @@ public class FunctionTest {
     void RandomNumberTest() {
         ComputerRandomNumber computerRandomNumber = new ComputerRandomNumber();
         List<Integer> comNumber = computerRandomNumber.makeComputerNumber();
+        System.out.println(comNumber);
 
         assertThat(comNumber.get(0)).isNotEqualTo(comNumber.get(1));
         assertThat(comNumber.get(0)).isNotEqualTo(comNumber.get(2));
