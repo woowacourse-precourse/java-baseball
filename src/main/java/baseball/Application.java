@@ -28,18 +28,18 @@ public class Application {
 
         int num = 0;
 
-        // 1. 정수가 아닌 값을 입력했을 시 오류를 발생시킨다.
+        // 2-1-1. 정수가 아닌 값을 입력했을 시 오류를 발생시킨다.
         try {
             num = Integer.parseInt(stringInputOfUser);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수로 변환할 수 없는 문자입니다.");
         }
 
-        // 2. 세 자리의 수가 아닌 경우 오류를 발생시킨다.
+        // 2-1-2. 세 자리의 수가 아닌 경우 오류를 발생시킨다.
         if (num > 1000 || num < 100)
             throw new IllegalArgumentException("세 자리의 수가 아닙니다.");
 
-        // 3. 서로 다른 세 자리의 수가 아닌 경우 오류를 발생시킨다.
+        // 2-1-3. 서로 다른 세 자리의 수가 아닌 경우 오류를 발생시킨다.
         int hundreds = num / 100;
         int tens = (num % 100) / 10;
         int ones = num % 10;
@@ -116,6 +116,31 @@ public class Application {
         return user;
     }
 
+    // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
+    private static String getBallCount(List<Integer> computer, List<Integer> user) {
+        // 3-3-1. 스트라이크 count하기
+        int countOfStrike = howMuchStrike(computer, user);
+
+        // 3-3-2. 볼 conut하기
+        int countOfBall = howMuchBall(computer, user);
+
+        // 3-3-3. 두 문자열을 합치기.
+        String totalCount = "";
+        if (countOfBall == 0 && countOfStrike != 0) {
+            totalCount = countOfStrike + "스트라이크";
+        } else if (countOfBall != 0 && countOfStrike == 0) {
+            totalCount = countOfBall + "볼";
+        } else if (countOfBall == 0 && countOfStrike == 0) {
+            totalCount = "낫싱";
+        } else if (countOfBall != 0 && countOfStrike != 0) {
+            totalCount = countOfBall + "볼 " + countOfStrike + "스트라이크";
+        } else {
+            totalCount = "비정상";
+        }
+
+        return totalCount;
+    }
+
     // 3-3-1 : strike count하기
     private static int howMuchStrike(List<Integer> computer, List<Integer> user) {
         int strikeCount = 0;
@@ -146,35 +171,13 @@ public class Application {
         return ballCount;
     }
 
-    // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
-    private static String getBallCount(List<Integer> computer, List<Integer> user) {
-        // 3-3-1. 스트라이크 count하기
-        int countOfStrike = howMuchStrike(computer, user);
-
-        // 3-3-2. 볼 conut하기
-        int countOfBall = howMuchBall(computer, user);
-
-        // 3-3-3. 두 문자열을 합치기.
-        String totalCount = "";
-        if (countOfBall == 0 && countOfStrike != 0) {
-            totalCount = countOfStrike + "스트라이크";
-        } else if (countOfBall != 0 && countOfStrike == 0) {
-            totalCount = countOfBall + "볼";
-        } else if (countOfBall == 0 && countOfStrike == 0) {
-            totalCount = "낫싱";
-        } else if (countOfBall != 0 && countOfStrike != 0) {
-            totalCount = countOfBall + "볼 " + countOfStrike + "스트라이크";
-        } else {
-            totalCount = "비정상";
-        }
-
-        return totalCount;
-    }
-
     // 4-3-1 : 재시작하기 위한 준비
-    private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user) {
+    private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user, String ballCount) {
+//        System.out.println("preSetting에 들어왔습니다. 안내문의 출력을 확인하기 바랍니다."); // 테스트 출력 : 출력 결과 잘 확인했음.
         computer.clear();
         computer = getNumberOfComputer(computer);
+        System.out.println("computer = " + computer); // 여기까지 이상없이 되는 것 확인했음
+        ballCount = "";
         user.clear();
     }
 
@@ -189,6 +192,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         computer = getNumberOfComputer(computer);
+        System.out.println("computer = " + computer);
 
         // 2. 사용자에게서 숫자를 입력받는다.
         List<Integer> user = new ArrayList<>();
@@ -218,7 +222,10 @@ public class Application {
 
         // 4-3 : 1을 입력했다면, 재시작하기.
         if (restartOrExit == 1) {
-            preSettingToRestartGame(computer, user); // 4-3-1 : 재시작하기 위한 준비
+            preSettingToRestartGame(computer, user, ballCount); // 4-3-1 : 재시작하기 위한 준비
+
+            // ----------------- 이상 없는 구현 확인 완료 -----------------
+
             restartGame(user); // 4-3-2 : 재시작하기
         } else if (restartOrExit == 2) {
             return;
