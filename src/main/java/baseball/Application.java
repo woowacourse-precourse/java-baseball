@@ -7,17 +7,28 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer = makeComputer(); // 컴퓨터 번호 만들기
-        System.out.println(computer); // 컴퓨터 번호 출력
-        List<Integer> numberList = inputNum(); // 사용자 3자리 입력
+        boolean gameStart = true;
+        while(gameStart) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computer = makeComputer(); // 컴퓨터 번호 만들기
 
-        HashMap<String, Integer> map = compareNum(numberList, computer); // 컴퓨터값과 사용자값 비교
+            boolean strikeOut = false;
+            while(!strikeOut) {
+                List<Integer> numberList = inputNum(); // 사용자 3자리 입력
 
-        int strike = map.get("strike"); // 스트라이크 값
-        int ball = map.get("ball"); // 볼 값
-        String message = getMessage(strike, ball); // 스트라이크 볼에 따른 메세지 출력
-        System.out.println(message);
+                HashMap<String, Integer> map = compareNum(numberList, computer); // 컴퓨터값과 사용자값 비교
+
+                int strike = map.get("strike"); // 스트라이크 값
+                int ball = map.get("ball"); // 볼 값
+                String message = getMessage(strike, ball); // 스트라이크 볼에 따른 메세지 출력
+                System.out.println(message);
+                strikeOut = setStrikeOut(strike);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restart = Console.readLine();
+            gameStart = setRestart(Integer.parseInt(restart));
+        }
     }
     // 컴퓨터 3자리 수 만들기
     public static List<Integer> makeComputer() {
@@ -93,4 +104,26 @@ public class Application {
         return message;
     }
 
+    // 3스트라이크 아웃
+    public static boolean setStrikeOut(int strike){
+        if(strike == 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // 게임 새로 시작 및 종료 메서드
+    public static boolean setRestart(int num) {
+        if(num == 1){
+            return true;
+        }
+        else if(num == 2){
+            return false;
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 값입니다.");
+        }
+    }
 }
