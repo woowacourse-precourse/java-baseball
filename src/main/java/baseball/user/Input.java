@@ -89,4 +89,8 @@ public class Input {
         return true;
     }
 
+    public boolean checkValidateInput(String userInput) {
+        return isInputLengthEqualsGameLength(userInput) && isAllDigits(userInput) && isDigitsInRange(userInput) && isAllDifferentDigit(userInput);
+    }
+
 }
