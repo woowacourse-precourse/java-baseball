@@ -34,7 +34,7 @@ public class NumberBaseBallGameMachine {
             throw new IllegalArgumentException("입력값이 부족합니다. (3개 필요)");
         }
         if (input.length() > 3) {
-            throw new IllegalArgumentException("입력값이 너무 많습니다. (3개 필요, 공백도 입력으로 판단)");
+            throw new IllegalArgumentException("입력값이 너무 많습니다. (3개 필요, 중간 공백도 입력으로 판단)");
         }
 
         Set<Character> charSet = input.chars().mapToObj(o -> (char) o).collect(Collectors.toSet());
@@ -58,8 +58,11 @@ public class NumberBaseBallGameMachine {
     }
 
     public void validateNewGameInput(String input) {
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("입력값이 한 개가 아닙니다.");
+        if (input.length() < 1) {
+            throw new IllegalArgumentException("입력값이 부족합니다. (1개 필요)");
+        }
+        if (input.length() > 1) {
+            throw new IllegalArgumentException("입력값이 너무 많습니다. (1개 필요)");
         }
         if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("입력값이 1이나 2가 아닙니다.");
