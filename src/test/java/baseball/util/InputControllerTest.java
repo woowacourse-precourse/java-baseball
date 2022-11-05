@@ -5,17 +5,9 @@ import static org.assertj.core.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InputControllerTest {
-
-    InputController inputController;
-
-    @BeforeEach
-    void setUp() {
-        inputController = new InputController();
-    }
 
     @Test
     void getOneNumber_메소드는_1개의_숫자_입력시_Integer로_파싱되어_반환() {
@@ -23,7 +15,7 @@ public class InputControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(inputController.getOneNumber()).isEqualTo(1);
+        assertThat(InputController.getOneNumber()).isEqualTo(1);
     }
 
     @Test()
@@ -32,7 +24,7 @@ public class InputControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> inputController.getOneNumber())
+        assertThatThrownBy(InputController::getOneNumber)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,7 +34,7 @@ public class InputControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        List<Integer> result = inputController.getEachNumber(input.length());
+        List<Integer> result = InputController.getEachNumber(input.length());
         assertThat(result.get(0)).isEqualTo(1);
         assertThat(result.get(1)).isEqualTo(2);
         assertThat(result.get(2)).isEqualTo(3);
@@ -56,7 +48,7 @@ public class InputControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> inputController.getEachNumber(input.length()))
+        assertThatThrownBy(() -> InputController.getEachNumber(input.length()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -66,7 +58,7 @@ public class InputControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> inputController.getEachNumber(3))
+        assertThatThrownBy(() -> InputController.getEachNumber(3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 public class InputController {
 
-    private String getLine() {
+    private static String getLine() {
         return Console.readLine();
     }
 
-    private Integer getNumberLine(Integer length) {
+    private static Integer getNumberLine(Integer length) {
         String line = getLine();
 
         if (line.length() != length) {
@@ -21,19 +21,19 @@ public class InputController {
         return parseInt(line);
     }
 
-    public List<Integer> getEachNumber(Integer length) {
+    public static List<Integer> getEachNumber(Integer length) {
         return convertToEachNumberList(getNumberLine(length));
     }
 
-    public Integer getOneNumber() {
+    public static Integer getOneNumber() {
         return getNumberLine(1);
     }
 
-    private List<Integer> convertToEachNumberList(Integer number) {
+    private static List<Integer> convertToEachNumberList(Integer number) {
         return Arrays.stream(number.toString().split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private Integer parseInt(String input) throws IllegalArgumentException {
+    private static Integer parseInt(String input) throws IllegalArgumentException {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

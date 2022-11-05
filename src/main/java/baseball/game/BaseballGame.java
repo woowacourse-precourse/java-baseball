@@ -9,11 +9,9 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private final InputController inputController;
     private final List<Integer> opponentNumbers;
 
-    public BaseballGame(InputController inputController, List<Integer> opponentNumbers) {
-        this.inputController = inputController;
+    public BaseballGame(List<Integer> opponentNumbers) {
         this.opponentNumbers = opponentNumbers;
     }
 
@@ -46,7 +44,7 @@ public class BaseballGame {
     private boolean tryGuess() {
         Logger.log(BaseballConstants.INPUT_MESSAGE);
 
-        List<Integer> userNumbers = inputController.getEachNumber(getBoardSize());
+        List<Integer> userNumbers = InputController.getEachNumber(getBoardSize());
         validateNumberInput(userNumbers);
 
         NumberBoard numberBoard = new NumberBoard();
