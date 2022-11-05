@@ -149,7 +149,7 @@ public class BullsAndCows {
     private void validateNumber(String input) {
         validateIsNumber(input);
         validateLength(input);
-        validateIsUniqueNumber(input);
+        validateIsDuplicatedNumber(input);
     }
 
     private void validateLength(String input) {
@@ -164,7 +164,7 @@ public class BullsAndCows {
         }
     }
 
-    private void validateIsUniqueNumber(String input) {
+    private void validateIsDuplicatedNumber(String input) {
         Pattern pattern = Pattern.compile(REGEX_HAS_DUPLICATE_VALUE);
         Matcher matcher = pattern.matcher(input);
         if(matcher.find()) {
