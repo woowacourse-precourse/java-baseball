@@ -85,4 +85,8 @@ public class Game {
             return true;
         }
     }
+    public void play() {}
+    public void replay(){
+        play();
+    }
 }
