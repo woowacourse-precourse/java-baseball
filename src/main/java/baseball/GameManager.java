@@ -111,6 +111,18 @@ public class GameManager {
         return getResultString(strike, ball);
     }
 
+    private String getResultString(final int strike, final  int ball) {
+        String ret = "";
+        if(ball > 0) {
+            ret += (ball + "볼 ");
+        }
+        if(strike > 0) {
+            ret += (strike + "스트라이크");
+        }
+
+        return ret;
+    }
+
     private int getStrike(ArrayList<Integer> userGuess) {
 
     }
