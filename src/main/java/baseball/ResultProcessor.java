@@ -14,4 +14,12 @@ public class ResultProcessor {
             // Distinguish type of digit and increase ball or strike (neither do nothing)
         }
     }
+
+    private void distinguishTypeOfDigit(Result result, String randomNumber, String predictedNumber, int position) {
+        if (randomNumber.indexOf(predictedNumber.charAt(position)) == position) {
+            // Increase number of strike
+        } else if (randomNumber.contains(String.valueOf(predictedNumber.charAt(position)))) {
+            // Increase number of ball
+        }
+    }
 }
