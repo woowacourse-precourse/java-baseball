@@ -19,7 +19,7 @@ public class Baseball {
         String inputNumbers = Console.readLine();
 
         ArrayList<String> userBall = user.input(inputNumbers);
-        compare(computerBall,userBall);
+        compare(computerBall, userBall);
         resultReturn();
 
         if (strikeCount != 3) {
@@ -27,7 +27,7 @@ public class Baseball {
         }
     }
 
-    public void compare(ArrayList<String> computerBall,ArrayList<String> userBall) {
+    public void compare(ArrayList<String> computerBall, ArrayList<String> userBall) {
         for (int i = 0; i < userBall.size(); i++) {
             if (computerBall.get(i).equals(userBall.get(i))) {
                 strikeCount++;
@@ -38,6 +38,7 @@ public class Baseball {
             }
         }
     }
+
     public void resultReturn() {
         if (strikeCount == MAX_SIZE) {
             System.out.println(MAX_SIZE + "스트라이크");
