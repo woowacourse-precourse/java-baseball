@@ -1,16 +1,36 @@
 package baseball.domain.baseball;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 class BaseballsTest {
+
+    @Mock
+    List<Baseball> mockList;
+
+    @InjectMocks
+    Baseballs computerBaseballs;
+
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     @RepeatedTest(100)
@@ -61,5 +81,13 @@ class BaseballsTest {
         assertThatThrownBy(() -> Baseballs.valueOf("112"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(Baseballs.DUPLICATE_MESSAGE);
+    }
+
+    @Test
+    void 스트라이크_갯수_세기() {
+        Baseballs computerBaseballs = Baseballs.valueOf("123");
+        Baseballs userBaseballs = Baseballs.valueOf("123");
+
+        assertThat(computerBaseballs.getStrike(userBaseballs)).isEqualTo(3);
     }
 }
