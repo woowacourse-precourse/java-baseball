@@ -2,20 +2,18 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 public class BaseballGame {
     private static final int MAX_STRIKE = 3;
     private static final String END = "1";
     private static final String RESTART = "2";
     private  int ballCount;
     private int strikeCount;
-    private List<Integer> userNumber;
-    private List<Integer> computerNumber;
+    private String userNumber;
+    private String computerNumber;
 
     public BaseballGame() {}
 
-    public BaseballGame(List<Integer> user, List<Integer> computer) {
+    public BaseballGame(String user, String computer) {
         this.ballCount = 0;
         this.strikeCount = 0;
         this.userNumber = user;
@@ -29,8 +27,8 @@ public class BaseballGame {
     public boolean isStrike() {
         boolean isStrike = false;
 
-        for (int strikeCountIndex = 0; strikeCountIndex < computerNumber.size(); strikeCountIndex++) {
-            if (computerNumber.get(strikeCountIndex).equals(userNumber.get(strikeCountIndex))) {
+        for (int strikeCountIndex = 0; strikeCountIndex < computerNumber.length(); strikeCountIndex++) {
+            if (computerNumber.charAt(strikeCountIndex) == (userNumber.charAt(strikeCountIndex))) {
                 strikeCount++;
                 isStrike = true;
             }
