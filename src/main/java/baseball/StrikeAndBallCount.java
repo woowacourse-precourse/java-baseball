@@ -1,48 +1,39 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class StrikeAndBallCount {
     private static final String NBSP = " ";
-    private static final int ALREADY_CHECKED_IN_TARGET = -1;
-    private static final int ALREADY_CHECKED_IN_GUESS = -2;
 
     private int strikeCount;
     private int ballCount;
 
-    private final int digitNumber;
-
-    public StrikeAndBallCount(List<Integer> target, List<Integer> guessValue) {
-        List<Integer> copyTarget = new ArrayList<>(target);
-        List<Integer> copyGuessValue = new ArrayList<>(guessValue);
-        digitNumber = target.size();
-        setStrikeCountAndCheckIfStrike(copyTarget, copyGuessValue);
-        setBallCount(copyTarget, copyGuessValue);
+    public StrikeAndBallCount(Target target, BallCountGuess ballCountGuess) {
+        setStrikeCountAndCheckIfStrike(target, ballCountGuess);
+        setBallCount(target, ballCountGuess);
     }
 
     //스트라이크 수를 파악 후, 만약 스트라이크면 해당 요소에 체크 진행(이후 볼 카운트시 이중으로 카운트 방지)
-    private void setStrikeCountAndCheckIfStrike(List<Integer> target, List<Integer> guessValue) {
-        for (int i = 0; i < digitNumber; i++) {
-            if (Objects.equals(target.get(i), guessValue.get(i))) {
+    private void setStrikeCountAndCheckIfStrike(Target target, BallCountGuess ballCountGuess) {
+        for (int i = 0; i < GamePlayer.DIGIT_NUMBER; i++) {
+            if (Objects.equals(target.get(i), ballCountGuess.get(i))) {
                 strikeCount++;
-                guessValue.set(i, ALREADY_CHECKED_IN_GUESS);
-                target.set(i, ALREADY_CHECKED_IN_TARGET);
+                target.check(i);
+                ballCountGuess.check(i);
             }
         }
     }
 
-    private void setBallCount(List<Integer> target, List<Integer> guessValue) {
-        guessValue.forEach(element -> {
-            if (target.contains(element)) {
+    private void setBallCount(Target target, BallCountGuess ballCountGuess) {
+        ballCountGuess.getAll().forEach(element -> {
+            if (target.isContain(element)) {
                 ballCount++;
             }
         });
     }
 
     public boolean isOut() {
-        return strikeCount == digitNumber;
+        return strikeCount == GamePlayer.DIGIT_NUMBER;
     }
 
     @Override

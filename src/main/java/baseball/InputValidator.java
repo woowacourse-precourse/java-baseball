@@ -32,7 +32,7 @@ public class InputValidator {
     }
 
     private boolean isOverlap(Set<Character> set) {
-        return set.size() < BallGenerator.DIGIT_NUMBER;
+        return set.size() < GamePlayer.DIGIT_NUMBER;
     }
 
     private void validateRegex(String message, ValidRegex validRegex) {
