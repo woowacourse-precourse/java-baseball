@@ -7,6 +7,7 @@ public class UserInput {
     private final String USER_Input_Message = "숫자를 입력해주세요 :";
     private final int NUMBER_LENGTH = 3;
     private int[] expectedAnswer;
+    private final UserInputValidation userInputValidation = new UserInputValidation();
 
     public UserInput() {
         expectedAnswer = new int[NUMBER_LENGTH];
@@ -19,6 +20,7 @@ public class UserInput {
     public String inputNumber() {
         System.out.println(USER_Input_Message);
         String names = Console.readLine();
+        userInputValidation.userInputValidation(names);
         return names;
     }
 
