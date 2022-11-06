@@ -113,7 +113,7 @@ class GameProcessor {
             if (num < 100 || num > 999) {
                 throw new IllegalArgumentException();
             }
-            num = lastInputInt;
+            lastInputInt = num;
         } catch (NumberFormatException n) {
             throw new IllegalArgumentException();
         }
