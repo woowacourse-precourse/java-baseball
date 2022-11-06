@@ -85,6 +85,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("3-2. 자리와 수가 모두 일치하는 경우 : 스트라이크")
+    void test6() {
+        String analyzeResult1 = analyzeInput("146", "123");
+        String analyzeResult2 = analyzeInput("146", "143");
+        String analyzeResult3 = analyzeInput("146", "146");
+
+        assertThat(analyzeResult1).isEqualTo("1스트라이크");
+        assertThat(analyzeResult2).isEqualTo("2스트라이크");
+        assertThat(analyzeResult3).isEqualTo("3스트라이크");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
