@@ -20,8 +20,8 @@ class Game {
     static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static void init() {
         System.out.println(INITGAME);
-        List answer = makeThreeNums();
-        System.out.println(User.getInput());
+        Hint hint = new Hint(makeThreeNums());
+        User.getInput();
     }
     static List makeThreeNums() {
         List<Integer> threeNums = new ArrayList<>();
@@ -82,5 +82,40 @@ class User {
         int [] intArr = Arrays.stream(stringArr).mapToInt(Integer::parseInt).toArray();
         List result = Arrays.stream(intArr).boxed().collect(Collectors.toList());
         return result;
+    }
+}
+
+class Hint {
+    final static String BALL = "볼";
+    final static String STRIKE = "스트라이크";
+    final static String NOTHING = "낫싱";
+    final List answer;
+
+    Hint(List answer) {
+        this.answer = answer;
+    }
+    String get(List input) {
+        String result = "";
+        int ball = countBall(input);
+        int strike = countStrike(input);
+        if (ball + strike == 0) {
+            return NOTHING;
+        }
+        if (ball > 0) {
+            result += ball + BALL;
+        }
+        if (strike > 0) {
+            result += " ";
+            result += strike + STRIKE;
+        }
+        return result;
+    }
+
+    int countStrike(List input) {
+        return 0;
+    }
+
+    int countBall(List input) {
+        return 0;
     }
 }
