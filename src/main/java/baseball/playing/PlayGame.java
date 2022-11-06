@@ -12,7 +12,6 @@ public class PlayGame {
 
     private String computerNumber;
     private String userNumber;
-    private String replaying;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -43,20 +42,21 @@ public class PlayGame {
     public void endGame() {
         System.out.println("게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        replaying = Console.readLine();
-
-        checkInputErr(replaying);
-        replayGame();
     }
 
     public void replayGame() {
-        GameController gameController = new GameController();
+
+        String replaying = Console.readLine();
+        int replayNum = Integer.valueOf(replaying);
+
+        checkInputErr(replayNum);
+
+        if (replayNum == 1) {
+            GameController gameController = new GameController();
+        }
     }
 
-    public void checkInputErr(String replaying) throws IllegalArgumentException {
-
-        int replayNum = Integer.parseInt(replaying);
-
+    public void checkInputErr(int replayNum) throws IllegalArgumentException {
         if (!(replayNum == 1 || replayNum == 2))
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
     }
