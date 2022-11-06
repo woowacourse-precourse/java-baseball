@@ -1,13 +1,9 @@
 package baseball.Controller;
 
 import baseball.model.Baseball;
-import baseball.view.Printer;
 import camp.nextstep.edu.missionutils.Console;
-import jdk.jshell.spi.ExecutionControl;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     public static final int BASEBALL_LENGTH = 3;
@@ -15,15 +11,11 @@ public class User {
     public Baseball getInput(){
         String input = Console.readLine();
         List<Integer> userNumber = mappingToList(input);
-        try{
-            if(!isCorrectForm(userNumber)){
-                throw new IllegalArgumentException();
-            }
-        }catch(IllegalArgumentException e){
 
+        if(!isCorrectForm(userNumber)) {
+            throw new IllegalArgumentException();
         }
         return new Baseball(userNumber);
-
     }
     private boolean isCorrectForm(List<Integer> userNumber){
         if(userNumber.size() == BASEBALL_LENGTH && !userNumber.contains(ZERO)){
@@ -46,7 +38,4 @@ public class User {
         int value = Character.getNumericValue(c);
         return value;
     }
-
-
-
 }
