@@ -16,6 +16,9 @@ public class GameNumber {
     public GameNumber(String userNumber) {
         this.number = userNumber;
     }
+    public String getNumber(){
+        return number;
+    }
 
     public static boolean isValidateNumber(String userNumber) {
         return isValidateLength(userNumber) && isDigit(userNumber) && isNotDuplicate(userNumber);
