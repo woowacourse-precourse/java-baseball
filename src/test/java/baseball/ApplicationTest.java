@@ -33,6 +33,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_중복_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_비수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("맹순영"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 계산_테스트1() {
         List<Integer> answer = new ArrayList<>(
                 Arrays.asList(1,2,3)
