@@ -21,9 +21,9 @@ public class Core {
         return count;
     }
 
-    public List<Integer> generateComputerRandomNumber(){
+    public List<Integer> generateRandomNumber(int length){
         List<Integer> computerRandomNumber = new ArrayList<>();
-        while (computerRandomNumber.size() < 3) {
+        while (computerRandomNumber.size() < length) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerRandomNumber.contains(randomNumber)) {
                 computerRandomNumber.add(randomNumber);

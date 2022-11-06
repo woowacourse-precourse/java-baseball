@@ -7,7 +7,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Baseball {
     public void run() {
         Core T = new Core();
-        List<Integer> computer = T.generateComputerRandomNumber();
+        List<Integer> computer = T.generateRandomNumber(3);
         boolean endFlag=false;
         while(!endFlag){
             System.out.print("숫자를 입력해주세요 : ");
