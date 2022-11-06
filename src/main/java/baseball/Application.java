@@ -27,29 +27,7 @@ public class Application {
                 initGame();
 
                 // TODO: 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
-                while (result != Result.THREESTRIKE) {
-                    System.out.print(INPUT_MESSAGE);
-                    User.setGameNumber();
-
-                    // TODO: 4. Computer와 User의 숫자를 가지고 게임 결과 생성
-                    Map<Character, Integer> numberIndexMap = computer.getNumberIndexMap();
-                    String userGameNumber = user.getGameNumber();
-                    int score = 0;
-
-                    for (int index = 0; index < userGameNumber.length(); index++) {
-                        char currentUserNumber = userGameNumber.charAt(index);
-                        if (numberIndexMap.containsKey(currentUserNumber)) {
-                            if (numberIndexMap.get(currentUserNumber) == index) {
-                                score += 10;
-                            } else {
-                                score += 1;
-                            }
-                        }
-                    }
-
-                    result = Result.getResultByCode(score);
-                    System.out.println(result.getMessage());
-                }
+                proceedGameUntil3S(computer, user);
                 System.out.println(GUESS_ALL);
 
                 // TODO: 5. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
@@ -75,5 +53,39 @@ public class Application {
         computer = new Computer();
         user = new User();
         result = Result.NOTHING;
+    }
+
+    /*
+     * Computer와 User 정보를 받아 Result가 THREESTRIKE가 아닐 동안 게임 수행
+     *
+     * @return void
+     * */
+    private static void proceedGameUntil3S(Computer computer, User user) {
+        try {
+            while (result != Result.THREESTRIKE) {
+                System.out.print(INPUT_MESSAGE);
+                User.setGameNumber();
+
+                Map<Character, Integer> numberIndexMap = computer.getNumberIndexMap();
+                String userGameNumber = user.getGameNumber();
+                int score = 0;
+
+                for (int index = 0; index < userGameNumber.length(); index++) {
+                    char currentUserNumber = userGameNumber.charAt(index);
+                    if (numberIndexMap.containsKey(currentUserNumber)) {
+                        if (numberIndexMap.get(currentUserNumber) == index) {
+                            score += 10;
+                        } else {
+                            score += 1;
+                        }
+                    }
+                }
+
+                result = Result.getResultByCode(score);
+                System.out.println(result.getMessage());
+            }
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException();
+        }
     }
 }

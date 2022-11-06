@@ -19,7 +19,7 @@
 ## 🔧 리팩토링
 1. TODO 2, 3, 5 기준으로 메소드 추출
    - [x] `initGame()`
-   - [ ] `playGameUntil3S()`
+   - [x] `playGameUntil3S()`
    - [ ] `changeStatusByOption()`
 
 # 🗝 필요한 자료 구조
