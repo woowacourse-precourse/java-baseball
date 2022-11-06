@@ -60,6 +60,10 @@ public class Number {
                 .collect(Collectors.toList());
     }
 
+    public void getUserNumberForTest(String testStr) {
+        setGameNumer(testStr);
+    }
+
     public void getUserNumber() {
         System.out.print(INPUT_USER_NUMBER_ANNOUNCE);
         String input = Console.readLine();
