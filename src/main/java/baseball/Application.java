@@ -18,11 +18,13 @@ public class Application {
         System.out.println("Computer's number: " + numOfComputer);
         System.out.println("Player's number: " + numOfPlayer);
 
-        CheckStrikes(numOfComputer, numOfPlayer);
-        CheckBalls(numOfComputer, numOfPlayer);
+        int numStrikes = CheckStrikes(numOfComputer, numOfPlayer);
+        int numBalls = CheckBalls(numOfComputer, numOfPlayer);
+
+        ReturnScore(numStrikes, numBalls);
     }
 
-    public static void CheckStrikes(List<Integer> computer, List<Integer> player) {
+    public static int CheckStrikes(List<Integer> computer, List<Integer> player) {
         int strikes = 0;
 
         for(int i = 0; i < computer.size(); i++) {
@@ -31,10 +33,10 @@ public class Application {
             }
         }
 
-        System.out.println(strikes);
+        return strikes;
     }
 
-    public static void CheckBalls(List<Integer> computer, List<Integer> player) {
+    public static int CheckBalls(List<Integer> computer, List<Integer> player) {
         int balls = 0;
 
         for(int i = 0; i < computer.size(); i++) {
@@ -46,7 +48,15 @@ public class Application {
             }
         }
 
-        System.out.println(balls);
+        return balls;
+    }
+
+    public static boolean ReturnScore(int strike, int ball) {
+        ball -= strike;
+        System.out.println("Strike: " + strike);
+        System.out.println("Ball: " + ball);
+
+        return true;
     }
 
 
