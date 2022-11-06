@@ -12,91 +12,32 @@ import static constant.BaseballConstant.*;
 public class BaseballGame {
     private List<Integer> computerNumbers = new ArrayList<>();
     private String userNumber;
-    private int strike = 0;
-    private int ball = 0;
     private boolean gameAvailable = true;
 
     public void start() {
-        computerNumbers = makeRandomNumber();
+        BaseballScore baseballScore = new BaseballScore();
+        BaseballNumber baseballNumber = new BaseballNumber();
+
+        computerNumbers = baseballNumber.makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
 
         while (gameAvailable) {
-            userNumber = inputUserNumber();
-            compareComputerAndUser();
-            printMessage(getResult() + ENTER);
-            if (checkCorrect()) {
+            printMessage(INPUT_MESSAGE);
+            userNumber = baseballNumber.inputUserNumber();
+
+            baseballScore.compareComputerAndUser(computerNumbers, userNumber);
+            printMessage(baseballScore.getResult() + ENTER);
+
+            if (baseballScore.checkCorrect()) {
                 askExit();
-            }
-            resetResult();
-        }
-    }
 
-    private List<Integer> makeRandomNumber() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
             }
+            baseballScore.resetResult();
         }
-        return numbers;
     }
 
     public void printMessage(String message) {
         System.out.print(message);
-    }
-
-    private String inputUserNumber() {
-        printMessage(INPUT_MESSAGE);
-
-        String userInput = Console.readLine();
-
-        if (!InputValidator.isRightInput(userInput)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
-        }
-        return userInput;
-    }
-
-    private void compareComputerAndUser() {
-        for (int index = 0; index < NUMBER_LENGTH; index++) {
-            if (isStrike(index)) {
-                strike++;
-            } else if (isBall(index)) {
-                ball++;
-            }
-        }
-    }
-
-    private boolean isStrike(int index) {
-        return userNumber.charAt(index) - '0' == computerNumbers.get(index);
-    }
-
-    private boolean isBall(int index) {
-        return computerNumbers.contains(userNumber.charAt(index) - '0');
-    }
-
-    public String getResult() {
-        String resultMessage = "";
-        if (ball == 0 && strike == 0) {
-            return NOTHING_MESSAGE;
-        }
-        if (ball > 0) {
-            resultMessage += ball + BALL_MESSAGE + SPACE;
-        }
-        if (strike > 0) {
-            resultMessage += strike + STRIKE_MESSAGE + SPACE;
-        }
-        return resultMessage;
-    }
-
-    private boolean checkCorrect() {
-        return strike == NUMBER_LENGTH;
-    }
-
-    private void resetResult() {
-        ball = 0;
-        strike = 0;
     }
 
     private void askExit() {
@@ -105,7 +46,8 @@ public class BaseballGame {
         if (exitNumber == STOP) {
             gameAvailable = false;
         } else if (exitNumber == CONTINUE) {
-            computerNumbers = makeRandomNumber();
+            BaseballNumber baseballNumber = new BaseballNumber();
+            computerNumbers = baseballNumber.makeRandomNumber();
         }
     }
 
