@@ -30,8 +30,6 @@ public class BallTest {
 	@Test
 	void compareTo_숫자_비교_낫싱() {
 		Ball ball = new Ball(1, 1);
-
-		// 낫싱의 경우
 		BallStatus status = ball.compareTo(new Ball(2, 1));
 		assertThat(status).isEqualTo(BallStatus.NOTHING);
 	}
@@ -40,8 +38,6 @@ public class BallTest {
 	@Test
 	void compareTo_숫자_비교_스트라이크() {
 		Ball ball = new Ball(1, 1);
-
-		// 낫싱의 경우
 		BallStatus status = ball.compareTo(new Ball(1, 1));
 		assertThat(status).isEqualTo(BallStatus.STRIKE);
 	}
@@ -50,8 +46,6 @@ public class BallTest {
 	@Test
 	void compareTo_숫자_비교_볼() {
 		Ball ball = new Ball(1, 1);
-
-		// 낫싱의 경우
 		BallStatus status = ball.compareTo(new Ball(1, 2));
 		assertThat(status).isEqualTo(BallStatus.BALL);
 	}
