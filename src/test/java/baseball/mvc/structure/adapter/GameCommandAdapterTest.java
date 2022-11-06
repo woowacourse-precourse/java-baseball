@@ -58,7 +58,7 @@ class GameCommandAdapterTest {
         }
 
         @Test
-        @DisplayName("만약 handler와 사용자 입력 1이 저장된 request가 주어지면 GameStatus.START를 ModelAndView에 저장해 반환한다.")
+        @DisplayName("만약 handler와 플레이어 입력 1이 저장된 request가 주어지면 GameStatus.START를 ModelAndView에 저장해 반환한다.")
         void game_status_start_test() {
             request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, RESTART_INPUT);
 
@@ -68,7 +68,7 @@ class GameCommandAdapterTest {
         }
 
         @Test
-        @DisplayName("만약 handler와 사용자 입력 2가 저장된 request가 주어지면 GameStatus.EXIT를 ModelAndView에 저장해 반환한다.")
+        @DisplayName("만약 handler와 플레이어 입력 2가 저장된 request가 주어지면 GameStatus.EXIT를 ModelAndView에 저장해 반환한다.")
         void game_status_end_test() {
             request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, EXIT_INPUT);
 
@@ -79,8 +79,8 @@ class GameCommandAdapterTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"a", "+", "0", "3", "@"})
-        @DisplayName("만약 handler와 유효하지 않은 사용자 입력이 저장된 request가 주어지면 IllegalArgumentException 예외가 발생한다.")
-        void wrong_input_exception_test(String playerInput) {
+        @DisplayName("만약 handler와 유효하지 않은 플레이어 입력이 저장된 request가 주어지면 IllegalArgumentException 예외가 발생한다.")
+        void wrong_input_illegal_argument_exception_test(String playerInput) {
             request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, playerInput);
 
             Assertions.assertThatThrownBy(() -> adapter.handle(controller, request))
