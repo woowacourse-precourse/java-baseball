@@ -23,3 +23,50 @@
 - game
 - rulebook
     - rule
+
+## 😅 실제 구현한 기능 사항 목록
+### Application.class
+- **main**
+- **aksReGame**
+  -  게임의 재시작을 묻는 함수
+### BaseballGame.class
+- **start**
+  - 숫자 야구게임을 시작하고 게임의 흐름을 제어하는 함수
+- **makeHint**
+  - 정답이면 반복을 멈추고 오답이면 힌트를 생성하는 함
+### Message.class
+- **get**
+  - enum클래스에서 게임 진행에 관련된 출력문을 얻는 함수
+### Player.class
+- **setNumber**
+  - 사용자 입력을 받아 저장하는 함수
+- **isValid**
+  - 올바른 입력인지 검사하는 함수 
+- **is3NumbersFrom1To9**
+  - 올바른 입력인지 검사하는 함수
+- **getNumber**
+  - 저장된 입력을 받는 함수
+### ReGame.class
+- **inputNumber**
+  - 게임 재시작에 대한 입력을 받는 함수
+- **isValidNumber**
+  - 올바른 입력인지 검사하는 함수
+- **isOk**
+  - 재시작, 종료를 리턴하는 함수
+### Rule.class
+- **generateAnswer**
+  - 랜덤으로 정답을 생성하는 함수
+- **getHint**
+  - 힌트를 조합해서 문자열을 생성하는 함수
+- **getTotalCount**
+  - Strike, Ball, Nothing 판단을 요청하는 함수
+- **getStrikeCount**
+  - Strike 수를 세고 힌트에 추가하는 함수
+- **getBallCount**
+  - Ball 수를 세는 힌트에 추가하는 함수
+- **getNothing**
+  - Nothing 인지 확인하고 힌트에 추가하는 함수
+- **isStrike**
+  - 하나의 수가 Stike 인지 판별하는 함수
+- **is3Strike**
+  - 3Strike 인지 확인하는 함수
