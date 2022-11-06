@@ -27,4 +27,26 @@ public class Computer {
             }
         }
     }
+
+    public int addBallScore(List<Integer> userNumbers) {
+        int ball = 0;
+
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (randomNumber.contains(userNumbers.get(i))
+                    && userNumbers.get(i) != randomNumber.get(i)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    public int addStrikeScore(List<Integer> userNumbers) {
+        int strike = 0;
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (userNumbers.get(i) == randomNumber.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }

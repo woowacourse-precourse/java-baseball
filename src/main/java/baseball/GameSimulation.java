@@ -3,7 +3,6 @@ package baseball;
 import baseball.Util.Valid;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +18,9 @@ public class GameSimulation {
         String userInput = Console.readLine();
         List<Integer> userNumber = makeList(userInput);
         validateUserNumber(userNumber);
+
+        ball = computer.addBallScore(userNumber);
+        strike = computer.addStrikeScore(userNumber);
     }
 
     public List<Integer> makeList(String userInput) {
@@ -39,4 +41,6 @@ public class GameSimulation {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
