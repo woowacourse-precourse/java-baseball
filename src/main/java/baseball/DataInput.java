@@ -7,11 +7,7 @@ import java.util.ArrayList;
 public class DataInput {
     public static final int ONE_INPUT = 0;
     public static final int THREE_INPUT = 1;
-
     private String inputString;
-
-    DataInput() {
-    }
 
     public void inputNumber(int type) {
         this.inputString = Console.readLine();
@@ -35,6 +31,7 @@ public class DataInput {
         }
         return result;
     }
+
     public ArrayList<Integer> getInputValue() {
         ArrayList<Integer> result;
         result = makeIntegerList();
