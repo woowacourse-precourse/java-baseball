@@ -50,7 +50,7 @@ public class Application {
 
     static void registerComputerNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (computerNumber.size() < 3) {
+        while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
