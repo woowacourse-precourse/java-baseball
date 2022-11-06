@@ -8,16 +8,6 @@ import java.util.List;
 
 public class Application {
 
-    public static int checkBall (List<Integer> answer, List<Integer> userInput) {
-        int howManyBall = 0;
-        for (int i=0; i<3; i++) {
-            if (answer.contains(userInput.get(i))) {
-                howManyBall++;
-            }
-        }
-        return howManyBall;
-    }
-
     public static void exceptionHandling (String userInputString) throws IllegalArgumentException{
         if (userInputString.length()!=3) {
             throw new IllegalArgumentException();
@@ -33,6 +23,16 @@ public class Application {
             userInput.add(Character.getNumericValue(userInputString.charAt(i)));
         }
         return userInput;
+    }
+
+    public static int checkBall (List<Integer> answer, List<Integer> userInput) {
+        int howManyBall = 0;
+        for (int i=0; i<3; i++) {
+            if (answer.contains(userInput.get(i))) {
+                howManyBall++;
+            }
+        }
+        return howManyBall;
     }
 
     public static int checkStrike (List<Integer> answer, List<Integer> userInput, int howManyBall) {
