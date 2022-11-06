@@ -211,6 +211,7 @@ public class Application {
             isValidInput(playOrNot, InputType.WHETHER_REPLAY);
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException);
+            return false;
         }
 
         if (playOrNot.charAt(0) == REPLAY) {
