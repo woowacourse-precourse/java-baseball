@@ -15,6 +15,7 @@ public class Computer {
     }
 
     public void makeRandomNumber() {
+        baseballNumber.clear();
         while (baseballNumber.size() < BASEBALL_GAME_DIGIT) {
             addRandomNumber();
         }
