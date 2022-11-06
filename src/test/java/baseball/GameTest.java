@@ -42,4 +42,15 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game, computerNumber, userNumber)).isEqualTo(2);
     }
+
+    @Test
+    void 같은_수가_없을_때_낫싱을_출력하는_기능() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("checkNothing", int.class, int.class);
+        method.setAccessible(true);
+
+        // then
+        Assertions.assertThat(method.invoke(game, 0, 0)).isEqualTo(true);
+    }
 }
