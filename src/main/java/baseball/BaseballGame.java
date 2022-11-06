@@ -3,6 +3,8 @@ package baseball;
 import baseball.logic.Exception;
 import baseball.logic.Generatenumber;
 import baseball.logic.Inputnumber;
+import baseball.logic.RestartValidation;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ public class BaseballGame {
     private int strike;
     private int ball;
     private List<Integer> playerInput;
-    private List<Integer> computerOutput;
+    private List<Integer> computerInput;
 
     private final Generatenumber computerNum;
     private final Inputnumber playerNum;
@@ -22,7 +24,7 @@ public class BaseballGame {
         strike = 0;
         ball = 0;
         playerInput = new ArrayList<>();
-        computerOutput = new ArrayList<>();
+        computerInput = new ArrayList<>();
         computerNum = new Generatenumber();
         playerNum = new Inputnumber();
         exception = new Exception();
@@ -30,20 +32,20 @@ public class BaseballGame {
 
     public void play(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computerOutput = computerNum.getNum();
+        computerInput = computerNum.getNum();
         do {
             playerInput = exception.inputException(playerNum.inputNum());
             strike=0;
             ball=0;
             cntScore();
             messageHint();
-        }while(!(strike==3));
+        } while(!(strike==3));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void cntScore(){
-        cntStrike(playerInput, computerOutput);
-        cntBall(playerInput, computerOutput);
+        cntStrike(playerInput, computerInput);
+        cntBall(playerInput, computerInput);
     }
 
     public void messageHint(){
@@ -75,5 +77,15 @@ public class BaseballGame {
             }
         }
         return ball;
+    }
+
+    public boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartInput = Console.readLine();
+
+        if (!RestartValidation.checkRestart(restartInput)){
+            throw new IllegalArgumentException();
+        }
+        return restartInput.equals("1");
     }
 }
