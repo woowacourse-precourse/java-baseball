@@ -83,37 +83,37 @@ class ApplicationTest extends NsTest {
 //    }
 
     @Test
-    void 입력값_중복체크_테스트1(){
+    void 입력값_중복체크_테스트1() {
         boolean isPure = baseBallGame.isDiffDigitNumber("123");
         assertThat(isPure).isEqualTo(true);
     }
 
     @Test
-    void 입력값_중복체크_테스트2(){
+    void 입력값_중복체크_테스트2() {
         boolean isPure = baseBallGame.isDiffDigitNumber("223");
         assertThat(isPure).isEqualTo(false);
     }
 
     @Test
-    void 입력값_정규식_테스트1(){
+    void 입력값_정규식_테스트1() {
         boolean is3Digit = baseBallGame.is3DigitNumber("123");
         assertThat(is3Digit).isEqualTo(true);
     }
 
     @Test
-    void 입력값_정규식_테스트2(){
+    void 입력값_정규식_테스트2() {
         boolean is3Digit = baseBallGame.is3DigitNumber("012");
         assertThat(is3Digit).isEqualTo(false);
     }
 
     @Test
-    void 입력값_정규식_테스트3(){
+    void 입력값_정규식_테스트3() {
         boolean is3Digit = baseBallGame.is3DigitNumber("hello123");
         assertThat(is3Digit).isEqualTo(false);
     }
 
     @Test
-    void 입력값_유효성_테스트1(){
+    void 입력값_유효성_테스트1() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             baseBallGame.inputValidation("223");
         });
