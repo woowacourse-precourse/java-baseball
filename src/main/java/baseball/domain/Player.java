@@ -13,6 +13,12 @@ import java.util.stream.Collectors;
 public class Player {
     List<Integer> numbers;
 
+    public Player() {
+    }
+    public Player(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
