@@ -113,12 +113,8 @@ public class Application {
     }
 
     // 게임이 종료되고 사용자가 1이나 2을 입력하지 않았을 때 예외 처리하는 메서드
-    static boolean continueGame(String inputString) {
-        if (inputString.equals("1")) {
-            return true;
-        } else if (inputString.equals("2")) {
-            return false;
-        } else {
+    static void continueGame(String inputString) {
+        if (!(inputString.equals("1") || inputString.equals("2"))) {
             throw new IllegalArgumentException("1이나 2를 입력해 주세요");
         }
     }
