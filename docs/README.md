@@ -21,24 +21,28 @@
 
 스트라이크와 볼의 개수를 세어주는 기능
 * 안에서 isStrike 와 isBall 사용
+* '낫싱', '몇 볼 몇 스트라이크', '3스트라이크'를 해당 메소드 안에서 출력
 * 함수명 : `countStrikeBall`
 * parameter : List (user), List (computer)
-* return : boolean
+* return : boolean 
+  * user가 정답을 맞추면 true
+  * user가 정답을 맞추지 못하면 false 
 
 <br>
 
 사용자가 입력한 값이 볼인지 판별하는 기능
 * 함수명 : `isBall`
-* parameter : int, int
-* return : int
+* parameter : List(computer), int(user), int(userIndex) 
+* return : int = 1
+  * countStrikeBall 함수에서 ball의 개수를 count할 수 있도록 1을 리턴
 
 <br>
 
 사용자가 입력한 값이 스트라이크인지 판별하는 기능
 * 함수명 : `isStrike`
-* parameter : int, int
-* return : int
-
+* parameter : List(computer), int(user), int(userIndex)
+* return : int =1
+  * countStrikeBall 함수에서 strike의 개수를 count할 수 있도록 1을 리턴
 <br>
 
 입력값이 1인지 판별하는 기능
