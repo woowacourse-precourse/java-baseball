@@ -75,7 +75,9 @@ public class Application {
     public static int checkedBallNumbers(List computerNumbers,List userNumbers){
         int checkedBallNumbers = 0;
         for(int listElements = 0; listElements < userNumbers.size(); listElements++){
-
+            if(computerNumbers.contains(userNumbers.get(listElements))){
+                checkedBallNumbers++;
+            }
         }
         return 0;
     }
