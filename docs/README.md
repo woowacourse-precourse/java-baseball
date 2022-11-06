@@ -78,7 +78,7 @@
 - [ ] userNumberMessagePrint함수를 실행
 - [ ] userNumberInput함수를 실행
 - [ ] availableUserNumberIsChecked함수를 실행 후 출력값을 availableUserNumberIsChecking에 선언
-- [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행
+- [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행 후, 출력값을 userNumber에 저장
 
 ## (void)inputUserNumberService()
 - [ ] 사용자가의 수가 컴퓨터의 수와 동일한지 비교후 결과값을 저장하는 checkedAnswer을 false로 초기화
