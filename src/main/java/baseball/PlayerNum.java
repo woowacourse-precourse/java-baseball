@@ -33,4 +33,12 @@ public class PlayerNum implements Number {
         }
     }
 
+    public List<Integer> transformInput(String input){
+        List<Integer> number = new ArrayList<>();;
+        number.add(Integer.parseInt(input) / 100);
+        number.add((Integer.parseInt(input) % 100) / 10);
+        number.add((Integer.parseInt(input) % 100) % 10);
+        return number;
+    }
+
 }
