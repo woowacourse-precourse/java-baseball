@@ -1,8 +1,8 @@
 package controller;
 
 import model.Computer;
-import model.UseFunc;
 import model.User;
+import utill.UseFunc;
 
 public class GameController {
 

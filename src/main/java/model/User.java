@@ -1,5 +1,7 @@
 package model;
 
+import utill.UseFunc;
+
 public class User {
 
     final int NUM_RESTART_GAME = 1;

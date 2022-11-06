@@ -1,4 +1,4 @@
-package model;
+package utill;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
