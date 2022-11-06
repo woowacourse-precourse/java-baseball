@@ -13,7 +13,7 @@ public class Number {
     private static final String INPUT_ERROR = "숫자를 잘못 입력하셨습니다. 게임 종료";
     private static final String FROMONETONINE = "[1-9]+";
     private static final int MAX_LEN = 3;
-    public static final char CHARZERO = '0';
+    private static final char CHARZERO = '0';
 
 
     public List<Integer> createUserNumber(String number) {
