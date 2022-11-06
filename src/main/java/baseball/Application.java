@@ -37,6 +37,9 @@ public class Application {
             String input = Console.readLine();
             System.out.println(input);
             String[] inputSplits = input.split("");
+
+            validateCase(inputSplits);
+
             int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
 
             GameStatus gameStatus = new GameStatus();
@@ -91,5 +94,8 @@ public class Application {
         Integer strike = 0;
 
     }
+    private static void validateCase(String[] inputSplits){
+        if(inputSplits.length != 3) throw new IllegalArgumentException();
 
+    }
 }
