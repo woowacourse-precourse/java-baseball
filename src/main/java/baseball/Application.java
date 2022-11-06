@@ -51,6 +51,14 @@ public class Application {
         }
         return Ball;
     }
+    static int checkStrike(int index,int value, List<Integer> computer){
+        int strike=0;
+        for (int i = 0; i < 3; i++) {
+            if(Objects.equals(value, computer.get(i)) && index==i)
+                strike++;
+        }
+        return strike;
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
