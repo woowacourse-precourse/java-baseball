@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) {
 
-        //NumberBaseballGame.startGame();
+        NumberBaseballGame.startGame();
+
 
     }
 }
@@ -18,6 +20,7 @@ public class Application {
 
 class UserInput {
     private static String readLine = "";
+    private static Console inputConsole;
     public static int[] request() {
         readLine = "";
         readLine = Console.readLine();
@@ -73,13 +76,15 @@ class PrintGuidSentence {
         if (ball > 0) {
             dst = dst + ball + BaseballGameSentence.BALL;
         }
-
+        if (strike + ball == 0) {
+            dst = BaseballGameSentence.NOTHING;
+        }
         System.out.println(dst);
 
     }
     public static void endGame() {
-        System.out.print(BaseballGameSentence.GAME_OVER);
-        System.out.print(BaseballGameSentence.SELECT_REPLAY);
+        System.out.println(BaseballGameSentence.GAME_OVER);
+        System.out.println(BaseballGameSentence.SELECT_REPLAY);
     }
 }
 
@@ -175,17 +180,23 @@ class NumberBaseballGame {
         baseballNumber = new BaseballNumber(numberContainer);
     }
     private static void proceedGame() {
-        PrintGuidSentence.requestNumber();
-        checkBaseballNumber(new BaseballNumber(UserInput.request()));
 
-        PrintGuidSentence.requestNumber();
-        checkBaseballNumber(new BaseballNumber(UserInput.request()));
+        while (!gameEndFlag) {
+
+            PrintGuidSentence.requestNumber();
+            checkBaseballNumber(new BaseballNumber(UserInput.request()));
+        }
 
 
     }
     private static void checkBaseballNumber(BaseballNumber userGuess) {
         int[] strikeAndBall = baseballNumber.checkStrikerAndBall(userGuess);
         PrintGuidSentence.printResult(strikeAndBall[0], strikeAndBall[1]);
+
+        if (strikeAndBall[0] == 3) {
+            PrintGuidSentence.endGame();
+            gameEndFlag = true;
+        }
     }
 
 
