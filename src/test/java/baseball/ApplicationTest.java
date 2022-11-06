@@ -147,6 +147,15 @@ class ApplicationTest extends NsTest {
         int strike = Application.calculationStrike(computer,user);
         assertThat(strike).isEqualTo(2);
 
+    }@Test
+    @DisplayName("3 스트라이크 경우 ")
+    public void threeStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(4,5,6);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculationStrike(computer,user);
+        assertThat(strike).isEqualTo(3);
+
     }
 
 
