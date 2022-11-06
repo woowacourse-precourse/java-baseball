@@ -44,4 +44,12 @@ public class GameCycle {
         }
         return true;
     }
+    public String playerInputNumber() {
+        String playerNumber = inputNumber();
+        if (numberIsDigit(playerNumber));
+        if (numberLengthIsThree(playerNumber));
+        if (numberIsNotDuplicate(playerNumber));
+        if (numberIsNotZero(playerNumber));
+        return playerNumber;
+    }
 }

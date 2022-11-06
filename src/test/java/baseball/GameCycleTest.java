@@ -71,4 +71,24 @@ class GameCycleTest {
         assertEquals(game.numberIsNotDuplicate(inputTrue), true);
         assertThrows(IllegalArgumentException.class,()->game.numberIsNotDuplicate(inputFalse));
     }
+    @Test
+    public void checkPlayer() throws Exception {
+        //given
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //when
+        String playerNumber = game.playerInputNumber();
+
+        //then
+        assertEquals(playerNumber, "123");
+        //given
+        input = "1234";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //when
+        assertThrows(IllegalArgumentException.class, ()->game.playerInputNumber());
+    }
 }
