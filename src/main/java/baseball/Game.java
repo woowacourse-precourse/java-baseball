@@ -7,15 +7,15 @@ import static baseball.Constant.*;
 public class Game {
     static int strike;
     static int ball;
+
     public static void playGame() {
         System.out.println(START_MESSAGE);
         List<Integer> computerAnswer = Computer.generateNumber();
-        boolean isCorrectAnswer = false;
-        while (!isCorrectAnswer) {
+        do {
             countStrikeBall(computerAnswer, Computer.getPlayerAnswer());
-            getResult();
-        }
-    }
+        } while (!getResult());
+}
+
     public static void countStrikeBall(List<Integer> computerAnswer, List<Integer> playerAnswer) {
         strike = 0;
         ball = 0;
@@ -27,6 +27,7 @@ public class Game {
             }
         }
     }
+
     private static boolean getResult() {
         if (strike == NUMBER_SIZE) {
             System.out.println(NUMBER_SIZE + STRIKE_MESSAGE);
