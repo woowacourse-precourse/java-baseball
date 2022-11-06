@@ -1,27 +1,51 @@
 package baseball.view;
 
+import baseball.Application;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
 
 import static baseball.view.InputView.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class viewTest {
+public class viewTest extends NsTest {
     @Test
     void startProgramViewTest(){
-        startProgramView();
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123","2");
+                    Assertions.assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
+                },
+                1,2,3
+        );
     }
 
     @Test
     void inputNumbersViewTest(){
-        Scanner scanner = new Scanner("111");
-        assertThat(inputNumbersView(scanner)).isEqualTo("111");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123","2");
+                    Assertions.assertThat(output()).contains("숫자를 입력해주세요 :");
+                },
+                1,2,3
+        );
     }
 
     @Test
     void inputRestartViewTest(){
-        Scanner scanner = new Scanner("111");
-        assertThat(inputRestartView(scanner)).isEqualTo("111");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123","2");
+                    Assertions.assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                1,2,3
+        );
+    }
+
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
     }
 }
