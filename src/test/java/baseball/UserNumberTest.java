@@ -27,7 +27,7 @@ class UserNumberTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         UserNumber userNumber = new UserNumber();
-        List<Integer> userNumbers = userNumber.getList();
+        List<Integer> userNumbers = userNumber.getNumberList();
         assertThat(userNumbers).isEqualTo(Arrays.asList(1, 2, 3));
     }
 }

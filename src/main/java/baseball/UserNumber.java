@@ -14,7 +14,7 @@ public class UserNumber {
         this.userNumbers = createUserNumbers(input);
     }
 
-    public List<Integer> getList() {
+    public List<Integer> getNumberList() {
         return userNumbers;
     }
 
