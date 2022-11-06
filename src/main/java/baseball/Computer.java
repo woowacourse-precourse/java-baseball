@@ -20,4 +20,8 @@ public class Computer {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
+
+    public void giveNumbersToReferee(Referee referee) {
+        referee.receiveComputerNumbers(numbers);
+    }
 }
