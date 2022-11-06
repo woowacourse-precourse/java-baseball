@@ -10,6 +10,15 @@ public class Game {
     public Game(){
     }
 
+    public void start() {
+        printGameStartMessage();
+        Round round;
+        do {
+            round = new Round();
+            round.start();
+        } while (askRestart());
+    }
+
     public void printGameStartMessage(){
         System.out.println(GAME_START_MESSAGE);
     }
