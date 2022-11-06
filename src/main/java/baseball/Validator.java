@@ -9,6 +9,19 @@ public class Validator {
     public static final String HAVING_SAME_NUMBER_EXCEPTION = "서로 다른 숫자만 입력할 수 있습니다";
     public static final String RESTART_RESPONSE_EXCEPTION = "1, 2 이외의 문자가 입력되었습니다.";
 
+    public static void validateNumberString(String numberStringUserInput) {
+        validateLength(numberStringUserInput);
+        validateNumber(numberStringUserInput);
+        validateNonZero(numberStringUserInput);
+        validateDuplicate(numberStringUserInput);
+    }
+
+    public static void validateRestartResponse(String replayResponse) {
+        if (!replayResponse.equals("1") && !replayResponse.equals("2")) {
+            throw new IllegalArgumentException(RESTART_RESPONSE_EXCEPTION);
+        }
+    }
+
     public static void validateLength(String numberStringUserInput) {
         if (numberStringUserInput.length() != 3) {
             throw new IllegalArgumentException(LENGTH_EXCEPTION);
@@ -40,8 +53,4 @@ public class Validator {
             setForDuplicate.add(numChar);
         }
     }
-
-    //TODO 재식작 응답 검증 시 1,2 이외의 문자 X
-
-
 }
