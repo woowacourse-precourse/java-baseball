@@ -54,37 +54,58 @@
 <details>
 <summary>'랜덤 넘버 생성'</summary>
 
-- [ ] Randoms API를 사용
+- [ ] Randoms API 사용
 - [ ] 각 자리의 숫자가 서로 겹치지 않음
 
 </details>
 
 <details>
-<summary>'사용자 입력'</summary>
+<summary>사용자 입력 & 검증</summary>
 
 - [ ] Console API 사용
-- [ ] 추측 입력 검증
-    1. 길이가 3 이하인가
-    2. 숫자로만 이루어져 있는가
-    3. 중복된 숫자가 사용되었는가
-- [ ] 사용자 행동 입력 검증
-    1. 1 또는 2가 입력되었는가
+
+# 입력값 검증
+
+- [ ] Validator 구현
+- [ ] Condition 인터페이스 선언
+- [ ] Condition 인터페이스 구현체 구현
+  ## 숫자 입력 검증
+- [ ] 길이가 3 이하인가
+- [ ] 숫자로만 이루어져 있는가
+- [ ] 중복된 숫자가 사용되었는가
+  ## 사용자 행동 입력 검증
+- [ ] 1 또는 2가 입력되었는가
 
 </details>
 
 <details>
-<summary>'정답 비교'</summary>
+<summary>정답 비교</summary>
 
-- [ ] strike 개수 파악
-- [ ] ball 개수 파악
-- [ ] nothing 파악
+- [ ] Rule 인터페이스 선언
+- [ ] Rule 인터페이스 구현체 구현
+- [ ] RuleChecker 구현
+
+## 게임 규칙
+
+- [ ] strike 개수 파악 규칙
+- [ ] ball 개수 파악 규칙
+- [ ] nothing 파악 규칙
 
 </details>
 
 <details>
 <summary>'결과값 출력'</summary>
 
-- [ ] 정답 비교 결과를 출력
-- [ ] 상호작용 결과 출력
+## 프로그램 동작 결과
+
+- [ ] 프로그램 시작 메시지 출력
+- [ ] 프로그램 종료 메시지 출력
+
+## 게임 동작 결과
+
+- [ ] 게임 승리 (3 strike) 메시지 출력
+- [ ] Ball 개수 출력
+- [ ] Strike 개수 출력
+- [ ] Nothing 출력
 
 </details>
