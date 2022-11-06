@@ -1,5 +1,5 @@
 package baseball;
 
 public enum BallStatus {
-	STRIKE, NOTHING
+	STRIKE, BALL, NOTHING
 }
