@@ -34,4 +34,10 @@ public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
         return result;
     }
+
+
+    @Override
+    public String printHint(List<Integer> targetList) {
+        return null;
+    }
 }

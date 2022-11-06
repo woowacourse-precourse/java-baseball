@@ -14,4 +14,11 @@ public interface NumberMatchProcessor {
      */
     List<Integer> compare(int gameNum, int userNum);
 
+
+    /**
+     * 스트라이크와 볼의 개수를 스트링형태로 파싱해준다.
+     * @param targetList - 스트라이크와 볼의 개수가 들어있는 크기 2의 리스트
+     */
+    String printHint(List<Integer> targetList);
+
 }
