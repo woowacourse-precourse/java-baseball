@@ -35,6 +35,12 @@ public class Computer {
 			}
 		}
 		printResult();
+		resetBallAndStrike();
+	}
+
+	private void resetBallAndStrike() {
+		this.ball = 0;
+		this.strike = 0;
 	}
 
 	private void printResult() {
