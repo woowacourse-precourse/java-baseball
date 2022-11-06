@@ -49,10 +49,7 @@ public class Computer {
     }
 
     public boolean isEndTheGame() {
-        if (this.cntStrike == ConstantVO.NUM_THREE_STRIKE) {
-            return true;
-        }
-        return false;
+        return this.cntStrike == ConstantVO.NUM_THREE_STRIKE;
     }
 
     @Override
