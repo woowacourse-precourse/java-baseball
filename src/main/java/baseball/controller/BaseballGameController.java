@@ -23,6 +23,10 @@ public class BaseballGameController {
         choiceRestartGame();
     }
 
+    public void printStartGame() {
+        baseballGameView.printStartGame();
+    }
+
     public void startGame() {
         computer.setRandomNumber();
         List<Integer> computerRandomNumber = computer.getRandomNumber();
