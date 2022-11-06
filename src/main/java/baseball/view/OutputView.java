@@ -4,7 +4,7 @@ public class OutputView {
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String ANSWER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String NOTHING_MESSAGE = "낫싱\n";
     private static final String ONLY_BALL_MESSAGE = "%d볼\n";
     private static final String ONLY_STRIKE_MESSAGE = "%d스트라이크\n";
     private static final String BALL_AND_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
@@ -21,19 +21,19 @@ public class OutputView {
     }
 
     public static void printNothingMessage() {
-        System.out.println(NOTHING_MESSAGE);
+        resultMessage = NOTHING_MESSAGE;
     }
 
     public static void printOnlyBallMessage() {
-        System.out.printf(ONLY_BALL_MESSAGE);
+        resultMessage = ONLY_BALL_MESSAGE;
     }
 
     public static void printOnlyStrikeMessage() {
-        System.out.printf(ONLY_STRIKE_MESSAGE);
+        resultMessage = ONLY_STRIKE_MESSAGE;
     }
 
     public static void printBallAndStrikeMessage() {
-        System.out.printf(BALL_AND_STRIKE_MESSAGE);
+        resultMessage = BALL_AND_STRIKE_MESSAGE;
     }
 
     public static void printGameEndMessage() {
@@ -41,7 +41,7 @@ public class OutputView {
     }
 
     public static void printResult() {
-        System.out.println(resultMessage);
+        System.out.printf(resultMessage);
     }
 
     public static void printRestartOrStopGuideMessage() {
