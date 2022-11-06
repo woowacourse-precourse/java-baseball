@@ -20,6 +20,7 @@ public class BaseBall {
         } while (check.result() == 0);
 
         int restart = reStartOrExit();
+        System.out.println(restart);
         if (restart == 1) {
             start();
         } else if (restart == 0) {
@@ -30,17 +31,15 @@ public class BaseBall {
     }
 
     public int reStartOrExit() {
-        String input = new String();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        input = readLine();
-        if (input == "1") {
+        String input = readLine();
+        System.out.println(input);
+        if (input.equals("1")) {
             return 1;
-        } else if (input == "2") {
+        } else if (input.equals("2")) {
             return 0;
         } else {
-            System.out.println("잘못된 입력입니다.");
-            reStartOrExit();
-            return -1;
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
 
