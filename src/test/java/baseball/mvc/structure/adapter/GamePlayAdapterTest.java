@@ -1,6 +1,6 @@
 package baseball.mvc.structure.adapter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.game.GameComputer;
 import baseball.domain.game.GameResult;
@@ -12,7 +12,6 @@ import baseball.mvc.structure.Request;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.mvc.util.GameRequestKeyConst;
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -32,13 +31,13 @@ class GamePlayAdapterTest {
         @Test
         @DisplayName("만약 주어진 Object의 타입이 GamePlayController이라면 true를 반환한다.")
         void true_test() {
-            Assertions.assertThat(adapter.supports(controller)).isTrue();
+            assertThat(adapter.supports(controller)).isTrue();
         }
 
         @Test
         @DisplayName("만약 주어진 Object의 타입이 GamePlayController가 아니라면 false를 반환한다.")
         void false_test() {
-            Assertions.assertThat(adapter.supports(new GameSettingsController())).isFalse();
+            assertThat(adapter.supports(new GameSettingsController())).isFalse();
         }
     }
 
@@ -66,9 +65,8 @@ class GamePlayAdapterTest {
 
                 ModelAndView modelAndView = adapter.handle(controller, request);
 
-                Assertions.assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.PLAY);
-                Assertions
-                        .assertThat(modelAndView
+                assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.PLAY);
+                assertThat(modelAndView
                                 .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
                                         .isNotNull();
             }
@@ -82,9 +80,8 @@ class GamePlayAdapterTest {
 
                 ModelAndView modelAndView = adapter.handle(controller, request);
 
-                Assertions.assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.END);
-                Assertions
-                        .assertThat(modelAndView
+                assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.END);
+                assertThat(modelAndView
                                 .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
                                         .isNotNull();
             }
@@ -96,7 +93,7 @@ class GamePlayAdapterTest {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY, new GameComputer());
                 request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, wrongPlayerInput);
 
-                Assertions.assertThatThrownBy(() -> adapter.handle(controller, request))
+                assertThatThrownBy(() -> adapter.handle(controller, request))
                         .isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -110,7 +107,7 @@ class GamePlayAdapterTest {
             void null_pointer_exception_without_player_input_test() {
                 request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, "123");
 
-                Assertions.assertThatThrownBy(() -> adapter.handle(controller, request))
+                assertThatThrownBy(() -> adapter.handle(controller, request))
                         .isInstanceOf(NullPointerException.class);
             }
 
@@ -119,7 +116,7 @@ class GamePlayAdapterTest {
             void null_pointer_exception_without_game_computer_test() {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY, new GameComputer());
 
-                Assertions.assertThatThrownBy(() -> adapter.handle(controller, request))
+                assertThatThrownBy(() -> adapter.handle(controller, request))
                         .isInstanceOf(NullPointerException.class);
             }
         }

@@ -1,6 +1,6 @@
 package baseball.mvc.structure.adapter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.game.GameComputer;
 import baseball.mvc.controller.GamePlayController;
@@ -9,7 +9,6 @@ import baseball.mvc.structure.ModelAndView;
 import baseball.mvc.structure.Request;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -26,13 +25,13 @@ class GameSettingsAdapterTest {
         @Test
         @DisplayName("만약 주어진 Object의 타입이 GameSettingsController이라면 true를 반환한다.")
         void true_test() {
-            Assertions.assertThat(adapter.supports(controller)).isTrue();
+            assertThat(adapter.supports(controller)).isTrue();
         }
 
         @Test
         @DisplayName("만약 주어진 Object의 타입이 GameSettingsController가 아니라면 false를 반환한다.")
         void false_test() {
-            Assertions.assertThat(adapter.supports(new GamePlayController())).isFalse();
+            assertThat(adapter.supports(new GamePlayController())).isFalse();
         }
     }
 
@@ -47,8 +46,8 @@ class GameSettingsAdapterTest {
 
             ModelAndView modelAndView = adapter.handle(controller, request);
 
-            Assertions.assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.PLAY);
-            Assertions.assertThat(modelAndView.getModelAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
+            assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.PLAY);
+            assertThat(modelAndView.getModelAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
                     .isNotNull();
         }
     }

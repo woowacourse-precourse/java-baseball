@@ -1,8 +1,9 @@
 package baseball.domain.game;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.domain.number.GameNumbers;
 import baseball.helper.factory.GameComputerFactory;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,8 +34,8 @@ class GameComputerTest {
             GameComputer gameComputer = GameComputerFactory.createGameComputer(computerAnswer);
             GameResult gameResult = gameComputer.calculateGameResult(new GameNumbers(playerAnswer));
 
-            Assertions.assertThat(gameResult.getStrike()).isEqualTo(strike);
-            Assertions.assertThat(gameResult.getBall()).isEqualTo(ball);
+            assertThat(gameResult.getStrike()).isEqualTo(strike);
+            assertThat(gameResult.getBall()).isEqualTo(ball);
         }
 
         @ParameterizedTest
@@ -52,7 +53,7 @@ class GameComputerTest {
         void too_many_answer_exception_test(long strike, long ball) {
             GameComputer gameComputer = GameComputerFactory.createFakeGameComputer(strike, ball);
 
-            Assertions.assertThatThrownBy(() -> gameComputer.calculateGameResult(new GameNumbers("123")))
+            assertThatThrownBy(() -> gameComputer.calculateGameResult(new GameNumbers("123")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(TOO_MANY_ANSWER);
         }

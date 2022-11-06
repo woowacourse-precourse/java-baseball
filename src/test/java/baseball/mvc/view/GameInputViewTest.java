@@ -1,10 +1,11 @@
 package baseball.mvc.view;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.helper.util.GameInputViewTestUtils;
 import baseball.util.GameStatus;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +39,7 @@ class GameInputViewTest {
         void play_input_log_test() {
             GameInputView.printGameInputLog(GameStatus.PLAY);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameInputViewTestUtils
                             .getMessage(GameInputView.ANSWER_INPUT, System.out::print, testOut));
         }
@@ -48,7 +49,7 @@ class GameInputViewTest {
         void end_input_log_test() {
             GameInputView.printGameInputLog(GameStatus.END);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameInputViewTestUtils
                             .getMessage(GameInputView.RESTART_INPUT, System.out::println, testOut));
         }

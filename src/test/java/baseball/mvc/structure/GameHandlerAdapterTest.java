@@ -1,6 +1,6 @@
 package baseball.mvc.structure;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import baseball.mvc.controller.GameCommandController;
 import baseball.mvc.controller.GamePlayController;
@@ -8,7 +8,6 @@ import baseball.mvc.controller.GameSettingsController;
 import baseball.mvc.structure.adapter.GameCommandAdapter;
 import baseball.mvc.structure.adapter.GamePlayAdapter;
 import baseball.mvc.structure.adapter.GameSettingsAdapter;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -26,7 +25,7 @@ class GameHandlerAdapterTest {
         void game_play_adapter_return_test() {
             Adapter adapter = handlerAdapter.getHandlerAdapter(new GamePlayController());
 
-            Assertions.assertThat(adapter).isInstanceOf(GamePlayAdapter.class);
+            assertThat(adapter).isInstanceOf(GamePlayAdapter.class);
         }
 
         @Test
@@ -34,7 +33,7 @@ class GameHandlerAdapterTest {
         void game_settings_adapter_return_test() {
             Adapter adapter = handlerAdapter.getHandlerAdapter(new GameSettingsController());
 
-            Assertions.assertThat(adapter).isInstanceOf(GameSettingsAdapter.class);
+            assertThat(adapter).isInstanceOf(GameSettingsAdapter.class);
         }
 
         @Test
@@ -42,13 +41,13 @@ class GameHandlerAdapterTest {
         void game_command_adapter_return_test() {
             Adapter adapter = handlerAdapter.getHandlerAdapter(new GameCommandController());
 
-            Assertions.assertThat(adapter).isInstanceOf(GameCommandAdapter.class);
+            assertThat(adapter).isInstanceOf(GameCommandAdapter.class);
         }
 
         @Test
         @DisplayName("만약 Controller가 아닌 Object가 주어지면 NullPointerException 예외가 발생한다.")
         void null_pointer_exception_test() {
-            Assertions.assertThatThrownBy(() -> handlerAdapter.getHandlerAdapter("123"))
+            assertThatThrownBy(() -> handlerAdapter.getHandlerAdapter("123"))
                     .isInstanceOf(NullPointerException.class);
         }
     }

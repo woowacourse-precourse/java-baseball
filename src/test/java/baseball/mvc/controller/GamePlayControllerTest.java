@@ -1,5 +1,7 @@
 package baseball.mvc.controller;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.domain.game.GameComputer;
 import baseball.domain.game.GameResult;
 import baseball.domain.number.GameNumbers;
@@ -7,7 +9,6 @@ import baseball.helper.factory.GameComputerFactory;
 import baseball.mvc.structure.Model;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -38,9 +39,9 @@ class GamePlayControllerTest {
 
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
 
-                Assertions.assertThat(gameStatus)
+                assertThat(gameStatus)
                         .isSameAs(GameStatus.END);
-                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
                         .isNotNull();
             }
 
@@ -65,8 +66,8 @@ class GamePlayControllerTest {
 
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
 
-                Assertions.assertThat(gameStatus).isSameAs(GameStatus.PLAY);
-                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                assertThat(gameStatus).isSameAs(GameStatus.PLAY);
+                assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
                         .isNotNull();
             }
 
@@ -86,7 +87,7 @@ class GamePlayControllerTest {
                 GameComputer computer = GameComputerFactory.createFakeGameComputer(strike, ball);
                 Model model = new Model();
 
-                Assertions.assertThatThrownBy(() -> controller.process(computer, playerAnswer, model))
+                assertThatThrownBy(() -> controller.process(computer, playerAnswer, model))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(TOO_MANY_ANSWER);
             }

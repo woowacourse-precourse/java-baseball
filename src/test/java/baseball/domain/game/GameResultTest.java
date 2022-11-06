@@ -1,8 +1,7 @@
 package baseball.domain.game;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,7 @@ class GameResultTest {
         )
         @DisplayName("만약 합이 3 이하인 strike, ball가 주어지면 GameResult를 생성한다.")
         void success_test(long strike, long ball) {
-            Assertions.assertThatCode(() -> new GameResult(strike, ball))
+            assertThatCode(() -> new GameResult(strike, ball))
                 .doesNotThrowAnyException();
         }
 
@@ -45,7 +44,7 @@ class GameResultTest {
         )
         @DisplayName("만약 합이 4 이상인 strike, ball가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void too_large_size_exception(long strike, long ball) {
-            Assertions.assertThatThrownBy(() -> new GameResult(strike, ball))
+            assertThatThrownBy(() -> new GameResult(strike, ball))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(TOO_MANY_ANSWER);
         }
@@ -60,7 +59,7 @@ class GameResultTest {
         void true_test() {
             GameResult gameResult = new GameResult(1L, 0L);
 
-            Assertions.assertThat(gameResult.isOnlyStrike()).isTrue();
+            assertThat(gameResult.isOnlyStrike()).isTrue();
         }
 
         @ParameterizedTest
@@ -76,7 +75,7 @@ class GameResultTest {
         void false_test(long strike, long ball) {
             GameResult gameResult = new GameResult(strike, ball);
 
-            Assertions.assertThat(gameResult.isOnlyStrike()).isFalse();
+            assertThat(gameResult.isOnlyStrike()).isFalse();
         }
     }
 
@@ -89,7 +88,7 @@ class GameResultTest {
         void true_test() {
             GameResult gameResult = new GameResult(0L, 1L);
 
-            Assertions.assertThat(gameResult.isOnlyBall()).isTrue();
+            assertThat(gameResult.isOnlyBall()).isTrue();
         }
 
         @ParameterizedTest
@@ -105,7 +104,7 @@ class GameResultTest {
         void false_test(long strike, long ball) {
             GameResult gameResult = new GameResult(strike, ball);
 
-            Assertions.assertThat(gameResult.isOnlyBall()).isFalse();
+            assertThat(gameResult.isOnlyBall()).isFalse();
         }
     }
 
@@ -118,7 +117,7 @@ class GameResultTest {
         void true_test() {
             GameResult gameResult = new GameResult(1L, 1L);
 
-            Assertions.assertThat(gameResult.isStrikeAndBall()).isTrue();
+            assertThat(gameResult.isStrikeAndBall()).isTrue();
         }
 
         @ParameterizedTest
@@ -134,7 +133,7 @@ class GameResultTest {
         void false_test(long strike, long ball) {
             GameResult gameResult = new GameResult(strike, ball);
 
-            Assertions.assertThat(gameResult.isStrikeAndBall()).isFalse();
+            assertThat(gameResult.isStrikeAndBall()).isFalse();
         }
     }
 
@@ -147,7 +146,7 @@ class GameResultTest {
         void true_test() {
             GameResult gameResult = new GameResult(3, 0);
 
-            Assertions.assertThat(gameResult.isCorrect()).isTrue();
+            assertThat(gameResult.isCorrect()).isTrue();
         }
 
         @ParameterizedTest
@@ -163,7 +162,7 @@ class GameResultTest {
         void false_test(long strike, long ball) {
             GameResult gameResult = new GameResult(strike, ball);
 
-            Assertions.assertThat(gameResult.isCorrect()).isFalse();
+            assertThat(gameResult.isCorrect()).isFalse();
         }
     }
 }

@@ -1,6 +1,7 @@
 package baseball.domain.number;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -37,13 +38,13 @@ class GameNumberTest {
         )
         @DisplayName("만약 1 ~ 9까지의 number와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(int number, int index) {
-            Assertions.assertThatCode(() -> new GameNumber(number, index)).doesNotThrowAnyException();
+            assertThatCode(() -> new GameNumber(number, index)).doesNotThrowAnyException();
         }
 
         @Test
         @DisplayName("만약 0이 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test() {
-            Assertions.assertThatThrownBy(() -> new GameNumber(0, 1))
+            assertThatThrownBy(() -> new GameNumber(0, 1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_NUMBER);
         }
@@ -51,7 +52,7 @@ class GameNumberTest {
         @Test
         @DisplayName("만약 3 이상의 index가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_size_exception_test() {
-            Assertions.assertThatThrownBy(() -> new GameNumber(1, 3))
+            assertThatThrownBy(() -> new GameNumber(1, 3))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_SIZE);
         }
@@ -77,14 +78,14 @@ class GameNumberTest {
         )
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(char numberChar, int index) {
-            Assertions.assertThatCode(() -> new GameNumber(numberChar, index)).doesNotThrowAnyException();
+            assertThatCode(() -> new GameNumber(numberChar, index)).doesNotThrowAnyException();
         }
 
         @ParameterizedTest
         @ValueSource(chars = {'A', 'a', '+', '-', '0'})
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아니라면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(char numberChar) {
-            Assertions.assertThatThrownBy(() -> new GameNumber(numberChar, 1))
+            assertThatThrownBy(() -> new GameNumber(numberChar, 1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_NUMBER);
         }
@@ -92,7 +93,7 @@ class GameNumberTest {
         @Test
         @DisplayName("만약 3 이상의 index가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_size_exception_test() {
-            Assertions.assertThatThrownBy(() -> new GameNumber('1', 3))
+            assertThatThrownBy(() -> new GameNumber('1', 3))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_SIZE);
         }
@@ -114,7 +115,7 @@ class GameNumberTest {
         void true_test() {
             GameNumber equalsGameNumber = new GameNumber(number, index);
 
-            Assertions.assertThat(standardGameNumber).isEqualTo(equalsGameNumber);
+            assertThat(standardGameNumber).isEqualTo(equalsGameNumber);
         }
 
         @ParameterizedTest
@@ -129,7 +130,7 @@ class GameNumberTest {
         void false_test(int number, int index) {
             GameNumber notEqualsGameNumber = new GameNumber(number, index);
 
-            Assertions.assertThat(standardGameNumber).isNotEqualTo(notEqualsGameNumber);
+            assertThat(standardGameNumber).isNotEqualTo(notEqualsGameNumber);
         }
     }
 
@@ -143,7 +144,7 @@ class GameNumberTest {
         void true_test(int index) {
             GameNumber equalsGameNumber = new GameNumber(number, index);
 
-            Assertions.assertThat(standardGameNumber.equalsWithoutIndex(equalsGameNumber)).isTrue();
+            assertThat(standardGameNumber.equalsWithoutIndex(equalsGameNumber)).isTrue();
         }
 
         @Test
@@ -151,7 +152,7 @@ class GameNumberTest {
         void false_test() {
             GameNumber notEqualsGameNumber = new GameNumber(2, index);
 
-            Assertions.assertThat(standardGameNumber.equalsWithoutIndex(notEqualsGameNumber)).isFalse();
+            assertThat(standardGameNumber.equalsWithoutIndex(notEqualsGameNumber)).isFalse();
         }
     }
 }

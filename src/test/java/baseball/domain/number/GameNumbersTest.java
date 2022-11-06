@@ -1,9 +1,10 @@
 package baseball.domain.number;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.util.GameNumberConst;
 import baseball.helper.util.GameNumbersTestUtils;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class GameNumbersTest {
             List<GameNumber> gameNumberList = GameNumbersTestUtils.getGameNumberList(gameNumbers);
             int uniqueGameNumberCount = Long.valueOf(gameNumberList.stream().distinct().count()).intValue();
 
-            Assertions.assertThat(uniqueGameNumberCount).isSameAs(GameNumberConst.MAX_GAME_NUMBER_SIZE);
+            assertThat(uniqueGameNumberCount).isSameAs(GameNumberConst.MAX_GAME_NUMBER_SIZE);
         }
     }
 
@@ -44,14 +45,14 @@ class GameNumbersTest {
             List<GameNumber> gameNumberList = GameNumbersTestUtils.getGameNumberList(gameNumbers);
             int uniqueGameNumberCount = Long.valueOf(gameNumberList.stream().distinct().count()).intValue();
 
-            Assertions.assertThat(uniqueGameNumberCount).isSameAs(GameNumberConst.MAX_GAME_NUMBER_SIZE);
+            assertThat(uniqueGameNumberCount).isSameAs(GameNumberConst.MAX_GAME_NUMBER_SIZE);
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"112", "1", "1234"})
         @DisplayName("만약 각 문자가 중복된 값이나 길이가 3이 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerInput) {
-            Assertions.assertThatThrownBy(() -> new GameNumbers(playerInput))
+            assertThatThrownBy(() -> new GameNumbers(playerInput))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_INPUT);
         }
@@ -60,7 +61,7 @@ class GameNumbersTest {
         @ValueSource(strings = {"012", "a12", "1 3"})
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(String playerInput) {
-            Assertions.assertThatThrownBy(() -> new GameNumbers(playerInput))
+            assertThatThrownBy(() -> new GameNumbers(playerInput))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_NUMBER);
         }
@@ -86,7 +87,7 @@ class GameNumbersTest {
 
             long resultStrike = computerAnswer.calculateStrike(playerAnswer);
 
-            Assertions.assertThat(resultStrike).isSameAs(expectStrike);
+            assertThat(resultStrike).isSameAs(expectStrike);
         }
     }
 
@@ -110,7 +111,7 @@ class GameNumbersTest {
 
             long resultBall = computerAnswer.calculateBall(playerAnswer);
 
-            Assertions.assertThat(resultBall).isSameAs(expectBall);
+            assertThat(resultBall).isSameAs(expectBall);
         }
     }
 }

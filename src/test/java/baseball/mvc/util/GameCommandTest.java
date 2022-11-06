@@ -1,8 +1,9 @@
 package baseball.mvc.util;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.helper.util.GameStatusTestUtils;
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,14 +32,14 @@ class GameCommandTest {
 
             GameStatus resultGameStatus = GameCommand.commandGameStatus(playerInput);
 
-            Assertions.assertThat(resultGameStatus).isSameAs(expectGameStatus);
+            assertThat(resultGameStatus).isSameAs(expectGameStatus);
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"a", "+", "0", "3", "@"})
         @DisplayName("만약 정상적이지 않은 사용자 입력이 주어졌다면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerWrongInput) {
-            Assertions.assertThatThrownBy(() -> GameCommand.commandGameStatus(playerWrongInput))
+            assertThatThrownBy(() -> GameCommand.commandGameStatus(playerWrongInput))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(WRONG_INPUT);
         }

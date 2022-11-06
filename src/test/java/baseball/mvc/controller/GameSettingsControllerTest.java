@@ -1,12 +1,11 @@
 package baseball.mvc.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.game.GameComputer;
 import baseball.mvc.structure.Model;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -26,8 +25,8 @@ class GameSettingsControllerTest {
 
             GameStatus gameStatus = controller.process(model);
 
-            Assertions.assertThat(gameStatus).isSameAs(GameStatus.PLAY);
-            Assertions.assertThat(model.getAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
+            assertThat(gameStatus).isSameAs(GameStatus.PLAY);
+            assertThat(model.getAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
                     .isNotNull();
         }
     }

@@ -1,8 +1,9 @@
 package baseball.mvc.structure;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.helper.util.DataMapTestUtils;
 import java.util.Map;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -36,7 +37,7 @@ class MapDataTest {
 
                 Map<String, Object> modelDataMap = DataMapTestUtils.getModelDataMap(model);
 
-                Assertions.assertThat((String) modelDataMap.get(TEST_KEY)).isEqualTo(TEST_VALUE);
+                assertThat((String) modelDataMap.get(TEST_KEY)).isEqualTo(TEST_VALUE);
             }
         }
 
@@ -53,7 +54,7 @@ class MapDataTest {
 
                 String result = model.getAttribute(TEST_KEY, String.class);
 
-                Assertions.assertThat(result).isEqualTo(TEST_VALUE);
+                assertThat(result).isEqualTo(TEST_VALUE);
             }
 
             @Test
@@ -61,7 +62,7 @@ class MapDataTest {
             void null_test() {
                 String result = model.getAttribute(NONE_KEY, String.class);
 
-                Assertions.assertThat(result).isNull();
+                assertThat(result).isNull();
             }
         }
     }
@@ -88,7 +89,7 @@ class MapDataTest {
 
                 Map<String, Object> modelDataMap = DataMapTestUtils.getModelDataMap(request);
 
-                Assertions.assertThat((String) modelDataMap.get(TEST_KEY)).isEqualTo(TEST_VALUE);
+                assertThat((String) modelDataMap.get(TEST_KEY)).isEqualTo(TEST_VALUE);
             }
         }
 
@@ -105,7 +106,7 @@ class MapDataTest {
 
                 String result = request.getAttribute(TEST_KEY, String.class);
 
-                Assertions.assertThat(result).isEqualTo(TEST_VALUE);
+                assertThat(result).isEqualTo(TEST_VALUE);
             }
 
             @Test
@@ -113,7 +114,7 @@ class MapDataTest {
             void null_test() {
                 String result = request.getAttribute(NONE_KEY, String.class);
 
-                Assertions.assertThat(result).isNull();
+                assertThat(result).isNull();
             }
         }
     }

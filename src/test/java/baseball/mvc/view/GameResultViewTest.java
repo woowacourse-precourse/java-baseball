@@ -1,10 +1,11 @@
 package baseball.mvc.view;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.domain.game.GameResult;
 import baseball.helper.util.GameResultViewTestUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -50,7 +51,7 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(strike, ball);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
                             .getMessage(GameResultView.STRIKE_AND_BALL, gameResult, testOut));
         }
@@ -62,7 +63,7 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(0L, ball);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
                             .getMessage(GameResultView.ONLY_BALL, gameResult, testOut));
         }
@@ -74,7 +75,7 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(strike, 0L);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
                             .getMessage(GameResultView.ONLY_STRIKE, gameResult, testOut));
         }
@@ -85,7 +86,7 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(0L, 0L);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions.assertThat(testOut.toString())
+            assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
                             .getMessage(GameResultView.NOTHING, gameResult, testOut));
         }

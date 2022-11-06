@@ -1,7 +1,8 @@
 package baseball.mvc.structure;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.util.GameStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ class ModelAndViewTest {
 
             String result = model.getAttribute(TEST_KEY, String.class);
 
-            Assertions.assertThat(result).isEqualTo(TEST_VALUE);
+            assertThat(result).isEqualTo(TEST_VALUE);
         }
 
         @Test
@@ -35,7 +36,7 @@ class ModelAndViewTest {
         void null_test() {
             String result = model.getAttribute(NONE_KEY, String.class);
 
-            Assertions.assertThat(result).isNull();
+            assertThat(result).isNull();
         }
     }
 }
