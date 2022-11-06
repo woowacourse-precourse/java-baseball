@@ -1,10 +1,12 @@
 package baseball;
 
+import baseball.controller.GameController;
 import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,6 +66,15 @@ public class FunctionTest {
 
         assertFalse(userNumber.isBetween1to9("320"));
         assertTrue(userNumber.isBetween1to9("323"));
+    }
+
+    @Test
+    void 스트라이크_볼_갯수_test(){
+        GameController gameController = new GameController();
+        gameController.calculateScore(List.of(1,2,3),List.of(1,2,3));
+
+        assertEquals(gameController.getStrike(),3);
+        assertEquals(gameController.getBall(),0);
     }
 }
 
