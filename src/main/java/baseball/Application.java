@@ -150,13 +150,13 @@ public class Application {
                 ball = ball + 1;
             }
 
-            if (strike > 0) {
-                System.out.print(strike);
-                System.out.print("스트라이크 ");
-            }
             if (ball > 0) {
                 System.out.print(ball);
                 System.out.print("볼 ");
+            }
+            if (strike > 0) {
+                System.out.print(strike);
+                System.out.print("스트라이크 ");
             }
             if (strike == 0 && ball == 0) {
                 System.out.print("낫싱");
@@ -169,21 +169,47 @@ public class Application {
         return 0;
     }
 
-    
+    static int check_user_want_new_game() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String user_number_string;
+        user_number_string = readLine();
+
+        try {
+            if (user_number_string.equals("1")) {
+                return 1;
+            } else if (user_number_string.equals("2")) {
+                return 2;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public static void main(String[] args) {
-        Boolean next_game = true;
+        int next_game = 1;
 
         // 게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (next_game) {
+        while (next_game == 1) {
             List<Integer> computer_number_list = new ArrayList<Integer>();
             computer_number_list = computer_create_number();
+            System.out.print(computer_number_list);
 
             int error;
             error = compare_computer_user(computer_number_list);
 
             if (error == 1) {
+                return;
+            }
+
+            next_game = check_user_want_new_game();
+
+            if (next_game == 0) {
                 return;
             }
         }
