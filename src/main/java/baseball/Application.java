@@ -112,7 +112,13 @@ class Hint {
     }
 
     int countStrike(List<Integer> input) {
-        return 0;
+        int result = 0;
+        for (Integer num: input) {
+            if (answer.contains(num) && answer.indexOf(num) == input.indexOf(num)) {
+                result += 1;
+            }
+        }
+        return result;
     }
 
     int countBall(List<Integer> input) {
