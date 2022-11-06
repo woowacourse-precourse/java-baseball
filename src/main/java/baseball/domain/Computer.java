@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.RandomGenerator;
 
 import java.util.List;
 

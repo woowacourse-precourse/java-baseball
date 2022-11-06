@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Result;
+
 public class Output {
     public static void showGuessResult(Result result) {
         String sentence = makeSentenceAboutGuessResult(result.getStrikeCnt(), result.getBallCnt());

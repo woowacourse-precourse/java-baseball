@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.Computer;
+import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

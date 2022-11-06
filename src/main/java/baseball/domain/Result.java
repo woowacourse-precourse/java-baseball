@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import java.util.Objects;
 
 public class Result {
     private Integer strikeCnt;

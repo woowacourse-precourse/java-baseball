@@ -1,6 +1,7 @@
-package baseball;
+package baseball.domain;
 
-import java.util.List;
+import baseball.Input;
+import baseball.Output;
 
 public class BaseballGame {
     private static Computer computer;
