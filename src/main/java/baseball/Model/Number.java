@@ -19,6 +19,7 @@ public class Number {
     public List<Integer> createUserNumber(String number) {
         checkLength(number);
         checkNumber(number);
+        checkDuplicate(number);
 
         List<Integer> num = new ArrayList<>();
         for (char ch : number.toCharArray()) {
@@ -47,6 +48,17 @@ public class Number {
 
     private void checkNumber(String number) {
         if (number.matches(FROMONETONINE)) {
+            return;
+        }
+        throw new IllegalArgumentException(INPUT_ERROR);
+    }
+
+    private void checkDuplicate(String number) {
+        Set<Character> check = new HashSet<>();
+        for (char ch : number.toCharArray()) {
+            check.add(ch);
+        }
+        if (check.size() == MAX_LEN) {
             return;
         }
         throw new IllegalArgumentException(INPUT_ERROR);
