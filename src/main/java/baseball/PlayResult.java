@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.BallStatus.*;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -25,12 +26,14 @@ public class PlayResult {
 		return occurrences.keySet()
 			.stream()
 			.filter(BallStatus::isStrikeOrBall)
+			.sorted(Comparator.comparing(BallStatus::getStatus))
 			.map(this::formatStatus)
 			.collect(Collectors.joining(" "));
 	}
 
 	private boolean isAllNothing() {
-		return occurrences.get(NOTHING) == 3;
+		return occurrences.containsKey(NOTHING)
+		&& occurrences.get(NOTHING) == 3;
 	}
 
 	private String formatStatus(BallStatus status) {

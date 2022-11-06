@@ -88,4 +88,44 @@ public class BallsTest {
 		PlayResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("1스트라이크");
 	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 1볼 1스트라이크")
+	@Test
+	void compareTo_숫자_비교_N_M_1볼_1스트라이크() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(4, 5, 6));
+
+		PlayResult result = com.compareTo(player);
+		assertThat(result.getResult()).isEqualTo("1볼 1스트라이크");
+	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 2볼 1스트라이크")
+	@Test
+	void compareTo_숫자_비교_N_M_2볼_1스트라이크() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(4, 5, 2));
+
+		PlayResult result = com.compareTo(player);
+		assertThat(result.getResult()).isEqualTo("2볼 1스트라이크");
+	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 2볼")
+	@Test
+	void compareTo_숫자_비교_N_M_2볼() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(1, 5, 2));
+
+		PlayResult result = com.compareTo(player);
+		assertThat(result.getResult()).isEqualTo("2볼");
+	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 3스트라이크")
+	@Test
+	void compareTo_숫자_비교_N_M_3스트라이크() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(4, 2, 5));
+
+		PlayResult result = com.compareTo(player);
+		assertThat(result.getResult()).isEqualTo("3스트라이크");
+	}
 }
