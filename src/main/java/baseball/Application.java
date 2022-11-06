@@ -16,25 +16,25 @@ public class Application {
     private static User user;
 
     public static void main(String[] args) throws IllegalArgumentException {
-        // TODO: 프로그램 구현
         System.out.println(START_GAME);
         status = Status.PROCEEDING;
 
         try {
-            // TODO: 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
+            // 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
             while (status != Status.EXIT) {
-                // TODO: 2. 게임 진행을 위한 초기화
+                // 2. 게임 진행을 위한 초기화
                 initGame();
 
-                // TODO: 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
+                // 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
                 proceedGameUntil3S(computer, user);
                 System.out.println(GUESS_ALL);
 
-                // TODO: 5. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
+                // 4. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
                 System.out.println(OPTION_MESSAGE);
                 changeStatusByOption();
             }
         } catch (IllegalArgumentException exception) {
+            System.out.println(INVALID_INPUT);
             throw new IllegalArgumentException();
         }
 
