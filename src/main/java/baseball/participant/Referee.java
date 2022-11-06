@@ -9,15 +9,11 @@ public class Referee {
 
     public Result judgeHitAndPitch(String hitNumber, String pitchNumber) {
         Result result = new Result();
-        compareHitAndPitchNumber(result, hitNumber, pitchNumber);
-        result.calculateType();
-        return result;
-    }
-
-    private void compareHitAndPitchNumber(Result result, String hitNumber, String pitchNumber) {
         for (int position = 0; position < 3; position++) {
             distinguishTypeOfDigit(result, hitNumber, pitchNumber, position);
         }
+        result.calculateType();
+        return result;
     }
 
     private void distinguishTypeOfDigit(Result result, String hitNumber, String pitchNumber, int position) {
