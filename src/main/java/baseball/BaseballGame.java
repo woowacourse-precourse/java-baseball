@@ -50,6 +50,7 @@ public class BaseballGame {
         String restartNumber = Console.readLine();
 
         if (restartNumber.equals("1")) {
+            strike=0; ball=0;
             playBaseballGame();
         }
     }
