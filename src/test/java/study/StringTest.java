@@ -1,8 +1,15 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIOException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
@@ -69,4 +76,143 @@ public class StringTest {
             .hasMessageContaining("String index out of range: 5");
     }
 
+    @Test
+    void a_few_simple_assertions() {
+        assertThat("The Lord of the Rings")
+            // 널이 아니고
+            .isNotNull()
+            // The로 시작하고
+            .startsWith("The")
+            // Lord가 포함하고
+            .contains("Lord")
+            .contains("of")
+            // 이중에 하나가 포함되었다.
+            .containsAnyOf("the", "rings")
+            // 끝이 Rings이다.
+            .endsWith("Rings");
+    }
+
+    @Test
+    void a_few_simple_assertions_2() {
+        assertThat("123")
+            // 널이 아니고
+            .isNotNull()
+            // The로 시작하고
+            .startsWith("1")
+            // Lord가 포함하고
+            .contains("3")
+            .contains("2")
+            // 이중에 하나가 포함되었다.
+            .containsAnyOf("1", "aslkdjasd", "아무단어")
+            // 끝이 Rings이다.
+            .endsWith("3");
+    }
+
+    class Human {
+
+        final String name;
+        int age;
+
+        public Human(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    @Test
+    void filter_test() {
+        List<Human> list = new ArrayList<>();
+        Human kim = new Human("Kim", 22);
+        Human park = new Human("Park", 25);
+        Human lee = new Human("Lee", 22);
+        Human amy = new Human("Amy", 25);
+        Human jack = new Human("Jack", 22);
+        Human anyName = new Human("Jack", 22);
+
+        list.add(kim);
+        list.add(park);
+        list.add(lee);
+        list.add(amy);
+        list.add(jack);
+        list.add(anyName);
+
+        //  이름을 가져와서 a 가 포함되어 있는 객체들만 필터링을 하고 그 객체를 검증한다.
+        assertThat(list).filteredOn(human -> human.getName().contains("a"))
+            .containsOnly(jack, anyName, park);
+    }
+
+    @Test
+    void filter_test2() {
+        List<Human> list = new ArrayList<>();
+        Human kim = new Human("Kim", 22);
+        Human park = new Human("Park", 25);
+        Human lee = new Human("Lee", 25);
+        Human amy = new Human("Amy", 22);
+        Human jack = new Human("Jack", 22);
+
+        list.add(kim);
+        list.add(park);
+        list.add(lee);
+        list.add(amy);
+        list.add(jack);
+
+        assertThat(list).filteredOn("age", 25).containsOnly(park, lee);
+    }
+
+    @Test
+    void extraction_test() {
+        List<Human> list = new ArrayList<>();
+        Human kim = new Human("Kim", 22);
+        Human park = new Human("Park", 25);
+        Human lee = new Human("Lee", 25);
+
+        list.add(kim);
+        list.add(park);
+        list.add(lee);
+//        assertThat(list).extracting("name").contains("Kim", "Park", "Lee");
+//        assertThat(list).extracting("age").contains(22, 25, 25);
+
+        assertThat(list).extracting("name", "age")
+            .contains(tuple("Kim", 22),
+                tuple("Park", 25),
+                tuple("Lee", 25)
+            );
+    }
+
+    @Test
+    void 문자열_검증() {
+        String expression = "This is a string";
+        assertThat(expression).startsWith("This").endsWith("string").contains("a");
+    }
+
+    @Test
+    public void exception_assertion_example() {
+        assertThatIOException().isThrownBy(() -> {
+                throw new IOException("boom!");
+            })
+            .withMessage("%s!", "boom")
+            .withMessageContaining("boom")
+            .withNoCause();
+    }
+
+    @Test
+    public void testException() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+                throw new IllegalArgumentException("boom!");
+            })
+            .withMessage("%s!", "boom")
+            .withMessageContaining("boom")
+            .withNoCause();
+    }
+
+    @Test
+    public void testExcasdeption() {
+        assertThatCode(() -> {
+            System.out.println("test");
+        }).doesNotThrowAnyException();
+    }
 }

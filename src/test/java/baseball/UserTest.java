@@ -18,6 +18,7 @@ public class UserTest {
         user = new User();
     }
 
+
     @Test
         // 입력을 제대로 받았는지 확인
     void 문자_입력_테스트() throws Exception {
