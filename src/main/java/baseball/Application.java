@@ -1,15 +1,18 @@
+/* 
+<해결해야 할 것>
+1. readline()메서드가 왜 WARING을 부르는지 이해하기
+2. IllegalArgumentException이 발생했을 때, 프로그램을 종료할 수 있도록 하기
+ */
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import java.util.ArrayList;
 import java.util.List;
 
 class UI {
-    public static void printGameStart() {
+    public static void printGameStartMsg() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -18,49 +21,61 @@ class UI {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    public static void printBallCount(String ballCount) {
+        System.out.println(ballCount);
+    }
+
+    public static void printInputNumOfUserMsg() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
 }
 
 public class Application {
 
     // 0. 게임의 시작을 분리한다.
-    private static boolean gameStart() {
+    private static boolean gameStart() throws IllegalArgumentException {
 
-        // 1. 상대방(컴퓨터)의 숫자를 설정한다.
-        List<Integer> computer = new ArrayList<>();
-        computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer); // 테스트 출력
+        try {
+            // 1. 상대방(컴퓨터)의 숫자를 설정한다.
+            List<Integer> computer = new ArrayList<>();
+            computer = getNumberOfComputer(computer);
+            System.out.println("computer = " + computer); // 테스트 출력
 
-        // 2. 사용자에게서 숫자를 입력받는다.
-        List<Integer> user = new ArrayList<>();
+            // 2. 사용자에게서 숫자를 입력받는다.
+            List<Integer> user = new ArrayList<>();
 
-        // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
-        String ballCount = "";
+            // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
+            String ballCount = "";
 
-        // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-        while (isNeedReEnter(ballCount)) {
-            // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
-            user = getNumberOfUserForList(user);
+            // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
+            while (isNeedReEnter(ballCount)) {
+                // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
+                user = getNumberOfUserForList(user);
 
-            // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
-            ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
-            System.out.println(ballCount);
-        }
+                // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
+                ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
+                UI.printBallCount(ballCount);
+            }
 
-        // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
+            // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
 
-        // 4-1 : 메세지 출력
-        UI.printAnswerMsg();
+            // 4-1 : 메세지 출력
+            UI.printAnswerMsg();
 
-        // 4-2 : 1 또는 2의 값 입력받기
-        int restartOrExit = Integer.parseInt(Console.readLine());
+            // 4-2 : 1 또는 2의 값 입력받기
+            int restartOrExit = Integer.parseInt(Console.readLine());
 
-        // 4-3 : 1을 입력했다면, 재시작하기.
-        if (restartOrExit == 1) {
-            return true;
-        } else if (restartOrExit == 2) {
+            // 4-3 : 1을 입력했다면, 재시작하기.
+            if (restartOrExit == 1) {
+                return true;
+            } else if (restartOrExit == 2) {
+                return false;
+            } else {
+                throw new IllegalArgumentException("비정상적인 값입니다.");
+            }
+        } catch (IllegalArgumentException e) {
             return false;
-        } else {
-            throw new IllegalArgumentException("비정상적인 값입니다.");
         }
     }
 
@@ -89,8 +104,9 @@ public class Application {
         }
 
         // 2-1-2. 세 자리의 수가 아닌 경우 오류를 발생시킨다.
-        if (num > 1000 || num < 100)
+        if (num > 1000 || num < 100) {
             throw new IllegalArgumentException("세 자리의 수가 아닙니다.");
+        }
 
         // 2-1-3. 서로 다른 세 자리의 수가 아닌 경우 오류를 발생시킨다.
         int hundreds = num / 100;
@@ -109,9 +125,13 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         int numOfUserInteger = Integer.parseInt(numOfUserString);
 
-        user.add(numOfUserInteger / 100);
-        user.add((numOfUserInteger % 100) / 10);
-        user.add(numOfUserInteger % 10);
+        int hundreds = numOfUserInteger / 100;
+        int tens = (numOfUserInteger % 100) / 10;
+        int ones = numOfUserInteger % 10;
+
+        user.add(hundreds);
+        user.add(tens);
+        user.add(ones);
 
         return user;
     }
@@ -128,9 +148,9 @@ public class Application {
     }
 
     // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
-    private static List<Integer> getNumberOfUserForList(List<Integer> user) {
+    private static List<Integer> getNumberOfUserForList(List<Integer> user) throws IllegalArgumentException {
         user.clear();
-        System.out.print("숫자를 입력해주세요 : ");
+        UI.printInputNumOfUserMsg();
 
         // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
         String numberOfUserString = getNumberOfUserString();
@@ -152,18 +172,19 @@ public class Application {
          * 그렇지 않았으므로, 다른 문제가 발생한 것으로 볼 수 있다.
          * 이 이상의 것은 구현하고 나서 다시 수정하는 것이 더 빠른 길이라고 생각이 든다. 일단 구현부터...
          */
-        String numOfUserString = readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
+        String numOfUserString = Console.readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
         return numOfUserString;
     }
 
     // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
-    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) {
+    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) throws IllegalArgumentException {
 
         // 3-2-2-1 : 사용자의 입력값을 검증한다.
         try {
             isValidStringInputOfUser(numberOfUserString);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
+            return user;
         }
 
         // 3-2-2-2 : 사용자의 입력값을 List로 바꾼다.
@@ -205,7 +226,6 @@ public class Application {
                 strikeCount++;
             }
         }
-
         return strikeCount;
     }
 
@@ -240,10 +260,9 @@ public class Application {
     }
 
     public static void main(String[] args) {
-
         boolean repeatState = true;
 
-        UI.printGameStart(); // 게임 시작
+        UI.printGameStartMsg();
         while (repeatState) {
             repeatState = gameStart();
         }
