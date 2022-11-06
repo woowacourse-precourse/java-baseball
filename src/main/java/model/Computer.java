@@ -2,7 +2,6 @@ package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import utill.ConstantVO;
 import utill.UseFunc;
@@ -170,23 +169,7 @@ public class Computer {
         }
         return isBall;
     }
-
-    private boolean isContainValueList(Collection collection_1,
-        Collection<Integer> collection_2) {
-        boolean isTrue = true;
-        for (Object num : collection_2) {
-            isTrue = icContainList(collection_1.contains(num), isTrue);
-        }
-        return isTrue;
-    }
-
-    private boolean icContainList(boolean collection_1, boolean isTrue) {
-        if (collection_1) {
-            isTrue = true;
-        }
-        return isTrue;
-    }
-
+    
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
         String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
         return getListOfIntegerFromStrArr(strSplitArr);
