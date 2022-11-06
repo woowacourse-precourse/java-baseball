@@ -19,11 +19,11 @@ public class Player {
     }
 
     public Player(List<Integer> numbers) {
-        validateNumbers(numbers);
+        validate(numbers);
         balls = mapToBall(numbers);
     }
 
-    private void validateNumbers(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicateNumber(numbers);
     }
@@ -67,7 +67,7 @@ public class Player {
     }
 
     public void changeBalls(List<Integer> newBallNumbers) {
-        validateNumbers(newBallNumbers);
+        validate(newBallNumbers);
         balls = mapToBall(newBallNumbers);
     }
 }
