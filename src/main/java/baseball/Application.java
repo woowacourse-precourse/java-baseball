@@ -21,8 +21,9 @@ public class Application {
         isValid(whatClientInputs);
         List<Integer> guessedNumbers = stringToIntegerList(whatClientInputs);
         checkNothing(whatComputerInputs, guessedNumbers);
-        checkBalls();
-        checkStrikes();
+        checkBallAndStrike();
+
+
     }
 
     public static void putRandomNumbersTo(List<Integer> digitsToCompare) {
@@ -75,11 +76,11 @@ public class Application {
 
     public static List<Integer> stringToIntegerList(String numbers){
         String[] temporaryArray = numbers.split("");
-        List<Integer> gussedNumbers = new ArrayList<>();
+        List<Integer> guessedNumbers = new ArrayList<>();
         for(String stringNumber = temporaryArray){
-           gussedNumbers.add(Integer.parseInt(stringNumber));
+           guessedNumbers.add(Integer.parseInt(stringNumber));
         }
-        return gussedNumbers;
+        return guessedNumbers;
     }
 
     public static void checkNothing(List<Integer> numbersToGetRight, List<Integer> guessedNumbers){
@@ -93,12 +94,27 @@ public class Application {
             System.out.println(Referee.NOTHING.ordered());
             playGame(numbersToGetRight);
         }
-        checkBalls(numbersToGetRight, ballOrStrike);
+        checkBallAndStrike(numbersToGetRight, guessedNumbers,ballOrStrike);
     }
 
-    public static int checkBalls(List<Integer> numbersToGetRight, int ballOrStrike){
-
+    public static void checkBallAndStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers, int ballOrStrike){
+        int strike = 0;
+        for(int commonIndex=0; commonIndex<3; commonIndex++){
+            if(numbersToGetRight.get(commonIndex)==guessedNumbers.get(commonIndex)) {
+                strike++;
+            }
+        }
+        if(strike==0) {
+            System.out.println(ballOrStrike+Referee.BALL.ordered());
+            playGame(numbersToGetRight);
+        }
+        if(strike!=0&&strike!=3) {
+            System.out.println((ballOrStrike-strike)+Referee.BALL.ordered()+strike+Referee.STRIKE.ordered());
+            playGame(numbersToGetRight);
+        }
     }
+
+
 }
 
 enum Referee {
