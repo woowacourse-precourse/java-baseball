@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
 
     private static ThreeNumber computerNumber;
+    private static ThreeNumber userNumber;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -32,6 +33,20 @@ public class Application {
     }
 
     private static void playerSelectNumber() {
+        String user = Console.readLine();
+        playerSelectNumberException(user);
+        int number1 = user.charAt(0) - '0';
+        int number2 = user.charAt(1) - '0';
+        int number3 = user.charAt(2) - '0';
+        userNumber = new ThreeNumber(number1, number2, number3);
+        determineAnswer();
+    }
+
+    private static void playerSelectNumberException(String user) {
+
+    }
+
+    private static void determineAnswer() {
 
     }
 
