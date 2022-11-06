@@ -8,13 +8,13 @@ import java.util.List;
 public class User {
     private static final String RESTART = "1";
     private static final String EXIT = "2";
-    public static void getUserInput(List<Integer> computerNumber) {
+    public static List<Integer> getUserInput(List<Integer> computerNumber) {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         List<Integer> inputNumber = checkTheNumber(input);
 
-        Judge.checkTheResult(inputNumber, computerNumber);
+        return inputNumber;
     }
 
     public static void getUserInputRestartOrExit() {
