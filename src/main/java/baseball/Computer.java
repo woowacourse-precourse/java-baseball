@@ -19,6 +19,14 @@ public class Computer {
         this.ball = countBall(userInputNumber);
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     public void printResult() {
         if (this.strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
