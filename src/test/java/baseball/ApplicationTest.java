@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -10,6 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    BaseBallGame baseBallGame = BaseBallGame.getGame();
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -46,10 +50,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 힌트함수_테스트1(){
+    void 힌트함수_테스트1() {
         int inputNum = 123;
         int comNum = 213;
-        BaseBallGame baseBallGame = BaseBallGame.getGame();
         List<Integer> hint = baseBallGame.getHint(inputNum, comNum);
         int ball = hint.get(0);
         int strike = hint.get(1);
@@ -59,19 +62,36 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤숫자_테스트1(){
-        BaseBallGame baseBallGame = BaseBallGame.getGame();
+    void 랜덤숫자_테스트1() {
         int exceptCnt = 0;
-        for(int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             String randomNum = Integer.toString(baseBallGame.getRandomDiff3DigitNumber());
-            if(randomNum.charAt(0) == randomNum.charAt(1)
-                || randomNum.charAt(1) == randomNum.charAt(2)
-                || randomNum.charAt(0) == randomNum.charAt(2)
+            if (randomNum.charAt(0) == randomNum.charAt(1)
+                    || randomNum.charAt(1) == randomNum.charAt(2)
+                    || randomNum.charAt(0) == randomNum.charAt(2)
             ) {
                 exceptCnt++;
             }
         }
         assertThat(exceptCnt).isEqualTo(0);
+    }
+
+//    @Test
+//    void 풀이함수_테스트1() {
+//        BaseBallGame baseBallGame = BaseBallGame.getGame();
+//        baseBallGame.solvingProblem(333);
+//    }
+
+    @Test
+    void 입력값_중복체크_테스트1(){
+        boolean isPure = baseBallGame.isDiffDigitNumber("123");
+        assertThat(isPure).isEqualTo(true);
+    }
+
+    @Test
+    void 입력값_중복체크_테스트2(){
+        boolean isPure = baseBallGame.isDiffDigitNumber("223");
+        assertThat(isPure).isEqualTo(false);
     }
 
     @Override
