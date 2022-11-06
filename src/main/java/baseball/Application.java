@@ -49,18 +49,18 @@ public class Application {
     }
 
     public static String printResult(Map<String, Integer> score){
-        String answer = "";
+        List<String> answer = new ArrayList<>();
 
         if(score.get("Ball") != 0){
-            answer += score.get("Ball").toString() + "볼 ";
+            answer.add(score.get("Ball").toString() + "볼");
         }
         if(score.get("Strike") != 0){
-            answer += score.get("Strike").toString() + "스트라이크";
+            answer.add(score.get("Strike").toString() + "스트라이크");
         }
-        if(answer.length() == 0){
-            answer = "낫싱";
+        if(answer.size() == 0){
+            answer.add("낫싱");
         }
-        return answer;
+        return String.join(" ",answer);
     }
 
     public static void playOneGame(Integer answer){
