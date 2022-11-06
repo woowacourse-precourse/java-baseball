@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BaseballGame {
@@ -14,8 +13,14 @@ public class BaseballGame {
     public void playGame() throws IllegalArgumentException {
         System.out.print(GAME_START_COMMENT);
         String userInput = getUserInput();
+
         NumberValidator.checkInput(userInput);
-        List<Integer> numbers = getNumbersByInput(userInput);
+
+        List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
+        System.out.println(computerNumbers);
+        List<Integer> userNumbers = getNumbersByInput(userInput);
+
+        int ballCount = getBallCount(userNumbers, computerNumbers);
     }
 
     public String getUserInput() {
@@ -33,4 +38,26 @@ public class BaseballGame {
 
         return numbers;
     }
+
+    private int getBallCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        int ballCount = 0;
+        for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
+            for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
+                ballCount += getEachBallCount(userNumbers, computerNumbers, userIndex, computerIndex);
+            }
+        }
+        return ballCount;
+    }
+
+    private int getEachBallCount(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
+        int userNumber = userNumbers.get(userIndex);
+        int computerNumber = computerNumbers.get(computerIndex);
+
+        if (userNumber == computerNumber && userIndex != computerIndex) {
+            return 1;
+        }
+
+        return 0;
+    }
+
 }
