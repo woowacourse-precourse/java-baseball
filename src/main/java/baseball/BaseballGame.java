@@ -1,14 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    private static final String GAME_START_COMMENT = "숫자 야구 게임을 시작합니다.\n";
-    private static final String NUMBER_INPUT_COMMENT = "숫자를 입력해주세요 : ";
-
     private static final char INTEGER_MAKER = '0';
 
     public void playGame() throws IllegalArgumentException {
@@ -16,10 +11,10 @@ public class BaseballGame {
         List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
         System.out.println(computerNumbers);
 
-        System.out.print(GAME_START_COMMENT);
+        InputView.printGameStart();
 
         while (isRunning) {
-            String userInput = getUserInput();
+            String userInput = InputView.getUserInput();
 
             NumberValidator.checkInput(userInput);
 
@@ -31,11 +26,6 @@ public class BaseballGame {
             isRunning = OutputView.printGameResult(ballCount, strikeCount);
         }
 
-    }
-
-    public String getUserInput() {
-        System.out.print(NUMBER_INPUT_COMMENT);
-        return Console.readLine();
     }
 
     private List<Integer> getNumbersByInput(String userInput) {
