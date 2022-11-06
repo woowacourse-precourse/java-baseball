@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -10,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MyTest extends NsTest{
+    static final int MIN_RANDOM_NUMBER = 111;
+    static final int MAX_RANDOM_NUMBER = 999;
 
     @Test
     void 게임초기화_난수_생성() {
@@ -19,8 +22,10 @@ public class MyTest extends NsTest{
         gameCtx.initializeContext();
         Integer answer = Integer.parseInt(gameCtx.getAnswer());
         // then
-        assertThat(answer).isGreaterThanOrEqualTo(111);
-        assertThat(answer).isLessThanOrEqualTo(999);
+        Condition<Integer> isInRange = new Condition<>(
+                    n -> (n <= MAX_RANDOM_NUMBER) && (n >= MIN_RANDOM_NUMBER),
+                "range");
+        assertThat(answer).is(isInRange);
         assertThat(gameCtx.getState()).isEqualTo(GameState.RUNNING);
     }
 
