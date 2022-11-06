@@ -1,8 +1,10 @@
 package baseball.view;
 
+import baseball.controller.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInterface {
+    public InputValidator validator = new InputValidator();
     public UserInterface() {
 
     }
@@ -14,7 +16,9 @@ public class UserInterface {
     public int checkGameRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
-
+        if(validator.checkValidateExit(number) == false) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(number);
     }
     public void printResult(int strikeCount, int ballCount) {
