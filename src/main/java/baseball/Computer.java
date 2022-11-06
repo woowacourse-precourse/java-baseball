@@ -29,4 +29,15 @@ public class Computer {
         }
         return ball;
     }
+
+    private static int countStrike(String input) {
+        int strike = 0;
+        for(int i = 0; i < input.length(); i++) {
+            int num = Character.getNumericValue(input.charAt(i));
+            if(computer.get(i) == num) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
