@@ -7,7 +7,7 @@ import java.util.List;
 
 public final class Validator {
     private Validator() {}
-    public static final String INVALID_BALL_INPUT_VALUE_MESSAGE = "사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.";
+    public static final String INVALID_BALL_INPUT_VALUE_MESSAGE = "사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.";
     public static final String INVALID_GAME_STATUS_INPUT_VALUE_MESSAGE = "게임 상태는 재시작:1, 종료:2 중에서 입력해야 합니다";
     public static void validateParseStringToInt(String playerInput) {
         try {

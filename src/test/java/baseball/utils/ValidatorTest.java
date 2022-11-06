@@ -22,10 +22,10 @@ class ValidatorTest {
             try {
                 Integer.parseInt(playerInput);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
             }
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
     }
 
     @Test
@@ -47,9 +47,9 @@ class ValidatorTest {
             if (playerInput.length() == 3) {
                 return;
             }
-            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
         //then
     }
 
@@ -65,10 +65,10 @@ class ValidatorTest {
         //then
         assertThatThrownBy(() -> {
             if (playerBalls.contains(ball)) {
-                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+                throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
             }
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
     }
 
     @Test
@@ -80,7 +80,7 @@ class ValidatorTest {
         Ball ball = new Ball(2);
         //when
         if (playerBalls.contains(ball)) {
-            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
         }
         playerBalls.add(ball);
         //then
@@ -97,9 +97,9 @@ class ValidatorTest {
             if (ball.isValidRange()) {
                 return;
             }
-            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
         }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 숫자로 이루어져야 합니다.");
+          .hasMessageContaining("사용자의 공 입력값은 서로 다른 1부터 9사이의 세 자리의 숫자로 이루어져야 합니다.");
     }
 
     @Test
