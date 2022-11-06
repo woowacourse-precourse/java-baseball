@@ -8,12 +8,59 @@ import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Application.generateOpponentNumber;
+import static baseball.Application.getResult;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void getResult_메서드_결과가_2볼() {
+        List<Integer> result = getResult(123, 234);
+
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+
+        assertThat(ballCount).isEqualTo(2);
+        assertThat(strikeCount).isEqualTo(0);
+    }
+
+    @Test
+    void getResult_메서드_결과가_1볼_1스트라이크() {
+        List<Integer> result = getResult(293, 234);
+
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+
+        assertThat(ballCount).isEqualTo(1);
+        assertThat(strikeCount).isEqualTo(1);
+    }
+
+    @Test
+    void getResult_메서드_결과가_2스트라이크() {
+        List<Integer> result = getResult(423, 523);
+
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+
+        assertThat(ballCount).isEqualTo(0);
+        assertThat(strikeCount).isEqualTo(2);
+    }
+
+    @Test
+    void getResult_메서드_결과가_낫싱() {
+        List<Integer> result = getResult(123, 456);
+
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+
+        assertThat(ballCount).isEqualTo(0);
+        assertThat(strikeCount).isEqualTo(0);
+    }
+
+
     @Test
     void generateOpponentNumber_메서드의_리턴_값은_세_자리_수() {
         int opponentNumber = generateOpponentNumber();
@@ -56,6 +103,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_1_부터_9_이외의_입력_case_2() {
         assertSimpleTest(() ->
@@ -63,6 +111,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_길이가_잘못된_입력_case_1() {
         assertSimpleTest(() ->
@@ -86,6 +135,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_중복된_입력_case_2() {
         assertSimpleTest(() ->
@@ -93,6 +143,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_중복된_입력_case_3() {
         assertSimpleTest(() ->
@@ -100,6 +151,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_올바르지_않은_입력_case_1() {
         assertSimpleTest(() ->
@@ -107,6 +159,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void readPlayerNum_메서드에서_올바르지_않은_입력_case_2() {
         assertSimpleTest(() ->

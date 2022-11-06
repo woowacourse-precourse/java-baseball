@@ -7,16 +7,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Application {
     public static void main(String[] args) {
-
         int opponentNum = generateOpponentNumber();
         int playerNum = readPlayerNum();
 
-
+        List<Integer> result = getResult(opponentNum, playerNum);
 
         return;
+    }
+
+    public static List<Integer> getResult(int opponentNum, int playerNum) {
+        List<Integer> opponentList = threeDigitsToNumList(opponentNum);
+        List<Integer> playerList = threeDigitsToNumList(playerNum);
+
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int index = 0; index < 3; index++) {
+            if (playerList.get(index).equals(opponentList.get(index))) {
+                strikeCount++;
+                continue;
+            }
+            if (opponentList.contains(playerList.get(index))) {
+                ballCount++;
+            }
+        }
+
+        List<Integer> result = new ArrayList<>(2);
+        result.add(ballCount);
+        result.add(strikeCount);
+
+        return result;
     }
 
     private static int readPlayerNum() {
@@ -26,7 +47,6 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-
 
         validatePlayerNum(inputNum);
 
@@ -51,7 +71,7 @@ public class Application {
 
         while (number != 0) {
             int digit = number % 10;
-            if(!numList.contains(digit)) {
+            if (!numList.contains(digit)) {
                 throw new IllegalArgumentException();
             }
             number /= 10;
@@ -90,9 +110,13 @@ public class Application {
 
     private static List<Integer> threeDigitsToNumList(int number) {
         List<Integer> eachDigits = new ArrayList<>();
+
+        int denominator = 100;
         for (int index = 0; index < 3; index++) {
-            eachDigits.add(number % 10);
-            number /= 10;
+            eachDigits.add(number / denominator);
+
+            number %= denominator;
+            denominator /= 10;
         }
         return eachDigits;
     }
