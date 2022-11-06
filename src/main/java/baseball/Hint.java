@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static baseball.Constant.*;
 
@@ -12,13 +10,11 @@ public class Hint {
     private int ball;
     boolean threeStrike;
 
-    public void hintCalculator(HashSet<String> comNumber, List<String> userNumber){
+    public void hintCalculator(List<String> comNumber, List<String> userNumber){
         strike=0;
         ball=0;
 
-        isStrikeOrBall(comNumber.stream()
-                        .collect(Collectors.toList())
-                , userNumber);
+        isStrikeOrBall(comNumber,userNumber);
 
         if(strike==3) threeStrike=true;
         printHintMessage();
