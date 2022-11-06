@@ -17,7 +17,10 @@ public class GameController {
 
     public static void playGame() {
         InputView.printStart();
-        startGame();
+
+        do {
+            startGame();
+        }while(retryOrExit().equals(RETRY));
     }
 
     private static void startGame() {
@@ -31,21 +34,18 @@ public class GameController {
             Hint hint = HintService.initialize();
             hint.countHint(userNumbers, computerNumbers);
             HintService.printHint(hint);
-            gameStatus = HintService.isAnswer(hint);
-        }
 
-        if (retryOrExit() == RETRY) {
-            startGame();
+            gameStatus = HintService.isAnswer(hint);
         }
     }
 
-    private static int retryOrExit() {
+    private static String retryOrExit() {
         OutputView.printAnswer();
         OutputView.printRetryOrExit();
 
-        int retryOrExit = Integer.parseInt(readLine());
+        String retryOrExit = readLine();
 
-        if (retryOrExit != RETRY && retryOrExit != EXIT) {
+        if (!retryOrExit.equals(RETRY) && !retryOrExit.equals(EXIT)) {
             throw new IllegalArgumentException();
         }
 

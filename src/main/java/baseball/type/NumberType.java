@@ -8,7 +8,7 @@ public class NumberType {
     public static final int STRIKE_ZERO = 0;
     public static final int BALL_ZERO = 0;
 
-    public static final int RETRY = 1;
-    public static final int EXIT = 2;
+    public static final String RETRY = "1";
+    public static final String EXIT = "2";
 
 }
