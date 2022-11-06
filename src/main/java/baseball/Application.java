@@ -55,11 +55,30 @@ public class Application {
         return user_list;
     }
 
+    // ball strike 수 출력
+    public static void Print_BallStrike(List<Integer> ballstrike) {
+        if(ballstrike.get(0) == 0 && ballstrike.get(1) == 0){
+            System.out.println("낫싱");
+        } else if (ballstrike.get(1) == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }else if(ballstrike.get(0) == 0 && ballstrike.get(1) > 0){
+            System.out.println(ballstrike.get(1) + "스트라이크");
+        }else if (ballstrike.get(0) > 0 && ballstrike.get(1) == 0){
+            System.out.println(ballstrike.get(0) + "볼");
+        }else {
+            System.out.println(ballstrike.get(0) + "볼 " + ballstrike.get(1) + "스트라이크");
+        }
+    }
+
+
     //  ball strike 판별
     public static List<Integer> BallStrike(List<Integer> answer, List<Integer> user) {
         List<Integer> ballstrike = new ArrayList<>(2);
         int ball_cnt = 0;
         int strike_cnt = 0;
+        int game_set = Integer.MAX_VALUE;
         for(int i = 0; i < user.size(); i++) {
             for(int j = 0; j < answer.size(); j++) {
                 if(user.get(i) == answer.get(j) && i ==j) {
@@ -71,6 +90,7 @@ public class Application {
         }
         ballstrike.add(ball_cnt);
         ballstrike.add(strike_cnt);
+
         return ballstrike;
     }
 
@@ -92,36 +112,23 @@ public class Application {
                     System.out.println("error");
                     break game;
                 }
-                ballstrike = BallStrike(answer, user);
-                if(ballstrike.get(0) == 0 && ballstrike.get(1) == 0){
-                    System.out.println("낫싱");
-                } else if (ballstrike.get(1) == 3) {
-                    user.clear();
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    while(true){
-                        try {
-                            game_set = Integer.parseInt(UserInput());
-                            if(game_set == 1) {
-                                continue game;
-                            }else if (game_set == 2) {
-                                break game;
-                            }else {
-                                throw new Exception();
-                            }
-                        }catch (Exception e){
-                            System.out.println("알맞은 값을 입력하세요");
-                            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                        }
-                    }
 
-                }else if(ballstrike.get(0) == 0 && ballstrike.get(1) > 0){
-                    System.out.println(ballstrike.get(1) + "스트라이크");
-                }else if (ballstrike.get(0) > 0 && ballstrike.get(1) == 0){
-                    System.out.println(ballstrike.get(0) + "볼");
-                }else {
-                    System.out.println(ballstrike.get(0) + "볼 " + ballstrike.get(1) + "스트라이크");
+                ballstrike = BallStrike(answer, user);
+                Print_BallStrike(ballstrike);
+                if(ballstrike.get(1) ==3) {
+                    try {
+                        game_set = Integer.parseInt(UserInput());
+                        if(game_set == 1) {
+                            return;
+                        }else if (game_set == 2) {
+                            return;
+                        }else {
+                            throw new Exception();
+                        }
+                    }catch (Exception e){
+                        System.out.println("알맞은 값을 입력하세요");
+                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    }
                 }
                 user.clear();
             }
