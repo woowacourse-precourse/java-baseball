@@ -1,11 +1,35 @@
 package baseball.controller;
 
+import baseball.model.ComputerNumber;
+import baseball.model.UserNumber;
+import baseball.view.PlayerView;
+
 import java.util.List;
 
 public class GameController {
     private int strike = 0;
     private int ball = 0;
+    PlayerView playerView = new PlayerView();
+    UserNumber userNumber = new UserNumber();
+    ComputerNumber computerNumber = new ComputerNumber();
+    private boolean gaming = true;
 
+    public void playGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computerNumber.setComputerNumber();
+
+        while(gaming){
+            resetStrikeAndBall();
+            String playerInput = playerView.playerInput();
+            userNumber.setUserNumbers(playerInput);
+            calculateScore(userNumber.getUserNumbers(),computerNumber.getComputerNumber());
+            printScore();
+
+            if(getStrike()==3){
+                restartGame();
+            }
+        }
+    }
     public void calculateScore(List<Integer> userNumbers, List<Integer> computerNumbers){
         for(int i = 0; i < 3; i++){
             if(userNumbers.get(i).equals(computerNumbers.get(i))){
@@ -47,5 +71,14 @@ public class GameController {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
+    public void restartGame(){
+        boolean gameRestart = playerView.isGameRestart();
 
+        if(gameRestart){
+            computerNumber.setComputerNumber();
+        }
+        else{
+            gaming = false;
+        }
+    }
 }
