@@ -13,6 +13,15 @@ public class Application {
         System.out.println("UserNumber = " + UserNumber);
         // TODO: 프로그램 구현
     }
+    public int CountStrike(List<Integer> computer, List<Integer> playerNum){
+        int strike = 0;
+        for (int loop = 0; loop<playerNum.size();loop++){
+            if (computer.get(loop)==playerNum.get(loop)){
+                strike += 1;
+            }
+        }
+        return strike;
+    }//유저와 컴퓨터의 번호를 비교해서 자릿수까지 같은 스트라이크를 구하는기능
     public int AllCount(List<Integer> computer, List<Integer> playerNum){
         int result = 0;
         for (int loop=0;loop<playerNum.size();loop++){
