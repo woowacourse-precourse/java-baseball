@@ -46,14 +46,14 @@
 
 ### 🍄 Game 클래스
 
-- [ ] createAnswer() 새로운 게임에 대한 정답 난수 생성
+- [x] createAnswer() 새로운 게임에 대한 정답 난수 생성
     - new Answer
-- [ ] end() 게임 더 할래 말래?
+- [x] end() 게임 더 할래 말래?
 
 ### 🍄 Player 클래스
 
-- END_GAME = 1;
-- ONE_MORE_GAME = 2;
+- END_GAME = 2;
+- ONE_MORE_GAME = 1;
 
 
 - [ ] validateChoice()
