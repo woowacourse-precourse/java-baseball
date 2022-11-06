@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -13,16 +14,51 @@ import java.util.List;
 //6.아니라면 힌트를 반환
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Integer> randomNumber = makeRandomNumber();
+        List<Integer> userInput = getUserInput();
+
+        for (int i = 0; i < randomNumber.size(); i++) {
+
+        }
     }
+
+    private static List<Integer> getUserInput() {
+        ArrayList<Integer> result = new ArrayList<>();
+        String userInputString = Console.readLine();
+        checkUserInput(result, userInputString);
+        return result;
+    }
+
+    private static void checkUserInput(ArrayList<Integer> result, String userInputString) {
+        if(userInputString.length()!=3){
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < userInputString.length(); i++) {
+            int userInputOneNum = Integer.parseInt(String.valueOf(userInputString.charAt(i)));
+            if(result.contains(userInputOneNum)){
+                throw new IllegalArgumentException();
+            }
+            result.add(userInputOneNum);
+        }
+    }
+
     public static List<Integer> makeRandomNumber(){
         List<Integer> computer = new ArrayList<>();
+        makeRandomNumbers(computer);
+
+        return computer;
+    }
+
+    private static void makeRandomNumbers(List<Integer> computer) {
         while (computer.size()<3){
             int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!computer.contains(randomNumber)){
-                computer.add(randomNumber);
-            }
+            addRandomOneNumber(computer, randomNumber);
         }
-        return computer;
+    }
+
+    private static void addRandomOneNumber(List<Integer> computer, int randomNumber) {
+        if(!computer.contains(randomNumber)){
+            computer.add(randomNumber);
+        }
     }
 }
