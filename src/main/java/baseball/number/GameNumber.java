@@ -62,5 +62,9 @@ public class GameNumber {
         this.gameNumber = computerNumber.toString();
     }
 
+    public String getGameNumber() {
+        return gameNumber;
+    }
+
 
 }
