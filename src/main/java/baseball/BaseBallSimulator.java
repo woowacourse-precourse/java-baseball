@@ -3,6 +3,8 @@ package baseball;
 import baseball.controller.BaseBallController;
 import baseball.controller.dto.BaseBallDto.Response;
 import baseball.view.BaseBallUserConsole;
+import baseball.view.UserInputValidator;
+import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.view.BaseBallDisplay.*;
 
@@ -15,7 +17,7 @@ public class BaseBallSimulator {
     }
 
     public void start() {
-        boolean isGameEnd = true;
+        boolean isGameEnd = false;
         printWelcomeMessage();
         Response response = baseBallController.create();
 
@@ -23,7 +25,9 @@ public class BaseBallSimulator {
             startProgress(response.getId());
 
             printProgressEndMessage();
+
             printReStartInputMessage();
+            isGameEnd = !inputReStartCondition();
         }
 
         printGameEndMessage();
@@ -41,5 +45,12 @@ public class BaseBallSimulator {
 
             isMatchedBaseBall = response.isMatch();
         }
+    }
+
+    private boolean inputReStartCondition() {
+        String input = Console.readLine();
+        UserInputValidator.validateReStart(input);
+
+        return Integer.parseInt(input) == 1;
     }
 }
