@@ -7,9 +7,38 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Application {
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+    }
+
+    public static String evaluationToString (List<Integer> evaluation) {
+        StringBuilder sb = new StringBuilder();
+
+        if ( hasBall(evaluation) ) {
+            sb.append(evaluation.get(BALL)).append("볼 ");
+        }
+
+        if ( hasStrike(evaluation) ) {
+            sb.append(evaluation.get(STRIKE)).append("스트라이크");
+        }
+
+        if ( sb.length() == 0 ) {
+            sb.append("낫싱");
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    public static boolean hasBall (List<Integer> evaluation) {
+        return evaluation.get(BALL) > 0;
+    }
+
+    public static boolean hasStrike (List<Integer> evaluation) {
+        return evaluation.get(STRIKE) > 0;
     }
 
     /**
