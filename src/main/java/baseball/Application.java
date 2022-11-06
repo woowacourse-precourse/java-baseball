@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerDigits = generateRandomNumbers();
 
@@ -33,13 +32,16 @@ public class Application {
 
     public static List<Integer> generateRandomNumbers() {
         List<Integer> answerDigits = new ArrayList<Integer>();
+
         while (answerDigits.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!answerDigits.contains(randomNumber)) {
                 answerDigits.add(randomNumber);
                 System.out.print(randomNumber);
             }
         }
+
         System.out.println();
         return answerDigits;
     }
@@ -53,12 +55,12 @@ public class Application {
         return userGuess;
     }
 
-    private static int validateUserInput(String userInput, int checkLength) throws IllegalArgumentException {
+    private static int validateUserInput(String userInput, int checkLength)
+            throws IllegalArgumentException {
         try {
             if (userInput.length() != checkLength) {
                 throw new IllegalArgumentException("Input length should be" + checkLength);
             }
-
             if (userInput.contains("0")) {
                 throw new IllegalArgumentException("every digit is in the range of 1~9");
             }
@@ -89,6 +91,7 @@ public class Application {
         if (digits.contains(digit)) {
             throw new IllegalArgumentException("Duplicate digit exists");
         }
+
         return;
     }
 
@@ -120,21 +123,19 @@ public class Application {
             System.out.println("낫싱");
             return false;
         }
-
         if (strikeCount == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             return true;
         }
-
         if (ballCount > 0) {
             System.out.print(ballCount + "볼 ");
         }
-
         if (strikeCount > 0) {
             System.out.print(strikeCount + "스트라이크 ");
         }
+
         System.out.println("");
         return false;
     }
