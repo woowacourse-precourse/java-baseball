@@ -59,7 +59,7 @@ public class GameController {
     }
 
 
-    public boolean isEndgameInputOfUser() {
+    public boolean isWantStopGameStopGame() {
         int numInputOfUser = user.getNumProceedUser();
         if (isEndGameUserWant(numInputOfUser)) {
             return true;

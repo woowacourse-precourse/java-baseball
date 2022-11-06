@@ -37,7 +37,7 @@ public class GameView {
             System.out.println(ConstantVO.MSG_CHOICE_PLAY_MORE_GAMES);
 
             gameController.callInputProceedNum();
-            if (gameController.isEndgameInputOfUser()) {
+            if (gameController.isWantStopGameStopGame()) {
                 return true;
             }
         }
