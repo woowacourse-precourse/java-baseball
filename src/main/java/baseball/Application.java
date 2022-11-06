@@ -23,6 +23,11 @@ public class Application {
         return computer;
     }
 
+    public static boolean isNumberValid(int number) {
+        List<Integer> prototype = breakInteger(number);
+        return hasDuplicates(prototype) && !hasZero(prototype) && isNumberInRange(number);
+    }
+
     public static List<Integer> breakInteger(int number) {
         List<Integer> list = new ArrayList<>();
         int reverse = 0;
