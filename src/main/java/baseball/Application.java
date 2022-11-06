@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.error.ElementsShouldBeExactly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,21 +38,32 @@ class Game{
         System.out.println("게임 종료");
     }
 
-    void setUserInput() {
+    void receiveUserInput(){
+        System.out.print("숫자를 입력해주세요 : ");
         this.strike = 0;
-        userInput = Console.readLine();
-        checkUserInput();
+        this.userNum.clear();
+        this.userInput = Console.readLine();
     }
 
-    void checkUserInput() throws IllegalArgumentException{
+    void setUserInput() {
+        receiveUserInput();
+        this.checkUserInput(userInput);
+    }
+
+    void checkUserInput(String userInput){
+
         if (userInput.length() != 3)
-            throw new IllegalArgumentException("게임 종료");
+            throw new IllegalArgumentException( );
 
         for (int i = 0; i < userInput.length(); i++) {
-            int userChar = (int)userInput.charAt(i);
+            int userChar =userInput.charAt(i)-'0';
+
             if (userChar<=0 | userChar>9)
-                throw new IllegalArgumentException("게임 종료");
-            userNum.add((int) userInput.charAt(i));
+                throw new IllegalArgumentException( );
+            else if (userNum.contains(userChar))
+                throw new IllegalArgumentException( );
+            else
+                userNum.add(userChar);
         }
     }
 
@@ -77,19 +89,21 @@ class Game{
 
     void printBallStrike(){
         if (strike == 0)
-            System.out.println(strike + "볼");
+            System.out.println(copyUserNum.size() + "볼");
         else if (copyUserNum.size() - strike == 0)
             System.out.println(strike + "스트라이크");
         else
-            System.out.println((copyUserNum.size() - strike) + "볼" + strike + "스트라이크");
+            System.out.println((copyUserNum.size() - strike) + "볼 " + strike + "스트라이크");
     }
 
     void getRightAnswer(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         chooseGameConditions();
     }
 
     void chooseGameConditions(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
         if(choice.equals("1"))
             Application.GameController();
