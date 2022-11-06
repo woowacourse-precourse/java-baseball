@@ -18,7 +18,7 @@ public class Application {
     }
 
     public static void exceptionHandling (String userInputString) throws IllegalArgumentException{
-        if (userInputString.length()>3) {
+        if (userInputString.length()!=3) {
             throw new IllegalArgumentException();
         }
     }
