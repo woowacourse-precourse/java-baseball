@@ -58,6 +58,22 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void 랜덤숫자_테스트1(){
+        BaseBallGame baseBallGame = BaseBallGame.getGame();
+        int exceptCnt = 0;
+        for(int i = 0; i < 100; i++){
+            String randomNum = Integer.toString(baseBallGame.getRandomDiff3DigitNumber());
+            if(randomNum.charAt(0) == randomNum.charAt(1)
+                || randomNum.charAt(1) == randomNum.charAt(2)
+                || randomNum.charAt(0) == randomNum.charAt(2)
+            ) {
+                exceptCnt++;
+            }
+        }
+        assertThat(exceptCnt).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
