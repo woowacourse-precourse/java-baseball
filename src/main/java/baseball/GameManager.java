@@ -31,8 +31,8 @@ public class GameManager {
 	}
 	
 	/**
-     * 게임 셋팅
-     * 랜덤한 컴퓨터 값 설정
+     * 게임 시작
+     * 정답을 맞출때까지 사용자의 숫자맞추기 게임 진행
      */
 	public void startGame() {
 
@@ -44,6 +44,12 @@ public class GameManager {
         	System.out.println(result);
     	}
 	}
-
+	
+	/**
+     * 게임 종료 문구 출력
+     */
+	public void endGame() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	}
 	
 }
