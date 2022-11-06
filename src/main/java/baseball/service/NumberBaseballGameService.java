@@ -6,7 +6,9 @@ import baseball.model.OpponentComputer;
 import java.util.Map;
 
 public class NumberBaseballGameService {
-    
+
+    private static final String STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY = "Strike";
+
     private static OpponentComputer opponentComputer;
 
     public void generateOpponentComputer() {
@@ -21,5 +23,9 @@ public class NumberBaseballGameService {
         opponentComputer.initStrikeAndBallCountMap();
         opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(Integer.parseInt(playerNumber));
         return opponentComputer.getStrikeAndBallCountMap();
+    }
+
+    public int getStrikeCount() {
+        return opponentComputer.getStrikeAndBallCountMap().get(STRIKE_AND_BALL_COUNT_MAP_STRIKE_KEY);
     }
 }
