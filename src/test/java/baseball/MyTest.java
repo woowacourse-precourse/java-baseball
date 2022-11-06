@@ -28,6 +28,26 @@ public class MyTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 볼인지_스트라이크인지_확인() {
+        List<Integer> computer = Arrays.asList(1, 2, 3);
+
+        List<Integer> oneBall = Arrays.asList(5, 1, 6);
+        List<Integer> oneBalloneStrike = Arrays.asList(3, 2, 6);
+        List<Integer> endOfGame = Arrays.asList(1, 2, 3);
+
+        assertThat( spy(Application.class).countStrikeBall(oneBall, computer) )
+                .as("볼만 있는 쪽 다시 체크")
+                .isEqualTo(false);
+
+        assertThat( spy(Application.class).countStrikeBall(oneBalloneStrike, computer) )
+                .as("볼이랑 스트라이크 있는 쪽 다시 체크")
+                    .isEqualTo(false);
+        assertThat( spy(Application.class).countStrikeBall(endOfGame, computer) )
+                .as("스트라이크 있는 쪽 다시 체크")
+                    .isEqualTo(true);
+
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
