@@ -39,6 +39,18 @@ class ApplicationTest extends NsTest {
                 !Application.isNumberValid(number));
     }
 
+    @DisplayName("스트라이크_볼_갯수 확인 테스트")
+    @Test
+    void 스트라이크_볼_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "971", "875", "728", "237", "281", "275", "782", "287", "2");
+                    assertThat(output()).contains("낫싱", "1볼", "2볼", "3볼", "1스트라이크", "2스트라이크", "1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                2,8,7
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
