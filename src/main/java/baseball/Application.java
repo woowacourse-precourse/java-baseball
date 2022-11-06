@@ -1,11 +1,7 @@
 package baseball;
 
-import baseball.process.EndGame;
-import baseball.process.InitGame;
-import baseball.process.MainGame;
-import baseball.setting.Setting;
-import baseball.ui.OutputText;
 import baseball.unit.Game;
+import baseball.unit.Init;
 
 import java.util.List;
 
@@ -13,23 +9,22 @@ public class Application {
 
     public static void main(String[] args) {
 
-        InitGame initGame = new InitGame();
-        EndGame endGame = new EndGame();
-
-        List<Integer> computerNumber = initGame.createComputerNumber();
+        Init init = new Init();
+        List<Integer> computerNumber = init.createComputerNumber();
 
         while(true){
-            MainGame mainGame = new MainGame();
-            List<Integer> inputNumber = mainGame.inputGuessNumber();
+            Game game = new Game(computerNumber);
+            game.inputGuessNumber();
 
-            Game game = new Game(computerNumber, inputNumber);
-            List<Integer> count = game.count();
-            if(mainGame.judge(count.get(0), count.get(1))){
-                OutputText.printEndGame();
-                if(!endGame.continueGame())
-                    break;
-                computerNumber = initGame.createComputerNumber();
+            if(!game.isAllStrike()) {
+                continue;
             }
+
+            if(init.stopGame()){
+                break;
+            }
+
+            computerNumber = init.createComputerNumber();
         }
     }
 }
