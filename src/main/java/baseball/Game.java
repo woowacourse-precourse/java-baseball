@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Game {
-    Input_Output IO = new Input_Output();
+    static Input_Output IO = new Input_Output();
     static int Strike_count=0;
     static int Ball_count=0;
     public void Game_Progress()
@@ -43,7 +43,7 @@ public class Game {
     }
 
 
-    public static void BaseNumber_Check(List<Integer> computer,List<Integer> User)//받은 값을 스트라이크와 볼인지 분류
+    public void BaseNumber_Check(List<Integer> computer,List<Integer> User)//받은 값을 스트라이크와 볼인지 분류
     {
         for(int i=0; i<computer.size();i++)
         {
@@ -77,8 +77,14 @@ public class Game {
     public void Ending_Progress()
     {
         IO.Ending_Enter();
+        Runtime_Check();
     }
-
+ public static boolean Runtime_Check()
+ {
+    if(IO.End_Number=="2")
+        return false;
+     return true;
+ }
 
 
 }
