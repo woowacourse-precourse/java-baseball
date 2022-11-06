@@ -17,6 +17,17 @@ public class StrikeModel {
 
     }
 
+    // 스트라이크 계산
+    private int getStrike() {
+        int strikeCount = 0;
+        for (int index = 0; index < 3; index++) {
+            if (userNumber[index] == computerNumber[index]) {
+                strikeCount += 1;
+            }
+        }
+        return strikeCount;
+    }
+
     // List를 int배열로 변환
     private int[] getNumberList(List<Integer> numberList) {
         int[] numberListArray = new int[3];
