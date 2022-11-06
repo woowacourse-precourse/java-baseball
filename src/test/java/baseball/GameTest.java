@@ -37,6 +37,14 @@ class GameTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_숫자가_아닌_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
