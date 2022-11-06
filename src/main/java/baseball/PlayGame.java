@@ -15,6 +15,7 @@ public class PlayGame {
 
     public void checkStrikeAndBall(){
         compareNumberForStrike();
+        compareNumberForBall();
     }
 
     private void compareNumberForStrike(){
@@ -45,5 +46,14 @@ public class PlayGame {
             digit--;
         }
         return digit;
+    }
+
+    private void compareNumberForBall(){
+        int compareNumberIndex = 0;
+
+        while(compareNumberIndex < computerNumber.size()){
+            //볼 개수 체크 기능
+            compareNumberIndex++;
+        }
     }
 }
