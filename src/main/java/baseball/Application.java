@@ -10,6 +10,6 @@ public class Application {
 
         inputList = input.getInputValue();
         process.setData(inputList);
-        process.get_processed_data();
+        process.getProcessedData();
     }
 }
