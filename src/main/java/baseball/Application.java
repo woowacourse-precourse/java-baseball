@@ -136,10 +136,7 @@ public class Application {
             }
         }
 
-        if(output(ball, strike)) {
-            return true;
-        }
-        return false;
+        return output(ball, strike);
     }
 
     // 컴퓨터의 숫자와 사용자의 숫자를 비교하는 메서드
