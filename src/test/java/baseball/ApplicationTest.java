@@ -80,6 +80,18 @@ class ApplicationTest extends NsTest {
         assertEquals(result,checkStrike(answer,userInput));
     }
 
+    @Test
+    void printStrikeAndBallTest() {
+
+    }
+
+    @Test
+    void returnAnswerTest() {
+        int strike = 3;
+        boolean result = true;
+        assertEquals(result,returnAnswer(strike));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
