@@ -14,4 +14,8 @@ public class Action {
             throw new IllegalArgumentException("숫자 1 혹은 2만 입력할 수 있습니다.");
         }
     }
+
+    public boolean isRestart() {
+        return numberAction.equals("1");
+    }
 }
