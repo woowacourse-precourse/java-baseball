@@ -42,10 +42,14 @@ public class BaseballGame {
         for(int i=0;i<3;i++){
             userNumber = userNumbers.get(i);
             computerNumber = computerNumbers.get(i);
-            if (!computerNumbers.contains(userNumber)) continue;
+            if (!includeSame(userNumber)) continue;
             if (userNumber == computerNumber) strike++;
             else if (userNumber != computerNumber) ball++;
         }
+    }
+
+    public static boolean includeSame(int userNumber){
+        return computerNumbers.contains(userNumber);
     }
 
     public static void userNumberResult(){
