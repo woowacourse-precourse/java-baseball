@@ -61,6 +61,12 @@ public class Application {
         return arrayToList;
     }
 
+    public static int checkStrikeNumbers(List<Integer> computerNumbers,
+                                         List<Integer> userNumbers){
+        int checkedStrikeNumbers = 0;
+        return 0;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
