@@ -32,13 +32,15 @@ public class Application {
         return answer;
     }
 
-    // 사용자가 입력한 정답을 반환하는 함수, 입력은 서로 다른 3자리 수여야 한다.
+    // 사용자가 입력한 정답을 반환하는 함수, 입력은 서로 다른 3자리 수여야 한다. 단 1 과 2는 재시작, 종료를 위해 허용
     public static List<Integer> userInput() throws IllegalArgumentException {
         List<Integer> answer = new ArrayList<>();
         String consoleInput = Console.readLine();
-        if (consoleInput.length() != 3) {
-            throw new IllegalArgumentException("입력이 3자리 수가 아닙니다.");
+
+        if (consoleInput.length() != 3 && !consoleInput.equals("1") && !consoleInput.equals("2")) {
+            throw new IllegalArgumentException("유효하지 않는 입력입니다.");
         }
+
         for (int i = 0; i < consoleInput.length(); i++) {
             int charInt = Character.getNumericValue(consoleInput.charAt(i));
             if (!answer.contains(charInt)) {
@@ -49,19 +51,6 @@ public class Application {
         }
 
         return answer;
-    }
-
-    // 게임을 재시작하면 true 를 반환하고 종료하면 false 를 반환
-    public static boolean gameReplayOptionInput() throws IllegalArgumentException {
-        System.out.println("게임을 새로 시작하려면: 1, 종료하려면 2를 입력하시요.");
-        String consoleInput = Console.readLine();
-        if (!consoleInput.equals("1") && !consoleInput.equals("2")) {
-            throw new IllegalArgumentException("입력은 1 혹은 2로 해주세요.");
-        } else if (consoleInput.equals("1")) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public static boolean gamePlay(List<Integer> answer) {
