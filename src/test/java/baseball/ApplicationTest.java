@@ -64,4 +64,14 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    @DisplayName("정상 입력인 경우 ")
+    public void NormalInput() throws Exception{
+        List<Integer> result = Application.validationAndConvert("123");
+        assertThat(result.size()).isEqualTo(3);
+        assertThat(result.get(0)).isEqualTo(1);
+        assertThat(result.get(1)).isEqualTo(2);
+        assertThat(result.get(2)).isEqualTo(3);
+
+    }
 }
