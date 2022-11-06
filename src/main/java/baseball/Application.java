@@ -45,7 +45,7 @@ public class Application {
         }
         return printBallStrike(createCountArray(ball, strike));
     }
-    public static List<Integer> inputNumber() {
+    public static List<Integer> inputPlayerNumber() {
         String number = Console.readLine();
         List<Integer> playerNumber = new ArrayList<>();
         for (int i=0;i<3;++i)
@@ -64,7 +64,7 @@ public class Application {
     public static void inputGame(boolean end, List<Integer> randomNumber) {
         while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
-            end = compareNumber(inputNumber(), randomNumber);
+            end = compareNumber(inputPlayerNumber(), randomNumber);
         }
     }
     public static void restartGame(boolean restart) {
@@ -89,6 +89,10 @@ public class Application {
     public static void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         playGame();
+    }
+    public static void checkError(boolean check) {
+        if (!check)
+            throw new IllegalArgumentException();
     }
     public static void main(String[] args) {
         startApplication();
