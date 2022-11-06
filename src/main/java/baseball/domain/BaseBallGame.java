@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
@@ -9,7 +8,7 @@ public class BaseBallGame {
 	private GameResult gameResult;
 
 	public BaseBallGame() {
-		this.computerNumber = new ComputerNumber().computerNumber;
+		this.computerNumber = new ComputerNumber().getComputerNumber();
 	}
 
 	private void inputUserNumber(String str) {
@@ -20,15 +19,7 @@ public class BaseBallGame {
 		this.gameResult = new GameResult(computerNumber, userNumber);
 	}
 
-	public List<Integer> getComputerNumber() {
-		return computerNumber;
-	}
-
 	public GameResult getGameResult() {
 		return gameResult;
-	}
-
-	public List<Integer> getUserNumber() {
-		return userNumber;
 	}
 }
