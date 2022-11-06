@@ -40,17 +40,17 @@ public class BaseBallGame {
     }
 
 
-    private static List<Integer> threeRandomValueCompareToUserInput (List<Integer> computerRandom, String userInput) {
+    private static List<Integer> threeRandomValueCompareToUserInput (List<Integer> threeRandomValue, String userInput) {
         int ballCount = 0,
                 strikeCount = 0;
 
-        for (int i = 0; i < computerRandom.size(); i++) {
-            if (userInput.charAt(i) - '0' == computerRandom.get(i)) {
+        for (int i = 0; i < threeRandomValue.size(); i++) {
+            if (userInput.charAt(i) - '0' == threeRandomValue.get(i)) {
                 strikeCount++;
                 continue;
             }
 
-            if (computerRandom.contains(userInput.charAt(i) - '0')) {
+            if (threeRandomValue.contains(userInput.charAt(i) - '0')) {
                 ballCount++;
             }
         }
@@ -59,18 +59,18 @@ public class BaseBallGame {
     }
 
 
-    private static void printByBallAndStrikeStatus (List<Integer> ballStrikeCount) {
-        if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
+    private static void printByBallAndStrikeStatus (List<Integer> ballStrikeStatus) {
+        if (ballStrikeStatus.get(BALL) == 0 && ballStrikeStatus.get(STRIKE) == 0) {
             System.out.println("낫싱");
             return;
         }
 
-        if (ballStrikeCount.get(STRIKE) == 3) {
+        if (ballStrikeStatus.get(STRIKE) == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
 
-        System.out.println(ballStrikeCount.get(BALL) + "볼 " + ballStrikeCount.get(STRIKE) + "스트라이크");
+        System.out.println(ballStrikeStatus.get(BALL) + "볼 " + ballStrikeStatus.get(STRIKE) + "스트라이크");
     }
 }
