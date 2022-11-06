@@ -49,6 +49,13 @@ class ApplicationTest extends NsTest {
         assertThat(false).isEqualTo(Application.checkUserNumberIsDuplicate(input));
     }
 
+    @Test
+    void checkingUserNumberIsCorrectTest() {
+        String input = "123";
+
+        assertThat(true).isEqualTo(Application.checkUserNumberIsDuplicate(input));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
