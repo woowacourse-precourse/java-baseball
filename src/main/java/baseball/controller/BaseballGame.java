@@ -6,10 +6,12 @@ import baseball.view.View;
 
 import java.util.List;
 
+import static baseball.constant.ConstantValue.STRIKE;
+
 public class BaseballGame {
     private static final View view = new View();
     private static final GameManager gm = new GameManager();
-    private static boolean endGame = false;
+    private boolean endGame = false;
 
     public BaseballGame(){
     }
@@ -30,6 +32,14 @@ public class BaseballGame {
 
             int[] gameResult = gm.playGame(computerNumber, playerNumber);
             gm.printResult(gameResult);
+            endGame = gm.isEnd(gameResult[STRIKE]);
         }
+
+        String userChoice = gm.isRestart(view.endView());
+        if(userChoice.equals("restart")){
+            endGame = false;
+            startGame();
+        }
+
     }
 }
