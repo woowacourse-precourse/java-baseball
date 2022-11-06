@@ -22,6 +22,14 @@ public class SystemUtil implements Interactive {
         return instance;
     }
 
+    public void print(Message message) {
+        System.out.println(message.getMessage());
+    }
+
+    public void print(String message) {
+        System.out.println(message);
+    }
+
     @Override
     public Integer getUserInput() {
         Integer input = Integer.parseInt(Console.readLine());
