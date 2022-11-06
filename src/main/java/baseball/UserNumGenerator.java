@@ -16,8 +16,8 @@ public class UserNumGenerator {
         if (!isValid(input)) {
             throw new IllegalArgumentException();
         }
-        for (int i = 0; i < 3; i++) {
-            nums.add(Integer.parseInt(input.substring(i, i+1)));
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
+            nums.add(Integer.parseInt(input.substring(i, i + 1)));
         }
         return nums;
     }
@@ -28,7 +28,7 @@ public class UserNumGenerator {
 
     public boolean isNotDuplicate(String input) {
         List<Character> nums = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
             if (!nums.contains(input.charAt(i))) {
                 nums.add(input.charAt(i));
                 continue;

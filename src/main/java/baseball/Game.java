@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
     private final List<Integer> computerNum;
 
@@ -11,8 +13,8 @@ public class Game {
 
     public int getStrikeCount(List<Integer> userNum) {
         int count = 0;
-        for (int i = 0; i < 3; i++) {
-            if(computerNum.get(i) == userNum.get(i)) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
+            if (computerNum.get(i) == userNum.get(i)) {
                 count += 1;
             }
         }
@@ -21,8 +23,8 @@ public class Game {
 
     public int getBallCount(List<Integer> userNum) {
         int count = 0;
-        for (int i = 0; i < 3; i++) {
-            if(computerNum.get(i) != userNum.get(i) && computerNum.contains(userNum.get(i))) {
+        for (int i = 0; i < Constants.INPUT_LENGTH; i++) {
+            if (computerNum.get(i) != userNum.get(i) && computerNum.contains(userNum.get(i))) {
                 count += 1;
             }
         }
@@ -47,7 +49,7 @@ public class Game {
     }
 
     public boolean isClear(int strikeCount) {
-        return strikeCount == 3;
+        return strikeCount == Constants.MAX_STRIKE;
     }
 }
 
