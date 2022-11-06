@@ -39,10 +39,10 @@ public class Application {
         int ball = 0;
         int strike = 0;
         for(int userIndex=0; userIndex<user.size(); userIndex++){
-            ball += isBall(computer, user.get(userIndex));
+            strike += isStrike(computer, user.get(userIndex), userIndex);
 
             if(ball == 0 ) {
-                strike += isStrike(computer, user.get(userIndex), userIndex);
+                ball += isBall(computer, user.get(userIndex));
             }
         }
 
@@ -52,7 +52,7 @@ public class Application {
         } else if( (ball == 0) && (strike == 0)) {
             System.out.println("낫싱");
         } else if((ball != 0) && (strike == 0)){
-            System.out.println(ball + "볼 ");
+            System.out.println(ball + "볼");
         } else if((ball == 0) && (strike != 0)) {
             System.out.println(strike + "스트라이크");
         } else if ((ball != 0) && (strike != 0)) {
