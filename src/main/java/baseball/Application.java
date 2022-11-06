@@ -1,6 +1,6 @@
 /* 
 <해결해야 할 것>
-1. readline()메서드가 왜 WARING을 부르는지 이해하기
+1. readline()메서드가 왜 WARING을 부르는지 이해하기 -> 일단 Pass
 2. IllegalArgumentException이 발생했을 때, 프로그램을 종료할 수 있도록 하기
  */
 package baseball;
@@ -32,7 +32,6 @@ class UI {
 }
 
 public class Application {
-
     // 0. 게임의 시작을 분리한다.
     private static boolean gameStart() throws IllegalArgumentException {
 
@@ -59,21 +58,14 @@ public class Application {
             }
 
             // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
-
             // 4-1 : 메세지 출력
             UI.printAnswerMsg();
 
             // 4-2 : 1 또는 2의 값 입력받기
             int restartOrExit = Integer.parseInt(Console.readLine());
+            boolean restartOrNot = setRestartOrNot(restartOrExit);
+            return restartOrNot;
 
-            // 4-3 : 1을 입력했다면, 재시작하기.
-            if (restartOrExit == 1) {
-                return true;
-            } else if (restartOrExit == 2) {
-                return false;
-            } else {
-                throw new IllegalArgumentException("비정상적인 값입니다.");
-            }
         } catch (IllegalArgumentException e) {
             return false;
         }
@@ -89,7 +81,6 @@ public class Application {
         }
         return computer;
     }
-
 
     // 2-1 : 사용자의 입력값을 검증한다
     private static boolean isValidStringInputOfUser(String stringInputOfUser) throws IllegalArgumentException {
@@ -244,6 +235,17 @@ public class Application {
         }
 
         return ballCount;
+    }
+
+    // 4-2 : Restart할지, 그렇지 않을지 정한다.
+    private static boolean setRestartOrNot(int restartOrExit) {
+        if (restartOrExit == 1) {
+            return true;
+        } else if (restartOrExit == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("비정상적인 값입니다.");
+        }
     }
 
     // 4-3-1 : 재시작하기 위한 준비
