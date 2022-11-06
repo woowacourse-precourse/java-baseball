@@ -5,9 +5,9 @@ import baseball.printer.Printer;
 import baseball.receiver.Receiver;
 import baseball.result.Result;
 
-import java.util.Scanner;
-
 public class BaseBallGamePlayer {
+    private static final String RESTART_NUMBER = "1";
+    private static final String ESCAPE_NUMBER = "2";
     private final Printer printer;
     private final Receiver receiver;
     private Result result;
@@ -21,24 +21,25 @@ public class BaseBallGamePlayer {
     }
 
     public void run() {
+        String restartNumber = "1";
         printer.greet();
 
-        while (true) {
+        while (restartNumber == "1") {
             result = new Result(0, 0);
 
             playBall(result);
-
-
+            restartNumber = receiver.receiveRestartNumber();
         }
     }
 
-    public void playBall(Result result) {
+
+    private void playBall(Result result) {
         computerNumber.generateRandomNumber();
 
         while (!result.isOut()) {
             printer.requestUserNumber();
 
-            userNumber = new GameNumber(receiver.receiveNumber());
+            userNumber = new GameNumber(receiver.receiveUserNumber());
 
             result.calculateBallCount(computerNumber.getGameNumber(), userNumber.getGameNumber());
             printer.printBallCount(result);
@@ -47,7 +48,9 @@ public class BaseBallGamePlayer {
         printer.printWin();
     }
 
-    public void validate
+    public static boolean isValidRestartNumber(String restartNumber) {
+        return (restartNumber == RESTART_NUMBER || restartNumber == ESCAPE_NUMBER);
+    }
 
 
 }
