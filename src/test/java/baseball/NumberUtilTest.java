@@ -1,18 +1,50 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class NumberUtilTest {
+    @Test
+    @DisplayName("input 함수가 1부터 9 사이의 서로 다른 임의의 숫자 3개를 반환하는지 확인한다")
+    void inputTest() {
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        List<Integer> numbers = NumberUtil.input();
+        Assertions.assertAll(
+                () -> assertEquals(3, numbers.size()),
+                () -> assertTrue(numbers.stream().allMatch(i -> NumberUtil.NUMBER_START <= i && i <= NumberUtil.NUMBER_END)),
+                () -> assertEquals(NumberUtil.NUMBER_SIZE, numbers.stream().distinct().count())
+        );
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {"119:1", "가나다라:1", ":2", "-12:2", "a@c!ef:3"}
+    )
+    @DisplayName("input 함수가 null을 반환하는지 확인한다")
+    void inputNullTest(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        List<Integer> numbers = NumberUtil.input();
+        assertThat(numbers).isEqualTo(null);
+    }
+
     @ParameterizedTest
     @CsvSource(
             value = {"119:3", "가나다라:4", ":0", "-12:3", "a@c!ef:6"},
@@ -66,7 +98,6 @@ public class NumberUtilTest {
     void noDuplicateCheckTestX(String str) {
         assertFalse(NumberUtil.noDuplicateCheck(str));
     }
-
 
     private static Stream<Arguments> provideNoDuplTestcase() {
         return Stream.of(
