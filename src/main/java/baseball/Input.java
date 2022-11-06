@@ -48,6 +48,7 @@ public class Input {
         if(!is1to10()) new IllegalArgumentException("1부터 9사이의 값이 아닙니다.");
         if(!isdifferentNumber()) new IllegalArgumentException("중복된 값이 포함되어 있습니다.");
         if(!isNumber()) new IllegalArgumentException("숫자가 아닌 다른 값이 포함되어 있습니다.");
+        if(!isnumbersize()) new IllegalArgumentException("3자리를 초과하여 입력하였습니다.");
     }
 
 
