@@ -26,7 +26,7 @@ public class Application {
 
         // userNumbers 필터링: 겹치지 않는 다면 필터링리스트에 추가.
         for(int userNumber: userNumbers){
-            if(!filterUserNumbers.contains(userNumber)){
+            if(!filterUserNumbers.contains(userNumber) && numberInRange(userNumber, 1, 9)){
                 filterUserNumbers.add(userNumber);
             }
         }
