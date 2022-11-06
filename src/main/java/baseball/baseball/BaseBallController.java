@@ -2,6 +2,11 @@ package baseball.baseball;
 
 import baseball.ScreenString;
 import baseball.dto.BaseBallGameOutput;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseBallController {
 
@@ -13,51 +18,61 @@ public class BaseBallController {
     }
 
     public void gameFlow(){
-        /**
-         * 게임 시작
-         */
+        startGame();
 
         while(doNextGame == 1){
-            /**
-             * 메서드를 통한 랜덤 숫자와 추리 숫자 입력 받기
-             * 추리 숫자를 입력 받을 시 try catch를 이용.
-             */
+            String randomNumber = makeRandomNumber();
+            String guessNumber = makeGuessNumber();
 
             /**
              * dto를 통한 service와 통신
              */
 
 
-            /**
-             * 게임 종료
-             */
+            doNextGame = endGame();
         }
     }
 
-    private String makeGuessNumber() {
-        /**
-         * 추리 숫자 입력 받기
-         */
-        return "ok";
+    private String makeGuessNumber() throws IllegalArgumentException{
+        String userInput = Console.readLine();
+
+        if(!is3Number(userInput)){
+            throw new IllegalArgumentException();
+        }else {
+            return userInput;
+        }
+    }
+
+    private boolean is3Number(String userInput) {
+        boolean is3Number = true;
+        if(userInput.length() != 3)
+            is3Number = false;
+        for(int i=0;i<3;i++){
+            char temp = userInput.charAt(i);
+            if(temp < '0' || temp > '9'){
+                is3Number = false;
+            }
+        }
+        return is3Number;
     }
 
     private String makeRandomNumber() {
-        /**
-         * 랜덤 숫자 만들기
-         */
-        return "ok";
+        List<String> computerInput = new ArrayList<>();
+        while (computerInput.size() < 3) {
+            String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            if (!computerInput.contains(randomNumber)) {
+                computerInput.add(randomNumber);
+            }
+        }
+        return String.join("", computerInput);
     }
 
     private int endGame() {
-        /**
-         * 게임 종료
-         */
-        return 1;
+        System.out.println(ScreenString.END_GAME);
+        return Integer.parseInt(Console.readLine());
     }
 
     private void startGame() {
-        /**
-         * 게임 시작
-         */
+        System.out.println(ScreenString.GAME_START);
     }
 }
