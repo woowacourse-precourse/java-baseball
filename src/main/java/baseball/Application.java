@@ -17,10 +17,10 @@ public class Application {
 
     private static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computerSelectNumber();
+        selectComputerNumber();
     }
 
-    private static void computerSelectNumber() {
+    private static void selectComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -29,12 +29,12 @@ public class Application {
             }
         }
         computerNumber = new ThreeNumber(computer.get(0), computer.get(1), computer.get(2));
-        playerSelectNumber();
+        selectPlayerNumber();
     }
 
-    private static void playerSelectNumber() {
+    private static void selectPlayerNumber() {
         String user = Console.readLine();
-        playerSelectNumberException(user);
+        selectPlayerNumberException(user);
         int number1 = user.charAt(0) - '0';
         int number2 = user.charAt(1) - '0';
         int number3 = user.charAt(2) - '0';
@@ -42,7 +42,7 @@ public class Application {
         determineAnswer();
     }
 
-    private static void playerSelectNumberException(String user) {
+    private static void selectPlayerNumberException(String user) {
 
     }
 
