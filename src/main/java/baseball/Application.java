@@ -13,8 +13,7 @@ public class Application {
 
         while (true) {
             boolean gameEnded = gamePlay(answer);
-            if (gameEnded) {
-                System.out.println("게임을 새로 시작하려면: 1, 종료하려면 2를 입력하시요.");
+            if (gameEnded && !gameReplayOptionInput()) {
                 break;
             }
         }
@@ -50,6 +49,19 @@ public class Application {
         }
 
         return answer;
+    }
+
+    // 게임을 재시작하면 true 를 반환하고 종료하면 false 를 반환
+    public static boolean gameReplayOptionInput() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면: 1, 종료하려면 2를 입력하시요.");
+        String consoleInput = Console.readLine();
+        if (!consoleInput.equals("1") && !consoleInput.equals("2")) {
+            throw new IllegalArgumentException("입력은 1 혹은 2로 해주세요.");
+        } else if (consoleInput.equals("1")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean gamePlay(List<Integer> answer) {
