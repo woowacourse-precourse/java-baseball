@@ -1,8 +1,9 @@
 package baseball;
 
 import static baseball.Constant.*;
+
 public class PrintMessage {
-    
+
     public static void gameStart() {
         System.out.println(GAME_START_MESSAGE);
     }
@@ -20,15 +21,15 @@ public class PrintMessage {
     }
 
     public static void onlyBallCount() {
-        System.out.println(Score.getBall()+BALL);
+        System.out.println(Score.getBall() + BALL);
     }
 
     public static void onlyStrikeCount() {
-        System.out.println(Score.getStrike()+STRIKE);
+        System.out.println(Score.getStrike() + STRIKE);
     }
 
     public static void ballAndStrikeCount() {
-        System.out.println(Score.getBall()+BALL+" "+Score.getStrike()+STRIKE);
+        System.out.println(Score.getBall() + BALL + " " + Score.getStrike() + STRIKE);
     }
 
     public static void notThing() {
