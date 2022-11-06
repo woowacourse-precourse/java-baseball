@@ -21,6 +21,7 @@ public class Game {
             swingBat(computer.getComputerNumbersList(),player.getPlayerNumbersList());
             gameRound = getResultGame();
         }
+        checkRestartGame();
     }
     private void initBallAndStrike() {
         ball = 0;
@@ -46,5 +47,12 @@ public class Game {
             System.out.println(ball+"볼 "+strike+"스트라이크");
             return 1;
         }
+    }
+    public void checkRestartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = player.inputNumbers();
+        Exception.checkInputNumber(inputNumber);
+        if (inputNumber.equals("1")) playGame();
+        else System.out.println("게임을 완전히 종료합니다.");
     }
 }
