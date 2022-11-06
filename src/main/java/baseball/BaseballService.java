@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +53,10 @@ public class BaseballService {
      * 컴퓨터의 숫자리스트(this.answerNumberList)를 새로 할당한다
      */
     public void setAnswerNumberList() {
+        this.answerNumberList = new ArrayList<>();
+        for (int index = 0; index < gameInputCount; index++) {
+            addRandomNumberToList(answerNumberList);
+        }
     }
 
     /**
@@ -59,5 +64,11 @@ public class BaseballService {
      * @param list : 값을 할당할 리스트
      */
     private void addRandomNumberToList(List<Integer> list) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!list.contains(randomNumber)) {
+            list.add(randomNumber);
+            return;
+        }
+        addRandomNumberToList(list);
     }
 }
