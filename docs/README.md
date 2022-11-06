@@ -97,7 +97,7 @@
 - [ ] printToRestartingGameMessage함수를 실행
 - [ ] inputUserAnswer함수를 실행
 - [ ] availableUserAnswerIsChecked함수를 실행 후, 결과값을 checkedAvailableUserAnswer에 저장
-- [ ] checkedAvailableUserAnswer이 false이면, inputAvailableUserAnswerService함수를 실행
+- [ ] checkedAvailableUserAnswer이 false이면, inputAvailableUserAnswerService함수를 실행 후 출력값을 userAnswer에 저장
 
 ## (void)baseballGameServie()
 - [ ] 사용자가 종료를 원하는지를 체크하는 번수, checkedBaseballGaemOfUserAnswer에 0로 초기화 
