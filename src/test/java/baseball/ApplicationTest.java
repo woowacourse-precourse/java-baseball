@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.service.GameNumberCalculatorService;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -76,5 +77,20 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(user.getUserGameNumbers().size()).isEqualTo(PERMITTED_LENGTH);
+    }
+
+    @Test
+    void 스트라이크_값_얻기_테스트() {
+        // given
+        GameNumberCalculatorService gameNumberCalculatorService = new GameNumberCalculatorService();
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> userNumbers = List.of(1, 2, 3);
+        final int THREE_STRIKE = 3;
+
+        // when
+        int strikeCount = gameNumberCalculatorService.getStrikeCount(userNumbers, computerNumbers);
+
+        // then
+        assertThat(strikeCount).isEqualTo(THREE_STRIKE);
     }
 }
