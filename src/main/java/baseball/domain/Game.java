@@ -33,5 +33,17 @@ public class Game {
             OutputView.printResult();
 
         } while (isWorngAnswer);
+
+        OutputView.printGameEndMessage();
+        OutputView.printRestartOrStopGuideMessage();
+
+        String command = InputView.getRestartOrStopCommand();
+        reStarOrStop(command);
+    }
+
+    public void reStarOrStop(String command) {
+        if (command.equals("1")) {
+            start();
+        }
     }
 }
