@@ -14,7 +14,7 @@ public class BallReader {
         this.requiredStrikes = 3;
     }
 
-    public boolean isFinished(List<Integer> userBall, List<Integer> computerBall) {
+    public boolean isFinished(Ball userBall, Ball computerBall) {
         Map<String, Integer> result = getResult(userBall, computerBall);
         if (result.get(STRIKE) == null) {
             return false;
@@ -22,26 +22,28 @@ public class BallReader {
         return result.get(STRIKE) == requiredStrikes;
     }
 
-    public Map<String, Integer> getResult(List<Integer> userBall, List<Integer> computerBall) {
+    public Map<String, Integer> getResult(Ball userBall, Ball computerBall) {
         validateBalls(userBall, computerBall);
         List<String> ballData = evaluateBall(userBall, computerBall);
         return makeResult(ballData);
     }
 
-    private List<String> evaluateBall(List<Integer> userBall, List<Integer> computerBall) {
+    private List<String> evaluateBall(Ball userBall, Ball computerBall) {
         final int noNumberInComputer = -1;
-        List<String> ballData = new ArrayList<>();
-        for (int number : userBall) {
-            int userIndex = userBall.indexOf(number);
-            int computerIndex = computerBall.indexOf(number);
+        List<Integer> userBallData = userBall.getBallData();
+        List<Integer> computerBallData = computerBall.getBallData();
+        List<String> strikeAndBallResult = new ArrayList<>();
+        for (int number : userBallData) {
+            int userIndex = userBallData.indexOf(number);
+            int computerIndex = computerBallData.indexOf(number);
             if (userIndex == computerIndex) {
-                ballData.add(STRIKE);
+                strikeAndBallResult.add(STRIKE);
             }
             if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
-                ballData.add(BALL);
+                strikeAndBallResult.add(BALL);
             }
         }
-        return ballData;
+        return strikeAndBallResult;
     }
 
     private Map<String, Integer> makeResult(List<String> ballData) {
@@ -53,8 +55,10 @@ public class BallReader {
         return result;
     }
 
-    private void validateBalls(List<Integer> userBall, List<Integer> computerBall) {
-        if (userBall.size() != computerBall.size()) {
+    private void validateBalls(Ball userBall, Ball computerBall) {
+        List<Integer> userBallData = userBall.getBallData();
+        List<Integer> computerBallData = computerBall.getBallData();
+        if (userBallData.size() != computerBallData.size()) {
             throw new IllegalArgumentException("서로 호환 되지 않는 공입니다");
         }
     }
