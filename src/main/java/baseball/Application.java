@@ -27,12 +27,7 @@ public class Application {
         boolean playGame = true;
         while (playGame) {
             playGame = false;
-            try {
-                gameStart();
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(illegalArgumentException);
-                break;
-            }
+            gameStart();
             if(willReplay()) {
                 playGame = true;
             }
@@ -206,14 +201,8 @@ public class Application {
     static boolean willReplay() {
         boolean replay = false;
         String playOrNot = "";
-        try {
-            playOrNot = getUserInput(InputType.WHETHER_REPLAY);
-            isValidInput(playOrNot, InputType.WHETHER_REPLAY);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException);
-            return false;
-        }
-
+        playOrNot = getUserInput(InputType.WHETHER_REPLAY);
+        isValidInput(playOrNot, InputType.WHETHER_REPLAY);
         if (playOrNot.charAt(0) == REPLAY) {
             replay = true;
         }
