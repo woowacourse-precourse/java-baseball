@@ -12,7 +12,7 @@ public class Game {
         Player player = new Player();
 
         while (true) {
-            player.EnterNumberOfPlayer();
+            player.enterNumber();
             String resultMessage = computer.getResultMessage(player.playersNumber);
             System.out.println(resultMessage);
             if (resultMessage.equals("3스트라이크")) {

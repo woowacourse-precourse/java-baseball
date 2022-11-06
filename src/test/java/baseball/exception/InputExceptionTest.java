@@ -21,7 +21,7 @@ public class InputExceptionTest {
         System.setIn(input);
 
         // Then
-        assertThatThrownBy(() -> player.EnterNumberOfPlayer())
+        assertThatThrownBy(() -> player.enterNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

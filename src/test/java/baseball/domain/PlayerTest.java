@@ -18,7 +18,7 @@ public class PlayerTest {
         System.setIn(input);
 
         // When
-        player.EnterNumberOfPlayer();
+        player.enterNumber();
 
         // Then
         assertThat(player.playersNumber).isEqualTo(Arrays.asList(inputData.split("")));
