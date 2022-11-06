@@ -22,7 +22,7 @@ public class Game {
 
     */
 
-    String comp = "";
+    String comp;
     int strikeCnt;
     int ballCnt;
 
