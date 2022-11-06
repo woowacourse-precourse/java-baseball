@@ -4,7 +4,6 @@ import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Input {
     private final static String  REQUEST_PLAYER_GUESS = "숫자를 입력해주세요 : ";
