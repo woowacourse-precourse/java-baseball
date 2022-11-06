@@ -9,6 +9,7 @@ public class Game {
     String STRING_BALL = "볼";
     String STRING_STRIKE = "스트라이크";
     String STRING_NOTHING = "낫싱";
+    String INPUT_RESTART = "1";
     String INPUT_QUIT = "2";
     String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
     String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -21,6 +22,7 @@ public class Game {
     private boolean quit = false;
     public String input;
     public List<String> inputArrList;
+    private Computer computer;
 
     public Game() {
     }
@@ -32,7 +34,7 @@ public class Game {
     }
 
     public void play() {
-        Computer computer = new Computer();
+        computer = new Computer();
         User user = new User();
 
         System.out.println(OUTPUT_START);
@@ -53,13 +55,22 @@ public class Game {
                 System.out.println(OUTPUT_SUCCESS);
                 System.out.println(OUTPUT_RESTART_OR_QUIT);
                 setInput();
-                if(input.equals(INPUT_QUIT)) {
-                    quit = true;
-                    break;
-                }
-                computer.setRandomNumber();
-                randomNumber = computer.getRandomNumber();
+                handleQuit();
+                handleRestart();
             }
+        }
+    }
+
+    private void handleRestart() {
+        if(input.equals(INPUT_RESTART)) {
+            computer.setRandomNumber();
+            randomNumber = computer.getRandomNumber();
+        }
+    }
+
+    private void handleQuit() {
+        if(input.equals(INPUT_QUIT)) {
+            quit = true;
         }
     }
 
