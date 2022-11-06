@@ -14,7 +14,6 @@ public class PlayerUser {
 
 	public String getInputNumber() throws IllegalArgumentException {
 		String number = inputNumber();
-//		String number = "123";
 
 		if (isExceptionalInput(number)) {
 			throw new IllegalArgumentException();
@@ -24,6 +23,7 @@ public class PlayerUser {
 	}
 
 	private String inputNumber() {
+		System.out.print("숫자를 입력해주세요 : ");
 		return Console.readLine();
 	}
 
