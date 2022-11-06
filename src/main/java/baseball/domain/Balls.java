@@ -38,4 +38,13 @@ public class Balls {
         return otherBall.equals(balls.get(position));
     }
 
+    public Optional<Judgement> play(int position, Ball ball) {
+        if (hasSameValue(ball)) {
+            if (inSamePosition(position, ball)) {
+                return Optional.of(Judgement.STRIKE);
+            }
+            return Optional.of(Judgement.BALL);
+        }
+        return Optional.empty();
+    }
 }
