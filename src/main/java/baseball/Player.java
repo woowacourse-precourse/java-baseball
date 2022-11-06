@@ -13,16 +13,23 @@ public class Player {
 
     public int guessRandomNumber() {
         String input = sc.nextLine();
-
-        if (!isValidGuess(input)) {
-            throw new IllegalArgumentException("잘못된 형식의 값을 입력했습니다.");
-        }
-
+        validateGuess(input);
         return Integer.parseInt(input);
     }
 
-    public boolean isValidGuess(String input) {
-        return containOnlyDigit(input) && isCorrectLength(input) && !containZero(input) && !hasDuplicatedDigit(input);
+    public void validateGuess(String input) {
+        if (!containOnlyDigit(input)) {
+            throw new IllegalArgumentException("숫자 이외의 값을 입력했습니다.");
+        }
+        if (!isCorrectLength(input)) {
+            throw new IllegalArgumentException("잘못된 길이의 값을 입력했습니다.");
+        }
+        if (containZero(input)) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
+        if (hasDuplicatedDigit(input)) {
+            throw new IllegalArgumentException("하나의 숫자가 두 번 이상 입력되었습니다.");
+        }
     }
 
     public boolean containOnlyDigit(String input) {
