@@ -33,10 +33,8 @@ public class Game {
 
     public boolean canRestart() {
         System.out.println(RESTART_COMMENT);
-        String userInput = Console.readLine();
-        validUserInputRestart(userInput);
-        System.out.println(userInput);
-        if (userInput.equals(END)) {
+        UserInputNumbers userInput = new UserInputNumbers();
+        if (userInput.getUserControlNumber().equals(END)) {
             return false;
         }
         return true;
@@ -67,9 +65,4 @@ public class Game {
         gameState.printGameState();
     }
 
-    public static void validUserInputRestart(String num) {
-        if (!num.equals(RESTART) && !num.equals(END)) {
-            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
-        }
-    }
 }

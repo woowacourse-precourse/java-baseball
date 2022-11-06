@@ -22,6 +22,13 @@ public class UserInputNumbers {
         return userInputNumbers;
     }
 
+    public String getUserControlNumber() {
+        String userInput = Console.readLine();
+        validUserInputRestart(userInput);
+        System.out.println(userInput);
+        return userInput;
+    }
+
     public static boolean validUserInputNumber(String numbers) {
         if (numbers.length()!=NUMBER_LENGTH) {
             throw new IllegalArgumentException(INVALID_INPUT_RADIX);
@@ -33,6 +40,12 @@ public class UserInputNumbers {
             throw new IllegalArgumentException(DUPLICATE_INPUT_VALUE);
         }
         return true;
+    }
+
+    public static void validUserInputRestart(String num) {
+        if (!num.equals(RESTART) && !num.equals(END)) {
+            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
+        }
     }
 
     public static boolean isValidDigit(String num) {
