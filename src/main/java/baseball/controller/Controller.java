@@ -1,20 +1,23 @@
 package baseball.controller;
 
+import baseball.service.Game;
+
 public class Controller {
 
+	Game game = new Game();
     public void run() {
         prepareGame();
-        startGame();
+        playGame();
         endGame();
         retry();
     }
 
     public void prepareGame() {
-
+		game.prepareGame();
     }
 
-    public void startGame() {
-
+    public void playGame() {
+		game.playGame();
     }
 
     public void endGame() {
