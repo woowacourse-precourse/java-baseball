@@ -1,9 +1,12 @@
 package baseball;
 
-import java.util.*;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Collections;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
