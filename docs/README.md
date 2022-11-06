@@ -16,7 +16,7 @@
 - [x] 0~9까지의 서로 다른 숫자인지 확인하는 정규표현식을 regularExpression에 저장한다.
 - [x] 매개변수가 regularExpression으로 참인지 거짓인지 판별
 - [x] 거짓이면, "유효하지 않은 값입니다"를 출력
-- [ ] 거짓이면, inputAvailableUserNumberService함수를 실행
+- [x] 거짓이면, inputAvailableUserNumberService함수를 실행
 
 ## (List)stringToListCreate(String word)
 - [ ] stringToArray에 매개변수를 배열형태로 변환하여 선언
