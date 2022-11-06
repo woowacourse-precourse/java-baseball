@@ -18,14 +18,14 @@ public class GameController {
 
     public void play() {
         outputView.printGameStart();
+        gameService.computeComputerNumbers();
 
         while(true) {//종료 조건 걸어야함
-            gameService.computeComputerNumbers();
-
             String userNumbers=inputView.inputNumbers();
             gameService.setUserNumbers(userNumbers);
             
             BallCount ballCount=gameService.computeBallCount();
+            outputView.printBallCount(ballCount);
             break;
         }
     }
