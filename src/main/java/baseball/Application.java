@@ -1,5 +1,7 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         //1. 게임 시작 문구 <출력>
@@ -25,9 +27,24 @@ public class Application {
         }
         if (!hasDuplicate){index++;}
     }
-    
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요 : ");
+//        for(int i=0; i<3; i++){
+//            int ii =numbers[i];
+//            System.out.print(ii);
+//        }
+
+        System.out.println("숫자 야구 게임을 시작합니다."); System.out.println("3자리 숫자를 입력해주세요 : ");
+//        System.out.println("(!!!숫자 외의 값을 입력하면 바로 튕길 수 있습니다!!!)");
+
+
+//        String inputNum = Console.readLine();
+//        if(whatthe.length() > 3){
+//            System.out.println("!!!! 3자리만 입력해주세요 !!!!");
+//        }
+
+        int inputNum = Integer.parseInt(Console.readLine());
+
+
+
 
 
     }
