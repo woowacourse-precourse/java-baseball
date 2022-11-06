@@ -33,7 +33,8 @@ public class BaseballGame {
 
     private List<Integer> checkResultOfEnteredValue() {
         try {
-            List<Integer> guessNumber = Input.enterGuessNumber();
+            List<Integer> input = Input.enterGuessNumber();
+            BaseballNumber guessNumber = new BaseballNumber(input);
             List<Integer> results = computer.returnResult(guessNumber);
             Output.showGuessResult(results);
             return results;
