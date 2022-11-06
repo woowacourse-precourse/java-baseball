@@ -40,6 +40,14 @@ class ApplicationTest extends NsTest {
         assertThat(result.size()).isEqualTo(makeRandomBall().size());
     }
 
+    @Test
+    void 문자가_숫자로_변환되었는지_테스트(){
+        String input = "123";
+        Integer result = 1;
+
+        assertThat(StringToIntList(input).get(0)).isEqualTo(result);
+    }
+
 
     @Override
     public void runMain() {
