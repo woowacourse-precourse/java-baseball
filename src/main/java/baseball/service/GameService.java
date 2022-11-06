@@ -16,17 +16,15 @@ public class GameService {
     }
 
     public void startGame() throws IllegalArgumentException {
-        initGame();
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             doTurn();
         } while (strike != 3);
         endGame();
     }
 
-
-    private void initGame() {
-        computer = new Computer();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public void initGame(int digit, int startRange, int endRange) {
+        computer = new Computer(digit, startRange, endRange);
     }
 
     private void doTurn() throws IllegalArgumentException {
