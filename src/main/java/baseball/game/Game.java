@@ -33,10 +33,11 @@ public class Game {
     }
 
     public String play() {
-        List<Integer> computerBall = ballMaker.getRandomBall();
+        Ball computerBall = ballMaker.getRandomBall();
+        System.out.println("computerBall = " + computerBall);
         boolean finishGame = false;
         while (finishGame != true) {
-            List<Integer> userBall = ballMaker.getUserBall();
+            Ball userBall = ballMaker.getUserBall();
             finishGame = ballReader.isFinished(userBall, computerBall);
             printResult(userBall, computerBall);
             numberOfAttempts += 1;
@@ -53,7 +54,7 @@ public class Game {
         return numberOfAttempts;
     }
 
-    private void printResult(List<Integer> userBall, List<Integer> computerBall) {
+    private void printResult(Ball userBall, Ball computerBall) {
         Map<String, Integer> result = ballReader.getResult(userBall, computerBall);
         if (result.isEmpty()) {
             System.out.printf(NOTHING_MESSAGE);
