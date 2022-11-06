@@ -27,6 +27,9 @@ public class Application {
             input_num = input_num / 10;
         }
         Collections.reverse(cut_one);
+        if(cut_one.size()!=3){
+            throw new IllegalArgumentException();
+        }
         return cut_one;
     }
 
