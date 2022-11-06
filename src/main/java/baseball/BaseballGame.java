@@ -14,11 +14,11 @@ public class BaseballGame {
 
     public void gameStart() {
         BaseballGameResult gameResult = new BaseballGameResult();
-        int gameEndSignal = 0;
-        this.answerNums = generateRandomAnswerNums();
 
+        printGameStartMessage();
+        this.answerNums = generateRandomAnswerNums();
+        int gameEndSignal = 0;
         while (gameEndSignal != 2) {
-            printGameStartMessage();
 
             this.inputNums = getGameInput();
 
@@ -32,6 +32,7 @@ public class BaseballGame {
             }
 
             if (gameEndSignal == 1) {
+                printGameStartMessage();
                 this.answerNums = generateRandomAnswerNums();
                 gameEndSignal = 0;
             }
@@ -47,6 +48,7 @@ public class BaseballGame {
     }
 
     public void printGameEndMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
