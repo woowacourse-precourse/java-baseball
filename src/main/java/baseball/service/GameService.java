@@ -1,5 +1,8 @@
-package baseball;
+package baseball.service;
 
+import baseball.ballnumber.InputBallNumber;
+import baseball.ballnumber.RandomBallNumber;
+import baseball.dto.Result;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
