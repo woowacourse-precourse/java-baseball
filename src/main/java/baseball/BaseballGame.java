@@ -35,9 +35,12 @@ public class BaseballGame {
         return computerNumber;
     }
 
-    public List<Integer> getUserNumber() {
+    public List<Integer> getUserNumber() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
+        if (!isValidNumber(userInput)) {
+            throw new IllegalArgumentException();
+        }
         List<Integer> userNumber = new ArrayList<>();
         for (char c : userInput.toCharArray()) {
             userNumber.add(Character.getNumericValue(c));
