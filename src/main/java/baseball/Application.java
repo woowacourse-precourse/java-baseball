@@ -18,6 +18,8 @@ public class Application {
         while (true){
             comments.printInputComment();
             Player user = new Player(toIntegers(split(Console.readLine())));
+            if(playGame(computer, user, comments))
+                continue;
         }
 
     }
@@ -46,6 +48,23 @@ public class Application {
             player.add(Integer.parseInt(number));
 
         return player;
+    }
+
+    public static boolean playGame(Player computer, Player user, Comments comments){
+        if(numberOfStrikes(computer, user) == 3 ){
+            comments.printFinishComment();
+            return false;
+        }
+        printResult(computer, user, comments);
+        return true;
+    }
+
+    public static void printResult(Player computer, Player user, Comments comments){
+        if(checkNothing(computer, user)){
+            comments.printNothingComment();
+            return;
+        }
+        comments.printResultComment(numberOfBalls(computer, user), numberOfStrikes(computer,user));
     }
 
     public static int numberOfStrikes(Player computer, Player user){

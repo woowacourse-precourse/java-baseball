@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -132,6 +133,56 @@ class ApplicationTest extends NsTest {
         Player user = new Player(List.of(7,1,9));
 
         assertFalse(Application.checkNothing(computer, user));
+    }
+
+    @Test
+    void 게임_종료일_때_false_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,2,3));
+        Comments comments = new Comments(Map.of("FINISH", "FINISH COMMENT"));
+
+        assertFalse(Application.playGame(computer, user, comments));
+        assertThat(output()).contains("3스트라이크");
+    }
+
+    @Test
+    void 낫싱이여서_게임_종료_아닐_때_true_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,8,9));
+        Comments comments = new Comments(Map.of("FINISH", "FINISH COMMENT"));
+
+        assertTrue(Application.playGame(computer, user, comments));
+        assertThat(output()).contains("낫싱");
+    }
+
+    @Test
+    void 볼이여서_게임_종료_아닐_때_true_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,1,9));
+        Comments comments = new Comments(Map.of("FINISH", "FINISH COMMENT"));
+
+        assertTrue(Application.playGame(computer, user, comments));
+        assertThat(output()).contains("1볼");
+    }
+
+    @Test
+    void 스트라이크이여서_게임_종료_아닐_때_true_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,8,9));
+        Comments comments = new Comments(Map.of("FINISH", "FINISH COMMENT"));
+
+        assertTrue(Application.playGame(computer, user, comments));
+        assertThat(output()).contains("1스트라이크");
+    }
+
+    @Test
+    void 볼과_스트라이크이여서_게임_종료_아닐_때_true_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,3,9));
+        Comments comments = new Comments(Map.of("FINISH", "FINISH COMMENT"));
+
+        assertTrue(Application.playGame(computer, user, comments));
+        assertThat(output()).contains("1볼 1스트라이크");
     }
 
     @Override
