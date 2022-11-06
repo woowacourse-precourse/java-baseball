@@ -6,21 +6,17 @@ import java.util.Objects;
 import static baseball.game.Const.*;
 
 public class Score {
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
     private Score(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        calculateScore(computerNumbers, userNumbers);
+        this.strike = calculateStrike(computerNumbers, userNumbers);
+        this.ball = calculateBall(computerNumbers, userNumbers) - this.strike;
         printResult();
     }
 
     public static Score calculate(List<Integer> computerNumbers, List<Integer> userNumbers) {
         return new Score(computerNumbers, userNumbers);
-    }
-
-    public void invalidate() {
-        this.strike = 0;
-        this.ball = 0;
     }
 
     public int getStrike() {
@@ -35,14 +31,24 @@ public class Score {
         return strike == GAME_LENGTH;
     }
 
-    private void calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private int calculateStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strike = 0;
         for (int i = 0; i < GAME_LENGTH; i++) {
-            calculateBall(computerNumbers.get(i), userNumbers);
             if (Objects.equals(computerNumbers.get(i), userNumbers.get(i))) {
                 strike++;
-                ball--;
             }
         }
+        return strike;
+    }
+
+    private int calculateBall(List<Integer> computerNumber, List<Integer> userNumbers) {
+        int ball = 0;
+        for (int i = 0; i < GAME_LENGTH; i++) {
+            if (computerNumber.contains(userNumbers.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
     }
 
     private void printResult() {
@@ -59,13 +65,5 @@ public class Score {
             return;
         }
         System.out.println(GAME_SCORE_NOTHING_MESSAGE);
-    }
-
-    private void calculateBall(Integer computerNumber, List<Integer> userNumbers) {
-        for (int i = 0; i < GAME_LENGTH; i++) {
-            if (Objects.equals(computerNumber, userNumbers.get(i))) {
-                ball++;
-            }
-        }
     }
 }
