@@ -24,10 +24,6 @@ public class BaseBallController {
             String randomNumber = makeRandomNumber();
             String guessNumber = makeGuessNumber();
 
-            /**
-             * dto를 통한 service와 통신
-             */
-
 
             doNextGame = endGame();
         }
