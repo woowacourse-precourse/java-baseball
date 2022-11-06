@@ -170,6 +170,7 @@ public class Application {
     }
 
     static int check_user_want_new_game() {
+        // 게임 재시작 여부를 묻는 문구 출력
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String user_number_string;
