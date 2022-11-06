@@ -13,11 +13,57 @@ public class Application {
         while(true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             String stringQuizNumber = getStringQuizNumber();
-            while(true) {
-                String getUserInput = getUserInput();
-                System.out.println(getUserInput);
+            while (isNotEqualNumber(getUserInput(), stringQuizNumber)) {
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+
+    public static boolean isNotEqualNumber(String userInput, String stringQuizNumber) {
+        if(userInput.equals(stringQuizNumber)){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+
+        List<Integer> numberList = new ArrayList<Integer>();
+        for (int i = 0; i < stringQuizNumber.length(); i++) {
+            numberList.add(stringQuizNumber.charAt(i) - '0');
+        }
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < stringQuizNumber.length(); i++) {
+            int eachUserInputNum = userInput.charAt(i)  - '0';
+
+            if (eachUserInputNum == numberList.get(i)) {
+                strikeCount ++;
+            }else if(numberList.contains(eachUserInputNum)){
+                ballCount++;
             }
         }
+
+        String ballInfo = String.format("%d볼", ballCount);
+        String strikeInfo = String.format("%d스트라이크", strikeCount);
+
+        List<String> msgList = new ArrayList<String>();
+
+        if(ballCount != 0){
+            msgList.add(ballInfo);
+        }
+
+        if (strikeCount != 0) {
+            msgList.add(strikeInfo);
+        }
+
+        if (msgList.isEmpty()) {
+            System.out.println("낫싱");
+        }else{
+            System.out.println(String.join(" ", msgList));
+        }
+
+        return true;
     }
 
     private static String getUserInput() {

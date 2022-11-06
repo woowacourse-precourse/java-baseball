@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.getStringQuizNumber;
+import static baseball.Application.isNotEqualNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -76,6 +77,27 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatNoException().isThrownBy(() -> runException("123"))
         );
+    }
+
+    @Test
+    void 유저입력과_컴퓨터_숫자를_비교_확인() {
+        assertSimpleTest(() -> {
+            isNotEqualNumber("123", "713");
+            isNotEqualNumber("145", "713");
+            isNotEqualNumber("671", "713");
+            isNotEqualNumber("216", "713");
+            isNotEqualNumber("713", "713");
+
+            assertThat(output().split("\r\n"))
+                    .containsExactly(
+                    "1볼 1스트라이크",
+                    "1볼",
+                    "2볼",
+                    "1스트라이크",
+                    "3스트라이크",
+                    "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                    );
+        });
     }
 
     @Test
