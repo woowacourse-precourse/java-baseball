@@ -33,7 +33,7 @@ public class Application {
         Integer ball = 0;
         for(int i = 0;i<computer.size();i++){
             for(int k = 0;k<user.size();k++){
-                if(computer.get(i).equals(computer.get(k)) && i != k)
+                if(computer.get(i).equals(user.get(k)) && i != k)
                     ball +=1;
             }
         }
