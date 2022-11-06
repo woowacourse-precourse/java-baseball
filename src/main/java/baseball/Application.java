@@ -5,13 +5,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
+
+    public static int Strike=0;
+    public static int Ball=0;
+
     public static void main(String[] args) {
         printStartJavaBaseball();
         int[] input = InputCheckValidAndReturn();
-        int firstRandomNumber = pickNumberInRange(1, 9);
-        int secondRandomNumber = pickNumberInRange(1, 9);
-        int thirdRandomNumber = pickNumberInRange(1, 9);
-
+        int[] RandomizedArray= makeRandomizedArray();
     }
 
     public static void printStartJavaBaseball() {
@@ -71,6 +72,18 @@ public class Application {
             }
         }
         return (count == 3);
+    }
+
+    public static boolean isNumberAndLocationEquals(int RandomNumber, int inputNumber){
+        return (RandomNumber == inputNumber);
+    }
+
+    public static int[] makeRandomizedArray(){
+        int[] RandomArray= new int[3];
+        for(int i = 0; i <3; i++){
+            RandomArray[i]=pickNumberInRange(1, 9);
+        }
+        return RandomArray;
     }
 
 
