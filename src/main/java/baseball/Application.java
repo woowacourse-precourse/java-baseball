@@ -11,13 +11,20 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
+        boolean game_on = true;
         List<Integer> answer = getAnswerNum();
 
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> guess = inputGuess();
-        String result = checkGuess(answer, guess);
+        while(game_on==true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> guess = inputGuess();
 
+            String result = checkGuess(answer, guess);
+            System.out.println(result);
+            if (result.equals("3스트라이크")){
+                game_on = endGame();
+                if(game_on == true) answer = getAnswerNum();
+            }else{ continue; }
+        }
         return;
     }
 
@@ -86,7 +93,17 @@ public class Application {
         return cnt;
     }
 
+    public static boolean endGame() throws IOException {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine();
+        if(input.equals("1")){
+            return true;
+        }else if(input.equals("2")){
+            return false;
+        }else return endGame();
+    }
 
 }
