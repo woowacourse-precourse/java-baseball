@@ -101,5 +101,4 @@ class InputNumberVerificationTest {
             assertEquals(false, testResult);
         }
     }
-
 }

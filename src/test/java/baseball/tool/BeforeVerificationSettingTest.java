@@ -35,6 +35,5 @@ class BeforeVerificationSettingTest {
             List<Integer> testNumberList = BeforeVerificationSetting.makeNumberSplitList(testNumber);
             assertEquals(answerNumber, testNumberList);
         }
-
     }
 }
