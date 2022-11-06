@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class Referee {
 
     public Result judgeHitAndPitch(String hitNumber, String pitchNumber) {
-        pitchIsBalk(pitchNumber);
+        validateBalk(pitchNumber);
         Result result = new Result();
         for (int position = 0; position < 3; position++) {
             distinguishTypeOfDigit(result, hitNumber, pitchNumber, position);
@@ -25,7 +25,7 @@ public class Referee {
         }
     }
 
-    public void pitchIsBalk(String pitchNumber) {
+    public void validateBalk(String pitchNumber) {
         if (!validateSize(pitchNumber) || !validateDigits(pitchNumber))
             throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
