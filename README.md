@@ -185,7 +185,7 @@ while (computer.size() < 3) {
 - Result
   - [x] 스트라이크 카운트
   - [x] 볼 카운트
-  - [ ] 카운트 판정
+  - [x] 카운트 판정
 
 
 - BaseBallGamePlayer

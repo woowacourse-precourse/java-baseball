@@ -42,10 +42,10 @@ public class Result {
     }
 
     public boolean isNothing() {
-        if (strikeCount == 0 && ballCount == 0) {
-            return true;
-        }
+        return (strikeCount == 0 && ballCount == 0);
+    }
 
-        return false;
+    public boolean isOut(){
+        return (strikeCount == 3);
     }
 }
