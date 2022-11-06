@@ -13,6 +13,7 @@ public class Constants {
     public static final int DEFAULT_NUMBER_COUNT = 3;
     public static final boolean PROCESS_CONTINUE = true;
     public static final boolean PROCESS_FINISH = false;
+
     public enum Result {
         STRIKE, BALL, OUT
     }
@@ -39,8 +40,6 @@ public class Constants {
         public static EndCommand find(String command) {
             return endCommands.getOrDefault(command, UNKNOWN);
         }
-
-
     }
 
     public enum Messages{
