@@ -1,5 +1,6 @@
 package baseball.receiver;
 
+import baseball.GameController;
 import baseball.number.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,5 +12,13 @@ public class Receiver {
             throw new IllegalArgumentException();
         }
         return userNumber;
+    }
+
+    public String receiveRestartNumber() throws IllegalArgumentException {
+        String restartNumber = Console.readLine();
+        if (!GameController.checkRestart(restartNumber)) {
+            throw new IllegalArgumentException();
+        }
+        return restartNumber;
     }
 }
