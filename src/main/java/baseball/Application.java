@@ -21,6 +21,19 @@ public class Application {
         return computer_numbers;
     }
 
+    public static boolean isException(List<Integer> userNumbers){
+        List<Integer> filterUserNumbers = new ArrayList<>();
+
+        // userNumbers 필터링: 겹치지 않는 다면 필터링리스트에 추가.
+        for(int userNumber: userNumbers){
+            if(!filterUserNumbers.contains(userNumber)){
+                filterUserNumbers.add(userNumber);
+            }
+        }
+
+        return filterUserNumbers.size() == 3;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
