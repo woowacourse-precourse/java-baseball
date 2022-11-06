@@ -78,6 +78,23 @@ public class Application {
         }
     }
 
+    private static boolean printResult(HashMap<String, Integer> map) {
+        int ball = map.get("ball");
+        int strike = map.get("strike");
+        if(ball != 0 && strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+        } else if (ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        else {
+            System.out.println("낫싱");
+        }
+        if(strike == 3) return true;
+        return false;
+    }
+
     private static List<Integer> createComputerNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
