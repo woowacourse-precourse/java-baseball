@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import baseball.utils.Util;
 
 public class BaseballNumber {
     public List<Integer> listNumber;
-    BaseballNumber(int number) {
+    public BaseballNumber(int number) {
         this.listNumber = Util.splitDigitsIntoList(number);
     }
 

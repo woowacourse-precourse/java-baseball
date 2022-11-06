@@ -1,4 +1,7 @@
-package baseball;
+package baseball.domain;
+
+import baseball.utils.RandomNumGenerator;
+import baseball.utils.SystemConstant;
 
 import java.util.List;
 

@@ -1,10 +1,15 @@
-package baseball;
+package baseball.controller;
 
+import baseball.utils.SystemConstant;
+import baseball.domain.BaseballManager;
+import baseball.domain.BaseballNumber;
+import baseball.view.InputHandler;
+import baseball.view.OutputHandler;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.SystemMsgPrinter.*;
+import static baseball.utils.SystemMsgPrinter.*;
 
 public class GameManager {
     private final InputHandler inputStream = new InputHandler();

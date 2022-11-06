@@ -1,4 +1,6 @@
-package baseball;
+package baseball.utils;
+
+import baseball.utils.SystemConstant;
 
 public final class SystemMsgPrinter {
     private SystemMsgPrinter() {}

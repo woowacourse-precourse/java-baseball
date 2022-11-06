@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ public class Score {
     private final int ball;
     private final int strike;
 
-    Score(int ball, int strike) {
+    public Score(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }

@@ -1,5 +1,6 @@
-package baseball;
+package baseball.verifier;
 
+import baseball.utils.SystemConstant;
 import baseball.utils.Util;
 
 public final class InputVerifier {

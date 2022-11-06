@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public final class OutputMsgContainer {
     public static final String BALL = "볼";
