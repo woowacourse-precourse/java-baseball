@@ -1,3 +1,4 @@
+### 기능 구현 목록
 - [x] 게임 시작 함수
     - [x] 컴퓨터가 임의의 서로 다른 수 3개를 선택
     - [x] 사용자 입력 함수 호출
@@ -24,3 +25,24 @@
 - [x] 게임 재개 여부 함수
     - [x] 1(재시작)을 선택하면 게임 시작 함수 호출
     - [x] 2(종료)를 선택하면 종료
+### 프로그램 구조
+* Application
+    * 
+* Comparison
+    * compare
+    * locate
+    * contain
+* NumberChoice
+    * computerPick
+    * userPick
+* Validation
+    * isValid
+    * isLength
+    * isRange
+    * isDiff
+### 테스트 항목
+* 게임종료_후_재시작
+* 예외_테스트_길이
+* 예외_테스트_범위
+* 예외_테스트_중복
+    
