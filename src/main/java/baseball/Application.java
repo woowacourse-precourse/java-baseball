@@ -71,6 +71,12 @@ public class Application {
     }
 
 
+    public static void NothingMessage(int nothing){
+        if(nothing == -3){
+            System.out.println("낫싱");
+        }
+    }
+
 
     public static void strikeMessage(int strike){
         System.out.println("스트라이트" + strike);
