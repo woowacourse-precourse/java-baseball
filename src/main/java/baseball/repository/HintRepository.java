@@ -1,6 +1,6 @@
 package baseball.repository;
 
-import baseball.hint.Hint;
+import baseball.model.hint.Hint;
 import baseball.view.PrintHint;
 import java.util.List;
 

@@ -2,7 +2,7 @@ package baseball.repository;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-import baseball.gamenumber.ComputerNumber;
+import baseball.model.gamenumber.ComputerNumber;
 import java.util.ArrayList;
 import java.util.List;
 

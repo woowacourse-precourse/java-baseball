@@ -2,8 +2,9 @@ package baseball.hint;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.gamenumber.ComputerNumber;
-import baseball.gamenumber.PlayerNumber;
+import baseball.model.gamenumber.ComputerNumber;
+import baseball.model.gamenumber.PlayerNumber;
+import baseball.model.hint.Hint;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
