@@ -88,4 +88,17 @@ public class Application {
         }
         return correct;
     }
+
+    static List<Integer> cntStrikeBall(String playerGuess, String answer) {
+        List<Integer> strikeBallCnt = new ArrayList<>(Collections.nCopies(2, 0));
+
+        for (int answerIdx = 0; answerIdx < answer.length(); answerIdx++) {
+            if (answer.charAt(answerIdx) == playerGuess.charAt(answerIdx)) {
+                strikeBallCnt.set(0, strikeBallCnt.get(0) + 1);
+            } else if (answer.contains(playerGuess.charAt(answerIdx) + "")) {
+                strikeBallCnt.set(1, strikeBallCnt.get(1) + 1);
+            }
+        }
+        return strikeBallCnt;
+    }
 }
