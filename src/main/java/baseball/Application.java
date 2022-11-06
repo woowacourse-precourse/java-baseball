@@ -9,7 +9,20 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
+        boolean run = true;
+        List<Integer> computerNum;
 
+
+        while (run) {
+            computerNum = createRandomNum();
+            String checkMessage = "";
+            while (!(checkMessage.equals("3스트라이크"))) {
+                String userNum = guessNum();
+                checkMessage = checkNum(computerNum, userNum);
+                System.out.println(checkMessage);
+            }
+            run = closeOrRestart();
+        }
     }
 
     public static List<Integer> createRandomNum() {
@@ -55,13 +68,11 @@ public class Application {
     }
 
     public static boolean closeOrRestart() {
-        System.out.println("정답입니다.");
-        System.out.println("다시 시작하시려면 1번을 종료하시려면 2번을 눌러주세요.");
         String oneOrTwo = readLine();
         if (oneOrTwo.equals("1")){
             return true;
         } else {
-            System.out.println("게임이 종료되었습니다");
+            System.out.println("게임 종료");
             return false;
         }
     }
