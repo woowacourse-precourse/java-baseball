@@ -14,8 +14,8 @@
 
 ## (boolean)availableUserNumberIsChecked(String word)
 - [x] 0~9까지의 서로 다른 숫자인지 확인하는 정규표현식을 regularExpression에 저장한다.
-- [ ] 매개변수가 regularExpression으로 참인지 거짓인지 판별
-- [ ] 거짓이면, "유효하지 않은 값입니다"를 출력
+- [x] 매개변수가 regularExpression으로 참인지 거짓인지 판별
+- [x] 거짓이면, "유효하지 않은 값입니다"를 출력
 - [ ] 거짓이면, false를 리턴
 - [ ] 참이면, true를 리턴
 
