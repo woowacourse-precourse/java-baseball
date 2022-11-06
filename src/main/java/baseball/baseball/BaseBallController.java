@@ -23,21 +23,34 @@ public class BaseBallController {
 
         while(doNextGame == 1){
             String randomNumber = makeRandomNumber();
-            String guessNumber = makeGuessNumber();
 
-            BaseBallGameInput baseBallGameInput = new BaseBallGameInput(randomNumber, guessNumber);
-            BaseBallGameOutput baseBallGameOutput = baseBallService.playBall(baseBallGameInput);
-
-            int ballCount = baseBallGameOutput.getBallCount();
-            int strikeCount = baseBallGameOutput.getStrikeCount();
+            while(userGuessing(randomNumber) == false){}
 
             doNextGame = endGame();
         }
     }
 
+    private boolean userGuessing(String randomNumber) {
+
+        String guessNumber = makeGuessNumber();
+
+        BaseBallGameInput baseBallGameInput = new BaseBallGameInput(randomNumber, guessNumber);
+        BaseBallGameOutput baseBallGameOutput = baseBallService.playBall(baseBallGameInput);
+
+        int ballCount = baseBallGameOutput.getBallCount();
+        int strikeCount = baseBallGameOutput.getStrikeCount();
+
+        System.out.println(ScreenString.ballAndStrikeMessage(ballCount, strikeCount));
+
+        if(strikeCount == 3) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private String makeGuessNumber() throws IllegalArgumentException{
         String userInput = Console.readLine();
-
         if(!is3Number(userInput)){
             throw new IllegalArgumentException();
         }else {
@@ -51,11 +64,17 @@ public class BaseBallController {
             is3Number = false;
         for(int i=0;i<3;i++){
             char temp = userInput.charAt(i);
-            if(temp < '0' || temp > '9'){
-                is3Number = false;
-            }
+            is3Number = checkNumber(temp);
         }
         return is3Number;
+    }
+
+    private boolean checkNumber(char temp) {
+        if(temp < '0' || temp > '9'){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     protected String makeRandomNumber() {
@@ -70,7 +89,6 @@ public class BaseBallController {
     }
 
     private int endGame() {
-
         return Integer.parseInt(Console.readLine());
     }
 
