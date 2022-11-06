@@ -129,13 +129,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("1스트라이크 경우 ")
+    @DisplayName("1 스트라이크 경우 ")
     public void oneStrikeScenario() throws Exception{
         List<Integer> computer  = List.of(1,5,4);
         List<Integer> user = List.of(4,5,6);
 
         int strike = Application.calculationStrike(computer,user);
         assertThat(strike).isEqualTo(1);
+
+    }
+    @Test
+    @DisplayName("2 스트라이크 경우 ")
+    public void twoStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(4,5,7);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculationStrike(computer,user);
+        assertThat(strike).isEqualTo(2);
 
     }
 
