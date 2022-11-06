@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Scanner;
 
 public class ReGame {
@@ -11,9 +13,8 @@ public class ReGame {
     }
 
     public void inputNumber() {
-        Scanner sc = new Scanner(System.in);
         System.out.println(Message.ASK.get());
-        number = sc.next();
+        number = Console.readLine();
         isValidNumber(number);
     }
 
