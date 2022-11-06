@@ -6,6 +6,7 @@ import java.util.Set;
 public class CheckException {
     private static final int LIMIT_LENGTH = 3;
     private static final String PROMPT_ERROR_MESSAGE = "에러 발생, 조건을 다시 확인하세요.";
+
     public static void validationNumber(String inputNum) {
         if (!(checkNumberLength(inputNum) && checkNumeric(inputNum) && checkDuplicateNumber(inputNum))) {
             throw new IllegalArgumentException(PROMPT_ERROR_MESSAGE);
@@ -31,6 +32,13 @@ public class CheckException {
             inputSet.add(checkNum.charAt(i));
         }
         return inputSet.size() == checkNum.length();
+    }
+
+    public static void checkRestartNumber(String checkNum) {
+        if ("1".equals(checkNum) || "2".equals(checkNum)) {
+            return;
+        }
+        throw new IllegalArgumentException(PROMPT_ERROR_MESSAGE);
     }
 }
 

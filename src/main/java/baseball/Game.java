@@ -21,6 +21,9 @@ public class Game {
             compare.startCompare(player.getPlayerNum(), computer.getComNum());
         } while (compare.strike != Compare.CLEAR_NUM);
 
+        if (PlayerInputView.restartGame().equals("1")) {
+            start();
+        }
     }
 
 

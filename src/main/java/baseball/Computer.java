@@ -11,6 +11,7 @@ public class Computer {
     List<Integer> computerNumber = new ArrayList<>();
 
     public void generate() {
+        computerNumber = new ArrayList<>();
         while (computerNumber.size() < COMPUTER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!computerNumber.contains(randomNumber)) {
