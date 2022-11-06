@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.dto.BaseballGameResult;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.IntPredicate;
@@ -35,7 +34,7 @@ public class BaseballNumbers {
     public BaseballGameResult play(BaseballNumbers opponent) {
         int strike = calculateStrike(opponent);
         int ball = calculateBall(opponent, strike);
-        return new BaseballGameResult(strike, ball);
+        return BaseballGameResult.toEnum(strike, ball);
     }
 
     private int calculateStrike(BaseballNumbers opponent) {
