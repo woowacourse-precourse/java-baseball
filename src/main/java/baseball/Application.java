@@ -39,9 +39,10 @@ public class Application {
     }
 
     public static List<Integer> compare(List<Integer> computers, List<Integer> users){
-        int strike = 0;
         int ball = 0;
+        int strike = 0;
         int nothing = 0;
+
         List<Integer> answer = new ArrayList<>();
 
         for(int i = 0; i<computers.size(); i++){
@@ -54,11 +55,38 @@ public class Application {
             }
         }
 
-        answer.add(strike);
         answer.add(ball);
+        answer.add(strike);
         answer.add(nothing);
 
         return answer;
+    }
+
+    public static String getAnswer(List<Integer> compareList){
+        List<String> hint = new ArrayList<>();
+        hint.add("볼");
+        hint.add("스트라이크");
+        hint.add("낫싱");
+        hint.add("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        StringBuilder answer = new StringBuilder();
+
+        if(compareList.get(2) == 3){
+            return hint.get(2);
+        }
+
+        if(compareList.get(1) == 3){
+            answer.append(compareList.get(1).toString()).append(hint.get(1)).append(hint.get(3));
+            return answer.toString();
+        }
+
+        for(int i = 0; i < compareList.size()-1; i++){
+            if(compareList.get(i) > 0){
+                answer.append(compareList.get(i).toString()).append(hint.get(i));
+            }
+        }
+
+        return answer.toString();
     }
 
     public static void main(String[] args) {
