@@ -35,4 +35,12 @@ class User {
 class game {
     public int ball;
     public int strike;
+
+
+}
+
+class print {
+    static void nothing(){
+        System.out.println("낫싱");
+    }
 }
