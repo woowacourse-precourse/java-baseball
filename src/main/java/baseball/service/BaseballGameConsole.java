@@ -5,7 +5,6 @@ import baseball.participant.Emcee;
 import baseball.participant.Pitcher;
 import baseball.participant.Referee;
 import baseball.result.Result;
-import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.result.ResultType.EXACT_MATCH;
 
