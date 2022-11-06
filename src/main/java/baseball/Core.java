@@ -64,7 +64,7 @@ public class Core {
         return false;
     }
 
-    public void validateUserInputOneOrTwo(String input){
+    public void validateStringOneOrTwo(String input){
         if(input.equals("1") || input.equals("2")){
             return;
         }

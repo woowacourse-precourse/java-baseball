@@ -14,12 +14,12 @@ public class Application {
         while(true){
             game.run();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String userInputOneOrTwo = readLine();
-            T.validateUserInputOneOrTwo(userInputOneOrTwo);
-            if(userInputOneOrTwo.equals("1")){
+            String userInput = readLine();
+            T.validateStringOneOrTwo(userInput);
+            if(userInput.equals("1")){
                 continue;
             }
-            if(userInputOneOrTwo.equals("2")){
+            if(userInput.equals("2")){
                 System.out.println("프로그램을 종료합니다.");
                 break;
             }
