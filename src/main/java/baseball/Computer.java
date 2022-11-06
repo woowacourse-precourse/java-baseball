@@ -8,8 +8,8 @@ public class Computer {
     List<Integer> computerNumber = new ArrayList<>();
 
     public void generateRandomNumber() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
         while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             inspectList(randomNumber);
         }
     }
