@@ -69,7 +69,7 @@
             - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려줍니다.
             - [X] isGameOver
             - 게임 종료 조건을 충족했는지 확인합니다.
-        - [ ] askAfterGameOption
+        - [X] askAfterGameOption
         - 게임이 끝났다면, 이후 어떻게 할지 확인합니다.
 
 ---
