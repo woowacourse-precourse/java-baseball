@@ -8,7 +8,7 @@ public class Input {
 
     public Input() {}
 
-    public void setUserInput(String userInput) {
+    public void setUserInputByRead() {
         this.userInput = readUserInput();
     }
 
