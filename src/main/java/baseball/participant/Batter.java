@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public class Batter {
 
     public String readyToHitNumberBall() {
-        List<Integer> randomDigits = new ArrayList<>();
-        while (randomDigits.size() != 3) {
-            readyRandomDigit(randomDigits);
+        List<Integer> hitDigits = new ArrayList<>();
+        while (hitDigits.size() != 3) {
+            readyRandomDigit(hitDigits);
         }
-        return randomDigits.stream().map(String::valueOf)
+        return hitDigits.stream().map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
 
