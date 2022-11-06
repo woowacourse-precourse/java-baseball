@@ -12,7 +12,7 @@ public class Baseball {
         while(!endFlag){
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
-            T.validateUserInputThreeDifferentNumbers(userInput);
+            T.validateStringThreeDifferentDigits(userInput);
             List<Integer> user = T.stringToIntegerList(userInput);
 
             int strikes = T.countStrike(computer, user);

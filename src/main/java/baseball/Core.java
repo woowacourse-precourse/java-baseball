@@ -71,7 +71,7 @@ public class Core {
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
-    public void validateUserInputThreeDifferentNumbers(String input){
+    public void validateStringThreeDifferentDigits(String input){
         if(input.length()!=3){
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
