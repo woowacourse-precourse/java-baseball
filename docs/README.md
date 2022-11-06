@@ -33,16 +33,19 @@
 사용자가 입력한 값이 볼인지 판별하는 기능
 * 함수명 : `isBall`
 * parameter : List(computer), int(user), int(userIndex) 
-* return : int = 1
-  * countStrikeBall 함수에서 ball의 개수를 count할 수 있도록 1을 리턴
+* return : int
+  * ball이면 ball의 개수를 count할 수 있도록 1 리턴
+  * ball이 아니라면 0 리턴
 
 <br>
 
 사용자가 입력한 값이 스트라이크인지 판별하는 기능
 * 함수명 : `isStrike`
 * parameter : List(computer), int(user), int(userIndex)
-* return : int =1
-  * countStrikeBall 함수에서 strike의 개수를 count할 수 있도록 1을 리턴
+* return : int
+  * strike면 strike의 개수를 count할 수 있도록 1 리턴
+  * strike가 아니라면 0 리턴
+
 <br>
 
 입력값이 1인지 판별하는 기능
