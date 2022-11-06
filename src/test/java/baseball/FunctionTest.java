@@ -71,6 +71,28 @@ public class FunctionTest extends NsTest {
 		assertThatThrownBy(() -> {user.duplicationValidateInput();}).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void TestAnswerValidation() {
+		User user = new User();
+
+		user.userInput = "1";
+		user.answerValidateInput();
+		assertThat(user.validatedUserInput).containsExactly(1);
+		assertThat(user.validatedUserInput.size()).isEqualTo(1);
+
+		user.userInput = "111";
+		assertThatThrownBy(() -> {user.answerValidateInput();}).isInstanceOf(IllegalArgumentException.class);
+
+		user.userInput = "3";
+		assertThatThrownBy(() -> {user.answerValidateInput();}).isInstanceOf(IllegalArgumentException.class);
+
+		user.userInput = "asdf";
+		assertThatThrownBy(() -> {user.answerValidateInput();}).isInstanceOf(IllegalArgumentException.class);
+
+		user.userInput = "";
+		assertThatThrownBy(() -> {user.answerValidateInput();}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[]{});
