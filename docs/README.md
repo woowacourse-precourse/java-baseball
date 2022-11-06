@@ -25,6 +25,6 @@
 | 스트라이크 결과 문자열 생성    | getStrikeResultString()      | 스트라이크 개수에 따른 출력 문자열을 생성한다.                           |
 | 숫자를 다 맞췄는지 확인      | isStrikeOut()                | 사용자가 숫자를 다 맞춰 스트라이크 개수가 3인지 확인한다.                    |
 | 게임 종료 메시지 출력       | printGameOverMessage()       | 게임 종료 메시지를 출력한다.                                     |
+| 게임 재시작 여부 확인       | askRestart()                 | 사용자에게 게임 재시작 여부를 확인한다.                               |
 
 ## TODO
--extend NsTest for TurnTest too
