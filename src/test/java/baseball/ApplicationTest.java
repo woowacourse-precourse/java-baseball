@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
+import java.util.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +28,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void disassembleDigitNumber_Test(){
+        //425가 입력됐을 때 5, 20, 400인 리스트가 반환
+        List<Integer> result = List.of(5, 20, 400);
+        assertThat(result).isEqualTo(Application.disassembleDigitNumber(425));
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
