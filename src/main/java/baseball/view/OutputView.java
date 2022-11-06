@@ -3,6 +3,7 @@ package baseball.view;
 import baseball.dto.ScoresDTO;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -38,22 +39,22 @@ public class OutputView {
     
     private static boolean isNothing(final List<Integer> scores) {
         return scores.stream()
-                .noneMatch(OutputView::isScoreNotZero);
+                .noneMatch(Predicate.not(OutputView::isScoreZero));
     }
     
     private static String parsePlayResults(final List<Integer> scores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(MIN_SCORES_INDEX, MAX_SCORES_INDEX)
-                .filter(scoresIndex -> isScoreNotZero(scores, scoresIndex))
+                .filter(scoresIndex -> !isScoreZero(scores, scoresIndex))
                 .mapToObj(scoresIndex -> scores.get(scoresIndex) + ballStatusDisplay.get(scoresIndex))
                 .collect(Collectors.joining(SPACE_DELIMITER));
     }
     
-    private static boolean isScoreNotZero(final Integer score) {
-        return score != MIN_SCORES_INDEX;
+    private static boolean isScoreZero(final Integer score) {
+        return score == MIN_SCORES_INDEX;
     }
     
-    private static boolean isScoreNotZero(final List<Integer> scores, final int resultIndex) {
-        return scores.get(resultIndex) != MIN_SCORES_INDEX;
+    private static boolean isScoreZero(final List<Integer> scores, final int resultIndex) {
+        return scores.get(resultIndex) == MIN_SCORES_INDEX;
     }
     
     public static void baseBallGameEndMessagePrint() {
