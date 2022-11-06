@@ -19,4 +19,12 @@ public class BallValidator {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public static void validateInputIsNumeric(String input) {
+		for (String character : input.split("")) {
+			if (!Character.isDigit(character.charAt(0))) {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
 }
