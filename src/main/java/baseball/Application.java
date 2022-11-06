@@ -61,20 +61,34 @@ public class Application {
         return digitArray;
     }
 
-    public static void printHint(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
+    public static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
+        ArrayList<Integer> noOfBallAndStrike = new ArrayList<Integer>();
         int noOfBall = 0, noOfStrike = 0;
 
-        // TODO: implement method to count the no. of balls and strikes
+        for (int digitOfAnswer : answer)
+            if (prediction.contains(digitOfAnswer))
+                noOfBall++;
+
         int digitOfAnswerAtIndex, digitOfPredictionAtIndex;
         for (int index = 0; index < 3; index++) {
             digitOfAnswerAtIndex = answer.get(index);
             digitOfPredictionAtIndex = prediction.get(index);
-            if (prediction.contains(digitOfAnswerAtIndex)) {
-                if (digitOfAnswerAtIndex == digitOfPredictionAtIndex)
-                    noOfStrike++;
-                else noOfBall++;
+            if (digitOfAnswerAtIndex == digitOfPredictionAtIndex) {
+                noOfStrike++;
+                noOfBall--;
             }
         }
+        noOfBallAndStrike.add(noOfBall);
+        noOfBallAndStrike.add(noOfStrike);
+
+        return noOfBallAndStrike;
+    }
+
+    public static void printHint(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
+        ArrayList<Integer> noOfBallAndStrike = countBallAndStrike(answer, prediction);
+        int noOfBall = noOfBallAndStrike.get(0);
+        int noOfStrike = noOfBallAndStrike.get(1);
+
         if (noOfBall != 0) System.out.printf("%d볼 ", noOfBall);
         if (noOfStrike != 0) System.out.printf("%d스트라이크", noOfStrike);
         if (noOfBall == 0 && noOfStrike == 0) System.out.print("낫싱");
