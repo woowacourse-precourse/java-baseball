@@ -21,4 +21,10 @@ public class Result {
         return strike == 3;
     }
 
+    public boolean isNothing() {
+        if (strike == 0 && ball == 0) {
+            return true;
+        }
+        return false;
+    }
 }
