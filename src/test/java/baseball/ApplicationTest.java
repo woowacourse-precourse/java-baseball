@@ -42,6 +42,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 숫자입력_문구_출력() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        Manager manager = appConfig.manager();
+        manager.printInputGameValue();
+
+        assertThat("숫자를 입력해주세요 : \r\n").isEqualTo(byteArrayOutputStream.toString());
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
