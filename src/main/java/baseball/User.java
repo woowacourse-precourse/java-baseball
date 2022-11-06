@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
     private static final String RESTART = "1";
     private static final String EXIT = "2";
-    public static List<Integer> getUserInput(List<Integer> computerNumber) {
+    public static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
@@ -36,7 +36,7 @@ public class User {
                 || InputException.hasZero(numArr)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 프로그램을 종료합니다.");
         }
-        
+
         return numArr;
     }
 

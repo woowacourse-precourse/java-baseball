@@ -8,7 +8,7 @@ public class Judge {
         boolean gameOver = printResult(result);
 
         if (!gameOver) {
-            checkTheResult(User.getUserInput(computerNumber), computerNumber);
+            checkTheResult(User.getUserInput(), computerNumber);
         }
     }
 
