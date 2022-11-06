@@ -7,6 +7,7 @@ import java.util.List;
 public class Computer {
     private List<Integer> randomNum;
     private int strike;
+    private int ball;
 
     public List<Integer> generateRandomNumList(){
         this.randomNum = new ArrayList<>();
@@ -23,6 +24,16 @@ public class Computer {
         for (int i = 0; i < usersNum.size(); i++) {
             if (randomNum.get(i) == usersNum.get(i)) {
                 this.strike++;
+            }
+        }
+    }
+
+    private void checkBall(List<Integer> usersNum) {
+        for (int index = 0; index < randomNum.size(); index++) {
+            Integer computerPerNum = randomNum.get(index);
+            Integer userPerNum = usersNum.get(index);
+            if (usersNum.contains(computerPerNum) && userPerNum != computerPerNum) {
+                ball++;
             }
         }
     }
