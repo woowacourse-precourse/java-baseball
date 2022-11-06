@@ -6,19 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inputnumber {
-
+    public Exception exception;
     public List<Integer> playerInput = new ArrayList<>();
 
-    public List<Integer> inputNum(){
-        System.out.println("숫자를 입력해주세요 : ");
-        String playerInput = Console.readLine();
-        return convertInt(playerInput);
+    public List<Integer> getNum(){
+        List<Integer> convertNum = convertNum();
+        if(exception.inputException(convertNum)){
+            throw new IllegalArgumentException();
+        }
+        playerInput = convertNum;
+        return playerInput;
     }
 
-    private List<Integer> convertInt(String input){
-        for(int i=0; i<input.length(); i++){
-            playerInput.add(input.charAt(i)-'0');
+    public List<Integer> convertNum(){
+        System.out.println("숫자를 입력해주세요 : ");
+        String playerInput = Console.readLine();
+        List<Integer> Numlist = new ArrayList<>();
+
+        for(int i=0; i<playerInput.length(); i++){
+            Numlist.add(playerInput.charAt(i)-'0');
         }
-        return playerInput;
+        return Numlist;
     }
 }

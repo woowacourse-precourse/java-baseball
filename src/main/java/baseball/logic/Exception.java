@@ -4,30 +4,29 @@ import java.util.List;
 
 public class Exception {
 
-    public List<Integer> inputException(List<Integer> playerInput){
+    public static boolean inputException(List<Integer> playerInput){
         if(checkSame(playerInput) || checkThreedigit(playerInput) || checkZero(playerInput)){
-            throw new IllegalArgumentException();
+            return true;
         }
-        return playerInput;
+        return false;
     }
-
-    private boolean checkSame(List<Integer> playerInput){
+    public static boolean checkSame(List<Integer> playerInput){
         for(int i=0; i<playerInput.size()-1; i++){
-            if(playerInput.get(i)==playerInput.get(i+1)){
+            if(playerInput.get(i).equals(playerInput.get(i+1))){
                 return true;
             }
         }
         return false;
     }
 
-    private boolean checkThreedigit(List<Integer> playerInput){
-        if(!(playerInput.size()==3)){
+    public static boolean checkThreedigit(List<Integer> playerInput){
+        if(playerInput.size()!=3){
             return true;
         }
         return false;
     }
 
-    private boolean checkZero(List<Integer> playerInput){
+    public static boolean checkZero(List<Integer> playerInput){
         if(playerInput.contains(0)){
             return true;
         }

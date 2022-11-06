@@ -18,7 +18,8 @@ public class Generatenumber {
     }
 
     public List<Integer> getNum() {
-        return generateNumber();
+        List<Integer> computerNum = generateNumber();
+        return computerNum;
     }
 
     public List<Integer> generateNumber() {

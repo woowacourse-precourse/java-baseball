@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.logic.Exception;
 import baseball.logic.Generatenumber;
 import baseball.logic.Inputnumber;
 import baseball.logic.RestartValidation;
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    static final int size = 3;
     private int strike;
     private int ball;
     private List<Integer> playerInput;
@@ -17,7 +17,6 @@ public class BaseballGame {
 
     private final Generatenumber computerNum;
     private final Inputnumber playerNum;
-    private final Exception exception;
 
 
     public BaseballGame() {
@@ -27,19 +26,19 @@ public class BaseballGame {
         computerInput = new ArrayList<>();
         computerNum = new Generatenumber();
         playerNum = new Inputnumber();
-        exception = new Exception();
     }
 
     public void play(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        computerNum.getNum();
         computerInput = computerNum.getNum();
         do {
-            playerInput = exception.inputException(playerNum.inputNum());
+            playerInput = playerNum.getNum();
             strike=0;
             ball=0;
             cntScore();
             messageHint();
-        } while(!(strike==3));
+        } while(!(strike==size));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -62,8 +61,8 @@ public class BaseballGame {
     }
 
     public int cntStrike(List<Integer> player, List<Integer> computer){
-        for(int i=0; i<player.size(); i++) {
-            if(player.get(i)==computer.get(i)){
+        for(int i=0; i<size; i++) {
+            if(player.get(i).equals(computer.get(i))){
                 strike++;
             }
         }
@@ -71,7 +70,7 @@ public class BaseballGame {
     }
 
     public int cntBall(List<Integer> player, List<Integer> computer){
-        for(int i=0; i<player.size(); i++){
+        for(int i=0; i<size; i++){
             if(computer.contains(player.get(i)) && computer.get(i)!=player.get(i)){
                 ball++;
             }
