@@ -45,6 +45,15 @@ public class Input_Output {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         End_Number=Console.readLine();
+        End_File_Check();
 
+    }
+
+    public void End_File_Check()//게임이 끝난 후 사용자 입력 중 예외 사항 체크
+    {
+        if(End_Number.length()>2)
+            throw new IllegalArgumentException();
+        if(End_Number !="1" &&End_Number!="2")
+            throw new IllegalArgumentException();
     }
 }
