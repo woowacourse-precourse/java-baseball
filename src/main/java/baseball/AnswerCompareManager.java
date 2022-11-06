@@ -19,6 +19,6 @@ public class AnswerCompareManager {
 
         IOManager.getHint(ballNum, strikeNum);
 
-        return strikeNum == 3;
+        return strikeNum == GameConfig.ANSWER_LEN;
     }
 }
