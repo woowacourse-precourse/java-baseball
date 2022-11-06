@@ -52,7 +52,11 @@ public class Application {
                     System.out.println(result.getMessage());
                 }
 
-                // TODO: 5. 게임 결과에 따라 사용자 입력을 받거나, 3으로 이동
+                // TODO: 5. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
+                System.out.println(OPTION_MESSAGE);
+                User.setGameOption();
+
+                status = Status.getStatusByGameOption(user.getGameOption());
 
                 // TODO: 6. 사용자 입력을 받아 게임 추가 진행 여부 확인, 추가 진행 시 2번으로 이동, 종료 시 Status를 EXIT로 변경
             }
