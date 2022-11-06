@@ -20,6 +20,8 @@ method 6. String calculate_Result(List<Integer> list_result)
 
 method 7. boolean continue_or_exit( )
 
+method 8. void Input_num_exception_test()
+
 ## 기능 목록
 **1. 게임의 시작**	
 
@@ -51,7 +53,9 @@ method 3. void game_play()
 
 기능 4,5번을 다시 큰 method로 묶어주어야함
 
-**예외** 
+**예외**
+
+method 8. void Input_num_exception_test()
 1. 사용자가 숫자를 하나만 불렀을 때(ex. '1')
 2. 사용자가 숫자를 3개 초과로 불렀을 떄(ex. '1234')
 3. 사용자가 숫자를 중복하여 불렀을 때(ex. '111')
