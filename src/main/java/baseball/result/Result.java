@@ -10,6 +10,11 @@ public class Result {
         this.ballCount = ballCount;
     }
 
+    public void calculateBallCount(String computerNumber, String userNumber) {
+        countStrike(computerNumber, userNumber);
+        countBall(computerNumber, userNumber);
+    }
+
     public void countStrike(String computerNumber, String userNumber) {
         Integer count = 0;
         for (int index = 0; index < NUMBER_LENGTH; index++) {
@@ -23,7 +28,7 @@ public class Result {
 
     public void countBall(String computerNumber, String userNumber) {
         Integer count = 0;
-        for (char number: userNumber.toCharArray()) {
+        for (char number : userNumber.toCharArray()) {
             if (computerNumber.contains(String.valueOf(number))) {
                 count++;
             }
@@ -45,7 +50,7 @@ public class Result {
         return (strikeCount == 0 && ballCount == 0);
     }
 
-    public boolean isOut(){
+    public boolean isOut() {
         return (strikeCount == 3);
     }
 }
