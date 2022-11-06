@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,43 +29,38 @@ public class GameController {
     }
 
     // userNumberList와 randomNumberList의 교집합 검사
-    public List<Integer> checkIntersection(List<Integer> userNumberList, List<Integer> randomNumberList) {
-        return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
+    public int checkIntersection(List<Integer> userNumberList, List<Integer> randomNumberList) {
+        return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList()).size();
     }
 
-    public void checkGameResult(List<Integer> intersectionList, List<Integer> randomNumberList) {
+    public void checkGameResult(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
 
-        ShowMessage showMessage = new ShowMessage();
-        int answerCount = showMessage.getAnswerCount();
-
-        if (intersectionList.isEmpty()) { // 교집합 부분이 없다면
-            ShowMessage.showNotMatchWord();
-        } else if (intersectionList.size() == answerCount) { // 정답
-            ShowMessage.showGameSet();
+        if (ballCount == 0) {
+            ShowMessage.showNotMatchWord(); // 낫싱
         } else {
-            calculateGameCount(intersectionList, randomNumberList);
+            calculateGameCount(userNumberList, randomNumberList, ballCount);
         }
     }
 
-    public void calculateGameCount(List<Integer> intersectionList, List<Integer> randomNumberList) {
+    public void calculateGameCount(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
 
         ShowMessage showMessage = new ShowMessage();
         int answerCount = showMessage.getAnswerCount();
-        int ballCount = 0;
         int strikeCount = 0;
+
+        System.out.println("입력값:" + userNumberList + ":");
+        System.out.println("난수:" + randomNumberList + ":");
 
         for (int i = 0; i < answerCount; i++) {
             System.out.println("스트라이크 몇 개인지 검사");
-            if (intersectionList == randomNumberList) {
+            if (userNumberList.get(i) == randomNumberList.get(i)) {
                 System.out.println("스트라이크 발견");
                 strikeCount++;
             }
         }
-        ballCount = intersectionList.size() - strikeCount;
+        ballCount -= strikeCount;
         System.out.println("볼:" + ballCount + ":");
         System.out.println("스트라이크:" + strikeCount + ":");
     }
-
-
 
 }
