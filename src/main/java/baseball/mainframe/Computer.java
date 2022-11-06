@@ -16,18 +16,14 @@ public class Computer {
         return randomNumber;
     }
 
-    public static String makeListToString(List<Integer> list) {
-        return String.join(list.toString());
-    }
-
     public static void generateRandomNumber() {
-        List<Integer> randomNumberList = new ArrayList<>();
+        List<String> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
+            if (!randomNumberList.contains(String.valueOf(randomNumber))) {
+                randomNumberList.add(String.valueOf(randomNumber));
             }
         }
-        setRandomNumber(makeListToString(randomNumberList));
+        setRandomNumber(String.join("",randomNumberList));
     }
 }
