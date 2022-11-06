@@ -29,11 +29,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void disassembleDigitNumber_Test(){
-        //425가 입력됐을 때 5, 20, 400인 리스트가 반환
-        List<Integer> result = List.of(5, 20, 400);
-        assertThat(result).isEqualTo(Application.disassembleDigitNumber(425));
+    @Nested
+    class disassembleDigitNumber_Test {
+        @Nested
+        class success_case {
+            @Test
+            void case1() {
+                //425가 입력됐을 때 5, 2, 4인 리스트가 반환
+                List<Integer> result = List.of(5, 2, 4);
+                assertThat(result).isEqualTo(Application.disassembleDigitNumber(425));
+            }
+        }
     }
 
 
