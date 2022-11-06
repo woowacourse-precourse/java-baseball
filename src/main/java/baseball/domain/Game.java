@@ -19,7 +19,7 @@ public class Game {
         computer.generateAnswer();
 
         Integer[] answer = computer.getAnswer();
-        boolean isWorngAnswer;
+        boolean isWrongAnswer;
 
         do {
             OutputView.printAnswerInputGuideMessage();
@@ -28,11 +28,11 @@ public class Game {
             user.setGuessedAnswer(stringGuessedAnswer);
 
             Integer[] guessedAnswer = user.getGuessedAnswer();
-            isWorngAnswer = score.isWrongAnswer(answer, guessedAnswer);
+            isWrongAnswer = score.isWrongAnswer(answer, guessedAnswer);
 
             OutputView.printResult();
 
-        } while (isWorngAnswer);
+        } while (isWrongAnswer);
 
         OutputView.printGameEndMessage();
         OutputView.printRestartOrStopGuideMessage();
