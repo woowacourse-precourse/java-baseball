@@ -172,4 +172,10 @@ class NumberBaseballGameClientTest {
             assertThat(output()).isEqualTo("낫싱");
         }
     }
+
+    @Test
+    void 게임_종료_메시지는_출력스트림에_정상_저장된다() {
+        NumberBaseballGameClient.showGameEndMessage();
+        assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
