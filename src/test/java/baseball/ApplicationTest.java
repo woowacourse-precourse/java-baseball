@@ -35,6 +35,13 @@ class ApplicationTest extends NsTest {
         assertThat(true).isEqualTo(Application.checkUserNumberLength(input));
     }
 
+    @Test
+    void  checkUserNumberIsIntegerTest() {
+        String input = "32A";
+
+        assertThat(false).isEqualTo(Application.checkUserNumberIsInteger(input));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
