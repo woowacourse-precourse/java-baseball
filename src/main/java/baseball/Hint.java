@@ -8,6 +8,7 @@ public class Hint {
 
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final int THREE_STRIKE = 3;
 
     private Map<String, Integer> countResult;
 
@@ -34,7 +35,7 @@ public class Hint {
         Integer ball = this.countResult.get(BaseballCount.BALL.getValue());
         String result = "";
 
-        if (strike == 3) {
+        if (strike == THREE_STRIKE) {
             return strike + BaseballCount.STRIKE.getMessage() + "\n" + WIN_MESSAGE;
         }
         if (strike == 0 && ball == 0) {

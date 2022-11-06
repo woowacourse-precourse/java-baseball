@@ -4,12 +4,13 @@ public class BaseballGame {
 
     private static final Integer RESTART = 1;
     private static final Integer EXIT = 2;
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private Player player;
+    private final Player player;
 
-    private Computer computer;
+    private final Computer computer;
 
-    private Hint hint;
+    private final Hint hint;
 
     private boolean progress;
 
@@ -20,12 +21,8 @@ public class BaseballGame {
         this.progress = true;
     }
 
-    private static void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void play() {
-        printStartMessage();
+        System.out.println(GAME_START_MESSAGE);
         while (progress) {
             startGame();
             checkProgress();
