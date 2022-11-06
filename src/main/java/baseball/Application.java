@@ -95,7 +95,7 @@ public class Application {
             if (!isValidInput(input))
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
-            //TODO:어플리케이션 종료
+            System.exit(0);
         }
         return input;
     }
@@ -149,7 +149,7 @@ public class Application {
             if (!isValidContInput(input))
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
-            //TODO:어플리케이션 종료
+            System.exit(0);
         }
         return input;
     }
