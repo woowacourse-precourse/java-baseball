@@ -22,7 +22,16 @@ public class Application {
             isAnswer = compareAnswer(input, answer);
         }
 
-        // TODO: 게임 종료 호출
+        endGame();
+    }
+
+    public static void endGame() {
+        String input = Console.readLine();
+        // TODO: 입력 유효성 검사 2 호출
+
+        if (input == "1") {
+            startGame();
+        }
     }
 
     public static String createThreeDigitNumber() {
