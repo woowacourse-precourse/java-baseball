@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.stream.IntStream;
+
 public class Referee {
 
     public static final int INDEX_NOT_FOUND = -1;
@@ -9,32 +11,22 @@ public class Referee {
     }
 
     private int getStrikeCount(String answer, String userNumber) {
-        int strikeCount = 0;
-
-        for (int index = 0; index < answer.length(); index++) {
-            if (isStrike(answer, userNumber, index)) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
+        return (int) IntStream.range(0, answer.length())
+                .filter(index -> isStrike(answer, userNumber, index))
+                .count();
     }
 
     private int getBallCount(String answer, String userNumber) {
-        int ballCount = 0;
-
-        for (int index = 0; index < userNumber.length(); index++) {
-            if (isBall(answer.indexOf(userNumber.charAt(index)), index)) {
-                ballCount++;
-            }
-        }
-        return ballCount;
+        return (int) IntStream.range(0, userNumber.length())
+                .filter(index -> isBall(answer.indexOf(userNumber.charAt(index)), index))
+                .count();
     }
 
     private boolean isStrike(String answer, String userNumber, int index) {
         return answer.charAt(index) == userNumber.charAt(index);
     }
 
-    private Boolean isBall(int findIndexInAnswer, int userNumberCharIndex) {
+    private boolean isBall(int findIndexInAnswer, int userNumberCharIndex) {
         return (findIndexInAnswer != INDEX_NOT_FOUND && findIndexInAnswer != userNumberCharIndex);
     }
 }
