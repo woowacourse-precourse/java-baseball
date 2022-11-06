@@ -11,14 +11,16 @@ public class GameProcessor {
     public boolean isThreeStrike(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
         getStrikeCount(computerNumbers, userInputNumbers);
         getBallCount(computerNumbers, userInputNumbers);
+
+        OutputView.printGameResult(strikeCount, ballCount);
         return isGameOver();
     }
 
     private boolean isGameOver() {
         if (strikeCount == 3) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private int getStrikeCount(List<Integer> computerNumbers, List<Integer> userInputNumbers) {

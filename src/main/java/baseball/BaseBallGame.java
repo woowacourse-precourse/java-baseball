@@ -4,7 +4,6 @@ public class BaseBallGame {
 
     private final Computer computer;
     private final User user;
-
     private final GameProcessor gameProcessor;
 
     public BaseBallGame() {
@@ -14,7 +13,7 @@ public class BaseBallGame {
     }
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputView.printStartMessage();
         computer.generateNumber();
         do {
             user.selectUserNumber();
