@@ -6,8 +6,8 @@ import baseball.util.ShowGameMessage;
 import baseball.util.input.ContinueInput;
 import baseball.util.input.NumberBallsInput;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
     private final ShowGameMessage showGameMessage = new ShowGameMessage();
@@ -41,7 +41,13 @@ public class NumberBaseballGame {
     }
 
     private List<NumberBall> initializeSystemNumberBall() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        return numbers.stream().map(NumberBall::new).collect(Collectors.toList());
+        List<NumberBall> numberBalls = new ArrayList<>();
+        while (numberBalls.size() < 3) {
+            NumberBall ball = new NumberBall(Randoms.pickNumberInRange(1, 9));
+            if (!numberBalls.contains(ball)) {
+                numberBalls.add(ball);
+            }
+        }
+        return numberBalls;
     }
 }
