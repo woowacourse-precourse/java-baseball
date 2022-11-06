@@ -188,6 +188,7 @@ class GameProcessor {
             }
             stringBuilder.append(getBall() + "볼");
         }
+        System.out.println(stringBuilder.toString());
     }
 }
 
