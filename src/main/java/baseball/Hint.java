@@ -5,9 +5,9 @@ import java.util.List;
 
 
 public class Hint {
-    private static String hint;
-    private int includedNumber;
-    private int matchingNumber;
+    protected static String hint;
+    protected int includedNumber;
+    protected int matchingNumber;
 
 
     public String get() {
@@ -27,7 +27,7 @@ public class Hint {
         System.out.println(this.hint.trim());
     }
 
-    private void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    protected void countMatchingNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         matchingNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {
@@ -37,7 +37,7 @@ public class Hint {
         }
     }
 
-    private void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
+    protected void countIncludedNumbers(List<Integer> correctAnswer, List<Integer> userAnswer) {
         includedNumber = 0;
 
         for (int index = 0; index < Game.answerLength; index++) {
@@ -48,20 +48,20 @@ public class Hint {
     }
 
 
-    private void getHintOfBall() {
+    protected void getHintOfBall() {
         if ((includedNumber - matchingNumber) != 0) {
             this.hint = "" + (includedNumber - matchingNumber) + "볼";
         }
     }
 
-    private void getHintOfStrike() {
+    protected void getHintOfStrike() {
         if (this.matchingNumber != 0) {
             this.hint += " " + matchingNumber + "스트라이크";
         }
     }
 
-    private void getHintOfNothing() {
-        if (this.hint.length() == 0) {
+    protected void getHintOfNothing() {
+        if (this.hint.isEmpty()) {
             this.hint = "낫싱";
         }
     }
