@@ -1,7 +1,9 @@
 package baseball.validation;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static baseball.constant.MessageConst.*;
 import static baseball.constant.NumberConst.*;
@@ -10,6 +12,16 @@ import static baseball.constant.NumberConst.*;
  * 입력값에 대한 검증을 진행하는 클래스
  */
 public class InputValidation {
+
+    /**
+     * 사용자의 숫자 입력값에 대한 모든 검증을 진행한다.
+     */
+    public void verifyInputNum(String input) {
+        verifyInputLength(input);
+        verifyInputRange(input);
+        List<Integer> inputNums = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        verifyInputDuplicated(inputNums);
+    }
 
     /**
      * 입력값의 길이가 3인지 검증한다.
