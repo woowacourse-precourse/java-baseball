@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Game.Max_size;
@@ -31,14 +32,11 @@ public class Functions {
     }
 
     public static List<Integer> count_BallStrike(List<Integer> targetNums, List<Integer> userNums) {
-        List<Integer> b_s_list = new ArrayList<>();
         int balls = commonNums(targetNums, userNums);
         int strikes = count_strikes(targetNums, userNums);
-
         balls -= strikes;
 
-        b_s_list.add(balls);
-        b_s_list.add(strikes);
+        List<Integer> b_s_list = Arrays.asList(balls,strikes);
         return b_s_list;
     }
 
@@ -65,7 +63,7 @@ public class Functions {
     }
 
     private static int commonNums(List<Integer> list1, List<Integer> list2) {
-        ArrayList<Integer> list3 = new ArrayList<Integer>(list1);
+        ArrayList<Integer> list3 = new ArrayList<>(list1);
         list3.retainAll(list2);
         return list3.size();
     }
