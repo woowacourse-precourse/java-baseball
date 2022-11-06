@@ -22,14 +22,15 @@ class BaseBallGame {
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-    public void gamePlaying(){
+
+    public void gamePlaying() {
         try {
             int computerNumber = getRandomDiff3DigitNumber();
             boolean isSolved = false;
-            while(!isSolved){
+            while (!isSolved) {
                 isSolved = solvingProblem(computerNumber);
             }
-            if(reStartGame()) {
+            if (reStartGame()) {
                 gamePlaying();
             }
         } catch (IllegalArgumentException e) {
@@ -37,40 +38,40 @@ class BaseBallGame {
         }
     }
 
-    public boolean reStartGame(){
+    public boolean reStartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answerToReplay = Console.readLine();
 
-        if(!answerToReplay.equals("1") && !answerToReplay.equals("2")) {
+        if (!answerToReplay.equals("1") && !answerToReplay.equals("2")) {
             throw new IllegalArgumentException("재시작에 대한 입력이 잘못되었습니다.");
         }
 
-        if(answerToReplay.equals("1")) {
+        if (answerToReplay.equals("1")) {
             return true;
         }
         System.out.println("게임 종료");
         return false;
     }
 
-    public boolean solvingProblem(int computerNumber){
+    public boolean solvingProblem(int computerNumber) {
         int userNumber = inputNumber();
         int ball, strike;
         List<Integer> hint = getHint(userNumber, computerNumber);
         ball = hint.get(0);
         strike = hint.get(1);
-        
-        if(strike == 3) {
+
+        if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
-        
-        if(ball == 0 && strike == 0){
-                System.out.println("낫싱");
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
         } else {
-            if(ball == 0) {
+            if (ball == 0) {
                 System.out.println(strike + "스트라이크");
-            } else if(strike == 0){
+            } else if (strike == 0) {
                 System.out.println(ball + "볼");
             } else {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
@@ -125,7 +126,8 @@ class BaseBallGame {
     }
 
     public List<Integer> getHint(int userNumber, int computerNumber) {
-        List<Integer> userNumList = new ArrayList<>(Arrays.asList(userNumber / 100, userNumber % 100 / 10, userNumber % 10 / 1));
+        List<Integer> userNumList = new ArrayList<>(
+                Arrays.asList(userNumber / 100, userNumber % 100 / 10, userNumber % 10 / 1));
         List<Integer> computerNumList = new ArrayList<>(
                 Arrays.asList(computerNumber / 100, computerNumber % 100 / 10, computerNumber % 10 / 1));
 
@@ -162,7 +164,6 @@ class BaseBallGame {
 
         return hintList;
     }
-
 
 
 }
