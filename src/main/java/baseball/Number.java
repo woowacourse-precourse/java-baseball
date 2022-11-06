@@ -14,7 +14,7 @@ public class Number {
     private static final int DIGITS = 3;
     public List<Integer> setRandomNumbers() {
         Set<Integer> NumberSet = new HashSet<>();
-        while (NumberSet.size() < 3) {
+        while (NumberSet.size() < DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             NumberSet.add(randomNumber);
         }
