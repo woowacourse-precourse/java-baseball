@@ -17,18 +17,17 @@ public class Application {
 class Game {
     static final String INITGAME = "숫자 야구 게임을 시작합니다.";
     static final String ENDGAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static void init() {
         System.out.println(INITGAME);
         Hint hint = new Hint(makeThreeNums());
         String result;
         do {
-            result = hint.get(User.getInput());
+            result = hint.get(User.getGameInput());
             System.out.println(result);
         } while (!result.equals("3스트라이크"));
         end();
     }
-    static List makeThreeNums() {
+    static List<Integer> makeThreeNums() {
         List<Integer> threeNums = new ArrayList<>();
         while (threeNums.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -40,42 +39,46 @@ class Game {
     }
     static void end() {
         System.out.println(ENDGAME);
+        User.getRestartInput();
+    }
+}
+class User {
+    final static String PROMPT = "숫자를 입력해주세요 : ";
+    static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static List getGameInput() {
+        System.out.print(PROMPT);
+        String input = Console.readLine();
+        List result;
+        try {
+            result = checkGameInput(input);
+        } catch(Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+    static void getRestartInput() {
         System.out.println(RESTART);
         String input = Console.readLine();
         if (input.equals("1")) {
-            init();
+            Game.init();
         } else if (input.equals("2")) {
             return;
         } else {
             throw new IllegalArgumentException();
         }
     }
-}
-class User {
-    final static String PROMPT = "숫자를 입력해주세요 : ";
-    static List getInput() {
-        System.out.print(PROMPT);
-        String input = Console.readLine();
-        List result;
-        try {
-            result = checkInput(input);
-        } catch(Exception e) {
-            throw new IllegalArgumentException();
-        }
+    static List checkGameInput(String input) throws Exception {
+        List result = getGameInputFormat(input);
+        checkGameInputLength(result);
+        checkGameInputDuplicate(result);
         return result;
     }
-    static List checkInput(String input) throws Exception {
-        List result = getInputFormat(input);
-        checkInputLength(result);
-        checkInputDuplicate(result);
-        return result;
-    }
-    static void checkInputLength(List<Integer> input) throws Exception {
+    static void checkGameInputLength(List<Integer> input) throws Exception {
         if (input.size() != 3) {
             throw new Exception();
         }
     }
-    static void checkInputDuplicate(List<Integer> input) throws Exception {
+    static void checkGameInputDuplicate(List<Integer> input) throws Exception {
         HashMap<Integer, Boolean> map = new HashMap<>();
         for (Integer num: input) {
             if (map.containsKey(num)) {
@@ -84,20 +87,18 @@ class User {
             map.put(num, true);
         }
     }
-    static List<Integer> getInputFormat(String input) {
+    static List<Integer> getGameInputFormat(String input) {
         String[] stringArr = input.split("");
         int [] intArr = Arrays.stream(stringArr).mapToInt(Integer::parseInt).toArray();
         List result = Arrays.stream(intArr).boxed().collect(Collectors.toList());
         return result;
     }
 }
-
 class Hint {
     final static String BALL = "볼";
     final static String STRIKE = "스트라이크";
     final static String NOTHING = "낫싱";
     final List<Integer> answer;
-
     Hint(List answer) {
         this.answer = answer;
     }
@@ -117,7 +118,6 @@ class Hint {
         }
         return result.trim();
     }
-
     int countStrike(List<Integer> input) {
         int result = 0;
         for (Integer num: input) {
@@ -127,7 +127,6 @@ class Hint {
         }
         return result;
     }
-
     int countBall(List<Integer> input) {
         int result = 0;
         for (Integer num: input) {
