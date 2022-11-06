@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Application {
-    final static String START_FLAG = "1";
-    final static char ZERO_CHARACTER = '0';
+    final static String START_USER_INPUT = "1";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -29,7 +28,7 @@ public class Application {
 
         boolean loopFlag = true;
         String userInput = "";
-        Integer strike = 0, ball = 0;
+        int strikeCount = 0, ballCount = 0;
 
         initRandomNumber(computer, computerIndexMap);
 
@@ -41,15 +40,15 @@ public class Application {
 
             try {
                 validateUserInput(userInput);
-                strike = checkStrike(computer, userInput);
-                ball = checkBall(computerIndexMap, userInput);
-                printResult(strike, ball);
+                strikeCount = checkStrike(computer, userInput);
+                ballCount = checkBall(computerIndexMap, userInput);
+                printResult(strikeCount, ballCount);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 throw e;
             }
 
-            if(strike == 3){
+            if(strikeCount == 3){
                 loopFlag = isNewGame(computer, computerIndexMap);
             }
         }
@@ -63,7 +62,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         userInput = Console.readLine();
-        loopFlag = userInput.equals(START_FLAG);
+        loopFlag = userInput.equals(START_USER_INPUT);
 
         if(loopFlag)
             initRandomNumber(computer, computerIndexMap);
@@ -86,29 +85,27 @@ public class Application {
             System.out.println();
     }
 
-    public static Integer checkBall(HashMap<Integer, Integer> computerIndexMap, String userInput) {
+    public static int checkBall(final HashMap<Integer, Integer> computerIndexMap, String userInput) {
         int ballCount = 0;
 
         for (int idx = 0; idx < userInput.length(); idx++) {
-            int userNumber = userInput.charAt(idx) - ZERO_CHARACTER;
+            int userNumber = Character.getNumericValue(userInput.charAt(idx));
 
-            if(computerIndexMap.containsKey(userNumber) && computerIndexMap.get(userNumber) != idx){
+            if(computerIndexMap.containsKey(userNumber) && computerIndexMap.get(userNumber) != idx)
                 ballCount++;
-            }
         }
 
         return ballCount;
     }
 
-    public static Integer checkStrike(List<Integer> computer, String userInput) {
+    public static int checkStrike(final List<Integer> computer, String userInput) {
         int strikeCount = 0;
 
         for (int idx = 0; idx < userInput.length(); idx++) {
-            int userNumber = userInput.charAt(idx) - ZERO_CHARACTER;
+            int userNumber = Character.getNumericValue(userInput.charAt(idx));
 
-            if(userNumber == computer.get(idx)){
+            if(userNumber == computer.get(idx))
                 strikeCount++;
-            }
         }
         return strikeCount;
     }
