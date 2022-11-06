@@ -12,7 +12,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int min = 100;
         int max = 999;
-        String random_string="000";
+        String randomString="000";
         while(true){
             int random = (int) ((Math.random() * (max - min)) + min);
             //985
@@ -20,35 +20,35 @@ public class Application {
             int second=random%100/10; //85 //8
             int third=random%10;
             if(first!=second&&first!=third&&second!=third){
-                random_string = String.valueOf(random);
+                randomString = String.valueOf(random);
                 break;
             }
         }
-        guess(random_string);
+        guess(randomString);
     }
-    public static void guess(String com_num){
+    public static void guess(String comNum){
         Scanner sc = new Scanner(System.in);
-        boolean is_wrong=true;
-        HashMap com_map= new HashMap<Integer,String>();
+        boolean isWrong=true;
+        HashMap comMap= new HashMap<Integer,String>();
         for(int digits=0;digits<3;digits++){
-            com_map.put(digits,com_num.substring(digits,digits+1));
-            //System.out.println(comMap);
+            comMap.put(digits,comNum.substring(digits,digits+1));
+           // System.out.println(comMap);
         }
-        while(is_wrong){
-            HashMap usr_map= new HashMap<Integer,String>();
+        while(isWrong){
+            HashMap usrMap= new HashMap<Integer,String>();
             System.out.println("숫자를 입력해주세요 :");
-            String usr_num= sc.next();
+            String usrNum= sc.next();
             for(int digits=0;digits<3;digits++){
-                usr_map.put(digits,usr_num.substring(digits,digits+1));
+                usrMap.put(digits,usrNum.substring(digits,digits+1));
                 //System.out.println(usrMap);
             }
             int strike=0;
             int ball=0;
             for(int i=0;i<3;i++){
                 //첫째자리 유무
-                Object num=com_map.get(i);
-                if(usr_map.containsValue(num)){
-                    if(usr_map.get(i).equals(num)){
+                Object num=comMap.get(i);
+                if(usrMap.containsValue(num)){
+                    if(usrMap.get(i).equals(num)){
                         //같으면 스트라이크 다르면 볼
                        strike+=1;
                     }else{
@@ -56,10 +56,22 @@ public class Application {
                     }
                 }
             }
-
+            if(strike==0&&ball==0){
+                System.out.println("낫싱");
+            }else if(ball==0) {
+                System.out.println(strike+"스트라이크");
+                if(strike==3){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    return;
+                }
+            }else if(strike==0){
+                System.out.println(ball+"볼");
+            }
+            else{
+                System.out.println(ball+"볼"+" "+strike+"스트라이크");
+            }
         }
-        System.out.println("숫자를 입력해주세요 :");
-        String usr_num= sc.next();
+
     }
     public static void isNewGame(){
 
