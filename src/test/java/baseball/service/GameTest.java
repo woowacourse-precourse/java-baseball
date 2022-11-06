@@ -25,6 +25,7 @@ class GameTest {
 		String[] testString3 = new String[] {"6", "a", "5"};
 		String[] testString4 = new String[] {"6", "4", "5", "7"};
 		String[] testString5 = new String[] {"6", "4"};
+		String[] testString6 = new String[] {"2", "4", "4"};
 
 		assertThatThrownBy(() ->
 				game.checkInput(testString1))
@@ -41,8 +42,13 @@ class GameTest {
 		assertThatThrownBy(() ->
 				game.checkInput(testString4))
 						.isInstanceOf(IllegalArgumentException.class);
+
 		assertThatThrownBy(() ->
 				game.checkInput(testString5))
+						.isInstanceOf(IllegalArgumentException.class);
+
+		assertThatThrownBy(() ->
+				game.checkInput(testString6))
 						.isInstanceOf(IllegalArgumentException.class);
 	}
 
