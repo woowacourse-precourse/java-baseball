@@ -9,7 +9,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static unit.BaseBallGame.makeRandomNumbers;
 import static baseball.Application.*;
 import static baseball.Balls.*;
 import static baseball.BallsNumbers.*;
@@ -56,5 +55,24 @@ class ApplicationTest extends NsTest {
 		for(int num : randomNumbers) {
 			assertThat(num < 10 &&  num > 0).isTrue();
 		}
+	}
+    
+    @Test
+	@DisplayName("userInputNumbers가 서로 다른 3자리 수인지 테스트")
+	void userInputNumbersTest() {
+		int input = 123;
+		ArrayList<Integer> userInputNumbers = makeUserInputNumbers(input);
+		assertThat(userInputNumbers.size() == userInputNumbers.stream().distinct().count()).isTrue();
+		assertThat(userInputNumbers.size() == 3).isTrue();
+		
+		input = 113;
+		userInputNumbers = makeUserInputNumbers(input);
+		assertThat(userInputNumbers.size() == userInputNumbers.stream().distinct().count()).isFalse();
+		assertThat(userInputNumbers.size() == 3).isTrue();
+		
+		input = 1023;
+		userInputNumbers = makeUserInputNumbers(input);
+		assertThat(userInputNumbers.size() == userInputNumbers.stream().distinct().count()).isTrue();
+		assertThat(userInputNumbers.size() == 3).isFalse();
 	}
 }
