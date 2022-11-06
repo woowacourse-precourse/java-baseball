@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculationTest {
-    @DisplayName("3스트라이크 테스트")
+    @DisplayName("계산 테스트 - 3스트라이크")
     @Test
     void case1() {
         List<Integer> dealerNumbers = List.of(1, 3, 7);
@@ -19,7 +19,7 @@ public class CalculationTest {
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
-    @DisplayName("1볼 1스트라이크 테스트")
+    @DisplayName("계산 테스트 - 1볼 1스트라이크")
     @Test
     void case2() {
         List<Integer> dealerNumbers = List.of(4, 2, 5);
@@ -30,7 +30,7 @@ public class CalculationTest {
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
-    @DisplayName("낫싱 테스트")
+    @DisplayName("계산 테스트 - 낫싱")
     @Test
     void case3() {
         List<Integer> dealerNumbers = List.of(3, 4, 5);
@@ -41,7 +41,7 @@ public class CalculationTest {
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
-    @DisplayName("2볼 테스트")
+    @DisplayName("계산 테스트 - 2볼")
     @Test
     void case4() {
         List<Integer> dealerNumbers = List.of(5, 9, 8);
