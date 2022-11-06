@@ -37,7 +37,7 @@ public class Computer {
     }
 
     public void makeThreeDigitNumber(){
-        for(int numberCount = 0; numberCount < LIST_LIMIT; numberCount++){
+        while(numbers.size() < LIST_LIMIT){
             insertNumber();
         }
     }
