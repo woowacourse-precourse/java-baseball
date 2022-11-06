@@ -36,7 +36,27 @@ public class Application {
         return num.length() != 3;
     }
 
+    public static String getResult(ArrayList<Integer> com, ArrayList<Integer> player){
+        String result = "";
+        int strike = 0, ball = 0;
 
+        for (int i = 0; i < 3; i++){
+            if (Objects.equals(com.get(i), player.get(i))) strike ++;
+            else if (player.contains(com.get(i))) ball ++;
+        }
+        ball -= strike;
+
+        if (ball > 0 && strike > 0)
+            result = ball + "볼 " + strike + "스트라이크";
+        else if (strike > 0)
+            result = strike + "스트라이크";
+        else if (ball > 0)
+            result = ball + "볼";
+        else
+            result = "낫싱";
+
+        return result;
+    }
 
     public static void run(){
         ArrayList<Integer> computer = generateNum();
@@ -45,7 +65,7 @@ public class Application {
         System.out.println(computer);
         System.out.println(player);
 
-//        System.out.println(getResult(computer, player));
+        System.out.println(getResult(computer, player));
     }
 
 
