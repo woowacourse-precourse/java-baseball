@@ -68,6 +68,11 @@ public class Application {
 
         for (int i = 0; i < consoleInput.length(); i++) {
             int charInt = Character.getNumericValue(consoleInput.charAt(i));
+
+            if (charInt == 0) {
+                throw new IllegalArgumentException("정답에 0은 포함되지 않습니다.");
+            }
+
             if (!answer.contains(charInt)) {
                 answer.add(charInt);
             } else {
