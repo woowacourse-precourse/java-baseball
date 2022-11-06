@@ -15,4 +15,14 @@ public class Game {
         }
         return strike;
     }
+
+    private int countBall(List<Character> computerNumber, List<Character> userNumber) {
+        int ball = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (!computerNumber.get(i).equals(userNumber.get(i)) && computerNumber.contains(userNumber.get(i))) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
 }
