@@ -11,7 +11,7 @@ import static baseball.Constant.*;
 public class User {
 
     public String inputNumber() {
-        System.out.println(INPUT_SENTENCE);
+        System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
         isValidInput(input);
         return input;
