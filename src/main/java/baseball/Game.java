@@ -1,13 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static constant.Constant.*;
-import static constant.ErrorMessage.INVALID_INPUT_VALUE;
 
 public class Game {
     private static List<Integer> computer;
@@ -62,5 +60,4 @@ public class Game {
         }
         gameState.printGameState();
     }
-
 }
