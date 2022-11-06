@@ -2,9 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class NumberManager {
 
     private int[] randomNumberArray;
+    private static final String LENGTH = "3";
+    private static final String MIN_NUMBER = "1";
+    private static final String MAX_NUMBER = "9";
+    private static final String REGEX = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]{" + LENGTH + "}$";
 
     public void setRandomNumber() {
 
@@ -32,5 +39,17 @@ public class NumberManager {
         }
 
         return numberArray;
+    }
+
+    private void validate(StringBuilder userNumber) {
+
+        if(!userNumber.toString().matches(REGEX)) {
+            throw new IllegalArgumentException();
+        }
+
+        if(Arrays.stream(userNumber.toString().split("")).collect(Collectors.toSet()).size() != 3) {
+            throw new IllegalArgumentException();
+        }
+
     }
 }
