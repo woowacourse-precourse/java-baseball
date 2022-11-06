@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-
 public class Computer {
 
     private static RandomNumber RandomValue;
@@ -34,7 +31,7 @@ public class Computer {
         } else if (mode == INPUTNUMBERMODE) {
             printInputNumber();
         } else if (mode == GENERATERANDOMMODE) {
-        //    return RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+            //    return RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
         } else if (mode == CALCULATEDOUTPUTMODE) {
             printCalculateResult(input);
         }
