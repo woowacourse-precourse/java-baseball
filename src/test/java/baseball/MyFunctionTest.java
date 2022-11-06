@@ -1,6 +1,7 @@
 package baseball;
 
 import ballAndStrike.Count;
+import ballAndStrike.Hint;
 import game.EnterNumber;
 import game.RandomNumber;
 import org.junit.jupiter.api.Test;
@@ -75,6 +76,7 @@ public class MyFunctionTest {
     class CountBallAndStrikeNumber {
         //given
         Count count = new Count();
+        Hint hint = new Hint(count);
         @Test
         void 볼_스트라이크_개수_찍기_1() {
             //given
@@ -101,7 +103,6 @@ public class MyFunctionTest {
             //then
             assertThat(ballAndStrike).isEqualTo(ballAndStrikeNumber);
         }
-
         @Test
         void 볼_스트라이크_개수_찍기_3() {
             //given
@@ -114,6 +115,18 @@ public class MyFunctionTest {
             List<Integer> ballAndStrike = new ArrayList<>(Arrays.asList(count.getBallNumber(), count.getStrikeNumber()));
             //then
             assertThat(ballAndStrike).isEqualTo(ballAndStrikeNumber);
+        }
+        @Test
+        void 볼_스트라이크_출력_확인() {
+            //given
+            List<Integer> randomNumber = List.of(2,3,4);
+            List<Integer> userNumber = List.of(2,5,3);
+            String expectedResult = "1볼 1스트라이크";
+            //when
+            count.calStrike(randomNumber, userNumber);
+            count.calBall(randomNumber, userNumber);
+            //then
+            assertThat(hint.printHint()).isEqualTo(expectedResult);
         }
     }
 }
