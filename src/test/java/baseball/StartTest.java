@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static baseball.Message.ErrorMessage.*;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StartTest extends NsTest {
 
@@ -44,32 +41,6 @@ public class StartTest extends NsTest {
 
             assertThat(result).doesNotHaveDuplicates();
         }
-    }
-
-    @Test
-    void 입력값_에러메세지_체크() {
-        List<String> testInput = List.of(
-                "1234"
-                , "556"
-                , "7 8"
-                , "9A1");
-
-        List<String> errorMsg = List.of(
-                OUT_OF_LENGTH.toMessage()
-                , DUPLICATED_NUMBERS.toMessage()
-                , BLANK_EXISTS.toMessage()
-                , NOT_ALLOWED_CHARACTER.toMessage()
-                , ZERO_EXISTS.toMessage());
-
-        for (int index = 0; index < 5; index++) {
-            final int i = index;
-
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> validate.checkUserInputNumbers(testInput.get(i)))
-                            .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining(errorMsg.get(i)));
-        }
-
     }
 
     @Override
