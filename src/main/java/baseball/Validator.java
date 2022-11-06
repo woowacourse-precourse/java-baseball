@@ -8,12 +8,18 @@ public class Validator {
     public static final String RESTART_RESPONSE_EXCEPTION = "1, 2 이외의 문자가 입력되었습니다.";
 
     public static void validateLength(String numberStringUserInput) {
-        if (numberStringUserInput.length() != Game.NUMBER_LENGTH) {
+        if (numberStringUserInput.length() != 3) {
             throw new IllegalArgumentException(LENGTH_EXCEPTION);
         }
     }
 
-    //TODO 숫자만 포함 
+    public static void validateNumber(String numberString) {
+        for (char numChar : numberString.toCharArray()) {
+            if (numChar < '0' || numChar > '9') {
+                throw new IllegalArgumentException(HAVING_ANOTHER_CHARACTER_EXCEPTION);
+            }
+        }
+    }
 
     //TODO 0 포함 X
 
