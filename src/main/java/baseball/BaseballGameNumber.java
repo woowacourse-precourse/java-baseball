@@ -2,11 +2,12 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class BaseballGameNumber {
     public static final int RANGE_START = 1;
-    public static final int RANGE_END = 10;
+    public static final int RANGE_END = 9;
     public static final int NUMBER_SIZE = 3;
 
     private final List<Integer> numbers;
@@ -24,6 +25,27 @@ public class BaseballGameNumber {
 
     public boolean contains(int number) {
         return numbers.contains(number);
+    }
+
+    public static boolean isSame(BaseballGameNumber number, BaseballGameNumber otherNumber) {
+        return number.equals(otherNumber);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        BaseballGameNumber that = (BaseballGameNumber) other;
+        return numbers.equals(that.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
