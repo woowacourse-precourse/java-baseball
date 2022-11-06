@@ -40,6 +40,20 @@ public class GameManager {
         return NOTHING;
     }
 
+    public void printResult(int[] score){
+        StringBuilder sb = new StringBuilder();
+        if(score[STRIKE] == 0 && score[BALL] == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        if(score[BALL] != 0){
+            sb.append(String.format("%d볼 ", score[BALL]));
+        }
+        if(score[STRIKE] != 0){
+            sb.append(String.format("%스트라이크", score[STRIKE]));
+        }
+        System.out.println(sb);
+    }
 
     public List<Integer> toList(String number){
         return Arrays.stream(number.split(""))
