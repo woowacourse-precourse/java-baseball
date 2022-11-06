@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.dto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +10,6 @@ public class Balls {
     private static final int MIN_BALL_NUMBER = 1;
     private static final int MAX_BALL_NUMBER = 9;
     private static final String DUPLICATED_INPUT_NUMBER_MESSAGE = "입력된 숫자의 값에 중복된 값이 포함되어서는 안됩니다.";
-
     private static final String INVALID_INPUT_SIZE_MESSAGE = "입력된 숫자의 값이 " + MAX_BALLS_SIZE + "개가 아닙니다.";
     private static final String INVALID_INPUT_RANGE_MESSAGE = "입력된 숫자의 값은 " + MIN_BALL_NUMBER + "부터 " + MAX_BALL_NUMBER + "사이의 값이어야 합니다.";
     private final List<Integer> values;

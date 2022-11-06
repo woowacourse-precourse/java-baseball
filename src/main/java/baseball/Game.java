@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.dto.GameStatus;
 import baseball.dto.Result;
-import baseball.model.Balls;
+import baseball.dto.Balls;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Referee;
