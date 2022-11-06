@@ -9,7 +9,7 @@ public class BaseballGameManager {
         while(true) {
             int inputNum = IOManager.inputNumber();
 
-            if(AnswerCompareManager.compareAnswer(answer, inputNum)) {
+            if(new AnswerCompareManager().compareAnswer(answer, inputNum)) {
                 IOManager.correctAnswer();
                 break;
             }

@@ -1,8 +1,9 @@
 package baseball;
 
 public class AnswerCompareManager {
-    public static boolean compareAnswer(int answer, int input) {
+    public boolean compareAnswer(int answer, int input) {
         int ballNum = 0, strikeNum = 0;
+        
         String answerStr = String.valueOf(answer);
         String inputStr = String.valueOf(input);
 
