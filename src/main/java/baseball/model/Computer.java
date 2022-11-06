@@ -8,6 +8,7 @@ public class Computer {
     private List<Integer> randomNum;
     private int strike;
     private int ball;
+    private boolean nothing;
 
     public List<Integer> generateRandomNumList(){
         this.randomNum = new ArrayList<>();
@@ -37,4 +38,14 @@ public class Computer {
             }
         }
     }
+
+    private void checkNothing(){
+        int sumStrikeAndBall = strike + ball;
+        if (sumStrikeAndBall == 0) {
+            nothing=true;
+        }
+    }
+
+
+
 }
