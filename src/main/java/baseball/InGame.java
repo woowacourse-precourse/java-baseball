@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InGame {
     private final BaseballUtil baseballUtil;
     private final int answer;
@@ -24,8 +27,17 @@ public class InGame {
         return true;
     }
 
-    private int createRandomInt() {
-        return 0;
+    public int createRandomInt() {
+        int random_int = 0;
+
+        List<Integer> random_pick = Randoms.pickUniqueNumbersInRange(0, 9, 3);
+
+        for(int i = 0; i < 3; i++) {
+            random_int *= 10;
+            random_int += random_pick.get(i);
+        }
+
+        return random_int;
     }
 
     private void announceUserInput() {
