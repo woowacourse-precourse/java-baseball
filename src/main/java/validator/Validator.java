@@ -29,4 +29,11 @@ public class Validator {
             throw new IllegalArgumentException(DUPLICATION_VALIDATION_FAILED);
         return true;
     }
+
+    public static boolean validate(String input) {
+        validateLength(input, 3);
+        validateEachDigit(input);
+        validateNoDuplication(input);
+        return true;
+    }
 }

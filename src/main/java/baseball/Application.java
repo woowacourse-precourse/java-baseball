@@ -3,6 +3,7 @@ package baseball;
 import generator.GameNumberGenerator;
 import io.IOProcessor;
 import referee.Referee;
+import validator.Validator;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,10 +16,10 @@ public class Application {
             if(isFirstGame)
                 System.out.println("숫자 야구 게임을 시작합니다.");
             String answer = generator.getNumber(); // 정답 생성
-            System.out.println("answer = " + answer);
             boolean finished = false;
             while(!finished) {
                 String expected = IOProcessor.getUserInput("숫자를 입력해주세요 :", " ");
+                Validator.validate(expected); // 사용자가 입력한 값에 대한 유효성 검증
                 finished = referee.decision(expected, answer);
                 System.out.println(referee.buildDecisionString());
             }

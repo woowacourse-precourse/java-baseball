@@ -69,4 +69,24 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
     }
+
+    @Test
+    @DisplayName("게임에서 사용할 수 있는 값인 가에 대한 종합적인 평가를 잘 하는 지 확인")
+    void validate_test() {
+        String input1 = "123";
+        String input2 = "1234";
+        String input3 = "12a";
+        String input4 = "122";
+
+        assertThat(Validator.validate(input1)).isTrue();
+        assertThatThrownBy(() -> Validator.validate(input2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(LENGTH_VALIDATION_FAILED);
+        assertThatThrownBy(() -> Validator.validate(input3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DIGIT_VALIDATION_FAILED);
+        assertThatThrownBy(() -> Validator.validate(input4))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
+    }
 }
