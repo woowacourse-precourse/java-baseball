@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -30,9 +31,11 @@ public class Application {
             String input = Console.readLine();
 
             String[] inputSplits = input.split("");
-
+            int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
         }
     }
 
+    private static void printNumberStatus(Integer[] inputSplits, List<Integer> computer){
 
+    }
 }
