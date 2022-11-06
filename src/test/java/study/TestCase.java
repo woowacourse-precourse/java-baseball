@@ -101,6 +101,15 @@ public class TestCase {
         assertThatThrownBy(() -> playerNumber.verifyNumber(num))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 재시작이나_게임종료에_해당하지_않는_입력이_들어왔을때_예외_발생() {
+        String input = "3";
+        Computer computer = new Computer();
+        assertThatThrownBy(() -> computer.getStatusByInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 /*
     @Test
     void 컴퓨터가_플레이어에게_받은_수와_자신의_수를_비교_결과출력() {
