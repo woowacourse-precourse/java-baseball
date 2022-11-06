@@ -15,7 +15,22 @@ public class GameManager {
             Game game = new Game();
             game.run();
 
+            token = checkRestartGame();
         }
     }
 
+    public static boolean checkRestartGame() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = StringConverter.toInteger(Console.readLine().strip());
+        InputValidator.validateRestartChoice(choice);
+        return checkChoice(choice);
+    }
+
+    private static boolean checkChoice(int choice) {
+        if (choice == 1) {
+            return true;
+        }
+        return false;
+    }
 }
