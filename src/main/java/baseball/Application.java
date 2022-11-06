@@ -35,6 +35,27 @@ public class Application {
         return true;
     }
 
+    public static int checkStrike(String randomNumber, String inputNumber) {
+        int result = 0;
+        for (int i = 0; i < randomNumber.length(); i++) {
+            if (randomNumber.charAt(i) == inputNumber.charAt(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public static int checkBall(String randomNumber, String inputNumber) {
+        int result = 0;
+        for (int i = 0; i < inputNumber.length(); i++) {
+            String currentCharacter = Character.toString(inputNumber.charAt(i));
+            if (randomNumber.contains(currentCharacter) && randomNumber.charAt(i) != inputNumber.charAt(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
     public static boolean isAllUnique(String number) {
         HashSet<String> hashSet = new HashSet<>();
         for (int i = 0; i < number.length(); i++) {
