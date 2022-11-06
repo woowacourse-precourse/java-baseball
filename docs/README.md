@@ -43,9 +43,6 @@
 `List<Integer> disassembleDigitNumber(int number)`
 - 입력받은 값의 각 자리의 정수를 획득하고 리스트에 저장한다
 - 리스트를 반환한다 ex) 425 -> [5, 2, 4]
-`List<Integer> toPlaceValue(List<Integer> disassembledNumber)`
-- 각 자리의 정수 리스트를 자릿값으로 변환한다
-- ex) [5, 2, 4] -> [5, 20, 400]
 
 ###사용자에게 입력을 받고, 입력값이 유효값인지 확인한다
 `bool isValidData(int userInput)`
