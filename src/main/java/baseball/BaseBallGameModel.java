@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGameModel {
-    private int ball, strike;
     private List<Integer> computerNumbers = new ArrayList<>();
     private boolean isFinish;
 
     public int ballCount(List<Integer> userNumbers) {
-        ball = 0;
+        int ball = 0;
 
         for (int i = 0; i < computerNumbers.size(); i++) {
             if (computerNumbers.contains(userNumbers.get(i))
@@ -23,7 +22,7 @@ public class BaseBallGameModel {
     }
 
     public int strikeCount(List<Integer> userNumbers) {
-        strike = 0;
+        int strike = 0;
 
         for (int i = 0; i < computerNumbers.size(); i++) {
             if (computerNumbers.get(i) == userNumbers.get(i))
