@@ -1,17 +1,25 @@
 package baseball.game.rule;
 
 
+import baseball.game.enums.Result;
+
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 
 public class BallCountRule implements Rule {
 
     private static final Rule instance = new BallCountRule();
+    private static final Result result = Result.BALL;
 
     private BallCountRule() {
     }
 
     public static Rule getInstance() {
         return instance;
+    }
+
+    @Override
+    public Result getResult() {
+        return result;
     }
 
     @Override
