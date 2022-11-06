@@ -50,7 +50,7 @@ public class GameManager {
             sb.append(String.format("%d볼 ", score[BALL]));
         }
         if(score[STRIKE] != 0){
-            sb.append(String.format("%스트라이크", score[STRIKE]));
+            sb.append(String.format("%d스트라이크", score[STRIKE]));
         }
         System.out.println(sb);
     }
