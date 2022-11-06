@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Constants.DEFAULT_SIZE;
 import static baseball.Constants.INPUT_LENGTH_EXCEPTION;
 import static baseball.Constants.INPUT_OTHER_NUMBER_EXCEPTION;
+import static baseball.Constants.INPUT_RESTART_EXCEPTION;
 import static baseball.Constants.NUMBER_FORMAT_EXCEPTION;
 import static baseball.Constants.RANGE_OF_BALL_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -187,5 +188,19 @@ class BaseballGameTest {
             ball = (int) ballMethod.invoke(game, answer, user, ball, i);
         }
         assertThat(ball).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @DisplayName("재시작 문구 시 사용자 입력값이 1, 2가 아닐 때 예외")
+    @ValueSource(strings = {"a", "", "3"})
+    void validRestartInput(String input) throws Exception {
+        Method restartMethod = BaseballGame.class.getDeclaredMethod("restart", String.class);
+        restartMethod.setAccessible(true);
+
+        try {
+            restartMethod.invoke(game, input);
+        } catch (InvocationTargetException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo(INPUT_RESTART_EXCEPTION);
+        }
     }
 }
