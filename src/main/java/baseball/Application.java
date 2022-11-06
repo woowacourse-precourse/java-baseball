@@ -47,13 +47,31 @@ public class Application {
         }
         return num;
     }
+
+    private static void printResult(int[] res) {
+        if(res[0] > 0 && res[1] > 0) {
+            System.out.println(res[1] + "볼 " + res[0] + "스트라이크");
+        } else if(res[0] > 0) {
+            System.out.println(res[0] + "스트라이크");
+        } else if(res[1] > 0) {
+            System.out.println(res[1] + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
     private static Integer playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         HashMap computer = chooseComputerNumber();
         System.out.println(computer);
-        String user = inputUserNumber();
-        int[] result = matchNumber(computer, user);
-        System.out.println(Arrays.toString(result));
+        while(true) {
+            String user = inputUserNumber();
+            int[] result = matchNumber(computer, user);
+            printResult(result);
+            if (result[0] == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
 
         return 2;
     }
