@@ -18,7 +18,6 @@ public class Application {
             String result = "";
             while (!result.equals("3스트라이크")) {
                 result = score(userNumber(),computer);
-
                 System.out.println(result);
             }
             if (!playAgain()) break;
@@ -26,7 +25,7 @@ public class Application {
     }
 
     private static List<Integer> userNumber() {
-        System.out.print("숫자를 입력해주세요 : "); // 왜 두번받을까?
+        System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userNumber = new ArrayList<>();
         String inputNumber = Console.readLine();
 
