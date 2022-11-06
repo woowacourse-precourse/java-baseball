@@ -21,9 +21,14 @@ public class Application {
         }
         return computerNumbers;
     }
+
+    public static void userNumberMessagePrint(){
+        System.out.print("숫자를 입력하세요 : ");
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
         randomNumberCreate();
+        userNumberMessagePrint();
     }
 }
