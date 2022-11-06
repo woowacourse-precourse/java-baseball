@@ -7,6 +7,7 @@ import java.util.List;
 
 public class UseFunc {
 
+    final static String MSG_INPUT_NUM = "숫자를 입력해주세요.";
     final static int ONLY_ONE_THING_SAME = 1;
     final static int INIT_NUM = 0;
 
@@ -78,4 +79,13 @@ public class UseFunc {
     public static String getString() {
         return readLine();
     }
+
+    public static int parseIntFromStr(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(MSG_INPUT_NUM);
+        }
+    }
+
 }
