@@ -56,4 +56,48 @@ public class ComputerTest {
         assertThat(method.invoke(game, 3)).isEqualTo(true);
         assertThat(method.invoke(game, 1)).isEqualTo(false);
     }
+
+
+    @Test
+    void 서로_다른_임의의_수_3개를_선택하는_기능() throws Exception {
+        //given
+        Computer computer = new Computer();
+        Method method = Computer.class.getDeclaredMethod("initComputerNumber");
+        method.setAccessible(true);
+        method.invoke(computer);
+
+        Field field = Computer.class.getDeclaredField("computerNumber");
+        field.setAccessible(true);
+
+        List<Integer> computerNumber = (List<Integer>) field.get(computer);
+
+        //when
+
+        //then
+        assertThat(isNaturalNumber(computerNumber)).isEqualTo(true);
+        assertThat(isRightLength(computerNumber)).isEqualTo(true);
+        assertThat(isContainOverlapNumber(computerNumber)).isEqualTo(false);
+    }
+
+    private static boolean isNaturalNumber(List<Integer> computerNumber) {
+        for (int num : computerNumber) {
+            if(!(0 < num && num < 10)) return false;
+        }
+        return true;
+    }
+
+    private static boolean isContainOverlapNumber(List<Integer> computerNumber) {
+        Set<Integer> numbers = new HashSet<>();
+
+        for (Integer num : computerNumber) {
+            if(!numbers.add(num)) return true;
+        }
+
+        return false;
+    }
+
+    private static boolean isRightLength(List<Integer> computerNumber) {
+        if(computerNumber.size() != LENGTH) return false;
+        return true;
+    }
 }
