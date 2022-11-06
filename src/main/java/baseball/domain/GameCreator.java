@@ -9,11 +9,9 @@ import java.io.IOException;
 public abstract class GameCreator {
     public abstract Game createGame() throws IOException;
 
-    void startGame() {
+    void startGame() throws IOException {
         Game game = createGame();
-        UserInput input = new BaseBallInput();
-        game.validate(input);
-        game.startGame(input);
-
+        game.startGame();
+        UserInput userInput = new BaseBallInput();
     }
 }

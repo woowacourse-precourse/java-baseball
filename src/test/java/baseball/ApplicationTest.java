@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.domain.Player;
 import baseball.domain.Validator;
 import baseball.domain.game.baseball.ConcreteGameBaseBall;
 import camp.nextstep.edu.missionutils.test.NsTest;
