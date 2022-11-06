@@ -34,6 +34,9 @@ public class Application {
             // 볼,스트라이크 체크
             List<Integer> result = checkStrikeOrBall(computerNumber, usersNumber);
 
+            // 결과 출력
+            announcedResult(result);
+
             // 정답 시 재시작/종료 탐색 기능
             usersAnswer = reGameOrEnd(usersNumber());
 
@@ -42,6 +45,25 @@ public class Application {
     }
 
 
+    private static void announcedResult(List<Integer> result) {
+
+        Integer ball = result.get(0);
+        Integer strike = result.get(1);
+
+        if(strike == 3){
+            System.out.println(strike+"스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+        else if (ball > 0 && strike > 0) {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        } else if (ball > 0 && strike == 0) {
+            System.out.println(ball+"볼");
+        } else if (ball == 0 && strike > 0) {
+            System.out.println(strike+"스트라이크");
+        }
+
+    }
 
     private static List<Integer> checkStrikeOrBall(List<Integer> computerNumber, String usersNumber) {
 
