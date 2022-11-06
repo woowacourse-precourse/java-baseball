@@ -1,8 +1,8 @@
 package baseball.utils;
 
-import static baseball.constant.GameConstants.*;
-
 import java.util.Arrays;
+
+import baseball.constant.GameConstants;
 
 public class Validator {
 	public static void validateNumberInput(String numberInput) throws IllegalArgumentException {
@@ -12,7 +12,7 @@ public class Validator {
 	}
 
 	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException {
-		if (!input.equals(RESTART_GAME) && !input.equals(END_GAME)) {
+		if (!input.equals(GameConstants.RESTART_GAME) && !input.equals(GameConstants.END_GAME)) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -23,10 +23,10 @@ public class Validator {
 
 	private static boolean existInvalidDigits(String numberInput) {
 		return Arrays.stream(numberInput.split(""))
-			.anyMatch(digit -> !VALID_DIGITS.contains(Integer.parseInt(digit)));
+			.anyMatch(digit -> !GameConstants.VALID_DIGITS.contains(Integer.parseInt(digit)));
 	}
 
 	private static boolean haveInvalidLength(String numberInput) {
-		return numberInput.length() != LENGTH_OF_NUMBER;
+		return numberInput.length() != GameConstants.LENGTH_OF_NUMBER;
 	}
 }

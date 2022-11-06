@@ -2,15 +2,11 @@ package baseball.view;
 
 import baseball.constant.ViewConstants;
 
-public class Printer {
+public class OutputView {
 	private static final String SPACE = " ";
 
 	public static void printGameStartMessage() {
 		System.out.println(ViewConstants.GAME_START_MESSAGE.get());
-	}
-
-	public static void printAskingInputMessage() {
-		System.out.print(ViewConstants.ASKING_INPUT_MESSAGE.get());
 	}
 
 	public static void printResult(int ballsCount, int strikesCount) {
@@ -47,8 +43,4 @@ public class Printer {
 		System.out.println();
 	}
 
-	public static void printRestartOrNotMessage(String restartGame, String endGame) {
-		System.out.printf(ViewConstants.RESTART_OR_NOT_MESSAGE.get(), restartGame, endGame);
-		System.out.println();
-	}
 }

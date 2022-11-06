@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RandomNumberGenerator {
-	public List<Integer> generateRandomNumber() {
+	public static List<Integer> generateRandomNumber() {
 		List<Integer> randomNumber = new ArrayList<>();
 
 		while (randomNumber.size() < LENGTH_OF_NUMBER) {

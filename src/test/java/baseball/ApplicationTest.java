@@ -1,12 +1,10 @@
 package baseball;
 
-import static baseball.utils.Converter.*;
-import static baseball.domain.Guess.*;
-import static baseball.view.Printer.*;
-import static baseball.controller.Restarter.*;
 import static baseball.constant.GameConstants.*;
+import static baseball.controller.RestartController.*;
+import static baseball.utils.Converter.*;
+import static baseball.view.OutputView.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static baseball.domain.BallsAndStrikesCountCalculator.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -15,60 +13,62 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import baseball.controller.Game;
-import baseball.utils.Input;
 import baseball.constant.ViewConstants;
+import baseball.controller.GameController;
+import baseball.controller.RestartController;
+import baseball.domain.Comparator;
+import baseball.utils.Converter;
+import baseball.utils.InputGetter;
+import baseball.utils.RandomNumberGenerator;
 import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import baseball.utils.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
 	void restart_메소드로_게임_재시작_여부_리턴() {
+		RestartController restartController = new RestartController();
 		System.setIn(new ByteArrayInputStream(END_GAME.getBytes()));
-		assertThat(restart()).isFalse();
+		assertThat(restartController.restart()).isFalse();
 		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		System.setIn(new ByteArrayInputStream(RESTART_GAME.getBytes()));
-		assertThat(restart()).isTrue();
+		assertThat(restartController.restart()).isTrue();
 
 	}
 
 	@Test
-	void play_메소드로_게임_실행() {
+	void control_메소드로_게임_실행() {
 		assertRandomNumberInRangeTest(() -> {
 			final byte[] buf = String.join("\n", "624", "135", "361", "531", "371").getBytes();
 			System.setIn(new ByteArrayInputStream(buf));
-			Game game = new Game();
-			game.play();
+			GameController gameController = new GameController();
+			gameController.control();
 			assertThat(output()).contains("낫싱", "2볼", "2스트라이크", "1볼 1스트라이크", "3스트라이크");
 		}, 3, 7, 1);
 	}
 
 	@Test
-	void guess_메소드로_정답을_추측하는_기능_구현() {
+	void Comparator_클래스로_정답과_입력을_비교하는_기능_구현() {
 		List<Integer> answer = List.of(4, 9, 2);
+		Comparator comparator = new Comparator(answer);
 		String wrongInput = "283";
 		System.setIn(new ByteArrayInputStream(wrongInput.getBytes()));
-		assertThat(guess(answer)).isFalse();
+		List<Integer> digits1 = Converter.convertStringToIntegerList(wrongInput);
+		comparator.compare(digits1);
+		assertThat(comparator.isCorrect()).isFalse();
 
 		String rightInput = "492";
 		System.setIn(new ByteArrayInputStream(rightInput.getBytes()));
-		assertThat(guess(answer)).isTrue();
+		List<Integer> digits2 = Converter.convertStringToIntegerList(rightInput);
+		comparator.compare(digits2);
+		assertThat(comparator.isCorrect()).isTrue();
 
-		assertThat(output()).isEqualTo("숫자를 입력해주세요 : 1볼\n숫자를 입력해주세요 : 3스트라이크");
+		assertThat(output()).isEqualTo("1볼\n3스트라이크");
 	}
 
 	@Test
 	void convertStringToIntegerList_메소드로_문자열을_정수_리스트로_변환() {
 		assertThat(convertStringToIntegerList("746")).isInstanceOf(ArrayList.class);
-	}
-
-	@Test
-	void printRestartOrNotMessage_메소드로_게임_재시작_여부_입력_안내를_출력() {
-		printRestartOrNotMessage(RESTART_GAME, END_GAME);
-		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
-		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
 
 	@Test
@@ -110,13 +110,6 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void printAskInputMessage_메소드로_숫자_입력_안내_출력() {
-		printAskingInputMessage();
-		System.out.print("이 문장은 숫자 입력 안내 문장과 같은 줄에 출력되어야 합니다.");
-		assertThat(output()).isEqualTo("숫자를 입력해주세요 : 이 문장은 숫자 입력 안내 문장과 같은 줄에 출력되어야 합니다.");
-	}
-
-	@Test
 	void printGameStartMessage_메소드로_게임_시작_안내_출력() {
 		printGameStartMessage();
 		System.out.print("이 문장은 게임 시작 안내 문장 다음 줄에 출력되어야 합니다.");
@@ -124,27 +117,12 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void calculateBallsCount_메소드로_볼_수_계산() {
-		List<Integer> number = List.of(3, 2, 1);
-		List<Integer> answer = List.of(2, 3, 1);
-		assertThat(calculateBallsCount(number, answer)).isEqualTo(2);
-	}
-
-	@Test
-	void calculateStrikesCount_메소드로_스트라이크_수_계산() {
-		List<Integer> number = List.of(3, 8, 4);
-		List<Integer> answer = List.of(2, 8, 5);
-		assertThat(calculateStrikesCount(number, answer)).isEqualTo(1);
-	}
-
-	@Test
 	void generateRandomNumber_메소드로_서로_다른_세개의_숫자_선택() {
-		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-		assertThat(randomNumberGenerator.generateRandomNumber()).doesNotHaveDuplicates();
+		assertThat(RandomNumberGenerator.generateRandomNumber()).doesNotHaveDuplicates();
 	}
 
 	@Test
-	void validateRestartOrNot_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
+	void validateRestartOrNotInput_메소드로_재시작_여부에_대한_유효하지_않은_입력_예외_처리() {
 		String input = "3";
 		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input)).isInstanceOf(
 			IllegalArgumentException.class);
@@ -172,7 +150,7 @@ class ApplicationTest extends NsTest {
 	void getUserInput_메소드로_유저_입력_받기() {
 		String input = "768";
 		System.setIn(new ByteArrayInputStream(input.getBytes()));
-		assertThat(Input.getUserInput()).isEqualTo("768");
+		assertThat(InputGetter.getUserInput()).isEqualTo("768");
 	}
 
 	@Test
