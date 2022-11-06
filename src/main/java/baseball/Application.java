@@ -25,7 +25,33 @@ public class Application {
                 }
             }
 
-            
+            System.out.print("숫자를 입력해주세요 : ");
+            String player = Console.readLine();         // Console의 readLine() 사용
+
+            // 잘못된 입력 - IllegalArgumentException 발생
+            if(player.isEmpty() || !Character.isDigit(Integer.parseInt(player))){
+                throw new IllegalArgumentException("잘못된 입력입니다!");
+            }
+
+            // 2. 스트라이크 볼 낫싱 판별
+            int j=0;
+            for(int i=0; i<numbers.size(); i++){
+                char playerNumbers = player.charAt(j);
+                if((i == j) && (numbers.get(i) == playerNumbers)){
+                    strike++;
+                    System.out.print(strike+"스트라이크 ");
+                    j++;
+                }
+                else if((i != j) && (numbers.get(i) == playerNumbers)){
+                    ball++;
+                    System.out.print(ball+"볼 ");
+                    j++;
+                }
+                else{
+                    j++;
+                    System.out.print("낫싱");
+                }
+            }
         }
     }
 }
