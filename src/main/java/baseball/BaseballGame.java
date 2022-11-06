@@ -16,6 +16,10 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    public void printGameResultMessage(BaseballGameResult gameResult) {
+        System.out.println(gameResult);
+    }
+
     public List<Integer> generateRandomAnswerNums() {
         List<Integer> randomNums = new ArrayList<>();
         while (randomNums.size() < 3) {
