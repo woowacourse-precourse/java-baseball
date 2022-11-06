@@ -1,4 +1,4 @@
-package baseball.Player;
+package baseball.player;
 
 final class ExceptionMessage {
     static final String NOT_INPUT = "플레이어가 숫자 3개를 입력하지 않았습니다.";
