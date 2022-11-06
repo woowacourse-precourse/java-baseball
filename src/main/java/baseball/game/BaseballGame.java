@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.constant.GameConstant.RESTART;
+import static baseball.constant.GameConstant.*;
 import static baseball.constant.GameMessage.*;
 import static baseball.game.ComputerNumber.createComputerNumber;
 import static baseball.exception.RestartNumberValidator.checkValidationRestartNumber;
@@ -21,7 +21,7 @@ public class BaseballGame {
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
         resetStrikeBall();
-        while (strike!=3) {
+        while (strike!=BALL_LEN) {
             userNumbers = checkInputUserNumber();
             resetStrikeBall();
             compareNumber();
@@ -34,7 +34,7 @@ public class BaseballGame {
     public static void compareNumber(){
         int userNumber;
         int computerNumber;
-        for(int i=0;i<3;i++){
+        for(int i=ZERO;i<BALL_LEN;i++){
             userNumber = userNumbers.get(i);
             computerNumber = computerNumbers.get(i);
             if (!includeSame(userNumber)) continue;

@@ -3,6 +3,7 @@ package baseball.exception;
 import java.util.List;
 
 import static baseball.constant.GameConstant.BALL_LEN;
+import static baseball.constant.GameConstant.ZERO;
 
 public class UserNumberValidator {
 
@@ -21,6 +22,6 @@ public class UserNumberValidator {
     }
 
     public static boolean isNotZero(List<Integer> userNumberList){
-        return !userNumberList.contains(0);
+        return !userNumberList.contains(ZERO);
     }
 }
