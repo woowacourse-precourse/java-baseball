@@ -10,18 +10,28 @@ import static baseball.Constant.*;
 public class UserInput {
     private String input;
     private List<Integer> numbers;
+    private String reStartOrQuitInput;
 
     public void putNumbers(List<Integer> numbers) {
         Score score = new Score();
         score.userNumbers(numbers);
     }
-    
-    public void inputNumbers() {
+
+    public void inputNumbers() { // 추후에 이름 변경 필요 numbers
         PrintMessage.enterNumber();
         this.input = Console.readLine();
         isValid();
         convertNumbers();
         putNumbers(numbers);
+    }
+
+    public String chooseReStartOrQuit() {
+        PrintMessage.chooseRestartOrQuitGame();
+        this.reStartOrQuitInput = Console.readLine();
+        isValidRestartOrQuitGame();
+
+        // 다시 시작하는 것하고 끝내는것 구분
+        return this.reStartOrQuitInput;
     }
 
     private void convertNumbers() {
@@ -36,7 +46,7 @@ public class UserInput {
     }
 
     public void isValidRestartOrQuitGame() {
-        if (! isValidReStartMessage() || ! isValidQuitGameMessage()) {
+        if (!(isValidReStartMessage() || isValidQuitGameMessage())) {
             throw new IllegalArgumentException("새로운 게임을 원하시면 1, 게임 종료를 원하시면 2를 입력해주세요");
         }
     }
@@ -46,11 +56,11 @@ public class UserInput {
     }
 
     private boolean isValidReStartMessage() {
-        return input.equals(RE_START_INPUT);
+        return this.reStartOrQuitInput.equals(RE_START_INPUT);
     }
 
     private boolean isValidQuitGameMessage() {
-        return input.equals(QUIT_GAME_INPUT);
+        return this.reStartOrQuitInput.equals(QUIT_GAME_INPUT);
     }
 
     private boolean isValidGuessNumber() {

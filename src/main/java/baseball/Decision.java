@@ -5,11 +5,14 @@ import java.util.HashMap;
 import static baseball.Constant.*;
 
 public class Decision {
+
+    public static boolean out = false;
+
     public static void call() {
-        HashMap<String, Integer> result = Score.getTotal();
+        HashMap<String, Integer> result = Score.total();
         if (result.get(STRIKE) == 3) {
             PrintMessage.onlyStrikeCount();
-            PrintMessage.gameEnd();
+            out();
             return;
         }
         if (result.get(STRIKE) != 0 && result.get(BALL) != 0) {
@@ -28,5 +31,7 @@ public class Decision {
         PrintMessage.notThing();
     }
 
-
+    public static void out() {
+        out = true;
+    }
 }
