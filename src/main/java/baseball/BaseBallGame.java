@@ -40,6 +40,11 @@ class BaseBallGame {
     public boolean reStartGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answerToReplay = Console.readLine();
+
+        if(!answerToReplay.equals("1") && !answerToReplay.equals("2")) {
+            throw new IllegalArgumentException("재시작에 대한 입력이 잘못되었습니다.");
+        }
+
         if(answerToReplay.equals("1")) {
             return true;
         }
@@ -107,12 +112,11 @@ class BaseBallGame {
     }
 
     private int getRandomDiff3DigitNumber() {
-        String usedNumber = "";
         String randomDiff3DigitNumber = "";
 
         while (randomDiff3DigitNumber.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!usedNumber.contains(Integer.toString(randomNumber))) {
+            if (!randomDiff3DigitNumber.contains(Integer.toString(randomNumber))) {
                 randomDiff3DigitNumber += Integer.toString(randomNumber);
             }
         }
