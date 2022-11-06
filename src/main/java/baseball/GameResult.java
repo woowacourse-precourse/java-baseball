@@ -42,4 +42,16 @@ public class GameResult {
             this.ball = ball;
         }
     }
+
+    public void addStrike() {
+        if (strike < 3) {
+            strike++;
+        }
+    }
+
+    public void addBall() {
+        if (ball < 3) {
+            ball++;
+        }
+    }
 }
