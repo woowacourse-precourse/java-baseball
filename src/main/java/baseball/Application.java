@@ -58,6 +58,10 @@ class GameProcessor {
     private int[] userValue = {-1, -1, -1};
     private int[] computerValue = {-1, -1, -1};
 
+    public int getLastInputInt() {
+        return lastInputInt;
+    }
+
     public int[] getUserValue() {
         return userValue;
     }
@@ -197,7 +201,6 @@ class GameFinisher {
 public class Application {
 
     public static void main(String[] args) {
-
 
     }
 
