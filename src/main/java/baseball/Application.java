@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,5 +21,12 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static void playGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true){
+
+        }
     }
 }
