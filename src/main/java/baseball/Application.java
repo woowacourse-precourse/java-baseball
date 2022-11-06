@@ -41,9 +41,11 @@ public class Application {
     boolean result
      */
     static boolean checkStrike(List<Integer> computer, int number, int digit) {
+        // 해당 자릿수와 number가 같으면 -> strike 처리
         if (computer.get(digit) == number) {
             return true;
         }
+        // 다르면 -> strike가 아님
         return false;
     }
 
@@ -67,7 +69,7 @@ public class Application {
             if (i == digit) {
                 continue;
             }
-            // 다른 자리에서 숫자가 같으면 -> ball처리
+            // 다른 자리에서 숫자가 같으면 -> ball 처리
             if (computer.get(i) == number) {
                 return true;
             }
