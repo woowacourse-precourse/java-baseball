@@ -1,5 +1,6 @@
 package baseball.domain.number;
 
+import baseball.domain.SingleNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

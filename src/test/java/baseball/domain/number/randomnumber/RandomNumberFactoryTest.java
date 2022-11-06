@@ -1,9 +1,10 @@
 package baseball.domain.number.randomnumber;
 
+import baseball.domain.randomnumber.RandomNumbers;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 
-import static baseball.domain.number.randomnumber.RandomNumberFactory.newInstance;
+import static baseball.domain.randomnumber.RandomNumberFactory.newInstance;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomNumberFactoryTest {

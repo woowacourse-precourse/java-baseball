@@ -1,13 +1,12 @@
 package baseball.domain;
 
-import baseball.domain.count.CountResult;
-import baseball.domain.number.inputnumber.InputNumbers;
-import baseball.domain.number.randomnumber.RandomNumberFactory;
-import baseball.domain.number.randomnumber.RandomNumbers;
+import baseball.domain.inputnumber.InputNumbers;
+import baseball.domain.randomnumber.RandomNumberFactory;
+import baseball.domain.randomnumber.RandomNumbers;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
-import static baseball.domain.number.inputnumber.InputNumberFactory.newInstance;
+import static baseball.domain.inputnumber.InputNumberFactory.newInstance;
 
 public class BaseballGame {
 

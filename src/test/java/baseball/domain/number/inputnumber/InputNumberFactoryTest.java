@@ -3,7 +3,7 @@ package baseball.domain.number.inputnumber;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static baseball.domain.number.inputnumber.InputNumberFactory.newInstance;
+import static baseball.domain.inputnumber.InputNumberFactory.newInstance;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputNumberFactoryTest {

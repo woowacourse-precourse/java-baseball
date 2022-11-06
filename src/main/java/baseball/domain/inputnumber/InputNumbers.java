@@ -1,6 +1,6 @@
-package baseball.domain.number.inputnumber;
+package baseball.domain.inputnumber;
 
-import baseball.domain.number.SingleNumber;
+import baseball.domain.SingleNumber;
 
 import java.util.List;
 

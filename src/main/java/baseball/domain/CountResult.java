@@ -1,4 +1,4 @@
-package baseball.domain.count;
+package baseball.domain;
 
 public class CountResult {
 

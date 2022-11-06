@@ -1,8 +1,8 @@
-package baseball.domain.number.randomnumber;
+package baseball.domain.randomnumber;
 
-import baseball.domain.count.CountResult;
-import baseball.domain.number.SingleNumber;
-import baseball.domain.number.inputnumber.InputNumbers;
+import baseball.domain.CountResult;
+import baseball.domain.SingleNumber;
+import baseball.domain.inputnumber.InputNumbers;
 
 import java.util.List;
 

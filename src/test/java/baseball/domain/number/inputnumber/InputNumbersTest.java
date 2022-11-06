@@ -1,6 +1,8 @@
 package baseball.domain.number.inputnumber;
 
-import baseball.domain.number.SingleNumber;
+import baseball.domain.inputnumber.InputNumberFactory;
+import baseball.domain.inputnumber.InputNumbers;
+import baseball.domain.SingleNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

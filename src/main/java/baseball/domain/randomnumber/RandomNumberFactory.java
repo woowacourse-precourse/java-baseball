@@ -1,6 +1,6 @@
-package baseball.domain.number.randomnumber;
+package baseball.domain.randomnumber;
 
-import baseball.domain.number.SingleNumber;
+import baseball.domain.SingleNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
