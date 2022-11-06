@@ -1,12 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BaseballGame {
     private final int LENGTH_OF_NUMBER = 3;
@@ -26,7 +23,7 @@ public class BaseballGame {
         computer.createNumber();
         printGameStartStatement();
 
-        while(isEnd == false) {
+        while(!isEnd) {
             initializeTurn();
             printInputStatement();
             getPlayerNumber();
