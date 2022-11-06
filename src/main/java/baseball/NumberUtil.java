@@ -23,8 +23,9 @@ public class NumberUtil {
         }
         return randomNumberList;
     }
-    
+
     public static List<Integer> input() {
+        System.out.println("숫자를 입력해주세요 : ");
         return parse(Console.readLine());
     }
 
