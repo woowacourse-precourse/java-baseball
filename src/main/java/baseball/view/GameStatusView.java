@@ -19,12 +19,17 @@ public class GameStatusView {
     }
 
     public String inquireOpinion(){
+        clearOpinion();
         while(isNotCorrectAnswer()){
             askOpinion();
             readOpinion();
             checkAlert();
         }
         return getOpinion();
+    }
+
+    public void clearOpinion(){
+        opinion = "";
     }
 
     public void askOpinion(){
