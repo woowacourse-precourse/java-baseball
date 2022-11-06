@@ -8,6 +8,7 @@ import java.util.Map;
 public class BallReader {
     private static String BALL = "BALL";
     private static String STRIKE = "STRIKE";
+    private static String MISS = "MISS";
     private int requiredStrikes;
 
     public BallReader() {
@@ -15,38 +16,46 @@ public class BallReader {
     }
 
     public boolean isFinished(Ball userBall, Ball computerBall) {
-        Map<String, Integer> result = getResult(userBall, computerBall);
+        Map<String, Integer> result = getStrikeAndBall(userBall, computerBall);
         if (result.get(STRIKE) == null) {
             return false;
         }
         return result.get(STRIKE) == requiredStrikes;
     }
 
-    public Map<String, Integer> getResult(Ball userBall, Ball computerBall) {
+    public Map<String, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
         validateBalls(userBall, computerBall);
-        List<String> ballData = evaluateBall(userBall, computerBall);
-        return makeResult(ballData);
+        List<String> strikeAndBall = makeStrikeAndBall(userBall, computerBall);
+        return makeMapByStrikeAndBall(strikeAndBall);
     }
 
-    private List<String> evaluateBall(Ball userBall, Ball computerBall) {
-        final int noNumberInComputer = -1;
+    private List<String> makeStrikeAndBall(Ball userBall, Ball computerBall) {
+        List<String> strikeAndBallResult = new ArrayList<>();
+
         List<Integer> userBallData = userBall.getBallData();
         List<Integer> computerBallData = computerBall.getBallData();
-        List<String> strikeAndBallResult = new ArrayList<>();
+
         for (int number : userBallData) {
             int userIndex = userBallData.indexOf(number);
             int computerIndex = computerBallData.indexOf(number);
-            if (userIndex == computerIndex) {
-                strikeAndBallResult.add(STRIKE);
-            }
-            if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
-                strikeAndBallResult.add(BALL);
-            }
+            String result = judgeStrikeAndBall(userIndex, computerIndex);
+            strikeAndBallResult.add(result);
         }
         return strikeAndBallResult;
     }
 
-    private Map<String, Integer> makeResult(List<String> ballData) {
+    private String judgeStrikeAndBall(int userIndex, int computerIndex){
+        final int noNumberInComputer = -1;
+        if (userIndex == computerIndex) {
+            return STRIKE;
+        }
+        if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
+            return BALL;
+        }
+        return MISS;
+    }
+
+    private Map<String, Integer> makeMapByStrikeAndBall(List<String> ballData) {
         Map<String, Integer> result = new HashMap<>();
         for (String data : ballData) {
             result.computeIfPresent(data, (key, value) -> value + 1);
