@@ -10,14 +10,14 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PrintGameResultTest {
+class OutputViewTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
-    PrintGameResult printGameResult;
+    OutputView outputView;
 
     @BeforeEach
     void before() {
-        printGameResult = new PrintGameResult();
+        outputView = new OutputView();
         System.setOut(new PrintStream(output));
     }
 
@@ -43,7 +43,7 @@ class PrintGameResultTest {
         int strike = 0;
         int ball = 0;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "낫싱\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -53,7 +53,7 @@ class PrintGameResultTest {
         int strike = 1;
         int ball = 0;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "1스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -63,7 +63,7 @@ class PrintGameResultTest {
         int strike = 2;
         int ball = 0;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "2스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -73,7 +73,7 @@ class PrintGameResultTest {
         int strike = 3;
         int ball = 0;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
@@ -85,7 +85,7 @@ class PrintGameResultTest {
         int strike = 0;
         int ball = 1;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "1볼\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -95,7 +95,7 @@ class PrintGameResultTest {
         int strike = 0;
         int ball = 2;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "2볼\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -105,7 +105,7 @@ class PrintGameResultTest {
         int strike = 0;
         int ball = 3;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "3볼\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -115,7 +115,7 @@ class PrintGameResultTest {
         int strike = 1;
         int ball = 1;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "1볼 1스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -125,7 +125,7 @@ class PrintGameResultTest {
         int strike = 1;
         int ball = 1;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "1볼 1스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -135,7 +135,7 @@ class PrintGameResultTest {
         int strike = 1;
         int ball = 2;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "2볼 1스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
@@ -145,14 +145,14 @@ class PrintGameResultTest {
         int strike = 2;
         int ball = 2;
         Result result = new Result(strike, ball);
-        printGameResult.result(result);
+        outputView.result(result);
         String expectation = "2볼 2스트라이크\n";
         assertThat(output.toString()).isEqualTo(expectation);
     }
 
     @Test
     void 시작_출력문() {
-        printGameResult.startGame();
+        outputView.startGame();
         String expectation = "숫자를 입력해주세요 :" +
                 " ";
         assertThat(output.toString()).isEqualTo(expectation);
