@@ -1,6 +1,6 @@
 package baseball.opponent;
 
-import baseball.core.opponent.ComputerOpponent;
+import baseball.core.ComputerOpponent;
 import baseball.core.dto.BallStrikeDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
