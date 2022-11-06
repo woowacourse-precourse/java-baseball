@@ -76,7 +76,7 @@
 - [x] availableUserNumberIsChecking, 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
 - [x] userNumberMessagePrint함수를 실행
 - [x] userNumberInput함수를 실행
-- [ ] availableUserNumberIsChecked함수를 실행 후 출력값을 availableUserNumberIsChecking에 선언
+- [x] availableUserNumberIsChecked함수를 실행 후 출력값을 availableUserNumberIsChecking에 선언
 - [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행 후, 출력값을 userNumber에 저장
 - [ ] userNumber를 리턴
 
