@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.HashSet;
+
 public class Validator {
     public static final String LENGTH_EXCEPTION = "3자리 숫자만 입력할 수 있습니다.";
     public static final String HAVING_ANOTHER_CHARACTER_EXCEPTION = "숫자만 포함될 수 있습니다.";
@@ -29,7 +31,15 @@ public class Validator {
         }
     }
 
-    //TODO 서로 다른 숫자만 입력
+    public static void validateDuplicate(String numberString) {
+        HashSet<Character> setForDuplicate = new HashSet<>();
+        for (char numChar : numberString.toCharArray()) {
+            if (setForDuplicate.contains(numChar)) {
+                throw new IllegalArgumentException(HAVING_SAME_NUMBER_EXCEPTION);
+            }
+            setForDuplicate.add(numChar);
+        }
+    }
 
     //TODO 재식작 응답 검증 시 1,2 이외의 문자 X
 
