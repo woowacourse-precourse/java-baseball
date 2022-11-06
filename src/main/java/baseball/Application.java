@@ -15,59 +15,15 @@ public class Application {
         try {
             startGame();
         } catch (EndGameException e) {
-            System.out.println("게임을 종료합니다");
+            System.out.println(commonMessageMap.get("exitGame"));
+        } catch (IllegalArgumentException e) {
+            System.out.println("inputErrorMessage");
+            throw e;
         }
     }
 
     public static void initScanner() {
         scanner = new Scanner(System.in);
-    }
-
-    public static void startGame() {
-        initCommonMessageMap();
-        initComputerNumber();
-        System.out.println(computerNumber);
-
-        System.out.println(commonMessageMap.get("startMessage"));
-
-        while(true) {
-            System.out.print(commonMessageMap.get("inputMessage"));
-            String userInput = readeUserInput();
-
-            System.out.println("userInput = " + userInput);
-
-            validateUserInput(userInput);
-
-            String hintMessage = giveHint(userInput);
-            System.out.println(hintMessage);
-
-            if(checkUserInputIsThreeStrike(userInput)) {
-                decideExitOrProceed();
-            }
-
-        }
-    }
-
-    public static void decideExitOrProceed() throws EndGameException{
-        System.out.println(commonMessageMap.get("exitOrProceedMessage"));
-        String userInput = readeUserInput();
-
-        if (userInput.equals("1")) {
-            startGame();
-        }
-        else {
-            throw new EndGameException();
-        }
-    }
-
-    public static boolean checkUserInputIsThreeStrike(String userInput) {
-        int strikeCount = checkStrike(userInput);
-
-        if(strikeCount == 3) {
-            System.out.println(commonMessageMap.get("threeStrikeMessage"));
-            return true;
-        }
-        return false;
     }
 
     public static void initComputerNumber() {
@@ -87,8 +43,54 @@ public class Application {
         commonMessageMap.put("inputMessage", "숫자를 입력해주세요 : ");
         commonMessageMap.put("threeStrikeMessage", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         commonMessageMap.put("exitOrProceedMessage", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        commonMessageMap.put("errorMessage", "잘못된 형식을 입력했습니다, 프로그램을 종료합니다.");
+        commonMessageMap.put("inputErrorMessage", "잘못된 형식을 입력했습니다, 프로그램을 종료합니다.");
         commonMessageMap.put("exitGame", "게임을 종료합니다");
+    }
+
+    public static void startGame() {
+        initCommonMessageMap();
+        initComputerNumber();
+        System.out.println(computerNumber);
+
+        System.out.println(commonMessageMap.get("startMessage"));
+
+        while(true) {
+            System.out.print(commonMessageMap.get("inputMessage"));
+            String userInput = readeUserInput();
+
+            validateUserInput(userInput);
+
+            String hintMessage = giveHint(userInput);
+            System.out.println(hintMessage);
+
+            if(checkUserInputIsThreeStrike(userInput)) {
+                decideExitOrProceed();
+            }
+
+        }
+    }
+
+    // 1,2 아닌경우 대해서 수정 필요
+    public static void decideExitOrProceed() throws EndGameException {
+        System.out.println(commonMessageMap.get("exitOrProceedMessage"));
+        String userInput = readeUserInput();
+
+        if (userInput.equals("1")) {
+            startGame();
+        }
+        else {
+            throw new EndGameException();
+        }
+    }
+
+    public static boolean checkUserInputIsThreeStrike(String userInput) {
+        int strikeCount = checkStrike(userInput);
+
+        if(strikeCount == 3) {
+            System.out.println(commonMessageMap.get("threeStrikeMessage"));
+            return true;
+        }
+        return false;
     }
 
     public static int checkStrike(String userInput) {
@@ -153,7 +155,6 @@ public class Application {
         int ballCount = 0;
         int strikeCount = 0;
         String hintMessage = "";
-
 
         if(!checkNothing(userInput)) {
             ballCount = checkBall(userInput);
