@@ -26,7 +26,7 @@ public class GameController {
     }
 
     public Boolean restartGame(UserInputDto userInputDto) {
-        InputValidator.checkIsGameRestartInput(userInputDto.getUserInput());
+        InputValidator.checkRestartInput(userInputDto.getUserInput());
 
         return RESTART_SIGNAL.equals(userInputDto.getUserInput());
     }

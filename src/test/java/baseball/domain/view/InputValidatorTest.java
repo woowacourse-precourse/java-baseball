@@ -103,7 +103,7 @@ class InputValidatorTest {
     void 사용자_입력_오류6() {
         String userInput = "3";
         assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.checkIsGameRestartInput(userInput)
+                () -> InputValidator.checkRestartInput(userInput)
         );
     }
 

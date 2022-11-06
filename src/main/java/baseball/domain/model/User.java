@@ -13,13 +13,13 @@ public class User {
         this.user = user;
     }
 
-    public User(final String userBallInput) {
-        InputValidator.checkUserBallInput(userBallInput);
-        this.user = makeUserBallsFromUserInput(userBallInput);
+    public User(final String ballInput) {
+        InputValidator.checkUserBallInput(ballInput);
+        this.user = makeBallsFromInput(ballInput);
     }
 
-    private List<String> makeUserBallsFromUserInput(final String userBallInput) {
-        return List.of(userBallInput.split(""));
+    private List<String> makeBallsFromInput(final String ballInput) {
+        return List.of(ballInput.split(""));
     }
 
     public Map<BallCount, Integer> compareWithComputerBalls(final Computer computer,

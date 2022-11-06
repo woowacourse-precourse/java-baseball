@@ -46,7 +46,7 @@ public class InputValidator {
         }
     }
 
-    public static void checkIsGameRestartInput(String restartOrExit) {
+    public static void checkRestartInput(String restartOrExit) {
         if (!RESTART_SIGNAL.equals(restartOrExit) && !EXIT_SIGNAL.equals(restartOrExit)) {
             throw new IllegalArgumentException();
         }

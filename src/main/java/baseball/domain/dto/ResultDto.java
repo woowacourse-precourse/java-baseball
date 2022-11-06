@@ -22,7 +22,7 @@ public class ResultDto {
     }
 
     private Boolean checkIsThreeStrike(Score score) {
-        return score.getIsThreeStrike();
+        return score.isThreeStrike();
     }
 
     public Map<String, Integer> getResult() {
