@@ -1,6 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -13,20 +17,14 @@ public class Application {
     }
     public static void play(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int min = 100;
-        int max = 999;
-        String randomString="000";
-        while(true){
-            int random = (int) ((Math.random() * (max - min)) + min);
-            //985
-            int first=random/100; //9
-            int second=random%100/10; //85 //8
-            int third=random%10;
-            if(first!=second&&first!=third&&second!=third){
-                randomString = String.valueOf(random);
-                break;
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
             }
         }
+        String randomString=computer.toString();
         guess(randomString);
     }
     public static void guess(String comNum){
@@ -35,15 +33,18 @@ public class Application {
         HashMap comMap= new HashMap<Integer,String>();
         for(int digits=0;digits<3;digits++){
             comMap.put(digits,comNum.substring(digits,digits+1));
-           // System.out.println(comMap);
+            System.out.println("comMap"+comMap);
         }
         while(isWrong){
             HashMap usrMap= new HashMap<Integer,String>();
             System.out.println("숫자를 입력해주세요 :");
             String usrNum= sc.next();
+            if(usrNum.length()>3||usrNum.length()<3){
+                throw new IllegalArgumentException("세자리 수가 아닙니다.");
+            }
             for(int digits=0;digits<3;digits++){
                 usrMap.put(digits,usrNum.substring(digits,digits+1));
-                //System.out.println(usrMap);
+                System.out.println("usrMap"+usrMap);
             }
             int strike=0;
             int ball=0;
