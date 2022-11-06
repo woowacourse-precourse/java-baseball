@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Game {
 
-
      List<Integer> computerNumber;
      List<Integer> userNumberList;
+     final int NUMBER_SIZE=3;
 
     public Game(List<Integer> computerNumber, List<Integer> userNumberList) {
         this.computerNumber = computerNumber;
@@ -17,7 +17,6 @@ public class Game {
 
 
     public int play() {
-
         int strike = 0;
         int ball = 0;
         List<Integer> strikeBall = findStrikeBall(computerNumber, userNumberList);
@@ -36,13 +35,13 @@ public class Game {
         List<Integer> userNumberList) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
-            int nowIndexComputerNumber = computerNumber.get(i);
-            int nowIndexUserNumber = userNumberList.get(i);
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            int nowIndexComputerNumber = computerNumber.get(index);
+            int nowIndexUserNumber = userNumberList.get(index);
             if (isSame(nowIndexComputerNumber, nowIndexUserNumber)) {
                 strike++;
             } else {
-                ball = getBall(computerNumber, nowIndexUserNumber, ball, i);
+                ball = getBall(computerNumber, nowIndexUserNumber, ball, index);
             }
         }
         return Arrays.asList(strike, ball);
@@ -50,11 +49,10 @@ public class Game {
 
 
     public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball,
-        // test 스트라이크볼판정_findStrike검증
         int i) {
-        for (int j = 0; j < 3; j++) {
-            int otherIndexComputerNumber = computerNumber.get(j);
-            if (i == j) {
+        for (int compare_index = 0; compare_index < NUMBER_SIZE; compare_index++) {
+            int otherIndexComputerNumber = computerNumber.get(compare_index);
+            if (i == compare_index) {
                 continue;
             }
             if (isSame(nowIndexUserNumber, otherIndexComputerNumber)) {
@@ -64,7 +62,7 @@ public class Game {
         return ball;
     }
 
-    public boolean isSame(int user, int computer // test 스트라이크볼판정_findStrike검증
+    public boolean isSame(int user, int computer
     ) {
         return user == computer;
     }
@@ -86,22 +84,4 @@ public class Game {
         }
     }
 
-
-    public Integer getUserDecision() { //test 게임종료_재시작체크
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Integer user_decision = Integer.parseInt(Console.readLine());
-
-        return user_decision;
-    }
-
-    public boolean isGameOver(int userDecision, int RESTART,
-        int GAME_OVER) { //test 게임종료_재시작체크
-        if (userDecision == GAME_OVER) {
-            return true;
-        } else if (userDecision == RESTART) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("사용자 결정 오류");
-        }
-    }
 }
