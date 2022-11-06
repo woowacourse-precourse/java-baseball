@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 public class Game extends abstracts.Game {
 
@@ -96,11 +97,12 @@ public class Game extends abstracts.Game {
 
     private HashMap<Result, Integer> getGuessResult(String input) {
         HashMap<Result, Integer> guessResult = new HashMap<>();
-        for (int index = 0; index < input.length(); index++) {
-            int number = Character.getNumericValue(input.charAt(index));
-            Result result = getIndexResult(index, number);
-            guessResult.put(result, guessResult.getOrDefault(result, 0) + 1);
-        }
+        IntStream.range(0, input.length())
+                .forEach((index) -> {
+                    int number = Character.getNumericValue(input.charAt(index));
+                    Result result = getIndexResult(index, number);
+                    guessResult.put(result, guessResult.getOrDefault(result, 0) + 1);
+                });
         return guessResult;
     }
 
