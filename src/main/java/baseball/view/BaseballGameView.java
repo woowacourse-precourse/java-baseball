@@ -23,4 +23,8 @@ public class BaseballGameView {
             System.out.print("낫싱");
         }
     }
+
+    public void printEndMessage() {
+        System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
