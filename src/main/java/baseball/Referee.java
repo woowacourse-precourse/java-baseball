@@ -12,7 +12,7 @@ public class Referee {
         initCount();
     }
 
-    public void initCount(){
+    public void initCount() {
         strikeCount = 0;
         ballCount = 0;
     }
@@ -60,7 +60,7 @@ public class Referee {
         return strikeCount;
     }
 
-    public int getBallCount(){
+    public int getBallCount() {
         return ballCount;
     }
 }
