@@ -1,8 +1,12 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Constants {
 
@@ -11,6 +15,32 @@ public class Constants {
     public static final boolean PROCESS_FINISH = false;
     public enum Result {
         STRIKE, BALL, OUT
+    }
+
+    public enum EndCommand {
+        UNKNOWN("0"),
+        RESTART("1"),
+        FINISH("2");
+
+        private final String endCommand;
+
+        EndCommand(String endCommand) {
+            this.endCommand = endCommand;
+        }
+
+        public String getEndCommand() {
+            return this.endCommand;
+        }
+
+        private static final Map<String, EndCommand> endCommands =
+                Arrays.stream(EndCommand.values())
+                        .collect(Collectors.toMap(EndCommand::getEndCommand, Function.identity()));
+
+        public static EndCommand find(String command) {
+            return endCommands.getOrDefault(command, UNKNOWN);
+        }
+
+
     }
 
     public enum Messages{
