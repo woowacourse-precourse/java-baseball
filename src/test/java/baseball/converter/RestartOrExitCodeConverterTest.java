@@ -1,8 +1,8 @@
 package baseball.converter;
 
 import baseball.console.converter.RestartOrExitCodeConverter;
-import baseball.console.exception.InputNumberFormatException;
-import baseball.console.exception.InvalidStatusCodeException;
+import baseball.exception.InputNumberFormatException;
+import baseball.exception.InvalidStatusCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
