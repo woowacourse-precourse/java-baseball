@@ -13,6 +13,8 @@ public class Application {
 
         while (true) {
             String input = getInput();
+            if (!isStrike(input, answer))
+                continue;
         }
     }
     private static void startMessage() {
@@ -58,4 +60,16 @@ public class Application {
         }
         return String.join("",computer);
     }
+    private static boolean isStrike (String input, String answer) {
+        int strikeCnt = 0;
+        for (int i=0; i<input.length(); i++) {
+            if (input.charAt(i)==answer.charAt(i))
+                strikeCnt++;
+        }
+        int ballCnt = input.length()-input.replaceAll("["+answer+"]","").length()-strikeCnt;
+        if (strikeCnt == 3)
+            return true;
+        return false;
+    }
+
 }
