@@ -10,19 +10,16 @@ import static constant.ErrorMessage.*;
 
 public class UserInputNumbers {
 
-    private List<Integer> addNumbers(String numbers) {
-        List<Integer> userInputNumbers = new ArrayList<>();
-        for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            userInputNumbers.add(numbers.charAt(idx)-ZERO_ASCII);
-        }
-        return userInputNumbers;
-    }
-
     public List<Integer> getUserInputNumbers() {
         String userInput = Console.readLine();
         validUserInputNumber(userInput);
         System.out.println(userInput);
-        return addNumbers(userInput);
+
+        List<Integer> userInputNumbers = new ArrayList<>();
+        for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
+            userInputNumbers.add(userInput.charAt(idx)-ZERO_ASCII);
+        }
+        return userInputNumbers;
     }
 
     public static boolean validUserInputNumber(String numbers) {
