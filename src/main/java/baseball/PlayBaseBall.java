@@ -14,8 +14,10 @@ public class PlayBaseBall {
         if (Exception.isValidNumber(user))
           PrintOut.scoreMessage(Hint.ballAndStrike(computer, user));
       }
-      if (strike == Constant.MAX_STRIKE)
+      if (strike == Constant.MAX_STRIKE) {
+        PrintOut.endMessage();
         PrintOut.continueMessage();
+      }
       if (strike == Constant.MAX_STRIKE && !ContinueOrStop.choice(UserScanner.input()))
         break;
       else if (strike == Constant.MAX_STRIKE) {
