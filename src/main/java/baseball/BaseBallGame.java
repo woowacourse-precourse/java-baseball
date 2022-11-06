@@ -7,6 +7,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.lang.model.type.ArrayType;
 
@@ -143,15 +144,25 @@ class BaseBallGame {
         List<Integer> ballAndStrike = new ArrayList<Integer>();
         int numLength = userNumList.size();
 
-        for (int listIdx = 0; listIdx < numLength; listIdx++) {
-            if (userNumList.get(listIdx).equals(computerNumList.get(listIdx))) {
+        for (int currentDigitIdx = 0; currentDigitIdx < numLength; currentDigitIdx++) {
+            int finalCurrentDigit = currentDigitIdx;
+            String otherDigit = IntStream.range(0, numLength)
+                    .filter(i -> i != finalCurrentDigit)
+                    .mapToObj(computerNumList::get)
+                    .collect(Collectors.joining(""));
+
+            if (userNumList.get(currentDigitIdx).equals(computerNumList.get(currentDigitIdx))) {
                 strike++;
             }
-            if (userNumList.get(listIdx).equals(computerNumList.get((listIdx + 1) % numLength))
-                    || userNumList.get(listIdx).equals(computerNumList.get((listIdx + 2) % numLength))
+            if (otherDigit.contains(userNumList.get(currentDigitIdx))
             ) {
                 ball++;
             }
+//            if (userNumList.get(currentDigit).equals(computerNumList.get((currentDigit + 1) % numLength))
+//                    || userNumList.get(currentDigit).equals(computerNumList.get((currentDigit + 2) % numLength))
+//            ) {
+//                ball++;
+//            }
 
         }
         ballAndStrike.add(ball);
