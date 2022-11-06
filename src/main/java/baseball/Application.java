@@ -30,6 +30,16 @@ public class Application {
         }
         return false;
     }
+    public static int StrikeBallCheck(String answer, String targetNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int compareInteger = 0; compareInteger < 3; compareInteger++) {
+            if (answer.charAt(compareInteger) == targetNumber.charAt(compareInteger)) strike += 1;
+
+            else if (answer.indexOf(targetNumber.charAt(compareInteger)) != -1) ball += 1;
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean newNumberFlag = true;
@@ -51,6 +61,9 @@ public class Application {
             if (isIllegalInput(userInput)) {
                 break;
             }
+
+            StrikeBallCheck(userInput, gameNumber);
+
         }
     }
 }
