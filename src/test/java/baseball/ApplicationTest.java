@@ -46,6 +46,16 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class 게임진행기능_테스트 {
+        @Test
+        void 사용자입력이_3글자가_아니면_오류발생() {
+            String inValidInput = "1234";
+            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
