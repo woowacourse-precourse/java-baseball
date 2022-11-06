@@ -11,14 +11,14 @@ public class Player {
     public int guessRandomNumber() {
         String input = sc.nextLine();
 
-        if (!isValidInput(input)) {
+        if (!isValidGuess(input)) {
             throw new IllegalArgumentException("잘못된 형식의 값을 입력했습니다.");
         }
 
         return Integer.parseInt(input);
     }
 
-    public boolean isValidInput(String input) {
+    public boolean isValidGuess(String input) {
         return containOnlyDigit(input) && isCorrectLength(input) && !containZero(input) && !hasDuplicatedDigit(input);
     }
 
