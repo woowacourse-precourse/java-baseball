@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -32,11 +33,19 @@ public class Application {
         String userNumber = readLine();
         return userNumber;
     }
+
+    public static boolean availableUserNumberIsChecked(String word){
+        String regularExpression = "^[0-9]{3}^+$";
+        boolean result = Pattern.matches(regularExpression,word);
+        return result;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
         randomNumberCreate();
         userNumberMessagePrint();
-        userNumberInput();
+        String userNumbers = userNumberInput();
+        boolean results = availableUserNumberIsChecked(userNumbers);
     }
 }
