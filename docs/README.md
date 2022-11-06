@@ -56,7 +56,7 @@
 `int getScore(int number, int DIGIT)`
 - 유저의 입력값과 컴퓨터 선택값에 대해 비교
 
-###결과를 출력한다
-`void printResult(List<Integer> result)`
-- 결과를 출력한다
+###결과를 반환한다
+`String getResultString(List<Integer> result)`
+- 결과 문자열을 반환한다
 
