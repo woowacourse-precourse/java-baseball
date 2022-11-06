@@ -14,8 +14,9 @@ public class Application {
         // TODO: 프로그램 구현
 
         do {
+            System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = computer();
-            System.out.println(computer);
+            //System.out.println(computer);
 
             int[] gameResult = new int[2];
             gameResult[1] = 0;
