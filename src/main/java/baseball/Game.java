@@ -13,7 +13,6 @@ public class Game {
     private Referee referee;
 
     protected List<Integer> answer = new ArrayList<>();
-    private boolean isPlaying = true;
 
     public Game(Player player, Referee referee) {
         this.player = player;
@@ -50,15 +49,13 @@ public class Game {
     public void doWantRegame() {
         if (player.askRegame()) {
             this.initAnswer();
-            referee.initStatus();
             player.announce(START_ANNOUNCE);
-        } else {
-            this.isPlaying = false;
+            referee.playGame();
         }
     }
 
     public boolean isPlaying() {
-        return isPlaying;
+        return referee.isPlaying();
     }
 
     private boolean isDuplicated(List<Integer> answer) {

@@ -3,7 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Referee {
-    private int gameCount = 0;
+
+    private boolean isPlaying = true;
 
     public String scoring(List<Integer> answer, List<Integer> userAnswer) {
         int ballCount = 0;
@@ -36,21 +37,23 @@ public class Referee {
             decision.append("낫싱");
         }
 
-        gameCount++;
-
         if (strikeCount == 3) {
             decision.append("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            gameCount = 3;
+            isPlaying = false;
         }
 
         return decision.toString().trim();
     }
 
     public boolean isEnd() {
-        return gameCount == 3;
+        return !isPlaying;
     }
 
-    public void initStatus() {
-        gameCount = 0;
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void playGame() {
+        isPlaying = true;
     }
 }
