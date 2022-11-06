@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Computer {
 
+    public static final boolean IS_NOTING = true;
+    private static final boolean EXISTS = false;
+
     private List<Integer> baseballNumber;
 
     public Computer() {
@@ -47,10 +50,10 @@ public class Computer {
     public boolean checkNothing(List<Integer> question) {
         for (int i = 0; i < 3; i++) {
             if (baseballNumber.contains(question.get(i)) == true) {
-                return false;
+                return EXISTS;
             }
         }
-        return true;
+        return IS_NOTING;
     }
 
     public void init() {
