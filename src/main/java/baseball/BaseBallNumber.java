@@ -3,10 +3,12 @@ package baseball;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BaseBallNumber {
 
   private static final int GAME_NUMBER_SIZE = 3;
+
   private static List<Character> numbers;
 
   public BaseBallNumber(List<Character> numbers) {
@@ -30,10 +32,8 @@ public class BaseBallNumber {
 
   @Override
   public String toString() {
-    StringBuilder build = new StringBuilder();
-    for (Character character : numbers) {
-      build.append(character);
-    }
-    return (build.toString());
+    return (numbers.stream()
+        .map(String::valueOf)
+        .collect(Collectors.joining()));
   }
 }
