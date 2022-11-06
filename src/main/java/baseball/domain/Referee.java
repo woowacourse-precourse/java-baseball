@@ -34,7 +34,7 @@ public class Referee {
         return strike == 0 && ball == 0;
     }
 
-    public static String compare(List<Integer> computerNumber, List<Integer> userNumber) {
+    public static String checkResult(List<Integer> computerNumber, List<Integer> userNumber) {
         String result = "";
         int strike = getStrikeCount(computerNumber, userNumber);
         int ball = getBallCount(computerNumber, userNumber);
@@ -52,7 +52,7 @@ public class Referee {
         return result;
     }
 
-    public static boolean validateUserInput(String input, List<Integer> userNumbers){
+    public static boolean validateUserInput(String input, List<Integer> userNumbers) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }

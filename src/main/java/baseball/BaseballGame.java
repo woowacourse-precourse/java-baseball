@@ -42,7 +42,7 @@ public class BaseballGame {
         List<Integer> computerNumber = Computer.createNumbers();
         while (true) {
             List<Integer> userNumber = getNumbers();
-            String result = Referee.compare(computerNumber, userNumber);
+            String result = Referee.checkResult(computerNumber, userNumber);
             System.out.println(result);
             if (result.equals("3스트라이크")){
                 break;
