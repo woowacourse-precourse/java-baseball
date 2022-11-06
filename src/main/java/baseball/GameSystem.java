@@ -28,27 +28,23 @@ public class GameSystem {
         GamePlay();
     }
 
-    private void MakeNumComputer() {
-        numOfComputer = computer.randomNumber;
-    }
-
-    public void InputNumPlayer() {
+    public String InputNumPlayer() {
 
         System.out.print(STR_PLAYER_INPUT);
 
-        String inputStr = Console.readLine();
-        numOfPlayer = player.ReturnPlayerNum(inputStr);
+        //numOfPlayer = player.ReturnPlayerNum(inputStr);
+        return Console.readLine();
     }
 
     public void GamePlay() {
 
-        MakeNumComputer();
-        InputNumPlayer();
+        numOfComputer = computer.randomNumber;
+        numOfPlayer = player.ReturnPlayerNum(InputNumPlayer());
 
         numStrikes = gameScore.CheckStrikes(numOfComputer, numOfPlayer);
         numBalls = gameScore.CheckBalls(numOfComputer, numOfPlayer);
 
-        gameScore.ReturnScore(numStrikes, numBalls);
+        System.out.println(gameScore.ReturnScore(numStrikes, numBalls));
     }
 
 }
