@@ -28,8 +28,22 @@ public class NumberBaseballService {
         validateUserAnswer(userAnswer);
         List<Integer> userAnswerResultList = new ArrayList<>();
         userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
-
+        userAnswerResultList.add(getBallCount(numberBaseballRepository.findComputerNumber(), userAnswer));
         return new ArrayList<>();
+    }
+
+    public int getBallCount(ComputerNumber computerNumber, String userAnswer) {
+        int ballCount = 0;
+        if (computerNumber.getFirstNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
+            ballCount++;
+        }
+        if (computerNumber.getFirstNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+            ballCount++;
+        }
+        if (computerNumber.getSecondNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+            ballCount++;
+        }
+        return ballCount;
     }
 
     public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
