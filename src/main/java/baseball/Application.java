@@ -27,6 +27,10 @@ public class Application {
                 gameResultPrint(gameResult);
             }
 
+            if(!(playerAnswer == 1 || playerAnswer == 2)) {
+                throw new IllegalArgumentException("Wrong Number");
+            }
+
         } while (playerAnswer != 2);
 
 
