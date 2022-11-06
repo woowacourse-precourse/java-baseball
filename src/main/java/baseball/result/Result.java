@@ -4,20 +4,22 @@ import static baseball.result.ResultType.*;
 
 public class Result {
 
-    private ResultType resultType;
+    private ResultType resultType = NOTHING;
 
     private int ball = 0;
     private int strike = 0;
 
     public void increaseStrike() {
         strike++;
+        calculateType();
     }
 
     public void increaseBall() {
         ball++;
+        calculateType();
     }
 
-    public void calculateType() {
+    private void calculateType() {
         if (strike == 3) resultType = EXACT_MATCH;
         else if (strike > 0 && ball > 0) resultType = BALL_AND_STRIKE;
         else if (strike > 0) resultType = ONLY_STRIKE;

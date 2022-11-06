@@ -13,7 +13,6 @@ public class Referee {
         for (int position = 0; position < 3; position++) {
             distinguishTypeOfDigit(result, hitNumber, pitchNumber, position);
         }
-        result.calculateType();
         return result;
     }
 
