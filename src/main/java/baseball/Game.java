@@ -1,8 +1,8 @@
 package baseball;
 
+import baseball.dto.Balls;
 import baseball.dto.GameStatus;
 import baseball.dto.Result;
-import baseball.dto.Balls;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Referee;
@@ -28,26 +28,20 @@ public class Game {
 
     public void startGame() {
         Balls computerBalls = computer.generateRandomBalls(MAX_BALLS_SIZE, MIN_BALL_NUMBER, MAX_BALL_NUMBER);
-
         GameStatus gameStatus = new GameStatus(GAME_RESTART_STATUS);
-        do {
+
+        while (true) {
             Balls playerBalls = player.generatePlayerBalls();
             Result result = referee.doJudge(computerBalls, playerBalls);
             referee.printResult(result);
 
             if (result.isGameOver()) {
-                inputGameStatusIfGameOver(gameStatus);
+                gameStatus.changeStatus(Console.readLine());
                 break;
             }
-        } while (true);
-
+        }
         if (gameStatus.isRestart()) {
             startGame();
         }
-    }
-
-    private static void inputGameStatusIfGameOver(GameStatus gameStatus) {
-        String playerInput = Console.readLine();
-        gameStatus.changeStatus(playerInput);
     }
 }
