@@ -8,14 +8,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
     private List<Integer> computerNum;
 
-    public Computer() {
-        pickComputerNum();
+    public Computer(int digit, int startRange, int endRange) {
+        pickComputerNum(digit, startRange, endRange);
     }
 
-    private void pickComputerNum() {
+    private void pickComputerNum(int digit, int startRange, int endRange) {
         computerNum = new ArrayList<>();
-        while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNum.size() < digit) {
+            int randomNumber = Randoms.pickNumberInRange(startRange, endRange);
             if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
             }
