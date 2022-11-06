@@ -9,6 +9,10 @@ public class AnswerGenerator {
     private final int MAX_NUMBER = 9;
     private int[] answer;
 
+    public int[] getAnswer() {
+        return answer;
+    }
+
     public void generateAnswer()  {
         int index=0;
 
