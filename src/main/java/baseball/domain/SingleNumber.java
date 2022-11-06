@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public final class SingleNumber {
 
-    private final int position;
-    private final int number;
+    private final int position;  // TODO position이랑 number를 따로 써볼까..?
+    private final int number;    // TODO position 객체화 이점 > 0, 1, 2 세개만 캐싱 가능.
 
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
 
-    public SingleNumber(int position, int number) {  // 유효성 검증은 받는 쪽에서.
+    public SingleNumber(int position, int number) {
         validateNumberRange(number);
         this.position = position;
         this.number = number;
