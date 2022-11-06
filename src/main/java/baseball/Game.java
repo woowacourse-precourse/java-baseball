@@ -47,10 +47,10 @@ public class Game {
     }
 
 
-    public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball, int i) {
+    public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball, int index) {
         for (int compare_index = 0; compare_index < NUMBER_SIZE; compare_index++) {
             int otherIndexComputerNumber = computerNumber.get(compare_index);
-            if (i == compare_index) {
+            if (index == compare_index) {
                 continue;
             }
             if (isSame(nowIndexUserNumber, otherIndexComputerNumber)) {

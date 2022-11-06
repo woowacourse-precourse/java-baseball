@@ -12,6 +12,7 @@ public class Domain {
 
     String userNumber;
     List<Integer> computerNumber;
+    final int NUMBER_SIZE =3;
 
 
     public List<Integer> getUserNumber() {
@@ -96,8 +97,8 @@ public class Domain {
 
     public List<Integer> convertStringToIntegerList(String userNumber) {
         List<Integer> userNumberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int putNumber = Character.getNumericValue(userNumber.charAt(i));
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            int putNumber = Character.getNumericValue(userNumber.charAt(index));
             userNumberList.add(putNumber);
         }
         return userNumberList;
