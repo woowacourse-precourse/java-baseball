@@ -17,7 +17,7 @@ public class Controller {
         OutputView.printGameStart();
         do {
             playOneGame();
-        } while (chooseRestartOrNot());
+        } while (chooseRestartOrEnd());
     }
 
     void playOneGame() {
@@ -30,7 +30,7 @@ public class Controller {
         OutputView.printGameEnd();
     }
 
-    boolean chooseRestartOrNot() {
+    boolean chooseRestartOrEnd() {
         OutputView.printRestartOrEnd();
         String input = InputView.inputString();
         if (input.equals(Message.RESTART)) {
