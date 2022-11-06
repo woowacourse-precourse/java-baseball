@@ -16,4 +16,11 @@ public class View {
         return inputNumber;
     }
 
+    public String endView(){
+        System.out.println(GAME_END_MESSAGE);
+        System.out.println(GAME_RESTART_MESSAGE);
+        String userChoice = Console.readLine();
+        return userChoice;
+    }
+
 }
