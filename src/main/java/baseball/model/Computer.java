@@ -51,7 +51,7 @@ public class Computer {
     }
 
     private static boolean isNotRestartInput(String input) {
-        return input != "1" && input != "2";
+        return !input.equals("1") && !input.equals("2");
     }
 
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
