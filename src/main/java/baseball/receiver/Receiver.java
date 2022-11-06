@@ -1,12 +1,11 @@
 package baseball.receiver;
 
+import baseball.BaseBallGamePlayer;
 import baseball.number.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
-
 public class Receiver {
-    public String receiveNumber() {
+    public String receiveUserNumber() {
         String userNumber = Console.readLine();
 
         if (!GameNumber.isValidUserNumber(userNumber)) {
@@ -14,6 +13,16 @@ public class Receiver {
         }
 
         return userNumber;
+    }
+
+    public String receiveRestartNumber() {
+        String restartNumber = Console.readLine();
+
+        if (!BaseBallGamePlayer.isValidRestartNumber(restartNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        return restartNumber;
     }
 
 
