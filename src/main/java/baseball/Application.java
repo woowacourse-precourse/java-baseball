@@ -9,20 +9,37 @@ public class Application {
     final static int DIGIT_10 = 1;
     final static int DIGIT_100 = 2;
 
+    final static int STRIKE = 0;
+    final static int BALL = 1;
+    final static int NOTHING = 2;
+
     public static List<Integer> computerDigitValue;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
 
-    public static String getScore(int number, int DIGIT){
+    public static List<Integer> compareUserInputAndComputerSelect(int userInput){
+        List<Integer> point = new ArrayList<>(Arrays.asList(0, 0, 0));
+        List<Integer> disassembledNumber = disassembleDigitNumber(userInput);
+        for(int digit = DIGIT_1; digit <= DIGIT_100; digit++) {
+            int number = disassembledNumber.get(digit);
+            int result = getScore(number, digit);
+            int p = point.get(result) + 1;
+            point.set(result, p);
+        }
+
+        return point;
+    }
+
+    public static int getScore(int number, int DIGIT){
         if(computerDigitValue.get(DIGIT) == number) {
-            return "STRIKE";
+            return STRIKE;
         }
         if(computerDigitValue.contains(number)) {
-            return "BALL";
+            return BALL;
         }else{
-            return "NOTHING";
+            return NOTHING;
         }
     }
 

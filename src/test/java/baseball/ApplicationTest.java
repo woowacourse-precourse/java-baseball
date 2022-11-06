@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
             void case1() {
                 int userInput = 425;
                 Application.computerDigitValue = List.of(5, 1, 2);
-                List<Integer> result = List.of(1, 1, 0);
+                List<Integer> result = List.of(1, 1, 1);
                 assertThat(result).isEqualTo(Application.compareUserInputAndComputerSelect(userInput));
             }
         }
