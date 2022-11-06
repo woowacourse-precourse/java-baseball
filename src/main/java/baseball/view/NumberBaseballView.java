@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.domain.GameResult;
+import baseball.enums.GuessResultType;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
@@ -12,13 +13,10 @@ public class NumberBaseballView {
     private static final String NEW_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NOTING_MESSAGE = "낫싱";
     private static final String EMPTY_MESSAGE = "";
-    private static final int WIN = 1;
-    private static final int NOT_WIN = 0;
     private static final int FULL_STRIKE = 3;
     private static final int NOTHING = 0;
 
     private GameResult gameResult;
-    private StringBuilder result = new StringBuilder();
 
     public void printStartGame() {
         System.out.println(START_GAME);
@@ -34,18 +32,18 @@ public class NumberBaseballView {
         return Console.readLine();
     }
 
-    public int printResult(GameResult gameResult) {
+    public GuessResultType printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
             System.out.println(WIN_MESSAGE);
-            return WIN;
+            return GuessResultType.WIN;
         }
         if (isNothing()) {
             System.out.println(NOTING_MESSAGE);
-            return NOT_WIN;
+            return GuessResultType.NOT_WIN;
         }
         System.out.println(createResultMessage());
-        return NOT_WIN;
+        return GuessResultType.NOT_WIN;
     }
 
     private boolean isNothing() {
