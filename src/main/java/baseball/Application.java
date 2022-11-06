@@ -234,7 +234,7 @@ public class Application {
             gameProcessor.strikeChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
             gameProcessor.ballChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
             if (gameProcessor.isWin()) {
-
+                gameFinisher.reStartChecker(gameReadyMachine);
             }
             else {
 
