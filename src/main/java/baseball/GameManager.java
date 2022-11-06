@@ -18,7 +18,7 @@ public class GameManager {
 
     public void initiate() {
         gameState = GameState.START;
-        computer.init();
+        computer.initiate();
     }
 
     public void run() {
@@ -27,7 +27,7 @@ public class GameManager {
         while (gameState == GameState.START) {
             List<Integer> question = PrintAndRead.getBaseballNumber();
             printAnswer(question);
-            gameState = isEnd(question);
+            isGameEnd(question);
         }
     }
 
@@ -43,10 +43,12 @@ public class GameManager {
 
     }
 
-    public GameState isEnd(List<Integer> question) {
-        if (computer.checkStrike(question) == 3)
-            return GameState.END;
-        return GameState.START;
+    public void isGameEnd(List<Integer> question) {
+        if (computer.checkGameEnd(question) == true) {
+            gameState = GameState.END;
+            return;
+        }
+        gameState = GameState.START;
     }
 
 }

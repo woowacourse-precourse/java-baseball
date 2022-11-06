@@ -60,4 +60,7 @@ public class Computer {
         createBaseballNumber();
     }
 
+    public boolean checkGameEnd(List<Integer> question) {
+        return baseballNumber.equals(question);
+    }
 }
