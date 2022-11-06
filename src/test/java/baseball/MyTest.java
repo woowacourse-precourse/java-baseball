@@ -7,7 +7,6 @@ import java.util.List;
 
 public class MyTest {
 
-
     @Test
     void computerNumberSizeTest() {
         //given(준비)
@@ -71,37 +70,35 @@ public class MyTest {
     }
 
 
-    /*@Test
+    @Test
     void validateUserInputSize() {
         //given(준비)
-        String success = "123";
-        String fail = "12345";
+        String userInput = "1234";
 
         //when(실행)
 
         //then(검증)
         try {
-            Application.validateUserInputSize(fail);
+            Application.validateUserInputSize(userInput);
         } catch (Exception e) {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
-    }*/
+    }
 
-    /*@Test
+    @Test
     void validateUserInputForm() {
         //given(준비)
-        String success = "123";
-        String fail = "A!a";
+        String userInput = "ABC";
 
         //when(실행)
 
         //then(검증)
         try {
-            Application.validateUserInputSize(fail);
+            Application.validateUserInputSize(userInput);
         } catch (Exception e) {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
-    }*/
+    }
 
 
     @Test
@@ -131,17 +128,15 @@ public class MyTest {
         //given(준비)
         Application.initCommonMessageMap();
         Application.computerNumber = List.of('1','2','3');
-        String firstInput = "123";
-        String secondInput = "321";
+        String strike = "123";
+        String noStrike = "321";
 
         //when(실행)
-        boolean firstFlag = Application.checkUserInputIsThreeStrike(firstInput);
-        boolean secondFlag = Application.checkUserInputIsThreeStrike(secondInput);
+        boolean firstFlag = Application.checkUserInputIsThreeStrike(strike);
+        boolean secondFlag = Application.checkUserInputIsThreeStrike(noStrike);
 
         //then(검증)
         Assertions.assertThat(firstFlag).isTrue();
         Assertions.assertThat(secondFlag).isFalse();
     }
-
-
 }

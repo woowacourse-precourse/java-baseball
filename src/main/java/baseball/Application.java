@@ -17,7 +17,7 @@ public class Application {
         } catch (EndGameException e) {
             System.out.println(commonMessageMap.get("exitGame"));
         } catch (IllegalArgumentException e) {
-            System.out.println("inputErrorMessage");
+            System.out.println(commonMessageMap.get("inputErrorMessage"));
             throw e;
         }
     }
@@ -66,20 +66,21 @@ public class Application {
             if(checkUserInputIsThreeStrike(userInput)) {
                 decideExitOrProceed();
             }
-
         }
     }
 
-    // 1,2 아닌경우 대해서 수정 필요
-    public static void decideExitOrProceed() throws EndGameException {
+    public static void decideExitOrProceed() throws EndGameException, IllegalArgumentException {
         System.out.println(commonMessageMap.get("exitOrProceedMessage"));
         String userInput = readeUserInput();
 
-        if (userInput.equals("1")) {
+        if(userInput.equals("1")) {
             startGame();
         }
-        else {
+        else if(userInput.equals("2")) {
             throw new EndGameException();
+        }
+        else {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -184,15 +185,13 @@ public class Application {
         }
 
         hintMessage = hintMessageBuilder.toString();
+
         return hintMessage;
     }
 
     public static String readeUserInput() {
         String userInput = scanner.nextLine();
+
         return userInput;
     }
-
-
-
-
 }
