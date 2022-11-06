@@ -369,35 +369,20 @@ class ApplicationTest extends NsTest {
         assertFalse(result);
     }
 
-    // 게임 진행의 값을 얻는 함수 1 || 2
-    @Test
-    void 게임_진행의_값을_얻는_함수_테스트_1() throws Exception {
+    @ParameterizedTest(name = "게임진행을 위한 입력에 들어가는 값 1과 2가 들어간다.")
+    @ValueSource(strings = {"1", "2"})
+    @DisplayName("게임 진행의 값을 얻는 함수")
+    void 게임_진행의_값을_얻는_함수_테스트_1(String str) throws Exception {
         //given
         User user = new User();
         // 입력을 담는다.
-        String input = "1";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
         // when
         user.InputProceedNum();
         String result = String.valueOf(user.getNumProceedUser());
         // then
-        assertThat(result).isEqualTo("1");
-    }
-
-    @Test
-    void 게임_진행의_값을_얻는_함수_테스트_2() throws Exception {
-        //given
-        User user = new User();
-        // 입력을 담는다.
-        String input = "2";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        // when
-        user.InputProceedNum();
-        String result = String.valueOf(user.getNumProceedUser());
-        // then
-        assertThat(result).isEqualTo("2");
+        assertThat(result).isEqualTo(str);
     }
 
     @Test
