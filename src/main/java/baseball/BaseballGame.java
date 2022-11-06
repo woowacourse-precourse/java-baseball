@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.computer.Controller;
 
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static baseball.AppConfig.BALL_COUNT;
@@ -44,6 +44,9 @@ public class BaseballGame {
         if (checkInputException(input)) {
             throw new IllegalArgumentException("형식에 맞지 않음");
         }
+        if (checkInputDuplicateException(input)) {
+            throw new IllegalArgumentException("중복 값 포함 됨");
+        }
         return input;
     }
 
@@ -82,4 +85,12 @@ public class BaseballGame {
         return false;
     }
 
+    public Boolean checkInputDuplicateException(String input){
+        String[] inputArr = input.split("");
+        Set<String> duplicate = new HashSet<>(Arrays.asList(inputArr));
+        if (duplicate.size() ==BALL_COUNT){
+            return false;
+        }
+        return true;
+    }
 }
