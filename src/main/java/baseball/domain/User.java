@@ -10,6 +10,10 @@ public class User {
 
     private static List<Integer> selectNumber = new ArrayList<>();
 
+    public List<Integer> getSelectNumber() {
+        return selectNumber;
+    }
+
     public void setSelectNumber() {
         String InputNumber = readLine();
         for (int index = 0; index < InputNumber.length(); index++) {
