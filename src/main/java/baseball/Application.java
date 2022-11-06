@@ -72,6 +72,11 @@ public class Application {
         return checkedStrikeNumbers;
     }
 
+    public static int checkedBallNumbers(List computerNumbers,List userNumbers){
+        int checkedBallNumbers = 0;
+        return 0;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
