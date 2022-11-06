@@ -5,8 +5,6 @@ import baseball.dto.ScoreResultType;
 import baseball.util.ShowGameMessage;
 import baseball.util.input.ContinueInput;
 import baseball.util.input.NumberBallsInput;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballGame {
@@ -25,14 +23,18 @@ public class NumberBaseballGame {
             ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
             showGameMessage.gameResultMessage(result);
             if (result.getType() == ScoreResultType.ALL_STRIKE) {
-                ContinueInput continueInput = new ContinueInput();
-                if (continueInput.continueGame()) {
-                    scoreBoard.initialize();
-                } else {
-                    scoreBoard.setIsPlaying();
-                }
+                endGame();
             }
         }
+    }
+
+    private void endGame() {
+        ContinueInput continueInput = new ContinueInput();
+        if (continueInput.continueGame()) {
+            scoreBoard.initialize();
+            return;
+        }
+        scoreBoard.setIsPlaying();
     }
 
     private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {
