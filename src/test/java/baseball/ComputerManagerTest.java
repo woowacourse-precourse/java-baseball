@@ -14,7 +14,7 @@ class ComputerManagerTest {
     private static ComputerManager computerManager;
 
     @BeforeAll
-    static void init(){
+    static void init() {
         computerManager = new ComputerManager();
     }
 
@@ -38,7 +38,7 @@ class ComputerManagerTest {
 
         StringBuilder answer = new StringBuilder();
 
-        for (Integer num: numbers) {
+        for (Integer num : numbers) {
             answer.append(num);
         }
 
@@ -55,14 +55,14 @@ class ComputerManagerTest {
 
         StringBuilder answer = new StringBuilder();
 
-        for (Integer num: numbers) {
+        for (Integer num : numbers) {
             answer.append(num);
         }
 
         answer.deleteCharAt(2);
-        while (true){
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if (!numbers.contains(randomNumber)){
+        while (true) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
                 answer.append(randomNumber);
                 break;
             }
@@ -81,7 +81,7 @@ class ComputerManagerTest {
 
         StringBuilder answer = new StringBuilder();
 
-        for (Integer num: numbers) {
+        for (Integer num : numbers) {
             answer.append(num);
         }
 
