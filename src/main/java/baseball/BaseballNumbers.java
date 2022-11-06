@@ -1,9 +1,13 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballNumbers {
+    private static final boolean DO_COMMAND_RECORDS = false;
+    private static final int FIRST_INDEX_OF_BASEBALLNUMBER = 0;
+    private static final int LAST_INDEX_OF_BASEBALLNUMBER = 3;
 
     private List<BaseballNumber> baseballNumbers;
 
@@ -35,6 +39,22 @@ public class BaseballNumbers {
             throw new IllegalArgumentException();
         }
         return true;
+    }
+
+    public void putBaseballNumbers(String[] baseballNumberList) throws IllegalArgumentException {
+        baseballNumbers = new ArrayList<>();
+        for (int i = FIRST_INDEX_OF_BASEBALLNUMBER; i < LAST_INDEX_OF_BASEBALLNUMBER; i++) {
+            BaseballNumber baseballNumber = new BaseballNumber(baseballNumberList[i], i++);
+            baseballNumbers.add(baseballNumber);
+        }
+    }
+
+    public boolean adjustBaseballNumbers(String readline) {
+        if (checkReadline(readline)) {
+            putBaseballNumbers(readline.split("(?<=.)"));
+            return checkBaseballNumberDuplication();
+        }
+        return DO_COMMAND_RECORDS;
     }
 
 }
