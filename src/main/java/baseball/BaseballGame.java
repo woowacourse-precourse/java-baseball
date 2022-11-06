@@ -13,6 +13,8 @@ import java.util.stream.Stream;
 public class BaseballGame {
     private static final String RE_GAME = "1";
     private static final String STOP_GAME = "2";
+    private static final int ball = 0;
+    private static final int strike = 1;
 
     public void play() {
         printStartMessage();
@@ -26,13 +28,13 @@ public class BaseballGame {
 
     public Boolean runGame() {
         List<Integer> balls = new Controller().getBalls();
-        boolean status = true;
+        int[] result;
         do {
             printInputMessage();
-            String input = getUserBalls();
-            int[] userBalls = stringToArray(input);
-            status = getResult(balls, userBalls);
-        } while (status);
+            int[] userBalls = stringToArray(getUserBalls());
+            result = getResult(balls, userBalls);
+            printResultMessage(result[ball],result[strike]);
+        } while (checkResult(result));
         printFinishMessage();
         return true;
     }
@@ -53,6 +55,13 @@ public class BaseballGame {
         return Stream.of(String.valueOf(input).split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
+    }
+
+    public Boolean checkResult(int[] result){
+        if (result[strike]==3){
+            return false;
+        }
+        return true;
     }
 
     public Boolean checkStatus() {
