@@ -1,2 +1,6 @@
-package baseball;public class View {
+package baseball;
+
+public class View {
+    View() {}
+
 }
