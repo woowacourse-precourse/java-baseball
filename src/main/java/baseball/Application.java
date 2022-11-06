@@ -25,9 +25,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer.get(0));
-        System.out.println(computer.get(1));
-        System.out.println(computer.get(2));
+
         return computer;
     }
 
@@ -93,4 +91,5 @@ public class Application {
         Integer strike = 0;
 
     }
+
 }

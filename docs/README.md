@@ -11,6 +11,7 @@
 - [X] 종료 or 재시작 하기
 - [ ] IllegalArgumentException 처리
 - [ ] 테스트 코드 체크
+- [ ] 리팩토링
 
 
 # 야구 게임 변수 목록
