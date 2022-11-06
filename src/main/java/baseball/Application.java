@@ -21,6 +21,20 @@ public class Application {
         return computer;
     }
 
+    public static boolean printScore(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = strikeNumbers(computerNumber, playerNumber);
+        int ball = ballNumbers(computerNumber, playerNumber);
+
+        if (strike == 0 && ball == 0) System.out.println("낫싱");
+        else if (strike == 3) {
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (ball == 0) System.out.println(strike + "스트라이크");
+        else if (strike == 0) System.out.println(ball + "볼");
+        else System.out.println(ball + "볼 " + strike + "스트라이크");
+        return false;
+    }
+
     public static int strikeNumbers(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strike = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
