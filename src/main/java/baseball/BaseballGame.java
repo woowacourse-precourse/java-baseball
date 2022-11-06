@@ -81,12 +81,15 @@ public class BaseballGame {
     public boolean isRestart() {
         System.out.println(GameMessage.restart);
 
-        String restartCheck = Console.readLine();
+        String restartCheckNumber = Console.readLine();
+        restartException(restartCheckNumber);
 
-        if ((!restartCheck.equals(END)) && (!restartCheck.equals(RESTART))) {
+        return restartCheckNumber.equals(RESTART);
+    }
+
+    public void restartException(String restartCheckNumber) {
+        if ((!restartCheckNumber.equals(END)) && (!restartCheckNumber.equals(RESTART))) {
             throw new IllegalArgumentException();
         }
-
-        return restartCheck.equals(RESTART);
     }
 }
