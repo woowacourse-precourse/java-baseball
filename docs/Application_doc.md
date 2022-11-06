@@ -7,9 +7,9 @@
 
 
 - getUserInput
-    - 인자: 없음
-    - 내용: camp.nextstep.missionutils.Console의 readline함수를 활용하여 \n까지 String 값을 받아온다.
-    - ouput: String
+    - 인자: int checkLength
+    - 내용: camp.nextstep.missionutils.Console의 readline함수를 활용하여 \n까지 String 값을 validate 한 후 int로 리턴한다.
+    - ouput: int
 
 
 - validateUserInput
@@ -29,30 +29,30 @@
 
 - checkDuplicate
   - 인자: List<Integer> digits, int digit
-  - 내용: 정수를 각 자리 숫자로 나타낸 배열에서 중복된 숫자가 존재하는지 확인한다. 존재하면 IllegalException 발생
+  - 내용: 정수를 각 자리 숫자로 나타낸 배열에서 중복된 숫자가 존재하는지 확인한다. 존재하면 IllegalException 발생한다.
   - output: 없음
 
 
 - compareAnswerWithInput
   - 인자: List<Integer> answerDigits, List<Integer> inputDigits
-  - 내용: 정답과 유저 입력값 3자리를 비교해 [스트라이크 수, 볼 수] 계산 후 리턴
+  - 내용: 정답과 유저 입력값 3자리를 비교해 [스트라이크 수, 볼 수] 계산 후 리턴한다.
     - ouput: List<Integer>
 
 
 - printHint
     - 인자: List<Integer> comparedResult
     - 내용: 비교 결과로부터 스트라이크와 볼 수를 출력
-      - 둘다 0일 경우 낫싱을 출력 후 false 리턴. 
-      - 스트라이크 3개인 경우 정답 조건 만족시 새 게임 또는 종료 선택 메세지 출력 후 true리턴
-      - 이외의 경우 볼과 스트라이크 수를 출력 후 false 리턴
+      - 둘다 0일 경우 낫싱을 출력 후 false 리턴한다. 
+      - 스트라이크 3개인 경우 정답 조건 만족시 새 게임 또는 종료 선택 메세지 출력 후 true 리턴한다.
+      - 이외의 경우 볼과 스트라이크 수를 출력 후 false 리턴한다.
     - ouput: boolean
 
 
 - toBeContinued
   - 인자: int userInput, List<Integer> answerDigits
-  - 내용: 새 게임을 시작할지 종료할지 출력 후 입력 받은 값에 따라 게임 흐름 판단
-    - 1의 경우 answerDigits에 새로 생성한 리스트을 할당 후 리턴
-    - 2의 경우 answerDigits에 빈 리스트를 할당 후 리턴
-    - 이외의 경우 IllegalException 발생
+  - 내용: 새 게임을 시작할지 종료할지 출력 후 입력 받은 값에 따라 게임 흐름 판단한다.
+    - 1의 경우 answerDigits에 새로 생성한 리스트을 할당 후 리턴한다.
+    - 2의 경우 answerDigits에 빈 리스트를 할당 후 리턴한다.
+    - 이외의 경우 IllegalException 발생한다.
   - ouput: List<Integer>
   
