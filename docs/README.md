@@ -1,37 +1,66 @@
 ## 🚀 기능 요구 사항 정리
-기능 요구 사항 정리는 다음과 같이 구성돼있습니다.
-
-### 대상
-
-- [x] 기능1
-- [ ] 기능2
-- [ ] ...
-
 <hr>
 
-### 0. Application
-#### public
-- [ ] psvm: 사용자가 1과 2를 입력하여 게임을 반복하여 진행합니다.
+### 실행 제어 Controller
+- [ ] 야구 게임 진행 BaseBall을 생성하고 의존성을 주입(요구사항 외)
+- [ ] Baseball을 1회 플레이하고 사용자의 입력으로 반복 결정 및 플레이
+- [ ] 시작 시 게임 시작 텍스트 출력
+- [ ] 종료 시 게임 종료 텍스트 출력
+
+<br/>
+
+### 야구 게임 한판 진행 BaseBall
+- [ ] `정답 생성 -> 사용자 정답 입력 시도 -> 결과 출력` 과정을 정답이 맞을 때 까지 반복
+- [ ] 사용자가 정답을 입력 할 때마다 정답 결과를 갱신 후 출력
+
+<br/>
+
+### 입력 Input
+- [ ] 정답을 맞출 경우 서로 다른 3개의 숫자를 입력
+  - [ ] 입력을 받기 전 텍스트 출력
+  - [ ] 입력의 길이는 3
+  - [ ] 모든 문자는 숫자로 이루어져 있음
+  - [ ] 모든 문자를 서로 중복을 허용하지 않음
+  - [ ] 모든 예외 사항은 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
 
 
-### 1. BaseBall: 
-#### public
-- [ ] void play(): 게임을 시작합니다.
+- [ ] 게임을 재시작/종료 할 경우 1 또는 2를 입력
+  - [ ] 입력을 받기 전 텍스트 출력
+  - [ ] 입력의 길이는 1
+  - [ ] 입력은 숫자로 이루어져 있음
+  - [ ] 모든 예외 사항은 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
 
 
-### 2. AnswerGenerator
-#### public
-- [ ] String generate(): 정답을 생성합니다.
+- [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 
+<br/>
 
-### 3. Validator - Interface
-#### public
-- boolean validate(String string): 구현체의 용도에 맞는 입력에 대하여 검증합니다.
+### 정답 생성 Answer
+- [ ] 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
+- [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
 
-- ### 3-1. BaseBallValidator: 야구 게임의 정답을 검증 합니다.
-- - [ ] boolean validate(String string)
+<br/>
 
-- ### 3-2. GameModeValidator: 게임의 재시작 여부 입력을 검증 합니다.
-- - [ ] boolean validate(String string)
+### 텍스트 출력 Text
+- [ ] 게임을 최초로 시작할 시 출력 `숫자 야구 게임을 시작합니다.`
+- [ ] 게임을 완전히 종료시 출력 ``
+- [ ] 정답을 입력하기 전 출력
+- [ ] 정답 입력에 따른 결과 출력
+  - 볼, 스트라이크 개수로 표시
+    ```
+    1볼 1스트라이크
+    ```
+  - 하나도 없는 경우
+    ```
+    낫싱
+    ```
+  - 3개의 숫자를 모두 맞힐 경우
+    ```
+    3스트라이크
+    3개의 숫자를 모두 맞히셨습니다! 게임 종료
+    ```
+
+<br/>
+
 
     
