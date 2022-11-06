@@ -64,7 +64,7 @@ public class TurnTest extends NsTest {
     }
 
     @Test
-    void validatePlayerNumberList_test_input_including_non_number_character(){
+    void validatePlayerNumberList_test_input_including_non_number_character() {
         Turn turn = new Turn();
         List<Integer> testInput = List.of(33, 42, 55);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
@@ -73,7 +73,7 @@ public class TurnTest extends NsTest {
     }
 
     @Test
-    void validatePlayerNumberList_test_input_including_redundant_numbers(){
+    void validatePlayerNumberList_test_input_including_redundant_numbers() {
         Turn turn = new Turn();
         List<Integer> testInput = List.of(1, 1, 2);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
@@ -82,7 +82,7 @@ public class TurnTest extends NsTest {
     }
 
     @Test
-    void validatePlayerNumberList_test_input_empty(){
+    void validatePlayerNumberList_test_input_empty() {
         Turn turn = new Turn();
         List<Integer> testInput = List.of();
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
@@ -161,8 +161,9 @@ public class TurnTest extends NsTest {
 
         assertThat(turn.getStrikeResultString(2)).isEqualTo(resultOutput);
     }
+
     @Test
-    void isStrikeOut_test_strike_3(){
+    void isStrikeOut_test_strike_3() {
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 
         Turn turn = new Turn();
@@ -197,7 +198,5 @@ public class TurnTest extends NsTest {
         turn.printGameOverMessage();
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    public void runMain() {
-
-    }
+    public void runMain() {}
 }

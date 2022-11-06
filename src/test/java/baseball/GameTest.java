@@ -6,10 +6,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
 import java.io.ByteArrayInputStream;
+
 import org.junit.jupiter.api.Test;
 
 public class GameTest extends NsTest {
-
     @Test
     void start_test_game_start() {
         assertRandomNumberInRangeTest(
@@ -19,8 +19,8 @@ public class GameTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
-
     }
+
     @Test
     void printGameStartMessage_test_print_message() {
         Game game = new Game();
