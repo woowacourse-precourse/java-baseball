@@ -7,21 +7,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-	public static List<Integer> getGameNumber() {
-		String inputGameNumber = getInput();
-		Exception.validatePlayerNumber(inputGameNumber);
-		return stringToList(inputGameNumber);
+	public static List<Integer> getPlayerNumbers() {
+		String inputPlayerNumber = getInput();
+		Exception.validatePlayerNumber(inputPlayerNumber);
+		return stringToList(inputPlayerNumber);
 	}
 
-	private static String getInput() {
-		InputView.printInputNumber();
-		return Console.readLine();
-	}
-
-	private static List<Integer> stringToList(String inputGameNumber) {
-		String[] gameNumberArray = inputGameNumber.split("");
-		return Arrays.stream(gameNumberArray)
-			.map(gameNumber -> Integer.parseInt(gameNumber))
+	private static List<Integer> stringToList(String inputPlayerNumber) {
+		String[] inputPlayerNumberArray = inputPlayerNumber.split("");
+		return Arrays.stream(inputPlayerNumberArray)
+			.map(playerNumber -> Integer.parseInt(playerNumber))
 			.collect(Collectors.toList());
 	}
 
@@ -29,5 +24,10 @@ public class Input {
 		String inputRestartNumber = getInput();
 		Exception.validateRestartNumber(inputRestartNumber, restartNumber, exitNumber);
 		return Integer.parseInt(inputRestartNumber);
+	}
+
+	private static String getInput() {
+		InputView.printInputNumber();
+		return Console.readLine();
 	}
 }
