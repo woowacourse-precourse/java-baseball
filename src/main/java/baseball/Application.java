@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.security.jgss.GSSUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,6 +17,7 @@ public class Application {
 
         // 게임 진행 상태
         boolean usersAnswer = true;
+
 
         while (usersAnswer){
 
@@ -73,6 +76,26 @@ public class Application {
     }
 
     private static List<Integer> GenerateRandomNumber() {
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
+
+        List<Integer> list = new ArrayList<>();
+
+        while (list.size() < 3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+
+            // 숫자 중복 검사
+            if(isNotDuplicatedNumber(list , number)){
+                list.add(number);
+            }
+        }
+
+        return list;
+    }
+
+    private static boolean isNotDuplicatedNumber(List<Integer> list , int number) {
+        if(list.contains(number)){
+            return false;
+        }else {
+            return true;
+        }
     }
 }
