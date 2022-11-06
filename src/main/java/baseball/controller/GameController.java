@@ -46,4 +46,13 @@ public class GameController {
         }
         return userAction.isRestart();
     }
+
+    public void runBaseballGame() {
+        int strike = 0;
+        while (strike < 3) {
+            Ball userNumber = receiveBall();
+            strike = compareBall(userNumber);
+        }
+        messenger.printAnswerMessage();
+    }
 }
