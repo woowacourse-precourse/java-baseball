@@ -14,6 +14,18 @@ import javax.lang.model.type.ArrayType;
 
 class BaseBallGame {
     private static BaseBallGame gameProgram = new BaseBallGame();
+    private static String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static String QUESTIONS_ABOUT_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static String RESTART = "1";
+    private static String EXIT = "2";
+    private static String GAME_FINISH = "게임 종료";
+    private static String INPUT_ERROR_ABOUT_RESTART = "재시작에 대한 입력이 잘못되었습니다.";
+    private static String INPUT_ERROR_ABOUT_USER_NUMBER = "서로 다른 세자리 수를 입력해주세요.";
+    private static String CORRECT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static String STRIKE = "스트라이크";
+    private static String BALL = "볼";
+    private static String NOTHING = "낫싱";
+    private static String INPUT_YOUR_NUMBER = "숫자를 입력해주세요 : ";
     private static int GOAL = 3;
     private static int ZERO = 0;
 
@@ -25,7 +37,7 @@ class BaseBallGame {
     }
 
     public void gameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START);
     }
 
     public void gamePlaying() {
@@ -44,17 +56,17 @@ class BaseBallGame {
     }
 
     public boolean reStartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(QUESTIONS_ABOUT_RESTART);
         String answerToReplay = Console.readLine();
 
-        if (!answerToReplay.equals("1") && !answerToReplay.equals("2")) {
-            throw new IllegalArgumentException("재시작에 대한 입력이 잘못되었습니다.");
+        if (!answerToReplay.equals(RESTART) && !answerToReplay.equals(EXIT)) {
+            throw new IllegalArgumentException(INPUT_ERROR_ABOUT_RESTART);
         }
 
-        if (answerToReplay.equals("1")) {
+        if (answerToReplay.equals(RESTART)) {
             return true;
         }
-        System.out.println("게임 종료");
+        System.out.println(GAME_FINISH);
         return false;
     }
 
@@ -71,20 +83,20 @@ class BaseBallGame {
 
     public boolean getSolveResult(int strike, int ball) {
         if (strike == GOAL) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(GOAL + STRIKE);
+            System.out.println(CORRECT);
             return true;
         }
 
         if (ball == ZERO && strike == ZERO) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
         } else {
             if (ball == ZERO) {
-                System.out.println(strike + "스트라이크");
+                System.out.println(strike + STRIKE);
             } else if (strike == ZERO) {
-                System.out.println(ball + "볼");
+                System.out.println(ball + BALL);
             } else {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
+                System.out.println(ball + BALL + " " + strike + STRIKE);
             }
         }
 
@@ -94,7 +106,7 @@ class BaseBallGame {
 
 
     public String inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_YOUR_NUMBER);
         String inputStr = Console.readLine();
         inputValidation(inputStr);
         return inputStr;
@@ -103,7 +115,7 @@ class BaseBallGame {
 
     public void inputValidation(String inputStr) {
         if (!is3DigitNumber(inputStr) || !isDiffDigitNumber(inputStr)) {
-            throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
+            throw new IllegalArgumentException(INPUT_ERROR_ABOUT_USER_NUMBER);
         }
     }
 
