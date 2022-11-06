@@ -9,6 +9,21 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static void gameLoop() {
+		List<Integer> computerNumber = generateThreeRandomNumber();
+        List<Integer> userNumber;
+
+        do {
+            String input;
+
+            System.out.print("숫자를 입력해주세요 : ");
+            input = Console.readLine();
+            userNumber = parseInput(input);
+        } while (!judgement(computerNumber, userNumber));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private static List<Integer> generateThreeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>(3);
 
