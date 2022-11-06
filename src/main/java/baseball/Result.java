@@ -12,8 +12,7 @@ public enum Result {
     THREEBALL(3, "3볼"),
     TWOBALL(2, "2볼"),
     ONEBALL(1, "1볼"),
-    NOTHING(0, "낫싱"),
-    EMPTY(-1, "잘못된 점수");
+    NOTHING(0, "낫싱");
 
     private int score;
     private String message;
@@ -29,7 +28,7 @@ public enum Result {
 
     /*
      * 숫자 야구 결과(점수)에 대한 Result 반환
-     * 예외 처리 필요
+     * 점수가 음수이거나, 정의한 enum에 없다면 IllegalArgumentException 던짐
      *
      * @return String
      * */
@@ -37,6 +36,6 @@ public enum Result {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()
-                .orElse(EMPTY);
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 점수입니다."));
     }
 }
