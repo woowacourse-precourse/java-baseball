@@ -148,10 +148,10 @@ class BaseballTest {
         assertThat(convertStringToArrayList(input)).containsExactly('1','2','3');
     }
 
-    @DisplayName("check ball")
+    @DisplayName("get ball count")
     @ParameterizedTest(name = "{index}. {displayName} user={0} computer={1} ball={2}")
     @CsvSource({"'123','456',0", "'123','312',3", "'136','378',1", "'327','752',2"})
-    void checkBallCount_ball_몇인지_확인(String input1, String input2, int result) {
-        assertThat(checkBallCount(input1, input2)).isEqualTo(result);
+    void getBallCount_ball_몇인지_확인(String input1, String input2, int result) {
+        assertThat(getBallCount(input1, input2)).isEqualTo(result);
     }
 }
