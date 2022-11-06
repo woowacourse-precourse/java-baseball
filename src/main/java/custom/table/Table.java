@@ -16,6 +16,15 @@ public class Table {
         return number.charAt(index);
     }
 
+    public boolean contains(char character) {
+        for (char elem : number.toCharArray()) {
+            if (elem == character) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setNumber(String number) {
         this.number = number;
     }
