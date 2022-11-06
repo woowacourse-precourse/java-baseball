@@ -27,21 +27,20 @@ public class NumberBaseballService {
     public List<Integer> inputUserAnswer(String userAnswer) {
         validateUserAnswer(userAnswer);
         List<Integer> userAnswerResultList = new ArrayList<>();
-        userAnswerResultList.add(getStrikeCount(userAnswer));
+        userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
 
         return new ArrayList<>();
     }
 
-    public int getStrikeCount(String userAnswer) {
+    public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
         int strikeCount = 0;
-        ComputerNumber findComputerNumber = numberBaseballRepository.findComputerNumber();
-        if (findComputerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO) {
             strikeCount++;
         }
-        if (findComputerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
             strikeCount++;
         }
-        if (findComputerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
             strikeCount++;
         }
         return strikeCount;
