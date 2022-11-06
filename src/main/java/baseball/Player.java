@@ -9,7 +9,7 @@ public class Player {
 
     final int digitNumber = 3;
 
-    // 플레이어 값 입력 메서드
+    // 플레이어의 숫자 입력 및 숫자 이외 예외처리
     public List<Integer> inputNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
@@ -23,7 +23,7 @@ public class Player {
         }
     }
 
-    // 플레이어 값 List에 담기
+    // 플레이어의 숫자 리스트에 담기 및 중복 숫자 예외 처리
     public List<Integer> getNumberList(String number, int digitNumber) {
         List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < digitNumber; i++) {

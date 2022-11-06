@@ -7,21 +7,20 @@ import java.util.List;
 
 public class Game {
 
-    private Computer computer;
-    private Player player;
+    private final Computer computer;
+    private final Player player;
 
     public Game(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
     }
 
-    // 게임 전체 진행 상황
+    // 게임 전체 진행 순서
     public void run() {
         boolean gameStart = true;
         while (gameStart) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computerNum = computer.makeNumber();
-            System.out.println(computerNum);
             boolean strikeOut = false;
             while (!strikeOut) {
                 List<Integer> playerNum = player.inputNum();
@@ -76,7 +75,8 @@ public class Game {
     public boolean setStrikeOut(int strike) {
         if (strike == 3) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }

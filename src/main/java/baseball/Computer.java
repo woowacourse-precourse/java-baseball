@@ -11,7 +11,7 @@ public class Computer {
     final int maxNumber = 9;
     final int digitNumber = 3;
 
-    // 컴퓨터 3자리 수 만들기
+    // 컴퓨터의 3자리 수 랜덤으로 만들기
     public List<Integer> makeNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < digitNumber) {
