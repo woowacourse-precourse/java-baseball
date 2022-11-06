@@ -31,3 +31,8 @@ class User {
         return inputNumber;
     }
 }
+
+class game {
+    public int ball;
+    public int strike;
+}

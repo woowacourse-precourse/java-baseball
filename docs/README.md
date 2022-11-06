@@ -9,7 +9,7 @@
 [] 입력값 오류 시 IllegalArgumentException 발생 후 프로그램 종료<br>
 ✅ 맞춰야 하는 3자리 숫자 만들기 (random)
 3. 게임 구현<br>
-[] ball , strike 개수 변수 선언 <br>
+✅ ball , strike 개수 변수 선언 <br>
 [] 입력한 숫자 한자리씩 정답과 비교하며 정답에 포함되있고 + 자리수도 같으면 strike 개수 ++<br>
 [] 입력한 숫자 한자리씩 정답과 비교하여 정답에 포함되있고 자리수는 다르면 ball 개수 ++<br>
 [] 입력 수 3자리 다 비교했으면 ball 개수 strike 개수 형식에 맞게 출력<br>
