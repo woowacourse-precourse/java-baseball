@@ -29,16 +29,9 @@ public class BaseballGame {
         boolean status = true;
         do {
             printInputMessage();
-            String input;
-            try {
-                input = getBalls();
-            } catch (IllegalArgumentException e) {
-                // 종료 메세지 출력
-                return false;
-            }
+            String input = getUserBalls();
             int[] userBalls = stringToArray(input);
             status = getResult(balls, userBalls);
-            //값 비교
         } while (status);
         printFinishMessage();
         return true;
@@ -48,7 +41,7 @@ public class BaseballGame {
         return readLine();
     }
 
-    public String getBalls() throws IllegalArgumentException {
+    public String getUserBalls() throws IllegalArgumentException {
         String input = getInput();
         if (checkInputException(input)) {
             throw new IllegalArgumentException("형식에 맞지 않음");
@@ -57,7 +50,9 @@ public class BaseballGame {
     }
 
     public int[] stringToArray(String input) {
-        return Stream.of(input).mapToInt(Integer::parseInt).toArray();
+        return Stream.of(String.valueOf(input).split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
     public Boolean checkStatus() {

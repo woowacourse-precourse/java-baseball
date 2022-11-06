@@ -7,6 +7,7 @@ public class Message {
     private static final String nothingCaseMessage = "낫싱";
     private static final String ballCaseMessage = "%d볼";
     private static final String strikeCaseMessage = "%d스트라이크";
+    private static final String newline = "\n";
     private static final String finishMessage = "게임 종료";
 
     public Message() {
@@ -24,11 +25,11 @@ public class Message {
         if (strike == 0 && ball == 0) {
             System.out.println(nothingCaseMessage);
         } else if (strike == 0) {
-            System.out.printf(ballCaseMessage, ball);
+            System.out.printf(ballCaseMessage + newline, ball);
         } else if (ball == 0) {
-            System.out.printf(strikeCaseMessage, strike);
+            System.out.printf(strikeCaseMessage + newline, strike);
         } else {
-            System.out.printf(ballCaseMessage + strikeCaseMessage, ball, strike);
+            System.out.printf(ballCaseMessage +" "+ strikeCaseMessage + newline, ball, strike);
         }
     }
 

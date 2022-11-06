@@ -8,7 +8,7 @@ public class Result {
     public static Boolean getResult(List<Integer> balls, int[] userBalls) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < balls.size(); i++) {
+        for (int i = 0; i < userBalls.length; i++) {
             if (userBalls[i] == balls.get(i)) {
                 strike += 1;
             } else if (balls.contains(userBalls[i])) {
@@ -16,6 +16,6 @@ public class Result {
             }
         }
         printResultMessage(ball, strike);
-        return strike == balls.size();
+        return !(strike == balls.size());
     }
 }
