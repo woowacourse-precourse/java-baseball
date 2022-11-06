@@ -7,6 +7,7 @@ public class Hint {
     private static final String STRIKE_STRING = "스트라이크";
     private static final String NOTHING_STRING = "낫싱";
     private static final String SPACE_STRING = " ";
+    private static final String NULL_STRING = "";
 
     private final BaseballNumbers answerBaseballNumbers;
     private final BaseballNumbers inputBaseballNumbers;
@@ -30,8 +31,34 @@ public class Hint {
         }
         int strikeCount = answerBaseballNumbers.getStrike(inputBaseballNumbers);
         int ballCount = answerBaseballNumbers.getBall(inputBaseballNumbers);
-        String result = ballCount + BALL_STRING + SPACE_STRING + strikeCount + STRIKE_STRING;
+        String result = makeCountString(ballCount, strikeCount);
         return result;
+    }
+
+    private String makeCountString(int ballCount, int strikeCount) {
+        String result = getBallResult(ballCount);
+
+        if(strikeCount == 0) {
+            result += getStrikeResult(strikeCount);
+        }
+        if(strikeCount >= 1) {
+            result += (SPACE_STRING + getStrikeResult(strikeCount));
+        }
+        return result;
+    }
+
+    private String getBallResult(int ballCount) {
+        if(ballCount == 0) {
+            return NULL_STRING;
+        }
+        return ballCount + BALL_STRING;
+    }
+
+    private String getStrikeResult(int strikeCount) {
+        if(strikeCount == 0) {
+            return NULL_STRING;
+        }
+        return strikeCount + STRIKE_STRING;
     }
 
 }
