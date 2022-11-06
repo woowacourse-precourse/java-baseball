@@ -21,5 +21,13 @@ public class GameNumber {
         this.gameNumber = computerNumber.toString();
     }
 
+    public boolean validateUserNumber(String userNumber) {
+
+    }
+
+    public boolean validateRightLength(String userNumber) {
+        return (userNumber.length() == NUMBER_LENGTH);
+    }
+
 
 }
