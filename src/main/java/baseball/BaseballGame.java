@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constants.SystemConsole;
 import baseball.constants.SystemMessage;
 import baseball.domain.RandomGenerator;
 import baseball.domain.Referee;
@@ -14,12 +15,18 @@ public class BaseballGame {
     private static final String GAME_WIN_CONDITIONS = "3스트라이크";
     private static final String RESTART_INPUT = "플레이어가 숫자 1 또는 2가 아닌 다른 값을 입력하였습니다.";
 
+    private final SystemConsole systemConsole;
+
+    public BaseballGame(SystemConsole systemConsole) {
+        this.systemConsole = systemConsole;
+    }
+
     public void start() {
         Player player = new Player();
         Referee referee = new Referee();
         RandomGenerator randomGenerator = new RandomGenerator();
 
-        baseballStartMessage();
+        systemConsole.baseballStartMessage();
         conditionsBaseballGame(player, referee, randomGenerator);
     }
 
@@ -37,9 +44,9 @@ public class BaseballGame {
         String gameResultNumber = "";
 
         while (!(gameResultNumber.equals(GAME_WIN_CONDITIONS))) {
-            PlayerInputMessage();
+            systemConsole.PlayerInputMessage();
             gameResultNumber = getGameResultNumber(player, referee, computer);
-            gameResultNumberMessage(gameResultNumber);
+            systemConsole.gameResultNumberMessage(gameResultNumber);
         }
     }
 
@@ -64,28 +71,8 @@ public class BaseballGame {
     }
 
     public static String getRestart() {
-        gameWinMessage();
-        gameRestartMessage();
+        SystemConsole.gameWinMessage();
+        SystemConsole.gameRestartMessage();
         return playerRestartInput();
-    }
-
-    private void gameResultNumberMessage(String gameResultNumber) {
-        System.out.println(gameResultNumber);
-    }
-
-    private void PlayerInputMessage() {
-        System.out.print(SystemMessage.SETUP_MESSAGE);
-    }
-
-    private void baseballStartMessage() {
-        System.out.println(SystemMessage.INITIAL_MESSAGE);
-    }
-
-    private static void gameRestartMessage() {
-        System.out.println(SystemMessage.GAME_RESTART_MESSAGE);
-    }
-
-    private static void gameWinMessage() {
-        System.out.println(SystemMessage.GAME_WIN_MESSAGE);
     }
 }
