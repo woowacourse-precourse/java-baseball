@@ -12,5 +12,6 @@ public class Player {
 
     public void validateInput(String input) {
         Exception.checkNumberFormatException(input);
+        Exception.checkNumberRangeException(input);
     }
 }
