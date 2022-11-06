@@ -102,6 +102,8 @@ public class Application {
 
         if (line.equals("1")) {
             playGame();
+        } else {
+            System.out.println("게임 종료");
         }
     }
 }
