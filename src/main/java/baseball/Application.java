@@ -64,13 +64,12 @@ public class Application {
         else if(strike == 0) return ball + "볼";
         else return ball + "볼" + " " + strike + "스트라이크";
     }
+
     public static Integer calculationStrike(List<Integer> computer,List<Integer> user){
         Integer strike = 0;
         for(int i = 0;i<computer.size();i++){
-            for(int k = 0;k<user.size();k++){
-                if(computer.get(i).equals(user.get(k)) && i == k)
-                    strike +=1;
-            }
+            if(computer.get(i).equals(user.get(i)))
+                strike +=1;
         }
         return strike;
     }
