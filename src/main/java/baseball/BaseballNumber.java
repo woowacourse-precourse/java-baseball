@@ -5,7 +5,9 @@ import java.util.List;
 
 public class BaseballNumber {
     protected List<Integer> baseballNumber = new ArrayList<>();
-    public boolean isValidBaseballNumber (List<Integer> baseballNumber);
+    public boolean isValidBaseballNumber (List<Integer> baseballNumber) {
+        return true;
+    };
 
     public List<Integer> getBaseballNumber() {
         return baseballNumber;
