@@ -11,11 +11,12 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
+        int ball = 0;
+        int strike = 0;
         List<Integer> opponent = generateOpponent();
         List<Integer> player = receiveInputOfPlayer();
 
-//        System.out.println(opponent.containsAll(player));
+        System.out.println(checkOpponentAndPlayer(opponent, player));
     }
 
     public static List<Integer> generateOpponent(){
@@ -66,5 +67,27 @@ public class Application {
         }
     }
 
+    public static List<Integer> checkOpponentAndPlayer(List<Integer> opponent,List<Integer> player){
+        List<Integer> BallAndStrike = new ArrayList<>(
+                Arrays.asList(0,0)
+        );
+        for (int opponentNum = 0; opponentNum < opponent.size(); opponentNum++) {
+            for (int playerNum = 0; playerNum < player.size(); playerNum++) {
+                checkBallAndStrike(BallAndStrike,opponent,player,opponentNum,playerNum);
+            }
+        }
+        return BallAndStrike;
+    }
+
+    public static List<Integer> checkBallAndStrike(List<Integer> BallAndStrike,List<Integer> opponent, List<Integer> player, int opponentNum, int playerNum){
+        if(opponent.get(opponentNum)==player.get(playerNum)){
+            if(opponentNum!=playerNum){
+                BallAndStrike.set(0,BallAndStrike.get(0)+1);
+            }else{
+                BallAndStrike.set(1,BallAndStrike.get(1)+1);
+            }
+        }
+        return BallAndStrike;
+    }
 }
 
