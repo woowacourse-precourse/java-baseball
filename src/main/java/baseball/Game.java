@@ -16,8 +16,11 @@ public class Game {
     public void start() {
         System.out.println(PROMPT_MESSAGE);
         computer.generate();
-        player.setInputNum(PlayerInputView.startInput());
-        compare.startCompare(player.getPlayerNum(), computer.getComNum());
+        do {
+            player.setInputNum(PlayerInputView.startInput());
+            compare.startCompare(player.getPlayerNum(), computer.getComNum());
+        } while (compare.strike != Compare.CLEAR_NUM);
+
     }
 
 
