@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import static baseball.Computer.*;
+import static baseball.Player.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class FunctionTest {
@@ -29,5 +30,11 @@ public class FunctionTest {
         List<Integer> answer = makeAnswer();
         int result = answer.size();
         assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    void isInteger_입력받은_문자열이_정수로_이루어졌는지_판별(){
+        boolean result = isInteger("1.3f");
+        assertThat(result).isEqualTo(false);
     }
 }
