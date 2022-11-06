@@ -23,7 +23,7 @@ public class Computer {
         }
     }
 
-    private int countStrike(List<Integer> userNumber) {
+    public int countStrike(List<Integer> userNumber) {
         int strike = 0;
 
         for(int i=0; i< userNumber.size(); i++) {
@@ -34,7 +34,7 @@ public class Computer {
         return strike;
     }
 
-    private int countBall(List<Integer> userNumber) {
+    public int countBall(List<Integer> userNumber) {
         int ball = 0;
 
         for(int i=0; i< userNumber.size(); i++) {
