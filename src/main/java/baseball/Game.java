@@ -41,4 +41,9 @@ public class Game {
         return BallStatus.NOTHING.getValue();
     }
 
+    public static boolean isPlayAgain() {
+        Player player = new Player();
+        int input = player.gameOverInput();
+        return input == 1;
+    }
 }
