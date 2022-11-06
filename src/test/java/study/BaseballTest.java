@@ -1,10 +1,14 @@
 package study;
 
 import baseball.MakeRandomString;
+import baseball.PlayGame;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -31,5 +35,13 @@ public class BaseballTest {
         assertThat(randomNumberFirst).isNotEqualTo(randomNumberSecond);
         assertThat(randomNumberFirst).isNotEqualTo(randomNumberThird);
         assertThat(randomNumberSecond).isNotEqualTo(randomNumberThird);
+    }
+
+    @Test
+    void compareStringTest() {
+        assertThat(PlayGame.compareString("123", "123")).isEqualTo(Arrays.asList(0, 3));
+        assertThat(PlayGame.compareString("123", "321")).isEqualTo(Arrays.asList(2, 1));
+        assertThat(PlayGame.compareString("123", "312")).isEqualTo(Arrays.asList(3, 0));
+        assertThat(PlayGame.compareString("123", "456")).isEqualTo(Arrays.asList(0, 0));
     }
 }
