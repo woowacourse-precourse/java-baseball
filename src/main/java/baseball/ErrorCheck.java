@@ -46,29 +46,31 @@ public class ErrorCheck {
         return true;
     }
 
-    public boolean launchErrorCheck() {
-        if (checkInputLenght() == false) {
-            return false;
-        }
-        if (checkIsNum() == false) {
-            return false;
-        }
-        if (checkDuplicate() == false) {
-            return false;
-        }
-        return true;
+    private void throwException() {
+        throw new IllegalArgumentException();
     }
 
-    public boolean launchErrorCheck(int type) {
-        if (checkInputLenght(type) == false) {  //오버 로딩을 통해서 타입별 렝스 길이 체크(1자릿수 체크 메서드)
-            return false;
+    public void launchErrorCheck() {
+        if (checkInputLenght() == false) {
+            throwException();
         }
         if (checkIsNum() == false) {
-            return false;
+            throwException();
         }
         if (checkDuplicate() == false) {
-            return false;
+            throwException();
         }
-        return true;
+    }
+
+    public void launchErrorCheck(int type) {
+        if (checkInputLenght(type) == false) {  //오버 로딩을 통해서 타입별 렝스 길이 체크(1자릿수 체크 메서드)
+            throwException();
+        }
+        if (checkIsNum() == false) {
+            throwException();
+        }
+        if (checkDuplicate() == false) {
+            throwException();
+        }
     }
 }
