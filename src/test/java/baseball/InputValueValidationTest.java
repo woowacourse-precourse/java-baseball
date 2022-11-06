@@ -67,7 +67,7 @@ public class InputValueValidationTest{
     }
 
     @Nested
-    class IsValidTest {
+    class isValidNumberTest {
         @Test
         void case1() {
             InputValueValidation valueValidation = new InputValueValidation();
@@ -84,6 +84,27 @@ public class InputValueValidationTest{
         void case3() {
             InputValueValidation valueValidation = new InputValueValidation();
             assertThat(valueValidation.noDuplicates("789")).isEqualTo(true);
+        }
+    }
+
+    @Nested
+    class isValidReplayTest {
+        @Test
+        void case1() {
+            InputValueValidation valueValidation = new InputValueValidation();
+            assertThat(valueValidation.isValidReplay(1)).isEqualTo(true);
+        }
+
+        @Test
+        void case2() {
+            InputValueValidation valueValidation = new InputValueValidation();
+            assertThat(valueValidation.isValidReplay(2)).isEqualTo(true);
+        }
+
+        @Test
+        void case3() {
+            InputValueValidation valueValidation = new InputValueValidation();
+            assertThat(valueValidation.isValidReplay(3)).isEqualTo(false);
         }
     }
 
