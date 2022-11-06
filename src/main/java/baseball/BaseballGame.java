@@ -30,6 +30,8 @@ public class BaseballGame {
 
     private boolean getReplayOrNot() throws IllegalArgumentException {
         String replayInput = InputView.getReplayOrNotByInput();
+        
+        NumberValidator.checkReplayInput(replayInput);
 
         return convertReplayInputToBool(replayInput);
     }
