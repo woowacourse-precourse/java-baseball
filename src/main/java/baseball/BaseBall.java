@@ -21,7 +21,7 @@ public class BaseBall {
         }
     }
 
-    public void roundOfGame() {
+    private void roundOfGame() {
         System.out.print(Messages.inputNumber);
         numberOfUser = user.input();
 
