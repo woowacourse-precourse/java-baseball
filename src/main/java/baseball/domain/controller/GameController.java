@@ -1,5 +1,7 @@
 package baseball.domain.controller;
 
+import static baseball.Game.RESTART_SIGNAL;
+
 import baseball.domain.dto.ResultDto;
 import baseball.domain.dto.UserInputDto;
 import baseball.domain.model.Computer;
@@ -25,9 +27,7 @@ public class GameController {
 
     public Boolean restartGame(UserInputDto userInputDto) {
         InputValidator.checkIsGameRestartInput(userInputDto.getUserInput());
-        if (userInputDto.getUserInput().equals("1")) {
-            return false;
-        }
-        return true;
+
+        return !RESTART_SIGNAL.equals(userInputDto.getUserInput());
     }
 }
