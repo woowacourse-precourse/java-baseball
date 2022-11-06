@@ -19,10 +19,8 @@ public class GameView {
         while (true) {
             // User에게 숫자를 입력 받는다.
             getInputGuessNum(gameController);
-
             // User의 숫자가 맞는지 확인
             giveHintGame(gameController);
-
             // 게임이 계속되는지 확인
             if (isRightEndGameAndProceedGame(gameController)) {
                 break;
