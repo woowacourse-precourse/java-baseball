@@ -61,7 +61,7 @@
 - [x] "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요." 출력
 
 ## (String)inputUserAnswer()
-- [ ] userAnswer에 readLine함수를 이용하여 사용자의 응답을 입력
+- [x] userAnswer에 readLine함수를 이용하여 사용자의 응답을 입력
 - [ ] userAnswer을 리턴
 
 ## (boolean)availableUserAnswerIsChecked(String word)
