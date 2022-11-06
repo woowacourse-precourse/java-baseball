@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constants.INPUT_LENGTH;
+
 public class ComputerNumGenerator {
     public final List<Integer> NUMS;
 
@@ -14,7 +16,7 @@ public class ComputerNumGenerator {
 
     public List<Integer> generate() {
         List<Integer> nums = new ArrayList<>();
-        while (nums.size() != Constants.INPUT_LENGTH) {
+        while (nums.size() != INPUT_LENGTH) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
             if (!nums.contains(randomNum)) {
                 nums.add(randomNum);

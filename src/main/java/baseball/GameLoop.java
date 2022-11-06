@@ -4,10 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.Constants.RESTART;
+import static baseball.Constants.END;
+
 public class GameLoop {
 
     public void executeGame() {
-        String answer = Constants.RESTART;
+        String answer = RESTART;
         while (isRestart(answer)) {
             List<Integer> nums = new ComputerNumGenerator().NUMS;
             Game game = new Game(nums);
@@ -18,9 +21,9 @@ public class GameLoop {
     }
 
     public boolean isRestart(String answer) {
-        if (answer.equals(Constants.RESTART)) {
+        if (answer.equals(RESTART)) {
             return true;
-        } else if (answer.equals(Constants.END)) {
+        } else if (answer.equals(END)) {
             return false;
         }
         throw new IllegalArgumentException();
