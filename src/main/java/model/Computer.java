@@ -137,8 +137,8 @@ public class Computer {
         }
     }
 
-    private Integer getValueOfIndexFromList(List<Integer> list, int first) {
-        return list.get(first);
+    private Integer getValueOfIndexFromList(List<Integer> list, int index) {
+        return list.get(index);
     }
 
     private void addCntBallStrike(boolean isStrike, boolean isBall) {
