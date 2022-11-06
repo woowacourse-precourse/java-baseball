@@ -60,19 +60,29 @@ public class BaseballGame extends Game {
     }
 
     private boolean playTurn(String input) {
-        List<Integer> turnResult = getGuessResult(input);
+        HashMap<Result, Integer> turnResult = getGuessResult(input);
         Messages.printScore(turnResult);
         if(isGameOver(turnResult)) {
             terminate();
         }
-        return false;
+        return true;
     }
 
-    private List<Integer> getGuessResult(String input) {
-        return List.of(0, 0);
+    private HashMap<Result, Integer> getGuessResult(String input) {
+        HashMap<Result, Integer> guessResult = new HashMap<>();
+        for (int index = 0; index < input.length(); index++) {
+            int number = Character.getNumericValue(input.charAt(index));
+            Result result = getDigitResult(index, number);
+            guessResult.put(result, guessResult.getOrDefault(result, 0) + 1);
+        }
+        return guessResult;
     }
 
-    private boolean isGameOver(List<Integer> turnResult) {
+    private Result getDigitResult(int index, int number) {
+        return Result.OUT;
+    }
+
+    private boolean isGameOver(HashMap<Result, Integer> turnResult) {
         return false;
     }
 
@@ -80,6 +90,4 @@ public class BaseballGame extends Game {
         System.out.println("stopped");
         return false;
     }
-
-
 }
