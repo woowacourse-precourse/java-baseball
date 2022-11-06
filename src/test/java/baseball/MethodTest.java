@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Application.*;
+import static baseball.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
