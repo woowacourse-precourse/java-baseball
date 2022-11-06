@@ -13,6 +13,7 @@ public class Application {
         while (true){
             List<Integer> userBall = StringToIntList(Console.readLine());
 
+            String result = compareBall(computerBall, userBall);
         }
     }
 
@@ -28,5 +29,31 @@ public class Application {
         }
 
         return userBall;
+    }
+
+    public static String compareBall(List<Integer> computerBall, List<Integer> userBall){
+        int strike = 0;
+        int ball = 0;
+
+        for(int i = 0; i < computerBall.size(); i++){
+            int computerNum = computerBall.get(i);
+            int userNum = userBall.get(i);
+
+            if(computerBall.contains(userNum) && computerNum == userNum){
+                strike++;
+            }else if(computerBall.contains(userNum) && computerNum != userNum){
+                ball++;
+            }
+        }
+
+        if(strike == 0 && ball == 0) {
+            return "낫싱";
+        }else if(ball == 0){
+            return strike + "스크라이크";
+        }else if(strike == 0){
+            return ball + "볼";
+        }
+
+        return ball + "볼 " + strike + "스크라이크";
     }
 }

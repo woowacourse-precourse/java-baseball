@@ -48,6 +48,56 @@ class ApplicationTest extends NsTest {
         assertThat(StringToIntList(input).get(0)).isEqualTo(result);
     }
 
+    @Test
+    void compareBall_에서_낫싱_반환_테스트(){
+        List<Integer> computerBall = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userBall = new ArrayList<>(Arrays.asList(4,5,6));
+
+        String result = "낫싱";
+
+        assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
+    @Test
+    void compareBall_에서_2볼_1스크라이크_반환_테스트(){
+        List<Integer> computerBall = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userBall = new ArrayList<>(Arrays.asList(2,1,3));
+
+        String result = "2볼 1스크라이크";
+
+        assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
+    @Test
+    void compareBall_에서_3스크라이크_반환_테스트(){
+        List<Integer> computerBall = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userBall = new ArrayList<>(Arrays.asList(1,2,3));
+
+        String result = "3스크라이크";
+
+        assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
+    @Test
+    void compareBall_에서_3볼_반환_테스트(){
+        List<Integer> computerBall = new ArrayList<>(Arrays.asList(3,1,2));
+        List<Integer> userBall = new ArrayList<>(Arrays.asList(1,2,3));
+
+        String result = "3볼";
+
+        assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
+    @Test
+    void compareBall_에서_1볼_1스크라이크_반환_테스트(){
+        List<Integer> computerBall = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> userBall = new ArrayList<>(Arrays.asList(1,7,2));
+
+        String result = "1볼 1스크라이크";
+
+        assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
 
     @Override
     public void runMain() {
