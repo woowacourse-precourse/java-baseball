@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -28,6 +27,20 @@ public class BallsTest {
 
 		assertThatThrownBy(
 			() -> new Balls(List.of(1))
+		).isInstanceOf(IllegalArgumentException.class);
+
+		assertThat(new Balls(List.of(1, 2, 3))).isNotNull();
+	}
+
+	@DisplayName("balls 중복 검증 테스트")
+	@Test
+	void balls_중복_검증() {
+		assertThatThrownBy(
+			() -> new Balls(List.of(1, 1, 1))
+		).isInstanceOf(IllegalArgumentException.class);
+
+		assertThatThrownBy(
+			() -> new Balls(List.of(2, 1, 2))
 		).isInstanceOf(IllegalArgumentException.class);
 
 		assertThat(new Balls(List.of(1, 2, 3))).isNotNull();
