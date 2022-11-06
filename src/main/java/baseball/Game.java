@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -14,7 +13,6 @@ public class Game {
 
     private int strike = 0;
     private int ball = 0;
-    private boolean gameEnd = false;
     private boolean gameExit = false;
 
     public void startGame() {
@@ -24,13 +22,13 @@ public class Game {
             List<Integer> computer = getRandomNumberList();
             playGame(computer);
 
-            if (gameExit) break;
+            if (gameExit)
+                break;
         }
 
     }
 
     public void playGame(List<Integer> computer) {
-        gameEnd = false;
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -41,7 +39,7 @@ public class Game {
             calculateScore(user, computer);
             printResult();
 
-            if (gameEnd) {
+            if (strike == 3) {
                 restartOrExit();
                 break;
             }
@@ -62,7 +60,7 @@ public class Game {
 
     public List<Integer> validateUserInput(String input) {
         List<Integer> user = new ArrayList<>();
-        for (String number : Arrays.asList(input.split(""))) {
+        for (String number : input.split("")) {
             if (!Character.isDigit(number.charAt(0))) {
                 throw new IllegalArgumentException("숫자 이외의 문자는 입력받지 않습니다.");
             }
@@ -102,9 +100,6 @@ public class Game {
             System.out.print(strike + "스트라이크");
 
         System.out.println();
-
-        if (strike == 3)
-            gameEnd = true;
     }
 
     public void restartOrExit() {
