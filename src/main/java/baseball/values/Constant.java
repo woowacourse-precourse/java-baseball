@@ -14,4 +14,9 @@ public class Constant {
         public static final String ASK_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
         public static final String RESTART = "1";
     }
+
+    public static class Digit {
+        public static final int TOTAL_BALL_CNT = 3;
+        public static final int MAX_STRIKE_CNT = 3;
+    }
 }

@@ -21,7 +21,7 @@
 Constant Class
 - Hint 상수 클래스 생성 ✔
 - Console 상수 클래스 생성 ✔
-- Digit 상수 클래스 생성 ❌
+- Digit 상수 클래스 생성 ✔
 
 Baseball Class
 - 입력받은 수 예외 검증 ❌
