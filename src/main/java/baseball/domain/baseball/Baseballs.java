@@ -5,10 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Baseballs {
-    private static final int BASEBALL_NUMBER = 3;
+    public static final int BASEBALL_NUMBER = 3;
     static final String NOT_THREE_LETTERS_MESSAGE = "입력한 숫자가 3글자가 아닙니다.";
     static final String DUPLICATE_MESSAGE = "중복된 숫자를 입력했습니다.";
 
