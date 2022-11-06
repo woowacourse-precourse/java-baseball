@@ -28,11 +28,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Disabled("기능 구현할 때까지 비활성화")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("14"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("140"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

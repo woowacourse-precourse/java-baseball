@@ -9,6 +9,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    static int numberLength = 3;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int gameStart = 1;
@@ -25,20 +27,31 @@ public class Application {
         user = getUserInput();
         computer = makeComputerNumber();
 
-        for (int data: user) {
+        for (int data : user) {
             System.out.println(data);
         }
     }
 
     private static List<Integer> getUserInput() {
+        int input = Integer.parseInt(readLine());
+        checkInput(Integer.toString(input));
+
         List<Integer> user = new ArrayList<>();
-        int tmp = Integer.parseInt(readLine());
-        while (user.size() < 3) {
-            user.add(tmp%10);
-            tmp /= 10;
+        while (user.size() < numberLength) {
+            user.add(input % 10);
+            input /= 10;
         }
         Collections.reverse(user);
         return user;
+    }
+
+    private static void checkInput(String input) {
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
+        }
+        if (input.length() != numberLength) {
+            throw new IllegalArgumentException("입력 숫자의 길이는" + numberLength + "이 되어야 합니다.");
+        }
     }
 
     private static List<Integer> makeComputerNumber() {
