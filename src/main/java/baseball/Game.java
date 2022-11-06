@@ -19,10 +19,8 @@ public class Game {
 
     public void start() {
         System.out.print(INPUT_COMMENT);
-        String userInput = Console.readLine();
-        UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
-        System.out.println(userInput);
-        compareNumbers(userInputNumbers);
+        UserInputNumbers userInput = new UserInputNumbers();
+        compareNumbers(userInput.getUserInputNumbers());
     }
 
     public boolean isAnswer() {
@@ -55,9 +53,8 @@ public class Game {
         return threeNumber;
     }
 
-    public void compareNumbers(UserInputNumbers userInput) {
+    public void compareNumbers(List<Integer> userInputValues) {
         gameState = new GameState();
-        List<Integer> userInputValues = userInput.getUserInputNumbers();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
             if (computer.get(idx)==userInputValues.get(idx)) {
                 gameState.addStrike();

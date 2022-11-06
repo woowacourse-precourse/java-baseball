@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,22 +9,20 @@ import static constant.Constant.*;
 import static constant.ErrorMessage.*;
 
 public class UserInputNumbers {
-    private List<Integer> userInputNumbers = new ArrayList<>();
 
-    public UserInputNumbers(String numbers) {
-        if(validUserInputNumber(numbers)){
-            addNumbers(numbers);
-        }
-    }
-
-    private void addNumbers(String numbers) {
+    private List<Integer> addNumbers(String numbers) {
+        List<Integer> userInputNumbers = new ArrayList<>();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
             userInputNumbers.add(numbers.charAt(idx)-ZERO_ASCII);
         }
+        return userInputNumbers;
     }
 
     public List<Integer> getUserInputNumbers() {
-        return userInputNumbers;
+        String userInput = Console.readLine();
+        validUserInputNumber(userInput);
+        System.out.println(userInput);
+        return addNumbers(userInput);
     }
 
     public static boolean validUserInputNumber(String numbers) {
