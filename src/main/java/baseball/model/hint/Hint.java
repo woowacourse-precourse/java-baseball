@@ -11,12 +11,12 @@ public class Hint {
     private final BaseballNumbers answerBaseballNumbers;
     private final BaseballNumbers inputBaseballNumbers;
 
-    Hint(BaseballNumbers answerBaseballNumbers, BaseballNumbers inputBaseballNumbers) {
+    public Hint(BaseballNumbers answerBaseballNumbers, BaseballNumbers inputBaseballNumbers) {
         this.answerBaseballNumbers = answerBaseballNumbers;
         this.inputBaseballNumbers = inputBaseballNumbers;
     }
 
-    private String getResult() {
+    public String getResult() {
         if(answerBaseballNumbers.isNothing(inputBaseballNumbers)) {
             return NOTHING_STRING;
         }
