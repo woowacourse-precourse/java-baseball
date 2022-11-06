@@ -36,4 +36,10 @@ public class Staff {
 
         return userNumbers;
     }
+
+    private void validateInputLength(String input) {
+        if (input.length() != PICK_COUNT) {
+            throw new IllegalArgumentException("입력값이 " + PICK_COUNT + "자리가 아닙니다.");
+        }
+    }
 }
