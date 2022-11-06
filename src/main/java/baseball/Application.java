@@ -39,7 +39,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
         for(int userIndex=0; userIndex<user.size(); userIndex++){
-            ball += isBall(computer, user.get(userIndex), userIndex);
+            ball += isBall(computer, user.get(userIndex));
 
             if(ball == 0 ) {
                 strike += isStrike(computer, user.get(userIndex), userIndex);
@@ -62,4 +62,23 @@ public class Application {
         return false;
     }
 
+    public int isStrike(List<Integer> computer, int userNum, int userIndex) {
+        for(int computerIndex=0; computerIndex<computer.size(); computerIndex++) {
+            if((userIndex == computerIndex) && (userNum == computer.get(computerIndex))) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    public int isBall(List<Integer> computer, int userNum) {
+        for (Integer computerNum : computer) {
+            if (userNum == computerNum) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
 }
