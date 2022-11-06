@@ -47,4 +47,20 @@ public class MultiDigitNumber {
         return multiDigitNumber;
     }
 
+    private int getPositionOfSingleDigitSatisfyingCondition(Predicate<SingleDigit> singleDigitPredicate){
+        return singleDigitList.indexOf(singleDigitList.stream()
+            .filter(singleDigitPredicate).findFirst());
+    }
+    private int getStrike(MultiDigitNumber otherMultiDigitNumber){
+        return (int) IntStream.range(0, otherMultiDigitNumber.singleDigitList.size())
+            .filter((i) -> i == getPositionOfSingleDigitSatisfyingCondition(Predicate.isEqual(otherMultiDigitNumber.singleDigitList.get(i)))).count();
+    }
+    private int getBall(MultiDigitNumber otherMultiDigitNumber){
+        return (int) IntStream.range(0, otherMultiDigitNumber.singleDigitList.size())
+            .filter((i) -> {
+                int position = getPositionOfSingleDigitSatisfyingCondition(Predicate.isEqual(otherMultiDigitNumber.singleDigitList.get(i)));
+                return (position != -1 && position != i);
+            }).count();
+    }
+
 }
