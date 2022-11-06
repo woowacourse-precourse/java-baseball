@@ -1,6 +1,7 @@
 package baseball.verifiable;
 
 public class CheckInputRange implements VerifiableRule {
+    private final static int TEN_DECIMAL = 10;
     private final char lowerNum;
     private final char upperNum;
 
@@ -10,7 +11,7 @@ public class CheckInputRange implements VerifiableRule {
     }
 
     private char intToChar(int intNum) {
-        return (Character.forDigit(intNum, 10));
+        return (Character.forDigit(intNum, TEN_DECIMAL));
     }
 
     @Override
