@@ -18,8 +18,10 @@ public class GameCycle {
         String randomNumber = String.join("", randomNumbers);
         return randomNumber;
     }
-    public String inputNumber(){ // 분리하기
+    public void outputWriteNumber(){
         System.out.print("숫자를 입력해주세요 : ");
+    }
+    public String inputNumber(){
         return Console.readLine();
     }
     public boolean numberLengthIsThree(String number) {
@@ -45,6 +47,7 @@ public class GameCycle {
         return true;
     }
     public String playerInputNumber() {
+        outputWriteNumber();
         String playerNumber = inputNumber();
         if (numberIsDigit(playerNumber));
         if (numberLengthIsThree(playerNumber));
