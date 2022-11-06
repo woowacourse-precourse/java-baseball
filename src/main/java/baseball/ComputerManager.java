@@ -23,7 +23,7 @@ public class ComputerManager {
      */
     public void generateRandomNumber() {
         computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < InputNumber.GAME_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_OF_NUMBER_RANGE, END_OF_NUMBER_RANGE);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
