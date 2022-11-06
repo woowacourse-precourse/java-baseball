@@ -2,12 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class NumberManager {
 
-    private int[] randomNumberArray;
+    private ArrayList<Integer> randomNumberArray;
     private static final int LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -30,12 +31,16 @@ public class NumberManager {
 
     }
 
-    private int[] convertToNumberArray(StringBuilder number) {
+    private ArrayList<Integer> convertToNumberArray(StringBuilder number) {
 
-        int[] numberArray = new int[10];
+        ArrayList<Integer> numberArray = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            numberArray.add(0);
+        }
 
         for (int i = 0; i < number.length(); i++) {
-            numberArray[number.charAt(i) - '0'] = i + 1;
+            numberArray.set(number.charAt(i) - '0', i + 1);
         }
 
         return numberArray;
@@ -57,7 +62,7 @@ public class NumberManager {
 
         validate(userNumber);
 
-        int[] userNumberArray = convertToNumberArray(userNumber);
+        ArrayList<Integer> userNumberArray = convertToNumberArray(userNumber);
 
         ComparedNumberResult comparedNumberResult = new ComparedNumberResult();
 
@@ -65,12 +70,12 @@ public class NumberManager {
 
             int currentUserNumber = userNumber.charAt(i) - '0';
 
-            if(userNumberArray[currentUserNumber] == randomNumberArray[currentUserNumber]) {
+            if(userNumberArray.get(currentUserNumber) == randomNumberArray.get(currentUserNumber)) {
                 comparedNumberResult.plusStrikeCount();
                 continue;
             }
 
-            if(randomNumberArray[currentUserNumber] != 0) {
+            if(randomNumberArray.get(currentUserNumber) != 0) {
                 comparedNumberResult.plusBallCount();
             }
         }
