@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBall {
@@ -13,7 +16,7 @@ public class BaseBall {
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            user = BallList.userBallList();
+            user = userBallList();
             check = Check.checkBallList(computer, user);
             System.out.println(check.resultMessage());
         }while (check.result()==0);
@@ -41,6 +44,21 @@ public class BaseBall {
             reStartOrExit();
             return -1;
         }
+    }
+
+    public static BallList userBallList() {
+        List<Ball> ballList = new ArrayList<>();
+
+        while (ballList.size()==0) {
+            String userBall = readLine();
+            BallList.checkUserLength(userBall);
+            for (int i=0;i<3;i++) {
+                Ball ball = new Ball(Character.getNumericValue(userBall.charAt(i)));
+                ballList.add(ball);
+            }
+        }
+
+        return new BallList(ballList);
     }
 
 }
