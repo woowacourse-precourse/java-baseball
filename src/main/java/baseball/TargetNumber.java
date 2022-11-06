@@ -1,11 +1,12 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TargetNumber {
     public static final int TARGET_NUMBER_LENGTH = 3;
 
-    private List<Integer> numberListByDigit;
+    private final List<Integer> numberListByDigit;
 
     public static TargetNumber getRandomInstance() {
         // TODO 무작위의 TargetNumber Instance 반환
@@ -13,18 +14,60 @@ public class TargetNumber {
     }
 
     public TargetNumber(int number) throws IllegalArgumentException {
-        // TODO number를 digit 별로 나눠서 numberListByDigit에 저장하기
-        //  number의 길이가 TARGET_NUMBER_LENGTH를 넘을 경우,
-        //  같은 숫자가 있을 경우 IllegalArgumentException을 발생시킨다.
+        this.numberListByDigit = new ArrayList<>();
+
+        int numberLength = 0;
+        for(int i = number; i > 0; i /= 10) {
+            int currentDigit = i % 10;
+            numberLength++;
+
+            checkNumberLengthNotExceedTargetNumberLength(numberLength);
+            checkDigitNonZero(currentDigit);
+            checkDigitNotDuplicate(currentDigit);
+
+            numberListByDigit.add(currentDigit);
+        }
+        checkExactNumberLength(numberLength);
     }
 
     public int toInt() {
-        return 0;
+        int result = 0;
+        int digitLevel = 1;
+        for(int i = 0; i < TARGET_NUMBER_LENGTH; i++) {
+            result += numberListByDigit.get(i) * digitLevel;
+            digitLevel *= 10;
+        }
+
+        return result;
     }
 
     public BallStrikeResult compareTo(TargetNumber oth) {
         // TODO 해당 값과 oth를 비교하여 같은 수가 같은 자리에 있으면 스트라이크,
         //  다른자리에 있으면 볼로 하여 그 개수를 BallStrikeResult로 반환한다.
         return new BallStrikeResult(0, 0);
+    }
+
+    private void checkNumberLengthNotExceedTargetNumberLength(int numberLength) {
+        if (numberLength > TARGET_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkDigitNonZero(int currentDigitRemain) {
+        if (currentDigitRemain == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkDigitNotDuplicate(int currentDigitRemain) {
+        if(numberListByDigit.contains(currentDigitRemain)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkExactNumberLength(int numberLength) {
+        if (numberLength != TARGET_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 }
