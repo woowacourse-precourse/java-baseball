@@ -24,30 +24,27 @@ public class Game {
     public void startGame() {
         Balls computerBalls = computer.generateRandomBalls();
 
-        boolean isGameOver;
         GameStatus gameStatus = new GameStatus(GAME_RESTART_STATUS);
         do {
             Balls playerBalls = player.generatePlayerBalls();
-
             Result result = referee.doJudge(computerBalls, playerBalls);
             referee.printResult(result);
 
-            isGameOver = result.isGameOver();
-            inputGameStatusIfGameOver(gameStatus, isGameOver);
-        } while (!isGameOver);
+            if (result.isGameOver()) {
+                inputGameStatusIfGameOver(gameStatus);
+                break;
+            }
+        } while (true);
 
         if (gameStatus.isRestart()) {
             startGame();
         }
     }
 
-    private static void inputGameStatusIfGameOver(GameStatus gameStatus, boolean isGameOver) {
-        if(isGameOver) {
-            String playerInput = Console.readLine();
-            validateParseStringToInt(playerInput);
-            gameStatus.changeStatus(Integer.parseInt(playerInput));
-            validateGameStatus(gameStatus);
-        }
+    private static void inputGameStatusIfGameOver(GameStatus gameStatus) {
+        String playerInput = Console.readLine();
+        validateParseStringToInt(playerInput);
+        gameStatus.changeStatus(Integer.parseInt(playerInput));
+        validateGameStatus(gameStatus);
     }
-
 }
