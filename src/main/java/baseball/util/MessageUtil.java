@@ -12,7 +12,7 @@ public class MessageUtil {
     }
 
     public void printInputMsg() {
-        System.out.println(INPUT_MSG);
+        System.out.print(INPUT_MSG);
     }
 
     public void printResultMsg(int ball, int strike) {
