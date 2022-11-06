@@ -9,15 +9,15 @@ public class Application {
         int answer = 3;
         String user;
         // TODO: 프로그램 구현
-        View.printText(View.Text.start.print);
+        View.printText(Text.start.getPrint());
         do {
             String computer = GameController.createComputerNumber();
             do {
-                View.printText(View.Text.input.print);
+                View.printText(Text.input.getPrint());
                 user = Console.readLine();
             } while (GameController.gameStart(user, computer) != answer);
-            View.printText(View.Text.stop.print);
-            View.printText(View.Text.choice.print);
+            View.printText(Text.stop.getPrint());
+            View.printText(Text.choice.getPrint());
         } while (Console.readLine().equals("1"));
     }
 }

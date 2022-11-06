@@ -2,6 +2,7 @@ package baseball.controller;
 
 import java.util.List;
 
+import baseball.Text;
 import baseball.service.ExceptionHandler;
 import baseball.service.GameService;
 import baseball.view.View;
@@ -30,7 +31,7 @@ public class GameController {
 			View.printResult(result.get(strike), strike);
 		}
 		if (result.get(ball) == nothing && result.get(strike) == nothing) {
-			View.printText(View.Text.nothing.print);
+			View.printText(Text.nothing.getPrint());
 		}
 		View.printText("\n");
 
