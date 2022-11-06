@@ -87,4 +87,14 @@ class ApplicationTest extends NsTest {
         assertThat(ball).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName(" 1 볼 경우 ")
+    public void oneBallScenario() throws Exception{
+        List<Integer> computer  = List.of(1,4,3);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculationBall(computer,user);
+        assertThat(ball).isEqualTo(1);
+    }
+
 }
