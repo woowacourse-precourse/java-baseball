@@ -17,8 +17,17 @@ public class UserTest {
     }
 
     @Test
-    void 사용자에게_받은_입력값이_숫자로만_이루어_져있는지() {
+    void 사용자에게_받은_입력값이_숫자로만_이루어_져있는지() throws Exception{
+        Method method = User.class.getDeclaredMethod("isNumberOfString", String.class);
+        method.setAccessible(true);
 
+        String testForTrueText = "123";
+        boolean predictTrueResult = (boolean) method.invoke(user, testForTrueText);
+        assertThat(predictTrueResult).isEqualTo(true);
+
+        String testForFalseText = "apple123";
+        boolean predictFalseResult = (boolean) method.invoke(user, testForFalseText);
+        assertThat(predictFalseResult).isEqualTo(false);
     }
 
     @Test

@@ -14,7 +14,7 @@ public class User {
     }
 
     private List<Integer> getValidList(String input) {
-        if (!isNumberOfList(input)) {
+        if (!isNumberOfString(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -27,9 +27,9 @@ public class User {
         return inputNumberList;
     }
 
-    private boolean isNumberOfList(String text) {
+    private boolean isNumberOfString(String text) {
         Pattern pattern = Pattern.compile(Constant.REGAX_ONLY_NUMBER);
-        return pattern.matcher(text).find();
+        return pattern.matcher(text).matches();
     }
 
     private List<Integer> parseIntegerList(String text) {
