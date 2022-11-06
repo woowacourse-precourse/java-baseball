@@ -41,6 +41,20 @@ public class BaseballView {
      * @param result
      */
     private void printBallStrikeNothing(List<Integer> result) {
+        int ballCount = result.get(0);
+        int strikeCount = result.get(1);
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        String message = "";
+        if (ballCount > 0) {
+            message += ballCount + "볼 ";
+        }
+        if (strikeCount > 0) {
+            message += strikeCount + "스트라이크";
+        }
+        System.out.println(message.trim());
     }
 
     /**
