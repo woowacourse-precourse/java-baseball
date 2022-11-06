@@ -38,8 +38,9 @@ public class NumberBaseballGameClient {
 
         int originalLength = line.length();
         line = line.strip();
-        if(line.length() != 3 || line.length() != originalLength)
+        if (line.length() != 3 || line.length() != originalLength) {
             throw new IllegalArgumentException();
+        }
 
         int playerGameNumber = Integer.parseInt(line);
         int tempNumber = playerGameNumber;
@@ -49,8 +50,9 @@ public class NumberBaseballGameClient {
         int unit100 = tempNumber / 10;
         int unit10 = tempNumber % 10;
 
-        if(unit100 == unit10 || unit10 == unit1 || unit1 == unit100)
+        if (unit100 == unit10 || unit10 == unit1 || unit1 == unit100) {
             throw new IllegalArgumentException();
+        }
 
         return playerGameNumber;
     }
