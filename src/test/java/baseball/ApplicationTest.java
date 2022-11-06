@@ -68,6 +68,12 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 사용자_번호가_유효한_숫자인지_확인_테스트_숫자가_아님() {
+        String number = "a?^";
+        assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
