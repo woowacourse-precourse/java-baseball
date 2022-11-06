@@ -19,6 +19,7 @@ class ApplicationTest extends NsTest {
             run("246", "135", "1", "597", "589", "2");
             assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
         }, 1, 3, 5, 5, 8, 9);
+
     }
 
     @Test
@@ -93,12 +94,17 @@ class ApplicationTest extends NsTest {
             List<Integer> usernums = List.of(1, 2, 3);
             List<Integer> computernums = List.of(2, 3, 1);
             BaseballCount baseballCount = new BaseballCount(computernums, usernums);
-            assertThat(baseballCount.ballcount).isEqualTo(3);
+            assertThat(baseballCount.getBallcount()).isEqualTo(3);
 
             List<Integer> usernums2 = List.of(1, 2, 3);
             List<Integer> computernums2 = List.of(1, 2, 3);
             BaseballCount baseballCount2 = new BaseballCount(computernums2, usernums2);
-            assertThat(baseballCount2.ballcount).isEqualTo(0);
+            assertThat(baseballCount2.getBallcount()).isEqualTo(0);
+
+            assertRandomNumberInRangeTest(() -> {
+                run("312", "123", "1", "645", "456", "2");
+                assertThat(output()).contains("3볼", "3스트라이크", "3볼", "3스트라이크", "게임 종료");
+            }, 1, 2, 3, 4, 5, 6);
         }
 
         @Test
@@ -106,13 +112,21 @@ class ApplicationTest extends NsTest {
             List<Integer> usernums = List.of(1, 2, 3);
             List<Integer> computernums = List.of(2, 3, 1);
             BaseballCount baseballCount = new BaseballCount(computernums, usernums);
-            assertThat(baseballCount.strikecount).isEqualTo(0);
+            assertThat(baseballCount.getStrikecount()).isEqualTo(0);
 
             List<Integer> usernums2 = List.of(1, 2, 3);
             List<Integer> computernums2 = List.of(1, 2, 3);
             BaseballCount baseballCount2 = new BaseballCount(computernums2, usernums2);
-            assertThat(baseballCount2.strikecount).isEqualTo(3);
+            assertThat(baseballCount2.getStrikecount()).isEqualTo(3);
+
+            assertRandomNumberInRangeTest(() -> {
+                run("124", "123", "1", "476", "456", "2");
+                assertThat(output()).contains("2스트라이크", "3스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+            }, 1, 2, 3, 4, 5, 6);
+
         }
+
+
     }
 
 

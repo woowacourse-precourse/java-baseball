@@ -5,8 +5,8 @@ import java.util.List;
 
 public class BaseballCount {
 
-    public final int strikecount;
-    public final int ballcount;
+    private final int strikecount;
+    private final int ballcount;
 
     public BaseballCount(List<Integer> computernums, List<Integer> usernums) {
         strikecount = StrikeCount(computernums, usernums);
@@ -40,6 +40,14 @@ public class BaseballCount {
 
     private boolean Ball(List<Integer> computernum, List<Integer> usernum, int index) {
         return computernum.contains(usernum.get(index)) && !Strike(computernum, usernum, index);
+    }
+
+    public int getStrikecount() {
+        return strikecount;
+    }
+
+    public int getBallcount() {
+        return ballcount;
     }
 
 

@@ -35,16 +35,30 @@ public class Application {
                 SystemOutput.allNotSameMessage();
                 continue;
             }
+            if(Onlyball(baseballCount)){
+                SystemOutput.onlyBallMessage(baseballCount);
+                continue;
+            }
+            if(OnlyStrike(baseballCount)){
+                SystemOutput.onlyStrikeMessage(baseballCount);
+                continue;
+            }
             SystemOutput.baseballCountMessage(baseballCount);
         }
     }
 
     public static boolean allStrike(BaseballCount baseballCount) {
-        return baseballCount.strikecount == 3;
+        return baseballCount.getStrikecount() == 3;
     }
 
     public static boolean allNotSame(BaseballCount baseballCount) {
-        return baseballCount.strikecount == 0 && baseballCount.ballcount == 0;
+        return baseballCount.getStrikecount() == 0 && baseballCount.getBallcount() == 0;
+    }
+    public static boolean Onlyball(BaseballCount baseballCount) {
+        return baseballCount.getStrikecount() == 0 && baseballCount.getBallcount() != 0;
+    }
+    public static boolean OnlyStrike(BaseballCount baseballCount) {
+        return baseballCount.getStrikecount() != 0 && baseballCount.getBallcount() == 0;
     }
 
     public static void confirmUserFinalInput(String userfinalinput) {

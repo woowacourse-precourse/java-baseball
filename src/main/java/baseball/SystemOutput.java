@@ -6,7 +6,13 @@ public class SystemOutput {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static void baseballCountMessage(BaseballCount baseballCount) {
-        System.out.printf("%d볼 %d스트라이크", baseballCount.ballcount, baseballCount.strikecount);
+        System.out.printf("%d볼 %d스트라이크", baseballCount.getBallcount(), baseballCount.getStrikecount());
+    }
+    public static void onlyBallMessage(BaseballCount baseballCount){
+        System.out.printf("%d볼",baseballCount.getBallcount());
+    }
+    public static void onlyStrikeMessage(BaseballCount baseballCount){
+        System.out.printf("%d스트라이크",baseballCount.getStrikecount());
     }
 
     public static void allNotSameMessage() {
