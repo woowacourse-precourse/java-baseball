@@ -6,31 +6,35 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-
         List<Integer> computer = new ArrayList<>();
         getComputerNumber(computer);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
 
         List<Integer> user = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
         try {
             checkNumberLength(userNumber);
+            checkAdequateNumber(userNumber);
             addUserNumber(user, userNumber);
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생");
             return;
         }
+        System.out.println(user);
 
     }
 
     static void addUserNumber(List<Integer> user, String userNumber) {
         for (int i = 0; i < userNumber.length(); i++) {
             int n = Character.getNumericValue(userNumber.charAt(i));
-            checkAdequateNumber(n);
             if (checkOverlap(user, n)) {
                 user.add(n);
             }
         }
     }
+
 
     static void getComputerNumber(List<Integer> computer) {
         while (computer.size() < 3) {
@@ -43,12 +47,6 @@ public class Application {
 
     static void checkNumberLength(String userNumber) throws IllegalArgumentException {
         if (userNumber.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    static void checkAdequateNumber(int n) throws IllegalArgumentException {
-        if (n < 1 || n > 9) {
             throw new IllegalArgumentException();
         }
     }
