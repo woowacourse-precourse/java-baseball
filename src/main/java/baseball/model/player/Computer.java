@@ -1,5 +1,6 @@
 package baseball.model.player;
 
+import baseball.model.hint.Hint;
 import baseball.model.number.BaseballNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -41,5 +42,10 @@ public class Computer {
             return false;
         }
         return true;
+    }
+
+    public Hint makeUserInputHint(BaseballNumbers userBaseballNumbers) {
+        Hint userInputHint = new Hint(computerBaseballNumbers, userBaseballNumbers);
+        return userInputHint;
     }
 }
