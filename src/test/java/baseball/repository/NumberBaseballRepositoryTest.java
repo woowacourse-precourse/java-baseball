@@ -18,7 +18,7 @@ class NumberBaseballRepositoryTest {
 
     @DisplayName("generateComputerNumber(): 메서드로 임의의 서로다른 3개 숫자 정의 하는 반복 테스트")
     @RepeatedTest(100)
-    void generateComputerNumber() {
+    void generate_computerNumber_success() {
         // given
         // when
         ComputerNumber computerNumber = numberBaseballRepository.generateComputerNumber();

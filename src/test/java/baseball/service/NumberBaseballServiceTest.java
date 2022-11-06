@@ -17,13 +17,13 @@ public class NumberBaseballServiceTest {
     private static final NumberBaseballService numberBaseballService = new NumberBaseballService();
 
     @BeforeAll
-    void initNumber() {
+    void init_number() {
         numberBaseballService.initNumber();
     }
 
     @DisplayName("사용자 입력이 1 ~ 9 숫자가 아니라면 IllegalArgumentException 예외 발생 테스트")
     @Test
-    void inputUserAnswerFailCauseNonNumeric() {
+    void inputUserAnswer_fail_CauseNonNumeric() {
         // given
         String outOfRangeInput = "012";
         String nonNumericInput = "abc";
@@ -40,7 +40,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자 입력이 1 ~ 9 사이의 숫자라면 정상 동작 테스트")
     @Test
-    void inputUserAnswerSuccess() {
+    void inputUserAnswer_success() {
         // given
         String normalInput = "123";
 
@@ -50,7 +50,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자 입력이 3글자가 아니라면 IllegalArgumentException 예외 발생 테스트")
     @Test
-    void inputUserAnswerFailCauseTooLongInput() {
+    void inputUserAnswer_fail_causeTooLongInput() {
         // given
         String tooManyInput = "1234";
 
@@ -63,7 +63,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자의 입력중 동일한 숫자가 있다면 IllegalArgumentException 예외 발생 테스트")
     @Test
-    void inputUserAnswerFailCauseSameNumber() {
+    void inputUserAnswer_fail_causeSameNumber() {
         // given
         String sameNumberInput = "112";
 
@@ -76,7 +76,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("스트라이크의 수 계산 테스트")
     @Test
-    void getCountStrikeSuccess() {
+    void getStrikeCount_success() {
         // given
         ComputerNumber computerNumber = new ComputerNumber(List.of(2, 3, 4));
         String userInput = "235";
