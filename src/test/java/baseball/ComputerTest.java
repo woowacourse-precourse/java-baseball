@@ -50,24 +50,6 @@ class ComputerTest {
 
     @Test
     @Order(3)
-    void computerGenerateRandom() {
-        for (int i = 0; i < 100; i++) {
-            HashSet<Character> randset = new HashSet<Character>();
-            String tmp = Computer.testComputerPrint(3, "");
-            randset.add(tmp.charAt(0));
-            if (randset.contains(tmp.charAt(1))) {
-                throw new IllegalArgumentException("generated value contains duplicated input.");
-            }
-            randset.add(tmp.charAt(1));
-            if (randset.contains(tmp.charAt(2))) {
-                throw new IllegalArgumentException("generated value contains duplicated input.");
-            }
-            randset.add(tmp.charAt(2));
-        }
-    }
-
-    @Test
-    @Order(4)
     void computerPrintCalculatorResult() {
         Computer.testComputerPrint(4, "1볼 1스트라이크");
         Assertions.assertThat("1볼 1스트라이크").isEqualTo(outContent.toString().trim());
