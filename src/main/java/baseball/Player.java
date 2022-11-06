@@ -30,5 +30,16 @@ public class Player {
         return result;
     }
 
+    public static boolean isDifferentNumbers(List<Integer> list){
+        boolean result = true;
+        Set<Integer> set = new HashSet<>(list);
+        if(set.size() != list.size()){
+            result = false;
+        }
+        return result;
+    }
+
+
+
 
 }

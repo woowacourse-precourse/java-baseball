@@ -49,4 +49,12 @@ public class FunctionTest {
         List<Integer> result = changeStringtoList("1234");
         assertThat(result).isEqualTo(List.of(1, 2, 3,4));
     }
+
+    @Test
+    void isDifferentNumbers_서로_다른_정수로_이루어진_리스트인지_판별(){
+        List<Integer> list = List.of(1,2,4,4);
+        boolean result = isDifferentNumbers(list);
+        assertThat(result).isEqualTo(false);
+    }
+
 }
