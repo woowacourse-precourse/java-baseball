@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.Exception.PlayerNumberException;
+import baseball.Exception.RestartNumberException;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -9,7 +11,7 @@ import java.util.stream.Collectors;
 public class Input {
 	public static List<Integer> getPlayerNumbers() {
 		String inputPlayerNumber = getInput();
-		Exception.validatePlayerNumber(inputPlayerNumber);
+		PlayerNumberException.validatePlayerNumber(inputPlayerNumber);
 		return stringToList(inputPlayerNumber);
 	}
 
@@ -22,7 +24,7 @@ public class Input {
 
 	public static int getRestartNumber(int restartNumber, int exitNumber) {
 		String inputRestartNumber = getInput();
-		Exception.validateRestartNumber(inputRestartNumber, restartNumber, exitNumber);
+		RestartNumberException.validateRestartNumber(inputRestartNumber, restartNumber, exitNumber);
 		return Integer.parseInt(inputRestartNumber);
 	}
 

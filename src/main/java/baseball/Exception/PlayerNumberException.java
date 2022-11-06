@@ -1,10 +1,10 @@
-package baseball.controller;
+package baseball.Exception;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Exception {
+public class PlayerNumberException {
 	private static final int NUMBER_LENGTH = 3;
 	private static final int NUMBER_BOUNDARY_START = 1;
 	private static final int NUMBER_BOUNDARY_END = 9;
@@ -50,24 +50,5 @@ public class Exception {
 	private static void inputPlayerNumbersToSet(Set<String> inputPlayerNumberSet, String[] inputPlayerNumber) {
 		Arrays.stream(inputPlayerNumber)
 			.forEach(number -> inputPlayerNumberSet.add(number));
-	}
-
-	public static void validateRestartNumber(String inputRestartNumber, int restartNumber, int exitNumber) {
-		try {
-			Exception.validateRestartOrExitNumber(inputRestartNumber, restartNumber, exitNumber);
-		} catch (IllegalArgumentException error) {
-			System.out.println(error);
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public static void validateRestartOrExitNumber(String inputRestartNumber, int restartNumber, int exitNumber) {
-		String stringRestartNumber = Integer.toString(restartNumber);
-		String stringExitNumber = Integer.toString(exitNumber);
-		if (!inputRestartNumber.equals(stringRestartNumber) && !inputRestartNumber.equals(stringExitNumber)) {
-			String limitRestartNumberBoundary = String.format("[ERROR] %s혹은 %s숫자만 입력해 주시기 바랍니다.",
-				stringRestartNumber, stringExitNumber);
-			throw new IllegalArgumentException(limitRestartNumberBoundary);
-		}
 	}
 }
