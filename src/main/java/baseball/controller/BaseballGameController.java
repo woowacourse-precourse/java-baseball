@@ -4,7 +4,6 @@ import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import net.bytebuddy.asm.Advice;
 
 public class BaseballGameController {
 
@@ -19,7 +18,7 @@ public class BaseballGameController {
         computer.generateComputerNumberThree();
         play();
         outputView.printGameEnd();
-        restart();
+        restartOrClose();
 
     }
 
@@ -38,7 +37,7 @@ public class BaseballGameController {
         } while (computer.isNotThreeStrike(hint));
     }
 
-    public void restart() {
+    public void restartOrClose() {
         String restartInput = inputView.restart();
         if (computer.isRestart(restartInput)) {
             start();
