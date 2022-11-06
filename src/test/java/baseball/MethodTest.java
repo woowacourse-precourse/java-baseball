@@ -125,4 +125,42 @@ class MethodTest {
                 .hasMessage(USER_INPUT_HAS_DUPLICATED_NUMBER)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void stringToIntList_매서드_사용시_String을_Integer_형_List_로_변환() {
+        // given
+        String userInput = "123";
+
+        // when
+        List<Integer> result = Application.stringToIntList(userInput);
+
+        // then
+        assertThat(result).containsExactly(1, 2, 3);
+    }
+
+    @Test
+    void countStrikeInUserInput_매서드로_사용자_입력값에_strike가_몇_개있는지_반환() {
+        // given
+        List<Integer> answer = List.of(1, 4, 5);
+        List<Integer> userInput = List.of(1, 2, 3);
+
+        // when
+        int result = Application.countStrikeInUserInput(userInput, answer);
+
+        // then
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void countBallInUserInput_매서드로_사용자_입력값에_ball이_몇_개있는지_반환() {
+        // given
+        List<Integer> answer = List.of(3, 4, 5);
+        List<Integer> userInput = List.of(1, 2, 3);
+
+        // when
+        int result = Application.countBallInUserInput(userInput, answer);
+
+        // then
+        assertThat(result).isEqualTo(1);
+    }
 }

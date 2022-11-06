@@ -75,4 +75,39 @@ public class Application {
             throw new IllegalArgumentException(USER_INPUT_IS_NULL_OR_EMPTY);
         }
     }
+
+    static List<Integer> stringToIntList(String userInput) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int index = 0; index < userInput.length(); index++) {
+            int userInputIntValue = userInput.charAt(index) - '0';
+            result.add(userInputIntValue);
+        }
+
+        return result;
+    }
+
+    static int countStrikeInUserInput(List<Integer> userInput, List<Integer> answer) {
+        int strikeCount = 0;
+
+        for (int index = 0; index < userInput.size(); index++) {
+            if (userInput.get(index).equals(answer.get(index))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    static int countBallInUserInput(List<Integer> userInput, List<Integer> answer) {
+        int ballCount = 0;
+
+        for (int index = 0; index < userInput.size(); index++) {
+            if (userInput.contains(answer.get(index)) && !(userInput.get(index).equals(answer.get(index)))) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
 }
