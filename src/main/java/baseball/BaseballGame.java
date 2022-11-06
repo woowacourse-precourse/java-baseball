@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 public class BaseballGame {
 
     private final String Nothing_Message = "낫생";
@@ -14,8 +16,8 @@ public class BaseballGame {
 
     public void start() {
         System.out.println(START_Message);
+        answerGenerator.generateAnswer();
         do{
-            answerGenerator.generateAnswer();
             userInput.setNumberOfUser();
             countStrikeAndBall(userInput.getUserInput(), answerGenerator.getAnswer());
             printHint();
