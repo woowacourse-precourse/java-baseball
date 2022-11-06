@@ -44,7 +44,7 @@ public class GameControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         assertThat(gameController.getPlayerNumbers()).isEqualTo(input);
-        assertThat(out.equals("숫자를 입력해주세요 : ")).isTrue();
+        assertThat(out.toString()).isEqualTo("숫자를 입력해주세요 : ");
     }
 
     @Test

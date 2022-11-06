@@ -10,6 +10,7 @@ public class GameController {
 
     GameService gameService = new GameService();
     GameStatusService gameStatusService;
+    PlayerView playerView = new PlayerView();
 
     public GameController(){}
 
@@ -37,7 +38,7 @@ public class GameController {
     }
 
     String getPlayerNumbers(){
-        return "";
+        return playerView.getPlayerOpinion();
     }
 
     void matchGame(){
