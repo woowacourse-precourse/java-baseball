@@ -23,23 +23,6 @@ public class Application {
         return gameController.checkNotMatch(userNumberList, randomNumberList, ballCount); // 결과 계산;
     }
 
-    public static boolean gameCheck() {
-
-        int gameFlag = gameResult();
-
-        if (gameFlag == 0) {
-            System.out.println(gameFlag + "반복");
-            return true;
-        } else if (gameFlag == 1) {
-            System.out.println(gameFlag + "새로 시작");
-            return false;
-        } else if (gameFlag == 2) {
-            System.out.println(gameFlag + "종료");
-            return false;
-        }
-        return false;
-    }
-
     public static int keepGame() {
 
         boolean gameFlag = true;
