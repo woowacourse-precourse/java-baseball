@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -19,20 +18,31 @@ public class GameController {
 	private static void start() {
 		inputView.printGameStart();
 		RandomNumber randomNumber = new RandomNumber();
-		playGame(randomNumber.getNumbers());
+		randomNumber.getNumbers().stream().forEach(e -> System.out.print(e));
+		System.out.println("");
+		playGame(randomNumber);
 	}
 
-	private static void playGame(List<Integer> randomNumbers) {
-		while (true) {
-			Player player = new Player(Input.getGameNumber());
-			Calculator.checkPlayerNumbers(player, randomNumbers);
-			Judge.getGameResult(player);
+	private static void playGame(RandomNumber randomNumber) {
+		boolean progress = true;
 
-			if (player.getStrike() == STRIKE_OUT) {
-				OutputView.printGameEnd(STRIKE_OUT);
-				break;
+		while (progress) {
+			List<Integer> playerNumbers = Input.getPlayerNumbers();
+			GameResult gameResult = new GameResult(playerNumbers, randomNumber.getNumbers());
+			Judge.getGameResult(gameResult);
+
+			if (isStrikeOut(gameResult)) {
+				progress = false;
 			}
 		}
+	}
+
+	private static boolean isStrikeOut(GameResult gameResult) {
+		if (gameResult.getStrikeCount() == STRIKE_OUT) {
+			OutputView.printGameEnd(STRIKE_OUT);
+			return true;
+		}
+		return false;
 	}
 
 	private static void restart() {

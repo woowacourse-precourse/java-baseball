@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.Player;
 import baseball.view.OutputView;
 
 public class Judge {
-	public static void getGameResult(Player player) {
-		int ballCount = player.getBall();
-		int strikeCount = player.getStrike();
+	public static void getGameResult(GameResult gameResult) {
+		int ballCount = gameResult.getBallCount();
+		int strikeCount = gameResult.getStrikeCount();
 		judgeStrike(ballCount, strikeCount);
 		judgeBall(ballCount, strikeCount);
 		judgeNothing(ballCount, strikeCount);
