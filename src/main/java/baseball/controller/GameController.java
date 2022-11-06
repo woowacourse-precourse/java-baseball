@@ -55,4 +55,9 @@ public class GameController {
         }
         messenger.printAnswerMessage();
     }
+
+    public void startGame() {
+        messenger.printStartMessage();
+        setComputerNumber();
+    }
 }
