@@ -4,7 +4,6 @@ import baseball.model.domain.BaseBall;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class MemoryBaseBallRepository {
 
@@ -18,7 +17,7 @@ public class MemoryBaseBallRepository {
         return baseBall;
     }
 
-    public Optional<BaseBall> findById(Long id) {
-        return Optional.ofNullable(baseBallStore.get(id));
+    public BaseBall findById(Long id) {
+        return baseBallStore.get(id);
     }
 }

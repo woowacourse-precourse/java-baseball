@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.BaseBallController;
+import baseball.controller.dto.BaseBallDto.Response;
 import baseball.view.BaseBallUserConsole;
 
 import static baseball.view.BaseBallDisplay.*;
@@ -16,23 +17,29 @@ public class BaseBallSimulator {
     public void start() {
         boolean isGameEnd = true;
         printWelcomeMessage();
-        baseBallController.create();
+        Response response = baseBallController.create();
 
         while (!isGameEnd) {
-            printAnswerInputMessage();
-            inputAndPrintResult();
+            startProgress(response.getId());
+
+            printProgressEndMessage();
+            printReStartInputMessage();
         }
 
-        printEndMessage();
+        printGameEndMessage();
     }
 
-    public void inputAndPrintResult() {
-        boolean isMatched = false;
+    private void startProgress(Long id) {
+        boolean isMatchedBaseBall = false;
 
-        while (!isMatched) {
-            String input = BaseBallUserConsole.input();
+        while (!isMatchedBaseBall) {
+            printAnswerInputMessage();
+            String input = BaseBallUserConsole.inputAnswer();
 
-            printResultMessage(0, 0);
+            Response response = baseBallController.match(id, input);
+            printResultMessage(response.getBall(), response.getStrike());
+
+            isMatchedBaseBall = response.isMatch();
         }
     }
 }

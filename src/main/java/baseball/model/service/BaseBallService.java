@@ -18,4 +18,12 @@ public class BaseBallService {
 
         return baseBall;
     }
+
+    public BaseBall match(Long id, String input) {
+        BaseBall baseBall = baseBallRepository.findById(id);
+
+        baseBall.match(input);
+
+        return baseBall;
+    }
 }
