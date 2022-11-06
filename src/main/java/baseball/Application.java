@@ -7,8 +7,6 @@ import java.util.Random;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        //
-        System.out.println("hello world");
         Baseball_Game Game = new Baseball_Game();
 
         Game.start();
@@ -20,6 +18,7 @@ public class Application {
 class Baseball_Game {
 
     public Baseball_Game() {
+        System.out.println("Baseball_Game.Baseball_Game");
         int hidden_number;
         hidden_number = randomThreeDigitNumber();
         System.out.println("hidden_number = " + hidden_number);
@@ -38,7 +37,6 @@ class Baseball_Game {
      */
     public static int randomThreeDigitNumber() {
 
-        System.out.println("Baseball_Game.randomThreeDigitNumber");
         List<Integer> num_list = new ArrayList<>();
         Random random = new Random();
         int result = 0;
