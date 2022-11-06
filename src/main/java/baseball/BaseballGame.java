@@ -7,9 +7,11 @@ import static baseball.UserNumber.checkInputUserNumber;
 
 public class BaseballGame {
 
-    public static void startBaseballGame() {
+    public static void playBaseballGame(){
         List<Integer> computerNumbers = createComputerNumber();
-        List<Integer> userNumbers = checkInputUserNumber();
+        while (true) {
+            List<Integer> userNumbers = checkInputUserNumber();
+        }
     }
 
 }
