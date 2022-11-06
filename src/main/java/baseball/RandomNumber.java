@@ -12,6 +12,14 @@ public class RandomNumber {
     }
 
     public int generateFirstRandomDigit() {
-        return Randoms.pickNumberInRange(1, 9);
+        return firstDigit = Randoms.pickNumberInRange(1, 9);
+    }
+
+    public int generateSecondRandomDigit() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumber == firstDigit) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+        }
+        return secondDigit = randomNumber;
     }
 }
