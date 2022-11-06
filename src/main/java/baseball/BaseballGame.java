@@ -1,16 +1,16 @@
 package baseball;
 
 import baseball.computer.Computer;
-import baseball.verifier.MakeVerifierInputToBaseballGame;
-import baseball.verifier.MakeVerifierInputToEndOrNewGame;
+import baseball.verifier.VerifierInputToBaseballGame;
+import baseball.verifier.VerifierInputToEndOrNewGame;
 import baseball.verifier.Verifier;
 
 import static baseball.BaseballConstants.NEW_GAME;
 
 
 public class BaseballGame {
-    private final Verifier verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
-    private final Verifier verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
+    private final Verifier verifierInputToEndOrNewGame = new VerifierInputToEndOrNewGame();
+    private final Verifier verifierInputToBaseballGame = new VerifierInputToBaseballGame();
     private final Computer computer = new Computer();
 
     public void start() {
