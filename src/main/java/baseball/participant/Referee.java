@@ -8,10 +8,6 @@ import java.util.HashSet;
 public class Referee {
 
     public Result judgeHitAndPitch(String hitNumber, String pitchNumber) {
-        return processResult(hitNumber, pitchNumber);
-    }
-
-    public Result processResult(String hitNumber, String pitchNumber) {
         Result result = new Result();
         compareHitAndPitchNumber(result, hitNumber, pitchNumber);
         result.calculateType();
