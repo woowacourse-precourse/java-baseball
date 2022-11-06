@@ -5,26 +5,33 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RefereeTest {
+	private final Computer computer = new Computer();
+	private final Referee referee = new Referee();
+	private final List<Integer> allBall = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+	private List<Integer> computerBalls;
+	private List<Integer> playerBalls;
+
+	@BeforeEach
+	@Test
+	void 테스트마다_컴퓨터와_플레이어는_공을던짐() {
+		// given
+		computer.pitchThreeUniqueBalls();
+		computerBalls = computer.getComputerBalls();
+
+		playerBalls = new LinkedList<>();
+		playerBalls.addAll(allBall);
+		Collections.shuffle(playerBalls);
+	}
 
 	@Test
 	@DisplayName("낫싱 성공 테스트")
 	void 일치하는공이_없을_때_낫싱_성공() {
-		// given
-		Computer computer = new Computer();
-		Referee referee = new Referee();
-		List<Integer> allBall = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-		computer.pitchThreeUniqueBalls();
-		List<Integer> computerBalls = computer.getComputerBalls();
-
-		List<Integer> playerBalls = new LinkedList<>();
-		playerBalls.addAll(allBall);
-		Collections.shuffle(playerBalls);
-
 		// when
 		playerBalls = makeBallsWithoutComputerBalls(computerBalls, playerBalls);
 
@@ -36,25 +43,12 @@ public class RefereeTest {
 	@Test
 	@DisplayName("낫싱 실패 테스트")
 	void 일치하는공_하나일_때_낫싱_실패() {
-		// given
-		Computer computer = new Computer();
-		Referee referee = new Referee();
-		List<Integer> allBall = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-		computer.pitchThreeUniqueBalls();
-		List<Integer> computerBalls = computer.getComputerBalls();
-
-		List<Integer> playerBalls = new LinkedList<>();
-		playerBalls.addAll(allBall);
-		Collections.shuffle(playerBalls);
-
 		// when
 		playerBalls = makeOneSameBalls(computerBalls, playerBalls);
+		Collections.shuffle(playerBalls);
 
 		// then
 		boolean nothing = referee.isNothing(computerBalls, playerBalls);
-		System.out.println(computerBalls);
-		System.out.println("한개 같은 공: " + playerBalls);
 		Assertions.assertThat(nothing).isEqualTo(false);
 	}
 
