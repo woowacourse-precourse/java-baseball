@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.TestInstance.Lifecycle;
 
@@ -30,12 +29,12 @@ class ComputerTest {
     class getNumberListTest {
 
         @Test
-        void isSizeOfThree() {
+        void getNumberList_IsSizeOfThree_True() {
             assertThat(computer.getNumberList().size()).isEqualTo(3);
         }
 
         @Test
-        void isInOneToNine() {
+        void getNumberList_IsNumbersInOneToNine_True() {
             List<Integer> threeNumbers = computer.getNumberList();
             List<Integer> oneToNine = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
             for (int i = 1; i < threeNumbers.size(); i++) {
@@ -44,7 +43,7 @@ class ComputerTest {
         }
 
         @Test
-        void isAllDifferent() {
+        void getNumberList_IsAllNumbersUnique_True() {
             HashSet<Integer> threeNumbers = new HashSet<>(computer.getNumberList());
             assertThat(threeNumbers.size()).isEqualTo(3);
         }
