@@ -182,6 +182,13 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo("3스트라이크");
 
     }
+    @Test
+    @DisplayName("볼 , 스트라이크 모두 있는 경우")
+    public void strikeAndBall() throws Exception{
+        String result = Application.printCurrentSituation(1,1);
+        assertThat(result).isEqualTo("1볼 1스트라이크");
+
+    }
 
 
 
