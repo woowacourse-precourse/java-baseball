@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserInputValidation {
 
     private static final int NUMBER_LENGTH = 3;
@@ -28,4 +31,16 @@ public class UserInputValidation {
         }
         return true;
     }
+
+    private boolean isNotDuplication(String expectedAnswer) {
+        Set<Character> inputSet = new HashSet<>();
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            inputSet.add(expectedAnswer.charAt(i));
+        }
+        if (inputSet.size() == expectedAnswer.length()) {
+            return true;
+        }
+        return false;
+    }
+
 }
