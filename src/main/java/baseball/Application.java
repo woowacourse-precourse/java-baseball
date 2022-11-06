@@ -55,6 +55,9 @@ public class Application {
         userNumberMessagePrint();
         userNumbers = userNumberInput();
         availableUserNumberIsChecking = availableUserNumberIsChecked(userNumbers);
+        if(!availableUserNumberIsChecking){
+            userNumbers = inputAvailableUserNumberService();
+        }
         return "";
     }
 
