@@ -2,13 +2,21 @@ package baseball.domain;
 
 public class User {
 
-    private String guessedAnswer;
+    private static final int GUESSED_ANSWER_LENGTH = 3;
+    private final int[] guessedAnswer;
 
-    public void setGuessedAnswer(String guessedAnswer) {
-        this.guessedAnswer = guessedAnswer;
+    public User() {
+        this.guessedAnswer = new int[GUESSED_ANSWER_LENGTH];
     }
 
-    public String getGuessedAnswer() {
+    public void setGuessedAnswer(String guessedAnswer) {
+        for (int i = 0; i < GUESSED_ANSWER_LENGTH; i++) {
+            char number = guessedAnswer.charAt(i);
+            this.guessedAnswer[i] = Character.getNumericValue(number);
+        }
+    }
+
+    public int[] getGuessedAnswer() {
         return guessedAnswer;
     }
 }
