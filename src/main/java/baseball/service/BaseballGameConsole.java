@@ -33,7 +33,7 @@ public class BaseballGameConsole {
             String pitchNumber = pitcher.pitchNumberBall();
             referee.pitchIsBalk(pitchNumber);
 
-            Result result = referee.resultOfPrediction(hitNumber, pitchNumber);
+            Result result = referee.judgeHitAndPitch(hitNumber, pitchNumber);
             strikeOut = result.getResultType() == EXACT_MATCH;
 
             emcee.showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());

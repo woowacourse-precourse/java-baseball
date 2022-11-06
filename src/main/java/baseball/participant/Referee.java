@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class Referee {
 
-    public Result resultOfPrediction(String hitNumber, String pitchNumber) {
+    public Result judgeHitAndPitch(String hitNumber, String pitchNumber) {
         return processResult(hitNumber, pitchNumber);
     }
 
