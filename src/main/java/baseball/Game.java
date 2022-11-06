@@ -23,25 +23,24 @@ public class Game {
 
     public int getBallCount(List<Integer> userNum) {
         return (int) Stream.iterate(0, i -> i < INPUT_LENGTH, i -> i + 1)
-                .filter(i -> computerNum.contains(userNum.get(i)))
+                .filter(i -> computerNum.contains(userNum.get(i)) && userNum.get(i) != computerNum.get(i))
                 .count();
     }
 
-    public String play() {
+    public List<Integer> inputStartAndGenerateNum() {
+        Messages.inputStart();
+        String input = Console.readLine();
+        return new UserNumGenerator(input).NUMS;
+    }
+
+    public void play() {
         boolean gameClear = false;
-        int strikeCount = 0;
-        int ballCount = 0;
         while (!gameClear) {
-            Messages.inputStart();
-            String input = Console.readLine();
-            List<Integer> userNum = new UserNumGenerator(input).NUMS;
-            strikeCount = getStrikeCount(userNum);
-            ballCount = getBallCount(userNum);
-            gameClear = isClear(strikeCount);
-            Messages.printResult(ballCount, strikeCount);
+            List<Integer> userNum = inputStartAndGenerateNum();
+            gameClear = isClear(getStrikeCount(userNum));
+            Messages.printResult(getBallCount(userNum), getStrikeCount(userNum));
         }
         Messages.gameClear();
-        return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 
     public boolean isClear(int strikeCount) {
