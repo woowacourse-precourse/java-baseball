@@ -75,4 +75,22 @@ class ApplicationTest extends NsTest {
 		assertThat(userInputNumbers.size() == userInputNumbers.stream().distinct().count()).isTrue();
 		assertThat(userInputNumbers.size() == 3).isFalse();
 	}
+    
+    @Test	
+	@DisplayName("두 수 비교하여 stike 테스트")
+	void  strikeTest() {
+		assertThat(Balls.isStrike(1, 1)).isTrue();
+		assertThat(Balls.isStrike(1, 2)).isFalse();
+	}
+	
+	@Test	
+	@DisplayName("두 수 비교하여 ball 테스트")
+	void  ballTest() {
+		ArrayList<Integer> test = new ArrayList<Integer>();
+		test.add(7); 
+		test.add(1); 
+		test.add(3);
+		assertThat(Balls.isBall(test, 1)).isTrue();
+		assertThat(Balls.isBall(test, 2)).isFalse();
+	}
 }
