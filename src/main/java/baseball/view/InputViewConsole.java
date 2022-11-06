@@ -2,7 +2,7 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputConsoleView implements InputView {
+public class InputViewConsole implements InputView {
 	private static final String GAME_RESTART_CODE = "1";
 	private static final String GAME_END_CODE = "2";
 	private static final String ERROR_MESSAGE_ILLEGAL_RESTART_CODE = "입력값이 1이나 2가 아닙니다.";
