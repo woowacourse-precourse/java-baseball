@@ -6,12 +6,14 @@ import java.util.Set;
 import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerInputUtil {
-	public static void readBalls() {
+
+	public static String readBalls() {
 		String balls = Console.readLine();
 		checkLessThanThreeExecption(balls);
 		checkMoreThanThreeException(balls);
 		checkOutOfRangeException(balls);
 		checkDuplicateBallsException(balls);
+		return balls;
 	}
 
 	public static void checkLessThanThreeExecption(String balls) {
