@@ -8,6 +8,18 @@ import java.util.List;
 
 public class Computer {
     List<Integer> computerNumber;
+    int ball;
+    int strike;
+
+    public void countBall(List<Integer> userInputNumber) {
+        int ball = 0;
+        for (int i = 0; i < userInputNumber.size(); i++) {
+            if (computerNumber.contains(userInputNumber.get(i)) && !(computerNumber.get(i).equals(userInputNumber.get(i)))) {
+                ball++;
+            }
+        }
+        this.ball = ball;
+    }
 
     public void makeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
