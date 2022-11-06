@@ -1,13 +1,10 @@
 package view;
 
 import controller.GameController;
+import utill.ConstantVO;
 
 public class GameView {
 
-    final String MSG_FIRST = "숫자 야구 게임을 시작합니다.";
-    final String MSG_THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    final String MSG_CHOICE_PLAY_MORE_GAMES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
 
     public void run() {
         GameController gameController = GameController.getInstanceGameController();
@@ -31,13 +28,13 @@ public class GameView {
 
     private void gameStartBaseball(GameController gameController) {
         gameController.startGame();
-        System.out.println(MSG_FIRST);
+        System.out.println(ConstantVO.MSG_FIRST);
     }
 
     private boolean isRightEndGameAndProceedGame(GameController gameController) {
         if (gameController.isEndGame()) {
-            System.out.println(MSG_THREE_STRIKE);
-            System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
+            System.out.println(ConstantVO.MSG_THREE_STRIKE);
+            System.out.println(ConstantVO.MSG_CHOICE_PLAY_MORE_GAMES);
 
             gameController.callInputProceedNum();
             if (gameController.isEndgameInputOfUser()) {
@@ -48,7 +45,7 @@ public class GameView {
     }
 
     private void getInputGuessNum(GameController gameController) {
-        System.out.println(MSG_ENTER_NUMBER);
+        System.out.println(ConstantVO.MSG_ENTER_NUMBER);
         gameController.callInputNumOfUser();
     }
 
