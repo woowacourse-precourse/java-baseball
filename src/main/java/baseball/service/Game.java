@@ -62,6 +62,9 @@ public class Game {
 		if (playerInputs.length != 3) {
 			throw new IllegalArgumentException();
 		}
+		if (new HashSet<>(List.of(playerInputs)).size() != 3) {
+			throw new IllegalArgumentException();
+		}
 		for (String playerInput : playerInputs) {
 			if (!Character.isDigit(playerInput.charAt(0)) || playerInput.equals("0")) {
 				throw new IllegalArgumentException();
