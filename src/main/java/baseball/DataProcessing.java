@@ -8,6 +8,7 @@ import java.util.List;
 public class DataProcessing {
     private List<Integer> dataForProcess;
     private List<Integer> dataForCompare;
+    public static final int BALL_INDEX = 0;
 
     DataProcessing() {
     }
@@ -24,12 +25,26 @@ public class DataProcessing {
                 computer.add(randomNumber);
             }
         }
-        dataForCompare = computer;
+        this.dataForCompare = computer;
+    }
+    private int checkBall() {
+        int count = 0;
+
+        for (int i = 0; i < this.dataForProcess.size(); i++){
+            int tempInputNumber = dataForProcess.get(i);
+            if (dataForCompare.contains(tempInputNumber)) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     public int[] getProcessedData(){
-        int[] data = new int[3];
+        int[] dataProcessed = new int[2];
+        makeRandomData();
+
+        dataProcessed[BALL_INDEX] = checkBall();
         System.out.println(this.dataForProcess);
-        return data;
+        return dataProcessed;
     }
 }
