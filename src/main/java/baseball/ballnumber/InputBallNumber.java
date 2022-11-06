@@ -1,4 +1,4 @@
-package baseball;
+package baseball.ballnumber;
 
 import camp.nextstep.edu.missionutils.Console;
 
