@@ -12,13 +12,13 @@ public class Application {
         boolean run = true;
         List<Integer> computerNum;
 
-
         while (run) {
             computerNum = createRandomNum();
             String checkMessage = "";
             while (!(checkMessage.equals("3스트라이크"))) {
                 String userNum = guessNum();
                 checkMessage = checkNum(computerNum, userNum);
+                System.out.println(computerNum);
                 System.out.println(checkMessage);
             }
             run = closeOrRestart();
@@ -55,7 +55,7 @@ public class Application {
         }
         if (ballCnt == 0 && strikeCnt == 0) {
             return "낫싱";
-        } else if (ballCnt-strikeCnt == 0) {
+        } else if (ballCnt - strikeCnt == 0) {
             return strikeCnt + "스트라이크";
         } else if (strikeCnt == 0) {
             return ballCnt + "볼";
@@ -64,17 +64,27 @@ public class Application {
     }
 
     public static String guessNum() {
-        return readLine();
+        String userName = readLine();
+        if (userName.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for (Character x : userName.toCharArray()) {
+            if (!Character.isDigit(x)) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return userName;
     }
 
     public static boolean closeOrRestart() {
         String oneOrTwo = readLine();
-        if (oneOrTwo.equals("1")){
+        if (oneOrTwo.equals("1")) {
             return true;
-        } else {
+        } else if (oneOrTwo.equals("2")) {
             System.out.println("게임 종료");
             return false;
         }
+        throw new IllegalArgumentException();
     }
 
 
