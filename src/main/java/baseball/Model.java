@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Model {
-    ArrayList<String> humanarraylist;
+    private ArrayList<String> humanarraylist;
     private ArrayList<String> computerarraylist;
 
     Model() { }
@@ -49,7 +49,7 @@ public class Model {
         computerarraylist.clear();
     }
 
-    public void clearArrayList() {
+    public void clearHumanArrayList() {
         humanarraylist.clear();
     }
 
