@@ -8,10 +8,19 @@ public class BaseballGame {
     private static final String GAME_REPLAY = "1";
 
     public void playGame() throws IllegalArgumentException {
+        boolean gameStop = true;
+
         InputView.printGameStart();
+
+        while (gameStop) {
+            gameStop = playOneGame();
+        }
+    }
+
+    private boolean playOneGame() {
         boolean isRunning = true;
         List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
-        System.out.println(computerNumbers);
+
         while (isRunning) {
             String userInput = InputView.getUserInput();
 
@@ -25,7 +34,7 @@ public class BaseballGame {
             isRunning = OutputView.printGameResult(ballCount, strikeCount);
         }
 
-        boolean gameStop = getReplayOrNot();
+        return getReplayOrNot();
     }
 
     private boolean getReplayOrNot() throws IllegalArgumentException {
