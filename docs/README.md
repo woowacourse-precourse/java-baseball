@@ -52,5 +52,7 @@
 * 함수명 : `isValueToStopGame`
 * parameter : int
 * return : boolean
+  * 1이면 게임 종료
+  * 2면 게임 재시작
 
 
