@@ -17,7 +17,7 @@ public class Application {
                 continue;
             else if (isStop())
                 break;
-            String answer = createAnswer();
+            answer = createAnswer();
         }
     }
     private static void startMessage() {
