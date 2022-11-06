@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.*;
 
 public class InputOutput {
     public static int[] getThreeNumber(){
+        printThreeNumber();
         String line = getLine();
         // 예외처리 다 해주고
 
@@ -19,6 +20,10 @@ public class InputOutput {
         // 예외처리 다 해주고
 
         return charToInt(line.charAt(0));
+    }
+
+    private static void printThreeNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private static String getLine(){
