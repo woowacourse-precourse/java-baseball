@@ -20,19 +20,19 @@ public class OutputView {
         System.out.print(ANSWER_INPUT_GUIDE_MESSAGE);
     }
 
-    public static void printNothingMessage() {
+    public static void setNothingMessage() {
         resultMessage = NOTHING_MESSAGE;
     }
 
-    public static void printOnlyBallMessage(int ball) {
+    public static void setOnlyBallMessage(int ball) {
         resultMessage = String.format(ONLY_BALL_MESSAGE, ball);
     }
 
-    public static void printOnlyStrikeMessage(int strike) {
+    public static void setOnlyStrikeMessage(int strike) {
         resultMessage = String.format(ONLY_STRIKE_MESSAGE, strike);
     }
 
-    public static void printBallAndStrikeMessage(int ball, int strike) {
+    public static void setBallAndStrikeMessage(int ball, int strike) {
         resultMessage = String.format(BALL_AND_STRIKE_MESSAGE, ball, strike);
     }
 
