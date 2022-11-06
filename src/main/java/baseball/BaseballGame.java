@@ -9,10 +9,13 @@ import static baseball.UserNumber.checkInputUserNumber;
 
 public class BaseballGame {
 
+    private static List<Integer> computerNumbers;
+    private static List<Integer> userNumbers;
+
     public static void playBaseballGame(){
-        List<Integer> computerNumbers = createComputerNumber();
+        computerNumbers = createComputerNumber();
         while (true) {
-            List<Integer> userNumbers = checkInputUserNumber();
+            userNumbers = checkInputUserNumber();
         }
     }
 
