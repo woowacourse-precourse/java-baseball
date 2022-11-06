@@ -26,7 +26,7 @@ public class Application {
         while (referee.isGameInProgress) {
             referee.startPitch();
             pitcher.pitch();
-            referee.judge(pitcher, hitter);
+            referee.judge(pitcher.pitchZone, hitter.swingZone);
         }
         referee.endGame();
     }

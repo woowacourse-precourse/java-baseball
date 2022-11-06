@@ -6,7 +6,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Hitter {
-    public static StrikeZone swingZone;
+    public StrikeZone swingZone;
 
     public Hitter() {
     }
