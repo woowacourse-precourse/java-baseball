@@ -56,4 +56,14 @@ public class Application {
 
         return List.of(hundreds, tens, ones);
     }
+
+    public static int calculateStrike(List<Integer> targetNumber, List<Integer> guessedNumber) {
+        int numberOfStrike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (targetNumber.get(i).equals(guessedNumber.get(i))) {
+                numberOfStrike++;
+            }
+        }
+        return numberOfStrike;
+    }
 }
