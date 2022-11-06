@@ -56,7 +56,7 @@
 - (6) 모두 통과하면 true를 반환한다.
 
 
-### 8. restartBaseBallGameCheck(Integer flag)
+### 8. boolean restartBaseBallGameCheck(Integer flag)
 - (1) 유저가 재시작을 위해 숫자를 입력할 때 올바르게 입력됐는지 검사하는 메소드
 - (2) 숫자가 1 혹은 2 인지 확인한다.
 - (3) 숫자가 1 혹은 2가 아니라면 false를 반환한다.
