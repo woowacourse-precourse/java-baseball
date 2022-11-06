@@ -29,21 +29,21 @@ public class User {
     }
 
     private void getValidation(String input) {
-        Boolean checkLength = getLengthValidation(input);
-        Boolean checkType = getTypeValidation(input);
-        Boolean validation = checkLength && checkType;
+        boolean checkLength = getLengthValidation(input);
+        boolean checkType = getTypeValidation(input);
+        boolean validation = checkLength && checkType;
         if(!validation) {
             throw new IllegalArgumentException();
         }
     }
 
     private Boolean getTypeValidation(String input) {
-        Boolean checkType = Pattern.matches(REGEX, input);
+        boolean checkType = Pattern.matches(REGEX, input);
         return checkType;
     }
 
     private static Boolean getLengthValidation(String input) {
-        Boolean checkLength = input.length() == 3;
+        boolean checkLength = input.length() == 3;
         return checkLength;
     }
 

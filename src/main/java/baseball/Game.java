@@ -8,6 +8,7 @@ public class Game {
     String STRING_STRIKE = "스트라이크";
     String STRING_NOTHING = "낫싱";
     String INPUT_QUIT = "2";
+    String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
     String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     String OUTPUT_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
@@ -23,35 +24,21 @@ public class Game {
         Computer computer = new Computer();
         User user = new User();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(OUTPUT_START);
 
-        // get random number from computer
         computer.setRandomNumber();
         randomNumber = computer.getRandomNumber();
 
         while(!quit) {
-            // get user number from user
             user.setUserNumber();
             userNumber = user.getUserNumber();
 
             initializeBallCount();
             calculateStrike();
             calculateBall();
+            printOutResult();
 
-            // paint result
-            String result = "";
-            if (ball == 0 && strike == 0) {
-                result = STRING_NOTHING;
-            }else if (ball == 0 && strike > 0) {
-                result = strike + STRING_STRIKE;
-            }else if (ball > 0 && strike == 0) {
-                result = ball + STRING_BALL;
-            }else if (ball > 0 && strike > 0){
-                result = ball + STRING_BALL + " " + strike + STRING_STRIKE;
-            }
-            System.out.println(result);
-
-            if(strike == 3) {
+            if(strike == NUMBER_LENGTH) {
                 System.out.println(OUTPUT_SUCCESS);
                 System.out.println(OUTPUT_QUIT);
                 String input = Console.readLine();
@@ -64,6 +51,20 @@ public class Game {
             }
 
         }
+    }
+
+    private void printOutResult() {
+        String result = "";
+        if (ball == 0 && strike == 0) {
+            result = STRING_NOTHING;
+        }else if (ball == 0 && strike > 0) {
+            result = strike + STRING_STRIKE;
+        }else if (ball > 0 && strike == 0) {
+            result = ball + STRING_BALL;
+        }else if (ball > 0 && strike > 0){
+            result = ball + STRING_BALL + " " + strike + STRING_STRIKE;
+        }
+        System.out.println(result);
     }
 
     private void calculateBall() {
