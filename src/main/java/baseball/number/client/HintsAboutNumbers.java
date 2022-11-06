@@ -1,18 +1,16 @@
 package baseball.number.client;
 
-import baseball.utils.validation.Validation;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class HintsAboutNumbers {
 
-    List<Integer> clientDigitNumbers = new ArrayList<>();
+    List<Integer> playerDigitNumbers = new ArrayList<>();
     List<Integer> randomDigitNumbers = new ArrayList<>();
 
-    public boolean hintAboutNumbers(List<Integer> clientNumbers, List<Integer> computerNumbers) {
+    public boolean hintAboutNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
 
-        clientDigitNumbers = clientNumbers;
+        playerDigitNumbers = playerNumbers;
         randomDigitNumbers = computerNumbers;
 
         List<Integer> numbersOfBallAndStrike = countBallAndStrike();
@@ -20,16 +18,17 @@ public class HintsAboutNumbers {
         return isBallOrStrike(numbersOfBallAndStrike);
     }
 
-    public boolean isBallOrStrike(List<Integer> ballAndStrike) {
+    private boolean isBallOrStrike(List<Integer> ballAndStrike) {
 
-        int ball = ballAndStrike.get(0);
-        int strike = ballAndStrike.get(1);
+        int strike = ballAndStrike.get(0);
+        int totalBall = ballAndStrike.get(1);
+        int ball = totalBall - strike;
 
-        if(strike <= 3 && strike > 0 && ball == 0) {
+        if(totalBall == strike && totalBall > 0) {
             System.out.println(strike + "스트라이크");
             return strike == 3;
         }
-        if(strike < 3 && strike >= 0 && ball > 0 &&ball <= 3) {
+        if(strike >= 0 && ball > 0 &&ball <= 3) {
             if(strike == 0) {
                 System.out.println(ball + " 볼");
                 return false;
@@ -44,29 +43,27 @@ public class HintsAboutNumbers {
     public List<Integer> countBallAndStrike() {
 
         int totalBall = 0;
-        int ball = 0;
         int strike = 0;
 
         for(int i = 0; i<3; i++) {
-            int clientDigitNumber = clientDigitNumbers.get(i);
+            int playerDigitNumber = playerDigitNumbers.get(i);
             int randomDigitNumber = randomDigitNumbers.get(i);
 
-            totalBall = isDigitNumberContain(clientDigitNumber, totalBall);
-            strike = isDigitNumberMatch(clientDigitNumber,randomDigitNumber,strike);
-            ball = totalBall - strike;
+            totalBall = isDigitNumberContain(playerDigitNumber, totalBall);
+            strike = isDigitNumberMatch(playerDigitNumber,randomDigitNumber,strike);
         }
-        return List.of(ball, strike);
+        return List.of(strike, totalBall);
     }
 
-    public int isDigitNumberMatch (int clientDigitNumber, int randomDigitNumber, int strike) {
-        if(clientDigitNumber == randomDigitNumber) {
+    public int isDigitNumberMatch (int playerDigitNumber, int randomDigitNumber, int strike) {
+        if(playerDigitNumber == randomDigitNumber) {
             strike++;
         }
         return strike;
     }
 
-    public int isDigitNumberContain(int clientDigitNumber, int totalBall){
-        if(randomDigitNumbers.contains(clientDigitNumber)) {
+    public int isDigitNumberContain(int playerDigitNumber, int totalBall){
+        if(randomDigitNumbers.contains(playerDigitNumber)) {
             totalBall++;
         }
         return totalBall;

@@ -1,6 +1,6 @@
 package baseball.number.game;
 
-import baseball.number.client.ClientNumbers;
+import baseball.number.client.PlayerNumber;
 import baseball.number.client.HintsAboutNumbers;
 import baseball.number.computer.ComputerNumbers;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,12 +11,13 @@ public class PlayGames {
 
     ComputerNumbers computerNumbers = new ComputerNumbers();
     HintsAboutNumbers hint = new HintsAboutNumbers();
-    ClientNumbers clientNumbers = new ClientNumbers();
+    PlayerNumber playerNumber = new PlayerNumber();
 
     public void playGames() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int quitGame;
+        int quitGame; //게임 재시작 여부 판단하는 변수, 만약 1인경우 재사작, 2인 경우 게임 종료
+
         do{
             List<Integer> computerNumber = computerNumbers.generateRandomNumbers();
             for (Integer integer : computerNumber) {
@@ -30,7 +31,7 @@ public class PlayGames {
 
             quitGame = Integer.parseInt(Console.readLine());
 
-        } while(quitGame != 2); //1입력시 게임 재시작, 2 입력시 게임 종료
+        } while(quitGame != 2); //1 입력시 게임 재시작, 2 입력시 게임 종료
 
         System.out.println("게임을 종료합니다.");
     }
@@ -40,7 +41,7 @@ public class PlayGames {
         do {
             String number = Console.readLine();
 
-            List<Integer> client = clientNumbers.clientNumberToList(number);
+            List<Integer> client = playerNumber.playerNumberToList(number);
 
             isMatched = hint.hintAboutNumbers(client, computerNumber);
             //숫자 입력시 힌트 출력 메서드 추가
