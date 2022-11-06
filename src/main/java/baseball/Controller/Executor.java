@@ -35,11 +35,17 @@ public class Executor {
         }
     }
     public static BaseballResult guessNumber(Baseball computerRandomBaseBall){
-        Baseball userBaseball = new User().getInput();
+        Baseball userBaseball = inputUserBaseball();
         HashMap<String, Integer> check_result = checker.start(computerRandomBaseBall, userBaseball);
         BaseballResult baseballResult = new BaseballResult(check_result);
         return baseballResult;
     }
+    public static Baseball inputUserBaseball(){
+        User user = new User();
+        Baseball userBaseball = user.getInput();
+        return userBaseball;
+    }
+
     public static void askRestart(){
         Printer.askRestart();
         String s = Console.readLine();

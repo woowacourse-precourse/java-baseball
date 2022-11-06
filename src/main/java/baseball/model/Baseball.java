@@ -12,11 +12,6 @@ public class Baseball {
     public Baseball(List<Integer> baseballNumber) {
         this.baseballNumber = baseballNumber;
     }
-    private void validate(List<Integer> baseballNumber) throws IllegalStateException{
-        if(!isCorrectState(baseballNumber)){
-            throw new IllegalStateException(ZERO + "가 아닌 "+ BASEBALL_LENGTH + "자리 수를 입력하세요");
-        }
-    }
 
     public List<Integer> getBaseballNumber() {
         return baseballNumber;
