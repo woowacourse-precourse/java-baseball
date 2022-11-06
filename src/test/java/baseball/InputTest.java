@@ -17,7 +17,7 @@ class InputTest {
     public void setUpStreams() {
         outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        inputClass = new Input();
+        inputClass = new Input(3);
     }
 
     @Test

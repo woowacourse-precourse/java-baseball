@@ -12,7 +12,7 @@ class ComputerTest {
 
     @BeforeEach
     public void setComputerClass() {
-        computer = new Computer();
+        computer = new Computer(3);
     }
 
     @Test
