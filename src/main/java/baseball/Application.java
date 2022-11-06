@@ -46,6 +46,23 @@ public class Application {
             return false;
         }
     }
+
+    public static boolean isInputValid(String inputValue){
+
+        if(!isInteger(inputValue))
+            return false;
+
+        int inputNumber = Integer.parseInt(inputValue);
+
+        if(inputNumber < 123 || inputNumber > 987)
+            return false;
+
+        if(!isAnswerNumberValid(inputNumber))
+            // 랜덤 정답 숫자 유효성과 같은 제한조건을 검사
+            return false;
+        
+        return true;
+    }
 }
 
 
