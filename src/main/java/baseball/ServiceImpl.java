@@ -13,6 +13,18 @@ public abstract class ServiceImpl implements Service{
 
     @Override
     public void startGame() {
+        int strike = 0;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> answer = pick();
+        while (strike < 3) {
+            strike = stage(answer);
+        }
+    }
+
+    private int stage(List<Integer> answer) {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> input = getUserNumber();
+        return hint(answer, input);
     }
 
     private List<Integer> pick() {
