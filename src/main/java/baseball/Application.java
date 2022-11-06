@@ -17,28 +17,44 @@ import java.util.Map;
 //7.이후 유저 입력으로 새로운게임을 할지 종료할지 결정
 public class Application {
     public static void main(String[] args) {
+        while (true){
+        int strike = 0;
+        List<Integer> randomNumber = makeRandomNumber();
+        while (strike <3){
+            strike = playBaseBallGameOneCycle(randomNumber);
+        }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            String s = Console.readLine();
+            Integer userInput = Integer.parseInt(s);
+            if(userInput==1){
+              continue;
+            }
+            else if(userInput==2){
+                return;
+            }else {
+                throw new IllegalArgumentException();
+            }
 
-        playBaseBallGameOneCycle();
-
-
+        }
     }
 
-    private static void playBaseBallGameOneCycle() {
+    private static int playBaseBallGameOneCycle(List<Integer> randomNumber) {
         System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> randomNumber = makeRandomNumber();
         List<Integer> userInput = getUserInput();
         Map<String, Integer> outputManager = checkMatchNumber(randomNumber,userInput);
         Integer strike = outputManager.get("스트라이크");
         Integer ball = outputManager.get("볼");
         printResult(strike, ball);
+        return strike;
     }
 
     private static void printResult(Integer strike, Integer ball) {
-        if(ball ==null&& strike ==null){
+        if(ball ==0&& strike ==0){
             System.out.println("낫싱");
-        }else if(strike ==null&& ball !=null){
+        }else if(strike ==0){
             System.out.println(ball +"볼");
-        }else if(strike !=null&& ball ==null){
+        }else if(ball ==0){
             System.out.println(strike +"스트라이크");
         }else {
             System.out.println(ball +"볼 "+ strike +"스트라이크");
@@ -50,7 +66,7 @@ public class Application {
         int ballCount = 0;
         int strikeCount = 0;
         for (Integer number : userInput) {
-            ballCount = getBallCount(randomNumber, ballCount, number);
+            ballCount = getBallCount(randomNumber,userInput, ballCount, number);
             strikeCount = getStrikeCount(randomNumber, userInput, strikeCount, number);
         }
         outputManager.put("스트라이크", strikeCount);
@@ -67,8 +83,9 @@ public class Application {
         return strikeCount;
     }
 
-    private static int getBallCount(List<Integer> randomNumber, int ballCount, Integer number) {
+    private static int getBallCount(List<Integer> randomNumber,List<Integer> userInput, int ballCount, Integer number) {
         if (randomNumber.contains(number)) {
+            if(randomNumber.indexOf(number)!=userInput.indexOf(number))
             ballCount++;
         }
         return ballCount;
@@ -97,7 +114,7 @@ public class Application {
     public static List<Integer> makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         makeRandomNumbers(computer);
-
+        System.out.println(computer);
         return computer;
     }
 
