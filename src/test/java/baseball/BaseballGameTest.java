@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constants.DEFAULT_SIZE;
+import static baseball.Constants.INPUT_LENGTH_EXCEPTION;
 import static baseball.Constants.RANGE_OF_BALL_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -108,5 +109,19 @@ class BaseballGameTest {
 
         List<Integer> actual = (List<Integer>) checkSizeMethod.invoke(game, "123");
         assertThat(actual).isEqualTo(List.of(1, 2, 3));
+    }
+
+    @ParameterizedTest
+    @DisplayName("사용자가 세자리를 입력하지 않았을 때 예외")
+    @ValueSource(strings = {"12", "", "1234", "  "})
+    void validateUserInputLength(String input) throws Exception {
+        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
+        checkSizeMethod.setAccessible(true);
+
+        try {
+            checkSizeMethod.invoke(game, input);
+        } catch (InvocationTargetException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo(INPUT_LENGTH_EXCEPTION);
+        }
     }
 }
