@@ -37,7 +37,7 @@ public class Application {
         for (int index = 0; index < consoleInput.length(); index++) {
             charInString = consoleInput.charAt(index);
             digit = (int)(charInString - '0');
-            if(isUsed[digit]) return false;
+            if (isUsed[digit]) return false;
             isUsed[digit] = true;
         }
         return true;
@@ -112,7 +112,7 @@ public class Application {
     }
 
     public static void isValidCode(String executionCode) {
-        if(!executionCode.equals("1") && !executionCode.equals("2"))
+        if (!executionCode.equals("1") && !executionCode.equals("2"))
             throw new IllegalArgumentException("Execution code must be 1 or 2");
     }
 
