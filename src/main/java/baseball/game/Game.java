@@ -19,11 +19,11 @@ public class Game {
         System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
         do {
             playGame();
-        } while (Integer.parseInt(askRestartOrEndGame()) == CONTINUE_GAME);
+        } while (Integer.parseInt(askRestartGameOrEnd()) == CONTINUE_GAME);
     }
 
-    public String askRestartOrEndGame() {
-        System.out.println(SystemMessage.START_NEW_GAME_OR_END);
+    public String askRestartGameOrEnd() {
+        System.out.println(SystemMessage.RESTART_GAME_OR_END);
         String answer = Console.readLine();
         if (!InputValidator.checkProgressAnswer(answer)) {
             throw new IllegalArgumentException();
