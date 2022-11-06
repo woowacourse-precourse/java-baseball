@@ -3,6 +3,8 @@ package custom.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import custom.dto.Response;
+import custom.service.vo.GameStatus;
+import custom.service.vo.ReTry;
 import custom.table.Table;
 import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
@@ -24,7 +26,7 @@ class BaseBallServiceTest {
         // then
         Field field = table.getClass().getDeclaredField("number");
         field.setAccessible(true);
-        String data = (String)field.get(table);
+        String data = (String) field.get(table);
         assertThat(data.length()).isEqualTo(3);
     }
 
@@ -48,6 +50,14 @@ class BaseBallServiceTest {
     }
 
     @Test
-    void isKeepGo() {
+    void isKeepGo_whenInputYesThenReturnKeep() {
+        //given
+        ReTry input = ReTry.YES;
+
+        // when
+        Response response = baseBallService.isKeepGo(input);
+
+        // then
+        assertThat(response.getGameStatus()).isEqualTo(GameStatus.KEEP);
     }
 }
