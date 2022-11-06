@@ -54,6 +54,7 @@ class NumberBaseballGameClientTest {
     @Nested
     @DisplayName("게임숫자를_맞출_숫자에_대한_입력_요청_기능에서")
     class AskInputNumberTest {
+
         @Test
         void 정상_입력은_에러를_던지지_않고_정상작동한다() {
             input("321");
@@ -109,6 +110,66 @@ class NumberBaseballGameClientTest {
             assertThatThrownBy(
                 NumberBaseballGameClient::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("플레이어 숫자와 정답숫자와 비교한 결과 출력")
+    class ShowJudgedResultTest {
+
+        @Test
+        void 결과가_3스트라이크로_주어지면_그대로_정상출력한다() {
+            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            judgedResultDto.countBalls = 0;
+            judgedResultDto.countStrikes = 3;
+
+            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+
+            assertThat(output()).isEqualTo("3스트라이크");
+        }
+
+        @Test
+        void 결과가_2스트라이크로_주어지면_그대로_정상출력한다() {
+            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            judgedResultDto.countBalls = 0;
+            judgedResultDto.countStrikes = 2;
+
+            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+
+            assertThat(output()).isEqualTo("2스트라이크");
+        }
+
+        @Test
+        void 결과가_2볼_1스트라이크로_주어지면_그대로_정상출력한다() {
+            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            judgedResultDto.countBalls = 2;
+            judgedResultDto.countStrikes = 1;
+
+            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+
+            assertThat(output()).isEqualTo("2볼 1스트라이크");
+        }
+
+        @Test
+        void 결과가_3볼로_주어지면_그대로_정상출력한다() {
+            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            judgedResultDto.countBalls = 3;
+            judgedResultDto.countStrikes = 0;
+
+            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+
+            assertThat(output()).isEqualTo("3볼");
+        }
+
+        @Test
+        void 결과가_낫싱으로_주어지면_그대로_정상출력한다() {
+            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            judgedResultDto.countBalls = 0;
+            judgedResultDto.countStrikes = 0;
+
+            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+
+            assertThat(output()).isEqualTo("낫싱");
         }
     }
 }
