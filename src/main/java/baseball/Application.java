@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -15,7 +16,7 @@ public class Application {
             startGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String s = Console.readLine();
-            if (isNumberException(s)) {
+            if (isNumberException(s) && !(s.equals("1") || s.equals("2"))) {
                 throw new IllegalArgumentException();
             }
             if (s.equals(2)) {
@@ -24,6 +25,22 @@ public class Application {
         }
     }
 
+    private static boolean isNumberException(String s) {
+        int number = Integer.parseInt(s);
+        HashSet<Integer> set = new HashSet();
+        for (int i = 0; i < s.length(); i++) {
+            int n = s.charAt(i) - '0';
+            if (set.contains(n)) { //  같은 숫자가 2개 이상 입력된 경우이다.
+                return true;
+            }
+            set.add(n);
+        }
+        if (number > 987 || number < 123) {
+            //987이 max, 123이 min
+            return true;
+        }
+        return false;
+    }
     private static void startGame(List<Integer> computer) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String s = "";
