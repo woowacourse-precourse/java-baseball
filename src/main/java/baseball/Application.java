@@ -12,14 +12,14 @@ public class Application {
     private static Hitter hitter = new Hitter();
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         sportsCaster.guideGameProcess();
         referee.startGame();
         hitter.swing();
-        while (referee.toTerminateGame) {
+        while (!referee.toTerminateGame) {
             play1Game();
             referee.playAgainOrNot();
         }
+        sportsCaster.terminateProgram();
     }
 
     private static void play1Game() {
