@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.GameState;
 import baseball.util.InputValueValidation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -30,5 +31,8 @@ public class User {
                 .collect(Collectors.toList());
     }
 
-
+    public boolean isReplayGame() {
+        int isReplay = Integer.parseInt(Console.readLine().strip());
+        return isReplay == GameState.START.ordinal();
+    }
 }
