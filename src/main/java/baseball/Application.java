@@ -19,7 +19,6 @@ public class Application {
         while (!isAnswer) {
             String input = Console.readLine();
             isValidInputInGame(input);
-            // TODO: 입력 호출
             // TODO: 정답 비교 호출
         }
 
