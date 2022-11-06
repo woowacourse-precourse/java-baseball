@@ -17,13 +17,12 @@ public class Game {
     private boolean exitFlag = false;
     private List<Integer> computer = new ArrayList<>();
     private List<Integer> player = new ArrayList<>();
-    Number computerNumber = new Number();
-    Number playerNumber = new Number();
+    Number number = new Number();
 
     public void gameStart() {
-        computer = computerNumber.setRandomNumbers();
+        computer = number.setRandomNumbers();
         while (!exitFlag) {
-            player = playerNumber.getInputNumber();
+            player = number.getInputNumber();
             printHint(computer, player);
         }
     }
@@ -31,7 +30,7 @@ public class Game {
     private void setRestartOrExit() {
         String input = inputRestartOrExit();
         if(input.equals(RESTART)) {
-            computer = computerNumber.setRandomNumbers();
+            computer = number.setRandomNumbers();
             return;
         }
         exitFlag = true;
