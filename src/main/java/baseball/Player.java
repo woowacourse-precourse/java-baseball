@@ -17,4 +17,8 @@ public class Player {
     public void changeNumbers(List<Integer> numbers) {
         this.numbers = numbers;
     }
+
+    public boolean isPossiblePlay() {
+        return numbers != null;
+    }
 }
