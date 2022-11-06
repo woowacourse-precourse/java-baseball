@@ -11,20 +11,34 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println(computer);
 
-        List<Integer> user = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
-        String userNumber = Console.readLine();
-        try {
-            checkNumberLength(userNumber);
-            checkAdequateNumber(userNumber);
-            addUserNumber(user, userNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println("예외 발생");
-            return;
+        while (true) {
+            List<Integer> user = new ArrayList<>();
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNumber = Console.readLine();
+            try {
+                checkNumberLength(userNumber);
+                checkAdequateNumber(userNumber);
+                addUserNumber(user, userNumber);
+            } catch (IllegalArgumentException e) {
+                return;
+            }
+
+            Count c = new Count();
+            c.countBall(computer, user);
+            c.countStrike(computer, user);
+
+            int answer;
+            try {
+                answer = c.printCount();
+            } catch (IllegalArgumentException e) {
+                return;
+            }
+            if (answer == 1) {
+                continue;
+            } else if (answer == 2) {
+                break;
+            }
         }
-
-        Count c = new Count();
-
     }
 
     static void addUserNumber(List<Integer> user, String userNumber) {
@@ -95,17 +109,25 @@ class Count {
         }
     }
 
-    void printCount() {
+    int printCount() {
         if (this.ball == 0 && this.strike == 0) {
             System.out.println("낫싱");
         } else if (this.strike == 0) {
-            System.out.printf("%d볼", this.ball);
+            printBall(this.ball);
+            System.out.println();
         } else if (this.ball == 0) {
-            System.out.printf("%d스트라이크", this.strike);
-        } else if (this.strike == 3) {
-            System.out.println("3스트라이크");
+            printStrike(this.strike);
+            System.out.println();
+            if (this.strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return restartOrExit();
+            }
         } else {
-            System.out.printf("%d볼 %d스트라이크", this.ball, this.strike);
+            printBall(this.ball);
+            System.out.print(" ");
+            printStrike(this.strike);
+            System.out.println();
         }
+        return this.strike;
     }
 }
