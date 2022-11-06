@@ -281,10 +281,10 @@ class ApplicationTest extends NsTest {
         int strikeCount = (int) ((Math.random() * 10000) % 10);
 
         //when
-        baseBallGame.makeHint(ballCount,strikeCount);
+        baseBallGame.makeHint(ballCount, strikeCount);
 
         //then
-        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount+"볼 "+strikeCount+"스트라이크".trim());
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount + "볼 " + strikeCount + "스트라이크".trim());
     }
 
     @Test
@@ -297,7 +297,7 @@ class ApplicationTest extends NsTest {
         int strikeCount = 0;
 
         //when
-        baseBallGame.makeHint(ballCount,strikeCount);
+        baseBallGame.makeHint(ballCount, strikeCount);
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("낫싱".trim());
@@ -315,10 +315,10 @@ class ApplicationTest extends NsTest {
         }
         int strikeCount = 0;
         //when
-        baseBallGame.makeHint(ballCount,strikeCount);
+        baseBallGame.makeHint(ballCount, strikeCount);
 
         //then
-        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount+"볼".trim());
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount + "볼".trim());
     }
 
     @RepeatedTest(10)
@@ -334,9 +334,9 @@ class ApplicationTest extends NsTest {
         }
 
         //when
-        baseBallGame.makeHint(ballCount,strikeCount);
+        baseBallGame.makeHint(ballCount, strikeCount);
 
         //then
-        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(strikeCount+"스트라이크".trim());
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(strikeCount + "스트라이크".trim());
     }
 }
