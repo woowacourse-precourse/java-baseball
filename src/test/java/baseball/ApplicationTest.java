@@ -168,6 +168,15 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    @DisplayName("볼만 있는 경우")
+    public void ballOnly() throws Exception{
+        String result = Application.printCurrentSituation(2,0);
+        assertThat(result).isEqualTo("2볼");
+
+    }
+
+
 
 
 
