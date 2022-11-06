@@ -24,7 +24,7 @@ public class BaseballGameController {
 	}
 
 	private void runOneCycle() {
-		List<Integer> computerNums = new ComputerNumber().computerNumber;
+		List<Integer> computerNums = new ComputerNumber().getComputerNumber();
 		gameStart(computerNums);
 		OutputView.printClearMessage();
 	}

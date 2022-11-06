@@ -11,11 +11,11 @@ public class BaseBallGame {
 		this.computerNumber = new ComputerNumber().getComputerNumber();
 	}
 
-	private void inputUserNumber(String str) {
+	public void inputUserNumber(String str) {
 		this.userNumber = new UserNumber(str).userNumber;
 	}
 
-	private void countScore() {
+	public void countScore() {
 		this.gameResult = new GameResult(computerNumber, userNumber);
 	}
 
