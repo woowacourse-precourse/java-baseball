@@ -52,15 +52,15 @@ class ApplicationTest extends NsTest {
     @Test
     void testFunction1_case1() {
         Computer computer =  new Computer();
-        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
+        String randomNumbers = computer.getRandomNumbers();
 
-        assertThat(randomNumbers.size()).isEqualTo(3);
+        assertThat(randomNumbers.length()).isEqualTo(3);
     }
 
     @Test
     void testFunction1_case2() {
         Computer computer =  new Computer();
-        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
+        String randomNumbers = computer.getRandomNumbers();
 
         assertThat(randomNumbers).isNotEmpty();
     }
@@ -68,11 +68,11 @@ class ApplicationTest extends NsTest {
     @Test
     void testFunction1_case3() {
         Computer computer =  new Computer();
-        ArrayList<Integer> randomNumbers = computer.getRandomNumbers();
+        String randomNumbers = computer.getRandomNumbers();
 
-        assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(1));
-        assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(2));
-        assertThat(randomNumbers.get(1)).isNotEqualTo(randomNumbers.get(2));
+        assertThat(randomNumbers.charAt(0)).isNotEqualTo(randomNumbers.charAt(1));
+        assertThat(randomNumbers.charAt(0)).isNotEqualTo(randomNumbers.charAt(2));
+        assertThat(randomNumbers.charAt(1)).isNotEqualTo(randomNumbers.charAt(2));
     }
 
     @Test
@@ -152,68 +152,65 @@ class ApplicationTest extends NsTest {
     void 스트라이크_테스트_1() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "145";
-        makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("1스트라이크");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("1스트라이크");
     }
 
     @Test
     void 스트라이크_테스트_2() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "125";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("2스트라이크");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("2스트라이크");
     }
 
     @Test
     void 스트라이크_테스트_3() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "123";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("3스트라이크");
-        assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("3스트라이크");
+//        assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Test
     void 볼_테스트_1() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "345";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("1볼");
-//        assertThat(output()).contains("숫자를 입력해주세요 :");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("1볼");
     }
 
     @Test
     void 볼_테스트_2() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "315";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("2볼");
-//        assertThat(output()).contains("숫자를 입력해주세요 :");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("2볼");
     }
 
     @Test
     void 볼_테스트_3() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "312";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("3볼");
-//        assertThat(output()).contains("숫자를 입력해주세요 :");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("3볼");
+    }
+
+    @Test
+    void 볼_스트라이크_테스트_3() {
+        String gamePlayerInput = "382";
+        String computerRandomNumbers = "382";
+
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("3스트라이크");
     }
 
     @Test
     void 낫싱_테스트() {
         String gamePlayerInput = "123";
         String computerRandomNumbers = "456";
-        playGame().getResult(computerRandomNumbers, gamePlayerInput);
 
-        assertThat(output()).contains("낫싱");
-//        assertThat(output()).contains("숫자를 입력해주세요 :");
+        assertThat(makeGameInstance().getResult(computerRandomNumbers, gamePlayerInput)).contains("낫싱");
     }
 
     // 기능 요구사항 5
