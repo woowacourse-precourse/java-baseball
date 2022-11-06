@@ -35,9 +35,17 @@ public class FunctionTest {
 
     @DisplayName("게임이 끝나고 재시작 및 종료에 대한 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
     @Test
-    void replayOrStopExceptionTest() {
+    void replayOrStopExceptionCheckTest() {
         InputError inputError = new InputError();
         String answer = "2";
-        assertThat(inputError.replayOrStopException(answer)).isEqualTo(answer);
+        assertThat(inputError.replayOrStopExceptionCheck(answer)).isEqualTo(answer);
+    }
+
+    @DisplayName("게임 중 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
+    @Test
+    void userNumberInputExceptionCheckTest() {
+        InputError inputError = new InputError();
+        String answer = "981";
+        assertThat(inputError.userNumberInputExceptionCheck(answer)).isEqualTo(answer);
     }
 }
