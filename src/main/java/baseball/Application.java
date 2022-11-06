@@ -81,4 +81,8 @@ public class Application {
 
         return 0;
     }
+
+    public boolean isValueToStopGame(int userInput) {
+        return userInput == 1;
+    }
 }
