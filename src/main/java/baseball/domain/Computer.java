@@ -8,6 +8,15 @@ import java.util.List;
 public class Computer {
 
     private static final int NUMBER_SIZE = 3;
+    private final List<Integer> computerNumberList;
+
+    public Computer() {
+        this.computerNumberList = createNumber();
+    }
+
+    public List<Integer> getComputerNumberList() {
+        return computerNumberList;
+    }
 
     // 컴퓨터가 임의의 수 3개를 선택해서 반환하는 기능
     private List<Integer> createNumber() {
