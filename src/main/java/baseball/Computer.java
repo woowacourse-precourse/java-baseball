@@ -48,10 +48,10 @@ public class Computer {
         return "아직 게임이 진행중 입니다";
     }
 
-    public String closeGame() {
+    public boolean closeGame() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        return input;
+        return true;
     }
 
     public void resetCount() {
