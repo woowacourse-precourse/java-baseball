@@ -2,7 +2,7 @@ package custom.service.vo;
 
 public enum ReTry {
     YES("1"),
-    NO("0");
+    NO("2");
 
     private final String name;
 
