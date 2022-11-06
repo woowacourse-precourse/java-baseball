@@ -14,7 +14,7 @@ public class Application {
         System.out.println("computerNumber = " + computerNumber.toString());
 
         while (true) {
-            List<Integer> user = getUserNumber();
+            List<Integer> userNumber = getUserNumber();
 
         }
     }
