@@ -18,8 +18,8 @@ public class ValidCheck {
         if(userInput.contains(0)){
             throw new IllegalArgumentException("0은 포함 되면 안됩니다");
         }
-        Set<Integer> checkOverlapNum = new HashSet<>(userInput);
-        if(checkOverlapNum.size() != userInput.size()){
+        Set<Integer> checkOverlapNumber = new HashSet<>(userInput);
+        if(checkOverlapNumber.size() != userInput.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다");
         }
     }
