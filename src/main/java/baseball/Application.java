@@ -84,6 +84,16 @@ public class Application {
         return check;
     }
 
+    private static int getStrike(List<Integer> computer, List<Integer> player){
+        int cnt=0;
+        for(int i=0;i<computer.size();i++){
+            if(computer.get(i)==player.get(i)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -103,7 +113,8 @@ public class Application {
             if(isNothing(computer, player)){
                 System.out.println("낫싱");
             } else{
-
+                int cntStrike = getStrike(computer, player);
+                
             }
 
             // 게임 재시작/종료 선택
