@@ -14,9 +14,9 @@ class playGameTest {
     PlayGame playGame = new PlayGame();
 
     @ParameterizedTest
-    @ValueSource(strings = {"3","Y"})
-    public void 게임_재시작_예외처리(String replaying) throws Exception {
-        assertThatThrownBy(()->playGame.checkInputErr(replaying))
+    @ValueSource(ints = {3, 4})
+    public void 게임_재시작_예외처리(int replayNum) throws Exception {
+        assertThatThrownBy(()->playGame.checkInputErr(replayNum))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
