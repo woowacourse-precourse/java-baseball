@@ -1,5 +1,7 @@
 package baseball.util;
 
+import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
+
 import baseball.message.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -9,8 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BallGenerator {
-
-    public static final int COMPUTER_BALLS_SIZE = 3;
 
     public List<Integer> createComputerBalls() {
         List<Integer> computerBalls = new ArrayList<>();

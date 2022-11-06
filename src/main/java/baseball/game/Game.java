@@ -1,6 +1,6 @@
 package baseball.game;
 
-import static baseball.util.BallGenerator.COMPUTER_BALLS_SIZE;
+import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
 import static baseball.util.InputValidator.CONTINUE_GAME;
 
 import baseball.message.SystemMessage;
