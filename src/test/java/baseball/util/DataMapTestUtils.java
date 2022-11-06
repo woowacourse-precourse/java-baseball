@@ -1,7 +1,6 @@
 package baseball.util;
 
-import baseball.domain.number.GameNumber;
-import baseball.mvc.structure.Model;
+import baseball.mvc.structure.DataMap;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,17 +8,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public final class ModelTestUtils {
+public final class DataMapTestUtils {
 
     private static final String DATA_MAP_FIELD_NAME = "dataMap";
     private static final int FIELD_INDEX = 0;
 
-    private ModelTestUtils() {
+    private DataMapTestUtils() {
     }
 
-    public static Map<String, Object> getModelDataMap(Model model) {
+    public static Map<String, Object> getModelDataMap(DataMap model) {
         List<Field> fields = Arrays
-            .stream(model.getClass().getDeclaredFields())
+            .stream(DataMap.class.getDeclaredFields())
             .filter(field -> field.getName().equals(DATA_MAP_FIELD_NAME))
             .collect(Collectors.toList());
 
