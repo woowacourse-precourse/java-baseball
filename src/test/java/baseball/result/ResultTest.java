@@ -49,4 +49,18 @@ class ResultTest {
         assertThat(result.numberOfBall()).isEqualTo(1);
         assertThat(result.getResultType()).isEqualTo(BALL_AND_STRIKE);
     }
+
+    @Test
+    void strikeOut() {
+        // given
+        Result result = new Result();
+
+        // when
+        for (int i = 0; i < 3; i++)
+            result.increaseStrike();
+
+        // then
+        assertThat(result.numberOfStrike()).isEqualTo(3);
+        assertThat(result.getResultType()).isEqualTo(EXACT_MATCH);
+    }
 }
