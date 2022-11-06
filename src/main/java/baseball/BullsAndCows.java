@@ -56,6 +56,10 @@ public class BullsAndCows {
         }
     }
 
+    private boolean isEnd() {
+        return strikeCount == STRIKE_COUNT_FOR_END;
+    }
+
     private void restart() {
         createAnswerNumber();
         playGame();
@@ -79,8 +83,18 @@ public class BullsAndCows {
         ballCount = 0;
     }
 
-    private boolean isEnd() {
-        return strikeCount == STRIKE_COUNT_FOR_END;
+    private GameProgressMessage getResultOfEndGame(String userInput) {
+        int flag = Integer.parseInt(userInput);
+
+        if (flag == (RESTART_GAME)) {
+            return RESTART;
+        }
+
+        if (flag == END_GAME) {
+            return END;
+        }
+
+        throw new IllegalArgumentException("Game is over, you must input only flag number");
     }
 
     private String getResultMessageOfGuessNumber(String userInput) {
@@ -97,18 +111,13 @@ public class BullsAndCows {
         return getResultScore();
     }
 
-    private GameProgressMessage getResultOfEndGame(String userInput) {
-        int flag = Integer.parseInt(userInput);
+    private boolean isNothing() {
+        return userInput.stream()
+                .noneMatch(answerNumberList::contains);
+    }
 
-        if (flag == (RESTART_GAME)) {
-            return RESTART;
-        }
-
-        if (flag == END_GAME) {
-            return END;
-        }
-
-        throw new IllegalArgumentException("Game is over, you must input only flag number");
+    private String getResultScore() {
+        return (getBallScore() + " " + getStrikeScore()).trim();
     }
 
     private String getStrikeScore() {
@@ -121,6 +130,10 @@ public class BullsAndCows {
         return STRIKE.of(strikeCount);
     }
 
+    private boolean isStrikeByIndex(int index) {
+        return Objects.equals(answerNumberList.get(index), userInput.get(index));
+    }
+
     private String getBallScore() {
         ballCount = 0;
 
@@ -131,21 +144,8 @@ public class BullsAndCows {
         return BALL.of(ballCount);
     }
 
-    private String getResultScore() {
-        return (getBallScore() + " " + getStrikeScore()).trim();
-    }
-
-    private boolean isStrikeByIndex(int index) {
-        return Objects.equals(answerNumberList.get(index), userInput.get(index));
-    }
-
     private boolean isBallByIndex(int index) {
         return !isStrikeByIndex(index) && answerNumberList.contains(userInput.get(index));
-    }
-
-    private boolean isNothing() {
-        return userInput.stream()
-                .noneMatch(answerNumberList::contains);
     }
 
     private void validateNumber(List<Integer> input) {
