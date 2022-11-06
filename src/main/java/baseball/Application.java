@@ -9,5 +9,11 @@ public class Application {
 
     private static void access() {
         BaseballGame baseballGame = new BaseballGame();
+
+        try {
+            baseballGame.ready();
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
