@@ -18,7 +18,7 @@ public class User {
     }
 
     public void isValidInput(String input) throws IllegalArgumentException {
-        if (!(isDigitInput(input) && isInputLengthThree(input)))
+        if (!(isDigitInput(input) && isInputLengthThree(input) && isDuplicateInput(input)))
             throw new IllegalArgumentException();
     }
 
@@ -32,6 +32,17 @@ public class User {
 
     private boolean isInputLengthThree(String input) throws IllegalArgumentException {
         if (input.length() != CNT_NUMBER)
+            throw new IllegalArgumentException();
+        return true;
+    }
+
+    private boolean isDuplicateInput(String input) throws IllegalArgumentException {
+        Set<Character> set = new HashSet<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            set.add(input.charAt(i));
+        }
+        if (set.size() != input.length())
             throw new IllegalArgumentException();
         return true;
     }

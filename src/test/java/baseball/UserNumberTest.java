@@ -11,7 +11,7 @@ public class UserNumberTest {
     User user = new User();
 
     @ParameterizedTest
-    @ValueSource(strings = {"23", "3uh", "i", " ", ""})
+    @ValueSource(strings = {"23", "3uh", "i", " ", "", "112"})
     void 입력받은_숫자_검증(String input) {
         assertThatThrownBy(() -> {
             user.isValidInput(input);
