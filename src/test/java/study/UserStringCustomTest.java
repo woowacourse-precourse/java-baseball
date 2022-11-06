@@ -25,7 +25,7 @@ public class UserStringCustomTest {
     }
 
     @Test
-    void incorrectUserAnswerContainNotNumeric() {
+    void 입력_값에_숫자가_아닌_값이_포함되어_있는_경우() {
         String userAnswer = "!23";
         assertThat(!userAnswer.matches("[+-]?\\d*(\\.\\d+)?")).isEqualTo(true); {
             throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
@@ -33,7 +33,7 @@ public class UserStringCustomTest {
     }
 
     @Test
-    void incorrectUserAnswerContainZero() {
+    void 입력_값에_1에서_9가_아닌_0이_포함되어_있는_경우() {
         String userAnswer = "103";
         assertThat(userAnswer.contains("0")).isEqualTo(true); {
             throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
