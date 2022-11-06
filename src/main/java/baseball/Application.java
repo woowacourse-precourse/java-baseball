@@ -46,10 +46,10 @@ public class Application {
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
             printResult(ball, strike);
-            if(isThreeStrike(strike)) {
-                System.out.println(THREE_STRIKE_MESSAGE);
+            if(!isThreeStrike(strike)) {
+                continue;
             }
-
+            System.out.println(THREE_STRIKE_MESSAGE);
             try {
                 stringUserInput = getUserInput(InputType.WHETHER_REPLAY);
                 isValidInput(stringUserInput, InputType.WHETHER_REPLAY);
