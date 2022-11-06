@@ -15,7 +15,14 @@ public class User {
 
   public void createUserInput(){
     String input = Console.readLine();
+    isValidInputValue(input);
     putInputValueInList(input);
+  }
+
+  public void isValidInputValue(String input) {
+    if(!Regex.getRegexMatcherResult("^[1-9]{1,3}$", input)){
+      throw new IllegalArgumentException("invalid user input");
+    }
   }
 
   public void putInputValueInList(String input){
