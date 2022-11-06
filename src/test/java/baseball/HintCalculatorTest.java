@@ -1,9 +1,15 @@
 package baseball;
 
+import static baseball.constant.Rules.END_INCLUSIVE;
+import static baseball.constant.Rules.NUMBER_LENGTH;
+import static baseball.constant.Rules.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 public class HintCalculatorTest {
@@ -84,5 +90,24 @@ public class HintCalculatorTest {
     private void assertStrikeBall(Hint hint, int expectedStrike, int expectedBall) {
         assertThat(hint.getStrike()).isEqualTo(expectedStrike);
         assertThat(hint.getBall()).isEqualTo(expectedBall);
+    }
+
+    @RepeatedTest(10)
+    void 스트라이크와_볼_개수의_합이_3을넘지못함() {
+        List<Integer> computer = generateRandomNumber();
+        List<Integer> user = generateRandomNumber();
+        Hint hint = hintCalculator.getHint(computer, user);
+        assertThat(hint.getStrike() + hint.getBall()).isLessThanOrEqualTo(NUMBER_LENGTH);
+    }
+
+    private List<Integer> generateRandomNumber() {
+        List<Integer> number = new ArrayList<>();
+        while (number.size() < NUMBER_LENGTH) {
+            int randomDigit = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            if (!number.contains(randomDigit)) {
+                number.add(randomDigit);
+            }
+        }
+        return number;
     }
 }
