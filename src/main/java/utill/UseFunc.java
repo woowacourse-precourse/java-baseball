@@ -66,10 +66,7 @@ public class UseFunc {
     }
 
     public static boolean isEqualIntOfTwo(int num_1, int num_2) {
-        if (num_1 == num_2) {
-            return true;
-        }
-        return false;
+        return num_1 == num_2;
     }
 
     public static String getString() {
