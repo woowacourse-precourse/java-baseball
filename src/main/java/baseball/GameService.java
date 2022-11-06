@@ -40,6 +40,16 @@ public class GameService {
         randomBallNumber.randomNumbers.clear();
     }
 
+    public String inputOneOrTwo() {
+        return Console.readLine();
+    }
+
+    public void isNotRestartedAndQuitedGame(String oneOrTwo) {
+        if (!oneOrTwo.equals(RESTART_GAME) && !oneOrTwo.equals(QUIT_GAME)) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요");
+        }
+    }
+
     private boolean existNumber(String randomNumber, String inputNumber) {
         return inputNumber.contains(randomNumber);
     }
