@@ -8,6 +8,8 @@ import baseball.view.OutputResultView;
 
 public class GameController {
     public static void run() {
+        runGame();
+        checkContinue();
     }
 
     private static void runGame() {
@@ -23,15 +25,16 @@ public class GameController {
         }
         OutputResultView.printWinMessage();
     }
-    private static void checkContinue(){
+
+    private static void checkContinue() {
         String continueMessage = InputNumView.askContinue();
 
-        if(continueMessage.equals("1")){
+        if (continueMessage.equals("1")) {
             runGame();
             return;
         }
 
-        if(continueMessage.equals("2")){
+        if (continueMessage.equals("2")) {
             OutputResultView.printEndMessage();
             return;
         }
