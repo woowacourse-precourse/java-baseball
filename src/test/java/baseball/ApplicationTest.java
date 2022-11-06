@@ -159,23 +159,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateUserInputOneOrTwo_정상처리_테스트(){
+    void validateStringOneOrTwo_정상처리_테스트(){
         //given
         final Core T = new Core();
         final String case1 = "1";
         final String case2 = "2";
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
+        final Throwable thrown1 = catchThrowable(()->{T.validateStringOneOrTwo(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateStringOneOrTwo(case2);});
 
         //then
-        assertThat(thrown1).as("validateUserInputOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
-        assertThat(thrown2).as("validateUserInputOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(thrown1).as("validateStringOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(thrown2).as("validateStringOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
     }
 
     @Test
-    void validateUserInputOneOrTwo_예외처리_테스트(){
+    void validateStringOneOrTwo_예외처리_테스트(){
         //given
         final Core T = new Core();
         final String case1 = "3";
@@ -185,16 +185,16 @@ class ApplicationTest extends NsTest {
 
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateUserInputOneOrTwo(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateUserInputOneOrTwo(case2);});
-        final Throwable thrown3 = catchThrowable(()->{T.validateUserInputOneOrTwo(case3);});
-        final Throwable thrown4 = catchThrowable(()->{T.validateUserInputOneOrTwo(case4);});
+        final Throwable thrown1 = catchThrowable(()->{T.validateStringOneOrTwo(case1);});
+        final Throwable thrown2 = catchThrowable(()->{T.validateStringOneOrTwo(case2);});
+        final Throwable thrown3 = catchThrowable(()->{T.validateStringOneOrTwo(case3);});
+        final Throwable thrown4 = catchThrowable(()->{T.validateStringOneOrTwo(case4);});
 
         //then
-        assertThat(thrown1).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown2).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown3).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown4).as("validateUserInputOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown1).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown2).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown3).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown4).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
