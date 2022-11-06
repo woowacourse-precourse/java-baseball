@@ -1,7 +1,18 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+
 public class Application {
+
+    private static Message message;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        startGame();
+    }
+
+    static void startGame() {
+        message = new Message();
+        message.startGameMessage();
     }
 }
