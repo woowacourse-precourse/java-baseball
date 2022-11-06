@@ -29,7 +29,7 @@ public class Game {
     }
 
     public String getPlayerInput(String message) {
-        System.out.print(message);
+        System.out.println(message);
         return Console.readLine();
     }
 
