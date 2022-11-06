@@ -123,4 +123,15 @@ public class Application {
         return false;
     }
 
+    // 컴퓨터의 숫자와 사용자의 숫자를 비교하는 메서드
+    static int compareNumber(List<Integer> computerList, int num, int idx) {
+        if (computerList.contains(num)) {
+            if (computerList.get(idx) == num) {
+                return 1;
+            }
+            return 0;
+        }
+        return 3;
+    }
+
 }
