@@ -9,17 +9,26 @@ import java.util.Set;
 public class User {
 
     private List<Integer> numbers;
+    private BaseballConsole baseballConsole;
+
+    public User() {
+        numbers = new ArrayList<>();
+        baseballConsole = new BaseballConsole();
+    }
 
     public void inputNumber() {
-        String input = BaseballConsole.userInputNumber();
+        String input = baseballConsole.userInputNumber();
         validateNumbers(input);
         validateLength(input);
         validateDifferentNumbers(input);
         addNumber(input);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void addNumber(String input) {
-        numbers = new ArrayList<>();
         for(String number : input.split("")) {
             numbers.add(Integer.parseInt(number));
         }
