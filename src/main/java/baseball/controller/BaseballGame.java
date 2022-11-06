@@ -12,12 +12,9 @@ import java.util.List;
 public class BaseballGame {
     public static void play() {
         OutputView.init();
-        int regame;
         do {
             playAGame();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            regame = Integer.parseInt(Console.readLine());
-        } while (regame == 1);
+        } while (InputView.isRematch());
     }
 
     private static void playAGame() {

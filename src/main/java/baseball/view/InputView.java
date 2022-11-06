@@ -36,4 +36,22 @@ public class InputView {
 
         return new Balls(ballList);
     }
+
+    public static boolean isRematch() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int input = getRematchInput();
+
+        if (input == 1) return true;
+        if (input == 2) return false;
+        throw new IllegalArgumentException();
+    }
+
+    private static int getRematchInput() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
