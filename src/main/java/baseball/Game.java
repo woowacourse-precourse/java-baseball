@@ -20,10 +20,14 @@ public class Game {
             tempUser.remove(user.get(num));
 
             if (tempUser.contains(computer.get(num))) count++;
-            System.out.println(tempUser + "<- tempUser " + count + "<-count");
             tempUser.removeAll(user);
         }
+
         return count;
+    }
+
+    public static boolean nothing(int strikeCounter, int ballCounter){
+        return strikeCounter == 0 && ballCounter == 0;
     }
 }
 
