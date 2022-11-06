@@ -56,9 +56,28 @@ public class TargetNumber {
     }
 
     public BallStrikeResult compareTo(TargetNumber oth) {
-        // TODO 해당 값과 oth를 비교하여 같은 수가 같은 자리에 있으면 스트라이크,
-        //  다른자리에 있으면 볼로 하여 그 개수를 BallStrikeResult로 반환한다.
-        return new BallStrikeResult(0, 0);
+        BallStrikeResult result = new BallStrikeResult();
+        for(int i = 0; i < this.numberListByDigit.size(); i++) {
+            for(int j = 0; j < oth.numberListByDigit.size(); j++) {
+                countBallOrStrike(
+                        result,
+                        this.numberListByDigit.get(i),
+                        oth.numberListByDigit.get(j),
+                        i == j
+                );
+            }
+        }
+        return result;
+    }
+
+    private void countBallOrStrike(BallStrikeResult result, int digit1, int digit2, boolean isStrike) {
+        if(digit1 == digit2) {
+            if(isStrike) {
+                result.addStrikeCount();
+                return;
+            }
+            result.addBallCount();
+        }
     }
 
     private void checkNumberLengthNotExceedTargetNumberLength(int numberLength) {
