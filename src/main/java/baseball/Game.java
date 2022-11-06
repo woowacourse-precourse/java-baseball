@@ -10,7 +10,6 @@ public class Game {
     private final Scanner scanner;
     private List<Integer> targetNumber;
     private List<Integer> predictedNumber;
-    private int strikeScore;
 
     public Game(Scanner scanner) {
         this.scanner = scanner;
@@ -36,10 +35,11 @@ public class Game {
 
     private void scoreCalculator() {
 
-        this.strikeScore = getStrikeScore();
-        int ballScore = getBallScore();
+        int strikeScore = getStrikeScore();
+        int ballScore = getBallScore(strikeScore);
         System.out.println(strikeScore);
         System.out.println(ballScore);
+        printScoreBoard(strikeScore, ballScore);
     }
 
     private int getStrikeScore() {
@@ -51,12 +51,25 @@ public class Game {
         return strikeScore;
     }
 
-    private int getBallScore() {
+    private int getBallScore(int strikeScore) {
 
         int sameValueCnt = 0;
         for(int index = 0; index < 3; index++) {
             if(targetNumber.contains(predictedNumber.get(index))) sameValueCnt++;
         }
         return sameValueCnt - strikeScore;
+    }
+
+    private void printScoreBoard(int strikeScore, int ballScore) {
+
+        if(strikeScore == 0 && ballScore == 0) {
+            System.out.println("낫싱");
+        } else if(strikeScore == 3 || ballScore == 0) {
+            System.out.println(strikeScore+"스트라이크");
+        } else if(ballScore == 3 || strikeScore == 0){
+            System.out.println(ballScore+"볼");
+        } else {
+            System.out.println(ballScore+"볼 "+strikeScore+"스트라이크");
+        }
     }
 }
