@@ -1,4 +1,4 @@
-package baseball.core.opponent;
+package baseball.core;
 
 import baseball.core.dto.BallStrikeDto;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ComputerOpponent {
 
-    private List<Integer> randomNumbers;
+    private final List<Integer> randomNumbers;
 
     public ComputerOpponent(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
