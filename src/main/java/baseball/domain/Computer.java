@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Computer {
-    private String answer;
+    private final String answer;
+
+    public Computer() {
+        this.answer = setAnswerByRandom();
+    }
 
     public String getAnswer() {
         return answer;
@@ -15,9 +19,10 @@ public class Computer {
     /**
      * 도메인 로직
      */
-    public void setAnswerByRandom() {
+    private String setAnswerByRandom() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        this.answer = randomNumbers.stream()
+
+        return randomNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
     }
