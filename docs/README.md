@@ -1,77 +1,121 @@
-# 숫자야구게임
-
-- 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
-    - 예) 상대방(컴퓨터)의 수가 425일 때
-        - 123을 제시한 경우 : 1스트라이크
-        - 456을 제시한 경우 : 1볼 1스트라이크
-        - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
-  숫자에 대한
-  결과를 출력한다.
-- 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
-- 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-
-## 🎯 프로그래밍 요구 사항
-
-- JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
-
-### 추가된 요구 사항
-
-- indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-    - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-    - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
-- 3항 연산자를 쓰지 않는다.
-- 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
-    - 테스트 도구 사용법이 익숙하지 않다면 `test/java/study`를 참고하여 학습한 후 테스트를 구현한다.
-
-### 라이브러리
-
-- `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
-# 기능 목록
-
-- 값에 대한 검증을 수행하는 객체 - `ValidationBullsAndCows`
-    - 사용자가 입력한 문자열 / 랜덤하게 생성된 입력에 대해 검증한다.
-        - 글자수(길이)가 3자인지 검증한다.
-        - 숫자인지 검증한다.
-
+# 📖 기능 목록
 
 - 숫자야구게임을 진행하는 객체 - `BullsAndCows`
     - 컴퓨터의 랜덤한 값(정답)을 생성한다.
-        - `1` ~ `Integer.MAX_VALUE - 1`사이의 랜덤한 값을 받아서 3글자 이내의 숫자로 변환하는 방식을 처리한다.
-
     - 점수를 구한다.
-        - 스트라이크의 개수에 대한 결과를 반환한다. - `getStrikeScore`
-        - 스트라이크 여부를 판별한다. - `isStrike`
-        - 볼의 개수에 대한 결과를 반환한다. - `getBallScore`
-        - 볼 여부를 판별한다. - `isBall`
-        - `낫싱`인지 조건을 판단한다. - `isNothing`
     - 결과를 반환한다.
-        - 사용자가 추측한 값에 대한 결과 반환한다. - `getResultOfGuessNumber`
-        - 0볼 0스트라이크 형식의 결과를 반환한다. - `getResultScoreByFormat`
+        - 볼, 스트라이크, 낫싱
     - 프로그램 종료조건을 검증한다.
-        - 3스트라이크인지 확인한다.
-        - `3스트라이크`라면 `1` 혹은 `2`를 입력받아 `재시작`/`게임종료`를 정할 수 있다.
-        - `3스트라이크`상태에서의 입력값의 길이가 1이고 숫자인지 검증한다.
-    - 재시작 시 랜덤값을 재생성한다.
+        - 재시작
+        - 종료
 
 
-- 숫자야구게임 결과 Enum - `ResultMessage`
+- 숫자야구게임 결과 값 - `ResultMessage`
     - 값
         - `STRIKE("스트라이크")`
         - `BALL("볼")`
         - `NOTHING("낫싱")`
     - 숫자를 넣었을 때 결과 문구로 반환해주는 기능
         - `of(int number)`
-            - ex) BALL.of(1) return "1볼"
-            - ex) STRIKE.of(2) return "2스트라이크"
+            - ex) BALL.of(1) return `"1볼"`
+            - ex) STRIKE.of(2) return `"2스트라이크"`
+            - ex) BALL.of(0) return `""`
+
+# 🕹 BullsAndCows
+
+숫자야구게임을 진행하는 객체입니다.
+
+## Method
+
+### public method
+
+- `playGame()`
+    - 숫자야구게임을 시작하는 함수
+
+### private method
+
+#### 🛠 유틸 함수
+
+- `restart()`
+    - 게임을 재시작하는 함수
+
+
+- `createAnswerNumber()`
+    - 컴퓨터의 값을 생성하는 함수
+
+
+- `initCountValues()`
+    - strikeCount, ballCount를 초기화하는 함수
+
+
+- `isEnd()`
+    - 게임이 끝났는지 구분하는함수
+        - 3 스트라이크 면 게임이 끝난다.
+
+#### ✏️ 결과값 반환함수
+
+- `getResultMessageOfGuessNumber(String input)`
+    - 입력값에 대해 숫자야구게임 결과를 반환하는 함수
+
+
+- `getResultOfEndGame(String input)`
+    - 입력값에 대해 재시작, 게임 종료를 구분하는 함수
+
+#### 💯 점수 관련 함수
+
+- `getStrikerNumber()`
+    - 스트라이크 개수를 구하는 함수
+
+
+- `getBallNumber()`
+    - 볼 개수를 구하는 함수
+
+
+- `getResultScore()`
+    - 결과값을 형식에 맞춰 반환하는 함수
+
+
+- `isStrikeByIndex(int index)`
+    - 해당 index의 숫자가 스트라이크인지 구분하는 함수
+
+
+- `isBallByIndex(int index)`
+    - 해당 index의 숫자가 볼인지 구분하는 함수
+
+
+- `isNothing()`
+    - '낫싱'인지 구분하는 함수
+
+#### ⚠️ 검증 함수
+
+- `validateNumber(String input)`
+    - 검증을 수행한다.
+        - 숫자인지 검증 - `validateIsNumber(String input)`
+        - 올바른 길이(3)인지 검증 - `validateLength(String input)`
+        - 중복된 숫자가 존재하는지 검증 - `validateDuplicate(String input)`
+    - **overloading** : `validateNumber(List<Integer> input)`
+
+# 💬 ResultMessage
+
+## 상수값
+
+- `STRIKE("스트라이크")`
+- `BALL("볼")`
+- `NOTHING("낫싱")`
+
+## Method
+
+- `of(int number)`
+    - number에 맞춰 결과값을 만든다.
+    - 예시)
+        - `STRIKE.of(3)` -> `3 스트라이크`
+        - `BALL.of(2)` -> `2 볼`
+
+# 💬 GameProgressMessage
+
+## 상수값
+
+- `GAME_PROGRESS_ASK_QUIT("게임 종료 이후 재시작, 종료를 물어보는 문구")`
+- `GAME_PROGRESS_MESSAGE("게임 진행안내 문구")`
+- `GAME_PROGRESS_RESTART("재시작")`
+- `GAME_PROGRESS_END("게임 종료");`
