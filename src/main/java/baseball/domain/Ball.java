@@ -16,12 +16,12 @@ public class Ball {
     }
 
     private void validate(int number) {
-        if (!isValidateRange(number)) {
+        if (!isCorrectRange(number)) {
             throw new IllegalArgumentException(BALL_NUMBER_EX_MESSAGE);
         }
     }
 
-    private boolean isValidateRange(int number) {
+    private boolean isCorrectRange(int number) {
         return (number >= MINIMUM_BALL_NUMBER) && (number <= MAXIMUM_BALL_NUMBER);
     }
 
