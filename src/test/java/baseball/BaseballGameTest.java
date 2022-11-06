@@ -1,12 +1,16 @@
 package baseball;
 
+import static baseball.Constants.DEFAULT_SIZE;
 import static baseball.Constants.RANGE_OF_BALL_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -49,5 +53,25 @@ class BaseballGameTest {
         } catch (InvocationTargetException e) {
             assertThat(e.getCause().getMessage()).isEqualTo(RANGE_OF_BALL_EXCEPTION);
         }
+    }
+
+    @Test
+    @DisplayName("중복되지 않는 볼 추가")
+    void addBall() throws Exception {
+        Method validateMethod = BaseballGame.class.getDeclaredMethod("addBall", List.class, int.class);
+        validateMethod.setAccessible(true);
+
+        List<Integer> list = new ArrayList<>();
+        validateMethod.invoke(game, list, 1);
+        validateMethod.invoke(game, list, 2);
+        validateMethod.invoke(game, list, 3);
+
+        List<Integer> overlapList = new ArrayList<>();
+        validateMethod.invoke(game, overlapList, 1);
+        validateMethod.invoke(game, overlapList, 2);
+        validateMethod.invoke(game, overlapList, 2);
+
+        assertThat(list.size()).isEqualTo(DEFAULT_SIZE);
+        assertThat(overlapList.size()).isNotEqualTo(DEFAULT_SIZE);
     }
 }
