@@ -32,15 +32,15 @@ class UserTest {
   @Test
   @Order(1)
   void inputValueTestLengthNoError1() {
-    User.inputValueTestPlayingMode("123");
-    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+    String returnValue = User.inputValueTestPlayingMode("123");
+    Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
   @Order(2)
   void inputValueTestLengthNoError2() {
-    User.inputValueTestPlayingMode("123");
-    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+    String returnValue = User.inputValueTestPlayingMode("123");
+    Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
@@ -62,15 +62,15 @@ class UserTest {
   @Test
   @Order(5)
   void inputValueTestOnlyNumNoError1() {
-    User.inputValueTestPlayingMode("123");
-    Assertions.assertThat("123").isEqualTo(outContent.toString().trim());
+    String returnValue = User.inputValueTestPlayingMode("123");
+    Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
   @Order(6)
   void inputValueTestOnlyNumNoError2() {
-    User.inputValueTestPlayingMode("124");
-    Assertions.assertThat("124").isEqualTo(outContent.toString().trim());
+    String returnValue = User.inputValueTestPlayingMode("124");
+    Assertions.assertThat("124").isEqualTo(returnValue);
   }
 
   @Test
@@ -97,13 +97,11 @@ class UserTest {
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
-  ////////////play again mode //////////
-
   @Test
   @Order(9)
   void inputValueTestPlayAgainInput() {
-    User.inputValueTestPlayAgainMode("1");
-    Assertions.assertThat("1").isEqualTo(outContent.toString().trim());
+    String returnValue = User.inputValueTestPlayAgainMode("1");
+    Assertions.assertThat("1").isEqualTo(returnValue);
   }
 
   @Test
