@@ -1,5 +1,6 @@
 package baseball.printer;
 
+import baseball.console.output.ConsoleOutput;
 import baseball.core.dto.BallStrikeDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,19 +13,19 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GameMessagePrinterTest {
+class ConsoleOutputTest {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     PrintStream originalErr = System.err;
 
-    GameMessagePrinter messagePrinter;
+    ConsoleOutput messagePrinter;
 
     @BeforeEach
     void init() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
-        messagePrinter = new GameMessagePrinter();
+        messagePrinter = new ConsoleOutput();
     }
 
     @Nested

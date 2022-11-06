@@ -1,4 +1,4 @@
-package baseball.printer;
+package baseball.console.output;
 
 import baseball.core.dto.BallStrikeDto;
 
@@ -15,8 +15,8 @@ public class ResultMessageGenerator {
 
 
     public String generateMessage(BallStrikeDto dto) {
-        initCounts(dto);
         String resultMessage;
+        initCounts(dto);
 
         if (isNothing()) {
             resultMessage = getNothingMessage();
@@ -42,7 +42,6 @@ public class ResultMessageGenerator {
     private String getBallStrikeResultString() {
         String ballString = getBallString();
         String strikeString = getStrikeString();
-
         return toResultMessage(ballString, strikeString);
     }
 

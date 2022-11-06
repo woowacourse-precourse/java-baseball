@@ -1,10 +1,10 @@
-package baseball.console.converter;
+package baseball.console.input.converter;
 
-import baseball.console.exception.DuplicateNumberException;
-import baseball.console.exception.EachInputNumberOutOfRangeException;
-import baseball.console.exception.InputNumberOutOfRangeException;
-import baseball.console.exception.IllegalNumberInputException;
-import baseball.console.exception.InputNumberFormatException;
+import baseball.exception.DuplicateNumberException;
+import baseball.exception.EachInputNumberOutOfRangeException;
+import baseball.exception.InputNumberOutOfRangeException;
+import baseball.exception.IllegalNumberInputException;
+import baseball.exception.InputNumberFormatException;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,12 +18,12 @@ public class ThreeNumberConverter {
     
     public List<Integer> getThreeNumbers(String inputString) throws IllegalNumberInputException {
         this.inputString = inputString;
-        List<Integer> integerList = getIntegerListByInputString();
-        validateIntegerList(integerList);
-        return integerList;
+        List<Integer> threeNumbers = getThreeNumbersByInputString();
+        validateIntegerList(threeNumbers);
+        return threeNumbers;
     }
     
-    private List<Integer> getIntegerListByInputString() {
+    private List<Integer> getThreeNumbersByInputString() {
         List<String> splitInputList = toSplitList();
         return getIntegerList(splitInputList);
     }
@@ -33,15 +33,13 @@ public class ThreeNumberConverter {
     }
 
     private List<Integer> getIntegerList(List<String> splitInputList) {
-        List<Integer> integerList;
         try {
-            integerList = splitInputList.stream()
+            return splitInputList.stream()
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new InputNumberFormatException(inputString);
         }
-        return integerList;
     }
 
     private void validateIntegerList(List<Integer> integerList) {
