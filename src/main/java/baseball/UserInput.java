@@ -8,6 +8,10 @@ public class UserInput {
     private final int NUMBER_LENGTH = 3;
     private int[] expectedAnswer;
 
+    public int[] getUserInput() {
+        return expectedAnswer;
+    }
+
     public String inputNumber() {
         System.out.println(USER_Input_Message);
         String names = Console.readLine();
