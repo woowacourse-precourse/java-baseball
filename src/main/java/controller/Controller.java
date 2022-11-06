@@ -61,8 +61,8 @@ public class Controller {
         return (int) (ch1 - ch2);
     }
 
-    public static void handleException(boolean result){
-        if (!result){
+    public static void handleException(boolean result) {
+        if (!result) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 종료합니다.");
         }
     }
