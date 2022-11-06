@@ -15,8 +15,7 @@ public class Application {
 
         while (answerDigits.size() == 3) {
             System.out.print("숫자를 입력해주세요 : ");
-            String userInput = getUserInput();
-            int userGuess = validateUserInput(userInput, 3);
+            int userGuess = getUserInput(3);
 
             List<Integer> inputDigits = getDigitList(userGuess);
             List<Integer> comparedResult = compareAnswerWithInput(answerDigits, inputDigits);
@@ -24,8 +23,7 @@ public class Application {
             boolean isGameFinished = printHint(comparedResult);
 
             if (isGameFinished) {
-                userInput = getUserInput();
-                userGuess = validateUserInput(userInput, 1);
+                userGuess = getUserInput(1);
                 answerDigits = toBeContinued(userGuess, answerDigits);
             }
         }
@@ -46,11 +44,13 @@ public class Application {
         return answerDigits;
     }
 
-    public static String getUserInput() {
+    public static int getUserInput(int checkLength) {
         String userInput = Console.readLine();
         System.out.println(userInput);
 
-        return userInput;
+        int userGuess = validateUserInput(userInput, checkLength);
+
+        return userGuess;
     }
 
     private static int validateUserInput(String userInput, int checkLength) throws IllegalArgumentException {
