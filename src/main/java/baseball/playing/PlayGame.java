@@ -1,5 +1,6 @@
 package baseball.playing;
 
+import baseball.GameController;
 import baseball.players.Computer;
 import baseball.players.User;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,58 +13,56 @@ public class PlayGame {
     private String computerNumber;
     private String userNumber;
 
-    public PlayGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
         computerNumber = computer.getComputerNumbers();
-        playingGame();
     }
 
     public void playingGame() {
         StrikeOrBall strikeOrBall = new StrikeOrBall();
-        Map<String, Integer> strikeBall = new HashMap<>();
+        Map<String, Integer> getStrikeBall;
 
-        while (true) {
-            inputUserNumbers();
+        while (true){
+            String input = inputUserNumbers();
+            User user = new User(input);
+            userNumber = user.getUserNumbers();
             String result = strikeOrBall.printStrikeOrBall(computerNumber, userNumber);
             System.out.println(result);
 
-            strikeBall = strikeOrBall.checkStrikeOrBall(computerNumber, userNumber);
-            if (strikeBall.get("Strike") == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            getStrikeBall = strikeOrBall.checkStrikeOrBall(computerNumber, userNumber);
+            if(getStrikeBall.get("Strike") == 3){
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
                 break;
             }
         }
-
-        replayingGame();
     }
 
-    private void replayingGame() {
-
+    public void endGame() {
+        System.out.println("게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public void replayGame() {
+
         String replaying = Console.readLine();
         int replayNumber = Integer.parseInt(replaying);
         checkInputErr(replayNumber);
 
         if (replayNumber == 1) {
-            startGame();
+            GameController gameController = new GameController();
         }
     }
 
-    private void checkInputErr(int replayNumber) throws IllegalArgumentException {
+    public void checkInputErr(int replayNumber) throws IllegalArgumentException {
         if (!(replayNumber == 1 || replayNumber == 2))
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
     }
 
-    private void inputUserNumbers() {
+    private String inputUserNumbers() {
 
         System.out.print("숫자를 입력해주세요 : ");
-        String inputNumber = Console.readLine();
-        User user = new User(inputNumber);
-
-        userNumber = user.getUserNumbers();
+        String input = Console.readLine();
+        return input;
     }
 }
