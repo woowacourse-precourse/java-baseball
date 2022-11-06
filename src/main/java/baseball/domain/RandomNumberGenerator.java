@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class RandomNumberGenerator {
 
     private static final int SIZE = 3;
     private static final int START_INCLUSIVE = 1;

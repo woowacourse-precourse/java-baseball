@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.domain.Computer;
 import baseball.domain.Player;
+import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Referee;
 import baseball.util.InputVerifier;
 import baseball.util.SystemMessage;
@@ -23,8 +23,8 @@ public class Game {
     }
 
     private void play() {
-        Computer computer = new Computer();
-        List<Integer> answer = computer.getNumbers();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        List<Integer> answer = randomNumberGenerator.getNumbers();
 
         while (true) {
             SystemMessage.printNumberInput();
