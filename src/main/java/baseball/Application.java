@@ -64,6 +64,11 @@ public class Application {
     public static int checkStrikeNumbers(List<Integer> computerNumbers,
                                          List<Integer> userNumbers){
         int checkedStrikeNumbers = 0;
+        for(int listElements = 0; listElements < computerNumbers.size(); listElements++){
+            if(computerNumbers.get(listElements).equals(userNumbers.get(listElements))){
+                checkedStrikeNumbers++;
+            }
+        }
         return 0;
     }
 
