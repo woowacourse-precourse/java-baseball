@@ -24,8 +24,7 @@ public class HintCalculatorTest {
         Hint hint = hintCalculator.getHint(answer, userInput);
 
         // then
-        assertThat(hint.getStrike()).isEqualTo(3);
-        assertThat(hint.getBall()).isEqualTo(0);
+        assertStrikeBall(hint, 3, 0);
     }
 
     @Test
@@ -38,8 +37,7 @@ public class HintCalculatorTest {
         Hint hint = hintCalculator.getHint(answer, userInput);
 
         // then
-        assertThat(hint.getStrike()).isEqualTo(2);
-        assertThat(hint.getBall()).isEqualTo(0);
+        assertStrikeBall(hint, 2, 0);
     }
 
     @Test
@@ -52,8 +50,7 @@ public class HintCalculatorTest {
         Hint hint = hintCalculator.getHint(answer, userInput);
 
         // then
-        assertThat(hint.getStrike()).isEqualTo(0);
-        assertThat(hint.getBall()).isEqualTo(1);
+        assertStrikeBall(hint, 0, 1);
     }
 
     @Test
@@ -66,8 +63,7 @@ public class HintCalculatorTest {
         Hint hint = hintCalculator.getHint(answer, userInput);
 
         // then
-        assertThat(hint.getStrike()).isEqualTo(1);
-        assertThat(hint.getBall()).isEqualTo(1);
+        assertStrikeBall(hint, 1, 1);
     }
 
 
@@ -81,7 +77,11 @@ public class HintCalculatorTest {
         Hint hint = hintCalculator.getHint(answer, userInput);
 
         // then
-        assertThat(hint.getStrike()).isEqualTo(0);
-        assertThat(hint.getBall()).isEqualTo(0);
+        assertStrikeBall(hint, 0, 0);
+    }
+
+    private void assertStrikeBall(Hint hint, int expectedStrike, int expectedBall) {
+        assertThat(hint.getStrike()).isEqualTo(expectedStrike);
+        assertThat(hint.getBall()).isEqualTo(expectedBall);
     }
 }
