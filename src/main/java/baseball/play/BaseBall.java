@@ -1,4 +1,4 @@
-package baseball;
+package baseball.play;
 
 import baseball.output.Guide;
 
@@ -9,9 +9,4 @@ public class BaseBall {
         Game game = new Game();
         game.start();
     }
-
-    private void printStartingGuide() {
-        System.out.println("숫자 아구 게임을 시작합니다.");
-    }
-
 }

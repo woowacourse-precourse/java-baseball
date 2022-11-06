@@ -1,22 +1,25 @@
-package baseball;
+package baseball.play;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
+import baseball.input.ComputerInput;
+import baseball.input.UserInput;
+import baseball.output.Guide;
+import baseball.validatioon.Validation;
 import java.util.*;
 
 public class Game {
-    private static List<Integer> computerNumberList = new ArrayList<>();
+    ComputerInput computerInput = new ComputerInput();
+    UserInput input = new UserInput();
 
     public void start() {
         boolean isRestart = false;
+        Round round = new Round();
+
         do {
-            computerNumberList = getComputerNumberList();
-            // 라운드 시작;
-            Round round = new Round();
+            List<Integer> computerNumberList = computerInput.getNumberList();
             round.run(computerNumberList);
             Guide.printRestartGuide();
-            isRestart = getRestartOptionAndUpdateIsRestart();
+            int restartOption = input.getRestartOption();
+            isRestart = Validation.isRestart(restartOption);
         } while (isRestart);
     }
 }
