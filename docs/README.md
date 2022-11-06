@@ -68,7 +68,7 @@
 - [x] userAnswer에 매개변수를 저장
 - [x] regularExpression에 한자리 숫자인 1 또는 2 인지 확인하는 정규표현식을 초기화.
 - [x] userAnswer이 regularExpression에 유효한지 비교값을 result에 저장
-- [ ] result가 false이면 예외 상황 발생
+- [x] result가 false이면 예외 상황 발생
 
 ## (String)inputAvailableUserNumberService()
 - [x] 사용자가 입력하는 숫자를 저장하는 변수, userNumber을 0으로 초기화
