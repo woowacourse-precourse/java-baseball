@@ -12,6 +12,7 @@ public class NumberBaseballController {
         numberBaseballService.initNumber();
         numberBaseballView.printStartGame();
         String userAnswer = numberBaseballView.inputUserAnswer();
+        numberBaseballService.inputUserAnswer(userAnswer);
     }
 
 }
