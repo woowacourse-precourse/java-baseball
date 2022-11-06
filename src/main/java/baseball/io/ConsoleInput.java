@@ -12,4 +12,9 @@ public class ConsoleInput implements Input {
 
         return Console.readLine();
     }
+
+    @Override
+    public String userInput() {
+        return Console.readLine();
+    }
 }
