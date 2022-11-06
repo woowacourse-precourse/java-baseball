@@ -72,5 +72,23 @@ public class Application {
         return compareUserWithEnemy(result);
     }//public static void countStrikeAndBall
 
+    public static int compareUserWithEnemy(Map<String, Integer> result) {
+        if (result.get("ball") != 0) {
+            System.out.print(result.get("ball") + "볼 ");
+        }
+        if (result.get("strike") != 0) {
+            System.out.print(result.get("strike") + "스트라이크");
+            if (result.get("strike") == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                return Integer.parseInt(Console.readLine());
+            }
+        }
+        if (result.get("ball") == 0 && result.get("strike") == 0) {
+            System.out.print("낫싱");
+        }
+        return 0;
+    }//public static int compareUserWithEnemy
+
 
 }
