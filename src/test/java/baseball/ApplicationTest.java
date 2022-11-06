@@ -98,63 +98,72 @@ class ApplicationTest extends NsTest {
     class BallStrikeResultTest {
         @Test
         void oneBallTwoStrikeToStringTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 1, 2);
             String result = "1볼 2스트라이크";
             assertThat(ballStrike.toString()).isEqualTo(result);
         }
 
         @Test
         void oneBallTwoStrikeDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 1, 2);
             boolean result = false;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
 
         @Test
         void noBallToStringTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(0, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 0, 2);
             String result = "2스트라이크";
             assertThat(ballStrike.toString()).isEqualTo(result);
         }
 
         @Test
         void noBallDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(0, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 0, 2);
             boolean result = false;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
 
         @Test
         void noStrikeToStringTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 0);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 1, 0);
             String result = "1볼";
             assertThat(ballStrike.toString()).isEqualTo(result);
         }
 
         @Test
         void noStrikeDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 0);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 1, 0);
             boolean result = false;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
 
         @Test
         void nothingToStringTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(0, 0);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 0, 0);
             String result = "낫싱";
             assertThat(ballStrike.toString()).isEqualTo(result);
         }
 
         @Test
         void nothingDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 0, 0);
             boolean result = false;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
 
         @Test
         void threeStrikeDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(0, 3);
+            BallStrikeResult ballStrike = new BallStrikeResult();
+            addBallAndStrikeCount(ballStrike, 0, 3);
             boolean result = true;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
@@ -166,7 +175,10 @@ class ApplicationTest extends NsTest {
         void targetNumberCompareToTest1() {
             TargetNumber number1 = new TargetNumber(924);
             TargetNumber number2 = new TargetNumber(123);
-            BallStrikeResult result = new BallStrikeResult(0, 1);
+
+            BallStrikeResult result = new BallStrikeResult();
+            addBallAndStrikeCount(result,0, 1);
+
             assertThat(number1.compareTo(number2)).isEqualTo(result);
         }
 
@@ -174,7 +186,10 @@ class ApplicationTest extends NsTest {
         void targetNumberCompareToTest2() {
             TargetNumber number1 = new TargetNumber(425);
             TargetNumber number2 = new TargetNumber(456);
-            BallStrikeResult result = new BallStrikeResult(1, 1);
+
+            BallStrikeResult result = new BallStrikeResult();
+            addBallAndStrikeCount(result,1, 1);
+
             assertThat(number1.compareTo(number2)).isEqualTo(result);
         }
 
@@ -182,7 +197,10 @@ class ApplicationTest extends NsTest {
         void targetNumberCompareToTest3() {
             TargetNumber number1 = new TargetNumber(123);
             TargetNumber number2 = new TargetNumber(789);
-            BallStrikeResult result = new BallStrikeResult(0, 0);
+
+            BallStrikeResult result = new BallStrikeResult();
+            addBallAndStrikeCount(result,0, 0);
+
             assertThat(number1.compareTo(number2)).isEqualTo(result);
         }
 
@@ -190,7 +208,10 @@ class ApplicationTest extends NsTest {
         void targetNumberCompareToTest4() {
             TargetNumber number1 = new TargetNumber(954);
             TargetNumber number2 = new TargetNumber(954);
-            BallStrikeResult result = new BallStrikeResult(0, 3);
+
+            BallStrikeResult result = new BallStrikeResult();
+            addBallAndStrikeCount(result,0, 3);
+
             assertThat(number1.compareTo(number2)).isEqualTo(result);
         }
     }
@@ -214,6 +235,15 @@ class ApplicationTest extends NsTest {
                     assertThatThrownBy(() -> runException("1234"))
                             .isInstanceOf(IllegalArgumentException.class)
             );
+        }
+    }
+
+    private void addBallAndStrikeCount(BallStrikeResult ballStrikeResult, int ballCount, int strikeCount) {
+        for(int i = 0; i < ballCount; i++) {
+            ballStrikeResult.addBallCount();
+        }
+        for(int i = 0; i < strikeCount; i++) {
+            ballStrikeResult.addStrikeCount();
         }
     }
 
