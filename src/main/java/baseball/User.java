@@ -9,6 +9,7 @@ public class User {
     Numbers guess;
 
     void guess() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> inputList = new ArrayList<>();
         for (char c : input.toCharArray()) {
