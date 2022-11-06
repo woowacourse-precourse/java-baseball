@@ -42,4 +42,5 @@
 
 ### 리팩터링 메모
 - [ ] 테스트 메서드별 분리 모두 적용하기
-- [ ] 사용자 입력 통일, inputNumber 메서드 제거, prompt output으로 이동
+- [ ] 사용자 입력 통일, inputNumber 메서드 제거, prompt output으로 이동하기
+- [ ] 불변 필드, 객체 final 키워드 적용하기
