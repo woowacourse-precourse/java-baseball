@@ -6,14 +6,25 @@ import java.util.Scanner;
 
 public class Player {
     private static final String MESSAGE_TO_USER_INPUT = "숫자를 입력해주세요 : ";
+    private static final int VALID_LENGTH_OF_USER_INPUT = 3;
+    private static final String VALID_PLAYER_INPUT_PATTERN = "^[1-9]{3}$";
 
-    public static List<String> Input() {
+
+    public static String Input() {
         Scanner sc = new Scanner(System.in);
-        List<String> intputData = new ArrayList<>();
+        String inputData = "";
 
         System.out.println(MESSAGE_TO_USER_INPUT);
-        intputData.add(sc.next());
+        inputData = sc.next();
 
-        return intputData;
+        return inputData;
+    }
+
+    public static void ExceptionProcess(String inputData) {
+        if(inputData.length() != VALID_LENGTH_OF_USER_INPUT)
+            throw new IllegalArgumentException();
+
+        if(!inputData.matches(VALID_PLAYER_INPUT_PATTERN))
+            throw new IllegalArgumentException();
     }
 }

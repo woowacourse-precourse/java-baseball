@@ -11,7 +11,11 @@ public class Application {
 
     public static void main(String[] args) {
         List<Integer> quiz = QuizMaker.NewQuiz();
+        String PlayerInput = "";
 
-        Player.Input();
+        System.out.println(MESSAGE_TO_START);
+        PlayerInput = Player.Input();
+
+        Player.ExceptionProcess(PlayerInput);
     }
 }
