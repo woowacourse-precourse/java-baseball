@@ -14,6 +14,7 @@ public class QuestionNumberSetter {
 	private Map<ComparingResults, Integer> comparingResult = new HashMap<>();
 
 	public List<Integer> pickThreeRandomNumbers() {
+		randomNumbers.clear();
 		while (randomNumbers.size() < 3) {
 			int uniqueNumber = pickUniqueRandomNumber();
 			randomNumbers.add(uniqueNumber);
