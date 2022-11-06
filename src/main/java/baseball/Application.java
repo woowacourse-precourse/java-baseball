@@ -15,7 +15,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private static List<Integer> getRandomValues(int startValueInRange, int endValueInRange, int numberOfValues) {
+    private static List<Integer> getRandomIntegers(int startValueInRange, int endValueInRange, int numberOfValues) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < numberOfValues; i++) {
             result.add(Randoms.pickNumberInRange(1, 9));
@@ -23,11 +23,11 @@ public class Application {
         return result;
     }
 
-    private static List<Integer> getValuesThroughConsole(int startValueInRange, int endValueInRange, int numberOfValues) throws NumberFormatException{
+    private static List<Integer> getIntegersThroughConsole(int startValueInRange, int endValueInRange, int numberOfValues) throws NumberFormatException{
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < numberOfValues; i++) {
             int input = Integer.parseInt(Console.readLine());
-            if (input < 0 || input > 9) {
+            if (input < startValueInRange || input > endValueInRange) {
                 throw new NumberFormatException();
             }
             result.add(input);
@@ -35,7 +35,7 @@ public class Application {
         return result;
     }
 
-    private static boolean getUserInputForDeterminingWhetherPlayingGameAgain()throws NumberFormatException{
+    private static boolean askIfUserPlayGameAgain()throws NumberFormatException{
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput=Integer.parseInt(Console.readLine());
         if(userInput==1) {
@@ -46,7 +46,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-    private static void printResultOfPlayingGame(ResultOfPlayingGame result){
+    private static void printScore(Score result){
         if(result.nothing==3){
             System.out.println("낫싱");
             return;
@@ -63,48 +63,43 @@ public class Application {
     // indent 수준이 2 초과되지 않도록 한다.
     // 그러려면 기능을 쪼개어 함수로 만들어야 한다.
     // 하나의 사용자 입력 정수값과 3개의 컴퓨터 입력 정수값을 받아, ball 인지 strike 인지 확인하는 함수를 만든다.
-    private static ResultOfPlayingGame getBaseballResult(List<Integer> computerInputs, List<Integer> userInputs){
-        ResultOfPlayingGame result=new ResultOfPlayingGame();
+    private static Score calculateScore(List<Integer> computerInputs, List<Integer> userInputs){
+        Score result=new Score();
         for(int i=0;i<userInputs.size();i++){
             int userInput=userInputs.get(i);
-            ResultOfPlayingGameWithOneIntegerValue subResult=playGameWithOneIntegerValue(computerInputs,userInput,i);
-            if(subResult==ResultOfPlayingGameWithOneIntegerValue.STRIKE){
+            ScoreCategory subResult= calculateScoreWithOneInteger(computerInputs,userInput,i);
+            if(subResult== ScoreCategory.STRIKE){
                 result.strike+=1;
-            }else if(subResult==ResultOfPlayingGameWithOneIntegerValue.BALL){
+            }else if(subResult== ScoreCategory.BALL){
                 result.ball+=1;
-            }else if(subResult==ResultOfPlayingGameWithOneIntegerValue.NOTHING){
+            }else if(subResult== ScoreCategory.NOTHING){
                 result.nothing+=1;
             }
         }
         return result;
     }
 
-    private static ResultOfPlayingGameWithOneIntegerValue playGameWithOneIntegerValue(List<Integer> computerInputs, int userInput, int userInputIdx){
+    private static ScoreCategory calculateScoreWithOneInteger(List<Integer> computerInputs, int userInput, int userInputIdx){
         for(int i=0;i<computerInputs.size();i++){
             int computerInput= computerInputs.get(i);
             if (computerInput==userInput&&i==userInputIdx){
-                return ResultOfPlayingGameWithOneIntegerValue.STRIKE;
+                return ScoreCategory.STRIKE;
             } else if (computerInput == userInput) {
-                return ResultOfPlayingGameWithOneIntegerValue.BALL;
+                return ScoreCategory.BALL;
             }
         }
-        return ResultOfPlayingGameWithOneIntegerValue.NOTHING;
+        return ScoreCategory.NOTHING;
     }
 
-    enum ResultOfPlayingGameWithOneIntegerValue{
+    enum ScoreCategory {
         BALL, STRIKE, NOTHING
     }
 
-    static class ResultOfPlayingGame{
-        int strike;
-        int ball;
-        int nothing;
+    static class Score {
+        int strike=0;
+        int ball=0;
+        int nothing=0;
 
-        ResultOfPlayingGame(){
-            strike=0;
-            ball=0;
-            nothing=0;
-        }
         public boolean pass(){
             return strike==3;
         }
