@@ -15,7 +15,7 @@ public class BaseballGame {
 				this.computer = new Computer();
 				roundWithComputer();
 				printAllStrike();
-			} while ();
+			} while (again());
 		} catch (IllegalArgumentException e) {
 			throw e;
 		}
