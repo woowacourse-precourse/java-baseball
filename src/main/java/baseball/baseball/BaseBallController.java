@@ -1,6 +1,7 @@
 package baseball.baseball;
 
 import baseball.ScreenString;
+import baseball.dto.BaseBallGameInput;
 import baseball.dto.BaseBallGameOutput;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -24,6 +25,11 @@ public class BaseBallController {
             String randomNumber = makeRandomNumber();
             String guessNumber = makeGuessNumber();
 
+            BaseBallGameInput baseBallGameInput = new BaseBallGameInput(randomNumber, guessNumber);
+            BaseBallGameOutput baseBallGameOutput = baseBallService.playBall(baseBallGameInput);
+
+            int ballCount = baseBallGameOutput.getBallCount();
+            int strikeCount = baseBallGameOutput.getStrikeCount();
 
             doNextGame = endGame();
         }
@@ -39,7 +45,7 @@ public class BaseBallController {
         }
     }
 
-    private boolean is3Number(String userInput) {
+    protected boolean is3Number(String userInput) {
         boolean is3Number = true;
         if(userInput.length() != 3)
             is3Number = false;
@@ -52,7 +58,7 @@ public class BaseBallController {
         return is3Number;
     }
 
-    private String makeRandomNumber() {
+    protected String makeRandomNumber() {
         List<String> computerInput = new ArrayList<>();
         while (computerInput.size() < 3) {
             String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
@@ -64,11 +70,11 @@ public class BaseBallController {
     }
 
     private int endGame() {
-        System.out.println(ScreenString.END_GAME);
+        System.out.println(ScreenString.END_GAME.getCommonMessage());
         return Integer.parseInt(Console.readLine());
     }
 
     private void startGame() {
-        System.out.println(ScreenString.GAME_START);
+        System.out.println(ScreenString.GAME_START.getCommonMessage());
     }
 }
