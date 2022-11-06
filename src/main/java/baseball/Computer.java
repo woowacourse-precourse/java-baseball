@@ -8,7 +8,7 @@ import java.util.List;
 public class Computer {
     private static final int BASEBALL_GAME_DIGIT = 3;
     private final List<Character> baseballNumber = new ArrayList<>();
-    private final CountBallAndStrike countBallAndStrike = new CountBallAndStrike();
+    private final CounterBaseball counterBaseball = new CounterBaseball();
 
     public List<Character> getBaseballNumber() {
         return baseballNumber;
@@ -27,10 +27,13 @@ public class Computer {
         }
     }
 
-    public void replyBallAndStrike(String input) {
-        countBallAndStrike.countBallAndStrike(baseballNumber, input);
-        int ball = countBallAndStrike.getBall();
-        int strike = countBallAndStrike.getStrike();
+    public void countBallAndStrike(String input){
+        counterBaseball.countBallAndStrike(baseballNumber, input);
+    }
+
+    public void replyBallAndStrike() {
+        int ball = counterBaseball.getBall();
+        int strike = counterBaseball.getStrike();
         if ((ball == 0) && (strike == 0)) {
             View.printNothing();
         }
@@ -47,4 +50,5 @@ public class Computer {
             View.printBallAndStrike(ball, strike);
         }
     }
+
 }
