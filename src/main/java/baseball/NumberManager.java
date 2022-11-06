@@ -46,7 +46,7 @@ public class NumberManager {
         return numberArray;
     }
 
-    private void validate(StringBuilder userNumber) {
+    public void validate(StringBuilder userNumber) {
 
         if(!userNumber.toString().matches(REGEX)) {
             throw new IllegalArgumentException();
@@ -58,9 +58,7 @@ public class NumberManager {
 
     }
 
-    public ComparedNumberResult getCompareResult(StringBuilder userNumber) {
-
-        validate(userNumber);
+    public ComparedNumberResult getComparedResult(StringBuilder userNumber) {
 
         ArrayList<Integer> userNumberArray = convertToNumberArray(userNumber);
 

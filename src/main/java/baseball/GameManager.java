@@ -20,7 +20,9 @@ public class GameManager {
             System.out.print(Message.getInputNumberMessage());
             StringBuilder userNumber = new StringBuilder(Console.readLine());
 
-            ComparedNumberResult comparedNumberResult = numberManager.getCompareResult(userNumber);
+            numberManager.validate(userNumber);
+
+            ComparedNumberResult comparedNumberResult = numberManager.getComparedResult(userNumber);
 
             System.out.println(comparedNumberResult);
 
