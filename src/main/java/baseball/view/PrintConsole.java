@@ -33,7 +33,6 @@ public class PrintConsole {
             result += printStrike;
             result += printNothing;
         }
-        result += '\n';
         System.out.println(result);
         return result;
     }

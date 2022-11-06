@@ -20,7 +20,7 @@ class PrintConsoleTest {
         //when
         String result = PrintConsole.printResult(resultComputer);
         //then
-        assertThat(result).isEqualTo("1스트라이크"+'\n');
+        assertThat(result).isEqualTo("1스트라이크");
     }
 
     @Test
@@ -35,7 +35,7 @@ class PrintConsoleTest {
         //when
         String result = PrintConsole.printResult(resultComputer);
         //then
-        assertThat(result).isEqualTo("1볼"+'\n');
+        assertThat(result).isEqualTo("1볼");
     }
 
     @Test
@@ -51,7 +51,7 @@ class PrintConsoleTest {
         //when
         String result = PrintConsole.printResult(resultComputer);
         //then
-        assertThat(result).isEqualTo("1볼 1스트라이크"+'\n');
+        assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -68,7 +68,7 @@ class PrintConsoleTest {
         //when
         String result = PrintConsole.printResult(resultComputer);
         //then
-        assertThat(result).isEqualTo("3스트라이크"+'\n');
+        assertThat(result).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -81,6 +81,6 @@ class PrintConsoleTest {
         //when
         String result = PrintConsole.printResult(resultComputer);
         //then
-        assertThat(result).isEqualTo("낫싱"+'\n');
+        assertThat(result).isEqualTo("낫싱");
     }
 }
