@@ -22,7 +22,7 @@ public class GameCycle {
         System.out.print("숫자를 입력해주세요 : ");
     }
     public String inputNumber(){
-        return Console.readLine();
+        return Console.readLine().trim();
     }
     public boolean numberLengthIsThree(String number) {
         if (number.length() != 3) throw new IllegalArgumentException();
@@ -96,7 +96,6 @@ public class GameCycle {
     }
     public void play(){
         String answer = drawNumber();
-        output(answer);
         while(true){
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);
