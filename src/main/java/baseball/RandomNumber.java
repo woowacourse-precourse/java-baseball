@@ -12,6 +12,7 @@ public class RandomNumber {
         this.firstDigit = generateFirstRandomDigit();
         this.secondDigit = generateSecondRandomDigit();
         this.thirdDigit = generateThirdRandomDigit();
+        this.fullNumber = combineEachDigit();
     }
 
     public int generateFirstRandomDigit() {
