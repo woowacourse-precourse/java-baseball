@@ -8,9 +8,11 @@ public class Round {
     private static final int NUMBER_OF_HIDDEN_NUMBER = 3;
     private static final int MIN_HIDDEN_NUMBER = 1;
     private static final int MAX_HIDDEN_NUMBER = 9;
+
     private List<Integer> hiddenNumberList;
 
     public Round() {
+        this.hiddenNumberList = new ArrayList<>();
     }
     public Round(List<Integer> testHiddenNumberList) {
         this.hiddenNumberList = testHiddenNumberList;
@@ -43,8 +45,4 @@ public class Round {
         } while (numberList.contains(randomNumber));
         numberList.add(randomNumber);
     }
-
-    /*public boolean wantAnotherRound(){
-
-    }*/
 }
