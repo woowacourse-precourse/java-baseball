@@ -9,7 +9,7 @@ public class Computer {
     private static String randomNumber;
 
     public static void setRandomNumber(String number) {
-        randomNumber = randomNumber;
+        randomNumber = number;
     }
 
     public static String getRandomNumber() {

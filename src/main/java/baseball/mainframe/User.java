@@ -5,6 +5,11 @@ public class User {
     private static String userInputValue;
     private static String userRestartInputValue;
 
+    public User() {
+        userInputValue = "";
+        userRestartInputValue = "";
+    }
+
     public static void setUserInputValue(String userInput) {
         userInputValue = userInput;
     }
