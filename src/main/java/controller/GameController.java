@@ -2,6 +2,7 @@ package controller;
 
 import model.Computer;
 import model.User;
+import utill.ConstantVO;
 import utill.UseFunc;
 
 public class GameController {
@@ -57,11 +58,6 @@ public class GameController {
         return (new GameController());
     }
 
-    final int NUM_RESTART_GAME = 1;
-    final int NUM_END_GAME = 2;
-
-    final String MSG_GAME_END = "게임종료";
-
 
     public boolean isEndgameInputOfUser() {
         int numInputOfUser = user.getNumProceedUser();
@@ -73,15 +69,15 @@ public class GameController {
     }
 
     private boolean isEndGameUserWant(int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_END_GAME)) {
-            System.out.println(MSG_GAME_END);
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, ConstantVO.NUM_END_GAME)) {
+            System.out.println(ConstantVO.MSG_GAME_END);
             return true;
         }
         return false;
     }
 
     private boolean isReGameUserWant(int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_RESTART_GAME)) {
+        if (UseFunc.isEqualIntOfTwo(numInputOfUser, ConstantVO.NUM_RESTART_GAME)) {
             reStartGame();
             return true;
         }

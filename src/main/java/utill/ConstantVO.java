@@ -29,4 +29,8 @@ public class ConstantVO {
     final public static String MSG_THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final public static String MSG_CHOICE_PLAY_MORE_GAMES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final public static String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+
+    // GameController class 상수
+
+    final public static String MSG_GAME_END = "게임종료";
 }
