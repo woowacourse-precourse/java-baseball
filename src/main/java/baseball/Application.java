@@ -2,6 +2,16 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        play();
+        isNewGame();
+    }
+    public static void play(){
+
+    }
+    public static void guess(){
+
+    }
+    public static void isNewGame(){
+
     }
 }
