@@ -1,4 +1,4 @@
-package baseball.game.condition.input;
+package baseball.game.condition;
 
 import baseball.validation.condition.Condition;
 
