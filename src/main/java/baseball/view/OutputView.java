@@ -4,7 +4,7 @@ import baseball.dto.Result;
 
 import static baseball.Const.THREE_STRIKE;
 
-public class PrintGameResult {
+public class OutputView {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
