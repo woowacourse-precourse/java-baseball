@@ -1,20 +1,13 @@
 package view;
 
 import controller.GameController;
-import model.UseFunc;
 
 public class GameView {
 
     final String MSG_FIRST = "숫자 야구 게임을 시작합니다.";
     final String MSG_THREE_STRIKE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final String MSG_CHOICE_PLAY_MORE_GAMES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final String MSG_GAME_END = "게임종료";
     final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
-    final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
-    final String MSG_INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
-
-    final int NUM_RESTART_GAME = 1;
-    final int NUM_END_GAME = 2;
 
     public void run() {
         GameController gameController = GameController.getInstanceGameController();
@@ -45,25 +38,4 @@ public class GameView {
             gameController.initCntStrikeBallOfComputer();
         }
     }
-
-    public void isValidUser(int numInput) {
-        isValidRightNum(numInput);
-        isValidPositiveInt(numInput);
-    }
-
-    private void isValidPositiveInt(int num) {
-        if (num > 0) {
-            return;
-        }
-        throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
-    }
-
-    private void isValidRightNum(int num) {
-        if (UseFunc.isEqualIntOfTwo(num, NUM_RESTART_GAME) || UseFunc.isEqualIntOfTwo(num,
-            NUM_END_GAME)) {
-            return;
-        }
-        throw new IllegalArgumentException(MSG_INPUT_ONE_OR_TWO);
-    }
-
 }
