@@ -2,9 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import org.assertj.core.api.Assertions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -16,21 +16,19 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        playGame();
+        run();
     }
 
-    private static void playGame() {
+    private static void run() {
 
         printStart();
         List<Integer> computer = getTargetNumbers();
 
         while (true) {
-            String input = setInput();
-            boolean error = checkUserError(input);
 
-            if (error) {
-                break;
-            }
+            String input = setInput();
+
+            runException(input);
 
             List<Integer> user = getToEnterNumbers(input);
             List<Integer> counts = getEachCounts(computer, user);
@@ -118,36 +116,39 @@ public class Application {
         int strikeCount = counts.get(STRIKE);
         int ballCount = counts.get(BALL);
 
+        String log = "";
+
         if (ballCount > nothing && strikeCount > nothing) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            log = ballCount + "볼 " + strikeCount + "스트라이크";
         } else if (ballCount > nothing) {
-            System.out.println(ballCount + "볼");
+            log = ballCount + "볼";
         } else if (strikeCount > nothing) {
-            System.out.println(strikeCount + "스트라이크");
+            log = strikeCount + "스트라이크";
         } else if (ballCount == nothing && strikeCount == nothing) {
-            System.out.println("낫싱");
+            log = "낫싱";
         }
 
+        System.out.println(log);
         return;
     }
 
     private static void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     private static void printAgainQuestion() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static boolean checkUserError(String input) {
+    private static void runException(String input) {
 
         System.out.println(input);
 
-        if(checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
-            return true;
+        if (checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
+            throw new IllegalArgumentException();
         }
-
-        return false;
     }
+
     private static boolean checkRangeError(String input) {
 
         int min = 1;
@@ -165,6 +166,7 @@ public class Application {
         }
         return false;
     }
+
     private static boolean checkSizeError(String input) {
         int size = input.length();
 
@@ -174,6 +176,7 @@ public class Application {
 
         return false;
     }
+
     private static boolean checkVisitedError(String input) {
         List<Integer> visitedList = new ArrayList<>();
 
@@ -205,9 +208,19 @@ public class Application {
 
     private static boolean checkAgainGame() {
         int againGame = 1;
-        int toBeContinue = Integer.valueOf(Console.readLine());
+        int toBeContinue;
+
+        try {
+            toBeContinue = Integer.valueOf(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
 
         System.out.println(toBeContinue);
+
+        if (toBeContinue != 1 && toBeContinue != 2) {
+            throw new IllegalArgumentException();
+        }
 
         boolean again = false;
 
