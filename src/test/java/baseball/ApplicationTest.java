@@ -105,5 +105,14 @@ class ApplicationTest extends NsTest {
         int ball = Application.calculationBall(computer,user);
         assertThat(ball).isEqualTo(2);
     }
+    @Test
+    @DisplayName(" 3 볼 경우 ")
+    public void threeBallScenario() throws Exception{
+        List<Integer> computer  = List.of(6,4,5);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculationBall(computer,user);
+        assertThat(ball).isEqualTo(3);
+    }
 
 }
