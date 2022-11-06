@@ -1,6 +1,6 @@
-package baseball.util;
+package baseball.domain;
 
-import baseball.domain.Game;
+import baseball.util.GamePrinter;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 

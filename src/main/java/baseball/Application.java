@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.domain.Baseball;
 import baseball.domain.Game;
-import baseball.util.GameManager;
+import baseball.domain.GameManager;
 
 public class Application {
 

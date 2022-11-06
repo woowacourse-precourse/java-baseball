@@ -1,9 +1,9 @@
-package baseball.util;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.util.GameManager.ExecuteStatus;
+import baseball.domain.GameManager.ExecuteStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
