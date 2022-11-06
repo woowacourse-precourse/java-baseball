@@ -34,7 +34,7 @@ public class Application {
                 ballCount = countBall(userNumber, randomNumber);
                 System.out.println(strikeCount + " " + ballCount);
 
-                boolean nothing = true; // 낫싱을 체크하는 메소드 호출
+                boolean nothing = isNothing(strikeCount, ballCount);
 
                 // TODO : 결과 출력에 대해 추가적인 메소드로 분리해야 할 듯!
                 if (nothing) {
@@ -106,5 +106,9 @@ public class Application {
         }
 
         return count;
+    }
+
+    public static boolean isNothing(int strikeCount, int ballCount) {
+        return strikeCount == 0 && ballCount == 0;
     }
 }
