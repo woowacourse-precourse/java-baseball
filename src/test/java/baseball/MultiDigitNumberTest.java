@@ -95,4 +95,19 @@ public class MultiDigitNumberTest {
         }
     }
 
+    @Nested
+    @DisplayName("getCompareResult 메서드는")
+    class describe_getCompareResult{
+
+        @Test
+        @DisplayName("비교 결과를 담은 CompareResult 객체를 반환한다.")
+        void it_returns_CompareResult(){
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(321)).toString()).isEqualTo("1스트라이크 2볼");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(145)).toString()).isEqualTo("1스트라이크");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(561)).toString()).isEqualTo("1볼");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(847)).toString()).isEqualTo("낫싱");
+        }
+    }
 }

@@ -64,5 +64,14 @@ public class MultiDigitNumber {
             }).count();
     }
 
+    /**
+     * @param otherMultiDigitNumber
+     * @return 두 MultiDigitNumber 간의 비교 결과를 CompareResult 객체에 담아 반환
+     */
+    public NumberCompareResult getCompareResult(MultiDigitNumber otherMultiDigitNumber){
+        int strike = getStrike(otherMultiDigitNumber);
+        int ball = getBall(otherMultiDigitNumber);
 
+        return new NumberCompareResult(strike,ball);
+    }
 }
