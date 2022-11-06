@@ -10,7 +10,6 @@ public class GameView {
     final String MSG_CHOICE_PLAY_MORE_GAMES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final String MSG_GAME_END = "게임종료";
     final String MSG_ENTER_NUMBER = "숫자를 입력해주세요 : ";
-    final String MSG_INPUT_NUM = "숫자를 입력해주세요.";
     final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
     final String MSG_INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
@@ -38,7 +37,7 @@ public class GameView {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
 
-                int numInputOfUser = parseIntFromStr(UseFunc.getString());
+                int numInputOfUser = UseFunc.parseIntFromStr(UseFunc.getString());
                 isValidUser(numInputOfUser);
                 if (isEndgameInputOfUser(gameController, numInputOfUser)) {
                     break;
@@ -71,14 +70,6 @@ public class GameView {
             return true;
         }
         return false;
-    }
-
-    private int parseIntFromStr(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(MSG_INPUT_NUM);
-        }
     }
 
 

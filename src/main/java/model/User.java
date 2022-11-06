@@ -3,7 +3,6 @@ package model;
 public class User {
 
     final String MSG_INPUT_NUM_INDIVIDUALLY = "각각의 다른 숫자를 입력해주세요.";
-    final String MSG_INPUT_NUM = "숫자를 입력해주세요.";
 
     final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
     final String MSG_INPUT_LENGTH_ONLY_THREE = "입력의 길이는 \"3\" 만 가능합니다.";
@@ -20,7 +19,7 @@ public class User {
 
     private int getInputAllRightNumOfUser() {
         String strInput = UseFunc.getString();
-        int numInput = parseIntFromStr(strInput);
+        int numInput = UseFunc.parseIntFromStr(strInput);
         isValidUser(strInput, numInput);
         return numInput;
     }
@@ -29,15 +28,6 @@ public class User {
         isValidPositiveInt(numInput);
         isValidLength(strInput);
         isValidNumOfIndividually(strInput);
-    }
-
-
-    private int parseIntFromStr(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(MSG_INPUT_NUM);
-        }
     }
 
 
