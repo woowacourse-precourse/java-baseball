@@ -11,12 +11,9 @@ public class Application {
     }
     public static int countBall(int playerNumber, List<Integer> randomNumber, int i) {
         int ball = 0;
-        for (int j=0;j<3;++j) {
-            if (i == j)
-                continue;
-            else if (playerNumber == randomNumber.get(j))
-                ball = 1;
-        }
+        for (int j=0;j<3;++j)
+            if (i != j && playerNumber == randomNumber.get(j))
+                ball += 1;
         return ball;
     }
     public static boolean printBallStrike(List<Integer> countBallStrike) {
@@ -70,11 +67,20 @@ public class Application {
             end = compareNumber(inputNumber(), randomNumber);
         }
     }
+    public static boolean restartQuestion() {
+        boolean restart = false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String number = Console.readLine();
+        if (number.charAt(0) == 1)
+            restart = true;
+        return restart;
+    }
     public static void playGame() {
         List<Integer> randomNumber = createRandomNumber();
         boolean end = false;
         inputGame(end, randomNumber);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        restartQuestion();
     }
     public static void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
