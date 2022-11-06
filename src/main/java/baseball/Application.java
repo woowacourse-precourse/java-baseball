@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -13,6 +11,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = getComputerNumber();
+        System.out.println("computerNumber = " + computerNumber.toString());
 
         while (true) {
             List<Integer> user = getUserNumber();
@@ -36,5 +35,21 @@ public class Application {
             }
         }
         return computerNumber;
+    }
+
+    private static Map<String, Integer> getBallStrikeCount(List<Integer> user, List<Integer> computer) {
+        Map<String, Integer> result = new HashMap<>();
+        result.put("볼", 0);
+        result.put("스트라이크", 0);
+
+        for (int index = 0; index < user.size(); index++) {
+            if (computer.contains(user.get(index)) && user.get(index) == computer.get(index)) {
+                result.put("스트라이크", result.get("스트라이크") + 1);
+            } else if (computer.contains(user.get(index))) {
+                result.put("볼", result.get("볼") + 1);
+            }
+        }
+
+        return result;
     }
 }
