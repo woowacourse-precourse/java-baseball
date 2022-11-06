@@ -14,39 +14,40 @@ public class GameController {
     public void runGame(){
     }
 
-    private void generateComputer(){
+    void generateComputer(){
     }
 
-    private void generateGameStatus(){
+    void generateGameStatus(){
     }
 
-    private void startGame(){
+    void startGame(){
     }
 
-    private void clearScore(){
+    void clearScore(){
     }
 
-    private void getPlayerNumbers(){
-    }
-
-    private void matchGame(){
-    }
-
-    private void showPlayersScore(){
-    }
-
-    private boolean isThreeStrike(){
-        return false;
-    }
-
-    private void whatToDoNext(){
-    }
-
-    private String getPlayersOpinion(){
+    String getPlayerNumbers(){
         return "";
     }
 
-    private void setGameStatus(String opinion){
+    void matchGame(){
+    }
+
+    void showPlayersScore(){
+    }
+
+    boolean isThreeStrike(){
+        return false;
+    }
+
+    void whatToDoNext(){
+    }
+
+    String getPlayersOpinion(){
+        return "";
+    }
+
+    void setGameStatus(String opinion){
 
     }
 }
