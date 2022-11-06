@@ -8,26 +8,24 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String computerNumber = "";
-
-        Set<Integer> userInput = new HashSet<>();
+//        String computerNumber = "";
 
         int total = 0;
         int strike = 0;
 
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        for (int item : computer) {
-            String numberStr = Integer.toString(item);
-            computerNumber += numberStr; // 'abc'
-        }
+//        List<Integer> computer = new ArrayList<>();
+//        while (computer.size() < 3) {
+//            int randomNumber = Randoms.pickNumberInRange(1, 9);
+//            if (!computer.contains(randomNumber)) {
+//                computer.add(randomNumber);
+//            }
+//        }
+//
+//        for (int item : computer) {
+//            String numberStr = Integer.toString(item);
+//            computerNumber += numberStr; // 'abc'
+//        }
 
 
 //        while (true) {
@@ -46,9 +44,10 @@ public class Application {
 //        }
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("컴퓨터 숫자는 : " + computerNumber);
+        String computerNumber = computerRandomNumber();
 
         while (true){ // 3 indent
+            System.out.println("컴퓨터 숫자는 : " + computerNumber);
             System.out.print("숫자를 입력해주세요 : ");
             String userNumber = Console.readLine();
             /// ball 계산은 total 에서 strike 빼면 될듯? 예를들어 2개가 겹친다 치고 스트라이크가 1 이면 나머지 1이 볼이된다.
@@ -116,4 +115,24 @@ public class Application {
         }
 
     }
+
+    public static String computerRandomNumber()  {
+        List<Integer> computer = new ArrayList<>();
+        String computerNumber = "";
+
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        for (int item : computer) {
+            String numberStr = Integer.toString(item);
+            computerNumber += numberStr; // 'abc'
+        }
+        return  computerNumber;
+    }
+
 }
+
