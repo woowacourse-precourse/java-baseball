@@ -18,18 +18,12 @@ public class Game {
 		int ballCount = 0;
 		int strikeCount = 0;
 
-		System.out.println("숫자 야구 게임을 시작합니다.");
 		do {
 			System.out.print("숫자를 입력해주세요 : ");
 			String input = Console.readLine();
 			validateAnswer(input);
 
-			String[] splitInput = input.split("");
-
-			List<Integer> hitter = new ArrayList<>();
-			for (String s : splitInput) {
-				hitter.add(Integer.parseInt(s));
-			}
+			List<Integer> hitter = getHitterUsingInput(input);
 
 			ballCount = getBallCount(pitcher, hitter);
 			strikeCount = getStrikeCount(pitcher, hitter);
@@ -42,6 +36,18 @@ public class Game {
 		validateOneOrTwo(restartOrEndInput);
 
 		return Integer.parseInt(restartOrEndInput);
+	}
+
+	//사용자에게 입력받은 문자열을 바탕으로, 3개의 요소가 들어있는 List로 바꾸어 리턴해주는 함수
+	private List<Integer> getHitterUsingInput(String input) {
+		List<Integer> hitter = new ArrayList<>();
+		String[] splitInput = input.split("");
+
+		for (String digitStr : splitInput) {
+			hitter.add(Integer.parseInt(digitStr));
+		}
+
+		return hitter;
 	}
 
 
@@ -57,7 +63,7 @@ public class Game {
 		return ball;
 	}
 
-	private/*public*/ int getStrikeCount(List<Integer> pitcher, List<Integer> hitter) {
+	private int getStrikeCount(List<Integer> pitcher, List<Integer> hitter) {
 		int strike = 0;
 		for (int i = 0; i < 3; i++) {
 			if (pitcher.get(i) == hitter.get(i)) {
