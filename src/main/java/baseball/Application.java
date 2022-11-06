@@ -27,10 +27,12 @@ public class Application {
     }
 
     static void playGame() {
-
-        throwBall();
-        ballCount();
-        message.ballCountMessage(player.getBall(), player.getStrike());
+        do {
+            throwBall();
+            ballCount();
+            message.ballCountMessage(player.getBall(), player.getStrike());
+        } while (!strikeOut());
+        message.endGameMessage();
     }
 
     static void throwBall() {
@@ -52,5 +54,12 @@ public class Application {
                 player.countBall();
             }
         }
+    }
+
+    static boolean strikeOut() {
+        if (player.getStrike() == 3) {
+            return true;
+        }
+        return false;
     }
 }

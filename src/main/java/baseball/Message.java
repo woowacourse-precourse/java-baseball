@@ -28,4 +28,8 @@ public class Message {
         }
         System.out.println(countMessage);
     }
+
+    public void endGameMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
