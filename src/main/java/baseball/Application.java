@@ -1,10 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +13,7 @@ public class Application {
     }
 
     public static boolean startGame() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int replayFlag;
-        String userInput;
         List<Integer> answer;
         answer = makeRandomNum();
 
@@ -25,11 +21,7 @@ public class Application {
         while (true) {
             List<Integer> guess = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
-            try {
-                userInput = br.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            String userInput = Console.readLine();
             if (inputError(userInput)) {
                 throw new IllegalArgumentException();
             }
@@ -142,20 +134,13 @@ public class Application {
     }
 
     public static int replay() {
-        BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
+        String replayInput = Console.readLine();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String replayInput;
-        try {
-            replayInput = br2.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         if (replayInput.equals("1")) {
             return 1;
         } else if (replayInput.equals("2"))
             return 2;
         else
             throw new IllegalArgumentException();
-
     }
 }
