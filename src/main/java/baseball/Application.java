@@ -33,8 +33,20 @@ public class Application {
         int strikeCount = getStrikeCount(computerNumber, userNumber);
         int ballCount = sameDigitCount - strikeCount;
 
-        result.put(BALL, ballCount);
-        result.put(STRIKE, strikeCount);
+        if (isNothing(sameDigitCount)) {
+            GameTextPrinter.printNoting(NOTING);
+        }
+
+        if (!isNothing(sameDigitCount)) {
+            result.put(BALL, ballCount);
+            result.put(STRIKE, strikeCount);
+
+            GameTextPrinter.printCompareResult(result);
+        }
+    }
+
+    private boolean isNothing(int sameDigitCount) {
+        return Objects.equals(sameDigitCount, 0);
     }
 
     private int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
