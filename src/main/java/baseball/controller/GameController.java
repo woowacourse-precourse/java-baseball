@@ -11,12 +11,24 @@ public class GameController {
     public GameController() {
     }
 
-    public void setGame() {
+    private void setGame() {
         gameService.initGame(DIGIT, START_RANGE, END_RANGE);
+    }
+
+    private void startGame() throws IllegalArgumentException {
+        gameService.startGame();
+    }
+
+    private void endGame() throws IllegalArgumentException {
+        if (gameService.isReplay()) {
+            run();
+        }
+        System.out.println("게임 종료");
     }
 
     public void run() throws IllegalArgumentException {
         setGame();
-        gameService.startGame();
+        startGame();
+        endGame();
     }
 }
