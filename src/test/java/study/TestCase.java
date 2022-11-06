@@ -64,7 +64,7 @@ public class TestCase {
 
     @Test
     void 플레이어의_입력이_숫자로만_구성되어_있지_않다면_예외_발생() {
-        Number playerNumber = new PlayerNum();
+        PlayerNum playerNumber = new PlayerNum();
         assertThatThrownBy(() -> playerNumber.verifyInput("안녕3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
