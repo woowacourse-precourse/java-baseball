@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.facade.GameFacade;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;

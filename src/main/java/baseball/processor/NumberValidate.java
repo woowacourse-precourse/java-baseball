@@ -1,4 +1,4 @@
-package baseball;
+package baseball.processor;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +15,7 @@ public class NumberValidate {
      * @param inputNumber - 유저의 입력 숫자 리스트
      * @param size - 현재게임의 숫자 사이즈
      */
-    void validation(List<Integer> inputNumber, Integer size){
+    public void validation(List<Integer> inputNumber, Integer size){
         if (inputNumber.size() != size) throw new IllegalArgumentException(size+"자리 숫자만 입력 가능합니다.");
 
         Set<Integer> inputNumberSet = new HashSet<>(inputNumber);

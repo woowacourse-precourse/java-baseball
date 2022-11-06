@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.processor.GameInitProcessor;
+import baseball.processor.GameInitProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
