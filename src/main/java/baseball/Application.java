@@ -30,10 +30,9 @@ public class Application {
 
     static void gameStart() {
         System.out.println(START_MESSAGE);
-        int[] computerNumber;
+        int[] computerNumber = initializeComputerNumber();
         boolean playBaseball = true;
         while (playBaseball) {
-            computerNumber = initializeComputerNumber();
             String stringUserInput = getUserInput(InputType.BASEBALL_NUMBER);
             int[] userInput;
             try {
