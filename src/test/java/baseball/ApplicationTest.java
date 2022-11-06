@@ -30,6 +30,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
+    class compareUserInputAndComputerSelect_Test{
+        @Nested
+        class success_case{
+            @Test
+            void case1() {
+                int userInput = 425;
+                Application.computerDigitValue = List.of(5, 1, 2);
+                List<Integer> result = List.of(1, 1, 0);
+                assertThat(result).isEqualTo(Application.compareUserInputAndComputerSelect(userInput));
+            }
+        }
+    }
+
+    @Nested
     class getScore_Test{
         @Nested
         class success_case{
