@@ -6,24 +6,29 @@ import baseball.domain.Hint.Hint;
 import baseball.domain.Hint.HintString;
 import baseball.domain.Player.Player;
 import baseball.domain.Validation.Ball;
+import baseball.domain.Validation.Restart;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     private final Computer computer;
     private final Player player;
     private boolean isPlaying;
+    private boolean isStartRequested;
 
     public BaseballGame() {
         computer = new Computer();
         player = new Player();
         isPlaying = true;
+        isStartRequested = true;
     }
 
     public void start() {
-        computer.generateRandomNumbers();
-        System.out.println(Game.START.getContent());
-        play();
-        //사용자 restart 입력 (validateRestart) -> 게임 재시작 여부 판별
+        while (isStartRequested) {
+            computer.generateRandomNumbers();
+            System.out.println(Game.START.getContent());
+            play();
+            checkGameRestart();
+        }
     }
 
     private void play() {
@@ -51,9 +56,14 @@ public class BaseballGame {
 
     private void checkPlayerWin(String hint) {
         if (hint.equals(HintString.STRIKE.print(3))) {
-            System.out.printf((Game.END.getContent()) + "\n", Ball.COUNT.getValue());
+            System.out.printf(Game.END.getContent() + "\n", Ball.COUNT.getValue());
             isPlaying = false;
         }
+    }
+
+    private void checkGameRestart() {
+        System.out.printf(Game.RESTART.getContent() + "\n", Restart.RESTART.getValue(), Restart.END.getValue());
+        isStartRequested = player.readRestartInput(Console.readLine());
     }
 
 }

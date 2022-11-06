@@ -17,6 +17,8 @@ public class Computer {
     }
 
     public void generateRandomNumbers() {
+        ballNumbers.clear();
+
         int number;
         while (ballNumbers.size() != 3) {
             number = Randoms.pickNumberInRange(Ball.MIN.getValue(), Ball.MAX.getValue());
