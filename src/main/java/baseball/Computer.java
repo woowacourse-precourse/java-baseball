@@ -18,6 +18,9 @@ public class Computer {
     }
 
     public List<Integer> returnResult(BaseballNumber guessNumber) { // TODO 고민 Point : 반환타입 List가 맞을까, []가 맞을까
+        if (answer == null) {
+            throw new IllegalStateException("Computer에 정답이 저장되어 있지 않습니다");
+        }
         return guessNumber.match(answer);
     }
 
