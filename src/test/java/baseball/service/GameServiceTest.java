@@ -10,6 +10,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GameServiceTest {
 
@@ -37,5 +39,14 @@ class GameServiceTest {
         randomBallNumber.createRandomNumber();
         gameService.clearRandomBallNumber();
         assertThat(randomBallNumber.randomNumbers.size()).isSameAs(0);
+    }
+
+    @Test
+    void 예외_테스트() {
+        String three = "3";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> gameService.isNotRestartedAndQuitedGame(three));
+        String message = exception.getMessage();
+        assertEquals("1 또는 2를 입력해주세요", message);
     }
 }
