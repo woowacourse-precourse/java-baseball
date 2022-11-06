@@ -27,7 +27,7 @@ public class BaseballGameConsole {
 
     private void playSingleGame(Pitcher pitcher) {
         boolean matchedAllNumber = false;
-        String randomNumber = batter.readyRandomNumber();
+        String randomNumber = batter.readyToHitNumberBall();
 
         while (!matchedAllNumber) {
             System.out.print("숫자를 입력해주세요. : ");

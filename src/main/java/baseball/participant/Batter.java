@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Batter {
 
-    public String readyRandomNumber() {
+    public String readyToHitNumberBall() {
         List<Integer> randomDigits = new ArrayList<>();
         while (randomDigits.size() != 3) {
             readyRandomDigit(randomDigits);

@@ -16,7 +16,7 @@ class BatterTest {
         Batter batter = new Batter();
 
         // when
-        String randomNumber = batter.readyRandomNumber();
+        String randomNumber = batter.readyToHitNumberBall();
         Set<String> set = Arrays.stream(randomNumber.split("")).collect(Collectors.toSet());
 
         // then
