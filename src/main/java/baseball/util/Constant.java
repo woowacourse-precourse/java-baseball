@@ -7,5 +7,5 @@ public class Constant {
     public static final int NUM_LENGTH = 3;
 
     public static final int ANSWER_LENGTH = 3;
-
+    public static final String CONSIST_OF_NUM = "^[1-9]*$";
 }
