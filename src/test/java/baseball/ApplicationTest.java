@@ -3,10 +3,13 @@ package baseball;
 import baseball.domain.Game;
 import baseball.domain.Player;
 import baseball.domain.Validator;
+import baseball.domain.game.baseBall.ConcreteGameBaseBall;
 import baseball.view.UserInput;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -14,12 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    Game game;
+    ConcreteGameBaseBall game;
     Player player;
 
     @BeforeEach
     public void beforeEach() {
-        game = new Game();
+        game = new ConcreteGameBaseBall();
         player = new Player();
     }
 
@@ -102,6 +105,10 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

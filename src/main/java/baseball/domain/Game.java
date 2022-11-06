@@ -1,13 +1,11 @@
 package baseball.domain;
 
-public class Game {
-    public String generateRandomNumber() {
+import baseball.view.UserInput;
 
-    }
+public interface Game {
 /**
  * RandomNumber 생성
  * */
-
-
-
+    void startGame(UserInput input);
+    void endGame();
 }
