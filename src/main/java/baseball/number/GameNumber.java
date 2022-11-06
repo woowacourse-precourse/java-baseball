@@ -2,8 +2,6 @@ package baseball.number;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class GameNumber {
@@ -51,15 +49,16 @@ public class GameNumber {
     }
 
     public void generateRandomNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        String computerNumber = "";
+        while (computerNumber.length() < NUMBER_LENGTH) {
+            String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+                computerNumber = computerNumber.concat(randomNumber);
             }
         }
 
-        this.gameNumber = computerNumber.toString();
+        this.gameNumber = computerNumber;
+
     }
 
     public String getGameNumber() {
