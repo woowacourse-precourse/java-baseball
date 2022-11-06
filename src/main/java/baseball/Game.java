@@ -37,7 +37,7 @@ public class Game {
             System.out.println(NOTHING_MESSAGE);
             return false;
         } else {
-            System.out.println(ball + BALL_MESSAGE + strike + STRIKE_MESSAGE);
+            System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
             return false;
         }
     }
