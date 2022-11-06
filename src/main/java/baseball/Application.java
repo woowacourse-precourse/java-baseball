@@ -184,18 +184,21 @@ public class Application {
     static void printResult(int ball, int strike) {
         boolean hasBall = false;
         boolean hasStrike = false;
+        StringBuilder result = new StringBuilder();
         if (ball > 0) {
-            System.out.print(ball + BALL_STRING);
+            result.append(ball + BALL_STRING);
             hasBall = true;
         }
-        if (hasBall) {
-            System.out.print(" ");
-        }
         if (strike > 0) {
-            System.out.println(strike + STRIKE_STRING);
+            if (hasBall) {
+                result.append(" ");
+            }
+            result.append(strike + STRIKE_STRING);
         }
         if (!(hasBall || hasStrike)) {
             System.out.println(RESULT_NOTHING_MESSAGE);
+        } else if (hasBall || hasStrike) {
+            System.out.println(result);
         }
     }
 
