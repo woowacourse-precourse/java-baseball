@@ -8,7 +8,7 @@ import java.util.List;
 public class Application {
 
     private static ThreeNumber computerNumber;
-    private static ThreeNumber userNumber;
+    private static ThreeNumber playerNumber;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -33,12 +33,12 @@ public class Application {
     }
 
     private static void selectPlayerNumber() {
-        String user = Console.readLine();
-        selectPlayerNumberException(user);
-        int number1 = user.charAt(0) - '0';
-        int number2 = user.charAt(1) - '0';
-        int number3 = user.charAt(2) - '0';
-        userNumber = new ThreeNumber(number1, number2, number3);
+        String playerInput = Console.readLine();
+        selectPlayerNumberException(playerInput);
+        int number1 = playerInput.charAt(0) - '0';
+        int number2 = playerInput.charAt(1) - '0';
+        int number3 = playerInput.charAt(2) - '0';
+        playerNumber = new ThreeNumber(number1, number2, number3);
         determineAnswer();
     }
 
