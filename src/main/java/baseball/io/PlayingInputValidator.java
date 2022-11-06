@@ -19,10 +19,18 @@ public class PlayingInputValidator implements InputValidator{
     for (int i = 0; i < input.length(); i++) {
       isDigitBetween1to9(input.charAt(i));
     }
+    isAllUniqueDigit(input);
   }
 
   private void isDigitBetween1to9(char c) {
     if(!Character.isDigit(c)) throw new IllegalArgumentException();
   }
 
+  private void isAllUniqueDigit(String input) {
+    Set<Character> set = new HashSet();
+    for (char c : input.toCharArray()) {
+      set.add(c);
+    }
+    if(set.size() != input.length()) throw new IllegalArgumentException();
+  }
 }
