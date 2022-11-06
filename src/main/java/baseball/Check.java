@@ -1,15 +1,18 @@
 package baseball;
 
-import java.util.List;
-
 public class Check {
 
     private int strike;
     private int ball;
 
-    public void Check(List<Ball> computer, List<Ball> user) {
-        this.strike = 0;
-        this.ball = 0;
+    public Check(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    public static Check checkBallList(BallList computer, BallList user) {
+        int strike = 0;
+        int ball = 0;
 
         for (int i=0;i<3;i++) {
             if (computer.get(i).equals(user.get(i))) {
@@ -18,6 +21,8 @@ public class Check {
                 ball++;
             }
         }
+
+        return new Check(strike, ball);
     }
 
     public String resultMessage() {

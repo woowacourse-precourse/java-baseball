@@ -42,7 +42,7 @@ public class BallList {
             }
         }
 
-        return (BallList) ballList;
+        return new BallList(ballList);
     }
 
     private void checkOverlap(List<Ball> ballList) {
@@ -58,6 +58,13 @@ public class BallList {
         }
     }
 
+    public Ball get(int index) {
+        return ballList.get(index);
+    }
 
+    public boolean contains(Ball ball) {
+        return this.ballList.contains(ball);
+    }
+    
 
 }
