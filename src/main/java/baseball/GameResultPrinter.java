@@ -9,23 +9,21 @@ public class GameResultPrinter {
         if (isNothing(gameResult)) {
             return "낫싱";
         }
-        if (isStrike(gameResult)) {
-            return gameResult.get(0) + " 스트라이크";
-        }
-        if (isBall(gameResult)) {
+        if (isOnlyBall(gameResult)) {
             return gameResult.get(1) + " 볼";
         }
-        return "";
+        if (isOnlyStrike(gameResult)) {
+            return gameResult.get(0) + " 스트라이크";
+        }
+        return gameResult.get(1) + " 볼 " + gameResult.get(0) + " 스트라이크";
     }
 
-    private static boolean isBall(List<Integer> gameResult) {
-        return gameResult.get(1) != 0;
+    private static boolean isOnlyBall(List<Integer> gameResult) {
+        return gameResult.get(1) != 0 && gameResult.get(0) == 0;
     }
-
-    private static boolean isStrike(List<Integer> gameResult) {
-        return gameResult.get(0) != 0;
+    private static boolean isOnlyStrike(List<Integer> gameResult) {
+        return gameResult.get(0) != 0 && gameResult.get(1) == 0;
     }
-
     private static boolean isNothing(List<Integer> gameResult) {
         return gameResult.get(2) != 0;
     }
