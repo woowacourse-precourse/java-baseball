@@ -38,12 +38,12 @@ public class BaseballGameTest {
 
     @DisplayName("게임을 재시작할지 boolean 값을 반환한다.")
     @Test
-    void restart() {
+    void isRestart() {
         Assertions.assertAll(
-                () -> assertThatThrownBy(() -> baseballGame.restart(0)).isInstanceOf(IllegalArgumentException.class),
-                () -> assertThat(baseballGame.restart(1)).isTrue(),
-                () -> assertThat(baseballGame.restart(2)).isFalse(),
-                () -> assertThatThrownBy(() -> baseballGame.restart(3)).isInstanceOf(IllegalArgumentException.class)
+                () -> assertThatThrownBy(() -> baseballGame.isRestart(0)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThat(baseballGame.isRestart(1)).isTrue(),
+                () -> assertThat(baseballGame.isRestart(2)).isFalse(),
+                () -> assertThatThrownBy(() -> baseballGame.isRestart(3)).isInstanceOf(IllegalArgumentException.class)
         );
     }
 }

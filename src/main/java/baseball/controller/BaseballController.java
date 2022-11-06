@@ -9,7 +9,6 @@ import baseball.view.Output;
 
 public class BaseballController {
 
-    private static final int RESTART = 1;
     private final Input input;
 
     public BaseballController() {
@@ -21,7 +20,7 @@ public class BaseballController {
         Numbers numbers = new Numbers(randomGenerator.pickNumbers());
         BaseballGame baseballGame = new BaseballGame(numbers);
         play(baseballGame);
-        restart();
+        restart(baseballGame);
     }
 
     private void play(BaseballGame baseballGame) {
@@ -36,8 +35,8 @@ public class BaseballController {
         }
     }
 
-    private void restart() {
-        if (input.inputRestart() == RESTART) {
+    private void restart(BaseballGame baseballGame) {
+        if (baseballGame.isRestart(input.inputRestart())) {
             game();
         }
     }

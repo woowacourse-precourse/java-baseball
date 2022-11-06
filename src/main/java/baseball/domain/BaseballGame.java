@@ -19,7 +19,7 @@ public class BaseballGame {
         return hints.count(Hint.STRIKE) == RESULT_END;
     }
 
-    public boolean restart(int number) {
+    public boolean isRestart(int number) {
         validateRestartNumberBound(number);
         return number == RESTART;
     }
