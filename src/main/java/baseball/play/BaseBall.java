@@ -1,16 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
+import baseball.output.Guide;
 
 public class BaseBall {
 
     public void start() {
-        // 시작 문구 입력
-        printStartingGuide();
-        // 게임 시작
+        Guide.printStartingGuide();
         Game game = new Game();
         game.start();
     }

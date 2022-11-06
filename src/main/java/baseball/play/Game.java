@@ -15,9 +15,7 @@ public class Game {
             // 라운드 시작;
             Round round = new Round();
             round.run(computerNumberList);
-            // 재시작 가이드;
-            printRestartGuide();
-            // 재시작 옵션
+            Guide.printRestartGuide();
             isRestart = getRestartOptionAndUpdateIsRestart();
         } while (isRestart);
     }

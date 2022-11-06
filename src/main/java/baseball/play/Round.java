@@ -15,8 +15,7 @@ public class Round {
             // 결과 출력
             isCorrect = printResultAndUpdateIsCorrect(userNumberList, computerNumberList);
         }while(!isCorrect);
-        //게임 종료 가이드
-        printEndingGuide();
+        Guide.printEndingGuide();
     }
 
     public List<Integer> getUserNumberList() {
