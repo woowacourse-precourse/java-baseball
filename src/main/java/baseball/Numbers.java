@@ -19,6 +19,16 @@ public class Numbers {
         }
     }
 
+    public int check(int number, int index){
+        if(numbers.get(index)==number){
+            return 2;
+        }
+        if(numbers.contains(number)){
+            return 1;
+        }
+        return 0;
+    }
+
     public void add(int number) {
         if (!numbers.contains(number)) {
             numbers.add(number);
@@ -27,5 +37,9 @@ public class Numbers {
 
     public int size() {
         return numbers.size();
+    }
+
+    public int get(int index){
+        return numbers.get(index);
     }
 }
