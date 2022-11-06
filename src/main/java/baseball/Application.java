@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Map;
+
 public class Application {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -25,9 +27,10 @@ public class Application {
                 user = new User();
                 result = Result.NOTHING;
 
-                // TODO: 3. User 생성, User의 숫자 입력 -> 유효성 검사를 자체적으로 시행, 유효하지 않다면 예외 발생 후 종료
-
-                // TODO: 4. Computer와 User의 숫자를 가지고 게임 결과 생성
+                // TODO: 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
+                while (result != Result.THREESTRIKE) {
+                    // TODO: 4. Computer와 User의 숫자를 가지고 게임 결과 생성
+                }
 
                 // TODO: 5. 게임 결과에 따라 사용자 입력을 받거나, 3으로 이동
 
