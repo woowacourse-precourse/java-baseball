@@ -27,7 +27,9 @@
     - [x] 2(종료)를 선택하면 종료
 ### 프로그램 구조
 * Application
-    * 
+    * main
+* GameOutput
+    * printResult
 * Comparison
     * compare
     * locate
@@ -45,4 +47,3 @@
 * 예외_테스트_길이
 * 예외_테스트_범위
 * 예외_테스트_중복
-    
