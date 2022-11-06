@@ -19,4 +19,8 @@ public class AnswerRepository {
 	public void save(List<Integer> correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
+
+	public List<Integer> getCorrectAnswer() {
+		return correctAnswer;
+	}
 }

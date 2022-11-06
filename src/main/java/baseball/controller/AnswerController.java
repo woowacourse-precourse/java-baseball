@@ -27,8 +27,10 @@ public class AnswerController {
 		answerService.setRandomNumbers();
 	}
 
-	public void getInputAnswer() {
+	public String getInputAnswer() {
 		OutputView.alertInputAnswer();
-		answerService.validateInputAnswer(InputView.getInput());
+		String input = InputView.getInput();
+		answerService.validateInputAnswer(input);
+		return input;
 	}
 }
