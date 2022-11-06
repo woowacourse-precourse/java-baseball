@@ -18,7 +18,7 @@ public class User {
     }
 
     public void isValidInput(String input) throws IllegalArgumentException {
-        if (!isDigitInput(input))
+        if (!(isDigitInput(input) && isInputLengthThree(input)))
             throw new IllegalArgumentException();
     }
 
@@ -27,6 +27,12 @@ public class User {
             if (!Character.isDigit(input.charAt(i)))
                 throw new IllegalArgumentException();
         }
+        return true;
+    }
+
+    private boolean isInputLengthThree(String input) throws IllegalArgumentException {
+        if (input.length() != CNT_NUMBER)
+            throw new IllegalArgumentException();
         return true;
     }
 }
