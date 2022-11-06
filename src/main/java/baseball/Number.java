@@ -12,11 +12,9 @@ public class Number {
     private static final int SIZE_OF_NUMBER = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    private static final boolean ERROR = false;
+    private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
 
     private int[] digits;
-
-    public Number() {}
 
     public int[] getDigits(){
         return this.digits;
@@ -32,17 +30,6 @@ public class Number {
         this.digits = convertIntegerSetToIntArray(randomNumberList);
     }
 
-    private void setDigits(String inputNumber) {
-
-        if (!isCorrectInput(inputNumber)){
-            throw new IllegalArgumentException();
-        }
-
-        this.digits = Arrays.stream(inputNumber.split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-    }
-
     public int getRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
@@ -54,16 +41,24 @@ public class Number {
     }
 
     public void inputPrediction() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_SENTENCE);
         String prediction = Console.readLine();
         setDigits(prediction);
     }
 
-    private boolean isCorrectInput(String inputNumber) {
-        if(!isCorrectLength(inputNumber) || !isCorrectRange(inputNumber) || !checkDuplicate(inputNumber)) {
-            return ERROR;
+    private void setDigits(String inputNumber) {
+
+        if (!isCorrectInput(inputNumber)){
+            throw new IllegalArgumentException();
         }
-        return true;
+
+        this.digits = Arrays.stream(inputNumber.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    private boolean isCorrectInput(String inputNumber) {
+        return isCorrectLength(inputNumber) && isCorrectRange(inputNumber) && checkDuplicate(inputNumber);
     }
 
     private boolean isCorrectRange(String inputNumber) {

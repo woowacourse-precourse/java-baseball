@@ -9,6 +9,12 @@ public class GameSystem {
     static final int MAX_COUNT = 3;
     static final int STRIKE_CASE = 2;
     static final int BALL_CASE = 1;
+    static final String START_SENTENCE = "숫자 야구 게임을 시작합니다.";
+    static final String END_SENTENCE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String KEEP_GOING_SENTENCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String BALL_SENTENCE = "볼 ";
+    static final String STRIKE_SENTENCE = "스트라이크";
+    static final String NOTHING_SENTENCE = "낫싱";
 
     private int strike = 0;
     private int ball = 0;
@@ -17,8 +23,6 @@ public class GameSystem {
     private int[] computerNumber;
     private int[] userNumber;
 
-    public GameSystem() {}
-
     public void startGame() {
 
         Number answerNumber = new Number();
@@ -26,7 +30,7 @@ public class GameSystem {
 
         initializeRandomNumber(answerNumber);
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_SENTENCE);
 
         while(!keepGoing) {
 
@@ -37,7 +41,7 @@ public class GameSystem {
             printResult();
 
             if(strike == MAX_COUNT) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(END_SENTENCE);
                 checkKeepGoing(answerNumber);
             }
         }
@@ -87,26 +91,25 @@ public class GameSystem {
 
     private void printResult() {
         if(strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING_SENTENCE);
         }
         StringBuilder ballAndStrikeSentence = new StringBuilder();
         if(ball > 0) {
-            ballAndStrikeSentence.append(ball).append("볼 ");
+            ballAndStrikeSentence.append(ball).append(BALL_SENTENCE);
         }
         if(strike > 0) {
-            ballAndStrikeSentence.append(strike).append("스트라이크");
+            ballAndStrikeSentence.append(strike).append(STRIKE_SENTENCE);
         }
-
         System.out.println(ballAndStrikeSentence);
     }
 
     private void checkKeepGoing(Number answerNumber) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = inputExit();
-        if(input.equals("1")) {
+        System.out.println(KEEP_GOING_SENTENCE);
+        String userChoice = inputExit();
+        if(userChoice.equals("1")) {
             initializeRandomNumber(answerNumber);
         }
-        if(input.equals("2")) {
+        if(userChoice.equals("2")) {
             keepGoing = true;
         }
     }
