@@ -20,4 +20,8 @@ public class User {
             selectNumber.add(InputNumber.charAt(index) - '0');
         }
     }
+
+    public void initList() {
+        selectNumber = new ArrayList<>();
+    }
 }
