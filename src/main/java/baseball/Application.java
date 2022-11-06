@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -63,22 +66,29 @@ class PrintGuidSentence {
     }
 }
 
+class BaseballNumberMaker {
+
+
+}
+
+
 
 class BaseballNumber {
-    private final int[] baseballNumber = new int[3];
+    private int[] baseballNumber;
 
-    BaseballNumber(int baseballNumber) {
-        divideDigits(baseballNumber);
+    BaseballNumber(int[] baseballNumber) {
+        this.baseballNumber = baseballNumber;
+        //divideDigits();
         NumberValidation();
     }
 
-    private void divideDigits(int baseballNumber) {
-        String numberToString = Integer.toString(baseballNumber);
-        String[] eachDigits = numberToString.split("");
+    private void divideDigits() { // 이부분 인풋으로 빼고 그냥 int[]이거 받는게 나을듯
+        //String numberToString = Integer.toString(baseballNumber);
+        //String[] eachDigits = numberToString.split("");
 
-        for (int index = 0; index < eachDigits.length; index++) {
-            this.baseballNumber[index] = Integer.parseInt(eachDigits[index]);
-        }
+        //for (int index = 0; index < eachDigits.length; index++) {
+        //    this.baseballNumber[index] = Integer.parseInt(eachDigits[index]);
+        //}
     }
 
     private void NumberValidation() {
@@ -104,5 +114,38 @@ class BaseballNumber {
 
     // 포함확인 함수
     // 위치확인 함수
+
+}
+
+
+class NumberBaseballGame {
+    private BaseballNumber baseballNumber;
+
+    public void startGame() {
+
+    }
+
+    private void makeRandomBaseballNumber() {
+        int[] numberContainer = new int[3];
+        int containerIndex = 0;
+
+        List<Integer> baseballNumbers = new ArrayList<>();
+        while (baseballNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!baseballNumbers.contains(randomNumber)) {
+                baseballNumbers.add(randomNumber);
+                numberContainer[containerIndex] = randomNumber;
+                containerIndex++;
+            }
+        }
+        baseballNumber = new BaseballNumber(numberContainer);
+    }
+    private void proceedGame() {
+
+    }
+    private void checkBaseballNumber(BaseballNumber userGuess) {
+
+    }
+
 
 }
