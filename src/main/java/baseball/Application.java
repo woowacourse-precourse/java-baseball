@@ -52,6 +52,7 @@ public class Application {
     public static String inputAvailableUserNumberService(){
         int UserNumbers = 0;
         boolean availableUserNumberIsChecking = false;
+        userNumberMessagePrint();
         return "";
     }
 
