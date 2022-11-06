@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.constant.GameMessage.*;
 import static baseball.game.ComputerNumber.createComputerNumber;
 import static baseball.exception.RestartNumberValidator.checkValidationRestartNumber;
 import static baseball.game.UserNumber.checkInputUserNumber;
@@ -30,7 +31,7 @@ public class BaseballGame {
             compareNumber();
             userNumberResult();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(END_MESSAGE);
         restartGame();
     }
 
@@ -45,9 +46,9 @@ public class BaseballGame {
     }
 
     public static void userNumberResult(){
-        if(ball==0 && strike==0) System.out.print("낫싱");
-        if(ball>0) System.out.print(ball + "볼 ");
-        if(strike>0) System.out.print(strike + "스트라이크 ");
+        if(ball==0 && strike==0) System.out.print(NOTHING);
+        if(ball>0) System.out.print(ball + BALL);
+        if(strike>0) System.out.print(strike + STRIKE);
         System.out.println();
 
     }
