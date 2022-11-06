@@ -9,8 +9,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args){
         while(true){
-            int strike = 0;
-            int ball = 0;
+            //int strike = 0;
+            //int ball = 0;
 
             System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -25,40 +25,18 @@ public class Application {
 
             while(true){
                 boolean breaker = false;
-                int prevStrike=0, prevBall=0;
+                int strike=0, ball=0, nothing=0;
 
                 // 잘못된 값 입력시 IllegalArgumentException()를 throw
                 String player = illegalInput();
 
                 // 2. 스트라이크 볼 낫싱 판별
-                for(int i=0; i<numbers.size(); i++){
-                    strike = 0;
-                    ball = 0;
+                List<Integer> ballList = strikeBallNothing(numbers, player);
+                ball = ballList.get(0);
+                strike = ballList.get(1);
+                nothing = ballList.get(2);
 
-                    for(int j=0; j<player.length(); j++){
-                        prevStrike = strike;
-                        prevBall = ball;
-
-                        int playerNumbers = Integer.parseInt(String.valueOf(player.charAt(j)));
-                        if(prevStrike == 3 || prevBall == 3)
-                            breaker = true;
-
-                        if((i == j) && (numbers.get(i) == playerNumbers)){
-                            strike++;
-                            prevStrike += strike;
-                            System.out.print(prevStrike+"스트라이크 ");
-                        }
-                        else if((i != j) && (numbers.get(i) == playerNumbers)){
-                            ball++;
-                            prevBall += ball;
-                            System.out.print(prevBall+"볼 ");
-                        }
-
-                    }
-                    if(breaker == true)
-                        break;
-                }
-
+                System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
                 // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
                 if(strike == 3){
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -66,11 +44,13 @@ public class Application {
 
                     String continueOrExit = Console.readLine();
                     if(Integer.parseInt(continueOrExit) == 2)
-                        break;
+                        breaker = true;
                 }
+                if(breaker == true)
+                    break;
 
-                if(strike == 0 && ball == 0)
-                    System.out.print("낫싱");
+                /*if(strike == 0 && ball == 0)
+                    System.out.print("낫싱");*/
 
             }
 
@@ -96,5 +76,42 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return player;
+    }
+
+    // 스트라이크, 볼, 낫싱 횟수를 리턴
+    static List<Integer> strikeBallNothing(List<Integer> numbers, String player){
+        List<Integer> baseballList = new ArrayList<>();
+
+        for(int i=0; i<numbers.size(); i++)
+            baseballList.add(0);
+
+        int ball=baseballList.get(0), strike=baseballList.get(1), nothing= baseballList.get(2);
+        //boolean breaker = false;
+        for(int i=0; i<numbers.size(); i++){
+
+            int playerNumbers = Integer.parseInt(String.valueOf(player.charAt(i)));
+
+            if(numbers.get(i) == playerNumbers){
+                strike++;
+                baseballList.set(1, strike);
+                //prevStrike += strike;
+                //System.out.print(strike+"스트라이크 ");
+            }
+            else if(player.indexOf(Integer.toString(numbers.get(i))) != -1){
+                ball++;
+                baseballList.set(0, ball);
+                System.out.println(baseballList.get(0));
+
+            }
+        }
+
+        // ball, strike 모두 없는 경우에만 nothing
+        if(ball == 0 && strike == 0){
+            nothing++;
+            baseballList.set(2, nothing);
+        }
+
+        return baseballList;
+
     }
 }
