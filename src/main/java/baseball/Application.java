@@ -10,11 +10,44 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         int opponentNum = generateOpponentNumber();
-        int playerNum = readPlayerNum();
 
-        List<Integer> result = getResult(opponentNum, playerNum);
+        while (guessAnswer(opponentNum)){
+        }
 
         return;
+    }
+
+    public static boolean guessAnswer(int opponentNum) {
+        int playerNum = readPlayerNum();
+        List<Integer> result = getResult(opponentNum, playerNum);
+
+        boolean shouldGuessAgain = printResult(result);
+        return shouldGuessAgain;
+    }
+
+    private static boolean printResult(List<Integer> result) {
+        if (result.get(0) == 0 && result.get(1) == 0) {
+            System.out.println("낫싱");
+            return true;
+        }
+
+        if (result.get(0) != 0) {
+            System.out.print(result.get(0) + "볼");
+        }
+        if (result.get(1) != 0) {
+            if (result.get(0) != 0) {
+                System.out.print(" ");
+            }
+            System.out.println(result.get(1) + "스트라이크");
+
+            if (result.get(1) == 3) {
+                return false;
+            }
+            return true;
+        }
+
+        System.out.println();
+        return true;
     }
 
     public static List<Integer> getResult(int opponentNum, int playerNum) {
