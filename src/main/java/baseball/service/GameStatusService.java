@@ -9,6 +9,10 @@ public class GameStatusService {
     private boolean exitGame;
     private NextGameUserInputView nextGameUserInputView = new NextGameUserInputView();
 
+    public boolean isExitGame() {
+        return exitGame;
+    }
+
     public void processNextGameStatus(Computer computer) {
         setNextGameStatus(nextGameUserInputView.askNextGame(), computer);
     }
