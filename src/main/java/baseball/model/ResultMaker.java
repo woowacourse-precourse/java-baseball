@@ -36,3 +36,19 @@ public class ResultMaker {
                 break;
             }
         }
+        String strikeCountStr = "";
+        if (strikeCount != 0) {
+            strikeCountStr = strikeCount + "스트라이크";
+        }
+        return strikeCountStr;
+    }
+
+    private String getBallCount() {
+        String ballCountStr = "";
+        int ballCount = totalSameCount - strikeCount;
+        if (ballCount != 0) {
+            ballCountStr = ballCount + "볼";
+        }
+        return ballCountStr;
+    }
+}
