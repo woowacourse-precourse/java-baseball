@@ -22,8 +22,8 @@ public class NumberBaseBall implements PlayAble {
 
     private InputAble input = new InputConsole();
     private Viewable view = new ViewConsole();
-    private Computer computer = new Computer();
-    private GamePlayer gamePlayer = new GamePlayer();
+    private Computer computer;
+    private GamePlayer gamePlayer;
 
     public boolean isStopGame() {
         return stopGame;
@@ -37,7 +37,7 @@ public class NumberBaseBall implements PlayAble {
     public void start() {
         initializeSetting();
         view.printStart();
-        computer.setNumber(RandomNumber.makeRandomNumber());
+        computer = new Computer(RandomNumber.makeRandomNumber());
     }
 
     private void initializeSetting() {
@@ -50,7 +50,7 @@ public class NumberBaseBall implements PlayAble {
         view.printInput();
         int inputNumber = input.acceptInt();
         validateInputNumber(inputNumber);
-        gamePlayer.setNumber(inputNumber);
+        gamePlayer = new GamePlayer(inputNumber);
         List<Integer> hints = computer.judge(gamePlayer.getNumber());
         view.printHint(hints);
         if (hints.get(STRIKE_INDEX) == STRIKE_OUT) {

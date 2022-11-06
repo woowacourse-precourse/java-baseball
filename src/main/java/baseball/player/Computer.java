@@ -10,6 +10,10 @@ public class Computer extends Player implements JudgeAble {
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
 
+    public Computer(int randomNumber) {
+        super(randomNumber);
+    }
+
     @Override
     public List<Integer> judge(int number) {
         String baseNumber = String.valueOf(super.getNumber());

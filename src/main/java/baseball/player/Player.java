@@ -4,11 +4,11 @@ public class Player {
 
     private int number;
 
-    public int getNumber() {
-        return number;
+    protected Player(int number) {
+        this.number = number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public int getNumber() {
+        return number;
     }
 }
