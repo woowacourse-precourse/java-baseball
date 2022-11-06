@@ -12,15 +12,28 @@
 <br/>
 
 ### 기능 설계
-    - playGame          => 게임 실행 (맞출 때까지 반복)
 
-    - targetNumbers     => 맞춰야 할 3자리 수 만들기
+    - Game   (Class)
 
-    - tryNumbers        => 3자리 수 시도해서 해당 시도
-
-    - playAgain         => 1이면 재시작 & 2이면 종료
-
-    - getBallStrikeLog  => 볼 & 스트라이크 Log 출력
-
-    - checkError        => 잘못된 값을 입력한 경우 IllegalArgumentException 후 종료
+        Game()               => computer 3자리 수 정의
+        Game(String input)   => user 3자리 수 정의, user List 변환
     
+        getUserGame          => user 입력 후, 예외사항 없을 시 반환
+        getUserNumbers       => input 을 List 로 전환하여 반환      
+        getComputerNumbers   => computer 랜덤 입력, List 반환
+        getPickNumber        => Randoms.pickNumberInRange() 로 나온 숫자 반환
+
+        runException         => 모든 예외 처리 후 IllegalArgumentException 
+
+        checkRangeError      => 각 입력 숫자가 범위를 벗어난 에러 체크 
+        checkSizeError       => 입력값의 길이가 벗어난 에러 체크 
+        checkVisitedError    => 중복된 값이 있는 에러 체크
+        checkAgainGame       => 다시 할지 묻기
+        checkIsContinueError => toBeContinue 값이 옳은지 체크
+        checkIsNumberError   => 입력값이 숫자 인지 체크
+
+
+    - Record  (Class)
+
+        setEachRecords       => strikeCount, ballCount 개수 세기
+        displayRecord        => 이번 play 기록 출력
