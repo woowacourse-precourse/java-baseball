@@ -28,6 +28,14 @@ public class Computer {
         return this.randomNum;
     }
 
+    public Computer compareUsersNum(List<Integer> usersNum) {
+        checkStrike(usersNum);
+        checkBall(usersNum);
+        checkNothing();
+
+        return this;
+    }
+
 
     private void checkStrike(List<Integer> usersNum) {
         for (int i = 0; i < usersNum.size(); i++) {
@@ -63,5 +71,19 @@ public class Computer {
     }
 
 
+    public List<Integer> getRandomNum() {
+        return randomNum;
+    }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean getNothing() {
+        return nothing;
+    }
 }
