@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +39,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Disabled
     void 볼_스트라이크_맞춘_경우 () {
         Judge judge = new Judge();
         assertSame(1, judge.countBall(List.of(1, 2, 3), List.of(7, 6, 1)));

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Integer> number;
+    private List<Integer> numbers;
 
     public void inputNumber() {
         String inputValue;
@@ -14,7 +14,7 @@ public class User {
         inputValue = Console.readLine();
 
         if(validateInput(inputValue)) {
-            this.number = parseIntList(inputValue);
+            this.numbers = parseIntList(inputValue);
         }
     }
 
@@ -87,7 +87,9 @@ public class User {
         return false;
     }
 
-    public List<Integer> getNumber() {
-        return this.number;
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
+
+    public void truncateNumbers() { this.numbers.clear(); }
 }
