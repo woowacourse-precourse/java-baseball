@@ -20,6 +20,9 @@ public class NumberBaseballGameClient {
     public static final String MSG_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String MSG_ASK_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    public static final String ANSWER_ONE_MORE_GAME = "1";
+    public static final String ANSWER_NO_MORE_GAME = "2";
+
     private NumberBaseballGameClient() {
     }
 
@@ -82,8 +85,22 @@ public class NumberBaseballGameClient {
         System.out.println(MSG_GAME_END);
     }
 
-    public static boolean askMoreGame() {
-        // 새로운 게임 시작 여부에 대한 입력 요청 (+입력값에 대한 유효성 검사. 에러는 IllegalArgumentException)
-        return Boolean.FALSE;
+    public static boolean askMoreGame() throws IllegalArgumentException {
+        System.out.println(MSG_ASK_MORE_GAME);
+        String line;
+        try {
+            line = Console.readLine();
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (line.equals("1")) {
+            return true;
+        }
+        if (line.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 }
