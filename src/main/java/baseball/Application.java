@@ -36,6 +36,15 @@ public class Application {
         }
     }
 
+    static void countStrike(List<Integer> computer, List<Integer> user, int ball, int strike) {
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strike++;
+                ball--;
+            }
+        }
+    }
+
     static void addUserNumber(List<Integer> user, String userNumber) {
         for (int i = 0; i < userNumber.length(); i++) {
             int n = Character.getNumericValue(userNumber.charAt(i));
