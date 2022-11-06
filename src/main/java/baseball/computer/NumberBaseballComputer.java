@@ -29,4 +29,22 @@ public class NumberBaseballComputer implements Computer{
         }
         return computerNumber;
     }
+
+    /**
+     * 사용자값을 확인하여 예외발생 시 종료 아닐 시
+     * 볼, 스트라이크, 낫싱 출력
+     */
+    @Override
+    public void printCorrectResult(String gameValueOfUser) {
+        validateNumber(gameValueOfUser);
+    }
+
+    private int validateNumber(String gameValueOfUser) {
+        try {
+            int gameNumberOfUser = Integer.parseInt(gameValueOfUser);
+            return gameNumberOfUser;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력값이 잘못됐습니다.", e);
+        }
+    }
 }

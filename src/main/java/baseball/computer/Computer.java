@@ -14,4 +14,9 @@ public interface Computer {
      * 서로 다른 숫자들을 생성
      */
     List<Integer> createOtherNumber();
+
+    /**
+     * 사용자값을 확인하여 결과값 출력
+     */
+    void printCorrectResult(String gameValueOfUser);
 }
