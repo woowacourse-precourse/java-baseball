@@ -49,6 +49,11 @@ public class Application {
         return result;
     }
 
+    public static String inputAvailableUserNumberService(){
+        int UserNumbers = 0;
+        return "";
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
