@@ -2,11 +2,13 @@ package baseball.controller;
 
 
 import baseball.service.GameStartService;
+import baseball.status.GameStatus;
+import baseball.status.HintStatus;
 
 
 public class GameStartController {
     private static void controlGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GameStatus.RESTART_OR_STOP_GAME);
         String userInput = GameStartService.getUserInput();
         if(userInput.equals("1")){
             GameStartService.initGame();
@@ -17,17 +19,17 @@ public class GameStartController {
     }
 
     private static void finishGame() {
-        System.out.println("게임 종료");
+        System.out.println(GameStatus.END_GAME);
     }
 
     public static void startFirstGame(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameStatus.START_GAME);
         startGame();
     }
 
     private static void startGame() {
         GameStartService.initBallAndStrike();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(GameStatus.INPUT_USER_NUMBER);
         saveNumber();
         compareNumber();
     }
@@ -39,8 +41,8 @@ public class GameStartController {
 
     private static void showHint(String hint) {
         System.out.println(hint);
-        if(hint.equals("3스트라이크")){
-            System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+        if(hint.equals(HintStatus.ANSWER)){
+            System.out.println(GameStatus.SUCCESS_GAME);
             controlGame();
         }else{
             startGame();

@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.repository.GameStartRepository;
+import baseball.status.HintStatus;
 import baseball.util.RandomUtil;
 import baseball.util.UserUtil;
 
@@ -43,18 +44,18 @@ public class GameStartService {
         int strike = GameStartRepository.strike;
         String result = "";
         if (strike == 3) {
-            result += "3스트라이크";
+            result += "3" + HintStatus.STRIKE;
             return result;
         } else if (strike == 0 && ball == 0) {
-            result += "낫싱";
+            result += HintStatus.NOTHING;
 
         } else {
             if (strike == 0) {
-                result += ball + "볼";
+                result += "" + ball + HintStatus.BALL;
             } else if (ball == 0) {
-                result += strike + "스트라이크";
+                result += "" + strike + HintStatus.STRIKE;
             } else {
-                result += ball + "볼 " + strike + "스트라이크";
+                result += ""+ ball + HintStatus.BALL + strike + HintStatus.STRIKE;
             }
         }
         return result;
