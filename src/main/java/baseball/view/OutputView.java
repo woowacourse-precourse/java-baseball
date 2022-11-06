@@ -25,10 +25,9 @@ public class OutputView {
         if (playResult.getStrike() != 0) {
             sb.append(playResult.getStrike() + STRIKE);
         }
+        if (playResult.isGameEnd()){
+            sb.append("\n"+GAME_END_MESSAGE);
+        }
         System.out.println(sb);
-    }
-
-    public static void printEndMessage() {
-        System.out.println(GAME_END_MESSAGE);
     }
 }

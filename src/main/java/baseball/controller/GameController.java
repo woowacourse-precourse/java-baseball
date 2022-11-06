@@ -30,7 +30,6 @@ public class GameController {
     }
 
     private void endGame() {
-        OutputView.printEndMessage();
         if (InputView.yesOrNo()) {
             run();
         }
@@ -45,6 +44,4 @@ public class GameController {
         List<Integer> numbers = InputView.getInput();
         return BallFactory.createBalls(numbers);
     }
-
-
- }
+}
