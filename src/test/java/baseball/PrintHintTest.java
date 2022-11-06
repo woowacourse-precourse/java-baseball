@@ -19,6 +19,11 @@ public class PrintHintTest {
         numberMatchProcessor = new NumberMatchProcessorImpl();
 
         return Stream.of(
+                DynamicTest.dynamicTest("아무것도 못맞췄을경우", () -> {
+                    List<Integer> targetList = List.of(0, 1);
+                    String result = numberMatchProcessor.printHint(targetList);
+                    assertThat(result).isEqualTo("낫싱");
+                }),
                 DynamicTest.dynamicTest("볼만 있을경우", () -> {
                     List<Integer> targetList = List.of(0, 1);
                     String result = numberMatchProcessor.printHint(targetList);
