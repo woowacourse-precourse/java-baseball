@@ -4,7 +4,6 @@ import baseball.model.GameAnswer;
 import baseball.model.MyAnswer;
 import baseball.view.UserInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameSystem {
@@ -71,6 +70,7 @@ public class GameSystem {
         if(computerDigit == myDigit && i == j) strikeCount++;
         if(computerDigit == myDigit && i != j) ballCount++;
     }
+
     public void initCount() {
         strikeCount = 0;
         ballCount = 0;
