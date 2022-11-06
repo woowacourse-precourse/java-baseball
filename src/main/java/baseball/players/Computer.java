@@ -9,17 +9,19 @@ import java.util.stream.Collectors;
 
 public class Computer {
     public static List<Integer> createThreeDigitNumber() {
-        List<Integer> numberWithDifferentDigits = new ArrayList<>();
-        while (numberWithDifferentDigits.size() < NUMBER_OF_DIGITS) {
-            addDigit(numberWithDifferentDigits);
+        List<Integer> digits = new ArrayList<>();
+
+        while (digits.size() < NUMBER_OF_DIGITS) {
+            addNewDigit(digits);
         }
-        return numberWithDifferentDigits;
+        return digits;
     }
 
-    public static void addDigit(List<Integer> number) {
-        int digit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-        number.add(digit);
-        number.stream()
+    public static void addNewDigit(List<Integer> digits) {
+        int newDigit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+
+        digits.add(newDigit);
+        digits.stream()
                 .distinct()
                 .collect(Collectors.toList());
     }
