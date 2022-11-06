@@ -9,9 +9,26 @@ import java.util.stream.Collectors;
 
 public class Application {
 
-    private static final String GAME_START_SIGN = "숫자 야구 게임을 시작합니다.";
+    private static final String ANSWER = "3스트라이크";
+    private static final String BALL = "%d볼";
+    private static final String BALL_AND_STRIKE = "%d볼 %d스트라이크";
+    private static final String NOTHING = "낫싱";
+    private static final String STRIKE = "%d스트라이크";
+
+    private static final String CLOSE_MESSAGE = "애플리케이션을 종료합니다.";
+    private static final String CONGRATULATION_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String GAME_OPTION_ERROR_MESSAGE = "1 또는 2를 입력하세요.";
+    private static final String INPUT_USER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_USER_NUMBER_ERROR_MESSAGE = "1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.";
+
+    private static final String RESTART_GAME = "1";
+    private static final String GAME_OVER = "2";
+
     private static final int START_VALUE = 1;
     private static final int END_VALUE = 9;
+
 
     public static void main(String[] args) {
         notifyGameStart();
@@ -24,8 +41,8 @@ public class Application {
             List<Integer> userNumbers = InputUserNumber();
             String hint = getHint(computerNumbers, userNumbers);
             System.out.println(hint);
-            if (hint.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (hint.equals(ANSWER)) {
+                System.out.println(CONGRATULATION_MESSAGE);
                 break;
             }
         }
@@ -33,13 +50,13 @@ public class Application {
     }
 
     public static void gameOver() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_OPTION_MESSAGE);
         String gameOption = Console.readLine();
         validGameOption(gameOption);
-        if (gameOption.equals("1")){
+        if (gameOption.equals(RESTART_GAME)){
             startGame();
-        }else if (gameOption.equals("2")){
-            System.out.println("게임 종료");
+        }else if (gameOption.equals(GAME_OVER)){
+            System.out.println(CLOSE_MESSAGE);
         }
     }
 
@@ -56,11 +73,11 @@ public class Application {
     }
 
     public static void notifyGameStart() {
-        System.out.println(GAME_START_SIGN);
+        System.out.println(GAME_START_MESSAGE);
     }
 
     public static List<Integer> InputUserNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_USER_NUMBER_MESSAGE);
         String userNumbers = Console.readLine();
         validUserNumbers(userNumbers);
         return Arrays.stream(userNumbers.split(""))
@@ -74,13 +91,13 @@ public class Application {
         ballCnt -= strikeCnt;
 
         if (ballCnt == 0 && strikeCnt == 0) {
-            return "낫싱";
+            return NOTHING;
         } else if (strikeCnt == 0) {
-            return String.format("%d볼", ballCnt);
+            return String.format(BALL, ballCnt);
         } else if (ballCnt == 0) {
-            return String.format("%d스트라이크", strikeCnt);
+            return String.format(STRIKE, strikeCnt);
         } else {
-            return String.format("%d볼 %d스트라이크", ballCnt, strikeCnt);
+            return String.format(BALL_AND_STRIKE, ballCnt, strikeCnt);
         }
     }
 
@@ -107,18 +124,18 @@ public class Application {
 
     public static void validUserNumbers(String userNumbers){
         if (!userNumbers.matches("^[1-9]{3}$")){
-            throw new IllegalArgumentException("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.");
+            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
         }
         if (userNumbers.charAt(0) == userNumbers.charAt(1) ||
                 userNumbers.charAt(0) == userNumbers.charAt(2) ||
                 userNumbers.charAt(1) == userNumbers.charAt(2)){
-            throw new IllegalArgumentException("서로 다른 수를 입력하세요.");
+            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void validGameOption(String gameOption) {
         if (!gameOption.matches("^[1-2]$")) {
-            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+            throw new IllegalArgumentException(GAME_OPTION_ERROR_MESSAGE);
         }
     }
 }
