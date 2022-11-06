@@ -24,6 +24,14 @@ public class Application {
         return computer;
     }
 
+    public static int strikeNumbers(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = 0;
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (computerNumber.get(i).equals(playerNumber.get(i))) strike++;
+        }
+        return strike;
+    }
+
     public static int askUserTheNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         int input = Integer.parseInt(Console.readLine());
