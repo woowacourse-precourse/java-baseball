@@ -6,7 +6,7 @@ public class Computer {
     private static final int DIGIT_NUMBER = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    public static String Number() {
+    public static String number() {
         String computerNumber = "";
 
         do {

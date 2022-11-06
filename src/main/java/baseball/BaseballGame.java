@@ -38,8 +38,10 @@ public class BaseballGame {
     }
 
     public void isBall() {
-        if ((computerNumber.contains(userNumber)) && (!isStrike())) {
-            ballCount++;
+        for (int ballCountIndex = 0; ballCountIndex < computerNumber.length(); ballCountIndex++) {
+            if ((computerNumber.contains(userNumber.charAt(ballCountIndex) + "")) && (userNumber.charAt(ballCountIndex) != computerNumber.charAt(ballCountIndex))) {
+                ballCount++;
+            }
         }
     }
 
