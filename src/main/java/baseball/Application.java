@@ -20,6 +20,12 @@ public class Application {
         } while (true);
     }
 
+    /*
+    난수 배열을 생성하는 메소드
+
+    Return
+    List<Integer> computer
+     */
     static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
