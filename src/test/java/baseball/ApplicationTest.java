@@ -32,83 +32,96 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
-    void 입력_예외테스트2(){
-        assertSimpleTest(()->
-                assertThatThrownBy(()-> runException("abc"))
+    void 입력_예외테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class));
     }
+
     @Test
-    void checkBall_case1(){
+    void checkBall_인덱스에_해당하는_값이_볼이면_1반환_아니면_0반환() {
         int index = 0;
         int value = 2;
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
-        int ballCount = baseball.Application.checkBall(index,value,computer);
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int ballCount = baseball.Application.checkBall(index, value, computer);
+
         assertThat(ballCount).isEqualTo(1);
     }
+
     @Test
-    void checkBall_case2(){
+    void checkBall_case2() {
         int index = 0;
         int value = 4;
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
-        int ballCount = baseball.Application.checkBall(index,value,computer);
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int ballCount = baseball.Application.checkBall(index, value, computer);
+
         assertThat(ballCount).isEqualTo(0);
     }
+
     @Test
-    void checkStrike_case1(){
+    void checkStrike_인덱스에_해당하는_값이_스트라이크이면_1반환_아니면_0반환() {
         int index = 0;
         int value = 1;
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
-        int strikeCount = baseball.Application.checkStrike(index,value,computer);
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int strikeCount = baseball.Application.checkStrike(index, value, computer);
+
         assertThat(strikeCount).isEqualTo(1);
     }
+
     @Test
-    void checkStrike_case2(){
+    void checkStrike_case2() {
         int index = 2;
         int value = 1;
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
-        int strikeCount = baseball.Application.checkStrike(index,value,computer);
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int strikeCount = baseball.Application.checkStrike(index, value, computer);
+
         assertThat(strikeCount).isEqualTo(0);
     }
-    @Test
-    void getResult_case1(){
-        List<Integer> input = new ArrayList<>(Arrays.asList(1,3,4));
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
 
-        HashMap<String,Integer> expect = new HashMap<>() {{
-            put("strike",1);
-            put("ball",1);
+    @Test
+    void getResult_입력과_랜덤생성_수를_이용하여_숫자야구_게임의_결과를_반환() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 3, 4));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        HashMap<String, Integer> expect = new HashMap<>() {{
+            put("strike", 1);
+            put("ball", 1);
         }};
-        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+        HashMap<String, Integer> result = baseball.Application.getResult(input, computer);
 
         assertThat(result).isEqualTo(expect);
     }
-    @Test
-    void getResult_case2(){
-        List<Integer> input = new ArrayList<>(Arrays.asList(1,2,3));
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
 
-        HashMap<String,Integer> expect = new HashMap<>() {{
-            put("strike",3);
-            put("ball",0);
+    @Test
+    void getResult_case2() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        HashMap<String, Integer> expect = new HashMap<>() {{
+            put("strike", 3);
+            put("ball", 0);
         }};
-        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+        HashMap<String, Integer> result = baseball.Application.getResult(input, computer);
 
         assertThat(result).isEqualTo(expect);
     }
-    @Test
-    void getResult_case3(){
-        List<Integer> input = new ArrayList<>(Arrays.asList(4,5,6));
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
 
-        HashMap<String,Integer> expect = new HashMap<>() {{
-            put("strike",0);
-            put("ball",0);
+    @Test
+    void getResult_case3() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(4, 5, 6));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        HashMap<String, Integer> expect = new HashMap<>() {{
+            put("strike", 0);
+            put("ball", 0);
         }};
-        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+        HashMap<String, Integer> result = baseball.Application.getResult(input, computer);
 
         assertThat(result).isEqualTo(expect);
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
