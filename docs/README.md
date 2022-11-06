@@ -69,12 +69,12 @@
   - isCorrect() : strike가 3개인지 확인하는 함수
 
 ### GameProgress (Enum)
-- [ ] 게임진행여부 case를 나타내는 enum
+- [x] 게임진행여부 case를 나타내는 enum
   - CONTINUE
   - EXIT
 
 ### GameState (Enum)
-- [ ] 야구게임 결과에 대한 case를 나타내는 enum
+- [x] 야구게임 결과에 대한 case를 나타내는 enum
   - NOTHING
   - GOOD
   - CORRECT
