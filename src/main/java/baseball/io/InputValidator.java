@@ -1,5 +1,5 @@
 package baseball.io;
 
 public interface InputValidator {
-  void validate();
+  void validate(String input);
 }
