@@ -5,10 +5,10 @@ public abstract class AbstractBaseballGame {
         startEventBeforePlay();
         do {
             play();
-        } while (startEventAfterPlay());
+        } while (startEventAfterPlay().startsGame());
     }
 
     protected abstract void startEventBeforePlay();
     protected abstract void play();
-    protected abstract boolean startEventAfterPlay();
+    protected abstract ControlNumber startEventAfterPlay();
 }
