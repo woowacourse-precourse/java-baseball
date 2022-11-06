@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
+import baseball.util.ErrorMessage;
 import baseball.util.Message;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -38,6 +39,6 @@ public class Controller {
         if (input.equals(Message.END)) {
             return false;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
     }
 }
