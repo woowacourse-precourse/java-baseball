@@ -15,6 +15,17 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    public static String getScore(int number, int DIGIT){
+        if(computerDigitValue.get(DIGIT) == number) {
+            return "STRIKE";
+        }
+        if(computerDigitValue.contains(number)) {
+            return "BALL";
+        }else{
+            return "NOTHING";
+        }
+    }
+
     public static boolean isValidData(int userInput) {
         List<Integer> disassembledNumber = disassembleDigitNumber(userInput);
         if (disassembledNumber.size() != 3) {
