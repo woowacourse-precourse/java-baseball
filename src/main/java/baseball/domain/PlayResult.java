@@ -3,6 +3,7 @@ package baseball.domain;
 public class PlayResult {
 
     private final static int DEFAULT_COUNT = 0;
+    private final static int GAME_END_COUNT = 3;
 
     int strike = DEFAULT_COUNT;
     int ball = DEFAULT_COUNT;
@@ -25,11 +26,11 @@ public class PlayResult {
     }
 
     public boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return strike == DEFAULT_COUNT && ball == DEFAULT_COUNT;
     }
 
     public boolean isGameEnd() {
-        return strike == 3;
+        return strike == GAME_END_COUNT;
     }
 
 }
