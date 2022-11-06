@@ -77,4 +77,13 @@ public class GameManager {
 		return false;
 	}
 	
+	/**
+     * 시스템 종료
+     */
+	public void terminateGame() {
+		System.out.println("숫자 야구 게임을 종료합니다.");
+    	System.exit(0);
+	}
+
+	
 }
