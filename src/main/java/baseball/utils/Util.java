@@ -1,9 +1,6 @@
 package baseball.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +19,13 @@ public final class Util {
         String[] targetArray = target.split("");
         Set<String> targetSet = new HashSet<>(Arrays.asList(targetArray));
         return targetSet.size() != target.length();
+    }
+
+    public static int getDistinctCountInIntegerList(List<Integer> list) {
+        return (int) list
+                .stream()
+                .distinct()
+                .count();
     }
 
 }
