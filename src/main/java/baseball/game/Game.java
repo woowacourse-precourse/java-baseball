@@ -16,6 +16,9 @@ public class Game {
 
     private final int BALL_IDX = 0;
     private final int STRIKE_IDX = 1;
+    private final String BALL = "볼";
+    private final String STRIKE = "스트라이크";
+    private final String NOTHING = "낫싱";
 
     public Game() {
         digits = new ArrayList<>();
@@ -87,7 +90,21 @@ public class Game {
     }
 
     private void printResult(List<Integer> result) {
-        // TODO
+        int ballCount = result.get(BALL_IDX);
+        int strikeCount = result.get(STRIKE_IDX);
+        StringBuilder resultStr = new StringBuilder();
+        if (ballCount != 0) {
+            resultStr.append(ballCount);
+            resultStr.append(BALL + " ");
+        }
+        if (strikeCount != 0) {
+            resultStr.append(strikeCount);
+            resultStr.append(STRIKE);
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            resultStr.append(NOTHING);
+        }
+        System.out.println(resultStr);
     }
 
     private boolean isCorrect(List<Integer> result) {
