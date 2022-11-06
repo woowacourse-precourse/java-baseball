@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
+    private static final int MIN_BOUND = 1;
+    private static final int MAX_BOUND = 9;
+
     int fullNumber;
     int firstDigit;
     int secondDigit;
@@ -16,21 +19,21 @@ public class RandomNumber {
     }
 
     public int generateFirstRandomDigit() {
-        return Randoms.pickNumberInRange(1, 9);
+        return Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
     }
 
     public int generateSecondRandomDigit() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        int randomNumber = Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
         while (randomNumber == firstDigit) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumber = Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
         }
         return randomNumber;
     }
 
     public int generateThirdRandomDigit() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        int randomNumber = Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
         while (randomNumber == firstDigit || randomNumber == secondDigit) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumber = Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
         }
         return randomNumber;
     }
