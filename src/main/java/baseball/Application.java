@@ -71,6 +71,30 @@ public class Application {
         result.put("ball",ball);
         return result;
     }
+    static void repeatInput (List<Integer> computer){
+        while(true){
+            System.out.print("숫자를 입력해 주세요 : ");
+            List<Integer> input = getInputNumber();
+            HashMap<String ,Integer> result = getResult(input,computer);
+            int strike = result.get("strike");
+            int ball = result.get("ball");
+            if(strike==0 && ball==0){
+                System.out.println("낫싱");
+            }
+            if(ball!=0){
+                System.out.print(ball+"볼 ");
+            }
+            if(strike!=0){
+                System.out.print(strike+"스트라이크");
+            }
+            System.out.println("\n");
+
+            if(strike==3){
+                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+                return;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
