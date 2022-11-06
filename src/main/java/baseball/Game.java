@@ -41,4 +41,19 @@ public class Game {
 
 		printMessages();
 	}
+
+	public void printMessages() {
+		if (strike == 0 && ball == 0) {
+			System.out.println(MESSAGE_NOTHING);
+		}
+		if (strike == 0 && ball != 0) {
+			System.out.println(ball + MESSAGE_BALL);
+		}
+		if (strike != 0 && ball == 0) {
+			System.out.println(strike + MESSAGE_STRIKE);
+		}
+		if (strike != 0 && ball != 0) {
+			System.out.println(ball + MESSAGE_BALL + MESSAGE_BLANK + strike + MESSAGE_STRIKE);
+		}
+	}
 }
