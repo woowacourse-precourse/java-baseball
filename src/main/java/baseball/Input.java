@@ -28,22 +28,9 @@ public class Input {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> numbers = new ArrayList<>();
         String input = Console.readLine();
-        validateEnterGuessNumber(input);
         for (int i = 0; i < input.length(); i++) {
             numbers.add(Character.getNumericValue(input.charAt(i)));
         }
         return numbers;
-    }
-
-    private static void validateEnterGuessNumber(String input) {
-        if (input.length() != NUMBER_CNT) {
-            throw new IllegalArgumentException("세 개의 숫자를 입력해주세요");
-        }
-        for(int i =0; i< input.length();i++) {
-            int eachDigit = Character.getNumericValue(input.charAt(i));
-            if (eachDigit < MIN_RANGE || eachDigit > MAX_RANGE) {
-                throw new IllegalArgumentException("1부터 9까지의 숫자만 사용가능합니다");
-            }
-        }
     }
 }
