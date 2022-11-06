@@ -8,46 +8,50 @@ import static baseball.Constant.*;
 
 public class Hint {
 
-    int strike;
-    int ball;
+    private int strike;
+    private int ball;
     boolean threeStrike;
-
-    public Hint(){
-        this.strike = 0;
-        this.ball = 0;
-        this.threeStrike = false;
-    }
 
     public void printHintMessage(){
         if(strike==3){
             System.out.println(strike+ strikeMessage);
+            return;
         }
-        else if(strike==0 && ball==0) {
+        if(strike==0 && ball==0) {
             System.out.println(nothingMessage);
+            return;
         }
-        else System.out.println(ball + ballMessage + " " + strike + strikeMessage);
+        if(strike>0 && ball==0){
+            System.out.println(strike+ strikeMessage);
+            return;
+        }
+        if(strike==0 && ball>0){
+            System.out.println(ball+ballMessage);
+            return;
+        }
+        System.out.println(ball + ballMessage + " " + strike + strikeMessage);
     }
 
     private void isStrikeOrBall(List<String> comNumber, List<String> userNumber){
         for(int comIndex=0;comIndex<comNumber.size();comIndex++){
             if(comNumber.get(comIndex).equals(userNumber.get(comIndex))){
-                this.strike++;
+                strike++;
                 continue;
             }
             if(comNumber.contains(userNumber.get(comIndex))){
-                this.ball++;
+                ball++;
             }
         }
     }
     public void hintCalculator(HashSet<String> comNumber, List<String> userNumber){
-        this.strike=0;
-        this.ball=0;
+        strike=0;
+        ball=0;
 
         isStrikeOrBall(comNumber.stream()
                 .collect(Collectors.toList())
                 , userNumber);
 
-        if(strike==3) this.threeStrike=true;
+        if(strike==3) threeStrike=true;
         printHintMessage();
     }
 }
