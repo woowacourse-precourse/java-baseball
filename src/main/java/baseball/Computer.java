@@ -6,7 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public List<Integer> GenerateRandomThreeNumber() {
+
+    public List<Integer> randomNumber;
+
+    public Computer() {
+        randomNumber = GenerateRandomThreeNumber();
+    }
+
+    private List<Integer> GenerateRandomThreeNumber() {
         List<Integer> randomNumList = new ArrayList<>();
 
         while(randomNumList.size() < 3) {
