@@ -20,6 +20,7 @@ public class Application {
         return computer;
     }
 
+    /** 플레이어 숫자 입력 기능 */
     public static List<Integer> getPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String strPlayerNumber = Console.readLine();
@@ -38,6 +39,7 @@ public class Application {
         return player;
     }
 
+    /** 플레이어 숫자 유효성 검사 기능 */
     public static boolean isValidatePlayerNumber(String strPlayerNumber) {
         if (strPlayerNumber.length() != 3) {
             return false;
@@ -61,6 +63,23 @@ public class Application {
         }
 
         return true;
+    }
+
+    /** 힌트 계산 기능 */
+    public static void getHint(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (ballCount != 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        } else if (ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     public static void main(String[] args) {
