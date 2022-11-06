@@ -28,6 +28,10 @@ public class GameManager {
             List<Integer> question = PrintAndRead.getBaseballNumber();
             printAnswer(question);
             isGameEnd(question);
+
+            if(gameState == GameState.END) {
+                restartGame();
+            }
         }
     }
 
@@ -49,6 +53,14 @@ public class GameManager {
             return;
         }
         gameState = GameState.START;
+    }
+
+    public void restartGame() {
+        int answer = PrintAndRead.printRestartGame();
+
+        if (answer == 1) {
+            initiate();
+        }
     }
 
 }
