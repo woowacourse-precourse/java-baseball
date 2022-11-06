@@ -16,7 +16,19 @@ public class InputException {
         if (inputNumber.length() != 3) return true;
         return false;
     }
+
     // 중복된 숫자가 있는 경우
+    public static Boolean containsDuplicateDigits(String inputNumber) {
+        char first = inputNumber.charAt(0);
+        char second = inputNumber.charAt(1);
+        char third = inputNumber.charAt(2);
+
+        if (first == second) return true;
+        if (second == third) return true;
+        if (third == first) return true;
+        return false;
+    }
+
     // 빈 문자열인 경우
 
 }

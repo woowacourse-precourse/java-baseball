@@ -39,4 +39,19 @@ class InputExceptionTest {
         assertThat(bool3).isTrue();
 
     }
+
+    @Test
+    void containsDuplicateDigits() {
+        String normal = "123";
+        String duplicate1 = "122";
+        String duplicate2 = "333";
+
+        Boolean bool1 = InputException.containsDuplicateDigits(normal);
+        Boolean bool2 = InputException.containsDuplicateDigits(duplicate1);
+        Boolean bool3 = InputException.containsDuplicateDigits(duplicate2);
+
+        assertThat(bool1).isFalse();
+        assertThat(bool2).isTrue();
+        assertThat(bool3).isTrue();
+    }
 }
