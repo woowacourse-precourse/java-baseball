@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Player {
     private static final int PLAYER_NUMBERS_SIZE = 3;
@@ -16,7 +14,6 @@ public class Player {
 
         this.numbers = numbers;
     }
-
     private void validateRange(List<Integer> numbers){
         if(!numbers.stream().allMatch(number -> number > 0 && number <10))
             throw new IllegalArgumentException("Wrong number range");
@@ -33,11 +30,21 @@ public class Player {
             throw new IllegalArgumentException("duplicates in the numbers");
     }
 
-    public int findIndexOfNumber(int number){
-        return this.numbers.indexOf(number);
+    public int getNumberOfIndex(int index){
+        return this.numbers.get(index);
     }
 
-    public boolean compareIndex(int index, int number){
+    public boolean isStrike(int index, int number){
         return this.numbers.get(index).equals(number);
+    }
+
+    public boolean isBall(int index, int number){
+        if(!isStrike(index, number) && this.numbers.contains(number))
+            return true;
+        return false;
+    }
+
+    public boolean isContain(int number){
+        return this.numbers.contains(number);
     }
 }
