@@ -15,10 +15,10 @@ public class Application {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = makeNumber();
-            validationCheck(userNumber());
             String result = "";
             while (!result.equals("3스트라이크")) {
                 result = score(userNumber(),computer);
+
                 System.out.println(result);
             }
             if (!playAgain()) break;
@@ -26,27 +26,19 @@ public class Application {
     }
 
     private static List<Integer> userNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-
-        String inputNumber = Console.readLine();
+        System.out.print("숫자를 입력해주세요 : "); // 왜 두번받을까?
         List<Integer> userNumber = new ArrayList<>();
+        String inputNumber = Console.readLine();
 
         for (String number : inputNumber.split("")) {
             userNumber.add(Integer.parseInt(number));
         }
-        return userNumber;
-    }
-
-
-    private static boolean validationCheck(List<Integer> userNumber) {
-        // 길이 체크
-        // 3자 미만이거나 초과면 오류발생으로 넘어가는데 메세지 출력이 안된다
         if (userNumber.size() != 3) throw new IllegalArgumentException("오류가 발생했습니다.");
         // 중복값 체크
         if (userNumber.size() != userNumber.stream().distinct().count())
             throw new IllegalArgumentException("오류가 발생했습니다.");
 
-        return false;
+        return userNumber;
     }
 
     private static boolean playAgain() {
@@ -98,7 +90,7 @@ public class Application {
         int strike = countStrike(userNumber,makeNumber);
         int ball = count-strike;
 
-        if(count == 0){
+        if(count == 0 && strike == 0){
             return "낫싱";
         }else if(strike == 0){
             return ball + "볼";
