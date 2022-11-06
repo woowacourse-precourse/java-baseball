@@ -12,7 +12,11 @@ public enum Setup {
 	NUMBER_ONLY_RULE("[1-9]+"),
 	SELECTION_SCOPE("[1-2]+"),
 
-	NUMBER_LENGTH("3");
+	NUMBER_LENGTH("3"),
+
+	BALL("볼"),
+	STRIKE("스트라이크"),
+	NOTHING("낫싱");
 
 	private final String value;
 
