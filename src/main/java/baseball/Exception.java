@@ -68,6 +68,6 @@ public class Exception {
     }
 
     private boolean isValidRestartFormat(String str) {
-        return str.equals("1") || str.equals("0");
+        return str.equals("1") || str.equals("2");
     }
 }
