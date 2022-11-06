@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ValidatorTest {
     private static final String LENGTH_VALIDATION_FAILED = "입력한 숫자의 길이가 3이 아닙니다.";
     private static final String DIGIT_VALIDATION_FAILED = "입력내용은 모두 숫자로 구성되어야 합니다.";
+    private static final String DUPLICATION_VALIDATION_FAILED = "입력내용은 서로 다른 3개의 숫자로 구성되어 합니다.";
 
     @Test
     @DisplayName("입력한 수의 길이가 3임을 정확히 검증하는 가?")
@@ -50,5 +51,22 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateEachDigit(input5))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
+    }
+
+    @Test
+    @DisplayName("입력된 내용이 서로 다른 숫자로 구성되어 있는 지 확인")
+    void validate_no_duplication_test() {
+        String input1 = "123";
+        String input2 = "122";
+        String input3 = "333";
+
+        assertThat(Validator.validateNoDuplication(input1))
+                .isTrue();
+        assertThatThrownBy(() -> Validator.validateNoDuplication(input2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
+        assertThatThrownBy(() -> Validator.validateNoDuplication(input3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
     }
 }
