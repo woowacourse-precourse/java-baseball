@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BatterTest {
 
     @Test
-    void selectRandomNumber() {
+    void selectHitNumber() {
         // given
         Batter batter = new Batter();
 

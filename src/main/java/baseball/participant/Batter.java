@@ -17,10 +17,10 @@ public class Batter {
                 .collect(Collectors.joining(""));
     }
 
-    private void readyHitDigit(List<Integer> randomDigits) {
+    private void readyHitDigit(List<Integer> hitDigits) {
         int randomDigit = Randoms.pickNumberInRange(1, 9);
-        if (!randomDigits.contains(randomDigit)) {
-            randomDigits.add(randomDigit);
+        if (!hitDigits.contains(randomDigit)) {
+            hitDigits.add(randomDigit);
         }
     }
 }
