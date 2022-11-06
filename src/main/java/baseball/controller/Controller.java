@@ -8,9 +8,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Controller {
-    Computer computer = new Computer();
-    Player player = new Player();
-    GameResult gameResult = new GameResult();
+    Computer computer;
+    Player player;
+    GameResult gameResult;
 
     public void startGame() {
         OutputView.printGameStart();
