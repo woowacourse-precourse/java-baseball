@@ -32,6 +32,7 @@ public class BaseballGame {
         String userInput = Console.readLine();
         View.raiseErrorWhenInputLengthOverThree(userInput);
         List<String> inputList = convertUserInputToList(userInput);
+        View.raiseErrorIfInputContainsSameNumber(inputList);
         return inputList;
     }
 
@@ -44,6 +45,7 @@ public class BaseballGame {
             View.raiseErrorWhenInputIsNotDigitOrZero(separatedInput);
             convertedList.add(String.valueOf(userInput.charAt(idx)));
         }
+
         return convertedList;
     }
 

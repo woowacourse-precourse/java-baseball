@@ -1,10 +1,15 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class View {
     public static String GAME_START_MASSAGE = "숫자를 입력해주세요:";
     public static String GAME_RESTART_ERROR_MASSAGE = "1과 2만 입력할 수 있습니다.";
     public static String INPUT_IS_NOT_DIGIT_MASSAGE = "숫자만 입력해주세요.";
     public static String INPUT_IS_ZERO_MASSAGE = "1과 9사이의 숫자만 입력해주세요.";
+    public static String INPUT_CANNOT_SAME_NUMBER_MASSAGE = "서로 다른 세 자리 숫자를 입력해주세요.";
     public static String INPUT_LENGTH_VALIDATION_MASSAGE = "입력은 세자리 숫자만 허용됩니다.";
     public static String THREE_STRIKE_MASSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static String GAME_END_OR_RESTART_MASSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -46,6 +51,12 @@ public class View {
         }
         if (separatedInput == WRONG_USER_INPUT_ZERO) {
             throw new IllegalArgumentException(INPUT_IS_ZERO_MASSAGE);
+        }
+    }
+
+    public static void raiseErrorIfInputContainsSameNumber(List<String> input) {
+        if (input.size() != new HashSet<>(input).size()) {
+            throw new IllegalArgumentException(INPUT_CANNOT_SAME_NUMBER_MASSAGE);
         }
     }
 
