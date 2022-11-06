@@ -28,4 +28,52 @@ public class NumberTest {
         }
         assertTrue(number.isValid(target));
     }
+
+    @Test
+    void 많은_자릿수() {
+        String test = "1234";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 부족한_자릿수() {
+        String test = "12";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 숫자_범위_확인() {
+        String test = "012";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 영어_포함_확인() {
+        String test = "12r";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 한글_포함_확인() {
+        String test = "12ㄱ";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 특수문자_포함_확인() {
+        String test = "12-";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 두자리_중복_확인() {
+        String test = "112";
+        assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 세자리_중복_확인() {
+        String test = "222";
+        assertTrue(!number.isValid(test));
+    }
 }
