@@ -8,22 +8,22 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private List<Integer> threeDifferentNumbers;
+    public static List<Integer> createThreeDigitNumber() {
+        System.out.print(ENTER_NUMBER_MESSAGE);
+        String enteredNumber = Console.readLine();
 
-    public List<Integer> createThreeDifferentNumbers() {
-        threeDifferentNumbers = new ArrayList<>();
-        System.out.print(ENTER_NUMBERS_MESSAGE);
-        String enteredNumbers = Console.readLine();
-
-        Validator.check(enteredNumbers);
-        splitToDigits(enteredNumbers);
-        return threeDifferentNumbers;
+        Validator.check(enteredNumber);
+        List<Integer> digits = splitToDigits(enteredNumber);
+        return digits;
     }
 
-    public void splitToDigits(String numbers) {
-        for (char character : numbers.toCharArray()) {
-            Integer numericValue = Character.getNumericValue(character);
-            threeDifferentNumbers.add(numericValue);
+    public static List<Integer> splitToDigits(String number) {
+        List<Integer> digits = new ArrayList<>();
+
+        for (char digit : number.toCharArray()) {
+            Integer numericValue = Character.getNumericValue(digit);
+            digits.add(numericValue);
         }
+        return digits;
     }
 }

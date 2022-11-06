@@ -13,11 +13,10 @@ public class Controller {
     public static void gameStart() {
         System.out.println(GAME_START_MESSAGE);
         List<Integer> computerNumbers = Computer.createThreeDigitNumber();
-        User user = new User();
 
         while (isGameGoing) {
-            List<Integer> playerNumbers = user.createThreeDifferentNumbers();
-            List<Integer> scores = Calculation.getScoresByNumbers(computerNumbers, playerNumbers);
+            List<Integer> userNumbers = User.createThreeDigitNumber();
+            List<Integer> scores = Calculation.getScoresByNumbers(computerNumbers, userNumbers);
             ResultView.printOut(scores);
             checkThreeStrikes(scores.get(STRIKE_INDEX));
         }

@@ -9,7 +9,7 @@ public class Constants {
     public final static int STRIKE_INDEX = 1;
 
     public final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public final static String ENTER_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
+    public final static String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     public final static String VALID_NUMBER_REGEX = "^[1-9]{3}$";
     public final static String BALL_MESSAGE = "볼";
     public final static String STRIKE_MESSAGE = "스트라이크";
