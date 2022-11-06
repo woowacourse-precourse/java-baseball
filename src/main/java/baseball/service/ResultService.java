@@ -8,7 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class ResultService {
-    public int ReOrClose(List<Integer> randomNumber) {
+    public int startOrClose(List<Integer> randomNumber) {
         RuleService rules = new RuleService();
         InputException validation = new InputException();
         InputValue inputValue = new InputValue();
