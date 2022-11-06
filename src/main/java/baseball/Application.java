@@ -29,39 +29,39 @@ public class Application {
     public static void guess(List<Integer> comNum){
         boolean isWrong=true;
         HashMap comMap= new HashMap<Integer,String>();
+
         for(int digits=0;digits<3;digits++){
             comMap.put(digits,String.valueOf(comNum.get(digits)));
         }
+
         while(isWrong){
             HashMap usrMap= new HashMap<Integer,String>();
             System.out.println("숫자를 입력해주세요 :");
             String usrNum= Console.readLine();
+
             if(usrNum.length()>3||usrNum.length()<3){
                 throw new IllegalArgumentException("세자리 수가 아닙니다.");
             }
+
             for(int digits=0;digits<3;digits++){
                 usrMap.put(digits,usrNum.substring(digits,digits+1));
             }
-            int strike=0;
-            int ball=0;
-            for(int i=0;i<3;i++){
-                Object num=comMap.get(i);
-                if(usrMap.containsValue(num)){
-                    if(usrMap.get(i).equals(num)){
-                       strike+=1;
-                    }else{
-                        ball+=1;
-                    }
-                }
-            }
+
+
+            List<Integer> countBandS = new ArrayList<>();
+            countBandS=ballAndStrike(comMap,usrMap);
+
+            int ball=countBandS.get(0);
+            int strike=countBandS.get(1);
+
             if(strike==0&&ball==0){
                 System.out.println("낫싱");
-            }else if(ball==0) {
+            }else if(ball==0&&strike==3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }else if(ball==0){
                 System.out.println(strike+"스트라이크");
-                if(strike==3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    return;
-                }
             }else if(strike==0){
                 System.out.println(ball+"볼");
             }
@@ -79,5 +79,23 @@ public class Application {
         }else{
             game();
         }
+    }
+    public static List<Integer> ballAndStrike(HashMap<Integer,String> comMap,HashMap<Integer,String> usrMap){
+        List<Integer> countSandB = new ArrayList<>();
+        int strike=0;
+        int ball=0;
+
+        for(int i=0;i<3;i++){
+            Object num=comMap.get(i);
+            if(usrMap.containsValue(num)&&usrMap.get(i).equals(num)){
+                strike+=1;
+            }else if(usrMap.containsValue(num)){
+                ball+=1;
+            }
+        }
+
+        countSandB.add(ball);
+        countSandB.add(strike);
+        return countSandB;
     }
 }
