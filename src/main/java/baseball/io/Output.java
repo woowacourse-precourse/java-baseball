@@ -6,4 +6,6 @@ public interface Output {
     void printStartText();
 
     void printScore(BallStatus ballStatus);
+
+    void printEndText(BallStatus ballStatus);
 }
