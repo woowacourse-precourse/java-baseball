@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface HintCalculator {
 
-    public Hint getHint(List<Integer> computer, List<Integer> user);
+    Hint getHint(List<Integer> computer, List<Integer> user);
 }
