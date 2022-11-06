@@ -48,6 +48,7 @@ public class GameService {
     }
 
     public String createNumber() {
-        return GameNumberGenerator.createNumber();
+        gameNumber = GameNumberGenerator.createNumber();
+        return gameNumber;
     }
 }
