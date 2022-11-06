@@ -1,10 +1,10 @@
 package baseball;
 
-public class Guess {
+public class GuessResult {
     int ballCount;
     int strikeCount;
 
-    public Guess(int ballCount, int strikeCount) {
+    public GuessResult(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
