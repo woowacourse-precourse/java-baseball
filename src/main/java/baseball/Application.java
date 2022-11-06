@@ -15,6 +15,8 @@ public class Application {
             String input = getInput();
             if (!isStrike(input, answer))
                 continue;
+            else if (isStop())
+                break;
         }
     }
     private static void startMessage() {
@@ -86,5 +88,12 @@ public class Application {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }
-
+    private static boolean isStop () {
+        int input = Integer.parseInt(Console.readLine());
+        if (input == 2)
+            return true;
+        if (input == 1)
+            return false;
+        throw new IllegalArgumentException();
+    }
 }
