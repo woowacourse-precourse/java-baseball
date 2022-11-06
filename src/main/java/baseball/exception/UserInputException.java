@@ -1,5 +1,10 @@
 package baseball.exception;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class UserInputException {
 
     private final int VALID_LENGTH = 3;
@@ -25,5 +30,14 @@ public class UserInputException {
             return false;
         }
         return true;
+    }
+
+    public boolean isNotDuplicate(String userInput) {
+        List<String> splitUserInput = Arrays.asList(userInput.split(""));
+        Set<String> userInputSet = new HashSet<>(splitUserInput);
+        if (splitUserInput.size() == userInputSet.size()) {
+            return true;
+        }
+        return false;
     }
 }
