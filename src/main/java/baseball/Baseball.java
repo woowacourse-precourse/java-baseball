@@ -50,4 +50,30 @@ public class Baseball {
         }
         return Arrays.asList(ballCount, strikeCount);
     }
+
+    /**
+     * 볼과 스트라이크 갯수로 힌트 출력 구문 생성
+     * @param baseballCount
+     * @return
+     */
+    public String getHintCode(List<Integer> baseballCount) {
+        int ballCount = baseballCount.get(0);
+        int strikeCount = baseballCount.get(1);
+
+        if ((ballCount + strikeCount) == 0) {
+            return "낫싱";
+        }
+
+        StringBuilder hintCode = new StringBuilder();
+
+        if (ballCount != 0) {
+            hintCode.append(ballCount+"볼");
+        }
+
+        if (strikeCount != 0) {
+            hintCode.append(" "+strikeCount+"스트라이크");
+        }
+
+        return hintCode.toString();
+    }
 }

@@ -43,6 +43,8 @@ public class Application {
              isGameNumber(userInput);
 
             List<Integer> baseballCount = baseball.getTotalBallCount(userInput);
+            String hintCode = baseball.getHintCode(baseballCount);
+
         }
     }
 
