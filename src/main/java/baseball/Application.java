@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = randomPick();
-        anser(computer);
+        answer(computer);
     }
 
     /*1.랜덤으로 컴퓨터가 임의의 값 선택.*/
@@ -33,12 +33,7 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String strNumber = scan.next();
-        /*예외처리: 세자리가 아닐때 같은 숫자가 있을때*/
-        /*if (!(strNumber.length() == 3)) {
-            System.out.println("세자리 숫자를 입력해주세요");
-        } else if () {
 
-        }*/
         for (String chr : strNumber.split("")) {
             user.add(Integer.parseInt(chr));
         }
@@ -83,8 +78,17 @@ public class Application {
     }
 
     /*6. 시작문구 입력, 새로시작 및 종료 메서드*/
-    public static void anser(List<Integer> computer) {
+    public static void answer(List<Integer> computer) {
         List<Integer> user = inputNumber();
+        /*예외처리: 세자리가 아닐때 같은 숫자가 있을때*/
+        if (user.get(0).equals(user.get(1)) ||user.get(0).equals(user.get(2))||user.get(1).equals(user.get(2))) {
+            System.out.println("중복 숫자를 입력하지 마세요");
+            user = inputNumber();
+        }
+        if (!(user.size() == 3)) {
+            System.out.println("세자리 숫자를 입력해주세요");
+            user = inputNumber();
+        }
         int countStrike = strike(user, computer);
         int countBall = ball(user, computer);
         String counting = counting(countStrike, countBall);
@@ -96,10 +100,10 @@ public class Application {
             int game = scanner.nextInt();
             if (game == 1) {
                 List<Integer> computerNext = randomPick();
-                anser(computerNext);
+                answer(computerNext);
             }
         } else {
-            anser(computer);
+            answer(computer);
         }
     }
 }
