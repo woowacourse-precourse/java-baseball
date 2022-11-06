@@ -56,4 +56,13 @@ public class Game {
 			System.out.println(ball + MESSAGE_BALL + MESSAGE_BLANK + strike + MESSAGE_STRIKE);
 		}
 	}
+
+	public void retryOrNot() {
+		status.setStatusTerminating();
+		user.scanInputByStatus(status.getStatus());
+		
+		if(user.getValidatedUserInput().get(0).equals(1)) {
+			gameStart();
+		}
+	}
 }
