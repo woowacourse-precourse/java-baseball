@@ -29,10 +29,10 @@ public class BaseballGame {
             String inputValue = numberScanner.inputNumber();
             InputNumbers inputNumber = newInstance(inputValue);
 
-            CountResult countResult = randomNumbers.countBallAndStrike(inputNumber);
-            messagePrinter.printBallAndStrikeCount(countResult.createStringFormatOfCountResult());
+            CountResult countResult = randomNumbers.ballAndStrikeCount(inputNumber);
+            messagePrinter.printBallAndStrikeCount(countResult.stringFormatOfCountResult());
 
-            if (countResult.isThreeStrike()) {
+            if (countResult.withThreeStrike()) {
                 messagePrinter.printCorrectAnswerMessage();
                 oneOrTwoForRestartGame = numberScanner.inputOneOrTwo();
             }

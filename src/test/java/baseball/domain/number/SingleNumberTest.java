@@ -21,7 +21,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        int result = singleNumber.judgeBall(answer);
+        int result = singleNumber.judgementOnBall(answer);
         assertThat(result).isEqualTo(1);
     }
 
@@ -34,7 +34,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        int result = singleNumber.judgeBall(answer);
+        int result = singleNumber.judgementOnBall(answer);
         assertThat(result).isEqualTo(0);
     }
 

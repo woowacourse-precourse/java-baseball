@@ -1,7 +1,7 @@
 package baseball.domain.randomnumber;
 
 import baseball.domain.CountResult;
-import baseball.domain.NumberUtils;
+import baseball.domain.SingleNumberUtils;
 import baseball.domain.SingleNumber;
 import baseball.domain.inputnumber.InputNumbers;
 
@@ -14,16 +14,16 @@ public class RandomNumbers {
     private final List<SingleNumber> randomNumbers;
 
     public RandomNumbers() {
-        this(NumberUtils.singleNumberList(randomNumber()));
+        this(SingleNumberUtils.singleNumberList(randomNumber()));
     }
 
     public RandomNumbers(List<SingleNumber> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
 
-    public CountResult countBallAndStrike(InputNumbers inputNumbers) {
-        int ballCount = inputNumbers.countBall(randomNumbers);
-        int strikeCount = inputNumbers.countStrike(randomNumbers);
+    public CountResult ballAndStrikeCount(InputNumbers inputNumbers) {
+        int ballCount = inputNumbers.ballCount(randomNumbers);
+        int strikeCount = inputNumbers.strikeCount(randomNumbers);
 
         return new CountResult(ballCount, strikeCount);
     }

@@ -2,7 +2,7 @@ package baseball.domain.inputnumber;
 
 import java.util.stream.IntStream;
 
-import static baseball.domain.NumberUtils.singleNumberList;
+import static baseball.domain.SingleNumberUtils.singleNumberList;
 
 public class InputNumberFactory {
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.RepeatedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomNumberFactoryTest {
+class RandomNumberTest {
 
     @Nested  // 줄인다.
     class 정해진_개수의_숫자가_생성된다 {

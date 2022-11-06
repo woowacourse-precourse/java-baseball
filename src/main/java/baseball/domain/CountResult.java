@@ -10,11 +10,11 @@ public class CountResult {
         this.strikeCount = strikeCount;
     }
 
-    public boolean isThreeStrike() {
+    public boolean withThreeStrike() {
         return strikeCount == 3;
     }
 
-    public String createStringFormatOfCountResult() {
+    public String stringFormatOfCountResult() {
         if (ballCount == 0 && strikeCount == 0) {
             return "낫싱";
         }

@@ -12,16 +12,16 @@ public class InputNumbers {
         this.inputNumbers = inputNumbers;
     }
 
-    public int countBall(List<SingleNumber> randomNumbers) {
+    public int ballCount(List<SingleNumber> randomNumbers) {
         int ballCount = 0;
         for (SingleNumber inputNumber : inputNumbers) {
-            ballCount += inputNumber.judgeBall(randomNumbers);
+            ballCount += inputNumber.judgementOnBall(randomNumbers);
         }
 
         return ballCount;
     }
 
-    public int countStrike(List<SingleNumber> randomNumbers) {
+    public int strikeCount(List<SingleNumber> randomNumbers) {
         int strikeCount = 0;
         for (SingleNumber inputNumber : inputNumbers) {
             if (randomNumbers.contains(inputNumber)) {

@@ -20,7 +20,7 @@ class InputNumbersTest {
                 new SingleNumber(2, 2)
         );
 
-        assertThat(inputNumbers.countBall(randomNumbers)).isEqualTo(3);
+        assertThat(inputNumbers.ballCount(randomNumbers)).isEqualTo(3);
     }
 
     @Test
@@ -32,7 +32,7 @@ class InputNumbersTest {
                 new SingleNumber(2, 3)
         );
 
-        assertThat(inputNumbers.countBall(randomNumbers)).isEqualTo(0);
+        assertThat(inputNumbers.ballCount(randomNumbers)).isEqualTo(0);
     }
 
     @Test
@@ -44,7 +44,7 @@ class InputNumbersTest {
                 new SingleNumber(2, 3)
         );
 
-        assertThat(inputNumbers.countStrike(randomNumbers)).isEqualTo(3);
+        assertThat(inputNumbers.strikeCount(randomNumbers)).isEqualTo(3);
     }
 
     @Test
@@ -56,6 +56,6 @@ class InputNumbersTest {
                 new SingleNumber(2, 2)
         );
 
-        assertThat(inputNumbers.countStrike(randomNumbers)).isEqualTo(0);
+        assertThat(inputNumbers.strikeCount(randomNumbers)).isEqualTo(0);
     }
 }
