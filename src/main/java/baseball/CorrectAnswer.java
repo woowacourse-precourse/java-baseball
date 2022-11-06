@@ -15,13 +15,12 @@ public class CorrectAnswer {
      * @param index 해당 수의 위치
      * @return 0: 불일치, 1: 볼, 2: 스트라이크
      * */
-    public int batPitchedBall(int number, int index) {
-        int strike = 0, ball = 0;
-        if(randomNumberList.get(index) == number)return 2;
-        if(randomNumberList.contains(number))return 1;
+    public PitchResult batPitchedBall(int number, int index) {
+        if(randomNumberList.get(index) == number)return PitchResult.STRIKE;
+        if(randomNumberList.contains(number))return PitchResult.BALL;
         //비교 후 결과를 출력한다.
         //3스트라이크면 true 아니면 false 반환
-        return 0;
+        return PitchResult.NONE;
     }
 
     /**
