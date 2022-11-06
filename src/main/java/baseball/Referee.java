@@ -1,9 +1,11 @@
 package baseball;
 
-public class Referee {
-    private int ComputerNum;
+import java.util.List;
 
-    public Referee(int ComputerNum) {
+public class Referee {
+    private List<Integer> ComputerNum;
+
+    public Referee(List<Integer> ComputerNum) {
         this.ComputerNum = ComputerNum;
     }
 

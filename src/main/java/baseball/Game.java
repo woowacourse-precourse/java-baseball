@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
 
     static final String Notice_intro = "숫자 야구 게임을 시작합니다.";
@@ -8,14 +10,15 @@ public class Game {
     static final String Notice_newGame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void gameStart() {
-        int ComputerNum = Num_Generator.MakeComputerNum();
+        List<Integer> ComputerNum = Num_Generator.MakeComputerNum();
         User_Input user = new User_Input();
         Referee referee = new Referee(ComputerNum);
 
         System.out.println(Notice_intro);
         while (true) {
             System.out.println(Notice_requireNum);
-            int userInput = user.getUserInput();
+            List<Integer> userInput = user.getUserInput();
+            System.out.println(userInput);
 //            referee.printResult(userInput);
         }
     }

@@ -1,13 +1,11 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class User_Input {
-    public int getUserInput() {
-
+    public List<Integer> getUserInput() {
         Scanner sc = new Scanner(System.in);
+        List<Integer> intToList = new ArrayList<>();
         int getNum = 0, flag;
         do{ // 숫자 외 입력 예외처리
             flag = 1;
@@ -16,8 +14,9 @@ public class User_Input {
             }
             catch(InputMismatchException e){
                 flag=0;
-                sc.nextLine();
-                System.out.println("정상적인 숫자를 입력하세요");
+//                sc.nextLine();
+//                System.out.println("정상적인 숫자를 입력하세요");
+                throw new IllegalArgumentException();
             }
         } while(flag==0);
 
@@ -25,7 +24,12 @@ public class User_Input {
             throw new IllegalArgumentException();
         }
 
-        return getNum;
+        for (int i=0; i<3; i++) {
+            int temp = getNum % 10;
+            intToList.add(temp);
+            getNum /= 10;
+        }
+        return intToList;
     }
 
     public static boolean Checker(Integer inputNum) {
