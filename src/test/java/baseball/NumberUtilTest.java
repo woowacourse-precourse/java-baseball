@@ -14,6 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NumberUtilTest {
     @ParameterizedTest
+    @CsvSource(
+            value = {"2:1:9", "51:1:8", "127:1:9", "113:1:9"},
+            delimiter = ':'
+    )
+    @DisplayName("numericBoundCheck 함수가 모든 문자열 구성 문자가 start 부터 end 사이의 숫자라고 판단하는 것을 확인한다")
+    void numericBoundCheckTestO(String str, int start, int end) {
+        assertTrue(NumberUtil.numericBoundCheck(str, start, end));
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {":1:9", "a11:1:8", "179:0:3"},
+            delimiter = ':'
+    )
+    @DisplayName("numericBoundCheck 함수가 문자열 구성 문자 중 일부가 start 부터 end 사이의 숫자가 아니라고 판단하는 것을 확인한다")
+    void numericBoundCheckTestX(String str, int start, int end) {
+        assertFalse(NumberUtil.numericBoundCheck(str, start, end));
+    }
+
+    @ParameterizedTest
     @MethodSource({"provideNoDuplTestcase"})
     @DisplayName("noDuplicateCheck 함수가 문자열에 중복이 없는 것을 감지하는지 확인한다")
     void noDuplicateCheckTestO(String str) {
