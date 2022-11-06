@@ -1,5 +1,9 @@
 package baseball.sevice;
 
+import static baseball.enums.AsciiType.ASCII_NINE;
+import static baseball.enums.AsciiType.ASCII_ONE;
+import static baseball.enums.AsciiType.ASCII_ZERO;
+
 import baseball.domain.ComputerNumber;
 import baseball.exception.ErrorCode;
 import baseball.repository.NumberBaseballRepository;
@@ -7,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballService {
-    private static final int ASCII_ZERO = 48;
-    private static final int ASCII_ONE = 49;
-    private static final int ASCII_NINE = 57;
     private static final int CORRECT_LENGTH = 3;
     private static final int FIRST_NUMBER = 0;
     private static final int SECOND_NUMBER = 1;
@@ -32,16 +33,16 @@ public class NumberBaseballService {
 
     public int getBallCount(ComputerNumber computerNumber, String userAnswer) {
         int ballCount = 0;
-        if (userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO == computerNumber.getSecondNumber()
-                || userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO == computerNumber.getThirdNumber()) {
+        if (userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getSecondNumber()
+                || userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO == computerNumber.getFirstNumber()
-                || userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO == computerNumber.getThirdNumber()) {
+        if (userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getFirstNumber()
+                || userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO == computerNumber.getFirstNumber()
-                || userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO == computerNumber.getSecondNumber()) {
+        if (userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getFirstNumber()
+                || userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getSecondNumber()) {
             ballCount++;
         }
         return ballCount;
@@ -49,13 +50,13 @@ public class NumberBaseballService {
 
     public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
         int strikeCount = 0;
-        if (computerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
             strikeCount++;
         }
-        if (computerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
             strikeCount++;
         }
-        if (computerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+        if (computerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
             strikeCount++;
         }
         return strikeCount;
@@ -90,16 +91,16 @@ public class NumberBaseballService {
     }
 
     private boolean checkNumber(String userAnswer) {
-        if (userAnswer.charAt(FIRST_NUMBER) < ASCII_ONE
-                || userAnswer.charAt(FIRST_NUMBER) > ASCII_NINE) {
+        if (userAnswer.charAt(FIRST_NUMBER) < ASCII_ONE.getAsciiNumber()
+                || userAnswer.charAt(FIRST_NUMBER) > ASCII_NINE.getAsciiNumber()) {
             return false;
         }
-        if (userAnswer.charAt(SECOND_NUMBER) < ASCII_ONE
-                || userAnswer.charAt(SECOND_NUMBER) > ASCII_NINE) {
+        if (userAnswer.charAt(SECOND_NUMBER) < ASCII_ONE.getAsciiNumber()
+                || userAnswer.charAt(SECOND_NUMBER) > ASCII_NINE.getAsciiNumber()) {
             return false;
         }
-        if (userAnswer.charAt(THIRD_NUMBER) < ASCII_ONE
-                || userAnswer.charAt(THIRD_NUMBER) > ASCII_NINE) {
+        if (userAnswer.charAt(THIRD_NUMBER) < ASCII_ONE.getAsciiNumber()
+                || userAnswer.charAt(THIRD_NUMBER) > ASCII_NINE.getAsciiNumber()) {
             return false;
         }
         return true;
