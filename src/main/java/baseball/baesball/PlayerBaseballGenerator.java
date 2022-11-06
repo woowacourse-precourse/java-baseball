@@ -5,11 +5,7 @@ import baseball.console.ConsoleInput;
 import java.util.List;
 
 public class PlayerBaseballGenerator implements BaseballGenerator {
-    private final ConsoleInput consoleInput;
-
-    public PlayerBaseballGenerator(ConsoleInput consoleInput) {
-        this.consoleInput = consoleInput;
-    }
+    private final ConsoleInput consoleInput = new ConsoleInput();
 
     @Override
     public Baseball generateBaseball() {
