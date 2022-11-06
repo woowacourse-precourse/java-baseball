@@ -1,7 +1,15 @@
 package baseball;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 public class PlayerInput {
+
+    public List<String> ChangeStringToList(String input) {
+        List<String> inputStringList = Arrays.asList(input.split(""));
+        return inputStringList;
+    }
     public void InputTest(String input) {
 
         ExceptionIfFalse(CheckInputLength(input));
