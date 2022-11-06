@@ -66,6 +66,12 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+        @Test
+        void 사용자입력에_중복된_수가_있으면_오류발생() {
+            String inValidInput = "113";
+            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
