@@ -1,10 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 public class Core {
     public boolean isDigitStrike(List<Integer> computerNumber, List<Integer> userNumber, int index){
@@ -72,17 +73,29 @@ public class Core {
     }
 
     public void validateStringThreeDifferentDigits(String input){
-        if(input.length()!=3){
+        validateStringLength(input,3);
+        validateStringNaturalNumbers(input);
+        validateAllDifferentCharacters(input);
+    }
+
+    public void validateStringLength(String input, int length){
+        if(input.length()!=length){
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
-        HashSet<Character> set = new HashSet<>();
+    }
+
+    public void validateStringNaturalNumbers(String input){
         for(char c : input.toCharArray()){
             if(!Character.isDigit(c) || c=='0'){
                 throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
             }
-            set.add(c);
         }
-        if(set.size()!=3){
+    }
+
+    public void validateAllDifferentCharacters(String input){
+        List<Character> list = input.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        HashSet<Character> set = new HashSet<>(list);
+        if(set.size()!=input.length()){
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
     }
