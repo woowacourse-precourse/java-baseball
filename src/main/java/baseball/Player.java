@@ -16,4 +16,7 @@ public class Player {
         return input.length() == DESIRED_LENGTH;
     }
 
+    public boolean containZero(String input) {
+        return input.contains("0");
+    }
 }
