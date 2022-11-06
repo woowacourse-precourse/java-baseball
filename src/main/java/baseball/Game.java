@@ -78,23 +78,10 @@ public class Game {
     }
 
     public List<Integer> stringToListInteger(String userAnswer) {
-        List<Integer> x = Arrays.stream(userAnswer.split(""))
+        return Arrays.stream(userAnswer.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        System.out.println(x);
-        return x;
     }
-
-//    private List<Integer> stringToListInteger(String userAnswer) {
-//        System.out.println(listToListInteger(List.of(userAnswer.split(""))));
-//        return listToListInteger(List.of(userAnswer.split("")));
-//    }
-//
-//    private List<Integer> listToListInteger(List<String> answerList) {
-//        return answerList.stream()
-//                .map(Integer::parseInt)
-//                .collect(Collectors.toList());
-//    }
 
     private boolean printResultCompareWithAnswer(HashMap<String, Integer> strikeAndBallCount) {
         Integer strike = strikeAndBallCount.get("Strike");
