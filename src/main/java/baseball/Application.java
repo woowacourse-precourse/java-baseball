@@ -116,6 +116,17 @@ public class Application {
         }
     }
 
+    /** 게임 실행 기능 */
+    public static void runGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computer = getComputerNumber();
+        List<Integer> player = getPlayerNumber();
+
+        while (!isSameComputerPlayer(computer, player)) {
+            player = getPlayerNumber();
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
