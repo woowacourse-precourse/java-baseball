@@ -22,6 +22,15 @@ public class Game {
 	Opponent opponent;
 	StrikeAndBall strikeAndBall;
 
+	public Game() {
+
+	}
+
+	public Game(Player player, Opponent opponent, StrikeAndBall strikeAndBall) {
+		this.player = player;
+		this.opponent = opponent;
+		this.strikeAndBall = strikeAndBall;
+	}
 
 	public void prepareGame() {
 		opponent = new Opponent(List.copyOf(RandomUtil.getRandomUniqueNumbers(START_NUMBER, END_NUMBER, NUMBER_LENGTH)));
