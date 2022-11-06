@@ -102,6 +102,74 @@ public class Application {
         return false;
     }
 
+    static int compare_computer_user(List<Integer> computer_number_list) {
+        List<Integer> temp_computer_number_list = computer_number_list;
+        int computer_number_1 = computer_number_list.get(0);
+        int computer_number_2 = computer_number_list.get(1);
+        int computer_number_3 = computer_number_list.get(2);
+
+        Boolean strike_3 = false;
+
+        while (!strike_3) {
+            // 사용자 입력 문구 출력
+            System.out.print("숫자를 입력해주세요 : ");
+
+            List<Character> temp_user_number_list;
+            temp_user_number_list = user_enter_number();
+
+            int error;
+            error = check_user_number(temp_user_number_list);
+
+            if (error == 1) {
+                return 1;
+            }
+
+            int user_number_1 = Character.getNumericValue(temp_user_number_list.get(0));
+            int user_number_2 = Character.getNumericValue(temp_user_number_list.get(1));
+            int user_number_3 = Character.getNumericValue(temp_user_number_list.get(2));
+
+            int strike = 0;
+            if (computer_number_1 == user_number_1) {
+                strike = strike + 1;
+            }
+            if (computer_number_2 == user_number_2) {
+                strike = strike + 1;
+            }
+            if (computer_number_3 == user_number_3) {
+                strike = strike + 1;
+            }
+
+            int ball = 0;
+            if (computer_number_1 == user_number_2 || computer_number_1 == user_number_3) {
+                ball = ball + 1;
+            }
+            if (computer_number_2 == user_number_1 || computer_number_2 == user_number_3) {
+                ball = ball + 1;
+            }
+            if (computer_number_3 == user_number_1 || computer_number_3 == user_number_2) {
+                ball = ball + 1;
+            }
+
+            if (strike > 0) {
+                System.out.print(strike);
+                System.out.print("스트라이크 ");
+            }
+            if (ball > 0) {
+                System.out.print(ball);
+                System.out.print("볼 ");
+            }
+            if (strike == 0 && ball == 0) {
+                System.out.print("낫싱");
+            }
+            System.out.println();
+
+            strike_3 = check_strike_3(strike);
+        }
+
+        return 0;
+    }
+
+    
     public static void main(String[] args) {
         Boolean next_game = true;
 
@@ -111,6 +179,13 @@ public class Application {
         while (next_game) {
             List<Integer> computer_number_list = new ArrayList<Integer>();
             computer_number_list = computer_create_number();
+
+            int error;
+            error = compare_computer_user(computer_number_list);
+
+            if (error == 1) {
+                return;
+            }
         }
     }
 }
