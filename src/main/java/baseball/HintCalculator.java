@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.List;
+
 public interface HintCalculator {
 
-    public Hint getHint(int answer, int userInput);
+    public Hint getHint(List<Integer> computer, List<Integer> user);
 }
