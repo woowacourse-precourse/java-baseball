@@ -9,8 +9,17 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        int strike = 0;
+        while (true) {
+            strike = getResult();
+            if (strike == 3) {
 
+            }
+        }
+    }
 
+    private static void printGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static int getResult() {
