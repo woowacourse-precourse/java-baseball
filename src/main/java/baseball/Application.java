@@ -89,7 +89,21 @@ public class Application {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    break game;
+                    while(true){
+                        try {
+                            game_set = Integer.parseInt(UserInput());
+                            if(game_set == 1) {
+                                continue game;
+                            }else if (game_set == 2) {
+                                break game;
+                            }else {
+                                throw new Exception();
+                            }
+                        }catch (Exception e){
+                            System.out.println("알맞은 값을 입력하세요");
+                            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                        }
+                    }
 
                 }else if(ballstrike.get(0) == 0 && ballstrike.get(1) > 0){
                     System.out.println(ballstrike.get(1) + "스트라이크");
