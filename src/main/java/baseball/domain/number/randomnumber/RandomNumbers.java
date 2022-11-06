@@ -1,8 +1,6 @@
 package baseball.domain.number.randomnumber;
 
 import baseball.domain.count.CountResult;
-import baseball.domain.count.ball.BallCounter;
-import baseball.domain.count.strike.StrikeCounter;
 import baseball.domain.number.SingleNumber;
 import baseball.domain.number.inputnumber.InputNumbers;
 
@@ -11,20 +9,14 @@ import java.util.List;
 public class RandomNumbers {
 
     private final List<SingleNumber> randomNumbers;
-    private final BallCounter ballCounter;
-    private final StrikeCounter strikeCounter;
 
-    public RandomNumbers(List<SingleNumber> randomNumbers,
-                         BallCounter ballCounter, StrikeCounter strikeCounter) {
+    public RandomNumbers(List<SingleNumber> randomNumbers) {
         this.randomNumbers = randomNumbers;
-        this.ballCounter = ballCounter;
-        this.strikeCounter = strikeCounter;
     }
 
     public CountResult countBallAndStrike(InputNumbers inputNumbers) {
-        List<SingleNumber> inputNumberList = inputNumbers.inputNumbers();
-        int ballCount = ballCounter.checkBall(randomNumbers, inputNumberList);
-        int strikeCount = strikeCounter.checkStrike(randomNumbers, inputNumberList);
+        int ballCount = inputNumbers.countBall(randomNumbers);
+        int strikeCount = inputNumbers.countStrike(randomNumbers);
 
         return new CountResult(ballCount, strikeCount);
     }
