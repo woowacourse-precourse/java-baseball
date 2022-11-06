@@ -6,11 +6,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringTest {
 
@@ -215,4 +218,31 @@ public class StringTest {
             System.out.println("test");
         }).doesNotThrowAnyException();
     }
+
+
+    class TestUser {
+
+        String email;
+        String name;
+        int password;
+
+        public TestUser(String email, String name, int password) {
+            this.email = email;
+            this.name = name;
+            this.password = password;
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"q", "qwerasdfzxcv", "qq23"})
+    void 파라미터_테스트_연습(String name) {
+        String VALID_EMAIL = "email";
+        int password = 5;
+
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+            () -> new TestUser(VALID_EMAIL, name, password));
+
+        assertThat(e.getMessage()).isEqualTo("메시가 일치 하지 않습니다.");
+    }
+
 }
