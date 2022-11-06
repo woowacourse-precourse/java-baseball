@@ -9,6 +9,13 @@ public class GameNumberCalculatorService {
     private int strikeCount;
     private List<Integer> strikeAndBallCountList = new ArrayList<>();
 
+    public List<Integer> calculateGameNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        resetCalculator();
+        strikeAndBallCountList.add(getStrikeCount(userNumbers, computerNumbers));
+        strikeAndBallCountList.add(getBallCount(userNumbers, computerNumbers));
+        return strikeAndBallCountList;
+    }
+
     public int getStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
         countStrike(userNumbers, computerNumbers);
         return strikeCount;
