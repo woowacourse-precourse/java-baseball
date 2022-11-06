@@ -11,6 +11,20 @@ public class Computer {
     int ball;
     int strike;
 
+    public void printResult() {
+        if (this.strike == 3) {
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else if (this.ball == 0 && this.strike == 0) {
+            System.out.println("낫싱");
+        } else if (this.strike == 0) {
+            System.out.println(this.ball + "볼");
+        } else if (this.ball == 0) {
+            System.out.println(this.strike + "스트라이크");
+        } else {
+            System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+        }
+    }
+
     public void countBall(List<Integer> userInputNumber) {
         int ball = 0;
         for (int i = 0; i < userInputNumber.size(); i++) {
