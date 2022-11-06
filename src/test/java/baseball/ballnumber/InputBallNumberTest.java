@@ -1,4 +1,4 @@
-package baseball;
+package baseball.ballnumber;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
