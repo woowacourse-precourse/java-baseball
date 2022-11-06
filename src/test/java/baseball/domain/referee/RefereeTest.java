@@ -112,11 +112,15 @@ class RefereeTest {
         }
 
         private List<BaseballNumber> convertNumberListToBaseballNumberList(List<Integer> numbers) {
-            return numbers.stream().map(BaseballNumber::new).collect(Collectors.toList());
+            return numbers.stream()
+                    .map(BaseballNumber::new)
+                    .collect(Collectors.toList());
         }
 
         private List<Integer> convertStringToNumberList(String input) {
-            return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
+            return Arrays.stream(input.split(""))
+                    .map(Integer::parseInt).
+                    collect(Collectors.toList());
         }
     }
 }
