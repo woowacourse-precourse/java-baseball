@@ -1,7 +1,28 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        play();
+    }
+
+    private static void play() throws IllegalArgumentException{
+        String continueFlag = "1";
+
+        do {
+            if (continueFlag.equals("2")) {
+                break;
+            } else if (!continueFlag.equals("1")) {
+                throw new IllegalArgumentException();
+            }
+
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String answer = randomNum();
+            guess(answer);
+            continueFlag = replay();
+        } while (true);
     }
 }
