@@ -15,12 +15,20 @@ public class GameTest {
         List<Integer> result = game.getRandomNumberList();
 
         assertThat(result).hasSize(3);
-        for (int number : result) {
-            assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
-        }
         assertThat(result.get(0)).isNotEqualTo(result.get(1));
         assertThat(result.get(1)).isNotEqualTo(result.get(2));
         assertThat(result.get(2)).isNotEqualTo(result.get(0));
+        for (int number : result) {
+            assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+        }
+    }
+
+    @Test
+    void getUserNumberList_메서드가_문자열을_리스트로_변환하는지_검증() {
+        String input = "234";
+        List<Integer> result = game.getUserNumberList(input);
+
+        assertThat(result).containsExactly(2,3,4);
     }
 
     @Test
