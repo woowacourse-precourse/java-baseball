@@ -37,4 +37,9 @@ public class PrepareGameTest {
     void user_입력_값_3_자리_숫자가_아닌_경우(){
         assertThatThrownBy(() -> prepareGame.setUserNumberForTest("3596")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void user_올바른_입력_값인_경우(){
+        assertThat(prepareGame.setUserNumberForTest("245")).isEqualTo("245");
+    }
 }
