@@ -1,8 +1,8 @@
 # 기능 목록
 
-- init()
-  - 초기 메시지 출력
+- generateRandomNumber()
   - 정답 숫자 생성
+  - 출력: 랜덤으로 생성한 세 자리 숫자
 - userInput()
   - guess 입력 받기
   - 출력 : 입력받은 숫자
