@@ -207,4 +207,56 @@ class MethodTest {
         // then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void validateUserInputType_매서드로_사용자_입력값_타입을_확인() {
+        // given
+        String userInput1 = "123";
+        String userInput2 = "";
+        String userInput3 = " ";
+        String userInput4 = "abc";
+
+        // expected
+        Application.validateUserInputType(userInput1);
+        assertThatThrownBy(() -> Application.validateUserInputType(userInput2))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateUserInputType(userInput3))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateUserInputType(userInput4))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void stringToInt_메서드_사용시_string을_int로_변환() {
+        // given
+        String userInput = "123";
+
+        // when
+        int result = Application.stringToInt(userInput);
+
+        // then
+        assertThat(result).isEqualTo(123);
+    }
+
+    @Test
+    void validateUserInputIsStartOrExit_매서드_사용시_매개변수가_1또는_2가_아니면_예외_발생() {
+        // given
+        int userInput = 3;
+
+        // expected
+        assertThatThrownBy(() -> Application.validateUserInputIsStartOrExit(userInput))
+                .hasMessage(USER_INPUT_RANGE_ERROR)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateUserInputIsStartOrExit_매서드_사용시_매개변수가_1또는_2라면_정상_동작() {
+        // given
+        int userInputSTART = 1;
+        int userInputEXIT = 2;
+
+        // expected
+        Application.validateUserInputIsStartOrExit(userInputSTART);
+        Application.validateUserInputIsStartOrExit(userInputEXIT);
+    }
 }

@@ -17,6 +17,8 @@ public class Application {
     public static final String ALL_STRIKES = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
+    public static final String USER_INPUT_TYPE_ERROR = "숫자만 입력하세요";
+    public static final String USER_INPUT_RANGE_ERROR = "1또는 2만 입력하세요";
 
 
     public static void main(String[] args) {
@@ -141,5 +143,23 @@ public class Application {
         }
 
         return 1;
+    }
+
+    static void validateUserInputType(String userInput) {
+        try {
+            Integer.parseInt(userInput);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(USER_INPUT_TYPE_ERROR);
+        }
+    }
+
+    static int stringToInt(String userInput) {
+        return Integer.parseInt(userInput);
+    }
+
+    static void validateUserInputIsStartOrExit(int userInput) {
+        if (1 > userInput || userInput > 2) {
+            throw new IllegalArgumentException(USER_INPUT_RANGE_ERROR);
+        }
     }
 }
