@@ -11,7 +11,22 @@ public class Game {
         this.player = new Player();
     }
 
-    private void init() {
+    public void init() {
         System.out.println(START_STRING);
+    }
+
+    public void start() {
+        computer.setRandomNumber();
+        player.setNumber();
+        HashMap<Integer, Integer> compareBoard = new HashMap<>();
+        compareBoard = getCompareBoard(computer);
+        }
+    private HashMap<Integer, Integer> getCompareBoard(Player computer) {
+        HashMap<Integer, Integer> compareBoard = new HashMap<>();
+        ArrayList<Integer> computerNumbers = computer.getNumbers();
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            compareBoard.put(computerNumbers.get(i), i);
+        }
+        return compareBoard;
     }
 }
