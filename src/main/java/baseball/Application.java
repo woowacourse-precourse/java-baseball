@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -76,6 +77,21 @@ public class Application {
             System.out.println(ballCount + "볼");
         } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
+
+    public static void playGame(String randomNumber) {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumber = Console.readLine();
+            validateInputNumber(inputNumber);
+            int ballCount = checkBall(randomNumber, inputNumber);
+            int strikeCount = checkStrike(randomNumber, inputNumber);
+            printResult(ballCount, strikeCount);
+            if (strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 }
