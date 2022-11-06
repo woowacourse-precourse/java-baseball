@@ -34,4 +34,12 @@ public class SubUtils {
         }
     }
 
+
+    public List<Integer> convertStringToList(String input) {
+        List<Integer> list = Arrays.asList(input.split("")).stream()
+                .mapToInt(str -> Integer.parseInt(str))
+                .boxed()
+                .collect(Collectors.toList());
+        return list;
+    }
 }
