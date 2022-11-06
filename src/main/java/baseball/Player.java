@@ -6,9 +6,13 @@ import java.util.List;
 public class Player {
 
     private List<Integer> playerNumber;
+    private Integer strike;
+    private Integer ball;
 
     public Player() {
         this.playerNumber = new ArrayList<>();
+        this.strike = 0;
+        this.ball = 0;
     }
 
     public List<Integer> getPlayerNumber() {
@@ -44,6 +48,22 @@ public class Player {
 
     public void inputError() {
         throw new IllegalArgumentException();
+    }
+
+    public Integer getStrike() {
+        return this.strike;
+    }
+
+    public void countStrike() {
+        this.strike += 1;
+    }
+
+    public Integer getBall() {
+        return this.ball;
+    }
+
+    public void countBall() {
+        this.ball += 1;
     }
 }
 

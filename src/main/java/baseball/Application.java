@@ -29,6 +29,8 @@ public class Application {
     static void playGame() {
 
         throwBall();
+        ballCount();
+        message.ballCountMessage(player.getBall(), player.getStrike());
     }
 
     static void throwBall() {
@@ -37,5 +39,18 @@ public class Application {
 
         player = new Player();
         player.setPlayerNumber(inputNumber);
+    }
+
+    static void ballCount() {
+        List<Integer> goalNumber = goal.getGoalNumber();
+        List<Integer> playerNumber = player.getPlayerNumber();
+
+        for (Integer playerNumberUnit : playerNumber) {
+            if (goalNumber.indexOf(playerNumberUnit) == playerNumber.indexOf(playerNumberUnit)) {
+                player.countStrike();
+            } else if (goalNumber.contains(playerNumberUnit)) {
+                player.countBall();
+            }
+        }
     }
 }
