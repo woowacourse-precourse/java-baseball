@@ -20,7 +20,7 @@ public class BaseballUtil {
         return return_value;
     }
 
-    public void printLine(String contents) {
+    public void printlnLine(String contents) {
         System.out.println(contents);
     }
 }
