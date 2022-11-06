@@ -6,14 +6,16 @@ import java.util.stream.Collectors;
 
 public class PlayerInput {
 
-    public PlayerInput(String inputPlayer) {
+    public List<Integer> ReturnPlayerNum(String inputPlayer) {
 
         CheckAllIllegalArgumentException(inputPlayer);
         List<String> inputStr = ChangeStringToList(inputPlayer);
         List<Integer> inputIntLIst = ChangeStrListToNumList(inputStr);
+
+        return inputIntLIst;
     }
 
-    public List<String> ChangeStringToList(String input) {
+    private List<String> ChangeStringToList(String input) {
 
         return Arrays.asList(input.split(""));
     }
@@ -24,6 +26,7 @@ public class PlayerInput {
                 .map(str -> Integer.parseInt(str))
                 .collect(Collectors.toList());
     }
+
     private void CheckAllIllegalArgumentException(String input) {
 
         ExceptionIfFalse(CheckInputLength(input));
@@ -34,7 +37,7 @@ public class PlayerInput {
         // 중복 체크
     }
 
-    public boolean CheckInputLength(String input) {
+    private boolean CheckInputLength(String input) {
         boolean isLengthCorrect = true;
 
         if(input.length() != 3) {
@@ -44,7 +47,7 @@ public class PlayerInput {
         return isLengthCorrect;
     }
 
-    public boolean CheckIsNumberDupli(String input) {
+    private boolean CheckIsNumberDupli(String input) {
         boolean isNotDuplication = true;
 
         for(int i = 0; i < input.length()-1; i++) {
@@ -56,7 +59,7 @@ public class PlayerInput {
         return isNotDuplication;
     }
 
-    public boolean ReturnFalseIfDupli(String input, int idxNumber) {
+    private boolean ReturnFalseIfDupli(String input, int idxNumber) {
         for(int i = idxNumber + 1; i < input.length(); i++) {
             if(input.charAt(idxNumber) == input.charAt(i)) {
                 return false;
@@ -67,7 +70,7 @@ public class PlayerInput {
     }
 
 
-    public boolean CheckIsInputNumber(String input) {
+    private boolean CheckIsInputNumber(String input) {
         boolean isNumberCorrect = true;
 
         for(int i = 0; i < input.length(); i++) {
@@ -80,7 +83,7 @@ public class PlayerInput {
         return isNumberCorrect;
     }
 
-    public boolean ReturnIsNumberDigit(char digit) {
+    private boolean ReturnIsNumberDigit(char digit) {
         if(digit >= '1' && digit <= '9') {
             return true;
         }
@@ -88,7 +91,7 @@ public class PlayerInput {
         return false;
     }
 
-    public void ExceptionIfFalse(boolean isResultFalse)
+    private void ExceptionIfFalse(boolean isResultFalse)
             throws IllegalArgumentException {
 
         if(!isResultFalse) {
