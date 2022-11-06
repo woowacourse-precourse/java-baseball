@@ -19,14 +19,18 @@ public class Print {
         System.out.print(ROUND_START_MESSAGE);
     }
 
-    public static void printRoundResult(HashMap<Hint, Integer> hintCountMap) {
-        if (hintCountMap.containsKey(Hint.BALL)) {
-            System.out.print(hintCountMap.get(Hint.BALL) + ROUND_RESULT_BALL_MESSAGE);
+    public static void printRoundResult(Hints hints) {
+        int strikeCount = hints.findHintCount(Hint.STRIKE);
+        int ballCount = hints.findHintCount(Hint.BALL);
+        int nothingCount = hints.findHintCount(Hint.NOTHING);
+
+        if (ballCount > 0) {
+            System.out.print(ballCount + ROUND_RESULT_BALL_MESSAGE);
         }
-        if (hintCountMap.containsKey(Hint.STRIKE)) {
-            System.out.print(hintCountMap.get(Hint.STRIKE) + ROUND_RESULT_STRIKE_MESSAGE);
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + ROUND_RESULT_STRIKE_MESSAGE);
         }
-        if (hintCountMap.getOrDefault(Hint.NOTHING, 0) == 3) {
+        if (nothingCount == 3) {
             System.out.print(ROUND_RESULT_NOTHING_MESSAGE);
         }
         System.out.println();

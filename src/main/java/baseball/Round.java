@@ -1,12 +1,10 @@
 package baseball;
 
-import java.util.HashMap;
-
 public class Round {
 
     private final Computer computer;
     private Numbers numbers;
-    private HashMap<Hint, Integer> hintCountMap = new HashMap<>();
+    private Hints hints;
 
     public Round(Computer computer) {
         this.computer = computer;
@@ -19,24 +17,17 @@ public class Round {
     }
 
     public void playRound() {
-        hintCountMap.clear();
+        hints = new Hints();
         for (int index = 0; index < 3; index++) {
             Hint hint = getHint(index);
-            putHintCountMap(hint, hintCountMap);
+            hints.addHint(hint);
         }
-        Print.printRoundResult(hintCountMap);
+        Print.printRoundResult(hints);
     }
 
     public boolean isThreeStrike(){
-        int countStrike = hintCountMap.getOrDefault(Hint.STRIKE, 0);
+        int countStrike = hints.findHintCount(Hint.STRIKE);
         return (countStrike == 3);
-    }
-
-    private void putHintCountMap (Hint hint, HashMap<Hint, Integer> hintCountMap) {
-        if (!hintCountMap.containsKey(hint)) {
-            hintCountMap.put(hint, 0);
-        }
-        hintCountMap.put(hint, hintCountMap.get(hint) + 1);
     }
 
     private Hint getHint(int index) {
@@ -55,10 +46,12 @@ public class Round {
         // 이후 인덱스 : 2 -> 0
         int nextIndex = (index + 1) % 3;
 
-        boolean isPrevBall = computer.findComputerNumber(prevIndex)
-                .equals(numbers.findNumber(index));
-        boolean isNextBall = computer.findComputerNumber(nextIndex)
-                .equals(numbers.findNumber(index));
+        Number prevComputerNumber = computer.findComputerNumber(prevIndex);
+        Number nextComputerNumber = computer.findComputerNumber(nextIndex);
+        Number userNumber = numbers.findNumber(index);
+        
+        boolean isPrevBall = userNumber.equals(prevComputerNumber);
+        boolean isNextBall = userNumber.equals(nextComputerNumber);
 
         return  isPrevBall || isNextBall;
     }
