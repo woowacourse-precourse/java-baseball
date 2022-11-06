@@ -1,8 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 
 import static baseball.Application.selectRandomNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -11,6 +18,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    private ByteArrayOutputStream outputStreamCaptor;
+    private PrintStream standardOut;
+
+    protected void systemIn(String input) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+    }
+
+    protected String getOutput() {
+        return outputStreamCaptor.toString();
+    }
+
+    @BeforeEach
+    void setUp() {
+        standardOut = System.out;
+        outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    protected void printResult() {
+        System.setOut(standardOut);
+        System.out.println(getOutput());
+    }
 
     @Test
     @DisplayName("1. 컴퓨터가 서로 다른 임의의 수 3개 선택")
@@ -22,6 +53,14 @@ class ApplicationTest extends NsTest {
         assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(1));
         assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(2));
         assertThat(randomNumber.charAt(1)).isNotEqualTo(randomNumber.charAt(2));
+    }
+
+    @Test
+    @DisplayName("2. 사용자가 숫자를 입력")
+    public void test2() {
+        systemIn("123");
+        Scanner scanner = new Scanner(System.in);
+        assertThat(getOutput().equals("123"));
     }
 
     @Test
