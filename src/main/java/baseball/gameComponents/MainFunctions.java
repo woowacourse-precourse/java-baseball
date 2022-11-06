@@ -10,27 +10,27 @@ public class MainFunctions {
     }
 
     public int[] examineGuess(List<Integer> guess, List<Integer> answer) {
-        //0번째 값 : strike;
-        //1번째 값 : ball;
-        int[] strikesAndBalls = new int[2];
+        //0번째 값 : ball;
+        //1번째 값 : strike;
+        int[] ballsAndStrikes = new int[2];
         boolean[] isPicked = new boolean[10];
         for(int i = 0; i < 3; i++) {
             int guessNumber = guess.get(i);
             int answerNumber = answer.get(i);
             //스트라이크
             if(guessNumber == answerNumber) {
-                strikesAndBalls[0]++;
+                ballsAndStrikes[1]++;
             } else {
-                isBall(guessNumber, isPicked, strikesAndBalls);
-                isBall(answerNumber, isPicked, strikesAndBalls);
+                isBall(guessNumber, isPicked, ballsAndStrikes);
+                isBall(answerNumber, isPicked, ballsAndStrikes);
             }
         }
-        return strikesAndBalls;
+        return ballsAndStrikes;
     }
 
-    private void isBall(int input, boolean[] isPicked, int[] strikesAndBalls) {
+    private void isBall(int input, boolean[] isPicked, int[] ballsAnsStrikes) {
         if(isPicked[input]) {
-            strikesAndBalls[1]++;
+            ballsAnsStrikes[0]++;
         } else {
             isPicked[input] = true;
         }
