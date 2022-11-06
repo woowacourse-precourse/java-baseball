@@ -19,7 +19,9 @@ public class Application {
         do {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            BaseBallGame baseBallGame = new BaseBallGame(pickRandom());
+            List<Integer> threeRandomValue = notDuplicatedThreeRandomValue();
+            
+            BaseBallGame baseBallGame = new BaseBallGame(threeRandomValue);
             baseBallGame.gameStart();
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -44,15 +46,16 @@ public class Application {
     }
 
 
-    private static List<Integer> pickRandom() {
-        List<Integer> computerRandom = new ArrayList<>();
-        while (computerRandom.size() < 3) {
+    private static List<Integer> notDuplicatedThreeRandomValue() {
+        List<Integer> randomValues = new ArrayList<>();
+        while (randomValues.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerRandom.contains(randomNumber)) {
-                computerRandom.add(randomNumber);
+
+            if (!randomValues.contains(randomNumber)) {
+                randomValues.add(randomNumber);
             }
         }
 
-        return List.copyOf(computerRandom);
+        return List.copyOf(randomValues);
     }
 }
