@@ -20,4 +20,10 @@ public class Application {
         }
         return computer;
     }
+
+    public static boolean hasZero(List<Integer> list) {
+        int sum = 1;
+        for (int elem : list) sum *= elem;
+        return sum == 0;
+    }
 }
