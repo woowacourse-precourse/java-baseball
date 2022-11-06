@@ -194,7 +194,7 @@ public class Application {
         if (strike > 0) {
             System.out.println(strike + STRIKE_STRING);
         }
-        if (!(hasBall && hasStrike)) {
+        if (!(hasBall || hasStrike)) {
             System.out.println(RESULT_NOTHING_MESSAGE);
         }
     }
