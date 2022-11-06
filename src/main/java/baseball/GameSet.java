@@ -20,4 +20,9 @@ public class GameSet {
         }
     }
 
+    public static String inputPlayerNumber(){
+        String playerNumber = readLine();
+        CheckException.check(playerNumber);
+        return playerNumber;
+    }
 }
