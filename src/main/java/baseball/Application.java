@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+
     }
 
     public List<Integer> setUser() {
@@ -39,12 +40,24 @@ public class Application {
 
         return computer;
     }
+
+    public int checkUserHasOneOrTwo(String input) {
+        char[] sizeHaveToBeOne = input.toCharArray();
+        int userNum = Character.getNumericValue(sizeHaveToBeOne[0]);
+        if(sizeHaveToBeOne.length != 1) {
+            throw new IllegalArgumentException();
+        }
+        if(userNum != 1 && userNum !=2 ){
+            throw new IllegalArgumentException();
+        }
+
+
+        return userNum;
+    }
     public void checkUserHasException(List<Integer> user) throws Exception{
         Exception userException = new IllegalArgumentException();
 
-        if((user.size() == 1) && (user.get(0) == 1) ) {}
-        else if((user.size() == 1) && (user.get(0) == 2) ) {}
-        else if(!(user.size() == 3)) { throw  userException; }
+        if(!(user.size() == 3)) { throw  userException; }
 
         for(Integer number : user) {
             if(number == 0) { throw userException; }

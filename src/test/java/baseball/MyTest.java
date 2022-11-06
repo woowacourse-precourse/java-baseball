@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 
 import org.junit.jupiter.api.Test;
 
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class MyTest extends NsTest {
         List<Integer> userListError = Arrays.asList(2, 2, 3);
         List<Integer> userListNormal = Arrays.asList(1, 2, 3);
         List<Integer> userListOne = List.of(1);
-        List<Integer> userListTwo = List.of(2);
 
 
         assertThatThrownBy( () -> spy(Application.class).checkUserHasException(userListError) )
@@ -34,9 +34,7 @@ public class MyTest extends NsTest {
         assertThatCode( () -> spy(Application.class).checkUserHasException(userListNormal) )
                 .doesNotThrowAnyException();
         assertThatCode( () -> spy(Application.class).checkUserHasException(userListOne) )
-                .doesNotThrowAnyException();
-        assertThatCode( () -> spy(Application.class).checkUserHasException(userListTwo) )
-                .doesNotThrowAnyException();
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 
@@ -62,6 +60,25 @@ public class MyTest extends NsTest {
     }
 
     @Test
+    void 일혹은이_입력하지_않으면_예외발생하는지_체크() {
+        String normal = "1";
+        String error1 = "5";
+        String error2 = "11";
+
+        assertThat(spy(Application.class).checkUserHasOneOrTwo(normal)).as("5러규").isEqualTo(1);
+
+        assertThatThrownBy( () -> spy(Application.class).checkUserHasOneOrTwo(error1) )
+                .as("예외")
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy( () -> spy(Application.class).checkUserHasOneOrTwo(error2) )
+                .as("예외")
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatCode( () -> spy(Application.class).checkUserHasOneOrTwo(normal) )
+                .as("보통")
+                .doesNotThrowAnyException();
+
+
+    }
 
     @Override
     protected void runMain() {

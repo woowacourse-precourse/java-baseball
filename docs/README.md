@@ -15,12 +15,19 @@
 
 <br>
 
+사용자가 입력한 숫자가 1이나 2가 아닐때 예외를 발생시키는 기능
+* 함수명 : `checkUserHasOneOrTwo`
+* parameter : String
+* return : 
+
+<br>
+
 사용자가 입력한 값이 예외적인지 판별하는 기능
 * 예외의 정의
     * 중복된 숫자
     * 1~9까지가 아닌 숫자 (0이나 10 같은 수)
     * 3자리 미만이거나 이상의 숫자
-    * 1(단독)이나 2(단독)이 아닌 숫자
+    * 1(단독)이나 2(단독)이 아닌 숫자 => `checkUserHasOneOrTwo`로 이동
 * 함수명 : `checkUserHasException`
 * parameter : List (user)
 * return : void
