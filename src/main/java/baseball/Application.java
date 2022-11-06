@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     static List<Integer> createRandomNumber(){
@@ -42,6 +43,15 @@ public class Application {
 
         return number;
     }
+    static int checkBall(int index,int value, List<Integer> computer){
+        int Ball=0;
+        for (int i = 0; i < 3; i++) {
+            if(Objects.equals(value, computer.get(i)) && index!=i)
+                Ball++;
+        }
+        return Ball;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
