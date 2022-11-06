@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.InputOutput;
+
 public class GameProcess {
     public static final int NUMBER_LENGTH = 3;
     int[] answer = new int[10];
@@ -18,7 +20,8 @@ public class GameProcess {
         // 맞을 때 까지 게임 진행
         while (!isCorrect){
             // 유저의 입력 받고 userNum = 입력 함수;
-            userNum = new int[]{7, 1, 3};
+            userNum = InputOutput.getThreeNumber();
+
             // 스트라이크, 볼 구하기
             countStrikeBall(userNum);
             isCorrect = checkCorrect();
