@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Condition;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -10,20 +11,24 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class MyTest extends NsTest{
+public class MyTest extends NsTest {
     static final int MIN_RANDOM_NUMBER = 111;
     static final int MAX_RANDOM_NUMBER = 999;
 
+    private GameContext gameCtx;
+
+    @BeforeEach
+    private void initGameCtx() {
+        gameCtx = new GameContext();
+        gameCtx.initializeContext();
+    }
+
     @Test
     void 게임초기화_난수_생성() {
-        // given
-        GameContext gameCtx = new GameContext();
-        // when
-        gameCtx.initializeContext();
         Integer answer = Integer.parseInt(gameCtx.getAnswer());
-        // then
+
         Condition<Integer> isInRange = new Condition<>(
-                    n -> (n <= MAX_RANDOM_NUMBER) && (n >= MIN_RANDOM_NUMBER),
+                n -> (n <= MAX_RANDOM_NUMBER) && (n >= MIN_RANDOM_NUMBER),
                 "range");
         assertThat(answer).is(isInRange);
         assertThat(gameCtx.getState()).isEqualTo(GameState.RUNNING);
@@ -31,13 +36,9 @@ public class MyTest extends NsTest{
 
     @Test
     void 잘못된_값_입력에_대해_예외_발생() {
-        // given
-        GameContext gameCtx = new GameContext();
-        gameCtx.initializeContext();
-        // when
         String[] invalidInputs = {"12345", "101", "a8c", "1@1asd"};
         inputNumbersIntoStdin(invalidInputs);
-        // then
+
         for (String input : invalidInputs)
             assertThatThrownBy(() -> gameCtx.handleUserInput())
                     .isInstanceOf(IllegalArgumentException.class);
@@ -46,11 +47,8 @@ public class MyTest extends NsTest{
 
     @Test
     void 볼카운트_출력() {
-        //given
-        GameContext gameCtx = new GameContext();
-        // when
         String[] inputs = {"246", "153", "513", "135"};
-        // then
+
         inputNumbersIntoStdin(inputs);
         assertRandomNumberInRangeTest(
                 () -> {
@@ -68,12 +66,9 @@ public class MyTest extends NsTest{
 
     @Test
     void 게임이_끝난_뒤_재시작_종료_구분() {
-        //given
-        GameContext gameCtx = new GameContext();
-        // when
         String[] inputsReplay = {"135", "1"};
         String[] inputsExit = {"246", "2"};
-        // then
+       
         inputNumbersIntoStdin(inputsReplay);
         assertRandomNumberInRangeTest(
                 () -> {
