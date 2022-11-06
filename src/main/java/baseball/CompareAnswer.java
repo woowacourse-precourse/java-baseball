@@ -2,16 +2,14 @@ package baseball;
 
 import java.util.List;
 
-public class Answer {
+public class CompareAnswer {
 
     public static boolean compareAnswer(List<Integer> computer, List<Integer> user){
         int[] strikeAndBallCount = new int[2];
 
-        for(int i =0;i<3;i++){
-            eachCompare(computer, user.get(i), i, strikeAndBallCount);
-        }
+        for(int i =0;i<3;i++)   eachCompare(computer, user.get(i), i, strikeAndBallCount);
 
-        System.out.print(strikeAndBallCount[0] +" "+ strikeAndBallCount[1]);
+        printAnswer(strikeAndBallCount);
 
         return false;
     }
@@ -36,5 +34,26 @@ public class Answer {
     public static boolean checkBall(int computerNumber, int userNumber){
         if(computerNumber == userNumber) return true;
         return false;
+    }
+
+    public static void printAnswer(int[] strikeAndBallCount){
+        if(strikeAndBallCount[0] == 0 && strikeAndBallCount[1] ==0){
+            System.out.println("낫싱");
+            return ;
+        }
+        if(strikeAndBallCount[0] != 0 && strikeAndBallCount[1] != 0){
+            System.out.println(strikeAndBallCount[1]+"볼 "+strikeAndBallCount[0]+"스트라이크");
+            return ;
+        }
+        if(strikeAndBallCount[0] != 0 && strikeAndBallCount[1] == 0){
+            System.out.println(strikeAndBallCount[0]+"스트라이크");
+            return ;
+        }
+        if(strikeAndBallCount[0] == 0 && strikeAndBallCount[1] != 0){
+            System.out.println(strikeAndBallCount[1]+"볼");
+            return ;
+        }
+
+        //System.out.println(strikeAndBallCount[0] +" "+ strikeAndBallCount[1]);
     }
 }
