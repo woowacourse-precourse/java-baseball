@@ -13,6 +13,21 @@ public class Application {
         System.out.println("UserNumber = " + UserNumber);
         // TODO: 프로그램 구현
     }
+    public String FixResult(List<Integer> computer, List<Integer> playerNum){
+        int total = AllCount(computer,playerNum);
+        int strike = CountStrike(computer,playerNum);
+        int ball = total - strike;
+        if (total == 0){
+            return "낫싱";
+        }
+        if (strike == 0){
+            return ball + "볼";
+        }
+        if (ball == 0){
+            return strike + "스트라이크";
+        }
+        return ball + "볼"+strike+"스트라이크";
+    }//총 갯수에서 스트라이크 숫자를 빼서 볼을 출력 그리고 하나도없는경우는 낫싱을 출력
     public int CountStrike(List<Integer> computer, List<Integer> playerNum){
         int strike = 0;
         for (int loop = 0; loop<playerNum.size();loop++){
