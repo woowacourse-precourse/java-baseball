@@ -37,8 +37,10 @@ public class GameResult {
     }
 
     private boolean isStrike(List<Integer> answerNums, List<Integer> playerNums, int numsIndex) {
-        return answerNums.get(numsIndex)
-                .equals(playerNums.get(numsIndex));
+        int answerNum = answerNums.get(numsIndex);
+        int playerNum = playerNums.get(numsIndex);
+
+        return answerNum == playerNum;
     }
 
     public boolean isNothing() {
