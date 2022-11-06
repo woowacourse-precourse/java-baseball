@@ -65,4 +65,31 @@ public class PlayGame {
 
         System.out.println(res);
     }
+
+    public static boolean isStop() {
+        boolean res = false;
+
+        boolean flag = false;
+        String stopFlag = "";
+
+        while (!flag) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            stopFlag = scan.nextLine();
+
+            if (stopFlag.equals("1")) {
+                res = false;
+                flag = true;
+            }
+            else if (stopFlag.equals("2")){
+                res = true;
+                flag = true;
+            }
+            else {
+                System.out.println("잘못된 입력입니다.");
+            }
+        }
+
+        return res;
+    }
 }

@@ -4,9 +4,7 @@ import baseball.MakeRandomString;
 import baseball.PlayGame;
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -100,5 +98,20 @@ public class BaseballTest {
             PlayGame.printResult(Arrays.asList(0, 0));
             assertThat(outputStreamCaptor.toString().trim()).isEqualTo("낫싱");
         }
+    }
+
+
+    @Test
+    void resumeGame() {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
+        System.setIn(inputStream);
+        assertThat(PlayGame.isStop()).isEqualTo(false);
+    }
+
+    @Test
+    void stopGame() {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2".getBytes());
+        System.setIn(inputStream);
+        assertThat(PlayGame.isStop()).isEqualTo(true);
     }
 }
