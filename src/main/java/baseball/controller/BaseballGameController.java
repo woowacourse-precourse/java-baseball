@@ -18,6 +18,10 @@ public class BaseballGameController {
 
     private User user;
 
+    public void run() {
+        startGame();
+        choiceRestartGame();
+    }
 
     public void startGame() {
         computer.setRandomNumber();
@@ -47,7 +51,7 @@ public class BaseballGameController {
         baseballGameView.printRestartMessage();
         if (baseballGameService.choiceRestartGame().equals(RESTART)) {
             baseballGameService.initStrikeCountAndBallCount();
+            run();
         }
     }
-
 }
