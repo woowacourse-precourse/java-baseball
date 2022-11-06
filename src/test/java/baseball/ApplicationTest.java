@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -21,12 +22,34 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("세 자리를 초과한 숫자를 입력한 경우 예외 발생")
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    @DisplayName("세 자리 미만의 숫자를 입력한 경우 예외 발생")
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 것을 사용자가 입력한 경우 예외 발생")
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("asd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    //TODO 재시작 혹은 종료 시에 1,2만 받아야 함
+    // 이외의 경우 예외처리
 
     @Override
     public void runMain() {
