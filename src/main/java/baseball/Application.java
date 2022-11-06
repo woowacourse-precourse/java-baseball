@@ -12,7 +12,7 @@ public class Application {
     static List<Integer> answer;
 
     public static void main(String[] args) {
-        startApplication();
+        startGame();
 
         while (true) {
             String userInput = requestUserInput();
@@ -28,12 +28,12 @@ public class Application {
         }
     }
 
-    private static void startApplication() {
+    public static void startGame() {
         System.out.println(Comment.STARTGAME);
         initializeAnswer();
     }
 
-    private static void initializeAnswer() {
+    public static void initializeAnswer() {
         List<Integer> tmpAnswer = new ArrayList<>();
         final int ANSWER_SIZE = 3;
         final int START_NUM = 1;
@@ -48,31 +48,39 @@ public class Application {
         answer = tmpAnswer;
     }
 
-    private static String requestUserInput() {
+    public static String requestUserInput() {
         System.out.print(Comment.INPUTNUMBER);
         final int REQUEST_INPUT_DIGIT = 3;
         return validateInput(Console.readLine(), REQUEST_INPUT_DIGIT);
     }
 
-    private static String validateInput(String input, int digit) {
-        String tmpInput = input.trim();
+    public static String validateInput(String input, int digit) {
+        String trimInput = input.trim();
         String numberOnlyRegex = "^[1-9]+$";
-        boolean matches = tmpInput.matches(numberOnlyRegex);
+        boolean matches = trimInput.matches(numberOnlyRegex);
         if (!matches) {
             throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
         }
-        if (tmpInput.length() != digit) {
+        if (trimInput.length() != digit) {
             throw new IllegalArgumentException(digit + "자릿수를 입력해주세요.");
         }
-        return tmpInput;
+        for (int index = 0; index < trimInput.length(); index++) {
+            String targetChar = String.valueOf(trimInput.charAt(index));
+            String exceptTargetchar = trimInput.substring(0, index) + trimInput.substring(index + 1);
+            if (exceptTargetchar.contains(targetChar)) {
+                throw new IllegalArgumentException("서로 다른 3자리 수를 입력해주세요.");
+            }
+        }
+
+        return trimInput;
     }
 
-    private static void computeProcessing(String userInput) {
+    public static void computeProcessing(String userInput) {
         calculateHint(answer, userInput);
         printHint();
     }
 
-    private static void calculateHint(List<Integer> answer, String inputStr) {
+    public static void calculateHint(List<Integer> answer, String inputStr) {
         initializeHint();
         for (int i = 0; i < inputStr.length(); i++) {
             Integer target = Integer.parseInt(inputStr.charAt(i) + "");
@@ -86,13 +94,13 @@ public class Application {
         }
     }
 
-    private static void initializeHint() {
+    public static void initializeHint() {
         hintMap = new HashMap<Hint, Integer>();
         hintMap.put(Hint.STRIKE, 0);
         hintMap.put(Hint.BALL, 0);
     }
 
-    private static void printHint() {
+    public static void printHint() {
         Integer ballCount = hintMap.get(Hint.BALL);
         Integer strikeCount = hintMap.get(Hint.STRIKE);
         String hintStr = null;
@@ -113,7 +121,7 @@ public class Application {
         System.out.println(hintStr);
     }
 
-    private static boolean checkAnswer() {
+    public static boolean checkAnswer() {
         final int CORRECT_COUNT = 3;
         if (hintMap.get(Hint.STRIKE).equals(CORRECT_COUNT)) {
             System.out.println(Comment.ENDGAME);
@@ -122,7 +130,7 @@ public class Application {
         return false;
     }
 
-    private static boolean checkRestart(boolean isCorrect) {
+    public static boolean checkRestart(boolean isCorrect) {
         if (isCorrect) {
             System.out.println(Comment.REGAME);
 
