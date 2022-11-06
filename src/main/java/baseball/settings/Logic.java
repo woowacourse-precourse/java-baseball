@@ -11,6 +11,7 @@ public class Logic {
     private static boolean isGameGoing = true;
 
     public static void gameStart() {
+        System.out.println(GAME_START_MESSAGE);
         Computer computer = new Computer();
         User user = new User();
         List<Integer> dealerNumbers = computer.createThreeDifferentNumbers();
@@ -45,9 +46,5 @@ public class Logic {
         if (!responseCode.equals(ONE_FOR_YES) && !responseCode.equals(TWO_FOR_NO)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static void main(String[] args) {
-        gameStart();
     }
 }

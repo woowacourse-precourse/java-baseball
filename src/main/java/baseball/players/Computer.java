@@ -8,18 +8,23 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Computer {
     public List<Integer> createThreeDifferentNumbers() {
         List<Integer> threeDifferentNumbers = new ArrayList<>();
-        Set<Integer> pickedNumbers = new HashSet<>();
 
-        while (pickedNumbers.size() < THREE_DIGITS) {
-            Integer number = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-            pickedNumbers.add(number);
+        while (threeDifferentNumbers.size() < THREE_DIGITS) {
+            addDigit(threeDifferentNumbers);
         }
-        threeDifferentNumbers.addAll(pickedNumbers);
-        Collections.shuffle(threeDifferentNumbers); // Unless the numbers will be arranged in ascending order.
         return threeDifferentNumbers;
+    }
+
+    public void addDigit(List<Integer> numbers) {
+        int digit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+        numbers.add(digit);
+        numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
