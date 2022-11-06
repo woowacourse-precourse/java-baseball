@@ -33,7 +33,7 @@ public class GameSimulation {
     public void validateUserNumber(List<Integer> userNumber) {
         try {
             if (Valid.validNumberList(userNumber) == INVALID) {
-                throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+                throw new IllegalArgumentException("올바른 숫자가 아닙니다. 다시 입력해주세요.");
             }
         } catch (Exception e){
             throw new IllegalArgumentException();
