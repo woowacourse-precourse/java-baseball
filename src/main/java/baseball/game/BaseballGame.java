@@ -34,8 +34,7 @@ public class BaseballGame implements Game {
     }
 
     private void setComputerNumbers() {
-        List<Integer> uniqueNumbers = pickUniqueNumbersInRange(START_POSSIBLE_NUMBER,
-                END_POSSIBLE_NUMBER, GOAL_DIGIT);
+        List<Integer> uniqueNumbers = pickUniqueNumbersInRange(START_POSSIBLE_NUMBER, END_POSSIBLE_NUMBER, GOAL_DIGIT);
         this.computerNumbers.clear();
         this.computerNumbers.addAll(uniqueNumbers);
     }
