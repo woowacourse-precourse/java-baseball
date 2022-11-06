@@ -11,4 +11,6 @@ public interface BaseBallGameEngine {
     Numbers generateAnswer();
 
     boolean isNotCorrect(BallStatus ballStatus);
+
+    boolean isExitGame(String userChoice);
 }

@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     private final static int NUMBERS_SIZE = 3;
+    private final static String RESTART_SIGNAL = "1";
+    private final static String EXIT_SIGNAL = "2";
 
     private final NumberGenerator generator;
 
@@ -76,5 +78,17 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     @Override
     public boolean isNotCorrect(BallStatus ballStatus) {
         return ballStatus.getStrike() != NUMBERS_SIZE;
+    }
+
+    @Override
+    public boolean isExitGame(String userChoice) {
+        switch (userChoice) {
+            case RESTART_SIGNAL:
+                return false;
+            case EXIT_SIGNAL:
+                return true;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }
