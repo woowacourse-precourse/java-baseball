@@ -1,16 +1,18 @@
 package baseball.service;
 
+import baseball.enums.InputValidation;
 import baseball.utils.GameConsole;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baseball.enums.ErrorMessage.*;
-import static baseball.validation.InputValidation.*;
-
 public class UserInput {
     private static final GameConsole CONSOLE = GameConsole.getInstance();
+    private static final int ENTER_NUMBERS = 1;
+    private static final int RESTART_OR_STOP = 2;
 
     private UserInput() {
     }
@@ -25,24 +27,14 @@ public class UserInput {
 
     public List<Integer> enterNumbers(String message) {
         CONSOLE.print(message);
-        String inputNum = CONSOLE.input();
-        if (inputNum.isBlank())
-            throw new IllegalArgumentException(BLANK_INPUT.message());
-        if (!isThreeLength(inputNum))
-            throw new IllegalArgumentException(NOT_THREE_LENGTH.message());
-        if (!isNumber(inputNum))
-            throw new IllegalArgumentException(NOT_NUMBER_OR_CONTAINS_0.message());
-        if (isDuplicated(inputNum))
-            throw new IllegalArgumentException(DUPLICATED.message());
-        return inputToList(inputNum);
+        String input = CONSOLE.input();
+        checkValidation(input, ENTER_NUMBERS);
+        return inputToList(input);
     }
 
     public String restartOrStop() {
         String input = CONSOLE.input();
-        if (input.isBlank())
-            throw new IllegalArgumentException(BLANK_INPUT.message());
-        if (!isOneOrTwo(input))
-            throw new IllegalArgumentException(NOT_ONE_OR_TWO.message());
+        checkValidation(input, RESTART_OR_STOP);
         return input;
     }
 
@@ -51,5 +43,15 @@ public class UserInput {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    private void checkValidation(String input, int group) {
+        Optional<InputValidation> validation = Arrays.stream(InputValidation.values())
+                .filter(enumType -> enumType.getGroup().contains(group))
+                .filter(enumType -> enumType.validate(input))
+                .findFirst();
+
+        if (validation.isPresent())
+            throw new IllegalArgumentException(validation.get().message());
     }
 }

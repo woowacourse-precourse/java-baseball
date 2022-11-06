@@ -2,7 +2,7 @@ package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.enums.ErrorMessage.BLANK_INPUT;
+import static baseball.enums.InputValidation.BLANK_INPUT;
 
 public class GameConsole {
     private GameConsole() {
