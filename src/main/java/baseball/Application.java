@@ -34,17 +34,13 @@ public class Application {
         return userNumber;
     }
 
-    public static void availableUserNumberIsChecked(String word) throws IllegalAccessError{
-        String regularExpression = "^[0-9]{3}^+$";
+    public static void availableUserNumberIsChecked(String word) throws IllegalArgumentException{
+        String regularExpression = "^[1-9^[1-9^[1-9]]]{3}$";
         boolean result = Pattern.matches(regularExpression,word);
 
-        try{
-            if(!result){
-                throw new IllegalAccessError("유효하지 않은 값입니다.");
-            }
-        }catch(IllegalAccessError illegalAccessError){
-            illegalAccessError.printStackTrace();
-            inputAvailableUserNumberService();
+        System.out.println(result);
+        if(!result){
+            throw new IllegalArgumentException("유효하지 않는 값입니다");
         }
     }
 
@@ -56,11 +52,14 @@ public class Application {
         return userNumbers;
     }
 
+    public static List<Integer> stringToListCreate(String word){
+        String[] stringToArray = word.split("");
+        return List.of(1,2,3);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
-        randomNumberCreate();
-        userNumberMessagePrint();
-        String userNumbers = userNumberInput();
+        inputAvailableUserNumberService();
     }
 }
