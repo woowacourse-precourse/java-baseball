@@ -1,11 +1,23 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
 
     private static final int NUMBER_LENGTH = 3;
-    private List<Character> numberList;
+    private List<Character> numberList = new ArrayList<>();
+
+    public ComputerNumber() {
+        while (checkListLength(this.numberList)) {
+            char randomNumber = Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);;
+            if (!checkListAlreadyContainNumber(randomNumber)) {
+                this.numberList.add(randomNumber);
+            }
+        }
+    }
 
     private boolean checkListLength(List<Character> numberList) {
         if (numberList.size() < NUMBER_LENGTH) {
