@@ -10,7 +10,11 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        while(true){
+            if( playGame(generateRandomNumber()).equals("2")) break;
+        }
+
     }
 
     public static List<Integer> generateRandomNumber(){
@@ -24,7 +28,7 @@ public class Application {
         return computer;
     }
 
-    public static void playGame(List<Integer> computer){
+    public static String playGame(List<Integer> computer){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
@@ -34,14 +38,21 @@ public class Application {
             String[] inputSplits = input.split("");
             int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
 
-            printNumberStatus(inputNumbers, computer);
+            GameStatus gameStatus = new GameStatus();
+            saveNumberStatus(inputNumbers, computer, gameStatus);
+            String response = responseNumberStatus(gameStatus);
+            System.out.println(response);
 
+            if(gameStatus.strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
         }
+
+        return Console.readLine();
     }
 
-    private static void printNumberStatus(int[] inputNumbers, List<Integer> computer){
-        GameStatus gameStatus = new GameStatus();
-
+    private static void saveNumberStatus(int[] inputNumbers, List<Integer> computer, GameStatus gameStatus){
         for(int i = 0 ; i < inputNumbers.length; i++){
             if( !computer.contains( inputNumbers[i] ) ){ //해당 숫자가 정답에 없다.
                 gameStatus.nothing = true;
@@ -51,9 +62,18 @@ public class Application {
                 } else gameStatus.ball++; //볼인 경우
             }
         }
-
     }
 
+    private static String responseNumberStatus(GameStatus gameStatus){
+        StringBuilder sb = new StringBuilder();
+
+        if(gameStatus.nothing) return "낫띵";
+        else {
+            if(gameStatus.ball > 0) sb.append(gameStatus.ball).append("볼 ");
+            if(gameStatus.strike > 0) sb.append(gameStatus.strike).append("스트라이크 ");
+        }
+        return sb.toString();
+    }
     public static class GameStatus{
         Boolean nothing = false;
 
