@@ -65,6 +65,23 @@ public class Application {
         return true;
     }
 
+    /** 컴퓨터 & 플레이어 숫자 비교 기능 */
+    public static boolean isSameComputerPlayer(List<Integer> computer, List<Integer> player) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(player.get(i))) {
+                strikeCount++;
+            } else if (computer.contains(player.get(i))) {
+                ballCount++;
+            }
+        }
+        
+        getHint(ballCount, strikeCount);
+        return strikeCount == 3;
+    }
+
     /** 힌트 계산 기능 */
     public static void getHint(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
