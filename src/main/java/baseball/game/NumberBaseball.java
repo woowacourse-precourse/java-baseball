@@ -12,11 +12,11 @@ public class NumberBaseball {
 
         do {
             List<Integer> targetNumbers = staff.getTargetNumbers();
-            repeatUntilUserGetsPerfectAnswer(targetNumbers);
+            game(targetNumbers);
         } while (staff.isUserWantMoreGame());
     }
 
-    private void repeatUntilUserGetsPerfectAnswer(List<Integer> targetNumbers) {
+    private void game(List<Integer> targetNumbers) {
 
         while (true) {
             List<Integer> userNumbers = staff.getUserNumbers();
