@@ -29,7 +29,7 @@ public class Application {
     public static void endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        // TODO: 입력 유효성 검사 2 호출
+        isValidInputAfterGame(input);
 
         if (input.equals("1")) {
             startGame();
@@ -96,6 +96,18 @@ public class Application {
                 throw new IllegalArgumentException("유효하지 않는 값을 입력했습니다. 프로그램이 종료됩니다.");
             }
             temp.add(input.charAt(i));
+        }
+    }
+
+    public static void isValidInputAfterGame(String input) {
+        boolean isValid = false;
+
+        if (input.equals("1") || input.equals("2")) {
+            isValid = true;
+        }
+
+        if (!isValid) {
+            throw new IllegalArgumentException("유효하지 않는 값을 입력했습니다. 프로그램이 종료됩니다.");
         }
     }
 
