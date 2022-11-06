@@ -77,6 +77,19 @@ class ApplicationTest extends NsTest {
         assertThat(secondTest).isEqualTo(false);
     }
 
+    @Test
+    void 사용자_입력검증_테스트() {
+        //given
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        //when
+        String test = "*()";
+        //then
+        assertThatThrownBy(() -> game.validateUserInput(test))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Input is wrong.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
