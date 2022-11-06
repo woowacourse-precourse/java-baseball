@@ -8,10 +8,12 @@ public class CheckBallCount {
     public static int countStrike(List<Integer> userNum, List<Integer> answer) {
         int count = 0;
         for (int index = 0; index < LENGTH; index++) {
-            if (userNum.get(0) == answer.get(0)) {
+            if (userNum.get(index) == answer.get(index)) {
                 count++;
             }
         }
         return count;
     }
+
+    
 }
