@@ -4,6 +4,7 @@ import java.util.List;
 
 public class StrikeModel {
 
+    private static final int NUMBER_LIST_SIZE = 3;
     private final List<Integer> userNumberList;
     private final List<Integer> computerNumberList;
 
@@ -12,35 +13,16 @@ public class StrikeModel {
         this.computerNumberList = computerNumberList;
     }
 
-    // 볼과 스트라이크 int배열로 반환 - 테스트코드
-    public int[] getBallAndStrike() {
-        int[] ballAndStrike = new int[2];
-        ballAndStrike[1] = getStrike();
-        ballAndStrike[0] = getBall() - getStrike();
-//        System.out.print("유저 입력값 : ");
-//        for (int i : userNumberList) {
-//            System.out.print(i+" ");
-//        }
-//        System.out.println();
-//        System.out.print("컴퓨터 입력값 : ");
-//        for (int i : computerNumberList) {
-//            System.out.print(i+" ");
-//        }
-//        System.out.println();
-//        System.out.println("볼: " + ballAndStrike[0] + " 스트라이크: " + ballAndStrike[1]);
-        return ballAndStrike;
-    }
-
-    // 스트라이크 계산
-    private int getStrike() {
+    // 스트라이크 갯수 반환
+    public int getStrike() {
         int strikeCount = 0;
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < NUMBER_LIST_SIZE; index++) {
             strikeCount += calculateStrike(index);
         }
         return strikeCount;
     }
 
-    // 스트라이크 비교
+    // 스트라이크 계산 기능
     private int calculateStrike(int index) {
         if (userNumberList.get(index).equals(computerNumberList.get(index))) {
             return 1;
@@ -48,16 +30,16 @@ public class StrikeModel {
         return 0;
     }
 
-    // 볼 계산
-    private int getBall() {
+    // 볼 갯수 반환
+    public int getBall() {
         int ballCount = 0;
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < NUMBER_LIST_SIZE; index++) {
             ballCount += calculateBall(index);
         }
-        return ballCount;
+        return ballCount - getStrike();
     }
 
-    // 볼 비교
+    // 볼 계산 기능
     private int calculateBall(int index) {
         int number = computerNumberList.get(index);
         if (userNumberList.contains(number)) {
