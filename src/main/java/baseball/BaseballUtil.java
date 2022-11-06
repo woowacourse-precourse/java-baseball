@@ -23,4 +23,8 @@ public class BaseballUtil {
     public void printlnLine(String contents) {
         System.out.println(contents);
     }
+
+    public void printLine(String contents) {
+        System.out.print(contents);
+    }
 }
