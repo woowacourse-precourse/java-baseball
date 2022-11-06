@@ -2,27 +2,24 @@ package baseball;
 
 import baseball.console.GameConsole;
 import baseball.core.BaseballGameCore;
-import baseball.console.output.ConsoleOutput;
 
 import static baseball.console.input.converter.RestartOrExitCodeConverter.EXIT_CODE;
 import static baseball.console.input.converter.RestartOrExitCodeConverter.START_CODE;
 
 public class BaseballGame {
 
-    private final ConsoleOutput messagePrinter;
     private final GameConsole console;
     private final BaseballGameCore gameCore;
 
     public BaseballGame() {
-        this.messagePrinter = new ConsoleOutput();
         this.console = new GameConsole();
-        this.gameCore = new BaseballGameCore(messagePrinter, console);
+        this.gameCore = new BaseballGameCore(console);
     }
 
     public void play() throws IllegalArgumentException {
         int statusCode = START_CODE;
 
-        messagePrinter.printStartMessage();
+        console.printStartMessage();
         while (isNotExitCode(statusCode)) {
              statusCode = playGameCycle();
         }
@@ -38,7 +35,7 @@ public class BaseballGame {
     }
 
     private int restartOrExitProcess() {
-        messagePrinter.printRestartOrExitMessage();
+        console.printRestartOrExitMessage();
         return console.inputCode();
     }
 

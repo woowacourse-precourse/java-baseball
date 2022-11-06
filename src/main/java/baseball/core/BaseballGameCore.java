@@ -3,18 +3,15 @@ package baseball.core;
 import baseball.console.GameConsole;
 import baseball.core.dto.BallStrikeDto;
 import baseball.core.opponent.RandomNumberGenerator;
-import baseball.console.output.ConsoleOutput;
 
 import java.util.List;
 
 public class BaseballGameCore {
 
     private ComputerOpponent opponent;
-    private final ConsoleOutput messagePrinter;
     private final GameConsole console;
 
-    public BaseballGameCore(ConsoleOutput messagePrinter, GameConsole console) {
-        this.messagePrinter = messagePrinter;
+    public BaseballGameCore(GameConsole console) {
         this.console = console;
     }
 
@@ -31,13 +28,13 @@ public class BaseballGameCore {
     }
 
     private List<Integer> inputProcess() {
-        messagePrinter.printNumberInputMessage();
+        console.printNumberInputMessage();
         return console.inputThreeNumbers();
     }
 
     private BallStrikeDto checkProcess(List<Integer> threeNumbers) {
         BallStrikeDto answer = opponent.answer(threeNumbers);
-        messagePrinter.printResultMessage(answer);
+        console.printResultMessage(answer);
         return answer;
     }
 
@@ -46,6 +43,6 @@ public class BaseballGameCore {
     }
 
     private void finishProcess() {
-        messagePrinter.printFinishMessage();
+        console.printFinishMessage();
     }
 }
