@@ -1,6 +1,9 @@
 package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class UserNumberTest {
@@ -27,5 +30,15 @@ class UserNumberTest {
 		assertThrows(IllegalArgumentException.class, () -> {
 			new UserNumber(input);
 		});
+	}
+
+	@Test
+	void 숫자_제대로_받는지_확인() {
+		String input = "123";
+		int[] nums = {1, 2, 3};
+
+		int[] userNums = new UserNumber(input).getUserNumber().stream().mapToInt(num -> num).toArray();
+
+		assertArrayEquals(nums, userNums);
 	}
 }

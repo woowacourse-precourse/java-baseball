@@ -32,7 +32,7 @@ public class BaseballGameController {
 	private void gameStart(List<Integer> computerNums) {
 		int strikeCount;
 		do {
-			List<Integer> userNums = new UserNumber(InputView.printInputNumberMessage()).userNumber;
+			List<Integer> userNums = new UserNumber(InputView.printInputNumberMessage()).getUserNumber();
 			GameResult result = new GameResult(computerNums, userNums);
 			strikeCount = result.strikeCount;
 			new OutputView(result).printGameResult();
