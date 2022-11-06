@@ -13,7 +13,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자 입력이 1 ~ 9 숫자가 아니라면 IllegalArgumentException 예외 발생 테스트")
     @Test
-    void checkNumberFail() {
+    void inputUserAnswerFailCauseNonNumeric() {
         // given
         String outOfRangeInput = "012";
         String nonNumericInput = "abc";
@@ -30,7 +30,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자 입력이 1 ~ 9 사이의 숫자라면 정상 동작 테스트")
     @Test
-    void checkNumberSuccess() {
+    void inputUserAnswerSuccess() {
         // given
         String normalInput = "123";
 
@@ -40,7 +40,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("사용자 입력이 3글자가 아니라면 IllegalArgumentException 예외 발생 테스트")
     @Test
-    void checkLengthFail() {
+    void inputUserAnswerFailCauseTooLongInput() {
         // given
         String tooManyInput = "1234";
 
