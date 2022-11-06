@@ -47,6 +47,14 @@ public class Application {
 
     /*4. 컴퓨터와 입력숫자를 비교해서 볼 판정 int로 반환*/
     public static void nothingAndBall(List<Integer> user, List<Integer> computer) {
-
+        int countBall = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(user.get(i))) {
+                countBall++;
+            }
+            if (user.get(i).equals(computer.get(i))) {
+                countBall--;
+            }
+        }
     }
 }
