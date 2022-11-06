@@ -2,6 +2,7 @@ package custom.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -35,6 +36,15 @@ class BaseBallControllerTest {
 
         // expect
         assertThatThrownBy(() -> baseBallController.matchNumber(CHARACTER_INPUT)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void isKeepGo_validateInputTestWhenNotOneOrTwo() {
+        // given
+        when(baseBallService.isKeepGo(any())).thenReturn(Response.endOf("종료"));
+
+        // expect
+        assertThatThrownBy(() -> baseBallController.isKeepGo(INVALID_RETRY_INPUT)).isInstanceOf(IllegalArgumentException.class);
     }
 
 
