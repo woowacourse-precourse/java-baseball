@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static java.lang.Integer.parseInt;
@@ -24,13 +25,15 @@ public class Player {
         this.numbers = numbers;
     }
 
-    public void setRandomNumber() {
+    public ArrayList<Integer> getRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
+        return (ArrayList<Integer>) numbers;
     }
 
     public void inputNumbers() {

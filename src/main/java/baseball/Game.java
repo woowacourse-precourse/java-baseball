@@ -34,7 +34,7 @@ public class Game {
 
     public void start() {
         Boolean exit = false;
-        computer.setRandomNumber();
+        computer.setNumbers(computer.getRandomNumber());
         HashMap<Integer, Integer> compareBoard;
         ArrayList<Integer> scoreBoard;
         compareBoard = getCompareBoard(computer);
