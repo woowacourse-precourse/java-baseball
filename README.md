@@ -1,40 +1,7 @@
 # 미션 - 숫자 야구
 
-## ✅ 기능목록
+### [기능 목록](./docs/README.md) 
 
-
-- [x] Application main method 구현
-
-### BaseballGameController
-
-- [x] 게임 진행 method 구현
-  - [x] 랜덤한 3자리 컴퓨터 수 생성
-  - [x] player 3자리 수 입력받기
-  - [x] 스트라이크/볼 수 결과 받아 출력하기
-  - [x] 게임 진행 여부 입력받기
-
-<br/>
-
-- Validation
-  - [x] player의 3자리 수 입력 validation
-    - 3자리 숫자인가
-    - 각 자리수가 겹치지 않는가
-  - [x] 게임 진행 여부 입력 validation
-    - 1 또는 2 인가
-
-<br/>
-
-### BaseballGameRule
-
-- computer number, player number는 `List<Integer>`로 처리
-
-- [x] 판정 기준 컴퓨터 수 입력
-- [x] player의 입력값으로 판정 결과 리스트 반환
-  - [x] strike 판정
-  - [x] ball 판정
-
-
----
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
