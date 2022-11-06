@@ -7,6 +7,12 @@ public class InputNumbersException {
     private static final String ONLY_NUMBER_REGEX = "[1-9]+";
     private static final int REQUIRE_NUMBER_SIZE = 3;
 
+    public void checkValidOfUserInput(String numberTypeOfString) {
+        isNumberSizeEqualsThree(numberTypeOfString);
+        isContainedOnlyNumber(numberTypeOfString);
+        isOverlapNumber(numberTypeOfString);
+    }
+
     public void isNumberSizeEqualsThree(String numberTypeOfString) {
         if (numberTypeOfString.length() != REQUIRE_NUMBER_SIZE) {
             throw new IllegalArgumentException("3개의 수를 입력해주세요.");
