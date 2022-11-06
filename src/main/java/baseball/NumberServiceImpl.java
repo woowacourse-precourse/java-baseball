@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -11,6 +14,9 @@ public class NumberServiceImpl implements NumberService {
     public static final int NUM_MATCHES = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+
+    private static final Integer NOT_FOUND_USER_NUMBER = 0;
+    private static final Integer NOT_FOUND_INDEX_COMPUTER = -1;
 
     private List<Integer> computerNumbers;
     private List<Integer> userNumbers;
@@ -49,8 +55,34 @@ public class NumberServiceImpl implements NumberService {
         }
     }
 
-    @Override
-    public void evaluateNumbers() {
+    public Score evaluateNumbers() {
+        Map<ThrowingType, Long> scoreTable = IntStream.range(0, NUM_MATCHES)
+                .mapToObj(this::evaluateNumber)
+                .collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting()));
 
+        return new Score(scoreTable);
+    }
+
+    private ThrowingType evaluateNumber(Integer idxUser) {
+        Integer idxComputer = indexComputerOf(idxUser);
+
+        if (idxComputer.equals(NOT_FOUND_INDEX_COMPUTER)) {
+            return ThrowingType.NOTHING;
+        } else if (idxComputer.equals(idxUser)) {
+            return ThrowingType.STRIKE;
+        } else {
+            return ThrowingType.BALL;
+        }
+    }
+
+    private Integer indexComputerOf(Integer idxUser) {
+        Integer userNumber = Optional.ofNullable(userNumbers)
+                .map(list -> list.get(idxUser))
+                .orElse(NOT_FOUND_USER_NUMBER);
+
+        return Optional.ofNullable(computerNumbers)
+                .map(list -> list.indexOf(userNumber))
+                .orElse(NOT_FOUND_INDEX_COMPUTER);
     }
 }
