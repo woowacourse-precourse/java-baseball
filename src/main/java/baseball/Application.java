@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedReader;
@@ -41,10 +42,9 @@ public class Application {
 
     public static List<Integer> inputGuess() throws IOException {
         List<Integer> guess = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] input = br.readLine().split("");
+        String[] inputArray = Console.readLine().split("");
 
-        for(String i : input){
+        for(String i : inputArray){
             guess.add(Integer.parseInt(i));
         }
         return guess;
