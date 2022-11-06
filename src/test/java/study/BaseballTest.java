@@ -43,23 +43,6 @@ public class BaseballTest {
         assertThat(PlayGame.compareString("123", "456")).isEqualTo(Arrays.asList(0, 0));
     }
 
-    @Test
-    void printResultTest() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        PlayGame.printResult(Arrays.asList(0, 3));
-        PlayGame.printResult(Arrays.asList(2, 1));
-        PlayGame.printResult(Arrays.asList(3, 0));
-        PlayGame.printResult(Arrays.asList(0, 0));
-
-        assertThat(out.toString()).isEqualTo(
-                "3스트라이크\n" +
-                        "2볼 1스트라이크\n" +
-                        "3볼\n" +
-                        "낫싱\n");
-    }
-
     @Nested
     class printResultTest {
 
@@ -105,14 +88,14 @@ public class BaseballTest {
     void resumeGame() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
         System.setIn(inputStream);
-        assertThat(PlayGame.isStop()).isEqualTo(false);
+        assertThat(PlayGame.isStop()).isEqualTo(0);
     }
 
     @Test
     void stopGame() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2".getBytes());
         System.setIn(inputStream);
-        assertThat(PlayGame.isStop()).isEqualTo(true);
+        assertThat(PlayGame.isStop()).isEqualTo(1);
     }
 
     @Test
@@ -121,5 +104,27 @@ public class BaseballTest {
         System.setIn(inputStream);
         assertThatThrownBy(() -> PlayGame.isStop())
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Nested
+    class checkInputStringTest {
+        @Test
+        void checkInputLength() {
+            assertThat(PlayGame.checkInputLength("1")).isEqualTo(true);
+            assertThat(PlayGame.checkInputLength("123")).isEqualTo(false);
+            assertThat(PlayGame.checkInputLength("1234")).isEqualTo(true);
+        }
+
+        @Test
+        void checkInputRepetition() {
+            assertThat(PlayGame.checkInputRepetition("123")).isEqualTo(false);
+            assertThat(PlayGame.checkInputRepetition("111")).isEqualTo(true);
+        }
+
+        @Test
+        void checkInputInteger() {
+            assertThat(PlayGame.checkInputInteger("123")).isEqualTo(false);
+            assertThat(PlayGame.checkInputInteger("abc")).isEqualTo(true);
+        }
     }
 }

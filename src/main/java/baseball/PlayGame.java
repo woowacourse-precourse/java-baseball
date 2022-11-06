@@ -1,6 +1,7 @@
 package baseball;
 
-import java.sql.Array;
+import org.junit.platform.commons.util.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -68,8 +69,8 @@ public class PlayGame {
         System.out.println(res);
     }
 
-    public static boolean isStop() {
-        boolean res = false;
+    public static int isStop() {
+        int res = 0;
 
         String stopFlag = "";
 
@@ -78,13 +79,12 @@ public class PlayGame {
         stopFlag = scan.nextLine();
 
         if (stopFlag.equals("1")) {
-            res = false;
+            res = 0;
         }
         else if (stopFlag.equals("2")){
-            res = true;
+            res = 1;
         }
         else {
-            System.out.println("잘못된 입력입니다.");
             throw new IllegalArgumentException();
         }
 
@@ -92,23 +92,63 @@ public class PlayGame {
     }
 
     public static void checkInputString(String inputString) {
-        boolean errorFlag = false;
+
+        if (checkInputLength(inputString) || checkInputRepetition(inputString) || checkInputInteger(inputString)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public static boolean checkInputLength(String inputString) {
+        boolean res;
 
         if (inputString.length() != 3) {
-            errorFlag = true;
+            res = true;
         }
+        else {
+            res = false;
+        }
+
+        return res;
+    }
+
+    public static boolean checkInputRepetition(String inputString) {
+        boolean res = false;
+
+        for (int idx = 0; idx < 3; idx++) {
+            if (countElement(inputString, inputString.charAt(idx)) != 1) {
+                res = true;
+                break;
+            }
+        }
+
+        return res;
+    }
+
+    public static int countElement(String inputString, char inputChar) {
+        int res = 0;
+
+        for (int idx = 0; idx < inputString.length(); idx++) {
+            if (inputString.charAt(idx) == inputChar) {
+                res += 1;
+            }
+        }
+
+        return res;
+    }
+
+    public static boolean checkInputInteger(String inputString) {
+        boolean res = false;
 
         for (int idx = 0; idx < 3; idx++) {
             int inputChar = inputString.charAt(idx) - '0';
 
             if (inputChar < 1 || inputChar > 9) {
-                errorFlag = true;
+                res = true;
+                break;
             }
         }
 
-        if (errorFlag) {
-            System.out.println("잘못된 입력입니다.");
-            throw new IllegalArgumentException();
-        }
+        return res;
     }
 }
