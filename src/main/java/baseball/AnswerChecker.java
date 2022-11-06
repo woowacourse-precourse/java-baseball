@@ -1,6 +1,6 @@
 package baseball;
 
-import details.Detail;
+import constantfield.Detail;
 
 import java.util.List;
 

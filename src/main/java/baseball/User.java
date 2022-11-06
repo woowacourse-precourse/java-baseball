@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import details.*;
+import constantfield.*;
 import java.util.ArrayList;
 import java.util.List;
 

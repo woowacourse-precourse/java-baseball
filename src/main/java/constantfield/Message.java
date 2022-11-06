@@ -1,4 +1,4 @@
-package details;
+package constantfield;
 
 public class Message {
 

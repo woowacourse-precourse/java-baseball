@@ -1,6 +1,6 @@
 package baseball;
 
-import details.*;
+import constantfield.*;
 
 public class Messenger {
     private String message = "";

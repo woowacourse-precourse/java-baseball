@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import details.Detail;
+import constantfield.Detail;
 
 import java.util.ArrayList;
 import java.util.List;
