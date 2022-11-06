@@ -13,6 +13,12 @@ public final class Constants {
         public static final String EXIT_NUMBER = "0";
     }
 
+    public class ExceptionMessage{
+        public static final String RESTART_INPUT_ERROR_MESSAGE = "재시작 여부 숫자는 1,2만 가능합니다.";
+        public static final String INPUT_NUM_OR_SIZE_ERROR_MESSAGE = "야구 게임은 3자리의 숫자만 가능합니다.";
+        public static final String INPUT_DUPLICATE_ERROR_MESSAGE = "입력된 숫자가 중복입니다.";
+    }
+
 
     public class InputMessage {
         public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";

@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static baseball.Constants.BALL_LEN;
+import static baseball.Constants.ExceptionMessage.INPUT_DUPLICATE_ERROR_MESSAGE;
+import static baseball.Constants.ExceptionMessage.INPUT_NUM_OR_SIZE_ERROR_MESSAGE;
 
 public class Player {
 
@@ -37,7 +39,7 @@ public class Player {
     private static void checkInputDuplicatedNumber(String input) {
         Set<Character> set = getCharacterInput(input);
         if(isDuplicatedNumber(input, set)){
-            throw new IllegalArgumentException("입력된 숫자가 중복입니다.");
+            throw new IllegalArgumentException(INPUT_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
@@ -55,7 +57,7 @@ public class Player {
 
     private static void checkNotInputNumberOrOverSize(String input) {
         if(isNotInputNumberOrOverSize(input)){
-            throw new IllegalArgumentException("야구 게임은 3자리의 숫자만 가능합니다.");
+            throw new IllegalArgumentException(INPUT_NUM_OR_SIZE_ERROR_MESSAGE);
         }
     }
 

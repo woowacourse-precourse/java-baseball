@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 import static baseball.Constants.*;
+import static baseball.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
 import static baseball.Constants.RestartOrExitInfo.EXIT_NUMBER;
 import static baseball.Constants.RestartOrExitInfo.RESTART_NUMBER;
 
 public class Computer {
-
-
 
     private ArrayList<Integer> computerNumber;
 
@@ -49,7 +48,7 @@ public class Computer {
 
     public void checkNotRestartInput(String input){
         if(isNotRestartInput(input)){
-            throw new IllegalArgumentException("재시작 여부 숫자는 1,2만 가능합니다.");
+            throw new IllegalArgumentException(RESTART_INPUT_ERROR_MESSAGE);
         }
     }
 
