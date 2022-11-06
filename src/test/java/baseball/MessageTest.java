@@ -33,6 +33,6 @@ public class MessageTest {
     public void 숫자_입력_안내_문구를_출력하는_기능() {
         Message.INPUT_NUMBER.print();
 
-        assertEquals("숫자를 입력해주세요 : ", outputStreamCaptor.toString().trim());
+        assertEquals("숫자를 입력해주세요 :", outputStreamCaptor.toString().trim());
     }
 }
