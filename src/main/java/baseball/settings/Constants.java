@@ -17,7 +17,7 @@ public class Constants {
     public final static String SPACE_BETWEEN_WORDS = " ";
     public final static String NO_SPACE = "";
     public final static String CONGRATULATIONS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public final static String ASK_WHETHER_PLAYING_AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public final static String WHETHER_TO_PLAY_AGAIN_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public final static String ONE_FOR_YES = "1";
     public final static String TWO_FOR_NO = "2";
 }

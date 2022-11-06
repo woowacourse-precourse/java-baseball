@@ -4,7 +4,7 @@ import static baseball.settings.Constants.*;
 
 import java.util.List;
 
-public class ResultView {
+public class ResultViewer {
     private static Integer ballCount;
     private static Integer strikeCount;
 

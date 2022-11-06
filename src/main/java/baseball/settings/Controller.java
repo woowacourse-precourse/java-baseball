@@ -10,39 +10,39 @@ import java.util.List;
 public class Controller {
     private static boolean isGameGoing = true;
 
-    public static void gameStart() {
+    public static void start() {
         System.out.println(GAME_START_MESSAGE);
-        List<Integer> computerNumbers = Computer.createThreeDigitNumber();
+        List<Integer> computerNumber = Computer.createThreeDigitNumber();
 
         while (isGameGoing) {
-            List<Integer> userNumbers = User.createThreeDigitNumber();
-            List<Integer> scores = Calculation.getScoresByNumbers(computerNumbers, userNumbers);
-            ResultView.printOut(scores);
-            checkThreeStrikes(scores.get(STRIKE_INDEX));
+            List<Integer> userNumber = User.createThreeDigitNumber();
+            List<Integer> scores = Calculator.getScoresByNumbers(computerNumber, userNumber);
+            ResultViewer.printOut(scores);
+            checkIfThreeStrikes(scores.get(STRIKE_INDEX));
         }
-        gameShouldContinue();
+        shouldContinue();
     }
 
-    public static void checkThreeStrikes(Integer strikeCount) {
+    public static void checkIfThreeStrikes(Integer strikeCount) {
         if (strikeCount == 3) {
             isGameGoing = false;
         }
     }
 
-    public static void gameShouldContinue() {
+    public static void shouldContinue() {
         System.out.println(CONGRATULATIONS_MESSAGE);
-        System.out.println(ASK_WHETHER_PLAYING_AGAIN);
-        String playerResponse = Console.readLine();
-        checkResponseCode(playerResponse);
+        System.out.println(WHETHER_TO_PLAY_AGAIN_MESSAGE);
+        String userResponse = Console.readLine();
+        checkResponseCode(userResponse);
     }
 
-    public static void checkResponseCode(String responseCode) {
-        if (responseCode.equals(ONE_FOR_YES)) {
-            isGameGoing = true;
-            gameStart();
-        }
-        if (!responseCode.equals(ONE_FOR_YES) && !responseCode.equals(TWO_FOR_NO)) {
+    public static void checkResponseCode(String response) {
+        if (!response.equals(ONE_FOR_YES) && !response.equals(TWO_FOR_NO)) {
             throw new IllegalArgumentException();
+        }
+        if (response.equals(ONE_FOR_YES)) {
+            isGameGoing = true;
+            start();
         }
     }
 }
