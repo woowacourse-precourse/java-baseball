@@ -1,5 +1,8 @@
 package baseball.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 enum ResultList {
     Ball("볼"),
     STRIKE("스트라이크"),
@@ -39,5 +42,18 @@ public class ResultModel {
 
     public void setStrikeNum(int strikeNum) {
         this.strikeNum = strikeNum;
+    }
+
+    public void injectElementToList(List<Integer> NumList, int num) {
+        NumList.add(num % 10);
+        NumList.add((num / 10) % 10 % 10);
+        NumList.add(num / 100 % 10);
+    }
+
+    public void compareInputNumWithResultNum(int inputNum, int resultNum) {
+        List<Integer> inputNumList = new ArrayList<>();
+        List<Integer> resultNumList = new ArrayList<>();
+        injectElementToList(inputNumList, inputNum);
+        injectElementToList(resultNumList, resultNum);
     }
 }
