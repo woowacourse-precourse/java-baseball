@@ -1,7 +1,6 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Number {
+
     public List<Integer> setRandomNumbers() {
         Set<Integer> NumberSet = new HashSet<>();
         while (NumberSet.size() < 3) {
@@ -22,7 +22,8 @@ public class Number {
     }
 
     public List<Integer> getInputNumber() {
-        String input = readLine();
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
         if(!isValidString(input)) {
             throw new IllegalArgumentException();
         }
@@ -30,7 +31,7 @@ public class Number {
     }
 
     private List<Integer> stringToList(String str) {
-        return str.chars().mapToObj(number -> (int) number).collect(Collectors.toList());
+        return Arrays.stream(str.split("")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
     }
 
     private boolean isValidString(String input) {
