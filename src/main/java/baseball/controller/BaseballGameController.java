@@ -53,7 +53,16 @@ public class BaseballGameController {
 	}
 
 	public static int judgeBall(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
-		return -1;
+		int numberOfBall = 0;
+		for (int ballIndex = 0; ballIndex < NUMBER_OF_BALLS_FOR_BASEBALL_GAME; ballIndex++) {
+			int result = ballsPickedByComputer.containsAndIndexOf(ballsPickedByUser.getPickedBalls().get(ballIndex));
+			if (result == NOT_CONTAINS) {
+				continue;
+			} else if (result != ballIndex) {
+				numberOfBall++;
+			}
+		}
+		return numberOfBall;
 	}
 
 	public static BaseballGameResult judge(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
