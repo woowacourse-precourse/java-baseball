@@ -9,7 +9,7 @@ public class Printer {
     }
 
     public void requestNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public void restartGame(){
@@ -29,5 +29,9 @@ public class Printer {
             System.out.print(result.getStrike() + "스트라이크");
         }
         System.out.println();
+    }
+
+    public void noticeWin() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
