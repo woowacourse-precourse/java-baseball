@@ -14,7 +14,7 @@ public class Application {
         List<Integer> computerNumber = prepareGame.setComputerNumber();
         String stringUserNumber = prepareGame.setUserNumber();
         List<Integer> userNumber = prepareGame.userNumberToList(stringUserNumber);
-        PlayGame playGame = new PlayGame();
-        playGame.compareNumberForStrike(computerNumber, userNumber);
+        PlayGame playGame = new PlayGame(computerNumber, userNumber);
+        playGame.compareNumber();
     }
 }
