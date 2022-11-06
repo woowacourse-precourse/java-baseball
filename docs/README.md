@@ -13,7 +13,7 @@
 - convertStringToList(String input)
   - 입력받은 String을 List로 변환
   - 출력 : List<Integer> 입력값 리스트로 변환
-- examineGuess(String guess, String answer)
+- examineGuess(List<Integer> guess, List<Integer> answer)
   - Player가 제출한 guess를 평가하는 기능
   - 입력: guess와 answer
   - 출력: 길이가 2인 int 배열
