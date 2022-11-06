@@ -329,6 +329,26 @@ class BaseballTest {
 
             assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
         }
+
+        @Test
+        @DisplayName("receiveRestartOrEndIntent 메소드가 \"1\"을 입력받으면 true를 반환하는지 확인")
+        void receiveRestartOrEndIntent_with_integer_1_test() {
+            String input = "1";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+
+            assertThat(gameController.receiveRestartOrEndIntent()).isTrue();
+        }
+
+        @Test
+        @DisplayName("receiveRestartOrEndIntent 메소드가 \"2\"을 입력받으면 false를 반환하는지 확인")
+        void receiveRestartOrEndIntent_with_integer_2_test() {
+            String input = "2";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+
+            assertThat(gameController.receiveRestartOrEndIntent()).isFalse();
+        }
     }
 
     @Nested
