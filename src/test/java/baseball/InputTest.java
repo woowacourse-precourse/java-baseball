@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.Input;
+import baseball.view.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

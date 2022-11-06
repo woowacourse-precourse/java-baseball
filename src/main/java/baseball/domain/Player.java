@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.view.Input;
 import java.util.ArrayList;
 
 public class Player {

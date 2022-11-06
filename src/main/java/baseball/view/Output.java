@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.view;
 
 public class Output {
     private final static String NEW_LINE = "\n";

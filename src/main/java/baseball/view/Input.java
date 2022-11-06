@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
