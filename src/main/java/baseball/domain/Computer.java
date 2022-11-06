@@ -53,7 +53,7 @@ public class Computer {
         return IS_NOTING;
     }
 
-    public void init() {
+    public void initiate() {
         if (baseballNumber == null) {
             baseballNumber = new ArrayList<>();
         }
