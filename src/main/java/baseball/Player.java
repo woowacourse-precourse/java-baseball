@@ -15,13 +15,17 @@ public class Player {
     private static final int NUMBER_RANGE_START = 1;
     private static final int NUMBER_RANGE_END = 9;
 
-    private ArrayList<Integer> number = new ArrayList<Integer>(NUMBER_LENGTH);
+    private ArrayList<Integer> numbers = new ArrayList<Integer>(NUMBER_LENGTH);
+
+    public ArrayList<Integer> getNumbers() {
+        return numbers;
+    }
 
     public void setRandomNumber() {
-        while (number.size() < NUMBER_LENGTH) {
+        while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
-            if (!number.contains(randomNumber)) {
-                number.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
     }
@@ -30,9 +34,9 @@ public class Player {
         System.out.print(NUMBER_SET_STRING);
         ArrayList<Integer> listOfNumbers = new ArrayList<Integer>(NUMBER_LENGTH);
         String stringOfNumbers = Console.readLine();
-        number.addAll(stringToList(stringOfNumbers));
+        numbers.addAll(stringToList(stringOfNumbers));
         try {
-            checkNumbers(number);
+            checkNumbers(numbers);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
@@ -47,7 +51,7 @@ public class Player {
         return list;
     }
 
-    public boolean checkNumbers(ArrayList<Integer> listOfNumbers) {
+    public Boolean checkNumbers(ArrayList<Integer> listOfNumbers) {
         if (listOfNumbers.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("세자리 수가 아닙니다.");
         }
