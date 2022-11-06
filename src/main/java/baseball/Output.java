@@ -18,8 +18,12 @@ public class Output {
         System.out.println(ball + " 볼");
     }
 
-    public static void printBallAndStrikeMessage(int strike, int ball) {
+    public static void printBallStrikeMessage(int ball, int strike) {
         System.out.println(ball + " 볼" + " " + strike + " 스트라이크");
+    }
+
+    public static void printNothingMessage() {
+        System.out.println("낫싱");
     }
 
     public static void printGameOverMessage() {
