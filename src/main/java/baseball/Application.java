@@ -11,6 +11,9 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private void printStartStatement(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
     private static List<Integer> getRandomValues(int startValueInRange, int endValueInRange, int numberOfValues) {
         List<Integer> result = new ArrayList<>();
@@ -32,6 +35,17 @@ public class Application {
         return result;
     }
 
+    private static boolean getUserInputForDeterminingWhetherPlayingGameAgain()throws NumberFormatException{
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int userInput=Integer.parseInt(Console.readLine());
+        if(userInput==1) {
+            return true;
+        }else if(userInput==2){
+            return false;
+        }else{
+            throw new IllegalArgumentException();
+        }
+    }
     private static void printResultOfPlayingGame(ResultOfPlayingGame result){
         if(result.nothing==3){
             System.out.println("낫싱");
