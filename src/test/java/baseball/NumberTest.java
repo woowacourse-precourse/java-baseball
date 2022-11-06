@@ -47,4 +47,28 @@ public class NumberTest {
         boolean result = (boolean) method.invoke(number, input);
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    void boolean_유효하지_않는_숫자를_입력받은_경우_오류_발생()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = Number.class.getDeclaredMethod("isValidString", String.class);
+        method.setAccessible(true);
+
+        String notNumber = "12ㄱ";
+        String notThreeDigitsNumber = "12345";
+        String duplicateNumber = "122";
+
+        boolean expected = false;
+
+        boolean result = (boolean) method.invoke(number, notNumber);
+        assertThat(result).isEqualTo(expected);
+
+        result = (boolean) method.invoke(number, notThreeDigitsNumber);
+        assertThat(result).isEqualTo(expected);
+
+        result = (boolean) method.invoke(number, duplicateNumber);
+        assertThat(result).isEqualTo(expected);
+    }
+
+
 }
