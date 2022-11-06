@@ -33,14 +33,13 @@ public class BaseballGame {
 
             if (result.equals(3 + STRIKE)) {
                 System.out.println(END_GAME_CONDITION);
-                return restart();
+                System.out.println(RESTART_CONDITION);
+                return restart(Console.readLine());
             }
         }
     }
 
-    private static boolean restart() {
-        System.out.println(RESTART_CONDITION);
-        String restartInput = Console.readLine();
+    private static boolean restart(String restartInput) {
         if (restartInput.equals(INPUT_END)) {
             return true;
         }
