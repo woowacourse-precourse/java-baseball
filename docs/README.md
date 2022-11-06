@@ -24,6 +24,15 @@
 2. 메소드의 indent에 따른 메소드 추가 추출
    - [x] `calculateScore()`, `computeScoreIndex()`
 
+## 📝 테스트
+테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
+
+**Result**
+- [ ] `getResultByCode()`에 전달되는 인자가 잘못된 경우에 대한 검증
+
+**Status**
+- [ ] `getStatusByGameOption()`에 전달되는 인자가 잘못된 경우에 대한 검증
+
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
 - 게임 결과를 표현하는 `enum Result class`
