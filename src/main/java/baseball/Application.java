@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +11,9 @@ public class Application {
 
         boolean flag = true;
         while (flag) {
-            List<Integer> randomNum = createRandomNum();
-            System.out.println(randomNum);
-            guessNum();
-            checkNum();
+            String computerNum = createRandomNum().toString();
+            String userNum = guessNum();
+            checkNum(computerNum, userNum);
             closeOrRestart();
         }
     }
@@ -32,12 +33,12 @@ public class Application {
 
     }
 
-    private static void checkNum() {
+    private static void checkNum(String computerNum, String userNum) {
 
     }
 
-    private static void guessNum() {
-
+    public static String guessNum() {
+        return readLine();
     }
 
 
