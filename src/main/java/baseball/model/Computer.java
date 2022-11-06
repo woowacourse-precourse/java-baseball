@@ -11,7 +11,6 @@ import static baseball.constValue.Constants.*;
 import static baseball.constValue.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
 import static baseball.constValue.Constants.RestartOrExitInfo.EXIT_NUMBER;
 import static baseball.constValue.Constants.RestartOrExitInfo.RESTART_NUMBER;
-import static baseball.constValue.Constants.StrikeBallInfo.NOTHING;
 
 public class Computer {
 
@@ -31,7 +30,6 @@ public class Computer {
         }
     }
 
-
     public boolean isRestart(String restartInput){
         checkNotRestartInput(restartInput);
         if(restartInput.equals(RESTART_NUMBER)){
@@ -41,12 +39,12 @@ public class Computer {
     }
 
     public void checkNotRestartInput(String input){
-        if(isNotRestartInput(input)){
+        if(isNotRestartOrCloseInput(input)){
             throw new IllegalArgumentException(RESTART_INPUT_ERROR_MESSAGE);
         }
     }
 
-    private static boolean isNotRestartInput(String input) {
+    private static boolean isNotRestartOrCloseInput(String input) {
         return !input.equals(RESTART_NUMBER) && !input.equals(EXIT_NUMBER);
     }
 
