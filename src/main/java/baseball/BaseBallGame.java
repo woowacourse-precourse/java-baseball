@@ -39,8 +39,8 @@ class BaseBallGame {
 
     public boolean reStartGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String answerAboutReplay = Console.readLine();
-        if(answerAboutReplay.equals("1")) {
+        String answerToReplay = Console.readLine();
+        if(answerToReplay.equals("1")) {
             return true;
         }
         System.out.println("게임 종료");
