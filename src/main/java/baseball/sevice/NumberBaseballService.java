@@ -27,12 +27,12 @@ public class NumberBaseballService {
     public List<Integer> inputUserAnswer(String userAnswer) {
         validateUserAnswer(userAnswer);
         List<Integer> userAnswerResultList = new ArrayList<>();
-        userAnswerResultList.add(calculateStrike(userAnswer));
+        userAnswerResultList.add(getStrikeCount(userAnswer));
 
         return new ArrayList<>();
     }
 
-    public int calculateStrike(String userAnswer) {
+    public int getStrikeCount(String userAnswer) {
         int strikeCount = 0;
         ComputerNumber findComputerNumber = numberBaseballRepository.findComputerNumber();
         if (findComputerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO) {
