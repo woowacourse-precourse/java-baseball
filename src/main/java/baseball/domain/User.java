@@ -37,6 +37,9 @@ public class User {
     }
 
     public boolean isValidNumber() {
+        if (baseballNumber.length() != 3)
+            return false;
+
         long count = baseballNumber.chars()
                 .distinct()
                 .filter(Character::isDigit)
