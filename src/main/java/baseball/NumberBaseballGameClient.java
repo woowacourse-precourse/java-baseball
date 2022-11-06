@@ -1,13 +1,7 @@
 package baseball;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
-import java.util.Optional;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 
 // 출력 메시지 및 입력 관리
 public class NumberBaseballGameClient {
@@ -94,10 +88,10 @@ public class NumberBaseballGameClient {
             throw new IllegalArgumentException();
         }
 
-        if (line.equals("1")) {
+        if (line.equals(ANSWER_ONE_MORE_GAME)) {
             return true;
         }
-        if (line.equals("2")) {
+        if (line.equals(ANSWER_NO_MORE_GAME)) {
             return false;
         }
 
