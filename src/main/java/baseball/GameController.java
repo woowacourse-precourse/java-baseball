@@ -26,12 +26,12 @@ public class GameController {
     }
 
     // userNumberList와 randomNumberList의 교집합 검사
-    public List<Integer> checkIntersection(List<Integer> userNumberList, List<Integer> radomNumberList) {
-        return radomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
+    public List<Integer> checkIntersection(List<Integer> userNumberList, List<Integer> randomNumberList) {
+        return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
     }
 
-    public void compareGameCount(List<Integer> userNumberList, List<Integer> radomNumberList) {
-        List<Integer> intersectionList = checkIntersection(userNumberList, radomNumberList);
+    public void compareGameCount(List<Integer> userNumberList, List<Integer> randomNumberList) {
+        List<Integer> intersectionList = checkIntersection(userNumberList, randomNumberList);
         System.out.println("교집합:" + intersectionList + ":");
     }
 }
