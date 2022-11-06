@@ -3,20 +3,17 @@
 ## 기능 목록
 
 
-### 컴퓨터 랜덤값 생성
 
-### 사용자 랜덤값 입력받기
-
-### 입력값 검증 - Exception 
+### 1. 입력값 검증 - Exception 
 1. 숫자인가 (양수)?
 2. 3자리 숫자인가?
 3. 서로 다른 숫자로 이루어져있나?
 
-### 입력 기능 구현 - Console, Computer
-1. 유저에게 공입력 받기
-2. 컴퓨터 공 생성
+### 2. 컴퓨터 랜덤값 생성 Computer
 
-### 야구 게임 구현  BaseballUmpire, BaseballGame, Console, Restart
+### 3. 사용자 랜덤값 입력받기 Console
+
+### 4. 야구 게임 구현  BaseballUmpire, BaseballGame, Console, Restart
 1. 컴퓨터의 숫자와 입력 숫자 비교 (공 던지기, 볼 판독기)
     * 스트라이크 - 위치, 숫자 모두 일치 
     * 볼 - 숫자 일치, 위치 불일치
