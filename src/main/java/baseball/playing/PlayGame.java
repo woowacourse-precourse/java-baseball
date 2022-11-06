@@ -50,6 +50,7 @@ public class PlayGame {
         int replayNum = Integer.valueOf(replaying);
 
         checkInputErr(replayNum);
+        System.out.println(replayNum);
 
         if (replayNum == 2) {
             return false;
