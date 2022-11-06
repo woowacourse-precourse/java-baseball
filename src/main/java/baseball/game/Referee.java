@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static baseball.constant.Rules.DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST;
 import static baseball.constant.Rules.PICK_COUNT;
 
 public class Referee {
@@ -45,5 +46,10 @@ public class Referee {
         }
 
         return judgeAccuracy;
+    }
+
+    private void judge(Map<Accuracy, Integer> judgeAccuracy, Accuracy accuracy) {
+        int count = judgeAccuracy.getOrDefault(accuracy, DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST);
+        judgeAccuracy.put(accuracy, count + 1);
     }
 }
