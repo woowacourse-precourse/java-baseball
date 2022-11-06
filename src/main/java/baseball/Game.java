@@ -11,13 +11,14 @@ public class Game {
     final private int COUNT_FIN = 3;
     final private int STRIKE_NUM = 1;
     final private int BALL_NUM = 2;
-
     final private String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
-
     final private String NOTHING_STRING = "낫싱";
     final private String GAME_OVER_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final private String BALL_STRING = "볼";
     final private String STRIKE_STRING = "스트라이크";
+    final private String END_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final private String REGEX = "(^[1-2]*$)";
+    final private String END_NUM = "2";
 
 
     private int[] user;
@@ -42,10 +43,38 @@ public class Game {
             ScoreReset();
             Calculator();
             printResult();
+
+            if (strike == COUNT_FIN) {
+                GameOver(computerNumber);
+            }
         }
     }
     private void GameStartString() {
         System.out.println(GAME_START_STRING);
+    }
+    private void GameOver(Number computerNumber) {
+        String input = getGameOver();
+        if (END_NUM.equals(input)) {
+            end = true;
+        } else {
+            computerNumber.setComputerNumbers();
+            computer = computerNumber.getNumbers();
+        }
+
+    }
+
+    private String getGameOver() {
+        System.out.println(END_STRING);
+        String input = Console.readLine();
+        if (!WrongInput(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
+    private boolean WrongInput(String input) {
+        Pattern pattern = Pattern.compile(REGEX);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
     }
     private void ScoreReset() {
         strike = COUNT_START;
