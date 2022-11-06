@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constValue;
 
 public final class Constants {
 
@@ -10,7 +10,7 @@ public final class Constants {
 
     public class RestartOrExitInfo {
         public static final String RESTART_NUMBER = "1";
-        public static final String EXIT_NUMBER = "0";
+        public static final String EXIT_NUMBER = "2";
     }
 
     public class ExceptionMessage{

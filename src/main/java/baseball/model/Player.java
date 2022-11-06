@@ -6,9 +6,9 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static baseball.Constants.BALL_LEN;
-import static baseball.Constants.ExceptionMessage.INPUT_DUPLICATE_ERROR_MESSAGE;
-import static baseball.Constants.ExceptionMessage.INPUT_NUM_OR_SIZE_ERROR_MESSAGE;
+import static baseball.constValue.Constants.BALL_LEN;
+import static baseball.constValue.Constants.ExceptionMessage.INPUT_DUPLICATE_ERROR_MESSAGE;
+import static baseball.constValue.Constants.ExceptionMessage.INPUT_NUM_OR_SIZE_ERROR_MESSAGE;
 
 public class Player {
 

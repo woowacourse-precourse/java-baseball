@@ -1,9 +1,6 @@
 package baseball.view;
 
-import baseball.model.Computer;
-import baseball.model.Player;
-
-import static baseball.Constants.OutputMessage.END_MESSAGE;
+import static baseball.constValue.Constants.OutputMessage.END_MESSAGE;
 
 public class OutputView {
 

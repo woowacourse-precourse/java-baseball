@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
-import static baseball.Constants.*;
-import static baseball.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
-import static baseball.Constants.RestartOrExitInfo.EXIT_NUMBER;
-import static baseball.Constants.RestartOrExitInfo.RESTART_NUMBER;
+import static baseball.constValue.Constants.*;
+import static baseball.constValue.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
+import static baseball.constValue.Constants.RestartOrExitInfo.EXIT_NUMBER;
+import static baseball.constValue.Constants.RestartOrExitInfo.RESTART_NUMBER;
 
 public class Computer {
 

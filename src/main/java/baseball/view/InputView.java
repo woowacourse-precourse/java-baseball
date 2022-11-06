@@ -2,7 +2,7 @@ package baseball.view;
 
 import java.util.Scanner;
 
-import static baseball.Constants.InputMessage.*;
+import static baseball.constValue.Constants.InputMessage.*;
 
 public class InputView {
 
