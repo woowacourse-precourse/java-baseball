@@ -5,6 +5,8 @@ import baseball.playerComputer.PlayerComputer;
 import baseball.playerUser.PlayerUser;
 
 public class Application {
+	private static final int REPLAY = 1;
+
 	public static void main(String[] args) {
 		PlayerComputer computer = PlayerComputer.getInstance();
 		PlayerUser user = PlayerUser.getInstance();
@@ -14,6 +16,6 @@ public class Application {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		do {
 			replayOrEndGame = game.play(computer, user);
-		} while (replayOrEndGame != 2);
+		} while (replayOrEndGame == REPLAY);
 	}
 }
