@@ -1,10 +1,27 @@
 package baseball;
 
-import java.io.Console;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import java.util.*;
+
 
 public class Application {
+    private static final int NUMBER_INDEX = 0;
+    private static final int NUMBER_SIZE = 3;
+    private static final List<String> userPickNumber = new ArrayList<>();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String computerRandomNumber = "";
+        String userInputNumber ="";
+
+       computerRandomNumber =  computerRandomNumber();
+        gameStartMessage();
+        userInputNumber = inputUserPickNumber();
+        int strike = howManyStrike(userInputNumber,computerRandomNumber);
+        int ball = howManyBall(userInputNumber,computerRandomNumber);
+        int nothing = nothing(userInputNumber,computerRandomNumber);
+        System.out.println("스트라이크: "+strike + "볼"+ ball);
+
     }
 
     public static String computerRandomNumber(){
@@ -20,22 +37,14 @@ public class Application {
         return numbers.toString();
     }
 
-    public void gameStartMessage (){
-        Console console = System.console();
+
+    public static void gameStartMessage (){
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println("숫자를 입력 해 주세요.");
-    }
-
-    public void inputUserPickNumber(String userPickNumber){
-        Console console = System.console();
-        String userPicNumber = console.readLine();
 
     }
-    public static void arrUserNumber(String userPickNumber, List<String >listUserNumber ){
-        for(int i = 0; i<userPickNumber.length(); i++) {
-            char splitNumber = userPickNumber.charAt(i);
-           listUserNumber.add(String.valueOf(splitNumber));
-        }
+    private static String inputUserPickNumber(){
+        return readLine();
     }
 
 
@@ -86,6 +95,13 @@ public class Application {
     public static void ballMessage(int ball){
         System.out.println(ball + "볼");
     }
+
+    public static void strikeResult(int strike){
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다!. 게임종료");
+        }
+    }
+
 
 
 
