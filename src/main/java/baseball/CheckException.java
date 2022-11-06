@@ -5,6 +5,7 @@ public class CheckException {
     static final char NINE = 89;
 
     public static boolean checkNumberLength(String number){
+        //1자리수일때 1이나 2인지 따로 또 체크
         return number.length() == 3;
     }
 
