@@ -1,14 +1,20 @@
 package baseball.view;
 
+import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+
     public String inputNumber() {
-        return Console.readLine();
+        String inputNumber = Console.readLine();
+        InputValidator.validatePlayerInputNumber(inputNumber);
+        return inputNumber;
     }
 
 
     public String inputRetry() {
-        return Console.readLine();
+        String inputRetry = Console.readLine();
+        InputValidator.validatePlayerInputRetry(inputRetry);
+        return inputRetry;
     }
 }
