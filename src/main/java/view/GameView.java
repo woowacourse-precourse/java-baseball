@@ -11,8 +11,11 @@ public class GameView {
 
     public void run() {
         GameController gameController = GameController.getInstanceGameController();
-        gameController.startGame();
-        System.out.println(MSG_FIRST);
+        gameStartBaseball(gameController);
+        explainProceedSituationGame(gameController);
+    }
+
+    private void explainProceedSituationGame(GameController gameController) {
         while (true) {
             // User에게 숫자를 입력 받는다.
             getInputGuessNum(gameController);
@@ -26,6 +29,11 @@ public class GameView {
             }
             gameController.initCntStrikeBallOfComputer();
         }
+    }
+
+    private void gameStartBaseball(GameController gameController) {
+        gameController.startGame();
+        System.out.println(MSG_FIRST);
     }
 
     private boolean isRightEndGameAndProceedGame(GameController gameController) {
