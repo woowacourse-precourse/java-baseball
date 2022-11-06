@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import baseball.Balls.*;
@@ -18,6 +19,7 @@ public class Application {
 					BallsNumbers.makeUserInputNumbers(inputNum);
 			InputView.checkIllegalInput(BallsNumbers.userInputNumbers);
 			Balls.compare();
+			ResultView.printOutResult(Balls.strike, Balls.ball);
 		}
 	}
 	
