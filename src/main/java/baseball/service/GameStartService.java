@@ -49,9 +49,9 @@ public class GameStartService {
         } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && ball == NumberStatus.MIN_NUMBER.getNumber()) {
             result += HintStatus.NOTHING.getText();
         } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && !(ball == NumberStatus.MIN_NUMBER.getNumber())) {
-            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
-        } else if (!(strike == NumberStatus.MIN_NUMBER.getNumber()) && !(ball == NumberStatus.MIN_NUMBER.getNumber())) {
-            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
+            result += ball + HintStatus.BALL.getText();
+        } else if (!(strike == NumberStatus.MIN_NUMBER.getNumber()) && ball == NumberStatus.MIN_NUMBER.getNumber()) {
+            result += strike + HintStatus.STRIKE.getText();
         } else {
             result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         }
@@ -67,8 +67,8 @@ public class GameStartService {
     private static void isStrike(List<String> computerNumber, List<String> userNumber) {
         for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
-                GameStartRepository.strike ++;
-                GameStartRepository.ball --;
+                GameStartRepository.strike++;
+                GameStartRepository.ball--;
             }
         }
     }
@@ -77,7 +77,7 @@ public class GameStartService {
     private static void isBall(List<String> computerNumber, List<String> userNumber) {
         for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
-                GameStartRepository.ball ++;
+                GameStartRepository.ball++;
             }
         }
     }

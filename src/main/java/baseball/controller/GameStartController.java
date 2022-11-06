@@ -37,8 +37,8 @@ public class GameStartController {
     }
 
     private static void compareNumber() {
-        String HINT = GameStartService.compareNumber();
-        showHint(HINT);
+        String hint = GameStartService.compareNumber();
+        showHint(hint);
     }
 
     private static void showHint(String hint) {
