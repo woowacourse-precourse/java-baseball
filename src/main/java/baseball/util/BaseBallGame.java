@@ -21,10 +21,7 @@ public class BaseBallGame {
 
     public void gameStart () {
         do {
-            System.out.print("숫자를 입력해주세요 : ");
-            userInput = Console.readLine();
-
-            userInputValidCheck(userInput);
+            getUserInput();
 
             ballStrikeCount = threeRandomValueCompareToUserInput(threeRandomValue, userInput);
             printByBallAndStrikeStatus(ballStrikeCount);
@@ -32,7 +29,11 @@ public class BaseBallGame {
         } while (ballStrikeCount.get(STRIKE) != 3);
     }
 
-    private static void userInputValidCheck (String userInput) {
+
+    private void getUserInput () {
+        System.out.print("숫자를 입력해주세요 : ");
+        userInput = Console.readLine();
+
         if (!userInput.matches("^[0-9]{3}$")) {
             throw new IllegalArgumentException();
         }
