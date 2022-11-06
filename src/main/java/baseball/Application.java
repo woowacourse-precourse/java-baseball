@@ -19,7 +19,7 @@ public class Application {
         while (!isAnswer) {
             String input = Console.readLine();
             isValidInputInGame(input);
-            // TODO: 정답 비교 호출
+            isAnswer = compareAnswer(input, answer);
         }
 
         // TODO: 게임 종료 호출
@@ -36,6 +36,42 @@ public class Application {
         }
 
         return answer;
+    }
+
+    public static boolean compareAnswer(String input, String answer) {
+        boolean isAnswer = false;
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < answer.length(); i++) {
+            Character temp = input.charAt(i);
+            if (answer.charAt(i) == temp) {
+                strike++;
+            }
+            else if (answer.contains(String.valueOf(temp))) {
+                ball++;
+            }
+        }
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        else if (ball > 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        else if (ball == 0 && strike > 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        else if (ball < 3 && strike < 3) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
+        if (strike == 3) {
+            isAnswer = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+
+        return isAnswer;
     }
 
     public static void isValidInputInGame(String input) {
