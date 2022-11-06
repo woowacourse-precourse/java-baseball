@@ -52,7 +52,7 @@
 # 구현할 기능 목록 & 고려 사항
 
 <details>
-<summary>'랜덤 넘버 생성'</summary>
+<summary>랜덤 넘버 생성</summary>
 
 - [ ] Randoms API 사용
 - [ ] 각 자리의 숫자가 서로 겹치지 않음
@@ -60,15 +60,31 @@
 </details>
 
 <details>
-<summary>사용자 입력 & 검증</summary>
+<summary>사용자 입출력 & 검증</summary>
 
+# 입력
+
+- [ ] Interactive 인터페이스 선언
 - [ ] Console API 사용
+
+# 출력
+
+## 프로그램 동작 결과 출력
+
+- [ ] 프로그램 시작 메시지 출력
+- [ ] 프로그램 종료 메시지 출력
+
+## 게임 동작 결과 출력
+
+- [ ] 게임 승리 (3 strike) 메시지 출력
+- [ ] Ball 개수 출력
+- [ ] Strike 개수 출력
+- [ ] Nothing 출력
 
 # 입력값 검증
 
 - [x] Validator 구현
 - [x] Condition 인터페이스 선언
-- [ ] Condition 인터페이스 구현체 구현
   ## 숫자 입력 검증
 - [ ] 길이가 3 이하인가
 - [ ] 숫자로만 이루어져 있는가
@@ -90,22 +106,5 @@
 - [ ] strike 개수 파악 규칙
 - [ ] ball 개수 파악 규칙
 - [ ] nothing 파악 규칙
-
-</details>
-
-<details>
-<summary>'결과값 출력'</summary>
-
-## 프로그램 동작 결과
-
-- [ ] 프로그램 시작 메시지 출력
-- [ ] 프로그램 종료 메시지 출력
-
-## 게임 동작 결과
-
-- [ ] 게임 승리 (3 strike) 메시지 출력
-- [ ] Ball 개수 출력
-- [ ] Strike 개수 출력
-- [ ] Nothing 출력
 
 </details>
