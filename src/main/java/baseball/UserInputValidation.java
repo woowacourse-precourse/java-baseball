@@ -10,4 +10,13 @@ public class UserInputValidation {
         }
         return false;
     }
+
+    private boolean isInteger(String input) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
