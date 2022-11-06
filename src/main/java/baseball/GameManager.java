@@ -37,4 +37,8 @@ public class GameManager {
             System.out.println("게임 종료");
         }
     }
+
+    public boolean getContinuation() {
+        return continuation;
+    }
 }
