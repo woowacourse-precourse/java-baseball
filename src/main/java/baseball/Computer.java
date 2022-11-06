@@ -9,7 +9,11 @@ public class Computer {
     private static final int RANGE_FIRST = 1;
     private static final int RANGE_LAST = 9;
     private static final int RANGE_RADIX = 10;
-    private static final int LIST_SIZE = 3;
+    private final int listSize;
+
+    public Computer(int listSize) {
+        this.listSize = listSize;
+    }
 
     public List<Character> makeRandomNum() {
         List<Character> characterList = new ArrayList<>();
@@ -21,7 +25,7 @@ public class Computer {
     private List<Character> compareAndAddList(List<Character> characterList) {
         char randNumChar;
 
-        while (characterList.size() != LIST_SIZE) {
+        while (characterList.size() != listSize) {
             randNumChar = oneRandomNumChar();
             if (!characterList.contains(randNumChar)) {
                 characterList.add(randNumChar);

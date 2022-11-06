@@ -9,15 +9,16 @@ public class Application {
     private static final String ENDGAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private static final String ENDORRE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final List<Integer> THREE_STRIKE = List.of(3, 0);
+    private static final int LIST_SIZE = 3;
 
     public static void main(String[] args) {
         while (true) {
-            boolean flag = false;
+            boolean flag;
             int oneOrTwo = 0;
-            Computer computer = new Computer();
+            Computer computer = new Computer(LIST_SIZE);
             List<Character> computerList = computer.makeRandomNum();
             System.out.println(START_MESSAGE);
-            flag = endGameOrQuit(oneOrTwo, flag, computerList);
+            flag = endGameOrQuit(oneOrTwo, false, computerList);
             if (flag) {
                 break;
             }
@@ -27,7 +28,7 @@ public class Application {
     private static boolean endGameOrQuit(int oneOrTwo, boolean flag, List<Character> computerList) {
         while (oneOrTwo == 0) {
             System.out.print(INPUT_MESSAGE);
-            Input input = new Input();
+            Input input = new Input(LIST_SIZE);
             Output output = new Output();
             CompareTwoList compareTwoList = new CompareTwoList();
 

@@ -6,9 +6,14 @@ import java.util.List;
 
 public class Input {
 
-    private static final int STRING_LEN = 3;
     private static final char MINIMUM_CHAR = '1';
     private static final char MAXIMUM_CHAR = '9';
+
+    private final int listSize;
+
+    public Input(int listSize) {
+        this.listSize = listSize;
+    }
 
     public List<Character> readAndMakeInputList() {
         String inputString = Console.readLine();
@@ -33,7 +38,7 @@ public class Input {
     }
 
     private void validStringLength(String inputString) {
-        if (inputString.length() != STRING_LEN) {
+        if (inputString.length() != listSize) {
             throw new IllegalArgumentException();
         }
     }
