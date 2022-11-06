@@ -171,4 +171,21 @@ class BaseballGameTest {
         }
         assertThat(strike).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("볼 테스트")
+    void ball() throws Exception {
+        Method strikeMethod = BaseballGame.class.getDeclaredMethod("ball", List.class, List.class, int.class,
+                int.class);
+        strikeMethod.setAccessible(true);
+
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> user = List.of(5, 4, 1);
+
+        int ball = 0;
+        for (int i = 0; i < DEFAULT_SIZE; i++) {
+            ball = (int) strikeMethod.invoke(game, answer, user, ball, i);
+        }
+        assertThat(ball).isEqualTo(1);
+    }
 }
