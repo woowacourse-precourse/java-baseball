@@ -20,9 +20,23 @@ public class Game {
         List<Integer> computer = getComputerNumber();
         List<Integer> user = getUserNumber();
 
-        // TODO compare computerNumber,userNumber
+        // count stikes & balls
+        int strikes = countStrikes(user,computer);
+        int balls = countBalls(user,computer);
 
-        // TODO print result (X strike, X ball)
+        // print: X strikes, X balls  OR  낫싱
+        if (balls > 0) {
+            System.out.print(balls+"볼 ");
+        }
+        if (strikes > 0) {
+            System.out.print(strikes+"스트라이크");
+        }
+        if (balls + strikes == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println(); // 한줄 내리기
+
+
     }
     public boolean end() {
         String input = sc.nextLine();
@@ -32,7 +46,7 @@ public class Game {
             return true;
         }
 
-        // Exception: 1 or 2 가 아닌 다른값이 들어옴 -> 종료
+        // TODO Exception: 1 or 2 가 아닌 다른값이 들어옴 -> 종료
 
         return true;
     }
@@ -65,5 +79,15 @@ public class Game {
         }
 
         return userNumbers;
+    }
+
+    private int countStrikes(List<Integer> user, List<Integer> computer) {
+        // TODO 스트라이크 갯수를 반환
+        return 0;
+    }
+
+    private int countBalls(List<Integer> user, List<Integer> computer) {
+        // TODO 볼 갯수를 반환
+        return 0;
     }
 }
