@@ -19,15 +19,15 @@ public class Game {
     private int randomNumber;
     private int userNumber;
     private boolean quit = false;
-    public String restartOrQuitInput;
+    public String input;
     public List<String> inputArrList;
 
     public Game() {
     }
 
     // method for test code only
-    public void setRestartOrQuitInput(String input) {
-        this.restartOrQuitInput = input;
+    public void setInput(String input) {
+        this.input = input;
         getValidation();
     }
 
@@ -52,9 +52,8 @@ public class Game {
             if(strike == NUMBER_LENGTH) {
                 System.out.println(OUTPUT_SUCCESS);
                 System.out.println(OUTPUT_RESTART_OR_QUIT);
-                restartOrQuitInput = Console.readLine();
-                getValidation();
-                if(restartOrQuitInput.equals(INPUT_QUIT)) {
+                setInput();
+                if(input.equals(INPUT_QUIT)) {
                     quit = true;
                     break;
                 }
@@ -64,11 +63,16 @@ public class Game {
         }
     }
 
+    private void setInput() {
+        input = Console.readLine();
+        getValidation();
+    }
+
     private void getValidation() {
         // validation
         String[] inputArr = {"1","2"};
         inputArrList = Arrays.asList(inputArr);
-        boolean inputValidation = inputArrList.contains(restartOrQuitInput);
+        boolean inputValidation = inputArrList.contains(input);
         if(!inputValidation) {
             throw new IllegalArgumentException();
         }
