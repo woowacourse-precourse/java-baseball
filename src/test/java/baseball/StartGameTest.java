@@ -7,23 +7,19 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameStartTest {
+public class StartGameTest {
 
     Game game = new Game();
 
     @Test
-    void 길이가_3인_정답_생성() {
-        game.start();
+    void 메서드_호출시_3개의_서로_다른_수_생성_후_correctAnswer에_반환() {
+        game.setComputerAnswer();
         int result = 3;
-        assertThat(game.correctAnswer.size()).isEqualTo(result);
-    }
-
-    @Test
-    void 중복_없음() {
-        game.start();
         Set<Integer> set = new HashSet<>(game.correctAnswer);
 
+        assertThat(game.correctAnswer.size()).isEqualTo(result);
         assertThat(game.correctAnswer.size()).isEqualTo(set.size());
     }
+
 
 }
