@@ -32,4 +32,9 @@ public class PrepareGameTest {
     void user_입력_값_숫자가_아닌_경우(){
         assertThatThrownBy(() -> prepareGame.setUserNumberForTest("1ㄱ2")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void user_입력_값_3_자리_숫자가_아닌_경우(){
+        assertThatThrownBy(() -> prepareGame.setUserNumberForTest("3596")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
