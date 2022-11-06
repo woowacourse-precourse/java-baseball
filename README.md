@@ -66,7 +66,7 @@ BUILD SUCCESSFUL in 0s
     - [x] FEATURE13. 클래스 toString 메서드 오버라이딩
 - [x] FEATURE14. 게임 결과 출력 메서드
 - [x] FEATURE15. 게임 종료 메시지 출력 메서드
-- [ ] FEATURE16. 게임 종료 입력 메서드
+- [x] FEATURE16. 게임 종료 입력 메서드
 
 ---
 
@@ -82,7 +82,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `Boolean isIllegalGameInput(int gameInput)`
         - [x] `Boolean checkDuplicateNums(int gameInput)`
         - [x] `List<Integer> getGameInput() thorws IllegalArgumentException`
-        - [ ] `int getGameRestartInput()`
+        - [x] `int getGameRestartInput()`
         - [x] `List<Integer> generateRandomAnswerNums()`
         - [x] `BaseballGameResult getResultOfGame()`
         - [x] `List<Integer> stringToIntList(String numString)`

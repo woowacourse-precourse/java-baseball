@@ -45,6 +45,16 @@ public class BaseballGame {
         return stringToIntList(input);
     }
 
+    public int getGameRestartInput() throws IllegalArgumentException {
+        int input = Integer.parseInt(Console.readLine());
+
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return input;
+    }
+
     public List<Integer> stringToIntList(String numString) {
         List<Integer> intList = new ArrayList<>();
 
