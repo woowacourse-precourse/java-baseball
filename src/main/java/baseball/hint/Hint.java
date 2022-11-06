@@ -6,9 +6,9 @@ public class Hint {
     static final int LENGTH = 3;
     static final String NOTHING = "낫싱";
 
-    private int ball;
-    private int strike;
-    private String nothing;
+    private int ball = 0;
+    private int strike = 0;
+    private String nothing = "";
 
     public Hint() {
     }
@@ -27,8 +27,8 @@ public class Hint {
 
     public void calculateBall(List<Integer> computer, List<Integer> player) {
         for (int index = 0; index < LENGTH; index++) {
-            if (hasNumber(computer, player, index)) {
-                this.ball++;
+            if (hasNumber(computer, player, index) && !isSameIndex(computer, player, index)) {
+                ball += 1;
             }
         }
     }
@@ -36,7 +36,7 @@ public class Hint {
     public void calculateStrike(List<Integer> computer, List<Integer> player) {
         for (int index = 0; index < LENGTH; index++) {
             if (hasNumber(computer, player, index) && isSameIndex(computer, player, index)) {
-                this.strike++;
+                strike += 1;
             }
         }
     }
@@ -44,7 +44,7 @@ public class Hint {
     public void isNothing(List<Integer> computer, List<Integer> player) {
         for (int index = 0; index < LENGTH; index++) {
             if (!(hasNumber(computer, player, index))) {
-                this.nothing = NOTHING;
+                nothing = NOTHING;
             }
         }
     }
