@@ -59,6 +59,13 @@ public class Application {
         return ball_cnt;
     }
 
+    static int strike_count(List<Integer> answer, List<Integer> input_num){
+        int strike_cnt = 0;
+        for(int i =0;i < input_num.size();i++){
+            if(answer.get(i) == input_num.get(i)) strike_cnt++;
+        }
+        return strike_cnt;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
