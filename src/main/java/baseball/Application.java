@@ -78,7 +78,8 @@ public class Application {
         if (myThreeNum.containsAll(computerThreeNum)) {
             System.out.println("3 스트라이크!");
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+        System.out.println("게임종료");
         return equalList;
     }
 
