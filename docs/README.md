@@ -48,6 +48,7 @@
 
 ## 테이블
 - 테이블은 String 숫자를 저장할 객체 및 초기화 구현
+- 포함 여부 추가
 - 
 ## 예외 핸들러 구현(ControllerAdvice)
 - IllegalArgumentException("잘못된 입력입니다")
