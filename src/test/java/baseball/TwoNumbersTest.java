@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.utils.GameUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("GameNumbers 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-public class GameNumbersTest {
+public class TwoNumbersTest {
     @DisplayName("숫자 비교")
     @Nested
     class compare {
@@ -22,8 +21,8 @@ public class GameNumbersTest {
                 "123, 987", //xyz, abc
         })
         void nothing(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(0, 0);
         }
@@ -35,8 +34,8 @@ public class GameNumbersTest {
                 "123, 983", //xyz, abz
         })
         void one_strike(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(0, 1);
         }
@@ -48,8 +47,8 @@ public class GameNumbersTest {
                 "123, 923", //xyz, ayz
         })
         void two_strikes(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(0, 2);
         }
@@ -59,8 +58,8 @@ public class GameNumbersTest {
                 "123, 123", //xyz, xyz
         })
         void three_strikes(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(0, 3);
         }
@@ -75,8 +74,8 @@ public class GameNumbersTest {
                 "123, 938", //xyz, azb
         })
         void one_ball(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(1, 0);
         }
@@ -94,8 +93,8 @@ public class GameNumbersTest {
                 "123, 932", //xyz, azy
         })
         void two_balls(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(2, 0);
         }
@@ -110,8 +109,8 @@ public class GameNumbersTest {
                 "123, 293", //xyz, yaz
         })
         void one_ball_one_strike(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(1, 1);
         }
@@ -123,8 +122,8 @@ public class GameNumbersTest {
                 "123, 213", //xyz, yxz
         })
         void two_balls_one_strike(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(2, 1);
         }
@@ -134,8 +133,8 @@ public class GameNumbersTest {
                 "123, 231", //xyz, yzx
         })
         void three_balls(int computer, int player) {
-            GameNumbers gameNumbers = new GameNumbers(computer, player);
-            List<Integer> result = gameNumbers.compare().toList();
+            TwoNumbers twoNumbers = new TwoNumbers(computer, player);
+            List<Integer> result = twoNumbers.compare().toList();
 
             assertThat(result).containsOnly(3, 0);
         }

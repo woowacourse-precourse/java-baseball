@@ -19,8 +19,8 @@ public class Game {
 
             GameUtil.validateNumber(playerNumber);
 
-            GameNumbers gameNumbers = new GameNumbers(this.getComputerNumber(), playerNumber);
-            Scoreboard scoreboard = gameNumbers.compare();
+            TwoNumbers twoNumbers = new TwoNumbers(this.getComputerNumber(), playerNumber);
+            Scoreboard scoreboard = twoNumbers.compare();
 
             ConsoleUtil.printLine(scoreboard.toString());
 

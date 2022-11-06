@@ -1,14 +1,10 @@
 package baseball;
 
-import baseball.utils.GameUtil;
-import java.util.ArrayList;
-import java.util.List;
-
-public class GameNumbers {
+public class TwoNumbers {
     private final OneDigitNumbers oneDigitComputerNumbers;
     private final OneDigitNumbers oneDigitPlayerNumbers;
 
-    public GameNumbers(int computer, int player) {
+    public TwoNumbers(int computer, int player) {
         this.oneDigitComputerNumbers = new OneDigitNumbers(computer);
         this.oneDigitPlayerNumbers = new OneDigitNumbers(player);
     }
