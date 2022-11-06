@@ -11,26 +11,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-class UI {
-    public static void printGameStartMsg() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    // 4-1 : 메세지 출력
-    public static void printAnswerMsg() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
-    public static void printBallCount(String ballCount) {
-        System.out.println(ballCount);
-    }
-
-    public static void printInputNumOfUserMsg() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
-}
-
 public class Application {
     // 0. 게임의 시작을 분리한다.
     private static boolean gameStart() throws IllegalArgumentException {
@@ -57,11 +37,8 @@ public class Application {
                 UI.printBallCount(ballCount);
             }
 
-            // 4. 3개의 숫자를 모두 맞힌 경우, 게임을 새로 시작하게 할 것인지 종료할 것인지 물어본다.
-            // 4-1 : 메세지 출력
+            // 4. 3개의 숫자를 모두 맞힌 경우, 게임 재시작 안내 메세지 출력 및 1 또는 2의 값을 입력받도록 한다.
             UI.printAnswerMsg();
-
-            // 4-2 : 1 또는 2의 값 입력받기
             int restartOrExit = Integer.parseInt(Console.readLine());
             boolean restartOrNot = setRestartOrNot(restartOrExit);
             return restartOrNot;
