@@ -6,6 +6,7 @@ public class Score {
 
     private int strikeCount;
     private int ballCount;
+    private final int ANSWER_COUNT = 3;
     private final int NUMBER_LENGTH = 3;
     private final int ZERO_COUNT = 0;
 
@@ -27,6 +28,10 @@ public class Score {
                 ballCount++;
             }
         }
+    }
+
+    public boolean isCorrectAnswer() {
+        return strikeCount == ANSWER_COUNT;
     }
 
     public void printScore() {
