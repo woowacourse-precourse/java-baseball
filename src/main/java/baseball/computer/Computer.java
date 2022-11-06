@@ -52,7 +52,7 @@ public class Computer {
     }
 
     public boolean isCollect() {
-        return (counterBaseball.getStrike() == 3);
+        return (counterBaseball.getStrike() == ALL_STRIKE);
     }
 
 }
