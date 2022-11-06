@@ -19,19 +19,19 @@ public class Application {
         return computer_number_list;
     }
 
-    static List<Integer> user_enter_number() {
+    static List<Character> user_enter_number() {
         String user_number_string;
         user_number_string = readLine();
 
         char[] user_number_char_array;
         user_number_char_array = user_number_string.toCharArray();
 
-        List<Integer> user_number_list = new ArrayList<Integer>();
+        List<Character> user_number_char_list = new ArrayList<Character>();
         for (char user_number_char : user_number_char_array) {
-            user_number_list.add(Character.getNumericValue(user_number_char));
+            user_number_char_list.add(user_number_char);
         }
 
-        return user_number_list;
+        return user_number_char_list;
     }
 
     public static void main(String[] args) {
