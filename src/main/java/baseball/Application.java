@@ -27,6 +27,8 @@ public class Application {
 
             Integer ball = calculationBall(computer,user);
 
+            Integer strike = calculationStrike(computer,user);
+
 
 
         }
