@@ -28,10 +28,6 @@ userNumberToList()
 ```
 
 ### 게임 플레이 기능
-- [ ] 두 수의 숫자 비교
-```
-compareNumber()
-```
 - [ ] 각 자리수의 숫자를 비교
 ```
 compareNumberForStrike()
@@ -39,6 +35,10 @@ compareNumberForStrike()
 - [ ] 스트라이크 횟수 세기
 ```
 countStrike()
+```
+- [ ] 스트라이크 숫자 제거
+```
+exceptStirkeNumber()
 ```
 - [ ] 숫자를 비교
 ```
