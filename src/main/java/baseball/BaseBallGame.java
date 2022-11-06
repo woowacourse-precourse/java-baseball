@@ -40,18 +40,14 @@ class BaseBallGame {
         System.out.println(GAME_START);
     }
 
-    public void gamePlaying() {
-        try {
-            String computerNumber = getRandomDiff3DigitNumber();
-            boolean isSolved = false;
-            while (!isSolved) {
-                isSolved = solvingProblem(computerNumber);
-            }
-            if (reStartGame()) {
-                gamePlaying();
-            }
-        } catch (IllegalArgumentException e) {
-            throw e;
+    public void gamePlaying() throws IllegalArgumentException {
+        String computerNumber = getRandomDiff3DigitNumber();
+        boolean isSolved = false;
+        while (!isSolved) {
+            isSolved = solvingProblem(computerNumber);
+        }
+        if (reStartGame()) {
+            gamePlaying();
         }
     }
 
@@ -70,7 +66,7 @@ class BaseBallGame {
         return false;
     }
 
-    public boolean solvingProblem(String computerNumber) {
+    public boolean solvingProblem(String computerNumber) throws IllegalArgumentException {
         String userNumber = inputNumber();
         int ball, strike;
         List<Integer> hint = getHint(userNumber, computerNumber);
@@ -105,12 +101,11 @@ class BaseBallGame {
     }
 
 
-    public String inputNumber() {
+    public String inputNumber() throws IllegalArgumentException {
         System.out.print(INPUT_YOUR_NUMBER);
         String inputStr = Console.readLine();
         inputValidation(inputStr);
         return inputStr;
-//        return Integer.parseInt(inputStr);
     }
 
     public void inputValidation(String inputStr) {
