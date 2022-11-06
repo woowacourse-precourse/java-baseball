@@ -20,7 +20,8 @@ class Baseball {
     private static int checkRestartGame;
     private static List<Integer> computerNumber;
 
-    public static final String BALL = "볼 ";
+    public static final String BLANK = " ";
+    public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
     public static final int NEW_GAME = 1;
@@ -209,8 +210,9 @@ class Message {
     }
 
     public static void printBallStrike() {
-        System.out.print(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL);
-        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
+        System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL
+                + Baseball.BLANK
+                + Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
     }
 
     public static void printStrikeOnly() {
