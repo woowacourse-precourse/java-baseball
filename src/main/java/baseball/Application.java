@@ -90,6 +90,17 @@ public class Application {
         return count;
     }
 
+    public static void printResult(int strikeNum, int ballNum){
+        String result = "";
+        if(ballNum > 0)
+            result += ballNum + "볼 ";
+        if(strikeNum > 0)
+            result += strikeNum + "스트라이크";
+        if(strikeNum == 0 && ballNum == 0)
+            result = "낫싱";
+        System.out.println(result);
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
@@ -109,6 +120,7 @@ public class Application {
                 continue;
             }
             int ballNum = countBall(computer, user);
+            printResult(strikeNum, ballNum);
         }
     }
 }
