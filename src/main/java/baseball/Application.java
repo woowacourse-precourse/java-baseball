@@ -36,23 +36,38 @@ public class Application {
     public static boolean checkOnlyNumber(String userNumber) {
         try {
             Double.parseDouble(userNumber);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
     }
 
-    public static boolean checkNotContainZero (String userNumber) {
+    public static boolean checkNotContainZero(String userNumber) {
         return !userNumber.contains("0");
     }
 
-    public static boolean checkNotDuplication (String userNumber) {
+    public static boolean checkNotDuplication(String userNumber) {
         for (int index = 0; index < userNumber.length(); index++) {
             if (userNumber.indexOf(userNumber.charAt(index)) != index) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static void checkIllegalArgumentException(String userNumber) {
+        if (!checkNumberLength(userNumber)) {
+            throw new IllegalArgumentException("입력이 세 자리 수가 아닙니다!");
+        }
+        if (!checkOnlyNumber(userNumber)) {
+            throw new IllegalArgumentException("입력이 숫자로만 이루어지지 않았습니다!");
+        }
+        if (!checkNotContainZero(userNumber)) {
+            throw new IllegalArgumentException("입력에 0이 포함되어 있습니다!");
+        }
+        if (!checkNotDuplication(userNumber)) {
+            throw new IllegalArgumentException("입력에 같은 수가 중복되었습니다!");
+        }
+
     }
 }
