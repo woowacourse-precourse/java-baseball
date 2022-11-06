@@ -1,11 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 
 public class Application {
@@ -39,6 +39,15 @@ public class Application {
         return returnList;
     }
 
+    public static int countStrike(List<Integer> computer, List<Integer> user){
+        int count = 0;
+        for(int i=0; i<3; i++){
+            if(computer.get(i) == user.get(i))
+                count++;
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -50,7 +59,8 @@ public class Application {
             String input = scan.nextLine();
             checkInputNumber(input);
             List<Integer> user = makeList(input);
-
+            int strikeNum = countStrike(computer, user);
+            
         }
     }
 }
