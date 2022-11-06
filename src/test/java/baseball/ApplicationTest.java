@@ -153,7 +153,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    // 길이가 초가 할때
     @DisplayName("입력 길이가 초가할때 예외처리")
     void 문자_입력_예외_테스트_case_3() throws Exception {
         //given
@@ -167,7 +166,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // 길이가 초가 할때
+    @DisplayName("입력 길이가 초과할때 예외처리")
     void 문자_입력_예외_테스트_case_연습() throws Exception {
         //given asdasd
         User user = new User();
