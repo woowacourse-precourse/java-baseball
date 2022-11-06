@@ -39,6 +39,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("103"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     List<Integer> getThreeRandomNumbers() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Object ret;
         Class app = Application.class;
