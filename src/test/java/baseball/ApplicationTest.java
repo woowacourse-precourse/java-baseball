@@ -35,6 +35,17 @@ class ApplicationTest extends NsTest {
                 .map(number -> assertThat(number).isBetween(1,9));
     }
 
+    @Test
+    void 힌트코드_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789");
+                    assertThat(output()).contains("3스트라이크");
+                },
+                7, 8, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

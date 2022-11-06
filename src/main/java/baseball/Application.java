@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -38,8 +40,9 @@ public class Application {
             PrintResult.printLine(PrintResult.INPUT_INFO);
             String userInput = Console.readLine();
 
-            // 예외처리 : 1~9 이외의 값인지 확인
-            isGameNumber(userInput);
+             isGameNumber(userInput);
+
+            List<Integer> baseballCount = baseball.getTotalBallCount(userInput);
         }
     }
 
@@ -55,7 +58,7 @@ public class Application {
             throw new IllegalArgumentException("사용자 입력 길이가 게임 숫자 길이와 다르다.");
         }
 
-        for (int i=0; i<userInput.length(); i++) {
+        for (int i = 0; i < userInput.length(); i++) {
             char userOneChar = userInput.charAt(i);
             if (userOneChar < '1' || userOneChar > '9') {
                 throw new IllegalArgumentException("숫자 이외의 값이 입력되었습니다.");

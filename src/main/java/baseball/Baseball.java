@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Baseball {
@@ -26,8 +27,27 @@ public class Baseball {
         }
 
     }
-
     public List<Integer> getGameNumber() {
         return gameNumber;
+    }
+
+    /**
+     * 숫자 비교 후 카운트 갯수 구하는 함수
+     * @param userInput
+     * @return 최종 볼과 스트라이크 갯수
+     */
+    public List<Integer> getTotalBallCount(String userInput) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < userInput.length(); i++) {
+            int number = userInput.charAt(i) - '0';
+            if (number == gameNumber.get(i)) {
+                strikeCount++;
+            } else if (gameNumber.contains(number)) {
+                ballCount++;
+            }
+        }
+        return Arrays.asList(ballCount, strikeCount);
     }
 }
