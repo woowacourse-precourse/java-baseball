@@ -12,24 +12,52 @@ public class Game {
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
 
+
     private List<Integer> computerNum;
     private List<Integer> userNum;
     private int strike = 0;
     private int ball = 0;
     private boolean nothing = false;
 
+
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computerNum = getComputerNum();
+        computerNum = createComputerNum();
+        System.out.println(computerNum);
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         userNum = getUserNum(input);
-        calculateScore();
-
+        calculateResult();
+        printResult();
 
     }
 
-    public void calculateScore() {
+    public void printResult(){
+        String result = getResult();
+        System.out.println(result);
+
+        if(strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    public String getResult() {
+        StringBuilder sb = new StringBuilder();
+
+        if (nothing) {
+            sb.append("낫싱");
+        }
+        if (ball != 0) {
+            sb.append(ball).append("볼 ");
+        }
+        if (strike != 0) {
+            sb.append(strike).append("스트라이크");
+        }
+
+        return sb.toString();
+    }
+
+    public void calculateResult() {
         for(int i = 0; i < DIGIT; i++){
              checkIfStrikeOrBall(i);
         }
@@ -57,6 +85,18 @@ public class Game {
         return computerNum.get(index) == userNum.get(index);
     }
 
+    public List<Integer> createComputerNum() {
+        Set<Integer> computer = new HashSet<>();
+        while (computer.size() < DIGIT) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+            computer.add(randomNumber);
+        }
+        return convertSettoList(computer);
+    }
+
+    private List<Integer> convertSettoList(Set<Integer> set) {
+        return new ArrayList<>(set);
+    }
 
     public List<Integer> getUserNum(String input) {
         int num = validateNum(input);
@@ -113,18 +153,9 @@ public class Game {
     }
 
 
-    public List<Integer> getComputerNum() {
-        Set<Integer> computer = new HashSet<>();
-        while (computer.size() < DIGIT) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
-            computer.add(randomNumber);
-        }
-        return convertSettoList(computer);
-    }
 
-    private List<Integer> convertSettoList(Set<Integer> set) {
-        return new ArrayList<>(set);
-    }
+
+
 
 
 }
