@@ -18,6 +18,28 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
+    public static String getResultString(List<Integer> result){
+        int strike = result.get(STRIKE);
+        int ball = result.get(BALL);
+        int nothing = result.get(NOTHING);
+        String resultString = "";
+
+        if(nothing == 3) {
+            return "낫싱";
+        }
+        if(ball > 0){
+            resultString = String.format("%d볼", ball);
+        }
+        if(strike > 0){
+            resultString = String.format("%d스트라이크", strike);
+        }
+        if(ball > 0 && strike > 0){
+            resultString = String.format("%d볼 %d스트라이크", ball, strike);
+        }
+
+        return resultString;
+    }
+
 
     public static List<Integer> compareUserInputAndComputerSelect(int userInput) {
         List<Integer> point = new ArrayList<>(Arrays.asList(0, 0, 0));

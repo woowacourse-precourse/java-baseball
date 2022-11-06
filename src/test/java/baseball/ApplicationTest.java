@@ -128,7 +128,7 @@ class ApplicationTest extends NsTest {
         class success_case{
             @Test
             void case1(){
-                List<Integer> result = List.of(1, 1, 1)
+                List<Integer> result = List.of(1, 1, 1);
                 assertThat("1볼 1스트라이크").isEqualTo(Application.getResultString(result));
             }
 
