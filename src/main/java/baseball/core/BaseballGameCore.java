@@ -21,6 +21,7 @@ public class BaseballGameCore {
     }
 
     public void playBaseballGame() {
+        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
         while (true) {
             List<Integer> threeNumbers = inputProcess();
             BallStrikeDto answer = checkProcess(threeNumbers);
