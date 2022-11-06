@@ -9,11 +9,6 @@ public class BallStrikeResult {
         this.strikeCount = 0;
     }
 
-    public BallStrikeResult(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
-
     public void addBallCount() {
         this.ballCount++;
     }
