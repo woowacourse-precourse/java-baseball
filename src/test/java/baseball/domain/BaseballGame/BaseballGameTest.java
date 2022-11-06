@@ -34,7 +34,7 @@ class BaseballGameTest {
     }
 
     @Test
-    @DisplayName("힌트가_3스트라이크일_때_게임_종료를_테스트한다")
+    @DisplayName("힌트가 3스트라이크일 때 게임 종료를 테스트한다")
     void 힌트가_3스트라이크일때_게임_종료() throws InvocationTargetException, IllegalAccessException {
         String hintString = HintString.STRIKE.print(3);
         boolean result = false;
@@ -45,7 +45,7 @@ class BaseballGameTest {
     }
 
     @Test
-    @DisplayName("힌트가_스트라이크_볼일_때_게임_종료를_테스트한다")
+    @DisplayName("힌트가 스트라이크 볼일 때 게임 종료를 테스트한다")
     void 힌트가_스트라이크가_아닐_때_게임_지속() throws InvocationTargetException, IllegalAccessException {
         String hintString = HintString.BALL.print(1) + HintString.STRIKE.print(2);
         boolean result = true;

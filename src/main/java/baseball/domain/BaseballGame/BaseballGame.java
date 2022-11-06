@@ -5,8 +5,6 @@ import baseball.domain.Computer.Computer;
 import baseball.domain.Hint.Hint;
 import baseball.domain.Hint.HintString;
 import baseball.domain.Player.Player;
-import baseball.domain.Validation.Ball;
-import baseball.domain.Validation.Restart;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -23,9 +21,10 @@ public class BaseballGame {
     }
 
     public void start() {
+        System.out.println(Game.START);
+
         while (isStartRequested) {
             computer.generateRandomNumbers();
-            System.out.println(Game.START.getContent());
             play();
             checkGameRestart();
         }
@@ -34,35 +33,30 @@ public class BaseballGame {
     private void play() {
         while (isPlaying) {
             getPlayerNumber();
-            String hint = getHint();
-            printHint(hint);
-            checkPlayerWin(hint);
+            printHint();
         }
     }
 
     private void getPlayerNumber() {
-        System.out.print(Game.INPUT.getContent());
+        System.out.print(Game.INPUT);
         player.readBallNumberInput(Console.readLine());
     }
 
-    private String getHint() {
-        Hint hint = new Hint();
-        return hint.printHint(player.getBallNumbers(), computer.getBallNumbers());
-    }
-
-    private void printHint(String hintString) {
-        System.out.println(hintString);
+    private void printHint() {
+        Hint hint = new Hint(player.getBallNumbers(), computer.getBallNumbers());
+        String hintStatement =  hint.printHint();
+        checkPlayerWin(hintStatement);
     }
 
     private void checkPlayerWin(String hint) {
         if (hint.equals(HintString.STRIKE.print(3))) {
-            System.out.printf(Game.END.getContent() + "\n", Ball.COUNT.getValue());
+            System.out.println(Game.END);
             isPlaying = false;
         }
     }
 
     private void checkGameRestart() {
-        System.out.printf(Game.RESTART.getContent() + "\n", Restart.RESTART.getValue(), Restart.END.getValue());
+        System.out.println(Game.RESTART);
         isStartRequested = player.readRestartInput(Console.readLine());
     }
 

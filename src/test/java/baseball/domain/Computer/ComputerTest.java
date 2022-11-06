@@ -17,7 +17,7 @@ class ComputerTest {
     }
 
     @Test
-    @DisplayName("컴퓨터_생성_난수를_테스트한다")
+    @DisplayName("컴퓨터 생성 난수를 테스트한다")
     void 컴퓨터_생성_난수() {
         computer.generateRandomNumbers();
 

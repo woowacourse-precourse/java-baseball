@@ -17,7 +17,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("사용자_입력_난수에_이상이_없는_케이스를_테스트한다")
+    @DisplayName("사용자 입력 난수에 이상이 없는 케이스를 테스트한다")
     void 사용자_입력_숫자_리스트_생성_성공() {
         String inputString = "123";
         List<Integer> result = List.of(1, 2, 3);
@@ -28,42 +28,42 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("사용자_입력_난수에_숫자_외의_문자가_포함되는_케이스를_테스트한다")
+    @DisplayName("사용자 입력 난수에 숫자 외의 문자가 포함되는 케이스를 테스트한다")
     void 사용자_입력_숫자_문자_포함_예외() {
         String inputString = "12/3";
 
         assertThatThrownBy(() -> player.readBallNumberInput(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NOT_NUMBER_INCLUDE.getCode());
+                .hasMessageContaining(NOT_NUMBER_INCLUDE.toString());
     }
 
     @Test
-    @DisplayName("사용자_입력_난수가_3개가_아닌_경우를_테스트한다")
+    @DisplayName("사용자 입력 난수가 3개가 아닌 경우를 테스트한다")
     void 사용자_입력_숫자_개수_예외() {
         String inputString = "1234";
 
         assertThatThrownBy(() -> player.readBallNumberInput(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NOT_3_NUMBERS.getCode());
+                .hasMessageContaining(NOT_3_NUMBERS.toString());
     }
 
     @Test
-    @DisplayName("사용자_입력_난수가_범위를_벗어난_경우를_테스트한다")
+    @DisplayName("사용자 입력 난수가 범위를 벗어난 경우를 테스트한다")
     void 사용자_입력_숫자_범위_예외() {
         String inputString = "104";
 
         assertThatThrownBy(() -> player.readBallNumberInput(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NOT_IN_RANGE.getCode());
+                .hasMessageContaining(NOT_IN_RANGE.toString());
     }
 
     @Test
-    @DisplayName("사용자_입력_난수에_중복이_있는_경우를_테스트한다")
+    @DisplayName("사용자 입력 난수에 중복이 있는 경우를 테스트한다")
     void 사용자_입력_숫자_중복_예외() {
         String inputString = "414";
 
         assertThatThrownBy(() -> player.readBallNumberInput(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DUPLICATE_NUMBER.getCode());
+                .hasMessageContaining(DUPLICATE_NUMBER.toString());
     }
 }

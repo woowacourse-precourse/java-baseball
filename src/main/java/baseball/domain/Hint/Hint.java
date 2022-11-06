@@ -1,43 +1,53 @@
 package baseball.domain.Hint;
 
+import baseball.domain.Validation.Ball;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Hint {
     private int ball;
     private int strike;
 
-    public Hint() {
+    public Hint(List<Integer> playerBalls, List<Integer> computerBalls) {
         this.ball = 0;
         this.strike = 0;
+        determineBallStrike(playerBalls, computerBalls);
     }
 
-    public String printHint(List<Integer> playerBalls, List<Integer> computerBalls) {
-        determineBallStrike(playerBalls, computerBalls);
-        return printStatement();
+    public String printHint() {
+        String hint = getPrintStatement();
+        System.out.println(hint);
+        return hint;
     }
 
     private void determineBallStrike(List<Integer> playerBalls, List<Integer> computerBalls) {
-        List<Integer> canBeBall = ballCount(playerBalls, computerBalls);
-        canBeBall.forEach(ball -> strikeCall(ball, playerBalls, computerBalls));
+        for (int playerIdx = 0; playerIdx < Ball.COUNT.getValue(); playerIdx++) {
+            int playerBall = playerBalls.get(playerIdx);
+            compareWithComputerBalls(computerBalls, playerBall, playerIdx);
+        }
     }
 
-    private List<Integer> ballCount(List<Integer> playerBalls, List<Integer> computerBalls) {
-        List<Integer> canBeBall = playerBalls.stream()
-                .filter(computerBalls::contains)
-                .collect(Collectors.toList());
-        ball = canBeBall.size();
-        return canBeBall;
+    private void compareWithComputerBalls(List<Integer> computerBalls, int playerBall, int playerIdx) {
+        for (int computerIdx = 0; computerIdx < Ball.COUNT.getValue(); computerIdx++) {
+            int computerBall = computerBalls.get(computerIdx);
+            updateBallCount(computerBall, playerBall, computerIdx, playerIdx);
+        }
     }
 
-    private void strikeCall(int nowBall, List<Integer> playerBalls, List<Integer> computerBalls) {
-        if (playerBalls.indexOf(nowBall) == computerBalls.indexOf(nowBall)) {
+    private void updateBallCount(int computerBall, int playerBall, int computerIdx, int playerIdx) {
+        if (computerBall == playerBall) {
+            ball++;
+            updateStrikeCount(computerIdx, playerIdx);
+        }
+    }
+
+    private void updateStrikeCount(int computerIdx, int playerIdx) {
+        if (computerIdx == playerIdx) {
             strike++;
             ball--;
         }
     }
 
-    private String printStatement() {
+    private String getPrintStatement() {
         StringBuilder sb = new StringBuilder();
 
         if (ball == 0 && strike == 0) {

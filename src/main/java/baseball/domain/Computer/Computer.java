@@ -20,7 +20,7 @@ public class Computer {
         ballNumbers.clear();
 
         int number;
-        while (ballNumbers.size() != 3) {
+        while (ballNumbers.size() != Ball.COUNT.getValue()) {
             number = Randoms.pickNumberInRange(Ball.MIN.getValue(), Ball.MAX.getValue());
             generateNumberList(number);
         }
