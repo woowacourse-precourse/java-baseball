@@ -38,7 +38,7 @@ public class BaseballGame {
 
     public List<Integer> checkNumbers() {
         List<Integer> counts = new ArrayList<>(Arrays.asList(0, 0, 0));
-        IntStream.range(0, 4)
+        IntStream.range(0, 3)
                 .map(x -> randomNumbers.check(predictNumbers.get(x), x))
                 .forEach(x -> counts.set(x, counts.get(x) + 1));
         return counts;
@@ -51,7 +51,7 @@ public class BaseballGame {
             getPredictNumbers(validateStringToInteger(inputView.inputNumbers()));
             counts = checkNumbers();
             outputView.printResult(counts);
-        } while (counts.get(2) == 3);
+        } while (counts.get(2) != 3);
     }
 
     public boolean checkRetry() {
