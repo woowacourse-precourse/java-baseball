@@ -6,15 +6,37 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import net.bytebuddy.implementation.bytecode.ByteCodeAppender.Size;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    static final int SIZE = 3;
+    static int computer = 0;
+    static int input = 0;
     public static void main(String[] args) {
-        int SIZE = 3;
-        int computer = CreateNumbers(SIZE);
-        int input = InputNumbers(SIZE);
-        playGame(input, computer);
+        startGame();
+
+        
+    }
+
+    private static void startGame() {
+        computer = CreateNumbers(SIZE);
+        while (true) {
+            playGame();
+        }
+    }
+
+    private static void playGame() {
+        input = InputNumbers(SIZE);
+        checkFinish();
+        computeScore(input, computer);
+    }
+
+    private static void checkFinish() {
+        if (input == computer) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        }
     }
 
     private static int CreateNumbers(int SizeOfNum) {
@@ -49,16 +71,10 @@ public class Application {
         return intInput;
     }
 
-    private static void playGame(int input, int computer) {
-        if (input == computer) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-        else {
-            int strike = getStrikeNumber(input, computer);
-            int ball = getBallNumber(input, computer);
-            PrintGameScore(strike, ball);
-        }
+    private static void computeScore(int input, int computer) {
+        int strike = getStrikeNumber(input, computer);
+        int ball = getBallNumber(input, computer);
+        PrintGameScore(strike, ball);   
     }
 
     private static int getStrikeNumber(int input, int computer) {
