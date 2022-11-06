@@ -18,7 +18,7 @@ public class Game {
         /*
         게임 재시작 여부
          */
-
+        Restart.restartGame();
     }
 
 
