@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.constant.Rules.END_NUMBER;
 import static baseball.constant.Rules.PICK_COUNT;
@@ -47,6 +49,16 @@ public class Staff {
     private void validateInputLength(String input) {
         if (input.length() != PICK_COUNT) {
             throw new IllegalArgumentException("입력값이 " + PICK_COUNT + "자리가 아닙니다.");
+        }
+    }
+
+    private List<Integer> convertInputToUserNumbers(String input) {
+        try {
+            return Arrays.stream(input.split(""))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
         }
     }
 }
