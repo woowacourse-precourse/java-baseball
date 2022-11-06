@@ -19,6 +19,10 @@ public class ComputerNumber {
         }
     }
 
+    public List<Character> getNumberList() {
+        return numberList;
+    }
+
     private boolean checkListLength(List<Character> numberList) {
         if (numberList.size() < NUMBER_LENGTH) {
             return true;
