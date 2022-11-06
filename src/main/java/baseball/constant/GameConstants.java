@@ -1,8 +1,8 @@
-package baseball;
+package baseball.constant;
 
 import java.util.List;
 
-public abstract class Constant {
+public abstract class GameConstants {
 	public static final int LENGTH_OF_NUMBER = 3;
 
 	public static final String RESTART_GAME = "1";

@@ -1,7 +1,9 @@
-package Controller;
+package baseball;
 
-import static Controller.Printer.*;
-import static Controller.Restarter.*;
+import static baseball.view.Printer.*;
+import static baseball.controller.Restarter.*;
+
+import baseball.controller.Game;
 
 public class Execution {
 	public static void execute() {

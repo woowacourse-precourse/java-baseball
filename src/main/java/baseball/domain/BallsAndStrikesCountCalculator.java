@@ -1,4 +1,4 @@
-package computer;
+package baseball.domain;
 
 import java.util.List;
 

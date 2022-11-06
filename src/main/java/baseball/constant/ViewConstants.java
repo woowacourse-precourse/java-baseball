@@ -1,6 +1,6 @@
-package User;
+package baseball.constant;
 
-public enum Outputs {
+public enum ViewConstants {
 	GAME_START_MESSAGE("숫자 야구 게임을 시작합니다."),
 	ASKING_INPUT_MESSAGE("숫자를 입력해주세요 : "),
 	BALLS_COUNT_MESSAGE("%d볼"),
@@ -10,7 +10,7 @@ public enum Outputs {
 	RESTART_OR_NOT_MESSAGE("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.");
 	private final String message;
 
-	Outputs(String message) {
+	ViewConstants(String message) {
 		this.message = message;
 	}
 

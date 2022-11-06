@@ -1,6 +1,6 @@
-package User;
+package baseball.utils;
 
-import static baseball.Constant.*;
+import static baseball.constant.GameConstants.*;
 
 import java.util.Arrays;
 

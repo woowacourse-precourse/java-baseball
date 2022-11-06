@@ -1,12 +1,12 @@
 package baseball;
 
-import static Controller.Converter.*;
-import static Controller.Guess.*;
-import static Controller.Printer.*;
-import static Controller.Restarter.*;
-import static baseball.Constant.*;
+import static baseball.utils.Converter.*;
+import static baseball.domain.Guess.*;
+import static baseball.view.Printer.*;
+import static baseball.controller.Restarter.*;
+import static baseball.constant.GameConstants.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static computer.BallsAndStrikesCountCalculator.*;
+import static baseball.domain.BallsAndStrikesCountCalculator.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -15,12 +15,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Controller.Game;
-import User.Input;
-import User.Outputs;
-import User.Validator;
+import baseball.controller.Game;
+import baseball.utils.Input;
+import baseball.constant.ViewConstants;
+import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import computer.RandomNumberGenerator;
+import baseball.utils.RandomNumberGenerator;
 
 class ApplicationTest extends NsTest {
 	@Test
@@ -178,7 +178,7 @@ class ApplicationTest extends NsTest {
 	@Test
 	void print_메소드로_출력할_문자열_리턴() {
 		List<String> result = new ArrayList<>();
-		for (Outputs output : Outputs.values()) {
+		for (ViewConstants output : ViewConstants.values()) {
 			result.add(output.get());
 		}
 		assertThat(result).containsExactly("숫자 야구 게임을 시작합니다.", "숫자를 입력해주세요 : ", "%d볼", "%d스트라이크", "낫싱",

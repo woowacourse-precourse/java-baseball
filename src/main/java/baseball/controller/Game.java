@@ -1,12 +1,12 @@
-package Controller;
+package baseball.controller;
 
-import static Controller.Guess.*;
-import static Controller.Printer.*;
-import static baseball.Constant.*;
+import static baseball.constant.GameConstants.*;
+import static baseball.domain.Guess.*;
+import static baseball.view.Printer.*;
 
 import java.util.List;
 
-import computer.RandomNumberGenerator;
+import baseball.utils.RandomNumberGenerator;
 
 public class Game {
 	public void play() {
