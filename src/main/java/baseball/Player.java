@@ -20,6 +20,10 @@ public class Player {
         return numbers;
     }
 
+    public void setNumbers(ArrayList<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     public void setRandomNumber() {
         while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
