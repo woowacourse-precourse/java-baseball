@@ -2,12 +2,14 @@ package baseball.controller;
 
 import baseball.model.BallCounts;
 import baseball.util.Validation;
+import baseball.view.Input;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.model.Numbers;
 
 public class GameController {
     private static final Validation validation = new Validation();
+    private static final Input input = new Input();
     private static Numbers inputNumbers = new Numbers();
     private static BallCounts ballCounts = new BallCounts();
 
@@ -25,9 +27,11 @@ public class GameController {
         BallCounts ballCounts = new BallCounts();
         try {
             do {
+                input.inputGameNumber();
                 setInputNumbers(Console.readLine());
                 ballCounts.setBallCounts(answerNumbers.checkStrike(inputNumbers), answerNumbers.checkBall(inputNumbers));
             } while (ballCounts.getStrike() != 3);
+            input.inputRestartNumber();
         } catch (IllegalArgumentException e) {
             System.out.println("Error Message : " + e.getMessage());
             e.printStackTrace();
