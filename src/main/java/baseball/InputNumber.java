@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputNumber {
     static final int GAME_NUMBER_LENGTH = 3;
     static final int RESTART_NUMBER_LENGTH = 1;
-    static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
+    static final Pattern NUMBER_PATTERN = Pattern.compile("^[1-9]*$");
     static final Pattern RESTART_NUMBER_PATTERN = Pattern.compile("^[1-2]*$");
 
     public String inputGameNumber() {
