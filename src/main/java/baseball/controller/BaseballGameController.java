@@ -14,8 +14,7 @@ public class BaseballGameController {
 
     public void start() {
 
-//        inputView = new InputView();
-        inputView.inputInit();
+        inputView.printGameStart();
         computer.generateComputerNumberThree();
         play();
         outputView.printGameEnd();
@@ -34,7 +33,6 @@ public class BaseballGameController {
 
             hint = computer.getHint(computer.getComputerNumber(), player.getInputNumber());
 
-//            outputView = new OutputView();
             outputView.printHint(hint);
         } while (computer.isNotThreeStrike(hint));
     }
