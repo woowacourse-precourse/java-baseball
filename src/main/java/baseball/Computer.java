@@ -25,8 +25,8 @@ public class Computer {
         return new Computer(new Numbers(answer));
     }
 
-    public Hint hint(User user) {
-        return new Hint(strike(user), ball(user));
+    public Status status(User user) {
+        return new Status(strike(user), ball(user));
     }
 
     public int strike(User user) {
