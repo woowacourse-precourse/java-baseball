@@ -104,6 +104,19 @@ class ApplicationTest extends NsTest {
 
             assertThat(computer.checkNothing(question)).isEqualTo(result);
         }
+
+        @Test
+        void 게임이끝났는지_테스트() throws Exception {
+            List<Integer> computerRandomNumbers = List.of(1, 2, 3);
+
+            boolean result = true;
+            List<Integer> question = List.of(1, 2, 3);
+            Field privateFiled = computer.getClass().getDeclaredField("baseballNumber");
+            privateFiled.setAccessible(true);
+            privateFiled.set(computer, computerRandomNumbers);
+
+            assertThat(computer.checkGameEnd(question)).isEqualTo(result);
+        }
     }
 
     Object getPrivateField(String name, Object transferObject) throws Exception {
