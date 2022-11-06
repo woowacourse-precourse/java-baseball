@@ -12,8 +12,12 @@ public class StrikeModel {
         this.computerNumber = getNumberList(computerNumberList);
     }
 
+    // 볼과 스트라이크 int배열로 반환
+    public int[] getBallAndStrike() {
 
+    }
 
+    // List를 int배열로 변환
     private int[] getNumberList(List<Integer> numberList) {
         int[] numberListArray = new int[3];
         for (int index = 0; index < 3; index++) {
