@@ -17,6 +17,16 @@ public class Application {
         return computer;
     }
 
+    static int input_your_num(){
+        String input_str;
+        int input_num = 000;
+
+        System.out.print("숫자를 입력해주세요 : ");
+        input_str = Console.readLine();
+        input_num = Integer.parseInt(input_str);
+
+        return input_num;
+    }
 
 
     public static void main(String[] args) {
