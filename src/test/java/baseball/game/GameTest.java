@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class GameTest {
 	private static PlayerComputer computer;
 	private static PlayerUser user;
@@ -24,15 +22,14 @@ public class GameTest {
 
 	// 3스트라이크 테스트
 	@Test void gamePrintMsgTest() {
-		String answer = computer.getRandomNumber();
-		String input = answer;
+		String input = computer.getRandomNumber();
 
 		OutputStream out = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(out));
 		InputStream in = new ByteArrayInputStream(input.getBytes());
 		System.setIn(in);
 
-		game.play();
+		game.play(computer, user);
 
 		Assertions.assertThat(msg1).isEqualTo(out.toString());
 	}

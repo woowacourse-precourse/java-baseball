@@ -1,5 +1,6 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
 import baseball.playerComputer.PlayerComputer;
 import baseball.playerUser.PlayerUser;
 
@@ -10,6 +11,8 @@ public class Game {
 	private static final Game instance = new Game();
 	private static final int STRIKE = 0;
 	private static final int BALL = 1;
+	private static final int REPLAY = 1;
+	private static final int ENDGAME = 2;
 
 	private Game() {
 	}
@@ -29,10 +32,28 @@ public class Game {
 			printMessage(judgement);
 			numberOfStrike = judgement.get(STRIKE);
 		} while (!isCorrectAnswer(numberOfStrike));
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
 		return askReplay();
 	}
 
+	private int askReplay() {
+		String input;
+		int replayOrEndgame;
+
+		while (true) {
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			input = Console.readLine();
+			replayOrEndgame = Integer.parseInt(input);
+
+			if (replayOrEndgame == REPLAY || replayOrEndgame == ENDGAME) {
+				break;
+			}
+			// System.out.println("거 제대로 입력합시다! 좀... 아시겠어요?");
+		}
+
+		return replayOrEndgame;
+	}
 
 	private boolean isCorrectAnswer(int numberOfStrike) {
 		return numberOfStrike == 3;
@@ -107,7 +128,7 @@ public class Game {
 		int ballCounter = judgement.get(BALL);
 
 		if (isNothing(strikeCounter, ballCounter)) {
-			return  "낫싱";
+			return "낫싱";
 		}
 		if (strikeCounter == 0) {
 			return ballCounter + "볼";
