@@ -149,8 +149,16 @@ public abstract class NumberBaseballGame {
         return ball;
     }
 
+    protected static void setBall(int ball) {
+        NumberBaseballGame.ball = ball;
+    }
+
     protected static int getStrike() {
         return strike;
+    }
+
+    protected static void setStrike(int strike) {
+        NumberBaseballGame.strike = strike;
     }
 
     protected static boolean getIsPower() {
