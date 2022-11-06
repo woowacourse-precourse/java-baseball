@@ -4,6 +4,7 @@ import static baseball.utils.ErrorMessages.CONVERT_STRING_TO_INT_FAIL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import baseball.utils.StringToIntConvertor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.StringToIntConvertor;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameService {
