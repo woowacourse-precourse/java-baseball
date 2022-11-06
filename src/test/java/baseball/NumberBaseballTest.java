@@ -75,7 +75,7 @@ class NumberBaseballTest extends NsTest {
     @DisplayName("예외 처리 테스트(IllegalArgumentException)")
     @Nested
     class exceptionTest {
-        @DisplayName("playGame() 테스트")
+        @DisplayName("playGame() 예외 테스트")
         @Nested
         class playGameExceptionTest {
             @DisplayName("3자리 초과 입력하는 경우")
@@ -106,10 +106,10 @@ class NumberBaseballTest extends NsTest {
             }
         }
 
-        @DisplayName("isRestart() 테스트")
+        @DisplayName("isRestart() 예외 테스트")
         @Nested
         class isRestartExceptionTest {
-            @DisplayName("입력에 1자리 숫자를 초과하는 경우")
+            @DisplayName("1자리 숫자를 초과하는 경우")
             @Test
             void isRestartMoreOne() {
                 assertRandomNumberInRangeTest(
@@ -123,7 +123,7 @@ class NumberBaseballTest extends NsTest {
                 );
             }
 
-            @DisplayName("입력에 1, 2 아닌 숫자를 입력하는 경우")
+            @DisplayName("1, 2 아닌 숫자를 입력하는 경우")
             @Test
             void isRestartNotOneOrTwo() {
                 assertRandomNumberInRangeTest(
@@ -137,7 +137,7 @@ class NumberBaseballTest extends NsTest {
                 );
             }
 
-            @DisplayName("입력에 문자를 입력하는 경우")
+            @DisplayName("문자를 입력하는 경우")
             @Test
             void isRestartIncludeCharacter() {
                 assertRandomNumberInRangeTest(
