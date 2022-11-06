@@ -29,9 +29,10 @@ public class IOManager {
         if(line.length() != 3)
             return false;
 
-        for(int idx = 0; idx < 3; idx++) {
-            //
-        }
+        for(int idx = 0; idx < 3; idx++)
+            if(line.charAt(idx) < '0' || line.charAt(idx) > '9')
+                return false;
+
         return true;
     }
 
