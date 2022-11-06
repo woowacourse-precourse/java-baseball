@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class Game {
     private static final int DIGITS = 3;
+    private static final String START_SENTENCE = "숫자 야구 게임을 시작합니다.";
     private static final String RESTART = "1";
     private static final String BALL_STR = "볼 ";
     private static final String STRIKE_STR = "스트라이크 ";
@@ -20,6 +21,7 @@ public class Game {
     Number number = new Number();
 
     public void gameStart() {
+        System.out.println(START_SENTENCE);
         computer = number.setRandomNumbers();
         while (!exitFlag) {
             player = number.getInputNumber();
