@@ -23,20 +23,24 @@ public class Application {
         while (strike <3){
             strike = playBaseBallGameOneCycle(randomNumber);
         }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-            String s = Console.readLine();
-            Integer userInput = Integer.parseInt(s);
+            Integer userInput = selectPlayMoreGame();
             if(userInput==1){
               continue;
             }
             else if(userInput==2){
                 return;
             }else {
-                throw new IllegalArgumentException();
+               throw new IllegalArgumentException();
             }
-
         }
+    }
+//유저 입력으로 더 게임을 할지 말지 결정
+    private static Integer selectPlayMoreGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String s = Console.readLine();
+        Integer userInput = Integer.parseInt(s);
+        return userInput;
     }
 
     private static int playBaseBallGameOneCycle(List<Integer> randomNumber) {
