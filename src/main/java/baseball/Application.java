@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -8,6 +9,35 @@ import java.util.regex.Pattern;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+
+    public static void playGame() {
+        List<Integer> targetNumber = createTargetNumber();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            validateGuessedNumber(input);
+            List<Integer> guessedNumber = parseGuessedNumber(input);
+
+            int numberOfStrike = calculateStrike(targetNumber, guessedNumber);
+            int numberOfBall = calculateBall(targetNumber, guessedNumber);
+
+            printResult(numberOfStrike, numberOfBall);
+
+            if (numberOfStrike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+        validateRestartNumber(input);
+        int restartNumber = Integer.parseInt(input);
+
+        if (restartNumber == 1) {
+            playGame();
+        }
     }
 
     public static List<Integer> createTargetNumber() {
