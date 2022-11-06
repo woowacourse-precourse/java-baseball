@@ -6,14 +6,18 @@ import java.util.Scanner;
 public class Player {
     private static final int DESIRED_LENGTH = 3;
     private static final int NUM_OF_SELECTABLE_MENU = 2;
-    private static final int QUIT = 1;
-    private static final int RESTART = 2;
 
     Scanner sc = Application.sc;
 
     public int guessRandomNumber() {
         String input = sc.nextLine();
         validateGuess(input);
+        return Integer.parseInt(input);
+    }
+
+    public int selectExitMenu() {
+        String input = sc.nextLine();
+        validateMenuSelection(input);
         return Integer.parseInt(input);
     }
 
