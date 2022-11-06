@@ -11,12 +11,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ResultViewTest {
-    @DisplayName("볼과 스트라이크 개수가 예상한 프린트문과 똑같이 출력되는지 확인")
+    @DisplayName("3스트라이크 출력 테스트")
     @Test
     void case1() {
-        List<Integer> scores = List.of(0, 3);
         OutputStream actualPrintout = new ByteArrayOutputStream();
         System.setOut(new PrintStream(actualPrintout));
+        List<Integer> scores = List.of(0, 3);
         ResultView.printOut(scores);
 
         OutputStream expectedPrintout = new ByteArrayOutputStream();
@@ -26,11 +26,12 @@ public class ResultViewTest {
         assertThat(actualPrintout.toString()).isEqualTo(expectedPrintout.toString());
     }
 
+    @DisplayName("2볼 출력 테스트")
     @Test
     void case2() {
-        List<Integer> scores = List.of(2, 0);
         OutputStream actualPrintout = new ByteArrayOutputStream();
         System.setOut(new PrintStream(actualPrintout));
+        List<Integer> scores = List.of(2, 0);
         ResultView.printOut(scores);
 
         OutputStream expectedPrintout = new ByteArrayOutputStream();
@@ -40,11 +41,12 @@ public class ResultViewTest {
         assertThat(actualPrintout.toString()).isEqualTo(expectedPrintout.toString());
     }
 
+    @DisplayName("낫싱 출력 테스트")
     @Test
     void case3() {
-        List<Integer> scores = List.of(0, 0);
         OutputStream actualPrintout = new ByteArrayOutputStream();
         System.setOut(new PrintStream(actualPrintout));
+        List<Integer> scores = List.of(0, 0);
         ResultView.printOut(scores);
 
         OutputStream expectedPrintout = new ByteArrayOutputStream();
@@ -54,11 +56,12 @@ public class ResultViewTest {
         assertThat(actualPrintout.toString()).isEqualTo(expectedPrintout.toString());
     }
 
+    @DisplayName("1볼 1스트라이크 출력 테스트")
     @Test
     void case4() {
-        List<Integer> scores = List.of(1, 1);
         OutputStream actualPrintout = new ByteArrayOutputStream();
         System.setOut(new PrintStream(actualPrintout));
+        List<Integer> scores = List.of(1, 1);
         ResultView.printOut(scores);
 
         OutputStream expectedPrintout = new ByteArrayOutputStream();

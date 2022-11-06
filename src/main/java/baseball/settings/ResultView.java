@@ -30,7 +30,7 @@ public class ResultView {
 
     public static String getSpace() {
         if (ballCount != 0 && strikeCount != 0) {
-            return SPACE_BETWEEN_WORDS; // 띄어쓰기
+            return SPACE_BETWEEN_WORDS; // " "
         }
         return NO_SPACE;
     }
