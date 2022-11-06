@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+	public String randomNumberForTest;
 	private static final int STRIKE = 0;
 	private static final int BALL = 1;
 	private static final int REPLAY = 1;
@@ -23,8 +24,10 @@ public class Game {
 
 	public int play(PlayerComputer computer, PlayerUser user) {
 		int numberOfStrike;
+		String answer = computer.getRandomNumber();
+		randomNumberForTest = answer;
+
 		do {
-			String answer = computer.getRandomNumber();
 			String userInput = user.getInputNumber();
 
 			List<Integer> judgement = compareUserInputToAnswer(userInput, answer);
