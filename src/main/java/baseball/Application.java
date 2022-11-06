@@ -8,13 +8,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-//
-//        while (true) {
-//            startBaseball();
-//            if (endBaseball()) {
-//                break;
-//            }
-//        }
+
+        while (true) {
+            startBaseball();
+            if (endBaseball()) {
+                break;
+            }
+        }
     }
 
     /**
@@ -54,7 +54,6 @@ public class Application {
         }
         return computerThreeNum;
     }
-    // ------------------------------------------------------------------
 
     // <게임진행 메서드>
     public static void startBaseball() {
@@ -84,9 +83,20 @@ public class Application {
     }
 
     public static boolean endBaseball() {
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String endGame = Console.readLine();
 
-        // TRUE-----------> 게임종료 or 재시작 여부
+        // 게임종료 or 재시작 여부
+        if (endGame.equals("1")) {
+            System.out.println("게임을 다시 시작합니다.");
+            return false;
+        }
+        if (endGame.equals("2")) {
+            System.out.println("게임을 종료합니다.");
+            return true;
+        } else {
+            return endBaseball();
+        }
 
     }
 
@@ -105,10 +115,10 @@ public class Application {
     }
 
     public static void checkValidation(List<Integer> myThreeNum) {
+        // myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임 종료
         if (myThreeNum.size() != 3) {
             throw new IllegalArgumentException("입력오류. 게임을 종료합니다.");
         }
-        // myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임 종료
     }
 }
 
