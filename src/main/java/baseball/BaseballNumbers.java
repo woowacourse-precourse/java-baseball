@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballNumbers {
+
     private List<BaseballNumber> baseballNumbers;
 
     public boolean isNumericReadline(String readline) {
@@ -23,6 +24,17 @@ public class BaseballNumbers {
             throw new IllegalArgumentException();
         }
         return isNumericReadline(readline);
+    }
+
+    public boolean checkBaseballNumberDuplication() throws IllegalArgumentException {
+        int first = baseballNumbers.get(0).getBaseballNumber(0);
+        int second = baseballNumbers.get(1).getBaseballNumber(1);
+        int third = baseballNumbers.get(2).getBaseballNumber(2);
+
+        if (first == second || first == third || second == third) {
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
 }
