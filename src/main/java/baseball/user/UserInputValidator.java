@@ -17,15 +17,12 @@ public class UserInputValidator {
             throw new IllegalArgumentException();
         }
 
-        String temp = inputValue.get(0);
-
-        for (int i = 0; i < 2; i++) {
-            if (temp.charAt(0) < 47 || temp.charAt(0) > 58) {
+        for (int index = 0; index < 2; index++) {
+            String currentlyExploredValue = inputValue.get(index);
+            if (currentlyExploredValue.charAt(0) < 47 ||
+                    currentlyExploredValue.charAt(0) > 58 ||
+                    currentlyExploredValue.equals(inputValue.get(index + 1))) {
                 throw new IllegalArgumentException();
-            } else if (temp.equals(inputValue.get(i + 1))) {
-                throw new IllegalArgumentException();
-            } else if (!temp.equals(inputValue.get(i + 1))) {
-                temp = inputValue.get(i);
             }
         }
     }
