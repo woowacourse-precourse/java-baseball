@@ -52,7 +52,7 @@ public class BaseballGame {
 
     private void checkUserNumber() {
         if (!InputValidator.isRightInput(userNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
@@ -103,7 +103,7 @@ public class BaseballGame {
         String exitNumber = Console.readLine();
 
         if (!InputValidator.isRightExitInput(exitNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
 
         if (Integer.parseInt(exitNumber) == STOP) {

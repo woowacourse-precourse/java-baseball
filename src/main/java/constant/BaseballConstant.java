@@ -14,6 +14,8 @@ public class BaseballConstant {
     public static final String CORRECT_MESSAGE = NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    public static final String ERROR_MESSAGE = "입력값에서 에러가 발생했습니다. 게임을 종료합니다.";
+
     public static final String ENTER = "\n";
     public static final String SPACE = " ";
 }
