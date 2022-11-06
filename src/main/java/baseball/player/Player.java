@@ -1,19 +1,24 @@
-package baseball.Player;
+package baseball.player;
 
 import java.util.*;
 
 public class Player {
     private static final int DIGIT_NUM = 3;
-    private static final String PATTERN = "[1-9]+";
+    private static final String REGULAR_PATTERN = "[1-9]+";
 
     public List<Integer> getInput(String readLine) {
         String verifiedInput = inputVerification(readLine);
+        List<Integer> list = getList(verifiedInput);
+        return Collections.unmodifiableList(list);
+    }
 
+    private List<Integer> getList(String verifiedInput) {
         List<Integer> list = new ArrayList<>();
+
         for (String read : verifiedInput.split("")) {
             list.add(Integer.valueOf(read));
         }
-        return Collections.unmodifiableList(list);
+        return list;
     }
 
     public String inputVerification(String readLine) {
@@ -25,7 +30,7 @@ public class Player {
     }
 
     private void validateCharacters(String readLine) {
-        String regularExpression = PATTERN;
+        String regularExpression = REGULAR_PATTERN;
         if (!(readLine.matches(regularExpression))) {
             throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
         }
