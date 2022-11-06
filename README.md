@@ -67,6 +67,7 @@ BUILD SUCCESSFUL in 0s
 - [x] FEATURE14. 게임 결과 출력 메서드
 - [x] FEATURE15. 게임 종료 메시지 출력 메서드
 - [x] FEATURE16. 게임 종료 입력 메서드
+- [ ] FEATURE17. 게임 시작 메서드
 
 ---
 
