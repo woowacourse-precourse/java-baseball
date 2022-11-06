@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,6 +15,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 
 class ApplicationTest extends NsTest {
     @Test
