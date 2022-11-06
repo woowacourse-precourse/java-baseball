@@ -4,6 +4,7 @@ import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import net.bytebuddy.asm.Advice;
 
 public class BaseballGameController {
 
@@ -41,6 +42,9 @@ public class BaseballGameController {
         String restartInput = inputView.restart();
         if (computer.isRestart(restartInput)) {
             start();
+        }
+        if(!computer.isRestart(restartInput)){
+            System.exit(0);
         }
     }
 
