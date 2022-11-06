@@ -1,10 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -92,6 +94,13 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<Integer> computer_numbers = getComputerNumbers();
+        List<Integer> user_numbers = Arrays.stream(args).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+
+        if(isException(user_numbers)){
+            List<Integer> compare_list = compare(computer_numbers, user_numbers);
+            getAnswer(compare_list);
+        }
 
     }
 }
