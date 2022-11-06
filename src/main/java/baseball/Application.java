@@ -8,9 +8,19 @@ import java.util.List;
 
 public class Application {
 
-    public static void exceptionHandling (String userInputString) throws IllegalArgumentException{
+    static List<Integer> allowedNumber = List.of(1,2,3,4,5,6,7,8,9);
+
+    public static void checkInputLength (String userInputString) throws IllegalArgumentException {
         if (userInputString.length()!=3) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkInputValue (List<Integer> userInput) throws IllegalArgumentException {
+        for (int i=0; i<userInput.size(); i++){
+            if (!allowedNumber.contains(userInput.get(i))) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -18,10 +28,11 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String userInputString = readLine();
         List<Integer> userInput = new ArrayList<>();
-        exceptionHandling(userInputString);
+        checkInputLength(userInputString);
         for (int i=0; i<userInputString.length(); i++) {
             userInput.add(Character.getNumericValue(userInputString.charAt(i)));
         }
+        checkInputValue(userInput);
         return userInput;
     }
 
