@@ -1,5 +1,9 @@
 package baseball.domain;
 
+import baseball.view.OutputView;
+
+import java.util.Arrays;
+
 public class Score {
 
     private static final int INITIAL_VALUE = 0;
@@ -16,21 +20,20 @@ public class Score {
         this.strike = INITIAL_VALUE;
     }
 
-    public boolean isWrongAnswer(String answer, int[] guessedAnswer) {
+    public boolean isWrongAnswer(int[] answer, int[] guessedAnswer) {
+        String stringAnswer = Arrays.toString(answer);
         initBallAndStrike();
 
         for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.length; guessedAnswerIndex++) {
             int number = guessedAnswer[guessedAnswerIndex];
-            int answerIndex = answer.indexOf(number);
+            int answerIndex = stringAnswer.indexOf(number);
 
             ballAndStrikeCount(answerIndex, guessedAnswerIndex);
         }
 
-        if (strike == ANSWER_STRIKE_COUNT) {
-            return false;
-        }
+        setResultMessage(ball, strike);
 
-        return true;
+        return strike != ANSWER_STRIKE_COUNT;
     }
 
     private void ballAndStrikeCount(int answerIndex, int guessedAnswerIndex) {
@@ -43,8 +46,21 @@ public class Score {
         }
     }
 
-    private int[] getBallAndStrike() {
-        int[] ballAndStrike = {ball, strike};
-        return ballAndStrike;
+    private void setResultMessage(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            OutputView.setNothingMessage();
+        }
+
+        if (ball > 0 && strike == 0) {
+            OutputView.setOnlyBallMessage(ball);
+        }
+
+        if (ball == 0 && strike > 0) {
+            OutputView.setOnlyStrikeMessage(strike);
+        }
+
+        if (ball > 0 && strike > 0) {
+            OutputView.setBallAndStrikeMessage(ball, strike);
+        }
     }
 }

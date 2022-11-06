@@ -9,7 +9,7 @@ public class Computer {
     private static final int ANSWER_LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBEr = 9;
-    private int[] answer;
+    private final int[] answer;
 
     public Computer() {
         answer = new int[ANSWER_LENGTH];
