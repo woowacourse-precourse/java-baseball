@@ -27,7 +27,13 @@ public class GameManager {
 
         String userInput = Console.readLine();
 
-        if (!userInput.equals("1"))
+        if (userInput.length() != 1)
+            throw new IllegalArgumentException("재시작(1) 또는 종료(2)만 입력해야합니다.");
+
+        if (!userInput.matches("^[1-2]*$"))
+            throw new IllegalArgumentException("재시작(1) 또는 종료(2)만 입력해야합니다.");
+
+        if (userInput.equals("2"))
             isContinue = false;
     }
 }
