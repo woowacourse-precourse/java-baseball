@@ -40,6 +40,9 @@ public class GamePlay {
             return true;
         }
 
+        GamePlay.restart = false;
+
+        computer.generateNumber();
         return false;
     }
 
