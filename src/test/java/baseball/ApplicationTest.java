@@ -115,4 +115,26 @@ class ApplicationTest extends NsTest {
         assertThat(ball).isEqualTo(3);
     }
 
+
+
+    @Test
+    @DisplayName("0 스트라이크 경우 ")
+    public void noStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(1,2,5);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculationStrike(computer,user);
+        assertThat(strike).isEqualTo(0);
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
