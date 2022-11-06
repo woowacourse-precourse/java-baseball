@@ -19,4 +19,8 @@ public class Ball {
 	private boolean isOutOfRange(final int number) {
 		return MIN_NUMBER > number || number > MAX_NUMBER;
 	}
+
+	public BallStatus compareTo(final Ball ball) {
+		return BallStatus.NOTHING;
+	}
 }

@@ -26,4 +26,13 @@ public class BallTest {
 		assertThat(new Ball(1)).isNotNull();
 	}
 
+	@DisplayName("숫자 비교 테스트 - 낫싱")
+	@Test
+	void compareTo_숫자_비교_낫싱() {
+		Ball ball = new Ball(1);
+
+		// 낫싱의 경우
+		BallStatus status = ball.compareTo(new Ball(2));
+		assertThat(status).isEqualTo(BallStatus.NOTHING);
+	}
 }
