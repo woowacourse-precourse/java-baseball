@@ -11,9 +11,11 @@ import static baseball.view.BaseBallDisplay.*;
 public class BaseBallSimulator {
 
     private final BaseBallController baseBallController;
+    private final BaseBallUserConsole baseBallUserConsole;
 
     public BaseBallSimulator() {
         this.baseBallController = new BaseBallController();
+        this.baseBallUserConsole = new BaseBallUserConsole();
     }
 
     public void start() {
@@ -38,7 +40,7 @@ public class BaseBallSimulator {
 
         while (!isMatchedBaseBall) {
             printAnswerInputMessage();
-            String input = BaseBallUserConsole.inputAnswer();
+            String input = baseBallUserConsole.inputAnswer();
 
             Response response = baseBallController.match(id, input);
             printResultMessage(response.getBall(), response.getStrike());
@@ -48,8 +50,7 @@ public class BaseBallSimulator {
     }
 
     private boolean inputReStartCondition() {
-        String input = Console.readLine();
-        UserInputValidator.validateReStart(input);
+        String input = baseBallUserConsole.inputReStart();
 
         return Integer.parseInt(input) == 1;
     }

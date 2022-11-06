@@ -11,10 +11,18 @@ public class BaseBallUserConsole {
      * Returns : user input string
      * Throws: IllegalArgumentException – if this scanner is closed
      * */
-    public static String inputAnswer() {
+    public String inputAnswer() {
         String input = Console.readLine();
 
         UserInputValidator.validateAnswer(input);
+
+        return input;
+    }
+
+    public String inputReStart() {
+        String input = Console.readLine();
+
+        UserInputValidator.validateReStart(input);
 
         return input;
     }
