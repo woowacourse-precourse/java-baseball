@@ -12,8 +12,8 @@ public class Round {
 
     public void startNewRound()  {
         Print.printRoundStart();
-        String inputString = Input.readString();
-        numbers = Parse.StringToNumbers(inputString);
+        int inputInt = Input.readInt();
+        numbers = new Numbers(inputInt);
     }
 
     public void playRound() {

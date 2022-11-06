@@ -26,8 +26,8 @@ public class Game {
 
     public boolean replayGame() {
         Print.printReplayGame();
-        String inputString = Input.readString();
-        ReplayNumber replayNumber = Parse.StringToReplayNumber(inputString);
+        int inputInt = Input.readInt();
+        ReplayNumber replayNumber = new ReplayNumber(inputInt);
         return replayNumber.isReplay();
     }
 }
