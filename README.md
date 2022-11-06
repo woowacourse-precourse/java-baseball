@@ -15,6 +15,9 @@
 4. 야구 게임 기능
    1. user input, exception
       1. exception 발생 시 게임 종료
+         1. input 길이가 3이 아닐 때
+         2. 모든 값이 숫자가 아닐 때
+         3. 중복 값이 있을 때 
    2. message 출력 
    3. status input, 반복
    4. user input, computer balls compare
