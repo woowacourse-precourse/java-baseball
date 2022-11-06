@@ -25,7 +25,7 @@ public class GameResultResponseDto {
     }
 
     public boolean isBallZero() {
-        return ball == 0;
+        return ball == CRITERION_ZERO;
     }
 
     public boolean isThreeStrike() {
