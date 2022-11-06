@@ -57,7 +57,7 @@ public class Application {
 
     private static void saveNumberStatus(int[] inputNumbers, List<Integer> computer, GameStatus gameStatus){
         for(int i = 0 ; i < inputNumbers.length; i++){
-            if( computer.contains( inputNumbers[i] ) ){ //해당 숫자가 정답에 없다. // 여기 다시!
+            if( computer.contains( inputNumbers[i] ) ){ //해당 숫자가 정답에 없다.
                 gameStatus.nothing = false;
             }
         }
@@ -66,7 +66,9 @@ public class Application {
             for(int i = 0 ; i < inputNumbers.length; i++){
                 if(i == computer.indexOf(inputNumbers[i])){ //스트라이크인 경우
                     gameStatus.strike++;
-                } else gameStatus.ball++; //볼인 경우
+                } else if (computer.contains(inputNumbers[i])) {
+                    gameStatus.ball++; //볼인 경우
+                }
             }
         }
 
@@ -76,7 +78,7 @@ public class Application {
     private static String responseNumberStatus(GameStatus gameStatus){
         StringBuilder sb = new StringBuilder();
 
-        if(gameStatus.nothing) return "낫띵";
+        if(gameStatus.nothing) return "낫싱";
         else {
             if(gameStatus.ball > 0) sb.append(gameStatus.ball).append("볼 ");
             if(gameStatus.strike > 0) sb.append(gameStatus.strike).append("스트라이크 ");
@@ -84,7 +86,7 @@ public class Application {
         return sb.toString();
     }
     public static class GameStatus{
-        Boolean nothing = false;
+        Boolean nothing = true;
 
         Integer ball = 0;
 
