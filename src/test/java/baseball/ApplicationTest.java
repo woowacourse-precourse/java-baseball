@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static baseball.Application.checkInputValue;
-import static baseball.Application.getUserInput;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -65,7 +64,21 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void checkBallTest() {
+        List<Integer> answer = List.of(3,1,2);
+        List<Integer> userInput = List.of(1,7,5);
+        int result = 1;
+        assertEquals(result,checkBall(answer,userInput));
+    }
 
+    @Test
+    void checkStrikeTest() {
+        List<Integer> answer = List.of(5,7,8);
+        List<Integer> userInput = List.of(5,4,8);
+        int result = 2;
+        assertEquals(result,checkStrike(answer,userInput));
+    }
 
     @Override
     public void runMain() {
