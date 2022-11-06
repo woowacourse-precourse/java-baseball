@@ -3,9 +3,9 @@ package baseball.view;
 import baseball.model.Computer;
 import baseball.model.Player;
 
-public class OutputView {
+import static baseball.Constants.OutputMessage.END_MESSAGE;
 
-    private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+public class OutputView {
 
     public void printGameEnd(){
         System.out.println(END_MESSAGE);

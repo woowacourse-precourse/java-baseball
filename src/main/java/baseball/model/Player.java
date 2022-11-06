@@ -6,9 +6,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static baseball.Constants.BALL_LEN;
+
 public class Player {
 
-    private static final int BALL_LEN=3;
     private String input;
 
     private ArrayList<Integer> inputNumber = new ArrayList<>(BALL_LEN);

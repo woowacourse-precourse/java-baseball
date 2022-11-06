@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
+import static baseball.Constants.*;
+import static baseball.Constants.RestartOrExitInfo.EXIT_NUMBER;
+import static baseball.Constants.RestartOrExitInfo.RESTART_NUMBER;
+
 public class Computer {
 
-    private static final int MIN_RANGE_NUMBER=1;
-    private static final int MAX_RANGE_NUMBER = 9;
-    private static final int COMPUTER_NUMBER_SIZE=3;
-    private static final String RESTART_NUMBER="1";
-    private static final String EXIT_NUMBER="0";
+
 
     private ArrayList<Integer> computerNumber;
 
