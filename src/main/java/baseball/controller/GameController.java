@@ -41,8 +41,6 @@ public class GameController {
 
     public void end() {
         gameMessage.endGame();
-
-        replay();
     }
 
     public boolean replay() {

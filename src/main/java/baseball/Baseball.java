@@ -7,8 +7,10 @@ public class Baseball {
     private GameController gameController =  new GameController();
 
     public void playGame() {
-        gameController.start();
-        gameController.play();
-        gameController.end();
+        do {
+            gameController.start();
+            gameController.play();
+            gameController.end();
+        } while (gameController.replay());
     }
 }
