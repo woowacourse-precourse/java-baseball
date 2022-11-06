@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomUtils {
-    public List<Integer> makeRandomList(){
+    public static List<Integer> makeRandomList(){
         List<Integer> computer =new ArrayList<>();
 
         while(computer.size()<3){
