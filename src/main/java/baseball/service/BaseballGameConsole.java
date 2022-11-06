@@ -26,16 +26,16 @@ public class BaseballGameConsole {
     }
 
     private void playSingleGame(Pitcher pitcher) {
-        boolean matchedAllNumber = false;
+        boolean strikeOut = false;
         String hitNumber = batter.readyToHitNumberBall();
 
-        while (!matchedAllNumber) {
+        while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
             String predictedNumber = pitcher.predictNumber();
             validator.validatePrediction(predictedNumber);
 
             Result result = referee.resultOfPrediction(hitNumber, predictedNumber);
-            matchedAllNumber = result.getResultType() == EXACT_MATCH;
+            strikeOut = result.getResultType() == EXACT_MATCH;
 
             emcee.showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());
         }
