@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -30,8 +31,8 @@ public class Application {
                 }
 
                 strikeCount = countStrike(userNumber, randomNumber);
-                System.out.println(strikeCount);
-                ballCount = 0; // 볼 개수를 체크하는 메소드 호출
+                ballCount = countBall(userNumber, randomNumber);
+                System.out.println(strikeCount + " " + ballCount);
 
                 boolean nothing = true; // 낫싱을 체크하는 메소드 호출
 
@@ -77,6 +78,31 @@ public class Application {
 
             userNumber /= 10;
             randomNumber /= 10;
+        }
+
+        return count;
+    }
+
+    public static int countBall(int userNumber, int randomNumber) {
+
+        int count = 0;
+
+        List<Integer> userDigits = new ArrayList<>();
+        List<Integer> randomDigits = new ArrayList<>();
+        for(int i=0; i<3; i++) {
+            userDigits.add(userNumber % 10);
+            randomDigits.add(randomNumber % 10);
+            userNumber /= 10;
+            randomNumber /= 10;
+        }
+
+        for(int i=0; i<3; i++) {
+
+            int number = userDigits.get(i);
+            if(randomDigits.contains(number)) {
+                if(randomDigits.get(i) != number)
+                    count += 1;
+            }
         }
 
         return count;
