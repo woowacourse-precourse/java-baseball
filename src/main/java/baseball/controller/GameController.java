@@ -83,4 +83,8 @@ public class GameController {
     void setGameStatus(String opinion){
         gameStatusService.setGameStatus(opinion);
     }
+
+    boolean wantToPlay(){
+        return gameStatusService.getGameStatus();
+    }
 }
