@@ -1,11 +1,13 @@
 package baseball;
 
 public class BaseballService {
+    public static final String GAME_START_STR = "숫자 야구 게임을 시작합니다";
+    public static final String GAME_RESTART_STR = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     BaseballBot baseballBot;
     Player player = new Player();
 
     public void initGame() {
-        System.out.println("숫자 야구 게임을 시작합니다 start");
+        System.out.println(GAME_START_STR);
         baseballBot = new BaseballBot();
         baseballBot.createRandomValue();
 
@@ -17,11 +19,11 @@ public class BaseballService {
         do {
             takeTurn();
 
-            if (baseballBot.isEnd() && wantRestart()) {
+            if (baseballBot.isGameEnd() && wantRestart()) {
                 startGame();
             }
 
-        } while (!baseballBot.isEnd());
+        } while (!baseballBot.isGameEnd());
     }
 
     private void takeTurn() {
@@ -31,7 +33,7 @@ public class BaseballService {
     }
 
     private boolean wantRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.restart");
+        System.out.println(GAME_RESTART_STR);
         return player.checkRestart();
     }
 }

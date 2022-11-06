@@ -17,7 +17,7 @@ public class BaseballBot {
 
     private String answer = "";
 
-    private boolean end = false;
+    private boolean gameEnd = false;
 
     public void createRandomValue() {
         List<Integer> computer = new ArrayList<>();
@@ -72,7 +72,7 @@ public class BaseballBot {
 
     private void checkEnd(int strike) {
         if (strike == 3) {
-            end = true;
+            gameEnd = true;
         }
     }
 
@@ -91,14 +91,14 @@ public class BaseballBot {
             hintStr.append(strike).append(STRIKE_STR);
         }
 
-        if (isEnd()) {
+        if (isGameEnd()) {
             hintStr.append("\n").append(GAME_END_STR);
         }
 
         return hintStr.toString();
     }
 
-    public boolean isEnd() {
-        return end;
+    public boolean isGameEnd() {
+        return gameEnd;
     }
 }
