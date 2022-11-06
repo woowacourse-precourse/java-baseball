@@ -8,10 +8,10 @@ public class GameController {
     private static final Boolean gameStart = true;
     public void start() {
         Computer computer = new Computer();
+        GameSimulation gameSimulation = new GameSimulation(computer);
         Boolean state = gameStart;
         while (state.equals(gameStart)) {
-            computer.init();
-            GameSimulation gameSimulation = new GameSimulation(computer);
+            gameSimulation.init();
             gameSimulation.playGame();
             success();
 

@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.Util.Valid.validNumberList;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Computer {
     private List<Integer> randomNumber;
     private static final boolean INVALID = false;
 
     public void init() {
-        while (validNumberList(randomNumber) == INVALID) {
+        do {
             makeRandomList();
         }
+        while (validNumberList(randomNumber) == INVALID);
     }
 
     public void makeRandomList() {

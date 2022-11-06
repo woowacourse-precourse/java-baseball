@@ -19,6 +19,12 @@ public class GameSimulation {
         this.ball = 0;
     }
 
+    public void init() {
+        computer.init();
+        strike = 0;
+        ball = 0;
+    }
+
     public void playGame() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
