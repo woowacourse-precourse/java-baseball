@@ -2,19 +2,33 @@ package baseball.service;
 
 import static baseball.Constant.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AnswerService {
-	private AnswerService() {}
+import baseball.respository.AnswerRepository;
+import camp.nextstep.edu.missionutils.Randoms;
 
+public class AnswerService {
 	private static AnswerService instance;
+	private static AnswerRepository answerRepository;
+
+	private AnswerService() {}
 
 	public static AnswerService getInstance() {
 		if(instance == null) {
 			instance = new AnswerService();
+			answerRepository = AnswerRepository.getInstance();
 		}
 		return instance;
+	}
+
+	public void setRandomNumbers() {
+		Set<Integer> correctAnswer = new HashSet<>();
+		while(correctAnswer.size() < 3) {
+			correctAnswer.add(Randoms.pickNumberInRange(1,9));
+		}
+		answerRepository.save(new ArrayList<>(correctAnswer));
 	}
 
 	public void validateInputAnswer(String inputAnswer) {

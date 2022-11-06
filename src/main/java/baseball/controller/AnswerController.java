@@ -10,27 +10,25 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerController {
-	private AnswerController() {}
-
 	private static AnswerController instance;
+	private static AnswerService answerService;
+
+	private AnswerController() {}
 
 	public static AnswerController getInstance() {
 		if(instance == null) {
 			instance = new AnswerController();
+			answerService = AnswerService.getInstance();
 		}
 		return instance;
 	}
 
-	public List<Integer> setCorrectAnswer() {
-		Set<Integer> numbers = new HashSet<>();
-		while(numbers.size() < 3) {
-			numbers.add(Randoms.pickNumberInRange(1,9));
-		}
-		return new ArrayList<>(numbers);
+	public void setCorrectAnswer() {
+		answerService.setRandomNumbers();
 	}
 
 	public void getInputAnswer() {
 		OutputView.alertInputAnswer();
-		AnswerService.getInstance().validateInputAnswer(InputView.getInput());
+		answerService.validateInputAnswer(InputView.getInput());
 	}
 }
