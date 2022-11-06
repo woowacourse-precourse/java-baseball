@@ -12,4 +12,9 @@ public interface Manager {
      * 게임 시작을 알리는 내용 출력
      */
     void printGameStart();
+
+    /**
+     * 입력값을 원하는 내용 출력
+     */
+    void printInputGameValue();
 }

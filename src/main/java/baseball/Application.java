@@ -16,5 +16,7 @@ public class Application {
 
         Computer computer = appConfig.computer();
         List<Integer> computerNumber = computer.createOtherNumber();
+
+        manager.printInputGameValue();
     }
 }

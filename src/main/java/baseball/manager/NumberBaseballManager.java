@@ -15,4 +15,12 @@ public class NumberBaseballManager implements Manager{
     public void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
+    /**
+     * 숫자 야구 게임 입력값을 원하는 내용 출력
+     */
+    @Override
+    public void printInputGameValue() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
 }
