@@ -97,6 +97,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("3-3. 자리는 다르지만 수가 일치하는 경우 : 볼")
+    void test7() {
+        String analyzeResult1 = analyzeInput("132", "213");
+        String analyzeResult2 = analyzeInput("132", "123");
+
+        assertThat(analyzeResult1).isEqualTo("3볼");
+        assertThat(analyzeResult2).isEqualTo("2볼 1스트라이크");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
