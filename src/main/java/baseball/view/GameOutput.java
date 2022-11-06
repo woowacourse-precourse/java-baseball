@@ -16,7 +16,7 @@ public class GameOutput {
     }
 
     public static void printUserInputMessage() {
-        System.out.println(USER_INPUT_MESSAGE);
+        System.out.print(USER_INPUT_MESSAGE);
     }
 
     public static void printEndGame() {
