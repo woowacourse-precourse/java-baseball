@@ -18,29 +18,28 @@ public class GameHostTest {
             gameHost.setBaseballNumber();
             List<Integer> baseballNumber = gameHost.getBaseballNumber();
             boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            final int THREEDIGITNUMBER = 3;
-            assertThat(result);
+            assertThat(result).isTrue();
         }
 
         @Test
         void case2() {
             List<Integer> baseballNumber = List.of(1, 2, 3, 4);
             boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(!result);
+            assertThat(result).isFalse();
         }
 
         @Test
         void case3() {
             List<Integer> baseballNumber = List.of(1, 1, 2);
             boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(!result);
+            assertThat(result).isFalse();
         }
 
         @Test
         void case4() {
             List<Integer> baseballNumber = List.of(0, 1, 2);
             boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(!result);
+            assertThat(result).isFalse();
         }
     }
 
