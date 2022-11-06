@@ -6,11 +6,12 @@
 3. 함수, 예외처리 구현
 4. 1주차 공통 피드백 검토
 
+- (입출력 구현 / View class) -> (숫자 저장 클래스 구현/ Model class) -> (컨트롤 로직 구현 / Controller class) 
 - (테스트 -> 구현 -> 리팩토링)  반복
 
 ## 첫째, 전체 구조 설정
 
-- Control클래스, View클래스, Model클래스 구조 설정
+- Controller클래스, View클래스, Model클래스 구조 설정
 - 생성자 및 final 변수 설정
 - 필요한 함수 설정
 
