@@ -20,4 +20,9 @@ public class Computer {
         }
         return computer;
     }
+
+    public void setRandomNumber() {
+        List<Integer> computer = createRandomNumber();
+        this.randomNumber = computer;
+    }
 }
