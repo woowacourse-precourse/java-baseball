@@ -10,12 +10,13 @@ public class Game {
     public void gameStart() {
         int ComputerNum = Num_Generator.MakeComputerNum();
         User_Input user = new User_Input();
-        System.out.println(Notice_intro);
+        Referee referee = new Referee(ComputerNum);
 
+        System.out.println(Notice_intro);
         while (true) {
             System.out.println(Notice_requireNum);
             int userInput = user.getUserInput();
-            System.out.println(userInput);
+//            referee.printResult(userInput);
         }
     }
 }
