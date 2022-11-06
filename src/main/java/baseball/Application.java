@@ -1,24 +1,20 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Application {
-    private boolean isNumber(String str){
+    private boolean isNumberWithoutZero(String str){
         if(str == null || str.isEmpty())
             return false;
         long numOfDigit = str.chars()
             .mapToObj(ch -> (char)ch)
-            .filter(Character::isDigit)
+            .filter(ch -> Character.isDigit(ch) && !Objects.equals(ch,'0'))
             .count();
         return numOfDigit == str.length();
     }
 
-    private boolean is3DigitNumber(String str){
-        return isNumber(str) && str.length() == 3;
+    private boolean is3DigitNumberWithoutZero(String str){
+        return isNumberWithoutZero(str) && str.length() == 3;
     }
 
     private boolean hasUniqueCharacter(String str){
@@ -36,7 +32,7 @@ public class Application {
                 throw new IllegalArgumentException("userInput should be 1 or 2.");
             }
         } else{
-            if(!is3DigitNumber(userInput) && hasUniqueCharacter(userInput)){
+            if(!is3DigitNumberWithoutZero(userInput) && hasUniqueCharacter(userInput)){
                 throw new IllegalArgumentException("userInput should be 3 digit number.");
             }
         }
