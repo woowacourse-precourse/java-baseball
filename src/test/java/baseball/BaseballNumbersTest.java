@@ -3,8 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class BaseballNumbersTest {
     BaseballNumbers baseballNumbers = new BaseballNumbers();
@@ -151,5 +150,28 @@ class BaseballNumbersTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
+    }
+
+    @Nested
+    class 입력값이_숫자면_생성_RECORDS면_false_반환 {
+
+        @Test
+        void case1_숫자_입력() {
+            String input = "123";
+            assertThat(baseballNumbers.adjustBaseballNumbers(input)).isEqualTo(true);
+        }
+
+        @Test
+        void case2_RECORDS_입력() {
+            String input = "records";
+            assertThat(baseballNumbers.adjustBaseballNumbers(input)).isEqualTo(false);
+        }
+
+        @Test
+        void case3_그_외_입력() {
+            String input = "input";
+            assertThatThrownBy(() -> baseballNumbers.adjustBaseballNumbers(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 }
