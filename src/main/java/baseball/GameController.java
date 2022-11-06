@@ -8,6 +8,13 @@ import java.util.stream.Stream;
 
 public class GameController {
 
+    public void numberException(String number){
+        if(number.matches("[1-9]]")){
+            System.out.println("Exception");
+            throw new IllegalArgumentException();
+        }
+    }
+
     public String getInput(){
         String userNumber = Console.readLine(); // 입력 받기
         return userNumber;
@@ -16,6 +23,7 @@ public class GameController {
     public List<Integer> inputUserNumber() {
 
         String userNumber = getInput();
+        numberException(userNumber); // 예외 처리
         List<Integer> userNumberList = userNumberConvertToList(userNumber); // 자릿수로 나눈 리스트로 변환
         System.out.println(userNumberList);
         return userNumberList;
