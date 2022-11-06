@@ -23,6 +23,12 @@ public class Application {
             }
 
             String analyzeResult = analyzeInput(input, answer);
+            System.out.println(analyzeResult);
+
+            if (input.equals(answer)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                flag = false;
+            }
         }
     }
 
