@@ -44,3 +44,8 @@ void play()
 ```java
 void run()
 ```
+
+- 랜덤 넘버를 생성하는 함수
+```java
+List<Integer> createSecretNumber()
+```
