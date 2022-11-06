@@ -29,13 +29,13 @@ public class GameManager {
             System.out.println(comparedNumberResult);
 
             if (comparedNumberResult.getStrikeCount() == userNumber.length()) {
-                gameContinueFlag = checkGameContinueFlag(); // 게임을 재시작 할 경우, 무작위 수 재설정
+                gameContinueFlag = checkContinueAndSetRandomNumber();
             }
         }
 
     }
 
-    public boolean checkGameContinueFlag() {
+    public boolean checkContinueAndSetRandomNumber() {
 
         System.out.println(Message.getGameEndMessage());
         System.out.println(Message.getGameContinueCheckMessage());
