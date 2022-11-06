@@ -1,4 +1,4 @@
-package constant;
+package baseball.constant;
 
 public class Rules {
 

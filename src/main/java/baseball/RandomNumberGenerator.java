@@ -1,8 +1,8 @@
 package baseball;
 
-import static constant.Rules.END_INCLUSIVE;
-import static constant.Rules.NUMBER_LENGTH;
-import static constant.Rules.START_INCLUSIVE;
+import static baseball.constant.Rules.END_INCLUSIVE;
+import static baseball.constant.Rules.NUMBER_LENGTH;
+import static baseball.constant.Rules.START_INCLUSIVE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
