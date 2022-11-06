@@ -11,25 +11,18 @@ public class UserInput {
     public List<Integer> getNumberList() {
         List<Integer> lst = new ArrayList<>();
         String input = getUserInput();
-
-        if (!Validation.isValidSize(input)) {
-            throw new IllegalArgumentException();
-        }
+        Validation.validateSize(input,3);
 
         for (int index = 0; index < 3; index++) {
             int indexInt = charToInt(input.charAt(index));
-            if (!Validation.isValidNumber(indexInt, lst)) {
-                throw new IllegalArgumentException();
-            }
+            Validation.validateNumber(indexInt,lst);
             lst.add(indexInt);
         }
         return lst;
     }
 
     private int charToInt(char c) {
-        if (!Character.isDigit(c)) {
-            throw new IllegalArgumentException();
-        }
+        Validation.validateCharIsDigit(c);
         return c - '0';
     }
     private String getUserInput(){
