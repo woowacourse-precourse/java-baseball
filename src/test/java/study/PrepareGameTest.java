@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PrepareGameTest {
 
@@ -25,5 +26,10 @@ public class PrepareGameTest {
             state = 1;
         }
         assertThat(state).isEqualTo(0);
+    }
+
+    @Test
+    void user_입력_값_숫자가_아닌_경우(){
+        assertThatThrownBy(() -> prepareGame.setUserNumberForTest("1ㄱ2")).isInstanceOf(IllegalArgumentException.class);
     }
 }
