@@ -32,11 +32,20 @@ public class Application {
     private static boolean checkValidate (String number) {
         if (!checkLength(number))
             return false;
+        if (!checkIsDigit(number))
+            return false;
         return true;
     }
     private static boolean checkLength (String number) {
         if (number.length() != 3)
             return false;
+        return true;
+    }
+    private static boolean checkIsDigit (String number) {
+        for (char c : number.toCharArray()) {
+            if (!Character.isDigit(c) | c!='0')
+                return false;
+        }
         return true;
     }
     private static String createAnswer () {
