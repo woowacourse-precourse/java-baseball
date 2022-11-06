@@ -1,14 +1,7 @@
 package baseball;
 
-import baseball.model.Ball;
-import baseball.model.GameStatus;
-import baseball.model.Result;
-import baseball.service.ComputerService;
-import baseball.service.PlayerService;
-import baseball.service.RefereeService;
+import baseball.model.*;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 import static baseball.utils.Validator.validateGameStatus;
 import static baseball.utils.Validator.validateParseStringToInt;
@@ -17,27 +10,27 @@ public class Game {
     private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final int GAME_RESTART_STATUS = 1;
 
-    private final ComputerService computerService;
-    private final PlayerService playerService;
-    private final RefereeService refereeService;
+    private final Computer computer;
+    private final Player player;
+    private final Referee referee;
 
-    public Game(ComputerService computerService, PlayerService playerService, RefereeService refereeService) {
+    public Game(Computer computer, Player player, Referee referee) {
         System.out.println(START_GAME_MESSAGE);
-        this.computerService = computerService;
-        this.playerService = playerService;
-        this.refereeService = refereeService;
+        this.computer = computer;
+        this.player = player;
+        this.referee = referee;
     }
 
     public void startGame() {
-        List<Ball> computerBalls = computerService.generateRandomBalls();
+        Balls computerBalls = computer.generateRandomBalls();
 
         boolean isGameOver;
         GameStatus gameStatus = new GameStatus(GAME_RESTART_STATUS);
         do {
-            List<Ball> playerBalls = playerService.generatePlayerBalls();
+            Balls playerBalls = player.generatePlayerBalls();
 
-            Result result = refereeService.generateResult(computerBalls, playerBalls);
-            refereeService.printResult(result);
+            Result result = referee.doJudge(computerBalls, playerBalls);
+            referee.printResult(result);
 
             isGameOver = result.isGameOver();
             inputGameStatusIfGameOver(gameStatus, isGameOver);
