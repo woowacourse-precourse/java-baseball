@@ -11,7 +11,6 @@ public class NumberBaseballGameServer {
     private static final int GAME_NUMBER_RANGE_MAX = 9;
     private static final int GAME_NUMBER_RANGE_MIN = 1;
     private static final int COUNT_GAME_NUMBER = 3;
-    private int gameNumber;
 
     public void run() {
         // 게임의 흐름과 순서 관리
@@ -29,8 +28,28 @@ public class NumberBaseballGameServer {
         return gameNumberList;
     }
 
-    public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber, List<Integer> gameNumberList) {
-        // 플레이어가 입력한 숫자를 받아 이에 대한 판별
-        return new NumberBaseballGameJudgedResultDto();
+    public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber,
+        List<Integer> gameNumberList) {
+        int countBalls = 0, countStrikes = 0;
+
+        String[] playerNumberString = Integer.toString(inputNumber).split("");
+
+        for (int index = 0; index < playerNumberString.length; ++index) {
+            int parsed = Integer.parseInt(playerNumberString[index]);
+            int matchIndex = gameNumberList.indexOf(parsed);
+            if (matchIndex == -1) {
+                continue;
+            }
+            if (matchIndex == index) {
+                ++countStrikes;
+                continue;
+            }
+            ++countBalls;
+        }
+
+        NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+        judgedResultDto.countBalls = countBalls;
+        judgedResultDto.countStrikes = countStrikes;
+        return judgedResultDto;
     }
 }
