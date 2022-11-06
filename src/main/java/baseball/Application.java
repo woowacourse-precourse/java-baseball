@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -12,7 +13,31 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
 
+    public static void play369Game() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> answer = makeAnswer();
+
+        boolean guessCorrectness = false;
+        while ( !guessCorrectness ) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            if ( !isValidNumbersForGame(input) ) {
+                throw new IllegalArgumentException("잘못된 형식의 숫자를 입력하셨습니다.\n1부터 9사이의 서로 다른 세자리 숫자를 입력해주시기 바랍니다.");
+            }
+            List<Integer> guess = stringToNumberList(input);
+            List<Integer> evaluation = evaluateGuess(guess, answer);
+            System.out.print(evaluationToString(evaluation));
+            if ( isEqualToAnswer(evaluation) ) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                guessCorrectness = true;
+            }
+        }
+    }
+
+    public static boolean isEqualToAnswer (List<Integer> evaluation) {
+        return evaluation.get(STRIKE) == 3;
     }
 
     public static String evaluationToString (List<Integer> evaluation) {
