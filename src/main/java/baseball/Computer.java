@@ -12,7 +12,7 @@ public class Computer {
 
     private String answer;
 
-    protected void generateAnswer() {
+    public void generateAnswer() {
         answer = makeRandomNumber();
         System.out.println("answer = " + answer);
     }
