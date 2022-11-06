@@ -10,6 +10,7 @@ import java.util.List;
 public class Input_Output {
     List<Integer> computer = new ArrayList<>();
     List<Integer> Scan = new ArrayList<>();
+    String End_Number;
 
     public void Computer_RandomNumber() {//컴퓨터 랜덤 숫자 생성
 
@@ -36,6 +37,12 @@ public class Input_Output {
     {
         if(Scan.size()>3)
             throw new IllegalArgumentException();
+
     }
 
+    public void Ending_Enter()
+    {
+        End_Number=Console.readLine();
+        
+    }
 }
