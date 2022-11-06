@@ -31,6 +31,27 @@ class UserTest {
         });
     }
 
+    @Test
+    public void 사용자_재시작_입력_예외_테스트(){
+        InputStream input = generateUserInput("3"); // 1,2가 아닌 숫자 입력
+        System.setIn(input);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.inputRestart();
+        });
+
+        input = generateUserInput("abc");   //  문자입력시
+        System.setIn(input);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.inputRestart();
+        });
+
+        input = generateUserInput("1 ");   //  공백포함
+        System.setIn(input);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.inputRestart();
+        });
+    }
+
     private InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
