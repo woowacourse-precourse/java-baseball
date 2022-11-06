@@ -19,6 +19,16 @@ public class RandomNumber {
         return ballNum;
     }
 
+    public int countExactSame(String userInput, RandomNumber randNum) {
+        int strikeCnt = 0;
+        for (int i = 0; i < CORRECTINPUTLENGTH; i++) {
+            if (userInput.charAt(i) == randNum.randomNumInChar(i)) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
+
     public char randomNumInChar(int i) {
         return randomValue.charAt(i);
     }
