@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.dto.Result;
 
 import static baseball.Const.THREE_STRIKE;
 
