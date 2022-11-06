@@ -96,6 +96,10 @@ public abstract class NumberBaseballGame {
     }
 
     protected static void countBallAndStrike() {
+        if (!isValidNumberList(answerNumberList) || !isValidNumberList(playerNumberList)) {
+            throw new IllegalStateException("시스템 오류로 정답과 답안이 유효하지 않은 값으로 변경되었습니다.");
+        }
+
         ball = 0; strike = 0;
         for (int i = 0; i < playerNumberList.size(); i++) {
             int playerNumber = playerNumberList.get(i);
@@ -104,17 +108,32 @@ public abstract class NumberBaseballGame {
         }
     }
 
+    private static boolean isValidNumberList(List<Integer> numberList) {
+        return numberList.size() == 3 &&
+               numberList.stream().allMatch(num -> num >= 1 && num <= 9) &&
+               numberList.stream().allMatch(src ->
+                       numberList.stream()
+                               .filter(dest -> Objects.equals(dest, src))
+                               .count() == 1);
+    }
+
     private static boolean isStrike(int position) {
         return Objects.equals(answerNumberList.get(position), playerNumberList.get(position));
     }
 
     protected static void printHint() {
+        if (!isValidBallAndStrike()) throw new IllegalStateException("ball, strike 계산에 오류가 발생하였습니다.");
+
         String hint;
         if (ball == 0 && strike == 0) hint = "낫싱";
         else if (ball == 0) hint = strike + "스트라이크";
         else if (strike == 0) hint = ball + "볼";
         else hint = ball + "볼 " + strike + "스트라이크";
         System.out.println(hint);
+    }
+
+    private static boolean isValidBallAndStrike() {
+        return (ball >= 0 && ball <= 3) && (strike >= 0 && strike <= 3) && (ball + strike <= 3);
     }
 
     protected static boolean isGameOver() {
