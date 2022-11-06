@@ -45,4 +45,15 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public static List<Integer> parseGuessedNumber(String input) {
+        int guessedNumber = Integer.parseInt(input);
+        int ones = guessedNumber % 10;
+        guessedNumber /= 10;
+        int tens = guessedNumber % 10;
+        guessedNumber /= 10;
+        int hundreds = guessedNumber;
+
+        return List.of(hundreds, tens, ones);
+    }
 }
