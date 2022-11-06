@@ -1,5 +1,7 @@
 package baseball;
 
+import details.*;
+
 public class Messenger {
     private String message = "";
 
@@ -9,18 +11,18 @@ public class Messenger {
     }
 
     public void makeResultMessage(int strikeCnt, int ballCnt) {
-        if (ballCnt > 0) {
-            message += ballCnt + "볼 ";
+        if (ballCnt > Detail.ZERO_COUNT) {
+            message += ballCnt + Message.BALL;
         }
-        if (strikeCnt > 0) {
-            message += strikeCnt + "스트라이크";
+        if (strikeCnt > Detail.ZERO_COUNT) {
+            message += strikeCnt + Message.STRIKE;
         }
         if (message.equals("")) {
-            message = "낫싱";
+            message = Message.NOTHING;
         }
     }
 
     public boolean selectRepalyOrEnd(String userOpinion) {
-        return userOpinion.equals("1");
+        return userOpinion.equals(Message.REPLAY);
     }
 }

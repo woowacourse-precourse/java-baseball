@@ -1,6 +1,6 @@
 package baseball;
 
-import fixed.FixedList;
+import details.*;
 
 public class Exceptions {
 
@@ -8,24 +8,24 @@ public class Exceptions {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
-            throw new IllegalArgumentException("숫자 입력이 아닙니다.");
+            throw new IllegalArgumentException(Message.ISNOTNUMBER);
         }
     }
 
     public static void checkInputIsTooLong(String userInput) {
-        if (userInput.length() > FixedList.LENGTH) {
-            throw new IllegalArgumentException("입력이 너무 깁니다. 숫자 3자리를 입력하세요.");
+        if (userInput.length() > Detail.LENGTH) {
+            throw new IllegalArgumentException(Message.ISTOOLONG);
         }
     }
 
     public static void checkInputIsTooShort(String userInput) {
-        if (userInput.length() < FixedList.LENGTH) {
-            throw new IllegalArgumentException("입력이 너무 짧습니다. 숫자 3자리를 입력하세요.");
+        if (userInput.length() < Detail.LENGTH) {
+            throw new IllegalArgumentException(Message.ISTOOSHORT);
         }
     }
 
     public static void checkOpinionMessage(String userOpinion) {
-        if (!(userOpinion.equals("1") || userOpinion.equals("2")))
-            throw new IllegalArgumentException("잘못된 입력입니다. 1 : 게임 새로 시작, 2 : 게임 종료");
+        if (!(userOpinion.equals(Message.REPLAY) || userOpinion.equals(Message.END)))
+            throw new IllegalArgumentException(Message.ISWRONGCOMMAND);
     }
 }

@@ -1,5 +1,7 @@
 package baseball;
 
+import details.Detail;
+
 import java.util.List;
 
 public class AnswerChecker {
@@ -37,7 +39,7 @@ public class AnswerChecker {
     }
 
     public boolean isAnswer() {
-        return strikeCnt == 3;
+        return strikeCnt == Detail.THREE_STRIKE;
     }
 
     public int getBallCnt() {
