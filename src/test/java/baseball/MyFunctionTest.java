@@ -1,5 +1,6 @@
 package baseball;
 
+import game.EnterNumber;
 import game.RandomNumber;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
@@ -42,22 +43,30 @@ public class MyFunctionTest {
         }
     }
 
+
+    @Nested
+    class enterNumber {
+        //given
+        EnterNumber enterNumber = new EnterNumber();
     @Test
     void 입력한_숫자_예외처리() {
+            //when
         String hasRepeat = "112";
         String hasNoNumber = "2#4";
         String overLength_3 = "27834823";
-
-        assertThat(Application.isEnterNumberExcept(hasRepeat)).isEqualTo(true);
-        assertThat(Application.isEnterNumberExcept(hasNoNumber)).isEqualTo(true);
-        assertThat(Application.isEnterNumberExcept(overLength_3)).isEqualTo(true);
+            //then
+            assertThat(enterNumber.exceptNumber(hasRepeat)).isEqualTo(true);
+            assertThat(enterNumber.exceptNumber(hasNoNumber)).isEqualTo(true);
+            assertThat(enterNumber.exceptNumber(overLength_3)).isEqualTo(true);
     }
-
     @Test
     void 사용자_입력숫자_리스트_구성_확인() {
+            //when
         String correctEnter = "123";
         List<Integer> correctEnterList = List.of(1,2,3);
-        assertThat(Application.getEnterNumber(correctEnter)).isEqualTo(correctEnterList);
+            //then
+            enterNumber.getList(correctEnter);
+            assertThat(enterNumber.getEnterNumber()).isEqualTo(correctEnterList);
     }
 
     @Nested
