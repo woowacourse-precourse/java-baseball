@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumber {
-    private static int NUMBER_SIZE = 3;
+    private static final int NUMBER_SIZE = 3;
+
     private List<Integer> userNumbers = new ArrayList<>();
 
-    public List<Integer> getUserNumbers() {
+    public List<Integer> get() {
         return this.userNumbers;
     }
 
-    public void setUserNumbers(String number) {
+    public void set(String number) {
         validNumber(number);
         userNumbers.clear();
 

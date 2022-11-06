@@ -15,10 +15,10 @@ class UserNumberTest {
         String input = "123";
         List<Integer> numbers = Arrays.asList(1, 2, 3);
 
-        userNumber.setUserNumbers(input);
+        userNumber.set(input);
 
         Assertions.assertThat(numbers)
-                .isEqualTo(userNumber.getUserNumbers());
+                .isEqualTo(userNumber.get());
     }
 
     @Test
@@ -27,10 +27,10 @@ class UserNumberTest {
         String input = "987";
         List<Integer> numbers = Arrays.asList(9, 8, 7);
 
-        userNumber.setUserNumbers(input);
+        userNumber.set(input);
 
         Assertions.assertThat(numbers)
-                .isEqualTo(userNumber.getUserNumbers());
+                .isEqualTo(userNumber.get());
     }
 
     @Test()
@@ -39,7 +39,7 @@ class UserNumberTest {
             UserNumber userNumber = new UserNumber();
             String input = "112";
 
-            userNumber.setUserNumbers(input);
+            userNumber.set(input);
         });
 
         Assertions.assertThat(exception.getMessage())
@@ -53,7 +53,7 @@ class UserNumberTest {
             UserNumber userNumber = new UserNumber();
             String input = "12";
 
-            userNumber.setUserNumbers(input);
+            userNumber.set(input);
         });
 
         Assertions.assertThat(exception.getMessage())
@@ -66,7 +66,7 @@ class UserNumberTest {
             UserNumber userNumber = new UserNumber();
             String input = "ㅁㅁㅁ";
 
-            userNumber.setUserNumbers(input);
+            userNumber.set(input);
         });
 
         Assertions.assertThat(exception.getMessage())
@@ -79,7 +79,7 @@ class UserNumberTest {
             UserNumber userNumber = new UserNumber();
             String input = "12D";
 
-            userNumber.setUserNumbers(input);
+            userNumber.set(input);
         });
 
         Assertions.assertThat(exception.getMessage())

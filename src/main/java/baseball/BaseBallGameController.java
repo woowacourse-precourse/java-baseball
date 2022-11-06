@@ -20,14 +20,14 @@ public class BaseBallGameController {
             System.out.print("숫자를 입력해주세요 : ");
 
             String userInput = receiveUserNumber();
-            userNumber.setUserNumbers(userInput);
+            userNumber.set(userInput);
 
             printResult();
         }
     }
 
     private void printResult() {
-        List<Integer> userNumbers = userNumber.getUserNumbers();
+        List<Integer> userNumbers = userNumber.get();
         int strike = baseBallGameModel.strikeCount(userNumbers);
         int ball = baseBallGameModel.ballCount(userNumbers);
 
