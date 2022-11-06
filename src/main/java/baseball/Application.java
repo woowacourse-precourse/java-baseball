@@ -12,7 +12,7 @@ public class Application {
     static List<List<Integer>> Ball_Strike = new ArrayList<>();
     public static void main(String[] args) {
         getRandomNum();
-
+        gameStart();
     }
     public static void getRandomNum()
     {
@@ -23,14 +23,29 @@ public class Application {
             }
         }
     }
-    public static void gameStartPhrase()
+    public static void gameStart()
     {
         String number = "";
         Scanner scanner = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요 : ");
-        number=scanner.next();
-        numberCheck(number);
+        for(int i=0; i<3; i++) //게임을 3번 진행
+        {
+            do
+            {
+                System.out.println("숫자를 입력해주세요 : ");
+                number = scanner.next();
+                numberCheck(number);
+            }while (!returnBallStrike(number,i));
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            number=scanner.next();
+            if(number =="2")
+            {
+                System.out.println("게임 종료");
+                break;
+            }
+        }
 
 
     }
@@ -41,15 +56,12 @@ public class Application {
         number0To9(number);
     }
 
-    public static void numberLength3Check(String number)
-    {
-        if(number!="1" && number!="2") {
-            if (number.length() != 3) {
-                try {
-                    throw new IllegalArgumentException();
-                } catch (IllegalArgumentException e) {
-                    throw new IllegalArgumentException(e);
-                }
+    public static void numberLength3Check(String number) {
+        if (number.length() != 3) {
+            try {
+                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -66,6 +78,15 @@ public class Application {
                     throw new IllegalArgumentException(e);
                 }
             }
+        }
+    }
+
+    public static boolean returnBallStrike(String number, int idxGame)
+    {
+        for(int i=0; i<3; i++)
+        {
+            char value = number.charAt(i);
+
         }
     }
 }
