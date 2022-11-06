@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -15,32 +16,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    public static final int COMPUTER_NUMBERS_SIZE = 3;
     BaseBallGame testGame = new BaseBallGame();
-    String actualOutputWhenStartGame;
-    @BeforeEach
-    void 게임시작시키기() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        testGame.startGame();
-        actualOutputWhenStartGame = out.toString()
-                .replace(System.getProperty("line.separator").toString(), "");
+    @Nested
+    class 게임시작기능_테스트 {
+        public static final int COMPUTER_NUMBERS_SIZE = 3;
+        String actualOutputWhenStartGame;
+        @BeforeEach
+        void 게임시작시키기() {
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            testGame.startGame();
+            actualOutputWhenStartGame = out.toString()
+                    .replace(System.getProperty("line.separator").toString(), "");
+        }
+        @Test
+        void 게임시작하면_출력되는_시작문구_확인() {
+            String expectedOutputWhenStartGame = "숫자 야구 게임을 시작합니다.";
+            assertThat(actualOutputWhenStartGame).isEqualTo(actualOutputWhenStartGame);
+        }
+        @Test
+        void 게임시작하면_설정되는_수가_3개인지_확인() {
+            assertThat(testGame.computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
+        }
+        @Test
+        void 게임시작하면_설정되는_수가_서로_다른지_확인() {
+            // 만약 중복되는 수가 있다면 hashSet으로 변환했을 때 길이가 줄어든다
+            HashSet<Integer> computerNumbers = new HashSet<>(testGame.computerNumbers);
+            assertThat(computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
+        }
     }
-    @Test
-    void 게임시작하면_출력되는_시작문구_확인() {
-        String expectedOutputWhenStartGame = "숫자 야구 게임을 시작합니다.";
-        assertThat(actualOutputWhenStartGame).isEqualTo(actualOutputWhenStartGame);
-    }
-    @Test
-    void 게임시작하면_설정되는_수가_3개인지_확인() {
-        assertThat(testGame.computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
-    }
-    @Test
-    void 게임시작하면_설정되는_수가_서로_다른지_확인() {
-        // 만약 중복되는 수가 있다면 hashSet으로 변환했을 때 길이가 줄어든다
-        HashSet<Integer> computerNumbers = new HashSet<>(testGame.computerNumbers);
-        assertThat(computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
-    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
