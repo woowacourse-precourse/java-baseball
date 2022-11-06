@@ -29,7 +29,8 @@ public class NumberBaseballService {
         List<Integer> userAnswerResultList = new ArrayList<>();
         userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
         userAnswerResultList.add(getBallCount(numberBaseballRepository.findComputerNumber(), userAnswer));
-        return new ArrayList<>();
+
+        return userAnswerResultList;
     }
 
     public int getBallCount(ComputerNumber computerNumber, String userAnswer) {
