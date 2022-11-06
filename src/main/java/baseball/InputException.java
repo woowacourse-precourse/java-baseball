@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class InputException {
+    private static final int LENGTH = 3;
     public static int changeStrToInt(String input) {
         int number;
 
@@ -28,7 +29,7 @@ public class InputException {
     public static boolean isNotSizeThree(List<Integer> numArr) {
         boolean notSizeThree = false;
 
-        if (numArr.size() != 3) {
+        if (numArr.size() != LENGTH) {
             notSizeThree = true;
         }
 

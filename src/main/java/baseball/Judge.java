@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Judge {
-    public static void checkTheResult(List<Integer> inputNumber, List<Integer> computerNumber){
+    public static void checkTheResult(List<Integer> inputNumber, List<Integer> computerNumber) {
         int[] result = compareNumber(inputNumber, computerNumber);
         boolean gameOver = printResult(result);
 
