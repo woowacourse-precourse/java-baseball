@@ -79,7 +79,7 @@ public class Application {
 
 
     public static void strikeMessage(int strike){
-        System.out.println("스트라이트" + strike);
+        System.out.println(strike + "스트라이트");
 
     }
 
