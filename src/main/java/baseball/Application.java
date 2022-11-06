@@ -12,6 +12,20 @@ public class Application {
     static int three_strike = 0;
     static int first_game = 1;
 
+    static void random_number_generate(ArrayList<Integer> answer) {
+        while(answer.size()!=3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+    }
+    static boolean guess_validity_check(String guess){
+        return true;
+    }
+    static void judge_guess(String guess, ArrayList<Integer> answer) {
+
+    }
     static void main_loop() {
         ArrayList<Integer> answer = new ArrayList<>();
         random_number_generate(answer);
