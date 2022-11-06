@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
 
@@ -68,5 +70,27 @@ class GameTest {
 
     private List<Integer> findStrikeAndBallHelper(String user, List<Integer> computer) {
         return game.findStrikeAndBall(user, computer);
+    }
+
+    @Test
+    @DisplayName("User는 1~9 사이의 서로 다른 세 개의 숫자만 입력할 수 있습니다.")
+    void testOnlyThreeDifferentNumbers() throws Exception {
+        //given
+        String user1 = "123";
+        String user2 = "2345";
+        String user3 = "012";
+        String user4 = "122";
+
+        //when
+        boolean result1 = game.isCorrectInput(user1);
+        boolean result2 = game.isCorrectInput(user2);
+        boolean result3 = game.isCorrectInput(user3);
+        boolean result4 = game.isCorrectInput(user4);
+
+        //then
+        assertTrue(result1);
+        assertFalse(result2);
+        assertFalse(result3);
+        assertFalse(result4);
     }
 }

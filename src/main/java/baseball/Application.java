@@ -27,6 +27,10 @@ public class Application {
 
             String user = Console.readLine();
 
+            if (!game.isCorrectInput(user)) {
+                throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            }
+
             List<Integer> strikeAndBall = game.findStrikeAndBall(user, computer);
 
             int strike = strikeAndBall.get(0);

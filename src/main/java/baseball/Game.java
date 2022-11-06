@@ -6,7 +6,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -65,5 +67,20 @@ public class Game {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean isCorrectInput(String user) {
+        if(user.length() != 3) return false;
+
+        Set<Integer> duplicatedCheck = new HashSet<>();
+
+        for (int i = 0; i < user.length(); i++) {
+            int number = user.charAt(i) - '0';
+
+            duplicatedCheck.add(number);
+            if(number <= 0) return false;
+        }
+
+        return duplicatedCheck.size() == 3;
     }
 }
