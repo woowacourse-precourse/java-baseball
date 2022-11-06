@@ -28,9 +28,9 @@ public class Application {
 	public static boolean game_play(String computer_num){
 		System.out.println("숫자를 입력해주세요 : ");
 		String input_num = Console.readLine();
-		//input에 따른 예외 처리 필요.
+		input_num_exception_test(input_num);
 		List<Integer> answer = compare_two_case(computer_num,input_num);
-		System.out.println(calculate_Result(answer));
+		System.out.println("\n"+calculate_Result(answer));
 		if(answer.get(1)==3){
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
 			return false;
@@ -88,6 +88,14 @@ public class Application {
 		if(continue_or_exit==1)
 			return true;
 		return false;
+	}
+	public static void input_num_exception_test(String input) {
+		if(input.length()!=3)
+			throw new IllegalArgumentException();
+		for(int i=0;i<3;i++){
+			if(i!=input.indexOf(input.charAt(i)))
+				throw new IllegalArgumentException();
+		}
 	}
 	public static void main(String[] args) {
         boolean is_contiue = true;
