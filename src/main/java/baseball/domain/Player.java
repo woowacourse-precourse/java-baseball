@@ -6,7 +6,7 @@ public class Player {
 
 	List<Integer> playerNumbers;
 
-	public Player(List<Integer> playerNumbers, boolean restart) {
+	public Player(List<Integer> playerNumbers) {
 		this.playerNumbers = playerNumbers;
 	}
 
