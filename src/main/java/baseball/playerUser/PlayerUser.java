@@ -2,6 +2,10 @@ package baseball.playerUser;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class PlayerUser {
 	private static final PlayerUser instance = new PlayerUser();
 
@@ -32,27 +36,28 @@ public class PlayerUser {
 			number);
 	}
 
+	// todo : indent가 3이상 -> 리팩토링 필요
 	private boolean isNoDuplicatedNumber(String number) {
 		int numberSize = number.length();
-
 		for (int i = 0; i < numberSize - 1; i++) {
 			String subNumber = number.substring(i + 1);
 			String digit = "" + number.charAt(i);
-			if (subNumber.contains(digit)) {
+			if (subNumber.contains(digit))
 				return false;
-			}
 		}
-
 		return true;
 	}
 
 	private boolean isPositiveNumber(String number) {
+		Stream<Character> numberStream;
+		List<Character> stringToCharacter = new ArrayList<>();
+
 		for (char elem : number.toCharArray()) {
-			if (elem < '1' || elem > '9') {
-				return false;
-			}
+			stringToCharacter.add(elem);
 		}
-		return true;
+		numberStream = stringToCharacter.stream();
+
+		return numberStream.noneMatch(elem -> elem < '1' || elem > '9');
 	}
 
 	private boolean isRightNumberSize(String number) {
