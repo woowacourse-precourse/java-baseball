@@ -1,5 +1,6 @@
 package baseball.game.controller;
 
+import baseball.game.dto.BallCount;
 import baseball.game.service.GameService;
 import baseball.game.view.InputView;
 import baseball.game.view.OutputView;
@@ -24,7 +25,7 @@ public class GameController {
             String userNumbers=inputView.inputNumbers();
             gameService.setUserNumbers(userNumbers);
             
-            
+            BallCount ballCount=gameService.computeBallCount();
             break;
         }
     }

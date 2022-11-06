@@ -8,4 +8,8 @@ public class Computer {
     public void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
     }
+
+    public List<Integer> getNumberList() {
+        return numberList;
+    }
 }

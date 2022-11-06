@@ -7,8 +7,9 @@ public class User {
 
     public void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
-        System.out.print("user: ");
-        numberList.stream()
-                .forEach(System.out::println);
+    }
+
+    public List<Integer> getNumberList() {
+        return numberList;
     }
 }
