@@ -53,7 +53,7 @@ public class Application {
             return check_result;
         }else{
             int[] cntArray = new int[2];
-            cntArray = new int[2];
+            cntArray = cntBallStrike(answer, guess);
             ball = cntArray[0];
             strike = cntArray[1];
         }
@@ -71,7 +71,20 @@ public class Application {
         return check_result;
     }
 
-    public static
+    public static int[] cntBallStrike(List<Integer> answer, List<Integer> guess){
+        int[] cnt = new int[2];    /*cnt[0]는 ball, cnt[1]는 strike*/
+
+        for(Integer guess_num : guess){
+            if(answer.contains(guess_num)){
+                cnt[0]++;
+            }
+            if(answer.indexOf(guess_num)==guess.indexOf(guess_num)){
+                cnt[0]--;
+                cnt[1]++;
+            }
+        }
+        return cnt;
+    }
 
 
 
