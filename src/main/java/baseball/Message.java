@@ -14,7 +14,7 @@ public class Message {
 
 	public String getInputNumbers() {
 		return inputNumbers;
-	}	
+	}
 
 	public String getStrike() {
 		return strike;
@@ -31,5 +31,4 @@ public class Message {
 	public String getGameOver() {
 		return gameOver;
 	}
-
 }
