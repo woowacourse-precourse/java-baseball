@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Game {
 
+    private static final int RESTART = 1;
     private static final int EXIT = 2;
 
     private int strike = 0;
@@ -86,8 +87,7 @@ public class Game {
 
             if (userIndex == computerIndex) {
                 strike++;
-            }
-            else if (computerIndex != -1) {
+            } else if (computerIndex != -1) {
                 ball++;
             }
         }
@@ -111,7 +111,14 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int choose = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        if (!Character.isDigit(input.charAt(0)))
+            throw new IllegalArgumentException("1 또는 2만 입력할 수 있습니다.");
+
+        int choose = Integer.parseInt(input);
+        if (choose != RESTART && choose != EXIT)
+            throw new IllegalArgumentException("1 또는 2만 입력할 수 있습니다.");
+
         if (choose == EXIT)
             gameExit = true;
     }
