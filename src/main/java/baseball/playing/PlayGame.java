@@ -2,6 +2,7 @@ package baseball.playing;
 
 import baseball.GameController;
 import baseball.players.Computer;
+import baseball.players.Player;
 import baseball.players.User;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -15,8 +16,8 @@ public class PlayGame {
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Computer computer = new Computer();
-        computerNumber = computer.getComputerNumbers();
+        Player player = new Computer();
+        computerNumber = player.generateNumbers();
     }
 
     public void playingGame() {
@@ -25,9 +26,8 @@ public class PlayGame {
         Map<String, Integer> getStrikeBall;
 
         while (true) {
-            String input = inputUserNumbers();
-            User user = new User(input);
-            userNumber = user.getUserNumbers();
+            Player player = new User();
+            userNumber = player.generateNumbers();
             String result = strikeOrBall.printStrikeOrBall(computerNumber, userNumber);
             System.out.println(result);
 
@@ -44,27 +44,22 @@ public class PlayGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void replayGame() {
+    public boolean replayGame() {
 
         String replaying = Console.readLine();
         int replayNum = Integer.valueOf(replaying);
 
         checkInputErr(replayNum);
 
-        if (replayNum == 1) {
-            GameController gameController = new GameController();
+        if (replayNum == 2) {
+            return false;
         }
+
+        return true;
     }
 
     public void checkInputErr(int replayNum) throws IllegalArgumentException {
         if (!(replayNum == 1 || replayNum == 2))
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
-    }
-
-    private String inputUserNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-
-        return input;
     }
 }
