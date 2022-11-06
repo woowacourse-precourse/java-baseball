@@ -1,5 +1,6 @@
-package baseball.service;
+package baseball.controller;
 
+import baseball.service.BaseBallGame;
 import baseball.view.PlayerNumberInput;
 import baseball.view.PrintGuideMessage;
 import baseball.view.ReplayNumberInput;
