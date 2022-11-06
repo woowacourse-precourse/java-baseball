@@ -200,9 +200,9 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
         computer.initComputer();
         // when
-        int result = computer.numThreeRanOfComputerList.size();
+        List<Integer> resultList = computer.getNumThreeRanOfComputerList();
         // then
-        assertThat(result).isEqualTo(3);
+        assertThat(resultList.size()).isEqualTo(3);
     }
 
     @Test
