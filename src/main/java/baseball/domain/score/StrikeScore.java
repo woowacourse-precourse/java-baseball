@@ -1,6 +1,6 @@
 package baseball.domain.score;
 
-public class StrikeScore extends AbstractScore {
+public class StrikeScore extends ValidScore {
     private static final int STRIKE_COUNT_OF_GAME_END_CONDITIONS = 3;
     
     public StrikeScore() {

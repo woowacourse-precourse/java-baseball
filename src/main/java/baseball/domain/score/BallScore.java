@@ -1,6 +1,6 @@
 package baseball.domain.score;
 
-public class BallScore extends AbstractScore {
+public class BallScore extends ValidScore {
     public static final String UNSUPPORTED_OPERATION_EXCEPTION_MESSAGE = "BALL 의 개수는 게임 종료의 조건이 되지 않습니다.";
     
     public BallScore() {

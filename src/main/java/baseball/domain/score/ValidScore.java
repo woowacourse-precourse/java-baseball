@@ -1,13 +1,13 @@
 package baseball.domain.score;
 
-public abstract class AbstractScore implements Score {
+public abstract class ValidScore implements Score {
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "스코어는 0~3의 범위를 벗어날 수 없습니다.";
     private static final int MIN_SCORE = 0;
     private static final int MAX_SCORE = 3;
     
     private final int score;
     
-    AbstractScore(final int score) {
+    ValidScore(final int score) {
         validateOutOfRange(score);
         this.score = score;
     }
