@@ -61,4 +61,30 @@ class BaseballNumbersTest {
 
     }
 
+    @Nested
+    class 입력값이_3자리_숫자인지_또는_RECORDS_명령어인지_확인 {
+
+        @Test
+        void case1_3자리_숫자_입력() {
+            String input = "123";
+            boolean result = true;
+            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+        }
+
+        @Test
+        void case2_RECORDS_명령어_입력() {
+            String input = "records";
+            boolean result = true;
+            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+        }
+
+        @Test
+        void case3_그_외_입력() {
+            String input = "1234";
+            boolean result = false;
+            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+        }
+
+    }
+
 }
