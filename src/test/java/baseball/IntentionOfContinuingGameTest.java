@@ -4,43 +4,62 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
+@DisplayName("IntentionOfContinuingGame 클래스의")
 public class IntentionOfContinuingGameTest {
-    final static int CONTINUE = 1;
-    final static int STOP = 2;
-    static IntentionOfContinuingGame intentionContinue;
-    static IntentionOfContinuingGame intentionStop;
 
 
-    @BeforeAll
-    static void getIntention(){
-        intentionContinue = IntentionOfContinuingGame.getMatchIntention(CONTINUE);
-        intentionStop= IntentionOfContinuingGame.getMatchIntention(STOP);
+    @Nested
+    @DisplayName("getMatchIntention 메서드는")
+    class Describe_getMatchIntention{
+        final static int CONTINUE = 1;
+        final static int STOP = 2;
 
-        Assertions.assertThat(intentionContinue).isEqualTo(IntentionOfContinuingGame.CONTINUE);
-        Assertions.assertThat(intentionStop).isEqualTo(IntentionOfContinuingGame.STOP);
+        @Test
+        @DisplayName("사용자가 1을 입력할 경우 CONTINUE 객체를 반환한다")
+        void it_returns_CONTINUE_Object(){
+            IntentionOfContinuingGame intentionContinue = IntentionOfContinuingGame.getMatchIntention(CONTINUE);
+            Assertions.assertThat(intentionContinue).isEqualTo(IntentionOfContinuingGame.CONTINUE);
+
+        }
+
+        @Test
+        @DisplayName("사용자가 2를 입력할 경우 STOP 객체를 반환한다")
+        void it_returns_STOP_Object(){
+            IntentionOfContinuingGame intentionContinue = IntentionOfContinuingGame.getMatchIntention(STOP);
+            Assertions.assertThat(intentionContinue).isEqualTo(IntentionOfContinuingGame.STOP);
+        }
+
+        @Test
+        @DisplayName("사용자가 잘못된 값을 입력하는 경우 IllegalArgumentException 반환한다.")
+        void throws_error_when_input_is_wrong(){
+            int wrongArgument = 3;
+            Assertions.assertThatThrownBy(() -> IntentionOfContinuingGame.getMatchIntention(wrongArgument))
+                .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
-    @Test
-    @DisplayName("Continue 인 경우 wantContinue 가 true 인지 확인")
-    void validateWantContinue(){
-        Assertions.assertThat(intentionContinue.wantContinue()).isEqualTo(true);
+    @Nested
+    @DisplayName("wantContinue 메서드는")
+    class Describe_wantContiunue{
+
+        @Test
+        @DisplayName("CONTINUE 객체에서 사용되는 경우 true를 반환한다.")
+        void it_returns_true_when_Object_is_CONTINUE(){
+            Assertions.assertThat(IntentionOfContinuingGame.CONTINUE.wantContinue()).isEqualTo(true);
+        }
+
+        @Test
+        @DisplayName("STOP 객체에서 사용되는 경우 false를 반환한다.")
+        void it_returns_true_when_Object_is_STOP(){
+            Assertions.assertThat(IntentionOfContinuingGame.STOP.wantContinue()).isEqualTo(false);
+        }
     }
 
-    @Test
-    @DisplayName("Stop 인 경우 wantContinue 가 false 인지 확인")
-    void validateWantStop(){
-        Assertions.assertThat(intentionStop.wantContinue()).isEqualTo(false);
-    }
 
-    @Test
-    @DisplayName("잘못된 값을 입력하는 경우 오류 반환 확인")
-    void validateThrowExceptionWhenGotWrongArgument(){
-        int wrongArgument = 3;
-        Assertions.assertThatThrownBy(() -> IntentionOfContinuingGame.getMatchIntention(wrongArgument))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
+
+
 }
