@@ -17,7 +17,7 @@ public class BaseballGame {
     private boolean gameAvailable = true;
 
     public void start() {
-        makeRandomNumber();
+        computerNumbers = makeRandomNumber();
         printMessage(START_MESSAGE + ENTER);
 
         while (gameAvailable) {
@@ -31,13 +31,15 @@ public class BaseballGame {
         }
     }
 
-    private void makeRandomNumber() {
-        while (computerNumbers.size() < NUMBER_LENGTH) {
+    private List<Integer> makeRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
+        return numbers;
     }
 
     public void printMessage(String message) {
@@ -102,8 +104,7 @@ public class BaseballGame {
         if (exitNumber == STOP) {
             gameAvailable = false;
         } else if (exitNumber == CONTINUE) {
-            computerNumbers = new ArrayList<>();
-            makeRandomNumber();
+            computerNumbers = makeRandomNumber();
         }
     }
 
