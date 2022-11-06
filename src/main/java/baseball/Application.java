@@ -17,7 +17,7 @@ public class Application {
 class Baseball {
     public static String userNumber;
     public static HashMap<String, Integer> countBallStrike;
-    private static int checkRestartGame;
+    public static int restartGame;
     private static List<Integer> computerNumber;
 
     public static final String BLANK = " ";
@@ -39,11 +39,11 @@ class Baseball {
     private static void newGame() {
         init();
         buildComputerNumber();
-        inputUserNumber();
+        getUserNumber();
     }
 
-    private static void inputUserNumber() {
-        getUserNumber();
+    private static void getUserNumber() {
+        inputUserNumber();
         countBallStrike();
         printResult();
         isWinNumber();
@@ -63,7 +63,7 @@ class Baseball {
         }
     }
 
-    private static void getUserNumber() {
+    private static void inputUserNumber() {
         userNumber = Console.readLine();
         if (!isValidNumber() || !isOverlapNumber()) {
             illegalArgumentException();
@@ -93,7 +93,7 @@ class Baseball {
 
     private static void isWinNumber() {
         if (!isThreeStrike()) {
-            inputUserNumber();
+            getUserNumber();
             return;
         }
         if (isThreeStrike()) {
@@ -104,17 +104,17 @@ class Baseball {
     }
 
     private static void checkRestartGame() {
-        checkRestartGame = Integer.parseInt(Console.readLine());
+        restartGame = Integer.parseInt(Console.readLine());
         if (!isValidRestartNumber()) {
             illegalArgumentException();
         }
-        if (checkRestartGame == NEW_GAME) {
-            Message.printNewGame();
+        if (restartGame == NEW_GAME) {
+            Message.printNewGameValue();
             newGame();
             return;
         }
-        if (checkRestartGame == END_GAME) {
-            Message.printEndGame();
+        if (restartGame == END_GAME) {
+            Message.printEndGameValue();
         }
     }
 
@@ -151,7 +151,7 @@ class Baseball {
     }
 
     private static boolean isValidRestartNumber() {
-        return checkRestartGame == NEW_GAME || checkRestartGame == END_GAME;
+        return restartGame == NEW_GAME || restartGame == END_GAME;
     }
 
     private static boolean isOverlapNumber() {
@@ -201,11 +201,11 @@ class Message {
         System.out.println(INPUT_RESTART_MESSAGE);
     }
 
-    public static void printNewGame() {
+    public static void printNewGameValue() {
         System.out.println(Baseball.NEW_GAME);
     }
 
-    public static void printEndGame() {
+    public static void printEndGameValue() {
         System.out.println(Baseball.END_GAME);
     }
 
