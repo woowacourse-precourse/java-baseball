@@ -16,7 +16,7 @@ public class GameManager {
     public int [] playGame(List<Integer> computer, List<Integer> player){
         int[] score = new int[3];
         for(int i = 0; i < BASEBALL_NUMBER_SIZE; i++){
-            int computerNumber = computer.get(0);
+            int computerNumber = computer.get(i);
             int computerIndex = i;
 
             int result = calculateScore(computerNumber, computerIndex, player);
@@ -27,7 +27,7 @@ public class GameManager {
 
     public int calculateScore(int computerNumber, int computerIndex, List<Integer> player) {
         for(int i = 0; i < BASEBALL_NUMBER_SIZE; i++){
-            int playerNumber = player.get(0);
+            int playerNumber = player.get(i);
             int playerIndex = i;
 
             if(computerNumber == playerNumber && computerIndex == playerIndex){
