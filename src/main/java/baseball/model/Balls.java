@@ -37,7 +37,7 @@ public class Balls {
 
     private void validateNumberRange(List<Integer> balls) {
         for (int ball : balls) {
-            if (ball < 1 || ball > 9) {
+            if (ball < MIN_BALL_NUMBER || ball > MAX_BALL_NUMBER) {
                 throw new IllegalArgumentException(INVALID_INPUT_RANGE_MESSAGE);
             }
         }
