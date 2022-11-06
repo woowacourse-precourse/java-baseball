@@ -2,7 +2,9 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
@@ -13,22 +15,30 @@ class NumberBaseballGameClientTest {
 
     private PrintStream standardOut;
     private OutputStream captor;
+    private InputStream standardIn;
 
     @BeforeEach
     protected final void init() {
         standardOut = System.out;
         captor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(captor));
+        standardIn = System.in;
     }
 
     @AfterEach
     protected final void printOutput() {
         System.setOut(standardOut);
+        System.setIn(standardIn);
         System.out.println(output());
     }
 
     protected final String output() {
         return captor.toString().trim();
+    }
+
+    private void input(final String... args) {
+        final byte[] buffer = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buffer));
     }
 
     @Test
