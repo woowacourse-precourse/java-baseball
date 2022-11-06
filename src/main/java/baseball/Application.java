@@ -20,6 +20,9 @@ import java.util.List;
 public class Application {
     final static String START_USER_INPUT = "1";
 
+    /*
+     * Input : 3자리의 연속되고 중복되지 않는 숫자 시컨스 Range(1 ~ 9) ex) 345, 736, 912
+     */
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
@@ -40,6 +43,7 @@ public class Application {
             try {
                 validateUserInput(userInput);
             } catch (IllegalArgumentException e) {
+                // 입력 예외가 발생한다면 throw exception
                 System.out.println(e.getMessage());
                 throw e;
             }
@@ -49,6 +53,7 @@ public class Application {
             printResult(strikeCount, ballCount);
 
             if(strikeCount == 3){
+                // 스트라이크가 3개라면 새로운 게임 시작할지 정하기
                 isRestart = isNewGame(computer, computerIndexMap);
             }
         }
@@ -121,12 +126,14 @@ public class Application {
     }
 
     private static void initRandomNumber(List<Integer> computer, HashMap<Integer,Integer> computerIndexMap) {
+        // 새로운 게임마다 기존에 사용하던 자료구조 clear
         computer.clear();
         computerIndexMap.clear();
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
+            // 기존에 뽑은 중복된 숫자를 뽑아내지 않기 위해(naive)
             if (!computer.contains(randomNumber)) {
                 computerIndexMap.put(randomNumber, computer.size());
                 computer.add(randomNumber);
