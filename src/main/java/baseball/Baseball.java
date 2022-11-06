@@ -4,14 +4,10 @@ import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class Baseball {
     private final Computer computer;
     private final Player player;
     private final InputValidator inputValidator;
-    private List<Integer> computerNumbers;
-    private List<Integer> playerNumbers;
 
     Baseball() {
         computer = new Computer();
@@ -35,19 +31,16 @@ public class Baseball {
 
     private void setComputerNumbers() {
         computer.setNumbers();
-        this.computerNumbers = computer.getNumbers();
     }
 
     private void setPlayerNumbers() {
         String playerNumber = InputView.inputPlayerNumber();
         inputValidator.validatePlayerNumber(playerNumber);
         player.setNumbers(playerNumber);
-
-        this.playerNumbers = player.getNumbers();
     }
 
     private void printHintMessage() {
-        player.setHintCount(computerNumbers, playerNumbers);
+        player.setHintCount(computer.getNumbers(), player.getNumbers());
         String hintMessage = player.getHintMessage();
         OutputView.printHintMessage(hintMessage);
     }
