@@ -27,7 +27,7 @@ public class Computer {
         }
     }
 
-    public void countBallAndStrike(String input){
+    public void countBallAndStrike(String input) {
         counterBaseball.countBallAndStrike(baseballNumber, input);
     }
 
@@ -49,6 +49,10 @@ public class Computer {
         if (!(ball == 0) && !(strike == 0)) {
             View.printBallAndStrike(ball, strike);
         }
+    }
+
+    public boolean isCollect() {
+        return (counterBaseball.getStrike() == 3);
     }
 
 }
