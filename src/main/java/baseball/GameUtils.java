@@ -31,6 +31,7 @@ public class GameUtils {
         playerNum = getPlayerInputNum();
         int strike = checkStrikeAndUpdateScore(answerNum, playerNum);
         int ball = checkBallAndUpdateScore(answerNum, playerNum);
+        printResultOfGame(strike, ball);
     }
 
     public static List<Integer> getPlayerInputNum() {
@@ -80,5 +81,17 @@ public class GameUtils {
             }
         }
         return ball;
+    }
+
+    public static void printResultOfGame(int strike, int ball) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        }
     }
 }
