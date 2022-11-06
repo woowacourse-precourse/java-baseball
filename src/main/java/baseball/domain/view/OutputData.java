@@ -41,21 +41,21 @@ public class OutputData {
 
     private static String printOutCount(int count) {
         if (count == 3) {
-            return String.valueOf("낫싱");
+            return "낫싱";
         }
         return "";
     }
 
     private static String printBallCount(String ballCount, int count) {
         if (count != 0) {
-            return (String.valueOf(count) + ballCount);
+            return count + ballCount;
         }
         return "";
     }
 
     private static String printStrikeCount(String ballCount, int count) {
         if (count == 3) {
-            return String.valueOf(count) + ballCount + "\n" + THREE_STRIKE_WIN_MESSAGE;
+            return count + ballCount + "\n" + THREE_STRIKE_WIN_MESSAGE;
         }
         if (count != 0) {
             return checkJustStrike(ballCount, count);
@@ -65,8 +65,8 @@ public class OutputData {
 
     private static String checkJustStrike(String ballCount, int count) {
         if (output.equals("")) {
-            return String.valueOf(count) + ballCount;
+            return count + ballCount;
         }
-        return " " + String.valueOf(count) + ballCount;
+        return " " + count + ballCount;
     }
 }
