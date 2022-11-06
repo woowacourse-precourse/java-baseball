@@ -8,4 +8,10 @@ public class User {
         Validator.validateNumberString(numberString);
         return numberString;
     }
+
+    public String getRestartResponse() {
+        String response = Console.readLine();
+        Validator.validateRestartResponse(response);
+        return response;
+    }
 }
