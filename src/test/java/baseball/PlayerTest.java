@@ -40,4 +40,15 @@ public class PlayerTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 3자리 숫자만 입력이 가능합니다.");
     }
+
+    @Test
+    public void 플레이어가_게임시작_종료를_입력할때_올바른_값인지_테스트() {
+        // given
+        String userContinuation = "3";
+        // when, then
+        assertThatThrownBy(() -> {
+            getPlayer().checkFormContinuation(userContinuation);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1(새로 시작), 2(게임 종료) 만 입력 가능합니다.");
+    }
 }
