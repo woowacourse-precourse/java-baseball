@@ -48,9 +48,9 @@ Version 1.0.2
 
 ### IV-1. '잘못된 값'의 정의
 - 게임 중 입력
-  * 세 자리 숫자를 제외한 모든 문자열 입력
-  * 입력 받은 세 자리 숫자 중 동일한 숫자가 하나라도 있는 경우: 예) 111, 363 등
-  * 숫자에 0이 포함된 경우: 예) 102, 560 등
+  * 길이가 3이 아닌 문자열 입력
+  * 1이상 9이하(0 불포함)의 숫자 외 문자로 이루어진 입력
+  * 입력 받은 일, 십, 백의 자리수 중 중복되는 숫자가 있는 경우: 예) 111, 363 등
 - 게임 종료 후 입력 
   * 1 또는 2를 제외한 모든 입력값
 
@@ -58,7 +58,7 @@ Version 1.0.2
 - 사용자가 [잘못된 값](#iv-1-잘못된-값의-정의)을 입력할 경우
   * `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료:
 - 게임 중 입력에 대한 `IllegalArgumentException` 메시지
-  * 입력의 길이가 잘못되었거나 입력이 정수가 아닌 경우: "Input should be 3-digit integer with non-zero digits" 메시지 출력
+  * 입력의 길이가 잘못되었거나 입력이 0부터 9까지의 정수가 아닌 경우: "Input should be 3-digit integer with non-zero digits" 메시지 출력
   * 일, 십, 백의 자릿수 중 중복되는 숫자가 있는 경우: "Input should consist of non-duplicated digits" 메시지 출력
 - 게임 종료 후 실행 코드에 대한 `IllegalArgumentException` 메시지
   * 1 또는 2가 아닌 입력의 경우: "Execution code must be 1 or 2" 메시지 출력
