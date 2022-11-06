@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Input {
     private static final String inputMessage = "숫자를 입력해주세요 : ";
+    private static final String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static String get() {
         System.out.print(inputMessage);
@@ -13,6 +14,7 @@ public class Input {
         if (!isValid(number)) {
             throw new IllegalArgumentException();
         }
+        scanner.close();
         return number;
     }
 
@@ -34,5 +36,16 @@ public class Input {
             set.add(c);
         }
         return true;
+    }
+
+    public static String restart() {
+        System.out.println(restartMessage);
+        Scanner scanner = new Scanner(System.in);
+        String number = scanner.nextLine();
+        if (!isValidRestartNumber(number)) {
+            throw new IllegalArgumentException();
+        }
+        scanner.close();
+        return number;
     }
 }
