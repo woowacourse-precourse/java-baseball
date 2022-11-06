@@ -26,6 +26,7 @@ public class Computer {
     }
 
     public String getResult(List<Integer> playerNumber) {
+        resetCount();
         for (int i = 0; i < 3; i++) {
             calculateCount(i, playerNumber);
         }
@@ -43,6 +44,11 @@ public class Computer {
         else
             System.out.println(ballCount + BALL  +" "+ strikeCount + STRIKE);
         return "아직 게임이 진행중 입니다";
+    }
+
+    public void resetCount() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 
 }
