@@ -39,15 +39,10 @@ public class BaseballGame {
         return isStrike;
     }
 
-    public boolean isBall() {
-        boolean isBall = false;
-
+    public void isBall() {
         if ((computerNumber.contains(userNumber)) && (!isStrike())) {
             ballCount++;
-            isBall = true;
         }
-
-        return isBall;
     }
 
     public void printCompareResult(){
