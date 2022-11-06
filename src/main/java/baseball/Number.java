@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Number {
 
@@ -13,6 +14,7 @@ public class Number {
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 1;
     private static final int DIGIT = 3;
+    private static final String regex = "^[1-9]{3}$";
 
     private List<Integer> digits;
 
@@ -48,14 +50,7 @@ public class Number {
     }
 
     private boolean is1to9(String target) {
-        for (int i = 0; i < target.length(); i++) {
-            char c = target.charAt(i);
-            int value = Character.getNumericValue(c);
-            if (!(value >= MIN_NUMBER & value <= MAX_NUMBER)) {
-                return false;
-            }
-        }
-        return true;
+        return Pattern.matches(regex, target);
     }
 
     private boolean isNotDuplicate(String target) {
