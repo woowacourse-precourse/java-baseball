@@ -2,6 +2,7 @@ package baseball.participants;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StrikeZone {
     private String zone;
@@ -15,7 +16,10 @@ public class StrikeZone {
     public StrikeZone(List<Integer> zone) {
         validateLength(zone);
         validateNumberRange(zone);
-        this.zone = zone.toString();
+        this.zone = zone.stream()
+                .map(i ->  Integer.toString(i))
+                .collect(Collectors.joining(""));
+
     }
 
     public String toString() {
