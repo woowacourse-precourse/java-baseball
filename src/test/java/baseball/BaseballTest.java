@@ -362,5 +362,23 @@ class BaseballTest {
             String exceptionNumber = "3";
             assertThatThrownBy(() -> new Action(exceptionNumber)).isInstanceOf(IllegalArgumentException.class);
         }
+
+        @Test
+        @DisplayName("isRestart 메소드가 멤버변수 numberAction 으로 \"1\"을 가진 Action 객체를 참조하여 호출하였을 때 true를 반환하는지 확인")
+        void isRestart_with_integer_1_test() {
+            String numberAction = "1";
+            Action actionOf1 = new Action(numberAction);
+
+            assertThat(actionOf1.isRestart()).isTrue();
+        }
+
+        @Test
+        @DisplayName("isRestart 메소드가 멤버변수 numberAction 으로 \"2\"를 가진 Action 객체를 참조하여 호출하였을 때 false를 반환하는지 확인")
+        void isRestart_with_integer_2_test() {
+            String numberAction = "2";
+            Action actionOf2 = new Action(numberAction);
+
+            assertThat(actionOf2.isRestart()).isFalse();
+        }
     }
 }
