@@ -17,14 +17,13 @@ public final class SingleNumber {
         this.number = number;
     }
 
-    public int judgementOnBall(List<SingleNumber> singleNumbers) {
+    public boolean isBall(List<SingleNumber> singleNumbers) {
         for (SingleNumber singleNumber : singleNumbers) {
             if ((position != singleNumber.position) && (number == singleNumber.number)) {
-                return 1;
+                return true;
             }
         }
-
-        return 0;
+        return false;
     }
 
     @Override

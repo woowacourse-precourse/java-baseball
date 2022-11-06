@@ -13,22 +13,14 @@ public class InputNumbers {
     }
 
     public int ballCount(List<SingleNumber> randomNumbers) {
-        int ballCount = 0;
-        for (SingleNumber inputNumber : inputNumbers) {
-            ballCount += inputNumber.judgementOnBall(randomNumbers);
-        }
-
-        return ballCount;
+        return (int) inputNumbers.stream()
+                .filter(singleNumber -> singleNumber.isBall(randomNumbers))
+                .count();
     }
 
     public int strikeCount(List<SingleNumber> randomNumbers) {
-        int strikeCount = 0;
-        for (SingleNumber inputNumber : inputNumbers) {
-            if (randomNumbers.contains(inputNumber)) {
-                strikeCount++;
-            }
-        }
-
-        return strikeCount;
+        return (int) inputNumbers.stream()
+                .filter(randomNumbers::contains)
+                .count();
     }
 }
