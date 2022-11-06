@@ -78,17 +78,17 @@ public class GameView {
         isValidPositiveInt(numInput);
     }
 
-    private boolean isValidPositiveInt(int num) {
+    private void isValidPositiveInt(int num) {
         if (num > 0) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
     }
 
-    private boolean isValidRightNum(int num) {
+    private void isValidRightNum(int num) {
         if (UseFunc.isEqualIntOfTwo(num, NUM_RESTART_GAME) || UseFunc.isEqualIntOfTwo(num,
             NUM_END_GAME)) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException(MSG_INPUT_ONE_OR_TWO);
     }
