@@ -24,6 +24,35 @@ public class Application {
     }
 
     static void startGame() {
+    static void startGame(List<Integer> computer) {
+        // 사용자로부터 입력된 3개의 숫자 배열
+        List<Integer> userNumber = generateUserNumber();
+
+        while (true) {
+            int ballCount = 0;
+            int strikeCount = 0;
+            for (int i = 0; i < 3; i++) {
+                checkBall(computer, userNumber, i);
+                checkStrike(computer, userNumber, i);
+            }
+        }
+
+    }
+
+    static List<Integer> generateUserNumber() {
+        // 사용자로 부터 입력을 받는다.
+        String userInput = Console.readLine();
+
+        // 반환할 값 초기화
+        List<Integer> userNumber = new ArrayList<>();
+
+        // TOOD 입력값 검증하기
+        for (int i = 0; i < 3; i++) {
+            userNumber.add(userInput.charAt(i) - '0');
+        }
+
+        // 반환
+        return userNumber;
     }
 
     /*
