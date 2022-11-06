@@ -1,6 +1,4 @@
-package baseball.message;
-
-import baseball.constant.MessageConst;
+package baseball.util;
 
 import static baseball.constant.MessageConst.*;
 
