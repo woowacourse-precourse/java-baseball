@@ -1,9 +1,7 @@
 package baseball.controller;
 
-
 import baseball.service.GameStartService;
 import baseball.status.ControlNumberStatus;
-import baseball.status.GameStatus;
 import baseball.status.HintStatus;
 import baseball.view.View;
 
