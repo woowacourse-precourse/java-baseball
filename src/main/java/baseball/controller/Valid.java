@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Valid {
@@ -27,12 +28,12 @@ public class Valid {
     }
 
     private static boolean isNotDuplicate(List<Integer> numList) {
-        List<Integer> compareList = new ArrayList<>();
+        HashSet<Integer> hashSet = new HashSet<>();
         for (Integer num : numList) {
-            if(compareList.contains(num)){
+            if(hashSet.contains(num)){
                 return false;
             }else{
-                compareList.add(num);
+                hashSet.add(num);
             }
         }
         return true;
