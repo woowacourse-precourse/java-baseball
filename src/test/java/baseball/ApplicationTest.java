@@ -92,18 +92,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-//    @Test
-//    void 예외_테스트_추가_4() {
-//        GameView gameView = new GameView();
-//        assertRandomNumberInRangeTest(
-//            () -> {
-//                run("123", "589", "0");
-//                assertThrows(IllegalArgumentException.class, gameView::run);
-//            },
-//            5, 8, 9, 5, 8, 9
-//        );
-//    }
-
     // TODO: USER 테스트
     private static User user_;
 
