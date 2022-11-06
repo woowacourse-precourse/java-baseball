@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    public List<Integer> digits;
+    protected Number randomNumber;
     private GameInput playerInput;
     private State state;
 
@@ -25,22 +25,12 @@ public class Game {
     public Game() {
     }
 
-    private void generateDigits() {
-        digits = new ArrayList<>();
-        while (digits.size() < 3) {
-            addUniqueRandomDigit();
-        }
-    }
 
-    public boolean isEnd() {
-        return state == State.END;
-    }
+    public void start() {
+        System.out.println(START_MESSAGE);
 
-    public void addUniqueRandomDigit() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!digits.contains(randomNumber)) {
-            digits.add(randomNumber);
-        }
+        state = State.START;
+        generateRandomNumber();
     }
 
     public void play() {
@@ -52,11 +42,39 @@ public class Game {
         } while (!isCorrect(result));
     }
 
-    public void start() {
-        System.out.println(START_MESSAGE);
+    public void pause() {
+        System.out.println(PAUSE_MESSAGE);
+        state = State.PAUSE;
 
-        state = State.START;
-        generateDigits();
+        if (readFinishInput() == FinishInput.QUIT_GAME) {
+            end();
+        }
+    }
+
+    public boolean isEnd() {
+        return state == State.END;
+    }
+
+
+    private boolean isCorrect(List<Integer> result) {
+        int strikeCount = result.get(STRIKE_IDX);
+        return strikeCount == 3;
+    }
+
+    private void generateRandomNumber() {
+        List<Integer> digits = new ArrayList<>();
+        while (digits.size() < 3) {
+            addUniqueRandomDigit(digits);
+        }
+        randomNumber = new Number(digits.get(0), digits.get(1), digits.get(2));
+    }
+
+
+    private void addUniqueRandomDigit(List<Integer> digits) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!digits.contains(randomNumber)) {
+            digits.add(randomNumber);
+        }
     }
 
     private void readInput() {
@@ -73,13 +91,13 @@ public class Game {
 
     private int countStrike() {
         int count = 0;
-        if (digits.get(0) == playerInput.first) {
+        if (randomNumber.first == playerInput.number.first) {
             count++;
         }
-        if (digits.get(1) == playerInput.second) {
+        if (randomNumber.second == playerInput.number.second) {
             count++;
         }
-        if (digits.get(2) == playerInput.third) {
+        if (randomNumber.third == playerInput.number.third) {
             count++;
         }
         return count;
@@ -87,19 +105,25 @@ public class Game {
 
     private int countBall() {
         int count = 0;
-        int first = digits.get(0);
-        int second = digits.get(1);
-        int third = digits.get(2);
 
-        if (playerInput.first == second || playerInput.first == third) {
+        int firstInput = playerInput.number.first;
+        int secondInput = playerInput.number.second;
+        int thirdInput = playerInput.number.third;
+
+        boolean isFirstBall = firstInput != randomNumber.first && randomNumber.hasDigit(firstInput),
+                isSecondBall = secondInput != randomNumber.second && randomNumber.hasDigit(secondInput),
+                isThirdBall = thirdInput != randomNumber.third && randomNumber.hasDigit(thirdInput);
+
+        if (isFirstBall) {
             count++;
         }
-        if (playerInput.second == first || playerInput.second == third) {
+        if (isSecondBall) {
             count++;
         }
-        if (playerInput.third == first || playerInput.third == second) {
+        if (isThirdBall) {
             count++;
         }
+
         return count;
     }
 
@@ -121,18 +145,6 @@ public class Game {
         System.out.println(resultStr);
     }
 
-    private boolean isCorrect(List<Integer> result) {
-        return result.get(1) == 3;
-    }
-
-    public void pause() {
-        System.out.println(PAUSE_MESSAGE);
-        state = State.PAUSE;
-
-        if (readFinishInput() == FinishInput.QUIT_GAME) {
-            end();
-        }
-    }
 
     private FinishInput readFinishInput() {
         int inputNumber = Integer.parseInt(Console.readLine());

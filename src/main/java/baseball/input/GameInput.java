@@ -1,48 +1,33 @@
 package baseball.input;
 
-import java.util.List;
+import baseball.game.Number;
 
 public class GameInput {
-    public final int first;
-    public final int second;
-    public final int third;
+
+    public Number number;
 
     public GameInput(int num) {
-        validateInput(num);
+        isInputValidRange(num);
 
-        List<Integer> separatedDigits = separateToDigits(num);
-        first = separatedDigits.get(0);
-        second = separatedDigits.get(1);
-        third = separatedDigits.get(2);
+        number = new Number(num);
+        areInputDigitsUnique(number);
     }
 
-    private void validateInput(int num) {
-        isValidRange(num);
-        hasDistinctDigits(num);
-    }
-
-    private void isValidRange(int num) {
+    private void isInputValidRange(int num) {
         if (100 <= num && num < 1000) {
             return;
         }
         throw new IllegalArgumentException("3자리 수를 입력해주세요.");
     }
 
-    private void hasDistinctDigits(int num) {
-        List<Integer> seperatedDigits = separateToDigits(num);
-        Integer firstDigit = seperatedDigits.get(0);
-        Integer secondDigit = seperatedDigits.get(1);
-        Integer thirdDigit = seperatedDigits.get(2);
-
-        if (firstDigit.equals(secondDigit) || secondDigit.equals(thirdDigit) || firstDigit.equals(thirdDigit)) {
+    private void areInputDigitsUnique(Number num) {
+        if (num.first == num.second || num.second == num.third || num.first == num.third) {
             throw new IllegalArgumentException("서로 다른 3자리 수를 입력해주세요.");
         }
     }
 
-    private List<Integer> separateToDigits(int num) {
-        Integer firstDigit = num / 100;
-        Integer secondDigit = (num % 100) / 10;
-        Integer thirdDigit = num % 10;
-        return List.of(firstDigit, secondDigit, thirdDigit);
+    @Override
+    public String toString() {
+        return "No:" + number;
     }
 }

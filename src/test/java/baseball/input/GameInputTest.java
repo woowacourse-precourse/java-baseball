@@ -12,9 +12,9 @@ class GameInputTest {
     @DisplayName("서로 다른 3자릿수가 제대로 저장된다.")
     public void uniqueDigit() {
         GameInput input = new GameInput(123);
-        assertThat(input.first).isEqualTo(1);
-        assertThat(input.second).isEqualTo(2);
-        assertThat(input.third).isEqualTo(3);
+        assertThat(input.number.first).isEqualTo(1);
+        assertThat(input.number.second).isEqualTo(2);
+        assertThat(input.number.third).isEqualTo(3);
     }
 
     @Test
