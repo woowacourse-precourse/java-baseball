@@ -2,21 +2,27 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static baseball.Constant.*;
 
 public class GameSystem {
     public void gameStart(){
-        String computerNumber = RandomUtil.giveComputerNumber();
+        HashSet<String> computerNumber = RandomUtil.giveComputerNumber();
         System.out.println(computerNumber);
-        String userNumber;
+        Hint hint = new Hint();
+        List<String> userNumber;
         boolean exit=false;
 
         do{
             //숫자 입력 메시지 출력 및 숫자 입력 받기
             System.out.print(inputNumberMessage+" ");
             userNumber = InputUtil.inputUserNumber();
-            Hint.hintCalculator(computerNumber,userNumber);
-            if(Hint.threeStrike) {
+            System.out.println(userNumber);
+            hint.hintCalculator(computerNumber,userNumber);
+            if(hint.threeStrike) {
                 System.out.println(gameEndingMessage);
                 exit=true;
             }
