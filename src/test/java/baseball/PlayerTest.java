@@ -45,8 +45,8 @@ public class PlayerTest {
         void case4() {
             String playerInput = "숫자말고문자";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf( InputMismatchException.class)
-                    .hasMessageContaining("3자리 수를 입력해주세요");
+                    .isInstanceOf( NumberFormatException.class)
+                    .hasMessageContaining("숫자만 입력해주세요");
         }
 
         @Test
