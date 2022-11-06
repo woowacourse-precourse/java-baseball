@@ -49,17 +49,38 @@ public class BaseballGame {
     private void getPlayerNumber(){
         player = new ArrayList<>();
         String input = readLine();
+
+        checkLengthException(input);
+        checkDuplicationException(input);
+
+        int number = Integer.parseInt(input);
+        for(int i = LENGTH_OF_NUMBER-1; i >= 0; i--) {
+            int digit = number % 10;
+            player.add(0, digit);
+            number = number / 10;
+        }
+    }
+
+    private void checkLengthException(String input){
         if(input.length() != LENGTH_OF_NUMBER){
             throw new IllegalArgumentException();
         }
+    }
+
+    private void checkDuplicationException(String input){
         int number = Integer.parseInt(input);
         for(int i = LENGTH_OF_NUMBER-1; i >= 0; i--) {
             int digit = number % 10;
             if(!isUniqueDigit(digit)){
                 throw new IllegalArgumentException();
             }
-            player.add(0, digit);
             number = number / 10;
+        }
+    }
+
+    private void checkInvalidOptionException(String input){
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
         }
     }
 
@@ -74,12 +95,12 @@ public class BaseballGame {
 
     private void getPlayerOption(){
         String input = readLine();
+        checkInvalidOptionException(input);
+
         if(input.equals("1")){
             isContinue = true;
         }else if(input.equals("2")){
             isContinue = false;
-        }else{
-            throw new IllegalArgumentException();
         }
     }
 
