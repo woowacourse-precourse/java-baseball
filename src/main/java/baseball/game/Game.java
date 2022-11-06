@@ -49,24 +49,24 @@ public class Game {
     private void calcResult(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
         for (int playerNumberIndex = 0; playerNumberIndex < playerBalls.size(); playerNumberIndex++) {
             for (int computerNumberIndex = 0; computerNumberIndex < computerBalls.size(); computerNumberIndex++) {
-                calcStrikeAndBallCounts(playerBalls, computerBalls, strikeAndBallCounts,
+                calculateStrikeAndBallCounts(playerBalls, computerBalls, strikeAndBallCounts,
                         playerNumberIndex, computerNumberIndex);
             }
         }
     }
 
-    private void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
-        strikeAndBallCounts.set(STRIKE_COUNT, strikeCount);
-        strikeAndBallCounts.set(BALL_COUNT, ballCount);
-    }
-
-    private void calcStrikeAndBallCounts(List<Integer> playerNumber, List<Integer> computerNumber,
+    private void calculateStrikeAndBallCounts(List<Integer> playerNumber, List<Integer> computerNumber,
             List<Integer> strikeAndBallCounts, int playerNumberIndex, int computerNumberIndex) {
         if (playerNumber.get(playerNumberIndex).equals(computerNumber.get(computerNumberIndex))) {
             updateStrikeAndBallCounts(strikeAndBallCounts,
                     getCount(playerNumberIndex == computerNumberIndex, strikeAndBallCounts.get(STRIKE_COUNT)),
                     getCount(playerNumberIndex != computerNumberIndex, strikeAndBallCounts.get(BALL_COUNT)));
         }
+    }
+
+    private void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
+        strikeAndBallCounts.set(STRIKE_COUNT, strikeCount);
+        strikeAndBallCounts.set(BALL_COUNT, ballCount);
     }
 
     private int getCount(boolean condition, int count) {
