@@ -1,30 +1,28 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBall {
 
     public void start() {
-        BallList computer;
-        computer = BallList.computerBallList();
+        BallList computer = BallList.computerBallList();
         BallList user;
         Check check;
-        String input = "";
-
         do {
+            computer.getBallList();
             System.out.print("숫자를 입력해주세요 : ");
-            user = userBallList();
+            user = BallList.userBallList();
+            user.getBallList();
             check = Check.checkBallList(computer, user);
             System.out.println(check.resultMessage());
-        }while (check.result()==0);
+            System.out.println(check.getStrike());
+            System.out.println(check.getBall());
+        } while (check.result() == 0);
 
         int restart = reStartOrExit();
-        if (restart==1) {
+        if (restart == 1) {
             start();
-        } else if (restart==0) {
+        } else if (restart == 0) {
             System.out.print("게임을 종료합니다.");
         }
 
@@ -46,19 +44,7 @@ public class BaseBall {
         }
     }
 
-    public static BallList userBallList() {
-        List<Ball> ballList = new ArrayList<>();
 
-        while (ballList.size()==0) {
-            String userBall = readLine();
-            BallList.checkUserLength(userBall);
-            for (int i=0;i<3;i++) {
-                Ball ball = new Ball(Character.getNumericValue(userBall.charAt(i)));
-                ballList.add(ball);
-            }
-        }
 
-        return new BallList(ballList);
-    }
 
 }

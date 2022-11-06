@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 
 public class BallList {
     private List<Ball> ballList;
@@ -29,6 +31,21 @@ public class BallList {
         return new BallList(ballList);
     }
 
+    public static BallList userBallList() {
+        List<Ball> ballList = new ArrayList<>();
+
+        while (ballList.size() == 0) {
+            String userBall = readLine();
+            BallList.checkUserLength(userBall);
+            for (int i = 0; i < 3; i++) {
+                Ball ball = new Ball(Character.getNumericValue(userBall.charAt(i)));
+                ballList.add(ball);
+            }
+        }
+
+        return new BallList(ballList);
+
+    }
 
     private void checkOverlap(List<Ball> ballList) {
         Set<Ball> ballListSet = new HashSet<>(ballList);
@@ -49,6 +66,13 @@ public class BallList {
 
     public boolean contains(Ball ball) {
         return this.ballList.contains(ball);
+    }
+
+    public void getBallList() {
+        for (int i=0;i<this.ballList.size();i++) {
+            System.out.print(this.ballList.get(i).getBall());
+        }
+
     }
     
 

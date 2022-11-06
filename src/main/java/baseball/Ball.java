@@ -11,5 +11,9 @@ public class Ball {
         }
     }
 
+    public int getBall() {
+        return this.number;
+    }
+
 
 }
