@@ -89,17 +89,17 @@ class Baseball {
     }
 
     private static void printResult() {
-        if (countBallStrike.get(BALL) != 0 && countBallStrike.get(STRIKE) != 0) {
+        if (!isExistBall() && !isExistStrike()) {
             System.out.print(countBallStrike.get(BALL) + BALL);
             System.out.println(countBallStrike.get(STRIKE) + STRIKE);
         }
-        if (countBallStrike.get(BALL) != 0 && countBallStrike.get(STRIKE) == 0) {
+        if (!isExistBall() && !isExistStrike()) {
             System.out.println(countBallStrike.get(BALL) + BALL);
         }
-        if (countBallStrike.get(BALL) == 0 && countBallStrike.get(STRIKE) != 0) {
+        if (isExistBall() && !isExistStrike()) {
             System.out.println(countBallStrike.get(STRIKE) + STRIKE);
         }
-        if (countBallStrike.get(BALL) == 0 && countBallStrike.get(STRIKE) == 0) {
+        if (isExistBall() && isExistStrike()) {
             System.out.println(NOTHING);
         }
     }
@@ -145,6 +145,14 @@ class Baseball {
             checkOverlapUserNumber.add(userNumber.substring(i, i + 1));
         }
         return checkOverlapUserNumber.size() == computerNumber.size();
+    }
+
+    private static boolean isExistBall() {
+        return countBallStrike.get(BALL) == 0;
+    }
+
+    private static boolean isExistStrike() {
+        return countBallStrike.get(STRIKE) == 0;
     }
 
     private static void illegalArgumentException() {
