@@ -9,7 +9,6 @@ public class Hint {
     private static final String MESSAGE_OF_NOTHING = "낫싱";
     private static final String MESSAGE_OF_STRIKE = "스트라이크";
     private static final String MESSAGE_OF_BALL = "볼";
-    private static final String MESSAGE_OF_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static List<Integer> CompareTo(String quiz, String playerInput) {
         int strike = 0;
@@ -30,11 +29,13 @@ public class Hint {
         String strike = Integer.toString(compareResult.get(0));
         String ball = Integer.toString(compareResult.get(1));
 
-        if(!strike.equals("0"))
-            System.out.print(strike + MESSAGE_OF_STRIKE + " ");
-        if(!ball.equals("0"))
+        if(!strike.equals("0")&&!ball.equals("0"))
+            System.out.println(strike + MESSAGE_OF_STRIKE + " " + ball + MESSAGE_OF_BALL);
+        else if(!ball.equals("0"))
             System.out.println(ball + MESSAGE_OF_BALL);
-        else if(strike.equals("0"))
+        else if(!strike.equals("0"))
+            System.out.println(strike + MESSAGE_OF_STRIKE);
+        else
             System.out.println(MESSAGE_OF_NOTHING);
     }
 }
