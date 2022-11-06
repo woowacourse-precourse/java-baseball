@@ -9,6 +9,11 @@ import java.util.Objects;
 public class Referee {
     private static final int START_INDEX = 0;
     private static final int MAX_BALLS_SIZE = 3;
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String BALL_MESSAGE = "볼 ";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public Result doJudge(Balls computerBalls, Balls playerBalls) {
         Result result = new Result();
@@ -25,29 +30,27 @@ public class Referee {
                 result.increaseBallCount();
             }
         }
+        printResult(result);
         return result;
     }
 
-    public void printResult(Result result) {
+    private void printResult(Result result) {
+        StringBuilder resultBuilder = new StringBuilder();
         if (result.hasNothing()) {
-            System.out.println("낫싱");
-            return;
+            resultBuilder.append(NOTHING_MESSAGE);
         }
         if (result.hasBall()) {
-            System.out.print(result.getBallCount() + "볼 ");
+            resultBuilder.append(result.getBallCount())
+                         .append(BALL_MESSAGE);
         }
-
-        if(!result.hasStrike()) {
-            System.out.println();
-        }
-
         if (result.hasStrike()) {
-            System.out.println(result.getStrikeCount() + "스트라이크");
+            resultBuilder.append(result.getStrikeCount())
+                         .append(STRIKE_MESSAGE);
         }
-
         if (result.isGameOver()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            resultBuilder.append("\n" + GAME_OVER_MESSAGE)
+                         .append("\n" + GAME_RESTART_MESSAGE);
         }
+        System.out.println(resultBuilder);
     }
 }
