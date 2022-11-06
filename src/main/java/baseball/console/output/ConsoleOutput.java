@@ -1,8 +1,8 @@
-package baseball.printer;
+package baseball.console.output;
 
 import baseball.core.dto.BallStrikeDto;
 
-public class GameMessagePrinter {
+public class ConsoleOutput {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String NUMBER_INPUT_MESSAGE = "숫자를 압력해주세요 : ";
@@ -11,7 +11,7 @@ public class GameMessagePrinter {
 
     private final ResultMessageGenerator resultMessageGenerator;
 
-    public GameMessagePrinter() {
+    public ConsoleOutput() {
         this.resultMessageGenerator = new ResultMessageGenerator();
     }
 
