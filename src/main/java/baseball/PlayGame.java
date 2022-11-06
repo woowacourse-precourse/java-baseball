@@ -52,8 +52,14 @@ public class PlayGame {
         int compareNumberIndex = 0;
 
         while(compareNumberIndex < computerNumber.size()){
-            //볼 개수 체크 기능
+            countBall(compareNumberIndex);
             compareNumberIndex++;
+        }
+    }
+
+    private void countBall(int index){
+        if(computerNumber.contains(userNumber.get(index))){
+            ball++;
         }
     }
 }
