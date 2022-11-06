@@ -82,6 +82,18 @@ public class Application {
         return strikeCount == 3;
     }
 
+    /** 게임 재시작/종료 선택 기능 */
+    public static boolean isExitGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userSelect = Console.readLine();
+
+        if (!isValidateUserSelect(userSelect)) {
+            throw new IllegalArgumentException("1 또는 2가 아닙니다. 애플리케이션 종료");
+        }
+
+        return userSelect.equals("2");
+    }
+
     /** 게임 재시작/종료 유효성 검사 기능 */
     public static boolean isValidateUserSelect(String userSelect) {
         return userSelect.equals("1") || userSelect.equals("2");
