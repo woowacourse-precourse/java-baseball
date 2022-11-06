@@ -79,7 +79,7 @@ public class Application {
                 checkedBallNumbers++;
             }
         }
-        return 0;
+        return checkedBallNumbers;
     }
 
     public static void main(String[] args) {
