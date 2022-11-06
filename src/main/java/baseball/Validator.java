@@ -21,7 +21,13 @@ public class Validator {
         }
     }
 
-    //TODO 0 포함 X
+    public static void validateNonZero(String numberString) {
+        for (char numChar : numberString.toCharArray()) {
+            if (numChar == '0') {
+                throw new IllegalArgumentException(HAVING_ZERO_EXCEPTION);
+            }
+        }
+    }
 
     //TODO 서로 다른 숫자만 입력
 
