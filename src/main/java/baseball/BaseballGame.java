@@ -71,7 +71,7 @@ public class BaseballGame {
         return Boolean.TRUE;
     }
 
-    public BaseballGameResult getResultOfGame(List<Integer> inputNums) {
-        // TODO: BaseballGameResult 구현 후 구현
+    public BaseballGameResult getResultOfGame() {
+        return new BaseballGameResult(this.answerNums, this.inputNums);
     }
 }
