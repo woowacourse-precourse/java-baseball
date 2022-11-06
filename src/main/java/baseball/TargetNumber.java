@@ -18,6 +18,10 @@ public class TargetNumber {
         //  같은 숫자가 있을 경우 IllegalArgumentException을 발생시킨다.
     }
 
+    public int toInt() {
+        return 0;
+    }
+
     public BallStrikeResult compareTo(TargetNumber oth) {
         // TODO 해당 값과 oth를 비교하여 같은 수가 같은 자리에 있으면 스트라이크,
         //  다른자리에 있으면 볼로 하여 그 개수를 BallStrikeResult로 반환한다.

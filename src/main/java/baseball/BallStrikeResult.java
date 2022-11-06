@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 public class BallStrikeResult {
     private int ballCount;
     private int strikeCount;
@@ -16,5 +18,13 @@ public class BallStrikeResult {
     public String toString() {
         // TODO 결과에 대한 맞는 문자열 반환
         return "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BallStrikeResult that = (BallStrikeResult) o;
+        return ballCount == that.ballCount && strikeCount == that.strikeCount;
     }
 }
