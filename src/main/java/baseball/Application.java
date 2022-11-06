@@ -112,7 +112,7 @@ class GameProcessor {
             if (num < 100 || num > 999) {
                 throw new IllegalArgumentException();
             }
-            num=lastInputInt;
+            num = lastInputInt;
         } catch (NumberFormatException n) {
             throw new IllegalArgumentException();
         }
@@ -165,12 +165,29 @@ class GameProcessor {
     }
 
     public boolean isWin() {
-        if (getStrike() == 3)
+        if (getStrike() == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
-        else
+        } else {
+            stringMaker();
             return false;
+        }
+
     }
 
+    public void stringMaker() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (getStrike() > 0) {
+            stringBuilder.append(getStrike() + "스트라이크");
+        }
+        if (getBall() > 0) {
+            if (stringBuilder.length() == 0) {
+                stringBuilder.append(" ");
+
+            }
+            stringBuilder.append(getBall() + "볼");
+        }
+    }
 }
 
 class GameFinisher {
