@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.view.BaseballConsole;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -9,26 +8,23 @@ import java.util.Set;
 public class User {
 
     private List<Integer> numbers;
-    private BaseballConsole baseballConsole;
 
     public User() {
         numbers = new ArrayList<>();
-        baseballConsole = new BaseballConsole();
     }
 
-    public void inputNumber() {
-        String input = baseballConsole.userInputNumber();
+    public void addUserNumbers(String input) {
         validateNumbers(input);
         validateLength(input);
         validateDifferentNumbers(input);
-        addNumber(input);
+        strToIntNumber(input);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    private void addNumber(String input) {
+    private void strToIntNumber(String input) {
         for(String number : input.split("")) {
             numbers.add(Integer.parseInt(number));
         }
