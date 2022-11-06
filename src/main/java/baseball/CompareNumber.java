@@ -4,6 +4,16 @@ import java.util.*;
 
 public class CompareNumber {
 
+    public static Map<String, Integer> countResult(String computerNumber, String playerNumber){
+        List<String> resultList = findNumber(computerNumber,playerNumber);
+        Map<String, Integer> resultMap = new HashMap<>();
+        for(String result : resultList){
+            int resultFrequency = Collections.frequency(resultList, result);
+            resultMap.put(result, resultFrequency);
+        }
+        return resultMap;
+    }
+
     public static List<String> findNumber(String computerStringNumber, String playerStringNumber){
         List<String> answerList = new ArrayList<>();
         char[] playerNumberArray = playerStringNumber.toCharArray();
