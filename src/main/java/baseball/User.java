@@ -33,6 +33,10 @@ public class User {
         throw new IllegalArgumentException("예외처리");
     }
 
+    public static String restartGame(String userInput){
+        return readLine();
+    }
+
 }
 
 
