@@ -99,4 +99,14 @@ class BaseballGameTest {
 
         assertThat(checkSizeMethod.invoke(game, size)).isEqualTo(actual);
     }
+
+    @Test
+    @DisplayName("사용자 입력 시 정답 리스트 생성")
+    void makeUserList() throws Exception {
+        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserList", String.class);
+        checkSizeMethod.setAccessible(true);
+
+        List<Integer> actual = (List<Integer>) checkSizeMethod.invoke(game, "123");
+        assertThat(actual).isEqualTo(List.of(1, 2, 3));
+    }
 }
