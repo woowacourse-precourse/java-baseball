@@ -24,8 +24,20 @@ public class Application {
     public static String getInput() {
         inputMessage();
         String number = Console.readLine();
-
+        if (!checkValidate(number)) {
+            throw new IllegalArgumentException();
+        }
         return number;
+    }
+    private static boolean checkValidate (String number) {
+        if (!checkLength(number))
+            return false;
+        return true;
+    }
+    private static boolean checkLength (String number) {
+        if (number.length() != 3)
+            return false;
+        return true;
     }
     private static String createAnswer () {
         List<String> computer = new ArrayList<>();
