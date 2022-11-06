@@ -28,7 +28,7 @@
 테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
 
 **Result**
-- [ ] `getResultByCode()`에 전달되는 인자가 잘못된 경우에 대한 검증
+- [x] `getResultByCode()`에 전달되는 인자가 잘못된 경우에 대한 검증
 
 **Status**
 - [ ] `getStatusByGameOption()`에 전달되는 인자가 잘못된 경우에 대한 검증
