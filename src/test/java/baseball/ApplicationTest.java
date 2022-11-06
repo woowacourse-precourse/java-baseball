@@ -86,6 +86,14 @@ class ApplicationTest extends NsTest {
         assertThat(Application.hasZero(numArr)).isEqualTo(result);
     }
 
+    @Test
+    void 두개의_수를_비교하여_제대로_결과가_나오는지_확인(){
+        List<Integer> input1 = List.of(1, 2, 3);
+        List<Integer> input2 = List.of(2, 3, 4);
+        int[] result = {0, 2, 1};
+        assertThat(Application.compareNumber(input1, input2)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
