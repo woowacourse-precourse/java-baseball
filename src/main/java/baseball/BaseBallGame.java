@@ -24,17 +24,14 @@ public class BaseBallGame implements Runnable {
         Numbers answer = engine.generateAnswer();
 
         while (true) {
-            String userInputNumber = input.inputNumber();
-            Numbers userNumber = engine.parseToNumbers(userInputNumber);
-            BallStatus ballStatus = engine.createBallStatus(answer, userNumber);
+            BallStatus ballStatus = getBallStatus(answer);
             output.printScore(ballStatus);
 
             if (engine.isNotCorrect(ballStatus)) {
                 continue;
             }
 
-            output.printEndText(ballStatus);
-            String choice = input.userInput();
+            String choice = getUserChoice(ballStatus);
 
             if (engine.isExitGame(choice)) {
                 break;
@@ -42,5 +39,18 @@ public class BaseBallGame implements Runnable {
 
             answer = engine.generateAnswer();
         }
+    }
+
+    private String getUserChoice(BallStatus ballStatus) {
+        output.printEndText(ballStatus);
+
+        return input.userInput();
+    }
+
+    private BallStatus getBallStatus(Numbers answer) {
+        String userInputNumber = input.inputNumber();
+        Numbers userNumber = engine.parseToNumbers(userInputNumber);
+
+        return engine.createBallStatus(answer, userNumber);
     }
 }
