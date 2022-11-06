@@ -7,7 +7,7 @@ import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 public class BaseballNumbers {
-    private static final int BASEBALL_NUMBERS_SIZE = 3;
+    public static final int BASEBALL_NUMBERS_SIZE = 3;
     private static final int BASEBALL_NUMBERS_START_INDEX = 0;
     private static final int BASEBALL_NUMBERS_END_INDEX = 2;
 
