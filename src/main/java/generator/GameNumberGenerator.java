@@ -25,6 +25,7 @@ public class GameNumberGenerator {
         StringBuilder sb = new StringBuilder();
         for(int number : numbers)
             sb.append(number);
+        numbers.clear(); // 재사용을 위해 비움
         return sb.toString();
     }
 }
