@@ -1,39 +1,17 @@
-package study;
+package baseball;
 
-import baseball.MakeRandomString;
-import baseball.PlayGame;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class BaseballTest {
-
-    static String randomNumber = "";
-
-    @BeforeAll
-    static void makeRandomNumber() {
-        randomNumber = MakeRandomString.run();
-    }
-
-    @Test
-    void randomNumberLength() {
-        assertThat(randomNumber.length()).isEqualTo(3);
-    }
-
-    @Test
-    void randomNumberRepetition() {
-        char randomNumberFirst = randomNumber.charAt(0);
-        char randomNumberSecond = randomNumber.charAt(1);
-        char randomNumberThird = randomNumber.charAt(2);
-
-        assertThat(randomNumberFirst).isNotEqualTo(randomNumberSecond);
-        assertThat(randomNumberFirst).isNotEqualTo(randomNumberThird);
-        assertThat(randomNumberSecond).isNotEqualTo(randomNumberThird);
-    }
+public class GameRuleTest {
 
     @Test
     void compareStringTest() {
@@ -81,29 +59,6 @@ public class BaseballTest {
             PlayGame.printResult(Arrays.asList(0, 0));
             assertThat(outputStreamCaptor.toString().trim()).isEqualTo("낫싱");
         }
-    }
-
-
-    @Test
-    void resumeGame() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("1".getBytes());
-        System.setIn(inputStream);
-        assertThat(PlayGame.isStop()).isEqualTo(0);
-    }
-
-    @Test
-    void stopGame() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("2".getBytes());
-        System.setIn(inputStream);
-        assertThat(PlayGame.isStop()).isEqualTo(1);
-    }
-
-    @Test
-    void wrongStopInput() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("3".getBytes());
-        System.setIn(inputStream);
-        assertThatThrownBy(() -> PlayGame.isStop())
-                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Nested

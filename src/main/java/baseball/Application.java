@@ -11,7 +11,7 @@ public class Application {
             answer = MakeRandomString.run();
 
             try {
-                PlayGame.run(answer);
+                PlayGame.play(answer);
             }
             catch (Exception e) {
                 throw new IllegalArgumentException();
@@ -20,7 +20,7 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             try {
-                stopFlag = PlayGame.isStop();
+                stopFlag = StopGame.isStop();
             }
             catch (Exception e) {
                 throw new IllegalArgumentException();
