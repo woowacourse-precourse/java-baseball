@@ -2,6 +2,7 @@ package baseball.Controller;
 
 import baseball.Model.Player;
 import baseball.Model.Number;
+import baseball.Model.Referee;
 import baseball.View.InputView;
 import baseball.View.OutputView;
 
@@ -11,6 +12,7 @@ public class Game {
     private OutputView outputView = new OutputView();
     private Number number = new Number();
     private Player player = new Player();
+    private Referee referee = new Referee();
     private boolean startOrEnd = true;
 
     public void run() {
@@ -27,6 +29,7 @@ public class Game {
             outputView.inputNumMessage();
             String input = inputView.inputUser();
             player.saveUserNumber(number.createUserNumber(input));
+            int strike = referee.isStrike(player.getUser(), player.getComputer());
         }
     }
 }
