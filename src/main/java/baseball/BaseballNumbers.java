@@ -43,8 +43,8 @@ public class BaseballNumbers {
 
     public void putBaseballNumbers(String[] baseballNumberList) throws IllegalArgumentException {
         baseballNumbers = new ArrayList<>();
-        for (int i = FIRST_INDEX_OF_BASEBALLNUMBER; i < LAST_INDEX_OF_BASEBALLNUMBER; i++) {
-            BaseballNumber baseballNumber = new BaseballNumber(baseballNumberList[i], i++);
+        for (int index = FIRST_INDEX_OF_BASEBALLNUMBER; index < LAST_INDEX_OF_BASEBALLNUMBER; index++) {
+            BaseballNumber baseballNumber = new BaseballNumber(baseballNumberList[index], index);
             baseballNumbers.add(baseballNumber);
         }
     }
