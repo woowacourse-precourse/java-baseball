@@ -54,6 +54,10 @@ public class Application {
 
     public static List<Integer> stringToListCreate(String word){
         String[] stringToArray = word.split("");
+        List<Integer> arrayToList = new ArrayList<>();
+        for(String arrayElement : stringToArray){
+            arrayToList.add(Integer.parseInt(arrayElement));
+        }
         return List.of(1,2,3);
     }
 
