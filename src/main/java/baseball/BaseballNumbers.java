@@ -16,4 +16,8 @@ public class BaseballNumbers {
         return Pattern.matches(BaseballConstants.RECORDS, readline.toLowerCase());
     }
 
+    public boolean validCheck(String readline) {
+        return isNumericReadline(readline) || isCommandReadline(readline);
+    }
+
 }
