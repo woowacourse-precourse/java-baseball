@@ -16,7 +16,7 @@ public class Application {
         List<Integer> opponent = generateOpponent();
         List<Integer> player = receiveInputOfPlayer();
 
-        System.out.println(checkOpponentAndPlayer(opponent, player));
+        checkGameOver(checkOpponentAndPlayer(opponent, player));
     }
 
     public static List<Integer> generateOpponent(){
@@ -87,6 +87,33 @@ public class Application {
             }
         }
         return ballAndStrike;
+    }
+
+    public static boolean checkGameOver(List<Integer> ballAndStrike){
+        printBallAndStrike(ballAndStrike);
+        if(ballAndStrike.get(1)==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    public static void printBallAndStrike(List<Integer> ballAndStrike){
+        int ball = ballAndStrike.get(0);
+        int strike = ballAndStrike.get(1);
+
+        if(ball == 0 && strike == 0){
+            System.out.println("낫싱");
+        }
+        if(ball != 0 && strike == 0){
+            System.out.println(ball+"볼");
+        }
+        if(ball == 0 && strike != 0){
+            System.out.println(strike+"스트라이크");
+        }
+        if(ball != 0 && strike != 0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
     }
 }
 
