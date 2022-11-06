@@ -79,7 +79,7 @@ public class Application {
     static class Nums {
         public Integer[] inputNums;
 
-        Nums(String inputData) throws Exception {
+        Nums(String inputData) {
             if (!isValidLength(inputData.length())) throw new IllegalArgumentException("잘못된 입력 크기");
             Set<Integer> sets = InputToSet(inputData);
             if (!isValidSetSize(sets)) throw new IllegalArgumentException("중복된 숫자 존재");
@@ -127,14 +127,12 @@ public class Application {
         int endGame = 0;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (endGame != 2) {
-
             try {
                 baseballGame();
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
                 throw e;
             }
-
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             endGame = Integer.parseInt(Console.readLine());
