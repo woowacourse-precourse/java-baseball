@@ -7,7 +7,6 @@ import java.util.List;
 
 public class UseFunc {
 
-
     public static boolean isNumOfIndividually(String str) {
         ArrayList<Integer> splitStrList = getListStrArr2Split(str);
         int cntSameNum = ConstantVO.INIT_NUM;
