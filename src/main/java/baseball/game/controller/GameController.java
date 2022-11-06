@@ -22,8 +22,9 @@ public class GameController {
             gameService.computeComputerNumbers();
 
             String userNumbers=inputView.inputNumbers();
-            gameService.verifyNumberOfInput(userNumbers);
-
+            gameService.setUserNumbers(userNumbers);
+            
+            
             break;
         }
     }

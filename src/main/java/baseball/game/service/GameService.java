@@ -1,24 +1,29 @@
 package baseball.game.service;
 
 import baseball.game.domain.Computer;
+import baseball.game.domain.User;
 import baseball.utils.InputValidator;
-import baseball.utils.RandomUtils;
+import baseball.utils.NumberUtil;
 
 public class GameService {
     private Computer computer;
+    private User user;
 
     public GameService() {
         computer = new Computer();
+        user = new User();
     }
 
     public void computeComputerNumbers() {
-        computer.setNumberList(RandomUtils.getRandomNumberList());
+        computer.setNumberList(NumberUtil.getRandomNumberList());
     }
 
-    public void verifyNumberOfInput(String numbers) {
+    public void setUserNumbers(String numbers) {
         if (!InputValidator.isValidNumbers(numbers)) {
             throw new IllegalArgumentException();
         }
+
+       user.setNumberList(NumberUtil.getNumberList(numbers));
     }
 
 }
