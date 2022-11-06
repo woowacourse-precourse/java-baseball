@@ -17,12 +17,9 @@ public class Application {
         }
         return userNumList;
     }
-    public static boolean showPrompt(List<Integer> answer) {
+    public static int showPrompt(List<Integer> answer) {
         List<Integer> userNumList;
-        int strike = 0;
-        int ball = 0;
         String userNum = null;
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             userNum = Console.readLine();
@@ -34,8 +31,22 @@ public class Application {
                 System.out.println(LENGTH_ERROR);
                 continue;
             }
+            int strike = CheckBallCount.countStrike(userNumList, answer);
+            int ball = CheckBallCount.countBall(userNumList, answer);
+            if (ball == 0 && strike == 0) {
+                System.out.println("낫싱");
+            } else if (ball > 0) {
+                System.out.printf("%d볼 ", ball);
+            } else if (strike > 0) {
+                System.out.printf("%d스트라이크\n", strike);
+            }
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
+
     public static List<Integer> getAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
@@ -49,7 +60,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> answer = getAnswer();
-        System.out.println(answer);
-        showPrompt(answer);
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
