@@ -25,6 +25,11 @@ public class GameController {
             startGame();
             whatToDoNext();
         }
+        finishGame();
+    }
+
+    private void finishGame(){
+        gameStatusView.printTheEnd();
     }
 
     void setGame(){
