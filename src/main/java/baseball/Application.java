@@ -1,9 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.*;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static baseball.Answer.compareAnswer;
 
 public class Application {
     public static void playBaseball(){
@@ -14,6 +12,9 @@ public class Application {
 
         User userNumber = new User();
         userNumber.setUserNumbers();
+
+        compareAnswer(computerNumber.computerNumbers,userNumber.userNumbers);
+
 
 //        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
 //        for(int a : userNumber.userNumbers) System.out.print(a+" ");
