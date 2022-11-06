@@ -37,8 +37,7 @@ public class NumberBaseball {
     }
 
     public void compareNumbers() {
-        strikeCount = 0;
-        ballCount = 0;
+        resetBallcount();
 
         for(int i = 0 ; i < 3 ; i++) {
             for(int j = 0 ; j < 3 ; j++) {
@@ -64,12 +63,34 @@ public class NumberBaseball {
     }
 
     public void startGame() {
+        while(true) {
+            gameRoop();
+            if(strikeCount == 3) {
+                if(continueGame() == 2) {
+                    return;
+                }
+                resetBallcount();
+            }
+        }
+    }
+
+    private void gameRoop() {
         createTargetNumberList();
 
         while(strikeCount != 3) {
             getPlayerNumber();
             compareNumbers();
         }
+    }
 
+    private int continueGame() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+        String str = Console.readLine();
+        return Character.getNumericValue(str.charAt(0));
+    }
+
+    private void resetBallcount() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 }
