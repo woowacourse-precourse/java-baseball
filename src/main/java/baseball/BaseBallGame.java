@@ -3,19 +3,21 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 public class BaseBallGame {
     public static final int COMPUTER_NUMBERS_SIZE = 3;
     public static final int COMPUTER_NUMBER_MIN = 1;
     public static final int COMPUTER_NUMBER_MAX = 9;
 
     GameMessageDisplay gameMessageDisplay;
-    UserInputter userInputter;
+    Validator inputValidator;
     List<Integer> computerNumbers;
+    String userInput;
 
     public BaseBallGame() {
         this.gameMessageDisplay = new GameMessageDisplay();
         this.computerNumbers = new ArrayList<>();
-        this.userInputter = new UserInputter();
+        this.inputValidator = new Validator();
     }
 
     public void startGame() {
@@ -37,7 +39,7 @@ public class BaseBallGame {
     }
 
     public void requestUserInput() {
-        gameMessageDisplay.printInputRequestMessage();
-        userInputter.readline();
+        this.gameMessageDisplay.printInputRequestMessage();
+        this.userInput = Console.readLine();
     }
 }
