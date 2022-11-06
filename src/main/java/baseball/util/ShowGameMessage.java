@@ -13,18 +13,19 @@ public class ShowGameMessage {
     }
 
     public void gameResultMessage(ScoreResult scoreResult) {
-        if (scoreResult.getType() == ScoreResultType.ALL_STRIKE) {
-            strikeMessage(scoreResult.getStrike());
-            allStrikeMessage();
-            continueGameMessage();
-        } else if (scoreResult.getType() == ScoreResultType.STRIKE) {
-            strikeMessage(scoreResult.getStrike());
-        } else if (scoreResult.getType() == ScoreResultType.BALL) {
-            ballMessage(scoreResult.getBall());
-        } else if (scoreResult.getType() == ScoreResultType.STRIKE_BALL) {
-            strikeAndBallMessage(scoreResult.getStrike(), scoreResult.getBall());
-        } else {
-            nothingMessage();
+        switch (scoreResult.getType()) {
+            case ALL_STRIKE:
+                strikeMessage(scoreResult.getStrike());
+                allStrikeMessage();
+                continueGameMessage();
+            case STRIKE:
+                strikeMessage(scoreResult.getStrike());
+            case BALL:
+                ballMessage(scoreResult.getBall());
+            case STRIKE_BALL:
+                strikeAndBallMessage(scoreResult.getStrike(), scoreResult.getBall());
+            case NOTHING:
+                nothingMessage();
         }
     }
 
