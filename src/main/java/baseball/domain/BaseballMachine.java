@@ -6,13 +6,11 @@ import static baseball.message.GameMessage.*;
 public class BaseballMachine {
 
     private Computer computer;
-    private Input input;
     private User user;
     private StrikeModel strikeModel;
 
     public void prepareGame() {
         this.computer = new Computer();
-        this.input = new Input();
     }
 
     public void matchNumber() {
@@ -48,7 +46,7 @@ public class BaseballMachine {
 
     // 유저 일급컬렉션 생성
     private void createUserNumber() {
-        this.user = new User(input.inputUserNumber());
+        this.user = new User(Input.inputUserNumber());
     }
 
 }
