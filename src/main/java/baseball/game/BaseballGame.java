@@ -44,7 +44,7 @@ public class BaseballGame {
             computerNumber = computerNumbers.get(i);
             if (!includeSame(userNumber)) continue;
             countStrike(userNumber,computerNumber);
-            if (userNumber != computerNumber) ball++;
+            countBall(userNumber,computerNumber);
         }
     }
 
@@ -54,6 +54,10 @@ public class BaseballGame {
 
     public static void countStrike(int userNumber, int computerNumber){
         if (userNumber == computerNumber) strike++;
+    }
+
+    public static void countBall(int userNumber, int computerNumber){
+        if (userNumber != computerNumber) ball++;
     }
 
     public static void userNumberResult(){
