@@ -14,7 +14,7 @@ public class Application {
         List<Integer> answerDigits = generateRandomNumbers();
         System.out.println();
 
-        while (answerDigits.size()==3) {
+        while (answerDigits.size() == 3) {
             System.out.print("숫자를 입력해주세요 : ");
 
             String userInput = getUserInput();
@@ -24,6 +24,7 @@ public class Application {
             List<Integer> comparedResult = compareAnswerWithInput(answerDigits, inputDigits);
 
             boolean isGameFinished = printHint(comparedResult);
+
             if (isGameFinished) {
                 userInput = getUserInput();
                 userGuess = validateUserInput(userInput, 1);
@@ -34,11 +35,11 @@ public class Application {
         return;
     }
 
-    public static List<Integer> generateRandomNumbers(){
+    public static List<Integer> generateRandomNumbers() {
         List<Integer> answerDigits = new ArrayList<Integer>();
-        while(answerDigits.size()<3){
+        while (answerDigits.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerDigits.contains(randomNumber)){
+            if (!answerDigits.contains(randomNumber)) {
                 answerDigits.add(randomNumber);
                 System.out.print(randomNumber);
             }
@@ -56,14 +57,15 @@ public class Application {
     private static int validateUserInput(String userInput, int checkLength) throws IllegalArgumentException {
         try {
             if (userInput.length() != checkLength) {
-                throw new IllegalArgumentException("Input should be"+ checkLength +
-                        "every digit is in the range of 1~9");
+                throw new IllegalArgumentException("Input length should be" + checkLength);
+            }
+            if (userInput.contains("0")){
+                throw new IllegalArgumentException("every digit is in the range of 1~9");
             }
             int userGuess = Integer.parseInt(userInput);
             return userGuess;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input should be"+ checkLength +
-                    "every digit is in the range of 1~9");
+            throw new IllegalArgumentException("every digit is in the range of 1~9");
         }
     }
 
@@ -93,7 +95,7 @@ public class Application {
 
         while (tmp > 0) {
             int digit = tmp % 10;
-            digits.add(0,digit);
+            digits.add(0, digit);
             tmp = tmp / 10;
         }
 
@@ -127,15 +129,22 @@ public class Application {
         return false;
     }
 
-    public static List<Integer> toBeContinued(int userInput, List<Integer> answerDigits){
+    public static List<Integer> toBeContinued(int userInput, List<Integer> answerDigits) {
+        checkInRange(userInput,1,2);
 
-        if (userInput == 1){
+        if (userInput == 1) {
             answerDigits = generateRandomNumbers();
-        }else if (userInput == 2){
+        } else if (userInput == 2) {
             answerDigits = Collections.EMPTY_LIST;
         }
 
         return answerDigits;
     }
 
+    public static void checkInRange(int userInput, int from, int to){
+        if (userInput < from || userInput > to){
+            throw new IllegalArgumentException("Wrong input range");
+        }
+        return;
+    }
 }
