@@ -35,6 +35,12 @@ public class Application {
                 String result = printCurrentSituation(ball, strike);
                 System.out.println(result);
 
+                if(isDone(result)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+
+
 
             }
 
