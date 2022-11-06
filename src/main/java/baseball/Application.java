@@ -211,7 +211,7 @@ class GameFinisher {
             restartTrigger = true;
             gameReadyMachine.gameReadyComplete();
         } else if (endValue.equals("2")) {
-            //later add 3-3 method
+            restartTrigger = false;
         } else {
             throw new IllegalArgumentException();
         }
