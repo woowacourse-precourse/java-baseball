@@ -1,7 +1,5 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserBallsInput {
@@ -16,19 +14,28 @@ public class UserBallsInput {
         this.maxLen = maxLen;
     }
 
+    public int getBallsLength() {
+        return maxLen;
+    }
+
     public String inputNumber() {
         String buffer = Console.readLine();
-        System.out.println(buffer);
         return buffer;
     }
 
-    public void inputNumberTest(String input) {
-//    if (!validityChecker(input)) {
-//      throw new IllegalArgumentException();
-//    }
-        System.out.print(input);
+    public String inputNumberTest(String input) {
+        String buffer = input;
+        validityChecker(buffer);
+        return buffer;
     }
 
-    public void validityChecker() {
+    public void validityChecker(String input) {
+        validLength(input);
+    }
+
+    public void validLength(String input) {
+        if (input.length() != maxLen) {
+            throw new IllegalArgumentException("input의 길이가 유효하지 않습니다");
+        }
     }
 }
