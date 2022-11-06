@@ -11,14 +11,14 @@ import java.util.Set;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
-public class ValidateRandomNumberTest {
+public class ValidateNumberTest {
     @Test
     void 정상_테스트() {
         //given
         List<Integer> normal = List.of(1, 2, 3);
         //when
         Throwable exception = catchThrowable(() -> {
-            validateRandomNumber(normal);
+            validateNumber(normal);
         });
         //then
         assertThat(exception)
@@ -31,7 +31,7 @@ public class ValidateRandomNumberTest {
         List<Integer> normal = List.of(1, 2, 3, 4);
         //when
         Throwable exception = catchThrowable(() -> {
-            validateRandomNumber(normal);
+            validateNumber(normal);
         });
         //then
         assertThat(exception)
@@ -44,7 +44,7 @@ public class ValidateRandomNumberTest {
         List<Integer> normal = List.of(1, 2, 33);
         //when
         Throwable exception = catchThrowable(() -> {
-            validateRandomNumber(normal);
+            validateNumber(normal);
         });
         //then
         assertThat(exception)
@@ -57,14 +57,14 @@ public class ValidateRandomNumberTest {
         List<Integer> normal = List.of(1, 2, 1);
         //when
         Throwable exception = catchThrowable(() -> {
-            validateRandomNumber(normal);
+            validateNumber(normal);
         });
         //then
         assertThat(exception)
                 .isInstanceOf(GameException.class);
     }
 
-    void validateRandomNumber(List<Integer> number) {
+    void validateNumber(List<Integer> number) {
         if(number.size() != 3) {
             throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
         }
