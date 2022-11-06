@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.Constant;
+import baseball.SystemMessage;
 import baseball.model.Answer;
 import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,16 +10,39 @@ import java.util.List;
 public class GameService {
 
     public void start() {
+        boolean correct = false;
         Answer answer = new Answer();
-        System.out.print("숫자를 입력해주세요 : ");
+        while (!correct) {
+            String inputText = SystemMessage.inputNumberMessage();
+            User user = new User(inputText);
 
-        String inputText = Console.readLine();
-        User user = new User(inputText);
+            int strike = countingStrike(answer.getValue(), user.getInputNumberList());
+            int ball = countingBall(countingContainAnswer(answer.getValue(), user.getInputNumberList()), strike);
+            correct = isCorrect(ball, strike);
+        }
+    }
 
-        int strike = countingStrike(answer.getValue(), user.getInputNumberList());
-        int ball = countingBall(countingContainAnswer(answer.getValue(), user.getInputNumberList()), strike);
+    private boolean isCorrect(int ball, int strike) {
+        if (ball == 0 && strike == 3) {
+            return true;
+        }
+        printHint(ball, strike);
+        return false;
+    }
 
-        System.out.println(ball + "볼" + strike + "스트라이크");
+    private void printHint(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            SystemMessage.printNothing();
+        }
+        if (ball == 0) {
+            SystemMessage.printStrike(strike);
+        }
+        if (strike == 0) {
+            SystemMessage.printBall(ball);
+        }
+        if (ball != 0 && strike != 0) {
+            SystemMessage.printBallAndStrike(ball, strike);
+        }
     }
 
     private int countingStrike(List<Integer> answerList, List<Integer> userInputList) {
@@ -31,10 +55,6 @@ public class GameService {
         return count;
     }
 
-    private int countingBall(int containCount, int strike) {
-        return containCount - strike;
-    }
-
     private int countingContainAnswer(List<Integer> answerList, List<Integer> userInputList) {
         int count = 0;
         for (int i = 0; i < Constant.DIGIT_SIZE; i++) {
@@ -43,5 +63,9 @@ public class GameService {
             }
         }
         return count;
+    }
+
+    private int countingBall(int containCount, int strike) {
+        return containCount - strike;
     }
 }
