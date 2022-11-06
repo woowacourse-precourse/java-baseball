@@ -29,6 +29,7 @@ public class BaseballGameController {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
+            validateUserInput(input);
             List<Integer> inputIntegers = toIntegerList(input);
             hint = baseballGameService.guess(inputIntegers);
             System.out.println(hint.toString());
@@ -42,5 +43,21 @@ public class BaseballGameController {
             integers.add(Integer.parseInt(input.substring(i, i + 1)));
         }
         return integers;
+    }
+
+    private void validateUserInput(String input) {
+        if (input == null)
+            throw new IllegalArgumentException();
+
+        // 1-9 중 3자리
+        if (!input.matches("[1-9]{3}"))
+            throw new IllegalArgumentException();
+
+        // 중복 숫자 허용 안함 TODO indent 3 초과
+        for (int i = 0; i < input.length(); i++) {
+            if (input.indexOf(input.charAt(i)) != i) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
