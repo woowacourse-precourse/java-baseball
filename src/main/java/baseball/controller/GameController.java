@@ -11,7 +11,7 @@ public class GameController {
     }
 
     public void start() {
-        game.startGame();
+        game.startRound();
         while (game.isRunning()) {
             List<Integer> userInput = game.getUserInput();
             game.judgeUserInput(userInput);

@@ -20,7 +20,7 @@ public class Game {
         return this.running;
     }
 
-    public void startGame() {
+    public void startRound() {
         GameView.printStartMessage();
         this.running = true;
     }
