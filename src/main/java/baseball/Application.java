@@ -15,18 +15,18 @@ public class Application {
 
         boolean gameFinishFlag = false, equalNumberFlag = false;
         int userNumber = 0, strikeCount, ballCount;
-        while(!gameFinishFlag) {
+        while (!gameFinishFlag) {
 
+            equalNumberFlag = false;
             int randomNumber = makeRandomNumber();
             System.out.println(randomNumber);
 
             // TODO : 게임 진행 과정은 추가적인 메소드로 분리해야 할 듯!
             while (!equalNumberFlag) {
                 System.out.print("숫자를 입력해주세요 : ");
-                try{
+                try {
                     userNumber = Integer.parseInt(Console.readLine());
-                }
-                catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex) {
                     // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
                 }
 
@@ -49,9 +49,19 @@ public class Application {
                 }
 
                 // 판정 결과를 정답과 비교하는 메소드 호출
-                equalNumberFlag = true;
+                equalNumberFlag = equalNumber(strikeCount);
             }
-            gameFinishFlag = true;
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            // TODO : 3스트라이크 이후의 로직은 추가적인 메소드로 분리해야 할 듯!
+            userNumber = Integer.parseInt(Console.readLine());
+            if(userNumber == 1)
+                gameFinishFlag = false;
+            else if(userNumber == 2) {
+                gameFinishFlag = true;
+            }
         }
     }
 
@@ -73,8 +83,8 @@ public class Application {
     public static int countStrike(int userNumber, int randomNumber) {
 
         int count = 0;
-        for(int i=0; i<3; i++) {
-            if(userNumber % 10 == randomNumber % 10) count += 1;
+        for (int i = 0; i < 3; i++) {
+            if (userNumber % 10 == randomNumber % 10) count += 1;
 
             userNumber /= 10;
             randomNumber /= 10;
@@ -89,18 +99,18 @@ public class Application {
 
         List<Integer> userDigits = new ArrayList<>();
         List<Integer> randomDigits = new ArrayList<>();
-        for(int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             userDigits.add(userNumber % 10);
             randomDigits.add(randomNumber % 10);
             userNumber /= 10;
             randomNumber /= 10;
         }
 
-        for(int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
 
             int number = userDigits.get(i);
-            if(randomDigits.contains(number)) {
-                if(randomDigits.get(i) != number)
+            if (randomDigits.contains(number)) {
+                if (randomDigits.get(i) != number)
                     count += 1;
             }
         }
@@ -110,5 +120,9 @@ public class Application {
 
     public static boolean isNothing(int strikeCount, int ballCount) {
         return strikeCount == 0 && ballCount == 0;
+    }
+
+    public static boolean equalNumber(int strikeCount) {
+        return strikeCount == 3;
     }
 }
