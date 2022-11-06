@@ -51,6 +51,13 @@ public class Application {
         return input_num;
     }
 
+    static int ball_count(List<Integer> answer, List<Integer> input_num){
+        int ball_cnt = 0;
+        for(Iterator<Integer> i = input_num.iterator();i.hasNext();){
+            if(answer.contains(i.next())) ball_cnt++;
+        }
+        return ball_cnt;
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
