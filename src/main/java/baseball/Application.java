@@ -6,24 +6,34 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class Application {
-    public static final int USER_LENGTH_NOT_3 = 1;
-    public static final int ALPHA_IN_USER = 2;
+    private static final String LENGTH_ERROR = "length is over three";
+    private static final String INPUT_ERROR = "input is not a number";
 
-
-
+    public static List<Integer> getStringToIntegerList(String userNum) {
+        List<Integer> userNumList = new ArrayList<Integer>();
+        for (char num : userNum.toCharArray()) {
+            userNumList.add(Character.getNumericValue(num));
+        }
+        return userNumList;
+    }
     public static boolean showPrompt(List<Integer> answer) {
+        List<Integer> userNumList;
+        int strike = 0;
+        int ball = 0;
         String userNum = null;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             userNum = Console.readLine();
-            if (ExceptionBaseball.checkUserNumAlpha(userNum) || ExceptionBaseball.checkUserNumAlpha(userNum)) {
-                return false;
+            userNumList = getStringToIntegerList(userNum);
+            if (ExceptionBaseball.checkUserNumAlpha(userNum)) {
+                System.out.println(INPUT_ERROR);
+                continue;
+            } else if (ExceptionBaseball.checkUserNumLength(userNum)) {
+                System.out.println(LENGTH_ERROR);
+                continue;
             }
-            
         }
     }
     public static List<Integer> getAnswer() {
