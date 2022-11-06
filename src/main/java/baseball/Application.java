@@ -15,7 +15,8 @@ public class Application {
         System.out.println(START_SENTENCE);
         List<Integer> answer = generateRandomNumber();
 
-        while (true) {
+        int newGameNumber = 1;
+        while (newGameNumber == 1) {
             String inputNum = input();
             checkInputNumber(inputNum);
 
@@ -32,10 +33,7 @@ public class Application {
                 String input = Console.readLine();
                 checkInputNewGameNumber(input);
 
-                int newGameNumber = Integer.parseInt(input);
-                if (newGameNumber == 2) {
-                    break;
-                }
+                newGameNumber = Integer.parseInt(input);
                 answer = generateRandomNumber();
             }
         }
