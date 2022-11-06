@@ -51,6 +51,31 @@ public class Application {
         return input_num;
     }
 
+    static boolean check_answer(List<Integer>answer , List<Integer> input_num){
+        int ball_cnt = 0;
+        int strike_cnt = 0;
+        ball_cnt = ball_count(answer,input_num);
+        strike_cnt = strike_count(answer,input_num);
+        ball_cnt = ball_cnt - strike_cnt;
+        if(strike_cnt == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }else if(ball_cnt == 0 && strike_cnt == 0){
+            System.out.println("낫싱");
+            return false;
+        }else{
+            if(ball_cnt!=0){
+                System.out.print(ball_cnt+"볼 ");
+            }
+            if(strike_cnt!=0){
+                System.out.print(strike_cnt + "스트라이크");
+            }
+            System.out.print("\n");
+            return false;
+        }
+    }
+
     static int ball_count(List<Integer> answer, List<Integer> input_num){
         int ball_cnt = 0;
         for(Iterator<Integer> i = input_num.iterator();i.hasNext();){
