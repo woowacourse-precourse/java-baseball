@@ -28,7 +28,7 @@ public class Application {
         int strikes = 0;
 
         for(int i = 0; i < computer.size(); i++) {
-            if(computer.get(i) == player.get(i)) {
+            if(computer.get(i).equals(player.get(i))) {
                 strikes++;
             }
         }
@@ -62,12 +62,15 @@ public class Application {
     }
 
     public static boolean ReturnScore(int strike, int ball) {
+        if(!CheckNothing(strike, ball)) {
+            return false;
+        }
+
         ball -= strike;
         System.out.println("Strike: " + strike);
         System.out.println("Ball: " + ball);
 
         return true;
     }
-
 
 }
