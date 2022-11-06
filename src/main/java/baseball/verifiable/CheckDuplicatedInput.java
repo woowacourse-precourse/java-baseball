@@ -8,6 +8,6 @@ public class CheckDuplicatedInput implements VerifiableRule {
     public boolean validates(String input) {
         Set<Integer> checkSet = new HashSet<>();
         return input.codePoints()
-                .anyMatch(unitNum -> !(checkSet.add(unitNum)));
+                .allMatch(unitNum -> checkSet.add(unitNum));
     }
 }
