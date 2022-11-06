@@ -1,10 +1,14 @@
 package baseball.domain;
 
 public class Ball {
-
-    private BallNumber number;
+    private final int maximumNumber = 9;
+    private final int minimumNumber = 1;
+    private int number;
     public Ball(int number) {
-        this.number = new BallNumber(number);
+        if (number>maximumNumber && number<minimumNumber) {
+            throw new IllegalArgumentException("1에서 9의 값을 입력해주세요");
+        }
+        this.number = number;
     }
 
     public Judgement judge(Ball otherBall) {

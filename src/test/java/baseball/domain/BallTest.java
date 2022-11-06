@@ -14,6 +14,7 @@ public class BallTest {
     @Test
     public void hasValueTest() {
         Ball computerBall = new Ball(1);
-        assertThat(computerBall.judge(new Ball(1))).isEqualTo(Judgement.NOT_NOTHING);
+        assertThat(computerBall.judge(new Ball(1))).isEqualTo(Judgement.SAME_VALUE);
     }
+
 }
