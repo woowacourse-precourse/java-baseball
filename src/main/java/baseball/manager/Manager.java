@@ -17,4 +17,9 @@ public interface Manager {
      * 입력값을 원하는 내용 출력
      */
     void printInputGameValue();
+
+    /**
+     * 사용자에게 입력값 받기
+     */
+    String inputGameValue();
 }

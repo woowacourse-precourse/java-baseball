@@ -1,5 +1,7 @@
 package baseball.manager;
 
+import camp.nextstep.edu.missionutils.Console;
+
 /**
  * 야구 게임 매니저로서 게임의 시작과 종료를 관리
  *
@@ -22,5 +24,13 @@ public class NumberBaseballManager implements Manager{
     @Override
     public void printInputGameValue() {
         System.out.println("숫자를 입력해주세요 : ");
+    }
+
+    /**
+     * 사용자에게 숫자 야구 게임 입력값 받기
+     */
+    @Override
+    public String inputGameValue() {
+        return Console.readLine();
     }
 }

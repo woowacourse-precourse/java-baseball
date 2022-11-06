@@ -18,5 +18,6 @@ public class Application {
         List<Integer> computerNumber = computer.createOtherNumber();
 
         manager.printInputGameValue();
+        String gameValueOfUser = manager.inputGameValue();
     }
 }
