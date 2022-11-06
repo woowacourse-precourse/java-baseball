@@ -92,6 +92,16 @@ class ApplicationTest extends NsTest {
         assertEquals(result,returnAnswer(strike));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"2"})
+    void endGameTest(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        boolean result = true;
+        assertEquals(result,endGame());
+
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
