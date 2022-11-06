@@ -7,18 +7,11 @@ import baseball.view.MessagePrinterImpl;
 
 public class Assembler {
 
-    private final MessagePrinter messagePrinter;
-    private final BaseBallService baseBallService;
 
-    public Assembler(){
-        this.messagePrinter = new MessagePrinterImpl();
-        this.baseBallService = new BaseBallServiceImpl();
+    public MessagePrinter messagePrinter(){
+        return new MessagePrinterImpl();
     }
-
-    public MessagePrinter getMessagePrinter(){
-        return messagePrinter;
-    }
-    public BaseBallService getBaseBallService() {
-        return baseBallService;
+    public BaseBallService baseBallService() {
+        return new BaseBallServiceImpl();
     }
 }

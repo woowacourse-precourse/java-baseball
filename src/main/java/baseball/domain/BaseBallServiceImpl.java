@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.config.Assembler;
+import baseball.domain.entity.NumberRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -10,13 +12,17 @@ public class BaseBallServiceImpl implements BaseBallService{
     private final int endRange = 9;
     private final int count = 3;
 
+    public BaseBallServiceImpl(){
+        Assembler assembler = new Assembler();
+    }
+
     @Override
     public List<Integer> selectRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(startRange,endRange,count);
     }
 
     @Override
-    public void saveRandomNumbers() {
+    public void saveRandomNumbers(List<Integer> numbers) {
 
     }
 
