@@ -74,4 +74,14 @@ class BaseballGameTest {
         assertThat(list.size()).isEqualTo(DEFAULT_SIZE);
         assertThat(overlapList.size()).isNotEqualTo(DEFAULT_SIZE);
     }
+
+    @Test
+    @DisplayName("컴퓨터 정답 리스트 생성")
+    void makeAnswer() throws Exception {
+        Method makeMethod = BaseballGame.class.getDeclaredMethod("makeAnswer");
+        makeMethod.setAccessible(true);
+
+        List<Integer> answer = (List<Integer>) makeMethod.invoke(game);
+        assertThat(answer.size()).isEqualTo(DEFAULT_SIZE);
+    }
 }
