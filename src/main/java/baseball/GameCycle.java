@@ -65,8 +65,8 @@ public class GameCycle {
     public int countBall(String answer, String input) {
         int ball = 0;
         for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
-            String tmpString = String.valueOf(input.charAt(inputIndex));
             if (input.charAt(inputIndex) == answer.charAt(inputIndex)) continue;
+            String tmpString = String.valueOf(input.charAt(inputIndex));
             if (answer.contains(tmpString)) ball++;
         }
         return ball;
