@@ -1,9 +1,10 @@
 package baseball;
 
 public class Application {
+
 	public static void main(String[] args) {
 		String value = "RUN";
-		while(value.equals("RUN")) {
+		while (value.equals("RUN")) {
 			Computer computer = new Computer();
 			Status status = new Status();
 			User user = new User();

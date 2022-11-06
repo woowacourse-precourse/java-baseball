@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+
 	private static final String MESSAGE_INPUT = "숫자를 입력해주세요 : ";
 	private static final String MESSAGE_START = "숫자 야구 게임을 시작합니다.";
 	private static final String MESSAGE_RETRY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
@@ -11,6 +12,8 @@ public class Game {
 	private static final String MESSAGE_BLANK = " ";
 	private static final String MESSAGE_STRIKE = "스트라이크";
 	private static final String MESSAGE_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String MESSAGE_RETURN_RUN = "RUN";
+	private static final String MESSAGE_RETURN_STOP = "STOP";
 
 	private static final int ZERO = 0;
 	private static final int MAX_STRIKE = 3;
@@ -35,7 +38,7 @@ public class Game {
 	public String gameStart() {
 		initGame();
 
-		while(strike < MAX_STRIKE) {
+		while (strike < MAX_STRIKE) {
 			compare();
 		}
 
@@ -45,14 +48,13 @@ public class Game {
 	private void compare() {
 		initCounts();
 		requestInput();
-		System.out.println(computer.getComputersList());
 		System.out.println(user.getValidatedUserInput());
 
-		for(int index = MIN_LIST_INDEX; index < MAX_LIST_INDEX; index++) {
-			if(computer.getComputersList().contains(user.getValidatedUserInput().get(index))) {
+		for (int index = MIN_LIST_INDEX; index < MAX_LIST_INDEX; index++) {
+			if (computer.getComputersList().contains(user.getValidatedUserInput().get(index))) {
 				ball++;
 			}
-			if(computer.getComputersList().get(index).equals(user.getValidatedUserInput().get(index))) {
+			if (computer.getComputersList().get(index).equals(user.getValidatedUserInput().get(index))) {
 				ball--;
 				strike++;
 			}
@@ -82,11 +84,10 @@ public class Game {
 		status.setStatusTerminating();
 		user.scanInputByStatus(status.getStatus());
 
-		if(user.getValidatedUserInput().get(RETRY_ANSWER_INDEX).equals(RETRY_CODE)) {
-//			gameStart();
-			return "RUN";
+		if (user.getValidatedUserInput().get(RETRY_ANSWER_INDEX).equals(RETRY_CODE)) {
+			return MESSAGE_RETURN_RUN;
 		}
-		return "STOP";
+		return MESSAGE_RETURN_STOP;
 	}
 
 	private void initGame() {
