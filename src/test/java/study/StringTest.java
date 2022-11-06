@@ -6,13 +6,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringTest {
@@ -44,7 +50,7 @@ public class StringTest {
         assertThat(result).contains("1");
 
         // 정확하게 들어있는가
-        assertThat(result).containsExactly("1", "", "3");
+        assertThat(result).containsExactly("1", "", "23");
     }
 
     @Test
@@ -220,29 +226,44 @@ public class StringTest {
     }
 
 
-    class TestUser {
-
-        String email;
-        String name;
-        int password;
-
-        public TestUser(String email, String name, int password) {
-            this.email = email;
-            this.name = name;
-            this.password = password;
-        }
+    @ParameterizedTest(name = "매개변수")
+    @ValueSource(strings = {"1", "123"})
+    void 파라미터_테스트_연습(String name) {
+        assertThat(name).contains("1");
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"q", "qwerasdfzxcv", "qq23"})
-    void 파라미터_테스트_연습(String name) {
-        String VALID_EMAIL = "email";
-        int password = 5;
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> new TestUser(VALID_EMAIL, name, password));
-
-        assertThat(e.getMessage()).isEqualTo("메시가 일치 하지 않습니다.");
+    @ValueSource(ints = {1, 2, 3})
+    void testWithValueSource(int argument) {
+        assertTrue(argument > 0 && argument < 4);
     }
 
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {"1", "13"})
+    void nullEmptyStrings(String text) {
+        assertTrue(text == null || text.trim().isEmpty()
+            || Integer.parseInt(text) > 0 && Integer.parseInt(text) < 4);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {" ", "   ", "\t", "\n"})
+    void nullEmptyAndBlankStrings(String text) {
+        assertTrue(text == null || text.trim().isEmpty());
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {'a', 'a', 'a'})
+    void char_테스트(char text) {
+        assertThat(text).isEqualTo('a');
+    }
+
+    @ParameterizedTest
+    //          value = 이넘의 이금 정의  names =  이넘의 값을 정의
+    @EnumSource(value = TimeUnit.class, names = {"DAYS", "HOURS"})
+    void testWithEnumSourceInclude(TimeUnit timeUnit) {
+        assertTrue(EnumSet.of(TimeUnit.DAYS, TimeUnit.HOURS).contains(timeUnit));
+    }
 }
