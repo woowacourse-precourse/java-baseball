@@ -7,7 +7,7 @@ public class UserInputValidator {
 
 	public static void validatePlayNumbers(String userInput) throws IllegalArgumentException {
 		if (isThreeLengthNumber(userInput)
-				&& isUniqueNumbers(userInput)) {
+			&& isUniqueNumbers(userInput)) {
 			return;
 		}
 

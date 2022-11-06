@@ -12,7 +12,7 @@ public enum RestartStatus {
 		this.statusCode = statusCode;
 	}
 
-	public static RestartStatus valueOfCode(int	statusCode) {
+	public static RestartStatus valueOfCode(int statusCode) {
 		return Arrays.stream(values())
 			.filter(v -> v.statusCode == statusCode)
 			.findAny()

@@ -37,6 +37,7 @@ public class NumberBaseballController {
 
 		return false;
 	}
+
 	private NumberBaseball getComputerNumberBaseball() {
 		return numberBaseballService.createNumberBaseball();
 	}

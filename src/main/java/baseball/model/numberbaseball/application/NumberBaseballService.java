@@ -15,7 +15,6 @@ public class NumberBaseballService {
 	private static final int NUMBER_BASEBALL_MAX_VALUE = 9;
 	private static final int NUMBER_BASEBALL_LENGTH = 3;
 
-
 	public NumberBaseball createNumberBaseball() {
 
 		List<Integer> uniqueNumbersInRange = getUniqueNumbersInRange(
@@ -39,7 +38,7 @@ public class NumberBaseballService {
 	public GameResult compareNumberBaseBall(NumberBaseball computerNumber, NumberBaseball userNumber) {
 		final GameResult gameResult = new GameResult();
 
-		for (int i = 0; i < NUMBER_BASEBALL_LENGTH; i++) {
+		for (int i = 0; i < computerNumber.size(); i++) {
 			int number = userNumber.getNumberAt(i);
 			SingleResultType singleResultType = calculateSingleResult(computerNumber, i, number);
 			gameResult.addSingleResult(singleResultType);

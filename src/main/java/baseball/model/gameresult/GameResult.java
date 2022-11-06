@@ -17,7 +17,7 @@ public class GameResult {
 	}
 
 	public int countSingleResult(SingleResultType singleResultType) {
-		return (int) gameResults.stream()
+		return (int)gameResults.stream()
 			.filter(r -> r == singleResultType)
 			.count();
 	}
@@ -25,7 +25,6 @@ public class GameResult {
 	public boolean isEndCondition() {
 		return countSingleResult(SingleResultType.STRIKE) == RESULT_MAX_COUNT;
 	}
-
 
 	public String format() {
 		if (isNothing()) {
