@@ -9,12 +9,8 @@ import java.util.Random;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameSet {
-    public static void setNumber(){
-        setComputerNumber();
-        String playerNumber = inputPlayerNumber();
-    }
 
-    public static void setComputerNumber(){
+    public static List<Integer> setComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3) {
             int computerNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,6 +18,7 @@ public class GameSet {
                 computer.add(computerNumber);
             }
         }
+        return computer;
     }
 
     public static String inputPlayerNumber(){
