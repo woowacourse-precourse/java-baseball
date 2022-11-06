@@ -1,8 +1,12 @@
 package baseball;
 
+import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,7 +45,7 @@ public class FunctionTest {
             CheckInput.isInput(str3);
         });
 
-        String str4 = "2189";
+        String str4 = "";
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CheckInput.isInput(str4);
         });
@@ -55,5 +59,25 @@ public class FunctionTest {
         assertThat(BallCount.ballCount(testArr, str1)).isEqualTo(2);
 
         assertThat(BallCount.strikeCount(testArr, str1)).isEqualTo(1);
+    }
+
+    @Test
+    void newGameOrStopGameTest() {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(BaseBallGame.newGameOrStopGame()).isTrue();
+
+        input = "2";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(BaseBallGame.newGameOrStopGame()).isFalse();
+
+        input = " ";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseBallGame.newGameOrStopGame();
+        });
     }
 }
