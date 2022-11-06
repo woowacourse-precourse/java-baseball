@@ -1,6 +1,7 @@
 package baseball.answer;
 
 import baseball.gametype.BaseballType;
+import baseball.response.BaseballResponse;
 import basedomain.answer.Answer;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -37,6 +38,6 @@ public class BaseballAnswer extends Answer {
 
     @Override
     public String response(int candidate) {
-        return null;
+        return new BaseballResponse(answer, candidate).response();
     }
 }
