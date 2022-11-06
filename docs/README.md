@@ -16,7 +16,9 @@
 - endGame method
   - "3개의 숫자를 모두 맞히셨습니다! 게임종료"문구를 출력한다.
   - 사용자로부터 게임을 지속할지 의사를 확인하는 숫자를 입력받는다.
-- exceptionHandling method
+- checkInputLength method
+  - 사용자가 올바른 개수를 입력했는지 여부를 판단한다.
+- checkInputValue method
   - 사용자가 올바른 값을 입력했는지 여부를 판단한다.
 - printStrikeAndBall method
   - 스트라이크와 볼 정보를 입력받아 알맞은 양식으로 출력한다.
