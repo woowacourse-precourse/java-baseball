@@ -2,7 +2,7 @@
 
 ### ✔️ About 야구 게임를 위한 수 생성
 
-- `startBaseballGame` : 야구 게임을 진행하는 함수
+- `playBaseballGame` : 야구 게임을 진행하는 함수
   - `createComputerNumber` : 서로 다른 랜덤 3 숫자 생성하는 함수 (컴퓨터)
   - `inputUserNumber` : 서로 다른 임의의 3가지 숫자 입력받는 함수 (사용자)
 
