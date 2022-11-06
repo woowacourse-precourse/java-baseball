@@ -23,7 +23,38 @@ public class BaseBallService {
         return Response.endOf("데이터 생성 완료");
     }
 
+    public Response matchNumber(String input) {
+        int scoreOfStrike = 0;
+        int scoreOfBall = 0;
+        for (int i = 0; i < 3; ++i) {
+            char number = input.charAt(i);
+            if (number == table.get(i)) {
+                scoreOfStrike += 1;
+                continue;
+            }
+            if (table.contains(number)) {
+                scoreOfBall += 1;
+            }
+        }
+        String message = generateMessage(scoreOfStrike, scoreOfBall);
+        if (scoreOfStrike == 3) {
+            return Response.retryOf(message);
+        }
+        return Response.keepOf(message);
+    }
 
+    private String generateMessage(int scoreOfStrike, int scoreOfBall) {
+        String ball = "";
+        String strike = "";
+        if (scoreOfBall > 0) {
+            ball = String.format("%d볼", scoreOfBall);
+        }
+        if (scoreOfStrike > 0) {
+            strike = String.format("%d스트라이크", scoreOfStrike);
+        }
+        String answer =ball + " " + strike;
+        return answer.trim();
+    }
 
 
 }
