@@ -140,4 +140,11 @@ class BaseballTest {
         assertThatCode(() -> checkIllegalArgumentException(input))
                 .doesNotThrowAnyException();
     }
+
+    @DisplayName("String 을 ArrayList<Character> 로 변환")
+    @Test
+    void convertStringToArrayList_메서드로_string_ArrayList_변환() {
+        String input = "123";
+        assertThat(convertStringToArrayList(input)).containsExactly('1','2','3');
+    }
 }

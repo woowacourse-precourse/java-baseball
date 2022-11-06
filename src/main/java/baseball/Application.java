@@ -90,4 +90,13 @@ public class Application {
         }
         return convertArrayListToString(computerNumber);
     }
+
+    public static List<Character> convertStringToArrayList(String number) {
+        List<Character> numberList = new ArrayList<Character>();
+        for (int index = 0; index < number.length(); index++) {
+            numberList.add(number.charAt(index));
+        }
+        return numberList;
+    }
+
 }
