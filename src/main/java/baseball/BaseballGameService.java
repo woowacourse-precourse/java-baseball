@@ -18,4 +18,16 @@ public class BaseballGameService {
         }
     }
 
+    public Hint guess(List<Integer> input) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < input.size(); i++) {
+            Integer target = input.get(i);
+            if (target.equals(answer.get(i)))
+                strike++;
+            else if (answer.contains(target))
+                ball++;
+        }
+        return new Hint(strike, ball);
+    }
 }
