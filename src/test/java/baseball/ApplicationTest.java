@@ -28,6 +28,26 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void make_random_3_Number() {
+        Baseball baseball = new Baseball();
+        baseball.setNumber();
+
+        // randomNumberList 길이 3인지 확인
+        int numberLength = 3;
+        assertThat(baseball.getNumber().size()).isEqualTo(numberLength);
+
+        // randomNumber 1~9사이의 숫자 가지는지 확인
+        for (Integer number : baseball.getNumber()) {
+            assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+        }
+
+        // 같은 값 없는지 확인
+        assertThat(baseball.getNumber().get(0)).isNotEqualTo(baseball.getNumber().get(1));
+        assertThat(baseball.getNumber().get(0)).isNotEqualTo(baseball.getNumber().get(2));
+        assertThat(baseball.getNumber().get(1)).isNotEqualTo(baseball.getNumber().get(2));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
