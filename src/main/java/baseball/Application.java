@@ -105,11 +105,11 @@ class Baseball {
     }
 
     private static void isWinNumber() {
-        if (countBallStrike.get(STRIKE) != NUMBER_PITCH) {
+        if (!isThreeStrike()) {
             inputUserNumber();
             return;
         }
-        if (countBallStrike.get(STRIKE) == NUMBER_PITCH) {
+        if (isThreeStrike()) {
             System.out.println(WIN_MESSAGE);
             System.out.println(INPUT_RESTART_MESSAGE);
             checkRestartGame();
@@ -153,6 +153,10 @@ class Baseball {
 
     private static boolean isExistStrike() {
         return countBallStrike.get(STRIKE) == 0;
+    }
+
+    private static boolean isThreeStrike() {
+        return countBallStrike.get(STRIKE) == NUMBER_PITCH;
     }
 
     private static void illegalArgumentException() {
