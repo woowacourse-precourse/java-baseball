@@ -31,6 +31,14 @@ public class Application {
             throw new IllegalArgumentException("중복된 숫자가 포함된 숫자 입력입니다.");
     }
 
+    public static List<Integer> makeList(String input){
+        ArrayList<Integer> returnList = new ArrayList<>();
+        for(int i=0; i<3; i++){
+            returnList.add(Integer.parseInt(input.substring(i,i+1)));
+        }
+        return returnList;
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -41,6 +49,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = scan.nextLine();
             checkInputNumber(input);
+            List<Integer> user = makeList(input);
 
         }
     }
