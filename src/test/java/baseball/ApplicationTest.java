@@ -93,4 +93,19 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(strikeCount).isEqualTo(THREE_STRIKE);
     }
+
+    @Test
+    void 볼_값_얻기_테스트() {
+        // given
+        GameNumberCalculatorService gameNumberCalculatorService = new GameNumberCalculatorService();
+        List<Integer> computerNumbers = List.of(2, 3, 1);
+        List<Integer> userNumbers = List.of(1, 2, 3);
+        final int THREE_BALL = 3;
+
+        // when
+        int ballCount = gameNumberCalculatorService.getBallCount(userNumbers, computerNumbers);
+
+        // then
+        assertThat(ballCount).isEqualTo(THREE_BALL);
+    }
 }
