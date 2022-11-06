@@ -31,6 +31,10 @@ public class Decision {
         PrintMessage.notThing();
     }
 
+    public static void reset() {
+        out = false;
+    }
+
     public static void out() {
         out = true;
     }

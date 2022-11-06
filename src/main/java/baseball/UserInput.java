@@ -30,7 +30,6 @@ public class UserInput {
         this.reStartOrQuitInput = Console.readLine();
         isValidRestartOrQuitGame();
 
-        // 다시 시작하는 것하고 끝내는것 구분
         return this.reStartOrQuitInput;
     }
 
