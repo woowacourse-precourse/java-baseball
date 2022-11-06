@@ -1,5 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+
 /**
  * 여러개의 SingleDigit 으로 이루어진 MultiDigitNumber 수를 담는 일급 컬랙션 클래스
  *
@@ -7,20 +13,38 @@ package baseball;
  * @version 1.0
  */
 public class MultiDigitNumber {
+    List<SingleDigit> singleDigitList;
 
-    /**
-     * @param number 입력으로 주어지는 MultiDigitNumber
-     * @return 주어진 number 가 유효한 경우 true, 그렇지 않으면 false 반환
-     */
-    boolean validateMultiDigitNumber(int number){
-        return false;
+    public MultiDigitNumber(int multiDigitNumber){
+        if(!validateConsistOfThreeDigit(multiDigitNumber)){
+            throw new IllegalArgumentException("MultlDigitNumber는 세자리 수여야 합니다.");
+        }
+        this.singleDigitList = convertMultiDigitNumberIntoSingleDigitList(multiDigitNumber);
+
+        if(!validateEachSingleDigitIsNotDuplicate(singleDigitList)) {
+            throw new IllegalArgumentException("MultiDigitNumber의 각 자리수는 중복되어서는 안됩니다.");
+        }
     }
 
-    /**
-     * @param otherNumberForGame
-     * @return 두 MultiDigitNumber 간의 비교 결과를 CompareResult 객체에 담아 반환
-     */
-    NumberCompareResult getCompareResult(MultiDigitNumber otherNumberForGame){
-        return null;
+    public static boolean validateEachSingleDigitIsNotDuplicate(List<SingleDigit> singleDigitList){
+        return singleDigitList.stream()
+            .filter((singleDigit) ->
+                (singleDigitList.stream().filter((otherSingleDigit)
+                    -> singleDigit.equals(otherSingleDigit)).count() > 1))
+            .count() == 0;
     }
+    public static boolean validateConsistOfThreeDigit(int multiDigitNumber){
+        return String.valueOf(multiDigitNumber).length() == 3;
+    }
+
+    public static List<SingleDigit> convertMultiDigitNumberIntoSingleDigitList(int muldiDigitNumber){
+        List<SingleDigit> multiDigitNumber = new ArrayList<>();
+        while(muldiDigitNumber != 0){
+            multiDigitNumber.add(new SingleDigit(muldiDigitNumber % 10));
+            muldiDigitNumber /= 10;
+        }
+        Collections.reverse(multiDigitNumber);
+        return multiDigitNumber;
+    }
+
 }
