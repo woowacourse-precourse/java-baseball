@@ -7,32 +7,32 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    static int strike, ball;
+    private static int strike, ball;
+    private static final int BALL_COUNT = 3; 
     public static void main(String[] args) {
         List<Integer> Computer = new ArrayList<>();
-        List<Integer> User = new ArrayList<>();
+        List<Integer> User = new ArrayList<>(); 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        //if continue signal received, keep playing game
-        while(Continue_or_End()){
-            MakeAnswer(Computer);
-            StartGame(User, Computer);
+        do{
+            Game(User, Computer);
         }
+        while(Replay(Computer));
     }
 
     private static void err_check(List<Integer> User){
         Set<Integer> set = new HashSet<>(User);
         if(set.size() != User.size()) 
             throw new IllegalArgumentException("각 자릿수는 서로 다른 숫자만 입력 가능합니다.");
-        else if(User.contains(0))
+        if(User.contains(0))
              throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
-        else if(User.size() != 3) 
+        if(User.size() != BALL_COUNT)
             throw new IllegalArgumentException("오직 세 자리의 숫자만 입력 가능합니다.");
     }
 
     private static void MakeAnswer(List<Integer> Computer){
-        for(int i = 0; i < Computer.size(); i++){
+        for(int i = 0; i < BALL_COUNT; i++){
             int number = Randoms.pickNumberInRange(1, 9);
-            if(Computer.contains(number)) 
+            if(Computer.contains(number))
                 i--;
             else Computer.add(number);
         }
@@ -40,25 +40,30 @@ public class Application {
 
     private static void MakeUser(String UserInput, List<Integer> User){
         String []split_input = UserInput.split("");
-        for(int i = 0; i < UserInput.length(); i++)
+        for(int i = 0; i < BALL_COUNT; i++)
             User.add(Integer.parseInt(split_input[i]));
     }
 
-    private static void StartGame(List<Integer> User, List<Integer> Computer){
-        System.out.println("숫자를 입력해주세요 : ");
-        String UserInput = Console.readLine();
-        MakeUser(UserInput, User);
-        //after read user's choice, check error of user's input
-        err_check(User);
-        //if input has no problem, compare three numbers
-        Compare_Answer(User, Computer);
-        Print_Result();
+    private static void Game(List<Integer> User, List<Integer> Computer){
+        //init
+        strike = 0;
+        ball = 0;
+        MakeAnswer(Computer);
+        do{
+            System.out.println("숫자를 입력해주세요 : ");
+            String UserInput = Console.readLine();
+            MakeUser(UserInput, User);
+            //after read user's answer, check error of user's input
+            err_check(User);
+            //if input has no problem, compare three numbers
+            Compare_Answer(User, Computer);
+            Print_Result();
+        }
+        while(All_Strikes());
     }
 
     private static void Compare_Answer(List<Integer> User, List<Integer> Computer){
-        //initialize in every game
-        strike = 0, ball = 0;
-        for(int idx = 0; idx < User.size(); idx++){
+        for(int idx = 0; idx < BALL_COUNT; idx++){
             //if computer's index equal as i(gradually), get strike
             if(Computer.indexOf(User.get(idx)) == idx) 
                 strike++; 
@@ -68,21 +73,25 @@ public class Application {
         }
     }
 
-    private static boolean Continue_or_End(){
-        if(strike == 3){
+    private static boolean All_Strikes(){
+        if(strike == BALL_COUNT){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            //check if restart or exit
-            String if_replay = Console.readLine();
-            if(if_replay.equals("1"))
-                return true;
-            else if(if_replay.equals("2"))
-                return false;
-            //user select neither 1 nor 2
-            else
-                throw new IllegalArgumentException("1과 2만 선택할 수 있습니다.");
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    private static boolean Replay(List<Integer> Computer){
+        //check if restart or exit
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String if_replay = Console.readLine();
+        if(if_replay.equals("1"))
+            return true;
+        else if(if_replay.equals("2"))
+            return false;
+        //user select neither 1 nor 2
+        else
+            throw new IllegalArgumentException("1과 2만 선택할 수 있습니다.");
     }
 
     private static void Print_Result(){
