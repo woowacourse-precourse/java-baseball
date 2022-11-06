@@ -9,6 +9,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 //        String computerNumber = "";
+        Start start = new Start();
+
 
         int total = 0;
         int strike = 0;
@@ -43,7 +45,6 @@ public class Application {
 //            }
 //        }
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
         String computerNumber = computerRandomNumber();
 
         while (true){ // 3 indent
@@ -74,42 +75,30 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int restartNumber = Integer.parseInt(Console.readLine());
                 if (restartNumber == 1){
-                    total = 0;
-                    ball = 0;
-                    strike = 0;
+                    reset();
                     // 랜덤값 바뀌는 메소드
+                    computerNumber = computerRandomNumber();
                     continue;
                 }
                 else if (restartNumber == 2){
-                    total = 0;
-                    ball = 0;
-                    strike = 0;
                     break;
                 }
             }
             else if (strike > 0 && ball > 0){
                 System.out.println(ball + "볼" + strike + "스트라이크");
-                total = 0;
-                ball = 0;
-                strike = 0;
+                reset();
             }
             else if (strike == 0 && ball > 0){
                 System.out.println(ball + "볼");
-                total = 0;
-                ball = 0;
-                strike = 0;
+                reset();
             }
             else if (strike > 0 && ball == 0){
                 System.out.println(strike + "스트라이크");
-                total = 0;
-                ball = 0;
-                strike = 0;
+                reset();
             }
             else if (strike == 0 && ball == 0){
                 System.out.println("낫싱");
-                total = 0;
-                ball = 0;
-                strike = 0;
+                reset();
             }
 
         }
@@ -133,6 +122,7 @@ public class Application {
         }
         return  computerNumber;
     }
+
 
 }
 
