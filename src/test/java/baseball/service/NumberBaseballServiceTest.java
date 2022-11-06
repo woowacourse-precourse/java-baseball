@@ -28,7 +28,7 @@ public class NumberBaseballServiceTest {
                 .hasMessageContaining("1 ~ 9사이의 숫자만 입력해야 합니다.");
     }
 
-    @DisplayName("사용자 입력이 1 ~ 9 사이의 숫자라면 정상 동작 태스트")
+    @DisplayName("사용자 입력이 1 ~ 9 사이의 숫자라면 정상 동작 테스트")
     @Test
     void checkNumberSuccess() {
         // given
@@ -38,4 +38,16 @@ public class NumberBaseballServiceTest {
         numberBaseballService.inputUserAnswer(normalInput);
     }
 
+    @DisplayName("사용자 입력이 3글자가 아니라면 IllegalArgumentException 예외 발생 테스트")
+    @Test
+    void checkLengthFail() {
+        // given
+        String tooManyInput = "1234";
+
+        // when
+        // then
+        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(tooManyInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3글자의 숫자를 입력해야 합니다.");
+    }
 }
