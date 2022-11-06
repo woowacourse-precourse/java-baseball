@@ -46,7 +46,7 @@
   - 볼인지 확인하는 함수(indent 3을 넘지 않기 위해 만든 도우미 함수)
 - [x] void checkNumberCharacter() 
   - 숫자가 아닌 예외처리하는 함수
-- [ ] void setNumbers()
+- [x] void setNumbers()
   - 서로 다른 3자리의 수 준비
 
 ## 2. 예외처리
