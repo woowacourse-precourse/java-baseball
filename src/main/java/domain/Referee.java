@@ -43,4 +43,9 @@ public class Referee {
         return ball;
     }
 
+    public void init() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
 }

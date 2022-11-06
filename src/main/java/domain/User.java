@@ -1,40 +1,35 @@
 package domain;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class User {
 
-    private final List<Integer> verifiedValueList = new ArrayList<>();
+    private List<Integer> verifiedValueList = new ArrayList<>();
 
     public void guessComputerNumbers() {
         List<Character> unverifiedValueList;
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String userEnteredValues = reader.readLine();
+        Scanner scanner = new Scanner(System.in);
 
-            checkEnteredValuesOverlap(userEnteredValues);
-            checkEnteredValuesLength(userEnteredValues);
+        String userEnteredValues = scanner.nextLine();
 
-            unverifiedValueList = userEnteredValues.chars()
-                    .mapToObj(value -> (char) value)
-                    .collect(Collectors.toList());
+        checkEnteredValuesOverlap(userEnteredValues);
+        checkEnteredValuesLength(userEnteredValues);
 
-            for (Character enteredValue : unverifiedValueList) {
-                checkEnteredValueIsNum(enteredValue);
-                verifiedValueList.add(Integer.parseInt(enteredValue.toString()));
-            }
+        unverifiedValueList = userEnteredValues.chars()
+                .mapToObj(value -> (char) value)
+                .collect(Collectors.toList());
 
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+        for (Character enteredValue : unverifiedValueList) {
+            checkEnteredValueIsNum(enteredValue);
+            verifiedValueList.add(Integer.parseInt(enteredValue.toString()));
         }
+
     }
 
     private void checkEnteredValuesOverlap(String userEnteredValues) {
@@ -63,6 +58,10 @@ public class User {
 
     public List<Integer> getVerifiedValueList() {
         return verifiedValueList;
+    }
+
+    public void init() {
+        this.verifiedValueList = new ArrayList<>();
     }
 
 }
