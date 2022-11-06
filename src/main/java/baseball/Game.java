@@ -12,7 +12,7 @@ public class Game {
 
         List<Integer> computerNumber = computer.makeComputerRandomNumber();
         List<Integer> inputNumber = user.getUserInput();
-        
+
         Judge.checkTheResult(inputNumber, computerNumber);
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

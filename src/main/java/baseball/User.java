@@ -8,10 +8,11 @@ import java.util.List;
 public class User {
     private static final String RESTART = "1";
     private static final String EXIT = "2";
+
     public static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
 
+        String input = Console.readLine();
         List<Integer> inputNumber = checkTheNumber(input);
 
         return inputNumber;
@@ -19,6 +20,7 @@ public class User {
 
     public static void getUserInputRestartOrExit() {
         String restartOrExit = Console.readLine();
+
         if (restartOrExit.equals(RESTART)) {
             Game.startGame();
         }
