@@ -9,7 +9,7 @@ import java.util.List;
 public class Game {
     private final int LENGTH = 3;
     private List<Integer> computer = new ArrayList<>();
-    private List<Integer> user = List.of(0, 0, 0);
+    private List<Integer> user = new ArrayList<>();
     private String input;
     private String[] inputs;
     
@@ -31,20 +31,27 @@ public class Game {
     }
 
     private void createComputerAnswer() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber);
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
+
+        System.out.println("computer : " + computer.toString());
     }
 
     private void inputUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
+        System.out.println("input : " + input);
         inputs = input.split("");
 
         if (isValidInput()) {
             setUserList();
         }
         else {
+            System.out.println("is not valid input");
             throw new IllegalArgumentException();
         }
     }
@@ -85,7 +92,11 @@ public class Game {
 
     private void setUserList() {
         for (int i = 0; i < LENGTH; i++)
+            user.add(0);
+
+        for (int i = 0; i < LENGTH; i++)
             user.set(i, Integer.parseInt(inputs[i]));
+        System.out.println("user : " + user.toString());
     }
 
     private boolean isCorrect() {
@@ -94,6 +105,7 @@ public class Game {
 
         return false;
     }
-//    private void compare() {
-//    }
+
+    private void compare() {
+    }
 }

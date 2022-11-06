@@ -36,7 +36,7 @@ public class Application {
     static int input() {
         int in = Integer.parseInt(Console.readLine());
         if (!(in == 1 || in == 2)) {
-            System.out.println("잘못된 입력값 입니다. 1 또는 2를 입력해주세요.");
+            System.out.println("잘못된 입력값 입니다. 1 또는 2를 입력하세요.");
             throw new IllegalArgumentException();
         }
         return in;
