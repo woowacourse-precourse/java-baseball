@@ -24,7 +24,7 @@ public class Application {
         }
     }
 
-    private static Map<String, Integer> compareNumber(List<Integer> computer, String s) {
+    private static HashMap<String, Integer> compareNumber(List<Integer> computer, String s) {
         HashMap<String, Integer> map = new HashMap<>();
         int ball = 0;
         int strike = 0;
