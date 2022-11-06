@@ -59,4 +59,13 @@ class ApplicationTest extends NsTest {
                 assertThat(Application.checkInputInteger("123")).isEqualTo(result)
         );
     }
+
+    @Test
+    void test_checkInputDuplicate() {
+        List <Integer> input = Arrays.asList(1,2,1);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputDuplicate(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
