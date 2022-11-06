@@ -25,7 +25,7 @@ public class User {
 
 	public void duplicationValidateInput() {
 		initValidatedUserInput();
-		
+
 		for (int indexNumber = 0; indexNumber < 3; indexNumber++) {
 			char charAtIndex = patternedUserInput.charAt(indexNumber);
 			int intIndex = Character.getNumericValue(charAtIndex);
@@ -36,5 +36,9 @@ public class User {
 
 			validatedUserInput.add(intIndex);
 		}
+	}
+
+	public void initValidatedUserInput() {
+		validatedUserInput.clear();
 	}
 }
