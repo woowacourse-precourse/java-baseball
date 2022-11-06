@@ -17,6 +17,9 @@ public class Application {
         while (flag) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
+            if (!input.matches("^[1-9]{3}$")) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
