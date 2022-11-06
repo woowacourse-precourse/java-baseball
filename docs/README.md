@@ -32,11 +32,19 @@ userNumberToList()
 ```
 compareNumber()
 ```
-- [ ] 스트라이크 확인
+- [ ] 각 자리수의 숫자를 비교
+```
+compareNumberForStrike()
+```
+- [ ] 스트라이크 횟수 세기
 ```
 countStrike()
 ```
-- [ ] 볼 확인
+- [ ] 숫자를 비교
+```
+compareNumberForBall()
+```
+- [ ] 볼 횟수 세기
 ```
 countBall()
 ```
@@ -66,8 +74,10 @@ userNumberToString
 - **PlayGame.class : 게임 실행 단계**
 ```
 compareNumber()
-checkStrike()
-checkBall()
+compareNumberForStrike()
+countStrike()
+compareNumberForBall()
+countBall()
 outputResult()
 isGameExit()
 ```
