@@ -19,6 +19,31 @@ public class Application {
         return computer;
     }
 
+    public static boolean isValidatePlayerNumber(String strPlayerNumber) {
+        if (strPlayerNumber.length() != 3) {
+            return false;
+        }
+
+        List<Integer> checkList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            // 1 ~ 9 사이의 정수 판별
+            char charNum = strPlayerNumber.charAt(i);
+            if (!Character.isDigit(charNum) || charNum == '0') {
+                return false;
+            }
+
+            // 중복 여부 판별
+            int intNum = Character.getNumericValue(charNum);
+            if (checkList.contains(intNum)) {
+                return false;
+            } else {
+                checkList.add(intNum);
+            }
+        }
+        
+        return true;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
