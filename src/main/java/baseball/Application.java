@@ -3,6 +3,9 @@ package baseball;
 import java.util.ArrayList;
 
 public class Application {
+
+    public static final int ONE_INPUT = 0;
+    public static final int THREE_INPUT = 1;
     private static void inGame() {
         ArrayList<Integer> inputList;
         int[] processedData;
@@ -12,7 +15,7 @@ public class Application {
 
         while (true) {
             print.printRequest();
-            input.inputNumber();
+            input.inputNumber(THREE_INPUT);
             inputList = input.getInputValue();
             process.setData(inputList);
             processedData = process.getProcessedData();
@@ -33,7 +36,7 @@ public class Application {
             inGame();
             print.printWin();
             print.printRestart();
-            input.inputNumber();
+            input.inputNumber(ONE_INPUT);
             inputList = input.getInputValue();
             if (inputList.get(0) == 2) {
                 break;
