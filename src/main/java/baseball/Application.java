@@ -28,7 +28,7 @@ public class Application {
         else if(User.size() != 3) 
             throw new IllegalArgumentException("오직 세 자리의 숫자만 입력 가능합니다.");
     }
-    
+
     private static void MakeAnswer(List<Integer> Computer){
         for(int i = 0; i < Computer.size(); i++){
             int number = Randoms.pickNumberInRange(1, 9);
@@ -36,6 +36,12 @@ public class Application {
                 i--;
             else Computer.add(number);
         }
+    }
+
+    private static void MakeUser(String UserInput, List<Integer> User){
+        String []split_input = UserInput.split("");
+        for(int i = 0; i < UserInput.length(); i++)
+            User.add(Integer.parseInt(split_input[i]));
     }
 
 }
