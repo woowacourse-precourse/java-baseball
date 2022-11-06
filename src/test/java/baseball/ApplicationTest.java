@@ -28,6 +28,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 재시작_테스트() {
+        assertSimpleTest(() -> {
+                            run("1", "2");
+                            //when
+                            assertThat(output()).contains("게임종료");
+                        }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
