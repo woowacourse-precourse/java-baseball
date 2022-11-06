@@ -26,5 +26,18 @@ public class Application {
         return user;
     }//public static void userNumber
 
+    public static String exceptReadingLine(String readLine) {
+        if (readLine.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+        }
+        if (readLine.charAt(0) == readLine.charAt(1) || readLine.charAt(1) == readLine.charAt(2) || readLine.charAt(0) == readLine.charAt(2)) {
+            throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+        }
+        if (!readLine.matches("-?\\d+")) {
+            throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+        }
+        return readLine;
+    }//public static String exceptReadingLine
+
 
 }
