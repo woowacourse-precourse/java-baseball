@@ -10,6 +10,7 @@ public class Game {
     private final Scanner scanner;
     private List<Integer> targetNumber;
     private List<Integer> predictedNumber;
+    private boolean isGameOver = false;
 
     public Game(Scanner scanner) {
         this.scanner = scanner;
@@ -17,11 +18,14 @@ public class Game {
 
     public void play(List<Integer> targetNumber) {
         this.targetNumber = targetNumber;
-        predictedNumber = convertToList(scanner.nextLine());
 
-        System.out.println(targetNumber);
-        System.out.println(predictedNumber);
-        scoreCalculator();
+        while (!isGameOver) {
+            predictedNumber = convertToList(scanner.nextLine());
+            System.out.println(targetNumber);
+            System.out.println(predictedNumber);
+            scoreCalculator();
+            isGameOver = checkCorrectAnswer(getStrikeScore());
+        }
     }
 
     private List<Integer> convertToList(String predictedValue) {
@@ -71,5 +75,10 @@ public class Game {
         } else {
             System.out.println(ballScore+"볼 "+strikeScore+"스트라이크");
         }
+    }
+
+    private boolean checkCorrectAnswer(int strikeScore) {
+
+        return strikeScore == 3;
     }
 }
