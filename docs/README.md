@@ -188,27 +188,33 @@ class StdIOGameStatus {
   -String outputData
 }
 class NumberBaseballStdIOGameStatus {
-  -Map~char,int~ targetNumber
-  -Integer ballCount
-  -Integer strikeCount
+  -Map~Character,Integer~ targetNumber
+  -int ballCount
+  -int strikeCount
 }
 class GameManager {
   -Game game
   +void restartGame()
   +void startGame()
 }
+class NumberBaseballStdIOGameManager {
+  -NumberBaseballStdIOGameManager INSTANCE
+  -Game game
+  +NumberBaseballStdIOGameManager getInstance()
+}
 <<interface>> Startable
 <<abstract>> Game
 <<abstract>> SimpleStdIOGame
-<<abstract>> GameStatus
-<<abstract>> StdIOGameStatus
+<<interface>> GameManager
+<<Singleton>> NumberBaseballStdIOGameManager
 Startable <|-- Game
 Game <|-- SimpleStdIOGame
 SimpleStdIOGame ..|> NumberBaseballStdIOGame
 GameStatus <|-- StdIOGameStatus
-StdIOGameStatus ..|> NumberBaseballStdIOGameStatus
+StdIOGameStatus <|-- NumberBaseballStdIOGameStatus
 NumberBaseballStdIOGame "1" --> "1" NumberBaseballStdIOGameStatus
-GameManager "1" --> "1" NumberBaseballStdIOGame
+GameManager ..|> NumberBaseballStdIOGameManager
+NumberBaseballStdIOGameManager "1" --> "1" NumberBaseballStdIOGame
 ```
 
 #### Startable
@@ -236,7 +242,7 @@ GameManager "1" --> "1" NumberBaseballStdIOGame
 - 입력을 받는다.
   - `protected abstract void readInput()`
 - 입력에 오류를 점검한다.
-  - `protected abstract void checkInput() throw IllegalArgumentException`
+  - `protected abstract void checkInput() throws IllegalArgumentException`
 - 입력을 게임의 규칙에 따라 판단한다.
   - `public abstract void operateRule()`
     - 판단에 따라 게임의 상태가 변한다.
@@ -271,14 +277,14 @@ GameManager "1" --> "1" NumberBaseballStdIOGame
 
 #### GameStatus
 
-게임의 상태를 나타내는 **추상 클래스**이다.
+게임의 상태를 나타내는 **클래스**이다.
 - 게임의 상태 값을 갖는다.
   - `private boolean isStart`
   - `private boolean isFinish`
 
 #### StdIOGameStatus
 
-표준 입출력을 이용한 게임의 상태를 나타내는 **추상 클래스**이다. `GameStatus`를 상속한다.
+표준 입출력을 이용한 게임의 상태를 나타내는 **클래스**이다. `GameStatus`를 상속한다.
 - 입력 데이터를 갖는다.
   - `private String inputData`
 - 출력 데이터를 갖는다.
@@ -296,10 +302,15 @@ GameManager "1" --> "1" NumberBaseballStdIOGame
 
 #### GameManager
 
-게임의 시작과 종료를 관리하는 **클래스**이다.
-- 관리하는 게임을 갖는다.
-  - `private Game game`
+게임의 시작과 종료를 관리하는 **인터페이스**이다.
 - 게임을 재시작한다.
   - `public void restartGame()`
 - 게임을 시작한다.
   - `public void startGame()`
+
+#### NumberBaseballStdIOGameManager
+
+표준 입출력을 이용한 숫자 야구 게임의 시작과 종료를 관리하는 **클래스**이다. `GameManager`를 구현한다.
+- 프로그램 상에 하나의 객체만 존재한다.
+- 표준 입출력을 이용한 숫자 야구 게임을 갖는다.
+  - `private final Game game`
