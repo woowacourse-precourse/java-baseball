@@ -38,7 +38,7 @@ public class BaseballGame {
 
     private Hint makeHint(BaseballNumbers userBaseballNumbers) {
         Hint userInputHint = computer.makeUserInputHint(userBaseballNumbers);
-        String userInputResult = userInputHint.getResult();
+        String userInputResult = userInputHint.getBaseballNumberCount();
         gameView.printUserInputHint(userInputResult);
         return userInputHint;
     }
