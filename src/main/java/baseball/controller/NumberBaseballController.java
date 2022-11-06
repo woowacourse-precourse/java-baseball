@@ -14,10 +14,14 @@ public class NumberBaseballController {
     public void startGame() {
         numberBaseballService.initNumber();
         numberBaseballView.printStartGame();
-        String userAnswer = numberBaseballView.inputUserAnswer();
-        List<Integer> resultList = numberBaseballService.inputUserAnswer(userAnswer);
-        GameResult gameResult = new GameResult(resultList.get(STRIKE_INDEX), resultList.get(BALL_INDEX));
-        int outputResult = numberBaseballView.printResult(gameResult);
+        inputUserAnswer();
     }
+
+    private void inputUserAnswer() {
+        List<Integer> resultList = numberBaseballService.inputUserAnswer(numberBaseballView.inputUserAnswer());
+        GameResult gameResult = new GameResult(resultList.get(STRIKE_INDEX), resultList.get(BALL_INDEX));
+        int userInputResult = numberBaseballView.printResult(gameResult);
+    }
+
 
 }
