@@ -16,7 +16,7 @@ public class Computer {
      * 도메인 로직
      */
     public void setAnswerByRandom() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 10, 3);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         this.answer = randomNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
