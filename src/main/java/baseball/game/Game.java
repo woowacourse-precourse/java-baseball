@@ -40,5 +40,4 @@ public class Game {
             userNumbers.add(number);
         }
     }
-
 }
