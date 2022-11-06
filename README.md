@@ -80,7 +80,7 @@ BUILD SUCCESSFUL in 0s
 
 ```
 숫자 야구 게임을 시작합니다.
-``` 
+```
 
 #### 실행 결과 예시
 
@@ -153,3 +153,48 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+
+
+
+## 설계 - 전체적인 구조와 클래스
+
+### 구조
+
+- main program
+- Start game
+  - 랜덤 넘버 생성
+  - 유저 입력 받기
+- Precede game
+  - 스트라이크, 볼 판단
+  - 케이스를 나누어 출력
+- Quit game
+  - 재시작 여부 확인
+
+
+
+### 클래스 별 요구사항
+
+- Game.java
+  - 게임 제어 (시작, 종료, 재시작)
+  - 스트라이크, 볼 관리
+- Input.java
+  - 유저 입력 받기
+  - 잘못된 입력 시, throws exception: 3글자, 숫자가 아닐 시
+
+
+
+
+
+## 기능 목록
+
+- [ ] 게임 시작 문구
+- [ ] 랜덤 넘버 생성
+- [ ] 서로 다른 3자리 수 입력 받기
+  - [ ] 잘못된 입력 판단: `IllegalArgumentException` 발생 후 종료
+- [ ] 스트라이클, 볼 판단 로직
+- [ ] 결과 출력
+- [ ] 게임 종료 및 다시 시작
+
+
