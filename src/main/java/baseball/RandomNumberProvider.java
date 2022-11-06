@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 
 public class RandomNumberProvider {
 
-    private static final int START = 1;
-    private static final int END = 9;
-    private static final int MAX_SIZE_OF_LIST = 3;
+    public static final int START = 1;
+    public static final int END = 9;
+    public static final int MAX_SIZE_OF_LIST = 3;
 
 
     private static Integer generateRandomInt() {
