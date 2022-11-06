@@ -27,13 +27,11 @@
 1. 필드
     1. `private static final string MSG_GAME_START`
     2. `private static final string MSG_ASK_INPUT_NUMBER`
-    3. `private static final string FORMAT_INPUT_NUMBER`
-    4. `private static final string MSG_JUDGED_RESULT_BALLS`
-    5. `private static final string MSG_JUDGED_RESULT_STRIKES`
-    6. `private static final string MSG_JUDGED_RESULT_NOTHING`
-    7. `private static final string MSG_GAME_END`
-    8. `private static final string MSG_ASK_MORE_GAME`
-    9. `private static final string FORMAT_MORE_GAME_NUMBER`
+    3. `private static final string MSG_JUDGED_RESULT_BALLS`
+    4. `private static final string MSG_JUDGED_RESULT_STRIKES`
+    5. `private static final string MSG_JUDGED_RESULT_NOTHING`
+    6. `private static final string MSG_GAME_END`
+    7. `private static final string MSG_ASK_MORE_GAME`
 2. 메소드
     1. `private NumberBaseballGameConsole()`: 객체로 생성 금지
     2. `public static void showGameStartMessage()`
