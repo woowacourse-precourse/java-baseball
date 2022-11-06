@@ -36,21 +36,21 @@ class ApplicationTest extends NsTest {
         //given
         Computer computer = new Computer();
         Game game = new Game(computer);
-        Method method = game.getClass().getDeclaredMethod("stringToIntegerList",String.class);
+        Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
         method.setAccessible(true);
 
         //when
-        List<Integer> test = (List<Integer>) method.invoke(game,"123");
+        List<Integer> test = (List<Integer>) method.invoke(game, "123");
 
         //then
         assertThat(test.get(0)).isEqualTo(1);
     }
 
     @Test
-    void 난수_유효성검증_테스트() throws Exception{
+    void 난수_유효성검증_테스트() throws Exception {
         //given
         Computer computer = new Computer();
-        Method method = computer.getClass().getDeclaredMethod("isValidateNumber",List.class);
+        Method method = computer.getClass().getDeclaredMethod("isValidateNumber", List.class);
         method.setAccessible(true);
         //when
 
