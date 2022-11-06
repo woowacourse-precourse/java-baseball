@@ -2,6 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+
+/**
+ * 야구게임 시작
+ * */
 public class Application {
     public static void main(String[] args) {
         BaseballGame game = new BaseballGame();
