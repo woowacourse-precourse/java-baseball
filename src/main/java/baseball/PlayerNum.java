@@ -22,9 +22,12 @@ public class PlayerNum implements Number {
 
     @Override
     public List<Integer> createNumber() {
+        List<Integer> number;
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> number = Arrays.asList(Integer.parseInt(input));
+        verifyInput(input);
+        number = transformInput(input);
+        verifyNumber(number);
         return number;
     }
 
