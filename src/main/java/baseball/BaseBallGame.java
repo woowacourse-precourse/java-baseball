@@ -3,14 +3,15 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallGame implements AutoCloseable {
 
     State currentState;
-    List<Integer> AnswerNumber;
+    protected List<Integer> answerNumber;
 
     public BaseBallGame(int hashcode){
-
+        generateNumber(hashcode);
     }
 
     @Override
@@ -22,7 +23,19 @@ public class BaseBallGame implements AutoCloseable {
 
     }
 
-    private void generateNumber() {
+    private void generateNumber(int randomSeed) {
+        if(answerNumber == null){
+            answerNumber = new ArrayList<>();
+        }
+        if(!answerNumber.isEmpty()){
+            answerNumber.clear();
+        }
+        while( answerNumber.size() < 3){
+            int randomNumber = (Randoms.pickNumberInRange(1, 9) + randomSeed % 10 ) % 9 + 1;
+            if(!answerNumber.contains(randomNumber)){
+                answerNumber.add(randomNumber);
+            }
+        }
     }
 
     private List<Integer> getUserINput() {
