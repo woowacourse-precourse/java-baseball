@@ -15,8 +15,8 @@ public class Game {
         this.user = user;
     }
 
-    public static Game create() {
-        return new Game(new Computer(), new User());
+    public static Game create(Computer computer, User user) {
+        return new Game(computer, user);
     }
 
     public void start() {

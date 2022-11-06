@@ -14,7 +14,7 @@ class GameTest extends NsTest {
 
     @BeforeEach
     void setUp() {
-        game = Game.create();
+        game = Game.create(new Computer(), new User());
     }
 
     @Test
