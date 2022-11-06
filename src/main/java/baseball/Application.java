@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void startApp() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -14,6 +17,8 @@ public class Application {
         boolean isAnswer = false;
 
         while (!isAnswer) {
+            String input = Console.readLine();
+            isValidInputInGame(input);
             // TODO: 입력 호출
             // TODO: 정답 비교 호출
         }
@@ -32,6 +37,20 @@ public class Application {
         }
 
         return answer;
+    }
+
+    public static void isValidInputInGame(String input) {
+        List<Character> temp = new ArrayList<>();
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("유효하지 않는 값을 입력했습니다. 프로그램이 종료됩니다.");
+        }
+        for (int i = 0; i < input.length(); i++) {
+            if (temp.contains(input.charAt(i))) {
+                throw new IllegalArgumentException("유효하지 않는 값을 입력했습니다. 프로그램이 종료됩니다.");
+            }
+            temp.add(input.charAt(i));
+        }
     }
 
     public static void main(String[] args) {
