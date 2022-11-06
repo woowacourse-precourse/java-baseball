@@ -7,7 +7,6 @@ import static baseball.game.Const.*;
 public class Game {
     private final User user;
     private final Computer computer;
-    private Score score;
 
     private Game(Computer computer, User user) {
         this.computer = computer;
@@ -27,7 +26,6 @@ public class Game {
     private void init() {
         computer.generateNumbers();
         user.setNumbers(receiveInput(GAME_INPUT_WAIT_MESSAGE));
-        score = Score.calculate(computer.getNumbers(), user.getNumbers());
     }
 
     private String receiveInput(String message) {
@@ -41,28 +39,42 @@ public class Game {
                 return;
             }
             user.setNumbers(receiveInput(GAME_INPUT_WAIT_MESSAGE));
-            score = Score.calculate(computer.getNumbers(), user.getNumbers());
         }
     }
 
     private boolean isGameOver() {
+        Score score = Score.calculate(computer.getNumbers(), user.getNumbers());
         if (score.isWin()) {
             System.out.println(GAME_WIN_MESSAGE);
-            return !restartOrExit();
+            Flag flag = restartOrExit();
+            return flag.isExit();
         }
         return false;
     }
 
-    private boolean restartOrExit() {
+    private Flag restartOrExit() {
         String input = receiveInput(GAME_RESTART_MESSAGE);
         if (input.equals("1")) {
             computer.generateNumbers();
-            score.invalidate();
-            return true;
+            return Flag.RESTART;
         }
         if (input.equals("2")) {
-            return false;
+            return Flag.EXIT;
         }
         throw new IllegalArgumentException(GAME_EXCEPTION_RESTART_MESSAGE);
+    }
+
+    private enum Flag {
+        RESTART(false), EXIT(true);
+
+        private final boolean exit;
+
+        Flag(boolean exit) {
+            this.exit = exit;
+        }
+
+        public boolean isExit() {
+            return exit;
+        }
     }
 }
