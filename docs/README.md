@@ -188,7 +188,7 @@ class StdIOGameStatus {
   -String outputData
 }
 class NumberBaseballStdIOGameStatus {
-  -Map<char,int> targetNumber
+  -Map~char,int~ targetNumber
   -Integer ballCount
   -Integer strikeCount
 }
