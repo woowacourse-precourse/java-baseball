@@ -48,4 +48,17 @@ public class FunctionTest {
         String answer = "981";
         assertThat(inputError.userNumberInputExceptionCheck(answer)).isEqualTo(answer);
     }
+
+    @DisplayName("게임 중 사용자의 숫자 입력을 리스트 저장 테스트")
+    @Test
+    void userNumListTest() {
+        UserInputToList userInputToList = new UserInputToList();
+        String answer = "981";
+        userInputToList.userNumList(answer);
+        List<Integer> numList = userInputToList.getUserNum();
+
+        assertThat(numList.get(0)).isEqualTo(9);
+        assertThat(numList.get(1)).isEqualTo(8);
+        assertThat(numList.get(2)).isEqualTo(1);
+    }
 }
