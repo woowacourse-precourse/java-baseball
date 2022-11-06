@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -47,5 +48,17 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 컴퓨터_랜덤번호생성_테스트() {
+        // given
+        Computer computer = new Computer();
+
+        // when
+        computer.setupGameNumbers();
+
+        // then
+        assertThat(computer.getComputerGameNumbers().size()).isEqualTo(3);
     }
 }
