@@ -78,6 +78,6 @@ public class GameProcess {
 
     private Boolean isRestart(){
         // 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. <- 출력
-        return false;
+        return InputOutput.getRestartNumber() == 1;
     }
 }
