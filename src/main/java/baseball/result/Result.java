@@ -10,11 +10,23 @@ public class Result {
     }
 
     private void countStrike(String randomNumber, String userNumber) {
+        int count = 0;
         for (int index = 0; index < randomNumber.length(); index++) {
             if (randomNumber.charAt(index) == userNumber.charAt(index)) {
-                strike++;
+                count++;
             }
         }
+        strike = count;
+    }
+
+    public void countBall(String randomNumber, String userNumber) {
+        int count = 0;
+        for (char number : userNumber.toCharArray()) {
+            if (randomNumber.contains(String.valueOf(number))) {
+                count++;
+            }
+        }
+        ball = count - strike;
     }
 
     public int getStrike() {
