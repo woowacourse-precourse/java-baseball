@@ -10,4 +10,8 @@ public enum Hint {
     Hint(String symbol) {
         this.symbol = symbol;
     }
+
+    public String symbol() {
+        return symbol;
+    }
 }

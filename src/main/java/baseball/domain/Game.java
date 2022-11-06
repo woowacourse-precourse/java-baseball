@@ -59,17 +59,17 @@ public final class Game {
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
-            return NOTHING.name();
+            return NOTHING.symbol();
         }
 
         if (strike == 0) {
-            return ball + BALL.name();
+            return ball + BALL.symbol();
         }
 
         if (ball == 0) {
-            return strike + STRIKE.name();
+            return strike + STRIKE.symbol();
         }
 
-        return ball + BALL.name() + " " + strike + STRIKE.name();
+        return ball + BALL.symbol() + " " + strike + STRIKE.symbol();
     }
 }
