@@ -67,7 +67,24 @@ public class Application {
                 ball++;
         }
     }
-    
+
+    private static boolean Continue_or_End(){
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            //check if restart or exit
+            String if_replay = Console.readLine();
+            if(if_replay.equals("1"))
+                return true;
+            else if(if_replay.equals("2"))
+                return false;
+            //user select neither 1 nor 2
+            else
+                throw new IllegalArgumentException("1과 2만 선택할 수 있습니다.");
+        }
+        return true;
+    }
+
     private static void Print_Result(){
         //it has both strike and ball
         if(strike != 0 && ball != 0)
