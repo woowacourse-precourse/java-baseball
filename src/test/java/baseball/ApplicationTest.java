@@ -47,6 +47,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 두자리_수_입력_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("22"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("32"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("42"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 한자리_수_입력_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("5"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("7"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
     void 게임_결과_확인_함수_반환_테스트(){
         // 정답을 맞췄을 경우
         assertTrue(Application.checkResult(List.of(1,2,3), List.of(1,2,3)));
