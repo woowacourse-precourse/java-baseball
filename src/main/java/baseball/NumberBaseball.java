@@ -14,6 +14,9 @@ public class NumberBaseball {
 
     String inputNumber;
 
+    int ballCount = 0;
+    int strikeCount = 0;
+
     public void createTargetNumberList() {
         while (targetNumbers.size() < ARRAY_SIZE) {
             overlapNumberInNumberList(Randoms.pickNumberInRange(MIN_NUM,MAX_NUM));
@@ -32,6 +35,33 @@ public class NumberBaseball {
         }
 
         targetNumbers.add(number);
+    }
+
+    public void compareNumbers() {
+        strikeCount = 0;
+        ballCount = 0;
+
+        for(int i = 0 ; i < 3 ; i++) {
+            for(int j = 0 ; j < 3 ; j++) {
+                if( Character.getNumericValue(inputNumber.charAt(i)) == targetNumbers.get(j)) {
+                    if(i == j) {
+                        strikeCount++;
+                        break;
+                    }
+                    ballCount++;
+                    break;
+                }
+
+            }
+        }
+
+        if(strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        System.out.println("스트라이크: " + strikeCount);
+        System.out.println("볼: " + ballCount);
     }
 
 }
