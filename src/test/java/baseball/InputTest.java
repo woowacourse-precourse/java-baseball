@@ -20,17 +20,22 @@ class InputTest {
         inputClass = new Input(3);
     }
 
+    private void printInputString(String inputString) {
+        inputClass.validStringLength(inputString);
+        System.out.println(inputClass.stringToList(inputString));
+    }
+
     @Test
     public void Input클래스의_정상적인_작동_테스트() {
         String sysIn = "123";
-        inputClass.printInputString(sysIn);
+        printInputString(sysIn);
         assertEquals("[1, 2, 3]", outContent.toString().trim());
     }
 
     @Test
     public void Input클래스의_정상적인_작동_테스트2() {
         String sysIn = "456";
-        inputClass.printInputString(sysIn);
+        printInputString(sysIn);
         assertEquals("[4, 5, 6]", outContent.toString().trim());
     }
 
@@ -40,13 +45,13 @@ class InputTest {
         String sysIn2 = "1234";
         String sysIn3 = "12345";
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn1);
+            printInputString(sysIn1);
         }).isInstanceOf((IllegalArgumentException.class));
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn2);
+            printInputString(sysIn2);
         }).isInstanceOf((IllegalArgumentException.class));
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn3);
+            printInputString(sysIn3);
         }).isInstanceOf((IllegalArgumentException.class));
     }
 
@@ -57,16 +62,16 @@ class InputTest {
         String sysIn3 = "211";
         String sysIn4 = "111";
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn1);
+            printInputString(sysIn1);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn2);
+            printInputString(sysIn2);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn3);
+            printInputString(sysIn3);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn4);
+            printInputString(sysIn4);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -76,13 +81,13 @@ class InputTest {
         String sysIn2 = "102";
         String sysIn3 = "012";
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn1);
+            printInputString(sysIn1);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn2);
+            printInputString(sysIn2);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn3);
+            printInputString(sysIn3);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -92,13 +97,13 @@ class InputTest {
         String sysIn2 = "10r";
         String sysIn3 = "-=1";
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn1);
+            printInputString(sysIn1);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn2);
+            printInputString(sysIn2);
         }).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> {
-            inputClass.printInputString(sysIn3);
+            printInputString(sysIn3);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
