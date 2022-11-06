@@ -3,7 +3,10 @@ package baseball.number;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 public class GameNumber {
     private static final Integer NUMBER_LENGTH = 3;
@@ -21,13 +24,34 @@ public class GameNumber {
         this.gameNumber = computerNumber.toString();
     }
 
-    public boolean validateUserNumber(String userNumber) {
-
+    public boolean isValidUserNumber(String userNumber) {
+        return (isValidLength(userNumber) && isOneToNine(userNumber) && isNotDuplicatedNumber(userNumber));
     }
 
-    public boolean validateRightLength(String userNumber) {
+    public boolean isValidLength(String userNumber) {
         return (userNumber.length() == NUMBER_LENGTH);
     }
+
+    public boolean isOneToNine(String userNumber) {
+        return (isInZero(userNumber) && validateDigit(userNumber));
+
+    }
+
+    public boolean isInZero(String userNumber) {
+        return (!userNumber.contains("0"));
+    }
+
+    public boolean validateDigit(String userNumber) {
+        for (char number : userNumber.toCharArray()) {
+            if (!Character.isDigit(number)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 
 
 }
