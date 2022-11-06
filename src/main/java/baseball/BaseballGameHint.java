@@ -16,20 +16,20 @@ public class BaseballGameHint {
         printHint();
     }
 
-    private void countStrikeAndBall(int[] ExpectedAnswer, int[] Answer) {
+    private void countStrikeAndBall(int[] userInput, int[] Answer) {
         resetBallAndStrike();
-        for (int expectedAnswerIndex  =0 ; expectedAnswerIndex < ExpectedAnswer.length;expectedAnswerIndex++) {
-            int expectedAnswerTarget=ExpectedAnswer[expectedAnswerIndex];
+        for (int userInputIndex  =0 ;userInputIndex < userInput.length;userInputIndex++) {
+            int expectedAnswerTarget=userInput[userInputIndex];
             int findIndex=IntStream.range(0, Answer.length)
                     .filter(i -> expectedAnswerTarget == Answer[i])
                     .findFirst()
                     .orElse(-1);
-            ballAndStrikeCount(expectedAnswerIndex, findIndex);
+            ballAndStrikeCount(userInputIndex, findIndex);
         }
     }
 
-    private void ballAndStrikeCount(int expectedAnswerIndex, int findIndex) {
-        if (expectedAnswerIndex == findIndex) {
+    private void ballAndStrikeCount(int userInputIndex, int findIndex) {
+        if (userInputIndex == findIndex) {
             strike++;
         } else if (findIndex > -1) {
             ball++;
