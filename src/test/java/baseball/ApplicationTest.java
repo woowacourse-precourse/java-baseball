@@ -129,19 +129,19 @@ class ApplicationTest extends NsTest {
             @Test
             void case1(){
                 List<Integer> result = List.of(1, 1, 1)
-                assertThat("1볼 1스트라이크").isEqualTo(Application.printResult(result));
+                assertThat("1볼 1스트라이크").isEqualTo(Application.getResultString(result));
             }
 
             @Test
             void case2(){
                 List<Integer> result = List.of(2, 0, 1);
-                assertThat("2볼").isEqualTo(Application.printResult(result));
+                assertThat("2볼").isEqualTo(Application.getResultString(result));
             }
 
             @Test
             void case3(){
                 List<Integer> result = List.of(0, 0, 3);
-                assertThat("낫싱").isEqualTo(Application.printResult(result));
+                assertThat("낫싱").isEqualTo(Application.getResultString(result));
             }
         }
     }
