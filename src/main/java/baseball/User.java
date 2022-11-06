@@ -34,6 +34,7 @@ public class User {
     }
 
     private String getRetryNumber() {
+        Message.showRetryRequestMessage();
         String retryNumber = Console.readLine();
 
         NumberValidator.checkRetryNumber(retryNumber);

@@ -16,10 +16,11 @@ public class BaseballGame {
     }
 
     public void run() {
-        init();
-        start();
-        end();
-        askRetry();
+        do {
+            init();
+            start();
+            end();
+        } while (user.hasRetryIntention());
     }
 
     private void init() {
@@ -37,13 +38,5 @@ public class BaseballGame {
 
     private void end() {
         Message.showGameEndMessage();
-    }
-
-    private void askRetry() {
-        Message.showRetryRequestMessage();
-
-        if (user.hasRetryIntention()) {
-            run();
-        }
     }
 }
