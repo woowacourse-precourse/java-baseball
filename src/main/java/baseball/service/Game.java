@@ -49,8 +49,21 @@ public class Game {
 		System.out.print("숫자를 입력해주세요: ");
 		String[] playerInputs = Console.readLine().split("");
 
+		checkInput(playerInputs);
+
 		List<Integer> playerInputNumbers = Arrays.stream(playerInputs).map(Integer::parseInt).collect(Collectors.toList());
 
 		return playerInputNumbers;
+	}
+
+	private void checkInput(String[] playerInputs) {
+		if (playerInputs.length != 3) {
+			throw new IllegalArgumentException();
+		}
+		for (String playerInput : playerInputs) {
+			if (!Character.isDigit(playerInput.charAt(0)) || playerInput.equals("0")) {
+				throw new IllegalArgumentException();
+			}
+		}
 	}
 }
