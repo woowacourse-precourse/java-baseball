@@ -36,7 +36,7 @@ public class BullsAndCows {
     public void playGame() {
 
         while (!isEnd()) {
-            System.out.println(GAME_PROGRESS_MESSAGE);
+            System.out.println(PROGRESS_MESSAGE);
             String userInput = Console.readLine();
             System.out.println(getResultMessageOfGuessNumber(userInput));
         }
@@ -44,15 +44,15 @@ public class BullsAndCows {
         String userInput = Console.readLine();
         GameProgressMessage resultOfEndGame = getResultOfEndGame(userInput);
 
-        System.out.println(GAME_PROGRESS_ASK_QUIT);
+        System.out.println(ASK_QUIT);
 
-        if (resultOfEndGame.equals(GAME_PROGRESS_RESTART)) {
-            System.out.println(GAME_PROGRESS_RESTART);
+        if (resultOfEndGame.equals(RESTART)) {
+            System.out.println(RESTART);
             restart();
         }
 
-        if (resultOfEndGame.equals(GAME_PROGRESS_END)) {
-            System.out.println(GAME_PROGRESS_END);
+        if (resultOfEndGame.equals(END)) {
+            System.out.println(END);
         }
     }
 
@@ -99,12 +99,13 @@ public class BullsAndCows {
 
     private GameProgressMessage getResultOfEndGame(String userInput) {
         int flag = Integer.parseInt(userInput);
+
         if (flag == (RESTART_GAME)) {
-            return GAME_PROGRESS_RESTART;
+            return RESTART;
         }
 
         if (flag == END_GAME) {
-            return GAME_PROGRESS_END;
+            return END;
         }
 
         throw new IllegalArgumentException("Game is over, you must input only flag number");
