@@ -22,8 +22,8 @@ public class BallNumber {
     }
 
     private void validationDuplicate(List<Integer> ballNumbers){
-        Set<Integer> nonduplicateNumbers = new HashSet<>(ballNumbers);
-        if(nonduplicateNumbers.size() != BASEBALL_NUMBER_SIZE){
+        Set<Integer> nonDuplicateNumbers = new HashSet<>(ballNumbers);
+        if(nonDuplicateNumbers.size() != BASEBALL_NUMBER_SIZE){
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
