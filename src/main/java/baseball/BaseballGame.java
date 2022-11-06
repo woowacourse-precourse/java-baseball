@@ -20,6 +20,10 @@ public class BaseballGame {
         System.out.println(gameResult);
     }
 
+    public void printGameEndMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     public List<Integer> generateRandomAnswerNums() {
         List<Integer> randomNums = new ArrayList<>();
         while (randomNums.size() < 3) {

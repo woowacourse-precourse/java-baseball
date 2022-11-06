@@ -65,7 +65,7 @@ BUILD SUCCESSFUL in 0s
     - [x] FEATURE12. 낫싱 여부 확인 메서드
     - [x] FEATURE13. 클래스 toString 메서드 오버라이딩
 - [x] FEATURE14. 게임 결과 출력 메서드
-- [ ] FEATURE15. 게임 종료 메시지 출력 메서드
+- [x] FEATURE15. 게임 종료 메시지 출력 메서드
 - [ ] FEATURE16. 게임 종료 입력 메서드
 
 ---
@@ -78,7 +78,7 @@ BUILD SUCCESSFUL in 0s
         - [ ] `void gameStart()`
         - [x] `void printGameStartMessage()`
         - [x] `void printGameResultMessage(BaseballGameResult gameResult)`
-        - [ ] `void printGameEndMessage()`
+        - [x] `void printGameEndMessage()`
         - [x] `Boolean isIllegalGameInput(int gameInput)`
         - [x] `Boolean checkDuplicateNums(int gameInput)`
         - [x] `List<Integer> getGameInput() thorws IllegalArgumentException`
