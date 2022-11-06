@@ -24,24 +24,24 @@ public class GameNumber {
         this.gameNumber = computerNumber.toString();
     }
 
-    public boolean isValidUserNumber(String userNumber) {
+    public static boolean isValidUserNumber(String userNumber) {
         return (isValidLength(userNumber) && isOneToNine(userNumber) && isNotDuplicatedNumber(userNumber));
     }
 
-    public boolean isValidLength(String userNumber) {
+    private static boolean isValidLength(String userNumber) {
         return (userNumber.length() == NUMBER_LENGTH);
     }
 
-    public boolean isOneToNine(String userNumber) {
+    private static boolean isOneToNine(String userNumber) {
         return (isInZero(userNumber) && validateDigit(userNumber));
 
     }
 
-    public boolean isInZero(String userNumber) {
+    private static boolean isInZero(String userNumber) {
         return (!userNumber.contains("0"));
     }
 
-    public boolean validateDigit(String userNumber) {
+    private static boolean validateDigit(String userNumber) {
         for (char number : userNumber.toCharArray()) {
             if (!Character.isDigit(number)) {
                 return false;
@@ -51,7 +51,7 @@ public class GameNumber {
         return true;
     }
 
-    public boolean isNotDuplicatedNumber(String userNumber) {
+    private static boolean isNotDuplicatedNumber(String userNumber) {
         IntStream stream = userNumber.chars();
         return (stream.distinct().count() == NUMBER_LENGTH);
     }
