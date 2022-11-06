@@ -39,10 +39,10 @@ class ApplicationTest extends NsTest {
     void 힌트코드_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("789");
-                    assertThat(output()).contains("3스트라이크");
+                    run("123", "456", "789", "798", "987", "1","246", "135", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "2볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "낫싱", "3스트라이크");
                 },
-                7, 8, 9
+                9,8,7, 1, 3, 5
         );
     }
 

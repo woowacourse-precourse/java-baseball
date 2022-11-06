@@ -44,7 +44,12 @@ public class Application {
 
             List<Integer> baseballCount = baseball.getTotalBallCount(userInput);
             String hintCode = baseball.getHintCode(baseballCount);
+            PrintResult.printLineln(hintCode);
 
+            if (baseballCount.get(1) == Baseball.GAME_NUMBER_SIZE) {
+                PrintResult.printLineln(PrintResult.GAME_END);
+                return;
+            }
         }
     }
 
