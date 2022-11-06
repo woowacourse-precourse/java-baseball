@@ -12,5 +12,7 @@ public class Application {
         List<Integer> computer = game.makesDifferenceThreeNumber();
 
         String user = Console.readLine();
+
+        List<Integer> strikeAndBall = game.findStrikeAndBall(user, computer);
     }
 }
