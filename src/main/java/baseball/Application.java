@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.Controller.GameController;
+import baseball.config.Assembler;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        Assembler assembler = new Assembler();
+        GameController gameController = new GameController(assembler);
+        gameController.run();
     }
 }
