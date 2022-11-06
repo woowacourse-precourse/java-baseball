@@ -10,7 +10,7 @@ public class Application {
     static Scanner scanner;
 
     public static void main(String[] args) {
-        scanner = new Scanner(System.in);
+        initScanner();
 
         try {
             startGame();
@@ -19,6 +19,9 @@ public class Application {
         }
     }
 
+    public static void initScanner() {
+        scanner = new Scanner(System.in);
+    }
 
     public static void startGame() {
         initCommonMessageMap();
