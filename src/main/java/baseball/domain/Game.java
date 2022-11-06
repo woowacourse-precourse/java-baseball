@@ -4,6 +4,8 @@ import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+    public static final String GAME_RESTART_OPTION = "1";
+    public static final String GAME_END_OPTION = "2";
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
@@ -27,16 +29,16 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String option = Console.readLine();
 
-        if (option.equals("1")) {
+        if (option.equals(GAME_RESTART_OPTION)) {
             Game.startGame();
+            return;
         }
 
-        if (option.equals("2")) {
+        if (option.equals(GAME_END_OPTION)) {
             System.out.println("게임을 종료합니다.");
+            return;
         }
 
-        if (!option.equals("1") && !option.equals("2")) {
-            throw new IllegalArgumentException("옵션을 벗어나는 숫자를 입력했습니다.");
-        }
+        throw new IllegalArgumentException("옵션을 벗어나는 숫자를 입력했습니다.");
     }
 }
