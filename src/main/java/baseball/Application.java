@@ -25,6 +25,9 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer.get(0));
+        System.out.println(computer.get(1));
+        System.out.println(computer.get(2));
         return computer;
     }
 
@@ -34,7 +37,7 @@ public class Application {
         while(true){
             System.out.print("숫자를 입력해주세요: ");
             String input = Console.readLine();
-
+            System.out.println(input);
             String[] inputSplits = input.split("");
             int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
 
@@ -54,14 +57,20 @@ public class Application {
 
     private static void saveNumberStatus(int[] inputNumbers, List<Integer> computer, GameStatus gameStatus){
         for(int i = 0 ; i < inputNumbers.length; i++){
-            if( !computer.contains( inputNumbers[i] ) ){ //해당 숫자가 정답에 없다.
-                gameStatus.nothing = true;
-            } else { //포함은 되어 있다.
+            if( computer.contains( inputNumbers[i] ) ){ //해당 숫자가 정답에 없다. // 여기 다시!
+                gameStatus.nothing = false;
+            }
+        }
+
+        if(!gameStatus.nothing){
+            for(int i = 0 ; i < inputNumbers.length; i++){
                 if(i == computer.indexOf(inputNumbers[i])){ //스트라이크인 경우
                     gameStatus.strike++;
                 } else gameStatus.ball++; //볼인 경우
             }
         }
+
+
     }
 
     private static String responseNumberStatus(GameStatus gameStatus){
