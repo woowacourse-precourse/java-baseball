@@ -7,27 +7,26 @@ import java.util.List;
 
 public class Computer {
 
-    final int COMPUTER_NUMBER_START = 1;
-    final int COMPUTER_NUMBER_END = 9;
+    final int START_NUMBER = 1;
+    final int END_NUMBER = 9;
     final int COMPUTER_NUMBER_SIZE = 3;
+    public List<String> computerAnswer;
 
-    public List<String> generateComputerAnswer() {
-        List<Integer> generatedNumbers = Randoms.pickUniqueNumbersInRange(COMPUTER_NUMBER_START, COMPUTER_NUMBER_END, COMPUTER_NUMBER_SIZE);
-        return toStringList(generatedNumbers);
+    public Computer() {
+        this.computerAnswer = generateComputerAnswer();
     }
 
-//    public String generateComputerAnswer() {
-//        List<Integer> generatedNumbers = Randoms.pickUniqueNumbersInRange(COMPUTER_NUMBER_START, COMPUTER_NUMBER_END, COMPUTER_NUMBER_SIZE);
-//        return parsing(generatedNumbers);
-//    }
+    public List<String> generateComputerAnswer() {
+        List<Integer> numberList = new ArrayList<>();
+        while (numberList.size() < COMPUTER_NUMBER_SIZE) {
+            int currentNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+            if (isUniqueNumber(numberList, currentNumber)) {
+                numberList.add(currentNumber);
+            }
+        }
 
-//    private String parsing(List<Integer> generatedNumbers) {
-//        StringBuilder parsedNumbers = new StringBuilder();
-//        for (Integer generatedNumber : generatedNumbers) {
-//            parsedNumbers.append(String.valueOf(generatedNumber));
-//        }
-//        return parsedNumbers.toString();
-//    }
+        return toStringList(numberList);
+    }
 
     private List<String> toStringList(List<Integer> generatedNumbers) {
         List<String> parsedList = new ArrayList<>();
@@ -37,6 +36,11 @@ public class Computer {
         return parsedList;
     }
 
-
+    private boolean isUniqueNumber(List<Integer> numberList, Integer currentNumber) {
+        if (numberList.contains(currentNumber)) {
+            return false;
+        }
+        return true;
+    }
 
 }
