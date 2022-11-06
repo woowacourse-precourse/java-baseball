@@ -1,13 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,7 +21,12 @@ class Game {
     static void init() {
         System.out.println(INITGAME);
         Hint hint = new Hint(makeThreeNums());
-        User.getInput();
+        String result;
+        do {
+            result = hint.get(User.getInput());
+            System.out.println(result);
+        } while (!result.equals("3스트라이크"));
+        end();
     }
     static List makeThreeNums() {
         List<Integer> threeNums = new ArrayList<>();
@@ -36,7 +41,7 @@ class Game {
     static void end() {
         System.out.println(ENDGAME);
         System.out.println(RESTART);
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        String input = Console.readLine();
         if (input.equals("1")) {
             init();
         } else if (input.equals("2")) {
@@ -47,8 +52,10 @@ class Game {
     }
 }
 class User {
+    final static String PROMPT = "숫자를 입력해주세요 : ";
     static List getInput() {
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        System.out.print(PROMPT);
+        String input = Console.readLine();
         List result;
         try {
             result = checkInput(input);
@@ -74,7 +81,7 @@ class User {
             if (map.containsKey(num)) {
                 throw new Exception();
             }
-            map.put((Integer) num, true);
+            map.put(num, true);
         }
     }
     static List<Integer> getInputFormat(String input) {
@@ -104,11 +111,11 @@ class Hint {
         if (ball > 0) {
             result += ball + BALL;
         }
+        result += " ";
         if (strike > 0) {
-            result += " ";
             result += strike + STRIKE;
         }
-        return result;
+        return result.trim();
     }
 
     int countStrike(List<Integer> input) {
