@@ -5,14 +5,13 @@ import java.util.List;
 
 public class BaseballGame {
     private static final char INTEGER_MAKER = '0';
+    private static final String GAME_REPLAY = "1";
 
     public void playGame() throws IllegalArgumentException {
-        Boolean isRunning = true;
+        InputView.printGameStart();
+        boolean isRunning = true;
         List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
         System.out.println(computerNumbers);
-
-        InputView.printGameStart();
-
         while (isRunning) {
             String userInput = InputView.getUserInput();
 
@@ -26,6 +25,17 @@ public class BaseballGame {
             isRunning = OutputView.printGameResult(ballCount, strikeCount);
         }
 
+        boolean gameStop = getReplayOrNot();
+    }
+
+    private boolean getReplayOrNot() throws IllegalArgumentException {
+        String replayInput = InputView.getReplayOrNotByInput();
+
+        return convertReplayInputToBool(replayInput);
+    }
+
+    private boolean convertReplayInputToBool(String replayInput) {
+        return replayInput.equals(GAME_REPLAY);
     }
 
     private List<Integer> getNumbersByInput(String userInput) {
