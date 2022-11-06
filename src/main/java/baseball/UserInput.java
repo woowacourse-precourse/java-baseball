@@ -47,8 +47,11 @@ public class UserInput {
     }
 
     public void isValid() {
-        if (!(isValidGuessNumber() && isValidLength())) {
-            throw new IllegalArgumentException("3자리의 서로 다른 수를 입력하셔야 합니다.");
+        if (! isValidLength()) {
+            throw new IllegalArgumentException("3자리의 수를 입력하셔야 합니다.");
+        }
+        if (! isValidGuessNumber()) {
+            throw new IllegalArgumentException("서로 다른 수를 입력하셔야 합니다.");
         }
     }
 
