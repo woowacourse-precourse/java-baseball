@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println(getGuideMessage(null));
@@ -31,9 +33,9 @@ public class Application {
         return userNumber.length() == 3;
     }
 
-    public static boolean checkOnlyNumber(String input) {
+    public static boolean checkOnlyNumber(String userNumber) {
         try {
-            Double.parseDouble(input);
+            Double.parseDouble(userNumber);
         }
         catch (NumberFormatException e) {
             return false;
@@ -41,7 +43,16 @@ public class Application {
         return true;
     }
 
-    public static boolean checkNotContainZero (String input) {
-        return !input.contains("0");
+    public static boolean checkNotContainZero (String userNumber) {
+        return !userNumber.contains("0");
+    }
+
+    public static boolean checkNotDuplication (String userNumber) {
+        for (int index = 0; index < userNumber.length(); index++) {
+            if (userNumber.indexOf(userNumber.charAt(index)) != index) {
+                return false;
+            }
+        }
+        return true;
     }
 }

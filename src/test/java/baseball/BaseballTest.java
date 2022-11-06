@@ -52,24 +52,31 @@ class BaseballTest {
     }
 
     @DisplayName("사용자 숫자 자릿수(길이) 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'5',false", "'1234',false", "'',false"})
     void checkNumberLength_userNumber_길이에_따른_boolean_반환(String input, boolean result) {
         assertThat(checkNumberLength(input)).isEqualTo(result);
     }
 
     @DisplayName("문자열이 숫자로만 이루어져 있는지 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'!12',false", "'1234a',false", "'',false"})
     void checkOnlyNumber_userNumber_숫자로만_이루어져_있는지_확인(String input, boolean result) {
         assertThat(checkOnlyNumber(input)).isEqualTo(result);
     }
 
     @DisplayName("문자열에 0이 없는지 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'105',false", "'012',false", "'120',false"})
     void checkNotContainZero_userNumber_0이_없는지_확인(String input, boolean result) {
         assertThat(checkNotContainZero(input)).isEqualTo(result);
+    }
+
+    @DisplayName("문자열에 중복문자가 없는지 확인")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1} ")
+    @CsvSource({"'123',true", "'100',false", "'252',false", "'322',false"})
+    void checkNotDuplication_userNumber_중복이_없는지_확인(String input, boolean result) {
+        assertThat(checkNotDuplication(input)).isEqualTo(result);
     }
 
 }
