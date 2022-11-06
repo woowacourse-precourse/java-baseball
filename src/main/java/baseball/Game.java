@@ -32,9 +32,9 @@ public class Game {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-
             String input = Console.readLine();
-            List<Integer> user = validateUserInput(input);
+
+            List<Integer> user = getUserNumberList(input);
 
             calculateScore(user, computer);
             printResult();
@@ -58,21 +58,32 @@ public class Game {
         return computer;
     }
 
-    public List<Integer> validateUserInput(String input) {
+    public List<Integer> getUserNumberList(String input) {
+        validateUserInput(input);
+
         List<Integer> user = new ArrayList<>();
+        for (String number : input.split("")) {
+            user.add(Integer.parseInt(number));
+        }
+
+        return user;
+    }
+
+    public void validateUserInput(String input) {
         for (String number : input.split("")) {
             if (!Character.isDigit(number.charAt(0))) {
                 throw new IllegalArgumentException("숫자 이외의 문자는 입력받지 않습니다.");
             }
-            user.add(Integer.parseInt(number));
         }
 
-        if (user.size() != 3)
+        if (input.length() != 3)
             throw new IllegalArgumentException("숫자는 3개를 입력해야 합니다.");
-        if (user.get(0) == user.get(1) || user.get(1) == user.get(2) || user.get(2) == user.get(0))
-            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야 합니다.");
 
-        return user;
+        char firstNum = input.charAt(0);
+        char secondNum = input.charAt(1);
+        char thirdNum = input.charAt(2);
+        if (firstNum == secondNum || secondNum == thirdNum || thirdNum == firstNum)
+            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야 합니다.");
     }
 
     public void calculateScore(List<Integer> user, List<Integer> computer) {
