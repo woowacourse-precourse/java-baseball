@@ -9,7 +9,7 @@ public class InputValidation {
         return input.matches("^[1-9]+$");
     }
 
-    public static boolean isDuplicate(String input) {
+    public static boolean isDuplicated(String input) {
         return input.matches("^.(.)\\1$")
                 || input.matches("^(.)\\1.$")
                 || input.matches("^(.).\\1$");

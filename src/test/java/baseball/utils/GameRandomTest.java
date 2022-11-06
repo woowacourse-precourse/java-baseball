@@ -12,15 +12,15 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MakeRandomTest {
+class GameRandomTest {
 
-    MakeRandom makeRandom = MakeRandom.getInstance();
+    GameRandom random = GameRandom.getInstance();
 
     @Test
     @DisplayName("랜덤한 세 개의 숫자가 중복되지 않게 만들어지는지 테스트")
     void randomNumbersTest() {
         // given
-        List<Integer> numbers = makeRandom.numbers();
+        List<Integer> numbers = random.makeNumbers();
 
         // expected
         Assertions.assertEquals(3, new HashSet<>(numbers).size());
@@ -30,7 +30,7 @@ class MakeRandomTest {
     @DisplayName("각 숫자가 1~9에 해당하는가")
     void randomNumbersValidationTest() {
         // given
-        List<Integer> numbers = makeRandom.numbers();
+        List<Integer> numbers = random.makeNumbers();
 
         // expected
         Assertions.assertTrue(String.valueOf(numbers.get(0)).matches("[1-9]"));
@@ -45,11 +45,11 @@ class MakeRandomTest {
         int threadsAmount = 500;
 
         // when
-        Set<MakeRandom> makeRandom1Set = Collections.newSetFromMap(new ConcurrentHashMap<>());
+        Set<GameRandom> makeRandom1Set = Collections.newSetFromMap(new ConcurrentHashMap<>());
         ExecutorService executorService = Executors.newFixedThreadPool(threadsAmount);
         for (int i = 0; i < threadsAmount; i++) {
             executorService.execute(() -> {
-                MakeRandom makeRandom1 = MakeRandom.getInstance();
+                GameRandom makeRandom1 = GameRandom.getInstance();
                 makeRandom1Set.add(makeRandom1);
             });
         }

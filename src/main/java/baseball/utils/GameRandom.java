@@ -5,17 +5,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeRandom {
-    private MakeRandom() {
+public class GameRandom {
+    private GameRandom() {
     }
+
     private static class LazyHolder {
-        private static final MakeRandom INSTANCE = new MakeRandom();
+        private static final GameRandom INSTANCE = new GameRandom();
     }
-    public static MakeRandom getInstance() {
+
+    public static GameRandom getInstance() {
         return LazyHolder.INSTANCE;
     }
 
-    public List<Integer> numbers() {
+    public List<Integer> makeNumbers() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

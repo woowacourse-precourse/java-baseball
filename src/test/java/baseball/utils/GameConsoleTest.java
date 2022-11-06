@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ConsoleLogTest extends NsTest {
-    ConsoleLog console = ConsoleLog.getInstance();
+class GameConsoleTest extends NsTest {
+    GameConsole console = GameConsole.getInstance();
     @Test
     @DisplayName("사용자 입력테스트")
     void userInputTest() {
@@ -63,12 +63,12 @@ class ConsoleLogTest extends NsTest {
         int threadsAmount = 500;
 
         // when
-        Set<ConsoleLog> consoleLogSet = Collections.newSetFromMap(new ConcurrentHashMap<>());
+        Set<GameConsole> gameConsoleSet = Collections.newSetFromMap(new ConcurrentHashMap<>());
         ExecutorService executorService = Executors.newFixedThreadPool(threadsAmount);
         for (int i = 0; i < threadsAmount; i++) {
             executorService.execute(() -> {
-                ConsoleLog consoleLog = ConsoleLog.getInstance();
-                consoleLogSet.add(consoleLog);
+                GameConsole gameConsole = GameConsole.getInstance();
+                gameConsoleSet.add(gameConsole);
             });
         }
 
@@ -81,7 +81,7 @@ class ConsoleLogTest extends NsTest {
         }
 
         // then
-        assertEquals(1, consoleLogSet.size());
+        assertEquals(1, gameConsoleSet.size());
     }
 
     @Override

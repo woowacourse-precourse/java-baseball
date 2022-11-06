@@ -1,6 +1,5 @@
 package baseball.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,30 +21,30 @@ class NumericalComparisonTest {
     @DisplayName("두 리스트의 숫자를 비교하여 볼과 스트라이크 잘 표시하는지")
     void checkListValue() {
         // given
-        List<Integer> computerNumbers = List.of(1,2,3);
-        List<Integer> userNumbers = List.of(3,2,1);
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> userNumbers = List.of(3, 2, 1);
 
         // when
         Map<String, Integer> compareList = numericalComparison.compareList(computerNumbers, userNumbers);
 
         // then
-        Assertions.assertEquals(Map.of("strike",1,"ball",2), compareList);
+        assertEquals(Map.of("strike", 1, "ball", 2), compareList);
     }
 
     @Test
     @DisplayName("메서드를 실행할 때 마다 strike, ball count가 초기화 되는지")
     void isResetCounts() {
         // given
-        List<Integer> computerNumbers = List.of(1,2,3);
-        List<Integer> userNumbers = List.of(3,2,1);
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> userNumbers = List.of(3, 2, 1);
 
         // when
         Map<String, Integer> compareList = numericalComparison.compareList(computerNumbers, userNumbers);
         Map<String, Integer> compareList2 = numericalComparison.compareList(computerNumbers, userNumbers);
 
         // then
-        Assertions.assertEquals(Map.of("strike",1,"ball",2), compareList);
-        Assertions.assertEquals(Map.of("strike",1,"ball",2), compareList2);
+        assertEquals(Map.of("strike", 1, "ball", 2), compareList);
+        assertEquals(Map.of("strike", 1, "ball", 2), compareList2);
     }
 
     @Test
