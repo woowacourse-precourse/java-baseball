@@ -15,7 +15,13 @@ public class Application {
         List<Integer> opponent = generateOpponent();
         List<Integer> player = receiveInputOfPlayer();
 
-        checkGameOver(checkOpponentAndPlayer(opponent, player));
+        gameStart(opponent,player);
+    }
+
+    public static void gameStart(List<Integer> opponent, List<Integer> player){
+        while(checkGameOver(checkOpponentAndPlayer(opponent, player))){
+            player = receiveInputOfPlayer();
+        }
     }
 
     public static List<Integer> generateOpponent(){
@@ -92,9 +98,9 @@ public class Application {
         printBallAndStrike(ballAndStrike);
         if(ballAndStrike.get(1)==3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static void printBallAndStrike(List<Integer> ballAndStrike){
