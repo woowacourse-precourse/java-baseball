@@ -10,7 +10,7 @@ public class Application {
     private static final String MESSAGE_TO_START = "숫자 야구 게임을 시작합니다.";
 
     public static void main(String[] args) {
-        List<Integer> quiz = QuizMaker.NewQuiz();
+        String quiz = QuizMaker.NewQuiz();
         String PlayerInput = "";
 
         System.out.println(MESSAGE_TO_START);
