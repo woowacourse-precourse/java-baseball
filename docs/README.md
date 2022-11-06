@@ -2,7 +2,10 @@
 
 - generateRandomNumber()
   - 정답 숫자 생성
-  - 출력: 랜덤으로 생성한 세 자리 숫자
+  - 출력: List<Integer> 랜덤으로 생성한 세 자리 숫자
+- validateRandomNumber()
+  - 생성한 랜덤 넘버 유효성 체크(3자리 숫자인지, 중복은 없는지)
+  - 유요하지 않을 경우 Exception발생
 - userInput()
   - guess 입력 받기
   - 출력 : 입력받은 숫자
