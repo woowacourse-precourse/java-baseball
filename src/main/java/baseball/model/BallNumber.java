@@ -8,10 +8,12 @@ public class BallNumber {
     private final List<Integer> ballNumbers;
 
     public BallNumber(List<Integer> ballNumbers){
+        validationSize(ballNumbers);
+        validationDuplicate(ballNumbers);
         this.ballNumbers = ballNumbers;
     }
 
-    private List<Integer> getBallNumbers(){
+    public List<Integer> getBallNumbers(){
         return Collections.unmodifiableList(ballNumbers);
     }
 
