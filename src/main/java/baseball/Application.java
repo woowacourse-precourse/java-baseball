@@ -10,8 +10,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerList = new ArrayList<>();
-        String inputString = startUserInput();
         computerPick(computerList);
+
+        String inputString = startUserInput();
     }
 
     // 컴퓨터가 숫자를 선택하는 메서드
@@ -33,6 +34,14 @@ public class Application {
     // 게임이 종료되고 사용자의 재시작 입력을 받는 메서드
     static String restartUserInput() {
         return Console.readLine();
+    }
+
+    // 사용자가 입력한 숫자로 리스트를 만드는 메서드
+    static void makeUserList(String inputString, List<Integer> userList) {
+        String[] array = inputString.split("");
+        for (int i = 0; i < array.length; i++) {
+            userList.add(Integer.parseInt(array[i]));
+        }
     }
 
 }
