@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -27,9 +27,9 @@ public enum Messages{
         this.printer.accept(this.message);
     }
 
-    public static void printScore(List<Integer> turnResult) {
-        int strikes = turnResult.get(0);
-        int balls = turnResult.get(1);
+    public static void printScore(HashMap<Result, Integer> turnResult) {
+        int balls = turnResult.getOrDefault(Result.BALL, 0);
+        int strikes = turnResult.getOrDefault(Result.STRIKE, 0);
 
         StringJoiner baseString = new StringJoiner(" ");
         if (balls != 0) {
