@@ -74,4 +74,13 @@ public class Application {
 
         return count;
     }
+
+    public static boolean checkNothing(Player computer, Player user){
+
+        for(int i=0; i< NUMBERS_SIZE; i++){
+            if(computer.isContain(user.getNumberOfIndex(i)))
+                return false;
+        }
+        return true;
+    }
 }

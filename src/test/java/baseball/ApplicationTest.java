@@ -11,7 +11,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -118,6 +118,21 @@ class ApplicationTest extends NsTest {
         assertEquals(3, Application.numberOfBalls(computer, user));
     }
 
+    @Test
+    void 낫싱일_때_true_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,8,9));
+
+        assertTrue(Application.checkNothing(computer, user));
+    }
+
+    @Test
+    void 낫싱이_아닐_때_false_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,1,9));
+
+        assertFalse(Application.checkNothing(computer, user));
+    }
 
     @Override
     public void runMain() {
