@@ -1,6 +1,5 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -63,13 +62,13 @@ public class FunctionTest {
 			assertThatThrownBy(() -> BaseballUtil.getUserInteger()).isInstanceOf(IllegalArgumentException.class);
 
 		}
-		
+
 		@Test
 		void 사용자_입력값_유효성확인_0입력() {
 			String input = "102";
 			SetSystemInput(input);
 			assertThatThrownBy(() -> BaseballUtil.getUserInteger()).isInstanceOf(IllegalArgumentException.class);
-			
+
 		}
 
 		@Test
@@ -80,6 +79,7 @@ public class FunctionTest {
 
 			assertThat(inputList).contains(1, 2, 3);
 		}
+
 		public void SetSystemInput(String input) {
 			OutputStream out = new ByteArrayOutputStream();
 			System.setOut(new PrintStream(out));
@@ -97,73 +97,142 @@ public class FunctionTest {
 			computer.add(1);
 			computer.add(3);
 			computer.add(4);
-			
-			List<Integer> inputList  = new ArrayList<>();
+
+			List<Integer> inputList = new ArrayList<>();
 			inputList.add(1);
 			inputList.add(3);
 			inputList.add(4);
-			
+
 			ComparisonTool comparisonTool = new ComparisonTool(computer);
 			ComparisonResults result = comparisonTool.compaerResult(inputList);
 			assertThat(result.strike).isEqualTo(3);
 			assertThat(result.ball).isEqualTo(0);
 		}
-		
+
 		@Test
 		void 결과_비교툴_볼3() {
 			List<Integer> computer = new ArrayList<>();
 			computer.add(1);
 			computer.add(3);
 			computer.add(4);
-			
-			List<Integer> inputList  = new ArrayList<>();
+
+			List<Integer> inputList = new ArrayList<>();
 			inputList.add(4);
 			inputList.add(1);
 			inputList.add(3);
-			
+
 			ComparisonTool comparisonTool = new ComparisonTool(computer);
 			ComparisonResults result = comparisonTool.compaerResult(inputList);
 			assertThat(result.strike).isEqualTo(0);
 			assertThat(result.ball).isEqualTo(3);
 		}
-		
+
 		@Test
 		void 결과_비교툴_복합() {
 			List<Integer> computer = new ArrayList<>();
 			computer.add(1);
 			computer.add(3);
 			computer.add(4);
-			
-			List<Integer> inputList  = new ArrayList<>();
+
+			List<Integer> inputList = new ArrayList<>();
 			inputList.add(1);
 			inputList.add(5);
 			inputList.add(3);
-			
+
 			ComparisonTool comparisonTool = new ComparisonTool(computer);
 			ComparisonResults result = comparisonTool.compaerResult(inputList);
 			assertThat(result.strike).isEqualTo(1);
 			assertThat(result.ball).isEqualTo(1);
 		}
-		
+
 		@Test
 		void 결과_비교툴_낫싱() {
 			List<Integer> computer = new ArrayList<>();
 			computer.add(1);
 			computer.add(3);
 			computer.add(4);
-			
-			List<Integer> inputList  = new ArrayList<>();
+
+			List<Integer> inputList = new ArrayList<>();
 			inputList.add(6);
 			inputList.add(7);
 			inputList.add(8);
-			
+
 			ComparisonTool comparisonTool = new ComparisonTool(computer);
 			ComparisonResults result = comparisonTool.compaerResult(inputList);
 			assertThat(result.strike).isEqualTo(0);
 			assertThat(result.ball).isEqualTo(0);
 		}
-		
-		
 	}
 
+	@Nested
+	class ComparisonResultPrintTest {
+
+		@Test
+		void 결과_출력_낫싱() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+
+			List<Integer> inputList = new ArrayList<>();
+			inputList.add(6);
+			inputList.add(7);
+			inputList.add(8);
+
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.toString()).contains("낫싱");
+		}
+		
+		@Test
+		void 결과_출력_1스트라이크() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList = new ArrayList<>();
+			inputList.add(1);
+			inputList.add(7);
+			inputList.add(8);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.toString()).contains("1스트라이크");
+		}
+		
+		@Test
+		void 결과_출력_1볼() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList = new ArrayList<>();
+			inputList.add(4);
+			inputList.add(7);
+			inputList.add(8);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.toString()).contains("1볼");
+		}
+		
+		@Test
+		void 결과_출력_1볼_1스트라이크() {
+			List<Integer> computer = new ArrayList<>();
+			computer.add(1);
+			computer.add(3);
+			computer.add(4);
+			
+			List<Integer> inputList = new ArrayList<>();
+			inputList.add(4);
+			inputList.add(3);
+			inputList.add(8);
+			
+			ComparisonTool comparisonTool = new ComparisonTool(computer);
+			ComparisonResults result = comparisonTool.compaerResult(inputList);
+			assertThat(result.toString()).contains("1볼 1스트라이크");
+		}
+	}
 }
