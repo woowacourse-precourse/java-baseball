@@ -53,14 +53,14 @@ public class Game {
         return threeNumber;
     }
 
-    public void compareNumbers(List<Integer> userInputValues) {
+    public void compareNumbers(List<Integer> userInput) {
         gameState = new GameState();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            if (computer.get(idx)==userInputValues.get(idx)) {
+            if (computer.get(idx)==userInput.get(idx)) {
                 gameState.addStrike();
                 continue;
             }
-            if (computer.contains(userInputValues.get(idx))) {
+            if (computer.contains(userInput.get(idx))) {
                 gameState.addBall();
             }
         }
