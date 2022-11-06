@@ -42,4 +42,17 @@ public class Validation {
         return true;
     }
 
+    /**
+     * 플레이어가 제사한 숫자에 대한 통합 검증 기능
+     * @param answer 플레이어가 제시한 숫자
+     */
+    public void checkAnswerValidation(String answer) {
+        if (!checkAnswerLength(answer)) {
+            throw new IllegalArgumentException(ERROR_LENGTH_THREE);
+        } else if (!checkAnswerConsistOfNum(answer)) {
+            throw new IllegalArgumentException(ERROR_CONSIST_OF_NUM);
+        } else if (!checkAnswerOverlap(answer)) {
+            throw new IllegalArgumentException(ERROR_OVERLAP_NUM);
+        }
+    }
 }
