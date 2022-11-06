@@ -21,4 +21,18 @@ public class GameHost extends BaseballNumber {
 
     public void setHint(List<Integer> playerNumber) {
     }
+
+    public void setBaseballNumber() {
+        this.baseballNumber = new ArrayList<>();
+        int[] checkValidNumber = new int[10];
+        Random random = new Random();
+
+        while(this.baseballNumber.size() != 3) {
+            int randomNum = random.nextInt(9) + 1;
+            if(checkValidNumber[randomNum] == 0) {
+                this.baseballNumber.add(randomNum);
+                checkValidNumber[randomNum] = 1;
+            }
+        }
+    }
 }
