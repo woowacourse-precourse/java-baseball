@@ -13,24 +13,12 @@ public class Application {
 
         List<Integer> computer_num = Randoms.pickUniqueNumbersInRange(1,9,3);
 
-        System.out.println("computer_num = " + computer_num);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자를 입력해주세요 : ");
+        String answer = Console.readLine();
+
 
     }
 
 
-    //해당 메서드가 이미 Randoms 클래스 안에 구현되어져 있었음.
-//    public static List<Integer> getRandomNumber() {
-//
-//        List<Integer> num = new ArrayList<>();
-//
-//        while (num.size() < 3) {
-//            int randomNumber = Randoms.pickNumberInRange(1,9);
-//            if (!num.contains(randomNumber)) {
-//                num.add(randomNumber);
-//            }
-//        }
-//
-//        return num;
-//
-//    }
 }

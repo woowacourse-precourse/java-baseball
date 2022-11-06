@@ -1,9 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,11 +36,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 중복되지_않은_3개의_숫자() {
 
 
-    }
+
+
+
 
 
     @Override
