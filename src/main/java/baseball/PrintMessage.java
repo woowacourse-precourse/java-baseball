@@ -2,36 +2,36 @@ package baseball;
 
 import static baseball.Constant.*;
 public class PrintMessage {
-
-    Score score = new Score();
-
-    public void gameStart() {
+    
+    public static void gameStart() {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public void gameEnd() {
+    public static void gameEnd() {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public void enterNumber() {
-        System.out.println(PLEASE_ENTER_NUMBERS);
+    public static void enterNumber() {
+        System.out.print(PLEASE_ENTER_NUMBERS);
     }
 
-    public void chooseRestartOrQuitGame() {
+    public static void chooseRestartOrQuitGame() {
         System.out.println(CHOOSE_TO_START_OR_QUIT_GAME);
     }
 
-    public void ballCount() {
-        score.getBall();
-        System.out.print(score.ball+BALL);
+    public static void onlyBallCount() {
+        System.out.println(Score.getBall()+BALL);
     }
 
-    public void strikeCount() {
-        score.getStrike();
-        System.out.print(score.strike+STRIKE);
+    public static void onlyStrikeCount() {
+        System.out.println(Score.getStrike()+STRIKE);
     }
 
-    public void notThing() {
+    public static void ballAndStrikeCount() {
+        System.out.println(Score.getBall()+BALL+" "+Score.getStrike()+STRIKE);
+    }
+
+    public static void notThing() {
         System.out.println(NOT_THING);
     }
 }
