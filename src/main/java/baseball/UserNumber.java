@@ -10,7 +10,7 @@ public class UserNumber {
     /**
      * 사용자 수 생성
      */
-    public List<Integer> inputUserNumber(){
+    public static List<Integer> inputUserNumber(){
         System.out.println("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
         List<Integer> userNumberList = new ArrayList<>();
@@ -22,7 +22,7 @@ public class UserNumber {
     /**
      * 사용자 수 검증 함수 호출
      */
-    public List<Integer> checkInputUserNumber(){
+    public static List<Integer> checkInputUserNumber(){
         List<Integer> userNumberList = inputUserNumber();
         if(!UserNumberValidator.checkValidationUserNumber(userNumberList)){
             throw new IllegalArgumentException();
