@@ -1,7 +1,8 @@
 package baseball;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.Constants.INPUT_LENGTH;
 
@@ -14,14 +15,11 @@ public class UserNumGenerator {
     }
 
     public List<Integer> generate(String input) {
-        List<Integer> nums = new ArrayList<>();
         if (!isValid(input)) {
             throw new IllegalArgumentException();
         }
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            nums.add(Integer.parseInt(input.substring(i, i + 1)));
-        }
-        return nums;
+        return Arrays.asList(input.split("")).stream().map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
     }
 
     public boolean isOneToNine(String input) {
@@ -29,18 +27,10 @@ public class UserNumGenerator {
     }
 
     public boolean isNotDuplicate(String input) {
-        List<Character> nums = new ArrayList<>();
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            if (!nums.contains(input.charAt(i))) {
-                nums.add(input.charAt(i));
-                continue;
-            }
-            return false;
-        }
-        return true;
+        return Arrays.asList(input.split("")).stream().distinct().count() == INPUT_LENGTH;
     }
 
     public boolean isValid(String input) {
-        return input.length() == 3 && isOneToNine(input) && isNotDuplicate(input);
+        return input.length() == INPUT_LENGTH && isOneToNine(input) && isNotDuplicate(input);
     }
 }
