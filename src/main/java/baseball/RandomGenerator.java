@@ -7,7 +7,7 @@ public class RandomGenerator {
 
     public static final int CORRECTINPUTLENGTH = 3;
 
-    public static String generateRandom(StringBuilder sb, ArrayList<Integer> generateRandNum) {
+    public static RandomNumber generateRandom(StringBuilder sb, ArrayList<Integer> generateRandNum) {
         while (generateRandNum.size() < CORRECTINPUTLENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!generateRandNum.contains(randomNumber)) {
@@ -15,6 +15,6 @@ public class RandomGenerator {
                 sb.append(Integer.toString(randomNumber));
             }
         }
-        return sb.toString();
+        return new RandomNumber(sb.toString());
     }
 }
