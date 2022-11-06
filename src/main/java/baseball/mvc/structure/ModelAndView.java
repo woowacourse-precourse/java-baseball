@@ -4,7 +4,7 @@ import baseball.util.GameStatus;
 
 public class ModelAndView {
 
-    private GameStatus gameStatus;
+    private final GameStatus gameStatus;
     private Model model;
 
     public ModelAndView(GameStatus gameStatus) {
