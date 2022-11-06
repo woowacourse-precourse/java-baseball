@@ -48,8 +48,12 @@ public class BallList {
     }
 
     private void checkOverlap(List<Ball> ballList) {
-        Set<Ball> ballListSet = new HashSet<>(ballList);
-        if (ballListSet.size() != 3) {
+        List<Integer> tempList = new ArrayList<>();
+        for (int i=0;i<3;i++) {
+            tempList.add(ballList.get(i).getBall());
+        }
+        Set<Integer> tempListSet = new HashSet<>(tempList);
+        if (tempListSet.size() != 3) {
             throw new IllegalArgumentException("각 자리 숫자가 다른 값이어야 합니다.");
         }
     }
