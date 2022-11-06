@@ -1,13 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static constant.Constant.*;
-import static constant.ErrorMessage.INVALID_INPUT_VALUE;
 
 public class Game {
     private static List<Integer> computer;
@@ -19,10 +17,7 @@ public class Game {
 
     public void start() {
         System.out.print(INPUT_COMMENT);
-        String userInput = Console.readLine();
-        UserInputNumbers userInputNumbers = new UserInputNumbers(userInput);
-        System.out.println(userInput);
-        compareNumbers(userInputNumbers);
+        compareNumbers(UserInputNumbers.getUserInputNumbers());
     }
 
     public boolean isAnswer() {
@@ -35,10 +30,7 @@ public class Game {
 
     public boolean canRestart() {
         System.out.println(RESTART_COMMENT);
-        String userInput = Console.readLine();
-        validUserInputRestart(userInput);
-        System.out.println(userInput);
-        if (userInput.equals(END)) {
+        if (UserInputNumbers.getUserControlNumber().equals(END)) {
             return false;
         }
         return true;
@@ -55,24 +47,17 @@ public class Game {
         return threeNumber;
     }
 
-    public void compareNumbers(UserInputNumbers userInput) {
+    public void compareNumbers(List<Integer> userInput) {
         gameState = new GameState();
-        List<Integer> userInputValues = userInput.getUserInputNumbers();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            if (computer.get(idx)==userInputValues.get(idx)) {
+            if (computer.get(idx)==userInput.get(idx)) {
                 gameState.addStrike();
                 continue;
             }
-            if (computer.contains(userInputValues.get(idx))) {
+            if (computer.contains(userInput.get(idx))) {
                 gameState.addBall();
             }
         }
         gameState.printGameState();
-    }
-
-    public static void validUserInputRestart(String num) {
-        if (!num.equals(RESTART) && !num.equals(END)) {
-            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
-        }
     }
 }

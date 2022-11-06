@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,22 +9,24 @@ import static constant.Constant.*;
 import static constant.ErrorMessage.*;
 
 public class UserInputNumbers {
-    private List<Integer> userInputNumbers = new ArrayList<>();
 
-    public UserInputNumbers(String numbers) {
-        if(validUserInputNumber(numbers)){
-            addNumbers(numbers);
-        }
-    }
+    public static List<Integer> getUserInputNumbers() {
+        String userInput = Console.readLine();
+        validUserInputNumber(userInput);
+        System.out.println(userInput);
 
-    private void addNumbers(String numbers) {
+        List<Integer> userInputNumbers = new ArrayList<>();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            userInputNumbers.add(numbers.charAt(idx)-ZERO_ASCII);
+            userInputNumbers.add(userInput.charAt(idx)-ZERO_ASCII);
         }
+        return userInputNumbers;
     }
 
-    public List<Integer> getUserInputNumbers() {
-        return userInputNumbers;
+    public static String getUserControlNumber() {
+        String userInput = Console.readLine();
+        validUserInputRestart(userInput);
+        System.out.println(userInput);
+        return userInput;
     }
 
     public static boolean validUserInputNumber(String numbers) {
@@ -36,6 +40,12 @@ public class UserInputNumbers {
             throw new IllegalArgumentException(DUPLICATE_INPUT_VALUE);
         }
         return true;
+    }
+
+    public static void validUserInputRestart(String num) {
+        if (!num.equals(RESTART) && !num.equals(END)) {
+            throw new IllegalArgumentException(INVALID_INPUT_VALUE);
+        }
     }
 
     public static boolean isValidDigit(String num) {
