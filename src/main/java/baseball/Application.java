@@ -13,7 +13,7 @@ public class Application {
     static int first_game = 1;
 
     static void random_number_generate(ArrayList<Integer> answer) {
-        while(answer.size()!=3) {
+        while (answer.size() != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
@@ -25,12 +25,13 @@ public class Application {
         int guess_int_format = Integer.parseInt(guess);
         ArrayList<Integer> parsed = new ArrayList<>();
 
-        for (int divisor=100; divisor!= 0; guess_int_format%=divisor, divisor /= 10) {
+        for (int divisor = 100; divisor != 0; guess_int_format %= divisor, divisor /= 10) {
             parsed.add(guess_int_format / divisor);
         }
         return parsed;
     }
-    static boolean guess_validity_check(String guess) throws IllegalArgumentException{
+
+    static boolean guess_validity_check(String guess) throws IllegalArgumentException {
         Integer guess_int_format = Integer.parseInt(guess);
         if (guess_int_format < 123 || guess_int_format > 987) {
             throw new IllegalArgumentException("범위를 준수하지 않았습니다.");
@@ -55,17 +56,30 @@ public class Application {
             add(0);
             add(0);
         }};
+        for (int idx = 0; idx < guessList.size(); idx++) {
+            int guess = guessList.get(idx);
+            if (guess == answers.get(idx)) {
+                Integer strike_cnt = ball_strike_cnt.get(1);
+                ball_strike_cnt.set(1, ++strike_cnt);
+            } else if (answers.contains(guess)) {
+                Integer ball_cnt = ball_strike_cnt.get(0);
+                ball_strike_cnt.set(0, ++ball_cnt);
+            }
+        }
 
         return ball_strike_cnt;
     }
-    static void  show_result(ArrayList<Integer> ball_strike_cnt){
+
+    static void show_result(ArrayList<Integer> ball_strike_cnt) {
 
     }
+
     static void judge_guess(String guess, ArrayList<Integer> answer) {
         ArrayList<Integer> guess_parsed = parse_string_into_integer(guess);
-        ArrayList<Integer> ball_strike_cnt= count_ball_and_strike(guess_parsed, answer);
+        ArrayList<Integer> ball_strike_cnt = count_ball_and_strike(guess_parsed, answer);
         show_result(ball_strike_cnt);
     }
+
     static void main_loop() {
         ArrayList<Integer> answer = new ArrayList<>();
         random_number_generate(answer);
