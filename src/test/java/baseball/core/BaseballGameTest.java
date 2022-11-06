@@ -18,4 +18,15 @@ class BaseballGameTest {
         Assertions.assertThat(numberOfBall).isEqualTo(1);
     }
 
+    @Test
+    void countTheNumberOfStrike() {
+
+        BaseballGame baseballGame = new BaseballGame();
+        String targetNumber = "482";
+        String inputNumber = "462";
+
+        Integer numberOfStrike = baseballGame.countTheNumberOfStrike(targetNumber, inputNumber);
+        Assertions.assertThat(numberOfStrike).isEqualTo(2);
+    }
+
 }
