@@ -27,38 +27,12 @@ public class Application {
             UserNums usernum = new UserNums(UserInput.startInput());
             BaseballCount baseballCount = new BaseballCount(computernums.getNumbers(),
                 usernum.getNumbers());
-            if (allStrike(baseballCount)) {
-                SystemOutput.allStrikeMessage();
+            new SystemOutput(baseballCount);
+            if (baseballCount.getStrikecount() == 3) {
                 break;
             }
-            if (allNotSame(baseballCount)) {
-                SystemOutput.allNotSameMessage();
-                continue;
-            }
-            if(Onlyball(baseballCount)){
-                SystemOutput.onlyBallMessage(baseballCount);
-                continue;
-            }
-            if(OnlyStrike(baseballCount)){
-                SystemOutput.onlyStrikeMessage(baseballCount);
-                continue;
-            }
-            SystemOutput.baseballCountMessage(baseballCount);
         }
-    }
-
-    public static boolean allStrike(BaseballCount baseballCount) {
-        return baseballCount.getStrikecount() == 3;
-    }
-
-    public static boolean allNotSame(BaseballCount baseballCount) {
-        return baseballCount.getStrikecount() == 0 && baseballCount.getBallcount() == 0;
-    }
-    public static boolean Onlyball(BaseballCount baseballCount) {
-        return baseballCount.getStrikecount() == 0 && baseballCount.getBallcount() != 0;
-    }
-    public static boolean OnlyStrike(BaseballCount baseballCount) {
-        return baseballCount.getStrikecount() != 0 && baseballCount.getBallcount() == 0;
+        SystemOutput.allStrikeMessage();
     }
 
     public static void confirmUserFinalInput(String userfinalinput) {

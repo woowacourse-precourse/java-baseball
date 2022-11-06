@@ -1,22 +1,47 @@
 package baseball;
 
 public class SystemOutput {
-    public static void allStrikeMessage() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-    public static void baseballCountMessage(BaseballCount baseballCount) {
-        System.out.printf("%d볼 %d스트라이크", baseballCount.getBallcount(), baseballCount.getStrikecount());
-    }
-    public static void onlyBallMessage(BaseballCount baseballCount){
-        System.out.printf("%d볼",baseballCount.getBallcount());
-    }
-    public static void onlyStrikeMessage(BaseballCount baseballCount){
-        System.out.printf("%d스트라이크",baseballCount.getStrikecount());
+
+    private final int strikecount;
+    private final int ballcount;
+
+    public SystemOutput(BaseballCount baseballCount) {
+        this.strikecount = baseballCount.getStrikecount();
+        this.ballcount = baseballCount.getBallcount();
+        baseballCountMessage();
+        onlyBallMessage();
+        onlyStrikeMessage();
+        allNotSameMessage();
     }
 
-    public static void allNotSameMessage() {
-        System.out.println("낫싱");
+    public static void allStrikeMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private void baseballCountMessage() {
+        if (strikecount != 0 && ballcount != 0) {
+            System.out.println(ballcount + "볼 " + strikecount + "스트라이크");
+        }
+
+    }
+
+    private void onlyBallMessage() {
+        if (strikecount == 0 && ballcount != 0) {
+            System.out.println(ballcount + "볼");
+        }
+
+    }
+
+    private void onlyStrikeMessage() {
+        if (strikecount != 0 && ballcount == 0) {
+            System.out.println(strikecount + "스트라이크");
+        }
+    }
+
+    private void allNotSameMessage() {
+        if (strikecount == 0 && ballcount == 0) {
+            System.out.println("낫싱");
+        }
     }
 
 
