@@ -30,6 +30,9 @@ public class Referee {
     }
 
     public boolean isStart(String answer) {
+        if (!answer.matches(CHOICEONETWO)) {
+            throw new IllegalArgumentException();
+        }
         if ("2".equals(answer)) {
             return false;
         }
