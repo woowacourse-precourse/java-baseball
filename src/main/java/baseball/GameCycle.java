@@ -33,4 +33,8 @@ public class GameCycle {
         }
         return true;
     }
+    public boolean numberIsNotZero(String number) {
+        if (number.contains("0")) throw new IllegalArgumentException();
+        return true;
+    }
 }

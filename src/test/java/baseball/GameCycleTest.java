@@ -53,4 +53,13 @@ class GameCycleTest {
         assertEquals(game.numberIsDigit(inputTrue), true);
         assertThrows(IllegalArgumentException.class,()->game.numberIsDigit(inputFalse));
     }
+    @Test
+    public void validNotZero() throws Exception {
+        //given
+        String inputTrue = "123";
+        String inputFalse = "120";
+        //expect
+        assertEquals(game.numberIsNotZero(inputTrue), true);
+        assertThrows(IllegalArgumentException.class,()->game.numberIsNotZero(inputFalse));
+    }
 }
