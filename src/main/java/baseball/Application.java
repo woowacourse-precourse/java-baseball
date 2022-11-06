@@ -2,12 +2,13 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
+        Game game;
+        do {
+            game = new Game();
+            game.play();
 
-        while(game != null) {
-            // TODO 게임 플레이
+            if(game.end()) { game = null; };
 
-            // TODO 재시작 or 종료
-        }
+        } while(game != null);
     }
 }
