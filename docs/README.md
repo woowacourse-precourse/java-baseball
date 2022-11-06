@@ -78,10 +78,9 @@ countScore() : 플레이어의 숫자들과 컴퓨터의 숫자들을 비교해 
 ## 컨트롤러
 ### GameController
 위의 클래스들을 참조한다. 
-1. initializeGame()
-   1. generateComputer() : GameService에서 setComputer해준다. 
-   2. generateGameStatus() : GameStatusService를 생성해 gameStatusService를 참으로 초기화
-2. startGame()
+1. initializeGame() : GameStatusService를 생성해 gameStatusService를 참으로 초기화
+2. setGame() : GameService에서 setComputer()를 해서 컴퓨터 난수 생성
+3. startGame()
    1. clearScore() : GameService의 strikeCount, ballCount를 0으로 초기화해준다. 
    2. getPlayerNumbers() : PlayerView에서 입력 요청을 하고, 입력받은 문자열을 GameService에 넣어준다.  
    3. matchGame() : GameService에 setPlayer, setComputer을 해서 점수를 계산한다. 
