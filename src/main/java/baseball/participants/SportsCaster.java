@@ -25,6 +25,6 @@ public class SportsCaster {
     }
 
     public static void terminateProgram() {
-        System.out.println("게임을 완전히 종료합니다.");
+        System.out.println("게임 종료");
     }
 }
