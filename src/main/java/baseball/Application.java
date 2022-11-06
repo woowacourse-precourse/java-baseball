@@ -15,6 +15,13 @@ public class Application {
         // 컴퓨터가 3자리 숫자의 리스트 생성
         List<Integer> computerNumber = GenerateRandomNumber();
 
+        // 유저의 문자 입력 받기
+        String usersNumber = usersNumber();
+
+    }
+
+    private static String usersNumber() {
+        return Console.readLine();
     }
 
     private static List<Integer> GenerateRandomNumber() {
