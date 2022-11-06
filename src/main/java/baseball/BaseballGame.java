@@ -17,10 +17,10 @@ public class BaseballGame {
         NumberValidator.checkInput(userInput);
 
         List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
-        System.out.println(computerNumbers);
         List<Integer> userNumbers = getNumbersByInput(userInput);
 
         int ballCount = getBallCount(userNumbers, computerNumbers);
+        int strikeCount = getStrikeCount(userNumbers, computerNumbers);
     }
 
     public String getUserInput() {
@@ -54,6 +54,27 @@ public class BaseballGame {
         int computerNumber = computerNumbers.get(computerIndex);
 
         if (userNumber == computerNumber && userIndex != computerIndex) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    private int getStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        int strikeCount = 0;
+        for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
+            for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
+                strikeCount += getEachStrikeCount(userNumbers, computerNumbers, userIndex, computerIndex);
+            }
+        }
+        return strikeCount;
+    }
+
+    private int getEachStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
+        int userNumber = userNumbers.get(userIndex);
+        int computerNumber = computerNumbers.get(computerIndex);
+
+        if (userNumber == computerNumber && userIndex == computerIndex) {
             return 1;
         }
 
