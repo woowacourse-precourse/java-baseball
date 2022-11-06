@@ -12,11 +12,30 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        String status = "";
 
-        List<Integer> computerList = new ArrayList<>();
-        computerPick(computerList);
+        // 게임을 다시 시작하거나 종료하는 기능
+        while (!status.equals("2")) {
+            List<Integer> computerList = new ArrayList<>();
+            boolean result = false;
 
-        String inputString = startUserInput();
+            computerPick(computerList);
+            System.out.println(computerList);
+
+            while (!result) {
+                List<Integer> userList = new ArrayList<>();
+                String inputString = startUserInput();
+                isNull(inputString);
+                isValidSize(inputString);
+                isValidNumber(inputString);
+                isContainsZero(inputString);
+                isOverLap(inputString);
+                makeUserList(inputString, userList);
+                result = compareList(computerList, userList);
+            }
+            status = restartUserInput();
+            continueGame(status);
+        }
     }
 
     // 컴퓨터가 숫자를 선택하는 메서드
