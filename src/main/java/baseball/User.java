@@ -1,13 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class User {
 	String userInput;
 	String patternedUserInput;
-	List<Integer> validatedUserInput;
+	List<Integer> validatedUserInput = new ArrayList<>();
 
 	User() {}
 

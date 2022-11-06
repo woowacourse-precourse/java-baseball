@@ -59,6 +59,18 @@ public class FunctionTest extends NsTest {
 		assertThatThrownBy(() -> {user.patternValidateInput();}).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void TestDuplicationValidation() {
+		User user = new User();
+
+		user.patternedUserInput = "123";
+		user.duplicationValidateInput();
+		assertThat(user.validatedUserInput).containsExactly(1, 2, 3);
+
+		user.patternedUserInput = "111";
+		assertThatThrownBy(() -> {user.duplicationValidateInput();}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[]{});
