@@ -34,8 +34,7 @@ public class Computer {
 
     private void initCollection() {
         Arrays.fill(collection, false);
-        for (Integer randomNumber :
-                randomNumbers) {
+        for (Integer randomNumber : randomNumbers) {
             collection[randomNumber - MINIMUM_NUMBER] = true;
         }
     }
