@@ -10,16 +10,16 @@ public class Computer {
     public Computer() {
         numFactory = new ComputerNum();
         computerNumber = numFactory.createNumber();
+        numFactory.verifyNumber(computerNumber);
     }
 
-    public String calculateCount(int i, List<Integer> playerNumber, List<Integer> computerNumber) {
+    public void calculateCount(int i, List<Integer> playerNumber) {
         if (computerNumber.contains(playerNumber.get(i))) {
             if (computerNumber.indexOf(playerNumber.get(i)) == i)
-                return "strike";
+                strikeCount++;
             else
-                return "ball";
+                ballCount++;
         }
-    return "nothing";
     }
 
 }
