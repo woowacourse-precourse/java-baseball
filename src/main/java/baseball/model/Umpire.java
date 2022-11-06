@@ -7,17 +7,16 @@ public class Umpire {
     private int ballCount;
     private int strikeCount;
 
-    public Umpire(Computer computer, User user) {
+    public Umpire() {
         ballCount = 0;
         strikeCount = 0;
-        decideCount(computer.getNumbers(), user.getNumbers());
     }
 
     public boolean is3Strike() {
         return strikeCount == 3;
     }
 
-    private void decideCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    public void decideCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         for(int idx = 0; idx < userNumbers.size(); idx++) {
             if(isStrike(computerNumbers, userNumbers.get(idx), idx)) {
                 strikeCount++;

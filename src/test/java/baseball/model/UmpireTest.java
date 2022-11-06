@@ -3,7 +3,6 @@ package baseball.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +14,13 @@ class UmpireTest {
     @DisplayName("3개의 숫자를 모두 맞추었다. 3Strike")
     void decideCount_3Strike() {
         Computer computer = new Computer();
-        String answer = getComputerNumber(computer);
-        User user = getUserBySetInput(answer);
+        User user = new User();
+        Umpire umpire = new Umpire();
 
-        Umpire umpire = new Umpire(computer, user);
+        String answer = getComputerNumber(computer);
+        user.addUserNumbers(answer);
+
+        umpire.decideCount(computer.getNumbers(), user.getNumbers());
 
         assertThat(umpire.getStrikeCount()).isEqualTo(3);
         assertThat(umpire.is3Strike()).isTrue();
@@ -28,23 +30,24 @@ class UmpireTest {
     @DisplayName("3개의 숫자를 모두 맞추지 못하였다.")
     void decideCount_Not3Strike() {
         Computer computer = new Computer();
-        String userInput = getUserInputNot3Strike(computer.getNumbers());
-        User user = getUserBySetInput(userInput);
+        User user = new User();
+        Umpire umpire = new Umpire();
 
-        Umpire umpire = new Umpire(computer, user);
+        String userInput = getUserInputNot3Strike(computer.getNumbers());
+        user.addUserNumbers(userInput);
+
+        umpire.decideCount(computer.getNumbers(), user.getNumbers());
 
         assertThat(umpire.getStrikeCount()).isNotEqualTo(3);
         assertThat(umpire.is3Strike()).isFalse();
     }
 
-
-
-    private User getUserBySetInput(String input) {
-        User user = new User();
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        user.inputNumber();
-        return user;
-    }
+//    private User getUserBySetInput(String input) {
+//        User user = new User();
+//        System.setIn(new ByteArrayInputStream(input.getBytes()));
+//        user.inputNumber();
+//        return user;
+//    }
 
     private String getComputerNumber(Computer computer) {
         List<Integer> computerNumbers = computer.getNumbers();
