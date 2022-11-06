@@ -2,7 +2,6 @@ package baseball;
 
 import static baseball.constant.GameConstants.*;
 import static baseball.util.Converter.*;
-import static baseball.view.OutputView.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -14,23 +13,25 @@ import org.junit.jupiter.api.Test;
 
 import baseball.constant.ViewConstants;
 import baseball.controller.GameController;
-import baseball.controller.RestartController;
-import baseball.domain.Comparator;
+import baseball.domain.NumberComparator;
 import baseball.util.Converter;
 import baseball.util.RandomNumberGenerator;
 import baseball.util.Validator;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
+	private final OutputView outputView = new OutputView();
+
 	@Test
 	void restart_메소드로_게임_재시작_여부_리턴() {
-		RestartController restartController = new RestartController();
+		GameController gameController = new GameController();
 		System.setIn(new ByteArrayInputStream(END_GAME.getBytes()));
-		assertThat(restartController.restart()).isFalse();
+		assertThat(gameController.askRestart()).isFalse();
 		assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		System.setIn(new ByteArrayInputStream(RESTART_GAME.getBytes()));
-		assertThat(restartController.restart()).isTrue();
+		assertThat(gameController.askRestart()).isTrue();
 
 	}
 
@@ -48,20 +49,18 @@ class ApplicationTest extends NsTest {
 	@Test
 	void Comparator_클래스로_정답과_입력을_비교하는_기능_구현() {
 		List<Integer> answer = List.of(4, 9, 2);
-		Comparator comparator = new Comparator(answer);
+		NumberComparator numberComparator = new NumberComparator(answer);
 		String wrongInput = "283";
 		System.setIn(new ByteArrayInputStream(wrongInput.getBytes()));
 		List<Integer> digits1 = Converter.convertStringToIntegerList(wrongInput);
-		comparator.compare(digits1);
-		assertThat(comparator.isCorrect()).isFalse();
+		numberComparator.compare(digits1);
+		assertThat(numberComparator.isCorrect()).isFalse();
 
 		String rightInput = "492";
 		System.setIn(new ByteArrayInputStream(rightInput.getBytes()));
 		List<Integer> digits2 = Converter.convertStringToIntegerList(rightInput);
-		comparator.compare(digits2);
-		assertThat(comparator.isCorrect()).isTrue();
-
-		assertThat(output()).isEqualTo("1볼\n3스트라이크");
+		numberComparator.compare(digits2);
+		assertThat(numberComparator.isCorrect()).isTrue();
 	}
 
 	@Test
@@ -71,17 +70,17 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void printGettingRightAnswerMessage_메소드로_정답을_맞춘_경우_게임_종료를_안내() {
-		printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
+		outputView.printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
 
 	@Test
 	void printResult_메소드로_결과_안내_출력() {
-		printResult(0, 0);
-		printResult(2, 0);
-		printResult(0, 1);
-		printResult(1, 2);
+		outputView.printResult(0, 0);
+		outputView.printResult(2, 0);
+		outputView.printResult(0, 1);
+		outputView.printResult(1, 2);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("낫싱\n2볼\n1스트라이크\n1볼 2스트라이크\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
@@ -89,27 +88,27 @@ class ApplicationTest extends NsTest {
 	@Test
 	void printStrikesCountMessage_메소드로_스트라이크_개수_출력() {
 		int strikesCount = 2;
-		printStrikesCountMessage(strikesCount);
+		outputView.printStrikesCountMessage(strikesCount);
 		assertThat(output()).isEqualTo("2스트라이크");
 	}
 
 	@Test
 	void printBallsCountMessage_메소드로_볼_개수_출력() {
 		int ballsCount = 3;
-		printBallsCountMessage(ballsCount);
+		outputView.printBallsCountMessage(ballsCount);
 		assertThat(output()).isEqualTo("3볼");
 	}
 
 	@Test
 	void printNothingMessage_메소드로_낫싱_출력() {
-		printNothingMessage();
+		outputView.printNothingMessage();
 		System.out.print("이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("낫싱\n이 문장은 낫싱 다음 줄에 출력되어야 합니다.");
 	}
 
 	@Test
 	void printGameStartMessage_메소드로_게임_시작_안내_출력() {
-		printGameStartMessage();
+		outputView.printGameStartMessage();
 		System.out.print("이 문장은 게임 시작 안내 문장 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.\n이 문장은 게임 시작 안내 문장 다음 줄에 출력되어야 합니다.");
 	}
