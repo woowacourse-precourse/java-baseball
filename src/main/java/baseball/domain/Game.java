@@ -2,8 +2,8 @@ package baseball.domain;
 
 import java.util.List;
 
-import baseball.view.inputView;
-import baseball.view.printView;
+import baseball.view.InputView;
+import baseball.view.PrintView;
 
 public class Game {
 	private final Computer computer;
@@ -16,17 +16,17 @@ public class Game {
 	}
 
 	public void play() {
-		printView.printStartMessage();
+		PrintView.printStartMessage();
 		computer.createAnswer();
 		tryCorrectAnswer();
 	}
 
 	private void tryCorrectAnswer() {
 		initBallAndStrike();
-		user = new User(inputView.inputNum());
+		user = new User(InputView.inputNum());
 
 		compareNumber(computer.getAnswer(), user.getNumber());
-		printView.printHint(ball, strike);
+		PrintView.printHint(ball, strike);
 
 		if (isCorrectAnswer()) {
 			endGame();
@@ -36,9 +36,9 @@ public class Game {
 	}
 
 	private void endGame() {
-		printView.printEndGame();
+		PrintView.printEndGame();
 
-		if(inputView.inputRestartOrEnd().equals(inputView.RESTART_NUM)){
+		if(InputView.inputRestartOrEnd().equals(InputView.RESTART_NUM)){
 			play();
 		}
 	}

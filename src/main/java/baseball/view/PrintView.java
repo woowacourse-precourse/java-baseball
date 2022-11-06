@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.domain.Computer;
 
-public class printView {
+public class PrintView {
 	private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
 	private static final String BALL_MESSAGE = "%d볼\n";
 	private static final String STRIKE_MESSAGE = "%d스트라이크\n";
