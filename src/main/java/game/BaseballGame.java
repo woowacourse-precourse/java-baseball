@@ -19,6 +19,8 @@ public class BaseballGame {
 	}
 
 	private void roundWithComputer() {
-
+		do {
+			System.out.println("숫자를 입력해주세요 : ");
+		} while ();
 	}
 }
