@@ -188,27 +188,6 @@ public class TurnTest extends NsTest {
         turn.printGameOverMessage();
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
-    @Test
-    void askRestart_test_restart_true() {
-        Turn turn = new Turn();
-        String testInput = "1";
-        final byte[] buf = testInput.getBytes();
-        System.setIn(new ByteArrayInputStream(buf));
-
-        assertThat(turn.askRestart()).isEqualTo(true);
-    }
-
-    @Test
-    void askRestart_test_restart_false() {
-        Turn turn = new Turn();
-        String testInput = "2";
-        final byte[] buf = testInput.getBytes();
-        System.setIn(new ByteArrayInputStream(buf));
-
-        assertThat(turn.askRestart()).isEqualTo(false);
-    }
-
     public void runMain() {
 
     }

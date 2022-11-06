@@ -14,9 +14,9 @@ public class Turn {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String ASK_FOR_GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private static final int STRIKE_OUT_NUMBER = 3;
-    private static final String RESTART = "1";
+
     private List<Integer> playerNumberList;
     private int numberOfBalls;
     private int numberOfStrikes;
@@ -124,10 +124,4 @@ public class Turn {
     public void printGameOverMessage() {
         System.out.println(GAME_OVER_MESSAGE);
     }
-
-    public boolean askRestart() {
-        String playerInput = getPlayerInput(ASK_FOR_GAME_RESTART_MESSAGE);
-        return playerInput.equals(RESTART);
-    }
-
 }
