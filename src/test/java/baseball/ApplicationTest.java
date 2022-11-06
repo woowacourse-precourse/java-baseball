@@ -63,6 +63,16 @@ class ApplicationTest extends NsTest {
             //then
             assertThat(numberList.get(0)).isEqualTo((firstNumber));
         }
+
+        @Test
+        void 컴퓨터_두번째_자리수를_올바르게_가져오는지_테스트() {
+            //given
+            List<Integer> numberList = computer.getRandomNumber();
+            //when
+            int firstNumber = computer.getSecondRandomNumber();
+            //then
+            assertThat(numberList.get(1)).isEqualTo((firstNumber));
+        }
     }
 
     @Override
