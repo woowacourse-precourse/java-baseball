@@ -27,11 +27,31 @@ public class Game {
             ballCount = game.ballCount(answer, userAnswer);
             game.output(ballCount, strikeCount);
         }
-
+        if (checkNewGame() == NEW_GAME) {
+            start(new Game());
+        }
     }
 
+    private static int checkNewGame() {
+        System.out.println(MAX_NUMBER + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 " + NEW_GAME + ", 종료하려면 " + QUIT_GAME + "를 입력하세요.");
 
+        String restartNumber = readLine();
+        return checkRestartNumber(restartNumber);
+    }
 
+    private static int checkRestartNumber(String restartNumber) {
+        int num;
+        try {
+            num = Integer.parseInt(restartNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if (num != 1 && num != 2) {
+            throw new IllegalArgumentException();
+        }
+        return num;
+    }
 
     private void output(int ballCount, int strikeCount) {
         String result = "";
