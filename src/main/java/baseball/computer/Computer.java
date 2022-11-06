@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+
+import static baseball.AppConfig.BALL_COUNT;
 
 public class Computer {
-    private static final int BALL_COUNT = 3;
     private final List<Integer> baseballs = new ArrayList<>(BALL_COUNT);
 
     public int[] getBaseballs() {

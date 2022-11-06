@@ -2,9 +2,9 @@ package baseball;
 
 import java.util.Arrays;
 
-public class Result {
-    private static final int BALL_COUNT = 3;
+import static baseball.AppConfig.BALL_COUNT;
 
+public class Result {
     public static int[] getResult(int[] balls, int[] userBalls) {
         int strike = 0;
         int ball = 0;

@@ -5,6 +5,7 @@ import baseball.computer.Controller;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import static baseball.AppConfig.BALL_COUNT;
 import static baseball.Message.*;
 import static baseball.Result.getResult;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -53,7 +54,7 @@ public class BaseballGame {
     }
 
     public Boolean checkResult(int[] result){
-        if (result[strike]==3){
+        if (result[strike]==BALL_COUNT){
             return false;
         }
         return true;
@@ -70,7 +71,7 @@ public class BaseballGame {
 
     public Boolean checkInputException(String input) {
         // 길이가 3이 아닐 경우
-        if (input.length() != 3) {
+        if (input.length() != BALL_COUNT) {
             return true;
         }
         // 모두 숫자가 아닐 경우
