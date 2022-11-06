@@ -11,5 +11,14 @@ public class Game {
     public void start() {
         int strike = 0;
         int ball = 0;
+
+        while(!isComplete(strike)) {
+
+        }
+    }
+
+    private boolean isComplete(int strike) {
+        if(LENGTH == strike) return true;
+        else return false;
     }
 }

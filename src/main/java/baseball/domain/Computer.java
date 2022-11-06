@@ -11,10 +11,9 @@ public class Computer {
 
     public Computer(int LENGTH) {
         this.LENGTH = LENGTH;
-        initComputerNumber();
     }
 
-    private void initComputerNumber() {
+    public void initComputerNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         while(computerNumber.size() < LENGTH) {
             if(!computerNumber.contains(randomNumber)) {
