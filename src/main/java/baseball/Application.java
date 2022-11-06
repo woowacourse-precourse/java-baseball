@@ -52,6 +52,7 @@ class GameReadyMachine {
 
 class GameProcessor {
     private String lastInput = null;
+    private int lastInputInt = -1;
     private int strike = 0;
     private int ball = 0;
     private int[] userValue = {-1, -1, -1};
@@ -107,9 +108,11 @@ class GameProcessor {
             if (num < 100 || num > 999) {
                 throw new IllegalArgumentException();
             }
+            num=lastInputInt;
         } catch (NumberFormatException n) {
             throw new IllegalArgumentException();
         }
+
     }
 
     final int USER_USED_NUMBER = -1;
@@ -166,19 +169,25 @@ class GameProcessor {
 
 }
 
-class GameFinisher{
-    public void reStartChecker(String endValue)
-    {
-        if(endValue.equals("1"))
-        {
-            //later add 3-2 method
-        }
-        else if(endValue.equals("2"))
-        {
+class GameFinisher {
+    boolean restartTrigger = true;
+
+    GameFinisher() {
+        restartTrigger = true;
+
+    }
+
+
+    public boolean isRestartTrigger() {
+        return restartTrigger;
+    }
+
+    public void reStartChecker(String endValue) {
+        if (endValue.equals("1")) {
+            restartTrigger = true;
+        } else if (endValue.equals("2")) {
             //later add 3-3 method
-        }
-        else
-        {
+        } else {
             throw new IllegalArgumentException();
         }
 
@@ -186,6 +195,7 @@ class GameFinisher{
 }
 
 public class Application {
+
     public static void main(String[] args) {
 
 
