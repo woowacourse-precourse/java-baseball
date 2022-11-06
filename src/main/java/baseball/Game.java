@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,20 @@ public class Game {
             System.out.println(ball + "볼");
         } else {
             System.out.println("낫싱");
+        }
+    }
+
+    public boolean isCorrectAllNumber(int strike) {
+        return strike == 3;
+    }
+
+    public int getRestart() {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            return Integer.parseInt(bufferedReader.readLine());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
