@@ -38,4 +38,10 @@ public class GameTest extends NsTest {
 
 	@Override protected void runMain() {
 	}
+
+//	@Test void findTest() {
+//		game = Game.getInstance();
+//		game.find("123", "312");
+//
+//	}
 }
