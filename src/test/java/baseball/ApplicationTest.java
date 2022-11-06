@@ -55,6 +55,12 @@ class ApplicationTest extends NsTest {
         softAssert.assertThat(Application.isValidNumbersForGame("151")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("204")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("123")).isTrue();
+
+    @Test
+    void stringToNumberListTest() {
+        String numbersInString = "234";
+        List<Integer> numberList = Arrays.asList(2, 3, 4);
+        assertThat(Application.stringToNumberList(numbersInString)).isEqualTo(numberList);
     }
 
     @Test
