@@ -36,6 +36,16 @@ public class Application {
 
         return answerNum;
     }
+
+    public static boolean isNumeric(String inputValue){
+
+        try{
+            Double.parseDouble(inputValue);
+            return true;
+        } catch (IllegalArgumentException e){
+            return false;
+        }
+    }
 }
 
 
