@@ -9,10 +9,13 @@ public class RandomNumber {
     int thirdDigit;
 
     public RandomNumber() {
+        generateFirstRandomDigit();
+        generateSecondRandomDigit();
+        generateThirdRandomDigit();
     }
 
     public int generateFirstRandomDigit() {
-        return firstDigit = Randoms.pickNumberInRange(1, 9);
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     public int generateSecondRandomDigit() {
@@ -20,7 +23,7 @@ public class RandomNumber {
         while (randomNumber == firstDigit) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
         }
-        return secondDigit = randomNumber;
+        return randomNumber;
     }
 
     public int generateThirdRandomDigit() {
@@ -28,6 +31,6 @@ public class RandomNumber {
         while (randomNumber == firstDigit || randomNumber == secondDigit) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
         }
-        return thirdDigit = randomNumber;
+        return randomNumber;
     }
 }
