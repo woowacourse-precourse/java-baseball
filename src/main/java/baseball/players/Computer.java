@@ -20,7 +20,6 @@ public class Computer {
         }
         threeDifferentNumbers.addAll(pickedNumbers);
         Collections.shuffle(threeDifferentNumbers); // Unless the numbers will be arranged in ascending order.
-        System.out.println(threeDifferentNumbers); // 추후 삭제
         return threeDifferentNumbers;
     }
 }
