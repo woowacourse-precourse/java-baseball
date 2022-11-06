@@ -154,7 +154,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         void threeStrikeDoesWinTest() {
-            BallStrikeResult ballStrike = new BallStrikeResult(1, 2);
+            BallStrikeResult ballStrike = new BallStrikeResult(0, 3);
             boolean result = true;
             assertThat(ballStrike.doesWin()).isEqualTo(result);
         }
