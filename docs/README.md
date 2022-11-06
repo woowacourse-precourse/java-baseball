@@ -72,7 +72,7 @@
 - [ ] userAnswer이 regularExpression에 유효한지 비교값을 result에 저장
 - [ ] result을 리턴
 
-## (void)inputAvailableUserNumberService()
+## (String)inputAvailableUserNumberService()
 - [ ] availableUserNumberIsChecking, 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
 - [ ] userNumberMessagePrint함수를 실행
 - [ ] userNumberInput함수를 실행
