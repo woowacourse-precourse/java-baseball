@@ -8,17 +8,21 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args){
+        List<Integer> numbers;
+        int strike=0, ball=0;//, nothing=0;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while(true){
-            System.out.println("숫자 야구 게임을 시작합니다.");
 
             // 1. 3자리 수 랜덤 생성 - Randoms의 pickNumberInRange()사용
-            List<Integer> numbers = generateRandomNumber();
+            numbers = generateRandomNumber();
 
             for(int i=0; i<numbers.size(); i++)
                 System.out.println("랜덤 넘버: "+numbers.get(i));
 
+
             while(true){
-                int strike=0, ball=0;//, nothing=0;
 
                 // 잘못된 값 입력시 IllegalArgumentException()를 throw
                 String player = illegalInput();
@@ -32,12 +36,15 @@ public class Application {
 
                 // 출력과 종료 조건 메소드 분리
                 printBallCount(ball, strike);           // 출력
-                if(hasEnded(strike)){                   // 종료 조건 확인
-                    //System.out.println("게임을 종료합니다.");
+                if(strike == 3)
                     break;
-                }
             }
-            break;
+
+            if(hasEnded(strike)){                   // 종료 조건 확인
+                //System.out.println("게임을 종료합니다.");
+                break;
+            }
+
         }
     }
     // 랜덤 넘버를 생성하는 메소드
