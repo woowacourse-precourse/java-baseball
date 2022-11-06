@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -25,15 +26,15 @@ public class User {
         List<Integer> userNumbers = new ArrayList<>();
         for (String number : splitNumber) {
             int numberToInt = Integer.parseInt(number);
-            inputException(userNumbers, numberToInt);
             userNumbers.add(numberToInt);
         }
+        inputException(userNumbers);
         return userNumbers;
     }
 
-    public void inputException(List<Integer> userNumbers, int numberToInt) {
+    public void inputException(List<Integer> userNumbers) {
         int userNumbersSize = userNumbers.size();
-        if (userNumbers.contains(numberToInt)) {
+        if (!isDeduplication(userNumbers)) {
             throw new IllegalArgumentException();
         }
         if (userNumbersSize != 3) {
@@ -42,6 +43,16 @@ public class User {
         if (!isNumber(userNumbers)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public boolean isDeduplication(List<Integer> userNumbers) {
+        for (int number : userNumbers) {
+            int numberFrequency = Collections.frequency(userNumbers, number);
+            if (numberFrequency > 1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isNumber(List<Integer> userNumbers) {
