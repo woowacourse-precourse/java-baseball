@@ -19,7 +19,7 @@ public class Score {
     }
 
     public Score(final Computer computer, final User user) {
-        this.score = calculateBallCountScore(computer, user);
+        this.score = user.compareWithComputerBalls(computer, intiScoreMap());
     }
 
     private Map<BallCount, Integer> intiScoreMap() {
@@ -28,20 +28,13 @@ public class Score {
                         () -> new EnumMap<>(BallCount.class)));
     }
 
-    private Map<BallCount, Integer> calculateBallCountScore(final Computer computer, final User user) {
-        return user.compareWithComputerBalls(computer, intiScoreMap());
-    }
-
     public Map<String, Integer> getResult() {
         return score.keySet().stream()
                 .collect(Collectors.toMap(BallCount::getValue, score::get, (a, b) -> b, LinkedHashMap::new));
     }
 
     public Boolean getIsThreeStrike() {
-        if (score.get(BallCount.STRIKE) == 3) {
-            return true;
-        }
-        return false;
+        return score.get(BallCount.STRIKE) == 3;
     }
 
     @Override
