@@ -125,4 +125,37 @@ class DefaultBaseBallGameEngineTest {
             Assertions.assertThat(actual).isEqualTo(expected);
         }
     }
+
+    @Nested
+    class DescribeIsExitGame {
+        @ParameterizedTest
+        @ValueSource(strings = {"3", "restart!", "@@2"})
+        @DisplayName("유저가 지정입력 외의 입력을 할 경우 IllegalArgumentException을 반환")
+        void isExceptionInputThrowException(String exceptionInput) {
+            Assertions.assertThatThrownBy(() -> gameEngine.isExitGame(exceptionInput))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("사용자가 게임 재시작을 선택할경우 false를 반환한다.")
+        void isInputReStartSignal() {
+            String reStartSignal = "1";
+
+            boolean expected = false;
+            boolean actual = gameEngine.isExitGame(reStartSignal);
+
+            Assertions.assertThat(actual).isEqualTo(expected);
+        }
+
+        @Test
+        @DisplayName("사용자가 게임 종료를 선택할경우 true를 반환한다.")
+        void isInputExitSignal() {
+            String reStartSignal = "2";
+
+            boolean expected = true;
+            boolean actual = gameEngine.isExitGame(reStartSignal);
+
+            Assertions.assertThat(actual).isEqualTo(expected);
+        }
+    }
 }
