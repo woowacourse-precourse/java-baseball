@@ -78,6 +78,47 @@ class ApplicationTest extends NsTest {
         assertEquals(3, Application.numberOfStrikes(computer, user));
     }
 
+    @Test
+    void 볼_수_0개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,8,9));
+
+        assertEquals(0, Application.numberOfBalls(computer, user));
+    }
+
+    @Test
+    void 스트라이크로_인해_볼_수_0개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,8,9));
+
+        assertEquals(0, Application.numberOfBalls(computer, user));
+    }
+
+    @Test
+    void 볼_수_1개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(7,1,9));
+
+        assertEquals(1, Application.numberOfBalls(computer, user));
+    }
+
+    @Test
+    void 볼_수_2개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(2,1,9));
+
+        assertEquals(2, Application.numberOfBalls(computer, user));
+    }
+
+    @Test
+    void 볼_수_3개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(3,1,2));
+
+        assertEquals(3, Application.numberOfBalls(computer, user));
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

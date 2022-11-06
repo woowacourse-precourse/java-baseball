@@ -63,4 +63,15 @@ public class Application {
 
         return count;
     }
+
+    public static int numberOfBalls(Player computer, Player user){
+        int count = 0;
+
+        for(int i=0; i< NUMBERS_SIZE; i++){
+            if(computer.isBall(i, user.getNumberOfIndex(i)))
+                count++;
+        }
+
+        return count;
+    }
 }
