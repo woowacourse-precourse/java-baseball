@@ -194,15 +194,15 @@ class ApplicationTest extends NsTest {
 
     // TODO: computer
     @Test
-    // 컴퓨터 numThreeRanOfComputerLisl의 크기가 3인가.
+    @DisplayName("컴퓨터의 랜덤 숫자 3개를 가진 List의 크기가 3인가를 테스트")
     void 컴퓨터_랜덤_숫자_생성_크기_테스트_case_1() throws Exception {
         //given
         Computer computer = new Computer();
         computer.initComputer();
         // when
-        List<Integer> resultList = computer.getNumThreeRanOfComputerList();
+        int result = computer.numThreeRanOfComputerList.size();
         // then
-        assertThat(resultList.size()).isEqualTo(3);
+        assertThat(result).isEqualTo(3);
     }
 
     @Test
