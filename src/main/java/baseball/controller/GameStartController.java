@@ -5,7 +5,7 @@ import baseball.service.ResultService;
 import java.util.List;
 
 public class GameStartController {
-    public void GameStart() {
+    public void gameStart() {
 
         ResultService resultService = new ResultService();
         RandomValue randomValue = new RandomValue();
@@ -14,7 +14,6 @@ public class GameStartController {
 
         while (restart == 1) {
             List<Integer> randomNumber = randomValue.getRandom();
-            System.out.println("숫자 야구 게임을 시작하겠습니다.");
             restart = resultService.ReOrClose(randomNumber);
         }
 
