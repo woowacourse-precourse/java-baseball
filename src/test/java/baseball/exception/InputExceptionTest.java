@@ -54,4 +54,16 @@ class InputExceptionTest {
         assertThat(bool2).isTrue();
         assertThat(bool3).isTrue();
     }
+
+    @Test
+    void isEmptyInput() {
+        String normal = "123";
+        String empty = "";
+
+        Boolean bool1 = InputException.isEmptyInput(normal);
+        Boolean bool2 = InputException.isEmptyInput(empty);
+
+        assertThat(bool1).isFalse();
+        assertThat(bool2).isTrue();
+    }
 }

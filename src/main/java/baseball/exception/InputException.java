@@ -30,5 +30,9 @@ public class InputException {
     }
 
     // 빈 문자열인 경우
+    public static Boolean isEmptyInput(String inputNumber) {
+        if (inputNumber.isEmpty()) return true;
+        return false;
+    }
 
 }
