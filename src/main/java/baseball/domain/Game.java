@@ -16,7 +16,7 @@ public class Game {
     public void run() {
         computer.setForNewGame();
 
-        while(!computer.isStruckOut()) {
+        while (!computer.isStruckOut()) {
             computer.provideHintTo(player);
         }
         Output.printGameClear();

@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.view.Output;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,7 +19,7 @@ public class Computer {
         hintGenerator = new HintGenerator(strikeNumbers);
     }
 
-    public void  provideHintTo(Player player) {
+    public void provideHintTo(Player player) {
         ArrayList<Integer> playerGuess = player.guessNumbers();
         HashMap<Integer, Integer> hint = hintGenerator.generateHint(playerGuess);
         int strikeCount = hint.get(STRIKE);

@@ -4,6 +4,7 @@ import baseball.view.Input;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputTest {
     @Nested
-    class InputGuessTest extends NsTest{
+    class InputGuessTest extends NsTest {
         @Test
         void case1() {
             String playerInput = "abc";
@@ -73,7 +74,7 @@ class InputTest {
     }
 
     @Nested
-    class InputChoiceTest extends NsTest{
+    class InputChoiceTest extends NsTest {
         @Test
         void case1() {
             String playerInput = "3";

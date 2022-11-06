@@ -42,6 +42,6 @@ public class HintGenerator {
                 .filter(strikeNumbers::contains)
                 .count();
 
-        return (int)NumberOfStrikeOrBall;
+        return (int) NumberOfStrikeOrBall;
     }
 }

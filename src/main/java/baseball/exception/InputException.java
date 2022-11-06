@@ -21,7 +21,7 @@ public class InputException {
     }
 
     public void validateGuess(String playerGuess) {
-        if ( !playerGuess.matches(GUESS_FORMAT) || areNotUniqueNumbers(playerGuess)) {
+        if (!playerGuess.matches(GUESS_FORMAT) || areNotUniqueNumbers(playerGuess)) {
             throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
         }
     }
