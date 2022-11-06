@@ -9,9 +9,11 @@ public class Application {
     private static final int TERMINATE_INPUT = 2;
 
     public static void main(String[] args) {
+        NumberBaseballGame.powerOn();
         do {
             NumberBaseballGame.start();
         } while (isRestartingGame());
+        NumberBaseballGame.powerOff();
     }
 
     protected static boolean isRestartingGame() {

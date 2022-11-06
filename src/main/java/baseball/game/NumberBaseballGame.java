@@ -11,24 +11,34 @@ public abstract class NumberBaseballGame {
 
     private static final List<Integer> answerNumberList = new ArrayList<>(), playerNumberList = new ArrayList<>();
     private static int ball, strike;
-    private static boolean isFirstGame = true;
+    private static boolean isPower = false;
+
+    public static void powerOn() {
+        if (!isPower) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            isPower = true;
+        }
+    }
 
     public static void start() {
-        setup();
-        play();
-        gameOver();
+        if (isPower) {
+            setup();
+            play();
+            gameOver();
+        }
+    }
+
+    public static void powerOff() {
+        if (isPower) {
+            answerNumberList.clear();
+            playerNumberList.clear();
+            ball = 0; strike = 0;
+            isPower = false;
+        }
     }
 
     protected static void setup() {
-        printGameStartPhrase();
         pickAnswerNumberList();
-    }
-
-    protected static void printGameStartPhrase() {
-        if (isFirstGame) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            isFirstGame = false;
-        }
     }
 
     protected static void pickAnswerNumberList() {
@@ -125,8 +135,8 @@ public abstract class NumberBaseballGame {
     protected static void printGameOverPhrase() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
     //========== Getter ==========
+
     protected static List<Integer> getAnswerNumberList() {
         return answerNumberList;
     }
@@ -143,7 +153,7 @@ public abstract class NumberBaseballGame {
         return strike;
     }
 
-    protected static boolean getIsFirstGame() {
-        return isFirstGame;
+    protected static boolean getIsPower() {
+        return isPower;
     }
 }
