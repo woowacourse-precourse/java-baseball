@@ -48,6 +48,29 @@ public class Application {
         return 0;
     }
 
+    static int check_correct_number(List<Character> user_number_char_list) {
+        List<Character> temp_user_number_char_list = user_number_char_list;
+        List<Character> check_duplicate = new ArrayList<>();
+
+        for (char user_number_char : temp_user_number_char_list) {
+            if (check_duplicate.contains(user_number_char)) {
+                return 1;
+            }
+
+            if (!Character.isDigit(user_number_char)) {
+                return 1;
+            }
+
+            if (check_1_between_9_number(user_number_char_list) == 1) {
+                return 1;
+            }
+
+            check_duplicate.add(user_number_char);
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
         Boolean next_game = true;
 
