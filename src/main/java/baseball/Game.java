@@ -72,7 +72,7 @@ public class Game {
         }
 
         if (input.length() != 3)
-            throw new IllegalArgumentException("숫자는 3개를 입력해야 합니다.");
+            throw new IllegalArgumentException("숫자 3개를 입력해야 합니다.");
 
         char firstNum = input.charAt(0);
         char secondNum = input.charAt(1);

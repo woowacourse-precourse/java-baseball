@@ -41,18 +41,18 @@ public class GameTest {
     }
 
     @Test
-    void validateUserInput_메서드_사용시_숫자_3개_이상_또는_이하를_입력하면_예외_발생() {
+    void validateUserInput_메서드_사용시_숫자를_3개보다_많게_또는_적게_입력하면_예외_발생() {
         String input = "1";
 
         assertThatThrownBy(() -> game.validateUserInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("숫자는 3개를 입력해야 합니다.");
+                .hasMessageContaining("숫자 3개를 입력해야 합니다.");
 
         String input2 = "1234";
 
         assertThatThrownBy(() -> game.validateUserInput(input2))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("숫자는 3개를 입력해야 합니다.");
+                .hasMessageContaining("숫자 3개를 입력해야 합니다.");
     }
 
     @Test
