@@ -4,16 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import utill.ConstantVO;
 
 public class Computer {
 
-
-    final private static int NUM_START_RANGE_RAM = 1;
-    final private static int NUM_END_RANGE_RAM = 9;
-    final private static String NOT_TING_ANSWER = "낫싱";
-    final private static int COUNT_ZERO = 0;
-
-    final private static int NUM_THREE_STRIKE = 3;
 
     public List<Integer> numThreeRanOfComputerList;
 
@@ -54,7 +48,7 @@ public class Computer {
     }
 
     public boolean isEndTheGame() {
-        if (this.cntStrike == NUM_THREE_STRIKE) {
+        if (this.cntStrike == ConstantVO.NUM_THREE_STRIKE) {
             return true;
         }
         return false;
@@ -65,7 +59,7 @@ public class Computer {
         ResultType result = getResultType();
         switch (result) {
             case BALL_STRIKE_ZERO:
-                return NOT_TING_ANSWER;
+                return ConstantVO.NOT_TING_ANSWER;
             case BALL_ONLY:
                 return (this.cntBall + "볼 ");
             case STRIKE_ONLY:
@@ -93,27 +87,30 @@ public class Computer {
     }
 
     private boolean isHintBallStrik() {
-        return !UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO) && !UseFunc.isEqualIntOfTwo(cntStrike,
-            COUNT_ZERO);
+        return !UseFunc.isEqualIntOfTwo(cntBall, ConstantVO.COUNT_ZERO) && !UseFunc.isEqualIntOfTwo(
+            cntStrike,
+            ConstantVO.COUNT_ZERO);
     }
 
     private boolean isHintStrikeOnly() {
-        return UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO);
+        return UseFunc.isEqualIntOfTwo(cntBall, ConstantVO.COUNT_ZERO);
     }
 
     private boolean isHintBallOnly() {
-        return UseFunc.isEqualIntOfTwo(cntStrike, COUNT_ZERO);
+        return UseFunc.isEqualIntOfTwo(cntStrike, ConstantVO.COUNT_ZERO);
 
     }
 
     private boolean isHinNotting() {
-        return UseFunc.isEqualIntOfTwo(cntBall, COUNT_ZERO) && UseFunc.isEqualIntOfTwo(cntStrike,
-            COUNT_ZERO);
+        return UseFunc.isEqualIntOfTwo(cntBall, ConstantVO.COUNT_ZERO) && UseFunc.isEqualIntOfTwo(
+            cntStrike,
+            ConstantVO.COUNT_ZERO);
 
     }
 
     public int getOneRanNumAnInt() {
-        return Randoms.pickNumberInRange(NUM_START_RANGE_RAM, NUM_END_RANGE_RAM);
+        return Randoms.pickNumberInRange(ConstantVO.NUM_START_RANGE_RAM,
+            ConstantVO.NUM_END_RANGE_RAM);
     }
 
 
