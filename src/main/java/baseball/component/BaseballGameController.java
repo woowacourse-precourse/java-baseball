@@ -11,6 +11,7 @@ public class BaseballGameController {
     public static final String PLAYER_NUMBER_INPUT_ERROR_MSG = "[ERROR] 0이아닌 서로 다른 3자리 수를 입력하세요.";
     public static final String NEXT_GAME_INPUT_ERROR_MSG = "[ERROR] 1 또는 2를 입력해주세요";
 
+    private static final String PLAYER_NEXT_GAME_INPUT_REGEX = "^[12]$";
     private static final String PLAYER_NUMBER_INPUT_REGEX = "^([1-9])(?!\\1)([1-9])(?!(\\1|\\2))([1-9])$";
 
 
@@ -101,7 +102,7 @@ public class BaseballGameController {
     }
 
     private void validatePlayerNextGameInput(String playerInput) throws IllegalArgumentException{
-        if( !(playerInput.equals("1") || playerInput.equals("2"))){
+        if( !playerInput.matches(PLAYER_NEXT_GAME_INPUT_REGEX) ){
             throw new IllegalArgumentException(NEXT_GAME_INPUT_ERROR_MSG);
         }
     }
