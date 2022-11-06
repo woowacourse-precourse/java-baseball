@@ -18,15 +18,21 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
-    }
+    }*/
 
     @Test
-    void 예외_테스트() {
+    void 게임중_입력_예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-    }*/
+    }
+    void 게임중_입력_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("115"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     void 서로다른_3자리_숫자_생성_테스트() {
