@@ -34,7 +34,6 @@ public class Game {
 
     public String play() {
         Ball computerBall = ballMaker.getRandomBall();
-        System.out.println("computerBall = " + computerBall);
         boolean finishGame = false;
         while (finishGame != true) {
             Ball userBall = ballMaker.getUserBall();
@@ -42,7 +41,7 @@ public class Game {
             printResult(userBall, computerBall);
             numberOfAttempts += 1;
         }
-        System.out.printf(ENDING_MESSAGE, numberOfBall);
+        printEndingMessage();
         return "";
     }
 
@@ -70,4 +69,7 @@ public class Game {
         }
     }
 
+    private void printEndingMessage() {
+        System.out.printf(ENDING_MESSAGE, numberOfBall);
+    }
 }
