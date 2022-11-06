@@ -7,7 +7,7 @@ import static baseball.constant.Const.*;
 
 public class NumberValidator {
 
-    public static void validate(String checkNumber){
+    public static void validate(String checkNumber) {
         checkNumberCondition(checkNumber);
         checkSize(checkNumber);
         checkUnique(checkNumber);
@@ -31,7 +31,7 @@ public class NumberValidator {
         }
     }
 
-    public static void checkNumberCondition(String checkNumber) throws IllegalArgumentException{
+    public static void checkNumberCondition(String checkNumber) throws IllegalArgumentException {
         for (int i = 0; i < checkNumber.length(); i++) {
             if (isNumberWrongCondition(convertCharToInt(checkNumber.charAt(i)))) {
                 throw new IllegalArgumentException("1~9 까지의 수 조건에 충족하지 않습니다.");
@@ -47,8 +47,8 @@ public class NumberValidator {
         return (currentNumber < NUMBER_MIN_VALUE || currentNumber > NUMBER_MAX_VALUE);
     }
 
-    public static void checkRetryNumber(String retryNumber){
-        if (isNotRetryOrExit(retryNumber)){
+    public static void checkRetryNumber(String retryNumber) {
+        if (isNotRetryOrExit(retryNumber)) {
             throw new IllegalArgumentException("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
         }
     }
