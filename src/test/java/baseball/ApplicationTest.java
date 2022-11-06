@@ -119,6 +119,69 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+
+    boolean judgement(List<Integer> com, List<Integer> user) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Object ret;
+        Class app = Application.class;
+        Class args[] = new Class[2];
+        args[0] = List.class;
+        args[1] = List.class;
+
+        Object[] params = new Object[2];
+        params[0] = com;
+        params[1] = user;
+
+        Method method = app.getDeclaredMethod("judgement", args);
+        method.setAccessible(true);
+        ret = method.invoke(null, params);
+        return (boolean) ret;
+    }
+
+    @Test
+    void 판정_테스트1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Integer> com = List.of(1,2,3);
+        List<Integer> user = List.of(1,2,3);
+
+        assertThat(judgement(com, user)).isEqualTo(true);
+        assertThat(output()).contains("3스트라이크");
+    }
+
+    @Test
+    void 판정_테스트2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Integer> com = List.of(1,2,3);
+        List<Integer> user = List.of(4,5,6);
+
+        assertThat(judgement(com, user)).isEqualTo(false);
+        assertThat(output()).contains("낫싱");
+    }
+
+    @Test
+    void 판정_테스트3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Integer> com = List.of(1,2,3);
+        List<Integer> user = List.of(3,2,1);
+
+        assertThat(judgement(com, user)).isEqualTo(false);
+        assertThat(output()).contains("2볼 1스트라이크");
+    }
+
+    @Test
+    void 판정_테스트4() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Integer> com = List.of(1,2,3);
+        List<Integer> user = List.of(3,1,2);
+
+        assertThat(judgement(com, user)).isEqualTo(false);
+        assertThat(output()).contains("3볼");
+    }
+
+    @Test
+    void 판정_테스트5() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Integer> com = List.of(1,2,3);
+        List<Integer> user = List.of(1,2,9);
+
+        assertThat(judgement(com, user)).isEqualTo(false);
+        assertThat(output()).contains("2스트라이크");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
