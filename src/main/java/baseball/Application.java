@@ -5,19 +5,16 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-//        while (true) {
-//            int randomNumber = makeRandomNumber();
-//            System.out.println(randomNumber);
-//
-//            int userInputNumber = userNumber();
-//            playGame(randomNumber, userInputNumber);
-//
-//            if (restartOrEndGame() == 2) {
-//                System.out.println("게임을 종료합니다.");
-//                break;
-//            }
-//        }
-        System.out.println(checkBallCount(123, 143));
+        while (true) {
+            int randomNumber = makeRandomNumber();
+
+            playGame(randomNumber);
+
+            if (restartOrEndGame() == 2) {
+                System.out.println("게임을 종료합니다.");
+                break;
+            }
+        }
     }
 
 
@@ -45,8 +42,8 @@ public class Application {
 
 
     public static int userNumber() {
+        System.out.printf("숫자를 입력해주세요: ");
         Scanner sc = new Scanner(System.in);
-        System.out.println("숫자를 입력해주세요: ");
         int n = sc.nextInt();
 
         return exceptionHandler(n);
@@ -60,13 +57,24 @@ public class Application {
     }
 
 
-    public static void playGame(int computerInput, int userInput) {
-        int strikeCount = checkStrikeCount(computerInput, userInput);
-        int ballCount = checkBallCount(computerInput, userInput);
+    public static void playGame(int computerInput) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true){
+        while (true) {
+            int userInput = userNumber();
+            int strikeCount = checkStrikeCount(computerInput, userInput);
+            int ballCount = checkBallCount(computerInput, userInput);
+
+            if (strikeCount == 0 && ballCount == 0) {
+                System.out.println("낫싱\n");
+                continue;
+            }
+            if (strikeCount == 0 || strikeCount == 1 || strikeCount == 2) {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크\n");
+                continue;
+            }
             if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
