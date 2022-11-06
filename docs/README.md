@@ -28,6 +28,10 @@ userNumberToList()
 ```
 
 ### 게임 플레이 기능
+- [ ] 스트라이크와 볼 개수 확인
+```
+checkStrikeAndBall()
+```
 - [ ] 각 자리수의 숫자를 비교
 ```
 compareNumberForStrike()
@@ -73,9 +77,10 @@ userNumberToString
 ```
 - **PlayGame.class : 게임 실행 단계**
 ```
-compareNumber()
+checkStrikeAndBall()
 compareNumberForStrike()
 countStrike()
+exceptStrikeNumber()
 compareNumberForBall()
 countBall()
 outputResult()
