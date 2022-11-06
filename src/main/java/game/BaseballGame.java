@@ -11,9 +11,14 @@ public class BaseballGame {
 		try {
 			do {
 				this.computer = new Computer();
+				roundWithComputer();
 			} while ();
 		} catch (IllegalArgumentException e) {
 			throw e;
 		}
+	}
+
+	private void roundWithComputer() {
+
 	}
 }
