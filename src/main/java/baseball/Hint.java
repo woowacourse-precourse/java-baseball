@@ -12,7 +12,30 @@ public class Hint {
     private int ball;
     boolean threeStrike;
 
-    public void printHintMessage(){
+    public void hintCalculator(HashSet<String> comNumber, List<String> userNumber){
+        strike=0;
+        ball=0;
+
+        isStrikeOrBall(comNumber.stream()
+                        .collect(Collectors.toList())
+                , userNumber);
+
+        if(strike==3) threeStrike=true;
+        printHintMessage();
+    }
+
+    private void isStrikeOrBall(List<String> comNumber, List<String> userNumber){
+        for(int comIndex=0;comIndex<comNumber.size();comIndex++){
+            if(comNumber.get(comIndex).equals(userNumber.get(comIndex))){
+                strike++;
+                continue;
+            }
+            if(comNumber.contains(userNumber.get(comIndex))){
+                ball++;
+            }
+        }
+    }
+    private void printHintMessage(){
         if(strike==3){
             System.out.println(strike+ strikeMessage);
             return;
@@ -30,28 +53,5 @@ public class Hint {
             return;
         }
         System.out.println(ball + ballMessage + " " + strike + strikeMessage);
-    }
-
-    private void isStrikeOrBall(List<String> comNumber, List<String> userNumber){
-        for(int comIndex=0;comIndex<comNumber.size();comIndex++){
-            if(comNumber.get(comIndex).equals(userNumber.get(comIndex))){
-                strike++;
-                continue;
-            }
-            if(comNumber.contains(userNumber.get(comIndex))){
-                ball++;
-            }
-        }
-    }
-    public void hintCalculator(HashSet<String> comNumber, List<String> userNumber){
-        strike=0;
-        ball=0;
-
-        isStrikeOrBall(comNumber.stream()
-                .collect(Collectors.toList())
-                , userNumber);
-
-        if(strike==3) threeStrike=true;
-        printHintMessage();
     }
 }
