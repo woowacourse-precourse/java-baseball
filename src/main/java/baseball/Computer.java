@@ -38,4 +38,8 @@ public class Computer {
     public int getSecondRandomNumber() {
         return randomNumber.get(1);
     }
+
+    public int getThirdRandomNumber() {
+        return randomNumber.get(2);
+    }
 }
