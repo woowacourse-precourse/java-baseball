@@ -21,11 +21,17 @@ public class StrikeModel {
     private int getStrike() {
         int strikeCount = 0;
         for (int index = 0; index < 3; index++) {
-            if (userNumber[index] == computerNumber[index]) {
-                strikeCount += 1;
-            }
+            strikeCount += equalNumber(index);
         }
         return strikeCount;
+    }
+
+    // 스트라이크
+    private int equalNumber(int index) {
+        if (userNumber[index] == computerNumber[index]) {
+            return 1;
+        }
+        return 0;
     }
 
     // List를 int배열로 변환
