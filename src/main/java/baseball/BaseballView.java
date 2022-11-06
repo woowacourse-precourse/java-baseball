@@ -33,6 +33,14 @@ public class BaseballView {
      * @return 플레이어가 3가지 숫자를 모두 맞추면 true, 아니라면 false
      */
     private boolean inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputString = Console.readLine();
+        List<Integer> result = baseballController.getBallAndStrikeCount(inputString);
+        printBallStrikeNothing(result);
+        if (result.equals(List.of(0, GAME_INPUT_LENGTH))) {
+            System.out.println(GAME_INPUT_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
         return false;
     }
 
