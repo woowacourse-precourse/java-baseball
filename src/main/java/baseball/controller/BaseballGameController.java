@@ -16,14 +16,14 @@ public class BaseballGameController {
         baseballGameService.initGame(START, END, SIZE);
     }
 
-    public void run() {
+    public void run() throws IllegalArgumentException{
         init();
         start();
         end();
         retry();
     }
 
-    private void start() {
+    private void start() throws IllegalArgumentException{
         baseballGameService.playGame();
     }
 
@@ -38,7 +38,7 @@ public class BaseballGameController {
         }
     }
 
-    private int getInputNumber() {
+    private int getInputNumber() throws IllegalArgumentException{
         String input = Console.readLine();
 
         if (input.length() != 1) {

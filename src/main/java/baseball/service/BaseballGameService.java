@@ -24,7 +24,7 @@ public class BaseballGameService {
         this.size = size;
     }
 
-    public void playGame() {
+    public void playGame() throws IllegalArgumentException{
         int strike = 0;
         while (strike != 3) {
             computer.clearCount();
@@ -62,7 +62,7 @@ public class BaseballGameService {
         }
     }
 
-    private List<Integer> getUserNumbers() {
+    private List<Integer> getUserNumbers() throws IllegalArgumentException{
         GameGuidePrinter.requestNumberMessage();
 
         String input = Console.readLine();
