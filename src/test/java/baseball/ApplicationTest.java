@@ -82,7 +82,12 @@ class ApplicationTest extends NsTest {
 
     @Test
     void printStrikeAndBallTest() {
-
+        int ball = 2;
+        int strike = 1;
+        init();
+        printStrikeAndBall(ball,strike);
+        String result  = output();
+        assertEquals("2볼 1스트라이크",result);
     }
 
     @Test
