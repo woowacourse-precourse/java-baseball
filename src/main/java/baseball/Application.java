@@ -94,6 +94,17 @@ public class Application {
         return cnt;
     }
 
+    private static int getBall(List<Integer> computer, List<Integer> player){
+        int cnt=0;
+        for(int i=0;i<player.size();i++){
+            int comparePlayerNum = player.get(i);
+            if(computer.contains(comparePlayerNum) && comparePlayerNum!=computer.get(i)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -114,7 +125,7 @@ public class Application {
                 System.out.println("낫싱");
             } else{
                 int cntStrike = getStrike(computer, player);
-                
+                int cntBall = getBall(computer, player);
             }
 
             // 게임 재시작/종료 선택
