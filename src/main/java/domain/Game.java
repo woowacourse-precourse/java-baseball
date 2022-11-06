@@ -11,4 +11,8 @@ public class Game {
     public void setUserNumbers(String inputNumbers){
         userNumbers = BaseballNumbers.getUserNumbers(inputNumbers);
     }
+
+    public RoundResult getRoundResult(){
+        return computerNumbers.compareTo(userNumbers);
+    }
 }

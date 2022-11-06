@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Game;
+import domain.RoundResult;
 import view.GameView;
 
 import java.util.Scanner;
@@ -19,6 +20,8 @@ public class GameController {
         do{
             GameView.printInputMessage();
             inputUserNumbers();
+            RoundResult roundResult = game.getRoundResult();
+            GameView.printRoundResultMessage(roundResult);
         }while(true);
     }
 

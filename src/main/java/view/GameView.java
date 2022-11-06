@@ -16,4 +16,8 @@ public class GameView {
     public static void printInputMessage(){
         System.out.println(INPUT_MESSAGE);
     }
+
+    public static void printRoundResultMessage(RoundResult roundResult){
+        System.out.println(roundResult.toString());
+    }
 }
