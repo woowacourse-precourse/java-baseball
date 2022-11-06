@@ -14,6 +14,8 @@ public class Balls {
                 .map(Ball::new)
                 .collect(Collectors.toList());
     }
+
+
     private void validateUnique(List<Integer> ballNumbers) {
         if (ballNumbers.size() != ballNumbers.stream().distinct().count()) {
             throw new IllegalArgumentException("서로 다른 값을 입력해주세요.");
@@ -25,4 +27,15 @@ public class Balls {
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
         }
     }
+
+    public boolean hasSameValue(Ball ball) {
+        if (balls.contains(ball)) {
+            return true;
+        }
+        return false;
+    }
+    public boolean inSamePosition(int position, Ball otherBall) {
+        return otherBall.equals(balls.get(position));
+    }
+
 }
