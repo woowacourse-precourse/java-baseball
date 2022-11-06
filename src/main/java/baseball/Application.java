@@ -63,6 +63,18 @@ public class Application {
         
         return true;
     }
+
+    public static int tryAnswer(){
+        int answerTrialNum;
+        System.out.println("숫자를 입력해주세요 : ");
+        String answerTrialInput = Console.readLine();
+
+        if(!isInputValid(answerTrialInput))
+            throw new IllegalArgumentException("정답 입력값 오류");
+
+        answerTrialNum = Integer.parseInt(answerTrialInput);
+        return answerTrialNum;
+    }
 }
 
 
