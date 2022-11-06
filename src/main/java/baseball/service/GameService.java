@@ -20,7 +20,7 @@ public class GameService {
         do {
             doTurn();
         } while (strike != 3);
-        endGame();
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void initGame(int digit, int startRange, int endRange) {
@@ -90,18 +90,16 @@ public class GameService {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
-    private void endGame() throws IllegalArgumentException {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    public boolean isReplay() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput = Integer.parseInt(Console.readLine());
         if (userInput != 1 && userInput != 2) {
             throw new IllegalArgumentException();
         }
         if (userInput == 1) {
-            startGame();
-            return;
+            return true;
         }
-        System.out.println("게임 종료");
+        return false;
     }
 
 
