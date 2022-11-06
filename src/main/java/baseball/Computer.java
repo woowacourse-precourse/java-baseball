@@ -27,12 +27,17 @@ public class Computer {
         String generatedRandomAnswerInput = "";
 
         while (generatedRandomAnswerInput.length() < BASEBALL_COUNT) {
-            int selectedValue = Randoms.pickNumberInRange(MIN_RANGE_VALUE,MAX_RANGE_VALUE);
-            if (!generatedRandomAnswerInput.contains(String.valueOf(selectedValue))) {
-                generatedRandomAnswerInput += selectedValue;
-            }
+            generatedRandomAnswerInput = tryToAppendNewValue(generatedRandomAnswerInput);
         }
 
+        return generatedRandomAnswerInput;
+    }
+
+    private String tryToAppendNewValue(String generatedRandomAnswerInput) {
+        int selectedValue = Randoms.pickNumberInRange(MIN_RANGE_VALUE,MAX_RANGE_VALUE);
+        if (!generatedRandomAnswerInput.contains(String.valueOf(selectedValue))) {
+            generatedRandomAnswerInput += selectedValue;
+        }
         return generatedRandomAnswerInput;
     }
 }
