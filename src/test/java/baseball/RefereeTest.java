@@ -11,7 +11,7 @@ public class RefereeTest {
     @Test
     void scoring_위치가_다른_일치하는_수가_1개면_1볼() {
         Referee referee = new Referee();
-        TestableGame game = new TestableGame();
+        TestableGame game = new TestableGame(new Player(), referee);
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{2, 4, 5}));
@@ -22,7 +22,7 @@ public class RefereeTest {
     @Test
     void scoring_위치가_같은_일치하는_수가_1개면_1스트라이크() {
         Referee referee = new Referee();
-        TestableGame game = new TestableGame();
+        TestableGame game = new TestableGame(new Player(), referee);
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 2, 5}));
@@ -33,7 +33,7 @@ public class RefereeTest {
     @Test
     void scoring_1볼_1스트라이크() {
         Referee referee = new Referee();
-        TestableGame game = new TestableGame();
+        TestableGame game = new TestableGame(new Player(), referee);
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 2, 1}));
@@ -44,7 +44,7 @@ public class RefereeTest {
     @Test
     void scoring_낫싱() {
         Referee referee = new Referee();
-        TestableGame game = new TestableGame();
+        TestableGame game = new TestableGame(new Player(), referee);
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 5, 6}));
@@ -55,7 +55,7 @@ public class RefereeTest {
     @Test
     void scoring_정답() {
         Referee referee = new Referee();
-        TestableGame game = new TestableGame();
+        TestableGame game = new TestableGame(new Player(), referee);
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{1, 2, 3}));
@@ -66,6 +66,9 @@ public class RefereeTest {
 }
 
 class TestableGame extends Game {
+    TestableGame(Player player, Referee referee) {
+        super(player, referee);
+    }
 
     public void setAnswer(List<Integer> answer) {
         this.answer = answer;

@@ -11,7 +11,7 @@ public class GameTest {
 
     @Test
     void initAnswer_무작위_세자리_수_세팅() {
-        Game game = new Game();
+        Game game = new Game(new Player(), new Referee());
         game.initAnswer();
         List<Integer> answer = game.getAnswer();
         assertThat(answer).hasSize(3);
@@ -20,7 +20,7 @@ public class GameTest {
     @Test
     void initAnswer_중복숫자가_없어야_함() {
         for (int i = 0; i < 100; i++) {
-            Game game = new Game();
+            Game game = new Game(new Player(), new Referee());
             game.initAnswer();
             List<Integer> answer = game.getAnswer();
             assertThat(isUnique(answer)).isTrue();

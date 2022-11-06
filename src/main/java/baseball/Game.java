@@ -7,7 +7,14 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Game {
+
+    private Player player;
+    private Referee referee;
     protected List<Integer> answer = new ArrayList<>();
+    public Game(Player player, Referee referee) {
+        this.player = player;
+        this.referee = referee;
+    }
 
     public void initAnswer() {
         answer.clear();
