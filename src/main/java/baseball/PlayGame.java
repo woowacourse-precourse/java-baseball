@@ -1,22 +1,18 @@
 package baseball;
 
-import org.junit.platform.commons.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class PlayGame {
 
-    static Scanner scan = new Scanner(System.in);
-
     public static void run(String answer) {
         String inputString = "";
-        List<Integer> inputResult = new ArrayList<>();
+        List<Integer> inputResult;
 
         while (!inputString.equals(answer)) {
             System.out.print("숫자를 입력해주세요 : ");
-            inputString = scan.nextLine();
+            inputString = Console.readLine();
 
             checkInputString(inputString);
 
@@ -70,13 +66,11 @@ public class PlayGame {
     }
 
     public static int isStop() {
-        int res = 0;
-
-        String stopFlag = "";
+        int res;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        stopFlag = scan.nextLine();
+        String stopFlag = Console.readLine();
 
         if (stopFlag.equals("1")) {
             res = 0;
