@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.referee.Referee;
+import baseball.utils.OutputMessage;
 import baseball.view.input.Input;
 import baseball.view.output.Output;
 import java.util.List;
@@ -21,26 +22,26 @@ public class GameController {
     }
 
     public void run() {
-        output.printStartMessage();
+        output.printMessage(OutputMessage.START_MESSAGE);
         String runStatus = "start";
         while (!runStatus.equals("2")) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runSetGame(randomNumber);
-            output.printEndMessage();
+            output.printMessage(OutputMessage.END_MESSAGE);
             runStatus = input.endInput();
         }
     }
 
     private void runSetGame(List<Integer> randomNumber) {
         while (true) {
-            output.printNumberRequest();
+            output.printMessage(OutputMessage.NUMBER_REQUEST_MESSAGE);
             String userInput = input.baseballInput();
 
             String baseballResult = computer.baseballResult(randomNumber, userInput);
-            output.printResult(baseballResult);
+            output.printMessage(baseballResult);
 
             if (referee.isEndGameSet(baseballResult)) {
-                output.printSuccessMessage();
+                output.printMessage(OutputMessage.SUCCESS_MESSAGE);
                 break;
             }
         }
