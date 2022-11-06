@@ -12,11 +12,22 @@ public class StrikeModel {
         this.computerNumberList = computerNumberList;
     }
 
-    // 볼과 스트라이크 int배열로 반환
+    // 볼과 스트라이크 int배열로 반환 - 테스트코드
     public int[] getBallAndStrike() {
         int[] ballAndStrike = new int[2];
         ballAndStrike[1] = getStrike();
         ballAndStrike[0] = getBall() - getStrike();
+//        System.out.print("유저 입력값 : ");
+//        for (int i : userNumberList) {
+//            System.out.print(i+" ");
+//        }
+//        System.out.println();
+//        System.out.print("컴퓨터 입력값 : ");
+//        for (int i : computerNumberList) {
+//            System.out.print(i+" ");
+//        }
+//        System.out.println();
+//        System.out.println("볼: " + ballAndStrike[0] + " 스트라이크: " + ballAndStrike[1]);
         return ballAndStrike;
     }
 
