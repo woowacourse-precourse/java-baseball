@@ -8,6 +8,7 @@ public enum ValidationMessage {
     OVER_THREE("야구게임에서 사용될 값은 3자리 입니다. 3자리를 넘게 입력하셨습니다."),
     NOT_NUMBER("숫자만 입력해주세요."),
     NOT_DUPLICATE_NUMBER("야구게임에서 사용될 숫자값들은 중복될 수 없습니다."),
+    STOP_GAME("잘못된 값을 입력하셨습니다. 게임이 종료됩니다."),
     PROPER_TYPE("바르게 입력되었습니다.")
     ;
 
