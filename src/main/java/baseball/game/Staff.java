@@ -1,5 +1,6 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -22,5 +23,17 @@ public class Staff {
         }
 
         return targetNumbers;
+    }
+
+    public List<Integer> getUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        validateInputLength(input);
+        List<Integer> userNumbers = convertInputToUserNumbers(input);
+        validateUseForbiddenNumber(userNumbers);
+        validateDuplicateValues(userNumbers);
+
+        return userNumbers;
     }
 }
