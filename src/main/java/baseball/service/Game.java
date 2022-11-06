@@ -69,7 +69,7 @@ public class Game {
 		}
 	}
 
-	private void judgeStrikeAndBallCount() {
+	protected void judgeStrikeAndBallCount() {
 		for (int i = 0;i < NUMBER_LENGTH; i++) {
 			judgeStrikeAndBall(i, opponent.getAnswerNumbers(), player.getPlayerNumbers());
 		}
