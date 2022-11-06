@@ -14,7 +14,7 @@ public class GameStartController {
 
         while (restart == 1) {
             List<Integer> randomNumber = randomValue.getRandom();
-            restart = resultService.ReOrClose(randomNumber);
+            restart = resultService.startOrClose(randomNumber);
         }
 
         System.out.println("종료 되었습니다.");
