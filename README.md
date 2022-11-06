@@ -162,7 +162,7 @@ while (computer.size() < 3) {
 
 - model
   - 임의의 숫자 생성, 설정, 접근
-  - 숫자를 받고 결과를 판별하는 모델
+  - 입력에 대한 결과값 계산, 출력
 
 
 - controller
