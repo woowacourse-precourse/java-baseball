@@ -29,7 +29,7 @@ public class BaseballGameConsole {
         boolean matchedAllNumber = false;
         String randomNumber = batter.selectRandomNumber();
 
-        do {
+        while (!matchedAllNumber) {
             System.out.print("숫자를 입력해주세요. : ");
             String predictedNumber = pitcher.predictNumber();
             validator.validatePrediction(predictedNumber);
@@ -38,7 +38,7 @@ public class BaseballGameConsole {
             matchedAllNumber = result.getResultType() == EXACT_MATCH;
 
             emcee.showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());
-        } while (!matchedAllNumber);
+        }
     }
 
     private boolean askReplaying() {
