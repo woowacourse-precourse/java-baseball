@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,6 +59,17 @@ public class Application {
                 strike++;
         }
         return strike;
+    }
+    static HashMap<String,Integer> getResult(List<Integer> input, List<Integer> computer){
+        HashMap<String,Integer> result = new HashMap<>();
+        int ball=0, strike=0;
+        for (int i = 0; i < 3; i++) {
+            strike += checkStrike(i,input.get(i),computer);
+            ball += checkBall(i,input.get(i),computer);
+        }
+        result.put("strike",strike);
+        result.put("ball",ball);
+        return result;
     }
 
     public static void main(String[] args) {
