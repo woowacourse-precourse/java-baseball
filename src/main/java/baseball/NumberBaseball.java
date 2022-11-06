@@ -23,16 +23,6 @@ public class NumberBaseball {
 
     public NumberBaseball() {
         this.numbers = new ArrayList<>(NUMBER_SIZE);
-
-        while (numbers.size() != 3) {
-            int value = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-
-            Character character = Character.valueOf((char) (value + ASCII_ZERO));
-
-            if (!this.numbers.contains(character)) {
-                this.numbers.add(character);
-            }
-        }
     }
 
     public void gameStart() {
@@ -132,6 +122,18 @@ public class NumberBaseball {
     private void checkNumberCharacter(char value) {
         if (value < ASCII_ZERO || value > ASCII_NINE) {
             throw new IllegalArgumentException("숫자 문자가 아닙니다.");
+        }
+    }
+
+    private void setNumbers() {
+        while (numbers.size() != 3) {
+            int value = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+
+            Character character = Character.valueOf((char) (value + ASCII_ZERO));
+
+            if (!this.numbers.contains(character)) {
+                this.numbers.add(character);
+            }
         }
     }
 }
