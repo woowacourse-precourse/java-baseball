@@ -43,4 +43,8 @@ public class Game {
         return true;
     }
 
+    private static List<Integer> createSecretNumber() {
+        return new ArrayList<>();
+    }
+
 }
