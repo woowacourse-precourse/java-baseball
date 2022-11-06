@@ -1,8 +1,7 @@
-package baseball;
+package baseball.service;
 
-import baseball.GameService;
-import baseball.InputBallNumber;
-import baseball.RandomBallNumber;
+import baseball.ballnumber.InputBallNumber;
+import baseball.ballnumber.RandomBallNumber;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
