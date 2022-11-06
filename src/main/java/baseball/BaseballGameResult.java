@@ -34,7 +34,9 @@ public class BaseballGameResult {
             ballMessage = String.format("%d볼", this.ball);
         }
 
-        return String.format("%s %s", ballMessage, strikeMessage);
+        String returnMessage = String.format("%s %s", ballMessage, strikeMessage);
+
+        return returnMessage.strip();
     }
 
     public int calcStrikes(List<Integer> answerNums, List<Integer> inputNums) {
