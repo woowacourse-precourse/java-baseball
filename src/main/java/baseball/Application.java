@@ -60,7 +60,7 @@ public class Application {
         }
     }
 
-    public static boolean returnAnswer (int howManyBall, int howManyStrike) {
+    public static boolean returnAnswer (int howManyStrike) {
         if (howManyStrike==3) {
             return true;
         } else {
@@ -93,7 +93,7 @@ public class Application {
             int strike = checkStrike(answer,userInput,ball);
             ball = ball-strike;
             printStrikeAndBall(ball,strike);
-            correctAnswer = returnAnswer(ball,strike);
+            correctAnswer = returnAnswer(strike);
             if (correctAnswer) {
                 quitGame = endGame();
                 break;
