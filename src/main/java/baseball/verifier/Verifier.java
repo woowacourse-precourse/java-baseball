@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Verifier {
-    private final List<VerifiableRule> rules = new ArrayList<>();
+    List<VerifiableRule> rules = new ArrayList<>();
 
     public void addRule(VerifiableRule rule) {
         rules.add(rule);

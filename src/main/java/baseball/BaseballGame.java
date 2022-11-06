@@ -3,13 +3,14 @@ package baseball;
 import baseball.computer.Computer;
 import baseball.verifier.MakeVerifierInputToBaseballGame;
 import baseball.verifier.MakeVerifierInputToEndOrNewGame;
+import baseball.verifier.Verifier;
 
 import static baseball.BaseballConstants.NEW_GAME;
 
 
 public class BaseballGame {
-    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
-    private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
+    private final Verifier verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
+    private final Verifier verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
     private final Computer computer = new Computer();
 
     public void start() {
@@ -36,10 +37,18 @@ public class BaseballGame {
     }
 
     private String checkVerifierInputToEndOrNewGame(String input) {
-        return verifierInputToEndOrNewGame.checkValid(input);
+        if(!(verifierInputToEndOrNewGame.validates(input))) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        return input;
     }
 
     private String checkVerifierInputToBaseballGame(String input) {
-        return verifierInputToBaseballGame.checkValid(input);
+        if(!(verifierInputToBaseballGame.validates(input))) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        return input;
     }
 }
