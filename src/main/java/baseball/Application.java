@@ -7,9 +7,9 @@ import domain.User;
 public class Application {
 
     public static void main(String[] args) {
-        User user = new User();
-        Referee referee = new Referee();
         Computer computer = new Computer();
+        User user = new User();
+        Referee referee = new Referee(computer, user);
 
         playBaseballGame(user, referee, computer);
     }
@@ -17,6 +17,7 @@ public class Application {
     private static void playBaseballGame(User user, Referee referee, Computer computer) {
         computer.createRandomNumbers();
         user.guessComputerNumbers();
+        referee.judge();
     }
 
 }
