@@ -1,45 +1,28 @@
 package baseball.util;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
+import static camp.nextstep.edu.missionutils.Randoms.*;
 
 public final class GameNumberGenerator {
     public static final int GAME_NUMBER_LENGTH = 3;
     public static final int GAME_NUMBER_MIN = 1;
     public static final int GAME_NUMBER_MAX = 9;
-    private static ArrayList<Integer> gameNumberDomainList;
-
-    private static void init() {
-
-        gameNumberDomainList = createDomainList(GAME_NUMBER_MIN, GAME_NUMBER_MAX);
-    }
 
     public static String createNumber() {
-        init();
-        return getLengthSizeRandomStringInDomain(GAME_NUMBER_LENGTH);
-    }
-
-    private static ArrayList<Integer> createDomainList(int start, int end) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = start; i <= end; i++) {
-            list.add(i);
-        }
-        return list;
-    }
-
-    private static String getLengthSizeRandomStringInDomain(int length) {
-        String randomString = "";
+        String gameNumber = "";
+        boolean used[] = new boolean[GAME_NUMBER_MAX + 1];
         for (int i = 0; i < GAME_NUMBER_LENGTH; i++) {
-            int randomIndex = getRandomIndex(0, gameNumberDomainList.size() - 1);
-            randomString += gameNumberDomainList.get(randomIndex);
-            gameNumberDomainList.remove(randomIndex);
+            int randomNumber = getNotDuplicatedNumber(used);
+            gameNumber += String.valueOf(randomNumber);
         }
-        return randomString;
+        return gameNumber;
     }
 
-    private static int getRandomIndex(int start, int end) {
-
-        return Randoms.pickNumberInRange(start, end);
+    public static int getNotDuplicatedNumber(boolean[] used) {
+        int randomNumber = pickNumberInRange(GAME_NUMBER_MIN, GAME_NUMBER_MAX);
+        while (used[randomNumber] == true) {
+            randomNumber = pickNumberInRange(GAME_NUMBER_MIN, GAME_NUMBER_MAX);
+        }
+        used[randomNumber] = true;
+        return randomNumber;
     }
 }
