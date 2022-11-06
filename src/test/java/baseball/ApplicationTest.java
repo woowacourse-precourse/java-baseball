@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -110,6 +110,13 @@ class ApplicationTest extends NsTest {
     void 입력값_정규식_테스트3(){
         boolean is3Digit = baseBallGame.is3DigitNumber("hello123");
         assertThat(is3Digit).isEqualTo(false);
+    }
+
+    @Test
+    void 입력값_유효성_테스트1(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            baseBallGame.inputValidation("223");
+        });
     }
 
     @Override
