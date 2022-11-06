@@ -8,5 +8,9 @@ public class Application {
         Baseball baseball = new Baseball();
         baseball.setNumber();
         System.out.println(baseball.getNumber());
+
+        UserInput userInput = new UserInput();
+        userInput.input();
+        System.out.println(userInput.getNumber());
     }
 }
