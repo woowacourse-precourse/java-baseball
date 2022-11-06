@@ -91,6 +91,23 @@ public class Application {
         }
         return strike_cnt;
     }
+
+    static void doing_baseball(List<Integer> answer){
+        List<Integer> cut_by_one;
+        boolean check_continue = false;
+        int input_num= 000;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        try {
+            while (!check_continue) {
+                input_num = input_your_num();
+                cut_by_one = cut_the_number(input_num);
+                check_continue = check_answer(answer, cut_by_one);
+            }
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
