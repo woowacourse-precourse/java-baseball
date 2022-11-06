@@ -4,6 +4,15 @@ public class GameResult {
     int strike;
     int ball;
 
+    GameResult() {
+
+    }
+
+    GameResult(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public void printResult() {
         if (isUserWin()) {
             System.out.println("3스트라이크");
