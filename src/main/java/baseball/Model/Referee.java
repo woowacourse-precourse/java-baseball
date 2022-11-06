@@ -4,12 +4,14 @@ import java.util.List;
 
 public class Referee {
 
+    private int strike;
+    private int ball;
     private static final int MAX_LEN = 2;
     private static final int ZERO = 0;
     private static final String CHOICEONETWO = "[1-2]";
 
     public int isStrike(List<Integer> user, List<Integer> computer) {
-        int strike = 0;
+        strike = 0;
         for (int position = MAX_LEN; position >= ZERO; position--) {
             if (user.get(position).equals(computer.get(position))) {
                 strike++;
@@ -20,7 +22,7 @@ public class Referee {
     }
 
     public int isBall(List<Integer> user, List<Integer> computer) {
-        int ball = 0;
+        ball = 0;
         for (Integer integer : user) {
             if (computer.contains(integer)) {
                 ball++;
@@ -37,5 +39,13 @@ public class Referee {
             return false;
         }
         return true;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
     }
 }

@@ -32,10 +32,10 @@ public class Game {
             outputView.inputNumMessage();
             String input = inputView.inputUser();
             player.saveUserNumber(number.createUserNumber(input));
-            int strike = referee.isStrike(player.getUser(), player.getComputer());
-            int ball = referee.isBall(player.getUser(), player.getComputer());
-            outputView.printResultState(ball, strike);
-            if (strike == THREESTRIKE) {
+            referee.isStrike(player.getUser(), player.getComputer());
+            referee.isBall(player.getUser(), player.getComputer());
+            outputView.printResultState(referee.getBall(), referee.getStrike());
+            if (referee.getStrike() == THREESTRIKE) {
                 pass = false;
             }
         }
