@@ -4,10 +4,7 @@
 
 ## 🚀 기능 목록
 
-- ### abstractClasses 패키지
-  - [X] **InputChecker**
-  - 입력이 유효한지 검사하는 추상클래스입니다.
-  - 추상 메서드 isInputErroneous를 가지고 있습니다.
+- ### abstract 패키지
 
   - [X] **Game**
   - 게임 구현에 사용될 추상클래스입니다.
@@ -30,7 +27,7 @@
     - [X] printScore
       - 점수를 출력합니다.
 
-  - [ ] **BaseballInputChecker**
+  - [ ] **InputChecker**
     - 숫자 야구 게임의 입력이 유효한지 검사하는 클래스입니다.
     - [ ] hasLengthOf
     - 문자열의 길이가 매개변수 값과 일치하는지 검사합니다.
@@ -44,7 +41,7 @@
       - [ ] isEndCommandValid
       - 게임 종료일 경우, 재시작/종료 입력인지 검사합니다.
 
-  - [ ] **BaseballGame**
+  - [ ] **Game**
     - 숫자야구 게임을 위한 클래스입니다.
       - [X] BaseballGame 생성자
       - 게임 인스턴스를 생성합니다.
