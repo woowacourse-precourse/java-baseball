@@ -48,5 +48,12 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    @DisplayName("서로 다른 3개의 수가 아닌 경우")
+    public void duplicationNumber() throws Exception{
+        assertThatThrownBy(()-> Application.validationAndConvert("133"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
