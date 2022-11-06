@@ -2,14 +2,11 @@ package baseball;
 
 public class Application {
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void main(String[] args) throws IllegalArgumentException {
         BaseBallGame baseballGame = BaseBallGame.getGame();
-        try {
-            baseballGame.gameStart();
-            baseballGame.gamePlaying();
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+
+        baseballGame.gameStart();
+        baseballGame.gamePlaying();
+
     }
 }
