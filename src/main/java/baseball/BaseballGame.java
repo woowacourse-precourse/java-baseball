@@ -6,9 +6,10 @@ public class BaseballGame {
     private static final String GAME_START_COMMENT = "숫자 야구 게임을 시작합니다.\n";
     private static final String NUMBER_INPUT_COMMENT = "숫자를 입력해주세요 : ";
 
-    public void playGame() {
+    public void playGame() throws IllegalArgumentException {
         System.out.print(GAME_START_COMMENT);
         String userInput = getUserInput();
+        NumberValidator.checkInput(userInput);
     }
 
     public String getUserInput() {
