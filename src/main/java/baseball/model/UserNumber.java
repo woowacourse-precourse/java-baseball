@@ -1,41 +1,24 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
 public class UserNumber {
-    private List<Integer> userNumber;
+    private List<Integer> userNumbers;
 
     //입력받고 number로 리스트에 저장하는 기능
     public void setUserNumbers(String input) {
-        userNumber = new ArrayList<>();
+        userNumbers = new ArrayList<>();
         int inputToInt = Integer.parseInt(input);
 
         while (inputToInt > 0){
-            userNumber.add(inputToInt % 10);
+            userNumbers.add(inputToInt % 10);
             inputToInt /= 10;
         }
-        Collections.reverse(userNumber);
+        Collections.reverse(userNumbers);
     }
 
     public List<Integer> getUserNumbers() {
-        return userNumber;
-    }
-
-    //Console.readLine()로 입력받는 부분 함수
-    public String inputUserNumber(){
-        String input = Console.readLine();
-
-        if(!isInputDigit(input)
-                || !isInputLengthUnder3(input)
-                || !isBetween1to9(input)
-                || !isInputNotDuplicate(input)){
-           throw new IllegalArgumentException("게임 종료시키기");
-        }
-        else{
-            return input;
-        }
+        return userNumbers;
     }
 
     //입력받는 부분을 검증할것 1. 숫자인가?
