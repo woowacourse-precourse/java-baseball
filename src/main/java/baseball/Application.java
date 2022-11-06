@@ -27,16 +27,6 @@ public class Application {
 
     }
 
-    static void countStrike(List<Integer> computer, List<Integer> user, Count c) {
-        for (int i = 0; i < 3; i++) {
-            if (computer.get(i).equals(user.get(i))) {
-                c.strike++;
-                c.ball--;
-            }
-        }
-    }
-
-
     static void addUserNumber(List<Integer> user, String userNumber) {
         for (int i = 0; i < userNumber.length(); i++) {
             int n = Character.getNumericValue(userNumber.charAt(i));
