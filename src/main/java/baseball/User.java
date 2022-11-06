@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
     private static final int DIGIT_NUMBER = 3;
 
-    public static String userNumber() {
+    public static String Number() {
         String userNumber = "";
 
         System.out.print(GameMessage.input);

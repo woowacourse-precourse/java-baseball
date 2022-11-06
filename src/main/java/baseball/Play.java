@@ -3,12 +3,12 @@ package baseball;
 import java.util.List;
 
 public class Play {
-    public void playGame() {
-        String computerNumber = Computer.computerNumber();
+    public void Game() {
+        String computerNumber = Computer.Number();
         boolean endGameCheck;
 
         do {
-            String userNumber = User.userNumber();
+            String userNumber = User.Number();
             BaseballGame baseballGame = new BaseballGame(userNumber, computerNumber);
             baseballGame.isBall();
             baseballGame.isStrike();
