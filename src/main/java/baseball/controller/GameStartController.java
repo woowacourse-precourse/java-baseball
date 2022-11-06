@@ -4,11 +4,12 @@ package baseball.controller;
 import baseball.service.GameStartService;
 import baseball.status.GameStatus;
 import baseball.status.HintStatus;
+import baseball.view.View;
 
 
 public class GameStartController {
     private static void controlGame() {
-        System.out.println(GameStatus.RESTART_OR_STOP_GAME.getText());
+        View.printRestartOrStop();
         String userInput = GameStartService.getUserInput();
         if(userInput.equals("1")){
             GameStartService.initGame();
@@ -19,17 +20,17 @@ public class GameStartController {
     }
 
     private static void finishGame() {
-        System.out.println(GameStatus.END_GAME.getText());
+        View.printFinishGame();
     }
 
     public static void startFirstGame(){
-        System.out.println(GameStatus.START_GAME.getText());
+        View.printStartGame();
         startGame();
     }
 
     private static void startGame() {
         GameStartService.initBallAndStrike();
-        System.out.print(GameStatus.INPUT_USER_NUMBER.getText());
+        View.printInputUserNumber();
         saveNumber();
         compareNumber();
     }
@@ -40,9 +41,9 @@ public class GameStartController {
     }
 
     private static void showHint(String hint) {
-        System.out.println(hint);
+        View.printHint(hint);
         if(hint.equals(HintStatus.ANSWER.getText())){
-            System.out.println(GameStatus.SUCCESS_GAME.getText());
+            View.printCompleteGame();
             controlGame();
         }else{
             startGame();
