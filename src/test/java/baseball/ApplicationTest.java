@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,18 +11,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Test
     void randomNumber_중복확인() {
-        List<Integer> randomNumber = Computer.createRandomNumber();
+        String randomNumber = Computer.createRandomNumber();
 
-        assertThat(randomNumber.get(0)).isNotEqualTo(randomNumber.get(1));
-        assertThat(randomNumber.get(0)).isNotEqualTo(randomNumber.get(2));
-        assertThat(randomNumber.get(1)).isNotEqualTo(randomNumber.get(2));
+        assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(1));
+        assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(2));
+        assertThat(randomNumber.charAt(1)).isNotEqualTo(randomNumber.charAt(2));
     }
 
     @Test
     void randomNumber_길이확인() {
-        List<Integer> randomNumber = Computer.createRandomNumber();
-
-        assertThat(randomNumber.size()).isEqualTo(3);
+        String randomNumber = Computer.createRandomNumber();
+        assertThat(randomNumber.length()).isEqualTo(3);
     }
 
     @Test
@@ -60,25 +57,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void should_3Strike_When_allSame() {
+        String randomNumber = "123";
+        String userNumber = "123";
+        String result = "3스트라이크";
+        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+    }
+
+    @Test
     void should_Strike_When_SamePositionSameNumber() {
-        List<Integer> randomNumber = List.of(1, 2, 3);
-        List<Integer> userNumber = List.of(1, 4, 5);
+        String randomNumber = "123";
+        String userNumber = "145";
         String result = "1스트라이크";
         assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
     }
 
     @Test
     void should_Ball_When_SameNumber() {
-        List<Integer> randomNumber = List.of(1, 2, 3);
-        List<Integer> userNumber = List.of(4, 5, 1);
+        String randomNumber = "123";
+        String userNumber = "451";
         String result = "1볼";
         assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
     }
 
     @Test
     void should_Nothing_When_NothingSame() {
-        List<Integer> randomNumber = List.of(1, 2, 3);
-        List<Integer> userNumber = List.of(4, 5 , 6);
+        String randomNumber = "123";
+        String userNumber = "456";
         String result = "낫싱";
         assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
     }

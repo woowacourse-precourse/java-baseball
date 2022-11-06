@@ -2,45 +2,30 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
-
 public class GameController {
     Computer computer = new Computer();
-    List<Integer> goalNumber = Computer.createRandomNumber();
+    String goalNumber = computer.createRandomNumber();
 
     public void start() {
         Message.start();
         playing();
     }
 
-    public void playing() {
-        List<Integer> userNumber = getUserNumber();
+    private void playing() {
+        String userNumber = getUserNumber();
         computer.getHint(userNumber, goalNumber);
     }
 
-    public List<Integer> getUserNumber() throws IllegalArgumentException {
-        List<Integer> userNumber = new ArrayList<>();
+    public String getUserNumber() throws IllegalArgumentException {
         Message.getUserNumber();
-        String inputNumber = Console.readLine();
+        String userNumber = Console.readLine();
 
-        if (!Exception.isCheckDigit(inputNumber)
-            || !Exception.isCheckLength(inputNumber)
-            || !Exception.isCheckOverlap(inputNumber)
-            || !Exception.isCheckRange(inputNumber)) {
+        if (!Exception.isCheckDigit(userNumber)
+            || !Exception.isCheckLength(userNumber)
+            || !Exception.isCheckOverlap(userNumber)
+            || !Exception.isCheckRange(userNumber)) {
             throw new IllegalArgumentException();
         }
-        userNumber = changeList(inputNumber);
-
         return userNumber;
     }
-
-    private List<Integer> changeList(String inputNumber) {
-        List<Integer> list = new ArrayList<>();
-        for(int i=0; i<inputNumber.length(); i++) {
-            char temp = inputNumber.charAt(i);
-            list.add(i);
-        }
-        return list;
-    }
-
 }

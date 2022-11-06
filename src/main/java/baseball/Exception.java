@@ -24,4 +24,8 @@ public class Exception {
     public static boolean isCheckRange(String inputNumber) {
         return !inputNumber.contains("0");
     }
+
+    public static boolean isValidNumber(int inputNumber) {
+        return inputNumber == 1 || inputNumber == 2;
+    }
 }
