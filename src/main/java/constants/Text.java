@@ -2,7 +2,7 @@ package constants;
 
 public enum Text {
     NOTIFY_START("숫자 야구 게임을 시작합니다."),
-    INPUT_REQUEST("숫자를 입력해주세요 : "),
+    NUMBER_INPUT_REQUEST("숫자를 입력해주세요 : "),
     STRIKE("스트라이크"),
     BALL("볼"),
     NOTING("낫싱"),
