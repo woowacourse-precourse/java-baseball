@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import baseball.model.Game;
 import baseball.utility.Utility;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
