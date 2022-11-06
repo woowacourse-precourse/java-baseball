@@ -24,6 +24,7 @@ public class GameService {
         strike = 0;
         ball = 0;
         pickUserNum();
+        countScore();
     }
 
     private void pickUserNum() throws IllegalArgumentException {
@@ -38,6 +39,23 @@ public class GameService {
             throw new IllegalArgumentException();
         }
         user.setUserNum(userNum);
+    }
+
+    private void countScore() throws IllegalArgumentException {
+        List<Integer> computerNum = computer.getComputerNum();
+        List<Integer> userNum = user.getUserNum();
+        for (int com = 0; com < computerNum.size(); com++) {
+            for (int user = 0; user < userNum.size(); user++) {
+                if (computerNum.get(com) != userNum.get(user)) {
+                    continue;
+                }
+                if (com != user) {
+                    ball++;
+                    continue;
+                }
+                strike++;
+            }
+        }
     }
 
 }
