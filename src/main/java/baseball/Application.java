@@ -29,7 +29,7 @@ public class Application {
             }
 
 
-            if (checkScoreInUserInput(userInput)) {
+            if (checkScoreInUserInput(userInput, computerRandomNumber)) {
                 exitOrRestartSign = exitOrRestart();
             }
             if (exitOrRestartSign) {
@@ -61,7 +61,7 @@ public class Application {
 
 
     // 스트라이크, 볼, 낫싱 판별 후 출력
-    static boolean checkScoreInUserInput(String userInput) {
+    static boolean checkScoreInUserInput(String userInput, List<Integer> computerInput) {
         int strikeCnt = 0;
         int ballCnt = 0;
         List<Integer> userInputList = new ArrayList<>();
@@ -72,7 +72,7 @@ public class Application {
 
         boolean aleadyCheckedIndex[] = new boolean[3];
         for (int index = 0; index < 3; index++) {
-            if (userInputList.get(index) == computerRandomNumber.get(index)) {
+            if (userInputList.get(index) == computerInput.get(index)) {
                 strikeCnt++;
                 aleadyCheckedIndex[index] = true;
             }
@@ -81,7 +81,7 @@ public class Application {
             if (aleadyCheckedIndex[index]) {
                 continue;
             }
-            if (computerRandomNumber.contains(userInputList.get(index))) {
+            if (computerInput.contains(userInputList.get(index))) {
                 ballCnt++;
             }
         }
