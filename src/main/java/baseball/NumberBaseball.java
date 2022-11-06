@@ -29,6 +29,7 @@ public class NumberBaseball {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
+            setNumbers();
             playGame();
         } while (isRestart());
     }
@@ -126,6 +127,7 @@ public class NumberBaseball {
     }
 
     private void setNumbers() {
+        this.numbers.clear();
         while (numbers.size() != 3) {
             int value = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 
