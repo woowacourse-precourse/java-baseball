@@ -1,12 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
 public class Application {
 
-    public static Scanner scanner = new Scanner(System.in);
     public static int threeStrikesIdentifier = 0;
 
     public static void main(String[] args) {
@@ -20,7 +20,8 @@ public class Application {
         threeStrikesIdentifier = 0;
         while (threeStrikesIdentifier == 0) {
             System.out.print("숫자를 입력해 주세요 : ");
-            countBallStrikeFromCurrentInput(computer, scanner.nextInt());
+            String response = Console.readLine();
+            countBallStrikeFromCurrentInput(computer, Integer.parseInt(response));
         }
     }
 
@@ -55,10 +56,14 @@ public class Application {
         }
 
         if (count == 3) {
+            int temp = placeValuesFromNum.get(2);
+            placeValuesFromNum.set(2, placeValuesFromNum.get(0));
+            placeValuesFromNum.set(0, temp);
             return placeValuesFromNum;
         } else {
             throw new IllegalArgumentException("세 자릿수를 입력해주세요.");
         }
+
     }
 
     public static void countBallStrikeFromCurrentInput(List<Integer> computersInputList, int user) {
@@ -104,13 +109,13 @@ public class Application {
         threeStrikesIdentifier = 1;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int response = scanner.nextInt();
-        switch (response) {
+        String response = Console.readLine();
+
+        switch (Integer.parseInt(response)) {
             case 1:
                 processBaseballGame();
                 break;
             case 2:
-                scanner.close();
                 return;
             default:
                 throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
