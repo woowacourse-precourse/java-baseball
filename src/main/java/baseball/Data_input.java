@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
-public class Input {
+public class Data_input {
+
     private String input_string;
 
-    Input()
-    {
+    Data_input() {
         this.input_string = input_number();
     }
 
