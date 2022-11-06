@@ -8,8 +8,8 @@ import java.util.List;
 public class DataProcessing {
     private List<Integer> dataForProcess;
     private List<Integer> dataForCompare;
-    public static final int BALL_INDEX = 0;
-    public static final int STRIKE_INDEX = 1;
+    public static final int STRIKE_INDEX = 0;
+    public static final int BALL_INDEX = 1;
 
     DataProcessing() {
     }
