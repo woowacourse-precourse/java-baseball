@@ -20,7 +20,7 @@ public class GameTest {
 
     @Test
     void setUserNumberTest(){
-        setUserNumber("111");
-        assertThat(userNumbers).containsExactly(1,1,1);
+        setUserNumber("123");
+        assertThat(userNumbers).containsExactly(1,2,3);
     }
 }
