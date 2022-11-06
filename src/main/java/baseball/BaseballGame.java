@@ -19,6 +19,7 @@ public class BaseballGame {
     public void play(){
         isEnd = false;
         computer.createNumber();
+        printGameStartStatement();
         try{
             while(true){
                 getPlayerNumber();
@@ -72,6 +73,10 @@ public class BaseballGame {
 
     public boolean getIsContinue(){
         return isContinue;
+    }
+
+    private void printGameStartStatement(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
 
