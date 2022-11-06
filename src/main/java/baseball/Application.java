@@ -27,6 +27,34 @@ public class Application {
         return userInputString;
     }
 
+    //  입력값을 list로 변환
+    public static List<Integer> UserInput_list(String input) {
+        List<Integer> user_list = new ArrayList<>();
+        int user_input = Integer.MAX_VALUE;
+
+        user_input = Integer.parseInt(input);
+
+        if (user_input < 100 || user_input > 999) {
+            throw new IllegalArgumentException();
+        }
+
+        user_list.add(user_input / 100);
+        user_list.add((user_input % 100) / 10);
+        user_list.add(user_input % 10);
+
+        if (user_list.contains(0)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (user_list.get(0) == user_list.get(1) ||
+                user_list.get(1) == user_list.get(2) ||
+                user_list.get(0) == user_list.get(2)) {
+            throw new IllegalArgumentException();
+        }
+
+        return user_list;
+    }
+
     //  ball strike 판별
     public static List<Integer> BallStrike(List<Integer> answer, List<Integer> user) {
         List<Integer> ballstrike = new ArrayList<>(2);
@@ -57,26 +85,9 @@ public class Application {
             answer = Answer();
             System.out.println(answer);
             input: while(true){
+                System.out.print("숫자 입력 : ");
                 try {
-                    System.out.print("숫자 입력 : ");
-                    user_input = Integer.parseInt(UserInput());
-
-                    if ( user_input < 100 || user_input > 999) {
-                        throw new IllegalArgumentException();
-                    }
-
-                    user.add(user_input / 100);
-                    user.add((user_input % 100) / 10);
-                    user.add(user_input % 10);
-
-                    if( user.contains(0)) {
-                        throw new IllegalArgumentException();
-                    }
-
-                    if ( user.get(0) == user.get(1) || user.get(1) == user.get(2) || user.get(0) == user.get(2)) {
-                        throw new IllegalArgumentException();
-                    }
-
+                    user = UserInput_list(UserInput());
                 } catch (IllegalArgumentException e) {
                     System.out.println("error");
                     break game;
