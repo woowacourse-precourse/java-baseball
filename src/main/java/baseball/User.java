@@ -28,20 +28,15 @@ public class User {
     }
 
     public static List<Integer> checkTheNumber(String input) {
-        boolean isWrongInput = false;
         int number = InputException.changeStrToInt(input);
         List<Integer> numArr = changeIntToList(number);
 
         if (InputException.isOverlap(numArr)
                 || InputException.isNotSizeThree(numArr)
                 || InputException.hasZero(numArr)) {
-            isWrongInput = true;
-        }
-
-        if (isWrongInput == true) {
             throw new IllegalArgumentException("잘못된 입력입니다. 프로그램을 종료합니다.");
         }
-
+        
         return numArr;
     }
 
