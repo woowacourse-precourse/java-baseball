@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) {
 
-        System.out.print("숫자를 입력해 주세요 : ");
-        System.out.println(UserInput.request());
-
+        //NumberBaseballGame.startGame();
 
     }
 }
@@ -21,6 +19,7 @@ public class Application {
 class UserInput {
     private static String readLine = "";
     public static int[] request() {
+        readLine = "";
         readLine = Console.readLine();
         validLength();
         isNumber();
@@ -34,7 +33,7 @@ class UserInput {
         }
     }
     private static void isNumber() {
-        Integer.parseInt(readLine);
+        //Integer.parseInt(readLine);
     }
 
     private static int[] divideDigits() {
@@ -60,13 +59,22 @@ class BaseballGameSentence {
 }
 
 class PrintGuidSentence {
-    public static void loadGame() {
+    public static void startGame() {
         System.out.println(BaseballGameSentence.GAME_START);
     }
     public static void requestNumber() {
         System.out.print(BaseballGameSentence.REQUEST_NUMBER);
     }
-    public static void printResult() {
+    public static void printResult(int strike, int ball) {
+        String dst = "";
+        if (strike > 0) {
+            dst = dst + strike + BaseballGameSentence.STRIKE;
+        }
+        if (ball > 0) {
+            dst = dst + ball + BaseballGameSentence.BALL;
+        }
+
+        System.out.println(dst);
 
     }
     public static void endGame() {
@@ -77,7 +85,7 @@ class PrintGuidSentence {
 
 
 class BaseballNumber {
-    private int[] baseballNumber;
+    private final int[] baseballNumber;
 
     BaseballNumber(int[] baseballNumber) {
         this.baseballNumber = baseballNumber;
@@ -99,27 +107,59 @@ class BaseballNumber {
     }
     private void validDuplication(int eachNumber, int index) {
         for (int i = 0; i < baseballNumber.length; i++) {
-            if(index != i || eachNumber == baseballNumber[i]) {
+            if(index != i && eachNumber == baseballNumber[i]) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
+    public int[] checkStrikerAndBall(BaseballNumber userGuess) {
+        int[] strikeAndBall = new int[2];
 
-    // 포함확인 함수
-    // 위치확인 함수
+        for (int index = 0; index < baseballNumber.length; index++) {
+            int containIndex = checkContain(userGuess.baseballNumber[index]);
+            strikeAndBall[0] += checkStrike(containIndex,index);
+            strikeAndBall[1] += checkBall(containIndex,index);
+        }
+        return strikeAndBall;
+    }
 
+    public int checkContain(int number) {
+        for (int index = 0; index < baseballNumber.length; index++) {
+            if (baseballNumber[index] == number) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private int checkStrike(int containIndex, int userGuessIndex) {
+        if (containIndex >= 0 && containIndex == userGuessIndex) {
+            return 1;
+        }
+        return 0;
+    }
+    private int checkBall(int containIndex, int userGuessIndex) {
+        if (containIndex >= 0 && containIndex != userGuessIndex) {
+            return 1;
+        }
+        return 0;
+    }
 }
 
 
 class NumberBaseballGame {
-    private BaseballNumber baseballNumber;
+    private static BaseballNumber baseballNumber;
+    private static boolean gameEndFlag = false;
 
-    public void startGame() {
+    public static void startGame() {
+        makeRandomBaseballNumber();
+        PrintGuidSentence.startGame();
+        proceedGame();
 
     }
 
-    private void makeRandomBaseballNumber() {
+    private static void makeRandomBaseballNumber() {
         int[] numberContainer = new int[3];
         int containerIndex = 0;
 
@@ -134,11 +174,18 @@ class NumberBaseballGame {
         }
         baseballNumber = new BaseballNumber(numberContainer);
     }
-    private void proceedGame() {
+    private static void proceedGame() {
+        PrintGuidSentence.requestNumber();
+        checkBaseballNumber(new BaseballNumber(UserInput.request()));
+
+        PrintGuidSentence.requestNumber();
+        checkBaseballNumber(new BaseballNumber(UserInput.request()));
+
 
     }
-    private void checkBaseballNumber(BaseballNumber userGuess) {
-
+    private static void checkBaseballNumber(BaseballNumber userGuess) {
+        int[] strikeAndBall = baseballNumber.checkStrikerAndBall(userGuess);
+        PrintGuidSentence.printResult(strikeAndBall[0], strikeAndBall[1]);
     }
 
 
