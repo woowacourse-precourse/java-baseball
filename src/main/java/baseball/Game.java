@@ -9,12 +9,12 @@ import java.util.List;
 
 public class Game {
 
-    static final int EXIT = 2;
+    private static final int EXIT = 2;
 
-    static int strike = 0;
-    static int ball = 0;
-    static boolean gameEnd = false;
-    static boolean gameExit = false;
+    private int strike = 0;
+    private int ball = 0;
+    private boolean gameEnd = false;
+    private boolean gameExit = false;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
