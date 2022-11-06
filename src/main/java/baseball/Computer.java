@@ -19,6 +19,19 @@ public class Computer {
         }
     }
 
+    public static boolean checkScore(String input) {
+        int ball = countBall(input);
+        int strike = countStrike(input);
+
+        if(strike == 3) {
+            Result.printStrikeBallMessage(strike, ball);
+            return true;
+        }
+
+        Result.printStrikeBallMessage(strike, ball);
+        return false;
+    }
+
     private static int countBall(String input) {
         int ball = 0;
         for(int i = 0; i < input.length(); i++) {
