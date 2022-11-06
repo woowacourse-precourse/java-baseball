@@ -160,10 +160,10 @@ while (computer.size() < 3) {
 
 - GameNumber
   - [x] 난수 생성
-    - [ ] 유효성 검사
+    - [x] 유효성 검사
       - [x] 길이
       - [x] 숫자(1 ~ 9)
-      - [ ] 겹치는 수
+      - [x] 겹치는 수
 
   
 - Printer
@@ -176,6 +176,7 @@ while (computer.size() < 3) {
 
 - Receiver
   - [ ] 사용자 입력
+    - [ ] 유효성 검사
 
 
 

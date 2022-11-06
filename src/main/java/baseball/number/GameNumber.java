@@ -51,7 +51,10 @@ public class GameNumber {
         return true;
     }
 
-
+    public boolean isNotDuplicatedNumber(String userNumber) {
+        IntStream stream = userNumber.chars();
+        return (stream.distinct().count() == NUMBER_LENGTH);
+    }
 
 
 }
