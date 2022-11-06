@@ -7,18 +7,18 @@ public class PlayBaseBall {
     int strike = 0;
     while (true)
     {
-      if (strike != 3) {
+      if (strike != Constant.MAX_STRIKE) {
         PrintOut.inputMessage();
         String user = UserScanner.input();
         strike = Hint.strikeCount(computer, user);
         if (Exception.isValidNumber(user))
           PrintOut.scoreMessage(Hint.ballAndStrike(computer, user));
       }
-      if (strike == 3)
+      if (strike == Constant.MAX_STRIKE)
         PrintOut.continueMessage();
-      if (strike == 3 && !ContinueOrStop.choice(UserScanner.input()))
+      if (strike == Constant.MAX_STRIKE && !ContinueOrStop.choice(UserScanner.input()))
         break;
-      else if (strike == 3) {
+      else if (strike == Constant.MAX_STRIKE) {
         strike = 0;
         computer = CreateRandomNumber.numberMaker();
       }

@@ -5,4 +5,5 @@ public class Constant {
   public static final boolean TRUE = true;
   public static final String CONTINUE_BUTTON = "1";
   public static final String STOP_BUTTON = "2";
+  public static final int MAX_STRIKE = 3;
 }
