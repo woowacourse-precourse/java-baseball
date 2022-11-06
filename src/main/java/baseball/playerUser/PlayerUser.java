@@ -12,7 +12,7 @@ public class PlayerUser {
 		return instance;
 	}
 
-	public String getInputNumber() throws IllegalArgumentException {
+	public String getInputNumber() {
 		String number = inputNumber();
 
 		if (isExceptionalInput(number)) {

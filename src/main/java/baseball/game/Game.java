@@ -46,13 +46,17 @@ public class Game {
 
 		while (true) {
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-			input = Console.readLine();
-			replayOrEndgame = Integer.parseInt(input);
 
+			try {
+				input = Console.readLine();
+				replayOrEndgame = Integer.parseInt(input);
+			} catch (IllegalArgumentException e) {
+				// System.out.println("거 제대로 입력합시다! 좀... 아시겠어요?");
+				throw new IllegalArgumentException();
+			}
 			if (replayOrEndgame == REPLAY || replayOrEndgame == ENDGAME) {
 				break;
 			}
-			// System.out.println("거 제대로 입력합시다! 좀... 아시겠어요?");
 		}
 
 		return replayOrEndgame;
