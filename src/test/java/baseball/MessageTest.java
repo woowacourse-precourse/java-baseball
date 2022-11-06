@@ -28,4 +28,11 @@ public class MessageTest {
 
         assertEquals("숫자 야구 게임을 시작합니다.", outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    public void 숫자_입력_안내_문구를_출력하는_기능() {
+        Message.INPUT_NUMBER.print();
+
+        assertEquals("숫자를 입력해주세요 : ", outputStreamCaptor.toString().trim());
+    }
 }
