@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
