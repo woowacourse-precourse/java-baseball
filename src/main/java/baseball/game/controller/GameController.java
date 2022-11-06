@@ -14,8 +14,17 @@ public class GameController {
         inputView=new InputView();
         gameService=new GameService();
     }
+
     public void play() {
         outputView.printGameStart();
-        gameService.computeComputerNumbers();
+
+        while(true) {//종료 조건 걸어야함
+            gameService.computeComputerNumbers();
+
+            String userNumbers=inputView.inputNumbers();
+            gameService.verifyNumberOfInput(userNumbers);
+
+            break;
+        }
     }
 }
