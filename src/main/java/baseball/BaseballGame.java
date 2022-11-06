@@ -79,6 +79,12 @@ public class BaseballGame extends Game {
     }
 
     private Result getDigitResult(int index, int number) {
+        if (answerNumbers.get(index) == number) {
+            return Result.STRIKE;
+        }
+        if (answerNumbers.contains(number)) {
+            return Result.BALL;
+        }
         return Result.OUT;
     }
 
