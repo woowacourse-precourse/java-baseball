@@ -7,7 +7,9 @@ import baseball.view.UserInterface;
 import java.util.List;
 
 public class GameSystem {
-    public UserInterface userInterface;
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final UserInterface userInterface = new UserInterface();
     public GameAnswer gameAnswer;
     public MyAnswer myAnswer;
     private int strikeCount;
@@ -17,8 +19,7 @@ public class GameSystem {
         int gameLoop;
         gameAnswer = new GameAnswer();
         myAnswer = new MyAnswer();
-        userInterface = new UserInterface();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
 
         while(true) {
             gameAnswer.setNumber();
@@ -36,7 +37,7 @@ public class GameSystem {
             correctAnswer = checkStrikeBall();
             userInterface.printResult(strikeCount,ballCount);
             if(correctAnswer) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(GAME_END_MESSAGE);
                 break;
             }
         }
