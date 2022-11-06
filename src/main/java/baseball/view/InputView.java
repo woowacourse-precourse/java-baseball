@@ -20,12 +20,10 @@ public class InputView {
     public static List<Integer> getInput() {
         System.out.print(GET_NUMBER_MESSAGE);
 
-        String input = Console.readLine();
-        validate(input);
+        String numbers = Console.readLine();
+        validate(numbers);
 
-        return Arrays.stream(separate(input))
-            .map(Integer::valueOf)
-            .collect(Collectors.toList());
+        return toInteger(numbers);
     }
 
     private static void validate(String input) {
@@ -43,6 +41,13 @@ public class InputView {
         }
 
     }
+
+    private static List<Integer> toInteger(String numbers) {
+        return Arrays.stream(separate(numbers))
+            .map(Integer::valueOf)
+            .collect(Collectors.toList());
+    }
+
 
     private static String[] separate(String input) {
         return input.split(NUMBER_SEPARATE_DELIMITER);
