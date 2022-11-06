@@ -11,8 +11,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 숫자입출력_테스트() {
-        run("2");
+    void 사용자_입력_테스트() {
+        run("246", "2");
+        assertThat(output()).contains("2", "4", "6");
     }
 
     @Disabled("기능 구현할 때까지 비활성화")

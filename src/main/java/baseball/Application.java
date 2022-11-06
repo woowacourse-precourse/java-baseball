@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -19,6 +20,25 @@ public class Application {
     }
 
     private static void playGame() {
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
+        user = getUserInput();
+        computer = makeComputerNumber();
+
+        for (int data: user) {
+            System.out.println(data);
+        }
+    }
+
+    private static List<Integer> getUserInput() {
+        List<Integer> user = new ArrayList<>();
+        int tmp = Integer.parseInt(readLine());
+        while (user.size() < 3) {
+            user.add(tmp%10);
+            tmp /= 10;
+        }
+        Collections.reverse(user);
+        return user;
     }
 
     private static List<Integer> makeComputerNumber() {
