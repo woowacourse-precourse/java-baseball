@@ -23,7 +23,7 @@ public class GameClient {
     }
 
     private int getUserInput() {
-        return 0;
+        return this.userInputValidation(this.baseballUtil.readLineInt());
     }
 
     private int userInputValidation(int user_input) {
