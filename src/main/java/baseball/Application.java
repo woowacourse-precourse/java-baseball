@@ -26,7 +26,15 @@ public class Application {
     }
 
     private static void printResult(int strikesCount, int ballCount) {
-
+        if (strikesCount > 0 && ballCount > 0) {
+            printBallAndStrike(strikesCount, ballCount);
+        } else if (strikesCount > 0) {
+            justPrintStrike(strikesCount);
+        } else if (ballCount > 0) {
+            justPrintBall(ballCount);
+        } else {
+            System.out.println("낫싱");
+        }
     }
 
     private static void printBallAndStrike(int strikesCount, int ballCount) {
