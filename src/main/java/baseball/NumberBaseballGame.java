@@ -28,6 +28,21 @@ public class NumberBaseballGame {
         System.out.println(getResultToString());
     }
 
+    public static boolean checkGameEnd(){
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String response = Console.readLine();
+            if(response == "1"){
+                return true;
+            }
+            if (response == "2"){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void getRandomThreeDigitNumber() {
         for (int i = 0; i < 3; i++) {
             int num = Randoms.pickNumberInRange(1, 9);
