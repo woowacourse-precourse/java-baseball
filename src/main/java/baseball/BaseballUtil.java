@@ -21,6 +21,6 @@ public class BaseballUtil {
     }
 
     public void printLine(String contents) {
-
+        System.out.println(contents);
     }
 }
