@@ -111,7 +111,7 @@ class BaseBallGame {
         return true;
     }
 
-    private int getRandomDiff3DigitNumber() {
+    public int getRandomDiff3DigitNumber() {
         String randomDiff3DigitNumber = "";
 
         while (randomDiff3DigitNumber.length() < 3) {
