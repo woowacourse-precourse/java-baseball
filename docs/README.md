@@ -6,9 +6,11 @@
   - [x] camp.nextstep.edu.missionutils에서 제공하는 Randoms을 사용한다.
 - [x] 사용자가 값을 입력한다.
   - [x] '숫자를 입력해주세요 :' 문구와 함께 사용자가 값을 입력한다.
+  - [x] camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
   - [x] 입출력 요구사항에 부합하지 않으면 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료시킨다.
     - [x] 모든 입력이 숫자
     - [x] 서로 다른 3자리의 수
+    - [x] 각 자리수의 범위는 1~9
     - [x] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
   - [x] 컴퓨터가 만든 3자리 숫자를 맞힐때까지 계속 입력한다.
   - [x] 사용자가 입력한 값이 맞으면 게임을 종료시킨다.
