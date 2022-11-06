@@ -1,11 +1,10 @@
 package baseball.exception;
-
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import static baseball.Setting.LENGTH;
+
 public class InputException {
-    private static int LENGTH = 3;
     private static String INPUT_EXCEPTION_MESSAGE = "잘못된 값을 입력하여 게임을 종료합니다.";
 
     public static void inputCheckDuringGame(String input) {

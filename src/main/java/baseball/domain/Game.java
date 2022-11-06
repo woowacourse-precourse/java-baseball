@@ -4,13 +4,13 @@ import baseball.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import static baseball.Setting.LENGTH;
 
 public class Game {
-    private int LENGTH = 3;
     private Computer computer;
 
     public Game() {
-        computer = new Computer(LENGTH);
+        computer = new Computer();
     }
 
     public void start() {

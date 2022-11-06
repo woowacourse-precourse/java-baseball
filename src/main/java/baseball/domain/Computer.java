@@ -5,13 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
-    private int LENGTH;
-    private List<Integer> computerNumber = new ArrayList<>();
+import static baseball.Setting.LENGTH;
 
-    public Computer(int LENGTH) {
-        this.LENGTH = LENGTH;
-    }
+public class Computer {
+    private List<Integer> computerNumber = new ArrayList<>();
 
     public void initComputerNumber() {
         computerNumber.clear();
