@@ -30,7 +30,7 @@ public class GameController {
     }
 
     void putPlayerInService(String playerNumbers){
-
+        gameService.setPlayer(playerNumbers);
     }
 
     void clearScore(){
@@ -42,6 +42,7 @@ public class GameController {
     }
 
     void matchGame(){
+
     }
 
     void showPlayersScore(){
