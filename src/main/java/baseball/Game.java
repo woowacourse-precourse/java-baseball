@@ -25,4 +25,11 @@ public class Game {
         }
         return ball;
     }
+
+    private boolean checkNothing(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            return true;
+        }
+        return false;
+    }
 }
