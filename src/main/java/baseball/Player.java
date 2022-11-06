@@ -1,14 +1,26 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
     protected static List<Integer> answer;
     public Player(){}
-    public static String getAnswer(){
+
+    public static List<Integer> splitAnswer(String number){
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < number.length(); i++){
+            list.add((int)number.charAt(i)-'0');
+        }
+        return list;
+    }
+    public static List<Integer> getAnswer(){
+        List<Integer> list = new ArrayList<>();
         System.out.println("숫자를 입력해주세요 : ");
         String str = Console.readLine();
-        return str;
+        list = splitAnswer(str);
+        return list;
     }
 }
