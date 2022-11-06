@@ -11,8 +11,28 @@ public class Application {
     private static final int BALL = 0;
     private static final int STRIKE = 1;
 
+    private static final String EXIT = "2";
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String option;
+        boolean isUserPlayingGame = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while ( isUserPlayingGame ) {
+            play369Game();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            option = Console.readLine();
+            if ( !isValidOption(option) ) {
+                throw new IllegalArgumentException("잘못된 옵션을 입력하셨습니다.");
+            }
+
+            if ( option.equals(EXIT) ) {
+                isUserPlayingGame = false;
+            }
+        }
+    }
+
+    public static boolean isValidOption (String option) {
+        return Pattern.matches("[12]", option);
     }
 
     public static void play369Game() {
