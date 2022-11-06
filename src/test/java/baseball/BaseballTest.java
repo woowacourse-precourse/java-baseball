@@ -8,6 +8,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
@@ -121,5 +124,12 @@ class BaseballTest {
         String input = "126";
         assertThatCode(() -> checkIllegalArgumentException(input))
                 .doesNotThrowAnyException();
+    }
+
+    @DisplayName("ArrayList<Integer> 를 String 형으로 변환")
+    @Test
+    void convertArrayListToString_메서드로_ArrayList_String_변환() {
+        List<Integer> input = new ArrayList<Integer>(Arrays.asList(1,2,3));
+        assertThat(convertArrayListToString(input)).isEqualTo("123");
     }
 }

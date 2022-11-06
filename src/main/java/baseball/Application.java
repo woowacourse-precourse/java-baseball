@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -70,4 +71,13 @@ public class Application {
         }
 
     }
+
+    public static String convertArrayListToString(List<Integer> numberList) {
+        StringBuilder sb = new StringBuilder();
+        for (int number: numberList) {
+            sb.append(number);
+        }
+        return sb.toString();
+    }
+
 }
