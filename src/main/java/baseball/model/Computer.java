@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> randomNum;
+    private int strike;
 
     public List<Integer> generateRandomNumList(){
         this.randomNum = new ArrayList<>();
@@ -16,5 +17,13 @@ public class Computer {
             }
         }
         return this.randomNum;
+    }
+
+    private void checkStrike(List<Integer> usersNum) {
+        for (int i = 0; i < usersNum.size(); i++) {
+            if (randomNum.get(i) == usersNum.get(i)) {
+                this.strike++;
+            }
+        }
     }
 }
