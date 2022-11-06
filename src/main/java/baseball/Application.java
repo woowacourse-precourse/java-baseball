@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,9 +8,25 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
     }
 
+    public List<Integer> setUser() {
+        List<Integer> user = new ArrayList<>();
+
+        String userToChar = Console.readLine();
+        char [] userToInt = userToChar.toCharArray();
+        for(char ch : userToInt) {
+            user.add(Character.getNumericValue(ch));
+        }
+
+        try{
+            checkUserHasException(user);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        return user;
+    }
     public List<Integer> setComputer() {
         List<Integer> computer = new ArrayList<>();
 
