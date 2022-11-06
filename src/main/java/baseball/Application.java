@@ -13,8 +13,6 @@ public class Application {
 
     public static void main(String[] args) {
         sportsCaster.guideGameProcess();
-        referee.startGame();
-        hitter.swing();
         while (!referee.toTerminateGame) {
             play1Game();
             referee.playAgainOrNot();
@@ -23,6 +21,8 @@ public class Application {
     }
 
     private static void play1Game() {
+        referee.startGame();
+        hitter.swing();
         while (referee.isGameInProgress) {
             referee.startPitch();
             pitcher.pitch();
