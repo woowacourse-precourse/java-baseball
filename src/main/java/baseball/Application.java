@@ -38,6 +38,12 @@ public class Application {
 
     }
 
+    /*
+    사용자의 입력을 List로 바꿔주는 메소드
+
+    return
+    List<Integer> userNumber
+    */
     static List<Integer> generateUserNumber() {
         // 사용자로 부터 입력을 받는다.
         String userInput = Console.readLine();
