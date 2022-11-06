@@ -105,6 +105,20 @@ public class Application {
         return cnt;
     }
 
+    private static void printResult(int cntBall, int cntStrike){
+        if(cntBall>0 && cntStrike>0){
+            System.out.println(cntBall+"볼 "+cntStrike+"스트라이크");
+        } else if(cntBall>0){
+            System.out.println(cntBall+"볼");
+        } else if(cntStrike>0){
+            if(cntStrike==3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            } else{
+                System.out.println(cntStrike+"스트라이크");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -121,11 +135,20 @@ public class Application {
                 break;
             }
 
+            // 낫싱 판단
             if(isNothing(computer, player)){
                 System.out.println("낫싱");
-            } else{
-                int cntStrike = getStrike(computer, player);
-                int cntBall = getBall(computer, player);
+                continue;
+            }
+
+            // 스트라이크, 볼 판단
+            int cntStrike = getStrike(computer, player);
+            int cntBall = getBall(computer, player);
+            printResult(cntBall, cntStrike);
+
+            // 3스트라이크가 아닐 경우 사용자 입력
+            if(cntStrike!=3){
+                continue;
             }
 
             // 게임 재시작/종료 선택
