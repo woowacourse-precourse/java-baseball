@@ -5,7 +5,7 @@ public class RandomNumber {
     private static String randomValue;
     private static final int CORRECTINPUTLENGTH = 3;
 
-    public RandomNumber(String randomValue){
+    public RandomNumber(String randomValue) {
         this.randomValue = randomValue;
     }
 
