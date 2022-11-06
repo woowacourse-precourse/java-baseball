@@ -34,12 +34,12 @@ public class Game {
 
     public void playGame() {
         Ball ball = new Ball();
-        List<Integer> computerBalls = ball.getComputerBall();
+        List<Integer> computerBalls = ball.getComputerBalls();
         List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
         String resultMessage;
         System.out.println(computerBalls.toString()); // TODO: 삭제하기
         do {
-            List<Integer> playerBalls = ball.getPlayerBall();
+            List<Integer> playerBalls = ball.getPlayerBalls();
             calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
             resultMessage = getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
                     strikeAndBallCounts.get(BALL_COUNT));

@@ -12,7 +12,7 @@ public class BallGenerator {
 
     public static final int COMPUTER_BALLS_SIZE = 3;
 
-    public List<Integer> createComputerBall() {
+    public List<Integer> createComputerBalls() {
         List<Integer> computerBalls = new ArrayList<>();
         while (computerBalls.size() < COMPUTER_BALLS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,7 +23,7 @@ public class BallGenerator {
         return computerBalls;
     }
 
-    public List<Integer> createPlayerBall() {
+    public List<Integer> createPlayerBalls() {
         System.out.print(SystemMessage.ENTER_NUMBER);
         String playerBall = Console.readLine();
         List<Integer> playerBalls = stringToIntegerList(playerBall);

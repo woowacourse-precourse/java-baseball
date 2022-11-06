@@ -11,11 +11,11 @@ public class Ball {
         this.ballGenerator = new BallGenerator();
     }
 
-    public List<Integer> getComputerBall() {
-        return ballGenerator.createComputerBall();
+    public List<Integer> getComputerBalls() {
+        return ballGenerator.createComputerBalls();
     }
 
-    public List<Integer> getPlayerBall() {
-        return ballGenerator.createPlayerBall();
+    public List<Integer> getPlayerBalls() {
+        return ballGenerator.createPlayerBalls();
     }
 }
