@@ -27,6 +27,6 @@ public final class MessageConst {
 
     public static final String INPUT_DUPLICATE_EXCEPTION_MSG = "중복된 숫자는 입력할 수 없습니다.";
 
-    public static final String GAME_CONTROL_EXCEPTION_MSG = NumberConst.RESTART_NUM + " (재시작) 혹은 " +
-            NumberConst.EXIT_NUM + " (종료)를 입력해 주세요.";
+    public static final String GAME_CONTROL_EXCEPTION_MSG = NumberConst.RESTART_NUM + "(재시작) 혹은 " +
+            NumberConst.EXIT_NUM + "(종료)를 입력해 주세요.";
 }
