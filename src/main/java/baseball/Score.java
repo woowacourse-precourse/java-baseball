@@ -16,13 +16,14 @@ public class Score {
         computerNumbers = computers;
     }
 
-    public static HashMap<String, Integer> getTotal() {
+    public static HashMap<String, Integer> total() {
+        System.out.println("정답" +computerNumbers.get(0)+" " + computerNumbers.get(1) + " " + computerNumbers.get(2));
         HashMap<String, Integer> totalScore = new HashMap<>();
         totalScore.put(STRIKE, getStrike());
         totalScore.put(BALL, getBall());
         return totalScore;
     }
-
+    
     private static Integer getStrike() {
         int strike = 0;
         for (int i = 0; i < NUMBERS_LENGTH; i++) {
