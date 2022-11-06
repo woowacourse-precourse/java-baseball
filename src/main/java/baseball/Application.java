@@ -67,11 +67,15 @@ public class Application {
             end = compareNumber(inputNumber(), randomNumber);
         }
     }
+    public static void restartGame(boolean restart) {
+        if (restart)
+            playGame();
+    }
     public static boolean restartQuestion() {
         boolean restart = false;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
-        if (number.charAt(0) == 1)
+        if (number.charAt(0) == '1')
             restart = true;
         return restart;
     }
@@ -80,7 +84,7 @@ public class Application {
         boolean end = false;
         inputGame(end, randomNumber);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        restartQuestion();
+        restartGame(restartQuestion());
     }
     public static void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
