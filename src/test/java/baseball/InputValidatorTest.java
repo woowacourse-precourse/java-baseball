@@ -41,15 +41,15 @@ public class InputValidatorTest {
         }).isExactlyInstanceOf(IllegalArgumentException.class);
         // 동일한 숫자가 존재한다
         assertThatThrownBy(() -> {
-            validatePlayerInputRetry("111");
+            validatePlayerInputNumber("111");
         }).isExactlyInstanceOf(IllegalArgumentException.class);
         // 도메인 값이 아닌 0이 존재한다
         assertThatThrownBy(() -> {
-            validatePlayerInputRetry("805");
+            validatePlayerInputNumber("805");
         }).isExactlyInstanceOf(IllegalArgumentException.class);
         // 숫자가 아닌 문자를 입력한다
         assertThatThrownBy(() -> {
-            validatePlayerInputRetry("정답알려주세요");
+            validatePlayerInputNumber("정답알려주세요");
         }).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }
