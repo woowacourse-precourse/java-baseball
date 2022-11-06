@@ -45,4 +45,12 @@ public class Referee {
 
         return decision.toString().trim();
     }
+
+    public boolean isEnd() {
+        return gameCount == 3;
+    }
+
+    public void initStatus() {
+        gameCount = 0;
+    }
 }
