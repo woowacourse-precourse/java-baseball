@@ -9,7 +9,9 @@ public class Game {
     private final int LENGTH = 3;
     private List<Integer> computer = new ArrayList<>();
     private List<Integer> user = List.of(0, 0, 0);
-
+    private String input;
+    private String[] inputs;
+    
     public void run() {
         createComputerAnswer();
         inputUserNumbers();
@@ -29,19 +31,52 @@ public class Game {
     }
 
     private void inputUserNumbers() {
-        String input = Console.readLine();
-        if(!isValidInput(input)){
+        input = Console.readLine();
+        inputs = input.split("");
+
+        if (isValidInput()) {
+            setUserList();
+        }
+        else {
             throw new IllegalArgumentException();
         }
-        setUserList(input);
     }
 
-    private boolean isValidInput(String input) {
+    private boolean isValidInput() {
+        if (isLengthThree() && isEachNumberFrom1To9() && isDifferentNumbers())
+            return true;
+
+        return false;
+    }
+    
+    private boolean isLengthThree() {
+        if (input.length() == 3)
+            return true;
+
+        System.out.println("잘못된 입력값 입니다. 3자리 숫자로 입력하세요.");
         return false;
     }
 
-    private void setUserList(String input) {
-        String[] inputs = input.split("");
+    private boolean isEachNumberFrom1To9() {
+        for (String input : inputs) {
+            int in = Integer.parseInt(input);
+            if (!(in >= 1 && in <= 9)){
+                System.out.println("잘못된 입력값 입니다. 1이상 9이하 숫자를 입력하세요.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isDifferentNumbers() {
+        if ((inputs[0] != inputs[1]) && (inputs[0] != inputs[2]) && (inputs[1] != inputs[2]))
+            return true;
+
+        System.out.println("잘못된 입력값 입니다. 서로 다른 숫자를 입력하세요.");
+        return false;
+    }
+
+    private void setUserList() {
         for (int i = 0; i < LENGTH; i++)
             user.set(i, Integer.parseInt(inputs[i]));
     }
