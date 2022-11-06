@@ -16,12 +16,29 @@ public class Application {
             userNum.add(Character.getNumericValue(num));
         }
 
-        if (comparator(computerNum, userNum) == 1) { return; }
-        else { numBaseball(computerNum); }
+        if (comparator(computerNum, userNum)) { return; }
+        numBaseball(computerNum);
     }
 
-    public static int comparator(List<Integer> computerNum, List<Integer> userNum) {
-        return 0;
+    public static boolean comparator(List<Integer> computerNum, List<Integer> userNum) {
+        int strike = 0;
+        int ball = 0;
+        for (int idx = 0; idx < 3; idx++){
+            if (computerNum.get(idx) == userNum.get(idx))       { strike += 1; }
+            else if (userNum.contains(computerNum.get(idx)))    { ball += 1;   }
+        }
+
+        if (strike == 3)  { System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료"); return true; }
+        else if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (ball != 0 && strike != 0) {
+            System.out.println((char)ball + "볼 "+ (char)strike + "스트라이크");
+        } else if (ball != 0 && strike == 0) {
+            System.out.println((char)ball + "볼");
+        } else if (ball == 0 && strike != 0) {
+            System.out.println((char)strike + "스트리이크");
+        }
+        return false;
     }
 
 
