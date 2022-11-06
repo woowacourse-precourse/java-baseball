@@ -20,6 +20,7 @@ public class Game {
         this.targetNumber = targetNumber;
 
         while (!isGameOver) {
+            System.out.print("숫자를 입력해주세요 : ");
             predictedNumber = convertToList(scanner.nextLine());
             System.out.println(targetNumber);
             System.out.println(predictedNumber);
