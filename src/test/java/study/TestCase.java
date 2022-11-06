@@ -103,15 +103,15 @@ public class TestCase {
     }
 
     @Test
-    void 컴퓨터가_플레이어에게_받은_수와_자신의_수를_비교한다() {
-        String result = "strike";
+    void 컴퓨터가_플레이어에게_받은_수와_자신의_수를_비교_결과출력() {
+        String result = "3스트라이크";
         int index = 1;
 
         List<Integer> playerNumber = Arrays.asList(1, 2, 3);
         List<Integer> computerNumber = Arrays.asList(5, 2, 4);
 
         Computer computer = new Computer();
-        assertThat(result).isEqualTo(computer.calculateCount(index,playerNumber,computerNumber));
+        assertThat(result).isEqualTo(computer.getResult(index,playerNumber,computerNumber));
     }
 
 
