@@ -27,11 +27,19 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
     void 게임중_입력_예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("115"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 게임후_입력_예외_테스트() {
+        assertThatThrownBy(() -> Application.isValidInputAfterGame("3"))
+                        .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
