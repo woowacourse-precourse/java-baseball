@@ -17,17 +17,21 @@ public class Game {
     public void start() {
         OutputView.printGameStartMessage();
         computer.generateAnswer();
-        boolean result;
+
+        Integer[] answer = computer.getAnswer();
+        boolean isWorngAnswer;
 
         do {
             OutputView.printAnswerInputGuideMessage();
 
-            String guessedAnswer = InputView.getGuessedAnswer();
-            user.setGuessedAnswer(guessedAnswer);
+            String stringGuessedAnswer = InputView.getGuessedAnswer();
+            user.setGuessedAnswer(stringGuessedAnswer);
 
-            result = score.isWrongAnswer(computer.getAnswer(), user.getGuessedAnswer());
+            Integer[] guessedAnswer = user.getGuessedAnswer();
+            isWorngAnswer = score.isWrongAnswer(answer, guessedAnswer);
+
             OutputView.printResult();
 
-        } while (result);
+        } while (isWorngAnswer);
     }
 }
