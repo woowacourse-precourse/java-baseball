@@ -7,7 +7,15 @@ import java.util.Set;
 
 public class UserInputException {
 
-    private final int VALID_LENGTH = 3;
+    private static final int VALID_LENGTH = 3;
+
+    public void checkUserInputException(String userInput) {
+        if (isValidLength(userInput) && isNumber(userInput) && isNotContainZero(userInput)
+                && isNotDuplicate(userInput)) {
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
 
     public boolean isValidLength(String userInput) {
         if (userInput.length() == VALID_LENGTH) {
@@ -39,5 +47,12 @@ public class UserInputException {
             return true;
         }
         return false;
+    }
+
+    public void checkUserRestartInputException(String userInput) {
+        if (userInput.equals("1") || userInput.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException();
     }
 }
