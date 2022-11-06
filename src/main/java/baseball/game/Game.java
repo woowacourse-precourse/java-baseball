@@ -14,7 +14,6 @@ public class Game {
     public static List<Boolean> score;
     public static Integer ball;
     public static Integer strike;
-
     public Game(){
         makeRandomNumbers();
     }
@@ -22,10 +21,13 @@ public class Game {
     private static void makeRandomNumbers(){
         computerNumbers = new ArrayList<>();
         while(computerNumbers.size() <COUNT_BALL){
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!computerNumbers.contains(randomNumber)){
-                computerNumbers.add(randomNumber);
-            }
+            putRandomNumber();
+        }
+    }
+    private static void putRandomNumber(){
+        int randomNumber = Randoms.pickNumberInRange(1,9);
+        if(!computerNumbers.contains(randomNumber)){
+            computerNumbers.add(randomNumber);
         }
     }
 
