@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Player {
-    List<Integer> numbers = new ArrayList<>();
+    List<Integer> numbers;
 
     public List<Integer> getNumbers() {
         return numbers;

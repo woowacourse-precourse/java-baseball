@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 public class Computer {
-    List<Integer> numbers = new ArrayList<>();
+    List<Integer> numbers;
 
     public List<Integer> getNumbers() {
         return this.numbers;
