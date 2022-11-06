@@ -31,7 +31,7 @@ public class BallCount {
         return ballCnt;
     }
 
-    public static void printBallCount(int[] answer, String inputValue) {
+    public static int printBallCount(int[] answer, String inputValue) {
         // 스트라이크 및 볼 카운트 출력
         int ball = ballCount(answer, inputValue);
         int strike = strikeCount(answer, inputValue);
@@ -48,5 +48,7 @@ public class BallCount {
         else {
             System.out.println("낫싱");
         }
+
+        return strike;
     }
 }
