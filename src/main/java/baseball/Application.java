@@ -84,7 +84,7 @@ public class Application {
         boolean correctAnswer;
         boolean quitGame;
         for (int i=0; i<3; i++) {
-            answer.add(pickNumberInRange(0,9));
+            answer.add(pickNumberInRange(1,9));
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
