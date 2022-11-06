@@ -85,10 +85,21 @@ public class Application {
             }
 
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             return 1;
         }
 
         return 0;
+    }
+
+    static boolean check_strike_3(int strike) {
+        if (strike == 3) {
+            // 게임 종료 문구 출력
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
