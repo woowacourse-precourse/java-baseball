@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Referee {
 
-    private static final int CORRECTINPUTLENGTH = 3;
     private static RandomNumber randNum;
 
     Referee() {
