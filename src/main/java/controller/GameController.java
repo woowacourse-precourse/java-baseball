@@ -4,6 +4,7 @@ import domain.Game;
 import domain.RoundResult;
 import view.GameView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GameController {
@@ -15,13 +16,17 @@ public class GameController {
     }
 
     public void startGame(){
-        GameView.printStartMessage();
         game.createComputerNumbers();
+        GameView.printStartMessage();
         do{
             GameView.printInputMessage();
             inputUserNumbers();
             RoundResult roundResult = game.getRoundResult();
             GameView.printRoundResultMessage(roundResult);
+            if(roundResult.isWin()){
+                GameView.printWinMessage();
+                break;
+            }
         }while(true);
     }
 
