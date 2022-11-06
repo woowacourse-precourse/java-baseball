@@ -29,6 +29,21 @@ public class GameManager {
 		List<Integer> computer = BaseballUtil.getRandomInteger();
 		comparisonTool = new ComparisonTool(computer);
 	}
+	
+	/**
+     * 게임 셋팅
+     * 랜덤한 컴퓨터 값 설정
+     */
+	public void startGame() {
+
+		ComparisonResults result= new ComparisonResults();
+    	while(result.strike != 3) {
+    		System.out.print("숫자를 입력해주세요 : ");
+        	List<Integer> user = BaseballUtil.getUserInteger();
+        	result = comparisonTool.compaerResult(user);
+        	System.out.println(result);
+    	}
+	}
 
 	
 }
