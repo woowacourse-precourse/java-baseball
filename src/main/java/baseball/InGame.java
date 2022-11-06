@@ -13,6 +13,7 @@ public class InGame {
         this.baseballUtil = new BaseballUtil();
         this.answer = this.createRandomInt();
     }
+
     public InGame(BaseballUtil baseballUtil) {
         this.baseballUtil = baseballUtil;
         this.answer = this.createRandomInt();
@@ -24,6 +25,14 @@ public class InGame {
     }
 
     public boolean playGame() {
+        List<Integer> compare_result;
+        do {
+            this.announceUserToInputNumber();
+            compare_result = this.compareUserInput(this.getUserInput());
+            this.announceInputResult(compare_result.get(0), compare_result.get(1));
+        }
+        while(compare_result.get(1) != 3);
+
         return true;
     }
 
