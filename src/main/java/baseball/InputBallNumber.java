@@ -7,7 +7,6 @@ public class InputBallNumber {
     private static final int BALL_NUMBER_LENGTH = 3;
 
     public String inputBallNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
         String ballNumbers = Console.readLine();
         validateNumber(ballNumbers);
         return ballNumbers;
