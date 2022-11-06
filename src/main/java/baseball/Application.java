@@ -19,10 +19,10 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static List<Integer> compareUserInputAndComputerSelect(int userInput){
+    public static List<Integer> compareUserInputAndComputerSelect(int userInput) {
         List<Integer> point = new ArrayList<>(Arrays.asList(0, 0, 0));
         List<Integer> disassembledNumber = disassembleDigitNumber(userInput);
-        for(int digit = DIGIT_1; digit <= DIGIT_100; digit++) {
+        for (int digit = DIGIT_1; digit <= DIGIT_100; digit++) {
             int number = disassembledNumber.get(digit);
             int result = getScore(number, digit);
             int p = point.get(result) + 1;
@@ -32,13 +32,13 @@ public class Application {
         return point;
     }
 
-    public static int getScore(int number, int DIGIT){
-        if(computerDigitValue.get(DIGIT) == number) {
+    public static int getScore(int number, int DIGIT) {
+        if (computerDigitValue.get(DIGIT) == number) {
             return STRIKE;
         }
-        if(computerDigitValue.contains(number)) {
+        if (computerDigitValue.contains(number)) {
             return BALL;
-        }else{
+        } else {
             return NOTHING;
         }
     }

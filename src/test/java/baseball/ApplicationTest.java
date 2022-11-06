@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+
 import java.util.*;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,9 +32,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class compareUserInputAndComputerSelect_Test{
+    class compareUserInputAndComputerSelect_Test {
         @Nested
-        class success_case{
+        class success_case {
             @Test
             void case1() {
                 int userInput = 425;
@@ -44,25 +46,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class getScore_Test{
+    class getScore_Test {
         @Nested
-        class success_case{
+        class success_case {
             @Test
-            void case1(){
+            void case1() {
                 Application.computerDigitValue = List.of(5, 2, 4);
                 int result = Application.BALL;
                 assertThat(result).isEqualTo(Application.getScore(2, Application.DIGIT_1));
             }
 
             @Test
-            void case2(){
+            void case2() {
                 Application.computerDigitValue = List.of(5, 2, 4);
                 int result = Application.STRIKE;
                 assertThat(result).isEqualTo(Application.getScore(5, Application.DIGIT_1));
             }
 
             @Test
-            void case3(){
+            void case3() {
                 Application.computerDigitValue = List.of(5, 2, 4);
                 int result = Application.NOTHING;
                 assertThat(result).isEqualTo(Application.getScore(1, Application.DIGIT_100));
@@ -71,11 +73,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class toPlaceValue_Test{
+    class toPlaceValue_Test {
         @Nested
-        class success_case{
+        class success_case {
             @Test
-            void case1(){
+            void case1() {
                 List<Integer> result = List.of(5, 20, 400);
                 List<Integer> input = List.of(5, 2, 4);
                 assertThat(result).isEqualTo(Application.toPlaceValue(input));
@@ -116,6 +118,30 @@ class ApplicationTest extends NsTest {
             @Test
             void case2() {
                 assertThat(false).isEqualTo(Application.isValidData(12));
+            }
+        }
+    }
+
+    @Nested
+    class printResult_Test{
+        @Nested
+        class success_case{
+            @Test
+            void case1(){
+                List<Integer> result = List.of(1, 1, 1)
+                assertThat("1볼 1스트라이크").isEqualTo(Application.printResult(result));
+            }
+
+            @Test
+            void case2(){
+                List<Integer> result = List.of(2, 0, 1);
+                assertThat("2볼").isEqualTo(Application.printResult(result));
+            }
+
+            @Test
+            void case3(){
+                List<Integer> result = List.of(0, 0, 3);
+                assertThat("낫싱").isEqualTo(Application.printResult(result));
             }
         }
     }
