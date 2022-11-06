@@ -24,14 +24,14 @@ public class Pitch {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    private void setUserAnswer() {
+    protected void setUserAnswer() {
         illegalArgument.check(getUserInputToGuess(), Game.answerLength, Game.numberForAnswer);
         for (String input : userInputToGuess) {
             userAnswer.add(Integer.parseInt(input));
         }
     }
 
-    private String[] getUserInputToGuess() {
+    protected String[] getUserInputToGuess() {
         userInputToGuess = Console.readLine().split("");
         return userInputToGuess;
     }
