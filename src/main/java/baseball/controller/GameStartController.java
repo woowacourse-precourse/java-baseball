@@ -14,8 +14,10 @@ public class GameStartController {
         if(userInput.equals("1")){
             GameStartService.initGame();
             startGame();
-        }else{
+        }else if(userInput.equals("2")){
             finishGame();
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
