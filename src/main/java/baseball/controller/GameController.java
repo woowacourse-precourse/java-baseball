@@ -30,17 +30,12 @@ public class GameController {
 
             Hint hint = HintService.initialize();
             hint.countHint(userNumbers, computerNumbers);
-            OutputView.printHint(hint);
+            HintService.printHint(hint);
             gameStatus = HintService.isAnswer(hint);
+        }
 
-            int finishCode = EXIT;
-            if (gameStatus == YES_ANSWER) {
-                finishCode = retryOrExit();
-            }
-
-            if (finishCode == RETRY) {
-                startGame();
-            }
+        if (retryOrExit() == RETRY) {
+            startGame();
         }
     }
 
@@ -48,7 +43,13 @@ public class GameController {
         OutputView.printAnswer();
         OutputView.printRetryOrExit();
 
-        return Integer.parseInt(readLine());
+        int retryOrExit = Integer.parseInt(readLine());
+
+        if (retryOrExit != RETRY && retryOrExit != EXIT) {
+            throw new IllegalArgumentException();
+        }
+
+       return retryOrExit;
     }
 
 }
