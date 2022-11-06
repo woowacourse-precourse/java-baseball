@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.utils.Exceptions;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
 
@@ -50,6 +51,7 @@ public class GameService {
         this.Strikescore=Strikescore;
         UserInput.getRetryUserNumber();
         String str = Console.readLine();
+        Exceptions.restartInput(str);
         Integer replay_input=Integer.parseInt(str);
         if (replay_input==2){
             GameOutput.finishGame();
