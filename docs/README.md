@@ -29,15 +29,12 @@
 ## <클래스 설계>
 ### 🍄 BaseBallNumber 클래스
 
-- GAME_NUMBER_SIZE = 3;
 - [x] validateSize()
   - ❗세자리가 아니면 throw
 - [x] validateDuplicate()
   - ❗세자리이지만 중복된 숫자면 throw
 
 ### 🍄 Answer 클래스
-
-발생한 난수를 wrapping 하여 외부에서 답을 바꿀 수 없도록
 
 - [x] compare() 외부에서 입력된 숫자를 내부의 정답과 비교 후 결과만 출력
   - 같은 수가 같은 자리에 있으면 스트라이크
@@ -52,16 +49,12 @@
 
 ### 🍄 Player 클래스
 
-- END_GAME = 2;
-- ONE_MORE_GAME = 1;
-
-
-- [ ] validateChoice()
-- [ ] Begin() 게임을 시작할지 결정
+- [x] validateChoice()
+- [x] Begin() 게임을 시작할지 결정
   - new Game
-- [ ] Guess() 정답을 맞춰볼 수 있다
+- [x] Guess() 정답을 맞춰볼 수 있다
   - 세자리 숫자입력
   - new BaseBallNumber
-- [ ] Choose() 게임을 더 할지 말지 결정
+- [x] Choose() 게임을 더 할지 말지 결정
   - ❗ 1 or 2가 아니면 throw
 
