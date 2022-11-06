@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BallsNumbers {
-	static ArrayList<Integer> randomNumbers;
-	static ArrayList<Integer> userInputNumbers;
+    static ArrayList<Integer> randomNumbers;  //Computers Balls Numbers
+    static ArrayList<Integer> userInputNumbers;  //User Balls Numbers
+
 	
-	@SuppressWarnings("unchecked")
-	private static boolean isDuplicated(ArrayList<Integer> randomNumbers, int randomNumber) {
-		if(randomNumber == 0) return true;
+    //Computers Balls Numbers
+    @SuppressWarnings("unchecked")
+    private static boolean isDuplicated(ArrayList<Integer> randomNumbers, int randomNumber) {
+        if(randomNumber == 0) return true;
 		ArrayList<Integer> randomNumbersAddedRandomNumber = (ArrayList<Integer>)randomNumbers.clone();
 		randomNumbersAddedRandomNumber.add(randomNumber);
 		if(randomNumbers.size() != randomNumbersAddedRandomNumber.stream().distinct().count()) {
@@ -35,4 +37,14 @@ public class BallsNumbers {
 		return randomNumbers;
 	}
 	
+	//User Balls Numbers
+	public static ArrayList<Integer> makeUserInputNumbers(int inputNum) {
+		ArrayList<Integer> userInputNumbers = new ArrayList<>();
+		int num = inputNum;
+		while(num != 0) {
+			userInputNumbers.add(0, num % 10);
+			num /= 10;
+		}
+		return  userInputNumbers;
+	}
 }

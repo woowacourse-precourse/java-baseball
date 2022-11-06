@@ -5,15 +5,22 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Balls.*;
 import static baseball.BallsNumbers.*;
+import static baseball.InputView.*;
+import static baseball.ResultView.*;
+
 
 public class Application {
 	private static void baseBallGame() {
 		while(!isThreeStrike()) {
 			System.out.print("숫자를 입력해 주세요 : ");
 			int inputNum = Integer.parseInt(Console.readLine());
+			userInputNumbers = makeUserInputNumbers(inputNum);
+			checkIllegalInput(userInputNumbers);
+			
 		}
 	}
 	
+
 
 	public static void main(String[] args) {
     	while(true) {
