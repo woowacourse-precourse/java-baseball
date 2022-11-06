@@ -21,7 +21,12 @@ public class Application {
         int ballCount = checkBall(receivingNumbers, randomNumbers) - strikesCount;
 
 
+
         return false;
+    }
+
+    private static void printResult(int strikesCount, int ballCount) {
+        
     }
 
     private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
