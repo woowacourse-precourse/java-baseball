@@ -34,7 +34,7 @@ public class UserStringCustomTest {
 
     @Test
     void incorrectUserAnswerContainZero() {
-        String userAnswer = "023";
+        String userAnswer = "103";
         assertThat(userAnswer.contains("0")).isEqualTo(true); {
             throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
         }
