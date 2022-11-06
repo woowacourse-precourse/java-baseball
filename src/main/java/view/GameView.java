@@ -50,10 +50,7 @@ public class GameView {
     }
 
     private void giveHintGame(GameController gameController) {
-        if (gameController.isRightNumOfUser2Computer()) {
-            System.out.println(gameController.getHintOfComputer());
-        } else {
-            System.out.println(gameController.getHintOfComputer());
-        }
+        gameController.isRightNumOfUser2Computer();
+        System.out.println(gameController.getHintOfComputer());
     }
 }
