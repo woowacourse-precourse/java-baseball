@@ -43,6 +43,24 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 입력값_검사_true값_테스트(){
+
+        String[] testArr = {"123","518","241","253","456"};
+        for (String testStr: testArr) {
+            assertThat(Application.inputValidator(testStr)).isEqualTo(true);
+        }
+    }
+    @Test
+    void 입력값_검사_false값_테스트(){
+
+        String[] testArr = {"1a1", "aaa","1234","1111", "abc","106","045"};
+        for (String testStr: testArr) {
+            assertThat(Application.inputValidator(testStr)).isEqualTo(false);
+        }
+    }
+
+
 
     @Override
     public void runMain() {
