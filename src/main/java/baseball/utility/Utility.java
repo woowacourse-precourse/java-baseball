@@ -34,4 +34,9 @@ public interface Utility {
     private static boolean checkInputDuplicateCharacters(String input){
         return (input.charAt(0) != input.charAt(1) && input.charAt(0) != input.charAt(2) && input.charAt(1) != input.charAt(2));
     }
+
+    public static void checkRestartAnswerException(String input){
+        if(!input.equals("1") && !input.equals("2"))
+            throw new IllegalArgumentException(INPUT_EXECEPTION_MESSAGE);
+    }
 }

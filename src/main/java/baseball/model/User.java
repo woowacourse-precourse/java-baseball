@@ -9,4 +9,13 @@ public class User {
         Utility.checkInputException(input);
         return Integer.valueOf(input);
     }
+
+    public boolean wantRestart(){
+        String input = Console.readLine();
+        Utility.checkRestartAnswerException(input);
+        if(input.equals("1"))
+            return true;
+        else
+            return false;
+    }
 }
