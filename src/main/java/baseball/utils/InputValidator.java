@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -17,22 +16,21 @@ public class InputValidator {
 
     public static void checkUserBallInput(final String userBallInput) {
         checkBallNumberLength(userBallInput);
-        List<String> splitUserBalls = checkBallNumberIsValidNumber(userBallInput);
-        checkDuplicateBalls(splitUserBalls);
+        checkDuplicateBalls(checkBallNumberIsValidNumber(userBallInput));
     }
 
     private static void checkBallNumberLength(final String userBallInput) {
-        if (userBallInput.length() != MAX_SIZE) {
+        if (MAX_SIZE != userBallInput.length()) {
             throw new IllegalArgumentException();
         }
     }
 
     private static List<String> checkBallNumberIsValidNumber(final String userBallInput) {
-        String[] splitUserBall = userBallInput.split("");
+        List<String> splitUserBall = Arrays.asList(userBallInput.split(""));
         for (String ball : splitUserBall) {
             checkStandardNumber(ball);
         }
-        return new ArrayList<>(Arrays.asList(splitUserBall));
+        return splitUserBall;
     }
 
     private static void checkStandardNumber(final String ball) {
@@ -42,13 +40,13 @@ public class InputValidator {
     }
 
     private static void checkDuplicateBalls(final List<String> balls) {
-        if (new HashSet<>(balls).size() != MAX_SIZE) {
+        if (MAX_SIZE != new HashSet<>(balls).size()) {
             throw new IllegalArgumentException();
         }
     }
 
     public static void checkIsGameRestartInput(String restartOrExit) {
-        if (!restartOrExit.equals(RESTART_SIGNAL) && !restartOrExit.equals(EXIT_SIGNAL)) {
+        if (!RESTART_SIGNAL.equals(restartOrExit) && !EXIT_SIGNAL.equals(restartOrExit)) {
             throw new IllegalArgumentException();
         }
     }
