@@ -9,24 +9,17 @@ import java.util.stream.Stream;
 public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
     @Override
-    public List<Integer> compare(int gameNum, int userNum) {
+    public List<Integer> compare(List<Integer> gameNum, List<Integer> userNum) {
 
         List<Integer> result = new ArrayList<>(List.of(0, 0));
-
-
-        List<String> gameNumList = Stream.of(String.valueOf(gameNum).split(""))
-                .collect(Collectors.toList());
-        List<String> userNumList = Stream.of(String.valueOf(userNum).split(""))
-                .collect(Collectors.toList());
-
 
         int strike = 0;
         int ball = 0;
         for (int i=0; i<3; i++) {
             //스트라이크
-            if (gameNumList.get(i).equals(userNumList.get(i)))strike++;
+            if (gameNum.get(i).equals(userNum.get(i)))strike++;
             //볼
-            else if (gameNumList.contains(userNumList.get(i))) ball++;
+            else if (gameNum.contains(userNum.get(i))) ball++;
         }
 
         result.set(0, strike);

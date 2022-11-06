@@ -18,13 +18,13 @@ public class NumberMatchProcessorTest {
     @TestFactory
     @DisplayName("야구숫자게임의 숫자비교기능을 테스트한다.")
     Stream<DynamicTest> numberMatchTest() {
-        final int gameNumber = 123;
+        final List<Integer> gameNumber = List.of(1, 2, 3);
         numberMatchProcessor = new NumberMatchProcessorImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("하나도 일치하지 않는 경우", () -> {
-
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 456);
+                    List<Integer> userNumber = List.of(4, 5, 6);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
                     assertThat(result).contains(0);
                     assertThat(result).containsExactly(0, 0);
@@ -32,8 +32,8 @@ public class NumberMatchProcessorTest {
 
                 }),
                 DynamicTest.dynamicTest("1스트라이크인 경우", () -> {
-
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 453);
+                    List<Integer> userNumber = List.of(4, 5, 3);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
                     assertThat(result).contains(0, 1);
                     assertThat(result).containsExactly(1, 0);
@@ -41,8 +41,8 @@ public class NumberMatchProcessorTest {
 
                 }),
                 DynamicTest.dynamicTest("1볼인 경우", () -> {
-
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 452);
+                    List<Integer> userNumber = List.of(4, 5, 2);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
                     assertThat(result).contains(0, 1);
                     assertThat(result).containsExactly(0, 1);
@@ -50,17 +50,26 @@ public class NumberMatchProcessorTest {
 
                 }),
                 DynamicTest.dynamicTest("1볼 1스트라이크인 경우", () -> {
-
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 152);
+                    List<Integer> userNumber = List.of(1, 5, 2);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
                     assertThat(result).contains(1, 1);
                     assertThat(result).containsExactly(1, 1);
                     assertThat(result.size()).isEqualTo(2);
 
                 }),
-                DynamicTest.dynamicTest("3개의 숫자를 모두 맞힐 경우", () -> {
+                DynamicTest.dynamicTest("2볼 1스트라이크인 경우", () -> {
+                    List<Integer> userNumber = List.of(1, 3, 2);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
-                    List<Integer> result = numberMatchProcessor.compare(gameNumber, 123);
+                    assertThat(result).contains(1, 2);
+                    assertThat(result).containsExactly(1, 2);
+                    assertThat(result.size()).isEqualTo(2);
+
+                }),
+                DynamicTest.dynamicTest("3개의 숫자를 모두 맞힐 경우", () -> {
+                    List<Integer> userNumber = List.of(1, 2, 3);
+                    List<Integer> result = numberMatchProcessor.compare(gameNumber, userNumber);
 
                     assertThat(result).contains(0, 3);
                     assertThat(result).containsExactly(3, 0);
