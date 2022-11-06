@@ -6,6 +6,9 @@ import java.util.Map;
 public class OutputData {
 
     public static final String THREE_STRIKE_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String OUT = "아웃";
+    public static final String BALL = "볼";
+    public static final String STRIKE = "스트라이크";
 
     private static String output = "";
 
@@ -28,43 +31,43 @@ public class OutputData {
     }
 
     private static void checkBallCount(String ballCount, int count) {
-        if (ballCount.equals("아웃")) {
+        if (OUT.equals(ballCount)) {
             output += printOutCount(count);
         }
-        if (ballCount.equals("볼")) {
+        if (BALL.equals(ballCount)) {
             output += printBallCount(ballCount, count);
         }
-        if (ballCount.equals("스트라이크")) {
+        if (STRIKE.equals(ballCount)) {
             output += printStrikeCount(ballCount, count);
         }
     }
 
     private static String printOutCount(int count) {
-        if (count == 3) {
+        if (3 == count) {
             return "낫싱";
         }
         return "";
     }
 
     private static String printBallCount(String ballCount, int count) {
-        if (count != 0) {
+        if (0 != count) {
             return count + ballCount;
         }
         return "";
     }
 
     private static String printStrikeCount(String ballCount, int count) {
-        if (count == 3) {
+        if (3 == count) {
             return count + ballCount + "\n" + THREE_STRIKE_WIN_MESSAGE;
         }
-        if (count != 0) {
+        if (0 != count) {
             return checkJustStrike(ballCount, count);
         }
         return "";
     }
 
     private static String checkJustStrike(String ballCount, int count) {
-        if (output.equals("")) {
+        if ("".equals(output)) {
             return count + ballCount;
         }
         return " " + count + ballCount;
