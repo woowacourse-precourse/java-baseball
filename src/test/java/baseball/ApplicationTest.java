@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import java.util.Objects;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -194,5 +195,19 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(countBall).isEqualTo(0);
 
+    }
+
+    @Test
+    void countStrike() {
+        //given
+        BaseBallGame baseBallGame = new BaseBallGame();
+        List<Integer> userInputArr = List.of(1, 2, 3);
+        List<Integer> computerRandomNumbers = List.of(1, 2, 4);
+
+        //when
+        int countStrike = baseBallGame.countStrike(userInputArr, computerRandomNumbers);
+
+        //then
+        assertThat(countStrike).isEqualTo(2);
     }
 }
