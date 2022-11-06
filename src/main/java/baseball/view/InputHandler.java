@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.verifier.InputVerifier;
+import baseball.verifier.GameVerifier;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
@@ -10,7 +10,7 @@ public class InputHandler {
 
     public int readIntWithVerification() {
         String line = readLine();
-        InputVerifier.verifyInput(line);
+        GameVerifier.check(line);
         return Integer.parseInt(line);
     }
 }
