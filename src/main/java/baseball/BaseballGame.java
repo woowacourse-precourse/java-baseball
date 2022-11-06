@@ -11,7 +11,7 @@ public class BaseballGame {
 
     private List<Integer> answerNums;
     private List<Integer> inputNums;
-    
+
     public void gameStart() {
         BaseballGameResult gameResult = new BaseballGameResult();
         int gameEndSignal = 0;
@@ -62,6 +62,8 @@ public class BaseballGame {
     }
 
     public List<Integer> getGameInput() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
+
         String input = Console.readLine();
 
         if (isIllegalGameInput(Integer.parseInt(input))) {
