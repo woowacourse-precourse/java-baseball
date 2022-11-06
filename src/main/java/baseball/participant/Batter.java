@@ -11,11 +11,15 @@ public class Batter {
     public String readyRandomNumber() {
         List<Integer> randomDigits = new ArrayList<>();
         while (randomDigits.size() != 3) {
-            int randomDigit = Randoms.pickNumberInRange(1, 9);
-            if (!randomDigits.contains(randomDigit))
-                randomDigits.add(randomDigit);
+            readyRandomDigit(randomDigits);
         }
         return randomDigits.stream().map(String::valueOf)
                 .collect(Collectors.joining(""));
+    }
+
+    private void readyRandomDigit(List<Integer> randomDigits) {
+        int randomDigit = Randoms.pickNumberInRange(1, 9);
+        if (!randomDigits.contains(randomDigit))
+            randomDigits.add(randomDigit);
     }
 }
