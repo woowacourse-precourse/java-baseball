@@ -54,12 +54,14 @@ public class Baseball implements Game {
 
     private void generatePlayerNumbers(String playerInput) {
         playerNumbers.clear();
-        playerNumbers.addAll(
-            playerInput.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList())
-        );
+        playerNumbers.addAll(convertToNumbers(playerInput));
+    }
+
+    private static List<Integer> convertToNumbers(String playerInput) {
+        return playerInput.chars()
+            .map(Character::getNumericValue)
+            .boxed()
+            .collect(Collectors.toList());
     }
 
     private BallCount compareNumbers() {
