@@ -26,6 +26,11 @@ public class Application {
         String input = Console.readLine();
         return input;
     }
+
+    public static void checkInputLength(String inputString, int len){
+        if(inputString.length()!=len)
+            throw new IllegalArgumentException();
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
