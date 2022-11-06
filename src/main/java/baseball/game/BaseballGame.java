@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BaseballGame implements Game {
@@ -98,9 +97,10 @@ public class BaseballGame implements Game {
     }
 
     private boolean hasDuplicateNumber(String playerInput) {
-        Set<Integer> set = playerInput.chars()
-                .boxed().collect(Collectors.toSet());
-        return set.size() != GOAL_DIGIT;
+        long duplicateCount = playerInput.chars()
+                .distinct()
+                .count();
+        return duplicateCount != GOAL_DIGIT;
     }
 
     private void setPlayerNumbers(String playerInput) {
