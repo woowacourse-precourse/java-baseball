@@ -7,26 +7,29 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
 
-    static List<Integer> userNumbers;
+    private List<Integer> userNumbers = new ArrayList<>();
 
-    public static void inputMessage(){
+    public void inputMessage(){
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void setUserNumbers(){
+    public void setUserNumbers(){
         String inputNumber;
         inputMessage();
         inputNumber = readLine();
         checkException(inputNumber);
     }
+    public List<Integer> getUserNumbers(){
+        return userNumbers;
+    }
 
-    public static void checkException(String inputNumber){
+    public void checkException(String inputNumber){
         try{
             checkWrongNumber(inputNumber);
             checkNumbersLength(inputNumber);
             checkOverlapNumber(inputNumber);
             //예외가 발생하지 않는다면 suerNumbers를 Integer값으로 변경한다.
-            userNumbers = new ArrayList<>();
+
             userNumbers = changeIntUsernumbers(inputNumber);
 
         } catch (IllegalArgumentException e){
@@ -35,11 +38,11 @@ public class User {
         }
     }
 
-    public static void checkNumbersLength(String inputNumber){
+    public void checkNumbersLength(String inputNumber){
         if(inputNumber.length() != 3 ) throw new IllegalArgumentException("3개의 정수를 입력 해야합니다.");
     }
 
-    public static void checkOverlapNumber(String inputNumber){
+    public void checkOverlapNumber(String inputNumber){
         String checkOverlap ="";
 
         for(char number : inputNumber.toCharArray()){
@@ -49,11 +52,11 @@ public class User {
         }
     }
 
-    public static void checkWrongNumber(String inputNumber){
+    public void checkWrongNumber(String inputNumber){
         if(inputNumber.contains("0")) throw new IllegalArgumentException("0을 선택할 수 없습니다.");
     }
 
-    public static List<Integer> changeIntUsernumbers(String inputNubmers){
+    public List<Integer> changeIntUsernumbers(String inputNubmers){
         String[] splitNumber = inputNubmers.split("");
         int[] splitIntNumber = new int[splitNumber.length];
         List<Integer> userNumbers = new ArrayList<>();
