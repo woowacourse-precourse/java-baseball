@@ -35,5 +35,29 @@ public class BaseBallGame {
         return baseballGameAnswer;
     }
 
+    public BaseballGameResultDto submitAnswer(String userAnswer) {
+        int strike = 0;
+        int ball = 0;
 
+        for (int i = 0; i < BASEBALL_GAME_ANSWER_LENGTH; i++) {
+            int target = baseballGameAnswer[userAnswer.charAt(i) - '0'];
+
+            if(target==0){
+                continue;
+            }
+
+            if (target == i + 1) {
+                strike++;
+            }
+
+            if (target != i + 1) {
+                ball++;
+            }
+        }
+
+        if(strike==BASEBALL_GAME_ANSWER_LENGTH){
+            return new BaseballGameResultDto(strike, ball, true);
+        }
+        return new BaseballGameResultDto(strike, ball, false);
+    }
 }
