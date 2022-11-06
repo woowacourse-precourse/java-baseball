@@ -19,6 +19,7 @@ public class Application {
             int playerNumber = askUserTheNumber();
             playerList = breakInteger(playerNumber);
         } while (!(printScore(computerList, playerList)));
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
     }
 
