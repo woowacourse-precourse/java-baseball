@@ -5,6 +5,10 @@
 - DIGIT_1 = 0
 - DIGIT_10 = 1
 - DIGIT_100 = 2
+
+- STRIKE = 0
+- BALL = 1
+- NOTHING = 2
 ##컴퓨터 선택값(static)
 - computerDigitValue : 컴퓨터가 선택한 숫자의 각 자리 정수
 
@@ -44,12 +48,12 @@
 
 ###사용자 입력값과 컴퓨터의 선택값을 비교한다
 `List <Integer> compareUserInputAndComputerSelect(int userInput)`
-- 유저의 입력과 컴퓨터의 선택값을 비교하여 결과를 반환한다 ex) 1볼 1스트라이크 [1, 1, 0]
+- 유저의 입력과 컴퓨터의 선택값을 비교하여 결과를 반환한다 ex) 1볼 1스트라이크 [1, 1, 1]
 ####사용자 입력값에서 각 자리 정수값을 획득한다
 `List<Integer> disassembleDigitNumber(int number)`
 - 메소드를 재사용한다
 ###획득한 입력값과 자릿수(상수)를 차례대로 분석 프로세스에 전달한다
-`String getScore(int number, int DIGIT)`
+`int getScore(int number, int DIGIT)`
 - 유저의 입력값과 컴퓨터 선택값에 대해 비교
 
 ###결과를 출력한다
