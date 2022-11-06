@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.view.OutputView;
+import baseball.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        outputView.printEndGame();
+        InputView inputView = new InputView();
+        inputView.enterGameNumber();
     }
 }
