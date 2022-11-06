@@ -42,4 +42,12 @@ public class BaseballGameController {
         baseballGameView.printStrikeCount(baseballGameService.getStrikeCount());
         baseballGameView.printNotThing(baseballGameService.getStrikeCount(), baseballGameService.getBallCount());
     }
+
+    public void choiceRestartGame() {
+        baseballGameView.printRestartMessage();
+        if (baseballGameService.choiceRestartGame().equals(RESTART)) {
+            baseballGameService.initStrikeCountAndBallCount();
+        }
+    }
+
 }
