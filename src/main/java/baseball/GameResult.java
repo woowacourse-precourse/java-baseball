@@ -11,4 +11,9 @@ public class GameResult {
     public boolean isNothing() {
         return strike == 0 && ball == 0;
     }
+
+    public void setGameResult(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
 }
