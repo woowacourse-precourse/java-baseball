@@ -7,6 +7,10 @@ public class MyInputMismatchException extends IllegalArgumentException {
         this("");
     }
 
+    public MyInputMismatchException(int n) {
+        this(String.valueOf(n));
+    }
+
     public MyInputMismatchException(String str) {
         super(String.format(OUTPUT_MESSAGE, str));
     }
