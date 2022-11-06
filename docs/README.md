@@ -4,6 +4,8 @@
 - ***Class Computer***
   - setComputersList()
     - 상대방(컴퓨터)의 숫자 리스트를 정한다.
+  - getComputerList()
+    - 상대방(컴퓨터)의 숫자 리스트를 가져온다.
 
 - ***Class Status***
   - initStatus()
@@ -32,6 +34,8 @@
     - 3스트라이크로 게임이 종료되는 타이밍에 게임을 새로 시작 할지 선택하는 입력 시퀀스
   - scanInputByStatus()
     - 게임 진행 상태 메세지에따라 시퀀스를 결정한다.
+  - getValidatedUserInput()
+    - 유효성 검사가 끝난 리스트를 가져온다.
 
 - ***Class Game***
   - gameStart()
@@ -41,7 +45,7 @@
   - retryOrNot()
     - 게임 재시작 여부에 대한 입력을 받고 재시작이면 gameStart() 호출, 종료라면 메서드 종료.
   - printMessages()
-    - 비교 결과 메세지 출력
+    - 비교 결과 메세지 출력한다.
 
 ## **기능 테스트 목록**
 
