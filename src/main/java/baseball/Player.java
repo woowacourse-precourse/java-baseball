@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.utils.Constants.RANDOM_NUMBER_LENGTH;
+import static baseball.utils.Constants.THREE;
 import static baseball.utils.ErrorMessages.BETWEEN_ONE_AND_NINE;
 import static baseball.utils.ErrorMessages.REQUIRE_THREE_DIGIT_NUMBER;
 
@@ -22,7 +22,7 @@ public class Player {
     }
 
     private void validate(int number) {
-        if (String.valueOf(number).length() != RANDOM_NUMBER_LENGTH) {
+        if (String.valueOf(number).length() != THREE) {
             throw new IllegalArgumentException(REQUIRE_THREE_DIGIT_NUMBER);
         }
         if (isNotBetweenOneAndNine(String.valueOf(number))) {

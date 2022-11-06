@@ -15,15 +15,13 @@ public class BaseballGame implements Game {
     @Override
     public void run() {
         int strike = 0;
-        int ball;
         List<Integer> computerNumbers = RandomThreeDigitNumberGenerator.generate();
-        while (strike != RANDOM_NUMBER_LENGTH) {
+        while (strike != THREE) {
             System.out.print(INPUT_PLAYER_NUMBER);
             List<Integer> playerNumbers = BaseballGameService.getPlayer().getNumbers();
-            List<Integer> ballAndStrike = ResultCalculator.calculateBallAndStrike(computerNumbers, playerNumbers);
-            ball = ballAndStrike.get(0);
-            strike = ballAndStrike.get(1);
-            System.out.println(ball + BALL + SPACE + strike + STRIKE);
+            BallAndStrike ballAndStrike = BallAndStrike.from(computerNumbers, playerNumbers);
+            strike = ballAndStrike.getStrike();
+            System.out.println(ballAndStrike);
         }
     }
 

@@ -11,7 +11,7 @@ import java.util.Set;
 public class RandomThreeDigitNumberGenerator {
     public static List<Integer> generate() {
         Set<Integer> threeDigitNumber = new LinkedHashSet<>();
-        while (threeDigitNumber.size() < RANDOM_NUMBER_LENGTH) {
+        while (threeDigitNumber.size() < THREE) {
             int randomNumber = getRandomNumber();
             threeDigitNumber.add(randomNumber);
         }

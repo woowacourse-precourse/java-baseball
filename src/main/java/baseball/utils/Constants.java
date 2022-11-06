@@ -6,10 +6,10 @@ public final class Constants {
     public static final String CONTINUE_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
-    public static final String NOTING = "낫싱";
+    public static final String NOTHING = "낫싱";
     public static final String INPUT_PLAYER_NUMBER = "숫자를 입력해주세요 : ";
     public static final String SPACE = " ";
-    public static final int RANDOM_NUMBER_LENGTH = 3;
+    public static final int THREE = 3;
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
 }
