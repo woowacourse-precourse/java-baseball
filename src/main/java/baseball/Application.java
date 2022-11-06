@@ -66,17 +66,21 @@ public class Application {
         List<Integer> myThreeNum = myThreeNum();
         checkValidation(myThreeNum);
         List<Integer> computerThreeNum = computerThreeNum();
-//        boolean equalList = equalList(computerThreeNum, myThreeNum);
+        boolean equalList = equalList(computerThreeNum, myThreeNum);
         int strike = strike(computerThreeNum, myThreeNum);
         int ball = ball(computerThreeNum, myThreeNum);
 
     }
 
-    public static void equalList(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
+    public static boolean equalList(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
         // list A.containsAll(list B) 리스트 내용 비교
-
+        boolean equalList = true;
         // index, 내용 같으면 true ------> 3스트라이크!
-
+        if (myThreeNum.containsAll(computerThreeNum)) {
+            System.out.println("3 스트라이크!");
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        return equalList;
     }
 
     public static boolean endBaseball() {
