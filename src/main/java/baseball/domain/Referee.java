@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Referee {
+import static baseball.rule.Digit.DIGITS;
 
-    private static final int DIGITS = 3;
+public class Referee {
 
     private final boolean[] usedNumber = new boolean[9];
 
