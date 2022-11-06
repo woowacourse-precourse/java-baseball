@@ -27,14 +27,6 @@ public class Application {
 
     }
 
-    static void countBall(List<Integer> computer, List<Integer> user, Count c) {
-        for (int i = 0; i < 3; i++) {
-            if (computer.contains(user.get(i))) {
-                c.ball++;
-            }
-        }
-    }
-
     static void countStrike(List<Integer> computer, List<Integer> user, Count c) {
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(user.get(i))) {
