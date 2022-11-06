@@ -15,14 +15,19 @@ public class Application {
 
     public static Integer continueGame(List<Integer> result) {
         int strike = result.get(0);
+
         if (strike == 3) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
             int choiceNum = Character.getNumericValue(choice.charAt(0));
+
             if (choiceNum == NEW_GAME) {
                 playGame();
                 return NEW_GAME;
             } else if (choiceNum == END_GAME) {
+                return END_GAME;
+            } else {
+                System.out.println("잘못 입력하였습니다. 강제종료합니다.");
                 return END_GAME;
             }
         }
