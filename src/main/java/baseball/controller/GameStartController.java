@@ -8,7 +8,7 @@ import baseball.status.HintStatus;
 
 public class GameStartController {
     private static void controlGame() {
-        System.out.println(GameStatus.RESTART_OR_STOP_GAME);
+        System.out.println(GameStatus.RESTART_OR_STOP_GAME.getText());
         String userInput = GameStartService.getUserInput();
         if(userInput.equals("1")){
             GameStartService.initGame();
@@ -19,17 +19,17 @@ public class GameStartController {
     }
 
     private static void finishGame() {
-        System.out.println(GameStatus.END_GAME);
+        System.out.println(GameStatus.END_GAME.getText());
     }
 
     public static void startFirstGame(){
-        System.out.println(GameStatus.START_GAME);
+        System.out.println(GameStatus.START_GAME.getText());
         startGame();
     }
 
     private static void startGame() {
         GameStartService.initBallAndStrike();
-        System.out.print(GameStatus.INPUT_USER_NUMBER);
+        System.out.print(GameStatus.INPUT_USER_NUMBER.getText());
         saveNumber();
         compareNumber();
     }
@@ -41,8 +41,8 @@ public class GameStartController {
 
     private static void showHint(String hint) {
         System.out.println(hint);
-        if(hint.equals(HintStatus.ANSWER)){
-            System.out.println(GameStatus.SUCCESS_GAME);
+        if(hint.equals(HintStatus.ANSWER.getText())){
+            System.out.println(GameStatus.SUCCESS_GAME.getText());
             controlGame();
         }else{
             startGame();

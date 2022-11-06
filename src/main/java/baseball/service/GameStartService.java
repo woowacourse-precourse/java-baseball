@@ -44,20 +44,17 @@ public class GameStartService {
         int strike = GameStartRepository.strike;
         String result = "";
         if (strike == 3) {
-            result += "3" + HintStatus.STRIKE;
-            return result;
+            result += "3" + HintStatus.STRIKE.getText();
         } else if (strike == 0 && ball == 0) {
-            result += HintStatus.NOTHING;
-
+            result += HintStatus.NOTHING.getText();
+        } else if (strike == 0 && !(ball == 0)) {
+            result += "" + ball + HintStatus.BALL.getText();
+        } else if (!(strike == 0) && !(ball == 0)) {
+            result += "" +strike + HintStatus.STRIKE.getText();
         } else {
-            if (strike == 0) {
-                result += "" + ball + HintStatus.BALL;
-            } else if (ball == 0) {
-                result += "" + strike + HintStatus.STRIKE;
-            } else {
-                result += ""+ ball + HintStatus.BALL + strike + HintStatus.STRIKE;
-            }
+            result += "" + ball + HintStatus.BALL.getText() +" " + strike + HintStatus.STRIKE.getText();
         }
+
         return result;
     }
 
