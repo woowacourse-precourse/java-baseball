@@ -11,7 +11,13 @@ public class PlayerNum implements Number {
 
     @Override
     public void verifyNumber(List<Integer> numbers) {
-
+        for (int number : numbers) {
+            if (number < 1 || number > 9) {
+                throw new IllegalArgumentException();
+            } else if (numbers.size() != 3 || numbers.size() != numbers.stream().distinct().count() ) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     @Override
