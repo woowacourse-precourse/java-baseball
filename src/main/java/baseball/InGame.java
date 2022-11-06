@@ -40,8 +40,8 @@ public class InGame {
         return random_int;
     }
 
-    private void announceUserInput() {
-
+    private void announceUserToInputNumber() {
+        baseballUtil.printLine("숫자를 입력해주세요 : ");
     }
 
     private void announceInputResult() {
