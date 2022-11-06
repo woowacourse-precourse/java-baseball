@@ -9,6 +9,7 @@ public class GameStatusView {
     private static final String END_GAME_COMMAND = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_OPINION_COMMAND = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String WRONG_ANSWER_ALERT = "잘못된 입력입니다.";
+    private static final String FINISH_COMMAND = "게임 종료";
     private static final String MORE_GAME_NUMBER = "1";
     private static final String END_GAME_NUMBER = "2";
     String opinion;
@@ -49,5 +50,9 @@ public class GameStatusView {
 
     public String getOpinion(){
         return opinion;
+    }
+
+    public void printTheEnd(){
+        System.out.println(FINISH_COMMAND);
     }
 }
