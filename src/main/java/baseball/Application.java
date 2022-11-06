@@ -9,6 +9,9 @@ public class Application {
     private static final String END_GAME = "숫자 야구 게임을 종료합니다.";
 
     private static Status status;
+    private static Result result;
+    private static Computer computer;
+    private static User user;
 
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
@@ -18,6 +21,9 @@ public class Application {
             // TODO: 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
             while (status != Status.EXIT) {
                 // TODO: 2. 게임 진행을 위한 초기화
+                computer = new Computer();
+                user = new User();
+                result = Result.NOTHING;
 
                 // TODO: 3. User 생성, User의 숫자 입력 -> 유효성 검사를 자체적으로 시행, 유효하지 않다면 예외 발생 후 종료
 
