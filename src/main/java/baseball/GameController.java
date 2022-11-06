@@ -30,8 +30,22 @@ public class GameController {
         return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
     }
 
-    public void compareGameCount(List<Integer> userNumberList, List<Integer> randomNumberList) {
-        List<Integer> intersectionList = checkIntersection(userNumberList, randomNumberList);
-        System.out.println("교집합:" + intersectionList + ":");
+    public void checkGameResult(List<Integer> intersectionList) {
+
+        ShowMessage showMessage = new ShowMessage();
+        int answerCount = showMessage.getAnswerCount();
+
+        if (intersectionList.isEmpty()) { // 교집합 부분이 없다면
+            ShowMessage.showNotMatchWord();
+        } else if (intersectionList.size() == answerCount) { // 정답
+            ShowMessage.showGameSet();
+        } else {
+            calculateGameCount();
+        }
     }
+
+    public void calculateGameCount(){
+
+    }
+
 }
