@@ -1,6 +1,7 @@
 package baseball.sevice;
 
 import baseball.domain.ComputerNumber;
+import baseball.exception.ErrorCode;
 import baseball.repository.NumberBaseballRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,6 @@ public class NumberBaseballService {
     private static final int FIRST_NUMBER = 0;
     private static final int SECOND_NUMBER = 1;
     private static final int THIRD_NUMBER = 2;
-    public static final String NUMERIC_INPUT_ERROR = "1 ~ 9사이의 숫자만 입력해야 합니다.";
-    public static final String NUMERIC_LENGTH_ERROR = "3글자의 숫자를 입력해야 합니다.";
-    private static final String SAME_NUMBER_ERROR = "3개의 숫자는 모두 달라야 합니다.";
 
     private NumberBaseballRepository numberBaseballRepository = NumberBaseballRepository.getInstance();
 
@@ -29,7 +27,6 @@ public class NumberBaseballService {
         List<Integer> userAnswerResultList = new ArrayList<>();
         userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
         userAnswerResultList.add(getBallCount(numberBaseballRepository.findComputerNumber(), userAnswer));
-
         return userAnswerResultList;
     }
 
@@ -66,13 +63,16 @@ public class NumberBaseballService {
 
     public void validateUserAnswer(String userAnswer) {
         if (!checkNumber(userAnswer)) {
-            throw new IllegalArgumentException(NUMERIC_INPUT_ERROR);
+            throw new IllegalArgumentException(ErrorCode.NUMERIC_INPUT_EXCEPTION
+                    .getMessage());
         }
         if (!checkLength(userAnswer)) {
-            throw new IllegalArgumentException(NUMERIC_LENGTH_ERROR);
+            throw new IllegalArgumentException(ErrorCode.NUMERIC_LENGTH_EXCEPTION
+                    .getMessage());
         }
         if (!checkSameNumber(userAnswer)) {
-            throw new IllegalArgumentException(SAME_NUMBER_ERROR);
+            throw new IllegalArgumentException(ErrorCode.SAME_NUMBER_EXCEPTION
+                    .getMessage());
         }
     }
 
