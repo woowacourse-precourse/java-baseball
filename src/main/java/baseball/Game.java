@@ -13,8 +13,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
@@ -73,9 +73,9 @@ public class Game extends abstracts.Game {
         System.out.println(input);
         return operationMapper
                 .get(this.status)
-                .apply(input);
+                .test(input);
     }
-    private final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
+    private final Map<Status, Predicate<String>> operationMapper = new HashMap<>();
     {
         operationMapper.put(Status.PLAYING, this::playTurn);
         operationMapper.put(Status.DONE, this::askAfterGameOption);
@@ -108,11 +108,13 @@ public class Game extends abstracts.Game {
 
     private Result getIndexResult(int index, int number) {
         return Arrays.stream(Result.values())
-                .filter(result -> resultMapper.get(result).apply(index, number))
+                .filter(result -> resultMapper
+                        .get(result)
+                        .test(index, number))
                 .findFirst()
                 .get();
     }
-    private final Map<Result, BiFunction<Integer, Integer, Boolean>> resultMapper = new HashMap<>();
+    private final Map<Result, BiPredicate<Integer, Integer>> resultMapper = new HashMap<>();
     {
         resultMapper.put(Result.STRIKE, this::isNumberStrike);
         resultMapper.put(Result.BALL, this::isNumberBall);
@@ -135,7 +137,8 @@ public class Game extends abstracts.Game {
     }
 
     private boolean askAfterGameOption(String input) {
-        return optionMapper.get(input)
+        return optionMapper
+                .get(input)
                 .get();
     }
     private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
