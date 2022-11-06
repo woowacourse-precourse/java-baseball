@@ -9,8 +9,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -84,10 +83,15 @@ class ApplicationTest extends NsTest {
         Game game = new Game(computer);
         //when
         String test = "*()";
+        String test2 = "123";
         //then
         assertThatThrownBy(() -> game.validateUserInput(test))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Input is wrong.");
+
+        assertThatCode(() -> game.validateUserInput(test2))
+                .doesNotThrowAnyException();
+
     }
 
     @Override
