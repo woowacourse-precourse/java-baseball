@@ -10,6 +10,7 @@ public class OutputView {
     private static final String BALL_AND_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_STOP_GUIDE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static String RESULT_MESSAGE;
 
     public static void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
@@ -37,6 +38,10 @@ public class OutputView {
 
     public static void printGameEndMessage() {
         System.out.println(GAME_END_MESSAGE);
+    }
+
+    public static void printResult() {
+        System.out.println(RESULT_MESSAGE);
     }
 
     public static void printRestartOrStopGuideMessage() {
