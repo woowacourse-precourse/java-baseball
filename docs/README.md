@@ -39,7 +39,7 @@
 - [x] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
 - [x] strikeNumber이 0보다 크거나 같고 3보다 작거나 같은지 확인
 - [x] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ballNumber - strikeNumber로 초기화
-- [ ] checkedBaseballNumbers을 리턴
+- [x] checkedBaseballNumbers을 리턴
 
 ## (boolean)printBaseballOfResult(int strikeSize, int ballSize)
 - [ ] Map 매개변수의 요소들의 꺼내서 strikeNumber와 ballNumber에 저장
