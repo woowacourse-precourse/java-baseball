@@ -27,10 +27,10 @@
 
 
 ### 6. 스트라이크/볼 카운트를 토대로 어떤 문구를 출력할지 결정하는 메서드
-- Referee.java
+- **Referee.java**
   - judgement() : 스트라이크/볼 카운트를 수행하는 메서드를 호출하여, 최종 스트라이크/볼 카운트를 Map<> 으로 반환한다.
   - sayJudgement() : 카운트된 스트라이크/볼 Map을 토대로 문구를 출력한다.
 
 ### 7. 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시키는 예외처리 역할 등 입력 값 검증을 수행하는 메서드
-- UserInputValidator.java
+- **UserInputValidator.java**
   - validate() : 입력값이 1 ~ 9 사이의 숫자가 아니거나, 중복된 숫자를 입력할 시 IllegalArgumentException을 발생시킨다.
