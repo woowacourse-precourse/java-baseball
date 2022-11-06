@@ -3,12 +3,21 @@ package baseball.service;
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.sevice.NumberBaseballService;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+@TestInstance(Lifecycle.PER_CLASS)
 public class NumberBaseballServiceTest {
 
-    private final NumberBaseballService numberBaseballService = new NumberBaseballService();
+    private static final NumberBaseballService numberBaseballService = new NumberBaseballService();
+
+    @BeforeAll
+    void initNumber() {
+        numberBaseballService.initNumber();
+    }
 
     @DisplayName("사용자 입력이 1 ~ 9 숫자가 아니라면 IllegalArgumentException 예외 발생 테스트")
     @Test
