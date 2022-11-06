@@ -24,7 +24,7 @@ class RandomNumberFactoryTest {
         @RepeatedTest(3)
         void 추출한_숫자는_서로_다르다() {
             RandomNumbers randomNumbers = newInstance();
-            assertThat(randomNumbers.countSingleNumbers()).isEqualTo(3);
+            assertThat(randomNumbers.isDuplicated()).isFalse();
         }
     }
 }

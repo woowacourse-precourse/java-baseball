@@ -7,10 +7,10 @@ import baseball.domain.number.SingleNumber;
 import baseball.domain.number.inputnumber.InputNumbers;
 
 import java.util.List;
-// 인터페이스
+
 public class RandomNumbers {
 
-    private final List<SingleNumber> randomNumbers;  // 컴퓨터 숫자
+    private final List<SingleNumber> randomNumbers;
     private final BallCounter ballCounter;
     private final StrikeCounter strikeCounter;
 
@@ -31,14 +31,17 @@ public class RandomNumbers {
 
     /**
      * 테스트용 메서드 입니다.
+     * size() : 리스트의 사이즈 반환
+     * countSingleNumbers() : 중복 체크
      */
     public int size() {
         return randomNumbers.size();
     }
 
-    public int countSingleNumbers() {
-        return (int) randomNumbers.stream()
+    public boolean isDuplicated() {
+        int count = (int) randomNumbers.stream()
                 .distinct()
                 .count();
+        return count != 3;
     }
 }
