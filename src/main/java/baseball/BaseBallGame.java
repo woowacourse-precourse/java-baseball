@@ -18,7 +18,7 @@ public class BaseBallGame {
                 computer.add(randomNum);
             }
         }
-        System.out.println("computer숫자" + computer);
+//        System.out.println("computer숫자" + computer);
         return computer;
     }
 
@@ -26,7 +26,9 @@ public class BaseBallGame {
          user = new ArrayList<>();
         System.out.printf("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
+        System.out.println(inputNum);
         String[] nums = inputNum.split("");
+
 
         if (nums.length != 3) {
             throw new IllegalArgumentException();
@@ -65,7 +67,7 @@ public class BaseBallGame {
         int ball = strikeAndBall.get(1);
 
         if (strike == 3) {
-            System.out.printf("3개의 숫자를 모두 맞히셨습니다! ");
+            System.out.printf("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return "게임 종료";
         } else if (strike != 0 && ball != 0) {
             answer = ball+"볼 "+strike+"스트라이크";
