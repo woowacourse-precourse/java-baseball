@@ -8,7 +8,15 @@ import java.util.List;
 public class BaseballGame {
     private static final String GAME_START_COMMENT = "숫자 야구 게임을 시작합니다.\n";
     private static final String NUMBER_INPUT_COMMENT = "숫자를 입력해주세요 : ";
+    private static final String PRINT_BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
+    private static final String PRINT_STRIKE_COUNT = "%d스트라이크\n";
+    private static final String PRINT_BALL_COUNT = "%d볼\n";
+    private static final String NOTHING = "낫싱\n";
+    private static final String GAME_TERMINATE = "%d개의 숫자를 모두 맞히셨습니디! 게임 종료\n";
+
     private static final char INTEGER_MAKER = '0';
+    private static final int STRIKE_NUMBER = 3;
+    private static final int ZERO = 0;
 
     public void playGame() throws IllegalArgumentException {
         System.out.print(GAME_START_COMMENT);
@@ -21,6 +29,8 @@ public class BaseballGame {
 
         int ballCount = getBallCount(userNumbers, computerNumbers);
         int strikeCount = getStrikeCount(userNumbers, computerNumbers);
+
+        printGameResult(ballCount, strikeCount);
     }
 
     public String getUserInput() {
@@ -79,6 +89,49 @@ public class BaseballGame {
         }
 
         return 0;
+    }
+
+    private void printGameResult(int ballCount, int strikeCount) {
+        if (strikeCount > ZERO && ballCount > ZERO) {
+            printBallAndStrikeResult(strikeCount, ballCount);
+        }
+
+        if (strikeCount > ZERO && ballCount == ZERO) {
+            printStrikeResult(strikeCount);
+        }
+
+        if (strikeCount == ZERO && ballCount > ZERO) {
+            printBallResult(ballCount);
+        }
+
+        if (strikeCount == ZERO && ballCount == ZERO) {
+            printNothingResult();
+        }
+
+        if (strikeCount == STRIKE_NUMBER) {
+            printThreeStrikeResult();
+        }
+    }
+
+    private void printBallAndStrikeResult(int strikeCount, int ballCount) {
+        System.out.printf(PRINT_BALL_AND_STRIKE, ballCount, strikeCount);
+    }
+
+    private void printStrikeResult(int strikeCount) {
+        System.out.printf(PRINT_STRIKE_COUNT, strikeCount);
+    }
+
+    private void printBallResult(int ballCount) {
+        System.out.printf(PRINT_BALL_COUNT, ballCount);
+    }
+
+    private void printNothingResult() {
+        System.out.print(NOTHING);
+    }
+
+    private void printThreeStrikeResult() {
+        System.out.printf(PRINT_STRIKE_COUNT, STRIKE_NUMBER);
+        System.out.printf(GAME_TERMINATE, STRIKE_NUMBER);
     }
 
 }
