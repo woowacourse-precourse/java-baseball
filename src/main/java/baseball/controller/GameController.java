@@ -19,6 +19,12 @@ public class GameController {
     public GameController(){}
 
     public void runGame(){
+        initializeGame();
+        while(wantToPlay()){
+            setGame();
+            startGame();
+            whatToDoNext();
+        }
     }
 
     void setGame(){
