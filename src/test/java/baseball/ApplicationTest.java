@@ -131,5 +131,14 @@ class ApplicationTest extends NsTest {
             }).isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(INPUT_DUPLICATE_ERROR_MESSAGE);
         }
+
+        @Test
+        void 입력값_문자열_리스트_변경_테스트(){
+            Player player = new Player("123");
+            List<Integer> list = List.of(1, 2, 3);
+            ArrayList<Integer> real = new ArrayList<>(list);
+            player.setInputNumber();
+            assertThat(real).isEqualTo(player.getInputNumber());
+        }
     }
 }
