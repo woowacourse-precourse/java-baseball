@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -17,6 +18,8 @@ import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ApplicationTest extends NsTest {
 
@@ -350,46 +353,20 @@ class ApplicationTest extends NsTest {
         assertThat(result).isTrue();
     }
 
-    @Test
-    void 게임종료_확인_case_2() {
-        int[] testInt = new int[]{124, 143, 423, 132, 321, 213, 182, 134, 521, 324, 813, 283, 184,
-            826, 483, 416, 651, 247, 562, 357, 635, 712, 218, 251, 238, 732, 352, 314, 381, 431,
-            312, 231, 798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789};
+    @ParameterizedTest()
+    @ValueSource(ints = {124, 143, 423, 132, 321, 213, 182, 134, 521, 324, 813, 283, 184,
+        826, 483, 416, 651, 247, 562, 357, 635, 712, 218, 251, 238, 732, 352, 314, 381, 431,
+        312, 231, 798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789})
+    void 게임종료_확인_case_2(int testInt) {
         Computer computer = new Computer();
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
             1, 2, 3
         ));
         ArrayList<Boolean> resultList = new ArrayList<>();
-        for (int num : testInt) {
-            computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
-            resultList.add(computer.isEndTheGame());
-        }
-
-        boolean result = resultList.stream().allMatch(list -> list == false);
-        assertThat(result).isTrue();
+        computer.isRealRightNumOfUser(testInt);
+        boolean result = computer.isEndTheGame();
+        assertFalse(result);
     }
-
-    // TODO: gameview테스트
-//    @Test
-//    void 게임_다시_시작_인풋_테스트_1() throws Exception {
-//        //given
-//        GameView view = new GameView();
-//
-//        // when
-//        // then
-//        assertThrows(IllegalArgumentException.class, () -> view.isValidUser(0));
-//    }
-//
-//    @Test
-//    void 게임_다시_시작_인풋_테스트_2() throws Exception {
-//        //given
-//        GameView view = new GameView();
-//
-//        // when
-//        // then
-//        assertThrows(IllegalArgumentException.class, () -> view.isValidUser(3));
-//    }
 
     // 게임 진행의 값을 얻는 함수 1 || 2
     @Test
