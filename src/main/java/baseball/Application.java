@@ -13,9 +13,9 @@ public class Application {
         int playStatus = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println(computersNumbers());
-        while (playStatus == 1) {
-            comparing(computersNumbers(), readUsersNumbers());
-        }
+        readUsersNumbers();
+        comparing(computersNumbers(), readUsersNumbers());
+
     }
 
     public static ArrayList<Integer> computersNumbers() {
@@ -77,21 +77,31 @@ public class Application {
         ball = ball - strike;
         hintResult.add(0, strike);
         hintResult.add(1, ball);
-
         System.out.printf("strike : %1$d ball : %2$d", hintResult.get(0), hintResult.get(1));
         return hintResult;
     }
 
-    public static void gameResult(ArrayList<Integer> hintScore) {
-
+    public static int gameResult(ArrayList<Integer> hintScore) {
+        int gameStatus=0;
         if (hintScore.get(0) == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameStatus = 1;
         } else if (hintScore.get(0) == 0 && hintScore.get(1) == 0) {
             System.out.println("낫싱");
         } else {
             System.out.printf("%1$d볼 %2$d스트라이크", hintScore.get(1), hintScore.get(0));
         }
+        return gameStatus;
     }
+
+
+
+
+
+
+
+
+
 }
 
 
