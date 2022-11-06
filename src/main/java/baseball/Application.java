@@ -74,5 +74,10 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> answer = getAnswer();
         System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            int result = showPrompt(answer);
+            if (result == 2)
+                break;
+        }
     }
 }
