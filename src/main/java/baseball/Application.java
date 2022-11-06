@@ -1,7 +1,9 @@
 package baseball;
 
 public class Application {
+
+    private static final BaseballService baseballService = new BaseballService();
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        baseballService.startGame();
     }
 }
