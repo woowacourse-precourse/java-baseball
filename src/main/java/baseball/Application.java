@@ -90,5 +90,18 @@ public class Application {
         return 0;
     }//public static int compareUserWithEnemy
 
+    public static int goGameOrStopGame(List<Integer> enemyNumber) {
+        int endNum = 0;
+
+        while (endNum != 2) {
+            endNum = countStrikeAndBall(getUserNumber(), enemyNumber);
+            if (endNum == 1) {
+                enemyNumber = getEnemyNumber();
+            }
+            System.out.println();
+        }
+        return endNum;
+    }//public static int goGameOrStopGame
+
 
 }
