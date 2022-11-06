@@ -5,6 +5,7 @@ import static java.lang.Character.getNumericValue;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -41,14 +42,12 @@ public class BaseballGame implements Game {
     }
 
     private List<Integer> pickUniqueNumbersInRange(int start, int end, int count) {
-        List<Integer> uniqueNumbers = new ArrayList<>();
+        LinkedHashSet<Integer> uniqueNumbers = new LinkedHashSet<>();
         while (uniqueNumbers.size() < count) {
             int randomNumber = Randoms.pickNumberInRange(start, end);
-            if (!uniqueNumbers.contains(randomNumber)) {
-                uniqueNumbers.add(randomNumber);
-            }
+            uniqueNumbers.add(randomNumber);
         }
-        return uniqueNumbers;
+        return new ArrayList<>(uniqueNumbers);
     }
 
     private void printGameStartMessage() {
