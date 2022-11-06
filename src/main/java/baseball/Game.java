@@ -10,9 +10,7 @@ public class Game {
     private final Scanner scanner;
     private List<Integer> targetNumber;
     private List<Integer> predictedNumber;
-    private int strikeCount;
-    private int ballCount;
-
+    private int strikeScore;
 
     public Game(Scanner scanner) {
         this.scanner = scanner;
@@ -25,7 +23,6 @@ public class Game {
         System.out.println(targetNumber);
         System.out.println(predictedNumber);
         scoreCalculator();
-        System.out.println(strikeCount);
     }
 
     private List<Integer> convertToList(String predictedValue) {
@@ -39,20 +36,27 @@ public class Game {
 
     private void scoreCalculator() {
 
-        this.strikeCount = getStrikeCount();
-        //this.ballCount = getBallCount();
+        this.strikeScore = getStrikeScore();
+        int ballScore = getBallScore();
+        System.out.println(strikeScore);
+        System.out.println(ballScore);
     }
 
-    private int getStrikeCount() {
+    private int getStrikeScore() {
 
-        int count = 0;
+        int strikeScore = 0;
         for(int index = 0; index < 3; index++) {
-            if(Objects.equals(targetNumber.get(index), predictedNumber.get(index))) count++;
+            if(Objects.equals(targetNumber.get(index), predictedNumber.get(index))) strikeScore++;
         }
-        return count;
+        return strikeScore;
     }
 
-//    private int getBallCount() {
-//
-//    }
+    private int getBallScore() {
+
+        int sameValueCnt = 0;
+        for(int index = 0; index < 3; index++) {
+            if(targetNumber.contains(predictedNumber.get(index))) sameValueCnt++;
+        }
+        return sameValueCnt - strikeScore;
+    }
 }
