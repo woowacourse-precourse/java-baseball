@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.controller.GamePlay;
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,7 +17,14 @@ public class User {
         return inputNumbers;
     }
 
-    public int inputRestart() {
-        return Integer.parseInt(Console.readLine());
+    public boolean inputRestart() {
+        int restartNumber = Integer.parseInt(Console.readLine());
+        Util.isCorrectInputRestart(restartNumber);
+        if (restartNumber == 2) {
+            return true;
+        }
+        GamePlay.restart = false;
+
+        return false;
     }
 }

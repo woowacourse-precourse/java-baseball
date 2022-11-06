@@ -12,7 +12,6 @@ public class GamePlay {
     private Computer computer = new Computer();
     private User user = new User();
     public void playContinuous(){
-        computer.generateNumber();
         while (true){
             System.out.print("숫자를 입력하세요: ");
             int[] guessNumbers = typingNumber();
@@ -22,10 +21,10 @@ public class GamePlay {
                 break;
             }
         }
-        System.out.println("종료");
     }
     public void play(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        computer.generateNumber();
         playContinuous();
     }
 
@@ -34,16 +33,13 @@ public class GamePlay {
     }
 
     public boolean restartGame(){
-        int restartNumber = user.inputRestart();
-        Util.isCorrectInputRestart(restartNumber);
-        if (restartNumber == 2) {
-            return true;
+        boolean restartFlag = user.inputRestart();
+
+        if (!restartFlag){
+            computer.generateNumber();
         }
 
-        GamePlay.restart = false;
-
-        computer.generateNumber();
-        return false;
+        return restartFlag;
     }
 
     public void match(int[] guessNumbers){
