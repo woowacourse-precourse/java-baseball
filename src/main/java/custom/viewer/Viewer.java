@@ -15,9 +15,9 @@ public class Viewer {
     }
 
     public void run() {
+        baseBallController.init();
         while (true) {
             System.out.println(PrintTemplate.BEGIN.getMessage());
-            baseBallController.init();
             System.out.print(PrintTemplate.PLZ_INPUT.getMessage());
             String inputNumber = Console.readLine();
             Response answer = baseBallController.matchNumber(inputNumber);
@@ -30,6 +30,7 @@ public class Viewer {
                 if (retryAnswer.getGameStatus().equals(GameStatus.EXIT)) {
                     break;
                 }
+                baseBallController.init();
             }
         }
     }
