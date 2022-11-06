@@ -8,6 +8,9 @@ import baseball.view.ScoreResultView;
 
 public class GameController {
 
+    GameService gameService = new GameService();
+    GameStatusService gameStatusService;
+
     public GameController(){
 
     }
@@ -19,6 +22,7 @@ public class GameController {
     }
 
     void initializeGame(){
+        gameStatusService = new GameStatusService();
     }
 
     void startGame(){
