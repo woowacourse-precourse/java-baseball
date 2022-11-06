@@ -14,4 +14,6 @@ public final class NumberConst {
     public static final Integer FIRST_RANGE = 1;
 
     public static final Integer LAST_RANGE = 9;
+
+    public static final Integer MAX_STRIKE = 3;
 }
