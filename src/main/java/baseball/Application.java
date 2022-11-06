@@ -20,12 +20,12 @@ public class Application {
 
 class UserInput {
     private static String readLine = "";
-    public static String request() {
+    public static int[] request() {
         readLine = Console.readLine();
         validLength();
         isNumber();
 
-        return readLine;
+        return divideDigits();
     }
 
     private static void validLength() {
@@ -33,10 +33,19 @@ class UserInput {
             throw new IllegalArgumentException();
         }
     }
-
     private static void isNumber() {
         Integer.parseInt(readLine);
     }
+
+    private static int[] divideDigits() {
+        String[] eachDigits = readLine.split("");
+        int[] numberContainer = new int[3];
+        for (int index = 0; index < numberContainer.length; index++ ) {
+            numberContainer[index] = Integer.parseInt(eachDigits[index]);
+        }
+        return numberContainer;
+    }
+
 }
 
 
@@ -66,29 +75,14 @@ class PrintGuidSentence {
     }
 }
 
-class BaseballNumberMaker {
-
-
-}
-
-
 
 class BaseballNumber {
     private int[] baseballNumber;
 
     BaseballNumber(int[] baseballNumber) {
         this.baseballNumber = baseballNumber;
-        //divideDigits();
+
         NumberValidation();
-    }
-
-    private void divideDigits() { // 이부분 인풋으로 빼고 그냥 int[]이거 받는게 나을듯
-        //String numberToString = Integer.toString(baseballNumber);
-        //String[] eachDigits = numberToString.split("");
-
-        //for (int index = 0; index < eachDigits.length; index++) {
-        //    this.baseballNumber[index] = Integer.parseInt(eachDigits[index]);
-        //}
     }
 
     private void NumberValidation() {
