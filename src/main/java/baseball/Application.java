@@ -32,7 +32,7 @@ public class Application {
         return computer;
     }
 
-    static void startGame(List<Integer> computerNumber){
+    static void startGame(List<Integer> computerNumber) {
         while (true) {
             // 사용자로부터 입력된 3개의 숫자 배열
             List<Integer> userNumber = generateUserNumber();
@@ -46,7 +46,7 @@ public class Application {
 
             // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
             if (ballCount == 0 && strikeCount == 0) {
-                System.out.println("낫싱");
+                System.out.print("낫싱");
             }
 
             // ballCount가 0이 아닌 경우
