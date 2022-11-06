@@ -5,27 +5,28 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseBallGame {
-    private final List<Integer> computerRandomThreeValue;
+    private final List<Integer> threeRandomValue;
+
+    private String userInput;
+    private List<Integer> ballStrikeCount;
 
     private static final int BALL = 0;
     private static final int STRIKE = 1;
 
-    public BaseBallGame(List<Integer> computerRandomThreeValue) {
-        this.computerRandomThreeValue = List.copyOf(computerRandomThreeValue);
+
+    public BaseBallGame(List<Integer> threeRandomValue) {
+        this.threeRandomValue = List.copyOf(threeRandomValue);
     }
 
 
     public void gameStart () {
-        String userData;
-        List<Integer> ballStrikeCount;
         do {
             System.out.print("숫자를 입력해주세요 : ");
+            userInput = Console.readLine();
 
-            userData = Console.readLine();
+            userInputValidCheck(userInput);
 
-            userInputValidCheck(userData);
-
-            ballStrikeCount = computerRandomCompareToUserInput(computerRandomThreeValue, userData);
+            ballStrikeCount = computerRandomCompareToUserInput(threeRandomValue, userInput);
             printByBallAndStrikeCount(ballStrikeCount);
 
         } while (ballStrikeCount.get(STRIKE) != 3);
