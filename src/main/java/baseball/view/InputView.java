@@ -2,12 +2,15 @@
 package baseball.view;
 
 import baseball.exception.InputDuplicateException;
+import baseball.exception.InputNotMatchDigitException;
 import baseball.exception.InputNotNumberException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static baseball.rule.Digit.DIGITS;
 
 public class InputView {
 
@@ -29,7 +32,7 @@ public class InputView {
                 numbers.add(Integer.parseInt(Character.toString(item)));
             }
 
-            validateInputDuplicate(numbers);
+            validateNumbers(numbers);
 
             return numbers;
         } catch (NumberFormatException e) {
@@ -37,12 +40,26 @@ public class InputView {
         }
     }
 
+    private void validateNumbers(List<Integer> inputs){
+        validateInputDuplicate(inputs);
+        validateInputMatchDigit(inputs);
+    }
+
     private void validateInputDuplicate(List<Integer> inputs) {
-        System.out.println(" validate ");
         for(Integer input : inputs){
             if(Collections.frequency(inputs,input) > 1){
                 throw new InputDuplicateException();
             }
         }
+    }
+
+    private void validateInputMatchDigit(List<Integer> inputs){
+        if(!isMatchDigit(inputs)){
+            throw new InputNotMatchDigitException();
+        }
+    }
+
+    private boolean isMatchDigit(List<Integer> inputs){
+        return inputs.size() == DIGITS;
     }
 }
