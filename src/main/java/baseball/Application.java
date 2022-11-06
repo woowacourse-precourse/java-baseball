@@ -9,9 +9,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args){
         while(true){
-            //int strike = 0;
-            //int ball = 0;
-
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             // 1. 3자리 수 랜덤 생성 - Randoms의 pickNumberInRange()사용
@@ -24,8 +21,8 @@ public class Application {
                 System.out.println("랜덤 넘버: "+numbers.get(i));
 
             while(true){
-                boolean breaker = false;
-                int strike=0, ball=0, nothing=0;
+                //boolean breaker = false;
+                int strike=0, ball=0;//, nothing=0;
 
                 // 잘못된 값 입력시 IllegalArgumentException()를 throw
                 String player = illegalInput();
@@ -34,26 +31,17 @@ public class Application {
                 List<Integer> ballList = strikeBallNothing(numbers, player);
                 ball = ballList.get(0);
                 strike = ballList.get(1);
-                nothing = ballList.get(2);
+                //nothing = ballList.get(2);
 
-                System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
-                // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
-                if(strike == 3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                //System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
 
-                    String continueOrExit = Console.readLine();
-                    if(Integer.parseInt(continueOrExit) == 2)
-                        breaker = true;
-                }
-                if(breaker == true)
+                if(printBallCount(ball, strike)){
+                    //System.out.println("게임을 종료합니다.");
                     break;
-
-                /*if(strike == 0 && ball == 0)
-                    System.out.print("낫싱");*/
+                }
 
             }
-
+            break;
         }
     }
     // 랜덤 넘버를 생성하는 메소드
@@ -85,8 +73,8 @@ public class Application {
         for(int i=0; i<numbers.size(); i++)
             baseballList.add(0);
 
-        int ball=baseballList.get(0), strike=baseballList.get(1), nothing= baseballList.get(2);
-        //boolean breaker = false;
+        int ball=baseballList.get(0), strike=baseballList.get(1);//, nothing= baseballList.get(2);
+
         for(int i=0; i<numbers.size(); i++){
 
             int playerNumbers = Integer.parseInt(String.valueOf(player.charAt(i)));
@@ -94,10 +82,8 @@ public class Application {
             if(numbers.get(i) == playerNumbers){
                 strike++;
                 baseballList.set(1, strike);
-                //prevStrike += strike;
-                //System.out.print(strike+"스트라이크 ");
             }
-            else if(player.indexOf(Integer.toString(numbers.get(i))) != -1){
+            else if(player.contains(Integer.toString(numbers.get(i)))){
                 ball++;
                 baseballList.set(0, ball);
                 System.out.println(baseballList.get(0));
@@ -106,12 +92,37 @@ public class Application {
         }
 
         // ball, strike 모두 없는 경우에만 nothing
-        if(ball == 0 && strike == 0){
+        /*if(ball == 0 && strike == 0){
             nothing++;
             baseballList.set(2, nothing);
-        }
+        }*/
 
         return baseballList;
+    }
 
+    // 2. 스트라이크, 볼, 낫싱 횟수를 출력
+    static boolean printBallCount(int ball, int strike){
+        // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
+        if(strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String continueOrExit = Console.readLine();
+            if(Integer.parseInt(continueOrExit) == 2)
+                return true;
+        }
+
+        if(ball != 0 && strike != 0)
+            System.out.println(ball + "볼 "+strike+"스트라이크");
+        else{
+            if(ball != 0)
+                System.out.println(ball + "볼");
+            else if(strike != 0)
+                System.out.println(strike + "스트라이크");
+            else
+                System.out.println("낫싱");
+        }
+
+        return false;
     }
 }
