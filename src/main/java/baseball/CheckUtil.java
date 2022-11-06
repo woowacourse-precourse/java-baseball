@@ -1,5 +1,9 @@
 package baseball;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static baseball.Constant.*;
 public class CheckUtil {
 
@@ -18,12 +22,15 @@ public class CheckUtil {
         }
     }
 
-    public void checkIsDuplicated(String input){
-        char firstChar = input.charAt(0);
-        char secondChar = input.charAt(1);
-        char thirdChar = input.charAt(2);
-        if(firstChar == secondChar || secondChar == thirdChar || firstChar == thirdChar){
-            throw new IllegalArgumentException(duplicatedNumberMessage);
+    public void checkIsDuplicated(List<String> userNumList){
+        Map<String,Integer> map = new HashMap<>();
+        for(String userNum:userNumList){
+            map.put(userNum,map.getOrDefault(userNum,0)+1);
+        }
+        for(String str: map.keySet()){
+            if(map.get(str)>1){
+                throw new IllegalArgumentException(duplicatedNumberMessage);
+            }
         }
     }
 }
