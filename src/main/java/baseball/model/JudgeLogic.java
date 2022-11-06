@@ -13,3 +13,9 @@ public class JudgeLogic {
         }
         return totalSameCount;
     }
+
+    public boolean isSameNumber(List<Integer> computer, List<Integer> player, int indexNum) {
+        return Objects.equals(computer.get(indexNum), player.get(indexNum));
+    }
+
+}
