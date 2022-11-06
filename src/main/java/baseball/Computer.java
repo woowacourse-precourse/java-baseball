@@ -3,30 +3,31 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import fixed.FixedList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Computer {
 
-    private final int[] answer;
+    private final List<Integer> answer;
 
     public Computer() {
-        answer = new int[FixedList.LENGTH];
+        answer = new ArrayList<>();
     }
 
-    public void makeAnswerNum () {
-        int cnt = 0;
-        while (cnt < FixedList.LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(1,9);
+    public void makeAnswerNum() {
+        while (answer.size() < FixedList.LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(1, 9);
             int checkedNum = checkDuplication(randomNum);
 
             if (isNotDuplicated(checkedNum)) {
-                answer[cnt] = randomNum;
-                cnt++;
+                answer.add(randomNum);
             }
         }
     }
 
     int checkDuplication(int randomNum) {
-        for (int i = 0; i < FixedList.LENGTH; i++) {
-            if (randomNum == answer[i]) {
+        for (Integer integer : answer) {
+            if (randomNum == integer) {
                 randomNum = 0;
                 break;
             }
@@ -34,11 +35,11 @@ public class Computer {
         return randomNum;
     }
 
-    boolean isNotDuplicated (int n) {
+    boolean isNotDuplicated(int n) {
         return n != 0;
     }
 
-    public int[] getAnswer() {
+    public List<Integer> getAnswer() {
         return answer;
     }
 }

@@ -1,21 +1,21 @@
 package baseball;
 
-import fixed.FixedList;
+import java.util.List;
 
 public class AnswerChecker {
-    private final int[] answer;
+    private final List<Integer> answer;
     private int strikeCnt;
     private int ballCnt;
 
-    public AnswerChecker(int[] answer) {
+    public AnswerChecker(List<Integer> answer) {
         this.answer = answer;
         this.strikeCnt = 0;
         this.ballCnt = 0;
     }
 
-    public void checkStrikeOrBall(int[] userInput) {
-        for (int i = 0; i < FixedList.LENGTH; i++){
-            checkStrike(answer[i], userInput[i]);
+    public void checkStrikeOrBall(List<Integer> userInput) {
+        for (int i = 0; i < answer.size(); i++) {
+            checkStrike(answer.get(i), userInput.get(i));
         }
     }
 
@@ -27,16 +27,16 @@ public class AnswerChecker {
         checkBall(inputNum);
     }
 
-    public void checkBall (int inputNum) {
-        for (int i = 0; i < FixedList.LENGTH; i++) {
-            if (answer[i] == inputNum) {
+    public void checkBall(int inputNum) {
+        for (Integer i : answer) {
+            if (i == inputNum) {
                 ballCnt++;
                 return;
             }
         }
     }
 
-    public boolean isAnswer () {
+    public boolean isAnswer() {
         return strikeCnt == 3;
     }
 

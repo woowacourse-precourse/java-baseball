@@ -1,15 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import fixed.FixedList;
-import java.util.stream.Stream;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
-
-    private int[] userNumbers;
+    List<Integer> userNumbers;
 
     public User() {
-        userNumbers = new int[FixedList.LENGTH];
+        userNumbers = new ArrayList<>();
     }
 
     public void inputNumbers() {
@@ -26,10 +26,13 @@ public class User {
     }
 
     public void convertInput(String userInput) {
-        userNumbers =  Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
+        String[] userInputForConvert = userInput.split("");
+        for (String s : userInputForConvert)
+            userNumbers.add(Integer.parseInt(s));
+        System.out.println(userNumbers);
     }
 
-    public int[] getUserNumbers() {
+    public List<Integer> getUserNumbers() {
         return userNumbers;
     }
 
