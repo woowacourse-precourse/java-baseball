@@ -24,4 +24,8 @@ public class Balls {
 	private boolean isValidSize(final List<Integer> numbers) {
 		return numbers.size() == BALLS_SIZE;
 	}
+
+	public BallStatus compareTo(Ball ball) {
+		return BallStatus.NOTHING;
+	}
 }

@@ -46,4 +46,13 @@ public class BallsTest {
 		assertThat(new Balls(List.of(1, 2, 3))).isNotNull();
 	}
 
+	@DisplayName("숫자 비교 테스트 N:1 - 낫싱")
+	@Test
+	void compareTo_숫자_비교_N_1_낫싱() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		BallStatus status = com.compareTo(new Ball(7, 1));
+		assertThat(status).isEqualTo(BallStatus.NOTHING);
+	}
+
+
 }
