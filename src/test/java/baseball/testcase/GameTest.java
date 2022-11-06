@@ -1,5 +1,6 @@
 package baseball.testcase;
 
+import baseball.game.Ball;
 import baseball.game.BallMaker;
 import baseball.game.BallReader;
 import baseball.game.Game;
@@ -13,11 +14,12 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 public class GameTest extends NsTest {
@@ -40,16 +42,15 @@ public class GameTest extends NsTest {
     @Test
     void BallReader_반환_값에_따른_게임_종료() {
         //given
-        when(ballReader.isFinished(anyList(),anyList()))
+        when(ballReader.isFinished(any(), any()))
                 .thenReturn(false)
                 .thenReturn(true);
 
         when(ballMaker.getRandomBall())
-                .thenReturn(new ArrayList<>());
+                .thenReturn(new Ball(List.of(1,2,3)));
 
         when(ballMaker.getUserBall())
-                .thenReturn(new ArrayList<>())
-                .thenReturn(new ArrayList<>());
+                .thenReturn(new Ball(List.of(2,1,3)));
 
         //when
         game.play();
@@ -62,32 +63,31 @@ public class GameTest extends NsTest {
     @Test
     void BallReader_반환_값에_따른_출력_검사() {
         //given
-        when(ballReader.isFinished(anyList(),anyList()))
+        when(ballReader.isFinished(any(), any()))
                 .thenReturn(false)
                 .thenReturn(false)
                 .thenReturn(false)
                 .thenReturn(true);
 
         when(ballMaker.getRandomBall())
-                .thenReturn(new ArrayList<>());
+                .thenReturn(new Ball(List.of(1,2,3)));
 
         when(ballMaker.getUserBall())
-                .thenReturn(new ArrayList<>());
+                .thenReturn(new Ball(List.of(2,1,3)));
 
+        Map<String, Integer> firstResult = new HashMap<>();
+        firstResult.put("STRIKE", 2);
 
-        Map<String,Integer> firstResult = new HashMap<>();
-        firstResult.put("STRIKE",2);
-
-        Map<String,Integer> secondResult = new HashMap<>();
-        secondResult.put("STRIKE",1);
+        Map<String, Integer> secondResult = new HashMap<>();
+        secondResult.put("STRIKE", 1);
         secondResult.put("BALL", 1);
 
-        Map<String,Integer> thirdResult = new HashMap<>();
+        Map<String, Integer> thirdResult = new HashMap<>();
         thirdResult.put("BALL", 2);
 
-        Map<String,Integer> fourthResult = new HashMap<>();
+        Map<String, Integer> fourthResult = new HashMap<>();
 
-        when(ballReader.getResult(anyList(),anyList()))
+        when(ballReader.getResult(any(), any()))
                 .thenReturn(firstResult)
                 .thenReturn(secondResult)
                 .thenReturn(thirdResult)
@@ -114,6 +114,10 @@ public class GameTest extends NsTest {
     @DisplayName("BallMaker의 getUserBall에서 예외가 나면 Game에도 예외가 전파된다")
     @Test
     void BallReader의_getUserBall_예외_발생에_따른_게임_Game_예외_전파() {
+
+        when(ballMaker.getRandomBall())
+                .thenReturn(new Ball(List.of(1,2,3)));
+
 
         when(ballMaker.getUserBall())
                 .thenThrow(new IllegalArgumentException("UserBall에서 예외발생"));
