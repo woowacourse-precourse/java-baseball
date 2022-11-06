@@ -1,5 +1,6 @@
-package baseball;
+package baseball.game;
 
+import baseball.exception.UserNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;

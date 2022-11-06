@@ -1,12 +1,12 @@
-package baseball;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.ComputerNumber.createComputerNumber;
-import static baseball.RestartNumberValidator.checkValidationRestartNumber;
-import static baseball.UserNumber.checkInputUserNumber;
+import static baseball.game.ComputerNumber.createComputerNumber;
+import static baseball.exception.RestartNumberValidator.checkValidationRestartNumber;
+import static baseball.game.UserNumber.checkInputUserNumber;
 
 public class BaseballGame {
 
