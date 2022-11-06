@@ -42,7 +42,6 @@ class ApplicationTest extends NsTest {
         }
     }
 
-
     @Nested
     class isValidData_Test {
         @Nested
@@ -66,6 +65,7 @@ class ApplicationTest extends NsTest {
             }
         }
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -8,9 +8,8 @@ public class Application {
 
     public static List<Integer> disassembleDigitNumber(int number){
         List<Integer> disassembledNumber = new ArrayList<Integer>();
-        for(int digit = 1; number > 0; number/=10, digit *= 10){
-            int digitNum = number % 10;
-            disassembledNumber.add(digitNum * digit);
+        for(; number > 0; number /= 10){
+            disassembledNumber.add(number % 10);
         }
 
         return disassembledNumber;
