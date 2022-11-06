@@ -8,6 +8,7 @@ import java.util.HashSet;
 public class Referee {
 
     public Result judgeHitAndPitch(String hitNumber, String pitchNumber) {
+        pitchIsBalk(pitchNumber);
         Result result = new Result();
         for (int position = 0; position < 3; position++) {
             distinguishTypeOfDigit(result, hitNumber, pitchNumber, position);
