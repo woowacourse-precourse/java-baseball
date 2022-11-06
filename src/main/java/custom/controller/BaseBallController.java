@@ -28,7 +28,7 @@ public class BaseBallController {
     }
 
 
-    void validateNumber(String input) throws IllegalArgumentException {
+    private void validateNumber(String input) throws IllegalArgumentException {
         Pattern pattern = Pattern.compile("^\\d{3}$");
         Matcher matcher = pattern.matcher(input);
         if (!matcher.matches()) {
