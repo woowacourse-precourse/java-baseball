@@ -13,6 +13,7 @@ public class AnswerGenerator {
         for (Integer integer : computerList) {
             convertedList.add(String.valueOf(integer));
         }
+        System.out.println(convertedList);
         return convertedList;
     }
 
