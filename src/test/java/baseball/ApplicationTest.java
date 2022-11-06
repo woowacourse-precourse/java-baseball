@@ -11,8 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-import static baseball.Application.analyzeInput;
-import static baseball.Application.selectRandomNumber;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -113,6 +112,22 @@ class ApplicationTest extends NsTest {
             run("246", "135");
             assertThat(getOutput()).contains("낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }, 1, 3, 5);
+    }
+
+    @Test
+    @DisplayName("5-1. 새로운 게임을 시작하려면 1 입력")
+    public void test9() {
+        assertRandomNumberInRangeTest(() -> {
+            run("246", "135", "1", "597", "589", "2");
+            assertThat(getOutput()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+        }, 1, 3, 5, 5, 8, 9);
+    }
+
+    @Test
+    @DisplayName("5-1. 종료하려면 2 입력")
+    public void test10() {
+        continueOrFinish("2");
+        assertThat(getOutput().equals("게임을 종료합니다"));
     }
 
     @Test
