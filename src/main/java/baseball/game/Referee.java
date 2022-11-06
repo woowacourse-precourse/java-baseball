@@ -64,4 +64,11 @@ public class Referee {
 
         return WRONG_ANSWER;
     }
+
+    private void addToShout(Map<String, Integer> judgeAccuracy, StringBuilder sb, String accuracy) {
+        if (judgeAccuracy.containsKey(accuracy)) {
+            sb.append(judgeAccuracy.get(accuracy));
+            sb.append(accuracy);
+        }
+    }
 }
