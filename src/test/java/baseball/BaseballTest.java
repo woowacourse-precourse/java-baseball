@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.domain.Action;
 import baseball.domain.Ball;
 import baseball.model.Computer;
 import baseball.view.Messenger;
@@ -93,7 +94,7 @@ class BaseballTest {
                 }
             }
         }
-        
+
         @Nested
         @DisplayName("compareByValue 메소드는")
         class compareByValue_test {
@@ -220,18 +221,6 @@ class BaseballTest {
             System.setOut(originalOut);
         }
 
-        @Test
-        @DisplayName("printResultMessage 메소드가 를 출력하는지 확인")
-        void printResultMessage_test() {
-            System.setOut(new PrintStream(outContent));
-
-            String restartOrEndMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
-            messenger.printRestartOrEndMessage();
-
-            assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
-            System.setOut(originalOut);
-        }
-
         @Nested
         @DisplayName("printResultMessage 메소드는")
         class printResultMessage_test {
@@ -304,7 +293,7 @@ class BaseballTest {
             }
         }
     }
-    
+
     @Nested
     @DisplayName("GameController 클래스")
     class GameController_test {
@@ -329,6 +318,39 @@ class BaseballTest {
             gameController.setComputerNumber();
 
             assertThat(gameController.compareBall(ball)).isInstanceOf(Integer.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("Action 클래스")
+    class Action_test {
+
+        @Test
+        @DisplayName("생성자에 숫자 1이 입력되었을 때 객체를 생성하는지 확인")
+        void constructor_with_integer_1_test() {
+            String normalNumber = "1";
+            assertThat(new Action(normalNumber)).isInstanceOf(Action.class);
+        }
+
+        @Test
+        @DisplayName("생성자에 숫자 2가 입력되었을 때 객체를 생성하는지 확인")
+        void constructor_with_integer_2_test() {
+            String normalNumber = "2";
+            assertThat(new Action(normalNumber)).isInstanceOf(Action.class);
+        }
+
+        @Test
+        @DisplayName("생성자에 숫자 12가 입력되었을 때 예외를 발생시키는지 확인")
+        void constructor_with_integer_12_test() {
+            String exceptionNumber = "12";
+            assertThatThrownBy(() -> new Action(exceptionNumber)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("생성자에 숫자 3이 입력되었을 때 예외를 발생시키는지 확인")
+        void constructor_with_integer_3_test() {
+            String exceptionNumber = "3";
+            assertThatThrownBy(() -> new Action(exceptionNumber)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
