@@ -29,10 +29,20 @@ public class Application {
 
     }
 
+    public static Integer calculationBall(List<Integer> computer,List<Integer> user){
+        Integer ball = 0;
+        for(int i = 0;i<computer.size();i++){
+            for(int k = 0;k<user.size();k++){
+                if(computer.get(i).equals(computer.get(k)) && i != k)
+                    ball +=1;
+            }
+        }
+        return ball;
+    }
     public static List<Integer> validationAndConvert(String input){
         if(input.length() != 3)  throw new IllegalArgumentException();
-        Set<Integer> result = input.chars().
-                filter(c->(c >= '1' && c <= '9'))
+        Set<Integer> result = input.chars()
+                .filter(c->(c >= '1' && c <= '9'))
                 .map(c -> c - '0').boxed()
                 .collect(toSet());
         if(result.size() != 3) throw new IllegalArgumentException();
