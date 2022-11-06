@@ -31,7 +31,7 @@
 
 ## (int)checkedBallNumbers(List computerNumbers,List userNumbers)
 - [x] 하나의 매개변수 안에 다른 매개변수의 요소가 포함되는 갯수를 checkedBallNumbers를 0으로 선언한다.
-- [ ] 매개변수들의 길이 만큼 반복하여, Ball인지 확인.
+- [x] 매개변수들의 길이 만큼 반복하여, Ball인지 확인.
 - [ ] 값이 같으면, checkedBallNumbers에 1을 더함.
 - [ ] checkedBallNumbers를 리턴
 
