@@ -73,7 +73,7 @@ public class Baseball {
         ballCount = new BallCount();
         ballCount.ruleBallCount(this.targetNumber,this.guessNumber);
         ballCount.ruleStrikeCount(this.targetNumber,this.guessNumber);
-        
+
         return ballCount.getGuessResult();
     }
 
