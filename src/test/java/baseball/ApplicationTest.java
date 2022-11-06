@@ -1,6 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +30,27 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 랜덤_숫자_테스트1_3자리_수() {
+        List<Integer> randomNum = Application.createRandomNum();
+        Assertions.assertThat(randomNum.size()).isSameAs(3);
+    }
+
+    @Test
+    void 랜덤_숫자_테스트2_중복_숫자() {
+        List<Integer> randomNumList = Application.createRandomNum();
+        Set<Integer> randomNumSet = new HashSet<>(randomNumList);
+        Assertions.assertThat(randomNumList.size()).isSameAs(randomNumSet.size());
+    }
+
+    @Test
+    void 랜덤_숫자_테스트3_각_원소의_숫자_범위_0_9() {
+        List<Integer> randomNum = Application.createRandomNum();
+        for (Integer x : randomNum) {
+            assertThat(x).isLessThan(10).isGreaterThan(0);
+        }
     }
 
     @Override
