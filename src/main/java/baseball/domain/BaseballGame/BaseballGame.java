@@ -16,6 +16,7 @@ public class BaseballGame {
     public BaseballGame() {
         computer = new Computer();
         player = new Player();
+        isPlaying = true;
         isStartRequested = true;
     }
 
