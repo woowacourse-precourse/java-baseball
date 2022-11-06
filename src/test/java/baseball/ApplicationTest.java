@@ -107,6 +107,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("4. 사용자가 컴퓨터가 선택한 숫자를 맞출 때 까지 반복")
+    void test8() {
+        assertRandomNumberInRangeTest(() -> {
+            run("246", "135");
+            assertThat(getOutput()).contains("낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }, 1, 3, 5);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
