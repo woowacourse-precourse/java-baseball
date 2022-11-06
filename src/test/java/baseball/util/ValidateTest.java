@@ -25,4 +25,28 @@ class ValidateTest {
         assertThat(Validate.isRuleDigit(input)).isFalse();
     }
 
+    @DisplayName("서로 다른숫자인지 확인하는 기능")
+    @Test
+    void isDifferentDigits_success() {
+        String input = "123";
+
+        assertThat(Validate.isDifferentDigits(input)).isTrue();
+    }
+
+    @DisplayName("서로 다른숫자인지 확인하는 기능")
+    @Test
+    void isDifferentDigits_fail() {
+        String input = "121";
+
+        assertThat(Validate.isDifferentDigits(input)).isFalse();
+    }
+
+    @DisplayName("서로 다른숫자인지 확인하는 기능")
+    @Test
+    void isDifferentDigits_fail_2() {
+        String input = "112";
+
+        assertThat(Validate.isDifferentDigits(input)).isFalse();
+    }
+
 }
