@@ -2,9 +2,18 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+
+    public static List<Integer> createTargetNumber() {
+        int hundreds = Randoms.pickNumberInRange(1, 9);
+        int tens = createTensDifferentFrom(hundreds);
+        int ones = createOnesDifferentFrom(hundreds, tens);
+        return List.of(hundreds, tens, ones);
     }
 
     public static int createTensDifferentFrom(int hundreds) {
