@@ -8,7 +8,7 @@ public class Game {
     final static String WIN_CONDITION = "3스트라이크";
     final static String WIN_GUIDE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static int NUMBER_LENGTH = 3;
-    String gamePlayerInput;
+//    String gamePlayerInput;
     private Computer computer;
 
     Game() {
@@ -16,27 +16,19 @@ public class Game {
     }
 
     public void play() {
-        printGuideMessage(GAME_START_GUIDE_MESSAGE);
+        System.out.println(GAME_START_GUIDE_MESSAGE);
         while (true) {
-            printGuideMessage(PLAYER_INPUT_GUIDE_MESSAGE);
-            gamePlayerInput = getGamePlayerInput();
+            System.out.print(PLAYER_INPUT_GUIDE_MESSAGE);
+            String gamePlayerInput = getGamePlayerInput();
             checkGamePlayerNumberInput(gamePlayerInput);
-            String result = getResult(computer.getRandomNumbers().toString(), gamePlayerInput);
+            System.out.println(computer.getRandomNumbers());
+            String result = getResult(computer.getRandomNumbers(), gamePlayerInput);
             System.out.println(result);
             if (result == WIN_CONDITION) {
-                printGuideMessage(WIN_GUIDE_MESSAGE);
+                System.out.println(WIN_GUIDE_MESSAGE);
                 break;
             }
         }
-    }
-
-    public void printGuideMessage(String guideMessage) {
-        System.out.println(guideMessage);
-    }
-
-    public void printGuideMessage(String guideMessage, String guideMessage2) {
-        System.out.println(guideMessage);
-        System.out.println(guideMessage2);
     }
 
     public String getGamePlayerInput() {
@@ -49,7 +41,7 @@ public class Game {
 
     public String getResult(String computerRandomNumbers, String gamePlayerInput) {
         Integer strikes = countStrikes(computerRandomNumbers, gamePlayerInput);
-        Integer balls = countBalls(computerRandomNumbers, gamePlayerInput );
+        Integer balls = countBalls(computerRandomNumbers, gamePlayerInput ) - strikes;
         StringBuilder result = new StringBuilder();
 
         if (strikes > 0) {
@@ -57,13 +49,13 @@ public class Game {
         }
 
         if (balls > 0) {
-            result.append((balls - strikes) + "볼 ");
+            result.append(balls + "볼");
         }
 
         if (strikes == balls && balls == 0) {
             result.append("낫싱");
         }
-
+        System.out.println(result.toString());
         return result.toString();
     }
 
