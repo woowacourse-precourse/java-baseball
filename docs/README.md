@@ -29,7 +29,14 @@
 5. 1 동작 실행
 
 ---
+## generateNumber
+난수를 생성하는 메소드
+camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하여 List<Integer>에 난수 삽입
 
+### Return
+- List<Integer>
+  - 3자리 서로 다른 한자리 자연수가 들어있는 배열이다.
+---
 ## checkStrike 
 스트라이크 체크하는 메소드
 
