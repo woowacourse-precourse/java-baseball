@@ -57,4 +57,8 @@ public class Referee {
     public int getStrikes() {
         return strikes;
     }
+
+    public int getBalls() {
+        return balls;
+    }
 }
