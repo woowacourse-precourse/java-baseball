@@ -3,6 +3,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.mockito.internal.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class ServiceImpl implements Service{
-
     @Override
     public void startGame() {
     }
@@ -31,6 +31,41 @@ public abstract class ServiceImpl implements Service{
         return currInput;
     }
 
+    private List<Integer> parser(String input) {
+        checkException(input);
+    }
+
+    private void checkException(String input) throws IllegalArgumentException{
+        if (input.length()!=3) {
+            throw new IllegalArgumentException();
+        }
+        checkNumber(input);
+        checkDuplicate(input);
+    }
+
+    private void checkNumber(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if ('0' <= input.charAt(i) && input.charAt(i) <= '9') {
+                continue;
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkDuplicate(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (countChar(input, input.charAt(i))==1) {
+                continue;
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static long countChar(String str, char ch) {
+        return str.chars()
+                .filter(c -> c == ch)
+                .count();
+    }
 
 
 
