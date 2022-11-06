@@ -8,9 +8,14 @@ import java.util.stream.Stream;
 
 public class GameController {
 
+    public String getInput(){
+        String userNumber = Console.readLine(); // 입력 받기
+        return userNumber;
+    }
+
     public List<Integer> inputUserNumber() {
 
-        String userNumber = Console.readLine(); // 입력 받기
+        String userNumber = getInput();
         List<Integer> userNumberList = userNumberConvertToList(userNumber); // 자릿수로 나눈 리스트로 변환
         System.out.println(userNumberList);
         return userNumberList;
@@ -27,16 +32,17 @@ public class GameController {
         return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList()).size();
     }
 
-    public void checkGameResult(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
+    public int checkNotMatch(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
 
         if (ballCount == 0) {
             ShowMessage.showNotMatchWord(); // 낫싱
+            return 0;
         } else {
-            calculateGameCount(userNumberList, randomNumberList, ballCount);
+            return calculateGameCount(userNumberList, randomNumberList, ballCount);
         }
     }
 
-    public void calculateGameCount(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
+    public int calculateGameCount(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
 
         ShowMessage showMessage = new ShowMessage();
         int answerCount = showMessage.getAnswerCount();
@@ -55,6 +61,20 @@ public class GameController {
         ballCount -= strikeCount;
         System.out.println("볼:" + ballCount + ":");
         System.out.println("스트라이크:" + strikeCount + ":");
+
+        return checkGame(strikeCount, answerCount);
+    }
+
+    public int checkGame(int strikeCount, int answerCount){
+
+        if(strikeCount == answerCount){
+            ShowMessage.showEndGame();
+            ShowMessage.showNewGameCheck();
+            String userNumber = getInput(); // 입력 받기
+            int number = Integer.parseInt(userNumber);
+            return number;
+        }
+        return 0;
     }
 
 }
