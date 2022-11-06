@@ -1,6 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,8 @@ public class BaseBallGame {
         return computer;
     }
 
-    public List<Integer> inputNumbers(String userNum){
-         user = new ArrayList<>();
+    public List<Integer> inputNumbers(String userNum) {
+        user = new ArrayList<>();
         String[] nums = userNum.split("");
 
 
@@ -59,7 +61,7 @@ public class BaseBallGame {
         return strikeAndBall;
     }
 
-    public String numberToString(List<Integer> strikeAndBall){
+    public String numberToString(List<Integer> strikeAndBall) {
         int strike = strikeAndBall.get(0);
         int ball = strikeAndBall.get(1);
 
@@ -67,24 +69,21 @@ public class BaseBallGame {
             System.out.printf("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return "게임 종료";
         } else if (strike != 0 && ball != 0) {
-            answer = ball+"볼 "+strike+"스트라이크";
+            answer = ball + "볼 " + strike + "스트라이크";
         } else if (strike != 0) {
-            answer = strike+"스트라이크";
+            answer = strike + "스트라이크";
         } else if (ball != 0) {
-            answer = ball+"볼";
+            answer = ball + "볼";
         } else {
             answer = "낫싱";
         }
         return answer;
     }
 
-    public void reStart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String userInput = Console.readLine();
-        if(userInput.equals("1")) run();
-        else if(userInput.equals("2")) return;
-        else throw new IllegalStateException();
+    public void reStart(String userNum) {
+        if (userNum.equals("1")) run();
+        else if (userNum.equals("2")) return;
+        else throw new IllegalArgumentException();
     }
 
     public void run() {
@@ -98,10 +97,12 @@ public class BaseBallGame {
             List<Integer> strikeAndBall = findNumber(computerNumber, userNumber);
 
             String answer = numberToString(strikeAndBall);
-            if(answer.equals("게임 종료")) break;
+            if (answer.equals("게임 종료")) break;
             else System.out.println(answer);
         }
-        reStart();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userNum = Console.readLine();
+        reStart(userNum);
     }
 
 }
