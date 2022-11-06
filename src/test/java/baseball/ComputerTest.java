@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
@@ -10,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
 
-    @Test
+    @RepeatedTest(100)
     void generateAnswer_올바른_생성_확인() {
         Computer computer = Computer.generateAnswer();
         try {
