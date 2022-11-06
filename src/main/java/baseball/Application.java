@@ -191,6 +191,7 @@ public class Application {
                 result.append(" ");
             }
             result.append(strike + STRIKE_STRING);
+            hasStrike = true;
         }
         if (!(hasBall || hasStrike)) {
             System.out.println(RESULT_NOTHING_MESSAGE);
