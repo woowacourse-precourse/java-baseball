@@ -41,7 +41,7 @@ public class Game {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (numberList.get(i) == computer.get(i)) {
+            if (numberList.get(i).equals(computer.get(i))) {
                 strike += 1;
             } else if (computer.contains(numberList.get(i))) {
                 ball += 1;
@@ -61,7 +61,7 @@ public class Game {
         String message = null;
 
         if (strike == 0 && ball == 0) {
-            message = "낫띵";
+            message = "낫싱";
         } else if (strike > 0 && ball == 0) {
             message = strike + "스트라이크";
         } else if (strike == 0 && ball > 0) {
@@ -86,8 +86,7 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restart = Console.readLine();
-        boolean gameStart = setRestart(Integer.parseInt(restart));
-        return gameStart;
+        return setRestart(Integer.parseInt(restart));
     }
 
     // 게임 새로 시작 및 종료 결정 메서드

@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final int minNumber = 1;
-    private final int maxNumber = 9;
-    private final int digitNumber = 3;
+
+    final int minNumber = 1;
+    final int maxNumber = 9;
+    final int digitNumber = 3;
 
     // 컴퓨터 3자리 수 만들기
     public List<Integer> makeNumber() {

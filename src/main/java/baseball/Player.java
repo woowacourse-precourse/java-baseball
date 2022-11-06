@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Player {
 
-    private final int digitNumber = 3;
+    final int digitNumber = 3;
 
     // 플레이어 값 입력 메서드
     public List<Integer> inputNum() {
@@ -16,9 +16,8 @@ public class Player {
 
         boolean isNumeric = number.chars().allMatch(Character::isDigit);
 
-        if (number.length() == digitNumber && isNumeric == true && number.length() == digitNumber) {
-            List<Integer> numberList = getNumberList(number, digitNumber);
-            return numberList;
+        if (number.length() == digitNumber && isNumeric) {
+            return getNumberList(number, digitNumber);
         } else {
             throw new IllegalArgumentException("잘못된 값입니다.");
         }
@@ -32,6 +31,9 @@ public class Player {
             int num = Character.getNumericValue(charNum);
             if (!numberList.contains(num)) {
                 numberList.add(num);
+            }
+            else{
+                throw new IllegalArgumentException("잘못된 값입니다.");
             }
         }
         return numberList;
