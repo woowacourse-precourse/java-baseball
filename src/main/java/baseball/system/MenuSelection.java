@@ -21,12 +21,12 @@ public class MenuSelection {
     private int selectNumber(String inputNumber) throws IllegalArgumentException {
         if (!IsCollection.isInputNumbersInRange(inputNumber,
                 BaseballConstant.PLAY_GAME, BaseballConstant.QUIT)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1이나 2가 아닙니다.");
         }
 
         if (!IsCollection.isEqualToSetLength(inputNumber,
                 BaseballConstant.SELECTION_NUMBER_LENGTH)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1이나 2가 아닙니다.");
         }
 
         return Integer.parseInt(inputNumber);
