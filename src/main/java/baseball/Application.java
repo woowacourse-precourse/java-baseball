@@ -10,7 +10,6 @@ public class Application {
 
         GameController gameController = new GameController();
         RandomNumber randomNumber = new RandomNumber();
-        NumberVO numberVO = new NumberVO();
 
         ShowMessage.showGameStart(); // 게임 시작 메세지 출력
         List<Integer> randomNumberList = randomNumber.createRandomNumber(); // 난수 생성
@@ -22,8 +21,6 @@ public class Application {
         int ballCount = gameController.checkIntersection(userNumberList, randomNumberList);
         System.out.println("교집합:" + ballCount + ":");
         gameController.checkGameResult(userNumberList, randomNumberList, ballCount); // 결과 계산
-
-
     }
 
 }

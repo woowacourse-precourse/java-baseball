@@ -11,8 +11,6 @@ import java.util.stream.Stream;
 
 public class GameController {
 
-    NumberVO numberVO = new NumberVO();
-
     public List<Integer> inputUserNumber() {
 
         String userNumber = Console.readLine(); // 입력 받기
