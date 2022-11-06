@@ -28,6 +28,10 @@ public class GameResult {
         }
     }
 
+    public GameResultResponseDto toResponseDto() {
+        return new GameResultResponseDto(strike, ball);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,7 +45,4 @@ public class GameResult {
         return Objects.hash(strike, ball);
     }
 
-    public GameResultResponseDto toResponseDto() {
-        return new GameResultResponseDto(strike, ball);
-    }
 }
