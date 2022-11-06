@@ -22,6 +22,7 @@
   - <b>스트라이크</b>, <b>볼</b> 판별 함수
     - `countSamePlace` : 같은 자리에 있는지 파악하는 함수
     - `countDifferentPlace` : 같은 자리는 아니지만 같은 수가 있는지 파악하는 함수
+    - `resetStrikeBall` : <b>스트라이크</b>, <b>볼</b> 수를 0으로 초기화시키는 함수
 - `userNumberResult` : 유저가 입력한 숫자에 대해 <b>낫싱, 스트라이크, 볼</b>에 대한 정보를 출력하는 함수
 
 ### ✔️ About 야구 게임 종료 혹은 재시작
