@@ -104,4 +104,23 @@ public class Application {
         }
     }
 
+    // 컴퓨터의 숫자와 사용자의 숫자를 비교하여 볼, 스트라이크를 세는 메서드
+    static boolean compareList(List<Integer> computerList, List<Integer> userList) {
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < userList.size(); i++) {
+            int result = compareNumber(computerList, userList.get(i), i);
+            if (result == 1) {
+                strike++;
+            } else if (result == 0) {
+                ball++;
+            }
+        }
+
+        if(output(ball, strike)) {
+            return true;
+        }
+        return false;
+    }
+
 }
