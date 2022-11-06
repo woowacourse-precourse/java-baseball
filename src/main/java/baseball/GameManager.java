@@ -7,8 +7,10 @@ import static baseball.Computer.getComputer;
 import static baseball.Player.getPlayer;
 
 public class GameManager {
+    private static final int OVER = 2;
     private List<Integer> answer;
     private List<Integer> userInput;
+    private boolean continuation = true;
 
     public void startGame() {
         answer = getComputer().createRandomNumber();
@@ -26,5 +28,13 @@ public class GameManager {
         }
     }
 
+    public void continueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int continueInput = getPlayer().inputContinuation();
 
+        if(continueInput == OVER) {
+            this.continuation = false;
+            System.out.println("게임 종료");
+        }
+    }
 }
