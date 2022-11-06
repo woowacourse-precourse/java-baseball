@@ -134,4 +134,22 @@ class BaseballNumbersTest {
 
     }
 
+    @Nested
+    class 입력숫자의_요소가_중복인지_확인 {
+
+        @Test
+        void case1_중복된_숫자_2개_입력() {
+            baseballNumbers.putBaseballNumbers("112".split("(?<=.)"));
+            assertThatThrownBy(() -> baseballNumbers.checkBaseballNumberDuplication())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void case2_중복된_숫자_3개_입력() {
+            baseballNumbers.putBaseballNumbers("111".split("(?<=.)"));
+            assertThatThrownBy(() -> baseballNumbers.checkBaseballNumberDuplication())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+    }
 }
