@@ -19,7 +19,7 @@ public class NumberBaseballView {
 	}
 
 	public void resultPage(GameResult gameResult) {
-		System.out.println(gameResult);
+		System.out.println(gameResult.format());
 	}
 
 	public void endPage() {

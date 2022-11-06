@@ -16,7 +16,7 @@ class GameResultTest {
 		gameResult.addSingleResult(SingleResultType.MISS);
 
 		//then
-		Assertions.assertThat(gameResult.toString()).isEqualTo("낫싱");
+		Assertions.assertThat(gameResult.format()).isEqualTo("낫싱");
 	}
 
 	@Test
@@ -30,7 +30,7 @@ class GameResultTest {
 		gameResult.addSingleResult(SingleResultType.STRIKE);
 
 		//then
-		Assertions.assertThat(gameResult.toString()).isEqualTo("1볼 1스트라이크");
+		Assertions.assertThat(gameResult.format()).isEqualTo("1볼 1스트라이크");
 	}
 
 	@Test
@@ -44,7 +44,7 @@ class GameResultTest {
 		gameResult.addSingleResult(SingleResultType.BALL);
 
 		//then
-		Assertions.assertThat(gameResult.toString()).isEqualTo("2볼");
+		Assertions.assertThat(gameResult.format()).isEqualTo("2볼");
 	}
 
 }

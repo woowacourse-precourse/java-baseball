@@ -8,10 +8,6 @@ public class GameResult {
 
 	private final List<SingleResultType> gameResults = new ArrayList<>();
 
-	public List<SingleResultType> getGameResults() {
-		return gameResults;
-	}
-
 	public void addSingleResult(SingleResultType singleResultType) {
 		if (singleResultType == SingleResultType.MISS) {
 			return;
@@ -28,5 +24,36 @@ public class GameResult {
 
 	public boolean isEndCondition() {
 		return countSingleResult(SingleResultType.STRIKE) == RESULT_MAX_COUNT;
+	}
+
+
+	public String format() {
+		if (isNothing()) {
+			return "낫싱";
+		}
+
+		StringBuilder sb = getResultsCount();
+		return sb.toString().trim();
+	}
+
+	private boolean isNothing() {
+		return gameResults.isEmpty();
+	}
+
+	private StringBuilder getResultsCount() {
+		StringBuilder sb = new StringBuilder();
+		for (SingleResultType singleResultType : SingleResultType.values()) {
+			appendBySingleResult(sb, singleResultType);
+		}
+		return sb;
+	}
+
+	private void appendBySingleResult(StringBuilder sb, SingleResultType singleResultType) {
+		Integer count = countSingleResult(singleResultType);
+		if (count == 0) {
+			return;
+		}
+
+		sb.append(count).append(singleResultType.getMessage()).append(" ");
 	}
 }
