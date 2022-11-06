@@ -22,7 +22,7 @@ public class Application {
         return computer;
     }
 
-    private static void checkPlayerInput(String line) {
+    public static void checkPlayerInput(String line) {
         if (line == null || line.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -76,7 +76,7 @@ public class Application {
         return false;
     }
 
-    private static void checkNewGameInput(String line) {
+    public static void checkNewGameInput(String line) {
         if (!line.equals("1") && !line.equals("2")) {
             throw new IllegalArgumentException();
         }
