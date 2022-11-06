@@ -39,14 +39,15 @@ BUILD SUCCESSFUL in 0s
   - [x] 재시작을 할지, 종료할지 결정한다
 - 컴퓨터
   - [x] 정답(BaseballNumber)을 저장한다 
-  - [x] 결과를 반환한다 (결과, [스트, 볼])
+  - [x] 결과를 반환한다
 - BaseballNumber
   - [x] 겹치지 않는 랜덤한 세 자리 숫자로 이뤄져있다
   - [x] 1부터 9까지의 숫자만 가능하다
   - [x] 다른 BaseballNumber 객체와 비교해 strike와 ball 개수를 반환한다
     - [x] 특정 자릿수가 들어왔을 때, strike인지 ball인지 판별해준다
 - Result
-  - [ ] strike와 ball의 개수를 저장하고 반환한다
+  - [x] strike와 ball의 개수를 저장하고 반환한다
+  - [x] 3 strike가 맞는지 결과를 반환한다
 
 ---
 ## 🚀 기능 요구 사항

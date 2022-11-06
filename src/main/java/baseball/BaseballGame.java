@@ -18,8 +18,8 @@ public class BaseballGame {
         Input.startGameMessage();
         computer.putAnswer();
         while (true) {
-            List<Integer> results = checkResultOfEnteredValue();
-            if (isThreeStrike(results)) {
+            Result result = checkResultOfEnteredValue();
+            if (result.isThreeStrike()) {
                 Output.showGameCompleteMessage();
                 break;
             }
@@ -27,16 +27,12 @@ public class BaseballGame {
         decideWhatToDoNext();
     }
 
-    private boolean isThreeStrike(List<Integer> results) {
-        return results.get(0) == 3;
-    }
-
-    private List<Integer> checkResultOfEnteredValue() {
+    private Result checkResultOfEnteredValue() {
         try {
             BaseballNumber guessNumber = new BaseballNumber(Input.enterGuessNumber());
-            List<Integer> results = computer.returnResult(guessNumber);
-            Output.showGuessResult(results);
-            return results;
+            Result result = computer.returnResult(guessNumber);
+            Output.showGuessResult(result);
+            return result;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,10 +32,9 @@ public class BaseballNumber {
         return "baseballNumber=" + baseballNumber.get(0) + baseballNumber.get(1) + baseballNumber.get(2);
     }
 
-    public List<Integer> match(BaseballNumber answer) {
+    public Result match(BaseballNumber answer) {
         System.out.println(answer);
         System.out.println(baseballNumber);
-        List<Integer> result = new ArrayList<>();
         Integer strikeCnt = 0;
         Integer ballCnt = 0;
         
@@ -52,9 +50,7 @@ public class BaseballNumber {
                 continue;
             }
         }
-        result.add(strikeCnt);
-        result.add(ballCnt);
-        return result;
+        return new Result(strikeCnt, ballCnt);
     }
 
     private boolean isBall(Integer digitNumber, Integer digitIdx) {

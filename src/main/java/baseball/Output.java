@@ -1,15 +1,8 @@
 package baseball;
 
-import java.util.List;
-
 public class Output {
-    public static void showGuessResult(List<Integer> result) {
-        if (result.size() != 2) {
-            throw new IllegalStateException("result는 2가 아닌 다른 값이 나올 수 없습니다(strike, ball)");
-        }
-        Integer strikeCnt = result.get(0);
-        Integer ballCnt = result.get(1);
-        String sentence = makeSentenceAboutGuessResult(strikeCnt, ballCnt);
+    public static void showGuessResult(Result result) {
+        String sentence = makeSentenceAboutGuessResult(result.getStrikeCnt(), result.getBallCnt());
         System.out.println(sentence);
     }
 
