@@ -12,6 +12,9 @@ public class NumberUtil {
     public static final int NUMBER_SIZE = 3;
     public static final int NUMBER_START = 1;
     public static final int NUMBER_END = 9;
+    public static final int COMMAND_SIZE = 1;
+    public static final int COMMAND_START = 1;
+    public static final int COMMAND_END = 2;
 
     public static List<Integer> random() {
         List<Integer> randomNumberList = new ArrayList<>();
@@ -24,9 +27,17 @@ public class NumberUtil {
         return randomNumberList;
     }
 
-    public static List<Integer> input() {
+    public static List<Integer> inputNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
         return parse(Console.readLine());
+    }
+
+    public static int inputNumber() {
+        String str = Console.readLine();
+        if (lengthCheck(str, COMMAND_SIZE) && numericBoundCheck(str, COMMAND_START, COMMAND_END)) {
+            return Integer.parseInt(str);
+        }
+        return 0;
     }
 
     public static List<Integer> parse(String str) {
