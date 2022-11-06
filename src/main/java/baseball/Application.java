@@ -25,10 +25,11 @@ public class Application {
                 playGame();
                 return NEW_GAME;
             } else if (choiceNum == END_GAME) {
+                System.out.println("게임을 완전히 종료합니다.");
                 return END_GAME;
             } else {
-                System.out.println("잘못 입력하였습니다. 강제종료합니다.");
-                return END_GAME;
+                System.out.println("잘못 입력하였습니다. 다시 입력하세요");
+                return continueGame(result);
             }
         }
         return WRONG_ANSWER;
