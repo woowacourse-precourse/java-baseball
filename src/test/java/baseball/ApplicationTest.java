@@ -239,6 +239,41 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validateStringLength_정상처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "134";
+        final String case2 = "";
+        final String case3 = "abcde fg";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validStringLength(case1,3);});
+        final Throwable result2 = catchThrowable(()->{T.validStringLength(case2,0);});
+        final Throwable result3 = catchThrowable(()->{T.validStringLength(case3,8);});
+
+        //then
+        assertThat(result1).as("validateStringLength 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(result2).as("validateStringLength 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(result3).as("validateStringLength 정상처리 테스트").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateStringLength_예외처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "13";
+        final String case2 = "";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validStringLength(case1,3);});
+        final Throwable result2 = catchThrowable(()->{T.validStringLength(case2,3);});
+
+        //then
+        assertThat(result1).as("validateStringLength 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2).as("validateStringLength 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
+    @Test
     void stringToIntegerList_테스트(){
         //given
         final Core T = new Core();
