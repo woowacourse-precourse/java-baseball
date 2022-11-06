@@ -33,7 +33,7 @@ class NumberBaseballGameClientTest {
     }
 
     protected final String output() {
-        return captor.toString().trim();
+        return captor.toString().replaceAll("(\r\n|\r|\n|\n\r)", "");
     }
 
     private void input(final String... args) {
