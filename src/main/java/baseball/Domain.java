@@ -64,13 +64,10 @@ public class Domain {
 
         //중복된 숫자가 있는지?
         Stream<String> overlapCheck = Arrays.stream(userNumber.split(""));
-
         long count_exceptDuplicate = overlapCheck.distinct().count();
-
         if (isDuplicate(userNumber, count_exceptDuplicate)) {
             throw new IllegalArgumentException("입력 숫자 중복");
         }
-        ;
 
 
     }
@@ -97,7 +94,7 @@ public class Domain {
         return convertStringToIntegerList(userNumber);
     }
 
-    public List<Integer> convertStringToIntegerList(String userNumber) { // test 입력시오류경우_확인
+    public List<Integer> convertStringToIntegerList(String userNumber) {
         List<Integer> userNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int putNumber = Character.getNumericValue(userNumber.charAt(i));

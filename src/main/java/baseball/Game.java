@@ -31,8 +31,7 @@ public class Game {
     }
 
 
-    public List<Integer> findStrikeBall(List<Integer> computerNumber,
-        List<Integer> userNumberList) {
+    public List<Integer> findStrikeBall(List<Integer> computerNumber, List<Integer> userNumberList) {
         int strike = 0;
         int ball = 0;
         for (int index = 0; index < NUMBER_SIZE; index++) {
@@ -48,8 +47,7 @@ public class Game {
     }
 
 
-    public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball,
-        int i) {
+    public int getBall(List<Integer> computerNumber, int nowIndexUserNumber, int ball, int i) {
         for (int compare_index = 0; compare_index < NUMBER_SIZE; compare_index++) {
             int otherIndexComputerNumber = computerNumber.get(compare_index);
             if (i == compare_index) {
