@@ -9,28 +9,55 @@ public class Game {
     private static final int RANDOM_START_RANGE = 1;
     private static final int RANDOM_END_RANGE = 9;
     static final int MAX_NUMBER = 3;
+    private static final int NEW_GAME = 1;
+    private static final int QUIT_GAME = 2;
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String OUT = "낫싱";
-    static int ballCount,strikeCount;
 
     Game() {
-        LinkedList<Integer> answer = new LinkedList<>();
-        answer = setComputerNumber();
-        LinkedList<Integer> userAnswer = getUserAnswer();
-        strikeBallCount(answer,userAnswer);
     }
 
-    private void strikeBallCount(LinkedList<Integer> answer, LinkedList<Integer> userAnswer) {
-        for(int num : userAnswer){
-            if(answer.get(userAnswer.indexOf(num))==num) {
-                strikeCount++;
-                continue;
-            }
-            if(checkListContains(answer,num)){
-                ballCount++;
-            }
+    public static void start(Game game) {
+        int ballCount, strikeCount = 0;
+        LinkedList<Integer> answer = game.setComputerNumber();
+        while (strikeCount < MAX_NUMBER) {
+            LinkedList<Integer> userAnswer = game.getUserAnswer();
+            strikeCount = game.strikeCount(answer, userAnswer);
+            ballCount = game.ballCount(answer, userAnswer);
+            game.output(ballCount, strikeCount);
         }
+
+    }
+
+
+
+
+    private void output(int ballCount, int strikeCount) {
+        String result = "";
+        if (ballCount != 0) result += ballCount + BALL;
+        if (strikeCount != 0) result += strikeCount + STRIKE;
+        if (result.equals("")) result = OUT;
+        System.out.println(result);
+    }
+
+    private int strikeCount(LinkedList<Integer> answer, LinkedList<Integer> userAnswer) {
+        int result = 0;
+        for (int num : userAnswer) {
+            if (answer.get(userAnswer.indexOf(num)) == num)
+                result++;
+        }
+        return result;
+    }
+
+    private int ballCount(LinkedList<Integer> answer, LinkedList<Integer> userAnswer) {
+        int result = 0;
+        for (int num : userAnswer) {
+            if (answer.get(userAnswer.indexOf(num)) == num);
+             else if (checkListContains(answer, num))
+                result++;
+        }
+        return result;
     }
 
     public LinkedList<Integer> setComputerNumber() {
@@ -55,7 +82,7 @@ public class Game {
         return pickNumberInRange(Game.RANDOM_START_RANGE, Game.RANDOM_END_RANGE);
     }
 
-    public static LinkedList<Integer> getUserAnswer() {
+    public LinkedList<Integer> getUserAnswer() {
         LinkedList<Integer> userAnswer = new LinkedList<>();
         System.out.println("숫자를 입력해주세요 : ");
         for (String str : readLine().split(""))
