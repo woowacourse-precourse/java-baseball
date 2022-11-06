@@ -32,6 +32,9 @@ public class Computer {
         checkStrike(usersNum);
         checkBall(usersNum);
         checkNothing();
+        if (!isCorrectCompute()) {
+            throw new RuntimeException("컴퓨터의 사용자와의 숫자비교로직이 잘못처리되었습니다.");
+        }
 
         return this;
     }
@@ -67,6 +70,17 @@ public class Computer {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private boolean isCorrectCompute(){
+        int sumStrikeAndBall = strike + ball;
+        if (sumStrikeAndBall > 3 || sumStrikeAndBall < 0) {
+            return false;
+        } else if (strike == 2 && ball == 1) {
+            return false;
+        } else {
+            return true;
         }
     }
 
