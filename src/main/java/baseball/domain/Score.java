@@ -16,12 +16,29 @@ public class Score {
         this.strike = INITIAL_VALUE;
     }
 
-    private void ballAndStrikeCount(int answerIndex, int guessedAnswerInder) {
-        if (answerIndex == guessedAnswerInder) {
+    public boolean isWrongAnswer(String answer, int[] guessedAnswer) {
+        initBallAndStrike();
+
+        for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.length; guessedAnswerIndex++) {
+            int number = guessedAnswer[guessedAnswerIndex];
+            int answerIndex = answer.indexOf(number);
+
+            ballAndStrikeCount(answerIndex, guessedAnswerIndex);
+        }
+
+        if (strike == ANSWER_STRIKE_COUNT) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void ballAndStrikeCount(int answerIndex, int guessedAnswerIndex) {
+        if (answerIndex == guessedAnswerIndex) {
             strike++;
         }
 
-        if (answerIndex != guessedAnswerInder) {
+        if (answerIndex != guessedAnswerIndex) {
             ball++;
         }
     }
