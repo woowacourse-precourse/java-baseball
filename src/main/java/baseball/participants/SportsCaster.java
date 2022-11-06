@@ -3,7 +3,7 @@ package baseball.participants;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameGuider {
+public class SportsCaster {
     public static void guideGameProcess() {
         List<String> guideList = new ArrayList<>();
         guideList.add("< 숫자 야구 게임 가이드 >");

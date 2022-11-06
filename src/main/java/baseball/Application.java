@@ -1,19 +1,19 @@
 package baseball;
 
-import baseball.participants.GameGuider;
+import baseball.participants.SportsCaster;
 import baseball.participants.Hitter;
 import baseball.participants.Pitcher;
 import baseball.participants.Referee;
 
 public class Application {
-    private static GameGuider guider = new GameGuider();
+    private static SportsCaster sportsCaster = new SportsCaster();
     private static Referee referee = new Referee();
     private static Pitcher pitcher = new Pitcher();
     private static Hitter hitter = new Hitter();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        GameGuider.guideGameProcess();
+        sportsCaster.guideGameProcess();
         referee.startGame();
         hitter.swing();
         while (referee.toTerminateGame) {
