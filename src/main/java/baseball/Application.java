@@ -29,6 +29,7 @@ class Baseball {
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
     private static final int NUMBER_PITCH = 3;
+    private static final int EMPTY = 0;
 
     public static void playGame() {
         Message.printStartMessage();
@@ -120,8 +121,7 @@ class Baseball {
     private static int countBall() {
         int countBall = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
-            if (!computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))
-                    && userNumber.contains(Integer.toString(computerNumber.get(i)))) {
+            if (!isUserNumberEqualsComputerNumber(i) && isUserNumberContainsComputerNumber(i)) {
                 countBall++;
             }
         }
@@ -131,11 +131,19 @@ class Baseball {
     private static int countStrike() {
         int countStrike = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
-            if (computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))) {
+            if (isUserNumberEqualsComputerNumber(i)) {
                 countStrike++;
             }
         }
         return countStrike;
+    }
+
+    private static boolean isUserNumberContainsComputerNumber(int i) {
+        return userNumber.contains(Integer.toString(computerNumber.get(i)));
+    }
+
+    private static boolean isUserNumberEqualsComputerNumber(int i) {
+        return computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)));
     }
 
     private static boolean isValidNumber() {
@@ -155,11 +163,11 @@ class Baseball {
     }
 
     private static boolean isExistBall() {
-        return countBallStrike.get(BALL) != 0;
+        return countBallStrike.get(BALL) != EMPTY;
     }
 
     private static boolean isExistStrike() {
-        return countBallStrike.get(STRIKE) != 0;
+        return countBallStrike.get(STRIKE) != EMPTY;
     }
 
     private static boolean isThreeStrike() {
@@ -209,13 +217,13 @@ class Message {
         System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL);
     }
 
+    public static void printStrikeOnly() {
+        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
+    }
+
     public static void printBallStrike() {
         System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL
                 + Baseball.BLANK
                 + Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
-    }
-
-    public static void printStrikeOnly() {
-        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
     }
 }
