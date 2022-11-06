@@ -8,10 +8,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class Application {
+    static boolean answer = true;
     public static void main(String[] args) {
         List comList = comNumber();
-        List userList = userNumber();
-        score(comList, userList);
+
+        // 3스트라이크가 아니면 반복
+        while(answer) {
+            List userList = userNumber();
+            score(comList, userList);
+        }
     }
 
     // 컴퓨터의 서로 다른 숫자 3개 저장
@@ -64,7 +69,10 @@ public class Application {
         StringBuilder sb = new StringBuilder();
 
         if (strike == 3) {
-
+            answer = false;
+            sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(sb);
+            return;
         } else if(ball > 0) {
             sb.append(ball +"볼 ");
         }
