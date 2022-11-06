@@ -19,7 +19,7 @@ public class IsNumberTest {
     }
 
     @Test
-    void 예외_테스트_공백() {
+    void 예외_테스트_공백포함() {
         //given
         String input = " 123";
         //when
@@ -33,6 +33,17 @@ public class IsNumberTest {
     void 예외_테스트_문자() {
         //given
         String input = "ㅁ123";
+        //when
+        Throwable throwable = catchThrowable(() -> isNumber(input));
+        //then
+        assertThat(throwable)
+                .isInstanceOf(GameException.class);
+    }
+
+    @Test
+    void 예외_테스트_공백() {
+        //given
+        String input = "";
         //when
         Throwable throwable = catchThrowable(() -> isNumber(input));
         //then
