@@ -18,6 +18,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
+
     public static String getResultString(List<Integer> result){
         int strike = result.get(STRIKE);
         int ball = result.get(BALL);
