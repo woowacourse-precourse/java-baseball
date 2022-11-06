@@ -45,22 +45,35 @@
     
 
 ## 필요 메소드 리스트 
+### Controller
+1. GuessNumber를 읽어오는 read 기능 
+   - `readGuessNumber`
+2. GuessResult를 출력하는 write 기능
+   - `printGuessResult`
+
 ### Baseball
-1. 게임 시작 기능(public)
-    - `Baseball.start()`
+1. Getter : `ballCount`
+2. 게임 시작 기능(public)
+    - `start()`
     1. gaming = true
     2. resetTargetNumber() 호출
     3. 게임 시작 문구 출력
-2. 게임 재시작 기능(public)
-    - `Baseball.restart()`
+3. 게임 재시작 기능(public)
+    - `restart()`
     - targetNumber, guessNumber, BallCount 초기화
-3. 게임 종료 기능(public)
-    - `Baseball.end()`
+4. 게임 종료 기능(public)
+    - `end()`
     - Gaming == false
-4. 현재 게임중인지 확인하는 기능
-    - `Baseball.isGaming()`
-5. GuessResult 기능(public)
-    - `Baseball.getGuessResult()`
+5. 현재 게임중인지 확인하는 기능
+    - `isGaming()`
+6. GuessResult 기능(public)
+    - `getGuessResult()`
+
+### BallCount
+1. Getter : `ballCount`, `strikeCount`
+2. 비교 계산후 결과 종류 확인하는 기능
+   - `getGuessResult()`
+   - return GuessResult
 
 ## 기능 Flow
 - Baseball.start()로 게임 시작(targetNumber 초기화)
