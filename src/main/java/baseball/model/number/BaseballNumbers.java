@@ -73,7 +73,7 @@ public class BaseballNumbers {
         for (int baseballIndex = 0; baseballIndex < 3; baseballIndex++) {
             BaseballNumber baseballNumber = ballNumbers.get(baseballIndex);
             int otherBaseballIndex = otherBaseballNumberList.indexOf(baseballNumber);
-            if (baseballIndex != otherBaseballIndex) {
+            if (otherBaseballIndex >= 0 && baseballIndex != otherBaseballIndex) {
                 ballCount++;
             }
         }
