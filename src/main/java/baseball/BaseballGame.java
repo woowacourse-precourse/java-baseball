@@ -6,8 +6,21 @@ public class BaseballGame {
     private final String BALL_Message = "볼";
     private final String STRIKE_Message = "스트라이크";
     private final String ANSWER_Message = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String START_Message = "숫자 야구 게임을 시작합니다.";
     private int ball;
     private int strike;
+    private final UserInput userInput = new UserInput();
+    private final AnswerGenerator answerGenerator= new AnswerGenerator();
+
+    public void start() {
+        System.out.println(START_Message);
+        do{
+            answerGenerator.generateAnswer();
+            userInput.setNumberOfUser();
+            countStrikeAndBall(userInput.getUserInput(), answerGenerator.getAnswer());
+            printHint();
+        }while(!isAnswer());
+    }
 
     public boolean isAnswer() {
         if (strike == 3) {
