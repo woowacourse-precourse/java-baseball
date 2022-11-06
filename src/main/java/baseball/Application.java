@@ -14,5 +14,10 @@ public class Application {
         String user = Console.readLine();
 
         List<Integer> strikeAndBall = game.findStrikeAndBall(user, computer);
+
+        int strike = strikeAndBall.get(0);
+        int ball = strikeAndBall.get(1);
+
+        game.printStrikeAndBall(strike, ball);
     }
 }
