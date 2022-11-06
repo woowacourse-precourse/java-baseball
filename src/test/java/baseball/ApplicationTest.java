@@ -28,6 +28,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void checkUserNumberLengthTest() {
+        String input = "123";
+
+        assertThat(true).isEqualTo(Application.checkUserNumberLength(input));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
