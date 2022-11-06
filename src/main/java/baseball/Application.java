@@ -50,9 +50,10 @@ public class Application {
     }
 
     public static String inputAvailableUserNumberService(){
-        int UserNumbers = 0;
+        String userNumbers = "";
         boolean availableUserNumberIsChecking = false;
         userNumberMessagePrint();
+        userNumbers = userNumberInput();
         return "";
     }
 
