@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.dto;
 
 public class Result {
     int ballCount;

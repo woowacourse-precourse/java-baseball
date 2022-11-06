@@ -1,10 +1,9 @@
 package baseball;
 
+import baseball.dto.GameStatus;
+import baseball.dto.Result;
 import baseball.model.*;
 import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.utils.Validator.validateGameStatus;
-import static baseball.utils.Validator.validateParseStringToInt;
 
 public class Game {
     private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -43,8 +42,6 @@ public class Game {
 
     private static void inputGameStatusIfGameOver(GameStatus gameStatus) {
         String playerInput = Console.readLine();
-        validateParseStringToInt(playerInput);
-        gameStatus.changeStatus(Integer.parseInt(playerInput));
-        validateGameStatus(gameStatus);
+        gameStatus.changeStatus(playerInput);
     }
 }
