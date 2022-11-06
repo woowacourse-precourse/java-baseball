@@ -34,7 +34,7 @@ public class Game {
     }
   }
 
-  private List<Integer> stringToIntegerList(String userInput) {
+  public List<Integer> stringToIntegerList(String userInput) {
     String[] userInputSplit = userInput.split("");
     ArrayList<Integer> result = new ArrayList<>();
 

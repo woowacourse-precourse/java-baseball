@@ -28,6 +28,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 리스트_변환_테스트() {
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        assertThat(game.stringToIntegerList("123").get(0)).isEqualTo(1);
+        assertThat(game.stringToIntegerList("123").get(1)).isEqualTo(2);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
