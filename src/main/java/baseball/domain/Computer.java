@@ -7,10 +7,11 @@ import java.util.Map;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
+    static final int MAX_SIZE_OF_NUMBER = 3;
     List<String> computersNumber = new ArrayList<>();
 
     public Computer() {
-        while (computersNumber.size() < 3) {
+        while (computersNumber.size() < MAX_SIZE_OF_NUMBER) {
             int pickNumber = Randoms.pickNumberInRange(1, 9);
             if (!computersNumber.contains(String.valueOf(pickNumber))) {
                 computersNumber.add(computersNumber.size(), String.valueOf(pickNumber));
@@ -29,7 +30,8 @@ public class Computer {
             }
             if (indexOfComputersNumber == indexOfPlayersNumber) {
                 strikeBallMap.put("스트라이크", strikeBallMap.getOrDefault("스트라이크", 0) + 1);
-            } else {
+            }
+            if (indexOfComputersNumber != indexOfPlayersNumber) {
                 strikeBallMap.put("볼", strikeBallMap.getOrDefault("볼", 0) + 1);
             }
         }
