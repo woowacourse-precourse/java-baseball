@@ -35,6 +35,14 @@ public class Application {
         }
     }
 
+    static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {
+        for (int i = 0; i < userNumber.length(); i++) {
+            int n = Character.getNumericValue(userNumber.charAt(i));
+            if (n < 1 || n > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 
     static void getComputerNumber(List<Integer> computer) {
         while (computer.size() < 3) {
