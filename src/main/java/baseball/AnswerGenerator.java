@@ -21,4 +21,13 @@ public class AnswerGenerator {
             }
         }
     }
+
+    private boolean isContain(int randomNumber) {
+        for (int i : answer) {
+            if (i == randomNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
