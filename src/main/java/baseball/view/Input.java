@@ -17,13 +17,6 @@ public class Input {
         return textToIntList(text);
     }
 
-    private List<Integer> textToIntList(String text) {
-        return text.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
     public static void validateInputBaseballNumber(String text) {
         validateAllMatchNumber(text);
         validateBaseballNumberLength(text);
@@ -43,11 +36,21 @@ public class Input {
     }
 
     private static void validateOverlap(String text) {
-        long count = text.chars().distinct().boxed().count();
+        long count = text.chars()
+                .distinct()
+                .boxed()
+                .count();
 
         if (count != text.length()) {
             throw new IllegalArgumentException("중복된 값이 있습니다.");
         }
+    }
+
+    private List<Integer> textToIntList(String text) {
+        return text.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public int inputRestart() {
