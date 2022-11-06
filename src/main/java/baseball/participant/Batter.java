@@ -11,13 +11,13 @@ public class Batter {
     public String readyToHitNumberBall() {
         List<Integer> hitDigits = new ArrayList<>();
         while (hitDigits.size() != 3) {
-            readyRandomDigit(hitDigits);
+            readyHitDigit(hitDigits);
         }
         return hitDigits.stream().map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
 
-    private void readyRandomDigit(List<Integer> randomDigits) {
+    private void readyHitDigit(List<Integer> randomDigits) {
         int randomDigit = Randoms.pickNumberInRange(1, 9);
         if (!randomDigits.contains(randomDigit)) {
             randomDigits.add(randomDigit);
