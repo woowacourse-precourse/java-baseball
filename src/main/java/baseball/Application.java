@@ -13,9 +13,9 @@ public class Application {
         int playGame = 0;
         while (playGame == 0) {
             playGame = gameResult(comparing(computersNumbers(), readUsersNumbers()));
-
-
+            playGame = restartGame();
         }
+
 
 
     }
@@ -76,7 +76,6 @@ public class Application {
                 ball++;
             }
         }
-
         ball = ball - strike;
 
         hintResult.add(0, strike);
@@ -94,9 +93,9 @@ public class Application {
             System.out.println("낫싱");
         } else {
             if (hintScore.get(0) == 0) {
-                System.out.printf("%1$d볼", hintScore.get(1));
+                System.out.printf("%d볼", hintScore.get(1));
             } else if (hintScore.get(1) == 0) {
-                System.out.printf("%2$d스트라이크", hintScore.get(0));
+                System.out.printf("%d스트라이크", hintScore.get(0));
             } else {
                 System.out.printf("%1$d볼 %2$d스트라이크", hintScore.get(1), hintScore.get(0));
             }
