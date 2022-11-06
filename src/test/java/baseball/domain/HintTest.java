@@ -27,6 +27,7 @@ class HintTest {
         assertThat(hint.getScorePoint(score)).isEqualTo(0);
     }
 
+
     @ParameterizedTest
     @DisplayName("스코어 포인트 증가 테스트")
     @EnumSource(names = {"STRIKE", "BALL"})
@@ -35,5 +36,13 @@ class HintTest {
         assertThat(hint.getScorePoint(score)).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("아웃 스코어 테스트")
+    void isOutTest() {
+        hint.increasePoint(Score.STRIKE);
+        hint.increasePoint(Score.STRIKE);
+        hint.increasePoint(Score.STRIKE);
+        org.junit.jupiter.api.Assertions.assertTrue(hint.isOut());
+    }
 }
 
