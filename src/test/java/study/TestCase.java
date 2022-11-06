@@ -76,6 +76,30 @@ public class TestCase {
         assertThat(num).isEqualTo(playerNumber.transformInput("123"));
     }
 
+    @Test
+    void 플레이어의_숫자가_1부터_9까지가_아닌_숫자가_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(10, 2, 5);
+        Number playerNumber = new PlayerNum();
+        assertThatThrownBy(() -> playerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
+    void 플레이어의_숫자가_중복이_있는_숫자가_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(2, 2, 5);
+        Number playerNumber = new PlayerNum();
+        assertThatThrownBy(() -> playerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 플레이어의_숫자가_3자리가_아닌_숫자가_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(1, 3, 2, 5);
+        Number playerNumber = new PlayerNum();
+        assertThatThrownBy(() -> playerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 
 
