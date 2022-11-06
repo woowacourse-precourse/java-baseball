@@ -22,6 +22,7 @@ public class Game {
             player.saveComputerNumber(number.createComputerNumber());
             oneGame();
             outputView.printStartOrEnd();
+            startOrEnd = referee.isStart(inputView.inputUser());
         }
     }
 
