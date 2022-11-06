@@ -9,6 +9,10 @@ public class GameStatusService {
     private boolean exitGame;
     private NextGameUserInputView nextGameUserInputView = new NextGameUserInputView();
 
+    public void processNextGameStatus(Computer computer) {
+        setNextGameStatus(nextGameUserInputView.askNextGame(), computer);
+    }
+
     public void setNextGameStatus(int askNextGameChoice, Computer computer) {
         if (askNextGameChoice == RESTART_GAME) {
             computer.setupGameNumbers();
