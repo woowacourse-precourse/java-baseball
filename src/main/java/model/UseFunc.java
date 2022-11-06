@@ -1,5 +1,7 @@
 package model;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,5 +73,9 @@ public class UseFunc {
             return true;
         }
         return false;
+    }
+
+    public String getString() {
+        return readLine();
     }
 }
