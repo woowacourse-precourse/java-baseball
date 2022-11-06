@@ -26,20 +26,20 @@ public class BaseBallGame {
 
             userInputValidCheck(userInput);
 
-            ballStrikeCount = computerRandomCompareToUserInput(threeRandomValue, userInput);
-            printByBallAndStrikeCount(ballStrikeCount);
+            ballStrikeCount = threeRandomValueCompareToUserInput(threeRandomValue, userInput);
+            printByBallAndStrikeStatus(ballStrikeCount);
 
         } while (ballStrikeCount.get(STRIKE) != 3);
     }
 
-    private static void userInputValidCheck(String userInput) {
+    private static void userInputValidCheck (String userInput) {
         if (!userInput.matches("^[0-9]{3}$")) {
             throw new IllegalArgumentException();
         }
     }
 
 
-    private static List<Integer> computerRandomCompareToUserInput (List<Integer> computerRandom, String userInput) {
+    private static List<Integer> threeRandomValueCompareToUserInput (List<Integer> computerRandom, String userInput) {
         int ballCount = 0,
                 strikeCount = 0;
 
@@ -58,7 +58,7 @@ public class BaseBallGame {
     }
 
 
-    private static void printByBallAndStrikeCount (List<Integer> ballStrikeCount) {
+    private static void printByBallAndStrikeStatus (List<Integer> ballStrikeCount) {
         if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
             System.out.println("낫싱");
             return;
