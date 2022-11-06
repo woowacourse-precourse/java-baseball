@@ -22,4 +22,11 @@ public class ExceptionTest {
         assertThat(CheckException.checkNumeric(input_false)).isEqualTo(false);
     }
 
+    @Test
+    void check_입력값_중복_예외검증() {
+        String input_true = "123";
+        String input_false = "122";
+        assertThat(CheckException.checkDuplicateNumber(input_true)).isEqualTo(true);
+        assertThat(CheckException.checkDuplicateNumber(input_false)).isEqualTo(false);
+    }
 }
