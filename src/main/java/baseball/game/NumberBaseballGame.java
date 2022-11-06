@@ -62,15 +62,13 @@ public abstract class NumberBaseballGame {
     protected static void inputPlayerNumberList() {
         playerNumberList.clear();
         System.out.print("숫자를 입력해주세요 : ");
-
         String playerNumberStr = Console.readLine();
-        if (isValidNumberStr(playerNumberStr)) {
-            for (int i = 0; i < playerNumberStr.length(); i++) {
-                int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
-                playerNumberList.add(playerNumber);
-            }
+
+        if (!isValidNumberStr(playerNumberStr)) throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
+        for (int i = 0; i < playerNumberStr.length(); i++) {
+            int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
+            playerNumberList.add(playerNumber);
         }
-        else throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
     }
 
     private static boolean isValidNumberStr(String numberStr) {
