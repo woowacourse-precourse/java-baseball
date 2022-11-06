@@ -20,4 +20,10 @@ public class Referee {
 
         return judgeAccuracy.get(Accuracy.CORRECT_ANSWER) == PICK_COUNT;
     }
+
+    private void validateNumbersLength(List<Integer> targetNumbers, List<Integer> userNumbers) {
+        if (targetNumbers.size() != PICK_COUNT || userNumbers.size() != PICK_COUNT) {
+            throw new IllegalArgumentException("배열의 길이가 " + PICK_COUNT + "와 같지 않습니다");
+        }
+    }
 }
