@@ -34,6 +34,9 @@ public class Game {
 	}
 
 
+	private boolean isCorrectAnswer(int numberOfStrike) {
+		return numberOfStrike == 3;
+	}
 
 	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
 		List<Integer> judgement = new ArrayList<>();
