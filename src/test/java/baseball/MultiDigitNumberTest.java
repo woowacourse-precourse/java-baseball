@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import org.junit.jupiter.api.DisplayName;
@@ -61,4 +62,37 @@ public class MultiDigitNumberTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("getStrike 메서드는")
+    class describe_getStrike{
+        @Test
+        @DisplayName("입력받은 또다른 MultiDigitNumber 객체와의 strike 개수를 반환한다.")
+        void validate_returns_numberOf_Strike(){
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(145))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(321))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(456))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(123))).isEqualTo(3);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(143))).isEqualTo(2);
+        }
+    }
+
+    @Nested
+    @DisplayName("getBall 메서드는")
+    class describe_getBall{
+        @Test
+        @DisplayName("입력받은 또다른 MultiDigitNumber 객체와의 ball 개수를 반환한다.")
+        void validate_returns_numberOf_Ball(){
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(415))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(321))).isEqualTo(2);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(456))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(123))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(143))).isEqualTo(0);
+        }
+    }
+
 }

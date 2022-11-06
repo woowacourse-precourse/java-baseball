@@ -3,8 +3,12 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * 여러개의 SingleDigit 으로 이루어진 MultiDigitNumber 수를 담는 일급 컬랙션 클래스
@@ -37,30 +41,28 @@ public class MultiDigitNumber {
         return String.valueOf(multiDigitNumber).length() == 3;
     }
 
-    public static List<SingleDigit> convertMultiDigitNumberIntoSingleDigitList(int muldiDigitNumber){
-        List<SingleDigit> multiDigitNumber = new ArrayList<>();
-        while(muldiDigitNumber != 0){
-            multiDigitNumber.add(new SingleDigit(muldiDigitNumber % 10));
-            muldiDigitNumber /= 10;
+    public static List<SingleDigit> convertMultiDigitNumberIntoSingleDigitList(int multiDigitNumber){
+        List<SingleDigit> singleDigitList = new ArrayList<>();
+        while(multiDigitNumber != 0){
+            singleDigitList.add(new SingleDigit(multiDigitNumber % 10));
+            multiDigitNumber /= 10;
         }
-        Collections.reverse(multiDigitNumber);
-        return multiDigitNumber;
+        Collections.reverse(singleDigitList);
+        return singleDigitList;
     }
 
-    private int getPositionOfSingleDigitSatisfyingCondition(Predicate<SingleDigit> singleDigitPredicate){
-        return singleDigitList.indexOf(singleDigitList.stream()
-            .filter(singleDigitPredicate).findFirst());
+    public int getStrike(MultiDigitNumber otherMultiDigitNumber){
+        return (int) IntStream.range(0, 3)
+            .filter((i) -> singleDigitList.get(i).equals(otherMultiDigitNumber.singleDigitList.get(i))).count();
     }
-    private int getStrike(MultiDigitNumber otherMultiDigitNumber){
-        return (int) IntStream.range(0, otherMultiDigitNumber.singleDigitList.size())
-            .filter((i) -> i == getPositionOfSingleDigitSatisfyingCondition(Predicate.isEqual(otherMultiDigitNumber.singleDigitList.get(i)))).count();
-    }
-    private int getBall(MultiDigitNumber otherMultiDigitNumber){
-        return (int) IntStream.range(0, otherMultiDigitNumber.singleDigitList.size())
+    public int getBall(MultiDigitNumber otherMultiDigitNumber){
+        List<SingleDigit> otherSingleDigitList = otherMultiDigitNumber.singleDigitList;
+        return (int) IntStream.range(0, 3)
             .filter((i) -> {
-                int position = getPositionOfSingleDigitSatisfyingCondition(Predicate.isEqual(otherMultiDigitNumber.singleDigitList.get(i)));
-                return (position != -1 && position != i);
+                int position = otherSingleDigitList.indexOf(singleDigitList.get(i));
+                return position != -1 && position != i;
             }).count();
     }
+
 
 }
