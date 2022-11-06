@@ -1,2 +1,5 @@
-package baseball;public class GameResultPrinter {
+package baseball;
+
+public class GameResultPrinter {
+
 }
