@@ -27,7 +27,6 @@ public class GameProcess {
             InputOutput.printStrikeBall(strike, ball);
 
             isCorrect = checkCorrect();
-            break;
         }
         InputOutput.printCorrectNumber();
 
@@ -74,7 +73,6 @@ public class GameProcess {
     }
 
     private void gameEnd(){
-        // 게임 종료 출력하기
     }
 
     private Boolean isRestart(){
