@@ -1,10 +1,16 @@
 package baseball.number;
 
+import java.util.stream.IntStream;
+
 public class Number {
     private String number;
 
     public Number(String userNumber) {
         this.number = userNumber;
+    }
+
+    public static boolean isValidateNumber(String userNumber){
+        return isValidateLength(userNumber) && isDigit(userNumber) && isNotDuplicate(userNumber);
     }
 
     private static boolean isValidateLength(String userNumber) {
@@ -19,4 +25,9 @@ public class Number {
         }
         return true;
     }
+    private static boolean isNotDuplicate(String userNumber) {
+        IntStream Stream = userNumber.chars();
+        return Stream.distinct().count() != 3;
+    }
+
 }
