@@ -9,6 +9,10 @@ import java.util.Random;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameSet {
+    public static void setNumber(){
+        setComputerNumber();
+        String playerNumber = inputPlayerNumber();
+    }
 
     public static void setComputerNumber(){
         List<Integer> computer = new ArrayList<>();
