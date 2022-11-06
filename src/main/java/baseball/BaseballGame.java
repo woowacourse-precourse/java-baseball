@@ -10,15 +10,9 @@ import baseball.verifier.Verifier;
 
 public class BaseballGame {
     private static final String NEW_GAME = "1";
-    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame;
-    private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame;
-    private final Computer computer;
-
-    public BaseballGame() {
-        verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
-        verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
-        computer = new Computer();
-    }
+    private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
+    private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
+    private final Computer computer = new Computer();
 
     public void start() {
         View.printStartGame();
