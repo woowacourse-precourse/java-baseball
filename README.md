@@ -33,7 +33,7 @@
     - 문자열의 길이가 매개변수 값과 일치하는지 검사합니다.
     - [X] hasDigitsOnly
     - 문자열이 숫자만 포함했는지 검사합니다.
-    - [ ] isGuessCommandValid
+    - [X] isGuessCommandValid
     - 게임 도중일 경우, 숫자 야구 게임에 유효한 입력인지 검사합니다.
     - [ ] isEndCommandValid
     - 게임 종료일 경우, 재시작/종료 입력인지 검사합니다.
