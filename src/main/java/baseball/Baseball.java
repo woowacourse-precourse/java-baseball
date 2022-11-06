@@ -2,14 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Baseball {
     private final Computer computer;
     private final Player player;
     private final SystemMessage systemMessage;
     private List<Integer> computerNumbers;
-    private String playerNumber;
+    private List<Integer> playerNumbers;
 
     Baseball() {
         computer = new Computer();
@@ -26,25 +28,31 @@ public class Baseball {
         setComputerNumbers();
 
         while (!isGameOver()) {
-            setPlayerNumber();
+            setPlayerNumbers();
             printHintMessage();
         }
     }
 
     private void setComputerNumbers() {
-        computerNumbers = computer.getNumber();
+        this.computerNumbers = computer.getNumber();
     }
 
-    private void setPlayerNumber() {
+    private void setPlayerNumbers() {
         systemMessage.printInputNumber();
         String playerNumber = Console.readLine();
         player.validatePlayerNumber(playerNumber);
 
-        this.playerNumber = playerNumber;
+        this.playerNumbers = toIntegerList(playerNumber);
+    }
+
+    private List<Integer> toIntegerList(String playerNumber) {
+        return Arrays.stream(playerNumber.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private void printHintMessage() {
-        player.setHintCount(computerNumbers, playerNumber);
+        player.setHintCount(computerNumbers, playerNumbers);
         String hintMessage = player.getHintMessage();
         System.out.println(hintMessage);
     }

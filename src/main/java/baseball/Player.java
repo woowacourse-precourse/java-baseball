@@ -1,11 +1,9 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Player {
     public static final int PLAYER = 0;
@@ -13,20 +11,11 @@ public class Player {
     private int strike;
     private int ball;
 
-    public void setHintCount(List<Integer> computerNumbers, String playerNumber) {
-        List<Integer> playerNumbers = toIntegerList(playerNumber);
-
+    public void setHintCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         resetCount();
         countStrike(computerNumbers, playerNumbers);
         countBall(computerNumbers, playerNumbers);
         deduplicateCount();
-    }
-
-    private List<Integer> toIntegerList(String playerNumber) {
-        String[] digits = playerNumber.split("");
-        List<String> playerNumbers = new ArrayList<>(Arrays.asList(digits));
-
-        return playerNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private void resetCount() {
