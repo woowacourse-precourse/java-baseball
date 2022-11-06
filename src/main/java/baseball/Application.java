@@ -16,6 +16,19 @@ public class Application {
         }
         return computer;
     }
+    static List<Integer> cut_the_number(int input_num){
+        List<Integer> cut_one = new ArrayList<Integer>();
+        int temp_num;
+        while(input_num > 0){
+            temp_num = input_num % 10;
+            if(!cut_one.contains(temp_num)){
+                cut_one.add(temp_num);
+            }
+            input_num = input_num / 10;
+        }
+        Collections.reverse(cut_one);
+        return cut_one;
+    }
 
     static int input_your_num(){
         String input_str;
@@ -23,8 +36,15 @@ public class Application {
 
         System.out.print("숫자를 입력해주세요 : ");
         input_str = Console.readLine();
-        input_num = Integer.parseInt(input_str);
-
+        // 입력이 비었을때 예외처리
+        if (input_str.isBlank()) throw new IllegalArgumentException();
+        try {
+            input_num = Integer.parseInt(input_str);
+            System.out.println(input_num);
+        } catch (NumberFormatException ex) {
+            //입력값이 숫자가 아닐때 예외처리
+            throw new IllegalArgumentException();
+        }
         return input_num;
     }
 
