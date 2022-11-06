@@ -3,6 +3,7 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static baseball.game.Option.COUNT_BALL;
@@ -37,9 +38,12 @@ public class Game {
         int number;
         for(int i = 0;i<COUNT_BALL;i++){
             number = Character.getNumericValue(input.charAt(i));
-            catchOutOfRangeException(number);
-            catchDuplicatedNumberException(number);
+            catchException(number);
             userNumbers.add(number);
         }
+    }
+    private static void catchException(Integer number){
+        catchOutOfRangeException(number);
+        catchDuplicatedNumberException(number);
     }
 }
