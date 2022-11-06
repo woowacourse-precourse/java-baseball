@@ -82,6 +82,7 @@ public class Game extends abstracts.Game {
     }
 
     private boolean playTurn(String input) {
+        isGuessCommandValid(input, answerNumberCount);
         HashMap<Result, Integer> resultCount = getGuessResult(input);
         Messages.printScore(resultCount);
         if (isGameOver(resultCount)) {
@@ -137,8 +138,10 @@ public class Game extends abstracts.Game {
     }
 
     private boolean askAfterGameOption(String input) {
-        return optionMapper
-                .get(input)
+        isEndCommandValid(input);
+        EndCommand endCommand = EndCommand.find(input);
+        return endCommandMapper
+                .get(endCommand)
                 .get();
     }
     private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
