@@ -13,15 +13,14 @@ public class Application {
 
     public static void main(String[] args) {
 
-        Setting setting = new Setting();
-        OutputText outputText = new OutputText(setting);
-        InitGame initGame = new InitGame(outputText, setting);
+        OutputText outputText = new OutputText();
+        InitGame initGame = new InitGame(outputText);
         EndGame endGame = new EndGame(outputText);
 
         List<Integer> computerNumber = initGame.createComputerNumber();
 
         while(true){
-            MainGame mainGame = new MainGame(outputText, setting);
+            MainGame mainGame = new MainGame(outputText);
             List<Integer> inputNumber = mainGame.inputGuessNumber();
 
             Game game = new Game(computerNumber, inputNumber);

@@ -13,11 +13,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class MainGame {
 
     private final OutputText outputText;
-    private final Setting setting;
 
-    public MainGame(OutputText outputText, Setting setting){
+    public MainGame(OutputText outputText){
         this.outputText = outputText;
-        this.setting = setting;
     }
 
     public List<Integer> inputGuessNumber(){
@@ -39,7 +37,7 @@ public class MainGame {
     private boolean isRightInput(String inputNumber){
         List<Character> chars = new ArrayList<>();
 
-        if(inputNumber.split("").length != setting.INPUT_NUMBER){
+        if(inputNumber.split("").length != Setting.INPUT_NUMBER){
             return false;
         }
 

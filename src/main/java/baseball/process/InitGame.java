@@ -11,11 +11,9 @@ import java.util.List;
 public class InitGame {
 
     private final OutputText outputText;
-    private final Setting setting;
 
-    public InitGame(OutputText outputText, Setting setting){
+    public InitGame(OutputText outputText){
         this.outputText = outputText;
-        this.setting = setting;
 
         outputText.startGame();
     }
@@ -23,7 +21,7 @@ public class InitGame {
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
 
-        while (computerNumber.size() < setting.INPUT_NUMBER) {
+        while (computerNumber.size() < Setting.INPUT_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
