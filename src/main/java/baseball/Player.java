@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
-    public static final int PLAYER = 0;
-    public static final int STATE = 1;
     private int strike;
     private int ball;
 
@@ -70,7 +68,7 @@ public class Player {
             throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
         }
 
-        if (!isValidLength(playerNumber, PLAYER)) {
+        if (!isValidDigitLength(playerNumber)) {
             throw new IllegalArgumentException(Message.DIGIT_LENGTH_EXCEPTION);
         }
 
@@ -83,20 +81,6 @@ public class Player {
         }
     }
 
-    public void validateStateNumber(String stateNumber) {
-        if (!isValidType(stateNumber)) {
-            throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
-        }
-
-        if (!isValidLength(stateNumber, STATE)) {
-            throw new IllegalArgumentException(Message.STATE_LENGTH_EXCEPTION);
-        }
-
-        if (!isValidNumber(stateNumber)) {
-            throw new IllegalArgumentException(Message.STATE_NUMBER_EXCEPTION);
-        }
-    }
-
     private boolean isValidType(String number) {
         for (char digit : number.toCharArray()) {
             if (Character.isLetter(digit)) {
@@ -106,16 +90,8 @@ public class Player {
         return true;
     }
 
-    private boolean isValidLength(String number, int type) {
-        if (isPlayerNumber(type)) {
-            return number.length() == Config.DIGIT_SIZE;
-        }
-
-        return number.length() == Config.STATE_SIZE;
-    }
-
-    private boolean isPlayerNumber(int type) {
-        return PLAYER == type;
+    private boolean isValidDigitLength(String playerNumber) {
+        return playerNumber.length() == Config.DIGIT_SIZE;
     }
 
     private boolean isValidDuplication(String playerNumber) {
@@ -134,6 +110,24 @@ public class Player {
             }
         }
         return true;
+    }
+
+    public void validateStateNumber(String stateNumber) {
+        if (!isValidType(stateNumber)) {
+            throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
+        }
+
+        if (!isValidStateLength(stateNumber)) {
+            throw new IllegalArgumentException(Message.STATE_LENGTH_EXCEPTION);
+        }
+
+        if (!isValidNumber(stateNumber)) {
+            throw new IllegalArgumentException(Message.STATE_NUMBER_EXCEPTION);
+        }
+    }
+
+    private boolean isValidStateLength(String stateNumber) {
+        return stateNumber.length() == Config.STATE_SIZE;
     }
 
     private boolean isValidNumber(String stateNumber) {
