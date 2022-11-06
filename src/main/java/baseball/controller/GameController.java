@@ -11,6 +11,7 @@ public class GameController {
     GameService gameService = new GameService();
     GameStatusService gameStatusService;
     PlayerView playerView = new PlayerView();
+    ScoreResultView scoreResultView = new ScoreResultView();
 
     public GameController(){}
 
@@ -46,6 +47,17 @@ public class GameController {
     }
 
     void showPlayersScore(){
+        giveScoreToView();
+        printScore();
+    }
+
+    void giveScoreToView(){
+        scoreResultView.setBallCount(gameService.getBallCount());
+        scoreResultView.setStrikeCount(gameService.getStrikeCount());
+    }
+
+    void printScore(){
+        scoreResultView.printScore();
     }
 
     boolean isThreeStrike(){

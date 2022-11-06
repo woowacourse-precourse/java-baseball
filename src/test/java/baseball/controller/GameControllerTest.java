@@ -69,12 +69,15 @@ public class GameControllerTest {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        OutputStream out1 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out1));
         gameController.putPlayerInService(gameController.getPlayerNumbers());
         gameController.matchGame();
+        OutputStream out2 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out2));
+        String result = "1볼 1스트라이크\n";
         gameController.showPlayersScore();
-        assertThat(out).isEqualTo("2볼 1스트라이크");
+        assertThat(out2.toString()).isEqualTo(result);
     }
 
     @Test
