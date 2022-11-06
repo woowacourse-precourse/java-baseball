@@ -14,26 +14,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RoundTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"123", "1245", "12","122"})
+    @ValueSource(strings = {"1245", "12","122"})
     void roundInputTest(String input) throws Exception {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        Computer computer = new Computer();
-        Round round = new Round(computer);
 
-        round.startNewRound();
-        round.playRound();
-        round.startNewRound();
-        assertThatThrownBy(() -> round.playRound())
+        Computer computer = new Computer();
+        Round round = Round.getRound();
+
+        assertThatThrownBy(() -> round.startNewRound(computer))
                 .isInstanceOf(IllegalArgumentException.class);
-        round.startNewRound();
-        assertThatThrownBy(() -> round.playRound())
+        assertThatThrownBy(() -> round.startNewRound(computer))
                 .isInstanceOf(IllegalArgumentException.class);
-        round.startNewRound();
-        assertThatThrownBy(() -> round.playRound())
+        assertThatThrownBy(() -> round.startNewRound(computer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

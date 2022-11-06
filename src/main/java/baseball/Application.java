@@ -7,7 +7,6 @@ public class Application {
         Game game = Game.turnOnGame();
         do {
             Computer computer = new Computer();
-            Round round = new Round(computer);
             game.startNewGame(computer);
         } while (game.replayGame());
     }
