@@ -1,7 +1,14 @@
 package baseball;
 
 public class Application {
-    public static void main(String[] args) {
+    private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INVALID_INPUT = "잘못된 입력입니다.";
+    private static final String GUESS_ALL = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String END_GAME = "숫자 야구 게임을 종료합니다.";
+
+    public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
 
         // TODO: 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
