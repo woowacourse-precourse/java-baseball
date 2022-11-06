@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Nested;
 import java.util.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -33,6 +34,31 @@ class ApplicationTest extends NsTest {
         //425가 입력됐을 때 5, 20, 400인 리스트가 반환
         List<Integer> result = List.of(5, 20, 400);
         assertThat(result).isEqualTo(Application.disassembleDigitNumber(425));
+    }
+
+
+    @Nested
+    class isValidData_Test {
+        @Nested
+        class success_case {
+            @Test
+            void case1() {
+                assertThat(true).isEqualTo(Application.isValidData(425));
+            }
+        }
+
+        @Nested
+        class fail_case {
+            @Test
+            void case1() {
+                assertThat(false).isEqualTo(Application.isValidData(445));
+            }
+
+            @Test
+            void case2() {
+                assertThat(false).isEqualTo(Application.isValidData(12));
+            }
+        }
     }
     @Override
     public void runMain() {
