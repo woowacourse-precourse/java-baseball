@@ -64,6 +64,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("2-1. 숫자가 아닌 다른 입력인 경우")
+    void test3() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("테스트")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("2-2. 3자리 숫자가 아닌 입력인 경우")
+    void test4() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("12")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
