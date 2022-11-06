@@ -24,6 +24,19 @@ class RandomNumberGeneratorTest extends NsTest {
         assertThat(computer.size()).isEqualTo(3);
     }
 
+    @DisplayName("랜덤 숫자 범위 테스트")
+    @Test
+    void randomNumberRangeTest() {
+        // given
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        // when
+        ArrayList<Integer> computer = randomNumberGenerator.RandomNumberGenerator();
+
+        // then
+        assertThat(computer.stream().allMatch(v -> v >= 1 && v <= 9)).isTrue();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
