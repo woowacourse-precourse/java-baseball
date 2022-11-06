@@ -37,9 +37,11 @@ public class Numbers {
 
     public void add(int number) {
         validateNumber(number);
-        if (!numbers.contains(number)) {
-            numbers.add(number);
-        }
+        numbers.add(number);
+    }
+
+    public boolean isContaining(int number){
+        return numbers.contains(number);
     }
 
     public int size() {

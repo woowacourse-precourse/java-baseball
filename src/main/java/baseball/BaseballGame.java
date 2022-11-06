@@ -23,7 +23,13 @@ public class BaseballGame {
     public void pickRandomNumbers() {
         randomNumbers = new Numbers();
         while (randomNumbers.size() < 3) {
-            randomNumbers.add(Randoms.pickNumberInRange(0, 9));
+            addRandomNumbers(Randoms.pickNumberInRange(0, 9));
+        }
+    }
+
+    private void addRandomNumbers(int number){
+        if(!randomNumbers.isContaining(number)){
+            randomNumbers.add(number);
         }
     }
 
