@@ -22,9 +22,7 @@ public class UserNumber {
 
     public static List<Integer> checkInputUserNumber(){
         List<Integer> userNumberList = inputUserNumber();
-        if(!UserNumberValidator.checkValidationUserNumber(userNumberList)){
-            throw new IllegalArgumentException();
-        }
+        UserNumberValidator.checkValidationUserNumber(userNumberList);
         return userNumberList;
     }
 

@@ -7,8 +7,9 @@ import static baseball.constant.GameConstant.ZERO;
 
 public class UserNumberValidator {
 
-    public static boolean checkValidationUserNumber(List<Integer> userNumberList){
-        return isDifferent(userNumberList) && isThreeNumber(userNumberList) && isNotZero(userNumberList);
+    public static void checkValidationUserNumber(List<Integer> userNumberList){
+        if(!(isDifferent(userNumberList) && isThreeNumber(userNumberList) && isNotZero(userNumberList)))
+            throw new IllegalArgumentException();
     }
 
     public static boolean isDifferent(List<Integer> userNumberList){
