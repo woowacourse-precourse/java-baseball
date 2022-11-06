@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
     final static String GAME_START_GUIDE_MESSAGE = "숫자 야구 게임을 시작합니다.";
     final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
-    final static String WIN_CONDITION = "3스트라이크";
+    final static String WIN_CONDITION = "3스트라이크 ";
     final static String WIN_GUIDE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static int NUMBER_LENGTH = 3;
 //    String gamePlayerInput;
@@ -55,7 +55,7 @@ public class Game {
         if (strikes == balls && balls == 0) {
             result.append("낫싱");
         }
-        System.out.println(result.toString());
+
         return result.toString();
     }
 
