@@ -63,6 +63,11 @@ class BaseBallGame {
         ball = hint.get(0);
         strike = hint.get(1);
 
+        return getSolveResult(strike, ball);
+
+    }
+
+    public boolean getSolveResult(int strike, int ball){
         if (strike == GOAL) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -82,6 +87,7 @@ class BaseBallGame {
         }
 
         return false;
+
     }
 
 
