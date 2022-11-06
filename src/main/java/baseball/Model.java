@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 public class Model {
     ArrayList<String> humanarraylist;
+    private ArrayList<String> computerarraylist;
 
     Model() { }
 
@@ -33,6 +34,19 @@ public class Model {
 
     public void setComputernumber(String computernumber) {
         this.computernumber = computernumber;
+        computerarraylist = new ArrayList<>(Arrays.asList(computernumber.split("")));
+    }
+
+    public ArrayList<String> getHumanArrayList() {
+        return humanarraylist;
+    }
+
+    public ArrayList<String> getComputerArrayList() {
+        return computerarraylist;
+    }
+
+    public void clearComputerArrayList() {
+        computerarraylist.clear();
     }
 
     public void clearArrayList() {
