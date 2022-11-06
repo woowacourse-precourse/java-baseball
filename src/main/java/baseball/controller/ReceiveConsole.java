@@ -7,6 +7,11 @@ import java.util.List;
 
 public class ReceiveConsole {
 
+    public static int choiceGameContinue() {
+        String answer=Console.readLine();
+        return Integer.parseInt(answer);
+    }
+
     public static NumListDto receiveNumIncludeAllException() throws IllegalArgumentException {
         NumListDto numListDto;
         try {
