@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.isNumber;
+import static baseball.Application.isValidUserNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,14 +31,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 사용자_번호가_숫자인지_확인_테스트_True() {
+    void 번호가_숫자인지_확인_테스트_True() {
         String number = "123";
         boolean result = isNumber(number);
         assertThat(result).isTrue();
     }
 
     @Test
-    void 사용자_번호가_숫자인지_확인_테스트_False() {
+    void 번호가_숫자인지_확인_테스트_False() {
         String number = "12e";
         boolean result = isNumber(number);
         assertThat(result).isFalse();
