@@ -21,6 +21,15 @@ public class GameSet {
         return computer;
     }
 
+    public static String attachComputerNumber(){
+        String computerNumber = "";
+        List<Integer> computer = setComputerNumber();
+        for(Integer number : computer){
+            computerNumber += Integer.toString(number);
+        }
+        return computerNumber;
+    }
+    
     public static String inputPlayerNumber(){
         String playerNumber = readLine();
         CheckException.check(playerNumber);
