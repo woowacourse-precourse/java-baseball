@@ -46,12 +46,11 @@ public class Application {
         return howManyBall;
     }
 
-    public static int checkStrike (List<Integer> answer, List<Integer> userInput, int howManyBall) {
+    public static int checkStrike (List<Integer> answer, List<Integer> userInput) {
         int howManyStrike = 0;
         for (int i=0; i<userInput.size(); i++) {
             if (answer.get(i).equals(userInput.get(i))) {
                 howManyStrike++;
-                howManyBall--;
             }
         }
         return howManyStrike;
@@ -102,7 +101,7 @@ public class Application {
         while(true) {
             List<Integer> userInput = getUserInput();
             int ball = checkBall(answer,userInput);
-            int strike = checkStrike(answer,userInput,ball);
+            int strike = checkStrike(answer,userInput);
             ball = ball-strike;
             printStrikeAndBall(ball,strike);
             correctAnswer = returnAnswer(strike);
