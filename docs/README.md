@@ -8,8 +8,8 @@
 
 - 게임 프로세스
   1) 시작
-        - 랜덤 컴퓨터 값 생성 / process package > initGame class > createComputerNumber func
+        - 랜덤 컴퓨터 값 생성 / process package > InitGame class > createComputerNumber func
   2) 과정
-        - 사용자가 추측한 컴퓨터 숫자 입력 / process package > mainGame class > inputGuessNumber func
+        - 사용자가 추측한 컴퓨터 숫자 입력 / process package > MainGame class > inputGuessNumber func
   3) 끝
 
