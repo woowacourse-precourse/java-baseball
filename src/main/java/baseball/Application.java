@@ -7,12 +7,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         printStartStatement();
         Score score;
-        boolean playAgain=true;
+        boolean playAgain = true;
         while (playAgain) {
-            score=new Score();
+            score = new Score();
             List<Integer> computerInputs = getRandomIntegers();
             while (!score.pass()) {
                 List<Integer> userInputs = getIntegersThroughConsole();
@@ -20,7 +19,7 @@ public class Application {
                 printScore(score);
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            playAgain=askIfUserPlaysGameAgain();
+            playAgain = askIfUserPlaysGameAgain();
         }
     }
 
