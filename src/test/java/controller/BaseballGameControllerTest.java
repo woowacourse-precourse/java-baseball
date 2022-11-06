@@ -103,4 +103,32 @@ public class BaseballGameControllerTest {
 		assertThat(pickedBalls.getPickedBalls().size()).isEqualTo(NUMBER_OF_BALLS_FOR_BASEBALL_GAME);
 		assertThat(pickedBalls.getPickedBalls()).isEqualTo(Arrays.asList(1, 2, 3));
 	}
+
+	@Test
+	@DisplayName("스트라이크를 제대로 판단하는지 테스트")
+	void judgeStrikeCorrectly() {
+		// given
+		Balls ballsPickedByComputer = new Balls(Arrays.asList(1, 2, 3));
+		Balls ballsPickedByUser = new Balls(Arrays.asList(1, 2, 3));
+
+		// when
+		int numberOfStrike = BaseballGameController.judgeStrike(ballsPickedByComputer, ballsPickedByUser);
+
+		// then
+		assertThat(numberOfStrike).isEqualTo(3);
+	}
+
+	@Test
+	@DisplayName("볼을 제대로 판단하는지 테스트")
+	void judgeBallCorrectly() {
+		// given
+		Balls ballsPickedByComputer = new Balls(Arrays.asList(3, 2, 1));
+		Balls ballsPickedByUser = new Balls(Arrays.asList(1, 2, 3));
+
+		// when
+		int numberOfBall = BaseballGameController.judgeBall(ballsPickedByComputer, ballsPickedByUser);
+
+		// then
+		assertThat(numberOfBall).isEqualTo(3);
+	}
 }

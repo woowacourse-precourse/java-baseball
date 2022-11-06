@@ -39,11 +39,11 @@ public class BaseballGameController {
 		return new Balls(ballsPickedByUser);
 	}
 
-	private static int judgeStrike(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
+	public static int judgeStrike(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
 		return -1;
 	}
 
-	private static int judgeBall(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
+	public static int judgeBall(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
 		return -1;
 	}
 
