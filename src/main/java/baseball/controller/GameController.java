@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.Baseball;
 import baseball.domain.User;
 import baseball.service.BaseballService;
 import baseball.service.UserService;
@@ -14,9 +15,7 @@ public class GameController {
 
 
     public void initGame() {
-        baseballService = new BaseballService();
-        baseballService.startGame();
-
+        baseballService = new BaseballService(new Baseball());
         userService = new UserService(new User());
     }
 

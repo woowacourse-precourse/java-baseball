@@ -3,10 +3,10 @@ package baseball.service;
 import baseball.domain.Baseball;
 
 public class BaseballService {
-    private Baseball baseball;
+    private final Baseball baseball;
 
-    public void startGame() {
-        this.baseball = new Baseball();
+    public BaseballService(Baseball baseball) {
+        this.baseball = baseball;
     }
 
     public void progress(String userInput) {

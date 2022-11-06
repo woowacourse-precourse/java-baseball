@@ -1,15 +1,16 @@
 package baseball.service;
 
+import baseball.domain.Baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BaseballServiceTest {
-    BaseballService baseballService = new BaseballService();
+    BaseballService baseballService;
 
     @BeforeEach
     void startGame() {
-        baseballService.startGame();
+        baseballService = new BaseballService(new Baseball());
     }
 
     @Test
