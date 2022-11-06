@@ -8,11 +8,15 @@ import java.util.List;
 
 public class Application {
     static void baseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             // 난수 생성
             List<Integer> computerNumber = generateNumber();
 
+            // 게임 시작
             startGame(computerNumber);
+
+
         } while (true);
     }
 
@@ -28,7 +32,7 @@ public class Application {
         return computer;
     }
 
-    static void startGame(List<Integer> computerNumber) {
+    static void startGame(List<Integer> computerNumber){
         while (true) {
             // 사용자로부터 입력된 3개의 숫자 배열
             List<Integer> userNumber = generateUserNumber();
@@ -75,6 +79,7 @@ public class Application {
     List<Integer> userNumber
     */
     static List<Integer> generateUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         // 사용자로 부터 입력을 받는다.
         String userInput = Console.readLine();
 
