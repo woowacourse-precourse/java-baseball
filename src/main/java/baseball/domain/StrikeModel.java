@@ -4,17 +4,20 @@ import java.util.List;
 
 public class StrikeModel {
 
-    private final int[] userNumber;
-    private final int[] computerNumber;
+    private final List<Integer> userNumberList;
+    private final List<Integer> computerNumberList;
 
     public StrikeModel(List<Integer> userNumberList, List<Integer> computerNumberList) {
-        this.userNumber = getNumberList(userNumberList);
-        this.computerNumber = getNumberList(computerNumberList);
+        this.userNumberList = userNumberList;
+        this.computerNumberList = computerNumberList;
     }
 
     // 볼과 스트라이크 int배열로 반환
     public int[] getBallAndStrike() {
-
+        int[] ballAndStrike = new int[2];
+        ballAndStrike[1] = getStrike();
+        ballAndStrike[0] = getBall() - getStrike();
+        return ballAndStrike;
     }
 
     // 스트라이크 계산
@@ -28,7 +31,7 @@ public class StrikeModel {
 
     // 스트라이크 비교
     private int calculateStrike(int index) {
-        if (userNumber[index] == computerNumber[index]) {
+        if (userNumberList.get(index).equals(computerNumberList.get(index))) {
             return 1;
         }
         return 0;
@@ -38,17 +41,17 @@ public class StrikeModel {
     private int getBall() {
         int ballCount = 0;
         for (int index = 0; index < 3; index++) {
+            ballCount += calculateBall(index);
         }
         return ballCount;
     }
 
-    // List를 int배열로 변환
-    private int[] getNumberList(List<Integer> numberList) {
-        int[] numberListArray = new int[3];
-        for (int index = 0; index < 3; index++) {
-            numberListArray[index] = numberList.get(index);
-            System.out.println(numberListArray[index]);
+    // 볼 비교
+    private int calculateBall(int index) {
+        int number = computerNumberList.get(index);
+        if (userNumberList.contains(number)) {
+            return 1;
         }
-        return numberListArray;
+        return 0;
     }
 }
