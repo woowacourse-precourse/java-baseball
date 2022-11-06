@@ -24,7 +24,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
             }
 
-            List<Integer> userInput = userInput();
+            List<Integer> userInput = userInput(gameFinished);
 
             if (userInput.equals(restart)){
                 answer = createAnswer();
@@ -54,12 +54,16 @@ public class Application {
     }
 
     // 사용자가 입력한 정답을 반환하는 함수, 입력은 서로 다른 3자리 수여야 한다. 단 1 과 2는 재시작, 종료를 위해 허용
-    public static List<Integer> userInput() throws IllegalArgumentException {
+    public static List<Integer> userInput(boolean gameFinished) throws IllegalArgumentException {
         List<Integer> answer = new ArrayList<>();
         String consoleInput = Console.readLine();
 
-        if (consoleInput.length() != 3 && !consoleInput.equals("1") && !consoleInput.equals("2")) {
+        if (consoleInput.length() != 3 && !gameFinished) {
             throw new IllegalArgumentException("유효하지 않는 입력입니다.");
+        }
+
+        if (gameFinished && !consoleInput.equals("1") && !consoleInput.equals("2")){
+            throw new IllegalArgumentException("1과 2 중 입력해주세요.");
         }
 
         for (int i = 0; i < consoleInput.length(); i++) {
