@@ -51,4 +51,14 @@ public class User {
 		patternValidateInput();
 		duplicationValidateInput();
 	}
+
+	public void answerValidateInput() {
+		initValidatedUserInput();
+
+		if(!Pattern.matches("^[1-2]$?", userInput)) {
+			throw new IllegalArgumentException();
+		}
+
+		validatedUserInput.add(Integer.parseInt(userInput));
+	}
 }
