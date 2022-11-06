@@ -67,4 +67,14 @@ class ComputerTest {
         }
         assertThat(computer.compare(answer)).isEqualTo(List.of(3, 0));
     }
+
+    @Test
+    @DisplayName("입력받은 숫자에 대한 결과를 출력하는 기능")
+    void printResult() {
+        Computer computer = new Computer();
+        assertThat(computer.printResult(3, 0)).isEqualTo("3스트라이크");
+        assertThat(computer.printResult(1, 1)).isEqualTo("1볼 1스트라이크");
+        assertThat(computer.printResult(0, 1)).isEqualTo("1볼");
+        assertThat(computer.printResult(0, 0)).isEqualTo("낫싱");
+    }
 }
