@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameManager {
 
+    private static final int CONTINUE = 1;
+    private static final int EXIT = 2;
     private boolean gameContinueFlag;
     private NumberManager numberManager = new NumberManager();
 
@@ -41,10 +43,10 @@ public class GameManager {
         int gameContinue = Integer.parseInt(Console.readLine());
 
         switch (gameContinue) {
-            case 1:
+            case CONTINUE:
                 numberManager.setRandomNumber();
                 return true;
-            case 2:
+            case EXIT:
                 return false;
             default:
                 throw new IllegalArgumentException();
