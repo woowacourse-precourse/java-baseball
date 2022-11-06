@@ -38,13 +38,13 @@ public class BallReader {
         for (int number : userBallData) {
             int userIndex = userBallData.indexOf(number);
             int computerIndex = computerBallData.indexOf(number);
-            String result = judgeStrikeAndBall(userIndex, computerIndex);
+            String result = judgeStrikeOrBall(userIndex, computerIndex);
             strikeAndBallResult.add(result);
         }
         return strikeAndBallResult;
     }
 
-    private String judgeStrikeAndBall(int userIndex, int computerIndex){
+    private String judgeStrikeOrBall(int userIndex, int computerIndex){
         final int noNumberInComputer = -1;
         if (userIndex == computerIndex) {
             return STRIKE;
