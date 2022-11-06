@@ -17,7 +17,7 @@ public class Application {
 			BallsNumbers.userInputNumbers = 
 					BallsNumbers.makeUserInputNumbers(inputNum);
 			InputView.checkIllegalInput(BallsNumbers.userInputNumbers);
-			
+			Balls.compare();
 		}
 	}
 	

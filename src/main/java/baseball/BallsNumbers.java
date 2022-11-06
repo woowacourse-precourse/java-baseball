@@ -6,7 +6,6 @@ import java.util.Random;
 public class BallsNumbers {
     static ArrayList<Integer> randomNumbers;  //Computers Balls Numbers
     static ArrayList<Integer> userInputNumbers;  //User Balls Numbers
-
 	
     //Computers Balls Numbers
     @SuppressWarnings("unchecked")
