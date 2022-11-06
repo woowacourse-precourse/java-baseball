@@ -8,4 +8,12 @@ public abstract class Game {
     protected abstract void close();
 
     protected abstract boolean restart();
+
+    final public void run() {
+        greet();
+        while (restart()) {
+            play();
+            close();
+        }
+    }
 }
