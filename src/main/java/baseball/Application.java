@@ -9,17 +9,21 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        do {
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        System.out.println("숫자 야구 게임을 시작합니다!!!");
-
-        ArrayList<Integer> generateAnswer = generateAnswer(args);
-        while(true) {
-            ArrayList<Integer> inputUserNumber = inputUserNumber(args);
-            String AA = numberReferee(generateAnswer, inputUserNumber);
-            System.out.println(AA);
-            if (AA.equals("3스트라이크")) {break;};
-        }
-
+            ArrayList<Integer> generateAnswer = generateAnswer(args);
+            while (true) {
+                ArrayList<Integer> inputUserNumber = inputUserNumber(args);
+                String AA = numberReferee(generateAnswer, inputUserNumber);
+                System.out.println(AA);
+                if (AA.equals("3스트라이크")) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+            }
+        } while (restart() != 2);
+        System.out.println("게임 종료");
     }
 
 
@@ -48,14 +52,17 @@ public class Application {
             ||!Character.isDigit(inputNumber.charAt(2))) {
             throw new IllegalArgumentException();
             }
+            if (inputNumber.charAt(0) ==0 || inputNumber.charAt(1)==0 || inputNumber.charAt(2) ==0){
+            throw new IllegalArgumentException();
+            }
         }catch(IllegalArgumentException e){
-            System.exit(0);
+            System.out.println("게임 종료");
         }
+
 
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(0)));
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(1)));
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(2)));
-
         return inputNumberArray;
     }
 
@@ -109,4 +116,15 @@ public class Application {
         else{answer += (ball+"볼")+" "+(strike+"스트라이크");}
         return answer;
     }
+    public static int restart (){
+        System.out.println("계속하시겠습니까?1=계속,2=끝");
+        int toBeContinue = Integer.parseInt(Console.readLine());
+        try{
+            if(toBeContinue != 1 && toBeContinue != 2) throw new IllegalArgumentException("게임 종료");
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+        return toBeContinue;
+    }
 }
+
