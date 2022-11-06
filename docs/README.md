@@ -15,4 +15,5 @@
         - 사용자가 입력한 값 올바른지 판단 / process package > MainGame class > isRightInput func  
         - 컴퓨터값, 인풋값 Strike, Ball 판단 / process package > MainGame class > judge func 
   3) 끝
+      - 재시작 및 종료 판단 / process package > EndGame class > continueGame func
 
