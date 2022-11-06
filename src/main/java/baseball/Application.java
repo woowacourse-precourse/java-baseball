@@ -1,9 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,7 +9,19 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         printStartStatement();
-
+        Score score;
+        boolean playAgain=true;
+        while (playAgain) {
+            score=new Score();
+            List<Integer> computerInputs = getRandomIntegers();
+            while (!score.pass()) {
+                List<Integer> userInputs = getIntegersThroughConsole();
+                score = calculateScore(computerInputs, userInputs);
+                printScore(score);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            playAgain=askIfUserPlaysGameAgain();
+        }
     }
 
     private static void printStartStatement() {
@@ -21,23 +30,21 @@ public class Application {
 
     private static List<Integer> getRandomIntegers() throws IllegalArgumentException {
         List<Integer> result = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
-        int computerInput = Randoms.pickNumberInRange(100, 999);
-        Set<Integer> digits = new HashSet<>();
+        Set<Integer> inputs = new HashSet<>();
         for (int i = 0; i < 3; i++) {
-            int remainder = computerInput % 10;
-            if (digits.contains(remainder)) {
+            int computerInput = Randoms.pickNumberInRange(1, 9);
+            if (inputs.contains(computerInput)) {
                 throw new IllegalArgumentException();
             }
-            digits.add(remainder);
-            result.add(remainder);
-            computerInput /= 10;
+            inputs.add(computerInput);
+            result.add(computerInput);
         }
         return result;
     }
 
     private static List<Integer> getIntegersThroughConsole() throws IllegalArgumentException {
         List<Integer> result = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         int userInput = Integer.parseInt(Console.readLine());
         if (userInput < 100 || userInput > 999) {
             throw new IllegalArgumentException();
@@ -52,6 +59,7 @@ public class Application {
             result.add(remainder);
             userInput /= 10;
         }
+        Collections.reverse(result);
         return result;
     }
 
@@ -117,5 +125,9 @@ public class Application {
         int strike = 0;
         int ball = 0;
         int nothing = 0;
+
+        public boolean pass() {
+            return strike == 3;
+        }
     }
 }
