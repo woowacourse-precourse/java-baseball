@@ -42,4 +42,8 @@ public class NumberBaseballRepository {
     public void clearNumberStore() {
         numberStore.clear();
     }
+
+    public ComputerNumber findComputerNumber() {
+        return numberStore.get(COMPUTER_NUMBER);
+    }
 }

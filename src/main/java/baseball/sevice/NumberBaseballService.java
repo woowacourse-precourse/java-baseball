@@ -1,8 +1,12 @@
 package baseball.sevice;
 
+import baseball.domain.ComputerNumber;
 import baseball.repository.NumberBaseballRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumberBaseballService {
+    private static final int ASCII_ZERO = 48;
     private static final int ASCII_ONE = 49;
     private static final int ASCII_NINE = 57;
     private static final int CORRECT_LENGTH = 3;
@@ -20,8 +24,27 @@ public class NumberBaseballService {
         numberBaseballRepository.generateComputerNumber();
     }
 
-    public void inputUserAnswer(String userAnswer) {
+    public List<Integer> inputUserAnswer(String userAnswer) {
         validateUserAnswer(userAnswer);
+        List<Integer> userAnswerResultList = new ArrayList<>();
+        userAnswerResultList.add(calculateStrike(userAnswer));
+
+        return new ArrayList<>();
+    }
+
+    public int calculateStrike(String userAnswer) {
+        int strikeCount = 0;
+        ComputerNumber findComputerNumber = numberBaseballRepository.findComputerNumber();
+        if (findComputerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO) {
+            strikeCount++;
+        }
+        if (findComputerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
+            strikeCount++;
+        }
+        if (findComputerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+            strikeCount++;
+        }
+        return strikeCount;
     }
 
     public void validateUserAnswer(String userAnswer) {
