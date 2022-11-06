@@ -93,4 +93,23 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class checkNewGameInputTest {
+        @Test
+        @DisplayName("1 또는 2가 아닌 값이 입력된 경우 테스트")
+        void case1() {
+            String line = "3";
+            assertThatThrownBy(() -> Application.checkNewGameInput(line))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("빈 값이 입력된 경우 테스트")
+        void case3() {
+            String line = "";
+            assertThatThrownBy(() -> Application.checkNewGameInput(line))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
