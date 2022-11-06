@@ -1,4 +1,4 @@
-package validator;
+package baseball.validator;
 
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +59,42 @@ class NumberValidatorTest {
         assertThatThrownBy(() -> NumberValidator.checkNumberCondition(checkNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1~9 까지의 수 조건에 충족하지 않습니다.");
+    }
+
+    @Test
+    void 재시작_입력이_조건에_맞지않는_경우_예외_발생1() {
+        String checkNumber = "a";
+
+        assertThatThrownBy(() -> NumberValidator.checkRetryNumber(checkNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
+    }
+
+    @Test
+    void 재시작_입력이_조건에_맞지않는_경우_예외_발생2() {
+        String checkNumber = "@";
+
+        assertThatThrownBy(() -> NumberValidator.checkRetryNumber(checkNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
+    }
+
+    @Test
+    void 재시작_입력이_조건에_맞지않는_경우_예외_발생3() {
+        String checkNumber = "";
+
+        assertThatThrownBy(() -> NumberValidator.checkRetryNumber(checkNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
+    }
+
+    @Test
+    void 재시작_입력이_조건에_맞지않는_경우_예외_발생4() {
+        String checkNumber = "1234";
+
+        assertThatThrownBy(() -> NumberValidator.checkRetryNumber(checkNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임 재시작 여부는 1또는 2 숫자만 가능합니다.");
     }
 
 }
