@@ -19,6 +19,19 @@ public class GameController {
         receiver = new Receiver();
     }
 
+    public void run() {
+        String checkRestart = "1";
+        printer.startGame();
+        while (checkRestart.equals("1")) {
+            result = new Result(0, 0);
+            randomNumber.generate();
+            playGame(result);
+            printer.noticeWin();
+            printer.restartGame();
+            checkRestart = receiver.receiveRestartNumber();
+        }
+    }
+
     private void playGame(Result result) {
         while (!result.isCorrect()) {
             printer.requestNumber();
