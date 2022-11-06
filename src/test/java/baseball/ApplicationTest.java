@@ -167,6 +167,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+        // 길이가 초가 할때
+    void 문자_입력_예외_테스트_case_연습() throws Exception {
+        //given
+        User user = new User();
+        String input = "1234";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThatThrownBy(user::inputNumOfUser).isInstanceOf(
+            IllegalArgumentException.class);
+    }
+
+    @Test
         // 입력한 숫자가 각각 자릿수가 같은지 확인
     void 문자_입력_예외_테스트_case_4() throws Exception {
         //given
@@ -190,11 +204,20 @@ class ApplicationTest extends NsTest {
         // when
         List<Integer> resultList = computer.getNumThreeRanOfComputerList();
         // then
-        System.out.println(computer.getNumThreeRanOfComputerList());
-
         assertThat(resultList.size()).isEqualTo(3);
     }
 
+    @Test
+        // 컴퓨터 numThreeRanOfComputerLisl의 크기가 3인가.
+    void 컴퓨터_랜덤_숫자_생성_크기_테스트_case_메서드_연습() throws Exception {
+        //given
+        Computer computer = new Computer();
+        computer.initComputer();
+        // when
+        int result = computer.getNumThreeRanOfComputerList().size();
+        // then
+        assertThat(result).isEqualTo(3);
+    }
     // TODO: 컴퓨터도 각각의 다른 숫자가 있어야한다.
 
 
@@ -205,9 +228,16 @@ class ApplicationTest extends NsTest {
         List<Integer> list = new ArrayList<>();
         computer.initComputer();
         String result = "1";
-        System.out.println(
-            "computer.getNumThreeRanOfComputerList() = " + computer.getNumThreeRanOfComputerList());
         assertThat(result).contains("1");
+
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("123", "589", "1", "597", "589", "2");
+                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크",
+                    "게임 종료");
+            },
+            5, 8, 9, 5, 8, 9
+        );
     }
 
     // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?

@@ -1,8 +1,9 @@
 package study;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class StringTest {
 
@@ -13,6 +14,27 @@ public class StringTest {
 
         assertThat(result).contains("2", "1");
         assertThat(result).containsExactly("1", "2");
+    }
+
+    @Test
+        // 하나라도 포함이 되었으면 테스트 통과
+    void split_메서드로_주어진_값을_구분_1() {
+        String input = "1,,23";
+        String[] result = input.split(",");
+
+        assertThat(result).contains("1");
+    }
+
+    @Test
+        // 정확하게 포함이 되었는가
+    void split_메서드로_주어진_값을_구분_2() {
+        String input = "1,,23";
+        String[] result = input.split(",");
+
+        assertThat(result).contains("1");
+
+        // 정확하게 들어있는가
+        assertThat(result).containsExactly("1", "", "3");
     }
 
     @Test
@@ -43,8 +65,8 @@ public class StringTest {
         String input = "abc";
 
         assertThatThrownBy(() -> input.charAt(5))
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 5");
+            .isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 5");
     }
 
 }
