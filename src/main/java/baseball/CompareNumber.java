@@ -3,6 +3,36 @@ package baseball;
 import java.util.*;
 
 public class CompareNumber {
+    public static String attachResult(String computerNumber, String playerNumber){
+        Map<String, Integer> resultMap = countResult(computerNumber,playerNumber);
+        List<String> sortedResultList = sortMap(resultMap);
+        String totalResult = "";
+
+        for(String result : sortedResultList){
+            int count = resultMap.get(result);
+            if(result != "낫싱") {
+                totalResult += Integer.toString(count);
+            }
+            totalResult += result;
+            totalResult += " ";
+        }
+        totalResult = removeLastBlank(totalResult);
+        return totalResult;
+    }
+
+    public static String removeLastBlank(String number){
+        char lastIndex = number.charAt(number.length() - 1);
+        if(lastIndex == ' '){
+            number = number.substring(0, number.length() - 1);
+        }
+        return number;
+    }
+
+    public static List<String> sortMap(Map<String, Integer> resultMap){
+        List<String> sortedResultList = new ArrayList<>(resultMap.keySet());
+        Collections.sort(sortedResultList);
+        return sortedResultList;
+    }
 
     public static Map<String, Integer> countResult(String computerNumber, String playerNumber){
         List<String> resultList = findNumber(computerNumber,playerNumber);
