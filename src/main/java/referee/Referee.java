@@ -9,7 +9,8 @@ public class Referee {
         this.score = new int[2];
     }
 
-    public String decision(String expected, String answer) {
+    public boolean decision(String expected, String answer) {
+        cleanScore(); // score를 업데이트 하기 전 완전히 초기화 함
         List<Character> expectedDigits = new ArrayList<>(3); // 사용자가 입력한 수의 각 자릿수 저장
         List<Character> answerDigits = new ArrayList<>(3);   // 정답의 각 자릿수 저장
 
@@ -24,7 +25,8 @@ public class Referee {
             else if(answerDigits.contains(expectedDigits.get(i)))
                 score[0]++;
         }
-        return buildDecisionString();
+
+        return (score[1] == 3);
     }
 
     public String buildDecisionString() {
