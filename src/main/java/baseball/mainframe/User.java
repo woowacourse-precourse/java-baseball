@@ -12,4 +12,12 @@ public class User {
     public static void setUserRestartInputValue(String userRestartInput) {
         userRestartInputValue = userRestartInput;
     }
+
+    public static String getUserInputValue() {
+        return userInputValue;
+    }
+
+    public static String getUserRestartInputValue() {
+        return userRestartInputValue;
+    }
 }
