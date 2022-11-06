@@ -88,4 +88,17 @@ public class GameCycle {
     public void output(String message){
         System.out.println(message);
     }
+    public void endGameMessage(){
+        output("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+    public void play(){
+        String answer = drawNumber();
+        while(true){
+            String playerNumber = playerInputNumber();
+            String countStatus = countResponse(answer, playerNumber);
+            output(countStatus);
+            if(isThreeStrike(countStatus))break;
+        }
+        endGameMessage();
+    }
 }
