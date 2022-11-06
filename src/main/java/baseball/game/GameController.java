@@ -55,7 +55,7 @@ public class GameController {
     }
     private static void result(){
         resultView(strike,ball);
-        if(strike==3){
+        if(strike.equals(COUNT_BALL)){
             threeStrike();
             restart();
             return;
@@ -69,5 +69,4 @@ public class GameController {
             start();
         }
     }
-
 }

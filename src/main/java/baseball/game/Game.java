@@ -21,7 +21,7 @@ public class Game {
 
     private static void makeRandomNumbers(){
         computerNumbers = new ArrayList<>();
-        while(computerNumbers.size() <3){
+        while(computerNumbers.size() <COUNT_BALL){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!computerNumbers.contains(randomNumber)){
                 computerNumbers.add(randomNumber);
