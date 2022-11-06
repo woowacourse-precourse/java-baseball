@@ -7,40 +7,40 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NumberComparisonTest {
+class CorrectCountTest {
 
-    private NumberComparison numberComparison;
+    private CorrectCount correctCount;
 
     @BeforeEach
     void setUp() {
-        numberComparison = new NumberComparison();
+        correctCount = new CorrectCount();
     }
 
     @Test
     void 컴퓨터와_플레이어_사이에_서로_포함된_숫자가_모두_맞을_경우() {
         int result = 3;
-        int compare = numberComparison.compare(List.of(1, 2, 3), List.of(1, 2, 3));
+        int compare = correctCount.compare(List.of(1, 2, 3), List.of(1, 2, 3));
         assertThat(compare).isEqualTo(result);
     }
 
     @Test
     void 컴퓨터와_플레이어_사이에_서로_포함된_숫자가_2개_맞을_경우() {
         int result = 2;
-        int compare = numberComparison.compare(List.of(1, 2, 3), List.of(1, 2, 5));
+        int compare = correctCount.compare(List.of(1, 2, 3), List.of(1, 2, 5));
         assertThat(compare).isEqualTo(result);
     }
 
     @Test
     void 컴퓨터와_플레이어_사이에_서로_포함된_숫자가_1개_맞을_경우() {
         int result = 1;
-        int compare = numberComparison.compare(List.of(1, 2, 3), List.of(1, 9, 5));
+        int compare = correctCount.compare(List.of(1, 2, 3), List.of(1, 9, 5));
         assertThat(compare).isEqualTo(result);
     }
 
     @Test
     void 컴퓨터와_플레이어_사이에_서로_포함된_숫자가_없을_경우() {
         int result = 0;
-        int compare = numberComparison.compare(List.of(1, 2, 3), List.of(4, 9, 5));
+        int compare = correctCount.compare(List.of(1, 2, 3), List.of(4, 9, 5));
         assertThat(compare).isEqualTo(result);
     }
 }

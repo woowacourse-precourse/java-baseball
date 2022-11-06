@@ -10,18 +10,17 @@ public class Referee {
     private static final int STANDARD = 1;
 
     public String resultJudgment(List<Integer> computer, List<Integer> player) {
-        NumberComparison numberComparison = new NumberComparison();
+        CorrectCount definiteNumber = new CorrectCount();
         Strike strike = new Strike();
         Ball ball = new Ball();
 
-        int correctCount = numberComparison.compare(computer, player);
+        int correctCount = definiteNumber.compare(computer, player);
         int getStrike = strike.score(computer, player);
         int getBall = ball.score(correctCount, getStrike);
 
         if (correctCount == 0) {
             return SystemMessage.NOTHING_MESSAGE;
         }
-
         return getResult(getStrike, getBall);
     }
 
