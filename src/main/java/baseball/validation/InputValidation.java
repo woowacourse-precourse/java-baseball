@@ -1,8 +1,8 @@
 package baseball.validation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static baseball.constant.MessageConst.*;
@@ -16,11 +16,17 @@ public class InputValidation {
     /**
      * 사용자의 숫자 입력값에 대한 모든 검증을 진행한다.
      */
-    public void verifyInputNum(String input) {
+    public List<Integer> verifyInputNum(String input) {
         verifyInputLength(input);
-        verifyInputRange(input);
-        List<Integer> inputNums = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
+
+        List<Integer> inputNums = Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        verifyInputRange(inputNums);
         verifyInputDuplicated(inputNums);
+
+        return inputNums;
     }
 
     /**
@@ -35,11 +41,13 @@ public class InputValidation {
 
     /**
      * 입력값이 1~9 사이의 숫자인지 검증한다.
-     * @param input 사용자의 입력값
+     * @param inputNums 사용자의 입력값의 각 자리를 쪼갠 리스트
      */
-    public void verifyInputRange(String input) {
-        String regex = "^[1-9]";
-        if (!Pattern.matches(regex, input)) {
+    public void verifyInputRange(List<Integer> inputNums) {
+        boolean checkRange = inputNums.stream()
+                .allMatch(num -> FIRST_RANGE <= num && num <= LAST_RANGE);
+
+        if (!checkRange) {
             throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION_MSG);
         }
     }
@@ -58,8 +66,8 @@ public class InputValidation {
      * 게임 진행을 제어하는 입력값에 대해 검증한다.
      * @param input 사용자의 입력값
      */
-    public void verifyGameControlInput(Integer input) {
-        if (!input.equals(RESTART_NUM) || !input.equals(EXIT_NUM)) {
+    public void verifyGameControlInput(int input) {
+        if (input < RESTART_NUM || input > EXIT_NUM) {
             throw new IllegalArgumentException(GAME_CONTROL_EXCEPTION_MSG);
         }
     }
