@@ -2,6 +2,8 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.Referee;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class BaseballGame {
 
     public static List<Integer> getNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
-        System.out.printf("숫자를 입력해주세요: ");
+        InputView.askNumberMessage();
         String input = Console.readLine();
 
         if (input.length() != 3) {
@@ -32,12 +34,12 @@ public class BaseballGame {
 
 
     public static void run(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputView.initSystemMessage();
         while (true) {
             startGame();
             String restartCheckInput = Console.readLine();
             if (restartCheckInput.equals("2")) {
-                System.out.println("게임 종료");
+                OutputView.endSystemMessage();
                 break;
             }
         }
@@ -53,7 +55,7 @@ public class BaseballGame {
                 break;
             }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        OutputView.endGameMessage();
+        InputView.askRestartMessage();
     }
 }
