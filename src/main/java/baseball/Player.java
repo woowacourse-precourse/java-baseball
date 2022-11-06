@@ -1,8 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Player {
 
@@ -22,6 +23,7 @@ public class Player {
     }
 
     public int choose() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         int choice = Integer.parseInt(input);
         validateChoice(choice);
@@ -39,11 +41,9 @@ public class Player {
     }
 
     public static List<Character> stringToList(String string) {
-        List<Character> list = new ArrayList<>();
-        for (int i = 0; i < string.length(); i++) {
-            list.add(string.charAt(i));
-        }
-        return list;
+        return IntStream.range(0, string.length())
+            .mapToObj(string::charAt)
+            .collect(Collectors.toList());
     }
 
 }
