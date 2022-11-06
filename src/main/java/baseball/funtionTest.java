@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static baseball.Application.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class funtionTest {
     @Test
@@ -27,9 +27,30 @@ public class funtionTest {
         list.add(2);
         assertEquals("1볼 2스트라이크",calculate_Result(list));
         list.set(0,0);
-        assertEquals("2스트라이크",calculate_Result(list));
+        list.set(1,3);
+        assertEquals("3스트라이크",calculate_Result(list));
         list.set(0,2);
         list.set(1,0);
         assertEquals("2볼",calculate_Result(list));
     }
+    @Test
+    void 사용자_입력에따른_예외처리(){
+        String tmp = "1";
+        String tmp2 ="112";
+        String tmp3 ="123";
+        assertThrows(IllegalArgumentException.class,() -> {
+            input_num_exception_test(tmp);
+        });
+
+        assertThrows(IllegalArgumentException.class,() -> {
+            input_num_exception_test(tmp2);
+        });
+
+        /*
+        assertThrows(IllegalArgumentException.class,() -> {
+            input_num_exception_test(tmp3);
+        });
+        */
+    }
+
 }
