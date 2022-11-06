@@ -9,14 +9,18 @@ import camp.nextstep.edu.missionutils.Console;
  */
 
 public class UserInput {
-
+    private InputError inputError;
     public String userNumberInput() {
         System.out.print("숫자를 입력해주새요 : ");
-        return Console.readLine();
+        String userNum = Console.readLine();
+        inputError.userNumberInputExceptionCheck(userNum);
+        return userNum;
     }
 
     public String replayOrStop() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Console.readLine();
+        String choice = Console.readLine();
+        inputError.replayOrStopExceptionCheck(choice);
+        return choice;
     }
 }
