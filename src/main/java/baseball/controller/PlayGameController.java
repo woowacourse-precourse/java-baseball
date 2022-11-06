@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.dto.Result;
 import baseball.service.GameService;
-import baseball.view.PrintGameResult;
+import baseball.view.OutputView;
 
 import static baseball.Const.RESTART_GAME;
 import static baseball.Const.THREE_STRIKE;
@@ -10,17 +10,17 @@ import static baseball.Const.THREE_STRIKE;
 public class PlayGameController {
 
     private final GameService gameService;
-    private final PrintGameResult printGameResult;
+    private final OutputView outputView;
 
-    public PlayGameController(GameService gameService, PrintGameResult printGameResult) {
+    public PlayGameController(GameService gameService, OutputView outputView) {
         this.gameService = gameService;
-        this.printGameResult = printGameResult;
+        this.outputView = outputView;
     }
 
     public void run() {
-        printGameResult.startGame(); //게임 시작문 출력
+        outputView.startGame(); //게임 시작문 출력
         Result strikeAndBall = gameService.checkStrikeAndBall(); //숫자 입력 후 볼, 스트라이크 횟수 체크
-        printGameResult.result(strikeAndBall); //게임 결과 출력
+        outputView.result(strikeAndBall); //게임 결과 출력
 
         int strike = strikeAndBall.getStrike();
         if (strike == THREE_STRIKE) { //3스트라이크 = 게임 종료문 출력 후 재시작, 종료 선택
