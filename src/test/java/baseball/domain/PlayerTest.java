@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.util.Number;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +14,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class PlayerTest {
     Player player = new Player();
 
+    @DisplayName("convertInput는 문자열의 각 문자를 정수리스트로 변환한다")
     @Test
-    void convertInput_메서드_사용해_문자열을_정수리스트로_변환() {
+    void convertStringToIntegerList() {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(5);
@@ -22,11 +24,13 @@ public class PlayerTest {
         assertThat(player.convertInput("159")).isEqualTo(list);
     }
 
+    @DisplayName("checkInput 메서드는")
     @Nested
     class InputValidationTest {
 
+        @DisplayName("문자열 길이가 정해진 자릿수와 다르면 예외가 발생한다")
         @Test
-        void checkInput_메서드_사용시_입력된_문자열_길이가_길거나_짧을_때_예외_발생() {
+        void throwPrescribedDigitsException() {
             assertThatThrownBy(() -> player.checkInput("1234"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(Number.PRESCRIBED_DIGITS + "자리 숫자");
@@ -36,8 +40,9 @@ public class PlayerTest {
                     .hasMessageContaining(Number.PRESCRIBED_DIGITS + "자리 숫자");
         }
 
+        @DisplayName("모두 숫자가 아니면 예외가 발생한다")
         @Test
-        void checkInput_메서드_사용시_문자를_입력했을_때_예외_발생() {
+        void throwNotNumberException() {
             assertThatThrownBy(() -> player.checkInput("1_3"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("문자가 아닌 숫자");
@@ -47,15 +52,17 @@ public class PlayerTest {
                     .hasMessageContaining("문자가 아닌 숫자");
         }
 
+        @DisplayName("0이 있으면 예외가 발생한다")
         @Test
-        void checkInput_메서드_사용시_0을_입력했을_때_예외_발생() {
+        void throwZeroException() {
             assertThatThrownBy(() -> player.checkInput("120"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1부터 9사이의 숫자");
         }
 
+        @DisplayName("중복된 숫자가 있으면 예외가 발생한다")
         @Test
-        void checkInput_메서드_사용시_중복된_숫자를_입력했을_때_예외_발생() {
+        void throwDuplicationException() {
             assertThatThrownBy(() -> player.checkInput("111"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("서로 다른 숫자");
