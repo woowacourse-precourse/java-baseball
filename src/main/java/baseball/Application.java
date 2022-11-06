@@ -45,6 +45,19 @@ public class Application {
                 break;
             }
         }
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            try {
+                int ExitOrNew = Integer.parseInt(Console.readLine());
+                if (ExitOrNew != 1 && ExitOrNew != 2) {
+                    System.out.println("1 혹은 2를 입력해주세요");
+                    continue;
+                }
+                return ExitOrNew;
+            } catch (Exception e) {
+                System.out.println("숫자를 입력해주세요");
+            }
+        }
     }
 
     public static List<Integer> getAnswer() {
