@@ -22,7 +22,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        // 길이이가 3인지
+        // 길이가 3인지
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
