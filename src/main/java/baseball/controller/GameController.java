@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.BallCounts;
 import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -8,6 +9,7 @@ import baseball.model.Numbers;
 public class GameController {
     private static final Validation validation = new Validation();
     private static Numbers inputNumbers = new Numbers();
+    private static BallCounts ballCounts = new BallCounts();
 
     public GameController() {
 	System.out.println("숫자 야구 게임을 시작합니다.");
@@ -20,10 +22,12 @@ public class GameController {
     }
 
     private static void controlGameByResult(Numbers answerNumbers) {
+        BallCounts ballCounts = new BallCounts();
         try {
             do {
                 setInputNumbers(Console.readLine());
-            } while (answerNumbers.checkStrike(inputNumbers) != 3);
+                ballCounts.setBallCounts(answerNumbers.checkStrike(inputNumbers), answerNumbers.checkBall(inputNumbers));
+            } while (ballCounts.getStrike() != 3);
         } catch (IllegalArgumentException e) {
             System.out.println("Error Message : " + e.getMessage());
             e.printStackTrace();
