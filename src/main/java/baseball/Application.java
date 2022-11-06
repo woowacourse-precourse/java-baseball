@@ -134,4 +134,12 @@ public class Application {
 
         return ballCount + BALL + " " + strikeCount + STRIKE;
     }
+
+    static int isRoundFinish(int ballCount, int strikeCount) {
+        if (strikeCount == 3 && ballCount == 0) {
+            return 2;
+        }
+
+        return 1;
+    }
 }

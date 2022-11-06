@@ -181,4 +181,30 @@ class MethodTest {
         assertThat(output4).isEqualTo("1볼 1스트라이크");
         assertThat(output5).isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    @Test
+    void isRoundFinish_매서드로_3스트라이크면_종료_반환() {
+        // given
+        int ballCount = 0;
+        int strikeCount = 3;
+
+        // when
+        int result = Application.isRoundFinish(ballCount, strikeCount);
+
+        // then
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    void isRoundFinish_매서드로_3스트라이크가_아니면_시작_반환() {
+        // given
+        int ballCount = 0;
+        int strikeCount = 1;
+
+        // when
+        int result = Application.isRoundFinish(ballCount, strikeCount);
+
+        // then
+        assertThat(result).isEqualTo(1);
+    }
 }
