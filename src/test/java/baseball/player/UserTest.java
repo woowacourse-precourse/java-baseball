@@ -1,6 +1,4 @@
-package baseball;
-
-import baseball.player.User;
+package baseball.player;
 
 import org.junit.jupiter.api.Test; // @Test annotation
 import org.junit.jupiter.api.BeforeEach; // @BeforeEach annotation

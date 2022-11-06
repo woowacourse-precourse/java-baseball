@@ -1,19 +1,15 @@
-package baseball;
+package baseball.system;
 
-import baseball.system.MenuSelection;
-
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test; // @Test annotation
 import org.junit.jupiter.api.BeforeEach; // @BeforeEach annotation
 
 import static org.assertj.core.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 
 public class MenuSelectionTest extends NsTest {
-
+    //input이 있을 시 사용하는 방법
     private MenuSelection menuSelection;
 
     @BeforeEach

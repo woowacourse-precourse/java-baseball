@@ -31,12 +31,10 @@ public class IsCollection {
         return numbers.size() != numbers.stream().distinct().count();
     }
 
-    //TODO : 메소드명 변경
     public static boolean isEqualToSetCount(List<Integer> numbers, int count) {
         return numbers.size() == count;
     }
 
-    //TODO : 메소드명 변경
     public static boolean isEqualToSetLength(String inputNumber, int length) {
         return inputNumber.length() == length;
     }
