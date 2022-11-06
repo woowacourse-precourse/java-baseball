@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임
 public class Game {
     private final int LENGTH = 3;
     private List<Integer> computer = new ArrayList<Integer>();
