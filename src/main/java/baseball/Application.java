@@ -10,10 +10,15 @@ import java.util.stream.Stream;
 public class Application {
     public static void main(String[] args) {
         computerNumber = createComputerNumber();
+        System.out.println(computerNumber);
         try {
-            do{
-                List<Integer> playerNumber = getPlayerNumber(); //숫자 아니면 예외 발생
-                isValidNumber(playerNumber); //유효하지 않으면 예외 발생
+            do {
+                List<Integer> userInput = getUserInput();
+                if (!isValidNumber(userInput)) {
+                    throw new IllegalArgumentException();
+                }
+                List<Integer> playerNumber = userInput; //유효하지 않으면 예외 발생
+
                 System.out.println(playerNumber);
                 Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
                 System.out.println(giveHint(resultMap)); //힌트 출력
@@ -22,7 +27,8 @@ public class Application {
                     askKeepPlaying(); //예외발생할 수 있음
                 }
             } while (isPlaying);
-        }catch (IllegalArgumentException e){
+        }
+        catch (IllegalArgumentException e) {
         }
     }
 
@@ -47,15 +53,19 @@ public class Application {
 
 
     //2. 플레이어 수 입력받기
-    public static List<Integer> getPlayerNumber () throws IllegalArgumentException {
+    public static List<Integer> getUserInput () throws IllegalArgumentException {
         String input = Console.readLine().trim();
         if(!isNumber(input)){
-            return input.chars()
-                    .map(i-> i-'0')
-                    .boxed()
-                    .collect(Collectors.toList());
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        return createPlayerNumberList(input);
+
+    }
+    public static List<Integer> createPlayerNumberList(String input){
+        return input.chars()
+                .map(i-> i-'0')
+                .boxed()
+                .collect(Collectors.toList());
     }
 
 
