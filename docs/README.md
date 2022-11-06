@@ -36,3 +36,11 @@
 ## 흐름도
 
 ![흐름도](../flowchart/woowa_precours_baseball_flowchart.png)
+
+<br>
+
+---
+
+## 📝 License
+
+This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
