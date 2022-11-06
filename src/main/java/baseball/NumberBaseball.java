@@ -11,7 +11,13 @@ public class NumberBaseball {
 
     private static final int END_NUMBER = 9;
 
-    private static final int ASCII_START = 48;
+    private static final int ASCII_ZERO = 48;
+
+    private static final int ASCII_NINE = 57;
+
+    private static final int ASCII_ONE = 49;
+
+    private static final int ASCII_TWO = 50;
 
     private ArrayList<Character> numbers;
 
@@ -21,7 +27,7 @@ public class NumberBaseball {
         while (numbers.size() != 3) {
             int value = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 
-            Character character = Character.valueOf((char) (value + ASCII_START));
+            Character character = Character.valueOf((char) (value + ASCII_ZERO));
 
             if (!this.numbers.contains(character)) {
                 this.numbers.add(character);
@@ -44,6 +50,15 @@ public class NumberBaseball {
         while (strikeCount != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
+
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException("숫자 3자리를 입력을 해야합니다.");
+            }
+
+            for (int i = 0; i < userInput.length(); ++i) {
+                checkNumberCharacter(userInput.charAt(i));
+            }
+
             ballCount = getBallCount(userInput);
             strikeCount = getStrikeCount(userInput);
 
@@ -64,6 +79,14 @@ public class NumberBaseball {
     private boolean isRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
+
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException("숫자 1자리를 입력을 해야합니다.");
+        }
+
+        if (userInput.charAt(0) != ASCII_ONE && userInput.charAt(0) != ASCII_TWO) {
+            throw new IllegalArgumentException("숫자 '1' 또는 '2'를 입력을 해야합니다.");
+        }
 
         if (userInput.equals("1")) {
             return true;
@@ -106,4 +129,9 @@ public class NumberBaseball {
         return condition1 && condition2;
     }
 
+    private void checkNumberCharacter(char value) {
+        if (value < ASCII_ZERO || value > ASCII_NINE) {
+            throw new IllegalArgumentException("숫자 문자가 아닙니다.");
+        }
+    }
 }
