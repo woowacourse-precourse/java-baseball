@@ -23,7 +23,6 @@ public class Application {
         return computer;
     }
 
-    static void startGame() {
     static void startGame(List<Integer> computer) {
         // 사용자로부터 입력된 3개의 숫자 배열
         List<Integer> userNumber = generateUserNumber();
@@ -69,9 +68,9 @@ public class Application {
     return
     boolean result
      */
-    static boolean checkStrike(List<Integer> computer, int number, int digit) {
-        // 해당 자릿수와 number가 같으면 -> strike 처리
-        if (computer.get(digit) == number) {
+    static boolean checkStrike(List<Integer> computerNumber, List<Integer> userNumber, int digit) {
+        // 해당 자릿수의 computerNumber가 같으면 -> strike 처리
+        if (computerNumber.get(digit) == userNumber.get(digit)) {
             return true;
         }
         // 다르면 -> strike가 아님
