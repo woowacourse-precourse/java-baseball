@@ -9,6 +9,14 @@ public class UserService {
         this.user = user;
     }
 
+    public String getBaseballNumber() {
+        return user.getBaseballNumber();
+    }
+
+    public String getRestartSelection() {
+        return user.getRestartSelection();
+    }
+
     public void inputBaseballNumber() {
         user.inputBaseballNumber();
 
