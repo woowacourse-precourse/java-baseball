@@ -17,6 +17,7 @@ public class NumberServiceImpl implements NumberService {
     @Override
     public Integer check_3_Digits_Number(List<Integer> numberList) throws IllegalArgumentException {
         if(numberList.size() != NUMBER_SIZE) {
+            System.out.println("check_3_Digits_Number");
             throw new IllegalArgumentException();
         }
         return 0;
@@ -25,8 +26,22 @@ public class NumberServiceImpl implements NumberService {
     @Override
     public Integer check_Each_Digit_Range(List<Integer> numberList) throws IllegalArgumentException {
         for(int index = 0 ; index < NUMBER_SIZE ; index++){
-            if ( numberList.get(index) < 1 || numberList.get(index) > 9 )
+            if ( numberList.get(index) < 1 || numberList.get(index) > 9 ) {
+                System.out.println("check_Each_Digit_Range");
                 throw new IllegalArgumentException();
+            }
+        }
+        return 0;
+    }
+    @Override
+    public Integer check_Identical_Digit(
+            List<Integer> numberList, int number) throws IllegalArgumentException {
+
+        if(!(numberList.contains(number)))
+            numberList.add(number);
+        else {
+            System.out.println("check_Identical_Digit");
+            throw new IllegalArgumentException();
         }
         return 0;
     }
@@ -60,7 +75,7 @@ public class NumberServiceImpl implements NumberService {
         for(int index = 0; index < userNumberStr.length() ; index++){
             String userNumberOnebyOneChar = userNumberStr.substring(index,index+1);
             int userNumberOnebyOneInt = Integer.parseInt(userNumberOnebyOneChar);
-            userNumberList.add(userNumberOnebyOneInt);
+            check_Identical_Digit(userNumberList, userNumberOnebyOneInt);
         }
 
         check_3_Digits_Number(userNumberList);

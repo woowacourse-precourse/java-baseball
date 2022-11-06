@@ -10,6 +10,8 @@ public interface NumberService {
 
     Integer check_Each_Digit_Range(List<Integer> numberList) throws IllegalArgumentException;
 
+    Integer check_Identical_Digit(List<Integer> numberList, int number) throws IllegalArgumentException;
+
     NumberItem createComputerNumber() throws IllegalArgumentException;
 
     NumberItem createUserNumber() throws IllegalArgumentException;
