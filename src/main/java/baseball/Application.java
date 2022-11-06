@@ -62,6 +62,16 @@ public class Application {
         }return ballCount;
     }
 
+    public static int nothing(String userNumber, String answerNumber){
+        int nothing = 0;
+        for(int i = 0; i<userNumber.length();i++){
+            char user = userNumber.charAt(i);
+            nothing += answerNumber.indexOf(user);
+        }return nothing;
+    }
+
+
+
 
 
 
