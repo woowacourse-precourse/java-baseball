@@ -1,12 +1,25 @@
 package baseball;
 
-public final class BallStrikeResult {
-    private final int ballCount;
-    private final int strikeCount;
+public class BallStrikeResult {
+    private int ballCount;
+    private int strikeCount;
+
+    public BallStrikeResult() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+    }
 
     public BallStrikeResult(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
+    }
+
+    public void addBallCount() {
+        this.ballCount++;
+    }
+
+    public void addStrikeCount() {
+        this.strikeCount++;
     }
 
     public boolean doesWin() {
