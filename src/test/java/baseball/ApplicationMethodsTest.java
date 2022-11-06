@@ -55,4 +55,24 @@ public class ApplicationMethodsTest {
         assertThat(result1).isEqualTo(true);
         assertThat(result2).isEqualTo(false);
     }
+
+    @Test
+    void checkStrikeTest() {
+        String randomNumber = "957";
+        String inputNumber = "937";
+
+        int strikeCount = Application.checkStrike(randomNumber, inputNumber);
+
+        assertThat(strikeCount).isEqualTo(2);
+    }
+
+    @Test
+    void checkBallTest() {
+        String randomNumber = "123";
+        String inputNumber = "351";
+
+        int strikeCount = Application.checkBall(randomNumber, inputNumber);
+
+        assertThat(strikeCount).isEqualTo(2);
+    }
 }
