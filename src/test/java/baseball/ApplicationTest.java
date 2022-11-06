@@ -15,6 +15,7 @@ import java.util.List;
 import model.Computer;
 import model.User;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -110,7 +111,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // 입력을 제대로 받았는지 확인
+    @DisplayName("입력을 제대로 받았는지 확인")
     void 문자_입력_테스트() throws Exception {
         //given
         User user = new User();
@@ -134,8 +135,8 @@ class ApplicationTest extends NsTest {
         System.setIn(in);
         // when
         // then
-        assertThrows(IllegalArgumentException.class,
-            user::inputNumOfUser);
+        assertThatThrownBy(user::inputNumOfUser).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
     @Test
