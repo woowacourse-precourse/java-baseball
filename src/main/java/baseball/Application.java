@@ -13,12 +13,16 @@ public class Application {
         NumberVO numberVO = new NumberVO();
 
         ShowMessage.showGameStart(); // 게임 시작 메세지 출력
+        List<Integer> randomNumberList = randomNumber.createRandomNumber(); // 난수 생성
+        System.out.println("난수:" + randomNumberList + ":");
         ShowMessage.showInputNumber(); // 숫자 입력 메세지 출력
         List<Integer> userNumberList = gameController.inputUserNumber(); // 사용자 입력
-        System.out.println("입력값:" + numberVO.getUserNumber() + ":");
-        List<Integer> randomNumberList = randomNumber.createRandomNumber(); // 난수 생성
-        System.out.println("난수:" + numberVO.getRandomNumber() + ":");
-        gameController.compareGameCount(userNumberList, randomNumberList);
+        System.out.println("입력값:" + userNumberList + ":");
+        // 교집합
+        List<Integer> intersectionList = gameController.checkIntersection(userNumberList, randomNumberList);
+        System.out.println("교집합:" + intersectionList + ":");
+        gameController.checkGameResult(intersectionList); // 결과 계산
+
 
     }
 
