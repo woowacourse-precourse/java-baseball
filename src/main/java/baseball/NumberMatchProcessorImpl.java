@@ -3,8 +3,6 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
@@ -18,7 +16,7 @@ public class NumberMatchProcessorImpl implements NumberMatchProcessor{
         int ball = 0;
         for (int i=0; i<gameNum.size(); i++) {
             //스트라이크
-            if (gameNum.get(i).equals(userNum.get(i)))strike++;
+            if (gameNum.get(i).equals(userNum.get(i))) strike++;
             //볼
             else if (gameNum.contains(userNum.get(i))) ball++;
         }
