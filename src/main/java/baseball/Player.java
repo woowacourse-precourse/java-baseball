@@ -1,9 +1,22 @@
 package baseball;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Player {
     private static final int DESIRED_LENGTH = 3;
+
+    Scanner sc = Application.sc;
+
+    public int guessRandomNumber() {
+        String input = sc.nextLine();
+
+        if (!isValidInput(input)) {
+            throw new IllegalArgumentException("잘못된 형식의 값을 입력했습니다.");
+        }
+
+        return Integer.parseInt(input);
+    }
 
     public boolean isValidInput(String input) {
         return containOnlyDigit(input) && isCorrectLength(input) && !containZero(input) && !hasDuplicatedDigit(input);
