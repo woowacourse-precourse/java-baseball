@@ -32,7 +32,12 @@ public abstract class ServiceImpl implements Service{
 
     private List<Integer> parser(String input) {
         checkException(input);
-        
+        List<Integer> currInput = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            int num = input.charAt(i);
+            currInput.add(num);
+        }
+        return currInput;
     }
 
     private void checkException(String input) throws IllegalArgumentException{
