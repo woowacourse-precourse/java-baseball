@@ -16,7 +16,6 @@ public class BaseballGame {
     public BaseballGame() {
         computer = new Computer();
         player = new Player();
-        isPlaying = true;
         isStartRequested = true;
     }
 
@@ -24,6 +23,7 @@ public class BaseballGame {
         System.out.println(Game.START);
 
         while (isStartRequested) {
+            isPlaying = true;
             computer.generateRandomNumbers();
             play();
             checkGameRestart();
