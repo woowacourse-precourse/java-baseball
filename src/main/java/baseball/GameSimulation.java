@@ -26,11 +26,13 @@ public class GameSimulation {
     }
 
     public void playGame() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        List<Integer> userNumber = makeList(userInput);
+        List<Integer> userNumber;
 
         while (strike < 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+            userNumber = makeList(userInput);
+
             validateUserNumber(userNumber);
 
             ball = computer.addBallScore(userNumber);
