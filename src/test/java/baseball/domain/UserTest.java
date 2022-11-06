@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.User;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

@@ -1,5 +1,7 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.GameResult;
+import baseball.domain.Referee;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -7,20 +9,6 @@ import static org.assertj.core.api.Assertions.*;
 class RefereeTest {
 
     Referee referee = new Referee();
-
-    @Test
-    void 심판_초기화시_스트라이크_볼_개수는_모두_0이다() {
-        // given
-        int expectedStrike = 0;
-        int expectedBall = 0;
-
-        // when
-        referee.initCount();
-
-        // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
-    }
 
     @Test
     void 정답인_경우_스트라이크_개수는_3이다() {
@@ -32,11 +20,11 @@ class RefereeTest {
         int expectedBall = 0;
 
         // when
-        referee.judge(answer, userNumber);
+        GameResult gameResult = referee.judge(answer, userNumber);
 
         // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
+        assertThat(gameResult.getStrikeCount()).isEqualTo(expectedStrike);
+        assertThat(gameResult.getBallCount()).isEqualTo(expectedBall);
     }
 
     @Test
@@ -44,15 +32,16 @@ class RefereeTest {
         // given
         String answer = "123";
         String userNumber = "134";
+
         int expectedStrike = 1;
         int expectedBall = 1;
 
         // when
-        referee.judge(answer, userNumber);
+        GameResult gameResult = referee.judge(answer, userNumber);
 
         // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
+        assertThat(gameResult.getStrikeCount()).isEqualTo(expectedStrike);
+        assertThat(gameResult.getBallCount()).isEqualTo(expectedBall);
     }
 
     @Test
@@ -65,11 +54,11 @@ class RefereeTest {
         int expectedBall = 0;
 
         // when
-        referee.judge(answer, userNumber);
+        GameResult gameResult = referee.judge(answer, userNumber);
 
         // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
+        assertThat(gameResult.getStrikeCount()).isEqualTo(expectedStrike);
+        assertThat(gameResult.getBallCount()).isEqualTo(expectedBall);
     }
 
 
@@ -83,11 +72,11 @@ class RefereeTest {
         int expectedBall = 3;
 
         // when
-        referee.judge(answer, userNumber);
+        GameResult gameResult = referee.judge(answer, userNumber);
 
         // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
+        assertThat(gameResult.getStrikeCount()).isEqualTo(expectedStrike);
+        assertThat(gameResult.getBallCount()).isEqualTo(expectedBall);
     }
 
     @Test
@@ -100,10 +89,10 @@ class RefereeTest {
         int expectedBall = 0;
 
         // when
-        referee.judge(answer, userNumber);
+        GameResult gameResult = referee.judge(answer, userNumber);
 
         // then
-        assertThat(referee.getStrikeCount()).isEqualTo(expectedStrike);
-        assertThat(referee.getBallCount()).isEqualTo(expectedBall);
+        assertThat(gameResult.getStrikeCount()).isEqualTo(expectedStrike);
+        assertThat(gameResult.getBallCount()).isEqualTo(expectedBall);
     }
 }
