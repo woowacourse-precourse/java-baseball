@@ -31,4 +31,19 @@ public class CheckException {
         }
         return isNumber;
     }
+
+    public static void check(String number){
+        //if(number == "1") Restart.
+        //if(number == "2")
+
+        if(checkNumberLength(number)){
+            if(!checkNumber(number)){
+                throw new IllegalArgumentException();
+            }
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
