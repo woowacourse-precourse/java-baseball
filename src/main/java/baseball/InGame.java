@@ -27,7 +27,7 @@ public class InGame {
         return true;
     }
 
-    public int createRandomInt() {
+    private int createRandomInt() {
         int random_int = 0;
 
         List<Integer> random_pick = Randoms.pickUniqueNumbersInRange(0, 9, 3);
