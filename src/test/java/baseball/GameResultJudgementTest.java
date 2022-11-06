@@ -5,9 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GameResultJudgementTest {
 
   private GameResultJudgement judge;
@@ -18,15 +21,15 @@ class GameResultJudgementTest {
   }
 
   void assertStrike(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[0]);
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer).get(0));
   }
 
   void assertBall(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[1]);
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer).get(1));
   }
 
   void assertNothing(String input, String answer, int expected) {
-    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer)[2]);
+    assertEquals(expected, judge.judgeStrikeBallNothing(input, answer).get(2));
   }
   @Test
   @Order(1)
