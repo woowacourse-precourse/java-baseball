@@ -1,13 +1,24 @@
 package baseball;
 
-public class Application {
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Application {
     private void start_game() {
         // 기능 요구사항 1번
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-    private void make_RandomNum() {
+    private List<Integer> make_RandomNum(int maxLength) {
         // 기능 요구사항 2번
+        List<Integer> computerNum = new ArrayList<>();
+        while (computerNum.size() < maxLength) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNum.contains(randomNumber)) {
+                computerNum.add(randomNumber);
+            }
+        }
+        return computerNum;
     }
 
     private void input_PlayerNum() {
@@ -28,7 +39,10 @@ public class Application {
 
     private void play() {
         start_game();
-        make_RandomNum();
+
+        int maxLength = 3;
+        List<Integer> computerNum = make_RandomNum(maxLength);
+
         input_PlayerNum();
         get_BallAndStrikeCount();
         progress_GameRule();
