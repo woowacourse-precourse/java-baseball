@@ -26,15 +26,15 @@ class MethodTest {
         //then
         assertThat(result).isNotNull();
 
-        assertThat(result.size()).isEqualTo(3);
+        assertThat(result.size()).isEqualTo(TRIPLE_DIGITS);
 
         for (Integer number : result) {
-            assertThat(number).isGreaterThanOrEqualTo(1);
-            assertThat(number).isLessThanOrEqualTo(9);
+            assertThat(number).isGreaterThanOrEqualTo(MIN_RANGE);
+            assertThat(number).isLessThanOrEqualTo(MAX_RANGE);
         }
 
         Set<Integer> set = new HashSet<>(result);
-        assertThat(set.size()).isEqualTo(3);
+        assertThat(set.size()).isEqualTo(TRIPLE_DIGITS);
 
         List<Integer> temp = generateThreeDigitsNumber();
         assertThat(result).isNotSameAs(temp);
@@ -186,8 +186,8 @@ class MethodTest {
     @Test
     void isRoundFinish_매서드로_3스트라이크면_종료_반환() {
         // given
-        int ballCount = 0;
-        int strikeCount = 3;
+        int ballCount = ZERO;
+        int strikeCount = THREE;
 
         // when
         int result = Application.isRoundFinish(ballCount, strikeCount);
@@ -199,7 +199,7 @@ class MethodTest {
     @Test
     void isRoundFinish_매서드로_3스트라이크가_아니면_시작_반환() {
         // given
-        int ballCount = 0;
+        int ballCount = ZERO;
         int strikeCount = 1;
 
         // when
@@ -253,8 +253,8 @@ class MethodTest {
     @Test
     void validateUserInputIsStartOrExit_매서드_사용시_매개변수가_1또는_2라면_정상_동작() {
         // given
-        int userInputSTART = 1;
-        int userInputEXIT = 2;
+        int userInputSTART = START;
+        int userInputEXIT = EXIT;
 
         // expected
         Application.validateUserInputIsStartOrExit(userInputSTART);

@@ -19,8 +19,8 @@ public class Application {
     static List<Integer> generateThreeDigitsNumber() {
         List<Integer> result = new ArrayList<>();
 
-        while (result.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (result.size() < TRIPLE_DIGITS) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             if (!result.contains(randomNumber)) {
                 result.add(randomNumber);
             }
@@ -53,14 +53,14 @@ public class Application {
     static void validateUserInputIsMinRangeToMaxRange(String userInput) {
         for (int index = 0; index < userInput.length(); index++) {
             int userInputIntValue = userInput.charAt(index) - '0';
-            if (!(1 <= userInputIntValue && userInputIntValue <= 9)) {
+            if (!(MIN_RANGE <= userInputIntValue && userInputIntValue <= MAX_RANGE)) {
                 throw new IllegalArgumentException(USER_INPUT_IS_NOT_IN_RANGE);
             }
         }
     }
 
     static void validateUserInputIsThreeDigits(String userInput) {
-        if (userInput.length() != 3) {
+        if (userInput.length() != TRIPLE_DIGITS) {
             throw new IllegalArgumentException(USER_INPUT_IS_NOT_THREE_DIGITS);
         }
     }
@@ -83,7 +83,7 @@ public class Application {
     }
 
     static int countStrikeInUserInput(List<Integer> userInput, List<Integer> answer) {
-        int strikeCount = 0;
+        int strikeCount = ZERO;
 
         for (int index = 0; index < userInput.size(); index++) {
             if (userInput.get(index).equals(answer.get(index))) {
@@ -95,7 +95,7 @@ public class Application {
     }
 
     static int countBallInUserInput(List<Integer> userInput, List<Integer> answer) {
-        int ballCount = 0;
+        int ballCount = ZERO;
 
         for (int index = 0; index < userInput.size(); index++) {
             if (userInput.contains(answer.get(index)) && !(userInput.get(index).equals(answer.get(index)))) {
@@ -107,19 +107,19 @@ public class Application {
     }
 
     static String makeOutput(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == ZERO && strikeCount == ZERO) {
             return NOTTING;
         }
 
-        if (strikeCount == 3) {
+        if (strikeCount == THREE) {
             return ALL_STRIKES;
         }
 
-        if (ballCount == 0) {
+        if (ballCount == ZERO) {
             return strikeCount + STRIKE;
         }
 
-        if (strikeCount == 0) {
+        if (strikeCount == ZERO) {
             return ballCount + BALL;
         }
 
@@ -127,11 +127,11 @@ public class Application {
     }
 
     static int isRoundFinish(int ballCount, int strikeCount) {
-        if (strikeCount == 3 && ballCount == 0) {
-            return 2;
+        if (strikeCount == THREE && ballCount == ZERO) {
+            return EXIT;
         }
 
-        return 1;
+        return START;
     }
 
     static void validateUserInputType(String userInput) {
@@ -147,7 +147,7 @@ public class Application {
     }
 
     static void validateUserInputIsStartOrExit(int userInput) {
-        if (1 > userInput || userInput > 2) {
+        if (START > userInput || userInput > EXIT) {
             throw new IllegalArgumentException(USER_INPUT_RANGE_ERROR);
         }
     }
@@ -156,8 +156,8 @@ public class Application {
 
         List<Integer> answer = generateThreeDigitsNumber();
 
-        int state = 1;
-        while (state == 1) {
+        int state = START;
+        while (state == START) {
 
             System.out.print(USER_INPUT_TEXT);
             String userInput = Console.readLine();
@@ -177,9 +177,9 @@ public class Application {
     static void gameStart() {
         System.out.println(INTRO_TEXT);
 
-        int state = 1;
+        int state = START;
 
-        while (state == 1) {
+        while (state == START) {
             roundStart();
 
             System.out.println(RESTART_OR_EXIT_TEXT);
