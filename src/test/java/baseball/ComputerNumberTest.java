@@ -45,4 +45,16 @@ class ComputerNumberTest {
         Assertions.assertThat(method.invoke(computerNumber, tempNumber1)).isEqualTo(true);
         Assertions.assertThat(method.invoke(computerNumber, tempNumber2)).isEqualTo(false);
     }
+
+    @Test
+    void 생성자_호출을_통해_생성한_무작위_값_검증_테스트() {
+        //given
+        ComputerNumber computerNumber = new ComputerNumber();
+
+        //when
+        List<Character> numberList = computerNumber.getNumberList();
+
+        //then
+        Assertions.assertThat(numberList.size()).isEqualTo(3);
+    }
 }
