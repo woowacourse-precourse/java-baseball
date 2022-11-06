@@ -12,11 +12,9 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerDigits = generateRandomNumbers();
-        System.out.println();
 
         while (answerDigits.size() == 3) {
             System.out.print("숫자를 입력해주세요 : ");
-
             String userInput = getUserInput();
             int userGuess = validateUserInput(userInput, 3);
 
@@ -44,6 +42,7 @@ public class Application {
                 System.out.print(randomNumber);
             }
         }
+        System.out.println();
         return answerDigits;
     }
 
@@ -60,7 +59,7 @@ public class Application {
                 throw new IllegalArgumentException("Input length should be" + checkLength);
             }
 
-            if (userInput.contains("0")){
+            if (userInput.contains("0")) {
                 throw new IllegalArgumentException("every digit is in the range of 1~9");
             }
 
@@ -98,7 +97,7 @@ public class Application {
 
         while (tmp > 0) {
             int digit = tmp % 10;
-            checkDuplicate(digits,digit);
+            checkDuplicate(digits, digit);
             digits.add(0, digit);
             tmp = tmp / 10;
         }
@@ -106,8 +105,8 @@ public class Application {
         return digits;
     }
 
-    public static void checkDuplicate(List<Integer> digits, int digit){
-        if (digits.contains(digit)){
+    public static void checkDuplicate(List<Integer> digits, int digit) {
+        if (digits.contains(digit)) {
             throw new IllegalArgumentException("Duplicate digit exists");
         }
         return;
@@ -141,7 +140,7 @@ public class Application {
     }
 
     public static List<Integer> toBeContinued(int userInput, List<Integer> answerDigits) {
-        checkInRange(userInput,1,2);
+        checkInRange(userInput, 1, 2);
 
         if (userInput == 1) {
             answerDigits = generateRandomNumbers();
@@ -152,8 +151,8 @@ public class Application {
         return answerDigits;
     }
 
-    public static void checkInRange(int userInput, int from, int to){
-        if (userInput < from || userInput > to){
+    public static void checkInRange(int userInput, int from, int to) {
+        if (userInput < from || userInput > to) {
             throw new IllegalArgumentException("Wrong input range");
         }
         return;
