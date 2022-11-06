@@ -32,11 +32,11 @@ public class GameController {
             countStrike(i);
         }
     }
-    private static void restart(){
-        String input = inputRestartView();
-        catchWrongOrderRestartException(input);
-        if(input.equals(RESTART)){
-            start();
+    private static void countStrike(int i){
+        if(userNumbers.get(i).equals(computerNumbers.get(i))){
+            strike++;
+        }else if(computerNumbers.contains(userNumbers.get(i))){
+            ball++;
         }
     }
     private static void result(){
@@ -48,11 +48,12 @@ public class GameController {
         }
         playGame();
     }
-    private static void countStrike(int i){
-        if(userNumbers.get(i).equals(computerNumbers.get(i))){
-            strike++;
-        }else if(computerNumbers.contains(userNumbers.get(i))){
-            ball++;
+    private static void restart(){
+        String input = inputRestartView();
+        catchWrongOrderRestartException(input);
+        if(input.equals(RESTART)){
+            start();
         }
     }
+
 }
