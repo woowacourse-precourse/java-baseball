@@ -32,6 +32,20 @@ public class Application {
         return result;
     }
 
+    private static void printResultOfPlayingGame(ResultOfPlayingGame result){
+        if(result.nothing==3){
+            System.out.println("낫싱");
+            return;
+        }
+        if(result.ball>0){
+            System.out.printf("%d볼 ",result.ball);
+        }
+        if(result.strike>0){
+            System.out.printf("%d스트라이크",result.strike);
+        }
+        System.out.println();
+    }
+
     // indent 수준이 2 초과되지 않도록 한다.
     // 그러려면 기능을 쪼개어 함수로 만들어야 한다.
     // 하나의 사용자 입력 정수값과 3개의 컴퓨터 입력 정수값을 받아, ball 인지 strike 인지 확인하는 함수를 만든다.
