@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.regex.Pattern;
 
 public class Game {
     static final int NUMBER_LENGTH = 3;
@@ -10,7 +11,7 @@ public class Game {
     String INPUT_QUIT = "2";
     String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
     String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    String OUTPUT_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    String OUTPUT_QUIT_OR_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private int strike;
     private int ball;
@@ -40,8 +41,16 @@ public class Game {
 
             if(strike == NUMBER_LENGTH) {
                 System.out.println(OUTPUT_SUCCESS);
-                System.out.println(OUTPUT_QUIT);
+                System.out.println(OUTPUT_QUIT_OR_RESTART);
                 String input = Console.readLine();
+
+                // validation
+                String REGEX = "[1-2]";
+                boolean inputValidation = Pattern.matches(REGEX, input);
+                if(!inputValidation) {
+                    throw new IllegalArgumentException();
+                }
+                
                 if(input.equals(INPUT_QUIT)) {
                     quit = true;
                     break;
@@ -49,7 +58,6 @@ public class Game {
                 computer.setRandomNumber();
                 randomNumber = computer.getRandomNumber();
             }
-
         }
     }
 
