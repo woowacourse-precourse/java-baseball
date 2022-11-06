@@ -13,16 +13,16 @@ public class Application {
 
     }
 
-    private static boolean getResult() {
+    private static int getResult() {
         List<String> receivingNumbers = receivingValue();
         List<String> randomNumbers = createRandom();
 
         int strikesCount = checkStrike(receivingNumbers, randomNumbers);
         int ballCount = checkBall(receivingNumbers, randomNumbers) - strikesCount;
 
+        printResult(strikesCount, ballCount);
 
-
-        return false;
+        return strikesCount;
     }
 
     private static void printResult(int strikesCount, int ballCount) {
