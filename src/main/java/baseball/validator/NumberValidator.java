@@ -4,8 +4,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class validator {
+public class NumberValidator {
     private final static int MIN_RANGE_NUM = 1;
+    private final static int MAX_RANGE_NUM = 9;
+
     private final static int INPUT_DIGIT = 3;
     private final static String RANGE_ERROR_MESSAGE = "1부터 9 사이의 자연수를 입력해주세요.";
     private final static String DIGIT_ERROR_MESSAGE = "입력 길이는 3입니다.";
@@ -13,13 +15,13 @@ public class validator {
     private final static String NON_NUMERIC_ERROR_MESSAGE = "숫자로만 이루어진 값을 입력해주세요.";
 
 
-    static void validateRange(int input) {
-        if (input < MIN_RANGE_NUM) {
+    public static void validateRange(int input) {
+        if (input < MIN_RANGE_NUM || input > MAX_RANGE_NUM) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
-    static void validateLength(int input) {
+    public static void validateDigit(int input) {
         String changeInputType = Integer.toString(input);
         int inputLength = changeInputType.length();
         if (inputLength != INPUT_DIGIT) {
@@ -27,14 +29,14 @@ public class validator {
         }
     }
 
-    static void validateDuplicateNumber(List<Integer> numbers) {
+    public static void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> numSet = new HashSet<>(numbers);
         if (numSet.size() != numbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
 
-    static void validateNonNumeric(int input) {
+    public static void validateNonNumeric(int input) {
         String changeTypeString = String.valueOf(input);
         for (char charString : changeTypeString.toCharArray()) {
             if (charString >= 48 && charString <= 57) {
