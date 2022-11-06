@@ -36,4 +36,5 @@ class BeforeVerificationSettingTest {
             assertEquals(answerNumber, testNumberList);
         }
     }
+
 }
