@@ -1,59 +1,57 @@
 package baseball.domain;
 
-import baseball.domain.score.BallScore;
 import baseball.domain.score.Score;
-import baseball.domain.score.StrikeScore;
 
+import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Referee {
-    private Score strike;
-    private Score ball;
+    private final Map<BallStatus, Score> ballStatusScores;
     
     public Referee() {
-        strike = new StrikeScore();
-        ball = new BallScore();
+        this(initBallStatusScores());
+    }
+    
+    private Referee(Map<BallStatus, Score> ballStatusScores) {
+        this.ballStatusScores = ballStatusScores;
+    }
+    
+    private static Map<BallStatus, Score> initBallStatusScores() {
+        return Arrays.stream(BallStatus.values())
+                .filter(Predicate.not(BallStatus::isNothing))
+                .collect(Collectors.toMap(
+                        ballStatus -> ballStatus,
+                        BallStatus::score,
+                        (firstScore, secondScore) -> firstScore,
+                        () -> new EnumMap<>(BallStatus.class)
+                ));
     }
     
     public void decide(final List<BallStatus> ballStatuses) {
-        ballStatuses.forEach(this::detailDecide);
+        ballStatuses.stream()
+                .filter(Predicate.not(BallStatus::isNothing))
+                .forEach(this::increaseScore);
     }
     
-    private void detailDecide(final BallStatus ballStatus) {
-        if (isStrike(ballStatus)) {
-            this.strike = strike.increase();
-        }
-        
-        if (isBall(ballStatus)) {
-            this.ball = ball.increase();
-        }
-    }
-    
-    private boolean isStrike(final BallStatus ballStatus) {
-        return ballStatus == BallStatus.STRIKE;
-    }
-    
-    private boolean isBall(final BallStatus ballStatus) {
-        return ballStatus == BallStatus.BALL;
+    private void increaseScore(final BallStatus ballStatus) {
+        Score score = ballStatusScores.get(ballStatus);
+        ballStatusScores.put(ballStatus, score.increase());
     }
     
     public boolean isBaseBallGameEnd() {
-        return strike.isGameEnd();
+        Score score = ballStatusScores.get(BallStatus.STRIKE);
+        return score.isGameEnd();
     }
     
-    public Score strike() {
-        return strike;
-    }
-    
-    public Score ball() {
-        return ball;
-    }
-    
-    @Override
-    public String toString() {
-        return "Referee{" +
-                "strike=" + strike +
-                ", ball=" + ball +
-                '}';
+    public List<Integer> scores() {
+        return Arrays.stream(BallStatus.values())
+                .filter(Predicate.not(BallStatus::isNothing))
+                .map(ballStatusScores::get)
+                .map(Score::score)
+                .collect(Collectors.toList());
     }
 }
