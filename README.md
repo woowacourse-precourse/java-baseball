@@ -84,7 +84,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `List<Integer> getGameInput() thorws IllegalArgumentException`
         - [ ] `int getGameRestartInput()`
         - [x] `List<Integer> generateRandomAnswerNums()`
-        - [ ] `BaseballGameResult getResultOfGame(List<Integer> inputNums)`
+        - [ ] `BaseballGameResult getResultOfGame()`
         - [x] `List<Integer> stringToIntList(String numString)`
 
 
