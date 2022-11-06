@@ -143,4 +143,8 @@ public class Application {
         return message;
     }
 
+    public static boolean checkEndGame(String ballStrikeCountMessage) {
+        return ballStrikeCountMessage.equals("3스트라이크");
+    }
+
 }

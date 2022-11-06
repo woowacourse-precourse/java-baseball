@@ -168,4 +168,11 @@ class BaseballTest {
     void getBallStrikeCountMessage_strike_ball_count_message_얻기(int input1, int input2, String result) {
         assertThat(getBallStrikeCountMessage(input1, input2)).isEqualTo(result);
     }
+
+    @DisplayName("check end game")
+    @ParameterizedTest(name = "{index}. {displayName} message={0} result={1}")
+    @CsvSource({"'낫싱',false", "'3스트라이크', true"})
+    void checkEndGame_볼카운트_메세지에_따른_게임_끝내기_여부_확인(String input, boolean result) {
+        assertThat(checkEndGame(input)).isEqualTo(result);
+    }
 }
