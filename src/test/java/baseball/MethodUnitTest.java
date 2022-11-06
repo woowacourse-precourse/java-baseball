@@ -41,4 +41,18 @@ public class MethodUnitTest {
         assertThat(twoStrike).isEqualTo(2);
         assertThat(threeStrike).isEqualTo(3);
     }
+
+    @DisplayName("볼 작동 테스트")
+    @Test
+    void ball_작동_테스트(){
+        int noBall = Application.ball(123, 456);
+        int oneBall = Application.ball(123, 451);
+        int twoBall = Application.ball(123, 316);
+        int threeBall = Application.ball(123, 312);
+
+        assertThat(noBall).isEqualTo(0);
+        assertThat(oneBall).isEqualTo(1);
+        assertThat(twoBall).isEqualTo(2);
+        assertThat(threeBall).isEqualTo(3);
+    }
 }
