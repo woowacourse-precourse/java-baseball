@@ -1,8 +1,9 @@
 ## 기능 목록
 1. 사용자가 추측한 정답을 입력받는 기능
-   1. 1~9 사이 숫자여야 함 (`IllegalArgumentException` 발생시키기)
-   2. 각 자리의 수가 중복되지 않아야 함 (`IllegalArgumentException` 발생시키기)
-   3. 3자리만 입력을 받아야 함 (`IllegalArgumentException` 발생시키기)
+   1. 입력 값이 숫자여야 함 (`IllegalArgumentException` 발생시키기)
+   2. 1~9 사이여야 함 (`IllegalArgumentException` 발생시키기)
+   3. 각 자리의 수가 중복되지 않아야 함 (`IllegalArgumentException` 발생시키기)
+   4. 3자리만 입력을 받아야 함 (`IllegalArgumentException` 발생시키기)
 2. 컴퓨터가 게임의 정답을 생성하는 기능
    1. 3자리 숫자
    2. 각 자리의 수가 중복되지 않아야 함
