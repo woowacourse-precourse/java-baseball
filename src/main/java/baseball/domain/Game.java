@@ -4,8 +4,8 @@ import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    public static final String GAME_RESTART_OPTION = "1";
-    public static final String GAME_END_OPTION = "2";
+    private static final String GAME_RESTART_OPTION = "1";
+    private static final String GAME_END_OPTION = "2";
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
