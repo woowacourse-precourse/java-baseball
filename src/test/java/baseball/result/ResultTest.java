@@ -34,4 +34,19 @@ class ResultTest {
         assertThat(result.numberOfBall()).isEqualTo(1);
         assertThat(result.getResultType()).isEqualTo(ONLY_BALL);
     }
+
+    @Test
+    void increaseStrikeAndBall() {
+        // given
+        Result result = new Result();
+
+        // when
+        result.increaseStrike();
+        result.increaseBall();
+
+        // then
+        assertThat(result.numberOfStrike()).isEqualTo(1);
+        assertThat(result.numberOfBall()).isEqualTo(1);
+        assertThat(result.getResultType()).isEqualTo(BALL_AND_STRIKE);
+    }
 }
