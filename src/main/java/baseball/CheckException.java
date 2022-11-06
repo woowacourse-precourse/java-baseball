@@ -4,11 +4,10 @@ public class CheckException {
     static final char ONE = 81;
     static final char NINE = 89;
 
-    public static boolean checkNumber(int number){
-        String playerStringNumber = String.valueOf(number);
-        char[] playerNumberArray = playerStringNumber.toCharArray();
+    public static boolean checkNumber(String number){
+        char[] numberArray = number.toCharArray();
         boolean isNumber;
-        for(char num : playerNumberArray){
+        for(char num : numberArray){
             isNumber = checkDigit(num);
             if(!isNumber){
                 return false;
