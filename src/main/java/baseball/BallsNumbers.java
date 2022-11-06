@@ -1,7 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BallsNumbers {
     static ArrayList<Integer> randomNumbers;  //Computers Balls Numbers
@@ -20,10 +20,9 @@ public class BallsNumbers {
 	}
 	
 	private static int makeRandomNumber(ArrayList<Integer> randomNumbers) {
-		Random random = new Random();
 		int randomNumber = 0;
 		while(isDuplicated(randomNumbers, randomNumber))
-			randomNumber = 1 + random.nextInt(8);
+			randomNumber = Randoms.pickNumberInRange(1, 9);
 		return randomNumber;
 	}
 	
