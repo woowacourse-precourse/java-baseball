@@ -14,7 +14,7 @@ public class Game {
     private List<Integer> comNum;
     private List<Integer> userNum;
 
-    public Game(){
+    public Game() {
         computerNumbers();
     }
 
@@ -37,7 +37,6 @@ public class Game {
     }
 
 
-
     public void cnt_StrikeOrBall() {
         this.strike = 0;
         this.ball = 0;
@@ -57,16 +56,13 @@ public class Game {
         if (strike != 0 && ball == 0) {
             message = (strike + "스트라이크");
             return message;
-        }
-        else if (strike == 0 && ball !=0 ) {
+        } else if (strike == 0 && ball != 0) {
             message = (ball + "볼");
             return message;
-        }
-        else if (strike != 0 && ball !=0) {
-            message = (ball + "볼 " + strike +"스트라이크");
+        } else if (strike != 0 && ball != 0) {
+            message = (ball + "볼 " + strike + "스트라이크");
             return message;
-        }
-        else {
+        } else {
             message = ("낫싱");
             return message;
         }
@@ -81,8 +77,7 @@ public class Game {
             if (answer.equals("1")) {
                 computerNumbers();
                 return true;
-            }
-            else if (answer.equals("2")) {
+            } else if (answer.equals("2")) {
                 return false;
             }
             throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력해주세요");

@@ -13,7 +13,6 @@ public class User {
     private static List<Integer> userNumbers;
 
 
-
     public static List<Integer> userInputNumber() {
         String userInput = Console.readLine();
         userNumbers = string_User_NumtoInt_List(userInput);
@@ -25,7 +24,7 @@ public class User {
     public static List<Integer> string_User_NumtoInt_List(String userInput) {
         String[] string_user_num = userInput.split("");
         List<Integer> int_user_list = new ArrayList<>();
-        for (int i=0; i<userInput.length(); i++) {
+        for (int i = 0; i < userInput.length(); i++) {
             int_user_list.add(Integer.valueOf(string_user_num[i]));
         }
         return int_user_list;
