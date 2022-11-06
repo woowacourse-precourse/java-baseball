@@ -16,9 +16,8 @@ public class GameInputException {
     }
 
     public void checkUserInput(String userInput) throws IllegalArgumentException {
-        checkNaturalNumber(userInput);
         checkNumberLength(userInput);
-        checkContainZero(userInput);
+        checkOneToNine(userInput);
         checkUniqueNumbers(userInput);
     }
 
@@ -29,18 +28,19 @@ public class GameInputException {
         throw new IllegalArgumentException();
     }
 
-    private void checkNaturalNumber(String userInput) throws IllegalArgumentException {
-        try {
-            Integer.parseInt(userInput);
-        } catch (NumberFormatException numberFormatException){
-            throw new IllegalArgumentException();
+    private void checkOneToNine(String userInput) throws IllegalArgumentException {
+        for (int stringIndex = 0; stringIndex < numberLength; stringIndex++) {
+            checkAllowedCharacter(userInput.charAt(stringIndex));
         }
     }
 
-    private void checkContainZero(String userInput) throws IllegalArgumentException {
-        if (userInput.contains("0")) {
-            throw new IllegalArgumentException();
+    private void checkAllowedCharacter(char userInputPart) throws IllegalArgumentException {
+        int ascii = (int) userInputPart;
+        if (ascii >= '1' && ascii <= '9') {
+            return;
         }
+
+        throw new IllegalArgumentException();
     }
 
     private void checkUniqueNumbers(String userInput) throws IllegalArgumentException {
