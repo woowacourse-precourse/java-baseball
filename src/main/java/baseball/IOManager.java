@@ -26,11 +26,11 @@ public class IOManager {
     }
 
     private static boolean checkValidInput(String line) {
-        if(line.length() != 3)
+        if(line.length() != GameConfig.ANSWER_LEN)
             return false;
 
-        for(int idx = 0; idx < 3; idx++)
-            if(line.charAt(idx) < '0' || line.charAt(idx) > '9')
+        for(int idx = 0; idx < GameConfig.ANSWER_LEN; idx++)
+            if(line.charAt(idx) < '1' || line.charAt(idx) > '9')
                 return false;
 
         return true;

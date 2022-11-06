@@ -7,7 +7,7 @@ public class AnswerCompareManager {
         String inputStr = String.valueOf(input);
 
         // 별도 메서드로 분리
-        for(int idx = 0; idx < 3; idx++) {
+        for(int idx = 0; idx < GameConfig.ANSWER_LEN; idx++) {
             char digit = inputStr.charAt(idx);
             String digitStr = inputStr.substring(idx, idx+1);
 

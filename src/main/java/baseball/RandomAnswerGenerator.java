@@ -10,7 +10,7 @@ public class RandomAnswerGenerator {
         int answer = 0;
         Set<Integer> usedNumeric = new HashSet<>();
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < GameConfig.ANSWER_LEN; i++) {
             int numeric = getRandomNumeric(usedNumeric);
             usedNumeric.add(numeric);
             answer = 10*answer + numeric;
