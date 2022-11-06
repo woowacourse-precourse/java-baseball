@@ -84,11 +84,15 @@ public class Application {
         return checkedBallNumbers;
     }
 
-    public static Map<String,Integer> calculatedStrikeBallNumber(List computerNumbers,List userNumbers){
+    public static Map<String,Integer> calculatedStrikeBallNumber(int strikeNumber,int ballNumber){
         Map<String,Integer> checkedBaseballNumbers = new HashMap<>(){{
             put("strike",0);
             put("ball",0);
         }};
+
+        if(0 <= strikeNumber && strikeNumber <=3 ){
+
+        }
         return new HashMap<>();
     }
 
