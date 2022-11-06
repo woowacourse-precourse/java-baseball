@@ -216,41 +216,9 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(result).isEqualTo(3);
     }
-    // TODO: 컴퓨터도 각각의 다른 숫자가 있어야한다.
-
-
-    // computer Test
-    @Test
-    void 컴퓨터가_램덤숫자_3개를_가져왔는가() {
-        Computer computer = new Computer();
-        List<Integer> list = new ArrayList<>();
-        computer.initComputer();
-        String result = "1";
-        assertThat(result).contains("1");
-
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("123", "589", "1", "597", "589", "2");
-                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크",
-                    "게임 종료");
-            },
-            5, 8, 9, 5, 8, 9
-        );
-    }
-
-    // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?
-//    @Test
-//    void splitEachDigitOfNum_메서드로_주어진_값을_구분() {
-//        Computer computer = new Computer();
-//        List<Integer> list = computer.splitEachDigitOfNum(123);
-//        List<Integer> resultList = new ArrayList<>(List.of(
-//            1, 2, 3
-//        ));
-//        assertThat(list).isEqualTo(resultList);
-//    }
 
     @Test
-        // 컴퓨터 초기화 할시 랜덤 컴퓨터 리스트가 초기화가 되는가?
+    @DisplayName("컴퓨터의 List를 initComputer메서드를 호출할때 랜덤이 되는가")
     void 컴퓨터_랜덤숫자_리스트_초기화_case_1() throws Exception {
         //given
         Computer computer = new Computer();
@@ -262,21 +230,6 @@ class ApplicationTest extends NsTest {
         // then
         assertNotEquals(resultList_1, resultList_2);
     }
-
-    // TODO: 생각하기 public으로 하던걸 Private로 만들만 테스트를 삭제를 해야하는가?
-//    @Test
-//        // Computer.splitEachDigitOfNum Test
-//    void 두개_Collection_포함() {
-//        Computer computer = new Computer();
-//        List<Integer> resultList = new ArrayList<>(List.of(
-//            1, 2, 3
-//        ));
-//        List<Integer> list = new ArrayList<>();
-//        list.addAll(resultList);
-//
-//        boolean isEqualsCollection = computer.isEqualsCollection(resultList, list);
-//        assertTrue(isEqualsCollection);
-//    }
 
     @Test
     void 유저숫자_스트라이트_볼_낫싱_체크_case() throws Exception {
