@@ -8,3 +8,21 @@
 * 예외처리
   * 3개의 값이 들어오는지 확인한다.
   * 3개의 값이 모두 다른지 확인한다.
+* hasSameValue()
+  * Balls 클래스 balls이 Ball 클래스 ball을 입력받아 balls에 ball과 같은 값이 있는지 확인한다.
+* inSamePosition()
+  * Balls 클래스 balls이 Ball 클래스 ball과 index를 받았을 때, 위치가 같은지 확인한다.
+
+[3단계]
+판정 STRIKE, BALL을 갖는 enum 클래스인 Judgement를 작성한다.
+Balls에 play라는 method를 작성하는데, 다음의 로직을 따라 Judgement를 반환한다.
+* hasSameValue()와 inSamePosition()을 통과하면 STRIKE를 반환
+* hasSameValue()를 통과하고 inSamePosition()을 통과하지 못하면 BALL을 반환
+
+[4단계]
+결과를 관리하는 클래스 Result를 작성한다. strike와 ball을 instance variable로 가지며
+결과를 출력하는 메서드 showResult()를 가진다.
+* 0볼 0스트라이크일 때 -> "낫싱"
+* 1볼 1스트라이크일 때 -> "1볼 1스트라이크"
+* 3볼 0스트라이크일 때 -> "3볼"
+* 3스트라이크일 때 -> "3스트라이크"
