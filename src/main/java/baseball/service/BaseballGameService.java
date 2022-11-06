@@ -1,11 +1,13 @@
 package baseball.service;
 
 
+import baseball.exception.InputUserNumberException;
 import java.util.List;
 
 public class BaseballGameService {
     private static int strikeCount;
     private static int ballCount;
+    private InputUserNumberException inputUserNumberException = new InputUserNumberException();
 
     private final int NUMBER_LENGTH = 3;
 
@@ -18,6 +20,9 @@ public class BaseballGameService {
         }
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }
 
 
