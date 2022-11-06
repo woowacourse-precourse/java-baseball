@@ -24,11 +24,14 @@ public class Application {
 
     public static void executionGame(){
         List<Integer> computer = decision();
+        computer.stream().forEach(ele-> System.out.print(ele));
+        System.out.println();
         while(true) {
             System.out.print("숫자를 입력해주세요 :");
 
             List<Integer> user = validationAndConvert(Console.readLine());
-
+            user.stream().forEach(ele-> System.out.print(ele));
+            System.out.println();
             Integer ball = calculationBall(computer, user);
 
             Integer strike = calculationStrike(computer, user);
@@ -87,7 +90,10 @@ public class Application {
                 .map(c -> c - '0').boxed()
                 .collect(toSet());
         if(result.size() != 3) throw new IllegalArgumentException();
-        return result.stream().collect(toList());
+        return input.chars()
+                .map(c -> c - '0')
+                .boxed()
+                .collect(toList());
     }
 
 
