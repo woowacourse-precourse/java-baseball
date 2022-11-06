@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     List<Integer> result = List.of(1,3,5);
-                    assertThat(genRandomNumbers()).isEqualTo(result);
+                    assertThat(getThreeRandomNumbers()).isEqualTo(result);
                 },
                 1, 3, 3, 3, 5
         );
@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     List<Integer> result = List.of(3,5,1);
-                    assertThat(genRandomNumbers()).isEqualTo(result);
+                    assertThat(getThreeRandomNumbers()).isEqualTo(result);
                 },
                 3, 3, 3, 3, 5, 1
         );
