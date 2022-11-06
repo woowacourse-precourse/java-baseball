@@ -29,6 +29,11 @@ public class NumberBaseballView {
         return Console.readLine();
     }
 
+    public String inputNewGameAnswer() {
+        System.out.println(NEW_GAME_MESSAGE);
+        return Console.readLine();
+    }
+
     public int printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
