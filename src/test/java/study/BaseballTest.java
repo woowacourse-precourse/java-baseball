@@ -114,4 +114,12 @@ public class BaseballTest {
         System.setIn(inputStream);
         assertThat(PlayGame.isStop()).isEqualTo(true);
     }
+
+    @Test
+    void wrongStopInput() {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("3".getBytes());
+        System.setIn(inputStream);
+        assertThatThrownBy(() -> PlayGame.isStop())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

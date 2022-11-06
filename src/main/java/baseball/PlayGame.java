@@ -17,6 +17,8 @@ public class PlayGame {
             System.out.print("숫자를 입력해주세요 : ");
             inputString = scan.nextLine();
 
+            checkInputString(inputString);
+
             inputResult = compareString(inputString, answer);
 
             printResult(inputResult);
@@ -69,27 +71,44 @@ public class PlayGame {
     public static boolean isStop() {
         boolean res = false;
 
-        boolean flag = false;
         String stopFlag = "";
 
-        while (!flag) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            stopFlag = scan.nextLine();
+        stopFlag = scan.nextLine();
 
-            if (stopFlag.equals("1")) {
-                res = false;
-                flag = true;
-            }
-            else if (stopFlag.equals("2")){
-                res = true;
-                flag = true;
-            }
-            else {
-                System.out.println("잘못된 입력입니다.");
-            }
+        if (stopFlag.equals("1")) {
+            res = false;
+        }
+        else if (stopFlag.equals("2")){
+            res = true;
+        }
+        else {
+            System.out.println("잘못된 입력입니다.");
+            throw new IllegalArgumentException();
         }
 
         return res;
+    }
+
+    public static void checkInputString(String inputString) {
+        boolean errorFlag = false;
+
+        if (inputString.length() != 3) {
+            errorFlag = true;
+        }
+
+        for (int idx = 0; idx < 3; idx++) {
+            int inputChar = inputString.charAt(idx) - '0';
+
+            if (inputChar < 1 || inputChar > 9) {
+                errorFlag = true;
+            }
+        }
+
+        if (errorFlag) {
+            System.out.println("잘못된 입력입니다.");
+            throw new IllegalArgumentException();
+        }
     }
 }
