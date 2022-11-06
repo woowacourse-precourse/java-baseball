@@ -9,18 +9,21 @@ public class Game {
 
     private Game() {}
 
-    public static Game turnOnGame() {
-        Print.printGameStart();
+    public static Game getGame() {
         if (instance == null) {
             instance = new Game();
         }
         return instance;
     }
 
-    public void startNewGame() {
+    public void turnOnGame() {
         this.computer = Computer.getComputer();
-        this.computer.pickNewRandomNumbers();
         this.round = Round.getRound();
+        Print.printGameStart();
+    }
+
+    public void startNewGame() {
+        this.computer.pickNewRandomNumbers();
         playGame();
         Print.printGameEnd();
     }
