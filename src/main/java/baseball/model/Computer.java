@@ -8,13 +8,13 @@ import java.util.Map;
 
 public class Computer {
 
-    private List<Integer> ballNumber;
+    private List<Integer> numbers;
 
     public void throwTheBall() {
-        ballNumber = RandomUtil.pickNumbers();
+        numbers = RandomUtil.pickNumbers();
     }
 
-    public Map<BaseballScore, Integer> compare(List<Integer> batNumber) {
+    public Map<BaseballScore, Integer> compare(List<Integer> userNumber) {
         Map<BaseballScore, Integer> result = new HashMap<>() {
             {
                 put(BaseballScore.STRIKE, 0);
@@ -22,20 +22,20 @@ public class Computer {
                 put(BaseballScore.NOTHING, 0);
             }
         };
-        computeScoreCount(batNumber, result);
+        computeScoreCount(userNumber, result);
         return result;
     }
 
-    public void computeScoreCount(List<Integer> batNumber, Map<BaseballScore, Integer> result) {
-        for (int number : batNumber) {
-            BaseballScore score = computeNumberScore(number, batNumber);
+    public void computeScoreCount(List<Integer> userNumber, Map<BaseballScore, Integer> result) {
+        for (int number : userNumber) {
+            BaseballScore score = computeNumberScore(number, userNumber);
             result.put(score, result.get(score) + 1);
         }
     }
 
-    public BaseballScore computeNumberScore(int number, List<Integer> batNumber) {
-        if (ballNumber.contains(number)) {
-            if (ballNumber.indexOf(number) == batNumber.indexOf(number)) {
+    public BaseballScore computeNumberScore(int number, List<Integer> userNumber) {
+        if (numbers.contains(number)) {
+            if (numbers.indexOf(number) == userNumber.indexOf(number)) {
                 return BaseballScore.STRIKE;
             }
             return BaseballScore.BALL;

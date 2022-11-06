@@ -27,7 +27,7 @@ public class GameController {
             inputMessage.inputNumber();
             user.hitTheBall();
 
-            resultScore = computer.compare(user.getBat());
+            resultScore = computer.compare(user.getNumbers());
             gameMessage.printGameResult(resultScore);
 
             gameOver = isGameOver(resultScore);

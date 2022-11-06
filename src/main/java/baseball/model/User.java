@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    private List<Integer> bat;
     private final InputValueValidation inputValueValidation = new InputValueValidation();
+    private List<Integer> numbers;
 
-    public List<Integer> getBat() {
-        return this.bat;
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
     public void hitTheBall() {
@@ -22,7 +22,7 @@ public class User {
             throw new IllegalArgumentException();
         }
 
-        bat = toListInteger(inputValue);
+        numbers = toListInteger(inputValue);
     }
 
     private List<Integer> toListInteger(String number) {
