@@ -6,8 +6,8 @@ package baseball;
 * [O] 입력된 숫자에 대한 스트라이크/볼/낫싱 판별
 * [O] 숫자 반복 입력 기능
 * [O] 게임 종료 시 재시작 기능
-* [X] 기능별 테스트 작성
-* [X] 테스트 확인
+* [O] 기능별 테스트 작성
+* [O] 테스트 확인
 */
 
 import camp.nextstep.edu.missionutils.Console;
@@ -16,7 +16,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Application {
     final static String START_USER_INPUT = "1";
@@ -26,7 +25,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         HashMap<Integer, Integer> computerIndexMap = new HashMap<>();
 
-        boolean loopFlag = true;
+        boolean isRestart = true;
         String userInput = "";
         int strikeCount = 0, ballCount = 0;
 
@@ -34,40 +33,41 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(loopFlag) {
+        while(isRestart) {
             System.out.print("숫자를 입력해주세요 : ");
             userInput = Console.readLine();
 
             try {
                 validateUserInput(userInput);
-                strikeCount = checkStrike(computer, userInput);
-                ballCount = checkBall(computerIndexMap, userInput);
-                printResult(strikeCount, ballCount);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 throw e;
             }
 
+            strikeCount = checkStrike(computer, userInput);
+            ballCount = checkBall(computerIndexMap, userInput);
+            printResult(strikeCount, ballCount);
+
             if(strikeCount == 3){
-                loopFlag = isNewGame(computer, computerIndexMap);
+                isRestart = isNewGame(computer, computerIndexMap);
             }
         }
     }
 
     private static boolean isNewGame(List<Integer> computer, HashMap<Integer, Integer> computerIndexMap) {
         String userInput;
-        boolean loopFlag;
+        boolean isRestart;
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         userInput = Console.readLine();
-        loopFlag = userInput.equals(START_USER_INPUT);
+        isRestart = userInput.equals(START_USER_INPUT);
 
-        if(loopFlag)
+        if(isRestart)
             initRandomNumber(computer, computerIndexMap);
 
-        return loopFlag;
+        return isRestart;
     }
 
     private static void printResult(Integer strike, Integer ball) {
@@ -126,6 +126,7 @@ public class Application {
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computer.contains(randomNumber)) {
                 computerIndexMap.put(randomNumber, computer.size());
                 computer.add(randomNumber);
