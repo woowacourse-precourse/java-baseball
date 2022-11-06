@@ -5,8 +5,17 @@ public class BaseballGame {
     private final String Nothing_Message = "낫생";
     private final String BALL_Message = "볼";
     private final String STRIKE_Message = "스트라이크";
+    private final String ANSWER_Message = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private int ball;
     private int strike;
+
+    public boolean isAnswer() {
+        if (strike == 3) {
+            System.out.println(ANSWER_Message);
+            return true;
+        }
+        return false;
+    }
 
     private void countStrikeAndBall(int[] ExpectedAnswer, int[] Answer) {
         resetBallAndStrike();
