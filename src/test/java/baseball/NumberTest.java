@@ -38,6 +38,13 @@ public class NumberTest {
     }
 
     @Test
+    void 중복값이_있으면_예외발생() {
+        Assertions.assertThatThrownBy(() -> {
+            number.createUserNumber("113");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 정상적인_입력() {
         Assertions.assertThat(number.createUserNumber("159")).containsExactly(1,5,9);
         Assertions.assertThat(number.createUserNumber("142")).containsExactly(1,4,2);
