@@ -104,4 +104,12 @@ class Count {
         }
     }
 
+    void countStrike(List<Integer> computer, List<Integer> user) {
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                this.strike++;
+                this.ball--;
+            }
+        }
+    }
 }
