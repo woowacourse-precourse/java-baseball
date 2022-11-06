@@ -45,9 +45,23 @@ public class Application {
 
     public List<Integer> getPlayerNumberInList() {
         String playerNumber = Console.readLine();
-        return Arrays.stream(playerNumber.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> playerNumberList =
+                Arrays.stream(playerNumber.split(""))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
+        validatePlayerNumber(playerNumberList);
+        return playerNumberList;
+    }
+
+    public void validatePlayerNumber(List<Integer> playerNumberList) {
+        if (playerNumberList.size() != 3) {
+            throw new IllegalArgumentException("the number should be a 3 digit number");
+        }
+        for (int i = 0; i < 3; i++) {
+            if (playerNumberList.get(i) < 1 | playerNumberList.get(i) > 9) {
+                throw new IllegalArgumentException("each digit cannot be out of range 1 to 9");
+            }
+        }
     }
 
     public List<Integer> computeResult(
@@ -81,14 +95,14 @@ public class Application {
         System.out.println(gameResult);
     }
 
-    public boolean actWhenGameFinish(String code){
+    public boolean actWhenGameFinish(String code) {
         if (code.equals("1")) {
             System.out.println("게임을 새로 시작합니다.");
             return true;
         } else if (code.equals("2")) {
             System.out.println("게임을 완전히 종료합니다.");
             return false;
-        } else{
+        } else {
             throw new IllegalArgumentException("the code should be 1 or 2");
         }
     }
