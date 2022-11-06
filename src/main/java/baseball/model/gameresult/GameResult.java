@@ -3,9 +3,9 @@ package baseball.model.gameresult;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import baseball.common.Constants;
-
 public class GameResult {
+	private static final int RESULT_MAX_COUNT = 3;
+
 	private final Map<SingleResultType, Integer> gameResult = new LinkedHashMap<>();
 
 	public GameResult() {
@@ -24,7 +24,7 @@ public class GameResult {
 	}
 
 	public boolean isEndCondition() {
-		return countSingleResult(SingleResultType.STRIKE) == Constants.NUMBER_BASEBALL_LENGTH;
+		return countSingleResult(SingleResultType.STRIKE) == RESULT_MAX_COUNT;
 	}
 
 	// FIXME : 복잡한 toString() 역할 분담 필요
@@ -39,7 +39,7 @@ public class GameResult {
 	}
 
 	private boolean isNothing() {
-		return gameResult.get(SingleResultType.NOTHING) == Constants.NUMBER_BASEBALL_LENGTH;
+		return gameResult.get(SingleResultType.NOTHING) == RESULT_MAX_COUNT;
 	}
 
 	private StringBuilder getResultsCount() {

@@ -3,10 +3,8 @@ package baseball;
 import baseball.controller.NumberBaseballController;
 
 public class Application {
+	private static final NumberBaseballController numberBaseballController = new NumberBaseballController();
 	public static void main(String[] args) {
-		// TODO: 프로그램 구현
-		NumberBaseballController numberBaseballController = new NumberBaseballController();
-
 		numberBaseballController.initGame();
 
 		do {
