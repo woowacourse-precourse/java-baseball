@@ -28,9 +28,13 @@
 - 게임 재시작 여부 숫자를 입력받을때 예외처리 한다.
     - 숫자가 1 또는 2인지 확인
 
-### Calculator
+### GameResult
 
 - strike와 ball의 개수를 구하는 기능 구현
+
+### GameResultType
+
+- strike인지 ball인지 확인하는 기능 구현
 
 ### RandomNumber
 
