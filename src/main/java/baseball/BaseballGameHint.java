@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.stream.IntStream;
+
 public class BaseballGameHint {
 
     private final String Nothing_Message = "낫생";
@@ -17,19 +19,20 @@ public class BaseballGameHint {
     private void countStrikeAndBall(int[] ExpectedAnswer, int[] Answer) {
         resetBallAndStrike();
         for (int expectedAnswerIndex  =0 ; expectedAnswerIndex < ExpectedAnswer.length;expectedAnswerIndex++) {
-
             int expectedAnswerTarget=ExpectedAnswer[expectedAnswerIndex];
-            for (int AnswerIndex  =0 ; AnswerIndex < Answer.length;AnswerIndex++) {
+            int findIndex=IntStream.range(0, Answer.length)
+                    .filter(i -> expectedAnswerTarget == Answer[i])
+                    .findFirst()
+                    .orElse(-1);
+            ballAndStrikeCount(expectedAnswerIndex, findIndex);
+        }
+    }
 
-                if (expectedAnswerTarget == Answer[AnswerIndex]) {
-                    if(expectedAnswerIndex==AnswerIndex){
-                        strike++;
-                    }
-                    else{
-                        ball++;
-                    }
-                }
-            }
+    private void ballAndStrikeCount(int expectedAnswerIndex, int findIndex) {
+        if (expectedAnswerIndex == findIndex) {
+            strike++;
+        } else if (findIndex > -1) {
+            ball++;
         }
     }
 
