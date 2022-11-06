@@ -91,6 +91,13 @@ public class BaseballController {
      * @return 재시작을 한다면 true, 재시작을 하지 않는다면 false
      */
     public boolean restartGame(String inputCommand) {
+        if (!"1".equals(inputCommand) && !"2".equals(inputCommand)) {
+            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+        }
+        if ("1".equals(inputCommand)) {
+            baseballService.setAnswerNumberList();
+            return true;
+        }
         return false;
     }
 }
