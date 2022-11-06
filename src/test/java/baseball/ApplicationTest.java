@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,13 @@ class ApplicationTest extends NsTest {
             assertThat(x).isLessThan(10).isGreaterThan(0);
         }
     }
+
+    @Test
+    void 볼_스트라이크_테스트() {
+        String checkNumAnswer = Application.checkNum("356", "345");
+        Assertions.assertThat(checkNumAnswer).isEqualTo("1볼 1스트라이크");
+    }
+
 
     @Override
     public void runMain() {
