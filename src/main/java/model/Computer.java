@@ -113,11 +113,7 @@ public class Computer {
 
 
     public boolean isRealRightNumOfUser(int numInputOfUser) {
-        if (isRightThreeNumOfComputer(numInputOfUser)) {
-            return true;
-        }
-        return false;
-
+        return isRightThreeNumOfComputer(numInputOfUser);
     }
 
     private Boolean isRightThreeNumOfComputer(int numOfCompare) {
