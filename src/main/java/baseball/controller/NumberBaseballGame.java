@@ -8,9 +8,15 @@ import baseball.model.numberbaseball.application.NumberBaseballService;
 import baseball.model.restartcode.RestartStatus;
 import baseball.view.NumberBaseballView;
 
-public class NumberBaseballController {
-	private final NumberBaseballView numberBaseballView = new NumberBaseballView();
-	private final NumberBaseballService numberBaseballService = new NumberBaseballService();
+public class NumberBaseballGame {
+	private final NumberBaseballView numberBaseballView;
+	private final NumberBaseballService numberBaseballService;
+
+	public NumberBaseballGame(NumberBaseballView numberBaseballView,
+		NumberBaseballService numberBaseballService) {
+		this.numberBaseballView = numberBaseballView;
+		this.numberBaseballService = numberBaseballService;
+	}
 
 	public void initGame() {
 		numberBaseballView.initPage();

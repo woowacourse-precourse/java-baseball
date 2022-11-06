@@ -1,14 +1,22 @@
 package baseball;
 
-import baseball.controller.NumberBaseballController;
+import baseball.controller.NumberBaseballGame;
+import baseball.model.numberbaseball.application.NumberBaseballService;
+import baseball.view.NumberBaseballView;
 
 public class Application {
-	private static final NumberBaseballController numberBaseballController = new NumberBaseballController();
 	public static void main(String[] args) {
-		numberBaseballController.initGame();
+		final NumberBaseballService numberBaseballService = new NumberBaseballService();
+		final NumberBaseballView numberBaseballView = new NumberBaseballView();
 
+		final NumberBaseballGame numberBaseballGame = new NumberBaseballGame(
+			numberBaseballView,
+			numberBaseballService
+		);
+
+		numberBaseballGame.initGame();
 		do {
-			numberBaseballController.playBall();
-		} while (numberBaseballController.restart());
+			numberBaseballGame.playBall();
+		} while (numberBaseballGame.restart());
 	}
 }
