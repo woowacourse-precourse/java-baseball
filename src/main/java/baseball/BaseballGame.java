@@ -27,7 +27,7 @@ public class BaseballGame {
     }
 
     public Boolean runGame() {
-        List<Integer> balls = new Controller().getBalls();
+        int[] balls = new Controller().getBalls();
         int[] result;
         do {
             printInputMessage();

@@ -4,13 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Computer {
     private static final int BALL_COUNT = 3;
     private final List<Integer> baseballs = new ArrayList<>(BALL_COUNT);
 
-    public List<Integer> getBaseballs() {
-        return baseballs;
+    public int[] getBaseballs() {
+        return baseballs.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 
     public void makeBalls() {
