@@ -18,18 +18,16 @@ class ParticipantTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "11", "1111", "11111", ""})
     void 입력받은_문자열의_길이는_3자리_입니다(final String input) {
-        assertThatThrownBy(() -> {
-            new Participant(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new Participant(input))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Participant.ERROR_SIZE);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"   ", "aaa", "1a1", "$$$", "11a"})
+    @ValueSource(strings = {"   ", "aaa", "1a1", "$$$", "11a", "가나라"})
     void 문자열의_내부_요소는_오직_정수로_이루어집니다(final String input) {
-        assertThatThrownBy(() -> {
-            new Participant(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new Participant(input))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Participant.ERROR_FORMAT);
     }
 
@@ -37,14 +35,12 @@ class ParticipantTest {
     void 입력받은_문자열을_리스트로_반환합니다() {
         var participant = new Participant("123");
         var actual = participant.numbers();
-
-        assertThat(actual)
-                .isEqualTo(List.of(
-                                new BaseballNumber(1),
-                                new BaseballNumber(2),
-                                new BaseballNumber(3)
-                        )
-                );
+        var expected = List.of(
+                new BaseballNumber(1),
+                new BaseballNumber(2),
+                new BaseballNumber(3)
+        );
+        assertThat(actual).isEqualTo(expected);
 
     }
 }
