@@ -4,11 +4,14 @@ import baseball.verifiable.CheckInputLength;
 import baseball.verifiable.CheckInputRange;
 
 public class MakeVerifierInputToEndOrNewGame implements MakeVerifier {
+    private final static int NUMBER_LENGTH_MAX = 1;
+    private final static int LOWER_NUMBER = 1;
+    private final static int UPPER_NUMBER = 2;
     private final Verifier verifier = new Verifier();
 
     public MakeVerifierInputToEndOrNewGame() {
-        verifier.addRule(new CheckInputLength(1));
-        verifier.addRule(new CheckInputRange(1, 2));
+        verifier.addRule(new CheckInputLength(NUMBER_LENGTH_MAX));
+        verifier.addRule(new CheckInputRange(LOWER_NUMBER, UPPER_NUMBER));
     }
 
     @Override
