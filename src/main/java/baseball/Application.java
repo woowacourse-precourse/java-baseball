@@ -218,7 +218,24 @@ class GameFinisher {
 public class Application {
 
     public static void main(String[] args) {
+        GameReadyMachine gameReadyMachine = new GameReadyMachine();
+        GameProcessor gameProcessor = new GameProcessor();
+        GameFinisher gameFinisher = new GameFinisher();
 
+        while(gameFinisher.isRestartTrigger()) {
+            gameReadyMachine.gameReadyComplete();
+            gameProcessor.userInput();
+            gameProcessor.checkInput();
+            gameProcessor.toArrayValue(gameProcessor.getLastInputInt(), gameReadyMachine.getAnswerValue());
+            gameProcessor.strikeChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
+            gameProcessor.ballChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
+            if (gameProcessor.isWin()) {
+
+            }
+            else {
+
+            }
+        }
     }
 
 }
