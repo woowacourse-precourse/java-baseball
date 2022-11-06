@@ -25,4 +25,17 @@ public class Application {
             continueFlag = replay();
         } while (true);
     }
+
+    static String randomNum() {
+        String randomNumber = "";
+
+        while (randomNumber.length() < 3) {
+            int randomNumberOneDigit = Randoms.pickNumberInRange(1, 9);
+
+            if (!randomNumber.contains(randomNumberOneDigit + "")) {
+                randomNumber = randomNumber.concat(randomNumberOneDigit + "");
+            }
+        }
+        return randomNumber;
+    }
 }
