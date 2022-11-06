@@ -46,10 +46,7 @@ public class Application {
     public static List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         computerNumbers.add(Randoms.pickNumberInRange(START_VALUE, END_VALUE));
-        while (true) {
-            if (computerNumbers.size() == 3) {
-                break;
-            }
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_VALUE, END_VALUE);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
