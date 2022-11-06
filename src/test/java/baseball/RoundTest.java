@@ -25,11 +25,11 @@ class RoundTest extends NsTest {
     }
 
     @Test
-    void addNewHiddenNumberToList_test_new_number_generation() {
+    void addNewRandomToList_test_new_number_generation() {
         Round round = new Round();
 
         List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3, 5, 6, 7, 8, 9));
-        round.addNewHiddenNumberToList(input);
+        round.addNewRandomNumberToList(input);
 
         assertThat(input).contains(4);
     }

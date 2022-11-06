@@ -14,6 +14,7 @@ public class Round {
     public Round() {
         this.hiddenNumberList = new ArrayList<>();
     }
+
     public Round(List<Integer> testHiddenNumberList) {
         this.hiddenNumberList = testHiddenNumberList;
     }
@@ -33,12 +34,12 @@ public class Round {
     public List<Integer> generateNewHiddenNumberList() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < NUMBER_OF_HIDDEN_NUMBER) {
-            addNewHiddenNumberToList(numberList);
+            addNewRandomNumberToList(numberList);
         }
         return numberList;
     }
 
-    public void addNewHiddenNumberToList(List<Integer> numberList) {
+    public void addNewRandomNumberToList(List<Integer> numberList) {
         int randomNumber;
         do {
             randomNumber = Randoms.pickNumberInRange(MIN_HIDDEN_NUMBER, MAX_HIDDEN_NUMBER);
