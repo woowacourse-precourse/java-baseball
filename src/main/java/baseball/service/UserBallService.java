@@ -17,6 +17,8 @@ public class UserBallService {
 		UserBall userBall = UserBall.createUserBall();
 		updateBallCount(answerNumber, userInputNumList, userBall);
 		updateStrikeCount(answerNumber, userInputNumList, userBall);
+
+		userBall.updateStatus();
 		return userBall;
 	}
 
