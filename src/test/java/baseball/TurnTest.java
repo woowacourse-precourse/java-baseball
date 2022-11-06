@@ -3,15 +3,14 @@ package baseball;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-public class TurnTest {
+import camp.nextstep.edu.missionutils.test.NsTest;
+
+public class TurnTest extends NsTest {
     @Test
     void start_test(){
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
@@ -22,13 +21,10 @@ public class TurnTest {
         final byte[] buf = testInput.getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         turn.start(testHiddenNumberList);
 
-        String resultOutput = "숫자를 입력해주세요 : 1볼 1스트라이크\r\n";
-        assertThat(out.toString()).isEqualTo(resultOutput);
+        String resultOutput = "숫자를 입력해주세요 : 1볼 1스트라이크";
+        assertThat(output()).isEqualTo(resultOutput);
     }
 
     @Test
@@ -105,50 +101,38 @@ public class TurnTest {
 
     @Test
     void printResult_test_print_result_1ball_1strike() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         Turn turn = new Turn();
         turn.printResult(1, 1);
 
-        String resultOutput = "1볼 1스트라이크\r\n";
-        assertThat(out.toString()).isEqualTo(resultOutput);
+        String resultOutput = "1볼 1스트라이크";
+        assertThat(output()).isEqualTo(resultOutput);
     }
 
     @Test
     void printResult_test_print_result_0ball_3strike() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         Turn turn = new Turn();
         turn.printResult(0, 3);
 
-        String resultOutput = "3스트라이크\r\n";
-        assertThat(out.toString()).isEqualTo(resultOutput);
+        String resultOutput = "3스트라이크";
+        assertThat(output()).isEqualTo(resultOutput);
     }
 
     @Test
     void printResult_test_print_result_3ball() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         Turn turn = new Turn();
         turn.printResult(3, 0);
 
-        String resultOutput = "3볼\r\n";
-        assertThat(out.toString()).isEqualTo(resultOutput);
+        String resultOutput = "3볼";
+        assertThat(output()).isEqualTo(resultOutput);
     }
 
     @Test
     void printResult_test_print_result_nothing() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
         Turn turn = new Turn();
         turn.printResult(0, 0);
 
-        String resultOutput = "낫싱\r\n";
-        assertThat(out.toString()).isEqualTo(resultOutput);
+        String resultOutput = "낫싱";
+        assertThat(output()).isEqualTo(resultOutput);
     }
 
     @Test
@@ -200,10 +184,11 @@ public class TurnTest {
 
     @Test
     void printGameOverMessage_test_print_message() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         Turn turn = new Turn();
         turn.printGameOverMessage();
-        assertThat(out.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\r\n");
+        assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+    public void runMain() {
+
     }
 }
