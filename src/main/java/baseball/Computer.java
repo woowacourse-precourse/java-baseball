@@ -38,11 +38,11 @@ public class Computer {
         if ((ball == 0) && (strike == 0)) {
             View.printNothing();
         }
-        if ((ball == 0) && (strike == 3)) {
-            View.printCollect();
-        }
         if ((ball == 0) && !(strike == 0)) {
             View.printStrike(strike);
+            if(strike == 3){
+                View.printCollect();
+            }
         }
         if (!(ball == 0) && (strike == 0)) {
             View.printBall(ball);
