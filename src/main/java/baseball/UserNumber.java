@@ -9,10 +9,10 @@ public class UserNumber {
     private static final int INITIAL_REPEAT_VALUE = 0;
     private static final int DEFAULT_LENGTH_VALUE = 3;
 
-    private final LinkedHashSet<Integer> userNumbers;
+    private final List<Integer> userNumbers;
 
-    public UserNumber(LinkedHashSet<Integer> userNumber) {
-        this.userNumbers = userNumber;
+    public UserNumber(List<Integer> userNumbers) {
+        this.userNumbers = userNumbers;
     }
 
     public void generateUserNumber(String inputNumber) {
@@ -21,11 +21,11 @@ public class UserNumber {
     }
 
     private List<String> divideNumber(String inputNumber) {
-        List<String> numbers = new ArrayList<>();
+        List<String> tempNumbers = new ArrayList<>();
         for (int i = INITIAL_REPEAT_VALUE; i < inputNumber.length(); i++) {
-            numbers.add(String.valueOf(inputNumber.charAt(i)));
+            tempNumbers.add(String.valueOf(inputNumber.charAt(i)));
         }
-        return numbers;
+        return tempNumbers;
     }
 
     private void changeNumberType(List<String> inputNumbers) {
@@ -62,7 +62,8 @@ public class UserNumber {
         }
     }
 
-    public LinkedHashSet<Integer> getUserNumbers() {
-        return this.userNumbers;
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
+
 }
