@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class GameResult {
 
     private static final int ZERO = 0;
-    private static final int NUM_SIZE = 3;
+    private static final int GAME_ROUND_TOTAL = 3;
     private static final int THREE = 3;
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
@@ -24,20 +24,21 @@ public class GameResult {
     }
 
     private int countBall(List<Integer> answerNums, List<Integer> playerNums) {
-        return (int) IntStream.range(ZERO, NUM_SIZE)
-                .filter(i -> !isStrike(answerNums, playerNums, i) && answerNums.contains(playerNums.get(i)))
+        return (int) IntStream.range(ZERO, GAME_ROUND_TOTAL)
+                .filter(numsIndex -> !isStrike(answerNums, playerNums, numsIndex))
+                .filter(numsIndex -> answerNums.contains(playerNums.get(numsIndex)))
                 .count();
     }
 
     private int countStrike(List<Integer> answerNums, List<Integer> playerNums) {
-        return (int) IntStream.range(ZERO, NUM_SIZE)
-                .filter(i -> isStrike(answerNums, playerNums, i))
+        return (int) IntStream.range(ZERO, GAME_ROUND_TOTAL)
+                .filter(numsIndex -> isStrike(answerNums, playerNums, numsIndex))
                 .count();
     }
 
-    private boolean isStrike(List<Integer> answerNums, List<Integer> playerNums, int i) {
-        return answerNums.get(i)
-                .equals(playerNums.get(i));
+    private boolean isStrike(List<Integer> answerNums, List<Integer> playerNums, int numsIndex) {
+        return answerNums.get(numsIndex)
+                .equals(playerNums.get(numsIndex));
     }
 
     public boolean isNothing() {

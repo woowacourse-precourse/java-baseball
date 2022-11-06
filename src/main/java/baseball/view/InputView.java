@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 public class InputView {
 
-    private static final int NUM_SIZE = 3;
+    private static final int GAME_ROUND_TOTAL = 3;
     private static final String RE_GAME = "1";
     private static final String GAME_OVER = "2";
-    private static final String THREE_SIZE_NUM_REGEX = "^[1-9]{3}$";
+    private static final String THREE_DIGIT_NUM_REGEX = "^[1-9]{3}$";
 
     public static String requestNum() {
         OutputView.printRequestNum();
@@ -21,7 +21,7 @@ public class InputView {
 
     static String validateRequestNum(String input) {
         input = Utils.deleteAllSpace(input);
-        if (!Pattern.matches(THREE_SIZE_NUM_REGEX, input) || hasDuplicatedNum(input)) {
+        if (!Pattern.matches(THREE_DIGIT_NUM_REGEX, input) || hasDuplicatedNum(input)) {
             throw new IllegalArgumentException();
         }
         return input;
@@ -30,7 +30,7 @@ public class InputView {
     private static boolean hasDuplicatedNum(String input) {
         return Arrays.stream(input.split(""))
                 .distinct()
-                .count() != NUM_SIZE;
+                .count() != GAME_ROUND_TOTAL;
     }
 
     public static boolean requestIsReGame() {

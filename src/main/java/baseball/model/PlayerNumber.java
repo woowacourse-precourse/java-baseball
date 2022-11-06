@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class PlayerNumber {
 
-    private final List<Integer> nums;
+    private final List<Integer> playerNums;
 
     public PlayerNumber(String input) {
-        nums = parseInput(input);
+        playerNums = parseInput(input);
     }
 
     private List<Integer> parseInput(String input) {
@@ -21,6 +21,6 @@ public class PlayerNumber {
     }
 
     public List<Integer> get() {
-        return nums;
+        return playerNums;
     }
 }

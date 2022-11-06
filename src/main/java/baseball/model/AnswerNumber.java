@@ -6,30 +6,30 @@ import java.util.List;
 
 public class AnswerNumber {
 
-    private static final int ANSWER_NUM_SIZE = 3;
+    private static final int GAME_ROUND_TOTAL = 3;
     private static final int NUM_MIN = 1;
     private static final int NUM_MAX = 9;
 
-    private final List<Integer> nums;
+    private final List<Integer> answerNums;
 
     public AnswerNumber() {
-        this.nums = createRandNums();
+        this.answerNums = createRandNums();
     }
 
     private List<Integer> createRandNums() {
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> randNums = new ArrayList<>();
 
-        while (numbers.size() < ANSWER_NUM_SIZE) {
+        while (randNums.size() < GAME_ROUND_TOTAL) {
             int randNum = Randoms.pickNumberInRange(NUM_MIN, NUM_MAX);
 
-            if (!numbers.contains(randNum)) {
-                numbers.add(randNum);
+            if (!randNums.contains(randNum)) {
+                randNums.add(randNum);
             }
         }
-        return numbers;
+        return randNums;
     }
 
     public List<Integer> get() {
-        return nums;
+        return answerNums;
     }
 }
