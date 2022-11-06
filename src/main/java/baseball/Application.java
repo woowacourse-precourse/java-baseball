@@ -116,17 +116,6 @@ public class Application {
         return true;
     }
 
-    public static List<Integer> toPlaceValue(List<Integer> disassembledNumber) {
-        List<Integer> placeValue = new ArrayList<Integer>();
-        int digit = 1;
-        for (int number : disassembledNumber) {
-            placeValue.add(number * digit);
-            digit *= 10;
-        }
-
-        return placeValue;
-    }
-
     public static List<Integer> disassembleDigitNumber(int number) {
         List<Integer> disassembledNumber = new ArrayList<Integer>();
         for (; number > 0; number /= 10) {
