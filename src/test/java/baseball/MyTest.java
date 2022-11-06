@@ -1,8 +1,6 @@
 package baseball;
 
 import org.assertj.core.api.Assertions;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -73,7 +71,7 @@ public class MyTest {
     }
 
 
-    @Test
+    /*@Test
     void validateUserInputSize() {
         //given(준비)
         String success = "123";
@@ -87,9 +85,9 @@ public class MyTest {
         } catch (Exception e) {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
-    }
+    }*/
 
-    @Test
+    /*@Test
     void validateUserInputForm() {
         //given(준비)
         String success = "123";
@@ -103,7 +101,7 @@ public class MyTest {
         } catch (Exception e) {
             Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
         }
-    }
+    }*/
 
 
     @Test
