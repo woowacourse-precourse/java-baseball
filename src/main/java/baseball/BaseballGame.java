@@ -21,21 +21,20 @@ public class BaseballGame {
     }
 
     public void start() {
-
         View.printStartGame();
         do {
-            startGame();
+            computer.makeRandomNumber();
+            playGame();
         } while (isEndGame());
-
     }
 
-    private void startGame() {
-        computer.makeRandomNumber();
-
-    }
-
-    private void playGame(){
-
+    private void playGame() {
+        do {
+            View.printPleaseInputNumber();
+            String userInput = checkVerifierInputToBaseballGame(View.getUserInput());
+            computer.countBallAndStrike(userInput);
+            computer.replyBallAndStrike();
+        } while (!(computer.isCollect()));
     }
 
     public boolean isEndGame() {
@@ -46,5 +45,9 @@ public class BaseballGame {
 
     private String checkVerifierInputToEndOrNewGame(String input) {
         return verifierInputToEndOrNewGame.checkValid(input);
+    }
+
+    private String checkVerifierInputToBaseballGame(String input) {
+        return verifierInputToBaseballGame.checkValid(input);
     }
 }
