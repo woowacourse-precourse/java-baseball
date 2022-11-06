@@ -18,11 +18,6 @@ public class BaseballGame {
     private static int strike;
     private static int ball;
 
-    public static void resetStrikeBall(){
-        strike=0;
-        ball=0;
-    }
-
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
         resetStrikeBall();
@@ -48,18 +43,6 @@ public class BaseballGame {
         }
     }
 
-    public static boolean includeSame(int userNumber){
-        return computerNumbers.contains(userNumber);
-    }
-
-    public static void countStrike(int userNumber, int computerNumber){
-        if (userNumber == computerNumber) strike++;
-    }
-
-    public static void countBall(int userNumber, int computerNumber){
-        if (userNumber != computerNumber) ball++;
-    }
-
     public static void userNumberResult(){
         if(ball==0 && strike==0) System.out.print(NOTHING);
         if(ball>0) System.out.print(ball + BALL);
@@ -75,6 +58,23 @@ public class BaseballGame {
         if (restartNumber.equals(RESTART)) {
             playBaseballGame();
         }
+    }
+
+    public static void resetStrikeBall(){
+        strike=0;
+        ball=0;
+    }
+
+    public static boolean includeSame(int userNumber){
+        return computerNumbers.contains(userNumber);
+    }
+
+    public static void countStrike(int userNumber, int computerNumber){
+        if (userNumber == computerNumber) strike++;
+    }
+
+    public static void countBall(int userNumber, int computerNumber){
+        if (userNumber != computerNumber) ball++;
     }
 
 }
