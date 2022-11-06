@@ -94,6 +94,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        args = Console.readLine().split("");
         List<Integer> computer_numbers = getComputerNumbers();
         List<Integer> user_numbers = Arrays.stream(args).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 
