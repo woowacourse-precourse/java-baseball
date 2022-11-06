@@ -19,10 +19,10 @@ public class RandomNumber {
         return ballNum;
     }
 
-    public int countExactSame(String userInput, RandomNumber randNum) {
+    public int countExactSame(String userInput) {
         int strikeCnt = 0;
         for (int i = 0; i < CORRECTINPUTLENGTH; i++) {
-            if (userInput.charAt(i) == randNum.randomNumInChar(i)) {
+            if (userInput.charAt(i) == randomValue.charAt(i)) {
                 strikeCnt++;
             }
         }
