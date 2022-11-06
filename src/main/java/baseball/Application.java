@@ -1,12 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
-    private static ComputerNumber computerNumber;
+    private static ThreeNumber computerNumber;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -26,11 +27,12 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        computerNumber = new ComputerNumber(computer.get(0), computer.get(1), computer.get(2));
+        computerNumber = new ThreeNumber(computer.get(0), computer.get(1), computer.get(2));
         playerSelectNumber();
     }
 
     private static void playerSelectNumber() {
 
     }
+
 }
