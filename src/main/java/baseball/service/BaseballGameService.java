@@ -42,6 +42,7 @@ public class BaseballGameService {
 
     public String choiceRestartGame() {
         String choiceRestartNumber = Console.readLine().trim();
+        inputUserNumberException.checkInputRestartNumber(choiceRestartNumber);
         return choiceRestartNumber;
     }
 
