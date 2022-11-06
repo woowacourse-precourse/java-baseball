@@ -29,11 +29,11 @@ public class BaseballConsole {
         if(strikeCount == 0 && ballCount == 0) {
             sb.append("낫싱");
         }
-        if(strikeCount != 0) {
-            sb.append(strikeCount).append("스트라이크 ");
-        }
         if(ballCount != 0) {
             sb.append(ballCount).append("볼 ");
+        }
+        if(strikeCount != 0) {
+            sb.append(strikeCount).append("스트라이크 ");
         }
         sb.append("\n");
         System.out.print(sb.toString());
