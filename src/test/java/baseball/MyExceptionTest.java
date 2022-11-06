@@ -78,6 +78,15 @@ public class MyExceptionTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         )).isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    void 재시작_숫자외의_값_예외처리() {
+        assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                () -> {
+                    run("246  ", "13  5", "하나 ", "597", "589", "2");
+                },
+                1, 3, 5, 5, 8, 9
+        )).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
