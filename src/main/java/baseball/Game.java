@@ -50,9 +50,7 @@ public class Game {
     }
 
     public void printStrikeBall() {
-        int strikeCount = strike.compareCharacterLocationMatch(
-                InputNumber.number,
-                computer.randomNumberListToString());
+        int strikeCount = getStrikeCount();
         int ballCount = ball.compareCharacterDifferentLocationMatch(
                 InputNumber.number,
                 computer.randomNumberListToString());
@@ -68,10 +66,15 @@ public class Game {
         }
     }
 
-    public boolean isThreeStrike() {
+    private int getStrikeCount() {
         int strikeCount = strike.compareCharacterLocationMatch(
                 InputNumber.number,
                 computer.randomNumberListToString());
+        return strikeCount;
+    }
+
+    public boolean isThreeStrike() {
+        int strikeCount = getStrikeCount();
         if (strikeCount == 3) {
             return true;
         }
