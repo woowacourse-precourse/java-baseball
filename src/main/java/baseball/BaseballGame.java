@@ -98,6 +98,17 @@ public class BaseballGame {
     }
 
     private void askExit() {
+        int exitNumber = inputExit();
+
+        if (exitNumber == STOP) {
+            gameAvailable = false;
+        } else if (exitNumber == CONTINUE) {
+            computerNumbers = new ArrayList<>();
+            makeRandomNumber();
+        }
+    }
+
+    private int inputExit() {
         printMessage(CORRECT_MESSAGE + ENTER);
         printMessage(REGAME_MESSAGE + ENTER);
         String exitNumber = Console.readLine();
@@ -106,11 +117,6 @@ public class BaseballGame {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
 
-        if (Integer.parseInt(exitNumber) == STOP) {
-            gameAvailable = false;
-        } else if (Integer.parseInt(exitNumber) == CONTINUE) {
-            computerNumbers = new ArrayList<>();
-            makeRandomNumber();
-        }
+        return Integer.parseInt(exitNumber);
     }
 }
