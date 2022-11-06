@@ -10,13 +10,19 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int playGame = 0;
-        while (playGame == 0) {
-            playGame = gameResult(comparing(computersNumbers(), readUsersNumbers()));
-            playGame = restartGame();
+
+        ArrayList<Integer> cpuNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> playerNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> scoreSheet = new ArrayList<Integer>();
+
+        cpuNumbers = computersNumbers();
+        int playStatus=0;
+
+        while(playStatus==0){
+            playerNumbers = readUsersNumbers();
+            scoreSheet = comparing(cpuNumbers,playerNumbers);
+            playStatus = gameResult(scoreSheet);
         }
-
-
 
     }
 
@@ -93,11 +99,11 @@ public class Application {
             System.out.println("낫싱");
         } else {
             if (hintScore.get(0) == 0) {
-                System.out.printf("%d볼", hintScore.get(1));
+                System.out.printf("%d볼\n", hintScore.get(1));
             } else if (hintScore.get(1) == 0) {
-                System.out.printf("%d스트라이크", hintScore.get(0));
+                System.out.printf("%d스트라이크\n", hintScore.get(0));
             } else {
-                System.out.printf("%1$d볼 %2$d스트라이크", hintScore.get(1), hintScore.get(0));
+                System.out.printf("%1$d볼 %2$d스트라이크\n", hintScore.get(1), hintScore.get(0));
             }
         }
         return gameStatus;
