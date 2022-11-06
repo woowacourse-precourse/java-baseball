@@ -8,6 +8,8 @@ import baseball.view.ScoreResultView;
 
 public class GameController {
 
+    private static final int THREE_STRIKE = 3;
+
     GameService gameService = new GameService();
     GameStatusService gameStatusService;
     PlayerView playerView = new PlayerView();
@@ -61,7 +63,7 @@ public class GameController {
     }
 
     boolean isThreeStrike(){
-        return false;
+        return gameService.getStrikeCount() == THREE_STRIKE;
     }
 
     void whatToDoNext(){
