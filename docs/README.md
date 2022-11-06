@@ -8,6 +8,13 @@
 
 <br>
 
+사용자가 숫자를 입력하는 기능
+* 함수명 : `getUser`
+* parameter : void
+* return : List (user)
+
+<br>
+
 사용자가 입력한 값이 예외적인지 판별하는 기능
 * 예외의 정의
     * 중복된 숫자
