@@ -10,10 +10,6 @@ public class TargetNumber implements Number {
     final int END = 9;
     List<String> targetNumber = new ArrayList<>();
 
-    public TargetNumber() {
-        generateTargetNumber();
-    }
-
     @Override
     public List<String> getNumber() {
         return targetNumber;
