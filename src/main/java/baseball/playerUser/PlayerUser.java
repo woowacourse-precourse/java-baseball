@@ -36,16 +36,18 @@ public class PlayerUser {
 			number);
 	}
 
-	// todo : indent가 3이상 -> 리팩토링 필요
 	private boolean isNoDuplicatedNumber(String number) {
-		int numberSize = number.length();
-		for (int i = 0; i < numberSize - 1; i++) {
-			String subNumber = number.substring(i + 1);
-			String digit = "" + number.charAt(i);
-			if (subNumber.contains(digit))
-				return false;
+		Stream<Character> numberStream;
+		List<Character> stringToCharacter = new ArrayList<>();
+		List<Character> distinctDigits = new ArrayList<>();
+
+		for (char elem : number.toCharArray()) {
+			stringToCharacter.add(elem);
 		}
-		return true;
+
+		numberStream = stringToCharacter.stream();
+		numberStream.distinct().forEach(distinctDigits::add);
+		return distinctDigits.size() == 3;
 	}
 
 	private boolean isPositiveNumber(String number) {

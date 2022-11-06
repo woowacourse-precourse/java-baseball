@@ -20,11 +20,11 @@ public class PlayerUserTest {
 		String number = testUser.getInputNumber();
 
 		System.out.println("user input number : " + number);
-//		for (char elem : number.toCharArray()) {
-//			if (elem < '1' || elem > '9') {
-//				assertThat(number).withFailMessage("잘못된 수를 포함하고 있습니다.");
-//			}
-//		}
+		//		for (char elem : number.toCharArray()) {
+		//			if (elem < '1' || elem > '9') {
+		//				assertThat(number).withFailMessage("잘못된 수를 포함하고 있습니다.");
+		//			}
+		//		}
 	}
 
 	// 입력에 공백이 있는 경우
@@ -46,9 +46,17 @@ public class PlayerUserTest {
 		assertThat(convertedNumber).isPositive();
 	}
 
-//	@Test void userInputTest5() {
+//	@Test void userInputTest6() {
 //		PlayerUser testUser = PlayerUser.getInstance();
-//		boolean flag = testUser.isPositiveNumber("^13");
+//		boolean flag = testUser.isNoDuplicatedNumber("253");
+//		assertThat(flag).isTrue();
+//		flag = testUser.isNoDuplicatedNumber("221");
 //		assertThat(flag).isFalse();
 //	}
+
+	//	@Test void userInputTest5() {
+	//		PlayerUser testUser = PlayerUser.getInstance();
+	//		boolean flag = testUser.isPositiveNumber("^13");
+	//		assertThat(flag).isFalse();
+	//	}
 }

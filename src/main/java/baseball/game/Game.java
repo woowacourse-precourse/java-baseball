@@ -69,8 +69,7 @@ public class Game {
 
 		return judgement;
 	}
-
-	// todo : 리팩토링 명단1
+	// todo : findStrikes, findBalls 관련해서 리팩토링 생각해보기
 	private int findStrikes(String userInput, String answer) {
 		int counter = 0;
 		int userNumberLength = userInput.length();
@@ -82,7 +81,6 @@ public class Game {
 		return counter;
 	}
 
-	// todo : 리팩토링 명단2
 	private int countStrikes(String userInput, String answer, int i) {
 		char userDigit = userInput.charAt(i);
 		char answerDigit = answer.charAt(i);
@@ -94,7 +92,6 @@ public class Game {
 		return 0;
 	}
 
-	// todo : 리팩토링 명단1
 	private int findBalls(String userInput, String answer) {
 		int counter = 0;
 		int userNumberLength = userInput.length();
@@ -106,7 +103,6 @@ public class Game {
 		return counter;
 	}
 
-	// todo : 리팩토링 명단2
 	private int countBalls(String userInput, String answer, int i) {
 		char userDigit = userInput.charAt(i);
 		char answerDigit = answer.charAt(i);
@@ -117,7 +113,7 @@ public class Game {
 
 		return 0;
 	}
-
+	// todo : -----------------------------------------------------------
 	private void printMessage(List<Integer> judgement) {
 		String msg = generateMessage(judgement);
 		System.out.println(msg);
