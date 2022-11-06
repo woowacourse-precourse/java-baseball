@@ -11,14 +11,13 @@ public class GameController {
     GameService gameService = new GameService();
     GameStatusService gameStatusService;
 
-    public GameController(){
-
-    }
+    public GameController(){}
 
     public void runGame(){
     }
 
     void setGame(){
+        gameService.setComputer();
     }
 
     void initializeGame(){
@@ -26,6 +25,7 @@ public class GameController {
     }
 
     void startGame(){
+
     }
 
     void putPlayerInService(String playerNumbers){
