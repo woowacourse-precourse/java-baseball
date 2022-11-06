@@ -48,6 +48,7 @@ class RunGame {
     public List<Integer> userInput() {
         List<Integer> intUserInput = new ArrayList<>();
         String[] stringUserInput = {};
+        System.out.print("숫자를 입력해주세요 : ");
         stringUserInput = Console.readLine().split("");
         for (String number : stringUserInput) {
             intUserInput.add(Integer.parseInt(number));
@@ -61,7 +62,6 @@ class RunGame {
         }
         return false;
     }
-
     public boolean isAgain(boolean finish) {
         int userInput = -1;
         if (finish == true) {
