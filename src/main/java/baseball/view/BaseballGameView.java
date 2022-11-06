@@ -17,4 +17,8 @@ public class BaseballGameView {
         String userBaseballInput = Console.readLine();
         return userBaseballInput;
     }
+
+    public void printUserInputHint(String userInputResult) {
+        System.out.println(userInputResult);
+    }
 }
