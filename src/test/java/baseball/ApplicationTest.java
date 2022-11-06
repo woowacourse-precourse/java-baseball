@@ -53,6 +53,22 @@ class ApplicationTest extends NsTest {
         assertThat(computer.countStrike(List.of(1, 2, 4))).isEqualTo(2);
     }
 
+    @Test
+    void 유저가_입력한_수의_볼_수를_반환하는_기능 () throws Exception {
+        //given
+        Computer computer = new Computer();
+        Field field = Computer.class.getDeclaredField("computerNumber");
+        field.setAccessible(true);
+
+        //when
+        field.set(computer, List.of(1, 2, 3));
+
+        //then
+        assertThat(computer.countBall(List.of(1, 2, 3))).isEqualTo(0);
+        assertThat(computer.countBall(List.of(3, 1, 2))).isEqualTo(3);
+        assertThat(computer.countBall(List.of(4, 5, 6))).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
