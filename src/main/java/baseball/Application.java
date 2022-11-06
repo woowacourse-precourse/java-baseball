@@ -13,6 +13,15 @@ public class Application {
         System.out.println("UserNumber = " + UserNumber);
         // TODO: 프로그램 구현
     }
+    public int AllCount(List<Integer> computer, List<Integer> playerNum){
+        int result = 0;
+        for (int loop=0;loop<playerNum.size();loop++){
+            if (computer.contains(playerNum.get(loop))){
+                result +=1;
+            }
+        }
+        return result;
+    }//유저와 컴퓨터의 번호의 스트라이크,볼 총갯수 구하는 기능
     public static List<Integer> playerNumber(){
         System.out.println("숫자를 입력해주세요");
         String UserNumber = Console.readLine();
