@@ -1,5 +1,6 @@
 package game;
 
+import camp.nextstep.edu.missionutils.Console;
 import game.player.Computer;
 
 public class BaseballGame {
@@ -19,8 +20,10 @@ public class BaseballGame {
 	}
 
 	private void roundWithComputer() {
+		String userNumbers = "";
 		do {
 			System.out.println("숫자를 입력해주세요 : ");
+			userNumbers = Console.readLine();
 		} while ();
 	}
 }
