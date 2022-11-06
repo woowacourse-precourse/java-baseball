@@ -33,6 +33,7 @@ public class BaseballGame {
 
     private List<Integer> makeRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
+
         while (numbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
@@ -48,12 +49,12 @@ public class BaseballGame {
 
     private String inputUserNumber() {
         printMessage(INPUT_MESSAGE);
+
         String userInput = Console.readLine();
 
         if (!InputValidator.isRightInput(userInput)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-
         return userInput;
     }
 
@@ -72,7 +73,7 @@ public class BaseballGame {
     }
 
     private boolean isBall(int index) {
-        return computerNumbers.contains(userNumber.charAt(index)- '0');
+        return computerNumbers.contains(userNumber.charAt(index) - '0');
     }
 
     public String getResult() {
@@ -111,12 +112,12 @@ public class BaseballGame {
     private int inputExit() {
         printMessage(CORRECT_MESSAGE + ENTER);
         printMessage(REGAME_MESSAGE + ENTER);
+
         String exitNumber = Console.readLine();
 
         if (!InputValidator.isRightExitInput(exitNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-
         return Integer.parseInt(exitNumber);
     }
 }
