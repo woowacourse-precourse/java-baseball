@@ -9,8 +9,11 @@ public class GameResult {
     }
 
     GameResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+        int total = strike + ball;
+        if (0 <= total && total <= 3) {
+            this.strike = strike;
+            this.ball = ball;
+        }
     }
 
     public void printResult() {
@@ -33,7 +36,10 @@ public class GameResult {
     }
 
     public void setGameResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+        int total = strike + ball;
+        if (0 <= total && total <= 3) {
+            this.strike = strike;
+            this.ball = ball;
+        }
     }
 }
