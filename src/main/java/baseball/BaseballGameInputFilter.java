@@ -23,3 +23,21 @@ public class BaseballGameInputFilter {
                 .distinct()
                 .count();
     }
+
+    public String readNumbers(){
+        String input = scanner.nextLine();
+
+        if (!this.isValidLength(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!this.isNumeric(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!this.isNotDuplicated(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        return input;
+    }
+
+}
