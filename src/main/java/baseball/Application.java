@@ -14,13 +14,19 @@ public class Application {
         int[] RandomizedArray = makeRandomizedArray();
 
         while (Strike < 3) {
+            Strike = 0;
+            Ball = 0;
             int[] input = InputCheckValidAndReturn();
             NumberAndLocationEqualsAddStrike(RandomizedArray, input);
             isNumberEqualsAddBall(RandomizedArray, input);
             Ball = Ball - Strike;
             printCaseBeforeSuccess();
 
+            if (Strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
         }
+
     }
 
     public static void printStartJavaBaseball() {
@@ -101,7 +107,7 @@ public class Application {
     }
 
 
-    public static boolean isNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber) {
+    public static void isNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber) {
 
         for (int i = 0; i < RandomNumber.length; i++) {
             for (int j = 0; j < RandomNumber.length; j++) {
@@ -109,7 +115,6 @@ public class Application {
             }
         }
 
-        return (Ball > 0);
     }
 
     public static void AddBallIfEquals(int RandomNumber, int InputNumber) {
