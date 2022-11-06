@@ -32,4 +32,12 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void test_checkInputLength() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputLength("1", 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
