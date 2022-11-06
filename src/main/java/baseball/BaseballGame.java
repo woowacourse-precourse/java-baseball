@@ -6,6 +6,7 @@ public class BaseballGame {
     private int strike;
 
     private void countStrikeAndBall(int[] ExpectedAnswer, int[] Answer) {
+        resetBallAndStrike();
         for (int expectedAnswerIndex  =0 ; expectedAnswerIndex < ExpectedAnswer.length;expectedAnswerIndex++) {
 
             int expectedAnswerTarget=ExpectedAnswer[expectedAnswerIndex];
@@ -21,5 +22,10 @@ public class BaseballGame {
                 }
             }
         }
+    }
+
+    private void resetBallAndStrike() {
+        this.ball = 0;
+        this.strike = 0;
     }
 }
