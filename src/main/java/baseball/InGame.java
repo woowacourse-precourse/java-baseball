@@ -91,7 +91,39 @@ public class InGame {
         return true;
     }
 
-    private int compareUserInput() {
-        return 0;
+    private List<Integer> compareUserInput(int input) {
+        String input_string = this.intToString(input);
+        String answer_string = this.intToString(this.answer);
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 9; i++) {
+            int j = i / 3;
+            if((answer_string.charAt(j) == input_string.charAt(i)) &&
+                    ((int)(i / 3) == j)
+            ){
+                strike += 1;
+            }
+            if((answer_string.charAt(j) == input_string.charAt(i)) &&
+                    ((int)(i / 3) != j)
+            ){
+                ball += 1;
+            }
+        }
+
+        List<Integer> return_list = new ArrayList<>();
+        return_list.add(ball);
+        return_list.add(strike);
+
+        return return_list;
+    }
+
+    private String intToString(int input) {
+        String convert = Integer.toString(input);
+        if (input < 100) {
+            convert = "0" + convert;
+        }
+
+        return convert;
     }
 }
