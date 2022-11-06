@@ -97,4 +97,15 @@ class ValidationTest {
             validation.isValidateInput(inputHasZero);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 재시작_입력_유효성_확인() {
+        // given
+        String inputError = "3";
+
+        //then
+        assertThatThrownBy(() -> {
+            validation.isValidateReplayInput(inputError);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
