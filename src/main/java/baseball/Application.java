@@ -18,9 +18,10 @@ public class Application {
 
         return targetNumber;
     }
+
     public static boolean isIllegalInput(String userInput) {
         try {
-            if (userInput.length() != 3) {
+            if (userInput.length() != 3 || wrongInputValueCheck(userInput) == false) {
                 throw new IllegalArgumentException();
             }
         }
@@ -30,6 +31,18 @@ public class Application {
         }
         return false;
     }
+
+    public static boolean wrongInputValueCheck(String userInput){
+        int userInputNumber = Integer.parseInt(userInput);
+        int num1 = userInputNumber % 10;
+        int num2 = userInputNumber / 10 % 10;
+        int num3 = userInputNumber / 100 % 10;
+
+        if (num1 == num2 || num1 == num3 || num2 == num3) return false;
+
+        return true;
+    }
+
     public static int StrikeBallCheck(String answer, String targetNumber) {
         int strike = 0;
         int ball = 0;
@@ -42,6 +55,7 @@ public class Application {
 
         return StrikeBallResultPrint(strike, ball);
     }
+
     public static int StrikeBallResultPrint(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱\n");
@@ -62,6 +76,7 @@ public class Application {
 
         return 0;
     }
+
     public static int gameRestartChecker(int ThreeStrikeCheck) {
         if (ThreeStrikeCheck == 1) {
             System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료\n");
@@ -71,6 +86,7 @@ public class Application {
         }
         return 0;
     }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean newNumberFlag = true;
