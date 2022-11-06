@@ -3,8 +3,10 @@ package baseball.service;
 import baseball.RandomUtil;
 import baseball.model.OpponentComputer;
 
-public class NumberBaseballGameService {
+import java.util.Map;
 
+public class NumberBaseballGameService {
+    
     private static OpponentComputer opponentComputer;
 
     public void generateOpponentComputer() {
@@ -13,5 +15,11 @@ public class NumberBaseballGameService {
 
     public OpponentComputer getOpponentComputer() {
         return opponentComputer;
+    }
+
+    public Map<String, Integer> judgeStrikeOrBallCount(String playerNumber) {
+        opponentComputer.initStrikeAndBallCountMap();
+        opponentComputer.judgeStrikeOrBallCountOfPlayerNumber(Integer.parseInt(playerNumber));
+        return opponentComputer.getStrikeAndBallCountMap();
     }
 }
