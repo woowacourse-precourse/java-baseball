@@ -64,17 +64,21 @@ public class Game {
     }
 
     private String makeHint (int strike, int ball) {
-//        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         if(strike != 0) {
             if(ball != 0) {
-                return ball + BALL_STR + strike + STRIKE_STR;
+                sb.append(ball).append(BALL_STR).append(strike).append(STRIKE_STR).append("\n");
+                return sb.toString();
             }
-            return strike + STRIKE_STR;
+            sb.append(strike).append(STRIKE_STR);
+            return sb.toString();
         }
         if(ball != 0) {
-            return ball + BALL_STR;
+            sb.append(ball).append(BALL_STR);
+            return sb.toString();
         }
-        return NOTHING;
+        sb.append(NOTHING);
+        return sb.toString();
     }
 
     private int countStrike(List<Integer> answer, List<Integer> input) {
