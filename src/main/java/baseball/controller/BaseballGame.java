@@ -17,11 +17,15 @@ public class BaseballGame {
     private void init() {
         gameView.startGame();
         while(true) {
-            String userInput = gameView.getUserInput();
-            BaseballNumbers userBaseballNumbers = new BaseballNumbers(userInput);
-            Hint userInputHint = computer.makeUserInputHint(userBaseballNumbers);
-            String userInputResult = userInputHint.getResult();
-            gameView.printUserInputHint(userInputResult);
+            getUserInput();
         }
+    }
+
+    private void getUserInput() {
+        String userInput = gameView.getUserInput();
+        BaseballNumbers userBaseballNumbers = new BaseballNumbers(userInput);
+        Hint userInputHint = computer.makeUserInputHint(userBaseballNumbers);
+        String userInputResult = userInputHint.getResult();
+        gameView.printUserInputHint(userInputResult);
     }
 }
