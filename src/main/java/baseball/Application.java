@@ -46,7 +46,6 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String numChar = Console.readLine();
 
-        System.out.println(numChar);
         if (numChar.length() != 3){
             throw new IllegalArgumentException();
         }
