@@ -8,12 +8,17 @@ public class PlayGame {
     private List<Integer> computerNumber;
     private List<Integer> userNumber;
 
-    PlayGame(List<Integer> setComputerNumber, List<Integer> setUserNumber){
+    public PlayGame(List<Integer> setComputerNumber, List<Integer> setUserNumber){
         this.computerNumber = setComputerNumber;
         this.userNumber = setUserNumber;
     }
 
     public void checkStrikeAndBall(){
+        compareNumberForStrike();
+        compareNumberForBall();
+    }
+
+    public void checkStrikeAndBallForTest(){
         compareNumberForStrike();
         compareNumberForBall();
     }
