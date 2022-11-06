@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.message.Message;
+
 public class GameManager {
 
     private final Computer computer;
@@ -17,14 +19,20 @@ public class GameManager {
     }
 
     private void playGame() {
-        computer.createBalls();
+        boolean isGameOver = false;
+        Balls computerBalls = computer.createBalls();
 
-        while (checkGameOver()) {
-            player.createBalls();
+        while (!isGameOver) {
+            Balls playerBalls = player.createBalls();
+
+            Result result = computerBalls.makeResult(playerBalls);
+            displayResult(result);
+            isGameOver = result.checkGameOver();
         }
     }
 
-    private boolean checkGameOver() {
+    private void displayResult(Result result) {
+        Message.printLineMessage(result.toString());
     }
 
     private boolean isGameContinue() {

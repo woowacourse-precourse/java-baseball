@@ -7,11 +7,9 @@ public class Player {
     private final CustomNumberGenerator customNumberGenerator = new CustomNumberGenerator();
     private Balls balls;
 
-    public void createBalls() {
+    public Balls createBalls() {
         this.balls = new Balls(customNumberGenerator.generate());
-    }
 
-    public Balls getBalls() {
-        return balls;
+        return this.balls;
     }
 }

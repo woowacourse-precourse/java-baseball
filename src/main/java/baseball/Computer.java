@@ -7,11 +7,9 @@ public class Computer {
     private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
     private Balls balls;
 
-    public void createBalls() {
+    public Balls createBalls() {
         this.balls = new Balls(randomNumberGenerator.generate());
-    }
 
-    public Balls getBalls() {
-        return balls;
+        return this.balls;
     }
 }
