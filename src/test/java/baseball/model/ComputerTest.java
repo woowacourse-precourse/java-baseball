@@ -25,6 +25,21 @@ class ComputerTest {
         assertThat(notValidTestCase).isEqualTo(0);
     }
 
+    @Test
+    void resetCompareComponent_테스트() {
+        //given
+        Computer computer = new Computer();
+        List<Integer> usersNum = Arrays.asList(1, 2, 3);
+        computer.generateRandomNumList();
+        Computer resultComputer = computer.compareUsersNum(usersNum);
+        //when
+        resultComputer.resetCompareComponent();
+        //then
+        assertThat(resultComputer.getStrike()).isEqualTo(0);
+        assertThat(resultComputer.getBall()).isEqualTo(0);
+        assertThat(resultComputer.getNothing()).isEqualTo(false);
+    }
+
 
     @Test
     void compareUsersNum_1스트라이크() {
@@ -160,5 +175,6 @@ class ComputerTest {
         //then
         assertThat(resultComputer.isThreeStrike()).isEqualTo(true);
     }
+
 
 }
