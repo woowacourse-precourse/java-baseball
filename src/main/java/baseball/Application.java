@@ -80,4 +80,14 @@ public class Application {
         return sb.toString();
     }
 
+    public static String generateComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return convertArrayListToString(computerNumber);
+    }
 }

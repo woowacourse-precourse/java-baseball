@@ -132,4 +132,12 @@ class BaseballTest {
         List<Integer> input = new ArrayList<Integer>(Arrays.asList(1,2,3));
         assertThat(convertArrayListToString(input)).isEqualTo("123");
     }
+
+    @DisplayName("generateComputerNumber 컴퓨터 숫자 생성 테스트")
+    @Test
+    void generateComputerNumber_정상_숫자인지_테스트() {
+        String input = generateComputerNumber();
+        assertThatCode(() -> checkIllegalArgumentException(input))
+                .doesNotThrowAnyException();
+    }
 }
