@@ -38,6 +38,15 @@ class ApplicationTest extends NsTest {
     }
 
 
+    //TODO : 테스트 코드
+
+    @Test
+    @DisplayName("입력의 길이가 3이 아닌 경우 ")
+    public void inputLenNot3() throws Exception{
+        assertThatThrownBy(()-> Application.validationAndConvert("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 }
