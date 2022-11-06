@@ -16,14 +16,18 @@ public enum ScreenString {
     }
 
     public String getCommonMessage(){
-        /**
-         * 일반 메시지
-         */
+        return message;
     }
 
     public String ballAndStrokeMessage(int ballCount, int strikeCount){
-        /**
-         * 게임 메시지
-         */
+        if(ballCount == 0 && strikeCount == 0){
+            return NOTHING.message;
+        }else if(strikeCount == 0) {
+            return Integer.toString(ballCount) + " " + OUTPUT_BALL.message;
+        }else if(ballCount == 0){
+            return Integer.toString(strikeCount) + " " + OUTPUT_STRIKE.message;
+        }else{//볼 스트라이크 둘 다 있는 경우 재귀 호출로 해결
+            return ballAndStrokeMessage(ballCount,0)+ballAndStrokeMessage(0,strikeCount);
+        }
     }
 }
