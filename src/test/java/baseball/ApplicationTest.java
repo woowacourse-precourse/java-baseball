@@ -1,10 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Objects;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -209,5 +213,130 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(countStrike).isEqualTo(2);
+    }
+
+    @Test
+    void printStartGame() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        //when
+        baseBallGame.startGame();
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
+    @Test
+    void printUserInputMessage() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        //when
+        baseBallGame.userInput();
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자를 입력해주세요  :  ".trim());
+    }
+
+    @Test
+    void printUserWinMessage() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        //when
+        baseBallGame.userWin();
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료".trim());
+    }
+
+    @Test
+    void printRestartOrStopMessage() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        //when
+        baseBallGame.restartOrStopMessage();
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.".trim());
+    }
+
+    @RepeatedTest(10)
+    void makeHintMessageWithBallAndStrike() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+        int ballCount = (int) ((Math.random() * 10000) % 10);
+        int strikeCount = (int) ((Math.random() * 10000) % 10);
+
+        //when
+        baseBallGame.makeHint(ballCount,strikeCount);
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount+"볼 "+strikeCount+"스트라이크".trim());
+    }
+
+    @Test
+    void makeHintMessageNothing() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        //when
+        baseBallGame.makeHint(ballCount,strikeCount);
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("낫싱".trim());
+    }
+
+    @RepeatedTest(10)
+    void makeHintMessageWithBall() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+        int ballCount = (int) ((Math.random() * 10000) % 10);
+        if (ballCount == 0) {
+            ballCount = 1;
+        }
+        int strikeCount = 0;
+        //when
+        baseBallGame.makeHint(ballCount,strikeCount);
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount+"볼".trim());
+    }
+
+    @RepeatedTest(10)
+    void makeHintMessageWithStrike() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        BaseBallGame baseBallGame = new BaseBallGame();
+        int ballCount = 0;
+        int strikeCount = (int) ((Math.random() * 10000) % 10);
+        if (strikeCount == 0) {
+            strikeCount = 1;
+        }
+
+        //when
+        baseBallGame.makeHint(ballCount,strikeCount);
+
+        //then
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(strikeCount+"스트라이크".trim());
     }
 }
