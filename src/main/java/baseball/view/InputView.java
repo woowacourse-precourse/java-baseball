@@ -10,9 +10,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputView {
+    public static final int REMATCH_NUMBER = 1;
+    public static final int NO_REMATCH_NUMBER = 2;
+    public static final String INPUT_SIGN = "숫자를 입력해주세요 : ";
+    public static final String REMATCH_SIGN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String ERR_REMATCH_INPUT = "게임 시작하려면 1만 입력하고 종료하려면 2만 입력해야 합니다.";
 
     public static Balls input() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_SIGN);
         return input(Console.readLine());
     }
 
@@ -38,20 +43,20 @@ public class InputView {
     }
 
     public static boolean isRematch() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(REMATCH_SIGN);
 
         int input = getRematchInput();
 
-        if (input == 1) return true;
-        if (input == 2) return false;
-        throw new IllegalArgumentException();
+        if (input == REMATCH_NUMBER) return true;
+        if (input == NO_REMATCH_NUMBER) return false;
+        throw new IllegalArgumentException(ERR_REMATCH_INPUT);
     }
 
     private static int getRematchInput() {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (RuntimeException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERR_REMATCH_INPUT);
         }
     }
 }
