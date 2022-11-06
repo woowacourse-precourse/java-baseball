@@ -1,9 +1,11 @@
 package baseball;
 
+import baseball.RandomBallNumber;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
 class RandomBallNumberTest {
 
@@ -16,13 +18,7 @@ class RandomBallNumberTest {
 
     @Test
     void 랜덤숫자_길이_테스트() {
-        String randomNumber = randomBallNumber.createRandomNumber();
-        assertThat(randomNumber.length()).isSameAs(3);
-    }
-
-    @Test
-    void 랜덤숫자_클리어_테스트() {
-        String clearRandomNumber = randomBallNumber.clearRandomNumber();
-        assertThat(clearRandomNumber).isEqualTo("");
+        List<String> randomNumbers = randomBallNumber.createRandomNumber();
+        Assertions.assertThat(randomNumbers.size()).isSameAs(3);
     }
 }
