@@ -46,6 +46,6 @@ public class Game {
         user(splitStr);
 
         Check.checkInputNumberDuplicate(userNumberList);
-
+        Check.compareAnswer(userNumberList,computer);
     }
 }

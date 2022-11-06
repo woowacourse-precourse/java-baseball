@@ -41,5 +41,42 @@ public class Check {
             Exception.numberOnlyException();
         }
     }
+    public static void compareAnswer(List<Integer> user,List<Integer> computer){
+        int strikeCount ;
+        int ballCount ;
+        strikeCount = findStrike(user,computer);
+        if(!isThreeStrikeCount(strikeCount)){
+            ballCount = findBall(user,computer);
+            Print.resultPrint(strikeCount,ballCount);
+            Game.gameStart(computer);
+        }
+    }
+    public static boolean isThreeStrikeCount(int strikeCount){
+        boolean isThreeStrike = false;
+        if(strikeCount==LENGTH){
+            System.out.println(LENGTH+Print.STRIKE);
+            Game.getNewGame();
+            isThreeStrike = true;
+        }
+        return isThreeStrike;
+    }
+    public static int findStrike(List<Integer> user, List<Integer> computer){
+        int strikeCount = 0;
+        for(int i=0;i<LENGTH;i++){
+            if(user.get(i)==computer.get(i)){
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+    public static int findBall(List<Integer> user,List<Integer> computer){
+        int ballCount = 0;
+        for(int i=0;i<LENGTH;i++){
+            if(user.contains(computer.get(i)) && computer.get(i)!=user.get(i)){
+                ballCount++;
+            }
+        }
+        return ballCount;
 
+    }
 }
