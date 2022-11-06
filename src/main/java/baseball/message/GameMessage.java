@@ -20,7 +20,7 @@ public final class GameMessage {
     }
 
     // 볼과 스트라이크 둘 다 없는 경우의 힌트메세지
-    public static String nothingMessage(int strike) {
-        return strike + "스트라이크";
+    public static String nothingMessage() {
+        return "낫싱";
     }
 }
