@@ -2,6 +2,8 @@ package model;
 
 public class User {
 
+    final int NUM_RESTART_GAME = 1;
+    final int NUM_END_GAME = 2;
     final String MSG_INPUT_NUM_INDIVIDUALLY = "각각의 다른 숫자를 입력해주세요.";
 
     final String MSG_INPUT_POSITIVE_NUM = "양수를 입력해주세요.";
@@ -35,7 +37,7 @@ public class User {
     }
 
     private void isValidEndReGameNum(int num) {
-        if (num == 1 || num == 2) {
+        if (num == NUM_RESTART_GAME || num == NUM_END_GAME) {
             return;
         }
         throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
