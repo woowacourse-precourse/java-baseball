@@ -2,9 +2,12 @@ package custom.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import custom.dto.Response;
 import custom.table.Table;
 import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class BaseBallServiceTest {
 
@@ -25,8 +28,23 @@ class BaseBallServiceTest {
         assertThat(data.length()).isEqualTo(3);
     }
 
-    @Test
-    void matchNumber() {
+    @ParameterizedTest
+    @CsvSource({
+        "123, 123, 3스트라이크",
+        "124, 678, 낫싱",
+        "123, 321, 2볼 1스트라이크",
+        "123, 167, 1스트라이크",
+        "123, 378, 1볼"
+    })
+    void matchNumber_dataTest(String number, String input, String output) {
+        // given
+        table.setNumber(number);
+
+        // when
+        Response response = baseBallService.matchNumber(input);
+
+        // then
+        assertThat(response.getMessage()).isEqualTo(output);
     }
 
     @Test
