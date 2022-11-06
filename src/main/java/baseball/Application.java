@@ -59,10 +59,13 @@ public class Application {
             if (userInput.length() != checkLength) {
                 throw new IllegalArgumentException("Input length should be" + checkLength);
             }
+
             if (userInput.contains("0")){
                 throw new IllegalArgumentException("every digit is in the range of 1~9");
             }
+
             int userGuess = Integer.parseInt(userInput);
+
             return userGuess;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("every digit is in the range of 1~9");
@@ -95,11 +98,19 @@ public class Application {
 
         while (tmp > 0) {
             int digit = tmp % 10;
+            checkDuplicate(digits,digit);
             digits.add(0, digit);
             tmp = tmp / 10;
         }
 
         return digits;
+    }
+
+    public static void checkDuplicate(List<Integer> digits, int digit){
+        if (digits.contains(digit)){
+            throw new IllegalArgumentException("Duplicate digit exists");
+        }
+        return;
     }
 
     public static boolean printHint(List<Integer> comparedResult) {
