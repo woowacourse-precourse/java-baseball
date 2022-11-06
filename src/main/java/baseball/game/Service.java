@@ -9,10 +9,20 @@ import java.util.List;
 
 public class Service {
 
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
+    private static final int MAX_LENGTH = 3;
+    private static final int MAX_VALUE = 9;
+    private static final int MIN_VALUE = 1;
+    private static final int RE_START = 1;
+    private static final int END_GAME = 2;
+
     public static void startGame(List<Integer> computer) {
+
         while (true) {
             Parameter.initParam();
-            System.out.print("숫자를 입력해주세요 : ");
+            Output.numberInput();
 
             String number = Console.readLine();
             Exception.verifyNum(number);
@@ -29,6 +39,7 @@ public class Service {
     }
 
     private static void checkNumber(List<Integer> computer, String number) {
+
         for(int i = 0; i < number.length(); i++) {
 
             int num = Integer.parseInt(String.valueOf(number.charAt(i)));
@@ -44,26 +55,30 @@ public class Service {
     public static Boolean result(int strike, int ball) {
 
         boolean flag = false;
+        String result = "";
 
         if (strike != 0 && strike != 3 && ball != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            result = ball + BALL + " " + strike + STRIKE;
         } else if (strike == 0 && ball != 0) {
-            System.out.println(ball + "볼");
+            result = ball + BALL;
         } else if (ball == 0 && strike != 3 && strike != 0) {
-            System.out.println(strike + "스트라이크");
+            result = strike + STRIKE;
         } else if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            result = NOTHING;
         } else if (strike == 3) {
-            System.out.println(strike + "스트라이크");
+            result = strike + STRIKE;
             flag = true;
         }
+
+        System.out.println(result);
         return flag;
     }
 
     public static List<Integer> getRandomNum() {
+
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < MAX_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -73,10 +88,10 @@ public class Service {
 
     public static Boolean restartCheck(int num) {
 
-        if(num == 1) {
+        if(num == RE_START) {
             return false;
         }
-        if(num == 2) {
+        if(num == END_GAME) {
             return true;
         }
         else throw new IllegalArgumentException();
