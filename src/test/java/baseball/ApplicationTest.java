@@ -55,6 +55,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임_중_입력_예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("32"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input should be 3-digit integer with non-zero digits")
+        );
+    }
+
+    @Test
     void 힌트_출력_테스트1() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -95,6 +104,39 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("2볼 1스트라이크", "2스트라이크", "3볼", "3스트라이크", "게임 종료");
                 },
                 1, 2, 3
+        );
+    }
+
+    @Test
+    void 힌트_출력_테스트5() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    runException("132", "124", "231", "123", "1", "135", "123", "2");
+                    assertThat(output()).contains("2볼 1스트라이크", "2스트라이크", "3볼", "3스트라이크", "1볼 1스트라이크", "게임 종료");
+                },
+                1, 2, 3, 1, 2, 3
+        );
+    }
+
+    @Test
+    void 게임_후_입력_예외_테스트1() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("132", "124", "231", "123", "neppiness"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("Execution code must be 1 or 2");
+                }, 1, 2, 3
+        );
+    }
+
+    @Test
+    void 게임_후_입력_예외_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("132", "124", "231", "123", "3"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("Execution code must be 1 or 2");
+                }, 1, 2, 3
         );
     }
 
