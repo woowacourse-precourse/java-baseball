@@ -9,16 +9,19 @@ public class BaseBallGame {
     public static final int COMPUTER_NUMBER_MAX = 9;
 
     GameMessageDisplay gameMessageDisplay;
+    UserInputter userInputter;
     List<Integer> computerNumbers;
 
     public BaseBallGame() {
         this.gameMessageDisplay = new GameMessageDisplay();
         this.computerNumbers = new ArrayList<>();
+        this.userInputter = new UserInputter();
     }
 
     public void startGame() {
         this.gameMessageDisplay.printGameStartMessage();
         setComputerNumbers();
+        runGame();
     }
 
     public void setComputerNumbers() {
@@ -28,5 +31,13 @@ public class BaseBallGame {
                 this.computerNumbers.add(randomNumber);
             }
         }
+    }
+
+    public void runGame() {
+        requestUserInput();
+    }
+
+    public void requestUserInput() {
+        userInputter.readline();
     }
 }
