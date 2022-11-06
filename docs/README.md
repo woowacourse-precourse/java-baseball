@@ -32,7 +32,7 @@
 - 게임의 상태를 표현하는 `enum Status class`
   - 새 게임 진행 : `PROCEEDING(0)`, `RESTART(1)`, 게임 중단 : `EXIT(2)`
 - `컴퓨터` 클래스, `사용자` 클래스
-  - `컴퓨터` 클래스 : `List<Integer> number`, `Map<Character, Integer> numberIndexMap`, `makeNewNumber()`, `setNumberIndexMap()`, `getNumberIndexMap()`
+  - `컴퓨터` 클래스 : `List<Integer> numbers`, `Map<Character, Integer> numberIndexMap`, `setNumbers()`, `setNumberIndexMap()`, `getNumberIndexMap()`
   - `사용자` 클래스 : `String number`, `int gameOption`, `setGameNumber()`, `isValidNumber()`, `setGameOption()`, `isValidOption()`
 
 ❓고민해본 것

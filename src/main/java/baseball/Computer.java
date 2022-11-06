@@ -13,8 +13,8 @@ public class Computer {
     private static Map<Character, Integer> numberIndexMap;
 
     public Computer() {
-        numbers = makeNewNumber();
-        numberIndexMap = setNumberIndexMap();
+        setNumbers();
+        setNumberIndexMap();
     }
 
     /*
@@ -23,7 +23,7 @@ public class Computer {
     *
     * @return List
     * */
-    private static List<Integer> makeNewNumber() {
+    private static void setNumbers() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -31,7 +31,8 @@ public class Computer {
                 computerNumber.add(randomNumber);
             }
         }
-        return computerNumber;
+
+        numbers = computerNumber;
     }
 
     /*
@@ -39,15 +40,15 @@ public class Computer {
     *
     * @return Map
     * */
-    private static Map<Character, Integer> setNumberIndexMap() {
-        Map<Character, Integer> numberIndexMap = new HashMap<>();
+    private static void setNumberIndexMap() {
+        Map<Character, Integer> map = new HashMap<>();
 
         for (int index = 0; index < 3; index++) {
             int number = numbers.get(index);
-            numberIndexMap.put((char) (number + '0'), index);
+            map.put((char) (number + '0'), index);
         }
 
-        return numberIndexMap;
+        numberIndexMap = map;
     }
 
     public Map<Character, Integer> getNumberIndexMap() {
