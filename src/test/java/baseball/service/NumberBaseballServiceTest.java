@@ -101,4 +101,20 @@ public class NumberBaseballServiceTest {
         // then
         assertThat(ballCount).isEqualTo(2);
     }
+
+    @DisplayName("스트라이크, 볼 계산 병합 테스트")
+    @Test
+    void getStrikeAndBallCount_success() {
+        // given
+        ComputerNumber computerNumber = new ComputerNumber(List.of(2, 3, 4));
+        String userInput = "245";
+
+        // when
+        int strikeCount = numberBaseballService.getStrikeCount(computerNumber, userInput);
+        int ballCount = numberBaseballService.getBallCount(computerNumber, userInput);
+
+        // then
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(1);
+    }
 }
