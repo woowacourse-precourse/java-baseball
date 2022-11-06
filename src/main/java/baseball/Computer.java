@@ -8,7 +8,9 @@ import java.util.List;
 public class Computer {
     private List<Integer> randomNumber;
 
-    public Computer(){}
+    public Computer() {
+        this.randomNumber = createRandomNumber();
+    }
 
     private List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
