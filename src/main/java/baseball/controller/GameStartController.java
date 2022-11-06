@@ -3,7 +3,6 @@ package baseball.controller;
 
 import baseball.service.GameStartService;
 
-import java.util.List;
 
 public class GameStartController {
     private static void controlGame() {
@@ -49,8 +48,8 @@ public class GameStartController {
     }
 
     private static void saveNumber() {
-        saveUserNumber();
         saveComputerNumber();
+        saveUserNumber();
     }
 
     private static void saveUserNumber() {
