@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static baseball.GameProgressMessage.GAME_END_MESSAGE;
-import static baseball.GameProgressMessage.GAME_PROGRESS_MESSAGE;
+import static baseball.GameProgressMessage.*;
 import static baseball.ResultMessage.*;
 
 public class BullsAndCows {
@@ -43,17 +42,17 @@ public class BullsAndCows {
         }
 
         String userInput = Console.readLine();
-        ResultMessage resultOfEndGame = getResultOfEndGame(userInput);
+        GameProgressMessage resultOfEndGame = getResultOfEndGame(userInput);
 
-        System.out.println(GAME_END_MESSAGE);
+        System.out.println(GAME_PROGRESS_ASK_QUIT);
 
-        if (resultOfEndGame.equals(RESTART)) {
-            System.out.println(RESTART.getMessage());
+        if (resultOfEndGame.equals(GAME_PROGRESS_RESTART)) {
+            System.out.println(GAME_PROGRESS_RESTART);
             restart();
         }
 
-        if (resultOfEndGame.equals(END)) {
-            System.out.println(END.getMessage());
+        if (resultOfEndGame.equals(GAME_PROGRESS_END)) {
+            System.out.println(GAME_PROGRESS_END);
         }
     }
 
@@ -71,14 +70,14 @@ public class BullsAndCows {
         return getResultScoreByFormat().trim();
     }
 
-    private ResultMessage getResultOfEndGame(String userInput) {
+    private GameProgressMessage getResultOfEndGame(String userInput) {
         int flag = Integer.parseInt(userInput);
         if (flag == (RESTART_GAME)) {
-            return RESTART;
+            return GAME_PROGRESS_RESTART;
         }
 
         if (flag == END_GAME) {
-            return END;
+            return GAME_PROGRESS_END;
         }
 
         throw new IllegalArgumentException("Game is over, you must input only flag number");
