@@ -2,17 +2,19 @@ package baseball;
 
 import baseball.exception.ExceptionCode;
 import baseball.exception.GameException;
+import baseball.gameComponents.SubUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class IsNumberTest {
+    private SubUtils subUtils = new SubUtils();
     @Test
     void 정상_테스트() {
         //given
         String input = "123";
         //when
-        Throwable throwable = catchThrowable(() -> isNumber(input));
+        Throwable throwable = catchThrowable(() -> subUtils.isNumber(input));
         //then
         assertThat(throwable)
                 .isNull();
@@ -23,7 +25,7 @@ public class IsNumberTest {
         //given
         String input = " 123";
         //when
-        Throwable throwable = catchThrowable(() -> isNumber(input));
+        Throwable throwable = catchThrowable(() -> subUtils.isNumber(input));
         //then
         assertThat(throwable)
                 .isInstanceOf(GameException.class);
@@ -34,7 +36,7 @@ public class IsNumberTest {
         //given
         String input = "ㅁ123";
         //when
-        Throwable throwable = catchThrowable(() -> isNumber(input));
+        Throwable throwable = catchThrowable(() -> subUtils.isNumber(input));
         //then
         assertThat(throwable)
                 .isInstanceOf(GameException.class);
@@ -45,17 +47,9 @@ public class IsNumberTest {
         //given
         String input = "";
         //when
-        Throwable throwable = catchThrowable(() -> isNumber(input));
+        Throwable throwable = catchThrowable(() -> subUtils.isNumber(input));
         //then
         assertThat(throwable)
                 .isInstanceOf(GameException.class);
-    }
-
-    void isNumber(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new GameException(ExceptionCode.INPUT_NOT_VALID);
-        }
     }
 }
