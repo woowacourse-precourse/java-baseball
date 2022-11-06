@@ -42,7 +42,7 @@ public class Domain {
         return computer;
     }
 
-    public String getInputUserNumber() { // test 입력시오류경우_확인
+    public String getInputUserNumber() {
         String inputUserNumber = Console.readLine();
 
         isInputAlright(inputUserNumber);
@@ -51,10 +51,11 @@ public class Domain {
     }
 
 
-    public void isInputAlright(String userNumber) { // test 입력시오류경우_확인
+    public void isInputAlright(String userNumber) {
+
 
         //입력된 것이 숫자가 아닌 경우 ex) 알파벳이 올 수도 있음
-        if (!isNumber(userNumber)) {
+        if (isNotNumber(userNumber)) {
             throw new IllegalArgumentException("숫자가 아님");
         }
 
@@ -73,23 +74,18 @@ public class Domain {
 
     }
 
+    private boolean isNotNumber(String userNumber) {
+        long isNotNumber_count = userNumber.chars().filter(c -> !(c >= '1' && c <= '9')).count();
+        if(isNotNumber_count>0){
+            return true;
+        }
+        return false;
+    }
+
     private boolean isDuplicate(String userNumber, long count_exceptDuplicate) {
         return count_exceptDuplicate != userNumber.length();
     }
 
-
-    private boolean isNumber(String userNumber) {
-
-        for (int index = 0; index < userNumber.length(); index++) {
-            char c = userNumber.charAt(index);
-            if (c >= '1' && c <= '9') {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
 
     public List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
         return convertStringToIntegerList(userNumber);
