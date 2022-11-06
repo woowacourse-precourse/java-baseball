@@ -43,9 +43,6 @@ public class InputNumberVerification {
     }
 
     public static boolean verifyOneOrTwoButton(int receivedButtonNumber){
-        if(receivedButtonNumber == 1 || receivedButtonNumber ==2){
-            return false;
-        }
-        return true;
+        return receivedButtonNumber == 1 || receivedButtonNumber == 2;
     }
 }
