@@ -2,7 +2,7 @@ package baseball.factory;
 
 import baseball.domain.game.GameComputer;
 import baseball.domain.number.GameNumbers;
-import baseball.factory.fake.FakeGameNumbers;
+import baseball.factory.stub.StubGameNumbers;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +38,7 @@ public final class GameComputerFactory {
 
     public static GameComputer createFakeGameComputer(long returnStrike, long returnBall) {
         GameComputer computer = new GameComputer();
-        GameNumbers computerAnswer = new FakeGameNumbers(returnStrike, returnBall);
+        GameNumbers computerAnswer = new StubGameNumbers(returnStrike, returnBall);
 
         List<Field> fields = Arrays
             .stream(computer.getClass().getDeclaredFields())

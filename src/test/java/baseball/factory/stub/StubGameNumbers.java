@@ -1,13 +1,13 @@
-package baseball.factory.fake;
+package baseball.factory.stub;
 
 import baseball.domain.number.GameNumbers;
 
-public class FakeGameNumbers extends GameNumbers {
+public class StubGameNumbers extends GameNumbers {
 
     private final long returnStrike;
     private final long returnBall;
 
-    public FakeGameNumbers(long returnStrike, long returnBall) {
+    public StubGameNumbers(long returnStrike, long returnBall) {
         this.returnStrike = returnStrike;
         this.returnBall = returnBall;
     }
