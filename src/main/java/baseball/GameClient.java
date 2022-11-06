@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class GameClient {
     private final BaseballUtil baseballUtil;
     public GameClient() {
@@ -9,7 +7,21 @@ public class GameClient {
     }
 
     public boolean gameStart() {
+        boolean sustainable = true;
+        this.announceGameStart();
+        while (sustainable) {
+            InGame game = new InGame(this.baseballUtil);
 
+            boolean result = game.playGame();
+
+            if (result) {
+                this.announceGameEnd();
+            }
+            int user_input = this.getUserInput();
+            if (user_input == 2) {
+                sustainable = false;
+            }
+        }
         return true;
     }
 
