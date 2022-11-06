@@ -22,8 +22,18 @@ public class Application {
             System.out.println("예외 발생");
             return;
         }
-        System.out.println(user);
 
+        int ball = 0;
+        int strike = 0;
+
+    }
+
+    static void countBall(List<Integer> computer, List<Integer> user, int ball) {
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
     }
 
     static void addUserNumber(List<Integer> user, String userNumber) {
