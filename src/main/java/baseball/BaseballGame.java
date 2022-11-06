@@ -89,7 +89,7 @@ public class BaseballGame extends Game {
     }
 
     private boolean isGameOver(HashMap<Result, Integer> turnResult) {
-        return false;
+        return turnResult.get(Result.STRIKE) == 3;
     }
 
     private boolean askNewGame(String input) {
