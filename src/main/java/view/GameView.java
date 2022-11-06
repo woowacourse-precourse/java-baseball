@@ -39,39 +39,13 @@ public class GameView {
 
                 int numInputOfUser = UseFunc.parseIntFromStr(UseFunc.getString());
                 isValidUser(numInputOfUser);
-                if (isEndgameInputOfUser(gameController, numInputOfUser)) {
+                if (gameController.isEndgameInputOfUser(numInputOfUser)) {
                     break;
                 }
             }
             gameController.initCntStrikeBallOfComputer();
         }
     }
-
-
-    public boolean isEndgameInputOfUser(GameController gameController, int numInputOfUser) {
-        if (isEndGameUserWant(numInputOfUser)) {
-            return true;
-        }
-        isReGameUserWant(gameController, numInputOfUser);
-        return false;
-    }
-
-    private boolean isEndGameUserWant(int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_END_GAME)) {
-            System.out.println(MSG_GAME_END);
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isReGameUserWant(GameController gameController, int numInputOfUser) {
-        if (UseFunc.isEqualIntOfTwo(numInputOfUser, NUM_RESTART_GAME)) {
-            gameController.reStartGame();
-            return true;
-        }
-        return false;
-    }
-
 
     public void isValidUser(int numInput) {
         isValidRightNum(numInput);
