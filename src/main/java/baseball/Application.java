@@ -1,11 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -24,36 +24,30 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        String randomString=computer.toString();
-        guess(randomString);
+        guess(computer);
     }
-    public static void guess(String comNum){
-        Scanner sc = new Scanner(System.in);
+    public static void guess(List<Integer> comNum){
         boolean isWrong=true;
         HashMap comMap= new HashMap<Integer,String>();
         for(int digits=0;digits<3;digits++){
-            comMap.put(digits,comNum.substring(digits,digits+1));
-            System.out.println("comMap"+comMap);
+            comMap.put(digits,String.valueOf(comNum.get(digits)));
         }
         while(isWrong){
             HashMap usrMap= new HashMap<Integer,String>();
             System.out.println("숫자를 입력해주세요 :");
-            String usrNum= sc.next();
+            String usrNum= Console.readLine();
             if(usrNum.length()>3||usrNum.length()<3){
                 throw new IllegalArgumentException("세자리 수가 아닙니다.");
             }
             for(int digits=0;digits<3;digits++){
                 usrMap.put(digits,usrNum.substring(digits,digits+1));
-                System.out.println("usrMap"+usrMap);
             }
             int strike=0;
             int ball=0;
             for(int i=0;i<3;i++){
-                //첫째자리 유무
                 Object num=comMap.get(i);
                 if(usrMap.containsValue(num)){
                     if(usrMap.get(i).equals(num)){
-                        //같으면 스트라이크 다르면 볼
                        strike+=1;
                     }else{
                         ball+=1;
@@ -78,9 +72,8 @@ public class Application {
 
     }
     public static void isNewGame(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int isEnd= sc.nextInt();
+        int isEnd= Integer.valueOf(Console.readLine());
         if(isEnd==2){
             return;
         }else{
