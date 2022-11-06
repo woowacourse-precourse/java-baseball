@@ -37,7 +37,7 @@ public class User {
     return Integer.valueOf(s);
   }
 
-  public List<Integer> getUserList(){
+  public List<Integer> getUserNumberList(){
     return this.user;
   };
 
