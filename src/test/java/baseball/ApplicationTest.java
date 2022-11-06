@@ -64,25 +64,6 @@ class ApplicationTest extends NsTest {
                     IllegalArgumentException.class));
         }
 
-        @Test
-        void 마지막_사용자_입력_검증_1이나2가아닌수_예외() {
-            assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserFinalInput("3")).isInstanceOf(
-                    IllegalArgumentException.class));
-
-            assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserFinalInput("a")).isInstanceOf(
-                    IllegalArgumentException.class));
-
-            assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserFinalInput("ㅁ")).isInstanceOf(
-                    IllegalArgumentException.class));
-
-            assertSimpleTest(
-                () -> assertThatThrownBy(() -> Application.confirmUserFinalInput("12")).isInstanceOf(
-                    IllegalArgumentException.class));
-        }
-
 
     }
 
@@ -101,10 +82,10 @@ class ApplicationTest extends NsTest {
             BaseballCount baseballCount2 = new BaseballCount(computernums2, usernums2);
             assertThat(baseballCount2.getBallcount()).isEqualTo(0);
 
-            assertRandomNumberInRangeTest(() -> {
+           /* assertRandomNumberInRangeTest(() -> {
                 run("312", "123", "1", "645", "456", "2");
                 assertThat(output()).contains("3볼", "3스트라이크", "3볼", "3스트라이크", "게임 종료");
-            }, 1, 2, 3, 4, 5, 6);
+            }, 1, 2, 3, 4, 5, 6);*/
         }
 
         @Test
