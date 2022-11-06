@@ -33,6 +33,6 @@ public class BaseBallGameController {
     }
 
     private boolean gameEnd(int strike) {
-        return strike == BallValidator.INPUT_SIZE;
+        return strike == BallValidator.MAX_BALL_SIZE;
     }
 }

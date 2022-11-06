@@ -13,7 +13,7 @@ public class ComputerBallGenerator {
 
     public static List<Integer> generateComputerBalls() {
         LinkedHashSet<Integer> computerBalls = new LinkedHashSet<>();
-        while (computerBalls.size() != BallValidator.INPUT_SIZE) {
+        while (computerBalls.size() != BallValidator.MAX_BALL_SIZE) {
             computerBalls.add(Randoms.pickNumberInRange(MINIMUM_BALL_NUMBER, MAXIMUM_BALL_NUMBER));
         }
 

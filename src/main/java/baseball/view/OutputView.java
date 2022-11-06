@@ -41,7 +41,7 @@ public class OutputView {
     }
 
     private static void printGameEnd(int strike, int ball) {
-        if (strike == BallValidator.INPUT_SIZE && ball == 0) {
+        if (strike == BallValidator.MAX_BALL_SIZE && ball == 0) {
             System.out.println(GAME_END);
         }
     }

@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 public class BallConvertor {
     public static List<Ball> mapToBalls(List<Integer> ballsBeforeMap) {
         BallValidator.isValidBalls(ballsBeforeMap);
-        return IntStream.range(0, BallValidator.INPUT_SIZE)
+        return IntStream.range(0, BallValidator.MAX_BALL_SIZE)
                 .mapToObj(index -> new Ball(index + 1, ballsBeforeMap.get(index)))
                 .collect(Collectors.toList());
     }

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class BallValidator {
 
-    public static final int INPUT_SIZE = 3;
+    public static final int MAX_BALL_SIZE = 3;
     public static final String KEEP_PLAY_GAME_CODE = "1";
     private static final String STOP_PLAY_GAME_CODE = "2";
     private static final String ERROR_MESSAGE_NOT_VALID_INPUT_SIZE = "입력 숫자는 총 3개여야 합니다.";
@@ -26,14 +26,14 @@ public class BallValidator {
     }
 
     private static void isValidInputSize(int inputSize) {
-        if (inputSize != INPUT_SIZE) {
+        if (inputSize != MAX_BALL_SIZE) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_INPUT_SIZE);
         }
     }
 
     private static void hasDuplicateNumber(List<Integer> balls) {
         Set<Integer> duplicateChecker = new HashSet<>(balls);
-        if (duplicateChecker.size() != INPUT_SIZE) {
+        if (duplicateChecker.size() != MAX_BALL_SIZE) {
             throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATE_NUMBER);
         }
     }
