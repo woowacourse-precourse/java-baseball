@@ -4,6 +4,7 @@ import baseball.input.InputAble;
 import baseball.input.InputConsole;
 import baseball.player.Computer;
 import baseball.player.GamePlayer;
+import baseball.uitls.RandomNumber;
 import baseball.validate.ValidateNumber;
 import baseball.view.ViewConsole;
 import baseball.view.Viewable;
@@ -36,7 +37,7 @@ public class NumberBaseBall implements PlayAble {
     public void start() {
         initializeSetting();
         view.printStart();
-        computer.setNumber(Computer.makeRandomNumber());
+        computer.setNumber(RandomNumber.makeRandomNumber());
     }
 
     private void initializeSetting() {
