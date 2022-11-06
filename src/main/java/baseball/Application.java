@@ -21,20 +21,30 @@ public class Application {
         }
         while(true){
             System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.print("숫자를 입력해주세요 :");
 
-            List<Integer> user = validationAndConvert(Console.readLine());
 
-            Integer ball = calculationBall(computer,user);
+            while(true) {
+                System.out.print("숫자를 입력해주세요 :");
 
-            Integer strike = calculationStrike(computer,user);
+                List<Integer> user = validationAndConvert(Console.readLine());
 
-            String result = printCurrentSituation(ball,strike);
-            System.out.println(result);
+                Integer ball = calculationBall(computer, user);
 
+                Integer strike = calculationStrike(computer, user);
+
+                String result = printCurrentSituation(ball, strike);
+                System.out.println(result);
+
+
+            }
 
         }
 
+    }
+
+    public static Boolean isDone(String result){
+        if(result.equals("3스트라이크")) return true;
+        else return false;
     }
     public static String printCurrentSituation(Integer ball , Integer strike){
         if(ball == 0 && strike == 0) return "낫싱";
