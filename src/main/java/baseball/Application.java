@@ -108,6 +108,10 @@ public class Application {
         return userAnswer;
     }
 
+    public static void availableUserAnswerIsChecked(String word){
+        String userAnswer = word;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
