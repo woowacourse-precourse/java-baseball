@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.GameNumberGenerator.*;
+import static baseball.util.GameNumberGenerator.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class GameNumberGeneratorTest {

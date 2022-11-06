@@ -1,8 +1,9 @@
 package baseball;
 
+import baseball.util.GameNumberGenerator;
 import org.junit.jupiter.api.Test;
 
-import static baseball.InputValidator.*;
+import static baseball.util.InputValidator.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class InputValidatorTest {

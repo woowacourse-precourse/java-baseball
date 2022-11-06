@@ -1,9 +1,9 @@
-package baseball;
+package baseball.util;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.GameNumberGenerator.*;
+import static baseball.util.GameNumberGenerator.*;
 
 public class InputValidator {
     public static final String RETRY_GAME = "1";
