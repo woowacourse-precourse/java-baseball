@@ -18,7 +18,7 @@
 
 ## 🔧 리팩토링
 1. TODO 2, 3, 5 기준으로 메소드 추출
-   - [ ] `initGame()`
+   - [x] `initGame()`
    - [ ] `playGameUntil3S()`
    - [ ] `changeStatusByOption()`
 

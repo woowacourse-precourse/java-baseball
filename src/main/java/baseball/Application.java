@@ -24,9 +24,7 @@ public class Application {
             // TODO: 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
             while (status != Status.EXIT) {
                 // TODO: 2. 게임 진행을 위한 초기화
-                computer = new Computer();
-                user = new User();
-                result = Result.NOTHING;
+                initGame();
 
                 // TODO: 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
                 while (result != Result.THREESTRIKE) {
@@ -65,5 +63,17 @@ public class Application {
         }
 
         System.out.println(END_GAME);
+    }
+
+    /*
+     * 게임 진행을 위한 초기화 작업
+     * Computer, User 객체를 만들고, result 초기화
+     *
+     * @return void
+     * */
+    private static void initGame() {
+        computer = new Computer();
+        user = new User();
+        result = Result.NOTHING;
     }
 }
