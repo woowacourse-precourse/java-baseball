@@ -1,22 +1,24 @@
-package baseball.service;
-
-import baseball.model.Ball;
-import baseball.model.Result;
+package baseball.model;
 
 import java.util.List;
+import java.util.Objects;
 
-public class RefereeService {
-    public Result generateResult(List<Ball> computerBalls, List<Ball> playerBalls) {
+public class Referee {
+    private static final int START_INDEX = 0;
+    private static final int MAX_BALLS_SIZE = 3;
+
+    public Result doJudge(Balls computerBalls, Balls playerBalls) {
         Result result = new Result();
-        for (int i = 0; i < playerBalls.size(); i++) {
-            Ball computerBall = computerBalls.get(i);
-            Ball playerBall = playerBalls.get(i);
 
-            if (computerBall.equals(playerBall)) {
+        List<Integer> computerValues = computerBalls.getValues();
+        List<Integer> playerValues = playerBalls.getValues();
+
+        for (int i = START_INDEX; i < MAX_BALLS_SIZE; i++) {
+            if (Objects.equals(computerValues.get(i), playerValues.get(i))) {
                 result.increaseStrikeCount();
                 continue;
             }
-            if (computerBalls.contains(playerBall)) {
+            if (computerValues.contains(playerValues.get(i))) {
                 result.increaseBallCount();
             }
         }
@@ -26,6 +28,7 @@ public class RefereeService {
     public void printResult(Result result) {
         if (result.hasNothing()) {
             System.out.println("낫싱");
+            return;
         }
         if (result.hasBall()) {
             System.out.print(result.getBallCount() + "볼 ");
