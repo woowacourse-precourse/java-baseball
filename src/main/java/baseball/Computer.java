@@ -13,7 +13,7 @@ public class Computer {
         while (true){
             try {
                 List<Integer> numberList = randomNumberGenerate();
-                number= makeNumber(numberList);
+                number= BaseBallNumber.of(numberList);
                 return;
             }catch (IllegalArgumentException e){
             }
@@ -28,9 +28,6 @@ public class Computer {
         return numberList;
     }
 
-    private BaseBallNumber makeNumber(List<Integer> numberList) {
-        return new BaseBallNumber(numberList);
-    }
 
     public boolean isSameNumber(List<Integer> integerList) {
         List<Integer> number = this.number.getNumber();

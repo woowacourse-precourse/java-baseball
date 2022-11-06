@@ -30,4 +30,8 @@ public class BaseBallNumber {
     public List<Integer> getNumber() {
         return number.stream().collect(Collectors.toList());
     }
+
+    public static BaseBallNumber of(List<Integer> numberList) {
+        return new BaseBallNumber(numberList);
+    }
 }
