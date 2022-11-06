@@ -7,8 +7,8 @@ import java.util.List;
 
 public class RandomNumber {
 
-    NumberVO numberVO = new NumberVO();
-    public void createRandomNumber(){
+    public List<Integer> createRandomNumber(){
+
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,9 +16,7 @@ public class RandomNumber {
                 computer.add(randomNumber);
             }
         }
-        numberVO.setRandomNumber(computer);
-        System.out.println("난수:"+numberVO.getRandomNumber()+":");
-
+        return computer;
     }
 
 }
