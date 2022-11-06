@@ -8,14 +8,16 @@ import java.io.InputStream;
 import java.util.Scanner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserBallsInputTest {
 
     private UserBallsInput input;
-
     @BeforeEach
     void setUp() {
         input = new UserBallsInput(3);
@@ -72,18 +74,18 @@ class UserBallsInputTest {
         Scanner scanner = new Scanner(System.in);
         assertThatThrownBy(() -> input.validElement(scanner.toString()))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("input의 구성요소가 숫자로만 이루어지지 않습니다");
+            .hasMessage("input의 구성요소가 0을 제외한 숫자로만 이루어지지 않습니다");
     }
     @Order(6)
-    @DisplayName("유효성 검사 3. 유효한 구성요소")
+    @DisplayName("유효성 검사 4. 유효하지 않은 구성요소")
     @ParameterizedTest(name ="{displayName}) {index} = {0} ")
-    @ValueSource(strings = {"ㅁ23", "a21", "7vㅇ"})
-    void    isInputNumberIsValidElement(String inputString) {
+    @ValueSource(strings = {"ㅁ23", "a21", "023"})
+    void    isInputNumberIsUnValidElement(String inputString) {
         InputStream in = generateUserInput(inputString);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
         assertThatThrownBy(() -> input.validElement(scanner.toString()))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("input의 구성요소가 숫자로만 이루어지지 않습니다");
+            .hasMessage("input의 구성요소가 0을 제외한 숫자로만 이루어지지 않습니다");
     }
 }
