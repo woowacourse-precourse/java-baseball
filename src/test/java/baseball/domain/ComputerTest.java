@@ -1,7 +1,7 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,8 +10,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest extends NsTest {
-    @Test
-    void pickRandomNumbers_메서드로_랜덤_번호_뽑기() {
+    @DisplayName("pickRandomNumbers 메서드는 랜덤 번호를 뽑는다")
+    void pickRandomNumbers() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run();

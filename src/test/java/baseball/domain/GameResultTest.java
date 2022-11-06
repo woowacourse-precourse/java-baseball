@@ -8,13 +8,14 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameResultTest {
+    Player player;
+    Computer computer;
     GameResult gameResult = new GameResult();
 
     @DisplayName("calculate 메서드는 게임 결과를 반환한다")
     @Test
     void calculateGameResult() {
-        Player player;
-        Computer computer = new Computer(List.of(4, 5, 6));
+        computer = new Computer(List.of(4, 5, 6));
 
         player = new Player(List.of(1, 2, 3));
         gameResult.calculate(computer, player);
