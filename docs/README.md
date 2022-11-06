@@ -69,3 +69,7 @@
 - GameManager 클래스
     1. 게임을 실행하는 기능
     2. 게임 초기화 기능
+
+---
+### 초기 요구사항 구현 결과 (commit#88ef721)
+<img src = "img/imple_UML.jpeg">
