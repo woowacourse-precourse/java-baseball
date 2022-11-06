@@ -3,7 +3,7 @@
 # MVC 관점에서 java -base ball 기능목록 정리
 ## Model : Application의 데이터
 ### Game
-- [ ] 게임을 진행한다.
+- [x] 게임을 진행한다.
 ### Computer
 - [ ] 생성된 랜덤 숫자를 저장한다.
 ### Randoms
