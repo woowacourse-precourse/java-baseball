@@ -21,11 +21,11 @@ public class GameService {
     public void startGame() {
         SystemMessage.startGameMessage();
         answerList = RandomUtils.makeRandomList();
-        while (game.getStrikeCount() <3) {
+
+        while (game.getStrikeCount()<3) {
+            game.initGame();
             getUserNumber();
             compareNumber();
-            //비교하기
-
         }
     }
 
@@ -57,5 +57,9 @@ public class GameService {
                 game.addBallCount();
         }
         SystemMessage.printResultMessage(game.getStrikeCount(), game.getBallCount());
+    }
+
+    public void askRetry(){
+        //SystemMessage.
     }
 }
