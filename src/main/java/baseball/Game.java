@@ -38,17 +38,14 @@ public class Game {
         return computerNumber;
     }
 
-    public List<Integer> getPlayerNumber() throws IllegalArgumentException {
+    public List<Integer> getPlayerNumber() {
         List<Integer> playerNumber = new ArrayList<Integer>();
         String input = Console.readLine();
-        if (input.length() != INPUT_LENGTH) {
+        if (input.length() != INPUT_LENGTH || playerNumber.size() != playerNumber.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
         for (int digit = 0; digit < input.length(); digit++) {
             playerNumber.add(Integer.valueOf(String.valueOf(input.charAt(digit))));
-        }
-        if (playerNumber.size() != playerNumber.stream().distinct().count()) {
-            throw new IllegalArgumentException();
         }
         return playerNumber;
     }
@@ -96,13 +93,13 @@ public class Game {
         }
     }
 
-    public void getHint() throws IllegalArgumentException {
+    public void getHint() {
         System.out.print(INPUT_NUMBER_NOTICE);
         playerNumber = getPlayerNumber();
         printResult(checkNumber(playerNumber));
     }
 
-    public void start() throws IllegalArgumentException {
+    public void start() {
         isGameOn = true;
         computerNumber = getComputerNumber();
         do {
@@ -118,7 +115,7 @@ public class Game {
         System.out.println(RESTART_OR_END_NOTICE);
     }
 
-    public int getRestartOrEndNumber() throws IllegalArgumentException {
+    public int getRestartOrEndNumber() {
         int input = Integer.parseInt(Console.readLine());
         if (input != RESTART_NUMBER && input != END_NUMBER) {
             throw new IllegalArgumentException();
@@ -126,7 +123,7 @@ public class Game {
         return input;
     }
 
-    public void setRestarter(int restartOrEndNumber) throws IllegalArgumentException {
+    public void setRestarter(int restartOrEndNumber) {
         if (restartOrEndNumber == RESTART_NUMBER) {
             restarter = true;
         } else if (restartOrEndNumber == END_NUMBER) {

@@ -5,15 +5,10 @@ public class Application {
         Game game = new Game();
         game.notifyStart();
         do {
-            try {
-                game.start();
-                game.notifyRestartOrEnd();
-                game.setRestarter(game.getRestartOrEndNumber());
-            }catch (IllegalArgumentException e){
-                game.restarter = false;
-                throw new IllegalArgumentException();
-            }
-        }while (game.restarter);
-        }
+            game.start();
+            game.notifyRestartOrEnd();
+            game.setRestarter(game.getRestartOrEndNumber());
+        } while (game.restarter);
     }
+}
 
