@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiConsumer;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,6 +41,9 @@ class BaseballController {
             try {
                 console.printOutput("숫자를 입력해주세요 : ");
                 Numbers inputNumbers = baseballGame.convertToNumbers(console.getInput());
+
+                BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
+                console.printOutput(ballCount.toString());
             } catch (IllegalArgumentException e) {
                 console.printOutput(e.getMessage());
             }
@@ -59,6 +64,51 @@ class BaseballGame {
             return numbers.parseToNumbers(inputString);
         }
         throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
+    public BallCount countBall(Numbers answer, Numbers inputNumbers) {
+        AtomicInteger strike = new AtomicInteger();
+        AtomicInteger ball = new AtomicInteger();
+
+        answer.indexedForEach((a, i) -> {
+
+            inputNumbers.indexedForEach((n, j) -> {
+                if (!a.equals(n)) return;
+                if (i.equals(j)) strike.addAndGet(1);
+                else ball.addAndGet(1);
+            });
+        });
+
+        return new BallCount(ball.get(), strike.get());
+    }
+}
+
+class BallCount {
+    private int ball;
+    private int strike;
+
+    BallCount(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+
+        if (ball != 0) {
+            result += ball + "볼 ";
+        }
+
+        if (strike != 0) {
+            result += strike + "스트라이크";
+        }
+
+        if (result.length() == 0) {
+            result = "낫싱";
+        }
+
+        return result;
     }
 }
 
@@ -127,6 +177,12 @@ class Numbers {
                 .collect(Collectors.toList());
 
         return new Numbers(numbers);
+    }
+
+    public void indexedForEach(BiConsumer<Integer, Integer> consumer) {
+        for (int i = 0; i < numbers.size(); i++) {
+            consumer.accept(numbers.get(i), i);
+        }
     }
 }
 
