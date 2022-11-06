@@ -31,25 +31,25 @@ public class User {
     }
 
 
-    private boolean isValidPositiveInt(int num) {
+    private void isValidPositiveInt(int num) {
         if (num > 0) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
     }
 
 
-    private boolean isValidLength(String str) {
+    private void isValidLength(String str) {
         if (str.length() == 3) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException(MSG_INPUT_LENGTH_ONLY_THREE);
     }
 
 
-    private boolean isValidNumOfIndividually(String str) {
+    private void isValidNumOfIndividually(String str) {
         if (UseFunc.isNumOfIndividually(str)) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException(MSG_INPUT_NUM_INDIVIDUALLY);
     }
