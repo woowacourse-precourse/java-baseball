@@ -31,6 +31,14 @@ public class BaseballGameController {
         computer.setRandomNumber();
         List<Integer> computerRandomNumber = computer.getRandomNumber();
 
+        while (baseballGameService.getStrikeCount() != THREE_STRIKE) {
+            baseballGameView.printInputNumber();
+            List<Integer> userNumber = getUserNumber();
+            updateHint(computerRandomNumber, userNumber);
+            printHint();
+        }
+
+        baseballGameView.printEndMessage();
     }
 
     private List<Integer> getUserNumber() {
