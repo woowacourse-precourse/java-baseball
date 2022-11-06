@@ -1,8 +1,8 @@
 package baseball;
 
-public class baseballGame {
+public class BaseballGame {
     private Rival computer;
-    baseballGame(){
+    BaseballGame(){
         computer = new Rival();
     }
 }
