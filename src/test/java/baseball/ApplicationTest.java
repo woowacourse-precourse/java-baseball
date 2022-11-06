@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +29,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @DisplayName("잘못된 플레이어 숫자 테스트")
+    @Test
+    void 올바르지않은_숫자_테스트(){
+        final List<Integer> invalidNumbers = List.of(105, 0, 499, 676, 1, 4921);
+        assertThat(invalidNumbers).filteredOn(number ->
+                !Application.isNumberValid(number));
     }
 
     @Override
