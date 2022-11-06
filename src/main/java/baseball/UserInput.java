@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import static baseball.Functions.stringToIntegerList;
+import static baseball.Game.Max_size;
+import static baseball.Game.CONTINUE;
+import static baseball.Game.END;
 
 public class UserInput {
-    private final static String CONTINUE = "1";
-    private final static String END = "2";
-    private final static int Max_size = 3;
     public static String numberInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();

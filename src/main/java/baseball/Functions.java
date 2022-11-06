@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Game.Max_size;
+import static baseball.Game.STRIKE;
+import static baseball.Game.BALL;
+
 public class Functions {
-    private final static int BALL = 0;
-    private final static int STRIKE = 1;
-    private final static int Max_size = 3;
     public static List<Integer> createTargetNums() {
         List<Integer> targetNums = new ArrayList<>();
         while (targetNums.size() < Max_size) {
@@ -38,8 +39,8 @@ public class Functions {
         b_s_list.add(strikes);
         return b_s_list;
     }
-    public static boolean is3Strikes(List<Integer> ball_Strike) {
-        if (ball_Strike.get(STRIKE) == 3) return true;
+    public static boolean isFullhit(List<Integer> ball_Strike) {
+        if (ball_Strike.get(STRIKE) == Max_size) return true;
         return false;
     }
     public static void printResult(List<Integer> ball_Strike) {

@@ -6,8 +6,11 @@ import static baseball.Functions.*;
 import static baseball.UserInput.*;
 
 public class Game {
-    private final static String CONTINUE = "1";
-    //private final static String END = "2";
+    public final static int BALL = 0;
+    public final static int STRIKE = 1;
+    public final static int Max_size = 3;
+    public final static String CONTINUE = "1";
+    public final static String END = "2";
     public static void start(){
         begin_message();
         do {
@@ -25,7 +28,7 @@ public class Game {
             List<Integer> userNums = stringToIntegerList(numberInput());
             List<Integer> ball_Strike = count_BallStrike(targetNums, userNums);
             printResult(ball_Strike);
-            if (is3Strikes(ball_Strike))
+            if (isFullhit(ball_Strike))
                 break;
         }
     }
