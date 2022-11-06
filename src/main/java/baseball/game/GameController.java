@@ -3,15 +3,12 @@ package baseball.game;
 import baseball.view.InputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 import static baseball.game.Game.*;
 import static baseball.game.Option.COUNT_BALL;
 import static baseball.game.Option.RESTART;
 import static baseball.game.exception.ExceptionCase.*;
 import static baseball.view.InputView.inputRestartView;
-import static baseball.view.InputView.startProgramView;
 import static baseball.view.OutputView.*;
 
 

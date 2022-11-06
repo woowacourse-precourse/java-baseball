@@ -6,11 +6,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-import static baseball.view.InputView.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class viewTest extends NsTest {
+
+public class ViewTest extends NsTest {
     @Test
     void startProgramViewTest(){
         assertRandomNumberInRangeTest(
