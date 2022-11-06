@@ -1,9 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,11 +15,11 @@ public class GameSet {
     public GameSet(){
         computerAnswer = CreateRandomNumber.setComputerAnswer();
     }
-    //랜덤으로 3자리수 숫자 만들어주는 함수
 
     //게임을 시작하는 함수
     public void playBaseballGame(){
         PrintMessage.inputMessage();
+        System.out.println(computerAnswer);
         userAnswer = CreateUserNumber.userAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
         compareAnswer();
@@ -41,6 +40,7 @@ public class GameSet {
             }
         }
     }
+    // 게임이 끝났는지 물어보는 함수
     public boolean isGameEnd(){
         if(strikeCount == 3){
             PrintMessage.answerMessage();
