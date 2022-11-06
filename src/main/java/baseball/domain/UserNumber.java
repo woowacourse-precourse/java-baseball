@@ -8,7 +8,7 @@ public class UserNumber {
 	private static final int NUMBER_LENGTH = 3;
 	private static final int START_NUMBER = 1;
 	private static final int END_NUMBER = 9;
-	public final List<Integer> userNumber;
+	private final List<Integer> userNumber;
 
 	public UserNumber(String userInput) {
 		this.userNumber = createUserNumber(userInput);
@@ -40,5 +40,9 @@ public class UserNumber {
 
 	private boolean isNotDuplicate(int[] userNums) {
 		return Arrays.stream(userNums).distinct().count() == NUMBER_LENGTH;
+	}
+
+	public List<Integer> getUserNumber() {
+		return userNumber;
 	}
 }

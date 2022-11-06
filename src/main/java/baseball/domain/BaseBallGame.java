@@ -12,7 +12,7 @@ public class BaseBallGame {
 	}
 
 	public void inputUserNumber(String str) {
-		this.userNumber = new UserNumber(str).userNumber;
+		this.userNumber = new UserNumber(str).getUserNumber();
 	}
 
 	public void countScore() {
