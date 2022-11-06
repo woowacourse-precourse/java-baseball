@@ -100,11 +100,8 @@ public class GameControllerTest {
         System.setIn(in);
         OutputStream out1 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out1));
-        assertThat(out1.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")).isTrue();
-        OutputStream out2 = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out2));
-        assertThat(out2.equals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")).isTrue();
         assertThat(gameController.getPlayersOpinion()).isEqualTo("1");
+        assertThat(out1.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
     }
 
     @Test

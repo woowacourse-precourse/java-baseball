@@ -14,6 +14,7 @@ public class GameController {
     GameStatusService gameStatusService;
     PlayerView playerView = new PlayerView();
     ScoreResultView scoreResultView = new ScoreResultView();
+    GameStatusView gameStatusView = new GameStatusView();
 
     public GameController(){}
 
@@ -70,7 +71,7 @@ public class GameController {
     }
 
     String getPlayersOpinion(){
-        return "";
+        return gameStatusView.inquireOpinion();
     }
 
     void setGameStatus(String opinion){
