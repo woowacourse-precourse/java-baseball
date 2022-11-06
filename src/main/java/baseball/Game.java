@@ -6,9 +6,12 @@ import java.util.List;
 
 public class Game {
     private static final String START_STRING = "숫자 야구 게임을 시작합니다.";
+    private static final String ASK_RESTART_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String BALL_STRING = "볼";
     private static final String STRIKE_STRING = "스트라이크";
     private static final String NOTHING_STRING = "낫싱";
+    private static final String RESTART_CODE = "1";
+    private static final String EXIT_CODE = "2";
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
 
@@ -29,7 +32,18 @@ public class Game {
         player.setNumber();
         HashMap<Integer, Integer> compareBoard = new HashMap<>();
         compareBoard = getCompareBoard(computer);
+    private boolean askRestart() {
+        System.out.println(ASK_RESTART_STRING);
+        String restartCode = Console.readLine();
+        if (restartCode.equals(RESTART_CODE)) {
+            return true;
         }
+        if (restartCode.equals(EXIT_CODE)) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
     private HashMap<Integer, Integer> getCompareBoard(Player computer) {
         HashMap<Integer, Integer> compareBoard = new HashMap<>();
         ArrayList<Integer> computerNumbers = computer.getNumbers();
