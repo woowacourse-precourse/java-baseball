@@ -71,7 +71,25 @@ public class Application {
     }
 
     static void show_result(ArrayList<Integer> ball_strike_cnt) {
+        Integer ball= ball_strike_cnt.get(0);
+        Integer strike= ball_strike_cnt.get(1);
 
+        if(ball==0 && strike==0){
+            System.out.println("낫싱");
+        }
+        else if(strike==3){
+            three_strike=1;
+            System.out.println("3스트라이크");
+        }
+        else if(ball==0){
+            System.out.printf("%d스트라이크\n",strike);
+        }
+        else if(strike==0){
+            System.out.printf("%d볼\n",ball);
+        }
+        else{
+            System.out.printf("%d볼 %d스트라이크\n",ball,strike);
+        }
     }
 
     static void judge_guess(String guess, ArrayList<Integer> answer) {
