@@ -38,8 +38,7 @@ public class Input {
     }
 
     private void validOnlyOneNumInList(List<Character> list) {
-        if (list.get(0) == list.get(1) || list.get(1) == list.get(2) || list.get(0) == list.get(
-            2)) {
+        if (list.get(0) == list.get(1) || list.get(1) == list.get(2) || list.get(0) == list.get(2)) {
             throw new IllegalArgumentException();
         }
     }
