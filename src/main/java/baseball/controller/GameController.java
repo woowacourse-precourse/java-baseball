@@ -21,15 +21,19 @@ public class GameController {
     public void runGame(){
         initializeGame();
         while(wantToPlay()){
-            setGame();
-            startGame();
-            whatToDoNext();
+            playGame();
         }
         finishGame();
     }
 
     private void finishGame(){
         gameStatusView.printTheEnd();
+    }
+
+    private void playGame(){
+        setGame();
+        startGame();
+        whatToDoNext();
     }
 
     void setGame(){
