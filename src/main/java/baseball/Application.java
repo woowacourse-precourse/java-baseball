@@ -57,8 +57,6 @@ public class Application {
                 User.setGameOption();
 
                 status = Status.getStatusByGameOption(user.getGameOption());
-
-                // TODO: 6. 사용자 입력을 받아 게임 추가 진행 여부 확인, 추가 진행 시 2번으로 이동, 종료 시 Status를 EXIT로 변경
             }
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException();
