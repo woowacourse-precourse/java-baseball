@@ -19,12 +19,13 @@ public class GameManager {
     }
 
     private ExecuteStatus restart() {
-        GamePrinter.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        GamePrinter.println("게임을 새로 시작하려면 " + ExecuteStatus.RESTART.getStatus() + ", 종료하려면 "
+            + ExecuteStatus.TERMINATE.getStatus() + "를 입력하세요.");
         return ExecuteStatus.from(Console.readLine());
     }
 
     enum ExecuteStatus {
-        RESTART("1"), END("2");
+        RESTART("1"), TERMINATE("2");
 
         private final String status;
 
@@ -40,7 +41,8 @@ public class GameManager {
             return Arrays.stream(ExecuteStatus.values())
                 .filter(e -> e.getStatus().equals(status))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상태 입력입니다. 입력: " + status));
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 실행 상태입니다. 입력: " + status));
         }
     }
+
 }
