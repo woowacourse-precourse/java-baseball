@@ -22,7 +22,10 @@ public class BaseBallController {
         return baseBallService.matchNumber(input);
     }
 
-
+    public Response isKeepGo(String input) {
+        ReTry reTry = ReTry.nameOf(input);
+        return baseBallService.isKeepGo(reTry);
+    }
 
 
     void validateNumber(String input) throws IllegalArgumentException {
