@@ -7,11 +7,7 @@ public class InputView {
 
     public String inputNumber() {
         String inputNumber = Console.readLine();
-        try {
-            InputValidator.validatePlayerInputNumber(inputNumber);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+        InputValidator.validatePlayerInputNumber(inputNumber);
 
         return inputNumber;
     }
@@ -19,11 +15,7 @@ public class InputView {
 
     public String inputRetry() {
         String inputRetry = Console.readLine();
-        try {
-            InputValidator.validatePlayerInputRetry(inputRetry);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+        InputValidator.validatePlayerInputRetry(inputRetry);
 
         return inputRetry;
     }
