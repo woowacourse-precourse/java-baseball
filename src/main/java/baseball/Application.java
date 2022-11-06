@@ -56,4 +56,15 @@ public class Application {
             }
         } while (true);
     }
+
+    static Boolean isNum(String playerGuess) {
+        Boolean numericOrNot = true;
+
+        for (int letterIdx = 0; letterIdx < playerGuess.length(); letterIdx++) {
+            if (!Character.isDigit(playerGuess.charAt(letterIdx))) {
+                numericOrNot = false;
+            }
+        }
+        return numericOrNot;
+    }
 }
