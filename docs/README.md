@@ -58,7 +58,7 @@
 
 ## (void)printToRestartingGameMessage()
 - [x] "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
-- [ ] "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요." 출력
+- [x] "게임을 새로 시작하려면 1, 종류하려면 2를 입력하세요." 출력
 
 ## (String)inputUserAnswer()
 - [ ] userAnswer에 readLine함수를 이용하여 사용자의 응답을 입력
