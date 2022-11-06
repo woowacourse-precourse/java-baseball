@@ -27,4 +27,19 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game, computerNumber, userNumber)).isEqualTo(1);
     }
+
+    @Test
+    void 반환된_볼_수를_검증하는_기능() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("countBall", List.class, List.class);
+        method.setAccessible(true);
+
+        // when
+        List<Character> computerNumber = Arrays.asList('1', '2', '3');
+        List<Character> userNumber = Arrays.asList('9', '3', '1');
+
+        // then
+        Assertions.assertThat(method.invoke(game, computerNumber, userNumber)).isEqualTo(2);
+    }
 }
