@@ -8,8 +8,7 @@ public class BaseballManager {
     private ScoreManager scoreManager = new ScoreManager();
 
     {
-        computerNumber = new BaseballNumber(
-                RandomNumGenerator.makeRandomNumWithGameDigits());
+        initComputerNumber();
     }
 
     public void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
@@ -24,8 +23,8 @@ public class BaseballManager {
         return scoreManager.getUserScore();
     }
 
-    public void resetComputerNumber() {
+    public void initComputerNumber() {
         computerNumber = new BaseballNumber(
-                RandomNumGenerator.makeRandomNumWithGameDigits());
+                RandomNumGenerator.makeDistinctRandomNumWithSize(SystemConstant.GAME_DIGIT));
     }
 }
