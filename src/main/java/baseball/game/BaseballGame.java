@@ -37,9 +37,11 @@ public class BaseballGame {
     }
 
     public static void compareNumber(){
+        int userNumber;
+        int computerNumber;
         for(int i=0;i<3;i++){
-            int userNumber = userNumbers.get(i);
-            int computerNumber = computerNumbers.get(i);
+            userNumber = userNumbers.get(i);
+            computerNumber = computerNumbers.get(i);
             if (!computerNumbers.contains(userNumber)) continue;
             if (userNumber == computerNumber) strike++;
             else if (userNumber != computerNumber) ball++;
