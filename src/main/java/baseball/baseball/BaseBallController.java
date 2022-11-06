@@ -70,7 +70,7 @@ public class BaseBallController {
     }
 
     private int endGame() {
-        System.out.println(ScreenString.END_GAME.getCommonMessage());
+
         return Integer.parseInt(Console.readLine());
     }
 
