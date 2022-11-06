@@ -5,6 +5,17 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
+
+    public static List<Integer> disassembleDigitNumber(int number){
+        List<Integer> disassembledNumber = new ArrayList<Integer>();
+        for(int digit = 1; number > 0; number/=10, digit *= 10){
+            int digitNum = number % 10;
+            disassembledNumber.add(digitNum * digit);
+        }
+
+        return disassembledNumber;
+    }
+
     public static int getRandomThreeDigitNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
