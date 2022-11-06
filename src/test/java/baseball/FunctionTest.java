@@ -76,5 +76,14 @@ public class FunctionTest {
         assertEquals(gameController.getStrike(),3);
         assertEquals(gameController.getBall(),0);
     }
+
+    @Test
+    void 입력된_input이_1또는_2인가(){
+        UserNumber userNumber = new UserNumber();
+
+        assertTrue(userNumber.isBetween1to2("1"));
+        assertTrue(userNumber.isBetween1to2("2"));
+        assertFalse(userNumber.isBetween1to2("3"));
+    }
 }
 
