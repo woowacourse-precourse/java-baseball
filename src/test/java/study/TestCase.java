@@ -69,6 +69,13 @@ public class TestCase {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 플레이어의_입력_문자열을_Integer형_리스트로_변환() {
+        List<Integer> num = Arrays.asList(1, 2, 3);
+        PlayerNum playerNumber = new PlayerNum();
+        assertThat(num).isEqualTo(playerNumber.transformInput("123"));
+    }
+
 
 
 
