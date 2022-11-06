@@ -18,7 +18,7 @@ public class Hint {
   public static int strikeCount(String computer, String userNumber) {
     int strike = 0;
 
-    for (int i = 0; i < userNumber.length(); i++) {
+    for (int i = 0; i < computer.length(); i++) {
       if (computer.charAt(i) == userNumber.charAt(i)) {
         strike += 1;
       }
