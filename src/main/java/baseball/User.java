@@ -45,14 +45,14 @@ public class User {
             throw new IllegalArgumentException("input contains duplicated input.");
         }
     }
-//
-//    public static String inputValueTestPlayingMode(String testInput) {
-//        input = testInput;
-//        return (validateInput(PLAYINGMODE));
-//    }
-//
-//    public static String inputValueTestPlayAgainMode(String testInput) {
-//        input = testInput;
-//        return (validateInput(PLAYAGAINMODE));
-//    }
+
+    public static String inputValueTestPlayingMode(String testInput) {
+        //input = testInput;
+        return (validateInput(PLAYINGMODE, testInput));
+    }
+
+    public static String inputValueTestPlayAgainMode(String testInput) {
+        //input = testInput;
+        return (validateInput(PLAYAGAINMODE, testInput));
+    }
 }
