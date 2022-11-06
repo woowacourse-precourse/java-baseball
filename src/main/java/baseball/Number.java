@@ -1,8 +1,11 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Number {
@@ -10,6 +13,8 @@ public class Number {
 
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+
+    private static final String INPUT_USER_NUMBER_ANNOUNCE = "숫자를 입력해주세요 : ";
     
     private List<Integer> gameNumber;
     
@@ -33,5 +38,17 @@ public class Number {
             }
         }
         this.gameNumber = computerNumber;
+    }
+
+    private void setGameNumer(String input) {
+        this.gameNumber =  Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    public void getUserNumber() {
+        System.out.print(INPUT_USER_NUMBER_ANNOUNCE);
+        String input = Console.readLine();
+        setGameNumer(input);
     }
 }
