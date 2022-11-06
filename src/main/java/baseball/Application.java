@@ -1,8 +1,12 @@
 package baseball;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
 
 public class Application {
 
@@ -12,6 +16,7 @@ public class Application {
     public static void main(String[] args) {
         printStartJavaBaseball();
         int[] RandomizedArray = makeRandomizedArray();
+        System.out.println(Arrays.toString(RandomizedArray));
 
         while (Strike < 3) {
             Strike = 0;
@@ -34,7 +39,7 @@ public class Application {
     }
 
     public static int[] InputCheckValidAndReturn() {
-        String InputString = descriptionAndInput();
+        String InputString = descriptionAndInput("숫자를 입력해주세요:");
         char[] InputCharArray = revertStringToCharArray(InputString);
         int[] InputAsciiArray = revertCharArrayToAsciiArray(InputCharArray);
 
@@ -55,8 +60,8 @@ public class Application {
     }
 
 
-    public static String descriptionAndInput() {
-        System.out.print("숫자를 입력해주세요:");
+    public static String descriptionAndInput(String description) {
+        System.out.print(description);
 
         return readLine();
     }
@@ -89,9 +94,12 @@ public class Application {
     }
 
     public static int[] makeRandomizedArray() {
+        List<Integer> numbers= new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
         int[] RandomArray = new int[3];
         for (int i = 0; i < 3; i++) {
-            RandomArray[i] = pickNumberInRange(1, 9);
+            RandomArray[i] = pickNumberInList(numbers);
+            numbers.remove(Integer.valueOf(RandomArray[i]));
         }
         return RandomArray;
     }
@@ -103,7 +111,6 @@ public class Application {
                 Strike++;
             }
         }
-
     }
 
 
@@ -133,9 +140,13 @@ public class Application {
         if ((Strike == 0) && (Ball != 0)) {
             System.out.println(Ball + " 볼");
         }
-        if ((Ball == 0) && (Strike != 0)) {
+        if ((Ball == 0) && (Strike != 0) && (Strike !=3)) {
             System.out.println(Strike + " 스트라이크");
         }
+    }
+
+    public static void afterGameEnded(){
+        String input= descriptionAndInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 
