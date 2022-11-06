@@ -24,10 +24,10 @@ public class Game extends abstracts.Game {
     private List<Integer> answerNumbers;
 
     Game() {
-        Messages.INIT.printMessage();
         this.gameName = "Baseball";
         this.status = Status.PLAYING;
         this.answerNumberCount = DEFAULT_NUMBER_COUNT;
+        Messages.INIT.printMessage();
         this.initialize();
     }
 
@@ -39,6 +39,13 @@ public class Game extends abstracts.Game {
         this.answerNumbers = answerNumbers;
     }
 
+
+    @Override
+    public void initialize() {
+        setStatus(Status.PLAYING);
+        setAnswerNumbers(getRandomNumbersOf(answerNumberCount));
+        Messages.INPUT.printMessage();
+    }
     private List<Integer> getRandomNumbersOf(int count) {
         count = Math.max(1, Math.min(9, count));
         List<Integer> numbers = new ArrayList<>();
@@ -47,7 +54,6 @@ public class Game extends abstracts.Game {
         }
         return numbers;
     }
-
     private void addNewRandomNumberTo(List<Integer> numbers) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         if (numbers.contains(randomNumber)) {
@@ -57,22 +63,9 @@ public class Game extends abstracts.Game {
     }
 
     @Override
-    public void initialize() {
-        setStatus(Status.PLAYING);
-        setAnswerNumbers(getRandomNumbersOf(answerNumberCount));
-        Messages.INPUT.printMessage();
-    }
-
-    @Override
     public void terminate() {
         setStatus(Status.DONE);
         setAnswerNumbers(Collections.emptyList());
-    }
-
-    private final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
-    {
-        operationMapper.put(Status.PLAYING, this::playTurn);
-        operationMapper.put(Status.DONE, this::askAfterGameOption);
     }
 
     @Override
@@ -82,12 +75,18 @@ public class Game extends abstracts.Game {
                 .get(this.status)
                 .apply(input);
     }
+    private final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
+    {
+        operationMapper.put(Status.PLAYING, this::playTurn);
+        operationMapper.put(Status.DONE, this::askAfterGameOption);
+    }
 
     private boolean playTurn(String input) {
         HashMap<Result, Integer> resultCount = getGuessResult(input);
         Messages.printScore(resultCount);
         if (isGameOver(resultCount)) {
             terminate();
+            Messages.END.printMessage();
             Messages.ASK.printMessage();
             return PROCESS_CONTINUE;
         }
@@ -106,6 +105,13 @@ public class Game extends abstracts.Game {
         return guessResult;
     }
 
+
+    private Result getIndexResult(int index, int number) {
+        return Arrays.stream(Result.values())
+                .filter(result -> resultMapper.get(result).apply(index, number))
+                .findFirst()
+                .get();
+    }
     private final Map<Result, BiFunction<Integer, Integer, Boolean>> resultMapper = new HashMap<>();
     {
         resultMapper.put(Result.STRIKE, this::isNumberStrike);
@@ -120,20 +126,18 @@ public class Game extends abstracts.Game {
         return answerNumbers.contains(number);
     }
     private Boolean isNumberOut(Integer index, Integer number) {
-        return true;
-    }
-
-    private Result getIndexResult(int index, int number) {
-        return Arrays.stream(Result.values())
-                .filter(result -> resultMapper.get(result).apply(index, number))
-                .findFirst()
-                .get();
+        return !answerNumbers.contains(number);
     }
 
     private boolean isGameOver(HashMap<Result, Integer> turnResult) {
-        return turnResult.getOrDefault(Result.STRIKE, 0) == answerNumberCount;
+        int strikeCount = turnResult.getOrDefault(Result.STRIKE, 0);
+        return strikeCount == answerNumberCount;
     }
 
+    private boolean askAfterGameOption(String input) {
+        return optionMapper.get(input)
+                .get();
+    }
     private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
     {
         optionMapper.put("1", this::restartProcess);
@@ -147,9 +151,5 @@ public class Game extends abstracts.Game {
         return PROCESS_FINISH;
     }
 
-    private boolean askAfterGameOption(String input) {
-        return optionMapper.get(input)
-                .get();
-    }
 
 }
