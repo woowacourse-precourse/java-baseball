@@ -23,7 +23,9 @@ public class Application {
     }
     public static boolean printBallStrike(List<Integer> countBallStrike) {
         boolean end = endGame(countBallStrike);
-        if (countBallStrike.get(0) != 0 && countBallStrike.get(1) != 0)
+        if (countBallStrike.get(0) == 0 && countBallStrike.get(1) == 0)
+            System.out.println("낫싱");
+        else if (countBallStrike.get(0) != 0 && countBallStrike.get(1) != 0)
             System.out.println(countBallStrike.get(0) + "볼 " + countBallStrike.get(1) + "스트라이크");
         else if (countBallStrike.get(0) != 0 && countBallStrike.get(1) == 0)
             System.out.println(countBallStrike.get(0) + "볼");
