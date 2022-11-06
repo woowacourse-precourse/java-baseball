@@ -36,4 +36,10 @@ public class BaseballGameController {
         baseballGameService.updateBallCount(computerRandomNumber, userNumber);
 
     }
+
+    private void printHint() {
+        baseballGameView.printBallCount(baseballGameService.getBallCount());
+        baseballGameView.printStrikeCount(baseballGameService.getStrikeCount());
+        baseballGameView.printNotThing(baseballGameService.getStrikeCount(), baseballGameService.getBallCount());
+    }
 }
