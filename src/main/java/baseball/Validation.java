@@ -18,6 +18,11 @@ public class Validation {
             if(Character.isDigit(number)==false){
                 throw new IllegalArgumentException("숫자 이외의 값을 입력하셨습니다!");
             }
+
+            // 숫자의 범위는 1~9 즉 0은 포함되지 않는다.
+            if(number == '0'){
+                throw new IllegalArgumentException("각 자리 숫자의 범위는 1~9 입니다!");
+            }
         }
     }
 
