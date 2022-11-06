@@ -30,6 +30,6 @@ public class BaseballGame {
 			} catch (IllegalArgumentException e) {
 				throw e;
 			}
-		} while ();
+		} while (!computer.computeAndPrintResult(userNumbers));
 	}
 }
