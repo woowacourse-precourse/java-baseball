@@ -49,10 +49,7 @@ class ApplicationTest extends NsTest {
         InputStream in = generateUserInput(input);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
-        List<Integer> userInput = new ArrayList<>();
-        userInput.add(1);
-        userInput.add(2);
-        userInput.add(3);
+        List<Integer> userInput = List.of(1,2,3);
         assertEquals(userInput,getUserInput());
     }
 
