@@ -20,6 +20,7 @@ public class View {
     public static String endView() {
         System.out.println(END_PHRASES);
         String input = readLine();
+        InputException.inputCheckAfterGame(input);
         return input;
     }
 

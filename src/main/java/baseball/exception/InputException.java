@@ -36,4 +36,14 @@ public class InputException {
         if(input.length() != LENGTH) return false;
         return true;
     }
+
+    public static void inputCheckAfterGame(String input) {
+        if(!isRightInputAfterGame(input))
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
+    }
+
+    private static boolean isRightInputAfterGame(String input) {
+        if(input.equals("1") || input.equals("2")) return true;
+        return false;
+    }
 }
