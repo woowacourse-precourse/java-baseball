@@ -19,10 +19,20 @@ public class IOManager {
         System.out.print(messages.get("REQUIRE_INPUT"));
         String line = Console.readLine();
 
-        // if not valid
-        // throw new IllegalArgumentException();
+        if(!checkValidInput(line))
+            throw new IllegalArgumentException("wrong user input");
 
         return Integer.parseInt(line);
+    }
+
+    private static boolean checkValidInput(String line) {
+        if(line.length() != 3)
+            return false;
+
+        for(int idx = 0; idx < 3; idx++) {
+            //
+        }
+        return true;
     }
 
     public static void getHint(int ballNum, int strikeNum) {
