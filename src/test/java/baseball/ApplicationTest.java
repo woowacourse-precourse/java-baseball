@@ -353,11 +353,11 @@ class ApplicationTest extends NsTest {
         assertThat(result).isTrue();
     }
 
-    @ParameterizedTest()
-    @DisplayName("게임 종류가 안되야 된다. false가 결과")
+    @ParameterizedTest(name = "유저가 던지는 숫자, 3스트라이크를 제외한다.")
     @ValueSource(ints = {124, 143, 423, 132, 321, 213, 182, 134, 521, 324, 813, 283, 184,
         826, 483, 416, 651, 247, 562, 357, 635, 712, 218, 251, 238, 732, 352, 314, 381, 431,
         312, 231, 798, 486, 589, 497, 465, 564, 464, 564, 654, 899, 789})
+    @DisplayName("게임 종류가 안되야 된다. false가 결과 ")
     void 게임종료_확인_case_2(int testInt) {
         Computer computer = new Computer();
         computer.numThreeRanOfComputerList = new ArrayList<>(List.of(
