@@ -15,11 +15,17 @@ public class BaseballGame {
     private static int strike;
     private static int ball;
 
+    public static void resetStrikeBall(){
+        strike=0;
+        ball=0;
+    }
+
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
+        resetStrikeBall();
         while (strike!=3) {
-            strike=0; ball=0;
             userNumbers = checkInputUserNumber();
+            resetStrikeBall();
             compareNumber();
             userNumberResult();
         }
@@ -48,9 +54,7 @@ public class BaseballGame {
     public static void restartGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartNumber = Console.readLine();
-
         if (restartNumber.equals("1")) {
-            strike=0; ball=0;
             playBaseballGame();
         }
     }
