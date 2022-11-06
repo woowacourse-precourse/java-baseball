@@ -274,6 +274,38 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validateStringNaturalNumbers_정상처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "134";
+        final String case2 = "162467";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validateStringNaturalNumbers(case1);});
+        final Throwable result2 = catchThrowable(()->{T.validateStringNaturalNumbers(case2);});
+
+        //then
+        assertThat(result1).as("validateStringNaturalNumbers 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(result2).as("validateStringNaturalNumbers 정상처리 테스트").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateStringNaturalNumbers_예외처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "103";
+        final String case2 = "7345akvu3123";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validateStringNaturalNumbers(case1);});
+        final Throwable result2 = catchThrowable(()->{T.validateStringNaturalNumbers(case2);});
+
+        //then
+        assertThat(result1).as("validateStringNaturalNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2).as("validateStringNaturalNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
+    @Test
     void stringToIntegerList_테스트(){
         //given
         final Core T = new Core();
