@@ -1,15 +1,15 @@
-package baseball.process;
+package baseball.unit;
 
 import java.util.List;
 
-public class CompareNumber {
+public class Game {
 
     private final List<Integer> computerNumber;
 
     private final List<Integer> inputNumber;
 
 
-    public CompareNumber(List<Integer> computerNumber, List<Integer> inputNumber) {
+    public Game(List<Integer> computerNumber, List<Integer> inputNumber) {
         this.computerNumber = computerNumber;
         this.inputNumber = inputNumber;
     }

@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.setting;
 
 public enum CorrectEnum {
 
@@ -11,4 +11,5 @@ public enum CorrectEnum {
     CorrectEnum(String correct) {
         this.correct = correct;
     }
+
 }

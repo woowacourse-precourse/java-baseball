@@ -56,5 +56,31 @@ public class MainGame {
         return true;
     }
 
+    public boolean judge(int countStrike, int countBall){
+        boolean correct = false;
+
+        if(countStrike == 0 && countBall == 0){
+            outputText.nothing();
+        }
+
+        if(countStrike > 0 && countBall > 0){
+            if(countStrike == Setting.INPUT_NUMBER) {
+                outputText.strike(countStrike);
+                correct = true;
+            }
+            else {
+                outputText.strikeAndBall(countStrike, countBall);
+            }
+        }
+
+        if(countStrike > 0 && countBall == 0){
+            outputText.strike(countStrike);
+        }
+        if(countStrike == 0 && countBall > 0){
+            outputText.ball(countBall);
+        }
+        return correct;
+    }
+
 }
 
