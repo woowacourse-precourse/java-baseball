@@ -12,34 +12,48 @@ public class Application {
     static final int SIZE = 3;
     static int computer = 0;
     static int input = 0;
+    static int finishNumber = 1;
     public static void main(String[] args) {
-        startGame();
+        initGame();
+        while (finishNumber == 1) {
+            startGame();
+        }
+    }
 
-        
+    private static void initGame() {
+        computer = 0;
+        input = 0;
+        finishNumber = 1;
     }
 
     private static void startGame() {
         computer = CreateNumbers(SIZE);
         while (true) {
-            playGame();
+            boolean isFinished = playGame();
+            if (isFinished) return;
         }
     }
 
-    private static void playGame() {
+    private static boolean playGame() {
         input = InputNumbers(SIZE);
-        checkFinish();
+        boolean isFinished = checkFinish();
+        if (isFinished) return true;
         computeScore(input, computer);
+        return false;
     }
 
-    private static void checkFinish() {
+    private static boolean checkFinish() {
         if (input == computer) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int finishNumber = inputFinish();
-            
+            finishNumber = inputFinish();
+            return true;
         }
+        return false;
     }
+
+    
 
     private static int inputFinish() throws IllegalArgumentException {
         int intInput = Integer.parseInt(Console.readLine());
