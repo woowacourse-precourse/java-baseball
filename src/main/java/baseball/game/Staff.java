@@ -29,12 +29,19 @@ public class Staff {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
+        validateInputNull(input);
         validateInputLength(input);
         List<Integer> userNumbers = convertInputToUserNumbers(input);
         validateUseForbiddenNumber(userNumbers);
         validateDuplicateValues(userNumbers);
 
         return userNumbers;
+    }
+
+    private void validateInputNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("입력값은 NULL일 수 없습니다.");
+        }
     }
 
     private void validateInputLength(String input) {
