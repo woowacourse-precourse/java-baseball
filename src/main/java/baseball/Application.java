@@ -15,25 +15,22 @@ public class Application {
 }
 
 class Baseball {
+    public static String userNumber;
+    public static HashMap<String, Integer> countBallStrike;
     private static int checkRestartGame;
     private static List<Integer> computerNumber;
-    private static String userNumber;
-    private static HashMap<String, Integer> countBallStrike;
+
+    public static final String BALL = "볼 ";
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+    public static final int NEW_GAME = 1;
+    public static final int END_GAME = 2;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
     private static final int NUMBER_PITCH = 3;
-    private static final int NEW_GAME = 1;
-    private static final int END_GAME = 2;
-    private static final String BALL = "볼 ";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void playGame() {
-        System.out.println(START_MESSAGE);
+        Message.printStartMessage();
         newGame();
     }
 
@@ -69,7 +66,7 @@ class Baseball {
         if (!isValidNumber() || !isOverlapNumber()) {
             illegalArgumentException();
         }
-        System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
+        Message.printInputNumberMessage();
     }
 
     private static void countBallStrike() {
@@ -78,18 +75,17 @@ class Baseball {
     }
 
     private static void printResult() {
-        if (!isExistBall() && !isExistStrike()) {
-            System.out.print(countBallStrike.get(BALL) + BALL);
-            System.out.println(countBallStrike.get(STRIKE) + STRIKE);
-        }
-        if (!isExistBall() && !isExistStrike()) {
-            System.out.println(countBallStrike.get(BALL) + BALL);
+        if (isExistBall() && isExistStrike()) {
+            Message.printBallStrike();
         }
         if (isExistBall() && !isExistStrike()) {
-            System.out.println(countBallStrike.get(STRIKE) + STRIKE);
+            Message.printBallOnly();
         }
-        if (isExistBall() && isExistStrike()) {
-            System.out.println(NOTHING);
+        if (!isExistBall() && isExistStrike()) {
+            Message.printStrikeOnly();
+        }
+        if (!isExistBall() && !isExistStrike()) {
+            Message.printNothing();
         }
     }
 
@@ -99,8 +95,8 @@ class Baseball {
             return;
         }
         if (isThreeStrike()) {
-            System.out.println(WIN_MESSAGE);
-            System.out.println(INPUT_RESTART_MESSAGE);
+            Message.printWinMessage();
+            Message.printInputRestartMessage();
             checkRestartGame();
         }
     }
@@ -111,12 +107,12 @@ class Baseball {
             illegalArgumentException();
         }
         if (checkRestartGame == NEW_GAME) {
-            System.out.println(NEW_GAME);
+            Message.printNewGame();
             newGame();
             return;
         }
         if (checkRestartGame == END_GAME) {
-            System.out.println(END_GAME);
+            Message.printEndGame();
         }
     }
 
@@ -158,11 +154,11 @@ class Baseball {
     }
 
     private static boolean isExistBall() {
-        return countBallStrike.get(BALL) == 0;
+        return countBallStrike.get(BALL) != 0;
     }
 
     private static boolean isExistStrike() {
-        return countBallStrike.get(STRIKE) == 0;
+        return countBallStrike.get(STRIKE) != 0;
     }
 
     private static boolean isThreeStrike() {
@@ -171,5 +167,53 @@ class Baseball {
 
     private static void illegalArgumentException() {
         throw new IllegalArgumentException();
+    }
+}
+
+class Message {
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static void printStartMessage() {
+        System.out.println(START_MESSAGE);
+    }
+
+    public static void printInputNumberMessage() {
+        System.out.println(INPUT_NUMBER_MESSAGE + Baseball.userNumber);
+    }
+
+    public static void printWinMessage() {
+        System.out.println(WIN_MESSAGE);
+    }
+
+    public static void printInputRestartMessage() {
+        System.out.println(INPUT_RESTART_MESSAGE);
+    }
+
+    public static void printNewGame() {
+        System.out.println(Baseball.NEW_GAME);
+    }
+
+    public static void printEndGame() {
+        System.out.println(Baseball.END_GAME);
+    }
+
+    public static void printNothing() {
+        System.out.println(Baseball.NOTHING);
+    }
+
+    public static void printBallOnly() {
+        System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL);
+    }
+
+    public static void printBallStrike() {
+        System.out.print(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL);
+        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
+    }
+
+    public static void printStrikeOnly() {
+        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
     }
 }
