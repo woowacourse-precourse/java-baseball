@@ -38,6 +38,29 @@ public class Application {
         return startPoint <= number && number <= endPoint;
     }
 
+    public static List<Integer> compare(List<Integer> computers, List<Integer> users){
+        int strike = 0;
+        int ball = 0;
+        int nothing = 0;
+        List<Integer> answer = new ArrayList<>();
+
+        for(int i = 0; i<computers.size(); i++){
+            if(computers.get(i) == users.get(i)){
+                strike++;
+            }else if(users.contains(computers.get(i))){
+                ball++;
+            }else {
+                nothing++;
+            }
+        }
+
+        answer.add(strike);
+        answer.add(ball);
+        answer.add(nothing);
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
