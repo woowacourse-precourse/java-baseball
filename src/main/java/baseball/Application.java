@@ -13,6 +13,11 @@ public class Application {
             String computerNumber = generateComputerNumber();
             startGame(computerNumber);
             System.out.println(getGuideMessage("finished"));
+
+            String continueGame = Console.readLine();
+            if (!checkRestartGame(continueGame)) {
+                break;
+            }
         }
 
     }
@@ -169,6 +174,16 @@ public class Application {
             if (checkEndGame(resultMessage)) {
                 break;
             }
+        }
+    }
+
+    public static boolean checkRestartGame(String continueGame) {
+        if (continueGame.equals("1")) {
+            return true;
+        } else if ((continueGame.equals("2"))) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("게임 진행 여부에 대한 수를 잘못 입력하셨습니다!");
         }
     }
 }

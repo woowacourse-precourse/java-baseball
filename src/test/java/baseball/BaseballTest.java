@@ -175,4 +175,20 @@ class BaseballTest {
     void checkEndGame_볼카운트_메세지에_따른_게임_끝내기_여부_확인(String input, boolean result) {
         assertThat(checkEndGame(input)).isEqualTo(result);
     }
+
+    @DisplayName("재시작 여부 확인하기")
+    @ParameterizedTest(name = "{index}. {displayName} input={0} result={1}")
+    @CsvSource({"'1',true", "'2', false"})
+    void checkRestartGame_입력받은_숫자에_따른_재시작_여부_판단(String input, boolean result) {
+        assertThat(checkRestartGame(input)).isEqualTo(result);
+    }
+
+    @DisplayName("재시작 여부 확인하기 예외 처리")
+    @Test
+    void checkRestartGame_잘못된_숫자를_입력받은_경우_예외처리() {
+        String input = "3";
+        assertThatThrownBy(() -> checkRestartGame(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("게임 진행 여부에 대한 수를 잘못 입력하셨습니다!");
+    }
 }
