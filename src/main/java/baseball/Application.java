@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int NUMBERS_SIZE = 3;
+
     public static void main(String[] args) {
-        List<Integer> computer = selectComputerNumber();
+        Player computer = new Player(selectComputerNumber());
         printStartComment();
         while (true){
             printInputNumberComment();
-            List<Integer> player = toIntegers(split(Console.readLine()));
+            Player user = new Player(toIntegers(split(Console.readLine())));
         }
 
     }
@@ -49,5 +51,16 @@ public class Application {
             player.add(Integer.parseInt(number));
 
         return player;
+    }
+
+    public static int numberOfStrikes(Player computer, Player user){
+        int count = 0;
+
+        for(int i=0; i< NUMBERS_SIZE; i++){
+            if(computer.isStrike(i, user.getNumberOfIndex(i)))
+                count++;
+        }
+
+        return count;
     }
 }

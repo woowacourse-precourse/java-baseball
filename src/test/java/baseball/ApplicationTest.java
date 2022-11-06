@@ -57,6 +57,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 스트라이크_수_1개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,4,7));
+        assertEquals(1, Application.numberOfStrikes(computer, user));
+    }
+
+    @Test
+    void 스트라이크_수_2개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,4,3));
+        assertEquals(2, Application.numberOfStrikes(computer, user));
+    }
+
+    @Test
+    void 스트라이크_수_3개일_때_반환_테스트(){
+        Player computer = new Player(List.of(1,2,3));
+        Player user = new Player(List.of(1,2,3));
+        assertEquals(3, Application.numberOfStrikes(computer, user));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
