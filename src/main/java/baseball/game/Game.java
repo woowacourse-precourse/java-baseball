@@ -19,6 +19,7 @@ public class Game {
 	}
 
 	public int play(PlayerComputer computer, PlayerUser user) {
+		int numberOfStrike;
 		do {
 			String answer = computer.getRandomNumber();
 			String userInput = user.getInputNumber();
@@ -26,11 +27,13 @@ public class Game {
 			List<Integer> judgement = compareUserInputToAnswer(userInput, answer);
 
 			printMessage(judgement);
-			int numberOfStrike = judgement.get(STRIKE);
+			numberOfStrike = judgement.get(STRIKE);
 		} while (!isCorrectAnswer(numberOfStrike));
 
 		return askReplay();
 	}
+
+
 
 	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
 		List<Integer> judgement = new ArrayList<>();
@@ -110,5 +113,9 @@ public class Game {
 			return strikeCounter + "스트라이크";
 		}
 		return ballCounter + "볼" + " " + strikeCounter + "스트라이크";
+	}
+
+	private boolean isNothing(int strikeCounter, int ballCounter) {
+		return strikeCounter == 0 && ballCounter == 0;
 	}
 }
