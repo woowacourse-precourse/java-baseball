@@ -10,8 +10,8 @@ public class Application {
             try {
                 printInitial();
 
-//                Game game = new Game();
-//                game.run();
+                Game game = new Game();
+                game.run();
 
                 printFinish();
 
