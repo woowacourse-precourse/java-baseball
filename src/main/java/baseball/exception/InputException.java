@@ -12,6 +12,10 @@ public class InputException {
     }
 
     // 세 자리 숫자가 아닌 경우
+    public static Boolean isNotThreeDigits(String inputNumber) {
+        if (inputNumber.length() != 3) return true;
+        return false;
+    }
     // 중복된 숫자가 있는 경우
     // 빈 문자열인 경우
 

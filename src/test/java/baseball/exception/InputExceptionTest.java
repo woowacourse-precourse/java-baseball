@@ -22,6 +22,21 @@ class InputExceptionTest {
         assertThat(bool2).isTrue();
         assertThat(bool3).isTrue();
 
+    }
+
+    @Test
+    void isNotThreeDigits() {
+        String threeDigits = "123";
+        String twoDigits = "12";
+        String fourDigits = "1234";
+
+        Boolean bool1 = InputException.isNotThreeDigits(threeDigits);
+        Boolean bool2 = InputException.isNotThreeDigits(twoDigits);
+        Boolean bool3 = InputException.isNotThreeDigits(fourDigits);
+
+        assertThat(bool1).isFalse();
+        assertThat(bool2).isTrue();
+        assertThat(bool3).isTrue();
 
     }
 }
