@@ -15,4 +15,11 @@ public class RefereeTest {
             new ArrayList<>(List.of(1,5,9)), List.of(1,5,9)
         )).isEqualTo(3);
     }
+
+    @Test
+    void 볼() {
+        Assertions.assertThat(referee.isBall(
+            List.of(1,2,3), List.of(2,3,4)
+        )).isEqualTo(2);
+    }
 }
