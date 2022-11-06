@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.constant.GameConstant.RESTART;
 import static baseball.constant.GameMessage.*;
 import static baseball.game.ComputerNumber.createComputerNumber;
 import static baseball.exception.RestartNumberValidator.checkValidationRestartNumber;
@@ -57,7 +58,7 @@ public class BaseballGame {
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         checkValidationRestartNumber(restartNumber);
-        if (restartNumber.equals("1")) {
+        if (restartNumber.equals(RESTART)) {
             playBaseballGame();
         }
     }

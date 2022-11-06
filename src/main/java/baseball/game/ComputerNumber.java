@@ -5,12 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constant.GameConstant.*;
+
 public class ComputerNumber {
 
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumbers.size() < BALL_LEN) {
+            int randomNumber = Randoms.pickNumberInRange(BALL_START, BALL_END);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
