@@ -182,7 +182,14 @@ while (computer.size() < 3) {
       - [ ] 겹치는 수
 
 
-- BaseBallGamePlayer
+- Result
   - [ ] 스트라이크 카운트
   - [ ] 볼 카운트
   - [ ] 카운트 판정
+
+
+- BaseBallGamePlayer
+  - [ ] 프로그램 실행
+    - [ ] 숫자야구 실행
+    - [ ] 재시작 여부 확인
+
