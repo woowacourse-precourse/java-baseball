@@ -103,7 +103,7 @@
 ## 게임 규칙
 
 - [x] strike 개수 파악 규칙
-- [ ] ball 개수 파악 규칙
+- [x] ball 개수 파악 규칙
 - [ ] nothing 파악 규칙
 
 </details>
