@@ -4,10 +4,7 @@ import baseball.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,10 +14,17 @@ public class UserStringCustomTest {
 
     Game game = new Game();
 
-    List<Integer> String을_List로_변환하는_메서드(String userAnswer) {
-        return Arrays.stream(userAnswer.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+    public HashMap<String, Integer> 스트라이크_볼_갯수_메서드(List <Integer> computer, HashMap<String, Integer> strikeAndBallCount, List<Integer> userAnswer) {
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(userAnswer.get(i))
+                    && (userAnswer.get(i).equals(computer.get(i)))) {
+                strikeAndBallCount.put("Strike", strikeAndBallCount.get("Strike") + 1);
+            } else if (computer.contains(userAnswer.get(i))
+                    && (!userAnswer.get(i).equals(computer.get(i)))) {
+                strikeAndBallCount.put("Ball", strikeAndBallCount.get("Ball") + 1);
+            }
+        }
+        return strikeAndBallCount;
     }
 
     /**
@@ -52,7 +56,7 @@ public class UserStringCustomTest {
     @Test
     void 입력_값이_3자리_수가_아닌_경우() {
         String userAnswer = "13";
-        List<Integer> answerList = String을_List로_변환하는_메서드(userAnswer);
+        List<Integer> answerList = game.stringToListInteger(userAnswer);
         assertThat(answerList.size()).isNotEqualTo(3);
     }
 
@@ -69,5 +73,27 @@ public class UserStringCustomTest {
         for (int i = 0; i < userAnswer2.length(); i++) {
             answerList.add(userAnswer2.charAt(i));
         } assertThat(answerList.size()).isNotEqualTo(3);
+    }
+
+    @Test
+    void 스트라이크_볼_갯수_계산_테스트() {
+        List<Integer> computer = new ArrayList<>();
+        computer.add(1);
+        computer.add(3);
+        computer.add(5);
+
+        List<Integer> userAnswer = new ArrayList<>();
+        userAnswer.add(1);
+        userAnswer.add(5);
+        userAnswer.add(9);
+
+        HashMap<String, Integer> strikeAndBallCount = new HashMap<>();
+
+        strikeAndBallCount.put("Strike", 0);
+        strikeAndBallCount.put("Ball", 0);
+
+        HashMap<String, Integer> 스트라이크_볼_갯수 = 스트라이크_볼_갯수_메서드(computer, strikeAndBallCount, userAnswer);
+        assertThat(스트라이크_볼_갯수.get("Strike")).isEqualTo(1);
+        assertThat(스트라이크_볼_갯수.get("Ball")).isEqualTo(1);
     }
 }
