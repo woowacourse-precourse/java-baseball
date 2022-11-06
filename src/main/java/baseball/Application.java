@@ -19,10 +19,13 @@ public class Application {
         StringBuilder sb = new StringBuilder();
 
         if ( hasBall(evaluation) ) {
-            sb.append(evaluation.get(BALL)).append("볼 ");
+            sb.append(evaluation.get(BALL)).append("볼");
         }
 
         if ( hasStrike(evaluation) ) {
+            if ( hasBall(evaluation) ) {
+                sb.append(" ");
+            }
             sb.append(evaluation.get(STRIKE)).append("스트라이크");
         }
 
