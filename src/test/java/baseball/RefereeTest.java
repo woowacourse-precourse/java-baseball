@@ -4,7 +4,7 @@ import static baseball.utils.Constant.BALL_INDEX;
 import static baseball.utils.Constant.STRIKE_INDEX;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import baseball.game.Referee;
+import baseball.domain.Referee;
 import baseball.utils.ValidationNumber;
 import java.lang.reflect.Field;
 import java.util.List;

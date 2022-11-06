@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import baseball.game.User;
+import baseball.domain.User;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

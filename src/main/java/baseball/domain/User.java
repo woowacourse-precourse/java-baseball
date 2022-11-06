@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.domain;
 
 import baseball.utils.ValidationNumber;
 import camp.nextstep.edu.missionutils.Console;

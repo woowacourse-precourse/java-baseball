@@ -1,8 +1,9 @@
 package baseball;
 
+import static baseball.utils.Constant.GAME_NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.game.DefenceNumberMaker;
+import baseball.domain.DefenceNumberMaker;
 import baseball.utils.ValidationNumber;
 import java.util.HashSet;
 import java.util.List;
@@ -11,8 +12,6 @@ import org.junit.jupiter.api.Test;
 
 public class DefenceNumberMakerTest {
 
-    private static final int SIZE = 3;
-
     @Test
     void 중복되지_않는지_확인() {
         DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker();
@@ -20,7 +19,7 @@ public class DefenceNumberMakerTest {
 
         Set<Integer> result = new HashSet<>(defenceNumberList);
 
-        assertThat(result.size()).isEqualTo(SIZE);
+        assertThat(result.size()).isEqualTo(GAME_NUMBER_SIZE);
     }
 
     @Test
@@ -28,7 +27,7 @@ public class DefenceNumberMakerTest {
         DefenceNumberMaker defenceNumberMaker = new DefenceNumberMaker();
         List<Integer> defenceNumberList = defenceNumberMaker.getDefenceNumber();
 
-        assertThat(defenceNumberList.size()).isEqualTo(SIZE);
+        assertThat(defenceNumberList.size()).isEqualTo(GAME_NUMBER_SIZE);
     }
 
     @Test

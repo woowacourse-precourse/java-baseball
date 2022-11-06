@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.domain;
 
 public class TextForGame {
 
