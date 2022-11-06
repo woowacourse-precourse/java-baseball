@@ -41,17 +41,8 @@ public class Game {
     }
 
     public void printHint(List<Integer> computerNumber, List<Integer> userNumberList){
-        int strike=0;
-        int ball=0;
-
-        for(int index = 0 ; index < 3;index++){
-            if(checkStrike(computerNumber,userNumberList.get(index),index)){
-                strike++;
-            }
-            if (checkBall(computerNumber,userNumberList.get(index),index)){
-                ball++;
-            }
-        }
+        int strike=countStrike(computerNumber,userNumberList);
+        int ball=countBall(computerNumber,userNumberList);
 
         if(ball >0 && strike > 0) System.out.println(ball + "볼 " + strike + "스트라이크");
         else if (ball > 0) System.out.println(ball +"볼");
@@ -67,5 +58,29 @@ public class Game {
     public boolean checkBall(List<Integer> computerNumber, int userNumber, int index){
         //같은 위치에 있지 않으면서 computerNumber가 userNumber를 포함하고 있으면 ball
         return computerNumber.get(index).equals(userNumber) == false && computerNumber.contains(userNumber);
+    }
+
+    public int countStrike (List<Integer> computerNumber, List<Integer> userNumberList){
+        int strike=0;
+
+        for(int index = 0 ; index < 3;index++){
+            if(checkStrike(computerNumber,userNumberList.get(index),index)){
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
+    public int countBall (List<Integer> computerNumber, List<Integer> userNumberList){
+        int ball=0;
+
+        for(int index = 0 ; index < 3;index++){
+            if (checkBall(computerNumber,userNumberList.get(index),index)){
+                ball++;
+            }
+        }
+
+        return ball;
     }
 }
