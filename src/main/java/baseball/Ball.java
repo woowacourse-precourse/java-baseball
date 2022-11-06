@@ -6,6 +6,7 @@ enum Ball {
     NOTHING("낫싱");
 
     private final String name;
+
     Ball(String name) {
         this.name = name;
     }

@@ -7,22 +7,12 @@ import java.util.List;
 
 public class AnswerGenerator {
 
-    public static List<String> convertComputerList() {
-        List<Integer> computerList = generateRandNum();
-        List<String> convertedList = new ArrayList<>();
-        for (Integer integer : computerList) {
-            convertedList.add(String.valueOf(integer));
-        }
-        System.out.println(convertedList);
-        return convertedList;
-    }
-
-    private static List<Integer> generateRandNum() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+    public static List<String> generateRandNum() {
+        List<String> computer = new ArrayList<>();
+        while (computer.size() < View.MAX_BALL_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(View.MIN_INPUT_NUMBER, View.MAX_INPUT_NUMBER);
             if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+                computer.add(String.valueOf(randomNumber));
             }
         }
         return computer;

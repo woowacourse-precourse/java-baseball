@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -8,14 +10,17 @@ public class Application {
         boolean gameEndFlag = false;
 
         while (!gameEndFlag) {
-            List<String> computerList = AnswerGenerator.convertComputerList();
-            BaseballGame baseballGame = new BaseballGame(computerList);
-            String isRestart = baseballGame.playGame();
+            List<String> randomNumber = AnswerGenerator.generateRandNum();
+            BaseballGame baseballGame = new BaseballGame(randomNumber);
+            baseballGame.playGame();
 
-            if (isRestart.equals("2")) {
+            String userInputToChooseGameRestartOrEnd = Console.readLine();
+            View.raiseErrorWhenInputIsNotOneOrTwo(userInputToChooseGameRestartOrEnd);
+
+            if (userInputToChooseGameRestartOrEnd.equals(View.GAME_END)) {
                 gameEndFlag = true;
             }
         }
-        System.out.println("게임을 종료합니다.");
+        View.showGameEndMassage();
     }
 }
