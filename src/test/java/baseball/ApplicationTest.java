@@ -306,6 +306,39 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validateAllDifferentCharacters_정상처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "123456789";
+        final String case2 = "abcdefghij";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validateAllDifferentCharacters(case1);});
+        final Throwable result2 = catchThrowable(()->{T.validateAllDifferentCharacters(case2);});
+
+        //then
+        assertThat(result1).as("validateAllDifferentCharacters 정상처리 테스트").doesNotThrowAnyException();
+        assertThat(result2).as("validateAllDifferentCharacters 정상처리 테스트").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateAllDifferentCharacters_예외처리_테스트(){
+        //given
+        final Core T = new Core();
+        final String case1 = "112";
+        final String case2 = "aabbcc";
+
+        //when
+        final Throwable result1 = catchThrowable(()->{T.validateAllDifferentCharacters(case1);});
+        final Throwable result2 = catchThrowable(()->{T.validateAllDifferentCharacters(case2);});
+
+        //then
+        assertThat(result1).as("validateAllDifferentCharacters 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2).as("validateAllDifferentCharacters 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
+
+    @Test
     void stringToIntegerList_테스트(){
         //given
         final Core T = new Core();
