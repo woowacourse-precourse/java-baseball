@@ -14,14 +14,15 @@ public class Number {
     static int COUNT = 3;
     static int MIN_NUMBER = 1;
     static int MAX_NUMBER = 9;
-    static String START_SENTENCE = "숫자를 입해주세요 : ";
-    static String REGEX = "(^[1-9]*$)";
+    static String START_SENTENCE = "숫자를 입력해주세요 : ";
+    static String REGEX1 = "(^[1-9]*$)";
+    static String REGEX2 = "";
     private int[] numbers;
     public Number() {}
-    public void UserAnswer() {
+    public void setUserNumbers() {
         System.out.print(START_SENTENCE);
-        String start = Console.readLine();
-        setNumbers(start);
+        String userInput = Console.readLine();
+        setUserNumbers(userInput);
     }
     public int[] getNumbers() {
         return this.numbers;
@@ -30,7 +31,7 @@ public class Number {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
-    public void ComputerNumber() {
+    public void setComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < COUNT) {
             int randomNumber = getRandomNumber();
@@ -45,35 +46,35 @@ public class Number {
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    public void setNumbers(String start) {
-        if (!WrongString(start)) {
+    public void setUserNumbers(String userInput) {
+        if (!WrongString(userInput)) {
             throw new IllegalArgumentException();
         }
-        this.numbers = ConvertArrayListToArray2(start);
+        this.numbers = ConvertArrayListToArray2(userInput);
     }
 
-    public boolean WrongString(String start) {
-        return CheckOnlyInteger(start) && CheckLength(start) && CheckDuplicate(start);
+    public boolean WrongString(String userInput) {
+        return CheckOnlyInteger(userInput) && CheckLength(userInput) && CheckDuplicate(userInput);
     }
 
-    public boolean CheckOnlyInteger(String start) {
-        Pattern pattern = Pattern.compile(REGEX);
-        Matcher matcher = pattern.matcher(start);
+    public boolean CheckOnlyInteger(String userInput) {
+        Pattern pattern = Pattern.compile(REGEX1);
+        Matcher matcher = pattern.matcher(userInput);
         return matcher.find();
     }
 
-    public boolean CheckLength(String start) {
-        return start.length() == COUNT;
+    public boolean CheckLength(String userInput) {
+        return userInput.length() == COUNT;
     }
 
-    public boolean CheckDuplicate(String start) {
+    public boolean CheckDuplicate(String userInput) {
         HashSet<Character> set = new HashSet<>();
-        for (char x : start.toCharArray()) {
+        for (char x : userInput.toCharArray()) {
             set.add(x);
         }
-        return start.length() == set.size();
+        return userInput.length() == set.size();
     }
-    public int[] ConvertArrayListToArray2(String start) {
-        return Arrays.stream(start.split("")).mapToInt(Integer::parseInt).toArray();
+    public int[] ConvertArrayListToArray2(String userInput) {
+        return Arrays.stream(userInput.split(REGEX2)).mapToInt(Integer::parseInt).toArray();
     }
 }

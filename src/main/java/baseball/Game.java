@@ -14,10 +14,10 @@ public class Game {
     final private String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
     final private String NOTHING_STRING = "낫싱";
     final private String GAME_OVER_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    final private String BALL_STRING = "볼";
+    final private String BALL_STRING = "볼 ";
     final private String STRIKE_STRING = "스트라이크";
     final private String END_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final private String REGEX = "(^[1-2]*$)";
+    final private String REGEX = "[1-2]";
     final private String END_NUM = "2";
 
 
@@ -36,10 +36,12 @@ public class Game {
 
         computerNumber.setComputerNumbers();
         computer = computerNumber.getNumbers();
+        GameStartString();
+
         while(!end) {
-            GameStartString();
             userNumber.setUserNumbers();
             user = userNumber.getNumbers();
+
             ScoreReset();
             Calculator();
             printResult();
@@ -59,6 +61,7 @@ public class Game {
         } else {
             computerNumber.setComputerNumbers();
             computer = computerNumber.getNumbers();
+            GameStartString();
         }
 
     }
@@ -74,7 +77,7 @@ public class Game {
     private boolean WrongInput(String input) {
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(input);
-        return matcher.find();
+        return pattern.matcher(input).matches();
     }
     private void ScoreReset() {
         strike = COUNT_START;
@@ -104,6 +107,7 @@ public class Game {
             if (computer[i] == number) {
                 return BALL_NUM;
             }
+            i++;
         }
         return 0;
     }
@@ -112,10 +116,8 @@ public class Game {
         if (strike == COUNT_START && ball == COUNT_START) {
             return NOTHING_STRING;
         }
-        if (strike == COUNT_FIN) {
-            return GAME_OVER_STRING;
-        }
         StringBuilder stringBuilder = new StringBuilder();
+
         if (ball > COUNT_START) {
             stringBuilder.append(ball);
             stringBuilder.append(BALL_STRING);
@@ -129,5 +131,8 @@ public class Game {
 
     private void printResult() {
         System.out.println(getResult());
+        if (strike == COUNT_FIN) {
+            System.out.println(GAME_OVER_STRING);
+        }
     }
 }
