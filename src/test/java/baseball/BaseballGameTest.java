@@ -97,7 +97,7 @@ class BaseballGameTest {
             "4:false"
     }, delimiter = ':')
     void checkSize(int size, boolean actual) throws Exception {
-        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("isDefaultSize", int.class);
+        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("isNotDefaultSize", int.class);
         checkSizeMethod.setAccessible(true);
 
         assertThat(checkSizeMethod.invoke(game, size)).isEqualTo(actual);

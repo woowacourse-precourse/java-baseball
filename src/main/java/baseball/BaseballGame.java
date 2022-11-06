@@ -112,18 +112,18 @@ public class BaseballGame {
     }
 
     private void validateThree(int number, String message) {
-        if (isDefaultSize(number)) {
+        if (isNotDefaultSize(number)) {
             throw new IllegalArgumentException(message);
         }
     }
 
-    private static boolean isDefaultSize(int number) {
+    private static boolean isNotDefaultSize(int number) {
         return number != DEFAULT_SIZE;
     }
 
     private static List<Integer> makeAnswer() {
         List<Integer> list = new ArrayList<>();
-        while (isDefaultSize(list.size())) {
+        while (isNotDefaultSize(list.size())) {
             addBall(list, Randoms.pickNumberInRange(1, 9));
         }
         return list;
