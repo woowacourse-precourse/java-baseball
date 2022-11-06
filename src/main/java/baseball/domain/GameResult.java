@@ -5,6 +5,7 @@ import static baseball.domain.Command.isExit;
 import static baseball.domain.Command.isRestart;
 import static baseball.domain.GameResult.GameStatus.END;
 import static baseball.domain.GameResult.GameStatus.RESTART;
+import static baseball.domain.Hint.*;
 
 
 public final class GameResult {
@@ -58,17 +59,17 @@ public final class GameResult {
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
-            return "낫싱";
+            return NOTHING.name();
         }
 
         if (strike == 0) {
-            return ball + "볼";
+            return ball + BALL.name();
         }
 
         if (ball == 0) {
-            return strike + "스트라이크";
+            return strike + STRIKE.name();
         }
 
-        return ball + "볼" + " " + strike + "스트라이크";
+        return ball + BALL.name() + " " + strike + STRIKE.name();
     }
 }
