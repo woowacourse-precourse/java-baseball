@@ -3,9 +3,13 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BaseballGameTest {
@@ -28,8 +32,35 @@ class BaseballGameTest {
         assertTrue(check);
     }
 
+    @Test
+    @DisplayName("사용자 입력 테스트")
+    void inputHumanNumberTest(){
+        List<Integer> human = bg.inputHumanNumber("123");
+        assertEquals(Arrays.toString(new int[]{1, 2, 3}), human.toString());
+    }
+
+    @Test
+    @DisplayName("사용자 입력 예외 테스트")
+    void inputHumanExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> bg.inputHumanNumber("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> bg.inputHumanNumber("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> bg.inputHumanNumber("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     public boolean overlapTest(List<Integer> answer, boolean check) {
+
         for (int i = 1; i < answer.size(); i++) {
             check = checkBooleanOverlapTest(answer, i);
             if (!check) {
