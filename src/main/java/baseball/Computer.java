@@ -9,31 +9,23 @@ public class Computer {
     private static final int RANGE_FIRST = 1;
     private static final int RANGE_LAST = 9;
     private static final int RANGE_RADIX = 10;
+    private static final int LIST_SIZE = 3;
 
     public List<Character> makeRandomNum() {
         List<Character> characterList = new ArrayList<>();
 
-        char index0Value = oneRandomNumChar();
-        characterList.add(index0Value);
-        return compareAndAddList(characterList, index0Value);
+        characterList.add(oneRandomNumChar());
+        return compareAndAddList(characterList);
     }
 
-    private List<Character> compareAndAddList(List<Character> characterList, char index0Value) {
+    private List<Character> compareAndAddList(List<Character> characterList) {
         char randNumChar;
-        char index1Value = 0;
 
-        for (int i = 1; i < 3; i++) {
+        while (characterList.size() != LIST_SIZE) {
             randNumChar = oneRandomNumChar();
-            while (i == 1 && randNumChar == index0Value) {
-                randNumChar = oneRandomNumChar();
+            if (!characterList.contains(randNumChar)) {
+                characterList.add(randNumChar);
             }
-            if (i == 1) {
-                index1Value = randNumChar;
-            }
-            while (i == 2 && (randNumChar == index0Value || randNumChar == index1Value)) {
-                randNumChar = oneRandomNumChar();
-            }
-            characterList.add(randNumChar);
         }
         return characterList;
     }
