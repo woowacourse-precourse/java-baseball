@@ -35,15 +35,15 @@ public class Game {
         Ball ball = new Ball();
         List<Integer> computerBalls = ball.getComputerBall();
         List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
-        String result;
+        String resultMessage;
         System.out.println(computerBalls.toString()); // TODO: 삭제하기
         do {
             List<Integer> playerBalls = ball.getPlayerBall();
             calcResult(computerBalls, playerBalls, strikeAndBallCounts);
-            result = getResult(strikeAndBallCounts.get(STRIKE_COUNT), strikeAndBallCounts.get(BALL_COUNT));
-            System.out.println(result);
+            resultMessage = getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT), strikeAndBallCounts.get(BALL_COUNT));
+            System.out.println(resultMessage);
             updateStrikeAndBallCounts(strikeAndBallCounts, 0, 0);
-        } while (!result.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
+        } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
     }
 
     private void calcResult(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
@@ -76,7 +76,7 @@ public class Game {
         return count;
     }
 
-    private String getResult(int strikeCnt, int ballCnt) {
+    private String getResultMessage(int strikeCnt, int ballCnt) {
         if (strikeCnt == COMPUTER_BALLS_SIZE) {
             return SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
         }
