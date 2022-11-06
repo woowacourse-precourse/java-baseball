@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Player {
 
     public static final String NUMBER_SIZE_EX_MESSAGE = "입력값은 3개의 숫자여야 합니다.";
-    public static final int CRITERION_NUMBER_SIZE = 3;
+    public static final int GAME_ROUND = 3;
     public static final String NUMBER_DUPLICATE_EX_MESSAGE = "입력값은 같은 수가 하나라도 있으면 안됩니다.";
     public static final int START_POSITION_NUMBER = 1;
 
@@ -29,14 +29,14 @@ public class Player {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != CRITERION_NUMBER_SIZE) {
+        if (numbers.size() != GAME_ROUND) {
             throw new IllegalArgumentException(NUMBER_SIZE_EX_MESSAGE);
         }
     }
 
     private void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> checkDuplicateNumbers = new HashSet<>(numbers);
-        if (checkDuplicateNumbers.size() != CRITERION_NUMBER_SIZE) {
+        if (checkDuplicateNumbers.size() != GAME_ROUND) {
             throw new IllegalArgumentException(NUMBER_DUPLICATE_EX_MESSAGE);
         }
     }
