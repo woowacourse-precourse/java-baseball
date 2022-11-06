@@ -48,7 +48,11 @@ public class CalcGameTest {
     void calcGameResult_입력한_숫자에_따른_게임_결과_반환() {
         CalcGame.setStrikeNumber(123);
 
-        GameResult gameResult = CalcGame.calcGameResult(135);
-        assertThat(gameResult).isEqualTo(new GameResult(1, 1));
+        try {
+            GameResult gameResult = CalcGame.calcGameResult(135);
+            assertThat(gameResult.isEqual(new GameResult(1, 1))).isEqualTo(true);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
