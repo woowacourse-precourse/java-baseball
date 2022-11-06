@@ -6,8 +6,9 @@ import java.util.Set;
 public class Exception {
   // 길이가 3이 아니면
   public static boolean isRightLength(String userNumber) {
-    if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH)
+    if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH) {
       throw new IllegalArgumentException();
+    }
     return true; //여기 true도 전역변수로???
   }
 
@@ -15,10 +16,12 @@ public class Exception {
   public static boolean isDuplicated(String userNumber) {
     Set<Character> set = new HashSet<>();
 
-    for (int i = 0; i < userNumber.length(); i++)
+    for (int i = 0; i < userNumber.length(); i++) {
       set.add(userNumber.charAt(i));
-    if (userNumber.length() != set.size())
+    }
+    if (userNumber.length() != set.size()) {
       throw new IllegalArgumentException();
+    }
     return true;
   }
 
@@ -26,8 +29,9 @@ public class Exception {
   public static boolean isNumber(String userNumber) {
     for (int i = 0; i < userNumber.length(); i++)
     {
-      if (!Character.isDigit(userNumber.charAt(i)))
+      if (!Character.isDigit(userNumber.charAt(i))) {
         throw new IllegalArgumentException();
+      }
     }
     return true;
   }

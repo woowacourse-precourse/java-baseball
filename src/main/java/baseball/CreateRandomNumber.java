@@ -11,8 +11,9 @@ public class CreateRandomNumber {
 
     while (number.size() < Constant.REQUIRED_NUMBER_LENGTH) {
       int randomNumber = Randoms.pickNumberInRange(1, 9);
-      if (!number.contains(randomNumber))
+      if (!number.contains(randomNumber)) {
         number.add(randomNumber);
+      }
     }
 
     StringBuilder strNumber = new StringBuilder();

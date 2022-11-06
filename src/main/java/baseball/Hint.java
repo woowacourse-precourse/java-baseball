@@ -7,8 +7,9 @@ public class Hint {
 
     for (int i = 0; i < userNumber.length(); i++)
     {
-      if (computer.contains(Character.toString(userNumber.charAt(i))))
+      if (computer.contains(Character.toString(userNumber.charAt(i)))) {
         ball += 1;
+      }
     }
     return ball;
   }
@@ -18,8 +19,9 @@ public class Hint {
     int strike = 0;
 
     for (int i = 0; i < userNumber.length(); i++) {
-      if (computer.charAt(i) == userNumber.charAt(i))
-        strike +=1;
+      if (computer.charAt(i) == userNumber.charAt(i)) {
+        strike += 1;
+      }
     }
     return strike;
   }
