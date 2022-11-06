@@ -1,57 +1,41 @@
 package baseball;
 
+import static util.GameUtil.BALL_MAX_SIZE;
+import static util.GameUtil.INPUT_DUPLICATION_ERROR;
+import static util.GameUtil.INPUT_RANGE_ERROR;
+import static util.GameUtil.INPUT_TYPE_ERROR;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
 
-    public static void check(String input) throws IllegalArgumentException {
-        Set<Character> duplicationCheck = new HashSet<>();
-        final int MAX_SIZE = 3;
-        final int SIGN = 0;
+	public static void check(String input) throws IllegalArgumentException {
+		Set<Character> removeDuplicate = new HashSet<>();
 
-        if (input.length() != MAX_SIZE) {
-            throw new IllegalArgumentException("숫자를 3개 입력하세요");
-        }
+		maxCheck(input);
+		for (char individualValue : input.toCharArray()) {
+			typeCheck(individualValue);
+			removeDuplicate.add(individualValue);
+		}
+		duplicationCheck(removeDuplicate);
+	}
 
-        if (input.charAt(SIGN) == '-') {
-            throw new IllegalArgumentException("양수만 입력하세요");
-        }
+	private static void maxCheck(String input) {
+		if (input.length() != BALL_MAX_SIZE) {
+			throw new IllegalArgumentException(INPUT_RANGE_ERROR);
+		}
+	}
 
-        for (char individualValue : input.toCharArray()) {
-            if (!Character.isDigit(individualValue)) {
-                throw new IllegalArgumentException("숫자만 입력하세요");
-            }
-            duplicationCheck.add(individualValue);
-        }
+	private static void typeCheck(char individualValue) {
+		if (!Character.isDigit(individualValue)) {
+			throw new IllegalArgumentException(INPUT_TYPE_ERROR);
+		}
+	}
 
-        if (duplicationCheck.size() != MAX_SIZE) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다");
-        }
-    }
-
-    public static void check(String input, int maxSize) throws IllegalArgumentException {
-        Set<Character> duplicationCheck = new HashSet<>();
-        final int SIGN = 0;
-
-        if (input.length() != maxSize) {
-            throw new IllegalArgumentException("숫자를 " + maxSize + "개 입력하세요");
-        }
-
-        if (input.charAt(SIGN) == '-') {
-            throw new IllegalArgumentException("양수만 입력하세요");
-        }
-
-        for (char individualValue : input.toCharArray()) {
-            if (!Character.isDigit(individualValue)) {
-                throw new IllegalArgumentException("숫자만 입력하세요");
-            }
-            duplicationCheck.add(individualValue);
-        }
-
-        if (duplicationCheck.size() != maxSize) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다");
-        }
-    }
-
+	private static void duplicationCheck(Set<Character> removeDuplicate) {
+		if (removeDuplicate.size() != BALL_MAX_SIZE) {
+			throw new IllegalArgumentException(INPUT_DUPLICATION_ERROR);
+		}
+	}
 }
