@@ -21,6 +21,16 @@ public class Computer {
         this.ball = ball;
     }
 
+    public void countStrike(List<Integer> userInputNumber) {
+        int strike = 0;
+        for (int i = 0; i < userInputNumber.size(); i++) {
+            if (computerNumber.get(i).equals(userInputNumber.get(i))) {
+                strike++;
+            }
+        }
+        this.strike = strike;
+    }
+
     public void makeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
