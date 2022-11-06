@@ -20,6 +20,7 @@ public class Application {
     }
 
     private static List<Integer> getUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         List<String> userNumber = Arrays.asList(Console.readLine().split(""));
         return userNumber.stream()
                 .map(Integer::parseInt)
