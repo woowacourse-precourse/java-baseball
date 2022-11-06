@@ -32,7 +32,7 @@
 
 1. GameNumber
 - [ ]  randomNumber 데이터 저장
-- [ ]  inputNumber 데이터 저장 (문자열 형태)
+- [x]  inputNumber 데이터 저장 (문자열 형태)
 - [ ]  playerNumber 데이터 저장 (inputNumber 숫자로 변환)
    - [ ]  데이터 유효성 검사기 체크 
    - [ ]  inputNumber 데이터 숫자로 변환
