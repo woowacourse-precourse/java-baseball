@@ -61,4 +61,11 @@ public class BallsTest {
 		BallStatus status = com.compareTo(new Ball(4, 1));
 		assertThat(status).isEqualTo(BallStatus.STRIKE);
 	}
+	@DisplayName("숫자 비교 테스트 N:1 - 볼")
+	@Test
+	void compareTo_숫자_비교_N_1_볼() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		BallStatus status = com.compareTo(new Ball(2, 1));
+		assertThat(status).isEqualTo(BallStatus.BALL);
+	}
 }
