@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import java.util.HashMap;
 import java.util.Map;

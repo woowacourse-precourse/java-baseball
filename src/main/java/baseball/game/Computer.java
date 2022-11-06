@@ -1,9 +1,7 @@
-package baseball;
+package baseball.game;
 
+import baseball.baseballs.Baseballs;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Computer {
     private static final int BASEBALL_COUNT = 3;

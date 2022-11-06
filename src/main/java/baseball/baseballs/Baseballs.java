@@ -1,5 +1,6 @@
-package baseball;
+package baseball.baseballs;
 
+import baseball.game.Result;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

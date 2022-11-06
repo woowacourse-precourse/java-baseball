@@ -2,7 +2,6 @@ package baseball.baseballs;
 
 import static org.assertj.core.api.Assertions.*;
 
-import baseball.Baseballs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

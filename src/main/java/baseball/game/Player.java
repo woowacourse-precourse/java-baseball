@@ -1,4 +1,6 @@
-package baseball;
+package baseball.game;
+
+import baseball.baseballs.Baseballs;
 
 public class Player {
     private static final String WANT_RESTART = "1";

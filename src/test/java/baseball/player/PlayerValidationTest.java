@@ -2,8 +2,7 @@ package baseball.player;
 
 import static org.assertj.core.api.Assertions.*;
 
-import baseball.Player;
-import org.assertj.core.api.Assertions;
+import baseball.game.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

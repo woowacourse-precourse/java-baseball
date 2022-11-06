@@ -2,8 +2,7 @@ package baseball.computer;
 
 import static org.assertj.core.api.Assertions.*;
 
-import baseball.Computer;
-import baseball.Player;
+import baseball.game.Computer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
