@@ -13,7 +13,7 @@ public class Play {
             baseballGame.isBall();
             baseballGame.isStrike();
             baseballGame.printCompareResult();
-            endGameCheck = baseballGame.isStrike();
+            endGameCheck = baseballGame.isThreeStrike();
         } while(!endGameCheck);
     }
 }
