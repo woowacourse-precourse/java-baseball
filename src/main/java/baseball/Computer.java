@@ -11,6 +11,14 @@ public class Computer {
     int ball;
     int strike;
 
+    public void setStrike(List<Integer> userInputNumber) {
+        this.strike = countStrike(userInputNumber);
+    }
+
+    public void setBall(List<Integer> userInputNumber) {
+        this.ball = countBall(userInputNumber);
+    }
+
     public void printResult() {
         if (this.strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -25,32 +33,37 @@ public class Computer {
         }
     }
 
-    public void countBall(List<Integer> userInputNumber) {
+    public int countBall(List<Integer> userInputNumber) {
         int ball = 0;
         for (int i = 0; i < userInputNumber.size(); i++) {
             if (computerNumber.contains(userInputNumber.get(i)) && !(computerNumber.get(i).equals(userInputNumber.get(i)))) {
                 ball++;
             }
         }
-        this.ball = ball;
+        return ball;
     }
 
-    public void countStrike(List<Integer> userInputNumber) {
+    public int countStrike(List<Integer> userInputNumber) {
         int strike = 0;
         for (int i = 0; i < userInputNumber.size(); i++) {
             if (computerNumber.get(i).equals(userInputNumber.get(i))) {
                 strike++;
             }
         }
-        this.strike = strike;
+        return strike;
     }
+
+    public void setComputerNumber(List<Integer> computerNumber) {
+        this.computerNumber = computerNumber;
+    }
+
 
     public boolean isAnswer(){
         if(strike == 3) return true;
         else return false;
     }
 
-    public void makeRandomNumber() {
+    public List<Integer> makeRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -58,6 +71,7 @@ public class Computer {
                 computerNumber.add(randomNumber);
             }
         }
-        this.computerNumber = computerNumber;
+        return computerNumber;
     }
+
 }
