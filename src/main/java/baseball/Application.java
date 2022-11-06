@@ -14,14 +14,17 @@ public class Application {
         Computer computer = new Computer();
         while (user.getIsProgramEnd().equals(1)) {
             Game game = new Game();
+
             computer.makeRandomNumber();
             while (!game.isGameEnd()) {
                 user.setUserInput(user.userInput());
                 game.checkValidNumber(user.getUserInput());
                 user.setUserInputStringToNumber(user.getUserInput());
+
                 computer.countBall(user.getUserInputNumber());
                 computer.countStrike(user.getUserInputNumber());
                 computer.printResult();
+                
                 game.setGameEnd(computer.isAnswer());
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
