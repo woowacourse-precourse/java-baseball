@@ -38,21 +38,21 @@ public class OutputView {
     
     private static boolean isNothing(final List<Integer> scores) {
         return scores.stream()
-                .noneMatch(OutputView::isPitchResultNotZero);
+                .noneMatch(OutputView::isScoreNotZero);
     }
     
-    private static boolean isPitchResultNotZero(final Integer score) {
+    private static boolean isScoreNotZero(final Integer score) {
         return score != MIN_SCORES_INDEX;
     }
     
     private static String parsePlayResults(final List<Integer> scores, final List<String> ballStatusDisplay) {
         return IntStream.rangeClosed(MIN_SCORES_INDEX, MAX_SCORES_INDEX)
-                .filter(scoresIndex -> isPitchResultNotZero(scores, scoresIndex))
+                .filter(scoresIndex -> isScoreNotZero(scores, scoresIndex))
                 .mapToObj(scoresIndex -> scores.get(scoresIndex) + ballStatusDisplay.get(scoresIndex))
                 .collect(Collectors.joining(SPACE_DELIMITER));
     }
     
-    private static boolean isPitchResultNotZero(final List<Integer> scores, final int resultIndex) {
+    private static boolean isScoreNotZero(final List<Integer> scores, final int resultIndex) {
         return scores.get(resultIndex) != MIN_SCORES_INDEX;
     }
     
