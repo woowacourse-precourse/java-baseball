@@ -22,13 +22,12 @@ public class BaseballGame {
     }
 
     public void play(){
-        initialize();
+        initializeGame();
         computer.createNumber();
         printGameStartStatement();
 
         while(isEnd == false) {
-            ballCount = 0;
-            strikeCount = 0;
+            initializeTurn();
             printInputStatement();
             getPlayerNumber();
             checkBall();
@@ -40,9 +39,14 @@ public class BaseballGame {
         getPlayerOption();
     }
 
-    private void initialize(){
+    private void initializeGame(){
         isEnd = false;
         isContinue = true;
+    }
+
+    private void initializeTurn(){
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     private void getPlayerNumber(){
