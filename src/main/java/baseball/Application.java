@@ -13,6 +13,10 @@ public class Application {
     public static final String USER_INPUT_IS_NOT_IN_RANGE = "사용자 입력값이 1~9 사이가 아닙니다.";
     public static final String USER_INPUT_IS_NOT_THREE_DIGITS = "사용자 입력값이 3자리가 아닙니다.";
     public static final String USER_INPUT_HAS_DUPLICATED_NUMBER = "중복된 값은 입력할 수 없습니다";
+    public static final String NOTTING = "낫싱";
+    public static final String ALL_STRIKES = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String STRIKE = "스트라이크";
+    public static final String BALL = "볼";
 
 
     public static void main(String[] args) {
@@ -109,5 +113,25 @@ public class Application {
         }
 
         return ballCount;
+    }
+
+    static String makeOutput(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            return NOTTING;
+        }
+
+        if (strikeCount == 3) {
+            return ALL_STRIKES;
+        }
+
+        if (ballCount == 0) {
+            return strikeCount + STRIKE;
+        }
+
+        if (strikeCount == 0) {
+            return ballCount + BALL;
+        }
+
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 }

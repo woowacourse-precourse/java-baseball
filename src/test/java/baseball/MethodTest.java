@@ -163,4 +163,22 @@ class MethodTest {
         // then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void makeOutput_매서드로_출력_문구를_반환() {
+        // given
+        // when
+        String output1 = Application.makeOutput(0, 0);
+        String output2 = Application.makeOutput(0, 1);
+        String output3 = Application.makeOutput(1, 0);
+        String output4 = Application.makeOutput(1, 1);
+        String output5 = Application.makeOutput(0, 3);
+
+        // then
+        assertThat(output1).isEqualTo("낫싱");
+        assertThat(output2).isEqualTo("1스트라이크");
+        assertThat(output3).isEqualTo("1볼");
+        assertThat(output4).isEqualTo("1볼 1스트라이크");
+        assertThat(output5).isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
