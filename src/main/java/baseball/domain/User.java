@@ -3,10 +3,10 @@ package baseball.domain;
 public class User {
 
     private static final int GUESSED_ANSWER_LENGTH = 3;
-    private final int[] guessedAnswer;
+    private final Integer[] guessedAnswer;
 
     public User() {
-        this.guessedAnswer = new int[GUESSED_ANSWER_LENGTH];
+        this.guessedAnswer = new Integer[GUESSED_ANSWER_LENGTH];
     }
 
     public void setGuessedAnswer(String guessedAnswer) {
@@ -16,7 +16,7 @@ public class User {
         }
     }
 
-    public int[] getGuessedAnswer() {
+    public Integer[] getGuessedAnswer() {
         return guessedAnswer;
     }
 }

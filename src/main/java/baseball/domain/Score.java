@@ -20,13 +20,12 @@ public class Score {
         this.strike = INITIAL_VALUE;
     }
 
-    public boolean isWrongAnswer(int[] answer, int[] guessedAnswer) {
-        String stringAnswer = Arrays.toString(answer);
+    public boolean isWrongAnswer(Integer[] answer, Integer[] guessedAnswer) {
         initBallAndStrike();
 
         for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.length; guessedAnswerIndex++) {
             int number = guessedAnswer[guessedAnswerIndex];
-            int answerIndex = stringAnswer.indexOf(number);
+            int answerIndex = Arrays.asList(answer).indexOf(number);
 
             ballAndStrikeCount(answerIndex, guessedAnswerIndex);
         }
@@ -39,9 +38,8 @@ public class Score {
     private void ballAndStrikeCount(int answerIndex, int guessedAnswerIndex) {
         if (answerIndex == guessedAnswerIndex) {
             strike++;
-        }
 
-        if (answerIndex != guessedAnswerIndex) {
+        } else if (answerIndex > -1) {
             ball++;
         }
     }

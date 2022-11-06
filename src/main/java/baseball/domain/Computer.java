@@ -9,10 +9,10 @@ public class Computer {
     private static final int ANSWER_LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBEr = 9;
-    private final int[] answer;
+    private final Integer[] answer;
 
     public Computer() {
-        answer = new int[ANSWER_LENGTH];
+        answer = new Integer[ANSWER_LENGTH];
     }
 
     public void generateAnswer() {
@@ -30,7 +30,7 @@ public class Computer {
         }
     }
 
-    public int[] getAnswer() {
+    public Integer[] getAnswer() {
         return answer;
     }
 }
