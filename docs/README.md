@@ -12,7 +12,7 @@
 - [x] readLine()함수를 통해 사용자에게 받은 입력값을 userNumber에 저장
 - [x] userNumber을 리턴
 
-## (boolean)availableUserNumberIsChecked(String word)
+## (void)availableUserNumberIsChecked(String word)
 - [x] 0~9까지의 서로 다른 숫자인지 확인하는 정규표현식을 regularExpression에 저장한다.
 - [x] 매개변수가 regularExpression으로 참인지 거짓인지 판별
 - [x] 거짓이면, "유효하지 않은 값입니다"를 출력
