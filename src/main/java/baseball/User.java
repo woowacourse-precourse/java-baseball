@@ -32,9 +32,25 @@ public class User {
     }
 
     public void inputException(List<Integer> userNumbers, int numberToInt) {
+        int userNumbersSize = userNumbers.size();
         if (userNumbers.contains(numberToInt)) {
             throw new IllegalArgumentException();
         }
+        if (userNumbersSize != 3) {
+            throw new IllegalArgumentException();
+        }
+        if (!isNumber(userNumbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean isNumber(List<Integer> userNumbers) {
+        for (int number : userNumbers) {
+            if (number < 1 || number > 9) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void restartGame() {
