@@ -17,7 +17,9 @@ public class SingleDigit {
         this.singleDigit = singleDigit;
     }
 
-    public boolean equals(SingleDigit otherNumber){
+    @Override
+    public boolean equals(Object objectedOtherNumber){
+        SingleDigit otherNumber = (SingleDigit)objectedOtherNumber;
         return this.singleDigit == otherNumber.singleDigit;
     }
 
