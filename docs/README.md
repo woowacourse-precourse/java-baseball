@@ -57,6 +57,8 @@ Version 1.0.2
 ### IV-2. 예외처리
 - 사용자가 [잘못된 값](#iv-1-잘못된-값의-정의)을 입력할 경우
   * `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료:
-- `IllegalArgumentException` 메시지 구분
+- 게임 중 입력에 대한 `IllegalArgumentException` 메시지
   * 입력의 길이가 잘못되었거나 입력이 정수가 아닌 경우: "Input should be 3-digit integer with non-zero digits" 메시지 출력
   * 일, 십, 백의 자릿수 중 중복되는 숫자가 있는 경우: "Input should consist of non-duplicated digits" 메시지 출력
+- 게임 종료 후 실행 코드에 대한 `IllegalArgumentException` 메시지
+  * 1 또는 2가 아닌 입력의 경우: "Execution code must be 1 or 2" 메시지 출력
