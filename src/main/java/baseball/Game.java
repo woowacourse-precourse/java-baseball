@@ -41,11 +41,11 @@ public class Game {
     public List<Integer> getPlayerNumber() {
         List<Integer> playerNumber = new ArrayList<Integer>();
         String input = Console.readLine();
-        if (input.length() != INPUT_LENGTH || playerNumber.size() != playerNumber.stream().distinct().count()) {
-            throw new IllegalArgumentException();
-        }
         for (int digit = 0; digit < input.length(); digit++) {
             playerNumber.add(Integer.valueOf(String.valueOf(input.charAt(digit))));
+        }
+        if (input.length() != INPUT_LENGTH || playerNumber.size() != playerNumber.stream().distinct().count()) {
+            throw new IllegalArgumentException();
         }
         return playerNumber;
     }
