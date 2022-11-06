@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -65,7 +66,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("정상 입력인 경우 ")
+    @DisplayName(" 정상 입력인 경우 ")
     public void NormalInput() throws Exception{
         List<Integer> result = Application.validationAndConvert("123");
         assertThat(result.size()).isEqualTo(3);
@@ -74,4 +75,16 @@ class ApplicationTest extends NsTest {
         assertThat(result.get(2)).isEqualTo(3);
 
     }
+
+
+    @Test
+    @DisplayName(" 0 볼 경우 ")
+    public void zeroBallScenario() throws Exception{
+        List<Integer> computer  = List.of(1,2,3);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculationBall(computer,user);
+        assertThat(ball).isEqualTo(0);
+    }
+
 }
