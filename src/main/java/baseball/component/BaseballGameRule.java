@@ -23,9 +23,9 @@ public class BaseballGameRule {
      *         playerScore.get(1) : strike 수
      */
     public List<Integer> verifyPlayerScore(List<Integer> playerNumbers){
-        List<Integer> playerScore = new ArrayList<>();
-        playerScore.add(verifyBalls(playerNumbers));
-        playerScore.add(verifyStrikes(playerNumbers));
+        int ballCount = verifyBalls(playerNumbers);
+        int strikeCount = verifyStrikes(playerNumbers);
+        List<Integer> playerScore = List.of(ballCount, strikeCount);
         return playerScore;
     }
 
