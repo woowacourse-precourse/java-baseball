@@ -33,6 +33,7 @@ public class GameController {
     }
 
     void clearScore(){
+        gameService.initializeScore();
     }
 
     String getPlayerNumbers(){
