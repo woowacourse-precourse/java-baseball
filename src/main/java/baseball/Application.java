@@ -16,13 +16,13 @@ public class Application {
         ArrayList<Integer> scoreSheet = new ArrayList<Integer>();
 
         cpuNumbers = computersNumbers();
-        int playStatus=0;
+        int playStatus = 0;
 
-        while(playStatus==0){
+        while (playStatus == 0) {
             playerNumbers = readUsersNumbers();
-            scoreSheet = comparing(cpuNumbers,playerNumbers);
+            scoreSheet = comparing(cpuNumbers, playerNumbers);
             playStatus = gameResult(scoreSheet);
-            if(playStatus==1){
+            if (playStatus == 1) {
                 playStatus = restartGame();
                 cpuNumbers = computersNumbers();
             }
@@ -58,9 +58,17 @@ public class Application {
 
         System.out.print("숫자를 입력해주세요: ");
         int inputNumber1 = scanner.nextInt();
-        int inputNumber2 = scanner.nextInt();
-        int inputNumber3 = scanner.nextInt();
+        int inputNumber2;
+        int inputNumber3;
+        if (inputNumber1 > 99 && inputNumber1 < 1000) {
 
+            inputNumber2 = inputNumber1 % 100 / 10;
+            inputNumber3 = inputNumber1 % 10;
+            inputNumber1 = inputNumber1 / 100;
+        } else {
+            inputNumber2 = scanner.nextInt();
+            inputNumber3 = scanner.nextInt();
+        }
         if (inputRequirements(inputNumber1, inputNumber2, inputNumber3)) {
             usersNumbers.add(0, inputNumber1);
             usersNumbers.add(1, inputNumber2);
