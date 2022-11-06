@@ -3,15 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Application {
 
     private static final int DIGIT_LENGTH = 3;
-
+    private static final String INPUT_PATTERN = "\\d".repeat(DIGIT_LENGTH);
     /**
      * 게임을 시작 할 때 생성하는 랜덤 넘버 3개 (이때 각 숫자는 중복이 없다)
      *
@@ -19,7 +17,7 @@ public class Application {
      */
     public static List<Integer> generateRandomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < DIGIT_LENGTH) {
             int randomValue = Randoms.pickNumberInRange(1, 9);
 
             if (randomNumbers.contains(randomValue)) continue;
@@ -60,15 +58,23 @@ public class Application {
     }
 
     /**
-     * 사용자가 입력한 문자열이 오직 숫자 3개인지 확인하는 함수
+     * 사용자가 입력한 문자열이 입력 패턴과 일치하는 지 검사하는 함수
      *
      * @param userInput 사용자가 입력한 문자열
-     * @return 숫자 3개인지 여부
+     * @return 패턴 일치 여부
      */
     public static boolean checkUserInput(String userInput) {
-        return userInput.matches("\\d\\d\\d");
+
+        return userInput.matches(INPUT_PATTERN);
     }
 
+    /**
+     * 스트라이크 갯수를 파악하는 함수
+     *
+     * @param answerList 정답
+     * @param userInputList 사용자의 입력
+     * @return 스트라이크 갯수
+     */
     public static int countStrike(List<Integer> answerList, List<Integer> userInputList) {
         int strike = 0;
         for (int i = 0; i < DIGIT_LENGTH; i++) {
@@ -82,6 +88,13 @@ public class Application {
         return strike;
     }
 
+    /**
+     * 볼 갯수를 파악하는 함수
+     *
+     * @param answerList 정답
+     * @param userInputList 사용자 입력
+     * @return 볼 갯수
+     */
     public static int countBall(List<Integer> answerList, List<Integer> userInputList) {
         int ball = 0;
         for (int i = 0; i < DIGIT_LENGTH; i++) {
@@ -95,6 +108,12 @@ public class Application {
         return ball;
     }
 
+    /**
+     * 게임 결과를 출력하는 함수
+     *
+     * @param strike 스트라이크 횟수
+     * @param ball 볼 횟수
+     */
     public static void printResult(int strike, int ball) {
         String result = "";
 
@@ -107,6 +126,11 @@ public class Application {
         System.out.println(result);
     }
 
+    /**
+     * 다음 게임을 진행할지 사용자의 입력을 받아 판단하는 함수
+     *
+     * @return 다음 게임 진행 여부
+     */
     public static boolean checkNextGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String userInput = Console.readLine();
@@ -114,6 +138,9 @@ public class Application {
         return userInput.equals("1");
     }
 
+    /**
+     * 단판 숫자 야구 게임을 진행하는 함수
+     */
     public static void game() {
         List<Integer> randomNumbers = generateRandomNumber();
 
@@ -122,7 +149,7 @@ public class Application {
 
             boolean validation = checkUserInput(userInputStr);
 
-            if (!validation) throw new IllegalArgumentException("3자리의 숫자만 입력해야합니다.");
+            if (!validation) throw new IllegalArgumentException(String.format("%d자리의 숫자만 입력해야합니다.", DIGIT_LENGTH));
 
             List<Integer> userInput = userInputStrToIntegerList(userInputStr);
 
@@ -132,7 +159,7 @@ public class Application {
             printResult(strike, ball);
 
             if (strike == DIGIT_LENGTH) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", DIGIT_LENGTH);
                 break;
             }
         }
