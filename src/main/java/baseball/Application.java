@@ -9,28 +9,31 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int startOrEnd = Integer.parseInt(Console.readLine());
-        if(startOrEnd == 1) startGame();
 
     }
 
     private static void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         String answerNum = createAnswer();
-        System.out.println(answerNum);
 
         boolean endPoint = true;
         while(endPoint){
             System.out.println("숫자를 입력해주세요 : ");
             String inputNum = Console.readLine();
+
+            if(inputNum.length() != 3) throw new IllegalArgumentException();
+
+
             int strike = countStrike(answerNum, inputNum);
             int ball = countBall(answerNum, inputNum, strike);
 
             endPoint = giveScore(strike, ball);
         }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int startOrEnd = Integer.parseInt(Console.readLine());
+        if(startOrEnd == 1) startGame();
     }
 
     private static boolean giveScore(int strike, int ball) {
@@ -38,7 +41,11 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
-
+        if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+            return true;
+        }
+        System.out.println("3스트라이크");
         System.out.println(ball+"볼 "+strike+"스트라이크");
         return true;
     }
