@@ -112,4 +112,18 @@ class Count {
             }
         }
     }
+
+    void printCount() {
+        if (this.ball == 0 && this.strike == 0) {
+            System.out.println("낫싱");
+        } else if (this.strike == 0) {
+            System.out.printf("%d볼", this.ball);
+        } else if (this.ball == 0) {
+            System.out.printf("%d스트라이크", this.strike);
+        } else if (this.strike == 3) {
+            System.out.println("3스트라이크");
+        } else {
+            System.out.printf("%d볼 %d스트라이크", this.ball, this.strike);
+        }
+    }
 }
