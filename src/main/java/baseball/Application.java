@@ -77,9 +77,14 @@ public class Application {
                 ballCount++;
             }
         }
-        
+
         getHint(ballCount, strikeCount);
         return strikeCount == 3;
+    }
+
+    /** 게임 재시작/종료 유효성 검사 기능 */
+    public static boolean isValidateUserSelect(String userSelect) {
+        return userSelect.equals("1") || userSelect.equals("2");
     }
 
     /** 힌트 계산 기능 */
