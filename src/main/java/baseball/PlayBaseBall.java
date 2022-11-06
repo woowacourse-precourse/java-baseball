@@ -4,7 +4,7 @@ public class PlayBaseBall {
   public static void playGame() {
     PrintOut.startMessage();
     String computer = CreateRandomNumber.numberMaker();
-    int strike = 0;
+    int strike;
     while (true)
     {
       PrintOut.inputMessage();
@@ -19,7 +19,6 @@ public class PlayBaseBall {
         if (!ContinueOrStop.choice(UserScanner.input())) {
           break;
         }
-        strike = 0;
         computer = CreateRandomNumber.numberMaker();
       }
     }
