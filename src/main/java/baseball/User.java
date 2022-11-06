@@ -1,12 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class User {
 	String userInput;
 	String patternedUserInput;
-	String validatedUserInput;
+	List<Integer> validatedUserInput;
 
 	User() {}
 
@@ -20,5 +21,20 @@ public class User {
 		}
 
 		patternedUserInput = userInput;
+	}
+
+	public void duplicationValidateInput() {
+		initValidatedUserInput();
+		
+		for (int indexNumber = 0; indexNumber < 3; indexNumber++) {
+			char charAtIndex = patternedUserInput.charAt(indexNumber);
+			int intIndex = Character.getNumericValue(charAtIndex);
+
+			if (validatedUserInput.contains(intIndex)) {
+				throw new IllegalArgumentException();
+			}
+
+			validatedUserInput.add(intIndex);
+		}
 	}
 }
