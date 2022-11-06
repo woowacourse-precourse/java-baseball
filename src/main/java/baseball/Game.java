@@ -26,7 +26,7 @@ public class Game {
 
     }
 
-    private boolean playGame(List<Integer> computer) {
+    public boolean playGame(List<Integer> computer) {
         gameEnd = false;
 
         while (true) {
@@ -49,7 +49,7 @@ public class Game {
         }
     }
 
-    private static List<Integer> getRandomNumberList() {
+    public List<Integer> getRandomNumberList() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -61,7 +61,7 @@ public class Game {
         return computer;
     }
 
-    private List<Integer> validateUserInput(String input) {
+    public List<Integer> validateUserInput(String input) {
         List<Integer> user = new ArrayList<>();
         for (String number : Arrays.asList(input.split(""))) {
             if (!Character.isDigit(number.charAt(0))) {
@@ -78,7 +78,7 @@ public class Game {
         return user;
     }
 
-    private static void calculateNumber(List<Integer> user, List<Integer> computer) {
+    public void calculateNumber(List<Integer> user, List<Integer> computer) {
         strike = 0;
         ball = 0;
 
@@ -95,7 +95,7 @@ public class Game {
         }
     }
 
-    private static void printResult() {
+    public void printResult() {
         if (strike == 0 && ball == 0)
             System.out.println("낫싱");
         if (ball != 0)
