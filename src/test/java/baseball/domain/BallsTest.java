@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
