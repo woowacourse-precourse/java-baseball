@@ -9,18 +9,18 @@ import java.util.List;
 
 
 public class Game {
-    protected static final int answerLength = 3;
-    protected static final List<Integer> numberForAnswer = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    protected static final int intentionLength = 1;
-    protected static final List<Integer> numberForIntention = List.of(1, 2);
+    public static final int answerLength = 3;
+    public static final List<Integer> numberForAnswer = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    public static final int intentionLength = 1;
+    public static final List<Integer> numberForIntention = List.of(1, 2);
 
-    private static final int newGame = 1;
-    private static final int endGame = 2;
+    protected static final String newGame = "1";
+    protected static final String endGame = "2";
 
     public static List<Integer> correctAnswer = new ArrayList<>();
     private boolean isCorrect;
     private String[] userInputForProgress;
-    private int userIntention;
+    protected String userIntention;
 
     Pitch pitch = new Pitch();
     Hint hint = new Hint();
@@ -44,10 +44,10 @@ public class Game {
 
         askContinue();
         getUserIntention();
-        if (userIntention == newGame) {
+        if (userIntention.equals(newGame)) {
             this.start();
         }
-        if (userIntention == endGame) {
+        if (userIntention.equals(endGame)) {
             return;
         }
     }
@@ -56,7 +56,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private void setComputerAnswer() {
+    public void setComputerAnswer() {
         correctAnswer.clear();
 
         while (correctAnswer.size() < answerLength) {
@@ -71,10 +71,10 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private void getUserIntention() {
+    protected void getUserIntention() {
         userInputForProgress = Console.readLine().split("");
         illegalArgument.check(userInputForProgress, intentionLength, numberForIntention);
 
-        userIntention = Integer.parseInt(userInputForProgress[0]);
+        userIntention = userInputForProgress[0];
     }
 }
