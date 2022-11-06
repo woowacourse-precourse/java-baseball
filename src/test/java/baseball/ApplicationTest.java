@@ -180,7 +180,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // 입력한 숫자가 각각 자릿수가 같은지 확인
+    @DisplayName("입력한 숫자가 각각 자릿수가 같은지 확인")
     void 문자_입력_예외_테스트_case_4() throws Exception {
         //given
         User user = new User();
@@ -189,8 +189,7 @@ class ApplicationTest extends NsTest {
         System.setIn(in);
         // when
         // then
-        assertThrows(IllegalArgumentException.class,
-            user::inputNumOfUser);
+        assertThatThrownBy(user::inputNumOfUser).isInstanceOf(IllegalArgumentException.class);
     }
 
     // TODO: computer
