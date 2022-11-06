@@ -20,24 +20,11 @@ public class GameSet {
         System.out.println(computerAnswer);
         userAnswer = CreateUserNumber.userAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
-        compareAnswer();
+        strikeCount = GetGameResult.countStrike(userAnswer, computerAnswer);
+        ballCount = GetGameResult.countBall(userAnswer, computerAnswer);
         PrintMessage.ballStrikeMessage(ballCount, strikeCount);
     }
 
-    // 볼과 스트라이크 갯수를 세어주는 함수
-    public void compareAnswer(){
-        strikeCount = 0;
-        ballCount = 0;
-        for(int i = 0; i < userAnswer.size(); i++){
-            if(computerAnswer.indexOf(userAnswer.get(i)) == i){
-                strikeCount++;
-                continue;
-            }
-            if(computerAnswer.contains(userAnswer.get(i))){
-                ballCount++;
-            }
-        }
-    }
     // 게임이 끝났는지 물어보는 함수
     public boolean isGameEnd(){
         if(strikeCount == 3){
