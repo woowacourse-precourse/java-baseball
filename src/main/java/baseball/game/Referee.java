@@ -2,7 +2,6 @@ package baseball.game;
 
 
 import baseball.constant.Accuracy;
-import baseball.constant.Rules;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Referee {
         validateNumbersLength(targetNumbers, userNumbers);
 
         Map<Accuracy, Integer> judgeAccuracy = getJudgeAccuracy(targetNumbers, userNumbers);
-        shout(judgeAccuracy);
+        System.out.println(shout(judgeAccuracy));
 
         return judgeAccuracy.get(Accuracy.CORRECT_ANSWER) == PICK_COUNT;
     }
@@ -51,5 +50,18 @@ public class Referee {
     private void judge(Map<Accuracy, Integer> judgeAccuracy, Accuracy accuracy) {
         int count = judgeAccuracy.getOrDefault(accuracy, DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST);
         judgeAccuracy.put(accuracy, count + 1);
+    }
+
+    private String shout(Map<Accuracy, Integer> judgeAccuracy) {
+        StringBuilder sb = new StringBuilder();
+
+        addToShout(judgeAccuracy, sb, Accuracy.SIMILAR_ANSWER);
+        addToShout(judgeAccuracy, sb, Accuracy.CORRECT_ANSWER);
+
+        if (sb.length() > 0) {
+            return sb.toString();
+        }
+
+        return Accuracy.WRONG_ANSWER.getDescription();
     }
 }
