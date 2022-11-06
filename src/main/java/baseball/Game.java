@@ -6,7 +6,9 @@ import java.util.List;
 public class Game {
 
     public static void run() {
-
+        do {
+            play();
+        } while (inputPlayGame());
     }
 
     private static void play() {
