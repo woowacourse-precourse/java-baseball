@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.gamescore.Ball;
+import baseball.gamescore.Strike;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ class RefereeTest {
 
     @BeforeEach
     void setUp() {
-        referee = new Referee();
+        referee = new Referee(new Ball(), new Strike(), new CorrectCount());
     }
 
     @Nested

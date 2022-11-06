@@ -9,16 +9,22 @@ import java.util.List;
 public class Referee {
     private static final int STANDARD = 1;
 
+    private final Ball ball;
+    private final Strike strike;
+    private final CorrectCount correctCount;
+
+    public Referee(Ball ball, Strike strike, CorrectCount correctCount) {
+        this.ball = ball;
+        this.strike = strike;
+        this.correctCount = correctCount;
+    }
+
     public String resultJudgment(List<Integer> computer, List<Integer> player) {
-        CorrectCount definiteNumber = new CorrectCount();
-        Strike strike = new Strike();
-        Ball ball = new Ball();
-
-        int correctCount = definiteNumber.compare(computer, player);
+        int getCorrectCount = correctCount.compare(computer, player);
         int getStrike = strike.score(computer, player);
-        int getBall = ball.score(correctCount, getStrike);
+        int getBall = ball.score(getCorrectCount, getStrike);
 
-        if (correctCount == 0) {
+        if (getCorrectCount == 0) {
             return SystemMessage.NOTHING_MESSAGE;
         }
         return getResult(getStrike, getBall);
@@ -34,7 +40,7 @@ public class Referee {
         }
 
         if (strike >= STANDARD && ball >= STANDARD) {
-            return ball + SystemMessage.BALL_MESSAGE +" "+ strike + SystemMessage.STRIKE_MESSAGE;
+            return ball + SystemMessage.BALL_MESSAGE + " " + strike + SystemMessage.STRIKE_MESSAGE;
         }
         return null;
     }
