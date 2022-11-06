@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballView {
@@ -47,6 +48,8 @@ public class BaseballView {
      * @return 플레이어가 재시작 한다면 true, 아닐경우 false
      */
     private boolean restartGame() {
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputCommand = Console.readLine();
+        return baseballController.restartGame(inputCommand);
     }
 }
