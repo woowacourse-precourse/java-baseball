@@ -72,7 +72,7 @@ public class Application {
 
     public static void checkRestartInput(String input){
         input.trim();
-        if(input.matches("[0-9]+"))
+        if(!input.matches("[0-9]+"))
             throw new IllegalArgumentException("숫자로 이루어진 입력이 아닙니다.");
         if(input.length() != 1)
             throw new IllegalArgumentException("길이가 1인 숫자 입력이 아닙니다.");
