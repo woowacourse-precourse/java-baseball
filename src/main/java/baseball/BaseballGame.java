@@ -9,6 +9,8 @@ public class BaseballGame {
     private final int LENGTH_OF_NUMBER = 3;
     private boolean isEnd = false;
     private boolean isContinue = true;
+    private int ballCount = 0;
+    private int strikeCount = 0;
     private Rival computer;
     private List<Integer> player;
 
@@ -26,7 +28,7 @@ public class BaseballGame {
                 getPlayerNumber();
                 //checkBall();
                 //checkStrike();
-                //printHint();
+                printHint();
             }
             printGameEndStatement();
             getPlayerOption();
@@ -63,7 +65,7 @@ public class BaseballGame {
         return true;
     }
 
-    private void getPlayerOption(){
+    private void getPlayerOption() throws IllegalArgumentException{
         String input = Console.readLine();
         if(input.equals("1")){
             isContinue = true;
@@ -91,5 +93,30 @@ public class BaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    private void printHint(){
+        if(ballCount == 0 && strikeCount == 0){
+            printNothing();
+        }else{
+            printBall();
+            printStrike();
+        }
+    }
+    private void printNothing(){
+        System.out.println("낫싱");
+    }
+
+    private void printBall(){
+        if(ballCount != 0 && strikeCount != 0){
+            System.out.print(ballCount + "볼 ");
+        }else if(ballCount != 0 && strikeCount == 0){
+            System.out.println(ballCount + "볼");
+        }
+    }
+
+    private void printStrike(){
+        if(strikeCount != 0){
+            System.out.println(strikeCount + "스트라이크");
+        }
+    }
 
 }
