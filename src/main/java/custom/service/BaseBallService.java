@@ -47,19 +47,22 @@ public class BaseBallService {
         if (reTry.equals(ReTry.YES)) {
             return Response.keepOf("다시 시작");
         }
-        return  Response.endOf("종료");
+        return Response.endOf("종료");
     }
 
     private String generateMessage(int scoreOfStrike, int scoreOfBall) {
         String ball = "";
         String strike = "";
+        if (scoreOfBall == 0 && scoreOfStrike == 0) {
+            return "낫싱";
+        }
         if (scoreOfBall > 0) {
             ball = String.format("%d볼", scoreOfBall);
         }
         if (scoreOfStrike > 0) {
             strike = String.format("%d스트라이크", scoreOfStrike);
         }
-        String answer =ball + " " + strike;
+        String answer = ball + " " + strike;
         return answer.trim();
     }
 
