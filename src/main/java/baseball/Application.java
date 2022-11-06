@@ -38,6 +38,12 @@ public class Application {
         return computer;
     }
 
+    /*
+    게임을 시작하는 메소드
+
+    params
+    List<Integer> computerNumber
+     */
     static void startGame(List<Integer> computerNumber) {
         while (true) {
             // 사용자로부터 입력된 3개의 숫자 배열
