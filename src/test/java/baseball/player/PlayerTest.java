@@ -1,6 +1,5 @@
-package baseball.domain;
+package baseball.player;
 
-import baseball.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
