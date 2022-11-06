@@ -9,9 +9,11 @@ public class GameProcess {
     Boolean isCorrect;
     int ball, strike;
     public GameProcess(){
+        InputOutput.printGameStart();
     }
 
     public void gameStart(){
+
         // 게임 진행
         isCorrect = false;
         setAnswer();
@@ -19,15 +21,15 @@ public class GameProcess {
 
         // 맞을 때 까지 게임 진행
         while (!isCorrect){
-            // 유저의 입력 받고 userNum = 입력 함수;
             userNum = InputOutput.getThreeNumber();
-
             // 스트라이크, 볼 구하기
             countStrikeBall(userNum);
+            InputOutput.printStrikeBall(strike, ball);
+
             isCorrect = checkCorrect();
             break;
         }
-        // 3개의 숫자를 모두 맞히셨습니다! 게임 종료 <- 출력
+        InputOutput.printCorrectNumber();
 
         // 게임 종료 후 재시작 묻기
         if (isRestart()){
@@ -57,7 +59,6 @@ public class GameProcess {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             setStrikeOrBall(user[i], i);
         }
-        // 볼, 스트라이크를 출력하는 기능.
     }
 
     private void setAnswer(){
