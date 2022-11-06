@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserStringCustomTest {
 
@@ -32,22 +33,20 @@ public class UserStringCustomTest {
         List<Integer> integers = new ArrayList<>();
 
         assertThat(game.stringToListInteger(input).getClass().getName()).isEqualTo(integers.getClass().getName());
+        assertThat(new ArrayList<>()).isInstanceOf(List.class);
     }
 
     @Test
     void 입력_값에_숫자가_아닌_값이_포함되어_있는_경우() {
-        String userAnswer = "!23";
-        assertThat(!userAnswer.matches("[+-]?\\d*(\\.\\d+)?")).isEqualTo(true); {
-            throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
-        }
+        String userAnswer = "2@3";
+        assertThat(!userAnswer.matches("[+-]?\\d*(\\.\\d+)?")).isEqualTo(true);
     }
 
     @Test
     void 입력_값에_1에서_9가_아닌_0이_포함되어_있는_경우() {
         String userAnswer = "103";
-        assertThat(userAnswer.contains("0")).isEqualTo(true); {
-            throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
-        }
+        Throwable throwableWithMessage = new IllegalArgumentException(userAnswer);
+        assertThat(throwableWithMessage).hasMessageContaining("0");
     }
 
     @Test
@@ -56,7 +55,6 @@ public class UserStringCustomTest {
         List<Integer> answerList = String을_List로_변환하는_메서드(userAnswer);
         assertThat(answerList.size()).isNotEqualTo(3);
     }
-
 
     @Test
     void 입력_값이_서로_다른_숫자가_아닌_경우() {
