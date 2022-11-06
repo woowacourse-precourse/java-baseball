@@ -5,11 +5,13 @@ import baseball.model.UserNumber;
 import baseball.view.OutputView;
 
 public class OutputController {
+
+    private static final Integer ZERO = 0;
     OutputView outputView = new OutputView();
 
     public int getStrike(ComNumber comNumber, UserNumber userNumber) {
-        int strike = 0;
-        for(int i = 0; i< InputController.NUMBER_SIZE; i++) {
+        int strike = ZERO;
+        for(int i = ZERO; i< InputController.NUMBER_SIZE; i++) {
             int comnum = comNumber.getComnumber().get(i);
             int usernum = userNumber.getUserNumber().get(i);
             if(comnum == usernum) {strike++;}
@@ -18,8 +20,8 @@ public class OutputController {
     }
 
     public int getBall(ComNumber comNumber, UserNumber userNumber) {
-        int ball = 0;
-        for(int i = 0; i< InputController.NUMBER_SIZE; i++) {
+        int ball = ZERO;
+        for(int i = ZERO; i< InputController.NUMBER_SIZE; i++) {
             Integer comnum = comNumber.getComnumber().get(i);
             int usernum = userNumber.getUserNumber().get(i);
             if(comnum != usernum && userNumber.getUserNumber().contains(comnum)) {ball++;}
@@ -46,7 +48,7 @@ public class OutputController {
         if(strike == InputController.NUMBER_SIZE) {
             result = OutputView.GAME_END;
         }
-        else if(strike == 0 && ball == 0) {
+        else if(strike == ZERO && ball == ZERO) {
             result = OutputView.NOTHING;
         }
         else {

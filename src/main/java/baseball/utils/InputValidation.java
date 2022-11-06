@@ -1,8 +1,8 @@
 package baseball.utils;
 
 public class InputValidation {
-    public static final String ONE = "1";
-    private static final String TWO = "2";
+    public static final String REGAME = "1";
+    private static final String END = "2";
 
 
     public boolean checkUserNumberLength(String usernumber) {
@@ -50,7 +50,7 @@ public class InputValidation {
     }
 
     public void startOrEndValidation(String inputnumber) {
-        if(!(inputnumber.equals(ONE) || inputnumber.equals(TWO))) {
+        if(!(inputnumber.equals(REGAME) || inputnumber.equals(END))) {
             throw new IllegalArgumentException();
         }
     }
