@@ -25,17 +25,22 @@ public class Game {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
         }
     }
+    public void caseOfThreeStrike() {
+        Announce.finishAnnounce();
+        String oneOrTwo = Console.readLine();
+        finishGame(oneOrTwo);
+    }
+    public void caseOfNotThreeStrike() {
+        hint.announceResult();
+        count.resetCount();
+        repeatGameUntilSuccess();
+    }
     public void announceBallAndStrike() {
-        // TODO: 두개 분리
         if (count.getStrikeNumber() == 3) {
-            Announce.finishAnnounce();
-            String oneOrTwo = Console.readLine();
-            finishGame(oneOrTwo);
+            caseOfThreeStrike();
         }
         if (count.getStrikeNumber() < 3) {
-            hint.announceResult();
-            count.resetCount();
-            repeatGameUntilSuccess();
+            caseOfNotThreeStrike();
         }
     }
     public void repeatGameUntilSuccess() {
@@ -46,7 +51,6 @@ public class Game {
         count.calStrike(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
         count.calBall(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
 
-        hint = new Hint(count);
         announceBallAndStrike();
     }
     public void startGame() {
