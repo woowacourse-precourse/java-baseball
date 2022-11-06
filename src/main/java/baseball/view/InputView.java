@@ -10,7 +10,7 @@ public class InputView {
     }
 
     public static void insertNumber() {
-        System.out.println(INSERT_NUMBER);
+        System.out.print(INSERT_NUMBER);
     }
 
     public static void restartGame() {

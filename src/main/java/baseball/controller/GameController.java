@@ -12,17 +12,18 @@ import java.util.List;
 public class GameController {
     InputController inputController = new InputController();
     OutputController outputController = new OutputController();
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
     ComNumber comNumber = new ComNumber();
     public void makePlayers() {
-        System.out.println(InputView.GAME_START);
+        inputView.gameStart();
 
         while(true) {
             comNumber.setComnumber(inputController.insertComNumber());
+            System.out.println(comNumber.getComnumber());
             if(!playBall(comNumber)) {
                 break;
             }
-            System.out.println(OutputView.GAME_END);
-            System.out.println(InputView.RESTART_GAME);
         }
     }
 
@@ -30,12 +31,13 @@ public class GameController {
         boolean startorend = false;
         UserNumber userNumber = new UserNumber();
         while(true) {
-            System.out.print(InputView.INSERT_NUMBER);
+            inputView.insertNumber();
             List<Integer> remusernumber = new ArrayList<>();
             remusernumber = inputController.insertUserNumber();
             userNumber.setUsernumber(remusernumber);
             if(outputController.gameResult(comNumber,userNumber)) {
-                System.out.println(InputView.RESTART_GAME);
+                outputView.gameEnd();
+                inputView.restartGame();
                 if(inputController.chooseGameEnd().equals(InputValidation.ONE)) { startorend = true; }
                 else { startorend = false; }
                 break;

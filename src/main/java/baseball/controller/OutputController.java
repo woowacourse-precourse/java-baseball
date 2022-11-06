@@ -5,6 +5,7 @@ import baseball.model.UserNumber;
 import baseball.view.OutputView;
 
 public class OutputController {
+    OutputView outputView = new OutputView();
 
     public int getStrike(ComNumber comNumber, UserNumber userNumber) {
         int strike = 0;
@@ -31,7 +32,7 @@ public class OutputController {
         int strike = getStrike(comNumber, userNumber);
         int ball = getBall(comNumber, userNumber);
         if(numOfStrikeBall(strike,ball).equals(OutputView.GAME_END)) {
-            System.out.println(OutputView.THREESTRIKE);
+            outputView.threeStrike();;
             gameResult = true;
         }
         else {
