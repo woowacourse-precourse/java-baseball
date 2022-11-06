@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.GameException;
 import baseball.view.Instruction;
 import baseball.view.Result;
 import camp.nextstep.edu.missionutils.Console;
@@ -10,6 +11,7 @@ public class Game {
     private static final int THREE_STRIKE = 3;
     Result result = new Result();
     Instruction instruction = new Instruction();
+    GameException gameException = new GameException();
     Comparator comparator;
     Computer computer;
     Player player;
@@ -36,9 +38,9 @@ public class Game {
 
     private int setRunCode() {
         instruction.printRunCode();
-        int Code = Integer.parseInt(Console.readLine());
-        // 예외 코드
-        return Code;
+        String stringRunCode = Console.readLine();
+        gameException.runCodeLengthException(stringRunCode);
+        return Integer.parseInt(stringRunCode);
     }
 
     private void setComputer() {
