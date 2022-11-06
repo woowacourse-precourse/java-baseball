@@ -24,7 +24,7 @@ public class GameManager {
 
             System.out.println(comparedNumberResult);
 
-            if (comparedNumberResult.getStrikeCount() == 3) {
+            if (comparedNumberResult.getStrikeCount() == userNumber.length()) {
                 gameContinueFlag = checkGameContinueFlag(); // 게임을 재시작 할 경우, 무작위 수 재설정
             }
         }

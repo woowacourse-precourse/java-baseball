@@ -8,18 +8,18 @@ import java.util.stream.Collectors;
 public class NumberManager {
 
     private int[] randomNumberArray;
-    private static final String LENGTH = "3";
-    private static final String MIN_NUMBER = "1";
-    private static final String MAX_NUMBER = "9";
+    private static final int LENGTH = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
     private static final String REGEX = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]{" + LENGTH + "}$";
 
     public void setRandomNumber() {
 
         StringBuilder randomNumber = new StringBuilder();
 
-        while(randomNumber.length() < 3) {
+        while(randomNumber.length() < LENGTH) {
 
-            int pickedNumber = Randoms.pickNumberInRange(1, 9);
+            int pickedNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
             if(randomNumber.indexOf(String.valueOf(pickedNumber)) == -1) {
                 randomNumber.append(pickedNumber);
@@ -47,7 +47,7 @@ public class NumberManager {
             throw new IllegalArgumentException();
         }
 
-        if(Arrays.stream(userNumber.toString().split("")).collect(Collectors.toSet()).size() != 3) {
+        if(Arrays.stream(userNumber.toString().split("")).collect(Collectors.toSet()).size() != LENGTH) {
             throw new IllegalArgumentException();
         }
 
