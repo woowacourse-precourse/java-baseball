@@ -1,20 +1,20 @@
 package baseball.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class BallTest {
 
-    @Test
-    public void nothingTest() {
-        Ball computerBall = new Ball(1);
-        assertThat(computerBall.judge(new Ball(2))).isEqualTo(Judgement.NOTHING);
+    @ParameterizedTest
+    @ValueSource(ints = {0,10})
+    @DisplayName("예외처리 테스트")
+    public void rangeTest() {
+        assertThatThrownBy(() -> {
+            new Ball(0);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
-    @Test
-    public void hasValueTest() {
-        Ball computerBall = new Ball(1);
-        assertThat(computerBall.judge(new Ball(1))).isEqualTo(Judgement.SAME_VALUE);
-    }
-
 }
