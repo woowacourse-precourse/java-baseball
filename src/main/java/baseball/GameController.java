@@ -8,9 +8,10 @@ import java.util.stream.Stream;
 
 public class GameController {
 
-    private static final NumberVO numberVO = new NumberVO();
-
     public void inputUserNumber() {
+
+        NumberVO numberVO = new NumberVO();
+
         String userNumber = Console.readLine(); // 입력 받기
         List<Integer> userNumberList = userNumberConvertToList(userNumber); // 자릿수로 나눈 리스트로 변환
         numberVO.setUserNumber(userNumberList);
