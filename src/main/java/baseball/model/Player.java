@@ -36,7 +36,7 @@ public class Player {
         }
     }
 
-    public  void checkInputDuplicatedNumber() {
+    public void checkInputDuplicatedNumber() {
         Set<Character> set = getCharacterInput(this.input);
         if(isDuplicatedNumber(this.input, set)){
             throw new IllegalArgumentException(INPUT_DUPLICATE_ERROR_MESSAGE);

@@ -42,13 +42,6 @@ public class BaseballGameController {
     public void restartOrClose() {
         String restartInput = inputView.restart();
         restart(restartInput);
-        close(restartInput);
-    }
-
-    private void close(String restartInput) {
-        if(!computer.isRestart(restartInput)){
-            System.exit(0);
-        }
     }
 
     private void restart(String restartInput) {

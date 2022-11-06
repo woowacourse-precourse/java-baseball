@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 import static baseball.constValue.Constants.ExceptionMessage.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -140,5 +141,7 @@ class ApplicationTest extends NsTest {
             player.setInputNumber();
             assertThat(real).isEqualTo(player.getInputNumber());
         }
+
+
     }
 }
