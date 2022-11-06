@@ -64,7 +64,30 @@ public class InGame {
         return this.userInputValidation(this.baseballUtil.readLineInt());
     }
 
-    private boolean userInputValidation() {
+    private int userInputValidation(int user_input) {
+        if (
+                // length
+                !(10 <= user_input && user_input <= 999) ||
+                        // unique
+                        this.isUniqueInt(user_input)
+        ){
+            throw new IllegalArgumentException();
+        }
+
+        return user_input;
+    }
+
+    private boolean isUniqueInt(int input) {
+        int hundred = input / 100;
+        int tens = input % 100 / 10;
+        int ones = input % 10;
+        if (
+                (hundred == tens) ||
+                        (tens == ones) ||
+                        (hundred == ones)
+        ) {
+            return false;
+        }
         return true;
     }
 
