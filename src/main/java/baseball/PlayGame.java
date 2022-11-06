@@ -18,6 +18,8 @@ public class PlayGame {
             inputString = scan.nextLine();
 
             inputResult = compareString(inputString, answer);
+
+            printResult(inputResult);
         }
     }
 
@@ -43,4 +45,24 @@ public class PlayGame {
         return res;
     }
 
+    public static void printResult(List<Integer> inputResult) {
+        int ball = inputResult.get(0);
+        int strike = inputResult.get(1);
+        String res = "";
+
+        if (ball > 0 && strike > 0) {
+            res = Integer.toString(ball).concat("볼 ").concat(Integer.toString(strike)).concat("스트라이크");
+        }
+        else if (ball > 0) {
+            res = Integer.toString(ball).concat("볼");
+        }
+        else if (strike > 0) {
+            res = Integer.toString(strike).concat("스트라이크");
+        }
+        else {
+            res = "낫싱";
+        }
+
+        System.out.println(res);
+    }
 }

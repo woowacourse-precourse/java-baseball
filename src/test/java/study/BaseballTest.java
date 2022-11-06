@@ -2,11 +2,11 @@ package study;
 
 import baseball.MakeRandomString;
 import baseball.PlayGame;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,5 +43,62 @@ public class BaseballTest {
         assertThat(PlayGame.compareString("123", "321")).isEqualTo(Arrays.asList(2, 1));
         assertThat(PlayGame.compareString("123", "312")).isEqualTo(Arrays.asList(3, 0));
         assertThat(PlayGame.compareString("123", "456")).isEqualTo(Arrays.asList(0, 0));
+    }
+
+    @Test
+    void printResultTest() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        PlayGame.printResult(Arrays.asList(0, 3));
+        PlayGame.printResult(Arrays.asList(2, 1));
+        PlayGame.printResult(Arrays.asList(3, 0));
+        PlayGame.printResult(Arrays.asList(0, 0));
+
+        assertThat(out.toString()).isEqualTo(
+                "3스트라이크\n" +
+                        "2볼 1스트라이크\n" +
+                        "3볼\n" +
+                        "낫싱\n");
+    }
+
+    @Nested
+    class printResultTest {
+
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+        @BeforeEach
+        void setUp() {
+            System.setOut(new PrintStream(outputStreamCaptor));
+        }
+
+        @AfterEach
+        void clear() {
+            outputStreamCaptor.reset();
+        }
+
+        @Test
+        void onlyStrike() {
+            PlayGame.printResult(Arrays.asList(0, 3));
+            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3스트라이크");
+        }
+
+        @Test
+        void onlyBall() {
+            PlayGame.printResult(Arrays.asList(3, 0));
+            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3볼");
+        }
+
+        @Test
+        void strikeAndBall() {
+            PlayGame.printResult(Arrays.asList(2, 1));
+            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("2볼 1스트라이크");
+        }
+
+        @Test
+        void nothing() {
+            PlayGame.printResult(Arrays.asList(0, 0));
+            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("낫싱");
+        }
     }
 }
