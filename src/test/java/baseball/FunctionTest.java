@@ -3,8 +3,10 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FunctionTest {
@@ -60,5 +62,30 @@ public class FunctionTest {
         assertThat(numList.get(0)).isEqualTo(9);
         assertThat(numList.get(1)).isEqualTo(8);
         assertThat(numList.get(2)).isEqualTo(1);
+    }
+
+    @DisplayName("스트라이크 개수를 카운트하는 테스트")
+    @Test
+    void strikeBallCountTest() {
+        Referee referee = new Referee();
+        List<Integer> userNum = new ArrayList<>() {
+            {
+                add(6);
+                add(1);
+                add(4);
+            }
+        };
+
+        List<Integer> computerNum = new ArrayList<>() {
+            {
+                add(4);
+                add(5);
+                add(6);
+            }
+        };
+
+        referee.refereeCheck(userNum, computerNum);
+        assertThat(referee.getStrike()).isEqualTo(0);
+        assertThat(referee.getBall()).isEqualTo(2);
     }
 }
