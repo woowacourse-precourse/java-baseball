@@ -29,17 +29,21 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         for(int i=0; i<3; i++) //게임을 3번 진행
         {
-            do
+            System.out.println("숫자를 입력해주세요 : ");
+            number = scanner.nextLine();
+            numberCheck(number);
+            while (!returnBallStrike(number,i))
             {
                 System.out.println("숫자를 입력해주세요 : ");
-                number = scanner.next();
+                number = scanner.nextLine();
+
                 numberCheck(number);
-            }while (!returnBallStrike(number,i));
+            }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            number=scanner.next();
-            if(number == "2")
+            number=scanner.nextLine();
+            if(number.equals("2"))
             {
                 System.out.println("게임 종료");
                 break;
@@ -70,7 +74,7 @@ public class Application {
     {
         for(int i=0; i<3; i++)
         {
-            if(number.charAt(i)>='0' && number.charAt(i)<='9')
+            if(number.charAt(i)< '0' && number.charAt(i)>'9')
             {
                 try {
                     throw new IllegalArgumentException();
