@@ -45,15 +45,23 @@ public class CorrectAnswer {
     }
 
     /**
+     * 숫자를 리스트에 추가합니다.
+     * 이 때 isAlreadyExists 리스트의 값을 true로 바꿉니다.
+     * @param number 추가할 1~9사이 숫자.
+     */
+
+    private void addNumber(int number){
+        this.randomNumberList.add(number);
+        this.isAlreadyExists.set(number, true);
+    }
+
+    /**
      * 랜덤한 1~9의 중복없는 3자리 수를 생성합니다.
      *
      */
     public CorrectAnswer() {
-        //랜덤 숫자 생성 후 리스트에 추가합니다.
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while(randomNumber > 0){
-            randomNumberList.add(randomNumber%10);
-            randomNumber/=10;
+        for(int i = 0 ; i < 3; i++){
+            addNumber(generateRandomNumber());
         }
     }
 }
