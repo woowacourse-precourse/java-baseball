@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -14,13 +15,19 @@ public class Game {
     
     public void run() {
         createComputerAnswer();
-        inputUserNumbers();
 
-//        while(사용자 인풋값 != 컴퓨터값)
-//        // 사용자 인풋받기
-//        // 인풋값과 컴퓨터값 비교하기
-//        //1볼, 1스트라이크 이런거 찾기
-//        // 인풋받기 돌아가기
+        while(true){
+            inputUserNumbers();
+
+            if (isCorrect()){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+
+            //1볼, 1스트라이크 이런거 찾기
+            // compare();
+        }
+
     }
 
     private void createComputerAnswer() {
@@ -81,6 +88,12 @@ public class Game {
             user.set(i, Integer.parseInt(inputs[i]));
     }
 
-//    boolean 값비교함수() {
+    private boolean isCorrect() {
+        if (Arrays.equals(user.toArray(), computer.toArray()))
+            return true;
+
+        return false;
+    }
+//    private void compare() {
 //    }
 }
