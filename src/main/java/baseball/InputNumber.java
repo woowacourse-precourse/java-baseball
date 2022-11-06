@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 사용자에게 숫자를 입력받는 책임을 갖는 클래스
+ */
 public class InputNumber {
     static final int GAME_NUMBER_LENGTH = 3;
     static final int RESTART_NUMBER_LENGTH = 1;
