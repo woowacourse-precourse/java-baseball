@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,13 +10,18 @@ public class NumberCompareResult {
 
     private List<List<String>> compareResult;
 
-    /**
-     * CompareResult 객체 생성자
-     *
-     * @param compareResult <br>
-     * ex)[[스트라이크,1],[볼,2]] or [[낫싱]]
-     */
-    public NumberCompareResult(List<List<String>> compareResult){
+    public NumberCompareResult(int strike, int ball){
+        List<List<String>> compareResult = new ArrayList<>();
+        if(strike != 0){
+            compareResult.add(List.of(String.valueOf(strike),"스트라이크"));
+        }
+        if(ball != 0){
+            compareResult.add(List.of(String.valueOf(ball),"볼"));
+        }
+        if(compareResult.size() == 0){
+            compareResult.add(List.of("낫싱"));
+        }
+
         this.compareResult = compareResult;
     }
 
