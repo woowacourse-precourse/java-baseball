@@ -54,18 +54,26 @@ public class GameService {
         List<Integer> computerNum = computer.getComputerNum();
         List<Integer> userNum = user.getUserNum();
         for (int com = 0; com < computerNum.size(); com++) {
-            for (int user = 0; user < userNum.size(); user++) {
-                if (computerNum.get(com) != userNum.get(user)) {
-                    continue;
-                }
-                if (com != user) {
-                    ball++;
-                    continue;
-                }
-                strike++;
-            }
+            compareNum(computerNum, userNum, com);
         }
         printScore();
+    }
+
+    private void compareNum(List<Integer> computerNum, List<Integer> userNum, int com) {
+        for (int user = 0; user < userNum.size(); user++) {
+            if (computerNum.get(com) == userNum.get(user)) {
+                compareIndex(com, user);
+            }
+        }
+    }
+
+    private void compareIndex(int com, int user) {
+        if (com == user) {
+            strike++;
+        }
+        if (com != user) {
+            ball++;
+        }
     }
 
     private void printScore() {
