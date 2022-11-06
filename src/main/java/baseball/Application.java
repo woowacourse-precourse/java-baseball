@@ -31,6 +31,7 @@ public class Application {
 
     public static List<Integer> getUserNumber() {
         List<Integer> userInputNumber = new ArrayList<>();
+        System.out.print("숫자를 입력해 주세요 : ");
         String userInput = readLine();
         if (userInput.length() != 3 || !isNumeric(userInput)) {
             throw new IllegalArgumentException();
