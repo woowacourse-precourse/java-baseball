@@ -49,6 +49,4 @@ class PlayerTest {
         result = player.checkNumbers(input);
         assertThat(result).isEqualTo(true);
     }
-
-
 }

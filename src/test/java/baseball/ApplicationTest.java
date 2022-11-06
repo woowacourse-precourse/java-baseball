@@ -21,12 +21,49 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 게임진행_후_종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+
+    @Test
+    void 예외_테스트_긴입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 예외_테스트_짧은입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_잘못된입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_범위밖의입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("109"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
