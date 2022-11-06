@@ -203,4 +203,14 @@ class BaseballGameTest {
             assertThat(e.getCause().getMessage()).isEqualTo(INPUT_RESTART_EXCEPTION);
         }
     }
+
+    @Test
+    @DisplayName("재시작 문구 시 사용자가 1, 2 입력 시 true, false")
+    void restart() throws Exception {
+        Method restartMethod = BaseballGame.class.getDeclaredMethod("restart", String.class);
+        restartMethod.setAccessible(true);
+
+        assertThat((boolean) restartMethod.invoke(game, "1")).isFalse();
+        assertThat((boolean) restartMethod.invoke(game, "2")).isTrue();
+    }
 }
