@@ -105,7 +105,7 @@ public class Application {
 
     public static String inputUserAnswer(){
         String userAnswer = readLine();
-        return "";
+        return userAnswer;
     }
 
     public static void main(String[] args) {
