@@ -14,6 +14,8 @@ public class ComputerManager {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NONE = "낫싱";
+    private static final int START_OF_NUMBER_RANGE = 1;
+    private static final int END_OF_NUMBER_RANGE = 9;
 
     /**
      * 컴퓨터매니저 클래스가 가진 랜덤 수를 초기화하고,
@@ -22,7 +24,7 @@ public class ComputerManager {
     public void generateRandomNumber() {
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(START_OF_NUMBER_RANGE, END_OF_NUMBER_RANGE);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
