@@ -81,4 +81,20 @@ public class RefereeTest {
 		playerBalls.add(0, computerBalls.get(1));
 		return playerBalls.subList(0, 3);
 	}
+
+	@Test
+	@DisplayName("낫싱 실패 테스트3: 일치하는공 세개일 때 낫싱 실패")
+	void 일치하는공_세개일_때_낫싱_실패() {
+		// when
+		makeAllSameBalls(computerBalls, playerBalls);
+		Collections.shuffle(playerBalls);
+
+		// then
+		boolean nothing = referee.isNothing(computerBalls, playerBalls);
+		Assertions.assertThat(nothing).isEqualTo(false);
+	}
+
+	private static void makeAllSameBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
+		playerBalls.retainAll(computerBalls);
+	}
 }
