@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import baseball.exception.CheckBaseballNumberRageExeption;
+import org.w3c.dom.ranges.RangeException;
+
 public class BaseballNumber {
     private int baseballNumber;
 
@@ -18,7 +21,7 @@ public class BaseballNumber {
 
     private void certificateNumber(Integer number) {
         if (9 > number || 0 < number)
-            throw new IllegalArgumentException();
+            throw new CheckBaseballNumberRageExeption();
     }
 
     public int getBaseballNumber() {
