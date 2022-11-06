@@ -8,7 +8,7 @@ import java.util.List;
 public class Computer {
 
     public static final boolean IS_NOTING = true;
-    private static final boolean EXISTS = false;
+    public static final boolean EXISTS = false;
 
     private List<Integer> baseballNumber;
 
@@ -19,7 +19,6 @@ public class Computer {
                 baseballNumber.add(randomNumber);
             }
         }
-        System.out.println("베이스볼 넘버 : "+ baseballNumber.get(0) + baseballNumber.get(1) + baseballNumber.get(2) );
     }
 
     public int checkStrike(List<Integer> question) {
@@ -60,4 +59,5 @@ public class Computer {
         baseballNumber.clear();
         createBaseballNumber();
     }
+
 }
