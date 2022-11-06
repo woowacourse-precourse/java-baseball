@@ -24,7 +24,7 @@ public class GameController {
     }
 
     public void callInputProceedNum() {
-        user.InputProceedNum();
+        user.inputProceedNum();
     }
 
     public void reStartGame() {

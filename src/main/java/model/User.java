@@ -25,7 +25,7 @@ public class User {
         return numInput;
     }
 
-    public void InputProceedNum() {
+    public void inputProceedNum() {
         String strInput = UseFunc.getString();
         int numInput = UseFunc.parseIntFromStr(strInput);
         isValidPositiveInt(numInput);

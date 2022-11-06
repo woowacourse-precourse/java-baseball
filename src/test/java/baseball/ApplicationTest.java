@@ -366,7 +366,7 @@ class ApplicationTest extends NsTest {
         InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
         // when
-        user.InputProceedNum();
+        user.inputProceedNum();
         String result = String.valueOf(user.getNumProceedUser());
         // then
         assertThat(result).isEqualTo(str);
@@ -383,7 +383,7 @@ class ApplicationTest extends NsTest {
         System.setIn(in);
         // when
         // then
-        assertThatThrownBy(user::InputProceedNum).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(user::inputProceedNum).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
