@@ -7,12 +7,16 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private Computer computer = new Computer();
+    private Computer computer;
     private Player player;
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private InputView inputView;
+    private OutputView outputView;
 
-
+    public BaseballGameController(){
+        computer = new Computer();
+        inputView = new InputView();
+        outputView = new OutputView();
+    }
 
     public void start() {
 

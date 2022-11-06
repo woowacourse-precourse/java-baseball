@@ -1,13 +1,17 @@
 package baseball.model;
 
+import baseball.HintInfo;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static baseball.constValue.Constants.*;
 import static baseball.constValue.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
 import static baseball.constValue.Constants.RestartOrExitInfo.EXIT_NUMBER;
 import static baseball.constValue.Constants.RestartOrExitInfo.RESTART_NUMBER;
+import static baseball.constValue.Constants.StrikeBallInfo.NOTHING;
 
 public class Computer {
 
@@ -27,16 +31,6 @@ public class Computer {
         }
     }
 
-    public ArrayList<Integer> getComputerNumber() {
-        return computerNumber;
-    }
-
-    public boolean isNotThreeStrike(String hint){
-        if(hint.equals("3스트라이크")){
-            return false;
-        }
-        return true;
-    }
 
     public boolean isRestart(String restartInput){
         checkNotRestartInput(restartInput);
@@ -56,6 +50,20 @@ public class Computer {
         return !input.equals(RESTART_NUMBER) && !input.equals(EXIT_NUMBER);
     }
 
+    public String getHint(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
+        int strike = countStrike(computerNum,playerNum);
+        int ball = countBall(computerNum, playerNum);
+
+        String hint = "";
+        hint = getHintInfo(strike, ball);
+        return hint;
+    }
+
+    private static String getHintInfo(int strike, int ball) {
+        return Arrays.stream(HintInfo.values()).filter(s -> (s.getBallCount() == ball && s.getStrikeCount() == strike))
+                .map(s -> s.getTitle()).collect(Collectors.toList()).get(0);
+    }
+
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
         for (int numberIdx = 0; numberIdx <COMPUTER_NUMBER_SIZE; numberIdx++) {
@@ -64,8 +72,8 @@ public class Computer {
         return count;
     }
 
-    private static int checkStrikeComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int i) {
-        if(computerNum.get(i)== playerNum.get(i)){
+    private static int checkStrikeComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int sameIdx) {
+        if(computerNum.get(sameIdx)== playerNum.get(sameIdx)){
             count++;
         }
         return count;
@@ -74,12 +82,12 @@ public class Computer {
     public int countBall(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
         int count=0;
         for (int computerNumIdx = 0; computerNumIdx <COMPUTER_NUMBER_SIZE; computerNumIdx++) {
-            count = getBallCountCompareToPlayerNum(computerNum, playerNum, count, computerNumIdx);
+            count = getBallCountComputerNumCompareToPlayerNum(computerNum, playerNum, count, computerNumIdx);
         }
         return count;
     }
 
-    private static int getBallCountCompareToPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int computerNumIdx) {
+    private static int getBallCountComputerNumCompareToPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int computerNumIdx) {
         for(int playerNumIdx=0;playerNumIdx<COMPUTER_NUMBER_SIZE;playerNumIdx++){
             count = getBallCountNotSameIdx(computerNum, playerNum, count, computerNumIdx, playerNumIdx);
         }
@@ -93,67 +101,22 @@ public class Computer {
         return count;
     }
 
-    private static int checkBallComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int i, int j) {
-        if(computerNum.get(i)== playerNum.get(j)){
+    private static int checkBallComputerNumPlayerNum(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum, int count, int computerNumIdx, int playerNumIdx) {
+        if(computerNum.get(computerNumIdx)== playerNum.get(playerNumIdx)){
             count++;
         }
         return count;
     }
 
-    public String getHint(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
-        int strike = countStrike(computerNum,playerNum);
-        int ball = countBall(computerNum, playerNum);
-
-        String hint = "";
-        hint = getNothing(strike, ball,hint);
-        hint = getStrikeNoBall(strike, ball,hint);
-        hint = getBallNoStrike(strike, ball,hint);
-        hint = getStrikeAndBall(strike, ball,hint);
-
-        return hint;
-    }
-
-    private static String getStrikeAndBall(int strike, int ball,String hint) {
-        if (isStrikeAndBall(strike, ball)) {
-            return ball + "볼 " + strike + "스트라이크";
+    public boolean isNotThreeStrike(String hint){
+        if(hint.equals("3스트라이크")){
+            return false;
         }
-        return hint;
+        return true;
     }
 
-    private static String getBallNoStrike(int strike, int ball,String hint) {
-        if(isBallNoStrike(strike, ball)){
-            return ball + "볼";
-        }
-        return hint;
+    public ArrayList<Integer> getComputerNumber() {
+        return computerNumber;
     }
 
-    private static String getStrikeNoBall(int strike, int ball,String hint) {
-        if(isStrikeNoBall(strike, ball)){
-            return strike + "스트라이크";
-        }
-        return hint;
-    }
-
-    private static String getNothing(int strike, int ball,String hint) {
-        if(isNothing(strike, ball)){
-            return  "낫싱";
-        }
-        return hint;
-    }
-
-    private static boolean isStrikeAndBall(int strike, int ball) {
-        return strike > 0 && ball > 0;
-    }
-
-    private static boolean isBallNoStrike(int strike, int ball) {
-        return strike == 0 && ball > 0;
-    }
-
-    private static boolean isStrikeNoBall(int strike, int ball) {
-        return strike > 0 && ball == 0;
-    }
-
-    private static boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
-    }
 }
