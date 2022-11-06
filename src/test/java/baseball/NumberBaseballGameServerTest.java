@@ -28,4 +28,103 @@ class NumberBaseballGameServerTest {
         assertThat(actualIsDuplicated).isEqualTo(expectedIsDuplicated);
     }
 
+    @Test
+    void 플레이어_숫자_판정결과는_2스트라이크가_맞습니다() {
+        List<Integer> gameNumberList = List.of(2, 3, 9);
+        int playerInputNumber = 234;
+        int expectCountStrikes = 2, expectCountBalls = 0;
+
+        NumberBaseballGameJudgedResultDto actualJudgedResultDto =
+            new NumberBaseballGameServer()
+                .judgeInputNumber(playerInputNumber, gameNumberList);
+
+        boolean expectedResult = true;
+        boolean actualResult = false;
+        if (actualJudgedResultDto.countBalls == expectCountBalls
+            && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            actualResult = true;
+        }
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void 플레이어_숫자_판정결과는_3스트라이크가_맞습니다() {
+        List<Integer> gameNumberList = List.of(4, 7, 9);
+        int playerInputNumber = 479;
+        int expectCountStrikes = 3, expectCountBalls = 0;
+
+        NumberBaseballGameJudgedResultDto actualJudgedResultDto =
+            new NumberBaseballGameServer()
+                .judgeInputNumber(playerInputNumber, gameNumberList);
+
+        boolean expectedResult = true;
+        boolean actualResult = false;
+        if (actualJudgedResultDto.countBalls == expectCountBalls
+            && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            actualResult = true;
+        }
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void 플레이어_숫자_판정결과는_낫싱가_맞습니다() {
+        List<Integer> gameNumberList = List.of(2, 3, 9);
+        int playerInputNumber = 186;
+        int expectCountStrikes = 0, expectCountBalls = 0;
+
+        NumberBaseballGameJudgedResultDto actualJudgedResultDto =
+            new NumberBaseballGameServer()
+                .judgeInputNumber(playerInputNumber, gameNumberList);
+
+        boolean expectedResult = true;
+        boolean actualResult = false;
+        if (actualJudgedResultDto.countBalls == expectCountBalls
+            && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            actualResult = true;
+        }
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void 플레이어_숫자_판정결과는_3볼이_맞습니다() {
+        List<Integer> gameNumberList = List.of(2, 3, 9);
+        int playerInputNumber = 392;
+        int expectCountStrikes = 0, expectCountBalls = 3;
+
+        NumberBaseballGameJudgedResultDto actualJudgedResultDto =
+            new NumberBaseballGameServer()
+                .judgeInputNumber(playerInputNumber, gameNumberList);
+
+        boolean expectedResult = true;
+        boolean actualResult = false;
+        if (actualJudgedResultDto.countBalls == expectCountBalls
+            && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            actualResult = true;
+        }
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void 플레이어_숫자_판정결과는_2볼_1스트라이크가_맞습니다() {
+        List<Integer> gameNumberList = List.of(2, 3, 9);
+        int playerInputNumber = 329;
+        int expectCountStrikes = 1, expectCountBalls = 2;
+
+        NumberBaseballGameJudgedResultDto actualJudgedResultDto =
+            new NumberBaseballGameServer()
+                .judgeInputNumber(playerInputNumber, gameNumberList);
+
+        boolean expectedResult = true;
+        boolean actualResult = false;
+        if (actualJudgedResultDto.countBalls == expectCountBalls
+            && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            actualResult = true;
+        }
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
 }
