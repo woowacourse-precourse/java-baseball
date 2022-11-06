@@ -19,4 +19,13 @@ public class UserInputValidation {
         }
         return true;
     }
+
+    private boolean haveZero(String expectedAnswer) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if ('0' == expectedAnswer.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
