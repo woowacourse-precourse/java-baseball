@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Constants.EndCommand;
+
 public class InputChecker {
 
     private static boolean hasLengthOf(String input, int length) {
@@ -17,4 +19,9 @@ public class InputChecker {
         }
     }
 
+    public static void isEndCommandValid(String input) {
+        if (EndCommand.find(input) == EndCommand.UNKNOWN) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

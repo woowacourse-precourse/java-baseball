@@ -27,7 +27,7 @@
     - [X] printScore
       - 점수를 출력합니다.
 
-  - [ ] **InputChecker**
+  - [X] **InputChecker**
     - 숫자 야구 게임의 입력이 유효한지 검사하는 클래스입니다.
     - [X] hasLengthOf
     - 문자열의 길이가 매개변수 값과 일치하는지 검사합니다.
@@ -35,7 +35,7 @@
     - 문자열이 숫자만 포함했는지 검사합니다.
     - [X] isGuessCommandValid
     - 게임 도중일 경우, 숫자 야구 게임에 유효한 입력인지 검사합니다.
-    - [ ] isEndCommandValid
+    - [X] isEndCommandValid
     - 게임 종료일 경우, 재시작/종료 입력인지 검사합니다.
 
   - [X] **Game**
