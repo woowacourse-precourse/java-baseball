@@ -52,4 +52,29 @@ public class NumberManager {
         }
 
     }
+
+    public ComparedNumberResult getCompareResult(StringBuilder userNumber) {
+
+        validate(userNumber);
+
+        int[] userNumberArray = convertToNumberArray(userNumber);
+
+        ComparedNumberResult comparedNumberResult = new ComparedNumberResult();
+
+        for (int i = 0; i < userNumber.length(); i++) {
+
+            int currentUserNumber = userNumber.charAt(i) - '0';
+
+            if(userNumberArray[currentUserNumber] == randomNumberArray[currentUserNumber]) {
+                comparedNumberResult.plusStrikeCount();
+                continue;
+            }
+
+            if(randomNumberArray[currentUserNumber] != 0) {
+                comparedNumberResult.plusBallCount();
+            }
+        }
+
+        return comparedNumberResult;
+    }
 }
