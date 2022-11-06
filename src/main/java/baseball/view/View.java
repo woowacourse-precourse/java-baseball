@@ -10,13 +10,15 @@ public class View {
     private static String START_PHRASES = "숫자 야구 게임을 시작합니다.";
 
     public static String inputView() {
-        System.out.println(INPUT_PHRASES);
-        return readLine();
+        System.out.print(INPUT_PHRASES);
+        String input = readLine();
+        return input;
     }
 
     public static String endView() {
         System.out.println(END_PHRASES);
-        return readLine();
+        String input = readLine();
+        return input;
     }
 
     public static void startView() {

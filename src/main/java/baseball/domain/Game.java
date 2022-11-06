@@ -16,6 +16,7 @@ public class Game {
     public void start() {
         int strike = 0;
         int ball = 0;
+        computer.initComputerNumber();
 
         while(true) {
             List<Integer> userNumber = inputToIntegerList(View.inputView());

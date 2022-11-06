@@ -14,8 +14,8 @@ public class Computer {
     }
 
     public void initComputerNumber() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while(computerNumber.size() < LENGTH) {
+        while(computerNumber.size() <= LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
