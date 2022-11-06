@@ -1,12 +1,11 @@
 package baseball.domain.baseballAlgorithm;
 
+import static baseball.domain.baseballAlgorithm.BallAndStrike.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballAlgorithmImpl implements BaseballAlgorithm {
-
-    private int ballCount;
-    private int strikeCount;
 
     @Override
     public String checkBaseballResult(List<Integer> randomNumber, String userInput) {
@@ -23,28 +22,28 @@ public class BaseballAlgorithmImpl implements BaseballAlgorithm {
     }
 
     private String makeBaseballResultMessage() {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ball.getCount() == 0 && strike.getCount() == 0) {
             return "낫싱";
         }
-        if (ballCount != 0 && strikeCount == 0) {
-            return ballCount + "볼";
+        if (ball.getCount() != 0 && strike.getCount() == 0) {
+            return ball.getCount() + "볼";
         }
-        if (ballCount == 0 && strikeCount != 0) {
-            return strikeCount + "스트라이크";
+        if (ball.getCount() == 0 && strike.getCount() != 0) {
+            return strike.getCount() + "스트라이크";
         }
-        return ballCount + "볼 " + strikeCount + "스트라이크";
+        return ball.getCount() + "볼 " + strike.getCount() + "스트라이크";
     }
 
     private void countStrikeAndBall(List<Integer> randomNumber, List<String> inputNumber, int number) {
         if (randomNumber.indexOf(number) == inputNumber.indexOf(String.valueOf(number))) {
-            strikeCount++;
+            strike.setCount(strike.getCount()+1);
             return;
         }
-        ballCount++;
+        ball.setCount(ball.getCount()+1);
     }
 
     private void clearCount() {
-        ballCount = 0;
-        strikeCount = 0;
+        ball.setCount(0);
+        strike.setCount(0);
     }
 }
