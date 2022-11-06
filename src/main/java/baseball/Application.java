@@ -6,13 +6,21 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
 
-    public static int Strike=0;
-    public static int Ball=0;
+    public static int Strike = 0;
+    public static int Ball = 0;
 
     public static void main(String[] args) {
         printStartJavaBaseball();
-        int[] input = InputCheckValidAndReturn();
-        int[] RandomizedArray= makeRandomizedArray();
+        int[] RandomizedArray = makeRandomizedArray();
+
+        while (Strike < 3) {
+            int[] input = InputCheckValidAndReturn();
+            NumberAndLocationEqualsAddStrike(RandomizedArray, input);
+            isNumberEqualsAddBall(RandomizedArray, input);
+            Ball = Ball - Strike;
+            printCaseBeforeSuccess();
+
+        }
     }
 
     public static void printStartJavaBaseball() {
@@ -34,7 +42,7 @@ public class Application {
 
     public static int[] revertCharArrToIntArr(char[] charArr) {
         int[] intArr = new int[charArr.length];
-        for(int i=0;i<charArr.length; i++){
+        for (int i = 0; i < charArr.length; i++) {
             intArr[i] = Integer.parseInt(String.valueOf(charArr[i]));
         }
         return intArr;
@@ -73,42 +81,58 @@ public class Application {
         }
         return (count == 3);
     }
-    public static int[] makeRandomizedArray(){
-        int[] RandomArray= new int[3];
-        for(int i = 0; i <3; i++){
-            RandomArray[i]=pickNumberInRange(1, 9);
+
+    public static int[] makeRandomizedArray() {
+        int[] RandomArray = new int[3];
+        for (int i = 0; i < 3; i++) {
+            RandomArray[i] = pickNumberInRange(1, 9);
         }
         return RandomArray;
     }
 
-    public static boolean isNumberAndLocationEqualsAddStrike(int[] RandomNumber, int[] inputNumber){
+    public static void NumberAndLocationEqualsAddStrike(int[] RandomNumber, int[] inputNumber) {
 
-        for(int i = 0; i <RandomNumber.length; i++){
-            if(RandomNumber[i] ==inputNumber[i]){
+        for (int i = 0; i < RandomNumber.length; i++) {
+            if (RandomNumber[i] == inputNumber[i]) {
                 Strike++;
             }
         }
 
-        return (Strike>0);
     }
 
 
-    public static boolean isNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber){
+    public static boolean isNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber) {
 
-        for(int i = 0; i < RandomNumber.length; i++){
-            for(int j = 0; j < RandomNumber.length; j++){
+        for (int i = 0; i < RandomNumber.length; i++) {
+            for (int j = 0; j < RandomNumber.length; j++) {
                 AddBallIfEquals(RandomNumber[i], inputNumber[j]);
             }
         }
 
-        return (Ball>0);
+        return (Ball > 0);
     }
 
-    public static void AddBallIfEquals(int RandomNumber, int InputNumber){
-        if(RandomNumber == InputNumber){
+    public static void AddBallIfEquals(int RandomNumber, int InputNumber) {
+        if (RandomNumber == InputNumber) {
             Ball++;
         }
     }
+
+    public static void printCaseBeforeSuccess() {
+        if ((Ball == 0) && (Strike == 0)) {
+            System.out.println("낫싱");
+        }
+        if ((Ball != 0) && (Strike != 0)) {
+            System.out.println(Ball + " 볼 " + Strike + " 스트라이크");
+        }
+        if ((Strike == 0) && (Ball != 0)) {
+            System.out.println(Ball + " 볼");
+        }
+        if ((Ball == 0) && (Strike != 0)) {
+            System.out.println(Strike + " 스트라이크");
+        }
+    }
+
 
 }
 
