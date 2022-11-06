@@ -12,7 +12,7 @@ public class BaseballGame {
     private static final String PRINT_STRIKE_COUNT = "%d스트라이크\n";
     private static final String PRINT_BALL_COUNT = "%d볼\n";
     private static final String NOTHING = "낫싱\n";
-    private static final String GAME_TERMINATE = "%d개의 숫자를 모두 맞히셨습니디! 게임 종료\n";
+    private static final String GAME_TERMINATE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
 
     private static final char INTEGER_MAKER = '0';
     private static final int STRIKE_NUMBER = 3;
