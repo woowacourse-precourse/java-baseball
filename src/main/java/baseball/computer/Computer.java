@@ -1,5 +1,6 @@
-package baseball;
+package baseball.computer;
 
+import baseball.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

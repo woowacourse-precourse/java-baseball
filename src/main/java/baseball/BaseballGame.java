@@ -1,11 +1,8 @@
 package baseball;
 
-import baseball.verifiable.CheckDuplicatedInput;
-import baseball.verifiable.CheckInputLength;
-import baseball.verifiable.CheckInputRange;
+import baseball.computer.Computer;
 import baseball.verifier.MakeVerifierInputToBaseballGame;
 import baseball.verifier.MakeVerifierInputToEndOrNewGame;
-import baseball.verifier.Verifier;
 
 import static baseball.BaseballConstants.NEW_GAME;
 
