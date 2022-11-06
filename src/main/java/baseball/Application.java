@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -29,6 +30,19 @@ public class Application {
             int ones = Randoms.pickNumberInRange(1, 9);
             if (hundreds != ones && tens != ones)
                 return ones;
+        }
+    }
+
+    public static void validateGuessedNumber(String input) throws IllegalArgumentException {
+        if (!Pattern.matches("[1-9]{3}", input)) {
+            throw new IllegalArgumentException();
+        }
+        char hundreds = input.charAt(0);
+        char tens = input.charAt(1);
+        char ones = input.charAt(2);
+
+        if (hundreds == tens || tens == ones || ones == hundreds) {
+            throw new IllegalArgumentException();
         }
     }
 }
