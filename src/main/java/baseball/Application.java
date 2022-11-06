@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        final int NUMBER_LENGTH = 3;
+        final int numberLength = 3;
         String loopChecker = "1";
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        Baseball baseball = new Baseball(NUMBER_LENGTH);
+        Baseball baseball = new Baseball(numberLength);
 
         while (loopChecker.equals("1")) {
             baseball.play();
 
-            System.out.println(NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(numberLength + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             loopChecker = Console.readLine();
