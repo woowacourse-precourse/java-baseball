@@ -63,14 +63,14 @@ public class RefereeTest {
         assertThat(decision).isEqualTo("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-}
+    private class TestableGame extends Game {
+        TestableGame(Player player, Referee referee) {
+            super(player, referee);
+        }
 
-class TestableGame extends Game {
-    TestableGame(Player player, Referee referee) {
-        super(player, referee);
+        public void setAnswer(List<Integer> answer) {
+            this.answer = answer;
+        }
     }
 
-    public void setAnswer(List<Integer> answer) {
-        this.answer = answer;
-    }
 }

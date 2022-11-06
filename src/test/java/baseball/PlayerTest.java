@@ -37,7 +37,7 @@ public class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    public class TestablePlayer extends Player {
+    private class TestablePlayer extends Player {
 
         public List<Integer> askNumbers(String userAnswer) {
             return this.parseUserNumbersToList(userAnswer);
