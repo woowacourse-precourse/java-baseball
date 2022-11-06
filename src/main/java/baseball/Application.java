@@ -11,6 +11,9 @@ public class Application {
         System.out.println(getGuideMessage(null));
         while (true) {
             String userNumber = getUserNumber();
+            checkIllegalArgumentException(userNumber);
+            String computerNumber = generateComputerNumber();
+
         }
 
     }
@@ -120,6 +123,24 @@ public class Application {
             }
         }
         return strike;
+    }
+
+    public static String getBallStrikeCountMessage(int ball, int strike) {
+        String message = "";
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
+        }
+        if (ball != 0) {
+            message = message + String.valueOf(ball) + "볼";
+        }
+        if (strike != 0) {
+            if (message.length() == 0) {
+                message = message + String.valueOf(strike) + "스트라이크";
+            } else {
+                message = message + " " + String.valueOf(strike) + "스트라이크";
+            }
+        }
+        return message;
     }
 
 }
