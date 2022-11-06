@@ -4,6 +4,7 @@ public class Application {
 
     private void start_game() {
         // 기능 요구사항 1번
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
     private void make_RandomNum() {
         // 기능 요구사항 2번
