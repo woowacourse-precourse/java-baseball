@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Batter {
 
-    public String selectRandomNumber() {
+    public String readyRandomNumber() {
         List<Integer> randomDigits = new ArrayList<>();
         while (randomDigits.size() != 3) {
             int randomDigit = Randoms.pickNumberInRange(1, 9);
