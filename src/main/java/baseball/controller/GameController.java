@@ -60,4 +60,13 @@ public class GameController {
         messenger.printStartMessage();
         setComputerNumber();
     }
+
+    public void runGameMain() {
+        boolean connection = true;
+        startGame();
+        while (connection) {
+            runBaseballGame();
+            connection = receiveRestartOrEndIntent();
+        }
+    }
 }
