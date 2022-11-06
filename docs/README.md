@@ -41,6 +41,8 @@
   - null check 후 IllegalArgumentException을 반환한다.
 
 ### 리팩터링 메모
-- [ ] 테스트 메서드별 분리 모두 적용하기
-- [ ] 사용자 입력 통일, inputNumber 메서드 제거, prompt output으로 이동하기
-- [ ] 불변 필드, 객체 final 키워드 적용하기
+- [x] BaseBallGame 디렉토리 위치 변경 (Application과 같은 위치로)
+- [x] 테스트 메서드별 분리 모두 적용하기
+- [x] BaseBallGame run 메서드 변경
+- [ ] 사용자 입력 통일, inputNumber 메서드 제거, prompt output으로 이동하기(이 부분도 고민이 조금 되는 부분이다.)
+- [ ] 불변 필드, 객체 final 키워드 적용 하기 (클래스 멤버에는 당연하게 적용했다, 메서드 레벨에서도 적용할지말지 고민이 좀 된다.)
