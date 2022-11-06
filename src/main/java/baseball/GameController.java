@@ -10,6 +10,7 @@ public class GameController {
         playGame.startGame();
         playGame.playingGame();
         playGame.endGame();
+        playGame.replayGame();
     }
 
 }
