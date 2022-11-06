@@ -23,6 +23,7 @@ public class BaseballGame {
         for (int i = 0; i < 3; i++) {
             answerNumber.add(i, Randoms.pickNumberInRange(1, 9));
             if (!checkOverlap(answerNumber, i)) {
+                answerNumber.remove(i);
                 i--;
             }
         }
