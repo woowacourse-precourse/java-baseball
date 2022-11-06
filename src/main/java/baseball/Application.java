@@ -36,7 +36,6 @@ public class Application {
                 randomlyPickedNumbers.add(randomNumber);
             }
         }
-        System.out.print(randomlyPickedNumbers);
         return randomlyPickedNumbers;
     }
 
