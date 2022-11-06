@@ -1,14 +1,24 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static baseball.Constant.*;
 
 public class Hint {
 
-    private static int strike;
-    private static int ball;
-    static boolean threeStrike;
+    int strike;
+    int ball;
+    boolean threeStrike;
 
-    public static void printHintMessage(){
+    public Hint(){
+        this.strike = 0;
+        this.ball = 0;
+        this.threeStrike = false;
+    }
+
+    public void printHintMessage(){
         if(strike==3){
             System.out.println(strike+ strikeMessage);
         }
@@ -17,22 +27,19 @@ public class Hint {
         }
         else System.out.println(ball + ballMessage + " " + strike + strikeMessage);
     }
-    public static void hintCalculator(String comNumber,String userNumber){
+
+    private void isStrikeOrBall(List<String> comNumber, List<String> userNumber){
+
+    }
+    public void hintCalculator(HashSet<String> comNumber, List<String> userNumber){
         strike=0;
         ball=0;
         threeStrike=false;
-        for(int comIndex=0;comIndex<comNumber.length();comIndex++) {
-            if (comNumber.charAt(comIndex) == userNumber.charAt(comIndex)) {
-                strike++;
-                continue;
-            }
-            //수정해야할 부분 인덴트 3
-            for(int userIndex=0;userIndex<userNumber.length();userIndex++){
-                if(comNumber.charAt(comIndex) == userNumber.charAt(userIndex)){
-                    ball++;
-                }
-            }
-        }
+
+        isStrikeOrBall(comNumber.stream()
+                .collect(Collectors.toList())
+                , userNumber);
+
         if(strike==3) threeStrike=true;
         printHintMessage();
     }
