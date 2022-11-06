@@ -18,7 +18,7 @@ public class User {
     }
 
     public void isValidInput(String input) throws IllegalArgumentException {
-        if (!(isDigitInput(input) && isInputLengthThree(input) && isDuplicateInput(input)))
+        if (!(isDigitInput(input) && isInputLengthThree(input) && isDuplicateInput(input) && isRangeInput(input)))
             throw new IllegalArgumentException();
     }
 
@@ -43,6 +43,13 @@ public class User {
             set.add(input.charAt(i));
         }
         if (set.size() != input.length())
+            throw new IllegalArgumentException();
+        return true;
+    }
+
+    private boolean isRangeInput(String input) throws IllegalArgumentException {
+        Pattern numberPattern = Pattern.compile(REGAX);
+        if(!numberPattern.matcher(input).matches())
             throw new IllegalArgumentException();
         return true;
     }
