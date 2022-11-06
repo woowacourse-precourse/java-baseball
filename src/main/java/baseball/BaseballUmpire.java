@@ -14,10 +14,10 @@ public class BaseballUmpire {
 		this.ball = 0;
 	}
 
-	private void refereeBall(int userBall, int computerBall, boolean isStrike) {
-		if (isStrike && userBall == computerBall) {
+	private void refereeBall(boolean isBall, boolean isStrike) {
+		if (isStrike && isBall) {
 			this.strike++;
-		} else if (userBall == computerBall) {
+		} else if (isBall) {
 			this.ball++;
 		}
 	}
@@ -27,7 +27,8 @@ public class BaseballUmpire {
 			computerBallCount++) {
 			int computerBall = computerBalls.get(computerBallCount);
 			boolean isStrike = (ballCount == computerBallCount);
-			refereeBall(userBall, computerBall, isStrike);
+			boolean isBall = (userBall == computerBall);
+			refereeBall(isBall, isStrike);
 		}
 	}
 
