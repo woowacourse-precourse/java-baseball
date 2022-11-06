@@ -16,6 +16,14 @@ public class Hint {
         this.inputBaseballNumbers = inputBaseballNumbers;
     }
 
+    public boolean isCorrectNumber() {
+        int strikeCount = answerBaseballNumbers.getStrike(inputBaseballNumbers);
+        if(strikeCount == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public String getResult() {
         if(answerBaseballNumbers.isNothing(inputBaseballNumbers)) {
             return NOTHING_STRING;
