@@ -8,6 +8,7 @@ public class BallNumber {
     private final List<Integer> ballNumbers;
 
     public BallNumber(List<Integer> ballNumbers){
+        validateNaturalNumber(ballNumbers);
         validationSize(ballNumbers);
         validationDuplicate(ballNumbers);
         this.ballNumbers = ballNumbers;
@@ -16,7 +17,15 @@ public class BallNumber {
     public List<Integer> getBallNumbers(){
         return Collections.unmodifiableList(ballNumbers);
     }
-
+    
+    private void validateNaturalNumber(List<Integer> ballNumbers){
+        for(int i = 0; i < BASEBALL_NUMBER_SIZE; i++){
+            if(ballNumbers.get(i) < 1 || ballNumbers.get(i) > 9){
+                throw new IllegalArgumentException("1~9사이의 숫자가 아닙니다");
+            }
+        }
+    }
+    
     private void validationSize(List<Integer> ballNumbers){
         if(ballNumbers.size() != BASEBALL_NUMBER_SIZE){
             throw new IllegalArgumentException("공의 사이즈가 3이 아닙니다.");
