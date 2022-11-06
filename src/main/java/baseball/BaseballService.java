@@ -23,10 +23,29 @@ public class BaseballService {
      * @return [ballCount, strikeCount] 형태의 배열
      */
     public List<Integer> getBallAndStrikeCounts(List<Integer> inputNumberList) {
-        List<Integer> result;
-        result = new ArrayList<>(List.of(0, 0));
-
+        List<Integer> result = new ArrayList<>(List.of(0, 0));
+        for (int index = 0; index < inputNumberList.size(); index++) {
+            addBallAndStrikeCountsByNumberAndIndex(inputNumberList.get(index),index,result);
+        }
         return result;
+    }
+
+    /**
+     * 숫자 한개를 컴퓨터의 리스트와 비교하여 리스트에 볼과 스트라이크 개수를 갱신한다
+     * @param inputNumber : 비교할 숫자
+     * @param index : 해당 숫자의 인덱스
+     * @param result : 볼과 스트라이크 개수가 담긴 배열
+     */
+    private void addBallAndStrikeCountsByNumberAndIndex(int inputNumber, int index ,List<Integer> result){
+        int findIndex = answerNumberList.indexOf(inputNumber);
+        if (findIndex == -1){
+            return;
+        }
+        if (findIndex != index){
+            result.set(0, result.get(0) + 1);
+        } else if (findIndex == index){
+            result.set(1, result.get(1) + 1);
+        }
     }
 
     /**
