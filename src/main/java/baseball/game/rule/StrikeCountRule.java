@@ -3,6 +3,16 @@ package baseball.game.rule;
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 
 public class StrikeCountRule implements Rule {
+
+    private static final Rule instance = new StrikeCountRule();
+
+    private StrikeCountRule() {
+    }
+
+    public static Rule getInstance() {
+        return instance;
+    }
+
     @Override
     public Integer check(Integer answer, Integer guess) {
         String answerString = Integer.toString(answer);
