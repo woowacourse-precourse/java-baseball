@@ -13,7 +13,7 @@ public class Computer {
         return asBalls(uniqueNumbers);
     }
 
-    private static Balls asBalls(List<Integer> uniqueNumbers) {
+    private static Balls asBalls(Collection<Integer> uniqueNumbers) {
         List<Ball> balls = new ArrayList<>();
         int position = 0;
 
