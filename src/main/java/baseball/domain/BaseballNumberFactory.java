@@ -6,14 +6,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballFactory {
+public class BaseballNumberFactory {
     private static final int BASEBALL_NUMBER_LOWER_BOUND = 1;
     private static final int BASEBALL_NUMBER_UPPER_BOUND = 9;
     private static final int BASEBALL_NUMBERS_SIZE = 3;
 
     public List<BaseballNumber> generate() {
         List<Integer> baseballs = new ArrayList<>();
-        
+
         while (baseballs.size() < BASEBALL_NUMBERS_SIZE) {
             addRandomNumber(baseballs);
         }

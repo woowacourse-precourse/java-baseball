@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballFactoryTest {
-    private BaseballFactory sut = new BaseballFactory();
+    private BaseballNumberFactory sut = new BaseballNumberFactory();
 
     @Nested
     class generate_메서드는 {
