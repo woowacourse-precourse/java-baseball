@@ -1,6 +1,7 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -23,5 +24,14 @@ public abstract class ServiceImpl implements Service{
         List<Integer> numList = new ArrayList<>(numSet);
         return numList;
     }
+
+    private List<Integer> getUserNumber(){
+        String input = Console.readLine();
+        List<Integer> currInput = parser(input);
+        return currInput;
+    }
+
+
+
 
 }
