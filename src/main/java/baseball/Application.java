@@ -19,7 +19,10 @@ public class Application {
         String answer = Console.readLine();
 
         int strike = checkStrike(computer_num,answer);
-        System.out.println("strike = " + strike);
+        System.out.println(strike);
+
+        int ball = checkBall(computer_num,answer);
+        System.out.println(ball);
     }
 
     public static int checkStrike(List<Integer> computer_num, String answer) {
@@ -30,6 +33,20 @@ public class Application {
             }
         }
         
+        return cnt;
+    }
+
+
+    public static int checkBall(List<Integer> computer_num, String answer) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++){
+            for (int j =0; j < 3; j++) {
+                if (computer_num.get(i) == answer.charAt(j) - '0' && i != j){
+                    cnt += 1;
+                }
+            }
+        }
+
         return cnt;
     }
 

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -38,7 +39,16 @@ class ApplicationTest extends NsTest {
 
 
 
-
+    @Test
+    void 스트라이크개수_구하기() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("579");
+                assertThat(output()).contains("2");
+            },
+                5,1,9
+        );
+    }
 
 
 
