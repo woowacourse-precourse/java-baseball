@@ -1,5 +1,8 @@
 package baseball.utils;
 
+import static baseball.Game.EXIT_SIGNAL;
+import static baseball.Game.RESTART_SIGNAL;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -8,8 +11,6 @@ public class InputValidator {
 
     private static final List<String> STANDARD_NUMBER = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
     private static final int MAX_SIZE = 3;
-    public static final String RESTART_SIGNAL = "1";
-    public static final String EXIT_SIGNAL = "2";
 
     private InputValidator() {
     }
