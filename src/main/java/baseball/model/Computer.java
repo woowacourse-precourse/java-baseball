@@ -14,6 +14,7 @@ public class Computer {
     public void generateNumber(){
         do {
             numbers = pickNumbers();
+
         } while (!Util.isDuplicated(numbers));
 
     }
@@ -44,7 +45,7 @@ public class Computer {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("나싱");
         } else {
-            System.out.println(ballCount + "볼" + strikeCount + "스트라이크");
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
 
