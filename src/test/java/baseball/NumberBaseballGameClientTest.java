@@ -178,4 +178,49 @@ class NumberBaseballGameClientTest {
         NumberBaseballGameClient.showGameEndMessage();
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    @Nested
+    @DisplayName("새로운 게임 시작 여부에 대한 입력 요청 기능에서")
+    class AskMoreGameTest {
+        @Test
+        void 한_게임_더_할지_묻는_메시지가_정상출력되고_한_게임_더_한다(){
+            input("1");
+            boolean expected = true;
+            boolean actual = NumberBaseballGameClient.askMoreGame();
+            assertThat(actual).isEqualTo(expected);
+            assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+
+        @Test
+        void 게임을_더이상_하지_않는다(){
+            input("2");
+            boolean expected = false;
+            boolean actual = NumberBaseballGameClient.askMoreGame();
+            assertThat(actual).isEqualTo(expected);
+        }
+
+        @Test
+        void 문자가_입력되어_IllegalArgumentException으로_처리한다(){
+            input("문자");
+            assertThatThrownBy(
+                NumberBaseballGameClient::askMoreGame
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 숫자1이나_2말고_다른_숫자가_입력되어_IllegalArgumentException으로_처리한다(){
+            input("5");
+            assertThatThrownBy(
+                NumberBaseballGameClient::askMoreGame
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력으로_받아온_값이_없는_경우에는_IllegalArgumentException으로_처리한다(){
+            input("");
+            assertThatThrownBy(
+                NumberBaseballGameClient::askMoreGame
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
