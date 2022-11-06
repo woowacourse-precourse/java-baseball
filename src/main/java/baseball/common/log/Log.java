@@ -1,8 +1,8 @@
 package baseball.common.log;
 
-import java.util.Arrays;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Log {
@@ -25,9 +25,8 @@ public class Log {
     }
 
 
-    public void warn(Throwable e, String msg) {
-        log.warning(msg);
-        log.warning(Arrays.toString(e.getStackTrace()));
+    public void error(Throwable e, String msg) {
+        log.log(Level.SEVERE, msg, e);
     }
 
 

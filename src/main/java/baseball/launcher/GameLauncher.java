@@ -21,10 +21,10 @@ public class GameLauncher {
             }
 
         } catch (IllegalArgumentException e) {
-            Log.getLogger().warn(e, e.getMessage());
+            Log.getLogger().error(e, e.getMessage());
             throw new IllegalArgumentException(e);
         } catch (Exception e) {
-            Log.getLogger().warn(e, e.getMessage());
+            Log.getLogger().error(e, e.getMessage());
             throw new RuntimeException(e);
         }
     }
