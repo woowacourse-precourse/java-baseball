@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,6 +41,22 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> Application.checkInputLength("1", 3))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void test_checkInputInteger() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputInteger("1a*"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void test1_checkInputInteger() {
+        List <Integer> result = Arrays.asList(1,2,3);
+        assertSimpleTest(() ->
+                assertThat(Application.checkInputInteger("123")).isEqualTo(result)
         );
     }
 }
