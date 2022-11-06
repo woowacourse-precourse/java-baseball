@@ -13,9 +13,21 @@ public class Validator {
         return false;
     }
 
+    public boolean isNumeric(String userInput) {
+        for (int index = 0; index < userInput.length(); index++) {
+            if (!Character.isDigit(userInput.charAt(index))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean validateInput(String userInput) {
         if (!isThreeLetters(userInput)) {
             throw new IllegalArgumentException("3자리 수가 아닙니다");
+        }
+        if (!isNumeric(userInput)) {
+            throw new IllegalArgumentException("숫자가 아닙니다");
         }
 
         return VALIDATE_SUCCESS;
