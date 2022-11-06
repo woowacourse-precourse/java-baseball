@@ -8,6 +8,7 @@ public class InputValidator {
 
     public boolean checkValidateNumber(String number) {
         if(number.length() != 3) return false;
+        return true;
     }
 
     public boolean checkValidateExit(String number) {
