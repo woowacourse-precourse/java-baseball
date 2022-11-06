@@ -1,13 +1,8 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class View {
-    static InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-    static BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
     static final void printStartGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -41,10 +36,6 @@ public class View {
     }
 
     static final String getUserInput() {
-        try {
-            return bufferedReader.readLine();
-        } catch (IOException e) {
-            throw new IllegalArgumentException();
-        }
+        return Console.readLine();
     }
 }
