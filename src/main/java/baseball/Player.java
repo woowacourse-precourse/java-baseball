@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,4 +36,12 @@ public class Player {
         }
     }
 
+    public void checkDuplication(String userInput) throws IllegalArgumentException {
+        List<Integer> before_input = stringToList(userInput);
+        Set<Integer> after_input = new HashSet<>(before_input);
+
+        if(before_input.size() != after_input.size()) {
+            throw new IllegalArgumentException("서로 다른 3자리 숫자만 입력이 가능합니다.");
+        }
+    }
 }
