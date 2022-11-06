@@ -27,6 +27,8 @@ public class Application {
                 computerGeneratedValue = operatedGame.get(1);
             } else if (option == 2) {
                 break;
+            } else if (option != 1 || option != 2) {
+                throw new IllegalArgumentException();
             }
         }
     }
