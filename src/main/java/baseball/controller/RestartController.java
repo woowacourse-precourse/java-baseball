@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.constant.GameConstants;
-import baseball.utils.Validator;
+import baseball.util.Validator;
 import baseball.view.InputView;
 
 public class RestartController {

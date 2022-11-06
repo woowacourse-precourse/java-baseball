@@ -4,9 +4,9 @@ import java.util.List;
 
 import baseball.constant.GameConstants;
 import baseball.domain.Comparator;
-import baseball.utils.Converter;
-import baseball.utils.RandomNumberGenerator;
-import baseball.utils.Validator;
+import baseball.util.Converter;
+import baseball.util.RandomNumberGenerator;
+import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.util;
 
 import static baseball.constant.GameConstants.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;

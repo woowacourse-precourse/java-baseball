@@ -1,8 +1,7 @@
 package baseball;
 
 import static baseball.constant.GameConstants.*;
-import static baseball.controller.RestartController.*;
-import static baseball.utils.Converter.*;
+import static baseball.util.Converter.*;
 import static baseball.view.OutputView.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
@@ -17,10 +16,10 @@ import baseball.constant.ViewConstants;
 import baseball.controller.GameController;
 import baseball.controller.RestartController;
 import baseball.domain.Comparator;
-import baseball.utils.Converter;
-import baseball.utils.InputGetter;
-import baseball.utils.RandomNumberGenerator;
-import baseball.utils.Validator;
+import baseball.util.Converter;
+import baseball.util.InputGetter;
+import baseball.util.RandomNumberGenerator;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {

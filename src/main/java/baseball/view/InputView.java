@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.constant.GameConstants;
 import baseball.constant.ViewConstants;
-import baseball.utils.InputGetter;
+import baseball.util.InputGetter;
 
 public class InputView {
 

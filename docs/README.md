@@ -9,7 +9,7 @@
   - RestartController : 게임의 재시작 여부를 물어보고 유저의 입려을 받아서 재시작할지 여부를 결정하는 과정을 컨트롤
 - domain : 숫자야구의 핵심 로직을 담은 패키지
   - Comparator : 정답과 사용자의 입력을 비교하는 로직
-- utils : 프로그램에서 특정 기능을 하는 클래스들을 모아놓은 패키지
+- util : 프로그램에서 특정 기능을 하는 클래스들을 모아놓은 패키지
   - Converter : 유저의 입력을 정수 리스트로 변환
   - InputGetter : 유저의 입력을 문자열로 반환
   - RandomNumberGenerator : 서로 다른 세 자리수를 생성
