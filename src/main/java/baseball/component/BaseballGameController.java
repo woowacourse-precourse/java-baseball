@@ -80,7 +80,7 @@ public class BaseballGameController {
             stringBuilder.append(strikeCount);
             stringBuilder.append("스트라이크 ");
         }
-        stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length());
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
         return stringBuilder.toString();
     }
 
