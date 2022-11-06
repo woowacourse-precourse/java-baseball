@@ -193,7 +193,20 @@ class ApplicationTest extends NsTest {
 
 
 
+    @Test
+    @DisplayName("종료 테스트")
+    public void gameExit() throws Exception{
 
+        List<Integer> computer  = List.of(4,5,6);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculationBall(computer,user);
+        int strike = Application.calculationStrike(computer,user);
+        String result = Application.printCurrentSituation(ball,strike);
+
+        assertThat(Application.isDone(result)).isTrue();
+
+    }
 
 
 
