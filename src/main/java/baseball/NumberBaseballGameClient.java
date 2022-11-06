@@ -9,13 +9,13 @@ public class NumberBaseballGameClient {
     public static final String MSG_JUDGED_RESULT_STRIKES = "스트라이크";
     public static final String MSG_JUDGED_RESULT_NOTHING = "낫싱";
     public static final String MSG_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String MSG_ASK_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+    public static final String MSG_ASK_MORE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private NumberBaseballGameClient() {
     }
 
     public static void showGameStartMessage() {
-        // 게임 시작 메시지 출력
+        System.out.println(MSG_GAME_START);
     }
 
     public static int askInputNumber() {
