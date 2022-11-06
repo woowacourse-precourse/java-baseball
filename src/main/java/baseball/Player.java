@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.BaseballCount;
 import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -40,9 +41,9 @@ public class Player {
     public Map<String, Integer> countBallAndStrikeWithComputer(List<Integer> computer, Map<String, Integer> result) {
         for (int i = 0; i < BASEBALL_NUMBERS_LENGTH; i++) {
             if (this.numbers.get(i).equals(computer.get(i))) {
-                result.put("strike", result.get("strike") + 1);
+                result.put(BaseballCount.STRIKE.getValue(), result.get(BaseballCount.STRIKE.getValue()) + 1);
             } else if (computer.contains(this.numbers.get(i))) {
-                result.put("ball", result.get("ball") + 1);
+                result.put(BaseballCount.BALL.getValue(), result.get(BaseballCount.BALL.getValue()) + 1);
             }
         }
         return result;
