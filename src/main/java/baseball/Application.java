@@ -83,6 +83,10 @@ public class Application {
 
     }
 
+    public static void ballMessage(int ball){
+        System.out.println(ball + "볼");
+    }
+
 
 
 
