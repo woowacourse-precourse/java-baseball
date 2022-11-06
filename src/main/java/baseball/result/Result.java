@@ -21,7 +21,16 @@ public class Result {
         strikeCount = count;
     }
 
+    public void countBall(String computerNumber, String userNumber) {
+        Integer count = 0;
+        for (char number: userNumber.toCharArray()) {
+            if (computerNumber.contains(String.valueOf(number))) {
+                count++;
+            }
+        }
 
+        ballCount = count - strikeCount;
+    }
 
 
     public Integer getStrikeCount() {
