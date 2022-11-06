@@ -31,7 +31,7 @@ public class Game {
         finishOrRestart(oneOrTwo);
     }
     public void caseOfNotThreeStrike() {
-        hint.announceResult();
+        hint.printHint();
         count.resetCount();
         repeatGameUntilSuccess();
     }

@@ -5,7 +5,7 @@ public class Hint {
     public Hint(Count getCount) {
         count = getCount;
     }
-    public void announceResult() {
+    public void printHint() {
         String announceBallAndStrike = "";
         if (count.getBallNumber() == 0 && count.getStrikeNumber() == 0) {
             announceBallAndStrike += "낫싱";
