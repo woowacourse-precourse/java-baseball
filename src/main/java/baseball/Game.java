@@ -8,17 +8,14 @@ public class Game {
             컴퓨터 번호 뽑기
             사용자 번호 입력받기
          */
-        GameSet.setNumber();
+        String computerNumber = GameSet.attachComputerNumber();
+        String playerNumber = GameSet.inputPlayerNumber();
 
-        /*
-         컴퓨터와 사용자 번호 비교
-         */
-        //CompareNumber.
+         //컴퓨터와 사용자 번호 비교
+         boolean isRight = CompareNumber.checkRight(computerNumber, playerNumber);
 
-        /*
-        게임 재시작 여부
-         */
-        Restart.restartGame();
+        //게임 재시작 여부
+        Restart.untilRight(isRight, computerNumber);
     }
 
 
