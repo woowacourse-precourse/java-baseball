@@ -25,7 +25,6 @@ public class NumberBaseball {
 
     public void getPlayerNumber(){
         System.out.print("숫자를 입력해주세요 : ");
-
         inputNumber = Console.readLine();
     }
 
@@ -64,4 +63,13 @@ public class NumberBaseball {
         System.out.println("볼: " + ballCount);
     }
 
+    public void startGame() {
+        createTargetNumberList();
+
+        while(strikeCount != 3) {
+            getPlayerNumber();
+            compareNumbers();
+        }
+
+    }
 }
