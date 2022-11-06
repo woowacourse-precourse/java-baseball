@@ -17,3 +17,9 @@ public class BaseballGameInputFilter {
         return input.matches("[1-9]]");
     }
 
+    public boolean isNotDuplicated(String input) {
+        return input.length() == List.of(input.split(""))
+                .stream()
+                .distinct()
+                .count();
+    }
