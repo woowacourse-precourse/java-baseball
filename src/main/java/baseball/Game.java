@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -15,23 +16,15 @@ public class Game {
     }
 
     public int getStrikeCount(List<Integer> userNum) {
-        int count = 0;
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            if (computerNum.get(i) == userNum.get(i)) {
-                count += 1;
-            }
-        }
-        return count;
+        return (int) Stream.iterate(0, i -> i < INPUT_LENGTH, i -> i + 1)
+                .filter(i -> userNum.get(i) == computerNum.get(i))
+                .count();
     }
 
     public int getBallCount(List<Integer> userNum) {
-        int count = 0;
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            if (computerNum.get(i) != userNum.get(i) && computerNum.contains(userNum.get(i))) {
-                count += 1;
-            }
-        }
-        return count;
+        return (int) Stream.iterate(0, i -> i < INPUT_LENGTH, i -> i + 1)
+                .filter(i -> computerNum.contains(userNum.get(i)))
+                .count();
     }
 
     public String play() {
