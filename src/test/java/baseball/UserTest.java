@@ -13,8 +13,7 @@ public class UserTest {
 
     @BeforeEach
     void init() {
-        List<Integer> initList = List.of(1, 5, 9);
-        user = new User(initList);
+        user = new User("123");
     }
 
     @Test
