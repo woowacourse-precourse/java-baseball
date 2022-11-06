@@ -24,11 +24,13 @@ class ApplicationTest extends NsTest {
         List<Integer> evaluation5 = Arrays.asList(0, 3);
 
         SoftAssertions softAssert = new SoftAssertions();
-        softAssert.assertThat(evaluation1).isEqualTo("낫싱\n");
-        softAssert.assertThat(evaluation2).isEqualTo("1볼\n");
-        softAssert.assertThat(evaluation3).isEqualTo("1스트라이크\n");
-        softAssert.assertThat(evaluation4).isEqualTo("2볼 1스트라이크\n");
-        softAssert.assertThat(evaluation5).isEqualTo("3스트라이크\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation1)).isEqualTo("낫싱\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation2)).isEqualTo("1볼\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation3)).isEqualTo("1스트라이크\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation4)).isEqualTo("2볼 1스트라이크\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation5)).isEqualTo("3스트라이크\n");
+
+        softAssert.assertAll();
     }
 
     @Test
@@ -55,6 +57,9 @@ class ApplicationTest extends NsTest {
         softAssert.assertThat(Application.isValidNumbersForGame("151")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("204")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("123")).isTrue();
+
+        softAssert.assertAll();
+    }
 
     @Test
     void stringToNumberListTest() {
