@@ -26,7 +26,11 @@ public class Application {
     }
 
     private static void printResult(int strikesCount, int ballCount) {
-        
+
+    }
+
+    private static void ballAndStrike(int strikesCount, int ballCount) {
+        System.out.println(ballCount + "볼 " + strikesCount + "스트라이크");
     }
 
     private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
