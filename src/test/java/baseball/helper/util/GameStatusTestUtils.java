@@ -1,5 +1,6 @@
-package baseball.util;
+package baseball.helper.util;
 
+import baseball.util.GameStatus;
 import java.util.Arrays;
 
 public final class GameStatusTestUtils {

@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.helper.util;
 
 import baseball.domain.game.GameResult;
 import baseball.mvc.view.GameResultView;

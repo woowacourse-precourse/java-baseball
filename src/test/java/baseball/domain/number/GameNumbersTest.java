@@ -1,9 +1,7 @@
 package baseball.domain.number;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import baseball.util.GameNumberConst;
-import baseball.util.GameNumbersTestUtils;
+import baseball.helper.util.GameNumbersTestUtils;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

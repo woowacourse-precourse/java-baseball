@@ -1,6 +1,6 @@
 package baseball.mvc.view;
 
-import baseball.util.GameInputViewTestUtils;
+import baseball.helper.util.GameInputViewTestUtils;
 import baseball.util.GameStatus;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

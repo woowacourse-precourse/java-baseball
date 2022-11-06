@@ -1,8 +1,8 @@
-package baseball.factory;
+package baseball.helper.factory;
 
 import baseball.domain.game.GameComputer;
 import baseball.domain.number.GameNumbers;
-import baseball.factory.stub.StubGameNumbers;
+import baseball.helper.factory.stub.StubGameNumbers;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;

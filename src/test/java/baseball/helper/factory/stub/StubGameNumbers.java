@@ -1,4 +1,4 @@
-package baseball.factory.stub;
+package baseball.helper.factory.stub;
 
 import baseball.domain.number.GameNumbers;
 

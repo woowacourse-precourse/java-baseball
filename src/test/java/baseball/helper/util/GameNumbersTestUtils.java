@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.helper.util;
 
 import baseball.domain.number.GameNumber;
 import baseball.domain.number.GameNumbers;

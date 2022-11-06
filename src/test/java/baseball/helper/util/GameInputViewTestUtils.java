@@ -1,28 +1,28 @@
-package baseball.util;
+package baseball.helper.util;
 
-import baseball.mvc.view.GameGuideView;
+import baseball.mvc.view.GameInputView;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Field;
+import java.util.function.Consumer;
 
-public final class GameGuideViewTestUtils {
+public final class GameInputViewTestUtils {
 
     private static final String MESSAGE_FIELD_NAME = "message";
 
-    private GameGuideViewTestUtils() {
+    private GameInputViewTestUtils() {
     }
 
-    public static String getMessage(GameGuideView view, ByteArrayOutputStream out) {
+    public static String getMessage(GameInputView view, Consumer<String> printLog, ByteArrayOutputStream out) {
         try {
             out.reset();
 
             final Field enumMessage = view.getClass().getDeclaredField(MESSAGE_FIELD_NAME);
             enumMessage.setAccessible(true);
 
-            System.out.println((String) enumMessage.get(view));
+            printLog.accept((String) enumMessage.get(view));
             return out.toString();
         } catch (Exception e) {
             return "";
         }
     }
 }
-

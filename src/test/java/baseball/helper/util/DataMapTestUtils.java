@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.helper.util;
 
 import baseball.mvc.structure.DataMap;
 import java.lang.reflect.Field;

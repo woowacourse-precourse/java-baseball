@@ -1,9 +1,7 @@
 package baseball.domain.game;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import baseball.domain.number.GameNumbers;
-import baseball.factory.GameComputerFactory;
+import baseball.helper.factory.GameComputerFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

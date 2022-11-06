@@ -1,6 +1,6 @@
 package baseball.mvc.util;
 
-import baseball.util.GameStatusTestUtils;
+import baseball.helper.util.GameStatusTestUtils;
 import baseball.util.GameStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

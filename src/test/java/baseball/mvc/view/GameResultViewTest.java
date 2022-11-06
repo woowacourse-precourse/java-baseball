@@ -1,9 +1,7 @@
 package baseball.mvc.view;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import baseball.domain.game.GameResult;
-import baseball.util.GameResultViewTestUtils;
+import baseball.helper.util.GameResultViewTestUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.assertj.core.api.Assertions;
