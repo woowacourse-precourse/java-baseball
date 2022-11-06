@@ -68,4 +68,13 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void test_checkOption() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkOption("3"))
+                        .isInstanceOf(RuntimeException.class)
+        );
+    }
+
 }
