@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballGame {
-    private final ShowGameMessage showGameMessage = new ShowGameMessage();
+    private final ShowGameMessage showGameMessage;
     private ScoreBoard scoreBoard;
 
-    private void init() {
-        scoreBoard = new ScoreBoard(initializeSystemNumberBall());
+    public NumberBaseballGame(ShowGameMessage showGameMessage, ScoreBoard scoreBoard) {
+        this.showGameMessage = showGameMessage;
+        this.scoreBoard = scoreBoard;
         showGameMessage.gameStartMessage();
     }
 
     public void play() {
-        init();
         while (scoreBoard.isPlaying()) {
             showGameMessage.inputUserNumberMessage();
             ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
@@ -27,7 +27,7 @@ public class NumberBaseballGame {
             if (result.getType() == ScoreResultType.ALL_STRIKE) {
                 ContinueInput continueInput = new ContinueInput();
                 if (continueInput.continueGame()) {
-                    init();
+                    scoreBoard.initialize();
                 } else {
                     scoreBoard.setIsPlaying();
                 }
@@ -38,16 +38,5 @@ public class NumberBaseballGame {
     private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {
         NumberBallsInput numberBallsInput = new NumberBallsInput();
         return numberBallsInput.toNumberBalls();
-    }
-
-    private List<NumberBall> initializeSystemNumberBall() {
-        List<NumberBall> numberBalls = new ArrayList<>();
-        while (numberBalls.size() < 3) {
-            NumberBall ball = new NumberBall(Randoms.pickNumberInRange(1, 9));
-            if (!numberBalls.contains(ball)) {
-                numberBalls.add(ball);
-            }
-        }
-        return numberBalls;
     }
 }
