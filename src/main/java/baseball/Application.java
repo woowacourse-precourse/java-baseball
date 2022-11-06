@@ -30,7 +30,7 @@ public class Application {
 		String input_num = Console.readLine();
 		input_num_exception_test(input_num);
 		List<Integer> answer = compare_two_case(computer_num,input_num);
-		System.out.println("\n"+calculate_Result(answer));
+		System.out.println(calculate_Result(answer));
 		if(answer.get(1)==3){
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
 			return false;
@@ -39,11 +39,10 @@ public class Application {
 		}
 	}
 	public static List<Integer> compare_two_case(String com, String user){
-		List<Integer> answer = Collections.emptyList();
-		answer = new LinkedList<>();
+		List<Integer> answer = new LinkedList<>();
 		answer.add(0);
 		answer.add(0);
-		for(int i=0; i<2; i++){
+		for(int i=0; i<3; i++){
 			String now_num =String.valueOf(user.charAt(i));
 			if(com.contains(now_num)){
 				int ball_or_strike = is_Strike_or_Ball(com,now_num,i);
