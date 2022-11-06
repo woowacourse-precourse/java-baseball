@@ -28,8 +28,6 @@ public class BaseBallGame {
         // 컴퓨터 랜덤 넘버
         List<Integer> computerNumbers = computer.makeComputerNumbers();
 
-        System.out.println(computerNumbers);
-
         while (true) {
 
             String userInputNumber = user.userInput();
