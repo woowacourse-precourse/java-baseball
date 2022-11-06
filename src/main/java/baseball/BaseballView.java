@@ -20,6 +20,12 @@ public class BaseballView {
      * 게임을 시작한다는 메시지를 출력하고 숫자 야구 게임 어플리케이션을 시작한다
      */
     public void startApplication() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean startGame = true;
+        while (startGame) {
+            this.startNewGame();
+            startGame = this.restartGame();
+        }
     }
 
     /**
