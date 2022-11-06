@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Constants.DEFAULT_SIZE;
 import static baseball.Constants.INPUT_LENGTH_EXCEPTION;
+import static baseball.Constants.INPUT_OTHER_NUMBER_EXCEPTION;
 import static baseball.Constants.RANGE_OF_BALL_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -122,6 +123,20 @@ class BaseballGameTest {
             checkSizeMethod.invoke(game, input);
         } catch (InvocationTargetException e) {
             assertThat(e.getCause().getMessage()).isEqualTo(INPUT_LENGTH_EXCEPTION);
+        }
+    }
+
+    @ParameterizedTest
+    @DisplayName("사용자가 중복된 수를 입력했을 때 예외")
+    @ValueSource(strings = {"122", "111", "331"})
+    void validateOverlapUserInput(String input) throws Exception {
+        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
+        checkSizeMethod.setAccessible(true);
+
+        try {
+            checkSizeMethod.invoke(game, input);
+        } catch (InvocationTargetException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo(INPUT_OTHER_NUMBER_EXCEPTION);
         }
     }
 }
