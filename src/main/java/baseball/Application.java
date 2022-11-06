@@ -99,4 +99,17 @@ public class Application {
         return numberList;
     }
 
+    public static int checkBall(String computerNumber, String userNumber) {
+        List<Character> appeared = convertStringToArrayList(computerNumber);
+        int ball = 0;
+        for (int index = 0; index < computerNumber.length(); index++) {
+            char userNum = userNumber.charAt(index);
+            if ((computerNumber.charAt(index) != userNum) && (appeared.contains(userNum))) {
+                // 위치는 다르지만 같은 숫자가 양쪽 모두 존재하는 경우 ball
+                ball += 1;
+            }
+        }
+        return ball;
+    }
+
 }

@@ -55,35 +55,35 @@ class BaseballTest {
     }
 
     @DisplayName("사용자 숫자 자릿수(길이) 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'5',false", "'1234',false", "'',false"})
     void checkNumberLength_userNumber_길이에_따른_boolean_반환(String input, boolean result) {
         assertThat(checkNumberLength(input)).isEqualTo(result);
     }
 
     @DisplayName("문자열이 숫자로만 이루어져 있는지 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'!12',false", "'1234a',false", "'',false"})
     void checkOnlyNumber_userNumber_숫자로만_이루어져_있는지_확인(String input, boolean result) {
         assertThat(checkOnlyNumber(input)).isEqualTo(result);
     }
 
     @DisplayName("문자열에 0이 없는지 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0} result={1}")
     @CsvSource({"'123',true", "'105',false", "'012',false", "'120',false"})
     void checkNotContainZero_userNumber_0이_없는지_확인(String input, boolean result) {
         assertThat(checkNotContainZero(input)).isEqualTo(result);
     }
 
     @DisplayName("문자열에 중복문자가 없는지 확인")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} result={1} ")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0} result={1} ")
     @CsvSource({"'123',true", "'100',false", "'252',false", "'322',false"})
     void checkNotDuplication_userNumber_중복이_없는지_확인(String input, boolean result) {
         assertThat(checkNotDuplication(input)).isEqualTo(result);
     }
 
     @DisplayName("userNumber 자릿수에 대한 예외처리 테스트")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0}")
     @ValueSource(strings = {"26", "1234"})
     void userNumber_길이에_따른_예외처리(String input) {
         assertThatThrownBy(() -> checkIllegalArgumentException(input))
@@ -92,7 +92,7 @@ class BaseballTest {
     }
 
     @DisplayName("userNumber 문자 타입에 대한 예외처리 테스트")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0}")
     @ValueSource(strings = {"26a", "1i5"})
     void userNumber_타입에_대한_예외처리(String input) {
         assertThatThrownBy(() -> checkIllegalArgumentException(input))
@@ -101,7 +101,7 @@ class BaseballTest {
     }
 
     @DisplayName("0 존재여부에 대한 예외처리 테스트")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0}")
     @ValueSource(strings = {"102", "059", "130"})
     void userNumber_0_존재여부에_대한_예외처리(String input) {
         assertThatThrownBy(() -> checkIllegalArgumentException(input))
@@ -110,7 +110,7 @@ class BaseballTest {
     }
 
     @DisplayName("중복 숫자 존재여부에 대한 예외처리 테스트")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ParameterizedTest(name = "{index}. {displayName} userNumber={0}")
     @ValueSource(strings = {"112", "311", "181"})
     void userNumber_중복_존재여부에_대한_예외처리(String input) {
         assertThatThrownBy(() -> checkIllegalArgumentException(input))
@@ -146,5 +146,12 @@ class BaseballTest {
     void convertStringToArrayList_메서드로_string_ArrayList_변환() {
         String input = "123";
         assertThat(convertStringToArrayList(input)).containsExactly('1','2','3');
+    }
+
+    @DisplayName("check ball")
+    @ParameterizedTest(name = "{index}. {displayName} user={0} computer={1} ball={2}")
+    @CsvSource({"'123','456',0", "'123','312',3", "'136','378',1", "'327','752',2"})
+    void checkBall_ball_몇인지_확인(String input1, String input2, int result) {
+        assertThat(checkBall(input1, input2)).isEqualTo(result);
     }
 }
