@@ -35,5 +35,14 @@ class GameCycleTest {
         //then
         assertEquals(playerNumber, "123");
     }
+    @Test
+    public void numberLengthIsThreeTest() {
+        //given;
+        String inputTrue = "123";
+        String inputFalse = "12344";
+        //expect
+        assertEquals(game.numberLengthIsThree(inputTrue), true);
+        assertThrows(IllegalArgumentException.class,()->game.numberLengthIsThree(inputFalse));
+    }
 
 }

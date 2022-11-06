@@ -22,5 +22,9 @@ public class GameCycle {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
+    public boolean numberLengthIsThree(String number) {
+        if (number.length() != 3) throw new IllegalArgumentException();
+        return true;
+    }
 
 }
