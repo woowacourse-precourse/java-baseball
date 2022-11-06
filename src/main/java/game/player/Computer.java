@@ -34,5 +34,20 @@ public class Computer {
 				ball -= 1;
 			}
 		}
+		printResult();
+	}
+
+	private void printResult() {
+		String str = "";
+		if (ball != 0) {
+			str += ball + "볼 ";
+		}
+		if (strike != 0) {
+			str += strike + "스트라이크";
+		}
+		else if (ball == 0) {
+			str += "낫싱";
+		}
+		System.out.println(str);
 	}
 }
