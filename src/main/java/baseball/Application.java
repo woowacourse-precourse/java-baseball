@@ -63,14 +63,14 @@ class User {
         checkInputDuplicate(result);
         return result;
     }
-    static void checkInputLength(List input) throws Exception {
+    static void checkInputLength(List<Integer> input) throws Exception {
         if (input.size() != 3) {
             throw new Exception();
         }
     }
-    static void checkInputDuplicate(List input) throws Exception {
+    static void checkInputDuplicate(List<Integer> input) throws Exception {
         HashMap<Integer, Boolean> map = new HashMap<>();
-        for (Object num: input) {
+        for (Integer num: input) {
             if (map.containsKey(num)) {
                 throw new Exception();
             }
@@ -89,12 +89,12 @@ class Hint {
     final static String BALL = "볼";
     final static String STRIKE = "스트라이크";
     final static String NOTHING = "낫싱";
-    final List answer;
+    final List<Integer> answer;
 
     Hint(List answer) {
         this.answer = answer;
     }
-    String get(List input) {
+    String get(List<Integer> input) {
         String result = "";
         int ball = countBall(input);
         int strike = countStrike(input);
@@ -111,11 +111,17 @@ class Hint {
         return result;
     }
 
-    int countStrike(List input) {
+    int countStrike(List<Integer> input) {
         return 0;
     }
 
-    int countBall(List input) {
-        return 0;
+    int countBall(List<Integer> input) {
+        int result = 0;
+        for (Integer num: input) {
+            if (answer.contains(num) && answer.indexOf(num) != input.indexOf(num)) {
+                result += 1;
+            }
+        }
+        return result;
     }
 }
