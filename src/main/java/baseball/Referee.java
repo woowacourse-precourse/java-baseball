@@ -48,7 +48,7 @@ public class Referee {
             result += strike + "스트라이크";
             return result;
         }
-        result += ball + "볼" + strike + "스트라이크";
+        result += ball + "볼 " + strike + "스트라이크";
         return result;
     }
 }
