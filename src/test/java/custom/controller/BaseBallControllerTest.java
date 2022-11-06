@@ -1,6 +1,5 @@
 package custom.controller;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -26,7 +25,8 @@ class BaseBallControllerTest {
         when(baseBallService.matchNumber(anyString())).thenReturn(Response.keepOf("계속"));
 
         // expect
-        assertThatThrownBy(() -> baseBallController.matchNumber(LARGE_INPUT)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> baseBallController.matchNumber(LARGE_INPUT)).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
     @Test
@@ -35,7 +35,8 @@ class BaseBallControllerTest {
         when(baseBallService.matchNumber(anyString())).thenReturn(Response.keepOf("계속"));
 
         // expect
-        assertThatThrownBy(() -> baseBallController.matchNumber(CHARACTER_INPUT)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> baseBallController.matchNumber(CHARACTER_INPUT)).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
     @Test
@@ -44,7 +45,8 @@ class BaseBallControllerTest {
         when(baseBallService.isKeepGo(any())).thenReturn(Response.endOf("종료"));
 
         // expect
-        assertThatThrownBy(() -> baseBallController.isKeepGo(INVALID_RETRY_INPUT)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> baseBallController.isKeepGo(INVALID_RETRY_INPUT)).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
 
