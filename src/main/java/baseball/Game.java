@@ -4,34 +4,28 @@ import java.util.List;
 
 public class Game {
 
-    static final int GAME_OVER_STRIKE_COUNT = 3;
-    private List<Integer> computerNumbers;
-    private List<Integer> userNumbers;
-    boolean isGameOver = false;
+    private static final int GAME_OVER_STRIKE_COUNT = 3;
 
-    public static void startGame() {
-        Game game = new Game();
-        game.setComputerNumbers();
-        while (!game.isGameOver) {
-            game.setUserNumbers();
-            game.getGameScore();
-        }
-    }
+    private boolean isGameOver = false;
 
-    private void setComputerNumbers() {
+    private final List<Integer> computerNumbers;
+
+    private Game() {
         Computer computer = new Computer();
         List<Integer> computerNumbers = computer.getNumberList();
         this.computerNumbers = computerNumbers;
     }
 
-    private void setUserNumbers() {
-        User user = new User();
-        user.setUserInput();
-        List<Integer> userNumbers = user.getValidatedInput();
-        this.userNumbers = userNumbers;
+    public static void startGame() {
+        Game game = new Game();
+        while (!game.isGameOver) {
+            game.getGameScore();
+        }
     }
 
     private void getGameScore() {
+        UserNumber userNumber = new UserNumber();
+        List<Integer> userNumbers = userNumber.getNumberList();
         Judge.getGameScore(userNumbers, computerNumbers);
         if (Judge.countStrike(userNumbers, computerNumbers) == GAME_OVER_STRIKE_COUNT) {
             isGameOver = true;
@@ -39,10 +33,8 @@ public class Game {
         }
     }
 
-    public static int ResetGameOrQuit() {
-        User user = new User();
-        user.setQuitOrNotInput();
-        int quitOrNot = user.getValidatedQuitOrNotInput();
-        return quitOrNot;
+    public static String ResetGameOrQuit() {
+        UserChoice userChoice = new UserChoice();
+        return userChoice.getResetOrQuit();
     }
 }
