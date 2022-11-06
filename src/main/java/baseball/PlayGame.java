@@ -20,11 +20,17 @@ public class PlayGame {
         while(methodCallCount < 3){
             int beforeStrike = strike;
 
-            // 스트라이크 횟수 세기 기능
+            countStrike(computerNumber.get(digit), userNumber.get(digit));
             // 스트라이크 숫자 제거 기능
 
             digit++;
             methodCallCount++;
+        }
+    }
+
+    private void countStrike(int computerStrikeNumber, int userStrikeNumber){
+        if(computerStrikeNumber == userStrikeNumber){
+            strike++;
         }
     }
 }
