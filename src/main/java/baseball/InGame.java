@@ -108,13 +108,13 @@ public class InGame {
 
         for (int i = 0; i < 9; i++) {
             int j = i / 3;
-            if((answer_string.charAt(j) == input_string.charAt(i)) &&
-                    ((int)(i / 3) == j)
+            if((answer_string.charAt(j) == input_string.charAt(i % 3)) &&
+                    ((int)(i % 3) == j)
             ){
                 strike += 1;
             }
-            if((answer_string.charAt(j) == input_string.charAt(i)) &&
-                    ((int)(i / 3) != j)
+            if((answer_string.charAt(j) == input_string.charAt(i % 3)) &&
+                    ((int)(i % 3) != j)
             ){
                 ball += 1;
             }
