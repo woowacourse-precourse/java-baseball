@@ -71,26 +71,6 @@ public class Application {
         }
     }
 
-    public static List<Integer> compareAnswerWithInput(List<Integer> answerDigits, List<Integer> inputDigits) {
-        int strikeCount = 0;
-        int ballCount = 0;
-
-        for (int i = 0; i < 3; i++) {
-            int answerDigit = answerDigits.get(i);
-            int inputDigit = inputDigits.get(i);
-
-            if (answerDigit == inputDigit) {
-                strikeCount++;
-                ballCount--;
-            }
-            if (answerDigits.contains(inputDigit)) {
-                ballCount++;
-            }
-        }
-
-        return List.of(strikeCount, ballCount);
-    }
-
     public static List<Integer> getDigitList(int numbers) {
         int tmp = numbers;
         ArrayList<Integer> digits = new ArrayList<Integer>();
@@ -110,6 +90,26 @@ public class Application {
             throw new IllegalArgumentException("Duplicate digit exists");
         }
         return;
+    }
+
+    public static List<Integer> compareAnswerWithInput(List<Integer> answerDigits, List<Integer> inputDigits) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int answerDigit = answerDigits.get(i);
+            int inputDigit = inputDigits.get(i);
+
+            if (answerDigit == inputDigit) {
+                strikeCount++;
+                ballCount--;
+            }
+            if (answerDigits.contains(inputDigit)) {
+                ballCount++;
+            }
+        }
+
+        return List.of(strikeCount, ballCount);
     }
 
     public static boolean printHint(List<Integer> comparedResult) {
@@ -140,21 +140,14 @@ public class Application {
     }
 
     public static List<Integer> toBeContinued(int userInput, List<Integer> answerDigits) {
-        checkInRange(userInput, 1, 2);
-
         if (userInput == 1) {
             answerDigits = generateRandomNumbers();
+            return answerDigits;
         } else if (userInput == 2) {
             answerDigits = Collections.EMPTY_LIST;
+            return answerDigits;
         }
 
-        return answerDigits;
-    }
-
-    public static void checkInRange(int userInput, int from, int to) {
-        if (userInput < from || userInput > to) {
-            throw new IllegalArgumentException("Wrong input range");
-        }
-        return;
+        throw new IllegalArgumentException("Input should be either 1 or 2");
     }
 }
