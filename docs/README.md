@@ -80,6 +80,7 @@
 - [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행
 
 ## (void)inputUserNumberService()
+- [ ] 사용자가 입력하는 숫자를 저장하는 변수, userNumber을 0으로 초기화
 - [ ] 사용자가의 수가 컴퓨터의 수와 동일한지 비교후 결과값을 저장하는 checkedAnswer을 false로 초기화
 - [ ] inputAvailableUserNumberService함수를 실행
 - [ ] StringToList함수를 실행
