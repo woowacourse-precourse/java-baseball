@@ -8,6 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    static private List<Integer> computerNumber = new ArrayList<>();
+
     static int scanStartNumber() {
         String input = Console.readLine();
         if (isValidNumber(input)) {
@@ -40,6 +42,17 @@ public class Application {
         return true;
     }
 
+    static void registerComputerNumber() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+        computerNumber = randomNumbers;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
@@ -47,5 +60,6 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.err.println(e);
         }
+        registerComputerNumber();
     }
 }
