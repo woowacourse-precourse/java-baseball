@@ -31,6 +31,19 @@ public class Application {
         if(inputString.length()!=len)
             throw new IllegalArgumentException();
     }
+
+    public static List <Integer> checkInputInteger(String inputString){
+        List<Integer> inputStringToIntegerList = new ArrayList<Integer>();
+        for(int i=0; i<inputString.length(); i++){
+            if('0'<=inputString.charAt(i) && inputString.charAt(i)<='9') {
+                inputStringToIntegerList.add((int) inputString.charAt(i) - '0');
+            }
+        }
+        if(inputStringToIntegerList.size()!=3)
+            throw new IllegalArgumentException();
+        return inputStringToIntegerList;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
