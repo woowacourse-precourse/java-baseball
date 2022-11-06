@@ -33,7 +33,6 @@ public class NumberBaseballView {
         setGameResult(gameResult);
         if (isWin()) {
             System.out.println(WIN_MESSAGE);
-            System.out.println(NEW_GAME_MESSAGE);
             return WIN;
         }
         if (isNothing()) {
