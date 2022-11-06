@@ -3,9 +3,9 @@ package baseball;
 import baseball.domain.controller.GameController;
 import baseball.domain.dto.ResultDto;
 import baseball.domain.dto.UserInputDto;
+import baseball.domain.model.Ball;
 import baseball.domain.view.InputData;
 import baseball.domain.view.OutputData;
-import baseball.utils.Ball;
 import java.util.List;
 
 public class Game {
