@@ -18,6 +18,14 @@
 - [ ] 3스트라이크 시 2번 입력 시 종료하는 기능
 
 
+### ✅ 클래스 분리 진행사항
+
+- [x] 예외 처리 Validator class 구현
+- [x] 상수 처리 Constants class 구현
+- [ ] player class 구현
+- [ ] computer class 구현
+
+
 ### 📌 예외처리 고려사항
 
 - [x] 사용자가 입력한 숫자가 세 자리 수가 아닐 경우
