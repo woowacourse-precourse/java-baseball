@@ -1,7 +1,7 @@
 package baseball.model;
 
-import baseball.dto.Balls;
-import baseball.dto.Result;
+import baseball.model.dto.Balls;
+import baseball.model.dto.Result;
 
 import java.util.List;
 import java.util.Objects;

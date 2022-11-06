@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.model.dto;
 
 import java.util.ArrayList;
 import java.util.HashSet;

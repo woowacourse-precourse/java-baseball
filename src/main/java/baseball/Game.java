@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.dto.Balls;
-import baseball.dto.GameStatus;
-import baseball.dto.Result;
+import baseball.model.dto.Balls;
+import baseball.model.dto.GameStatus;
+import baseball.model.dto.Result;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Referee;
@@ -33,7 +33,6 @@ public class Game {
         while (true) {
             Balls playerBalls = player.generatePlayerBalls();
             Result result = referee.doJudge(computerBalls, playerBalls);
-            referee.printResult(result);
 
             if (result.isGameOver()) {
                 gameStatus.changeStatus(Console.readLine());

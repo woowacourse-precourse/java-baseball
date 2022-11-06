@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.dto.Balls;
+import baseball.model.dto.Balls;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
