@@ -26,6 +26,10 @@ public class BaseballView {
      * 새로운 숫자 야구게임을 시작한다
      */
     private void startNewGame() {
+        boolean isFinished = false;
+        while (!isFinished) {
+            isFinished = inputNumber();
+        }
     }
 
     /**
