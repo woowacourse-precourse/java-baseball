@@ -6,6 +6,7 @@ import baseball.domain.StrikeAndBall;
 import baseball.util.RandomUtil;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,8 @@ public class Game {
 
 
 	public void prepareGame() {
-		opponent = new Opponent(List.copyOf(RandomUtil.getRandomUniqueNumbers(START_NUMBER, END_NUMBER, NUMBER_LENGTH)), 0,
-				0);
-		player = new Player(List.of(0, 0, 0), false);
+		opponent = new Opponent(List.copyOf(RandomUtil.getRandomUniqueNumbers(START_NUMBER, END_NUMBER, NUMBER_LENGTH)));
+		player = new Player(List.of(0, 0, 0));
 		strikeAndBall = new StrikeAndBall(0, 0);
 	}
 
