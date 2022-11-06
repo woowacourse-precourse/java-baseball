@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Computer {
-    public Balls generateRandomBalls() {
+    public Balls generateRandomBalls(int maxSize, int minBallNumber, int maxBallNumber) {
         Balls computerBalls = new Balls();
 
-        while (!computerBalls.isSize(3)) {
-            computerBalls.addBall(Randoms.pickNumberInRange(1, 9));
+        while (!computerBalls.isSize(maxSize)) {
+            computerBalls.addBall(Randoms.pickNumberInRange(minBallNumber, maxBallNumber));
         }
         return computerBalls;
     }
