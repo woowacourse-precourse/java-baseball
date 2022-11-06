@@ -1,5 +1,7 @@
 package baseball.validation;
 
+import static baseball.util.Constant.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -48,6 +50,34 @@ class ValidationTest {
         String answer = "121";
 
         assertThat(validation.checkAnswerOverlap(answer)).isEqualTo(false);
+    }
+
+
+    @Test
+    void 플레이어가_제시한_숫자에_대해_통합으로_검증_기능_숫자길이_오류_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> validation.checkAnswerValidation("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_LENGTH_THREE)
+        );
+    }
+
+    @Test
+    void 플레이어가_제시한_숫자에_대해_통합으로_기능_숫자구성_오류_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> validation.checkAnswerValidation("ㄱ12"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_CONSIST_OF_NUM)
+        );
+    }
+
+    @Test
+    void 플레이어가_제시한_숫자에_대해_통합으로_검증_기능_중복_숫자_오류_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> validation.checkAnswerValidation("112"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_OVERLAP_NUM)
+        );
     }
 
 }
