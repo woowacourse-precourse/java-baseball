@@ -24,7 +24,14 @@ public class Application {
     private static final char REPLAY = '1';
     private static final char END = '2';
     public static void main(String[] args) {
-        gameStart();
+        boolean playGame = true;
+        while (playGame) {
+            playGame = false;
+            gameStart();
+            if(willReplay()) {
+                playGame = true;
+            }
+        }
 
     }
 
@@ -46,19 +53,9 @@ public class Application {
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
             printResult(ball, strike);
-            if(!isThreeStrike(strike)) {
-                continue;
-            }
-            System.out.println(THREE_STRIKE_MESSAGE);
-            try {
-                stringUserInput = getUserInput(InputType.WHETHER_REPLAY);
-                isValidInput(stringUserInput, InputType.WHETHER_REPLAY);
-                if(!willReplay(stringUserInput)) {
-                    playBaseball = false;
-                }
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(illegalArgumentException);
-                break;
+            if(isThreeStrike(strike)) {
+                System.out.println(THREE_STRIKE_MESSAGE);
+                playBaseball = false;
             }
         }
     }
@@ -206,9 +203,17 @@ public class Application {
         return strike == MAX_STRIKE;
     }
 
-    static boolean willReplay(String userInput) {
+    static boolean willReplay() {
         boolean replay = false;
-        if (userInput.charAt(0) == REPLAY) {
+        String playOrNot = "";
+        try {
+            playOrNot = getUserInput(InputType.WHETHER_REPLAY);
+            isValidInput(playOrNot, InputType.WHETHER_REPLAY);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException);
+        }
+
+        if (playOrNot.charAt(0) == REPLAY) {
             replay = true;
         }
 
