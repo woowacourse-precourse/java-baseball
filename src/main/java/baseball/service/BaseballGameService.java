@@ -44,6 +44,11 @@ public class BaseballGameService {
         String choiceRestartNumber = Console.readLine().trim();
         return choiceRestartNumber;
     }
+
+    public void initStrikeCountAndBallCount() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
 }
 
 
