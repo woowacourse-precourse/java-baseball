@@ -14,4 +14,12 @@ public class Application {
                 return tens;
         }
     }
+
+    public static int createOnesDifferentFrom(int hundreds, int tens) {
+        while (true) {
+            int ones = Randoms.pickNumberInRange(1, 9);
+            if (hundreds != ones && tens != ones)
+                return ones;
+        }
+    }
 }
