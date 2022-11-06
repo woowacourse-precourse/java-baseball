@@ -39,6 +39,12 @@ public class Computer {
         return this;
     }
 
+    public void resetCompareComponent() {
+        this.strike=0;
+        this.ball=0;
+        this.nothing=false;
+    }
+
 
     private void checkStrike(List<Integer> usersNum) {
         for (int i = 0; i < usersNum.size(); i++) {
