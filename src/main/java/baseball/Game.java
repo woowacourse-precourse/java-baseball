@@ -13,8 +13,7 @@ public class Game {
     Input input = new Input();
     private final int GAME_CONTINUE_NUMBER = 1;
 
-    public Game() {
-    }
+    public Game() {}
 
     public void gamePlay() {
         while (true) {

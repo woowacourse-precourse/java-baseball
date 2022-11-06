@@ -14,8 +14,7 @@ import java.util.Set;
  */
 public class Input {
 
-    public Input() {
-    }
+    public Input() {}
 
     /**
      * 문자열로 받은 입력값을 숫자 리스트로 반환하는 메소드
@@ -90,7 +89,10 @@ public class Input {
     }
 
     public boolean checkValidateInput(String userInput) {
-        return isInputLengthEqualsGameLength(userInput) && isAllDigits(userInput) && isDigitsInRange(userInput) && isAllDifferentDigit(userInput);
+        return isInputLengthEqualsGameLength(userInput)
+                && isAllDigits(userInput)
+                && isDigitsInRange(userInput)
+                && isAllDifferentDigit(userInput);
     }
 
 }
