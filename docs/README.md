@@ -36,8 +36,8 @@
 <br/>
 
 ### 정답 생성 Answer
-- [ ] 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
-- [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
+- [x] 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
+- [x] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
 
 <br/>
 

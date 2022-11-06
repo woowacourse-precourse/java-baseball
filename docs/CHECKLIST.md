@@ -1,8 +1,8 @@
 ## 🎯 프로그래밍 체크 사항 정리
 
-- [ ] JDK11에서 구현
-- [ ] Application main()이 시작점인지 체크
-- [ ] `build.gradle`을 수정하지 않기
+- [x] JDK11에서 구현
+- [x] Application main()이 시작점인지 체크
+- [x] `build.gradle`을 수정하지 않기
 - [ ] `ApplicationTest` 테스트
 
 
