@@ -38,4 +38,12 @@ public class GameController {
         messenger.printRestartOrEndMessage();
         return new Action(Console.readLine());
     }
+
+    public boolean receiveRestartOrEndIntent() {
+        Action userAction = receiveUserAction();
+        if (userAction.isRestart()) {
+            setComputerNumber();
+        }
+        return userAction.isRestart();
+    }
 }
