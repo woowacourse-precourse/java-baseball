@@ -4,11 +4,20 @@ import java.util.*;
 
 public class CompareNumber {
 
-    public static void printResult(String computerNumber, String playerNumber){
+    public static boolean checkRight(String computerNumber, String playerNumber){
+        String result = printResult(computerNumber,playerNumber);
+        if(result.equals("3스트라이크")){
+            return true;
+        }
+        return false;
+    }
+
+    public static String printResult(String computerNumber, String playerNumber){
         String result = attachResult(computerNumber,playerNumber);
         System.out.println(result);
+        return result;
     }
-    
+
     public static String attachResult(String computerNumber, String playerNumber){
         Map<String, Integer> resultMap = countResult(computerNumber,playerNumber);
         List<String> sortedResultList = sortMap(resultMap);
