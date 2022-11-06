@@ -2,6 +2,7 @@ package baseball;
 
 public class PlayBall {
     private PlayBallUI playBallUI;
+    private Computer computer;
 
     public void startInterface() {
 
@@ -10,6 +11,11 @@ public class PlayBall {
         }
 
         playBallUI.startInterface();
+        setComputerNumber();
     }
 
+    public void setComputerNumber(){
+        computer = new Computer();
+        computer.setComputerRandomNumber();
+    }
 }
