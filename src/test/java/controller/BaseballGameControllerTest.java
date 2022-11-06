@@ -122,7 +122,7 @@ public class BaseballGameControllerTest {
 	@DisplayName("볼을 제대로 판단하는지 테스트")
 	void judgeBallCorrectly() {
 		// given
-		Balls ballsPickedByComputer = new Balls(Arrays.asList(3, 2, 1));
+		Balls ballsPickedByComputer = new Balls(Arrays.asList(2, 3, 1));
 		Balls ballsPickedByUser = new Balls(Arrays.asList(1, 2, 3));
 
 		// when
