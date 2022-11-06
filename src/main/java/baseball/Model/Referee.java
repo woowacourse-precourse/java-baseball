@@ -6,7 +6,7 @@ public class Referee {
 
     private static final int MAX_LEN = 2;
     private static final int ZERO = 0;
-    public static final String CHOICEONETWO = "[1-2]";
+    private static final String CHOICEONETWO = "[1-2]";
 
     public int isStrike(List<Integer> user, List<Integer> computer) {
         int strike = 0;
