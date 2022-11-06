@@ -35,15 +35,15 @@ public class Referee {
     }
 
     public void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
         isGameInProgress = false;
     }
 
     public void playAgainOrNot() {
+        System.out.println("게임을 다시 시작하시겠습니까? 다시시작[1] 게임종료[2]");
         String againOrTerminate = readLine();
         while (!validatePlayAgain(againOrTerminate)) {
             System.out.println(PLAY_AGAIN + " 혹은 " + TERMINATE + "만 입력해주세요.");
-
             againOrTerminate = readLine();
         }
         if (againOrTerminate.equals(PLAY_AGAIN)) {
