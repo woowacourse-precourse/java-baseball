@@ -10,7 +10,9 @@ public class Computer {
 	private static final int MAX_RANGE = 9;
 	List<Integer> computersList = new ArrayList<>();
 
-	Computer() {}
+	Computer() {
+		setComputersList();
+	}
 
 	public void setComputersList() {
 		while(computersList.size() < MAX_LIST_SIZE) {
@@ -19,7 +21,6 @@ public class Computer {
 			if(!computersList.contains(randomNumber)) {
 				computersList.add(randomNumber);
 			}
-
 		}
 	}
 

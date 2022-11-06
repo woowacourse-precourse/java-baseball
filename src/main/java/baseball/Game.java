@@ -26,25 +26,27 @@ public class Game {
 	private int strike;
 	private int ball;
 
-	Game() {
-		computer = new Computer();
-		status = new Status();
-		user = new User();
+	Game(Computer computer, Status status, User user) {
+		this.computer = computer;
+		this.status = status;
+		this.user = user;
 	}
 
-	public void gameStart() {
+	public String gameStart() {
 		initGame();
 
 		while(strike < MAX_STRIKE) {
 			compare();
 		}
 
-		retryOrNot();
+		return retryOrNot();
 	}
 
 	private void compare() {
 		initCounts();
 		requestInput();
+		System.out.println(computer.getComputersList());
+		System.out.println(user.getValidatedUserInput());
 
 		for(int index = MIN_LIST_INDEX; index < MAX_LIST_INDEX; index++) {
 			if(computer.getComputersList().contains(user.getValidatedUserInput().get(index))) {
@@ -74,15 +76,17 @@ public class Game {
 		}
 	}
 
-	private void retryOrNot() {
+	private String retryOrNot() {
 		System.out.println(MESSAGE_GAME_OVER);
 		System.out.println(MESSAGE_RETRY);
 		status.setStatusTerminating();
 		user.scanInputByStatus(status.getStatus());
 
 		if(user.getValidatedUserInput().get(RETRY_ANSWER_INDEX).equals(RETRY_CODE)) {
-			gameStart();
+//			gameStart();
+			return "RUN";
 		}
+		return "STOP";
 	}
 
 	private void initGame() {
