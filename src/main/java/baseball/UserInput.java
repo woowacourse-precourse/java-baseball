@@ -8,6 +8,10 @@ public class UserInput {
     private final int NUMBER_LENGTH = 3;
     private int[] expectedAnswer;
 
+    public UserInput() {
+        expectedAnswer = new int[NUMBER_LENGTH];
+    }
+
     public int[] getUserInput() {
         return expectedAnswer;
     }
