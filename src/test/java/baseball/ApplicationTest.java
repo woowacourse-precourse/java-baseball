@@ -42,7 +42,6 @@ class ApplicationTest extends NsTest {
             List<Integer> numberList = computer.getRandomNumber();
             //then
             assertThat(3).isEqualTo((numberList.size()));
-
         }
 
         @Test
@@ -53,7 +52,16 @@ class ApplicationTest extends NsTest {
             Set<Integer> numberSet = new HashSet<>(numberList);
             //then
             assertThat(3).isEqualTo((numberSet.size()));
+        }
 
+        @Test
+        void 컴퓨터_첫번째_자리수를_올바르게_가져오는지_테스트() {
+            //given
+            List<Integer> numberList = computer.getRandomNumber();
+            //when
+            int firstNumber = computer.getFirstRandomNumber();
+            //then
+            assertThat(numberList.get(0)).isEqualTo((firstNumber));
         }
     }
 
