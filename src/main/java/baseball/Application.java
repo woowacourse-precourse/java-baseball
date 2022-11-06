@@ -13,9 +13,7 @@ public class Application {
             .mapToObj(ch -> (char)ch)
             .filter(Character::isDigit)
             .count();
-        if(numOfDigit == str.length())
-            return true;
-        return false;
+        return numOfDigit == str.length();
     }
 
     public static void main(String[] args) {
