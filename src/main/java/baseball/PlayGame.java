@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class PlayGame {
@@ -32,8 +33,7 @@ public class PlayGame {
 
             if (answer.indexOf(inputChar) == idx) {
                 strike += 1;
-            }
-            else if (answer.indexOf(inputChar) != -1) {
+            } else if (answer.indexOf(inputChar) != -1) {
                 ball += 1;
             }
         }
@@ -51,14 +51,11 @@ public class PlayGame {
 
         if (ball > 0 && strike > 0) {
             res = Integer.toString(ball).concat("볼 ").concat(Integer.toString(strike)).concat("스트라이크");
-        }
-        else if (ball > 0) {
+        } else if (ball > 0) {
             res = Integer.toString(ball).concat("볼");
-        }
-        else if (strike > 0) {
+        } else if (strike > 0) {
             res = Integer.toString(strike).concat("스트라이크");
-        }
-        else {
+        } else {
             res = "낫싱";
         }
 
@@ -78,8 +75,7 @@ public class PlayGame {
 
         if (inputString.length() != 3) {
             res = true;
-        }
-        else {
+        } else {
             res = false;
         }
 

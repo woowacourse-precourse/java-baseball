@@ -12,11 +12,9 @@ public class StopGame {
 
         if (stopFlag.equals("1")) {
             res = 0;
-        }
-        else if (stopFlag.equals("2")){
+        } else if (stopFlag.equals("2")) {
             res = 1;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
 

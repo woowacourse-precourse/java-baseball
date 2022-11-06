@@ -12,8 +12,7 @@ public class Application {
 
             try {
                 PlayGame.play(answer);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new IllegalArgumentException();
             }
 
@@ -21,8 +20,7 @@ public class Application {
 
             try {
                 stopFlag = StopGame.isStop();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new IllegalArgumentException();
             }
         }
