@@ -17,7 +17,7 @@ public class User {
         validateInt(userStr);
         validateLen(userStr);
         List<String> userStrList = new ArrayList<>(Arrays.asList(userStr.split("")));
-        List<Integer> user = userStrList.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
+        List<Integer> user = userStrList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         validateDup(user);
         return user;
     }
@@ -45,5 +45,4 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
-
 }
