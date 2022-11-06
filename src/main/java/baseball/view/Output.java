@@ -6,9 +6,6 @@ import baseball.domain.Score;
 public class Output {
 
     private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String NOTHING = "낫씽";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
     private static final String END_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static StringBuilder stringBuilder;
 
@@ -21,13 +18,15 @@ public class Output {
         int strike = hint.getScorePoint(Score.STRIKE);
         int ball = hint.getScorePoint(Score.BALL);
         if (strike == 0 && ball == 0) {
-            stringBuilder.append(NOTHING);
+            stringBuilder.append(Score.NOTHING.getValue());
         } else if (strike != 0 && ball == 0) {
-            stringBuilder.append(strike + STRIKE);
+            stringBuilder.append(strike + Score.STRIKE.getValue());
         } else if (strike == 0 && ball != 0) {
-            stringBuilder.append(ball + BALL);
+            stringBuilder.append(ball + Score.BALL.getValue());
         } else if (strike != 0 && ball != 0) {
-            stringBuilder.append(ball + BALL).append(strike + STRIKE);
+            stringBuilder.append(ball + Score.BALL.getValue())
+                         .append(" ")
+                         .append(strike + Score.STRIKE.getValue());
         }
         System.out.println(stringBuilder);
     }
