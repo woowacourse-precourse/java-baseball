@@ -17,7 +17,8 @@ class ComputerTest {
     @BeforeEach
     void setUp() {
         computer = new Computer();
-        computerNumbers = computer.getNumber();
+        computer.setNumbers();
+        computerNumbers = computer.getNumbers();
     }
 
     @Test

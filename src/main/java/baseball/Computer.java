@@ -8,14 +8,24 @@ import java.util.List;
 import java.util.Set;
 
 public class Computer {
-    public List<Integer> getNumber() {
-        Set<Integer> computerNumbers = new HashSet<>();
+    private List<Integer> computerNumbers;
 
-        while (computerNumbers.size() < Config.DIGIT_SIZE) {
+    public Computer() {
+        computerNumbers = new ArrayList<>();
+    }
+
+    public List<Integer> getNumbers() {
+        return computerNumbers;
+    }
+
+    public void setNumbers() {
+        Set<Integer> deduplicateNumbers = new HashSet<>();
+
+        while (deduplicateNumbers.size() < Config.DIGIT_SIZE) {
             int computerNumber = Randoms.pickNumberInRange(Config.DIGIT_MIN, Config.DIGIT_MAX);
-            computerNumbers.add(computerNumber);
+            deduplicateNumbers.add(computerNumber);
         }
 
-        return new ArrayList<>(computerNumbers);
+        this.computerNumbers = new ArrayList<>(deduplicateNumbers);
     }
 }

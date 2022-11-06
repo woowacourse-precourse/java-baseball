@@ -33,7 +33,8 @@ public class Baseball {
     }
 
     private void setComputerNumbers() {
-        this.computerNumbers = computer.getNumber();
+        computer.setNumbers();
+        this.computerNumbers = computer.getNumbers();
     }
 
     private void setPlayerNumbers() {
