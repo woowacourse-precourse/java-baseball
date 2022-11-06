@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Constant.CNT_NUMBER;
 import static org.assertj.core.api.Assertions.*;
 
 public class ComputerNumberTest {
-    private static final int CNT_NUMBER = 3;
     Computer computer = new Computer();
 
     @Test

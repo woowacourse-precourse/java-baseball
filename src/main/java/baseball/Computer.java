@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.*;
+
 public class Computer {
-    private static final int CNT_NUMBER = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
 
     public List<Integer> setRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
