@@ -2,13 +2,12 @@ package baseball;
 
 import baseball.computer.Controller;
 
-import static baseball.Result.*;
-import static camp.nextstep.edu.missionutils.Console.*;
-import static baseball.Message.*;
-
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
+
+import static baseball.Message.*;
+import static baseball.Result.getResult;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
     private static final String RE_GAME = "1";
@@ -19,14 +18,11 @@ public class BaseballGame {
     public void play() {
         printStartMessage();
         do {
-            Boolean doneGame = runGame();
-            if (!doneGame) {
-                return;
-            }
+            runGame();
         } while (checkStatus());
     }
 
-    public Boolean runGame() {
+    public void runGame() {
         int[] balls = new Controller().getBalls();
         int[] result;
         do {
@@ -36,7 +32,6 @@ public class BaseballGame {
             printResultMessage(result[ball],result[strike]);
         } while (checkResult(result));
         printFinishMessage();
-        return true;
     }
 
     public String getInput() {
