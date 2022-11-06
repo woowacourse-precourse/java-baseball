@@ -79,7 +79,7 @@ public class NumberBaseballGameClient {
     }
 
     public static void showGameEndMessage() {
-        // 게임 종료 메시지 출력
+        System.out.println(MSG_GAME_END);
     }
 
     public static boolean askMoreGame() {
