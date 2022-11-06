@@ -18,12 +18,12 @@ public class Application {
         String answerNum = createAnswer();
 
         boolean endPoint = true;
-        while(endPoint){
+
+        while (endPoint) {
             System.out.println("숫자를 입력해주세요 : ");
             String inputNum = Console.readLine();
 
-            if(inputNum.length() != 3) throw new IllegalArgumentException();
-
+            inputException(inputNum);
 
             int strike = countStrike(answerNum, inputNum);
             int ball = countBall(answerNum, inputNum, strike);
@@ -33,20 +33,54 @@ public class Application {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int startOrEnd = Integer.parseInt(Console.readLine());
-        if(startOrEnd == 1) startGame();
+
+        restartException(startOrEnd);
+
+        if (startOrEnd == 1) startGame();
+    }
+
+    private static void restartException(int startOrEnd) {
+
+        if(startOrEnd != 1 && startOrEnd != 2){
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    private static void inputException(String inputNum) {
+        if(inputNum.length() != 3) throw new IllegalArgumentException();
+
+        char min = '1';
+        char max = '9';
+
+        for (int i = 0; i < inputNum.length(); i++) {
+            char c = inputNum.charAt(i);
+
+            if(c<min || c>max) {
+                throw new IllegalArgumentException();
+            }
+
+            if(inputNum.replace(String.valueOf(c),"").length() !=2){
+                throw new IllegalArgumentException();
+            }
+
+        }
     }
 
     private static boolean giveScore(int strike, int ball) {
-        if(strike == 3){
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
-        if(strike == 0 && ball == 0){
+
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return true;
         }
+
         System.out.println("3스트라이크");
-        System.out.println(ball+"볼 "+strike+"스트라이크");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+
         return true;
     }
 
@@ -54,9 +88,11 @@ public class Application {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if(answerNum.contains(String.valueOf(inputNum.charAt(i)))){
+
+            if (answerNum.contains(String.valueOf(inputNum.charAt(i)))) {
                 count++;
             }
+
         }
 
         return count - strike;
@@ -66,9 +102,11 @@ public class Application {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if(answerNum.charAt(i) == inputNum.charAt(i)){
+
+            if (answerNum.charAt(i) == inputNum.charAt(i)) {
                 count++;
             }
+
         }
 
         return count;
@@ -88,8 +126,8 @@ public class Application {
     private static Set<Integer> createAnswerSet() {
         Set<Integer> set = new HashSet<>();
 
-        while(set.size() < 3){
-            int n = Randoms.pickNumberInRange(1,9);
+        while (set.size() < 3) {
+            int n = Randoms.pickNumberInRange(1, 9);
             set.add(n);
         }
 
