@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.engine.BaseBallGame;
 import baseball.engine.BaseBallGameEngine;
 import baseball.engine.DefaultBaseBallGameEngine;
 import baseball.engine.NextStepNumberGenerator;

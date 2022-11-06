@@ -1,5 +1,6 @@
-package baseball.engine;
+package baseball;
 
+import baseball.engine.BaseBallGameEngine;
 import baseball.io.ConsoleInput;
 import baseball.io.ConsoleOutput;
 import baseball.model.BallStatus;
