@@ -2,6 +2,8 @@ package baseball.game;
 
 import baseball.view.InputView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static baseball.game.Game.*;
@@ -14,6 +16,7 @@ import static baseball.view.OutputView.*;
 
 
 public class GameController {
+    private static Integer index;
     public static void start(){
         Game game = new Game();
         playGame();
@@ -28,14 +31,28 @@ public class GameController {
     private static void countScore(){
         ball = 0;
         strike = 0;
+        index = 0;
+        makeScoreList();
+        userNumbers.stream().forEach(number->{
+            countStrike(number,index);
+            countBall(number,index);
+            index++;
+        });
+    }
+    private static void makeScoreList(){
+        score = new ArrayList<>();
         for(int i=0;i<COUNT_BALL;i++){
-            countStrike(i);
+            score.add(false);
         }
     }
-    private static void countStrike(int i){
-        if(userNumbers.get(i).equals(computerNumbers.get(i))){
+    private static void countStrike(Integer number,int index){
+        if(number.equals(computerNumbers.get(index))){
             strike++;
-        }else if(computerNumbers.contains(userNumbers.get(i))){
+            score.set(index,true);
+        }
+    }
+    private static void countBall(Integer number,int index){
+        if(!score.get(index).equals(true)&computerNumbers.contains(number)){
             ball++;
         }
     }

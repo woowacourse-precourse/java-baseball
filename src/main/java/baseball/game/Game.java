@@ -11,7 +11,7 @@ import static baseball.game.exception.ExceptionCase.*;
 public class Game {
     public static List<Integer> userNumbers;
     public static List<Integer> computerNumbers;
-
+    public static List<Boolean> score;
     public static Integer ball;
     public static Integer strike;
 
