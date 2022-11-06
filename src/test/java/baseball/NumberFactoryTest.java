@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.NumberFactory;
+import baseball.game.utils.NumberFactory;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.ScoreBoard;
+import baseball.game.utils.ScoreBoard;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -18,7 +18,7 @@ public class ScoreBoardTest {
         scoreBoard.addBall();
         scoreBoard.addStrike();
 
-        Assertions.assertThat(scoreBoard.getBallAndStrike()).isEqualTo(Arrays.asList(1,2));
+        Assertions.assertThat(scoreBoard.getBallAndStrike()).isEqualTo(Arrays.asList(2,1));
     }
 
     @Test

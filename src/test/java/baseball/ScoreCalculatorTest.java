@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.game.ScoreBoard;
-import baseball.game.ScoreCalculator;
+import baseball.game.utils.ScoreBoard;
+import baseball.game.utils.ScoreCalculator;
 import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
