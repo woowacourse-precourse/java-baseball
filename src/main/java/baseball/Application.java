@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
         play();
@@ -13,7 +15,9 @@ public class Application {
         guess(random);
     }
     public static void guess(String com_num){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("숫자를 입력해주세요 :");
+        String usr_num= sc.next();
     }
     public static void isNewGame(){
 
