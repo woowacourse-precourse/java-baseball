@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
             void 입력_정상() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
             void 입력_세개_아님_오류() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1);
                     }
                 };
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
             void 입력_중복_오류() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(1, 8, 8);
                     }
                 };
@@ -62,7 +62,7 @@ class ApplicationTest extends NsTest {
             void 입력_1보다_작은수_오류() {
                 Computer computer = new Computer() {
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(0, 8, 9);
                     }
                 };
@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
             void 입력_1보다_큰수_오류() {
                 Computer computer = new Computer() {
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(1, 8, 10);
                     }
                 };
@@ -90,12 +90,12 @@ class ApplicationTest extends NsTest {
             void 쓰리_스트라이크() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(3, 0));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(9, 1, 4)))).isEqualTo(List.of(3, 0));
             }
 
             @Test
@@ -103,12 +103,12 @@ class ApplicationTest extends NsTest {
             void 투_스트라이크() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(0, 1, 4))).isEqualTo(List.of(2, 0));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(0, 1, 4)))).isEqualTo(List.of(2, 0));
             }
 
             @Test
@@ -116,12 +116,12 @@ class ApplicationTest extends NsTest {
             void 원_스트라이크_투_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(4, 1, 9);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(9, 1, 4))).isEqualTo(List.of(1, 2));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(9, 1, 4)))).isEqualTo(List.of(1, 2));
             }
 
             @Test
@@ -129,12 +129,12 @@ class ApplicationTest extends NsTest {
             void 원_스트라이크_원_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(4, 1, 5))).isEqualTo(List.of(1, 1));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(4, 1, 5)))).isEqualTo(List.of(1, 1));
             }
 
             @Test
@@ -142,12 +142,12 @@ class ApplicationTest extends NsTest {
             void 원_스트라이크_0_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(3, 6, 4))).isEqualTo(List.of(1, 0));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(3, 6, 4)))).isEqualTo(List.of(1, 0));
             }
 
             @Test
@@ -155,12 +155,12 @@ class ApplicationTest extends NsTest {
             void 영_스트라이크_원_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(4, 2, 3))).isEqualTo(List.of(0, 1));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(4, 2, 3)))).isEqualTo(List.of(0, 1));
             }
 
             @Test
@@ -168,12 +168,12 @@ class ApplicationTest extends NsTest {
             void 영_스트라이크_투_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(4, 9, 3))).isEqualTo(List.of(0, 2));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(4, 9, 3)))).isEqualTo(List.of(0, 2));
             }
 
             @Test
@@ -181,12 +181,12 @@ class ApplicationTest extends NsTest {
             void 영_스트라이크_쓰리_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(1, 4, 9))).isEqualTo(List.of(0, 3));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(1, 4, 9)))).isEqualTo(List.of(0, 3));
             }
 
             @Test
@@ -194,12 +194,12 @@ class ApplicationTest extends NsTest {
             void 영_스트라이크_영_볼() {
                 Computer computer = new Computer(){
                     @Override
-                    protected List<Integer> makeAnswer() {
+                    protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(List.of(7, 3, 8))).isEqualTo(List.of(0, 0));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(7, 3, 8)))).isEqualTo(List.of(0, 0));
             }
         }
         // 의문 : 재입력 테스트..? 근데 이게 단위테스트가 맞나? 뭔가 "행동"에 관련된 테스트 아냐?? 음....
