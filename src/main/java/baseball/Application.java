@@ -19,6 +19,7 @@ public class Application {
                 break;
             answer = createAnswer();
         }
+        System.out.println("게임 종료");
     }
     private static void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -48,7 +49,7 @@ public class Application {
     }
     private static boolean checkIsDigit (String number) {
         for (char c : number.toCharArray()) {
-            if (!Character.isDigit(c) | c!='0')
+            if (!Character.isDigit(c) | c == '0')
                 return false;
         }
         return true;
@@ -65,8 +66,8 @@ public class Application {
     }
     private static boolean isStrike (String input, String answer) {
         int strikeCnt = 0;
-        for (int i=0; i<input.length(); i++) {
-            if (input.charAt(i)==answer.charAt(i))
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == answer.charAt(i))
                 strikeCnt++;
         }
         int ballCnt = input.length()-input.replaceAll("["+answer+"]","").length()-strikeCnt;
