@@ -26,5 +26,11 @@ public class GameCycle {
         if (number.length() != 3) throw new IllegalArgumentException();
         return true;
     }
-
+    public boolean numberIsDigit(String number) {
+        char[] numberCharArray = number.toCharArray();
+        for (char tmpChar : numberCharArray) {
+            if (!Character.isDigit(tmpChar)) throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }

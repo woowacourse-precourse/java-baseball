@@ -44,5 +44,13 @@ class GameCycleTest {
         assertEquals(game.numberLengthIsThree(inputTrue), true);
         assertThrows(IllegalArgumentException.class,()->game.numberLengthIsThree(inputFalse));
     }
-
+    @Test
+    public void validIsDigit() throws Exception {
+        //given
+        String inputTrue = "123";
+        String inputFalse = "12b";
+        //expect
+        assertEquals(game.numberIsDigit(inputTrue), true);
+        assertThrows(IllegalArgumentException.class,()->game.numberIsDigit(inputFalse));
+    }
 }
