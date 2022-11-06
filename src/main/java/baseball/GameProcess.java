@@ -1,18 +1,27 @@
 package baseball;
 
 public class GameProcess {
+    int[] answer;
+    int[] havingNum = new int[10];
     public GameProcess(){
-
     }
 
     public void gameStart(){
         // 게임 진행
-
+        setAnswer();
 
         if (isRestart()){
             gameRestart();
         }
         gameEnd();
+    }
+
+    private void setAnswer(){
+        // 랜덤으로 지정된 3자리 입력받기, answer = 입력받은거;
+        answer =  new int[]{1, 2, 3};
+        for (int i : answer) {
+            havingNum[i] = 1;
+        }
     }
 
     private void gameRestart(){
