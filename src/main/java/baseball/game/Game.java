@@ -93,9 +93,22 @@ public class Game {
 
 	private void printMessage(List<Integer> judgement) {
 		String msg = generateMessage(judgement);
-		System.out.println(message);
+		System.out.println(msg);
 	}
 
+	private String generateMessage(List<Integer> judgement) {
+		int strikeCounter = judgement.get(STRIKE);
+		int ballCounter = judgement.get(BALL);
 
-
+		if (isNothing(strikeCounter, ballCounter)) {
+			return  "낫싱";
+		}
+		if (strikeCounter == 0) {
+			return ballCounter + "볼";
+		}
+		if (ballCounter == 0) {
+			return strikeCounter + "스트라이크";
+		}
+		return ballCounter + "볼" + " " + strikeCounter + "스트라이크";
+	}
 }
