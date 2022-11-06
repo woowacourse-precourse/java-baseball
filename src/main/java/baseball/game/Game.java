@@ -34,7 +34,7 @@ public class Game {
     public void playGame() {
         Ball ball = new Ball();
         List<Integer> computerBalls = ball.getComputerBall();
-        List<Integer> strikeAndBallCounts = new ArrayList(Arrays.asList(0, 0)); // TODO: unsafe operations
+        List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
         String result;
         System.out.println(computerBalls.toString()); // TODO: 삭제하기
         do {
