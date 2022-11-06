@@ -10,6 +10,7 @@ public class Application {
 
     private static final int DIGIT_LENGTH = 3;
     private static final String INPUT_PATTERN = "\\d".repeat(DIGIT_LENGTH);
+
     /**
      * 게임을 시작 할 때 생성하는 랜덤 넘버 3개 (이때 각 숫자는 중복이 없다)
      *
@@ -32,11 +33,17 @@ public class Application {
     /**
      * "숫자를 입력해주세요"를 출력하고 사용자의 입력을 받는 함수
      *
-     * @return 사용자의 입력 문자열
+     * @return 사용자의 입력
      */
-    public static String receiveUserInput() {
+    public static List<Integer> receiveUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String userInputStr = Console.readLine();
+
+        boolean validation = checkUserInput(userInputStr);
+
+        if (!validation) throw new IllegalArgumentException(String.format("%d자리의 숫자만 입력해야합니다.", DIGIT_LENGTH));
+
+        return userInputStrToIntegerList(userInputStr);
     }
 
     /**
@@ -71,7 +78,7 @@ public class Application {
     /**
      * 스트라이크 갯수를 파악하는 함수
      *
-     * @param answerList 정답
+     * @param answerList    정답
      * @param userInputList 사용자의 입력
      * @return 스트라이크 갯수
      */
@@ -91,7 +98,7 @@ public class Application {
     /**
      * 볼 갯수를 파악하는 함수
      *
-     * @param answerList 정답
+     * @param answerList    정답
      * @param userInputList 사용자 입력
      * @return 볼 갯수
      */
@@ -112,7 +119,7 @@ public class Application {
      * 게임 결과를 출력하는 함수
      *
      * @param strike 스트라이크 횟수
-     * @param ball 볼 횟수
+     * @param ball   볼 횟수
      */
     public static void printResult(int strike, int ball) {
         String result = "";
@@ -145,13 +152,7 @@ public class Application {
         List<Integer> randomNumbers = generateRandomNumber();
 
         while (true) {
-            String userInputStr = receiveUserInput();
-
-            boolean validation = checkUserInput(userInputStr);
-
-            if (!validation) throw new IllegalArgumentException(String.format("%d자리의 숫자만 입력해야합니다.", DIGIT_LENGTH));
-
-            List<Integer> userInput = userInputStrToIntegerList(userInputStr);
+            List<Integer> userInput = receiveUserInput();
 
             int strike = countStrike(randomNumbers, userInput);
             int ball = countBall(randomNumbers, userInput);
