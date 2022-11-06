@@ -21,17 +21,25 @@ public class StrikeModel {
     private int getStrike() {
         int strikeCount = 0;
         for (int index = 0; index < 3; index++) {
-            strikeCount += equalNumber(index);
+            strikeCount += calculateStrike(index);
         }
         return strikeCount;
     }
 
-    // 스트라이크
-    private int equalNumber(int index) {
+    // 스트라이크 비교
+    private int calculateStrike(int index) {
         if (userNumber[index] == computerNumber[index]) {
             return 1;
         }
         return 0;
+    }
+
+    // 볼 계산
+    private int getBall() {
+        int ballCount = 0;
+        for (int index = 0; index < 3; index++) {
+        }
+        return ballCount;
     }
 
     // List를 int배열로 변환
