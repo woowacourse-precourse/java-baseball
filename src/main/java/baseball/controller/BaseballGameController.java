@@ -21,7 +21,6 @@ public class BaseballGameController {
         outputView.printGameEnd();
         restart();
 
-
     }
 
     private void play() {
@@ -31,21 +30,24 @@ public class BaseballGameController {
 
             player = new Player(input);
             player.checkException();
-            player.setInputNum();
+            player.setInputNumber();
 
-            hint = computer.getHint(computer.getComputerNumber(), player.getInputNum());
+            hint = computer.getHint(computer.getComputerNumber(), player.getInputNumber());
 
             outputView = new OutputView();
             outputView.printHint(hint);
         } while (computer.isNotThreeStrike(hint));
     }
 
-    private void restart() {
+    public void restart() {
         String restartInput = inputView.restart();
-        if(computer.isRestart(restartInput)){
+        System.out.println(restartInput);
+        if (computer.isRestart(restartInput)) {
             start();
         }
     }
 
-
+    public void setInputView(InputView inputView){
+        this.inputView = inputView;
+    }
 }

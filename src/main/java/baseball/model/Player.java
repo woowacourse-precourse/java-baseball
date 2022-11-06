@@ -11,13 +11,13 @@ public class Player {
     private static final int BALL_LEN=3;
     private String input;
 
-    private ArrayList<Integer> inputNum = new ArrayList<>(BALL_LEN);
+    private ArrayList<Integer> inputNumber = new ArrayList<>(BALL_LEN);
     public Player(String input){
         this.input = input;
     }
 
-    public ArrayList<Integer> getInputNum() {
-        return inputNum;
+    public ArrayList<Integer> getInputNumber() {
+        return inputNumber;
     }
 
     public void checkException(){
@@ -26,10 +26,10 @@ public class Player {
 
     }
 
-    public void setInputNum(){
+    public void setInputNumber(){
         for (int inputIdx = 0; inputIdx < BALL_LEN; inputIdx++) {
             int inputInt= this.input.charAt(inputIdx) - '0';
-            this.inputNum.add(inputInt);
+            this.inputNumber.add(inputInt);
         }
     }
 
