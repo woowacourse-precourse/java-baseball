@@ -63,4 +63,15 @@ class ResultTest {
         assertThat(result.numberOfStrike()).isEqualTo(3);
         assertThat(result.getResultType()).isEqualTo(EXACT_MATCH);
     }
+
+    @Test
+    void nothing() {
+        // given
+        Result result = new Result();
+
+        // then
+        assertThat(result.numberOfStrike()).isEqualTo(0);
+        assertThat(result.numberOfBall()).isEqualTo(0);
+        assertThat(result.getResultType()).isEqualTo(NOTHING);
+    }
 }
