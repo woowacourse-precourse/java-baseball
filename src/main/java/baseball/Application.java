@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -15,12 +14,12 @@ public class Application {
         String input = Console.readLine();
         if (isValidNumber(input)) {
             int inputNumber = Integer.parseInt(input);
-            int divisor=100;
+            int divisor = 100;
             for (int i = 0; i < 3; i++) {
-                int digit = inputNumber/divisor;
+                int digit = inputNumber / divisor;
                 userNumber.add(digit);
                 inputNumber %= divisor;
-                divisor/=10;
+                divisor /= 10;
             }
         }
     }
@@ -61,7 +60,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         try {
             registerUserNumber();
             System.out.println(userNumber);
@@ -70,6 +68,5 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.err.println(e);
         }
-
     }
 }
