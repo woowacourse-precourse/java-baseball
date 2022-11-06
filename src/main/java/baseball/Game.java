@@ -22,8 +22,6 @@ public class Game {
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요 : ");
             predictedNumber = convertToList(scanner.nextLine());
-            System.out.println(targetNumber);
-            System.out.println(predictedNumber);
             scoreCalculator();
             isGameOver = checkCorrectAnswer(getStrikeScore());
         }
@@ -42,8 +40,6 @@ public class Game {
 
         int strikeScore = getStrikeScore();
         int ballScore = getBallScore(strikeScore);
-        System.out.println(strikeScore);
-        System.out.println(ballScore);
         printScoreBoard(strikeScore, ballScore);
     }
 

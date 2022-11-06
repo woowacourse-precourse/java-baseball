@@ -12,11 +12,9 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
 
         List<Integer> targetNumber = makeRandomWithoutDuplicate();
-        System.out.println(targetNumber);
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = new Game(scanner);
         game.play(targetNumber);
-
     }
 
     private static List<Integer> makeRandomWithoutDuplicate() {
