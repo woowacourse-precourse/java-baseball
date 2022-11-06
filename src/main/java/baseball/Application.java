@@ -16,10 +16,41 @@ public class Application {
             // 게임 시작
             startGame(computerNumber);
 
-            // 게임 재개 판단
 
+            // 게임 재개 판단
+            boolean isExit = checkExit();
+
+            if (isExit) {
+                break;
+            }
 
         } while (true);
+    }
+
+    /*
+    게임 종료 판별 메소드
+
+    Return
+
+     */
+    static boolean checkExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        // 사용자로 부터 입력을 받는다.
+        // TODO 입력값 검증
+        int userInput = Integer.parseInt(Console.readLine());
+
+        // 1이면 -> 계속하기
+        if (userInput == 1) {
+            return false;
+        }
+
+        // 2이면 -> 그만두기
+        else if (userInput == 2) {
+            return true;
+        }
+
+        return true;
     }
 
     /*
@@ -75,12 +106,12 @@ public class Application {
         }
 
         // ballCount가 0이 아닌 경우
-        else if (ballCount != 0) {
+        if (ballCount != 0) {
             System.out.printf("%d볼 ", ballCount);
         }
 
         // strikeCount가 0이 아닌 경우
-        else if (strikeCount != 0) {
+        if (strikeCount != 0) {
             System.out.printf("%d스트라이크", strikeCount);
         }
 
