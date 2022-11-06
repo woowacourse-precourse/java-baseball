@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ public class BaseballGame {
     private Numbers randomNumbers;
     private Numbers predictNumbers;
     private final InputView inputView;
+    private final OutputView outputView;
 
     public BaseballGame() {
         inputView = new InputView();
+        outputView = new OutputView();
     }
 
     public void pickRandomNumbers() {
@@ -42,9 +45,12 @@ public class BaseballGame {
     }
 
     public void run() {
+        List<Integer> counts;
         pickRandomNumbers();
         do {
             getPredictNumbers(inputView.inputNumbers());
-        } while (checkNumbers().get(2)==3);
+            counts = checkNumbers();
+            outputView.printResult(counts);
+        } while (counts.get(2)==3);
     }
 }
