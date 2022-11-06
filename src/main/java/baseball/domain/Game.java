@@ -1,9 +1,8 @@
 package baseball.domain;
 
-import java.util.ArrayList;
+import baseball.view.Output;
 
 public class Game {
-    private final static int THREE_STRIKES = 3;
     private final static int RESTART = 1;
 
     private final Player player;
@@ -15,19 +14,12 @@ public class Game {
     }
 
     public void run() {
-        computer.setStrikeNumbers();
-        boolean isGameCleared = false;
+        computer.setForNewGame();
 
-        while(!isGameCleared) {
-            int roundResult = playTheNextRound();
-            isGameCleared = (roundResult == THREE_STRIKES);
+        while(!computer.isStruckOut()) {
+            computer.provideHintTo(player);
         }
         Output.printGameClear();
-    }
-
-    private int playTheNextRound() {
-        ArrayList<Integer> playerGuess = player.guessNumbers();
-        return computer.provideHint(playerGuess);
     }
 
     public boolean dosePlayerWantNewGame() {
