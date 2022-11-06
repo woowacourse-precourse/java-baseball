@@ -4,6 +4,10 @@ import baseball.model.Balls;
 import baseball.model.Result;
 
 public class OutputView {
+    public static void init() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
     public static void print(Result result) {
         if (result.hasBall()) {
             System.out.printf("%d볼 ", result.getBall());
