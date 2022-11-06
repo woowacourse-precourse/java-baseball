@@ -102,6 +102,16 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class reStartTset {
+        @Test
+        void 게임_재시작시_입력값이_1_2가_아닐_경우_예외_발생() {
+            String userInput = "5";
+            assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.reStart(userInput);
+            });
+        }
+    }
 
 
     @Override
