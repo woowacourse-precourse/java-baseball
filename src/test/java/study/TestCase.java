@@ -101,7 +101,7 @@ public class TestCase {
         assertThatThrownBy(() -> playerNumber.verifyNumber(num))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+/*
     @Test
     void 컴퓨터가_플레이어에게_받은_수와_자신의_수를_비교_결과출력() {
         String result = "3스트라이크";
@@ -112,7 +112,7 @@ public class TestCase {
         Computer computer = new Computer();
         assertThat(result).isEqualTo(computer.getResult(playerNumber,computerNumber));
     }
-
+*/
 
 
 
