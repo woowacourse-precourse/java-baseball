@@ -78,7 +78,6 @@ class NumberBaseballServiceTest {
 		GameResult gameResult = numberBaseballService.compareNumberBaseBall(numberBaseballA, numberBaseballB);
 
 		//then
-		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.NOTHING)).isEqualTo(3);
 		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.STRIKE)).isEqualTo(0);
 		Assertions.assertThat(gameResult.countSingleResult(SingleResultType.BALL)).isEqualTo(0);
 	}

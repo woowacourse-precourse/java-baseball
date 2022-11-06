@@ -1,7 +1,7 @@
 package baseball.model.gameresult;
 
 public enum SingleResultType {
-	NOTHING("낫싱"),
+	MISS("미스"),
 	BALL("볼"),
 	STRIKE("스트라이크");
 

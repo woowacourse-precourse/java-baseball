@@ -11,9 +11,9 @@ class GameResultTest {
 		GameResult gameResult = new GameResult();
 
 		//when
-		gameResult.addSingleResult(SingleResultType.NOTHING);
-		gameResult.addSingleResult(SingleResultType.NOTHING);
-		gameResult.addSingleResult(SingleResultType.NOTHING);
+		gameResult.addSingleResult(SingleResultType.MISS);
+		gameResult.addSingleResult(SingleResultType.MISS);
+		gameResult.addSingleResult(SingleResultType.MISS);
 
 		//then
 		Assertions.assertThat(gameResult.toString()).isEqualTo("낫싱");
@@ -25,7 +25,7 @@ class GameResultTest {
 		GameResult gameResult = new GameResult();
 
 		//when
-		gameResult.addSingleResult(SingleResultType.NOTHING);
+		gameResult.addSingleResult(SingleResultType.MISS);
 		gameResult.addSingleResult(SingleResultType.BALL);
 		gameResult.addSingleResult(SingleResultType.STRIKE);
 
@@ -39,7 +39,7 @@ class GameResultTest {
 		GameResult gameResult = new GameResult();
 
 		//when
-		gameResult.addSingleResult(SingleResultType.NOTHING);
+		gameResult.addSingleResult(SingleResultType.MISS);
 		gameResult.addSingleResult(SingleResultType.BALL);
 		gameResult.addSingleResult(SingleResultType.BALL);
 

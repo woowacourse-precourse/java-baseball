@@ -37,7 +37,7 @@ public class NumberBaseballService {
 	}
 
 	public GameResult compareNumberBaseBall(NumberBaseball computerNumber, NumberBaseball userNumber) {
-		GameResult gameResult = new GameResult();
+		final GameResult gameResult = new GameResult();
 
 		for (int i = 0; i < NUMBER_BASEBALL_LENGTH; i++) {
 			int number = userNumber.getNumberAt(i);
@@ -55,6 +55,6 @@ public class NumberBaseballService {
 			return SingleResultType.BALL;
 		}
 
-		return SingleResultType.NOTHING;
+		return SingleResultType.MISS;
 	}
 }
