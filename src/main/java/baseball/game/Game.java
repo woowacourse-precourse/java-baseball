@@ -11,8 +11,6 @@ public class Game {
 	public String randomNumberForTest;
 	private static final int STRIKE = 0;
 	private static final int BALL = 1;
-	private static final int REPLAY = 1;
-	private static final int ENDGAME = 2;
 	private static final Game instance = new Game();
 
 	private Game() {
@@ -44,19 +42,14 @@ public class Game {
 		String input;
 		int replayOrEndgame;
 
-		while (true) {
-			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-			try {
-				input = Console.readLine();
-				replayOrEndgame = Integer.parseInt(input);
-			} catch (IllegalArgumentException e) {
-				// System.out.println("거 제대로 입력합시다! 좀... 아시겠어요?");
-				throw new IllegalArgumentException();
-			}
-			if (replayOrEndgame == REPLAY || replayOrEndgame == ENDGAME) {
-				break;
-			}
+		try {
+			input = Console.readLine();
+			replayOrEndgame = Integer.parseInt(input);
+		} catch (IllegalArgumentException e) {
+			// System.out.println("거 제대로 입력합시다! 좀... 아시겠어요?");
+			throw new IllegalArgumentException();
 		}
 
 		return replayOrEndgame;
