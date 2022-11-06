@@ -1,22 +1,20 @@
 package baseball.view;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.constValue.Constants.InputMessage.*;
 
 public class InputView {
 
-    private static Scanner scanner = new Scanner(System.in);
-
     public String restart(){
         System.out.println(RESTART_MESSAGE);
-        String input = scanner.next();
+        String input = Console.readLine();
         return input;
     }
 
     public String playerInput(){
         System.out.print(INPUT_MESSAGE);
-        String input=scanner.next();
+        String input=Console.readLine();
         return input;
     }
 }
