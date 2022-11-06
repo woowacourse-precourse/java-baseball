@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Game {
 
@@ -39,29 +40,22 @@ public class Game {
         System.out.println(computerBalls.toString()); // TODO: 삭제하기
         do {
             List<Integer> playerBalls = ball.getPlayerBall();
-            calcResult(computerBalls, playerBalls, strikeAndBallCounts);
-            resultMessage = getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT), strikeAndBallCounts.get(BALL_COUNT));
+            calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
+            resultMessage = getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
+                    strikeAndBallCounts.get(BALL_COUNT));
             System.out.println(resultMessage);
             updateStrikeAndBallCounts(strikeAndBallCounts, 0, 0);
         } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
     }
 
-    private void calcResult(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
-        for (int playerBallsIndex = 0; playerBallsIndex < playerBalls.size(); playerBallsIndex++) {
-            for (int computerBallsIndex = 0; computerBallsIndex < computerBalls.size(); computerBallsIndex++) {
-                calculateStrikeAndBallCounts(playerBalls, computerBalls, strikeAndBallCounts,
-                        playerBallsIndex, computerBallsIndex);
-            }
-        }
-    }
-
-    private void calculateStrikeAndBallCounts(List<Integer> playerBalls, List<Integer> computerBalls,
-            List<Integer> strikeAndBallCounts, int playerBallsIndex, int computerBallsIndex) {
-        if (playerBalls.get(playerBallsIndex).equals(computerBalls.get(computerBallsIndex))) {
-            updateStrikeAndBallCounts(strikeAndBallCounts,
-                    getCount(playerBallsIndex == computerBallsIndex, strikeAndBallCounts.get(STRIKE_COUNT)),
-                    getCount(playerBallsIndex != computerBallsIndex, strikeAndBallCounts.get(BALL_COUNT)));
-        }
+    private void calculateStrikeAndBallCounts(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
+        playerBalls.stream()
+                .filter(ball -> computerBalls.stream().anyMatch(Predicate.isEqual(ball)))
+                .forEach(ball -> updateStrikeAndBallCounts(strikeAndBallCounts,
+                        getCount(playerBalls.indexOf(ball) == computerBalls.indexOf(ball),
+                                strikeAndBallCounts.get(STRIKE_COUNT)),
+                        getCount(playerBalls.indexOf(ball) != computerBalls.indexOf(ball),
+                                strikeAndBallCounts.get(BALL_COUNT))));
     }
 
     private void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
