@@ -15,4 +15,8 @@ public class OutputText {
         System.out.println("숫자를 입력해주세요 : ");
     }
 
+    public void warnNumber(){
+        System.out.println("잘못된 숫자를 입력했습니다.");
+    }
+
 }
