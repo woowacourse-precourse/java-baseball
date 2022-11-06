@@ -49,12 +49,12 @@ public class Application {
             // 사용자로부터 입력된 3개의 숫자 배열
             List<Integer> userNumber = generateUserNumber();
 
-            int ballCount = 0;
-            int strikeCount = 0;
-            for (int i = 0; i < 3; i++) {
-                checkBall(computerNumber, userNumber, i);
-                checkStrike(computerNumber, userNumber, i);
-            }
+
+            List<Integer> countResult = countBallAndStrike(computerNumber, userNumber);
+
+            int ballCount = countResult.get(0);
+            int strikeCount = countResult.get(1);
+
 
             // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
             if (ballCount == 0 && strikeCount == 0) {
@@ -105,6 +105,34 @@ public class Application {
 
         // 반환
         return userNumber;
+    }
+
+    /*
+    볼과 스트라이크의 갯수를 계산하는 메소드
+
+    params
+    List<Integer> computerNumber
+    List<Integer> userNumber
+     */
+    static List<Integer> countBallAndStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+        List<Integer> result = new ArrayList<>();
+
+        // 볼의 갯수
+        result.add(0);
+        // 스트라이크의 갯수
+        result.add(0);
+
+        for (int i = 0; i < 3; i++) {
+            if (checkBall(computerNumber, userNumber, i)) {
+                result.set(0, result.get(0) + 1);
+            }
+
+            if (checkStrike(computerNumber, userNumber, i)) {
+                result.set(1, result.get(1) + 1);
+            }
+        }
+
+        return result;
     }
 
     /*
@@ -159,8 +187,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println(generateNumber());
+        baseballGame();
 
     }
 }
