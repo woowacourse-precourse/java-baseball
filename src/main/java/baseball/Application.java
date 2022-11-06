@@ -10,10 +10,12 @@ public class Application {
     private static final String START_SENTENCE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
     private static final int NUMBER_LENGTH = 3;
+    private static final int NEW_GAME_NUMBER = 1;
+    private static final int STOP_GAME_NUMBER = 2;
 
     public static void main(String[] args) {
-        int gameStatus = 1;
-        while (gameStatus == 1) {
+        int gameStatus = NEW_GAME_NUMBER;
+        while (gameStatus == NEW_GAME_NUMBER) {
             gameStatus = playGame();
         }
     }
@@ -32,7 +34,7 @@ public class Application {
             int strike = ballAndStrikeList.get(1);
             printStatus(ball, strike);
 
-            if (strike == 3) {
+            if (strike == NUMBER_LENGTH) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -46,7 +48,7 @@ public class Application {
 
     public static List<Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -64,7 +66,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
         List<Integer> ballAndStrikeList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             int num = Character.getNumericValue(input.charAt(i));
             if (answer.get(i) == num) { // 해당 숫자가 자리수까지 같다면 strike
                 strike++;
@@ -123,7 +125,8 @@ public class Application {
     }
 
     public static void checkInputNewGameNumber(String inputNum) {
-        if (!inputNum.equals("1") && !inputNum.equals("2")) {
+        int input = Integer.parseInt(inputNum);
+        if (input != NEW_GAME_NUMBER && input != STOP_GAME_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
