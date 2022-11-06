@@ -39,13 +39,12 @@ class baseball {
 	}
 	
 	void get_user_input_num() {
-		System.out.println("숫자를 입력해주세요 : "); // 세자리수 제한 구현필요
+		System.out.println("숫자를 입력해주세요 : "); //
 		user_num = number.nextInt();
 		int cipher;
 		for(cipher = 0; cipher < tmp_List.size(); cipher++) {
 			tmp_List.add(cipher);
 		}
-		
 	}
 	
 	void game() {
