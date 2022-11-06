@@ -21,13 +21,7 @@ public class Input {
         return stringToList(inputString);
     }
 
-    // method for test
-    public void printInputString(String inputString) {
-        validStringLength(inputString);
-        System.out.println(stringToList(inputString));
-    }
-
-    private List<Character> stringToList(String inputString) {
+    List<Character> stringToList(String inputString) {
         List<Character> list = new ArrayList<>();
         for (int i = 0; i < inputString.length(); i++) {
             list.add(inputString.charAt(i));
@@ -37,7 +31,7 @@ public class Input {
         return list;
     }
 
-    private void validStringLength(String inputString) {
+    void validStringLength(String inputString) {
         if (inputString.length() != listSize) {
             throw new IllegalArgumentException();
         }
