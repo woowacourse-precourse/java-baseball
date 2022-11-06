@@ -36,14 +36,18 @@ public class GameSystem {
         return Console.readLine();
     }
 
+    private void GetNumber() {
+        numStrikes = gameScore.CheckStrikes(numOfComputer, numOfPlayer);
+        numBalls = gameScore.CheckBalls(numOfComputer, numOfPlayer);
+    }
     public void GamePlay() {
 
         numOfComputer = computer.randomNumber;
         numOfPlayer = player.ReturnPlayerNum(InputNumPlayer());
 
-        numStrikes = gameScore.CheckStrikes(numOfComputer, numOfPlayer);
-        numBalls = gameScore.CheckBalls(numOfComputer, numOfPlayer);
+        GetNumber();
 
+        System.out.println(numOfComputer+"  "+numOfPlayer);
         System.out.println(gameScore.ReturnScore(numStrikes, numBalls));
     }
 
