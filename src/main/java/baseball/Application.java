@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Application {
 
-    final static List<Integer> allowedNumber = List.of(1,2,3,4,5,6,7,8,9);
+    static final List<Integer> ALLOWED_NUMBER = List.of(1,2,3,4,5,6,7,8,9);
 
     public static void checkInputLength (String userInputString) throws IllegalArgumentException {
         if (userInputString.length()!=3) {
@@ -18,7 +18,7 @@ public class Application {
 
     public static void checkInputValue (List<Integer> userInput) throws IllegalArgumentException {
         for (int i=0; i<userInput.size(); i++){
-            if (!allowedNumber.contains(userInput.get(i))) {
+            if (!ALLOWED_NUMBER.contains(userInput.get(i))) {
                 throw new IllegalArgumentException();
             }
         }
@@ -57,16 +57,16 @@ public class Application {
     }
 
     public static void printStrikeAndBall (int ball, int strike) {
-        if (ball==0&&strike==0) {
+        if (ball==0 && strike==0) {
             System.out.println("낫싱");
         }
-        if (ball>0&&strike==0) {
+        if (ball>0 && strike==0) {
             System.out.println(ball+"볼");
         }
-        if (ball==0&&strike>0) {
+        if (ball==0 && strike>0) {
             System.out.println(strike+"스트라이크");
         }
-        if (ball>0&&strike>0) {
+        if (ball>0 && strike>0) {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }
