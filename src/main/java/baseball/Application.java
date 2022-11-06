@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -119,6 +121,12 @@ public class Application {
         // myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임 종료
         if (myThreeNum.size() != 3) {
             throw new IllegalArgumentException("입력오류. 게임을 종료합니다.");
+        }
+
+        Set<Integer> numList = new HashSet<>(myThreeNum);
+        if (numList.size() != myThreeNum.size()) {
+            throw new IllegalArgumentException("입력오류. 게임을 종료합니다.");
+
         }
     }
 }
