@@ -35,7 +35,11 @@ public class Computer {
 			}
 		}
 		printResult();
+		if (strike == 3) {
+			return true;
+		}
 		resetBallAndStrike();
+		return false;
 	}
 
 	private void resetBallAndStrike() {
