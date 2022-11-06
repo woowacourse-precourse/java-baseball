@@ -32,6 +32,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 종료_시점의_예외() {
+        // 1과 2를 입력 받을 시점에 3자리 수 입력 하면 예외
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(
+                        () -> runException("246" , "135", "123")),
+                1, 3, 5
+        );
+
+        // 2를 입력받아 정상 종료
+        assertRandomNumberInRangeTest(
+                () -> assertDoesNotThrow(
+                        () -> runException("246" , "135", "2")),
+                1, 3, 5
+        );
+    }
+
+    @Test
     void 같은_수를_입력_예외() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("323"))
@@ -63,6 +80,14 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 한자리_수_입력_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("2"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("5"))
                         .isInstanceOf(IllegalArgumentException.class));
