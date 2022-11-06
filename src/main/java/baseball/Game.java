@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Game {
     private static final String START_STRING = "숫자 야구 게임을 시작합니다.";
+    private static final String BALL_STRING = "볼";
+    private static final String STRIKE_STRING = "스트라이크";
+    private static final String NOTHING_STRING = "낫싱";
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
 
@@ -60,5 +63,23 @@ public class Game {
 
     private Boolean isBall(Integer number, HashMap<Integer, Integer> compareBoard) {
         return compareBoard.containsKey(number);
+    }
+
+    private void printScoreBoard(ArrayList<Integer> scoreBoard) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (scoreBoard.get(BALL_INDEX) == 0 && scoreBoard.get(STRIKE_INDEX) == 0) {
+            System.out.println(NOTHING_STRING);
+            return;
+        }
+        if (scoreBoard.get(BALL_INDEX) > 0) {
+            stringBuilder.append(scoreBoard.get(BALL_INDEX)).append(BALL_STRING);
+        }
+        if (scoreBoard.get(STRIKE_INDEX) > 0 && scoreBoard.get(BALL_INDEX) > 0) {
+            stringBuilder.append(" ").append(scoreBoard.get(STRIKE_INDEX)).append(STRIKE_STRING);
+        }
+        if (scoreBoard.get(STRIKE_INDEX) > 0 && scoreBoard.get(BALL_INDEX) == 0) {
+            stringBuilder.append(scoreBoard.get(STRIKE_INDEX)).append(STRIKE_STRING);
+        }
+        System.out.println(stringBuilder.toString());
     }
 }
