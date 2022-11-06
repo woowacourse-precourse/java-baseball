@@ -16,10 +16,6 @@ public class GameManager {
         startRepeatedGame();
     }
 
-    private boolean isGameOver(List<Integer> userScore) {
-        return userScore.get(1) == SystemConstant.GAME_DIGIT;
-    }
-
     private void startFirstGame() {
         printGameStartMessage();
         startLoop();
@@ -27,7 +23,7 @@ public class GameManager {
 
     private void startRepeatedGame() {
         int flag = Integer.parseInt(Console.readLine());
-        if (flag == SystemConstant.GAME_EXIT_FLAG) {
+        if (flag == SystemConstant.GAME_EXIT_CODE) {
             return;
         }
         baseballManager.initComputerNumber();
@@ -45,8 +41,10 @@ public class GameManager {
             userScore = baseballManager.getUserScore();
             outputStream.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        printGameEndMessage();
-        printGameRestartMessage();
+        printGameEndAndRestartMessage();
     }
 
+    private boolean isGameOver(List<Integer> userScore) {
+        return userScore.get(1) == SystemConstant.GAME_DIGIT;
+    }
 }
