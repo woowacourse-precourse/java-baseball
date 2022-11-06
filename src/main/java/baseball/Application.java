@@ -7,14 +7,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
+
+    private static boolean restartStatus;
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
-        List<Integer> targetNumber = makeRandomWithoutDuplicate();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Game game = new Game(scanner);
-        game.play(targetNumber);
+
+        do {
+            List<Integer> targetNumber = makeRandomWithoutDuplicate();
+            System.out.println(targetNumber);
+            Game game = new Game(scanner);
+            game.play(targetNumber);
+            endingWorking(scanner);
+        } while (restartStatus);
     }
 
     private static List<Integer> makeRandomWithoutDuplicate() {
@@ -29,5 +35,13 @@ public class Application {
         return randomValues;
     }
 
+    private static void endingWorking(Scanner scanner) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restartStatus = setRestartStatus(scanner.nextLine());
+    }
 
+    private static boolean setRestartStatus(String defineRestartValue) {
+        return defineRestartValue.equals("1");
+    }
 }
