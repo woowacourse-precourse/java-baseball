@@ -81,7 +81,6 @@ public class Application {
         System.out.print('\n');
     }
 
-
     public static void predictNumber(ArrayList<Integer> answer) {
         ArrayList<Integer> prediction = new ArrayList<>();
         String consoleInput;
@@ -97,18 +96,25 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public static void isValidCode(String executionCode) {
+        if(!executionCode.equals("1") && !executionCode.equals("2"))
+            throw new IllegalArgumentException("Execution code must be 1 or 2");
+    }
+
     public static void main(String[] args) throws Exception {
-        int executionCode = 1;
+        String executionCode = "1";
         ArrayList<Integer> answer;
-        while (executionCode == 1) {
+        while (executionCode.equals("1")) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             answer = generateAnswer();
 
             System.out.println(answer); // for test
 
             predictNumber(answer);
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            executionCode = Integer.parseInt(Console.readLine());
+            executionCode = Console.readLine();
+            isValidCode(executionCode);
         }
     }
 }
