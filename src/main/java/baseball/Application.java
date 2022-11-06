@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        game();
     }
 
     //기능1.
@@ -21,11 +22,11 @@ public class Application {
             }
         }
 
-        return computer();
+        return computer;
     }
 
     //기능2.
-    public static List<Integer> user(){
+    public static List<Integer> user() throws IllegalArgumentException{
         List<Integer> user = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = Console.readLine();
@@ -91,7 +92,7 @@ public class Application {
     }
 
     //기능5. 승리했을 경우 (3스트라이크) 실행될 함수 (1 또는 2를 입력받기.)
-    public static String victory(){
+    public static String victory() throws IllegalArgumentException{
         System.out.println("게임을 계속하려면 1, 종료하려면 2를 입력하세요.");
         String victory = Console.readLine();
         return victory;
@@ -111,13 +112,12 @@ public class Application {
     }
 
     //기능7. 게임을 구현한다.
-    public static void game(){
+    public static void game() throws IllegalArgumentException{
         System.out.println("숫자 야구를 시작합니다.");
         List<Integer> computer = computer();
-        List<Integer> player;
 
         while (true){
-            player = user();
+            List<Integer> player = user();
             int strike = strike(computer, player);
             int ball = ball(computer, player, strike);
             result(strike, ball);
