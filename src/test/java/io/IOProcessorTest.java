@@ -16,7 +16,7 @@ public class IOProcessorTest {
     @DisplayName("사용자 입력내용을 제대로 받아오는 가?")
     void get_user_input_test() {
         systemIn("123");
-        String input = IOProcessor.getUserInput();
+        String input = IOProcessor.getUserInput("", "");
 
         assertThat(input)
                 .isEqualTo("123");
