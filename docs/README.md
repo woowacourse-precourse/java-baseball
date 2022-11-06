@@ -42,13 +42,14 @@
 
 ## 객체 모델
 
-### OutputUtils
 
 ### Game
 
 - Player player
 
 - Computer computer
+
+- Result result
 
 ### Player
 
