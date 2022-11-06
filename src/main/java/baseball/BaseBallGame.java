@@ -93,6 +93,13 @@ public class BaseBallGame {
         return Pattern.compile("[1-2]").matcher(input).matches();
     }
 
+    public String questionAboutGameExitingForTest(String answer) {
+        if(!isUserInputValid(answer)) {
+            throw new IllegalArgumentException();
+        }
+        return answer;
+    }
+
     private String questionAboutGameExiting() {
         System.out.println(CONTINUE_OR_EXIT_ANNOUNCE);
 
