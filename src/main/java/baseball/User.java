@@ -3,7 +3,7 @@ package baseball;
 public class User {
 
 
-    public static String inputValidtor(String inputValue) throws IllegalArgumentException{
+    public static String inputValidtor(String inputValue){
 
 
 
