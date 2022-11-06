@@ -60,8 +60,7 @@ public class RefereeTest {
 
         String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{1, 2, 3}));
 
-        assertThat(decision).isEqualTo("3스트라이크\n" +
-                "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(decision).isEqualTo("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 }
