@@ -1,9 +1,6 @@
 package baseball;
 
-import static baseball.view.OutputView.*;
-
 import baseball.controller.GameController;
-import baseball.controller.RestartController;
 
 public class Application {
 	public static void main(String[] args) {
@@ -11,11 +8,11 @@ public class Application {
 	}
 
 	private static void execute() {
-		RestartController restartController = new RestartController();
-		printGameStartMessage();
+		GameController gameController = new GameController();
+
+		gameController.start();
 		do {
-			GameController gameController = new GameController();
 			gameController.control();
-		} while (restartController.restart());
+		} while (gameController.askRestart());
 	}
 }

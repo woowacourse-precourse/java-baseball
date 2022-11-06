@@ -3,23 +3,24 @@ package baseball.domain;
 import java.util.List;
 
 import baseball.constant.GameConstants;
-import baseball.view.OutputView;
 
-public class Comparator {
-	final List<Integer> answer;
+public class NumberComparator {
+	private final List<Integer> answer;
 	private boolean isCorrect = false;
+	private int ballsCount;
+	private int strikesCount;
 
-	public Comparator(List<Integer> answer) {
+	public NumberComparator(List<Integer> answer) {
 		this.answer = answer;
 	}
 
-	private static int calculateStrikesCount(List<Integer> number, List<Integer> answer) {
+	private int calculateStrikesCount(List<Integer> number) {
 		return (int)number.stream()
 			.filter(digit -> digit.equals(answer.get(number.indexOf(digit))))
 			.count();
 	}
 
-	private static int calculateBallsCount(List<Integer> number, List<Integer> answer) {
+	private int calculateBallsCount(List<Integer> number) {
 		return (int)number.stream()
 			.filter(digit -> !digit.equals(answer.get(number.indexOf(digit))))
 			.filter(answer::contains)
@@ -27,13 +28,20 @@ public class Comparator {
 	}
 
 	public void compare(List<Integer> digits) {
-		int ballsCount = calculateBallsCount(digits, answer);
-		int strikesCount = calculateStrikesCount(digits, answer);
+		ballsCount = calculateBallsCount(digits);
+		strikesCount = calculateStrikesCount(digits);
 
 		if (strikesCount == GameConstants.LENGTH_OF_NUMBER) {
 			isCorrect = true;
 		}
-		OutputView.printResult(ballsCount, strikesCount);
+	}
+
+	public int getBallsCount() {
+		return ballsCount;
+	}
+
+	public int getStrikesCount() {
+		return strikesCount;
 	}
 
 	public boolean isCorrect() {
