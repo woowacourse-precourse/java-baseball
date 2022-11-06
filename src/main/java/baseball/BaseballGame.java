@@ -18,17 +18,17 @@ public class BaseballGame {
     public void playGame() {
         while (true) {
             List<String> userInput = getUserInput();
-            showResults(userInput);
+            showResult(userInput);
             if (countStrike(userInput) == View.MAX_BALL_LENGTH) {
                 break;
             }
         }
-        View.showThreeStrikeMassage();
-        View.showGameEndOrRestartMassage();
+        View.showThreeStrikeMessage();
+        View.showGameEndOrRestartMessage();
     }
 
     private List<String> getUserInput() {
-        View.showGameStartMassage();
+        View.showGameStartMessage();
         String userInput = Console.readLine();
         View.raiseErrorWhenInputLengthOverThree(userInput);
         List<String> inputList = convertUserInputToList(userInput);
@@ -49,15 +49,15 @@ public class BaseballGame {
         return convertedList;
     }
 
-    public void showResults(List<String> userInput) {
-        String results = "";
-        results += countBallResults(userInput);
-        results += countStrikeResults(userInput);
-        results += addNothingResults(userInput);
-        System.out.println(results);
+    public void showResult(List<String> userInput) {
+        String result = "";
+        result += countBallResult(userInput);
+        result += countStrikeResult(userInput);
+        result += addNothingResult(userInput);
+        System.out.println(result);
     }
 
-    private String countBallResults(List<String> userInput) {
+    private String countBallResult(List<String> userInput) {
         String ballResult = "";
         if (countBall(userInput) > 0) {
             ballResult += countBall(userInput) + Ball.BALL.getName();
@@ -65,7 +65,7 @@ public class BaseballGame {
         return ballResult;
     }
 
-    private String countStrikeResults(List<String> userInput) {
+    private String countStrikeResult(List<String> userInput) {
         String strikeResult = "";
         if (countStrike(userInput) > 0) {
             strikeResult += countStrike(userInput) + Ball.STRIKE.getName();
@@ -73,7 +73,7 @@ public class BaseballGame {
         return strikeResult;
     }
 
-    private String addNothingResults(List<String> userInput) {
+    private String addNothingResult(List<String> userInput) {
         String nothingResult = "";
         if (countStrike(userInput) == 0 && countBall(userInput) == 0) {
             nothingResult += Ball.NOTHING.getName();

@@ -2,18 +2,17 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class View {
-    public static String GAME_START_MASSAGE = "숫자를 입력해주세요:";
-    public static String GAME_RESTART_ERROR_MASSAGE = "1과 2만 입력할 수 있습니다.";
-    public static String INPUT_IS_NOT_DIGIT_MASSAGE = "숫자만 입력해주세요.";
-    public static String INPUT_IS_ZERO_MASSAGE = "1과 9사이의 숫자만 입력해주세요.";
-    public static String INPUT_CANNOT_SAME_NUMBER_MASSAGE = "서로 다른 세 자리 숫자를 입력해주세요.";
-    public static String INPUT_LENGTH_VALIDATION_MASSAGE = "입력은 세자리 숫자만 허용됩니다.";
-    public static String THREE_STRIKE_MASSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static String GAME_END_OR_RESTART_MASSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static String GAME_END_MASSAGE = "게임을 종료합니다.";
+    public static String GAME_START_MESSAGE = "숫자를 입력해주세요:";
+    public static String GAME_RESTART_ERROR_MESSAGE = "1과 2만 입력할 수 있습니다.";
+    public static String INPUT_IS_NOT_DIGIT_MESSAGE = "숫자만 입력해주세요.";
+    public static String INPUT_IS_ZERO_MESSAGE = "1과 9사이의 숫자만 입력해주세요.";
+    public static String INPUT_CANNOT_SAME_NUMBER_MESSAGE = "서로 다른 세 자리 숫자를 입력해주세요.";
+    public static String INPUT_LENGTH_VALIDATION_MESSAGE = "입력은 세자리 숫자만 허용됩니다.";
+    public static String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static String GAME_END_OR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static String GAME_END_MESSAGE = "게임을 종료합니다.";
 
 
     public static String GAME_RESTART = "1";
@@ -23,46 +22,46 @@ public class View {
     public static int MIN_INPUT_NUMBER = 1;
     public static int MAX_INPUT_NUMBER = 9;
 
-    public static void showGameStartMassage() {
-        System.out.println(GAME_START_MASSAGE);
+    public static void showGameStartMessage() {
+        System.out.println(GAME_START_MESSAGE);
     }
 
-    public static void showThreeStrikeMassage() {
-        System.out.println(THREE_STRIKE_MASSAGE);
+    public static void showThreeStrikeMessage() {
+        System.out.println(THREE_STRIKE_MESSAGE);
     }
 
-    public static void showGameEndOrRestartMassage() {
-        System.out.println(GAME_END_OR_RESTART_MASSAGE);
+    public static void showGameEndOrRestartMessage() {
+        System.out.println(GAME_END_OR_RESTART_MESSAGE);
     }
 
-    public static void showGameEndMassage() {
-        System.out.println(GAME_END_MASSAGE);
+    public static void showGameEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void showGameRestartErrorMassage() {
-        System.out.println(GAME_RESTART_ERROR_MASSAGE);
+    public static void showGameRestartErrorMessage() {
+        System.out.println(GAME_RESTART_ERROR_MESSAGE);
     }
 
 
 
     public static void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) {
         if (!Character.isDigit(separatedInput)) {
-            throw new IllegalArgumentException(INPUT_IS_NOT_DIGIT_MASSAGE);
+            throw new IllegalArgumentException(INPUT_IS_NOT_DIGIT_MESSAGE);
         }
         if (separatedInput == WRONG_USER_INPUT_ZERO) {
-            throw new IllegalArgumentException(INPUT_IS_ZERO_MASSAGE);
+            throw new IllegalArgumentException(INPUT_IS_ZERO_MESSAGE);
         }
     }
 
     public static void raiseErrorIfInputContainsSameNumber(List<String> input) {
         if (input.size() != new HashSet<>(input).size()) {
-            throw new IllegalArgumentException(INPUT_CANNOT_SAME_NUMBER_MASSAGE);
+            throw new IllegalArgumentException(INPUT_CANNOT_SAME_NUMBER_MESSAGE);
         }
     }
 
     public static void raiseErrorWhenInputLengthOverThree(String userInput) {
         if (userInput.length() > MAX_BALL_LENGTH) {
-            throw new IllegalArgumentException(INPUT_LENGTH_VALIDATION_MASSAGE);
+            throw new IllegalArgumentException(INPUT_LENGTH_VALIDATION_MESSAGE);
         }
     }
 
@@ -72,7 +71,7 @@ public class View {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            showGameRestartErrorMassage();
+            showGameRestartErrorMessage();
             raiseErrorWhenInputIsNotOneOrTwo(userInput);
         }
     }

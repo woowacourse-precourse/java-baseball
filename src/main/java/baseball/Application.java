@@ -10,8 +10,8 @@ public class Application {
         boolean gameEndFlag = false;
 
         while (!gameEndFlag) {
-            List<String> randomNumber = AnswerGenerator.generateRandNum();
-            BaseballGame baseballGame = new BaseballGame(randomNumber);
+            List<String> randomNumbers = AnswerGenerator.generateRandNum();
+            BaseballGame baseballGame = new BaseballGame(randomNumbers);
             baseballGame.playGame();
 
             String userInputToChooseGameRestartOrEnd = Console.readLine();
@@ -21,6 +21,6 @@ public class Application {
                 gameEndFlag = true;
             }
         }
-        View.showGameEndMassage();
+        View.showGameEndMessage();
     }
 }

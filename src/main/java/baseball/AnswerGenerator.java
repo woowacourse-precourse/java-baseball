@@ -15,7 +15,6 @@ public class AnswerGenerator {
                 answer.add(String.valueOf(randomNumber));
             }
         }
-        System.out.println(answer);
         return answer;
     }
 }
