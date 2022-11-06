@@ -39,6 +39,28 @@ public class Application {
 
             else if (answer.indexOf(targetNumber.charAt(compareInteger)) != -1) ball += 1;
         }
+
+        return StrikeBallResultPrint(strike, ball);
+    }
+    public static int StrikeBallResultPrint(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱\n");
+        }
+
+        else if (strike != 0 && ball == 0) {
+            System.out.println(strike + "스트라이크\n");
+            if (strike == 3) return 1;
+        }
+
+        else if (strike == 0 && ball != 0) {
+            System.out.println(ball + "볼\n");
+        }
+
+        else {
+            System.out.println(ball + "볼 " + strike + "스트라이크\n");
+        }
+
+        return 0;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
