@@ -1,5 +1,6 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +20,10 @@ public class Balls {
         validateSize(values);
         validateNumberRange(values);
         this.values = values;
+    }
+
+    public Balls() {
+        values = new ArrayList<>();
     }
 
     private void validateDuplicate(List<Integer> values) {
