@@ -18,23 +18,29 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean gameOver = false;
-        while(!gameOver){
+        while (!gameOver) {
             gameStart();
-            System.out. println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-            if(userInput.equals("2")){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String userInput;
+            try {
+                userInput = camp.nextstep.edu.missionutils.Console.readLine();
+            } catch (IllegalArgumentException e) {
+                return;
+            }
+            if (userInput.equals("2")) {
                 gameOver = true;
             }
         }
     }
 
-    public static void gameStart(){
+    public static void gameStart() throws IllegalArgumentException {
         int randomNumber = getRandomThreeDigitNumber();
         computerDigitValue = disassembleDigitNumber(randomNumber);
 
-        while(true) {
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             int userInput = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            isValidData(userInput);
             List<Integer> result = compareUserInputAndComputerSelect(userInput);
             String resultString = getResultString(result);
             System.out.println(resultString);
@@ -45,22 +51,22 @@ public class Application {
         }
     }
 
-    public static String getResultString(List<Integer> result){
+    public static String getResultString(List<Integer> result) {
         int strike = result.get(STRIKE);
         int ball = result.get(BALL);
         int nothing = result.get(NOTHING);
         String resultString = "";
 
-        if(nothing == 3) {
+        if (nothing == 3) {
             return "낫싱";
         }
-        if(ball > 0){
+        if (ball > 0) {
             resultString = String.format("%d볼", ball);
         }
-        if(strike > 0){
+        if (strike > 0) {
             resultString = String.format("%d스트라이크", strike);
         }
-        if(ball > 0 && strike > 0){
+        if (ball > 0 && strike > 0) {
             resultString = String.format("%d볼 %d스트라이크", ball, strike);
         }
 
@@ -92,16 +98,16 @@ public class Application {
         }
     }
 
-    public static boolean isValidData(int userInput) {
+    public static boolean isValidData(int userInput) throws IllegalArgumentException {
         List<Integer> disassembledNumber = disassembleDigitNumber(userInput);
         if (disassembledNumber.size() != 3) {
-            return false;
+            throw new IllegalArgumentException();
         }
 
         List<Integer> duplicatedList = new ArrayList<>();
         for (int number : disassembledNumber) {
             if (duplicatedList.contains(number)) {
-                return false;
+                throw new IllegalArgumentException();
             }
             duplicatedList.add(number);
         }
@@ -139,7 +145,7 @@ public class Application {
         }
 
         int randomValue = 0;
-        for(int number: computer){
+        for (int number : computer) {
             randomValue = randomValue * 10 + number;
         }
 
