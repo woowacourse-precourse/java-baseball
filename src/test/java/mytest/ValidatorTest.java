@@ -24,7 +24,7 @@ public class ValidatorTest {
         @ParameterizedTest
         @ValueSource(strings = {"1234", "1!3", "12", "", "a72", "803"})
         void threeNumbersTest(String input) {
-            boolean result = Validator.isThreeNumbers(input);
+            boolean result = Validator.hasThreeDigits(input);
             assertThat(result).isFalse();
         }
 
@@ -32,7 +32,7 @@ public class ValidatorTest {
         @ParameterizedTest
         @ValueSource(strings = {"886", "919", "141", "332", "277"})
         void uniquenessTest(String input) {
-            boolean result = Validator.isAllDifferent(input);
+            boolean result = Validator.hasDifferentDigits(input);
             assertThat(result).isFalse();
         }
     }
@@ -52,7 +52,7 @@ public class ValidatorTest {
         @ParameterizedTest
         @ValueSource(strings = {"123", "654", "493", "761", "587", "213", "874", "527"})
         void threeNumbersTest(String input) {
-            boolean result = Validator.isThreeNumbers(input);
+            boolean result = Validator.hasThreeDigits(input);
             assertThat(result).isTrue();
         }
 
@@ -60,7 +60,7 @@ public class ValidatorTest {
         @ParameterizedTest
         @ValueSource(strings = {"123", "654", "493", "761", "587", "213", "874", "527"})
         void uniquenessTest(String input) {
-            boolean result = Validator.isAllDifferent(input);
+            boolean result = Validator.hasThreeDigits(input);
             assertThat(result).isTrue();
         }
     }
