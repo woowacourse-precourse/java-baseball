@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.Action;
 import baseball.domain.Ball;
 import baseball.model.Computer;
 import baseball.view.Messenger;
@@ -31,5 +32,10 @@ public class GameController {
         Computer computer = new Computer();
         computer.setComputerRandomNumber();
         this.computerNumber = computer.getComputerRandomNumber();
+    }
+
+    public Action receiveUserAction() {
+        messenger.printRestartOrEndMessage();
+        return new Action(Console.readLine());
     }
 }
