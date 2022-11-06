@@ -38,7 +38,12 @@
         }
     Return list;
 
-### 게임 종료,
+### 게임 종료, 재시작 메세지 위치 변경
+
+    // 변경 전
+    announcedResult()
+    // 변경 후
+    reGameOrEnd() 
 
 ### 구현 기능 추가
 
