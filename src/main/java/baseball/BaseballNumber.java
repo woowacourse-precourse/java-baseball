@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseballNumber {
+public class BaseballNumber {
     protected List<Integer> baseballNumber;
     protected final int BASEBALLNUMBERLENGTH = 3;
 
@@ -15,7 +15,13 @@ public abstract class BaseballNumber {
         this.baseballNumber = baseballNumber;
     }
 
-    public abstract boolean isValidBaseballNumber (List<Integer> baseballNumber);
+    public boolean isValidBaseballNumber(List<Integer> baseballNumber) {
+        boolean checkNumberLength = this.isBaseballNumberLength3(baseballNumber);
+        boolean checkDuplicateNum = this.isNotDuplicatedNumber(baseballNumber);
+        boolean checkRangeNum = this.isValidRange(baseballNumber);
+
+        return checkRangeNum && checkDuplicateNum && checkNumberLength;
+    }
 
     protected boolean isBaseballNumberLength3(List<Integer> baseballNumber) {
         return baseballNumber.size() == this.BASEBALLNUMBERLENGTH;

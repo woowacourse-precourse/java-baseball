@@ -13,16 +13,6 @@ public class GameHost extends BaseballNumber {
         put(NOTHING, 0);
     }};
 
-
-    @Override
-    public boolean isValidBaseballNumber(List<Integer> baseballNumber) {
-        boolean checkNumberLength = super.isBaseballNumberLength3(baseballNumber);
-        boolean checkDuplicateNum = super.isNotDuplicatedNumber(baseballNumber);
-        boolean checkRangeNum = super.isValidRange(baseballNumber);
-
-        return checkRangeNum && checkDuplicateNum && checkNumberLength;
-    }
-
     public String getHint() {
         StringJoiner hintToPlayer = new StringJoiner(" ");
         int ballValue = this.hint.get(BALL);
