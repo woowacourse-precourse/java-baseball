@@ -1,20 +1,18 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = Settings.makeNumber();
-        ArrayList<Integer> user = Settings.userNumber();
-
-        int strikeCounter = Game.strike(user, computer);
-        int ballCounter = Game.ball(user, computer);
-        boolean nothingTrue = Game.nothing(strikeCounter, ballCounter);
-
-        System.out.println(computer);
-        System.out.println(user);
-        System.out.println(strikeCounter);
-        System.out.println(ballCounter);
-        System.out.println(nothingTrue);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int game = 1;
+        do{
+            ArrayList<Integer> computer = Settings.makeNumber();
+            Play.playGame(computer);
+            System.out.println("게임을 새로 시작하려면 1, 게임을 종료하려면 2를 입력하세요. ");
+            game = Integer.parseInt(Console.readLine());
+        } while(game==1);
     }
 }
