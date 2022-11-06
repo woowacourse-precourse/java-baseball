@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static baseball.constant.Rules.END_NUMBER;
@@ -66,6 +68,12 @@ public class Staff {
     private void validateForbiddenNumber(List<Integer> userNumbers) {
         if (userNumbers.contains(FORBIDDEN_NUMBER)) {
             throw new IllegalArgumentException("허용되지 않은 숫자 " + FORBIDDEN_NUMBER + "이 포함되어 있습니다.");
+        }
+    }
+
+    private void validateDuplicateValue(List<Integer> userNumbers) {
+        if (new HashSet<>(userNumbers).size() != userNumbers.size()) {
+            throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
         }
     }
 }
