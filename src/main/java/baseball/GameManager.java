@@ -32,6 +32,28 @@ public class GameManager {
         startLoop();
     }
 
+    private void startRepeatedGame() {
+        int flag = Integer.parseInt(Console.readLine());
+        if (flag == SystemConstant.GAME_EXIT_FLAG) {
+            return;
+        }
+        baseballManager.initComputerNumber();
+        startLoop();
+        startRepeatedGame();
+    }
 
+    private void startLoop() {
+        List<Integer> userScore;
+        do {
+            printGameInputMessage();
+            int userInput = inputStream.readIntWithVerification();
+            baseballManager.addUserBaseballNumInfo(new BaseballNumber(userInput));
+            baseballManager.computeUserScore();
+            userScore = baseballManager.getUserScore();
+            outputStream.printMessageForData(userScore);
+        } while (!isGameOver(userScore));
+        printGameEndMessage();
+        printGameRestartMessage();
+    }
 
 }
