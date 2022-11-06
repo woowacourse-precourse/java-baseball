@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -105,8 +106,8 @@ class BaseBallGame {
 
 
     public boolean isDiffDigitNumber(String inputStr) {
-        if (inputStr.charAt(0) == inputStr.charAt(1) || inputStr.charAt(1) == inputStr.charAt(2)
-                || inputStr.charAt(0) == inputStr.charAt(2)) {
+        HashSet<String> removeDuplStr = new HashSet<String>(Arrays.asList(inputStr.split("")));
+        if (removeDuplStr.size() != 3) {
             return false;
         }
         return true;
