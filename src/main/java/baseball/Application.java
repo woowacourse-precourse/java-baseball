@@ -54,6 +54,7 @@ public class Application {
         boolean availableUserNumberIsChecking = false;
         userNumberMessagePrint();
         userNumbers = userNumberInput();
+        availableUserNumberIsChecking = availableUserNumberIsChecked(userNumbers);
         return "";
     }
 
