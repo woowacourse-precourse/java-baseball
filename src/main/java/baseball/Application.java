@@ -24,16 +24,41 @@ public class Application {
     }
 
     static void startGame(List<Integer> computer) {
-        // 사용자로부터 입력된 3개의 숫자 배열
-        List<Integer> userNumber = generateUserNumber();
-
         while (true) {
+            // 사용자로부터 입력된 3개의 숫자 배열
+            List<Integer> userNumber = generateUserNumber();
+
             int ballCount = 0;
             int strikeCount = 0;
             for (int i = 0; i < 3; i++) {
                 checkBall(computer, userNumber, i);
                 checkStrike(computer, userNumber, i);
             }
+
+            // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
+            if (ballCount == 0 && strikeCount == 0) {
+                System.out.println("낫싱");
+            }
+
+            // ballCount가 0이 아닌 경우
+            else if (ballCount != 0) {
+                System.out.printf("%d볼 ", ballCount);
+            }
+
+            // strikeCount가 0이 아닌 경우
+            else if (strikeCount != 0) {
+                System.out.printf("%d스트라이크", strikeCount);
+            }
+
+            // 개행
+            System.out.println();
+
+            // strikeCount가 3이면 -> 승리
+            if (strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+
         }
 
     }
