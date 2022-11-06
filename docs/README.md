@@ -76,7 +76,7 @@
 - [x] 사용자가 입력하는 숫자를 저장하는 변수, userNumber을 0으로 초기화
 - [x] userNumberMessagePrint함수를 실행
 - [x] userNumberInput함수를 실행
-- [ ] availableUserNumberIsChecked함수를 실행
+- [x] availableUserNumberIsChecked함수를 실행
 - [x] userNumber를 리턴
 
 ## (void)inputUserNumberService()
