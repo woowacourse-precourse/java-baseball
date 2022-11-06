@@ -37,13 +37,10 @@ public class Hint {
 
     private String makeCountString(int ballCount, int strikeCount) {
         String result = getBallResult(ballCount);
-
-        if(strikeCount == 0) {
-            result += getStrikeResult(strikeCount);
+        if(ballCount > 0) {
+            result += SPACE_STRING;
         }
-        if(strikeCount >= 1) {
-            result += (SPACE_STRING + getStrikeResult(strikeCount));
-        }
+        result += getStrikeResult(strikeCount);
         return result;
     }
 
