@@ -9,5 +9,6 @@ public class Baseball {
     public void playGame() {
         gameController.start();
         gameController.play();
+        gameController.end();
     }
 }

@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.BaseballScore;
+import baseball.GameConstants;
 import baseball.model.Computer;
 import baseball.model.User;
 import baseball.view.GameMessage;
@@ -19,13 +20,27 @@ public class GameController {
     }
 
     public void play() {
+        boolean gameOver = false;
         Map<BaseballScore, Integer> resultScore;
 
-        inputMessage.inputNumber();
-        user.hitTheBall();
+        while(!gameOver) {
+            inputMessage.inputNumber();
+            user.hitTheBall();
 
-        resultScore = computer.compare(user.getBat());
-        gameMessage.printGameResult(resultScore);
+            resultScore = computer.compare(user.getBat());
+            gameMessage.printGameResult(resultScore);
+
+            gameOver = isGameOver(resultScore);
+        }
+    }
+
+    public boolean isGameOver(Map<BaseballScore, Integer> resultScore) {
+        int strikeCount = resultScore.get(BaseballScore.STRIKE);
+        return strikeCount == GameConstants.NUMBER_LENGTH;
+    }
+
+    public void end() {
+        gameMessage.endGame();
     }
 
 }
