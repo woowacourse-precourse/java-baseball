@@ -18,9 +18,13 @@ public class NumberBaseball {
 
     private void repeatUntilUserGetsPerfectAnswer(List<Integer> targetNumbers) {
 
-        do {
+        while (true) {
             List<Integer> userNumbers = staff.getUserNumbers();
-        } while (referee.isPerfectAnswer(targetNumbers, userNumbers));
+
+            if (referee.isPerfectAnswer(targetNumbers, userNumbers)) {
+                break;
+            }
+        }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
