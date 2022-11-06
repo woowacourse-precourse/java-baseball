@@ -26,4 +26,24 @@ public class BaseballGameNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 숫자만 가능합니다.");
     }
+
+    @Test
+    public void isSame_메서드로_같은_수인지_확인() {
+        BaseballGameNumber number = new BaseballGameNumber(List.of(6, 7, 8));
+        BaseballGameNumber otherNumber = new BaseballGameNumber(List.of(6, 7, 8));
+
+        boolean result = BaseballGameNumber.isSame(number, otherNumber);
+
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    public void isSame_메서드_사용시_두_수가_서로_다른_경우_false를_반환() {
+        BaseballGameNumber number = new BaseballGameNumber(List.of(4, 5, 6));
+        BaseballGameNumber otherNumber = new BaseballGameNumber(List.of(6, 7, 8));
+
+        boolean result = number.equals(otherNumber);
+
+        assertThat(result).isFalse();
+    }
 }
