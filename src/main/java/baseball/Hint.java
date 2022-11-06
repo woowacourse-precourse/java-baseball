@@ -59,9 +59,6 @@ public class Hint {
     }
 
     public boolean isThreeStrike() {
-        if (this.countResult.get(BaseballCount.STRIKE.getValue()) == 3) {
-            return true;
-        }
-        return false;
+        return this.countResult.get(BaseballCount.STRIKE.getValue()) == THREE_STRIKE;
     }
 }

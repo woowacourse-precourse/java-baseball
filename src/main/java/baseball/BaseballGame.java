@@ -25,7 +25,7 @@ public class BaseballGame {
         System.out.println(GAME_START_MESSAGE);
         while (progress) {
             startGame();
-            checkProgress();
+            this.progress = checkProgress();
         }
     }
 
@@ -37,12 +37,8 @@ public class BaseballGame {
         } while (!hint.isThreeStrike());
     }
 
-    private void checkProgress() {
+    private Boolean checkProgress() {
         Integer progressInput = player.getProgressInput();
-        if (progressInput == RESTART) {
-            this.progress = true;
-        } else if (progressInput == EXIT) {
-            this.progress = false;
-        }
+        return RESTART.equals(progressInput);
     }
 }
