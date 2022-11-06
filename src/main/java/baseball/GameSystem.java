@@ -11,7 +11,6 @@ import static baseball.Constant.*;
 public class GameSystem {
     public void gameStart(){
         HashSet<String> computerNumber = RandomUtil.giveComputerNumber();
-        System.out.println(computerNumber);
         Hint hint = new Hint();
         List<String> userNumber;
         boolean exit=false;
@@ -20,7 +19,6 @@ public class GameSystem {
             //숫자 입력 메시지 출력 및 숫자 입력 받기
             System.out.print(inputNumberMessage+" ");
             userNumber = InputUtil.inputUserNumber();
-            System.out.println(userNumber);
             hint.hintCalculator(computerNumber,userNumber);
             if(hint.threeStrike) {
                 System.out.println(gameEndingMessage);
