@@ -14,6 +14,7 @@ public class Game {
         IO.Computer_RandomNumber();//Input_Output에서 받은 컴퓨터의 수를 호출
         System.out.println(IO.computer);
         IO.User_enter();//Input_Output에서 받은 사용자의 수를 호출
+        IO.User_File_Check();
         BaseNumber_Check(IO.computer,IO.Scan);
         Checking_Game_Number();//게임이 끝났는지 혹은 끝나지 않았으면 숫자확인을 해준다.
 
@@ -75,7 +76,7 @@ public class Game {
 
     public void Ending_Progress()
     {
-
+        IO.Ending_Enter();
     }
 
 
