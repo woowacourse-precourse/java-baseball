@@ -7,17 +7,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
+    private static Computer computer;
 
     @Test
     @BeforeAll
     static void 객체_생성_테스트() {
-        Computer computer = new Computer();
+        computer = new Computer();
         assertThat(computer).isNotNull();
     }
 
     @Test
     void 숫자_생성_테스트() {
-        Computer computer = new Computer();
         computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .isNotNull();
@@ -25,7 +25,6 @@ public class ComputerTest {
 
     @Test
     void 숫자_길이_테스트() {
-        Computer computer = new Computer();
         computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .isNotEmpty()
@@ -35,7 +34,6 @@ public class ComputerTest {
 
     @Test
     void 숫자_중복_확인_테스트() {
-        Computer computer = new Computer();
         computer.generateUniqueRandomNumbers();
         assertThat(computer.getRandomNumbers())
                 .doesNotHaveDuplicates();
@@ -43,7 +41,6 @@ public class ComputerTest {
 
     @Test
     void 숫자_범위_테스트() {
-        Computer computer = new Computer();
         computer.generateUniqueRandomNumbers();
         List<Integer> randomNumbers = computer.getRandomNumbers();
         for (Integer randomNumber : randomNumbers) {
