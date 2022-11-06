@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constant.*;
-
 public class Input {
     public static void startGameMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
