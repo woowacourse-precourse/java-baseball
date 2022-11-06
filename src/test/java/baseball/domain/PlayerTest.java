@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PlayerTest {
     @DisplayName("플레이어가 입력하는 값이 저장되는지 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"134", "167", "189", "331", "1234", "159"}) // 예외 처리 전
+    @ValueSource(strings = {"134", "167", "189", "159", "163", "789", "698"})
     void EnterNumberOfPlayerTest(String inputData) {
         // Given
         Player player = new Player();
