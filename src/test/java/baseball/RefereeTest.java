@@ -68,10 +68,6 @@ public class RefereeTest {
 
 class TestableGame extends Game {
 
-    TestableGame() {
-        super();
-    }
-
     public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
