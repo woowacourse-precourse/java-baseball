@@ -30,7 +30,12 @@ public class GameController {
     }
 
     void startGame(){
-
+        while(!isThreeStrike()) {
+            clearScore();
+            putPlayerInService(getPlayerNumbers());
+            matchGame();
+            showPlayersScore();
+        }
     }
 
     void putPlayerInService(String playerNumbers){
