@@ -9,7 +9,6 @@ public class GameAnswer {
     private List<Integer> answer;
 
     public GameAnswer() {
-        setNumber();
     }
 
     public List<Integer> getNumber() {

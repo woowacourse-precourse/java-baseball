@@ -16,13 +16,13 @@ public class GameSystem {
 
     public GameSystem() {
         int gameLoop;
-
+        gameAnswer = new GameAnswer();
+        myAnswer = new MyAnswer();
+        userInterface = new UserInterface();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true) {
-            gameAnswer = new GameAnswer();
-            myAnswer = new MyAnswer();
-            userInterface = new UserInterface();
 
+        while(true) {
+            gameAnswer.setNumber();
             gameProcess();
             gameLoop = userInterface.checkGameRestart();
             if(gameLoop == 2) break;
