@@ -7,6 +7,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.List;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -33,6 +36,38 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1a3"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    List<Integer> getThreeRandomNumbers() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Object ret;
+        Class app = Application.class;
+        Method method = app.getDeclaredMethod("generateThreeRandomNumber");
+
+        method.setAccessible(true);
+        ret = method.invoke(null);
+        return (List<Integer>) ret;
+    }
+
+    @Test
+    void 중복된_랜덤_값_발생_테스트1() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List<Integer> result = List.of(1,3,5);
+                    assertThat(genRandomNumbers()).isEqualTo(result);
+                },
+                1, 3, 3, 3, 5
+        );
+    }
+
+    @Test
+    void 중복된_랜덤_값_발생_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List<Integer> result = List.of(3,5,1);
+                    assertThat(genRandomNumbers()).isEqualTo(result);
+                },
+                3, 3, 3, 3, 5, 1
         );
     }
     @Override
