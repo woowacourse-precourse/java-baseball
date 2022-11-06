@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballBot {
@@ -9,24 +10,28 @@ public class BaseballBot {
     private static final int END_RANGE = 9;
     private static final int NUM_LENGTH = 3;
 
-    private static final String STRIKE_STR = "스트라이크strike ";
-    private static final String BALL_STR = "볼ball ";
-    private static final String NOTHING_STR = "낫싱not";
-    private static final String GAME_END_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료end";
+    private static final String STRIKE_STR = "스트라이크 ";
+    private static final String BALL_STR = "볼 ";
+    private static final String NOTHING_STR = "낫싱";
+    private static final String GAME_END_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    private String answer;
+    private String answer = "";
 
     private boolean end = false;
 
     public void createRandomValue() {
-        StringBuilder randomNumber = new StringBuilder();
-        List<Integer> randomUniqueDigits = Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, NUM_LENGTH);
+        List<Integer> computer = new ArrayList<>();
 
-        for (int randomUniqueDigit : randomUniqueDigits) {
-            randomNumber.append(randomUniqueDigit);
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
 
-        answer = randomNumber.toString();
+        for (int randomNumber : computer) {
+            answer += randomNumber;
+        }
     }
 
     public String checkHint(String userInput) {
@@ -72,22 +77,22 @@ public class BaseballBot {
     }
 
     private String createHintStr(int strike, int ball) {
-        if (isEnd()) {
-            return GAME_END_STR;
-        }
-
         StringBuilder hintStr = new StringBuilder();
 
         if (strike == 0 && ball == 0) {
             hintStr.append(NOTHING_STR);
         }
 
+        if (ball > 0) {
+            hintStr.append(ball).append(BALL_STR);
+        }
+
         if (strike > 0) {
             hintStr.append(strike).append(STRIKE_STR);
         }
 
-        if (ball > 0) {
-            hintStr.append(ball).append(BALL_STR);
+        if (isEnd()) {
+            hintStr.append("\n").append(GAME_END_STR);
         }
 
         return hintStr.toString();
