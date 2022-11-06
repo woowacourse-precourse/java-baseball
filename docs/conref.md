@@ -15,6 +15,12 @@
 - 👀[일급 콜렉션](https://jojoldu.tistory.com/412)
 - 👀[테스트 코드 작성의 중요성](https://hanamon.kr/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EC%84%B1/)
 - 👀[asserThat](https://jwkim96.tistory.com/168)
+- 👀[Compose Method 패턴](https://velog.io/@wilgur513/Compose-Method-%ED%8C%A8%ED%84%B4)
+- 👀[원시값 포장](https://velog.io/@kanamycine/Java-%EC%9B%90%EC%8B%9C%EA%B0%92-%ED%8F%AC%EC%9E%A5)
+- 👀[AssertJ](https://smpark1020.tistory.com/405)
+- 👀[Junit 테스트 어노테이션](https://gracelove91.tistory.com/107)
+- 👀[문자열에서 숫자 추출](https://codechacha.com/ko/java-extract-integers-from-string/)
+- 👀[자주쓰는 intellij 단축키](https://wecandev.tistory.com/112)
 
 ### ✨etc
 - 👀[마크다운 작성법](https://gist.github.com/ihoneymon/652be052a0727ad59601)
