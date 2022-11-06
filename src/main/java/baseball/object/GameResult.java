@@ -32,4 +32,9 @@ public class GameResult {
     public Boolean isGameEnd() {
         return strike == 3;
     }
+
+    public Boolean isEqual(GameResult gameResult) {
+        return gameResult.getBall() == this.ball
+                && gameResult.getStrike() == this.strike;
+    }
 }
