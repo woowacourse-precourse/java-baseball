@@ -34,7 +34,7 @@ public class Application {
         }
     }
 
-    /*3. 컴퓨터와 입력숫자를 비교해서 스트라이크 판정 Integer로 반환*/
+    /*3. 컴퓨터와 입력숫자를 비교해서 스트라이크 판정 int로 반환*/
     public static void strike(List<Integer> user, List<Integer> computer) {
         int countStrike = 0;
         for (int i = 0; i < 3; i++) {
@@ -45,4 +45,8 @@ public class Application {
 //        return countStrike;
     }
 
+    /*4. 컴퓨터와 입력숫자를 비교해서 볼 판정 int로 반환*/
+    public static void nothingAndBall(List<Integer> user, List<Integer> computer) {
+
+    }
 }
