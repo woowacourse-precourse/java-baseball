@@ -7,15 +7,17 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Number> computerNumbers = new ArrayList<>();
+    private static Computer instance;
 
-    public Computer () {
-        pickNewRandomNumbers();
-        /*System.out.print("computer : ");
-        for (int i = 0; i < 3; i++) {
-            System.out.print(computerNumbers.get(i).getNumber());
+    private final List<Number> computerNumbers = new ArrayList<>();
+
+    private Computer () {}
+
+    public static Computer getComputer() {
+        if (instance == null) {
+            instance = new Computer();
         }
-        System.out.println();*/
+        return instance;
     }
 
     public void pickNewRandomNumbers() {

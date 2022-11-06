@@ -17,8 +17,9 @@ public class Game {
         return instance;
     }
 
-    public void startNewGame(Computer computer) {
-        this.computer = computer;
+    public void startNewGame() {
+        this.computer = Computer.getComputer();
+        this.computer.pickNewRandomNumbers();
         this.round = Round.getRound();
         playGame();
         Print.printGameEnd();

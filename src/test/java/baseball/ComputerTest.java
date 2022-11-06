@@ -8,7 +8,7 @@ public class ComputerTest {
 
     @Test
     void computerConstructorTest() throws Exception {
-        Computer computer = new Computer();
+        Computer computer = Computer.getComputer();
 
         for (int i = 0; i < 3; i++) {
             Number computerNumber = computer.findComputerNumber(i);
@@ -18,7 +18,7 @@ public class ComputerTest {
 
     @Test
     void computerDuplicateNumber() throws Exception {
-        Computer computer = new Computer();
+        Computer computer = Computer.getComputer();
 
         for (int i = 0; i < 10000; i++) {
             computer.pickNewRandomNumbers();

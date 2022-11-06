@@ -1,8 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -22,7 +19,7 @@ public class RoundTest {
         System.setOut(new PrintStream(out));
 
 
-        Computer computer = new Computer();
+        Computer computer = Computer.getComputer();
         Round round = Round.getRound();
 
         assertThatThrownBy(() -> round.startNewRound(computer))
