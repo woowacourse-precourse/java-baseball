@@ -37,18 +37,22 @@ public class Computer {
         return inputIntList;
     }
     public static boolean validateNumber(List<Integer> playerAnswer) {
-        //length check
+        checkLength(playerAnswer);
+        checkDuplicate(playerAnswer);
+        checkNumberOnly(playerAnswer);
+        return true;
+    }
+    private static void checkLength(List<Integer> playerAnswer) {
         if (playerAnswer.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("length error");
-
+            throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
         }
-
-        //same check
+    }
+    private static void checkDuplicate(List<Integer> playerAnswer) {
         if (playerAnswer.size() != playerAnswer.stream().distinct().count()) {
-            throw new IllegalArgumentException("duplicate error");
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
-
-        //number only check
+    }
+    private static void checkNumberOnly(List<Integer> playerAnswer) {
         String regExp = "^[1-9]+$";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 3; i++) {
@@ -57,9 +61,7 @@ public class Computer {
         }
         String s = sb.toString();
         if (!s.matches(regExp)) {
-            throw new IllegalArgumentException("not number error");
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
-
-        return true;
     }
 }

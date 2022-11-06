@@ -14,7 +14,7 @@ public class Game {
         do {
             countStrikeBall(computerAnswer, Computer.getPlayerAnswer());
         } while (!getResult());
-}
+    }
 
     public static void countStrikeBall(List<Integer> computerAnswer, List<Integer> playerAnswer) {
         strike = 0;
