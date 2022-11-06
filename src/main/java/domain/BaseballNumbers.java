@@ -58,4 +58,21 @@ public class BaseballNumbers {
             throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야합니다.");
         }
     }
+
+    public RoundResult compareTo(BaseballNumbers otherNumbers){
+        Integer ballCount = 0;
+        Integer strikeCount = 0;
+        for(int index = 0; index < BaseballNumbers.SIZE; index++){
+            BaseballNumber otherDigit = otherNumbers.numbers.get(index);
+            BaseballNumber myDigit = this.numbers.get(index);
+            if(myDigit.equals(otherDigit)){
+                strikeCount++;
+                continue;
+            }
+            if(this.numbers.contains(otherDigit)){
+                ballCount++;
+            }
+        }
+        return RoundResult.of(ballCount, strikeCount);
+    }
 }
