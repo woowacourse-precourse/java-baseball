@@ -1,7 +1,7 @@
 # 기능 목록
 
 ## 1. random 세자리 수 생성 기능
-`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 를 사용하여 랜덤값을 추출하고, 이를 `세번` 반복하며 `List`를 생성한다.
+`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 를 사용하여 랜덤값을 추출하고, 이를 `세번` 반복하며 `List`를 생성한다. `중복된 값`이 추가되지 않아야 하며, 중복 확인 기능을 메소드로 따로 `분리`한다.
 ## 2. 사용자 입력 기능
 `camp.nextstep.edu.missionutils.Console`의 `readLine()`를 사용하여 `추측할 숫자` / `게임종료 여부`를 입력받는다. 입력값이 잘못되었다면 `IllegalArgumentException`을 발생시킨다.
 ## 3. 사용자 입력값을 List로 만드는 기능
