@@ -19,7 +19,7 @@ public class Exceptions {
         if (str.length()!=1){
             throw new IllegalArgumentException();
         }
-        if (str.length()==1 && (str.charAt(0)!='1' && str.charAt(0)!='2')){
+        if (str.length()==1 && str.charAt(0)!='1' && str.charAt(0)!='2'){
             throw new IllegalArgumentException();
         }
     }

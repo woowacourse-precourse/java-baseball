@@ -29,14 +29,17 @@ public class GameService {
     public void getBallCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리는 안 맞지만 숫자는 맞으면 Ball
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if ((i != j) && (User.get(i) == Computer.get(j))) {
-                    Ballscore += 1;
-                }
+            if (Computer.contains(User.get(i)) && User.get(i)!=Computer.get(i)){
+                Ballscore += 1;
             }
         }
     }
 
+    public void getCount(int User, int Computer,int score){
+        if (User==Computer){
+            score+=1;
+        }
+    }
     public Integer finalScore(){
         this.Strikescore = Strikescore;
         this.Ballscore = Ballscore;
