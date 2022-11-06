@@ -48,6 +48,18 @@ public class Application {
         return true;
     }
 
+    static List<Integer> NumberToIntegerList(int number) {
+        List<Integer> digits = new ArrayList<>();
+        int divisor = 100;
+        for (int i = 0; i < 3; i++) {
+            int digit = number / divisor;
+            digits.add(digit);
+            number %= divisor;
+            divisor /= 10;
+        }
+        return digits;
+    }
+
     static void registerComputerNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
