@@ -13,6 +13,8 @@ public class Computer {
     final private static String NOT_TING_ANSWER = "낫싱";
     final private static int COUNT_ZERO = 0;
 
+    final private static int NUM_THREE_STRIKE = 3;
+
     public List<Integer> numThreeRanOfComputerList;
 
     private int cntStrike;
@@ -52,7 +54,7 @@ public class Computer {
     }
 
     public boolean isEndTheGame() {
-        if (this.cntStrike == 3) {
+        if (this.cntStrike == NUM_THREE_STRIKE) {
             return true;
         }
         return false;
