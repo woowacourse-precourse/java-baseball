@@ -52,6 +52,16 @@ public class Application {
                     System.out.print("낫싱");
                 }
             }
+
+            // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
+            if(strike == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                String continueOrExit = Console.readLine();
+                if(Integer.parseInt(continueOrExit) == 2)
+                    break;
+            }
         }
     }
 }
