@@ -74,7 +74,7 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     }
 
     @Override
-    public boolean isCorrect(BallStatus ballStatus) {
-        return ballStatus.getStrike() == NUMBERS_SIZE;
+    public boolean isNotCorrect(BallStatus ballStatus) {
+        return ballStatus.getStrike() != NUMBERS_SIZE;
     }
 }

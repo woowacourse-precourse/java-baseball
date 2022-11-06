@@ -10,5 +10,5 @@ public interface BaseBallGameEngine {
 
     Numbers generateAnswer();
 
-    boolean isCorrect(BallStatus ballStatus);
+    boolean isNotCorrect(BallStatus ballStatus);
 }
