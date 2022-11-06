@@ -19,11 +19,7 @@ public class GameView {
             gameController.callInputNumOfUser();
 
             // User의 숫자가 맞는지 확인
-            if (gameController.isRightNumOfUser2Computer()) {
-                System.out.println(gameController.getHintOfComputer());
-            } else {
-                System.out.println(gameController.getHintOfComputer());
-            }
+            giveHintGame(gameController);
 
             // 게임이 계속되는지 확인
             if (gameController.isEndGame()) {
@@ -36,6 +32,14 @@ public class GameView {
                 }
             }
             gameController.initCntStrikeBallOfComputer();
+        }
+    }
+
+    private void giveHintGame(GameController gameController) {
+        if (gameController.isRightNumOfUser2Computer()) {
+            System.out.println(gameController.getHintOfComputer());
+        } else {
+            System.out.println(gameController.getHintOfComputer());
         }
     }
 }
