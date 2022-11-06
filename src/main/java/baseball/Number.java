@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Number {
-
+    private static final int DIGITS = 3;
     public List<Integer> setRandomNumbers() {
         Set<Integer> NumberSet = new HashSet<>();
         while (NumberSet.size() < 3) {
@@ -24,7 +24,7 @@ public class Number {
     public List<Integer> getInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if(!isValidString(input)) {
+        if(isValidString(input)) {
             throw new IllegalArgumentException();
         }
         return stringToList(input);
@@ -36,20 +36,20 @@ public class Number {
 
     private boolean isValidString(String input) {
         if(isNotDuplicate(input) || isNumber(input) || isThreeDigits(input)) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private boolean isThreeDigits(String input) {
-        if(input.length() > 3) {
+        if(input.length() > DIGITS) {
             return false;
         }
         return true;
     }
 
     private boolean isNumber(String str) {
-        String pattern = "^[0-9]*$";
+        String pattern = "[0-9]";
         return Pattern.matches(pattern, str);
     }
 
