@@ -13,6 +13,7 @@
     * 중복된 숫자
     * 1~9까지가 아닌 숫자 (0이나 10 같은 수)
     * 3자리 미만이거나 이상의 숫자
+    * 1(단독)이나 2(단독)이 아닌 숫자
 * 함수명 : `checkUserHasException`
 * parameter : List (user)
 * return : void

@@ -25,12 +25,25 @@ public class Application {
     public void checkUserHasException(List<Integer> user) throws Exception{
         Exception userException = new IllegalArgumentException();
 
-        if(!(user.size() == 3)) { throw  userException; }
+        if((user.size() == 1) && (user.get(0) == 1) ) {}
+        else if((user.size() == 1) && (user.get(0) == 2) ) {}
+        else if(!(user.size() == 3)) { throw  userException; }
 
         for(Integer number : user) {
             if(number == 0) { throw userException; }
+        }
 
-            if(user.contains(number)) { throw userException; }
+
+        for(int userIndex = 1; userIndex < user.size(); userIndex++) {
+            int zeroNum = user.get(0);
+            int firstNum = user.get(1);
+
+            if(zeroNum == user.get(userIndex)) { throw userException; }
+
+            if(userIndex != 2) { continue; }
+
+            if(firstNum == user.get(userIndex)) { throw userException; }
+
         }
 
     }

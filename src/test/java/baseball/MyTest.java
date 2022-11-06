@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.spy;
 
@@ -22,10 +23,21 @@ public class MyTest extends NsTest {
 
     @Test
     void 사용자가_입력한_값이_예외인가() {
-        List<Integer> userList = Arrays.asList(2, 2, 3);
+        List<Integer> userListError = Arrays.asList(2, 2, 3);
+        List<Integer> userListNormal = Arrays.asList(1, 2, 3);
+        List<Integer> userListOne = List.of(1);
+        List<Integer> userListTwo = List.of(2);
 
-        assertThatThrownBy( () -> spy(Application.class).checkUserHasException(userList) )
+
+        assertThatThrownBy( () -> spy(Application.class).checkUserHasException(userListError) )
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatCode( () -> spy(Application.class).checkUserHasException(userListNormal) )
+                .doesNotThrowAnyException();
+        assertThatCode( () -> spy(Application.class).checkUserHasException(userListOne) )
+                .doesNotThrowAnyException();
+        assertThatCode( () -> spy(Application.class).checkUserHasException(userListTwo) )
+                .doesNotThrowAnyException();
+
     }
 
     @Test
@@ -48,6 +60,9 @@ public class MyTest extends NsTest {
                     .isEqualTo(true);
 
     }
+
+    @Test
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
