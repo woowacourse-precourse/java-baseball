@@ -3,7 +3,6 @@ package baseball.service;
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.sevice.NumberBaseballService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -50,4 +49,18 @@ public class NumberBaseballServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3글자의 숫자를 입력해야 합니다.");
     }
+
+    @DisplayName("사용자의 입력중 동일한 숫자가 있다면 IllegalArgumentException 예외 발생 테스트")
+    @Test
+    void inputUserAnswerFailCauseSameNumber() {
+        // given
+        String sameNumberInput = "112";
+
+        // when
+        // then
+        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(sameNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개의 숫자는 모두 달라야 합니다.");
+    }
+
 }
