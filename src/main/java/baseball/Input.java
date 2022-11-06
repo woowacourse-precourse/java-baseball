@@ -23,6 +23,9 @@ public class Input {
     public boolean is1to10(){
         return input.replace("^[1-9]","").length() == 3;
     }
+    public boolean isnumbersize(){
+        return input.length() == 3;
+    }
 
     public boolean isdifferentNumber(){ //123
         String sub = input.substring(0);
