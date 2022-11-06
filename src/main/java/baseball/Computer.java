@@ -30,4 +30,8 @@ public class Computer {
     public List<Integer> getRandomNumber() {
         return randomNumber;
     }
+
+    public int getFirstRandomNumber() {
+        return randomNumber.get(0);
+    }
 }
