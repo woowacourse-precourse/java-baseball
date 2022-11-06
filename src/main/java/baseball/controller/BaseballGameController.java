@@ -13,8 +13,11 @@ public class BaseballGameController {
 	private static final String END_NUMBER = "2";
 	private static final int CYCLE_END_NUMBER = 3;
 
-	public void run() {
+	public BaseballGameController() {
 		OutputView.printStartMessage();
+	}
+
+	public void run() {
 		do {
 			runOneCycle();
 		} while (choiceRestart());
