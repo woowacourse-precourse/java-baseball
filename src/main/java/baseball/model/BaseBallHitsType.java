@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.BallNumbers;
-
 import java.util.*;
 
 public enum BaseBallHitsType {

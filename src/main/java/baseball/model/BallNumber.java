@@ -1,16 +1,17 @@
-package baseball;
+package baseball.model;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class BallNumber  {
+public class BallNumber {
     private static final int MAX = 9;
+    private static final int MIN = 1;
     private static final Map<Character, BallNumber> BALL_NUMBER_CHARACTER_MAP = new HashMap<>();
 
     static {
-        IntStream.range(0, MAX)
+        IntStream.range(MIN, MAX)
                 .mapToObj(String::valueOf)
                 .collect(Collectors.toList())
                 .stream()

@@ -1,7 +1,7 @@
-package baseball;
+package baseball.model;
 
-import java.util.Collections;
-import java.util.Comparator;
+import baseball.model.BallNumber;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.BallNumbers;
 import baseball.model.BaseBallHitsType;
 
 import java.util.*;
