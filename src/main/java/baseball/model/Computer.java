@@ -2,9 +2,7 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Computer {
     public static Balls generateBalls() {
@@ -23,14 +21,14 @@ public class Computer {
         return new Balls(balls);
     }
 
-    private static List<Integer> getUniqueNumbers() {
-        List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < Balls.NUMBER_OF_BALLS) {
+    private static Set<Integer> getUniqueNumbers() {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        while (uniqueNumbers.size() != Balls.NUMBER_OF_BALLS) {
             int randomNumber = Randoms.pickNumberInRange(Ball.NUMBER_LOWER_BOUNDS, Ball.NUMBER_UPPER_BOUNDS);
-            if (!computerNum.contains(randomNumber)) {
-                computerNum.add(randomNumber);
-            }
+            uniqueNumbers.add(randomNumber);
         }
-        return computerNum;
+
+        return uniqueNumbers;
     }
 }
