@@ -7,6 +7,7 @@ import baseball.service.UserBallService;
 import baseball.util.ErrorConst;
 import baseball.util.InputValidUtil;
 import baseball.util.ViewConst;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameCenterController {
@@ -15,13 +16,15 @@ public class GameCenterController {
 	private final UserBallService userBallService;
 	private final GameEndController gameEndController;
 	private final InputValidUtil inputValidUtil;
+	private final OutputView outputView;
 
 	public GameCenterController(GameStartController gameStartController, UserBallService userBallService,
-		GameEndController gameEndController, InputValidUtil inputValidUtil) {
+		GameEndController gameEndController, InputValidUtil inputValidUtil, OutputView outputView) {
 		this.gameStartController = gameStartController;
 		this.userBallService = userBallService;
 		this.gameEndController = gameEndController;
 		this.inputValidUtil = inputValidUtil;
+		this.outputView = outputView;
 	}
 
 	public void startApplication() {
@@ -38,6 +41,7 @@ public class GameCenterController {
 			userInputNum = Console.readLine();
 			inputValidUtil.checkInputValid(userInputNum);
 			userBall = userBallService.makeUserBall(userInputNum, answerNumber);
+			outputView.printUserBallStatus(userBall);
 		} while (!gameEndController.isAnswer(userBall));
 	}
 

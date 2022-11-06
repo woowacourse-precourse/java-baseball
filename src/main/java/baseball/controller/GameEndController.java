@@ -16,7 +16,6 @@ public class GameEndController {
 	}
 
 	public boolean isAnswer(UserBall userBall) {
-		printUserBallStatus(userBall);
 		if (is3Strike(userBall)) {
 			printSuccessResult();
 			return true;
@@ -31,10 +30,6 @@ public class GameEndController {
 
 	private boolean is3Strike(UserBall userBall) {
 		return userBall.getStatus().equals(ViewConst.HAS_3_STRIKE);
-	}
-
-	private void printUserBallStatus(UserBall userBall) {
-		outputView.printUserBallStatus(userBall);
 	}
 
 }

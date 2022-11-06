@@ -20,7 +20,8 @@ public class GameConfig {
 		UserBallService userBallService = new UserBallService();
 		GameEndController gameEndController = new GameEndController(outputView, inputView);
 
-		return new GameCenterController(gameStartController, userBallService, gameEndController, inputValidUtil);
+		return new GameCenterController(gameStartController, userBallService, gameEndController, inputValidUtil,
+			outputView);
 	}
 
 }
