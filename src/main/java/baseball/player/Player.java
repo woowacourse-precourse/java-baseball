@@ -8,7 +8,7 @@ public class Player {
         this.number = number;
     }
 
-    public int getNumber() {
+    protected int getNumber() {
         return number;
     }
 }
