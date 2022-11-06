@@ -9,9 +9,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static baseball.Application.*;
 import static baseball.Balls.*;
-import static baseball.BallsNumbers.*;
 
 import java.util.ArrayList;
 

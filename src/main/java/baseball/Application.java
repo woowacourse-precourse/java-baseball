@@ -1,33 +1,34 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import camp.nextstep.edu.missionutils.Console;
-import baseball.Balls.*;
-import baseball.BallsNumbers.*;
-import baseball.InputView.*;
-import baseball.ResultView.*;
-
-
 public class Application {
-	private static void baseBallGame() {
+	public static void init() {
+		BallsNumbers.userInputNumbers = null;
+		Balls.strike = 0;
+		Balls.ball = 0;
+	}
+	
+	private static boolean baseBallGame() {
+		boolean restartGame = false;
+		init();
 		while(!Balls.isThreeStrike()) {
-			System.out.print("숫자를 입력해 주세요 : ");
-			int inputNum = Integer.parseInt(Console.readLine());
+			init();
+			int inputNum = InputView.getUserInput();
 			BallsNumbers.userInputNumbers = 
 					BallsNumbers.makeUserInputNumbers(inputNum);
 			InputView.checkIllegalInput(BallsNumbers.userInputNumbers);
 			Balls.compare();
 			ResultView.printOutResult(Balls.strike, Balls.ball);
 		}
+		restartGame = InputView.restartOrExit();
+		return restartGame;
 	}
 	
 	public static void main(String[] args) {
-    	while(true) {
+		boolean startGame = true;
+    	while(startGame) {
     		System.out.println("숫자 야구 게임을 시작합니다.");
     		BallsNumbers.randomNumbers = BallsNumbers.makeRandomNumbers();
-			baseBallGame();
+			startGame = baseBallGame();
     	}
     }
 }
