@@ -17,7 +17,7 @@ public class BaseballGame {
         computer = new Computer();
     }
 
-    private void startBaseballGame() {
+    public void startBaseballGame() {
         computer.createRandomNumbers();
         gameView.startBaseballGame();
         while(!isEnd) {
