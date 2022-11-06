@@ -3,9 +3,8 @@ package baseball.system.util;
 import baseball.console.Interactive;
 import baseball.message.Message;
 import baseball.validation.condition.Condition;
-import baseball.validation.condition.systeminput.IsOperationCodeCond;
+import baseball.validation.condition.IsOperationCodeCond;
 import baseball.validation.Validator;
-import baseball.game.message.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
