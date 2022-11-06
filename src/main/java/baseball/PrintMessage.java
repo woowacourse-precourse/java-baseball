@@ -21,15 +21,15 @@ public class PrintMessage {
     }
 
     public static void onlyBallCount() {
-        System.out.println(Score.getBall() + BALL);
+        System.out.println(Score.getTotal().get(BALL) + BALL);
     }
 
     public static void onlyStrikeCount() {
-        System.out.println(Score.getStrike() + STRIKE);
+        System.out.println(Score.getTotal().get(STRIKE) + STRIKE);
     }
 
     public static void ballAndStrikeCount() {
-        System.out.println(Score.getBall() + BALL + " " + Score.getStrike() + STRIKE);
+        System.out.println(Score.getBall() + BALL + " " + Score.getTotal().get(STRIKE) + STRIKE);
     }
 
     public static void notThing() {

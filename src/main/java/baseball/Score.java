@@ -1,41 +1,60 @@
 package baseball;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static baseball.Constant.*;
 
 public class Score {
-    private List<Integer> userNumbers;
-    private List<Integer> computerNumbers;
-    public int strike = 0;
-    public int ball = 0;
-
-    public void setComputerAndUser(List<Integer> computer, List<Integer> user) {
-        this.computerNumbers = computer;
-        this.userNumbers = user;
+    private static List<Integer> userNumbers;
+    private static List<Integer> computerNumbers;
+    public void userNumbers(List<Integer> users) {
+        userNumbers = users;
     }
 
-    public void getStrike() {
-        for (int i=0; i<NUMBERS_LENGTH; i++) {
+    public void computerNumbers(List<Integer> computers) {
+        computerNumbers = computers;
+    }
+
+    public static HashMap<String, Integer> getTotal() {
+        HashMap<String, Integer> totalScore = new HashMap<>();
+        totalScore.put(STRIKE, getStrike());
+        totalScore.put(BALL, getBall());
+        return totalScore;
+    }
+
+    private static Integer getStrike() {
+        int strike = 0;
+        for (int i = 0; i < NUMBERS_LENGTH; i++) {
             if (isStrike(computerNumbers.get(i), userNumbers.get(i))) {
                 strike += 1;
             }
         }
+        return strike;
     }
 
-    public void getBall() {
-        for (int i=0; i<NUMBERS_LENGTH; i++) {
-            if (isBall(computerNumbers, userNumbers.get(i))) {
+    private static void strikeOut() {
+        UserInput userInput = new UserInput();
+        PrintMessage.gameEnd();
+        userInput.chooseReStartOrQuit();
+    }
+
+    public static Integer getBall() {
+        int ball = 0;
+        for (int i = 0; i < NUMBERS_LENGTH; i++) {
+            if (isBall(computerNumbers, userNumbers.get(i))
+                        && !isStrike(computerNumbers.get(i), userNumbers.get(i))) {
                 ball += 1;
             }
         }
+        return ball;
     }
 
-    public boolean isStrike(Integer computerNumber, Integer userNumber) {
+    private static boolean isStrike(Integer computerNumber, Integer userNumber) {
         return computerNumber.equals(userNumber);
     }
 
-    public boolean isBall(List<Integer> computerNumbers, Integer userNumber) {
+    private static boolean isBall(List<Integer> computerNumbers, Integer userNumber) {
         return computerNumbers.contains(userNumber);
     }
 }
