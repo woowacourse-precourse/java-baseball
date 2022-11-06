@@ -23,8 +23,20 @@ public class GameHost extends BaseballNumber {
         return checkRangeNum && checkDuplicateNum && checkNumberLength;
     }
 
-    public String getHint(List<Integer> playerNumber) {
-        return "";
+    public String getHint() {
+        StringJoiner hintToPlayer = new StringJoiner(" ");
+        int ballValue = this.hint.get(BALL);
+        if(ballValue > 0) {
+            hintToPlayer.add(ballValue + BALL);
+        }
+
+        int strikeValue = this.hint.get(STRIKE);
+        if(strikeValue > 0) {
+            hintToPlayer.add(strikeValue + STRIKE);
+            return hintToPlayer.toString();
+        }
+
+        return NOTHING;
     }
 
     public void setHint(List<Integer> playerNumber) {
