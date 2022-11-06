@@ -9,15 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         Operator op = new Operator();
-        try {
-            while (op.getRestart()) {
-                op.playGame();
-            }
-        }
-        catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        while (op.getRestart()) {
+            op.playGame();
         }
     }
 }
@@ -35,6 +30,7 @@ class Computer {
             }
         }
         number = numberList;
+        System.out.println(number);
     }
 
     public List<Integer> getNumber() {
@@ -42,7 +38,7 @@ class Computer {
     }
 
     public void showInputStatement() {
-        System.out.println("서로 다른 숫자 3자리 수를 입력하세요");
+        System.out.println("숫자를 입력해주세요 : ");
     }
 }
 
@@ -55,14 +51,14 @@ class Player {
         try {
             num = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(숫자가 아님)");
         }
         while (num > 0) {
             numberList.add(num % 10);
             num /= 10;
         }
         if (!Operator.isCorrectNumber(numberList)) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(서로 다른 3자리 숫자가 아님)");
         }
         Collections.reverse(numberList);
         number = numberList;
@@ -135,6 +131,9 @@ class Operator {
         }
         HashMap<Integer, Integer> mapNumber = new HashMap<>();
         for (Integer num : numberList) {
+            if (num == 0) {
+                return false;
+            }
             if (mapNumber.containsKey(num)) {
                 return false;
             } else {
@@ -151,7 +150,7 @@ class Operator {
         } else if (inputString.equals("2")) {
             restart = false;
         } else {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(재시작/종료 숫자가 아님)");
         }
     }
 
@@ -171,6 +170,6 @@ class Operator {
     }
 
     public void showRestartStatement() {
-        System.out.println("재시작 하시겠습니까?('1'입력시 재시작/'2'입력시 게임종료): ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
