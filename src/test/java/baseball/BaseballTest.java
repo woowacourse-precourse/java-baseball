@@ -20,9 +20,9 @@ import static baseball.Application.*;
 
 class BaseballTest {
     @DisplayName("안내문구 출력하기")
-    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
-    @ValueSource(strings = {"456", "123"})
-    void getGuideMessage_현재_userNumber_상태에_따른_메시지_반환(String input) {
+    @Test
+    void getGuideMessage_현재_userStatus_상태에_따른_메시지_반환() {
+        String input = "finished";
         String result = getGuideMessage(input);
         assertThat(result).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

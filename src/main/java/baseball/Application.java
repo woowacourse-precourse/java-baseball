@@ -10,16 +10,15 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(getGuideMessage(null));
         while (true) {
-            String userNumber = getUserNumber();
-            checkIllegalArgumentException(userNumber);
             String computerNumber = generateComputerNumber();
-
+            startGame(computerNumber);
+            System.out.println(getGuideMessage("finished"));
         }
 
     }
 
-    public static String getGuideMessage(String userNumber) {
-        if (userNumber == null) {
+    public static String getGuideMessage(String userStatus) {
+        if (userStatus == null) {
             return "숫자 야구 게임을 시작합니다.";
         } else {
             return "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
@@ -77,6 +76,7 @@ public class Application {
 
     public static String convertArrayListToString(List<Integer> numberList) {
         StringBuilder sb = new StringBuilder();
+
         for (int number : numberList) {
             sb.append(number);
         }
@@ -85,8 +85,10 @@ public class Application {
 
     public static String generateComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
+
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
@@ -96,6 +98,7 @@ public class Application {
 
     public static List<Character> convertStringToArrayList(String number) {
         List<Character> numberList = new ArrayList<Character>();
+
         for (int index = 0; index < number.length(); index++) {
             numberList.add(number.charAt(index));
         }
@@ -105,8 +108,10 @@ public class Application {
     public static int getBallCount(String computerNumber, String userNumber) {
         List<Character> appeared = convertStringToArrayList(computerNumber);
         int ball = 0;
+
         for (int index = 0; index < computerNumber.length(); index++) {
             char userNum = userNumber.charAt(index);
+
             if ((computerNumber.charAt(index) != userNum) && (appeared.contains(userNum))) {
                 // 위치는 다르지만 같은 숫자가 양쪽 모두 존재하는 경우 ball
                 ball += 1;
@@ -117,6 +122,7 @@ public class Application {
 
     public static int getStrikeCount(String computerNumber, String userNumber) {
         int strike = 0;
+
         for (int index = 0; index < computerNumber.length(); index++) {
             if (computerNumber.charAt(index) == userNumber.charAt(index)) {
                 strike += 1;
@@ -126,13 +132,15 @@ public class Application {
     }
 
     public static String getBallStrikeCountMessage(int ball, int strike) {
-        String message = "";
         if (ball == 0 && strike == 0) {
             return "낫싱";
         }
+
+        String message = "";
         if (ball != 0) {
             message = message + String.valueOf(ball) + "볼";
         }
+
         if (strike != 0) {
             if (message.length() == 0) {
                 message = message + String.valueOf(strike) + "스트라이크";
@@ -147,4 +155,20 @@ public class Application {
         return ballStrikeCountMessage.equals("3스트라이크");
     }
 
+    public static void startGame(String computerNumber) {
+        while (true) {
+            String userNumber = getUserNumber();
+            checkIllegalArgumentException(userNumber);
+
+            int ball = getBallCount(computerNumber, userNumber);
+            int strike = getStrikeCount(computerNumber, userNumber);
+
+            String resultMessage = getBallStrikeCountMessage(ball, strike);
+            System.out.println(resultMessage);
+
+            if (checkEndGame(resultMessage)) {
+                break;
+            }
+        }
+    }
 }
