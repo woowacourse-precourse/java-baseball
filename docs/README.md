@@ -12,10 +12,10 @@
 
 * ### **enums** 
 
-|     파일명      |                  기능                  | 설명                                                              |
-|:------------:|:------------------------------------:|:----------------------------------------------------------------|
-| ErrorMessage |   Exception시 error message 상수관리 기능   | `message` 상수값 호출                                                |
-|   Message    | Console에 나오는 message, status 상수관리 기능 | `message` 상수값 호출 <br> `status` message와 같은 기능이지만 어감상 메서드 이름이 다름 |
+|       파일명       |                  기능                  | 설명                                                                                                               |
+|:---------------:|:------------------------------------:|:-----------------------------------------------------------------------------------------------------------------|
+| InputValidation |          validation과 관련된 상수          | `message` error message값 호출 <br/> `expression` 입력값에 대한 validate 후 boolean 반환 <br/> `group` validation group List |
+|     Message     | Console에 나오는 message, status 상수관리 기능 | `message` 상수값 호출 <br> `status` message와 같은 기능이지만 어감상 메서드 이름이 다름                                                  |
 
 * ### **service**
 
@@ -31,12 +31,6 @@
 |:----------:|:---------------------------------:|:-------------------------------------------------------------------------------------------|
 | ConsoleLog | 게임 중 자주 사용되는 Console과 관련된 메서드의 모음 | `print` System.print <br> `println` System.println `input` Console.readLine()입력받고 String반환 |
 | MakeRandom |       컴퓨터의 랜덤 숫자를 만들어주는 기능        | `numbers` 랜덤한 세자리 숫자를 List로 반환                                                             |
-
-* ### **validation**
-
-|       파일명       |               기능                | 설명                                                                   |
-|:---------------:|:-------------------------------:|:---------------------------------------------------------------------|
-| InputValidation | 사용자의 입력과 관련된 validation 메서드의 모음 | `isThreeLength` <br> `isNumber` <br> `isDuplicate` <br> `isOneOrTwo` |
 
 
 <br/>
@@ -90,9 +84,4 @@
 <br/>
 <hr/>
 
-## ❗️ 테스트 케이스 목록
-
-<hr/>
-
-- 테스트 코드 작성 방법 숙지 후 작성할 것 
 
