@@ -1,7 +1,7 @@
 package baseball;
 
 import static baseball.utils.Constants.BALL;
-import static baseball.utils.Constants.NOTING;
+import static baseball.utils.Constants.NOTHING;
 import static baseball.utils.Constants.SPACE;
 import static baseball.utils.Constants.STRIKE;
 
@@ -48,7 +48,7 @@ public class BallAndStrike {
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
-            return NOTING;
+            return NOTHING;
         }
         if (ball >= 1 && strike >= 1) {
             return ball + BALL + SPACE + strike + STRIKE;
