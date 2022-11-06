@@ -10,7 +10,6 @@ import java.util.Set;
 import static java.lang.Integer.parseInt;
 
 public class Player {
-    private static final String NUMBER_SET_STRING = "숫자를 입력해주세요 : ";
     private static final int NUMBER_LENGTH = 3;
     private static final int NUMBER_RANGE_START = 1;
     private static final int NUMBER_RANGE_END = 9;
@@ -30,17 +29,11 @@ public class Player {
         }
     }
 
-    public void setNumber() {
-        System.out.print(NUMBER_SET_STRING);
+    public void inputNumbers() {
         ArrayList<Integer> listOfNumbers = new ArrayList<Integer>(NUMBER_LENGTH);
         String stringOfNumbers = Console.readLine();
-        numbers.addAll(stringToList(stringOfNumbers));
-        try {
-            checkNumbers(numbers);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        numbers = stringToList(stringOfNumbers);
+        checkNumbers(numbers);
     }
 
     private ArrayList<Integer> stringToList(String string) {
