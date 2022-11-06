@@ -2,6 +2,7 @@ package baseball.dto;
 
 import baseball.domain.Referee;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ScoresDTO {
@@ -12,6 +13,6 @@ public class ScoresDTO {
     }
     
     public List<Integer> getScores() {
-        return scores;
+        return Collections.unmodifiableList(scores);
     }
 }
