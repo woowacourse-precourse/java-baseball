@@ -1,9 +1,8 @@
-package baseball.domain;
+package baseball.domain.Validation;
 
 import static baseball.StringEnum.InputExceptionCode.*;
 import static org.assertj.core.api.Assertions.*;
 
-import baseball.domain.Validation.InputValidation;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

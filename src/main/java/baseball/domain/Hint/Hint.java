@@ -1,6 +1,6 @@
 package baseball.domain.Hint;
 
-import baseball.domain.Validation.Ball;
+import baseball.domain.BaseballGame.Ball;
 import java.util.List;
 
 public class Hint {

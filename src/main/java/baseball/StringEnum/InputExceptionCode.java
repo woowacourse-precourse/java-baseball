@@ -1,7 +1,7 @@
 package baseball.StringEnum;
 
-import baseball.domain.Validation.Ball;
-import baseball.domain.Validation.Restart;
+import baseball.domain.BaseballGame.Ball;
+import baseball.domain.BaseballGame.Restart;
 
 public enum InputExceptionCode {
     NOT_NUMBER_INCLUDE {

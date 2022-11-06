@@ -1,4 +1,4 @@
-package baseball.domain.Validation;
+package baseball.domain.BaseballGame;
 
 import java.util.Map;
 import java.util.stream.Collectors;

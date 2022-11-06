@@ -1,4 +1,4 @@
-package baseball.domain.Validation;
+package baseball.domain.BaseballGame;
 
 public enum Ball {
     MIN(1),
