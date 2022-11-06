@@ -9,13 +9,34 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
+        List<Integer> restart = List.of(1);
+        List<Integer> finish = List.of(2);
+
         List<Integer> answer = createAnswer();
+        boolean gameFinished = false;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            boolean gameEnded = gamePlay(answer);
-            if (gameEnded && !gameReplayOptionInput()) {
+            if (gameFinished) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            } else {
+                System.out.print("숫자를 입력해주세요 : ");
+            }
+
+            List<Integer> userInput = userInput();
+
+            if (userInput.equals(restart)){
+                answer = createAnswer();
+                gameFinished = false;
+                continue;
+            }
+
+            if (userInput.equals(finish)){
                 break;
             }
+
+            gameFinished = checkResult(answer, userInput);
         }
     }
 
