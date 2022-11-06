@@ -25,4 +25,20 @@ public class Game {
 		System.out.println(MESSAGE_RETRY);
 		retryOrNot();
 	}
+
+	public void compare() {
+		user.scanInputWhenPlaying();
+
+		for(int index = 0; index < 3; index++) {
+			if(computer.getComputersList().contains(user.validatedUserInput.get(index))) {
+				ball++;
+			}
+			if(computer.getComputersList().get(index).equals(user.validatedUserInput.get(index))) {
+				ball--;
+				strike++;
+			}
+		}
+
+		printMessages();
+	}
 }
