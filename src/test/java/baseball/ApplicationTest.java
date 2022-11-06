@@ -36,6 +36,12 @@ class ApplicationTest extends NsTest {
         assertThat(testGame.computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
     }
     @Test
+    void 게임시작하면_설정되는_수가_서로_다른지_확인() {
+        // 만약 중복되는 수가 있다면 hashSet으로 변환했을 때 길이가 줄어든다
+        HashSet<Integer> computerNumbers = new HashSet<>(testGame.computerNumbers);
+        assertThat(computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
+    }
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
