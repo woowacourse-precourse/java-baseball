@@ -6,7 +6,6 @@ import java.util.List;
 
 public class GameSet {
     private List<Integer> computerAnswer;
-    private List<Integer> userAnswer;
     public static int strikeCount;
     public static int ballCount;
 
@@ -18,7 +17,7 @@ public class GameSet {
     public void playBaseballGame(){
         PrintMessage.inputMessage();
         System.out.println(computerAnswer);
-        userAnswer = CreateUserNumber.userAnswer(Console.readLine());
+        List<Integer> userAnswer = CreateUserNumber.userAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
         strikeCount = GetGameResult.countStrike(userAnswer, computerAnswer);
         ballCount = GetGameResult.countBall(userAnswer, computerAnswer);
