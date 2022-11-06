@@ -7,6 +7,7 @@ import static baseball.Constant.*;
 public class Decision {
 
     public static boolean out = false;
+    public static boolean playing = true;
 
     public static void call() {
         HashMap<String, Integer> result = Score.total();
@@ -31,11 +32,20 @@ public class Decision {
         PrintMessage.notThing();
     }
 
-    public static void reset() {
-        out = false;
-    }
 
     public static void out() {
+        PrintMessage.gameEnd();
         out = true;
+    }
+
+    public static void reStart() {
+        playing = true;
+        out = false;
+        PickNumbers pickNumbers = new PickNumbers();
+        pickNumbers.pickNumbers();
+    }
+
+    public static void quitGame() {
+        playing = false;
     }
 }

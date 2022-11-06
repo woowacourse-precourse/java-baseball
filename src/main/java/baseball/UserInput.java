@@ -12,9 +12,18 @@ public class UserInput {
     private List<Integer> numbers;
     private String reStartOrQuitInput;
 
-    public void putNumbers(List<Integer> numbers) {
+    private void putNumbers(List<Integer> numbers) {
         Score score = new Score();
         score.userNumbers(numbers);
+    }
+
+    private void putChoose(String input) {
+        if (input.equals(RE_START_INPUT)) {
+            Decision.reStart();
+        }
+        if (input.equals(QUIT_GAME_INPUT)) {
+            Decision.quitGame();
+        }
     }
 
     public void inputNumbers() { // 추후에 이름 변경 필요 numbers
@@ -25,12 +34,11 @@ public class UserInput {
         putNumbers(numbers);
     }
 
-    public String chooseReStartOrQuit() {
+    public void chooseReStartOrQuit() {
         PrintMessage.chooseRestartOrQuitGame();
         this.reStartOrQuitInput = Console.readLine();
         isValidRestartOrQuitGame();
-
-        return this.reStartOrQuitInput;
+        putChoose(this.reStartOrQuitInput);
     }
 
     private void convertNumbers() {

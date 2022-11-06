@@ -23,7 +23,7 @@ public class Score {
         totalScore.put(BALL, getBall());
         return totalScore;
     }
-    
+
     private static Integer getStrike() {
         int strike = 0;
         for (int i = 0; i < NUMBERS_LENGTH; i++) {
@@ -32,12 +32,6 @@ public class Score {
             }
         }
         return strike;
-    }
-
-    private static void strikeOut() {
-        UserInput userInput = new UserInput();
-        PrintMessage.gameEnd();
-        userInput.chooseReStartOrQuit();
     }
 
     public static Integer getBall() {
