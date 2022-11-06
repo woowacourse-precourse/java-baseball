@@ -124,9 +124,7 @@ public class Application {
 		for(int i = 0; i < 3; i++) {
 			if(batterNumberList.get(i) != pitcherNumberList.get(i)) {
 
-				if(batterNumberList.contains(pitcherNumberList.get(i))) {
-					countBall++;
-				}
+				countBall += ballCheck(batterNumberList, pitcherNumberList.get(i));
 
 			}
 
@@ -153,6 +151,16 @@ public class Application {
 			result = "낫싱";
 		}
 
+		return result;
+	}
+	
+	private static int ballCheck(List<Integer> batterNumberList, int pitcherNumber) {
+		int result = 0;
+		
+		if(batterNumberList.contains(pitcherNumber)) {
+			result++;
+		}
+		
 		return result;
 	}
 }
