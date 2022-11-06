@@ -7,8 +7,7 @@ import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -34,8 +33,12 @@ class ApplicationTest extends NsTest {
     void 랜덤숫자_테스트(){
         for (int i = 0; i < 100; i++) {
             String input = Integer.toString(Application.createRandomNum());
+            System.out.println(input);
             String[] answer = input.split("");
             assertThat(answer.length).isEqualTo(3);
+            assertThat(answer[0]).isNotEqualTo(answer[1]);
+            assertThat(answer[1]).isNotEqualTo(answer[2]);
+            assertThat(answer[2]).isNotEqualTo(answer[0]);
             assertThat(answer).doesNotContain("0");
         }
     }
