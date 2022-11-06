@@ -1,17 +1,16 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.*;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -34,8 +33,14 @@ class ApplicationTest extends NsTest {
         final List<Integer> computerRandomNumber = T.generateRandomNumber(3);
 
         //then
-        assertThat(computerRandomNumber.size()).as("컴퓨터 랜덤 숫자 리스트 길이 검사").isEqualTo(3);
-        assertThat(computerRandomNumber.size()).as("컴퓨터 랜덤 숫자 리스트 중복 요소 검사").isEqualTo(new HashSet<>(computerRandomNumber).size());
+        assertThat(computerRandomNumber.size())
+                .as("컴퓨터 랜덤 숫자 리스트 길이 검사")
+                .isEqualTo(3);
+
+        assertThat(computerRandomNumber.size())
+                .as("컴퓨터 랜덤 숫자 리스트 중복 요소 검사")
+                .isEqualTo(new HashSet<>(computerRandomNumber).size());
+
         for (int digit : computerRandomNumber) {
             assertThat(digit).as("컴퓨터 랜덤 숫자 리스트 요소 범위 검사").isBetween(1, 9);
         }
@@ -203,10 +208,22 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertThat(thrown1).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown2).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown3).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown4).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown1)
+                .as("validateStringOneOrTwo 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown2)
+                .as("validateStringOneOrTwo 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown3)
+                .as("validateStringOneOrTwo 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown4)
+                .as("validateStringOneOrTwo 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
@@ -257,11 +274,26 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertThat(thrown1).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown2).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown3).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown4).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(thrown5).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown1)
+                .as("validateStringThreeDifferentDigits 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown2)
+                .as("validateStringThreeDifferentDigits 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown3)
+                .as("validateStringThreeDifferentDigits 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown4)
+                .as("validateStringThreeDifferentDigits 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(thrown5)
+                .as("validateStringThreeDifferentDigits 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
@@ -305,8 +337,14 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertThat(result1).as("validateStringLength 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(result2).as("validateStringLength 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result1)
+                .as("validateStringLength 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2)
+                .as("validateStringLength 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
@@ -345,8 +383,14 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertThat(result1).as("validateStringNaturalNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(result2).as("validateStringNaturalNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result1)
+                .as("validateStringNaturalNumbers 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2)
+                .as("validateStringNaturalNumbers 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
     @Test
@@ -385,8 +429,14 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertThat(result1).as("validateAllDifferentCharacters 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
-        assertThat(result2).as("validateAllDifferentCharacters 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result1)
+                .as("validateAllDifferentCharacters 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+        assertThat(result2)
+                .as("validateAllDifferentCharacters 예외처리 테스트")
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
 

@@ -1,8 +1,8 @@
 package baseball;
 
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import java.util.List;
 
 public class Baseball {
     public void run() {
