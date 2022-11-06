@@ -43,7 +43,7 @@ public class Baseball {
         inputValidator.validatePlayerNumber(playerNumber);
         player.setNumbers(playerNumber);
 
-        this.playerNumbers = player.getPlayerNumbers();
+        this.playerNumbers = player.getNumbers();
     }
 
     private void printHintMessage() {

@@ -1,10 +1,11 @@
 package baseball;
 
+import baseball.Config;
+import baseball.Message;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
@@ -16,7 +17,7 @@ public class Player {
         playerNumbers = new ArrayList<>();
     }
 
-    public List<Integer> getPlayerNumbers() {
+    public List<Integer> getNumbers() {
         return playerNumbers;
     }
 
