@@ -18,4 +18,8 @@ public class GameController {
         randomNumber = new GameNumber();
         receiver = new Receiver();
     }
+    public static boolean checkRestart(String restartNumber){
+        return restartNumber.equals("1") || restartNumber.equals("2");
+    }
+
 }
