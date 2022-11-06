@@ -73,16 +73,6 @@ public class Application {
         }
         return (count == 3);
     }
-
-    public static boolean isNumberAndLocationEquals(int[] RandomNumber, int[] inputNumber){
-        for(int i = 0; i <RandomNumber.length; i++){
-            if(RandomNumber[i] ==inputNumber[i]){
-                Strike++;
-            }
-        }
-        return (Strike>0);
-    }
-
     public static int[] makeRandomizedArray(){
         int[] RandomArray= new int[3];
         for(int i = 0; i <3; i++){
@@ -91,9 +81,34 @@ public class Application {
         return RandomArray;
     }
 
+    public static boolean isNumberAndLocationEqualsAddStrike(int[] RandomNumber, int[] inputNumber){
+
+        for(int i = 0; i <RandomNumber.length; i++){
+            if(RandomNumber[i] ==inputNumber[i]){
+                Strike++;
+            }
+        }
+
+        return (Strike>0);
+    }
 
 
+    public static boolean isNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber){
 
+        for(int i = 0; i < RandomNumber.length; i++){
+            for(int j = 0; j < RandomNumber.length; j++){
+                AddBallIfEquals(RandomNumber[i], inputNumber[j]);
+            }
+        }
+
+        return (Ball>0);
+    }
+
+    public static void AddBallIfEquals(int RandomNumber, int InputNumber){
+        if(RandomNumber == InputNumber){
+            Ball++;
+        }
+    }
 
 }
 
