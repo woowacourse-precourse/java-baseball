@@ -25,7 +25,7 @@ public class Player {
 
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
-        validateDuplicateNumber(numbers);
+        validateDuplicate(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -34,7 +34,7 @@ public class Player {
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> checkDuplicateNumbers = new HashSet<>(numbers);
         if (checkDuplicateNumbers.size() != GAME_ROUND) {
             throw new IllegalArgumentException(NUMBER_DUPLICATE_EX_MESSAGE);
