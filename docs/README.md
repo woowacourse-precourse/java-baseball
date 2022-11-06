@@ -81,6 +81,7 @@
 - [ ] availableUserNumberIsChecking이 false이면 inputAvailableUserNumberService함수를 실행 후, 출력값을 userNumber에 저장
 
 ## (void)inputUserNumberService()
+- [ ] inputAvailableUserNumberService함수에서 출력값을 저장하는 stringBuildUserNumber을 ""으로 초기화
 - [ ] 사용자가의 수가 컴퓨터의 수와 동일한지 비교후 결과값을 저장하는 checkedAnswer을 false로 초기화
 - [ ] inputAvailableUserNumberService함수를 실행
 - [ ] StringToList함수를 실행
