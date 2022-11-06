@@ -11,14 +11,10 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class UserNumberControllerTest {
-    @AfterEach
-    void initailize() {
-        UserNumberService.initialize();
-    }
+
     @Test
     void 유저_숫자_갯수_검증() {
         String input = "123";

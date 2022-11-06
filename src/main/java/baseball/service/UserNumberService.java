@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumberService {
-    private static List<Integer> userNumbers = new ArrayList<>();
 
     public static List<Integer> generate() {
-        initialize();
+        List<Integer> userNumbers = new ArrayList<>();
         String inputNumber = readLine();
 
         Validation.validate(inputNumber);
@@ -22,9 +21,5 @@ public class UserNumberService {
         }
 
         return userNumbers;
-    }
-
-    public static void initialize() {
-        userNumbers.clear();
     }
 }
