@@ -1,9 +1,9 @@
 package baseball;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -91,5 +91,21 @@ public class ApplicationMethodsTest {
 
         assertEquals(result, "1볼 1스트라이크");
         System.setOut(System.out);
+    }
+
+    @Test
+    void playGame() {
+        String randomNumber = "915";
+        String input = "123\n" + "918\n" + "951\n" + "248\n" + "915";
+
+        OutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Application.playGame(randomNumber);
+        String result = outputStreamCaptor.toString().trim();
+
+        Assertions.assertThat(result).contains("1볼", "2스트라이크", "2볼 1스트라이크", "3스트라이크", "낫싱");
     }
 }
