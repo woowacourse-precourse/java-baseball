@@ -8,6 +8,11 @@ public class InputUserNumberException {
 
     private final int PROPER_LENGTH = 3;
 
+    public void findUserNumberException(String userNumber) {
+        checkInputSizeThreeNumber(userNumber);
+        checkInputNumberRange(userNumber);
+        checkInputNotOverlapNumber(userNumber);
+    }
 
     private void checkInputSizeThreeNumber(String userNumber) {
         if (userNumber.length() != PROPER_LENGTH) {
@@ -32,6 +37,4 @@ public class InputUserNumberException {
             }
         }
     }
-
-
 }
