@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 public class Check {
     private static final int LENGTH = 3;
+    private static final int NEW_GAME = 1;
+    private static final int EXIT_GAME = 2;
     private static final String ZERO = "0";
 
     public static void isEmptyComputer(List<Integer> computerList){
@@ -46,7 +48,6 @@ public class Check {
         int ballCount ;
         strikeCount = findStrike(user,computer);
         if(!isThreeStrikeCount(strikeCount)){
-            ballCount = findBall(user,computer);
             Print.resultPrint(strikeCount,ballCount);
             Game.gameStart(computer);
         }
@@ -69,14 +70,13 @@ public class Check {
         }
         return strikeCount;
     }
-    public static int findBall(List<Integer> user,List<Integer> computer){
-        int ballCount = 0;
-        for(int i=0;i<LENGTH;i++){
-            if(user.contains(computer.get(i)) && computer.get(i)!=user.get(i)){
-                ballCount++;
-            }
+    public static void checkNew(String check){
+        if (Integer.parseInt(check) != NEW_GAME && Integer.parseInt(check) != EXIT_GAME) {
+            Exception.newGameNumberException();
+        } else if (Integer.parseInt(check) == NEW_GAME) {
+            Game.computer();
+        } else if (Integer.parseInt(check) == EXIT_GAME) {
+            Print.printExitMessage();
         }
-        return ballCount;
-
     }
 }

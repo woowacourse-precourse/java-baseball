@@ -28,4 +28,10 @@ public class Print {
     public static void printGetNumberMessage(){
         System.out.print(GET_NUMBER_MSG);
     }
+    public static void printNewGameMessage(){
+        System.out.println(NEW_CHECK_MSG);
+    }
+    public static void printExitMessage(){
+        System.out.println(EXIT_MSG);
+    }
 }

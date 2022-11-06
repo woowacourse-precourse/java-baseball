@@ -48,4 +48,10 @@ public class Game {
         Check.checkInputNumberDuplicate(userNumberList);
         Check.compareAnswer(userNumberList,computer);
     }
+    public static void getNewGame() {
+        Print.printExitMessage();
+        Print.printNewGameMessage();
+        String check = readLine();
+        Check.checkNew(check);
+    }
 }
