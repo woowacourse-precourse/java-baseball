@@ -26,20 +26,14 @@ public class Application {
             while(true){
                 boolean breaker = false;
                 int prevStrike=0, prevBall=0;
-                System.out.print("숫자를 입력해주세요 : ");
-                String player = Console.readLine();         // Console의 readLine() 사용
 
-                // 잘못된 입력 - IllegalArgumentException 발생
-                if(player.isEmpty() || !player.chars().allMatch(Character::isDigit)
-                    || player.length() > 3){
-                    throw new IllegalArgumentException();
-                }
+                // 잘못된 값 입력시 IllegalArgumentException()를 throw
+                String player = illegalInput();
 
                 // 2. 스트라이크 볼 낫싱 판별
                 for(int i=0; i<numbers.size(); i++){
                     strike = 0;
                     ball = 0;
-
 
                     for(int j=0; j<player.length(); j++){
                         prevStrike = strike;
@@ -64,7 +58,6 @@ public class Application {
                     if(breaker == true)
                         break;
                 }
-
 
                 // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
                 if(strike == 3){
@@ -91,5 +84,17 @@ public class Application {
         if (!numbers.contains(randomNumber)) {
             numbers.add(randomNumber);
         }
+    }
+
+    static String illegalInput(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String player = Console.readLine();         // Console의 readLine() 사용
+
+        // 잘못된 입력 - IllegalArgumentException 발생
+        if(player.isEmpty() || !player.chars().allMatch(Character::isDigit)
+                || player.length() > 3){
+            throw new IllegalArgumentException();
+        }
+        return player;
     }
 }
