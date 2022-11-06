@@ -2,7 +2,6 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.util.GameValidator;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -22,7 +21,7 @@ class BallCountTest {
     @Test
     void checkFalse() {
         //given
-        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH, 0);
+        BallCount ballCount = new BallCount(BaseballGuide.NUMBER_LENGTH, 0);
 
         //when
         boolean result = ballCount.check();
@@ -35,7 +34,7 @@ class BallCountTest {
     @Test
     void checkTrue() {
         //given
-        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH - 1, 0);
+        BallCount ballCount = new BallCount(BaseballGuide.NUMBER_LENGTH - 1, 0);
 
         //when
         boolean result = ballCount.check();
@@ -50,13 +49,13 @@ class BallCountTest {
         //given
         BallCount ballCount = new BallCount(1, 1);
         OutputStream out = setSystemOut();
-        String msg = "1볼 1스트라이크";
+        String message = "1볼 1스트라이크\n";
 
         //when
         ballCount.show();
 
         //then
-        assertThat(out.toString()).isEqualTo(msg + "\n");
+        assertThat(out.toString()).isEqualTo(message);
         out.close();
     }
 
@@ -66,13 +65,13 @@ class BallCountTest {
         //given
         BallCount ballCount = new BallCount(0, 1);
         OutputStream out = setSystemOut();
-        String msg = "1볼";
+        String message = "1볼\n";
 
         //when
         ballCount.show();
 
         //then
-        assertThat(out.toString()).isEqualTo(msg + "\n");
+        assertThat(out.toString()).isEqualTo(message);
         out.close();
     }
 
@@ -82,30 +81,30 @@ class BallCountTest {
         //given
         BallCount ballCount = new BallCount(1, 0);
         OutputStream out = setSystemOut();
-        String msg = "1스트라이크";
+        String message = "1스트라이크\n";
 
         //when
         ballCount.show();
 
         //then
-        assertThat(out.toString()).isEqualTo(msg + "\n");
+        assertThat(out.toString()).isEqualTo(message);
         out.close();
     }
 
-    @DisplayName("스트라이크가 정해진 개수와 같다면 추가적인 정보를 출력한다.")
+    @DisplayName("볼, 스트라이크가 존재하지 않으면 없음을 알리는 정보를 출력한다.")
     @Test
-    void showStrikeWithInfo() throws IOException {
+    void showNothing() throws IOException {
         //given
-        BallCount ballCount = new BallCount(GameValidator.NUMBER_LENGTH, 0);
+        BallCount ballCount = new BallCount(0, 0);
         OutputStream out = setSystemOut();
-        String msg = "3스트라이크";
-        String info = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        String message = "낫싱\n";
 
         //when
         ballCount.show();
 
         //then
-        assertThat(out.toString()).isEqualTo(msg + "\n" + info + "\n");
+        assertThat(out.toString()).isEqualTo(message);
         out.close();
     }
+
 }
