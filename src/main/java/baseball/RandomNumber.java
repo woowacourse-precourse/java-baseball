@@ -22,4 +22,12 @@ public class RandomNumber {
         }
         return secondDigit = randomNumber;
     }
+
+    public int generateThirdRandomDigit() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumber == firstDigit || randomNumber == secondDigit) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+        }
+        return thirdDigit = randomNumber;
+    }
 }
