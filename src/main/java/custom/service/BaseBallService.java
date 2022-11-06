@@ -43,6 +43,13 @@ public class BaseBallService {
         return Response.keepOf(message);
     }
 
+    public Response isKeepGo(ReTry reTry) {
+        if (reTry.equals(ReTry.YES)) {
+            return Response.keepOf("다시 시작");
+        }
+        return  Response.endOf("종료");
+    }
+
     private String generateMessage(int scoreOfStrike, int scoreOfBall) {
         String ball = "";
         String strike = "";
