@@ -100,4 +100,12 @@ class GameCycleTest {
         assertEquals(game.countStrike(answer, input), 3);
         //then
     }
+    @Test
+    public void countBall() throws Exception {
+        //given
+        String answer = "312";
+        String input = "123";
+        //expect
+        assertEquals(game.countBall(answer, input), 3);
+    }
 }
