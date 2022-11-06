@@ -51,6 +51,16 @@ public class Application {
         return balls;
     }
 
+    public static boolean CheckNothing(int strike, int ball) {
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+
+            return false;
+        }
+
+        return true;
+    }
+
     public static boolean ReturnScore(int strike, int ball) {
         ball -= strike;
         System.out.println("Strike: " + strike);
