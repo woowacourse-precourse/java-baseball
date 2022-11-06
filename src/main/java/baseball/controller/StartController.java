@@ -16,7 +16,7 @@ public class StartController {
     public StartController() {
         this.startEndGame = new StartEndGame();
         this.implement = new Implement();
-        this.computer = new Computer(implement.computerNumberDecide());
+        this.computer = new Computer();
     }
 
     public Computer startController() throws IOException {
