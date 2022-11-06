@@ -29,6 +29,14 @@ public class BaseballGameRule {
         return playerScore;
     }
 
+    public boolean isWin(List<Integer> playerScore){
+        int strikeCount = playerScore.get(1);
+        if(strikeCount == 3){
+            return true;
+        }
+        return false;
+    }
+
     private int verifyStrikes(List<Integer> playerNumbers) {
 
         int strikeCount = 0;
