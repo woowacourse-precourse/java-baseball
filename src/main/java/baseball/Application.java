@@ -10,15 +10,13 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        while (true) {
-            startGame();
+        while (startGame()) {
         }
-
     }
 
     public static boolean startGame() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int replayFlag = 0;
+        int replayFlag;
         String userInput;
         List<Integer> answer;
         answer = makeRandomNum();
@@ -35,7 +33,7 @@ public class Application {
             if (inputError(userInput)) {
                 throw new IllegalArgumentException();
             }
-            guess = typeCast(userInput, guess);
+            typeCast(userInput, guess);
             Result result = checkNum(answer, guess);
             if (correctAnswer(result)) {
                 printRight(result);
@@ -46,10 +44,8 @@ public class Application {
             }
             if (replayFlag == 1)
                 return true;
-            else if (replayFlag == 1)
+            else if (replayFlag == 2)
                 return false;
-            else
-                continue;
         }
     }
 
@@ -64,17 +60,11 @@ public class Application {
     }
 
     public static boolean inputError(String userInput) {
-        if (sizeNotMatch(userInput) || notInteger(userInput) || redundant(userInput))
-            return true;
-        else
-            return false;
+        return (sizeNotMatch(userInput) || notInteger(userInput) || redundant(userInput));
     }
 
     public static boolean sizeNotMatch(String userInput) {
-        if (userInput.length() != 3)
-            return true;
-        else
-            return false;
+        return userInput.length() != 3;
     }
 
     public static boolean notInteger(String userInput) {
@@ -89,21 +79,17 @@ public class Application {
         char firstNum = userInput.charAt(0);
         char secondNum = userInput.charAt(1);
         char thirdNum = userInput.charAt(2);
-        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum)
-            return true;
-        else
-            return false;
+        return (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum);
     }
 
-    public static List<Integer> typeCast(String userInput, List<Integer> guess) {
+    public static void typeCast(String userInput, List<Integer> guess) {
         for (int i = 0; i < userInput.length(); i++)
             guess.add(userInput.charAt(i) - '0');
-        return guess;
     }
 
     public static class Result {
-        public static int strike;
-        public static int ball;
+        public int strike;
+        public int ball;
 
         public Result() {
         }
@@ -126,7 +112,7 @@ public class Application {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < guess.size(); i++) {
-            if (answer.get(i) == guess.get(i))
+            if (answer.get(i).equals(guess.get(i)))
                 strike++;
             else if (answer.contains(guess.get(i)))
                 ball++;
@@ -136,10 +122,7 @@ public class Application {
 
 
     public static boolean correctAnswer(Result result) {
-        if (result.getStrike() == 3)
-            return true;
-        else
-            return false;
+        return (result.getStrike() == 3);
     }
 
     public static void printRight(Result result) {
@@ -159,11 +142,11 @@ public class Application {
     }
 
     public static int replay() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String replayInput = null;
+        String replayInput;
         try {
-            replayInput = br.readLine();
+            replayInput = br2.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -173,5 +156,6 @@ public class Application {
             return 2;
         else
             throw new IllegalArgumentException();
+
     }
 }
