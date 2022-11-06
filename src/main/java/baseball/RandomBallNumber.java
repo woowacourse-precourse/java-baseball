@@ -2,28 +2,25 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RandomBallNumber {
 
     private static final int BALL_NUMBER_LENGTH = 3;
 
-    String randomNumber = "";
-
-    public String createRandomNumber() {
-        while (randomNumber.length() < BALL_NUMBER_LENGTH) {
+    public ArrayList<String> randomNumbers = new ArrayList<>();
+    public List<String> createRandomNumber() {
+        while (randomNumbers.size() < BALL_NUMBER_LENGTH) {
             String number = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (isContainedNumber(number)) {
-                randomNumber = randomNumber.concat(number);
+                randomNumbers.add(number);
             }
         }
-        return randomNumber;
+        return randomNumbers;
     }
 
     private boolean isContainedNumber(String number) {
-        return !randomNumber.contains(number);
-    }
-
-    public String clearRandomNumber() {
-        randomNumber = "";
-        return randomNumber;
+        return !randomNumbers.contains(number);
     }
 }
