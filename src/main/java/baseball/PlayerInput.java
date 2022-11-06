@@ -1,16 +1,30 @@
 package baseball;
 
-
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayerInput {
 
-    public List<String> ChangeStringToList(String input) {
-        List<String> inputStringList = Arrays.asList(input.split(""));
-        return inputStringList;
+    public PlayerInput(String inputPlayer) {
+
+        CheckAllIllegalArgumentException(inputPlayer);
+        List<String> inputStr = ChangeStringToList(inputPlayer);
+        List<Integer> inputIntLIst = ChangeStrListToNumList(inputStr);
     }
-    public void InputTest(String input) {
+
+    public List<String> ChangeStringToList(String input) {
+
+        return Arrays.asList(input.split(""));
+    }
+
+    private List<Integer> ChangeStrListToNumList(List<String> inputListStr) {
+
+        return inputListStr.stream()
+                .map(str -> Integer.parseInt(str))
+                .collect(Collectors.toList());
+    }
+    private void CheckAllIllegalArgumentException(String input) {
 
         ExceptionIfFalse(CheckInputLength(input));
         // 길이 체크
