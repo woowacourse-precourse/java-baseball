@@ -64,18 +64,23 @@ public class Application {
         }
         return (computer);
     }
-    public static void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> randomNumber = createRandomNumber();
-        System.out.println(randomNumber);
-        boolean end = false;
+    public static void inputGame(boolean end, List<Integer> randomNumber) {
         while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
             end = compareNumber(inputNumber(), randomNumber);
         }
+    }
+    public static void playGame() {
+        List<Integer> randomNumber = createRandomNumber();
+        boolean end = false;
+        inputGame(end, randomNumber);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+    public static void startApplication() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        playGame();
+    }
     public static void main(String[] args) {
-        startGame();
+        startApplication();
     }
 }
