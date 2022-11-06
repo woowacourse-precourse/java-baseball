@@ -25,8 +25,7 @@ public class NumberExceptionUtils {
     }
 
     public static void isValidCommandDigit(String num) {
-        Integer command = Integer.valueOf(num);
-        if (!Command.hasValue(command)) {
+        if (!Command.hasValue(num)) {
             throw new IllegalArgumentException(INVALID_COMMAND_DIGIT_EXCEPTION.message());
         }
     }

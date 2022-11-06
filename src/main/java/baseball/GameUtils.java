@@ -28,10 +28,17 @@ public class GameUtils {
     }
 
     public static void playBaseBallGame() {
-        playerNum = getPlayerInputNum();
-        int strike = checkStrikeAndUpdateScore(answerNum, playerNum);
-        int ball = checkBallAndUpdateScore(answerNum, playerNum);
-        printResultOfGame(strike, ball);
+        while (true) {
+            playerNum = getPlayerInputNum();
+            int strike = checkStrikeAndUpdateScore(answerNum, playerNum);
+            int ball = checkBallAndUpdateScore(answerNum, playerNum);
+            printResultOfGame(strike, ball);
+
+            String command;
+            if (strike == MAX_STRIKE_SIZE) {
+                command = getCommandFromPlayer();
+            }
+        }
     }
 
     public static List<Integer> getPlayerInputNum() {
@@ -93,5 +100,13 @@ public class GameUtils {
         } else {
             System.out.println(ball + "볼" + " " + strike + "스트라이크");
         }
+    }
+
+    public static String getCommandFromPlayer() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String command = Console.readLine();
+        NumberExceptionUtils.isValidCommandDigit(command);
+        return command;
     }
 }
