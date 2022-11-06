@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<Integer> createNumbers() {
+    public static List<Integer> createNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
