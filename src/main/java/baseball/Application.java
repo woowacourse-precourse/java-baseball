@@ -86,7 +86,18 @@ public class Application {
                 answer=user_check(user,computer);
                 problem_correct=print_problem(answer);
             }
-            break;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String restart=Console.readLine();
+
+            if(restart.equals("2")){
+                break;
+            }
+            else if(!restart.equals("1")){
+                IllegalArgumentException e=new IllegalArgumentException("재시작 입력 오류");
+                throw e;
+            }
         }
 
     }
