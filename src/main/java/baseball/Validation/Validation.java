@@ -6,7 +6,7 @@ import java.util.List;
 import static baseball.Message.ErrorMessage.*;
 
 public class Validation {
-    public void check(String userNumbers) {
+    public void checkUserInputNumbers(String userNumbers) {
         checkLength(userNumbers);
         checkZero(userNumbers);
         checkBlank(userNumbers);
@@ -35,12 +35,16 @@ public class Validation {
     private void checkNotNumericCharacter(String userNumbers) {
         String[] userNumbersArray = userNumbers.split("");
 
-        for (String number : userNumbersArray) {
-            try {
-                Integer.parseInt(number);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(NOT_ALLOWED_CHARACTER.toMessage());
-            }
+        for (String userNumber : userNumbersArray) {
+            parseIntUserInputNumberString(userNumber);
+        }
+    }
+
+    private void parseIntUserInputNumberString(String userNumber) {
+        try {
+            Integer.parseInt(userNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_ALLOWED_CHARACTER.toMessage());
         }
     }
 

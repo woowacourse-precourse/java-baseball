@@ -2,39 +2,57 @@ package baseball;
 
 import baseball.Players.Computer;
 import baseball.Players.User;
-import baseball.Utils.Comparator;
-import baseball.Utils.Printer;
+import baseball.Utils.NumberListComparator;
+import baseball.Utils.MessagePrinter;
 
 import java.util.List;
 
 public class Game {
 
-    private final Printer print;
-    private final Comparator comparator;
+    private final MessagePrinter print;
+    private final NumberListComparator comparator;
 
     private Computer computer;
+    private List<Integer> answerNumbers;
+
     private User user;
+    List<Integer> userNumbers;
+
+    private boolean isFirstGame;
 
     public Game() {
-        this.print = new Printer();
-        this.comparator = new Comparator();
+        this.print = new MessagePrinter();
+        this.comparator = new NumberListComparator();
         this.computer = new Computer();
         this.user = new User();
+        this.isFirstGame = true;
     }
 
-    public void start(boolean isFirstGame) {
+    public void start() {
         if (isFirstGame) {
             print.gameStart();
         }
 
         print.inputNumbers();
 
-        List<Integer> answerNumbers = computer.getRandomNumbers();
-        List<Integer> userNumbers = user.getInputNumbers();
+        userNumbers = user.getInputNumbersList();
+        answerNumbers = computer.getRandomNumbersList();
 
-        while (!comparator.compare(userNumbers, answerNumbers)) {
+        comparator.setAnswerNumberListForComparing(answerNumbers);
+
+        play();
+    }
+
+    private void play() {
+        boolean isAnswerNumbers = comparator.isAnswerNumbers(userNumbers);
+        comparator.compareUserNumbersAndAnswer(userNumbers);
+
+        while (!isAnswerNumbers) {
             print.inputNumbers();
-            userNumbers = user.getInputNumbers();
+            userNumbers = user.getInputNumbersList();
+
+            isAnswerNumbers = comparator.isAnswerNumbers(userNumbers);
+            comparator.compareUserNumbersAndAnswer(userNumbers);
         }
 
         end();
@@ -43,10 +61,11 @@ public class Game {
     private void end() {
         print.gameEnd();
 
-        boolean isContinue = user.continuable();
+        boolean isContinue = user.isUserWantsNewGame();
 
         if (isContinue) {
-            start(false);
+            isFirstGame = false;
+            start();
         }
     }
 }

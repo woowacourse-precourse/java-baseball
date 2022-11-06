@@ -1,6 +1,6 @@
 package baseball.Players;
 
-import baseball.Utils.Printer;
+import baseball.Utils.MessagePrinter;
 import baseball.Validation.Validation;
 
 import java.util.ArrayList;
@@ -15,15 +15,15 @@ public class User {
     public User() {
         this.validate = new Validation();
     }
-    public List<Integer> getInputNumbers() {
+    public List<Integer> getInputNumbersList() {
         String userNumbers = readLine();
 
-        validate.check(userNumbers);
+        validate.checkUserInputNumbers(userNumbers);
 
-        return toList(userNumbers);
+        return convertUserNumbersStringToList(userNumbers);
     }
 
-    public List<Integer> toList(String userNumbers) {
+    public List<Integer> convertUserNumbersStringToList(String userNumbers) {
         List<Integer> userNumbersList = new ArrayList<>();
 
         String[] userNumbersArray = userNumbers.split("");
@@ -35,9 +35,8 @@ public class User {
         return userNumbersList;
     }
 
-    public boolean continuable() {
-
-        Printer print = new Printer();
+    public boolean isUserWantsNewGame() {
+        MessagePrinter print = new MessagePrinter();
 
         print.toContinue();
 

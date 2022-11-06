@@ -2,7 +2,7 @@ package baseball.Utils;
 
 import baseball.Message.PlayMessage;
 
-public class Printer {
+public class MessagePrinter {
 
     public void gameStart() {
         System.out.println(PlayMessage.GAME_START.toMessage());
@@ -12,31 +12,31 @@ public class Printer {
         System.out.print(PlayMessage.INPUT_NUMBERS.toMessage());
     }
 
-    public void countBall(int ballCount, int strikeCount) {
+    public void countBallAndStrike(int ballCount, int strikeCount) {
         String result;
 
         if (ballCount > 0 && strikeCount == 0) {
-            result = ball(ballCount);
+            result = ballToString(ballCount);
         } else if (strikeCount > 0 && ballCount == 0) {
-            result = strike(strikeCount);
+            result = strikeToString(strikeCount);
         } else if (ballCount > 0 && strikeCount > 0) {
-            result = ball(ballCount) + " " + strike(strikeCount);
+            result = ballToString(ballCount) + " " + strikeToString(strikeCount);
         } else {
-            result = nothing();
+            result = nothingToString();
         }
 
         System.out.println(result);
     }
 
-    private String strike(int count) {
+    private String strikeToString(int count) {
         return String.valueOf(count) + PlayMessage.STRIKE.toMessage();
     }
 
-    private String ball(int count) {
+    private String ballToString(int count) {
         return String.valueOf(count) + PlayMessage.BALL.toMessage();
     }
 
-    private String nothing() {
+    private String nothingToString() {
         return PlayMessage.NOTHING.toMessage();
     }
 

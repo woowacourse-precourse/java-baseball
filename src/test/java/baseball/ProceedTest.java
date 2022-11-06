@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.Utils.Comparator;
+import baseball.Utils.NumberListComparator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +11,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProceedTest {
-    static Comparator comparator;
+    static NumberListComparator comparator;
     static ByteArrayOutputStream consoleOutput;
 
     @BeforeAll
     private static void initClasses() {
-        comparator = new Comparator();
+        comparator = new NumberListComparator();
 
         consoleOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(consoleOutput));
@@ -25,6 +25,7 @@ public class ProceedTest {
     @Test
     void 결과메세지_테스트() {
         List<Integer> answer = List.of(1, 2, 3);
+        comparator.setAnswerNumberListForComparing(answer);
         List<Integer> input;
 
         List<List<Integer>> inputList = List.of(
@@ -44,7 +45,7 @@ public class ProceedTest {
             input = inputList.get(i);
 
             consoleOutput.reset();
-            comparator.compare(input, answer);
+            comparator.compareUserNumbersAndAnswer(input);
 
             assertThat(consoleOutput.toString()).isEqualTo(expectedOutput[i]);
         }

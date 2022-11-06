@@ -29,7 +29,7 @@ public class StartTest extends NsTest {
         List<Integer> result;
 
         for (int i = 0; i < 10; i++) {
-            result = computer.getRandomNumbers();
+            result = computer.getRandomNumbersList();
 
             assertThat(result).hasSize(3);
         }
@@ -40,7 +40,7 @@ public class StartTest extends NsTest {
         List<Integer> result;
 
         for (int i = 0; i < 10; i++) {
-            result = computer.getRandomNumbers();
+            result = computer.getRandomNumbersList();
 
             assertThat(result).doesNotHaveDuplicates();
         }
@@ -65,7 +65,7 @@ public class StartTest extends NsTest {
             final int i = index;
 
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> validate.check(testInput.get(i)))
+                    assertThatThrownBy(() -> validate.checkUserInputNumbers(testInput.get(i)))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining(errorMsg.get(i)));
         }
