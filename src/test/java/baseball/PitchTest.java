@@ -43,4 +43,12 @@ public class PitchTest {
         assertThat(Pitch.userAnswer).contains(1, 2, 3);
     }
 
+    @Test
+    void checkCorrect_메서드_사용시_정답이면_true_반환() {
+        Hint.hint = "3스트라이크";
+        boolean isCorrect = pitch.checkCorrect(Hint.hint);
+
+        assertThat(isCorrect).isTrue();
+    }
+
 }
