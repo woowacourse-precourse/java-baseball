@@ -45,21 +45,6 @@ public class Computer {
         return numThreeRanOfComputerList.contains(randomNumber);
     }
 
-    private boolean isNumOfComputerIndividually() {
-        String strComputerList = getStrFromList();
-        if (UseFunc.isNumOfIndividually(strComputerList)) {
-            return true;
-        }
-        return false;
-    }
-
-    private String getStrFromList() {
-        String strOfList = "";
-        for (Integer numComputerList : numThreeRanOfComputerList) {
-            strOfList = strOfList + numComputerList;
-        }
-        return strOfList;
-    }
 
     public void initCntStrikeBall() {
         this.cntStrike = 0;
