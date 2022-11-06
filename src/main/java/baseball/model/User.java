@@ -26,7 +26,7 @@ public class User {
     }
 
     private boolean isComposedUniqueNumber(List<Integer> inputNum) {
-        return inputNum.stream().distinct().count() != inputNum.size();
+        return inputNum.stream().distinct().count() == inputNum.size();
     }
 
     private boolean isNumberFromOneToNine(List<Integer> inputNum) {
