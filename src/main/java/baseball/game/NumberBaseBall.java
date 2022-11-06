@@ -61,7 +61,9 @@ public class NumberBaseBall implements PlayAble {
     public void end() {
         view.printEnd();
         view.printIsContinue();
-        if (input.acceptInt() == GAME_END_NUMBER) {
+        int choice = input.acceptInt();
+        ValidateNumber.validateInList(choice);
+        if (choice == GAME_END_NUMBER) {
             this.endGame = true;
         }
     }
