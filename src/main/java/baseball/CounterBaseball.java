@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class CountBallAndStrike {
+public class CounterBaseball {
     private int ball;
     private int strike;
 
