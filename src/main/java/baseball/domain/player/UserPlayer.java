@@ -1,12 +1,10 @@
 package baseball.domain.player;
 
-import java.util.stream.Stream;
-
 import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.stream.Stream;
 
 public class UserPlayer extends Player {
-
     @Override
     public void getNumber() throws IllegalArgumentException {
         String strInput = Console.readLine();
@@ -26,5 +24,5 @@ public class UserPlayer extends Player {
 
         number = intInput;
     }
-    
+
 }

@@ -1,11 +1,10 @@
 package baseball.domain.player;
 
+import baseball.service.GameService;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import baseball.service.GameService;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerPlayer extends Player {
 
@@ -15,11 +14,11 @@ public class ComputerPlayer extends Player {
         while (intList.size() < GameService.LENGTH_OF_NUM) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!intList.contains(randomNumber)) {
-               intList.add(randomNumber);
+                intList.add(randomNumber);
             }
         }
         List<String> strList = intList.stream().map(Object::toString).collect(Collectors.toUnmodifiableList());
         number = Integer.parseInt(String.join("", strList));
     }
-    
+
 }

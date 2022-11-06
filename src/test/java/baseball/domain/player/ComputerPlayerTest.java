@@ -1,9 +1,8 @@
 package baseball.domain.player;
 
-import baseball.service.GameService;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class ComputerPlayerTest {
     @Test()
