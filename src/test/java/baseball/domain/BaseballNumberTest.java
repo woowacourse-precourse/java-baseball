@@ -24,15 +24,15 @@ public class BaseballNumberTest {
 		String containDuplicateNumber = "322";
 
 		//when, then
-		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(sizeTwo))
+		assertThatThrownBy(() -> BaseballNumber.createByUserInput(sizeTwo))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(sizeFour))
+		assertThatThrownBy(() -> BaseballNumber.createByUserInput(sizeFour))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containZero))
+		assertThatThrownBy(() -> BaseballNumber.createByUserInput(containZero))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containNonNumber))
+		assertThatThrownBy(() -> BaseballNumber.createByUserInput(containNonNumber))
 			.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> BaseballNumber.createBaseballNumberByUserInput(containDuplicateNumber))
+		assertThatThrownBy(() -> BaseballNumber.createByUserInput(containDuplicateNumber))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -52,13 +52,13 @@ public class BaseballNumberTest {
 		}
 
 		for (String testString : testStringList) {
-			BaseballNumber.createBaseballNumberByUserInput(testString);
+			BaseballNumber.createByUserInput(testString);
 		}
 	}
 
 	@Test
 	void 랜덤한_BaseballNumber_생성(){
-		BaseballNumber comBaseballNumber = BaseballNumber.createBaseballNumberByRandom();
+		BaseballNumber comBaseballNumber = BaseballNumber.createByRandom();
 		List<Integer> numbers = comBaseballNumber.getNumbers();
 		System.out.println("numbers = " + numbers);
 	}

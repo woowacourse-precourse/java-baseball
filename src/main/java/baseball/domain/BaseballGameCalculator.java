@@ -12,7 +12,7 @@ public class BaseballGameCalculator {
 		List<Integer> numbers1 = number1.getNumbers();
 		List<Integer> numbers2 = number2.getNumbers();
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < BaseballNumber.DIGIT; i++) {
 			if (numbers1.get(i).equals(numbers2.get(i))) {
 				bsoResult[STRIKE] += 1;
 				continue;

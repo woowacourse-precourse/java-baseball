@@ -11,7 +11,7 @@ class BaseballGameCalculatorTest {
 	void 테스트케이스() {
 		//given
 		BaseballGameCalculator cal = new BaseballGameCalculator();
-		BaseballNumber answer = new UserBaseballNumber("234");
+		BaseballNumber answer = BaseballNumber.createByUserInput("234");
 		List<String> testUserInputList = List.of("123", "467", "259", "231", "234");
 		List<int[]> expectedResultList = List.of(new int[] {2, 0}, new int[] {1, 0}, new int[] {0, 1}
 			, new int[] {0, 2}, new int[] {0, 3});
@@ -19,7 +19,7 @@ class BaseballGameCalculatorTest {
 		//when
 		List<int[]> calculateResultList = new ArrayList<>();
 		for (String input : testUserInputList) {
-			calculateResultList.add(cal.calculateBSO(new UserBaseballNumber(input), answer));
+			calculateResultList.add(cal.calculateBSO(BaseballNumber.createByUserInput(input), answer));
 		}
 
 		//then

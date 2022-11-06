@@ -26,12 +26,12 @@ public class GameController {
 
 	private void startGame() {
 		ov.printGameStartMessage();
-		BaseballNumber computer = BaseballNumber.createBaseballNumberByRandom();
+		BaseballNumber computer = BaseballNumber.createByRandom();
 		int[] result;
 
 		do {
 			ov.printInputMessage();
-			BaseballNumber user = BaseballNumber.createBaseballNumberByUserInput(iv.getUserBaseballNumber());
+			BaseballNumber user = BaseballNumber.createByUserInput(iv.getUserBaseballNumber());
 			result = BaseballGameCalculator.calculateBSO(computer, user);
 			ov.printBSOResult(result);
 		} while (!Arrays.equals(result, STRIKE_3));

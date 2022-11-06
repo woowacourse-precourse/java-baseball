@@ -15,21 +15,21 @@ public class BaseballNumber {
 	private static final char ZERO_CHARACTER = '0';
 	public static final int DIGIT = 3;
 
-	private BaseballNumber(List<Integer> numbers){
+	private BaseballNumber(List<Integer> numbers) {
 		this.numbers = numbers;
 	}
 
-	public static BaseballNumber createBaseballNumberByRandom(){
+	public static BaseballNumber createByRandom() {
 		return new BaseballNumber(generateRandomNumbers());
 	}
 
-	public static BaseballNumber createBaseballNumberByUserInput(String userInput){
+	public static BaseballNumber createByUserInput(String userInput) {
 		validateInput(userInput);
 		return new BaseballNumber(convertStringToIntegerList(userInput));
 	}
 
 	private static void validateInput(String input) {
-		if(!input.matches(VALIDATE_NUMBER_PATTERN))
+		if (!input.matches(VALIDATE_NUMBER_PATTERN))
 			throw new IllegalArgumentException("입력된 값에 1~9 외의 값이 포함되어 있습니다.");
 		if (input.length() != DIGIT)
 			throw new IllegalArgumentException("입력값의 자릿수가 3이 아닙니다.");
