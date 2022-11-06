@@ -44,7 +44,7 @@ public class BaseballNumbers {
 
     private void validateDuplicateNumbers() {
         boolean isDuplicatedValue = false;
-        for (int index = 0; index < ballNumbers.size(); index++) {
+        for (int index = 0; index < ballNumbers.size()-1; index++) {
             BaseballNumber baseballNumber = ballNumbers.get(index);
             BaseballNumber nextBaseballNumber = ballNumbers.get(index + 1);
             isDuplicatedValue = baseballNumber.equals(nextBaseballNumber);
