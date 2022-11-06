@@ -2,7 +2,9 @@ package baseball.service;
 
 import static baseball.type.GameType.NO_ANSWER;
 import static baseball.type.GameType.YES_ANSWER;
-import static baseball.type.NumberType.*;
+import static baseball.type.NumberType.BALL_ZERO;
+import static baseball.type.NumberType.NUMBER_SIZE;
+import static baseball.type.NumberType.STRIKE_ZERO;
 
 import baseball.domain.Hint;
 
