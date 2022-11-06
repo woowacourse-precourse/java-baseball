@@ -13,7 +13,11 @@ public class PlayGame {
         this.userNumber = setUserNumber;
     }
 
-    public void compareNumberForStrike(){
+    public void checkStrikeAndBall(){
+        compareNumberForStrike();
+    }
+
+    private void compareNumberForStrike(){
         int digit = 0;
         int methodCallCount = 0;
 
