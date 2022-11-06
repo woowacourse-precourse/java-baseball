@@ -2,13 +2,13 @@ package baseball.player;
 
 public class Player {
 
-    private final int number;
+    private final PlayerNumbers playerNumbers;
 
-    protected Player(int number) {
-        this.number = number;
+    protected Player(PlayerNumbers playerNumbers) {
+        this.playerNumbers = playerNumbers;
     }
 
-    protected int getNumber() {
-        return number;
+    public PlayerNumbers getPlayerNumbers() {
+        return playerNumbers;
     }
 }
