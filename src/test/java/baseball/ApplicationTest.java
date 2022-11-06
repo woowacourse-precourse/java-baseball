@@ -107,19 +107,19 @@ class ApplicationTest extends NsTest {
                 assertThat(true).isEqualTo(Application.isValidData(425));
             }
         }
-
+/*
         @Nested
         class fail_case {
             @Test
             void case1() {
-                assertThat(false).isEqualTo(Application.isValidData(445));
+                assertThatThrownBy(IllegalArgumentException.class,)
             }
 
             @Test
             void case2() {
                 assertThat(false).isEqualTo(Application.isValidData(12));
             }
-        }
+        }*/
     }
 
     @Nested
@@ -143,6 +143,12 @@ class ApplicationTest extends NsTest {
             void case3(){
                 List<Integer> result = List.of(0, 0, 3);
                 assertThat("낫싱").isEqualTo(Application.getResultString(result));
+            }
+
+            @Test
+            void case4(){
+                List<Integer> result = List.of(0, 3, 0);
+                assertThat("3볼").isEqualTo(Application.getResultString(result));
             }
         }
     }

@@ -41,6 +41,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             int userInput = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
             isValidData(userInput);
+
             List<Integer> result = compareUserInputAndComputerSelect(userInput);
             String resultString = getResultString(result);
             System.out.println(resultString);
