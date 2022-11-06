@@ -1,16 +1,30 @@
 package baseball;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class GameUtilsTest {
+
+    public final ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(output));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(System.out);
+        output.reset();
+    }
 
     @DisplayName("입력받은 문자열을 정수 리스트로 반환할 수 있다.")
     @Test
@@ -54,6 +68,22 @@ public class GameUtilsTest {
         List<Integer> playerNum2 = List.of(3, 2, 1);
         int ball2 = GameUtils.checkBallAndUpdateScore(answerNum2, playerNum2);
         assertThat(ball2).isEqualTo(2);
+    }
+
+    @DisplayName("두 숫자에 대한 숫자 야구 게임의 결과를 형식에 맞춰 출력한다.")
+    @Test
+    void 숫자_야구_게임_결과_출력() {
+        GameUtils.printResultOfGame(3, 0);
+        assertThat(output.toString()).contains("3스트라이크");
+
+        GameUtils.printResultOfGame(2, 1);
+        assertThat(output.toString()).contains("1볼 2스트라이크");
+
+        GameUtils.printResultOfGame(0, 0);
+        assertThat(output.toString()).contains("낫싱");
+
+        GameUtils.printResultOfGame(0, 1);
+        assertThat(output.toString()).contains("1볼");
     }
 
     public static InputStream generateUserInput(String input) {
