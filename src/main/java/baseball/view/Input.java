@@ -10,7 +10,7 @@ public class Input {
 
     private static final String REQUEST_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String REGMAE_EXCEPTION_MESSAGE = "1 or 2 만 입력이 가능합니다.";
+    private static final String RESTART_EXCEPTION_MESSAGE = "1 or 2 만 입력이 가능합니다.";
 
     public List<Integer> inputUserBalls() {
         System.out.print(REQUEST_NUMBERS_MESSAGE);
@@ -27,7 +27,7 @@ public class Input {
         } else if (answer.equals(Button.No.getButtonValue())) {
             return false;
         }
-        throw new IllegalArgumentException(REGMAE_EXCEPTION_MESSAGE);
+        throw new IllegalArgumentException(RESTART_EXCEPTION_MESSAGE);
     }
 
     private static String[] getSplit() {
