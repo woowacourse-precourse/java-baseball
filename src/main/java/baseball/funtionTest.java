@@ -52,5 +52,12 @@ public class funtionTest {
         });
         */
     }
+    @Test
+    void 두개의_문자에서_스트라이크와_볼을_찾아내는지(){
+        List<Integer> tmp = new LinkedList<>();
+        tmp.add(0);
+        tmp.add(3);
+        assertSame(tmp, compare_two_case("123","123"));
+    }
 
 }
