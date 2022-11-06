@@ -1,2 +1,22 @@
+- refactor(ComputerManager): 3자리 랜덤 숫자 생성 3을 하드코딩에서 InputNumber class 상수에서 가져오는 방법으로 변경
+- refactor(ComputerManager): 랜덤 숫자의 범위 상수 END_OF_NUMBER_RANGE, START_OF_NUMBER_RANGE로 변경
+- fix: InputNumber 클래스 메서드 전부 static 메서드로 변경
+- refactor: 테스트 코드 java 코드 컨센션에 따른 리팩토링
+- refactor(GameManager): 재시작 신호 및 게임 종료 신호 상수 처리
+- fix(GameManager): 3스트라이크 시에 3스트라이크를 출력하지 않고 게임을 종료 시키는 에러 수정
+- feat(GameManager): 게임 시작 기능 구현
+- feat(GameManager): 게임 진행 함수 구현 및 재시작 여부 파악 기능 구현
+- fix(intputNumber): Number_Pattern 상수 사용자가 입력하는 수의 범위 1~9로 수정
+- test(ComputerManagerTest): 컴퓨터의 수와 유저의 수를 비교하는 함수 검증 테스트 구현
+- feat(ComputerManager): 컴퓨터의 수와 유저의 수를 비교하여 문자열을 반환하는 기능 구현
+- feat(GameManager): 게임 진행을 책임지는 클래스 내부 문자열 구현
+- test(ComputerManagerTest): 랜덤 수 생성 수의 길이 및 반환 값 확인 테스트 구현
+- feat(ComputerManager): 컴퓨터의 수를 책임지는 클래스 생성 및 랜덤 수 생성 기능 구현
+- refactor(InputNumber): 클래스 설명 주석 추가
+- test(InputNumberTest): 사용자에게 한자리 수를 입력받고 검증하는 기능에 대한 예외 체크 및 기능 테스트 추가
+- feat(InputNumber): 사용자에게 재시작을 위한 한자리 수를 입력받고 검증하는 기능 구현
+- test(InputNumberTest): 사용자에게 세자리 수를 입력받고 검증하는 기능에 대한 예외 체크 및 기능 테스트 추가
+- feat(InputNumber): 사용자에게 세자리 수를 입력받고 검증하는 클래스 및 기능 구현
+- docs(CHANGELOG.md): 커밋 로그를 보여주는 CHANGELOG.md 파일 자동 생성
 - docs(docs/README.md): 구현 기능 목록 작성
 - feat: setup precourse baseball project
