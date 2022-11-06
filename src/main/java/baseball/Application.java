@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,24 @@ public class Application {
 
     }
 
-    static boolean checkStrike() {
+    /*
+    스트라이크 체크하는 메소드
+    1의 자리 0
+    10의 자리 1
+    100의 자리 2
+
+    params
+    List<Integer> computer
+    int number
+    int digit
+
+    return
+    boolean result
+     */
+    static boolean checkStrike(List<Integer> computer, int number, int digit) {
+        if(computer.get(digit) == number){
+            return true;
+        }
         return false;
     }
 
