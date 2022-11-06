@@ -24,4 +24,16 @@ public class Validate {
         return true;
     }
 
+    public static boolean isNotContainZero(String digits) {
+        for (int indexOfDigits = 0; indexOfDigits < digits.length(); indexOfDigits++) {
+            char digit = digits.charAt(indexOfDigits);
+
+            if (digit == '0') {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
 }

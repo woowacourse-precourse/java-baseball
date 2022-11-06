@@ -49,4 +49,18 @@ class ValidateTest {
         assertThat(Validate.isDifferentDigits(input)).isFalse();
     }
 
+    @DisplayName("0이 포함되지 않았는지 확인하는 기능")
+    @Test
+    void isNotContainZero_success() {
+        String input = "114";
+        assertThat(Validate.isNotContainZero(input)).isTrue();
+    }
+
+    @DisplayName("0이 포함되지 않았는지 확인하는 기능")
+    @Test
+    void isNotContainZero_fail() {
+        String input = "120";
+        assertThat(Validate.isNotContainZero(input)).isFalse();
+    }
+
 }
