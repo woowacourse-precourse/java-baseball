@@ -17,7 +17,9 @@ public class BaseballGame {
     private void init() {
         gameView.startBaseballGame();
         while(true) {
-            getUserInput();
+            BaseballNumbers userBaseballNumbers = getUserInput();
+            Hint userHint = makeHint(userBaseballNumbers);
+            checkUserInputCorrect(userHint);
         }
     }
 
@@ -27,9 +29,17 @@ public class BaseballGame {
         return userBaseballNumbers;
     }
 
-    private void makeHint(BaseballNumbers userBaseballNumbers) {
+    private Hint makeHint(BaseballNumbers userBaseballNumbers) {
         Hint userInputHint = computer.makeUserInputHint(userBaseballNumbers);
         String userInputResult = userInputHint.getResult();
         gameView.printUserInputHint(userInputResult);
+        return userInputHint;
+    }
+
+    private void checkUserInputCorrect(Hint userInputHint) {
+        boolean isCorrect = userInputHint.isCorrectNumber();
+        if(isCorrect) {
+            gameView.endBaseballGame();
+        }
     }
 }
