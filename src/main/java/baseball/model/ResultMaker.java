@@ -1,3 +1,7 @@
+package baseball.model;
+
+import java.util.List;
+
 public class ResultMaker {
     private int totalSameCount;
     private int currentSameCount;
@@ -22,3 +26,13 @@ public class ResultMaker {
         return ballCountStr + " " + strikeCountStr;
     }
 
+    private String getStrikeCount(List<Integer> computer, List<Integer> player, JudgeLogic logic) {
+        for (int i = 0; i < computer.size(); i++) {
+            if (logic.isSameNumber(computer, player, i)) {
+                strikeCount++;
+                currentSameCount--;
+            }
+            if (currentSameCount == 0) {
+                break;
+            }
+        }
