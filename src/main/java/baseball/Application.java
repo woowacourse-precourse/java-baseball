@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,10 +8,54 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        if(!check_input(args)){
-           // IllegalArgumentException
-        }
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<String> computer = make_computer_number();
+        int strike = 0;
+        int ball = 0;
+        
+        while (true){
+            //System.out.println("computer = " + computer);
+            System.out.println("숫자를 입력해주세요 : " );
+            String ans = Console.readLine();
+            if(ans.equals("1")){
+                computer = make_computer_number();
+                continue;
+            }else if(ans.equals("2")){
+                return;
+            }
+            else{
+                try {
+                if(!check_input(ans)){
+                    IllegalArgumentException e = new IllegalArgumentException();
+                    throw new IllegalArgumentException();
+                }
+            }catch (IllegalArgumentException e){
+                    throw new IllegalArgumentException();
+            }}
+            strike = strike(ans,computer);
+            ball = ball(ans,computer);
+            print_score(strike,ball);
+        }
+
+    }
+
+    // 제대로 된 입력형식인지 확인하는 코드
+    private static boolean check_input(String str) {
+        int len = str.length();
+        // 입력 길이가 3인지 확인
+        if(len != 3){
+           if(str.equals("1") | str.equals("2")){
+               return true;
+           }else{
+                return false;}
+        }else if(str.charAt(0) == str.charAt(1) | str.charAt(0) == str.charAt(2) | str.charAt(1) == str.charAt(2)){
+            return false;
+        }else{
+        return true;}
+    }
+
+    public static List<String> make_computer_number(){
         List<String> computer = new ArrayList<>();
         while(computer.size()<3){
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -19,33 +64,12 @@ public class Application {
                 computer.add(str);
             }
         }
-        int strike = 0;
-        int ball = 0;
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("computer = " + computer);
-        strike = strike(args,computer);
-        ball = ball(args,computer);
-        print_score(strike,ball);
-        System.out.println("게임을 종료합니다");
+        return computer;
     }
-
-    // 제대로 된 입력형식인지 확인하는 코드
-    private static boolean check_input(String[] args) {
-        // 입력 길이가 3인지 확인
-        if(args.length != 3){
-            return false;
-        }
-        //서로 다른 숫자를 입력받는지 확인
-        if(args[0] == args[1] | args[0] == args[2] | args[1] == args[2]){
-            return false;
-        }
-        return true;
-    }
-
-    public static int strike(String[] args, List<String> computer){
+    public static int strike(String args, List<String> computer){
         int strike = 0;
         for(int i=0; i<3 ; i++){
-            Character arg = args[0].charAt(i);
+            Character arg = args.charAt(i);
             String str = computer.get(i);
             Character ans = str.charAt(0);
 //            System.out.println("arg = " + arg);
@@ -66,12 +90,13 @@ public class Application {
         return strike;
     }
 
-    public static int ball(String[] args,List<String> computer){
+    public static int ball(String args,List<String> computer){
         int ball = 0;
         //System.out.println("ball 실행");
         for(int idx=0 ; idx<3 ; idx++){
-            Character arg = args[0].charAt(idx);
-            if(computer.contains(arg)){
+            Character arg = args.charAt(idx);
+            String str = arg.toString();
+            if(computer.contains(str)){
                 ball = isitball(arg,computer,idx,ball);
             }
         }
@@ -90,7 +115,11 @@ public class Application {
 
     // 점수를 말해주는 메서드
     public static void print_score(int strike, int ball){
-        if(strike == 0 & ball == 0){
+        if(strike == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        } else if(strike == 0 & ball == 0){
             System.out.println("낫싱");
         } else if (strike == 0 & ball != 0) {
             System.out.println(ball + "볼");

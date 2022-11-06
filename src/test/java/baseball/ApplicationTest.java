@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +21,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void applicationtest(){
-        String [] args = {"123"};
-        Application.main(args);
-    }
+//    @Test
+//    void applicationtest(){
+//        String str = Console.readLine();
+//        System.out.println("입력하세요 : " + str);
+//    }
 
     @Test
     void 예외_테스트() {
