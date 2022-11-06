@@ -16,7 +16,24 @@ public class Application {
     public static List<Integer> computerDigitValue;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+    }
+
+    public static void gameStart(){
+        int randomNumber = getRandomThreeDigitNumber();
+        computerDigitValue = disassembleDigitNumber(randomNumber);
+
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int userInput = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            List<Integer> result = compareUserInputAndComputerSelect(userInput);
+            String resultString = getResultString(result);
+            System.out.println(resultString);
+            if (resultString.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     public static String getResultString(List<Integer> result){
