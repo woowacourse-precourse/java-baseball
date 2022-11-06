@@ -1,19 +1,15 @@
 package baseball.Input;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputNumberVerificationTest {
 
     @Nested
     class verifyNumberTest {
-
 
         @Test
         @DisplayName("올바른 숫자 형식")
@@ -72,12 +68,38 @@ class InputNumberVerificationTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1~9 사이의 숫자만 입력해주세요");
         }
+    }
 
+    @Nested
+    class verifyOneOrTwoButtonTest{
 
+        @Test
+        void case1(){
+            int testNumber = 1;
+            boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
+            assertEquals(true, testResult);
+        }
 
+        @Test
+        void case2(){
+            int testNumber = 2;
+            boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
+            assertEquals(true, testResult);
+        }
 
+        @Test
+        void case3(){
+            int testNumber = 3;
+            boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
+            assertEquals(false, testResult);
+        }
 
-
+        @Test
+        void case4(){
+            int testNumber = 0;
+            boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
+            assertEquals(false, testResult);
+        }
     }
 
 }
