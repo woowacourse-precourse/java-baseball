@@ -29,11 +29,9 @@ public class BaseballGame {
 
     public void getPredictNumbers(int number) {
         predictNumbers = new Numbers();
-        while (number > 0) {
-            predictNumbers.add(number % 10);
-            number /= 10;
-        }
-        predictNumbers.validateNumbers();
+        Arrays.stream(String.valueOf(number).split(""))
+                .map(Integer::parseInt)
+                .forEach(x -> predictNumbers.add(x));
     }
 
     public List<Integer> checkNumbers() {
@@ -49,6 +47,7 @@ public class BaseballGame {
         pickRandomNumbers();
         do {
             getPredictNumbers(validateStringToInteger(inputView.inputNumbers()));
+            predictNumbers.validateNumbers();
             counts = checkNumbers();
             outputView.printResult(counts);
         } while (counts.get(2) != 3);
