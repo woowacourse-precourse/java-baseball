@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballController {
@@ -40,7 +41,38 @@ public class BaseballController {
      * @return 문자열의 각 자리를 숫자로 바꾸어 리스트로 반환
      */
     private List<Integer> stringToIntegerList(String inputString) {
-        return null;
+        List<Integer> result = new ArrayList<>();
+        int number = Integer.valueOf(inputString);
+        while (number > 0) {
+            addUniqueDigitToBeginningOfList(extractLastDigit(number), result);
+            number /= 10;
+        }
+        return result;
+    }
+
+    /**
+     * 주어진 숫자의 1의 자리를 추출한다
+     * @param number : 1의 자리를 추출할 숫자
+     * @return : 추출한 1의자리 값
+     */
+    private int extractLastDigit(int number) {
+        int result = number % 10;
+        if (result == 0) {
+            throw new RuntimeException("0을 입력함");
+        }
+        return result;
+    }
+
+    /**
+     * 한 자리 숫자를 리스트의 맨 앞에 추가한다
+     * @param digit : 추가할 한 자리 숫자
+     * @param list : 한 자리 숫자를 추가할 리스트
+     */
+    private void addUniqueDigitToBeginningOfList(int digit, List<Integer> list) {
+        if (list.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
+        list.add(0, digit);
     }
 
     /**
