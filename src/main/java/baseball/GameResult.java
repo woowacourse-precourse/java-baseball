@@ -7,4 +7,8 @@ public class GameResult {
     public boolean isUserWin() {
         return strike == 3;
     }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
 }
