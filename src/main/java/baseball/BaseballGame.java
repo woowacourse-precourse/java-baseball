@@ -1,8 +1,8 @@
 package baseball;
 
 public class BaseballGame {
-    private Player player;
-    private Rule rule;
+    private final Player player;
+    private final Rule rule;
     private boolean continueGame;
 
     public BaseballGame() {
@@ -10,6 +10,7 @@ public class BaseballGame {
         rule = new Rule();
         System.out.println(Message.START.get());
     }
+
     public void start() {
         rule.generateAnswer();
         continueGame = true;
@@ -28,7 +29,4 @@ public class BaseballGame {
         rule.getTotalCount(player.getNumber());
         return rule.getHint();
     }
-
-
-
 }

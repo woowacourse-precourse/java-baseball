@@ -41,7 +41,7 @@ public class Rule {
             }
         }
         if (count != 0) {
-            hint.add(String.valueOf(count) + "스트라이크");
+            hint.add(count + "스트라이크");
         }
     }
 
@@ -57,7 +57,7 @@ public class Rule {
             }
         }
         if (count != 0) {
-            hint.add(String.valueOf(count) + "볼");
+            hint.add(count + "볼");
         }
     }
 
