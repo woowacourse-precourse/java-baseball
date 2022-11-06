@@ -1,17 +1,11 @@
 package baseball.view;
 
 import baseball.domain.GameResult;
+import baseball.enums.GameMessageType;
 import baseball.enums.GuessResultType;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
-    private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
-    private static final String NUMBER_INPUT = "숫자를 입력해주세요 : ";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String NEW_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String NOTING_MESSAGE = "낫싱";
     private static final String EMPTY_MESSAGE = "";
     private static final int FULL_STRIKE = 3;
     private static final int NOTHING = 0;
@@ -19,27 +13,27 @@ public class NumberBaseballView {
     private GameResult gameResult;
 
     public void printStartGame() {
-        System.out.println(START_GAME);
+        System.out.println(GameMessageType.START_GAME.getMessage());
     }
 
     public String inputUserAnswer() {
-        System.out.print(NUMBER_INPUT);
+        System.out.print(GameMessageType.NUMBER_INPUT.getMessage());
         return Console.readLine();
     }
 
     public String inputNewGameAnswer() {
-        System.out.println(NEW_GAME_MESSAGE);
+        System.out.println(GameMessageType.NEW_GAME.getMessage());
         return Console.readLine();
     }
 
     public GuessResultType printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
-            System.out.println(WIN_MESSAGE);
+            System.out.println(GameMessageType.WIN.getMessage());
             return GuessResultType.WIN;
         }
         if (isNothing()) {
-            System.out.println(NOTING_MESSAGE);
+            System.out.println(GameMessageType.NOTHING.getMessage());
             return GuessResultType.NOT_WIN;
         }
         System.out.println(createResultMessage());
@@ -58,10 +52,10 @@ public class NumberBaseballView {
         String strikeMessage = EMPTY_MESSAGE;
         String ballMessage = EMPTY_MESSAGE;
         if (gameResult.getStrike() > NOTHING) {
-            strikeMessage += gameResult.getStrike() + STRIKE;
+            strikeMessage += gameResult.getStrike() + String.valueOf(GameMessageType.STRIKE.getMessage());
         }
         if (gameResult.getBall() > NOTHING) {
-            ballMessage += gameResult.getBall() + BALL;
+            ballMessage += gameResult.getBall() + String.valueOf(GameMessageType.BALL.getMessage());
         }
         if (gameResult.getStrike() == NOTHING) {
             return ballMessage;
