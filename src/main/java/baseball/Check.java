@@ -48,6 +48,7 @@ public class Check {
         int ballCount ;
         strikeCount = findStrike(user,computer);
         if(!isThreeStrikeCount(strikeCount)){
+            ballCount = findBall(user,computer);
             Print.resultPrint(strikeCount,ballCount);
             Game.gameStart(computer);
         }
@@ -69,6 +70,16 @@ public class Check {
             }
         }
         return strikeCount;
+    }
+    public static int findBall(List<Integer> user,List<Integer> computer){
+        int ballCount = 0;
+        for(int i=0;i<LENGTH;i++){
+            if(user.contains(computer.get(i)) && computer.get(i)!=user.get(i)){
+                ballCount++;
+            }
+        }
+        return ballCount;
+
     }
     public static void checkNew(String check){
         if (Integer.parseInt(check) != NEW_GAME && Integer.parseInt(check) != EXIT_GAME) {
