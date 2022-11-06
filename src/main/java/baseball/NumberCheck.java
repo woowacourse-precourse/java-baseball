@@ -14,7 +14,7 @@ public class NumberCheck {
         this.ball = ball;
     }
 
-    private void checkLocationNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public void checkLocationNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
         for (int i = INITIAL_REPEAT_VALUE; i < userNumbers.size(); i++) {
             checkNumbers(userNumbers, computerNumbers);
         }
