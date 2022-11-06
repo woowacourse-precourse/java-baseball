@@ -10,17 +10,22 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        while(true) {
+        while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             String stringQuizNumber = getStringQuizNumber();
+
             while (isNotEqualNumber(getUserInput(), stringQuizNumber)) {
             }
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            if (doesUserWantToStop()) {
+                break;
+            }
         }
     }
 
     public static boolean isNotEqualNumber(String userInput, String stringQuizNumber) {
-        if(userInput.equals(stringQuizNumber)){
+        if (userInput.equals(stringQuizNumber)) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
@@ -35,11 +40,11 @@ public class Application {
         int ballCount = 0;
 
         for (int i = 0; i < stringQuizNumber.length(); i++) {
-            int eachUserInputNum = userInput.charAt(i)  - '0';
+            int eachUserInputNum = userInput.charAt(i) - '0';
 
             if (eachUserInputNum == numberList.get(i)) {
-                strikeCount ++;
-            }else if(numberList.contains(eachUserInputNum)){
+                strikeCount++;
+            } else if (numberList.contains(eachUserInputNum)) {
                 ballCount++;
             }
         }
@@ -49,7 +54,7 @@ public class Application {
 
         List<String> msgList = new ArrayList<String>();
 
-        if(ballCount != 0){
+        if (ballCount != 0) {
             msgList.add(ballInfo);
         }
 
@@ -59,7 +64,7 @@ public class Application {
 
         if (msgList.isEmpty()) {
             System.out.println("낫싱");
-        }else{
+        } else {
             System.out.println(String.join(" ", msgList));
         }
 
@@ -67,16 +72,28 @@ public class Application {
     }
 
     private static String getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
-        if (validateUserInput(userInput)){
+        if (validateUserInput(userInput)) {
             return userInput;
-        }else{
+        } else {
             throw new IllegalArgumentException("잘못된 입력을 하셨습니다. 숫자 3자리만 입력해주세요");
         }
     }
 
+    private static boolean doesUserWantToStop() {
+        String userInput = readLine();
+        if (userInput.equals("1")) {
+            return false;
+        } else if (userInput.equals("2")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("잘못된 입력을 하셨습니다. 1 혹은 2를 입력해주세요");
+        }
+    }
+
     private static boolean validateUserInput(String userInput) {
-        if (userInput.length() != 3){
+        if (userInput.length() != 3) {
             return false;
         }
 
@@ -89,9 +106,9 @@ public class Application {
                 return false;
             }
 
-            if(!numberList.contains(eachNum)){
+            if (!numberList.contains(eachNum)) {
                 numberList.add(eachNum);
-            }else{
+            } else {
                 return false;
             }
         }
