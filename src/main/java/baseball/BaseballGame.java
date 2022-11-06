@@ -30,11 +30,11 @@ public class BaseballGame {
         return computerNumber;
     }
 
-    public String startMatch(String inputValue) {
+    protected String startMatch(String inputValue) {
         for (int i = 0; i < inputValue.length(); i++) {
             ballOrStrikeOrNothing(i, Integer.parseInt(String.valueOf(inputValue.charAt(i))));
         }
-        return "";
+        return getMatchResult();
     }
 
     private void ballOrStrikeOrNothing(int index, int value) {
@@ -47,5 +47,24 @@ public class BaseballGame {
             return;
         }
         this.nothing++;
+    }
+
+    private String getMatchResult() {
+        StringBuilder result = new StringBuilder();
+
+        if (this.strike == NUMBER_LENGTH) {
+            return this.strike + "스트라이크";
+        }
+        if (this.nothing == NUMBER_LENGTH) {
+            return "낫싱";
+        }
+        if (this.ball > 0) {
+            result.append(this.ball).append("볼 ");
+        }
+        if (this.strike > 0) {
+            result.append(this.strike).append("스트라이크 ");
+        }
+
+        return result.toString();
     }
 }
