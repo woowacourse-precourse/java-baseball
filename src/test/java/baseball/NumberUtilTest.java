@@ -32,12 +32,12 @@ public class NumberUtilTest {
     }
 
     @Test
-    @DisplayName("input 함수가 1부터 9 사이의 서로 다른 임의의 숫자 3개를 반환하는지 확인한다")
-    void inputTest() {
+    @DisplayName("inputNumber 함수가 1부터 9 사이의 서로 다른 임의의 숫자 3개를 반환하는지 확인한다")
+    void inputNumbersTest() {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
-        List<Integer> numbers = NumberUtil.input();
+        List<Integer> numbers = NumberUtil.inputNumbers();
         Assertions.assertAll(
                 () -> assertEquals(3, numbers.size()),
                 () -> assertTrue(numbers.stream().allMatch(i -> NumberUtil.NUMBER_START <= i && i <= NumberUtil.NUMBER_END)),
@@ -49,12 +49,32 @@ public class NumberUtilTest {
     @CsvSource(
             value = {"119:1", "가나다라:1", ":2", "-12:2", "a@c!ef:3"}
     )
-    @DisplayName("input 함수가 null을 반환하는지 확인한다")
-    void inputNullTest(String input) {
+    @DisplayName("inputNumber 함수가 null을 반환하는지 확인한다")
+    void inputNumbersNullTest(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
-        List<Integer> numbers = NumberUtil.input();
+        List<Integer> numbers = NumberUtil.inputNumbers();
         assertThat(numbers).isEqualTo(null);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:1", "2:2"}, delimiter = ':')
+    @DisplayName("inputNumber 함수가 1 또는 2를 반환하는지 확인한다")
+    void inputNumberTest(String input, int result) {
+        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        int number = NumberUtil.inputNumber();
+        assertThat(number).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"12:0", "a:0"}, delimiter = ':')
+    @DisplayName("inputNumber 함수가 0을 반환하는지 확인한다")
+    void inputNumberZeroTest(String input, int result) {
+        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        int number = NumberUtil.inputNumber();
+        assertThat(number).isEqualTo(result);
     }
 
     @ParameterizedTest
