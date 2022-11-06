@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.List;
 
 public class BaseBallGameManager {
 
@@ -18,7 +17,7 @@ public class BaseBallGameManager {
   }
 
   private void startGame() {
-    List<Integer> guessedNumber = player.guessNumber();
+    computer.printGuessResult(player.guessNumber());
   }
 
   private void beforeGameStart() {
