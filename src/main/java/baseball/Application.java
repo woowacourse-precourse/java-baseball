@@ -30,4 +30,9 @@ public class Application {
         return Console.readLine();
     }
 
+    // 게임이 종료되고 사용자의 재시작 입력을 받는 메서드
+    static String restartUserInput() {
+        return Console.readLine();
+    }
+
 }
