@@ -1,5 +1,8 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
+import java.util.ArrayList;
 import java.util.List;
 
 // 숫자 야구 게임 관리
@@ -15,8 +18,15 @@ public class NumberBaseballGameServer {
     }
 
     public List<Integer> makeNewGameNumber() {
-        // 게임 숫자(1부터 9까지 서로 다른 수로 이루어진 3자리의 숫자) 생성
-        return List.of();
+        List<Integer> gameNumberList = new ArrayList<Integer>(COUNT_GAME_NUMBER);
+        while (gameNumberList.size() < COUNT_GAME_NUMBER) {
+            int randomNumber = pickNumberInRange(GAME_NUMBER_RANGE_MIN, GAME_NUMBER_RANGE_MAX);
+            if (gameNumberList.contains(randomNumber)) {
+                continue;
+            }
+            gameNumberList.add(randomNumber);
+        }
+        return gameNumberList;
     }
 
     public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber) {
