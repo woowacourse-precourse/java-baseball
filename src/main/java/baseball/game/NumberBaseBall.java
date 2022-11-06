@@ -1,7 +1,7 @@
 package baseball.game;
 
-import baseball.input.InputAble;
-import baseball.input.InputConsole;
+import baseball.input.inputInterface.InputAble;
+import baseball.input.inputImpl.InputConsole;
 import baseball.player.Computer;
 import baseball.player.GamePlayer;
 import baseball.uitls.RandomNumber;

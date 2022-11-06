@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.input.inputMember;
 
 import camp.nextstep.edu.missionutils.Console;
 
