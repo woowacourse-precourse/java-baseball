@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +17,17 @@ public class Player {
 
     public static Player getPlayer() {
         return PLAYER;
+    }
+
+    public List<Integer> inputNumber() {
+        String userInput = Console.readLine();
+
+        // 예외
+        checkNumber(userInput);
+        checkLength(userInput);
+        checkDuplication(userInput);
+
+        return stringToList(userInput);
     }
 
     private List<Integer> stringToList(String userInput) {
