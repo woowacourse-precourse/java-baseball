@@ -20,7 +20,7 @@ public class BaseballGame implements Game {
         while (strike != THREE) {
             print(INPUT_PLAYER_NUMBER);
             List<Integer> playerNumbers = BaseballGameService.getPlayer().getNumbers();
-            BallAndStrike ballAndStrike = BallAndStrike.from(computerNumbers, playerNumbers);
+            BallAndStrike ballAndStrike = BallAndStrike.of(computerNumbers, playerNumbers);
             strike = ballAndStrike.getStrike();
             println(ballAndStrike);
         }

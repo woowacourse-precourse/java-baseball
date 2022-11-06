@@ -16,7 +16,7 @@ public class BallAndStrike {
         this.strike = strike;
     }
 
-    public static BallAndStrike from(List<Integer> computer, List<Integer> player) {
+    public static BallAndStrike of(List<Integer> computer, List<Integer> player) {
         int ballCount = 0;
         int strikeCount = 0;
 

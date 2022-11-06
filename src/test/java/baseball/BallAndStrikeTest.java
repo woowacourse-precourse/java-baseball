@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 
 public class BallAndStrikeTest {
     @Test
-    void from_메서드로_볼과_스트라이크_개수를_계산() {
+    void of_메서드로_볼과_스트라이크_개수를_계산() {
         List<Integer> computer = List.of(1, 2, 3);
         List<Integer> player = List.of(1, 3, 2);
 
-        BallAndStrike ballAndStrike = BallAndStrike.from(computer, player);
+        BallAndStrike ballAndStrike = BallAndStrike.of(computer, player);
         int ball = ballAndStrike.getBall();
         int strike = ballAndStrike.getStrike();
 
@@ -30,7 +30,7 @@ public class BallAndStrikeTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> player = List.of(4, 5, 6);
 
-            BallAndStrike ballAndStrike = BallAndStrike.from(computer, player);
+            BallAndStrike ballAndStrike = BallAndStrike.of(computer, player);
 
             assertThat(ballAndStrike).hasToString(NOTHING);
         }
@@ -40,7 +40,7 @@ public class BallAndStrikeTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> player = List.of(1, 3, 2);
 
-            BallAndStrike ballAndStrike = BallAndStrike.from(computer, player);
+            BallAndStrike ballAndStrike = BallAndStrike.of(computer, player);
 
             assertThat(ballAndStrike).hasToString(2 + BALL + SPACE + 1 + STRIKE);
         }
@@ -50,7 +50,7 @@ public class BallAndStrikeTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> player = List.of(2, 1, 4);
 
-            BallAndStrike ballAndStrike = BallAndStrike.from(computer, player);
+            BallAndStrike ballAndStrike = BallAndStrike.of(computer, player);
 
             assertThat(ballAndStrike).hasToString(2 + BALL);
         }
@@ -60,7 +60,7 @@ public class BallAndStrikeTest {
             List<Integer> computer = List.of(1, 2, 3);
             List<Integer> player = List.of(1, 2, 4);
 
-            BallAndStrike ballAndStrike = BallAndStrike.from(computer, player);
+            BallAndStrike ballAndStrike = BallAndStrike.of(computer, player);
 
             assertThat(ballAndStrike).hasToString(2 + STRIKE);
         }
