@@ -3,13 +3,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static boolean endGame(List<Integer> countBallStrike) {
-        boolean strikeThree = false;
-        if (countBallStrike.get(1) == 3)
-            strikeThree = true;
-        return strikeThree;
+        return countBallStrike.get(1) == 3;
     }
     public static int countBall(int playerNumber, List<Integer> randomNumber, int i) {
         int ball = 0;
@@ -43,7 +41,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
         for (int i=0;i<3;++i) {
-            if (playerNumber.get(i) == randomNumber.get(i))
+            if (Objects.equals(playerNumber.get(i), randomNumber.get(i)))
                 strike += 1;
             else
                 ball += countBall(playerNumber.get(i), randomNumber, i);
@@ -71,7 +69,7 @@ public class Application {
         List<Integer> randomNumber = createRandomNumber();
         System.out.println(randomNumber);
         boolean end = false;
-        while (end == false) {
+        while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
             end = compareNumber(inputNumber(), randomNumber);
         }
