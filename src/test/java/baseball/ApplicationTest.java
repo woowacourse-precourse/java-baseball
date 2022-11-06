@@ -216,4 +216,13 @@ class ApplicationTest extends NsTest {
 //        assertThat(output()).contains("숫자를 입력해주세요 :");
     }
 
+    // 기능 요구사항 5
+    @Test
+    void 문자_포함_예외_처리_테스트() {
+        String input = " 1234";
+
+        assertThatThrownBy(() -> Exception.hasCharacters(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
