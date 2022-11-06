@@ -27,6 +27,7 @@ public class Player {
         System.out.println("축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 종료 : 2");
         String input = readLine();
         validateInputLength(input.length(), 1);
+        validateGameOverInput(Integer.parseInt(input));
         return Integer.parseInt(input);
     }
 
@@ -36,6 +37,7 @@ public class Player {
         validateInputLength(input.length(), 3);
         for (int i = 0; i < input.length(); i++) {
             int number = Character.getNumericValue(input.charAt(i));
+            validateInputRangeNumber(number);
             this.numbers.add(number);
         }
     }
@@ -50,6 +52,12 @@ public class Player {
     private void validateInputLength(int length, int maxLength) {
         if (length != maxLength) {
             throw new IllegalArgumentException(String.format("입력값은 %s 자여야 합니다.", maxLength));
+        }
+    }
+
+    private void validateInputRangeNumber(int number) {
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException("입력값은 1 ~ 9 사이의 값이어야 합니다.");
         }
     }
 
