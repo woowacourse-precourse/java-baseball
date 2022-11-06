@@ -54,6 +54,27 @@ class RunGame {
         }
         return intUserInput;
     }
+
+    public boolean isFinish(int strike) {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAgain(boolean finish) {
+        int userInput = -1;
+        if (finish == true) {
+            userInput = Integer.parseInt(Console.readLine());
+        }
+        if (userInput == 1) {
+            return true;
+        }
+        if (userInput == 2) {
+            return false;
+        }
+        return true;
+    }
 }
 
 class Output {
