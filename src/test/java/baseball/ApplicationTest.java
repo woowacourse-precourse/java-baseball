@@ -3,10 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -41,6 +45,17 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("441"))
                         .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 게임_결과_확인_함수_반환_테스트(){
+        // 정답을 맞췄을 경우
+        assertTrue(Application.checkResult(List.of(1,2,3), List.of(1,2,3)));
+        assertTrue(Application.checkResult(List.of(5,6,7), List.of(5,6,7)));
+
+        // 정답을 맞추지 못했을 경우
+        assertFalse(Application.checkResult(List.of(5,6,7), List.of(5,6,9)));
+        assertFalse(Application.checkResult(List.of(1,5,9), List.of(5,9,1)));
     }
 
     @Override
