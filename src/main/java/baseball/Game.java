@@ -3,12 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    public final static String START_NOTIFICATION = "숫자 야구 게임을 시작합니다.";
-    public final static String END_NOTIFICATION = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public final static String RESTART_NOTIFICATION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public final static String BALL = "볼";
-    public final static String STRIKE = "스트라이크";
-    public final static String NOTHING = "낫싱";
 
     Computer computer = new Computer();
     Player player = new Player();
@@ -16,9 +10,9 @@ public class Game {
     Ball ball = new Ball();
 
     public void start() {
-        System.out.println(START_NOTIFICATION);
+        System.out.println(Message.START_NOTIFICATION);
         repeatUntilAnswerCorrect();
-        System.out.println(END_NOTIFICATION);
+        System.out.println(Message.END_NOTIFICATION);
         selectRestartOrEndGame();
     }
 
@@ -43,7 +37,7 @@ public class Game {
                 printStrikeBall();
             }
             if (!isContainAnyNumber()) {
-                System.out.println(NOTHING);
+                System.out.println(Message.NOTHING);
             }
             isThreeStrike = isThreeStrike();
         }
@@ -56,13 +50,13 @@ public class Game {
                 computer.randomNumberListToString());
 
         if (strikeCount == 0) {
-            System.out.println(ballCount + BALL);
+            System.out.println(ballCount + Message.BALL);
         }
         if (ballCount == 0) {
-            System.out.println(strikeCount + STRIKE);
+            System.out.println(strikeCount + Message.STRIKE);
         }
         if (strikeCount != 0 && ballCount != 0) {
-            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
+            System.out.println(ballCount + Message.BALL + " " + strikeCount + Message.STRIKE);
         }
     }
 
@@ -83,16 +77,16 @@ public class Game {
 
     public void selectRestartOrEndGame() {
         int input;
-        System.out.println(RESTART_NOTIFICATION);
+        System.out.println(Message.RESTART_NOTIFICATION);
         input = Integer.parseInt(Console.readLine());
 
         if (input == 1) {
             repeatUntilAnswerCorrect();
-            System.out.println(END_NOTIFICATION);
+            System.out.println(Message.END_NOTIFICATION);
             selectRestartOrEndGame();
         }
         if (input == 2) {
-            System.out.println("게임 종료");
+            System.out.println(Message.REAL_END_NOTIFICATION);
             System.exit(0);
         }
 
