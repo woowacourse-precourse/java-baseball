@@ -34,6 +34,7 @@
 - [x]  입력값을 검증해주는 책임을 가지고 있는 InputValidator 유틸 클래스 추가
 - [x]  야구 게임과 관련된 오류를 표현하는 BaseballGameException 커스텀 예외 추가
 - [x]  BaseballNumbers를 생성하는 책임을 가지고 있는 BaseballNumbersFactory 클래스 추가
+- [x]  야구 게임의 결과를 표현하는 BaseballGameResult Enum 추가
 
 ### Baseballs 클래스의 야구게임
 
