@@ -5,28 +5,27 @@ import java.util.List;
 public class Answer {
 
     public static boolean compareAnswer(List<Integer> computer, List<Integer> user){
-        int strikeCount =0;
-        int ballCount = 0;
+        int[] strikeAndBallCount = new int[2];
 
         for(int i =0;i<3;i++){
-            eachCompare(computer, user.get(i), i, strikeCount, ballCount);
+            eachCompare(computer, user.get(i), i, strikeAndBallCount);
         }
 
-        System.out.print(strikeCount +" "+ ballCount);
+        System.out.print(strikeAndBallCount[0] +" "+ strikeAndBallCount[1]);
 
         return false;
     }
 
-    public static void eachCompare(List<Integer> computer, int userNumber, int userIndex, int strikeCount, int ballCount){
+    public static int[] eachCompare(List<Integer> computer, int userNumber, int userIndex, int[] strikeAndBallcount){
         for(int j = 0;j<3;j++){
             if(checkStrike(computer.get(j), userNumber, userIndex, j) ){
-                strikeCount ++;
+                strikeAndBallcount[0] ++;
                 continue;
             }
-
-            if(checkBall(computer.get(j), userNumber) ) ballCount ++;
-
+            if(checkBall(computer.get(j), userNumber) ) strikeAndBallcount[1] ++;
         }
+
+        return strikeAndBallcount;
     }
 
     public static boolean checkStrike(int computerNumber, int userNumber, int computerIndex, int userIndex){

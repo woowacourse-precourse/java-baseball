@@ -15,9 +15,12 @@ public class Application {
 
         compareAnswer(computerNumber.computerNumbers,userNumber.userNumbers);
 
-
-//        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
-//        for(int a : userNumber.userNumbers) System.out.print(a+" ");
+        System.out.println();
+        System.out.println("computer");
+        for(int a : computerNumber.computerNumbers) System.out.print(a+" ");
+        System.out.println();
+        System.out.println("user");
+        for(int a : userNumber.userNumbers) System.out.print(a+" ");
     }
 
     public static void main(String[] args) {
