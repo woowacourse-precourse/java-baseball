@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.model.Computer;
 import baseball.model.Hint;
+import baseball.model.Player;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
