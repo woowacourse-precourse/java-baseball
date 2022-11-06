@@ -14,7 +14,6 @@ public class Turn {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
     private static final int STRIKE_OUT_NUMBER = 3;
 
     private List<Integer> playerNumberList;
