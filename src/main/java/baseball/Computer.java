@@ -34,4 +34,8 @@ public class Computer {
     public int getFirstRandomNumber() {
         return randomNumber.get(0);
     }
+
+    public int getSecondRandomNumber() {
+        return randomNumber.get(1);
+    }
 }
