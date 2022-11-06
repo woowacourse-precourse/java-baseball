@@ -24,13 +24,13 @@ public class BallReaderTest {
         List<Integer> firstBallData = firstBall.getBallData();
         List<Integer> secondBallData = secondBall.getBallData();
 
-        Map<String, Integer> result = ballReader.getResult(firstBall, secondBall);
+        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("firstBall = " + firstBall);
         System.out.println("secondBall = " + secondBall);
         System.out.println(result);
         System.out.println();
 
-        assertThat(ballReader.getResult(firstBall, secondBall)).isInstanceOf(Map.class);
+        assertThat(ballReader.getStrikeAndBall(firstBall, secondBall)).isInstanceOf(Map.class);
     }
 
     @DisplayName("BallReader는 호환되지 않는 공을 입력한다면 예외를 발생시킨다.")
@@ -39,7 +39,7 @@ public class BallReaderTest {
         Ball firstBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
         Ball errorBall = new Ball(List.of(1, 2, 3, 4));
 
-        assertThatThrownBy(() -> ballReader.getResult(firstBall, errorBall)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> ballReader.getStrikeAndBall(firstBall, errorBall)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("BallReader가 3스트라이크를 일 때 게임이 끝났다 판단하는지 판독")
@@ -49,7 +49,7 @@ public class BallReaderTest {
         Ball firstBall = new Ball(ballData);
         Ball secondBall = new Ball(ballData);
 
-        Map<String, Integer> result = ballReader.getResult(firstBall, secondBall);
+        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("result = " + result);
         System.out.println();
 
@@ -66,7 +66,7 @@ public class BallReaderTest {
             secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
         }
 
-        Map<String, Integer> result = ballReader.getResult(firstBall, secondBall);
+        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("firstBall = " + firstBall);
         System.out.println("secondBall = " + secondBall);
         System.out.println("result = " + result);

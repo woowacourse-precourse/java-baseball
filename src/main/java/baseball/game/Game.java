@@ -54,7 +54,7 @@ public class Game {
     }
 
     private void printResult(Ball userBall, Ball computerBall) {
-        Map<String, Integer> result = ballReader.getResult(userBall, computerBall);
+        Map<String, Integer> result = ballReader.getStrikeAndBall(userBall, computerBall);
         if (result.isEmpty()) {
             System.out.printf(NOTHING_MESSAGE);
         }

@@ -87,7 +87,7 @@ public class GameTest extends NsTest {
 
         Map<String, Integer> fourthResult = new HashMap<>();
 
-        when(ballReader.getResult(any(), any()))
+        when(ballReader.getStrikeAndBall(any(), any()))
                 .thenReturn(firstResult)
                 .thenReturn(secondResult)
                 .thenReturn(thirdResult)
