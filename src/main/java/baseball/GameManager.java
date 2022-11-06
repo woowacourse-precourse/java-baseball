@@ -27,6 +27,11 @@ public class GameManager {
         return userScore.get(1) == SystemConstant.GAME_DIGIT;
     }
 
+    private void startFirstGame() {
+        printGameStartMessage();
+        startLoop();
+    }
+
 
 
 }
