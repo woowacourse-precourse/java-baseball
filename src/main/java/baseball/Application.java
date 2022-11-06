@@ -1,14 +1,15 @@
 package baseball;
 
-import baseball.config.AppConfig;
+import baseball.model.Computer;
+import baseball.model.Player;
+import baseball.model.Referee;
 
 public class Application {
 
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-        Game game = new Game(appConfig.computerController(),
-                             appConfig.playerController(),
-                             appConfig.refereeController());
+        Game game = new Game(new Computer(),
+                             new Player(),
+                             new Referee());
         game.startGame();
     }
 }
