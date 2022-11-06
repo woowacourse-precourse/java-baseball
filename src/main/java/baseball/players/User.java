@@ -2,6 +2,7 @@ package baseball.players;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import org.assertj.core.util.VisibleForTesting;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class User implements Player {
         return input;
     }
 
-    private void checkError(String userNumbers) throws IllegalArgumentException {
+    public void checkError(String userNumbers) throws IllegalArgumentException {
 
         final String REGEX = "[0-9]+";
         int length = userNumbers.length();
