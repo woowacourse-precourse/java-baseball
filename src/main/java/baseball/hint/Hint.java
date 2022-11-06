@@ -62,4 +62,11 @@ public class Hint {
         }
         return false;
     }
+
+    public boolean isEndGame() {
+        if (getStrike() == LENGTH) {
+            return true;
+        }
+        return false;
+    }
 }
