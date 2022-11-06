@@ -1,12 +1,14 @@
 package baseball;
 
 import baseball.appconfig.AppConfig;
+import baseball.computer.Computer;
 import baseball.manager.Manager;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -25,6 +27,18 @@ class ApplicationTest extends NsTest {
         manager.printGameStart();
 
         assertThat("숫자 야구 게임을 시작합니다.\r\n").isEqualTo(byteArrayOutputStream.toString());
+    }
+
+    @Test
+    void 컴퓨터_임의의수_3개생성() {
+        Computer computer = appConfig.computer();
+        List<Integer> otherNumbers = computer.createOtherNumber();
+
+        assertThat(otherNumbers).allSatisfy(otherNumber ->
+                assertThat(otherNumber).isNotNull().isBetween(1, 9));
+        assertThat(otherNumbers.get(0)).isNotEqualTo(otherNumbers.get(1));
+        assertThat(otherNumbers.get(0)).isNotEqualTo(otherNumbers.get(2));
+        assertThat(otherNumbers.get(1)).isNotEqualTo(otherNumbers.get(2));
     }
 
     @Test
