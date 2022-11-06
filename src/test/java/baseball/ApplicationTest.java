@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
@@ -385,43 +384,18 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(str);
     }
 
-    @Test
-    void 게임_진행의_값을_얻는_함수_예외테스트_1() throws Exception {
+    @ParameterizedTest(name = "게임진행을 위한 값에대한 예외처리 확인")
+    @ValueSource(strings = {"0", "812", "-1", "asdfasdf"})
+    @DisplayName("게임진행을 위한 값에대한 예외 테스트")
+    void 게임_진행의_값을_얻는_함수_예외테스트_1(String str) throws Exception {
         //given
         User user = new User();
         // 입력을 담는다.
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
         // when
         // then
-        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
-    }
-
-    @Test
-    void 게임_진행의_값을_얻는_함수_예외테스트_2() throws Exception {
-        //given
-        User user = new User();
-        // 입력을 담는다.
-        String input = "812";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        // when
-        // then
-        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
-    }
-
-    @Test
-    void 게임_진행의_값을_얻는_함수_예외테스트_3() throws Exception {
-        //given
-        User user = new User();
-        // 입력을 담는다.
-        String input = "asdsad";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        // when
-        // then
-        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
+        assertThatThrownBy(user::InputProceedNum).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
