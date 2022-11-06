@@ -3,15 +3,25 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
+import java.util.List;
 
 import static baseball.Constant.*;
 
 public class UserInput {
     private String input;
+    List<Integer> numbers;
 
     public void inputNumbers() {
         PrintMessage.enterNumber();
         this.input = Console.readLine();
+        isValid();
+        convertNumbers();
+    }
+
+
+    private void convertNumbers() {
+        Convert convert = new Convert();
+        this.numbers = convert.IntegerList(input);
     }
 
     public void isValid() {
@@ -32,7 +42,7 @@ public class UserInput {
 
     private boolean isValidReStartMessage() {
         return input.equals(RE_START_INPUT);
-    };
+    }
 
     private boolean isValidQuitGameMessage() {
         return input.equals(QUIT_GAME_INPUT);
