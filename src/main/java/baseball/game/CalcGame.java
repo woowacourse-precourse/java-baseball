@@ -28,7 +28,7 @@ public class CalcGame {
         number = new StrikeNumber(numberList);
     }
 
-    public static GameResult calcGameResult(Integer inputNumber) throws IllegalAccessException {
+    public static GameResult calcGameResult(Integer inputNumber) throws IllegalArgumentException {
 
         List<Integer> userNumber = new ArrayList<>();
 
@@ -61,13 +61,13 @@ public class CalcGame {
         return new GameResult(ball, strike);
     }
 
-    private static void checkNumberRange(Integer number) throws IllegalAccessException {
+    private static void checkNumberRange(Integer number) throws IllegalArgumentException {
         if (number < 1 || number > 9) {
             throw new IllegalArgumentException("Number length is 1 to 9");
         }
     }
 
-    private static void checkNumberLength(List<Integer> list) throws IllegalAccessException {
+    private static void checkNumberLength(List<Integer> list) throws IllegalArgumentException {
         if (list.size() != LENGTH) {
             throw new IllegalArgumentException("Number length out of range");
         }
