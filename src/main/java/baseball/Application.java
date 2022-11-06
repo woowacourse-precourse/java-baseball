@@ -22,8 +22,8 @@ public class Application {
             BaseBallGame baseBallGame = new BaseBallGame(pickRandom());
             baseBallGame.gameStart();
 
-            statusCode = convertUserDataToStatusCode(Console.readLine());
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            statusCode = askRestartOrEnd();
         } while (statusCode == RESTART_CODE);
 
         if (statusCode != END_CODE) {
@@ -33,7 +33,9 @@ public class Application {
     }
 
 
-    private static int convertUserDataToStatusCode(String restartOrEndOrError) throws IllegalArgumentException {
+    private static int askRestartOrEnd() throws IllegalArgumentException {
+        String restartOrEndOrError = Console.readLine();
+
         if (!restartOrEndOrError.matches("[12]")) {
             throw new IllegalArgumentException();
         }
