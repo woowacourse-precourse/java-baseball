@@ -54,10 +54,8 @@ public class Model {
     }
 
     private void isContainChar(String humannumber) {
-        int number = 0;
-
         try {
-            number = Integer.parseInt(humannumber);
+            int number = Integer.parseInt(humannumber);
         }catch (Exception e) {
             throw new IllegalArgumentException();
         }//공백 확인
