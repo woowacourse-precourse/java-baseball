@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -11,7 +12,12 @@ public class Application {
     }
 
     public static void baseball() {
+        boolean flag = true;
         String answer = selectRandomNumber();
+        while (flag) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+        }
     }
 
     public static String selectRandomNumber() {
