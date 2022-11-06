@@ -1,9 +1,9 @@
-package baseball;
+package baseball.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Config.gameService;
+import static baseball.config.Config.playGameController;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,6 +22,6 @@ class PlayGameControllerTest extends NsTest {
 
     @Override
     protected void runMain() {
-        PlayGameController.run(gameService());
+        playGameController().run();
     }
 }
