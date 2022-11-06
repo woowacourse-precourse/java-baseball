@@ -58,7 +58,7 @@ public class Application {
         if(!availableUserNumberIsChecking){
             userNumbers = inputAvailableUserNumberService();
         }
-        return "";
+        return userNumbers;
     }
 
     public static void main(String[] args) {
