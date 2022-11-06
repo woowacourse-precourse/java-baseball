@@ -51,7 +51,7 @@ public class TurnTest extends NsTest {
         List<Integer> testInput = List.of(1, 2, 3, 4);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("3개의 숫자만 입력해주세요.");
+                .hasMessageContaining("3개의 숫자를 입력해주세요.");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class TurnTest extends NsTest {
         List<Integer> testInput = List.of(1, 2);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("3개의 숫자만 입력해주세요.");
+                .hasMessageContaining("3개의 숫자를 입력해주세요.");
     }
 
     @Test
@@ -69,7 +69,7 @@ public class TurnTest extends NsTest {
         List<Integer> testInput = List.of(33, 42, 55);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1에서 9까지의 숫자만 입력해 주세요.");
+                .hasMessageContaining("1에서 9까지의 숫자를 입력해 주세요.");
     }
 
     @Test
@@ -78,7 +78,7 @@ public class TurnTest extends NsTest {
         List<Integer> testInput = List.of(1, 1, 2);
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("서로 다른 숫자만 입력해주세요.");
+                .hasMessageContaining("서로 다른 숫자를 입력해주세요.");
     }
 
     @Test
@@ -87,7 +87,7 @@ public class TurnTest extends NsTest {
         List<Integer> testInput = List.of();
         assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("3개의 숫자만 입력해주세요.");
+                .hasMessageContaining("3개의 숫자를 입력해주세요.");
     }
 
     @Test
