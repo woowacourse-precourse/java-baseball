@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameTest {
+public class UserStringCustomTest {
 
     Game game = new Game();
 
@@ -22,5 +22,21 @@ public class GameTest {
         List<Integer> integers = new ArrayList<>();
 
         assertThat(game.stringToListInteger(input).getClass().getName()).isEqualTo(integers.getClass().getName());
+    }
+
+    @Test
+    void incorrectUserAnswerContainNotNumeric() {
+        String userAnswer = "!23";
+        assertThat(!userAnswer.matches("[+-]?\\d*(\\.\\d+)?")).isEqualTo(true); {
+            throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
+        }
+    }
+
+    @Test
+    void incorrectUserAnswerContainZero() {
+        String userAnswer = "023";
+        assertThat(userAnswer.contains("0")).isEqualTo(true); {
+            throw new IllegalArgumentException("입력 값에 숫자가 아닌 값이 포함되어 있습니다.");
+        }
     }
 }
