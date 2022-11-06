@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static baseball.Constant.*;
 
@@ -13,7 +11,8 @@ public class GameSystem {
         InputUtil inputUtil = new InputUtil();
         Hint hint = new Hint();
 
-        HashSet<String> computerNumber = randomUtil.giveComputerNumber();
+        List<String> computerNumber = randomUtil.giveComputerNumber();
+        System.out.println(computerNumber);
         List<String> userNumber;
         boolean exit=false;
 
