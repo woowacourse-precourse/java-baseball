@@ -3,6 +3,7 @@ package baseball.view;
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.GameResult;
+import baseball.enums.GuessResultType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,14 +24,14 @@ public class NumberBaseballViewTest {
         // when
         // then
         assertThat(numberBaseballView.printResult(correctResult))
-                .isEqualTo(1);
+                .isEqualTo(GuessResultType.WIN);
         assertThat(numberBaseballView.printResult(nothingResult))
-                .isEqualTo(0);
+                .isEqualTo(GuessResultType.NOT_WIN);
         assertThat(numberBaseballView.printResult(strikeAndBallResult))
-                .isEqualTo(0);
+                .isEqualTo(GuessResultType.NOT_WIN);
         assertThat(numberBaseballView.printResult(strikeOnlyResult))
-                .isEqualTo(0);
+                .isEqualTo(GuessResultType.NOT_WIN);
         assertThat(numberBaseballView.printResult(ballOnlyResult))
-                .isEqualTo(0);
+                .isEqualTo(GuessResultType.NOT_WIN);
     }
 }
