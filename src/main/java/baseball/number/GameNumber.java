@@ -2,10 +2,10 @@ package baseball.number;
 
 import java.util.stream.IntStream;
 
-public class Number {
+public class GameNumber {
     private String number;
 
-    public Number(String userNumber) {
+    public GameNumber(String userNumber) {
         this.number = userNumber;
     }
 
@@ -29,5 +29,4 @@ public class Number {
         IntStream Stream = userNumber.chars();
         return Stream.distinct().count() != 3;
     }
-
 }
