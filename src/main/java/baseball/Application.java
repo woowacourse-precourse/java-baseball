@@ -8,17 +8,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
-        computer = createComputerNumber(computer);
-        System.out.println(computer);
+//        System.out.println(computer);
 
         while (true) {
+            computer = createComputerNumber();
+            System.out.println(computer);
             startGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String s = Console.readLine();
             if (isNumberException(s) && !(s.equals("1") || s.equals("2"))) {
                 throw new IllegalArgumentException();
             }
-            if (s.equals(2)) {
+            if (s.equals("2")) {
                 break;
             }
         }
@@ -47,6 +48,7 @@ public class Application {
         HashSet<Integer> set = new HashSet();
         for (int i = 0; i < s.length(); i++) {
             int n = s.charAt(i) - '0';
+            if(n == 0) return true;
             if (set.contains(n)) { //  같은 숫자가 2개 이상 입력된 경우이다.
                 return true;
             }
@@ -95,7 +97,8 @@ public class Application {
         return false;
     }
 
-    private static List<Integer> createComputerNumber(List<Integer> computer) {
+    private static List<Integer> createComputerNumber() {
+        List<Integer> computer = new ArrayList();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
