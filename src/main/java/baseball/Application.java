@@ -96,4 +96,10 @@ public class Application {
         }
         System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
     }
+
+    public static void validateRestartNumber(String input) throws IllegalArgumentException {
+        if (!Pattern.matches("[1-2]", input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
