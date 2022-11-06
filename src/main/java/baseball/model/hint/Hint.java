@@ -24,7 +24,7 @@ public class Hint {
         return false;
     }
 
-    public String getResult() {
+    public String getBaseballNumberCount() {
         if(answerBaseballNumbers.isNothing(inputBaseballNumbers)) {
             return NOTHING_STRING;
         }
