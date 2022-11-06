@@ -23,7 +23,63 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("qw"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("qwe"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("q2e"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("232"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트7() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("444"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트8() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
