@@ -113,6 +113,10 @@ class Count {
         System.out.printf("%d볼", ball);
     }
 
+    void printStrike(int strike) {
+        System.out.printf("%d스트라이크", strike);
+    }
+
     int printCount() {
         if (this.ball == 0 && this.strike == 0) {
             System.out.println("낫싱");
