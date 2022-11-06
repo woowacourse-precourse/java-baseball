@@ -23,6 +23,10 @@ public class GameController {
         this.user.inputNumOfUser();
     }
 
+    public void callInputProceedNum() {
+        user.InputProceedNum();
+    }
+
     public void reStartGame() {
         computer.initComputer();
         computer.initCntStrikeBall();
@@ -60,6 +64,7 @@ public class GameController {
     final int NUM_END_GAME = 2;
 
     final String MSG_GAME_END = "게임종료";
+
 
     public boolean isEndgameInputOfUser(int numInputOfUser) {
         if (isEndGameUserWant(numInputOfUser)) {
