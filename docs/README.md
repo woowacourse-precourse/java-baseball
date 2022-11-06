@@ -9,14 +9,14 @@
   - [x] 같은 수가 나오지 않도록 중복 체크한다.
   
 
-- [ ] 플레이어는 3자리 수를 입력하고, 잘못된 값을 입력했다면 ```IllegalArgumentException```를 발생시킨다.
-  - [ ] 입력 받을 때마다 ```숫자를 입력해주세요 : ```를 출력한다.
-  - [ ] 입력 받을 때 주어진 ```Console.readLine()``` 메서드를 이용한다.
-  - [ ] 입력한 값이 3자리가 아니면 ```IllegalArgumentException```을 발생시킨다.
-  - [ ] 입력한 값이 숫자가 아니면 ```IllegalArgumentException```을 발생시킨다.
-  - [ ] 입력한 값에 0이 들어가면 ```IllegalArgumentException```을 발생시킨다.
-  - [ ] 입력한 값이 음수면 ```IllegalArgumentException```을 발생시킨다.
-  - [ ] 입력한 값에 같은 숫자가 2개이상 존재하면 ```IllegalArgumentException```을 발생시킨다.
+- [x] 플레이어는 3자리 수를 입력하고, 잘못된 값을 입력했다면 ```IllegalArgumentException```를 발생시킨다.
+  - [x] 입력 받을 때마다 ```숫자를 입력해주세요 : ```를 출력한다.
+  - [x] 입력 받을 때 주어진 ```Console.readLine()``` 메서드를 이용한다.
+  - [x] 입력한 값이 3자리가 아니면 ```IllegalArgumentException```을 발생시킨다.
+  - [x] 입력한 값이 숫자가 아니면 ```IllegalArgumentException```을 발생시킨다.
+  - [x] 입력한 값에 0이 들어가면 ```IllegalArgumentException```을 발생시킨다.
+  - [x] 입력한 값이 음수면 ```IllegalArgumentException```을 발생시킨다.
+  - [x] 입력한 값에 같은 숫자가 2개이상 존재하면 ```IllegalArgumentException```을 발생시킨다.
     
 
 - [ ] 컴퓨터는 플레이어가 입력한 값에 대한 결과를 출력한다.
