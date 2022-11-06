@@ -91,7 +91,8 @@ public class Application {
         System.out.println();
     }
 
-    private static Score calculateScore(List<Integer> computerInputs, List<Integer> userInputs) {
+    private static Score calculateScore
+            (List<Integer> computerInputs, List<Integer> userInputs) {
         Score result = new Score();
         for (int i = 0; i < userInputs.size(); i++) {
             int userInput = userInputs.get(i);
@@ -107,7 +108,8 @@ public class Application {
         return result;
     }
 
-    private static ScoreCategory calculateScoreWithOneInteger(List<Integer> computerInputs, int userInput, int userInputIdx) {
+    private static ScoreCategory calculateScoreWithOneInteger
+            (List<Integer> computerInputs, int userInput, int userInputIdx) {
         for (int i = 0; i < computerInputs.size(); i++) {
             int computerInput = computerInputs.get(i);
             if (computerInput == userInput && i == userInputIdx) {
