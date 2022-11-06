@@ -2,6 +2,7 @@ package custom.controller;
 
 import custom.dto.Response;
 import custom.service.BaseBallService;
+import custom.service.vo.ReTry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +21,8 @@ public class BaseBallController {
         validateNumber(input);
         return baseBallService.matchNumber(input);
     }
+
+
 
 
     void validateNumber(String input) throws IllegalArgumentException {
