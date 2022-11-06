@@ -56,7 +56,7 @@ public class Game {
 		return playerInputNumbers;
 	}
 
-	private void checkInput(String[] playerInputs) {
+	protected void checkInput(String[] playerInputs) {
 		if (playerInputs.length != 3) {
 			throw new IllegalArgumentException();
 		}
