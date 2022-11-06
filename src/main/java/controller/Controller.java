@@ -60,4 +60,10 @@ public class Controller {
     private static int compareCharacters(char ch1, char ch2) {
         return (int) (ch1 - ch2);
     }
+
+    public static void handleException(boolean result){
+        if (!result){
+            throw new IllegalArgumentException("잘못된 값을 입력하여 종료합니다.");
+        }
+    }
 }
