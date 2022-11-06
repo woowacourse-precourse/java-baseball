@@ -11,7 +11,7 @@ public class GameController {
     private static final int THREE_STRIKE = 3;
 
     GameService gameService = new GameService();
-    GameStatusService gameStatusService;
+    GameStatusService gameStatusService = new GameStatusService();
     PlayerView playerView = new PlayerView();
     ScoreResultView scoreResultView = new ScoreResultView();
     GameStatusView gameStatusView = new GameStatusView();
@@ -75,6 +75,6 @@ public class GameController {
     }
 
     void setGameStatus(String opinion){
-
+        gameStatusService.setGameStatus(opinion);
     }
 }
