@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        playGame();
     }//public static void main
 
     public static List<Integer> getUserNumber() {
@@ -39,5 +41,16 @@ public class Application {
         return readLine;
     }//public static String exceptReadingLine
 
+    public static List<Integer> getEnemyNumber() {
+        List<Integer> enemy = new ArrayList<>();
+
+        while (enemy.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!enemy.contains(randomNumber)) {
+                enemy.add(randomNumber);
+            }
+        }
+        return enemy;
+    }//public static void enemyNumber
 
 }
