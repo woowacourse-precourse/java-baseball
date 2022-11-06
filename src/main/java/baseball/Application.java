@@ -7,7 +7,7 @@ import java.nio.Buffer;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args)throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         int play=1;
         List <Integer> computernum=new ArrayList<Integer>();
@@ -17,7 +17,7 @@ public class Application {
             baseballgame(computernum);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            play=br.read();
+            play=Integer.parseInt(Console.readLine());
             computernum.clear();
         }
     }
@@ -39,8 +39,8 @@ public class Application {
             Arrays.fill(count,0);
             System.out.print("숫자를 입력해주세요 :");
             usernum=Console.readLine();
+            System.out.println(usernum);
             Errorcheck(usernum);
-            System.out.println("");
             for(int i=0;i<usernum.length();i++) {
                 pitch((usernum.charAt(i)-'0'), computer, i, count);
             }
@@ -61,6 +61,8 @@ public class Application {
         }
     }
     public static void Errorcheck(String usernum){
+        if(usernum.length()!=3)
+            throw new IllegalArgumentException();
         for(int i=0;i<usernum.length();i++){
             if(!(usernum.charAt(i)<='9'&&usernum.charAt(i)>='1'))
                 throw new IllegalArgumentException();
