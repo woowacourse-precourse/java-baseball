@@ -13,7 +13,7 @@ public class NumberBaseball {
         do {
             List<Integer> targetNumbers = staff.getTargetNumbers();
             repeatUntilUserGetsPerfectAnswer(targetNumbers);
-        } while (isUserWantMoreGame());
+        } while (staff.isUserWantMoreGame());
     }
 
     private void repeatUntilUserGetsPerfectAnswer(List<Integer> targetNumbers) {

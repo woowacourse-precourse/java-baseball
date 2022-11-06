@@ -11,7 +11,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static baseball.constant.Rules.END_NUMBER;
+import static baseball.constant.Rules.FINISH;
 import static baseball.constant.Rules.FORBIDDEN_NUMBER;
+import static baseball.constant.Rules.MORE;
 import static baseball.constant.Rules.PICK_COUNT;
 import static baseball.constant.Rules.START_NUMBER;
 
@@ -75,5 +77,20 @@ public class Staff {
         if (new HashSet<>(userNumbers).size() != userNumbers.size()) {
             throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
         }
+    }
+
+    public boolean isUserWantMoreGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if (MORE.equals(input)) {
+            return true;
+        }
+
+        if (!FINISH.equals(input)) {
+            throw new IllegalArgumentException(MORE + " 또는 " + FINISH + "의 값이 아닙니다.");
+        }
+
+        return false;
     }
 }
