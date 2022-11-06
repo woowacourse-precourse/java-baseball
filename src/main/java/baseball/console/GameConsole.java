@@ -1,32 +1,46 @@
 package baseball.console;
 
-import baseball.console.input.converter.RestartOrExitCodeConverter;
-import baseball.console.input.converter.ThreeNumberConverter;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.console.input.ConsoleInput;
+import baseball.console.output.ConsoleOutput;
+import baseball.core.dto.BallStrikeDto;
 
 import java.util.List;
 
 public class GameConsole {
 
-    private final ThreeNumberConverter threeNumberConverter;
-    private final RestartOrExitCodeConverter codeConverter;
+    private final ConsoleInput input;
+    private final ConsoleOutput output;
 
     public GameConsole() {
-        this.threeNumberConverter = new ThreeNumberConverter();
-        this.codeConverter = new RestartOrExitCodeConverter();
+        this.input = new ConsoleInput();
+        this.output = new ConsoleOutput();
     }
 
     public List<Integer> inputThreeNumbers() {
-        String inputString = input();
-        return threeNumberConverter.getThreeNumbers(inputString);
+        return input.inputThreeNumbers();
     }
 
     public Integer inputCode() {
-        String inputString = input();
-        return codeConverter.getRestartOrExitCode(inputString);
+        return input.inputCode();
     }
 
-    private String input() {
-        return Console.readLine();
+    public void printStartMessage() {
+        output.printStartMessage();
+    }
+
+    public void printNumberInputMessage() {
+        output.printNumberInputMessage();
+    }
+
+    public void printResultMessage(BallStrikeDto dto) {
+        output.printResultMessage(dto);
+    }
+
+    public void printFinishMessage() {
+        output.printFinishMessage();
+    }
+
+    public void printRestartOrExitMessage() {
+        output.printRestartOrExitMessage();
     }
 }
