@@ -6,14 +6,16 @@ import java.util.List;
 
 public class Computer {
 
+    static final int NUMBER_LIST_SIZE = 3;
+
     List<Integer> getNumberList() {
-        List<Integer> threeNumbers = new ArrayList<>();
-        while (threeNumbers.size() < 3) {
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < NUMBER_LIST_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!threeNumbers.contains(randomNumber)) {
-                threeNumbers.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
-        return threeNumbers;
+        return computerNumbers;
     }
 }
