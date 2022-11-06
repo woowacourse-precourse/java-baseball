@@ -24,7 +24,7 @@ public class Number {
     public List<Integer> getInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if(isValidString(input)) {
+        if(!isValidString(input)) {
             throw new IllegalArgumentException();
         }
         return stringToList(input);
