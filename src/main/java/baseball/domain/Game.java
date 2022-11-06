@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private boolean status = false;
+    private boolean running = false;
     private final Judge judge;
 
     public Game() {
@@ -17,12 +17,12 @@ public class Game {
     }
 
     public boolean isRunning() {
-        return this.status;
+        return this.running;
     }
 
     public void startGame() {
         GameView.printStartMessage();
-        this.status = true;
+        this.running = true;
     }
 
     public List<Integer> getUserInput() {
@@ -47,7 +47,7 @@ public class Game {
         GameView.printHint(strikeCount, ballCount);
         if (strikeCount == Constants.CORRECT_STRIKE_COUNT) {
             GameView.printResult(judge.isCorrect(strikeCount));
-            this.status = false;
+            this.running = false;
         }
     }
 
