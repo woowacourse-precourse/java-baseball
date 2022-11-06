@@ -19,4 +19,11 @@ public class UserInputException {
         }
         return true;
     }
+
+    public boolean isNotContainZero(String userInput) {
+        if (userInput.contains("0")) {
+            return false;
+        }
+        return true;
+    }
 }
