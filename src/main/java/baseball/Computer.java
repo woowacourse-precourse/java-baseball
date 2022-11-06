@@ -17,6 +17,9 @@ public class Computer {
                 computerNumber.add(randomNumber);
             }
         }
+    }
 
+    public List<Integer> getComNum() {
+        return computerNumber;
     }
 }
