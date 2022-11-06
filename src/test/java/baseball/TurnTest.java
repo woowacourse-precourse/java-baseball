@@ -82,6 +82,15 @@ public class TurnTest extends NsTest {
     }
 
     @Test
+    void validatePlayerNumberList_test_input_empty(){
+        Turn turn = new Turn();
+        List<Integer> testInput = List.of();
+        assertThatThrownBy(() -> turn.validatePlayerNumberList(testInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개의 숫자만 입력해주세요.");
+    }
+
+    @Test
     void countNumberOfBalls_test_ball_count() {
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
         List<Integer> testPlayerNumberList = List.of(3, 4, 2);
