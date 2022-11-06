@@ -30,14 +30,16 @@ class InitStatusTest {
     void 준비상태에서_next_함수를_실행시키면_게임시작이_출력됩니다() {
         new InitStatus().next(new BaseballContextFake());
 
-        var actual = outputStreamCaptor.toString().trim();
+        var actual = outputStreamCaptor.toString()
+                .trim();
 
         assertThat(actual).isEqualTo(InitStatus.GAME_START_MESSAGE);
     }
 
     @Test
     void 준비상태_다음에_올_클래스의_인스턴스는_정답_생성상태_입니다() {
-        var status = new InitStatus().next(new BaseballContextFake());
+        var context = new BaseballContextFake();
+        var status = new InitStatus().next(context);
         assertThat(status).isInstanceOf(GenerateAnswerStatus.class);
     }
 }
