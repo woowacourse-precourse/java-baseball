@@ -66,7 +66,8 @@ public class GameController {
     final String MSG_GAME_END = "게임종료";
 
 
-    public boolean isEndgameInputOfUser(int numInputOfUser) {
+    public boolean isEndgameInputOfUser() {
+        int numInputOfUser = user.getNumProceedUser();
         if (isEndGameUserWant(numInputOfUser)) {
             return true;
         }

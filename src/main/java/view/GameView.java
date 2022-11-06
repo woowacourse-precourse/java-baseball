@@ -37,9 +37,8 @@ public class GameView {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
 
-                int numInputOfUser = UseFunc.parseIntFromStr(UseFunc.getString());
-                isValidUser(numInputOfUser);
-                if (gameController.isEndgameInputOfUser(numInputOfUser)) {
+                gameController.callInputProceedNum();
+                if (gameController.isEndgameInputOfUser()) {
                     break;
                 }
             }
