@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,31 +11,27 @@ public class Application {
     public static void main(String[] args) {
 
         NumberBaseballGame.startGame();
-
-
     }
 }
-
-
 class UserInput {
     private static String readLine = "";
-    private static Console inputConsole;
-    public static int[] request() {
+
+    public static int[] requestBaseballNumber() {
         readLine = "";
         readLine = Console.readLine();
-        validLength();
+        validLength(3);
         isNumber();
 
         return divideDigits();
     }
 
-    private static void validLength() {
-        if (readLine.length() != 3) {
+    private static void validLength(int length) {
+        if (readLine.length() != length) {
             throw new IllegalArgumentException();
         }
     }
     private static void isNumber() {
-        //Integer.parseInt(readLine);
+        Integer.parseInt(readLine);
     }
 
     private static int[] divideDigits() {
@@ -47,6 +42,20 @@ class UserInput {
         }
         return numberContainer;
     }
+
+    public static int requestContinue() {
+        readLine = "";
+        readLine = Console.readLine();
+        validLength(1);
+        isNumber();
+
+        int number = Integer.parseInt(readLine);
+        if (number < 1 || number > 2) {
+            throw new IllegalArgumentException();
+        }
+        return number;
+    }
+
 
 }
 
@@ -158,6 +167,7 @@ class NumberBaseballGame {
     private static boolean gameEndFlag = false;
 
     public static void startGame() {
+
         makeRandomBaseballNumber();
         PrintGuidSentence.startGame();
         proceedGame();
@@ -180,14 +190,11 @@ class NumberBaseballGame {
         baseballNumber = new BaseballNumber(numberContainer);
     }
     private static void proceedGame() {
-
+        gameEndFlag = false;
         while (!gameEndFlag) {
-
             PrintGuidSentence.requestNumber();
-            checkBaseballNumber(new BaseballNumber(UserInput.request()));
+            checkBaseballNumber(new BaseballNumber(UserInput.requestBaseballNumber()));
         }
-
-
     }
     private static void checkBaseballNumber(BaseballNumber userGuess) {
         int[] strikeAndBall = baseballNumber.checkStrikerAndBall(userGuess);
@@ -195,9 +202,15 @@ class NumberBaseballGame {
 
         if (strikeAndBall[0] == 3) {
             PrintGuidSentence.endGame();
-            gameEndFlag = true;
+            askContinue(UserInput.requestContinue());
         }
     }
 
-
+    private static void askContinue(int number) {
+        if (number == 1) {
+            makeRandomBaseballNumber();
+            proceedGame();
+        }
+        gameEndFlag = true;
+    }
 }
