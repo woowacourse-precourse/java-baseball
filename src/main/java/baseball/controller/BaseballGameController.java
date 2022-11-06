@@ -1,14 +1,24 @@
 package baseball.controller;
 
+import static baseball.constant.Constants.*;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import baseball.domain.Balls;
 import baseball.domain.BaseballGameResult;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGameController {
 
 	public static Balls pickComputerBalls() {
-		return new Balls(new ArrayList<>());
+		Set<Integer> pickedBalls = new HashSet<>();
+		while (pickedBalls.size() < NUMBER_OF_BALLS_FOR_BASEBALL_GAME) {
+			int pickedBall = Randoms.pickNumberInRange(START_NUMBER_FOR_BASEBALL_GAME, END_NUMBER_FOR_BASEBALL_GAME);
+			pickedBalls.add(pickedBall);
+		}
+		return new Balls(new ArrayList<>(pickedBalls));
 	}
 
 	public static Balls pickUserBalls() {
