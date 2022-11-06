@@ -112,6 +112,9 @@ public class Application {
         String userAnswer = word;
         String regularExpression = "^[1-2]{1}$";
         boolean result = Pattern.matches(regularExpression,userAnswer);
+        if(!result){
+            throw new IllegalArgumentException("유효하지 않는 값입니다.");
+        }
     }
 
     public static void main(String[] args) {
