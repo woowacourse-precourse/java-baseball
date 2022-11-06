@@ -109,6 +109,10 @@ class Count {
         }
     }
 
+    void printBall(int ball) {
+        System.out.printf("%d볼", ball);
+    }
+
     int printCount() {
         if (this.ball == 0 && this.strike == 0) {
             System.out.println("낫싱");
