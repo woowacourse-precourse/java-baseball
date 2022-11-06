@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.BaseballCount;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,10 @@ public class Hint {
         this.countResult = new HashMap<>();
     }
 
+    public Hint(Map<String, Integer> countResult) {
+        this.countResult = countResult;
+    }
+
     private void initCountResult() {
         this.countResult.put("strike", 0);
         this.countResult.put("ball", 0);
@@ -26,20 +31,25 @@ public class Hint {
         this.countResult = computer.countBallAndStrikeWithPlayer(player, this.countResult);
     }
 
-    private String makeHintMessage() {
-        Integer strike = this.countResult.get("strike");
-        Integer ball = this.countResult.get("ball");
+    public String makeHintMessage() {
+        Integer strike = this.countResult.get(BaseballCount.STRIKE.getValue());
+        Integer ball = this.countResult.get(BaseballCount.BALL.getValue());
         String result = "";
-        if (strike == 3 && ball == 0) {
-            result = strike + STRIKE_MESSAGE + "\n" + WIN_MESSAGE;
-        } else if (strike == 0 && ball == 0) {
-            result = NOTHING_MESSAGE;
-        } else if (strike == 0 && ball > 0) {
-            result = ball + BALL_MESSAGE;
-        } else if (strike > 0 && ball == 0) {
-            result = strike + STRIKE_MESSAGE;
-        } else if (strike > 0 && ball > 0) {
-            result = ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE;
+
+        if (strike == 3) {
+            return strike + STRIKE_MESSAGE + "\n" + WIN_MESSAGE;
+        }
+        if (strike == 0 && ball == 0) {
+            return NOTHING_MESSAGE;
+        }
+        if (ball != 0) {
+            result += ball + BALL_MESSAGE;
+        }
+        if (strike != 0) {
+            if (ball != 0) {
+                result += " ";
+            }
+            result += strike + STRIKE_MESSAGE;
         }
         return result;
     }
