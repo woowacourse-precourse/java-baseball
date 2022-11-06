@@ -154,4 +154,21 @@ class BaseballGameTest {
             assertThat(e.getCause().getMessage()).isEqualTo(NUMBER_FORMAT_EXCEPTION);
         }
     }
+
+    @Test
+    @DisplayName("스트라이크 테스트")
+    void strike() throws Exception {
+        Method strikeMethod = BaseballGame.class.getDeclaredMethod("strike", List.class, List.class, int.class,
+                int.class);
+        strikeMethod.setAccessible(true);
+
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> user = List.of(1, 4, 5);
+
+        int strike = 0;
+        for (int i = 0; i < DEFAULT_SIZE; i++) {
+            strike = (int) strikeMethod.invoke(game, answer, user, strike, i);
+        }
+        assertThat(strike).isEqualTo(1);
+    }
 }
