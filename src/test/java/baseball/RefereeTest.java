@@ -22,4 +22,10 @@ public class RefereeTest {
             List.of(1,2,3), List.of(2,3,4)
         )).isEqualTo(2);
     }
+
+    @Test
+    void 게임_재시작_여부_정상입력() {
+        Assertions.assertThat(referee.isStart("2")).isFalse();
+        Assertions.assertThat(referee.isStart("1")).isTrue();
+    }
 }
