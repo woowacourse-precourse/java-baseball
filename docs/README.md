@@ -46,8 +46,8 @@
 - finishOrStart() // 입력받은 숫자에 따라 게임 종료 여부를 결정짓는 메서드
 - separateCase() 
     // 스트라이크 개수에 따라 아래의 경우로 게임을 분리하는 메서드
-    - caseOfThreeStrike // 3스트라이크일 때 finishOrStart로 이어주는 메서드
-    - caseOfNotThreeStrike // 게임을 다시 반복하는 메서드
+    - getCaseThreeStrike // 3스트라이크일 때 finishOrStart로 이어주는 메서드
+    - getCaseNotThreeStrike // 게임을 다시 반복하는 메서드
 - repeatGameUntilSuccess() // 맞출 때까지 게임이 반복될 때 사용되는 메서드
 - startGame() // 게임을 처음 시작할 때 사용되는 메서드
 ``` 
