@@ -9,7 +9,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         getComputerNumber(computer);
         System.out.println("숫자 야구 게임을 시작합니다.");
-
+        System.out.println(computer);
 
         List<Integer> user = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
@@ -23,27 +23,27 @@ public class Application {
             return;
         }
 
-        int ball = 0;
-        int strike = 0;
+        Count c = new Count();
 
     }
 
-    static void countBall(List<Integer> computer, List<Integer> user, int ball) {
+    static void countBall(List<Integer> computer, List<Integer> user, Count c) {
         for (int i = 0; i < 3; i++) {
             if (computer.contains(user.get(i))) {
-                ball++;
+                c.ball++;
             }
         }
     }
 
-    static void countStrike(List<Integer> computer, List<Integer> user, int ball, int strike) {
+    static void countStrike(List<Integer> computer, List<Integer> user, Count c) {
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(user.get(i))) {
-                strike++;
-                ball--;
+                c.strike++;
+                c.ball--;
             }
         }
     }
+
 
     static void addUserNumber(List<Integer> user, String userNumber) {
         for (int i = 0; i < userNumber.length(); i++) {
@@ -85,4 +85,15 @@ public class Application {
             return true;
         }
     }
+}
+
+class Count {
+    int ball;
+    int strike;
+
+    Count() {
+        ball = 0;
+        strike = 0;
+    }
+
 }
