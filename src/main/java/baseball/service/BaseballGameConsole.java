@@ -25,8 +25,8 @@ public class BaseballGameConsole {
     }
 
     private void playSingleGame(Pitcher pitcher) {
-        boolean strikeOut = false;
         String hitNumber = batter.readyToHitNumberBall();
+        boolean strikeOut = false;
 
         while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
