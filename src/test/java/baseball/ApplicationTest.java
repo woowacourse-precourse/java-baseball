@@ -416,6 +416,7 @@ class ApplicationTest extends NsTest {
     void 게임_진행의_값을_얻는_함수_테스트_1() throws Exception {
         //given
         User user = new User();
+        
         // when
         user.InputProceedNum();
         String result = String.valueOf(user.getNumProceedUser());

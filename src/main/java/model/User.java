@@ -27,7 +27,18 @@ public class User {
     }
 
     public void InputProceedNum() {
- 
+        String strInput = UseFunc.getString();
+        int numInput = UseFunc.parseIntFromStr(strInput);
+        isValidPositiveInt(numInput);
+        isValidEndReGameNum(numInput);
+        this.numProceedUser = numInput;
+    }
+
+    private void isValidEndReGameNum(int num) {
+        if (num == 1 || num == 2) {
+            return;
+        }
+        throw new IllegalArgumentException(MSG_INPUT_POSITIVE_NUM);
     }
 
     public int getNumProceedUser() {
