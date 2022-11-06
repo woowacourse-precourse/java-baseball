@@ -71,24 +71,20 @@ public class Application {
     }
 
     static void show_result(ArrayList<Integer> ball_strike_cnt) {
-        Integer ball= ball_strike_cnt.get(0);
-        Integer strike= ball_strike_cnt.get(1);
+        Integer ball = ball_strike_cnt.get(0);
+        Integer strike = ball_strike_cnt.get(1);
 
-        if(ball==0 && strike==0){
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
-        }
-        else if(strike==3){
-            three_strike=1;
+        } else if (strike == 3) {
+            three_strike = 1;
             System.out.println("3스트라이크");
-        }
-        else if(ball==0){
-            System.out.printf("%d스트라이크\n",strike);
-        }
-        else if(strike==0){
-            System.out.printf("%d볼\n",ball);
-        }
-        else{
-            System.out.printf("%d볼 %d스트라이크\n",ball,strike);
+        } else if (ball == 0) {
+            System.out.printf("%d스트라이크\n", strike);
+        } else if (strike == 0) {
+            System.out.printf("%d볼\n", ball);
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         }
     }
 
@@ -110,8 +106,21 @@ public class Application {
         } while (three_strike != 1);
     }
 
-    static void check_to_restart() {
-
+    static void check_to_restart() throws IllegalArgumentException {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        do {
+            String decision_string = Console.readLine();
+            int decision = Integer.parseInt(decision_string);
+            if (decision == 1) {
+                init_and_start_game();
+                return;
+            } else if (decision == 2) {
+                return;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } while (true);
     }
 
     static void init_and_start_game() {
