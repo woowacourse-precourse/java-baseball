@@ -94,6 +94,24 @@ class ApplicationTest extends NsTest {
         assertThat(isPure).isEqualTo(false);
     }
 
+    @Test
+    void 입력값_정규식_테스트1(){
+        boolean is3Digit = baseBallGame.is3DigitNumber("123");
+        assertThat(is3Digit).isEqualTo(true);
+    }
+
+    @Test
+    void 입력값_정규식_테스트2(){
+        boolean is3Digit = baseBallGame.is3DigitNumber("012");
+        assertThat(is3Digit).isEqualTo(false);
+    }
+
+    @Test
+    void 입력값_정규식_테스트3(){
+        boolean is3Digit = baseBallGame.is3DigitNumber("hello123");
+        assertThat(is3Digit).isEqualTo(false);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
