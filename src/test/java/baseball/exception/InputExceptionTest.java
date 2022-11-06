@@ -1,12 +1,9 @@
 package baseball.exception;
 
-import baseball.domain.Player;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.Arrays;
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputExceptionTest {
