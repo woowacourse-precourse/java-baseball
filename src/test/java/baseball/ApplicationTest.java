@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -38,7 +39,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
     @Test
-    void checkBall_함수_테스트1(){
+    void checkBall_case1(){
         int index = 0;
         int value = 2;
         List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
@@ -46,7 +47,7 @@ class ApplicationTest extends NsTest {
         assertThat(ballCount).isEqualTo(1);
     }
     @Test
-    void checkBall_함수_테스트2(){
+    void checkBall_case2(){
         int index = 0;
         int value = 4;
         List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
@@ -68,6 +69,45 @@ class ApplicationTest extends NsTest {
         List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
         int strikeCount = baseball.Application.checkStrike(index,value,computer);
         assertThat(strikeCount).isEqualTo(0);
+    }
+    @Test
+    void getResult_case1(){
+        List<Integer> input = new ArrayList<>(Arrays.asList(1,3,4));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
+
+        HashMap<String,Integer> expect = new HashMap<>() {{
+            put("strike",1);
+            put("ball",1);
+        }};
+        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+
+        assertThat(result).isEqualTo(expect);
+    }
+    @Test
+    void getResult_case2(){
+        List<Integer> input = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
+
+        HashMap<String,Integer> expect = new HashMap<>() {{
+            put("strike",3);
+            put("ball",0);
+        }};
+        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+
+        assertThat(result).isEqualTo(expect);
+    }
+    @Test
+    void getResult_case3(){
+        List<Integer> input = new ArrayList<>(Arrays.asList(4,5,6));
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
+
+        HashMap<String,Integer> expect = new HashMap<>() {{
+            put("strike",0);
+            put("ball",0);
+        }};
+        HashMap<String,Integer> result = baseball.Application.getResult(input,computer);
+
+        assertThat(result).isEqualTo(expect);
     }
     @Override
     public void runMain() {
