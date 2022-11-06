@@ -10,12 +10,17 @@
 - [x] (Computer) 입력에 대한 유효성을 확인하는 기능
 - [x] (User) 사용자의 입력을 받는 기능
 - [x] (User) 입력에 대한 유효성을 확인하는 기능
-- [ ] 컴퓨터의 숫자와 입력 숫자의 게임 결과를 계산하는 기능
 - [x] (User) 게임의 추가 진행 여부 확인을 위해 사용자 입력을 받는 기능
 - [x] (Result) 숫자 야구 결과(점수)를 받아 결과를 enum으로 반환하는 기능
   - 점수가 음수거나, 정의한 enum에 없는 경우 `IllegalArgumentException`
 - [x] (Status) 사용자의 옵션에 따라 게임의 상태를 반환하는 기능
   - 옵션이 enum에 없는 경우 `IllegalArgumentException`
+
+## 🔧 리팩토링
+1. TODO 2, 3, 5 기준으로 메소드 추출
+   - [ ] `initGame()`
+   - [ ] `playGameUntil3S()`
+   - [ ] `changeStatusByOption()`
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
