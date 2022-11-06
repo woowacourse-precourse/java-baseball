@@ -166,11 +166,11 @@ class GameProcessor {
     }
 
     public boolean isWin() {
+        stringMaker();
         if (getStrike() == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
-            stringMaker();
             return false;
         }
 
@@ -184,11 +184,13 @@ class GameProcessor {
         if (getBall() > 0) {
             if (stringBuilder.length() == 0) {
 
-            }
-            else {
+            } else {
                 stringBuilder.append(" ");
             }
             stringBuilder.append(getBall() + "볼");
+        }
+        if (stringBuilder.length() == 0) {
+            stringBuilder.append("낫싱");
         }
         System.out.println(stringBuilder.toString());
     }
@@ -229,7 +231,7 @@ public class Application {
         GameProcessor gameProcessor = new GameProcessor();
         GameFinisher gameFinisher = new GameFinisher();
         gameReadyMachine.gameReadyComplete();
-        while(gameFinisher.isRestartTrigger()) {
+        while (gameFinisher.isRestartTrigger()) {
             gameProcessor.userInput();
             gameProcessor.checkInput();
             gameProcessor.toArrayValue(gameProcessor.getLastInputInt(), gameReadyMachine.getAnswerValue());
@@ -237,9 +239,8 @@ public class Application {
             gameProcessor.ballChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
             if (gameProcessor.isWin()) {
                 gameFinisher.reStartChecker(gameReadyMachine);
-            }
-            else {
-
+            } else {
+                System.out.print("게임 종료");
             }
         }
     }
