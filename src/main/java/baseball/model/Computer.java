@@ -33,7 +33,7 @@ public class Computer {
         checkBall(usersNum);
         checkNothing();
         if (!isCorrectCompute()) {
-            throw new RuntimeException("컴퓨터의 사용자와의 숫자비교로직이 잘못처리되었습니다.");
+            throw new RuntimeException("컴퓨터의 사용자와의 숫자비교로직이 잘못처리되었습니.");
         }
 
         return this;
@@ -65,8 +65,8 @@ public class Computer {
         }
     }
 
-    private boolean isThreeStrike(){
-        if (strike == 3) {
+    public boolean isThreeStrike(){
+        if (strike == 3 && (ball == 0 && nothing == false)) {
             return true;
         } else {
             return false;
