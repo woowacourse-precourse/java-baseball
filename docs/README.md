@@ -31,7 +31,7 @@
 - [x] `getResultByCode()`에 전달되는 인자가 잘못된 경우에 대한 검증
 
 **Status**
-- [ ] `getStatusByGameOption()`에 전달되는 인자가 잘못된 경우에 대한 검증
+- [x] `getStatusByGameOption()`에 전달되는 인자가 잘못된 경우에 대한 검증
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`

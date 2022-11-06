@@ -46,6 +46,24 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class StatusTest {
+        @Test
+        void 잘못된옵션_음수_테스트() {
+            int option = -1;
+            assertThatThrownBy(() -> Status.getStatusByGameOption(option))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 잘못된옵션_2보다_큰수_테스트() {
+            int option = 3;
+            assertThatThrownBy(() -> Status.getStatusByGameOption(option))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
