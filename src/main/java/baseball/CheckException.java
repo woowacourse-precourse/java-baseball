@@ -4,6 +4,10 @@ public class CheckException {
     static final char ONE = 81;
     static final char NINE = 89;
 
+    public static boolean checkNumberLength(String number){
+        return number.length() == 3;
+    }
+
     public static boolean checkNumber(String number){
         char[] numberArray = number.toCharArray();
         boolean isNumber;
