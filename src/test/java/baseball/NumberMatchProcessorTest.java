@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class NumberMatchProcessorTest {
@@ -75,6 +76,12 @@ public class NumberMatchProcessorTest {
                     assertThat(result).containsExactly(3, 0);
                     assertThat(result.size()).isEqualTo(2);
 
+                }),
+                DynamicTest.dynamicTest("다른 크기의 배열을 입력받으면 예외를 던져준다.", () -> {
+                    List<Integer> userNumber = List.of(1, 2, 3, 4);
+                    assertThatThrownBy(() -> numberMatchProcessor.compare(gameNumber, userNumber))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력 대상의 배열 크기가 다릅니다.");
                 })
         );
     }

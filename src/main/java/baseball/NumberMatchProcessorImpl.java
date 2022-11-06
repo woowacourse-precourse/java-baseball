@@ -10,12 +10,13 @@ public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
     @Override
     public List<Integer> compare(List<Integer> gameNum, List<Integer> userNum) {
+        if (gameNum.size() != userNum.size()) throw new IllegalArgumentException("입력 대상의 배열 크기가 다릅니다.");
 
         List<Integer> result = new ArrayList<>(List.of(0, 0));
 
         int strike = 0;
         int ball = 0;
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<gameNum.size(); i++) {
             //스트라이크
             if (gameNum.get(i).equals(userNum.get(i)))strike++;
             //볼
