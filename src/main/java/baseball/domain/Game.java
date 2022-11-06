@@ -13,9 +13,7 @@ public class Game {
 
         while (true) {
             player.EnterNumberOfPlayer();
-            InputException.checkExceptionNumber(player.playersNumber);
-
-            String resultMessage = computer.compareWithNumberOfPlayer(player.playersNumber);
+            String resultMessage = computer.getResultMessage(player.playersNumber);
             System.out.println(resultMessage);
             if (resultMessage.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -39,6 +37,6 @@ public class Game {
             return;
         }
 
-        throw new IllegalArgumentException("옵션을 벗어나는 숫자를 입력했습니다.");
+        throw new IllegalArgumentException("옵션을 벗어나는 숫자 또는 문자를 입력했습니다.");
     }
 }
