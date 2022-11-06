@@ -12,15 +12,11 @@ class ComputerTest {
         Computer computer = new Computer();
 
         //when
-        computer.setAnswerByRandom();
-
-        //then
         long count = computer.getAnswer().chars()
                 .distinct()
                 .count();
 
-        System.out.println("computer.getAnswer() = " + computer.getAnswer());
-
+        //then
         assertThat(count).isEqualTo(3);
         assertThat(computer.getAnswer().length()).isEqualTo(3);
     }
