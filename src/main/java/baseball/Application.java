@@ -18,6 +18,24 @@ public class Application {
             }
         }
 
+//      기능2. 참가자 입력
+        int userNumber = 0;
+        System.out.println("\n숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요: ");
+
+        userNumber = Integer.parseInt(Console.readLine());
+
+        if (userNumber > 999 ||userNumber < 100) {
+            throw new IllegalArgumentException("숫자 세개를 입력해주세요.");
+        }
+        if (userNumber/100 == (userNumber/10)%10 || (userNumber/10)%10 == (userNumber%10) || (userNumber/100) == (userNumber%10)) {
+            throw new IllegalArgumentException("중복되는 숫자를 입력할 수 없습니다.");
+        }
+
+        if (userNumber/100==0 || (userNumber/10)%10==0 || userNumber%10==0) {
+            throw new IllegalArgumentException("0을 입력할 수 없습니다.");
+        }
+
 
     }
 }
