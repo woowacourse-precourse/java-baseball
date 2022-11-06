@@ -53,6 +53,22 @@ class ApplicationTest extends NsTest {
         int ballCount = baseball.Application.checkBall(index,value,computer);
         assertThat(ballCount).isEqualTo(0);
     }
+    @Test
+    void checkStrike_case1(){
+        int index = 0;
+        int value = 1;
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
+        int strikeCount = baseball.Application.checkStrike(index,value,computer);
+        assertThat(strikeCount).isEqualTo(1);
+    }
+    @Test
+    void checkStrike_case2(){
+        int index = 2;
+        int value = 1;
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1,2,3));
+        int strikeCount = baseball.Application.checkStrike(index,value,computer);
+        assertThat(strikeCount).isEqualTo(0);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
