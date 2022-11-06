@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class AnswerGenerator {
 
     private final int NUMBER_LENGTH = 3;
-    private final int MIN_NUMBER = 1;
-    private final int MAX_NUMBER = 9;
     private int[] answer;
 
     public AnswerGenerator() {

@@ -13,7 +13,6 @@ public class BaseballGame {
         System.out.println(START_Message);
         answerGenerator.generateAnswer();
         do{
-            System.out.println(Arrays.toString(answerGenerator.getAnswer()));
             userInput.setNumberOfUser();
             baseballGameHint.getHint(userInput.getUserInput(), answerGenerator.getAnswer());
         }while(!baseballGameHint.isAnswer());
