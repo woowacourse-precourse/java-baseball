@@ -17,6 +17,7 @@ public class Player {
         return Integer.parseInt(input);
     }
 
+
     public void validateGuess(String input) {
         if (!containOnlyDigit(input)) {
             throw new IllegalArgumentException("숫자 이외의 값을 입력했습니다.");
@@ -29,6 +30,15 @@ public class Player {
         }
         if (hasDuplicatedDigit(input)) {
             throw new IllegalArgumentException("하나의 숫자가 두 번 이상 입력되었습니다.");
+        }
+    }
+
+    public void validateMenuSelection(String input) {
+        if (!containOnlyDigit(input)) {
+            throw new IllegalArgumentException("숫자 이외의 값을 입력했습니다.");
+        }
+        if (!isExistingMenu(input)) {
+            throw new IllegalArgumentException("존재하지 않는 메뉴를 선택했습니다.");
         }
     }
 
