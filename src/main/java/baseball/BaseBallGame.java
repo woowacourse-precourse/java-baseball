@@ -36,10 +36,17 @@ public class BaseBallGame {
 
     public void runGame() {
         requestUserInput();
+        if (isValidInput()) {
+            System.out.println("유효");
+        }
     }
 
     public void requestUserInput() {
         this.gameMessageDisplay.printInputRequestMessage();
         this.userInput = Console.readLine();
+    }
+
+    public boolean isValidInput() {
+        return inputValidator.validateInput(userInput);
     }
 }
