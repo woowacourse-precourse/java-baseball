@@ -1,8 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static Boolean isEnd = false;

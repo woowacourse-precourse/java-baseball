@@ -1,8 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private static final String STRIKE = "스트라이크";
