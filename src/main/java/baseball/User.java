@@ -5,8 +5,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
 
 
-    public static String userInput() {
-        String userInput = readline();
+    public String userInput() {
+        String userInput = readLine();
 
         return inputValidtor(userInput);
     }
@@ -20,9 +20,6 @@ public class User {
         return inputValue;
     }
 
-
-
-
-    }
-
 }
+
+
