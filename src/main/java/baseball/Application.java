@@ -76,10 +76,8 @@ public class Application {
     public static Integer calculationBall(List<Integer> computer,List<Integer> user){
         Integer ball = 0;
         for(int i = 0;i<computer.size();i++){
-            for(int k = 0;k<user.size();k++){
-                if(computer.get(i).equals(user.get(k)) && i != k)
-                    ball +=1;
-            }
+            if(user.contains(computer.get(i)) && !computer.get(i).equals(user.get(i)))
+                ball +=1;
         }
         return ball;
     }
