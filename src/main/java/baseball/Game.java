@@ -6,7 +6,7 @@ public class Game {
 
     private static final int GAME_OVER_STRIKE_COUNT = 3;
 
-    private boolean isGameOver = false;
+    private boolean isGameRun = true;
 
     private final List<Integer> computerNumbers;
 
@@ -18,7 +18,7 @@ public class Game {
 
     public static void startGame() {
         Game game = new Game();
-        while (!game.isGameOver) {
+        while (game.isGameRun) {
             game.getGameScore();
         }
     }
@@ -28,7 +28,7 @@ public class Game {
         List<Integer> userNumbers = userNumber.getNumberList();
         Judge.getGameScore(userNumbers, computerNumbers);
         if (Judge.countStrike(userNumbers, computerNumbers) == GAME_OVER_STRIKE_COUNT) {
-            isGameOver = true;
+            isGameRun = false;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
