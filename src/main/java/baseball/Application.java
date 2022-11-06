@@ -13,7 +13,15 @@ public class Application {
     static int first_game = 1;
 
     static void main_loop() {
-
+        ArrayList<Integer> answer = new ArrayList<>();
+        random_number_generate(answer);
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String guess = Console.readLine();
+            if (guess_validity_check(guess)) {
+                judge_guess(guess, answer);
+            }
+        } while (three_strike != 1);
     }
 
     static void check_to_restart() {
