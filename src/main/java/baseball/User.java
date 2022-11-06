@@ -61,4 +61,19 @@ public class User {
 
 		validatedUserInput.add(Integer.parseInt(userInput));
 	}
+
+	public void scanInputWhenTerminating() {
+		initValidatedUserInput();
+		scanInput();
+		answerValidateInput();
+	}
+
+	public void scanInputByStatus(String status) {
+		if(status.equals("PLAYING")) {
+			scanInputWhenPlaying();
+		}
+		if(status.equals("TERMINATING")) {
+			scanInputWhenTerminating();
+		}
+	}
 }
