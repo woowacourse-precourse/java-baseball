@@ -9,6 +9,9 @@ import java.util.List;
 
 public class Application {
 
+    public static final String optionOne = "1";
+    public static final String optionTwo = "2";
+
     public static void printMessage(String message){
         System.out.println(message);
     }
@@ -51,6 +54,12 @@ public class Application {
         for(int i=0; i<input.size(); i++){
             cntFrequency = Collections.frequency(input, input.get(i));
             if(cntFrequency!=1) throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkOption(String curOption){
+        if(!(curOption.equals(optionOne) || curOption.equals(optionTwo))){
+            throw new IllegalArgumentException();
         }
     }
 
