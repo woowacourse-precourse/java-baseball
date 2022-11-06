@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class InGame {
     private final BaseballUtil baseballUtil;
     private final int answer;
@@ -19,11 +21,11 @@ public class InGame {
     }
 
     public boolean playGame() {
-
+        return true;
     }
 
     private int createRandomInt() {
-
+        return 0;
     }
 
     private void announceUserInput() {
@@ -35,14 +37,14 @@ public class InGame {
     }
 
     private int getUserInput() {
-
+        return 0;
     }
 
     private boolean userInputValidation() {
-
+        return true;
     }
 
     private int compareUserInput() {
-
+        return 0;
     }
 }
