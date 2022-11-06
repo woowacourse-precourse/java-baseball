@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Application {
 
-    static List<Integer> allowedNumber = List.of(1,2,3,4,5,6,7,8,9);
+    final static List<Integer> allowedNumber = List.of(1,2,3,4,5,6,7,8,9);
 
     public static void checkInputLength (String userInputString) throws IllegalArgumentException {
         if (userInputString.length()!=3) {
@@ -72,11 +72,7 @@ public class Application {
     }
 
     public static boolean returnAnswer (int howManyStrike) {
-        if (howManyStrike==3) {
-            return true;
-        } else {
-            return false;
-        }
+        return howManyStrike==3;
     }
 
     public static boolean endGame() {
