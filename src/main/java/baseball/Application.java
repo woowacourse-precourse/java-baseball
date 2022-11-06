@@ -76,6 +76,16 @@ public class Application {
                 .count();
     }
 
+    public static List<Integer> stringToNumberList (String numbersInString) {
+        List<Integer> numberList = new ArrayList<>();
+        int number;
+        for ( int i = 0; i < 3; i++) {
+            number = numbersInString.charAt(i) - '0';
+            numberList.add(number);
+        }
+        return numberList;
+    }
+
     public static boolean isValidNumbersForGame (String input) {
         if (!isOnlyNumbers(input)) {
             return false;
