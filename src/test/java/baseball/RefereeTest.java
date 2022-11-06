@@ -16,12 +16,12 @@ class RefereeTest {
     @Test
     void processResult() {
         // given
-        Referee processor = new Referee();
+        Referee referee = new Referee();
         String randomNumber = "123";
         String predictedNumber = "123";
 
         // when
-        Result result = processor.processResult(randomNumber, predictedNumber);
+        Result result = referee.judgeHitAndPitch(randomNumber, predictedNumber);
 
         // then
         Assertions.assertEquals(result.getResultType(), ResultType.EXACT_MATCH);
