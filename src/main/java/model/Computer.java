@@ -112,13 +112,10 @@ public class Computer {
     }
 
 
-    public boolean isRealRightNumOfUser(int numOfCompare) {
+    public void isRealRightNumOfUser(int numOfCompare) {
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
-        if (isContainValueList(this.numThreeRanOfComputerList, splitNumOfCompare)) {
-            checkStrikeBall(splitNumOfCompare);
-            return true;
-        }
-        return false;
+        isContainValueList(numThreeRanOfComputerList, splitNumOfCompare);
+        checkStrikeBall(splitNumOfCompare);
     }
 
     private void checkStrikeBall(List<Integer> listSplitNum) {

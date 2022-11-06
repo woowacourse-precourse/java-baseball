@@ -318,10 +318,10 @@ class ApplicationTest extends NsTest {
         List<String> hintResult = new ArrayList<>();
         // when
         for (int num : numInputUser) {
-            if (computer.isRealRightNumOfUser(num)) {
-                hintResult.add(computer.toString());
-                computer.initCntStrikeBall();
-            }
+            computer.isRealRightNumOfUser(num);
+            hintResult.add(computer.toString());
+            computer.initCntStrikeBall();
+
         }
         // then
         assertThat(hintResult).containsAll(hints);
