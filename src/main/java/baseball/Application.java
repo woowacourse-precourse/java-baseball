@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +14,7 @@ public class Application {
 
         while (true) {
             List<Integer> user = getUserNumber();
-            
+
         }
     }
 
@@ -21,5 +23,16 @@ public class Application {
         return userNumber.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private static List<Integer> getComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return computerNumber;
     }
 }
