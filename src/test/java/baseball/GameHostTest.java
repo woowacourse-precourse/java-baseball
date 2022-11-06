@@ -1,8 +1,7 @@
 package baseball;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
@@ -43,71 +42,77 @@ public class GameHostTest {
         }
     }
 
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
     class TestGetHint {
         GameHost gameHost = new GameHost();
 
+        @BeforeAll
+        void beforeAll() {
+            List<Integer> baseballNumber = List.of(1, 2, 3);
+            gameHost.setBaseballNumber(baseballNumber);
+        }
+
         @Test
         @DisplayName("낫싱인 경우")
         void case1() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(4, 5, 6);
-
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("낫싱");
         }
 
         @Test
         @DisplayName("1볼인 경우")
         void case2() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(3, 6, 7);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("1볼");
         }
 
         @Test
         @DisplayName("2볼인 경우")
         void case3() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(3, 1, 7);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("2볼");
         }
 
         @Test
         @DisplayName("3볼인 경우")
         void case4() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(3, 1, 2);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("3볼");
         }
 
         @Test
         @DisplayName("2볼 1스트라이크인 경우")
         void case5() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(1, 3, 2);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
         @DisplayName("2스트라이크인 경우")
         void case6() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(1, 9, 3);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("2스트라이크");
         }
 
         @Test
         @DisplayName("3스트라이크인 경우")
         void case7() {
-            List<Integer> baseballNumber = List.of(1, 2, 3);
             List<Integer> playerNumber = List.of(1, 2, 3);
-            String result = gameHost.getHint(playerNumber);
+            gameHost.setHint(playerNumber);
+            String result = gameHost.getHint();
             assertThat(result).isEqualTo("3스트라이크");
         }
     }
