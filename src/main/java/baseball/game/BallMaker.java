@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -26,15 +25,14 @@ public class BallMaker {
         this.minimum = 1;
     }
 
-    public List<Integer> getRandomBall() {
+    public Ball getRandomBall() {
         if (!allowDuplicate) {
-            List<Integer> result = getUniqueRandomBall();
-            return result;
+            return getUniqueRandomBall();
         }
-        return new ArrayList<>();
+        return new Ball();
     }
 
-    public List<Integer> getUserBall() {
+    public Ball getUserBall() {
         printInformation();
         String userOpinion = Console.readLine();
         if (!checkValidation(userOpinion)) {
@@ -43,7 +41,7 @@ public class BallMaker {
         return makeUserBall(userOpinion);
     }
 
-    private List<Integer> getUniqueRandomBall() {
+    private Ball getUniqueRandomBall() {
         List<Integer> result = new ArrayList<>();
         while (result.size() != ballSize) {
             int randomNumber = Randoms.pickNumberInRange(minimum, maximum);
@@ -52,16 +50,20 @@ public class BallMaker {
             }
             result.add(randomNumber);
         }
-        return result;
+        return new Ball(result);
     }
 
     private void printInformation() {
         System.out.printf(informationMessage);
     }
 
-    private List<Integer> makeUserBall(String userOpinion) {
+    private Ball makeUserBall(String userOpinion) {
         final int differenceBetweenCharAndInteger = 48;
-        return userOpinion.chars().boxed().map(ch -> ch -= differenceBetweenCharAndInteger).collect(Collectors.toList());
+        List<Integer> ballData = userOpinion.chars()
+                .boxed()
+                .map(ch -> ch -= differenceBetweenCharAndInteger)
+                .collect(Collectors.toList());
+        return new Ball(ballData);
     }
 
     private boolean checkValidation(String userInput) {
