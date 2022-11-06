@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -9,6 +11,6 @@ public class Application {
 
         List<Integer> computer = game.makesDifferenceThreeNumber();
 
-
+        String user = Console.readLine();
     }
 }
