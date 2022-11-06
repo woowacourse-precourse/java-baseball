@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -52,5 +54,23 @@ public class Application {
         }
         return enemy;
     }//public static void enemyNumber
+
+    public static int countStrikeAndBall(List<Integer> user, List<Integer> enemy) {
+        Map<String, Integer> result = new HashMap<>();
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if ((int) user.get(i) == enemy.get(i)) {
+                strike++;
+            } else if (enemy.contains(user.get(i))) {
+                ball++;
+            }
+        }
+        result.put("strike", strike);
+        result.put("ball", ball);
+        return compareUserWithEnemy(result);
+    }//public static void countStrikeAndBall
+
 
 }
