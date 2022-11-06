@@ -12,10 +12,25 @@ public class BaseballGame {
     private static List<Integer> computerNumbers;
     private static List<Integer> userNumbers;
 
+    private static int strike;
+    private static int ball;
+
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
         while (true) {
+            strike=0; ball=0;
             userNumbers = checkInputUserNumber();
+            compareNumber();
+        }
+    }
+
+    public static void compareNumber(){
+        for(int i=0;i<3;i++){
+            int userNumber = userNumbers.get(i);
+            int computerNumber = computerNumbers.get(i);
+            if (!computerNumbers.contains(userNumber)) continue;
+            if (userNumber == computerNumber) strike++;
+            else if (userNumber != computerNumber) ball++;
         }
     }
 
