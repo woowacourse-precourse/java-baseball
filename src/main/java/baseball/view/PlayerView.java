@@ -20,4 +20,17 @@ public class PlayerView {
             return input;
         }
     }
+    public boolean isGameRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if(!userNumber.isInputDigit(input)
+                || !userNumber.isBetween1to2(input)){
+            throw new IllegalArgumentException();
+        }
+        if(input.equals("1")){
+            return true;
+        }
+        return false;
+    }
 }

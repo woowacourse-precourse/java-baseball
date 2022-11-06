@@ -60,4 +60,14 @@ public class UserNumber {
         }
         return true;
     }
+    //입력받는 부분을 검증할것 4. 1 혹은 2인 숫자인가?
+    public boolean isBetween1to2(String input){
+        for(int i = 0; i < input.length(); i++){
+            if(!(Character.getNumericValue(input.charAt(i)) <= 2) ||
+                    !(Character.getNumericValue(input.charAt(i)) > 0)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
