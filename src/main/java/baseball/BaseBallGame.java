@@ -81,20 +81,20 @@ class BaseBallGame {
     }
 
 
-    private int inputNumber() {
+    public int inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputStr = Console.readLine();
         inputValidation(inputStr);
         return Integer.parseInt(inputStr);
     }
 
-    private void inputValidation(String inputStr) {
+    public void inputValidation(String inputStr) {
         if (!is3DigitNumber(inputStr) || !isDiffDigitNumber(inputStr)) {
             throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
         }
     }
 
-    private boolean is3DigitNumber(String inputStr) {
+    public boolean is3DigitNumber(String inputStr) {
         String inputNumberRegex = "^[1-9]{3}$";
         if (!inputStr.matches(inputNumberRegex)) {
             return false;
@@ -103,7 +103,7 @@ class BaseBallGame {
     }
 
 
-    private boolean isDiffDigitNumber(String inputStr) {
+    public boolean isDiffDigitNumber(String inputStr) {
         if (inputStr.charAt(0) == inputStr.charAt(1) || inputStr.charAt(1) == inputStr.charAt(2)
                 || inputStr.charAt(0) == inputStr.charAt(2)) {
             return false;
