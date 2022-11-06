@@ -48,6 +48,19 @@ public class Application {
         return count;
     }
 
+    public static boolean gameOverCheck(int strikeNum){
+        if(strikeNum == 3){
+            int n = askRestartOrGameOver();
+            if(n == 2)
+                return true;
+        }
+        return false;
+    }
+
+    public static int askRestartOrGameOver(){
+
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -60,7 +73,9 @@ public class Application {
             checkInputNumber(input);
             List<Integer> user = makeList(input);
             int strikeNum = countStrike(computer, user);
-            
+            boolean gameOver = gameOverCheck(strikeNum);
+            if(gameOver)
+                break;
         }
     }
 }
