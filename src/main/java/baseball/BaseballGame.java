@@ -2,8 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BaseballGame {
     private final int LENGTH_OF_NUMBER = 3;
@@ -23,29 +26,24 @@ public class BaseballGame {
         isContinue = true;
         computer.createNumber();
         printGameStartStatement();
-        try{
-            while(isEnd == false){
-                ballCount = 0;
-                strikeCount = 0;
-                printInputStatement();
-                getPlayerNumber();
-                checkBall();
-                checkStrike();
-                printHint();
-                checkGameEnd();
-            }
-            printGameEndStatement();
-            getPlayerOption();
-        }catch(IllegalArgumentException e){
-            isContinue = false;
-            System.out.println("잘못된 값을 입력하셨습니다. 게임 종료");
-        }
 
+        while(isEnd == false) {
+            ballCount = 0;
+            strikeCount = 0;
+            printInputStatement();
+            getPlayerNumber();
+            checkBall();
+            checkStrike();
+            printHint();
+            checkGameEnd();
+        }
+        printGameEndStatement();
+        getPlayerOption();
     }
 
-    private void getPlayerNumber() throws IllegalArgumentException {
+    private void getPlayerNumber(){
         player = new ArrayList<>();
-        String input = Console.readLine();
+        String input = readLine();
         if(input.length() != LENGTH_OF_NUMBER){
             throw new IllegalArgumentException();
         }
@@ -69,8 +67,8 @@ public class BaseballGame {
         return true;
     }
 
-    private void getPlayerOption() throws IllegalArgumentException{
-        String input = Console.readLine();
+    private void getPlayerOption(){
+        String input = readLine();
         if(input.equals("1")){
             isContinue = true;
         }else if(input.equals("2")){
