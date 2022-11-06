@@ -2,8 +2,10 @@ package baseball.service;
 
 public class ValidateService {
 
+    public static final int RIGHT_SIZE = 3;
+
     public void validateInputValue(String inputBaseBallNumbers) {
-        if (isOverSize(inputBaseBallNumbers)) {
+        if (isOverOrUnderSize(inputBaseBallNumbers)) {
             throw new IllegalArgumentException("3자리 수의 정수만 가능합니다.");
         }
         if (isNotNumber(inputBaseBallNumbers)) {
@@ -15,8 +17,8 @@ public class ValidateService {
         return !inputBaseBallNumbers.chars().allMatch(Character::isDigit);
     }
 
-    private boolean isOverSize(String inputBaseBallNumbers) {
-        return inputBaseBallNumbers.length() > 3;
+    private boolean isOverOrUnderSize(String inputBaseBallNumbers) {
+        return inputBaseBallNumbers.length() != RIGHT_SIZE;
     }
 
     public int validateInputNumber(int inputRestartNumber) {
