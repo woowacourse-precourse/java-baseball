@@ -17,7 +17,7 @@ public class BaseBallGame {
     }
 
     public void createPlayerNumber(String input) {
-        this.playerNumberRepository = new PlayerNumberRepository(input);
+        playerNumberRepository = new PlayerNumberRepository(input);
     }
 
     public void getHint() {
