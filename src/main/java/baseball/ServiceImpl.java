@@ -19,6 +19,20 @@ public abstract class ServiceImpl implements Service{
         while (strike < 3) {
             strike = stage(answer);
         }
+        restart();
+    }
+
+    private void restart() {
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            startGame();
+        }
+        if (input.equals("2")) {
+
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int stage(List<Integer> answer) {
