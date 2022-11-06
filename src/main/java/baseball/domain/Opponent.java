@@ -5,7 +5,7 @@ import java.util.List;
 public class Opponent {
 	List<Integer> answerNumbers;
 
-	public Opponent(List<Integer> answerNumbers, int strikeCount, int ballCount) {
+	public Opponent(List<Integer> answerNumbers) {
 		this.answerNumbers = answerNumbers;
 	}
 
