@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	private static final Game instance = new Game();
 	private static final int STRIKE = 0;
 	private static final int BALL = 1;
 	private static final int REPLAY = 1;
 	private static final int ENDGAME = 2;
+	private static final Game instance = new Game();
 
 	private Game() {
 	}

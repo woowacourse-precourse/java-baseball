@@ -34,6 +34,7 @@ public class PlayerUser {
 
 	private boolean isNoDuplicatedNumber(String number) {
 		int numberSize = number.length();
+
 		for (int i = 0; i < numberSize - 1; i++) {
 			String subNumber = number.substring(i + 1);
 			String digit = "" + number.charAt(i);
@@ -41,6 +42,7 @@ public class PlayerUser {
 				return false;
 			}
 		}
+
 		return true;
 	}
 
