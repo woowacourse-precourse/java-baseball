@@ -7,11 +7,6 @@ import java.util.*;
 
 public class Application {
     private static StringBuilder sb;
-    private final static Map<String,String> typeEngKorMap = new HashMap<>(){{
-        put("Strike","스트라이크");
-        put("Ball","볼");
-        put("Nothing","낫싱");
-    }};
 
     public static void main(String[] args) {
         Application app = new Application();
@@ -167,7 +162,7 @@ public class Application {
         int typeScore = typeScoreMap.get(type);
         if(typeScore > 0){
             sb.append(typeScoreMap.get(type))
-                    .append(typeEngKorMap.get(type))
+                    .append(BallType.valueOf(type).getKorean())
                     .append(" ");
         }
     }
