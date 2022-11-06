@@ -36,11 +36,11 @@ public class BaseballGame {
         predictNumbers.validateNumbers();
     }
 
-    public List<Integer> checkNumbers(){
-        List<Integer> counts = new ArrayList<>(Arrays.asList(0,0,0));
-        IntStream.range(0,4)
-                .map(x-> randomNumbers.check(predictNumbers.get(x), x))
-                .forEach(x->counts.set(x, counts.get(x)+1));
+    public List<Integer> checkNumbers() {
+        List<Integer> counts = new ArrayList<>(Arrays.asList(0, 0, 0));
+        IntStream.range(0, 4)
+                .map(x -> randomNumbers.check(predictNumbers.get(x), x))
+                .forEach(x -> counts.set(x, counts.get(x) + 1));
         return counts;
     }
 
@@ -51,6 +51,19 @@ public class BaseballGame {
             getPredictNumbers(inputView.inputNumbers());
             counts = checkNumbers();
             outputView.printResult(counts);
-        } while (counts.get(2)==3);
+        } while (counts.get(2) == 3);
+    }
+
+    public boolean checkRetry() {
+        String retry = inputView.inputRetry();
+        return validateStringToInteger(retry) == 1;
+    }
+
+    public int validateStringToInteger(String retry) {
+        try {
+            return Integer.parseInt(retry);
+        } catch (NumberFormatException ok) {
+            throw new IllegalArgumentException("숫자만 입력되어야 합니다.");
+        }
     }
 }
