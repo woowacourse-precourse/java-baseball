@@ -8,9 +8,7 @@ import java.util.List;
 
 public class Computer {
     public static Balls generateBalls() {
-        List<Integer> uniqueNumbers = getUniqueNumbers();
-
-        return asBalls(uniqueNumbers);
+        return asBalls(getUniqueNumbers());
     }
 
     private static Balls asBalls(Collection<Integer> uniqueNumbers) {
