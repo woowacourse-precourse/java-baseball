@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputParameters {
-    private static final Pattern NOT_WHITE_SPACE = Pattern.compile("^\\S+$");
+    private static final Pattern checkInput = Pattern.compile("^(?=.*\\d)(?!.*([0-9])(?!.*([0-9])).{0,3}$)");
     private final List<Character> parameters;
 
     public InputParameters(String input) {
@@ -16,8 +16,8 @@ public class InputParameters {
     }
 
     private static void checkSpace(String input) {
-        if (!NOT_WHITE_SPACE.matcher(input).matches()){
-            throw new BallInputException("공백은 입력 받을 수 없습니다.");
+        if (!checkInput.matcher(input).matches()){
+            throw new BallInputException("중복된 숫자, 공백,");
         }
     }
 

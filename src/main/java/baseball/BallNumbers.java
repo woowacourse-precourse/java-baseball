@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BallNumbers {
-    private static final int MAX = 3;
     private final List<BallNumber> ballNumbers;
 
+
     public BallNumbers(List<Character> hits) {
-        checkHits(hits);
         this.ballNumbers = ballNumbers(hits);
     }
 
@@ -41,23 +40,6 @@ public class BallNumbers {
         return hits.stream()
                 .map(BallNumber::ballNumber)
                 .collect(Collectors.toList());
-    }
-
-    private static void checkHits(List<Character> hits) {
-        checkMax(hits);
-        checkDuplicate(hits);
-    }
-
-    private static void checkMax(List<Character> hits) {
-        if (hits.size() > MAX) {
-            throw new BallInputException("세자리 이상의 수는 입력할 수 없습니다.");
-        }
-    }
-
-    private static void checkDuplicate(List<Character> hits) {
-        if (hits.stream().anyMatch(ballNum -> Collections.frequency(hits, ballNum) > 1)) {
-            throw new BallInputException("중복된 숫자는 입력할 수 없습니다.");
-        }
     }
 
     public int size() {
