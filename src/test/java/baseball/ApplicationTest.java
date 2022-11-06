@@ -64,6 +64,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 입력에_0포함_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("320"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("201"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("041"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
     void 두자리_수_입력_예외() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("22"))
