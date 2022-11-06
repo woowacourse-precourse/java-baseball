@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 public class BallGenerator {
 
-    public static final int COMPUTER_NUMBER_SIZE = 3;
+    public static final int COMPUTER_BALLS_SIZE = 3;
 
     public List<Integer> createComputerBall() {
         List<Integer> computerBalls = new ArrayList<>();
-        while (computerBalls.size() < COMPUTER_NUMBER_SIZE) {
+        while (computerBalls.size() < COMPUTER_BALLS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerBalls.contains(randomNumber)) {
                 computerBalls.add(randomNumber);

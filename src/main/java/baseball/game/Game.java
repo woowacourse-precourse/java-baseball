@@ -1,6 +1,6 @@
 package baseball.game;
 
-import static baseball.util.BallGenerator.COMPUTER_NUMBER_SIZE;
+import static baseball.util.BallGenerator.COMPUTER_BALLS_SIZE;
 import static baseball.util.InputValidator.CONTINUE_GAME;
 
 import baseball.message.SystemMessage;
@@ -47,20 +47,20 @@ public class Game {
     }
 
     private void calcResult(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
-        for (int playerNumberIndex = 0; playerNumberIndex < playerBalls.size(); playerNumberIndex++) {
-            for (int computerNumberIndex = 0; computerNumberIndex < computerBalls.size(); computerNumberIndex++) {
+        for (int playerBallsIndex = 0; playerBallsIndex < playerBalls.size(); playerBallsIndex++) {
+            for (int computerBallsIndex = 0; computerBallsIndex < computerBalls.size(); computerBallsIndex++) {
                 calculateStrikeAndBallCounts(playerBalls, computerBalls, strikeAndBallCounts,
-                        playerNumberIndex, computerNumberIndex);
+                        playerBallsIndex, computerBallsIndex);
             }
         }
     }
 
-    private void calculateStrikeAndBallCounts(List<Integer> playerNumber, List<Integer> computerNumber,
-            List<Integer> strikeAndBallCounts, int playerNumberIndex, int computerNumberIndex) {
-        if (playerNumber.get(playerNumberIndex).equals(computerNumber.get(computerNumberIndex))) {
+    private void calculateStrikeAndBallCounts(List<Integer> playerBalls, List<Integer> computerBalls,
+            List<Integer> strikeAndBallCounts, int playerBallsIndex, int computerBallsIndex) {
+        if (playerBalls.get(playerBallsIndex).equals(computerBalls.get(computerBallsIndex))) {
             updateStrikeAndBallCounts(strikeAndBallCounts,
-                    getCount(playerNumberIndex == computerNumberIndex, strikeAndBallCounts.get(STRIKE_COUNT)),
-                    getCount(playerNumberIndex != computerNumberIndex, strikeAndBallCounts.get(BALL_COUNT)));
+                    getCount(playerBallsIndex == computerBallsIndex, strikeAndBallCounts.get(STRIKE_COUNT)),
+                    getCount(playerBallsIndex != computerBallsIndex, strikeAndBallCounts.get(BALL_COUNT)));
         }
     }
 
@@ -77,7 +77,7 @@ public class Game {
     }
 
     private String getResult(int strikeCnt, int ballCnt) {
-        if (strikeCnt == COMPUTER_NUMBER_SIZE) {
+        if (strikeCnt == COMPUTER_BALLS_SIZE) {
             return SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
         }
         if (strikeCnt > 0 && ballCnt > 0) {
