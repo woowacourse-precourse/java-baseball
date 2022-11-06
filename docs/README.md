@@ -14,3 +14,5 @@
 - 유저의 입력과 정답을 비교하여 힌트를 알려주는 함수(Hint.get)
 - 볼의 개수를 세는 함수(Hint.countBall)
 - 스트라이크의 개수를 세는 함수(Hint.countStrike)
+
+- 함수별 test 작성
