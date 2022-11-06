@@ -28,6 +28,14 @@ public class Application {
         else if(User.size() != 3) 
             throw new IllegalArgumentException("오직 세 자리의 숫자만 입력 가능합니다.");
     }
-
     
+    private static void MakeAnswer(List<Integer> Computer){
+        for(int i = 0; i < Computer.size(); i++){
+            int number = Randoms.pickNumberInRange(1, 9);
+            if(Computer.contains(number)) 
+                i--;
+            else Computer.add(number);
+        }
+    }
+
 }
