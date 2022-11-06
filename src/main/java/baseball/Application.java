@@ -98,6 +98,10 @@ public class Application {
         return checkedBaseballNumbers;
     }
 
+    public static void printToRestartingGameMessage(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
