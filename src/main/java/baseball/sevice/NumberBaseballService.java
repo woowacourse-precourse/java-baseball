@@ -11,6 +11,7 @@ public class NumberBaseballService {
     private static final int THIRD_NUMBER = 2;
     public static final String NUMERIC_INPUT_ERROR = "1 ~ 9사이의 숫자만 입력해야 합니다.";
     public static final String NUMERIC_LENGTH_ERROR = "3글자의 숫자를 입력해야 합니다.";
+    private static final String SAME_NUMBER_ERROR = "3개의 숫자는 모두 달라야 합니다.";
 
     private NumberBaseballRepository numberBaseballRepository = NumberBaseballRepository.getInstance();
 
@@ -21,7 +22,6 @@ public class NumberBaseballService {
 
     public void inputUserAnswer(String userAnswer) {
         validateUserAnswer(userAnswer);
-
     }
 
     public void validateUserAnswer(String userAnswer) {
@@ -31,6 +31,18 @@ public class NumberBaseballService {
         if (!checkLength(userAnswer)) {
             throw new IllegalArgumentException(NUMERIC_LENGTH_ERROR);
         }
+        if (!checkSameNumber(userAnswer)) {
+            throw new IllegalArgumentException(SAME_NUMBER_ERROR);
+        }
+    }
+
+    private boolean checkSameNumber(String userAnswer) {
+        if (userAnswer.charAt(FIRST_NUMBER) == userAnswer.charAt(SECOND_NUMBER)
+                || userAnswer.charAt(FIRST_NUMBER) == userAnswer.charAt(THIRD_NUMBER)
+                || userAnswer.charAt(SECOND_NUMBER) == userAnswer.charAt((THIRD_NUMBER))) {
+            return false;
+        }
+        return true;
     }
 
     private boolean checkLength(String userAnswer) {

@@ -58,7 +58,7 @@
         - [X] 3글자를 입력하지 않았다면 `IllegalArgumentException` 예외를 발생시킨다.
         - [X] 숫자가 아닌 입력은 `IllegalArgumentException` 예외를 발생시킨다.
         - [X] 숫자중에 0이 들어가있으면 `IllegalArgumentException` 예외를 발생시킨다.
-        - [ ] 3개의 숫자중에 동일한 숫자가 존재하면 `IllegalArgumentException` 예외를 발생시킨다.
+        - [X] 3개의 숫자중에 동일한 숫자가 존재하면 `IllegalArgumentException` 예외를 발생시킨다.
         - [X] 각 예외에 맞는 메시지를 출력해야 한다.
         - [X] 예외가 발생되고 나면 애플리케이션 종료되어야 한다.
     - 올바른 숫자를 입력하게 되면 컴퓨터는 입력받은 수의 스트라이크, 볼, 낫싱의 경우를 계산한다.
