@@ -83,10 +83,9 @@ public class Game extends abstracts.Game {
     }
 
     private boolean playTurn(String input) {
-        HashMap<Result, Integer> turnResult = getGuessResult(input);
-        Messages.printScore(turnResult);
-        if (isGameOver(turnResult)) {
-            Messages.END.printMessage();
+        HashMap<Result, Integer> resultCount = getGuessResult(input);
+        Messages.printScore(resultCount);
+        if (isGameOver(resultCount)) {
             terminate();
             Messages.ASK.printMessage();
             return PROCESS_CONTINUE;

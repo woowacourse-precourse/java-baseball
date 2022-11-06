@@ -36,9 +36,9 @@ public class Constants {
             this.printer.accept(this.message);
         }
 
-        public static void printScore(HashMap<Result, Integer> turnResult) {
-            int balls = turnResult.getOrDefault(Result.BALL, 0);
-            int strikes = turnResult.getOrDefault(Result.STRIKE, 0);
+        public static void printScore(HashMap<Result, Integer> resultCount) {
+            int balls = resultCount.getOrDefault(Result.BALL, 0);
+            int strikes = resultCount.getOrDefault(Result.STRIKE, 0);
 
             StringJoiner baseString = new StringJoiner(" ");
             if (balls != 0) {
