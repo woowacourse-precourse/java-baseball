@@ -19,7 +19,7 @@ public class Application {
         System.out.println("Player's number: " + numOfPlayer);
 
         CheckStrikes(numOfComputer, numOfPlayer);
-
+        CheckBalls(numOfComputer, numOfPlayer);
     }
 
     public static void CheckStrikes(List<Integer> computer, List<Integer> player) {
@@ -32,6 +32,21 @@ public class Application {
         }
 
         System.out.println(strikes);
+    }
+
+    public static void CheckBalls(List<Integer> computer, List<Integer> player) {
+        int balls = 0;
+
+        for(int i = 0; i < computer.size(); i++) {
+
+            int intPlayer = player.get(i);
+
+            if(computer.contains(intPlayer)) {
+                balls++;
+            }
+        }
+
+        System.out.println(balls);
     }
 
 
