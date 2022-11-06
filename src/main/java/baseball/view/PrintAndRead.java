@@ -12,7 +12,7 @@ public class PrintAndRead {
     }
 
     public static List<Integer> getBaseballNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String question = Console.readLine();
 
         return convertToIntegerList(question);
