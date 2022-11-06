@@ -2,24 +2,30 @@ package baseball;
 
 public class Game {
 
+    // 싱글톤 패턴
+    private static Game instance;
+
+    private Game() {}
+
+    public static Game turnOnGame() {
+        Print.printGameStart();
+        if (instance == null) {
+            instance = new Game();
+        }
+        return instance;
+    }
+
     private Computer computer;
     private Round round;
-    private boolean isAnswer;
-
-    public Game() {}
-
-    public void turnOnGame() {
-        Print.printGameStart();
-    }
+    private boolean isWin;
 
     public void startNewGame(Computer computer) {
         this.computer = computer;
-        this.isAnswer = false;
+        this.isWin = false;
         round = new Round(computer);
-        while (!isAnswer) {
+        while (!isWin) {
             round.startNewRound();
-            round.playRound();
-            this.isAnswer = round.isThreeStrike();
+            this.isWin = round.isThreeStrike();
         }
         Print.printGameEnd();
     }

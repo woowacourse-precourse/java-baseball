@@ -12,17 +12,22 @@ public class Round {
 
     public void startNewRound()  {
         Print.printRoundStart();
+        readNumbers();
+        getHints();
+        Print.printRoundResult(hints);
+    }
+
+    private void readNumbers() {
         int inputInt = Input.readInt();
         numbers = new Numbers(inputInt);
     }
 
-    public void playRound() {
+    private void getHints() {
         hints = new Hints();
         for (int index = 0; index < 3; index++) {
             Hint hint = getHint(index);
             hints.addHint(hint);
         }
-        Print.printRoundResult(hints);
     }
 
     public boolean isThreeStrike(){
