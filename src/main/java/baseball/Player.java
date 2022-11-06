@@ -30,6 +30,15 @@ public class Player {
         return stringToList(userInput);
     }
 
+    public int inputContinuation() {
+        String userInput = Console.readLine();
+
+        // 예외
+        checkFormContinuation(userInput);
+
+        return Integer.parseInt(userInput);
+    }
+
     private List<Integer> stringToList(String userInput) {
         int[] input = Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
         return Arrays.stream(input)
