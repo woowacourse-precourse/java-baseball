@@ -17,4 +17,8 @@ public class Result {
         return ball;
     }
 
+    public boolean isCorrect() {
+        return strike == 3;
+    }
+
 }
