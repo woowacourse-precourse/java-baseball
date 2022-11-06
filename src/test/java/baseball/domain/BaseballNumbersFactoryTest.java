@@ -2,8 +2,6 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashSet;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -13,22 +11,20 @@ import org.junit.jupiter.api.Test;
 @DisplayName("BaseballFactory 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class BaseballFactoryTest {
-    private BaseballNumberFactory sut = new BaseballNumberFactory();
+class BaseballNumbersFactoryTest {
+    private BaseballNumbersFactory sut = new BaseballNumbersFactory();
 
     @Nested
     class generate_메서드는 {
 
         @Nested
-        class 서로_다른_1부터_9사이의_임의의_수_3개를_생성하여 {
+        class 만약_입력된_값이_없는_경우 {
 
             @Test
-            void 반환한다() {
-                List<BaseballNumber> result = sut.generate();
+            void 무작위로_생성된_값을_가지고_BaseballNumbers를_생성하여_반환한다() {
+                BaseballNumbers baseballNumbers = sut.generate();
 
-                HashSet<BaseballNumber> nonDuplicateBaseballs = new HashSet<>(result);
-
-                assertThat(nonDuplicateBaseballs.size()).isEqualTo(3L);
+                assertThat(baseballNumbers).isInstanceOf(BaseballNumbers.class);
             }
         }
     }
