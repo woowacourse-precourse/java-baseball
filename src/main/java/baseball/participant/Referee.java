@@ -4,27 +4,27 @@ import baseball.result.Result;
 
 public class Referee {
 
-    public Result resultOfPrediction(String randomNumber, String predictedNumber) {
-        return processResult(randomNumber, predictedNumber);
+    public Result resultOfPrediction(String randomNumber, String pitchNumber) {
+        return processResult(randomNumber, pitchNumber);
     }
 
-    public Result processResult(String randomNumber, String predictedNumber) {
+    public Result processResult(String randomNumber, String pitchNumber) {
         Result result = new Result();
-        compareRandomAndPredictedNumber(result, randomNumber, predictedNumber);
+        compareRandomAndPitchNumber(result, randomNumber, pitchNumber);
         result.calculateType();
         return result;
     }
 
-    private void compareRandomAndPredictedNumber(Result result, String randomNumber, String predictedNumber) {
+    private void compareRandomAndPitchNumber(Result result, String randomNumber, String pitchNumber) {
         for (int position = 0; position < 3; position++) {
-            distinguishTypeOfDigit(result, randomNumber, predictedNumber, position);
+            distinguishTypeOfDigit(result, randomNumber, pitchNumber, position);
         }
     }
 
-    private void distinguishTypeOfDigit(Result result, String randomNumber, String predictedNumber, int position) {
-        if (randomNumber.indexOf(predictedNumber.charAt(position)) == position) {
+    private void distinguishTypeOfDigit(Result result, String randomNumber, String pitchNumber, int position) {
+        if (randomNumber.indexOf(pitchNumber.charAt(position)) == position) {
             result.increaseStrike();
-        } else if (randomNumber.contains(String.valueOf(predictedNumber.charAt(position)))) {
+        } else if (randomNumber.contains(String.valueOf(pitchNumber.charAt(position)))) {
             result.increaseBall();
         }
     }
