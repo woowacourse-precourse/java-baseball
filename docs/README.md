@@ -34,11 +34,11 @@ compareNumber()
 ```
 - [ ] 스트라이크 확인
 ```
-checkStrike()
+countStrike()
 ```
 - [ ] 볼 확인
 ```
-checkBall()
+countBall()
 ```
 - [ ] 결과 출력
 ```
