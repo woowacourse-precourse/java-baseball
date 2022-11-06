@@ -19,9 +19,9 @@ public class Application {
         List<Integer> userNumberList = gameController.inputUserNumber(); // 사용자 입력
         System.out.println("입력값:" + userNumberList + ":");
         // 교집합
-        List<Integer> intersectionList = gameController.checkIntersection(userNumberList, randomNumberList);
-        System.out.println("교집합:" + intersectionList + ":");
-        gameController.checkGameResult(intersectionList); // 결과 계산
+        int ballCount = gameController.checkIntersection(userNumberList, randomNumberList);
+        System.out.println("교집합:" + ballCount + ":");
+        gameController.checkGameResult(userNumberList, randomNumberList, ballCount); // 결과 계산
 
 
     }
