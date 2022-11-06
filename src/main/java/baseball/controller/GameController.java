@@ -1,6 +1,5 @@
 package baseball.controller;
 
-
 import static baseball.type.GameType.WRONG_ANSWER;
 
 import static baseball.type.RetryOrExitType.EXIT;
@@ -32,9 +31,9 @@ public class GameController {
             InputView.printInputMessage();
 
             List<Integer> userNumbers = UserNumberService.generate();
-            Hint hint = HintService.initialize();
 
-            hint.countHint(userNumbers, computerNumbers);
+            Hint hint = HintService.generate(userNumbers, computerNumbers);
+
             HintService.printHint(hint);
 
             gameStatus = HintService.isAnswer(hint);
@@ -52,5 +51,4 @@ public class GameController {
         }
         return retryOrExit;
     }
-
 }

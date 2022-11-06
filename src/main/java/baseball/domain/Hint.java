@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.type.HintType.BALL_ZERO;
+import static baseball.type.HintType.STRIKE_ZERO;
 import static baseball.type.NumberType.NUMBER_SIZE;
 
 import java.util.List;
@@ -8,9 +10,11 @@ public class Hint {
     private int strike;
     private int ball;
 
-    public Hint(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public Hint(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        this.strike = STRIKE_ZERO.getValue();
+        this.ball = BALL_ZERO.getValue();
+
+        countHint(userNumbers, computerNumbers);
     }
 
     public int getStrike() {
@@ -21,7 +25,7 @@ public class Hint {
         return ball;
     }
 
-    public void countHint(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    private void countHint(List<Integer> userNumbers, List<Integer> computerNumbers) {
         for (int index = 0; index < NUMBER_SIZE.getValue(); index++) {
             int userNumber = userNumbers.get(index);
             int computerNumber = computerNumbers.get(index);

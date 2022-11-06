@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberService {
-
     public static List<Integer> generate() {
         List<Integer> computerNumbers = new ArrayList<>();
 

@@ -1,15 +1,14 @@
 package baseball.service;
 
-import static baseball.type.HintType.BALL_ZERO;
-import static baseball.type.HintType.STRIKE_ZERO;
 import static baseball.type.NumberType.NUMBER_SIZE;
 
 import baseball.domain.Hint;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class HintService {
-    public static Hint initialize() {
-        return new Hint(STRIKE_ZERO.getValue(), BALL_ZERO.getValue());
+    public static Hint generate(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        return new Hint(userNumbers, computerNumbers);
     }
 
     public static boolean isAnswer(Hint hint) {
