@@ -5,8 +5,6 @@ import java.util.*;
 public class Player {
     protected static List<Integer> Answer;
 
-
-
     public static boolean isInteger(String s){
         try  {
             Integer.parseInt(s);
@@ -16,6 +14,11 @@ public class Player {
         }
     }
 
-
-
+    public static boolean isPositiveNumber(String s){
+        boolean result = true;
+        if (Integer.parseInt(s) <= 0){
+            result = false;
+        }
+        return result;
+    }
 }

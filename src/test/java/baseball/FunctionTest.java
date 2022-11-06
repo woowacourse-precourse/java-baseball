@@ -37,4 +37,10 @@ public class FunctionTest {
         boolean result = isInteger("1.3f");
         assertThat(result).isEqualTo(false);
     }
+
+    @Test
+    void isPositiveNumber_입력받은_문자열이_자연수인지_판별(){
+        boolean result = isPositiveNumber("-123");
+        assertThat(result).isEqualTo(false);
+    }
 }
