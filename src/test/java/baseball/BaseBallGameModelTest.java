@@ -47,7 +47,6 @@ class BaseBallGameModelTest {
             Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
-            ;
         }
     }
 
@@ -67,7 +66,6 @@ class BaseBallGameModelTest {
             Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
-            ;
         }
     }
 
@@ -87,7 +85,6 @@ class BaseBallGameModelTest {
             Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
-            ;
         }
     }
 
