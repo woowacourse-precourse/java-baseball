@@ -52,13 +52,13 @@ public class Player {
         GameResult gameResult = new GameResult();
 
         for (Ball ball : balls) {
-            BallStatus ballStatus = otherPlayer.play(ball);
+            BallStatus ballStatus = otherPlayer.playRound(ball);
             gameResult.addScore(ballStatus);
         }
         return gameResult;
     }
 
-    private BallStatus play(Ball otherBall) {
+    private BallStatus playRound(Ball otherBall) {
         return this.balls.stream()
                 .map(ball -> ball.play(otherBall))
                 .filter(ballStatus -> !ballStatus.isNothing())
