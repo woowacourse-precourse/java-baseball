@@ -15,6 +15,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class NumberUtilTest {
     @ParameterizedTest
     @CsvSource(
+            value = {"119:3", "가나다라:4", ":0", "-12:3", "a@c!ef:6"},
+            delimiter = ':'
+    )
+    @DisplayName("lengthCheck 함수가 주어진 문자열의 길이와 length 가 같다고 판단하는지 확인한다")
+    void lengthCheckTestO(String str, int length) {
+        assertTrue(NumberUtil.lengthCheck(str, length));
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {"119:1", "가나다라:1", ":2", "-12:2", "a@c!ef:3"},
+            delimiter = ':'
+    )
+    @DisplayName("lengthCheck 함수가 주어진 문자열의 길이와 length 가 다르다고 판단하는지 확인한다")
+    void lengthCheckTestX(String str, int length) {
+        assertFalse(NumberUtil.lengthCheck(str, length));
+    }
+
+    @ParameterizedTest
+    @CsvSource(
             value = {"2:1:9", "51:1:8", "127:1:9", "113:1:9"},
             delimiter = ':'
     )
