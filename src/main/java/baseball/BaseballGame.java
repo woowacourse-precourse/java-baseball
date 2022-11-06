@@ -22,8 +22,7 @@ public class BaseballGame {
     }
 
     public void play(){
-        isEnd = false;
-        isContinue = true;
+        initialize();
         computer.createNumber();
         printGameStartStatement();
 
@@ -39,6 +38,11 @@ public class BaseballGame {
         }
         printGameEndStatement();
         getPlayerOption();
+    }
+
+    private void initialize(){
+        isEnd = false;
+        isContinue = true;
     }
 
     private void getPlayerNumber(){
