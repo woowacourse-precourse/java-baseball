@@ -62,6 +62,16 @@ public class GameManager {
         return false;
     }
 
+    public String isRestart(String userChoice){
+        if(userChoice.equals("1")){
+            return "restart";
+        }
+        if(userChoice.equals("2")){
+            return "end";
+        }
+        throw new IllegalArgumentException("입력 오류");
+    }
+
     public List<Integer> toList(String number){
         return Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
