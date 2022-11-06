@@ -11,7 +11,11 @@ public enum HintString {
         this.content = content;
     }
 
-    public String getContent() {
+    public String print(int count) {
+        return String.format(content, count);
+    }
+
+    public String print() {
         return content;
     }
 }

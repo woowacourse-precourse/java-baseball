@@ -41,19 +41,18 @@ public class Hint {
         StringBuilder sb = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
-            sb.append(HintString.NOTHING.getContent());
+            sb.append(HintString.NOTHING.print());
             return sb.toString();
         }
 
         if (ball > 0) {
-            sb.append(String.format(HintString.BALL.getContent(), ball));
+            sb.append(HintString.BALL.print(ball));
         }
 
         if (strike > 0) {
-            sb.append(String.format(HintString.STRIKE.getContent(), strike));
+            sb.append(HintString.STRIKE.print(strike));
         }
 
         return sb.toString();
-
     }
 }

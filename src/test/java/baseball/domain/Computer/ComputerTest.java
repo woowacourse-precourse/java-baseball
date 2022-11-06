@@ -1,6 +1,6 @@
 package baseball.domain.Computer;
 
-import static baseball.domain.Validation.BallNumber.*;
+import static baseball.domain.Validation.Ball.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,9 +22,9 @@ class ComputerTest {
         computer.generateRandomNumbers();
 
         assertAll(
-                () -> assertThat(computer.getBallNumbers().size()).isEqualTo(NUMBER_LENGTH.getValue()),
-                () -> assertThat(computer.getBallNumbers()).allMatch(number -> number >= NUMBER_MIN.getValue() && number <= NUMBER_MAX.getValue()),
-                () -> assertThat(computer.getBallNumbers().stream().distinct().count()).isEqualTo(NUMBER_LENGTH.getValue())
+                () -> assertThat(computer.getBallNumbers().size()).isEqualTo(COUNT.getValue()),
+                () -> assertThat(computer.getBallNumbers()).allMatch(number -> number >= MIN.getValue() && number <= MAX.getValue()),
+                () -> assertThat(computer.getBallNumbers().stream().distinct().count()).isEqualTo(COUNT.getValue())
                 );
     }
 

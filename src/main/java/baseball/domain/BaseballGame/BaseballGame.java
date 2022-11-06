@@ -1,11 +1,11 @@
 package baseball.domain.BaseballGame;
 
-import baseball.StringEnum.PrintString;
+import baseball.StringEnum.Game;
 import baseball.domain.Computer.Computer;
 import baseball.domain.Hint.Hint;
 import baseball.domain.Hint.HintString;
 import baseball.domain.Player.Player;
-import baseball.domain.Validation.BallNumber;
+import baseball.domain.Validation.Ball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -21,7 +21,7 @@ public class BaseballGame {
 
     public void start() {
         computer.generateRandomNumbers();
-        System.out.println(PrintString.GAME_START.getContent());
+        System.out.println(Game.START.getContent());
         play();
         //사용자 restart 입력 (validateRestart) -> 게임 재시작 여부 판별
     }
@@ -36,7 +36,7 @@ public class BaseballGame {
     }
 
     private void getPlayerNumber() {
-        System.out.print(PrintString.NUMBER_INPUT.getContent());
+        System.out.print(Game.INPUT.getContent());
         player.readBallNumberInput(Console.readLine());
     }
 
@@ -50,8 +50,8 @@ public class BaseballGame {
     }
 
     private void checkPlayerWin(String hint) {
-        if (hint.equals(String.format(HintString.STRIKE.getContent(), 3))) {
-            System.out.printf((PrintString.GAME_END.getContent()) + "\n", BallNumber.NUMBER_LENGTH.getValue());
+        if (hint.equals(HintString.STRIKE.print(3))) {
+            System.out.printf((Game.END.getContent()) + "\n", Ball.COUNT.getValue());
             isPlaying = false;
         }
     }

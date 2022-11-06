@@ -13,18 +13,18 @@ public class InputValidation {
     }
 
     public static boolean is3Numbers(String inputString) {
-        return inputString.length() == BallNumber.NUMBER_LENGTH.getValue();
+        return inputString.length() == Ball.COUNT.getValue();
     }
 
     public static boolean isInRange(List<Integer> numberList) {
         return numberList.stream()
-                .allMatch(num -> num >= BallNumber.NUMBER_MIN.getValue() && num <= BallNumber.NUMBER_MAX.getValue());
+                .allMatch(num -> num >= Ball.MIN.getValue() && num <= Ball.MAX.getValue());
     }
 
     public static boolean isNotDuplicate(List<Integer> numberList) {
         long removeDuplicateCount = numberList.stream()
                 .distinct()
                 .count();
-        return removeDuplicateCount == BallNumber.NUMBER_LENGTH.getValue();
+        return removeDuplicateCount == Ball.COUNT.getValue();
     }
 }

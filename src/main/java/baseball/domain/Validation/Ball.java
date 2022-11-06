@@ -1,13 +1,13 @@
 package baseball.domain.Validation;
 
-public enum BallNumber {
-    NUMBER_MIN(1),
-    NUMBER_MAX(9),
-    NUMBER_LENGTH(3);
+public enum Ball {
+    MIN(1),
+    MAX(9),
+    COUNT(3);
 
     private final int value;
 
-    BallNumber(int value) {
+    Ball(int value) {
         this.value = value;
     }
 

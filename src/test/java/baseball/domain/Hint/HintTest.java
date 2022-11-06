@@ -20,7 +20,7 @@ class HintTest {
     void 모두_스트라이크() {
         List<Integer> playerBalls = List.of(1, 2, 3);
         List<Integer> computerBalls = List.of(1, 2, 3);
-        String result = String.format(HintString.STRIKE.getContent(), 3);
+        String result = HintString.STRIKE.print(3);
 
         assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
@@ -30,7 +30,7 @@ class HintTest {
     void 모두_볼() {
         List<Integer> playerBalls = List.of(3, 1, 2);
         List<Integer> computerBalls = List.of(1, 2, 3);
-        String result = String.format(HintString.BALL.getContent(), 3);
+        String result = HintString.BALL.print(3);
 
         assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
@@ -40,7 +40,7 @@ class HintTest {
     void 볼_스트라이크_혼합() {
         List<Integer> playerBalls = List.of(1, 5, 2);
         List<Integer> computerBalls = List.of(1, 2, 3);
-        String result = String.format(HintString.BALL.getContent() + HintString.STRIKE.getContent(), 1, 1);
+        String result = HintString.BALL.print(1) + HintString.STRIKE.print(1);
 
         assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
@@ -50,7 +50,7 @@ class HintTest {
     void 낫싱() {
         List<Integer> playerBalls = List.of(7, 5, 8);
         List<Integer> computerBalls = List.of(1, 2, 3);
-        String result = HintString.NOTHING.getContent();
+        String result = HintString.NOTHING.print();
 
         assertThat(hint.printHint(playerBalls, computerBalls)).isEqualTo(result);
     }
