@@ -20,7 +20,6 @@ public class Computer {
         for (; ; ) {
 
             numbers = NumberParsingCollection.createRandomNumbersInRange(
-                    numbers,
                     BaseballConstant.NUMBERS_COUNT,
                     BaseballConstant.MIN_NUMBER,
                     BaseballConstant.MAX_NUMBER);

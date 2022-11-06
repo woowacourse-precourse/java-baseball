@@ -18,8 +18,8 @@ public class NumberParsingCollection {
         return numbers;
     }
 
-    public static List<Integer> createRandomNumbersInRange(List<Integer> numbers, int count, int start, int end) {
-        numbers.clear();
+    public static List<Integer> createRandomNumbersInRange(int count, int start, int end) {
+        List<Integer> numbers = new ArrayList<>();
 
         for (; numbers.size() < count; ) {
             int randomNumber = Randoms.pickNumberInRange(start, end);
