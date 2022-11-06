@@ -36,16 +36,6 @@ public class Application {
         while (next_game) {
             List<Integer> computer_number_list = new ArrayList<Integer>();
             computer_number_list = computer_create_number();
-
-            Boolean computer_user_correspond = false;
-
-            while (!computer_user_correspond) {
-                // 사용자 입력 문구 출력
-                System.out.print("숫자를 입력해주세요 : ");
-
-                String user_number_string;
-                user_number_string = user_enter_number();
-            }
         }
     }
 }
