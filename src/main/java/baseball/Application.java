@@ -13,9 +13,25 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<String> playerInput = checkAvailable(Input());
+        List<String> answer = makeAnswer();
+//        System.out.println(answer);
+//        System.out.println(answer.get(0).equals("1"));
+        while (true) {
+            List<String> playerInput = checkAvailable(Input());
+        }
+
     }
 
+    public static List<String> makeAnswer() {
+        List<String> answerList = new ArrayList<>();
+        while (answerList.size() < 3) {
+            int randomNum = Randoms.pickNumberInRange(1,9);
+            if (!answerList.contains(Integer.toString(randomNum))) {
+                answerList.add(Integer.toString(randomNum));
+            }
+        }
+        return answerList;
+    }
     public static List<String> Input() {
         System.out.print("숫자를 입력해 주세요 : ");
         String numString = Console.readLine();
