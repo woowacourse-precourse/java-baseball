@@ -9,6 +9,14 @@ public class Result {
         this.ball = ball;
     }
 
+    private void countStrike(String randomNumber, String userNumber) {
+        for (int index = 0; index < randomNumber.length(); index++) {
+            if (randomNumber.charAt(index) == userNumber.charAt(index)) {
+                strike++;
+            }
+        }
+    }
+
     public int getStrike() {
         return strike;
     }
