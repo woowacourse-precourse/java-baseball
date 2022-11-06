@@ -88,4 +88,28 @@ class UserBallsInputTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("input의 구성요소가 0을 제외한 숫자로만 이루어지지 않습니다");
     }
+    @Order(7)
+    @DisplayName("유효성 검사 5. 중복성 확인 유효한 경우")
+    @ParameterizedTest(name ="{displayName}) {index} = {0} ")
+    @ValueSource(strings = {"954", "321", "123"})
+    void    isInputNumberIsNotOverlap(String inputString) {
+        InputStream in = generateUserInput(inputString);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        assertThatThrownBy(() -> input.validContinuity(scanner.toString()))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("input의 구성요소가 중복됩니다");
+    }
+    @Order(8)
+    @DisplayName("유효성 검사 5. 중복성 확인 유효하지 않은 경우")
+    @ParameterizedTest(name ="{displayName}) {index} = {0} ")
+    @ValueSource(strings = {"954", "321", "123"})
+    void    isInputNumberIsOverlap(String inputString) {
+        InputStream in = generateUserInput(inputString);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        assertThatThrownBy(() -> input.validContinuity(scanner.toString()))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("input의 구성요소가 중복됩니다");
+    }
 }
