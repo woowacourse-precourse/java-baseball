@@ -30,4 +30,10 @@ public class BaseballGameController {
         user.setSelectNumber();
         return user.getSelectNumber();
     }
+
+    private void updateHint(List<Integer> computerRandomNumber, List<Integer> userNumber) {
+        baseballGameService.updateStrikeCount(computerRandomNumber, userNumber);
+        baseballGameService.updateBallCount(computerRandomNumber, userNumber);
+
+    }
 }
