@@ -14,59 +14,50 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameStart();
+        playGame();
+    }
 
+    static void playGame() {
         int strikeResult;
+        int ballResult;
         do {
+            System.out.print("숫자를 입력해 주세요 : ");
             String userInput = Console.readLine();
-            Validator validate = new Validator();
-            validate.validateInputRange(userInput);
-            validate.checkDuplicatedNumber(userInput);
-            validate.validateContainZero(userInput);
-
-//            String stringUserInput = toStringUserInput(userInput);
+            checkedValidate(userInput);
             List<Integer> computerNumber = generateComputerNumber();
             String computerNumberResult = computerNumberListToString(computerNumber);
 
             strikeResult = countStrike(userInput, computerNumberResult);
-            System.out.println("스트라이크 갯수  " + strikeResult);
-            int ballResult = countBall(userInput, computerNumberResult);
-
+            ballResult = countBall(userInput, computerNumberResult);
             System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
-
             if (!checkedNotThing(ballResult, strikeResult)) {
-                if (countBall(userInput, computerNumberResult) != ZERO) {
-                    System.out.print(countBall(userInput, computerNumberResult) + "볼 ");
+                if (ballResult != ZERO) {
+                    System.out.print(ballResult+ "볼 ");
                 }
-                if (countStrike(userInput, computerNumberResult) != ZERO) {
-                    System.out.print(countStrike(userInput, computerNumberResult) + "스트라이크");
+                if (strikeResult != ZERO) {
+                    System.out.print(strikeResult+ "스트라이크 ");
                 }
             }
+            System.out.println();
         } while (strikeResult != 3);
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! ");
-        System.out.println("게임 종료");
-//        do {
-//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//        } while ();
-
+        gameSet();
     }
 
-//    public void play() {
-//        do {
-//
-//        }
-//    }
-//    public void
-//        int intUserInput = Integer.parseInt(Console.readLine());
-//
-//        Validator validate = new Validator();
-//        validate.validateInputRange(intUserInput);
-//        validate.checkDuplicatedNumber(intUserInput);
-//        validate.validateContainZero(intUserInput);
+
+
+    static void checkedValidate(String input) {
+        validateInputRange(input);
+        checkDuplicatedNumber(input);
+        validateContainZero(input);
+    }
 
     static void gameStart() {
-        System.out.println(GAME_START_MESSAGE);
+        System.out.println(GAME_START_MSG);
     }
 
+    static void gameSet(){
+        System.out.println(GAME_END_MSG);
+    }
     /**
      * 컴퓨터의 랜덤한 세 자리 수를 List에 저장함
      */
@@ -124,7 +115,7 @@ public class Application {
      */
     static boolean checkedNotThing (int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0 ){
-            System.out.println("낫싱");
+            System.out.print("낫싱");
             return true;
         }
         return false;
