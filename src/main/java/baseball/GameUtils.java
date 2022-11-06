@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.common.Constant;
 import baseball.exception.NumberExceptionUtils;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -12,14 +13,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baseball.common.Constant.DIGIT_LENGTH_LIMIT;
+import static baseball.common.Constant.MAX_STRIKE_SIZE;
 
 
 public class GameUtils {
-
-    private static int strike;
-
-    private static int ball;
 
     private static List<Integer> answerNum;
 
@@ -31,10 +28,9 @@ public class GameUtils {
     }
 
     public static void playBaseBallGame() {
-        strike = 0;
-        ball = 0;
         playerNum = getPlayerInputNum();
-        compareInputAndAnswer();
+        int strike = checkStrikeAndUpdateScore(answerNum, playerNum);
+        int ball = checkBallAndUpdateScore(answerNum, playerNum);
     }
 
     public static List<Integer> getPlayerInputNum() {
@@ -58,31 +54,31 @@ public class GameUtils {
 
     public static List<Integer> getComputerAnswerNum() {
         Set<Integer> answer = new HashSet<>();
-        while (answer.size() < DIGIT_LENGTH_LIMIT) {
+        while (answer.size() < MAX_STRIKE_SIZE) {
             int num = Randoms.pickNumberInRange(1, 9);
             answer.add(num);
         }
         return new ArrayList<>(answer);
     }
 
-    public static void compareInputAndAnswer() {
-        for (int i = 0; i < answerNum.size(); i++) {
-            for (int j = 0; j < playerNum.size(); j++) {
-                checkStrikeAndUpdateScore(i, j);
-                checkBallAndUpdateScore(i, j);
+    public static int checkStrikeAndUpdateScore(List<Integer> answerNum, List<Integer> playerNum) {
+        int strike = 0;
+        for (int i = 0; i < Constant.MAX_STRIKE_SIZE; i++) {
+            if (answerNum.get(i).equals(playerNum.get(i))) {
+                strike++;
             }
         }
+        return strike;
     }
 
-    private static void checkStrikeAndUpdateScore(int i, int j) {
-        if (i == j && answerNum.get(i).equals(playerNum.get(j))) {
-            strike++;
+    public static int checkBallAndUpdateScore(List<Integer> answerNum, List<Integer> playerNum) {
+        int ball = 0;
+        for (int i = 0; i < Constant.MAX_STRIKE_SIZE; i++) {
+            if (!answerNum.get(i).equals(playerNum.get(i))
+                    && answerNum.contains(playerNum.get(i))) {
+                ball++;
+            }
         }
-    }
-
-    private static void checkBallAndUpdateScore(int i, int j) {
-        if (i != j && answerNum.get(i).equals(playerNum.get(j))) {
-            ball++;
-        }
+        return ball;
     }
 }
