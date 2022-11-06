@@ -64,7 +64,7 @@
         - 게임이 진행중이라면, 숫자 야구 게임 한 턴을 진행합니다.
           - [X] getGuessResult
           - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 셉니다.
-            - [X] getDigitResult
+            - [X] getIndexResult
             - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려줍니다.
             - [X] isGameOver
             - 게임 종료 조건을 충족했는지 확인합니다.

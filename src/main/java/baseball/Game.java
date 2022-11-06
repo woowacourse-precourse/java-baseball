@@ -97,13 +97,13 @@ public class Game extends abstracts.Game {
         HashMap<Result, Integer> guessResult = new HashMap<>();
         for (int index = 0; index < input.length(); index++) {
             int number = Character.getNumericValue(input.charAt(index));
-            Result result = getDigitResult(index, number);
+            Result result = getIndexResult(index, number);
             guessResult.put(result, guessResult.getOrDefault(result, 0) + 1);
         }
         return guessResult;
     }
 
-    private Result getDigitResult(int index, int number) {
+    private Result getIndexResult(int index, int number) {
         if (answerNumbers.get(index) == number) {
             return Result.STRIKE;
         }
