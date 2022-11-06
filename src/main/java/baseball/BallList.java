@@ -61,11 +61,15 @@ public class BallList {
     }
 
     public Ball get(int index) {
-        return ballList.get(index);
+        return this.ballList.get(index);
     }
 
     public boolean contains(Ball ball) {
-        return this.ballList.contains(ball);
+        for (int i=0;i<this.ballList.size();i++)
+            if (this.ballList.get(i).getBall()==ball.getBall()) {
+                return true;
+            }
+        return false;
     }
 
     public void getBallList() {
@@ -73,6 +77,10 @@ public class BallList {
             System.out.print(this.ballList.get(i).getBall());
         }
 
+    }
+
+    public List<Ball> getArrayList() {
+        return this.ballList;
     }
     
 

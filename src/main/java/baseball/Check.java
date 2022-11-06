@@ -15,8 +15,9 @@ public class Check {
         int ball = 0;
 
         for (int i=0;i<3;i++) {
-            if (computer.get(i).equals(user.get(i))) {
+            if (computer.get(i).getBall() == user.get(i).getBall()) {
                 strike++;
+                continue;
             } else if (computer.contains(user.get(i))) {
                 ball++;
             }
