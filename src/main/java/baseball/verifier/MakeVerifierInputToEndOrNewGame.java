@@ -3,15 +3,14 @@ package baseball.verifier;
 import baseball.verifiable.CheckInputLength;
 import baseball.verifiable.CheckInputRange;
 
+import static baseball.BaseballConstants.*;
+
 public class MakeVerifierInputToEndOrNewGame implements MakeVerifier {
-    private final static int NUMBER_LENGTH_MAX = 1;
-    private final static int LOWER_NUMBER = 1;
-    private final static int UPPER_NUMBER = 2;
     private final Verifier verifier = new Verifier();
 
     public MakeVerifierInputToEndOrNewGame() {
-        verifier.addRule(new CheckInputLength(NUMBER_LENGTH_MAX));
-        verifier.addRule(new CheckInputRange(LOWER_NUMBER, UPPER_NUMBER));
+        verifier.addRule(new CheckInputLength(INPUT_END_OR_NEW_GAME_LENGTH_MAX));
+        verifier.addRule(new CheckInputRange(INPUT_END_OR_NEW_GAME_LOWER_NUMBER, INPUT_END_OR_NEW_GAME_UPPER_NUMBER));
     }
 
     @Override

@@ -7,9 +7,10 @@ import baseball.verifier.MakeVerifierInputToBaseballGame;
 import baseball.verifier.MakeVerifierInputToEndOrNewGame;
 import baseball.verifier.Verifier;
 
+import static baseball.BaseballConstants.NEW_GAME;
+
 
 public class BaseballGame {
-    private static final String NEW_GAME = "1";
     private final MakeVerifierInputToEndOrNewGame verifierInputToEndOrNewGame = new MakeVerifierInputToEndOrNewGame();
     private final MakeVerifierInputToBaseballGame verifierInputToBaseballGame = new MakeVerifierInputToBaseballGame();
     private final Computer computer = new Computer();

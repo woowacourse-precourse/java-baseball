@@ -1,7 +1,8 @@
 package baseball.verifiable;
 
+import static baseball.BaseballConstants.TEN_DECIMAL;
+
 public class CheckInputRange implements VerifiableRule {
-    private final static int TEN_DECIMAL = 10;
     private final char lowerNumber;
     private final char upperNumber;
 

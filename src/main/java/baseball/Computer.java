@@ -5,14 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.BaseballConstants.*;
+
 public class Computer {
-    private static final int BASEBALL_GAME_DIGIT = 3;
-    private static final int BASEBALL_LOWER_NUMBER = 1;
-    private static final int BASEBALL_UPPER_NUMBER= 9;
-    private static final int TEN_DECIMAL = 10;
-    private static final int NO_BALL = 0;
-    private static final int NO_STRIKE = 0;
-    private static final int ALL_STRIKE = 3;
     private final List<Character> baseballNumber = new ArrayList<>();
     private final CounterBaseball counterBaseball = new CounterBaseball();
 
@@ -22,14 +17,14 @@ public class Computer {
 
     public void makeRandomNumber() {
         baseballNumber.clear();
-        while (baseballNumber.size() < BASEBALL_GAME_DIGIT) {
+        while (baseballNumber.size() < DIGIT_MAX) {
             addRandomNumber();
         }
     }
 
     private void addRandomNumber() {
-        char randomNumber = Character.forDigit((Randoms.pickNumberInRange(BASEBALL_LOWER_NUMBER,
-                BASEBALL_UPPER_NUMBER)), TEN_DECIMAL);
+        char randomNumber = Character.forDigit((Randoms.pickNumberInRange(LOWER_NUMBER,
+                UPPER_NUMBER)), TEN_DECIMAL);
         if (!baseballNumber.contains(randomNumber)) {
             baseballNumber.add(randomNumber);
         }
