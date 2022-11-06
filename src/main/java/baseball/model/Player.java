@@ -36,7 +36,7 @@ public class Player {
     private static void checkInputDuplicatedNumber(String input) {
         Set<Character> set = getCharacterInput(input);
         if(isDuplicatedNumber(input, set)){
-            throw new IllegalArgumentException("야구 게임의 숫자가 중복입니다.");
+            throw new IllegalArgumentException("입력된 숫자가 중복입니다.");
         }
     }
 

@@ -9,12 +9,12 @@ public class BaseballGameController {
 
     private Computer computer = new Computer();
     private Player player;
-    private InputView inputView;
-    private OutputView outputView;
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
 
     public void start() {
 
-        inputView = new InputView();
+//        inputView = new InputView();
         inputView.inputInit();
         computer.generateComputerNumberThree();
         play();
@@ -34,14 +34,13 @@ public class BaseballGameController {
 
             hint = computer.getHint(computer.getComputerNumber(), player.getInputNumber());
 
-            outputView = new OutputView();
+//            outputView = new OutputView();
             outputView.printHint(hint);
         } while (computer.isNotThreeStrike(hint));
     }
 
     public void restart() {
         String restartInput = inputView.restart();
-        System.out.println(restartInput);
         if (computer.isRestart(restartInput)) {
             start();
         }
