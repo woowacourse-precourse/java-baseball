@@ -25,7 +25,7 @@ public class Application {
             input = Console.readLine();
             inputNumber = Integer.parseInt(input);
             if (inputNumber<100 || inputNumber>999)
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
         }
         catch (IllegalStateException e){
             e.printStackTrace();
@@ -44,8 +44,5 @@ public class Application {
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> in = getInputNumber();
-
-        System.out.println(in);
     }
 }
