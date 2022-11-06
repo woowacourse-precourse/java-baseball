@@ -34,14 +34,14 @@ public class GameManager {
             System.out.print(PLEASE_INPUT_NUMBER);
             String number = inputNumber.inputGameNumber();
             String compareResult = computerManager.compareWithUserNumber(number);
-
+            System.out.println(compareResult);
             if (compareResult.equals("3스트라이크")) {
                 System.out.println(END_GAME);
                 System.out.println(RESTART_OR_END);
                 return inputNumber.inputRestartNumber();
             }
 
-            System.out.println(compareResult);
+
         }
     }
 }
