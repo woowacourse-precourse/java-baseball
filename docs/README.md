@@ -1,24 +1,24 @@
 ## 📃 기능 목록 정리
 
-### package src.main.java.baseball.user.service
+### package src.main.java.baseball.user.entity
 
-### class UserService
+### class User
 
 > - [ ] 사용자의 입력값을 받는 클래스입니다.
 
 <br>
 
-### package src.main.java.baseball.computer.service
+### package src.main.java.baseball.computer.entity
 
-### class ComputerService
+### class Computer
 
 > - [ ] 컴퓨터의 입력값을 받는 클래스입니다.
 
 <br>
 
-### package src.main.java.baseball.game.service
+### package src.main.java.baseball.game.entity
 
-### class GameService
+### class Game
 
 > - [ ] 게임이 진행되는 클래스입니다.
 
