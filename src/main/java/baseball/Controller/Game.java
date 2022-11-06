@@ -26,6 +26,7 @@ public class Game {
         while (pass) {
             outputView.inputNumMessage();
             String input = inputView.inputUser();
+            player.saveUserNumber(number.createUserNumber(input));
         }
     }
 }
