@@ -4,6 +4,8 @@ import baseball.config.Assembler;
 import baseball.domain.BaseBallService;
 import baseball.view.MessagePrinter;
 
+import java.util.List;
+
 public class GameController {
 
     private final MessagePrinter messagePrinter;
@@ -17,6 +19,7 @@ public class GameController {
 
     public void run(){
         messagePrinter.printGameStart();
-        baseBallService.selectRandomNumbers();
+        List<Integer> number = baseBallService.selectRandomNumbers();
+        baseBallService.saveRandomNumbers(number);
     }
 }

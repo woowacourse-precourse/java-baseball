@@ -12,8 +12,11 @@ public class BaseBallServiceImpl implements BaseBallService{
     private final int endRange = 9;
     private final int count = 3;
 
+    private final NumberRepository numberRepository;
+
     public BaseBallServiceImpl(){
         Assembler assembler = new Assembler();
+        numberRepository = assembler.numberRepository();
     }
 
     @Override
@@ -23,7 +26,7 @@ public class BaseBallServiceImpl implements BaseBallService{
 
     @Override
     public void saveRandomNumbers(List<Integer> numbers) {
-
+        numberRepository.setNumbers(numbers);
     }
 
     @Override
