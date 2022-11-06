@@ -27,8 +27,8 @@
   - [x] 입력된 숫자에 대한 결과 계산
   - [x] 결과값에 해당하는 문구 출력
   - [x] play 메서드 구현
-- [ ] Controller 에서 Service 동작
-- [ ] 예외 처리 
+- [x] Controller 에서 Service 동작
+- [x] 예외 처리 
 
 ## 🎯 프로그래밍 요구 사항
 
