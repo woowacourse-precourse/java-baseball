@@ -34,6 +34,10 @@ public class BaseballGameService {
             }
         }
     }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 }
 
 
