@@ -5,7 +5,6 @@ import baseball.participant.Emcee;
 import baseball.participant.Pitcher;
 import baseball.participant.Referee;
 import baseball.result.Result;
-import baseball.result.ResultType;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.result.ResultType.*;
@@ -17,7 +16,7 @@ public class BaseballGameConsole {
     private final Referee referee = new Referee();
     private final Emcee emcee = new Emcee();
 
-    public void playGameWithPlayer(Pitcher pitcher) {
+    public void startWithPitcher(Pitcher pitcher) {
         emcee.showStartingGuide(pitcher.getName());
         do {
             playSingleGame(pitcher);
