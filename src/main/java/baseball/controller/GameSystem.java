@@ -9,6 +9,8 @@ import java.util.List;
 public class GameSystem {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final int ANSWER_LENGTH = 3;
+    private static final int GAME_EXIT = 2;
     public static final UserInterface userInterface = new UserInterface();
     public GameAnswer gameAnswer;
     public MyAnswer myAnswer;
@@ -25,7 +27,7 @@ public class GameSystem {
             gameAnswer.setNumber();
             gameProcess();
             gameLoop = userInterface.checkGameRestart();
-            if(gameLoop == 2) break;
+            if(gameLoop == GAME_EXIT) break;
         }
     }
 
@@ -55,15 +57,15 @@ public class GameSystem {
         Integer computerDigit;
         Integer myDigit;
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < ANSWER_LENGTH; i++) {
             computerDigit = computerDigitList.get(i);
-            for(int j = 0; j < 3; j++) {
+            for(int j = 0; j < ANSWER_LENGTH; j++) {
                 myDigit = myDigitList.get(j);
                 strikeBallCount(computerDigit,i,myDigit,j);
             }
         }
 
-        if(strikeCount == 3) return true;
+        if(strikeCount == ANSWER_LENGTH) return true;
         return false;
     }
 
