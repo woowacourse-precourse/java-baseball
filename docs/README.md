@@ -15,7 +15,7 @@ playGame();
 2. 게임의 절차를 모아 재귀함수로 만든다.
 playGame(){   
 InputThreeDistinctNumbers() 사용자에게서 3자리 수를 입력받아 반환한다.(예외처리)   
-String.valueOf(DigitsToCompare) 사용자에게서 입력받은 수를 문자열로 반환한다.   
+(삭제-readLine()이 자체적으로 String 반환)String.valueOf(DigitsToCompare) 사용자에게서 입력받은 수를 문자열로 반환한다.   
 checkNothing();(조회) 사용자가 추정한 수와 컴퓨터의 값 중 일치하는 값이 없으면 낫싱 출력 후 playGame() 호출   
 checkBalls(); (조회) 볼 수를 확인한다. int 개수 반환   
 showBalls(int balls); (명령) 볼 수를 출력한다.   

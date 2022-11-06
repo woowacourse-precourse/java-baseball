@@ -8,29 +8,67 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> digitsToCompare= new ArrayList<>();
+        List<Integer> whatComputerInputs = new ArrayList<>();
         System.out.println(Referee.START_GAME.ordered());
-        putRandomNumbers(digitsToCompare);
+        putRandomNumbersTo(whatComputerInputs);
         playGame();
     }
 
-    public static void playGame(){
-
+    public static void playGame() {
+        String whatClientInputs;
+        whatClientInputs = inputThreeDistinctNumbers();
+        isValid(whatClientInputs);
     }
 
-    public static void putRandomNumbers(List<Integer> digitsToCompare) {
+    public static void putRandomNumbersTo(List<Integer> digitsToCompare) {
         while (digitsToCompare.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             getDistinctNumbers(randomNumber, digitsToCompare);
         }
     }
 
-    public static void getDistinctNumbers(int randomNumber, List<Integer> digitsToCompare){
+    public static void getDistinctNumbers(int randomNumber, List<Integer> digitsToCompare) {
         if (!digitsToCompare.contains(randomNumber)) {
             digitsToCompare.add(randomNumber);
         }
     }
+
+    public static String inputThreeDistinctNumbers() {
+        System.out.print(Referee.ASK_NUMBERS.ordered());
+        String answeredNumbers = Console.readLine();
+        return answeredNumbers;
+    }
+
+    public static void isValid(String whatClientInputs) {
+        if (whatClientInputs.isBlank() || whatClientInputs.length() != 3) {
+            makeException();
+        }
+        if (whatClientInputs.charAt(0) == whatClientInputs.charAt(1)
+                || whatClientInputs.charAt(1) == whatClientInputs.charAt(2)
+                || whatClientInputs.charAt(0) == whatClientInputs.charAt(2)) {
+            makeException();
+        }
+        if (isNumber(whatClientInputs) == false) {
+            makeException();
+        }
+    }
+
+    public static boolean isNumber(String certainNumber) {
+        for (int characterIndex = 0; characterIndex < certainNumber.length(); characterIndex++) {
+            //ASCII Code ((int)'0')==48, ((int)'9'==57)
+            if ((int) certainNumber.charAt(characterIndex) >= 48 || (int) certainNumber.charAt(characterIndex) <= 57) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void makeException() {
+        IllegalArgumentException exit_program = new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        throw exit_program;
+    }
 }
+
 enum Referee {
     START_GAME("숫자 야구 게임을 시작합니다"),
     ASK_NUMBERS("숫자를 입력해주세요 : "),
@@ -42,10 +80,11 @@ enum Referee {
 
     private final String saying;
 
-    Referee(String saying){
+    Referee(String saying) {
         this.saying = saying;
     }
-    public String ordered(){
+
+    public String ordered() {
         return saying;
     }
 }
