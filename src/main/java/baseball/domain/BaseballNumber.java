@@ -18,7 +18,7 @@ public class BaseballNumber {
 
     private void certificateNumber(Integer number){
         if(9 > number || 0 < number)
-            throw;
+            throw new IllegalArgumentException();
     }
 
     public int getBaseballNumber(){
