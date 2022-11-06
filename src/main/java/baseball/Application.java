@@ -12,13 +12,12 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             // 1. 3자리 수 랜덤 생성 - Randoms의 pickNumberInRange()사용
-            List<Integer> numbers = new ArrayList<>();
-            while (numbers.size() < 3) {
-                generateRandomNumber(numbers);
-            }
+            List<Integer> numbers = generateRandomNumber();
+
+            for(int i=0; i<numbers.size(); i++)
+                System.out.println("랜덤 넘버: "+numbers.get(i));
 
             while(true){
-                //boolean breaker = false;
                 int strike=0, ball=0;//, nothing=0;
 
                 // 잘못된 값 입력시 IllegalArgumentException()를 throw
@@ -31,23 +30,29 @@ public class Application {
 
                 //System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
 
-                if(printBallCount(ball, strike)){
+                // 출력과 종료 조건 메소드 분리
+                printBallCount(ball, strike);           // 출력
+                if(hasEnded(strike)){                   // 종료 조건 확인
                     //System.out.println("게임을 종료합니다.");
                     break;
                 }
-
             }
             break;
         }
     }
     // 랜덤 넘버를 생성하는 메소드
-    static void generateRandomNumber(List<Integer> numbers){
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+    static List<Integer> generateRandomNumber(){
+        List<Integer> numbers = new ArrayList<>();
 
-        // 각 수는 서로 다른 수
-        if (!numbers.contains(randomNumber)) {
-            numbers.add(randomNumber);
+        while(numbers.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1, 9);         // 1~9사이 랜덤 넘버 생성
+
+            // 각 수는 서로 다른 수
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
+        return numbers;
     }
 
     static String illegalInput(){
@@ -91,17 +96,7 @@ public class Application {
     }
 
     // 2. 스트라이크, 볼, 낫싱 횟수를 출력
-    static boolean printBallCount(int ball, int strike){
-        // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
-        if(strike==3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            String continueOrExit = Console.readLine();
-            if(Integer.parseInt(continueOrExit) == 2)
-                return true;
-        }
-
+    static void printBallCount(int ball, int strike){
         if(ball != 0 && strike != 0)
             System.out.println(ball + "볼 "+strike+"스트라이크");
         else{
@@ -113,6 +108,17 @@ public class Application {
                 System.out.println("낫싱");
         }
 
+    }
+    // 종료 조건을 확인하는 메소드 - 모든 수를 맞히고 2를 입력
+    static boolean hasEnded(int strike){
+        // 3. 종료 조건 - 3자리 수를 모두 맞힌경우
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String continueOrExit = Console.readLine();
+            if(Integer.parseInt(continueOrExit) == 2)
+                return true;
+        }
         return false;
     }
 }
