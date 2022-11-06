@@ -3,8 +3,6 @@ package baseball.domain;
 public class Game {
     private int ballCount;
     private int strikeCount;
-    private int[] randomNumber;
-
     public void initGame(){
         ballCount=0;
         strikeCount=0;
