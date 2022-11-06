@@ -25,22 +25,22 @@ public class Game {
             throw new IllegalArgumentException("숫자를 1, 2 중에 하나를 입력해주세요!");
         }
     }
-    public void caseOfThreeStrike() {
+    public void getCaseThreeStrike() {
         Announce.finishAnnounce();
         String oneOrTwo = Console.readLine();
         finishOrRestart(oneOrTwo);
     }
-    public void caseOfNotThreeStrike() {
+    public void getCaseNotThreeStrike() {
         System.out.println(hint.printHint());
         count.resetCount();
         repeatGameUntilSuccess();
     }
     public void separateCase() {
         if (count.getStrikeNumber() == 3) {
-            caseOfThreeStrike();
+            getCaseThreeStrike();
         }
         if (count.getStrikeNumber() < 3) {
-            caseOfNotThreeStrike();
+            getCaseNotThreeStrike();
         }
     }
     public void repeatGameUntilSuccess() {
