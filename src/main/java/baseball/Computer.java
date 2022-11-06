@@ -16,7 +16,7 @@ public class Computer {
         numFactory.verifyNumber(computerNumber);
     }
 
-    public void calculateCount(int i, List<Integer> playerNumber, List<Integer> computerNumber) {
+    public void calculateCount(int i, List<Integer> playerNumber) {
         if (computerNumber.contains(playerNumber.get(i))) {
             if (computerNumber.indexOf(playerNumber.get(i)) == i)
                 strikeCount++;
@@ -25,9 +25,9 @@ public class Computer {
         }
     }
 
-    public String getResult(List<Integer> playerNumber,List<Integer> computerNumber) {
+    public String getResult(List<Integer> playerNumber) {
         for (int i = 0; i < 3; i++) {
-            calculateCount(i, playerNumber, computerNumber);
+            calculateCount(i, playerNumber);
         }
 
         if (strikeCount == 3) {
