@@ -5,35 +5,27 @@ import java.util.List;
 public class InputException {
     private static final int LENGTH = 3;
     public static int changeStrToInt(String input) {
-        int number;
-
         try {
-            number = Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력입니다. 프로그램을 종료합니다.");
         }
-
-        return number;
     }
 
     public static boolean isOverlap(List<Integer> numArr) {
-        boolean overlap = true;
-
         if (numArr.size() == numArr.stream().distinct().count()) {
-            overlap = false;
+            return false;
         }
 
-        return overlap;
+        return true;
     }
 
     public static boolean isNotSizeThree(List<Integer> numArr) {
-        boolean notSizeThree = false;
-
         if (numArr.size() != LENGTH) {
-            notSizeThree = true;
+            return true;
         }
 
-        return notSizeThree;
+        return false;
     }
 
     public static boolean hasZero(List<Integer> numArr) {
