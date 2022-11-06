@@ -1,21 +1,22 @@
 package baseball;
 
+import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Baseball {
     private final Computer computer;
     private final Player player;
+    private final InputValidator inputValidator;
     private List<Integer> computerNumbers;
     private List<Integer> playerNumbers;
 
     Baseball() {
         computer = new Computer();
         player = new Player();
+        inputValidator = new InputValidator();
     }
 
     public void startGame() {
@@ -39,7 +40,7 @@ public class Baseball {
 
     private void setPlayerNumbers() {
         String playerNumber = InputView.inputPlayerNumber();
-        player.validatePlayerNumber(playerNumber);
+        inputValidator.validatePlayerNumber(playerNumber);
         player.setNumbers(playerNumber);
 
         this.playerNumbers = player.getPlayerNumbers();
@@ -71,7 +72,7 @@ public class Baseball {
 
     private String getStateNumber() {
         String stateNumber = InputView.inputStateNumber();
-        player.validateStateNumber(stateNumber);
+        inputValidator.validateStateNumber(stateNumber);
 
         return stateNumber;
     }

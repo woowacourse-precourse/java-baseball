@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -17,38 +16,6 @@ public class PlayerTest {
     @BeforeEach
     void setUp() {
         player = new Player();
-    }
-
-    @Test
-    void 타입_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validatePlayerNumber("12삼");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.TYPE_EXCEPTION);
-    }
-
-    @Test
-    void 자리_수_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validatePlayerNumber("1234");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
-    }
-
-    @Test
-    void 중복_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validatePlayerNumber("122");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.DUPLICATION_EXCEPTION);
-    }
-
-    @Test
-    void 범위_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validatePlayerNumber("120");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.DIGIT_RANGE_EXCEPTION);
     }
 
     @Test
@@ -71,29 +38,5 @@ public class PlayerTest {
         player.setHintCount(computerNumbers, Arrays.asList(1, 2, 3));
 
         assertTrue(player.isMaxStrike());
-    }
-
-    @Test
-    void 상태_타입_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validateStateNumber("일");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.TYPE_EXCEPTION);
-    }
-
-    @Test
-    void 상태_자리_수_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validateStateNumber("12");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.STATE_LENGTH_EXCEPTION);
-    }
-
-    @Test
-    void 상태_범위_검사_테스트() {
-        assertThatThrownBy(() -> {
-            player.validateStateNumber("3");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
     }
 }
