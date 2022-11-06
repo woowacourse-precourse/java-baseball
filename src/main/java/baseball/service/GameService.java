@@ -1,10 +1,9 @@
 package baseball.service;
 
-import baseball.Constant;
-import baseball.SystemMessage;
+import baseball.system.SystemValue;
+import baseball.system.SystemMessage;
 import baseball.model.Answer;
 import baseball.model.User;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameService {
@@ -24,6 +23,7 @@ public class GameService {
 
     private boolean isCorrect(int ball, int strike) {
         if (ball == 0 && strike == 3) {
+            SystemMessage.printStrike(3);
             return true;
         }
         printHint(ball, strike);
@@ -34,10 +34,10 @@ public class GameService {
         if (ball == 0 && strike == 0) {
             SystemMessage.printNothing();
         }
-        if (ball == 0) {
+        if (ball == 0 && strike != 0) {
             SystemMessage.printStrike(strike);
         }
-        if (strike == 0) {
+        if (strike == 0 && ball != 0) {
             SystemMessage.printBall(ball);
         }
         if (ball != 0 && strike != 0) {
@@ -47,7 +47,7 @@ public class GameService {
 
     private int countingStrike(List<Integer> answerList, List<Integer> userInputList) {
         int count = 0;
-        for (int i = 0; i < Constant.DIGIT_SIZE; i++) {
+        for (int i = 0; i < SystemValue.DIGIT_SIZE; i++) {
             if (answerList.get(i) == userInputList.get(i)) {
                 count++;
             }
@@ -57,7 +57,7 @@ public class GameService {
 
     private int countingContainAnswer(List<Integer> answerList, List<Integer> userInputList) {
         int count = 0;
-        for (int i = 0; i < Constant.DIGIT_SIZE; i++) {
+        for (int i = 0; i < SystemValue.DIGIT_SIZE; i++) {
             if (answerList.contains(userInputList.get(i))) {
                 count++;
             }

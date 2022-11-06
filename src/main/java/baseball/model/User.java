@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.Constant;
+import baseball.system.SystemValue;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -28,7 +28,7 @@ public class User {
     }
 
     private boolean isNumberOfString(String text) {
-        Pattern pattern = Pattern.compile(Constant.REGAX_ONLY_NUMBER);
+        Pattern pattern = Pattern.compile(SystemValue.REGAX_ONLY_NUMBER);
         return pattern.matcher(text).matches();
     }
 
@@ -37,7 +37,7 @@ public class User {
     }
 
     private boolean isThreeInSize(List<Integer> numberList) {
-        return numberList.size() == Constant.DIGIT_SIZE;
+        return numberList.size() == SystemValue.DIGIT_SIZE;
     }
 
     private boolean isComposedUniqueNumber(List<Integer> numberList) {
@@ -46,7 +46,7 @@ public class User {
 
     private boolean isNumberFromOneToNine(List<Integer> numberList) {
         for (int number : numberList) {
-            if (number < Constant.MINIMUM_RANGE || number > Constant.MAXIMUM_RANGE) {
+            if (number < SystemValue.MINIMUM_RANGE || number > SystemValue.MAXIMUM_RANGE) {
                 return false;
             }
         }
