@@ -84,6 +84,23 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(computer.countBall(testNum)).isEqualTo(1);
     }
 
+    @Test
+    void 숫자가_하나도_일치하지_않을때_테스트() {
+        //Given
+        List<Integer> computerNum = List.of(3, 4, 5);
+        Computer computer = new Computer();
+        computer.setComputerNumber(computerNum);
+        List<Integer> testNum = List.of(6, 7, 8);
+
+        //When
+        computer.countStrike(testNum);
+        computer.countBall(testNum);
+
+        //Then
+        Assertions.assertThat(computer.getStrike()).isEqualTo(0);
+        Assertions.assertThat(computer.getBall()).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
