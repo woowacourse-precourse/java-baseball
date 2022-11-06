@@ -11,4 +11,10 @@ public class BaseballGameView {
             System.out.printf("%d스트라이크", strikeCount);
         }
     }
+
+    public void printBallCount(int ballCount) {
+        if (ballCount != 0) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+    }
 }
