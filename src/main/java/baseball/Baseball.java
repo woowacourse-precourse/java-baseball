@@ -40,14 +40,9 @@ public class Baseball {
     private void setPlayerNumbers() {
         String playerNumber = InputView.inputPlayerNumber();
         player.validatePlayerNumber(playerNumber);
+        player.setNumbers(playerNumber);
 
-        this.playerNumbers = toIntegerList(playerNumber);
-    }
-
-    private List<Integer> toIntegerList(String playerNumber) {
-        return Arrays.stream(playerNumber.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        this.playerNumbers = player.getPlayerNumbers();
     }
 
     private void printHintMessage() {
