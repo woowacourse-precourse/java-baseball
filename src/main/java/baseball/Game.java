@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -12,16 +14,29 @@ public class Game {
     private List<Integer> comNum;
     private List<Integer> userNum;
 
+    public Game(){
+        computerNumbers();
+    }
+
+    public void computerNumbers() {
+        comNum = new ArrayList<>();
+        while (comNum.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!comNum.contains(randomNumber)) {
+                comNum.add(randomNumber);
+            }
+        }
+    }
 
 
     public void playGame() {
-        comNum = ComputerNumber.getComputerNumber();
-        System.out.println(comNum);
         System.out.println("숫자를 입력해주세요 : ");
         userNum = User.userInputNumber();
         cnt_StrikeOrBall();
         System.out.println(strike_ball_nothing_Message());
     }
+
+
 
     public void cnt_StrikeOrBall() {
         this.strike = 0;
@@ -64,7 +79,7 @@ public class Game {
 
             String answer = Console.readLine();
             if (answer.equals("1")) {
-                playGame();
+                computerNumbers();
                 return true;
             }
             else if (answer.equals("2")) {
