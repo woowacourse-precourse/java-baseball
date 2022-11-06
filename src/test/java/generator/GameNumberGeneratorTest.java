@@ -10,7 +10,11 @@ public class GameNumberGeneratorTest {
     @Test
     @DisplayName("List<Integer>를 하나로 연결된 String으로 잘 반환하는 가?")
     void get_number_string_test() {
-        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        List<Integer> numbers = new ArrayList<>(3);
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
         GameNumberGenerator generator = new GameNumberGenerator(numbers);
         String number = generator.getNumber();
 
