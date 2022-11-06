@@ -1,5 +1,11 @@
 package baseball.domain;
 
-public class CreateRandomNumber {
+import java.util.List;
 
+public class CreateRandomNumber {
+    private static List<BaseballNumber> randomNumbers;
+
+    public CreateRandomNumber() {
+
+    }
 }
