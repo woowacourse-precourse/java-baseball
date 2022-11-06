@@ -48,11 +48,11 @@ public class GameStartService {
         } else if (strike == 0 && ball == 0) {
             result += HintStatus.NOTHING.getText();
         } else if (strike == 0 && !(ball == 0)) {
-            result += "" + ball + HintStatus.BALL.getText();
+            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         } else if (!(strike == 0) && !(ball == 0)) {
-            result += "" +strike + HintStatus.STRIKE.getText();
+            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         } else {
-            result += "" + ball + HintStatus.BALL.getText() +" " + strike + HintStatus.STRIKE.getText();
+            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         }
 
         return result;
