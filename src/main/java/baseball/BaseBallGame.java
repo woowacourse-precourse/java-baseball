@@ -21,7 +21,6 @@ public class BaseBallGame {
     public void startGame() {
         this.gameMessageDisplay.printGameStartMessage();
         setComputerNumbers();
-        runGame();
     }
 
     public void setComputerNumbers() {
