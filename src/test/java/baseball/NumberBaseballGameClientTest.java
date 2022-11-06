@@ -14,6 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("출력 메시지 및 입력 관리 기능 테스트")
 class NumberBaseballGameClientTest {
 
     private PrintStream standardOut;
@@ -66,7 +67,7 @@ class NumberBaseballGameClientTest {
         void 입력이_문자라면_IllegalArgumentException이_발생한다() {
             input("간다스");
             assertThatThrownBy(
-                () -> NumberBaseballGameClient.askPlayerGameNumber()
+                NumberBaseballGameClient::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -74,7 +75,7 @@ class NumberBaseballGameClientTest {
         void 입력이_4글자_이상이면_IllegalArgumentException이_발생한다() {
             input("4321");
             assertThatThrownBy(
-                () -> NumberBaseballGameClient.askPlayerGameNumber()
+                NumberBaseballGameClient::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -82,7 +83,7 @@ class NumberBaseballGameClientTest {
         void 입력이_0글자_이하라면_IllegalArgumentException이_발생한다() {
             input("");
             assertThatThrownBy(
-                () -> NumberBaseballGameClient.askPlayerGameNumber()
+                NumberBaseballGameClient::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -90,7 +91,23 @@ class NumberBaseballGameClientTest {
         void 입력에_중복된_숫자가_있다면_IllegalArgumentException이_발생한다() {
             input("424");
             assertThatThrownBy(
-                () -> NumberBaseballGameClient.askPlayerGameNumber()
+                NumberBaseballGameClient::askPlayerGameNumber
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 공백문자만_입력되면_IllegalArgumentException이_발생한다() {
+            input(" ");
+            assertThatThrownBy(
+                NumberBaseballGameClient::askPlayerGameNumber
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 숫자와_공백이_같이_입력되면_IllegalArgumentException이_발생한다() {
+            input("123 ");
+            assertThatThrownBy(
+                NumberBaseballGameClient::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }
