@@ -53,7 +53,7 @@ public class Player {
 
         for (Ball ball : balls) {
             BallStatus ballStatus = otherPlayer.play(ball);
-            gameResult.addResult(ballStatus);
+            gameResult.addScore(ballStatus);
         }
         return gameResult;
     }

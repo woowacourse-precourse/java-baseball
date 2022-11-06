@@ -19,7 +19,7 @@ public class GameResult {
         this.ball = ball;
     }
 
-    public void addResult(BallStatus status) {
+    public void addScore(BallStatus status) {
         if (status.isStrike()) {
             strike++;
         }
