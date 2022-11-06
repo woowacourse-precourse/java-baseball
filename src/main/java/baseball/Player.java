@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static baseball.Computer.MAX;
+
 public class Player {
     private static final String INT_REGEX = "^[0-9]*$";
     private static final Player PLAYER = new Player();
@@ -23,6 +25,12 @@ public class Player {
     public void checkNumber(String userInput) throws IllegalArgumentException {
         if(!userInput.matches(INT_REGEX)) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+    }
+
+    public void checkLength(String userInput) throws IllegalArgumentException {
+        if(userInput.length() > MAX) {
+            throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
         }
     }
 
