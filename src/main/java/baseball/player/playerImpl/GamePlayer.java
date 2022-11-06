@@ -1,4 +1,7 @@
-package baseball.player;
+package baseball.player.playerImpl;
+
+import baseball.player.playerMember.Player;
+import baseball.player.playerMember.PlayerNumbers;
 
 public class GamePlayer extends Player {
 

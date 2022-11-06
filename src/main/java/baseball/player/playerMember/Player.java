@@ -1,4 +1,4 @@
-package baseball.player;
+package baseball.player.playerMember;
 
 public class Player {
 

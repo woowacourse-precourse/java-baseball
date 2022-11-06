@@ -1,4 +1,4 @@
-package baseball.player;
+package baseball.player.playerMember;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

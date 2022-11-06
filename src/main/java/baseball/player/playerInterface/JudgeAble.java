@@ -1,4 +1,6 @@
-package baseball.player;
+package baseball.player.playerInterface;
+
+import baseball.player.playerMember.PlayerNumbers;
 
 import java.util.List;
 

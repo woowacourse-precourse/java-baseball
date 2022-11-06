@@ -2,9 +2,9 @@ package baseball.game;
 
 import baseball.input.inputInterface.InputAble;
 import baseball.input.inputImpl.InputConsole;
-import baseball.player.Computer;
-import baseball.player.GamePlayer;
-import baseball.player.PlayerNumbers;
+import baseball.player.playerImpl.Computer;
+import baseball.player.playerImpl.GamePlayer;
+import baseball.player.playerMember.PlayerNumbers;
 import baseball.uitls.RandomNumber;
 import baseball.validate.ValidateNumber;
 import baseball.view.ViewConsole;
