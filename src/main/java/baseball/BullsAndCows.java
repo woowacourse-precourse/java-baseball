@@ -30,7 +30,7 @@ public class BullsAndCows {
     private int ballCount = 0;
 
     BullsAndCows() {
-        createRandomAnswer();
+        createAnswerNumber();
     }
 
     public void playGame() {
@@ -56,39 +56,12 @@ public class BullsAndCows {
         }
     }
 
-    private String getResultMessageOfGuessNumber(String userInput) {
-        validateNumber(userInput);
-
-        this.userInput = Arrays.stream(userInput.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-        if (isNothing()) {
-            return NOTHING.getMessage();
-        }
-
-        return getResultScoreByFormat().trim();
-    }
-
-    private GameProgressMessage getResultOfEndGame(String userInput) {
-        int flag = Integer.parseInt(userInput);
-        if (flag == (RESTART_GAME)) {
-            return GAME_PROGRESS_RESTART;
-        }
-
-        if (flag == END_GAME) {
-            return GAME_PROGRESS_END;
-        }
-
-        throw new IllegalArgumentException("Game is over, you must input only flag number");
-    }
-
     private void restart() {
-        createRandomAnswer();
+        createAnswerNumber();
         playGame();
     }
 
-    private void createRandomAnswer() {
+    private void createAnswerNumber() {
         initCountValues();
         answerNumberList.clear();
         while (answerNumberList.size() < 3) {
@@ -106,36 +79,67 @@ public class BullsAndCows {
         ballCount = 0;
     }
 
-    private String getResultScoreByFormat() {
-        return getBallNumber() + " " + getStrikeNumber();
+    private boolean isEnd() {
+        return strikeCount == STRIKE_COUNT_FOR_END;
     }
 
-    private String getStrikeNumber() {
+    private String getResultMessageOfGuessNumber(String userInput) {
+        validateNumber(userInput);
+
+        this.userInput = Arrays.stream(userInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        if (isNothing()) {
+            return NOTHING.getMessage();
+        }
+
+        return getResultScore();
+    }
+
+    private GameProgressMessage getResultOfEndGame(String userInput) {
+        int flag = Integer.parseInt(userInput);
+        if (flag == (RESTART_GAME)) {
+            return GAME_PROGRESS_RESTART;
+        }
+
+        if (flag == END_GAME) {
+            return GAME_PROGRESS_END;
+        }
+
+        throw new IllegalArgumentException("Game is over, you must input only flag number");
+    }
+
+    private String getStrikeScore() {
         strikeCount = 0;
 
         IntStream.range(0, userInput.size())
-                .filter(this::isStrike)
+                .filter(this::isStrikeByIndex)
                 .forEach(index -> strikeCount++);
 
         return STRIKE.of(strikeCount);
     }
 
-    private boolean isStrike(int index) {
-        return Objects.equals(answerNumberList.get(index), userInput.get(index));
-    }
-
-    private String getBallNumber() {
+    private String getBallScore() {
         ballCount = 0;
 
         IntStream.range(0, userInput.size())
-                .filter(this::isBall)
+                .filter(this::isBallByIndex)
                 .forEach(index -> ballCount++);
 
         return BALL.of(ballCount);
     }
 
-    private boolean isBall(int index) {
-        return !isStrike(index) && answerNumberList.contains(userInput.get(index));
+    private String getResultScore() {
+        return (getBallScore() + " " + getStrikeScore()).trim();
+    }
+
+    private boolean isStrikeByIndex(int index) {
+        return Objects.equals(answerNumberList.get(index), userInput.get(index));
+    }
+
+    private boolean isBallByIndex(int index) {
+        return !isStrikeByIndex(index) && answerNumberList.contains(userInput.get(index));
     }
 
     private boolean isNothing() {
@@ -143,10 +147,6 @@ public class BullsAndCows {
                 .noneMatch(answerNumberList::contains);
     }
 
-    private boolean isEnd() {
-        return strikeCount == STRIKE_COUNT_FOR_END;
-    }
-    
     private void validateNumber(List<Integer> input) {
         StringBuilder builder = new StringBuilder();
         input.forEach(builder::append);
@@ -154,13 +154,13 @@ public class BullsAndCows {
 
         validateIsNumber(result);
         validateLength(result);
-        validateIsDuplicatedNumber(result);
+        validateDuplicate(result);
     }
 
     private void validateNumber(String input) {
         validateIsNumber(input);
         validateLength(input);
-        validateIsDuplicatedNumber(input);
+        validateDuplicate(input);
     }
 
     private void validateLength(String input) {
@@ -175,11 +175,11 @@ public class BullsAndCows {
         }
     }
 
-    private void validateIsDuplicatedNumber(String input) {
+    private void validateDuplicate(String input) {
         Pattern pattern = Pattern.compile(REGEX_HAS_DUPLICATE_VALUE);
         Matcher matcher = pattern.matcher(input);
-        if(matcher.find()) {
+        if (matcher.find()) {
             throw new IllegalArgumentException("number must not be duplicated");
-        };
+        }
     }
 }
