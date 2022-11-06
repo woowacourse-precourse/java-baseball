@@ -42,6 +42,7 @@ public class Game {
 			playerInputNumbers = getPlayerInput();
 			player.setPlayerNumbers(playerInputNumbers);
 
+			judgeStrikeAndBallCount();
 		}
 	}
 
@@ -65,5 +66,40 @@ public class Game {
 				throw new IllegalArgumentException();
 			}
 		}
+	}
+
+	private void judgeStrikeAndBallCount() {
+		for (int i = 0;i < NUMBER_LENGTH; i++) {
+			judgeStrikeAndBall(i, opponent.getAnswerNumbers(), player.getPlayerNumbers());
+		}
+	}
+
+	private void judgeStrikeAndBall(int position, List<Integer> opponentNumbers, List<Integer> playerNumbers) {
+		int strike = 0;
+		int ball = 0;
+
+		for (int i = 0;i <opponentNumbers.size(); i++) {
+			if (playerNumbers.get(position) == opponentNumbers.get(i)) {
+				strike += judgeStrike(position, i);
+				ball += judgeBall(position, i);
+			}
+		}
+
+		strikeAndBall.setStrike(strikeAndBall.getStrike() + strike);
+		strikeAndBall.setBall(strikeAndBall.getBall() + ball);
+	}
+
+	private int judgeStrike(int position1, int position2) {
+		if (position1 == position2) {
+			return 1;
+		}
+		return 0;
+	}
+
+	private int judgeBall(int position1, int position2) {
+		if (position1 != position2) {
+			return 1;
+		}
+		return 0;
 	}
 }
