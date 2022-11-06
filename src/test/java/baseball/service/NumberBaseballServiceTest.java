@@ -76,7 +76,7 @@ public class NumberBaseballServiceTest {
 
     @DisplayName("스트라이크의 수 계산 테스트")
     @Test
-    void getCountStrike() {
+    void getCountStrikeSuccess() {
         // given
         ComputerNumber computerNumber = new ComputerNumber(List.of(2, 3, 4));
         String userInput = "235";
