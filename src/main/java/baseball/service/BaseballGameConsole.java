@@ -31,7 +31,7 @@ public class BaseballGameConsole {
 
         while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
-            String predictedNumber = pitcher.predictNumber();
+            String predictedNumber = pitcher.pitchNumberBall();
             validator.validatePrediction(predictedNumber);
 
             Result result = referee.resultOfPrediction(hitNumber, predictedNumber);

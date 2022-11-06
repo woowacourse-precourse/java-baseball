@@ -14,7 +14,7 @@ public class Pitcher {
         return name;
     }
 
-    public String predictNumber() {
+    public String pitchNumberBall() {
         return Console.readLine();
     }
 }
