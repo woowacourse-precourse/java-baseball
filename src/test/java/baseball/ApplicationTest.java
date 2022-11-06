@@ -1,18 +1,26 @@
 package baseball;
 
+import baseball.participants.Pitcher;
+import baseball.participants.Referee;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.mockito.Mockito.mockStatic;
 
 import baseball.participants.StrikeZone;
+import org.mockito.MockedStatic;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -85,80 +93,44 @@ class ApplicationTest extends NsTest {
         }
     }
 
+
+    @Test
+    void testPitch() {
+        final byte[] buf = String.join("\n", "245").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        Referee referee = new Referee();
+        Pitcher pitcher = new Pitcher();
+        referee.startPitch();
+        pitcher.pitch();
+
+        assertThat(pitcher.pitchZone.toString()).isEqualTo("245");
+    }
+
+    @Test
+    void testPlayAgain() {
+        final byte[] buf = String.join("\n", "4","1").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        Referee referee = new Referee();
+        referee.playAgainOrTerminate();
+
+        assertThat(output()).contains("1 혹은 2만 입력해주세요.", "게임을 다시 시작합니다.");
+    }
+
+    @Test
+    void testTerminateGame() {
+        final byte[] buf = String.join("\n", "4","2").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        Referee referee = new Referee();
+        referee.playAgainOrTerminate();
+
+        assertThat(output()).contains("1 혹은 2만 입력해주세요.", "게임을 완전히 종료합니다.");
+    }
+
     @Nested
     class JudgementTest {
-        @Test
-        @DisplayName("1스트라이크")
-        void strike1() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("234"), new StrikeZone("222"))).isEqualTo("1스트라이크");
-        }
-
-        @Test
-        @DisplayName("1스트라이크")
-        void strike1_2() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("222"), new StrikeZone("234"))).isEqualTo("1스트라이크");
-        }
-
-        @Test
-        @DisplayName("1볼: 볼값이 Swing에 2개 있는 경우")
-        void ball1() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("262"), new StrikeZone("324"))).isEqualTo("1볼");
-        }
-
-        @Test
-        @DisplayName("1볼 1스트라이크")
-        void ball1Strike1() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("252"), new StrikeZone("224"))).isEqualTo("1볼 1스트라이크");
-        }
-
-        @Test
-        @DisplayName("2스트라이크")
-        void strike2() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("262"), new StrikeZone("232"))).isEqualTo("2스트라이크");
-        }
-
-        @Test
-        @DisplayName("2볼: 볼값 하나가 Pitch에 2개 들어 있는 경우에도 하나만 카운트")
-        void ball2() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("123"), new StrikeZone("232"))).isEqualTo("2볼");
-        }
-
-
-        @Test
-        @DisplayName("2볼 1스트라이크")
-        void ball2Strike1() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("233"), new StrikeZone("332"))).isEqualTo("2볼 1스트라이크");
-        }
-
-
-        @Test
-        @DisplayName("3볼")
-        void ball3() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("561"), new StrikeZone("156"))).isEqualTo("3볼");
-        }
-
-
-        @Test
-        @DisplayName("3스트라이크")
-        void 결과_판별_테스트5() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("232"), new StrikeZone("232"))).isEqualTo("3스트라이크");
-        }
-
-        @Test
-        @DisplayName("낫싱")
-        void 결과_판별_테스트5() {
-            Referee referee = new Referee();
-            assertThat(referee.judge(new StrikeZone("561"), new StrikeZone("232"))).isEqualTo("낫싱");
-        }
     }
 
 
