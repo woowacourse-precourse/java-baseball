@@ -2,9 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,8 +18,7 @@ public class GameController {
 
     // 숫자 하나씩 나누어서 리스트에 보관
     public List<Integer> userNumberConvertToList(String userNumber) {
-        List<Integer> userNumberList = Stream.of(userNumber.split("")).mapToInt(Integer::parseInt)
-                .boxed().collect(Collectors.toList());
+        List<Integer> userNumberList = Stream.of(userNumber.split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         return userNumberList;
     }
 
