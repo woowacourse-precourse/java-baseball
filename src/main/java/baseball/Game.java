@@ -8,10 +8,12 @@ import static baseball.Constants.Result;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -83,7 +85,7 @@ public class Game extends abstracts.Game {
     private boolean playTurn(String input) {
         HashMap<Result, Integer> turnResult = getGuessResult(input);
         Messages.printScore(turnResult);
-        if(isGameOver(turnResult)) {
+        if (isGameOver(turnResult)) {
             Messages.END.printMessage();
             terminate();
             Messages.ASK.printMessage();
@@ -103,14 +105,28 @@ public class Game extends abstracts.Game {
         return guessResult;
     }
 
+    private final Map<Result, BiFunction<Integer, Integer, Boolean>> resultMapper = new HashMap<>();
+    {
+        resultMapper.put(Result.STRIKE, this::isNumberStrike);
+        resultMapper.put(Result.BALL, this::isNumberBall);
+        resultMapper.put(Result.OUT, this::isNumberOut);
+    }
+
+    private Boolean isNumberStrike(Integer index, Integer number) {
+        return answerNumbers.get(index).equals(number);
+    }
+    private Boolean isNumberBall(Integer index, Integer number) {
+        return answerNumbers.contains(number);
+    }
+    private Boolean isNumberOut(Integer index, Integer number) {
+        return true;
+    }
+
     private Result getIndexResult(int index, int number) {
-        if (answerNumbers.get(index) == number) {
-            return Result.STRIKE;
-        }
-        if (answerNumbers.contains(number)) {
-            return Result.BALL;
-        }
-        return Result.OUT;
+        return Arrays.stream(Result.values())
+                .filter(result -> resultMapper.get(result).apply(index, number))
+                .findFirst()
+                .get();
     }
 
     private boolean isGameOver(HashMap<Result, Integer> turnResult) {
@@ -134,4 +150,5 @@ public class Game extends abstracts.Game {
         return optionMapper.get(input)
                 .get();
     }
+
 }

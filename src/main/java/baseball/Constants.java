@@ -10,7 +10,7 @@ public class Constants {
     public static final boolean PROCESS_CONTINUE = true;
     public static final boolean PROCESS_FINISH = false;
     public enum Result {
-        BALL, STRIKE, OUT
+        STRIKE, BALL, OUT
     }
 
     public enum Messages{

@@ -66,6 +66,12 @@
           - 숫자 하나씩 검사하며 스트라이크와 볼의 갯수를 셉니다.
             - [X] getIndexResult
             - 숫자 하나가 스트라이크인지, 볼인지, 아웃인지 알려줍니다.
+              - [X] isNumberStrike
+              - 숫자가 스트라이크인지 확인합니다.
+              - [X] isNumberBall
+              - 숫자가 볼인지 확인합니다.
+              - [X] isNumberOut
+              - 숫자가 아웃인지 확인합니다.
             - [X] isGameOver
             - 게임 종료 조건을 충족했는지 확인합니다.
         - [X] askAfterGameOption
