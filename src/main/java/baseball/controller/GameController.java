@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.domain.Ball;
+import baseball.domain.BallFactory;
 import baseball.domain.Balls;
-import baseball.domain.AnswerGenerator;
+import baseball.domain.generator.NumberGenerator;
 import baseball.domain.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -38,20 +37,14 @@ public class GameController {
     }
 
     private Balls getAnswer() {
-        List<Integer> numbers = AnswerGenerator.createAnswer();
-        return convertToBalls(numbers);
+        List<Integer> numbers = NumberGenerator.generateRandomNumbers();
+        return BallFactory.createBalls(numbers);
     }
 
     private Balls getPlayerBalls() {
         List<Integer> numbers = InputView.getInput();
-        return convertToBalls(numbers);
+        return BallFactory.createBalls(numbers);
     }
 
-    private static Balls convertToBalls(List<Integer> numbers) {
-        List<Ball> ballList = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i++) {
-            ballList.add(Ball.of(numbers.get(i), i + 1));
-        }
-        return Balls.of(ballList);
-    }
-}
+
+ }
