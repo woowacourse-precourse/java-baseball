@@ -56,4 +56,12 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    @DisplayName("수가 아닌 입력이 있는 경우")
+    public void NotNumber() throws Exception{
+       assertThatThrownBy(()->Application.validationAndConvert("a12"))
+               .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
 }
