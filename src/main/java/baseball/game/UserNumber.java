@@ -8,9 +8,6 @@ import java.util.List;
 
 public class UserNumber {
 
-    /**
-     * 사용자 수 생성
-     */
     public static List<Integer> inputUserNumber(){
         System.out.println("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
@@ -20,9 +17,6 @@ public class UserNumber {
         return userNumberList;
     }
 
-    /**
-     * 사용자 수 검증 함수 호출
-     */
     public static List<Integer> checkInputUserNumber(){
         List<Integer> userNumberList = inputUserNumber();
         if(!UserNumberValidator.checkValidationUserNumber(userNumberList)){

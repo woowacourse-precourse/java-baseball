@@ -7,9 +7,6 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    /**
-     * 컴퓨터 수 생성
-     */
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
