@@ -38,4 +38,22 @@ public class Application {
         }
         return randomNumber;
     }
+
+    private static void guess(String answer) throws IllegalArgumentException {
+        Boolean correct;
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerGuess = Console.readLine();
+            if(playerGuess.length() != 3 || !isNum(playerGuess)) {
+                throw new IllegalArgumentException();
+            }
+            correct = correctOrHint(playerGuess, answer);
+
+            if (correct) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        } while (true);
+    }
 }
