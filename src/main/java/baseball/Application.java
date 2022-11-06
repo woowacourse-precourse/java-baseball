@@ -50,13 +50,9 @@ public class Application {
 
     public static String inputAvailableUserNumberService(){
         String userNumbers = "";
-        boolean availableUserNumberIsChecking = false;
         userNumberMessagePrint();
         userNumbers = userNumberInput();
-        availableUserNumberIsChecking = availableUserNumberIsChecked(userNumbers);
-        if(!availableUserNumberIsChecking){
-            userNumbers = inputAvailableUserNumberService();
-        }
+        availableUserNumberIsChecked(userNumbers);
         return userNumbers;
     }
 
@@ -66,6 +62,5 @@ public class Application {
         randomNumberCreate();
         userNumberMessagePrint();
         String userNumbers = userNumberInput();
-        boolean results = availableUserNumberIsChecked(userNumbers);
     }
 }
