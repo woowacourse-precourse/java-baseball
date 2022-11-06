@@ -19,12 +19,14 @@ public class Application {
     public static final String BALL = "볼";
     public static final String USER_INPUT_TYPE_ERROR = "숫자만 입력하세요";
     public static final String USER_INPUT_RANGE_ERROR = "1또는 2만 입력하세요";
+    public static final String INTRO_TEXT = "숫자 야구 게임을 시작합니다.";
+    public static final String USER_INPUT_TEXT = "숫자를 입력해주세요 : ";
+    public static final String RESTART_OR_EXIT_TEXT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String userInput = Console.readLine();
-        validateUserInput(userInput);
+        gameStart();
     }
 
     static List<Integer> generateThreeDigitsNumber() {
@@ -160,6 +162,47 @@ public class Application {
     static void validateUserInputIsStartOrExit(int userInput) {
         if (1 > userInput || userInput > 2) {
             throw new IllegalArgumentException(USER_INPUT_RANGE_ERROR);
+        }
+    }
+
+    static void roundStart() {
+
+        List<Integer> answer = generateThreeDigitsNumber();
+
+        int state = 1;
+        while (state == 1) {
+
+            System.out.print(USER_INPUT_TEXT);
+            String userInput = Console.readLine();
+            validateUserInput(userInput);
+            List<Integer> userInputIntList = stringToIntList(userInput);
+
+            int strikeCount = countStrikeInUserInput(userInputIntList, answer);
+            int ballCount = countBallInUserInput(userInputIntList, answer);
+
+            String output = makeOutput(ballCount, strikeCount);
+            System.out.println(output);
+
+            state = isRoundFinish(ballCount, strikeCount);
+        }
+    }
+
+    static void gameStart() {
+        System.out.println(INTRO_TEXT);
+
+        int state = 1;
+
+        while (state == 1) {
+            roundStart();
+
+            System.out.println(RESTART_OR_EXIT_TEXT);
+            String userInput = Console.readLine();
+
+            validateUserInputType(userInput);
+            int userInputIntValue = stringToInt(userInput);
+            validateUserInputIsStartOrExit(userInputIntValue);
+
+            state = userInputIntValue;
         }
     }
 }
