@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +43,7 @@ public class Game {
 
     public void printStrikeAndBall(int strike, int ball) {
         if (strike > 0 && ball > 0) {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         } else if (strike > 0) {
             System.out.println(strike + "스트라이크");
         } else if (ball > 0) {
