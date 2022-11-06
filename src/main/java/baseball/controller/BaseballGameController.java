@@ -20,7 +20,7 @@ public class BaseballGameController {
 
     public void start() {
 
-        inputView.printGameStart();
+        outputView.printGameStart();
         computer.generateComputerNumberThree();
         play();
         outputView.printGameEnd();

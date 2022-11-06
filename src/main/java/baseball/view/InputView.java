@@ -8,10 +8,6 @@ public class InputView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public void printGameStart(){
-        System.out.println(START_MESSAGE);
-    }
-
     public String restart(){
         System.out.println(RESTART_MESSAGE);
         String input = scanner.next();

@@ -49,12 +49,9 @@ public class Computer {
     }
 
     public String getHint(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
-        int strike = countStrike(computerNum,playerNum);
-        int ball = countBall(computerNum, playerNum);
-
-        String hint = "";
-        hint = getHintInfo(strike, ball);
-        return hint;
+        int strikeCount = countStrike(computerNum,playerNum);
+        int ballCount = countBall(computerNum, playerNum);
+        return getHintInfo(strikeCount, ballCount);
     }
 
     private static String getHintInfo(int strike, int ball) {
