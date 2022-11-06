@@ -22,10 +22,18 @@ public final class Util {
     }
 
     public static int getDistinctCountInIntegerList(List<Integer> list) {
-        return (int) list
-                .stream()
-                .distinct()
+        return (int) makeDistinctStream(list)
                 .count();
     }
+    public static int mergeDistinctIntegerInList(List<Integer> list) {
+        return (int) makeDistinctStream(list)
+                .reduce((x, y) -> x * 10 + y)
+                .get();
+    }
 
+    private static Stream<Integer> makeDistinctStream(List<Integer> list) {
+        return list
+                .stream()
+                .distinct();
+    }
 }
