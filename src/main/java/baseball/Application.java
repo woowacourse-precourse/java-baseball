@@ -34,9 +34,18 @@ public class Application {
         return userNumber;
     }
 
-    public static boolean availableUserNumberIsChecked(String word){
+    public static boolean availableUserNumberIsChecked(String word) throws IllegalAccessError{
         String regularExpression = "^[0-9]{3}^+$";
         boolean result = Pattern.matches(regularExpression,word);
+
+        try{
+            if(!result){
+                throw new IllegalAccessError("유효하지 않은 값입니다.");
+            }
+        }catch(IllegalAccessError illegalAccessError){
+            illegalAccessError.printStackTrace();
+            result = true;
+        }
         return result;
     }
 
