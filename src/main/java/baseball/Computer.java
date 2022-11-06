@@ -7,6 +7,12 @@ import java.util.List;
 
 public class Computer {
     private static final int BASEBALL_GAME_DIGIT = 3;
+    private static final int BASEBALL_LOWER_NUMBER = 1;
+    private static final int BASEBALL_UPPER_NUMBER= 9;
+    private static final int TEN_DECIMAL = 10;
+    private static final int NO_BALL = 0;
+    private static final int NO_STRIKE = 0;
+    private static final int ALL_STRIKE = 3;
     private final List<Character> baseballNumber = new ArrayList<>();
     private final CounterBaseball counterBaseball = new CounterBaseball();
 
@@ -22,7 +28,8 @@ public class Computer {
     }
 
     private void addRandomNumber() {
-        char randomNumber = Character.forDigit((Randoms.pickNumberInRange(1, 9)), 10);
+        char randomNumber = Character.forDigit((Randoms.pickNumberInRange(BASEBALL_LOWER_NUMBER,
+                BASEBALL_UPPER_NUMBER)), TEN_DECIMAL);
         if (!baseballNumber.contains(randomNumber)) {
             baseballNumber.add(randomNumber);
         }
@@ -35,19 +42,19 @@ public class Computer {
     public void replyBallAndStrike() {
         int ball = counterBaseball.getBall();
         int strike = counterBaseball.getStrike();
-        if ((ball == 0) && (strike == 0)) {
+        if ((ball == NO_BALL) && (strike == NO_STRIKE)) {
             View.printNothing();
         }
-        if ((ball == 0) && !(strike == 0)) {
+        if ((ball == NO_BALL) && !(strike == NO_STRIKE)) {
             View.printStrike(strike);
-            if(strike == 3){
+            if(strike == ALL_STRIKE){
                 View.printCollect();
             }
         }
-        if (!(ball == 0) && (strike == 0)) {
+        if (!(ball == NO_BALL) && (strike == NO_STRIKE)) {
             View.printBall(ball);
         }
-        if (!(ball == 0) && !(strike == 0)) {
+        if (!(ball == NO_BALL) && !(strike == NO_STRIKE)) {
             View.printBallAndStrike(ball, strike);
         }
     }
