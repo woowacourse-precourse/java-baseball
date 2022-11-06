@@ -2,9 +2,12 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ApplicationMethodsTest {
@@ -74,5 +77,19 @@ public class ApplicationMethodsTest {
         int strikeCount = Application.checkBall(randomNumber, inputNumber);
 
         assertThat(strikeCount).isEqualTo(2);
+    }
+
+    @Test
+    void printResult() {
+        int ballCount = 1;
+        int strikeCount = 1;
+
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+        Application.printResult(ballCount, strikeCount);
+        String result = outputStreamCaptor.toString().trim();
+
+        assertEquals(result, "1볼 1스트라이크");
+        System.setOut(System.out);
     }
 }
