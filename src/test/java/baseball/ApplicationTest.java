@@ -169,7 +169,7 @@ class ApplicationTest extends NsTest {
     @Test
         // 길이가 초가 할때
     void 문자_입력_예외_테스트_case_연습() throws Exception {
-        //given xx
+        //given asdasd
         User user = new User();
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
