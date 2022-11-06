@@ -11,9 +11,13 @@ public class Game {
     final private int COUNT_FIN = 3;
     final private int STRIKE_NUM = 1;
     final private int BALL_NUM = 2;
+
     final private String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
 
-
+    final private String NOTHING_STRING = "낫싱";
+    final private String GAME_OVER_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    final private String BALL_STRING = "볼";
+    final private String STRIKE_STRING = "스트라이크";
 
 
     private int[] user;
@@ -37,13 +41,12 @@ public class Game {
             user = userNumber.getNumbers();
             ScoreReset();
             Calculator();
-
+            printResult();
         }
     }
     private void GameStartString() {
         System.out.println(GAME_START_STRING);
     }
-
     private void ScoreReset() {
         strike = COUNT_START;
         ball = COUNT_START;
@@ -76,6 +79,26 @@ public class Game {
         return 0;
     }
 
+    private String getResult() {
+        if (strike == COUNT_START && ball == COUNT_START) {
+            return NOTHING_STRING;
+        }
+        if (strike == COUNT_FIN) {
+            return GAME_OVER_STRING;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ball > COUNT_START) {
+            stringBuilder.append(ball);
+            stringBuilder.append(BALL_STRING);
+        }
+        if (strike > COUNT_START) {
+            stringBuilder.append(strike);
+            stringBuilder.append(STRIKE_STRING);
+        }
+        return stringBuilder.toString();
+    }
 
-
+    private void printResult() {
+        System.out.println(getResult());
+    }
 }
