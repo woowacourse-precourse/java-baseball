@@ -11,11 +11,11 @@ public class Computer {
 
     public Computer () {
         pickNewRandomNumbers();
-        System.out.print("computer : ");
+        /*System.out.print("computer : ");
         for (int i = 0; i < 3; i++) {
             System.out.print(computerNumbers.get(i).getNumber());
         }
-        System.out.println();
+        System.out.println();*/
     }
 
     public void pickNewRandomNumbers() {

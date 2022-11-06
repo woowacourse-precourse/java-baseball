@@ -21,6 +21,7 @@ public class Game {
             round.playRound();
             this.isAnswer = round.isThreeStrike();
         }
+        Print.printGameEnd();
     }
 
     public boolean replayGame() {

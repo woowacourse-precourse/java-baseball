@@ -10,7 +10,8 @@ public class Input {
 
     public static String readString() {
         String inputString;
-        try {
+        inputString = Console.readLine();
+        /*try {
             Constructor<Console> constructor = Console.class.getDeclaredConstructor();
             constructor.setAccessible(true);
             Console console = constructor.newInstance();
@@ -21,12 +22,12 @@ public class Input {
 
             Field scannerField = Console.class.getDeclaredField("scanner");
             scannerField.setAccessible(true);
-            /*Scanner scanner = (Scanner) scannerField.get(console);
-            scanner.close();*/
+            *//*Scanner scanner = (Scanner) scannerField.get(console);
+            scanner.close();*//*
             scannerField.set(console, null);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
         return inputString;
     }
 
