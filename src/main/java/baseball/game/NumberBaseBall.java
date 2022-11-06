@@ -4,6 +4,7 @@ import baseball.input.inputInterface.InputAble;
 import baseball.input.inputImpl.InputConsole;
 import baseball.player.Computer;
 import baseball.player.GamePlayer;
+import baseball.player.PlayerNumbers;
 import baseball.uitls.RandomNumber;
 import baseball.validate.ValidateNumber;
 import baseball.view.ViewConsole;
@@ -12,7 +13,6 @@ import baseball.view.Viewable;
 import java.util.List;
 
 public class NumberBaseBall implements PlayAble {
-    private final int INPUT_NUMBER_LENGTH = 3;
     private final int STRIKE_INDEX = 1;
     private final int STRIKE_OUT = 3;
     private final int GAME_END_NUMBER = 2;
@@ -37,7 +37,7 @@ public class NumberBaseBall implements PlayAble {
     public void start() {
         initializeSetting();
         view.printStart();
-        computer = new Computer(RandomNumber.makeRandomNumber());
+        computer = new Computer(new PlayerNumbers(RandomNumber.makeRandomNumber()));
     }
 
     private void initializeSetting() {
@@ -49,18 +49,12 @@ public class NumberBaseBall implements PlayAble {
     public void play() {
         view.printInput();
         int inputNumber = input.acceptInt();
-        validateInputNumber(inputNumber);
-        gamePlayer = new GamePlayer(inputNumber);
-        List<Integer> hints = computer.judge(gamePlayer.getNumber());
+        gamePlayer = new GamePlayer(new PlayerNumbers(inputNumber));
+        List<Integer> hints = computer.judge(gamePlayer.getPlayerNumbers());
         view.printHint(hints);
         if (hints.get(STRIKE_INDEX) == STRIKE_OUT) {
             this.stopGame = true;
         }
-    }
-
-    private void validateInputNumber(int inputNumber) {
-        ValidateNumber.validateLength(inputNumber, (Integer length) -> length == INPUT_NUMBER_LENGTH);
-        ValidateNumber.validateOverlap(inputNumber);
     }
 
     @Override
