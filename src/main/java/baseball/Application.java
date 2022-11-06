@@ -4,9 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class Application {
+
+    private static String continueornot;
 
     private static HashMap<String, Integer> chooseComputerNumber() {
         HashMap<String, Integer> computer = new HashMap<>();
@@ -59,10 +63,25 @@ public class Application {
             System.out.println("낫싱");
         }
     }
+
+    private static boolean oneOrTwo(String contiornot) {
+        return Pattern.matches("[1, 2]", contiornot);
+    }
+
+    private static Integer selectContinueOrNot() {
+        while(true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            continueornot = Console.readLine();
+            if(oneOrTwo(continueornot)) {
+                break;
+            }
+            System.out.println("1 또는 2를 입력해 주세요.");
+        }
+        return Integer.parseInt(continueornot);
+    }
     private static Integer playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         HashMap computer = chooseComputerNumber();
-        System.out.println(computer);
         while(true) {
             String user = inputUserNumber();
             int[] result = matchNumber(computer, user);
@@ -72,8 +91,7 @@ public class Application {
                 break;
             }
         }
-
-        return 2;
+        return selectContinueOrNot();
     }
 
     private static int[] countStrikeBall(HashMap com, String num, Integer idx, int[] res) {
