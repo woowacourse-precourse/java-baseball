@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Game {
     private static final int LENGTH = 3;
@@ -23,5 +24,28 @@ public class Game {
             }
         }
         gameStart(computerList);
+    }
+    public static void user(String[] str){
+        for(int i=0;i<LENGTH;i++){
+            if(!userNumberList.contains(Integer.parseInt(str[i]))) {
+                userNumberList.add(Integer.parseInt(str[i]));
+            }
+        }
+    }
+    public static void gameStart(List<Integer> computer){
+        Check.isEmptyUserList(userNumberList);
+        Print.printGetNumberMessage();
+
+        String user = readLine();
+        Check.checkNumberOnly(user);
+        Check.checkInputZero(user);
+
+        String[] splitStr = user.split("");
+        Check.checkinputSize(splitStr);
+
+        user(splitStr);
+
+        Check.checkInputNumberDuplicate(userNumberList);
+
     }
 }
