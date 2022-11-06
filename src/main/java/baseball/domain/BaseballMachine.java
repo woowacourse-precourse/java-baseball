@@ -22,10 +22,7 @@ public class BaseballMachine {
 
     // 입력한 값을 정답과 비교하여 boolean값 반환하는 기능
     public boolean checkAnswer() {
-        if (classify(strikeModel.getBall(), strikeModel.getStrike())) {
-            return true;
-        }
-        return false;
+        return classify(strikeModel.getBall(), strikeModel.getStrike());
     }
 
     // 볼 스트라이크에 따라 구분하여 힌트 메세지 출력
