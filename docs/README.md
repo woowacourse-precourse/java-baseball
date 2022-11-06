@@ -10,6 +10,7 @@ a. 정답 List
 <br>d. Ball 저장 변수
 <br>e. 낫싱 저장 변수
 ### 2-2. 랜덤 3자리 생성하여 데이터베이스 클래스에 저장.
+#### 2-2-1. RunGame 클래스 구현하여 answer값을 데이터베이스 클래스에 저장.
 ## 3. 입력을 Collection으로 받음
 ## 4. Strike를 비교하는 class
 ## 5. Ball을 비교하는 class
