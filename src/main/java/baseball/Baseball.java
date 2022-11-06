@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,18 +10,16 @@ import java.util.stream.Collectors;
 public class Baseball {
     private final Computer computer;
     private final Player player;
-    private final SystemMessage systemMessage;
     private List<Integer> computerNumbers;
     private List<Integer> playerNumbers;
 
     Baseball() {
         computer = new Computer();
         player = new Player();
-        systemMessage = new SystemMessage();
     }
 
     public void startGame() {
-        systemMessage.printStart();
+        OutputView.printStart();
         playGame();
     }
 
@@ -53,13 +52,13 @@ public class Baseball {
     private void printHintMessage() {
         player.setHintCount(computerNumbers, playerNumbers);
         String hintMessage = player.getHintMessage();
-        System.out.println(hintMessage);
+        OutputView.printHintMessage(hintMessage);
     }
 
     private boolean isGameOver() {
-        if(player.isMaxStrike()) {
+        if (player.isMaxStrike()) {
             if (isStateShutDown()) {
-                systemMessage.printGameOver();
+                OutputView.printGameOver();
                 return true;
             }
 
