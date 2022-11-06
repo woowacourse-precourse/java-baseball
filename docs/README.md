@@ -10,8 +10,8 @@
 - isNumber(String input)
   - 입력한 값이 숫자인지 확인, 아니면 예외 발생
   - 입력 값을 List로 변경하기 전에 거치는 단계
-- userInput()
-  - guess 입력 받아 List로 변환
+- convertStringToList(String input)
+  - 입력받은 String을 List로 변환
   - 출력 : List<Integer> 입력값 리스트로 변환
 - examineGuess(String guess, String answer)
   - Player가 제출한 guess를 평가하는 기능
