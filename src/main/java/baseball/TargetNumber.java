@@ -1,6 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TargetNumber {
@@ -9,8 +12,19 @@ public class TargetNumber {
     private final List<Integer> numberListByDigit;
 
     public static TargetNumber getRandomInstance() {
-        // TODO 무작위의 TargetNumber Instance 반환
-        return new TargetNumber(123);
+        return new TargetNumber();
+    }
+
+    private TargetNumber() {
+        numberListByDigit = new ArrayList<>();
+        while (numberListByDigit.size() < TARGET_NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numberListByDigit.contains(randomNumber)) {
+                numberListByDigit.add(randomNumber);
+            }
+        }
+
+        Collections.reverse(numberListByDigit);
     }
 
     public TargetNumber(int number) throws IllegalArgumentException {
