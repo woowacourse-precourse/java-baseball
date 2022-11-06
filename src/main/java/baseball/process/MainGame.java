@@ -12,16 +12,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MainGame {
 
-    private final OutputText outputText;
-
-    public MainGame(OutputText outputText){
-        this.outputText = outputText;
-    }
-
     public List<Integer> inputGuessNumber(){
         List<Integer> inputNumber = new ArrayList<>();
 
-        outputText.inputNumber();
+        OutputText.inputNumber();
         String inputLine = readLine();
         if(!isRightInput(inputLine)){
             throw new IllegalArgumentException();
@@ -60,24 +54,24 @@ public class MainGame {
         boolean correct = false;
 
         if(countStrike == 0 && countBall == 0){
-            outputText.nothing();
+            OutputText.nothing();
         }
 
         if(countStrike > 0 && countBall > 0){
-            outputText.strikeAndBall(countStrike, countBall);
+            OutputText.strikeAndBall(countStrike, countBall);
         }
 
         if(countStrike > 0 && countBall == 0){
             if(countStrike == Setting.INPUT_NUMBER) {
-                outputText.strike(countStrike);
+                OutputText.strike(countStrike);
                 correct = true;
             }
             else {
-                outputText.strike(countStrike);
+                OutputText.strike(countStrike);
             }
         }
         if(countStrike == 0 && countBall > 0){
-            outputText.ball(countBall);
+            OutputText.ball(countBall);
         }
         return correct;
     }

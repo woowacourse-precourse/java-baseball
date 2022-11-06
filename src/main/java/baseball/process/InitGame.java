@@ -10,14 +10,6 @@ import java.util.List;
 
 public class InitGame {
 
-    private final OutputText outputText;
-
-    public InitGame(OutputText outputText){
-        this.outputText = outputText;
-
-        outputText.startGame();
-    }
-
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
 

@@ -7,14 +7,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class EndGame {
 
-    private final OutputText outputText;
-
-    public EndGame(OutputText outputText){
-        this.outputText = outputText;
-
-        outputText.endGame();
-    }
-
     public boolean continueGame(){
         String line = readLine();
         int end = 0;
