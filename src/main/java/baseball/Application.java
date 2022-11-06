@@ -66,4 +66,16 @@ public class Application {
         }
         return true;
     }
+
+    public static void printResult(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        } else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
 }
