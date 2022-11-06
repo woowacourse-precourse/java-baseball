@@ -32,7 +32,17 @@ public class BaseballController {
      * @return [ballCount, strikeCount] 형태의 배열
      */
     public List<Integer> getBallAndStrikeCount(String inputString) {
-        return null;
+        if (inputString.length() != gameInputCount) {
+            throw new IllegalArgumentException(gameInputCount + "자리의 숫자가 아님");
+        }
+        try {
+            List<Integer> inputNumberList = stringToIntegerList(inputString);
+            List<Integer> result = baseballService.getBallAndStrikeCounts(inputNumberList);
+
+            return result;
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     /**
