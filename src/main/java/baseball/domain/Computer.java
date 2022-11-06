@@ -8,13 +8,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
     private static final int MAX_SIZE_OF_NUMBER = 3;
+    private static final int DOES_NOT_EXIST = -1;
     List<String> computersNumber = new ArrayList<>();
 
     public Computer() {
         while (computersNumber.size() < MAX_SIZE_OF_NUMBER) {
-            int pickNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computersNumber.contains(String.valueOf(pickNumber))) {
-                computersNumber.add(computersNumber.size(), String.valueOf(pickNumber));
+            int pickedNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computersNumber.contains(String.valueOf(pickedNumber))) {
+                computersNumber.add(computersNumber.size(), String.valueOf(pickedNumber));
             }
         }
     }
@@ -41,7 +42,7 @@ public class Computer {
         for (String numberOfPlayer : playersNumber) {
             int indexOfComputersNumber = computersNumber.indexOf(numberOfPlayer);
             int indexOfPlayersNumber = playersNumber.indexOf(numberOfPlayer);
-            if (indexOfComputersNumber == -1) {
+            if (indexOfComputersNumber == DOES_NOT_EXIST) {
                 continue;
             }
             if (indexOfComputersNumber == indexOfPlayersNumber) {
