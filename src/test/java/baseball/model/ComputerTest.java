@@ -145,4 +145,20 @@ class ComputerTest {
         assertThat(resultComputer.getNothing()).isEqualTo(false);
     }
 
+    @Test
+    void compareUsersNum_3스트라이크() {
+        //given
+        Computer computer = new Computer();
+        computer.generateRandomNumList();
+        List<Integer> randomNum = computer.getRandomNum();
+        int firstNum = randomNum.get(0);
+        int secondNum = randomNum.get(1);
+        int thirdNum = randomNum.get(2);
+        //when
+        List<Integer> oneStrikeTwoBall = Arrays.asList(firstNum, secondNum, thirdNum);
+        Computer resultComputer = computer.compareUsersNum(oneStrikeTwoBall);
+        //then
+        assertThat(resultComputer.isThreeStrike()).isEqualTo(true);
+    }
+
 }
