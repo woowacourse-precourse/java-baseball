@@ -33,12 +33,12 @@ public class Application {
     }
 
     private static boolean isNumber(String number) {
-        try{
-            Integer.parseInt(number);
-            return true;
-        } catch (Exception e) {
-            return false;
+        for(int i=0; i<number.length(); i++) {
+            if(!Pattern.matches("[1-9]", Character.toString(number.charAt(i)))){
+                return false;
+            }
         }
+        return true;
     }
     private static boolean isValidNumber(String number) {
         return isDistinctNumber(number) && isNumber(number);
