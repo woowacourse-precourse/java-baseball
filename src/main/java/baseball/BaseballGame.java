@@ -48,7 +48,7 @@ public class BaseballGame {
         List<Integer> counts;
         pickRandomNumbers();
         do {
-            getPredictNumbers(inputView.inputNumbers());
+            getPredictNumbers(validateStringToInteger(inputView.inputNumbers()));
             counts = checkNumbers();
             outputView.printResult(counts);
         } while (counts.get(2) == 3);
