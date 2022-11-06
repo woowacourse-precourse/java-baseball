@@ -104,14 +104,11 @@
   `private void printMessage(List<Integer> judgement)`<br>
   `: 게임 수행결과를 출력합니다.`<br>
   <br>
-  `private int findStrikes(String userInput, String answer)`<br>
-  `: 스트라이크의 개수를 찾습니다.`<br>
+  `private List<Integer> getJudgement(String userInput, String answer)`<br>
+  `: 스트라이크와 볼의 개수를 List<Integer> judgement에 저장해서 반환합니다.`<br>
   <br>
   `private int countStrikes(String userInput, String answer)`<br>
   `: 스트라이크의 개수를 세서 리턴합니다.`<br>
-  <br>
-  `private int findBalls(String userInput, String answer)`<br>
-  `: 볼의 개수를 찾습니다.`<br>
   <br>
   `private int countBalls(String userInput, String answer)`<br>
   `: 스트라이크의 개수를 세서 리턴합니다.`<br>
