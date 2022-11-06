@@ -76,4 +76,8 @@ public class User {
 			scanInputWhenTerminating();
 		}
 	}
+
+	public List<Integer> getValidatedUserInput() {
+		return validatedUserInput;
+	}
 }
