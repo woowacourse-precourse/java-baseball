@@ -10,7 +10,7 @@ public class OutputView {
     private static final int STRIKE_NUMBER = 3;
     private static final int ZERO = 0;
 
-    public static Boolean printGameResult(int ballCount, int strikeCount) {
+    public static boolean printGameResult(int ballCount, int strikeCount) {
         if (strikeCount == STRIKE_NUMBER) {
             return printThreeStrikeResult();
         }
@@ -34,25 +34,25 @@ public class OutputView {
         return true;
     }
 
-    private static Boolean printBallAndStrikeResult(int strikeCount, int ballCount) {
+    private static boolean printBallAndStrikeResult(int strikeCount, int ballCount) {
         System.out.printf(PRINT_BALL_AND_STRIKE, ballCount, strikeCount);
 
         return true;
     }
 
-    private static Boolean printStrikeResult(int strikeCount) {
+    private static boolean printStrikeResult(int strikeCount) {
         System.out.printf(PRINT_STRIKE_COUNT, strikeCount);
 
         return true;
     }
 
-    private static Boolean printBallResult(int ballCount) {
+    private static boolean printBallResult(int ballCount) {
         System.out.printf(PRINT_BALL_COUNT, ballCount);
 
         return true;
     }
 
-    private static Boolean printNothingResult() {
+    private static boolean printNothingResult() {
         System.out.print(NOTHING);
 
         return true;
