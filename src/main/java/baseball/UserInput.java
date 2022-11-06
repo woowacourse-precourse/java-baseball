@@ -9,15 +9,20 @@ import static baseball.Constant.*;
 
 public class UserInput {
     private String input;
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
+    public void putNumbers(List<Integer> numbers) {
+        Score score = new Score();
+        score.userNumbers(numbers);
+    }
+    
     public void inputNumbers() {
         PrintMessage.enterNumber();
         this.input = Console.readLine();
         isValid();
         convertNumbers();
+        putNumbers(numbers);
     }
-
 
     private void convertNumbers() {
         Convert convert = new Convert();

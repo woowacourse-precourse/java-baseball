@@ -9,8 +9,12 @@ import static baseball.Constant.*;
 
 public class PickNumbers {
 
+    private void putNumber(List<Integer> numbers) {
+        Score score = new Score();
+        score.computerNumbers(numbers);
+    }
 
-    List<Integer> pickNumbers() {
+    public void pickNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
@@ -18,6 +22,6 @@ public class PickNumbers {
                 numbers.add(randomNumber);
             }
         }
-        return numbers;
+        putNumber(numbers);
     }
 }
