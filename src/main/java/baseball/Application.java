@@ -17,8 +17,9 @@ public class Application {
 
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
-
+        System.out.println(START_GAME);
         status = Status.PROCEEDING;
+
         try {
             // TODO: 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
             while (status != Status.EXIT) {
@@ -51,6 +52,7 @@ public class Application {
                     result = Result.getResultByCode(score);
                     System.out.println(result.getMessage());
                 }
+                System.out.println(GUESS_ALL);
 
                 // TODO: 5. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
                 System.out.println(OPTION_MESSAGE);
@@ -61,5 +63,7 @@ public class Application {
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException();
         }
+
+        System.out.println(END_GAME);
     }
 }
