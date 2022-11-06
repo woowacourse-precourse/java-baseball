@@ -9,6 +9,7 @@ public class Result {
         this.ball = ball;
     }
 
+
     private void countStrike(String randomNumber, String userNumber) {
         int count = 0;
         for (int index = 0; index < randomNumber.length(); index++) {
@@ -19,7 +20,7 @@ public class Result {
         strike = count;
     }
 
-    public void countBall(String randomNumber, String userNumber) {
+    private void countBall(String randomNumber, String userNumber) {
         int count = 0;
         for (char number : userNumber.toCharArray()) {
             if (randomNumber.contains(String.valueOf(number))) {
