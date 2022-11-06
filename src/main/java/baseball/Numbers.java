@@ -19,6 +19,12 @@ public class Numbers {
         }
     }
 
+    public void validateNumber(int number){
+        if(number<1||number>9){
+            throw new IllegalArgumentException("숫자가 1~9 사이의 수가 아닙니다.");
+        }
+    }
+
     public int check(int number, int index){
         if(numbers.get(index)==number){
             return 2;
@@ -30,6 +36,7 @@ public class Numbers {
     }
 
     public void add(int number) {
+        validateNumber(number);
         if (!numbers.contains(number)) {
             numbers.add(number);
         }
