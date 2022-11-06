@@ -54,8 +54,8 @@
 <details>
 <summary>랜덤 넘버 생성</summary>
 
-- [ ] Randoms API 사용
-- [ ] 각 자리의 숫자가 서로 겹치지 않음
+- [x] Randoms API 사용
+- [x] 각 자리의 숫자가 서로 겹치지 않음
 
 </details>
 
@@ -65,7 +65,7 @@
 # 입력
 
 - [x] Interactive 인터페이스 선언
-- [ ] Console API 사용
+- [x] Console API 사용
 
 # 출력
 
