@@ -9,6 +9,7 @@ public class DataProcessing {
     private List<Integer> dataForProcess;
     private List<Integer> dataForCompare;
     public static final int BALL_INDEX = 0;
+    public static final int STRIKE_INDEX = 1;
 
     DataProcessing() {
     }
@@ -27,6 +28,20 @@ public class DataProcessing {
         }
         this.dataForCompare = computer;
     }
+
+    private int checkStrike() {
+        int count = 0;
+
+        for (int i = 0; i < this.dataForProcess.size(); i++){
+            int tempInputNumber = dataForProcess.get(i);
+            int tempCompareNumber = dataForCompare.get(i);
+            if (tempInputNumber == tempCompareNumber) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
     private int checkBall() {
         int count = 0;
 
@@ -43,8 +58,8 @@ public class DataProcessing {
         int[] dataProcessed = new int[2];
         makeRandomData();
 
-        dataProcessed[BALL_INDEX] = checkBall();
-        System.out.println(this.dataForProcess);
+        dataProcessed[STRIKE_INDEX] = checkStrike();
+        dataProcessed[BALL_INDEX] = checkBall() - dataProcessed[STRIKE_INDEX]; // 스트라이크와 중복 빼주기
         return dataProcessed;
     }
 }
