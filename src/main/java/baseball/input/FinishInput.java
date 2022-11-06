@@ -9,4 +9,15 @@ public enum FinishInput {
     FinishInput(int input) {
         this.input = input;
     }
+
+    public static FinishInput numberOf(int input) {
+        switch (input) {
+            case 1:
+                return FinishInput.RESTART_GAME;
+            case 2:
+                return FinishInput.QUIT_GAME;
+            default:
+                throw new IllegalArgumentException("1또는 2를 입력해주세요.");
+        }
+    }
 }
