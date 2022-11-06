@@ -6,52 +6,70 @@ import java.util.*;
 import org.junit.jupiter.api.Test;
 
 public class Application {
-    static int inputSize = 3;
-    public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        DataBase data = new DataBase();
-        RunGame game = new RunGame();
-        data.setAnswer(game.answer);
-        data.setUserInput(game.userInput());
 
-        CompareNumbers strikeBall = new CompareNumbers();
-        strikeBall.checkNumber(data.getUserInput(), data.getAnswer());
-        data.setBall(strikeBall.ball);
-        data.setStrike(strikeBall.strike);
-    }
-    static class RunGame {
-        List<Integer> answer = new ArrayList<>();
-        RunGame() {
-            while(answer.size()<inputSize) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!answer.contains(randomNumber)) {
-                    answer.add(randomNumber);
-                }
+    public static void main(String[] args) {
+        boolean run = true;
+        boolean finish = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (run && finish) {
+            finish = false;
+            RunGame game = new RunGame();
+            DataBase data = new DataBase();
+            data.setAnswer(game.setAnswer());
+            Output output = new Output();
+            while (!finish) {
+                CompareNumbers strikeBall = new CompareNumbers();
+                data.setUserInput(game.userInput());
+                strikeBall.checkNumber(data.getUserInput(), data.getAnswer());
+                data.setBall(strikeBall.ball);
+                data.setStrike(strikeBall.strike);
+                output.printResult(data.getStrike(), data.getBall());
+                finish = game.isFinish(data.getStrike());
+                run = game.isAgain(finish);
             }
         }
-        public List<Integer> userInput() {
-            List<Integer> intUserInput = new ArrayList<>();
-            String[] stringUserInput = {};
-            stringUserInput = Console.readLine().split("");
-            for (String number : stringUserInput) {
-                intUserInput.add(Integer.parseInt(number));
-            }
-            return intUserInput;
-        }
+        System.out.println("게임 종료");
     }
 }
 
+class RunGame {
+
+    public List<Integer> setAnswer() {
+        List<Integer> answer = new ArrayList<>();
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+        return answer;
+    }
+
+    public List<Integer> userInput() {
+        List<Integer> intUserInput = new ArrayList<>();
+        String[] stringUserInput = {};
+        stringUserInput = Console.readLine().split("");
+        for (String number : stringUserInput) {
+            intUserInput.add(Integer.parseInt(number));
+        }
+        return intUserInput;
+    }
+}
+
+
 class CompareNumbers {
+
     int strike = 0;
     int ball = 0;
+
     public void checkNumber(List<Integer> userInput, List<Integer> answer) {
-        for(int number : userInput) {
+        for (int number : userInput) {
             if (answer.contains(number)) {
                 ball++;
             }
         }
-        for(int i = 0; i < userInput.size(); i++) {
-            if(userInput.get(i) == answer.get(i)) {
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i) == answer.get(i)) {
                 strike++;
                 ball--;
             }
@@ -60,32 +78,41 @@ class CompareNumbers {
 }
 
 class DataBase {
-    private List<Integer> answer = new ArrayList<>();
+
+    static List<Integer> answer = new ArrayList<>();
     private List<Integer> userInput = new ArrayList<>();
     private int strike = 0;
     private int ball = 0;
-    public void setAnswer(List<Integer> answer) {
-        this.answer = answer;
+
+    public static void setAnswer(List<Integer> randomNumber) {
+        answer = randomNumber;
     }
+
     public List<Integer> getAnswer() {
         return this.answer;
     }
+
     public void setUserInput(List<Integer> userInput) {
         this.userInput = userInput;
     }
+
     public List<Integer> getUserInput() {
         return this.userInput;
     }
+
     public void setStrike(int strike) {
         this.strike = strike;
     }
+
     public int getStrike() {
         return this.strike;
     }
+
     public void setBall(int ball) {
         this.ball = ball;
     }
-    public int getBall(){
+
+    public int getBall() {
         return this.ball;
     }
 }
