@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -109,6 +110,15 @@ public class Application {
         }
 
         return String.join(" ",answer).trim();
+    }
+
+    //6. 정답인지 확인하기
+    public static boolean isAnswer(Map<String, Integer> resultMap) {
+        if (resultMap.containsKey("strike") && resultMap.get("strike") == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
     }
 
 }
