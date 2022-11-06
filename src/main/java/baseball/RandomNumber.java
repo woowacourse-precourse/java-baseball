@@ -9,9 +9,9 @@ public class RandomNumber {
     int thirdDigit;
 
     public RandomNumber() {
-        generateFirstRandomDigit();
-        generateSecondRandomDigit();
-        generateThirdRandomDigit();
+        this.firstDigit = generateFirstRandomDigit();
+        this.secondDigit = generateSecondRandomDigit();
+        this.thirdDigit = generateThirdRandomDigit();
     }
 
     public int generateFirstRandomDigit() {
@@ -32,5 +32,9 @@ public class RandomNumber {
             randomNumber = Randoms.pickNumberInRange(1, 9);
         }
         return randomNumber;
+    }
+
+    public int combineEachDigit() {
+        return firstDigit * 100 + secondDigit * 10 + thirdDigit;
     }
 }
