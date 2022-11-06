@@ -8,4 +8,12 @@ public class BaseBallGameInput {
         this.randomNumber = randomNumber;
         this.guessNumber = guessNumber;
     }
+
+    public String getGuessNumber() {
+        return guessNumber;
+    }
+
+    public String getRandomNumber() {
+        return randomNumber;
+    }
 }
