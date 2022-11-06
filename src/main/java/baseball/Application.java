@@ -27,7 +27,12 @@ public class Application {
         boolean playGame = true;
         while (playGame) {
             playGame = false;
-            gameStart();
+            try {
+                gameStart();
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException);
+                break;
+            }
             if(willReplay()) {
                 playGame = true;
             }
@@ -35,21 +40,15 @@ public class Application {
 
     }
 
-    static void gameStart() {
+    static void gameStart() throws IllegalArgumentException {
         System.out.println(START_MESSAGE);
         int[] computerNumber = initializeComputerNumber();
         boolean playBaseball = true;
         while (playBaseball) {
             String stringUserInput = getUserInput(InputType.BASEBALL_NUMBER);
             int[] userInput;
-            try {
-                isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
-                userInput = stringToIntegerArray(stringUserInput);
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(illegalArgumentException);
-                break;
-            }
-
+            isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
+            userInput = stringToIntegerArray(stringUserInput);
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
             printResult(ball, strike);
