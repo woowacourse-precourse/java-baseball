@@ -45,7 +45,7 @@
 ### GameUtil
 게임의 진행, 규칙과 직접적 연관이 없는 기능 구현
 
--[ ] 랜덤한 3자리 컴퓨터 수 생성 (refactor: BaseballGameController에서 이동)
+- [x] 랜덤한 3자리 컴퓨터 수 생성 (refactor: BaseballGameController에서 이동)
 
 <br/>
 

@@ -1,7 +1,7 @@
 package baseball.component;
 
+import baseball.utils.GameUtils;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class BaseballGameController {
 
     public void playSingleGame(BaseballGameRule baseballGameRule){
 
-        List<Integer> computerNumbers = generateThreeRandomNumbers();
+        List<Integer> computerNumbers = GameUtils.generateThreeRandomNumbers();
         List<Integer> playerNumbers;
         List<Integer> playerScore;
 
@@ -92,17 +92,6 @@ public class BaseballGameController {
             return true;
         }
         return false;
-    }
-
-    private List<Integer> generateThreeRandomNumbers(){
-        List<Integer> randomNumbers = new ArrayList<>();
-        while(randomNumbers.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
-            }
-        }
-        return randomNumbers;
     }
 
     private void validatePlayerNumberInput(String playerInput) throws IllegalArgumentException{
