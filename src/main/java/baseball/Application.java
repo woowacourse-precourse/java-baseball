@@ -82,12 +82,14 @@ public class Application {
         List<Integer> user = inputNumber();
         /*예외처리: 세자리가 아닐때 같은 숫자가 있을때*/
         if (user.get(0).equals(user.get(1)) ||user.get(0).equals(user.get(2))||user.get(1).equals(user.get(2))) {
-            System.out.println("중복 숫자를 입력하지 마세요");
-            user = inputNumber();
+//            System.out.println("중복 숫자를 입력하지 마세요");
+//            user = inputNumber();
+            throw new IllegalArgumentException();
         }
         if (!(user.size() == 3)) {
-            System.out.println("세자리 숫자를 입력해주세요");
-            user = inputNumber();
+//            System.out.println("세자리 숫자를 입력해주세요");
+//            user = inputNumber();
+            throw new IllegalArgumentException();
         }
         int countStrike = strike(user, computer);
         int countBall = ball(user, computer);
