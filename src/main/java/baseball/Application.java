@@ -20,14 +20,15 @@ public class Application {
         return computer;
     }
 
-    static List<Integer> getInputNumber (){
+    static List<Integer> getInputNumber(){
         String input;
         int inputNumber = 0;
         try {
             input = Console.readLine();
             inputNumber = Integer.parseInt(input);
-            if (inputNumber<100 || inputNumber>999)
+            if (inputNumber<100 || inputNumber>999) {
                 throw new IllegalArgumentException();
+            }
         }
         catch (IllegalStateException e){
             e.printStackTrace();
@@ -41,7 +42,6 @@ public class Application {
             inputNumber %= cnt;
             cnt/=10;
         }
-
         return number;
     }
     static int checkBall(int index,int value, List<Integer> computer){
@@ -76,6 +76,7 @@ public class Application {
             System.out.print("숫자를 입력해 주세요 : ");
             List<Integer> input = getInputNumber();
             HashMap<String ,Integer> result = getResult(input,computer);
+
             int strike = result.get("strike");
             int ball = result.get("ball");
             if(strike==0 && ball==0){
@@ -95,16 +96,13 @@ public class Application {
             }
         }
     }
-    static boolean isPlay (){
+    static boolean isPlay() {
         String isPlaying = Console.readLine();
-
-        if (isPlaying.equals("1")){
+        if (isPlaying.equals("1")) {
             return true;
-        }
-        else if (isPlaying.equals("2")){
+        } else if (isPlaying.equals("2")){
             return false;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -113,10 +111,9 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.\n");
         boolean isPlay = true;
-        while (isPlay){
+        while (isPlay) {
             List<Integer> computer = createRandomNumber();
             repeatInput(computer);
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             isPlay = isPlay();
         }
