@@ -29,7 +29,7 @@ public class Application {
 
     }
 
-    private static void ballAndStrike(int strikesCount, int ballCount) {
+    private static void printBallAndStrike(int strikesCount, int ballCount) {
         System.out.println(ballCount + "볼 " + strikesCount + "스트라이크");
     }
 
