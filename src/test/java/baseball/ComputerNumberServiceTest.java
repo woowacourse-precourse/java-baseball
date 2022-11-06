@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.service.ComputerNumberService;
@@ -14,7 +15,7 @@ public class ComputerNumberServiceTest {
         List<Integer> computerNumbers = ComputerNumberService.generate();
         int computerNumbersSize = computerNumbers.size();
 
-        assertThat(computerNumbersSize).isEqualTo(3);
+        assertThat(computerNumbersSize).isEqualTo(NUMBER_SIZE.getValue());
     }
 
     @Test

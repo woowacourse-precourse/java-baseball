@@ -15,7 +15,7 @@ public class UserNumberService {
 
         Validation.validate(inputNumber);
 
-        for (int index = 0; index < NUMBER_SIZE; index++) {
+        for (int index = 0; index < NUMBER_SIZE.getValue(); index++) {
             int numberToInt = inputNumber.charAt(index) - '0';
             userNumbers.add(numberToInt);
         }

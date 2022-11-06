@@ -14,7 +14,7 @@ public class ComputerNumberService {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (!hasThreeNumbers(computerNumbers)) {
-            int random = pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
+            int random = pickNumberInRange(MINIMUM_NUMBER.getValue(), MAXIMUM_NUMBER.getValue());
 
             if (!computerNumbers.contains(random)) {
                 computerNumbers.add(random);
@@ -24,7 +24,7 @@ public class ComputerNumberService {
     }
 
     private static boolean hasThreeNumbers(List<Integer> numbers) {
-        return numbers.size() == NUMBER_SIZE;
+        return numbers.size() == NUMBER_SIZE.getValue();
     }
 
 }

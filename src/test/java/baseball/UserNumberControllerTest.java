@@ -26,7 +26,7 @@ public class UserNumberControllerTest {
         List<Integer> userNumbers = UserNumberService.generate();
         int userNumbersSize = userNumbers.size();
 
-        assertThat(userNumbersSize).isEqualTo(NUMBER_SIZE);
+        assertThat(userNumbersSize).isEqualTo(NUMBER_SIZE.getValue());
     }
 
     @Test

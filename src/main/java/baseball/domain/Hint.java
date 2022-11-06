@@ -23,7 +23,7 @@ public class Hint {
     }
 
     public void countHint(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        for (int index = 0; index < NUMBER_SIZE; index++) {
+        for (int index = 0; index < NUMBER_SIZE.getValue(); index++) {
             if (Objects.equals(userNumbers.get(index), computerNumbers.get(index))) {
                 strike++;
                 continue;
