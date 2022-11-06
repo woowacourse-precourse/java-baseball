@@ -13,6 +13,15 @@ public class Player {
         return input;
     }
 
+    public static boolean wantRestart() {
+        Result.printStartNewGameMessage();
+
+        String response = Console.readLine();
+        validateRestartFlag(response);
+
+        return response.equals("1");
+    }
+
     private static void validateInput(String input) {
         // 입력된 값이 숫자인지 확인
         if (!input.matches("[0-9]+")) {
@@ -40,5 +49,11 @@ public class Player {
             if(x > 1) return true;
         }
         return false;
+    }
+
+    private static void validateRestartFlag(String response) {
+        if(!response.equals("1") && !response.equals("2")) {
+            throw new IllegalArgumentException("게임을 재시작/종료 하려면 1 또는 2를 입력해야 합니다.");
+        }
     }
 }
