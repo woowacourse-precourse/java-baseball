@@ -60,4 +60,8 @@ public class NumberBaseballGameController {
             gameStatus = GAME_END_STATUS;
         }
     }
+
+    public String getGameStatus() {
+        return gameStatus;
+    }
 }
