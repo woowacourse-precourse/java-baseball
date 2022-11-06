@@ -15,17 +15,21 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         List<Integer> player = new ArrayList<>();
         List<Integer> result = new ArrayList<>();
+        boolean playing = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computer = application.createRandomNumbersInList();
-        do {
-            System.out.print("숫자를 입력해주세요 : ");
-            player = application.getPlayerNumberInList();
-            result = application.computeResult(computer, player);
-            application.printResult(result);
-        } while (result.get(1) < 3);
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        while (playing) {
+            computer = application.createRandomNumbersInList();
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                player = application.getPlayerNumberInList();
+                result = application.computeResult(computer, player);
+                application.printResult(result);
+            } while (result.get(1) < 3);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            playing = application.actWhenGameFinish(Console.readLine());
+        }
     }
 
     public List<Integer> createRandomNumbersInList() {
@@ -75,5 +79,17 @@ public class Application {
             gameResult = gameResult + "낫싱";
         }
         System.out.println(gameResult);
+    }
+
+    public boolean actWhenGameFinish(String code){
+        if (code.equals("1")) {
+            System.out.println("게임을 새로 시작합니다.");
+            return true;
+        } else if (code.equals("2")) {
+            System.out.println("게임을 완전히 종료합니다.");
+            return false;
+        } else{
+            throw new IllegalArgumentException("the code should be 1 or 2");
+        }
     }
 }
