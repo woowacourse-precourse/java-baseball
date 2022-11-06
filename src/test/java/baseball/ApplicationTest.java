@@ -12,9 +12,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
-    final GameReadyMachine gameReadyMachine = new GameReadyMachine();
-    final GameProcessor gameProcessor = new GameProcessor();
-
+    GameReadyMachine gameReadyMachine = new GameReadyMachine();
+    GameProcessor gameProcessor = new GameProcessor();
+    GameFinisher gameFinisher = new GameFinisher();
     @Test
     void 자리수_구분되는_숫자생성_1_3() {
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.setAnswerValue())).isEqualTo(true);
@@ -83,6 +83,24 @@ class ApplicationTest extends NsTest {
     @Test
     void check_is_win() {
         assertThat(gameProcessor.isWin()).isEqualTo(false);
+    }
+
+    @Test
+    void test3_2(){
+        String testData = "1";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        gameFinisher.reStartChecker(gameReadyMachine);
+        assertThat(gameFinisher.isRestartTrigger()).isEqualTo(true);
+    }
+
+    @Test
+    void test3_3(){
+        String testData = "2";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        gameFinisher.reStartChecker(gameReadyMachine);
+        assertThat(gameFinisher.isRestartTrigger()).isEqualTo(false);
     }
 
     @Test
