@@ -8,24 +8,19 @@ import java.util.List;
 import java.util.Map;
 
 public class Checker {
-     private static final int ANSWER_COUNT = 3;
-     private static final int ZERO = 0;
-     private static final String RESTART = "1";
-     private static final String EXIT = "2";
-     private static final String NOTHING = "낫싱";
      private static final String STRIKE = "strike";
      private static final String BALL = "ball";
-     private Map<String,Integer> result;
+     private HashMap<String,Integer> result;
      private Baseball computer;
 
 
-     public Map<String,Integer> start(Baseball computer, Baseball user){
+     public HashMap<String,Integer> start(Baseball computer, Baseball user){
           this.computer = computer;
           result = compare(user);
           return result;
      }
 
-     public Map<String,Integer> compare(Baseball userNumber){
+     public HashMap<String,Integer> compare(Baseball userNumber){
           HashMap<String, Integer> result = new HashMap<>();
           for(int index = 0; index < userNumber.size(); index++){
                if(isStrike(index,userNumber)){
@@ -38,6 +33,7 @@ public class Checker {
           }
           return result;
      }
+
 
      public boolean isStrike(int index, Baseball user){
           if(computer.hasNumber(index,user.getNumber(index))){
@@ -53,6 +49,8 @@ public class Checker {
           }
           return false;
      }
+
+
 
 
 
