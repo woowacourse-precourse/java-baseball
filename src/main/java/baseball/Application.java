@@ -12,15 +12,15 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean gameFinishFlag = true, equalNumberFlag = false;
-        int userNumber, strikeCount, ballCount;
-        while(gameFinishFlag) {
+        boolean gameFinishFlag = false, equalNumberFlag = false;
+        int userNumber = 0, strikeCount, ballCount;
+        while(!gameFinishFlag) {
 
             int randomNumber = makeRandomNumber();
             System.out.println(randomNumber);
 
             // TODO : 게임 진행 과정은 추가적인 메소드로 분리해야 할 듯!
-            while (equalNumberFlag) {
+            while (!equalNumberFlag) {
                 System.out.print("숫자를 입력해주세요 : ");
                 try{
                     userNumber = Integer.parseInt(Console.readLine());
@@ -29,7 +29,8 @@ public class Application {
                     // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
                 }
 
-                strikeCount = 0; // 스트라이크 개수를 체크하는 메소드 호출
+                strikeCount = countStrike(userNumber, randomNumber);
+                System.out.println(strikeCount);
                 ballCount = 0; // 볼 개수를 체크하는 메소드 호출
 
                 boolean nothing = true; // 낫싱을 체크하는 메소드 호출
@@ -47,7 +48,9 @@ public class Application {
                 }
 
                 // 판정 결과를 정답과 비교하는 메소드 호출
+                equalNumberFlag = true;
             }
+            gameFinishFlag = true;
         }
     }
 
@@ -64,5 +67,18 @@ public class Application {
 
         int computerNumber = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
         return computerNumber;
+    }
+
+    public static int countStrike(int userNumber, int randomNumber) {
+
+        int count = 0;
+        for(int i=0; i<3; i++) {
+            if(userNumber % 10 == randomNumber % 10) count += 1;
+
+            userNumber /= 10;
+            randomNumber /= 10;
+        }
+
+        return count;
     }
 }
