@@ -24,17 +24,22 @@ public class BaseballGame {
         System.out.println(GameMessage.start);
     }
 
-    public boolean isStrike() {
-        boolean isStrike = false;
-
+    public void isStrike() {
         for (int strikeCountIndex = 0; strikeCountIndex < computerNumber.length(); strikeCountIndex++) {
             if (computerNumber.charAt(strikeCountIndex) == (userNumber.charAt(strikeCountIndex))) {
                 strikeCount++;
-                isStrike = true;
             }
         }
+    }
 
-        return isStrike;
+    public boolean isThreeStrike() {
+        boolean threeStrike = false;
+
+        if (strikeCount == MAX_STRIKE) {
+            threeStrike = true;
+        }
+
+        return threeStrike;
     }
 
     public void isBall() {
@@ -68,16 +73,6 @@ public class BaseballGame {
         if (isThreeStrike()) {
             System.out.println(GameMessage.end);
         }
-    }
-
-    public boolean isThreeStrike() {
-        boolean threeStrike = false;
-
-        if (strikeCount == MAX_STRIKE) {
-            threeStrike = true;
-        }
-
-        return threeStrike;
     }
 
     public boolean isRestart() {

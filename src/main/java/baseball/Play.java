@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class Play {
     public void game() {
         String computerNumber = Computer.number();
