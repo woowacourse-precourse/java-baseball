@@ -37,6 +37,7 @@ public class BaseBallGame {
     }
 
     public void requestUserInput() {
+        gameMessageDisplay.printInputRequestMessage();
         userInputter.readline();
     }
 }
