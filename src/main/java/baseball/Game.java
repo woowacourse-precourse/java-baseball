@@ -9,24 +9,26 @@ import java.util.List;
 
 public class Game {
 
-    static final int RESTART = 1;
     static final int EXIT = 2;
 
     static int strike = 0;
     static int ball = 0;
     static boolean gameEnd = false;
+    static boolean gameExit = false;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
             List<Integer> computer = getRandomNumberList();
-            if (!playGame(computer)) break;
+            playGame(computer);
+
+            if (gameExit) break;
         }
 
     }
 
-    public boolean playGame(List<Integer> computer) {
+    public void playGame(List<Integer> computer) {
         gameEnd = false;
 
         while (true) {
@@ -35,16 +37,12 @@ public class Game {
 
             List<Integer> user = validateUserInput(input);
 
-            calculateNumber(user, computer);
+            calculateScore(user, computer);
             printResult();
 
             if (gameEnd) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int choose = Integer.parseInt(Console.readLine());
-
-                if (choose == RESTART) return true;
-                if (choose == EXIT) return false;
+                restartOrExit();
+                break;
             }
         }
     }
@@ -78,7 +76,7 @@ public class Game {
         return user;
     }
 
-    public void calculateNumber(List<Integer> user, List<Integer> computer) {
+    public void calculateScore(List<Integer> user, List<Integer> computer) {
         strike = 0;
         ball = 0;
 
@@ -105,6 +103,15 @@ public class Game {
 
         if (strike == 3)
             gameEnd = true;
+    }
+
+    public void restartOrExit() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int choose = Integer.parseInt(Console.readLine());
+        if (choose == EXIT)
+            gameExit = true;
     }
 
 }
