@@ -17,7 +17,6 @@ import baseball.controller.GameController;
 import baseball.controller.RestartController;
 import baseball.domain.Comparator;
 import baseball.util.Converter;
-import baseball.util.InputGetter;
 import baseball.util.RandomNumberGenerator;
 import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -143,13 +142,6 @@ class ApplicationTest extends NsTest {
 	void existDuplicateNumber_메소드로_중복된_숫자를_입력하는_예외_처리() {
 		String input = "233";
 		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	void getUserInput_메소드로_유저_입력_받기() {
-		String input = "768";
-		System.setIn(new ByteArrayInputStream(input.getBytes()));
-		assertThat(InputGetter.getUserInput()).isEqualTo("768");
 	}
 
 	@Test

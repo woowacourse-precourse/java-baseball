@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.constant.GameConstants;
 import baseball.constant.ViewConstants;
-import baseball.util.InputGetter;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
@@ -18,11 +18,11 @@ public class InputView {
 
 	public String getNumberFromUser() {
 		printAskingInputMessage();
-		return InputGetter.getUserInput();
+		return Console.readLine();
 	}
 
 	public String getRestartResponse() {
 		printRestartOrNotMessage();
-		return InputGetter.getUserInput();
+		return Console.readLine();
 	}
 }
