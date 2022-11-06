@@ -42,7 +42,7 @@ public class GameController {
     }
 
     void matchGame(){
-
+        gameService.checkComputerWithPlayerNumber();
     }
 
     void showPlayersScore(){
