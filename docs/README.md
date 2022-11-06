@@ -3,18 +3,16 @@
 - generateRandomNumber()
   - 정답 숫자 생성
   - 출력: List<Integer> 랜덤으로 생성한 세 자리 숫자
-- validateRandomNumber()
+- validateNumber()
   - 생성한 랜덤 넘버 유효성 체크(3자리 숫자인지, 중복은 없는지)
+  - 입력: List<Integer>
   - 유요하지 않을 경우 Exception발생
+- isNumber(String input)
+  - 입력한 값이 숫자인지 확인, 아니면 예외 발생
+  - 입력 값을 List로 변경하기 전에 거치는 단계
 - userInput()
-  - guess 입력 받기
-  - 출력 : 입력받은 숫자
-- validateInput(String input)
-  - 입력받은 숫자의 유효성 검사
-  - 숫자로만 이뤄져 있는지?
-  - 3글자로만 이뤄져있는지?
-  - 입력: 사용자가 입력한 String
-  - 출력: boolean
+  - guess 입력 받아 List로 변환
+  - 출력 : List<Integer> 입력값 리스트로 변환
 - examineGuess(String guess, String answer)
   - Player가 제출한 guess를 평가하는 기능
   - 입력: guess와 answer
