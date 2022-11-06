@@ -1,7 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -9,6 +14,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    BaseBallGame testGame = new BaseBallGame();
+    String actualOutputWhenStartGame;
+    @BeforeEach
+    void 게임시작시키기() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        testGame.startGame();
+        actualOutputWhenStartGame = out.toString()
+                .replace(System.getProperty("line.separator").toString(), "");
+    }
+    @Test
+    void 게임시작하면_출력되는_시작문구_확인() {
+        String expectedOutputWhenStartGame = "숫자 야구 게임을 시작합니다.";
+        assertThat(actualOutputWhenStartGame).isEqualTo(actualOutputWhenStartGame);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
