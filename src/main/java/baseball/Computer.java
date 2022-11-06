@@ -22,9 +22,10 @@ public class Computer {
     /* 문제용 숫자 생성 */
     public void init(){
 
-        while(!validation(quizNumberList)){        // with 유효성 검사
+        do {
             addRandomQuizNumber();      // 숫자 생성 함수
-        }
+        } while (!validation(quizNumberList));      // with 유효성 검사
+
     }
 
     /* 숫자 생성 함수 */
