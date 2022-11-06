@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -44,6 +45,36 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(test.get(0)).isEqualTo(1);
+    }
+
+    @Test
+    void 난수_유효성검증_테스트() throws Exception{
+        //given
+        Computer computer = new Computer();
+        Method method = computer.getClass().getDeclaredMethod("isValidateNumber",List.class);
+        method.setAccessible(true);
+        //when
+
+        List<Integer> test = new ArrayList<>();
+        boolean firstTest;
+        test.add(0);
+        test.add(2);
+        test.add(3);
+
+        firstTest = (boolean) method.invoke(computer, test);
+
+        List<Integer> test2 = new ArrayList<>();
+        boolean secondTest;
+        test2.add(1);
+        test2.add(2);
+        test2.add(3);
+        test2.add(4);
+
+        secondTest = (boolean) method.invoke(computer, test2);
+
+        //then
+        assertThat(firstTest).isEqualTo(false);
+        assertThat(secondTest).isEqualTo(false);
     }
 
     @Override
