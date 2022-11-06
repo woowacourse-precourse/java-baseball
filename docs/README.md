@@ -66,8 +66,8 @@
 
 # 입력값 검증
 
-- [ ] Validator 구현
-- [ ] Condition 인터페이스 선언
+- [x] Validator 구현
+- [x] Condition 인터페이스 선언
 - [ ] Condition 인터페이스 구현체 구현
   ## 숫자 입력 검증
 - [ ] 길이가 3 이하인가
