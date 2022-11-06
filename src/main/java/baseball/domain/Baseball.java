@@ -2,18 +2,19 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Baseball {
     private List<Integer> computer;
     private List<Integer> userNumber;
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
+    private static final int NOTHING = 2;
+    private static final int THREE_DIGIT_NUMBER = 3;
 
     public Baseball() {
         computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < THREE_DIGIT_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -21,74 +22,68 @@ public class Baseball {
         }
     }
 
-    public List<Integer> setUserNumber(String number) {
-        if (isException(number)) {
+    public List<Integer> inputUserNumber(String number) {
+        if (!isUserNumber(number)) {
             throw new IllegalArgumentException();
         }
         userNumber = new ArrayList<>();
-        for (int index = 0; index < number.length(); index++) {
-            userNumber.add(Integer.valueOf(number.charAt(index) - '0'));
+        for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
+            userNumber.add(Integer.valueOf(number.charAt(digit) - '0'));
         }
         return userNumber;
     }
 
-    private boolean isException(String number) {
-        if (number.length() != 3) {
-            return true;
+    private boolean isUserNumber(String number) {
+        if (number.length() != THREE_DIGIT_NUMBER) {
+            return false;
         }
-        Set<Integer> set = new HashSet<>();
-        for (int index = 0; index < number.length(); index++) {
-            int charNumber = number.charAt(index) - '0';
-            if (charNumber < 0 || charNumber > 9) {
-                return true;
+        Set<Integer> digitset = new HashSet<>();
+        for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
+            int giditNumber = number.charAt(digit) - '0';
+            if (giditNumber < 0 || giditNumber > 9) {
+                return false;
             }
-            if (set.contains(charNumber)) {
-                return true;
+            if (digitset.contains(giditNumber)) {
+                return false;
             }
-            set.add(charNumber);
+            digitset.add(giditNumber);
         }
-        return false;
+        return true;
     }
 
 
-    public List<Integer> estimateScore() {
-        List<Integer> count = new ArrayList<>(3);
-        for (int i = 0; i < 3; i++) {
-            count.add(0);
-        }
-        for (int index = 0; index < userNumber.size(); index++) {
-            if (computer.indexOf(userNumber.get(index)) == -1) {
-                count.set(2, count.get(2) + 1);
+    public List<Integer> playGame() { //stream?
+        List<Integer> hints = Arrays.asList(0, 0, 0);
+        for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
+            if (computer.indexOf(userNumber.get(digit)) == -1) {
+                hints.set(NOTHING, hints.get(NOTHING) + 1);
                 continue;
             }
-            if (computer.indexOf(userNumber.get(index)) == index) {
-                count.set(1, count.get(1) + 1);
+            if (computer.indexOf(userNumber.get(digit)) == digit) {
+                hints.set(STRIKE, hints.get(STRIKE) + 1);
                 continue;
             }
-            count.set(0, count.get(0) + 1);
+            hints.set(BALL, hints.get(BALL) + 1);
         }
-        return count;
+        return hints;
     }
 
     public boolean inputControllNumber(String readLine) {
-        if (isExceptionControllNumber(readLine)) {
+        if (!isControllNumber(readLine)) {
             throw new IllegalArgumentException();
         }
-        if (readLine.equals("1")) {
-            return true;
-        }
-        return false;
+        return readLine.equals("1");
     }
 
-    private boolean isExceptionControllNumber(String str) {
+    private boolean isControllNumber(String str) {
         if (str.length() != 1) {
-            return true;
+            return false;
         }
         int charNumber = str.charAt(0) - '0';
         if (charNumber != 1 && charNumber != 2) {
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
