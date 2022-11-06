@@ -22,8 +22,11 @@ public class Application {
             playerNumbers = readUsersNumbers();
             scoreSheet = comparing(cpuNumbers,playerNumbers);
             playStatus = gameResult(scoreSheet);
+            if(playStatus==1){
+                playStatus = restartGame();
+                cpuNumbers = computersNumbers();
+            }
         }
-
     }
 
     public static ArrayList<Integer> computersNumbers() {
