@@ -62,7 +62,7 @@
 
 ## (String)inputUserAnswer()
 - [x] userAnswer에 readLine함수를 이용하여 사용자의 응답을 입력
-- [ ] userAnswer을 리턴
+- [x] userAnswer을 리턴
 
 ## (boolean)availableUserAnswerIsChecked(String word)
 - [ ] userAnswer에 매개변수를 저장
