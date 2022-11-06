@@ -104,7 +104,6 @@ public class Referee {
                 }
                 ball += 1;
                 swingIndicesCountedAsBall.add(swingIndex);
-                swingIndex += 1;
                 break;
             }
         }
@@ -115,8 +114,8 @@ public class Referee {
         return pitch == swing;
     }
 
-    private boolean isStrike(int pitch, int swing) {
-        return pitch == swing;
+    private boolean isStrike(int pitchIndex, int swingIndex) {
+        return pitchIndex == swingIndex;
     }
 
     private void printJudgement(int strike, int ball) {
