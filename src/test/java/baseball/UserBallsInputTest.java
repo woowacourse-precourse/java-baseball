@@ -43,7 +43,7 @@ class UserBallsInputTest {
     }
 
     @Order(3)
-    @DisplayName("유효성 검사 1. 유효한 길이 확인")
+    @DisplayName("유효성 검사 1. 유효한 길이")
     @ParameterizedTest(name ="{displayName}) {index} = {0} ")
     @ValueSource(strings = {"123", "321", "789"})
     void    isInputNumberIsValidLength(String inputString) {
@@ -54,12 +54,16 @@ class UserBallsInputTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("input의 길이가 유효하지 않습니다");
     }
-//    @Test
-//    @Order(4)
-//    @DisplayName("유효성 검사 2. 유효하지 않은 길이 확인")
-//    void    isInputNumberIsUnvalidLength() {
-//        Assertions.assertThatThrownBy(() -> {
-//            input.inputNumberTest("1234");
-//        }).isInstanceOf(IllegalArgumentException.class);
-//    }
+    @Order(4)
+    @DisplayName("유효성 검사 2. 유효하지 않은 길이")
+    @ParameterizedTest(name ="{displayName}) {index} = {0} ")
+    @ValueSource(strings = {"1234", "32", "789123"})
+    void    isInputNumberIsUnvalidLength(String inputString) {
+        InputStream in = generateUserInput(inputString);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        assertThatThrownBy(() -> input.validLength(scanner.toString()))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("input의 길이가 유효하지 않습니다");
+    }
 }
