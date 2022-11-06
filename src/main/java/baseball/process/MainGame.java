@@ -29,7 +29,9 @@ public class MainGame {
             throw new IllegalArgumentException();
         }
 
-        inputNumber.addAll(Arrays.asList(Integer.parseInt(String.valueOf(inputLine.split("")))));
+        for(String str : inputLine.split("")){
+            inputNumber.add(Integer.parseInt(str));
+        }
 
         return inputNumber;
     }
@@ -64,17 +66,17 @@ public class MainGame {
         }
 
         if(countStrike > 0 && countBall > 0){
+            outputText.strikeAndBall(countStrike, countBall);
+        }
+
+        if(countStrike > 0 && countBall == 0){
             if(countStrike == Setting.INPUT_NUMBER) {
                 outputText.strike(countStrike);
                 correct = true;
             }
             else {
-                outputText.strikeAndBall(countStrike, countBall);
+                outputText.strike(countStrike);
             }
-        }
-
-        if(countStrike > 0 && countBall == 0){
-            outputText.strike(countStrike);
         }
         if(countStrike == 0 && countBall > 0){
             outputText.ball(countBall);

@@ -1,5 +1,6 @@
 package baseball.unit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -14,28 +15,24 @@ public class Game {
         this.inputNumber = inputNumber;
     }
 
-    public int countStrike(){
-        int countStrike = 0;
+    public List<Integer> count(){
+        List<Integer> count = new ArrayList<>();
 
+        int countStrike = 0;
+        int countBall = 0;
         for(int i=0; i<inputNumber.size(); i++){
             if(computerNumber.get(i) == inputNumber.get(i)){
                 countStrike++;
             }
-        }
-
-        return countStrike;
-    }
-
-    public int countBall(){
-        int countBall = 0;
-
-        for(int i=0; i<inputNumber.size(); i++){
-            if(computerNumber.contains(inputNumber.get(i))){
+            else if(computerNumber.contains(inputNumber.get(i))){
                 countBall++;
             }
         }
 
-        return 0;
+        count.add(countStrike);
+        count.add(countBall);
+
+        return count;
     }
 
 }

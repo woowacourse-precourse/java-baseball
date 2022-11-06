@@ -12,4 +12,7 @@ public enum CorrectEnum {
         this.correct = correct;
     }
 
+    public String valueOf(){
+        return correct;
+    }
 }

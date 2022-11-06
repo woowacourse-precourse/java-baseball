@@ -26,19 +26,19 @@ public class OutputText {
     }
 
     public void strike(int count){
-        System.out.println(String.valueOf(count)+CorrectEnum.STRIKE);
+        System.out.println(String.valueOf(count)+CorrectEnum.STRIKE.valueOf());
     }
 
     public void ball(int count){
-        System.out.println(String.valueOf(count)+CorrectEnum.BALL);
+        System.out.println(String.valueOf(count)+CorrectEnum.BALL.valueOf());
     }
 
     public void strikeAndBall(int strike, int ball){
-        System.out.println(String.valueOf(strike)+CorrectEnum.STRIKE+" "+String.valueOf(ball)+CorrectEnum.BALL);
+        System.out.println(String.valueOf(ball)+CorrectEnum.BALL.valueOf()+" "+String.valueOf(strike)+CorrectEnum.STRIKE.valueOf());
     }
 
     public void nothing(){
-        System.out.println(CorrectEnum.NOTHING);
+        System.out.println(CorrectEnum.NOTHING.valueOf());
     }
 
 }

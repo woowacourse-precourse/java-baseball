@@ -16,13 +16,20 @@ public class EndGame {
     }
 
     public boolean continueGame(){
-        String end = readLine();
-        if(end == Setting.START_GAME){
-            return true;
+        String line = readLine();
+        int end = 0;
+        try{
+            end = Integer.parseInt(line);
+            if(end == Setting.START_GAME)
+                return true;
+
+            if(end == Setting.END_GAME)
+                return false;
+
+        }catch (Exception e){
+            throw new IllegalArgumentException();
         }
-        if(end == Setting.END_GAME){
-            return false;
-        }
+
 
         throw new IllegalArgumentException();
     }
