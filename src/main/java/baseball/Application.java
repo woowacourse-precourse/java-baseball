@@ -12,11 +12,17 @@ public class Application {
     private static final int NUMBER_LENGTH = 3;
 
     public static void main(String[] args) {
+        int gameStatus = 1;
+        while (gameStatus == 1) {
+            gameStatus = playGame();
+        }
+    }
+
+    public static int playGame() {
         System.out.println(START_SENTENCE);
         List<Integer> answer = generateRandomNumber();
 
-        int newGameNumber = 1;
-        while (newGameNumber == 1) {
+        while (true) {
             String inputNum = input();
             checkInputNumber(inputNum);
 
@@ -33,8 +39,7 @@ public class Application {
                 String input = Console.readLine();
                 checkInputNewGameNumber(input);
 
-                newGameNumber = Integer.parseInt(input);
-                answer = generateRandomNumber();
+                return Integer.parseInt(input);
             }
         }
     }
