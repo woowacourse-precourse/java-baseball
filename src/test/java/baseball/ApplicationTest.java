@@ -21,9 +21,36 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 정답_체크() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "789", "389", "2");
+                    assertThat(output()).contains("1볼", "낫싱", "2스트라이크", "3스트라이크", "새로 시작하려면");
+                },
+                3, 8, 9
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_짧은길이() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_범위초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
