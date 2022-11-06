@@ -1,11 +1,9 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballNumbers {
-
     private List<BaseballNumber> baseballNumbers;
 
     public boolean isNumericReadline(String readline) {
@@ -18,6 +16,13 @@ public class BaseballNumbers {
 
     public boolean validCheck(String readline) {
         return isNumericReadline(readline) || isCommandReadline(readline);
+    }
+
+    public boolean checkReadline(String readline) throws IllegalArgumentException {
+        if (!validCheck(readline)) {
+            throw new IllegalArgumentException();
+        }
+        return isNumericReadline(readline);
     }
 
 }
