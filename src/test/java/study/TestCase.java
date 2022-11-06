@@ -2,8 +2,10 @@ package study;
 
 import baseball.ComputerNum;
 import baseball.Number;
+import baseball.PlayerNum;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +61,19 @@ public class TestCase {
         assertThatThrownBy(() -> computerNumber.verifyNumber(num))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 플레이어의_입력이_숫자로만_구성되어_있지_않다면_예외_발생() {
+        Number playerNumber = new PlayerNum();
+        assertThatThrownBy(() -> playerNumber.verifyInput("안녕3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+
+
+
+
 
 
 
