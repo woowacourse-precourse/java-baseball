@@ -26,5 +26,12 @@ class AfterGameTest {
         //expect
         assertThat(input).isEqualTo(out.toString().trim());
     }
+    @Test
+    public void isRestartOrFinishTest() throws Exception{
+        //expect
+        assertThat(after.isRestartOrFinish("1")).isEqualTo(true);
+        assertThat(after.isRestartOrFinish("2")).isEqualTo(false);
+        assertThrows(IllegalArgumentException.class, ()->after.isRestartOrFinish("3"));
 
+    }
 }
