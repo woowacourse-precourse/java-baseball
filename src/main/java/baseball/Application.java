@@ -8,7 +8,12 @@ import java.util.List;
 
 public class Application {
     static void baseballGame() {
+        do {
+            // 난수 생성
+            List<Integer> computerNumber = generateNumber();
 
+            startGame(computerNumber);
+        } while (true);
     }
 
     static List<Integer> generateNumber() {
@@ -23,7 +28,7 @@ public class Application {
         return computer;
     }
 
-    static void startGame(List<Integer> computer) {
+    static void startGame(List<Integer> computerNumber) {
         while (true) {
             // 사용자로부터 입력된 3개의 숫자 배열
             List<Integer> userNumber = generateUserNumber();
@@ -31,8 +36,8 @@ public class Application {
             int ballCount = 0;
             int strikeCount = 0;
             for (int i = 0; i < 3; i++) {
-                checkBall(computer, userNumber, i);
-                checkStrike(computer, userNumber, i);
+                checkBall(computerNumber, userNumber, i);
+                checkStrike(computerNumber, userNumber, i);
             }
 
             // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
