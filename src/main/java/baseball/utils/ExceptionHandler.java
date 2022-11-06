@@ -1,7 +1,7 @@
-package baseball.service;
+package baseball.utils;
 
-import baseball.Text;
-import baseball.view.View;
+import baseball.service.GameService;
+import baseball.utils.Text;
 
 public class ExceptionHandler {
 	public static void checkException(String number) {

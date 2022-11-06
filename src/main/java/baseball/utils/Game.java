@@ -1,6 +1,7 @@
-package baseball;
+package baseball.utils;
 
 public enum Game {
+	nothing(0),
 	min(1),
 	max(9),
 	strike(1),

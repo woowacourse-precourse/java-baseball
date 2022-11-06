@@ -2,34 +2,31 @@ package baseball.controller;
 
 import java.util.List;
 
-import baseball.Text;
-import baseball.service.ExceptionHandler;
+import baseball.utils.Game;
+import baseball.utils.Text;
+import baseball.dto.BaseballDto;
 import baseball.service.GameService;
-import baseball.view.output;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 	static final int ball = 1;
 	static final int strike = 0;
-	static final int nothing = 0;
-
 	public static String createComputerNumber() {
 		return GameService.createRandomNumber();
 	}
 	public static void gameStart() {
-		String user;
-		String computer = createComputerNumber();
+		BaseballDto.setComputer();
 
 		do {
-			output.printText(Text.input.getPrint());
-			user = Console.readLine();
-			checkErrorNumber(user);
-		} while (gameResult(compareNumber(computer, user)) != 3);
+			Output.printText(Text.input.getPrint());
+			BaseballDto.setUser();
+		} while (gameResult(compareNumber()) != 3);
 
-		printNotice("reStart");
+		Output.printNotice("reStart");
 	}
 	public static void reStart() {
-		printNotice("start");
+		Output.printNotice("start");
 
 		do {
 			gameStart();
@@ -38,33 +35,21 @@ public class GameController {
 	public static Integer gameResult(List<Integer> result) {
 		boolean isVisited = false;
 
-		if (result.get(ball) != nothing) {
-			isVisited = output.printResult(result.get(ball), ball);
+		if (result.get(ball) != Game.nothing.getDef()) {
+			isVisited = Output.printResult(result.get(ball), ball);
 		}
-		if (result.get(strike) != nothing) {
-			output.isSpace(isVisited);
-			output.printResult(result.get(strike), strike);
+		if (result.get(strike) != Game.nothing.getDef()) {
+			Output.isSpace(isVisited);
+			Output.printResult(result.get(strike), strike);
 		}
-		if (result.get(ball) == nothing && result.get(strike) == nothing) {
-			output.printText(Text.nothing.getPrint());
+		if (result.get(ball) == Game.nothing.getDef() && result.get(strike) == Game.nothing.getDef()) {
+			Output.printText(Text.nothing.getPrint());
 		}
-		output.printText("\n");
+		Output.printText("\n");
 
 		return result.get(strike);
 	}
-	public static void checkErrorNumber(String userNumber) {
-		ExceptionHandler.checkException(userNumber);
-	}
-	public static List<Integer> compareNumber(String computer, String user) {
-		return GameService.compareNumber(computer, user);
-	}
-	public static void printNotice(String type) {
-		if (type.equals("reStart")) {
-			output.printText(Text.stop.getPrint());
-			output.printText(Text.choice.getPrint());
-		}
-		if (type.equals("start")) {
-			output.printText(Text.start.getPrint());
-		}
+	public static List<Integer> compareNumber() {
+		return GameService.compareNumber();
 	}
 }
