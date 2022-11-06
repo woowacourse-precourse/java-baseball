@@ -30,7 +30,7 @@ public class GameSimulation {
         String userInput = Console.readLine();
         List<Integer> userNumber = makeList(userInput);
 
-        while(strike < 3) {
+        while (strike < 3) {
             validateUserNumber(userNumber);
 
             ball = computer.addBallScore(userNumber);
@@ -43,11 +43,10 @@ public class GameSimulation {
 
     public List<Integer> makeList(String userInput) {
         String[] bitInput = userInput.split("");
-        List<Integer> userNumbers = Arrays
+        return Arrays
                 .stream(bitInput)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        return userNumbers;
     }
 
     public void validateUserNumber(List<Integer> userNumber) {
