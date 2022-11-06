@@ -33,7 +33,7 @@ class JudgeTest {
 		String result = "1스트라이크";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());
 	}
-
+	
 	@Test
 	@DisplayName("볼인 경우")
 	void judgeBallTest() {

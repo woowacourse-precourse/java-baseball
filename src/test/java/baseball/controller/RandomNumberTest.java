@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 class RandomNumberTest {
 	@Test
 	public void randomNumberOverlapTest() {
-		List<Integer> randomNumbers = RandomNumber.getNumbers();
+		RandomNumber randomNumber = new RandomNumber();
+		List<Integer> randomNumbers = randomNumber.getNumbers();
 		int answer = randomNumbers.size();
 		Set<Integer> randomNumberSet = new HashSet<>();
 
@@ -24,7 +25,8 @@ class RandomNumberTest {
 	public void randomNumberRangeTest() {
 		final int START_NUMBER = 1;
 		final int END_NUMBER = 9;
-		List<Integer> randomNumbers = RandomNumber.getNumbers();
+		RandomNumber randomNumber = new RandomNumber();
+		List<Integer> randomNumbers = randomNumber.getNumbers();
 
 		randomNumbers.stream()
 			.forEach(number -> assertThat(number)
@@ -34,7 +36,8 @@ class RandomNumberTest {
 
 	@Test
 	public void randomNumberLengthTest() {
-		List<Integer> randomNumbers = RandomNumber.getNumbers();
+		RandomNumber randomNumber = new RandomNumber();
+		List<Integer> randomNumbers = randomNumber.getNumbers();
 		final int PERMIT_LENGTH = 3;
 
 		assertThat(randomNumbers.size()).isEqualTo(PERMIT_LENGTH);
