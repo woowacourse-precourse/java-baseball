@@ -51,4 +51,20 @@ public class Referee {
         result += ball + "볼 " + strike + "스트라이크";
         return result;
     }
+
+    public static boolean validateUserInput(String input, List<Integer> userNumbers){
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c < 49 || c > 57) {
+                throw new IllegalArgumentException();
+            }
+            if (userNumbers.contains(Character.getNumericValue(c))) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return true;
+    }
 }
