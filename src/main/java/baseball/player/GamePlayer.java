@@ -2,12 +2,12 @@ package baseball.player;
 
 public class GamePlayer extends Player {
 
-    public GamePlayer(int inputNumber) {
-        super(inputNumber);
+    public GamePlayer(PlayerNumbers playerNumbers) {
+        super(playerNumbers);
     }
 
     @Override
-    public int getNumber() {
-        return super.getNumber();
+    public PlayerNumbers getPlayerNumbers() {
+        return super.getPlayerNumbers();
     }
 }
