@@ -8,28 +8,23 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        sendMassage(GameMassage.START_MASSAGE);
 
-        try {
-            sendMassage(GameMassage.START_MASSAGE);
-
-            GameStatus restartOrEnd = GameStatus.START;
-            while (restartOrEnd != GameStatus.END) {
-                List<Integer> computer = randomThreeDigit();
-                boolean answer = false;
-                while (!answer) {
-                    sendMassage(GameMassage.INPUT_NUMBER);
-                    List<Integer> user = getUserInput();
-                    answer = calculationDigits(computer, user);
-                }
-
-                restartOrEnd = getRestartOrEndGame();
+        GameStatus restartOrEnd = GameStatus.START;
+        while (restartOrEnd != GameStatus.END) {
+            List<Integer> computer = randomThreeDigit();
+            boolean answer = false;
+            while (!answer) {
+                sendMassage(GameMassage.INPUT_NUMBER);
+                List<Integer> user = getUserInput();
+                answer = calculationDigits(computer, user);
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("IllegalArgumentException 발생");
+
+            restartOrEnd = getRestartOrEndGame();
         }
     }
 
-    private static GameStatus getRestartOrEndGame(){
+    private static GameStatus getRestartOrEndGame() {
         sendMassage(GameMassage.ANSWER);
         sendMassage(GameMassage.RESTART_OR_END);
         if (isRestart(Console.readLine())) {
@@ -38,7 +33,7 @@ public class Application {
         return GameStatus.END;
     }
 
-    private static void sendMassage(GameMassage massage){
+    private static void sendMassage(GameMassage massage) {
         System.out.print(massage.getMassage());
     }
 
@@ -54,14 +49,14 @@ public class Application {
 
     private static boolean isRestart(String str) {
         String regex = "[1]{1,1}";
-        if(str.length()==1){
+        if (str.length() == 1) {
             return str.matches(regex);
         }
         return false;
     }
 
-    private static void checkDuplicatedDigits(List<Integer> values, boolean[] visited, int digit){
-        if(!visited[digit]){
+    private static void checkDuplicatedDigits(List<Integer> values, boolean[] visited, int digit) {
+        if (!visited[digit]) {
             values.add(digit);
             visited[digit] = true;
         } else {
@@ -69,7 +64,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> inputToDigits(String input) throws IllegalArgumentException{
+    private static List<Integer> inputToDigits(String input) throws IllegalArgumentException {
         boolean[] visited = new boolean[10];
         List<Integer> values = new ArrayList<>();
 
@@ -90,7 +85,7 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    private static void addNumber(List<Integer> digits, int number){
+    private static void addNumber(List<Integer> digits, int number) {
         if (!digits.contains(number)) {
             digits.add(number);
         }
