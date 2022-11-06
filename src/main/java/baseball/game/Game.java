@@ -10,7 +10,6 @@ public class Game {
     private Score score;
 
     private Game(Computer computer, User user) {
-        System.out.println(GAME_START_MESSAGE);
         this.computer = computer;
         this.user = user;
     }
@@ -20,6 +19,7 @@ public class Game {
     }
 
     public void start() {
+        System.out.println(GAME_START_MESSAGE);
         init();
         loop();
     }
