@@ -12,11 +12,9 @@ public class GameManager {
     private static final String RESTART_SIGNAL = "2";
 
     private final ComputerManager computerManager;
-    private final InputNumber inputNumber;
 
     public GameManager() {
         this.computerManager = new ComputerManager();
-        this.inputNumber = new InputNumber();
     }
 
     public void startGame() {
@@ -34,16 +32,15 @@ public class GameManager {
 
         while (true) {
             System.out.print(PLEASE_INPUT_NUMBER);
-            String number = inputNumber.inputGameNumber();
+            String number = InputNumber.inputGameNumber();
             String compareResult = computerManager.compareWithUserNumber(number);
             System.out.println(compareResult);
 
             if (compareResult.equals(END_SIGNAL)) {
                 System.out.println(END_GAME);
                 System.out.println(RESTART_OR_END);
-                return inputNumber.inputRestartNumber();
+                return InputNumber.inputRestartNumber();
             }
-
 
         }
     }

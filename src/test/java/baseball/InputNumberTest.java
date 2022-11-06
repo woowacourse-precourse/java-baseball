@@ -1,6 +1,5 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -11,12 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputNumberTest {
-    private static InputNumber inputNumber;
-
-    @BeforeAll
-    static void init() {
-        inputNumber = new InputNumber();
-    }
 
     @Test
     void 사용자_입력_세자리_숫자_공백_예외_테스트() {
@@ -27,7 +20,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputGameNumber())
+                assertThatThrownBy(InputNumber::inputGameNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -41,7 +34,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputGameNumber())
+                assertThatThrownBy(InputNumber::inputGameNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -55,7 +48,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputGameNumber())
+                assertThatThrownBy(InputNumber::inputGameNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -68,7 +61,7 @@ class InputNumberTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(input).isEqualTo(inputNumber.inputGameNumber());
+        assertThat(input).isEqualTo(InputNumber.inputGameNumber());
     }
 
     @Test
@@ -80,7 +73,7 @@ class InputNumberTest {
         System.setIn(in);
         System.out.println(input);
 
-        assertThat(input).isEqualTo(inputNumber.inputRestartNumber());
+        assertThat(input).isEqualTo(InputNumber.inputRestartNumber());
     }
 
     @Test
@@ -92,7 +85,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputRestartNumber())
+                assertThatThrownBy(InputNumber::inputRestartNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -106,7 +99,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputRestartNumber())
+                assertThatThrownBy(InputNumber::inputRestartNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -120,7 +113,7 @@ class InputNumberTest {
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputNumber.inputRestartNumber())
+                assertThatThrownBy(InputNumber::inputRestartNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
