@@ -31,4 +31,12 @@ public class Input_Output {
 
         Collections.reverse(Scan);
     }
+
+    public void File_Check(List<Integer> User_Number)//사용자 입력 중 예외 사항 체크
+    {
+
+        if(User_Number.size()>3)
+            throw new IllegalArgumentException();
+
+    }
 }
