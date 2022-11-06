@@ -22,12 +22,19 @@ public class Validator {
         return true;
     }
 
+    public boolean ContainsZero(String userInput) {
+        return userInput.contains("0");
+    }
+
     public boolean validateInput(String userInput) {
         if (!isThreeLetters(userInput)) {
             throw new IllegalArgumentException("3자리 수가 아닙니다");
         }
         if (!isNumeric(userInput)) {
             throw new IllegalArgumentException("숫자가 아닙니다");
+        }
+        if (ContainsZero(userInput)) {
+            throw new IllegalArgumentException("0이 포함되어 있습니다");
         }
 
         return VALIDATE_SUCCESS;
