@@ -95,6 +95,19 @@ public class Application {
             }
         }
     }
+    static boolean isPlay (){
+        String isPlaying = Console.readLine();
+
+        if (isPlaying.equals("1")){
+            return true;
+        }
+        else if (isPlaying.equals("2")){
+            return false;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
