@@ -17,7 +17,5 @@ public class GameController {
         printer = new Printer();
         randomNumber = new GameNumber();
         receiver = new Receiver();
-        result = new Result(0,0);
     }
-
 }
