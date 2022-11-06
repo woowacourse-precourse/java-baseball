@@ -9,7 +9,7 @@ public class CheckException {
         char[] playerNumberArray = playerStringNumber.toCharArray();
         boolean isNumber;
         for(char num : playerNumberArray){
-            isNumber = checkNumber(num);
+            isNumber = checkDigit(num);
             if(!isNumber){
                 return false;
             }
@@ -17,8 +17,8 @@ public class CheckException {
         return true;
     }
 
-    public static boolean checkNumber(char number){
-        boolean isNumber = true;
+    public static boolean checkDigit(char number){
+        boolean isNumber;
         if(number >= ONE && number <= NINE){
             isNumber = true;
         }
