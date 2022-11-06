@@ -3,15 +3,23 @@ package baseball.utils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.domain.model.Ball;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BallTest {
-    Ball ball = Ball.getInstance();
-    List<String> range = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
+    Ball ball;
+    List<String> range;
+
+    @BeforeEach
+    void setUp() {
+        ball = Ball.getInstance();
+        range = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
+    }
 
     @Test
     void 랜덤_공번호_생성() {

@@ -6,16 +6,22 @@ import baseball.domain.model.Score;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class OutputDataTest {
 
+    EnumMap<BallCount, Integer> result;
+
+    @BeforeEach
+    void setUp() {
+        result = Arrays.stream(BallCount.values())
+                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
+                        () -> new EnumMap<>(BallCount.class)));
+    }
 
     @Test
     void 결과_출력() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 3);
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 0);
@@ -24,9 +30,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력2() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 2);
         result.put(BallCount.BALL, 1);
         result.put(BallCount.STRIKE, 0);
@@ -36,9 +39,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력3() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 1);
         result.put(BallCount.BALL, 2);
         result.put(BallCount.STRIKE, 0);
@@ -48,9 +48,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력4() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 0);
         result.put(BallCount.BALL, 3);
         result.put(BallCount.STRIKE, 0);
@@ -60,9 +57,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력5() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 1);
         result.put(BallCount.BALL, 1);
         result.put(BallCount.STRIKE, 1);
@@ -72,9 +66,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력6() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 2);
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 1);
@@ -84,9 +75,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력7() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 0);
         result.put(BallCount.BALL, 2);
         result.put(BallCount.STRIKE, 1);
@@ -96,9 +84,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력8() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 0);
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 2);
@@ -108,9 +93,6 @@ class OutputDataTest {
 
     @Test
     void 결과_출력9() {
-        EnumMap<BallCount, Integer> result = Arrays.stream(BallCount.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(BallCount.class)));
         result.put(BallCount.OUT, 0);
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 3);
