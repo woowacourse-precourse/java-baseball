@@ -2,7 +2,11 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Baseball {
     private List<Integer> computer;
@@ -51,7 +55,6 @@ public class Baseball {
         return true;
     }
 
-
     public List<Integer> playGame() { //stream?
         List<Integer> hints = Arrays.asList(0, 0, 0);
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
@@ -83,7 +86,6 @@ public class Baseball {
         if (charNumber != 1 && charNumber != 2) {
             return false;
         }
-
         return true;
     }
 }

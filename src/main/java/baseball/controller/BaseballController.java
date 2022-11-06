@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.view.BaseballView;
 import baseball.domain.Baseball;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class BaseballController {
