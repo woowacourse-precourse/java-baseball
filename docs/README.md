@@ -26,7 +26,7 @@
 ### RandomNumberGenerator
 - [x] 서로 다른 임의의 숫자 3개를 생성한다.
 ### InputUserNumber
-- [ ] 사용자의 숫자 3개를 입력받는다.
+- [x] 사용자의 숫자 3개를 입력받는다.
 ### CompareNumbers
 - [ ] 사용자의 숫자와 컴퓨터의 숫자를 비교하고 스트라이크/볼/낫싱 여부를 판단한다.
 ### RestartGame
