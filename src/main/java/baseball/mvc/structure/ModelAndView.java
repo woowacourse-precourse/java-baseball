@@ -1,5 +1,6 @@
 package baseball.mvc.structure;
 
+import baseball.mvc.model.Model;
 import baseball.util.GameStatus;
 
 public class ModelAndView {

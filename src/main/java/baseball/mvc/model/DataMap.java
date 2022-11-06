@@ -1,4 +1,4 @@
-package baseball.mvc.structure;
+package baseball.mvc.model;
 
 import java.util.HashMap;
 import java.util.Map;

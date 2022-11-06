@@ -2,9 +2,9 @@ package baseball.mvc.structure.adapter;
 
 import baseball.mvc.controller.GameSettingsController;
 import baseball.mvc.structure.Adapter;
-import baseball.mvc.structure.Model;
+import baseball.mvc.model.Model;
 import baseball.mvc.structure.ModelAndView;
-import baseball.mvc.structure.Request;
+import baseball.mvc.model.Request;
 import baseball.util.GameStatus;
 
 public class GameSettingsAdapter implements Adapter {

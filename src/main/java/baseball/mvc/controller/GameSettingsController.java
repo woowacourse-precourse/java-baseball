@@ -1,7 +1,7 @@
 package baseball.mvc.controller;
 
 import baseball.domain.game.GameComputer;
-import baseball.mvc.structure.Model;
+import baseball.mvc.model.Model;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
 

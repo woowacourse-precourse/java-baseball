@@ -4,9 +4,9 @@ import baseball.domain.game.GameComputer;
 import baseball.domain.number.GameNumbers;
 import baseball.mvc.controller.GamePlayController;
 import baseball.mvc.structure.Adapter;
-import baseball.mvc.structure.Model;
+import baseball.mvc.model.Model;
 import baseball.mvc.structure.ModelAndView;
-import baseball.mvc.structure.Request;
+import baseball.mvc.model.Request;
 import baseball.mvc.util.GameRequestKeyConst;
 import baseball.util.GameStatus;
 

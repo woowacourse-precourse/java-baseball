@@ -2,6 +2,7 @@ package baseball.mvc.structure;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.mvc.model.Model;
 import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

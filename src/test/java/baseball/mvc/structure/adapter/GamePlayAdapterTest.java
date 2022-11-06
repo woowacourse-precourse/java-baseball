@@ -8,7 +8,7 @@ import baseball.helper.factory.GameComputerFactory;
 import baseball.mvc.controller.GamePlayController;
 import baseball.mvc.controller.GameSettingsController;
 import baseball.mvc.structure.ModelAndView;
-import baseball.mvc.structure.Request;
+import baseball.mvc.model.Request;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.mvc.util.GameRequestKeyConst;
 import baseball.util.GameStatus;

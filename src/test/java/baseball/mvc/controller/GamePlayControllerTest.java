@@ -6,7 +6,7 @@ import baseball.domain.game.GameComputer;
 import baseball.domain.game.GameResult;
 import baseball.domain.number.GameNumbers;
 import baseball.helper.factory.GameComputerFactory;
-import baseball.mvc.structure.Model;
+import baseball.mvc.model.Model;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;

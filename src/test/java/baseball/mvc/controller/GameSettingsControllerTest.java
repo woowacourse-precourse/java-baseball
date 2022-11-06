@@ -3,7 +3,7 @@ package baseball.mvc.controller;
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.game.GameComputer;
-import baseball.mvc.structure.Model;
+import baseball.mvc.model.Model;
 import baseball.mvc.util.GameModelKeyConst;
 import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;

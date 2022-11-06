@@ -1,6 +1,6 @@
 package baseball.helper.util;
 
-import baseball.mvc.structure.DataMap;
+import baseball.mvc.model.DataMap;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;

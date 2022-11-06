@@ -3,8 +3,7 @@ package baseball.mvc.structure.adapter;
 import baseball.mvc.controller.GameCommandController;
 import baseball.mvc.structure.Adapter;
 import baseball.mvc.structure.ModelAndView;
-import baseball.mvc.structure.Request;
-import baseball.mvc.util.GameCommand;
+import baseball.mvc.model.Request;
 import baseball.mvc.util.GameRequestKeyConst;
 import baseball.util.GameStatus;
 
