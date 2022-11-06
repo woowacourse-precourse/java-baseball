@@ -3,7 +3,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.mockito.internal.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,6 +32,7 @@ public abstract class ServiceImpl implements Service{
 
     private List<Integer> parser(String input) {
         checkException(input);
+        
     }
 
     private void checkException(String input) throws IllegalArgumentException{
