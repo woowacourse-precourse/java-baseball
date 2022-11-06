@@ -7,13 +7,12 @@ import baseball.participant.Referee;
 import baseball.result.Result;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.result.ResultType.*;
+import static baseball.result.ResultType.EXACT_MATCH;
 
 public class BaseballGameConsole {
 
-    private final Validator validator = new Validator();
-    private final Batter batter = new Batter();
     private final Referee referee = new Referee();
+    private final Batter batter = new Batter();
     private final Emcee emcee = new Emcee();
 
     public void startWithPitcher(Pitcher pitcher) {
@@ -32,7 +31,7 @@ public class BaseballGameConsole {
         while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
             String pitchNumber = pitcher.pitchNumberBall();
-            validator.validatePrediction(pitchNumber);
+            referee.validatePrediction(pitchNumber);
 
             Result result = referee.resultOfPrediction(hitNumber, pitchNumber);
             strikeOut = result.getResultType() == EXACT_MATCH;
@@ -44,7 +43,7 @@ public class BaseballGameConsole {
     private boolean askReplaying() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String replay = Console.readLine();
-        validator.validateReplaySelection(replay);
+        referee.validateReplaySelection(replay);
         return replay.equals("1");
     }
 }
