@@ -16,11 +16,15 @@ public class BaseBallGame {
         computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (computer.contains(randomNum) == false) {
-                computer.add(randomNum);
-            }
+            computer = isContainNumber(computer, randomNum);
         }
-//        System.out.println("computer숫자" + computer);
+        return computer;
+    }
+
+    public List<Integer> isContainNumber(List<Integer> computer, int randomNum){
+        if (computer.contains(randomNum) == false) {
+            computer.add(randomNum);
+        }
         return computer;
     }
 
