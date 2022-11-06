@@ -30,11 +30,11 @@ public class OutputResultView {
             System.out.print("낫싱");
     }
 
-    private static void printWinMessage() {
+    public static void printWinMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void printEndMessage() {
+    public static void printEndMessage() {
         System.out.println("게임 종료");
     }
 }
