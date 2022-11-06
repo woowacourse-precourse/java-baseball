@@ -25,6 +25,7 @@ public class Application {
             Game game = new Game(computerNumber, inputNumber);
             List<Integer> count = game.count();
             if(mainGame.judge(count.get(0), count.get(1))){
+                OutputText.printEndGame();
                 if(!endGame.continueGame())
                     break;
                 computerNumber = initGame.createComputerNumber();

@@ -15,7 +15,7 @@ public class MainGame {
     public List<Integer> inputGuessNumber(){
         List<Integer> inputNumber = new ArrayList<>();
 
-        OutputText.inputNumber();
+        OutputText.printInputNumber();
         String inputLine = readLine();
         if(!isRightInput(inputLine)){
             throw new IllegalArgumentException();
@@ -54,24 +54,24 @@ public class MainGame {
         boolean correct = false;
 
         if(countStrike == 0 && countBall == 0){
-            OutputText.nothing();
+            OutputText.printJudgeNothing();
         }
 
         if(countStrike > 0 && countBall > 0){
-            OutputText.strikeAndBall(countStrike, countBall);
+            OutputText.printJudgeStrikeAndBall(countStrike, countBall);
         }
 
         if(countStrike > 0 && countBall == 0){
             if(countStrike == Setting.INPUT_NUMBER) {
-                OutputText.strike(countStrike);
+                OutputText.printJudgeStrike(countStrike);
                 correct = true;
             }
             else {
-                OutputText.strike(countStrike);
+                OutputText.printJudgeStrike(countStrike);
             }
         }
         if(countStrike == 0 && countBall > 0){
-            OutputText.ball(countBall);
+            OutputText.printJudgeBall(countBall);
         }
         return correct;
     }

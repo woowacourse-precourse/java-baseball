@@ -11,6 +11,7 @@ import java.util.List;
 public class InitGame {
 
     public List<Integer> createComputerNumber(){
+        OutputText.printStartGame();
         List<Integer> computerNumber = new ArrayList<>();
 
         while (computerNumber.size() < Setting.INPUT_NUMBER) {
