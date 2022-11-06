@@ -6,6 +6,10 @@ public interface Utility {
     public static int NINE_ASCII = 57;
 
     public static String INPUT_EXECEPTION_MESSAGE = "잘못된 값을 입력하셨습니다! \n 애플리케이션이 종료됩니다.";
+
+    public static String BALL_MESSAGE = "%d볼";
+    public static String STRIKE_MESSAGE = "%d스트라이크";
+    public static String NOTHING_MESSAGE = "낫싱";
     
     public static void checkInputException(String input){
         if(!checkInputLength(input) || !checkInputDigitRange(input) || !checkInputDuplicateCharacters(input))
