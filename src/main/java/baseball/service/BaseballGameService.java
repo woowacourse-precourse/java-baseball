@@ -98,4 +98,8 @@ public class BaseballGameService {
         return '0' <= number.charAt(0) && number.charAt(0) <= '9';
     }
 
+    public int getSize() {
+        return size;
+    }
+
 }

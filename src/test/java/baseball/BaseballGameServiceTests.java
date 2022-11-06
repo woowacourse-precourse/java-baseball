@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.service.BaseballGameService;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ public class BaseballGameServiceTests {
         sut.initGame(start, end, size);
 
         // Assert
-        Assertions.assertThat(out.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
+        Assertions.assertEquals(size, sut.getSize());
     }
 
 }
