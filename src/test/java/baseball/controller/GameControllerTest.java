@@ -25,13 +25,6 @@ public class GameControllerTest {
     }
 
     @Test
-    void 컴퓨터_실행시_난수_3개_보유(){
-        gameController.initializeGame();
-        gameController.setGame();
-        assertThat(gameController.gameService.computer.getNumbers().size()).isEqualTo(3);
-    }
-
-    @Test
     void clearScore진행시_스트라이크와_볼은_0(){
         gameController.initializeGame();
         gameController.setGame();
@@ -52,18 +45,6 @@ public class GameControllerTest {
         System.setIn(in);
         assertThat(gameController.getPlayerNumbers()).isEqualTo(input);
         assertThat(out.equals("숫자를 입력해주세요 : ")).isTrue();
-    }
-
-    @Test
-    void putPlayerInService_실행시_서비스가_플레이어_리스트_보유(){
-        gameController.initializeGame();
-        gameController.setGame();
-        gameController.clearScore();
-        String input = "123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        gameController.putPlayerInService(gameController.getPlayerNumbers());
-        assertThat(gameController.gameService.player.getNumbers()).isEqualTo(List.of(1, 2, 3));
     }
 
     @Test

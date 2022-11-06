@@ -9,18 +9,23 @@ import baseball.view.ScoreResultView;
 public class GameController {
 
     public GameController(){
+
     }
 
     public void runGame(){
     }
 
-    void generateComputer(){
+    void setGame(){
     }
 
-    void generateGameStatus(){
+    void initializeGame(){
     }
 
     void startGame(){
+    }
+
+    void putPlayerInService(String playerNumbers){
+
     }
 
     void clearScore(){
