@@ -68,4 +68,17 @@ public class GameCycle {
         }
         return ball;
     }
+    public String countResponse(String answer, String input) {
+        int strike = countStrike(answer, input);
+        int ball = countBall(answer, input);
+        StringBuilder response = new StringBuilder();
+        if (strike > 0 && ball > 0) {
+            response.append(ball + "볼 " + strike + "스트라이크");
+            return response.toString();
+        }
+        if (strike > 0) response.append(strike + "스트라이크");
+        if (ball > 0) response.append(ball + "볼");
+        if (strike == 0 && ball == 0) response.append("낫싱");
+        return response.toString();
+    }
 }

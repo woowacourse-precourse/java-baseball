@@ -108,4 +108,11 @@ class GameCycleTest {
         //expect
         assertEquals(game.countBall(answer, input), 3);
     }
+    @Test
+    public void countResponseTest() throws Exception {
+        //expect
+        assertEquals(game.countResponse("312", "123"), "3볼");
+        assertEquals(game.countResponse("123", "145"), "1스트라이크");
+        assertEquals(game.countResponse("123", "142"), "1볼 1스트라이크");
+    }
 }
