@@ -15,27 +15,26 @@ public class GameService {
 
     public GameService() {
         game.initGame();
-
     }
-
+    public void retryGame(){
+        game.initGame();
+        startGame();
+    }
     public void startGame() {
         SystemMessage.startGameMessage();
         answerList = RandomUtils.makeRandomList();
-
         while (game.getStrikeCount()<3) {
             game.initGame();
             getUserNumber();
             compareNumber();
         }
+        SystemMessage.printEndMessage();
+        askRetry();
     }
 
     public void getUserNumber() {
-
         SystemMessage.requestNumberMessage();
         String userString = Console.readLine();
-        //추가적으로 맞는지 처리하기
-
-        //문자열을 list로 바꾸기
         userList = makeList(userString);
         System.out.println("유저: " + userList + ", 랜덤 숫자:" + answerList);
     }
@@ -60,6 +59,15 @@ public class GameService {
     }
 
     public void askRetry(){
-        //SystemMessage.
+       SystemMessage.requestGameMessage();
+
+       String responseStr=Console.readLine();
+       int responseNumber=Integer.parseInt(responseStr);
+
+       if(responseNumber==1)
+           retryGame();
+       else if(responseNumber==2)
+           return;
+
     }
 }
