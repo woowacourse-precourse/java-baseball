@@ -1,7 +1,8 @@
+package baseball;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-//package baseball;
 
 public class Application {
     public static ArrayList<Integer> generateAnswer() {
@@ -115,14 +116,12 @@ public class Application {
             throw new IllegalArgumentException("Execution code must be 1 or 2");
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         String executionCode = "1";
-        ArrayList<Integer> answer;
+        ArrayList<Integer> answer = new ArrayList<>();
         while (executionCode.equals("1")) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             answer = generateAnswer();
-
-            System.out.println(answer); // for test
 
             predictNumber(answer);
 
