@@ -17,9 +17,6 @@ public class Application {
                 generateRandomNumber(numbers);
             }
 
-            for(int i=0; i<numbers.size(); i++)
-                System.out.println("랜덤 넘버: "+numbers.get(i));
-
             while(true){
                 //boolean breaker = false;
                 int strike=0, ball=0;//, nothing=0;
@@ -31,7 +28,6 @@ public class Application {
                 List<Integer> ballList = strikeBallNothing(numbers, player);
                 ball = ballList.get(0);
                 strike = ballList.get(1);
-                //nothing = ballList.get(2);
 
                 //System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
 
@@ -59,8 +55,8 @@ public class Application {
         String player = Console.readLine();         // Console의 readLine() 사용
 
         // 잘못된 입력 - IllegalArgumentException 발생
-        if(player.isEmpty() || !player.chars().allMatch(Character::isDigit)
-                || player.length() > 3){
+        if(player.length() < 3 || player.length() > 3
+                || !player.chars().allMatch(Character::isDigit)){
             throw new IllegalArgumentException();
         }
         return player;
@@ -90,12 +86,6 @@ public class Application {
 
             }
         }
-
-        // ball, strike 모두 없는 경우에만 nothing
-        /*if(ball == 0 && strike == 0){
-            nothing++;
-            baseballList.set(2, nothing);
-        }*/
 
         return baseballList;
     }
