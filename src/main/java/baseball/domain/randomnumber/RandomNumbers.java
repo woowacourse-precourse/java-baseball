@@ -1,14 +1,21 @@
 package baseball.domain.randomnumber;
 
 import baseball.domain.CountResult;
+import baseball.domain.NumberUtils;
 import baseball.domain.SingleNumber;
 import baseball.domain.inputnumber.InputNumbers;
 
 import java.util.List;
 
+import static baseball.domain.randomnumber.RandomNumberGenerator.*;
+
 public class RandomNumbers {
 
     private final List<SingleNumber> randomNumbers;
+
+    public RandomNumbers() {
+        this(NumberUtils.singleNumberList(randomNumber()));
+    }
 
     public RandomNumbers(List<SingleNumber> randomNumbers) {
         this.randomNumbers = randomNumbers;

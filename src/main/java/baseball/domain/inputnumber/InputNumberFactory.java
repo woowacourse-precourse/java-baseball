@@ -1,26 +1,15 @@
 package baseball.domain.inputnumber;
 
-import baseball.domain.SingleNumber;
-
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static baseball.domain.NumberUtils.singleNumberList;
 
 public class InputNumberFactory {
 
     public static InputNumbers newInstance(String inputValue) {
         validateLengthForGame(inputValue);
         validateDuplicate(inputValue);
-        return new InputNumbers(generateSingleNumberList(inputValue));
-    }
-
-    private static List<SingleNumber> generateSingleNumberList(String inputValue) {
-        return IntStream.range(0, 3)
-                .mapToObj(i -> new SingleNumber(
-                        i,
-                        Integer.parseInt(inputValue.substring(i, i + 1))
-                ))
-                .collect(Collectors.toList());
+        return new InputNumbers(singleNumberList(inputValue));
     }
 
     private static void validateLengthForGame(String inputValue) {

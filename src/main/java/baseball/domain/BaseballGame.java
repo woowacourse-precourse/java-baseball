@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.domain.inputnumber.InputNumbers;
-import baseball.domain.randomnumber.RandomNumberFactory;
 import baseball.domain.randomnumber.RandomNumbers;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
@@ -19,7 +18,7 @@ public class BaseballGame {
     }
 
     public void run() {
-        RandomNumbers randomNumbers = RandomNumberFactory.newInstance();
+        RandomNumbers randomNumbers = new RandomNumbers();
         int oneOrTwoForRestartGame = 0;
 
         messagePrinter.printStartMessage();
@@ -39,7 +38,7 @@ public class BaseballGame {
             }
 
             if (oneOrTwoForRestartGame == 1) {
-                randomNumbers = RandomNumberFactory.newInstance();
+                randomNumbers = new RandomNumbers();
                 oneOrTwoForRestartGame = 0;
             }
         }
