@@ -37,13 +37,23 @@ public class Application {
             // 결과 출력
             announcedResult(result);
 
-            // 정답 시 재시작/종료 탐색 기능
-            usersAnswer = reGameOrEnd(usersNumber());
+            // 정답
+            if (isRight(result.get(1))) {
+                // 정답 시 재시작/종료 탐색 기능
+                usersAnswer = reGameOrEnd(usersNumber());
+            }
+
 
         }
 
     }
 
+    private static boolean isRight(Integer strike) {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
 
     private static void announcedResult(List<Integer> result) {
 
