@@ -24,6 +24,20 @@ public class RefereeTest {
     }
 
     @Test
+    void 게임_재시작_여부_예외발생() {
+        Assertions.assertThatThrownBy(() -> {
+            referee.isStart("4");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_재시작_여부_예외발생2() {
+        Assertions.assertThatThrownBy(() -> {
+            referee.isStart(" ");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 게임_재시작_여부_정상입력() {
         Assertions.assertThat(referee.isStart("2")).isFalse();
         Assertions.assertThat(referee.isStart("1")).isTrue();
