@@ -92,10 +92,10 @@ class BaseballGameTest {
     @ParameterizedTest
     @DisplayName("컴퓨터 정답 또는 사용자 정답 디폴트 사이즈 체크")
     @CsvSource(value = {
-            "-1:false",
-            "2:false",
-            "3:true",
-            "4:false"
+            "-1:true",
+            "2:true",
+            "3:false",
+            "4:true"
     }, delimiter = ':')
     void checkSize(int size, boolean actual) throws Exception {
         Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("isNotDefaultSize", int.class);
