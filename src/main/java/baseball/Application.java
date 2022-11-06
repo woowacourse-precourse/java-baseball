@@ -36,6 +36,13 @@ class game {
     public int ball;
     public int strike;
 
+    static boolean nbrInAnswer(Integer nbr, List<Integer> answer){
+        if (answer.contains(nbr)) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
 
