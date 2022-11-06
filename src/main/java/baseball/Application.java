@@ -13,14 +13,14 @@ public class Application {
         User userNumber = new User();
         userNumber.setUserNumbers();
 
-        compareAnswer(computerNumber.getComputerNumbers(),userNumber.userNumbers);
+        compareAnswer(computerNumber.getComputerNumbers(),userNumber.getUserNumbers());
 
         System.out.println();
         System.out.println("computer");
         for(int a : computerNumber.getComputerNumbers()) System.out.print(a+" ");
         System.out.println();
         System.out.println("user");
-        for(int a : userNumber.userNumbers) System.out.print(a+" ");
+        for(int a : userNumber.getUserNumbers()) System.out.print(a+" ");
     }
 
     public static void main(String[] args) {
