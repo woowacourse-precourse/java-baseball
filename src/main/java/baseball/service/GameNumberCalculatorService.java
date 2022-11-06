@@ -9,6 +9,14 @@ public class GameNumberCalculatorService {
     private int strikeCount;
     private List<Integer> strikeAndBallCountList = new ArrayList<>();
 
+    public void countStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (isStrike(userNumbers.get(i), computerNumbers.get(i))) {
+                strikeCount++;
+            }
+        }
+    }
+
     public boolean isStrike(int userNumber, int computerNumber) {
         if (userNumber == computerNumber) {
             return true;
