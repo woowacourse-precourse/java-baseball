@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.domain.ComNumber;
-import baseball.domain.UserNumber;
+import baseball.model.ComNumber;
+import baseball.model.UserNumber;
 import baseball.utils.InputValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
