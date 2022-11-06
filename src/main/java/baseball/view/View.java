@@ -10,6 +10,10 @@ public class View {
     public void initView(){
         System.out.println(GAME_START_MESSAGE);
     }
-
+    public String gameView(){
+        System.out.println(NUBMER_INPUT_MESSAGE);
+        String inputNumber = Console.readLine();
+        return inputNumber;
+    }
 
 }
