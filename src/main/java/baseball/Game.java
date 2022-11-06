@@ -34,8 +34,8 @@ public class Game {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
 
+            String input = Console.readLine();
             List<Integer> user = validateUserInput(input);
 
             calculateScore(user, computer);
@@ -119,7 +119,7 @@ public class Game {
     }
 
     public int validateUserExitInput(String input) {
-        if (!Character.isDigit(input.charAt(0)))
+        if (input.length() != 1 || !Character.isDigit(input.charAt(0)))
             throw new IllegalArgumentException("1 또는 2만 입력할 수 있습니다.");
 
         int choose = Integer.parseInt(input);

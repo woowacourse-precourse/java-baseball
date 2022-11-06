@@ -41,6 +41,7 @@ public class GameTest {
                 .hasMessageContaining("숫자는 3개를 입력해야 합니다.");
 
         String input2 = "1234";
+
         assertThatThrownBy(() -> game.validateUserInput(input2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자는 3개를 입력해야 합니다.");
@@ -53,6 +54,33 @@ public class GameTest {
         assertThatThrownBy(() -> game.validateUserInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 숫자 3개를 입력해야 합니다.");
+    }
+
+    @Test
+    void validateUserExitInput_메서드_사용시_길이가_1을_넘는_문자열을_입력하면_예외_발생() {
+        String input = "123";
+
+        assertThatThrownBy(() -> game.validateUserExitInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+    }
+
+    @Test
+    void validateUserExitInput_메서드_사용시_숫자가_아닌_문자를_입력하면_예외_발생() {
+        String input = "a";
+
+        assertThatThrownBy(() -> game.validateUserExitInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+    }
+
+    @Test
+    void validateUserExitInput_메서드_사용시_1과_2가_아닌_다른_숫자를_입력하면_예외_발생() {
+        String input = "3";
+
+        assertThatThrownBy(() -> game.validateUserExitInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
     }
 
 }
