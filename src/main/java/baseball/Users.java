@@ -18,7 +18,7 @@ public class Users {
 
     public List<Integer> getInputList() {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0 ; i < this.input.length() ; i++) {
+        for (int i = 0; i < this.input.length(); i++) {
             list.add(Integer.valueOf(String.valueOf(this.input.charAt(i))));
         }
         return list;

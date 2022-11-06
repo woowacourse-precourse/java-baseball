@@ -14,7 +14,7 @@ public class Coin {
     }
 
     public boolean isCoin() {
-        if(this.coin.equals(ABLE_COIN_TO_GAME)) return true;
+        if (this.coin.equals(ABLE_COIN_TO_GAME)) return true;
         return false;
     }
 
