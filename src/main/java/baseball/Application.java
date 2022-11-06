@@ -24,4 +24,24 @@ public class Application {
 
         return computerNumber;
     }
+
+    private static List<Integer> parseInput(String input) {
+        List<Integer> inputNumber = new ArrayList<>(3);
+
+        if (input.length() != 3)
+            throw new IllegalArgumentException();
+
+        for (int i = 0;i < 3;i++) {
+            char c = input.charAt(i);
+
+            if (c < '1' || c > '9')
+                throw new IllegalArgumentException();
+            if (inputNumber.contains(c - '0'))
+                throw new IllegalArgumentException();
+
+            inputNumber.add(c - '0');
+        }
+
+        return inputNumber;
+    }
 }
