@@ -12,22 +12,32 @@ public class View {
     View() {}
 
     void gameStartText() {
-
+        System.out.println(START_SENTENCE);
     }
 
-    int numberInputText() {
+    String numberInputText() {
+        String number = "";
 
+        System.out.println(INPUT_SENTNECE);
+        number = Console.readLine();
+
+        return number;
     }
 
     void gameResultOutputText(String text) {
-
+        System.out.println(text);
     }
 
-    int victoryOutputText() {
+    String victoryOutputText() {
+        String number = "";
 
+        System.out.println(CORRECT_SENTENCE + "\n" + RESTART_SENTENCE);
+        number = Console.readLine();
+
+        return number;
     }
 
     void gameEnd() {
-
+        System.out.println(EXIT_SENTENCE);
     }
 }
