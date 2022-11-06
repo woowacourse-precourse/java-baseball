@@ -64,7 +64,7 @@
 
 # 입력
 
-- [ ] Interactive 인터페이스 선언
+- [x] Interactive 인터페이스 선언
 - [ ] Console API 사용
 
 # 출력
