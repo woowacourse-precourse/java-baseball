@@ -14,6 +14,7 @@ public class GameController {
         String userNumber = Console.readLine(); // 입력 받기
         List<Integer> userNumberList = userNumberConvertToList(userNumber); // 자릿수로 나눈 리스트로 변환
         numberVO.setUserNumber(userNumberList);
+        System.out.println("사용자 값:"+numberVO.getUserNumber()+":");
     }
 
     // 숫자 하나씩 나누어서 리스트에 보관
