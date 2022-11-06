@@ -9,10 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException{
-        Operator op = new Operator();
-        while (op.getRestart()) {
+    public static void main(String[] args) throws IllegalArgumentException {
+        while (true) {
+            Operator op = new Operator();
             op.playGame();
+            if (!op.getRestart()) {
+                break;
+            }
         }
     }
 }
@@ -30,7 +33,7 @@ class Computer {
             }
         }
         number = numberList;
-        System.out.println(number);
+        System.out.println("컴퓨터 생성숫자: " + number);
     }
 
     public List<Integer> getNumber() {
@@ -62,6 +65,7 @@ class Player {
         }
         Collections.reverse(numberList);
         number = numberList;
+        System.out.println("플레이어 입력 숫자: " + number);
     }
 
     public List<Integer> getNumber() {
@@ -152,6 +156,7 @@ class Operator {
         } else {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(재시작/종료 숫자가 아님)");
         }
+        System.out.println("재시작 숫자: " + inputString);
     }
 
     public void showResult() {
