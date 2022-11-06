@@ -42,11 +42,9 @@ public class Game {
 		retryOrNot();
 	}
 
-	public void compare() {
+	private void compare() {
 		initCounts();
-
-		System.out.print(MESSAGE_INPUT);
-		user.scanInputByStatus(status.getStatus());
+		requestInput();
 
 		for(int index = MIN_LIST_INDEX; index < MAX_LIST_INDEX; index++) {
 			if(computer.getComputersList().contains(user.getValidatedUserInput().get(index))) {
@@ -91,12 +89,16 @@ public class Game {
 		initCounts();
 		System.out.println(MESSAGE_START);
 		computer.setComputersList();
-//		System.out.println(computer.getComputersList());
 		status.setStatusPlaying();
-//		System.out.println(status.getStatus());
 	}
+
 	private void initCounts() {
 		ball = ZERO;
 		strike = ZERO;
+	}
+
+	private void requestInput() {
+		System.out.print(MESSAGE_INPUT);
+		user.scanInputByStatus(status.getStatus());
 	}
 }
