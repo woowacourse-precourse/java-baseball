@@ -1,2 +1,4 @@
-package baseball.numbercomparison;public class NumberComparisonTest {
+package baseball.numbercomparison;
+
+public class NumberComparisonTest {
 }

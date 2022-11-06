@@ -1,14 +1,13 @@
 package baseball.player;
 
-import baseball.utils.NumberParsing;
+import baseball.system.BaseballConstant;
+import baseball.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Computer {
-
-
     private List<Integer> computerNumbers;
 
     public Computer() {
@@ -16,20 +15,20 @@ public class Computer {
     }
 
     private List<Integer> createNonDuplicationRandomThreeNumbers() {
-
         List<Integer> numbers = new ArrayList<>();
 
         for (; ; ) {
 
-            numbers = NumberParsing.createRandomNumbers(numbers, 3, 1, 9);
+            numbers = NumberParsingCollection.createRandomNumbersInRange(
+                    numbers,
+                    BaseballConstant.NUMBERS_COUNT,
+                    BaseballConstant.MIN_NUMBER,
+                    BaseballConstant.MAX_NUMBER);
 
-            if (!NumberParsing.isDuplication(numbers)) {
-                break;
+            if (!IsCollection.isDuplication(numbers)) {
+                return numbers;
             }
-
         }
-
-        return numbers;
     }
 
     public List<Integer> getComputerNumbers() {

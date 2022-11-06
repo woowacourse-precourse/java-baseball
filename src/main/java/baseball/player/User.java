@@ -1,11 +1,11 @@
 package baseball.player;
 
-import baseball.utils.NumberParsing;
+import baseball.system.BaseballConstant;
+import baseball.utils.*;
 
 import java.util.List;
 
 public class User {
-
     private List<Integer> userNumbers;
 
     public void setUser(String inputNumbers) {
@@ -13,24 +13,24 @@ public class User {
     }
 
     private List<Integer> createValidNumbers(String inputNumbers) throws IllegalArgumentException {
-
-        if (!NumberParsing.isNonZeroNumber(inputNumbers)) {
+        if (!IsCollection.isInputNumbersInRange(
+                inputNumbers,
+                BaseballConstant.MIN_NUMBER,
+                BaseballConstant.MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
-        List<Integer> numbers = NumberParsing.changeStringToIntegers(inputNumbers);
+        List<Integer> numbers = NumberParsingCollection.changeStringToIntegers(inputNumbers);
 
-        if (!NumberParsing.isEqualToSetCount(numbers, 3) || NumberParsing.isDuplication(numbers)) {
+        if (!IsCollection.isEqualToSetCount(numbers, BaseballConstant.INPUT_LENGTH) ||
+                IsCollection.isDuplication(numbers)) {
             throw new IllegalArgumentException();
         }
 
         return numbers;
-
     }
-
 
     public List<Integer> getUserNumbers() {
         return userNumbers;
     }
-
 }

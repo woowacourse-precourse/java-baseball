@@ -1,44 +1,38 @@
 package baseball.system;
 
-import baseball.utils.Input;
+import baseball.utils.*;
 
 public class MenuSelection {
+    private int selectionNumber;
 
-    private final boolean PLAY_GAME = true;
-    private final boolean QUIT = false;
-
-    private String selectionNumber;
-
-    public boolean startMenuSelection() {
-
+    public int startMenuSelection() {
         printMenuSelection();
 
         String inputNumber = Input.input();
         setSelectionNumber(inputNumber);
 
-        if (selectionNumber.equals("1")) {
-            return PLAY_GAME;
-        }
-
-        return QUIT;
-
+        return selectionNumber;
     }
 
     private void setSelectionNumber(String inputNumber) {
         this.selectionNumber = selectNumber(inputNumber);
     }
 
-    private String selectNumber(String inputNumber) throws IllegalArgumentException {
-
-        if (isOneOrTwo(inputNumber)) {
-            return inputNumber;
+    private int selectNumber(String inputNumber) throws IllegalArgumentException {
+        if (!IsCollection.isInputNumbersInRange(
+                inputNumber,
+                BaseballConstant.PLAY_GAME,
+                BaseballConstant.QUIT)) {
+            throw new IllegalArgumentException();
         }
 
-        throw new IllegalArgumentException();
-    }
+        if (!IsCollection.isEqualToSetLength(
+                inputNumber,
+                BaseballConstant.SELECTION_NUMBER_LENGTH)) {
+            throw new IllegalArgumentException();
+        }
 
-    private boolean isOneOrTwo(String inputNumber) {
-        return inputNumber.equals("1") || inputNumber.equals("2");
+        return Integer.parseInt(inputNumber);
     }
 
     private void printMenuSelection() {

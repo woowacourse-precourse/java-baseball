@@ -24,7 +24,7 @@ public class UserTest {
     @Test
     void 유저_정상_입력_확인() {
         user.setUser("123");
-        List<Integer> numbers =  user.getUserNumberList();
+        List<Integer> numbers =  user.getUserNumbers();
         assertThat(numbers).isEqualTo(Arrays.asList(1,2,3));
     }
 
