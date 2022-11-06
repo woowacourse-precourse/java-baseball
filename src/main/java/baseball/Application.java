@@ -92,11 +92,8 @@ public class Application {
         String str = readLine();
         Integer flag = Integer.parseInt(str);
 
-        while (!flag.equals(1) && !flag.equals(2)) {
-            System.out.println("1 또는 2로 입력해주세요.");
-            str = readLine();
-            flag = Integer.parseInt(str);
-        }
+        if(!restartBaseBallGameCheck(flag))
+            throw new IllegalArgumentException("1 혹은 2를 입력해야합니다.");
 
         return flag;
     }
@@ -111,6 +108,11 @@ public class Application {
         else if (str.charAt(0) == str.charAt(1)) return false;
         else if (str.charAt(0) == str.charAt(2)) return false;
         else if (str.charAt(1) == str.charAt(2)) return false;
+
+        return true;
+    }
+    public static boolean restartBaseBallGameCheck(Integer flag){
+        if (!flag.equals(1) && !flag.equals(2)) return false;
 
         return true;
     }
