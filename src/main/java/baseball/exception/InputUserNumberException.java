@@ -25,5 +25,13 @@ public class InputUserNumberException {
         }
     }
 
+    private void checkInputNumberRange(String userNumber) {
+        for (int index = 0; index < userNumber.length(); index++) {
+            if (userNumber.charAt(index) - '0' < 1 || userNumber.charAt(index) - '0' > 9) {
+                throw new IllegalArgumentException("1~9의 숫자를 대입해주세요");
+            }
+        }
+    }
+
 
 }
