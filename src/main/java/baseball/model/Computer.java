@@ -10,6 +10,13 @@ public class Computer {
     private int ball;
     private boolean nothing;
 
+    public Computer() {
+        this.randomNum = new ArrayList<>();
+        this.strike=0;
+        this.ball=0;
+        this.nothing=false;
+    }
+
     public List<Integer> generateRandomNumList(){
         this.randomNum = new ArrayList<>();
         while (randomNum.size() < 3) {
@@ -20,6 +27,7 @@ public class Computer {
         }
         return this.randomNum;
     }
+
 
     private void checkStrike(List<Integer> usersNum) {
         for (int i = 0; i < usersNum.size(); i++) {
