@@ -49,5 +49,4 @@ class DuplicateByComparisonTest {
             assertEquals(answerNumber, testResult);
         }
     }
-
 }
