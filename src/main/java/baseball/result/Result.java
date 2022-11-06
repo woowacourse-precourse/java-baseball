@@ -47,9 +47,6 @@ public class Result {
     }
 
     public boolean isNothing() {
-        if (strike == 0 && ball == 0) {
-            return true;
-        }
-        return false;
+        return strike == 0 && ball == 0;
     }
 }
