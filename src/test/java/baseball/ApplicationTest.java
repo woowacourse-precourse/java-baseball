@@ -17,6 +17,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임시작_사용자입력값_문구출력() {
+        run();
+        assertThat(output()).contains("숫자를 입력해주세요 :");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
