@@ -37,8 +37,8 @@ public class MyTest extends NsTest {
     @Test
     void 잘못된_값_입력에_대해_예외_발생() {
         String[] invalidInputs = {"12345", "101", "a8c", "1@1asd"};
-        inputNumbersIntoStdin(invalidInputs);
 
+        inputNumbersIntoStdin(invalidInputs);
         for (String input : invalidInputs)
             assertThatThrownBy(() -> gameCtx.handleUserInput())
                     .isInstanceOf(IllegalArgumentException.class);
@@ -48,17 +48,11 @@ public class MyTest extends NsTest {
     @Test
     void 볼카운트_출력() {
         String[] inputs = {"246", "153", "513", "135"};
+        String[] expectedOutputs = {"낫싱", "2볼 1스트라이크", "3볼", "3스트라이크"};
+        GameState expectedState = GameState.THREE_STRIKE;
 
-        inputNumbersIntoStdin(inputs);
         assertRandomNumberInRangeTest(
-                () -> {
-                    gameCtx.initializeContext();
-                    inputNumbersIntoStdin(inputs);
-                    for (String input : inputs)
-                        gameCtx.handleUserInput();
-                    assertThat(output().split("\n")).contains("낫싱", "2볼 1스트라이크", "3볼", "3스트라이크");
-                    assertThat(gameCtx.getState()).isEqualTo(GameState.THREE_STRIKE);
-                },
+                () -> assertOutputAndStateForGivenInputs(inputs, expectedOutputs, expectedState),
                 1, 3, 5
         );
 
@@ -68,27 +62,30 @@ public class MyTest extends NsTest {
     void 게임이_끝난_뒤_재시작_종료_구분() {
         String[] inputsReplay = {"135", "1"};
         String[] inputsExit = {"246", "2"};
-       
-        inputNumbersIntoStdin(inputsReplay);
+        String[] expectedOutput = {"3스트라이크"};
+
         assertRandomNumberInRangeTest(
                 () -> {
                     // 정답을 맞춘 뒤 재시작.
-                    gameCtx.initializeContext();
-                    inputNumbersIntoStdin(inputsReplay);
-                    for (String input : inputsReplay)
-                        gameCtx.handleUserInput();
-                    assertThat(output().split("\n")).contains("3스트라이크");
-                    assertThat(gameCtx.getState()).isEqualTo(GameState.REPLAY);
+                    assertOutputAndStateForGivenInputs(inputsReplay, expectedOutput, GameState.REPLAY);
                     // 정답을 맞춘 뒤 종료.
-                    gameCtx.initializeContext();
-                    inputNumbersIntoStdin(inputsExit);
-                    for (String input : inputsExit)
-                        gameCtx.handleUserInput();
-                    assertThat(output().split("\n")).contains("3스트라이크");
-                    assertThat(gameCtx.getState()).isEqualTo(GameState.EXIT_NORMALLY);
+                    assertOutputAndStateForGivenInputs(inputsExit, expectedOutput, GameState.EXIT_NORMALLY);
                 },
                 1, 3, 5, 2, 4, 6
         );
+    }
+
+    private void assertOutputAndStateForGivenInputs(
+            String[] inputs,
+            String[] expectedOutputs,
+            GameState expectedState
+    ) {
+        gameCtx.initializeContext();
+        inputNumbersIntoStdin(inputs);
+        for (String input : inputs)
+            gameCtx.handleUserInput();
+        assertThat(output().split("\n")).contains(expectedOutputs);
+        assertThat(gameCtx.getState()).isEqualTo(expectedState);
     }
 
     private void inputNumbersIntoStdin(String[] numbers) {
