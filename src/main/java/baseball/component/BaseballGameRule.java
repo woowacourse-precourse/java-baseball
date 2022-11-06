@@ -32,12 +32,17 @@ public class BaseballGameRule {
         return playerScore;
     }
 
-    public boolean isWin(List<Integer> playerScore){
-        int strikeCount = playerScore.get(STRIKE_COUNT_INDEX);
-        if(strikeCount == 3){
-            return true;
+    private int verifyBalls(List<Integer> playerNumbers) {
+
+        int ballCount = 0;
+        for(int index = 0; index<computerNumbers.size(); index++){
+            if(computerNumbers.contains(playerNumbers.get(index))
+                    && !computerNumbers.get(index).equals(playerNumbers.get(index))) {
+                ballCount += 1;
+            }
         }
-        return false;
+
+        return ballCount;
     }
 
     private int verifyStrikes(List<Integer> playerNumbers) {
@@ -52,17 +57,13 @@ public class BaseballGameRule {
         return strikeCount;
     }
 
-    private int verifyBalls(List<Integer> playerNumbers) {
 
-        int ballCount = 0;
-        for(int index = 0; index<computerNumbers.size(); index++){
-            if(computerNumbers.contains(playerNumbers.get(index))
-                    && !computerNumbers.get(index).equals(playerNumbers.get(index))) {
-                ballCount += 1;
-            }
+    public boolean isWin(List<Integer> playerScore){
+        int strikeCount = playerScore.get(STRIKE_COUNT_INDEX);
+        if(strikeCount == 3){
+            return true;
         }
-
-        return ballCount;
+        return false;
     }
 
 }
