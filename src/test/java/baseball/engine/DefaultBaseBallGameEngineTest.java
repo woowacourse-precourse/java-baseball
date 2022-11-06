@@ -20,7 +20,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class DefaultBaseBallGameEngineTest {
     private BaseBallGameEngine gameEngine;
 
-    static class NullSourceProvider implements ArgumentsProvider {
+    static class CreateBallStatusNullSourceProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
@@ -31,7 +31,7 @@ class DefaultBaseBallGameEngineTest {
         }
     }
 
-    static class ValidSourceProvider implements ArgumentsProvider {
+    static class CreateBallStatusValidSourceProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
@@ -84,7 +84,7 @@ class DefaultBaseBallGameEngineTest {
     @DisplayName("createBall 메서드는")
     class DescribeCreateBallStatus {
         @ParameterizedTest
-        @ArgumentsSource(NullSourceProvider.class)
+        @ArgumentsSource(CreateBallStatusNullSourceProvider.class)
         @DisplayName("인자중 null이 들어왔을 경우 예외를 발생한다.")
         void nullAndEmptyParameter(Numbers answer, Numbers userInput) {
             Assertions.assertThatThrownBy(() -> gameEngine.createBallStatus(answer, userInput))
@@ -92,7 +92,7 @@ class DefaultBaseBallGameEngineTest {
         }
 
         @ParameterizedTest
-        @ArgumentsSource(ValidSourceProvider.class)
+        @ArgumentsSource(CreateBallStatusValidSourceProvider.class)
         @DisplayName("유효한 인자가 들어왔을 경우 BallStatus를 생성한다.")
         void validParameter(Numbers answer, Numbers userInput, int[] expectedStrikeAndBall) {
             BallStatus actual = gameEngine.createBallStatus(answer, userInput);
