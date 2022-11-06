@@ -45,7 +45,7 @@ class Baseball {
 
     private static void inputUserNumber() {
         getUserNumber();
-        getBallStrikeNothing();
+        countBallStrike();
         printResult();
         isWinNumber();
     }
@@ -72,20 +72,9 @@ class Baseball {
         System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
     }
 
-    private static void getBallStrikeNothing() {
-        int countBall = 0;
-        int countStrike = 0;
-        for (int i = 0; i < computerNumber.size(); i++) {
-            if (!computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))
-                    && userNumber.contains(Integer.toString(computerNumber.get(i)))) {
-                countBall++;
-            }
-            if (computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))) {
-                countStrike++;
-            }
-        }
-        countBallStrike.put(BALL, countBall);
-        countBallStrike.put(STRIKE, countStrike);
+    private static void countBallStrike() {
+        countBallStrike.put(BALL, countBall());
+        countBallStrike.put(STRIKE, countStrike());
     }
 
     private static void printResult() {
@@ -129,6 +118,27 @@ class Baseball {
         if (checkRestartGame == END_GAME) {
             System.out.println(END_GAME);
         }
+    }
+
+    private static int countBall() {
+        int countBall = 0;
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (!computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))
+                    && userNumber.contains(Integer.toString(computerNumber.get(i)))) {
+                countBall++;
+            }
+        }
+        return countBall;
+    }
+
+    private static int countStrike() {
+        int countStrike = 0;
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)))) {
+                countStrike++;
+            }
+        }
+        return countStrike;
     }
 
     private static boolean isValidNumber() {
