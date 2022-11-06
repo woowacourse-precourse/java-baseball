@@ -29,7 +29,7 @@ public class BaseballGame {
                 strikeCount = 0;
                 printInputStatement();
                 getPlayerNumber();
-                //checkBall();
+                checkBall();
                 checkStrike();
                 printHint();
                 checkGameEnd();
@@ -120,6 +120,15 @@ public class BaseballGame {
     private void printStrike(){
         if(strikeCount != 0){
             System.out.println(strikeCount + "스트라이크");
+        }
+    }
+
+    private void checkBall(){
+        for(int i = 0; i < LENGTH_OF_NUMBER; i++){
+            int digit = player.get(i);
+            if(computer.contains(digit) && computer.getIndexOf(digit) != i){
+                ballCount++;
+            }
         }
     }
 
