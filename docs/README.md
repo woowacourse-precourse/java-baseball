@@ -19,4 +19,4 @@
 * gameStart 메서드 생성
   * do-while loop 사용, printScore 메서드가 true를 리턴할때까지 반복
   * printScore 메서드가 false를 리턴하면 플레이어에게 새로운 게임 시작 메세지 프린트
-  * restart라는 변수 생성, 값이 1일 동안에는 gameStart 메서드 반복
+  * restart 변수 생성, 값이 1일 동안에는 gameStart 메서드 반복
