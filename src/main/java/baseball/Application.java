@@ -122,5 +122,6 @@ public class Application {
             int ballNum = countBall(computer, user);
             printResult(strikeNum, ballNum);
         }
+        System.out.println("게임 종료");
     }
 }
