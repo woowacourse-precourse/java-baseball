@@ -15,15 +15,11 @@ public class InputNumberFactory {
     }
 
     private static List<SingleNumber> generateSingleNumberList(String inputValue) {
-        List<Integer> inputValues = inputValueToList(inputValue);
         return IntStream.range(0, 3)
-                .mapToObj(i -> new SingleNumber(i, inputValues.get(i)))
-                .collect(Collectors.toList());
-    }
-
-    private static List<Integer> inputValueToList(String inputValue) {
-        return IntStream.range(0, 3)
-                .mapToObj(i -> Integer.parseInt(inputValue.substring(i, i + 1)))
+                .mapToObj(i -> new SingleNumber(
+                        i,
+                        Integer.parseInt(inputValue.substring(i, i + 1))
+                ))
                 .collect(Collectors.toList());
     }
 
