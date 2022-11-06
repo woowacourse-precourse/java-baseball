@@ -6,17 +6,27 @@ public class GameResultPrinter {
 
     public String convertGameResult(List<Integer> gameResult) {
         String converter = "";
-        if (gameResult.get(2) != 0) {
+        if (isNothing(gameResult)) {
             return "낫싱";
         }
-        if (gameResult.get(0) != 0) {
+        if (isStrike(gameResult)) {
             return gameResult.get(0) + " 스트라이크";
         }
-        if (gameResult.get(1) != 0) {
+        if (isBall(gameResult)) {
             return gameResult.get(1) + " 볼";
         }
-
-
         return "";
+    }
+
+    private static boolean isBall(List<Integer> gameResult) {
+        return gameResult.get(1) != 0;
+    }
+
+    private static boolean isStrike(List<Integer> gameResult) {
+        return gameResult.get(0) != 0;
+    }
+
+    private static boolean isNothing(List<Integer> gameResult) {
+        return gameResult.get(2) != 0;
     }
 }
