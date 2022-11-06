@@ -2,6 +2,8 @@ package baseball.domain.number;
 
 import baseball.domain.SingleNumber;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -36,20 +38,12 @@ class SingleNumberTest {
         assertThat(result).isEqualTo(0);
     }
 
-    @Test
-    void 음수를_입력하면_예외를_던진다() {
-        int inputValue = -1;
-
+    @ParameterizedTest
+    @ValueSource(ints = {0, 10, -1})
+    void 입력된_숫자가_1_부터_9_범위를_벗어나면_예외를_던진다(int inputValue) {
         assertThatThrownBy(() -> new SingleNumber(0, inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("양수만 입력해 주세요.");
-    }
-
-    @Test
-    void 숫자_0을_포함하면_예외를_던진다() {
-        assertThatThrownBy(() -> new SingleNumber(0, 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("0은 입력할 수 없습니다.");
+                .hasMessageContaining("입력 숫자의 범위는 1~9 입니다.");
     }
 
 
