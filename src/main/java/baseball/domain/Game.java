@@ -17,10 +17,20 @@ public class Game {
         int strike = 0;
         int ball = 0;
 
-        while(!isComplete(strike)) {
-            String input = View.inputView();
+        while(true) {
+            List<Integer> userNumber = inputToIntegerList(View.inputView());
+            ball = computer.countBall(userNumber);
+            strike = computer.countStrike(userNumber);
+            View.resultView(strike, ball);
 
+            if(isComplete(strike)) {
+                View.completeView(LENGTH);
+                break;
+            }
         }
+
+        String restart = View.endView();
+        if(restart.equals("1")) start();
     }
 
     private boolean isComplete(int strike) {
