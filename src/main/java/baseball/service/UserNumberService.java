@@ -7,7 +7,6 @@ import baseball.domain.Validation;
 import java.util.List;
 
 public class UserNumberService {
-
     public static List<Integer> generate() {
         String inputNumber = readLine();
 

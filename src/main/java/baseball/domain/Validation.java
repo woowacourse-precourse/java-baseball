@@ -5,7 +5,6 @@ import static baseball.type.NumberType.NUMBER_SIZE;
 import java.util.HashSet;
 
 public class Validation {
-
     public static void validate(String inputNumber) {
         validateNumber(inputNumber);
         validateDuplication(inputNumber);
@@ -15,7 +14,6 @@ public class Validation {
 
     private static void validateNumber(String inputNumber) {
         if (!(inputNumber.matches("[+-]?\\d*(\\.\\d+)?"))) {
-
             throw new IllegalArgumentException();
         }
     }
@@ -28,7 +26,6 @@ public class Validation {
         }
 
         if (!(numbers.size() == NUMBER_SIZE.getValue())) {
-
             throw new IllegalArgumentException();
         }
     }

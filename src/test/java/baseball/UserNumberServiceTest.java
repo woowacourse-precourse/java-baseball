@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
-public class UserNumberControllerTest {
+public class UserNumberServiceTest {
 
     @Test
     void 유저_숫자_갯수_검증() {

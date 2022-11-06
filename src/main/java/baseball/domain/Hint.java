@@ -3,7 +3,6 @@ package baseball.domain;
 import static baseball.type.NumberType.NUMBER_SIZE;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Hint {
     private int strike;
@@ -14,22 +13,25 @@ public class Hint {
         this.ball = ball;
     }
 
-    public int getBall() {
-        return ball;
-    }
-
     public int getStrike() {
         return strike;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
     public void countHint(List<Integer> userNumbers, List<Integer> computerNumbers) {
         for (int index = 0; index < NUMBER_SIZE.getValue(); index++) {
-            if (Objects.equals(userNumbers.get(index), computerNumbers.get(index))) {
+            int userNumber = userNumbers.get(index);
+            int computerNumber = computerNumbers.get(index);
+
+            if (userNumber == computerNumber) {
                 strike++;
                 continue;
             }
 
-            if (computerNumbers.contains(userNumbers.get(index))) {
+            if (computerNumbers.contains(userNumber)) {
                 ball++;
             }
         }

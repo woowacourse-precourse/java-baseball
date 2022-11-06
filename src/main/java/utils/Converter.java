@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
-
     public static List<Integer> convertStringToIntegerList(String str) {
         List<Integer> integerList = new ArrayList<>();
 
@@ -12,7 +11,6 @@ public class Converter {
             int intValue = str.charAt(index) - '0';
             integerList.add(intValue);
         }
-
         return integerList;
     }
 }

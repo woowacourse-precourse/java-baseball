@@ -16,24 +16,24 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
-
-    public static void playGame() {
-        InputView.printStart();
+    public static void startGame() {
+        InputView.printStartMessage();
 
         do {
-            startGame();
-        }while(retryOrExit().equals(RETRY.getString()));
+            playGame();
+        } while (retryOrExit().equals(RETRY.getString()));
     }
 
-    private static void startGame() {
+    private static void playGame() {
         boolean gameStatus = WRONG_ANSWER.getValue();
         List<Integer> computerNumbers = ComputerNumberService.generate();
 
         while (gameStatus == WRONG_ANSWER.getValue()) {
-            InputView.printTypoNumber();
-            List<Integer> userNumbers = UserNumberService.generate();
+            InputView.printInputMessage();
 
+            List<Integer> userNumbers = UserNumberService.generate();
             Hint hint = HintService.initialize();
+
             hint.countHint(userNumbers, computerNumbers);
             HintService.printHint(hint);
 
@@ -42,16 +42,15 @@ public class GameController {
     }
 
     private static String retryOrExit() {
-        OutputView.printAnswer();
-        OutputView.printRetryOrExit();
+        OutputView.printAnswerMessage();
+        OutputView.printRetryOrExitMessage();
 
         String retryOrExit = readLine();
 
         if (!retryOrExit.equals(RETRY.getString()) && !retryOrExit.equals(EXIT.getString())) {
             throw new IllegalArgumentException();
         }
-
-       return retryOrExit;
+        return retryOrExit;
     }
 
 }

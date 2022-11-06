@@ -6,7 +6,7 @@ public enum HintType {
 
     private final int value;
 
-    HintType(int value){
+    HintType(int value) {
         this.value = value;
     }
 
