@@ -1,8 +1,8 @@
 package baseball.model;
 
 public class Ball {
-    public final int NUMBER_LOWER_BOUNDS = 1;
-    public final int NUMBER_UPPER_BOUNDS = 9;
+    public static final int NUMBER_LOWER_BOUNDS = 1;
+    public static final int NUMBER_UPPER_BOUNDS = 9;
     private final int number;
     private final int position;
     public Ball(int number, int position) {
