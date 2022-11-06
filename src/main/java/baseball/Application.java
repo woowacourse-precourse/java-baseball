@@ -91,8 +91,10 @@ public class Application {
         }};
 
         if(0 <= strikeNumber && strikeNumber <=3 ){
-
+            checkedBaseballNumbers.put("strike",strikeNumber);
+            checkedBaseballNumbers.put("ball",ballNumber - strikeNumber);
         }
+
         return new HashMap<>();
     }
 
