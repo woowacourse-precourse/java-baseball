@@ -20,4 +20,9 @@ public class Score {
             ball++;
         }
     }
+
+    private int[] getBallAndStrike() {
+        int[] ballAndStrike = {ball, strike};
+        return ballAndStrike;
+    }
 }
