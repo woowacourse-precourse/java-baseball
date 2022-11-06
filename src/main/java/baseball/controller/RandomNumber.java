@@ -8,8 +8,17 @@ public class RandomNumber {
 	private static final int START_NUMBER = 1;
 	private static final int END_NUMBER = 9;
 	private static final int NUMBER_LIST_LENGTH = 3;
+	private List<Integer> numbers;
 
-	public static List<Integer> getNumbers() {
+	public RandomNumber() {
+		this.numbers = makeNumbers();
+	}
+
+	public List<Integer> getNumbers() {
+		return this.numbers;
+	}
+
+	private List<Integer> makeNumbers() {
 		List<Integer> numbersList = new ArrayList<>();
 		while (numbersList.size() < NUMBER_LIST_LENGTH) {
 			addNumberList(numbersList);
@@ -17,14 +26,14 @@ public class RandomNumber {
 		return numbersList;
 	}
 
-	private static void addNumberList(List<Integer> numbersList) {
+	private void addNumberList(List<Integer> numbersList) {
 		int randomNumber = getRandomNumber();
 		if (!numbersList.contains(randomNumber)) {
 			numbersList.add(randomNumber);
 		}
 	}
 
-	private static int getRandomNumber() {
+	private int getRandomNumber() {
 		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 	}
 }
