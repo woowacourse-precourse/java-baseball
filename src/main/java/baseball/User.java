@@ -39,6 +39,8 @@ public class User {
 	}
 
 	public void initValidatedUserInput() {
-		validatedUserInput.clear();
+		if(validatedUserInput.size() > 0) {
+			validatedUserInput.clear();
+		}
 	}
 }
