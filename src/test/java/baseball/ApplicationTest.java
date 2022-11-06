@@ -30,6 +30,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
+    class getScore_Test{
+        @Nested
+        class success_case{
+            @Test
+            void case1(){
+                Application.computerDigitValue = List.of(5, 2, 4);
+                String result = "BALL";
+                assertThat(result).isEqualTo(Application.getScore(2, Application.DIGIT_1));
+            }
+
+            @Test
+            void case2(){
+                Application.computerDigitValue = List.of(5, 2, 4);
+                String result = "STRIKE";
+                assertThat(result).isEqualTo(Application.getScore(5, Application.DIGIT_1));
+            }
+
+            @Test
+            void case3(){
+                Application.computerDigitValue = List.of(5, 2, 4);
+                String result = "NOTHING";
+                assertThat(result).isEqualTo(Application.getScore(1, Application.DIGIT_100));
+            }
+        }
+    }
+
+    @Nested
     class toPlaceValue_Test{
         @Nested
         class success_case{
