@@ -18,6 +18,10 @@ public class StrikeZone {
         this.zone = zone.toString();
     }
 
+    public String toString() {
+        return zone;
+    }
+
     private void validateNumberRange(String zone) {
         String pattern = "[1-9]{3}";
         if (!Pattern.matches(pattern, zone)) {
