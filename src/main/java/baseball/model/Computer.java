@@ -24,11 +24,15 @@ public class Computer {
     private static Set<Integer> getUniqueNumbers() {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
-        while (uniqueNumbers.size() != Balls.NUMBER_OF_BALLS) {
+        while (hasEnough(uniqueNumbers)) {
             int randomNumber = Randoms.pickNumberInRange(Ball.NUMBER_LOWER_BOUNDS, Ball.NUMBER_UPPER_BOUNDS);
             uniqueNumbers.add(randomNumber);
         }
 
         return uniqueNumbers;
+    }
+
+    private static boolean hasEnough(Set<Integer> uniqueNumbers) {
+        return uniqueNumbers.size() != Balls.NUMBER_OF_BALLS;
     }
 }
