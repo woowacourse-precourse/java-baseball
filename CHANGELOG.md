@@ -1,0 +1,2 @@
+- docs(docs/README.md): 구현 기능 목록 작성
+- feat: setup precourse baseball project
