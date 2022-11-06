@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateRandomNumber_테스트(){
+    void generateRandomNumber_테스트() {
         //given
         final Core T = new Core();
 
@@ -36,20 +36,20 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(computerRandomNumber.size()).as("컴퓨터 랜덤 숫자 리스트 길이 검사").isEqualTo(3);
         assertThat(computerRandomNumber.size()).as("컴퓨터 랜덤 숫자 리스트 중복 요소 검사").isEqualTo(new HashSet<>(computerRandomNumber).size());
-        for(int digit : computerRandomNumber){
-            assertThat(digit).as("컴퓨터 랜덤 숫자 리스트 요소 범위 검사").isBetween(1,9);
+        for (int digit : computerRandomNumber) {
+            assertThat(digit).as("컴퓨터 랜덤 숫자 리스트 요소 범위 검사").isBetween(1, 9);
         }
     }
 
     @Test
-    void countStrike_테스트(){
+    void countStrike_테스트() {
         //given
         final Core T = new Core();
-        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,5,6));  // 0 strike
-        final List<List<Integer>> case2 = List.of(List.of(1,2,3), List.of(4,2,6));  // 1 strike
-        final List<List<Integer>> case3 = List.of(List.of(1,2,3), List.of(1,2,6));  // 2 strike
-        final List<List<Integer>> case4 = List.of(List.of(1,2,3), List.of(4,2,3));  // 2 strike
-        final List<List<Integer>> case5 = List.of(List.of(1,2,3), List.of(1,2,3));  // 3 strike
+        final List<List<Integer>> case1 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));  // 0 strike
+        final List<List<Integer>> case2 = List.of(List.of(1, 2, 3), List.of(4, 2, 6));  // 1 strike
+        final List<List<Integer>> case3 = List.of(List.of(1, 2, 3), List.of(1, 2, 6));  // 2 strike
+        final List<List<Integer>> case4 = List.of(List.of(1, 2, 3), List.of(4, 2, 3));  // 2 strike
+        final List<List<Integer>> case5 = List.of(List.of(1, 2, 3), List.of(1, 2, 3));  // 3 strike
 
         //when
         final int result1 = T.countStrike(case1.get(0), case1.get(1));
@@ -68,10 +68,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void isDigitStrike_테스트(){
+    void isDigitStrike_테스트() {
         //given
         final Core T = new Core();
-        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,2,3));  // 2 strike
+        final List<List<Integer>> case1 = List.of(List.of(1, 2, 3), List.of(4, 2, 3));  // 2 strike
 
         //when
         final boolean result1 = T.isDigitStrike(case1.get(0), case1.get(1), 0); //false
@@ -85,11 +85,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void isDigitBall_테스트(){
+    void isDigitBall_테스트() {
         //given
         final Core T = new Core();
-        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(2,1,3));
-        final List<List<Integer>> case2 = List.of(List.of(1,2,3), List.of(4,5,6));
+        final List<List<Integer>> case1 = List.of(List.of(1, 2, 3), List.of(2, 1, 3));
+        final List<List<Integer>> case2 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
 
         //when
         final boolean result1 = T.isDigitBall(case1.get(0), case1.get(1), 0);   //true
@@ -111,14 +111,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void countBall_테스트(){
+    void countBall_테스트() {
         //given
         final Core T = new Core();
-        final List<List<Integer>> case1 = List.of(List.of(1,2,3), List.of(4,5,6));  // 0 balls
-        final List<List<Integer>> case2 = List.of(List.of(3,4,5), List.of(8,5,6));  // 1 balls
-        final List<List<Integer>> case3 = List.of(List.of(1,2,3), List.of(2,1,3));  // 2 balls
-        final List<List<Integer>> case4 = List.of(List.of(3,6,8), List.of(6,8,3));  // 3 balls
-        final List<List<Integer>> case5 = List.of(List.of(6,4,3), List.of(3,6,4));  // 3 balls
+        final List<List<Integer>> case1 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));  // 0 balls
+        final List<List<Integer>> case2 = List.of(List.of(3, 4, 5), List.of(8, 5, 6));  // 1 balls
+        final List<List<Integer>> case3 = List.of(List.of(1, 2, 3), List.of(2, 1, 3));  // 2 balls
+        final List<List<Integer>> case4 = List.of(List.of(3, 6, 8), List.of(6, 8, 3));  // 3 balls
+        final List<List<Integer>> case5 = List.of(List.of(6, 4, 3), List.of(3, 6, 4));  // 3 balls
 
         //when
         final int result1 = T.countBall(case1.get(0), case1.get(1));
@@ -137,7 +137,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void isEndFlagged_테스트(){
+    void isEndFlagged_테스트() {
         //given
         final Core T = new Core();
         final int case1 = 0;   //0 strike
@@ -159,15 +159,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringOneOrTwo_정상처리_테스트(){
+    void validateStringOneOrTwo_정상처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "1";
         final String case2 = "2";
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateStringOneOrTwo(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateStringOneOrTwo(case2);});
+        final Throwable thrown1 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case1);
+        });
+        final Throwable thrown2 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case2);
+        });
 
         //then
         assertThat(thrown1).as("validateStringOneOrTwo 정상처리 테스트").doesNotThrowAnyException();
@@ -175,7 +179,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringOneOrTwo_예외처리_테스트(){
+    void validateStringOneOrTwo_예외처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "3";
@@ -185,10 +189,18 @@ class ApplicationTest extends NsTest {
 
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateStringOneOrTwo(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateStringOneOrTwo(case2);});
-        final Throwable thrown3 = catchThrowable(()->{T.validateStringOneOrTwo(case3);});
-        final Throwable thrown4 = catchThrowable(()->{T.validateStringOneOrTwo(case4);});
+        final Throwable thrown1 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case1);
+        });
+        final Throwable thrown2 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case2);
+        });
+        final Throwable thrown3 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case3);
+        });
+        final Throwable thrown4 = catchThrowable(() -> {
+            T.validateStringOneOrTwo(case4);
+        });
 
         //then
         assertThat(thrown1).as("validateStringOneOrTwo 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -198,15 +210,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringThreeDifferentDigits_정상처리_테스트(){
+    void validateStringThreeDifferentDigits_정상처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "384";
         final String case2 = "247";
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case2);});
+        final Throwable thrown1 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case1);
+        });
+        final Throwable thrown2 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case2);
+        });
 
         //then
         assertThat(thrown1).as("validateStringThreeDifferentDigits 정상처리 테스트").doesNotThrowAnyException();
@@ -214,7 +230,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringThreeDifferentDigits_예외처리_테스트(){
+    void validateStringThreeDifferentDigits_예외처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "000";
@@ -224,11 +240,21 @@ class ApplicationTest extends NsTest {
         final String case5 = "Exception String";
 
         //when
-        final Throwable thrown1 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case1);});
-        final Throwable thrown2 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case2);});
-        final Throwable thrown3 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case3);});
-        final Throwable thrown4 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case4);});
-        final Throwable thrown5 = catchThrowable(()->{T.validateStringThreeDifferentDigits(case5);});
+        final Throwable thrown1 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case1);
+        });
+        final Throwable thrown2 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case2);
+        });
+        final Throwable thrown3 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case3);
+        });
+        final Throwable thrown4 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case4);
+        });
+        final Throwable thrown5 = catchThrowable(() -> {
+            T.validateStringThreeDifferentDigits(case5);
+        });
 
         //then
         assertThat(thrown1).as("validateStringThreeDifferentDigits 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -239,7 +265,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringLength_정상처리_테스트(){
+    void validateStringLength_정상처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "134";
@@ -247,9 +273,15 @@ class ApplicationTest extends NsTest {
         final String case3 = "abcde fg";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateStringLength(case1,3);});
-        final Throwable result2 = catchThrowable(()->{T.validateStringLength(case2,0);});
-        final Throwable result3 = catchThrowable(()->{T.validateStringLength(case3,8);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateStringLength(case1, 3);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateStringLength(case2, 0);
+        });
+        final Throwable result3 = catchThrowable(() -> {
+            T.validateStringLength(case3, 8);
+        });
 
         //then
         assertThat(result1).as("validateStringLength 정상처리 테스트").doesNotThrowAnyException();
@@ -258,15 +290,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringLength_예외처리_테스트(){
+    void validateStringLength_예외처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "13";
         final String case2 = "";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateStringLength(case1,3);});
-        final Throwable result2 = catchThrowable(()->{T.validateStringLength(case2,3);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateStringLength(case1, 3);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateStringLength(case2, 3);
+        });
 
         //then
         assertThat(result1).as("validateStringLength 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -274,15 +310,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringNaturalNumbers_정상처리_테스트(){
+    void validateStringNaturalNumbers_정상처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "134";
         final String case2 = "162467";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateStringNaturalNumbers(case1);});
-        final Throwable result2 = catchThrowable(()->{T.validateStringNaturalNumbers(case2);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateStringNaturalNumbers(case1);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateStringNaturalNumbers(case2);
+        });
 
         //then
         assertThat(result1).as("validateStringNaturalNumbers 정상처리 테스트").doesNotThrowAnyException();
@@ -290,15 +330,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateStringNaturalNumbers_예외처리_테스트(){
+    void validateStringNaturalNumbers_예외처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "103";
         final String case2 = "7345akvu3123";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateStringNaturalNumbers(case1);});
-        final Throwable result2 = catchThrowable(()->{T.validateStringNaturalNumbers(case2);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateStringNaturalNumbers(case1);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateStringNaturalNumbers(case2);
+        });
 
         //then
         assertThat(result1).as("validateStringNaturalNumbers 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -306,15 +350,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateAllDifferentCharacters_정상처리_테스트(){
+    void validateAllDifferentCharacters_정상처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "123456789";
         final String case2 = "abcdefghij";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateAllDifferentCharacters(case1);});
-        final Throwable result2 = catchThrowable(()->{T.validateAllDifferentCharacters(case2);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateAllDifferentCharacters(case1);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateAllDifferentCharacters(case2);
+        });
 
         //then
         assertThat(result1).as("validateAllDifferentCharacters 정상처리 테스트").doesNotThrowAnyException();
@@ -322,15 +370,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void validateAllDifferentCharacters_예외처리_테스트(){
+    void validateAllDifferentCharacters_예외처리_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "112";
         final String case2 = "aabbcc";
 
         //when
-        final Throwable result1 = catchThrowable(()->{T.validateAllDifferentCharacters(case1);});
-        final Throwable result2 = catchThrowable(()->{T.validateAllDifferentCharacters(case2);});
+        final Throwable result1 = catchThrowable(() -> {
+            T.validateAllDifferentCharacters(case1);
+        });
+        final Throwable result2 = catchThrowable(() -> {
+            T.validateAllDifferentCharacters(case2);
+        });
 
         //then
         assertThat(result1).as("validateAllDifferentCharacters 예외처리 테스트").isInstanceOf(IllegalArgumentException.class).hasMessageContaining("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -339,7 +391,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void stringToIntegerList_테스트(){
+    void stringToIntegerList_테스트() {
         //given
         final Core T = new Core();
         final String case1 = "123";
@@ -350,21 +402,21 @@ class ApplicationTest extends NsTest {
         final List<Integer> result2 = T.stringToIntegerList(case2);
 
         //then
-        assertThat(result1).as("stringToIntegerList 테스트").isEqualTo(List.of(1,2,3));
-        assertThat(result2).as("stringToIntegerList 테스트").isEqualTo(List.of(8,3,7));
+        assertThat(result1).as("stringToIntegerList 테스트").isEqualTo(List.of(1, 2, 3));
+        assertThat(result2).as("stringToIntegerList 테스트").isEqualTo(List.of(8, 3, 7));
 
     }
 
     @Test
-    void printGameResult_테스트(){
+    void printGameResult_테스트() {
         //given
         final Core T = new Core();
-        final List<Integer> case1 = List.of(3,0);   // 3 strikes
-        final List<Integer> case2 = List.of(0,0);   // 0 strikes 0 balls
-        final List<Integer> case3 = List.of(2,1);   // 2 strikes 1 balls
-        final List<Integer> case4 = List.of(1,2);   // 1 strikes 2 balls
-        final List<Integer> case5 = List.of(2,0);   // 2 strikes 0 balls
-        final List<Integer> case6 = List.of(0,2);   // 0 strikes 1 balls
+        final List<Integer> case1 = List.of(3, 0);   // 3 strikes
+        final List<Integer> case2 = List.of(0, 0);   // 0 strikes 0 balls
+        final List<Integer> case3 = List.of(2, 1);   // 2 strikes 1 balls
+        final List<Integer> case4 = List.of(1, 2);   // 1 strikes 2 balls
+        final List<Integer> case5 = List.of(2, 0);   // 2 strikes 0 balls
+        final List<Integer> case6 = List.of(0, 2);   // 0 strikes 1 balls
 
         //when
         final OutputStream result1 = new ByteArrayOutputStream();
