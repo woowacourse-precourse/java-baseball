@@ -4,19 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ball {
+public class BallGenerator {
     private static final int COMPUTER_MAX_SIZE = 3;
     public static final int START_INCLUSIVE = 1;
     public static final int END_INCLUSIVE = 9;
 
-    private Ball() {
+    private BallGenerator() {
     }
 
     private static class BallHolder {
-        private static final Ball INSTANCE = new Ball();
+        private static final BallGenerator INSTANCE = new BallGenerator();
     }
 
-    public static Ball getInstance() {
+    public static BallGenerator getInstance() {
         return BallHolder.INSTANCE;
     }
 
