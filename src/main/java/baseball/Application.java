@@ -8,7 +8,16 @@ import java.util.List;
 
 public class Application {
     public static void numBaseball(List<Integer> computerNum) {
+        List<Integer> userNum = new ArrayList<>();
+        System.out.print("숫자를 입력하세요 : ");
+        char[] nums = Console.readLine().toCharArray();
 
+        for (int num : nums) {
+            userNum.add(Character.getNumericValue(num));
+        }
+
+        if (comparator(computerNum, userNum) == 1) { return; }
+        else { numBaseball(computerNum); }
     }
 
     public static int comparator(List<Integer> computerNum, List<Integer> userNum) {
