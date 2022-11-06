@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,6 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 숫자입출력_테스트() {
+        run("2");
+    }
+
+    @Disabled("기능 구현할 때까지 비활성화")
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -20,6 +27,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Disabled("기능 구현할 때까지 비활성화")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
