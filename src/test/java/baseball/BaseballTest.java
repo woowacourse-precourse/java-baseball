@@ -79,4 +79,47 @@ class BaseballTest {
         assertThat(checkNotDuplication(input)).isEqualTo(result);
     }
 
+    @DisplayName("userNumber 자릿수에 대한 예외처리 테스트")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ValueSource(strings = {"26", "1234"})
+    void userNumber_길이에_따른_예외처리(String input) {
+        assertThatThrownBy(() -> checkIllegalArgumentException(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력이 세 자리 수가 아닙니다!");
+    }
+
+    @DisplayName("userNumber 문자 타입에 대한 예외처리 테스트")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ValueSource(strings = {"26a", "1i5"})
+    void userNumber_타입에_대한_예외처리(String input) {
+        assertThatThrownBy(() -> checkIllegalArgumentException(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력이 숫자로만 이루어지지 않았습니다!");
+    }
+
+    @DisplayName("0 존재여부에 대한 예외처리 테스트")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ValueSource(strings = {"102", "059", "130"})
+    void userNumber_0_존재여부에_대한_예외처리(String input) {
+        assertThatThrownBy(() -> checkIllegalArgumentException(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력에 0이 포함되어 있습니다!");
+    }
+
+    @DisplayName("중복 숫자 존재여부에 대한 예외처리 테스트")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0}")
+    @ValueSource(strings = {"112", "311", "181"})
+    void userNumber_중복_존재여부에_대한_예외처리(String input) {
+        assertThatThrownBy(() -> checkIllegalArgumentException(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력에 같은 수가 중복되었습니다!");
+    }
+
+    @DisplayName("checkIllegalArgumentException 정상 숫자인 경우 테스트")
+    @Test
+    void userNumber_정상인_경우_테스트() {
+        String input = "126";
+        assertThatCode(() -> checkIllegalArgumentException(input))
+                .doesNotThrowAnyException();
+    }
 }
