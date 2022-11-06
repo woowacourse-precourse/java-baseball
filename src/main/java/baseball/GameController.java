@@ -30,7 +30,7 @@ public class GameController {
         return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
     }
 
-    public void checkGameResult(List<Integer> intersectionList) {
+    public void checkGameResult(List<Integer> intersectionList, List<Integer> randomNumberList) {
 
         ShowMessage showMessage = new ShowMessage();
         int answerCount = showMessage.getAnswerCount();
@@ -40,12 +40,29 @@ public class GameController {
         } else if (intersectionList.size() == answerCount) { // 정답
             ShowMessage.showGameSet();
         } else {
-            calculateGameCount();
+            calculateGameCount(intersectionList, randomNumberList);
         }
     }
 
-    public void calculateGameCount(){
+    public void calculateGameCount(List<Integer> intersectionList, List<Integer> randomNumberList) {
 
+        ShowMessage showMessage = new ShowMessage();
+        int answerCount = showMessage.getAnswerCount();
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < answerCount; i++) {
+            System.out.println("스트라이크 몇 개인지 검사");
+            if (intersectionList == randomNumberList) {
+                System.out.println("스트라이크 발견");
+                strikeCount++;
+            }
+        }
+        ballCount = intersectionList.size() - strikeCount;
+        System.out.println("볼:" + ballCount + ":");
+        System.out.println("스트라이크:" + strikeCount + ":");
     }
+
+
 
 }
