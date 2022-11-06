@@ -37,6 +37,10 @@ public class BaseballGame {
 		try {
 			String str = Console.readLine();
 			Examine.isOneOrTwo(str);
+			if (str.equals("1")) {
+				return true;
+			}
+			return false;
 		} catch (IllegalArgumentException e) {
 			throw e;
 		}
