@@ -5,7 +5,6 @@ import baseball.vo.Restart;
 import static baseball.vo.Restart.*;
 
 public class StringToRestartConverter implements Converter<String, Restart> {
-
     public static final String INVALID_INPUT_VALUE_MESSAGE = "재시작 여부를 결정하는 유효한 입력이 아닙니다.";
 
     @Override

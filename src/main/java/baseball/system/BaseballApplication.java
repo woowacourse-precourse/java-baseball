@@ -33,8 +33,7 @@ public class BaseballApplication {
         this.voter = new BaseballVoter();
         this.baseballService = new BaseballService(voter);
         this.computerController = new ComputerController();
-        this.baseBallController
-                = new BaseBallController(inputView, outputView, baseballService);
+        this.baseBallController = new BaseBallController(inputView, outputView, baseballService);
 
         setValidators();
         setConverters();

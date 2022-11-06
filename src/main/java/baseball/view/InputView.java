@@ -4,11 +4,9 @@ import baseball.vo.Restart;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-
     public static final String NUMBER_INPUT_NUDGE_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String ASKING_RESTART_MESSAGE
-            = String.format(
-            "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.",
+            = String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.",
             Restart.RESTART.getValue(), Restart.EXIT.getValue());
 
     public String getUserInput() {

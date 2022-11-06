@@ -31,8 +31,12 @@ public class UserNumber {
 
     @Override
     public boolean equals(Object target) {
-        if (this == target) return true;
-        if (!(target instanceof UserNumber)) return false;
+        if (this == target) {
+            return true;
+        }
+        if (!(target instanceof UserNumber)) {
+            return false;
+        }
         UserNumber anotherUserNumber = (UserNumber) target;
         return numbers.equals(anotherUserNumber.numbers);
     }

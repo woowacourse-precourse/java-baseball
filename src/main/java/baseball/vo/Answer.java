@@ -38,8 +38,12 @@ public class Answer {
 
     @Override
     public boolean equals(Object target) {
-        if (this == target) return true;
-        if (!(target instanceof Answer)) return false;
+        if (this == target) {
+            return true;
+        }
+        if (!(target instanceof Answer)) {
+            return false;
+        }
         Answer anotherAnswer = (Answer) target;
         return answer.equals(anotherAnswer.answer);
     }
