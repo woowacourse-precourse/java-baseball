@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InputValueValidation {
 
-    public boolean isValid(String inputValue) {
+    public boolean isValidInputNumber(String inputValue) {
         if (isNumber(inputValue) && isLengthThree(inputValue) && noDuplicates(inputValue)) {
             return true;
         }
