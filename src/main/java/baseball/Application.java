@@ -27,10 +27,12 @@ public class Application {
     /*2. 게임 플레이어가 입력한 숫자 받기*/
     public static void inputNumber() {
         Scanner scan = new Scanner(System.in);
-        List<String> user = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
         String strNumber = scan.next();
         for (String chr : strNumber.split("")) {
-            user.add(chr);
+            user.add(Integer.parseInt(chr));
         }
     }
+    
+
 }
