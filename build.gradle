@@ -20,6 +20,3 @@ java {
     }
 }
 
-test {
-    useJUnitPlatform()
-}
