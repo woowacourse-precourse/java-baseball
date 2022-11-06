@@ -59,12 +59,17 @@ public class UserStringCustomTest {
 
 
     @Test
-    private void incorrectUserAnswerDuplicate(String userAnswer) {
+    void 입력_값이_서로_다른_숫자가_아닌_경우() {
+        String userAnswer1 = "131";
         HashSet<Character> answerList = new HashSet<Character>();
-        for (int i = 0; i < userAnswer.length(); i++) {
-            answerList.add(userAnswer.charAt(i));
-        } if (answerList.size() != 3) {
-            throw new IllegalArgumentException("입력 값은 서로 다른 숫자이어야 합니다.");
-        }
+        for (int i = 0; i < userAnswer1.length(); i++) {
+            answerList.add(userAnswer1.charAt(i));
+        } assertThat(answerList.size()).isNotEqualTo(3);
+
+        String userAnswer2 = "111";
+        answerList = new HashSet<Character>();
+        for (int i = 0; i < userAnswer2.length(); i++) {
+            answerList.add(userAnswer2.charAt(i));
+        } assertThat(answerList.size()).isNotEqualTo(3);
     }
 }
