@@ -19,8 +19,7 @@ public class Game {
 
     public void start() {
         System.out.print(INPUT_COMMENT);
-        UserInputNumbers userInput = new UserInputNumbers();
-        compareNumbers(userInput.getUserInputNumbers());
+        compareNumbers(UserInputNumbers.getUserInputNumbers());
     }
 
     public boolean isAnswer() {
@@ -33,8 +32,7 @@ public class Game {
 
     public boolean canRestart() {
         System.out.println(RESTART_COMMENT);
-        UserInputNumbers userInput = new UserInputNumbers();
-        if (userInput.getUserControlNumber().equals(END)) {
+        if (UserInputNumbers.getUserControlNumber().equals(END)) {
             return false;
         }
         return true;

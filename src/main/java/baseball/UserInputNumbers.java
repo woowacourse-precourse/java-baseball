@@ -10,7 +10,7 @@ import static constant.ErrorMessage.*;
 
 public class UserInputNumbers {
 
-    public List<Integer> getUserInputNumbers() {
+    public static List<Integer> getUserInputNumbers() {
         String userInput = Console.readLine();
         validUserInputNumber(userInput);
         System.out.println(userInput);
@@ -22,7 +22,7 @@ public class UserInputNumbers {
         return userInputNumbers;
     }
 
-    public String getUserControlNumber() {
+    public static String getUserControlNumber() {
         String userInput = Console.readLine();
         validUserInputRestart(userInput);
         System.out.println(userInput);
