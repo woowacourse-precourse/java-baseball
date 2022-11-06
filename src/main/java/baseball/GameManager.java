@@ -22,4 +22,11 @@ public class GameManager {
         outputStream = new OutputHandler();
         baseballManager = new BaseballManager();
     }
+
+    private boolean isGameOver(List<Integer> userScore) {
+        return userScore.get(1) == SystemConstant.GAME_DIGIT;
+    }
+
+
+
 }
