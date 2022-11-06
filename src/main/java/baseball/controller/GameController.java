@@ -9,12 +9,12 @@ import baseball.model.Numbers;
 
 public class GameController {
     private static final Validation validation = new Validation();
-    private static final Input input = new Input();
+    private static final Input inputView = new Input();
     private static Numbers inputNumbers = new Numbers();
     private static BallCounts ballCounts = new BallCounts();
 
     public GameController() {
-	System.out.println("숫자 야구 게임을 시작합니다.");
+	System.out.print("숫자 야구 게임을 시작합니다.");
     }
 
     public static void start() {
@@ -27,11 +27,12 @@ public class GameController {
         BallCounts ballCounts = new BallCounts();
         try {
             do {
-                input.inputGameNumber();
+                inputView.inputGameNumber();
                 setInputNumbers(Console.readLine());
-                ballCounts.setBallCounts(answerNumbers.checkStrike(inputNumbers), answerNumbers.checkBall(inputNumbers));
+                ballCounts.setBallCounts(answerNumbers, inputNumbers);
+
             } while (ballCounts.getStrike() != 3);
-            input.inputRestartNumber();
+            inputView.inputRestartNumber();
         } catch (IllegalArgumentException e) {
             System.out.println("Error Message : " + e.getMessage());
             e.printStackTrace();

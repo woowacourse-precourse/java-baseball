@@ -27,7 +27,7 @@ public class Numbers {
 	return numbers;
     }
 
-    public static int checkStrike(Numbers n) {
+    public static int compareStrikeByInput(Numbers n) {
 	List<Integer> compareNumbers = n.getNumbers();
 	int countStrike = 0;
 
@@ -40,7 +40,7 @@ public class Numbers {
 	return countStrike;
     }
 
-    public static int checkBall(Numbers n) {
+    public static int compareBallByInput(Numbers n) {
 	List<Integer> compareNumbers = n.getNumbers();
 	int countBall = 0;
 
