@@ -7,16 +7,6 @@ import baseball.view.BaseballConsole;
 
 public class BaseballController {
 
-//    private final Computer computer;
-//    private final User user;
-//    private final Umpire umpire;
-
-//    public BaseballController() {
-//        this.computer = new Computer();
-//        this.user = new User();
-//        this.umpire = new Umpire();
-//    }
-
     public void start() {
         do {
             play();
@@ -55,6 +45,5 @@ public class BaseballController {
 
         BaseballConsole.printEndBaseBall();
     }
-
 
 }
