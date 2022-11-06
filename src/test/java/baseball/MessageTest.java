@@ -35,4 +35,11 @@ public class MessageTest {
 
         assertEquals("숫자를 입력해주세요 :", outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    public void 게임_종료_문구를_출력하는_기능() {
+        Message.GAME_OVER.print();
+
+        assertEquals("3개의 숫자를 모두 맞히셨습니다! 게임 종료", outputStreamCaptor.toString().trim());
+    }
 }
