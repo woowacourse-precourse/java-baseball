@@ -14,6 +14,8 @@ public class Application {
 
         List<Integer> answer = getAnswerNum();
 
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> guess = inputGuess();
 
         return;
     }
@@ -28,6 +30,18 @@ public class Application {
         }
         return computer;
     }
+
+    public static List<Integer> inputGuess() throws IOException {
+        List<Integer> guess = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = br.readLine().split("");
+
+        for(String i : input){
+            guess.add(Integer.parseInt(i));
+        }
+        return guess;
+    }
+
 
 
 
