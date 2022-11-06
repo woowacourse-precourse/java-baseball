@@ -42,11 +42,54 @@ public class Application {
 
             int num = Integer.parseInt(Console.readLine());
 
+            answer = checkNums(computer, answer, num/100, num/10%10, num%10);
+
+            printAnswer(answer);
+
             if (answer[1] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int end = Integer.parseInt(Console.readLine());
             }
+        }
+    }
+
+    public static int[] checkNums(List<Integer> computer, int[] answer, int hund, int tens, int units) {
+        if (computer.contains(hund)) {
+            if (computer.get(0) == hund) {
+                answer[1]++;
+            } else {
+                answer[0]++;
+            }
+        }
+        if (computer.contains(tens)) {
+            if (computer.get(1) == tens) {
+                answer[1]++;
+            } else {
+                answer[0]++;
+            }
+        }
+        if (computer.contains(units)) {
+            if (computer.get(2) == units) {
+                answer[1]++;
+            } else {
+                answer[0]++;
+            }
+        }
+        return answer;
+    }
+
+    public static void printAnswer(int answer[]) {
+        if (answer[0] == 0 && answer[1] == 0) {
+            System.out.println("낫싱");
+        } else if (answer[0] != 0) {
+            if (answer[1] != 0) {
+                System.out.println(answer[0] + "볼 " + answer[1] + "스트라이크");
+            } else {
+                System.out.println(answer[0] + "볼");
+            }
+        } else {
+            System.out.println(answer[1] + "스트라이크");
         }
     }
 }
