@@ -1,0 +1,35 @@
+package baseball;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.*;
+
+public class ComputerNumberTest {
+    private static final int CNT_NUMBER = 3;
+    Computer computer = new Computer();
+
+    @Test
+    void 컴퓨터_숫자_3자리인지_검증() {
+        //given
+        List<Integer> numberList = computer.setRandomNumber();
+
+        //then
+        assertThat(CNT_NUMBER).isEqualTo(numberList.size());
+    }
+
+    @Test
+    void 컴퓨터_숫자_중복인지_검증() {
+        //given
+        List<Integer> numberList = computer.setRandomNumber();
+
+        //when
+        Set<Integer> numSet = new HashSet<>(numberList);
+
+        //then
+        assertThat(numSet.size()).isEqualTo(numberList.size());
+    }
+}
