@@ -35,4 +35,14 @@ public class BallTest {
 		BallStatus status = ball.compareTo(new Ball(2));
 		assertThat(status).isEqualTo(BallStatus.NOTHING);
 	}
+
+	@DisplayName("숫자 비교 테스트 - 스트라이크")
+	@Test
+	void compareTo_숫자_비교_스트라이크() {
+		Ball ball = new Ball(1);
+
+		// 낫싱의 경우
+		BallStatus status = ball.compareTo(new Ball(1));
+		assertThat(status).isEqualTo(BallStatus.STRIKE);
+	}
 }
