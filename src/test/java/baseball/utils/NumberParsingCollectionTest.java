@@ -23,7 +23,6 @@ public class NumberParsingCollectionTest {
 
         assertThat(IsCollection.isEqualToSetLength(resultString,3)).isTrue();
         assertThat(IsCollection.isInputNumbersInRange(resultString,1,4)).isTrue();
-
     }
 
 }

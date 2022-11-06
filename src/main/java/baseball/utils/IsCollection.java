@@ -6,7 +6,6 @@ import java.util.List;
 public class IsCollection {
     public static boolean isInputNumbersInRange(String inputNumbers, int start, int end) {
         for (int index = 0; index < inputNumbers.length(); index++) {
-
             int number = Integer.parseInt(inputNumbers.substring(index, index + 1));
 
             if (!isValueInRange(number, start, end)) {

@@ -13,17 +13,15 @@ public class User {
     }
 
     private List<Integer> createValidNumbers(String inputNumbers) throws IllegalArgumentException {
-        if (!IsCollection.isInputNumbersInRange(
-                inputNumbers,
-                BaseballConstant.MIN_NUMBER,
-                BaseballConstant.MAX_NUMBER)) {
+        if (!IsCollection.isInputNumbersInRange(inputNumbers,
+                BaseballConstant.MIN_NUMBER, BaseballConstant.MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
         List<Integer> numbers = NumberParsingCollection.changeStringToIntegers(inputNumbers);
 
-        if (!IsCollection.isEqualToSetCount(numbers, BaseballConstant.INPUT_LENGTH) ||
-                IsCollection.isDuplication(numbers)) {
+        if (!IsCollection.isEqualToSetCount(numbers, BaseballConstant.INPUT_LENGTH)
+                || IsCollection.isDuplication(numbers)) {
             throw new IllegalArgumentException();
         }
 

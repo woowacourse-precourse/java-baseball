@@ -19,10 +19,8 @@ public class Computer {
 
         for (; ; ) {
 
-            numbers = NumberParsingCollection.createRandomNumbersInRange(
-                    BaseballConstant.NUMBERS_COUNT,
-                    BaseballConstant.MIN_NUMBER,
-                    BaseballConstant.MAX_NUMBER);
+            numbers = NumberParsingCollection.createRandomNumbersInRange(BaseballConstant.NUMBERS_COUNT,
+                    BaseballConstant.MIN_NUMBER, BaseballConstant.MAX_NUMBER);
 
             if (!IsCollection.isDuplication(numbers)) {
                 return numbers;

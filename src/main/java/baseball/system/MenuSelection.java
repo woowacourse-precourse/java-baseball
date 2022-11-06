@@ -19,15 +19,12 @@ public class MenuSelection {
     }
 
     private int selectNumber(String inputNumber) throws IllegalArgumentException {
-        if (!IsCollection.isInputNumbersInRange(
-                inputNumber,
-                BaseballConstant.PLAY_GAME,
-                BaseballConstant.QUIT)) {
+        if (!IsCollection.isInputNumbersInRange(inputNumber,
+                BaseballConstant.PLAY_GAME, BaseballConstant.QUIT)) {
             throw new IllegalArgumentException();
         }
 
-        if (!IsCollection.isEqualToSetLength(
-                inputNumber,
+        if (!IsCollection.isEqualToSetLength(inputNumber,
                 BaseballConstant.SELECTION_NUMBER_LENGTH)) {
             throw new IllegalArgumentException();
         }
