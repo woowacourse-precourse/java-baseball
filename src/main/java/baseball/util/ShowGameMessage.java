@@ -4,17 +4,8 @@ import baseball.dto.ScoreResultType;
 import baseball.dto.ScoreResult;
 
 public class ShowGameMessage {
-    private boolean isFirstTurn;
-
-    public ShowGameMessage() {
-        isFirstTurn = true;
-    }
-
     public void gameStartMessage() {
-        if (isFirstTurn) {
-            System.out.println(GameMessage.START);
-            isFirstTurn = false;
-        }
+        System.out.println(GameMessage.START);
     }
 
     public void inputUserNumberMessage() {
