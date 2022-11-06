@@ -34,13 +34,16 @@ public class NumberBaseballService {
 
     public int getBallCount(ComputerNumber computerNumber, String userAnswer) {
         int ballCount = 0;
-        if (computerNumber.getFirstNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO) {
+        if (userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO == computerNumber.getSecondNumber()
+                || userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (computerNumber.getFirstNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+        if (userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO == computerNumber.getFirstNumber()
+                || userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (computerNumber.getSecondNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO) {
+        if (userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO == computerNumber.getFirstNumber()
+                || userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO == computerNumber.getSecondNumber()) {
             ballCount++;
         }
         return ballCount;
