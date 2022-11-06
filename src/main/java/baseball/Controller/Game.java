@@ -21,6 +21,7 @@ public class Game {
         while (startOrEnd) {
             player.saveComputerNumber(number.createComputerNumber());
             oneGame();
+            outputView.printStartOrEnd();
         }
     }
 

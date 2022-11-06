@@ -42,4 +42,8 @@ public class OutputView {
         System.out.println(THREESTRIKE);
         System.out.println(VICTORY);
     }
+
+    public void printStartOrEnd() {
+        System.out.println(STARTOREND);
+    }
 }
