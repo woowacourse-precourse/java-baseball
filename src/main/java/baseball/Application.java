@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,6 +21,7 @@ class Game {
     static void init() {
         System.out.println(INITGAME);
         List answer = makeThreeNums();
+        System.out.println(User.getInput());
     }
     static List makeThreeNums() {
         List<Integer> threeNums = new ArrayList<>();
@@ -46,8 +48,38 @@ class Game {
 }
 class User {
     static List getInput() {
-        String[] stringArr = camp.nextstep.edu.missionutils.Console.readLine().split("");
-        int[] intArr = Arrays.stream(stringArr).mapToInt(Integer::parseInt).toArray();
+        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        List result;
+        try {
+            result = checkInput(input);
+        } catch(Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+    static List checkInput(String input) throws Exception {
+        List result = getInputFormat(input);
+        checkInputLength(result);
+        checkInputDuplicate(result);
+        return result;
+    }
+    static void checkInputLength(List input) throws Exception {
+        if (input.size() != 3) {
+            throw new Exception();
+        }
+    }
+    static void checkInputDuplicate(List input) throws Exception {
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        for (Object num: input) {
+            if (map.containsKey(num)) {
+                throw new Exception();
+            }
+            map.put((Integer) num, true);
+        }
+    }
+    static List<Integer> getInputFormat(String input) {
+        String[] stringArr = input.split("");
+        int [] intArr = Arrays.stream(stringArr).mapToInt(Integer::parseInt).toArray();
         List result = Arrays.stream(intArr).boxed().collect(Collectors.toList());
         return result;
     }
