@@ -8,6 +8,7 @@ import baseball.View.OutputView;
 
 public class Game {
 
+    private static final int THREESTRIKE = 3;
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private Number number = new Number();
@@ -32,6 +33,9 @@ public class Game {
             int strike = referee.isStrike(player.getUser(), player.getComputer());
             int ball = referee.isBall(player.getUser(), player.getComputer());
             outputView.printResultState(ball, strike);
+            if (strike == THREESTRIKE) {
+                pass = false;
+            }
         }
     }
 }
