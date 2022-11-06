@@ -14,17 +14,16 @@ import static baseball.view.OutputView.*;
 
 
 public class GameController {
-    public static void start(Scanner scanner){
-        startProgramView();
+    public static void start(){
         Game game = new Game();
-        playGame(scanner);
+        playGame();
     }
-    public static void playGame(Scanner scanner){
-        String input = InputView.inputNumbersView(scanner);
+    public static void playGame(){
+        String input = InputView.inputNumbersView();
         catchSpaceException(input);
         setUserNumber(input);
         countScore();
-        result(scanner);
+        result();
     }
     private static void countScore(){
         ball = 0;
@@ -33,21 +32,21 @@ public class GameController {
             countStrike(i);
         }
     }
-    private static void restart(Scanner scanner){
-        String input = inputRestartView(scanner);
+    private static void restart(){
+        String input = inputRestartView();
         catchWrongOrderRestartException(input);
         if(input.equals(RESTART)){
-            start(scanner);
+            start();
         }
     }
-    private static void result(Scanner scanner){
+    private static void result(){
         resultView(strike,ball);
         if(strike==3){
             threeStrike();
-            restart(scanner);
+            restart();
             return;
         }
-        playGame(scanner);
+        playGame();
     }
     private static void countStrike(int i){
         if(userNumbers.get(i).equals(computerNumbers.get(i))){
