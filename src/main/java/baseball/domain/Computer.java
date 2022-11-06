@@ -17,10 +17,14 @@ public class Computer {
         computerNumber.clear();
 
         while(computerNumber.size() < LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+            insertRandomNumber();
+        }
+    }
+
+    private void insertRandomNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if(!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
         }
     }
 
@@ -28,21 +32,31 @@ public class Computer {
         int strike = 0;
 
         for(int i=0; i< userNumber.size(); i++) {
-            if(computerNumber.get(i).equals(userNumber.get(i)))
-                strike++;
+            if(isStrike(i, userNumber.get(i))) strike++;
         }
 
         return strike;
+    }
+
+    private boolean isStrike(int index, int userNumber) {
+        if(computerNumber.get(index).equals(userNumber))
+            return true;
+        return false;
     }
 
     public int countBall(List<Integer> userNumber) {
         int ball = 0;
 
         for(int i=0; i< userNumber.size(); i++) {
-            if(!computerNumber.get(i).equals(userNumber.get(i)) && computerNumber.contains(userNumber.get(i)))
-                ball++;
+            if(isBall(i, userNumber.get(i))) ball++;
         }
 
         return ball;
+    }
+
+    private boolean isBall(int index, int userNumber) {
+        if(!computerNumber.get(index).equals(userNumber) && computerNumber.contains(userNumber))
+            return true;
+        return false;
     }
 }

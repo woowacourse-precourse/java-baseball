@@ -18,18 +18,14 @@ public class Game {
         int ball = 0;
         computer.initComputerNumber();
 
-        while(true) {
+        while(!isComplete(strike)) {
             List<Integer> userNumber = inputToIntegerList(View.inputView());
             ball = computer.countBall(userNumber);
             strike = computer.countStrike(userNumber);
             View.resultView(strike, ball);
-
-            if(isComplete(strike)) {
-                View.completeView(LENGTH);
-                break;
-            }
         }
 
+        View.completeView(LENGTH);
         String restart = View.endView();
         if(restart.equals("1")) start();
     }
