@@ -6,7 +6,7 @@ import java.util.function.Function;
 public enum InputValidation {
     BLANK_INPUT(
             "아무것도 입력하지 않았습니다.",
-            List.of(1,2),
+            List.of(1, 2),
             String::isBlank
     ),
     NOT_THREE_LENGTH(
