@@ -24,7 +24,7 @@ public class Application {
 
     private static void pickRandomNumber() {
         computer.clear();
-        while (computer.size() < 3){
+        while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             // 중복되지 않는 3자리 수 생성 및 computer 리스트에 저장
             if (!computer.contains(randomNumber)) {
@@ -38,7 +38,7 @@ public class Application {
         String input_number = String.valueOf(Console.readLine());
 
         input_number_list.clear();
-        for (int i = 0; i < input_number.length(); i++){
+        for (int i = 0; i < input_number.length(); i++) {
             input_number_list.add(input_number.charAt(i) - '0');
         }
 
@@ -55,16 +55,18 @@ public class Application {
 
     private static void countBall() {
 
-       ball = 0;
-       for (Integer element:input_number_list){
-           if (isBall(element))ball++;
-       }
+        ball = 0;
+        for (Integer element : input_number_list) {
+            if (isBall(element)) {
+                ball++;
+            }
+        }
 
-       if (ball!=0) {
-           System.out.print(ball+"볼 ");
-       }
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
 
-       countStrike();
+        countStrike();
     }
 
     private static boolean isBall(Integer element) {
@@ -74,8 +76,8 @@ public class Application {
     private static void countStrike() {
 
         strike = 0;
-        for (Integer element: input_number_list){
-            if (isStrike(element)){
+        for (Integer element : input_number_list) {
+            if (isStrike(element)) {
                 strike++;
             }
         }
@@ -107,7 +109,7 @@ public class Application {
         }
 
         // 1,2 이외의 수 입력 시 예외처리 변수값 조정 및 예외 throw
-        if (user_input <= 0 || user_input >= 3){
+        if (user_input <= 0 || user_input >= 3) {
             exception_is_thrown = 1;
             throw new IllegalArgumentException();
         }
