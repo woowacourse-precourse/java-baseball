@@ -19,9 +19,25 @@ public class Computer {
         }
     }
 
-    public String compareWithNumberOfPlayer(List<String> playersNumber) {
-        Map<String, Integer> strikeBallMap = new HashMap<>();
+    public String getResultMessage(List<String> playersNumber) {
         String result = "";
+        Map<String, Integer> strikeBallMap = compareWithNumberOfPlayer(playersNumber);
+        boolean haveBallCount = strikeBallMap.getOrDefault("볼", 0) != 0;
+        boolean haveStrikeCount = strikeBallMap.getOrDefault("스트라이크", 0) != 0;
+        if (haveBallCount) {
+            result += (strikeBallMap.get("볼") + "볼 ");
+        }
+        if (haveStrikeCount) {
+            result += (strikeBallMap.get("스트라이크") + "스트라이크");
+        }
+        if (result.equals("")) {
+            result = "낫싱";
+        }
+        return result;
+    }
+
+    public Map<String, Integer> compareWithNumberOfPlayer(List<String> playersNumber) {
+        Map<String, Integer> strikeBallMap = new HashMap<>();
         for (String numberOfPlayer : playersNumber) {
             int indexOfComputersNumber = computersNumber.indexOf(numberOfPlayer);
             int indexOfPlayersNumber = playersNumber.indexOf(numberOfPlayer);
@@ -36,16 +52,6 @@ public class Computer {
             }
         }
 
-        if (strikeBallMap.getOrDefault("볼", 0) != 0) {
-            result = result + (strikeBallMap.get("볼") + "볼 ");
-        }
-        if (strikeBallMap.getOrDefault("스트라이크", 0) != 0) {
-            result = result + (strikeBallMap.get("스트라이크") + "스트라이크");
-        }
-        if (result.equals("")) {
-            result = "낫싱";
-        }
-
-        return result;
+        return strikeBallMap;
     }
 }
