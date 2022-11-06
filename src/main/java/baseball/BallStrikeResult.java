@@ -1,23 +1,27 @@
 package baseball;
 
-import java.util.Objects;
-
-public class BallStrikeResult {
-    private int ballCount;
-    private int strikeCount;
+public final class BallStrikeResult {
+    private final int ballCount;
+    private final int strikeCount;
 
     public BallStrikeResult(int ballCount, int strikeCount) {
-
+        this.ballCount = ballCount;
+        this.strikeCount = strikeCount;
     }
 
     public boolean doesWin() {
-        // TODO 승리에 대한 기록인지 아닌지 반환
-        return true;
+        return (this.strikeCount == TargetNumber.TARGET_NUMBER_LENGTH);
     }
 
     public String toString() {
-        // TODO 결과에 대한 맞는 문자열 반환
-        return "";
+        if(ballCount == 0 && strikeCount == 0) {
+            return "낫싱";
+        } else if(ballCount == 0) {
+            return strikeCount + "스트라이크";
+        } else if(strikeCount == 0) {
+            return ballCount + "볼";
+        }
+        return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 
     @Override
