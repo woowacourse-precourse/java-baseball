@@ -108,6 +108,17 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+    static boolean check_again(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String input_str;
+        input_str = Console.readLine();
+        if (input_str.equals("1")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
