@@ -11,8 +11,9 @@ import camp.nextstep.edu.missionutils.*;
 class baseball {
 	
 	int user_num;
-    Scanner number = new Scanner(System.in);
-	int temp;
+	Scanner number = new Scanner(System.in);
+	Scanner repeat_Yes = new Scanner(System.in);
+	int repeat;
 	int result_num;
 	List<Integer> tmp_List = new ArrayList<>(3);
 	List<Integer> correct = new ArrayList<>(3);
@@ -23,7 +24,6 @@ class baseball {
 	}
 	
 	void getrandomNum() {
-		
 		while (correct.size() < 3) {
 		    int randomNumber = Randoms.pickNumberInRange(1, 9);
 		    if (!correct.contains(randomNumber)) {
@@ -33,8 +33,9 @@ class baseball {
 	}
 
 	
-	void repeat_game(){
-		
+	int repeat_game(){
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		return repeat_Yes.nextInt();
 	}
 	
 	void get_user_input_num() {
@@ -48,11 +49,16 @@ class baseball {
 	}
 	
 	void game() {
-		get_user_input_num();
+		do {
 		
-		System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		repeat_game();
+		getrandomNum();
+		get_user_input_num();
+		compare(tmp_List, correct);
+		result();
+		
+		//System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
+		}while(repeat_game() == 1);
+		
 	}
 	
 	void result() {
@@ -65,7 +71,7 @@ class baseball {
 		
 	}
 	
-	int compare(int result_num, int user_num) {
+	int compare(List<Integer> tmp_List2, List<Integer> correct2) {
 		System.out.println("3스트라이크");
 		return 1;
 	}
