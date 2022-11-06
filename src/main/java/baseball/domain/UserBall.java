@@ -36,10 +36,6 @@ public class UserBall {
 	}
 
 	public void updateStatus() {
-		if (this.strike == 3) {
-			this.status = this.strike + "스트라이크";
-			return;
-		}
 
 		if (this.strike == 0 && this.ball == 0) {
 			this.status = "낫싱";

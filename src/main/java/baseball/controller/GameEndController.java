@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.UserBall;
+import baseball.util.ViewConst;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -29,7 +30,7 @@ public class GameEndController {
 	}
 
 	private boolean is3Strike(UserBall userBall) {
-		return userBall.getStrike() == 3;
+		return userBall.getStatus().equals(ViewConst.HAS_3_STRIKE);
 	}
 
 	private void printUserBallStatus(UserBall userBall) {
