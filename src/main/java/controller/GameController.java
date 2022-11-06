@@ -36,12 +36,9 @@ public class GameController {
         computer.initCntStrikeBall();
     }
 
-    public boolean isRightNumOfUser2Computer() {
+    public void isRightNumOfUser2Computer() {
         int numInputOfUser = user.getNumSelecUser();
-        if (computer.isRealRightNumOfUser(numInputOfUser)) {
-            return true;
-        }
-        return false;
+        computer.isRealRightNumOfUser(numInputOfUser);
     }
 
     public boolean isEndGame() {
