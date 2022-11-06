@@ -25,13 +25,24 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        void 게임종료_후_재시작_2() {
+        void 게임_한번_후_종료() {
             assertRandomNumberInRangeTest(
                     () -> {
-                        run("357", "356", "536", "1", "567", "912", "589", "2");
-                        assertThat(output()).contains("2볼", "2볼 1스트라이크", "3스트라이크", "1스트라이크", "1볼", "3스트라이크", "게임 종료");
+                        run("357", "356", "536", "2");
+                        assertThat(output()).contains("2볼", "2볼 1스트라이크", "3스트라이크", "게임 종료");
                     },
-                    5, 3, 6, 5, 8, 9
+                    5, 3, 6
+            );
+        }
+
+        @Test
+        void 게임_두번_재시작_후_종료() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("357", "356", "536", "1", "567", "912", "589", "1", "123", "2");
+                        assertThat(output()).contains("2볼", "2볼 1스트라이크", "3스트라이크", "1스트라이크", "1볼", "3스트라이크", "3스트라이크", "게임 종료");
+                    },
+                    5, 3, 6, 5, 8, 9, 1, 2, 3
             );
         }
     }
