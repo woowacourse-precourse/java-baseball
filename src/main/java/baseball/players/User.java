@@ -1,24 +1,24 @@
 package baseball.players;
 
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class User {
+public class User implements Player {
 
-    private String userNumbers;
-
-    public User(String userNumbers) {
-        userNumbers = userNumbers.replaceAll(" ", "");
-        checkError(userNumbers);
-        this.userNumbers = userNumbers;
-    }
-
-    public String getUserNumbers() {
-        return userNumbers;
+    @Override
+    public String generateNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        input = input.replaceAll(" ", "");
+        checkError(input);
+        return input;
     }
 
     private void checkError(String userNumbers) throws IllegalArgumentException {
+
         final String REGEX = "[0-9]+";
         int length = userNumbers.length();
 
@@ -36,4 +36,5 @@ public class User {
         if (!(duplicateCheck.size() == 3))
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
     }
+
 }
