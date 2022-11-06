@@ -23,9 +23,8 @@ public class Application {
     }
 
     public static void executionGame(){
+        List<Integer> computer = decision();
         while(true) {
-            List<Integer> computer = decision();
-
             System.out.print("숫자를 입력해주세요 :");
 
             List<Integer> user = validationAndConvert(Console.readLine());
