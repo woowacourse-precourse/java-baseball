@@ -16,8 +16,8 @@ public class PlayerNumber {
     private List<Integer> parseInput(String input) {
         input = Utils.deleteAllSpace(input);
         return Arrays.stream(input.split(""))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public List<Integer> get() {

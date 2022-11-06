@@ -14,11 +14,11 @@ class GameResultTest {
         GameResult zeroStrike = new GameResult(List.of(1, 2, 3), List.of(2, 3, 1));
 
         Assertions.assertThat(threeStrike.getStrikeCount())
-            .isEqualTo(3);
+                .isEqualTo(3);
         Assertions.assertThat(oneStrike.getStrikeCount())
-            .isEqualTo(1);
+                .isEqualTo(1);
         Assertions.assertThat(zeroStrike.getStrikeCount())
-            .isEqualTo(0);
+                .isEqualTo(0);
     }
 
     @Test
@@ -28,11 +28,11 @@ class GameResultTest {
         GameResult threeBall = new GameResult(List.of(1, 2, 3), List.of(2, 3, 1));
 
         Assertions.assertThat(zeroBall.getBallCount())
-            .isEqualTo(0);
+                .isEqualTo(0);
         Assertions.assertThat(twoBall.getBallCount())
-            .isEqualTo(2);
+                .isEqualTo(2);
         Assertions.assertThat(threeBall.getBallCount())
-            .isEqualTo(3);
+                .isEqualTo(3);
     }
 
     @Test
@@ -41,9 +41,9 @@ class GameResultTest {
         GameResult something = new GameResult(List.of(1, 2, 3), List.of(4, 5, 1));
 
         Assertions.assertThat(nothing.isNothing())
-            .isTrue();
+                .isTrue();
         Assertions.assertThat(something.isNothing())
-            .isFalse();
+                .isFalse();
     }
 
     @Test
@@ -52,8 +52,8 @@ class GameResultTest {
         GameResult twoStrike = new GameResult(List.of(1, 2, 3), List.of(1, 2, 4));
 
         Assertions.assertThat(threeStrike.isThreeStrike())
-            .isTrue();
+                .isTrue();
         Assertions.assertThat(twoStrike.isThreeStrike())
-            .isFalse();
+                .isFalse();
     }
 }

@@ -29,8 +29,8 @@ public class InputView {
 
     private static boolean hasDuplicatedNum(String input) {
         return Arrays.stream(input.split(""))
-            .distinct()
-            .count() != NUM_SIZE;
+                .distinct()
+                .count() != NUM_SIZE;
     }
 
     public static boolean requestIsReGame() {

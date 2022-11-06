@@ -11,8 +11,8 @@ class PlayerNumberTest {
         PlayerNumber playerNumber456 = new PlayerNumber(" 4 5 6 ");
 
         Assertions.assertThat(playerNumber123.get())
-            .contains(1, 2, 3);
+                .contains(1, 2, 3);
         Assertions.assertThat(playerNumber456.get())
-            .contains(6, 5, 4);
+                .contains(6, 5, 4);
     }
 }
