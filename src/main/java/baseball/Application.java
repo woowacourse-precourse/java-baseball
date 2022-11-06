@@ -32,9 +32,7 @@ public class Application {
 
                 // TODO: 5. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
                 System.out.println(OPTION_MESSAGE);
-                User.setGameOption();
-
-                status = Status.getStatusByGameOption(user.getGameOption());
+                changeStatusByOption();
             }
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException();
@@ -84,6 +82,20 @@ public class Application {
                 result = Result.getResultByCode(score);
                 System.out.println(result.getMessage());
             }
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /*
+     * 사용자의 입력으로 게임의 상태 변경
+     *
+     * @return void
+     * */
+    private static void changeStatusByOption() {
+        try {
+            User.setGameOption();
+            status = Status.getStatusByGameOption(user.getGameOption());
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException();
         }

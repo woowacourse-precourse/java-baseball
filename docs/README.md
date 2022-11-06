@@ -20,7 +20,7 @@
 1. TODO 2, 3, 5 기준으로 메소드 추출
    - [x] `initGame()`
    - [x] `playGameUntil3S()`
-   - [ ] `changeStatusByOption()`
+   - [x] `changeStatusByOption()`
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
