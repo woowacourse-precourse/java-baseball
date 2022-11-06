@@ -3,7 +3,7 @@ package baseball.exception;
 import java.util.List;
 
 import static baseball.exception.ErrorMessage.DUPLICATE_NUMBER;
-import static baseball.exception.ErrorMessage.NUMBER_SIZE;
+import static baseball.exception.ErrorMessage.INPUT_SIZE;
 
 public class PlayerException {
     private static final int INPUT_NUMBER_SIZE = 3;
@@ -44,7 +44,7 @@ public class PlayerException {
     private void numberSizeException(List<Integer> playerNumbers) throws IllegalArgumentException {
         if (playerNumbers.size() != INPUT_NUMBER_SIZE) {
             throw new IllegalArgumentException(
-                    NUMBER_SIZE.getErrorMessage());
+                    INPUT_SIZE.getErrorMessage());
         }
     }
 }

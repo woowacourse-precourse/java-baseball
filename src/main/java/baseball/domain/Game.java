@@ -38,9 +38,19 @@ public class Game {
 
     private int setRunCode() {
         instruction.printRunCode();
-        String stringRunCode = Console.readLine();
-        gameException.runCodeLengthException(stringRunCode);
-        return Integer.parseInt(stringRunCode);
+        String stringRunCode = inputRunCode(Console.readLine());
+        return toInt(stringRunCode);
+    }
+
+    private String inputRunCode(String runCode) {
+        gameException.runCodeLengthException(runCode);
+        return runCode;
+    }
+
+    private int toInt(String runCode) {
+        int intRunCode = Integer.parseInt(runCode);
+        gameException.runCodeValidation(intRunCode);
+        return intRunCode;
     }
 
     private void setComputer() {
