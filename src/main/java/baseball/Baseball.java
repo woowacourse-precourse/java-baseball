@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Hint;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -7,11 +8,13 @@ import baseball.view.OutputView;
 public class Baseball {
     private final Computer computer;
     private final Player player;
+    private final Hint hint;
     private final InputValidator inputValidator;
 
     Baseball() {
         computer = new Computer();
         player = new Player();
+        hint = new Hint();
         inputValidator = new InputValidator();
     }
 
@@ -40,13 +43,13 @@ public class Baseball {
     }
 
     private void printHintMessage() {
-        player.setHintCount(computer.getNumbers(), player.getNumbers());
-        String hintMessage = player.getHintMessage();
+        hint.setCount(computer.getNumbers(), player.getNumbers());
+        String hintMessage = hint.getMessage();
         OutputView.printHintMessage(hintMessage);
     }
 
     private boolean isGameOver() {
-        if (player.isMaxStrike()) {
+        if (hint.isMaxStrike()) {
             if (isStateShutDown()) {
                 OutputView.printGameOver();
                 return true;
