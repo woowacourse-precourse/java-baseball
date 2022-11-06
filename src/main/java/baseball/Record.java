@@ -36,13 +36,13 @@ public class Record {
         String record = "";
 
         if (ballCount > ZERO && strikeCount > ZERO) {
-            record = ballCount + "볼 " + strikeCount + "스트라이크";
+            record = ballCount + BALL + " " + strikeCount + STRIKE;
         } else if (ballCount > ZERO) {
-            record = ballCount + "볼";
+            record = ballCount + BALL;
         } else if (strikeCount > ZERO) {
-            record = strikeCount + "스트라이크";
+            record = strikeCount + STRIKE;
         } else if (ballCount == ZERO && strikeCount == ZERO) {
-            record = "낫싱";
+            record = NOTHING;
         }
 
         System.out.println(record);

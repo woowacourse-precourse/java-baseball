@@ -61,59 +61,6 @@ public class Game {
         return game;
     }
 
-    private static List<Integer> getComputerNumbers() {
-        List<Integer> computer = new ArrayList<>();
-
-        while (computer.size() < TOTAL_SIZE) {
-            int randomNumber = getPickNumber();
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-    private static void printAgainQuestion() {
-        System.out.println(AGAIN_QUESTION_MESSAGE);
-    }
-    private static boolean checkSuccess(int strikeCount) {
-
-        boolean success = false;
-
-        if (strikeCount == TOTAL_SIZE) {
-            System.out.println(SUCCESS_MESSAGE);
-            success = true;
-        }
-
-        return success;
-    }
-    private static boolean checkAgainGame() {
-        int toBeContinue;
-
-        try {
-            toBeContinue = Integer.valueOf(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-
-        System.out.println(toBeContinue);
-
-        if (toBeContinue != AGAIN && toBeContinue != EXIT) {
-            throw new IllegalArgumentException();
-        }
-
-        boolean again = false;
-
-        if (toBeContinue == AGAIN) {
-            again = true;
-        }
-
-        return again;
-    }
-    private static int getPickNumber() {
-        int number = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-        return number;
-    }
-
     private static List<Integer> getUserNumbers(String input) {
         List<Integer> user = new ArrayList<>();
 
@@ -126,9 +73,76 @@ public class Game {
         return user;
     }
 
+    private static List<Integer> getComputerNumbers() {
+        List<Integer> computer = new ArrayList<>();
+
+        while (computer.size() < TOTAL_SIZE) {
+            int randomNumber = getPickNumber();
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
+    private static int getPickNumber() {
+        int number = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+        return number;
+    }
+
+    private static void printAgainQuestion() {
+        System.out.println(AGAIN_QUESTION_MESSAGE);
+    }
+
+    private static boolean checkSuccess(int strikeCount) {
+
+        boolean success = false;
+
+        if (strikeCount == TOTAL_SIZE) {
+            System.out.println(SUCCESS_MESSAGE);
+            success = true;
+        }
+
+        return success;
+    }
+
+    private static boolean checkAgainGame() {
+
+        String input = Console.readLine();
+        checkIsNumberError(input);
+
+        int toBeContinue = Integer.valueOf(input);
+        System.out.println(toBeContinue);
+
+        checkIsContinueError(toBeContinue);
+
+        boolean again = false;
+
+        if (toBeContinue == AGAIN) {
+            again = true;
+        }
+
+        return again;
+    }
+
+
     private static void runException(String input) {
 
         if (checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkIsContinueError(int toBeContinue) {
+        if (toBeContinue != AGAIN && toBeContinue != EXIT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkIsNumberError(String input) {
+        try {
+            int value = Integer.valueOf(input);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
