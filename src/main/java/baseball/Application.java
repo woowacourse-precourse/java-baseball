@@ -38,15 +38,27 @@ public class Application {
 
         // 사용자로 부터 입력을 받는다.
         // TODO 입력값 검증
-        int userInput = Integer.parseInt(Console.readLine());
+        String userInput = Console.readLine();
+
+        // 입력 값의 길이가 1이 아니라면 예외 발생
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+
+        // 1 or 2 의 문자가 아니라면 -> 예외 발생
+        if (!(userInput.charAt(0) == '1' || userInput.charAt(0) == '2')) {
+            throw new IllegalArgumentException();
+        }
+
+        int inputNumber = Integer.parseInt(userInput);
 
         // 1이면 -> 계속하기
-        if (userInput == 1) {
+        if (inputNumber == 1) {
             return false;
         }
 
         // 2이면 -> 그만두기
-        else if (userInput == 2) {
+        else if (inputNumber == 2) {
             return true;
         }
 
