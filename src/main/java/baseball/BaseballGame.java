@@ -8,15 +8,8 @@ import java.util.List;
 public class BaseballGame {
     private static final String GAME_START_COMMENT = "숫자 야구 게임을 시작합니다.\n";
     private static final String NUMBER_INPUT_COMMENT = "숫자를 입력해주세요 : ";
-    private static final String PRINT_BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
-    private static final String PRINT_STRIKE_COUNT = "%d스트라이크\n";
-    private static final String PRINT_BALL_COUNT = "%d볼\n";
-    private static final String NOTHING = "낫싱\n";
-    private static final String GAME_TERMINATE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
 
     private static final char INTEGER_MAKER = '0';
-    private static final int STRIKE_NUMBER = 3;
-    private static final int ZERO = 0;
 
     public void playGame() throws IllegalArgumentException {
         Boolean isRunning = true;
@@ -35,7 +28,7 @@ public class BaseballGame {
             int ballCount = getBallCount(userNumbers, computerNumbers);
             int strikeCount = getStrikeCount(userNumbers, computerNumbers);
 
-            isRunning = printGameResult(ballCount, strikeCount);
+            isRunning = OutputView.printGameResult(ballCount, strikeCount);
         }
 
     }
@@ -96,61 +89,6 @@ public class BaseballGame {
         }
 
         return 0;
-    }
-
-    private Boolean printGameResult(int ballCount, int strikeCount) {
-        if (strikeCount == STRIKE_NUMBER) {
-            return printThreeStrikeResult();
-        }
-        
-        if (strikeCount > ZERO && ballCount > ZERO) {
-            return printBallAndStrikeResult(strikeCount, ballCount);
-        }
-
-        if (strikeCount > ZERO && ballCount == ZERO) {
-            return printStrikeResult(strikeCount);
-        }
-
-        if (strikeCount == ZERO && ballCount > ZERO) {
-            return printBallResult(ballCount);
-        }
-
-        if (strikeCount == ZERO && ballCount == ZERO) {
-            return printNothingResult();
-        }
-
-        return true;
-    }
-
-    private Boolean printBallAndStrikeResult(int strikeCount, int ballCount) {
-        System.out.printf(PRINT_BALL_AND_STRIKE, ballCount, strikeCount);
-
-        return true;
-    }
-
-    private Boolean printStrikeResult(int strikeCount) {
-        System.out.printf(PRINT_STRIKE_COUNT, strikeCount);
-
-        return true;
-    }
-
-    private Boolean printBallResult(int ballCount) {
-        System.out.printf(PRINT_BALL_COUNT, ballCount);
-
-        return true;
-    }
-
-    private Boolean printNothingResult() {
-        System.out.print(NOTHING);
-
-        return true;
-    }
-
-    private boolean printThreeStrikeResult() {
-        System.out.printf(PRINT_STRIKE_COUNT, STRIKE_NUMBER);
-        System.out.printf(GAME_TERMINATE, STRIKE_NUMBER);
-
-        return false;
     }
 
 }
