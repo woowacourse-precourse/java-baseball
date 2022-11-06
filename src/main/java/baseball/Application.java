@@ -16,9 +16,10 @@ public class Application {
     static void startGame() {
         message = new Message();
         message.startGameMessage();
-
-        setGame();
-        playGame();
+        do {
+            setGame();
+            playGame();
+        } while (message.restartGameMessage());
     }
 
     static void setGame() {
