@@ -74,7 +74,7 @@ public class Application {
 
     public static String convertArrayListToString(List<Integer> numberList) {
         StringBuilder sb = new StringBuilder();
-        for (int number: numberList) {
+        for (int number : numberList) {
             sb.append(number);
         }
         return sb.toString();
@@ -110,6 +110,16 @@ public class Application {
             }
         }
         return ball;
+    }
+
+    public static int getStrikeCount(String computerNumber, String userNumber) {
+        int strike = 0;
+        for (int index = 0; index < computerNumber.length(); index++) {
+            if (computerNumber.charAt(index) == userNumber.charAt(index)) {
+                strike += 1;
+            }
+        }
+        return strike;
     }
 
 }

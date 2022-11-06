@@ -154,4 +154,11 @@ class BaseballTest {
     void getBallCount_ball_몇인지_확인(String input1, String input2, int result) {
         assertThat(getBallCount(input1, input2)).isEqualTo(result);
     }
+
+    @DisplayName("get strike count")
+    @ParameterizedTest(name = "{index}. {displayName} user={0} computer={1} strike={2}")
+    @CsvSource({"'123','456',0", "'123','132',1", "'123','153',2", "'123','123',3"})
+    void getStrikeCount_strike_몇인지_확인(String input1, String input2, int result) {
+        assertThat(getStrikeCount(input1, input2)).isEqualTo(result);
+    }
 }
