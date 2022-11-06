@@ -13,6 +13,12 @@ public class GameSimulation {
     private Integer ball;
     private static final boolean INVALID = false;
 
+    public GameSimulation(Computer computer) {
+        this.computer = computer;
+        this.strike = 0;
+        this.ball = 0;
+    }
+
     public void playGame() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
