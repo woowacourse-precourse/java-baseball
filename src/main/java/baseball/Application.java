@@ -42,6 +42,8 @@ public class Application {
 
             int num = Integer.parseInt(Console.readLine());
 
+            checkInput(num);
+
             answer = checkNums(computer, answer, num/100, num/10%10, num%10);
 
             printAnswer(answer);
@@ -52,6 +54,17 @@ public class Application {
                 int end = Integer.parseInt(Console.readLine());
                 return checkFinish(end);
             }
+        }
+    }
+
+    public static void checkInput(int num) {
+        int hund = num / 100, tens = num / 10 % 10, units = num % 10;
+
+        if (hund == tens || hund == units || tens == units) {
+            throw new IllegalArgumentException();
+        }
+        if (num < 100 || num > 1000) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -97,8 +110,10 @@ public class Application {
     public static boolean checkFinish(int finish) {
         if (finish == 2) {
             return true;
-        } else {
+        } else if (finish == 1) {
             return false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
