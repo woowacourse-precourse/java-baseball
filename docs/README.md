@@ -36,7 +36,7 @@
 - [x] checkedBallNumbers를 리턴
 
 ## (Map)calculatedStrikeBallNumber(List computerNumbers,List userNumbers)
-- [ ] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
+- [x] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
 - [ ] strikeNumber이 0보다 큰고 3보다 작은지 확인
 - [ ] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ballNumber - strikeNumber로 초기화
 - [ ] strikeNumber이 3인지 확인
