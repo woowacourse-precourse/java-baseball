@@ -103,5 +103,12 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        boolean quitGame;
+        while (true) {
+            quitGame = playBaseball();
+            if (quitGame) {
+                break;
+            }
+        }
     }
 }
