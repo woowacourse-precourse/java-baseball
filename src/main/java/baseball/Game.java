@@ -1,10 +1,8 @@
 package baseball;
 
-import static baseball.Constants.DEFAULT_NUMBER_COUNT;
-import static baseball.Constants.Messages;
-import static baseball.Constants.PROCESS_CONTINUE;
-import static baseball.Constants.PROCESS_FINISH;
-import static baseball.Constants.Result;
+import static baseball.Constants.*;
+import static baseball.InputChecker.*;
+import baseball.Constants.EndCommand;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -144,10 +142,10 @@ public class Game extends abstracts.Game {
                 .get(endCommand)
                 .get();
     }
-    private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
+    private final Map<EndCommand, Supplier<Boolean>> endCommandMapper = new HashMap<>();
     {
-        optionMapper.put("1", this::restartProcess);
-        optionMapper.put("2", this::endProcess);
+        endCommandMapper.put(EndCommand.RESTART, this::restartProcess);
+        endCommandMapper.put(EndCommand.FINISH, this::endProcess);
     }
     private Boolean restartProcess() {
         this.initialize();
