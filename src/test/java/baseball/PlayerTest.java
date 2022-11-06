@@ -1,8 +1,9 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import static baseball.Player.getPlayer;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PlayerTest {
 
@@ -13,7 +14,7 @@ public class PlayerTest {
         String userInput = "1b2";
         // when, then
         assertThatThrownBy(() -> {
-            player.checkNumber(userInput);
+            getPlayer().checkNumber(userInput);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만 입력 가능합니다.");
     }
@@ -24,7 +25,7 @@ public class PlayerTest {
         String userInput = "1234";
         // when, then
         assertThatThrownBy(() -> {
-            player.checkLength(userInput);
+            getPlayer().checkLength(userInput);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 숫자만 입력 가능합니다.");
     }
@@ -35,7 +36,7 @@ public class PlayerTest {
         String userInput = "155";
         // when, then
         assertThatThrownBy(() -> {
-            player.checkDuplication(userInput);
+            getPlayer().checkDuplication(userInput);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 3자리 숫자만 입력이 가능합니다.");
     }
