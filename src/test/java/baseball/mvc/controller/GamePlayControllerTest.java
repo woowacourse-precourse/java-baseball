@@ -40,8 +40,10 @@ class GamePlayControllerTest {
 
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
 
-                Assertions.assertThat(gameStatus).isSameAs(GameStatus.END);
-                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class)).isNotNull();
+                Assertions.assertThat(gameStatus)
+                        .isSameAs(GameStatus.END);
+                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                        .isNotNull();
             }
 
             @ParameterizedTest
@@ -66,7 +68,8 @@ class GamePlayControllerTest {
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
 
                 Assertions.assertThat(gameStatus).isSameAs(GameStatus.PLAY);
-                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class)).isNotNull();
+                Assertions.assertThat(model.getAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                        .isNotNull();
             }
 
             @ParameterizedTest
@@ -85,10 +88,9 @@ class GamePlayControllerTest {
                 GameComputer computer = GameComputerFactory.createFakeGameComputer(strike, ball);
                 Model model = new Model();
 
-                Assertions
-                    .assertThatThrownBy(() -> controller.process(computer, playerAnswer, model))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(TOO_MANY_ANSWER);
+                Assertions.assertThatThrownBy(() -> controller.process(computer, playerAnswer, model))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(TOO_MANY_ANSWER);
             }
         }
     }

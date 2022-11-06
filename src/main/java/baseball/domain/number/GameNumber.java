@@ -17,6 +17,7 @@ public class GameNumber {
     public GameNumber(int number, int index) {
         validateIndex(index);
         validateNumber(number);
+
         this.number = number;
         this.index = index;
     }
@@ -24,6 +25,7 @@ public class GameNumber {
     public GameNumber(char numberCharacter, int index) {
         validateIndex(index);
         validateCharacterNumber(numberCharacter);
+
         this.number = numberCharacter - DEFAULT_NUMBER_CHAR_VALUE;
         this.index = index;
     }
@@ -41,8 +43,7 @@ public class GameNumber {
     }
 
     private boolean validateNumberRange(int number) {
-        return GameNumberConst.MIN_GAME_NUMBER_VALUE <= number
-            && number <= GameNumberConst.MAX_GAME_NUMBER_VALUE;
+        return GameNumberConst.MIN_GAME_NUMBER_VALUE <= number && number <= GameNumberConst.MAX_GAME_NUMBER_VALUE;
     }
 
     private void validateCharacterNumber(char numberCharacter) {
@@ -52,8 +53,7 @@ public class GameNumber {
     }
 
     private boolean validateCharacterNumberRange(char numberCharacter) {
-        return MIN_GAME_NUMBER_CHAR_VALUE <= numberCharacter
-            && numberCharacter <= MAX_GAME_NUMBER_CHAR_VALUE;
+        return MIN_GAME_NUMBER_CHAR_VALUE <= numberCharacter && numberCharacter <= MAX_GAME_NUMBER_CHAR_VALUE;
     }
 
     @Override

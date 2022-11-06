@@ -52,10 +52,9 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(strike, ball);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameResultViewTestUtils
-                    .getMessage(GameResultView.STRIKE_AND_BALL, gameResult, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameResultViewTestUtils
+                            .getMessage(GameResultView.STRIKE_AND_BALL, gameResult, testOut));
         }
 
         @ParameterizedTest
@@ -65,10 +64,9 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(0L, ball);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameResultViewTestUtils
-                    .getMessage(GameResultView.ONLY_BALL, gameResult, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameResultViewTestUtils
+                            .getMessage(GameResultView.ONLY_BALL, gameResult, testOut));
         }
 
         @ParameterizedTest
@@ -78,10 +76,9 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(strike, 0L);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameResultViewTestUtils
-                    .getMessage(GameResultView.ONLY_STRIKE, gameResult, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameResultViewTestUtils
+                            .getMessage(GameResultView.ONLY_STRIKE, gameResult, testOut));
         }
 
         @Test
@@ -90,10 +87,9 @@ class GameResultViewTest {
             GameResult gameResult = new GameResult(0L, 0L);
             GameResultView.printGameResultLog(gameResult);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameResultViewTestUtils
-                    .getMessage(GameResultView.NOTHING, gameResult, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameResultViewTestUtils
+                            .getMessage(GameResultView.NOTHING, gameResult, testOut));
         }
     }
 }

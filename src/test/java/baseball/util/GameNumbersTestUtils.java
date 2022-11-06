@@ -17,15 +17,15 @@ public final class GameNumbersTestUtils {
     }
 
     public static List<GameNumber> getGameNumberList(GameNumbers gameNumbers) {
-        List<Field> fields = Arrays
-            .stream(gameNumbers.getClass().getDeclaredFields())
-            .filter(field -> field.getName().equals(GAME_NUMBERS_FIELD_NAME))
-            .collect(Collectors.toList());
+        List<Field> fields = Arrays.stream(gameNumbers.getClass().getDeclaredFields())
+                .filter(field -> field.getName().equals(GAME_NUMBERS_FIELD_NAME))
+                .collect(Collectors.toList());
 
         Field gameNumberList = fields.get(FIELD_INDEX);
 
         try {
             gameNumberList.setAccessible(true);
+
             return (List<GameNumber>) gameNumberList.get(gameNumbers);
         } catch (Exception e) {
             return Collections.emptyList();

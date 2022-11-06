@@ -8,9 +8,8 @@ public final class GameStatusTestUtils {
     }
 
     public static GameStatus findGameStatusByName(String name) {
-        return Arrays
-            .stream(GameStatus.values())
-            .filter(gameStatus -> gameStatus.name().equals(name))
-            .findAny().orElseThrow();
+        return Arrays.stream(GameStatus.values())
+                .filter(gameStatus -> gameStatus.name().equals(name))
+                .findAny().orElseThrow();
     }
 }

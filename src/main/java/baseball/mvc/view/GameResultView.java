@@ -24,9 +24,7 @@ public enum GameResultView {
 
     private static String getGameResultLog(GameResult gameResult) {
         if (gameResult.isStrikeAndBall()) {
-            return String.format(GameResultView.STRIKE_AND_BALL.message,
-                gameResult.getBall(),
-                gameResult.getStrike());
+            return String.format(GameResultView.STRIKE_AND_BALL.message, gameResult.getBall(), gameResult.getStrike());
         }
         if (gameResult.isOnlyStrike()) {
             return String.format(GameResultView.ONLY_STRIKE.message, gameResult.getStrike());

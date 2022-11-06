@@ -27,9 +27,8 @@ class GameSettingsControllerTest {
             GameStatus gameStatus = controller.process(model);
 
             Assertions.assertThat(gameStatus).isSameAs(GameStatus.PLAY);
-            Assertions
-                .assertThat(model.getAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
-                .isNotNull();
+            Assertions.assertThat(model.getAttribute(GameModelKeyConst.COMPUTER_KEY, GameComputer.class))
+                    .isNotNull();
         }
     }
 }

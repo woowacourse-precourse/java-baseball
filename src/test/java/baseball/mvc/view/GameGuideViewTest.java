@@ -37,9 +37,8 @@ class GameGuideViewTest {
         void start_log_test() {
             GameGuideView.START.printGuideLog();
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.START, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.START, testOut));
         }
 
         @Test
@@ -47,9 +46,8 @@ class GameGuideViewTest {
         void end_log_test() {
             GameGuideView.END.printGuideLog();
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.END, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.END, testOut));
         }
     }
 }

@@ -22,26 +22,24 @@ public class GameNumbers {
 
         while (uniqueNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(
-                GameNumberConst.MIN_GAME_NUMBER_VALUE,
-                GameNumberConst.MAX_GAME_NUMBER_VALUE);
+                    GameNumberConst.MIN_GAME_NUMBER_VALUE,
+                    GameNumberConst.MAX_GAME_NUMBER_VALUE);
             uniqueNumbers.add(randomNumber);
         }
 
         AtomicInteger index = new AtomicInteger();
 
-        this.gameNumbers = uniqueNumbers
-            .stream()
-            .map(uniqueNumber -> new GameNumber(uniqueNumber, index.getAndIncrement()))
-            .collect(Collectors.toList());
+        this.gameNumbers = uniqueNumbers.stream()
+                .map(uniqueNumber -> new GameNumber(uniqueNumber, index.getAndIncrement()))
+                .collect(Collectors.toList());
     }
 
     public GameNumbers(String playerAnswer) {
         validatePlayerAnswer(playerAnswer);
 
-        this.gameNumbers = IntStream
-            .range(0, GameNumberConst.MAX_GAME_NUMBER_SIZE)
-            .mapToObj(index -> new GameNumber(playerAnswer.charAt(index), index))
-            .collect(Collectors.toList());
+        this.gameNumbers = IntStream.range(0, GameNumberConst.MAX_GAME_NUMBER_SIZE)
+                .mapToObj(index -> new GameNumber(playerAnswer.charAt(index), index))
+                .collect(Collectors.toList());
     }
 
     private void validatePlayerAnswer(String playerAnswer) {
@@ -55,35 +53,24 @@ public class GameNumbers {
     }
 
     private boolean duplicateString(String playerAnswer) {
-        return Arrays
-            .stream(playerAnswer.split(PLAYER_INPUT_SPLIT_VALUE))
-            .distinct()
-            .count() != GameNumberConst.MAX_GAME_NUMBER_SIZE;
+        return Arrays.stream(playerAnswer.split(PLAYER_INPUT_SPLIT_VALUE))
+                .distinct()
+                .count() != GameNumberConst.MAX_GAME_NUMBER_SIZE;
     }
 
     public long calculateStrike(GameNumbers playerAnswer) {
-        return playerAnswer.gameNumbers
-            .stream()
-            .filter(this::isStrike)
-            .count();
+        return playerAnswer.gameNumbers.stream().filter(this::isStrike).count();
     }
 
     public long calculateBall(GameNumbers playerAnswer) {
-        return playerAnswer.gameNumbers
-            .stream()
-            .filter(this::isBall)
-            .count();
+        return playerAnswer.gameNumbers.stream().filter(this::isBall).count();
     }
 
     private boolean isStrike(GameNumber playerNumber) {
-        return gameNumbers
-            .stream()
-            .anyMatch(gameNumber -> gameNumber.equals(playerNumber));
+        return gameNumbers.stream().anyMatch(gameNumber -> gameNumber.equals(playerNumber));
     }
 
     private boolean isBall(GameNumber playerNumber) {
-        return gameNumbers
-            .stream()
-            .anyMatch(gameNumber -> gameNumber.equalsWithoutIndex(playerNumber));
+        return gameNumbers.stream().anyMatch(gameNumber -> gameNumber.equalsWithoutIndex(playerNumber));
     }
 }

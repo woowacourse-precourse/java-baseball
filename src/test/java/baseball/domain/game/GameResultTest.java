@@ -45,10 +45,9 @@ class GameResultTest {
         )
         @DisplayName("만약 합이 4 이상인 strike, ball가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void too_large_size_exception(long strike, long ball) {
-            Assertions
-                .assertThatThrownBy(() -> new GameResult(strike, ball))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(TOO_MANY_ANSWER);
+            Assertions.assertThatThrownBy(() -> new GameResult(strike, ball))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(TOO_MANY_ANSWER);
         }
     }
 

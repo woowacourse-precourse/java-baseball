@@ -38,10 +38,9 @@ class GameInputViewTest {
         void play_input_log_test() {
             GameInputView.printGameInputLog(GameStatus.PLAY);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameInputViewTestUtils
-                    .getMessage(GameInputView.ANSWER_INPUT, System.out::print, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameInputViewTestUtils
+                            .getMessage(GameInputView.ANSWER_INPUT, System.out::print, testOut));
         }
 
         @Test
@@ -49,10 +48,9 @@ class GameInputViewTest {
         void end_input_log_test() {
             GameInputView.printGameInputLog(GameStatus.END);
 
-            Assertions
-                .assertThat(testOut.toString())
-                .isEqualTo(GameInputViewTestUtils
-                    .getMessage(GameInputView.RESTART_INPUT, System.out::println, testOut));
+            Assertions.assertThat(testOut.toString())
+                    .isEqualTo(GameInputViewTestUtils
+                            .getMessage(GameInputView.RESTART_INPUT, System.out::println, testOut));
         }
 
     }

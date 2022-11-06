@@ -17,10 +17,9 @@ public final class DataMapTestUtils {
     }
 
     public static Map<String, Object> getModelDataMap(DataMap model) {
-        List<Field> fields = Arrays
-            .stream(DataMap.class.getDeclaredFields())
-            .filter(field -> field.getName().equals(DATA_MAP_FIELD_NAME))
-            .collect(Collectors.toList());
+        List<Field> fields = Arrays.stream(DataMap.class.getDeclaredFields())
+                .filter(field -> field.getName().equals(DATA_MAP_FIELD_NAME))
+                .collect(Collectors.toList());
 
         Field dataMap = fields.get(FIELD_INDEX);
 

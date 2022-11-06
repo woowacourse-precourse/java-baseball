@@ -53,20 +53,18 @@ class GameNumbersTest {
         @ValueSource(strings = {"112", "1", "1234"})
         @DisplayName("만약 각 문자가 중복된 값이나 길이가 3이 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerInput) {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumbers(playerInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_INPUT);
+            Assertions.assertThatThrownBy(() -> new GameNumbers(playerInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_INPUT);
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"012", "a12", "1 3"})
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(String playerInput) {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumbers(playerInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_NUMBER);
+            Assertions.assertThatThrownBy(() -> new GameNumbers(playerInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_NUMBER);
         }
     }
 

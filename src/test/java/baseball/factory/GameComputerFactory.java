@@ -20,10 +20,9 @@ public final class GameComputerFactory {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new GameNumbers(computerNumberString);
 
-        List<Field> fields = Arrays
-            .stream(computer.getClass().getDeclaredFields())
-            .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
-            .collect(Collectors.toList());
+        List<Field> fields = Arrays.stream(computer.getClass().getDeclaredFields())
+                .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
+                .collect(Collectors.toList());
 
         Field answer = fields.get(FIELD_INDEX);
         answer.setAccessible(true);
@@ -40,10 +39,9 @@ public final class GameComputerFactory {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new StubGameNumbers(returnStrike, returnBall);
 
-        List<Field> fields = Arrays
-            .stream(computer.getClass().getDeclaredFields())
-            .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
-            .collect(Collectors.toList());
+        List<Field> fields = Arrays.stream(computer.getClass().getDeclaredFields())
+                .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
+                .collect(Collectors.toList());
 
         Field answer = fields.get(FIELD_INDEX);
         answer.setAccessible(true);

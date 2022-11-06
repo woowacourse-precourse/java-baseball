@@ -9,6 +9,7 @@ public class GameSettingsController {
 
     public GameStatus process(Model model) {
         model.addAttribute(GameModelKeyConst.COMPUTER_KEY, new GameComputer());
+
         return GameStatus.PLAY;
     }
 }

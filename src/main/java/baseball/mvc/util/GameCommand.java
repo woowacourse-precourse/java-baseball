@@ -19,11 +19,10 @@ public enum GameCommand {
     }
 
     public static GameStatus commandGameStatus(String inputCommand) {
-        return Arrays
-            .stream(GameCommand.values())
-            .filter(gameCommand -> gameCommand.command.equals(inputCommand))
-            .findAny()
-            .map(gameCommand -> gameCommand.gameStatus)
-            .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
+        return Arrays.stream(GameCommand.values())
+                .filter(gameCommand -> gameCommand.command.equals(inputCommand))
+                .findAny()
+                .map(gameCommand -> gameCommand.gameStatus)
+                .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
     }
 }

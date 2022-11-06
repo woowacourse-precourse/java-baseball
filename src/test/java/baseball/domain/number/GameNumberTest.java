@@ -37,26 +37,23 @@ class GameNumberTest {
         )
         @DisplayName("만약 1 ~ 9까지의 number와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(int number, int index) {
-            Assertions.assertThatCode(() -> new GameNumber(number, index))
-                .doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> new GameNumber(number, index)).doesNotThrowAnyException();
         }
 
         @Test
         @DisplayName("만약 0이 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test() {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumber(0, 1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_NUMBER);
+            Assertions.assertThatThrownBy(() -> new GameNumber(0, 1))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_NUMBER);
         }
 
         @Test
         @DisplayName("만약 3 이상의 index가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_size_exception_test() {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumber(1, 3))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_SIZE);
+            Assertions.assertThatThrownBy(() -> new GameNumber(1, 3))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_SIZE);
         }
     }
 
@@ -80,27 +77,24 @@ class GameNumberTest {
         )
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(char numberChar, int index) {
-            Assertions.assertThatCode(() -> new GameNumber(numberChar, index))
-                .doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> new GameNumber(numberChar, index)).doesNotThrowAnyException();
         }
 
         @ParameterizedTest
         @ValueSource(chars = {'A', 'a', '+', '-', '0'})
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아니라면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(char numberChar) {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumber(numberChar, 1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_NUMBER);
+            Assertions.assertThatThrownBy(() -> new GameNumber(numberChar, 1))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_NUMBER);
         }
 
         @Test
         @DisplayName("만약 3 이상의 index가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_size_exception_test() {
-            Assertions
-                .assertThatThrownBy(() -> new GameNumber('1', 3))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_SIZE);
+            Assertions.assertThatThrownBy(() -> new GameNumber('1', 3))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_SIZE);
         }
     }
 

@@ -38,10 +38,9 @@ class GameCommandTest {
         @ValueSource(strings = {"a", "+", "0", "3", "@"})
         @DisplayName("만약 정상적이지 않은 사용자 입력이 주어졌다면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerWrongInput) {
-            Assertions
-                .assertThatThrownBy(() -> GameCommand.commandGameStatus(playerWrongInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(WRONG_INPUT);
+            Assertions.assertThatThrownBy(() -> GameCommand.commandGameStatus(playerWrongInput))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_INPUT);
         }
     }
 }

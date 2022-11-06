@@ -24,9 +24,8 @@ public enum GameInputView {
     }
 
     public static void printGameInputLog(GameStatus nowGameStatus) {
-        Arrays
-            .stream(GameInputView.values())
-            .filter(gamePlayLog -> gamePlayLog.gameStatus == nowGameStatus)
-            .forEach(gamePlayLog -> gamePlayLog.printLog.accept(gamePlayLog.message));
+        Arrays.stream(GameInputView.values())
+                .filter(gamePlayLog -> gamePlayLog.gameStatus == nowGameStatus)
+                .forEach(gamePlayLog -> gamePlayLog.printLog.accept(gamePlayLog.message));
     }
 }

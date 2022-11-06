@@ -54,10 +54,9 @@ class GameComputerTest {
         void too_many_answer_exception_test(long strike, long ball) {
             GameComputer gameComputer = GameComputerFactory.createFakeGameComputer(strike, ball);
 
-            Assertions
-                .assertThatThrownBy(() -> gameComputer.calculateGameResult(new GameNumbers("123")))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(TOO_MANY_ANSWER);
+            Assertions.assertThatThrownBy(() -> gameComputer.calculateGameResult(new GameNumbers("123")))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(TOO_MANY_ANSWER);
         }
     }
 }
