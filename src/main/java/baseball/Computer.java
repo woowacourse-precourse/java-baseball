@@ -13,6 +13,10 @@ public class Computer {
         this.randomNumbers = new ArrayList<>();
     }
 
+    public Computer(List<Integer> randomNumbers) {
+        this.randomNumbers = randomNumbers;
+    }
+
     public void pickRandomNumbers() {
         this.randomNumbers = RandomUtils.pickThreeRandomNumbers();
     }

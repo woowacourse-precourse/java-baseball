@@ -18,6 +18,10 @@ public class Player {
         this.numbers = new ArrayList<>();
     }
 
+    public Player(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     public void getBaseballInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
