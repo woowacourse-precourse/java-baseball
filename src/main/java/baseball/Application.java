@@ -18,10 +18,23 @@ public class Application {
 
         return targetNumber;
     }
+    public static boolean isIllegalInput(String userInput) {
+        try {
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean newNumberFlag = true;
         String gameNumber = null;
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("숫자 야구 게임을 시작합니다.\n");
 
@@ -31,6 +44,13 @@ public class Application {
             }
 
             newNumberFlag = false;
+
+            System.out.println("숫자를 입력해주세요 : ");
+            String userInput = scanner.nextLine();
+
+            if (isIllegalInput(userInput)) {
+                break;
+            }
         }
     }
 }
