@@ -1,18 +1,19 @@
+import baseball.Application;
 import baseball.ComputerNumGenerator;
 import baseball.Game;
 import baseball.UserNumGenerator;
-import camp.nextstep.edu.missionutils.Console;
-import org.junit.jupiter.api.BeforeEach;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class myTest {
+public class myTest extends NsTest {
     public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
@@ -53,25 +54,32 @@ public class myTest {
         assertThat(result.toString()).isEqualTo(nums.toString());
     }
 
-    @BeforeEach
-
+    @Test
+    void 스트라이크_볼_검증() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("134", "194", "149", "159", "1", "123", "213", "234", "2");
+                    assertThat(output()).contains("1스트라이크", "1볼 1스트라이크", "2스트라이크", "3스트라이크",
+                            "2볼", "2볼", "3스트라이크", "게임 종료");
+                },
+                1, 5, 9, 2, 3, 4
+        );
+    }
 
     @Test
-    void 게임_로직_검증1() {
-        List<Integer> nums = new ComputerNumGenerator().NUMS;
-        nums.removeAll(nums);
-        nums.add(1);
-        nums.add(5);
-        nums.add(3);
+    void 재시작시_예외_검증() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(
+                        () -> {
+                            run("134", "194", "149", "159", "3");
+                            assertThat(output()).contains("1스트라이크", "1볼 1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                        },
+                        1, 5, 9
+                )).isInstanceOf(IllegalArgumentException.class);
+    }
 
-        Game game = new Game(nums);
-        InputStream in = generateUserInput("153");
-        System.setIn(in);
-        Scanner scanner = new Scanner(System.in);
-
-        String result = game.play();
-        String answer = "0볼 3스트라이크";
-        assertThat(result).isEqualTo(answer);
-
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
     }
 }
