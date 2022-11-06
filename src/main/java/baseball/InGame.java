@@ -78,7 +78,7 @@ public class InGame {
                 // length
                 !(10 <= user_input && user_input <= 999) ||
                         // unique
-                        this.isUniqueInt(user_input)
+                        !this.isUniqueInt(user_input)
         ){
             throw new IllegalArgumentException();
         }
