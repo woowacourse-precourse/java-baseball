@@ -32,7 +32,7 @@ public class FunctionTest {
     }
 
     @Nested
-    class checkListLength {
+    class ListLengthTest {
         @Test
         void 세_자리의_숫자인지_확인() {
             //given
@@ -61,7 +61,7 @@ public class FunctionTest {
     }
 
     @Nested
-    class checkInputContent {
+    class InputContentTest {
         @Test
         void 숫자만_존재하는지_확인() {
             //given
