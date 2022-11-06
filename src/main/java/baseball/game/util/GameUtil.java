@@ -3,9 +3,9 @@ package baseball.game.util;
 import baseball.console.Interactive;
 import baseball.validation.Validator;
 import baseball.validation.condition.Condition;
-import baseball.game.condition.input.AllDigitsUniqueCond;
-import baseball.game.condition.input.AllDigitsNumberCond;
-import baseball.game.condition.input.SmallerThanMaxSizeCond;
+import baseball.game.condition.AllDigitsUniqueCond;
+import baseball.game.condition.AllDigitsNumberCond;
+import baseball.game.condition.SmallerThanMaxSizeCond;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
