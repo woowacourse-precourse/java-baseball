@@ -37,4 +37,11 @@ public class GameCycle {
         if (number.contains("0")) throw new IllegalArgumentException();
         return true;
     }
+    public boolean numberIsNotDuplicate(String number) {
+        for (int index = 0; index < number.length(); index++) {
+            char tmpChar = number.charAt(index);
+            if (index != number.indexOf(tmpChar)) throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }

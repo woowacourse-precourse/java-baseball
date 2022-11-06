@@ -62,4 +62,13 @@ class GameCycleTest {
         assertEquals(game.numberIsNotZero(inputTrue), true);
         assertThrows(IllegalArgumentException.class,()->game.numberIsNotZero(inputFalse));
     }
+    @Test
+    public void validNotDuplicate() throws Exception {
+        //given
+        String inputTrue = "123";
+        String inputFalse = "112";
+        //expect
+        assertEquals(game.numberIsNotDuplicate(inputTrue), true);
+        assertThrows(IllegalArgumentException.class,()->game.numberIsNotDuplicate(inputFalse));
+    }
 }
