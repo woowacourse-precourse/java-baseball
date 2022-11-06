@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.settings.Logic;
+import baseball.settings.Controller;
 
 public class Application {
     public static void main(String[] args) {
-        Logic.gameStart();
+        Controller.gameStart();
     }
 }

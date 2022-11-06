@@ -16,8 +16,7 @@ public class ComputerTest {
     @DisplayName("컴퓨터가 생성한 숫자가 1과 9 사이의 서로 다른 세 자리 수인지 확인")
     @Nested
     class NumberTest {
-        Computer computer = new Computer();
-        List<Integer> computerNumbers = computer.createThreeDifferentNumbers();
+        List<Integer> computerNumbers = Computer.createThreeDigitNumber();
 
         @DisplayName("세 자리 수 테스트")
         @Test
@@ -51,8 +50,7 @@ public class ComputerTest {
             int numberOfToTalCases = 1000;
 
             for (int num = 1; num <= numberOfToTalCases; num++) {
-                Computer computer = new Computer();
-                List<Integer> computerNumbers = computer.createThreeDifferentNumbers();
+                List<Integer> computerNumbers = Computer.createThreeDigitNumber();
 
                 boolean isInAscendingOrder = IntStream.range(1, computerNumbers.size())
                         .allMatch(index -> computerNumbers.get(index - 1) < computerNumbers.get(index));

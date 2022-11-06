@@ -4,26 +4,22 @@ import static baseball.settings.Constants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Computer {
-    public List<Integer> createThreeDifferentNumbers() {
-        List<Integer> threeDifferentNumbers = new ArrayList<>();
-
-        while (threeDifferentNumbers.size() < THREE_DIGITS) {
-            addDigit(threeDifferentNumbers);
+    public static List<Integer> createThreeDigitNumber() {
+        List<Integer> numberWithDifferentDigits = new ArrayList<>();
+        while (numberWithDifferentDigits.size() < NUMBER_OF_DIGITS) {
+            addDigit(numberWithDifferentDigits);
         }
-        return threeDifferentNumbers;
+        return numberWithDifferentDigits;
     }
 
-    public void addDigit(List<Integer> numbers) {
+    public static void addDigit(List<Integer> number) {
         int digit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-        numbers.add(digit);
-        numbers.stream()
+        number.add(digit);
+        number.stream()
                 .distinct()
                 .collect(Collectors.toList());
     }

@@ -3,7 +3,7 @@ package baseball.settings;
 public class Constants {
     public final static int START_NUMBER = 1;
     public final static int END_NUMBER = 9;
-    public final static int THREE_DIGITS = 3;
+    public final static int NUMBER_OF_DIGITS = 3;
     public final static int INITIAL_COUNT = 0;
     public final static int BALL_INDEX = 0;
     public final static int STRIKE_INDEX = 1;

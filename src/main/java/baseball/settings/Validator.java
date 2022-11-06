@@ -21,6 +21,6 @@ public class Validator {
         for (char character : input.toCharArray()) {
             strToSet.add(character);
         }
-        return strToSet.size() == THREE_DIGITS;
+        return strToSet.size() == NUMBER_OF_DIGITS;
     }
 }
