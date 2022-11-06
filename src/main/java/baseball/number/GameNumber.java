@@ -3,25 +3,19 @@ package baseball.number;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class GameNumber {
     private static final Integer NUMBER_LENGTH = 3;
     private String gameNumber;
 
-    public void generateRandomNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        }
+    public GameNumber() {
 
-        this.gameNumber = computerNumber.toString();
+    }
+
+    public GameNumber(String gameNumber) {
+        this.gameNumber = gameNumber;
     }
 
     public static boolean isValidUserNumber(String userNumber) {
@@ -54,6 +48,18 @@ public class GameNumber {
     private static boolean isNotDuplicatedNumber(String userNumber) {
         IntStream stream = userNumber.chars();
         return (stream.distinct().count() == NUMBER_LENGTH);
+    }
+
+    public void generateRandomNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+
+        this.gameNumber = computerNumber.toString();
     }
 
 
