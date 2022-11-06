@@ -16,9 +16,14 @@ public class Game {
     }
     public void play() {
         System.out.println("숫자를 입력해주세요 : ");
+        String userInput = getUserInput();
 
         List<Integer> computer = getComputerNumber();
-        List<Integer> user = getUserNumber();
+        List<Integer> user = getUserNumber(userInput);
+        if(user == null) {
+            System.out.println("사용자 입력 에러발생!!");
+            return;
+        }
 
         // count stikes & balls
         int strikes = countStrikes(user,computer);
@@ -62,19 +67,23 @@ public class Game {
 
         return computer;
     }
-
-    private List<Integer> getUserNumber() {
+    private String getUserInput() {
+        Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
-        // Exception 1. not Number
         for(char c : input.toCharArray()) {
-            if (48 <= c && c <= 57) return null;
+            if (48 <= c && c <= 57)
+                return null;
         }
-        // Exception 2. not 3 Number
-        if (input.length() != 3) return null;
+
+        return input;
+    }
+    private List<Integer> getUserNumber(String user) {
+        // Exception: not 3 Number
+        if (user.length() != 3) return null;
 
         List<Integer> userNumbers = new ArrayList<>();
-        for(char c : input.toCharArray()) {
+        for(char c : user.toCharArray()) {
             userNumbers.add((int) c);
         }
 
