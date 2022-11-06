@@ -5,10 +5,29 @@ public class Examine {
 		try {
 			isLengthThree(str);
 			isAllNumbers(str);
+			isContainZero(str);
+			isDifferent(str);
 		} catch (IllegalArgumentException e) {
 			throw e;
 		}
 	}
+
+	private static void isDifferent(String str) {
+		for (int i = 0; i < str.length(); ++i) {
+			if (str.indexOf(str.charAt(i)) != str.lastIndexOf(str.charAt(i))) {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+
+	private static void isContainZero(String str) {
+		for (int i = 0; i < str.length(); ++i) {
+			if (str.charAt(i) == '0') {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+
 	private static void isAllNumbers(String str) {
 		for (int i = 0; i < str.length(); ++i) {
 			if (!Character.isDigit(str.charAt(i))) {
