@@ -7,14 +7,24 @@ public class InputView {
 
     public String inputNumber() {
         String inputNumber = Console.readLine();
-        InputValidator.validatePlayerInputNumber(inputNumber);
+        try {
+            InputValidator.validatePlayerInputNumber(inputNumber);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
         return inputNumber;
     }
 
 
     public String inputRetry() {
         String inputRetry = Console.readLine();
-        InputValidator.validatePlayerInputRetry(inputRetry);
+        try {
+            InputValidator.validatePlayerInputRetry(inputRetry);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
         return inputRetry;
     }
 }
