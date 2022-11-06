@@ -2,6 +2,9 @@ package baseball.validation;
 
 import static baseball.util.Constant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Validation {
 
@@ -21,6 +24,22 @@ public class Validation {
      */
     public boolean checkAnswerConsistOfNum(String answer) {
         return answer.matches(CONSIST_OF_NUM);
+    }
+
+    /**
+     * 플레이어가 제시한 숫자가 서로 다른 수로 구성되어있는지 검증 기능
+     * @param answer 플레이어가 제시한 숫자
+     * @return 플레이어가 제시한 숫자가 서로 다른 수로 구성되어 있으면 true 그렇지 않으면 false 반환
+     */
+    public boolean checkAnswerOverlap(String answer) {
+        List<Character> check = new ArrayList<>();
+        for (char num : answer.toCharArray()) {
+            if (check.contains(num)) {
+                return false;
+            }
+            check.add(num);
+        }
+        return true;
     }
 
 }
