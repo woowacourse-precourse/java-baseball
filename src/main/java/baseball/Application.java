@@ -91,17 +91,13 @@ public class Application {
         }
 
         private List<Integer> getUserInputNumbersIfConvertible(String input) {
-            List<Integer> collect;
-
             try {
-                collect = Arrays.stream(input.split(""))
+                return Arrays.stream(input.split(""))
                         .map(Integer::parseInt)
                         .collect(Collectors.toList());
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
             }
-
-            return collect;
         }
 
         private void validateUseForbiddenNumber(List<Integer> numsList) {
