@@ -19,7 +19,7 @@ public enum ScreenString {
         return message;
     }
 
-    public String ballAndStrokeMessage(int ballCount, int strikeCount){
+    public String ballAndStrikeMessage(int ballCount, int strikeCount){
         if(ballCount == 0 && strikeCount == 0){
             return NOTHING.message;
         }else if(strikeCount == 0) {
@@ -27,7 +27,7 @@ public enum ScreenString {
         }else if(ballCount == 0){
             return Integer.toString(strikeCount) + " " + OUTPUT_STRIKE.message;
         }else{//볼 스트라이크 둘 다 있는 경우 재귀 호출로 해결
-            return ballAndStrokeMessage(ballCount,0)+ballAndStrokeMessage(0,strikeCount);
+            return ballAndStrikeMessage(ballCount,0)+ballAndStrikeMessage(0,strikeCount);
         }
     }
 }
