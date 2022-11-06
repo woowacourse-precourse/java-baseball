@@ -1,4 +1,8 @@
-package baseball;
+package baseball.controller;
+
+import baseball.dto.Result;
+import baseball.service.GameService;
+import baseball.view.PrintGameResult;
 
 import static baseball.Const.RESTART_GAME;
 import static baseball.Const.THREE_STRIKE;
