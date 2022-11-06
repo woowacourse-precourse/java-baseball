@@ -71,6 +71,26 @@ public class Application {
         return 0;
     }
 
+    static int check_user_number(List<Character> user_number_char_list) {
+        List<Character> temp_user_number_char_list = user_number_char_list;
+        List<Character> check_duplicate = new ArrayList<>();
+
+        try {
+            if (temp_user_number_char_list.isEmpty() || temp_user_number_char_list.size() != 3) {
+                throw new IllegalArgumentException();
+            }
+
+            if (check_correct_number(user_number_char_list) == 1) {
+                throw new IllegalArgumentException();
+            }
+
+        } catch (IllegalArgumentException e) {
+            return 1;
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
         Boolean next_game = true;
 
