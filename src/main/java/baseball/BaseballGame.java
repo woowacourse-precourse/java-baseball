@@ -17,7 +17,7 @@ public class BaseballGame {
 
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
-        while (ball!=3) {
+        while (strike!=3) {
             strike=0; ball=0;
             userNumbers = checkInputUserNumber();
             compareNumber();
