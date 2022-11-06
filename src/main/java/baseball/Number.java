@@ -35,21 +35,21 @@ public class Number {
     }
 
     private boolean isValidString(String input) {
-        if(isNotDuplicate(input) || isNumber(input) || isThreeDigits(input)) {
+        if(!isNotDuplicate(input) || !isNumber(input) || !isThreeDigits(input)) {
             return false;
         }
         return true;
     }
 
     private boolean isThreeDigits(String input) {
-        if(input.length() > DIGITS) {
+        if(input.length() != DIGITS) {
             return false;
         }
         return true;
     }
 
     private boolean isNumber(String str) {
-        String pattern = "[0-9]";
+        String pattern = "^[0-9]*$";
         return Pattern.matches(pattern, str);
     }
 
