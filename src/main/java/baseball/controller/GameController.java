@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.GameResult;
 import baseball.service.GameService;
 import baseball.util.GameNumberGenerator;
+import baseball.util.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -18,7 +19,7 @@ public class GameController {
     }
 
     public void playGame() {
-        while (playOneGame().equals("1")) {
+        while (playOneGame().equals(InputValidator.RETRY_GAME)) {
         }
     }
 
