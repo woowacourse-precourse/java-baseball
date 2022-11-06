@@ -33,4 +33,8 @@ public enum BaseballGameResult {
                 .findFirst()
                 .orElseThrow(BaseballGameException::new);
     }
+
+    public boolean isStrikeOut() {
+        return this.equals(_3_STRIKE);
+    }
 }
