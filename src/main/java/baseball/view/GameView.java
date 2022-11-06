@@ -26,11 +26,11 @@ public class GameView {
             System.out.println(NOTHING_MESSAGE);
             return;
         }
-        if (strikeCount >= 0 && ballCount == 0) {
+        if (strikeCount >= 1 && ballCount == 0) {
             System.out.printf(ONLY_STRIKE_MESSAGE, strikeCount);
             return;
         }
-        if (strikeCount == 0 && ballCount >= 0) {
+        if (strikeCount == 0 && ballCount >= 1) {
             System.out.printf(ONLY_BALL_MESSAGE, ballCount);
             return;
         }
