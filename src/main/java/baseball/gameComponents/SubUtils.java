@@ -1,19 +1,17 @@
-package baseball.gameUtil;
+package baseball.gameComponents;
 
 import baseball.exception.ExceptionCode;
 import baseball.exception.GameException;
-import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class GameUtils {
-    public List<Integer> generateRandomNumber() {
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
-    }
+public class SubUtils {
 
-    public void validateRandomNumber(List<Integer> number) {
+    public void validateNumber(List<Integer> number) {
         if(number.size() != 3) {
             throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
         }
@@ -25,6 +23,14 @@ public class GameUtils {
         Set<Integer> set = new HashSet<>(number);
         if(set.size() != 3) {
             throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
+        }
+    }
+
+    public void isNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new GameException(ExceptionCode.INPUT_NOT_VALID);
         }
     }
 
