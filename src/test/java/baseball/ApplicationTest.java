@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -50,6 +54,34 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자리와_숫자가_맞을_떄_스트라이크_증가_테스트() {
+        //Given
+        List<Integer> computerNum = List.of(3, 4, 5);
+        Computer computer = new Computer();
+        computer.setComputerNumber(computerNum);
+
+        //When
+        List<Integer> testNum = List.of(1, 4, 5);
+
+        //Then
+        Assertions.assertThat(computer.countStrike(testNum)).isEqualTo(2);
+    }
+
+    @Test
+    void 숫자만_맞을_떄_볼_증가_테스트() {
+        //Given
+        List<Integer> computerNum = List.of(3, 4, 5);
+        Computer computer = new Computer();
+        computer.setComputerNumber(computerNum);
+
+        //When
+        List<Integer> testNum = List.of(4, 1, 5);
+
+        //Then
+        Assertions.assertThat(computer.countBall(testNum)).isEqualTo(1);
     }
 
     @Override
