@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -80,6 +82,14 @@ public class Application {
             }
         }
         return checkedBallNumbers;
+    }
+
+    public static Map<String,Integer> calculatedStrikeBallNumber(List computerNumbers,List userNumbers){
+        Map<String,Integer> checkedBaseballNumbers = new HashMap<>(){{
+            put("strike",0);
+            put("ball",0);
+        }};
+        return new HashMap<>();
     }
 
     public static void main(String[] args) {
