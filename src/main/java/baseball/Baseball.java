@@ -54,6 +54,10 @@ public class Baseball {
         }
     }
 
+    public BallCount getBallCount() {
+        return ballCount;
+    }
+
     // GuessNumber Setter method
     public void setGuessNumber(int guessNumber) throws IllegalArgumentException {
         if(!isValidNum(guessNumber)) {
@@ -69,9 +73,7 @@ public class Baseball {
         ballCount = new BallCount();
         ballCount.ruleBallCount(this.targetNumber,this.guessNumber);
         ballCount.ruleStrikeCount(this.targetNumber,this.guessNumber);
-
-        ballCount.printBallCount();
-
+        
         return ballCount.getGuessResult();
     }
 

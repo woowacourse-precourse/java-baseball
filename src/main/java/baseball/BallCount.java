@@ -12,6 +12,14 @@ public class BallCount {
 
     public BallCount() {}
 
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
     // 볼 카운트 계산 method
     public void ruleBallCount(List<Integer> targetNumber, int guessNumber) {
         int ballCount = 0;
@@ -52,25 +60,15 @@ public class BallCount {
         return 0;
     }
 
-    public void printBallCount() {
-        if(strikeCount == Constant.MAX_STRIKE_COUNT){
-            System.out.println(Constant.THREE_STRIKE);
-        } else if((ballCount == 0) && (strikeCount == 0)) {
-            System.out.println(Constant.NO_BALL_NO_STRIKE);
-        } else if((ballCount != 0) && (strikeCount == 0)) {
-            System.out.println(ballCount + Constant.BALL);
-        } else if((ballCount == 0) && (strikeCount != 0)) {
-            System.out.println(strikeCount + Constant.STRIKE);
-        } else if((ballCount != 0) && (strikeCount != 0)) {
-            System.out.println(ballCount + Constant.BALL + " " + strikeCount + Constant.STRIKE);
-        }
-    }
-
     public GuessResult getGuessResult() {
         if(strikeCount == Constant.MAX_STRIKE_COUNT) {
             return GuessResult.END;
         } else if((ballCount == 0) && (strikeCount == 0)) {
             return GuessResult.NOT_SWING;
+        } else if((ballCount != 0) && (strikeCount == 0)) {
+            return GuessResult.ONLY_BALL;
+        } else if((ballCount == 0) && (strikeCount != 0)) {
+            return GuessResult.ONLY_STRIKE;
         }
 
         return GuessResult.BALL_STRIKE;

@@ -19,68 +19,69 @@
 
 ## 객체 리스트
     Baseball : 야구 게임 계산
-        - Boolean Gaming : 현재 게임중인지 여부
-        - Integer targetNumber : 정답 숫자
-        - Integer guessNumber : 추정 숫자
+        - boolean gaming : 현재 게임중인지 여부
+        - int guessNumber : 추정 숫자
+        - List<Integer> targetNumber : 정답 숫자
         - BallCount ballCount : 볼 / 스트라이크 카운트
     
     BallCount : 볼 / 스트라이크 카운트
         - Integer ballCount : 볼 카운트
         - Integer strikeCount : 스트라이크 카운트
 
-## 기능 리스트
-1. 게임 시작 기능(public)
-    - `Baseball.start()`
-    1. Gaming = true
-    2. resetTargetNumber() 호출
-    3. 게임 시작 문구 출력
-2. 1에서 9까지 서로 다른 임의의 수 3개를 선택 기능(private)
+## 주요 기능 리스트
+1. 1에서 9까지 서로 다른 임의의 수 3개를 선택 기능(private)
     - `Baseball.resetTarget()`
     1. targetNumber 최신화
     2. `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`사용
-3. 숫자 입력 받기 기능(public)
+2. 숫자 입력 받기 기능(public)
     - `Baseball.setGuessNumber(int guessNumber)`
-    1. parameter로 받은 수가 1~9로 이루어진 세자리 정수인지 Validation
+    1. parameter로 받은 수가 (1)1~9로 이루어진 (2)서로 다른 (3)세자리 정수인지 Validation
     2. guessNumber 최신화
-    3. 볼/스트라이크 바로 계산해놓음
-4. 볼/스트라이크 계산 기능(private)
-    - 볼 카운트 계산 : `Baseball.ruleBallCount()`
+3. 볼/스트라이크 계산 기능(private)
+    - 볼 카운트 계산 : `BallCount.ruleBallCount()`
     1. 3자리수 loop 돌면서 다른 자리 수와 같은 수가 있으면 count up
-    - 스트라이크 카운트 계산 :`Baseball.ruleStrikeCount() `
+    - 스트라이크 카운트 계산 :`BallCount.ruleStrikeCount() `
     1. 3자리수 loop 돌면서 다른 자리 수와 같은 수가 있으면 count up
-    - 볼 / 스트라이크 계산 결과 저장
-      -> `BallCount.setBallCount()`
-5. 계산 결과 출력 기능(public)
-    - 볼/스트라이크 수 : `Baseball.getBallCount()`, `Baseball.getStrikeCount()` <- BallCount 객체에서 정보 얻어온다.
-    - 결과 경우의 수 출력 : `Baseball.getGuessResult()`
-    - 3스트라이크 -> 게임 종료(7)
-6. 게임 재시작 기능(public)
+    
+
+## 필요 메소드 리스트 
+### Baseball
+1. 게임 시작 기능(public)
+    - `Baseball.start()`
+    1. gaming = true
+    2. resetTargetNumber() 호출
+    3. 게임 시작 문구 출력
+2. 게임 재시작 기능(public)
     - `Baseball.restart()`
     - targetNumber, guessNumber, BallCount 초기화
-7. 게임 종료 기능(public)
+3. 게임 종료 기능(public)
     - `Baseball.end()`
     - Gaming == false
+4. 현재 게임중인지 확인하는 기능
+    - `Baseball.isGaming()`
+5. GuessResult 기능(public)
+    - `Baseball.getGuessResult()`
 
 ## 기능 Flow
 - Baseball.start()로 게임 시작(targetNumber 초기화)
 - while 문 안에서 Baseball.isGaming = true 인 경우 로직 수행
-- Baseball.setGuessNumber()로 숫자 입력 받기
-- Baseball.ruleBallCount(), Baseball.ruleStrikeCount()로 입력받은 GuessNumber의 볼/스트라이크 카운트 계산
-- BallCount.setBallCount()로 ball, strike 수 저장
+- Controller.readGuessNumber()로 숫자 입력 받기
+- Baseball.setGuessNumber(입력받은 숫자)
 - Baseball.getGuessResult()로 결과 경우의 수 받기(ENUM)
-    - Baseball.getBallCount() != 0 && Baseball.getStrikeCount() != 0 : n볼 m스트라이크 (BALL_STRIKE)
-    - Baseball.getBallCount() == 0 && Baseball.getStrikeCount() == 0 : 낫싱 (NOT_SING)
-    - Baseball.getStrikeCount() == 3 : 게임 종료 (END)
-- BALL_STRIKE
+  - BALL_STRIKE
     - Baseball.getBallCount(), Baseball.getStrikeCount() 로 볼/스트라이크 카운트 출력
-- NOT_SING
+  - ONLY_BALL / ONLY_STRIKE 
+    - 각각 볼과 스트라이크 만 출력
+  - NOT_SING
     - "낫싱" 출력
-- END
+  - END
     - "3스트라이크
       3개의 숫자를 모두 맞히셨습니다! 게임 종료
-      게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
-    - 1 : Baseball.restart()
-    - 2 : Baseball.end()
+      게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력 
+    Baseball.chooseContinue()
+      - 1 : Baseball.restart()
+      - 2 : Baseball.end()
+- 
   
 
 
