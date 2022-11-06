@@ -21,8 +21,7 @@ public class BaseballGame {
         printMessage(START_MESSAGE + ENTER);
 
         while (gameAvailable) {
-            getUserNumber();
-            checkUserNumber();
+            userNumber = inputUserNumber();
             compareComputerAndUser();
             printMessage(getResult() + ENTER);
             if (checkCorrect()) {
@@ -45,15 +44,15 @@ public class BaseballGame {
         System.out.print(message);
     }
 
-    private void getUserNumber() {
+    private String inputUserNumber() {
         printMessage(INPUT_MESSAGE);
-        userNumber = Console.readLine();
-    }
+        String userInput = Console.readLine();
 
-    private void checkUserNumber() {
-        if (!InputValidator.isRightInput(userNumber)) {
+        if (!InputValidator.isRightInput(userInput)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
+
+        return userInput;
     }
 
     private void compareComputerAndUser() {
