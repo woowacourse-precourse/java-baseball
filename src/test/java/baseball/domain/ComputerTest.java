@@ -4,8 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static baseball.Setting.LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {

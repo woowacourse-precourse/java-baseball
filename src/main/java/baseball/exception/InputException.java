@@ -8,7 +8,7 @@ public class InputException {
     private static String INPUT_EXCEPTION_MESSAGE = "잘못된 값을 입력하여 게임을 종료합니다.";
 
     public static void inputCheckDuringGame(String input) {
-        if(!(isNaturalNumber(input) && isContainOverlapNumber(input) && isRightLength(input)))
+        if(!(isNaturalNumber(input) && !isContainOverlapNumber(input) && isRightLength(input)))
             throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
     }
 
@@ -25,10 +25,10 @@ public class InputException {
         Set<Character> numbers = new HashSet<>();
 
         for (char c : input.toCharArray()) {
-            if(!numbers.add(c)) return false;
+            if(!numbers.add(c)) return true;
         }
 
-        return true;
+        return false;
     }
 
     private static boolean isRightLength(String input) {
