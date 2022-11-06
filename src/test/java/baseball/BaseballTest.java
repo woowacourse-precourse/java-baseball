@@ -65,4 +65,11 @@ class BaseballTest {
         assertThat(checkOnlyNumber(input)).isEqualTo(result);
     }
 
+    @DisplayName("문자열에 0이 없는지 확인")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @CsvSource({"'123',true", "'105',false", "'012',false", "'120',false"})
+    void checkNotContainZero_userNumber_0이_없는지_확인(String input, boolean result) {
+        assertThat(checkNotContainZero(input)).isEqualTo(result);
+    }
+
 }

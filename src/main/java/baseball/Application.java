@@ -40,4 +40,8 @@ public class Application {
         }
         return true;
     }
+
+    public static boolean checkNotContainZero (String input) {
+        return !input.contains("0");
+    }
 }
