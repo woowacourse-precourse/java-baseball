@@ -30,6 +30,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
+    class toPlaceValue_Test{
+        @Nested
+        class success_case{
+            @Test
+            void case1(){
+                List<Integer> result = List.of(5, 20, 400);
+                List<Integer> input = List.of(5, 2, 4);
+                assertThat(result).isEqualTo(Application.toPlaceValue(input));
+            }
+        }
+    }
+
+    @Nested
     class disassembleDigitNumber_Test {
         @Nested
         class success_case {
