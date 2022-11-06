@@ -139,9 +139,10 @@ public class Application {
         }
 
         int randomValue = 0;
-        for (int i = 0, digit = 1; digit <= 100; i++, digit *= 10) {
-            randomValue += computer.get(i) * digit;
+        for(int number: computer){
+            randomValue = randomValue * 10 + number;
         }
+
         return randomValue;
     }
 }
