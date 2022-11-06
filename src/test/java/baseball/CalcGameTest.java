@@ -51,7 +51,7 @@ public class CalcGameTest {
         try {
             GameResult gameResult = CalcGame.calcGameResult(135);
             assertThat(gameResult.isEqual(new GameResult(1, 1))).isEqualTo(true);
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
