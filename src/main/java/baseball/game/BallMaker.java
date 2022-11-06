@@ -47,7 +47,7 @@ public class BallMaker {
         List<Integer> result = new ArrayList<>();
         while (result.size() != ballSize) {
             int randomNumber = Randoms.pickNumberInRange(minimum, maximum);
-            if(result.contains(randomNumber)){
+            if (result.contains(randomNumber)) {
                 continue;
             }
             result.add(randomNumber);
@@ -65,7 +65,7 @@ public class BallMaker {
     }
 
     private boolean checkValidation(String userInput) {
-        if (lengthValidation(userInput) && dataValidation(userInput)) {
+        if (lengthValidation(userInput) && dataValidation(userInput) && reduplicationValidation(userInput)) {
             return true;
         }
         return false;
@@ -81,6 +81,11 @@ public class BallMaker {
     private boolean dataValidation(String userInput) {
         String dataRegex = String.format("^[%d-9]*$", minimum);
         return Pattern.matches(dataRegex, userInput);
+    }
+
+    private boolean reduplicationValidation(String userInput) {
+        Set<Integer> dataSet = userInput.chars().boxed().collect(Collectors.toSet());
+        return dataSet.size() == userInput.length();
     }
 
 }
