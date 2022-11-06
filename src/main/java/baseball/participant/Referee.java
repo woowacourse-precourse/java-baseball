@@ -32,7 +32,7 @@ public class Referee {
         }
     }
 
-    public void validatePrediction(String pitchNumber) {
+    public void pitchIsBalk(String pitchNumber) {
         if (!validateSize(pitchNumber) || !validateDigits(pitchNumber))
             throw new IllegalArgumentException("잘못된 입력값입니다.");
     }

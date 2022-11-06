@@ -31,7 +31,7 @@ public class BaseballGameConsole {
         while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
             String pitchNumber = pitcher.pitchNumberBall();
-            referee.validatePrediction(pitchNumber);
+            referee.pitchIsBalk(pitchNumber);
 
             Result result = referee.resultOfPrediction(hitNumber, pitchNumber);
             strikeOut = result.getResultType() == EXACT_MATCH;

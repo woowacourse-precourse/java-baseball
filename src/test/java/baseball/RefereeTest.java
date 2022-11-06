@@ -36,10 +36,10 @@ class RefereeTest {
 
         // then
         for (String goodInput : goodInputs)
-            assertDoesNotThrow(() -> referee.validatePrediction(goodInput));
+            assertDoesNotThrow(() -> referee.pitchIsBalk(goodInput));
 
         for (String badInput : badInputs)
-            assertThrows(IllegalArgumentException.class, () -> referee.validatePrediction(badInput));
+            assertThrows(IllegalArgumentException.class, () -> referee.pitchIsBalk(badInput));
     }
 
     @Test
