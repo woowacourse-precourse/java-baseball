@@ -18,7 +18,8 @@ public class UserNumGenerator {
         if (!isValid(input)) {
             throw new IllegalArgumentException();
         }
-        return Arrays.asList(input.split("")).stream().map(s -> Integer.parseInt(s))
+        return Arrays.asList(input.split(""))
+                .stream().map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
     }
 
@@ -27,7 +28,10 @@ public class UserNumGenerator {
     }
 
     public boolean isNotDuplicate(String input) {
-        return Arrays.asList(input.split("")).stream().distinct().count() == INPUT_LENGTH;
+        return Arrays.asList(input.split(""))
+                .stream()
+                .distinct()
+                .count() == INPUT_LENGTH;
     }
 
     public boolean isValid(String input) {
