@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class ServiceImpl implements Service{
+
     @Override
     public void startGame() {
     }
@@ -70,6 +71,48 @@ public abstract class ServiceImpl implements Service{
         return str.chars()
                 .filter(c -> c == ch)
                 .count();
+    }
+
+    private int hint(List<Integer> answerList, List<Integer> inputList) {
+        int strike = countStrike(answerList, inputList);
+        int ball = countBall(answerList, inputList) - strike;
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return strike;
+
+    }
+
+    private int countBall(List<Integer> answerList, List<Integer> inputList) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (inputList.contains(answerList.get(i))) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    private int countStrike(List<Integer> answerList, List<Integer> inputList) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answerList.get(i) == inputList.get(i)) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
 
