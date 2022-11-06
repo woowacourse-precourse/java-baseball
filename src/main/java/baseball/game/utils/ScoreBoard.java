@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,8 +17,15 @@ public class ScoreBoard {
         this.strike++;
     }
 
-    public List<Integer> getBallAndStrike() {
+    public List<Integer> getBallAndStrike(){
         return Arrays.asList(ball, strike);
+    }
+
+    public boolean checkStrikeOut(){
+        if (strike == 3) {
+            return true;
+        }
+        return false;
     }
 
     public void printBallAndStrike() {
@@ -35,7 +42,7 @@ public class ScoreBoard {
             scoreList.add("낫싱");
         }
 
-        System.out.print(String.join(" ", scoreList));
+        System.out.println(String.join(" ", scoreList));
     }
 
 }
