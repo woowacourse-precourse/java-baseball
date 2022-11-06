@@ -1,6 +1,9 @@
 package baseball.validator;
 
+import java.util.List;
+
 public interface Validator {
-    boolean checkAnswer();
-    boolean validateAnswer();
+    void setAnswer(List<Integer> answer);
+    boolean checkAnswer(List<Integer> input);
+    void validateAnswer(List<Integer> input);
 }

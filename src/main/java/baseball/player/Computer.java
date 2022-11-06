@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public class Computer implements Player{
+public class Computer implements Playable{
     private List<Integer> answer;
 
     @Override

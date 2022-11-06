@@ -2,7 +2,7 @@ package baseball.player;
 
 import java.util.List;
 
-public class Human implements Player{
+public class Human implements Playable{
     private List<Integer> answer;
 
     @Override
