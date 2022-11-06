@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import static baseball.Application.analyzeInput;
 import static baseball.Application.selectRandomNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -73,6 +74,14 @@ class ApplicationTest extends NsTest {
     @DisplayName("2-2. 3자리 숫자가 아닌 입력인 경우")
     void test4() {
         assertSimpleTest(() -> assertThatThrownBy(() -> runException("12")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("3-1. 맞는 숫자가 하나도 없는 경우 : 낫싱")
+    void test5() {
+        String analyzeResult1 = analyzeInput("456", "123");
+
+        assertThat(analyzeResult1).isEqualTo("낫싱");
     }
 
     @Test
