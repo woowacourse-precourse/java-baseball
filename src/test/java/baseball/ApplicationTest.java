@@ -108,7 +108,7 @@ class ApplicationTest extends NsTest {
                     }
                 };
                 computer.putAnswer();
-                assertThat(computer.returnResult(new BaseballNumber(List.of(0, 1, 4)))).isEqualTo(List.of(2, 0));
+                assertThat(computer.returnResult(new BaseballNumber(List.of(8, 1, 4)))).isEqualTo(List.of(2, 0));
             }
 
             @Test
