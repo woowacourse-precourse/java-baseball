@@ -31,7 +31,7 @@ public class BaseballNumberTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "b", "$", "#", " "})
-    void 야구게임_넘버는_숫자외_값은_저장할_수_없습니다(final String input) {
+    void 야구게임_넘버는_숫자_외_값은_저장할_수_없습니다(final String input) {
         assertThatThrownBy(() -> new BaseballNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(BaseballNumber.ERROR_INPUT_IS_NUMBER);

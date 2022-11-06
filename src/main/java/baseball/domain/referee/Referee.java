@@ -26,8 +26,10 @@ public class Referee {
 
     public Score ruled(List<BaseballNumber> original, List<BaseballNumber> target) {
         this.score = Score.generateZero();
+
         AtomicInteger atomicInteger = new AtomicInteger();
         original.forEach(item -> ruled(item, target, atomicInteger.getAndIncrement()));
+
         return score;
     }
 }
