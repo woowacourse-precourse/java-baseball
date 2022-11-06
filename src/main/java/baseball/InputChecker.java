@@ -11,8 +11,10 @@ public class InputChecker {
                 .allMatch(Character::isDigit);
     }
 
-    public static boolean isGuessCommandValid(String input, int length) {
-        return hasDigitsOnly(input) && hasLengthOf(input, length);
+    public static void isGuessCommandValid(String input, int length) {
+        if (!hasDigitsOnly(input) || !hasLengthOf(input, length)) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
