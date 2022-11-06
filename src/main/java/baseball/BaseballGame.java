@@ -17,11 +17,14 @@ public class BaseballGame {
 
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
-        while (true) {
+        while (ball!=3) {
             strike=0; ball=0;
             userNumbers = checkInputUserNumber();
             compareNumber();
+            userNumberResult();
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        restartGame();
     }
 
     public static void compareNumber(){
@@ -32,6 +35,14 @@ public class BaseballGame {
             if (userNumber == computerNumber) strike++;
             else if (userNumber != computerNumber) ball++;
         }
+    }
+
+    public static void userNumberResult(){
+        if(ball==0 && strike==0) System.out.print("낫싱");
+        if(ball>0) System.out.print(ball + "볼 ");
+        if(strike>0) System.out.print(strike + "스트라이크 ");
+        System.out.println();
+
     }
 
     public static void restartGame(){
