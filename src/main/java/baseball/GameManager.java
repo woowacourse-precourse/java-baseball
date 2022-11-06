@@ -30,4 +30,23 @@ public class GameManager {
         }
 
     }
+
+    public boolean checkGameContinueFlag() {
+
+        System.out.println(Message.getGameEndMessage());
+        System.out.println(Message.getGameContinueCheckMessage());
+
+        int gameContinue = Integer.parseInt(Console.readLine());
+
+        switch (gameContinue) {
+            case 1:
+                numberManager.setRandomNumber();
+                return true;
+            case 2:
+                return false;
+            default:
+                throw new IllegalArgumentException();
+        }
+
+    }
 }
