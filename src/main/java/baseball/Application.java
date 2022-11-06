@@ -2,20 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.text.NumberFormat;
-import java.text.ParsePosition;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-            List<Integer> computerList = new ArrayList<>();
-
-            computerPick(computerList);
+        List<Integer> computerList = new ArrayList<>();
+        String inputString = startUserInput();
+        computerPick(computerList);
     }
 
     // 컴퓨터가 숫자를 선택하는 메서드
@@ -26,6 +22,12 @@ public class Application {
                 computerList.add(pickNumber);
             }
         }
+    }
+
+    // 게임을 시작하고 사용자의 입력을 받는 메서드
+    static String startUserInput() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        return Console.readLine();
     }
 
 }
