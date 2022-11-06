@@ -18,9 +18,11 @@ public class BaseballGameConsole {
 
     public void startWithPitcher(Pitcher pitcher) {
         emcee.showStartingGuide(pitcher.getName());
-        do {
+        boolean replay = true;
+        while (replay) {
             playSingleGame(pitcher);
-        } while (askReplaying());
+            replay = askReplaying();
+        }
     }
 
     private void playSingleGame(Pitcher pitcher) {
