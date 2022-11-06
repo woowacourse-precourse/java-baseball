@@ -4,21 +4,26 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class ConsoleInputTest {
 
-    @Test
-    @DisplayName("사용자 콘솔 숫자 입력 테스트")
-    void userInputNumber() {
-        String expectedInputNumber = "123";
+    @Nested
+    @DisplayName("inputNumber 메서드는")
+    class DescribeInputNumber {
+        @Test
+        @DisplayName("사용자의 입력을 반환한다.")
+        void userInputNumber() {
+            String expectedInputNumber = "123";
 
-        InputStream in = new ByteArrayInputStream(expectedInputNumber.getBytes());
-        System.setIn(in);
+            InputStream in = new ByteArrayInputStream(expectedInputNumber.getBytes());
+            System.setIn(in);
 
-        ConsoleInput input = new ConsoleInput();
-        String actualInputNumber = input.inputNumber();
+            ConsoleInput input = new ConsoleInput();
+            String actualInputNumber = input.inputNumber();
 
-        Assertions.assertThat(actualInputNumber).isEqualTo(expectedInputNumber);
+            Assertions.assertThat(actualInputNumber).isEqualTo(expectedInputNumber);
+        }
     }
 }

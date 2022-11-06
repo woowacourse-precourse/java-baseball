@@ -44,12 +44,16 @@ public class ConsoleOutputTest {
         System.setOut(System.out);
     }
 
-    @Test
-    @DisplayName("어플리케이션 시작 문구 테스트")
-    void startTextWhenRunApplication() {
-        output.printStartText();
+    @Nested
+    @DisplayName("printStartText 메서드는")
+    class DescribePrintStartText {
+        @Test
+        @DisplayName("호출시 시작 문구를 출력한다.")
+        void startTextWhenRunApplication() {
+            output.printStartText();
 
-        Assertions.assertThat(outputMessage.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
+            Assertions.assertThat(outputMessage.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
+        }
     }
 
     @Nested
