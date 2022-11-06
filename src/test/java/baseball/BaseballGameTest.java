@@ -106,10 +106,10 @@ class BaseballGameTest {
     @Test
     @DisplayName("사용자 입력 시 정답 리스트 생성")
     void makeUserList() throws Exception {
-        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserList", String.class);
-        checkSizeMethod.setAccessible(true);
+        Method makeMethod = BaseballGame.class.getDeclaredMethod("makeUserList", String.class);
+        makeMethod.setAccessible(true);
 
-        List<Integer> actual = (List<Integer>) checkSizeMethod.invoke(game, "123");
+        List<Integer> actual = (List<Integer>) makeMethod.invoke(game, "123");
         assertThat(actual).isEqualTo(List.of(1, 2, 3));
     }
 
@@ -117,11 +117,11 @@ class BaseballGameTest {
     @DisplayName("사용자가 세자리를 입력하지 않았을 때 예외")
     @ValueSource(strings = {"12", "", "1234", "  "})
     void validateUserInputLength(String input) throws Exception {
-        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
-        checkSizeMethod.setAccessible(true);
+        Method validMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
+        validMethod.setAccessible(true);
 
         try {
-            checkSizeMethod.invoke(game, input);
+            validMethod.invoke(game, input);
         } catch (InvocationTargetException e) {
             assertThat(e.getCause().getMessage()).isEqualTo(INPUT_LENGTH_EXCEPTION);
         }
@@ -131,11 +131,11 @@ class BaseballGameTest {
     @DisplayName("사용자가 중복된 수를 입력했을 때 예외")
     @ValueSource(strings = {"122", "111", "331"})
     void validateOverlapUserInput(String input) throws Exception {
-        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
-        checkSizeMethod.setAccessible(true);
+        Method validMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
+        validMethod.setAccessible(true);
 
         try {
-            checkSizeMethod.invoke(game, input);
+            validMethod.invoke(game, input);
         } catch (InvocationTargetException e) {
             assertThat(e.getCause().getMessage()).isEqualTo(INPUT_OTHER_NUMBER_EXCEPTION);
         }
@@ -145,11 +145,11 @@ class BaseballGameTest {
     @DisplayName("사용자가 문자를 입력했을 때 예외")
     @ValueSource(strings = {"a12", "bbb", "12a", "   "})
     void validateNumberOfUserInput(String input) throws Exception {
-        Method checkSizeMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
-        checkSizeMethod.setAccessible(true);
+        Method validMethod = BaseballGame.class.getDeclaredMethod("makeUserAnswer", String.class);
+        validMethod.setAccessible(true);
 
         try {
-            checkSizeMethod.invoke(game, input);
+            validMethod.invoke(game, input);
         } catch (InvocationTargetException e) {
             assertThat(e.getCause().getMessage()).isEqualTo(NUMBER_FORMAT_EXCEPTION);
         }
