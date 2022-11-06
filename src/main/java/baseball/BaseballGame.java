@@ -29,7 +29,7 @@ public class BaseballGame implements Game {
     @Override
     public void outro() {
         println(OUTRO);
-        println(CONTINUE_OR_END);
+        println(CONTINUE_OR_BREAK);
         if (BaseballGameService.getContinueOrBreak() == CONTINUE) {
             replay();
         }
