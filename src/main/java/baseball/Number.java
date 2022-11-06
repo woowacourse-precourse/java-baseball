@@ -13,7 +13,7 @@ public class Number {
         gameNumber = number;
     }
 
-    private List<Integer> generateRandomNumber() {
+    private String generateRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,10 +22,8 @@ public class Number {
             }
         }
 
-        return computerNumber;
+        return computerNumber.toString();
     }
-
-
 
 
 }
