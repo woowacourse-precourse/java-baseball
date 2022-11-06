@@ -33,10 +33,7 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
-            List<Integer> user = new ArrayList<>();
-            for (String s : Arrays.asList(input.split(""))) {
-                user.add(Integer.parseInt(s));
-            }
+            List<Integer> user = validateUserInput(input);
 
             calculateNumber(user, computer);
             printResult();
@@ -62,6 +59,23 @@ public class Game {
         }
 
         return computer;
+    }
+
+    private List<Integer> validateUserInput(String input) {
+        List<Integer> user = new ArrayList<>();
+        for (String number : Arrays.asList(input.split(""))) {
+            if (!Character.isDigit(number.charAt(0))) {
+                throw new IllegalArgumentException();
+            }
+            user.add(Integer.parseInt(number));
+        }
+
+        if (user.size() != 3)
+            throw new IllegalArgumentException();
+        if (user.get(0) == user.get(1) || user.get(1) == user.get(2) || user.get(2) == user.get(0))
+            throw new IllegalArgumentException();
+
+        return user;
     }
 
     private static void calculateNumber(List<Integer> user, List<Integer> computer) {
