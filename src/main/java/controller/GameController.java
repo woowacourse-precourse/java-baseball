@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Game;
+import view.GameView;
 
 import java.util.Scanner;
 
@@ -13,7 +14,10 @@ public class GameController {
     }
 
     public void startGame(){
+        GameView.printStartMessage();
+        game.createComputerNumbers();
         do{
+            GameView.printInputMessage();
             inputUserNumbers();
         }while(true);
     }
