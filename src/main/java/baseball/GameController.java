@@ -25,12 +25,13 @@ public class GameController {
         return userNumberList;
     }
 
-    // userNumber와 randomNumber의 교집합 검사
-    public List<Integer> checkContains(List<Integer> userNumberList, List<Integer> radomNumberList) {
+    // userNumberList와 randomNumberList의 교집합 검사
+    public List<Integer> checkIntersection(List<Integer> userNumberList, List<Integer> radomNumberList) {
         return radomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList());
     }
 
     public void compareGameCount(List<Integer> userNumberList, List<Integer> radomNumberList) {
-        System.out.println("교집합:" + checkContains(userNumberList, radomNumberList) + ":");
+        List<Integer> intersectionList = checkIntersection(userNumberList, radomNumberList);
+        System.out.println("교집합:" + intersectionList + ":");
     }
 }
