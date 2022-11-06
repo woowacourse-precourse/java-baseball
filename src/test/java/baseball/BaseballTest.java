@@ -58,4 +58,11 @@ class BaseballTest {
         assertThat(checkNumberLength(input)).isEqualTo(result);
     }
 
+    @DisplayName("문자열이 숫자로만 이루어져 있는지 확인")
+    @ParameterizedTest(name = "{index} {displayName} userNumber={0} ")
+    @CsvSource({"'123',true", "'!12',false", "'1234a',false", "'',false"})
+    void checkOnlyNumber_userNumber_숫자로만_이루어져_있는지_확인(String input, boolean result) {
+        assertThat(checkOnlyNumber(input)).isEqualTo(result);
+    }
+
 }

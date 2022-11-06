@@ -30,4 +30,14 @@ public class Application {
     public static boolean checkNumberLength(String userNumber) {
         return userNumber.length() == 3;
     }
+
+    public static boolean checkOnlyNumber(String input) {
+        try {
+            Double.parseDouble(input);
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
 }
