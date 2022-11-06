@@ -1,7 +1,7 @@
 package baseball.domain;
 
 import baseball.util.GamePrinter;
-import baseball.util.GameValidator;
+import java.util.StringJoiner;
 
 public class BallCount {
 
@@ -14,28 +14,24 @@ public class BallCount {
     }
 
     public boolean check() {
-        return strike != GameValidator.NUMBER_LENGTH;
+        return strike != BaseballGuide.NUMBER_LENGTH;
     }
 
     public void show() {
-        StringBuilder result = new StringBuilder();
-        if (ball == 0 && strike == 0) {
-            result.append("낫싱");
-        }
-
+        StringJoiner result = new StringJoiner(" ");
         if (ball != 0) {
-            result.append(ball).append("볼").append(" ");
+            result.add(ball + "볼");
         }
 
         if (strike != 0) {
-            result.append(strike).append("스트라이크");
+            result.add(strike + "스트라이크");
         }
 
-        if (strike == GameValidator.NUMBER_LENGTH) {
-            result.append("\n").append(GameValidator.NUMBER_LENGTH)
-                .append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (result.length() == 0) {
+            result.add("낫싱");
         }
 
-        GamePrinter.println(result.toString().stripTrailing());
+        GamePrinter.println(result.toString());
     }
+
 }
