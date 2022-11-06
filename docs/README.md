@@ -9,13 +9,16 @@
 - 세 자리 숫자를 만드는 방법은 두 가지다.
     1. 사용자로부터 입력받는 방법
         - `camp.nextstep.edu.missionutils`에서 제공하는 `Console`의  `readLine()`을 활용한다.
+        - 잘못된 입력이 들어온 경우 null 을 반환한다.
+        - 정상 입력인 경우 List<Integer> 타입을 반환한다.
     2. 랜덤으로 생성하는 방법
         - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 의 `pickNumberInRange()`를 활용한다.
-
+        - List<Integer> 타입을 반환한다.
 
 ## Player 도메인을 구축한다.
 - 세 자리 숫자를 담는 도메인
-
+- 게임을 진행할 수 있는 상태인지 판단하는 기능을 제공한다.
+    - 세 자리 수가 null 인 경우 게임을 진행할 수 없다.
 
 ## GameResult 도메인을 구축한다.
 - 게임 결과(Ball수, Strike수)를 담는 도메인
