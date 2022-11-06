@@ -44,4 +44,11 @@ public class User {
 			validatedUserInput.clear();
 		}
 	}
+
+	public void scanInputWhenPlaying() {
+		initValidatedUserInput();
+		scanInput();
+		patternValidateInput();
+		duplicationValidateInput();
+	}
 }
