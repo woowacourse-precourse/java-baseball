@@ -26,4 +26,17 @@ public class Result {
     public Boolean isThreeStrike() {
         return strikeCnt == 3;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Result result = (Result) o;
+        return Objects.equals(strikeCnt, result.strikeCnt) && Objects.equals(ballCnt, result.ballCnt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(strikeCnt, ballCnt);
+    }
 }
