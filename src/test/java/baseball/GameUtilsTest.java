@@ -1,15 +1,14 @@
 package baseball;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import baseball.exception.ExceptionMessage;
+import org.junit.jupiter.api.*;
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameUtilsTest {
 
@@ -84,6 +83,14 @@ public class GameUtilsTest {
 
         GameUtils.printResultOfGame(0, 1);
         assertThat(output.toString()).contains("1볼");
+    }
+
+    @DisplayName("재시작과 종료 명령어 제외 다른 것을 입력 받았을때 예외를 던진다.")
+    @Test
+    void 명령어_예외() {
+        System.setIn(generateUserInput("3"));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, GameUtils::getCommandFromPlayer);
+        assertThat(exception.getMessage()).isEqualTo(ExceptionMessage.INVALID_COMMAND_DIGIT_EXCEPTION.message());
     }
 
     public static InputStream generateUserInput(String input) {
