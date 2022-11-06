@@ -40,16 +40,11 @@ public class Game {
     }
 
     public String getGamePlayerInput() {
-        printGuideMessage(PLAYER_INPUT_GUIDE_MESSAGE);
-
         return Console.readLine();
     }
 
     public void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
-        checkNumberLength(gamePlayerNumberInput);
-        hasSameNumber(gamePlayerNumberInput);
-        hasCharacters(gamePlayerNumberInput);
-        hasZero(gamePlayerNumberInput);
+        ExceptionFor2.checkGamePlayerNumberInput(gamePlayerNumberInput);
     }
 
     public String getResult(String computerRandomNumbers, String gamePlayerInput) {
@@ -95,27 +90,6 @@ public class Game {
     private void checkNumberLength(String stringGamePlayerInput) {
         int stringLength =  stringGamePlayerInput.length();
         if (stringLength > NUMBER_LENGTH || stringLength < 1) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void hasSameNumber(String gamePlayerInput) {
-        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
-            if (gamePlayerInput.lastIndexOf(gamePlayerInput.charAt(stringIndex)) != stringIndex) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private void hasCharacters(String gamePlayerInput) {
-        String regex = "^[0-9]*$";
-        if (!gamePlayerInput.matches(regex)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void hasZero(String gamePlayerInput) {
-        if (gamePlayerInput.contains("0")) {
             throw new IllegalArgumentException();
         }
     }

@@ -225,4 +225,36 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 기능요구사항4_문자_포함_예외_테스트() {
+        String input = " 1";
+
+        assertThatThrownBy(() -> ExceptionFor4.hasCharacters(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 기능요구사항4_입력_숫자_테스트() {
+        String input = "3";
+
+        assertThatThrownBy(() -> ExceptionFor4.checkYesOrNo(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 기능요구사항4_입력_숫자_길이_테스트() {
+        String input = "31";
+
+        assertThatThrownBy(() -> ExceptionFor4.checkYesOrNo(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+//    @Test
+//    void 기능요구사항4_게임_반복_입력_테스트() {
+//        String input = "1";
+//
+//        assertThatThrownBy(() -> ExceptionFor4.checkYesOrNo(input))
+//                .isInstanceOf(IllegalArgumentException.class);
+//    }
+
 }
